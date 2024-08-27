@@ -121,6 +121,7 @@ I'd encourage you to start and submit your solution early
 
 ## Python as language
 
+- **Origins**: Conceived in late 1980s as a teaching and scripting language
 - **Simple Syntax**: Python’s syntax is straightforward and easy to learn
 - **Versatility**: Used in web development, data analysis, artificial intelligence, and more
 - **Community Support**: A large community of users and extensive documentation
@@ -198,7 +199,7 @@ Great resources to start are books and small challenges. In my opinion both are 
 ## Learning path
 - The learning path can be quite steep!
 - **First of all help each other!**
-- Try to find help in lecture materials and books, the python documentation, and online (e.g. Google, ChatGPT, StackOverflow, ...)
+- Try to find help in lecture materials and books, the Python documentation, and online (e.g. Google, ChatGPT, StackOverflow, ...)
 - In case you get frustrated with programming, read the following [helpful blog post about the challenges on medium.com](https://medium.com/sololearn/why-learning-to-code-is-soooo-hard-3c2372e9d12c)
 
 ## Errors
@@ -213,21 +214,21 @@ In case you find errors and typos in the lecture notes, please report them in th
 
 :::
 
-# [Setting up python]{.flow .r-fit-text} {.title}
+# [Setting up Python]{.flow .r-fit-text} {.title}
 
-## Install python
+## Install Python
 
 - You could download it from the [Python website](https://www.python.org/downloads/) or with [Anaconda](https://www.anaconda.com/products/individual)
 - **But I would recommend we start by using [Thonny](https://thonny.org/)**
 - It is an open source IDE that runs on Windows, Linux and Mac
-- It comes with a built-in python interpreter and package management!
+- It comes with a built-in Python interpreter and package management!
 
 ## What is an IDE?
 
 - An **IDE** (Integrated Development Environment) is an application 
 - It allows you to write, run and debug code scripts
-- Thonny is an IDE specifically for python and aimed at beginners
-- It does not use the latest python and has the most features 
+- Thonny is an IDE specifically for Python and aimed at beginners
+- It does not use the latest Python and has the most features 
 - **But it is easy to use as beginner!**
 - Other IDEs include for example [PyCharm](https://www.jetbrains.com/pycharm/) from JetBrains or [Visual Studio Code](https://code.visualstudio.com/) from Microsoft
 
@@ -239,9 +240,9 @@ In case you find errors and typos in the lecture notes, please report them in th
 
 
 ## Python on iPads
-- Although you can run python scripts from on your iPad, it is not recommended for the course
+- Although you can run Python scripts from on your iPad, it is not recommended for the course
 - Nonetheless, if you have no other option, you could use [Pythonista](https://apps.apple.com/de/app/pythonista-3/id1085978097)
-- It works locally on your iPad and can run most python scripts
+- It works locally on your iPad and can run most Python scripts
 
 . . .
 
@@ -255,7 +256,7 @@ Not all packages generally available in Python are be available in Pythonista, t
 # [Your first code]{.flow .r-fit-text} {.title}
 
 ## Hello, World!
-Create the following file in your directory called `hello_world.py`:
+Create a directory for the course and create a new file called `hello_world.py` with the following code and save it:
 
 ```{python}
 #| eval: false
@@ -264,11 +265,12 @@ Create the following file in your directory called `hello_world.py`:
 print("Hello, World!")
 ```
 
-\
 
 . . .
 
-Run it with the button in the top right corner of the window:
+Run the code with the green 'run' button at the top or by going to the line and pressing [Shift+Enter].{red}:
+
+. . .
 
 ```{python}
 #| eval: true
@@ -281,3 +283,188 @@ print("Hello, World!")
 ::: {.callout-note}
 "Hello world" is a classic example to start with. It is often used as a test to check if your computer is working properly and that you have installed the necessary software.
 :::
+
+## Hello, World!
+[Your Task]{.red}: Change the code in your `hello_world.py` file. Assign the string `"Hello, World!"` to a variable called `message` and print the variable.
+
+. . .
+
+- Use the equals sign (=)
+- Variable name goes on the left
+- Value to be assigned goes on the right
+
+. . .
+
+```{python}
+#| eval: true
+#| output-location: fragment
+
+# Here we assign the string "Hello, World!" to variable message and print it
+message = "Hello, World!"
+print(message)
+```
+
+## Hello, World!
+We can also mix `"` and `'` in a string. We just have to be consistent:
+
+```{python}
+#| eval: true
+#| output-location: fragment
+
+# This code works
+message = 'I shout "Hello, World!"'
+print(message)
+```
+
+. . .
+
+\
+
+```{python}
+#| eval: true
+#| error: true
+#| output-location: fragment
+
+# This code does not
+message = 'I shout 'Hello, World!""
+print(message)
+```
+
+# [Program]{.flow .r-fit-text} {.title}
+
+## What is a program?
+
+- A sequence of instructions telling a computer what to do
+- Written in a programming language the computer can understand
+- Basic operations in virtually any language: 
+    - **Input**: Get data from keyboard, file, network, sensors, etc.
+    - **Output**: Display data on screen, save to file, send over network, etc.
+    - **Processing**: Perform calculations, analyze data, make decisions, find patterns, etc.
+    
+## What is a program?
+
+- Key concepts in virtually any language:
+    - **Variables**: Store and manipulate data 
+    - **Conditional execution**: Check conditions and execute accordingly
+    - **Loops**: Perform actions repeatedly, often with variations
+    - **Functions**: Group instructions for reusability
+
+> **Programming**: Process of breaking a large, complex task into smaller and smaller substasks until the subtask is simple enough to be performed with one of these basic instructions (Downey, 2015, P. 2)
+
+## Hello again, World!
+
+Let's go back to our first program:
+
+```{python}
+#| eval: false
+
+# Our first program
+message = "Hello, World!"
+print(message)
+```
+
+. . .
+
+- **Comment**: In the first line we define a comment with `#`
+    - It is not executed but used to explain what code does
+- **Variable**: In the second line we define a variable `message`
+    - It points to a string that contains the text "Hello, World!"
+- **Function**: In the third line we call a function `print`
+    - It prints out whatever is stored in `message`
+
+## Hello again, World!
+- [Already confused?]{.red} 
+- Don't worry about it for now!
+- We'll learn more about variables and functions later
+
+<center>
+\
+<iframe src="https://giphy.com/embed/12W5Sg2koWYnwA" width="480" height="360" style="" frameBorder="0" class="giphy-embed" allowFullScreen></iframe>
+<center>
+
+# [Python's Syntax]{.flow .r-fit-text} {.title}
+
+## The Zen of Python
+
+- Python's name originally comes from Monty Python
+- Style is based on a philosophy called [Zen of Python]{.red}: A collection of 19 statements intended to communicate general principles
+```{python}
+#| eval: false
+
+# Try this code in Python to see the Zen of Python
+import this
+```
+
+## Values and Types
+
+- **Value**: Fundamental thing that a program manipulates
+    - In Python, values are either numbers or strings
+- **Type**: Type of a value 
+    - Determines what operations can be performed on it
+    - `type()` is a function that returns the type of a value
+    - It takes one argument (a value) and returns its type as string
+
+## Values and Types
+Back to our example of "Hello, World!"
+```{python}
+#| eval: true
+#| code-line-numbers: 1-2|4-5|7-8
+#| output-location: fragment
+
+# We define the variable message and assign it the value "Hello, World!"
+message = "Hello, World!"
+
+# We save its type in another variable called message_type
+message_type = type(message)
+
+# We print the value of our new variable
+print(f"{message} is a {message_type}")
+
+```
+
+. . .
+
+\
+**Result**: "Hello, World" is a string or in short 'str'.
+
+. . .
+
+[But what about the f"?]{.red}
+
+## Formated Strings
+
+- **f-strings** are strings that start with `f`
+- They contain expressions ([here variables]{.red}) in braces
+- They are evaluated at run time and inserted into the string
+- This is called **interpolation**
+
+. . .
+
+::: {.callout-note}
+In older code bases, f strings were not available. Here, interpolation could be done as shown below with `print()` and `.format()`. But this method is less concise and arguably less readable.
+:::
+
+```{python}
+#| eval: true
+print("{} is a {}".format(message, message_type))
+```
+## Expressions
+
+## String
+
+## Integer
+
+## Float
+
+## Boolean
+
+## Variables
+
+## Arithmetic operators
+
+## Input
+
+## Literature
+
+
+
