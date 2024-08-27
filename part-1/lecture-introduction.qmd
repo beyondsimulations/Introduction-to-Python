@@ -3,8 +3,27 @@ title: "Lecture I - Introduction"
 subtitle: "Programming with Python"
 author: "Dr. Tobias Vlćek"
 institute: "Kühne Logistics University Hamburg <br> Fall 2024"
+title-slide-attributes:
+    data-background-color: "#FFE0D3"
+
+execute:
+    echo: true
 
 format:
+    revealjs:
+        theme: [default, ../styles.scss]
+        transition: slide
+        transition-speed: fast
+        highlight-style: breezedark
+        width: 1260
+        height: 840
+        slide-number: true
+        code-copy: true
+        code-link: true
+        preview-links: auto
+        footer: " {{< meta title >}} | {{< meta subtitle >}} | {{< meta author >}} | [Home](lecture-introduction.qmd)"
+        output-file: lecture-presentation.html
+    pdf: default
     html:
         theme: litera
         highlight-style: breezedark
@@ -14,21 +33,9 @@ format:
         code-link: true
         toc: true
         toc-location: right
-    pdf: default
-    revealjs:
-        theme: [default, ../styles.scss]
-        transition: slide
-        transition-speed: fast
-        highlight-style: breezedark
-        slide-number: true
-        code-copy: true
-        code-link: true
-        preview-links: auto
-        footer: " {{< meta title >}} | {{< meta subtitle >}} | {{< meta author >}} | [Home](lecture-introduction.qmd)"
-        output-file: lecture-presentation.html
 ---
 
-# [About this course]{.flow} {background-color="#FFE0D3"}
+# [About this course]{.flow .r-fit-text} {.title}
 
 ## About me
 
@@ -36,10 +43,11 @@ format:
 - Post-doctoral researcher from the University of Hamburg
 - **Field:** Optimizing and simulating complex systems
 - **Languages:** of choice: Julia, Python and Rust
-- **Interest:** Mathematical Modelling, Simulations, Machine Learning
-- **Teaching:** Operations Research, Algorithms, and Programming
+- **Interest:** Modelling, Simulations, Machine Learning
+- **Teaching:** OR, Algorithms, and Programming
 - **Contact:** [vlcek@beyondsimulations.com](mailto:vlcek@beyondsimulations.com)
 :::
+
 . . .
 
 :::{.callout-note}
@@ -62,7 +70,7 @@ I really appreciate active participation and interaction!
 
 ## Teaching
 
-- **Lecture:** Presentation of tools and concepts, based on examples
+- **Lecture:** Presentation of tools and concepts, based on small examples and code snippets
 - **Tutorial:** Hands-on examples to be solved in groups
 - **Difficulty:** Difficult at first, but gradually easier
 
@@ -91,10 +99,10 @@ I'd encourage you to start and submit your solution early
 
 ## Difficulty of the course
 
-- We'll cover the basics of programming (in Python) at the beginning
-- This is similar to learning a new foreign language
-- First, you have to get used to the language and learn the first words
-- Later, you'll be able to apply the language and see results
+- We'll cover the basics of programming (in Python) at first
+- This is similar to learning a **new foreign language**
+- First, you have to get used to the language and learn first words
+- **Later**, you'll be able to apply the language and see results
 - Similar to learning a language: *Practice, practice, practice!*
 
 ## What to expect
@@ -103,6 +111,19 @@ I'd encourage you to start and submit your solution early
 - After completing the course, you will be able to read code 
 - **and** write your own program using Python
 - **That's quite something!**
+
+## Goals of the course
+
+- Essential concepts and tools of modern programming
+- Automated solutions for recurrent tasks
+- Algorithm-based solutions of complex problems
+- **Usage of AI** in a specific context
+
+## Python as language
+
+- **Simple Syntax**: Python’s syntax is straightforward and easy to learn
+- **Versatility**: Used in web development, data analysis, artificial intelligence, and more
+- **Community Support**: A large community of users and extensive documentation
 
 ## Help from AI
 
@@ -116,102 +137,147 @@ I'd encourage you to start and submit your solution early
 But you should *not* simply use them to *replace* your learning.
 :::
 
-# [Why learn programming?]{.flow} {background-color="#FFE0D3"}
+# [Why learn programming?]{.flow .r-fit-text} {.title}
 
-## Analytics {background-color="black" background-image="https://images.unsplash.com/photo-1666875753105-c63a6f3bdc86"}
+## [Analytics]{.white} {background-image="https://images.unsplash.com/photo-1666875753105-c63a6f3bdc86"}
 
-::: footer
+::: aside
+[Photo by <a href="https://unsplash.com/@dengxiangs">Choong Deng Xiang</a> on <a href="https://unsplash.com/photos/graphical-user-interface--WXQm_NTK0U">Unsplash</a>]{.white}
 :::
 
-## Research {background-image="https://images.unsplash.com/photo-1690050070284-d1a628f5b494"}
+## [Research]{.white} {background-image="https://images.unsplash.com/photo-1576086213369-97a306d36557"}
 
-::: footer
+::: aside
+[Photo by <a href="https://images.unsplash.com/photo-1576086213369-97a306d36557">National Cancer Institute</a> on <a href="https://unsplash.com/photos/purple-cells-L7en7Lb-Ovc">Unsplash</a>]{.white}
 :::
 
-## Visualization {background-color="black" background-image="https://images.unsplash.com/photo-1584291527935-456e8e2dd734"}
+## [Visualization]{.white} {background-image="https://images.unsplash.com/photo-1584291527935-456e8e2dd734"}
 
-::: footer
+::: aside
+[Photo by <a href="https://unsplash.com/@claybanks">Clay Banks</a> on <a href="https://unsplash.com/photos/red-and-white-heart-illustration-no2blvVYoJw">Unsplash</a>]{.white}
 :::
 
-## Finance {background-color="black" background-image="https://images.unsplash.com/photo-1642052502780-8ee67e3bf930"}
+## [Finance]{.white} {background-image="https://images.unsplash.com/photo-1549421263-5ec394a5ad4c"}
 
-::: footer
+::: aside
+[Photo by <a href="https://unsplash.com/@ishant_mishra54">Ishant Mishra</a> on <a href="https://unsplash.com/photos/smartphone-on-brown-wooden-surface-UXEJDX4SqdE">Unsplash</a>]{.white}
 :::
 
-## Logistics {background-color="black" background-image="https://images.unsplash.com/photo-1465447142348-e9952c393450"}
+## [Logistics]{.white} {.white background-image="https://images.unsplash.com/photo-1465447142348-e9952c393450"}
 
-::: footer
+::: aside
+[Photo by <a href="https://unsplash.com/@dnevozhai">Denys Nevozhai</a> on <a href="https://unsplash.com/photos/aerial-photography-of-concrete-roads-7nrsVjvALnA">Unsplash</a>]{.white}
 :::
 
-# [Introduction]{.flow} {background-color="#FFE0D3"}
+# [How to learn programming]{.flow .r-fit-text} {.title}
 
-## Goals of the course
-
-* Essential concepts and tools of modern programming
-* Automated solutions for recurrent tasks
-* Algorithm-based solutions of complex problems
-* **Usage of AI** in a specific context
-
-## Language
-
-* Python (**3**), but the concepts expand to other languages, too!
-* A good language to get started
-* Can be used for a wide variety of tasks
-* Heavily used in industry and research (data science, AI)
-
-# [How to *learn* programming]{.flow} {background-color="#FFE0D3"}
-
-## My personal recommendation
+## My recommendation
 
 1. **Be present**: Attend the lecture and participate
-2. **Put in some work**: Repeat lecture notes and try examples yourself
+2. **Put in some work**: Repeat lecture notes and try to understand the examples yourself
 3. **Do coding**: Run code examples on your own, play around, *google*/*find help*, modify, and solve problems on your own
 
 . . .
 
 :::{.callout-note}
-Great resources to start are books. In my opinion they are much more helpful than watching videos and there are some great books out there! Problems to solve can for example be found on [Codewars](https://www.codewars.com/).
+Great resources to start are books and small challenges. In my opinion both are much more helpful than watching videos! You can find a list of book recommendations at the end of the lecture. Small challenges to solve can for example be found on [Codewars](https://www.codewars.com/).
 :::
 
 ## Don't give up!
 
-- Programming is **problem solving**, don't get **frustrated** too easily!
+- Programming is **problem solving**, don't get **frustrated** too easily at the start!
 - Learn something new: Expect to **stretch** your comfort zone
-- Collaborate with your colleagues and figure out solutions together
 
 <center>
 
 <br>
-<iframe src="https://giphy.com/embed/Qkbm4jGMam7PfdWzHM" width="480" height="270" frameBorder="0" class="giphy-embed" allowFullScreen></iframe>
+<iframe src="https://giphy.com/embed/FKsCiEI5pFvIQ" width="480" height="360" style="" frameBorder="0" class="giphy-embed" allowFullScreen></iframe>
 
 <center>
 
-## The learning path can be quite hilly
-- Help each other! :) 
-- Try to find help: Lecture materials and books, Python (library) documentation, online (google, ChatGPT, StackOverflow.com)
-- In case you get frustrated, read the following [nice little blog post about programming on medium.com](https://medium.com/sololearn/why-learning-to-code-is-soooo-hard-3c2372e9d12c)
+## Learning path
+- The learning path can be quite steep!
+- **First of all help each other!**
+- Try to find help in lecture materials and books, the python documentation, and online (e.g. Google, ChatGPT, StackOverflow, ...)
+- In case you get frustrated with programming, read the following [helpful blog post about the challenges on medium.com](https://medium.com/sololearn/why-learning-to-code-is-soooo-hard-3c2372e9d12c)
+
+## Errors
+
+In case you find errors and typos in the lecture notes, please report them in the following form:
+
+<br>
+
+::: {.r-stack}
+
+[https://tally.so/r/w7oapa](https://tally.so/r/w7oapa)
+
+:::
+
+# [Setting up python]{.flow .r-fit-text} {.title}
+
+## Install python
+
+- You could download it from the [Python website](https://www.python.org/downloads/) or with [Anaconda](https://www.anaconda.com/products/individual)
+- **But I would recommend we start by using [Thonny](https://thonny.org/)**
+- It is an open source IDE that runs on Windows, Linux and Mac
+- It comes with a built-in python interpreter and package management!
+
+## What is an IDE?
+
+- An **IDE** (Integrated Development Environment) is an application 
+- It allows you to write, run and debug code scripts
+- Thonny is an IDE specifically for python and aimed at beginners
+- It does not use the latest python and has the most features 
+- **But it is easy to use as beginner!**
+- Other IDEs include for example [PyCharm](https://www.jetbrains.com/pycharm/) from JetBrains or [Visual Studio Code](https://code.visualstudio.com/) from Microsoft
+
+## Thonny
+- Download and install Thonny from the [website](https://thonny.org/)
+- Start the programm and you should see the following window:
+
+![First start of Thonny](images/thonny_start.png){#fig-startThonny}
 
 
+## Python on iPads
+- Although you can run python scripts from on your iPad, it is not recommended for the course
+- Nonetheless, if you have no other option, you could use [Pythonista](https://apps.apple.com/de/app/pythonista-3/id1085978097)
+- It works locally on your iPad and can run most python scripts
 
-## Let's get started!
+. . .
 
-## Why Python?
+::: {.callout-caution}
+Not all packages generally available in Python are be available in Pythonista, thus you might need a computer to solve certain problems.
+:::
 
-- **Simple Syntax**: Python’s syntax is straightforward and easy to learn.
-- **Versatility**: Used in web development, data analysis, artificial intelligence, and more.
-- **Community Support**: A large community of users and extensive documentation.
+## First start of Pythonista
+![First start of Pythonista](images/start_pythonista.png){#fig-startPythonista}
 
-## Setting Up Python
+# [Your first code]{.flow .r-fit-text} {.title}
 
-- Download Python from the [official Python website](https://www.python.org/downloads/).
-- Install and verify your installation by running the following in your terminal.
-```shell
-python --version
-```
+## Hello, World!
+Create the following file in your directory called `hello_world.py`:
 
-## Your First Python Code
+```{python}
+#| eval: false
 
-```{.python}
 # This is a comment in Python
 print("Hello, World!")
 ```
+
+\
+
+. . .
+
+Run it with the button in the top right corner of the window:
+
+```{python}
+#| eval: true
+
+# This is a comment in Python
+print("Hello, World!")
+```
+. . .
+
+::: {.callout-note}
+"Hello world" is a classic example to start with. It is often used as a test to check if your computer is working properly and that you have installed the necessary software.
+:::
