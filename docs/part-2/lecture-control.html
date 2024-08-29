@@ -6,8 +6,9 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
+<meta name="author" content="Dr.&nbsp;Tobias Vlćek">
 
-<title>Errors in the Course – Programming with Python</title>
+<title>Lecture II - Control Structures for Your Code – Programming with Python</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -20,25 +21,45 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
-</style>
+/* CSS for citations */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+  margin-bottom: 0em;
+}
+.hanging-indent div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}</style>
 
 
-<script src="site_libs/quarto-nav/quarto-nav.js"></script>
-<script src="site_libs/quarto-nav/headroom.min.js"></script>
-<script src="site_libs/clipboard/clipboard.min.js"></script>
-<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
-<script src="site_libs/quarto-search/fuse.min.js"></script>
-<script src="site_libs/quarto-search/quarto-search.js"></script>
-<meta name="quarto:offset" content="./">
-<script src="site_libs/quarto-html/quarto.js"></script>
-<script src="site_libs/quarto-html/popper.min.js"></script>
-<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
-<script src="site_libs/quarto-html/anchor.min.js"></script>
-<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
-<script src="site_libs/bootstrap/bootstrap.min.js"></script>
-<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<script src="../site_libs/quarto-html/quarto.js"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -68,7 +89,7 @@ ul.task-list li input[type="checkbox"] {
 }</script>
 
 
-<link rel="stylesheet" href="styles.css">
+<link rel="stylesheet" href="../styles.css">
 </head>
 
 <body class="nav-sidebar floating">
@@ -80,7 +101,7 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./mistakes.html">Errors</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../part-2/lecture-control.html">02 Control</a></li><li class="breadcrumb-item"><a href="../part-2/lecture-control.html">Lecture</a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -95,7 +116,7 @@ ul.task-list li input[type="checkbox"] {
   <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
     <div class="pt-lg-2 mt-2 text-left sidebar-header">
     <div class="sidebar-title mb-0 py-0">
-      <a href="./">Programming with Python</a> 
+      <a href="../">Programming with Python</a> 
     </div>
       </div>
         <div class="mt-2 flex-shrink-0 align-items-center">
@@ -107,13 +128,13 @@ ul.task-list li input[type="checkbox"] {
     <ul class="list-unstyled mt-1">
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./index.html" class="sidebar-item-text sidebar-link">
+  <a href="../index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Welcome</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./syllabus.html" class="sidebar-item-text sidebar-link">
+  <a href="../syllabus.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Syllabus</span></a>
   </div>
 </li>
@@ -128,13 +149,13 @@ ul.task-list li input[type="checkbox"] {
       <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./part-1/lecture-introduction.html" class="sidebar-item-text sidebar-link">
+  <a href="../part-1/lecture-introduction.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Lecture</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./part-1/tutorial-introduction.html" class="sidebar-item-text sidebar-link">
+  <a href="../part-1/tutorial-introduction.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Tutorial</span></a>
   </div>
 </li>
@@ -151,24 +172,18 @@ ul.task-list li input[type="checkbox"] {
       <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./part-2/lecture-control.html" class="sidebar-item-text sidebar-link">
+  <a href="../part-2/lecture-control.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text">Lecture</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./part-2/tutorial-control.html" class="sidebar-item-text sidebar-link">
+  <a href="../part-2/tutorial-control.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Tutorial</span></a>
   </div>
 </li>
       </ul>
   </li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./literature.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Literature</span></a>
-  </div>
-</li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true">
@@ -180,13 +195,13 @@ ul.task-list li input[type="checkbox"] {
       <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./assignments/assignment-1.html" class="sidebar-item-text sidebar-link">
+  <a href="../assignments/assignment-1.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">01 Assignment</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./assignments/assignment-2.html" class="sidebar-item-text sidebar-link">
+  <a href="../assignments/assignment-2.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">02 Assignment</span></a>
   </div>
 </li>
@@ -194,8 +209,14 @@ ul.task-list li input[type="checkbox"] {
   </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./mistakes.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text">Errors</span></a>
+  <a href="../faq.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">FAQs</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../literature.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Literature</span></a>
   </div>
 </li>
     </ul>
@@ -208,24 +229,41 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#i-have-found-a-mistake-or-want-to-contribute" id="toc-i-have-found-a-mistake-or-want-to-contribute" class="nav-link active" data-scroll-target="#i-have-found-a-mistake-or-want-to-contribute">I have found a mistake or want to contribute</a></li>
-  <li><a href="#i-have-a-question" id="toc-i-have-a-question" class="nav-link" data-scroll-target="#i-have-a-question">I have a question</a></li>
+  <li><a href="#quick-recap-of-the-last-lecture" id="toc-quick-recap-of-the-last-lecture" class="nav-link active" data-scroll-target="#quick-recap-of-the-last-lecture"><span class="flow r-fit-text">Quick Recap of the last Lecture</span></a>
+  <ul class="collapse">
+  <li><a href="#variables-and-data-types" id="toc-variables-and-data-types" class="nav-link" data-scroll-target="#variables-and-data-types">Variables and Data Types</a></li>
+  <li><a href="#section" id="toc-section" class="nav-link" data-scroll-target="#section"></a></li>
+  </ul></li>
   </ul>
-</nav>
+<div class="quarto-alternate-formats"><h2>Other Formats</h2><ul><li><a href="lecture-presentation.html"><i class="bi bi-file-slides"></i>RevealJS</a></li><li><a href="lecture-control.pdf"><i class="bi bi-file-pdf"></i>PDF</a></li></ul></div></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default">
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../part-2/lecture-control.html">02 Control</a></li><li class="breadcrumb-item"><a href="../part-2/lecture-control.html">Lecture</a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title">Errors in the Course</h1>
+<h1 class="title">Lecture II - Control Structures for Your Code</h1>
+<p class="subtitle lead">Programming with Python</p>
 </div>
 
 
+<div class="quarto-title-meta-author">
+  <div class="quarto-title-meta-heading">Author</div>
+  <div class="quarto-title-meta-heading">Affiliation</div>
+  
+    <div class="quarto-title-meta-contents">
+    <p class="author">Dr.&nbsp;Tobias Vlćek </p>
+  </div>
+  <div class="quarto-title-meta-contents">
+        <p class="affiliation">
+            Kühne Logistics University Hamburg <br> Fall 2024
+          </p>
+      </div>
+  </div>
 
 <div class="quarto-title-meta">
 
-    
+      
   
     
   </div>
@@ -235,18 +273,38 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<section id="i-have-found-a-mistake-or-want-to-contribute" class="level1">
-<h1>I have found a mistake or want to contribute</h1>
-<p>If you have found a mistake in the course material, please let me know by reporting the error in the <a href="https://tally.so/r/n9d6dX">following form</a> or by creating an issue on <a href="https://github.com/beyondsimulations/Introduction-to-Python/issues">GitHub</a>.</p>
+<section id="quick-recap-of-the-last-lecture" class="level1 title">
+<h1 class="title"><span class="flow r-fit-text">Quick Recap of the last Lecture</span></h1>
+<section id="variables-and-data-types" class="level2">
+<h2 class="anchored" data-anchor-id="variables-and-data-types">Variables and Data Types</h2>
+<ul>
+<li>Python uses dynamic typing</li>
+<li>Basic data types: int, float, str, bool</li>
+<li>Variables are created by assignment</li>
+</ul>
 </section>
-<section id="i-have-a-question" class="level1">
-<h1>I have a question</h1>
-<p>If you have a question that is not answered in the <a href="#faq">FAQ</a>, please let us know by creating an issue on <a href="https://github.com/johannes-titz/programming-with-python/issues">GitHub</a>.</p>
+<section id="section" class="level2">
+
+
 
 
 </section>
+</section>
 
-</main> <!-- /main -->
+<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" role="doc-bibliography" id="quarto-bibliography"><h2 class="anchored quarto-appendix-heading">References</h2><div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list">
+<div id="ref-barry_head_2023" class="csl-entry" role="listitem">
+Barry, Paul. 2023. <em>Head First <span>Python</span></em>. Third edition. Head First Series. Beijing Boston Farnham Sebastopol Tokyo: O’Reilly.
+</div>
+<div id="ref-downey_think_2024" class="csl-entry" role="listitem">
+Downey, Allen B. 2024. <em>Think <span>Python</span>: How to Think Like a Computer Scientist</em>. Third edition. Beijing Boston Farnham Sebastopol Tokyo: O’Reilly. <a href="https://greenteapress.com/wp/think-python-3rd-edition/">https://greenteapress.com/wp/think-python-3rd-edition/</a>.
+</div>
+<div id="ref-elter_schrodinger_2021" class="csl-entry" role="listitem">
+Elter, Stephan. 2021. <em>Schrödinger Programmiert <span>Python</span>: Das Etwas Andere <span>Fachbuch</span></em>. 1. Auflage. Rheinwerk <span>Computing</span>. Bonn: Rheinwerk Verlag.
+</div>
+<div id="ref-vanderplas_whirlwind_2016" class="csl-entry" role="listitem">
+VanderPlas, Jake. 2016. <em>A Whirlwind Tour of <span>Python</span></em>. August 2016, First edition. Sebastopol, Calif.: O’Reilly Media Inc. <a href="https://jakevdp.github.io/WhirlwindTourOfPython/">https://jakevdp.github.io/WhirlwindTourOfPython/</a>.
+</div>
+</div></section></div></main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
   const toggleBodyColorMode = (bsSheetEl) => {
@@ -674,7 +732,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       &nbsp;
     </div>   
     <div class="nav-footer-center">
-<p>Tobias Vlćek, 2024</p>
+<p>Programming with Python 2024, Tobias Vlćek</p>
 </div>
     <div class="nav-footer-right">
       <ul class="footer-items list-unstyled">

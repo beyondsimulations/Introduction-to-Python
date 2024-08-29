@@ -10,6 +10,15 @@ execute:
     echo: true
 
 format:
+    html:
+        theme: litera
+        highlight-style: breezedark
+        linkcolor: "#a60000"
+        slide-number: true
+        code-copy: true
+        code-link: true
+        toc: true
+        toc-location: right
     revealjs:
         theme: [default, ../styles.scss]
         transition: slide
@@ -25,20 +34,7 @@ format:
         footer: " {{< meta title >}} | {{< meta subtitle >}} | {{< meta author >}} | [Home](lecture-introduction.qmd)"
         output-file: lecture-presentation.html
     pdf: 
-        theme: default
-        bibliography: ../python-books.bib
-    html:
-        theme: litera
-        highlight-style: breezedark
-        linkcolor: "#a60000"
-        slide-number: true
-        code-copy: true
-        code-link: true
-        toc: true
-        toc-location: right
-        bibliography: ../python-books.bib
-nocite: |
-  @*
+        documentclass: report
 ---
 
 # [About this Course]{.flow .r-fit-text} {.title}
@@ -713,8 +709,11 @@ We now have covered the basics on the Python syntax, variables, and data types.
 # [Literature]{.flow .r-fit-text} {.title}
 
 ## Interesting Books to start
-::: {#refs}
-:::
+
+- Downey, A. B. (2024). Think Python: How to think like a computer scientist (Third edition). O’Reilly. [Link to free online version](https://greenteapress.com/wp/think-python-3rd-edition/)
+- Elter, S. (2021). Schrödinger programmiert Python: Das etwas andere Fachbuch (1. Auflage). Rheinwerk Verlag.
+- Matthes, E. (2023). Python crash course: A hands-on, project-based introduction to programming (3rd edition). No Starch Press.
+
 
 ::: {.callout-note}
 Think Python is a great book to start with. It's available online for free [here](https://greenteapress.com/wp/think-python-3rd-edition/). Schrödinger Programmiert Python is a great alternative for German students, as it is a very playful introduction to programming with lots of examples.
