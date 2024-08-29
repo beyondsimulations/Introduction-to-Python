@@ -2,7 +2,7 @@
 title: "Lecture II - Control Structures for Your Code"
 subtitle: "Programming with Python"
 author: "Dr. Tobias Vlćek"
-institute: "Kühne Logistics University Hamburg <br> Fall 2024"
+institute: "Kühne Logistics University Hamburg - Fall 2024"
 title-slide-attributes:
     data-background-color: "#FFE0D3"
 
@@ -38,79 +38,344 @@ format:
 
 # [Quick Recap of the last Lecture]{.flow .r-fit-text} {.title}
 
-## Variables and Data Types
-
-- Python uses dynamic typing
-- Basic data types: int, float, str, bool
-- Variables are created by assignment
-
-## Arithmetic Operators
-
-- Addition: `+`
-- Subtraction: `-`
-- Multiplication: `*`
-- Division: `/`
-- Floor Division: `//`
-- Exponentiation: `**`
-- Modulo: `%`
-
 ## F-Strings
 
 - F-strings provide a way to embed expressions inside string literals
-- You can include expressions inside f-strings by placing them inside curly braces `{}`
+- You can include expressions by placing them inside curly braces `{}`
 - This makes it easier to include dynamic content
+
+. . .
+```{python}
+#| eval: true
+#| output-location: fragment
+#| 
+# Let's illustrate f-strings with a small example:
+name = "Mr. Smith"
+age = 30
+height = 1.826549
+print(f"My name is {name}, I'm {age} years old, and {height:.2f} meters tall.")
+```
+
+. . .
+
+:::{.callout-tip}
+We used the `:.2f` format specifier to round the number to two decimal places [(new)]{.blue}.
+:::
+
+## Variables and Data Types
+
+- Python uses dynamic typing, i.e. the type is determined at runtime
+- Basic data types in Python are: `int`, `float`, `str`, `bool`
+- Variables are created by assignment with the `=` operator
+
+. . .
+
+[> Question:]{.red} What are the types of `x`, `y`, `z`, `w`?
+
+```{python}
+#| eval: true
+#| output-location: fragment
+
+x = 1
+y = 2.5
+z = "Hello"
+w = True
+print(f"x is of type {type(x).__name__}")
+print(f"y is of type {type(y).__name__}")
+print(f"z is of type {type(z).__name__}")
+print(f"w is of type {type(w).__name__}")
+```
+
+## Arithmetic Operators
+
+::: {.columns}
+::: {.column width="30%"}
+Addition  \
+Subtraction  \
+Multiplication  \
+Division  \
+Floor Division  \
+Exponentiation  \
+Modulo
+:::
+::: {.column width="10%"}
+`+`   \
+`-`   \
+`*`   \
+`/`   \
+`//`  \
+`**`  \
+`%`    
+:::
+::: {.column width="60%"}
+Adds two numbers \
+Subtracts one number from another \
+Multiplies two numbers \
+Floating-point division \
+Integer division \
+Power of \
+Remainder of division 
+:::
+:::
+
+. . .
+
+:::{.callout-note}
+Note, that the `/` operator always returns a float, even if the division is even. Furthermore, the `+` operator can be used to concatenate strings and that the `*` operator can be used to repeat strings.
+:::
+
+## Arithmetic Operators with Variables
+
+- Additional operators can update the value of a variable [(new)]{.blue}
+- We can use `+=`, `-=`, `*=`, `/=`, `//=`, `**=`, `%=`
+
+. . .
+
+[> Question:]{.red} What is the value of `x` after the operations?
+```{python}
+#| eval: true
+#| output-location: fragment
+
+x = 10
+print(f"Initial value of x: {x}")
+x += 5  # Equivalent to x = x + 5
+print(f"After x += 5: {x}")
+x *= 2  # Equivalent to x = x * 2
+print(f"After x *= 2: {x}")
+x %= 4  # Equivalent to x = x % 4
+print(f"After x %= 4: {x}")
+```
+
+
+# [Objects and Methods]{.flow .r-fit-text} {.title}
+
+
+## Objects
+
+- Objects are **instances of classes**
+- We will learn more about classes **later** in the course
+- In Python, [virtually]{.blue} everything is an object
+- Common built-in objects: [integers, strings, lists, dictionaries]{.blue}
+- For now, think of objects as a collection of data and methods
+
+. . .
+
+:::{.callout-note}
+For most programming purposes, you can treat everything in Python as an object. This means you can assign all types to variables, pass them to functions, and in many cases, call methods on them.
+:::
+
+## Methods
+
+- Methods are [functions]{.blue} that are called on an [object]{.blue}
+- The syntax is `object.method([arguments])`
+- Methods are specific to the type of object they're called on
+- They can modify the object or return information about it
+
+. . .
+
+:::{.callout-tip}
+You can use the `dir()` function to list all methods and attributes of an object.
+:::
+
+## String Methods
+Here are some commonly used string methods:
+
+- `upper()`: Converts all characters in the string to uppercase
+- `lower()`: Converts all characters in the string to lowercase
+- `title()`: Converts first character of each word to uppercase
+- `strip()`: Removes leading and trailing whitespace
+- `replace()`: Replaces a substring with another substring
+- `find()`: Finds first substring and returns its index
+- `count()`: Counts the number of occurrences of a substring
+
+## String Methods in Action
+
+[> Question:]{.red} What will be the output of the following code?
+
+```{python}
+#| eval: true
+#| output-location: fragment
+#| code-line-numbers: 2|3|4|5|6|7
+
+message = "Hello, World!"
+print(message.upper())  # Converts to uppercase
+print(message.lower())  # Converts to lowercase
+print(message.title())  # Converts to title case
+print(message.replace("World", "Python"))  # Replaces "World" with "Python"
+print(message.find("World"))  # Finds "World" and returns its index
+print(message.count("o"))  # Counts the number of occurrences of "o"
+```
+
+. . .
+
+:::{.callout-note}
+Note, how `replace()` does not modify the original string. Instead, it returns a new string.
+:::
 
 # [Indexing and Slicing]{.flow .r-fit-text} {.title}
 
 ## Indexing
 
-- Indexing allows you to access elements of a sequence (e.g., string, list, tuple) by their position
-- Positive indexing starts at 0 for the first element
-- Negative indexing starts at -1 for the last element
+- We have used indexing to access elements of a string last lecture
+- It allows you to access **elements of a sequence** by position
+- **Positive indexing** starts at 0 for the first element
+- **Negative indexing** starts at -1 for the last element [(new)]{.blue}
+
+. . .
+
+```{python}
+#| eval: true
+#| output-location: fragment
+
+string_to_index = "Hello, World!"
+print(string_to_index[0])  # Accessing the first character
+print(string_to_index[-1]) # Accessing the last character
+``` 
 
 ## Slicing
 
-- Slicing allows you to extract a portion of a sequence
+- Slicing allows you to **extract a portion of a sequence**
 - Syntax: `sequence[start:stop:step]`
-- `start` is the index of the first element to include
-- `stop` is the index of the first element to exclude
+- `start` is the index of the **first element to include**
+- `stop` is the index of the **first element to exclude**
 - `step` is the increment between indices (default is 1)
-- Slicing allows you to extract a portion of a sequence (e.g., string, list, tuple) by specifying the start and stop indices    
-- The result is a new sequence containing the extracted elements
+- The result is a **new sequence** containing the extracted elements
 
-# [Comparison Operators]{.flow .r-fit-text} {.title}
+. . .
+
+```{python}
+#| eval: true
+#| output-location: fragment
+
+string_to_slice = "Hello, World!"
+print(string_to_slice[7:12])   # Accessing the last five characters from the start
+print(string_to_slice[-6:-1])  # Accessing the last five characters from the end
+```
+
+## Slicing Simplified
+
+- If we omit `start` or `stop`, it will be replaced by the **start or end** of the sequence, respectively
+- If we omit `step`, it will be replaced by 1
+
+. . .
+
+```{python}
+#| eval: true
+#| output-location: fragment
+
+string_to_slice = "Hello, World!"
+print(string_to_slice[::2])   # Accessing every second character
+print(string_to_slice[::-1])  # Accessing the string in reverse
+```
+
+# [Comparisons]{.flow .r-fit-text} {.title}
+
+## Comparison Operators
 
 - Comparison operators are used to compare two values
 - The result of a comparison is a boolean value (`True` or `False`)
-- Common comparison operators: `==`, `!=`, `>`, `<`, `>=`, `<=`
 
-# [Logical Operators]{.flow .r-fit-text} {.title}
+. . .
 
-- Logical operators are used to combine multiple comparison operators
+[> Question:]{.red} What will be the output of the following code?
+
+```{python}
+#| eval: true
+#| output-location: fragment
+#| code-line-numbers: 1-2|3|4|5|6|7|8
+
+lower_number = 2; upper_number = 9
+print(lower_number == upper_number) # Equality
+print(lower_number != upper_number) # Inequality
+print(lower_number > upper_number) # Greater than
+print(lower_number < upper_number) # Less than
+print(lower_number >= upper_number) # Greater than or equal to
+print(lower_number <= upper_number) # Less than or equal to 
+```
+
+## Logical Operators
+ 
+- Logical operators combine multiple comparison operators
 - Common logical operators: `and`, `or`, `not`
+
+. . .
+
+[> Question:]{.red} Which of the following expressions is `True`?
+
+```{python}
+#| eval: true
+#| output-location: fragment
+#| code-line-numbers: 1-2|3|4
+
+lower_number = 2; middle_number = 5; upper_number = 9; 
+print(lower_number < middle_number and middle_number < upper_number) # and
+print(lower_number < middle_number or middle_number > upper_number) # or
+print(lower_number == lower_number and not lower_number > middle_number) # not
+```
+
+. . .
+
+:::{.callout-note}
+Note, that `and` and `or` are evaluated from left to right.
+:::
+
+## Membership Operators
+ 
+- Used to check if a value is present in a sequence
+- Common membership operators: `in`, `not in`
+
+. . .
+
+[> Question:]{.red} Which of these expressions is `True`?
+
+```{python}
+#| eval: true
+#| output-location: fragment
+
+an_apple = "apple"
+print("a" in an_apple) # Check if "a" is in the string "apple"
+print("pp" not in an_apple) # Check if "pp" is not in the string
+```
+
+. . .
+
+:::{.callout-note}
+Note, that `in` and `not in` can be used for strings, lists, tuples, sets, and dictionaries. [Don't worry!]{.blue} We will learn about lists, tuples, sets, and dictionaries later in the course.
+:::
 
 # [Control Structures]{.flow .r-fit-text} {.title}
 
+## Control Structures
+
 - Control structures are used to control the flow of execution in a program
 - Common control structures: `if`, `elif`, `else`, `for`, `while`   
+
+# Conditional Statements
+
+- Conditional statements allow you to execute different blocks of code based on whether a condition is true or false
 - `if` statements are used to execute a block of code if a condition is true
 - `elif` statements are used to execute a block of code if the previous condition is false and the current condition is true
 - `else` statements are used to execute a block of code if the previous conditions are false
-- `for` loops are used to iterate over a sequence (e.g., list, tuple, string)
-- `while` loops are used to execute a block of code repeatedly until a condition is false   
 
-# [Conditional Statements]{.flow .r-fit-text} {.title}
-
-- Conditional statements allow you to execute different blocks of code based on whether a condition is true or false
-- Common conditional statements: `if`, `elif`, `else`
-
-# [Loops]{.flow .r-fit-text} {.title}
+# Loops
 
 - Loops allow you to execute a block of code repeatedly
-- Common loops: `for`, `while`
+- `for` loops are used to iterate over a sequence (e.g., list, tuple, string)
+- `while` loops are used to execute a block of code repeatedly until a condition is false 
 
+## Importance of Control Flow
 
+- Allows programs to make decisions based on **conditions**
+- Enables **repetition** of code blocks
+- Helps manage program complexity
+- Improves efficiency by [executing only necessary code]{.blue}
+- Facilitates creation of dynamic, responsive programs
 
+. . .
+
+:::{.callout-note}
+Without control flow, programs would execute linearly from top to bottom, limiting their functionality and flexibility.
+:::
 
 
 

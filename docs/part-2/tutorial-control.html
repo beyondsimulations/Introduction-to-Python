@@ -197,12 +197,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
       </ul>
   </li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../literature.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Literature</span></a>
-  </div>
-</li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true">
@@ -228,8 +222,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../mistakes.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Errors</span></a>
+  <a href="../faq.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">FAQs</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../literature.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Literature</span></a>
   </div>
 </li>
     </ul>
@@ -243,7 +243,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
    
   <ul>
   <li><a href="#introduction" id="toc-introduction" class="nav-link active" data-scroll-target="#introduction">Introduction</a></li>
-  <li><a href="#slicing-secret-messages" id="toc-slicing-secret-messages" class="nav-link" data-scroll-target="#slicing-secret-messages">Slicing secret messages</a></li>
+  <li><a href="#slicing-secret-messages" id="toc-slicing-secret-messages" class="nav-link" data-scroll-target="#slicing-secret-messages">Slicing secret messages</a>
+  <ul class="collapse">
+  <li><a href="#string-manipulation" id="toc-string-manipulation" class="nav-link" data-scroll-target="#string-manipulation">String Manipulation</a></li>
+  </ul></li>
   </ul>
 <div class="quarto-alternate-formats"><h2>Other Formats</h2><ul><li><a href="tutorial-control.pdf"><i class="bi bi-file-pdf"></i>PDF</a></li></ul></div></nav>
     </div>
@@ -278,8 +281,34 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 <section id="slicing-secret-messages" class="level1">
 <h1>Slicing secret messages</h1>
-<p>In this exercise, we’ll practice string manipulation and slicing. You’ll work with a secret message encoded using various string operations and learn how to apply the new functions title(), replace() and count(). By following a series of steps, you’ll gradually decode the message. Let’s begin with the encoded message and work through each decoding step:</p>
-<div id="010e4a01" class="cell" data-execution_count="1">
+<p>In this exercise, we’ll practice string manipulation and slicing. You’ll work with a secret message encoded using various string operations and learn how to apply some new methods like <code>title()</code>, <code>replace()</code> and <code>count()</code>. By following a series of steps, you’ll gradually decode the message.</p>
+<section id="string-manipulation" class="level2">
+<h2 class="anchored" data-anchor-id="string-manipulation">String Manipulation</h2>
+<p>First, here are some commonly used string methods we could use to decode the message:</p>
+<ul>
+<li><code>upper()</code>: Converts all characters in the string to uppercase</li>
+<li><code>lower()</code>: Converts all characters in the string to lowercase</li>
+<li><code>title()</code>: Converts first character of each word to uppercase</li>
+<li><code>strip()</code>: Removes leading and trailing whitespace</li>
+<li><code>replace()</code>: Replaces a substring with another substring</li>
+<li><code>find()</code>: Finds first substring and returns its index</li>
+<li><code>count()</code>: Counts the number of occurrences of a substring</li>
+</ul>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Tip
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>You can use the <code>dir()</code> function to list all methods and attributes of an object. Here, we could see that <code>upper()</code>, <code>lower()</code>, <code>title()</code>, <code>strip()</code>, <code>replace()</code>, <code>find()</code>, and <code>count()</code> are all methods of the string object <code>str</code>.</p>
+</div>
+</div>
+<p>Let’s begin with the encoded message and work through each decoding step:</p>
+<div id="01779a3f" class="cell" data-execution_count="1">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Decode a secret message by following a series of instructions.</span></span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Each instruction requires you to use different operations and methods.</span></span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="co"># The encoded message is:</span></span>
@@ -310,8 +339,22 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb1-28"><a href="#cb1-28" aria-hidden="true" tabindex="-1"></a><span class="co"># Hint: Use the count() method</span></span>
 <span id="cb1-29"><a href="#cb1-29" aria-hidden="true" tabindex="-1"></a><span class="co"># Your code here</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Tip
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Use the <code>help()</code> function to get more information about a method. For example, typing <code>help(str.replace)</code> in the shell will show the documentation for the <code>replace()</code> method. To exit the documentation, press <code>q</code>.</p>
+</div>
+</div>
 
 
+</section>
 </section>
 
 </main> <!-- /main -->
@@ -742,7 +785,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       &nbsp;
     </div>   
     <div class="nav-footer-center">
-<p>Tobias Vlćek, 2024</p>
+<p>Programming with Python 2024, Tobias Vlćek</p>
 </div>
     <div class="nav-footer-right">
       <ul class="footer-items list-unstyled">
