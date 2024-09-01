@@ -36,7 +36,7 @@ format:
         documentclass: report
 ---
 
-# [About this Course]{.flow .r-fit-text} {.title}
+# [About this Course]{.flow} {.title}
 
 ## About me
 :::{.incremental}
@@ -129,7 +129,7 @@ I'd encourage you to start and submit your solution early
 But you should *not* simply use them to *replace* your learning.
 :::
 
-# [Why learn programming?]{.flow .r-fit-text} {.title}
+# [Why learn programming?]{.flow} {.title}
 
 ## [Analytics]{.white} {background-image="https://images.unsplash.com/photo-1666875753105-c63a6f3bdc86"}
 ::: footer
@@ -156,12 +156,12 @@ But you should *not* simply use them to *replace* your learning.
 [Photo by <a href="https://unsplash.com/@dnevozhai">Denys Nevozhai</a> on <a href="https://unsplash.com/photos/aerial-photography-of-concrete-roads-7nrsVjvALnA">Unsplash</a>]{.white}
 :::
 
-# [How to learn programming]{.flow .r-fit-text} {.title}
+# [How to learn programming]{.flow} {.title}
 
 ## My Recommendation
-1. [Be present]{.red}: Attend the lecture and participate
-2. [Put in some work]{.red}: Repeat lecture notes and try to understand the examples yourself
-3. [Do coding]{.red}: Run code examples on your own, play around, *google*/*find help*, modify, and solve problems on your own
+1. [Be present]{.highlight}: Attend the lecture and participate
+2. [Put in some work]{.highlight}: Repeat lecture notes and try to understand the examples yourself
+3. [Do coding]{.highlight}: Run code examples on your own, play around, *google*/*find help*, modify, and solve problems on your own
 
 . . .
 
@@ -182,17 +182,16 @@ Great resources to start are books and small challenges. In my opinion both are 
 
 ## Learning Path
 - The learning path can be quite steep!
-- [First of all help each other!]{.red}
+- [First of all help each other!]{.highlight}
 - Try to find help in lecture materials and books, the Python documentation, and online (e.g. Google, ChatGPT, StackOverflow, ...)
 - In case you get frustrated with programming, read the following [helpful blog post about the challenges on medium.com](https://medium.com/sololearn/why-learning-to-code-is-soooo-hard-3c2372e9d12c)
 
 ## Errors
-In case you find errors and typos in the lecture notes, please report them in the following form:
-::: {.r-stack}
+In case you find errors and typos in the lecture notes, please report them in the following form:\
 [https://tally.so/r/w7oapa](https://tally.so/r/w7oapa)
-:::
 
-# [Setting up Python]{.flow .r-fit-text} {.title}
+
+# [Setting up Python]{.flow} {.title}
 
 ## Install Python
 - You could download it from the [Python website](https://www.python.org/downloads/) or with [Anaconda](https://www.anaconda.com/products/individual)
@@ -228,10 +227,10 @@ Not all packages generally available in Python are be available in Pythonista, t
 ## First start of Pythonista
 ![First start of Pythonista](images/start_pythonista.png){#fig-startPythonista}
 
-# [Your first code]{.flow .r-fit-text} {.title}
+# [Your first code]{.flow} {.title}
 
 ## Hello, World!
-[Your Task]{.red}: Create a directory for the course and create a new file called `hello_world.py` with the following code and save it:
+[Your Task]{.task}: Create a directory for the course and create a new file called `hello_world.py` with the following code and save it:
 
 ```{python}
 #| eval: false
@@ -242,7 +241,7 @@ print("Hello, World!")
 
 . . .
 
-Run the code with the green 'run' button at the top or by going to the line and pressing [Shift+Enter]{.red}:
+Run the code with the green 'run' button at the top or by going to the line and pressing [Shift+Enter]{.task}:
 
 . . .
 
@@ -259,7 +258,7 @@ print("Hello, World!")
 :::
 
 ## Hello, World in a Message
-[Your Task]{.red}: Change the code in your `hello_world.py` file. Assign the string `"Hello, World!"` to a variable called `message` and print the variable.
+[Your Task]{.task}: Change the code in your `hello_world.py` file. Assign the string `"Hello, World!"` to a variable called `message` and print the variable.
 
 . . .
 
@@ -305,10 +304,10 @@ print(message)
 . . .
 
 \
-[Try it yourself!]{.red} What does happen, if you try to run this code?
+[Try it yourself!]{.task} What does happen, if you try to run this code?
 
 ## First Errors
-[SyntaxError]{.orange}: invalid syntax
+[SyntaxError]{.errors}: invalid syntax
 
 - The code is not valid Python syntax
 - This is likely the most common error that you will encounter!
@@ -316,7 +315,7 @@ print(message)
 - You can fix this by correcting the code and re-running
 - **In the course of the lecture you will encounter many more errors!**
 
-# [Program]{.flow .r-fit-text} {.title}
+# [Program]{.flow} {.title}
 
 ## What is a Program? 
 - A sequence of instructions telling a computer what to do
@@ -334,6 +333,25 @@ print(message)
     - **Functions**: Group instructions for reusability
 
 > **Programming**: Process of breaking a large, complex task into smaller and smaller substasks until the subtask is simple enough to be performed with one of these basic instructions (Downey, 2015, P. 2)
+
+## How Python executes code
+- Python is an **interpreted language**
+- The source code is executed line by line
+- The interpreter checks the syntax and executes the code
+- This is in contrast to compiled languages, where the code is compiled into machine code before execution
+
+<center>
+```{mermaid}
+%%| echo: false
+flowchart LR
+A[Check Line] --> B{Decision}
+B --> C[Generate Bytecode]
+B --> D[Error in Syntax]
+D --> G[Report Error]
+C --> E[Execute Bytecode]
+E --> F[Output Results]
+```
+</center>
 
 ## Hello again, World!
 Let's go back to our first program:
@@ -365,11 +383,11 @@ print(message)
 <iframe src="https://giphy.com/embed/12W5Sg2koWYnwA" width="480" height="360" style="" frameBorder="0" class="giphy-embed" allowFullScreen></iframe>
 <center>
 
-# [Python's Syntax]{.flow .r-fit-text} {.title}
+# [Python's Syntax]{.flow} {.title}
 
 ## The Zen of Python
 - Python's name originally comes from Monty Python
-- Style is based on a philosophy called [Zen of Python]{.red}: A collection of 19 statements intended to communicate general principles
+- Style is based on a philosophy called [Zen of Python]{.highlight}: A collection of 19 statements intended to communicate general principles
 ```{python}
 #| eval: false
 
@@ -404,7 +422,7 @@ c(b) # Now we can call the print function with c
 . . .
 
 \
-[Question]{.red}: Which of the following fulfill these conditions?\
+[Question]{.question}: Which of the following fulfill these conditions?\
 a, _duration, 1x, time_left, 1_minute, oneWorld, xy4792
 
 ## Functions
@@ -428,7 +446,7 @@ print("Hello","World!", sep=", ") # It can also take multiple arguments
 We will cover functions in more detail **later** in the course.
 :::
 
-# [Values and Types]{.flow .r-fit-text} {.title}
+# [Values and Types]{.flow} {.title}
 
 ## Values and Types
 - **Value**: Fundamental thing that a program manipulates
@@ -597,7 +615,7 @@ print(f"{y} is of type {type(y).__name__}")
 The interpreter will automatically convert booleans to integers to floats when necessary, **but not the other way around!**
 :::
 
-# [First Functions and Operators]{.flow .r-fit-text} {.title}
+# [First Functions and Operators]{.flow} {.title}
 
 ## Arithmetic operators
 . . .
@@ -664,7 +682,7 @@ The function always returns the input as **string**!
 . . .
 
 \
-[> Try it yourself!]{.red}
+[> Try it yourself!]{.task}
 
 ## Type Conversion
 Use [type conversion]{.blue} for other data types
@@ -726,17 +744,19 @@ print(f"{no_int} converted to {round(no_int,1)} of type {type(round(no_int,1))}"
 We now have covered the basics on the Python syntax, variables, and data types.
 :::
 
-# [Literature]{.flow .r-fit-text} {.title}
+# [Literature]{.flow} {.title}
 
 ## Interesting Books to start
 
 - Downey, A. B. (2024). Think Python: How to think like a computer scientist (Third edition). O’Reilly. [Link to free online version](https://greenteapress.com/wp/think-python-3rd-edition/)
 - Elter, S. (2021). Schrödinger programmiert Python: Das etwas andere Fachbuch (1. Auflage). Rheinwerk Verlag.
-- Matthes, E. (2023). Python crash course: A hands-on, project-based introduction to programming (3rd edition). No Starch Press.
 
+. . .
 
 ::: {.callout-note}
 Think Python is a great book to start with. It's available online for free [here](https://greenteapress.com/wp/think-python-3rd-edition/). Schrödinger Programmiert Python is a great alternative for German students, as it is a very playful introduction to programming with lots of examples.
 ::: 
 
+. . .
 
+For more interesting literature to learn more about Python, take a look at the [literature list](../general/literature.qmd) of this course.

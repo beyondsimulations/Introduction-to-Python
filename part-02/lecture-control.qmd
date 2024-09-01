@@ -21,7 +21,7 @@ format:
         code-copy: true
         code-link: true
         preview-links: auto
-        footer: " {{< meta title >}} | {{< meta subtitle >}} | {{< meta author >}} | [Home](lecture-introduction.qmd)"
+        footer: " {{< meta title >}} | {{< meta subtitle >}} | {{< meta author >}} | [Home](lecture-control.qmd)"
         output-file: lecture-presentation.html
     html:
         theme: litera
@@ -36,7 +36,7 @@ format:
         documentclass: report
 ---
 
-# [Quick Recap of the last Lecture]{.flow .r-fit-text} {.title}
+# [Quick Recap of the last Lecture]{.flow} {.title}
 
 ## F-Strings
 
@@ -59,7 +59,7 @@ print(f"My name is {name}, I'm {age} years old, and {height:.2f} meters tall.")
 . . .
 
 :::{.callout-tip}
-We used the `:.2f` format specifier to round the number to two decimal places [(new)]{.blue}.
+We used the `:.2f` format specifier to round the number to two decimal places [(new)]{.highlight}.
 :::
 
 ## Variables and Data Types
@@ -70,17 +70,15 @@ We used the `:.2f` format specifier to round the number to two decimal places [(
 
 . . .
 
-[> Question:]{.red} What are the types of `x`, `y`, `z`, `w`?
+[> Question:]{.question} What are the types of `y`, `z`, `w`?
 
 ```{python}
 #| eval: true
 #| output-location: fragment
 
-x = 1
 y = 2.5
 z = "Hello"
 w = True
-print(f"x is of type {type(x).__name__}")
 print(f"y is of type {type(y).__name__}")
 print(f"z is of type {type(z).__name__}")
 print(f"w is of type {type(w).__name__}")
@@ -126,12 +124,12 @@ Note, that the `/` operator always returns a float, even if the division is even
 
 ## Arithmetic Operators with Variables
 
-- Additional operators can update the value of a variable [(new)]{.blue}
+- Additional operators can update the value of a variable [(new)]{.highlight}
 - We can use `+=`, `-=`, `*=`, `/=`, `//=`, `**=`, `%=`
 
 . . .
 
-[> Question:]{.red} What is the value of `x` after the operations?
+[> Question:]{.question} What is the value of `x` after the operations?
 ```{python}
 #| eval: true
 #| output-location: fragment
@@ -147,15 +145,15 @@ print(f"After x %= 4: {x}")
 ```
 
 
-# [Objects and Methods]{.flow .r-fit-text} {.title}
+# [Objects and Methods]{.flow} {.title}
 
 
 ## Objects
 
 - Objects are **instances of classes**
 - We will learn more about classes **later** in the course
-- In Python, [virtually]{.blue} everything is an object
-- Common built-in objects: [integers, strings, lists, dictionaries]{.blue}
+- In Python, [virtually]{.highlight} everything is an object
+- Common built-in objects: [integers, strings, lists, dictionaries]{.highlight}
 - For now, think of objects as a collection of data and methods
 
 . . .
@@ -166,7 +164,7 @@ For most programming purposes, you can treat everything in Python as an object. 
 
 ## Methods
 
-- Methods are [functions]{.blue} that are called on an [object]{.blue}
+- Methods are [functions]{.highlight} that are called on an [object]{.highlight}
 - The syntax is `object.method([arguments])`
 - Methods are specific to the type of object they're called on
 - They can modify the object or return information about it
@@ -190,7 +188,7 @@ Here are some commonly used string methods:
 
 ## String Methods in Action
 
-[> Question:]{.red} What will be the output of the following code?
+[> Question:]{.question} What will be the output of the following code?
 
 ```{python}
 #| eval: true
@@ -212,14 +210,36 @@ print(message.count("o"))  # Counts the number of occurrences of "o"
 Note, how `replace()` does not modify the original string. Instead, it returns a new string.
 :::
 
-# [Indexing and Slicing]{.flow .r-fit-text} {.title}
+## String Task
+
+[> Grouptask:]{.task} Discuss and implement the following task:
+
+```{python}
+#| eval: false
+
+# Change the following message to get the desired output
+message = " the snake programmer. "
+# Your code here
+
+output = "The Python Programmer."
+```
+
+. . .
+
+
+:::{.callout-tip}
+Remember, that these methods return a new string. The original string is not modified.
+:::
+
+
+# [Indexing and Slicing]{.flow} {.title}
 
 ## Indexing
 
 - We have used indexing to access elements of a string last lecture
 - It allows you to access **elements of a sequence** by position
 - **Positive indexing** starts at 0 for the first element
-- **Negative indexing** starts at -1 for the last element [(new)]{.blue}
+- **Negative indexing** starts at -1 for the last element [(new)]{.highlight}
 
 . . .
 
@@ -268,7 +288,28 @@ print(string_to_slice[::2])   # Accessing every second character
 print(string_to_slice[::-1])  # Accessing the string in reverse
 ```
 
-# [Comparisons]{.flow .r-fit-text} {.title}
+## Slicing String Task
+
+[> Grouptask:]{.task} Discuss and implement the following task:
+
+```{python}
+#| eval: false
+
+# Slice the following message to create the described output
+message = "y6S0-teru89d23e'.n*ut"
+# Your code here
+
+output = "Student"
+```
+
+. . .
+
+
+:::{.callout-tip}
+Remember, that these methods return a new string. The original string is not modified.
+:::
+
+# [Comparisons]{.flow} {.title}
 
 ## Comparison Operators
 
@@ -277,7 +318,7 @@ print(string_to_slice[::-1])  # Accessing the string in reverse
 
 . . .
 
-[> Question:]{.red} What will be the output of the following code?
+[> Question:]{.question} What will be the output of the following code?
 
 ```{python}
 #| eval: true
@@ -300,7 +341,7 @@ print(lower_number <= upper_number) # Less than or equal to
 
 . . .
 
-[> Question:]{.red} Which of the following expressions is `True`?
+[> Question:]{.question} Which of the following expressions is `True`?
 
 ```{python}
 #| eval: true
@@ -326,7 +367,7 @@ Note, that `and` and `or` are evaluated from left to right.
 
 . . .
 
-[> Question:]{.red} Which of these expressions is `True`?
+[> Question:]{.question} Which of these expressions is `True`?
 
 ```{python}
 #| eval: true
@@ -340,35 +381,244 @@ print("pp" not in an_apple) # Check if "pp" is not in the string
 . . .
 
 :::{.callout-note}
-Note, that `in` and `not in` can be used for strings, lists, tuples, sets, and dictionaries. [Don't worry!]{.blue} We will learn about lists, tuples, sets, and dictionaries later in the course.
+Note, that `in` and `not in` can be used for strings, lists, tuples, sets, and dictionaries. [Don't worry!]{.highlight} We will learn about lists, tuples, sets, and dictionaries later in the course.
 :::
 
-# [Control Structures]{.flow .r-fit-text} {.title}
+# [Control Structures]{.flow} {.title}
 
 ## Control Structures
 
-- Control structures are used to control the flow of execution in a program
-- Common control structures: `if`, `elif`, `else`, `for`, `while`   
+- Used to **control the flow of execution** in a program
+- They can be used to [make decisions]{.highlight} and [repeat code blocks]{.highlight}
+- `if`, `elif`, `else`, `for`, `while`, `break`, `continue`
 
-# Conditional Statements
+. . .
 
-- Conditional statements allow you to execute different blocks of code based on whether a condition is true or false
-- `if` statements are used to execute a block of code if a condition is true
-- `elif` statements are used to execute a block of code if the previous condition is false and the current condition is true
-- `else` statements are used to execute a block of code if the previous conditions are false
+[> Question:]{.question} What do you think each of the above does?
 
-# Loops
+## Indentation
 
-- Loops allow you to execute a block of code repeatedly
+- Indentation is crucial in Python!
+- It is used to indicate the block of code that belongs to the structure
+- The standard indentation is 4 spaces
+- You can use tabs, but you [should be careful]{.highlight} with that
+
+. . .
+
+:::{.callout-warning}
+Mixing tabs and spaces can cause errors that are difficult to debug. The Python style guide (PEP 8) recommends using 4 spaces per indentation level for consistency and readability.
+:::
+
+
+# [Conditional Statements]{.flow} {.title}
+
+## Conditional Statements
+
+- They are used to execute [different blocks of code]{.highlight} based on whether a condition is [true or false]{.highlight}:
+    - `if` statements execute a block of code if a condition is `True`
+    - `elif` statements execute a block of code if the previous condition is `False` and the current condition is `True`
+    - `else` statements execute a block of code if the previous conditions are `False`
+
+. . .
+
+:::{.callout-tip}
+You can use the `and` and `or` operators to combine multiple conditions.
+:::
+
+## if-statements
+
+```{python}
+#| eval: true
+#| output-location: fragment
+condition = True
+if condition:
+    print("The condition is True!") # Code block to execute if condition is True
+print("This will always be printed!")
+```
+
+. . .
+
+```{python}
+#| eval: true
+#| output-location: fragment
+condition = False
+if condition:
+    print("The condition is True!") # Code block to execute if condition is True
+print("This will always be printed!")
+```
+
+. . .
+
+:::{.callout-tip}
+Writing `if condition:` is equivalent to `if condition == True:`
+:::
+
+
+## else-statements
+
+```{python}
+#| eval: true
+#| output-location: fragment
+condition = True
+if condition:
+    print("The condition is True!") # Code block to execute if condition is True
+else:
+    print("The condition is False!") # Code block to execute if condition is False
+```
+
+. . .
+
+```{python}
+#| eval: true
+#| output-location: fragment
+condition = False
+if condition:
+    print("The condition is True!") # Code block to execute if condition is True
+else:
+    print("The condition is False!") # Code block to execute if condition is False
+```
+
+## elif-statements
+
+```{python}
+#| eval: true
+#| output-location: fragment
+temperature = 11
+if temperature > 10:
+    print("The temperature is greater than 10!")
+elif temperature == 10:
+    print("The temperature is equal to 10!")
+else:
+    print("The temperature is less than 10!")
+
+```
+
+. . .
+
+```{python}
+#| eval: true
+#| output-location: fragment
+temperature = 10
+if temperature > 10:
+    print("The temperature is greater than 10!")
+elif temperature == 10:
+    print("The temperature is equal to 10!")
+else:
+    print("The temperature is less than 10!")
+
+```
+
+## Comparisons and Conditional Statements
+
+[> Question:]{.question} What will be the output of the following code?
+
+```{python}
+#| eval: true
+#| output-location: fragment
+name = "Harry"
+profession = "wizard"
+age = 16
+if name == "Harry" and profession == "wizard" and age < 18:
+    print("You are the chosen one still visiting school!")
+elif name == "Harry" and profession == "wizard" and age >= 18:
+    print("You are the chosen one and can start your journey!")
+else:
+    print("You are not the chosen one!")
+```
+
+# [Loops]{.flow} {.title}
+
+## Loops
+
+- Loops allow you to execute a block of code [repeatedly]{.highlight}
+- There are two types of loops: `for` and `while`
 - `for` loops are used to iterate over a sequence (e.g., list, tuple, string)
-- `while` loops are used to execute a block of code repeatedly until a condition is false 
+- `while` loops execute repeatedly until a condition is `False`
+
+. . .
+
+:::{.callout-tip}
+Nested control structures through further indentation are allowed as well, we thus can chain multiple control structures together.
+:::
+
+## for-loops
+
+```{python}
+#| eval: true
+#| output-location: fragment
+
+for i in range(5):
+    print(i)
+``` 
+
+```{python}
+#| eval: true
+#| output-location: fragment
+
+for i in range(0, 10, 2):
+    print(i)
+``` 
+
+. . .
+
+:::{.callout-tip}
+The `range()` function can take up to three arguments: start, stop, and step.
+:::
+
+. . .
+
+## for-loops with lists
+
+[> Question:]{.question} What do you expect will be the output?
+
+```{python}
+#| eval: true
+#| output-location: fragment
+
+fruit = "yellow banana"
+for letter in fruit:
+    print(letter)
+```
+
+## while-loops
+
+```{python}
+#| eval: true
+#| output-location: fragment
+
+i = 0
+while i < 5:
+    print(i)
+    i += 1
+```
+
+. . .
+
+[> Question:]{.question} What could be an issue with poorly written while-loops?
+
+## while True
+
+[> Question:]{.question} Anybody an idea what this code does?
+
+```{python}
+#| eval: true
+#| output-location: fragment
+
+i = 0
+while True:
+    if i % 10 == 0:
+         print(i)
+    if i > 100:
+        break
+    i += 1
+```
 
 ## Importance of Control Flow
 
 - Allows programs to make decisions based on **conditions**
 - Enables **repetition** of code blocks
 - Helps manage program complexity
-- Improves efficiency by [executing only necessary code]{.blue}
+- Improves efficiency by [executing only necessary code]{.highlight}
 - Facilitates creation of dynamic, responsive programs
 
 . . .
@@ -378,6 +628,40 @@ Without control flow, programs would execute linearly from top to bottom, limiti
 :::
 
 
+## Loop Task
 
+[> Grouptask:]{.task} Implement the following task:
+
+```{python}
+#| eval: false
+# Implement a while-loop that prints all even numbers between 0 and 100
+number = 0
+# Your code here
+
+```
+
+. . .
+
+::: {.callout-note}
+**And that's it for todays lecture!**\
+We now have covered the basics on String methods, Comparisons, conditional statements and loops.
+:::
+
+ [Literature]{.flow} {.title}
+
+## Interesting Books to start
+
+- Downey, A. B. (2024). Think Python: How to think like a computer scientist (Third edition). O’Reilly. [Link to free online version](https://greenteapress.com/wp/think-python-3rd-edition/)
+- Elter, S. (2021). Schrödinger programmiert Python: Das etwas andere Fachbuch (1. Auflage). Rheinwerk Verlag.
+
+. . .
+
+::: {.callout-tip}
+Nothing new here, but these are still great books to start with!
+::: 
+
+. . .
+
+For more interesting literature to learn more about Python, take a look at the [literature list](../general/literature.qmd) of this course.
 
 
