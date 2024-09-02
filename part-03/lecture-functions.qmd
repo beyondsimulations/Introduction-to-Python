@@ -1,0 +1,352 @@
+---
+title: "Lecture III - Building Reusable Functions"
+subtitle: "Programming with Python"
+author: "Dr. Tobias Vlćek"
+institute: "Kühne Logistics University Hamburg - Fall 2024"
+title-slide-attributes:
+    data-background-color: "#FFE0D3"
+
+execute:
+    echo: true
+
+format:
+    revealjs:
+        theme: [default, ../styles.scss]
+        transition: slide
+        transition-speed: fast
+        highlight-style: breezedark
+        width: 1260
+        height: 840
+        slide-number: true
+        code-copy: true
+        code-link: true
+        preview-links: auto
+        footer: " {{< meta title >}} | {{< meta subtitle >}} | {{< meta author >}} | [Home](lecture-control.qmd)"
+        output-file: lecture-presentation.html
+    html:
+        theme: litera
+        highlight-style: breezedark
+        linkcolor: "#a60000"
+        slide-number: true
+        code-copy: true
+        code-link: true
+        toc: true
+        toc-location: right
+    pdf: 
+        documentclass: report
+---
+
+# [Quick Recap of the last Lecture]{.flow} {.title}
+
+# [Functions]{.flow} {.title}
+
+## What is a Function?
+- A function is a named block of code designed to perform a specific task
+- Functions help in breaking down complex problems into smaller, manageable parts
+- They promote code reusability and modularity
+
+## Defining a Function
+- Use the `def` keyword followed by the function name and parentheses
+- The code block within every function starts with a colon (:) and is indented
+
+```python
+def greet(name):
+    print(f"Hello, {name}!")
+
+greet("Alice")  # Output: Hello, Alice!
+```
+
+## Function Parameters
+- Parameters are variables that the function accepts
+- They allow you to pass data to the function
+
+## Example
+```python
+def greet(name):
+    print(f"Hello, {name}!")
+```
+
+## Function Arguments
+- Arguments are the actual values passed to the function
+- They replace the parameters in the function definition
+
+## Example
+```python
+def greet(name):
+    print(f"Hello, {name}!")
+```
+
+## Function Return Values
+- Functions can return values using the `return` statement
+- The return statement ends the function and returns the specified value
+
+## Example
+```python
+def add(a, b):
+    return a + b
+```
+
+## Function Scope
+- Variables defined inside a function are local to that function
+- They cannot be accessed outside the function
+
+```python
+def greet(name):
+    greeting = f"Hello, {name}!"
+    
+print(greeting)  # This will cause an error
+```
+
+## Global Scope
+- Variables defined outside all functions are in the global scope
+- They can be accessed from anywhere in the program
+
+## Example
+```python
+name = "Alice"
+
+def greet():
+    print(f"Hello, {name}!")
+
+greet()  # Output: Hello, Alice!
+```
+
+## Local Scope  
+- Variables defined inside a function are in the local scope
+- They can only be accessed within that function
+
+## Example
+```python
+def greet(name):
+    greeting = f"Hello, {name}!"
+    
+print(greeting)  # This will cause an error
+```
+
+## Global Keyword
+- Use the `global` keyword to modify a global variable inside a function
+
+## Example
+```python
+def modify_global():
+    global name
+    name = "Bob"
+
+modify_global()
+print(name)  # Output: Bob
+```
+
+## Built-in Functions
+- Python has many built-in functions that are always available
+- Examples include `print()`, `len()`, `range()`, `max()`, `min()`, etc.
+
+## Example
+```python
+print("Hello, World!")  # Output: Hello, World!
+```
+
+# [Classes]{.flow} {.title}
+
+## Classes
+- Classes are blueprints for creating objects
+- They encapsulate data (attributes) and behavior (methods)
+- Objects are instances of classes
+
+## Example
+```python
+class Dog:
+    def __init__(self, name):
+        self.name = name
+
+    def bark(self):
+        print(f"{self.name} says woof!")
+
+dog = Dog("Buddy")
+dog.bark()  # Output: Buddy says woof!
+```    
+
+## Class Attributes
+- Class attributes are attributes that are shared by all instances of a class
+- They are defined within the class but outside any methods
+
+## Example
+```python
+class Dog:
+    species = "Canis familiaris"
+
+dog1 = Dog()
+dog2 = Dog()
+
+print(dog1.species)  # Output: Canis familiaris
+print(dog2.species)  # Output: Canis familiaris
+```
+
+## Instance Attributes
+- Instance attributes are attributes that are unique to each instance of a class
+- They are defined within the `__init__` method
+
+## Example
+```python
+class Dog:
+    def __init__(self, name):
+        self.name = name
+
+dog1 = Dog("Buddy")
+dog2 = Dog("Max")
+
+print(dog1.name)  # Output: Buddy
+print(dog2.name)  # Output: Max
+``` 
+
+## Methods
+- Methods are functions that are defined within a class
+- They operate on the instance attributes of the class
+
+## Example
+```python
+class Dog:
+    def __init__(self, name):
+        self.name = name
+
+    def bark(self):
+        print(f"{self.name} says woof!")
+
+dog = Dog("Buddy")
+dog.bark()  # Output: Buddy says woof!
+``` 
+
+## Inheritance
+- Inheritance allows a class to inherit attributes and methods from another class
+- The class that inherits is called the subclass, and the class being inherited from is the superclass
+
+## Example
+```python
+class Animal:
+    def __init__(self, name):
+        self.name = name
+
+    def speak(self):
+        pass
+
+class Dog(Animal):
+    def speak(self):
+        return f"{self.name} says woof!"
+
+dog = Dog("Buddy")
+print(dog.speak())  # Output: Buddy says woof!
+```
+
+## Polymorphism
+- Polymorphism allows you to use a single interface to represent different data types
+- It enables you to write more flexible and generic code
+
+## Example
+```python
+class Animal:
+    def speak(self):
+        pass
+
+class Dog(Animal):
+    def speak(self):
+        return f"{self.name} says woof!"
+
+class Cat(Animal):
+    def speak(self):
+        return f"{self.name} says meow!"
+
+def make_animal_speak(animal):
+    print(animal.speak())
+
+dog = Dog("Buddy")
+cat = Cat("Whiskers")
+
+make_animal_speak(dog)  # Output: Buddy says woof!
+make_animal_speak(cat)  # Output: Whiskers says meow!
+``` 
+
+## Encapsulation
+- Encapsulation is the concept of bundling data (attributes) and methods (behavior) that operate on the data into a single unit (class)
+- It helps in organizing code and controlling access to the internal parts of an object
+
+## Example
+```python
+class BankAccount:
+    def __init__(self, owner, balance=0):
+        self.owner = owner
+        self.balance = balance
+
+    def deposit(self, amount):
+        if amount > 0:
+            self.balance += amount
+
+    def withdraw(self, amount):
+        if 0 < amount <= self.balance:
+            self.balance -= amount
+        else:
+            print("Insufficient funds!")
+
+account = BankAccount("Alice", 100)
+account.deposit(50)
+account.withdraw(30)
+print(account.balance)  # Output: 120
+```  
+
+## Access Modifiers
+- In Python, there are no strict access modifiers like in some other languages
+- By convention, you can use a single underscore `_` to indicate that a variable or method is intended to be protected
+- A double underscore `__` is used to indicate that it is intended to be private
+
+## Example
+```python
+class BankAccount:
+    def __init__(self, owner, balance=0):
+        self.owner = owner
+        self.__balance = balance  # Private attribute
+
+    def deposit(self, amount):
+        if amount > 0:
+            self.__balance += amount
+
+    def withdraw(self, amount):
+        if 0 < amount <= self.__balance:
+            self.__balance -= amount
+        else:
+            print("Insufficient funds!")
+
+account = BankAccount("Alice", 100)
+account.deposit(50)
+account.withdraw(30)
+print(account.balance)  # Output: 120
+```
+
+## Getters and Setters
+- Getters and setters are methods used to access and modify the attributes of a class
+- They provide controlled access to the attributes
+
+## Example
+```python
+class BankAccount:
+    def __init__(self, owner, balance=0):
+        self.owner = owner
+```
+
+## Getters and Setters
+- Getters are methods used to retrieve the value of an attribute
+- Setters are methods used to modify the value of an attribute
+
+## Example
+```python
+class BankAccount:
+    def __init__(self, owner, balance=0):
+        self.owner = owner
+        self.__balance = balance  # Private attribute   
+
+    def get_balance(self):
+        return self.__balance
+
+    def set_balance(self, amount):
+        if amount > 0:
+            self.__balance = amount
+        else:
+            print("Invalid amount!")
+```
