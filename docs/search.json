@@ -567,5 +567,698 @@
       "02 Control",
       "Lecture"
     ]
+  },
+  {
+    "objectID": "part-03/lecture-presentation.html#what-is-a-function",
+    "href": "part-03/lecture-presentation.html#what-is-a-function",
+    "title": "Lecture III - Building Reusable Functions",
+    "section": "What is a Function?",
+    "text": "What is a Function?\n\nFunctions can accept inputs (parameters) and return outputs\nEncapsulate logic, making code easier to maintain\nFunctions can be called multiple times from different part\nThey help reduce code duplication and improve readability"
+  },
+  {
+    "objectID": "part-03/lecture-presentation.html#functions-you-have-already-used",
+    "href": "part-03/lecture-presentation.html#functions-you-have-already-used",
+    "title": "Lecture III - Building Reusable Functions",
+    "section": "Functions you have already used",
+    "text": "Functions you have already used\n\nprint()\ninput()\nlen()\nrange()\nround()\ntype()\nint()\nfloat()\nstr()"
+  },
+  {
+    "objectID": "part-03/lecture-presentation.html#defining-a-function",
+    "href": "part-03/lecture-presentation.html#defining-a-function",
+    "title": "Lecture III - Building Reusable Functions",
+    "section": "Defining a Function",
+    "text": "Defining a Function\n\nUse the def keyword followed by the function name and parentheses\nThe code block within every function starts with a colon (:) and is indented\n\ndef greet(name):\n    print(f\"Hello, {name}!\")\n\ngreet(\"Alice\")  # Output: Hello, Alice!"
+  },
+  {
+    "objectID": "part-03/lecture-presentation.html#function-parameters",
+    "href": "part-03/lecture-presentation.html#function-parameters",
+    "title": "Lecture III - Building Reusable Functions",
+    "section": "Function Parameters",
+    "text": "Function Parameters\n\nParameters are variables that the function accepts\nThey allow you to pass data to the function"
+  },
+  {
+    "objectID": "part-03/lecture-presentation.html#example",
+    "href": "part-03/lecture-presentation.html#example",
+    "title": "Lecture III - Building Reusable Functions",
+    "section": "Example",
+    "text": "Example\ndef greet(name):\n    print(f\"Hello, {name}!\")"
+  },
+  {
+    "objectID": "part-03/lecture-presentation.html#function-arguments",
+    "href": "part-03/lecture-presentation.html#function-arguments",
+    "title": "Lecture III - Building Reusable Functions",
+    "section": "Function Arguments",
+    "text": "Function Arguments\n\nArguments are the actual values passed to the function\nThey replace the parameters in the function definition"
+  },
+  {
+    "objectID": "part-03/lecture-presentation.html#example-1",
+    "href": "part-03/lecture-presentation.html#example-1",
+    "title": "Lecture III - Building Reusable Functions",
+    "section": "Example",
+    "text": "Example\ndef greet(name):\n    print(f\"Hello, {name}!\")"
+  },
+  {
+    "objectID": "part-03/lecture-presentation.html#function-return-values",
+    "href": "part-03/lecture-presentation.html#function-return-values",
+    "title": "Lecture III - Building Reusable Functions",
+    "section": "Function Return Values",
+    "text": "Function Return Values\n\nFunctions can return values using the return statement\nThe return statement ends the function and returns the specified value"
+  },
+  {
+    "objectID": "part-03/lecture-presentation.html#example-2",
+    "href": "part-03/lecture-presentation.html#example-2",
+    "title": "Lecture III - Building Reusable Functions",
+    "section": "Example",
+    "text": "Example\ndef add(a, b):\n    return a + b"
+  },
+  {
+    "objectID": "part-03/lecture-presentation.html#function-scope",
+    "href": "part-03/lecture-presentation.html#function-scope",
+    "title": "Lecture III - Building Reusable Functions",
+    "section": "Function Scope",
+    "text": "Function Scope\n\nVariables defined inside a function are local to that function\nThey cannot be accessed outside the function\n\ndef greet(name):\n    greeting = f\"Hello, {name}!\"\n    \nprint(greeting)  # This will cause an error"
+  },
+  {
+    "objectID": "part-03/lecture-presentation.html#global-scope",
+    "href": "part-03/lecture-presentation.html#global-scope",
+    "title": "Lecture III - Building Reusable Functions",
+    "section": "Global Scope",
+    "text": "Global Scope\n\nVariables defined outside all functions are in the global scope\nThey can be accessed from anywhere in the program"
+  },
+  {
+    "objectID": "part-03/lecture-presentation.html#example-3",
+    "href": "part-03/lecture-presentation.html#example-3",
+    "title": "Lecture III - Building Reusable Functions",
+    "section": "Example",
+    "text": "Example\nname = \"Alice\"\n\ndef greet():\n    print(f\"Hello, {name}!\")\n\ngreet()  # Output: Hello, Alice!"
+  },
+  {
+    "objectID": "part-03/lecture-presentation.html#local-scope",
+    "href": "part-03/lecture-presentation.html#local-scope",
+    "title": "Lecture III - Building Reusable Functions",
+    "section": "Local Scope",
+    "text": "Local Scope\n\nVariables defined inside a function are in the local scope\nThey can only be accessed within that function"
+  },
+  {
+    "objectID": "part-03/lecture-presentation.html#example-4",
+    "href": "part-03/lecture-presentation.html#example-4",
+    "title": "Lecture III - Building Reusable Functions",
+    "section": "Example",
+    "text": "Example\ndef greet(name):\n    greeting = f\"Hello, {name}!\"\n    \nprint(greeting)  # This will cause an error"
+  },
+  {
+    "objectID": "part-03/lecture-presentation.html#global-keyword",
+    "href": "part-03/lecture-presentation.html#global-keyword",
+    "title": "Lecture III - Building Reusable Functions",
+    "section": "Global Keyword",
+    "text": "Global Keyword\n\nUse the global keyword to modify a global variable inside a function"
+  },
+  {
+    "objectID": "part-03/lecture-presentation.html#example-5",
+    "href": "part-03/lecture-presentation.html#example-5",
+    "title": "Lecture III - Building Reusable Functions",
+    "section": "Example",
+    "text": "Example\ndef modify_global():\n    global name\n    name = \"Bob\"\n\nmodify_global()\nprint(name)  # Output: Bob"
+  },
+  {
+    "objectID": "part-03/lecture-presentation.html#built-in-functions",
+    "href": "part-03/lecture-presentation.html#built-in-functions",
+    "title": "Lecture III - Building Reusable Functions",
+    "section": "Built-in Functions",
+    "text": "Built-in Functions\n\nPython has many built-in functions that are always available\nExamples include print(), len(), range(), max(), min(), etc."
+  },
+  {
+    "objectID": "part-03/lecture-presentation.html#example-6",
+    "href": "part-03/lecture-presentation.html#example-6",
+    "title": "Lecture III - Building Reusable Functions",
+    "section": "Example",
+    "text": "Example\nprint(\"Hello, World!\")  # Output: Hello, World!"
+  },
+  {
+    "objectID": "part-03/lecture-presentation.html#classes-1",
+    "href": "part-03/lecture-presentation.html#classes-1",
+    "title": "Lecture III - Building Reusable Functions",
+    "section": "Classes",
+    "text": "Classes\n\nClasses are blueprints for creating objects\nThey encapsulate data (attributes) and behavior (methods)\nObjects are instances of classes"
+  },
+  {
+    "objectID": "part-03/lecture-presentation.html#example-7",
+    "href": "part-03/lecture-presentation.html#example-7",
+    "title": "Lecture III - Building Reusable Functions",
+    "section": "Example",
+    "text": "Example\nclass Dog:\n    def __init__(self, name):\n        self.name = name\n\n    def bark(self):\n        print(f\"{self.name} says woof!\")\n\ndog = Dog(\"Buddy\")\ndog.bark()  # Output: Buddy says woof!"
+  },
+  {
+    "objectID": "part-03/lecture-presentation.html#class-attributes",
+    "href": "part-03/lecture-presentation.html#class-attributes",
+    "title": "Lecture III - Building Reusable Functions",
+    "section": "Class Attributes",
+    "text": "Class Attributes\n\nClass attributes are attributes that are shared by all instances of a class\nThey are defined within the class but outside any methods"
+  },
+  {
+    "objectID": "part-03/lecture-presentation.html#example-8",
+    "href": "part-03/lecture-presentation.html#example-8",
+    "title": "Lecture III - Building Reusable Functions",
+    "section": "Example",
+    "text": "Example\nclass Dog:\n    species = \"Canis familiaris\"\n\ndog1 = Dog()\ndog2 = Dog()\n\nprint(dog1.species)  # Output: Canis familiaris\nprint(dog2.species)  # Output: Canis familiaris"
+  },
+  {
+    "objectID": "part-03/lecture-presentation.html#instance-attributes",
+    "href": "part-03/lecture-presentation.html#instance-attributes",
+    "title": "Lecture III - Building Reusable Functions",
+    "section": "Instance Attributes",
+    "text": "Instance Attributes\n\nInstance attributes are attributes that are unique to each instance of a class\nThey are defined within the __init__ method"
+  },
+  {
+    "objectID": "part-03/lecture-presentation.html#example-9",
+    "href": "part-03/lecture-presentation.html#example-9",
+    "title": "Lecture III - Building Reusable Functions",
+    "section": "Example",
+    "text": "Example\nclass Dog:\n    def __init__(self, name):\n        self.name = name\n\ndog1 = Dog(\"Buddy\")\ndog2 = Dog(\"Max\")\n\nprint(dog1.name)  # Output: Buddy\nprint(dog2.name)  # Output: Max"
+  },
+  {
+    "objectID": "part-03/lecture-presentation.html#methods",
+    "href": "part-03/lecture-presentation.html#methods",
+    "title": "Lecture III - Building Reusable Functions",
+    "section": "Methods",
+    "text": "Methods\n\nMethods are functions that are defined within a class\nThey operate on the instance attributes of the class"
+  },
+  {
+    "objectID": "part-03/lecture-presentation.html#example-10",
+    "href": "part-03/lecture-presentation.html#example-10",
+    "title": "Lecture III - Building Reusable Functions",
+    "section": "Example",
+    "text": "Example\nclass Dog:\n    def __init__(self, name):\n        self.name = name\n\n    def bark(self):\n        print(f\"{self.name} says woof!\")\n\ndog = Dog(\"Buddy\")\ndog.bark()  # Output: Buddy says woof!"
+  },
+  {
+    "objectID": "part-03/lecture-presentation.html#inheritance",
+    "href": "part-03/lecture-presentation.html#inheritance",
+    "title": "Lecture III - Building Reusable Functions",
+    "section": "Inheritance",
+    "text": "Inheritance\n\nInheritance allows a class to inherit attributes and methods from another class\nThe class that inherits is called the subclass, and the class being inherited from is the superclass"
+  },
+  {
+    "objectID": "part-03/lecture-presentation.html#example-11",
+    "href": "part-03/lecture-presentation.html#example-11",
+    "title": "Lecture III - Building Reusable Functions",
+    "section": "Example",
+    "text": "Example\nclass Animal:\n    def __init__(self, name):\n        self.name = name\n\n    def speak(self):\n        pass\n\nclass Dog(Animal):\n    def speak(self):\n        return f\"{self.name} says woof!\"\n\ndog = Dog(\"Buddy\")\nprint(dog.speak())  # Output: Buddy says woof!"
+  },
+  {
+    "objectID": "part-03/lecture-presentation.html#polymorphism",
+    "href": "part-03/lecture-presentation.html#polymorphism",
+    "title": "Lecture III - Building Reusable Functions",
+    "section": "Polymorphism",
+    "text": "Polymorphism\n\nPolymorphism allows you to use a single interface to represent different data types\nIt enables you to write more flexible and generic code"
+  },
+  {
+    "objectID": "part-03/lecture-presentation.html#example-12",
+    "href": "part-03/lecture-presentation.html#example-12",
+    "title": "Lecture III - Building Reusable Functions",
+    "section": "Example",
+    "text": "Example\nclass Animal:\n    def speak(self):\n        pass\n\nclass Dog(Animal):\n    def speak(self):\n        return f\"{self.name} says woof!\"\n\nclass Cat(Animal):\n    def speak(self):\n        return f\"{self.name} says meow!\"\n\ndef make_animal_speak(animal):\n    print(animal.speak())\n\ndog = Dog(\"Buddy\")\ncat = Cat(\"Whiskers\")\n\nmake_animal_speak(dog)  # Output: Buddy says woof!\nmake_animal_speak(cat)  # Output: Whiskers says meow!"
+  },
+  {
+    "objectID": "part-03/lecture-presentation.html#encapsulation",
+    "href": "part-03/lecture-presentation.html#encapsulation",
+    "title": "Lecture III - Building Reusable Functions",
+    "section": "Encapsulation",
+    "text": "Encapsulation\n\nEncapsulation is the concept of bundling data (attributes) and methods (behavior) that operate on the data into a single unit (class)\nIt helps in organizing code and controlling access to the internal parts of an object"
+  },
+  {
+    "objectID": "part-03/lecture-presentation.html#example-13",
+    "href": "part-03/lecture-presentation.html#example-13",
+    "title": "Lecture III - Building Reusable Functions",
+    "section": "Example",
+    "text": "Example\nclass BankAccount:\n    def __init__(self, owner, balance=0):\n        self.owner = owner\n        self.balance = balance\n\n    def deposit(self, amount):\n        if amount &gt; 0:\n            self.balance += amount\n\n    def withdraw(self, amount):\n        if 0 &lt; amount &lt;= self.balance:\n            self.balance -= amount\n        else:\n            print(\"Insufficient funds!\")\n\naccount = BankAccount(\"Alice\", 100)\naccount.deposit(50)\naccount.withdraw(30)\nprint(account.balance)  # Output: 120"
+  },
+  {
+    "objectID": "part-03/lecture-presentation.html#access-modifiers",
+    "href": "part-03/lecture-presentation.html#access-modifiers",
+    "title": "Lecture III - Building Reusable Functions",
+    "section": "Access Modifiers",
+    "text": "Access Modifiers\n\nIn Python, there are no strict access modifiers like in some other languages\nBy convention, you can use a single underscore _ to indicate that a variable or method is intended to be protected\nA double underscore __ is used to indicate that it is intended to be private"
+  },
+  {
+    "objectID": "part-03/lecture-presentation.html#example-14",
+    "href": "part-03/lecture-presentation.html#example-14",
+    "title": "Lecture III - Building Reusable Functions",
+    "section": "Example",
+    "text": "Example\nclass BankAccount:\n    def __init__(self, owner, balance=0):\n        self.owner = owner\n        self.__balance = balance  # Private attribute\n\n    def deposit(self, amount):\n        if amount &gt; 0:\n            self.__balance += amount\n\n    def withdraw(self, amount):\n        if 0 &lt; amount &lt;= self.__balance:\n            self.__balance -= amount\n        else:\n            print(\"Insufficient funds!\")\n\naccount = BankAccount(\"Alice\", 100)\naccount.deposit(50)\naccount.withdraw(30)\nprint(account.balance)  # Output: 120"
+  },
+  {
+    "objectID": "part-03/lecture-presentation.html#getters-and-setters",
+    "href": "part-03/lecture-presentation.html#getters-and-setters",
+    "title": "Lecture III - Building Reusable Functions",
+    "section": "Getters and Setters",
+    "text": "Getters and Setters\n\nGetters and setters are methods used to access and modify the attributes of a class\nThey provide controlled access to the attributes"
+  },
+  {
+    "objectID": "part-03/lecture-presentation.html#example-15",
+    "href": "part-03/lecture-presentation.html#example-15",
+    "title": "Lecture III - Building Reusable Functions",
+    "section": "Example",
+    "text": "Example\nclass BankAccount:\n    def __init__(self, owner, balance=0):\n        self.owner = owner"
+  },
+  {
+    "objectID": "part-03/lecture-presentation.html#getters-and-setters-1",
+    "href": "part-03/lecture-presentation.html#getters-and-setters-1",
+    "title": "Lecture III - Building Reusable Functions",
+    "section": "Getters and Setters",
+    "text": "Getters and Setters\n\nGetters are methods used to retrieve the value of an attribute\nSetters are methods used to modify the value of an attribute"
+  },
+  {
+    "objectID": "part-03/lecture-presentation.html#example-16",
+    "href": "part-03/lecture-presentation.html#example-16",
+    "title": "Lecture III - Building Reusable Functions",
+    "section": "Example",
+    "text": "Example\nclass BankAccount:\n    def __init__(self, owner, balance=0):\n        self.owner = owner\n        self.__balance = balance  # Private attribute   \n\n    def get_balance(self):\n        return self.__balance\n\n    def set_balance(self, amount):\n        if amount &gt; 0:\n            self.__balance = amount\n        else:\n            print(\"Invalid amount!\")\n\n\n\nLecture III - Building Reusable Functions | Programming with Python | Dr. Tobias Vlćek | Home"
+  },
+  {
+    "objectID": "part-03/lecture-presentation.html#some-built-in-functions-already-used",
+    "href": "part-03/lecture-presentation.html#some-built-in-functions-already-used",
+    "title": "Lecture III - Building Reusable Functions",
+    "section": "Some Built-in Functions already used",
+    "text": "Some Built-in Functions already used\n\nprint(): Print text to console\ninput(): Read text from console\nlen(): Get the length of a sequence\nrange(): Generate a sequence of numbers\nround(): Round a number to a specified number of decimal places\ntype(): Get the type of an object\nint(): Convert a string to an integer\nfloat(): Convert a string to a floating-point number\nstr(): Convert an object to a string"
+  },
+  {
+    "objectID": "part-03/lecture-functions-presentation.html#what-is-a-function",
+    "href": "part-03/lecture-functions-presentation.html#what-is-a-function",
+    "title": "Lecture III - Building Reusable Functions",
+    "section": "What is a Function?",
+    "text": "What is a Function?\n\nFunctions can accept inputs (parameters) and return outputs\nEncapsulate logic, making code easier to maintain\nFunctions can be called multiple times from different part\nThey help reduce code duplication and improve readability\n\n\n# I'm a function.\ntype(print)\n\n\n\nbuiltin_function_or_method\n\n\n\n\n\n\n\n\n\nImportant\n\n\nRemember, methods are functions that are called on an object."
+  },
+  {
+    "objectID": "part-03/lecture-functions-presentation.html#some-built-in-functions-already-used",
+    "href": "part-03/lecture-functions-presentation.html#some-built-in-functions-already-used",
+    "title": "Lecture III - Building Reusable Functions",
+    "section": "Some Built-in Functions already used",
+    "text": "Some Built-in Functions already used\n\nprint(): Print text to console\ninput(): Read text from console\nlen(): Get the length of a sequence\nrange(): Generate a sequence of numbers\nround(): Round a number to a specified number of decimal places\ntype(): Get the type of an object\nint(): Convert a string to an integer\nfloat(): Convert a string to a floating-point number\nstr(): Convert an object to a string"
+  },
+  {
+    "objectID": "part-03/lecture-functions-presentation.html#defining-a-function",
+    "href": "part-03/lecture-functions-presentation.html#defining-a-function",
+    "title": "Lecture III - Building Reusable Functions",
+    "section": "Defining a Function",
+    "text": "Defining a Function\n\nUse the def keyword followed by the function name\nInside parentheses we list the inputs (parameters)\nThe code block within every function starts with a colon (:)\nIt is indented, just as the loops from the last lecture\n\n\n\ndef greet(a_parameter):\n    print(f\"Hello, {a_parameter}!\")\ngreet(\"Students\")\n\n\n\nHello, Students!\n\n\n\n\n\n\n\n\n\n\nTip\n\n\nIt is common practice to leave out one line after the definition of a function, although we will not always do that in the lecture to save space on the slides."
+  },
+  {
+    "objectID": "part-03/lecture-functions-presentation.html#function-parameters",
+    "href": "part-03/lecture-functions-presentation.html#function-parameters",
+    "title": "Lecture III - Building Reusable Functions",
+    "section": "Function Parameters",
+    "text": "Function Parameters\n\nParameters are variables that the function accepts\nThey allow you to pass data to the function\nTry to name them as variables: short and meaningful\nWe can also leave them out or define several inputs!\n\n\ndef greet():\n    print(\"Hello, stranger!\")\ngreet()\n\n\n\nHello, stranger!"
+  },
+  {
+    "objectID": "part-03/lecture-functions-presentation.html#example",
+    "href": "part-03/lecture-functions-presentation.html#example",
+    "title": "Lecture III - Building Reusable Functions",
+    "section": "Example",
+    "text": "Example\nclass BankAccount:\n    def __init__(self, owner, balance=0):\n        self.owner = owner\n        self.balance = balance\n\n    def deposit(self, amount):\n        if amount &gt; 0:\n            self.balance += amount\n\n    def withdraw(self, amount):\n        if 0 &lt; amount &lt;= self.balance:\n            self.balance -= amount\n        else:\n            print(\"Insufficient funds!\")\n\naccount = BankAccount(\"Alice\", 100)\naccount.deposit(50)\naccount.withdraw(30)\nprint(account.balance)  # Output: 120"
+  },
+  {
+    "objectID": "part-03/lecture-functions-presentation.html#function-arguments",
+    "href": "part-03/lecture-functions-presentation.html#function-arguments",
+    "title": "Lecture III - Building Reusable Functions",
+    "section": "Function Arguments",
+    "text": "Function Arguments\n\nArguments are the actual values passed to the function\nThey replace the parameters in the function definition\n\n\n&gt; Question: What could be the correct arguments here?\n\ndef greet(university_name, lecture):\n    print(f\"Hello, students at the {university_name}!\")\n    print(f\"You are in lecture {lecture}!\")\n\n# Your code here"
+  },
+  {
+    "objectID": "part-03/lecture-functions-presentation.html#example-1",
+    "href": "part-03/lecture-functions-presentation.html#example-1",
+    "title": "Lecture III - Building Reusable Functions",
+    "section": "Example",
+    "text": "Example\nclass BankAccount:\n    def __init__(self, owner, balance=0):\n        self.owner = owner\n        self.__balance = balance  # Private attribute\n\n    def deposit(self, amount):\n        if amount &gt; 0:\n            self.__balance += amount\n\n    def withdraw(self, amount):\n        if 0 &lt; amount &lt;= self.__balance:\n            self.__balance -= amount\n        else:\n            print(\"Insufficient funds!\")\n\naccount = BankAccount(\"Alice\", 100)\naccount.deposit(50)\naccount.withdraw(30)\nprint(account.balance)  # Output: 120"
+  },
+  {
+    "objectID": "part-03/lecture-functions-presentation.html#function-return-values",
+    "href": "part-03/lecture-functions-presentation.html#function-return-values",
+    "title": "Lecture III - Building Reusable Functions",
+    "section": "Function Return Values",
+    "text": "Function Return Values\n\nFunctions can return values using the return statement\nThe return statement ends the function\nIt then returns the specified value\n\n\n\ndef simple_multiplication(a,b):\n    result = a*b\n    return result\nprint(simple_multiplication(2,21))\n\n\n\n42\n\n\n\n\n\ndef simple_multiplication(a,b):\n    return a*b # even shorter!\nprint(simple_multiplication(2,21))\n\n\n\n42"
+  },
+  {
+    "objectID": "part-03/lecture-functions-presentation.html#example-2",
+    "href": "part-03/lecture-functions-presentation.html#example-2",
+    "title": "Lecture III - Building Reusable Functions",
+    "section": "Example",
+    "text": "Example\nclass BankAccount:\n    def __init__(self, owner, balance=0):\n        self.owner = owner"
+  },
+  {
+    "objectID": "part-03/lecture-functions-presentation.html#function-scope",
+    "href": "part-03/lecture-functions-presentation.html#function-scope",
+    "title": "Lecture III - Building Reusable Functions",
+    "section": "Function Scope",
+    "text": "Function Scope\n\nVariables defined inside a function are local to that function\nThey cannot be accessed outside the function\n\n\ndef greet(name):\n    greeting = f\"Hello, {name}!\"\n    \nprint(greeting)  # This will cause an error\n\n\n&gt; Question: Any idea how to access greeting?"
+  },
+  {
+    "objectID": "part-03/lecture-functions-presentation.html#global-scope",
+    "href": "part-03/lecture-functions-presentation.html#global-scope",
+    "title": "Lecture III - Building Reusable Functions",
+    "section": "Global Scope",
+    "text": "Global Scope\n\nVariables defined outside all functions are in the global scope\nThey can be accessed from anywhere in the program\n\n\n\ngreeting = \"Hello, Stranger!\"\ndef greet(name):\n   greeting = f\"Hello, {name}!\"\n   return greeting\nprint(greet(\"Students\")) # Greet students\nprint(greeting) # Greet ????\n\n\n\nHello, Students!\nHello, Stranger!\n\n\n\n\n\n\n\n\n\n\nImportant\n\n\nWe don’t change global variables inside a function! The original value can still be accessed from outside the function."
+  },
+  {
+    "objectID": "part-03/lecture-functions-presentation.html#example-3",
+    "href": "part-03/lecture-functions-presentation.html#example-3",
+    "title": "Lecture III - Building Reusable Functions",
+    "section": "Example",
+    "text": "Example\nclass BankAccount:\n    def __init__(self, owner, balance=0):\n        self.owner = owner\n        self.__balance = balance  # Private attribute   \n\n    def get_balance(self):\n        return self.__balance\n\n    def set_balance(self, amount):\n        if amount &gt; 0:\n            self.__balance = amount\n        else:\n            print(\"Invalid amount!\")\n\n\n\nLecture III - Building Reusable Functions | Programming with Python | Dr. Tobias Vlćek | Home"
+  },
+  {
+    "objectID": "part-03/lecture-functions-presentation.html#local-scope",
+    "href": "part-03/lecture-functions-presentation.html#local-scope",
+    "title": "Lecture III - Building Reusable Functions",
+    "section": "Local Scope",
+    "text": "Local Scope\n\nVariables defined inside a function are in the local scope\nThey can only be accessed within that function"
+  },
+  {
+    "objectID": "part-03/lecture-functions-presentation.html#example-4",
+    "href": "part-03/lecture-functions-presentation.html#example-4",
+    "title": "Lecture III - Building Reusable Functions",
+    "section": "Example",
+    "text": "Example\nclass BankAccount:\n    def __init__(self, owner, balance=0):\n        self.owner = owner"
+  },
+  {
+    "objectID": "part-03/lecture-functions-presentation.html#global-keyword",
+    "href": "part-03/lecture-functions-presentation.html#global-keyword",
+    "title": "Lecture III - Building Reusable Functions",
+    "section": "Global Keyword",
+    "text": "Global Keyword\n\nStill, we can change the value of greeting from inside a function!\nBy using the global keyword to modify a global variable\n\n\n\ngreeting = \"Hello, Stranger!\"\n\ndef greet(name):\n   global greeting\n   greeting = f\"Hello, {name}!\"\n   return greeting\n\nprint(greet(\"Students\")) # Greet students\nprint(greeting) # Greet Stranger\n\n\n\nHello, Students!\nHello, Students!\n\n\n\n\n&gt;Question: This can be confusing. Do you think you got the idea?"
+  },
+  {
+    "objectID": "part-03/lecture-functions-presentation.html#example-5",
+    "href": "part-03/lecture-functions-presentation.html#example-5",
+    "title": "Lecture III - Building Reusable Functions",
+    "section": "Example",
+    "text": "Example\nclass BankAccount:\n    def __init__(self, owner, balance=0):\n        self.owner = owner\n        self.__balance = balance  # Private attribute   \n\n    def get_balance(self):\n        return self.__balance\n\n    def set_balance(self, amount):\n        if amount &gt; 0:\n            self.__balance = amount\n        else:\n            print(\"Invalid amount!\")\n\n\n\nLecture III - Building Reusable Functions | Programming with Python | Dr. Tobias Vlćek | Home"
+  },
+  {
+    "objectID": "part-03/lecture-functions-presentation.html#built-in-functions",
+    "href": "part-03/lecture-functions-presentation.html#built-in-functions",
+    "title": "Lecture III - Building Reusable Functions",
+    "section": "Built-in Functions",
+    "text": "Built-in Functions\n\nPython has many built-in functions that are always available\nExamples include print(), len(), range(), max(), min(), etc."
+  },
+  {
+    "objectID": "part-03/lecture-functions-presentation.html#example-6",
+    "href": "part-03/lecture-functions-presentation.html#example-6",
+    "title": "Lecture III - Building Reusable Functions",
+    "section": "Example",
+    "text": "Example\nclass BankAccount:\n    def __init__(self, owner, balance=0):\n        self.owner = owner\n        self.__balance = balance  # Private attribute   \n\n    def get_balance(self):\n        return self.__balance\n\n    def set_balance(self, amount):\n        if amount &gt; 0:\n            self.__balance = amount\n        else:\n            print(\"Invalid amount!\")\n\n\n\nLecture III - Building Reusable Functions | Programming with Python | Dr. Tobias Vlćek | Home"
+  },
+  {
+    "objectID": "part-03/lecture-functions-presentation.html#classes-1",
+    "href": "part-03/lecture-functions-presentation.html#classes-1",
+    "title": "Lecture III - Building Reusable Functions",
+    "section": "Classes",
+    "text": "Classes\n\nClasses are blueprints for creating objects\nThey encapsulate data (attributes) and behavior (methods)\nObjects are instances of classes\nMethods are functions that are defined within a class\n\n\n\nclass Students: # Class definition\n    def know_answer(self): # Method definition\n        print(f\"They know the answer to all questions.\")\n\nstudent = Students() # Object instantiation\nstudent.know_answer()\n\n\n\nThey know the answer to all questions."
+  },
+  {
+    "objectID": "part-03/lecture-functions-presentation.html#example-7",
+    "href": "part-03/lecture-functions-presentation.html#example-7",
+    "title": "Lecture III - Building Reusable Functions",
+    "section": "Example",
+    "text": "Example\nclass BankAccount:\n    def __init__(self, owner, balance=0):\n        self.owner = owner\n        self.__balance = balance  # Private attribute   \n\n    def get_balance(self):\n        return self.__balance\n\n    def set_balance(self, amount):\n        if amount &gt; 0:\n            self.__balance = amount\n        else:\n            print(\"Invalid amount!\")\n\n\n\nLecture III - Building Reusable Functions | Programming with Python | Dr. Tobias Vlćek | Home"
+  },
+  {
+    "objectID": "part-03/lecture-functions-presentation.html#class-attributes",
+    "href": "part-03/lecture-functions-presentation.html#class-attributes",
+    "title": "Lecture III - Building Reusable Functions",
+    "section": "Class Attributes",
+    "text": "Class Attributes\n\nClass attributes are attributes that are shared by all class instances\nThey are defined within the class but outside any methods\n\n\n&gt;Question: What do you think will happen here?\n\nclass Students: # Class definition\n    smart = True # Class attribute\n\nstudent_A = Students() # Object instantiation student_A\nstudent_B = Students() # Object instantiation student_B\n\nprint(student_A.smart)\nprint(student_B.smart)\n\n\n\nTrue\nTrue"
+  },
+  {
+    "objectID": "part-03/lecture-functions-presentation.html#example-8",
+    "href": "part-03/lecture-functions-presentation.html#example-8",
+    "title": "Lecture III - Building Reusable Functions",
+    "section": "Example",
+    "text": "Example\nclass BankAccount:\n    def __init__(self, owner, balance=0):\n        self.owner = owner\n        self.__balance = balance  # Private attribute   \n\n    def get_balance(self):\n        return self.__balance\n\n    def set_balance(self, amount):\n        if amount &gt; 0:\n            self.__balance = amount\n        else:\n            print(\"Invalid amount!\")\n\n\n\nLecture III - Building Reusable Functions | Programming with Python | Dr. Tobias Vlćek | Home"
+  },
+  {
+    "objectID": "part-03/lecture-functions-presentation.html#instance-attributes",
+    "href": "part-03/lecture-functions-presentation.html#instance-attributes",
+    "title": "Lecture III - Building Reusable Functions",
+    "section": "Instance Attributes",
+    "text": "Instance Attributes\n\nInstance attributes are attributes unique to each class instance\nThey are defined within the __init__ method\n\n\nclass Student: # Class definition\n    def __init__(self, name, is_smart): # Method for initalization\n        self.name = name\n        self.smart = is_smart\n    def knows_answer(self): # Method to be called\n        if self.smart:\n            print(f\"{self.name} knows the answer to the question.\")\n        else:\n            print(f\"{self.name} does not know the answer to the question.\")\n\nstudent = Student(\"Buddy\",False) # Note, we don't need to call self here!\nstudent.knows_answer()\n\n\n\nBuddy does not know the answer to the question."
+  },
+  {
+    "objectID": "part-03/lecture-functions-presentation.html#example-9",
+    "href": "part-03/lecture-functions-presentation.html#example-9",
+    "title": "Lecture III - Building Reusable Functions",
+    "section": "Example",
+    "text": "Example\nclass BankAccount:\n    def __init__(self, owner, balance=0):\n        self.owner = owner\n        self.__balance = balance  # Private attribute   \n\n    def get_balance(self):\n        return self.__balance\n\n    def set_balance(self, amount):\n        if amount &gt; 0:\n            self.__balance = amount\n        else:\n            print(\"Invalid amount!\")\n\n\n\nLecture III - Building Reusable Functions | Programming with Python | Dr. Tobias Vlćek | Home"
+  },
+  {
+    "objectID": "part-03/lecture-functions-presentation.html#methods",
+    "href": "part-03/lecture-functions-presentation.html#methods",
+    "title": "Lecture III - Building Reusable Functions",
+    "section": "Methods",
+    "text": "Methods\n\nMethods are functions that are defined within a class\nThey operate on the instance attributes of the class"
+  },
+  {
+    "objectID": "part-03/lecture-functions-presentation.html#example-10",
+    "href": "part-03/lecture-functions-presentation.html#example-10",
+    "title": "Lecture III - Building Reusable Functions",
+    "section": "Example",
+    "text": "Example\nclass BankAccount:\n    def __init__(self, owner, balance=0):\n        self.owner = owner\n        self.__balance = balance  # Private attribute   \n\n    def get_balance(self):\n        return self.__balance\n\n    def set_balance(self, amount):\n        if amount &gt; 0:\n            self.__balance = amount\n        else:\n            print(\"Invalid amount!\")\n\n\n\nLecture III - Building Reusable Functions | Programming with Python | Dr. Tobias Vlćek | Home"
+  },
+  {
+    "objectID": "part-03/lecture-functions-presentation.html#inheritance",
+    "href": "part-03/lecture-functions-presentation.html#inheritance",
+    "title": "Lecture III - Building Reusable Functions",
+    "section": "Inheritance",
+    "text": "Inheritance\n\nInheritance allows a class to inherit attributes and methods\nThe class that inherits is called the subclass\nThe class that is being inherited from is called the superclass\n\n\n\n\n\n\n\n\nTip\n\n\nDon’t worry!  It can be quite much right now. Hang in there and soon it will get easier again!"
+  },
+  {
+    "objectID": "part-03/lecture-functions-presentation.html#example-11",
+    "href": "part-03/lecture-functions-presentation.html#example-11",
+    "title": "Lecture III - Building Reusable Functions",
+    "section": "Example",
+    "text": "Example\nclass BankAccount:\n    def __init__(self, owner, balance=0):\n        self.owner = owner\n        self.__balance = balance  # Private attribute   \n\n    def get_balance(self):\n        return self.__balance\n\n    def set_balance(self, amount):\n        if amount &gt; 0:\n            self.__balance = amount\n        else:\n            print(\"Invalid amount!\")\n\n\n\nLecture III - Building Reusable Functions | Programming with Python | Dr. Tobias Vlćek | Home"
+  },
+  {
+    "objectID": "part-03/lecture-functions-presentation.html#polymorphism",
+    "href": "part-03/lecture-functions-presentation.html#polymorphism",
+    "title": "Lecture III - Building Reusable Functions",
+    "section": "Polymorphism",
+    "text": "Polymorphism\n\nPolymorphism allows you to use a single interface to represent different data types\nIt enables you to write more flexible and generic code"
+  },
+  {
+    "objectID": "part-03/lecture-functions-presentation.html#example-12",
+    "href": "part-03/lecture-functions-presentation.html#example-12",
+    "title": "Lecture III - Building Reusable Functions",
+    "section": "Example",
+    "text": "Example\nclass BankAccount:\n    def __init__(self, owner, balance=0):\n        self.owner = owner"
+  },
+  {
+    "objectID": "part-03/lecture-functions-presentation.html#encapsulation",
+    "href": "part-03/lecture-functions-presentation.html#encapsulation",
+    "title": "Lecture III - Building Reusable Functions",
+    "section": "Encapsulation",
+    "text": "Encapsulation\n\nEncapsulation is the concept of bundling data (attributes) and methods (behavior) that operate on the data into a single unit (class)\nIt is a key aspect of object oriented programming (OOP)\nIt helps in organizing code and controlling access\n\n\n\n\n\n\n\n\nNote\n\n\nFortunately, this is an introduction to Python, so we won’t go into details of encapsulation."
+  },
+  {
+    "objectID": "part-03/lecture-functions-presentation.html#example-13",
+    "href": "part-03/lecture-functions-presentation.html#example-13",
+    "title": "Lecture III - Building Reusable Functions",
+    "section": "Example",
+    "text": "Example\nclass BankAccount:\n    def __init__(self, owner, balance=0):\n        self.owner = owner\n        self.__balance = balance  # Private attribute   \n\n    def get_balance(self):\n        return self.__balance\n\n    def set_balance(self, amount):\n        if amount &gt; 0:\n            self.__balance = amount\n        else:\n            print(\"Invalid amount!\")\n\n\n\nLecture III - Building Reusable Functions | Programming with Python | Dr. Tobias Vlćek | Home"
+  },
+  {
+    "objectID": "part-03/lecture-functions-presentation.html#access-modifiers",
+    "href": "part-03/lecture-functions-presentation.html#access-modifiers",
+    "title": "Lecture III - Building Reusable Functions",
+    "section": "Access Modifiers",
+    "text": "Access Modifiers\n\nIn Python, there are no strict access modifiers like in some other languages\nBy convention, you can use a single underscore _ to indicate that a variable or method is intended to be protected\nA double underscore __ is used to indicate that it is intended to be private"
+  },
+  {
+    "objectID": "part-03/lecture-functions-presentation.html#example-14",
+    "href": "part-03/lecture-functions-presentation.html#example-14",
+    "title": "Lecture III - Building Reusable Functions",
+    "section": "Example",
+    "text": "Example\nclass BankAccount:\n    def __init__(self, owner, balance=0):\n        self.owner = owner\n        self.__balance = balance  # Private attribute   \n\n    def get_balance(self):\n        return self.__balance\n\n    def set_balance(self, amount):\n        if amount &gt; 0:\n            self.__balance = amount\n        else:\n            print(\"Invalid amount!\")\n\n\n\nLecture III - Building Reusable Functions | Programming with Python | Dr. Tobias Vlćek | Home"
+  },
+  {
+    "objectID": "part-03/lecture-functions-presentation.html#getters-and-setters",
+    "href": "part-03/lecture-functions-presentation.html#getters-and-setters",
+    "title": "Lecture III - Building Reusable Functions",
+    "section": "Getters and Setters",
+    "text": "Getters and Setters\n\nGetters and setters are methods used to access and modify the attributes of a class\nThey provide controlled access to the attributes"
+  },
+  {
+    "objectID": "part-03/lecture-functions-presentation.html#example-15",
+    "href": "part-03/lecture-functions-presentation.html#example-15",
+    "title": "Lecture III - Building Reusable Functions",
+    "section": "Example",
+    "text": "Example\nclass BankAccount:\n    def __init__(self, owner, balance=0):\n        self.owner = owner\n        self.__balance = balance  # Private attribute   \n\n    def get_balance(self):\n        return self.__balance\n\n    def set_balance(self, amount):\n        if amount &gt; 0:\n            self.__balance = amount\n        else:\n            print(\"Invalid amount!\")\n\n\n\nLecture III - Building Reusable Functions | Programming with Python | Dr. Tobias Vlćek | Home"
+  },
+  {
+    "objectID": "part-03/lecture-functions-presentation.html#getters-and-setters-1",
+    "href": "part-03/lecture-functions-presentation.html#getters-and-setters-1",
+    "title": "Lecture III - Building Reusable Functions",
+    "section": "Getters and Setters",
+    "text": "Getters and Setters\n\nGetters are methods used to retrieve the value of an attribute\nSetters are methods used to modify the value of an attribute"
+  },
+  {
+    "objectID": "part-03/lecture-functions-presentation.html#example-16",
+    "href": "part-03/lecture-functions-presentation.html#example-16",
+    "title": "Lecture III - Building Reusable Functions",
+    "section": "Example",
+    "text": "Example\nclass BankAccount:\n    def __init__(self, owner, balance=0):\n        self.owner = owner\n        self.__balance = balance  # Private attribute   \n\n    def get_balance(self):\n        return self.__balance\n\n    def set_balance(self, amount):\n        if amount &gt; 0:\n            self.__balance = amount\n        else:\n            print(\"Invalid amount!\")\n\n\n\nLecture III - Building Reusable Functions | Programming with Python | Dr. Tobias Vlćek | Home"
+  },
+  {
+    "objectID": "part-03/lecture-functions-presentation.html#comparison-operators",
+    "href": "part-03/lecture-functions-presentation.html#comparison-operators",
+    "title": "Lecture III - Building Reusable Functions",
+    "section": "Comparison Operators",
+    "text": "Comparison Operators\n\nComparison operators are used to compare two values\nThe result of a comparison is a boolean value (True or False)\nOperators include: ==, !=, &gt;, &lt;, &gt;=, &lt;=\n\n\n&gt; Question: Is this True?\n\n# Careful here!\none = 1\ntwo = 1\nprint(one == two)\n\n\n\nTrue"
+  },
+  {
+    "objectID": "part-03/lecture-functions-presentation.html#control-structures",
+    "href": "part-03/lecture-functions-presentation.html#control-structures",
+    "title": "Lecture III - Building Reusable Functions",
+    "section": "Control Structures",
+    "text": "Control Structures\n\nControl structures allow us to control the flow of execution\nIt includes conditional statements and loops\nConditional statements: if, elif, else\nLoops: for and while\nControl flow statements (in loops): continue and break\n\n\n\n\n\n\n\n\nNote\n\n\nThe statement continue skips the rest of the current iteration and moves to the next one in a loop while the break statement exits the loop entirely."
+  },
+  {
+    "objectID": "part-03/lecture-functions-presentation.html#slicing",
+    "href": "part-03/lecture-functions-presentation.html#slicing",
+    "title": "Lecture III - Building Reusable Functions",
+    "section": "Slicing",
+    "text": "Slicing\n\nWith slicing we can get a range of elements from a sequence\nSyntax: sequence[start:stop:step]\nstart is the index of the first element to include\nstop is the index of the first element to exclude\nstep is the increment between indices\n\n\n\n\n\n\n\n\nTip\n\n\nIf left out, the step defaults to 1. Else, start defaults to 0 and stop defaults to the length of the sequence. Negative indices can be used to slice from the end of the sequence."
+  },
+  {
+    "objectID": "part-03/lecture-functions-presentation.html#naming-functions-and-methods",
+    "href": "part-03/lecture-functions-presentation.html#naming-functions-and-methods",
+    "title": "Lecture III - Building Reusable Functions",
+    "section": "Naming Functions (and Methods)",
+    "text": "Naming Functions (and Methods)\n\nFunction names should be short, but descriptive\nUse underscores (_) instead of spaces in the names\nAvoid using Python keywords as function names (e.g., print)\nTry to avoid using built-in functions and methods that have a similar name (e.g., sum and len)\n\n&gt; Question: Which of the following is a good name for a function?\n\nmyfunctionthatmultipliesvalues \nmultiply_two_values\n\nmultiplyTwoValues"
+  },
+  {
+    "objectID": "part-03/lecture-functions-presentation.html#returning-none",
+    "href": "part-03/lecture-functions-presentation.html#returning-none",
+    "title": "Lecture III - Building Reusable Functions",
+    "section": "Returning None",
+    "text": "Returning None\n\nIf we don’t specify return, functions will return None\n\n\ndef simple_multiplication(a,b):\n    result = a*b\n\nprint(simple_multiplication(2,21))\n\n\n\nNone\n\n\n\n&gt; Grouptask: Come up with a function that checks whether a number is positive or negative. It returns \"positive\" for positive numbers and \"negative\" for negative numbers.\n\n\n\n\n\n\n\n\nTip\n\n\nYou can also use multiple return statements in a function."
+  },
+  {
+    "objectID": "part-03/lecture-functions-presentation.html#global-scope-1",
+    "href": "part-03/lecture-functions-presentation.html#global-scope-1",
+    "title": "Lecture III - Building Reusable Functions",
+    "section": "Global Scope",
+    "text": "Global Scope\n\nVariables defined outside all functions are in the global scope\nThey can be accessed from anywhere in the program\n\n\ngreeting = \"Hello, Stranger!\"\n\ndef greet(name):\n   greeting = f\"Hello, {name}!\"\n   return greeting\n\nprint(greeting) # Greet Stranger\n\n\n\nHello, Stranger!\n\n\n\n\n\n\n\n\nWarning\n\n\nThe variable greeting is not changed within the function!\n\nGlobal Keyword\n\nUse the global keyword to modify a global variable inside a function\n\n\n\nExample\ndef modify_global():\n    global name\n    name = \"Bob\"\n\nmodify_global()\nprint(name)  # Output: Bob\n\n\nClasses\n\n\n\nClasses\n\nClasses are blueprints for creating objects\nThey encapsulate data (attributes) and behavior (methods)\nObjects are instances of classes\n\n\n\nExample\nclass Dog:\n    def __init__(self, name):\n        self.name = name\n\n    def bark(self):\n        print(f\"{self.name} says woof!\")\n\ndog = Dog(\"Buddy\")\ndog.bark()  # Output: Buddy says woof!\n\n\nClass Attributes\n\nClass attributes are attributes that are shared by all instances of a class\nThey are defined within the class but outside any methods\n\n\n\nExample\nclass Dog:\n    species = \"Canis familiaris\"\n\ndog1 = Dog()\ndog2 = Dog()\n\nprint(dog1.species)  # Output: Canis familiaris\nprint(dog2.species)  # Output: Canis familiaris\n\n\nInstance Attributes\n\nInstance attributes are attributes that are unique to each instance of a class\nThey are defined within the __init__ method\n\n\n\nExample\nclass Dog:\n    def __init__(self, name):\n        self.name = name\n\ndog1 = Dog(\"Buddy\")\ndog2 = Dog(\"Max\")\n\nprint(dog1.name)  # Output: Buddy\nprint(dog2.name)  # Output: Max\n\n\nMethods\n\nMethods are functions that are defined within a class\nThey operate on the instance attributes of the class\n\n\n\nExample\nclass Dog:\n    def __init__(self, name):\n        self.name = name\n\n    def bark(self):\n        print(f\"{self.name} says woof!\")\n\ndog = Dog(\"Buddy\")\ndog.bark()  # Output: Buddy says woof!\n\n\nInheritance\n\nInheritance allows a class to inherit attributes and methods from another class\nThe class that inherits is called the subclass, and the class being inherited from is the superclass\n\n\n\nExample\nclass Animal:\n    def __init__(self, name):\n        self.name = name\n\n    def speak(self):\n        pass\n\nclass Dog(Animal):\n    def speak(self):\n        return f\"{self.name} says woof!\"\n\ndog = Dog(\"Buddy\")\nprint(dog.speak())  # Output: Buddy says woof!\n\n\nPolymorphism\n\nPolymorphism allows you to use a single interface to represent different data types\nIt enables you to write more flexible and generic code\n\n\n\nExample\nclass Animal:\n    def speak(self):\n        pass\n\nclass Dog(Animal):\n    def speak(self):\n        return f\"{self.name} says woof!\"\n\nclass Cat(Animal):\n    def speak(self):\n        return f\"{self.name} says meow!\"\n\ndef make_animal_speak(animal):\n    print(animal.speak())\n\ndog = Dog(\"Buddy\")\ncat = Cat(\"Whiskers\")\n\nmake_animal_speak(dog)  # Output: Buddy says woof!\nmake_animal_speak(cat)  # Output: Whiskers says meow!\n\n\nEncapsulation\n\nEncapsulation is the concept of bundling data (attributes) and methods (behavior) that operate on the data into a single unit (class)\nIt helps in organizing code and controlling access to the internal parts of an object\n\n\n\nExample\nclass BankAccount:\n    def __init__(self, owner, balance=0):\n        self.owner = owner\n        self.balance = balance\n\n    def deposit(self, amount):\n        if amount &gt; 0:\n            self.balance += amount\n\n    def withdraw(self, amount):\n        if 0 &lt; amount &lt;= self.balance:\n            self.balance -= amount\n        else:\n            print(\"Insufficient funds!\")\n\naccount = BankAccount(\"Alice\", 100)\naccount.deposit(50)\naccount.withdraw(30)\nprint(account.balance)  # Output: 120\n\n\nAccess Modifiers\n\nIn Python, there are no strict access modifiers like in some other languages\nBy convention, you can use a single underscore _ to indicate that a variable or method is intended to be protected\nA double underscore __ is used to indicate that it is intended to be private\n\n\n\nExample\nclass BankAccount:\n    def __init__(self, owner, balance=0):\n        self.owner = owner\n        self.__balance = balance  # Private attribute\n\n    def deposit(self, amount):\n        if amount &gt; 0:\n            self.__balance += amount\n\n    def withdraw(self, amount):\n        if 0 &lt; amount &lt;= self.__balance:\n            self.__balance -= amount\n        else:\n            print(\"Insufficient funds!\")\n\naccount = BankAccount(\"Alice\", 100)\naccount.deposit(50)\naccount.withdraw(30)\nprint(account.balance)  # Output: 120\n\n\nGetters and Setters\n\nGetters and setters are methods used to access and modify the attributes of a class\nThey provide controlled access to the attributes\n\n\n\nExample\nclass BankAccount:\n    def __init__(self, owner, balance=0):\n        self.owner = owner\n\n\nGetters and Setters\n\nGetters are methods used to retrieve the value of an attribute\nSetters are methods used to modify the value of an attribute\n\n\n\nExample\nclass BankAccount:\n    def __init__(self, owner, balance=0):\n        self.owner = owner\n        self.__balance = balance  # Private attribute   \n\n    def get_balance(self):\n        return self.__balance\n\n    def set_balance(self, amount):\n        if amount &gt; 0:\n            self.__balance = amount\n        else:\n            print(\"Invalid amount!\")\n\n\n\nLecture III - Building Reusable Functions | Programming with Python | Dr. Tobias Vlćek | Home"
+  },
+  {
+    "objectID": "part-03/lecture-functions-presentation.html#section",
+    "href": "part-03/lecture-functions-presentation.html#section",
+    "title": "Lecture III - Building Reusable Functions",
+    "section": "",
+    "text": "class Student: # We define a class with the keyword class\n    def __init__(self, name): # A method called when an object is created\n        self.name = name\n\n    def knows_answer(self): # A method that prints out the string\n        print(f\"{self.name} knows the answer to the question.\")\n\nstudent = Student(\"Buddy\")\nstudent.knows_answer()\n\n\n\nBuddy knows the answer to the question."
+  },
+  {
+    "objectID": "part-03/lecture-functions-presentation.html#global-scope-ii",
+    "href": "part-03/lecture-functions-presentation.html#global-scope-ii",
+    "title": "Lecture III - Building Reusable Functions",
+    "section": "Global Scope II",
+    "text": "Global Scope II\n\nWe don’t change global variables inside a function!\nThe original value can still be accessed from outside the function\n\n\ngreeting = \"Hello, Stranger!\"\n\ndef greet(name):\n   greeting = f\"Hello, {name}!\"\n   return greeting\n\nprint(greet(\"Students\")) # Greet students\nprint(greeting) # Greet Stranger\n\n\n\nHello, Students!\nHello, Stranger!"
+  },
+  {
+    "objectID": "part-03/lecture-functions-presentation.html#scope-of-loops",
+    "href": "part-03/lecture-functions-presentation.html#scope-of-loops",
+    "title": "Lecture III - Building Reusable Functions",
+    "section": "Scope of Loops",
+    "text": "Scope of Loops\n\nThe variable scope in loops works like in functions\nVariables defined inside loops are scoped to that loop\nVariables defined in the global scope can be accessed by any loop\n\n\n\n# This won't work!\nfor i in range(3):\n    number_everywhere = \"Number\"\n    print(number_everywhere,i)\n\nprint(number_everywhere)\n\n\n\nNumber 0\nNumber 1\nNumber 2\nNumber"
+  },
+  {
+    "objectID": "part-03/lecture-functions-presentation.html#change-varables-in-global-scope",
+    "href": "part-03/lecture-functions-presentation.html#change-varables-in-global-scope",
+    "title": "Lecture III - Building Reusable Functions",
+    "section": "Change Varables in Global Scope",
+    "text": "Change Varables in Global Scope\n\nWe don’t change global variables inside a function!\nThe original value can still be accessed from outside the function\n\n\ngreeting = \"Hello, Stranger!\"\n\ndef greet(name):\n   greeting = f\"Hello, {name}!\"\n   return greeting\n\nprint(greet(\"Students\")) # Greet students\nprint(greeting) # Greet Stranger\n\n\n\nHello, Students!\nHello, Stranger!"
+  },
+  {
+    "objectID": "part-03/lecture-functions-presentation.html#change-variables-in-global-scope",
+    "href": "part-03/lecture-functions-presentation.html#change-variables-in-global-scope",
+    "title": "Lecture III - Building Reusable Functions",
+    "section": "Change Variables in Global Scope",
+    "text": "Change Variables in Global Scope\n\nWe don’t change global variables inside a function!\nThe original value can still be accessed from outside the function\n\n\ngreeting = \"Hello, Stranger!\"\n\ndef greet(name):\n   greeting = f\"Hello, {name}!\"\n   return greeting\n\nprint(greet(\"Students\")) # Greet students\nprint(greeting) # Greet Stranger\n\n\n\nHello, Students!\nHello, Stranger!"
+  },
+  {
+    "objectID": "part-03/lecture-functions-presentation.html#self",
+    "href": "part-03/lecture-functions-presentation.html#self",
+    "title": "Lecture III - Building Reusable Functions",
+    "section": "Self",
+    "text": "Self\n\nClasses can be quite tricky at first, especially the self keyword\nWhen we call self in a method, it refers to the object itself\nIt is used to access the attributes and methods of the class\nself always needs to be included in method definitions\n\n\n\n# This won't work as self is missing\nclass Students: # Class definition\n    def know_answer(): # Method definition without self\n        print(f\"They know the answer to all questions.\")\n\nstudent = Students()\nstudent.know_answer()\n\n\n\n&gt;Task: Try it yourself, what is the error?"
+  },
+  {
+    "objectID": "part-03/lecture-functions-presentation.html#inheritance-in-action",
+    "href": "part-03/lecture-functions-presentation.html#inheritance-in-action",
+    "title": "Lecture III - Building Reusable Functions",
+    "section": "Inheritance in Action",
+    "text": "Inheritance in Action\n\nclass Student: # Superclass\n    def __init__(self, name):\n        self.name = name\n    def when_asked(self):\n        pass\n\nclass SmartStudent(Student): # Subclass\n    def when_asked(self):\n        return f\"{self.name} knows the answer!\"\n        \nclass LazyStudent(Student): # Subclass\n    def when_asked(self):\n        return f\"{self.name} has to ask ChatGPT!\"\n\n&gt;Grouptask: Create two students. One is smart and the other one is lazy. Make sure that both students reaction to a question is printed."
+  },
+  {
+    "objectID": "part-03/lecture-functions-presentation.html#access-return-values",
+    "href": "part-03/lecture-functions-presentation.html#access-return-values",
+    "title": "Lecture III - Building Reusable Functions",
+    "section": "Access return values",
+    "text": "Access return values\n\nWe can also save the return value from a function in a variable\nThat way we can use it later on in the program\n\n\n\ndef simple_multiplication(a,b):\n    return a*b # even shorter!\n\nresult = simple_multiplication(2,21)\nprint(result)\n\n\n\n42"
+  },
+  {
+    "objectID": "part-03/lecture-functions-presentation.html#empty-functions",
+    "href": "part-03/lecture-functions-presentation.html#empty-functions",
+    "title": "Lecture III - Building Reusable Functions",
+    "section": "Empty Functions",
+    "text": "Empty Functions\n\nA function without any code is called an “empty” function\nTo define it we have to use the pass keyword\nIt does nothing and is used as a placeholder for future code\nIt is good practice to include a comment at the top of your functions\nIf you do it with three dashes, it will appear in the help menu\n\n\n\ndef greet():\n    \"\"\"\n    This function will be used later and has currently\n    absolutely no use for anything.\n    \"\"\"\n    pass\n\nhelp(greet)\n\n\n\nHelp on function greet in module __main__:\n\ngreet()\n    This function will be used later and has currently\n    absolutely no use for anything.\n\n\n\n\n\n\n\n\n\n\n\nTip\n\n\nIt is common practice to leave out one line after the definition of a function, although we will not always do that in the lecture to save space on the slides."
+  },
+  {
+    "objectID": "part-03/lecture-functions-presentation.html#comment-functions",
+    "href": "part-03/lecture-functions-presentation.html#comment-functions",
+    "title": "Lecture III - Building Reusable Functions",
+    "section": "Comment Functions",
+    "text": "Comment Functions\n\nIt is good practice to include a comment at the top of your functions\nIf you do it with three \"\"\", it will appear in the help menu\n\n\n\ndef greet():\n    \"\"\"\n    This function will be used later and has currently\n    absolutely no use for anything.\n    \"\"\"\n    pass # Necessary placeholder to avoid error\n\nhelp(greet)\n\n\n\nHelp on function greet in module __main__:\n\ngreet()\n    This function will be used later and has currently\n    absolutely no use for anything."
+  },
+  {
+    "objectID": "part-03/lecture-functions-presentation.html#naming-classes",
+    "href": "part-03/lecture-functions-presentation.html#naming-classes",
+    "title": "Lecture III - Building Reusable Functions",
+    "section": "Naming Classes",
+    "text": "Naming Classes\n\nClasses can be named anything, but it is common to use the plural form of their name (e.g., People)\nCamelCase is used for class names, and snake_case is used for method and attribute names (e.g., TallPeople)\nClasses are usually defined in a file with the same name as their class, but with a .py extension\n\n\nQuestion: Which of the following is a good class name? smart_student, SmartStudent, or SmartStudents"
+  },
+  {
+    "objectID": "part-03/lecture-functions-presentation.html#initializing-parameters",
+    "href": "part-03/lecture-functions-presentation.html#initializing-parameters",
+    "title": "Lecture III - Building Reusable Functions",
+    "section": "Initializing Parameters",
+    "text": "Initializing Parameters\n\nWe can also initialize parameters to a default value!\nTo do this we use the = sign and provide it with a value\nThis is called a keyword argument\n\n\ndef greet(lecture=\"Programming with Python\"):\n    print(f\"You are in lecture '{lecture}'!\")\n\ngreet()\ngreet(\"Super Advanced Programming with Python\")\n\n\n\nYou are in lecture 'Programming with Python'!\nYou are in lecture 'Super Advanced Programming with Python'!\n\n\n\n\n\n\n\n\n\nTip\n\n\nThis is especially useful when we want to avoid errors due to missing arguments!"
+  },
+  {
+    "objectID": "part-03/lecture-functions-presentation.html#the-end",
+    "href": "part-03/lecture-functions-presentation.html#the-end",
+    "title": "Lecture III - Building Reusable Functions",
+    "section": "The End",
+    "text": "The End\n\nInterested in more detail about classes and OOP?\nCheck out access modifiers, getters and setters\nThey are definitely a bit more complicated for beginners…\nThough they are worth learning if you build complex programs\n\n\n\n\n\n\n\n\nNote\n\n\nAnd that’s it for todays lecture!\nWe now have covered the basics of funtions and classes. We will continue with some slightly easier topics in the next lectures.\n\n\n\nLiterature {.title}"
+  },
+  {
+    "objectID": "part-03/lecture-functions-presentation.html#interesting-books-to-dive-deeper",
+    "href": "part-03/lecture-functions-presentation.html#interesting-books-to-dive-deeper",
+    "title": "Lecture III - Building Reusable Functions",
+    "section": "Interesting Books to dive deeper",
+    "text": "Interesting Books to dive deeper\n\nThomas, D., & Hunt, A. (2019). The pragmatic programmer, 20th anniversary edition: Journey to mastery (Second edition). Addison-Wesley.\n\n\n\n\n\n\n\n\nTip\n\n\nA fantastic textbook to understand the principles of modern software development and how to create effective software.\n\n\n\n\n\nFor more interesting literature to learn more about Python, take a look at the literature list of this course.\n\n\n\nLecture III - Building Reusable Functions | Programming with Python | Dr. Tobias Vlćek | Home"
+  },
+  {
+    "objectID": "part-03/lecture-functions-presentation.html#interesting-book-to-dive-deeper",
+    "href": "part-03/lecture-functions-presentation.html#interesting-book-to-dive-deeper",
+    "title": "Lecture III - Building Reusable Functions",
+    "section": "Interesting Book to dive deeper",
+    "text": "Interesting Book to dive deeper\n\nThomas, D., & Hunt, A. (2019). The pragmatic programmer, 20th anniversary edition: Journey to mastery (Second edition). Addison-Wesley.\n\n\n\n\n\n\n\n\nTip\n\n\nA fantastic textbook to understand the principles of modern software development and how to create effective software. Also available as a really good audiobook!\n\n\n\n\n\nFor more interesting literature to learn more about Python, take a look at the literature list of this course.\n\n\n\nLecture III - Building Reusable Functions | Programming with Python | Dr. Tobias Vlćek | Home"
+  },
+  {
+    "objectID": "part-03/lecture-functions-presentation.html#multiple-parameters",
+    "href": "part-03/lecture-functions-presentation.html#multiple-parameters",
+    "title": "Lecture III - Building Reusable Functions",
+    "section": "Multiple Parameters",
+    "text": "Multiple Parameters\n\nWe can also have multiple parameters in a function definition\nThey are called positional arguments and are separated by commas\nWhen we call them, they must be provided in the same order\nAlternatively, we could call them by name!\n\n\n&gt; Question: What will be printed here?\n\ndef call_parameters(parameter_a, parameter_b):\n    print(parameter_a, parameter_b)\n\ncall_parameters(parameter_b=\"Hello\", parameter_a=\"World\")\n\n\n\nWorld Hello"
   }
 ]
