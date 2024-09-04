@@ -38,16 +38,229 @@ format:
 
 # [Quick Recap of the last Lecture]{.flow} {.title} 
 
+## Data Structures
+
+- [Newly]{.highlight} introduced data structures:
+  - **Tuples**: Ordered, immutable collections
+  - **Lists**: Ordered, mutable collections
+  - **Sets**: Unordered collections of unique elements
+  - **Dictionaries**: Key-value pairs
+
+. . .
+
+```{python}
+#| eval: false
+
+list_example = [1, 2, 3, 4, 5]
+set_example = {1, 2, 3, 4, 5}
+dict_example = {"a": 1, "b": 2, "c": 3}
+tuple_example = (1, 2, 3, 4, 5)
+```
+
+## Operations and Methods
+
+- Each data structure has specific operations and methods:
+  - Tuples and Lists: Indexing, slicing, concatenation
+  - Sets: Union, intersection, difference
+  - Dictionaries: Key-based access, `keys()`, `values()`
+
+. . .
+
+::: {.callout-tip}
+**Comprehensions** for concise creation of these structures are often used in practice to create new data structures from existing ones.
+:::
+
+## I/O and File Handling
+
+- Basic file operations
+  - Opening files with `open()`
+  - Reading and writing files
+  - Using the `with` statement for safer file handling
+
+. . .
+
+::: {.callout-note}
+This covers the main points from our last lecture on data structures and file handling in Python.
+:::
+
 # [Exceptions]{.flow} {.title} 
 
-# [try-except Blocks]{.flow} {.title}
+## What are Exceptions?
+
+- Exceptions are [discovered errors]{.highlight} that occur during the execution
+
+. . . 
+
+```{python}
+#| eval: false
+
+def divide_numbers(a, b):
+        result = a / b
+        return result 
+
+print(divide_numbers(10, 0))
+print("I will not be printed as the program crashed before.")
+```
+
+. . .
+
+[ZeroDivisionError:]{.errors} division by zero
+
+. . .
+
+:::{.callout-warning}
+Undiscovered errors can be very **hard to debug** and can cause **crashes** and **other issues**.
+:::
+
+## Common Built-in Exceptions I
+
+- `ValueError`: argument of correct type but inappropriate value
+- `TypeError`: function applied to object of inappropriate type
+- `NameError`: raised when a local or global name is not found
+- `IndexError`: raised when a sequence subscript is out of range
+- `KeyError`: raised when a dictionary key is not found
+- `FileNotFoundError`: file or directory not found
+- `ZeroDivisionError`: division or modulo by zero
+
+## Common Built-in Exceptions II
+
+- `AttributeError`: attribute reference or assignment fails
+- `ImportError`: import of a modulefails
+- `SyntaxError`: parser encounters a syntax error
+- `IndentationError`: indentation is not correct
+- `RuntimeError`: error does not fall into any category
+
+. . .
+
+::: {.callout-note}
+The list of built-in exceptions is even longer, these are just the most common ones. We won't cover the errors listed here in detail, but it is good to be aware of them.
+:::
+
+
+## try-except Blocks
+
+- `try-except` blocks are used to handle exceptions
+- `try` block contains the code that might raise an exception
+- `except` block contains the executed code if an exception occurs
+
+. . .
+
+```{python}
+#| eval: true
+#| output-location: fragment
+
+def divide_numbers(a, b):
+    try:
+        result = a / b
+        return result
+    except ZeroDivisionError:
+        return "Error: Division by zero is not allowed."
+
+print(divide_numbers(10, 0))
+print("I will be printed as the exception was handled!")
+```
 
 # [Raising Exceptions]{.flow} {.title}
 
+## Raising Exceptions
+
+- We can [raise exceptions ourselves]{.highlight} using the `raise` statement
+- It allows us to handle errors in a more controlled manner
+
+. . .
+
+```{python} 
+#| eval: false
+
+def validate_age(age):
+    if age < 0:
+        raise ValueError
+    return age
+
+print(validate_age(25)) # This will print 25
+print(validate_age(-1)) # This will raise a ValueError
+```
+
+[>Task:]{.task} Try to raise an exception in the function above by passing a string to the `validate_age` function. What happens?
+
+## Raising Exceptions with Custom Messages
+
+- We can also raise exceptions with custom messages 
+- This helps to provide more information about the error
+
+. . .
+
+```{python}
+#| eval: false  
+
+def validate_age(age):
+    if age < 0:
+        raise ValueError("Age cannot be negative")
+    return age
+
+print(validate_age(25)) # This will print 25
+print(validate_age(-1)) # This will raise a ValueError
+```
+
+. . .
+
+[>Question:]{.question} What do you think the `raise` statement will show now?
+
 # [Assertions]{.flow} {.title}
+
+## What are Assertions?
+
+- Assertions are [statements that check if a condition is true]{.highlight}
+- If the condition is false, an `AssertionError` is raised
+- We could use them to check the results of a calculation
+
+. . .
+
+```{python} 
+#| eval: false
+
+x = 9
+y = 10
+assert x < y, "x is not smaller than y"
+assert isinstance(y, float), "y is not a float"
+```
+
+. . . 
+
+[>Task:]{.task} Try to run the code above and discuss what happens.
 
 # [Debugging]{.flow} {.title}
 
+## What is Debugging?
+
+- Debugging is the process of finding and fixing errors in code
+- We can use print statements to debug our code
+- We can also use debugging tools that are built into most IDEs
+
+## Using Print Statements
+
+- We can use print statements to debug our code
+- We can also use debugging tools that are built into most IDEs
+
+## Using Debugging Tools
+
+- We can use debugging tools that are built into most IDEs
+- We can also use debugging tools that are built into most IDEs
+
 # [Logging]{.flow} {.title}
 
+## Using Logging
+
+- We can use logging to track the execution of a program
+- It is a more structured way to log errors and other issues
+- We can use the `logging` module to log errors and other issues
+
 # [Regular Expressions]{.flow} {.title}
+
+## What are Regular Expressions?
+
+- Regular expressions are a way to search for patterns in text
+- They are a powerful tool for string manipulation
+- We can use the `re` module to work with regular expressions
+
+## Using Regular Expressions

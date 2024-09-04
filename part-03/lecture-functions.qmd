@@ -132,6 +132,7 @@ Remember, methods are [functions]{.highlight} that are called on an [object]{.hi
 ```{python}
 #| eval: true
 #| output-location: fragment
+
 def greet(a_parameter):
     print(f"Hello, {a_parameter}!")
 greet("Students")
@@ -153,6 +154,7 @@ It is common practice to leave out one line after the definition of a function, 
 ```{python}
 #| eval: true
 #| output-location: fragment
+#| 
 def greet():
     """
     This function will be used later and has currently
@@ -172,11 +174,9 @@ help(greet)
 
 [> Question:]{.question} Which of the following is a good name for a function? \
 
-`myfunctionthatmultipliesvalues`\ 
-
-`multiply_two_values`\
-
-`multiplyTwoValues`
+- `myfunctionthatmultipliesvalues`\ 
+- `multiply_two_values`\
+- `multiplyTwoValues`
 
 ## Function Parameters
 - Parameters are variables that the function accepts
@@ -203,7 +203,7 @@ greet()
 
 ```{python}
 #| eval: false
-#| 
+
 def greet(university_name, lecture):
     print(f"Hello, students at the {university_name}!")
     print(f"You are in lecture {lecture}!")
@@ -220,7 +220,7 @@ def greet(university_name, lecture):
 ```{python}
 #| eval: true
 #| output-location: fragment
-#| 
+
 def greet(lecture="Programming with Python"):
     print(f"You are in lecture '{lecture}'!")
 
@@ -238,7 +238,7 @@ This is especially useful when we want to avoid errors due to missing arguments!
 - We can also have **multiple parameters** in a function definition
 - They are called [positional arguments]{.highlight} and are separated by commas
 - When we call them, they must be provided in the same order
-- Alternatively, we could call them by name!
+- Alternatively, we could call them by name, as for example in this function call `print("h","i",sep='')`
 
 . . .
 
@@ -246,6 +246,7 @@ This is especially useful when we want to avoid errors due to missing arguments!
 ```{python}
 #| eval: true
 #| output-location: fragment
+#| 
 def call_parameters(parameter_a, parameter_b):
     print(parameter_a, parameter_b)
 
@@ -382,7 +383,7 @@ def greet(name):
    return greeting
 
 print(greet("Students")) # Greet students
-print(greeting) # Greet Stranger
+print(greeting) # Greet students again
 ```
 
 . . .

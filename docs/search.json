@@ -944,7 +944,7 @@
     "href": "part-03/lecture-functions-presentation.html#global-keyword",
     "title": "Lecture III - Building Reusable Functions",
     "section": "Global Keyword",
-    "text": "Global Keyword\n\nStill, we can change the value of greeting from inside a function!\nBy using the global keyword to modify a global variable\n\n\n\ngreeting = \"Hello, Stranger!\"\n\ndef greet(name):\n   global greeting\n   greeting = f\"Hello, {name}!\"\n   return greeting\n\nprint(greet(\"Students\")) # Greet students\nprint(greeting) # Greet Stranger\n\n\n\nHello, Students!\nHello, Students!\n\n\n\n\n&gt;Question: This can be confusing. Do you think you got the idea?"
+    "text": "Global Keyword\n\nStill, we can change the value of greeting from inside a function!\nBy using the global keyword to modify a global variable\n\n\n\ngreeting = \"Hello, Stranger!\"\n\ndef greet(name):\n   global greeting\n   greeting = f\"Hello, {name}!\"\n   return greeting\n\nprint(greet(\"Students\")) # Greet students\nprint(greeting) # Greet students again\n\n\n\nHello, Students!\nHello, Students!\n\n\n\n\n&gt;Question: This can be confusing. Do you think you got the idea?"
   },
   {
     "objectID": "part-03/lecture-functions-presentation.html#example-5",
@@ -1133,7 +1133,7 @@
     "href": "part-03/lecture-functions-presentation.html#naming-functions-and-methods",
     "title": "Lecture III - Building Reusable Functions",
     "section": "Naming Functions (and Methods)",
-    "text": "Naming Functions (and Methods)\n\nFunction names should be short, but descriptive\nUse underscores (_) instead of spaces in the names\nAvoid using Python keywords as function names (e.g., print)\nTry to avoid using built-in functions and methods that have a similar name (e.g., sum and len)\n\n&gt; Question: Which of the following is a good name for a function?\n\nmyfunctionthatmultipliesvalues \nmultiply_two_values\n\nmultiplyTwoValues"
+    "text": "Naming Functions (and Methods)\n\nFunction names should be short, but descriptive\nUse underscores (_) instead of spaces in the names\nAvoid using Python keywords as function names (e.g., print)\nTry to avoid using built-in functions and methods that have a similar name (e.g., sum and len)\n\n&gt; Question: Which of the following is a good name for a function?\n\n\nmyfunctionthatmultipliesvalues \nmultiply_two_values\n\nmultiplyTwoValues"
   },
   {
     "objectID": "part-03/lecture-functions-presentation.html#returning-none",
@@ -1259,6 +1259,440 @@
     "href": "part-03/lecture-functions-presentation.html#multiple-parameters",
     "title": "Lecture III - Building Reusable Functions",
     "section": "Multiple Parameters",
-    "text": "Multiple Parameters\n\nWe can also have multiple parameters in a function definition\nThey are called positional arguments and are separated by commas\nWhen we call them, they must be provided in the same order\nAlternatively, we could call them by name!\n\n\n&gt; Question: What will be printed here?\n\ndef call_parameters(parameter_a, parameter_b):\n    print(parameter_a, parameter_b)\n\ncall_parameters(parameter_b=\"Hello\", parameter_a=\"World\")\n\n\n\nWorld Hello"
+    "text": "Multiple Parameters\n\nWe can also have multiple parameters in a function definition\nThey are called positional arguments and are separated by commas\nWhen we call them, they must be provided in the same order\nAlternatively, we could call them by name, as for example in this function call print(\"h\",\"i\",sep='')\n\n\n&gt; Question: What will be printed here?\n\ndef call_parameters(parameter_a, parameter_b):\n    print(parameter_a, parameter_b)\n\ncall_parameters(parameter_b=\"Hello\", parameter_a=\"World\")\n\n\n\nWorld Hello"
+  },
+  {
+    "objectID": "part-03/lecture-functions-presentation.html#arbitrary-arguments",
+    "href": "part-03/lecture-functions-presentation.html#arbitrary-arguments",
+    "title": "Lecture III - Building Reusable Functions",
+    "section": "Arbitrary Arguments",
+    "text": "Arbitrary Arguments\n\nWe can also use arbitrary arguments to pass a variable number of arguments to a function\nThis is done by using the * sign\nPython provides two special syntaxes for this\n*args and **kwargs."
+  },
+  {
+    "objectID": "part-03/lecture-functions-presentation.html#args-arbitrary-positional-arguments",
+    "href": "part-03/lecture-functions-presentation.html#args-arbitrary-positional-arguments",
+    "title": "Lecture III - Building Reusable Functions",
+    "section": "*args (Arbitrary Positional Arguments)",
+    "text": "*args (Arbitrary Positional Arguments)\n\n*args allows a function to accept any number of positional arguments\nThe arguments are packed into a tuple inside the function\n\n\ndef print_args(*args):\n    for arg in args:\n        print(arg)\n\nprint_args(\"Hello\", \"World\", \"This\", \"is\", \"Python\")\n\n\n\nHello\nWorld\nThis\nis\nPython"
+  },
+  {
+    "objectID": "part-03/lecture-functions-presentation.html#kwargs-arbitrary-keyword-arguments",
+    "href": "part-03/lecture-functions-presentation.html#kwargs-arbitrary-keyword-arguments",
+    "title": "Lecture III - Building Reusable Functions",
+    "section": "**kwargs (Arbitrary Keyword Arguments)",
+    "text": "**kwargs (Arbitrary Keyword Arguments)\n\n**kwargs allows a function to accept any number of keyword arguments\nThe arguments are packed into a dictionary inside the function\n\n\ndef print_kwargs(**kwargs):\n    for key, value in kwargs.items():\n        print(f\"{key}: {value}\")\n\nprint_kwargs(name=\"John\", age=25, city=\"New York\")\n\n\n\nname: John\nage: 25\ncity: New York"
+  },
+  {
+    "objectID": "part-03/lecture-functions-presentation.html#combining-args-and-kwargs",
+    "href": "part-03/lecture-functions-presentation.html#combining-args-and-kwargs",
+    "title": "Lecture III - Building Reusable Functions",
+    "section": "Combining *args and **kwargs",
+    "text": "Combining *args and **kwargs\n\nWe can also combine *args and **kwargs in a function definition\nThis allows a function to accept any number of positional and keyword arguments\n\n\ndef print_args_kwargs(*args, **kwargs):\n    print(\"Positional arguments:\")\n    for arg in args:\n        print(arg)\n    print(\"\\nKeyword arguments:\")\n    for key, value in kwargs.items():\n        print(f\"{key}: {value}\")\n\nprint_args_kwargs(1, 2, 3, name=\"John\", age=25, city=\"New York\")  \n\n\n\nPositional arguments:\n1\n2\n3\n\nKeyword arguments:\nname: John\nage: 25\ncity: New York"
+  },
+  {
+    "objectID": "part-04/lecture-dimensions-presentation.html#arbitrary-arguments",
+    "href": "part-04/lecture-dimensions-presentation.html#arbitrary-arguments",
+    "title": "Lecture IV - Handling Data in more than one Dimension",
+    "section": "Arbitrary Arguments",
+    "text": "Arbitrary Arguments\n\nBack to functions from last lecture as we know more\nWe can also use arbitrary arguments to pass a variable number of arguments to a function\nThis is done by using the * sign\nPython provides two special syntaxes for this\n*args and **kwargs."
+  },
+  {
+    "objectID": "part-04/lecture-dimensions-presentation.html#args-arbitrary-positional-arguments",
+    "href": "part-04/lecture-dimensions-presentation.html#args-arbitrary-positional-arguments",
+    "title": "Lecture IV - Handling Data in more than one Dimension",
+    "section": "*args (Arbitrary Positional Arguments)",
+    "text": "*args (Arbitrary Positional Arguments)\n\n*args allows a function to accept any number of positional arguments\nThe arguments are packed into a tuple inside the function\n\n\ndef print_args(*args):\n    for arg in args:\n        print(arg)\n\nprint_args(\"Hello\", \"World\", \"This\", \"is\", \"Python\")\n\n\n\nHello\nWorld\nThis\nis\nPython"
+  },
+  {
+    "objectID": "part-04/lecture-dimensions-presentation.html#kwargs-arbitrary-keyword-arguments",
+    "href": "part-04/lecture-dimensions-presentation.html#kwargs-arbitrary-keyword-arguments",
+    "title": "Lecture IV - Handling Data in more than one Dimension",
+    "section": "**kwargs (Arbitrary Keyword Arguments)",
+    "text": "**kwargs (Arbitrary Keyword Arguments)\n\n**kwargs allows a function to accept any number of keyword arguments\nThe arguments are packed into a dictionary inside the function\n\n\ndef print_kwargs(**kwargs):\n    for key, value in kwargs.items():\n        print(f\"{key}: {value}\")\n\nprint_kwargs(name=\"John\", age=25, city=\"New York\")\n\n\n\nname: John\nage: 25\ncity: New York"
+  },
+  {
+    "objectID": "part-04/lecture-dimensions-presentation.html#combining-args-and-kwargs",
+    "href": "part-04/lecture-dimensions-presentation.html#combining-args-and-kwargs",
+    "title": "Lecture IV - Handling Data in more than one Dimension",
+    "section": "Combining *args and **kwargs",
+    "text": "Combining *args and **kwargs\n\nWe can also combine *args and **kwargs in a function definition\nThis allows a function to accept any number of positional and keyword arguments\n\n\ndef print_args_kwargs(*args, **kwargs):\n    print(\"Positional arguments:\")\n    for arg in args:\n        print(arg)\n    print(\"\\nKeyword arguments:\")\n    for key, value in kwargs.items():\n        print(f\"{key}: {value}\")\n\nprint_args_kwargs(1, 2, 3, name=\"John\", age=25, city=\"New York\")  \n\n\n\nPositional arguments:\n1\n2\n3\n\nKeyword arguments:\nname: John\nage: 25\ncity: New York"
+  },
+  {
+    "objectID": "part-04/lecture-dimensions-presentation.html#functions",
+    "href": "part-04/lecture-dimensions-presentation.html#functions",
+    "title": "Lecture IV - Handling Data in more than one Dimension",
+    "section": "Functions",
+    "text": "Functions\n\nFunctions are reusable blocks of code that perform specific tasks\nThey can accept inputs (parameters) and return outputs\ndef followed by the function name, parameters and a colon\nHelp in organizing code and reducing repetition\n\n\n\ndef greet(name):\n    return f\"Welcome to this lecture, {name}!\"\n\nprint(greet(\"Students\"))\n\n\n\nWelcome to this lecture, Students!"
+  },
+  {
+    "objectID": "part-04/lecture-dimensions-presentation.html#scope",
+    "href": "part-04/lecture-dimensions-presentation.html#scope",
+    "title": "Lecture IV - Handling Data in more than one Dimension",
+    "section": "Scope",
+    "text": "Scope\n\nScope determines the visibility and lifetime of variables\nVariables defined inside a function are local to that function\nVariables defined outside of all functions are global\nThey can be accessed from anywhere in the program\n\n\n\ndef greet(name):\n    greeting = f\"Welcome to this lecture, {name}!\"\n    return greeting\n\nprint(greeting) # This will cause an error\n\n&gt;Question: Why does this cause an error?"
+  },
+  {
+    "objectID": "part-04/lecture-dimensions-presentation.html#classes",
+    "href": "part-04/lecture-dimensions-presentation.html#classes",
+    "title": "Lecture IV - Handling Data in more than one Dimension",
+    "section": "Classes",
+    "text": "Classes\n\nClasses are blueprints for creating objects\nThey encapsulate data (attributes) and behavior (methods)\nHelp in organizing code and creating objects with similar structures\n\n\n\nclass Lectures:  \n    def __init__(self, name, length_minutes):\n        self.name = name\n        self.length = length_minutes\n\n    def duration(self):\n        return f\"Lecture '{self.name}' is {self.length} minutes long!\"\n\nlecture_4 = Lectures(\"4. Data in more than one dimension\", 90)\nprint(lecture_4.duration())\n\n\n\nLecture '4. Data in more than one dimension' is 90 minutes long!"
+  },
+  {
+    "objectID": "part-04/lecture-dimensions-presentation.html#what-are-tuples",
+    "href": "part-04/lecture-dimensions-presentation.html#what-are-tuples",
+    "title": "Lecture IV - Handling Data in more than one Dimension",
+    "section": "What are Tuples?",
+    "text": "What are Tuples?\n\nTuples are ordered collections of items\nThey are immutable (cannot be changed after creation)\nHelp in storing multiple items in a single variable\nCreated using the tuple() function or the () syntax\n\n\n\nmy_tuple = (1, 2, 3, 4, 5)\nprint(my_tuple)\n\n\n\n(1, 2, 3, 4, 5)"
+  },
+  {
+    "objectID": "part-04/lecture-dimensions-presentation.html#tuple-operations",
+    "href": "part-04/lecture-dimensions-presentation.html#tuple-operations",
+    "title": "Lecture IV - Handling Data in more than one Dimension",
+    "section": "Tuple Operations",
+    "text": "Tuple Operations\n\nTuples support the same operations as strings\nWe can use indexing and slicing to access elements\nWe can use the + operator to concatenate tuples\nWe can use the * operator to repeat a tuple\n\n\n&gt;Question: What will the following code print?\n\nmy_tuple = (1, 2, 3)    \nprint(my_tuple[1:3])\nprint(my_tuple + (4, 5, 6))\nprint(my_tuple * 2)\n\n\n\n(2, 3)\n(1, 2, 3, 4, 5, 6)\n(1, 2, 3, 1, 2, 3)"
+  },
+  {
+    "objectID": "part-04/lecture-dimensions-presentation.html#tuple-operations-1",
+    "href": "part-04/lecture-dimensions-presentation.html#tuple-operations-1",
+    "title": "Lecture IV - Handling Data in more than one Dimension",
+    "section": "Tuple Operations",
+    "text": "Tuple Operations"
+  },
+  {
+    "objectID": "part-04/lecture-dimensions-presentation.html#tuple-methods",
+    "href": "part-04/lecture-dimensions-presentation.html#tuple-methods",
+    "title": "Lecture IV - Handling Data in more than one Dimension",
+    "section": "Tuple Methods",
+    "text": "Tuple Methods\n\nTuples support the following methods:\n\ncount(x): Returns the number of times x appears in the tuple\nindex(x): Returns the index of the first occurrence of x\n\n\n\n&gt;Question: What will this code print?\n\nmy_tuple = (1, 2, 3, 2, 4, 2)\nprint(my_tuple.count(2))\nprint(my_tuple.index(3))\n\n\n\n3\n2"
+  },
+  {
+    "objectID": "part-04/lecture-dimensions-presentation.html#tuple-unpacking",
+    "href": "part-04/lecture-dimensions-presentation.html#tuple-unpacking",
+    "title": "Lecture IV - Handling Data in more than one Dimension",
+    "section": "Tuple Unpacking",
+    "text": "Tuple Unpacking\n\nAllows us to assign the elements of a tuple to variables\nThe number of variables must match the number of elements\nUse the * operator to assign the remaining elements to a variable\n\n\n\ndef get_student_info(name, age, city):\n    return name, age, city\nname, *rest = get_student_info(\"Peter\", 25, \"Hamburg\")\nprint(f\"Name: {name}\")\nprint(f\"Other info: {rest}\")\n\n\n\nName: Peter\nOther info: [25, 'Hamburg']\n\n\n\n\n\n\n\n\n\n\nWarning\n\n\nThe output is positional, so we have to be careful with the order of the variables."
+  },
+  {
+    "objectID": "part-04/lecture-dimensions-presentation.html#tuples-from-functions",
+    "href": "part-04/lecture-dimensions-presentation.html#tuples-from-functions",
+    "title": "Lecture IV - Handling Data in more than one Dimension",
+    "section": "Tuples from Functions",
+    "text": "Tuples from Functions\n\nFunctions can return tuples\nThis is useful if we want to return multiple values from a function\n\n\n\ndef get_student_info(name, age, city):\n    return name, age, city\n\nstudent_info = get_student_info(\"Peter\", 25, \"Hamburg\")\nprint(student_info)\n\n\n\n('Peter', 25, 'Hamburg')\n\n\n\n\n&gt;Question: How would you access the age from the tuple?"
+  },
+  {
+    "objectID": "part-04/lecture-dimensions-presentation.html#tuple-data-types",
+    "href": "part-04/lecture-dimensions-presentation.html#tuple-data-types",
+    "title": "Lecture IV - Handling Data in more than one Dimension",
+    "section": "Tuple Data Types",
+    "text": "Tuple Data Types\n\nTuples can contain elements of different data types\n\n\nmy_tuple = (\"Peter\", 25, \"Hamburg\")\nprint(my_tuple)\n\n\n\n('Peter', 25, 'Hamburg')\n\n\n\n\n# This works as well\nmy_tuple = \"Peter\", 25, \"Hamburg\"\nprint(my_tuple)\n\n\n\n('Peter', 25, 'Hamburg')\n\n\n\n\n\n\n\n\n\n\nNote\n\n\nWe can also create tuples by listing the elements separated by commas."
+  },
+  {
+    "objectID": "part-04/lecture-dimensions-presentation.html#what-are-lists",
+    "href": "part-04/lecture-dimensions-presentation.html#what-are-lists",
+    "title": "Lecture IV - Handling Data in more than one Dimension",
+    "section": "What are Lists?",
+    "text": "What are Lists?\n\nLists are ordered collections of items\nThey are mutable (can be changed after creation)\nCreated using the list() function or the [] syntax\nThey support the same operations as strings and tuples\nHave much more methods and are more versatile than tuples\n\n\n\nmy_list = [1, 2, 3, 4, 5]\nprint(my_list)\n\n\n\n[1, 2, 3, 4, 5]\n\n\n\n\n&gt;Question: Any idea why lists support more methods?"
+  },
+  {
+    "objectID": "part-04/lecture-dimensions-presentation.html#list-operations",
+    "href": "part-04/lecture-dimensions-presentation.html#list-operations",
+    "title": "Lecture IV - Handling Data in more than one Dimension",
+    "section": "List Operations",
+    "text": "List Operations\n\nLists support the same operations as strings\nWe can use indexing and slicing to access elements\nWe can use the + operator to concatenate lists\nWe can use the * operator to repeat a list"
+  },
+  {
+    "objectID": "part-04/lecture-dimensions-presentation.html#list-methods",
+    "href": "part-04/lecture-dimensions-presentation.html#list-methods",
+    "title": "Lecture IV - Handling Data in more than one Dimension",
+    "section": "List Methods",
+    "text": "List Methods\n\nCommon methods for lists:\n\ncount(x): Returns the number of times x appears in the list\nappend(x): Adds an element x to the end of the list\ninsert(i, x): Inserts an element x at index i\nremove(x): Removes the first occurrence of element x\nindex(x): Returns the index of the first occurrence of x\n\npop([i]): Removes the element at index i and returns it\nsort(): Sorts the list in ascending order\nreverse(): Reverses the list"
+  },
+  {
+    "objectID": "part-04/lecture-dimensions-presentation.html#list-comprehensions",
+    "href": "part-04/lecture-dimensions-presentation.html#list-comprehensions",
+    "title": "Lecture IV - Handling Data in more than one Dimension",
+    "section": "List Comprehensions",
+    "text": "List Comprehensions\n\nList comprehensions provide a concise way to create lists\nSyntax: [expression for item in iterable if condition]"
+  },
+  {
+    "objectID": "part-04/lecture-dimensions-presentation.html#what-are-sets",
+    "href": "part-04/lecture-dimensions-presentation.html#what-are-sets",
+    "title": "Lecture IV - Handling Data in more than one Dimension",
+    "section": "What are Sets?",
+    "text": "What are Sets?\n\nSets are unordered collections of unique elements\nThey are mutable (can be changed after creation)\nCreated using the set() function or the {} syntax\nSupports + and * operations like lists and tuples\nUnlike lists and tuples, sets do not support indexing\n\n\n\nmy_set = {1, 2, 2, 5, 5}\nprint(my_set)\n\n\n\n{1, 2, 5}"
+  },
+  {
+    "objectID": "part-04/lecture-dimensions-presentation.html#set-operations",
+    "href": "part-04/lecture-dimensions-presentation.html#set-operations",
+    "title": "Lecture IV - Handling Data in more than one Dimension",
+    "section": "Set Operations",
+    "text": "Set Operations\n\nSets support the same operations as strings\nWe can use indexing and slicing to access elements\nWe can use the + operator to concatenate sets\nWe can use the * operator to repeat a set"
+  },
+  {
+    "objectID": "part-04/lecture-dimensions-presentation.html#set-methods",
+    "href": "part-04/lecture-dimensions-presentation.html#set-methods",
+    "title": "Lecture IV - Handling Data in more than one Dimension",
+    "section": "Set Methods",
+    "text": "Set Methods\n\nCommon methods for sets:\n\nadd(x): Adds an element x to the set\nremove(x): Removes an element x from the set\ndiscard(x): Removes an element x from the set if it is present\npop(): Removes and returns an arbitrary element from the set\nupdate(other): Adds all elements from other to the set"
+  },
+  {
+    "objectID": "part-04/lecture-dimensions-presentation.html#set-comprehensions",
+    "href": "part-04/lecture-dimensions-presentation.html#set-comprehensions",
+    "title": "Lecture IV - Handling Data in more than one Dimension",
+    "section": "Set Comprehensions",
+    "text": "Set Comprehensions\n\nSet comprehensions provide a concise way to create sets\nSyntax: {expression for item in iterable if condition}\n\n\nmy_set = {x for x in range(10)} \nprint(my_set)\n\n\n\n{0, 1, 2, 3, 4, 5, 6, 7, 8, 9}"
+  },
+  {
+    "objectID": "part-04/lecture-dimensions-presentation.html#when-to-use-which",
+    "href": "part-04/lecture-dimensions-presentation.html#when-to-use-which",
+    "title": "Lecture IV - Handling Data in more than one Dimension",
+    "section": "When to use which?",
+    "text": "When to use which?\n\nTuples: store a collection of items that should not be changed\nLists: store a collection of items that should be changed\nSets: store a collection of items that should not be changed and duplicates are not allowed\nDictionaries: store a collection of items that should be changed, duplicates are not allowed and require key-value pairs\n\n\n\n\n\n\n\n\nTip\n\n\nYou can convert between the data types using tuple(), list(), set() and dict(). Note, that this is not always possible, e.g. you cannot convert a list to a dictionary without specifying a key."
+  },
+  {
+    "objectID": "part-04/lecture-dimensions-presentation.html#what-are-dictionaries",
+    "href": "part-04/lecture-dimensions-presentation.html#what-are-dictionaries",
+    "title": "Lecture IV - Handling Data in more than one Dimension",
+    "section": "What are Dictionaries?",
+    "text": "What are Dictionaries?\n\nDictionaries are unordered collections of key-value pairs\nThey are mutable (can be changed after creation)\nKeys must be unique and immutable\nValues can be of any type\nCreated using the dict() function or the {} syntax\nAs sets we cannot access them by index\n\n\n\nwho_am_i = {\"name\": \"Tobias\", \"age\": 30, \"city\": \"Hamburg\"}\nprint(who_am_i)\n\n\n\n{'name': 'Tobias', 'age': 30, 'city': 'Hamburg'}"
+  },
+  {
+    "objectID": "part-04/lecture-dimensions-presentation.html#dictionary-operations",
+    "href": "part-04/lecture-dimensions-presentation.html#dictionary-operations",
+    "title": "Lecture IV - Handling Data in more than one Dimension",
+    "section": "Dictionary Operations",
+    "text": "Dictionary Operations\n\nCommon operations and methods:\nin operation to check if a key is in the dictionary\nfor loop to iterate over the dictionary\nkeys() method to return a view of the dictionary’s keys\nvalues() method to return a view of the dictionary’s values\npop(key[, default]) to remove a key and return its value"
+  },
+  {
+    "objectID": "part-04/lecture-dimensions-presentation.html#dictionary-comprehensions",
+    "href": "part-04/lecture-dimensions-presentation.html#dictionary-comprehensions",
+    "title": "Lecture IV - Handling Data in more than one Dimension",
+    "section": "Dictionary Comprehensions",
+    "text": "Dictionary Comprehensions\n\nDictionary comprehensions provide a concise way to create dictionaries\nSyntax: {key_expression: value_expression for item in iterable if condition}"
+  },
+  {
+    "objectID": "part-04/lecture-dimensions-presentation.html#inputoutput",
+    "href": "part-04/lecture-dimensions-presentation.html#inputoutput",
+    "title": "Lecture IV - Handling Data in more than one Dimension",
+    "section": "Input/Output",
+    "text": "Input/Output\n\nA common task in programming is to interact with users\nRemember the input() function from the first lecture?\nIt is a classical example of user input\nAn example of output is the print() function\n\n\n\nname = input(\"Please enter your name: \")    \nprint(f\"Hello, {name}!\")\n\n\n\n\n\n\n\n\n\nNote\n\n\nThus, we have already worked with I/O in Python!"
+  },
+  {
+    "objectID": "part-04/lecture-dimensions-presentation.html#reading-and-writing-files",
+    "href": "part-04/lecture-dimensions-presentation.html#reading-and-writing-files",
+    "title": "Lecture IV - Handling Data in more than one Dimension",
+    "section": "Reading and Writing Files",
+    "text": "Reading and Writing Files\n\nWe also need to interact with data\nFile handling in Python is quite simple:\n\nUse open(file_name, mode) to open a file\nModes: \"r\" (read), \"w\" (write), \"a\" (append)\n\nBasic operations:\n\nRead: file.read()\nWrite: file.write(content)\nClose: file.close()"
+  },
+  {
+    "objectID": "part-04/lecture-dimensions-presentation.html#working-with-other-file-types",
+    "href": "part-04/lecture-dimensions-presentation.html#working-with-other-file-types",
+    "title": "Lecture IV - Handling Data in more than one Dimension",
+    "section": "Working with other file types",
+    "text": "Working with other file types\n\nNaturally, we also want to work with other file types!\nReading and writing CSV files is a common tasks in data analysis\nExcel files are used in many applications and companies\nWe will see how to do this later in the course\n\n\n\n\n\n\n\n\nNote\n\n\nAnd that’s it for todays lecture!\nWe now have covered the basics of tuples, sets, lists and dictionaries as well as some basic file handling. For now, just remember that advanced reading and writing is possible and that there are libraries that help with this.\n\n\n\nLiterature {.title}"
+  },
+  {
+    "objectID": "part-04/lecture-dimensions-presentation.html#file-handling-in-action",
+    "href": "part-04/lecture-dimensions-presentation.html#file-handling-in-action",
+    "title": "Lecture IV - Handling Data in more than one Dimension",
+    "section": "File Handling in Action",
+    "text": "File Handling in Action\n\nfile = open(\"hi.txt\", \"w\") # This creates a file called \"hi.txt\"\nfile.write(\"Hello, World!\") # This writes \"Hello, World!\" to the file\nfile.close() # This closes the file\nprint(\"File successfully written\")\n\n\n\nFile successfully written\n\n\n\n&gt;Question: Any ideas how to read the file?\n\n\n\nfile = open(\"hi.txt\", \"r\") # This opens the file \"hi.txt\"\ncontent = file.read() # This reads the content of the file\nfile.close() # This closes the file\nprint(content) # This prints the content of the file\n\n\n\nHello, World!\n\n\n\n\n\n\n\n\n\n\nTip\n\n\nClose files with file.close() to free up system resources and ensure data is properly saved."
+  },
+  {
+    "objectID": "part-04/lecture-dimensions-presentation.html#easy-file-handling-with-with",
+    "href": "part-04/lecture-dimensions-presentation.html#easy-file-handling-with-with",
+    "title": "Lecture IV - Handling Data in more than one Dimension",
+    "section": "Easy File Handling with with",
+    "text": "Easy File Handling with with\n\nWe can use the with statement to open a file\nThis ensures the file is properly closed after its handling finishes\nIt’s a good practice to use it\n\n\nwith open(\"hi_again.txt\", \"w\") as file:\n    file.write(\"Hello again, World!\")\nprint(\"File successfully written\")\n\n\n\nFile successfully written\n\n\n\n#| eval: true #| output-location: fragment\nwith open(“hi_again.txt”, “r”) as file: content = file.read() print(content) ## Working with other file types\n\nNaturally, we also want to work with other file types!\nReading and writing CSV files is a common tasks in data analysis\nExcel files are used in many applications and companies\nWe will see how to do this later in the course\n\n\n\n\n\n\n\n\n\nTip\n\n\nFor now, just remember that this is possible and that there are libraries that help with this\n\n\n\n\n\n\nLecture IV - Handling Data in more than one Dimension | Programming with Python | Dr. Tobias Vlćek | Home"
+  },
+  {
+    "objectID": "part-04/lecture-dimensions-presentation.html#easier-file-handling-with-with",
+    "href": "part-04/lecture-dimensions-presentation.html#easier-file-handling-with-with",
+    "title": "Lecture IV - Handling Data in more than one Dimension",
+    "section": "Easier File Handling with with",
+    "text": "Easier File Handling with with\n\nWe can also use the with statement to open a file\nThis ensures the file is properly closed after its handling finishes\nIt’s a good practice to use it when working with files\n\n\nwith open(\"hi_again.txt\", \"w\") as file:\n    file.write(\"Hello again, World!\")\n\nprint(\"File successfully written\")\n\n\n\nFile successfully written\n\n\n\n&gt;Task: Open the file hi_again.txt and print its content using with"
+  },
+  {
+    "objectID": "part-04/lecture-dimensions-presentation.html#comprehensions",
+    "href": "part-04/lecture-dimensions-presentation.html#comprehensions",
+    "title": "Lecture IV - Handling Data in more than one Dimension",
+    "section": "Comprehensions",
+    "text": "Comprehensions\n\nComprehensions provide a concise way to create data structures\n\nTuple comprehensions: (x for x in iterable)\nList comprehensions: [x for x in iterable]\nSet comprehensions: {x for x in iterable}\nDictionary comprehensions: {x: y for x, y in iterable}\n\n\n\n\n\n\n\n\n\nTip\n\n\nThe iterable can be any object that can be iterated over, e.g. a list, tuple, set, dictionary, etc."
+  },
+  {
+    "objectID": "part-04/lecture-dimensions-presentation.html#lists-in-action",
+    "href": "part-04/lecture-dimensions-presentation.html#lists-in-action",
+    "title": "Lecture IV - Handling Data in more than one Dimension",
+    "section": "Lists in Action",
+    "text": "Lists in Action\n&gt;Task: Solve the following problem using lists:\n\n# Imagine the following shoppping list for this weekend\nshopping_list = [\"cider\", \"beer\", \"bread\", \"frozen_pizza\"]\n\n\n\nFirst, add some apples to the list for a healthy option\nNext, remove the cider as you already have some at home\nSort all items in the list alphabetically\nPrint each item of the list on a new line\n\n\n\n\n\n\n\n\n\nTip\n\n\nYou can use the methods and loops we learned so far to solve the problem."
+  },
+  {
+    "objectID": "part-04/lecture-dimensions-presentation.html#sets-in-action",
+    "href": "part-04/lecture-dimensions-presentation.html#sets-in-action",
+    "title": "Lecture IV - Handling Data in more than one Dimension",
+    "section": "Sets in Action",
+    "text": "Sets in Action\n&gt;Task: Solve the following problem using sets:\n\n# You have a list of friends from two different groups\nfriends_group_1 = [\"Neo\", \"Morpheus\", \"Trinity\", \"Cypher\"]\nfriends_group_2 = [ \"Smith\", \"Apoc\", \"Cypher\", \"Morpheus\"]\n\n\n\nFirst, find the mutual friends in both groups\nThen create a new set of all friends from both groups\nCount the number of friends in total\nPrint each item of the set on a new line\n\n\n\n\n\n\n\n\n\nTip\n\n\nNotice that we can partly use the same procedure as we used for lists."
+  },
+  {
+    "objectID": "part-04/lecture-dimensions-presentation.html#speed-differences",
+    "href": "part-04/lecture-dimensions-presentation.html#speed-differences",
+    "title": "Lecture IV - Handling Data in more than one Dimension",
+    "section": "Speed Differences",
+    "text": "Speed Differences\n\nLists are the most versatile, but slowest\nTuples are generally faster than lists\nSets are generally faster than lists and tuples\nDictionaries depend, but are generally faster than lists and tuples\n\n\n\nCode\nimport timeit\n\n# Number of elements in each data structure\nn = 10000000\n\n# Setup for each data structure, including the test function\nsetup_template = \"\"\"\ndef test_membership(data_structure, element):\n    return element in data_structure\ndata = {data_structure}\n\"\"\"\n\nsetups = {\n    'Tuple': setup_template.format(data_structure=f\"tuple(range({n}))\"),\n    'List': setup_template.format(data_structure=f\"list(range({n}))\"),\n    'Set': setup_template.format(data_structure=f\"set(range({n}))\"),\n    'Dictionary': setup_template.format(data_structure=f\"{{i: i for i in range({n})}}\")\n}\n\n# Measure time for each data structure\nprint(f\"Time taken for a single membership test in {n} elements (in seconds):\")\nprint(\"-\" * 75)\nfor name, setup in setups.items():\n    stmt = f\"test_membership(data, {n-1})\"  # Test membership of the last element\n    time_taken = timeit.timeit(stmt, setup=setup, number=1)\n    print(f\"{name:&lt;10}: {time_taken:.8f}\")\nprint(\"-\" * 75)\nprint(\"Note, that theses values are machine dependent and just for illustration!\")\n\n\n\n\nTime taken for a single membership test in 10000000 elements (in seconds):\n---------------------------------------------------------------------------\nTuple     : 0.05472021\nList      : 0.06179775\nSet       : 0.00000308\nDictionary: 0.00000350\n---------------------------------------------------------------------------\nNote, that theses values are machine dependent and just for illustration!"
+  },
+  {
+    "objectID": "part-04/lecture-dimensions-presentation.html#interesting-books",
+    "href": "part-04/lecture-dimensions-presentation.html#interesting-books",
+    "title": "Lecture IV - Handling Data in more than one Dimension",
+    "section": "Interesting Books",
+    "text": "Interesting Books\n\nDowney, A. B. (2024). Think Python: How to think like a computer scientist (Third edition). O’Reilly. Link to free online version\nElter, S. (2021). Schrödinger programmiert Python: Das etwas andere Fachbuch (1. Auflage). Rheinwerk Verlag.\n\n\n\n\n\n\n\n\nTip\n\n\nNothing new here, but these are still great books!\n\n\n\n\n\nFor more interesting literature to learn more about Python, take a look at the literature list of this course.\n\n\n\nLecture IV - Handling Data in more than one Dimension | Programming with Python | Dr. Tobias Vlćek | Home"
+  },
+  {
+    "objectID": "part-04/lecture-dimensions-presentation.html#set-theory",
+    "href": "part-04/lecture-dimensions-presentation.html#set-theory",
+    "title": "Lecture IV - Handling Data in more than one Dimension",
+    "section": "Set Theory",
+    "text": "Set Theory\n\nAdditional methods are derived from set theory\n\nunion(other): New set with elements from both sets\nintersection(other): New set with common elements\nisdisjoint(other): True if no elements in common\nissubset(other): True if subset of other\n\n\n\n\n\n\n\n\n\nTip\n\n\nThere are more methods for sets! If you are working intensively with sets, keep that in mind."
+  },
+  {
+    "objectID": "part-04/lecture-dimensions-presentation.html#key-value-pairs",
+    "href": "part-04/lecture-dimensions-presentation.html#key-value-pairs",
+    "title": "Lecture IV - Handling Data in more than one Dimension",
+    "section": "Key-Value Pairs",
+    "text": "Key-Value Pairs\n\nWe can access them by their keys, though!\nYou can think of them as a set of key-value pairs\n\n\n\nwho_am_i = {\"name\": \"Tobias\", \"age\": 30, \"city\": \"Hamburg\"}\nprint(who_am_i[\"name\"])\n\n\n\nTobias\n\n\n\n\n\n\n\n\n\n\nNote\n\n\nNote, how we can use the [] operator to access the value of a key?"
+  },
+  {
+    "objectID": "part-04/lecture-dimensions-presentation.html#dictionaries-in-action",
+    "href": "part-04/lecture-dimensions-presentation.html#dictionaries-in-action",
+    "title": "Lecture IV - Handling Data in more than one Dimension",
+    "section": "Dictionaries in Action",
+    "text": "Dictionaries in Action\n&gt;Task: Solve the following problem using dictionaries:\n\n# Create a dictionary with the following information about yourself: name, age, city\ni_am = {}\n\n\n\nAdd your favorite color and food to the dictionary\nRemove the city from the dictionary\nPrint your name and age in a formatted sentence"
+  },
+  {
+    "objectID": "part-04/lecture-dimensions-presentation.html#comparison-between-data-types",
+    "href": "part-04/lecture-dimensions-presentation.html#comparison-between-data-types",
+    "title": "Lecture IV - Handling Data in more than one Dimension",
+    "section": "Comparison between Data Types",
+    "text": "Comparison between Data Types\n\nTuple: Immutable, ordered, duplicates allowed\nList: Mutable, ordered, duplicates allowed\nSet: Mutable, unordered, no duplicates\nDictionary: Mutable, unordered, no duplicates, key-value pairs\n\n\n\n\n\n\n\n\nTip\n\n\nThis impacts your code, the operations you can perform and the speed of your program. Thus, it makes sense to understand the differences and choose the right data type for the task."
+  },
+  {
+    "objectID": "part-04/lecture-dimensions-presentation.html#illustration-of-speed",
+    "href": "part-04/lecture-dimensions-presentation.html#illustration-of-speed",
+    "title": "Lecture IV - Handling Data in more than one Dimension",
+    "section": "Illustration of Speed",
+    "text": "Illustration of Speed\n\n\nCode\nimport timeit\n\ndef test_membership(data_structure, element):\n    return element in data_structure\n\n# Number of elements in each data structure\nn = 10000\n\n# Number of times to run each test\ntest_runs = 100000\n\n# Setup for each data structure\nsetups = {\n    'Tuple': f\"data = tuple(range({n}))\",\n    'List': f\"data = list(range({n}))\",\n    'Set': f\"data = set(range({n}))\",\n    'Dictionary': f\"data = {{i: i for i in range({n})}}\"\n}\n\n# Measure time for each data structure\ntimes = {}\nfor name, setup in setups.items():\n    stmt = f\"test_membership(data, {n-1})\"  # Test membership of the last element\n    time_taken = timeit.timeit(stmt, setup=f\"{setup}\\nfrom __main__ import test_membership\", number=test_runs)\n    times[name] = time_taken\n\n# Find the slowest time for normalization\nslowest_time = max(times.values())\n\n# Calculate and print relative speeds\nprint(f\"Relative speeds (lower is faster, 1.0 is slowest):\")\nprint(\"-\" * 50)\nfor name, time in times.items():\n    relative_speed = time / slowest_time\n    print(f\"{name:&lt;10}: {relative_speed:.3f}\")\n\n\n\n\nRelative speeds (lower is faster, 1.0 is slowest):\n--------------------------------------------------\nTuple     : 0.891\nList      : 1.000\nSet       : 0.001\nDictionary: 0.001"
+  },
+  {
+    "objectID": "part-04/lecture-dimensions-presentation.html#iterables",
+    "href": "part-04/lecture-dimensions-presentation.html#iterables",
+    "title": "Lecture IV - Handling Data in more than one Dimension",
+    "section": "Iterables",
+    "text": "Iterables\n\nWe have already introduced those!\nWe can use the for loop to iterate over an iterable\n\n\n\nshopping_list = [\"cider\", \"beer\", \"bread\", \"frozen_pizza\"]\nfor item in shopping_list:\n    print(item)\n\n\n\ncider\nbeer\nbread\nfrozen_pizza\n\n\n\n\n\nwho_am_i = {\"name\": \"Tobias\", \"age\": 30, \"city\": \"Hamburg\"}\nfor key, value in who_am_i.items():\n    print(f\"{key}: {value}\")\n\n\n\nname: Tobias\nage: 30\ncity: Hamburg"
+  },
+  {
+    "objectID": "part-05/lecture-errors-presentation.html#data-structures",
+    "href": "part-05/lecture-errors-presentation.html#data-structures",
+    "title": "Lecture V - Handling Errors",
+    "section": "Data Structures",
+    "text": "Data Structures\n\nNewly introduced data structures:\n\nTuples: Ordered, immutable collections\nLists: Ordered, mutable collections\nSets: Unordered collections of unique elements\nDictionaries: Key-value pairs\n\n\n\n\nlist_example = [1, 2, 3, 4, 5]\nset_example = {1, 2, 3, 4, 5}\ndict_example = {\"a\": 1, \"b\": 2, \"c\": 3}\ntuple_example = (1, 2, 3, 4, 5)"
+  },
+  {
+    "objectID": "part-05/lecture-errors-presentation.html#operations-and-methods",
+    "href": "part-05/lecture-errors-presentation.html#operations-and-methods",
+    "title": "Lecture V - Handling Errors",
+    "section": "Operations and Methods",
+    "text": "Operations and Methods\n\nEach data structure has specific operations and methods:\n\nTuples and Lists: Indexing, slicing, concatenation\nSets: Union, intersection, difference\nDictionaries: Key-based access, keys(), values()\n\n\n\n\n\n\n\n\n\nTip\n\n\nComprehensions for concise creation of these structures are often used in practice to create new data structures from existing ones."
+  },
+  {
+    "objectID": "part-05/lecture-errors-presentation.html#file-handling",
+    "href": "part-05/lecture-errors-presentation.html#file-handling",
+    "title": "Lecture V - Handling Errors",
+    "section": "File Handling",
+    "text": "File Handling\n\nBasic file operations\n\nOpening files with open()\nReading and writing files\nUsing the with statement for safer file handling"
+  },
+  {
+    "objectID": "part-05/lecture-errors-presentation.html#performance-considerations",
+    "href": "part-05/lecture-errors-presentation.html#performance-considerations",
+    "title": "Lecture V - Handling Errors",
+    "section": "Performance Considerations",
+    "text": "Performance Considerations\n\nWe discussed the performance differences between these data structures:\n\nLists are versatile but slower for certain operations\nSets and dictionaries offer faster lookup times"
+  },
+  {
+    "objectID": "part-05/lecture-errors-presentation.html#inputoutput-io",
+    "href": "part-05/lecture-errors-presentation.html#inputoutput-io",
+    "title": "Lecture V - Handling Errors",
+    "section": "Input/Output (I/O)",
+    "text": "Input/Output (I/O)\n\nRevisited user input with input() function\nExplored file I/O for reading from and writing to files\n\nThis recap covers the main points from our last lecture on data structures and file handling in Python."
+  },
+  {
+    "objectID": "part-05/lecture-errors-presentation.html#io-and-file-handling",
+    "href": "part-05/lecture-errors-presentation.html#io-and-file-handling",
+    "title": "Lecture V - Handling Errors",
+    "section": "I/O and File Handling",
+    "text": "I/O and File Handling\n\nBasic file operations\n\nOpening files with open()\nReading and writing files\nUsing the with statement for safer file handling\n\n\n\n\n\n\n\n\n\nNote\n\n\nThis covers the main points from our last lecture on data structures and file handling in Python."
+  },
+  {
+    "objectID": "part-05/lecture-errors-presentation.html#what-are-exceptions",
+    "href": "part-05/lecture-errors-presentation.html#what-are-exceptions",
+    "title": "Lecture V - Handling Errors",
+    "section": "What are Exceptions?",
+    "text": "What are Exceptions?\n\nExceptions are discovered errors that occur during the execution\n\n\n\ndef divide_numbers(a, b):\n        result = a / b\n        return result \n\nprint(divide_numbers(10, 0))\nprint(\"I will not be printed as the program crashed before.\")\n\n\n\nZeroDivisionError: division by zero\n\n\n\n\n\n\n\n\nWarning\n\n\nUndiscovered errors can be very hard to debug and can cause crashes and other issues."
+  },
+  {
+    "objectID": "part-05/lecture-errors-presentation.html#try-except-blocks",
+    "href": "part-05/lecture-errors-presentation.html#try-except-blocks",
+    "title": "Lecture V - Handling Errors",
+    "section": "try-except Blocks",
+    "text": "try-except Blocks\n\ntry-except blocks are used to handle exceptions\ntry block contains the code that might raise an exception\nexcept block contains the executed code if an exception occurs\n\n\n\ndef divide_numbers(a, b):\n    try:\n        result = a / b\n        return result\n    except ZeroDivisionError:\n        return \"Error: Division by zero is not allowed.\"\n\nprint(divide_numbers(10, 0))\nprint(\"I will be printed as the exception was handled!\")\n\n\n\nError: Division by zero is not allowed.\nI will be printed as the exception was handled!"
+  },
+  {
+    "objectID": "part-05/lecture-errors-presentation.html#common-built-in-exceptions",
+    "href": "part-05/lecture-errors-presentation.html#common-built-in-exceptions",
+    "title": "Lecture V - Handling Errors",
+    "section": "Common Built-in Exceptions",
+    "text": "Common Built-in Exceptions\n\nValueError: argument of correct type but inappropriate value\nTypeError: function applied to object of inappropriate type\nNameError: raised when a local or global name is not found\nIndexError: raised when a sequence subscript is out of range\nKeyError: raised when a dictionary key is not found\nFileNotFoundError: file or directory not found\nZeroDivisionError: division or modulo by zero\nAttributeError: attribute reference or assignment fails\nImportError: import of a modulefails\nSyntaxError: parser encounters a syntax error\nIndentationError: indentation is not correct\nRuntimeError: error does not fall into any category"
+  },
+  {
+    "objectID": "part-05/lecture-errors-presentation.html#common-built-in-exceptions-i",
+    "href": "part-05/lecture-errors-presentation.html#common-built-in-exceptions-i",
+    "title": "Lecture V - Handling Errors",
+    "section": "Common Built-in Exceptions I",
+    "text": "Common Built-in Exceptions I\n\nValueError: argument of correct type but inappropriate value\nTypeError: function applied to object of inappropriate type\nNameError: raised when a local or global name is not found\nIndexError: raised when a sequence subscript is out of range\nKeyError: raised when a dictionary key is not found\nFileNotFoundError: file or directory not found\nZeroDivisionError: division or modulo by zero"
+  },
+  {
+    "objectID": "part-05/lecture-errors-presentation.html#common-built-in-exceptions-ii",
+    "href": "part-05/lecture-errors-presentation.html#common-built-in-exceptions-ii",
+    "title": "Lecture V - Handling Errors",
+    "section": "Common Built-in Exceptions II",
+    "text": "Common Built-in Exceptions II\n\nAttributeError: attribute reference or assignment fails\nImportError: import of a modulefails\nSyntaxError: parser encounters a syntax error\nIndentationError: indentation is not correct\nRuntimeError: error does not fall into any category\n\n\n\n\n\n\n\n\nNote\n\n\nThe list of built-in exceptions is even longer, these are just the most common ones. We won’t cover the errors listed here in detail, but it is good to be aware of them."
+  },
+  {
+    "objectID": "part-05/lecture-errors-presentation.html#raising-exceptions-1",
+    "href": "part-05/lecture-errors-presentation.html#raising-exceptions-1",
+    "title": "Lecture V - Handling Errors",
+    "section": "Raising Exceptions",
+    "text": "Raising Exceptions\n\nWe can raise exceptions ourselves using the raise statement\nIt allows us to handle errors in a more controlled manner\n\n\n\ndef validate_age(age):\n    if age &lt; 0:\n        raise ValueError\n    return age\n\nprint(validate_age(25)) # This will print 25\nprint(validate_age(-1)) # This will raise a ValueError\n\n&gt;Task: Try to raise an exception in the function above by passing a string to the validate_age function. What happens?"
+  },
+  {
+    "objectID": "part-05/lecture-errors-presentation.html#raising-exceptions-with-custom-messages",
+    "href": "part-05/lecture-errors-presentation.html#raising-exceptions-with-custom-messages",
+    "title": "Lecture V - Handling Errors",
+    "section": "Raising Exceptions with Custom Messages",
+    "text": "Raising Exceptions with Custom Messages\n\nWe can also raise exceptions with custom messages\nThis helps to provide more information about the error\n\n\n\ndef validate_age(age):\n    if age &lt; 0:\n        raise ValueError(\"Age cannot be negative\")\n    return age\n\nprint(validate_age(25)) # This will print 25\nprint(validate_age(-1)) # This will raise a ValueError\n\n\n\n&gt;Question: What do you think the raise statement will show now?"
+  },
+  {
+    "objectID": "part-05/lecture-errors-presentation.html#what-are-assertions",
+    "href": "part-05/lecture-errors-presentation.html#what-are-assertions",
+    "title": "Lecture V - Handling Errors",
+    "section": "What are Assertions?",
+    "text": "What are Assertions?\n\nAssertions are statements that check if a condition is true\nIf the condition is false, an AssertionError is raised\nWe could use them to check the results of a calculation\n\n\n\nx = 9\ny = 10\nassert x &lt; y, \"x is not smaller than y\"\nassert isinstance(y, float), \"y is not a float\"\n\n\n\n&gt;Task: Try to run the code above and discuss what happens."
+  },
+  {
+    "objectID": "part-05/lecture-errors-presentation.html#assertions-in-functions",
+    "href": "part-05/lecture-errors-presentation.html#assertions-in-functions",
+    "title": "Lecture V - Handling Errors",
+    "section": "Assertions in Functions",
+    "text": "Assertions in Functions\n\nWe can also use assertions in functions to check the results of a calculation\n\ndef divide_numbers(a, b): assert b != 0, “Division by zero is not allowed” return a / b\nprint(divide_numbers(10, 0)) # This will raise an AssertionError ```"
   }
 ]
