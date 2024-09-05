@@ -34,6 +34,11 @@ format:
         output-file: lecture-presentation.html
     pdf: 
         documentclass: report
+        geometry:
+            - margin=1in
+        fontfamily: roboto
+        fontfamilyoptions: sfdefault
+        colorlinks: true
 ---
 
 # [About this Course]{.flow} {.title}
@@ -64,7 +69,7 @@ I really appreciate active participation and interaction!
 - Try actively participating in this course 
 - You will find it much (!) easier to follow Prof. Goel's course
 - Materials will be provided in the KLU portal
-- Slides are hosted at [python.beyondsimulations.com](https://python.beyondsimulations.com)
+- Slides are hosted at [python.byndsim.com](https://python.byndsim.com)
 
 ## Teaching
 - **Lecture:** Presentation of tools and concepts, based on small examples and code snippets
@@ -195,7 +200,7 @@ In case you find errors and typos in the lecture notes, please report them in th
 
 ## Install Python
 - You could download it from the [Python website](https://www.python.org/downloads/) or with [Anaconda](https://www.anaconda.com/products/individual)
-- **But I would recommend we start by using [Thonny](https://thonny.org/)**
+- **But I would recommend we start by installing [Thonny](https://thonny.org/)**
 - It is an open source IDE that runs on Windows, Linux and Mac
 - It comes with a built-in Python interpreter and package management!
 
@@ -208,9 +213,7 @@ In case you find errors and typos in the lecture notes, please report them in th
 - Other IDEs include for example [PyCharm](https://www.jetbrains.com/pycharm/) from JetBrains or [Visual Studio Code](https://code.visualstudio.com/) from Microsoft
 
 ## Thonny
-- Download and install Thonny from the [website](https://thonny.org/)
-- Start the programm and you should see the following window:
-![First start of Thonny](images/thonny_start.png){#fig-startThonny}
+![First start of Thonny](images/thonny_start.png)
 
 
 ## Python on iPads
@@ -225,7 +228,7 @@ Not all packages generally available in Python are be available in Pythonista, t
 :::
 
 ## First start of Pythonista
-![First start of Pythonista](images/start_pythonista.png){#fig-startPythonista}
+![First start of Pythonista](images/start_pythonista.png)
 
 # [Your first code]{.flow} {.title}
 
@@ -339,19 +342,6 @@ print(message)
 - The source code is executed line by line
 - The interpreter checks the syntax and executes the code
 - This is in contrast to compiled languages, where the code is compiled into machine code before execution
-
-<center>
-```{mermaid}
-%%| echo: false
-flowchart LR
-A[Check Line] --> B{Decision}
-B --> C[Generate Bytecode]
-B --> D[Error in Syntax]
-D --> G[Report Error]
-C --> E[Execute Bytecode]
-E --> F[Output Results]
-```
-</center>
 
 ## Hello again, World!
 Let's go back to our first program:

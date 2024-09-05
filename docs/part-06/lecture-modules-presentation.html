@@ -420,7 +420,7 @@ Dr.&nbsp;Tobias Vlćek
 <li>Common built-in exceptions: <code>ValueError</code>, <code>TypeError</code>, etc.</li>
 </ul>
 <div class="fragment">
-<div id="aa43bab4" class="cell" data-execution_count="2">
+<div id="4231b354" class="cell" data-execution_count="2">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a></a>x <span class="op">=</span> <span class="bu">int</span>(<span class="st">"Hello, World!"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
@@ -455,7 +455,7 @@ Dr.&nbsp;Tobias Vlćek
 <li>Can include custom error messages</li>
 </ul>
 <div class="fragment">
-<div id="d1f70a76" class="cell" data-execution_count="3">
+<div id="273c5872" class="cell" data-execution_count="3">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a></a><span class="cf">raise</span> <span class="pp">ValueError</span>(<span class="st">"This is a custom error message"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
@@ -483,7 +483,7 @@ Dr.&nbsp;Tobias Vlćek
 <li>Useful for checking calculations or variable types</li>
 </ul>
 <div class="fragment">
-<div id="928e4580" class="cell" data-execution_count="4">
+<div id="9bcb3c39" class="cell" data-execution_count="4">
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a></a>x <span class="op">=</span> <span class="op">-</span><span class="dv">1</span></span>
 <span id="cb4-2"><a></a><span class="cf">assert</span> x <span class="op">&gt;</span> <span class="dv">0</span>, <span class="st">"x must be positive"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
@@ -516,69 +516,159 @@ Dr.&nbsp;Tobias Vlćek
 </div>
 </div>
 </section></section>
+<section>
 <section id="modules" class="title-slide slide level1 title center">
 <h1><span class="flow">Modules</span></h1>
 
 </section>
-
+<section id="what-are-modules" class="slide level2">
+<h2>What are Modules?</h2>
+<ul>
+<li>Modules are files containing Python code</li>
+<li>They can define functions, classes, and variables</li>
+<li>They can be imported into other Python scripts</li>
+<li>They can be used to organize code and make it reusable</li>
+</ul>
+</section>
+<section id="creating-modules" class="slide level2">
+<h2>Creating Modules</h2>
+<ul>
+<li>Create a new file with a <code>.py</code> extension</li>
+<li>Define functions, classes, and variables in the file</li>
+<li>Import the module in other Python scripts using the <code>import</code> statement</li>
+</ul>
+</section>
+<section id="importing-modules" class="slide level2">
+<h2>Importing Modules</h2>
+<ul>
+<li>Use the <code>import</code> statement to import the module</li>
+<li>Use the <code>from</code> statement to import specific functions, classes, or variables</li>
+</ul>
+<div class="fragment">
+<div id="1826761c" class="cell" data-execution_count="5">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a></a><span class="im">import</span> my_module</span>
+<span id="cb5-2"><a></a><span class="im">from</span> my_module <span class="im">import</span> my_function</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+</section>
+<section id="built-in-modules" class="slide level2">
+<h2>Built-in Modules</h2>
+<ul>
+<li>Python comes with many built-in modules</li>
+<li>Some common ones: <code>math</code>, <code>random</code>, <code>datetime</code>, <code>os</code>, <code>sys</code>, <code>json</code>, <code>csv</code>, <code>pandas</code>, <code>re</code></li>
+</ul>
+</section></section>
+<section>
 <section id="virtual-environments" class="title-slide slide level1 title center">
 <h1><span class="flow">Virtual Environments</span></h1>
+<ul>
+<li>Virtual environments are used to manage dependencies and packages</li>
+<li>They allow you to have different environments for different projects</li>
+<li>They can be created using the <code>venv</code> module</li>
+</ul>
+</section>
+<section id="creating-a-virtual-environment" class="slide level2">
+<h2>Creating a Virtual Environment</h2>
+<ul>
+<li>Use the <code>venv</code> module to create a virtual environment</li>
+<li>Use the <code>python -m venv</code> command to create a virtual environment</li>
+</ul>
+<div class="fragment">
+<div id="a9e4025e" class="cell" data-execution_count="6">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a></a>python <span class="op">-</span>m venv my_env</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+</section>
+<section id="activating-a-virtual-environment" class="slide level2">
+<h2>Activating a Virtual Environment</h2>
+<ul>
+<li>Use the <code>source</code> command to activate the virtual environment</li>
+<li>Use the <code>my_env\Scripts\activate</code> command to activate the virtual environment</li>
+</ul>
+<div class="fragment">
+<div class="sourceCode" id="cb7"><pre class="sourceCode numberSource {bash} number-lines code-with-copy"><code class="sourceCode"><span id="cb7-1"><a></a>source my_env/Scripts/activate</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section></section>
+<section>
+<section id="importing-packages" class="title-slide slide level1 title center">
+<h1><span class="flow">Importing Packages</span></h1>
 
 </section>
-
-<section id="environment-variables" class="title-slide slide level1 title center">
-<h1><span class="flow">Environment Variables</span></h1>
-
+<section id="installing-packages" class="slide level2">
+<h2>Installing Packages</h2>
+<ul>
+<li>Use the <code>pip install &lt;package_name&gt;</code> command to install a specific package</li>
+<li>Use the <code>pip install -r requirements.txt</code> command to install packages from a requirements file</li>
+</ul>
 </section>
-
-<section id="importing-modules" class="title-slide slide level1 title center">
-<h1><span class="flow">Importing Modules</span></h1>
-
-</section>
-
+<section id="importing-packages-1" class="slide level2">
+<h2>Importing Packages</h2>
+<ul>
+<li>Use the <code>import &lt;package_name&gt;</code> statement to import a specific package</li>
+<li>Use the <code>from &lt;package_name&gt; import &lt;function_name&gt;</code> statement to import a specific function from a package</li>
+</ul>
+</section></section>
+<section>
 <section id="using-modules" class="title-slide slide level1 title center">
 <h1><span class="flow">Using Modules</span></h1>
 
 </section>
-
+<section id="importing-modules-1" class="slide level2">
+<h2>Importing Modules</h2>
+<ul>
+<li>Use the <code>import &lt;module_name&gt;</code> statement to import a specific module</li>
+<li>Use the <code>from &lt;module_name&gt; import &lt;function_name&gt;</code> statement to import a specific function from a module</li>
+</ul>
+</section>
+<section id="importing-modules-from-a-package" class="slide level2">
+<h2>Importing Modules from a Package</h2>
+<ul>
+<li>Use the <code>import &lt;package_name&gt;.&lt;module_name&gt;</code> statement to import a specific module from a package</li>
+</ul>
+</section></section>
+<section>
 <section id="standard-libraries" class="title-slide slide level1 title center">
 <h1><span class="flow">Standard Libraries</span></h1>
 
 </section>
-
-<section id="random-numbers" class="title-slide slide level1 title center">
-<h1><span class="flow">Random Numbers</span></h1>
-
-</section>
-
-<section>
-<section id="math-module" class="title-slide slide level1 title center">
-<h1><span class="flow">Math Module</span></h1>
-
-</section>
-<section id="working-with-csv-files" class="slide level2">
-<h2>Working with CSV Files</h2>
+<section id="random-numbers" class="slide level2">
+<h2>Random Numbers</h2>
 <ul>
-<li><p>CSV (Comma-Separated Values) files are a common format for storing tabular data</p></li>
-<li><p>Use the <code>csv</code> module to read and write CSV files</p></li>
-<li><p>Basic operations:</p>
+<li>The <code>random</code> module provides functions to generate random numbers</li>
+<li>Use the <code>random.randint(a, b)</code> function to generate a random integer between <code>a</code> and <code>b</code></li>
+<li>Use the <code>random.choice(list)</code> function to generate a random element from a list</li>
+</ul>
+</section>
+<section id="math-module" class="slide level2">
+<h2>Math Module</h2>
+<ul>
+<li>The <code>math</code> module provides functions to perform mathematical operations</li>
+<li>Use the <code>math.sqrt(x)</code> function to calculate the square root of <code>x</code></li>
+<li>Use the <code>math.sin(x)</code> function to calculate the sine of <code>x</code></li>
+<li>Use the <code>math.cos(x)</code> function to calculate the cosine of <code>x</code></li>
+<li>Use the <code>math.tan(x)</code> function to calculate the tangent of <code>x</code></li>
+</ul>
+</section>
+<section id="os-module" class="slide level2">
+<h2>OS Module</h2>
+<ul>
+<li>The <code>os</code> module provides functions to interact with the operating system</li>
+<li>Use the <code>os.listdir(path)</code> function to list all files and directories in a directory</li>
+<li>Use the <code>os.path.join(path, filename)</code> function to join a path and a filename</li>
+<li>Use the <code>os.path.exists(path)</code> function to check if a path exists</li>
+<li>Use the <code>os.path.isfile(path)</code> function to check if a path is a file</li>
+<li>Use the <code>os.path.isdir(path)</code> function to check if a path is a directory</li>
+</ul>
+</section>
+<section id="csv-module" class="slide level2">
+<h2>CSV Module</h2>
+<ul>
+<li>CSV (Comma-Separated Values) files are a common format for storing tabular data</li>
+<li>Use the <code>csv</code> module to read and write CSV files</li>
+<li>Basic operations:
 <ul>
 <li>Read: <code>csv.reader(file)</code></li>
 <li>Write: <code>csv.writer(file)</code></li>
-</ul></li>
-<li><p>Example:</p></li>
-<li><p>CSV (Comma-Separated Values) files are a common format for storing tabular data</p></li>
-</ul>
-</section>
-<section id="working-with-excel-files" class="slide level2">
-<h2>Working with Excel Files</h2>
-<ul>
-<li>Excel files are a common format for storing tabular data</li>
-<li>Use the <code>pandas</code> library to read and write Excel files</li>
-<li>Basic operations:
-<ul>
-<li>Read: <code>pandas.read_excel(file_name)</code></li>
-<li>Write: <code>pandas.write_excel(file_name, data)</code></li>
 </ul></li>
 </ul>
 </section></section>
@@ -597,6 +687,23 @@ Dr.&nbsp;Tobias Vlćek
 </section>
 <section id="using-regular-expressions" class="slide level2">
 <h2>Using Regular Expressions</h2>
+<ul>
+<li>Use the <code>re.search(pattern, string)</code> function to search for a pattern in a string</li>
+<li>Use the <code>re.findall(pattern, string)</code> function to find all occurrences of a pattern in a string</li>
+<li>Use the <code>re.sub(pattern, replacement, string)</code> function to replace a pattern in a string</li>
+<li>Use the <code>re.split(pattern, string)</code> function to split a string by a pattern</li>
+</ul>
+</section>
+<section id="regular-expression-syntax" class="slide level2">
+<h2>Regular Expression Syntax</h2>
+<ul>
+<li>Use the <code>re.compile(pattern)</code> function to compile a regular expression</li>
+<li>Use the <code>re.match(pattern, string)</code> function to match a pattern at the beginning of a string</li>
+<li>Use the <code>re.search(pattern, string)</code> function to search for a pattern in a string</li>
+<li>Use the <code>re.findall(pattern, string)</code> function to find all occurrences of a pattern in a string</li>
+<li>Use the <code>re.sub(pattern, replacement, string)</code> function to replace a pattern in a string</li>
+<li>Use the <code>re.split(pattern, string)</code> function to split a string by a pattern</li>
+</ul>
 
 <div class="quarto-auto-generated-content">
 <div class="footer footer-default">
