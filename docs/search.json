@@ -1539,7 +1539,7 @@
     "href": "part-04/lecture-dimensions-presentation.html#speed-differences",
     "title": "Lecture IV - Handling Data in more than one Dimension",
     "section": "Speed Differences",
-    "text": "Speed Differences\n\nLists are the most versatile, but slowest\nTuples are generally faster than lists\nSets are generally faster than lists and tuples\nDictionaries depend, but are generally faster than lists and tuples\n\n\n\nCode\nimport timeit\n\n# Number of elements in each data structure\nn = 10000000\n\n# Setup for each data structure, including the test function\nsetup_template = \"\"\"\ndef test_membership(data_structure, element):\n    return element in data_structure\ndata = {data_structure}\n\"\"\"\n\nsetups = {\n    'Tuple': setup_template.format(data_structure=f\"tuple(range({n}))\"),\n    'List': setup_template.format(data_structure=f\"list(range({n}))\"),\n    'Set': setup_template.format(data_structure=f\"set(range({n}))\"),\n    'Dictionary': setup_template.format(data_structure=f\"{{i: i for i in range({n})}}\")\n}\n\n# Measure time for each data structure\nprint(f\"Time taken for a single membership test in {n} elements (in seconds):\")\nprint(\"-\" * 75)\nfor name, setup in setups.items():\n    stmt = f\"test_membership(data, {n-1})\"  # Test membership of the last element\n    time_taken = timeit.timeit(stmt, setup=setup, number=1)\n    print(f\"{name:&lt;10}: {time_taken:.8f}\")\nprint(\"-\" * 75)\nprint(\"Note, that theses values are machine dependent and just for illustration!\")\n\n\n\n\nTime taken for a single membership test in 10000000 elements (in seconds):\n---------------------------------------------------------------------------\nTuple     : 0.05472021\nList      : 0.06179775\nSet       : 0.00000308\nDictionary: 0.00000350\n---------------------------------------------------------------------------\nNote, that theses values are machine dependent and just for illustration!"
+    "text": "Speed Differences\n\nLists are the most versatile, but slowest\nTuples are generally faster than lists\nSets are generally faster than lists and tuples\nDictionaries depend, but are generally faster than lists and tuples\n\n\n\nCode\nimport timeit\n\n# Number of elements in each data structure\nn = 10000000\n\n# Setup for each data structure, including the test function\nsetup_template = \"\"\"\ndef test_membership(data_structure, element):\n    return element in data_structure\ndata = {data_structure}\n\"\"\"\n\nsetups = {\n    'Tuple': setup_template.format(data_structure=f\"tuple(range({n}))\"),\n    'List': setup_template.format(data_structure=f\"list(range({n}))\"),\n    'Set': setup_template.format(data_structure=f\"set(range({n}))\"),\n    'Dictionary': setup_template.format(data_structure=f\"{{i: i for i in range({n})}}\")\n}\n\n# Measure time for each data structure\nprint(f\"Time taken for a single membership test in {n} elements (in seconds):\")\nprint(\"-\" * 75)\nfor name, setup in setups.items():\n    stmt = f\"test_membership(data, {n-1})\"  # Test membership of the last element\n    time_taken = timeit.timeit(stmt, setup=setup, number=1)\n    print(f\"{name:&lt;10}: {time_taken:.8f}\")\nprint(\"-\" * 75)\nprint(\"Note, that theses values are machine dependent and just for illustration!\")\n\n\n\n\nTime taken for a single membership test in 10000000 elements (in seconds):\n---------------------------------------------------------------------------\nTuple     : 0.05322033\nList      : 0.06057096\nSet       : 0.00000254\nDictionary: 0.00000338\n---------------------------------------------------------------------------\nNote, that theses values are machine dependent and just for illustration!"
   },
   {
     "objectID": "part-04/lecture-dimensions-presentation.html#interesting-books",
@@ -1686,7 +1686,7 @@
     "href": "part-05/lecture-errors-presentation.html#what-are-assertions",
     "title": "Lecture V - Handling Errors",
     "section": "What are Assertions?",
-    "text": "What are Assertions?\n\nAssertions are statements that check if a condition is true\nIf the condition is false, an AssertionError is raised\nWe could use them to check the results of a calculation\n\n\n\nx = 9\ny = 10\nassert x &lt; y, \"x is not smaller than y\"\nassert isinstance(y, float), \"y is not a float\"\n\n\n\n&gt;Task: Try to run the code above and discuss what happens."
+    "text": "What are Assertions?\n\nAssertions are statements that check if a condition is true\nIf the condition is false, an AssertionError is raised\nWe could use them to check the results of a calculation\n\n\n\nx = 9\ny = 10\nassert x &lt; y, \"x is not smaller than y\"\nassert isinstance(y, float), \"y is not a float\"\n\n\n\n&gt;Task: Try to run the code above and discuss what happens.\n\n\n\n\n\n\n\n\nNote\n\n\nisinstance is a built-in function that checks if an object is an instance of a class."
   },
   {
     "objectID": "part-05/lecture-errors-presentation.html#assertions-in-functions",
@@ -1694,5 +1694,187 @@
     "title": "Lecture V - Handling Errors",
     "section": "Assertions in Functions",
     "text": "Assertions in Functions\n\nWe can also use assertions in functions to check the results of a calculation\n\ndef divide_numbers(a, b): assert b != 0, “Division by zero is not allowed” return a / b\nprint(divide_numbers(10, 0)) # This will raise an AssertionError ```"
+  },
+  {
+    "objectID": "part-05/lecture-errors-presentation.html#what-is-debugging",
+    "href": "part-05/lecture-errors-presentation.html#what-is-debugging",
+    "title": "Lecture V - Handling Errors",
+    "section": "What is Debugging?",
+    "text": "What is Debugging?\n\nDebugging is the process of finding and fixing errors in code\nWe can use print and assert statements to debug our code\nWe can also use debugging tools that are built into most IDEs"
+  },
+  {
+    "objectID": "part-05/lecture-errors-presentation.html#using-print-statements",
+    "href": "part-05/lecture-errors-presentation.html#using-print-statements",
+    "title": "Lecture V - Handling Errors",
+    "section": "Using Print Statements",
+    "text": "Using Print Statements\n\nWe can use print statements to debug our code\nWe can also use debugging tools that are built into most IDEs"
+  },
+  {
+    "objectID": "part-05/lecture-errors-presentation.html#using-debugging-tools",
+    "href": "part-05/lecture-errors-presentation.html#using-debugging-tools",
+    "title": "Lecture V - Handling Errors",
+    "section": "Using Debugging Tools",
+    "text": "Using Debugging Tools\n\nWe can also use debugging tools built into most IDEs\nAllow to step through code, set breakpoints, and inspect variables\nWe will use Thonny, but there are many other options"
+  },
+  {
+    "objectID": "part-05/lecture-errors-presentation.html#using-logging",
+    "href": "part-05/lecture-errors-presentation.html#using-logging",
+    "title": "Lecture V - Handling Errors",
+    "section": "Using Logging",
+    "text": "Using Logging\n\nWe can also use logging to track the execution of a program\nIt is a structured way to log errors and other issues\nYou can specify the level of severity for each log message\nHide messages of a certain severity if you want to during execution\n\n\n\n\n\n\n\n\nNote\n\n\nAnd that’s it for todays lecture!\nWe now have covered the basics of errors, exceptions and debugging in Python. Logging is beyond our scope, but it is good to know should you work with larger codebases later on."
+  },
+  {
+    "objectID": "part-05/lecture-errors-presentation.html#what-are-regular-expressions",
+    "href": "part-05/lecture-errors-presentation.html#what-are-regular-expressions",
+    "title": "Lecture V - Handling Errors",
+    "section": "What are Regular Expressions?",
+    "text": "What are Regular Expressions?\n\nRegular expressions are a way to search for patterns in text\nThey are a powerful tool for string manipulation\nWe can use the re module to work with regular expressions"
+  },
+  {
+    "objectID": "part-05/lecture-errors-presentation.html#using-regular-expressions",
+    "href": "part-05/lecture-errors-presentation.html#using-regular-expressions",
+    "title": "Lecture V - Handling Errors",
+    "section": "Using Regular Expressions",
+    "text": "Using Regular Expressions\n\n\n\nLecture V - Handling Errors | Programming with Python | Dr. Tobias Vlćek | Home"
+  },
+  {
+    "objectID": "part-05/lecture-errors-presentation.html#try-except-blocks-in-action",
+    "href": "part-05/lecture-errors-presentation.html#try-except-blocks-in-action",
+    "title": "Lecture V - Handling Errors",
+    "section": "try-except Blocks in Action",
+    "text": "try-except Blocks in Action\n&gt;Grouptask: Solve the following problem using try-except blocks:\n\n\n# Implement a function that converts a string to an integer\n# 1. Try to convert the input_string to an integer\n# 2. If successful, return the integer\n# 3. If a ValueError occurs, catch it and return \"Invalid input: not a number\"\n# 4. If any other exception occurs, catch it and return \n# \"An unexpected error occurred: [type of exception]\"\n\n# Your code here\n\n# Test cases\nprint(string_to_int(\"42\"))        # Should print: 42\nprint(string_to_int(\"Hello\"))     # Should print: Invalid \nprint(string_to_int([123]))       \n\n\n\nQuestion: What is the output of the last line?"
+  },
+  {
+    "objectID": "part-05/lecture-errors-presentation.html#assertions-in-action",
+    "href": "part-05/lecture-errors-presentation.html#assertions-in-action",
+    "title": "Lecture V - Handling Errors",
+    "section": "Assertions in Action",
+    "text": "Assertions in Action\n&gt;Grouptask: Solve the following problem using assertions:\n\n# Implement a function that takes a list of integers and returns the sum of the numbers. \n# 1. Use assertions to check if the input is a list \n# 2. Use assertions to check if the list contains only integers.\n# 3. If the list contains only integers, return the sum of the numbers\n\n# Your code here\n\n# Test cases\nprint(sum_of_numbers([1, 2, 3, 4, 5])) # Should print: 15\nprint(sum_of_numbers([1, 2.0, 3, 4, 5])) # Should print: AssertionError"
+  },
+  {
+    "objectID": "part-05/lecture-errors-presentation.html#using-print-and-assert",
+    "href": "part-05/lecture-errors-presentation.html#using-print-and-assert",
+    "title": "Lecture V - Handling Errors",
+    "section": "Using Print and Assert",
+    "text": "Using Print and Assert\n\nprint: check the values of variables at different points\nassert: check calculations or the types of variables\n\n\n\nx = \"Hello\" # x is a string\nprint(x)\nx = 42.0 # x is a float\nprint(x)\nassert isinstance(x, float), \"x is not a float\"\nassert x == 42.0, \"x is not 42.0\"\n\n\n\nHello\n42.0\n\n\n\n\n\n\n\n\n\n\nNote\n\n\nWhile this can be useful, it is not always the best way to debug code."
+  },
+  {
+    "objectID": "part-05/lecture-errors-presentation.html#debugging-in-thonny",
+    "href": "part-05/lecture-errors-presentation.html#debugging-in-thonny",
+    "title": "Lecture V - Handling Errors",
+    "section": "Debugging in Thonny",
+    "text": "Debugging in Thonny\n\nOpen Thonny and load the following code:\n\n\ndef calculate_average(numbers):\n    total = 0\n    count = 0\n    for num in numbers:\n        total += num\n        count += 1\n    \n    # Deliberate error: division by zero when the list is empty\n    average = total / count\n    return average\n\n# Test cases\ntest_lists = [\n    [1, 2, 3, 4, 5],\n    [10, 20, 30],\n    []  # This will cause an error\n    ]\n    \nfor i, test_list in enumerate(test_lists):\n    print(f\"Test case {i + 1}:\")\n    result = calculate_average(test_list)\n    print(f\"Average: {result}\\n\")\n\n\nClick on the bug icon on the right side of the screen to open the debugging panel\nUse the step over, step into, step out buttons to navigate through your code\nUse the variable viewer to inspect the values of variables at different points in the code\nUse the breakpoints to pause the execution of the code at a specific point"
+  },
+  {
+    "objectID": "part-05/lecture-errors-presentation.html#debugging-in-thonny-i",
+    "href": "part-05/lecture-errors-presentation.html#debugging-in-thonny-i",
+    "title": "Lecture V - Handling Errors",
+    "section": "Debugging in Thonny I",
+    "text": "Debugging in Thonny I\n&gt;Task: Open Thonny and copy the following code:\n\ndef calculate_average(numbers):\n    total = 0\n    count = 0\n    for num in numbers:\n        total += num\n        count += 1\n    \n    average = total / count\n    return average\n\n# Test cases\ntest_lists = [\n    [1, 2, 3, 4, 5],\n    [10, 20, 30],\n    []\n    ]\n    \nfor i, test_list in enumerate(test_lists):\n    print(f\"Test case {i + 1}:\")\n    result = calculate_average(test_list)\n    print(f\"Average: {result}\\n\")"
+  },
+  {
+    "objectID": "part-05/lecture-errors-presentation.html#debugging-in-thonny-ii",
+    "href": "part-05/lecture-errors-presentation.html#debugging-in-thonny-ii",
+    "title": "Lecture V - Handling Errors",
+    "section": "Debugging in Thonny II",
+    "text": "Debugging in Thonny II\n\nClick on the bug icon on the left side of the screen"
+  },
+  {
+    "objectID": "part-05/lecture-errors-presentation.html#debugging-in-thonny-iii",
+    "href": "part-05/lecture-errors-presentation.html#debugging-in-thonny-iii",
+    "title": "Lecture V - Handling Errors",
+    "section": "Debugging in Thonny III",
+    "text": "Debugging in Thonny III\n\nUse step over, step into and step out to navigate through your code\nUse the variable viewer to inspect variables at different points\nUse the breakpoints to pause the execution at a specific point"
+  },
+  {
+    "objectID": "part-05/lecture-errors-presentation.html#debugging-tools",
+    "href": "part-05/lecture-errors-presentation.html#debugging-tools",
+    "title": "Lecture V - Handling Errors",
+    "section": "Debugging Tools",
+    "text": "Debugging Tools\n&gt;Task: Run the code and use the debugging tools to find the error.\n\nUse step over, step into and step out to navigate through your code\nUse the variable viewer to inspect variables at different points\nUse the breakpoints to pause the execution at a specific point\n\n\n&gt;Question: What do you think the error is?\n\n\n\n\n\n\n\n\nNote\n\n\nThe enumerate function used in the code is super helpful function that returns a tuple containing the index and the value of the item in the list and it is not the error."
+  },
+  {
+    "objectID": "part-04/lecture-dimensions-presentation.html#nesting",
+    "href": "part-04/lecture-dimensions-presentation.html#nesting",
+    "title": "Lecture IV - Handling Data in more than one Dimension",
+    "section": "Nesting",
+    "text": "Nesting\n\nWe can nest data structures within each other\nThis is useful if we want to store more complex data\n\n\n\nnormal_list = [1, 2, 3, 4, 5]\nnested_list = [\"Hello, World!\", normal_list, (1,2)]\n\nprint(nested_list)\nprint(nested_list[2])\n\n\n\n['Hello, World!', [1, 2, 3, 4, 5], (1, 2)]\n(1, 2)\n\n\n\n\n\n\n\n\n\n\nTip\n\n\nYou can also nest lists within lists within lists, etc. We could also use this to build matrices, but we will see a much better way to do this later in the course."
+  },
+  {
+    "objectID": "part-05/lecture-errors-presentation.html#interesting-books",
+    "href": "part-05/lecture-errors-presentation.html#interesting-books",
+    "title": "Lecture V - Handling Errors",
+    "section": "Interesting Books",
+    "text": "Interesting Books\n\nDowney, A. B. (2024). Think Python: How to think like a computer scientist (Third edition). O’Reilly. Link to free online version\nElter, S. (2021). Schrödinger programmiert Python: Das etwas andere Fachbuch (1. Auflage). Rheinwerk Verlag.\n\n\n\n\n\n\n\n\nTip\n\n\nNothing new here, but these are still great books!\n\n\n\n\n\nFor more interesting literature to learn more about Python, take a look at the literature list of this course.\n\n\n\nLecture V - Handling Errors | Programming with Python | Dr. Tobias Vlćek | Home"
+  },
+  {
+    "objectID": "part-06/lecture-modules-presentation.html#exceptions-and-error-handling",
+    "href": "part-06/lecture-modules-presentation.html#exceptions-and-error-handling",
+    "title": "Lecture VI - Using Modules and Random Numbers",
+    "section": "Exceptions and Error Handling",
+    "text": "Exceptions and Error Handling\n\nExceptions are discovered errors during program execution\nCommon built-in exceptions: ValueError, TypeError, etc.\n\n\n\nx = int(\"Hello, World!\")\n\n\n\n&gt;ValueError: invalid literal for int() with base 10: ‘Hello, World!’"
+  },
+  {
+    "objectID": "part-06/lecture-modules-presentation.html#raising-exceptions",
+    "href": "part-06/lecture-modules-presentation.html#raising-exceptions",
+    "title": "Lecture VI - Using Modules and Random Numbers",
+    "section": "Raising Exceptions",
+    "text": "Raising Exceptions\n\nWe can raise exceptions using the raise statement\nAllows for more controlled error handling\nCan include custom error messages\n\n\n\nraise ValueError(\"This is a custom error message\")\n\n\n\n\n\n\n\n\n\nNote\n\n\nThe type if raised exception has to exist or you have to create a custom error type before."
+  },
+  {
+    "objectID": "part-06/lecture-modules-presentation.html#assertions",
+    "href": "part-06/lecture-modules-presentation.html#assertions",
+    "title": "Lecture VI - Using Modules and Random Numbers",
+    "section": "Assertions",
+    "text": "Assertions\n\nAssertions check if a condition is true\nIf the condition is false, an AssertionError is raised\nUseful for checking calculations or variable types\n\n\n\nx = -1\nassert x &gt; 0, \"x must be positive\"\n\n\n\nQuestion: Will this raise an AssertionError?"
+  },
+  {
+    "objectID": "part-06/lecture-modules-presentation.html#debugging",
+    "href": "part-06/lecture-modules-presentation.html#debugging",
+    "title": "Lecture VI - Using Modules and Random Numbers",
+    "section": "Debugging",
+    "text": "Debugging\n\nDebugging is the process of finding and fixing errors in code\nUsing print and assert statements\nUsing logging\nUsing built-in debugging tools in IDEs\n\n\n\n\n\n\n\n\nTip\n\n\nThat’s why IDEs are so helpful in coding."
+  },
+  {
+    "objectID": "part-06/lecture-modules-presentation.html#working-with-csv-files",
+    "href": "part-06/lecture-modules-presentation.html#working-with-csv-files",
+    "title": "Lecture VI - Using Modules and Random Numbers",
+    "section": "Working with CSV Files",
+    "text": "Working with CSV Files\n\nCSV (Comma-Separated Values) files are a common format for storing tabular data\nUse the csv module to read and write CSV files\nBasic operations:\n\nRead: csv.reader(file)\nWrite: csv.writer(file)\n\nExample:\nCSV (Comma-Separated Values) files are a common format for storing tabular data"
+  },
+  {
+    "objectID": "part-06/lecture-modules-presentation.html#working-with-excel-files",
+    "href": "part-06/lecture-modules-presentation.html#working-with-excel-files",
+    "title": "Lecture VI - Using Modules and Random Numbers",
+    "section": "Working with Excel Files",
+    "text": "Working with Excel Files\n\nExcel files are a common format for storing tabular data\nUse the pandas library to read and write Excel files\nBasic operations:\n\nRead: pandas.read_excel(file_name)\nWrite: pandas.write_excel(file_name, data)"
+  },
+  {
+    "objectID": "part-06/lecture-modules-presentation.html#what-are-regular-expressions",
+    "href": "part-06/lecture-modules-presentation.html#what-are-regular-expressions",
+    "title": "Lecture VI - Using Modules and Random Numbers",
+    "section": "What are Regular Expressions?",
+    "text": "What are Regular Expressions?\n\nRegular expressions are a way to search for patterns in text\nThey are a powerful tool for string manipulation\nWe can use the re module to work with regular expressions"
+  },
+  {
+    "objectID": "part-06/lecture-modules-presentation.html#using-regular-expressions",
+    "href": "part-06/lecture-modules-presentation.html#using-regular-expressions",
+    "title": "Lecture VI - Using Modules and Random Numbers",
+    "section": "Using Regular Expressions",
+    "text": "Using Regular Expressions\n\n\n\nLecture VI - Using Modules and Random Numbers | Programming with Python | Dr. Tobias Vlćek | Home"
+  },
+  {
+    "objectID": "part-06/lecture-modules-presentation.html#try-except-blocks",
+    "href": "part-06/lecture-modules-presentation.html#try-except-blocks",
+    "title": "Lecture VI - Using Modules and Random Numbers",
+    "section": "Try-Except Blocks",
+    "text": "Try-Except Blocks\n\ntry-except blocks are used to handle exceptions\ntry block contains code that might raise an exception\nexcept block contains code executed if an exception occurs\n\n\ntry:\n    # Code that might raise an exception\n    # ...\nexcept ExceptionType as e:\n    # Code to handle the exception\n    # ...\nexcept:\n    # Code to handle any other exceptions\n    # ..."
+  },
+  {
+    "objectID": "part-05/lecture-errors-presentation.html#try-except-blocks-for-specific-exceptions",
+    "href": "part-05/lecture-errors-presentation.html#try-except-blocks-for-specific-exceptions",
+    "title": "Lecture V - Handling Errors",
+    "section": "try-except Blocks for specific exceptions",
+    "text": "try-except Blocks for specific exceptions\n\nWe can also specify the type of exception we want to catch\nThis allows for more specific error handling\n\ntry:\n    # Code that might raise an exception\n    # ...\nexcept ExceptionType as e:\n    # Code to handle the specific exception type\n    # ...\nexcept:\n    # Code to handle any other exceptions\n    # ...\n\n\n\n\n\n\n\nNote\n\n\nas e is used to store the exception in a variable. Not mandatory, but good practice to do so."
   }
 ]
