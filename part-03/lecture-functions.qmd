@@ -327,6 +327,31 @@ print(simple_multiplication(2,21))
 You can also use **multiple return statements** in a function.
 :::
 
+## Recursion
+- Recursion is a technique where a [function calls itself]{.highlight}
+- Helps to break down problems into **smaller problems**
+
+. . .
+
+```{python}
+#| eval: true
+#| output-location: fragment
+
+def fibonacci(n): # Classical example to introduce recursion
+    if n <= 1:
+        return n
+    else:
+        return fibonacci(n-1) + fibonacci(n-2)
+
+print(fibonacci(6))
+```
+
+. . .
+
+:::{.callout-note}
+Recursion can be a powerful tool, but it can also be [quite tricky]{.highlight} to get right.
+:::
+
 # [Scope]{.flow} {.title}
 
 ## Function Scope
