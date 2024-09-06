@@ -29,6 +29,73 @@
       margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
       vertical-align: middle;
     }
+    /* CSS for syntax highlighting */
+    pre > code.sourceCode { white-space: pre; position: relative; }
+    pre > code.sourceCode > span { line-height: 1.25; }
+    pre > code.sourceCode > span:empty { height: 1.2em; }
+    .sourceCode { overflow: visible; }
+    code.sourceCode > span { color: inherit; text-decoration: inherit; }
+    div.sourceCode { margin: 1em 0; }
+    pre.sourceCode { margin: 0; }
+    @media screen {
+    div.sourceCode { overflow: auto; }
+    }
+    @media print {
+    pre > code.sourceCode { white-space: pre-wrap; }
+    pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+    }
+    pre.numberSource code
+      { counter-reset: source-line 0; }
+    pre.numberSource code > span
+      { position: relative; left: -4em; counter-increment: source-line; }
+    pre.numberSource code > span > a:first-child::before
+      { content: counter(source-line);
+        position: relative; left: -1em; text-align: right; vertical-align: baseline;
+        border: none; display: inline-block;
+        -webkit-touch-callout: none; -webkit-user-select: none;
+        -khtml-user-select: none; -moz-user-select: none;
+        -ms-user-select: none; user-select: none;
+        padding: 0 4px; width: 4em;
+        background-color: #232629;
+        color: #7a7c7d;
+      }
+    pre.numberSource { margin-left: 3em; border-left: 1px solid #7a7c7d;  padding-left: 4px; }
+    div.sourceCode
+      { color: #cfcfc2; background-color: #232629; }
+    @media screen {
+    pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+    }
+    code span { color: #cfcfc2; } /* Normal */
+    code span.al { color: #95da4c; background-color: #4d1f24; font-weight: bold; } /* Alert */
+    code span.an { color: #3f8058; } /* Annotation */
+    code span.at { color: #2980b9; } /* Attribute */
+    code span.bn { color: #f67400; } /* BaseN */
+    code span.bu { color: #7f8c8d; } /* BuiltIn */
+    code span.cf { color: #fdbc4b; font-weight: bold; } /* ControlFlow */
+    code span.ch { color: #3daee9; } /* Char */
+    code span.cn { color: #27aeae; font-weight: bold; } /* Constant */
+    code span.co { color: #7a7c7d; } /* Comment */
+    code span.cv { color: #7f8c8d; } /* CommentVar */
+    code span.do { color: #a43340; } /* Documentation */
+    code span.dt { color: #2980b9; } /* DataType */
+    code span.dv { color: #f67400; } /* DecVal */
+    code span.er { color: #da4453; text-decoration: underline; } /* Error */
+    code span.ex { color: #0099ff; font-weight: bold; } /* Extension */
+    code span.fl { color: #f67400; } /* Float */
+    code span.fu { color: #8e44ad; } /* Function */
+    code span.im { color: #27ae60; } /* Import */
+    code span.in { color: #c45b00; } /* Information */
+    code span.kw { color: #cfcfc2; font-weight: bold; } /* Keyword */
+    code span.op { color: #cfcfc2; } /* Operator */
+    code span.ot { color: #27ae60; } /* Other */
+    code span.pp { color: #27ae60; } /* Preprocessor */
+    code span.re { color: #2980b9; background-color: #153042; } /* RegionMarker */
+    code span.sc { color: #3daee9; } /* SpecialChar */
+    code span.ss { color: #da4453; } /* SpecialString */
+    code span.st { color: #f44f4f; } /* String */
+    code span.va { color: #27aeae; } /* Variable */
+    code span.vs { color: #da4453; } /* VerbatimString */
+    code span.wa { color: #da4453; } /* Warning */
   </style>
   <link rel="stylesheet" href="../site_libs/revealjs/dist/theme/quarto.css">
   <link href="../site_libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
@@ -349,33 +416,359 @@ Dr.&nbsp;Tobias Vlćek
 <section>
 <section id="numpy-module" class="title-slide slide level1 title center">
 <h1><span class="flow">NumPy Module</span></h1>
+
+</section>
+<section id="what-is-numpy" class="slide level2">
+<h2>What is NumPy?</h2>
 <ul>
-<li>NumPy is a fundamental package for scientific computing in Python</li>
-<li>It provides support for large, multi-dimensional arrays and matrices</li>
-<li>It also provides a wide range of mathematical functions to operate on these arrays</li>
-<li>Much faster than standard Python lists</li>
+<li><strong>NumPy</strong> is a package for scientific computing in Python</li>
+<li>Provides support for large, <span class="highlight">multi-dimensional arrays and matrices</span></li>
+<li>Wide range of mathematical functions to operate on these arrays</li>
+<li>Python lists can be slow - Numpy arrays are much faster</li>
 </ul>
+<div class="fragment">
+<div class="callout callout-note callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Note</strong></p>
+</div>
+<div class="callout-content">
+<p>The name of the package comes from Numerical Python.</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="why-is-numpy-so-fast" class="slide level2">
+<h2>Why is NumPy so fast?</h2>
+<ul>
+<li>NumPy arrays are stored in a contiguous block of memory</li>
+<li>This allows for efficient memory access patterns</li>
+<li>Operations are implemented in the languages <code>C</code> and <code>C++</code></li>
+</ul>
+</section>
+<section id="how-to-get-started" class="slide level2">
+<h2>How to get started</h2>
+<ol type="1">
+<li>Install NumPy using <code>pip install numpy</code></li>
+<li>In Thonny, use <code>Tools -&gt; Manage Packages...</code> to install NumPy</li>
+<li>Import NumPy in a script using <code>import numpy as np</code></li>
+<li>You are <span class="highlight">ready to go!</span></li>
+</ol>
+<div class="fragment">
+<div id="0a3468e8" class="cell" data-execution_count="2">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb1-2"><a></a>x <span class="op">=</span> np.array([<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">5</span>])</span>
+<span id="cb1-3"><a></a><span class="bu">type</span>(x)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="31">
+<pre><code>numpy.ndarray</code></pre>
+</div>
+</div>
+</div>
+<div class="fragment">
+<div class="callout callout-note callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Note</strong></p>
+</div>
+<div class="callout-content">
+<p>You don’t have to use <code>as np</code>. But it is a common practice to do so.</p>
+</div>
+</div>
+</div>
+</div>
 </section>
 <section id="creating-arrays" class="slide level2">
 <h2>Creating Arrays</h2>
 <ul>
-<li>Use the <code>np.array(list)</code> function to create an array from a list</li>
-<li>Use the <code>np.zeros(shape)</code> function to create an array of zeros</li>
-<li>Use the <code>np.ones(shape)</code> function to create an array of ones</li>
-<li>Use the <code>np.arange(start, stop, step)</code> function to create an array of evenly spaced values</li>
-<li>Use the <code>np.linspace(start, stop, num)</code> function to create an array of evenly spaced values</li>
-<li>Use the <code>np.random.rand(shape)</code> function to create an array of random values</li>
-<li>Use the <code>np.random.randint(low, high, size)</code> function to create an array of random integers</li>
+<li>The backbone of Numpy is the so called <code>ndarray</code></li>
+<li>Can be initialized from different data structures:</li>
+</ul>
+<div id="751b25c2" class="cell" data-execution_count="3">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb3-2"><a></a>array_from_list <span class="op">=</span> np.array([<span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">1</span>])</span>
+<span id="cb3-3"><a></a><span class="bu">print</span>(array_from_list)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell fragment" data-execution_count="3">
+<div class="cell-output cell-output-stdout">
+<pre><code>[1 1 1 1]</code></pre>
+</div>
+</div>
+<div id="a08cffe1" class="cell" data-execution_count="4">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb5-2"><a></a>array_from_tuple <span class="op">=</span> np.array((<span class="dv">2</span>, <span class="dv">2</span>, <span class="dv">2</span>, <span class="dv">2</span>))</span>
+<span id="cb5-3"><a></a><span class="bu">print</span>(array_from_tuple)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell fragment" data-execution_count="4">
+<div class="cell-output cell-output-stdout">
+<pre><code>[2 2 2 2]</code></pre>
+</div>
+</div>
+</section>
+<section id="hetergenous-data-types" class="slide level2">
+<h2>Hetergenous Data Types</h2>
+<ul>
+<li>It is possible to store different data types in a <code>ndarray</code></li>
+</ul>
+<div id="22d4a8ad" class="cell" data-execution_count="5">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb7-2"><a></a>array_different_types <span class="op">=</span> np.array([<span class="st">"s"</span>, <span class="dv">2</span>, <span class="fl">2.0</span>, <span class="st">"i"</span>])</span>
+<span id="cb7-3"><a></a><span class="bu">print</span>(array_different_types)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell fragment" data-execution_count="5">
+<div class="cell-output cell-output-stdout">
+<pre><code>['s' '2' '2.0' 'i']</code></pre>
+</div>
+</div>
+<div class="fragment">
+<div class="callout callout-note callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Note</strong></p>
+</div>
+<div class="callout-content">
+<p>Not recommended, as it can lead to performance issues. I possible, <strong>keep them homogenous</strong>.</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="creating-prefilled-arrays" class="slide level2">
+<h2>Creating Prefilled Arrays</h2>
+<p>Often used to improve performance by <strong>allocating memory upfront</strong></p>
+<ul>
+<li><code>np.zeros(shape)</code>: to create an array of zeros</li>
+<li><code>np.ones(shape)</code>: to create an array of ones</li>
+<li><code>np.random.rand(shape)</code>: to create an array of random values</li>
+<li><code>np.arange(start, stop, step)</code>: evenly spaced values</li>
+<li><code>np.linspace(start, stop, num)</code>: evenly spaced values</li>
+</ul>
+<div class="fragment">
+<div class="callout callout-note callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Note</strong></p>
+</div>
+<div class="callout-content">
+<p>The shape refers to the <span class="highlight">size of the array</span>. It can have one or multiple dimensions.</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="dimensions" class="slide level2">
+<h2>Dimensions</h2>
+<ul>
+<li>The shape is specified as tuple in these arrays</li>
+<li><code>(2)</code> or <code>2</code> creates a 1-dimensional array (vetor)</li>
+<li><code>(2,2)</code> creates a 2-dimensional array (matrix)</li>
+<li><code>(2,2,2)</code> creates a 3-dimensional array (3rd order tensor)</li>
+<li><code>(2,2,2,2)</code> creates a 4-dimensional array (4th order tensor)</li>
+<li>…</li>
+</ul>
+</section>
+<section id="arrays-in-action" class="slide level2">
+<h2>Arrays in Action</h2>
+<p><span class="task">Task</span>: Complete the following task</p>
+<div id="03288ffd" class="cell" data-execution_count="6">
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a></a><span class="co"># Create a 3-dimensional tensor with filled with ones</span></span>
+<span id="cb9-2"><a></a><span class="co"># You can choose the shape of the tensor, but it should have 200 elements</span></span>
+<span id="cb9-3"><a></a><span class="co"># Sum over all values of the tensor</span></span>
+<span id="cb9-4"><a></a><span class="co"># Print the shape of the tensor using the method shape()</span></span>
+<span id="cb9-5"><a></a><span class="co"># Print the dtype of the tensor using the method dtype()</span></span>
+<span id="cb9-6"><a></a><span class="co"># Print the size of the tensor using the method size()</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="indexing-and-slicing" class="slide level2">
+<h2>Indexing and Slicing</h2>
+<ul>
+<li>Accessing and slicing <code>ndarray</code> elements works as before</li>
+<li>In higher dimensions we can access elements using multiple indices</li>
+</ul>
+<div class="fragment">
+<p><span class="question">Question</span>: What do you expect will be printed?</p>
+<div id="aa295815" class="cell" data-execution_count="7">
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb10-2"><a></a>x <span class="op">=</span> np.random.randint(<span class="dv">0</span>, <span class="dv">10</span>, size<span class="op">=</span>(<span class="dv">3</span>, <span class="dv">3</span>))</span>
+<span id="cb10-3"><a></a><span class="bu">print</span>(x)</span>
+<span id="cb10-4"><a></a><span class="bu">print</span>(<span class="st">"---"</span>)</span>
+<span id="cb10-5"><a></a><span class="bu">print</span>(x[<span class="dv">0</span>:<span class="dv">2</span>,<span class="dv">0</span>:<span class="dv">2</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell fragment" data-execution_count="7">
+<div class="cell-output cell-output-stdout">
+<pre><code>[[2 6 9]
+ [2 1 1]
+ [4 9 5]]
+---
+[[2 6]
+ [2 1]]</code></pre>
+</div>
+</div>
+</div>
+</section>
+<section id="data-types" class="slide level2">
+<h2>Data Types</h2>
+<ul>
+<li>Numpy provides <span class="highlight">data types as characters</span></li>
+<li><code>i</code>: integer</li>
+<li><code>b</code>: boolean</li>
+<li><code>f</code>: float</li>
+<li><code>S</code>: string</li>
+<li><code>U</code>: unicode</li>
+<li>The type can be checked by calling the <code>.dtype</code> attribute</li>
+</ul>
+<div id="b56a0fd8" class="cell" data-execution_count="8">
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a></a>string_array <span class="op">=</span> np.array([<span class="st">"Hello"</span>, <span class="st">"World"</span>])</span>
+<span id="cb12-2"><a></a>string_array.dtype</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell fragment" data-execution_count="8">
+<div class="cell-output cell-output-display" data-execution_count="37">
+<pre><code>dtype('&lt;U5')</code></pre>
+</div>
+</div>
+</section>
+<section id="enforcing-data-types" class="slide level2">
+<h2>Enforcing Data Types</h2>
+<ul>
+<li>We can also <strong>provide</strong> the type when creating arrays</li>
+</ul>
+<div class="fragment">
+<div id="93edc2fd" class="cell" data-execution_count="9">
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a></a>x <span class="op">=</span> np.array([<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">5</span>],  dtype <span class="op">=</span> <span class="st">'f'</span>)</span>
+<span id="cb14-2"><a></a><span class="bu">print</span>(x.dtype)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell fragment" data-execution_count="9">
+<div class="cell-output cell-output-stdout">
+<pre><code>float32</code></pre>
+</div>
+</div>
+</div>
+<div class="fragment">
+<ul>
+<li>Or we can <strong>change</strong> them for existing arrays</li>
+</ul>
+<div id="7fa76c5a" class="cell" data-execution_count="10">
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a></a>x <span class="op">=</span> np.array([<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">5</span>],  dtype <span class="op">=</span> <span class="st">'f'</span>)</span>
+<span id="cb16-2"><a></a><span class="bu">print</span>(x.astype(<span class="st">'i'</span>).dtype)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell fragment" data-execution_count="10">
+<div class="cell-output cell-output-stdout">
+<pre><code>int32</code></pre>
+</div>
+</div>
+</div>
+<div class="fragment">
+<div class="callout callout-note callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Note</strong></p>
+</div>
+<div class="callout-content">
+<p>Note, how the types are specified as <code>int32</code> and <code>float32</code>.</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="joining-arrays" class="slide level2">
+<h2>Joining Arrays</h2>
+<ul>
+<li>You can use <code>concatenate</code> two <strong>join arrays</strong></li>
+<li>With <code>axis</code> you can specify the dimension</li>
+<li>Even easier in 2-dimensions is <code>hstack()</code> and <code>vstack()</code></li>
+</ul>
+<div class="fragment">
+<p><span class="question">Question</span>: What do you expect will be printed?</p>
+<div id="f0647b3e" class="cell" data-execution_count="11">
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb18-2"><a></a>ones <span class="op">=</span> np.array((<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">1</span>))</span>
+<span id="cb18-3"><a></a>twos <span class="op">=</span> np.array((<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">1</span>)) <span class="op">*</span><span class="dv">2</span></span>
+<span id="cb18-4"><a></a><span class="bu">print</span>(np.vstack((ones,twos)))</span>
+<span id="cb18-5"><a></a><span class="bu">print</span>(np.hstack((ones,twos)))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell fragment" data-execution_count="11">
+<div class="cell-output cell-output-stdout">
+<pre><code>[[1 1 1 1]
+ [2 2 2 2]]
+[1 1 1 1 2 2 2 2]</code></pre>
+</div>
+</div>
+</div>
+</section>
+<section id="common-methods" class="slide level2">
+<h2>Common Methods</h2>
+<ul>
+<li><code>sort()</code>: sort the array from low to high</li>
+<li><code>reshape()</code>: reshape the array into a new shape</li>
+<li><code>flatten()</code>: flatten the array into a 1D array</li>
+<li><code>squeeze()</code>: squeeze the array to remove 1D entries</li>
+<li><code>transpose()</code>: transpose the array</li>
+</ul>
+<div class="fragment">
+<div class="callout callout-tip callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Tip</strong></p>
+</div>
+<div class="callout-content">
+<p>Try experiment with these methods, as they can make your <span class="highlight">work later much easier</span>.</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="iterating-over-arrays" class="slide level2">
+<h2>Iterating over Arrays</h2>
+<ul>
+<li>Naturally, we can also loop over a <code>ndarray</code></li>
+<li></li>
+</ul>
+</section>
+<section id="ufuncs" class="slide level2">
+<h2>Ufuncs</h2>
+<ul>
+<li>To increase the speed even further, we can use</li>
+</ul>
+</section>
+<section id="filter" class="slide level2">
+<h2>Filter</h2>
+<ul>
+<li></li>
 </ul>
 </section></section>
 <section>
 <section id="pandas-module" class="title-slide slide level1 title center">
 <h1><span class="flow">Pandas Module</span></h1>
+
+</section>
+<section id="what-is-pandas" class="slide level2">
+<h2>What is Pandas?</h2>
 <ul>
-<li>Pandas is a powerful data manipulation and analysis library</li>
-<li>It provides data structures like DataFrames and Series for data manipulation</li>
+<li>Pandas is a <span class="highlight">data manipulation and analysis library</span></li>
+<li>It provides data structures like <strong>DataFrames and Series</strong></li>
 <li>It also provides tools for data cleaning, analysis, and visualization</li>
 </ul>
+</section>
+<section id="how-to-install-pandas" class="slide level2">
+<h2>How to install Pandas</h2>
 </section>
 <section id="creating-dataframes" class="slide level2">
 <h2>Creating DataFrames</h2>
@@ -732,7 +1125,7 @@ Dr.&nbsp;Tobias Vlćek
       }
         var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
         var mailtoRegex = new RegExp(/^mailto:/);
-          var filterRegex = new RegExp('/' + window.location.host + '/');
+          var filterRegex = new RegExp("https:\/\/beyondsimulations\.github\.io\/Introduction-to-Python");
         var isInternal = (href) => {
             return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
         }

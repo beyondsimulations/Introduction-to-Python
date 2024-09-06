@@ -8,7 +8,7 @@
 
 <meta name="author" content="Dr.&nbsp;Tobias Vlćek">
 
-<title>Lecture VI - Using Modules and Random Numbers – Programming with Python</title>
+<title>Lecture VI - Using Modules and Packages – Programming with Python</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -232,38 +232,38 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </ul></li>
   <li><a href="#modules" id="toc-modules" class="nav-link" data-scroll-target="#modules"><span class="flow">Modules</span></a>
   <ul class="collapse">
-  <li><a href="#what-are-modules" id="toc-what-are-modules" class="nav-link" data-scroll-target="#what-are-modules">What are Modules?</a></li>
+  <li><a href="#why-modules" id="toc-why-modules" class="nav-link" data-scroll-target="#why-modules">Why Modules?</a></li>
   <li><a href="#creating-modules" id="toc-creating-modules" class="nav-link" data-scroll-target="#creating-modules">Creating Modules</a></li>
-  <li><a href="#importing-modules" id="toc-importing-modules" class="nav-link" data-scroll-target="#importing-modules">Importing Modules</a></li>
+  <li><a href="#importing-functions-from-modules" id="toc-importing-functions-from-modules" class="nav-link" data-scroll-target="#importing-functions-from-modules">Importing functions from modules</a></li>
   <li><a href="#built-in-modules" id="toc-built-in-modules" class="nav-link" data-scroll-target="#built-in-modules">Built-in Modules</a></li>
-  </ul></li>
-  <li><a href="#virtual-environments" id="toc-virtual-environments" class="nav-link" data-scroll-target="#virtual-environments"><span class="flow">Virtual Environments</span></a>
-  <ul class="collapse">
-  <li><a href="#creating-a-virtual-environment" id="toc-creating-a-virtual-environment" class="nav-link" data-scroll-target="#creating-a-virtual-environment">Creating a Virtual Environment</a></li>
-  <li><a href="#activating-a-virtual-environment" id="toc-activating-a-virtual-environment" class="nav-link" data-scroll-target="#activating-a-virtual-environment">Activating a Virtual Environment</a></li>
-  </ul></li>
-  <li><a href="#importing-packages" id="toc-importing-packages" class="nav-link" data-scroll-target="#importing-packages"><span class="flow">Importing Packages</span></a>
-  <ul class="collapse">
-  <li><a href="#installing-packages" id="toc-installing-packages" class="nav-link" data-scroll-target="#installing-packages">Installing Packages</a></li>
-  <li><a href="#importing-packages-1" id="toc-importing-packages-1" class="nav-link" data-scroll-target="#importing-packages-1">Importing Packages</a></li>
-  </ul></li>
-  <li><a href="#using-modules" id="toc-using-modules" class="nav-link" data-scroll-target="#using-modules"><span class="flow">Using Modules</span></a>
-  <ul class="collapse">
-  <li><a href="#importing-modules-1" id="toc-importing-modules-1" class="nav-link" data-scroll-target="#importing-modules-1">Importing Modules</a></li>
-  <li><a href="#importing-modules-from-a-package" id="toc-importing-modules-from-a-package" class="nav-link" data-scroll-target="#importing-modules-from-a-package">Importing Modules from a Package</a></li>
+  <li><a href="#importing-from-the-standard-library" id="toc-importing-from-the-standard-library" class="nav-link" data-scroll-target="#importing-from-the-standard-library">Importing from the Standard Library</a></li>
   </ul></li>
   <li><a href="#standard-libraries" id="toc-standard-libraries" class="nav-link" data-scroll-target="#standard-libraries"><span class="flow">Standard Libraries</span></a>
   <ul class="collapse">
   <li><a href="#random-numbers" id="toc-random-numbers" class="nav-link" data-scroll-target="#random-numbers">Random Numbers</a></li>
-  <li><a href="#math-module" id="toc-math-module" class="nav-link" data-scroll-target="#math-module">Math Module</a></li>
+  <li><a href="#random-numbers-in-action" id="toc-random-numbers-in-action" class="nav-link" data-scroll-target="#random-numbers-in-action">Random Numbers in Action</a></li>
   <li><a href="#os-module" id="toc-os-module" class="nav-link" data-scroll-target="#os-module">OS Module</a></li>
   <li><a href="#csv-module" id="toc-csv-module" class="nav-link" data-scroll-target="#csv-module">CSV Module</a></li>
   </ul></li>
   <li><a href="#regular-expressions" id="toc-regular-expressions" class="nav-link" data-scroll-target="#regular-expressions"><span class="flow">Regular Expressions</span></a>
   <ul class="collapse">
   <li><a href="#what-are-regular-expressions" id="toc-what-are-regular-expressions" class="nav-link" data-scroll-target="#what-are-regular-expressions">What are Regular Expressions?</a></li>
+  <li><a href="#why-regular-expressions" id="toc-why-regular-expressions" class="nav-link" data-scroll-target="#why-regular-expressions">Why Regular Expressions?</a></li>
   <li><a href="#using-regular-expressions" id="toc-using-regular-expressions" class="nav-link" data-scroll-target="#using-regular-expressions">Using Regular Expressions</a></li>
-  <li><a href="#regular-expression-syntax" id="toc-regular-expression-syntax" class="nav-link" data-scroll-target="#regular-expression-syntax">Regular Expression Syntax</a></li>
+  <li><a href="#regular-expression-in-action" id="toc-regular-expression-in-action" class="nav-link" data-scroll-target="#regular-expression-in-action">Regular Expression in Action</a></li>
+  <li><a href="#special-characters-i" id="toc-special-characters-i" class="nav-link" data-scroll-target="#special-characters-i">Special Characters I</a></li>
+  <li><a href="#special-characters-ii" id="toc-special-characters-ii" class="nav-link" data-scroll-target="#special-characters-ii">Special Characters II</a></li>
+  <li><a href="#advanced-regular-expressions-in-action" id="toc-advanced-regular-expressions-in-action" class="nav-link" data-scroll-target="#advanced-regular-expressions-in-action">Advanced Regular Expressions in Action</a></li>
+  </ul></li>
+  <li><a href="#packages" id="toc-packages" class="nav-link" data-scroll-target="#packages"><span class="flow">Packages</span></a>
+  <ul class="collapse">
+  <li><a href="#what-are-packages" id="toc-what-are-packages" class="nav-link" data-scroll-target="#what-are-packages">What are Packages?</a></li>
+  <li><a href="#installing-packages" id="toc-installing-packages" class="nav-link" data-scroll-target="#installing-packages">Installing Packages</a></li>
+  <li><a href="#virtual-environments" id="toc-virtual-environments" class="nav-link" data-scroll-target="#virtual-environments">Virtual Environments</a></li>
+  </ul></li>
+  <li><a href="#literature" id="toc-literature" class="nav-link" data-scroll-target="#literature"><span class="flow">Literature</span></a>
+  <ul class="collapse">
+  <li><a href="#interesting-books" id="toc-interesting-books" class="nav-link" data-scroll-target="#interesting-books">Interesting Books</a></li>
   </ul></li>
   </ul>
 <div class="quarto-alternate-formats"><h2>Other Formats</h2><ul><li><a href="lecture-modules-presentation.html"><i class="bi bi-file-slides"></i>RevealJS</a></li><li><a href="lecture-modules.pdf"><i class="bi bi-file-pdf"></i>PDF</a></li></ul></div></nav>
@@ -273,7 +273,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Lecture VI - Using Modules and Random Numbers</h1>
+<h1 class="title">Lecture VI - Using Modules and Packages</h1>
 <p class="subtitle lead">Programming with Python</p>
 </div>
 
@@ -313,7 +313,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li>Common built-in exceptions: <code>ValueError</code>, <code>TypeError</code>, etc.</li>
 </ul>
 <p>. . .</p>
-<div id="dd8ce34f" class="cell" data-execution_count="2">
+<div id="a86e5e19" class="cell" data-execution_count="1">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> <span class="bu">int</span>(<span class="st">"Hello, World!"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>. . .</p>
@@ -345,7 +345,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li>Can include custom error messages</li>
 </ul>
 <p>. . .</p>
-<div id="6cd26e13" class="cell" data-execution_count="3">
+<div id="0776db16" class="cell" data-execution_count="2">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="cf">raise</span> <span class="pp">ValueError</span>(<span class="st">"This is a custom error message"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>. . .</p>
@@ -371,7 +371,7 @@ Note
 <li>Useful for checking calculations or variable types</li>
 </ul>
 <p>. . .</p>
-<div id="b4f46278" class="cell" data-execution_count="4">
+<div id="ab72af71" class="cell" data-execution_count="3">
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> <span class="op">-</span><span class="dv">1</span></span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="cf">assert</span> x <span class="op">&gt;</span> <span class="dv">0</span>, <span class="st">"x must be positive"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
@@ -404,146 +404,227 @@ Tip
 </section>
 <section id="modules" class="level1 title">
 <h1 class="title"><span class="flow">Modules</span></h1>
-<section id="what-are-modules" class="level2">
-<h2 class="anchored" data-anchor-id="what-are-modules">What are Modules?</h2>
+<section id="why-modules" class="level2">
+<h2 class="anchored" data-anchor-id="why-modules">Why Modules?</h2>
 <ul>
-<li>Modules are files containing Python code</li>
-<li>They can define functions, classes, and variables</li>
-<li>They can be imported into other Python scripts</li>
-<li>They can be used to organize code and make it reusable</li>
+<li>Modular programming breaks <span class="highlight">large tasks into smaller subtasks</span></li>
+<li>Modules are like <strong>building blocks</strong> for larger applications</li>
+<li>Individual modules can be <strong>combined</strong> to create a complete program</li>
+<li>This approach enhances code organization and reusability</li>
 </ul>
 </section>
 <section id="creating-modules" class="level2">
 <h2 class="anchored" data-anchor-id="creating-modules">Creating Modules</h2>
 <ul>
-<li>Create a new file with a <code>.py</code> extension</li>
-<li>Define functions, classes, and variables in the file</li>
-<li>Import the module in other Python scripts using the <code>import</code> statement</li>
+<li>Modules are simply <code>.py</code> files containing Python code</li>
+<li>They can define <span class="highlight">functions, classes, and variables</span></li>
+<li>They can be imported into other Python scripts</li>
 </ul>
+<div id="d033f878" class="cell" data-output-location="fragment" data-execution_count="4">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># The script new_module.py is in the same directory as this script</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> new_module <span class="co"># Here we import the module</span></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>new_module.my_function() <span class="co"># Here we call the function from the module</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Hello from my_function!</code></pre>
+</div>
+</div>
 </section>
-<section id="importing-modules" class="level2">
-<h2 class="anchored" data-anchor-id="importing-modules">Importing Modules</h2>
+<section id="importing-functions-from-modules" class="level2">
+<h2 class="anchored" data-anchor-id="importing-functions-from-modules">Importing functions from modules</h2>
 <ul>
-<li>Use the <code>import</code> statement to import the module</li>
-<li>Use the <code>from</code> statement to import specific functions, classes, or variables</li>
+<li>We can also import <span class="highlight">specific functions</span> from a module</li>
+<li>This is useful if we only need a <strong>few functions</strong> from a module</li>
+<li>Analogously, we can import <strong>classes or variables</strong> from a module</li>
 </ul>
 <p>. . .</p>
-<div id="c861e6da" class="cell" data-execution_count="5">
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> my_module</span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> my_module <span class="im">import</span> my_function</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="d1ed1f97" class="cell" data-output-location="fragment" data-execution_count="5">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Multiple imports from a module are possible as well!</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> new_module <span class="im">import</span> another_function, yet_another_function</span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>another_function()</span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>yet_another_function()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Hello from another_function!
+Hello from yet_another_function!</code></pre>
+</div>
+</div>
+<p>. . .</p>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Tip
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>This is a good way to avoid importing too much from a module. In addition, we don’t need to use the module name before the function name when we use the functions from the module.</p>
+</div>
 </div>
 </section>
 <section id="built-in-modules" class="level2">
 <h2 class="anchored" data-anchor-id="built-in-modules">Built-in Modules</h2>
-<ul>
-<li>Python comes with many built-in modules</li>
-<li>Some common ones: <code>math</code>, <code>random</code>, <code>datetime</code>, <code>os</code>, <code>sys</code>, <code>json</code>, <code>csv</code>, <code>pandas</code>, <code>re</code></li>
-</ul>
+<p>Python comes with many <span class="highlight">built-in modules</span>. Common ones include:</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Module</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>math</code></td>
+<td>Different mathematical functions</td>
+</tr>
+<tr class="even">
+<td><code>random</code></td>
+<td>Random number generation</td>
+</tr>
+<tr class="odd">
+<td><code>datetime</code></td>
+<td>Date and time manipulation</td>
+</tr>
+<tr class="even">
+<td><code>os</code></td>
+<td>Operating system interaction</td>
+</tr>
+<tr class="odd">
+<td><code>csv</code></td>
+<td>Reading and writing CSV files</td>
+</tr>
+<tr class="even">
+<td><code>re</code></td>
+<td>Regular expression operations</td>
+</tr>
+</tbody>
+</table>
 </section>
-</section>
-<section id="virtual-environments" class="level1 title">
-<h1 class="title"><span class="flow">Virtual Environments</span></h1>
-<ul>
-<li>Virtual environments are used to manage dependencies and packages</li>
-<li>They allow you to have different environments for different projects</li>
-<li>They can be created using the <code>venv</code> module</li>
-</ul>
-<section id="creating-a-virtual-environment" class="level2">
-<h2 class="anchored" data-anchor-id="creating-a-virtual-environment">Creating a Virtual Environment</h2>
-<ul>
-<li>Use the <code>venv</code> module to create a virtual environment</li>
-<li>Use the <code>python -m venv</code> command to create a virtual environment</li>
-</ul>
-<p>. . .</p>
-<div id="0d497d41" class="cell" data-execution_count="6">
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>python <span class="op">-</span>m venv my_env</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<section id="importing-from-the-standard-library" class="level2">
+<h2 class="anchored" data-anchor-id="importing-from-the-standard-library">Importing from the Standard Library</h2>
+<p><span class="task">Task:</span> Use Python’s <code>math</code> module to calculate the area of a circle.</p>
+<div id="fae2abc6" class="cell" data-execution_count="6">
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Import the `math` module.</span></span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Define a function named `calculate_area` that takes the radius `r` as an argument.</span></span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Inside the function, use the `math.pi` constant to get the value of π.</span></span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Calculate the area in the function and return it.</span></span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Your code here</span></span>
+<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a><span class="cf">assert</span> calculate_area(<span class="dv">5</span>) <span class="op">==</span> <span class="fl">78.53981633974483</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-</section>
-<section id="activating-a-virtual-environment" class="level2">
-<h2 class="anchored" data-anchor-id="activating-a-virtual-environment">Activating a Virtual Environment</h2>
-<ul>
-<li>Use the <code>source</code> command to activate the virtual environment</li>
-<li>Use the <code>my_env\Scripts\activate</code> command to activate the virtual environment</li>
-</ul>
 <p>. . .</p>
-<pre class="{bash}"><code>source my_env/Scripts/activate</code></pre>
-</section>
-</section>
-<section id="importing-packages" class="level1 title">
-<h1 class="title"><span class="flow">Importing Packages</span></h1>
-<section id="installing-packages" class="level2">
-<h2 class="anchored" data-anchor-id="installing-packages">Installing Packages</h2>
-<ul>
-<li>Use the <code>pip install &lt;package_name&gt;</code> command to install a specific package</li>
-<li>Use the <code>pip install -r requirements.txt</code> command to install packages from a requirements file</li>
-</ul>
-</section>
-<section id="importing-packages-1" class="level2">
-<h2 class="anchored" data-anchor-id="importing-packages-1">Importing Packages</h2>
-<ul>
-<li>Use the <code>import &lt;package_name&gt;</code> statement to import a specific package</li>
-<li>Use the <code>from &lt;package_name&gt; import &lt;function_name&gt;</code> statement to import a specific function from a package</li>
-</ul>
-</section>
-</section>
-<section id="using-modules" class="level1 title">
-<h1 class="title"><span class="flow">Using Modules</span></h1>
-<section id="importing-modules-1" class="level2">
-<h2 class="anchored" data-anchor-id="importing-modules-1">Importing Modules</h2>
-<ul>
-<li>Use the <code>import &lt;module_name&gt;</code> statement to import a specific module</li>
-<li>Use the <code>from &lt;module_name&gt; import &lt;function_name&gt;</code> statement to import a specific function from a module</li>
-</ul>
-</section>
-<section id="importing-modules-from-a-package" class="level2">
-<h2 class="anchored" data-anchor-id="importing-modules-from-a-package">Importing Modules from a Package</h2>
-<ul>
-<li>Use the <code>import &lt;package_name&gt;.&lt;module_name&gt;</code> statement to import a specific module from a package</li>
-</ul>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Tip
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Note, how assertations can be used to check if a function works correctly.</p>
+</div>
+</div>
 </section>
 </section>
 <section id="standard-libraries" class="level1 title">
 <h1 class="title"><span class="flow">Standard Libraries</span></h1>
 <section id="random-numbers" class="level2">
 <h2 class="anchored" data-anchor-id="random-numbers">Random Numbers</h2>
+<p>The <code>random</code> module provides functions for random numbers</p>
 <ul>
-<li>The <code>random</code> module provides functions to generate random numbers</li>
-<li>Use the <code>random.randint(a, b)</code> function to generate a random integer between <code>a</code> and <code>b</code></li>
-<li>Use the <code>random.choice(list)</code> function to generate a random element from a list</li>
+<li><code>random.random()</code>: random float between 0 and 1</li>
+<li><code>random.uniform(a, b)</code>: random float between <code>a</code> and <code>b</code></li>
+<li><code>random.randint(a, b)</code>: random integer between <code>a</code> and <code>b</code></li>
+<li><code>random.choice(list)</code>: random element from a list</li>
+<li><code>random.shuffle(list)</code>: shuffle a list</li>
 </ul>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Tip
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>There are many more functions in the <code>random</code> module. Use the <code>help()</code> function to get more information about a module or function.</p>
+</div>
+</div>
 </section>
-<section id="math-module" class="level2">
-<h2 class="anchored" data-anchor-id="math-module">Math Module</h2>
-<ul>
-<li>The <code>math</code> module provides functions to perform mathematical operations</li>
-<li>Use the <code>math.sqrt(x)</code> function to calculate the square root of <code>x</code></li>
-<li>Use the <code>math.sin(x)</code> function to calculate the sine of <code>x</code></li>
-<li>Use the <code>math.cos(x)</code> function to calculate the cosine of <code>x</code></li>
-<li>Use the <code>math.tan(x)</code> function to calculate the tangent of <code>x</code></li>
-</ul>
+<section id="random-numbers-in-action" class="level2">
+<h2 class="anchored" data-anchor-id="random-numbers-in-action">Random Numbers in Action</h2>
+<p><span class="task">Task:</span> Time for a task! Import the <code>random</code> module and create a <span class="highlight">small number guessing game</span> with the following requirements:</p>
+<div id="e2af70d2" class="cell" data-execution_count="7">
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Generate a random integer between 1 and 10 using randint().</span></span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Ask the user to guess the number with input().</span></span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Print whether the guess was correct.</span></span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Give a hint if the guess was too high or too low.</span></span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Repeat the game until the user guesses the number.</span></span>
+<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Your code here</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>. . .</p>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Tip
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Remember, that the input function always returns a string!</p>
+</div>
+</div>
 </section>
 <section id="os-module" class="level2">
 <h2 class="anchored" data-anchor-id="os-module">OS Module</h2>
 <ul>
-<li>The <code>os</code> module provides functions to interact with the operating system</li>
-<li>Use the <code>os.listdir(path)</code> function to list all files and directories in a directory</li>
-<li>Use the <code>os.path.join(path, filename)</code> function to join a path and a filename</li>
-<li>Use the <code>os.path.exists(path)</code> function to check if a path exists</li>
-<li>Use the <code>os.path.isfile(path)</code> function to check if a path is a file</li>
-<li>Use the <code>os.path.isdir(path)</code> function to check if a path is a directory</li>
+<li>The <code>os</code> module provides functions to interact with the OS</li>
+<li><code>os.listdir(path)</code>: list all files and directories in a directory</li>
+<li><code>os.path.isfile(path)</code>: check if a path is a file</li>
+<li><code>os.path.isdir(path)</code>: check if a path is a directory</li>
+<li><code>os.mkdir(path)</code>: create a directory</li>
 </ul>
+<p>. . .</p>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Tip
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>These can be quite useful for file handling. The <code>os</code> module contains many more functions, e.g.&nbsp;for changing the current working directory, for renaming and moving files, etc.</p>
+</div>
+</div>
 </section>
 <section id="csv-module" class="level2">
 <h2 class="anchored" data-anchor-id="csv-module">CSV Module</h2>
 <ul>
-<li>CSV (Comma-Separated Values) files are a common format for storing tabular data</li>
-<li>Use the <code>csv</code> module to read and write CSV files</li>
-<li>Basic operations:
-<ul>
-<li>Read: <code>csv.reader(file)</code></li>
+<li>Comma-Separated Values files are used to store tabular data</li>
 <li>Write: <code>csv.writer(file)</code></li>
-</ul></li>
+<li>Read: <code>csv.reader(file)</code></li>
 </ul>
+<p>. . .</p>
+<div id="8017d82f" class="cell" data-execution_count="8">
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> csv <span class="co"># Import the csv module</span></span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a><span class="cf">with</span> <span class="bu">open</span>(<span class="st">'secret_message.csv'</span>, <span class="st">'w'</span>) <span class="im">as</span> <span class="bu">file</span>: <span class="co"># Open the file in write mode</span></span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>    writer <span class="op">=</span> csv.writer(<span class="bu">file</span>) <span class="co"># Create a writer object</span></span>
+<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a>    writer.writerow([<span class="st">'Entry'</span>, <span class="st">'Message'</span>]) <span class="co"># Write the header</span></span>
+<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a>    writer.writerow([<span class="st">'1'</span>, <span class="st">'Do not open the file'</span>]) <span class="co"># Write the first row</span></span>
+<span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a>    writer.writerow([<span class="st">'2'</span>, <span class="st">'This is a secret message'</span>]) <span class="co"># Write the second row</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>. . .</p>
+<p><span class="task">Task:</span> Copy the code and run it. Do you have a new file?</p>
 </section>
 </section>
 <section id="regular-expressions" class="level1 title">
@@ -551,30 +632,236 @@ Tip
 <section id="what-are-regular-expressions" class="level2">
 <h2 class="anchored" data-anchor-id="what-are-regular-expressions">What are Regular Expressions?</h2>
 <ul>
-<li>Regular expressions are a way to search for patterns in text</li>
-<li>They are a powerful tool for string manipulation</li>
+<li>Regular expressions are a way to <span class="highlight">search for patterns in text</span></li>
+<li>They are a useful tool for string manipulation</li>
 <li>We can use the <code>re</code> module to work with regular expressions</li>
+</ul>
+<p>. . .</p>
+<div id="c529b2ae" class="cell" data-output-location="fragment" data-execution_count="9">
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> re</span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>pattern <span class="op">=</span> <span class="vs">r'World'</span> <span class="co"># This is the pattern we are searching for</span></span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>string <span class="op">=</span> <span class="st">'Hello, World!'</span> <span class="co"># This is the string we are searching in</span></span>
+<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(re.search(pattern, string)) <span class="co"># This will search for the pattern in the string</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>&lt;re.Match object; span=(7, 12), match='World'&gt;</code></pre>
+</div>
+</div>
+<p>. . .</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Note
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>So far, we could also have achieved this with the <code>find</code> method of a string.</p>
+</div>
+</div>
+</section>
+<section id="why-regular-expressions" class="level2">
+<h2 class="anchored" data-anchor-id="why-regular-expressions">Why Regular Expressions?</h2>
+<div id="10a5fbe7" class="cell" data-output-location="fragment" data-execution_count="10">
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> re</span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>pattern <span class="op">=</span> <span class="st">'World'</span> <span class="co"># This is the pattern we are searching for</span></span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>string <span class="op">=</span> <span class="st">'Hello, World!'</span> <span class="co"># This is the string we are searching in</span></span>
+<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(string.find(pattern)) <span class="co"># No regular expressions here!</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>7</code></pre>
+</div>
+</div>
+<p>. . .</p>
+<ul>
+<li>But regular expressions are more <strong>powerful and flexible</strong></li>
+<li>They have <span class="highlight">special characters</span> that allow for complex patterns</li>
+<li>They are widely used in text processing and web scraping</li>
 </ul>
 </section>
 <section id="using-regular-expressions" class="level2">
 <h2 class="anchored" data-anchor-id="using-regular-expressions">Using Regular Expressions</h2>
 <ul>
-<li>Use the <code>re.search(pattern, string)</code> function to search for a pattern in a string</li>
-<li>Use the <code>re.findall(pattern, string)</code> function to find all occurrences of a pattern in a string</li>
-<li>Use the <code>re.sub(pattern, replacement, string)</code> function to replace a pattern in a string</li>
-<li>Use the <code>re.split(pattern, string)</code> function to split a string by a pattern</li>
+<li><code>re.search(pat, str)</code>: search for a pattern in a string</li>
+<li><code>re.findall(pat, str)</code>: find all occurrences of a pattern</li>
+<li><code>re.fullmatch(pat, str)</code>: check if entire string matches pattern</li>
+<li><code>re.sub(pat, repl, str)</code>: replace a pattern in a string</li>
+<li><code>re.split(pat, str)</code>: split a string by a pattern</li>
+</ul>
+<p>. . .</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Note
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>As always, there is more. But these are a good foundation to build upon.</p>
+</div>
+</div>
+</section>
+<section id="regular-expression-in-action" class="level2">
+<h2 class="anchored" data-anchor-id="regular-expression-in-action">Regular Expression in Action</h2>
+<p><span class="task">Task</span>: Replace all occurences of <code>Python</code> by “SECRET”.</p>
+<div id="173dca17" class="cell" data-execution_count="11">
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> re</span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>string <span class="op">=</span> <span class="st">"""</span></span>
+<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a><span class="st">Python is a programming language. </span></span>
+<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a><span class="st">Python is also a snake. </span></span>
+<span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a><span class="st">Monty Python was a theater group.</span></span>
+<span id="cb16-6"><a href="#cb16-6" aria-hidden="true" tabindex="-1"></a><span class="st">"""</span></span>
+<span id="cb16-7"><a href="#cb16-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Your code here</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>. . .</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Note
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Regular expressions are even <strong>more powerful</strong> when combined with <span class="highlight">special characters</span>.</p>
+</div>
+</div>
+</section>
+<section id="special-characters-i" class="level2">
+<h2 class="anchored" data-anchor-id="special-characters-i">Special Characters I</h2>
+<ul>
+<li><code>.</code> matches any character</li>
+<li><code>*</code> matches zero or more of the preceding element</li>
+<li><code>+</code> matches one or more of the preceding element</li>
+<li><code>?</code> matches zero or one of the preceding element</li>
+<li><code>[]</code> matches any character in the brackets</li>
+<li><code>|</code> matches either the left or the right side</li>
+<li><code>\d</code> matches any digit</li>
+<li><code>\w</code> matches any word character (alphanumeric and underscore)</li>
+<li><code>\s</code> matches any whitespace character</li>
 </ul>
 </section>
-<section id="regular-expression-syntax" class="level2">
-<h2 class="anchored" data-anchor-id="regular-expression-syntax">Regular Expression Syntax</h2>
+<section id="special-characters-ii" class="level2">
+<h2 class="anchored" data-anchor-id="special-characters-ii">Special Characters II</h2>
 <ul>
-<li>Use the <code>re.compile(pattern)</code> function to compile a regular expression</li>
-<li>Use the <code>re.match(pattern, string)</code> function to match a pattern at the beginning of a string</li>
-<li>Use the <code>re.search(pattern, string)</code> function to search for a pattern in a string</li>
-<li>Use the <code>re.findall(pattern, string)</code> function to find all occurrences of a pattern in a string</li>
-<li>Use the <code>re.sub(pattern, replacement, string)</code> function to replace a pattern in a string</li>
-<li>Use the <code>re.split(pattern, string)</code> function to split a string by a pattern</li>
+<li>There are <strong>many more special characters</strong> in regular expressions</li>
+<li>In order to <span class="highlight">keep things simple</span>, we will not cover them here</li>
 </ul>
+<p>. . .</p>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Tip
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>It can be quite complicated to get the hang of these special characters, especially at the beginning. Gladly, there are tools like <a href="https://regexr.com">regexr.com</a> that can help with building the right pattern. Apart from that, <code>help(re)</code> in the terminal can also be very helpful.</p>
+</div>
+</div>
+</section>
+<section id="advanced-regular-expressions-in-action" class="level2">
+<h2 class="anchored" data-anchor-id="advanced-regular-expressions-in-action">Advanced Regular Expressions in Action</h2>
+<p><span class="task">Task:</span> Use regular expressions to extract all dates from the text.</p>
+<div id="a30d259d" class="cell" data-execution_count="12">
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>dates <span class="op">=</span> <span class="st">"""</span></span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a><span class="st">On 07-04-1776, the United States declared its independence. Many years later, </span></span>
+<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a><span class="st">on 11-09-1989, the Berlin Wall fell. In more recent history, the COVID-19 </span></span>
+<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a><span class="st">pandemic was declared a global emergency on 04-11-2020.</span></span>
+<span id="cb17-5"><a href="#cb17-5" aria-hidden="true" tabindex="-1"></a><span class="st">"""</span></span>
+<span id="cb17-6"><a href="#cb17-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Try to find all dates in the above text with findall()</span></span>
+<span id="cb17-7"><a href="#cb17-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Your code here</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+</section>
+<section id="packages" class="level1 title">
+<h1 class="title"><span class="flow">Packages</span></h1>
+<section id="what-are-packages" class="level2">
+<h2 class="anchored" data-anchor-id="what-are-packages">What are Packages?</h2>
+<ul>
+<li>Packages are esentially <strong>collections of modules</strong></li>
+<li>They can contain multiple modules, subpackages, and data files</li>
+<li>Many packages are available in the <span class="highlight">Python Package Index (PyPI)</span></li>
+<li>You don’t have to invent the wheel yourself</li>
+<li><strong>A lot of functionality</strong> is already implemented by others!</li>
+</ul>
+</section>
+<section id="installing-packages" class="level2">
+<h2 class="anchored" data-anchor-id="installing-packages">Installing Packages</h2>
+<ul>
+<li>Packages are <strong>installed in the shell</strong></li>
+<li>Use <code>pip install &lt;package_name&gt;</code> to install a specific package</li>
+<li>Afterward you can <span class="highlight">import from the package</span> in your Python scripts</li>
+</ul>
+<p>. . .</p>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Tip
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>With Thonny you can install packages directly in the IDE. Simply click on <span class="highlight">Tools -&gt; Manage packages</span> and search for the package you want to install.</p>
+</div>
+</div>
+</section>
+<section id="virtual-environments" class="level2">
+<h2 class="anchored" data-anchor-id="virtual-environments">Virtual Environments</h2>
+<ul>
+<li>Virtual environments are used to manage dependencies</li>
+<li>They allow you to have different environments for projects</li>
+<li>They can be created using the <code>venv</code> module</li>
+<li>This becomes important if you work on several projects at once</li>
+</ul>
+<p>. . .</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Note
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p><strong>And that’s it for todays lecture!</strong><br>
+We now have completed the first step into data science in Python. Next week, we can use this new knowledge to start to work with some tabular data and matrices.</p>
+</div>
+</div>
+</section>
+</section>
+<section id="literature" class="level1 title">
+<h1 class="title"><span class="flow">Literature</span></h1>
+<section id="interesting-books" class="level2">
+<h2 class="anchored" data-anchor-id="interesting-books">Interesting Books</h2>
+<ul>
+<li>Downey, A. B. (2024). Think Python: How to think like a computer scientist (Third edition). O’Reilly. <a href="https://greenteapress.com/wp/think-python-3rd-edition/">Link to free online version</a></li>
+<li>Elter, S. (2021). Schrödinger programmiert Python: Das etwas andere Fachbuch (1. Auflage). Rheinwerk Verlag.</li>
+</ul>
+<p>. . .</p>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Tip
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Nothing new here, but these are still great books!</p>
+</div>
+</div>
+<p>. . .</p>
+<p>For more interesting literature to learn more about Python, take a look at the <a href="../general/literature.html">literature list</a> of this course.</p>
 
 
 </section>
@@ -673,7 +960,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   }
     var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
     var mailtoRegex = new RegExp(/^mailto:/);
-      var filterRegex = new RegExp('/' + window.location.host + '/');
+      var filterRegex = new RegExp("https:\/\/beyondsimulations\.github\.io\/Introduction-to-Python");
     var isInternal = (href) => {
         return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
     }
