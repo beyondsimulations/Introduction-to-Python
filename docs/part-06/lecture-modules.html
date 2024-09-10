@@ -313,7 +313,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li>Common built-in exceptions: <code>ValueError</code>, <code>TypeError</code>, etc.</li>
 </ul>
 <p>. . .</p>
-<div id="a86e5e19" class="cell" data-execution_count="1">
+<div id="a86e5e19" class="cell" data-execution_count="2">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> <span class="bu">int</span>(<span class="st">"Hello, World!"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>. . .</p>
@@ -345,7 +345,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li>Can include custom error messages</li>
 </ul>
 <p>. . .</p>
-<div id="0776db16" class="cell" data-execution_count="2">
+<div id="0776db16" class="cell" data-execution_count="3">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="cf">raise</span> <span class="pp">ValueError</span>(<span class="st">"This is a custom error message"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>. . .</p>
@@ -371,7 +371,7 @@ Note
 <li>Useful for checking calculations or variable types</li>
 </ul>
 <p>. . .</p>
-<div id="ab72af71" class="cell" data-execution_count="3">
+<div id="ab72af71" class="cell" data-execution_count="4">
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> <span class="op">-</span><span class="dv">1</span></span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="cf">assert</span> x <span class="op">&gt;</span> <span class="dv">0</span>, <span class="st">"x must be positive"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
@@ -420,7 +420,7 @@ Tip
 <li>They can define <span class="highlight">functions, classes, and variables</span></li>
 <li>They can be imported into other Python scripts</li>
 </ul>
-<div id="d033f878" class="cell" data-output-location="fragment" data-execution_count="4">
+<div id="d033f878" class="cell" data-output-location="fragment" data-execution_count="5">
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># The script new_module.py is in the same directory as this script</span></span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> new_module <span class="co"># Here we import the module</span></span>
 <span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>new_module.my_function() <span class="co"># Here we call the function from the module</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -437,7 +437,7 @@ Tip
 <li>Analogously, we can import <strong>classes or variables</strong> from a module</li>
 </ul>
 <p>. . .</p>
-<div id="d1ed1f97" class="cell" data-output-location="fragment" data-execution_count="5">
+<div id="d1ed1f97" class="cell" data-output-location="fragment" data-execution_count="6">
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Multiple imports from a module are possible as well!</span></span>
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> new_module <span class="im">import</span> another_function, yet_another_function</span>
 <span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>another_function()</span>
@@ -503,7 +503,7 @@ Tip
 <section id="importing-from-the-standard-library" class="level2">
 <h2 class="anchored" data-anchor-id="importing-from-the-standard-library">Importing from the Standard Library</h2>
 <p><span class="task">Task:</span> Use Python’s <code>math</code> module to calculate the area of a circle.</p>
-<div id="fae2abc6" class="cell" data-execution_count="6">
+<div id="fae2abc6" class="cell" data-execution_count="7">
 <div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Import the `math` module.</span></span>
 <span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Define a function named `calculate_area` that takes the radius `r` as an argument.</span></span>
 <span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Inside the function, use the `math.pi` constant to get the value of π.</span></span>
@@ -558,7 +558,7 @@ Tip
 <section id="random-numbers-in-action" class="level2">
 <h2 class="anchored" data-anchor-id="random-numbers-in-action">Random Numbers in Action</h2>
 <p><span class="task">Task:</span> Time for a task! Import the <code>random</code> module and create a <span class="highlight">small number guessing game</span> with the following requirements:</p>
-<div id="e2af70d2" class="cell" data-execution_count="7">
+<div id="e2af70d2" class="cell" data-execution_count="8">
 <div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Generate a random integer between 1 and 10 using randint().</span></span>
 <span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Ask the user to guess the number with input().</span></span>
 <span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Print whether the guess was correct.</span></span>
@@ -614,7 +614,7 @@ Tip
 <li>Read: <code>csv.reader(file)</code></li>
 </ul>
 <p>. . .</p>
-<div id="8017d82f" class="cell" data-execution_count="8">
+<div id="8017d82f" class="cell" data-execution_count="9">
 <div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> csv <span class="co"># Import the csv module</span></span>
 <span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a><span class="cf">with</span> <span class="bu">open</span>(<span class="st">'secret_message.csv'</span>, <span class="st">'w'</span>) <span class="im">as</span> <span class="bu">file</span>: <span class="co"># Open the file in write mode</span></span>
@@ -637,7 +637,7 @@ Tip
 <li>We can use the <code>re</code> module to work with regular expressions</li>
 </ul>
 <p>. . .</p>
-<div id="c529b2ae" class="cell" data-output-location="fragment" data-execution_count="9">
+<div id="c529b2ae" class="cell" data-output-location="fragment" data-execution_count="10">
 <div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> re</span>
 <span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>pattern <span class="op">=</span> <span class="vs">r'World'</span> <span class="co"># This is the pattern we are searching for</span></span>
 <span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>string <span class="op">=</span> <span class="st">'Hello, World!'</span> <span class="co"># This is the string we are searching in</span></span>
@@ -663,7 +663,7 @@ Note
 </section>
 <section id="why-regular-expressions" class="level2">
 <h2 class="anchored" data-anchor-id="why-regular-expressions">Why Regular Expressions?</h2>
-<div id="10a5fbe7" class="cell" data-output-location="fragment" data-execution_count="10">
+<div id="10a5fbe7" class="cell" data-output-location="fragment" data-execution_count="11">
 <div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> re</span>
 <span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>pattern <span class="op">=</span> <span class="st">'World'</span> <span class="co"># This is the pattern we are searching for</span></span>
 <span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>string <span class="op">=</span> <span class="st">'Hello, World!'</span> <span class="co"># This is the string we are searching in</span></span>
@@ -706,7 +706,7 @@ Note
 <section id="regular-expression-in-action" class="level2">
 <h2 class="anchored" data-anchor-id="regular-expression-in-action">Regular Expression in Action</h2>
 <p><span class="task">Task</span>: Replace all occurences of <code>Python</code> by “SECRET”.</p>
-<div id="173dca17" class="cell" data-execution_count="11">
+<div id="173dca17" class="cell" data-execution_count="12">
 <div class="sourceCode cell-code" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> re</span>
 <span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>string <span class="op">=</span> <span class="st">"""</span></span>
 <span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a><span class="st">Python is a programming language. </span></span>
@@ -768,7 +768,7 @@ Tip
 <section id="advanced-regular-expressions-in-action" class="level2">
 <h2 class="anchored" data-anchor-id="advanced-regular-expressions-in-action">Advanced Regular Expressions in Action</h2>
 <p><span class="task">Task:</span> Use regular expressions to extract all dates from the text.</p>
-<div id="a30d259d" class="cell" data-execution_count="12">
+<div id="a30d259d" class="cell" data-execution_count="13">
 <div class="sourceCode cell-code" id="cb17"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>dates <span class="op">=</span> <span class="st">"""</span></span>
 <span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a><span class="st">On 07-04-1776, the United States declared its independence. Many years later, </span></span>
 <span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a><span class="st">on 11-09-1989, the Berlin Wall fell. In more recent history, the COVID-19 </span></span>
