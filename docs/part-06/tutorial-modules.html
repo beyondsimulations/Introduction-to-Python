@@ -20,6 +20,40 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 </style>
 
 
@@ -145,12 +179,35 @@ ul.task-list li input[type="checkbox"] {
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="false">
- <span class="menu-text">Assignments</span></a>
+ <span class="menu-text">02 Control Flow</span></a>
           <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="false" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
       <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../part-02/lecture-control.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Lecture</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../part-02/tutorial-control.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Tutorial</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="false">
+ <span class="menu-text">Assignments</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../assignments/assignment-1.html" class="sidebar-item-text sidebar-link">
@@ -182,17 +239,122 @@ ul.task-list li input[type="checkbox"] {
 </nav>
 <div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
-        
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#hint-convert-the-word-to-a-list-shuffle-it-and-join-it-back-to-a-string" id="toc-hint-convert-the-word-to-a-list-shuffle-it-and-join-it-back-to-a-string" class="nav-link active" data-scroll-target="#hint-convert-the-word-to-a-list-shuffle-it-and-join-it-back-to-a-string">Hint: Convert the word to a list, shuffle it, and join it back to a string</a></li>
+  <li><a href="#your-code-here" id="toc-your-code-here" class="nav-link" data-scroll-target="#your-code-here">Your code here</a></li>
+  <li><a href="#list-of-words-to-choose-from" id="toc-list-of-words-to-choose-from" class="nav-link" data-scroll-target="#list-of-words-to-choose-from">List of words to choose from</a></li>
+  <li><a href="#todo-randomly-select-a-word-from-the-list" id="toc-todo-randomly-select-a-word-from-the-list" class="nav-link" data-scroll-target="#todo-randomly-select-a-word-from-the-list">TODO: Randomly select a word from the list</a></li>
+  <li><a href="#your-code-here-1" id="toc-your-code-here-1" class="nav-link" data-scroll-target="#your-code-here-1">Your code here</a></li>
+  <li><a href="#todo-scramble-the-selected-word" id="toc-todo-scramble-the-selected-word" class="nav-link" data-scroll-target="#todo-scramble-the-selected-word">TODO: Scramble the selected word</a></li>
+  <li><a href="#your-code-here-2" id="toc-your-code-here-2" class="nav-link" data-scroll-target="#your-code-here-2">Your code here</a></li>
+  <li><a href="#todo-set-up-the-game-loop" id="toc-todo-set-up-the-game-loop" class="nav-link" data-scroll-target="#todo-set-up-the-game-loop">TODO: Set up the game loop</a></li>
+  <li><a href="#print-the-scrambled-word" id="toc-print-the-scrambled-word" class="nav-link" data-scroll-target="#print-the-scrambled-word">- Print the scrambled word</a></li>
+  <li><a href="#ask-the-user-for-a-guess" id="toc-ask-the-user-for-a-guess" class="nav-link" data-scroll-target="#ask-the-user-for-a-guess">- Ask the user for a guess</a></li>
+  <li><a href="#check-if-the-guess-is-correct" id="toc-check-if-the-guess-is-correct" class="nav-link" data-scroll-target="#check-if-the-guess-is-correct">- Check if the guess is correct</a></li>
+  <li><a href="#if-correct-congratulate-and-end-the-game" id="toc-if-correct-congratulate-and-end-the-game" class="nav-link" data-scroll-target="#if-correct-congratulate-and-end-the-game">- If correct, congratulate and end the game</a></li>
+  <li><a href="#if-incorrect-allow-more-guesses-maybe-limit-the-number-of-attempts" id="toc-if-incorrect-allow-more-guesses-maybe-limit-the-number-of-attempts" class="nav-link" data-scroll-target="#if-incorrect-allow-more-guesses-maybe-limit-the-number-of-attempts">- If incorrect, allow more guesses (maybe limit the number of attempts?)</a></li>
+  <li><a href="#your-code-here-3" id="toc-your-code-here-3" class="nav-link" data-scroll-target="#your-code-here-3">Your code here</a></li>
+  <li><a href="#run-the-game" id="toc-run-the-game" class="nav-link" data-scroll-target="#run-the-game">Run the game</a></li>
+  </ul>
+</nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">TODO: Scramble the letters of the word</h1>
+</div>
 
 
 
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
 
 
+</header>
+
+
+<div id="f7ded8c5" class="cell" data-execution_count="1">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># </span><span class="al">TODO</span><span class="co">: Implement a password strength checker</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Use string methods and conditional statements</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Check for:</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="co"># - Minimum length of 8 characters</span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="co"># - At least one uppercase letter</span></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="co"># - At least one lowercase letter</span></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="co"># - At least one digit</span></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="co"># - At least one special character (!@#$%^&amp;*)</span></span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="co"># Return "Weak", "Medium", or "Strong" based on criteria met</span></span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a><span class="co"># Test your function</span></span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a><span class="co">#print(check_password_strength("abc123"))</span></span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a><span class="co">#print(check_password_strength("Str0ngP@ssw0rd"))</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div id="c0c33402" class="cell" data-execution_count="2">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># </span><span class="al">TODO</span><span class="co">: Implement a number guessing game</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Generate a random number between 1 and 100</span></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Use a while loop to allow the user to guess</span></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Provide feedback if the guess is too high or too low</span></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Count the number of guesses and display it when correct</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<section id="hint-convert-the-word-to-a-list-shuffle-it-and-join-it-back-to-a-string" class="level1">
+<h1>Hint: Convert the word to a list, shuffle it, and join it back to a string</h1>
+</section>
+<section id="your-code-here" class="level1">
+<h1>Your code here</h1>
+</section>
+<section id="list-of-words-to-choose-from" class="level1">
+<h1>List of words to choose from</h1>
+<p>words = [“python”, “programming”, “computer”, “algorithm”, “database”]</p>
+</section>
+<section id="todo-randomly-select-a-word-from-the-list" class="level1">
+<h1>TODO: Randomly select a word from the list</h1>
+</section>
+<section id="your-code-here-1" class="level1">
+<h1>Your code here</h1>
+</section>
+<section id="todo-scramble-the-selected-word" class="level1">
+<h1>TODO: Scramble the selected word</h1>
+</section>
+<section id="your-code-here-2" class="level1">
+<h1>Your code here</h1>
+</section>
+<section id="todo-set-up-the-game-loop" class="level1">
+<h1>TODO: Set up the game loop</h1>
+</section>
+<section id="print-the-scrambled-word" class="level1">
+<h1>- Print the scrambled word</h1>
+</section>
+<section id="ask-the-user-for-a-guess" class="level1">
+<h1>- Ask the user for a guess</h1>
+</section>
+<section id="check-if-the-guess-is-correct" class="level1">
+<h1>- Check if the guess is correct</h1>
+</section>
+<section id="if-correct-congratulate-and-end-the-game" class="level1">
+<h1>- If correct, congratulate and end the game</h1>
+</section>
+<section id="if-incorrect-allow-more-guesses-maybe-limit-the-number-of-attempts" class="level1">
+<h1>- If incorrect, allow more guesses (maybe limit the number of attempts?)</h1>
+</section>
+<section id="your-code-here-3" class="level1">
+<h1>Your code here</h1>
+</section>
+<section id="run-the-game" class="level1">
+<h1>Run the game</h1>
+<p>`</p>
+
+
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
