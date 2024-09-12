@@ -488,6 +488,21 @@ In older code bases, f strings were not available. Here, interpolation could be 
 #| output-location: fragment
 print("{} is a {}".format(message, message_type))
 ```
+
+## Specifying Formatted Strings
+- We can further specify their forman with `{<to_print>:<width>.<precision>f}`
+- `width` can be a number specifying the width of the output
+- `<`, `^`, `>` can be used before the width to align the text
+- `precision` can be used to specify the number of decimals
+- `.f` can be used to format floats
+
+```{python}
+#| eval: true
+#| output-location: fragment
+x = "hello"
+print(f"{x:<10} has {len(x):>10.2f} characters.")
+```
+
 ## Expressions
 - Produce a value when evaluated
 - Can be used as part of larger expressions or statements
@@ -512,7 +527,7 @@ y = x + 2 # Expression on the right side assigned to a variable y
 print(f"Again, the result is {y}")
 ```
 
-## What is a String?
+## A step back: What is a String?
 - [Remember]{.blue}: "Hello, World" is a string - in short 'str'
 - A string is a sequence of characters enclosed in quotes
 - Examples: `"Hello"`, `'World'`, `"123"`, `'1World23'`
