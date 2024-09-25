@@ -86,7 +86,7 @@ In this exercise, we'll practice using conditional statements to classify temper
 # Number guessing game
 In this exercise, we'll create an interactive number guessing game for two players. This game will help you practice using loops, conditional statements, and user input handling. You'll also learn how to implement a simple game logic and manage player turns. This exercise will reinforce your understanding of control structures and basic development concepts in Python.
 ```{python}
-
+#| eval: false
 # Create a number guessing game with 2 players. The first player is the game master and the second player is the guesser. 
 # Start by asking for their names. Then, ask the game master to input the secret number between 1 and 20. 
 # Make sure, that the number is not shown by adding at least 25 new lines after the input prompt. Then, ask the player to guess the number. 
@@ -104,7 +104,38 @@ In this exercise, we'll create an interactive number guessing game for two playe
 # - Keep track of the number of guesses
 # - End the game when the correct number is guessed
 # - Print a congratulatory message with the number of guesses taken
-# Your code here
+# - Use the given structure below to implement the game.
+
+# Ask for the names of the game master and the player
+game_master = input("Enter the name of the game master: ")
+player = input("Enter the name of the player: ")
+
+# Ask the game master for the secret number
+while True:
+    secret_number = int(input(f"{game_master}, enter the secret number between 1 and 20: "))
+    if secret_number < 1 or secret_number > 20:
+        print("Please enter a valid number.")
+    else:
+        break
+    
+print("\n" * 25)  # Add 25 new lines to hide the secret number
+
+# Initialize variables
+guesses = 0
+correct = False
+
+# Main game loop
+while not correct:
+    # Ask the player for a guess
+    # Add the code here to ask the player for a guess
+    guesses += 1
+    
+    # Compare the guess to the secret number
+    # Add code here to compare the guess to the secret number
+    # If the guess is correct, set correct to True in order to end the game.
+    
+# Print congratulatory message
+# Add the code here to print a congratulatory message.
 
 # b) TODO: Add a feature to allow both players to play again, this time switching the roles with the game master. 
 # If the player wants to play again, the game should reset and the player should be able to play again, entering a new secret number to guess for the former game master. 
