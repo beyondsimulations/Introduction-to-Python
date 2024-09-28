@@ -212,7 +212,7 @@
   {
     "objectID": "part-02/tutorial-control.html",
     "href": "part-02/tutorial-control.html",
-    "title": "Tutorial II - Control Structures",
+    "title": "Tutorial II - Control Structures for Your Code",
     "section": "",
     "text": "Introduction\nJust like in the previous tutorial, you will likely find solutions to most exercises online. However, I still strongly encourage you to work on these exercises independently without searching for answers. Understanding someone else’s solution is very different from developing your own.\nRemember, the goal is not just to complete the exercises, but to understand the concepts and improve your programming abilities. If you encounter difficulties, review the lecture materials, experiment with different approaches, and don’t hesitate to ask for clarification during class discussions. Don’t worry, I won’t repeat this section again and again.\n\n\nDecoding secret messages with methods\nIn this exercise, we’ll practice string manipulation and slicing. You’ll work with a secret message encoded using various string operations and learn how to apply some new methods like title(), replace() and count(). By following a series of steps, you’ll gradually decode the message. Let’s begin with the encoded message and work through each decoding step:\n\n# Decode a secret message by following a series of instructions.\n# Each instruction requires you to use different operations and methods.\n# The encoded message is:\nsecret_message = \".tnega terces a sa slliks ym sevorpmi erutcel oN\"\n\n# a) TODO: Reverse the string\n# Hint: You can use slicing to reverse a string\n# Your code here\n\n# b) TODO: Remove the period at the end\n# Your code here\n\n# c) TODO: Replace 'No' with 'This'\n# Your code here\n\n# d) TODO: Convert the string to title case\n# -&gt; Capitalize the first letter of each word\n# Your code here\n\n# e) TODO: Add an exclamation mark at the end of the sentence\n# Your code here\n\n# f) TODO: Count how many times the letter 's' appears in the decoded message (upper and lower case)\n# Your code here\n\n\n\n\n\n\n\nTip\n\n\n\nUse the help() function to get more information about a method. For example, typing help(str.replace) in the shell will show the documentation for the replace() method. To exit the documentation, press q.\n\n\n\n\nClassifying temperatures\nIn this exercise, we’ll practice using conditional statements to classify temperatures into different categories. We’ll create a program that takes a temperature input from the user and provides a classification based on the temperature range. This exercise will help you understand how to use if-elif-else statements, handle user input, and implement a simple loop for program repetition.\n\n# Use if-elif-else statements to classify the temperature\n# Below 0: \"Freezing\"\n# 0-10: \"Cold\"\n# 11-20: \"Cool\"\n# 21-30: \"Warm\"\n# Above 30: \"Hot\"\n\n# a) TODO: Formulate a small programm that asks the user for a temperature and then prints the corresponding classification.\n# Your code here\n\n# b) TODO: Test your code with -5, 15 and 35 as temperature\n# Hint: You dont't need any new code here, just run the code from the previous step with different inputs.\n\n# c) TODO: Add a feature that asks the user if they want to continue and then repeats the programm if they type \"yes\". \n# If the user does not want to continue, the programm should end.\n# Your code here\n\n\n\nNumber guessing game\nIn this exercise, we’ll create an interactive number guessing game for two players. This game will help you practice using loops, conditional statements, and user input handling. You’ll also learn how to implement a simple game logic and manage player turns. This exercise will reinforce your understanding of control structures and basic development concepts in Python.\n\n# Create a number guessing game with 2 players. The first player is the game master and the second player is the guesser. \n# Start by asking for their names. Then, ask the game master to input the secret number between 1 and 20. \n# Make sure, that the number is not shown by adding at least 25 new lines after the input prompt. Then, ask the player to guess the number. \n# If the guess is too high or too low, provide feedback in order to help the player and let the player guess again. \n# If the guess is correct, congratulate the player and end the game.\n\n# a) TODO: Your task list in more detail:\n# - Ask for the names of the game master and the player\n# - Implement the main game loop using a while loop\n# - Ask the game master for the secret number from 1-20\n# - Hint: Use `print(\"\\n\" * 25)` to add 25 new lines\n# - Ask the player for a guess\n# - Compare the guess to the secret number\n# - Provide feedback (too high, too low, or correct)\n# - Keep track of the number of guesses\n# - End the game when the correct number is guessed\n# - Print a congratulatory message with the number of guesses taken\n# - Use the given structure below to implement the game.\n\n# Ask for the names of the game master and the player\ngame_master = input(\"Enter the name of the game master: \")\nplayer = input(\"Enter the name of the player: \")\n\n# Ask the game master for the secret number\nwhile True:\n    secret_number = int(input(f\"{game_master}, enter the secret number between 1 and 20: \"))\n    if secret_number &lt; 1 or secret_number &gt; 20:\n        print(\"Please enter a valid number.\")\n    else:\n        break\n    \nprint(\"\\n\" * 25)  # Add 25 new lines to hide the secret number\n\n# Initialize variables\nguesses = 0\ncorrect = False\n\n# Main game loop\nwhile not correct:\n    # Ask the player for a guess\n    # Add the code here to ask the player for a guess\n    guesses += 1\n    \n    # Compare the guess to the secret number\n    # Add code here to compare the guess to the secret number\n    # If the guess is correct, set correct to True in order to end the game.\n    \n# Print congratulatory message\n# Add the code here to print a congratulatory message.\n\n# b) TODO: Add a feature to allow both players to play again, this time switching the roles with the game master. \n# If the player wants to play again, the game should reset and the player should be able to play again, entering a new secret number to guess for the former game master. \n# If the player does not want to play again, the game should end. Hint: Make sure to inform the players about the new game master using their stated names.\n# Your code here\n\n# c) TODO: Bonus Task - Enhance the game by adding difficulty levels\n# Implement three difficulty levels: Easy (1-10), Medium (1-20), and Hard (1-30)\n# Ask the game master to choose a difficulty level before entering the secret number\n# Adjust the range of possible numbers based on the chosen difficulty\n# Provide a different number of allowed guesses for each difficulty level:\n#   - Easy: 5 guesses\n#   - Medium: 10 guesses\n#   - Hard: 15 guesses\n# If the player doesn't guess the number within the allowed guesses, end the game and reveal the secret number\n# Your code here\n\n\n\nThat’s it!\nYou can find the solutions to these exercises online in the associated GitHub repository, but we will also quickly go over them in next week’s tutorial. To access the solutions, click on the Guthub button on the lower right and search for the folder with today’s lecture and tutorial. Alternatively, you can ask ChatGPT or Claude to explain them to you. Remember, the goal is not just to complete the exercises, but to understand the concepts and improve your programming abilities.",
     "crumbs": [
@@ -1726,7 +1726,7 @@
     "href": "assignments/assignment-1.html",
     "title": "Assignment I",
     "section": "",
-    "text": "Nothing here yet. Please check back later, as the first assignment will be available here soon.",
+    "text": "Introduction\nThis is the first of the two assignments for this course. It will be graded as pass/fail and you and your group of up to 3 students will need to submit it before the start of the last lecture. Please hand in one assignment per group via the e-mail address vlcek@beyondsimulations.de.\nIn the assignment, you will practice the concepts you learned in the first part of the course. You will find a lot of information online and you are welcome to use generative AI to help you with the assignment. However, you are not allowed to copy the code from other groups and you have to indicate where and how you used AI to help you. Try to use comments to structure and to explain your code. Furthermore, use descriptive variable names and format your code nicely in order to make it more readable.\n\n\nTax refund for donations\nIn this excercise, you will create a program that is able to calculate the amount of tax a person can get back for a donation. First, research the rules for tax refunds for donations in Germany. Then, create a program that is able to calculate the amount of tax a person can get back for a donation. The program should ask the user for the amount of the donation and the yearly income and then calculate the amount of tax the user can get back. The program should then print the amount of tax to the console. Note, that the program should also handle wrong inputs from the user, e.g. if the user enters a negative donation amount or a non-numeric income.\n\n# Tax refund for donations\n# TODO: Create a program that is able to calculate the amount of tax a person can get back for a donation.\n# Your code here\n\n\n\n\n\n\n\nTip\n\n\n\nUse the input() function to get user input in order to let the user interact with your program.\n\n\n\n\nText based adventure game\nIn this excercise, you will create a text based adventure game. You are completely free in the choice of the story, but it must at least include 3 choices, 2 differnt endings and the choice to restart the game. Try to use the concepts of conditionals, loops, and functions to create a game that is both fun and interactive for the user. Note, that the program should also handle wrong inputs from the user, e.g. if the user enters a choice that is not available.\n\n# Test based adventure game\n# TODO: Create a text based adventure game with at least 3 choices, 2 different endings and the choice to restart the game.\n# Your code here\n\n\n\nHangman\nIn this excercise, you will create a program that is able to play the game Hangman. The program should as the game master for a secret word. Afterward, it should ask the player to guess a letter and then check if the letter is in the word. The program should then print the word with the guessed letters and the number of tries left. The program should also handle wrong inputs from the user, e.g. if the user enters a non-letter or a letter that is already guessed.\n\n# Hangman\n# TODO: Create a program that is able to play the game Hangman with a game master and one player.\n# Your code here",
     "crumbs": [
       "Assignments",
       "01 Assignment"
@@ -1735,9 +1735,9 @@
   {
     "objectID": "part-06/tutorial-modules.html",
     "href": "part-06/tutorial-modules.html",
-    "title": "TODO: Scramble the letters of the word",
+    "title": "Tutorial VI - Using Modules and Packages",
     "section": "",
-    "text": "# TODO: Implement a password strength checker\n# Use string methods and conditional statements\n# Check for:\n# - Minimum length of 8 characters\n# - At least one uppercase letter\n# - At least one lowercase letter\n# - At least one digit\n# - At least one special character (!@#$%^&*)\n# Return \"Weak\", \"Medium\", or \"Strong\" based on criteria met\n\n# Test your function\n#print(check_password_strength(\"abc123\"))\n#print(check_password_strength(\"Str0ngP@ssw0rd\"))\n\n\n# TODO: Implement a number guessing game\n# Generate a random number between 1 and 100\n# Use a while loop to allow the user to guess\n# Provide feedback if the guess is too high or too low\n# Count the number of guesses and display it when correct\n\n\nHint: Convert the word to a list, shuffle it, and join it back to a string\n\n\nYour code here\n\n\nList of words to choose from\nwords = [“python”, “programming”, “computer”, “algorithm”, “database”]\n\n\nTODO: Randomly select a word from the list\n\n\nYour code here\n\n\nTODO: Scramble the selected word\n\n\nYour code here\n\n\nTODO: Set up the game loop\n\n\n- Print the scrambled word\n\n\n- Ask the user for a guess\n\n\n- Check if the guess is correct\n\n\n- If correct, congratulate and end the game\n\n\n- If incorrect, allow more guesses (maybe limit the number of attempts?)\n\n\nYour code here\n\n\nRun the game\n`"
+    "text": "# TODO: Implement a password strength checker\n# Use string methods and conditional statements\n# Check for:\n# - Minimum length of 8 characters\n# - At least one uppercase letter\n# - At least one lowercase letter\n# - At least one digit\n# - At least one special character (!@#$%^&*)\n# Return \"Weak\", \"Medium\", or \"Strong\" based on criteria met\n\n# Test your function\n#print(check_password_strength(\"abc123\"))\n#print(check_password_strength(\"Str0ngP@ssw0rd\"))\n\n\nTODO: Scramble the letters of the word\n\n\nHint: Convert the word to a list, shuffle it, and join it back to a string\n\n\nYour code here\n\n\nList of words to choose from\nwords = [“python”, “programming”, “computer”, “algorithm”, “database”]\n\n\nTODO: Randomly select a word from the list\n\n\nYour code here\n\n\nTODO: Scramble the selected word\n\n\nYour code here\n\n\nTODO: Set up the game loop\n\n\n- Print the scrambled word\n\n\n- Ask the user for a guess\n\n\n- Check if the guess is correct\n\n\n- If correct, congratulate and end the game\n\n\n- If incorrect, allow more guesses (maybe limit the number of attempts?)\n\n\nYour code here\n\n\nRun the game\n`"
   },
   {
     "objectID": "part-01/tutorial-introduction.html",
@@ -1791,172 +1791,11 @@
     "text": "Quick Recap of the last Lecture\n\n\nData Visualization\n\nData visualization is the process of creating visual representations of data\nIt allows us to understand the data in a more intuitive way\nIt helps us to identify patterns, trends, and outliers in the data\n\n\n\nBeautiful Plotting\n\nThere are many libraries for data visualization in Python\nSome of the most popular libraries are:\n\nMatplotlib\nSeaborn\nPlotly\nBokeh\nAltair\nGeoPandas\nGeoplot\nGeoplotlib\n\n\n\n\nMatplotlib Module\n\n\nSeaborn Module\n\n\nPlotly Module\n\n\nDash Module\n\n\nBokeh Module"
   },
   {
-    "objectID": "part-07/lecture-scientific.html#what-is-numpy",
-    "href": "part-07/lecture-scientific.html#what-is-numpy",
-    "title": "Lecture VII - NumPy and Pandas for Scientific Computing",
-    "section": "What is NumPy?",
-    "text": "What is NumPy?\n\nNumPy is a package for scientific computing in Python\nProvides support for large, multi-dimensional arrays and matrices\nWide range of mathematical functions to operate on these arrays\nPython lists can be slow - Numpy arrays are much faster\n\n. . .\n\n\n\n\n\n\nNote\n\n\n\nThe name of the package comes from Numerical Python."
-  },
-  {
-    "objectID": "part-07/lecture-scientific.html#why-is-numpy-so-fast",
-    "href": "part-07/lecture-scientific.html#why-is-numpy-so-fast",
-    "title": "Lecture VII - NumPy and Pandas for Scientific Computing",
-    "section": "Why is NumPy so fast?",
-    "text": "Why is NumPy so fast?\n\nNumPy arrays are stored in a contiguous block of memory\nThis allows for efficient memory access patterns\nOperations are implemented in the languages C and C++"
-  },
-  {
-    "objectID": "part-07/lecture-scientific.html#how-to-get-started",
-    "href": "part-07/lecture-scientific.html#how-to-get-started",
-    "title": "Lecture VII - NumPy and Pandas for Scientific Computing",
-    "section": "How to get started",
-    "text": "How to get started\n\nInstall NumPy using pip install numpy\nIn Thonny, use Tools -&gt; Manage Packages... to install NumPy\nImport NumPy in a script using import numpy as np\nYou are ready to go!\n\n. . .\n\nimport numpy as np\nx = np.array([1, 2, 3, 4, 5])\ntype(x)\n\nnumpy.ndarray\n\n\n. . .\n\n\n\n\n\n\nNote\n\n\n\nYou don’t have to use as np. But it is a common practice to do so."
-  },
-  {
-    "objectID": "part-07/lecture-scientific.html#creating-arrays",
-    "href": "part-07/lecture-scientific.html#creating-arrays",
-    "title": "Lecture VII - NumPy and Pandas for Scientific Computing",
-    "section": "Creating Arrays",
-    "text": "Creating Arrays\n\nThe backbone of Numpy is the so called ndarray\nCan be initialized from different data structures:\n\n\nimport numpy as np\narray_from_list = np.array([1, 1, 1, 1])\nprint(array_from_list)\n\n[1 1 1 1]\n\n\n\nimport numpy as np\narray_from_tuple = np.array((2, 2, 2, 2))\nprint(array_from_tuple)\n\n[2 2 2 2]"
-  },
-  {
-    "objectID": "part-07/lecture-scientific.html#hetergenous-data-types",
-    "href": "part-07/lecture-scientific.html#hetergenous-data-types",
-    "title": "Lecture VII - NumPy and Pandas for Scientific Computing",
-    "section": "Hetergenous Data Types",
-    "text": "Hetergenous Data Types\n\nIt is possible to store different data types in a ndarray\n\n\nimport numpy as np\narray_different_types = np.array([\"s\", 2, 2.0, \"i\"])\nprint(array_different_types)\n\n['s' '2' '2.0' 'i']\n\n\n. . .\n\n\n\n\n\n\nNote\n\n\n\nNot recommended, as it can lead to performance issues. I possible, keep them homogenous."
-  },
-  {
-    "objectID": "part-07/lecture-scientific.html#creating-prefilled-arrays",
-    "href": "part-07/lecture-scientific.html#creating-prefilled-arrays",
-    "title": "Lecture VII - NumPy and Pandas for Scientific Computing",
-    "section": "Creating Prefilled Arrays",
-    "text": "Creating Prefilled Arrays\nOften used to improve performance by allocating memory upfront\n\nnp.zeros(shape): to create an array of zeros\nnp.ones(shape): to create an array of ones\nnp.random.rand(shape): to create an array of random values\nnp.arange(start, stop, step): evenly spaced values\nnp.linspace(start, stop, num): evenly spaced values\n\n. . .\n\n\n\n\n\n\nNote\n\n\n\nThe shape refers to the size of the array. It can have one or multiple dimensions."
-  },
-  {
-    "objectID": "part-07/lecture-scientific.html#dimensions",
-    "href": "part-07/lecture-scientific.html#dimensions",
-    "title": "Lecture VII - NumPy and Pandas for Scientific Computing",
-    "section": "Dimensions",
-    "text": "Dimensions\n\nThe shape is specified as tuple in these arrays\n(2) or 2 creates a 1-dimensional array (vetor)\n(2,2) creates a 2-dimensional array (matrix)\n(2,2,2) creates a 3-dimensional array (3rd order tensor)\n(2,2,2,2) creates a 4-dimensional array (4th order tensor)\n…"
-  },
-  {
-    "objectID": "part-07/lecture-scientific.html#arrays-in-action",
-    "href": "part-07/lecture-scientific.html#arrays-in-action",
-    "title": "Lecture VII - NumPy and Pandas for Scientific Computing",
-    "section": "Arrays in Action",
-    "text": "Arrays in Action\nTask: Complete the following task\n\n# Create a 3-dimensional tensor with filled with ones\n# You can choose the shape of the tensor, but it should have 200 elements\n# Sum over all values of the tensor\n# Print the shape of the tensor using the method shape()\n# Print the dtype of the tensor using the method dtype()\n# Print the size of the tensor using the method size()"
-  },
-  {
-    "objectID": "part-07/lecture-scientific.html#indexing-and-slicing",
-    "href": "part-07/lecture-scientific.html#indexing-and-slicing",
-    "title": "Lecture VII - NumPy and Pandas for Scientific Computing",
-    "section": "Indexing and Slicing",
-    "text": "Indexing and Slicing\n\nAccessing and slicing ndarray elements works as before\nIn higher dimensions we can access elements using multiple indices\n\n. . .\nQuestion: What do you expect will be printed?\n\nimport numpy as np\nx = np.random.randint(0, 10, size=(3, 3))\nprint(x)\nprint(\"---\")\nprint(x[0:2,0:2])\n\n[[4 6 9]\n [8 7 5]\n [0 8 9]]\n---\n[[4 6]\n [8 7]]"
-  },
-  {
-    "objectID": "part-07/lecture-scientific.html#data-types",
-    "href": "part-07/lecture-scientific.html#data-types",
-    "title": "Lecture VII - NumPy and Pandas for Scientific Computing",
-    "section": "Data Types",
-    "text": "Data Types\n\nNumpy provides data types as characters\ni: integer\nb: boolean\nf: float\nS: string\nU: unicode\nThe type can be checked by calling the .dtype attribute\n\n\nstring_array = np.array([\"Hello\", \"World\"])\nstring_array.dtype\n\ndtype('&lt;U5')"
-  },
-  {
-    "objectID": "part-07/lecture-scientific.html#enforcing-data-types",
-    "href": "part-07/lecture-scientific.html#enforcing-data-types",
-    "title": "Lecture VII - NumPy and Pandas for Scientific Computing",
-    "section": "Enforcing Data Types",
-    "text": "Enforcing Data Types\n\nWe can also provide the type when creating arrays\n\n. . .\n\nx = np.array([1, 2, 3, 4, 5],  dtype = 'f')\nprint(x.dtype)\n\nfloat32\n\n\n. . .\n\nOr we can change them for existing arrays\n\n\nx = np.array([1, 2, 3, 4, 5],  dtype = 'f')\nprint(x.astype('i').dtype)\n\nint32\n\n\n. . .\n\n\n\n\n\n\nNote\n\n\n\nNote, how the types are specified as int32 and float32."
-  },
-  {
-    "objectID": "part-07/lecture-scientific.html#joining-arrays",
-    "href": "part-07/lecture-scientific.html#joining-arrays",
-    "title": "Lecture VII - NumPy and Pandas for Scientific Computing",
-    "section": "Joining Arrays",
-    "text": "Joining Arrays\n\nYou can use concatenate two join arrays\nWith axis you can specify the dimension\nEven easier in 2-dimensions is hstack() and vstack()\n\n. . .\nQuestion: What do you expect will be printed?\n\nimport numpy as np\nones = np.array((1,1,1,1))\ntwos = np.array((1,1,1,1)) *2\nprint(np.vstack((ones,twos)))\nprint(np.hstack((ones,twos)))\n\n[[1 1 1 1]\n [2 2 2 2]]\n[1 1 1 1 2 2 2 2]"
-  },
-  {
-    "objectID": "part-07/lecture-scientific.html#common-methods",
-    "href": "part-07/lecture-scientific.html#common-methods",
-    "title": "Lecture VII - NumPy and Pandas for Scientific Computing",
-    "section": "Common Methods",
-    "text": "Common Methods\n\nsort(): sort the array from low to high\nreshape(): reshape the array into a new shape\nflatten(): flatten the array into a 1D array\nsqueeze(): squeeze the array to remove 1D entries\ntranspose(): transpose the array\n\n. . .\n\n\n\n\n\n\nTip\n\n\n\nTry experiment with these methods, as they can make your work later much easier."
-  },
-  {
-    "objectID": "part-07/lecture-scientific.html#iterating-over-arrays",
-    "href": "part-07/lecture-scientific.html#iterating-over-arrays",
-    "title": "Lecture VII - NumPy and Pandas for Scientific Computing",
-    "section": "Iterating over Arrays",
-    "text": "Iterating over Arrays\n\nNaturally, we can also loop over a ndarray"
-  },
-  {
-    "objectID": "part-07/lecture-scientific.html#ufuncs",
-    "href": "part-07/lecture-scientific.html#ufuncs",
-    "title": "Lecture VII - NumPy and Pandas for Scientific Computing",
-    "section": "Ufuncs",
-    "text": "Ufuncs\n\nTo increase the speed even further, we can use"
-  },
-  {
-    "objectID": "part-07/lecture-scientific.html#filter",
-    "href": "part-07/lecture-scientific.html#filter",
-    "title": "Lecture VII - NumPy and Pandas for Scientific Computing",
-    "section": "Filter",
-    "text": "Filter"
-  },
-  {
-    "objectID": "part-07/lecture-scientific.html#what-is-pandas",
-    "href": "part-07/lecture-scientific.html#what-is-pandas",
-    "title": "Lecture VII - NumPy and Pandas for Scientific Computing",
-    "section": "What is Pandas?",
-    "text": "What is Pandas?\n\nPandas is a data manipulation and analysis library\nIt provides data structures like DataFrames and Series\nIt also provides tools for data cleaning, analysis, and visualization"
-  },
-  {
-    "objectID": "part-07/lecture-scientific.html#how-to-install-pandas",
-    "href": "part-07/lecture-scientific.html#how-to-install-pandas",
-    "title": "Lecture VII - NumPy and Pandas for Scientific Computing",
-    "section": "How to install Pandas",
-    "text": "How to install Pandas"
-  },
-  {
-    "objectID": "part-07/lecture-scientific.html#creating-dataframes",
-    "href": "part-07/lecture-scientific.html#creating-dataframes",
-    "title": "Lecture VII - NumPy and Pandas for Scientific Computing",
-    "section": "Creating DataFrames",
-    "text": "Creating DataFrames\n\nUse the pd.DataFrame(data, index, columns) function to create a DataFrame from a dictionary\nUse the pd.DataFrame(data, index, columns) function to create a DataFrame from a dictionary\nUse the pd.DataFrame(data, index, columns) function to create a DataFrame from a dictionary"
-  },
-  {
-    "objectID": "part-07/lecture-scientific.html#basic-operations",
-    "href": "part-07/lecture-scientific.html#basic-operations",
-    "title": "Lecture VII - NumPy and Pandas for Scientific Computing",
-    "section": "Basic Operations",
-    "text": "Basic Operations\n\nUse the df.head() method to display the first few rows of a DataFrame\nUse the df.tail() method to display the last few rows of a DataFrame\nUse the df.info() method to display information about a DataFrame\nUse the df.describe() method to display summary statistics about a DataFrame\nUse the df.columns attribute to access the column names of a DataFrame\nUse the df.index attribute to access the index of a DataFrame\nUse the df.values attribute to access the values of a DataFrame"
-  },
-  {
-    "objectID": "part-07/lecture-scientific.html#subsetting-dataframes",
-    "href": "part-07/lecture-scientific.html#subsetting-dataframes",
-    "title": "Lecture VII - NumPy and Pandas for Scientific Computing",
-    "section": "Subsetting DataFrames",
-    "text": "Subsetting DataFrames\n\nUse the df.loc[row_indexer, column_indexer] method to access a specific element of a DataFrame\nUse the df.iloc[row_indexer, column_indexer] method to access a specific element of a DataFrame"
-  },
-  {
-    "objectID": "part-07/lecture-scientific.html#filtering-dataframes",
-    "href": "part-07/lecture-scientific.html#filtering-dataframes",
-    "title": "Lecture VII - NumPy and Pandas for Scientific Computing",
-    "section": "Filtering DataFrames",
-    "text": "Filtering DataFrames\n\nUse the df[df['column'] &gt; value] method to filter a DataFrame\nUse the df[df['column'].isin(values)] method to filter a DataFrame"
-  },
-  {
-    "objectID": "part-07/lecture-scientific.html#grouping-dataframes",
-    "href": "part-07/lecture-scientific.html#grouping-dataframes",
-    "title": "Lecture VII - NumPy and Pandas for Scientific Computing",
-    "section": "Grouping DataFrames",
-    "text": "Grouping DataFrames\n\nUse the df.groupby('column').sum() method to group a DataFrame and calculate the sum of a column\nUse the df.groupby('column').mean() method to group a DataFrame and calculate the mean of a column\nUse the df.groupby('column').count() method to group a DataFrame and count the number of elements in a column\nUse the df.groupby('column').size() method to group a DataFrame and count the number of elements in a column"
-  },
-  {
-    "objectID": "part-07/lecture-scientific.html#excel-files",
-    "href": "part-07/lecture-scientific.html#excel-files",
-    "title": "Lecture VII - NumPy and Pandas for Scientific Computing",
-    "section": "Excel Files",
-    "text": "Excel Files\n\nExcel files can be read using the pd.read_excel(file_path) function\nExcel files can be written using the df.to_excel(file_path) method"
+    "objectID": "part-09/lecture-ai.html",
+    "href": "part-09/lecture-ai.html",
+    "title": "Lecture IX - Introduction to AI",
+    "section": "",
+    "text": "Quick Recap of the last Lecture\n\n\nIntroduction to AI\n\n\nWhat is AI?\n\n\nChallenges and Ethical Considerations\n\n\nSciPy Module\n\n\nScikit-Learn Module\n\n\nTensorFlow Module\n\n\nCoding with AI Models"
   },
   {
     "objectID": "part-07/lecture-scientific-presentation.html#what-is-numpy",
@@ -2019,7 +1858,7 @@
     "href": "part-07/lecture-scientific-presentation.html#indexing-and-slicing",
     "title": "Lecture VII - NumPy and Pandas for Scientific Computing",
     "section": "Indexing and Slicing",
-    "text": "Indexing and Slicing\n\nAccessing and slicing ndarray elements works as before\nIn higher dimensions we can access elements using multiple indices\n\n\nQuestion: What do you expect will be printed?\n\nimport numpy as np\nx = np.random.randint(0, 10, size=(3, 3))\nprint(x)\nprint(\"---\")\nprint(x[0:2,0:2])\n\n\n\n[[8 5 0]\n [4 5 7]\n [4 3 9]]\n---\n[[8 5]\n [4 5]]"
+    "text": "Indexing and Slicing\n\nAccessing and slicing ndarray elements works as before\nIn higher dimensions we can access elements using multiple indices\n\n\nQuestion: What do you expect will be printed?\n\nimport numpy as np\nx = np.random.randint(0, 10, size=(3, 3))\nprint(x)\nprint(\"---\")\nprint(x[0:2,0:2])\n\n\n\n[[1 2 9]\n [3 7 9]\n [0 9 8]]\n---\n[[1 2]\n [3 7]]"
   },
   {
     "objectID": "part-07/lecture-scientific-presentation.html#data-types",
@@ -2127,11 +1966,179 @@
     "text": "Excel Files\n\nExcel files can be read using the pd.read_excel(file_path) function\nExcel files can be written using the df.to_excel(file_path) method\n\n\n\n\nLecture VII - NumPy and Pandas for Scientific Computing | Dr. Tobias Vlćek | Home"
   },
   {
-    "objectID": "part-09/lecture-ai.html",
-    "href": "part-09/lecture-ai.html",
-    "title": "Lecture IX - Introduction to AI",
+    "objectID": "part-07/lecture-scientific.html#what-is-numpy",
+    "href": "part-07/lecture-scientific.html#what-is-numpy",
+    "title": "Lecture VII - NumPy and Pandas for Scientific Computing",
+    "section": "What is NumPy?",
+    "text": "What is NumPy?\n\nNumPy is a package for scientific computing in Python\nProvides support for large, multi-dimensional arrays and matrices\nWide range of mathematical functions to operate on these arrays\nPython lists can be slow - Numpy arrays are much faster\n\n. . .\n\n\n\n\n\n\nNote\n\n\n\nThe name of the package comes from Numerical Python."
+  },
+  {
+    "objectID": "part-07/lecture-scientific.html#why-is-numpy-so-fast",
+    "href": "part-07/lecture-scientific.html#why-is-numpy-so-fast",
+    "title": "Lecture VII - NumPy and Pandas for Scientific Computing",
+    "section": "Why is NumPy so fast?",
+    "text": "Why is NumPy so fast?\n\nNumPy arrays are stored in a contiguous block of memory\nThis allows for efficient memory access patterns\nOperations are implemented in the languages C and C++"
+  },
+  {
+    "objectID": "part-07/lecture-scientific.html#how-to-get-started",
+    "href": "part-07/lecture-scientific.html#how-to-get-started",
+    "title": "Lecture VII - NumPy and Pandas for Scientific Computing",
+    "section": "How to get started",
+    "text": "How to get started\n\nInstall NumPy using pip install numpy\nIn Thonny, use Tools -&gt; Manage Packages... to install NumPy\nImport NumPy in a script using import numpy as np\nYou are ready to go!\n\n. . .\n\nimport numpy as np\nx = np.array([1, 2, 3, 4, 5])\ntype(x)\n\nnumpy.ndarray\n\n\n. . .\n\n\n\n\n\n\nNote\n\n\n\nYou don’t have to use as np. But it is a common practice to do so."
+  },
+  {
+    "objectID": "part-07/lecture-scientific.html#creating-arrays",
+    "href": "part-07/lecture-scientific.html#creating-arrays",
+    "title": "Lecture VII - NumPy and Pandas for Scientific Computing",
+    "section": "Creating Arrays",
+    "text": "Creating Arrays\n\nThe backbone of Numpy is the so called ndarray\nCan be initialized from different data structures:\n\n\nimport numpy as np\narray_from_list = np.array([1, 1, 1, 1])\nprint(array_from_list)\n\n[1 1 1 1]\n\n\n\nimport numpy as np\narray_from_tuple = np.array((2, 2, 2, 2))\nprint(array_from_tuple)\n\n[2 2 2 2]"
+  },
+  {
+    "objectID": "part-07/lecture-scientific.html#hetergenous-data-types",
+    "href": "part-07/lecture-scientific.html#hetergenous-data-types",
+    "title": "Lecture VII - NumPy and Pandas for Scientific Computing",
+    "section": "Hetergenous Data Types",
+    "text": "Hetergenous Data Types\n\nIt is possible to store different data types in a ndarray\n\n\nimport numpy as np\narray_different_types = np.array([\"s\", 2, 2.0, \"i\"])\nprint(array_different_types)\n\n['s' '2' '2.0' 'i']\n\n\n. . .\n\n\n\n\n\n\nNote\n\n\n\nNot recommended, as it can lead to performance issues. I possible, keep them homogenous."
+  },
+  {
+    "objectID": "part-07/lecture-scientific.html#creating-prefilled-arrays",
+    "href": "part-07/lecture-scientific.html#creating-prefilled-arrays",
+    "title": "Lecture VII - NumPy and Pandas for Scientific Computing",
+    "section": "Creating Prefilled Arrays",
+    "text": "Creating Prefilled Arrays\nOften used to improve performance by allocating memory upfront\n\nnp.zeros(shape): to create an array of zeros\nnp.ones(shape): to create an array of ones\nnp.random.rand(shape): to create an array of random values\nnp.arange(start, stop, step): evenly spaced values\nnp.linspace(start, stop, num): evenly spaced values\n\n. . .\n\n\n\n\n\n\nNote\n\n\n\nThe shape refers to the size of the array. It can have one or multiple dimensions."
+  },
+  {
+    "objectID": "part-07/lecture-scientific.html#dimensions",
+    "href": "part-07/lecture-scientific.html#dimensions",
+    "title": "Lecture VII - NumPy and Pandas for Scientific Computing",
+    "section": "Dimensions",
+    "text": "Dimensions\n\nThe shape is specified as tuple in these arrays\n(2) or 2 creates a 1-dimensional array (vetor)\n(2,2) creates a 2-dimensional array (matrix)\n(2,2,2) creates a 3-dimensional array (3rd order tensor)\n(2,2,2,2) creates a 4-dimensional array (4th order tensor)\n…"
+  },
+  {
+    "objectID": "part-07/lecture-scientific.html#arrays-in-action",
+    "href": "part-07/lecture-scientific.html#arrays-in-action",
+    "title": "Lecture VII - NumPy and Pandas for Scientific Computing",
+    "section": "Arrays in Action",
+    "text": "Arrays in Action\nTask: Complete the following task\n\n# Create a 3-dimensional tensor with filled with ones\n# You can choose the shape of the tensor, but it should have 200 elements\n# Sum over all values of the tensor\n# Print the shape of the tensor using the method shape()\n# Print the dtype of the tensor using the method dtype()\n# Print the size of the tensor using the method size()"
+  },
+  {
+    "objectID": "part-07/lecture-scientific.html#indexing-and-slicing",
+    "href": "part-07/lecture-scientific.html#indexing-and-slicing",
+    "title": "Lecture VII - NumPy and Pandas for Scientific Computing",
+    "section": "Indexing and Slicing",
+    "text": "Indexing and Slicing\n\nAccessing and slicing ndarray elements works as before\nIn higher dimensions we can access elements using multiple indices\n\n. . .\nQuestion: What do you expect will be printed?\n\nimport numpy as np\nx = np.random.randint(0, 10, size=(3, 3))\nprint(x)\nprint(\"---\")\nprint(x[0:2,0:2])\n\n[[8 6 7]\n [2 5 6]\n [5 3 6]]\n---\n[[8 6]\n [2 5]]"
+  },
+  {
+    "objectID": "part-07/lecture-scientific.html#data-types",
+    "href": "part-07/lecture-scientific.html#data-types",
+    "title": "Lecture VII - NumPy and Pandas for Scientific Computing",
+    "section": "Data Types",
+    "text": "Data Types\n\nNumpy provides data types as characters\ni: integer\nb: boolean\nf: float\nS: string\nU: unicode\nThe type can be checked by calling the .dtype attribute\n\n\nstring_array = np.array([\"Hello\", \"World\"])\nstring_array.dtype\n\ndtype('&lt;U5')"
+  },
+  {
+    "objectID": "part-07/lecture-scientific.html#enforcing-data-types",
+    "href": "part-07/lecture-scientific.html#enforcing-data-types",
+    "title": "Lecture VII - NumPy and Pandas for Scientific Computing",
+    "section": "Enforcing Data Types",
+    "text": "Enforcing Data Types\n\nWe can also provide the type when creating arrays\n\n. . .\n\nx = np.array([1, 2, 3, 4, 5],  dtype = 'f')\nprint(x.dtype)\n\nfloat32\n\n\n. . .\n\nOr we can change them for existing arrays\n\n\nx = np.array([1, 2, 3, 4, 5],  dtype = 'f')\nprint(x.astype('i').dtype)\n\nint32\n\n\n. . .\n\n\n\n\n\n\nNote\n\n\n\nNote, how the types are specified as int32 and float32."
+  },
+  {
+    "objectID": "part-07/lecture-scientific.html#joining-arrays",
+    "href": "part-07/lecture-scientific.html#joining-arrays",
+    "title": "Lecture VII - NumPy and Pandas for Scientific Computing",
+    "section": "Joining Arrays",
+    "text": "Joining Arrays\n\nYou can use concatenate two join arrays\nWith axis you can specify the dimension\nEven easier in 2-dimensions is hstack() and vstack()\n\n. . .\nQuestion: What do you expect will be printed?\n\nimport numpy as np\nones = np.array((1,1,1,1))\ntwos = np.array((1,1,1,1)) *2\nprint(np.vstack((ones,twos)))\nprint(np.hstack((ones,twos)))\n\n[[1 1 1 1]\n [2 2 2 2]]\n[1 1 1 1 2 2 2 2]"
+  },
+  {
+    "objectID": "part-07/lecture-scientific.html#common-methods",
+    "href": "part-07/lecture-scientific.html#common-methods",
+    "title": "Lecture VII - NumPy and Pandas for Scientific Computing",
+    "section": "Common Methods",
+    "text": "Common Methods\n\nsort(): sort the array from low to high\nreshape(): reshape the array into a new shape\nflatten(): flatten the array into a 1D array\nsqueeze(): squeeze the array to remove 1D entries\ntranspose(): transpose the array\n\n. . .\n\n\n\n\n\n\nTip\n\n\n\nTry experiment with these methods, as they can make your work later much easier."
+  },
+  {
+    "objectID": "part-07/lecture-scientific.html#iterating-over-arrays",
+    "href": "part-07/lecture-scientific.html#iterating-over-arrays",
+    "title": "Lecture VII - NumPy and Pandas for Scientific Computing",
+    "section": "Iterating over Arrays",
+    "text": "Iterating over Arrays\n\nNaturally, we can also loop over a ndarray"
+  },
+  {
+    "objectID": "part-07/lecture-scientific.html#ufuncs",
+    "href": "part-07/lecture-scientific.html#ufuncs",
+    "title": "Lecture VII - NumPy and Pandas for Scientific Computing",
+    "section": "Ufuncs",
+    "text": "Ufuncs\n\nTo increase the speed even further, we can use"
+  },
+  {
+    "objectID": "part-07/lecture-scientific.html#filter",
+    "href": "part-07/lecture-scientific.html#filter",
+    "title": "Lecture VII - NumPy and Pandas for Scientific Computing",
+    "section": "Filter",
+    "text": "Filter"
+  },
+  {
+    "objectID": "part-07/lecture-scientific.html#what-is-pandas",
+    "href": "part-07/lecture-scientific.html#what-is-pandas",
+    "title": "Lecture VII - NumPy and Pandas for Scientific Computing",
+    "section": "What is Pandas?",
+    "text": "What is Pandas?\n\nPandas is a data manipulation and analysis library\nIt provides data structures like DataFrames and Series\nIt also provides tools for data cleaning, analysis, and visualization"
+  },
+  {
+    "objectID": "part-07/lecture-scientific.html#how-to-install-pandas",
+    "href": "part-07/lecture-scientific.html#how-to-install-pandas",
+    "title": "Lecture VII - NumPy and Pandas for Scientific Computing",
+    "section": "How to install Pandas",
+    "text": "How to install Pandas"
+  },
+  {
+    "objectID": "part-07/lecture-scientific.html#creating-dataframes",
+    "href": "part-07/lecture-scientific.html#creating-dataframes",
+    "title": "Lecture VII - NumPy and Pandas for Scientific Computing",
+    "section": "Creating DataFrames",
+    "text": "Creating DataFrames\n\nUse the pd.DataFrame(data, index, columns) function to create a DataFrame from a dictionary\nUse the pd.DataFrame(data, index, columns) function to create a DataFrame from a dictionary\nUse the pd.DataFrame(data, index, columns) function to create a DataFrame from a dictionary"
+  },
+  {
+    "objectID": "part-07/lecture-scientific.html#basic-operations",
+    "href": "part-07/lecture-scientific.html#basic-operations",
+    "title": "Lecture VII - NumPy and Pandas for Scientific Computing",
+    "section": "Basic Operations",
+    "text": "Basic Operations\n\nUse the df.head() method to display the first few rows of a DataFrame\nUse the df.tail() method to display the last few rows of a DataFrame\nUse the df.info() method to display information about a DataFrame\nUse the df.describe() method to display summary statistics about a DataFrame\nUse the df.columns attribute to access the column names of a DataFrame\nUse the df.index attribute to access the index of a DataFrame\nUse the df.values attribute to access the values of a DataFrame"
+  },
+  {
+    "objectID": "part-07/lecture-scientific.html#subsetting-dataframes",
+    "href": "part-07/lecture-scientific.html#subsetting-dataframes",
+    "title": "Lecture VII - NumPy and Pandas for Scientific Computing",
+    "section": "Subsetting DataFrames",
+    "text": "Subsetting DataFrames\n\nUse the df.loc[row_indexer, column_indexer] method to access a specific element of a DataFrame\nUse the df.iloc[row_indexer, column_indexer] method to access a specific element of a DataFrame"
+  },
+  {
+    "objectID": "part-07/lecture-scientific.html#filtering-dataframes",
+    "href": "part-07/lecture-scientific.html#filtering-dataframes",
+    "title": "Lecture VII - NumPy and Pandas for Scientific Computing",
+    "section": "Filtering DataFrames",
+    "text": "Filtering DataFrames\n\nUse the df[df['column'] &gt; value] method to filter a DataFrame\nUse the df[df['column'].isin(values)] method to filter a DataFrame"
+  },
+  {
+    "objectID": "part-07/lecture-scientific.html#grouping-dataframes",
+    "href": "part-07/lecture-scientific.html#grouping-dataframes",
+    "title": "Lecture VII - NumPy and Pandas for Scientific Computing",
+    "section": "Grouping DataFrames",
+    "text": "Grouping DataFrames\n\nUse the df.groupby('column').sum() method to group a DataFrame and calculate the sum of a column\nUse the df.groupby('column').mean() method to group a DataFrame and calculate the mean of a column\nUse the df.groupby('column').count() method to group a DataFrame and count the number of elements in a column\nUse the df.groupby('column').size() method to group a DataFrame and count the number of elements in a column"
+  },
+  {
+    "objectID": "part-07/lecture-scientific.html#excel-files",
+    "href": "part-07/lecture-scientific.html#excel-files",
+    "title": "Lecture VII - NumPy and Pandas for Scientific Computing",
+    "section": "Excel Files",
+    "text": "Excel Files\n\nExcel files can be read using the pd.read_excel(file_path) function\nExcel files can be written using the df.to_excel(file_path) method"
+  },
+  {
+    "objectID": "part-08/tutorial-plotting.html",
+    "href": "part-08/tutorial-plotting.html",
+    "title": "Tutorial VIII - Data Visualization",
     "section": "",
-    "text": "Quick Recap of the last Lecture\n\n\nIntroduction to AI\n\n\nWhat is AI?\n\n\nChallenges and Ethical Considerations\n\n\nSciPy Module\n\n\nScikit-Learn Module\n\n\nTensorFlow Module\n\n\nCoding with AI Models"
+    "text": "Simulation of a random walk for stock prices\nIn this excercise, you will create a program that is able to simulate a random walk for stock prices. The program should ask the user for the initial stock price, the number of days to simulate and the daily standard deviation of the stock price. Then, the program should simulate the random walk and visualize the stock price over time. Use the numpy library to generate random numbers and the matplotlib library to visualize the stock price over time.\n\n# Simulation of a random walk\n# TODO: Create a program that is able to simulate a random walk.\n# Your code here"
   },
   {
     "objectID": "part-01/lecture-presentation.html#about-me",
@@ -3460,7 +3467,7 @@
     "href": "assignments/assignment-2.html",
     "title": "Assignment II",
     "section": "",
-    "text": "Nothing here yet. Please check back later, after the first assignment is available.",
+    "text": "Introduction\nThis is the second of the two assignments for this course. It will be graded as pass/fail and you and your group of up to 3 students will need to submit it before the start of the last lecture. Please hand in one assignment per group via the e-mail address vlcek@beyondsimulations.de.\nIn the assignment, you will practice the concepts you learned in the second part of the course. You will find a lot of information online and you are welcome to use generative AI to help you with the assignment. However, you are not allowed to copy the code from other groups and you have to indicate where and how you used AI to help you. Try to use comments to structure and to explain your code. Furthermore, use descriptive variable names and format your code nicely in order to make it more readable.\n\n\nRedact secret information\nIn this excercise, you will create a program that is able to redact secret information in a text. The program should be able to redact the following: Zip codes, names, email addresses and phone numbers. The program should ask the user for a filename and then read the file and redact the secret information. The program should then print the redacted text to the console and write it to a new file called redacted.txt. You can find a file with secret information in the git repository under assignments/secret-text.txt.\n\n# Secret information redactor\n# TODO: Create a program that is able to redact secret information in a text.\n# Your code here\n\n\n\nDice roll simulator\nIn this excercise, you will create a program that is able to simulate dice rolls and visualizes their distribution. The program should ask the user for the number of sides on the dice and the number of dices to roll. Then, the program should simulate the dice rolls 1000 times and visualize the distribution of the dice rolls using a histogram.\n\n# Dice roll simulator\n# TODO: Create a program that is able to simulate a dice roll.\n# Your code here\n\n\n\nRegression analysis\nIn this excercise, you will create a program that performs linear regression on a dataset with housing prices. The dataset can be found in the git repository under assignments/hamburg_housing_prices.csv. The dataset contains the following columns: - Price: The price of the house in Euros. - Area: The area of the house in square meters. - Rooms: The number of rooms in the house. - Year_Built: The year the house was built. - Distance_to_Center: The distance to the center of Hamburg in kilometers.\nYour task is to perform a linear regression analysis on the dataset and to predict the price of a house based on its area, number of rooms, year it was built and its distance to the center of Hamburg. You can use the pandas library to read the dataset and the numpy library to perform the linear regression analysis. After performing the linear regression analysis, use the matplotlib library to visualize the relationship between the price and the other features as well as the predicted prices for a given set of features.\n\n# Regression analysis\n# TODO: Create a program that performs linear regression analysis on the dataset.\n# Your code here",
     "crumbs": [
       "Assignments",
       "02 Assignment"
@@ -3551,7 +3558,7 @@
     "href": "general/literature.html#resources-1",
     "title": "Literature and Resources",
     "section": "Resources",
-    "text": "Resources\n\nQuarto\n\nA static website generator that is very powerful and flexible. Used to create the slides and the website for the course.\n\nCursor\n\nA code editor based on VS Code that is very powerful and flexible. It uses AI to help you write code.\n\nJupyter\n\nA web application that allows you to create and share documents that contain code, equations, visualizations and text. It is very popular in the field of data science and academia and also part of Quarto.\n\nAdvent of Code\n\nA wonderful website with daily challenges during the christmas time. Highly recommended to playfully improve your skills.\n\nTiny Python Projects\n\nInteresting and fun projects to programm in order to improve your programming skills.\n\nGithub\n\nThe largest provider for git repositories owned by Microsoft. A lot of open source projects are hosted here and you can read the code.\n\nCodewars\n\nA platform to improve your coding skills by solving challenges. You can compete with others, see how other people solved the challenges and read and learn from the code.",
+    "text": "Resources\n\nQuarto\n\nA static website generator that is very powerful and flexible. Used to create the slides and the website for the course.\n\nCursor\n\nA code editor based on VS Code that is very powerful and flexible. It uses AI to help you write code.\n\nJupyter\n\nA web application that allows you to create and share documents that contain code, equations, visualizations and text. It is very popular in the field of data science and academia and also part of Quarto.\n\nAdvent of Code\n\nA wonderful website with daily challenges during the christmas time. Highly recommended to playfully improve your skills.\n\nTiny Python Projects\n\nInteresting and fun projects to programm in order to improve your programming skills.\n\nGithub\n\nThe largest provider for git repositories owned by Microsoft. A lot of open source projects are hosted here and you can read the code.\n\nCodewars\n\nA platform to improve your coding skills by solving challenges. You can compete with others, see how other people solved the challenges and read and learn from the code.\n\nCheat-Sheets\n\nFantastic resource with cheat sheets for the book “Python Crash Course” by Eric Matthes. You can use these to quickly look up syntax and functions.",
     "crumbs": [
       "Literature"
     ]
@@ -3559,7 +3566,7 @@
   {
     "objectID": "part-03/tutorial-functions.html",
     "href": "part-03/tutorial-functions.html",
-    "title": "Tutorial III - Functions",
+    "title": "Tutorial III - Building Reusable Functions",
     "section": "",
     "text": "Introduction\nJust like in the previous tutorial, you will likely find solutions to most exercises online. However, I still strongly encourage you to work on these exercises independently without searching for answers. Understanding someone else’s solution is very different from developing your own.\nRemember, the goal is not just to complete the exercises, but to understand the concepts and improve your programming abilities. If you encounter difficulties, review the lecture materials, experiment with different approaches, and don’t hesitate to ask for clarification during class discussions. This was the last time I repeat this, I promise!\n\n\nSmall Functions for various tasks\nIn this exercise, you will practice writing small functions for various tasks. You will also practice using the return statement to return a value from a function and the global keyword to modify a global variable.\n\n# a) TODO: Write a function that takes two numbers as input and returns their squared sum.\n\ndef squared_sum(a, b):\n    pass # Your code here\n\n# b) TODO: Implement a function that uses a global variable to keep track of how many times it has been called.\n# Call the functions 10 times and print the result to the console.\n\nfunctions_called = 0\n# Your code here\n\n# c) TODO: Create a function called password_strength that takes a password as input. \n# It should return \"weak\", \"medium\", or \"strong\" based on the passwords length with the following criteria:\n# - Return \"weak\" if the password is less than 8 characters long\n# - Return \"medium\" if the password is between 8 and 15 characters long\n# - Return \"strong\" if the password is longer than 15 characters long\n# - The function should then be called as illustrated below.\n# Your code here\n\npassword = input(\"Enter a password: \")\nstrength = password_strength(password)\nprint(f\"The strength of the password is {strength}.\")\n\n# d)TODO: Implement a function called `secret_number_game` that does the following:\n# - Use a variable `secret_number` set to 42\n# - The function should take one parameter `guess`\n# - If the guess is correct, it should print \"Correct!\" and increment a global counter `correct_guesses`\n# - If the guess is incorrect, it should print \"Wrong!\" and increment a global counter `wrong_guesses`\n# - The function should then be used in the while loop below to guess the secret number.\n# Your code here\n\nwhile True:\n    guess = int(input(\"Enter a guess: \"))\n    secret_number_game(guess)\n    if correct_guesses == 1:\n        break\n\n# e) TODO: Write a recursive function (a function that calls itself) to calculate the sum of digits of a positive integer.\n# E.g. 1234 -&gt; 1 + 2 + 3 + 4 = 10\n# Hint: You can use a for loop to iterate over the characters in a string and convert them to integers.\n# Your code here\n\n# f) TODO: Implement a function is_palindrome that checks if a given string is a palindrome (reads the same forwards and backwards).\n# Hint: Remember how we can use slicing to reverse a string.\n# Your code here\n\n\n\nDifferent classes for different tasks\nIn this exercise, you will practice creating different classes for different tasks. You will create a class for a bank account, a class for a car, and a class for a computer.\n\n# a) TODO: Extend the class called 'Books' with the following specifications:\n# - It should have attributes for 'title', 'author', and 'pages'\n# - Use the `__init__` method to initialize the attributes\n# - Include a method called 'display_info' that prints all the book's information\n# - Add a method 'is_short' that returns True if the book has less than 100 pages, False otherwise\n\nclass Books:\n    def __init__(self, title_name):\n        self.title = title_name\n\n    def display_info(self):\n        print(f\"Title: {self.title}\")\n\n    def is_long(self):\n        return self.pages &gt; 400\n\n# b) TODO: Create your favorite book as an object to the class you just created. Check if it is a long book.\n# Your code here\n\n# c) TODO: Create a class called 'Student' with the following specifications:\n# - It should have attributes for 'name', 'age', and 'current_grade'\n# - Add a method 'is_excellent' that returns True if the student's grade is lower than 2.0\n# - Add a method 'student_grade' that returns the current grade with the following printed statement: \n# - If the grade is lower than 2.0: \"The current grade of the student is: &lt;grade&gt;. This is a fantastic grade.\"\n# - If the grade is higher than 2.0 but lower than 4.0: \"The current grade of the student is: &lt;grade&gt;. This is still a fantastic grade.\n# - If the grade is higher than 4.0: \"The current grade of the student is: &lt;grade&gt;. This is a not so fantastic grade...\"\n# Your code here\n\n# d) TODO: Create your yourself as an object to the class you just created. Check if you are excellent and print your grade.\n# Your code here\n\n\n\nThat’s it!\nYou can find the solutions to these exercises online in the associated GitHub repository, but we will also quickly go over them in next week’s tutorial. To access the solutions, click on the Guthub button on the lower right and search for the folder with today’s lecture and tutorial. Alternatively, you can ask ChatGPT or Claude to explain them to you. Remember, the goal is not just to complete the exercises, but to understand the concepts and improve your programming abilities.",
     "crumbs": [
@@ -3570,9 +3577,9 @@
   {
     "objectID": "part-04/tutorial-dimensions.html",
     "href": "part-04/tutorial-dimensions.html",
-    "title": "Tutorial IV - Dimensions",
+    "title": "Tutorial IV - Handling Data in more than one Dimension",
     "section": "",
-    "text": "Small Exercises on working with iterables\n\n# a) TODO: Calculate distances in 2 dimensions\n# - You are working with tuples representing points in 2D space (x, y).\n# - Write a function that takes a tuple and returns the distance from the origin (0, 0).\n# - Create a list of 6 tuples representing multiple points and calculate the distance for each point.\n# - Create a function that takes a list of tuples and returns the point that is farthest from the origin.\n# - Print the result to the console.\n\n# b) TODO: Create a phonebook application\n# - Create a dictionary to store names and phone numbers.\n# - Add at least 5 entries to the dictionary in the initialisation. \n# - Write a function to look up a phone number by name based on a user input.\n# - Write a function to update a phone number based on a user input.\n# - Write a function to delete an entry by name based on a user input.\n# - Write a function that asks for a user input on whether the user wants to add, remove, or update a phone number.\n\n\n\nTreasure Hunt Game\nIn this task on a treasure hunt game, you’ll repeat how to handle user input and learn how to manage game states in several dimensions. Furthermore, you’ll have the opportunity to enhance the game with additional features, making it more dynamic and challenging.\n\n# a) TODO: Take a look at the code below and the instructions and add the missing code to make the game work.\n# - The game should be played on a 3x3 grid.\n# - The treasure is located at position (3, 3).\n# - There is an obstacle at position (2, 2).\n# - The player starts at position (1, 1).\n# - The player can move up, down, left, or right.\n# - The player cannot move outside the boundaries of the grid.\n# - If the player hits the obstacle, the game is over.\n# - If the player finds the treasure, the game is won.\n# - Continuously prompt the player to enter a move (up, down, left, right).\n\ngrid_size = 3 # Size of the grid\ntreasure = (3,3) # Tuple for the treasure\nobstacle = (2,2) # Tuple for the obstacle\n\n# Player's starting position in a dictionary\nplayer_position = {\"x\": 1, \"y\": 1}\n\n# Function to move the player\ndef move_player(direction):\n    if direction == \"up\" and player_position[\"y\"] &gt; 1:\n        player_position[\"y\"] -= 1\n    # TODO: Add a move down\n    # TODO: Add a move left\n    elif direction == \"right\" and player_position[\"x\"] &lt; grid_size:\n        player_position[\"x\"] += 1\n    else:\n        print(\"Invalid move. Try again.\")\n\n# Function to check the player's position\ndef check_position():\n    pos = (player_position[\"x\"], player_position[\"y\"])\n    if pos == treasure:\n        print(\"You found the treasure and won!\")\n        return False\n    # TODO: Check if the player hit the obstacle and return False if so\n    else:\n        return True\n\n# Main game loop\ndef play_game():\n    print(\"Welcome to the Mini Treasure Hunt Game!\")\n    while True:\n        print(f\"Current position: {player_position}\")\n        move = input(\"Enter move (up, down, left, right): \").strip().lower()\n        move_player(move)\n        if check_position() == False:\n            break\n\n# Start the game\nplay_game()\n\n# b) TODO: Improve the game by adding further functionality as described below.\n# - There should be a game master who can set the size of the grid, the treasure and the obstacle.\n# - Use the input to initialise the game\n# - Print all information to the console at the start of the game\n# Your code here\n \n# c) TODO: Add a feature to allow for multiple obstacles on the grid.\n# - The game master should be able to set the number of obstacles in the grid and their positions.\n# - Print the position of the obstacles and the treasure after the game has been finished.\n# - Try to make the printout as nice as possible.\n# Your code here\n\n\n\nThat’s it!\nYou can find the solutions to these exercises online in the associated GitHub repository, but we will also quickly go over them in next week’s tutorial. To access the solutions, click on the Guthub button on the lower right and search for the folder with today’s lecture and tutorial. Alternatively, you can ask ChatGPT or Claude to explain them to you. Remember, the goal is not just to complete the exercises, but to understand the concepts and improve your programming abilities.",
+    "text": "Calculating distances on a 2D grid\nIn this exercise, you’ll work with tuples representing points in 2D space. You’ll create functions to calculate distances from the origin, find the farthest point, and practice working with lists of tuples. This task will help you understand how to manipulate multi-dimensional data and perform calculations based on coordinates.\n\n# TODO: Calculate distances in 2 dimensions\n# - You are working with tuples representing points in 2D space (x, y).\n# - Write a function that takes a tuple and returns the distance from the origin (0, 0).\n# - Create a list of 5 tuples representing multiple points and calculate the distance for each point.\n# - Create a function that takes a list of tuples and returns the point that is farthest from the origin.\n# - Print the result to the console.\n\n\n\nA phonebook application\nIn this exercise, you’ll create a simple phonebook application that demonstrates the use of dictionaries in Python. This task will help you practice working with key-value pairs, user input handling, and basic file I/O operations. By implementing functions to add, update, and delete entries, you’ll gain hands-on experience with common dictionary operations. Additionally, saving the phonebook to a text file will introduce you to persisting data between program executions.\n\n# TODO: Create a phonebook application\n# - Create a dictionary to store names and phone numbers.\n# - Add at least 5 entries to the dictionary in the initialisation. \n# - Write a function to look up a phone number by name based on a user input.\n# - Write a function to update a phone number based on a user input.\n# - Write a function to delete an entry by name based on a user input.\n# - Write a function that saves the phonebook to a text file.\n# - Write a small program that asks for a user input on whether the user wants to add, remove, or update a phone number.\n# - After each operation, the phonebook should be saved to the text file.\n\n\n\nTreasure Hunt Game\nIn this task on a treasure hunt game, you’ll repeat how to handle user input and learn how to manage game states in several dimensions. Furthermore, you’ll have the opportunity to enhance the game with additional features, making it more dynamic and challenging.\n\n# a) TODO: Take a look at the code below and the instructions and add the missing code to make the game work.\n# - The game should be played on a 3x3 grid.\n# - The treasure is located at position (3, 3).\n# - There is an obstacle at position (2, 2).\n# - The player starts at position (1, 1).\n# - The player can move up, down, left, or right.\n# - The player cannot move outside the boundaries of the grid.\n# - If the player hits the obstacle, the game is over.\n# - If the player finds the treasure, the game is won.\n# - Continuously prompt the player to enter a move (up, down, left, right).\n\ngrid_size = 3 # Size of the grid\ntreasure = (3,3) # Tuple for the treasure\nobstacle = (2,2) # Tuple for the obstacle\n\n# Player's starting position in a dictionary\nplayer_position = {\"x\": 1, \"y\": 1}\n\n# Function to move the player\ndef move_player(direction):\n    if direction == \"up\" and player_position[\"y\"] &gt; 1:\n        player_position[\"y\"] -= 1\n    # TODO: Add a move down\n    # TODO: Add a move left\n    elif direction == \"right\" and player_position[\"x\"] &lt; grid_size:\n        player_position[\"x\"] += 1\n    else:\n        print(\"Invalid move. Try again.\")\n\n# Function to check the player's position\ndef check_position():\n    pos = (player_position[\"x\"], player_position[\"y\"])\n    if pos == treasure:\n        print(\"You found the treasure and won!\")\n        return False\n    # TODO: Check if the player hit the obstacle and return False if so\n    else:\n        return True\n\n# Main game loop\ndef play_game():\n    print(\"Welcome to the Mini Treasure Hunt Game!\")\n    while True:\n        print(f\"Current position: {player_position}\")\n        move = input(\"Enter move (up, down, left, right): \").strip().lower()\n        move_player(move)\n        if check_position() == False:\n            break\n\n# Start the game\nplay_game()\n\n# b) TODO: Improve the game by adding further functionality as described below.\n# - There should be a game master who can set the size of the grid, the treasure and the obstacle.\n# - Use the input to initialise the game\n# - Print all information to the console at the start of the game\n# Your code here\n \n# c) TODO: Add a feature to allow for multiple obstacles on the grid.\n# - The game master should be able to set the number of obstacles in the grid and their positions.\n# - Print the position of the obstacles and the treasure after the game has been finished.\n# - Try to make the printout as nice as possible.\n# Your code here\n\n\n\nThat’s it!\nYou can find the solutions to these exercises online in the associated GitHub repository, but we will also quickly go over them in next week’s tutorial. To access the solutions, click on the Guthub button on the lower right and search for the folder with today’s lecture and tutorial. Alternatively, you can ask ChatGPT or Claude to explain them to you. Remember, the goal is not just to complete the exercises, but to understand the concepts and improve your programming abilities.",
     "crumbs": [
       "04 Dimensions",
       "Tutorial"
