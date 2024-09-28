@@ -6,9 +6,8 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="author" content="Dr.&nbsp;Tobias Vlćek">
 
-<title>Lecture VII - NumPy and Pandas for Scientific Computing – Programming with Python</title>
+<title>Assignment II – Programming with Python</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -115,9 +114,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">
-      Programming with Python
-      </li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../assignments/assignment-1.html">Assignments</a></li><li class="breadcrumb-item"><a href="../assignments/assignment-2.html">02 Assignment</a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -248,13 +245,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="false">
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="true">
  <span class="menu-text">Assignments</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="false" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth1 ">  
+      <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../assignments/assignment-1.html" class="sidebar-item-text sidebar-link">
@@ -263,7 +260,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../assignments/assignment-2.html" class="sidebar-item-text sidebar-link">
+  <a href="../assignments/assignment-2.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text">02 Assignment</span></a>
   </div>
 </li>
@@ -291,67 +288,27 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#quick-recap-of-the-last-lecture" id="toc-quick-recap-of-the-last-lecture" class="nav-link active" data-scroll-target="#quick-recap-of-the-last-lecture"><span class="flow">Quick Recap of the last Lecture</span></a></li>
-  <li><a href="#numpy-module" id="toc-numpy-module" class="nav-link" data-scroll-target="#numpy-module"><span class="flow">NumPy Module</span></a>
-  <ul class="collapse">
-  <li><a href="#what-is-numpy" id="toc-what-is-numpy" class="nav-link" data-scroll-target="#what-is-numpy">What is NumPy?</a></li>
-  <li><a href="#why-is-numpy-so-fast" id="toc-why-is-numpy-so-fast" class="nav-link" data-scroll-target="#why-is-numpy-so-fast">Why is NumPy so fast?</a></li>
-  <li><a href="#how-to-get-started" id="toc-how-to-get-started" class="nav-link" data-scroll-target="#how-to-get-started">How to get started</a></li>
-  <li><a href="#creating-arrays" id="toc-creating-arrays" class="nav-link" data-scroll-target="#creating-arrays">Creating Arrays</a></li>
-  <li><a href="#hetergenous-data-types" id="toc-hetergenous-data-types" class="nav-link" data-scroll-target="#hetergenous-data-types">Hetergenous Data Types</a></li>
-  <li><a href="#creating-prefilled-arrays" id="toc-creating-prefilled-arrays" class="nav-link" data-scroll-target="#creating-prefilled-arrays">Creating Prefilled Arrays</a></li>
-  <li><a href="#dimensions" id="toc-dimensions" class="nav-link" data-scroll-target="#dimensions">Dimensions</a></li>
-  <li><a href="#arrays-in-action" id="toc-arrays-in-action" class="nav-link" data-scroll-target="#arrays-in-action">Arrays in Action</a></li>
-  <li><a href="#indexing-and-slicing" id="toc-indexing-and-slicing" class="nav-link" data-scroll-target="#indexing-and-slicing">Indexing and Slicing</a></li>
-  <li><a href="#data-types" id="toc-data-types" class="nav-link" data-scroll-target="#data-types">Data Types</a></li>
-  <li><a href="#enforcing-data-types" id="toc-enforcing-data-types" class="nav-link" data-scroll-target="#enforcing-data-types">Enforcing Data Types</a></li>
-  <li><a href="#joining-arrays" id="toc-joining-arrays" class="nav-link" data-scroll-target="#joining-arrays">Joining Arrays</a></li>
-  <li><a href="#common-methods" id="toc-common-methods" class="nav-link" data-scroll-target="#common-methods">Common Methods</a></li>
-  <li><a href="#iterating-over-arrays" id="toc-iterating-over-arrays" class="nav-link" data-scroll-target="#iterating-over-arrays">Iterating over Arrays</a></li>
-  <li><a href="#ufuncs" id="toc-ufuncs" class="nav-link" data-scroll-target="#ufuncs">Ufuncs</a></li>
-  <li><a href="#filter" id="toc-filter" class="nav-link" data-scroll-target="#filter">Filter</a></li>
-  </ul></li>
-  <li><a href="#pandas-module" id="toc-pandas-module" class="nav-link" data-scroll-target="#pandas-module"><span class="flow">Pandas Module</span></a>
-  <ul class="collapse">
-  <li><a href="#what-is-pandas" id="toc-what-is-pandas" class="nav-link" data-scroll-target="#what-is-pandas">What is Pandas?</a></li>
-  <li><a href="#how-to-install-pandas" id="toc-how-to-install-pandas" class="nav-link" data-scroll-target="#how-to-install-pandas">How to install Pandas</a></li>
-  <li><a href="#creating-dataframes" id="toc-creating-dataframes" class="nav-link" data-scroll-target="#creating-dataframes">Creating DataFrames</a></li>
-  <li><a href="#basic-operations" id="toc-basic-operations" class="nav-link" data-scroll-target="#basic-operations">Basic Operations</a></li>
-  <li><a href="#subsetting-dataframes" id="toc-subsetting-dataframes" class="nav-link" data-scroll-target="#subsetting-dataframes">Subsetting DataFrames</a></li>
-  <li><a href="#filtering-dataframes" id="toc-filtering-dataframes" class="nav-link" data-scroll-target="#filtering-dataframes">Filtering DataFrames</a></li>
-  <li><a href="#grouping-dataframes" id="toc-grouping-dataframes" class="nav-link" data-scroll-target="#grouping-dataframes">Grouping DataFrames</a></li>
-  <li><a href="#excel-files" id="toc-excel-files" class="nav-link" data-scroll-target="#excel-files">Excel Files</a></li>
-  </ul></li>
+  <li><a href="#introduction" id="toc-introduction" class="nav-link active" data-scroll-target="#introduction">Introduction</a></li>
+  <li><a href="#redact-secret-information" id="toc-redact-secret-information" class="nav-link" data-scroll-target="#redact-secret-information">Redact secret information</a></li>
+  <li><a href="#dice-roll-simulator" id="toc-dice-roll-simulator" class="nav-link" data-scroll-target="#dice-roll-simulator">Dice roll simulator</a></li>
+  <li><a href="#regression-analysis" id="toc-regression-analysis" class="nav-link" data-scroll-target="#regression-analysis">Regression analysis</a></li>
   </ul>
-<div class="quarto-alternate-formats"><h2>Other Formats</h2><ul><li><a href="lecture-scientific-presentation.html"><i class="bi bi-file-slides"></i>RevealJS</a></li><li><a href="lecture-scientific.pdf"><i class="bi bi-file-pdf"></i>PDF</a></li></ul></div></nav>
+<div class="quarto-alternate-formats"><h2>Other Formats</h2><ul><li><a href="assignment-2.pdf"><i class="bi bi-file-pdf"></i>PDF</a></li></ul></div></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default">
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../assignments/assignment-1.html">Assignments</a></li><li class="breadcrumb-item"><a href="../assignments/assignment-2.html">02 Assignment</a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title">Lecture VII - NumPy and Pandas for Scientific Computing</h1>
+<h1 class="title">Assignment II</h1>
 <p class="subtitle lead">Programming with Python</p>
 </div>
 
 
-<div class="quarto-title-meta-author">
-  <div class="quarto-title-meta-heading">Author</div>
-  <div class="quarto-title-meta-heading">Affiliation</div>
-  
-    <div class="quarto-title-meta-contents">
-    <p class="author">Dr.&nbsp;Tobias Vlćek </p>
-  </div>
-  <div class="quarto-title-meta-contents">
-        <p class="affiliation">
-            Kühne Logistics University Hamburg - Fall 2024
-          </p>
-      </div>
-  </div>
 
 <div class="quarto-title-meta">
 
-      
+    
   
     
   </div>
@@ -361,386 +318,47 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<section id="quick-recap-of-the-last-lecture" class="level1 title">
-<h1 class="title"><span class="flow">Quick Recap of the last Lecture</span></h1>
+<section id="introduction" class="level1">
+<h1>Introduction</h1>
+<p>This is the second of the two assignments for this course. It will be graded as pass/fail and you and your group of up to 3 students will need to submit it before the start of the last lecture. Please hand in one assignment per group via the e-mail address <a href="mailto:vlcek@beyondsimulations.de">vlcek@beyondsimulations.de</a>.</p>
+<p>In the assignment, you will practice the concepts you learned in the second part of the course. You will find a lot of information online and you are welcome to use generative AI to help you with the assignment. However, you are not allowed to copy the code from other groups and you have to indicate where and how you used AI to help you. Try to use comments to structure and to explain your code. Furthermore, use descriptive variable names and format your code nicely in order to make it more readable.</p>
 </section>
-<section id="numpy-module" class="level1 title">
-<h1 class="title"><span class="flow">NumPy Module</span></h1>
-<section id="what-is-numpy" class="level2">
-<h2 class="anchored" data-anchor-id="what-is-numpy">What is NumPy?</h2>
+<section id="redact-secret-information" class="level1">
+<h1>Redact secret information</h1>
+<p>In this excercise, you will create a program that is able to redact secret information in a text. The program should be able to redact the following: <strong>zip codes, names, email addresses and phone numbers.</strong> The program should ask the user <strong>for a filename</strong> and then read the file and <strong>redact the secret information</strong>. The program should then print the redacted text to the console and write it to a new file called <code>redacted.txt</code>. You can find a file with secret information in the git repository under <code>assignments/secret-text.txt</code>.</p>
+<div id="6a045cbf" class="cell" data-execution_count="2">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Secret information redactor</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="co"># </span><span class="al">TODO</span><span class="co">: Create a program that is able to redact secret information in a text.</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Your code here</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="dice-roll-simulator" class="level1">
+<h1>Dice roll simulator</h1>
+<p>In this excercise, you will create a program that is able to simulate dice rolls and visualizes their distribution. The program should ask the user for <strong>the number of sides on the dice and the number of dices to roll</strong>. Then, the program should simulate the dice rolls 10000 times and <strong>visualize the distribution</strong> of the dice rolls using a histogram.</p>
+<div id="dda069b8" class="cell" data-execution_count="3">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Dice roll simulator</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="co"># </span><span class="al">TODO</span><span class="co">: Create a program that is able to simulate a dice roll.</span></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Your code here</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="regression-analysis" class="level1">
+<h1>Regression analysis</h1>
+<p>In this excercise, you will create a program that performs linear regression on a dataset with housing prices. The dataset can be found in the git repository under <code>assignments/hamburg_housing_prices.csv</code>. The dataset contains the following columns:</p>
 <ul>
-<li><strong>NumPy</strong> is a package for scientific computing in Python</li>
-<li>Provides support for large, <span class="highlight">multi-dimensional arrays and matrices</span></li>
-<li>Wide range of mathematical functions to operate on these arrays</li>
-<li>Python lists can be slow - Numpy arrays are much faster</li>
+<li>Price: The price of the house in Euros.</li>
+<li>Area: The area of the house in square meters.</li>
+<li>Rooms: The number of rooms in the house.</li>
+<li>Year_Built: The year the house was built.</li>
+<li>Distance_to_Center: The distance to the center of Hamburg in kilometers.</li>
 </ul>
-<p>. . .</p>
-<div class="callout callout-style-default callout-note callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
+<p>Your task is to perform a <strong>linear regression analysis</strong> on the dataset and to predict the price of a house based on its area, number of rooms, year it was built and its distance to the center of Hamburg. You can use the <code>pandas</code> library to read the dataset and the <code>numpy</code> library to perform the linear regression analysis. After performing the linear regression analysis, use the <code>matplotlib</code> library to visualize the relationship between the price and the other features as well as the predicted prices for a given set of features.</p>
+<div id="2f087c4c" class="cell" data-execution_count="4">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Regression analysis</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="co"># </span><span class="al">TODO</span><span class="co">: Create a program that performs linear regression analysis on the dataset.</span></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Your code here</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="callout-title-container flex-fill">
-Note
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>The name of the package comes from Numerical Python.</p>
-</div>
-</div>
-</section>
-<section id="why-is-numpy-so-fast" class="level2">
-<h2 class="anchored" data-anchor-id="why-is-numpy-so-fast">Why is NumPy so fast?</h2>
-<ul>
-<li>NumPy arrays are stored in a contiguous block of memory</li>
-<li>This allows for efficient memory access patterns</li>
-<li>Operations are implemented in the languages <code>C</code> and <code>C++</code></li>
-</ul>
-</section>
-<section id="how-to-get-started" class="level2">
-<h2 class="anchored" data-anchor-id="how-to-get-started">How to get started</h2>
-<ol type="1">
-<li>Install NumPy using <code>pip install numpy</code></li>
-<li>In Thonny, use <code>Tools -&gt; Manage Packages...</code> to install NumPy</li>
-<li>Import NumPy in a script using <code>import numpy as np</code></li>
-<li>You are <span class="highlight">ready to go!</span></li>
-</ol>
-<p>. . .</p>
-<div id="37f1e489" class="cell" data-execution_count="1">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> np.array([<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">5</span>])</span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="bu">type</span>(x)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="1">
-<pre><code>numpy.ndarray</code></pre>
-</div>
-</div>
-<p>. . .</p>
-<div class="callout callout-style-default callout-note callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Note
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>You don’t have to use <code>as np</code>. But it is a common practice to do so.</p>
-</div>
-</div>
-</section>
-<section id="creating-arrays" class="level2">
-<h2 class="anchored" data-anchor-id="creating-arrays">Creating Arrays</h2>
-<ul>
-<li>The backbone of Numpy is the so called <code>ndarray</code></li>
-<li>Can be initialized from different data structures:</li>
-</ul>
-<div id="23574dcf" class="cell" data-output-location="fragment" data-execution_count="2">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>array_from_list <span class="op">=</span> np.array([<span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">1</span>])</span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(array_from_list)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1 1 1 1]</code></pre>
-</div>
-</div>
-<div id="aaea61d6" class="cell" data-output-location="fragment" data-execution_count="3">
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>array_from_tuple <span class="op">=</span> np.array((<span class="dv">2</span>, <span class="dv">2</span>, <span class="dv">2</span>, <span class="dv">2</span>))</span>
-<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(array_from_tuple)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[2 2 2 2]</code></pre>
-</div>
-</div>
-</section>
-<section id="hetergenous-data-types" class="level2">
-<h2 class="anchored" data-anchor-id="hetergenous-data-types">Hetergenous Data Types</h2>
-<ul>
-<li>It is possible to store different data types in a <code>ndarray</code></li>
-</ul>
-<div id="cb4af1b0" class="cell" data-output-location="fragment" data-execution_count="4">
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
-<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>array_different_types <span class="op">=</span> np.array([<span class="st">"s"</span>, <span class="dv">2</span>, <span class="fl">2.0</span>, <span class="st">"i"</span>])</span>
-<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(array_different_types)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>['s' '2' '2.0' 'i']</code></pre>
-</div>
-</div>
-<p>. . .</p>
-<div class="callout callout-style-default callout-note callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Note
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>Not recommended, as it can lead to performance issues. I possible, <strong>keep them homogenous</strong>.</p>
-</div>
-</div>
-</section>
-<section id="creating-prefilled-arrays" class="level2">
-<h2 class="anchored" data-anchor-id="creating-prefilled-arrays">Creating Prefilled Arrays</h2>
-<p>Often used to improve performance by <strong>allocating memory upfront</strong></p>
-<ul>
-<li><code>np.zeros(shape)</code>: to create an array of zeros</li>
-<li><code>np.ones(shape)</code>: to create an array of ones</li>
-<li><code>np.random.rand(shape)</code>: to create an array of random values</li>
-<li><code>np.arange(start, stop, step)</code>: evenly spaced values</li>
-<li><code>np.linspace(start, stop, num)</code>: evenly spaced values</li>
-</ul>
-<p>. . .</p>
-<div class="callout callout-style-default callout-note callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Note
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>The shape refers to the <span class="highlight">size of the array</span>. It can have one or multiple dimensions.</p>
-</div>
-</div>
-</section>
-<section id="dimensions" class="level2">
-<h2 class="anchored" data-anchor-id="dimensions">Dimensions</h2>
-<ul>
-<li>The shape is specified as tuple in these arrays</li>
-<li><code>(2)</code> or <code>2</code> creates a 1-dimensional array (vetor)</li>
-<li><code>(2,2)</code> creates a 2-dimensional array (matrix)</li>
-<li><code>(2,2,2)</code> creates a 3-dimensional array (3rd order tensor)</li>
-<li><code>(2,2,2,2)</code> creates a 4-dimensional array (4th order tensor)</li>
-<li>…</li>
-</ul>
-</section>
-<section id="arrays-in-action" class="level2">
-<h2 class="anchored" data-anchor-id="arrays-in-action">Arrays in Action</h2>
-<p><span class="task">Task</span>: Complete the following task</p>
-<div id="2c887f10" class="cell" data-execution_count="5">
-<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Create a 3-dimensional tensor with filled with ones</span></span>
-<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="co"># You can choose the shape of the tensor, but it should have 200 elements</span></span>
-<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Sum over all values of the tensor</span></span>
-<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Print the shape of the tensor using the method shape()</span></span>
-<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Print the dtype of the tensor using the method dtype()</span></span>
-<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Print the size of the tensor using the method size()</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-</section>
-<section id="indexing-and-slicing" class="level2">
-<h2 class="anchored" data-anchor-id="indexing-and-slicing">Indexing and Slicing</h2>
-<ul>
-<li>Accessing and slicing <code>ndarray</code> elements works as before</li>
-<li>In higher dimensions we can access elements using multiple indices</li>
-</ul>
-<p>. . .</p>
-<p><span class="question">Question</span>: What do you expect will be printed?</p>
-<div id="3c3389b8" class="cell" data-output-location="fragment" data-execution_count="6">
-<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
-<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> np.random.randint(<span class="dv">0</span>, <span class="dv">10</span>, size<span class="op">=</span>(<span class="dv">3</span>, <span class="dv">3</span>))</span>
-<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(x)</span>
-<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"---"</span>)</span>
-<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(x[<span class="dv">0</span>:<span class="dv">2</span>,<span class="dv">0</span>:<span class="dv">2</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[[8 6 7]
- [2 5 6]
- [5 3 6]]
----
-[[8 6]
- [2 5]]</code></pre>
-</div>
-</div>
-</section>
-<section id="data-types" class="level2">
-<h2 class="anchored" data-anchor-id="data-types">Data Types</h2>
-<ul>
-<li>Numpy provides <span class="highlight">data types as characters</span></li>
-<li><code>i</code>: integer</li>
-<li><code>b</code>: boolean</li>
-<li><code>f</code>: float</li>
-<li><code>S</code>: string</li>
-<li><code>U</code>: unicode</li>
-<li>The type can be checked by calling the <code>.dtype</code> attribute</li>
-</ul>
-<div id="cc9c9e8b" class="cell" data-output-location="fragment" data-execution_count="7">
-<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>string_array <span class="op">=</span> np.array([<span class="st">"Hello"</span>, <span class="st">"World"</span>])</span>
-<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>string_array.dtype</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="7">
-<pre><code>dtype('&lt;U5')</code></pre>
-</div>
-</div>
-</section>
-<section id="enforcing-data-types" class="level2">
-<h2 class="anchored" data-anchor-id="enforcing-data-types">Enforcing Data Types</h2>
-<ul>
-<li>We can also <strong>provide</strong> the type when creating arrays</li>
-</ul>
-<p>. . .</p>
-<div id="17c949c3" class="cell" data-output-location="fragment" data-execution_count="8">
-<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> np.array([<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">5</span>],  dtype <span class="op">=</span> <span class="st">'f'</span>)</span>
-<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(x.dtype)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>float32</code></pre>
-</div>
-</div>
-<p>. . .</p>
-<ul>
-<li>Or we can <strong>change</strong> them for existing arrays</li>
-</ul>
-<div id="77f54331" class="cell" data-output-location="fragment" data-execution_count="9">
-<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> np.array([<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">5</span>],  dtype <span class="op">=</span> <span class="st">'f'</span>)</span>
-<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(x.astype(<span class="st">'i'</span>).dtype)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>int32</code></pre>
-</div>
-</div>
-<p>. . .</p>
-<div class="callout callout-style-default callout-note callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Note
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>Note, how the types are specified as <code>int32</code> and <code>float32</code>.</p>
-</div>
-</div>
-</section>
-<section id="joining-arrays" class="level2">
-<h2 class="anchored" data-anchor-id="joining-arrays">Joining Arrays</h2>
-<ul>
-<li>You can use <code>concatenate</code> two <strong>join arrays</strong></li>
-<li>With <code>axis</code> you can specify the dimension</li>
-<li>Even easier in 2-dimensions is <code>hstack()</code> and <code>vstack()</code></li>
-</ul>
-<p>. . .</p>
-<p><span class="question">Question</span>: What do you expect will be printed?</p>
-<div id="9d61f220" class="cell" data-output-location="fragment" data-execution_count="10">
-<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
-<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>ones <span class="op">=</span> np.array((<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">1</span>))</span>
-<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a>twos <span class="op">=</span> np.array((<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">1</span>)) <span class="op">*</span><span class="dv">2</span></span>
-<span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(np.vstack((ones,twos)))</span>
-<span id="cb18-5"><a href="#cb18-5" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(np.hstack((ones,twos)))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[[1 1 1 1]
- [2 2 2 2]]
-[1 1 1 1 2 2 2 2]</code></pre>
-</div>
-</div>
-</section>
-<section id="common-methods" class="level2">
-<h2 class="anchored" data-anchor-id="common-methods">Common Methods</h2>
-<ul>
-<li><code>sort()</code>: sort the array from low to high</li>
-<li><code>reshape()</code>: reshape the array into a new shape</li>
-<li><code>flatten()</code>: flatten the array into a 1D array</li>
-<li><code>squeeze()</code>: squeeze the array to remove 1D entries</li>
-<li><code>transpose()</code>: transpose the array</li>
-</ul>
-<p>. . .</p>
-<div class="callout callout-style-default callout-tip callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Tip
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>Try experiment with these methods, as they can make your <span class="highlight">work later much easier</span>.</p>
-</div>
-</div>
-</section>
-<section id="iterating-over-arrays" class="level2">
-<h2 class="anchored" data-anchor-id="iterating-over-arrays">Iterating over Arrays</h2>
-<ul>
-<li>Naturally, we can also loop over a <code>ndarray</code></li>
-<li></li>
-</ul>
-</section>
-<section id="ufuncs" class="level2">
-<h2 class="anchored" data-anchor-id="ufuncs">Ufuncs</h2>
-<ul>
-<li>To increase the speed even further, we can use</li>
-</ul>
-</section>
-<section id="filter" class="level2">
-<h2 class="anchored" data-anchor-id="filter">Filter</h2>
-<ul>
-<li></li>
-</ul>
-</section>
-</section>
-<section id="pandas-module" class="level1 title">
-<h1 class="title"><span class="flow">Pandas Module</span></h1>
-<section id="what-is-pandas" class="level2">
-<h2 class="anchored" data-anchor-id="what-is-pandas">What is Pandas?</h2>
-<ul>
-<li>Pandas is a <span class="highlight">data manipulation and analysis library</span></li>
-<li>It provides data structures like <strong>DataFrames and Series</strong></li>
-<li>It also provides tools for data cleaning, analysis, and visualization</li>
-</ul>
-</section>
-<section id="how-to-install-pandas" class="level2">
-<h2 class="anchored" data-anchor-id="how-to-install-pandas">How to install Pandas</h2>
-</section>
-<section id="creating-dataframes" class="level2">
-<h2 class="anchored" data-anchor-id="creating-dataframes">Creating DataFrames</h2>
-<ul>
-<li>Use the <code>pd.DataFrame(data, index, columns)</code> function to create a DataFrame from a dictionary</li>
-<li>Use the <code>pd.DataFrame(data, index, columns)</code> function to create a DataFrame from a dictionary</li>
-<li>Use the <code>pd.DataFrame(data, index, columns)</code> function to create a DataFrame from a dictionary</li>
-</ul>
-</section>
-<section id="basic-operations" class="level2">
-<h2 class="anchored" data-anchor-id="basic-operations">Basic Operations</h2>
-<ul>
-<li>Use the <code>df.head()</code> method to display the first few rows of a DataFrame</li>
-<li>Use the <code>df.tail()</code> method to display the last few rows of a DataFrame</li>
-<li>Use the <code>df.info()</code> method to display information about a DataFrame</li>
-<li>Use the <code>df.describe()</code> method to display summary statistics about a DataFrame</li>
-<li>Use the <code>df.columns</code> attribute to access the column names of a DataFrame</li>
-<li>Use the <code>df.index</code> attribute to access the index of a DataFrame</li>
-<li>Use the <code>df.values</code> attribute to access the values of a DataFrame</li>
-</ul>
-</section>
-<section id="subsetting-dataframes" class="level2">
-<h2 class="anchored" data-anchor-id="subsetting-dataframes">Subsetting DataFrames</h2>
-<ul>
-<li>Use the <code>df.loc[row_indexer, column_indexer]</code> method to access a specific element of a DataFrame</li>
-<li>Use the <code>df.iloc[row_indexer, column_indexer]</code> method to access a specific element of a DataFrame</li>
-</ul>
-</section>
-<section id="filtering-dataframes" class="level2">
-<h2 class="anchored" data-anchor-id="filtering-dataframes">Filtering DataFrames</h2>
-<ul>
-<li>Use the <code>df[df['column'] &gt; value]</code> method to filter a DataFrame</li>
-<li>Use the <code>df[df['column'].isin(values)]</code> method to filter a DataFrame</li>
-</ul>
-</section>
-<section id="grouping-dataframes" class="level2">
-<h2 class="anchored" data-anchor-id="grouping-dataframes">Grouping DataFrames</h2>
-<ul>
-<li>Use the <code>df.groupby('column').sum()</code> method to group a DataFrame and calculate the sum of a column</li>
-<li>Use the <code>df.groupby('column').mean()</code> method to group a DataFrame and calculate the mean of a column</li>
-<li>Use the <code>df.groupby('column').count()</code> method to group a DataFrame and count the number of elements in a column</li>
-<li>Use the <code>df.groupby('column').size()</code> method to group a DataFrame and count the number of elements in a column</li>
-</ul>
-</section>
-<section id="excel-files" class="level2">
-<h2 class="anchored" data-anchor-id="excel-files">Excel Files</h2>
-<ul>
-<li>Excel files can be read using the <code>pd.read_excel(file_path)</code> function</li>
-<li>Excel files can be written using the <code>df.to_excel(file_path)</code> method</li>
-</ul>
 
 
-</section>
 </section>
 
 </main> <!-- /main -->

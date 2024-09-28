@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Assignment II – Programming with Python</title>
+<title>Tutorial VI - Using Modules and Packages – Programming with Python</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -114,7 +114,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../assignments/assignment-1.html">Assignments</a></li><li class="breadcrumb-item"><a href="../assignments/assignment-2.html">02 Assignment</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">
+      Programming with Python
+      </li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -245,13 +247,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="true">
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="false">
  <span class="menu-text">Assignments</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="true" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="false" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth1 show">  
+      <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth1 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../assignments/assignment-1.html" class="sidebar-item-text sidebar-link">
@@ -260,7 +262,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../assignments/assignment-2.html" class="sidebar-item-text sidebar-link active">
+  <a href="../assignments/assignment-2.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">02 Assignment</span></a>
   </div>
 </li>
@@ -288,19 +290,31 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#introduction" id="toc-introduction" class="nav-link active" data-scroll-target="#introduction">Introduction</a></li>
-  <li><a href="#redact-secret-information" id="toc-redact-secret-information" class="nav-link" data-scroll-target="#redact-secret-information">Redact secret information</a></li>
-  <li><a href="#dice-roll-simulator" id="toc-dice-roll-simulator" class="nav-link" data-scroll-target="#dice-roll-simulator">Dice roll simulator</a></li>
-  <li><a href="#regression-analysis" id="toc-regression-analysis" class="nav-link" data-scroll-target="#regression-analysis">Regression analysis</a></li>
+  <li><a href="#todo-scramble-the-letters-of-the-word" id="toc-todo-scramble-the-letters-of-the-word" class="nav-link active" data-scroll-target="#todo-scramble-the-letters-of-the-word">TODO: Scramble the letters of the word</a></li>
+  <li><a href="#hint-convert-the-word-to-a-list-shuffle-it-and-join-it-back-to-a-string" id="toc-hint-convert-the-word-to-a-list-shuffle-it-and-join-it-back-to-a-string" class="nav-link" data-scroll-target="#hint-convert-the-word-to-a-list-shuffle-it-and-join-it-back-to-a-string">Hint: Convert the word to a list, shuffle it, and join it back to a string</a></li>
+  <li><a href="#your-code-here" id="toc-your-code-here" class="nav-link" data-scroll-target="#your-code-here">Your code here</a></li>
+  <li><a href="#list-of-words-to-choose-from" id="toc-list-of-words-to-choose-from" class="nav-link" data-scroll-target="#list-of-words-to-choose-from">List of words to choose from</a></li>
+  <li><a href="#todo-randomly-select-a-word-from-the-list" id="toc-todo-randomly-select-a-word-from-the-list" class="nav-link" data-scroll-target="#todo-randomly-select-a-word-from-the-list">TODO: Randomly select a word from the list</a></li>
+  <li><a href="#your-code-here-1" id="toc-your-code-here-1" class="nav-link" data-scroll-target="#your-code-here-1">Your code here</a></li>
+  <li><a href="#todo-scramble-the-selected-word" id="toc-todo-scramble-the-selected-word" class="nav-link" data-scroll-target="#todo-scramble-the-selected-word">TODO: Scramble the selected word</a></li>
+  <li><a href="#your-code-here-2" id="toc-your-code-here-2" class="nav-link" data-scroll-target="#your-code-here-2">Your code here</a></li>
+  <li><a href="#todo-set-up-the-game-loop" id="toc-todo-set-up-the-game-loop" class="nav-link" data-scroll-target="#todo-set-up-the-game-loop">TODO: Set up the game loop</a></li>
+  <li><a href="#print-the-scrambled-word" id="toc-print-the-scrambled-word" class="nav-link" data-scroll-target="#print-the-scrambled-word">- Print the scrambled word</a></li>
+  <li><a href="#ask-the-user-for-a-guess" id="toc-ask-the-user-for-a-guess" class="nav-link" data-scroll-target="#ask-the-user-for-a-guess">- Ask the user for a guess</a></li>
+  <li><a href="#check-if-the-guess-is-correct" id="toc-check-if-the-guess-is-correct" class="nav-link" data-scroll-target="#check-if-the-guess-is-correct">- Check if the guess is correct</a></li>
+  <li><a href="#if-correct-congratulate-and-end-the-game" id="toc-if-correct-congratulate-and-end-the-game" class="nav-link" data-scroll-target="#if-correct-congratulate-and-end-the-game">- If correct, congratulate and end the game</a></li>
+  <li><a href="#if-incorrect-allow-more-guesses-maybe-limit-the-number-of-attempts" id="toc-if-incorrect-allow-more-guesses-maybe-limit-the-number-of-attempts" class="nav-link" data-scroll-target="#if-incorrect-allow-more-guesses-maybe-limit-the-number-of-attempts">- If incorrect, allow more guesses (maybe limit the number of attempts?)</a></li>
+  <li><a href="#your-code-here-3" id="toc-your-code-here-3" class="nav-link" data-scroll-target="#your-code-here-3">Your code here</a></li>
+  <li><a href="#run-the-game" id="toc-run-the-game" class="nav-link" data-scroll-target="#run-the-game">Run the game</a></li>
   </ul>
-<div class="quarto-alternate-formats"><h2>Other Formats</h2><ul><li><a href="assignment-2.pdf"><i class="bi bi-file-pdf"></i>PDF</a></li></ul></div></nav>
+<div class="quarto-alternate-formats"><h2>Other Formats</h2><ul><li><a href="tutorial-modules.pdf"><i class="bi bi-file-pdf"></i>PDF</a></li></ul></div></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../assignments/assignment-1.html">Assignments</a></li><li class="breadcrumb-item"><a href="../assignments/assignment-2.html">02 Assignment</a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Assignment II</h1>
+<h1 class="title">Tutorial VI - Using Modules and Packages</h1>
 <p class="subtitle lead">Programming with Python</p>
 </div>
 
@@ -318,45 +332,70 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<section id="introduction" class="level1">
-<h1>Introduction</h1>
-<p>This is the second of the two assignments for this course. It will be graded as pass/fail and you and your group of up to 3 students will need to submit it before the start of the last lecture. Please hand in one assignment per group via the e-mail address <a href="mailto:vlcek@beyondsimulations.de">vlcek@beyondsimulations.de</a>.</p>
-<p>In the assignment, you will practice the concepts you learned in the second part of the course. You will find a lot of information online and you are welcome to use generative AI to help you with the assignment. However, you are not allowed to copy the code from other groups and you have to indicate where and how you used AI to help you. Try to use comments to structure and to explain your code. Furthermore, use descriptive variable names and format your code nicely in order to make it more readable.</p>
-</section>
-<section id="redact-secret-information" class="level1">
-<h1>Redact secret information</h1>
-<p>In this excercise, you will create a program that is able to redact secret information in a text. The program should be able to redact the following: <strong>zip codes, names, email addresses and phone numbers.</strong> The program should ask the user <strong>for a filename</strong> and then read the file and <strong>redact the secret information</strong>. The program should then print the redacted text to the console and write it to a new file called <code>redacted.txt</code>. You can find a file with secret information in the git repository under <code>assignments/secret-text.txt</code>.</p>
-<div id="6a045cbf" class="cell" data-execution_count="2">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Secret information redactor</span></span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="co"># </span><span class="al">TODO</span><span class="co">: Create a program that is able to redact secret information in a text.</span></span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Your code here</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="17d82b55" class="cell" data-execution_count="2">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># </span><span class="al">TODO</span><span class="co">: Implement a password strength checker</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Use string methods and conditional statements</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Check for:</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="co"># - Minimum length of 8 characters</span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="co"># - At least one uppercase letter</span></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="co"># - At least one lowercase letter</span></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="co"># - At least one digit</span></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="co"># - At least one special character (!@#$%^&amp;*)</span></span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="co"># Return "Weak", "Medium", or "Strong" based on criteria met</span></span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a><span class="co"># Test your function</span></span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a><span class="co">#print(check_password_strength("abc123"))</span></span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a><span class="co">#print(check_password_strength("Str0ngP@ssw0rd"))</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
+<section id="todo-scramble-the-letters-of-the-word" class="level1">
+<h1>TODO: Scramble the letters of the word</h1>
 </section>
-<section id="dice-roll-simulator" class="level1">
-<h1>Dice roll simulator</h1>
-<p>In this excercise, you will create a program that is able to simulate dice rolls and visualizes their distribution. The program should ask the user for <strong>the number of sides on the dice and the number of dices to roll</strong>. Then, the program should simulate the dice rolls 10000 times and <strong>visualize the distribution</strong> of the dice rolls using a histogram.</p>
-<div id="dda069b8" class="cell" data-execution_count="3">
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Dice roll simulator</span></span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="co"># </span><span class="al">TODO</span><span class="co">: Create a program that is able to simulate a dice roll.</span></span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Your code here</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
+<section id="hint-convert-the-word-to-a-list-shuffle-it-and-join-it-back-to-a-string" class="level1">
+<h1>Hint: Convert the word to a list, shuffle it, and join it back to a string</h1>
 </section>
-<section id="regression-analysis" class="level1">
-<h1>Regression analysis</h1>
-<p>In this excercise, you will create a program that performs linear regression on a dataset with housing prices. The dataset can be found in the git repository under <code>assignments/hamburg_housing_prices.csv</code>. The dataset contains the following columns:</p>
-<ul>
-<li>Price: The price of the house in Euros.</li>
-<li>Area: The area of the house in square meters.</li>
-<li>Rooms: The number of rooms in the house.</li>
-<li>Year_Built: The year the house was built.</li>
-<li>Distance_to_Center: The distance to the center of Hamburg in kilometers.</li>
-</ul>
-<p>Your task is to perform a <strong>linear regression analysis</strong> on the dataset and to predict the price of a house based on its area, number of rooms, year it was built and its distance to the center of Hamburg. You can use the <code>pandas</code> library to read the dataset and the <code>numpy</code> library to perform the linear regression analysis. After performing the linear regression analysis, use the <code>matplotlib</code> library to visualize the relationship between the price and the other features as well as the predicted prices for a given set of features.</p>
-<div id="2f087c4c" class="cell" data-execution_count="4">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Regression analysis</span></span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="co"># </span><span class="al">TODO</span><span class="co">: Create a program that performs linear regression analysis on the dataset.</span></span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Your code here</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
+<section id="your-code-here" class="level1">
+<h1>Your code here</h1>
+</section>
+<section id="list-of-words-to-choose-from" class="level1">
+<h1>List of words to choose from</h1>
+<p>words = [“python”, “programming”, “computer”, “algorithm”, “database”]</p>
+</section>
+<section id="todo-randomly-select-a-word-from-the-list" class="level1">
+<h1>TODO: Randomly select a word from the list</h1>
+</section>
+<section id="your-code-here-1" class="level1">
+<h1>Your code here</h1>
+</section>
+<section id="todo-scramble-the-selected-word" class="level1">
+<h1>TODO: Scramble the selected word</h1>
+</section>
+<section id="your-code-here-2" class="level1">
+<h1>Your code here</h1>
+</section>
+<section id="todo-set-up-the-game-loop" class="level1">
+<h1>TODO: Set up the game loop</h1>
+</section>
+<section id="print-the-scrambled-word" class="level1">
+<h1>- Print the scrambled word</h1>
+</section>
+<section id="ask-the-user-for-a-guess" class="level1">
+<h1>- Ask the user for a guess</h1>
+</section>
+<section id="check-if-the-guess-is-correct" class="level1">
+<h1>- Check if the guess is correct</h1>
+</section>
+<section id="if-correct-congratulate-and-end-the-game" class="level1">
+<h1>- If correct, congratulate and end the game</h1>
+</section>
+<section id="if-incorrect-allow-more-guesses-maybe-limit-the-number-of-attempts" class="level1">
+<h1>- If incorrect, allow more guesses (maybe limit the number of attempts?)</h1>
+</section>
+<section id="your-code-here-3" class="level1">
+<h1>Your code here</h1>
+</section>
+<section id="run-the-game" class="level1">
+<h1>Run the game</h1>
+<p>`</p>
 
 
 </section>
