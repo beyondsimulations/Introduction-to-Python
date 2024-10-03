@@ -11,7 +11,7 @@
   <meta name="generator" content="quarto-1.5.55">
 
   <meta name="author" content="Dr.&nbsp;Tobias Vlćek">
-  <title>Programming with Python – Lecture V - Handling Errors</title>
+  <title>Programming with Python – Lecture III - Building Reusable Functions</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
@@ -393,7 +393,7 @@
     <div class="slides">
 
 <section id="title-slide" data-background-color="#FFE0D3" class="quarto-title-block center">
-  <h1 class="title">Lecture V - Handling Errors</h1>
+  <h1 class="title">Lecture III - Building Reusable Functions</h1>
   <p class="subtitle">Programming with Python</p>
 
 <div class="quarto-title-authors">
@@ -413,35 +413,14 @@ Dr.&nbsp;Tobias Vlćek
 <h1><span class="flow">Quick Recap of the last Lecture</span></h1>
 
 </section>
-<section id="data-structures" class="slide level2">
-<h2>Data Structures</h2>
+<section id="slicing" class="slide level2">
+<h2>Slicing</h2>
 <ul>
-<li><span class="highlight">Newly</span> introduced data structures:
-<ul>
-<li><strong>Tuples</strong>: Ordered, immutable collections</li>
-<li><strong>Lists</strong>: Ordered, mutable collections</li>
-<li><strong>Sets</strong>: Unordered collections of unique elements</li>
-<li><strong>Dictionaries</strong>: Key-value pairs</li>
-</ul></li>
-</ul>
-<div class="fragment">
-<div id="e819a8ab" class="cell" data-execution_count="2">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a></a>list_example <span class="op">=</span> [<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">5</span>]</span>
-<span id="cb1-2"><a></a>set_example <span class="op">=</span> {<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">5</span>}</span>
-<span id="cb1-3"><a></a>dict_example <span class="op">=</span> {<span class="st">"a"</span>: <span class="dv">1</span>, <span class="st">"b"</span>: <span class="dv">2</span>, <span class="st">"c"</span>: <span class="dv">3</span>}</span>
-<span id="cb1-4"><a></a>tuple_example <span class="op">=</span> (<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-</div>
-</section>
-<section id="operations-and-methods" class="slide level2">
-<h2>Operations and Methods</h2>
-<ul>
-<li>Each data structure has specific operations and methods:
-<ul>
-<li>Tuples and Lists: Indexing, slicing, concatenation</li>
-<li>Sets: Union, intersection, difference</li>
-<li>Dictionaries: Key-based access, <code>keys()</code>, <code>values()</code></li>
-</ul></li>
+<li>With slicing we can get a range of elements from a sequence</li>
+<li>Syntax: <code>sequence[start:stop:step]</code></li>
+<li><code>start</code> is the index of the first element to include</li>
+<li><code>stop</code> is the index of the first element to exclude</li>
+<li><code>step</code> is the increment between indices</li>
 </ul>
 <div class="fragment">
 <div class="callout callout-tip callout-titled callout-style-default">
@@ -453,21 +432,42 @@ Dr.&nbsp;Tobias Vlćek
 <p><strong>Tip</strong></p>
 </div>
 <div class="callout-content">
-<p><strong>Comprehensions</strong> for concise creation of these structures are often used in practice to create new data structures from existing ones.</p>
+<p>If left out, the step defaults to 1. Else, start defaults to 0 and stop defaults to the length of the sequence. Negative indices can be used to slice from the end of the sequence.</p>
 </div>
 </div>
 </div>
 </div>
 </section>
-<section id="io-and-file-handling" class="slide level2">
-<h2>I/O and File Handling</h2>
+<section id="comparison-operators" class="slide level2">
+<h2>Comparison Operators</h2>
 <ul>
-<li>Basic file operations
+<li>Comparison operators are used to compare two values</li>
+<li>The result of a comparison is a boolean value (<code>True</code> or <code>False</code>)</li>
+<li>Operators include: <code>==</code>, <code>!=</code>, <code>&gt;</code>, <code>&lt;</code>, <code>&gt;=</code>, <code>&lt;=</code></li>
+</ul>
+<div class="fragment">
+<p><span class="question">&gt; Question:</span> Is this <code>True</code>?</p>
+<div id="7821f363" class="cell" data-execution_count="2">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a></a><span class="co"># Careful here!</span></span>
+<span id="cb1-2"><a></a>one <span class="op">=</span> <span class="dv">1</span></span>
+<span id="cb1-3"><a></a>two <span class="op">=</span> <span class="dv">1</span></span>
+<span id="cb1-4"><a></a><span class="bu">print</span>(one <span class="op">==</span> two)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell fragment" data-execution_count="2">
+<div class="cell-output cell-output-stdout">
+<pre><code>True</code></pre>
+</div>
+</div>
+</div>
+</section>
+<section id="control-structures" class="slide level2">
+<h2>Control Structures</h2>
 <ul>
-<li>Opening files with <code>open()</code></li>
-<li>Reading and writing files</li>
-<li>Using the <code>with</code> statement for safer file handling</li>
-</ul></li>
+<li>Control structures allow us to control the flow of execution</li>
+<li>It includes conditional statements and loops</li>
+<li>Conditional statements: <code>if</code>, <code>elif</code>, <code>else</code></li>
+<li>Loops: <code>for</code> and <code>while</code></li>
+<li>Control flow statements (in loops): <code>continue</code> and <code>break</code></li>
 </ul>
 <div class="fragment">
 <div class="callout callout-note callout-titled callout-style-default">
@@ -479,328 +479,349 @@ Dr.&nbsp;Tobias Vlćek
 <p><strong>Note</strong></p>
 </div>
 <div class="callout-content">
-<p>This covers the main points from our last lecture on data structures and file handling in Python.</p>
+<p>The statement <code>continue</code> skips the rest of the current iteration and moves to the next one in a loop while the <code>break</code> statement exits the loop entirely.</p>
 </div>
 </div>
 </div>
 </div>
 </section></section>
 <section>
-<section id="exceptions" class="title-slide slide level1 title center">
-<h1><span class="flow">Exceptions</span></h1>
+<section id="functions-in-detail" class="title-slide slide level1 title center">
+<h1><span class="flow">Functions in Detail</span></h1>
 
 </section>
-<section id="what-are-exceptions" class="slide level2">
-<h2>What are Exceptions?</h2>
+<section id="what-is-a-function" class="slide level2">
+<h2>What is a Function?</h2>
 <ul>
-<li>Exceptions are <span class="highlight">discovered errors</span> that occur during the execution</li>
+<li>Functions can accept <span class="highlight">inputs (parameters)</span> and <span class="highlight">return outputs</span></li>
+<li>Encapsulate logic, making code easier to maintain</li>
+<li>Functions can be called <strong>multiple times</strong> from different part</li>
+<li>They help <strong>reduce code duplication</strong> and improve readability</li>
 </ul>
-<div class="fragment">
-<div id="2a634456" class="cell" data-execution_count="3">
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a></a><span class="kw">def</span> divide_numbers(a, b):</span>
-<span id="cb2-2"><a></a>        result <span class="op">=</span> a <span class="op">/</span> b</span>
-<span id="cb2-3"><a></a>        <span class="cf">return</span> result </span>
-<span id="cb2-4"><a></a></span>
-<span id="cb2-5"><a></a><span class="bu">print</span>(divide_numbers(<span class="dv">10</span>, <span class="dv">0</span>))</span>
-<span id="cb2-6"><a></a><span class="bu">print</span>(<span class="st">"I will not be printed as the program crashed before."</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="89e5baeb" class="cell" data-execution_count="3">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a></a><span class="co"># I'm a function.</span></span>
+<span id="cb3-2"><a></a><span class="bu">type</span>(<span class="bu">print</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell fragment" data-execution_count="3">
+<div class="cell-output cell-output-display" data-execution_count="2">
+<pre><code>builtin_function_or_method</code></pre>
 </div>
 </div>
 <div class="fragment">
-<p><span class="errors">ZeroDivisionError:</span> division by zero</p>
-</div>
-<div class="fragment">
-<div class="callout callout-warning callout-titled callout-style-default">
+<div class="callout callout-important callout-titled callout-style-default">
 <div class="callout-body">
 <div class="callout-title">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
-<p><strong>Warning</strong></p>
+<p><strong>Important</strong></p>
 </div>
 <div class="callout-content">
-<p>Undiscovered errors can be very <strong>hard to debug</strong> and can cause <strong>crashes</strong> and <strong>other issues</strong>.</p>
+<p>Remember, methods are <span class="highlight">functions</span> that are called on an <span class="highlight">object</span>.</p>
 </div>
 </div>
 </div>
 </div>
 </section>
-<section id="common-built-in-exceptions-i" class="slide level2">
-<h2>Common Built-in Exceptions I</h2>
+<section id="some-built-in-functions-already-used" class="slide level2">
+<h2>Some Built-in Functions already used</h2>
 <ul>
-<li><code>ValueError</code>: argument of correct type but inappropriate value</li>
-<li><code>TypeError</code>: function applied to object of inappropriate type</li>
-<li><code>NameError</code>: raised when a local or global name is not found</li>
-<li><code>IndexError</code>: raised when a sequence subscript is out of range</li>
-<li><code>KeyError</code>: raised when a dictionary key is not found</li>
-<li><code>FileNotFoundError</code>: file or directory not found</li>
-<li><code>ZeroDivisionError</code>: division or modulo by zero</li>
+<li><code>print()</code>: Print text to console</li>
+<li><code>input()</code>: Read text from console</li>
+<li><code>len()</code>: Get the length of a sequence</li>
+<li><code>range()</code>: Generate a sequence of numbers</li>
+<li><code>round()</code>: Round a number to a specified number of decimal places</li>
+<li><code>type()</code>: Get the type of an object</li>
+<li><code>int()</code>: Convert a string to an integer</li>
+<li><code>float()</code>: Convert a string to a floating-point number</li>
+<li><code>str()</code>: Convert an object to a string</li>
 </ul>
 </section>
-<section id="common-built-in-exceptions-ii" class="slide level2">
-<h2>Common Built-in Exceptions II</h2>
+<section id="defining-a-function" class="slide level2">
+<h2>Defining a Function</h2>
 <ul>
-<li><code>AttributeError</code>: attribute reference or assignment fails</li>
-<li><code>ImportError</code>: import of a modulefails</li>
-<li><code>SyntaxError</code>: parser encounters a syntax error</li>
-<li><code>IndentationError</code>: indentation is not correct</li>
-<li><code>RuntimeError</code>: error does not fall into any category</li>
-</ul>
-<div class="fragment">
-<div class="callout callout-note callout-titled callout-style-default">
-<div class="callout-body">
-<div class="callout-title">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<p><strong>Note</strong></p>
-</div>
-<div class="callout-content">
-<p>The list of built-in exceptions is even longer, these are just the most common ones. We won’t cover the errors listed here in detail, but it is good to be aware of them.</p>
-</div>
-</div>
-</div>
-</div>
-</section>
-<section id="try-except-blocks" class="slide level2">
-<h2>try-except Blocks</h2>
-<ul>
-<li><code>try-except</code> blocks are used to handle exceptions</li>
-<li><code>try</code> block contains the code that might raise an exception</li>
-<li><code>except</code> block contains the executed code if an exception occurs</li>
+<li>Use the <code>def</code> keyword followed by the function name</li>
+<li>Inside parentheses we list the inputs (parameters)</li>
+<li>The code block within every function starts with a colon (:)</li>
+<li>It is <span class="highlight">indented</span>, just as the loops from the last lecture</li>
 </ul>
 <div class="fragment">
-<div id="62d84672" class="cell" data-execution_count="4">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a></a><span class="kw">def</span> divide_numbers(a, b):</span>
-<span id="cb3-2"><a></a>    <span class="cf">try</span>:</span>
-<span id="cb3-3"><a></a>        result <span class="op">=</span> a <span class="op">/</span> b</span>
-<span id="cb3-4"><a></a>        <span class="cf">return</span> result</span>
-<span id="cb3-5"><a></a>    <span class="cf">except</span> <span class="pp">ZeroDivisionError</span>:</span>
-<span id="cb3-6"><a></a>        <span class="cf">return</span> <span class="st">"Error: Division by zero is not allowed."</span></span>
-<span id="cb3-7"><a></a></span>
-<span id="cb3-8"><a></a><span class="bu">print</span>(divide_numbers(<span class="dv">10</span>, <span class="dv">0</span>))</span>
-<span id="cb3-9"><a></a><span class="bu">print</span>(<span class="st">"I will be printed as the exception was handled!"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="3666b85b" class="cell" data-execution_count="4">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a></a><span class="kw">def</span> greet(a_parameter):</span>
+<span id="cb5-2"><a></a>    <span class="bu">print</span>(<span class="ss">f"Hello, </span><span class="sc">{</span>a_parameter<span class="sc">}</span><span class="ss">!"</span>)</span>
+<span id="cb5-3"><a></a>greet(<span class="st">"Students"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell fragment" data-execution_count="4">
 <div class="cell-output cell-output-stdout">
-<pre><code>Error: Division by zero is not allowed.
-I will be printed as the exception was handled!</code></pre>
+<pre><code>Hello, Students!</code></pre>
 </div>
 </div>
 </div>
-</section>
-<section id="try-except-blocks-for-specific-exceptions" class="slide level2">
-<h2>try-except Blocks for specific exceptions</h2>
-<ul>
-<li>We can also specify <span class="highlight">the type of exception</span> we want to catch</li>
-<li>This allows for more <strong>specific error handling</strong></li>
-</ul>
-<div class="sourceCode" id="cb5"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a></a><span class="cf">try</span>:</span>
-<span id="cb5-2"><a></a>    <span class="co"># Code that might raise an exception</span></span>
-<span id="cb5-3"><a></a>    <span class="co"># ...</span></span>
-<span id="cb5-4"><a></a><span class="cf">except</span> ExceptionType <span class="im">as</span> e:</span>
-<span id="cb5-5"><a></a>    <span class="co"># Code to handle the specific exception type</span></span>
-<span id="cb5-6"><a></a>    <span class="co"># ...</span></span>
-<span id="cb5-7"><a></a><span class="cf">except</span>:</span>
-<span id="cb5-8"><a></a>    <span class="co"># Code to handle any other exceptions</span></span>
-<span id="cb5-9"><a></a>    <span class="co"># ...</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="fragment">
-<div class="callout callout-note callout-titled callout-style-default">
+<div class="callout callout-tip callout-titled callout-style-default">
 <div class="callout-body">
 <div class="callout-title">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
-<p><strong>Note</strong></p>
+<p><strong>Tip</strong></p>
 </div>
 <div class="callout-content">
-<p><code>as e</code> is used to store the exception in a variable. Not mandatory, but good practice to do so.</p>
+<p>It is common practice to leave out one line after the definition of a function, although we will not always do that in the lecture to save space on the slides.</p>
 </div>
 </div>
 </div>
 </div>
 </section>
-<section id="try-except-blocks-in-action" class="slide level2">
-<h2>try-except Blocks in Action</h2>
-<p><span class="task">&gt;Grouptask:</span> Solve the following problem using try-except blocks:</p>
+<section id="comment-functions" class="slide level2">
+<h2>Comment Functions</h2>
+<ul>
+<li>It is good practice to include a comment at the top of your functions</li>
+<li>If you do it with three <code>"""</code>, it will appear in the help menu</li>
+</ul>
 <div class="fragment">
-<div id="35c702fe" class="cell" data-execution_count="5">
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a></a><span class="co"># Implement a function that converts a string to an integer</span></span>
-<span id="cb6-2"><a></a><span class="co"># 1. Try to convert the input_string to an integer</span></span>
-<span id="cb6-3"><a></a><span class="co"># 2. If successful, return the integer</span></span>
-<span id="cb6-4"><a></a><span class="co"># 3. If a ValueError occurs, catch it and return "Invalid input: not a number"</span></span>
-<span id="cb6-5"><a></a><span class="co"># 4. If any other exception occurs, catch it and return </span></span>
-<span id="cb6-6"><a></a><span class="co"># "An unexpected error occurred: [type of exception]"</span></span>
-<span id="cb6-7"><a></a></span>
-<span id="cb6-8"><a></a><span class="co"># Your code here</span></span>
-<span id="cb6-9"><a></a></span>
-<span id="cb6-10"><a></a><span class="co"># Test cases</span></span>
-<span id="cb6-11"><a></a><span class="bu">print</span>(string_to_int(<span class="st">"42"</span>))        <span class="co"># Should print: 42</span></span>
-<span id="cb6-12"><a></a><span class="bu">print</span>(string_to_int(<span class="st">"Hello"</span>))     <span class="co"># Should print: Invalid </span></span>
-<span id="cb6-13"><a></a><span class="bu">print</span>(string_to_int([<span class="dv">123</span>]))       </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="b1663e83" class="cell" data-execution_count="5">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a></a><span class="kw">def</span> greet():</span>
+<span id="cb7-2"><a></a>    <span class="co">"""</span></span>
+<span id="cb7-3"><a></a><span class="co">    This function will be used later and has currently</span></span>
+<span id="cb7-4"><a></a><span class="co">    absolutely no use for anything.</span></span>
+<span id="cb7-5"><a></a><span class="co">    """</span></span>
+<span id="cb7-6"><a></a>    <span class="cf">pass</span> <span class="co"># Necessary placeholder to avoid error</span></span>
+<span id="cb7-7"><a></a></span>
+<span id="cb7-8"><a></a><span class="bu">help</span>(greet)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-</div>
-<div class="fragment">
-<p><span class="question">Question:</span> What is the output of the last line?</p>
-</div>
-</section></section>
-<section>
-<section id="raising-exceptions" class="title-slide slide level1 title center">
-<h1><span class="flow">Raising Exceptions</span></h1>
+<div class="cell fragment" data-execution_count="5">
+<div class="cell-output cell-output-stdout">
+<pre><code>Help on function greet in module __main__:
 
-</section>
-<section id="raising-exceptions-1" class="slide level2">
-<h2>Raising Exceptions</h2>
-<ul>
-<li>We can <span class="highlight">raise exceptions ourselves</span> using the <code>raise</code> statement</li>
-<li>It allows us to handle errors in a more controlled manner</li>
-</ul>
-<div class="fragment">
-<div id="df598a5f" class="cell" data-execution_count="6">
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a></a><span class="kw">def</span> validate_age(age):</span>
-<span id="cb7-2"><a></a>    <span class="cf">if</span> age <span class="op">&lt;</span> <span class="dv">0</span>:</span>
-<span id="cb7-3"><a></a>        <span class="cf">raise</span> <span class="pp">ValueError</span></span>
-<span id="cb7-4"><a></a>    <span class="cf">return</span> age</span>
-<span id="cb7-5"><a></a></span>
-<span id="cb7-6"><a></a><span class="bu">print</span>(validate_age(<span class="dv">25</span>)) <span class="co"># This will print 25</span></span>
-<span id="cb7-7"><a></a><span class="bu">print</span>(validate_age(<span class="op">-</span><span class="dv">1</span>)) <span class="co"># This will raise a ValueError</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+greet()
+    This function will be used later and has currently
+    absolutely no use for anything.
+</code></pre>
 </div>
-<p><span class="task">&gt;Task:</span> Try to raise an exception in the function above by passing a string to the <code>validate_age</code> function. What happens?</p>
+</div>
 </div>
 </section>
-<section id="raising-exceptions-with-custom-messages" class="slide level2">
-<h2>Raising Exceptions with Custom Messages</h2>
+<section id="naming-functions-and-methods" class="slide level2">
+<h2>Naming Functions (and Methods)</h2>
 <ul>
-<li>We can also raise exceptions with custom messages</li>
-<li>This helps to provide more information about the error</li>
+<li>Function names should be short, but descriptive</li>
+<li>Use underscores (_) instead of spaces in the names</li>
+<li>Avoid using Python keywords as function names (e.g., <code>print</code>)</li>
+<li>Try to avoid using built-in functions and methods that have a similar name (e.g., <code>sum</code> and <code>len</code>)</li>
 </ul>
-<div class="fragment">
-<div id="6792ff93" class="cell" data-execution_count="7">
-<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a></a><span class="kw">def</span> validate_age(age):</span>
-<span id="cb8-2"><a></a>    <span class="cf">if</span> age <span class="op">&lt;</span> <span class="dv">0</span>:</span>
-<span id="cb8-3"><a></a>        <span class="cf">raise</span> <span class="pp">ValueError</span>(<span class="st">"Age cannot be negative"</span>)</span>
-<span id="cb8-4"><a></a>    <span class="cf">return</span> age</span>
-<span id="cb8-5"><a></a></span>
-<span id="cb8-6"><a></a><span class="bu">print</span>(validate_age(<span class="dv">25</span>)) <span class="co"># This will print 25</span></span>
-<span id="cb8-7"><a></a><span class="bu">print</span>(validate_age(<span class="op">-</span><span class="dv">1</span>)) <span class="co"># This will raise a ValueError</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p><span class="question">&gt; Question:</span> Which of the following is a good name for a function?<br>
+</p>
+<ul>
+<li><code>myfunctionthatmultipliesvalues</code>&nbsp;</li>
+<li><code>multiply_two_values</code><br>
+</li>
+<li><code>multiplyTwoValues</code></li>
+</ul>
+</section>
+<section id="function-parameters" class="slide level2">
+<h2>Function Parameters</h2>
+<ul>
+<li>Parameters are variables that the function accepts</li>
+<li>They allow you to pass data to the function</li>
+<li>Try to name them as variables: <span class="highlight">short and meaningful</span></li>
+<li>We can also <strong>leave them out</strong> or define <strong>several inputs</strong>!</li>
+</ul>
+<div id="997442c0" class="cell" data-execution_count="6">
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a></a><span class="kw">def</span> greet():</span>
+<span id="cb9-2"><a></a>    <span class="bu">print</span>(<span class="st">"Hello, stranger!"</span>)</span>
+<span id="cb9-3"><a></a>greet()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
+<div class="cell fragment" data-execution_count="6">
+<div class="cell-output cell-output-stdout">
+<pre><code>Hello, stranger!</code></pre>
 </div>
-<div class="fragment">
-<p><span class="question">&gt;Question:</span> What do you think the <code>raise</code> statement will show now?</p>
 </div>
 </section>
-<section id="creating-custom-exceptions" class="slide level2">
-<h2>Creating Custom Exceptions</h2>
+<section id="function-arguments" class="slide level2">
+<h2>Function Arguments</h2>
 <ul>
-<li>We do so by <span class="highlight">inheriting from the built-in Exception class</span></li>
-<li>This allows us to create more specific exceptions for our own code</li>
+<li>Arguments are the actual values passed to the function</li>
+<li>They replace the parameters in the function definition</li>
 </ul>
-<div id="3b271410" class="cell" data-execution_count="8">
-<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a></a><span class="kw">class</span> InvalidUsernameError(<span class="pp">Exception</span>):</span>
-<span id="cb9-2"><a></a>    <span class="cf">pass</span></span>
-<span id="cb9-3"><a></a><span class="kw">def</span> get_valid_username():</span>
-<span id="cb9-4"><a></a>    <span class="cf">while</span> <span class="va">True</span>:</span>
-<span id="cb9-5"><a></a>        <span class="cf">try</span>:</span>
-<span id="cb9-6"><a></a>            username <span class="op">=</span> <span class="bu">input</span>(<span class="st">"Please enter a username (no spaces): "</span>)</span>
-<span id="cb9-7"><a></a>            <span class="cf">if</span> <span class="st">" "</span> <span class="kw">in</span> username: </span>
-<span id="cb9-8"><a></a>                <span class="cf">raise</span> InvalidUsernameError(<span class="st">"Username must not contain spaces."</span>)</span>
-<span id="cb9-9"><a></a>            <span class="cf">return</span> username</span>
-<span id="cb9-10"><a></a>        <span class="cf">except</span> InvalidUsernameError <span class="im">as</span> e:</span>
-<span id="cb9-11"><a></a>            <span class="bu">print</span>(<span class="ss">f"Invalid username: </span><span class="sc">{</span>e<span class="sc">}</span><span class="ss">"</span>)</span>
-<span id="cb9-12"><a></a>            <span class="bu">print</span>(<span class="st">"Please try again."</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="fragment">
+<p><span class="question">&gt; Question:</span> What could be the correct arguments here?</p>
+<div id="e9f96a78" class="cell" data-execution_count="7">
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a></a><span class="kw">def</span> greet(university_name, lecture):</span>
+<span id="cb11-2"><a></a>    <span class="bu">print</span>(<span class="ss">f"Hello, students at the </span><span class="sc">{</span>university_name<span class="sc">}</span><span class="ss">!"</span>)</span>
+<span id="cb11-3"><a></a>    <span class="bu">print</span>(<span class="ss">f"You are in lecture </span><span class="sc">{</span>lecture<span class="sc">}</span><span class="ss">!"</span>)</span>
+<span id="cb11-4"><a></a></span>
+<span id="cb11-5"><a></a><span class="co"># Your code here</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-</section></section>
-<section>
-<section id="assertions" class="title-slide slide level1 title center">
-<h1><span class="flow">Assertions</span></h1>
-
+</div>
 </section>
-<section id="what-are-assertions" class="slide level2">
-<h2>What are Assertions?</h2>
+<section id="initializing-parameters" class="slide level2">
+<h2>Initializing Parameters</h2>
 <ul>
-<li>Assertions are <span class="highlight">statements that check if a condition is true</span></li>
-<li>If the condition is false, an <code>AssertionError</code> is raised</li>
-<li>We could use them to check the results of a calculation</li>
+<li>We can also <strong>initialize parameters</strong> to a default value!</li>
+<li>To do this we use the <code>=</code> sign and provide it with a value</li>
+<li>This is called a <span class="highlight">keyword argument</span></li>
 </ul>
-<div class="fragment">
-<div id="c71f311a" class="cell" data-execution_count="9">
-<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a></a>x <span class="op">=</span> <span class="dv">9</span></span>
-<span id="cb10-2"><a></a>y <span class="op">=</span> <span class="dv">10</span></span>
-<span id="cb10-3"><a></a><span class="cf">assert</span> x <span class="op">&lt;</span> y, <span class="st">"x is not smaller than y"</span></span>
-<span id="cb10-4"><a></a><span class="cf">assert</span> <span class="bu">isinstance</span>(y, <span class="bu">float</span>), <span class="st">"y is not a float"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="4bf51b00" class="cell" data-execution_count="8">
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a></a><span class="kw">def</span> greet(lecture<span class="op">=</span><span class="st">"Programming with Python"</span>):</span>
+<span id="cb12-2"><a></a>    <span class="bu">print</span>(<span class="ss">f"You are in lecture '</span><span class="sc">{</span>lecture<span class="sc">}</span><span class="ss">'!"</span>)</span>
+<span id="cb12-3"><a></a></span>
+<span id="cb12-4"><a></a>greet()</span>
+<span id="cb12-5"><a></a>greet(<span class="st">"Super Advanced Programming with Python"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell fragment" data-execution_count="8">
+<div class="cell-output cell-output-stdout">
+<pre><code>You are in lecture 'Programming with Python'!
+You are in lecture 'Super Advanced Programming with Python'!</code></pre>
 </div>
 </div>
 <div class="fragment">
-<p><span class="task">&gt;Task:</span> Try to run the code above and discuss what happens.</p>
-</div>
-<div class="fragment">
-<div class="callout callout-note callout-titled callout-style-default">
+<div class="callout callout-tip callout-titled callout-style-default">
 <div class="callout-body">
 <div class="callout-title">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
-<p><strong>Note</strong></p>
+<p><strong>Tip</strong></p>
 </div>
 <div class="callout-content">
-<p><code>isinstance</code> is a built-in function that checks if an object is an instance of a class.</p>
+<p>This is especially useful when we want to avoid errors due to missing arguments!</p>
 </div>
 </div>
 </div>
 </div>
 </section>
-<section id="assertions-in-action" class="slide level2">
-<h2>Assertions in Action</h2>
-<p><span class="task">&gt;Grouptask:</span> Solve the following problem using assertions:</p>
-<div id="aefaad92" class="cell" data-execution_count="10">
-<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a></a><span class="co"># Implement a function that takes a list of integers and returns the sum of the numbers. </span></span>
-<span id="cb11-2"><a></a><span class="co"># 1. Use assertions to check if the input is a list </span></span>
-<span id="cb11-3"><a></a><span class="co"># 2. Use assertions to check if the list contains only integers.</span></span>
-<span id="cb11-4"><a></a><span class="co"># 3. If the list contains only integers, return the sum of the numbers</span></span>
-<span id="cb11-5"><a></a></span>
-<span id="cb11-6"><a></a><span class="co"># Your code here</span></span>
-<span id="cb11-7"><a></a></span>
-<span id="cb11-8"><a></a><span class="co"># Test cases</span></span>
-<span id="cb11-9"><a></a><span class="bu">print</span>(sum_of_numbers([<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">5</span>])) <span class="co"># Should print: 15</span></span>
-<span id="cb11-10"><a></a><span class="bu">print</span>(sum_of_numbers([<span class="dv">1</span>, <span class="fl">2.0</span>, <span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">5</span>])) <span class="co"># Should print: AssertionError</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-</section></section>
-<section>
-<section id="debugging" class="title-slide slide level1 title center">
-<h1><span class="flow">Debugging</span></h1>
-
-</section>
-<section id="what-is-debugging" class="slide level2">
-<h2>What is Debugging?</h2>
+<section id="multiple-parameters" class="slide level2">
+<h2>Multiple Parameters</h2>
 <ul>
-<li>Debugging is the process of <span class="highlight">finding and fixing errors</span> in code</li>
-<li>We can use <code>print</code> and <code>assert</code> statements to debug our code</li>
-<li>We can also use <strong>debugging tools</strong> that are built into most IDEs</li>
-</ul>
-<p><br></p>
-<center>
-<iframe src="https://giphy.com/embed/oYQ9HRm5Mo7VXeMNVR" width="480" height="360" style="" frameborder="0" class="giphy-embed" allowfullscreen="">
-</iframe>
-</center>
-</section>
-<section id="using-print-and-assert" class="slide level2">
-<h2>Using Print and Assert</h2>
-<ul>
-<li><code>print</code>: check <span class="highlight">the values of variables</span> at different points</li>
-<li><code>assert</code>: check calculations or the types of variables</li>
+<li>We can also have <strong>multiple parameters</strong> in a function definition</li>
+<li>They are called <span class="highlight">positional arguments</span> and are separated by commas</li>
+<li>When we call them, they must be provided in the same order</li>
+<li>Alternatively, we could call them by name, as for example in this function call <code>print("h","i",sep='')</code></li>
 </ul>
 <div class="fragment">
-<div id="37399a83" class="cell" data-execution_count="11">
-<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a></a>x <span class="op">=</span> <span class="st">"Hello"</span> <span class="co"># x is a string</span></span>
-<span id="cb12-2"><a></a><span class="bu">print</span>(x)</span>
-<span id="cb12-3"><a></a>x <span class="op">=</span> <span class="fl">42.0</span> <span class="co"># x is a float</span></span>
-<span id="cb12-4"><a></a><span class="bu">print</span>(x)</span>
-<span id="cb12-5"><a></a><span class="cf">assert</span> <span class="bu">isinstance</span>(x, <span class="bu">float</span>), <span class="st">"x is not a float"</span></span>
-<span id="cb12-6"><a></a><span class="cf">assert</span> x <span class="op">==</span> <span class="fl">42.0</span>, <span class="st">"x is not 42.0"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p><span class="question">&gt; Question:</span> What will be printed here?</p>
+<div id="3abcbef9" class="cell" data-execution_count="9">
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a></a><span class="kw">def</span> call_parameters(parameter_a, parameter_b):</span>
+<span id="cb14-2"><a></a>    <span class="bu">print</span>(parameter_a, parameter_b)</span>
+<span id="cb14-3"><a></a></span>
+<span id="cb14-4"><a></a>call_parameters(parameter_b<span class="op">=</span><span class="st">"Hello"</span>, parameter_a<span class="op">=</span><span class="st">"World"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell fragment" data-execution_count="9">
+<div class="cell-output cell-output-stdout">
+<pre><code>World Hello</code></pre>
+</div>
+</div>
+</div>
+</section>
+<section id="function-return-values" class="slide level2">
+<h2>Function Return Values</h2>
+<ul>
+<li>Functions can return values using the <code>return</code> statement</li>
+<li>The return statement ends the function</li>
+<li>It then <strong>returns</strong> the specified value</li>
+</ul>
+<div class="fragment">
+<div id="33403dbc" class="cell" data-execution_count="10">
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a></a><span class="kw">def</span> simple_multiplication(a,b):</span>
+<span id="cb16-2"><a></a>    result <span class="op">=</span> a<span class="op">*</span>b</span>
+<span id="cb16-3"><a></a>    <span class="cf">return</span> result</span>
+<span id="cb16-4"><a></a><span class="bu">print</span>(simple_multiplication(<span class="dv">2</span>,<span class="dv">21</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell fragment" data-execution_count="10">
+<div class="cell-output cell-output-stdout">
+<pre><code>42</code></pre>
+</div>
+</div>
+</div>
+<div class="fragment">
+<div id="16348825" class="cell" data-execution_count="11">
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a></a><span class="kw">def</span> simple_multiplication(a,b):</span>
+<span id="cb18-2"><a></a>    <span class="cf">return</span> a<span class="op">*</span>b <span class="co"># even shorter!</span></span>
+<span id="cb18-3"><a></a><span class="bu">print</span>(simple_multiplication(<span class="dv">2</span>,<span class="dv">21</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell fragment" data-execution_count="11">
 <div class="cell-output cell-output-stdout">
-<pre><code>Hello
-42.0</code></pre>
+<pre><code>42</code></pre>
+</div>
+</div>
+</div>
+</section>
+<section id="access-return-values" class="slide level2">
+<h2>Access return values</h2>
+<ul>
+<li>We can also <strong>save</strong> the return value from a function in a variable</li>
+<li>That way we can use it later on in the program</li>
+</ul>
+<div class="fragment">
+<div id="9fd798a9" class="cell" data-execution_count="12">
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a></a><span class="kw">def</span> simple_multiplication(a,b):</span>
+<span id="cb20-2"><a></a>    <span class="cf">return</span> a<span class="op">*</span>b <span class="co"># even shorter!</span></span>
+<span id="cb20-3"><a></a></span>
+<span id="cb20-4"><a></a>result <span class="op">=</span> simple_multiplication(<span class="dv">2</span>,<span class="dv">21</span>)</span>
+<span id="cb20-5"><a></a><span class="bu">print</span>(result)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell fragment" data-execution_count="12">
+<div class="cell-output cell-output-stdout">
+<pre><code>42</code></pre>
+</div>
+</div>
+</div>
+</section>
+<section id="returning-none" class="slide level2">
+<h2>Returning None</h2>
+<ul>
+<li>If we don’t specify <code>return</code>, functions will return <code>None</code></li>
+</ul>
+<div id="c9fda838" class="cell" data-execution_count="13">
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a></a><span class="kw">def</span> simple_multiplication(a,b):</span>
+<span id="cb22-2"><a></a>    result <span class="op">=</span> a<span class="op">*</span>b</span>
+<span id="cb22-3"><a></a></span>
+<span id="cb22-4"><a></a><span class="bu">print</span>(simple_multiplication(<span class="dv">2</span>,<span class="dv">21</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell fragment" data-execution_count="13">
+<div class="cell-output cell-output-stdout">
+<pre><code>None</code></pre>
+</div>
+</div>
+<div class="fragment">
+<p><span class="task">&gt; Grouptask:</span> Come up with a function that checks whether a number is positive or negative. It returns <code>"positive"</code> for positive numbers and <code>"negative"</code> for negative numbers. If the number is zero, it returns <code>None</code>.</p>
+</div>
+<div class="fragment">
+<div class="callout callout-tip callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Tip</strong></p>
+</div>
+<div class="callout-content">
+<p>You can also use <strong>multiple return statements</strong> in a function.</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="recursion" class="slide level2">
+<h2>Recursion</h2>
+<ul>
+<li>Recursion is a technique where a <span class="highlight">function calls itself</span></li>
+<li>Helps to break down problems into <strong>smaller problems</strong></li>
+</ul>
+<div class="fragment">
+<div id="217305b1" class="cell" data-execution_count="14">
+<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb24-1"><a></a><span class="kw">def</span> fibonacci(n): <span class="co"># Classical example to introduce recursion</span></span>
+<span id="cb24-2"><a></a>    <span class="cf">if</span> n <span class="op">&lt;=</span> <span class="dv">1</span>:</span>
+<span id="cb24-3"><a></a>        <span class="cf">return</span> n</span>
+<span id="cb24-4"><a></a>    <span class="cf">else</span>:</span>
+<span id="cb24-5"><a></a>        <span class="cf">return</span> fibonacci(n<span class="op">-</span><span class="dv">1</span>) <span class="op">+</span> fibonacci(n<span class="op">-</span><span class="dv">2</span>)</span>
+<span id="cb24-6"><a></a></span>
+<span id="cb24-7"><a></a><span class="bu">print</span>(fibonacci(<span class="dv">6</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell fragment" data-execution_count="14">
+<div class="cell-output cell-output-stdout">
+<pre><code>8</code></pre>
 </div>
 </div>
 </div>
@@ -814,65 +835,264 @@ I will be printed as the exception was handled!</code></pre>
 <p><strong>Note</strong></p>
 </div>
 <div class="callout-content">
-<p>While this can be useful, it is not always the best way to debug code.</p>
+<p>Recursion can be a powerful tool, but it can also be <span class="highlight">quite tricky</span> to get right.</p>
 </div>
 </div>
 </div>
 </div>
-</section>
-<section id="using-debugging-tools" class="slide level2">
-<h2>Using Debugging Tools</h2>
-<ul>
-<li>We can also use debugging tools <span class="highlight">built into most IDEs</span></li>
-<li>Allow to step through code, set breakpoints, and inspect variables</li>
-<li>We will use Thonny, but there are <strong>many other options</strong></li>
-</ul>
-</section>
-<section id="debugging-in-thonny-i" class="slide level2">
-<h2>Debugging in Thonny I</h2>
-<p><span class="task">&gt;Task:</span> Open Thonny and copy the following code:</p>
-<div id="52237586" class="cell" data-execution_count="12">
-<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a></a><span class="kw">def</span> calculate_average(numbers):</span>
-<span id="cb14-2"><a></a>    total <span class="op">=</span> <span class="dv">0</span></span>
-<span id="cb14-3"><a></a>    count <span class="op">=</span> <span class="dv">0</span></span>
-<span id="cb14-4"><a></a>    <span class="cf">for</span> num <span class="kw">in</span> numbers:</span>
-<span id="cb14-5"><a></a>        total <span class="op">+=</span> num</span>
-<span id="cb14-6"><a></a>        count <span class="op">+=</span> <span class="dv">1</span></span>
-<span id="cb14-7"><a></a>    </span>
-<span id="cb14-8"><a></a>    average <span class="op">=</span> total <span class="op">/</span> count</span>
-<span id="cb14-9"><a></a>    <span class="cf">return</span> average</span>
-<span id="cb14-10"><a></a></span>
-<span id="cb14-11"><a></a><span class="co"># Test cases</span></span>
-<span id="cb14-12"><a></a>test_lists <span class="op">=</span> [</span>
-<span id="cb14-13"><a></a>    [<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">5</span>],</span>
-<span id="cb14-14"><a></a>    [<span class="dv">10</span>, <span class="dv">20</span>, <span class="dv">30</span>],</span>
-<span id="cb14-15"><a></a>    []</span>
-<span id="cb14-16"><a></a>    ]</span>
-<span id="cb14-17"><a></a>    </span>
-<span id="cb14-18"><a></a><span class="cf">for</span> i, test_list <span class="kw">in</span> <span class="bu">enumerate</span>(test_lists):</span>
-<span id="cb14-19"><a></a>    <span class="bu">print</span>(<span class="ss">f"Test case </span><span class="sc">{</span>i <span class="op">+</span> <span class="dv">1</span><span class="sc">}</span><span class="ss">:"</span>)</span>
-<span id="cb14-20"><a></a>    result <span class="op">=</span> calculate_average(test_list)</span>
-<span id="cb14-21"><a></a>    <span class="bu">print</span>(<span class="ss">f"Average: </span><span class="sc">{</span>result<span class="sc">}</span><span class="ch">\n</span><span class="ss">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-</section>
-<section id="debugging-in-thonny-ii" class="slide level2">
-<h2>Debugging in Thonny II</h2>
-<ul>
-<li>Click on the <span class="highlight">bug icon</span> on the left side of the screen</li>
-</ul>
+</section></section>
+<section>
+<section id="scope" class="title-slide slide level1 title center">
+<h1><span class="flow">Scope</span></h1>
 
-<img data-src="images/thonny_debug.png" class="r-stretch"></section>
-<section id="debugging-tools" class="slide level2">
-<h2>Debugging Tools</h2>
-<p><span class="task">&gt;Task:</span> Run the code and use the debugging tools to find the error.</p>
+</section>
+<section id="function-scope" class="slide level2">
+<h2>Function Scope</h2>
 <ul>
-<li>Use <strong>step over, step into and step out</strong> to <span class="highlight">navigate</span> through your code</li>
-<li>Use the <strong>variable viewer</strong> to <span class="highlight">inspect variables</span> at different points</li>
-<li>Use the <strong>breakpoints</strong> to <span class="highlight">pause the execution</span> at a specific point</li>
+<li>Variables defined inside a function are local to that function</li>
+<li>They <span class="highlight">cannot</span> be accessed outside the function</li>
 </ul>
 <div class="fragment">
-<p><span class="question">&gt;Question:</span> What do you think the error is?</p>
+<div class="sourceCode" id="cb26"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb26-1"><a></a><span class="kw">def</span> greet(name):</span>
+<span id="cb26-2"><a></a>    greeting <span class="op">=</span> <span class="ss">f"Hello, </span><span class="sc">{</span>name<span class="sc">}</span><span class="ss">!"</span></span>
+<span id="cb26-3"><a></a>    </span>
+<span id="cb26-4"><a></a><span class="bu">print</span>(greeting)  <span class="co"># This will cause an error</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
+<div class="fragment">
+<p><span class="question">&gt; Question:</span> Any idea how to access <code>greeting</code>?</p>
+</div>
+</section>
+<section id="global-scope" class="slide level2">
+<h2>Global Scope</h2>
+<ul>
+<li>Variables defined <strong>outside</strong> all functions are in the global scope</li>
+<li>They can be accessed from <span class="highlight">anywhere</span> in the program</li>
+</ul>
+<div class="fragment">
+<div id="91629b0d" class="cell" data-execution_count="15">
+<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb27-1"><a></a>greeting <span class="op">=</span> <span class="st">"Hello, Stranger!"</span></span>
+<span id="cb27-2"><a></a><span class="kw">def</span> greet(name):</span>
+<span id="cb27-3"><a></a>   greeting <span class="op">=</span> <span class="ss">f"Hello, </span><span class="sc">{</span>name<span class="sc">}</span><span class="ss">!"</span></span>
+<span id="cb27-4"><a></a>   <span class="cf">return</span> greeting</span>
+<span id="cb27-5"><a></a><span class="bu">print</span>(greet(<span class="st">"Students"</span>)) <span class="co"># Greet students</span></span>
+<span id="cb27-6"><a></a><span class="bu">print</span>(greeting) <span class="co"># Greet ????</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell fragment" data-execution_count="15">
+<div class="cell-output cell-output-stdout">
+<pre><code>Hello, Students!
+Hello, Stranger!</code></pre>
+</div>
+</div>
+</div>
+<div class="fragment">
+<div class="callout callout-important callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Important</strong></p>
+</div>
+<div class="callout-content">
+<p>We don’t change global variables inside a function! The original value can still be accessed from <span class="highlight">outside</span> the function.</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="global-keyword" class="slide level2">
+<h2>Global Keyword</h2>
+<ul>
+<li>Still, we can change the value of <code>greeting</code> from <span class="highlight">inside</span> a function!</li>
+<li>By using the <code>global</code> keyword to modify a global variable</li>
+</ul>
+<div class="fragment">
+<div id="53883dfb" class="cell" data-execution_count="16">
+<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb29-1"><a></a>greeting <span class="op">=</span> <span class="st">"Hello, Stranger!"</span></span>
+<span id="cb29-2"><a></a></span>
+<span id="cb29-3"><a></a><span class="kw">def</span> greet(name):</span>
+<span id="cb29-4"><a></a>   <span class="kw">global</span> greeting</span>
+<span id="cb29-5"><a></a>   greeting <span class="op">=</span> <span class="ss">f"Hello, </span><span class="sc">{</span>name<span class="sc">}</span><span class="ss">!"</span></span>
+<span id="cb29-6"><a></a>   <span class="cf">return</span> greeting</span>
+<span id="cb29-7"><a></a></span>
+<span id="cb29-8"><a></a><span class="bu">print</span>(greet(<span class="st">"Students"</span>)) <span class="co"># Greet students</span></span>
+<span id="cb29-9"><a></a><span class="bu">print</span>(greeting) <span class="co"># Greet students again</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell fragment" data-execution_count="16">
+<div class="cell-output cell-output-stdout">
+<pre><code>Hello, Students!
+Hello, Students!</code></pre>
+</div>
+</div>
+</div>
+<div class="fragment">
+<p><span class="question">&gt;Question:</span> This can be confusing. Do you think you got the idea?</p>
+</div>
+</section></section>
+<section>
+<section id="classes" class="title-slide slide level1 title center">
+<h1><span class="flow">Classes</span></h1>
+
+</section>
+<section id="classes-1" class="slide level2">
+<h2>Classes</h2>
+<ul>
+<li>Classes are <span class="highlight">blueprints</span> for creating objects</li>
+<li>They encapsulate data (attributes) and behavior (methods)</li>
+<li>Objects are instances of classes</li>
+<li>Methods are functions that are defined within a class</li>
+</ul>
+<div class="fragment">
+<div id="2e398887" class="cell" data-execution_count="17">
+<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb31-1"><a></a><span class="kw">class</span> Students: <span class="co"># Class definition</span></span>
+<span id="cb31-2"><a></a>    <span class="kw">def</span> know_answer(<span class="va">self</span>): <span class="co"># Method definition</span></span>
+<span id="cb31-3"><a></a>        <span class="bu">print</span>(<span class="ss">f"They know the answer to all questions."</span>)</span>
+<span id="cb31-4"><a></a></span>
+<span id="cb31-5"><a></a>student <span class="op">=</span> Students() <span class="co"># Object instantiation</span></span>
+<span id="cb31-6"><a></a>student.know_answer()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell fragment" data-execution_count="17">
+<div class="cell-output cell-output-stdout">
+<pre><code>They know the answer to all questions.</code></pre>
+</div>
+</div>
+</div>
+</section>
+<section id="self" class="slide level2">
+<h2>Self</h2>
+<ul>
+<li>Classes can be <span class="highlight">quite tricky at first</span>, especially the <code>self</code> keyword</li>
+<li>When we call <code>self</code> in a method, it refers to the object itself</li>
+<li>It is used to <strong>access</strong> the attributes and methods of the class</li>
+<li><code>self</code> always needs to be included in method definitions</li>
+</ul>
+<div class="fragment">
+<div id="4a2bc109" class="cell" data-execution_count="18">
+<div class="sourceCode cell-code" id="cb33"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb33-1"><a></a><span class="co"># This won't work as self is missing</span></span>
+<span id="cb33-2"><a></a><span class="kw">class</span> Students: <span class="co"># Class definition</span></span>
+<span id="cb33-3"><a></a>    <span class="kw">def</span> know_answer(): <span class="co"># Method definition without self</span></span>
+<span id="cb33-4"><a></a>        <span class="bu">print</span>(<span class="ss">f"They know the answer to all questions."</span>)</span>
+<span id="cb33-5"><a></a></span>
+<span id="cb33-6"><a></a>student <span class="op">=</span> Students()</span>
+<span id="cb33-7"><a></a>student.know_answer()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+<div class="fragment">
+<p><span class="task">&gt;Task:</span> Try it yourself, what is the error?</p>
+</div>
+</section>
+<section id="naming-classes" class="slide level2">
+<h2>Naming Classes</h2>
+<ul>
+<li>Classes can be named anything, but it is common to use the plural form of their name (e.g., <code>People</code>)</li>
+<li>CamelCase is used for class names, and snake_case is used for method and attribute names (e.g., <code>TallPeople</code>)</li>
+<li>Classes are usually defined in a file with the same name as their class, but with a <code>.py</code> extension</li>
+</ul>
+<div class="fragment">
+<p><span class="question">Question:</span> Which of the following is a good class name? <code>smart_student</code>, <code>SmartStudent</code>, or <code>SmartStudents</code></p>
+</div>
+</section>
+<section id="class-attributes" class="slide level2">
+<h2>Class Attributes</h2>
+<ul>
+<li>Class attributes are attributes that are shared by all class instances</li>
+<li>They are defined <strong>within</strong> the class but <strong>outside</strong> any methods</li>
+</ul>
+<div class="fragment">
+<p><span class="question">&gt;Question:</span> What do you think will happen here?</p>
+<div id="478607de" class="cell" data-execution_count="19">
+<div class="sourceCode cell-code" id="cb34"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb34-1"><a></a><span class="kw">class</span> Students: <span class="co"># Class definition</span></span>
+<span id="cb34-2"><a></a>    smart <span class="op">=</span> <span class="va">True</span> <span class="co"># Class attribute</span></span>
+<span id="cb34-3"><a></a></span>
+<span id="cb34-4"><a></a>student_A <span class="op">=</span> Students() <span class="co"># Object instantiation student_A</span></span>
+<span id="cb34-5"><a></a>student_B <span class="op">=</span> Students() <span class="co"># Object instantiation student_B</span></span>
+<span id="cb34-6"><a></a></span>
+<span id="cb34-7"><a></a><span class="bu">print</span>(student_A.smart)</span>
+<span id="cb34-8"><a></a><span class="bu">print</span>(student_B.smart)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell fragment" data-execution_count="19">
+<div class="cell-output cell-output-stdout">
+<pre><code>True
+True</code></pre>
+</div>
+</div>
+</div>
+</section>
+<section id="instance-attributes" class="slide level2">
+<h2>Instance Attributes</h2>
+<ul>
+<li>Instance attributes are attributes unique to each class instance</li>
+<li>They are defined within the <code>__init__</code> method</li>
+</ul>
+<div id="b057d66b" class="cell" data-execution_count="20">
+<div class="sourceCode cell-code" id="cb36"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb36-1"><a></a><span class="kw">class</span> Student: <span class="co"># Class definition</span></span>
+<span id="cb36-2"><a></a>    <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>, name, is_smart): <span class="co"># Method for initalization</span></span>
+<span id="cb36-3"><a></a>        <span class="va">self</span>.name <span class="op">=</span> name</span>
+<span id="cb36-4"><a></a>        <span class="va">self</span>.smart <span class="op">=</span> is_smart</span>
+<span id="cb36-5"><a></a>    <span class="kw">def</span> knows_answer(<span class="va">self</span>): <span class="co"># Method to be called</span></span>
+<span id="cb36-6"><a></a>        <span class="cf">if</span> <span class="va">self</span>.smart:</span>
+<span id="cb36-7"><a></a>            <span class="bu">print</span>(<span class="ss">f"</span><span class="sc">{</span><span class="va">self</span><span class="sc">.</span>name<span class="sc">}</span><span class="ss"> knows the answer to the question."</span>)</span>
+<span id="cb36-8"><a></a>        <span class="cf">else</span>:</span>
+<span id="cb36-9"><a></a>            <span class="bu">print</span>(<span class="ss">f"</span><span class="sc">{</span><span class="va">self</span><span class="sc">.</span>name<span class="sc">}</span><span class="ss"> does not know the answer to the question."</span>)</span>
+<span id="cb36-10"><a></a></span>
+<span id="cb36-11"><a></a>student <span class="op">=</span> Student(<span class="st">"Buddy"</span>,<span class="va">False</span>) <span class="co"># Note, we don't need to call self here!</span></span>
+<span id="cb36-12"><a></a>student.knows_answer()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell fragment" data-execution_count="20">
+<div class="cell-output cell-output-stdout">
+<pre><code>Buddy does not know the answer to the question.</code></pre>
+</div>
+</div>
+</section>
+<section id="inheritance" class="slide level2">
+<h2>Inheritance</h2>
+<ul>
+<li>Inheritance allows a class to <span class="highlight">inherit attributes and methods</span></li>
+<li>The class that inherits is called the <strong>subclass</strong></li>
+<li>The class that is being inherited from is called the <strong>superclass</strong></li>
+</ul>
+<div class="fragment">
+<div class="callout callout-tip callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Tip</strong></p>
+</div>
+<div class="callout-content">
+<p>Don’t worry! &nbsp;It can be quite much right now. Hang in there and soon it will get easier again!</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="inheritance-in-action" class="slide level2">
+<h2>Inheritance in Action</h2>
+<div id="c3c52eb6" class="cell" data-execution_count="21">
+<div class="sourceCode cell-code" id="cb38"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb38-1"><a></a><span class="kw">class</span> Student: <span class="co"># Superclass</span></span>
+<span id="cb38-2"><a></a>    <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>, name):</span>
+<span id="cb38-3"><a></a>        <span class="va">self</span>.name <span class="op">=</span> name</span>
+<span id="cb38-4"><a></a>    <span class="kw">def</span> when_asked(<span class="va">self</span>):</span>
+<span id="cb38-5"><a></a>        <span class="cf">pass</span></span>
+<span id="cb38-6"><a></a></span>
+<span id="cb38-7"><a></a><span class="kw">class</span> SmartStudent(Student): <span class="co"># Subclass</span></span>
+<span id="cb38-8"><a></a>    <span class="kw">def</span> when_asked(<span class="va">self</span>):</span>
+<span id="cb38-9"><a></a>        <span class="cf">return</span> <span class="ss">f"</span><span class="sc">{</span><span class="va">self</span><span class="sc">.</span>name<span class="sc">}</span><span class="ss"> knows the answer!"</span></span>
+<span id="cb38-10"><a></a>        </span>
+<span id="cb38-11"><a></a><span class="kw">class</span> LazyStudent(Student): <span class="co"># Subclass</span></span>
+<span id="cb38-12"><a></a>    <span class="kw">def</span> when_asked(<span class="va">self</span>):</span>
+<span id="cb38-13"><a></a>        <span class="cf">return</span> <span class="ss">f"</span><span class="sc">{</span><span class="va">self</span><span class="sc">.</span>name<span class="sc">}</span><span class="ss"> has to ask ChatGPT!"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p><span class="task">&gt;Grouptask:</span> Create two students. One is smart and the other one is lazy. Make sure that both students reaction to a question is printed.</p>
+</section>
+<section id="encapsulation" class="slide level2">
+<h2>Encapsulation</h2>
+<ul>
+<li>Encapsulation is the concept of bundling data (attributes) and methods (behavior) that operate on the data into a single unit (class)</li>
+<li>It is a key aspect of object oriented programming (OOP)</li>
+<li>It helps in organizing code and controlling access</li>
+</ul>
 <div class="fragment">
 <div class="callout callout-note callout-titled callout-style-default">
 <div class="callout-body">
@@ -883,19 +1103,19 @@ I will be printed as the exception was handled!</code></pre>
 <p><strong>Note</strong></p>
 </div>
 <div class="callout-content">
-<p>The <code>enumerate</code> function used in the code is super helpful function that returns a tuple containing the index and the value of the item in the list and it is not the error.</p>
+<p>Fortunately, this is an introduction to Python, so we won’t go into details of encapsulation.</p>
 </div>
 </div>
 </div>
 </div>
 </section>
-<section id="using-logging" class="slide level2">
-<h2>Using Logging</h2>
+<section id="the-end" class="slide level2">
+<h2>The End</h2>
 <ul>
-<li>We can also use logging to <span class="highlight">track the execution</span> of a program</li>
-<li>It is a <strong>structured</strong> way to log errors and other issues</li>
-<li>You can specify the <strong>level of severity</strong> for each log message</li>
-<li><strong>Hide</strong> messages of a certain severity if you want to during execution</li>
+<li>Interested in more detail about classes and OOP?</li>
+<li>Check out <span class="highlight">access modifiers, getters and setters</span></li>
+<li>They are definitely a bit more complicated for beginners…</li>
+<li>Though they are worth learning if you build <strong>complex programs</strong></li>
 </ul>
 <div class="fragment">
 <div class="callout callout-note callout-titled callout-style-default">
@@ -908,22 +1128,17 @@ I will be printed as the exception was handled!</code></pre>
 </div>
 <div class="callout-content">
 <p><strong>And that’s it for todays lecture!</strong><br>
-We now have covered the basics of errors, exceptions and debugging in Python. Logging is beyond our scope, but it is good to know should you work with larger codebases later on.</p>
+We now have covered the basics of funtions and classes. We will continue with some slightly easier topics in the next lectures.</p>
 </div>
 </div>
 </div>
+<p><span class="flow">Literature</span> {.title}</p>
 </div>
-</section></section>
-<section>
-<section id="literature" class="title-slide slide level1 title center">
-<h1><span class="flow">Literature</span></h1>
-
 </section>
-<section id="interesting-books" class="slide level2">
-<h2>Interesting Books</h2>
+<section id="interesting-book-to-dive-deeper" class="slide level2">
+<h2>Interesting Book to dive deeper</h2>
 <ul>
-<li>Downey, A. B. (2024). Think Python: How to think like a computer scientist (Third edition). O’Reilly. <a href="https://greenteapress.com/wp/think-python-3rd-edition/">Link to free online version</a></li>
-<li>Elter, S. (2021). Schrödinger programmiert Python: Das etwas andere Fachbuch (1. Auflage). Rheinwerk Verlag.</li>
+<li>Thomas, D., &amp; Hunt, A. (2019). The pragmatic programmer, 20th anniversary edition: Journey to mastery (Second edition). Addison-Wesley.</li>
 </ul>
 <div class="fragment">
 <div class="callout callout-tip callout-titled callout-style-default">
@@ -935,7 +1150,7 @@ We now have covered the basics of errors, exceptions and debugging in Python. Lo
 <p><strong>Tip</strong></p>
 </div>
 <div class="callout-content">
-<p>Nothing new here, but these are still great books!</p>
+<p>A fantastic textbook to understand the principles of modern software development and how to create effective software. Also available as a really good audiobook!</p>
 </div>
 </div>
 </div>
@@ -945,7 +1160,7 @@ We now have covered the basics of errors, exceptions and debugging in Python. Lo
 
 <div class="quarto-auto-generated-content">
 <div class="footer footer-default">
-<p>Lecture V - Handling Errors | Dr.&nbsp;Tobias Vlćek | <a href="../part-05/lecture-errors.html">Home</a></p>
+<p>Lecture III - Building Reusable Functions | Dr.&nbsp;Tobias Vlćek | <a href="../part-03/lecture-functions.html">Home</a></p>
 </div>
 </div>
 </div>

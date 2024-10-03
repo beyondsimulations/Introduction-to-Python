@@ -262,6 +262,28 @@ print(validate_age(-1)) # This will raise a ValueError
 
 [>Question:]{.question} What do you think the `raise` statement will show now?
 
+## Creating Custom Exceptions
+
+- We do so by [inheriting from the built-in Exception class]{.highlight}
+- This allows us to create more specific exceptions for our own code
+
+```{python}
+#| eval: false  
+class InvalidUsernameError(Exception):
+    pass
+def get_valid_username():
+    while True:
+        try:
+            username = input("Please enter a username (no spaces): ")
+            if " " in username: 
+                raise InvalidUsernameError("Username must not contain spaces.")
+            return username
+        except InvalidUsernameError as e:
+            print(f"Invalid username: {e}")
+            print("Please try again.")
+```
+
+
 # [Assertions]{.flow} {.title}
 
 ## What are Assertions?
