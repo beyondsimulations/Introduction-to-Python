@@ -10,13 +10,14 @@ class InvalidUsernameError(Exception): # This is a custom exception that inherit
 def get_valid_username():
     while True:
         try:
-            username = input("Please enter a username (at least 5 characters, no spaces): ")
+            username = input("Please enter a username (at least 5 characters, numbers only): ")
             if len(username) < 5:
                 raise InvalidUsernameError("Username must be at least 5 characters long.")
             if ' ' in username:
                 raise InvalidUsernameError("Username cannot contain spaces.")
-            if not username.isdigit():
-                raise InvalidUsernameError("Username must contain only numbers.")
+            for char in username:
+                if char not in '0123456789':
+                    raise InvalidUsernameError("Username must contain only numbers.")
             return username
         except InvalidUsernameError as e:
             print(f"Invalid username: {e}")
