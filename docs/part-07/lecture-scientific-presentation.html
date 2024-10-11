@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en"><head>
-<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous"></script><script src="../site_libs/clipboard/clipboard.min.js"></script>
 <script src="../site_libs/quarto-html/tabby.min.js"></script>
 <script src="../site_libs/quarto-html/popper.min.js"></script>
 <script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
@@ -387,6 +387,9 @@
       margin-right: 0; 
     }
   </style>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.6/require.min.js" integrity="sha512-c3Nl8+7g4LMSTdrm621y7kf9v3SDPnhxLNhcjFJbKECVnmZHTdo+IRO05sNLTH/D3vA6u1X32ehoLC7WFVdheg==" crossorigin="anonymous"></script>
+  
+  <script type="application/javascript">define('jquery', [],function() {return window.jQuery;})</script>
 </head>
 <body class="quarto-light">
   <div class="reveal">
@@ -408,11 +411,71 @@ Dr.&nbsp;Tobias Vlćek
 </div>
 
 </section>
+<section>
 <section id="quick-recap-of-the-last-lecture" class="title-slide slide level1 title center">
 <h1><span class="flow">Quick Recap of the last Lecture</span></h1>
 
 </section>
-
+<section id="modules" class="slide level2">
+<h2>Modules</h2>
+<ul>
+<li><span class="highlight">Modules</span> are <code>.py</code> files containing Python code</li>
+<li>They are used to organize and reuse code</li>
+<li>They can define functions, classes, and variables</li>
+<li>Can be imported into other scripts</li>
+</ul>
+<div class="fragment">
+<div class="callout callout-tip callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Tip</strong></p>
+</div>
+<div class="callout-content">
+<p>We can import entire modules or individual functions, classes or variables.</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="standard-libraries" class="slide level2">
+<h2>Standard Libraries</h2>
+<ul>
+<li>Python includes many built-in modules like:
+<ul>
+<li><code>random</code> provides functions for random numbers</li>
+<li><code>os</code> allows interaction with the operating system</li>
+<li><code>csv</code> is used for reading and writing CSV files</li>
+<li><code>re</code> is used for working with regular expressions</li>
+</ul></li>
+</ul>
+</section>
+<section id="packages" class="slide level2">
+<h2>Packages</h2>
+<ul>
+<li><span class="highlight">Packages</span> are collections of modules</li>
+<li>Often available from the Python Package Index (PyPI)</li>
+<li>Install using <code>pip install &lt;package_name&gt;</code></li>
+<li>Virtual environments help manage dependencies</li>
+</ul>
+<div class="fragment">
+<div class="callout callout-tip callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Tip</strong></p>
+</div>
+<div class="callout-content">
+<p>Virtual environments are not that important for you right now, as they are mostly used if you work on several projects with different dependecies at once.</p>
+</div>
+</div>
+</div>
+</div>
+</section></section>
 <section>
 <section id="numpy-module" class="title-slide slide level1 title center">
 <h1><span class="flow">NumPy Module</span></h1>
@@ -422,8 +485,8 @@ Dr.&nbsp;Tobias Vlćek
 <h2>What is NumPy?</h2>
 <ul>
 <li><strong>NumPy</strong> is a package for scientific computing in Python</li>
-<li>Provides support for large, <span class="highlight">multi-dimensional arrays and matrices</span></li>
-<li>Wide range of mathematical functions to operate on these arrays</li>
+<li>Provides large, <span class="highlight">multi-dimensional arrays and matrices</span></li>
+<li>Wide range of functions to operate on these</li>
 <li>Python lists can be slow - Numpy arrays are much faster</li>
 </ul>
 <div class="fragment">
@@ -445,25 +508,27 @@ Dr.&nbsp;Tobias Vlćek
 <section id="why-is-numpy-so-fast" class="slide level2">
 <h2>Why is NumPy so fast?</h2>
 <ul>
-<li>NumPy arrays are stored in a contiguous block of memory</li>
+<li>Arrays are stored in a contiguous block of memory</li>
 <li>This allows for efficient memory access patterns</li>
 <li>Operations are implemented in the languages <code>C</code> and <code>C++</code></li>
 </ul>
+<div class="fragment">
+<p><span class="question">Question:</span> Have you heard of C and C++?</p>
+</div>
 </section>
 <section id="how-to-get-started" class="slide level2">
 <h2>How to get started</h2>
 <ol type="1">
 <li>Install NumPy using <code>pip install numpy</code></li>
-<li>In Thonny, use <code>Tools -&gt; Manage Packages...</code> to install NumPy</li>
+<li>In Thonny, <code>Tools -&gt; Manage Packages...</code></li>
 <li>Import NumPy in a script using <code>import numpy as np</code></li>
-<li>You are <span class="highlight">ready to go!</span></li>
 </ol>
 <div class="fragment">
-<div id="2510f1c3" class="cell" data-execution_count="2">
+<div id="8c069481" class="cell" data-execution_count="2">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb1-2"><a></a>x <span class="op">=</span> np.array([<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">5</span>])</span>
 <span id="cb1-3"><a></a><span class="bu">type</span>(x)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="1">
+<div class="cell-output cell-output-display" data-execution_count="166">
 <pre><code>numpy.ndarray</code></pre>
 </div>
 </div>
@@ -490,20 +555,22 @@ Dr.&nbsp;Tobias Vlćek
 <li>The backbone of Numpy is the so called <code>ndarray</code></li>
 <li>Can be initialized from different data structures:</li>
 </ul>
-<div id="d68f720c" class="cell" data-execution_count="3">
+<div id="06effb88" class="cell" data-execution_count="3">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
-<span id="cb3-2"><a></a>array_from_list <span class="op">=</span> np.array([<span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">1</span>])</span>
-<span id="cb3-3"><a></a><span class="bu">print</span>(array_from_list)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb3-2"><a></a></span>
+<span id="cb3-3"><a></a>array_from_list <span class="op">=</span> np.array([<span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">1</span>])</span>
+<span id="cb3-4"><a></a><span class="bu">print</span>(array_from_list)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell fragment" data-execution_count="3">
 <div class="cell-output cell-output-stdout">
 <pre><code>[1 1 1 1]</code></pre>
 </div>
 </div>
-<div id="90e38507" class="cell" data-execution_count="4">
+<div id="b9c0c329" class="cell" data-execution_count="4">
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
-<span id="cb5-2"><a></a>array_from_tuple <span class="op">=</span> np.array((<span class="dv">2</span>, <span class="dv">2</span>, <span class="dv">2</span>, <span class="dv">2</span>))</span>
-<span id="cb5-3"><a></a><span class="bu">print</span>(array_from_tuple)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb5-2"><a></a></span>
+<span id="cb5-3"><a></a>array_from_tuple <span class="op">=</span> np.array((<span class="dv">2</span>, <span class="dv">2</span>, <span class="dv">2</span>, <span class="dv">2</span>))</span>
+<span id="cb5-4"><a></a><span class="bu">print</span>(array_from_tuple)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell fragment" data-execution_count="4">
 <div class="cell-output cell-output-stdout">
@@ -516,10 +583,11 @@ Dr.&nbsp;Tobias Vlćek
 <ul>
 <li>It is possible to store different data types in a <code>ndarray</code></li>
 </ul>
-<div id="90d64fff" class="cell" data-execution_count="5">
+<div id="5bf9714c" class="cell" data-execution_count="5">
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
-<span id="cb7-2"><a></a>array_different_types <span class="op">=</span> np.array([<span class="st">"s"</span>, <span class="dv">2</span>, <span class="fl">2.0</span>, <span class="st">"i"</span>])</span>
-<span id="cb7-3"><a></a><span class="bu">print</span>(array_different_types)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb7-2"><a></a></span>
+<span id="cb7-3"><a></a>array_different_types <span class="op">=</span> np.array([<span class="st">"s"</span>, <span class="dv">2</span>, <span class="fl">2.0</span>, <span class="st">"i"</span>])</span>
+<span id="cb7-4"><a></a><span class="bu">print</span>(array_different_types)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell fragment" data-execution_count="5">
 <div class="cell-output cell-output-stdout">
@@ -536,21 +604,20 @@ Dr.&nbsp;Tobias Vlćek
 <p><strong>Note</strong></p>
 </div>
 <div class="callout-content">
-<p>Not recommended, as it can lead to performance issues. I possible, <strong>keep them homogenous</strong>.</p>
+<p>But it is mostly not recommended, as it can lead to performance issues. If possible, try to <strong>keep the types homogenous</strong>.</p>
 </div>
 </div>
 </div>
 </div>
 </section>
-<section id="creating-prefilled-arrays" class="slide level2">
-<h2>Creating Prefilled Arrays</h2>
-<p>Often used to improve performance by <strong>allocating memory upfront</strong></p>
+<section id="prefilled-arrays" class="slide level2">
+<h2>Prefilled Arrays</h2>
+<p>Improve performance by <strong>allocating memory upfront</strong></p>
 <ul>
 <li><code>np.zeros(shape)</code>: to create an array of zeros</li>
-<li><code>np.ones(shape)</code>: to create an array of ones</li>
-<li><code>np.random.rand(shape)</code>: to create an array of random values</li>
-<li><code>np.arange(start, stop, step)</code>: evenly spaced values</li>
-<li><code>np.linspace(start, stop, num)</code>: evenly spaced values</li>
+<li><code>np.random.rand(shape)</code>: array of random values</li>
+<li><code>np.arange(start, stop, step)</code>: evenly spaced</li>
+<li><code>np.linspace(start, stop, num)</code>: evenly spaced</li>
 </ul>
 <div class="fragment">
 <div class="callout callout-note callout-titled callout-style-default">
@@ -574,46 +641,68 @@ Dr.&nbsp;Tobias Vlćek
 <li>The shape is specified as tuple in these arrays</li>
 <li><code>(2)</code> or <code>2</code> creates a 1-dimensional array (vetor)</li>
 <li><code>(2,2)</code> creates a 2-dimensional array (matrix)</li>
-<li><code>(2,2,2)</code> creates a 3-dimensional array (3rd order tensor)</li>
-<li><code>(2,2,2,2)</code> creates a 4-dimensional array (4th order tensor)</li>
+<li><code>(2,2,2)</code> 3-dimensional array (3rd order tensor)</li>
+<li><code>(2,2,2,2)</code> 4-dimensional array (4th order tensor)</li>
 <li>…</li>
 </ul>
 </section>
+<section id="computations" class="slide level2">
+<h2>Computations</h2>
+<ul>
+<li>We can apply operations to the entire array at once</li>
+<li>This is much faster than applying them element-wise</li>
+</ul>
+<div class="fragment">
+<div id="070393ea" class="cell" data-execution_count="6">
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb9-2"><a></a>x <span class="op">=</span> np.array([<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">5</span>])</span>
+<span id="cb9-3"><a></a>x <span class="op">+</span> <span class="dv">1</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell fragment" data-execution_count="6">
+<div class="cell-output cell-output-display" data-execution_count="170">
+<pre><code>array([2, 3, 4, 5, 6])</code></pre>
+</div>
+</div>
+</div>
+</section>
 <section id="arrays-in-action" class="slide level2">
 <h2>Arrays in Action</h2>
-<p><span class="task">Task</span>: Complete the following task</p>
-<div id="8164dcee" class="cell" data-execution_count="6">
-<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a></a><span class="co"># Create a 3-dimensional tensor with filled with ones</span></span>
-<span id="cb9-2"><a></a><span class="co"># You can choose the shape of the tensor, but it should have 200 elements</span></span>
-<span id="cb9-3"><a></a><span class="co"># Sum over all values of the tensor</span></span>
-<span id="cb9-4"><a></a><span class="co"># Print the shape of the tensor using the method shape()</span></span>
-<span id="cb9-5"><a></a><span class="co"># Print the dtype of the tensor using the method dtype()</span></span>
-<span id="cb9-6"><a></a><span class="co"># Print the size of the tensor using the method size()</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p><span class="task">Task</span>: Practice working with Numpy:</p>
+<div id="6d3b9ae2" class="cell" data-execution_count="7">
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a></a><span class="co"># </span><span class="al">TODO</span><span class="co">: Create a 3-dimensional tensor with filled with zeros</span></span>
+<span id="cb11-2"><a></a><span class="co"># Choose the shape of the tensor, but it should have 200 elements</span></span>
+<span id="cb11-3"><a></a><span class="co"># Add the number 5 to all values of the tensor</span></span>
+<span id="cb11-4"><a></a></span>
+<span id="cb11-5"><a></a><span class="co"># Your code here</span></span>
+<span id="cb11-6"><a></a><span class="cf">assert</span> <span class="bu">sum</span>(tensor) <span class="op">==</span> <span class="dv">1000</span></span>
+<span id="cb11-7"><a></a></span>
+<span id="cb11-8"><a></a><span class="co"># </span><span class="al">TODO</span><span class="co">: Print the shape of the tensor using the method shape()</span></span>
+<span id="cb11-9"><a></a><span class="co"># </span><span class="al">TODO</span><span class="co">: Print the dtype of the tensor using the method dtype()</span></span>
+<span id="cb11-10"><a></a><span class="co"># </span><span class="al">TODO</span><span class="co">: Print the size of the tensor using the method size()</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="indexing-and-slicing" class="slide level2">
 <h2>Indexing and Slicing</h2>
 <ul>
-<li>Accessing and slicing <code>ndarray</code> elements works as before</li>
-<li>In higher dimensions we can access elements using multiple indices</li>
+<li>Accessing and slicing <code>ndarray</code> works as before</li>
+<li>Higher dimension element access with multiple indices</li>
 </ul>
 <div class="fragment">
 <p><span class="question">Question</span>: What do you expect will be printed?</p>
-<div id="d6b55a65" class="cell" data-execution_count="7">
-<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
-<span id="cb10-2"><a></a>x <span class="op">=</span> np.random.randint(<span class="dv">0</span>, <span class="dv">10</span>, size<span class="op">=</span>(<span class="dv">3</span>, <span class="dv">3</span>))</span>
-<span id="cb10-3"><a></a><span class="bu">print</span>(x)</span>
-<span id="cb10-4"><a></a><span class="bu">print</span>(<span class="st">"---"</span>)</span>
-<span id="cb10-5"><a></a><span class="bu">print</span>(x[<span class="dv">0</span>:<span class="dv">2</span>,<span class="dv">0</span>:<span class="dv">2</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="78ca8b82" class="cell" data-execution_count="8">
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb12-2"><a></a>x <span class="op">=</span> np.random.randint(<span class="dv">0</span>, <span class="dv">10</span>, size<span class="op">=</span>(<span class="dv">3</span>, <span class="dv">3</span>))</span>
+<span id="cb12-3"><a></a><span class="bu">print</span>(x)<span class="op">;</span> <span class="bu">print</span>(<span class="st">"---"</span>)</span>
+<span id="cb12-4"><a></a><span class="bu">print</span>(x[<span class="dv">0</span>:<span class="dv">2</span>,<span class="dv">0</span>:<span class="dv">2</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="cell fragment" data-execution_count="7">
+<div class="cell fragment" data-execution_count="8">
 <div class="cell-output cell-output-stdout">
-<pre><code>[[1 2 9]
- [3 7 9]
- [0 9 8]]
+<pre><code>[[2 6 4]
+ [1 6 8]
+ [8 0 9]]
 ---
-[[1 2]
- [3 7]]</code></pre>
+[[2 6]
+ [1 6]]</code></pre>
 </div>
 </div>
 </div>
@@ -627,15 +716,15 @@ Dr.&nbsp;Tobias Vlćek
 <li><code>f</code>: float</li>
 <li><code>S</code>: string</li>
 <li><code>U</code>: unicode</li>
-<li>The type can be checked by calling the <code>.dtype</code> attribute</li>
 </ul>
-<div id="8acdc1d8" class="cell" data-execution_count="8">
-<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a></a>string_array <span class="op">=</span> np.array([<span class="st">"Hello"</span>, <span class="st">"World"</span>])</span>
-<span id="cb12-2"><a></a>string_array.dtype</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="fragment">
+<div id="88fb061f" class="cell" data-execution_count="9">
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a></a>string_array <span class="op">=</span> np.array([<span class="st">"Hello"</span>, <span class="st">"World"</span>])<span class="op">;</span> string_array.dtype</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="cell fragment" data-execution_count="8">
-<div class="cell-output cell-output-display" data-execution_count="7">
+<div class="cell fragment" data-execution_count="9">
+<div class="cell-output cell-output-display" data-execution_count="172">
 <pre><code>dtype('&lt;U5')</code></pre>
+</div>
 </div>
 </div>
 </section>
@@ -645,11 +734,10 @@ Dr.&nbsp;Tobias Vlćek
 <li>We can also <strong>provide</strong> the type when creating arrays</li>
 </ul>
 <div class="fragment">
-<div id="cc5df9ac" class="cell" data-execution_count="9">
-<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a></a>x <span class="op">=</span> np.array([<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">5</span>],  dtype <span class="op">=</span> <span class="st">'f'</span>)</span>
-<span id="cb14-2"><a></a><span class="bu">print</span>(x.dtype)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="a02afd9e" class="cell" data-execution_count="10">
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a></a>x <span class="op">=</span> np.array([<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">5</span>],  dtype <span class="op">=</span> <span class="st">'f'</span>)<span class="op">;</span> <span class="bu">print</span>(x.dtype)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="cell fragment" data-execution_count="9">
+<div class="cell fragment" data-execution_count="10">
 <div class="cell-output cell-output-stdout">
 <pre><code>float32</code></pre>
 </div>
@@ -659,11 +747,10 @@ Dr.&nbsp;Tobias Vlćek
 <ul>
 <li>Or we can <strong>change</strong> them for existing arrays</li>
 </ul>
-<div id="2e75d11c" class="cell" data-execution_count="10">
-<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a></a>x <span class="op">=</span> np.array([<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">5</span>],  dtype <span class="op">=</span> <span class="st">'f'</span>)</span>
-<span id="cb16-2"><a></a><span class="bu">print</span>(x.astype(<span class="st">'i'</span>).dtype)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="d11078b7" class="cell" data-execution_count="11">
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a></a>x <span class="op">=</span> np.array([<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">5</span>],  dtype <span class="op">=</span> <span class="st">'f'</span>)<span class="op">;</span> <span class="bu">print</span>(x.astype(<span class="st">'i'</span>).dtype)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="cell fragment" data-execution_count="10">
+<div class="cell fragment" data-execution_count="11">
 <div class="cell-output cell-output-stdout">
 <pre><code>int32</code></pre>
 </div>
@@ -685,23 +772,60 @@ Dr.&nbsp;Tobias Vlćek
 </div>
 </div>
 </section>
+<section id="sidenote-bits" class="slide level2">
+<h2>Sidenote: Bits</h2>
+<p><span class="question">Question:</span> Do you have an idea what <code>32</code> stands for?</p>
+<div class="fragment">
+<ul>
+<li>It’s the number of bits used to represent a number
+<ul>
+<li><code>int16</code> is a 16-bit integer</li>
+<li><code>float32</code> is a 32-bit floating point number</li>
+<li><code>int64</code> is a 64-bit integer</li>
+<li><code>float128</code> is a 128-bit floating point number</li>
+</ul></li>
+</ul>
+</div>
+</section>
+<section id="why-do-bits-matter" class="slide level2">
+<h2>Why do Bits Matter?</h2>
+<ul>
+<li>They matter, because they can affect:
+<ul>
+<li>the performance of your code</li>
+<li>the precision of your results</li>
+</ul></li>
+</ul>
+<div class="fragment">
+<ul>
+<li>That’s why numbers can have a limited precision!
+<ul>
+<li>An <code>int8</code> has to be in the range of -128 to 127</li>
+<li>An <code>int16</code> has to be in the range of -32768 to 32767</li>
+</ul></li>
+</ul>
+</div>
+<div class="fragment">
+<p><span class="question">Question:</span> Size difference between <code>int16</code> and <code>int64</code>?</p>
+</div>
+</section>
 <section id="joining-arrays" class="slide level2">
 <h2>Joining Arrays</h2>
 <ul>
 <li>You can use <code>concatenate</code> two <strong>join arrays</strong></li>
 <li>With <code>axis</code> you can specify the dimension</li>
-<li>Even easier in 2-dimensions is <code>hstack()</code> and <code>vstack()</code></li>
+<li>In 2-dimensions <code>hstack()</code> and <code>vstack()</code> are easier</li>
 </ul>
 <div class="fragment">
 <p><span class="question">Question</span>: What do you expect will be printed?</p>
-<div id="ae9327c1" class="cell" data-execution_count="11">
-<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
-<span id="cb18-2"><a></a>ones <span class="op">=</span> np.array((<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">1</span>))</span>
-<span id="cb18-3"><a></a>twos <span class="op">=</span> np.array((<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">1</span>)) <span class="op">*</span><span class="dv">2</span></span>
-<span id="cb18-4"><a></a><span class="bu">print</span>(np.vstack((ones,twos)))</span>
-<span id="cb18-5"><a></a><span class="bu">print</span>(np.hstack((ones,twos)))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="3fc482d5" class="cell" data-execution_count="12">
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb20-2"><a></a>ones <span class="op">=</span> np.array((<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">1</span>))</span>
+<span id="cb20-3"><a></a>twos <span class="op">=</span> np.array((<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">1</span>)) <span class="op">*</span><span class="dv">2</span></span>
+<span id="cb20-4"><a></a><span class="bu">print</span>(np.vstack((ones,twos)))</span>
+<span id="cb20-5"><a></a><span class="bu">print</span>(np.hstack((ones,twos)))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="cell fragment" data-execution_count="11">
+<div class="cell fragment" data-execution_count="12">
 <div class="cell-output cell-output-stdout">
 <pre><code>[[1 1 1 1]
  [2 2 2 2]]
@@ -729,30 +853,33 @@ Dr.&nbsp;Tobias Vlćek
 <p><strong>Tip</strong></p>
 </div>
 <div class="callout-content">
-<p>Try experiment with these methods, as they can make your <span class="highlight">work later much easier</span>.</p>
+<p>Try experiment with these methods, they can make your <span class="highlight">work much easier.</span></p>
 </div>
 </div>
 </div>
 </div>
 </section>
-<section id="iterating-over-arrays" class="slide level2">
-<h2>Iterating over Arrays</h2>
-<ul>
-<li>Naturally, we can also loop over a <code>ndarray</code></li>
-<li></li>
-</ul>
-</section>
-<section id="ufuncs" class="slide level2">
-<h2>Ufuncs</h2>
-<ul>
-<li>To increase the speed even further, we can use</li>
-</ul>
-</section>
-<section id="filter" class="slide level2">
-<h2>Filter</h2>
-<ul>
-<li></li>
-</ul>
+<section id="speed-differences-in-action" class="slide level2">
+<h2>Speed Differences in Action</h2>
+<p><span class="task">Task</span>: Complete the following task to practice with Numpy:</p>
+<div id="d8f2f896" class="cell" data-execution_count="13">
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a></a><span class="co"># </span><span class="al">TODO</span><span class="co">: Create a 2-dimensional matrix with filled with ones of size 1000 x 1000.</span></span>
+<span id="cb22-2"><a></a><span class="co"># Afterward, flatten the matrix to a vector and loop over the vector.</span></span>
+<span id="cb22-3"><a></a><span class="co"># In each loop iteration, add a random number between 1 and 10000.</span></span>
+<span id="cb22-4"><a></a><span class="co"># </span><span class="al">TODO</span><span class="co">: Now, do the same with a list of the same size and fill it with random numbers. </span></span>
+<span id="cb22-5"><a></a><span class="co"># Then, sort the list as you have done with the Numpy vector before.</span></span>
+<span id="cb22-6"><a></a><span class="co"># You can use the `time` module to compare the runtime of both approaches.</span></span>
+<span id="cb22-7"><a></a><span class="im">import</span> time</span>
+<span id="cb22-8"><a></a>start <span class="op">=</span> time.time()</span>
+<span id="cb22-9"><a></a><span class="co"># Your code here</span></span>
+<span id="cb22-10"><a></a>end <span class="op">=</span> time.time()</span>
+<span id="cb22-11"><a></a><span class="bu">print</span>(end <span class="op">-</span> start) <span class="co"># time in seconds</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell fragment" data-execution_count="13">
+<div class="cell-output cell-output-stdout">
+<pre><code>9.059906005859375e-06</code></pre>
+</div>
+</div>
 </section></section>
 <section>
 <section id="pandas-module" class="title-slide slide level1 title center">
@@ -764,65 +891,595 @@ Dr.&nbsp;Tobias Vlćek
 <ul>
 <li>Pandas is a <span class="highlight">data manipulation and analysis library</span></li>
 <li>It provides data structures like <strong>DataFrames and Series</strong></li>
-<li>It also provides tools for data cleaning, analysis, and visualization</li>
+<li>Tools for data cleaning, analysis, and visualization</li>
+<li>It can also be used to <span class="highlight">work with Excel files!</span></li>
 </ul>
 </section>
 <section id="how-to-install-pandas" class="slide level2">
 <h2>How to install Pandas</h2>
+<ul>
+<li>In the last lecture, we have installed it with <code>pip install pandas</code> or with Thonny</li>
+<li>Now, import the package <code>import pandas as pd</code></li>
+</ul>
+<div class="fragment">
+<div class="callout callout-note callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Note</strong></p>
+</div>
+<div class="callout-content">
+<p>You can also use a different abbreviation, but <code>pd</code> is the most common one.</p>
+</div>
+</div>
+</div>
+</div>
 </section>
 <section id="creating-dataframes" class="slide level2">
 <h2>Creating DataFrames</h2>
 <ul>
-<li>Use the <code>pd.DataFrame(data, index, columns)</code> function to create a DataFrame from a dictionary</li>
-<li>Use the <code>pd.DataFrame(data, index, columns)</code> function to create a DataFrame from a dictionary</li>
-<li>Use the <code>pd.DataFrame(data, index, columns)</code> function to create a DataFrame from a dictionary</li>
+<li>DataFrames behave quite similar to Numpy arrays</li>
+<li>But they have <span class="highlight">row and column labels</span></li>
 </ul>
+<div class="fragment">
+<div id="eec31e98" class="cell" data-execution_count="14">
+<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb24-1"><a></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb24-2"><a></a>df <span class="op">=</span> pd.DataFrame({ <span class="co"># DataFrame is created from a dictionary</span></span>
+<span id="cb24-3"><a></a>    <span class="st">"Name"</span>: [<span class="st">"Tobias"</span>, <span class="st">"Robin"</span>, <span class="st">"Nils"</span>, <span class="st">"Nikolai"</span>],</span>
+<span id="cb24-4"><a></a>    <span class="st">"Kids"</span>: [<span class="dv">2</span>, <span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">0</span>],</span>
+<span id="cb24-5"><a></a>    <span class="st">"City"</span>: [<span class="st">"Oststeinbek"</span>, <span class="st">"Oststeinbek"</span>, <span class="st">"Hamburg"</span>, <span class="st">"Lübeck"</span>],</span>
+<span id="cb24-6"><a></a>    <span class="st">"Salary"</span>: [<span class="dv">3000</span>, <span class="dv">3200</span>, <span class="dv">4000</span>, <span class="dv">2500</span>]})</span>
+<span id="cb24-7"><a></a><span class="bu">print</span>(df)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell fragment" data-execution_count="14">
+<div class="cell-output cell-output-stdout">
+<pre><code>      Name  Kids         City  Salary
+0   Tobias     2  Oststeinbek    3000
+1    Robin     1  Oststeinbek    3200
+2     Nils     0      Hamburg    4000
+3  Nikolai     0       Lübeck    2500</code></pre>
+</div>
+</div>
+</div>
+</section>
+<section id="reading-from-csv-files" class="slide level2">
+<h2>Reading from CSV Files</h2>
+<ul>
+<li>Can be read using <code>pd.read_csv(file_path)</code></li>
+</ul>
+<div class="fragment">
+<div id="9449e2f0" class="cell" data-execution_count="15">
+<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb26-1"><a></a>df <span class="op">=</span> pd.read_csv(<span class="st">"employees.csv"</span>)</span>
+<span id="cb26-2"><a></a><span class="bu">print</span>(df)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell fragment" data-execution_count="15">
+<div class="cell-output cell-output-stdout">
+<pre><code>       Name  Age Department        Position  Salary
+0     Alice   30         HR         Manager   50000
+1       Bob   25         IT       Developer   60000
+2   Charlie   28    Finance         Analyst   55000
+3     David   35  Marketing       Executive   52000
+4       Eve   32      Sales  Representative   48000
+5     Frank   29         IT       Developer   61000
+6     Grace   31         HR       Assistant   45000
+7      Hank   27    Finance         Analyst   53000
+8       Ivy   33  Marketing         Manager   58000
+9      Jack   26      Sales  Representative   47000
+10     Kara   34         IT       Developer   62000
+11      Leo   30         HR         Manager   51000
+12     Mona   28    Finance         Analyst   54000
+13     Nina   35  Marketing       Executive   53000
+14    Oscar   32      Sales  Representative   49000
+15     Paul   29         IT       Developer   63000
+16    Quinn   31         HR       Assistant   46000
+17     Rita   27    Finance         Analyst   52000
+18      Sam   33  Marketing         Manager   59000
+19     Tina   26      Sales  Representative   48000
+20      Uma   34         IT       Developer   64000
+21    Vince   30         HR         Manager   52000
+22     Walt   28    Finance         Analyst   55000
+23     Xena   35  Marketing       Executive   54000
+24     Yara   32      Sales  Representative   50000
+25     Zane   29         IT       Developer   65000
+26     Anna   31         HR       Assistant   47000
+27      Ben   27    Finance         Analyst   53000
+28    Cathy   33  Marketing         Manager   60000
+29    Dylan   26      Sales  Representative   49000
+30     Ella   34         IT       Developer   66000
+31     Finn   30         HR         Manager   53000
+32     Gina   28    Finance         Analyst   56000
+33     Hugo   35  Marketing       Executive   55000
+34     Iris   32      Sales  Representative   51000
+35     Jake   29         IT       Developer   67000
+36     Kyla   31         HR       Assistant   48000
+37     Liam   27    Finance         Analyst   54000
+38      Mia   33  Marketing         Manager   61000
+39     Noah   26      Sales  Representative   50000
+40    Olive   34         IT       Developer   68000
+41     Pete   30         HR         Manager   54000
+42   Quincy   28    Finance         Analyst   57000
+43     Rose   35  Marketing       Executive   56000
+44    Steve   32      Sales  Representative   52000
+45     Tara   29         IT       Developer   69000
+46     Umar   31         HR       Assistant   49000
+47     Vera   27    Finance         Analyst   55000
+48     Will   33  Marketing         Manager   62000
+49     Zara   26      Sales  Representative   51000</code></pre>
+</div>
+</div>
+</div>
 </section>
 <section id="basic-operations" class="slide level2">
 <h2>Basic Operations</h2>
 <ul>
-<li>Use the <code>df.head()</code> method to display the first few rows of a DataFrame</li>
-<li>Use the <code>df.tail()</code> method to display the last few rows of a DataFrame</li>
-<li>Use the <code>df.info()</code> method to display information about a DataFrame</li>
-<li>Use the <code>df.describe()</code> method to display summary statistics about a DataFrame</li>
-<li>Use the <code>df.columns</code> attribute to access the column names of a DataFrame</li>
-<li>Use the <code>df.index</code> attribute to access the index of a DataFrame</li>
-<li>Use the <code>df.values</code> attribute to access the values of a DataFrame</li>
+<li>Use the <code>df.head()</code> method to display the first 5 rows</li>
+<li>Use the <code>df.tail()</code> method to display the last 5 rows</li>
 </ul>
+<div class="fragment">
+<div id="705f7780" class="cell" data-execution_count="16">
+<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb28-1"><a></a>df <span class="op">=</span> pd.read_csv(<span class="st">"employees.csv"</span>)</span>
+<span id="cb28-2"><a></a><span class="bu">print</span>(df.tail())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell fragment" data-execution_count="16">
+<div class="cell-output cell-output-stdout">
+<pre><code>    Name  Age Department        Position  Salary
+45  Tara   29         IT       Developer   69000
+46  Umar   31         HR       Assistant   49000
+47  Vera   27    Finance         Analyst   55000
+48  Will   33  Marketing         Manager   62000
+49  Zara   26      Sales  Representative   51000</code></pre>
+</div>
+</div>
+</div>
 </section>
-<section id="subsetting-dataframes" class="slide level2">
-<h2>Subsetting DataFrames</h2>
+<section id="information-about-the-dataframe" class="slide level2">
+<h2>Information about the DataFrame</h2>
 <ul>
-<li>Use the <code>df.loc[row_indexer, column_indexer]</code> method to access a specific element of a DataFrame</li>
-<li>Use the <code>df.iloc[row_indexer, column_indexer]</code> method to access a specific element of a DataFrame</li>
+<li>Use <code>df.info()</code> to display information about a DataFrame</li>
 </ul>
+<div class="fragment">
+<div id="a374c1dd" class="cell" data-execution_count="17">
+<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb30-1"><a></a>df <span class="op">=</span> pd.read_csv(<span class="st">"employees.csv"</span>)</span>
+<span id="cb30-2"><a></a><span class="bu">print</span>(df.info())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell fragment" data-execution_count="17">
+<div class="cell-output cell-output-stdout">
+<pre><code>&lt;class 'pandas.core.frame.DataFrame'&gt;
+RangeIndex: 50 entries, 0 to 49
+Data columns (total 5 columns):
+ #   Column      Non-Null Count  Dtype 
+---  ------      --------------  ----- 
+ 0   Name        50 non-null     object
+ 1   Age         50 non-null     int64 
+ 2   Department  50 non-null     object
+ 3   Position    50 non-null     object
+ 4   Salary      50 non-null     int64 
+dtypes: int64(2), object(3)
+memory usage: 2.1+ KB
+None</code></pre>
+</div>
+</div>
+</div>
+</section>
+<section id="statistics-about-a-dataframe" class="slide level2">
+<h2>Statistics about a DataFrame</h2>
+<ul>
+<li>Use <code>df.describe()</code> to display summary statistics</li>
+<li>Use the <code>df.index</code> <strong>attribute</strong> to access the <strong>index</strong></li>
+</ul>
+<div class="fragment">
+<div id="c882074f" class="cell" data-execution_count="18">
+<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb32-1"><a></a>df <span class="op">=</span> pd.read_csv(<span class="st">"employees.csv"</span>)</span>
+<span id="cb32-2"><a></a><span class="bu">print</span>(df.describe())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell fragment" data-execution_count="18">
+<div class="cell-output cell-output-stdout">
+<pre><code>             Age        Salary
+count  50.000000     50.000000
+mean   30.320000  54980.000000
+std     2.958488   6175.957333
+min    25.000000  45000.000000
+25%    28.000000  50250.000000
+50%    30.000000  54000.000000
+75%    33.000000  59750.000000
+max    35.000000  69000.000000</code></pre>
+</div>
+</div>
+</div>
 </section>
 <section id="filtering-dataframes" class="slide level2">
 <h2>Filtering DataFrames</h2>
 <ul>
-<li>Use the <code>df[df['column'] &gt; value]</code> method to filter a DataFrame</li>
-<li>Use the <code>df[df['column'].isin(values)]</code> method to filter a DataFrame</li>
+<li>Use <code>df['column_name']</code> to access a column</li>
+<li>Use the <code>df[df['column'] &gt; value]</code> method to filter</li>
+</ul>
+<div class="fragment">
+<div id="e4748edc" class="cell" data-execution_count="19">
+<div class="sourceCode cell-code" id="cb34"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb34-1"><a></a>df <span class="op">=</span> pd.read_csv(<span class="st">"employees.csv"</span>)</span>
+<span id="cb34-2"><a></a>df_high_salary <span class="op">=</span> df[df[<span class="st">'Salary'</span>] <span class="op">&gt;</span> <span class="dv">65000</span>]</span>
+<span id="cb34-3"><a></a><span class="bu">print</span>(df_high_salary)</span>
+<span id="cb34-4"><a></a><span class="bu">print</span>(df_high_salary.iloc[<span class="dv">0</span>][<span class="st">"Name"</span>]) <span class="co">#Access the first row and the "Name" column</span></span>
+<span id="cb34-5"><a></a><span class="bu">print</span>(df_high_salary.loc[<span class="dv">35</span>][<span class="st">"Name"</span>]) <span class="co">#Access the label 35 and the "Name" column</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell fragment" data-execution_count="19">
+<div class="cell-output cell-output-stdout">
+<pre><code>     Name  Age Department   Position  Salary
+30   Ella   34         IT  Developer   66000
+35   Jake   29         IT  Developer   67000
+40  Olive   34         IT  Developer   68000
+45   Tara   29         IT  Developer   69000
+Ella
+Jake</code></pre>
+</div>
+</div>
+</div>
+</section>
+<section id="filtering-in-action" class="slide level2">
+<h2>Filtering in Action</h2>
+<p><span class="task">Task</span>: Complete the following task:</p>
+<div id="f8a4c51c" class="cell" data-execution_count="20">
+<div class="sourceCode cell-code" id="cb36"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb36-1"><a></a><span class="co"># </span><span class="al">TODO</span><span class="co">: Load the employees.csv located in the git repository into a DataFrame</span></span>
+<span id="cb36-2"><a></a><span class="co"># First, filter the DataFrame for employees with a manager position</span></span>
+<span id="cb36-3"><a></a><span class="co"># Then, print the average salary of the remaining employees</span></span>
+<span id="cb36-4"><a></a><span class="co"># Finally, print the name of the employee with the lowest salary</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell fragment" data-execution_count="20">
+
+</div>
+<div class="fragment">
+<div class="callout callout-note callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Note</strong></p>
+</div>
+<div class="callout-content">
+<p>Note, that we can use the <code>mean()</code> method on the <code>Salary</code> column, as it is a numeric column. In addition, we can use the <code>min()</code> method on the <code>Salary</code> column to find the lowest salary.</p>
+</div>
+</div>
+</div>
+</div>
+</section></section>
+<section>
+<section id="grouping-dataframes" class="title-slide slide level1 title center">
+<h1><span class="flow">Grouping DataFrames</span></h1>
+
+</section>
+<section id="grouping" class="slide level2">
+<h2>Grouping</h2>
+<ul>
+<li>Grouping is a <span class="highlight">powerful feature</span> of Pandas</li>
+<li>Groups data by one or more columns</li>
+<li>And then <span class="highlight">perform operations</span></li>
+<li>Syntax is <code>df.groupby('column').method()</code></li>
+</ul>
+<div class="fragment">
+<div id="6241f2a0" class="cell" data-execution_count="21">
+<div class="sourceCode cell-code" id="cb37"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb37-1"><a></a>df <span class="op">=</span> pd.read_csv(<span class="st">"employees.csv"</span>)</span>
+<span id="cb37-2"><a></a>df <span class="op">=</span> df.drop(columns<span class="op">=</span>[<span class="st">"Name"</span>, <span class="st">"Department"</span>])</span>
+<span id="cb37-3"><a></a>df.groupby([<span class="st">'Position'</span>]).mean() <span class="co"># Mean per position</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+
+</div>
+</section>
+<section id="grouping-output" class="slide level2 output-location-slide"><h2>Grouping</h2><div class="cell output-location-slide" data-execution_count="21">
+<div class="cell-output cell-output-display" data-execution_count="184">
+<div>
+<style scoped="">
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+
+<table class="dataframe caption-top" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header" style="text-align: right;">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">Age</th>
+<th data-quarto-table-cell-role="th">Salary</th>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">Position</th>
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th"></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">Analyst</td>
+<td>27.5</td>
+<td>54400.0</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">Assistant</td>
+<td>31.0</td>
+<td>47000.0</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">Developer</td>
+<td>30.6</td>
+<td>64500.0</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">Executive</td>
+<td>35.0</td>
+<td>54000.0</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">Manager</td>
+<td>31.5</td>
+<td>56000.0</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">Representative</td>
+<td>29.0</td>
+<td>49500.0</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+</div></section><section id="grouping-by-multiple-columns" class="slide level2">
+<h2>Grouping by Multiple Columns</h2>
+<ul>
+<li>We can group by multiple columns using a list <code>['column1', 'column2']</code></li>
+</ul>
+<div class="fragment">
+<div id="47118e00" class="cell" data-execution_count="22">
+<div class="sourceCode cell-code" id="cb38"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb38-1"><a></a>df <span class="op">=</span> pd.read_csv(<span class="st">"employees.csv"</span>)</span>
+<span id="cb38-2"><a></a>df <span class="op">=</span> df.drop(columns<span class="op">=</span>[<span class="st">"Name"</span>])</span>
+<span id="cb38-3"><a></a><span class="co"># Max per position and department</span></span>
+<span id="cb38-4"><a></a>df.groupby([<span class="st">'Position'</span>, <span class="st">"Department"</span>]).<span class="bu">max</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+
+</div>
+</section>
+<section id="grouping-by-multiple-columns-output" class="slide level2 output-location-slide"><h2>Grouping by Multiple Columns</h2><div class="cell output-location-slide" data-execution_count="22">
+<div class="cell-output cell-output-display" data-execution_count="185">
+<div>
+<style scoped="">
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+
+<table class="dataframe caption-top" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header" style="text-align: right;">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">Age</th>
+<th data-quarto-table-cell-role="th">Salary</th>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">Position</th>
+<th data-quarto-table-cell-role="th">Department</th>
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th"></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">Analyst</td>
+<td data-quarto-table-cell-role="th">Finance</td>
+<td>28</td>
+<td>57000</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">Assistant</td>
+<td data-quarto-table-cell-role="th">HR</td>
+<td>31</td>
+<td>49000</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">Developer</td>
+<td data-quarto-table-cell-role="th">IT</td>
+<td>34</td>
+<td>69000</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">Executive</td>
+<td data-quarto-table-cell-role="th">Marketing</td>
+<td>35</td>
+<td>56000</td>
+</tr>
+<tr class="odd">
+<td rowspan="2" data-quarto-table-cell-role="th" data-valign="top">Manager</td>
+<td data-quarto-table-cell-role="th">HR</td>
+<td>30</td>
+<td>54000</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">Marketing</td>
+<td>33</td>
+<td>62000</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">Representative</td>
+<td data-quarto-table-cell-role="th">Sales</td>
+<td>32</td>
+<td>52000</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+</div></section><section id="grouping-with-aggregations" class="slide level2">
+<h2>Grouping with Aggregations</h2>
+<ul>
+<li>As seen, we can use aggregation functions:
+<ul>
+<li><code>sum()</code>: sum of the values</li>
+<li><code>mean()</code>: mean of the values</li>
+<li><code>max()</code>: maximum of the values</li>
+<li><code>min()</code>: minimum of the values</li>
+<li><code>count()</code>: count of the values</li>
+</ul></li>
 </ul>
 </section>
-<section id="grouping-dataframes" class="slide level2">
-<h2>Grouping DataFrames</h2>
+<section id="melting-dataframes" class="slide level2">
+<h2>Melting DataFrames</h2>
 <ul>
-<li>Use the <code>df.groupby('column').sum()</code> method to group a DataFrame and calculate the sum of a column</li>
-<li>Use the <code>df.groupby('column').mean()</code> method to group a DataFrame and calculate the mean of a column</li>
-<li>Use the <code>df.groupby('column').count()</code> method to group a DataFrame and count the number of elements in a column</li>
-<li>Use the <code>df.groupby('column').size()</code> method to group a DataFrame and count the number of elements in a column</li>
+<li>We can use the <code>pd.melt()</code> function to transform a DataFrame from wide to long format</li>
 </ul>
+<div class="fragment">
+<div id="e8749505" class="cell" data-execution_count="23">
+<div class="sourceCode cell-code" id="cb39"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb39-1"><a></a>df <span class="op">=</span> pd.read_csv(<span class="st">"employees.csv"</span>).drop(columns<span class="op">=</span>[<span class="st">"Name"</span>])</span>
+<span id="cb39-2"><a></a>df <span class="op">=</span> pd.melt(df, id_vars<span class="op">=</span>[<span class="st">'Position'</span>])</span>
+<span id="cb39-3"><a></a><span class="bu">print</span>(df.head())<span class="op">;</span> <span class="bu">print</span>(df.tail())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell fragment" data-execution_count="23">
+<div class="cell-output cell-output-stdout">
+<pre><code>         Position variable value
+0         Manager      Age    30
+1       Developer      Age    25
+2         Analyst      Age    28
+3       Executive      Age    35
+4  Representative      Age    32
+           Position variable  value
+145       Developer   Salary  69000
+146       Assistant   Salary  49000
+147         Analyst   Salary  55000
+148         Manager   Salary  62000
+149  Representative   Salary  51000</code></pre>
+</div>
+</div>
+</div>
 </section>
-<section id="excel-files" class="slide level2">
-<h2>Excel Files</h2>
+<section id="pandas-in-action" class="slide level2">
+<h2>Pandas in Action</h2>
+<p><span class="task">Task</span>: Complete the following task:</p>
+<div id="9849b347" class="cell" data-execution_count="24">
+<div class="sourceCode cell-code" id="cb41"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb41-1"><a></a><span class="co"># </span><span class="al">TODO</span><span class="co">: Load the employees.csv again into a DataFrame</span></span>
+<span id="cb41-2"><a></a><span class="co"># First, group by the "Position" column and count the employees per position</span></span>
+<span id="cb41-3"><a></a><span class="co"># Then, group by the "Department" column and calculate the sum of all other columns per department</span></span>
+<span id="cb41-4"><a></a>df <span class="op">=</span> pd.read_csv(<span class="st">"employees.csv"</span>)</span>
+<span id="cb41-5"><a></a><span class="co"># Your code here</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell fragment" data-execution_count="24">
+
+</div>
+<div class="fragment">
+<div class="callout callout-note callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Note</strong></p>
+</div>
+<div class="callout-content">
+<p>Do you notice any <span class="highlight">irregularities</span> while calculating the sum per department?</p>
+</div>
+</div>
+</div>
+</div>
+</section></section>
+<section>
+<section id="working-with-excel-files" class="title-slide slide level1 title center">
+<h1><span class="flow">Working with Excel Files</span></h1>
+
+</section>
+<section id="reading-excel-files" class="slide level2">
+<h2>Reading Excel Files</h2>
 <ul>
-<li>Excel files can be read using the <code>pd.read_excel(file_path)</code> function</li>
-<li>Excel files can be written using the <code>df.to_excel(file_path)</code> method</li>
+<li>Read using the <code>pd.read_excel(file_path)</code> function</li>
+<li>Write using the <code>df.to_excel(file_path)</code> method</li>
 </ul>
+<div class="fragment">
+<div id="3ce416b6" class="cell" data-execution_count="25">
+<div class="sourceCode cell-code" id="cb42"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb42-1"><a></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb42-2"><a></a>df <span class="op">=</span> pd.read_csv(<span class="st">"employees.csv"</span>)</span>
+<span id="cb42-3"><a></a>df.to_excel(<span class="st">"employees.xlsx"</span>, index<span class="op">=</span><span class="va">False</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+<div class="fragment">
+<div class="callout callout-note callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Note</strong></p>
+</div>
+<div class="callout-content">
+<p>Note, that you likely need to install the <code>openpyxl</code> package to be able to write Excel files, as it handles the file format.</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="advanced-excel-file-handling" class="slide level2">
+<h2>Advanced Excel file handling</h2>
+<div id="9f3256f3" class="cell" data-execution_count="26">
+<div class="sourceCode cell-code" id="cb43"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb43-1"><a></a>df <span class="op">=</span> pd.read_excel(<span class="st">"employees.xlsx"</span>)</span>
+<span id="cb43-2"><a></a></span>
+<span id="cb43-3"><a></a><span class="co"># Writes to the Employees sheet and does not include row indices</span></span>
+<span id="cb43-4"><a></a>df.to_excel(<span class="st">"employees.xlsx"</span>, sheet_name<span class="op">=</span><span class="st">"Employees"</span>, index<span class="op">=</span><span class="va">False</span>)</span>
+<span id="cb43-5"><a></a></span>
+<span id="cb43-6"><a></a><span class="co"># Reads from the Employees sheet</span></span>
+<span id="cb43-7"><a></a>df <span class="op">=</span> pd.read_excel(<span class="st">"employees.xlsx"</span>, sheet_name<span class="op">=</span><span class="st">"Employees"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell fragment" data-execution_count="26">
+
+</div>
+<div class="fragment">
+<div class="callout callout-note callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Note</strong></p>
+</div>
+<div class="callout-content">
+<p><strong>And that’s it for todays lecture!</strong><br>
+You now have the basic knowledge to start working with <span class="highlight">scientific computing</span>. Don’t worry that we haven’t applied Excel files yet, we will do so in the upcoming tutorial.</p>
+</div>
+</div>
+</div>
+</div>
+</section></section>
+<section>
+<section id="literature" class="title-slide slide level1 title center">
+<h1><span class="flow">Literature</span></h1>
+
+</section>
+<section id="interesting-books" class="slide level2">
+<h2>Interesting Books</h2>
+<ul>
+<li>Downey, A. B. (2024). Think Python: How to think like a computer scientist (Third edition). O’Reilly. <a href="https://greenteapress.com/wp/think-python-3rd-edition/">Link to free online version</a></li>
+<li>Elter, S. (2021). Schrödinger programmiert Python: Das etwas andere Fachbuch (1. Auflage). Rheinwerk Verlag.</li>
+</ul>
+<div class="fragment">
+<p>For more interesting literature to learn more about Python, take a look at the <a href="../general/literature.html">literature list</a> of this course.</p>
 
 <div class="quarto-auto-generated-content">
 <div class="footer footer-default">
 <p>Lecture VII - NumPy and Pandas for Scientific Computing | Dr.&nbsp;Tobias Vlćek | <a href="../part-07/lecture-scientific.html">Home</a></p>
+</div>
 </div>
 </div>
 </section></section>
@@ -1002,9 +1659,9 @@ Dr.&nbsp;Tobias Vlćek
         // The "normal" size of the presentation, aspect ratio will be preserved
         // when the presentation is scaled to fit different resolutions. Can be
         // specified using percentage units.
-        width: 1260,
+        width: 1152,
 
-        height: 840,
+        height: 648,
 
         // Factor of the display size that should remain empty around the content
         margin: 0.1,

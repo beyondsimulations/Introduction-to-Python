@@ -258,7 +258,7 @@ Remember, that the input function always returns a string!
 - The `os` module provides functions to interact with the OS
 - `os.listdir(path)`: list all files and directories in a directory
 - `os.path.isfile(path)`: check if a path is a file
-- `os.path.isdir(path)`: check if a path is a directory
+- `os.path.exists(path)`: check if a path exists
 - `os.mkdir(path)`: create a directory
 
 . . .
@@ -290,6 +290,22 @@ with open('secret_message.csv', 'w') as file: # Open the file in write mode
 . . .
 
 [Task:]{.task} Copy the code and run it. Do you have a new file?
+
+## OS and CSV Module in Action
+
+[Task:]{.task} Time for another task! Do the following:
+
+```{python}
+#| eval: false  
+# First, check if a directory called `module_directory` exists.
+# If it does not, create it.
+# Then, list all files in the current directory and save them in a CSV file called `current_files.csv` in the new `module_directory`.
+
+import os
+if not os.path.exists('module_directory'):
+    pass
+# Your code here
+```
 
 # [Regular Expressions]{.flow} {.title}
 
@@ -392,6 +408,15 @@ Regular expressions are even **more powerful** when combined with [special chara
 
 . . .
 
+```{python}
+#| eval: true
+#| output-location: fragment
+import re
+print(re.findall(r'\d{3}-\d{2}-\d{4}', 'Here is a phone number: 123-45-6789.'))
+```
+
+. . .
+
 ::: {.callout-tip}
 It can be quite complicated to get the hang of these special characters, especially at the beginning. Gladly, there are tools like [regexr.com](https://regexr.com) that can help with building the right pattern. Apart from that, `help(re)` in the terminal can also be very helpful.
 :::
@@ -434,6 +459,23 @@ pandemic was declared a global emergency on 04-11-2020.
 With Thonny you can install packages directly in the IDE. Simply click on [Tools -> Manage packages]{.highlight} and search for the package you want to install.
 :::
 
+## Packages in Action
+
+[Task:]{.task} Install the `pandas` and `numpy` packages, which are commonly used for data analysis. We will use them together next week!
+
+. . .
+
+```{bash}
+pip install pandas numpy
+```
+
+. . .
+
+::: {.callout-tip}
+If you install packages like this, you can use the shell to do so! Alternatively, you can use `pip install <package_name>` in the Python terminal or Thonny.
+:::
+
+
 ## Virtual Environments
 
 - Virtual environments are used to manage dependencies
@@ -464,5 +506,3 @@ Nothing new here, but these are still great books!
 . . .
 
 For more interesting literature to learn more about Python, take a look at the [literature list](../general/literature.qmd) of this course.
-
-
