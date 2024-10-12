@@ -134,6 +134,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <div class="pt-lg-2 mt-2 text-left sidebar-header">
     <div class="sidebar-title mb-0 py-0">
       <a href="../">Programming with Python</a> 
+        <div class="sidebar-tools-main">
+  <a href="" class="quarto-reader-toggle quarto-navigation-tool px-1" onclick="window.quartoToggleReader(); return false;" title="Toggle reader mode">
+  <div class="quarto-reader-toggle-btn">
+  <i class="bi"></i>
+  </div>
+</a>
+</div>
     </div>
       </div>
         <div class="mt-2 flex-shrink-0 align-items-center">
@@ -155,6 +162,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
  <span class="menu-text">Syllabus</span></a>
   </div>
 </li>
+        <li class="sidebar-item">
+ <span class="menu-text">***</span>
+  </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="false">
@@ -333,6 +343,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
       </ul>
   </li>
+        <li class="sidebar-item">
+ <span class="menu-text">***</span>
+  </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-9" role="navigation" aria-expanded="false">
@@ -434,7 +447,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#interesting-books" id="toc-interesting-books" class="nav-link" data-scroll-target="#interesting-books">Interesting Books</a></li>
   </ul></li>
   </ul>
-<div class="quarto-alternate-formats"><h2>Other Formats</h2><ul><li><a href="lecture-scientific-presentation.html"><i class="bi bi-file-slides"></i>RevealJS</a></li><li><a href="lecture-scientific.pdf"><i class="bi bi-file-pdf"></i>PDF</a></li></ul></div></nav>
+<div class="toc-actions"><ul><li><a href="https://github.com/beyondsimulations/Introduction-to-Python/edit/main/part-07/lecture-scientific.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/beyondsimulations/Introduction-to-Python/blob/main/part-07/lecture-scientific.qmd" class="toc-action"><i class="bi empty"></i>View source</a></li><li><a href="https://github.com/beyondsimulations/Introduction-to-Python/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div><div class="quarto-alternate-formats"><h2>Other Formats</h2><ul><li><a href="lecture-scientific-presentation.html"><i class="bi bi-file-slides"></i>RevealJS</a></li><li><a href="lecture-scientific.pdf"><i class="bi bi-file-pdf"></i>PDF</a></li></ul></div></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
@@ -576,7 +589,7 @@ Note
 <li>Import NumPy in a script using <code>import numpy as np</code></li>
 </ol>
 <p>. . .</p>
-<div id="1e19428d" class="cell" data-execution_count="1">
+<div id="1e19428d" class="cell" data-execution_count="2">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> np.array([<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">5</span>])</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="bu">type</span>(x)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -605,7 +618,7 @@ Note
 <li>The backbone of Numpy is the so called <code>ndarray</code></li>
 <li>Can be initialized from different data structures:</li>
 </ul>
-<div id="e934a6f4" class="cell" data-output-location="fragment" data-execution_count="2">
+<div id="e934a6f4" class="cell" data-output-location="fragment" data-execution_count="3">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>array_from_list <span class="op">=</span> np.array([<span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">1</span>])</span>
@@ -614,7 +627,7 @@ Note
 <pre><code>[1 1 1 1]</code></pre>
 </div>
 </div>
-<div id="591a100f" class="cell" data-output-location="fragment" data-execution_count="3">
+<div id="591a100f" class="cell" data-output-location="fragment" data-execution_count="4">
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>array_from_tuple <span class="op">=</span> np.array((<span class="dv">2</span>, <span class="dv">2</span>, <span class="dv">2</span>, <span class="dv">2</span>))</span>
@@ -629,7 +642,7 @@ Note
 <ul>
 <li>It is possible to store different data types in a <code>ndarray</code></li>
 </ul>
-<div id="082dc4f9" class="cell" data-output-location="fragment" data-execution_count="4">
+<div id="082dc4f9" class="cell" data-output-location="fragment" data-execution_count="5">
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>array_different_types <span class="op">=</span> np.array([<span class="st">"s"</span>, <span class="dv">2</span>, <span class="fl">2.0</span>, <span class="st">"i"</span>])</span>
@@ -695,7 +708,7 @@ Note
 <li>This is much faster than applying them element-wise</li>
 </ul>
 <p>. . .</p>
-<div id="43208ef1" class="cell" data-output-location="fragment" data-execution_count="5">
+<div id="43208ef1" class="cell" data-output-location="fragment" data-execution_count="6">
 <div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> np.array([<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">5</span>])</span>
 <span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>x <span class="op">+</span> <span class="dv">1</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -707,7 +720,7 @@ Note
 <section id="arrays-in-action" class="level2">
 <h2 class="anchored" data-anchor-id="arrays-in-action">Arrays in Action</h2>
 <p><span class="task">Task</span>: Practice working with Numpy:</p>
-<div id="5c991bc9" class="cell" data-execution_count="6">
+<div id="5c991bc9" class="cell" data-execution_count="7">
 <div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="co"># </span><span class="al">TODO</span><span class="co">: Create a 3-dimensional tensor with filled with zeros</span></span>
 <span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Choose the shape of the tensor, but it should have 200 elements</span></span>
 <span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Add the number 5 to all values of the tensor</span></span>
@@ -728,7 +741,7 @@ Note
 </ul>
 <p>. . .</p>
 <p><span class="question">Question</span>: What do you expect will be printed?</p>
-<div id="218abc15" class="cell" data-output-location="fragment" data-execution_count="7">
+<div id="218abc15" class="cell" data-output-location="fragment" data-execution_count="8">
 <div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> np.random.randint(<span class="dv">0</span>, <span class="dv">10</span>, size<span class="op">=</span>(<span class="dv">3</span>, <span class="dv">3</span>))</span>
 <span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(x)<span class="op">;</span> <span class="bu">print</span>(<span class="st">"---"</span>)</span>
@@ -754,7 +767,7 @@ Note
 <li><code>U</code>: unicode</li>
 </ul>
 <p>. . .</p>
-<div id="01047223" class="cell" data-output-location="fragment" data-execution_count="8">
+<div id="01047223" class="cell" data-output-location="fragment" data-execution_count="9">
 <div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>string_array <span class="op">=</span> np.array([<span class="st">"Hello"</span>, <span class="st">"World"</span>])<span class="op">;</span> string_array.dtype</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="7">
 <pre><code>dtype('&lt;U5')</code></pre>
@@ -767,7 +780,7 @@ Note
 <li>We can also <strong>provide</strong> the type when creating arrays</li>
 </ul>
 <p>. . .</p>
-<div id="d01d24f6" class="cell" data-output-location="fragment" data-execution_count="9">
+<div id="d01d24f6" class="cell" data-output-location="fragment" data-execution_count="10">
 <div class="sourceCode cell-code" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> np.array([<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">5</span>],  dtype <span class="op">=</span> <span class="st">'f'</span>)<span class="op">;</span> <span class="bu">print</span>(x.dtype)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>float32</code></pre>
@@ -777,7 +790,7 @@ Note
 <ul>
 <li>Or we can <strong>change</strong> them for existing arrays</li>
 </ul>
-<div id="167a0ee6" class="cell" data-output-location="fragment" data-execution_count="10">
+<div id="167a0ee6" class="cell" data-output-location="fragment" data-execution_count="11">
 <div class="sourceCode cell-code" id="cb18"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> np.array([<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">5</span>],  dtype <span class="op">=</span> <span class="st">'f'</span>)<span class="op">;</span> <span class="bu">print</span>(x.astype(<span class="st">'i'</span>).dtype)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>int32</code></pre>
@@ -841,7 +854,7 @@ Note
 </ul>
 <p>. . .</p>
 <p><span class="question">Question</span>: What do you expect will be printed?</p>
-<div id="39e458bd" class="cell" data-output-location="fragment" data-execution_count="11">
+<div id="39e458bd" class="cell" data-output-location="fragment" data-execution_count="12">
 <div class="sourceCode cell-code" id="cb20"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a>ones <span class="op">=</span> np.array((<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">1</span>))</span>
 <span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a>twos <span class="op">=</span> np.array((<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">1</span>)) <span class="op">*</span><span class="dv">2</span></span>
@@ -881,7 +894,7 @@ Tip
 <section id="speed-differences-in-action" class="level2">
 <h2 class="anchored" data-anchor-id="speed-differences-in-action">Speed Differences in Action</h2>
 <p><span class="task">Task</span>: Complete the following task to practice with Numpy:</p>
-<div id="f1bad861" class="cell" data-output-location="fragment" data-execution_count="12">
+<div id="f1bad861" class="cell" data-output-location="fragment" data-execution_count="13">
 <div class="sourceCode cell-code" id="cb22"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="co"># </span><span class="al">TODO</span><span class="co">: Create a 2-dimensional matrix with filled with ones of size 1000 x 1000.</span></span>
 <span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Afterward, flatten the matrix to a vector and loop over the vector.</span></span>
 <span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a><span class="co"># In each loop iteration, add a random number between 1 and 10000.</span></span>
@@ -938,7 +951,7 @@ Note
 <li>But they have <span class="highlight">row and column labels</span></li>
 </ul>
 <p>. . .</p>
-<div id="43b70aa2" class="cell" data-output-location="fragment" data-execution_count="13">
+<div id="43b70aa2" class="cell" data-output-location="fragment" data-execution_count="14">
 <div class="sourceCode cell-code" id="cb24"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
 <span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> pd.DataFrame({ <span class="co"># DataFrame is created from a dictionary</span></span>
 <span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a>    <span class="st">"Name"</span>: [<span class="st">"Tobias"</span>, <span class="st">"Robin"</span>, <span class="st">"Nils"</span>, <span class="st">"Nikolai"</span>],</span>
@@ -961,7 +974,7 @@ Note
 <li>Can be read using <code>pd.read_csv(file_path)</code></li>
 </ul>
 <p>. . .</p>
-<div id="6155a692" class="cell" data-output-location="fragment" data-execution_count="14">
+<div id="6155a692" class="cell" data-output-location="fragment" data-execution_count="15">
 <div class="sourceCode cell-code" id="cb26"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> pd.read_csv(<span class="st">"employees.csv"</span>)</span>
 <span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(df)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
@@ -1026,7 +1039,7 @@ Note
 <li>Use the <code>df.tail()</code> method to display the last 5 rows</li>
 </ul>
 <p>. . .</p>
-<div id="0872ada2" class="cell" data-output-location="fragment" data-execution_count="15">
+<div id="0872ada2" class="cell" data-output-location="fragment" data-execution_count="16">
 <div class="sourceCode cell-code" id="cb28"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> pd.read_csv(<span class="st">"employees.csv"</span>)</span>
 <span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(df.tail())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
@@ -1045,7 +1058,7 @@ Note
 <li>Use <code>df.info()</code> to display information about a DataFrame</li>
 </ul>
 <p>. . .</p>
-<div id="e146bf26" class="cell" data-output-location="fragment" data-execution_count="16">
+<div id="e146bf26" class="cell" data-output-location="fragment" data-execution_count="17">
 <div class="sourceCode cell-code" id="cb30"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> pd.read_csv(<span class="st">"employees.csv"</span>)</span>
 <span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(df.info())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
@@ -1072,7 +1085,7 @@ None</code></pre>
 <li>Use the <code>df.index</code> <strong>attribute</strong> to access the <strong>index</strong></li>
 </ul>
 <p>. . .</p>
-<div id="4ec2e3c3" class="cell" data-output-location="fragment" data-execution_count="17">
+<div id="4ec2e3c3" class="cell" data-output-location="fragment" data-execution_count="18">
 <div class="sourceCode cell-code" id="cb32"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> pd.read_csv(<span class="st">"employees.csv"</span>)</span>
 <span id="cb32-2"><a href="#cb32-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(df.describe())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
@@ -1095,7 +1108,7 @@ max    35.000000  69000.000000</code></pre>
 <li>Use the <code>df[df['column'] &gt; value]</code> method to filter</li>
 </ul>
 <p>. . .</p>
-<div id="b308a7d6" class="cell" data-output-location="fragment" data-execution_count="18">
+<div id="b308a7d6" class="cell" data-output-location="fragment" data-execution_count="19">
 <div class="sourceCode cell-code" id="cb34"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> pd.read_csv(<span class="st">"employees.csv"</span>)</span>
 <span id="cb34-2"><a href="#cb34-2" aria-hidden="true" tabindex="-1"></a>df_high_salary <span class="op">=</span> df[df[<span class="st">'Salary'</span>] <span class="op">&gt;</span> <span class="dv">65000</span>]</span>
 <span id="cb34-3"><a href="#cb34-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(df_high_salary)</span>
@@ -1115,7 +1128,7 @@ Jake</code></pre>
 <section id="filtering-in-action" class="level2">
 <h2 class="anchored" data-anchor-id="filtering-in-action">Filtering in Action</h2>
 <p><span class="task">Task</span>: Complete the following task:</p>
-<div id="e0072888" class="cell" data-output-location="fragment" data-execution_count="19">
+<div id="e0072888" class="cell" data-output-location="fragment" data-execution_count="20">
 <div class="sourceCode cell-code" id="cb36"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a><span class="co"># </span><span class="al">TODO</span><span class="co">: Load the employees.csv located in the git repository into a DataFrame</span></span>
 <span id="cb36-2"><a href="#cb36-2" aria-hidden="true" tabindex="-1"></a><span class="co"># First, filter the DataFrame for employees with a manager position</span></span>
 <span id="cb36-3"><a href="#cb36-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Then, print the average salary of the remaining employees</span></span>
@@ -1148,7 +1161,7 @@ Note
 <li>Syntax is <code>df.groupby('column').method()</code></li>
 </ul>
 <p>. . .</p>
-<div id="75e1de4a" class="cell" data-output-location="slide" data-execution_count="20">
+<div id="75e1de4a" class="cell" data-output-location="slide" data-execution_count="21">
 <div class="sourceCode cell-code" id="cb37"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> pd.read_csv(<span class="st">"employees.csv"</span>)</span>
 <span id="cb37-2"><a href="#cb37-2" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> df.drop(columns<span class="op">=</span>[<span class="st">"Name"</span>, <span class="st">"Department"</span>])</span>
 <span id="cb37-3"><a href="#cb37-3" aria-hidden="true" tabindex="-1"></a>df.groupby([<span class="st">'Position'</span>]).mean() <span class="co"># Mean per position</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -1213,7 +1226,7 @@ Note
 <li>We can group by multiple columns using a list <code>['column1', 'column2']</code></li>
 </ul>
 <p>. . .</p>
-<div id="07492407" class="cell" data-output-location="slide" data-execution_count="21">
+<div id="07492407" class="cell" data-output-location="slide" data-execution_count="22">
 <div class="sourceCode cell-code" id="cb38"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> pd.read_csv(<span class="st">"employees.csv"</span>)</span>
 <span id="cb38-2"><a href="#cb38-2" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> df.drop(columns<span class="op">=</span>[<span class="st">"Name"</span>])</span>
 <span id="cb38-3"><a href="#cb38-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Max per position and department</span></span>
@@ -1305,7 +1318,7 @@ Note
 <li>We can use the <code>pd.melt()</code> function to transform a DataFrame from wide to long format</li>
 </ul>
 <p>. . .</p>
-<div id="44d77ca5" class="cell" data-output-location="fragment" data-execution_count="22">
+<div id="44d77ca5" class="cell" data-output-location="fragment" data-execution_count="23">
 <div class="sourceCode cell-code" id="cb39"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> pd.read_csv(<span class="st">"employees.csv"</span>).drop(columns<span class="op">=</span>[<span class="st">"Name"</span>])</span>
 <span id="cb39-2"><a href="#cb39-2" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> pd.melt(df, id_vars<span class="op">=</span>[<span class="st">'Position'</span>])</span>
 <span id="cb39-3"><a href="#cb39-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(df.head())<span class="op">;</span> <span class="bu">print</span>(df.tail())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -1328,7 +1341,7 @@ Note
 <section id="pandas-in-action" class="level2">
 <h2 class="anchored" data-anchor-id="pandas-in-action">Pandas in Action</h2>
 <p><span class="task">Task</span>: Complete the following task:</p>
-<div id="e4951436" class="cell" data-output-location="fragment" data-execution_count="23">
+<div id="e4951436" class="cell" data-output-location="fragment" data-execution_count="24">
 <div class="sourceCode cell-code" id="cb41"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a><span class="co"># </span><span class="al">TODO</span><span class="co">: Load the employees.csv again into a DataFrame</span></span>
 <span id="cb41-2"><a href="#cb41-2" aria-hidden="true" tabindex="-1"></a><span class="co"># First, group by the "Position" column and count the employees per position</span></span>
 <span id="cb41-3"><a href="#cb41-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Then, group by the "Department" column and calculate the sum of all other columns per department</span></span>
@@ -1360,7 +1373,7 @@ Note
 <li>Write using the <code>df.to_excel(file_path)</code> method</li>
 </ul>
 <p>. . .</p>
-<div id="8160fb0d" class="cell" data-execution_count="24">
+<div id="8160fb0d" class="cell" data-execution_count="25">
 <div class="sourceCode cell-code" id="cb42"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
 <span id="cb42-2"><a href="#cb42-2" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> pd.read_csv(<span class="st">"employees.csv"</span>)</span>
 <span id="cb42-3"><a href="#cb42-3" aria-hidden="true" tabindex="-1"></a>df.to_excel(<span class="st">"employees.xlsx"</span>, index<span class="op">=</span><span class="va">False</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -1382,7 +1395,7 @@ Note
 </section>
 <section id="advanced-excel-file-handling" class="level2">
 <h2 class="anchored" data-anchor-id="advanced-excel-file-handling">Advanced Excel file handling</h2>
-<div id="37c8a2cf" class="cell" data-output-location="fragment" data-execution_count="25">
+<div id="37c8a2cf" class="cell" data-output-location="fragment" data-execution_count="26">
 <div class="sourceCode cell-code" id="cb43"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> pd.read_excel(<span class="st">"employees.xlsx"</span>)</span>
 <span id="cb43-2"><a href="#cb43-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb43-3"><a href="#cb43-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Writes to the Employees sheet and does not include row indices</span></span>
@@ -1852,7 +1865,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     </div>   
     <div class="nav-footer-center">
 <p>Programming with Python, Tobias Vlćek<br>CC BY-NC-SA 4.0</p>
-</div>
+<div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/beyondsimulations/Introduction-to-Python/edit/main/part-07/lecture-scientific.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/beyondsimulations/Introduction-to-Python/blob/main/part-07/lecture-scientific.qmd" class="toc-action"><i class="bi empty"></i>View source</a></li><li><a href="https://github.com/beyondsimulations/Introduction-to-Python/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div>
     <div class="nav-footer-right">
       <ul class="footer-items list-unstyled">
     <li class="nav-item compact">
