@@ -5035,5 +5035,145 @@
       "02 Control Flow",
       "Tutorial"
     ]
+  },
+  {
+    "objectID": "part-08/lecture-plotting-presentation.html#basic-matplotlib-example",
+    "href": "part-08/lecture-plotting-presentation.html#basic-matplotlib-example",
+    "title": "Lecture VIII - Data Visualization",
+    "section": "Basic Matplotlib Example",
+    "text": "Basic Matplotlib Example\n\nimport matplotlib.pyplot as plt\n\nplt.plot([1, 2, 3, 4], [10, 20, 25, 30])\nplt.show()\n\n\n\n\n\n\n\n\n\n# [Matplotlib Module]{.flow} {.title}\n\n# [Seaborn Module]{.flow} {.title}\n\n# [Plotly Module]{.flow} {.title}\n\n# [Dash Module]{.flow} {.title}\n\n# [Bokeh Module]{.flow} {.title}\n\n``` import geopandas as gpd import matplotlib.pyplot as plt from geodatasets import get_path"
+  },
+  {
+    "objectID": "part-08/lecture-plotting-presentation.html#numpy-efficient-numerical-computations",
+    "href": "part-08/lecture-plotting-presentation.html#numpy-efficient-numerical-computations",
+    "title": "Lecture VIII - Data Visualization",
+    "section": "NumPy: Efficient Numerical Computations",
+    "text": "NumPy: Efficient Numerical Computations\n\nFundamental package for scientific computing in Python\nProvides support for large, multi-dimensional arrays and matrices\nOffers a wide range of mathematical functions for array operations\nKey features:\n\nFast array operations\nBroadcasting capabilities\nLinear algebra functions\nRandom number generation"
+  },
+  {
+    "objectID": "part-08/lecture-plotting-presentation.html#pandas-data-manipulation-and-analysis",
+    "href": "part-08/lecture-plotting-presentation.html#pandas-data-manipulation-and-analysis",
+    "title": "Lecture VIII - Data Visualization",
+    "section": "Pandas: Data Manipulation and Analysis",
+    "text": "Pandas: Data Manipulation and Analysis\n\nPowerful library for data manipulation and analysis\nBuilt on top of NumPy, providing additional functionality\nKey features of Pandas include:\n\nData loading from various file formats (CSV, Excel, SQL, etc.)\nData cleaning and preprocessing\nPowerful grouping and aggregation operations\nMerging and joining datasets"
+  },
+  {
+    "objectID": "part-08/lecture-plotting-presentation.html#why-numpy-and-pandas-are-essential",
+    "href": "part-08/lecture-plotting-presentation.html#why-numpy-and-pandas-are-essential",
+    "title": "Lecture VIII - Data Visualization",
+    "section": "Why NumPy and Pandas are Essential",
+    "text": "Why NumPy and Pandas are Essential\n\nBasic tools for scientific computing and data analysis\nEfficient data structures and operations for large data\nIntegration with other scientific Python libraries\nUsed in data science, machine learning, and research\n\n\n\n\n\n\n\n\nTip\n\n\nYou might also need them in future lectures here!"
+  },
+  {
+    "objectID": "part-08/lecture-plotting-presentation.html#numpy-efficient-computations",
+    "href": "part-08/lecture-plotting-presentation.html#numpy-efficient-computations",
+    "title": "Lecture VIII - Data Visualization",
+    "section": "NumPy: Efficient Computations",
+    "text": "NumPy: Efficient Computations\n\nFundamental package for scientific computing in Python\nSupport for large, multi-dimensional arrays and matrices\nWide range of mathematical functions for arrays:\n\nFast array operations\nBroadcasting capabilities\nLinear algebra functions\nRandom number generation"
+  },
+  {
+    "objectID": "part-08/lecture-plotting-presentation.html#pandas-data-analysis",
+    "href": "part-08/lecture-plotting-presentation.html#pandas-data-analysis",
+    "title": "Lecture VIII - Data Visualization",
+    "section": "Pandas: Data Analysis",
+    "text": "Pandas: Data Analysis\n\nPowerful library for data manipulation and analysis\nBuilt on top of NumPy, providing additional functionality\nKey features of Pandas include:\n\nData loading from various file formats\nData cleaning and preprocessing\nPowerful grouping and aggregation operations\nMerging and joining datasets (not covered!)"
+  },
+  {
+    "objectID": "part-08/lecture-plotting-presentation.html#what-is-data-visualization",
+    "href": "part-08/lecture-plotting-presentation.html#what-is-data-visualization",
+    "title": "Lecture VIII - Data Visualization",
+    "section": "What is Data Visualization?",
+    "text": "What is Data Visualization?\n\nProcess of creating visual representations of data\n\n\n\nCode\nimport matplotlib.pyplot as plt\nimport numpy as np\n\n\n# Generate data\nnp.random.seed(42)\nx = np.linspace(0, 10, 50)\ny = 3 + 2*x + np.random.randn(50)\nsizes = np.random.randint(20, 200, 50)\ncolors = np.random.rand(50)\n\n# Create the plot\nplt.figure(figsize=(12, 5))\nscatter = plt.scatter(x, y, c=colors, s=sizes, alpha=0.6, cmap='viridis')\n\n# Add trend line\nz = np.polyfit(x, y, 1)\np = np.poly1d(z)\nplt.plot(x, p(x), \"r--\", alpha=0.8, linewidth=2)\n\n# Customize the plot\nplt.title(\"ScatterPlot with Trend Line\", fontsize=16)\nplt.xlabel(\"X-axis\", fontsize=12)\nplt.ylabel(\"Y-axis\", fontsize=12)\nplt.colorbar(scatter, label=\"Color Scale\")\n\n# Add a text annotation\nplt.annotate(\"Interesting point\", xy=(8, 21), xytext=(6.5, 23),\n             arrowprops=dict(facecolor='black', shrink=0.05))\n\nplt.grid(True, alpha=0.3)\nplt.tight_layout()\nplt.show()"
+  },
+  {
+    "objectID": "part-08/lecture-plotting-presentation.html#section",
+    "href": "part-08/lecture-plotting-presentation.html#section",
+    "title": "Lecture VIII - Data Visualization",
+    "section": "",
+    "text": "Question: What is\ndata visualization?"
+  },
+  {
+    "objectID": "part-08/lecture-plotting-presentation.html#creating-visual-representations-of-data",
+    "href": "part-08/lecture-plotting-presentation.html#creating-visual-representations-of-data",
+    "title": "Lecture VIII - Data Visualization",
+    "section": "Creating visual representations of data",
+    "text": "Creating visual representations of data\n\n\nCode\nimport matplotlib.pyplot as plt\nimport numpy as np\n\n\n# Generate data\nnp.random.seed(42)\nx = np.linspace(0, 10, 50)\ny = 3 + 2*x + np.random.randn(50)\nsizes = np.random.randint(20, 200, 50)\ncolors = np.random.rand(50)\n\n# Create the plot\nplt.figure(figsize=(12, 5))\nscatter = plt.scatter(x, y, c=colors, s=sizes, alpha=0.6, cmap='viridis')\n\n# Add trend line\nz = np.polyfit(x, y, 1)\np = np.poly1d(z)\nplt.plot(x, p(x), \"r--\", alpha=0.8, linewidth=2)\n\n# Customize the plot\nplt.title(\"ScatterPlot with Trend Line\", fontsize=16)\nplt.xlabel(\"X-axis\", fontsize=12)\nplt.ylabel(\"Y-axis\", fontsize=12)\nplt.colorbar(scatter, label=\"Color Scale\")\n\n# Add a text annotation\nplt.annotate(\"Interesting point\", xy=(8, 21), xytext=(6.5, 23),\n             arrowprops=dict(facecolor='black', shrink=0.05))\n\nplt.grid(True, alpha=0.3)\nplt.tight_layout()\nplt.show()"
+  },
+  {
+    "objectID": "part-08/lecture-plotting-presentation.html#visual-representations-of-data",
+    "href": "part-08/lecture-plotting-presentation.html#visual-representations-of-data",
+    "title": "Lecture VIII - Data Visualization",
+    "section": "Visual Representations of Data",
+    "text": "Visual Representations of Data\n\n\nCode\nimport matplotlib.pyplot as plt\nimport numpy as np\n\n\n# Generate data\nnp.random.seed(42)\nx = np.linspace(0, 10, 50)\ny = 3 + 2*x + np.random.randn(50)\nsizes = np.random.randint(20, 200, 50)\ncolors = np.random.rand(50)\n\n# Create the plot\nplt.figure(figsize=(12, 5))\nscatter = plt.scatter(x, y, c=colors, s=sizes, alpha=0.6, cmap='viridis')\n\n# Add trend line\nz = np.polyfit(x, y, 1)\np = np.poly1d(z)\nplt.plot(x, p(x), \"r--\", alpha=0.8, linewidth=2)\n\n# Customize the plot\nplt.title(\"ScatterPlot with Trend Line\", fontsize=16)\nplt.xlabel(\"X-axis\", fontsize=12)\nplt.ylabel(\"Y-axis\", fontsize=12)\nplt.colorbar(scatter, label=\"Color Scale\")\n\n# Add a text annotation\nplt.annotate(\"Interesting point\", xy=(8, 21), xytext=(6.5, 23),\n             arrowprops=dict(facecolor='black', shrink=0.05))\n\nplt.grid(True, alpha=0.3)\nplt.tight_layout()\nplt.show()"
+  },
+  {
+    "objectID": "part-08/lecture-plotting-presentation.html#importance-of-data-visualization",
+    "href": "part-08/lecture-plotting-presentation.html#importance-of-data-visualization",
+    "title": "Lecture VIII - Data Visualization",
+    "section": "Importance of Data Visualization",
+    "text": "Importance of Data Visualization\n\nCommunicates complex information clearly\nHelps in decision-making processes\nReveals hidden patterns and relationships in data\nMakes data more accessible and engaging\n\n\n\n\n\n\n\nTip\n\n\nHelps to convice stakeholders!"
+  },
+  {
+    "objectID": "part-08/lecture-plotting-presentation.html#bar-charts-and-histograms",
+    "href": "part-08/lecture-plotting-presentation.html#bar-charts-and-histograms",
+    "title": "Lecture VIII - Data Visualization",
+    "section": "Bar Charts and Histograms",
+    "text": "Bar Charts and Histograms\n\nBar charts: Compare quantities across categories\nHistograms: Show distribution of a continuous variable\n\n\n\nCode\nimport matplotlib.pyplot as plt\nimport numpy as np\n\n# Bar chart\ncategories = ['A', 'B', 'C', 'D']\nvalues = [4, 7, 2, 8]\n\nplt.figure(figsize=(10, 3))\nplt.subplot(121)\nplt.bar(categories, values)\nplt.title('Bar Chart')\n\n# Histogram\ndata = np.random.randn(1000)\n\nplt.subplot(122)\nplt.hist(data, bins=30)\nplt.title('Histogram')\n\nplt.tight_layout()\nplt.show()"
+  },
+  {
+    "objectID": "part-08/lecture-plotting-presentation.html#line-charts-and-area-charts",
+    "href": "part-08/lecture-plotting-presentation.html#line-charts-and-area-charts",
+    "title": "Lecture VIII - Data Visualization",
+    "section": "Line Charts and Area Charts",
+    "text": "Line Charts and Area Charts\n\nLine charts: Show trends over time or continuous data\nArea charts: Similar to line charts, but with filled areas\n\n\n\nCode\nimport matplotlib.pyplot as plt\nimport numpy as np\n\nx = np.linspace(0, 10, 100)\ny1 = np.sin(x)\ny2 = np.cos(x)\n\nplt.figure(figsize=(10, 3))\nplt.subplot(121)\nplt.plot(x, y1, label='sin(x)')\nplt.plot(x, y2, label='cos(x)')\nplt.title('Line Chart')\nplt.legend()\n\nplt.subplot(122)\nplt.fill_between(x, y1, label='sin(x)')\nplt.fill_between(x, y2, label='cos(x)', alpha=0.5)\nplt.title('Area Chart')\nplt.legend()\n\nplt.tight_layout()\nplt.show()"
+  },
+  {
+    "objectID": "part-08/lecture-plotting-presentation.html#scatter-plots-and-bubble-charts",
+    "href": "part-08/lecture-plotting-presentation.html#scatter-plots-and-bubble-charts",
+    "title": "Lecture VIII - Data Visualization",
+    "section": "Scatter Plots and Bubble Charts",
+    "text": "Scatter Plots and Bubble Charts\n\nScatter plots: Show relationship between two variables\nBubble charts: Adds dimension with varying point sizes\n\n\n\nCode\nimport matplotlib.pyplot as plt\nimport numpy as np\n\nx = np.random.rand(50)\ny = np.random.rand(50)\nsizes = np.random.rand(50) * 500\n\nplt.figure(figsize=(10, 3))\nplt.subplot(121)\nplt.scatter(x, y)\nplt.title('Scatter Plot')\n\nplt.subplot(122)\nplt.scatter(x, y, s=sizes, alpha=0.5)\nplt.title('Bubble Chart')\n\nplt.tight_layout()\nplt.show()"
+  },
+  {
+    "objectID": "part-08/lecture-plotting-presentation.html#pie-charts-and-donut-charts",
+    "href": "part-08/lecture-plotting-presentation.html#pie-charts-and-donut-charts",
+    "title": "Lecture VIII - Data Visualization",
+    "section": "Pie Charts and Donut Charts",
+    "text": "Pie Charts and Donut Charts\n\nPie charts: Show composition of a whole\nDonut charts: Similar to pie charts, but with a hole in the center\n\n\n\nCode\nimport matplotlib.pyplot as plt\n\nlabels = 'A', 'B', 'C', 'D'\nsizes = [15, 30, 45, 10]\n\nplt.figure(figsize=(10, 3))\n\n# Pie chart (left subplot)\nplt.subplot(121)\nplt.pie(sizes, labels=labels, autopct='%1.1f%%')\nplt.title('Pie Chart')\n\n# Donut chart (right subplot)\nplt.subplot(122)\nplt.pie(sizes, labels=labels, autopct='%1.1f%%', \n        pctdistance=0.7, labeldistance=1.1,\n        wedgeprops=dict(width=0.5, edgecolor='white'))\nplt.title('Donut Chart')\n\nplt.tight_layout()\nplt.show()"
+  },
+  {
+    "objectID": "part-08/lecture-plotting-presentation.html#heatmaps-and-choropleth-maps",
+    "href": "part-08/lecture-plotting-presentation.html#heatmaps-and-choropleth-maps",
+    "title": "Lecture VIII - Data Visualization",
+    "section": "Heatmaps and Choropleth Maps",
+    "text": "Heatmaps and Choropleth Maps\n\nHeatmaps: Show intensity of data using color scales\nChoropleth maps: Geographical colored areas"
+  },
+  {
+    "objectID": "part-08/lecture-plotting-presentation.html#box-plots-and-violin-plots",
+    "href": "part-08/lecture-plotting-presentation.html#box-plots-and-violin-plots",
+    "title": "Lecture VIII - Data Visualization",
+    "section": "Box Plots and Violin Plots",
+    "text": "Box Plots and Violin Plots\n\nBox plots: Show distribution of data through quartiles\nViolin plots: Combine box plot with kernel density\n\n\n\nCode\nimport matplotlib.pyplot as plt\nimport seaborn as sns\nimport numpy as np\n\ndata = [np.random.normal(0, std, 100) for std in range(1, 5)]\n\nplt.figure(figsize=(10, 3))\nplt.subplot(121)\nplt.boxplot(data)\nplt.title('Box Plot')\n\nplt.subplot(122)\nsns.violinplot(data=data)\nplt.title('Violin Plot')\n\nplt.tight_layout()\nplt.show()"
+  },
+  {
+    "objectID": "part-08/lecture-plotting-presentation.html#network-graphs-and-tree-diagrams",
+    "href": "part-08/lecture-plotting-presentation.html#network-graphs-and-tree-diagrams",
+    "title": "Lecture VIII - Data Visualization",
+    "section": "Network Graphs and Tree Diagrams",
+    "text": "Network Graphs and Tree Diagrams\n\nNetwork graphs: Show relationships between entities\nTree diagrams: Display hierarchical structures\n\n\n\nCode\nimport matplotlib.pyplot as plt\nimport networkx as nx\n\n# Network graph\nG = nx.random_geometric_graph(20, 0.3)\n\nplt.figure(figsize=(10, 3))\nplt.subplot(121)\nnx.draw(G, with_labels=True)\nplt.title('Network Graph')\n\n# Tree diagram\nT = nx.random_tree(10)\n\nplt.subplot(122)\npos = nx.spring_layout(T)\nnx.draw(T, pos, with_labels=True)\nplt.title('Tree Diagram')\n\nplt.tight_layout()\nplt.show()"
+  },
+  {
+    "objectID": "part-08/lecture-plotting-presentation.html#network-graphs-and-trees",
+    "href": "part-08/lecture-plotting-presentation.html#network-graphs-and-trees",
+    "title": "Lecture VIII - Data Visualization",
+    "section": "Network Graphs and Trees",
+    "text": "Network Graphs and Trees\n\nNetwork graphs: Show relationships between entities\nTree diagrams: Display hierarchical structures\n\n\n\nCode\nimport matplotlib.pyplot as plt\nimport networkx as nx\n\n# Network graph\nG = nx.random_geometric_graph(20, 0.3)\n\nplt.figure(figsize=(10, 3))\nplt.subplot(121)\nnx.draw(G, with_labels=True)\nplt.title('Network Graph')\n\n# Tree diagram\nT = nx.random_tree(10)\n\nplt.subplot(122)\npos = nx.spring_layout(T)\nnx.draw(T, pos, with_labels=True)\nplt.title('Tree Diagram')\n\nplt.tight_layout()\nplt.show()"
+  },
+  {
+    "objectID": "part-08/lecture-plotting-presentation.html#sankey-diagrams",
+    "href": "part-08/lecture-plotting-presentation.html#sankey-diagrams",
+    "title": "Lecture VIII - Data Visualization",
+    "section": "Sankey Diagrams",
+    "text": "Sankey Diagrams\n\nShow flows between nodes\nUseful for visualizing complex systems\n\n\n\nCode\nimport plotly.graph_objects as go\n\nfig = go.Figure(data=[go.Sankey(\n    node = dict(\n      pad = 15,\n      thickness = 20,\n      line = dict(color = \"black\", width = 0.5),\n      label = [\"A\", \"B\", \"C\", \"D\", \"E\", \"F\"],\n      color = \"blue\"\n    ),\n    link = dict(\n      source = [0, 1, 0, 2, 3, 3],\n      target = [2, 3, 3, 4, 4, 5],\n      value = [8, 4, 2, 8, 4, 2]\n  ))])\n\nfig.update_layout(title_text=\"Sankey Diagram Example\", font_size=10)\nfig.show()"
   }
 ]

@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en"><head>
-<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous"></script><script src="../site_libs/clipboard/clipboard.min.js"></script>
 <script src="../site_libs/quarto-html/tabby.min.js"></script>
 <script src="../site_libs/quarto-html/popper.min.js"></script>
 <script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
@@ -8,7 +8,7 @@
 <link href="../site_libs/quarto-html/light-border.css" rel="stylesheet">
 <link href="../site_libs/quarto-html/quarto-html.min.css" rel="stylesheet" data-mode="light">
 <link href="../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
-  <meta name="generator" content="quarto-1.5.55">
+  <meta name="generator" content="quarto-1.5.57">
 
   <meta name="author" content="Dr.&nbsp;Tobias Vlćek">
   <title>Programming with Python – Lecture VIII - Data Visualization</title>
@@ -29,6 +29,71 @@
       margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
       vertical-align: middle;
     }
+    /* CSS for syntax highlighting */
+    pre > code.sourceCode { white-space: pre; position: relative; }
+    pre > code.sourceCode > span { line-height: 1.25; }
+    pre > code.sourceCode > span:empty { height: 1.2em; }
+    .sourceCode { overflow: visible; }
+    code.sourceCode > span { color: inherit; text-decoration: inherit; }
+    div.sourceCode { margin: 1em 0; }
+    pre.sourceCode { margin: 0; }
+    @media screen {
+    div.sourceCode { overflow: auto; }
+    }
+    @media print {
+    pre > code.sourceCode { white-space: pre-wrap; }
+    pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+    }
+    pre.numberSource code
+      { counter-reset: source-line 0; }
+    pre.numberSource code > span
+      { position: relative; left: -4em; counter-increment: source-line; }
+    pre.numberSource code > span > a:first-child::before
+      { content: counter(source-line);
+        position: relative; left: -1em; text-align: right; vertical-align: baseline;
+        border: none; display: inline-block;
+        -webkit-touch-callout: none; -webkit-user-select: none;
+        -khtml-user-select: none; -moz-user-select: none;
+        -ms-user-select: none; user-select: none;
+        padding: 0 4px; width: 4em;
+        color: #aaaaaa;
+      }
+    pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+    div.sourceCode
+      { color: #003b4f; background-color: #f1f3f5; }
+    @media screen {
+    pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+    }
+    code span { color: #003b4f; } /* Normal */
+    code span.al { color: #ad0000; } /* Alert */
+    code span.an { color: #5e5e5e; } /* Annotation */
+    code span.at { color: #657422; } /* Attribute */
+    code span.bn { color: #ad0000; } /* BaseN */
+    code span.bu { } /* BuiltIn */
+    code span.cf { color: #003b4f; font-weight: bold; } /* ControlFlow */
+    code span.ch { color: #20794d; } /* Char */
+    code span.cn { color: #8f5902; } /* Constant */
+    code span.co { color: #5e5e5e; } /* Comment */
+    code span.cv { color: #5e5e5e; font-style: italic; } /* CommentVar */
+    code span.do { color: #5e5e5e; font-style: italic; } /* Documentation */
+    code span.dt { color: #ad0000; } /* DataType */
+    code span.dv { color: #ad0000; } /* DecVal */
+    code span.er { color: #ad0000; } /* Error */
+    code span.ex { } /* Extension */
+    code span.fl { color: #ad0000; } /* Float */
+    code span.fu { color: #4758ab; } /* Function */
+    code span.im { color: #00769e; } /* Import */
+    code span.in { color: #5e5e5e; } /* Information */
+    code span.kw { color: #003b4f; font-weight: bold; } /* Keyword */
+    code span.op { color: #5e5e5e; } /* Operator */
+    code span.ot { color: #003b4f; } /* Other */
+    code span.pp { color: #ad0000; } /* Preprocessor */
+    code span.sc { color: #5e5e5e; } /* SpecialChar */
+    code span.ss { color: #20794d; } /* SpecialString */
+    code span.st { color: #20794d; } /* String */
+    code span.va { color: #111111; } /* Variable */
+    code span.vs { color: #20794d; } /* VerbatimString */
+    code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   </style>
   <link rel="stylesheet" href="../site_libs/revealjs/dist/theme/quarto.css">
   <link href="../site_libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
@@ -320,6 +385,25 @@
       margin-right: 0; 
     }
   </style>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.6/require.min.js" integrity="sha512-c3Nl8+7g4LMSTdrm621y7kf9v3SDPnhxLNhcjFJbKECVnmZHTdo+IRO05sNLTH/D3vA6u1X32ehoLC7WFVdheg==" crossorigin="anonymous"></script>
+  
+  <script type="application/javascript">define('jquery', [],function() {return window.jQuery;})</script>
+  <script type="text/javascript">
+  window.PlotlyConfig = {MathJaxConfig: 'local'};
+  if (window.MathJax && window.MathJax.Hub && window.MathJax.Hub.Config) {window.MathJax.Hub.Config({SVG: {font: "STIX-Web"}});}
+  if (typeof require !== 'undefined') {
+  require.undef("plotly");
+  requirejs.config({
+      paths: {
+          'plotly': ['https://cdn.plot.ly/plotly-2.34.0.min']
+      }
+  });
+  require(['plotly'], function(Plotly) {
+      window._Plotly = Plotly;
+  });
+  }
+  </script>
+
 </head>
 <body class="quarto-light">
   <div class="reveal">
@@ -341,20 +425,448 @@ Dr.&nbsp;Tobias Vlćek
 </div>
 
 </section>
+<section>
 <section id="quick-recap-of-the-last-lecture" class="title-slide slide level1 title center">
 <h1><span class="flow">Quick Recap of the last Lecture</span></h1>
 
 </section>
-
-<section id="data-visualization" class="title-slide slide level1 title center">
-<h1><span class="flow">Data Visualization</span></h1>
+<section id="numpy-efficient-computations" class="slide level2">
+<h2>NumPy: Efficient Computations</h2>
 <ul>
-<li>Data visualization is the process of creating visual representations of data</li>
-<li>It allows us to understand the data in a more intuitive way</li>
-<li>It helps us to identify patterns, trends, and outliers in the data</li>
+<li>Fundamental package for <span class="highlight">scientific computing</span> in Python</li>
+<li>Support for large, multi-dimensional arrays and matrices</li>
+<li><span class="highlight">Wide range</span> of mathematical functions for arrays:
+<ul>
+<li>Fast array operations</li>
+<li>Broadcasting capabilities</li>
+<li>Linear algebra functions</li>
+<li>Random number generation</li>
+</ul></li>
 </ul>
 </section>
+<section id="pandas-data-analysis" class="slide level2">
+<h2>Pandas: Data Analysis</h2>
+<ul>
+<li>Powerful library for <span class="highlight">data manipulation and analysis</span></li>
+<li>Built on top of NumPy, providing additional functionality</li>
+<li>Key features of Pandas include:
+<ul>
+<li>Data loading from various file formats</li>
+<li>Data cleaning and preprocessing</li>
+<li>Powerful grouping and aggregation operations</li>
+<li>Merging and joining datasets (not covered!)</li>
+</ul></li>
+</ul>
+</section>
+<section id="why-numpy-and-pandas-are-essential" class="slide level2">
+<h2>Why NumPy and Pandas are Essential</h2>
+<ul>
+<li>Basic tools for <span class="highlight">scientific computing</span> and <span class="highlight">data analysis</span></li>
+<li><span class="highlight">Efficient data structures</span> and operations for large data</li>
+<li>Integration with other scientific Python libraries</li>
+<li>Used in data science, machine learning, and research</li>
+</ul>
+<div class="fragment">
+<div class="callout callout-tip callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Tip</strong></p>
+</div>
+<div class="callout-content">
+<p>You might also need them in future lectures here!</p>
+</div>
+</div>
+</div>
+</div>
+</section></section>
+<section>
+<section id="data-visualization" class="title-slide slide level1 title center">
+<h1><span class="flow">Data Visualization</span></h1>
 
+</section>
+<section id="section" class="slide level2">
+<h2></h2>
+<div class="r-fit-text">
+<p><span class="question">Question:</span> What is</p>
+<p>data visualization?</p>
+</div>
+</section>
+<section id="visual-representations-of-data" class="slide level2">
+<h2>Visual Representations of Data</h2>
+<div id="9800bd4a" class="cell" data-execution_count="1">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb1-2"><a></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb1-3"><a></a></span>
+<span id="cb1-4"><a></a></span>
+<span id="cb1-5"><a></a><span class="co"># Generate data</span></span>
+<span id="cb1-6"><a></a>np.random.seed(<span class="dv">42</span>)</span>
+<span id="cb1-7"><a></a>x <span class="op">=</span> np.linspace(<span class="dv">0</span>, <span class="dv">10</span>, <span class="dv">50</span>)</span>
+<span id="cb1-8"><a></a>y <span class="op">=</span> <span class="dv">3</span> <span class="op">+</span> <span class="dv">2</span><span class="op">*</span>x <span class="op">+</span> np.random.randn(<span class="dv">50</span>)</span>
+<span id="cb1-9"><a></a>sizes <span class="op">=</span> np.random.randint(<span class="dv">20</span>, <span class="dv">200</span>, <span class="dv">50</span>)</span>
+<span id="cb1-10"><a></a>colors <span class="op">=</span> np.random.rand(<span class="dv">50</span>)</span>
+<span id="cb1-11"><a></a></span>
+<span id="cb1-12"><a></a><span class="co"># Create the plot</span></span>
+<span id="cb1-13"><a></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">12</span>, <span class="dv">5</span>))</span>
+<span id="cb1-14"><a></a>scatter <span class="op">=</span> plt.scatter(x, y, c<span class="op">=</span>colors, s<span class="op">=</span>sizes, alpha<span class="op">=</span><span class="fl">0.6</span>, cmap<span class="op">=</span><span class="st">'viridis'</span>)</span>
+<span id="cb1-15"><a></a></span>
+<span id="cb1-16"><a></a><span class="co"># Add trend line</span></span>
+<span id="cb1-17"><a></a>z <span class="op">=</span> np.polyfit(x, y, <span class="dv">1</span>)</span>
+<span id="cb1-18"><a></a>p <span class="op">=</span> np.poly1d(z)</span>
+<span id="cb1-19"><a></a>plt.plot(x, p(x), <span class="st">"r--"</span>, alpha<span class="op">=</span><span class="fl">0.8</span>, linewidth<span class="op">=</span><span class="dv">2</span>)</span>
+<span id="cb1-20"><a></a></span>
+<span id="cb1-21"><a></a><span class="co"># Customize the plot</span></span>
+<span id="cb1-22"><a></a>plt.title(<span class="st">"ScatterPlot with Trend Line"</span>, fontsize<span class="op">=</span><span class="dv">16</span>)</span>
+<span id="cb1-23"><a></a>plt.xlabel(<span class="st">"X-axis"</span>, fontsize<span class="op">=</span><span class="dv">12</span>)</span>
+<span id="cb1-24"><a></a>plt.ylabel(<span class="st">"Y-axis"</span>, fontsize<span class="op">=</span><span class="dv">12</span>)</span>
+<span id="cb1-25"><a></a>plt.colorbar(scatter, label<span class="op">=</span><span class="st">"Color Scale"</span>)</span>
+<span id="cb1-26"><a></a></span>
+<span id="cb1-27"><a></a><span class="co"># Add a text annotation</span></span>
+<span id="cb1-28"><a></a>plt.annotate(<span class="st">"Interesting point"</span>, xy<span class="op">=</span>(<span class="dv">8</span>, <span class="dv">21</span>), xytext<span class="op">=</span>(<span class="fl">6.5</span>, <span class="dv">23</span>),</span>
+<span id="cb1-29"><a></a>             arrowprops<span class="op">=</span><span class="bu">dict</span>(facecolor<span class="op">=</span><span class="st">'black'</span>, shrink<span class="op">=</span><span class="fl">0.05</span>))</span>
+<span id="cb1-30"><a></a></span>
+<span id="cb1-31"><a></a>plt.grid(<span class="va">True</span>, alpha<span class="op">=</span><span class="fl">0.3</span>)</span>
+<span id="cb1-32"><a></a>plt.tight_layout()</span>
+<span id="cb1-33"><a></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-display">
+<div>
+<figure>
+<p><img data-src="lecture-plotting_files/figure-revealjs/cell-2-output-1.png" width="1051" height="471"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="importance-of-data-visualization" class="slide level2">
+<h2>Importance of Data Visualization</h2>
+<ul>
+<li><span class="highlight">Communicates</span> complex information clearly</li>
+<li>Helps in <span class="highlight">decision-making</span> processes</li>
+<li>Reveals hidden patterns and relationships in data</li>
+<li>Makes data more <span class="highlight">accessible</span> and engaging</li>
+</ul>
+<div class="callout callout-tip callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Tip</strong></p>
+</div>
+<div class="callout-content">
+<p>Helps to <span class="highlight">convice</span> stakeholders!</p>
+</div>
+</div>
+</div>
+</section></section>
+<section>
+<section id="common-types-of-data-visualizations" class="title-slide slide level1 title center">
+<h1><span class="flow">Common Types of Data Visualizations</span></h1>
+
+</section>
+<section id="bar-charts-and-histograms" class="slide level2">
+<h2>Bar Charts and Histograms</h2>
+<ul>
+<li>Bar charts: Compare quantities across categories</li>
+<li>Histograms: Show distribution of a continuous variable</li>
+</ul>
+<div id="e3b8afbc" class="cell" data-execution_count="2">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb2-2"><a></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb2-3"><a></a></span>
+<span id="cb2-4"><a></a><span class="co"># Bar chart</span></span>
+<span id="cb2-5"><a></a>categories <span class="op">=</span> [<span class="st">'A'</span>, <span class="st">'B'</span>, <span class="st">'C'</span>, <span class="st">'D'</span>]</span>
+<span id="cb2-6"><a></a>values <span class="op">=</span> [<span class="dv">4</span>, <span class="dv">7</span>, <span class="dv">2</span>, <span class="dv">8</span>]</span>
+<span id="cb2-7"><a></a></span>
+<span id="cb2-8"><a></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">10</span>, <span class="dv">3</span>))</span>
+<span id="cb2-9"><a></a>plt.subplot(<span class="dv">121</span>)</span>
+<span id="cb2-10"><a></a>plt.bar(categories, values)</span>
+<span id="cb2-11"><a></a>plt.title(<span class="st">'Bar Chart'</span>)</span>
+<span id="cb2-12"><a></a></span>
+<span id="cb2-13"><a></a><span class="co"># Histogram</span></span>
+<span id="cb2-14"><a></a>data <span class="op">=</span> np.random.randn(<span class="dv">1000</span>)</span>
+<span id="cb2-15"><a></a></span>
+<span id="cb2-16"><a></a>plt.subplot(<span class="dv">122</span>)</span>
+<span id="cb2-17"><a></a>plt.hist(data, bins<span class="op">=</span><span class="dv">30</span>)</span>
+<span id="cb2-18"><a></a>plt.title(<span class="st">'Histogram'</span>)</span>
+<span id="cb2-19"><a></a></span>
+<span id="cb2-20"><a></a>plt.tight_layout()</span>
+<span id="cb2-21"><a></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-display">
+<div>
+<figure>
+<p><img data-src="lecture-plotting_files/figure-revealjs/cell-3-output-1.png" width="950" height="278"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="line-charts-and-area-charts" class="slide level2">
+<h2>Line Charts and Area Charts</h2>
+<ul>
+<li>Line charts: Show trends over time or continuous data</li>
+<li>Area charts: Similar to line charts, but with filled areas</li>
+</ul>
+<div id="ce55059d" class="cell" data-execution_count="3">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb3-2"><a></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb3-3"><a></a></span>
+<span id="cb3-4"><a></a>x <span class="op">=</span> np.linspace(<span class="dv">0</span>, <span class="dv">10</span>, <span class="dv">100</span>)</span>
+<span id="cb3-5"><a></a>y1 <span class="op">=</span> np.sin(x)</span>
+<span id="cb3-6"><a></a>y2 <span class="op">=</span> np.cos(x)</span>
+<span id="cb3-7"><a></a></span>
+<span id="cb3-8"><a></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">10</span>, <span class="dv">3</span>))</span>
+<span id="cb3-9"><a></a>plt.subplot(<span class="dv">121</span>)</span>
+<span id="cb3-10"><a></a>plt.plot(x, y1, label<span class="op">=</span><span class="st">'sin(x)'</span>)</span>
+<span id="cb3-11"><a></a>plt.plot(x, y2, label<span class="op">=</span><span class="st">'cos(x)'</span>)</span>
+<span id="cb3-12"><a></a>plt.title(<span class="st">'Line Chart'</span>)</span>
+<span id="cb3-13"><a></a>plt.legend()</span>
+<span id="cb3-14"><a></a></span>
+<span id="cb3-15"><a></a>plt.subplot(<span class="dv">122</span>)</span>
+<span id="cb3-16"><a></a>plt.fill_between(x, y1, label<span class="op">=</span><span class="st">'sin(x)'</span>)</span>
+<span id="cb3-17"><a></a>plt.fill_between(x, y2, label<span class="op">=</span><span class="st">'cos(x)'</span>, alpha<span class="op">=</span><span class="fl">0.5</span>)</span>
+<span id="cb3-18"><a></a>plt.title(<span class="st">'Area Chart'</span>)</span>
+<span id="cb3-19"><a></a>plt.legend()</span>
+<span id="cb3-20"><a></a></span>
+<span id="cb3-21"><a></a>plt.tight_layout()</span>
+<span id="cb3-22"><a></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-display">
+<div>
+<figure>
+<p><img data-src="lecture-plotting_files/figure-revealjs/cell-4-output-1.png" width="950" height="278"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="scatter-plots-and-bubble-charts" class="slide level2">
+<h2>Scatter Plots and Bubble Charts</h2>
+<ul>
+<li>Scatter plots: Show relationship between two variables</li>
+<li>Bubble charts: Adds dimension with varying point sizes</li>
+</ul>
+<div id="d9445434" class="cell" data-execution_count="4">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb4-2"><a></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb4-3"><a></a></span>
+<span id="cb4-4"><a></a>x <span class="op">=</span> np.random.rand(<span class="dv">50</span>)</span>
+<span id="cb4-5"><a></a>y <span class="op">=</span> np.random.rand(<span class="dv">50</span>)</span>
+<span id="cb4-6"><a></a>sizes <span class="op">=</span> np.random.rand(<span class="dv">50</span>) <span class="op">*</span> <span class="dv">500</span></span>
+<span id="cb4-7"><a></a></span>
+<span id="cb4-8"><a></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">10</span>, <span class="dv">3</span>))</span>
+<span id="cb4-9"><a></a>plt.subplot(<span class="dv">121</span>)</span>
+<span id="cb4-10"><a></a>plt.scatter(x, y)</span>
+<span id="cb4-11"><a></a>plt.title(<span class="st">'Scatter Plot'</span>)</span>
+<span id="cb4-12"><a></a></span>
+<span id="cb4-13"><a></a>plt.subplot(<span class="dv">122</span>)</span>
+<span id="cb4-14"><a></a>plt.scatter(x, y, s<span class="op">=</span>sizes, alpha<span class="op">=</span><span class="fl">0.5</span>)</span>
+<span id="cb4-15"><a></a>plt.title(<span class="st">'Bubble Chart'</span>)</span>
+<span id="cb4-16"><a></a></span>
+<span id="cb4-17"><a></a>plt.tight_layout()</span>
+<span id="cb4-18"><a></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-display">
+<div>
+<figure>
+<p><img data-src="lecture-plotting_files/figure-revealjs/cell-5-output-1.png" width="950" height="278"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="pie-charts-and-donut-charts" class="slide level2">
+<h2>Pie Charts and Donut Charts</h2>
+<ul>
+<li>Pie charts: Show composition of a whole</li>
+<li>Donut charts: Similar to pie charts, but with a hole in the center</li>
+</ul>
+<div id="7d4a797e" class="cell" data-execution_count="5">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb5-2"><a></a></span>
+<span id="cb5-3"><a></a>labels <span class="op">=</span> <span class="st">'A'</span>, <span class="st">'B'</span>, <span class="st">'C'</span>, <span class="st">'D'</span></span>
+<span id="cb5-4"><a></a>sizes <span class="op">=</span> [<span class="dv">15</span>, <span class="dv">30</span>, <span class="dv">45</span>, <span class="dv">10</span>]</span>
+<span id="cb5-5"><a></a></span>
+<span id="cb5-6"><a></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">10</span>, <span class="dv">3</span>))</span>
+<span id="cb5-7"><a></a></span>
+<span id="cb5-8"><a></a><span class="co"># Pie chart (left subplot)</span></span>
+<span id="cb5-9"><a></a>plt.subplot(<span class="dv">121</span>)</span>
+<span id="cb5-10"><a></a>plt.pie(sizes, labels<span class="op">=</span>labels, autopct<span class="op">=</span><span class="st">'</span><span class="sc">%1.1f%%</span><span class="st">'</span>)</span>
+<span id="cb5-11"><a></a>plt.title(<span class="st">'Pie Chart'</span>)</span>
+<span id="cb5-12"><a></a></span>
+<span id="cb5-13"><a></a><span class="co"># Donut chart (right subplot)</span></span>
+<span id="cb5-14"><a></a>plt.subplot(<span class="dv">122</span>)</span>
+<span id="cb5-15"><a></a>plt.pie(sizes, labels<span class="op">=</span>labels, autopct<span class="op">=</span><span class="st">'</span><span class="sc">%1.1f%%</span><span class="st">'</span>, </span>
+<span id="cb5-16"><a></a>        pctdistance<span class="op">=</span><span class="fl">0.7</span>, labeldistance<span class="op">=</span><span class="fl">1.1</span>,</span>
+<span id="cb5-17"><a></a>        wedgeprops<span class="op">=</span><span class="bu">dict</span>(width<span class="op">=</span><span class="fl">0.5</span>, edgecolor<span class="op">=</span><span class="st">'white'</span>))</span>
+<span id="cb5-18"><a></a>plt.title(<span class="st">'Donut Chart'</span>)</span>
+<span id="cb5-19"><a></a></span>
+<span id="cb5-20"><a></a>plt.tight_layout()</span>
+<span id="cb5-21"><a></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-display">
+<div>
+<figure>
+<p><img data-src="lecture-plotting_files/figure-revealjs/cell-6-output-1.png" width="673" height="278"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="heatmaps-and-choropleth-maps" class="slide level2">
+<h2>Heatmaps and Choropleth Maps</h2>
+<ul>
+<li>Heatmaps: Show intensity of data using color scales</li>
+<li>Choropleth maps: Geographical colored areas</li>
+</ul>
+</section>
+<section id="box-plots-and-violin-plots" class="slide level2">
+<h2>Box Plots and Violin Plots</h2>
+<ul>
+<li>Box plots: Show distribution of data through quartiles</li>
+<li>Violin plots: Combine box plot with kernel density</li>
+</ul>
+<div id="80e5d3af" class="cell" data-execution_count="6">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb6-2"><a></a><span class="im">import</span> seaborn <span class="im">as</span> sns</span>
+<span id="cb6-3"><a></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb6-4"><a></a></span>
+<span id="cb6-5"><a></a>data <span class="op">=</span> [np.random.normal(<span class="dv">0</span>, std, <span class="dv">100</span>) <span class="cf">for</span> std <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">1</span>, <span class="dv">5</span>)]</span>
+<span id="cb6-6"><a></a></span>
+<span id="cb6-7"><a></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">10</span>, <span class="dv">3</span>))</span>
+<span id="cb6-8"><a></a>plt.subplot(<span class="dv">121</span>)</span>
+<span id="cb6-9"><a></a>plt.boxplot(data)</span>
+<span id="cb6-10"><a></a>plt.title(<span class="st">'Box Plot'</span>)</span>
+<span id="cb6-11"><a></a></span>
+<span id="cb6-12"><a></a>plt.subplot(<span class="dv">122</span>)</span>
+<span id="cb6-13"><a></a>sns.violinplot(data<span class="op">=</span>data)</span>
+<span id="cb6-14"><a></a>plt.title(<span class="st">'Violin Plot'</span>)</span>
+<span id="cb6-15"><a></a></span>
+<span id="cb6-16"><a></a>plt.tight_layout()</span>
+<span id="cb6-17"><a></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-display">
+<div>
+<figure>
+<p><img data-src="lecture-plotting_files/figure-revealjs/cell-7-output-1.png" width="950" height="278"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="network-graphs-and-trees" class="slide level2">
+<h2>Network Graphs and Trees</h2>
+<ul>
+<li>Network graphs: Show relationships between entities</li>
+<li>Tree diagrams: Display hierarchical structures</li>
+</ul>
+<div id="7b5dd6d4" class="cell" data-execution_count="7">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb7-2"><a></a><span class="im">import</span> networkx <span class="im">as</span> nx</span>
+<span id="cb7-3"><a></a></span>
+<span id="cb7-4"><a></a><span class="co"># Network graph</span></span>
+<span id="cb7-5"><a></a>G <span class="op">=</span> nx.random_geometric_graph(<span class="dv">20</span>, <span class="fl">0.3</span>)</span>
+<span id="cb7-6"><a></a></span>
+<span id="cb7-7"><a></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">10</span>, <span class="dv">3</span>))</span>
+<span id="cb7-8"><a></a>plt.subplot(<span class="dv">121</span>)</span>
+<span id="cb7-9"><a></a>nx.draw(G, with_labels<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb7-10"><a></a>plt.title(<span class="st">'Network Graph'</span>)</span>
+<span id="cb7-11"><a></a></span>
+<span id="cb7-12"><a></a><span class="co"># Tree diagram</span></span>
+<span id="cb7-13"><a></a>T <span class="op">=</span> nx.random_tree(<span class="dv">10</span>)</span>
+<span id="cb7-14"><a></a></span>
+<span id="cb7-15"><a></a>plt.subplot(<span class="dv">122</span>)</span>
+<span id="cb7-16"><a></a>pos <span class="op">=</span> nx.spring_layout(T)</span>
+<span id="cb7-17"><a></a>nx.draw(T, pos, with_labels<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb7-18"><a></a>plt.title(<span class="st">'Tree Diagram'</span>)</span>
+<span id="cb7-19"><a></a></span>
+<span id="cb7-20"><a></a>plt.tight_layout()</span>
+<span id="cb7-21"><a></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-display">
+<div>
+<figure>
+<p><img data-src="lecture-plotting_files/figure-revealjs/cell-8-output-1.png" width="950" height="278"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="sankey-diagrams" class="slide level2">
+<h2>Sankey Diagrams</h2>
+<ul>
+<li>Show flows between nodes</li>
+<li>Useful for visualizing complex systems</li>
+</ul>
+<div id="5b6c00fa" class="cell" data-execution_count="8">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a></a><span class="im">import</span> plotly.graph_objects <span class="im">as</span> go</span>
+<span id="cb8-2"><a></a></span>
+<span id="cb8-3"><a></a>fig <span class="op">=</span> go.Figure(data<span class="op">=</span>[go.Sankey(</span>
+<span id="cb8-4"><a></a>    node <span class="op">=</span> <span class="bu">dict</span>(</span>
+<span id="cb8-5"><a></a>      pad <span class="op">=</span> <span class="dv">15</span>,</span>
+<span id="cb8-6"><a></a>      thickness <span class="op">=</span> <span class="dv">20</span>,</span>
+<span id="cb8-7"><a></a>      line <span class="op">=</span> <span class="bu">dict</span>(color <span class="op">=</span> <span class="st">"black"</span>, width <span class="op">=</span> <span class="fl">0.5</span>),</span>
+<span id="cb8-8"><a></a>      label <span class="op">=</span> [<span class="st">"A"</span>, <span class="st">"B"</span>, <span class="st">"C"</span>, <span class="st">"D"</span>, <span class="st">"E"</span>, <span class="st">"F"</span>],</span>
+<span id="cb8-9"><a></a>      color <span class="op">=</span> <span class="st">"blue"</span></span>
+<span id="cb8-10"><a></a>    ),</span>
+<span id="cb8-11"><a></a>    link <span class="op">=</span> <span class="bu">dict</span>(</span>
+<span id="cb8-12"><a></a>      source <span class="op">=</span> [<span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">3</span>],</span>
+<span id="cb8-13"><a></a>      target <span class="op">=</span> [<span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">4</span>, <span class="dv">5</span>],</span>
+<span id="cb8-14"><a></a>      value <span class="op">=</span> [<span class="dv">8</span>, <span class="dv">4</span>, <span class="dv">2</span>, <span class="dv">8</span>, <span class="dv">4</span>, <span class="dv">2</span>]</span>
+<span id="cb8-15"><a></a>  ))])</span>
+<span id="cb8-16"><a></a></span>
+<span id="cb8-17"><a></a>fig.update_layout(title_text<span class="op">=</span><span class="st">"Sankey Diagram Example"</span>, font_size<span class="op">=</span><span class="dv">10</span>)</span>
+<span id="cb8-18"><a></a>fig.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-display">
+<div>                            <div id="675cb1d2-2345-4869-b41d-39ba0d7937e2" class="plotly-graph-div" style="height:525px; width:100%;"></div>            <script type="text/javascript">                require(["plotly"], function(Plotly) {                    window.PLOTLYENV=window.PLOTLYENV || {};                                    if (document.getElementById("675cb1d2-2345-4869-b41d-39ba0d7937e2")) {                    Plotly.newPlot(                        "675cb1d2-2345-4869-b41d-39ba0d7937e2",                        [{"link":{"source":[0,1,0,2,3,3],"target":[2,3,3,4,4,5],"value":[8,4,2,8,4,2]},"node":{"color":"blue","label":["A","B","C","D","E","F"],"line":{"color":"black","width":0.5},"pad":15,"thickness":20},"type":"sankey"}],                        {"template":{"data":{"histogram2dcontour":[{"type":"histogram2dcontour","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"choropleth":[{"type":"choropleth","colorbar":{"outlinewidth":0,"ticks":""}}],"histogram2d":[{"type":"histogram2d","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"heatmap":[{"type":"heatmap","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"heatmapgl":[{"type":"heatmapgl","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"contourcarpet":[{"type":"contourcarpet","colorbar":{"outlinewidth":0,"ticks":""}}],"contour":[{"type":"contour","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"surface":[{"type":"surface","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"mesh3d":[{"type":"mesh3d","colorbar":{"outlinewidth":0,"ticks":""}}],"scatter":[{"fillpattern":{"fillmode":"overlay","size":10,"solidity":0.2},"type":"scatter"}],"parcoords":[{"type":"parcoords","line":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scatterpolargl":[{"type":"scatterpolargl","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"bar":[{"error_x":{"color":"#2a3f5f"},"error_y":{"color":"#2a3f5f"},"marker":{"line":{"color":"#E5ECF6","width":0.5},"pattern":{"fillmode":"overlay","size":10,"solidity":0.2}},"type":"bar"}],"scattergeo":[{"type":"scattergeo","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scatterpolar":[{"type":"scatterpolar","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"histogram":[{"marker":{"pattern":{"fillmode":"overlay","size":10,"solidity":0.2}},"type":"histogram"}],"scattergl":[{"type":"scattergl","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scatter3d":[{"type":"scatter3d","line":{"colorbar":{"outlinewidth":0,"ticks":""}},"marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scattermapbox":[{"type":"scattermapbox","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scatterternary":[{"type":"scatterternary","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scattercarpet":[{"type":"scattercarpet","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"carpet":[{"aaxis":{"endlinecolor":"#2a3f5f","gridcolor":"white","linecolor":"white","minorgridcolor":"white","startlinecolor":"#2a3f5f"},"baxis":{"endlinecolor":"#2a3f5f","gridcolor":"white","linecolor":"white","minorgridcolor":"white","startlinecolor":"#2a3f5f"},"type":"carpet"}],"table":[{"cells":{"fill":{"color":"#EBF0F8"},"line":{"color":"white"}},"header":{"fill":{"color":"#C8D4E3"},"line":{"color":"white"}},"type":"table"}],"barpolar":[{"marker":{"line":{"color":"#E5ECF6","width":0.5},"pattern":{"fillmode":"overlay","size":10,"solidity":0.2}},"type":"barpolar"}],"pie":[{"automargin":true,"type":"pie"}]},"layout":{"autotypenumbers":"strict","colorway":["#636efa","#EF553B","#00cc96","#ab63fa","#FFA15A","#19d3f3","#FF6692","#B6E880","#FF97FF","#FECB52"],"font":{"color":"#2a3f5f"},"hovermode":"closest","hoverlabel":{"align":"left"},"paper_bgcolor":"white","plot_bgcolor":"#E5ECF6","polar":{"bgcolor":"#E5ECF6","angularaxis":{"gridcolor":"white","linecolor":"white","ticks":""},"radialaxis":{"gridcolor":"white","linecolor":"white","ticks":""}},"ternary":{"bgcolor":"#E5ECF6","aaxis":{"gridcolor":"white","linecolor":"white","ticks":""},"baxis":{"gridcolor":"white","linecolor":"white","ticks":""},"caxis":{"gridcolor":"white","linecolor":"white","ticks":""}},"coloraxis":{"colorbar":{"outlinewidth":0,"ticks":""}},"colorscale":{"sequential":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"sequentialminus":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"diverging":[[0,"#8e0152"],[0.1,"#c51b7d"],[0.2,"#de77ae"],[0.3,"#f1b6da"],[0.4,"#fde0ef"],[0.5,"#f7f7f7"],[0.6,"#e6f5d0"],[0.7,"#b8e186"],[0.8,"#7fbc41"],[0.9,"#4d9221"],[1,"#276419"]]},"xaxis":{"gridcolor":"white","linecolor":"white","ticks":"","title":{"standoff":15},"zerolinecolor":"white","automargin":true,"zerolinewidth":2},"yaxis":{"gridcolor":"white","linecolor":"white","ticks":"","title":{"standoff":15},"zerolinecolor":"white","automargin":true,"zerolinewidth":2},"scene":{"xaxis":{"backgroundcolor":"#E5ECF6","gridcolor":"white","linecolor":"white","showbackground":true,"ticks":"","zerolinecolor":"white","gridwidth":2},"yaxis":{"backgroundcolor":"#E5ECF6","gridcolor":"white","linecolor":"white","showbackground":true,"ticks":"","zerolinecolor":"white","gridwidth":2},"zaxis":{"backgroundcolor":"#E5ECF6","gridcolor":"white","linecolor":"white","showbackground":true,"ticks":"","zerolinecolor":"white","gridwidth":2}},"shapedefaults":{"line":{"color":"#2a3f5f"}},"annotationdefaults":{"arrowcolor":"#2a3f5f","arrowhead":0,"arrowwidth":1},"geo":{"bgcolor":"white","landcolor":"#E5ECF6","subunitcolor":"white","showland":true,"showlakes":true,"lakecolor":"white"},"title":{"x":0.05},"mapbox":{"style":"light"},"margin":{"b":0,"l":0,"r":0,"t":30}}},"title":{"text":"Sankey Diagram Example"},"font":{"size":10}},                        {"responsive": true}                    ).then(function(){
+                            
+var gd = document.getElementById('675cb1d2-2345-4869-b41d-39ba0d7937e2');
+var x = new MutationObserver(function (mutations, observer) {{
+        var display = window.getComputedStyle(gd).display;
+        if (!display || display === 'none') {{
+            console.log([gd, 'removed!']);
+            Plotly.purge(gd);
+            observer.disconnect();
+        }}
+}});
+
+// Listen for the removal of the full notebook cells
+var notebookContainer = gd.closest('#notebook-container');
+if (notebookContainer) {{
+    x.observe(notebookContainer, {childList: true});
+}}
+
+// Listen for the clearing of the current output cell
+var outputEl = gd.closest('.output');
+if (outputEl) {{
+    x.observe(outputEl, {childList: true});
+}}
+
+                        })                };                });            </script>        </div>
+</div>
+</div>
+</section></section>
 <section id="beautiful-plotting" class="title-slide slide level1 title center">
 <h1><span class="flow">Beautiful Plotting</span></h1>
 <ul>
@@ -373,28 +885,82 @@ Dr.&nbsp;Tobias Vlćek
 </ul>
 </section>
 
+<section>
 <section id="matplotlib-module" class="title-slide slide level1 title center">
 <h1><span class="flow">Matplotlib Module</span></h1>
-
+<ul>
+<li>Matplotlib is the foundation for most Python plotting libraries</li>
+<li>Provides a MATLAB-like plotting interface</li>
+<li>Highly customizable and suitable for publication-quality figures</li>
+</ul>
+</section>
+<section id="basic-matplotlib-example" class="slide level2">
+<h2>Basic Matplotlib Example</h2>
+<div id="22f3c02f" class="cell" data-execution_count="9">
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb9-2"><a></a></span>
+<span id="cb9-3"><a></a>plt.plot([<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>], [<span class="dv">10</span>, <span class="dv">20</span>, <span class="dv">25</span>, <span class="dv">30</span>])</span>
+<span id="cb9-4"><a></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<div>
+<figure>
+<p><img data-src="lecture-plotting_files/figure-revealjs/cell-10-output-1.png" width="802" height="411"></p>
+</figure>
+</div>
+</div>
+</div>
+<div id="16dc5de0" class="cell" data-execution_count="10">
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a></a><span class="co"># [Matplotlib Module]{.flow} {.title}</span></span>
+<span id="cb10-2"><a></a></span>
+<span id="cb10-3"><a></a><span class="co"># [Seaborn Module]{.flow} {.title}</span></span>
+<span id="cb10-4"><a></a></span>
+<span id="cb10-5"><a></a><span class="co"># [Plotly Module]{.flow} {.title}</span></span>
+<span id="cb10-6"><a></a></span>
+<span id="cb10-7"><a></a><span class="co"># [Dash Module]{.flow} {.title}</span></span>
+<span id="cb10-8"><a></a></span>
+<span id="cb10-9"><a></a><span class="co"># [Bokeh Module]{.flow} {.title}</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>``` import geopandas as gpd import matplotlib.pyplot as plt from geodatasets import get_path</p>
+</section></section>
+<section id="load-the-nyc-airbnb-dataset" class="title-slide slide level1 center">
+<h1>Load the NYC Airbnb dataset</h1>
+<p>airbnb = gpd.read_file(get_path(“nyc_airbnb”))</p>
 </section>
 
-<section id="seaborn-module" class="title-slide slide level1 title center">
-<h1><span class="flow">Seaborn Module</span></h1>
-
+<section id="group-by-neighborhood-and-calculate-mean-price" class="title-slide slide level1 center">
+<h1>Group by neighborhood and calculate mean price</h1>
+<p>neighborhood_prices = airbnb.groupby(‘neighbourhood’)[‘price’].mean().reset_index()</p>
 </section>
 
-<section id="plotly-module" class="title-slide slide level1 title center">
-<h1><span class="flow">Plotly Module</span></h1>
-
+<section id="load-nyc-neighborhoods-shapefile" class="title-slide slide level1 center">
+<h1>Load NYC neighborhoods shapefile</h1>
+<p>nyc = gpd.read_file(get_path(“nyc_neighborhoods”))</p>
 </section>
 
-<section id="dash-module" class="title-slide slide level1 title center">
-<h1><span class="flow">Dash Module</span></h1>
-
+<section id="merge-neighborhood-prices-with-nyc-shapefile" class="title-slide slide level1 center">
+<h1>Merge neighborhood prices with NYC shapefile</h1>
+<p>nyc = nyc.merge(neighborhood_prices, how=‘left’, left_on=‘neighborhood’, right_on=‘neighbourhood’)</p>
 </section>
 
-<section id="bokeh-module" class="title-slide slide level1 title center">
-<h1><span class="flow">Bokeh Module</span></h1>
+<section id="create-the-plot" class="title-slide slide level1 center">
+<h1>Create the plot</h1>
+<p>fig, ax = plt.subplots(figsize=(15, 10))</p>
+</section>
+
+<section id="plot-the-choropleth" class="title-slide slide level1 center">
+<h1>Plot the choropleth</h1>
+<p>nyc.plot(column=‘price’, ax=ax, legend=True, legend_kwds={‘label’: ‘Average Airbnb Price ($)’}, cmap=‘YlOrRd’, missing_kwds={‘color’: ‘lightgrey’})</p>
+</section>
+
+<section id="remove-axes" class="title-slide slide level1 center">
+<h1>Remove axes</h1>
+<p>ax.axis(‘off’)</p>
+</section>
+
+<section id="add-a-title" class="title-slide slide level1 center">
+<h1>Add a title</h1>
+<p>plt.title(‘Average Airbnb Prices by Neighborhood in New York City’, fontsize=16)</p>
+<p>plt.tight_layout() plt.show()</p>
 
 <div class="quarto-auto-generated-content">
 <div class="footer footer-default">
@@ -578,9 +1144,9 @@ Dr.&nbsp;Tobias Vlćek
         // The "normal" size of the presentation, aspect ratio will be preserved
         // when the presentation is scaled to fit different resolutions. Can be
         // specified using percentage units.
-        width: 1260,
+        width: 1050,
 
-        height: 840,
+        height: 700,
 
         // Factor of the display size that should remain empty around the content
         margin: 0.1,
