@@ -1,0 +1,1741 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-html/tabby.min.js"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/light-border.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-html.min.css" rel="stylesheet" data-mode="light">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
+  <meta name="generator" content="quarto-1.5.57">
+
+  <meta name="author" content="Dr.&nbsp;Tobias Vlćek">
+  <title>Programming with Python – Lecture II - Control Structures for Your Code</title>
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+  <link rel="stylesheet" href="../site_libs/revealjs/dist/reset.css">
+  <link rel="stylesheet" href="../site_libs/revealjs/dist/reveal.css">
+  <style>
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    div.columns{display: flex; gap: min(4vw, 1.5em);}
+    div.column{flex: auto; overflow-x: auto;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    ul.task-list{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+      vertical-align: middle;
+    }
+    /* CSS for syntax highlighting */
+    pre > code.sourceCode { white-space: pre; position: relative; }
+    pre > code.sourceCode > span { line-height: 1.25; }
+    pre > code.sourceCode > span:empty { height: 1.2em; }
+    .sourceCode { overflow: visible; }
+    code.sourceCode > span { color: inherit; text-decoration: inherit; }
+    div.sourceCode { margin: 1em 0; }
+    pre.sourceCode { margin: 0; }
+    @media screen {
+    div.sourceCode { overflow: auto; }
+    }
+    @media print {
+    pre > code.sourceCode { white-space: pre-wrap; }
+    pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+    }
+    pre.numberSource code
+      { counter-reset: source-line 0; }
+    pre.numberSource code > span
+      { position: relative; left: -4em; counter-increment: source-line; }
+    pre.numberSource code > span > a:first-child::before
+      { content: counter(source-line);
+        position: relative; left: -1em; text-align: right; vertical-align: baseline;
+        border: none; display: inline-block;
+        -webkit-touch-callout: none; -webkit-user-select: none;
+        -khtml-user-select: none; -moz-user-select: none;
+        -ms-user-select: none; user-select: none;
+        padding: 0 4px; width: 4em;
+        color: #aaaaaa;
+      }
+    pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+    div.sourceCode
+      { color: #003b4f; background-color: #f1f3f5; }
+    @media screen {
+    pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+    }
+    code span { color: #003b4f; } /* Normal */
+    code span.al { color: #ad0000; } /* Alert */
+    code span.an { color: #5e5e5e; } /* Annotation */
+    code span.at { color: #657422; } /* Attribute */
+    code span.bn { color: #ad0000; } /* BaseN */
+    code span.bu { } /* BuiltIn */
+    code span.cf { color: #003b4f; font-weight: bold; } /* ControlFlow */
+    code span.ch { color: #20794d; } /* Char */
+    code span.cn { color: #8f5902; } /* Constant */
+    code span.co { color: #5e5e5e; } /* Comment */
+    code span.cv { color: #5e5e5e; font-style: italic; } /* CommentVar */
+    code span.do { color: #5e5e5e; font-style: italic; } /* Documentation */
+    code span.dt { color: #ad0000; } /* DataType */
+    code span.dv { color: #ad0000; } /* DecVal */
+    code span.er { color: #ad0000; } /* Error */
+    code span.ex { } /* Extension */
+    code span.fl { color: #ad0000; } /* Float */
+    code span.fu { color: #4758ab; } /* Function */
+    code span.im { color: #00769e; } /* Import */
+    code span.in { color: #5e5e5e; } /* Information */
+    code span.kw { color: #003b4f; font-weight: bold; } /* Keyword */
+    code span.op { color: #5e5e5e; } /* Operator */
+    code span.ot { color: #003b4f; } /* Other */
+    code span.pp { color: #ad0000; } /* Preprocessor */
+    code span.sc { color: #5e5e5e; } /* SpecialChar */
+    code span.ss { color: #20794d; } /* SpecialString */
+    code span.st { color: #20794d; } /* String */
+    code span.va { color: #111111; } /* Variable */
+    code span.vs { color: #20794d; } /* VerbatimString */
+    code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
+  </style>
+  <link rel="stylesheet" href="../site_libs/revealjs/dist/theme/quarto.css">
+  <link href="../site_libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
+  <link href="../site_libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
+  <link href="../site_libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
+  <link href="../site_libs/revealjs/plugin/quarto-support/footer.css" rel="stylesheet">
+  <style type="text/css">
+
+  .callout {
+    margin-top: 1em;
+    margin-bottom: 1em;  
+    border-radius: .25rem;
+  }
+
+  .callout.callout-style-simple { 
+    padding: 0em 0.5em;
+    border-left: solid #acacac .3rem;
+    border-right: solid 1px silver;
+    border-top: solid 1px silver;
+    border-bottom: solid 1px silver;
+    display: flex;
+  }
+
+  .callout.callout-style-default {
+    border-left: solid #acacac .3rem;
+    border-right: solid 1px silver;
+    border-top: solid 1px silver;
+    border-bottom: solid 1px silver;
+  }
+
+  .callout .callout-body-container {
+    flex-grow: 1;
+  }
+
+  .callout.callout-style-simple .callout-body {
+    font-size: 1rem;
+    font-weight: 400;
+  }
+
+  .callout.callout-style-default .callout-body {
+    font-size: 0.9rem;
+    font-weight: 400;
+  }
+
+  .callout.callout-titled.callout-style-simple .callout-body {
+    margin-top: 0.2em;
+  }
+
+  .callout:not(.callout-titled) .callout-body {
+      display: flex;
+  }
+
+  .callout:not(.no-icon).callout-titled.callout-style-simple .callout-content {
+    padding-left: 1.6em;
+  }
+
+  .callout.callout-titled .callout-header {
+    padding-top: 0.2em;
+    margin-bottom: -0.2em;
+  }
+
+  .callout.callout-titled .callout-title  p {
+    margin-top: 0.5em;
+    margin-bottom: 0.5em;
+  }
+    
+  .callout.callout-titled.callout-style-simple .callout-content  p {
+    margin-top: 0;
+  }
+
+  .callout.callout-titled.callout-style-default .callout-content  p {
+    margin-top: 0.7em;
+  }
+
+  .callout.callout-style-simple div.callout-title {
+    border-bottom: none;
+    font-size: .9rem;
+    font-weight: 600;
+    opacity: 75%;
+  }
+
+  .callout.callout-style-default  div.callout-title {
+    border-bottom: none;
+    font-weight: 600;
+    opacity: 85%;
+    font-size: 0.9rem;
+    padding-left: 0.5em;
+    padding-right: 0.5em;
+  }
+
+  .callout.callout-style-default div.callout-content {
+    padding-left: 0.5em;
+    padding-right: 0.5em;
+  }
+
+  .callout.callout-style-simple .callout-icon::before {
+    height: 1rem;
+    width: 1rem;
+    display: inline-block;
+    content: "";
+    background-repeat: no-repeat;
+    background-size: 1rem 1rem;
+  }
+
+  .callout.callout-style-default .callout-icon::before {
+    height: 0.9rem;
+    width: 0.9rem;
+    display: inline-block;
+    content: "";
+    background-repeat: no-repeat;
+    background-size: 0.9rem 0.9rem;
+  }
+
+  .callout-title {
+    display: flex
+  }
+    
+  .callout-icon::before {
+    margin-top: 1rem;
+    padding-right: .5rem;
+  }
+
+  .callout.no-icon::before {
+    display: none !important;
+  }
+
+  .callout.callout-titled .callout-body > .callout-content > :last-child {
+    padding-bottom: 0.5rem;
+    margin-bottom: 0;
+  }
+
+  .callout.callout-titled .callout-icon::before {
+    margin-top: .5rem;
+    padding-right: .5rem;
+  }
+
+  .callout:not(.callout-titled) .callout-icon::before {
+    margin-top: 1rem;
+    padding-right: .5rem;
+  }
+
+  /* Callout Types */
+
+  div.callout-note {
+    border-left-color: #4582ec !important;
+  }
+
+  div.callout-note .callout-icon::before {
+    background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAAXNSR0IArs4c6QAAAERlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAA6ABAAMAAAABAAEAAKACAAQAAAABAAAAIKADAAQAAAABAAAAIAAAAACshmLzAAAEU0lEQVRYCcVXTWhcVRQ+586kSUMMxkyaElstCto2SIhitS5Ek8xUKV2poatCcVHtUlFQk8mbaaziwpWgglJwVaquitBOfhQXFlqlzSJpFSpIYyXNjBNiTCck7x2/8/LeNDOZxDuEkgOXe++553zfefee+/OYLOXFk3+1LLrRdiO81yNqZ6K9cG0P3MeFaMIQjXssE8Z1JzLO9ls20MBZX7oG8w9GxB0goaPrW5aNMp1yOZIa7Wv6o2ykpLtmAPs/vrG14Z+6d4jpbSKuhdcSyq9wGMPXjonwmESXrriLzFGOdDBLB8Y6MNYBu0dRokSygMA/mrun8MGFN3behm6VVAwg4WR3i6FvYK1T7MHo9BK7ydH+1uurECoouk5MPRyVSBrBHMYwVobG2aOXM07sWrn5qgB60rc6mcwIDJtQrnrEr44kmy+UO9r0u9O5/YbkS9juQckLed3DyW2XV/qWBBB3ptvI8EUY3I9p/67OW+g967TNr3Sotn3IuVlfMLVnsBwH4fsnebJvyGm5GeIUA3jljERmrv49SizPYuq+z7c2H/jlGC+Ghhupn/hcapqmcudB9jwJ/3jvnvu6vu5lVzF1fXyZuZZ7U8nRmVzytvT+H3kilYvH09mLWrQdwFSsFEsxFVs5fK7A0g8gMZjbif4ACpKbjv7gNGaD8bUrlk8x+KRflttr22JEMRUbTUwwDQScyzPgedQHZT0xnx7ujw2jfVfExwYHwOsDTjLdJ2ebmeQIlJ7neo41s/DrsL3kl+W2lWvAga0tR3zueGr6GL78M3ifH0rGXrBC2aAR8uYcIA5gwV8zIE8onoh8u0Fca/ciF7j1uOzEnqcIm59sEXoGc0+z6+H45V1CvAvHcD7THztu669cnp+L0okAeIc6zjbM/24LgGM1gZk7jnRu1aQWoU9sfUOuhrmtaPIO3YY1KLLWZaEO5TKUbMY5zx8W9UJ6elpLwKXbsaZ4EFl7B4bMtDv0iRipKoDQT2sNQI9b1utXFdYisi+wzZ/ri/1m7QfDgEuvgUUEIJPq3DhX/5DWNqIXDOweC2wvIR90Oq3lDpdMIgD2r0dXvGdsEW5H6x6HLRJYU7C69VefO1x8Gde1ZFSJLfWS1jbCnhtOPxmpfv2LXOA2Xk2tvnwKKPFuZ/oRmwBwqRQDcKNeVQkYcOjtWVBuM/JuYw5b6isojIkYxyYAFn5K7ZBF10fea52y8QltAg6jnMqNHFBmGkQ1j+U43HMi2xMar1Nv0zGsf1s8nUsmUtPOOrbFIR8bHFDMB5zL13Gmr/kGlCkUzedTzzmzsaJXhYawnA3UmARpiYj5ooJZiUoxFRtK3X6pgNPv+IZVPcnwbOl6f+aBaO1CNvPW9n9LmCp01nuSaTRF2YxHqZ8DYQT6WsXT+RD6eUztwYLZ8rM+rcPxamv1VQzFUkzFXvkiVrySGQgJNvXHJAxiU3/NwiC03rSf05VBaPtu/Z7/B8Yn/w7eguloAAAAAElFTkSuQmCC');
+  }
+
+  div.callout-note.callout-style-default .callout-title {
+    background-color: #dae6fb
+  }
+
+  div.callout-important {
+    border-left-color: #d9534f !important;
+  }
+
+  div.callout-important .callout-icon::before {
+    background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAAXNSR0IArs4c6QAAAERlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAA6ABAAMAAAABAAEAAKACAAQAAAABAAAAIKADAAQAAAABAAAAIAAAAACshmLzAAAEKklEQVRYCcVXTWhcVRS+575MJym48A+hSRFr00ySRQhURRfd2HYjk2SSTokuBCkU2o0LoSKKraKIBTcuFCoidGFD08nkBzdREbpQ1EDNIv8qSGMFUboImMSZd4/f9zJv8ibJMC8xJQfO3HPPPef7zrvvvnvviIkpC9nsw0UttFunbUhpFzFtarSd6WJkStVMw5xyVqYTvkwfzuf/5FgtkVoB0729j1rjXwThS7Vio+Mo6DNnvLfahoZ+i/o32lULuJ3NNiz7q6+pyAUkJaFF6JwaM2lUJlV0MlnQn5aTRbEu0SEqHUa0A4AdiGuB1kFXRfVyg5d87+Dg4DL6m2TLAub60ilj7A1Ec4odSAc8X95sHh7+ZRPCFo6Fnp7HfU/fBng/hi10CjCnWnJjsxvDNxWw0NfV6Rv5GgP3I3jGWXumdTD/3cbEOP2ZbOZp69yniG3FQ9z1jD7bnBu9Fc2tKGC2q+uAJOQHBDRiZX1x36o7fWBs7J9ownbtO+n0/qWkvW7UPIfc37WgT6ZGR++EOJyeQDSb9UB+DZ1G6DdLDzyS+b/kBCYGsYgJbSQHuThGKRcw5xdeQf8YdNHsc6ePXrlSYMBuSIAFTGAtQo+VuALo4BX83N190NWZWbynBjhOHsmNfFWLeL6v+ynsA58zDvvAC8j5PkbOcXCMg2PZFk3q8MjI7WAG/Dp9AwP7jdGBOOQkAvlFUB+irtm16I1Zw9YBcpGTGXYmk3kQIC/Cds55l+iMI3jqhjAuaoe+am2Jw5GT3Nbz3CkE12NavmzN5+erJW7046n/CH1RO/RVa8lBLozXk9uqykkGAyRXLWlLv5jyp4RFsG5vGVzpDLnIjTWgnRy2Rr+tDKvRc7Y8AyZq10jj8DqXdnIRNtFZb+t/ZRtXcDiVnzpqx8mPcDWxgARUqx0W1QB9MeUZiNrV4qP+Ehc+BpNgATsTX8ozYKL2NtFYAHc84fG7ndxUPr+AR/iQSns7uSUufAymwDOb2+NjK27lEFocm/EE2WpyIy/Hi66MWuMKJn8RvxIcj87IM5Vh9663ziW36kR0HNenXuxmfaD8JC7tfKbrhFr7LiZCrMjrzTeGx+PmkosrkNzW94ObzwocJ7A1HokLolY+AvkTiD/q1H0cN48c5EL8Crkttsa/AXQVDmutfyku0E7jShx49XqV3MFK8IryDhYVbj7Sj2P2eBxwcXoe8T8idsKKPRcnZw1b+slFTubwUwhktrfnAt7J++jwQtLZcm3sr9LQrjRzz6cfMv9aLvgmnAGvpoaGLxM4mAEaLV7iAzQ3oU0IvD5x9ix3yF2RAAuYAOO2f7PEFWCXZ4C9Pb2UsgDeVnFSpbFK7/IWu7TPTvBqzbGdCHOJQSxiEjt6IyZmxQyEJHv6xyQsYk//moVFsN2zP6fRImjfq7/n/wFDguUQFNEwugAAAABJRU5ErkJggg==');
+  }
+
+  div.callout-important.callout-style-default .callout-title {
+    background-color: #f7dddc
+  }
+
+  div.callout-warning {
+    border-left-color: #f0ad4e !important;
+  }
+
+  div.callout-warning .callout-icon::before {
+    background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAAXNSR0IArs4c6QAAAERlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAA6ABAAMAAAABAAEAAKACAAQAAAABAAAAIKADAAQAAAABAAAAIAAAAACshmLzAAAETklEQVRYCeVWW2gcVRg+58yaTUnizqbipZeX4uWhBEniBaoUX1Ioze52t7sRq6APio9V9MEaoWlVsFasRq0gltaAPuxms8lu0gcviE/FFOstVbSIxgcv6SU7EZqmdc7v9+9mJtNks51NTUH84ed889/PP+cmxP+d5FIbMJmNbpREu4WUkiTtCicKny0l1pIKmBzovF2S+hIJHX8iEu3hZJ5lNZGqyRrGSIQpq15AzF28jgpeY6yk6GVdrfFqdrD6Iw+QlB8g0YS2g7dyQmXM/IDhBhT0UCiRf59lfqmmDvzRt6kByV/m4JjtzuaujMUM2c5Z2d6JdKrRb3K2q6mA+oYVz8JnDdKPmmNthzkAk/lN63sYPgevrguc72aZX/L9C6x09GYyxBgCX4NlvyGUHOKELlm5rXeR1kchuChJt4SSwyddZRXgvwMGvYo4QSlk3/zkHD8UHxwVJA6zjZZqP8v8kK8OWLnIZtLyCAJagYC4rTGW/9Pqj92N/c+LUaAj27movwbi19tk/whRCIE7Q9vyI6yvRpftAKVTdUjOW40X3h5OXsKCdmFcx0xlLJoSuQngnrJe7Kcjm4OMq9FlC7CMmScQANuNvjfP3PjGXDBaUQmbp296S5L4DrpbrHN1T87ZVEZVCzg1FF0Ft+dKrlLukI+/c9ENo+TvlTDbYFvuKPtQ9+l052rXrgKoWkDAFnvh0wTOmYn8R5f4k/jN/fZiCM1tQx9jQQ4ANhqG4hiL0qIFTGViG9DKB7GYzgubnpofgYRwO+DFjh0Zin2m4b/97EDkXkc+f6xYAPX0KK2I/7fUQuwzuwo/L3AkcjugPNixC8cHf0FyPjWlItmLxWw4Ou9YsQCr5fijMGoD/zpdRy95HRysyXA74MWOnscpO4j2y3HAVisw85hX5+AFBRSHt4ShfLFkIMXTqyKFc46xdzQM6XbAi702a7sy04J0+feReMFKp5q9esYLCqAZYw/k14E/xcLLsFElaornTuJB0svMuJINy8xkIYuL+xPAlWRceH6+HX7THJ0djLUom46zREu7tTkxwmf/FdOZ/sh6Q8qvEAiHpm4PJ4a/doJe0gH1t+aHRgCzOvBvJedEK5OFE5jpm4AGP2a8Dxe3gGJ/pAutug9Gp6he92CsSsWBaEcxGx0FHytmIpuqGkOpldqNYQK8cSoXvd+xLxXADw0kf6UkJNFtdo5MOgaLjiQOQHcn+A6h5NuL2s0qsC2LOM75PcF3yr5STuBSAcGG+meA14K/CI21HcS4LBT6tv0QAh8Dr5l93AhZzG5ZJ4VxAqdZUEl9z7WJ4aN+svMvwHHL21UKTd1mqvChH7/Za5xzXBBKrUcB0TQ+Ulgkfbi/H/YT5EptrGzsEK7tR1B7ln9BBwckYfMiuSqklSznIuoIIOM42MQO+QnduCoFCI0bpkzjCjddHPN/F+2Yu+sd9bKNpVwHhbS3LluK/0zgfwD0xYI5dXuzlQAAAABJRU5ErkJggg==');
+  }
+
+  div.callout-warning.callout-style-default .callout-title {
+    background-color: #fcefdc
+  }
+
+  div.callout-tip {
+    border-left-color: #02b875 !important;
+  }
+
+  div.callout-tip .callout-icon::before {
+    background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAAXNSR0IArs4c6QAAAERlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAA6ABAAMAAAABAAEAAKACAAQAAAABAAAAIKADAAQAAAABAAAAIAAAAACshmLzAAADr0lEQVRYCe1XTWgTQRj9ZjZV8a9SPIkKgj8I1bMHsUWrqYLVg4Ue6v9BwZOxSYsIerFao7UiUryIqJcqgtpimhbBXoSCVxUFe9CTiogUrUp2Pt+3aUI2u5vdNh4dmMzOzHvvezuz8xNFM0mjnbXaNu1MvFWRXkXEyE6aYOYJpdW4IXuA4r0fo8qqSMDBU0v1HJUgVieAXxzCsdE/YJTdFcVIZQNMyhruOMJKXYFoLfIfIvVIMWdsrd+Rpd86ZmyzzjJmLStqRn0v8lzkb4rVIXvnpScOJuAn2ACC65FkPzEdEy4TPWRLJ2h7z4cArXzzaOdKlbOvKKX25Wl00jSnrwVxAg3o4dRxhO13RBSdNvH0xSARv3adTXbBdTf64IWO2vH0LT+cv4GR1DJt+DUItaQogeBX/chhbTBxEiZ6gftlDNXTrvT7co4ub5A6gp9HIcHvzTa46OS5fBeP87Qm0fQkr4FsYgVQ7Qg+ZayaDg9jhg1GkWj8RG6lkeSacrrHgDaxdoBiZPg+NXV/KifMuB6//JmYH4CntVEHy/keA6x4h4CU5oFy8GzrBS18cLJMXcljAKB6INjWsRcuZBWVaS3GDrqB7rdapVIeA+isQ57Eev9eCqzqOa81CY05VLd6SamW2wA2H3SiTbnbSxmzfp7WtKZkqy4mdyAlGx7ennghYf8voqp9cLSgKdqNfa6RdRsAAkPwRuJZNbpByn+RrJi1RXTwdi8RQF6ymDwGMAtZ6TVE+4uoKh+MYkcLsT0Hk8eAienbiGdjJHZTpmNjlbFJNKDVAp2fJlYju6IreQxQ08UJDNYdoLSl6AadO+fFuCQqVMB1NJwPm69T04Wv5WhfcWyfXQB+wXRs1pt+nCknRa0LVzSA/2B+a9+zQJadb7IyyV24YAxKp2Jqs3emZTuNnKxsah+uabKbMk7CbTgJx/zIgQYErIeTKRQ9yD9wxVof5YolPHqaWo7TD6tJlh7jQnK5z2n3+fGdggIOx2kaa2YI9QWarc5Ce1ipNWMKeSG4DysFF52KBmTNMmn5HqCFkwy34rDg05gDwgH3bBi+sgFhN/e8QvRn8kbamCOhgrZ9GJhFDgfcMHzFb6BAtjKpFhzTjwv1KCVuxHvCbsSiEz4CANnj84cwHdFXAbAOJ4LTSAawGWFn5tDhLMYz6nWeU2wJfIhmIJBefcd/A5FWQWGgrWzyORZ3Q6HuV+Jf0Bj+BTX69fm1zWgK7By1YTXchFDORywnfQ7GpzOo6S+qECrsx2ifVQAAAABJRU5ErkJggg==');
+  }
+
+  div.callout-tip.callout-style-default .callout-title {
+    background-color: #ccf1e3
+  }
+
+  div.callout-caution {
+    border-left-color: #fd7e14 !important;
+  }
+
+  div.callout-caution .callout-icon::before {
+    background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAAXNSR0IArs4c6QAAAERlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAA6ABAAMAAAABAAEAAKACAAQAAAABAAAAIKADAAQAAAABAAAAIAAAAACshmLzAAACV0lEQVRYCdVWzWoUQRCuqp2ICBLJXgITZL1EfQDBW/bkzUMUD7klD+ATSHBEfAIfQO+iXsWDxJsHL96EHAwhgzlkg8nBg25XWb0zIb0zs9muYYWkoKeru+vn664fBqElyZNuyh167NXJ8Ut8McjbmEraKHkd7uAnAFku+VWdb3reSmRV8PKSLfZ0Gjn3a6Xlcq9YGb6tADjn+lUfTXtVmaZ1KwBIvFI11rRXlWlatwIAAv2asaa9mlB9wwygiDX26qaw1yYPzFXg2N1GgG0FMF8Oj+VIx7E/03lHx8UhvYyNZLN7BwSPgekXXLribw7w5/c8EF+DBK5idvDVYtEEwMeYefjjLAdEyQ3M9nfOkgnPTEkYU+sxMq0BxNR6jExrAI31H1rzvLEfRIdgcv1XEdj6QTQAS2wtstEALLG1yEZ3QhH6oDX7ExBSFEkFINXH98NTrme5IOaaA7kIfiu2L8A3qhH9zRbukdCqdsA98TdElyeMe5BI8Rs2xHRIsoTSSVFfCFCWGPn9XHb4cdobRIWABNf0add9jakDjQJpJ1bTXOJXnnRXHRf+dNL1ZV1MBRCXhMbaHqGI1JkKIL7+i8uffuP6wVQAzO7+qVEbF6NbS0LJureYcWXUUhH66nLR5rYmva+2tjRFtojkM2aD76HEGAD3tPtKM309FJg5j/K682ywcWJ3PASCcycH/22u+Bh7Aa0ehM2Fu4z0SAE81HF9RkB21c5bEn4Dzw+/qNOyXr3DCTQDMBOdhi4nAgiFDGCinIa2owCEChUwD8qzd03PG+qdW/4fDzjUMcE1ZpIAAAAASUVORK5CYII=');
+  }
+
+  div.callout-caution.callout-style-default .callout-title {
+    background-color: #ffe5d0
+  }
+
+  </style>
+  <style type="text/css">
+    .reveal div.sourceCode {
+      margin: 0;
+      overflow: auto;
+    }
+    .reveal div.hanging-indent {
+      margin-left: 1em;
+      text-indent: -1em;
+    }
+    .reveal .slide:not(.center) {
+      height: 100%;
+    }
+    .reveal .slide.scrollable {
+      overflow-y: auto;
+    }
+    .reveal .footnotes {
+      height: 100%;
+      overflow-y: auto;
+    }
+    .reveal .slide .absolute {
+      position: absolute;
+      display: block;
+    }
+    .reveal .footnotes ol {
+      counter-reset: ol;
+      list-style-type: none; 
+      margin-left: 0;
+    }
+    .reveal .footnotes ol li:before {
+      counter-increment: ol;
+      content: counter(ol) ". "; 
+    }
+    .reveal .footnotes ol li > p:first-child {
+      display: inline-block;
+    }
+    .reveal .slide ul,
+    .reveal .slide ol {
+      margin-bottom: 0.5em;
+    }
+    .reveal .slide ul li,
+    .reveal .slide ol li {
+      margin-top: 0.4em;
+      margin-bottom: 0.2em;
+    }
+    .reveal .slide ul[role="tablist"] li {
+      margin-bottom: 0;
+    }
+    .reveal .slide ul li > *:first-child,
+    .reveal .slide ol li > *:first-child {
+      margin-block-start: 0;
+    }
+    .reveal .slide ul li > *:last-child,
+    .reveal .slide ol li > *:last-child {
+      margin-block-end: 0;
+    }
+    .reveal .slide .columns:nth-child(3) {
+      margin-block-start: 0.8em;
+    }
+    .reveal blockquote {
+      box-shadow: none;
+    }
+    .reveal .tippy-content>* {
+      margin-top: 0.2em;
+      margin-bottom: 0.7em;
+    }
+    .reveal .tippy-content>*:last-child {
+      margin-bottom: 0.2em;
+    }
+    .reveal .slide > img.stretch.quarto-figure-center,
+    .reveal .slide > img.r-stretch.quarto-figure-center {
+      display: block;
+      margin-left: auto;
+      margin-right: auto; 
+    }
+    .reveal .slide > img.stretch.quarto-figure-left,
+    .reveal .slide > img.r-stretch.quarto-figure-left  {
+      display: block;
+      margin-left: 0;
+      margin-right: auto; 
+    }
+    .reveal .slide > img.stretch.quarto-figure-right,
+    .reveal .slide > img.r-stretch.quarto-figure-right  {
+      display: block;
+      margin-left: auto;
+      margin-right: 0; 
+    }
+  </style>
+</head>
+<body class="quarto-light">
+  <div class="reveal">
+    <div class="slides">
+
+<section id="title-slide" data-background-color="#FFE0D3" class="quarto-title-block center">
+  <h1 class="title">Lecture II - Control Structures for Your Code</h1>
+  <p class="subtitle">Programming with Python</p>
+
+<div class="quarto-title-authors">
+<div class="quarto-title-author">
+<div class="quarto-title-author-name">
+Dr.&nbsp;Tobias Vlćek 
+</div>
+        <p class="quarto-title-affiliation">
+            Kühne Logistics University Hamburg - Fall 2024
+          </p>
+    </div>
+</div>
+
+</section>
+<section>
+<section id="quick-recap-of-the-last-lecture" class="title-slide slide level1 title center">
+<h1><span class="flow">Quick Recap of the last Lecture</span></h1>
+
+</section>
+<section id="f-strings" class="slide level2">
+<h2>F-Strings</h2>
+<ul>
+<li>F-strings provide a way to embed expressions inside string literals</li>
+<li>You can include expressions by placing them inside curly braces <code>{}</code></li>
+<li>This makes it easier to include dynamic content</li>
+</ul>
+<div class="fragment">
+<div id="8f474aaa" class="cell" data-execution_count="2">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a></a><span class="co"># Let's illustrate f-strings with a small example:</span></span>
+<span id="cb1-2"><a></a>name <span class="op">=</span> <span class="st">"Mr. Smith"</span></span>
+<span id="cb1-3"><a></a>age <span class="op">=</span> <span class="dv">30</span></span>
+<span id="cb1-4"><a></a>height <span class="op">=</span> <span class="fl">1.826549</span></span>
+<span id="cb1-5"><a></a><span class="bu">print</span>(<span class="ss">f"My name is </span><span class="sc">{</span>name<span class="sc">}</span><span class="ss">, I'm </span><span class="sc">{</span>age<span class="sc">}</span><span class="ss"> years old, and </span><span class="sc">{</span>height<span class="sc">:.2f}</span><span class="ss"> meters tall."</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell fragment" data-execution_count="2">
+<div class="cell-output cell-output-stdout">
+<pre><code>My name is Mr. Smith, I'm 30 years old, and 1.83 meters tall.</code></pre>
+</div>
+</div>
+</div>
+<div class="fragment">
+<div class="callout callout-tip callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Tip</strong></p>
+</div>
+<div class="callout-content">
+<p>We used the <code>:.2f</code> format specifier to round the number to two decimal places.</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="variables-and-data-types" class="slide level2">
+<h2>Variables and Data Types</h2>
+<ul>
+<li>Python uses dynamic typing, i.e.&nbsp;the type is determined at runtime</li>
+<li>Basic data types in Python are: <code>int</code>, <code>float</code>, <code>str</code>, <code>bool</code></li>
+<li>Variables are created by assignment with the <code>=</code> operator</li>
+</ul>
+<div class="fragment">
+<p><span class="question">&gt; Question:</span> What are the types of <code>y</code>, <code>z</code>, <code>w</code>?</p>
+<div id="1170cd72" class="cell" data-execution_count="3">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a></a>y <span class="op">=</span> <span class="fl">2.5</span></span>
+<span id="cb3-2"><a></a>z <span class="op">=</span> <span class="st">"Hello"</span></span>
+<span id="cb3-3"><a></a>w <span class="op">=</span> <span class="va">True</span></span>
+<span id="cb3-4"><a></a><span class="bu">print</span>(<span class="ss">f"y is of type </span><span class="sc">{</span><span class="bu">type</span>(y)<span class="sc">.</span><span class="va">__name__</span><span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb3-5"><a></a><span class="bu">print</span>(<span class="ss">f"z is of type </span><span class="sc">{</span><span class="bu">type</span>(z)<span class="sc">.</span><span class="va">__name__</span><span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb3-6"><a></a><span class="bu">print</span>(<span class="ss">f"w is of type </span><span class="sc">{</span><span class="bu">type</span>(w)<span class="sc">.</span><span class="va">__name__</span><span class="sc">}</span><span class="ss">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell fragment" data-execution_count="3">
+<div class="cell-output cell-output-stdout">
+<pre><code>y is of type float
+z is of type str
+w is of type bool</code></pre>
+</div>
+</div>
+</div>
+</section>
+<section id="arithmetic-operators" class="slide level2">
+<h2>Arithmetic Operators</h2>
+<div class="columns">
+<div class="column" style="width:30%;">
+<p>Addition<br>
+Subtraction<br>
+Multiplication<br>
+Division<br>
+Floor Division<br>
+Exponentiation<br>
+Modulo</p>
+</div><div class="column" style="width:10%;">
+<p><code>+</code><br>
+<code>-</code><br>
+<code>*</code><br>
+<code>/</code><br>
+<code>//</code><br>
+<code>**</code><br>
+<code>%</code></p>
+</div><div class="column" style="width:60%;">
+<p>Adds two numbers<br>
+Subtracts one number from another<br>
+Multiplies two numbers<br>
+Floating-point division<br>
+Integer division<br>
+Power of<br>
+Remainder of division</p>
+</div></div>
+<div class="fragment">
+<div class="callout callout-note callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Note</strong></p>
+</div>
+<div class="callout-content">
+<p>Note, that the <code>/</code> operator always returns a float, even if the division is even. Furthermore, the <code>+</code> operator can be used to concatenate strings and that the <code>*</code> operator can be used to repeat strings.</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="arithmetic-operators-with-variables" class="slide level2">
+<h2>Arithmetic Operators with Variables</h2>
+<ul>
+<li>Additional operators can update the value of a variable <span class="highlight">(new)</span></li>
+<li>We can use <code>+=</code>, <code>-=</code>, <code>*=</code>, <code>/=</code>, <code>//=</code>, <code>**=</code>, <code>%=</code></li>
+</ul>
+<div class="fragment">
+<p><span class="question">&gt; Question:</span> What is the value of <code>x</code> after the operations?</p>
+<div id="803b5d2a" class="cell" data-execution_count="4">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a></a>x <span class="op">=</span> <span class="dv">10</span></span>
+<span id="cb5-2"><a></a><span class="bu">print</span>(<span class="ss">f"Initial value of x: </span><span class="sc">{</span>x<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb5-3"><a></a>x <span class="op">+=</span> <span class="dv">5</span>  <span class="co"># Equivalent to x = x + 5</span></span>
+<span id="cb5-4"><a></a><span class="bu">print</span>(<span class="ss">f"After x += 5: </span><span class="sc">{</span>x<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb5-5"><a></a>x <span class="op">*=</span> <span class="dv">2</span>  <span class="co"># Equivalent to x = x * 2</span></span>
+<span id="cb5-6"><a></a><span class="bu">print</span>(<span class="ss">f"After x *= 2: </span><span class="sc">{</span>x<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb5-7"><a></a>x <span class="op">%=</span> <span class="dv">4</span>  <span class="co"># Equivalent to x = x % 4</span></span>
+<span id="cb5-8"><a></a><span class="bu">print</span>(<span class="ss">f"After x %= 4: </span><span class="sc">{</span>x<span class="sc">}</span><span class="ss">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell fragment" data-execution_count="4">
+<div class="cell-output cell-output-stdout">
+<pre><code>Initial value of x: 10
+After x += 5: 15
+After x *= 2: 30
+After x %= 4: 2</code></pre>
+</div>
+</div>
+</div>
+</section></section>
+<section>
+<section id="objects-and-methods" class="title-slide slide level1 title center">
+<h1><span class="flow">Objects and Methods</span></h1>
+
+</section>
+<section id="objects" class="slide level2">
+<h2>Objects</h2>
+<ul>
+<li>Objects are <strong>instances of classes</strong></li>
+<li>We will learn more about classes <strong>later</strong> in the course</li>
+<li>In Python, <span class="highlight">virtually</span> everything is an object</li>
+<li>Common built-in objects: <span class="highlight">integers, strings, lists, dictionaries</span></li>
+<li>For now, think of objects as a collection of data and methods</li>
+</ul>
+<div class="fragment">
+<div class="callout callout-note callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Note</strong></p>
+</div>
+<div class="callout-content">
+<p>For most programming purposes, you can treat everything in Python as an object. This means you can assign all types to variables, pass them to functions, and in many cases, call methods on them.</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="methods" class="slide level2">
+<h2>Methods</h2>
+<ul>
+<li>Methods are <span class="highlight">functions</span> that are called on an <span class="highlight">object</span></li>
+<li>The syntax is <code>object.method([arguments])</code></li>
+<li>Methods are specific to the type of object they’re called on</li>
+<li>They can modify the object or return information about it</li>
+</ul>
+<div class="fragment">
+<div class="callout callout-tip callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Tip</strong></p>
+</div>
+<div class="callout-content">
+<p>You can use the <code>dir()</code> function to list all methods and attributes of an object.</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="string-methods" class="slide level2">
+<h2>String Methods</h2>
+<p>Here are some commonly used string methods:</p>
+<ul>
+<li><code>upper()</code>: Converts all characters in the string to uppercase</li>
+<li><code>lower()</code>: Converts all characters in the string to lowercase</li>
+<li><code>title()</code>: Converts first character of each word to uppercase</li>
+<li><code>strip()</code>: Removes leading and trailing whitespace</li>
+<li><code>replace()</code>: Replaces a substring with another substring</li>
+<li><code>find()</code>: Finds first substring and returns its index</li>
+<li><code>count()</code>: Counts the number of occurrences of a substring</li>
+</ul>
+</section>
+<section id="string-methods-in-action" class="slide level2">
+<h2>String Methods in Action</h2>
+<p><span class="question">&gt; Question:</span> What will be the output of the following code?</p>
+<div id="f41e1f29" class="cell" data-execution_count="5">
+<div class="sourceCode cell-code" id="cb7" data-code-line-numbers="2|3|4|5|6|7"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a></a>message <span class="op">=</span> <span class="st">"Hello, World!"</span></span>
+<span id="cb7-2"><a></a><span class="bu">print</span>(message.upper())  <span class="co"># Converts to uppercase</span></span>
+<span id="cb7-3"><a></a><span class="bu">print</span>(message.lower())  <span class="co"># Converts to lowercase</span></span>
+<span id="cb7-4"><a></a><span class="bu">print</span>(message.title())  <span class="co"># Converts to title case</span></span>
+<span id="cb7-5"><a></a><span class="bu">print</span>(message.replace(<span class="st">"World"</span>, <span class="st">"Python"</span>))  <span class="co"># Replaces "World" with "Python"</span></span>
+<span id="cb7-6"><a></a><span class="bu">print</span>(message.find(<span class="st">"World"</span>))  <span class="co"># Finds "World" and returns its index</span></span>
+<span id="cb7-7"><a></a><span class="bu">print</span>(message.count(<span class="st">"o"</span>))  <span class="co"># Counts the number of occurrences of "o"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell fragment" data-execution_count="5">
+<div class="cell-output cell-output-stdout">
+<pre><code>HELLO, WORLD!
+hello, world!
+Hello, World!
+Hello, Python!
+7
+2</code></pre>
+</div>
+</div>
+<div class="fragment">
+<div class="callout callout-note callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Note</strong></p>
+</div>
+<div class="callout-content">
+<p>Note, how <code>replace()</code> does not modify the original string. Instead, it returns a new string.</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="string-task" class="slide level2">
+<h2>String Task</h2>
+<p><span class="task">&gt; Task:</span> Discuss and implement the following task:</p>
+<div id="b4095f6d" class="cell" data-execution_count="6">
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a></a><span class="co"># Change the following message to get the desired output</span></span>
+<span id="cb9-2"><a></a>message <span class="op">=</span> <span class="st">" the snake programmer. "</span></span>
+<span id="cb9-3"><a></a><span class="co"># Your code here</span></span>
+<span id="cb9-4"><a></a></span>
+<span id="cb9-5"><a></a>output <span class="op">=</span> <span class="st">"The Python Programmer."</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="fragment">
+<div class="callout callout-tip callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Tip</strong></p>
+</div>
+<div class="callout-content">
+<p>Remember, that these methods return a new string. The original string is not modified.</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="string-task-in-action" class="slide level2">
+<h2>String Task in Action</h2>
+<div id="21feb883" class="cell" data-execution_count="7">
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a></a>message <span class="op">=</span> <span class="st">" the snake programmer. "</span></span>
+<span id="cb10-2"><a></a><span class="bu">print</span>(message.strip().title().replace(<span class="st">"Snake"</span>, <span class="st">"Python"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell fragment" data-execution_count="7">
+<div class="cell-output cell-output-stdout">
+<pre><code>The Python Programmer.</code></pre>
+</div>
+</div>
+<div class="fragment">
+<div class="callout callout-tip callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Tip</strong></p>
+</div>
+<div class="callout-content">
+<p>Here we chained methods together to perform multiple operations after another in one line.</p>
+</div>
+</div>
+</div>
+</div>
+</section></section>
+<section>
+<section id="indexing-and-slicing" class="title-slide slide level1 title center">
+<h1><span class="flow">Indexing and Slicing</span></h1>
+
+</section>
+<section id="indexing" class="slide level2">
+<h2>Indexing</h2>
+<ul>
+<li>We have used indexing to access elements of a string last lecture</li>
+<li>It allows you to access <strong>elements of a sequence</strong> by position</li>
+<li><strong>Positive indexing</strong> starts at 0 for the first element</li>
+<li><strong>Negative indexing</strong> starts at -1 for the last element <span class="highlight">(new)</span></li>
+</ul>
+<div class="fragment">
+<div id="55e509f2" class="cell" data-execution_count="8">
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a></a>string_to_index <span class="op">=</span> <span class="st">"Hello, World!"</span></span>
+<span id="cb12-2"><a></a><span class="bu">print</span>(string_to_index[<span class="dv">0</span>])  <span class="co"># Accessing the first character</span></span>
+<span id="cb12-3"><a></a><span class="bu">print</span>(string_to_index[<span class="op">-</span><span class="dv">1</span>]) <span class="co"># Accessing the last character</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell fragment" data-execution_count="8">
+<div class="cell-output cell-output-stdout">
+<pre><code>H
+!</code></pre>
+</div>
+</div>
+</div>
+</section>
+<section id="slicing" class="slide level2">
+<h2>Slicing</h2>
+<ul>
+<li>Slicing allows you to <strong>extract a portion of a sequence</strong></li>
+<li>Syntax: <code>sequence[start:stop:step]</code></li>
+<li><code>start</code> is the index of the <strong>first element to include</strong></li>
+<li><code>stop</code> is the index of the <strong>first element to exclude</strong></li>
+<li><code>step</code> is the increment between indices (default is 1)</li>
+<li>The result is a <strong>new sequence</strong> containing the extracted elements</li>
+</ul>
+<div class="fragment">
+<div id="217a31d7" class="cell" data-execution_count="9">
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a></a>string_to_slice <span class="op">=</span> <span class="st">"Hello, World!"</span></span>
+<span id="cb14-2"><a></a><span class="bu">print</span>(string_to_slice[<span class="dv">7</span>:<span class="dv">12</span>])   <span class="co"># Accessing the last five characters from the start</span></span>
+<span id="cb14-3"><a></a><span class="bu">print</span>(string_to_slice[<span class="op">-</span><span class="dv">6</span>:<span class="op">-</span><span class="dv">1</span>])  <span class="co"># Accessing the last five characters from the end</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell fragment" data-execution_count="9">
+<div class="cell-output cell-output-stdout">
+<pre><code>World
+World</code></pre>
+</div>
+</div>
+</div>
+</section>
+<section id="slicing-simplified" class="slide level2">
+<h2>Slicing Simplified</h2>
+<ul>
+<li>If we omit <code>start</code> or <code>stop</code>, it will be replaced by the <strong>start or end</strong> of the sequence, respectively</li>
+<li>If we omit <code>step</code>, it will be replaced by 1</li>
+</ul>
+<div class="fragment">
+<div id="b73ba121" class="cell" data-execution_count="10">
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a></a>string_to_slice <span class="op">=</span> <span class="st">"Hello, World!"</span></span>
+<span id="cb16-2"><a></a><span class="bu">print</span>(string_to_slice[::<span class="dv">2</span>])   <span class="co"># Accessing every second character</span></span>
+<span id="cb16-3"><a></a><span class="bu">print</span>(string_to_slice[::<span class="op">-</span><span class="dv">1</span>])  <span class="co"># Accessing the string in reverse</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell fragment" data-execution_count="10">
+<div class="cell-output cell-output-stdout">
+<pre><code>Hlo ol!
+!dlroW ,olleH</code></pre>
+</div>
+</div>
+</div>
+</section>
+<section id="slicing-string-task" class="slide level2">
+<h2>Slicing String Task</h2>
+<p><span class="task">&gt; Task:</span> Discuss and implement the following task:</p>
+<div id="75b77662" class="cell" data-execution_count="11">
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a></a><span class="co"># Slice the following message to create the described output</span></span>
+<span id="cb18-2"><a></a>message <span class="op">=</span> <span class="st">"y6S0-teru89d23e'.n*ut"</span></span>
+<span id="cb18-3"><a></a><span class="co"># Your code here</span></span>
+<span id="cb18-4"><a></a></span>
+<span id="cb18-5"><a></a>output <span class="op">=</span> <span class="st">"Student"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="fragment">
+<div class="callout callout-tip callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Tip</strong></p>
+</div>
+<div class="callout-content">
+<p>Remember, that these methods return a new string. The original string is not modified.</p>
+</div>
+</div>
+</div>
+</div>
+</section></section>
+<section>
+<section id="comparisons" class="title-slide slide level1 title center">
+<h1><span class="flow">Comparisons</span></h1>
+
+</section>
+<section id="comparison-operators" class="slide level2">
+<h2>Comparison Operators</h2>
+<ul>
+<li>Comparison operators are used to compare two values</li>
+<li>The result of a comparison is a boolean value (<code>True</code> or <code>False</code>)</li>
+</ul>
+<div class="fragment">
+<p><span class="question">&gt; Question:</span> What will be the output of the following code?</p>
+<div id="1eaf04c3" class="cell" data-execution_count="12">
+<div class="sourceCode cell-code" id="cb19" data-code-line-numbers="1-2|3|4|5|6|7|8"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a></a>lower_number <span class="op">=</span> <span class="dv">2</span><span class="op">;</span> upper_number <span class="op">=</span> <span class="dv">9</span></span>
+<span id="cb19-2"><a></a><span class="bu">print</span>(lower_number <span class="op">==</span> upper_number) <span class="co"># Equality</span></span>
+<span id="cb19-3"><a></a><span class="bu">print</span>(lower_number <span class="op">!=</span> upper_number) <span class="co"># Inequality</span></span>
+<span id="cb19-4"><a></a><span class="bu">print</span>(lower_number <span class="op">&gt;</span> upper_number) <span class="co"># Greater than</span></span>
+<span id="cb19-5"><a></a><span class="bu">print</span>(lower_number <span class="op">&lt;</span> upper_number) <span class="co"># Less than</span></span>
+<span id="cb19-6"><a></a><span class="bu">print</span>(lower_number <span class="op">&gt;=</span> upper_number) <span class="co"># Greater than or equal to</span></span>
+<span id="cb19-7"><a></a><span class="bu">print</span>(lower_number <span class="op">&lt;=</span> upper_number) <span class="co"># Less than or equal to </span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell fragment" data-execution_count="12">
+<div class="cell-output cell-output-stdout">
+<pre><code>False
+True
+False
+True
+False
+True</code></pre>
+</div>
+</div>
+</div>
+</section>
+<section id="logical-operators" class="slide level2">
+<h2>Logical Operators</h2>
+<ul>
+<li>Logical operators combine multiple comparison operators</li>
+<li>Common logical operators: <code>and</code>, <code>or</code>, <code>not</code></li>
+</ul>
+<div class="fragment">
+<p><span class="question">&gt; Question:</span> Which of the following expressions is <code>True</code>?</p>
+<div id="3fa5c5bd" class="cell" data-execution_count="13">
+<div class="sourceCode cell-code" id="cb21" data-code-line-numbers="1-2|3|4"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a></a>lower_number <span class="op">=</span> <span class="dv">2</span><span class="op">;</span> middle_number <span class="op">=</span> <span class="dv">5</span><span class="op">;</span> upper_number <span class="op">=</span> <span class="dv">9</span><span class="op">;</span> </span>
+<span id="cb21-2"><a></a><span class="bu">print</span>(lower_number <span class="op">&lt;</span> middle_number <span class="kw">and</span> middle_number <span class="op">&lt;</span> upper_number) <span class="co"># and</span></span>
+<span id="cb21-3"><a></a><span class="bu">print</span>(lower_number <span class="op">&lt;</span> middle_number <span class="kw">or</span> middle_number <span class="op">&gt;</span> upper_number) <span class="co"># or</span></span>
+<span id="cb21-4"><a></a><span class="bu">print</span>(lower_number <span class="op">==</span> lower_number <span class="kw">and</span> <span class="kw">not</span> lower_number <span class="op">&gt;</span> middle_number) <span class="co"># not</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell fragment" data-execution_count="13">
+<div class="cell-output cell-output-stdout">
+<pre><code>True
+True
+True</code></pre>
+</div>
+</div>
+</div>
+<div class="fragment">
+<div class="callout callout-note callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Note</strong></p>
+</div>
+<div class="callout-content">
+<p>Note, that <code>and</code> and <code>or</code> are evaluated from left to right.</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="membership-operators" class="slide level2">
+<h2>Membership Operators</h2>
+<ul>
+<li>Used to check if a value is present in a sequence</li>
+<li>Common membership operators: <code>in</code>, <code>not in</code></li>
+</ul>
+<div class="fragment">
+<p><span class="question">&gt; Question:</span> Which of these expressions is <code>True</code>?</p>
+<div id="eb9a14f6" class="cell" data-execution_count="14">
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a></a>an_apple <span class="op">=</span> <span class="st">"apple"</span></span>
+<span id="cb23-2"><a></a><span class="bu">print</span>(<span class="st">"a"</span> <span class="kw">in</span> an_apple) <span class="co"># Check if "a" is in the string "apple"</span></span>
+<span id="cb23-3"><a></a><span class="bu">print</span>(<span class="st">"pp"</span> <span class="kw">not</span> <span class="kw">in</span> an_apple) <span class="co"># Check if "pp" is not in the string</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell fragment" data-execution_count="14">
+<div class="cell-output cell-output-stdout">
+<pre><code>True
+False</code></pre>
+</div>
+</div>
+</div>
+<div class="fragment">
+<div class="callout callout-note callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Note</strong></p>
+</div>
+<div class="callout-content">
+<p>Note, that <code>in</code> and <code>not in</code> can be used for strings, lists, tuples, sets, and dictionaries. <span class="highlight">Don’t worry!</span> We will learn about lists, tuples, sets, and dictionaries later in the course.</p>
+</div>
+</div>
+</div>
+</div>
+</section></section>
+<section>
+<section id="control-structures" class="title-slide slide level1 title center">
+<h1><span class="flow">Control Structures</span></h1>
+
+</section>
+<section id="control-structures-1" class="slide level2">
+<h2>Control Structures</h2>
+<ul>
+<li>Used to <strong>control the flow of execution</strong> in a program</li>
+<li>They can be used to <span class="highlight">make decisions</span> and <span class="highlight">repeat code blocks</span></li>
+<li><code>if</code>, <code>elif</code>, <code>else</code>, <code>for</code>, <code>while</code>, <code>break</code>, <code>continue</code></li>
+</ul>
+<div class="fragment">
+<p><span class="question">&gt; Question:</span> What do you think each of the above does?</p>
+</div>
+</section>
+<section id="indentation" class="slide level2">
+<h2>Indentation</h2>
+<ul>
+<li>Indentation is crucial in Python!</li>
+<li>It is used to indicate the block of code that belongs to the structure</li>
+<li>The standard indentation is 4 spaces</li>
+<li>You can use tabs, but you <span class="highlight">should be careful</span> with that</li>
+</ul>
+<div class="fragment">
+<div class="callout callout-warning callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Warning</strong></p>
+</div>
+<div class="callout-content">
+<p>Mixing tabs and spaces can cause errors that are difficult to debug. The Python style guide (PEP 8) recommends using 4 spaces per indentation level for consistency and readability.</p>
+</div>
+</div>
+</div>
+</div>
+</section></section>
+<section>
+<section id="conditional-statements" class="title-slide slide level1 title center">
+<h1><span class="flow">Conditional Statements</span></h1>
+
+</section>
+<section id="conditional-statements-1" class="slide level2">
+<h2>Conditional Statements</h2>
+<ul>
+<li>They are used to execute <span class="highlight">different blocks of code</span> based on whether a condition is <span class="highlight">true or false</span>:
+<ul>
+<li><code>if</code> statements execute a block of code if a condition is <code>True</code></li>
+<li><code>elif</code> statements execute a block of code if the previous condition is <code>False</code> and the current condition is <code>True</code></li>
+<li><code>else</code> statements execute a block of code if the previous conditions are <code>False</code></li>
+</ul></li>
+</ul>
+<div class="fragment">
+<div class="callout callout-tip callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Tip</strong></p>
+</div>
+<div class="callout-content">
+<p>You can use the <code>and</code> and <code>or</code> operators to combine multiple conditions.</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="if-statements" class="slide level2">
+<h2>if-statements</h2>
+<div id="43f41574" class="cell" data-execution_count="15">
+<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb25-1"><a></a>condition <span class="op">=</span> <span class="va">True</span></span>
+<span id="cb25-2"><a></a><span class="cf">if</span> condition:</span>
+<span id="cb25-3"><a></a>    <span class="bu">print</span>(<span class="st">"The condition is True!"</span>) <span class="co"># Code block to execute if condition is True</span></span>
+<span id="cb25-4"><a></a><span class="bu">print</span>(<span class="st">"This will always be printed!"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell fragment" data-execution_count="15">
+<div class="cell-output cell-output-stdout">
+<pre><code>The condition is True!
+This will always be printed!</code></pre>
+</div>
+</div>
+<div class="fragment">
+<div id="ae90a1d7" class="cell" data-execution_count="16">
+<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb27-1"><a></a>condition <span class="op">=</span> <span class="va">False</span></span>
+<span id="cb27-2"><a></a><span class="cf">if</span> condition:</span>
+<span id="cb27-3"><a></a>    <span class="bu">print</span>(<span class="st">"The condition is True!"</span>) <span class="co"># Code block to execute if condition is True</span></span>
+<span id="cb27-4"><a></a><span class="bu">print</span>(<span class="st">"This will always be printed!"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell fragment" data-execution_count="16">
+<div class="cell-output cell-output-stdout">
+<pre><code>This will always be printed!</code></pre>
+</div>
+</div>
+</div>
+<div class="fragment">
+<div class="callout callout-tip callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Tip</strong></p>
+</div>
+<div class="callout-content">
+<p>Writing <code>if condition:</code> is equivalent to <code>if condition == True:</code></p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="else-statements" class="slide level2">
+<h2>else-statements</h2>
+<div id="fba14eca" class="cell" data-execution_count="17">
+<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb29-1"><a></a>condition <span class="op">=</span> <span class="va">True</span></span>
+<span id="cb29-2"><a></a><span class="cf">if</span> condition:</span>
+<span id="cb29-3"><a></a>    <span class="bu">print</span>(<span class="st">"The condition is True!"</span>) <span class="co"># Code block to execute if condition is True</span></span>
+<span id="cb29-4"><a></a><span class="cf">else</span>:</span>
+<span id="cb29-5"><a></a>    <span class="bu">print</span>(<span class="st">"The condition is False!"</span>) <span class="co"># Code block to execute if condition is False</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell fragment" data-execution_count="17">
+<div class="cell-output cell-output-stdout">
+<pre><code>The condition is True!</code></pre>
+</div>
+</div>
+<div class="fragment">
+<div id="738c78fb" class="cell" data-execution_count="18">
+<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb31-1"><a></a>condition <span class="op">=</span> <span class="va">False</span></span>
+<span id="cb31-2"><a></a><span class="cf">if</span> condition:</span>
+<span id="cb31-3"><a></a>    <span class="bu">print</span>(<span class="st">"The condition is True!"</span>) <span class="co"># Code block to execute if condition is True</span></span>
+<span id="cb31-4"><a></a><span class="cf">else</span>:</span>
+<span id="cb31-5"><a></a>    <span class="bu">print</span>(<span class="st">"The condition is False!"</span>) <span class="co"># Code block to execute if condition is False</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell fragment" data-execution_count="18">
+<div class="cell-output cell-output-stdout">
+<pre><code>The condition is False!</code></pre>
+</div>
+</div>
+</div>
+</section>
+<section id="elif-statements" class="slide level2">
+<h2>elif-statements</h2>
+<div id="b4c878cd" class="cell" data-execution_count="19">
+<div class="sourceCode cell-code" id="cb33"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb33-1"><a></a>temperature <span class="op">=</span> <span class="dv">11</span></span>
+<span id="cb33-2"><a></a><span class="cf">if</span> temperature <span class="op">&gt;</span> <span class="dv">10</span>:</span>
+<span id="cb33-3"><a></a>    <span class="bu">print</span>(<span class="st">"The temperature is greater than 10!"</span>)</span>
+<span id="cb33-4"><a></a><span class="cf">elif</span> temperature <span class="op">==</span> <span class="dv">10</span>:</span>
+<span id="cb33-5"><a></a>    <span class="bu">print</span>(<span class="st">"The temperature is equal to 10!"</span>)</span>
+<span id="cb33-6"><a></a><span class="cf">else</span>:</span>
+<span id="cb33-7"><a></a>    <span class="bu">print</span>(<span class="st">"The temperature is less than 10!"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell fragment" data-execution_count="19">
+<div class="cell-output cell-output-stdout">
+<pre><code>The temperature is greater than 10!</code></pre>
+</div>
+</div>
+<div class="fragment">
+<div id="f8edbb46" class="cell" data-execution_count="20">
+<div class="sourceCode cell-code" id="cb35"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb35-1"><a></a>temperature <span class="op">=</span> <span class="dv">10</span></span>
+<span id="cb35-2"><a></a><span class="cf">if</span> temperature <span class="op">&gt;</span> <span class="dv">10</span>:</span>
+<span id="cb35-3"><a></a>    <span class="bu">print</span>(<span class="st">"The temperature is greater than 10!"</span>)</span>
+<span id="cb35-4"><a></a><span class="cf">elif</span> temperature <span class="op">==</span> <span class="dv">10</span>:</span>
+<span id="cb35-5"><a></a>    <span class="bu">print</span>(<span class="st">"The temperature is equal to 10!"</span>)</span>
+<span id="cb35-6"><a></a><span class="cf">else</span>:</span>
+<span id="cb35-7"><a></a>    <span class="bu">print</span>(<span class="st">"The temperature is less than 10!"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell fragment" data-execution_count="20">
+<div class="cell-output cell-output-stdout">
+<pre><code>The temperature is equal to 10!</code></pre>
+</div>
+</div>
+</div>
+</section>
+<section id="comparisons-and-conditional-statements" class="slide level2">
+<h2>Comparisons and Conditional Statements</h2>
+<p><span class="question">&gt; Question:</span> What will be the output of the following code?</p>
+<div id="7ce01dcd" class="cell" data-execution_count="21">
+<div class="sourceCode cell-code" id="cb37"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb37-1"><a></a>name <span class="op">=</span> <span class="st">"Harry"</span></span>
+<span id="cb37-2"><a></a>profession <span class="op">=</span> <span class="st">"wizard"</span></span>
+<span id="cb37-3"><a></a>age <span class="op">=</span> <span class="dv">16</span></span>
+<span id="cb37-4"><a></a><span class="cf">if</span> name <span class="op">==</span> <span class="st">"Harry"</span> <span class="kw">and</span> profession <span class="op">==</span> <span class="st">"wizard"</span> <span class="kw">and</span> age <span class="op">&lt;</span> <span class="dv">18</span>:</span>
+<span id="cb37-5"><a></a>    <span class="bu">print</span>(<span class="st">"You are the chosen one still visiting school!"</span>)</span>
+<span id="cb37-6"><a></a><span class="cf">elif</span> name <span class="op">==</span> <span class="st">"Harry"</span> <span class="kw">and</span> profession <span class="op">==</span> <span class="st">"wizard"</span> <span class="kw">and</span> age <span class="op">&gt;=</span> <span class="dv">18</span>:</span>
+<span id="cb37-7"><a></a>    <span class="bu">print</span>(<span class="st">"You are the chosen one and can start your journey!"</span>)</span>
+<span id="cb37-8"><a></a><span class="cf">else</span>:</span>
+<span id="cb37-9"><a></a>    <span class="bu">print</span>(<span class="st">"You are not the chosen one!"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell fragment" data-execution_count="21">
+<div class="cell-output cell-output-stdout">
+<pre><code>You are the chosen one still visiting school!</code></pre>
+</div>
+</div>
+</section></section>
+<section>
+<section id="loops" class="title-slide slide level1 title center">
+<h1><span class="flow">Loops</span></h1>
+
+</section>
+<section id="loops-1" class="slide level2">
+<h2>Loops</h2>
+<ul>
+<li>Loops allow you to execute a block of code <span class="highlight">repeatedly</span></li>
+<li>There are two types of loops: <code>for</code> and <code>while</code></li>
+<li><code>for</code> loops are used to iterate over a sequence (e.g., list, tuple, string)</li>
+<li><code>while</code> loops execute repeatedly until a condition is <code>False</code></li>
+</ul>
+<div class="fragment">
+<div class="callout callout-tip callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Tip</strong></p>
+</div>
+<div class="callout-content">
+<p>Nested control structures through further indentation are allowed as well, we thus can chain multiple control structures together.</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="for-loops" class="slide level2">
+<h2>for-loops</h2>
+<div id="c5a57dff" class="cell" data-execution_count="22">
+<div class="sourceCode cell-code" id="cb39"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb39-1"><a></a><span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">5</span>):</span>
+<span id="cb39-2"><a></a>    <span class="bu">print</span>(i)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell fragment" data-execution_count="22">
+<div class="cell-output cell-output-stdout">
+<pre><code>0
+1
+2
+3
+4</code></pre>
+</div>
+</div>
+<div id="009b376c" class="cell" data-execution_count="23">
+<div class="sourceCode cell-code" id="cb41"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb41-1"><a></a><span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">0</span>, <span class="dv">10</span>, <span class="dv">2</span>):</span>
+<span id="cb41-2"><a></a>    <span class="bu">print</span>(i)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell fragment" data-execution_count="23">
+<div class="cell-output cell-output-stdout">
+<pre><code>0
+2
+4
+6
+8</code></pre>
+</div>
+</div>
+<div class="fragment">
+<div class="callout callout-tip callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Tip</strong></p>
+</div>
+<div class="callout-content">
+<p>The <code>range()</code> function can take up to three arguments: start, stop, and step.</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="for-loops-with-strings" class="slide level2">
+<h2>for-loops with Strings</h2>
+<p><span class="question">&gt; Question:</span> What do you expect will be the output?</p>
+<div id="089ab77d" class="cell" data-execution_count="24">
+<div class="sourceCode cell-code" id="cb43"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb43-1"><a></a>fruit <span class="op">=</span> <span class="st">"yellow banana"</span></span>
+<span id="cb43-2"><a></a><span class="cf">for</span> letter <span class="kw">in</span> fruit:</span>
+<span id="cb43-3"><a></a>    <span class="bu">print</span>(letter)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell fragment" data-execution_count="24">
+<div class="cell-output cell-output-stdout">
+<pre><code>y
+e
+l
+l
+o
+w
+ 
+b
+a
+n
+a
+n
+a</code></pre>
+</div>
+</div>
+</section>
+<section id="while-loops" class="slide level2">
+<h2>while-loops</h2>
+<div id="df259327" class="cell" data-execution_count="25">
+<div class="sourceCode cell-code" id="cb45"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb45-1"><a></a>i <span class="op">=</span> <span class="dv">0</span></span>
+<span id="cb45-2"><a></a><span class="cf">while</span> i <span class="op">&lt;</span> <span class="dv">5</span>:</span>
+<span id="cb45-3"><a></a>    <span class="bu">print</span>(i)</span>
+<span id="cb45-4"><a></a>    i <span class="op">+=</span> <span class="dv">1</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell fragment" data-execution_count="25">
+<div class="cell-output cell-output-stdout">
+<pre><code>0
+1
+2
+3
+4</code></pre>
+</div>
+</div>
+<div class="fragment">
+<p><span class="question">&gt; Question:</span> What could be an issue with poorly written while-loops?</p>
+</div>
+</section>
+<section id="while-true" class="slide level2">
+<h2>while True</h2>
+<p><span class="question">&gt; Question:</span> Anybody an idea what this code does?</p>
+<div id="32c64507" class="cell" data-execution_count="26">
+<div class="sourceCode cell-code" id="cb47"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb47-1"><a></a>i <span class="op">=</span> <span class="dv">0</span></span>
+<span id="cb47-2"><a></a><span class="cf">while</span> <span class="va">True</span>:</span>
+<span id="cb47-3"><a></a>    <span class="cf">if</span> i <span class="op">%</span> <span class="dv">10</span> <span class="op">==</span> <span class="dv">0</span>:</span>
+<span id="cb47-4"><a></a>         <span class="bu">print</span>(i)</span>
+<span id="cb47-5"><a></a>    <span class="cf">if</span> i <span class="op">&gt;</span> <span class="dv">100</span>:</span>
+<span id="cb47-6"><a></a>        <span class="cf">break</span></span>
+<span id="cb47-7"><a></a>    i <span class="op">+=</span> <span class="dv">1</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell fragment" data-execution_count="26">
+<div class="cell-output cell-output-stdout">
+<pre><code>0
+10
+20
+30
+40
+50
+60
+70
+80
+90
+100</code></pre>
+</div>
+</div>
+</section>
+<section id="importance-of-control-flow" class="slide level2">
+<h2>Importance of Control Flow</h2>
+<ul>
+<li>Allows programs to make decisions based on <strong>conditions</strong></li>
+<li>Enables <strong>repetition</strong> of code blocks</li>
+<li>Helps manage program complexity</li>
+<li>Improves efficiency by <span class="highlight">executing only necessary code</span></li>
+<li>Facilitates creation of dynamic, responsive programs</li>
+</ul>
+<div class="fragment">
+<div class="callout callout-note callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Note</strong></p>
+</div>
+<div class="callout-content">
+<p>Without control flow, programs would execute linearly from top to bottom, limiting their functionality and flexibility.</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="loop-task" class="slide level2">
+<h2>Loop Task</h2>
+<p><span class="task">&gt; Task:</span> Implement the following task:</p>
+<div id="8232582b" class="cell" data-execution_count="27">
+<div class="sourceCode cell-code" id="cb49"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb49-1"><a></a><span class="co"># Implement a while-loop that prints all even numbers between 0 and 100 excluding both 0 and 100.</span></span>
+<span id="cb49-2"><a></a>number <span class="op">=</span> <span class="dv">0</span></span>
+<span id="cb49-3"><a></a><span class="co"># Your code here</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="fragment">
+<div class="callout callout-note callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Note</strong></p>
+</div>
+<div class="callout-content">
+<p><strong>And that’s it for todays lecture!</strong><br>
+We now have covered the basics on String methods, Comparisons, conditional statements and loops.</p>
+</div>
+</div>
+</div>
+</div>
+</section></section>
+<section>
+<section id="literature" class="title-slide slide level1 title center">
+<h1><span class="flow">Literature</span></h1>
+
+</section>
+<section id="interesting-books-to-start" class="slide level2">
+<h2>Interesting Books to start</h2>
+<ul>
+<li>Downey, A. B. (2024). Think Python: How to think like a computer scientist (Third edition). O’Reilly. <a href="https://greenteapress.com/wp/think-python-3rd-edition/">Link to free online version</a></li>
+<li>Elter, S. (2021). Schrödinger programmiert Python: Das etwas andere Fachbuch (1. Auflage). Rheinwerk Verlag.</li>
+</ul>
+<div class="fragment">
+<div class="callout callout-tip callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Tip</strong></p>
+</div>
+<div class="callout-content">
+<p>Nothing new here, but these are still great books to start with!</p>
+</div>
+</div>
+</div>
+</div>
+<div class="fragment">
+<p>For more interesting literature to learn more about Python, take a look at the <a href="../general/literature.html">literature list</a> of this course.</p>
+
+<div class="quarto-auto-generated-content">
+<div class="footer footer-default">
+<p>Lecture II - Control Structures for Your Code | Dr.&nbsp;Tobias Vlćek | <a href="../part-02/lecture-control.html">Home</a></p>
+</div>
+</div>
+</div>
+</section></section>
+    </div>
+  </div>
+
+  <script>window.backupDefine = window.define; window.define = undefined;</script>
+  <script src="../site_libs/revealjs/dist/reveal.js"></script>
+  <!-- reveal.js plugins -->
+  <script src="../site_libs/revealjs/plugin/quarto-line-highlight/line-highlight.js"></script>
+  <script src="../site_libs/revealjs/plugin/pdf-export/pdfexport.js"></script>
+  <script src="../site_libs/revealjs/plugin/reveal-menu/menu.js"></script>
+  <script src="../site_libs/revealjs/plugin/reveal-menu/quarto-menu.js"></script>
+  <script src="../site_libs/revealjs/plugin/quarto-support/support.js"></script>
+  
+
+  <script src="../site_libs/revealjs/plugin/notes/notes.js"></script>
+  <script src="../site_libs/revealjs/plugin/search/search.js"></script>
+  <script src="../site_libs/revealjs/plugin/zoom/zoom.js"></script>
+  <script src="../site_libs/revealjs/plugin/math/math.js"></script>
+  <script>window.define = window.backupDefine; window.backupDefine = undefined;</script>
+
+  <script>
+
+      // Full list of configuration options available at:
+      // https://revealjs.com/config/
+      Reveal.initialize({
+'controlsAuto': true,
+'previewLinksAuto': true,
+'pdfSeparateFragments': false,
+'autoAnimateEasing': "ease",
+'autoAnimateDuration': 1,
+'autoAnimateUnmatched': true,
+'menu': {"side":"left","useTextContentForMissingTitles":true,"markers":false,"loadIcons":false,"custom":[{"title":"Tools","icon":"<i class=\"fas fa-gear\"></i>","content":"<ul class=\"slide-menu-items\">\n<li class=\"slide-tool-item active\" data-item=\"0\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.fullscreen(event)\"><kbd>f</kbd> Fullscreen</a></li>\n<li class=\"slide-tool-item\" data-item=\"1\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.speakerMode(event)\"><kbd>s</kbd> Speaker View</a></li>\n<li class=\"slide-tool-item\" data-item=\"2\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.overview(event)\"><kbd>o</kbd> Slide Overview</a></li>\n<li class=\"slide-tool-item\" data-item=\"3\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.togglePdfExport(event)\"><kbd>e</kbd> PDF Export Mode</a></li>\n<li class=\"slide-tool-item\" data-item=\"4\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.keyboardHelp(event)\"><kbd>?</kbd> Keyboard Help</a></li>\n</ul>"}],"openButton":true},
+'smaller': false,
+ 
+        // Display controls in the bottom right corner
+        controls: false,
+
+        // Help the user learn the controls by providing hints, for example by
+        // bouncing the down arrow when they first encounter a vertical slide
+        controlsTutorial: false,
+
+        // Determines where controls appear, "edges" or "bottom-right"
+        controlsLayout: 'edges',
+
+        // Visibility rule for backwards navigation arrows; "faded", "hidden"
+        // or "visible"
+        controlsBackArrows: 'faded',
+
+        // Display a presentation progress bar
+        progress: true,
+
+        // Display the page number of the current slide
+        slideNumber: 'c/t',
+
+        // 'all', 'print', or 'speaker'
+        showSlideNumber: 'all',
+
+        // Add the current slide number to the URL hash so that reloading the
+        // page/copying the URL will return you to the same slide
+        hash: true,
+
+        // Start with 1 for the hash rather than 0
+        hashOneBasedIndex: false,
+
+        // Flags if we should monitor the hash and change slides accordingly
+        respondToHashChanges: true,
+
+        // Push each slide change to the browser history
+        history: true,
+
+        // Enable keyboard shortcuts for navigation
+        keyboard: true,
+
+        // Enable the slide overview mode
+        overview: true,
+
+        // Disables the default reveal.js slide layout (scaling and centering)
+        // so that you can use custom CSS layout
+        disableLayout: false,
+
+        // Vertical centering of slides
+        center: false,
+
+        // Enables touch navigation on devices with touch input
+        touch: true,
+
+        // Loop the presentation
+        loop: false,
+
+        // Change the presentation direction to be RTL
+        rtl: false,
+
+        // see https://revealjs.com/vertical-slides/#navigation-mode
+        navigationMode: 'linear',
+
+        // Randomizes the order of slides each time the presentation loads
+        shuffle: false,
+
+        // Turns fragments on and off globally
+        fragments: true,
+
+        // Flags whether to include the current fragment in the URL,
+        // so that reloading brings you to the same fragment position
+        fragmentInURL: false,
+
+        // Flags if the presentation is running in an embedded mode,
+        // i.e. contained within a limited portion of the screen
+        embedded: false,
+
+        // Flags if we should show a help overlay when the questionmark
+        // key is pressed
+        help: true,
+
+        // Flags if it should be possible to pause the presentation (blackout)
+        pause: true,
+
+        // Flags if speaker notes should be visible to all viewers
+        showNotes: false,
+
+        // Global override for autoplaying embedded media (null/true/false)
+        autoPlayMedia: null,
+
+        // Global override for preloading lazy-loaded iframes (null/true/false)
+        preloadIframes: null,
+
+        // Number of milliseconds between automatically proceeding to the
+        // next slide, disabled when set to 0, this value can be overwritten
+        // by using a data-autoslide attribute on your slides
+        autoSlide: 0,
+
+        // Stop auto-sliding after user input
+        autoSlideStoppable: true,
+
+        // Use this method for navigation when auto-sliding
+        autoSlideMethod: null,
+
+        // Specify the average time in seconds that you think you will spend
+        // presenting each slide. This is used to show a pacing timer in the
+        // speaker view
+        defaultTiming: null,
+
+        // Enable slide navigation via mouse wheel
+        mouseWheel: false,
+
+        // The display mode that will be used to show slides
+        display: 'block',
+
+        // Hide cursor if inactive
+        hideInactiveCursor: true,
+
+        // Time before the cursor is hidden (in ms)
+        hideCursorTime: 5000,
+
+        // Opens links in an iframe preview overlay
+        previewLinks: false,
+
+        // Transition style (none/fade/slide/convex/concave/zoom)
+        transition: 'slide',
+
+        // Transition speed (default/fast/slow)
+        transitionSpeed: 'fast',
+
+        // Transition style for full page slide backgrounds
+        // (none/fade/slide/convex/concave/zoom)
+        backgroundTransition: 'none',
+
+        // Number of slides away from the current that are visible
+        viewDistance: 3,
+
+        // Number of slides away from the current that are visible on mobile
+        // devices. It is advisable to set this to a lower number than
+        // viewDistance in order to save resources.
+        mobileViewDistance: 2,
+
+        // The "normal" size of the presentation, aspect ratio will be preserved
+        // when the presentation is scaled to fit different resolutions. Can be
+        // specified using percentage units.
+        width: 1260,
+
+        height: 840,
+
+        // Factor of the display size that should remain empty around the content
+        margin: 0.1,
+
+        math: {
+          mathjax: 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js',
+          config: 'TeX-AMS_HTML-full',
+          tex2jax: {
+            inlineMath: [['\\(','\\)']],
+            displayMath: [['\\[','\\]']],
+            balanceBraces: true,
+            processEscapes: false,
+            processRefs: true,
+            processEnvironments: true,
+            preview: 'TeX',
+            skipTags: ['script','noscript','style','textarea','pre','code'],
+            ignoreClass: 'tex2jax_ignore',
+            processClass: 'tex2jax_process'
+          },
+        },
+
+        // reveal.js plugins
+        plugins: [QuartoLineHighlight, PdfExport, RevealMenu, QuartoSupport,
+
+          RevealMath,
+          RevealNotes,
+          RevealSearch,
+          RevealZoom
+        ]
+      });
+    </script>
+    <script id="quarto-html-after-body" type="application/javascript">
+    window.document.addEventListener("DOMContentLoaded", function (event) {
+      const toggleBodyColorMode = (bsSheetEl) => {
+        const mode = bsSheetEl.getAttribute("data-mode");
+        const bodyEl = window.document.querySelector("body");
+        if (mode === "dark") {
+          bodyEl.classList.add("quarto-dark");
+          bodyEl.classList.remove("quarto-light");
+        } else {
+          bodyEl.classList.add("quarto-light");
+          bodyEl.classList.remove("quarto-dark");
+        }
+      }
+      const toggleBodyColorPrimary = () => {
+        const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+        if (bsSheetEl) {
+          toggleBodyColorMode(bsSheetEl);
+        }
+      }
+      toggleBodyColorPrimary();  
+      const tabsets =  window.document.querySelectorAll(".panel-tabset-tabby")
+      tabsets.forEach(function(tabset) {
+        const tabby = new Tabby('#' + tabset.id);
+      });
+      const isCodeAnnotation = (el) => {
+        for (const clz of el.classList) {
+          if (clz.startsWith('code-annotation-')) {                     
+            return true;
+          }
+        }
+        return false;
+      }
+      const onCopySuccess = function(e) {
+        // button target
+        const button = e.trigger;
+        // don't keep focus
+        button.blur();
+        // flash "checked"
+        button.classList.add('code-copy-button-checked');
+        var currentTitle = button.getAttribute("title");
+        button.setAttribute("title", "Copied!");
+        let tooltip;
+        if (window.bootstrap) {
+          button.setAttribute("data-bs-toggle", "tooltip");
+          button.setAttribute("data-bs-placement", "left");
+          button.setAttribute("data-bs-title", "Copied!");
+          tooltip = new bootstrap.Tooltip(button, 
+            { trigger: "manual", 
+              customClass: "code-copy-button-tooltip",
+              offset: [0, -8]});
+          tooltip.show();    
+        }
+        setTimeout(function() {
+          if (tooltip) {
+            tooltip.hide();
+            button.removeAttribute("data-bs-title");
+            button.removeAttribute("data-bs-toggle");
+            button.removeAttribute("data-bs-placement");
+          }
+          button.setAttribute("title", currentTitle);
+          button.classList.remove('code-copy-button-checked');
+        }, 1000);
+        // clear code selection
+        e.clearSelection();
+      }
+      const getTextToCopy = function(trigger) {
+          const codeEl = trigger.previousElementSibling.cloneNode(true);
+          for (const childEl of codeEl.children) {
+            if (isCodeAnnotation(childEl)) {
+              childEl.remove();
+            }
+          }
+          return codeEl.innerText;
+      }
+      const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+        text: getTextToCopy
+      });
+      clipboard.on('success', onCopySuccess);
+      if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+        // For code content inside modals, clipBoardJS needs to be initialized with a container option
+        // TODO: Check when it could be a function (https://github.com/zenorocha/clipboard.js/issues/860)
+        const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+          text: getTextToCopy,
+          container: window.document.getElementById('quarto-embedded-source-code-modal')
+        });
+        clipboardModal.on('success', onCopySuccess);
+      }
+        var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+        var mailtoRegex = new RegExp(/^mailto:/);
+          var filterRegex = new RegExp("https:\/\/beyondsimulations\.github\.io\/Introduction-to-Python");
+        var isInternal = (href) => {
+            return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+        }
+        // Inspect non-navigation links and adorn them if external
+     	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+        for (var i=0; i<links.length; i++) {
+          const link = links[i];
+          if (!isInternal(link.href)) {
+            // undo the damage that might have been done by quarto-nav.js in the case of
+            // links that we want to consider external
+            if (link.dataset.originalHref !== undefined) {
+              link.href = link.dataset.originalHref;
+            }
+          }
+        }
+      function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+        const config = {
+          allowHTML: true,
+          maxWidth: 500,
+          delay: 100,
+          arrow: false,
+          appendTo: function(el) {
+              return el.closest('section.slide') || el.parentElement;
+          },
+          interactive: true,
+          interactiveBorder: 10,
+          theme: 'light-border',
+          placement: 'bottom-start',
+        };
+        if (contentFn) {
+          config.content = contentFn;
+        }
+        if (onTriggerFn) {
+          config.onTrigger = onTriggerFn;
+        }
+        if (onUntriggerFn) {
+          config.onUntrigger = onUntriggerFn;
+        }
+          config['offset'] = [0,0];
+          config['maxWidth'] = 700;
+        window.tippy(el, config); 
+      }
+      const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+      for (var i=0; i<noterefs.length; i++) {
+        const ref = noterefs[i];
+        tippyHover(ref, function() {
+          // use id or data attribute instead here
+          let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+          try { href = new URL(href).hash; } catch {}
+          const id = href.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note) {
+            return note.innerHTML;
+          } else {
+            return "";
+          }
+        });
+      }
+      const findCites = (el) => {
+        const parentEl = el.parentElement;
+        if (parentEl) {
+          const cites = parentEl.dataset.cites;
+          if (cites) {
+            return {
+              el,
+              cites: cites.split(' ')
+            };
+          } else {
+            return findCites(el.parentElement)
+          }
+        } else {
+          return undefined;
+        }
+      };
+      var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+      for (var i=0; i<bibliorefs.length; i++) {
+        const ref = bibliorefs[i];
+        const citeInfo = findCites(ref);
+        if (citeInfo) {
+          tippyHover(citeInfo.el, function() {
+            var popup = window.document.createElement('div');
+            citeInfo.cites.forEach(function(cite) {
+              var citeDiv = window.document.createElement('div');
+              citeDiv.classList.add('hanging-indent');
+              citeDiv.classList.add('csl-entry');
+              var biblioDiv = window.document.getElementById('ref-' + cite);
+              if (biblioDiv) {
+                citeDiv.innerHTML = biblioDiv.innerHTML;
+              }
+              popup.appendChild(citeDiv);
+            });
+            return popup.innerHTML;
+          });
+        }
+      }
+    });
+    </script>
+    
+
+</body></html>
