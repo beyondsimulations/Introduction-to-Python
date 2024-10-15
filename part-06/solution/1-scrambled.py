@@ -12,13 +12,11 @@ words = ["python", "programming", "computer", "algorithm", "database"]
 # Hint: Use the random.choice() function to select a word from the list and try to come up with the rest of the code yourself!
 
 import random
-import string
 
 # List of words to choose from for the game
 words = ["python", "programming", "computer", "algorithm", "database"]
 
 def scramble_word(word):
-    # Convert the word to a list of characters, shuffle them, and join back into a string
     chars = list(word)
     random.shuffle(chars)
     return ''.join(chars)

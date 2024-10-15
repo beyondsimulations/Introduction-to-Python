@@ -7,7 +7,6 @@
 # - It should also ask the user if they want to play again
 # Your code here
 
-#| eval: false
 import random
 
 def play_game():

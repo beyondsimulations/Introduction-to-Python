@@ -14,21 +14,21 @@
 import re
 
 def check_password_strength(password):
-    if len(password) < 8:
-        return "Weak"
-    
-    criteria = [
-        r'[A-Z]',  # Uppercase letter
-        r'[a-z]',  # Lowercase letter
-        r'\d',     # Digit
-        r'[!@#$%^&*]'  # Special character
-    ]
-    
-    strength = sum(bool(re.search(pattern, password)) for pattern in criteria)
-    
-    if strength == 4:
+    criteria = 0
+    if len(password) >= 8:
+        criteria += 1
+    if re.search(r'[A-Z]', password):
+        criteria += 1
+    if re.search(r'[a-z]', password):
+        criteria += 1
+    if re.search(r'\d', password):
+        criteria += 1
+    if re.search(r'[!@#$%^&*]', password):
+        criteria += 1
+
+    if criteria == 5:
         return "Strong"
-    elif strength >= 2:
+    elif criteria >= 3:
         return "Medium"
     else:
         return "Weak"
