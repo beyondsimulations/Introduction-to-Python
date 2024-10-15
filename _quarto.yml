@@ -2,6 +2,18 @@ project:
   type: website
   output-dir: docs
 
+  render:
+  - 404.qmd
+  - index.qmd
+  - general/*.qmd
+  - part-01/*.qmd
+  - part-02/*.qmd
+  - part-03/*.qmd
+  - part-04/*.qmd
+  - part-05/*.qmd
+  - part-06/*.qmd
+  - part-07/*.qmd
+
 website:
   title: "Programming with Python"
   repo-url: https://github.com/beyondsimulations/Introduction-to-Python
@@ -89,6 +101,11 @@ format:
     theme: litera
     css: styles.css
     toc: true
+  pdf:
+    include-in-header: 
+      text: |
+        \usepackage{fvextra}
+        \DefineVerbatimEnvironment{Highlighting}{Verbatim}{breaklines,commandchars=\\\{\}}
 
 execute:
   cache: true

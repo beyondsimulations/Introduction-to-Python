@@ -9,6 +9,18 @@ title-slide-attributes:
 execute:
     echo: true
 
+  render:
+    - 404.qmd
+    - index.qmd
+    - general/*.qmd
+    - part-01/*.qmd
+    - part-02/*.qmd
+    - part-03/*.qmd
+    - part-04/*.qmd
+    - part-05/*.qmd
+    - part-06/*.qmd
+    - part-07/*.qmd
+
 format:
     revealjs:
         theme: [default, ../styles.scss]

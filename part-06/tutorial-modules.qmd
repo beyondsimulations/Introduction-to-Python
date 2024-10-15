@@ -21,25 +21,6 @@ format:
         colorlinks: true
 ---
 
-## A better Password Strength Checker
-
-In this task, we will implement an improved password strength checker. We can use and practice all methods we have learned so far: string methods, regular expressions, and conditional statements.
-
-```{python}
-# TODO: Implement a new password strength checker
-# Check for:
-# - Minimum length of 8 characters
-# - At least one uppercase letter
-# - At least one lowercase letter
-# - At least one digit
-# - At least one special character (!@#$%^&*)
-# Return "Weak", "Medium", or "Strong" based on criteria met
-
-# Test your function
-#print(check_password_strength("abc123"))
-#print(check_password_strength("Str0ngP@ssw0rd"))
-```
-
 ## Scrambled Word Game
 
 In this task, we will implement a simple game where the user has to guess a scrambled word. Again, we will use the methods we have learned so far: string methods, list methods, random module, and conditional statements.
@@ -59,6 +40,13 @@ words = ["python", "programming", "computer", "algorithm", "database"]
 # Hint: Use the random.choice() function to select a word from the list and try to come up with the rest of the code yourself!
 
 import random
+
+def scramble_word(word):
+    # Convert the word to a list of characters, shuffle them, and join back into a string
+    chars = list(word)
+    # Your code to shuffle the list here!
+    return ''.join(chars)
+
 # Your code here
 
 ```
@@ -129,9 +117,27 @@ And some more:
 25-01-2027, 26/02/2027, 27.03.2027, 28-04-2027, 29/05/2027, 30.06.2027, 
 01-07-2027, 02/08/2027, 03.09.2027, 04-10-2027, 05/11/2027, 06.12.2027.
 """
-````
 
 # Your code here
+```
+
+## A better Password Strength Checker
+
+In this task, we will implement an improved password strength checker. We can use and practice all methods we have learned so far: string methods, regular expressions, and conditional statements.
+
+```{python}
+# TODO: Implement a new password strength checker
+# Check for:
+# - Minimum length of 8 characters
+# - At least one uppercase letter
+# - At least one lowercase letter
+# - At least one digit
+# - At least one special character (!@#$%^&*)
+# Return "Weak" if no criteria is met, "Medium" if at least 3 criteria are met, "Strong" if all criteria are met
+
+# Test your function
+#print(check_password_strength("abc123"))
+#print(check_password_strength("Str0ngP@ssw0rd"))
 ```
 
 {{< include ../include/tutorial_end.qmd >}}

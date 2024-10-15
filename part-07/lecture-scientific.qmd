@@ -112,8 +112,7 @@ The name of the package comes from Numerical Python.
 ```{python}
 #| eval: true
 import numpy as np
-x = np.array([1, 2, 3, 4, 5])
-type(x)
+x = np.array([1, 2, 3, 4, 5]); type(x)
 ```
 
 . . .
@@ -336,8 +335,7 @@ Note, how the types are specified as `int32` and `float32`.
 import numpy as np
 ones = np.array((1,1,1,1))
 twos = np.array((1,1,1,1)) *2
-print(np.vstack((ones,twos)))
-print(np.hstack((ones,twos)))
+print(np.vstack((ones,twos))); print(np.hstack((ones,twos)))
 ```
 
 ## Common Methods
@@ -410,20 +408,15 @@ df = pd.DataFrame({ # DataFrame is created from a dictionary
     "Name": ["Tobias", "Robin", "Nils", "Nikolai"],
     "Kids": [2, 1, 0, 0],
     "City": ["Oststeinbek", "Oststeinbek", "Hamburg", "Lübeck"],
-    "Salary": [3000, 3200, 4000, 2500]})
-print(df)
+    "Salary": [3000, 3200, 4000, 2500]}); print(df)
 ```
 
 ## Reading from CSV Files
 
-- Can be read using `pd.read_csv(file_path)`
-
-. . .
-
 ```{python}
 #| eval: true
 #| output-location: fragment
-df = pd.read_csv("employees.csv")
+df = pd.read_csv("employees.csv") # Reads the CSV file
 print(df)
 ```
 
@@ -480,10 +473,10 @@ print(df.describe())
 #| eval: true
 #| output-location: fragment
 df = pd.read_csv("employees.csv")
-df_high_salary = df[df['Salary'] > 65000]
+df_high_salary = df[df['Salary'] >= 67000]
 print(df_high_salary)
-print(df_high_salary.iloc[0]["Name"]) #Access the first row and the "Name" column
-print(df_high_salary.loc[35]["Name"]) #Access the label 35 and the "Name" column
+print(df_high_salary.iloc[2]["Name"]) #Access the third row and the "Name" column
+print(df_high_salary.loc[40]["Name"]) #Access the label 40 and the "Name" column
 ```
 
 ## Filtering in Action
@@ -527,7 +520,8 @@ df.groupby(['Position']).mean() # Mean per position
 
 ## Grouping by Multiple Columns
 
-- We can group by multiple columns using a list `['column1', 'column2']`
+- Group by multiple columns `['column1', 'column2']`
+- You can use [lists or tuples]{.highlight} to specify multiple columns
 
 . . .
 
@@ -551,7 +545,7 @@ df.groupby(['Position', "Department"]).max()
 
 ## Melting DataFrames
 
-- We can use the `pd.melt()` function to transform a DataFrame from wide to long format
+- Use `pd.melt()` to transform from wide to long
 
 . . .
 
@@ -583,6 +577,55 @@ df = pd.read_csv("employees.csv")
 Do you notice any [irregularities]{.highlight} while calculating the sum per department?
 ::: 
 
+## Concatenating DataFrames
+
+- `pd.concat()` to concatenate along shared columns
+```{python}
+#| eval: true
+#| output-location: fragment
+df1 = pd.DataFrame({"A": [1, 2, 3], "B": [4, 5, 6]})
+df2 = pd.DataFrame({"A": [7, 8, 9], "B": [10, 11, 12]})
+df = pd.concat([df1, df2])
+print(df)
+```
+
+## Joining DataFrames
+
+- Use `pd.join()` to join DataFrames along columns
+- Joining is [done on the index]{.highlight} by default!
+
+```{python}
+#| eval: true
+#| output-location: fragment
+df1 = pd.DataFrame({"A": [1, 2, 3], "B": [4, 5, 6]}, index=['x', 'y', 'z'])
+df2 = pd.DataFrame({"C": [7, 8, 9], "D": [10, 11, 12]}, index=['z', 'y', 'w'])
+df = df1.join(df2)
+print(df)
+```
+
+## Merging DataFrames on Columns
+
+- `pd.merge(df_name, on='column', how='type')` 
+- merge DataFrames along [shared columns]{.highlight}
+- `how` specifies the type of merge
+    - `inner`: rows with matching keys in both DataFrames
+    - `outer`: rows from both are kept, missing values are filled
+    - `left`: rows from the left are kept, missing values are filled
+    - `right`: rows from right are kept, missing values are filled
+
+## Outer Merge
+
+```{python}
+#| eval: true
+#| output-location: fragment
+df3 = pd.DataFrame({"A": [1, 2, 3], "B": [4, 5, 6]})
+df4 = pd.DataFrame({"A": [2, 3, 4], "C": [7, 8, 9]})
+df_merged = df3.merge(df4, on="A", how="outer")
+print(df_merged)
+```
+
+## Working with Excel Files
+
 # [Working with Excel Files]{.flow} {.title}
 
 ## Reading Excel Files
@@ -609,7 +652,6 @@ Note, that you likely need to install the `openpyxl` package to be able to write
 
 ```{python}
 #| eval: true
-#| output-location: fragment
 df = pd.read_excel("employees.xlsx")
 
 # Writes to the Employees sheet and does not include row indices
