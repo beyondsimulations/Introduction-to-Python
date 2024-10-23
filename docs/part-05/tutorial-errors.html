@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Assignment II – Programming with Python</title>
+<title>Tutorial V - Handling Errors – Programming with Python</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -114,7 +114,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../assignments/assignment-1.html">Assignments</a></li><li class="breadcrumb-item"><a href="../assignments/assignment-2.html">02 Assignment</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../part-05/lecture-errors.html">05 Errors</a></li><li class="breadcrumb-item"><a href="../part-05/tutorial-errors.html">Tutorial</a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -255,13 +255,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="false">
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="true">
  <span class="menu-text">05 Errors</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="false" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth1 ">  
+      <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../part-05/lecture-errors.html" class="sidebar-item-text sidebar-link">
@@ -270,7 +270,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../part-05/tutorial-errors.html" class="sidebar-item-text sidebar-link">
+  <a href="../part-05/tutorial-errors.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text">Tutorial</span></a>
   </div>
 </li>
@@ -344,13 +344,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-9" role="navigation" aria-expanded="true">
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-9" role="navigation" aria-expanded="false">
  <span class="menu-text">Assignments</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-9" role="navigation" aria-expanded="true" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-9" role="navigation" aria-expanded="false" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-9" class="collapse list-unstyled sidebar-section depth1 show">  
+      <ul id="quarto-sidebar-section-9" class="collapse list-unstyled sidebar-section depth1 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../assignments/assignment-1.html" class="sidebar-item-text sidebar-link">
@@ -359,7 +359,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../assignments/assignment-2.html" class="sidebar-item-text sidebar-link active">
+  <a href="../assignments/assignment-2.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">02 Assignment</span></a>
   </div>
 </li>
@@ -387,19 +387,21 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#introduction" id="toc-introduction" class="nav-link active" data-scroll-target="#introduction">Introduction</a></li>
-  <li><a href="#redact-secret-information" id="toc-redact-secret-information" class="nav-link" data-scroll-target="#redact-secret-information">Redact secret information</a></li>
-  <li><a href="#dice-roll-simulator" id="toc-dice-roll-simulator" class="nav-link" data-scroll-target="#dice-roll-simulator">Dice roll simulator</a></li>
-  <li><a href="#regression-analysis" id="toc-regression-analysis" class="nav-link" data-scroll-target="#regression-analysis">Regression analysis</a></li>
+  <li><a href="#basic-exception-handling" id="toc-basic-exception-handling" class="nav-link active" data-scroll-target="#basic-exception-handling">Basic exception handling</a></li>
+  <li><a href="#handling-multiple-exceptions" id="toc-handling-multiple-exceptions" class="nav-link" data-scroll-target="#handling-multiple-exceptions">Handling Multiple Exceptions</a></li>
+  <li><a href="#raising-your-own-exceptions" id="toc-raising-your-own-exceptions" class="nav-link" data-scroll-target="#raising-your-own-exceptions">Raising your own exceptions</a></li>
+  <li><a href="#using-assertions" id="toc-using-assertions" class="nav-link" data-scroll-target="#using-assertions">Using Assertions</a></li>
+  <li><a href="#debugging" id="toc-debugging" class="nav-link" data-scroll-target="#debugging">Debugging</a></li>
+  <li><a href="#thats-it" id="toc-thats-it" class="nav-link" data-scroll-target="#thats-it">That’s it!</a></li>
   </ul>
-<div class="toc-actions"><ul><li><a href="https://github.com/beyondsimulations/Introduction-to-Python/edit/main/assignments/assignment-2.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/beyondsimulations/Introduction-to-Python/blob/main/assignments/assignment-2.qmd" class="toc-action"><i class="bi empty"></i>View source</a></li><li><a href="https://github.com/beyondsimulations/Introduction-to-Python/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div><div class="quarto-alternate-formats"><h2>Other Formats</h2><ul><li><a href="assignment-2.pdf"><i class="bi bi-file-pdf"></i>PDF</a></li></ul></div></nav>
+<div class="toc-actions"><ul><li><a href="https://github.com/beyondsimulations/Introduction-to-Python/edit/main/part-05/tutorial-errors.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/beyondsimulations/Introduction-to-Python/blob/main/part-05/tutorial-errors.qmd" class="toc-action"><i class="bi empty"></i>View source</a></li><li><a href="https://github.com/beyondsimulations/Introduction-to-Python/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div><div class="quarto-alternate-formats"><h2>Other Formats</h2><ul><li><a href="tutorial-errors.pdf"><i class="bi bi-file-pdf"></i>PDF</a></li></ul></div></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../assignments/assignment-1.html">Assignments</a></li><li class="breadcrumb-item"><a href="../assignments/assignment-2.html">02 Assignment</a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../part-05/lecture-errors.html">05 Errors</a></li><li class="breadcrumb-item"><a href="../part-05/tutorial-errors.html">Tutorial</a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title">Assignment II</h1>
+<h1 class="title">Tutorial V - Handling Errors</h1>
 <p class="subtitle lead">Programming with Python</p>
 </div>
 
@@ -417,45 +419,100 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<section id="introduction" class="level1">
-<h1>Introduction</h1>
-<p>This is the second of the two assignments for this course. It will be graded as pass/fail and you and your group of up to 3 students will need to submit it before the start of the last lecture. Please hand in one assignment per group via the e-mail address <a href="mailto:vlcek@beyondsimulations.com">vlcek@beyondsimulations.com</a>.</p>
-<p>In the assignment, you will practice the concepts you learned in the second part of the course. You will find a lot of information online and you are welcome to use generative AI to help you with the assignment. However, you are not allowed to copy the code from other groups and you have to indicate where and how you used AI to help you. Try to use comments to structure and to explain your code. Furthermore, use descriptive variable names and format your code nicely in order to make it more readable.</p>
-</section>
-<section id="redact-secret-information" class="level1">
-<h1>Redact secret information</h1>
-<p>In this excercise, you will create a program that is able to redact secret information in a text. The program should be able to redact the following: <strong>zip codes, names, email addresses and phone numbers.</strong> The program should ask the user <strong>for a filename</strong> and then read the file and <strong>redact the secret information</strong>. The program should then print the redacted text to the console and write it to a new file called <code>redacted.txt</code>. You can find a file with secret information in the git repository under <code>assignments/secret-text.txt</code>.</p>
-<div id="d5576439" class="cell" data-execution_count="2">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Secret information redactor</span></span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="co"># </span><span class="al">TODO</span><span class="co">: Create a program that is able to redact secret information in a text.</span></span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Your code here</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<section id="basic-exception-handling" class="level1">
+<h1>Basic exception handling</h1>
+<p>We start with a simple task to get you familiar with the concept of exception handling. You are given an empty function that takes three numbers as input. It adds the first two numbers and then divides the result by the third number. You have to use a try-except block to handle the ZeroDivisionError.</p>
+<div id="53d36320" class="cell" data-execution_count="2">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># </span><span class="al">TODO</span><span class="co">: Write a function that takes three numbers as input. It adds the first two numbers and then divides the result by the third number. Use a try-except block to handle the ZeroDivisionError.</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> safe_divide(add_1, add_2, div):</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Your code here</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>    <span class="cf">pass</span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Test cases</span></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(safe_divide(<span class="dv">5</span>, <span class="dv">5</span>, <span class="dv">2</span>))  <span class="co"># Should print: 5.0</span></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(safe_divide(<span class="dv">10</span>, <span class="dv">0</span>, <span class="dv">0</span>))  <span class="co"># Should print: "Error: Division by zero"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
-<section id="dice-roll-simulator" class="level1">
-<h1>Dice roll simulator</h1>
-<p>In this excercise, you will create a program that is able to simulate dice rolls and visualizes their distribution. The program should ask the user for <strong>the number of sides on the dice and the number of dices to roll</strong>. Then, the program should simulate the dice rolls 10000 times and <strong>visualize the distribution</strong> of the dice rolls using a histogram.</p>
-<div id="44a04137" class="cell" data-execution_count="3">
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Dice roll simulator</span></span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="co"># </span><span class="al">TODO</span><span class="co">: Create a program that is able to simulate a dice roll.</span></span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Your code here</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<section id="handling-multiple-exceptions" class="level1">
+<h1>Handling Multiple Exceptions</h1>
+<p>In this exercise, you’ll have to handle multiple exceptions in one try-except block, as we also want to catch exceptions with a wrong type of input, e.g.&nbsp;when the user inputs a string instead of a number.</p>
+<div id="ef29ed55" class="cell" data-execution_count="3">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># a) </span><span class="al">TODO</span><span class="co">: Modify the previous function to handle both ZeroDivisionError and TypeError</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> safe_divide_v2(add_1, add_2, div):</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Your code here</span></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>    <span class="cf">pass</span></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Test cases</span></span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(safe_divide_v2(<span class="dv">5</span>, <span class="dv">5</span>, <span class="dv">2</span>))  <span class="co"># Should print: 5.0</span></span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(safe_divide_v2(<span class="dv">10</span>, <span class="dv">0</span>, <span class="dv">0</span>))  <span class="co"># Should print: "Error: Division by zero"</span></span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(safe_divide_v2(<span class="dv">2</span>,<span class="dv">4</span>, <span class="st">"2"</span>)) <span class="co"># Should print: "Error: Invalid input types"</span></span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a><span class="co"># b) </span><span class="al">TODO</span><span class="co">: Write a function that asks the user for a number and then divides it by a second number inputted by the user.</span></span>
+<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a><span class="co"># - Use a try-except block to handle the exceptions.</span></span>
+<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a><span class="co"># - Use a while loop to repeatedly ask the user for a number and divide it by a second number until the user inputs "no" to the question "Do you want to continue?".</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
-<section id="regression-analysis" class="level1">
-<h1>Regression analysis</h1>
-<p>In this excercise, you will create a program that performs linear regression on a dataset with housing prices. The dataset can be found in the git repository under <code>assignments/hamburg_housing_prices.csv</code>. The dataset contains the following columns:</p>
-<ul>
-<li>Price: The price of the house in Euros.</li>
-<li>Area: The area of the house in square meters.</li>
-<li>Rooms: The number of rooms in the house.</li>
-<li>Year_Built: The year the house was built.</li>
-<li>Distance_to_Center: The distance to the center of Hamburg in kilometers.</li>
-</ul>
-<p>Your task is to perform a <strong>linear regression analysis</strong> on the dataset and to predict the price of a house based on its area, number of rooms, year it was built and its distance to the center of Hamburg. You can use the <code>pandas</code> library to read the dataset and the <code>numpy</code> library to perform the linear regression analysis. After performing the linear regression analysis, use the <code>matplotlib</code> library to visualize the relationship between the price and the other features as well as the predicted prices for a given set of features.</p>
-<div id="aceb04be" class="cell" data-execution_count="4">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Regression analysis</span></span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="co"># </span><span class="al">TODO</span><span class="co">: Create a program that performs linear regression analysis on the dataset.</span></span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Your code here</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<section id="raising-your-own-exceptions" class="level1">
+<h1>Raising your own exceptions</h1>
+<p>In this exercise, you’ll have to raise your own exceptions when the user inputs a wrong type of input, e.g.&nbsp;when the user inputs a string instead of a number. Yout task is to write a function that asks the user a username and then checks if the username is valid. A valid username is considered to be a number that is at least 5 characters long and contains no spaces. If the username is not valid, you should raise an exception, tell the user that the username is not valid and ask for a new username. You should only accept the username if it is valid.</p>
+<div id="99eb18da" class="cell" data-execution_count="4">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># </span><span class="al">TODO</span><span class="co">: Write a function that asks the user for a username and then checks if the username is valid.</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="co"># - A valid username is considered to be a number that is at least 5 characters long and contains no spaces.</span></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="co"># - If the username is not valid, you should raise an exception, tell the user that the username is not valid and ask for a new username.</span></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="co"># - You should only accept the username if it is valid.</span></span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a><span class="co"># You can start by changing the code from the lecture:</span></span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> InvalidUsernameError(<span class="pp">Exception</span>):</span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>    <span class="cf">pass</span></span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> get_valid_username():</span>
+<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a>    <span class="cf">while</span> <span class="va">True</span>:</span>
+<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a>        <span class="cf">try</span>:</span>
+<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a>            username <span class="op">=</span> <span class="bu">input</span>(<span class="st">"Please enter a username (no spaces): "</span>)</span>
+<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a>            <span class="cf">if</span> <span class="st">" "</span> <span class="kw">in</span> username: </span>
+<span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a>                <span class="cf">raise</span> InvalidUsernameError(<span class="st">"Username must not contain spaces."</span>)</span>
+<span id="cb3-16"><a href="#cb3-16" aria-hidden="true" tabindex="-1"></a>            <span class="cf">return</span> username</span>
+<span id="cb3-17"><a href="#cb3-17" aria-hidden="true" tabindex="-1"></a>        <span class="cf">except</span> InvalidUsernameError <span class="im">as</span> e:</span>
+<span id="cb3-18"><a href="#cb3-18" aria-hidden="true" tabindex="-1"></a>            <span class="bu">print</span>(<span class="ss">f"Invalid username: </span><span class="sc">{</span>e<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb3-19"><a href="#cb3-19" aria-hidden="true" tabindex="-1"></a>            <span class="bu">print</span>(<span class="st">"Please try again."</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
+</section>
+<section id="using-assertions" class="level1">
+<h1>Using Assertions</h1>
+<p>By using assertions, we can check if the input of a function is correct. If the assertion is not correct, an <code>AssertionError</code> is raised. This is especially useful in the development phase to catch errors that should not occur.</p>
+<div id="9c7f3017" class="cell" data-execution_count="5">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co"># </span><span class="al">TODO</span><span class="co">: Write a function that calculates the area of a rectangle. Ensure that the length and width are positive numbers.</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> calculate_rectangle_area(length, width):</span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Your code here</span></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>    <span class="cf">pass</span></span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Test cases</span></span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(calculate_rectangle_area(<span class="dv">5</span>, <span class="dv">3</span>))    <span class="co"># Should print: 15</span></span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(calculate_rectangle_area(<span class="op">-</span><span class="dv">5</span>, <span class="dv">3</span>))   <span class="co"># Should raise AssertionError</span></span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(calculate_rectangle_area(<span class="dv">5</span>, <span class="st">"3"</span>))  <span class="co"># Should raise AssertionError</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="debugging" class="level1">
+<h1>Debugging</h1>
+<p>In the following exercise, you’ll have to debug a function that is supposed to return the sum of all even numbers in a list. However, there is a bug in the code. Can you find it and fix it? Use either print statements, assertions, or an IDE’s debugger to fix the code.</p>
+<div id="afb472ca" class="cell" data-execution_count="6">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># </span><span class="al">TODO</span><span class="co">: Fix the bug in the following function.</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> sum_even_numbers(numbers):</span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>    total <span class="op">=</span> <span class="dv">0</span></span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> num <span class="kw">in</span> numbers:</span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> num <span class="op">%</span> <span class="dv">2</span> <span class="op">==</span> <span class="dv">0</span>:</span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>            total <span class="op">+</span> num</span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> total</span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a><span class="co"># Test case</span></span>
+<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(sum_even_numbers([<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">5</span>, <span class="dv">6</span>]))  <span class="co"># Should print: 12, but it's not working correctly</span></span>
+<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a><span class="co"># Bonus challenge: Add error handling to make this function more robust</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="thats-it" class="level1">
+<h1>That’s it!</h1>
+<p>You can find the solutions to these exercises online in the associated GitHub repository, but we will also quickly go over them in next week’s tutorial. To access the solutions, click on the Github button on the lower right and search for the folder with today’s lecture and tutorial. Alternatively, you can ask ChatGPT or Claude to explain them to you. Remember, the goal is not just to complete the exercises, but to understand the concepts and improve your programming abilities.</p>
 
 
 </section>
@@ -889,7 +946,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     </div>   
     <div class="nav-footer-center">
 <p>Programming with Python, Tobias Vlćek<br>CC BY-NC-SA 4.0</p>
-<div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/beyondsimulations/Introduction-to-Python/edit/main/assignments/assignment-2.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/beyondsimulations/Introduction-to-Python/blob/main/assignments/assignment-2.qmd" class="toc-action"><i class="bi empty"></i>View source</a></li><li><a href="https://github.com/beyondsimulations/Introduction-to-Python/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div>
+<div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/beyondsimulations/Introduction-to-Python/edit/main/part-05/tutorial-errors.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/beyondsimulations/Introduction-to-Python/blob/main/part-05/tutorial-errors.qmd" class="toc-action"><i class="bi empty"></i>View source</a></li><li><a href="https://github.com/beyondsimulations/Introduction-to-Python/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div>
     <div class="nav-footer-right">
       <ul class="footer-items list-unstyled">
     <li class="nav-item compact">
