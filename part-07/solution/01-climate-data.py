@@ -1,45 +1,45 @@
-#Imagine you're a climate scientist working on a project to analyze temperature data from weather stations across the country. You've been given a large dataset, and you need to use NumPy to process and analyze this data efficiently.
-
 import numpy as np
 
-# First, we simulate loading data from 100 weather stations over 365 days. Each row represents a station, each column a day.
-temp_data = np.random.randint(0, 40, size=(100, 365))
+# Let's analyze temperature data from 10 weather stations over 30 days
+temp_data = np.random.randint(0, 40, size=(10, 30))
 
-# a) Calculate the average temperature for each station and the overall average temperature.
-station_averages = np.mean(temp_data, axis=1)
-overall_average = np.mean(temp_data)
-print(f"Average temperature for each station:\n{station_averages}")
-print(f"Overall average temperature: {overall_average:.2f}°C")
+# Example: Calculate the average temperature for the first station
+first_station_avg = np.mean(temp_data[0,:])
+print(f"Average temperature for the first station: {first_station_avg:.2f}°C")
 
-# b) Find the highest and lowest temperature recorded and print a message with the corresponding stations.
-highest_temp = np.max(temp_data)
-lowest_temp = np.min(temp_data)
-highest_station, highest_day = np.where(temp_data == highest_temp)
-lowest_station, lowest_day = np.where(temp_data == lowest_temp)
-print(f"Highest temperature: {highest_temp}°C at station {highest_station[0]} on day {highest_day[0]}")
-print(f"Lowest temperature: {lowest_temp}°C at station {lowest_station[0]} on day {lowest_day[0]}")
+# TODO: a) Calculate the average temperature for each station and print it. Make sure to round the result to 2 decimal places!
+# Hint: Use np.mean() and a for loop
+# Your code here
+for station in range(10):
+    print(f"Average temperature for station {station}: {np.mean(temp_data[station,:]):.2f}°C")
 
-# c) Identify heat waves. A heat wave is defined as 5 consecutive days with temperatures above 30°C. Print a message counting the number of heat waves.
-heat_waves = 0
-for station in temp_data:
-    consecutive_hot_days = 0
-    for temp in station:
-        if temp > 30:
-            consecutive_hot_days += 1
-            if consecutive_hot_days == 5:
-                heat_waves += 1
-                consecutive_hot_days = 0  # Reset to avoid double-counting
-        else:
-            consecutive_hot_days = 0
-print(f"Total number of heat waves across all stations: {heat_waves}")
+# TODO: b) Find the highest temperature recorded and the station index and print it
+# Hint: Use np.max() and np.argmax() 
+# Your code here
+print(f"Highest temperature recorded at station {np.argmax(temp_data)} with {np.max(temp_data)}°C")
 
+# TODO: c) Find the lowest temperature recorded and the station index and print it
+# Hint: Use np.min() and np.argmin()
+# Your code here
+print(f"Lowest temperature recorded at station {np.argmin(temp_data)} with {np.min(temp_data)}°C")
 
-# d) Calculate the temperature anomaly for each day (difference from each individual station's average temperature).
-temp_anomaly = temp_data - station_averages[:, None]
-print("Temperature anomaly shape:", temp_anomaly.shape)
+# TODO: d) Calculate the overall average temperature and print it
+# Hint: Use np.mean() on the entire temp_data array and round the result to 2 decimal places
+# Your code here
+print(f"Overall average temperature: {np.mean(temp_data):.2f}°C")
 
-# e) Find the hottest and coldest stations and determine the index of the station with the highest average temperature and the station with the lowest average temperature.
-hottest_station = np.argmax(station_averages)
-coldest_station = np.argmin(station_averages)
-print(f"Hottest station index: {hottest_station}, with average temperature: {station_averages[hottest_station]:.2f}°C")
-print(f"Coldest station index: {coldest_station}, with average temperature: {station_averages[coldest_station]:.2f}°C")
+# Example: Identify days above 30°C for the first station
+hot_days = np.sum(temp_data[0,:] > 30)
+print(f"The first station had {hot_days} days above 30°C")
+
+# TODO: e) Count the number of days above 30°C for each station and print it in a nice format
+# Hint: Use np.sum() with a condition and a for loop
+# Your code here
+for station in range(10):
+    print(f"Station {station} had {np.sum(temp_data[station,:] > 30)} days above 30°C")
+
+# TODO: f) Find the hottest and coldest stations and determine the index of the station with the highest average temperature and the station with the lowest average temperature. Print the results in a nice format including the index and the average temperature.
+# Hint: Use np.argmax() and np.argmin(), the appropriate axis, and round the result to 2 decimal places
+# Your code here
+print(f"Hottest station: {np.argmax(np.mean(temp_data, axis=1))} with {np.max(np.mean(temp_data, axis=1)):.2f}°C")
+print(f"Coldest station: {np.argmin(np.mean(temp_data, axis=1))} with {np.min(np.mean(temp_data, axis=1)):.2f}°C")
