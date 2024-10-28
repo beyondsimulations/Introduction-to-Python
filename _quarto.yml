@@ -1,6 +1,5 @@
 project:
   type: website
-  output-dir: docs
 
   render:
   - 404.qmd
@@ -101,15 +100,27 @@ website:
 format:
   html:
     theme: litera
-    css: styles.css
     toc: true
+    highlight-style: arrow
+    code-overflow: wrap
+    linkcolor: "#a60000"
+    slide-number: true
+    code-copy: true
+    code-link: true
+    toc-location: right
   pdf:
+    documentclass: report
+    geometry:
+      - margin=1in
+    fontfamily: roboto
+    fontfamilyoptions: sfdefault
+    colorlinks: true
     include-in-header: 
       text: |
         \usepackage{fvextra}
         \DefineVerbatimEnvironment{Highlighting}{Verbatim}{breaklines,commandchars=\\\{\}}
 
 execute:
-  cache: true
+  freeze: true
 
 
