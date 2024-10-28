@@ -9,18 +9,6 @@ title-slide-attributes:
 execute:
     echo: true
 
-  render:
-    - 404.qmd
-    - index.qmd
-    - general/*.qmd
-    - part-01/*.qmd
-    - part-02/*.qmd
-    - part-03/*.qmd
-    - part-04/*.qmd
-    - part-05/*.qmd
-    - part-06/*.qmd
-    - part-07/*.qmd
-
 format:
     revealjs:
         theme: [default, ../styles.scss]
@@ -31,9 +19,11 @@ format:
         slide-number: true
         code-copy: true
         code-link: true
+        width: 1152
+        height: 648
         preview-links: auto
-        footer: " {{< meta title >}} | {{< meta author >}} | [Home](lecture-plotting.qmd)"
-        output-file: lecture-plotting-presentation.html
+        footer: " {{< meta title >}} | {{< meta author >}} | [Home](lecture-scientific.qmd)"
+        output-file: lecture-scientific-presentation.html
     html:
         theme: litera
         highlight-style: arrow
@@ -169,7 +159,7 @@ import numpy as np
 categories = ['A', 'B', 'C', 'D']
 values = [4, 7, 2, 8]
 
-plt.figure(figsize=(10, 3))
+plt.figure(figsize=(12, 3))
 plt.subplot(121)
 plt.bar(categories, values)
 plt.title('Bar Chart')
@@ -199,7 +189,7 @@ x = np.linspace(0, 10, 100)
 y1 = np.sin(x)
 y2 = np.cos(x)
 
-plt.figure(figsize=(10, 3))
+plt.figure(figsize=(12, 3))
 plt.subplot(121)
 plt.plot(x, y1, label='sin(x)')
 plt.plot(x, y2, label='cos(x)')
@@ -230,7 +220,7 @@ x = np.random.rand(50)
 y = np.random.rand(50)
 sizes = np.random.rand(50) * 500
 
-plt.figure(figsize=(10, 3))
+plt.figure(figsize=(12, 3))
 plt.subplot(121)
 plt.scatter(x, y)
 plt.title('Scatter Plot')
@@ -255,7 +245,7 @@ import matplotlib.pyplot as plt
 labels = 'A', 'B', 'C', 'D'
 sizes = [15, 30, 45, 10]
 
-plt.figure(figsize=(10, 3))
+plt.figure(figsize=(12, 3))
 
 # Pie chart (left subplot)
 plt.subplot(121)
@@ -291,13 +281,13 @@ import numpy as np
 
 data = [np.random.normal(0, std, 100) for std in range(1, 5)]
 
-plt.figure(figsize=(10, 3))
+plt.figure(figsize=(12, 3))
 plt.subplot(121)
 plt.boxplot(data)
 plt.title('Box Plot')
 
 plt.subplot(122)
-sns.violinplot(data=data)
+sns.violinplot(data)
 plt.title('Violin Plot')
 
 plt.tight_layout()
@@ -313,22 +303,45 @@ plt.show()
 #| code-fold: true
 import matplotlib.pyplot as plt
 import networkx as nx
+import numpy as np
 
-# Network graph
-G = nx.random_geometric_graph(20, 0.3)
+# Create figure
+plt.figure(figsize=(12, 3))
 
-plt.figure(figsize=(10, 3))
+# Network graph (left subplot)
 plt.subplot(121)
-nx.draw(G, with_labels=True)
-plt.title('Network Graph')
+G = nx.random_geometric_graph(15, 0.3)  # Reduced nodes for clarity
+pos = nx.spring_layout(G, k=1, seed=42)  # Better layout with fixed seed
+nx.draw_networkx_nodes(G, pos, 
+                      node_color='lightblue',
+                      node_size=500,
+                      edgecolors='navy',
+                      linewidths=1)
+nx.draw_networkx_edges(G, pos,
+                      edge_color='gray',
+                      width=1,
+                      alpha=0.5)
+nx.draw_networkx_labels(G, pos,
+                       font_size=8,
+                       font_weight='bold')
+plt.title('Network Graph', pad=10)
 
-# Tree diagram
-T = nx.random_tree(10)
-
+# Tree diagram (right subplot)
 plt.subplot(122)
-pos = nx.spring_layout(T)
-nx.draw(T, pos, with_labels=True)
-plt.title('Tree Diagram')
+T = nx.balanced_tree(2, 2)  # Create a balanced tree with 2 children, depth 2
+pos_tree = nx.spring_layout(T, k=1.5, seed=42)
+nx.draw_networkx_nodes(T, pos_tree,
+                      node_color='lightgreen',
+                      node_size=500,
+                      edgecolors='darkgreen',
+                      linewidths=1)
+nx.draw_networkx_edges(T, pos_tree,
+                      edge_color='forestgreen',
+                      width=1)
+nx.draw_networkx_labels(T, pos_tree,
+                       font_size=8,
+                       font_weight='bold')
+plt.title('Tree', pad=10)
 
 plt.tight_layout()
 plt.show()
@@ -336,8 +349,7 @@ plt.show()
 
 ## Sankey Diagrams
 
-- Show flows between nodes
-- Useful for visualizing complex systems
+- Flows between nodes for visualizing complex systems
 
 ```{python}
 #| code-fold: true
@@ -345,19 +357,31 @@ import plotly.graph_objects as go
 
 fig = go.Figure(data=[go.Sankey(
     node = dict(
-      pad = 15,
-      thickness = 20,
-      line = dict(color = "black", width = 0.5),
-      label = ["A", "B", "C", "D", "E", "F"],
-      color = "blue"
+        pad = 15,
+        thickness = 20,
+        line = dict(color = "black", width = 0.5),
+        label = ["Revenue", "Costs", "Taxes", "Net Profit", "Dividends", "Retained Earnings"],
+        color = ["#2ECC71", "#E74C3C", "#F1C40F", "#3498DB", "#9B59B6", "#1ABC9C"]
     ),
     link = dict(
-      source = [0, 1, 0, 2, 3, 3],
-      target = [2, 3, 3, 4, 4, 5],
-      value = [8, 4, 2, 8, 4, 2]
-  ))])
+        source = [0, 0, 0, 3, 3],  # Starting nodes
+        target = [1, 2, 3, 4, 5],   # Ending nodes
+        value = [700, 100, 200, 120, 80],  # Values that flow (Revenue: 1000, Net Profit: 200)
+        color = ["rgba(231,76,60,0.4)",    # Costs
+                "rgba(241,196,15,0.4)",    # Taxes
+                "rgba(52,152,219,0.4)",    # To Net Profit
+                "rgba(155,89,182,0.4)",    # Dividends
+                "rgba(26,188,156,0.4)"]    # Retained Earnings
+    )
+)])
 
-fig.update_layout(title_text="Sankey Diagram Example", font_size=10)
+fig.update_layout(
+    title_text="Company Cash Flow Visualization",
+    font_size=12,
+    height=400,
+    width=1100
+)
+
 fig.show()
 ```
 
@@ -367,34 +391,78 @@ fig.show()
 
 ```{python}
 #| code-fold: true
+
 import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
-import seaborn as sns
-from scipy import stats
+import joypy
 
-# Create sample data
-np.random.seed(0)
-num_points = 500
-num_distributions = 5
-
+# Create realistic temperature distributions
+np.random.seed(42)
+months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
 data = []
-for i in range(num_distributions):
-    distribution = stats.norm.rvs(loc=i, scale=1, size=num_points)
-    data.append(pd.DataFrame({'value': distribution, 'group': f'Group {i+1}'}))
+
+# Temperature parameters for Helsinki, Finland (as an example)
+mean_temps = [
+    -3.5,   # Jan
+    -4.5,   # Feb
+    -1.0,   # Mar
+    4.5,    # Apr
+    10.8,   # May
+    15.5,   # Jun
+    18.0,   # Jul
+    16.3,   # Aug
+    11.5,   # Sep
+    6.6,    # Oct
+    1.6,    # Nov
+    -2.0    # Dec
+]
+
+# Winter months have more variance than summer months
+variances = [
+    2.5,    # Jan
+    2.5,    # Feb
+    2.2,    # Mar
+    2.0,    # Apr
+    1.8,    # May
+    1.5,    # Jun
+    1.2,    # Jul
+    1.5,    # Aug
+    1.8,    # Sep
+    2.0,    # Oct
+    2.2,    # Nov
+    2.5     # Dec
+]
+
+for month, mean_temp, variance in zip(months, mean_temps, variances):
+    # Add some random noise to make it more natural
+    distribution = np.random.normal(loc=mean_temp, scale=variance, size=1000)
+    # Add slight skewness to winter months (more extreme cold than warm days)
+    if mean_temp < 5:
+        distribution = distribution - 0.3 * np.abs(distribution)
+    data.append(pd.DataFrame({
+        'temperature': distribution,
+        'month': month
+    }))
 
 df = pd.concat(data, ignore_index=True)
 
 # Create the ridgeline plot
-plt.figure(figsize=(10, 6))
-for i, group in enumerate(df['group'].unique()):
-    group_data = df[df['group'] == group]['value']
-    sns.kdeplot(data=group_data, shade=True, alpha=0.7, y=i, clip=(0, 10))
+joypy.joyplot(
+    data=df,
+    by="month",
+    column="temperature",
+    colormap=plt.cm.viridis,
+    title="Monthly Temperature Distributions",
+    labels=months,
+    range_style='all',
+    tails=0.2,
+    overlap=0.7,
+    grid=True,
+    figsize=(12, 4)
+)
 
-plt.yticks(range(num_distributions), df['group'].unique())
-plt.title('Ridgeline Plot Example')
-plt.xlabel('Value')
-plt.ylabel('Group')
+plt.xlabel("Temperature (°C)")
 plt.show()
 ```
 
