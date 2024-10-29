@@ -353,6 +353,481 @@
     ]
   },
   {
+    "objectID": "part-08/lecture-scientific-presentation.html#what-is-numpy",
+    "href": "part-08/lecture-scientific-presentation.html#what-is-numpy",
+    "title": "Lecture VII - Pandas and AI",
+    "section": "What is NumPy?",
+    "text": "What is NumPy?\n\nNumPy is a package for scientific computing in Python\nProvides multi-dimensional arrays and matrices\nMuch faster than Python lists for numerical operations\nOperations are implemented in C and C++\n\n\n\n\n\n\n\n\nTip\n\n\nNumPy arrays are stored in contiguous memory blocks, making operations very efficient."
+  },
+  {
+    "objectID": "part-08/lecture-scientific-presentation.html#creating-arrays",
+    "href": "part-08/lecture-scientific-presentation.html#creating-arrays",
+    "title": "Lecture VII - Pandas and AI",
+    "section": "Creating Arrays",
+    "text": "Creating Arrays\n\nCore data structure is the ndarray\nCan create arrays from lists, tuples, or other data structures\nSpecial functions like:\n\nnp.zeros() for arrays of zeros\nnp.random.rand() for random values\nnp.arange() for evenly spaced values\nnp.linspace() for linearly spaced values"
+  },
+  {
+    "objectID": "part-08/lecture-scientific-presentation.html#working-with-arrays",
+    "href": "part-08/lecture-scientific-presentation.html#working-with-arrays",
+    "title": "Lecture VII - Pandas and AI",
+    "section": "Working with Arrays",
+    "text": "Working with Arrays\n\nSupport for multi-dimensional operations\nCommon operations:\n\nElement-wise arithmetic (+, -, *, /)\nArray indexing and slicing\nShape manipulation (reshape, flatten)\nSorting and transposing\n\n\n\n\n\n\n\n\n\nTip\n\n\nNumPy operations are vectorized, meaning they operate on entire arrays at once rather than element by element."
+  },
+  {
+    "objectID": "part-08/lecture-scientific-presentation.html#what-is-pandas",
+    "href": "part-08/lecture-scientific-presentation.html#what-is-pandas",
+    "title": "Lecture VII - Pandas and AI",
+    "section": "What is Pandas?",
+    "text": "What is Pandas?\n\nPandas is a data manipulation and analysis library\nIt provides data structures like DataFrames and Series\nTools for data cleaning, analysis, and visualization\nIt can also be used to work with Excel files!"
+  },
+  {
+    "objectID": "part-08/lecture-scientific-presentation.html#how-to-install-pandas",
+    "href": "part-08/lecture-scientific-presentation.html#how-to-install-pandas",
+    "title": "Lecture VII - Pandas and AI",
+    "section": "How to install Pandas",
+    "text": "How to install Pandas\n\nIn the last lecture, we have installed it with pip install pandas or with Thonny\nNow, import the package import pandas as pd\n\n\n\n\n\n\n\n\nNote\n\n\nYou can also use a different abbreviation, but pd is the most common one."
+  },
+  {
+    "objectID": "part-08/lecture-scientific-presentation.html#creating-dataframes",
+    "href": "part-08/lecture-scientific-presentation.html#creating-dataframes",
+    "title": "Lecture VII - Pandas and AI",
+    "section": "Creating DataFrames",
+    "text": "Creating DataFrames\n\nDataFrames behave quite similar to Numpy arrays\nBut they have row and column labels\n\n\n\nimport pandas as pd\ndf = pd.DataFrame({ # DataFrame is created from a dictionary\n    \"Name\": [\"Tobias\", \"Robin\", \"Nils\", \"Nikolai\"],\n    \"Kids\": [2, 1, 0, 0],\n    \"City\": [\"Oststeinbek\", \"Oststeinbek\", \"Hamburg\", \"Lübeck\"],\n    \"Salary\": [3000, 3200, 4000, 2500]}); print(df)\n\n\n\n      Name  Kids         City  Salary\n0   Tobias     2  Oststeinbek    3000\n1    Robin     1  Oststeinbek    3200\n2     Nils     0      Hamburg    4000\n3  Nikolai     0       Lübeck    2500"
+  },
+  {
+    "objectID": "part-08/lecture-scientific-presentation.html#reading-from-csv-files",
+    "href": "part-08/lecture-scientific-presentation.html#reading-from-csv-files",
+    "title": "Lecture VII - Pandas and AI",
+    "section": "Reading from CSV Files",
+    "text": "Reading from CSV Files\n\ndf = pd.read_csv(\"employees.csv\") # Reads the CSV file\nprint(df)\n\n\n\n       Name  Age Department        Position  Salary\n0     Alice   30         HR         Manager   50000\n1       Bob   25         IT       Developer   60000\n2   Charlie   28    Finance         Analyst   55000\n3     David   35  Marketing       Executive   52000\n4       Eve   32      Sales  Representative   48000\n5     Frank   29         IT       Developer   61000\n6     Grace   31         HR       Assistant   45000\n7      Hank   27    Finance         Analyst   53000\n8       Ivy   33  Marketing         Manager   58000\n9      Jack   26      Sales  Representative   47000\n10     Kara   34         IT       Developer   62000\n11      Leo   30         HR         Manager   51000\n12     Mona   28    Finance         Analyst   54000\n13     Nina   35  Marketing       Executive   53000\n14    Oscar   32      Sales  Representative   49000\n15     Paul   29         IT       Developer   63000\n16    Quinn   31         HR       Assistant   46000\n17     Rita   27    Finance         Analyst   52000\n18      Sam   33  Marketing         Manager   59000\n19     Tina   26      Sales  Representative   48000\n20      Uma   34         IT       Developer   64000\n21    Vince   30         HR         Manager   52000\n22     Walt   28    Finance         Analyst   55000\n23     Xena   35  Marketing       Executive   54000\n24     Yara   32      Sales  Representative   50000\n25     Zane   29         IT       Developer   65000\n26     Anna   31         HR       Assistant   47000\n27      Ben   27    Finance         Analyst   53000\n28    Cathy   33  Marketing         Manager   60000\n29    Dylan   26      Sales  Representative   49000\n30     Ella   34         IT       Developer   66000\n31     Finn   30         HR         Manager   53000\n32     Gina   28    Finance         Analyst   56000\n33     Hugo   35  Marketing       Executive   55000\n34     Iris   32      Sales  Representative   51000\n35     Jake   29         IT       Developer   67000\n36     Kyla   31         HR       Assistant   48000\n37     Liam   27    Finance         Analyst   54000\n38      Mia   33  Marketing         Manager   61000\n39     Noah   26      Sales  Representative   50000\n40    Olive   34         IT       Developer   68000\n41     Pete   30         HR         Manager   54000\n42   Quincy   28    Finance         Analyst   57000\n43     Rose   35  Marketing       Executive   56000\n44    Steve   32      Sales  Representative   52000\n45     Tara   29         IT       Developer   69000\n46     Umar   31         HR       Assistant   49000\n47     Vera   27    Finance         Analyst   55000\n48     Will   33  Marketing         Manager   62000\n49     Zara   26      Sales  Representative   51000"
+  },
+  {
+    "objectID": "part-08/lecture-scientific-presentation.html#basic-operations",
+    "href": "part-08/lecture-scientific-presentation.html#basic-operations",
+    "title": "Lecture VII - Pandas and AI",
+    "section": "Basic Operations",
+    "text": "Basic Operations\n\nUse the df.head() method to display the first 5 rows\nUse the df.tail() method to display the last 5 rows\n\n\n\ndf = pd.read_csv(\"employees.csv\")\nprint(df.tail())\n\n\n\n    Name  Age Department        Position  Salary\n45  Tara   29         IT       Developer   69000\n46  Umar   31         HR       Assistant   49000\n47  Vera   27    Finance         Analyst   55000\n48  Will   33  Marketing         Manager   62000\n49  Zara   26      Sales  Representative   51000"
+  },
+  {
+    "objectID": "part-08/lecture-scientific-presentation.html#information-about-the-dataframe",
+    "href": "part-08/lecture-scientific-presentation.html#information-about-the-dataframe",
+    "title": "Lecture VII - Pandas and AI",
+    "section": "Information about the DataFrame",
+    "text": "Information about the DataFrame\n\nUse df.info() to display information about a DataFrame\n\n\n\ndf = pd.read_csv(\"employees.csv\")\nprint(df.info())\n\n\n\n&lt;class 'pandas.core.frame.DataFrame'&gt;\nRangeIndex: 50 entries, 0 to 49\nData columns (total 5 columns):\n #   Column      Non-Null Count  Dtype \n---  ------      --------------  ----- \n 0   Name        50 non-null     object\n 1   Age         50 non-null     int64 \n 2   Department  50 non-null     object\n 3   Position    50 non-null     object\n 4   Salary      50 non-null     int64 \ndtypes: int64(2), object(3)\nmemory usage: 2.1+ KB\nNone"
+  },
+  {
+    "objectID": "part-08/lecture-scientific-presentation.html#statistics-about-a-dataframe",
+    "href": "part-08/lecture-scientific-presentation.html#statistics-about-a-dataframe",
+    "title": "Lecture VII - Pandas and AI",
+    "section": "Statistics about a DataFrame",
+    "text": "Statistics about a DataFrame\n\nUse df.describe() to display summary statistics\nUse the df.index attribute to access the index\n\n\n\ndf = pd.read_csv(\"employees.csv\")\nprint(df.describe())\n\n\n\n             Age        Salary\ncount  50.000000     50.000000\nmean   30.320000  54980.000000\nstd     2.958488   6175.957333\nmin    25.000000  45000.000000\n25%    28.000000  50250.000000\n50%    30.000000  54000.000000\n75%    33.000000  59750.000000\nmax    35.000000  69000.000000"
+  },
+  {
+    "objectID": "part-08/lecture-scientific-presentation.html#filtering-dataframes",
+    "href": "part-08/lecture-scientific-presentation.html#filtering-dataframes",
+    "title": "Lecture VII - Pandas and AI",
+    "section": "Filtering DataFrames",
+    "text": "Filtering DataFrames\n\nUse df['column_name'] to access a column\nUse the df[df['column'] &gt; value] method to filter\n\n\n\ndf = pd.read_csv(\"employees.csv\")\ndf_high_salary = df[df['Salary'] &gt;= 67000]\nprint(df_high_salary)\nprint(df_high_salary.iloc[2][\"Name\"]) #Access the third row and the \"Name\" column\nprint(df_high_salary.loc[40][\"Name\"]) #Access the label 40 and the \"Name\" column\n\n\n\n     Name  Age Department   Position  Salary\n35   Jake   29         IT  Developer   67000\n40  Olive   34         IT  Developer   68000\n45   Tara   29         IT  Developer   69000\nTara\nOlive"
+  },
+  {
+    "objectID": "part-08/lecture-scientific-presentation.html#filtering-in-action",
+    "href": "part-08/lecture-scientific-presentation.html#filtering-in-action",
+    "title": "Lecture VII - Pandas and AI",
+    "section": "Filtering in Action",
+    "text": "Filtering in Action\nTask: Complete the following task:\n\n# TODO: Load the employees.csv located in the git repository into a DataFrame\n# First, filter the DataFrame for employees with a manager position\n# Then, print the average salary of the remaining employees\n# Finally, print the name of the employee with the lowest salary\n\n\n\n\n\n\n\n\n\n\n\nNote\n\n\nNote, that we can use the mean() method on the Salary column, as it is a numeric column. In addition, we can use the min() method on the Salary column to find the lowest salary."
+  },
+  {
+    "objectID": "part-08/lecture-scientific-presentation.html#grouping",
+    "href": "part-08/lecture-scientific-presentation.html#grouping",
+    "title": "Lecture VII - Pandas and AI",
+    "section": "Grouping",
+    "text": "Grouping\n\nGrouping is a powerful feature of Pandas\nGroups data by one or more columns\nAnd then perform operations\nSyntax is df.groupby('column').method()\n\n\n\ndf = pd.read_csv(\"employees.csv\")\ndf = df.drop(columns=[\"Name\", \"Department\"])\ndf.groupby(['Position']).mean() # Mean per position"
+  },
+  {
+    "objectID": "part-08/lecture-scientific-presentation.html#grouping-output",
+    "href": "part-08/lecture-scientific-presentation.html#grouping-output",
+    "title": "Lecture VII - Pandas and AI",
+    "section": "Grouping",
+    "text": "Grouping\n\n\n\n\n\n\n\n\nAge\nSalary\n\n\nPosition\n\n\n\n\n\n\nAnalyst\n27.5\n54400.0\n\n\nAssistant\n31.0\n47000.0\n\n\nDeveloper\n30.6\n64500.0\n\n\nExecutive\n35.0\n54000.0\n\n\nManager\n31.5\n56000.0\n\n\nRepresentative\n29.0\n49500.0"
+  },
+  {
+    "objectID": "part-08/lecture-scientific-presentation.html#grouping-by-multiple-columns",
+    "href": "part-08/lecture-scientific-presentation.html#grouping-by-multiple-columns",
+    "title": "Lecture VII - Pandas and AI",
+    "section": "Grouping by Multiple Columns",
+    "text": "Grouping by Multiple Columns\n\nGroup by multiple columns ['column1', 'column2']\nYou can use lists or tuples to specify multiple columns\n\n\n\ndf = pd.read_csv(\"employees.csv\")\ndf = df.drop(columns=[\"Name\"])\n# Max per position and department\ndf.groupby(['Position', \"Department\"]).max()"
+  },
+  {
+    "objectID": "part-08/lecture-scientific-presentation.html#grouping-by-multiple-columns-output",
+    "href": "part-08/lecture-scientific-presentation.html#grouping-by-multiple-columns-output",
+    "title": "Lecture VII - Pandas and AI",
+    "section": "Grouping by Multiple Columns",
+    "text": "Grouping by Multiple Columns\n\n\n\n\n\n\n\n\n\nAge\nSalary\n\n\nPosition\nDepartment\n\n\n\n\n\n\nAnalyst\nFinance\n28\n57000\n\n\nAssistant\nHR\n31\n49000\n\n\nDeveloper\nIT\n34\n69000\n\n\nExecutive\nMarketing\n35\n56000\n\n\nManager\nHR\n30\n54000\n\n\nMarketing\n33\n62000\n\n\nRepresentative\nSales\n32\n52000"
+  },
+  {
+    "objectID": "part-08/lecture-scientific-presentation.html#grouping-with-aggregations",
+    "href": "part-08/lecture-scientific-presentation.html#grouping-with-aggregations",
+    "title": "Lecture VII - Pandas and AI",
+    "section": "Grouping with Aggregations",
+    "text": "Grouping with Aggregations\n\nAs seen, we can use aggregation functions:\n\nsum(): sum of the values\nmean(): mean of the values\nmax(): maximum of the values\nmin(): minimum of the values\ncount(): count of the values"
+  },
+  {
+    "objectID": "part-08/lecture-scientific-presentation.html#melting-dataframes",
+    "href": "part-08/lecture-scientific-presentation.html#melting-dataframes",
+    "title": "Lecture VII - Pandas and AI",
+    "section": "Melting DataFrames",
+    "text": "Melting DataFrames\n\nUse pd.melt() to transform from wide to long\n\n\n\ndf = pd.read_csv(\"employees.csv\").drop(columns=[\"Name\"])\ndf = pd.melt(df, id_vars=['Position'])\nprint(df.head()); print(df.tail())\n\n\n\n         Position variable value\n0         Manager      Age    30\n1       Developer      Age    25\n2         Analyst      Age    28\n3       Executive      Age    35\n4  Representative      Age    32\n           Position variable  value\n145       Developer   Salary  69000\n146       Assistant   Salary  49000\n147         Analyst   Salary  55000\n148         Manager   Salary  62000\n149  Representative   Salary  51000"
+  },
+  {
+    "objectID": "part-08/lecture-scientific-presentation.html#pandas-in-action",
+    "href": "part-08/lecture-scientific-presentation.html#pandas-in-action",
+    "title": "Lecture VII - Pandas and AI",
+    "section": "Pandas in Action",
+    "text": "Pandas in Action\nTask: Complete the following task:\n\n# TODO: Load the employees.csv again into a DataFrame\n# First, group by the \"Position\" column and count the employees per position\n# Then, group by the \"Department\" column and calculate the sum of all other columns per department\ndf = pd.read_csv(\"employees.csv\")\n# Your code here\n\n\n\n\n\n\n\n\n\n\n\nNote\n\n\nDo you notice any irregularities while calculating the sum per department?"
+  },
+  {
+    "objectID": "part-08/lecture-scientific-presentation.html#concatenating-dataframes",
+    "href": "part-08/lecture-scientific-presentation.html#concatenating-dataframes",
+    "title": "Lecture VII - Pandas and AI",
+    "section": "Concatenating DataFrames",
+    "text": "Concatenating DataFrames\n\npd.concat() to concatenate along shared columns\n\n\ndf1 = pd.DataFrame({\"A\": [1, 2, 3], \"B\": [4, 5, 6]})\ndf2 = pd.DataFrame({\"A\": [7, 8, 9], \"B\": [10, 11, 12]})\ndf = pd.concat([df1, df2])\nprint(df)\n\n\n\n   A   B\n0  1   4\n1  2   5\n2  3   6\n0  7  10\n1  8  11\n2  9  12"
+  },
+  {
+    "objectID": "part-08/lecture-scientific-presentation.html#joining-dataframes",
+    "href": "part-08/lecture-scientific-presentation.html#joining-dataframes",
+    "title": "Lecture VII - Pandas and AI",
+    "section": "Joining DataFrames",
+    "text": "Joining DataFrames\n\nUse pd.join() to join DataFrames along columns\nJoining is done on the index by default!\n\n\ndf1 = pd.DataFrame({\"A\": [1, 2, 3], \"B\": [4, 5, 6]}, index=['x', 'y', 'z'])\ndf2 = pd.DataFrame({\"C\": [7, 8, 9], \"D\": [10, 11, 12]}, index=['z', 'y', 'w'])\ndf = df1.join(df2)\nprint(df)\n\n\n\n   A  B    C     D\nx  1  4  NaN   NaN\ny  2  5  8.0  11.0\nz  3  6  7.0  10.0"
+  },
+  {
+    "objectID": "part-08/lecture-scientific-presentation.html#merging-dataframes-on-columns",
+    "href": "part-08/lecture-scientific-presentation.html#merging-dataframes-on-columns",
+    "title": "Lecture VII - Pandas and AI",
+    "section": "Merging DataFrames on Columns",
+    "text": "Merging DataFrames on Columns\n\npd.merge(df_name, on='column', how='type')\nmerge DataFrames along shared columns\nhow specifies the type of merge\n\ninner: rows with matching keys in both DataFrames\nouter: rows from both are kept, missing values are filled\nleft: rows from the left are kept, missing values are filled\nright: rows from right are kept, missing values are filled"
+  },
+  {
+    "objectID": "part-08/lecture-scientific-presentation.html#outer-merge",
+    "href": "part-08/lecture-scientific-presentation.html#outer-merge",
+    "title": "Lecture VII - Pandas and AI",
+    "section": "Outer Merge",
+    "text": "Outer Merge\n\ndf3 = pd.DataFrame({\"A\": [1, 2, 3], \"B\": [4, 5, 6]})\ndf4 = pd.DataFrame({\"A\": [2, 3, 4], \"C\": [7, 8, 9]})\ndf_merged = df3.merge(df4, on=\"A\", how=\"outer\")\nprint(df_merged)\n\n\n\n   A    B    C\n0  1  4.0  NaN\n1  2  5.0  7.0\n2  3  6.0  8.0\n3  4  NaN  9.0"
+  },
+  {
+    "objectID": "part-08/lecture-scientific-presentation.html#working-with-excel-files",
+    "href": "part-08/lecture-scientific-presentation.html#working-with-excel-files",
+    "title": "Lecture VII - Pandas and AI",
+    "section": "Working with Excel Files",
+    "text": "Working with Excel Files"
+  },
+  {
+    "objectID": "part-08/lecture-scientific-presentation.html#reading-excel-files",
+    "href": "part-08/lecture-scientific-presentation.html#reading-excel-files",
+    "title": "Lecture VII - Pandas and AI",
+    "section": "Reading Excel Files",
+    "text": "Reading Excel Files\n\nRead using the pd.read_excel(file_path) function\nWrite using the df.to_excel(file_path) method\n\n\n\nimport pandas as pd\ndf = pd.read_csv(\"employees.csv\")\ndf.to_excel(\"employees.xlsx\", index=False)\n\n\n\n\n\n\n\n\n\nNote\n\n\nNote, that you likely need to install the openpyxl package to be able to write Excel files, as it handles the file format."
+  },
+  {
+    "objectID": "part-08/lecture-scientific-presentation.html#advanced-excel-file-handling",
+    "href": "part-08/lecture-scientific-presentation.html#advanced-excel-file-handling",
+    "title": "Lecture VII - Pandas and AI",
+    "section": "Advanced Excel file handling",
+    "text": "Advanced Excel file handling\n\ndf = pd.read_excel(\"employees.xlsx\")\n\n# Writes to the Employees sheet and does not include row indices\ndf.to_excel(\"employees.xlsx\", sheet_name=\"Employees\", index=False)\n\n# Reads from the Employees sheet\ndf = pd.read_excel(\"employees.xlsx\", sheet_name=\"Employees\")\n\n\n\n\n\n\n\n\nNote\n\n\nAnd that’s it for todays lecture!\nYou now have the basic knowledge to start working with tabular data."
+  },
+  {
+    "objectID": "part-08/lecture-scientific-presentation.html#interesting-books",
+    "href": "part-08/lecture-scientific-presentation.html#interesting-books",
+    "title": "Lecture VII - Pandas and AI",
+    "section": "Interesting Books",
+    "text": "Interesting Books\n\nDowney, A. B. (2024). Think Python: How to think like a computer scientist (Third edition). O’Reilly. Link to free online version\nElter, S. (2021). Schrödinger programmiert Python: Das etwas andere Fachbuch (1. Auflage). Rheinwerk Verlag.\n\n\nFor more interesting literature to learn more about Python, take a look at the literature list of this course."
+  },
+  {
+    "objectID": "part-08/lecture-pandas.html",
+    "href": "part-08/lecture-pandas.html",
+    "title": "Lecture VII - Pandas and AI",
+    "section": "",
+    "text": "NumPy is a package for scientific computing in Python\nProvides multi-dimensional arrays and matrices\nMuch faster than Python lists for numerical operations\nOperations are implemented in C and C++\n\n. . .\n\n\n\n\n\n\nTip\n\n\n\nNumPy arrays are stored in contiguous memory blocks, making operations very efficient.\n\n\n\n\n\n\nCore data structure is the ndarray\nCan create arrays from lists, tuples, or other data structures\nSpecial functions like:\n\nnp.zeros() for arrays of zeros\nnp.random.rand() for random values\nnp.arange() for evenly spaced values\nnp.linspace() for linearly spaced values\n\n\n\n\n\n\nSupport for multi-dimensional operations\nCommon operations:\n\nElement-wise arithmetic (+, -, *, /)\nArray indexing and slicing\nShape manipulation (reshape, flatten)\nSorting and transposing\n\n\n. . .\n\n\n\n\n\n\nTip\n\n\n\nNumPy operations are vectorized, meaning they operate on entire arrays at once rather than element by element.",
+    "crumbs": [
+      "08 Tabular and AI",
+      "Lecture"
+    ]
+  },
+  {
+    "objectID": "part-08/lecture-pandas.html#what-is-numpy",
+    "href": "part-08/lecture-pandas.html#what-is-numpy",
+    "title": "Lecture VII - Pandas and AI",
+    "section": "",
+    "text": "NumPy is a package for scientific computing in Python\nProvides multi-dimensional arrays and matrices\nMuch faster than Python lists for numerical operations\nOperations are implemented in C and C++\n\n. . .\n\n\n\n\n\n\nTip\n\n\n\nNumPy arrays are stored in contiguous memory blocks, making operations very efficient.",
+    "crumbs": [
+      "08 Tabular and AI",
+      "Lecture"
+    ]
+  },
+  {
+    "objectID": "part-08/lecture-pandas.html#creating-arrays",
+    "href": "part-08/lecture-pandas.html#creating-arrays",
+    "title": "Lecture VII - Pandas and AI",
+    "section": "",
+    "text": "Core data structure is the ndarray\nCan create arrays from lists, tuples, or other data structures\nSpecial functions like:\n\nnp.zeros() for arrays of zeros\nnp.random.rand() for random values\nnp.arange() for evenly spaced values\nnp.linspace() for linearly spaced values",
+    "crumbs": [
+      "08 Tabular and AI",
+      "Lecture"
+    ]
+  },
+  {
+    "objectID": "part-08/lecture-pandas.html#working-with-arrays",
+    "href": "part-08/lecture-pandas.html#working-with-arrays",
+    "title": "Lecture VII - Pandas and AI",
+    "section": "",
+    "text": "Support for multi-dimensional operations\nCommon operations:\n\nElement-wise arithmetic (+, -, *, /)\nArray indexing and slicing\nShape manipulation (reshape, flatten)\nSorting and transposing\n\n\n. . .\n\n\n\n\n\n\nTip\n\n\n\nNumPy operations are vectorized, meaning they operate on entire arrays at once rather than element by element.",
+    "crumbs": [
+      "08 Tabular and AI",
+      "Lecture"
+    ]
+  },
+  {
+    "objectID": "part-08/lecture-pandas.html#what-is-pandas",
+    "href": "part-08/lecture-pandas.html#what-is-pandas",
+    "title": "Lecture VII - Pandas and AI",
+    "section": "What is Pandas?",
+    "text": "What is Pandas?\n\nPandas is a data manipulation and analysis library\nIt provides data structures like DataFrames and Series\nTools for data cleaning, analysis, and visualization\nIt can also be used to work with Excel files!",
+    "crumbs": [
+      "08 Tabular and AI",
+      "Lecture"
+    ]
+  },
+  {
+    "objectID": "part-08/lecture-pandas.html#how-to-install-pandas",
+    "href": "part-08/lecture-pandas.html#how-to-install-pandas",
+    "title": "Lecture VII - Pandas and AI",
+    "section": "How to install Pandas",
+    "text": "How to install Pandas\n\nIn the last lecture, we have installed it with pip install pandas or with Thonny\nNow, import the package import pandas as pd\n\n. . .\n\n\n\n\n\n\nNote\n\n\n\nYou can also use a different abbreviation, but pd is the most common one.",
+    "crumbs": [
+      "08 Tabular and AI",
+      "Lecture"
+    ]
+  },
+  {
+    "objectID": "part-08/lecture-pandas.html#creating-dataframes",
+    "href": "part-08/lecture-pandas.html#creating-dataframes",
+    "title": "Lecture VII - Pandas and AI",
+    "section": "Creating DataFrames",
+    "text": "Creating DataFrames\n\nDataFrames behave quite similar to Numpy arrays\nBut they have row and column labels\n\n. . .\n\nimport pandas as pd\ndf = pd.DataFrame({ # DataFrame is created from a dictionary\n    \"Name\": [\"Tobias\", \"Robin\", \"Nils\", \"Nikolai\"],\n    \"Kids\": [2, 1, 0, 0],\n    \"City\": [\"Oststeinbek\", \"Oststeinbek\", \"Hamburg\", \"Lübeck\"],\n    \"Salary\": [3000, 3200, 4000, 2500]}); print(df)\n\n      Name  Kids         City  Salary\n0   Tobias     2  Oststeinbek    3000\n1    Robin     1  Oststeinbek    3200\n2     Nils     0      Hamburg    4000\n3  Nikolai     0       Lübeck    2500",
+    "crumbs": [
+      "08 Tabular and AI",
+      "Lecture"
+    ]
+  },
+  {
+    "objectID": "part-08/lecture-pandas.html#reading-from-csv-files",
+    "href": "part-08/lecture-pandas.html#reading-from-csv-files",
+    "title": "Lecture VII - Pandas and AI",
+    "section": "Reading from CSV Files",
+    "text": "Reading from CSV Files\n\ndf = pd.read_csv(\"employees.csv\") # Reads the CSV file\nprint(df)\n\n       Name  Age Department        Position  Salary\n0     Alice   30         HR         Manager   50000\n1       Bob   25         IT       Developer   60000\n2   Charlie   28    Finance         Analyst   55000\n3     David   35  Marketing       Executive   52000\n4       Eve   32      Sales  Representative   48000\n5     Frank   29         IT       Developer   61000\n6     Grace   31         HR       Assistant   45000\n7      Hank   27    Finance         Analyst   53000\n8       Ivy   33  Marketing         Manager   58000\n9      Jack   26      Sales  Representative   47000\n10     Kara   34         IT       Developer   62000\n11      Leo   30         HR         Manager   51000\n12     Mona   28    Finance         Analyst   54000\n13     Nina   35  Marketing       Executive   53000\n14    Oscar   32      Sales  Representative   49000\n15     Paul   29         IT       Developer   63000\n16    Quinn   31         HR       Assistant   46000\n17     Rita   27    Finance         Analyst   52000\n18      Sam   33  Marketing         Manager   59000\n19     Tina   26      Sales  Representative   48000\n20      Uma   34         IT       Developer   64000\n21    Vince   30         HR         Manager   52000\n22     Walt   28    Finance         Analyst   55000\n23     Xena   35  Marketing       Executive   54000\n24     Yara   32      Sales  Representative   50000\n25     Zane   29         IT       Developer   65000\n26     Anna   31         HR       Assistant   47000\n27      Ben   27    Finance         Analyst   53000\n28    Cathy   33  Marketing         Manager   60000\n29    Dylan   26      Sales  Representative   49000\n30     Ella   34         IT       Developer   66000\n31     Finn   30         HR         Manager   53000\n32     Gina   28    Finance         Analyst   56000\n33     Hugo   35  Marketing       Executive   55000\n34     Iris   32      Sales  Representative   51000\n35     Jake   29         IT       Developer   67000\n36     Kyla   31         HR       Assistant   48000\n37     Liam   27    Finance         Analyst   54000\n38      Mia   33  Marketing         Manager   61000\n39     Noah   26      Sales  Representative   50000\n40    Olive   34         IT       Developer   68000\n41     Pete   30         HR         Manager   54000\n42   Quincy   28    Finance         Analyst   57000\n43     Rose   35  Marketing       Executive   56000\n44    Steve   32      Sales  Representative   52000\n45     Tara   29         IT       Developer   69000\n46     Umar   31         HR       Assistant   49000\n47     Vera   27    Finance         Analyst   55000\n48     Will   33  Marketing         Manager   62000\n49     Zara   26      Sales  Representative   51000",
+    "crumbs": [
+      "08 Tabular and AI",
+      "Lecture"
+    ]
+  },
+  {
+    "objectID": "part-08/lecture-pandas.html#basic-operations",
+    "href": "part-08/lecture-pandas.html#basic-operations",
+    "title": "Lecture VII - Pandas and AI",
+    "section": "Basic Operations",
+    "text": "Basic Operations\n\nUse the df.head() method to display the first 5 rows\nUse the df.tail() method to display the last 5 rows\n\n. . .\n\ndf = pd.read_csv(\"employees.csv\")\nprint(df.tail())\n\n    Name  Age Department        Position  Salary\n45  Tara   29         IT       Developer   69000\n46  Umar   31         HR       Assistant   49000\n47  Vera   27    Finance         Analyst   55000\n48  Will   33  Marketing         Manager   62000\n49  Zara   26      Sales  Representative   51000",
+    "crumbs": [
+      "08 Tabular and AI",
+      "Lecture"
+    ]
+  },
+  {
+    "objectID": "part-08/lecture-pandas.html#information-about-the-dataframe",
+    "href": "part-08/lecture-pandas.html#information-about-the-dataframe",
+    "title": "Lecture VII - Pandas and AI",
+    "section": "Information about the DataFrame",
+    "text": "Information about the DataFrame\n\nUse df.info() to display information about a DataFrame\n\n. . .\n\ndf = pd.read_csv(\"employees.csv\")\nprint(df.info())\n\n&lt;class 'pandas.core.frame.DataFrame'&gt;\nRangeIndex: 50 entries, 0 to 49\nData columns (total 5 columns):\n #   Column      Non-Null Count  Dtype \n---  ------      --------------  ----- \n 0   Name        50 non-null     object\n 1   Age         50 non-null     int64 \n 2   Department  50 non-null     object\n 3   Position    50 non-null     object\n 4   Salary      50 non-null     int64 \ndtypes: int64(2), object(3)\nmemory usage: 2.1+ KB\nNone",
+    "crumbs": [
+      "08 Tabular and AI",
+      "Lecture"
+    ]
+  },
+  {
+    "objectID": "part-08/lecture-pandas.html#statistics-about-a-dataframe",
+    "href": "part-08/lecture-pandas.html#statistics-about-a-dataframe",
+    "title": "Lecture VII - Pandas and AI",
+    "section": "Statistics about a DataFrame",
+    "text": "Statistics about a DataFrame\n\nUse df.describe() to display summary statistics\nUse the df.index attribute to access the index\n\n. . .\n\ndf = pd.read_csv(\"employees.csv\")\nprint(df.describe())\n\n             Age        Salary\ncount  50.000000     50.000000\nmean   30.320000  54980.000000\nstd     2.958488   6175.957333\nmin    25.000000  45000.000000\n25%    28.000000  50250.000000\n50%    30.000000  54000.000000\n75%    33.000000  59750.000000\nmax    35.000000  69000.000000",
+    "crumbs": [
+      "08 Tabular and AI",
+      "Lecture"
+    ]
+  },
+  {
+    "objectID": "part-08/lecture-pandas.html#filtering-dataframes",
+    "href": "part-08/lecture-pandas.html#filtering-dataframes",
+    "title": "Lecture VII - Pandas and AI",
+    "section": "Filtering DataFrames",
+    "text": "Filtering DataFrames\n\nUse df['column_name'] to access a column\nUse the df[df['column'] &gt; value] method to filter\n\n. . .\n\ndf = pd.read_csv(\"employees.csv\")\ndf_high_salary = df[df['Salary'] &gt;= 67000]\nprint(df_high_salary)\nprint(df_high_salary.iloc[2][\"Name\"]) #Access the third row and the \"Name\" column\nprint(df_high_salary.loc[40][\"Name\"]) #Access the label 40 and the \"Name\" column\n\n     Name  Age Department   Position  Salary\n35   Jake   29         IT  Developer   67000\n40  Olive   34         IT  Developer   68000\n45   Tara   29         IT  Developer   69000\nTara\nOlive",
+    "crumbs": [
+      "08 Tabular and AI",
+      "Lecture"
+    ]
+  },
+  {
+    "objectID": "part-08/lecture-pandas.html#filtering-in-action",
+    "href": "part-08/lecture-pandas.html#filtering-in-action",
+    "title": "Lecture VII - Pandas and AI",
+    "section": "Filtering in Action",
+    "text": "Filtering in Action\nTask: Complete the following task:\n\n# TODO: Load the employees.csv located in the git repository into a DataFrame\n# First, filter the DataFrame for employees with a manager position\n# Then, print the average salary of the remaining employees\n# Finally, print the name of the employee with the lowest salary\n\n. . .\n\n\n\n\n\n\nNote\n\n\n\nNote, that we can use the mean() method on the Salary column, as it is a numeric column. In addition, we can use the min() method on the Salary column to find the lowest salary.",
+    "crumbs": [
+      "08 Tabular and AI",
+      "Lecture"
+    ]
+  },
+  {
+    "objectID": "part-08/lecture-pandas.html#grouping",
+    "href": "part-08/lecture-pandas.html#grouping",
+    "title": "Lecture VII - Pandas and AI",
+    "section": "Grouping",
+    "text": "Grouping\n\nGrouping is a powerful feature of Pandas\nGroups data by one or more columns\nAnd then perform operations\nSyntax is df.groupby('column').method()\n\n. . .\n\ndf = pd.read_csv(\"employees.csv\")\ndf = df.drop(columns=[\"Name\", \"Department\"])\ndf.groupby(['Position']).mean() # Mean per position\n\n\n\n\n\n\n\n\nAge\nSalary\n\n\nPosition\n\n\n\n\n\n\nAnalyst\n27.5\n54400.0\n\n\nAssistant\n31.0\n47000.0\n\n\nDeveloper\n30.6\n64500.0\n\n\nExecutive\n35.0\n54000.0\n\n\nManager\n31.5\n56000.0\n\n\nRepresentative\n29.0\n49500.0",
+    "crumbs": [
+      "08 Tabular and AI",
+      "Lecture"
+    ]
+  },
+  {
+    "objectID": "part-08/lecture-pandas.html#grouping-by-multiple-columns",
+    "href": "part-08/lecture-pandas.html#grouping-by-multiple-columns",
+    "title": "Lecture VII - Pandas and AI",
+    "section": "Grouping by Multiple Columns",
+    "text": "Grouping by Multiple Columns\n\nGroup by multiple columns ['column1', 'column2']\nYou can use lists or tuples to specify multiple columns\n\n. . .\n\ndf = pd.read_csv(\"employees.csv\")\ndf = df.drop(columns=[\"Name\"])\n# Max per position and department\ndf.groupby(['Position', \"Department\"]).max()\n\n\n\n\n\n\n\n\n\nAge\nSalary\n\n\nPosition\nDepartment\n\n\n\n\n\n\nAnalyst\nFinance\n28\n57000\n\n\nAssistant\nHR\n31\n49000\n\n\nDeveloper\nIT\n34\n69000\n\n\nExecutive\nMarketing\n35\n56000\n\n\nManager\nHR\n30\n54000\n\n\nMarketing\n33\n62000\n\n\nRepresentative\nSales\n32\n52000",
+    "crumbs": [
+      "08 Tabular and AI",
+      "Lecture"
+    ]
+  },
+  {
+    "objectID": "part-08/lecture-pandas.html#grouping-with-aggregations",
+    "href": "part-08/lecture-pandas.html#grouping-with-aggregations",
+    "title": "Lecture VII - Pandas and AI",
+    "section": "Grouping with Aggregations",
+    "text": "Grouping with Aggregations\n\nAs seen, we can use aggregation functions:\n\nsum(): sum of the values\nmean(): mean of the values\nmax(): maximum of the values\nmin(): minimum of the values\ncount(): count of the values",
+    "crumbs": [
+      "08 Tabular and AI",
+      "Lecture"
+    ]
+  },
+  {
+    "objectID": "part-08/lecture-pandas.html#melting-dataframes",
+    "href": "part-08/lecture-pandas.html#melting-dataframes",
+    "title": "Lecture VII - Pandas and AI",
+    "section": "Melting DataFrames",
+    "text": "Melting DataFrames\n\nUse pd.melt() to transform from wide to long\n\n. . .\n\ndf = pd.read_csv(\"employees.csv\").drop(columns=[\"Name\"])\ndf = pd.melt(df, id_vars=['Position'])\nprint(df.head()); print(df.tail())\n\n         Position variable value\n0         Manager      Age    30\n1       Developer      Age    25\n2         Analyst      Age    28\n3       Executive      Age    35\n4  Representative      Age    32\n           Position variable  value\n145       Developer   Salary  69000\n146       Assistant   Salary  49000\n147         Analyst   Salary  55000\n148         Manager   Salary  62000\n149  Representative   Salary  51000",
+    "crumbs": [
+      "08 Tabular and AI",
+      "Lecture"
+    ]
+  },
+  {
+    "objectID": "part-08/lecture-pandas.html#pandas-in-action",
+    "href": "part-08/lecture-pandas.html#pandas-in-action",
+    "title": "Lecture VII - Pandas and AI",
+    "section": "Pandas in Action",
+    "text": "Pandas in Action\nTask: Complete the following task:\n\n# TODO: Load the employees.csv again into a DataFrame\n# First, group by the \"Position\" column and count the employees per position\n# Then, group by the \"Department\" column and calculate the sum of all other columns per department\ndf = pd.read_csv(\"employees.csv\")\n# Your code here\n\n. . .\n\n\n\n\n\n\nNote\n\n\n\nDo you notice any irregularities while calculating the sum per department?",
+    "crumbs": [
+      "08 Tabular and AI",
+      "Lecture"
+    ]
+  },
+  {
+    "objectID": "part-08/lecture-pandas.html#concatenating-dataframes",
+    "href": "part-08/lecture-pandas.html#concatenating-dataframes",
+    "title": "Lecture VII - Pandas and AI",
+    "section": "Concatenating DataFrames",
+    "text": "Concatenating DataFrames\n\npd.concat() to concatenate along shared columns\n\n\ndf1 = pd.DataFrame({\"A\": [1, 2, 3], \"B\": [4, 5, 6]})\ndf2 = pd.DataFrame({\"A\": [7, 8, 9], \"B\": [10, 11, 12]})\ndf = pd.concat([df1, df2])\nprint(df)\n\n   A   B\n0  1   4\n1  2   5\n2  3   6\n0  7  10\n1  8  11\n2  9  12",
+    "crumbs": [
+      "08 Tabular and AI",
+      "Lecture"
+    ]
+  },
+  {
+    "objectID": "part-08/lecture-pandas.html#joining-dataframes",
+    "href": "part-08/lecture-pandas.html#joining-dataframes",
+    "title": "Lecture VII - Pandas and AI",
+    "section": "Joining DataFrames",
+    "text": "Joining DataFrames\n\nUse pd.join() to join DataFrames along columns\nJoining is done on the index by default!\n\n\ndf1 = pd.DataFrame({\"A\": [1, 2, 3], \"B\": [4, 5, 6]}, index=['x', 'y', 'z'])\ndf2 = pd.DataFrame({\"C\": [7, 8, 9], \"D\": [10, 11, 12]}, index=['z', 'y', 'w'])\ndf = df1.join(df2)\nprint(df)\n\n   A  B    C     D\nx  1  4  NaN   NaN\ny  2  5  8.0  11.0\nz  3  6  7.0  10.0",
+    "crumbs": [
+      "08 Tabular and AI",
+      "Lecture"
+    ]
+  },
+  {
+    "objectID": "part-08/lecture-pandas.html#merging-dataframes-on-columns",
+    "href": "part-08/lecture-pandas.html#merging-dataframes-on-columns",
+    "title": "Lecture VII - Pandas and AI",
+    "section": "Merging DataFrames on Columns",
+    "text": "Merging DataFrames on Columns\n\npd.merge(df_name, on='column', how='type')\nmerge DataFrames along shared columns\nhow specifies the type of merge\n\ninner: rows with matching keys in both DataFrames\nouter: rows from both are kept, missing values are filled\nleft: rows from the left are kept, missing values are filled\nright: rows from right are kept, missing values are filled",
+    "crumbs": [
+      "08 Tabular and AI",
+      "Lecture"
+    ]
+  },
+  {
+    "objectID": "part-08/lecture-pandas.html#outer-merge",
+    "href": "part-08/lecture-pandas.html#outer-merge",
+    "title": "Lecture VII - Pandas and AI",
+    "section": "Outer Merge",
+    "text": "Outer Merge\n\ndf3 = pd.DataFrame({\"A\": [1, 2, 3], \"B\": [4, 5, 6]})\ndf4 = pd.DataFrame({\"A\": [2, 3, 4], \"C\": [7, 8, 9]})\ndf_merged = df3.merge(df4, on=\"A\", how=\"outer\")\nprint(df_merged)\n\n   A    B    C\n0  1  4.0  NaN\n1  2  5.0  7.0\n2  3  6.0  8.0\n3  4  NaN  9.0",
+    "crumbs": [
+      "08 Tabular and AI",
+      "Lecture"
+    ]
+  },
+  {
+    "objectID": "part-08/lecture-pandas.html#working-with-excel-files",
+    "href": "part-08/lecture-pandas.html#working-with-excel-files",
+    "title": "Lecture VII - Pandas and AI",
+    "section": "Working with Excel Files",
+    "text": "Working with Excel Files",
+    "crumbs": [
+      "08 Tabular and AI",
+      "Lecture"
+    ]
+  },
+  {
+    "objectID": "part-08/lecture-pandas.html#reading-excel-files",
+    "href": "part-08/lecture-pandas.html#reading-excel-files",
+    "title": "Lecture VII - Pandas and AI",
+    "section": "Reading Excel Files",
+    "text": "Reading Excel Files\n\nRead using the pd.read_excel(file_path) function\nWrite using the df.to_excel(file_path) method\n\n. . .\n\nimport pandas as pd\ndf = pd.read_csv(\"employees.csv\")\ndf.to_excel(\"employees.xlsx\", index=False)\n\n. . .\n\n\n\n\n\n\nNote\n\n\n\nNote, that you likely need to install the openpyxl package to be able to write Excel files, as it handles the file format.",
+    "crumbs": [
+      "08 Tabular and AI",
+      "Lecture"
+    ]
+  },
+  {
+    "objectID": "part-08/lecture-pandas.html#advanced-excel-file-handling",
+    "href": "part-08/lecture-pandas.html#advanced-excel-file-handling",
+    "title": "Lecture VII - Pandas and AI",
+    "section": "Advanced Excel file handling",
+    "text": "Advanced Excel file handling\n\ndf = pd.read_excel(\"employees.xlsx\")\n\n# Writes to the Employees sheet and does not include row indices\ndf.to_excel(\"employees.xlsx\", sheet_name=\"Employees\", index=False)\n\n# Reads from the Employees sheet\ndf = pd.read_excel(\"employees.xlsx\", sheet_name=\"Employees\")\n\n. . .\n\n\n\n\n\n\nNote\n\n\n\nAnd that’s it for todays lecture!\nYou now have the basic knowledge to start working with tabular data.",
+    "crumbs": [
+      "08 Tabular and AI",
+      "Lecture"
+    ]
+  },
+  {
+    "objectID": "part-08/lecture-pandas.html#interesting-books",
+    "href": "part-08/lecture-pandas.html#interesting-books",
+    "title": "Lecture VII - Pandas and AI",
+    "section": "Interesting Books",
+    "text": "Interesting Books\n\nDowney, A. B. (2024). Think Python: How to think like a computer scientist (Third edition). O’Reilly. Link to free online version\nElter, S. (2021). Schrödinger programmiert Python: Das etwas andere Fachbuch (1. Auflage). Rheinwerk Verlag.\n\n. . .\nFor more interesting literature to learn more about Python, take a look at the literature list of this course.",
+    "crumbs": [
+      "08 Tabular and AI",
+      "Lecture"
+    ]
+  },
+  {
     "objectID": "part-07/lecture-scientific-presentation.html#modules",
     "href": "part-07/lecture-scientific-presentation.html#modules",
     "title": "Lecture VII - NumPy and Pandas for Scientific Computing",
@@ -4796,6 +5271,366 @@
     ]
   },
   {
+    "objectID": "general/cheatsheet.html#key-concepts",
+    "href": "general/cheatsheet.html#key-concepts",
+    "title": "Lecture I - Introduction",
+    "section": "Key Concepts",
+    "text": "Key Concepts\n\nPython Basics\n\nPython is an interpreted language - code is executed line by line\nComments start with #\nCode blocks are defined by indentation\n\n\n\nVariables\n\nCreated using assignment operator =\nMust start with letter or underscore\nCase sensitive\nCannot use reserved words\n\n\n\nData Types\n\nStrings (str)\n\nEnclosed in quotes: \"Hello\" or 'Hello'\nF-strings: f\"Value is {variable}\"\nFormat: f\"{variable:&lt;width&gt;.&lt;precision&gt;f}\"\n\nNumbers\n\nIntegers (int): 1, -3, 0\nFloats: -4.78, 0.1, 1.23e2\n\nBooleans (bool)\n\nTrue or False\n\n\n\n\nBasic Operators\n# Arithmetic\naddition = 1 + 2 # 3\nsubtraction = 1 - 2 # -1\nmultiplication = 3 * 4 # 12\ndivision = 7 / 4 # 1.75\nfloor_division = 7 // 4 # 1\nexponentiation = 9 ** 0.5 # 3.0\nmodulo = 10 % 3 # 1\n\n\nCommon Functions\n# Input/Output\nprint(\"Hello\")                    # Display output\nname = input(\"Enter name: \")      # Get user input\n\n# Type Conversion\nint_val = int(\"123\")             # String to integer\nfloat_val = float(\"12.34\")       # String to float\nstr_val = str(123)               # Number to string\n\n# Other\nround(3.14159, 2)                # Round to 2 decimals\nlen(\"Hello\")                     # Get length\ntype(variable)                   # Get type of variable",
+    "crumbs": [
+      "Cheatsheet"
+    ]
+  },
+  {
+    "objectID": "general/cheatsheet.html#best-practices",
+    "href": "general/cheatsheet.html#best-practices",
+    "title": "Lecture I - Introduction",
+    "section": "Best Practices",
+    "text": "Best Practices\n\nUse meaningful variable names\nAdd comments to explain complex code\nFollow Python’s naming conventions\nUse f-strings for string formatting\nBe consistent with quote usage (\" or ')",
+    "crumbs": [
+      "Cheatsheet"
+    ]
+  },
+  {
+    "objectID": "general/cheatsheet.html#string-methods",
+    "href": "general/cheatsheet.html#string-methods",
+    "title": "Lecture I - Introduction",
+    "section": "String Methods",
+    "text": "String Methods\ntext = \"Hello, World!\"\ntext.upper()      # Convert to uppercase: \"HELLO, WORLD!\"\ntext.lower()      # Convert to lowercase: \"hello, world!\"\ntext.title()      # Title case: \"Hello, World!\"\ntext.strip()      # Remove leading/trailing whitespace\ntext.replace(\"Hello\", \"Hi\")  # Replace text: \"Hi, World!\"\ntext.find(\"World\")          # Find substring index: 7\ntext.count(\"l\")            # Count occurrences: 3",
+    "crumbs": [
+      "Cheatsheet"
+    ]
+  },
+  {
+    "objectID": "general/cheatsheet.html#indexing-and-slicing",
+    "href": "general/cheatsheet.html#indexing-and-slicing",
+    "title": "Lecture I - Introduction",
+    "section": "Indexing and Slicing",
+    "text": "Indexing and Slicing\ntext = \"Hello, World!\"\ntext[0]      # First character: \"H\"\ntext[-1]     # Last character: \"!\"\ntext[7:12]   # Slice: \"World\"\ntext[::2]    # Every second character: \"Hlo ol!\"\ntext[::-1]   # Reverse string: \"!dlroW ,olleH\"",
+    "crumbs": [
+      "Cheatsheet"
+    ]
+  },
+  {
+    "objectID": "general/cheatsheet.html#comparison-operators",
+    "href": "general/cheatsheet.html#comparison-operators",
+    "title": "Lecture I - Introduction",
+    "section": "Comparison Operators",
+    "text": "Comparison Operators\n\n== Equal to\n!= Not equal to\n&lt; Less than\n&gt; Greater than\n&lt;= Less than or equal to\n&gt;= Greater than or equal to",
+    "crumbs": [
+      "Cheatsheet"
+    ]
+  },
+  {
+    "objectID": "general/cheatsheet.html#logical-operators",
+    "href": "general/cheatsheet.html#logical-operators",
+    "title": "Lecture I - Introduction",
+    "section": "Logical Operators",
+    "text": "Logical Operators\n# and: Both conditions must be True\nx &gt; 0 and x &lt; 10    # True if x is between 0 and 10\n\n# or: At least one condition must be True\nx &lt; 0 or x &gt; 10     # True if x is outside 0-10\n\n# not: Inverts the condition\nnot x == 10         # True if x is not 10",
+    "crumbs": [
+      "Cheatsheet"
+    ]
+  },
+  {
+    "objectID": "general/cheatsheet.html#membership-operators",
+    "href": "general/cheatsheet.html#membership-operators",
+    "title": "Lecture I - Introduction",
+    "section": "Membership Operators",
+    "text": "Membership Operators\n\"a\" in \"apple\"          # True\n\"z\" not in \"apple\"      # True",
+    "crumbs": [
+      "Cheatsheet"
+    ]
+  },
+  {
+    "objectID": "general/cheatsheet.html#control-structures",
+    "href": "general/cheatsheet.html#control-structures",
+    "title": "Lecture I - Introduction",
+    "section": "Control Structures",
+    "text": "Control Structures\n\nIf Statements\nif condition:\n    # code if condition is True\nelif other_condition:\n    # code if other_condition is True\nelse:\n    # code if all conditions are False\n\n\nFor Loops\n# Loop with range\nfor i in range(5):          # 0 to 4\n    print(i)\n\n# Loop with range and step\nfor i in range(0, 10, 2):   # 0, 2, 4, 6, 8\n    print(i)\n\n# Loop through string\nfor char in \"Hello\":\n    print(char)\n\n\nWhile Loops\n# Basic while loop\ni = 0\nwhile i &lt; 5:\n    print(i)\n    i += 1\n\n# While loop with break\nwhile True:\n    if condition:\n        break    # Exit loop",
+    "crumbs": [
+      "Cheatsheet"
+    ]
+  },
+  {
+    "objectID": "general/cheatsheet.html#best-practices-1",
+    "href": "general/cheatsheet.html#best-practices-1",
+    "title": "Lecture I - Introduction",
+    "section": "Best Practices",
+    "text": "Best Practices\n\nUse clear and descriptive variable names\nMaintain consistent indentation (4 spaces)\nUse comments to explain complex logic\nAvoid infinite loops\nKeep code blocks focused and manageable",
+    "crumbs": [
+      "Cheatsheet"
+    ]
+  },
+  {
+    "objectID": "general/cheatsheet.html#functions",
+    "href": "general/cheatsheet.html#functions",
+    "title": "Lecture I - Introduction",
+    "section": "Functions",
+    "text": "Functions\n\nBasic Function Syntax\ndef function_name(parameter1, parameter2):\n    \"\"\"Docstring explaining what the function does\"\"\"\n    # Function body\n    return result\n\n\nFunction Parameters\n# No parameters\ndef greet():\n    print(\"Hello!\")\n\n# Multiple parameters\ndef greet(name, age):\n    print(f\"Hello {name}, you are {age} years old\")\n\n# Default parameters\ndef greet(name=\"Stranger\"):\n    print(f\"Hello {name}\")\n\n# Keyword arguments\ngreet(name=\"Alice\")  # Calling with named parameter\n\n\nReturn Values\n# Return single value\ndef multiply(a, b):\n    return a * b\n\n# Return None (implicit)\ndef greet(name):\n    print(f\"Hello {name}\")\n    # No return statement = returns None\n\n# Multiple return points\ndef check_number(n):\n    if n &gt; 0:\n        return \"positive\"\n    elif n &lt; 0:\n        return \"negative\"\n    return None  # if n == 0\n\n\nFunction Scope\n# Global scope\nglobal_var = 10\n\ndef function():\n    # Local scope\n    local_var = 20\n    print(global_var)  # Can access global\n    \n    # Modify global variable\n    global global_var\n    global_var = 30",
+    "crumbs": [
+      "Cheatsheet"
+    ]
+  },
+  {
+    "objectID": "general/cheatsheet.html#classes",
+    "href": "general/cheatsheet.html#classes",
+    "title": "Lecture I - Introduction",
+    "section": "Classes",
+    "text": "Classes\n\nBasic Class Syntax\nclass ClassName:\n    # Class attribute\n    class_attribute = value\n    \n    # Constructor\n    def __init__(self, parameter):\n        # Instance attribute\n        self.instance_attribute = parameter\n    \n    # Method\n    def method_name(self):\n        return self.instance_attribute\n\n\nClass Example\nclass Student:\n    # Class attribute\n    school = \"Python University\"\n    \n    def __init__(self, name):\n        # Instance attribute\n        self.name = name\n    \n    def introduce(self):\n        return f\"Hi, I'm {self.name}\"\n\n# Create instance\nstudent = Student(\"Alice\")\nprint(student.introduce())  # \"Hi, I'm Alice\"\n\n\nInheritance\nclass Parent:\n    def method(self):\n        print(\"Parent method\")\n\nclass Child(Parent):\n    def method(self):\n        print(\"Child method\")",
+    "crumbs": [
+      "Cheatsheet"
+    ]
+  },
+  {
+    "objectID": "general/cheatsheet.html#best-practices-2",
+    "href": "general/cheatsheet.html#best-practices-2",
+    "title": "Lecture I - Introduction",
+    "section": "Best Practices",
+    "text": "Best Practices\n\nUse descriptive function and class names\nWrite clear docstrings\nKeep functions focused on a single task\nUse meaningful parameter names\nFollow Python naming conventions:\n\nfunction_name (snake_case)\nClassName (PascalCase)\nvariable_name (snake_case)",
+    "crumbs": [
+      "Cheatsheet"
+    ]
+  },
+  {
+    "objectID": "general/cheatsheet.html#tuples",
+    "href": "general/cheatsheet.html#tuples",
+    "title": "Lecture I - Introduction",
+    "section": "Tuples",
+    "text": "Tuples\n# Creating tuples\nmy_tuple = (1, 2, 3)           # Using parentheses\nmy_tuple = 1, 2, 3             # Using just commas\nmy_tuple = tuple([1, 2, 3])    # Using tuple() function\n\n# Tuple operations\nmy_tuple[0]                    # Accessing elements\nmy_tuple[1:3]                  # Slicing\nmy_tuple + (4, 5, 6)          # Concatenation\nmy_tuple * 2                   # Repetition\n\n# Tuple methods\nmy_tuple.count(2)              # Count occurrences\nmy_tuple.index(3)              # Find index of element\n\n# Tuple unpacking\nname, age, city = my_tuple     # Basic unpacking\nname, *rest = my_tuple         # Using * for remaining elements",
+    "crumbs": [
+      "Cheatsheet"
+    ]
+  },
+  {
+    "objectID": "general/cheatsheet.html#lists",
+    "href": "general/cheatsheet.html#lists",
+    "title": "Lecture I - Introduction",
+    "section": "Lists",
+    "text": "Lists\n# Creating lists\nmy_list = [1, 2, 3]           # Using square brackets\nmy_list = list((1, 2, 3))     # Using list() function\n\n# Common list methods\nmy_list.append(4)             # Add element to end\nmy_list.insert(0, 0)         # Insert at index\nmy_list.remove(1)            # Remove first occurrence\nmy_list.pop()                # Remove and return last element\nmy_list.sort()               # Sort in place\nmy_list.reverse()            # Reverse in place\nmy_list.count(2)             # Count occurrences\nmy_list.index(3)             # Find index of element",
+    "crumbs": [
+      "Cheatsheet"
+    ]
+  },
+  {
+    "objectID": "general/cheatsheet.html#sets",
+    "href": "general/cheatsheet.html#sets",
+    "title": "Lecture I - Introduction",
+    "section": "Sets",
+    "text": "Sets\n# Creating sets\nmy_set = {1, 2, 3}           # Using curly braces\nmy_set = set([1, 2, 3])      # Using set() function\n\n# Common set methods\nmy_set.add(4)                # Add element\nmy_set.remove(1)             # Remove element (raises error if not found)\nmy_set.discard(1)            # Remove element (no error if not found)\nmy_set.pop()                 # Remove and return arbitrary element\nmy_set.update({4, 5, 6})     # Add multiple elements\n\n# Set operations\nset1.union(set2)             # Union of sets\nset1.intersection(set2)      # Intersection of sets\nset1.isdisjoint(set2)        # Check if sets have no common elements\nset1.issubset(set2)          # Check if set1 is subset of set2",
+    "crumbs": [
+      "Cheatsheet"
+    ]
+  },
+  {
+    "objectID": "general/cheatsheet.html#dictionaries",
+    "href": "general/cheatsheet.html#dictionaries",
+    "title": "Lecture I - Introduction",
+    "section": "Dictionaries",
+    "text": "Dictionaries\n# Creating dictionaries\nmy_dict = {\"name\": \"John\", \"age\": 30}    # Using curly braces\nmy_dict = dict(name=\"John\", age=30)      # Using dict() function\n\n# Dictionary operations\nmy_dict[\"name\"]              # Access value by key\nmy_dict[\"city\"] = \"Hamburg\"  # Add or update key-value pair\ndel my_dict[\"age\"]           # Remove key-value pair\n\"name\" in my_dict            # Check if key exists\n\n# Dictionary methods\nmy_dict.keys()               # Get all keys\nmy_dict.values()             # Get all values\nmy_dict.items()              # Get all key-value pairs\nmy_dict.get(\"name\")          # Safe way to get value\nmy_dict.pop(\"name\")          # Remove and return value",
+    "crumbs": [
+      "Cheatsheet"
+    ]
+  },
+  {
+    "objectID": "general/cheatsheet.html#file-handling",
+    "href": "general/cheatsheet.html#file-handling",
+    "title": "Lecture I - Introduction",
+    "section": "File Handling",
+    "text": "File Handling\n# Basic file operations\nfile = open(\"file.txt\", \"r\")  # Open for reading\nfile = open(\"file.txt\", \"w\")  # Open for writing\nfile = open(\"file.txt\", \"a\")  # Open for appending\n\n# Reading files\ncontent = file.read()         # Read entire file\nlines = file.readlines()      # Read lines into list\n\n# Writing files\nfile.write(\"Hello\")           # Write string to file\nfile.writelines(lines)        # Write list of strings\n\n# Using with statement (recommended)\nwith open(\"file.txt\", \"r\") as file:\n    content = file.read()",
+    "crumbs": [
+      "Cheatsheet"
+    ]
+  },
+  {
+    "objectID": "general/cheatsheet.html#data-type-comparison",
+    "href": "general/cheatsheet.html#data-type-comparison",
+    "title": "Lecture I - Introduction",
+    "section": "Data Type Comparison",
+    "text": "Data Type Comparison\n\nTuples: Immutable, ordered, allows duplicates\nLists: Mutable, ordered, allows duplicates\nSets: Mutable, unordered, no duplicates\nDictionaries: Mutable, unordered, unique keys",
+    "crumbs": [
+      "Cheatsheet"
+    ]
+  },
+  {
+    "objectID": "general/cheatsheet.html#best-practices-3",
+    "href": "general/cheatsheet.html#best-practices-3",
+    "title": "Lecture I - Introduction",
+    "section": "Best Practices",
+    "text": "Best Practices\n\nUse tuples for immutable sequences\nUse lists when order matters and items need to be modified\nUse sets for unique collections\nUse dictionaries for key-value relationships\nAlways use with statement for file operations\nClose files after use if not using with",
+    "crumbs": [
+      "Cheatsheet"
+    ]
+  },
+  {
+    "objectID": "general/cheatsheet.html#common-built-in-exceptions",
+    "href": "general/cheatsheet.html#common-built-in-exceptions",
+    "title": "Lecture I - Introduction",
+    "section": "Common Built-in Exceptions",
+    "text": "Common Built-in Exceptions\n\nValueError: Wrong value type (e.g., converting “hello” to int)\nTypeError: Wrong operation for type (e.g., “hello” + 5)\nNameError: Variable not found\nIndexError: List index out of range\nKeyError: Dictionary key not found\nFileNotFoundError: File/directory not found\nZeroDivisionError: Division by zero\nAttributeError: Object has no attribute/method\nImportError: Module import fails\nSyntaxError: Invalid Python syntax\nIndentationError: Incorrect indentation\nRuntimeError: Generic runtime error",
+    "crumbs": [
+      "Cheatsheet"
+    ]
+  },
+  {
+    "objectID": "general/cheatsheet.html#try-except-blocks",
+    "href": "general/cheatsheet.html#try-except-blocks",
+    "title": "Lecture I - Introduction",
+    "section": "Try-Except Blocks",
+    "text": "Try-Except Blocks\n# Basic try-except\ntry:\n    result = risky_operation()\nexcept Exception as e:\n    print(f\"Error occurred: {e}\")\n\n# Multiple exception handling\ntry:\n    result = risky_operation()\nexcept ValueError as e:\n    print(f\"Value error: {e}\")\nexcept TypeError as e:\n    print(f\"Type error: {e}\")\nexcept Exception as e:\n    print(f\"Other error: {e}\")",
+    "crumbs": [
+      "Cheatsheet"
+    ]
+  },
+  {
+    "objectID": "general/cheatsheet.html#raising-exceptions",
+    "href": "general/cheatsheet.html#raising-exceptions",
+    "title": "Lecture I - Introduction",
+    "section": "Raising Exceptions",
+    "text": "Raising Exceptions\n# Basic raise\ndef validate_age(age):\n    if age &lt; 0:\n        raise ValueError(\"Age cannot be negative\")\n    return age\n\n# Custom exception\nclass CustomError(Exception):\n    pass\n\ndef custom_operation():\n    if error_condition:\n        raise CustomError(\"Custom error message\")",
+    "crumbs": [
+      "Cheatsheet"
+    ]
+  },
+  {
+    "objectID": "general/cheatsheet.html#assertions",
+    "href": "general/cheatsheet.html#assertions",
+    "title": "Lecture I - Introduction",
+    "section": "Assertions",
+    "text": "Assertions\n# Basic assertions\nassert condition, \"Error message\"\nassert x &gt; 0, \"x must be positive\"\nassert isinstance(x, int), \"x must be integer\"\n\n# Common assertion patterns\ndef process_list(lst):\n    assert isinstance(lst, list), \"Input must be a list\"\n    assert all(isinstance(x, int) for x in lst), \"All elements must be integers\"\n    assert len(lst) &gt; 0, \"List cannot be empty\"",
+    "crumbs": [
+      "Cheatsheet"
+    ]
+  },
+  {
+    "objectID": "general/cheatsheet.html#debugging-tips",
+    "href": "general/cheatsheet.html#debugging-tips",
+    "title": "Lecture I - Introduction",
+    "section": "Debugging Tips",
+    "text": "Debugging Tips\n\nPrint Debugging\n\nprint(f\"Variable x = {x}\")\nprint(f\"Type of x: {type(x)}\")\nprint(f\"Debug: Entering function {function_name}\")\n\nAssertions for Debugging\n\nassert x == expected_value, f\"x should be {expected_value}, but got {x}\"\n\nIDE Debugging\n\n\nSet breakpoints\nStep through code\nInspect variables\nUse watch windows",
+    "crumbs": [
+      "Cheatsheet"
+    ]
+  },
+  {
+    "objectID": "general/cheatsheet.html#error-handling-patterns",
+    "href": "general/cheatsheet.html#error-handling-patterns",
+    "title": "Lecture I - Introduction",
+    "section": "Error Handling Patterns",
+    "text": "Error Handling Patterns\n# Resource management\ntry:\n    file = open(\"file.txt\")\n    # process file\nfinally:\n    file.close()\n\n# With statement (preferred)\nwith open(\"file.txt\") as file:\n    # process file\n    # file automatically closes after\n\n## Best Practices\n1. Always handle specific exceptions before generic ones\n2. Use meaningful error messages\n3. Don't catch exceptions without handling them\n4. Use assertions for debugging and testing\n5. Include relevant information in error messages\n6. Clean up resources in try-finally blocks\n\n## Common Debugging Workflow\n1. Identify the error (error message or unexpected behavior)\n2. Locate the source of the error\n3. Add print statements or use debugger\n4. Test the fix\n5. Add error handling if needed",
+    "crumbs": [
+      "Cheatsheet"
+    ]
+  },
+  {
+    "objectID": "general/cheatsheet.html#modules",
+    "href": "general/cheatsheet.html#modules",
+    "title": "Lecture I - Introduction",
+    "section": "Modules",
+    "text": "Modules\n\nImporting Modules\n# Basic import\nimport module_name\nmodule_name.function_name()\n\n# Import specific items\nfrom module_name import function_name, another_function\nfunction_name()\n\n# Import with alias\nimport module_name as alias\nalias.function_name()\n\n\nCommon Built-in Modules\n\n\n\n\n\n\n\n\nModule\nDescription\nCommon Functions/Constants\n\n\n\n\nmath\nMathematical functions\npi, sqrt(), cos()\n\n\nrandom\nRandom number generation\nrandom(), randint()\n\n\ndatetime\nDate and time handling\ndatetime, timedelta\n\n\nos\nOperating system interaction\nlistdir(), path.exists()\n\n\ncsv\nCSV file operations\nreader(), writer()\n\n\nre\nRegular expressions\nsearch(), findall()",
+    "crumbs": [
+      "Cheatsheet"
+    ]
+  },
+  {
+    "objectID": "general/cheatsheet.html#random-module",
+    "href": "general/cheatsheet.html#random-module",
+    "title": "Lecture I - Introduction",
+    "section": "Random Module",
+    "text": "Random Module\nimport random\n\nrandom.random()           # Float between 0 and 1\nrandom.uniform(1, 10)    # Float between 1 and 10\nrandom.randint(1, 10)    # Integer between 1 and 10\nrandom.choice(list)      # Random item from list\nrandom.shuffle(list)     # Shuffle list in place",
+    "crumbs": [
+      "Cheatsheet"
+    ]
+  },
+  {
+    "objectID": "general/cheatsheet.html#os-module",
+    "href": "general/cheatsheet.html#os-module",
+    "title": "Lecture I - Introduction",
+    "section": "OS Module",
+    "text": "OS Module\nimport os\n\nos.listdir('path')           # List directory contents\nos.path.exists('path')       # Check if path exists\nos.path.isfile('path')       # Check if path is file\nos.makedirs('path')          # Create directories\nos.getcwd()                  # Get current working directory\nos.path.join('dir', 'file')  # Join path components",
+    "crumbs": [
+      "Cheatsheet"
+    ]
+  },
+  {
+    "objectID": "general/cheatsheet.html#csv-module",
+    "href": "general/cheatsheet.html#csv-module",
+    "title": "Lecture I - Introduction",
+    "section": "CSV Module",
+    "text": "CSV Module\nimport csv\n\n# Writing CSV\nwith open('file.csv', 'w') as file:\n    writer = csv.writer(file)\n    writer.writerow(['header1', 'header2'])\n    writer.writerow(['data1', 'data2'])\n\n# Reading CSV\nwith open('file.csv', 'r') as file:\n    reader = csv.reader(file)\n    for row in reader:\n        print(row)",
+    "crumbs": [
+      "Cheatsheet"
+    ]
+  },
+  {
+    "objectID": "general/cheatsheet.html#regular-expressions-re",
+    "href": "general/cheatsheet.html#regular-expressions-re",
+    "title": "Lecture I - Introduction",
+    "section": "Regular Expressions (re)",
+    "text": "Regular Expressions (re)\nimport re\n\n# Basic patterns\nre.search(pattern, string)    # Search for pattern\nre.findall(pattern, string)   # Find all occurrences\nre.sub(pattern, repl, string) # Replace pattern\nre.split(pattern, string)     # Split string by pattern\n\n# Common special characters\n. # Any character\n* # Zero or more\n+ # One or more\n? # Zero or one\n[] # Character set\n\\d # Any digit\n\\w # Word character\n\\s # Whitespace",
+    "crumbs": [
+      "Cheatsheet"
+    ]
+  },
+  {
+    "objectID": "general/cheatsheet.html#package-management",
+    "href": "general/cheatsheet.html#package-management",
+    "title": "Lecture I - Introduction",
+    "section": "Package Management",
+    "text": "Package Management\n# Installing packages\npip install package_name\npip install package1 package2\n\n# Upgrading packages\npip install --upgrade package_name\n\n# List installed packages\npip list",
+    "crumbs": [
+      "Cheatsheet"
+    ]
+  },
+  {
+    "objectID": "general/cheatsheet.html#best-practices-4",
+    "href": "general/cheatsheet.html#best-practices-4",
+    "title": "Lecture I - Introduction",
+    "section": "Best Practices",
+    "text": "Best Practices\n\nImport modules at the beginning of the file\nUse specific imports instead of importing everything\nUse meaningful aliases when needed\nKeep virtual environments project-specific\nDocument package dependencies\nUse regular expressions carefully and test them thoroughly",
+    "crumbs": [
+      "Cheatsheet"
+    ]
+  },
+  {
+    "objectID": "general/cheatsheet.html#common-errors",
+    "href": "general/cheatsheet.html#common-errors",
+    "title": "Lecture I - Introduction",
+    "section": "Common Errors",
+    "text": "Common Errors\n\nImportError: Module not found\nModuleNotFoundError: Package not installed\nAttributeError: Module attribute not found\nre.error: Invalid regular expression pattern\nPermissionError: File access denied",
+    "crumbs": [
+      "Cheatsheet"
+    ]
+  },
+  {
+    "objectID": "general/cheatsheet.html#numpy-basics",
+    "href": "general/cheatsheet.html#numpy-basics",
+    "title": "Lecture I - Introduction",
+    "section": "NumPy Basics",
+    "text": "NumPy Basics\n\nCreating Arrays\nimport numpy as np\n\n# Basic array creation\narr = np.array([1, 2, 3, 4, 5])\narr_2d = np.array([[1, 2], [3, 4]])\n\n# Pre-filled arrays\nzeros = np.zeros((3, 3))        # Array of zeros\nones = np.ones((2, 2))         # Array of ones\nrand = np.random.rand(3, 3)    # Random values\narange = np.arange(0, 10, 2)   # Values from 0 to 10, step 2\nlinspace = np.linspace(0, 1, 5) # 5 evenly spaced values\n\n\nArray Operations\n# Basic operations\narr + 1                  # Add 1 to all elements\narr * 2                  # Multiply all elements by 2\narr &gt; 3                  # Boolean comparison\n\n# Array methods\narr.sort()              # Sort array\narr.reshape(2, 3)       # Reshape array\narr.flatten()           # Convert to 1D array\narr.transpose()         # Transpose array\narr.squeeze()           # Remove single-dimensional entries\n\n# Joining arrays\nnp.concatenate((arr1, arr2))  # Join arrays\nnp.vstack((arr1, arr2))       # Vertical stack\nnp.hstack((arr1, arr2))       # Horizontal stack\n\n\nData Types\n# Common dtypes\n'i'    # integer\n'b'    # boolean\n'f'    # float\n'S'    # string\n'U'    # unicode\n\n# Setting dtype\narr = np.array([1, 2, 3], dtype='f')\narr = arr.astype('i')         # Convert type",
+    "crumbs": [
+      "Cheatsheet"
+    ]
+  },
+  {
+    "objectID": "general/cheatsheet.html#best-practices-5",
+    "href": "general/cheatsheet.html#best-practices-5",
+    "title": "Lecture I - Introduction",
+    "section": "Best Practices",
+    "text": "Best Practices\n\nUse NumPy for numerical computations\nKeep array types homogeneous for better performance\nUse appropriate data types to optimize memory\nPrefer vectorized operations over loops",
+    "crumbs": [
+      "Cheatsheet"
+    ]
+  },
+  {
+    "objectID": "general/cheatsheet.html#pandas-basics",
+    "href": "general/cheatsheet.html#pandas-basics",
+    "title": "Lecture I - Introduction",
+    "section": "Pandas Basics",
+    "text": "Pandas Basics\n\nCreating DataFrames\nimport pandas as pd\n\n# From dictionary\ndf = pd.DataFrame({\n    'Name': ['John', 'Anna'],\n    'Age': [25, 28]\n})\n\n# From CSV/Excel\ndf = pd.read_csv('file.csv')\ndf = pd.read_excel('file.xlsx')\n\n\nBasic Operations\n# Viewing data\ndf.head()               # First 5 rows\ndf.tail()               # Last 5 rows\ndf.info()              # DataFrame info\ndf.describe()          # Summary statistics\n\n# Accessing data\ndf['column_name']      # Access column\ndf.iloc[0]            # Access by position\ndf.loc['label']       # Access by label\n\n# Filtering\ndf[df['Age'] &gt; 25]    # Filter by condition\n\n\nGrouping and Aggregation\n# Basic grouping\ndf.groupby('column').mean()\ndf.groupby(['col1', 'col2']).sum()\n\n# Common aggregations\n.sum()      # Sum of values\n.mean()     # Mean of values\n.max()      # Maximum value\n.min()      # Minimum value\n.count()    # Count of values\n\n\nReshaping Data\n# Melting (wide to long)\npd.melt(df, id_vars=['ID'])\n\n# Combining DataFrames\npd.concat([df1, df2])           # Concatenate\ndf1.join(df2)                   # Join on index\ndf1.merge(df2, on='column')     # Merge on column\n\n\nExcel Operations\n# Reading Excel\ndf = pd.read_excel('file.xlsx', sheet_name='Sheet1')\n\n# Writing to Excel\ndf.to_excel('output.xlsx', \n            sheet_name='Sheet1', \n            index=False)",
+    "crumbs": [
+      "Cheatsheet"
+    ]
+  },
+  {
     "objectID": "index.html",
     "href": "index.html",
     "title": "Welcome to Programming with Python!",
@@ -5077,6 +5912,17 @@
     "text": "Analyzing Climate Data\nImagine you’re a climate scientist working on a project to analyze temperature data from weather stations across the country. You’ve been given a large dataset, and you need to use NumPy to process and analyze this data efficiently.\nTo solve this task, you’ll need to use NumPy to perform various operations on the temperature data. Here, you’ll need some new functions you haven’t seen yet.\n\nnp.mean(): calculate the mean of an array\nnp.max(): calculate the maximum of an array\nnp.min(): calculate the minimum of an array\nnp.argmax(): find the index of the maximum of an array\nnp.argmin(): find the index of the minimum of an array\n\nIf you want to find those informations along an axis, you can use the same function with axis as an additional argument. Here, axis=0 is for the columns and axis=1 is for the rows.\nFor example, to find the maximum of each row, you can use np.max(data_set, axis=1). To find the index of the maximum of each column, you can use np.argmax(data_set, axis=0).\n\nimport numpy as np\n\n# Let's analyze temperature data from 10 weather stations over 30 days\ntemp_data = np.random.randint(0, 40, size=(10, 30))\n\n# Example: Calculate the average temperature for the first station\nfirst_station_avg = np.mean(temp_data[0,:])\nprint(f\"Average temperature for the first station: {first_station_avg:.2f}°C\")\n\n# TODO: a) Calculate the average temperature for each station and print it. Make sure to round the result to 2 decimal places!\n# Hint: Use np.mean() with axis=1\n# Your code here\n\n\n# TODO: b) Find the highest temperature recorded and the station index and print it\n# Hint: Use np.max() and np.argmax()\n# Your code here\n\n# TODO: c) Find the lowest temperature recorded and the station index and print it\n# Hint: Use np.min()\n# Your code here\n\n# TODO: d) Calculate the overall average temperature and print it\n# Hint: Use np.mean() on the entire temp_data array\n# Your code here\n\n# Example: Identify days above 30°C for the first station\nhot_days = np.sum(temp_data[0,:] &gt; 30)\nprint(f\"The first station had {hot_days} days above 30°C\")\n\n# TODO: e) Count the number of days above 30°C for each station\n# Your code here\n\n# TODO: f) Find the hottest and coldest stations and determine the index of the station with the highest average temperature and the station with the lowest average temperature.\n# Hint: Use np.argmax() and np.argmin()\n# Your code here\n\nAverage temperature for the first station: 15.80°C\nThe first station had 5 days above 30°C\n\n\n\n\nNASA GISTEMP Climate Change Analysis\nIn this exercise, you’ll use Pandas to analyze real global temperature anomaly data from NASA, helping to understand trends in climate change over time.\nThe dataset is provided by the GISS Team, 2024: GISS Surface Temperature Analysis (GISTEMP), version 4. NASA Goddard Institute for Space Studies. Dataset at https://data.giss.nasa.gov/gistemp/.\n\nimport pandas as pd\nimport matplotlib.pyplot as plt\n\n# First, we load the NASA GISTEMP dataset for global temperature anomalies.\nurl = \"https://data.giss.nasa.gov/gistemp/tabledata_v4/GLB.Ts+dSST.csv\"\ntemp_anomaly_data = pd.read_csv(url, skiprows=1) # skiprows=1 ensures that the first column is not read as a row index\n\n# Convert all numeric columns (except 'Year') to float, replacing '***' with NaN\nnumeric_columns = temp_anomaly_data.columns.drop('Year')\ntemp_anomaly_data[numeric_columns] = temp_anomaly_data[numeric_columns].replace('***', float('nan')).astype(float)\n\n# TODO: a) Display the first 5 rows to learn basic information about the DataFrame. For your work, you only need the 'Year' and and the data from all months. Drop the rest of the columns.\n# Your code here\n\n# TODO: b) Calculate and print the average temperature anomaly for each year. \n# Hint: To do so, you first need to pd.melt()` the DataFrame to convert months to a single column. \n# Your code here\n\n# TODO: c) Find the year with the highest temperature anomaly and the year with the lowest.\n# Hint: Use the `idxmax()` and `idxmin()` methods\n# Your code here\n\n# TODO: e) Save the melted DataFrame to a Excel file with the name 'temp_anomaly_data.xlsx' for next lecture.\n# Your code here\n\n\n\nThat’s it!\nYou can find the solutions to these exercises online in the associated GitHub repository, but we will also quickly go over them in next week’s tutorial. To access the solutions, click on the Github button on the lower right and search for the folder with today’s lecture and tutorial. Alternatively, you can ask ChatGPT or Claude to explain them to you. Remember, the goal is not just to complete the exercises, but to understand the concepts and improve your programming abilities.",
     "crumbs": [
       "07 Scientific Computing",
+      "Tutorial"
+    ]
+  },
+  {
+    "objectID": "part-08/tutorial-pandas.html",
+    "href": "part-08/tutorial-pandas.html",
+    "title": "Tutorial VII - Pandas and AI",
+    "section": "",
+    "text": "NASA GISTEMP Climate Change Analysis\nIn this exercise, you’ll use Pandas to analyze real global temperature anomaly data from NASA, helping to understand trends in climate change over time.\nThe dataset is provided by the GISS Team, 2024: GISS Surface Temperature Analysis (GISTEMP), version 4. NASA Goddard Institute for Space Studies. Dataset at https://data.giss.nasa.gov/gistemp/.\n\nimport pandas as pd\nimport matplotlib.pyplot as plt\n\n# First, we load the NASA GISTEMP dataset for global temperature anomalies.\nurl = \"https://data.giss.nasa.gov/gistemp/tabledata_v4/GLB.Ts+dSST.csv\"\ntemp_anomaly_data = pd.read_csv(url, skiprows=1) # skiprows=1 ensures that the first column is not read as a row index\n\n# Convert all numeric columns (except 'Year') to float, replacing '***' with NaN\nnumeric_columns = temp_anomaly_data.columns.drop('Year')\ntemp_anomaly_data[numeric_columns] = temp_anomaly_data[numeric_columns].replace('***', float('nan')).astype(float)\n\n# TODO: a) Display the first 5 rows to learn basic information about the DataFrame. For your work, you only need the 'Year' and and the data from all months. Drop the rest of the columns.\n# Your code here\n\n# TODO: b) Calculate and print the average temperature anomaly for each year. \n# Hint: To do so, you first need to pd.melt()` the DataFrame to convert months to a single column. \n# Your code here\n\n# TODO: c) Find the year with the highest temperature anomaly and the year with the lowest.\n# Hint: Use the `idxmax()` and `idxmin()` methods\n# Your code here\n\n# TODO: e) Save the melted DataFrame to a Excel file with the name 'temp_anomaly_data.xlsx' for next lecture.\n# Your code here\n\n\n\nThat’s it!\nYou can find the solutions to these exercises online in the associated GitHub repository, but we will also quickly go over them in next week’s tutorial. To access the solutions, click on the Github button on the lower right and search for the folder with today’s lecture and tutorial. Alternatively, you can ask ChatGPT or Claude to explain them to you. Remember, the goal is not just to complete the exercises, but to understand the concepts and improve your programming abilities.",
+    "crumbs": [
+      "08 Tabular and AI",
       "Tutorial"
     ]
   },
