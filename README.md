@@ -1,6 +1,6 @@
 # Introduction to Python
 
-This repository contains course materials for a "Programming with Python" course first teached at Kühne Logistics University Hamburg in Fall 2024. Most of it is written with Quarto and the corresponding website is hosted as Github page under [beyondsimulations.github.io/python-course/](https://beyondsimulations.github.io/python-course/).
+This repository contains course materials for a "Programming with Python" course first teached at Kühne Logistics University Hamburg in Fall 2024. Most of it is written with Quarto and the corresponding website is hosted as Github page.
 
 ## Quick Overview
 
