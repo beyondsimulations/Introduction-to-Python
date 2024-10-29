@@ -1,0 +1,375 @@
+---
+title: "Lecture VII - Pandas and AI"
+subtitle: "Programming with Python"
+author: "Dr. Tobias Vlćek"
+institute: "Kühne Logistics University Hamburg - Fall 2024"
+title-slide-attributes:
+    data-background-color: "#FFE0D3"
+
+execute:
+    echo: true
+
+format:
+    revealjs:
+        theme: [default, ../styles.scss]
+        transition: slide
+        transition-speed: fast
+        highlight-style: arrow
+        code-overflow: wrap
+        slide-number: true
+        code-copy: true
+        code-link: true
+        width: 1152
+        height: 648
+        preview-links: auto
+        footer: " {{< meta title >}} | {{< meta author >}} | [Home](lecture-scientific.qmd)"
+        output-file: lecture-scientific-presentation.html
+    html:
+        theme: [litera, ../styles_html.scss]
+    pdf: 
+        documentclass: report
+---
+
+# [Quick Recap of the last Lecture]{.flow} {.title}
+
+## What is NumPy?
+- NumPy is a package for scientific computing in Python
+- Provides [multi-dimensional arrays and matrices]{.highlight}
+- Much faster than Python lists for numerical operations
+- Operations are implemented in C and C++
+
+. . .
+
+:::{.callout-tip}
+NumPy arrays are stored in contiguous memory blocks, making operations very efficient.
+:::
+
+## Creating Arrays
+- Core data structure is the `ndarray`
+- Can create arrays from lists, tuples, or other data structures
+- Special functions like:
+    - `np.zeros()` for arrays of zeros
+    - `np.random.rand()` for random values
+    - `np.arange()` for evenly spaced values
+    - `np.linspace()` for linearly spaced values
+
+## Working with Arrays
+- Support for multi-dimensional operations
+- Common operations:
+    - Element-wise arithmetic (`+`, `-`, `*`, `/`)
+    - Array indexing and slicing
+    - Shape manipulation (`reshape`, `flatten`)
+    - Sorting and transposing
+    
+. . .
+
+:::{.callout-tip}
+NumPy operations are vectorized, meaning they operate on entire arrays at once rather than element by element.
+:::
+
+# [Pandas Module]{.flow} {.title}
+
+## What is Pandas?
+
+- Pandas is a [data manipulation and analysis library]{.highlight}
+- It provides data structures like **DataFrames and Series**
+- Tools for data cleaning, analysis, and visualization
+- It can also be used to [work with Excel files!]{.highlight}
+
+## How to install Pandas
+
+- In the last lecture, we have installed it with `pip install pandas` or with Thonny
+- Now, import the package `import pandas as pd`
+
+. . .
+
+:::{.callout-note}
+You can also use a different abbreviation, but `pd` is the most common one.
+:::
+
+## Creating DataFrames
+
+- DataFrames behave quite similar to Numpy arrays
+- But they have [row and column labels]{.highlight}
+
+. . .
+
+```{python}
+#| eval: true
+#| output-location: fragment
+import pandas as pd
+df = pd.DataFrame({ # DataFrame is created from a dictionary
+    "Name": ["Tobias", "Robin", "Nils", "Nikolai"],
+    "Kids": [2, 1, 0, 0],
+    "City": ["Oststeinbek", "Oststeinbek", "Hamburg", "Lübeck"],
+    "Salary": [3000, 3200, 4000, 2500]}); print(df)
+```
+
+## Reading from CSV Files
+
+```{python}
+#| eval: true
+#| output-location: fragment
+df = pd.read_csv("employees.csv") # Reads the CSV file
+print(df)
+```
+
+## Basic Operations
+
+- Use the `df.head()` method to display the first 5 rows
+- Use the `df.tail()` method to display the last 5 rows
+
+. . .
+
+```{python}
+#| eval: true
+#| output-location: fragment
+df = pd.read_csv("employees.csv")
+print(df.tail())
+```
+
+
+## Information about the DataFrame
+
+- Use `df.info()` to display information about a DataFrame
+
+. . .
+
+```{python}
+#| eval: true
+#| output-location: fragment
+df = pd.read_csv("employees.csv")
+print(df.info())
+```
+
+## Statistics about a DataFrame
+
+- Use `df.describe()` to display summary statistics
+- Use the `df.index` **attribute** to access the **index**
+
+. . .
+
+```{python}
+#| eval: true
+#| output-location: fragment
+df = pd.read_csv("employees.csv")
+print(df.describe())
+```
+
+## Filtering DataFrames
+
+- Use `df['column_name']` to access a column
+- Use the `df[df['column'] > value]` method to filter
+
+. . .
+
+```{python}
+#| eval: true
+#| output-location: fragment
+df = pd.read_csv("employees.csv")
+df_high_salary = df[df['Salary'] >= 67000]
+print(df_high_salary)
+print(df_high_salary.iloc[2]["Name"]) #Access the third row and the "Name" column
+print(df_high_salary.loc[40]["Name"]) #Access the label 40 and the "Name" column
+```
+
+## Filtering in Action
+
+[Task]{.task}: Complete the following task:
+
+```{python}
+#| eval: true
+#| output-location: fragment
+
+# TODO: Load the employees.csv located in the git repository into a DataFrame
+# First, filter the DataFrame for employees with a manager position
+# Then, print the average salary of the remaining employees
+# Finally, print the name of the employee with the lowest salary
+```
+
+. . .
+
+:::{.callout-note}
+Note, that we can use the `mean()` method on the `Salary` column, as it is a numeric column. In addition, we can use the `min()` method on the `Salary` column to find the lowest salary.
+:::
+
+# [Grouping DataFrames]{.flow} {.title}
+
+## Grouping
+
+- Grouping is a [powerful feature]{.highlight} of Pandas
+- Groups data by one or more columns
+- And then [perform operations]{.highlight}
+- Syntax is `df.groupby('column').method()`
+
+. . .
+
+```{python}
+#| eval: true
+#| output-location: slide
+df = pd.read_csv("employees.csv")
+df = df.drop(columns=["Name", "Department"])
+df.groupby(['Position']).mean() # Mean per position
+```
+
+## Grouping by Multiple Columns
+
+- Group by multiple columns `['column1', 'column2']`
+- You can use [lists or tuples]{.highlight} to specify multiple columns
+
+. . .
+
+```{python}
+#| eval: true
+#| output-location: slide
+df = pd.read_csv("employees.csv")
+df = df.drop(columns=["Name"])
+# Max per position and department
+df.groupby(['Position', "Department"]).max()
+```
+
+## Grouping with Aggregations
+
+- As seen, we can use aggregation functions:
+    - `sum()`: sum of the values
+    - `mean()`: mean of the values
+    - `max()`: maximum of the values
+    - `min()`: minimum of the values
+    - `count()`: count of the values
+
+## Melting DataFrames
+
+- Use `pd.melt()` to transform from wide to long
+
+. . .
+
+```{python}
+#| eval: true
+#| output-location: fragment
+df = pd.read_csv("employees.csv").drop(columns=["Name"])
+df = pd.melt(df, id_vars=['Position'])
+print(df.head()); print(df.tail())
+```
+
+## Pandas in Action
+
+[Task]{.task}: Complete the following task:
+```{python}
+#| eval: true
+#| output-location: fragment
+
+# TODO: Load the employees.csv again into a DataFrame
+# First, group by the "Position" column and count the employees per position
+# Then, group by the "Department" column and calculate the sum of all other columns per department
+df = pd.read_csv("employees.csv")
+# Your code here
+```
+
+. . .
+
+:::{.callout-note}
+Do you notice any [irregularities]{.highlight} while calculating the sum per department?
+::: 
+
+## Concatenating DataFrames
+
+- `pd.concat()` to concatenate along shared columns
+```{python}
+#| eval: true
+#| output-location: fragment
+df1 = pd.DataFrame({"A": [1, 2, 3], "B": [4, 5, 6]})
+df2 = pd.DataFrame({"A": [7, 8, 9], "B": [10, 11, 12]})
+df = pd.concat([df1, df2])
+print(df)
+```
+
+## Joining DataFrames
+
+- Use `pd.join()` to join DataFrames along columns
+- Joining is [done on the index]{.highlight} by default!
+
+```{python}
+#| eval: true
+#| output-location: fragment
+df1 = pd.DataFrame({"A": [1, 2, 3], "B": [4, 5, 6]}, index=['x', 'y', 'z'])
+df2 = pd.DataFrame({"C": [7, 8, 9], "D": [10, 11, 12]}, index=['z', 'y', 'w'])
+df = df1.join(df2)
+print(df)
+```
+
+## Merging DataFrames on Columns
+
+- `pd.merge(df_name, on='column', how='type')` 
+- merge DataFrames along [shared columns]{.highlight}
+- `how` specifies the type of merge
+    - `inner`: rows with matching keys in both DataFrames
+    - `outer`: rows from both are kept, missing values are filled
+    - `left`: rows from the left are kept, missing values are filled
+    - `right`: rows from right are kept, missing values are filled
+
+## Outer Merge
+
+```{python}
+#| eval: true
+#| output-location: fragment
+df3 = pd.DataFrame({"A": [1, 2, 3], "B": [4, 5, 6]})
+df4 = pd.DataFrame({"A": [2, 3, 4], "C": [7, 8, 9]})
+df_merged = df3.merge(df4, on="A", how="outer")
+print(df_merged)
+```
+
+## Working with Excel Files
+
+# [Working with Excel Files]{.flow} {.title}
+
+## Reading Excel Files
+
+- Read using the `pd.read_excel(file_path)` function
+- Write using the `df.to_excel(file_path)` method
+
+. . .
+
+```{python}
+#| eval: true
+import pandas as pd
+df = pd.read_csv("employees.csv")
+df.to_excel("employees.xlsx", index=False)
+```
+
+. . .
+
+:::{.callout-note}
+Note, that you likely need to install the `openpyxl` package to be able to write Excel files, as it handles the file format.
+:::
+
+## Advanced Excel file handling
+
+```{python}
+#| eval: true
+df = pd.read_excel("employees.xlsx")
+
+# Writes to the Employees sheet and does not include row indices
+df.to_excel("employees.xlsx", sheet_name="Employees", index=False)
+
+# Reads from the Employees sheet
+df = pd.read_excel("employees.xlsx", sheet_name="Employees")
+```
+
+. . .
+
+:::{.callout-note}
+**And that's it for todays lecture!**\
+You now have the basic knowledge to start working with [tabular data]{.highlight}.
+:::
+
+# [Literature]{.flow} {.title}
+
+## Interesting Books
+
+- Downey, A. B. (2024). Think Python: How to think like a computer scientist (Third edition). O’Reilly. [Link to free online version](https://greenteapress.com/wp/think-python-3rd-edition/)
+- Elter, S. (2021). Schrödinger programmiert Python: Das etwas andere Fachbuch (1. Auflage). Rheinwerk Verlag.
+
+. . .
+
+For more interesting literature to learn more about Python, take a look at the [literature list](../general/literature.qmd) of this course.
+

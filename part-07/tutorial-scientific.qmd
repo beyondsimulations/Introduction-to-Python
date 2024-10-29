@@ -1,5 +1,5 @@
 ---
-title: "Tutorial VII - NumPy and Pandas for Scientific Computing"
+title: "Tutorial VII - NumPy for Scientific Computing"
 subtitle: "Programming with Python"
 
 format:
@@ -53,7 +53,7 @@ print(f"Average temperature for the first station: {first_station_avg:.2f}°C")
 
 
 # TODO: b) Find the highest temperature recorded and the station index and print it
-# Hint: Use np.max() and np.argmax()
+# Hint: Use np.max() and np.argmax(). Note, that argmax returns the index of a flattened array, so you need to convert it to the original shape!
 # Your code here
 
 # TODO: c) Find the lowest temperature recorded and the station index and print it
@@ -73,39 +73,6 @@ print(f"The first station had {hot_days} days above 30°C")
 
 # TODO: f) Find the hottest and coldest stations and determine the index of the station with the highest average temperature and the station with the lowest average temperature.
 # Hint: Use np.argmax() and np.argmin()
-# Your code here
-```
-
-# NASA GISTEMP Climate Change Analysis
-
-In this exercise, you'll use Pandas to analyze real global temperature anomaly data from NASA, helping to understand trends in climate change over time.
-
-The dataset is provided by the GISS Team, 2024: GISS Surface Temperature Analysis (GISTEMP), version 4. NASA Goddard Institute for Space Studies. Dataset at https://data.giss.nasa.gov/gistemp/.
-
-```{python}
-import pandas as pd
-import matplotlib.pyplot as plt
-
-# First, we load the NASA GISTEMP dataset for global temperature anomalies.
-url = "https://data.giss.nasa.gov/gistemp/tabledata_v4/GLB.Ts+dSST.csv"
-temp_anomaly_data = pd.read_csv(url, skiprows=1) # skiprows=1 ensures that the first column is not read as a row index
-
-# Convert all numeric columns (except 'Year') to float, replacing '***' with NaN
-numeric_columns = temp_anomaly_data.columns.drop('Year')
-temp_anomaly_data[numeric_columns] = temp_anomaly_data[numeric_columns].replace('***', float('nan')).astype(float)
-
-# TODO: a) Display the first 5 rows to learn basic information about the DataFrame. For your work, you only need the 'Year' and and the data from all months. Drop the rest of the columns.
-# Your code here
-
-# TODO: b) Calculate and print the average temperature anomaly for each year. 
-# Hint: To do so, you first need to pd.melt()` the DataFrame to convert months to a single column. 
-# Your code here
-
-# TODO: c) Find the year with the highest temperature anomaly and the year with the lowest.
-# Hint: Use the `idxmax()` and `idxmin()` methods
-# Your code here
-
-# TODO: e) Save the melted DataFrame to a Excel file with the name 'temp_anomaly_data.xlsx' for next lecture.
 # Your code here
 ```
 

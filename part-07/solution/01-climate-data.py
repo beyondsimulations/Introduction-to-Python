@@ -7,21 +7,47 @@ temp_data = np.random.randint(0, 40, size=(10, 30))
 first_station_avg = np.mean(temp_data[0,:])
 print(f"Average temperature for the first station: {first_station_avg:.2f}°C")
 
+
+
+
+
+
+
+
+
+
+
+
 # TODO: a) Calculate the average temperature for each station and print it. Make sure to round the result to 2 decimal places!
 # Hint: Use np.mean() and a for loop
 # Your code here
 for station in range(10):
     print(f"Average temperature for station {station}: {np.mean(temp_data[station,:]):.2f}°C")
+    
+    
+    
+    
+    
+    
+print(np.argmax(temp_data))
+    
+    
 
 # TODO: b) Find the highest temperature recorded and the station index and print it
 # Hint: Use np.max() and np.argmax() 
 # Your code here
-print(f"Highest temperature recorded at station {np.argmax(temp_data)} with {np.max(temp_data)}°C")
+flat_idx = np.argmax(temp_data)
+station_idx = flat_idx // 30
+day_idx = flat_idx % 30
+print(f"Highest temperature recorded at station {station_idx} with {np.max(temp_data)}°C")
 
 # TODO: c) Find the lowest temperature recorded and the station index and print it
 # Hint: Use np.min() and np.argmin()
 # Your code here
-print(f"Lowest temperature recorded at station {np.argmin(temp_data)} with {np.min(temp_data)}°C")
+flat_idx = np.argmin(temp_data)
+station_idx = flat_idx // 30
+day_idx = flat_idx % 30
+print(f"Lowest temperature recorded at station {station_idx} with {np.min(temp_data)}°C")
 
 # TODO: d) Calculate the overall average temperature and print it
 # Hint: Use np.mean() on the entire temp_data array and round the result to 2 decimal places
