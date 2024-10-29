@@ -8,7 +8,7 @@
 
 <meta name="author" content="Dr.&nbsp;Tobias Vlćek">
 
-<title>Lecture I - Introduction – Programming with Python</title>
+<title>Cheatsheet – Programming with Python</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -416,18 +416,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#cheatsheet" id="toc-cheatsheet" class="nav-link active" data-scroll-target="#cheatsheet">Cheatsheet</a></li>
-  <li><a href="#lecture-i" id="toc-lecture-i" class="nav-link" data-scroll-target="#lecture-i">Lecture I</a></li>
-  <li><a href="#cheatsheet---lecture-i" id="toc-cheatsheet---lecture-i" class="nav-link" data-scroll-target="#cheatsheet---lecture-i">Cheatsheet - Lecture I</a>
-  <ul class="collapse">
-  <li><a href="#key-concepts" id="toc-key-concepts" class="nav-link" data-scroll-target="#key-concepts">Key Concepts</a>
+  <li><a href="#lecture-i" id="toc-lecture-i" class="nav-link active" data-scroll-target="#lecture-i">Lecture I</a>
   <ul class="collapse">
   <li><a href="#python-basics" id="toc-python-basics" class="nav-link" data-scroll-target="#python-basics">Python Basics</a></li>
   <li><a href="#variables" id="toc-variables" class="nav-link" data-scroll-target="#variables">Variables</a></li>
   <li><a href="#data-types" id="toc-data-types" class="nav-link" data-scroll-target="#data-types">Data Types</a></li>
   <li><a href="#basic-operators" id="toc-basic-operators" class="nav-link" data-scroll-target="#basic-operators">Basic Operators</a></li>
   <li><a href="#common-functions" id="toc-common-functions" class="nav-link" data-scroll-target="#common-functions">Common Functions</a></li>
-  </ul></li>
   <li><a href="#best-practices" id="toc-best-practices" class="nav-link" data-scroll-target="#best-practices">Best Practices</a></li>
   </ul></li>
   <li><a href="#lecture-ii" id="toc-lecture-ii" class="nav-link" data-scroll-target="#lecture-ii">Lecture II</a>
@@ -480,8 +475,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#assertions" id="toc-assertions" class="nav-link" data-scroll-target="#assertions">Assertions</a></li>
   <li><a href="#debugging-tips" id="toc-debugging-tips" class="nav-link" data-scroll-target="#debugging-tips">Debugging Tips</a></li>
   <li><a href="#best-practices-4" id="toc-best-practices-4" class="nav-link" data-scroll-target="#best-practices-4">Best Practices</a></li>
-  <li><a href="#common-debugging-workflow" id="toc-common-debugging-workflow" class="nav-link" data-scroll-target="#common-debugging-workflow">Common Debugging Workflow</a>
+  <li><a href="#common-debugging-workflow" id="toc-common-debugging-workflow" class="nav-link" data-scroll-target="#common-debugging-workflow">Common Debugging Workflow</a></li>
+  </ul></li>
+  <li><a href="#lecture-vi" id="toc-lecture-vi" class="nav-link" data-scroll-target="#lecture-vi">Lecture VI</a>
   <ul class="collapse">
+  <li><a href="#modules" id="toc-modules" class="nav-link" data-scroll-target="#modules">Modules</a>
+  <ul class="collapse">
+  <li><a href="#importing-modules" id="toc-importing-modules" class="nav-link" data-scroll-target="#importing-modules">Importing Modules</a></li>
   <li><a href="#common-built-in-modules" id="toc-common-built-in-modules" class="nav-link" data-scroll-target="#common-built-in-modules">Common Built-in Modules</a></li>
   </ul></li>
   <li><a href="#random-module" id="toc-random-module" class="nav-link" data-scroll-target="#random-module">Random Module</a></li>
@@ -490,9 +490,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#regular-expressions-re" id="toc-regular-expressions-re" class="nav-link" data-scroll-target="#regular-expressions-re">Regular Expressions (re)</a></li>
   <li><a href="#package-management" id="toc-package-management" class="nav-link" data-scroll-target="#package-management">Package Management</a></li>
   <li><a href="#best-practices-5" id="toc-best-practices-5" class="nav-link" data-scroll-target="#best-practices-5">Best Practices</a></li>
-  <li><a href="#common-errors" id="toc-common-errors" class="nav-link" data-scroll-target="#common-errors">Common Errors</a></li>
   </ul></li>
-  <li><a href="#cheatsheet---lecture-vii" id="toc-cheatsheet---lecture-vii" class="nav-link" data-scroll-target="#cheatsheet---lecture-vii">Cheatsheet - Lecture VII</a>
+  <li><a href="#lecture-vii" id="toc-lecture-vii" class="nav-link" data-scroll-target="#lecture-vii">Lecture VII</a>
   <ul class="collapse">
   <li><a href="#numpy-basics" id="toc-numpy-basics" class="nav-link" data-scroll-target="#numpy-basics">NumPy Basics</a>
   <ul class="collapse">
@@ -522,28 +521,21 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Lecture I - Introduction</h1>
+<h1 class="title">Cheatsheet</h1>
 <p class="subtitle lead">Programming with Python</p>
 </div>
 
 
-<div class="quarto-title-meta-author">
-  <div class="quarto-title-meta-heading">Author</div>
-  <div class="quarto-title-meta-heading">Affiliation</div>
-  
-    <div class="quarto-title-meta-contents">
-    <p class="author">Dr.&nbsp;Tobias Vlćek </p>
-  </div>
-  <div class="quarto-title-meta-contents">
-        <p class="affiliation">
-            Kühne Logistics University Hamburg - Fall 2024
-          </p>
-      </div>
-  </div>
 
 <div class="quarto-title-meta">
 
-      
+    <div>
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-contents">
+             <p>Dr.&nbsp;Tobias Vlćek </p>
+          </div>
+  </div>
+    
   
     
   </div>
@@ -553,26 +545,18 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<section id="cheatsheet" class="level1">
-<h1>Cheatsheet</h1>
-</section>
 <section id="lecture-i" class="level1">
 <h1>Lecture I</h1>
-</section>
-<section id="cheatsheet---lecture-i" class="level1">
-<h1>Cheatsheet - Lecture I</h1>
-<section id="key-concepts" class="level2">
-<h2 class="anchored" data-anchor-id="key-concepts">Key Concepts</h2>
-<section id="python-basics" class="level3">
-<h3 class="anchored" data-anchor-id="python-basics">Python Basics</h3>
+<section id="python-basics" class="level2">
+<h2 class="anchored" data-anchor-id="python-basics">Python Basics</h2>
 <ul>
 <li>Python is an <strong>interpreted language</strong> - code is executed line by line</li>
 <li>Comments start with <code>#</code></li>
 <li>Code blocks are defined by indentation</li>
 </ul>
 </section>
-<section id="variables" class="level3">
-<h3 class="anchored" data-anchor-id="variables">Variables</h3>
+<section id="variables" class="level2">
+<h2 class="anchored" data-anchor-id="variables">Variables</h2>
 <ul>
 <li>Created using assignment operator <code>=</code></li>
 <li>Must start with letter or underscore</li>
@@ -580,8 +564,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li>Cannot use reserved words</li>
 </ul>
 </section>
-<section id="data-types" class="level3">
-<h3 class="anchored" data-anchor-id="data-types">Data Types</h3>
+<section id="data-types" class="level2">
+<h2 class="anchored" data-anchor-id="data-types">Data Types</h2>
 <ol type="1">
 <li><strong>Strings (str)</strong>
 <ul>
@@ -600,8 +584,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </ul></li>
 </ol>
 </section>
-<section id="basic-operators" class="level3">
-<h3 class="anchored" data-anchor-id="basic-operators">Basic Operators</h3>
+<section id="basic-operators" class="level2">
+<h2 class="anchored" data-anchor-id="basic-operators">Basic Operators</h2>
 <div class="sourceCode" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Arithmetic</span></span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>addition <span class="op">=</span> <span class="dv">1</span> <span class="op">+</span> <span class="dv">2</span> <span class="co"># 3</span></span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>subtraction <span class="op">=</span> <span class="dv">1</span> <span class="op">-</span> <span class="dv">2</span> <span class="co"># -1</span></span>
@@ -611,8 +595,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>exponentiation <span class="op">=</span> <span class="dv">9</span> <span class="op">**</span> <span class="fl">0.5</span> <span class="co"># 3.0</span></span>
 <span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>modulo <span class="op">=</span> <span class="dv">10</span> <span class="op">%</span> <span class="dv">3</span> <span class="co"># 1</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
-<section id="common-functions" class="level3">
-<h3 class="anchored" data-anchor-id="common-functions">Common Functions</h3>
+<section id="common-functions" class="level2">
+<h2 class="anchored" data-anchor-id="common-functions">Common Functions</h2>
 <div class="sourceCode" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Input/Output</span></span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Hello"</span>)                    <span class="co"># Display output</span></span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>name <span class="op">=</span> <span class="bu">input</span>(<span class="st">"Enter name: "</span>)      <span class="co"># Get user input</span></span>
@@ -626,7 +610,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a><span class="bu">round</span>(<span class="fl">3.14159</span>, <span class="dv">2</span>)                <span class="co"># Round to 2 decimals</span></span>
 <span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a><span class="bu">len</span>(<span class="st">"Hello"</span>)                     <span class="co"># Get length</span></span>
 <span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a><span class="bu">type</span>(variable)                   <span class="co"># Get type of variable</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</section>
 </section>
 <section id="best-practices" class="level2">
 <h2 class="anchored" data-anchor-id="best-practices">Best Practices</h2>
@@ -737,6 +720,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li>Avoid infinite loops</li>
 <li>Keep code blocks focused and manageable</li>
 </ol>
+<hr>
 </section>
 </section>
 <section id="lecture-iii" class="level1">
@@ -860,6 +844,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li>variable_name (snake_case)</li>
 </ul></li>
 </ol>
+<hr>
 </section>
 </section>
 <section id="lecture-iv" class="level1">
@@ -977,6 +962,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li>Always use <code>with</code> statement for file operations</li>
 <li>Close files after use if not using <code>with</code></li>
 </ol>
+<hr>
 </section>
 </section>
 <section id="lecture-v" class="level1">
@@ -1087,24 +1073,27 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li>Test the fix</li>
 <li>Add error handling if needed</li>
 </ol>
-<pre><code>
-# Cheatsheet - Lecture VI
-
-## Modules
-
-### Importing Modules
-```python
-# Basic import
-import module_name
-module_name.function_name()
-
-# Import specific items
-from module_name import function_name, another_function
-function_name()
-
-# Import with alias
-import module_name as alias
-alias.function_name()</code></pre>
+<hr>
+</section>
+</section>
+<section id="lecture-vi" class="level1">
+<h1>Lecture VI</h1>
+<section id="modules" class="level2">
+<h2 class="anchored" data-anchor-id="modules">Modules</h2>
+<section id="importing-modules" class="level3">
+<h3 class="anchored" data-anchor-id="importing-modules">Importing Modules</h3>
+<div class="sourceCode" id="cb27"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Basic import</span></span>
+<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> module_name</span>
+<span id="cb27-3"><a href="#cb27-3" aria-hidden="true" tabindex="-1"></a>module_name.function_name()</span>
+<span id="cb27-4"><a href="#cb27-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb27-5"><a href="#cb27-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Import specific items</span></span>
+<span id="cb27-6"><a href="#cb27-6" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> module_name <span class="im">import</span> function_name, another_function</span>
+<span id="cb27-7"><a href="#cb27-7" aria-hidden="true" tabindex="-1"></a>function_name()</span>
+<span id="cb27-8"><a href="#cb27-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb27-9"><a href="#cb27-9" aria-hidden="true" tabindex="-1"></a><span class="co"># Import with alias</span></span>
+<span id="cb27-10"><a href="#cb27-10" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> module_name <span class="im">as</span> alias</span>
+<span id="cb27-11"><a href="#cb27-11" aria-hidden="true" tabindex="-1"></a>alias.function_name()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
 <section id="common-built-in-modules" class="level3">
 <h3 class="anchored" data-anchor-id="common-built-in-modules">Common Built-in Modules</h3>
 <table class="caption-top table">
@@ -1234,20 +1223,11 @@ alias.function_name()</code></pre>
 <li>Document package dependencies</li>
 <li>Use regular expressions carefully and test them thoroughly</li>
 </ol>
-</section>
-<section id="common-errors" class="level2">
-<h2 class="anchored" data-anchor-id="common-errors">Common Errors</h2>
-<ul>
-<li><strong>ImportError</strong>: Module not found</li>
-<li><strong>ModuleNotFoundError</strong>: Package not installed</li>
-<li><strong>AttributeError</strong>: Module attribute not found</li>
-<li><strong>re.error</strong>: Invalid regular expression pattern</li>
-<li><strong>PermissionError</strong>: File access denied</li>
-</ul>
+<hr>
 </section>
 </section>
-<section id="cheatsheet---lecture-vii" class="level1">
-<h1>Cheatsheet - Lecture VII</h1>
+<section id="lecture-vii" class="level1">
+<h1>Lecture VII</h1>
 <section id="numpy-basics" class="level2">
 <h2 class="anchored" data-anchor-id="numpy-basics">NumPy Basics</h2>
 <section id="creating-arrays" class="level3">
