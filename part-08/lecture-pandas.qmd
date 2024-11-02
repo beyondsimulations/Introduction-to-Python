@@ -22,8 +22,8 @@ format:
         width: 1152
         height: 648
         preview-links: auto
-        footer: " {{< meta title >}} | {{< meta author >}} | [Home](lecture-scientific.qmd)"
-        output-file: lecture-scientific-presentation.html
+        footer: " {{< meta title >}} | {{< meta author >}} | [Home](lecture-pandas.qmd)"
+        output-file: lecture-pandas-presentation.html
     html:
         theme: [litera, ../styles_html.scss]
     pdf: 
@@ -67,7 +67,40 @@ NumPy arrays are stored in contiguous memory blocks, making operations very effi
 NumPy operations are vectorized, meaning they operate on entire arrays at once rather than element by element.
 :::
 
-# [Pandas Module]{.flow} {.title}
+## NumPy in Action I
+
+[Task]{.task}: Complete the following task:
+
+```{python}
+#| eval: false
+# TODO: Create an array with 10 evenly spaced numbers over the interval from 0 to 73.
+
+import numpy as np
+# YOUR CODE HERE
+
+```
+
+. . .
+
+:::{.callout-note}
+Note, that you can always use the `help()` function to get more information about a function. But be sure to import the package first, otherwise you will get an error. To quit the help page, press `q`.
+:::
+
+## NumPy in Action II
+
+[Task]{.task}: Complete the following task:
+
+```{python}
+#| eval: false
+# TODO: Take the following 3x3 array and reduce it to a 1D array.
+
+import numpy as np
+array = np.array([[1, 2, 3], [4, 5, 6], [7, 8, 9]])
+# YOUR CODE HERE
+
+```
+
+# [Pandas Basics]{.flow} {.title}
 
 ## What is Pandas?
 
@@ -237,27 +270,11 @@ df.groupby(['Position', "Department"]).max()
     - `min()`: minimum of the values
     - `count()`: count of the values
 
-## Melting DataFrames
-
-- Use `pd.melt()` to transform from wide to long
-
-. . .
-
-```{python}
-#| eval: true
-#| output-location: fragment
-df = pd.read_csv("employees.csv").drop(columns=["Name"])
-df = pd.melt(df, id_vars=['Position'])
-print(df.head()); print(df.tail())
-```
-
 ## Pandas in Action
 
 [Task]{.task}: Complete the following task:
 ```{python}
-#| eval: true
-#| output-location: fragment
-
+#| eval: false
 # TODO: Load the employees.csv again into a DataFrame
 # First, group by the "Position" column and count the employees per position
 # Then, group by the "Department" column and calculate the sum of all other columns per department
@@ -269,7 +286,9 @@ df = pd.read_csv("employees.csv")
 
 :::{.callout-note}
 Do you notice any [irregularities]{.highlight} while calculating the sum per department?
-::: 
+:::
+
+# [Combining DataFrames]{.flow} {.title}
 
 ## Concatenating DataFrames
 
@@ -318,7 +337,32 @@ df_merged = df3.merge(df4, on="A", how="outer")
 print(df_merged)
 ```
 
-## Working with Excel Files
+## Merging in Action
+
+[Task]{.task}: Complete the following task:
+
+```{python}
+#| eval: true
+#| output-location: fragment
+
+# Create two sample DataFrames
+df1 = pd.DataFrame({
+    "Name": ["John", "Alice", "Bob", "Carol"],
+    "Department": ["Sales", "IT", "HR", "Sales"],
+    "Salary": [50000, 60000, 55000, 52000]
+})
+
+df2 = pd.DataFrame({
+    "Name": ["Alice", "Bob", "Dave", "Eve"],
+    "Position": ["Developer", "Manager", "Analyst", "Developer"],
+    "Years": [5, 8, 3, 4]
+})
+
+# TODO: Merge the two DataFrames on the "Name" column
+# Try different types of merges (inner, outer, left, right)
+# Observe and describe the differences in the results
+```
+
 
 # [Working with Excel Files]{.flow} {.title}
 
@@ -355,11 +399,218 @@ df.to_excel("employees.xlsx", sheet_name="Employees", index=False)
 df = pd.read_excel("employees.xlsx", sheet_name="Employees")
 ```
 
+## Excel in Action
+
+[Task]{.task}: Complete the following task:
+
+```{python}
+#| eval: false
+# TODO: Load the temperatures.xlsx file into a DataFrame
+# Look at the first few rows of the DataFrame
+# Then, print the average temperature per city
+```
+
+# [Melting DataFrames]{.flow} {.title}
+
+## Melting
+
+- Sometimes, you want to [transform a DataFrame]{.highlight}
+- Instead of **wide** format, you want **long** format
+- This is useful for certain types of **visualizations**
+- And when working with **time series data**
+
+. . .
+
+[Question]{.question}: Anybody ever heard of the terms?
+
+## Wide Format
+
+For example, the following DataFrame is in [wide format]{.highlight}:
+
+```{python}
+#| eval: true
+#| echo: false
+df = pd.read_excel("temperatures.xlsx")
+print(df)
+```
+
+## Long Format
+
+The melting process transforms it into the following [long format]{.highlight}:
+
+```{python}
+#| eval: true
+#| echo: false
+df = pd.read_excel("temperatures.xlsx")
+df = pd.melt(df, id_vars=['Date'], var_name='City', value_name='Temperature')
+print(df)
+```
+
+## How to melt DataFrames
+
+- Use `pd.melt()` to transform from wide to long
+- Parameters:
+    - `id_vars`: columns to keep
+    - `var_name`: name of the new column that will contain the names of the original columns
+    - `value_name`: name of the new column that will contain the values of the original columns
+
+. . .
+
+```{python}
+#| eval: true
+#| output-location: slide
+df = pd.read_csv("employees.csv")
+df = pd.melt(df, id_vars=['Position'], var_name='Variables', value_name='Values')
+print(df)
+```
+
+## Melting in Action
+
+[Task]{.task}: Complete the following task:
+
+```{python}
+#| eval: false
+# TODO: Load and transform the temperatures.xlsx file by melting it
+# Expected output format:
+#         Date        City  Temperature
+# 0  2024-03-01    Hamburg         7.2
+# 1  2024-03-01 Los_Angeles       18.5
+# 2  2024-03-01      Tokyo        12.3
+```
+
+
+
+# [Programming with AI]{.flow} {.title}
+
+## Using AI to generate code
+
+- Coding by hand is [not the only way to generate code]{.highlight}
+- Most likely, a lot of you have already used **ChatGPT**
+
+. . .
+
+<center>
+<iframe src="https://giphy.com/embed/0lGd2OXXHe4tFhb7Wh" width="400" height="400" style="" frameBorder="0" class="giphy-embed" allowFullScreen></iframe></p>
+</center>
+
+
+
+## {background-image="https://unsplash.com/photos/M5tzZtFCOfs/download?ixid=M3wxMjA3fDB8MXxzZWFyY2h8M3x8c2VydmVyc3xlbnwwfHx8fDE3MzA1MDU5NDd8MA&force=true&w=1920"}
+
+::: {.r-fit-text .white .bold}
+How do
+
+Large Language 
+
+Models work?
+
+:::
+
+::: footer
+[Photo by <a href="https://unsplash.com/@tvick">Taylor Vick</a> on Unsplash]{.white}
+:::
+
+
+
+## Large Language Models (LLMs)
+
+- Think of them like [advanced pattern recognition systems]{.highlight} 
+- They have "read" **massive amounts of text** 
+- Books, websites, articles, code, and more
+- Text is broken into **tokens**, parts of words or punctuation
+- Based on patterns, they can **generate new text**
+
+## Training LLMs
+
+- Imagine learning a language by [reading millions of books]{.highlight}
+- Learns patterns in **how words and ideas connect** via tokens
+- Interconnected nodes with **weights representing patterns**
+- During training, these **weights are adjusted**
+- Once trained, **applying** them takes much less ressources
+
+## Pattern Recognition
+
+- [Not like a search engine!]{.highlight}
+- When asked, it looks for **relevant patterns** it learned
+- Like having a **huge library** in its "memory" to draw from
+- It can find **patterns between concepts** and your question
+- Knows only limited text at once (**context window**)
+
+## Probability based responses
+
+- After each written token, it predicts ["what should come next?"]{.highlight}
+- Like a advanced version of the **word prediction** on your phone
+- Chooses the **most likely next token** based on training
+- [But can't actually "think" or "understand" like humans]{.highlight}
+
+## Limitations
+
+- **No true understanding** of cause and effect
+- Sometimes **makes mistakes or "hallucinates"**
+- Mostly only knows what it **was trained on**
+- Can **reflect biases** present in training data
+- No emotional understanding (but [can simulate responses!]{.highlight})
+
+## Impact on Jobs
+
+::: {.incremental}
+
+- [Question]{.question}: What do you think about their impact on jobs?
+- [Question]{.question}: What are the implications for us?
+- [Question]{.question}: Can we use them to our advantage?
+
+:::
+
+## (Current) Choices for Programmers
+
+- [Github Copilot](https://github.com/features/copilot): Integrated into VS Code by Microsoft
+- [Cursor](https://www.cursor.com/): Fork of VS Code with AI assistance built in
+- [Aider](https://aider.chat): Chat interface for AI to write code in the terminal
+
+. . .
+
+::: {.callout-tip}
+
+Currently, [Cursor](https://www.cursor.com/) is my favorite one. But this might change in the future, as there is a lot of competition in this space.
+
+:::
+
+## Installing Cursor
+
+- Go to [Cursor](https://www.cursor.com/)
+- **Download** and **install** Cursor
+- You will need to create an account
+- Some free usage per month, after that you need to pay
+- For us, the **free plan should be more than enough**
+
+## Using Cursor
+
+- Open the folder with your tutorial files
+- Create a new `.py` file
+- Press `Ctrl + L` to open the chat
+
+## Asking for help
+
+[Task]{.task}: Paste the following prompt in to the chat:
+
+
+*Can you please write me a small number guessing game in python? It should work for one player in the terminal. The player should guess a number between 1-10 and get hints about whether his guess was too large or too small. After 3 tries, end the game if he didn't succeed with a nice message.*
+
+. . .
+
+[Copy the generated code and paste it into your file.]{.highlight}
+
+## More on Cursor
+
+- While working with Cursor, it will **suggest** you code changes
+- You can **accept** or **reject** them
+- The rest you will **learn by doing!**
+
 . . .
 
 :::{.callout-note}
 **And that's it for todays lecture!**\
-You now have the basic knowledge to start working with [tabular data]{.highlight}.
+You now have the basic knowledge to start working with [tabular data and AI!]{.highlight}.
 :::
 
 # [Literature]{.flow} {.title}
