@@ -113,7 +113,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../part-08/lecture-pandas.html">08 Tabular and AI</a></li><li class="breadcrumb-item"><a href="../part-08/tutorial-pandas.html">Tutorial</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../part-08/lecture-pandas.html">08 Pandas and AI</a></li><li class="breadcrumb-item"><a href="../part-08/tutorial-pandas.html">Tutorial</a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -324,7 +324,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-8" role="navigation" aria-expanded="true">
- <span class="menu-text">08 Tabular and AI</span></a>
+ <span class="menu-text">08 Pandas and AI</span></a>
           <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-8" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
@@ -416,6 +416,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
    
   <ul>
   <li><a href="#nasa-gistemp-climate-change-analysis" id="toc-nasa-gistemp-climate-change-analysis" class="nav-link active" data-scroll-target="#nasa-gistemp-climate-change-analysis">NASA GISTEMP Climate Change Analysis</a></li>
+  <li><a href="#create-a-game-with-ai" id="toc-create-a-game-with-ai" class="nav-link" data-scroll-target="#create-a-game-with-ai">Create a Game with AI</a></li>
   <li><a href="#thats-it" id="toc-thats-it" class="nav-link" data-scroll-target="#thats-it">That’s it!</a></li>
   </ul>
 <div class="toc-actions"><ul><li><a href="https://github.com/beyondsimulations/Introduction-to-Python/edit/main/part-08/tutorial-pandas.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/beyondsimulations/Introduction-to-Python/blob/main/part-08/tutorial-pandas.qmd" class="toc-action"><i class="bi empty"></i>View source</a></li><li><a href="https://github.com/beyondsimulations/Introduction-to-Python/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div><div class="quarto-alternate-formats"><h2>Other Formats</h2><ul><li><a href="tutorial-pandas.pdf"><i class="bi bi-file-pdf"></i>PDF</a></li></ul></div></nav>
@@ -423,7 +424,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../part-08/lecture-pandas.html">08 Tabular and AI</a></li><li class="breadcrumb-item"><a href="../part-08/tutorial-pandas.html">Tutorial</a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../part-08/lecture-pandas.html">08 Pandas and AI</a></li><li class="breadcrumb-item"><a href="../part-08/tutorial-pandas.html">Tutorial</a></li></ol></nav>
 <div class="quarto-title">
 <h1 class="title">Tutorial VII - Pandas and AI</h1>
 <p class="subtitle lead">Programming with Python</p>
@@ -445,9 +446,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <section id="nasa-gistemp-climate-change-analysis" class="level1">
 <h1>NASA GISTEMP Climate Change Analysis</h1>
-<p>In this exercise, you’ll use Pandas to analyze real global temperature anomaly data from NASA, helping to understand trends in climate change over time.</p>
+<p>In this exercise, you’ll use Pandas to analyze real global temperature anomaly data from NASA, helping to understand trends in climate change over time. Work together with the LLM in your Code Editor to complete the task.</p>
 <p>The dataset is provided by the GISS Team, 2024: GISS Surface Temperature Analysis (GISTEMP), version 4. NASA Goddard Institute for Space Studies. Dataset at https://data.giss.nasa.gov/gistemp/.</p>
-<div id="87c22f7e" class="cell" data-execution_count="1">
+<div id="21b5c4cd" class="cell" data-execution_count="1">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -473,6 +474,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a><span class="co"># </span><span class="al">TODO</span><span class="co">: e) Save the melted DataFrame to a Excel file with the name 'temp_anomaly_data.xlsx' for next lecture.</span></span>
 <span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a><span class="co"># Your code here</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
+</section>
+<section id="create-a-game-with-ai" class="level1">
+<h1>Create a Game with AI</h1>
+<p>In this exercise, you’ll use Pygame to create a jump and run game. Work together with the LLM in your Code Editor to complete the task. Start by asking the LLM to generate the game code for a simple jump and run game. Then, continue to improve the game together with the LLM step by step. We will present the most interesting games today at the end of the lecture.</p>
 </section>
 <section id="thats-it" class="level1">
 <h1>That’s it!</h1>
