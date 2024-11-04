@@ -5,13 +5,17 @@
 
 import pandas as pd
 
-df = pd.read_csv("../employees.csv")
+df = pd.read_csv("part-08/data/employees.csv")
 
 df = df[df["Position"] != "Manager"]
 
-print(df)
+print("Filtered DataFrame:")
+print(df.head())
 
+print("Average salary:")
 print(df["Salary"].mean())
 
 df = df[df["Salary"] == df["Salary"].min()]
+
+print("Highest paid employee:")
 print(df["Name"])

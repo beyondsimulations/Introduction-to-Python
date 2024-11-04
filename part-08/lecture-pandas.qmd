@@ -143,7 +143,7 @@ df = pd.DataFrame({ # DataFrame is created from a dictionary
 ```{python}
 #| eval: true
 #| output-location: fragment
-df = pd.read_csv("employees.csv") # Reads the CSV file
+df = pd.read_csv("data/employees.csv") # Reads the CSV file
 print(df)
 ```
 
@@ -157,7 +157,7 @@ print(df)
 ```{python}
 #| eval: true
 #| output-location: fragment
-df = pd.read_csv("employees.csv")
+df = pd.read_csv("data/employees.csv")
 print(df.tail())
 ```
 
@@ -171,7 +171,7 @@ print(df.tail())
 ```{python}
 #| eval: true
 #| output-location: fragment
-df = pd.read_csv("employees.csv")
+df = pd.read_csv("data/employees.csv")
 print(df.info())
 ```
 
@@ -185,7 +185,7 @@ print(df.info())
 ```{python}
 #| eval: true
 #| output-location: fragment
-df = pd.read_csv("employees.csv")
+df = pd.read_csv("data/employees.csv")
 print(df.describe())
 ```
 
@@ -199,7 +199,7 @@ print(df.describe())
 ```{python}
 #| eval: true
 #| output-location: fragment
-df = pd.read_csv("employees.csv")
+df = pd.read_csv("data/employees.csv")
 df_high_salary = df[df['Salary'] >= 67000]
 print(df_high_salary)
 print(df_high_salary.iloc[2]["Name"]) #Access the third row and the "Name" column
@@ -211,8 +211,7 @@ print(df_high_salary.loc[40]["Name"]) #Access the label 40 and the "Name" column
 [Task]{.task}: Complete the following task:
 
 ```{python}
-#| eval: true
-#| output-location: fragment
+#| eval: false
 
 # TODO: Load the employees.csv located in the git repository into a DataFrame
 # First, filter the DataFrame for employees with a manager position
@@ -240,9 +239,25 @@ Note, that we can use the `mean()` method on the `Salary` column, as it is a num
 ```{python}
 #| eval: true
 #| output-location: slide
-df = pd.read_csv("employees.csv")
-df = df.drop(columns=["Name", "Department"])
-df.groupby(['Position']).mean() # Mean per position
+df = pd.read_csv("data/employees.csv")
+df.groupby(['Position']).sum() # Mean per position
+```
+
+## Grouping Numeric Columns
+
+- To prevent errors, we can [select numeric columns first]{.highlight}
+- Afterwards, perform the operation on the **selected columns**
+- Helps to avoid errors when grouping by non-numeric columns
+- Or **drop columns** by `df.drop(columns=["column"])`
+
+. . .
+
+```{python}
+#| eval: true
+#| output-location: slide
+df = pd.read_csv("data/employees.csv")
+numeric_cols = df.select_dtypes(include=['number']).columns
+print(df.groupby("Position")[numeric_cols].sum())
 ```
 
 ## Grouping by Multiple Columns
@@ -255,7 +270,7 @@ df.groupby(['Position']).mean() # Mean per position
 ```{python}
 #| eval: true
 #| output-location: slide
-df = pd.read_csv("employees.csv")
+df = pd.read_csv("data/employees.csv")
 df = df.drop(columns=["Name"])
 # Max per position and department
 df.groupby(['Position', "Department"]).max()
@@ -263,7 +278,7 @@ df.groupby(['Position', "Department"]).max()
 
 ## Grouping with Aggregations
 
-- As seen, we can use aggregation functions:
+- We can use different aggregation functions:
     - `sum()`: sum of the values
     - `mean()`: mean of the values
     - `max()`: maximum of the values
@@ -277,16 +292,10 @@ df.groupby(['Position', "Department"]).max()
 #| eval: false
 # TODO: Load the employees.csv again into a DataFrame
 # First, group by the "Position" column and count the employees per position
-# Then, group by the "Department" column and calculate the sum of all other columns per department
-df = pd.read_csv("employees.csv")
+# Then, group by the "Department" column and calculate the mean of all other columns per department
+df = pd.read_csv("data/employees.csv")
 # Your code here
 ```
-
-. . .
-
-:::{.callout-note}
-Do you notice any [irregularities]{.highlight} while calculating the sum per department?
-:::
 
 # [Combining DataFrames]{.flow} {.title}
 
@@ -342,21 +351,15 @@ print(df_merged)
 [Task]{.task}: Complete the following task:
 
 ```{python}
-#| eval: true
-#| output-location: fragment
-
-# Create two sample DataFrames
+#| eval: false
 df1 = pd.DataFrame({
     "Name": ["John", "Alice", "Bob", "Carol"],
     "Department": ["Sales", "IT", "HR", "Sales"],
-    "Salary": [50000, 60000, 55000, 52000]
-})
-
+    "Salary": [50000, 60000, 55000, 52000]})
 df2 = pd.DataFrame({
     "Name": ["Alice", "Bob", "Dave", "Eve"],
     "Position": ["Developer", "Manager", "Analyst", "Developer"],
-    "Years": [5, 8, 3, 4]
-})
+    "Years": [5, 8, 3, 4]})
 
 # TODO: Merge the two DataFrames on the "Name" column
 # Try different types of merges (inner, outer, left, right)
@@ -376,8 +379,8 @@ df2 = pd.DataFrame({
 ```{python}
 #| eval: true
 import pandas as pd
-df = pd.read_csv("employees.csv")
-df.to_excel("employees.xlsx", index=False)
+df = pd.read_csv("data/employees.csv")
+df.to_excel("data/employees.xlsx", index=False)
 ```
 
 . . .
@@ -388,15 +391,23 @@ Note, that you likely need to install the `openpyxl` package to be able to write
 
 ## Advanced Excel file handling
 
+We can also [specify the sheet name]{.highlight} when reading and writing
+
 ```{python}
 #| eval: true
-df = pd.read_excel("employees.xlsx")
 
 # Writes to the Employees sheet and does not include row indices
-df.to_excel("employees.xlsx", sheet_name="Employees", index=False)
+df.to_excel("data/employees.xlsx", sheet_name="Employees", index=False)
+```
 
+. . .
+
+```{python}
+#| eval: true
+#| output-location: fragment
 # Reads from the Employees sheet
-df = pd.read_excel("employees.xlsx", sheet_name="Employees")
+df = pd.read_excel("data/employees.xlsx", sheet_name="Employees")
+print(df.head())
 ```
 
 ## Excel in Action
@@ -430,7 +441,7 @@ For example, the following DataFrame is in [wide format]{.highlight}:
 ```{python}
 #| eval: true
 #| echo: false
-df = pd.read_excel("temperatures.xlsx")
+df = pd.read_excel("data/temperatures.xlsx")
 print(df)
 ```
 
@@ -441,7 +452,7 @@ The melting process transforms it into the following [long format]{.highlight}:
 ```{python}
 #| eval: true
 #| echo: false
-df = pd.read_excel("temperatures.xlsx")
+df = pd.read_excel("data/temperatures.xlsx")
 df = pd.melt(df, id_vars=['Date'], var_name='City', value_name='Temperature')
 print(df)
 ```
@@ -459,7 +470,7 @@ print(df)
 ```{python}
 #| eval: true
 #| output-location: slide
-df = pd.read_csv("employees.csv")
+df = pd.read_csv("data/employees.csv")
 df = pd.melt(df, id_vars=['Position'], var_name='Variables', value_name='Values')
 print(df)
 ```
@@ -476,8 +487,8 @@ print(df)
 # 0  2024-03-01    Hamburg         7.2
 # 1  2024-03-01 Los_Angeles       18.5
 # 2  2024-03-01      Tokyo        12.3
+# Then, print the maximum temperature per city by grouping by the "City" column
 ```
-
 
 
 # [Programming with AI]{.flow} {.title}
