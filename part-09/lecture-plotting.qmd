@@ -32,16 +32,6 @@ format:
 
 # [Quick Recap of the last Lecture]{.flow} {.title}
 
-## NumPy: Efficient Computations
-
-- Fundamental package for [scientific computing]{.highlight} in Python
-- Support for large, multi-dimensional arrays and matrices
-- [Wide range]{.highlight} of mathematical functions for arrays:
-  - Fast array operations
-  - Broadcasting capabilities
-  - Linear algebra functions
-  - Random number generation
-
 ## Pandas: Data Analysis
 
 - Powerful library for [data manipulation and analysis]{.highlight}
@@ -50,7 +40,7 @@ format:
   - Data loading from various file formats
   - Data cleaning and preprocessing
   - Powerful grouping and aggregation operations
-  - Merging and joining datasets (not covered!)
+  - Merging and joining datasets
 
 ## Why NumPy and Pandas are Essential
 
@@ -124,6 +114,8 @@ plt.show()
 - Reveals hidden patterns and relationships in data
 - Makes data more [accessible]{.highlight} and engaging
 
+. . .
+
 ::: {.callout-tip}
 
 Helps to [convice]{.highlight} stakeholders!
@@ -134,8 +126,8 @@ Helps to [convice]{.highlight} stakeholders!
 
 ## Bar Charts and Histograms
 
-- Bar charts: Compare quantities across categories
-- Histograms: Show distribution of a continuous variable
+- **Bar charts**: Compare quantities across categories
+- **Histograms**: Show distribution of a continuous variable
 
 ```{python}
 #| code-fold: true
@@ -164,8 +156,8 @@ plt.show()
 
 ## Line Charts and Area Charts
 
-- Line charts: Show trends over time or continuous data
-- Area charts: Similar to line charts, but with filled areas
+- **Line charts**: Show trends over time or continuous data
+- **Area charts**: Similar to line charts, but with filled areas
 
 ```{python}
 #| code-fold: true
@@ -195,8 +187,8 @@ plt.show()
 
 ## Scatter Plots and Bubble Charts
 
-- Scatter plots: Show relationship between two variables
-- Bubble charts: Adds dimension with varying point sizes
+- **Scatter plots**: Show relationship between two variables
+- **Bubble charts**: Adds dimension with varying point sizes
 
 ```{python}
 #| code-fold: true
@@ -222,8 +214,8 @@ plt.show()
 
 ## Pie Charts and Donut Charts
 
-- Pie charts: Show composition of a whole
-- Donut charts: Similar to pie charts, but with a hole in the center
+- **Pie charts**: Show composition of a whole
+- **Donut charts**: Similar to pie charts, but with a hole
 
 ```{python}
 #| code-fold: true
@@ -250,15 +242,10 @@ plt.tight_layout()
 plt.show()
 ```
 
-## Heatmaps and Choropleth Maps
-
-- Heatmaps: Show intensity of data using color scales
-- Choropleth maps: Geographical colored areas 
-
 ## Box Plots and Violin Plots
 
-- Box plots: Show distribution of data through quartiles
-- Violin plots: Combine box plot with kernel density
+- **Box plots**: Show distribution of data through quartiles
+- **Violin plots**: Combine box plot with kernel density
 
 ```{python}
 #| code-fold: true
@@ -283,8 +270,8 @@ plt.show()
 
 ## Network Graphs and Trees
 
-- Network graphs: Show relationships between entities
-- Tree diagrams: Display hierarchical structures
+- **Network graphs**: Show relationships between entities
+- **Tree diagrams**: Display hierarchical structures
 
 ```{python}
 #| code-fold: true
@@ -334,47 +321,9 @@ plt.tight_layout()
 plt.show()
 ```
 
-## Sankey Diagrams
-
-- Flows between nodes for visualizing complex systems
-
-```{python}
-#| code-fold: true
-import plotly.graph_objects as go
-
-fig = go.Figure(data=[go.Sankey(
-    node = dict(
-        pad = 15,
-        thickness = 20,
-        line = dict(color = "black", width = 0.5),
-        label = ["Revenue", "Costs", "Taxes", "Net Profit", "Dividends", "Retained Earnings"],
-        color = ["#2ECC71", "#E74C3C", "#F1C40F", "#3498DB", "#9B59B6", "#1ABC9C"]
-    ),
-    link = dict(
-        source = [0, 0, 0, 3, 3],  # Starting nodes
-        target = [1, 2, 3, 4, 5],   # Ending nodes
-        value = [700, 100, 200, 120, 80],  # Values that flow (Revenue: 1000, Net Profit: 200)
-        color = ["rgba(231,76,60,0.4)",    # Costs
-                "rgba(241,196,15,0.4)",    # Taxes
-                "rgba(52,152,219,0.4)",    # To Net Profit
-                "rgba(155,89,182,0.4)",    # Dividends
-                "rgba(26,188,156,0.4)"]    # Retained Earnings
-    )
-)])
-
-fig.update_layout(
-    title_text="Company Cash Flow Visualization",
-    font_size=12,
-    height=400,
-    width=1100
-)
-
-fig.show()
-```
-
 ## Ridgeline Plots
 
-- Show distribution of data across categories
+- **Ridgeline plots**: Show distribution of data across categories
 
 ```{python}
 #| code-fold: true
@@ -453,77 +402,262 @@ plt.xlabel("Temperature (°C)")
 plt.show()
 ```
 
-# [Beautiful Plotting]{.flow} {.title}
+# [How to Plot in Python]{.flow} {.title}
 
-- There are many libraries for data visualization in Python
-- Some of the most popular libraries are:
-    - Matplotlib
-    - Seaborn
-    - Plotly
-    - Bokeh
-    - Altair
-    - GeoPandas
-    - Geoplot
-    - Geoplotlib
+## Python Plotting Libraries
 
-# [Matplotlib Module]{.flow} {.title}
+- There are [many libraries for data visualization in Python]{.highlight}
+    - **Matplotlib**: The foundation for most Python plotting libraries
+    - **Seaborn**: Interface for statistical data visualization
+    - **Plotly**: Interactive and customizable plotting library
+    - **Joypy**: Easy ridgeline plots
+    - **Many more!**
 
-- Matplotlib is the foundation for most Python plotting libraries
-- Provides a MATLAB-like plotting interface
-- Highly customizable and suitable for publication-quality figures
+## Matplotlib Module
+
+- Matplotlib is the [foundation for most Python plotting libraries]{.highlight}
+- **Customizable** and suitable for high-quality figures
+- Provides **easy to use** functions for plotting
+- Works well with **Pandas** DataFrames
 
 ## Basic Matplotlib Example
 
 ```{python}
-import matplotlib.pyplot as plt
-
-plt.plot([1, 2, 3, 4], [10, 20, 25, 30])
+#| output-location: fragment
+import matplotlib.pyplot as plt # .pyplot is the main module in the package
+plt.plot([1, 2, 3, 4], [10, 20, 25, 30]) # first is x-axis, second is y-axis
 plt.show()
 ```
 
+## Customizing Plots
+
+- **Line Types**: with `ls=`
+  - `-`, `--`, `-.`, `:`, `None`; 
+- **Colors**: with `color=`
+  - `r`, `g`, `b`, `c`, `m`, `y`, `k`, . . .
+- **Markers**: with `marker=`
+  - `o`, `s`, `D`, `p`, `*`, `x`, . . .
+- **Labels**: with `label=`, `title=`, `xlabel=`, `ylabel=`
+
+## Red dashed line with circles
+
 ```{python}
-# [Matplotlib Module]{.flow} {.title}
-
-# [Seaborn Module]{.flow} {.title}
-
-# [Plotly Module]{.flow} {.title}
-
-# [Dash Module]{.flow} {.title}
-
-# [Bokeh Module]{.flow} {.title}
-
+#| output-location: slide
+plt.plot(
+    [1, 2, 3, 4], 
+    [10, 20, 25, 30], 
+    color='red', 
+    linestyle='--', 
+    marker='o')
+plt.show()
 ```
 
+## Blue dotted line with squares
+
+[Question:]{.question} How can we create such a plot?
+
+. . .
+
+```{python}
+#| output-location: slide
+plt.plot(
+    [1, 2, 3, 4], 
+    [10, 20, 25, 30], 
+    color='blue', 
+    linestyle=':', 
+    marker='s', 
+    label='Blue Dotted Line with Squares')
+plt.legend()
+plt.show()
 ```
-import geopandas as gpd
+
+## Multiple Plots
+
+```{python}
+#| output-location: slide
+plt.plot(
+    [1, 2, 3, 4], 
+    [8, 22, 21, 36], 
+    color='red', 
+    linestyle='--', 
+    marker='o', 
+    label='Red Dashed Line with Circles')
+plt.plot(
+    [1, 2, 3, 4], 
+    [10, 20, 25, 30], 
+    color='blue', 
+    linestyle=':', 
+    marker='s', 
+    label='Blue Dotted Line with Squares')
+plt.legend()
+plt.show()
+```
+
+## Type and Size of the Plot
+
+```{python}
+#| output-location: slide
+plt.figure(figsize=(14, 4))
+plt.scatter(
+    [1, 2, 3, 4], 
+    [8, 22, 21, 36], 
+    color='red', 
+    marker='o', 
+    label='Red Circles')
+plt.plot(
+    [1, 2, 3, 4], 
+    [10, 20, 25, 30], 
+    color='blue', 
+    linestyle=':', 
+    marker='s', 
+    label='Blue Dotted Line with Squares')
+plt.legend()
+plt.show()
+```
+
+## Plots in Action
+
+[Task:]{.task} Create two line plots of the following data:
+
+```{python}
+# Make sure to label the plots! Color and marker are optional.
+import numpy as np
+
+x = np.linspace(0, 10, 100) # 100 points between 0 and 10
+y1 = np.sin(x) # sine function
+y2 = np.cos(x) # cosine function
+```
+
+# [Plotting the Right Way]{.flow} {.title}
+
+## The Message Matters
+
+- Making beautiful plots is **rather easy**[^1]
+- It is important to **understand** the underlying data
+- What kind of plots are **appropriate** for your data?
+- What is the [message you want to convey?]{.highlight}
+
+[^1]: At least nowadays with the assistance of AI!
+
+# Temperature Dataset
+
+Let's load the temperature dataset from our last tutorial.
+
+```{python}
+#| output-location: slide
+import pandas as pd
+
+df = pd.read_excel('data/temp_anomaly_data.xlsx')
+print(df.head())
+```
+## Example of a bad plot
+```{python}
+#| code-fold: true
+import pandas as pd
 import matplotlib.pyplot as plt
-from geodatasets import get_path
 
-# Load the NYC Airbnb dataset
-airbnb = gpd.read_file(get_path("nyc_airbnb"))
+# Convert Month to numeric for proper ordering
+month_map = {'Jan': 1, 'Feb': 2, 'Mar': 3, 'Apr': 4, 'May': 5, 'Jun': 6,
+             'Jul': 7, 'Aug': 8, 'Sep': 9, 'Oct': 10, 'Nov': 11, 'Dec': 12}
+df['Month_num'] = df['Month'].map(month_map)
 
-# Group by neighborhood and calculate mean price
-neighborhood_prices = airbnb.groupby('neighbourhood')['price'].mean().reset_index()
-
-# Load NYC neighborhoods shapefile
-nyc = gpd.read_file(get_path("nyc_neighborhoods"))
-
-# Merge neighborhood prices with NYC shapefile
-nyc = nyc.merge(neighborhood_prices, how='left', left_on='neighborhood', right_on='neighbourhood')
+# Sort by Year and Month
+df = df.sort_values(['Year', 'Month_num'])
 
 # Create the plot
-fig, ax = plt.subplots(figsize=(15, 10))
+plt.figure(figsize=(12, 6))
 
-# Plot the choropleth
-nyc.plot(column='price', ax=ax, legend=True,
-         legend_kwds={'label': 'Average Airbnb Price ($)'},
-         cmap='YlOrRd', missing_kwds={'color': 'lightgrey'})
+# Plot each year as a separate line
+for year in df['Year'].unique():
+    year_data = df[df['Year'] == year]
+    plt.plot(year_data['Month_num'], year_data['Anomaly'], label=str(year), marker='o')
 
-# Remove axes
-ax.axis('off')
+# Customize the plot
+plt.title('Temperature Anomalies by Month for Each Year')
+plt.xlabel('Month')
+plt.ylabel('Temperature Anomaly (°C)')
+plt.grid(True, linestyle='--', alpha=0.7)
 
-# Add a title
-plt.title('Average Airbnb Prices by Neighborhood in New York City', fontsize=16)
+# Set x-axis ticks to show month names
+plt.xticks(range(1, 13), ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 
+                          'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'])
+
+# Adjust layout to prevent legend cutoff
+plt.tight_layout()
+
+plt.show()
+```
+## A better plot
+```{python}
+#| code-fold: true
+import pandas as pd
+import matplotlib.pyplot as plt
+
+# Define correct month order
+month_order = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 
+               'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
+
+# Pivot the data and reorder columns
+pivot_df = df.pivot(index='Year', columns='Month', values='Anomaly')
+pivot_df = pivot_df[month_order]  # Reorder columns according to month_order
+
+# Create the plot with a blue-to-red gradient for winter-to-summer
+plt.figure(figsize=(12, 6))
+
+# Create color gradient (unchanged)
+colors = []
+for i in range(12):
+    if i <= 5:  # January to June
+        r = i / 5
+        b = 1 - (i / 5)
+        colors.append((r, 0, b))
+    else:  # July to December
+        r = 1 - ((i-6) / 5)
+        b = (i-6) / 5
+        colors.append((r, 0, b))
+
+pivot_df.plot(marker='x', linewidth=1, alpha=0.5, color=colors)
+
+# Rest of the customization remains the same
+plt.title('Temperature Anomalies by Month for Each Year')
+plt.xlabel('Month')
+plt.ylabel('Temperature Anomaly (°C)')
+plt.grid(True, linestyle='--', alpha=0.7)
+plt.legend(bbox_to_anchor=(1.05, 1), loc='upper left', title='Year')
+plt.tight_layout()
+plt.show()
+```
+## An even better plot
+```{python}
+#| code-fold: true
+# Calculate yearly averages
+yearly_means = df.groupby('Year')['Anomaly'].agg(['mean', 'std'])
+
+# Create the plot
+plt.figure(figsize=(12, 6))
+
+# Plot mean values as a line
+plt.plot(yearly_means.index, yearly_means['mean'], 
+         color='navy', linewidth=2, marker='o', 
+         label='Mean Temperature Anomaly')
+
+# Add shaded area for standard deviation
+plt.fill_between(yearly_means.index,
+                yearly_means['mean'] - yearly_means['std'],
+                yearly_means['mean'] + yearly_means['std'],
+                color='lightblue', alpha=0.3,
+                label='±1 Standard Deviation')
+
+# Customize the plot
+plt.title('Yearly Average Temperature Anomalies with Confidence Interval')
+plt.xlabel('Year')
+plt.ylabel('Temperature Anomaly (°C)')
+plt.grid(True, linestyle='--', alpha=0.7)
+plt.legend()
+
+# Add zero reference line
+plt.axhline(y=0, color='red', linestyle='--', alpha=0.3)
 
 plt.tight_layout()
 plt.show()
+```
