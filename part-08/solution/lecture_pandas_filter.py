@@ -7,7 +7,7 @@ import pandas as pd
 
 df = pd.read_csv("part-08/data/employees.csv")
 
-df = df[df["Position"] != "Manager"]
+#df = df[df["Position"] == "Manager"]
 
 print("Filtered DataFrame:")
 print(df.head())
@@ -17,5 +17,5 @@ print(df["Salary"].mean())
 
 df = df[df["Salary"] == df["Salary"].min()]
 
-print("Highest paid employee:")
+print("Minimal paid employee:")
 print(df["Name"])
