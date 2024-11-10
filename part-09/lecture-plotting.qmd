@@ -26,8 +26,6 @@ format:
         output-file: lecture-scientific-presentation.html
     html:
         theme: [litera, ../styles_html.scss]
-    pdf: 
-        documentclass: report
 ---
 
 # [Quick Recap of the last Lecture]{.flow} {.title}
@@ -661,3 +659,104 @@ plt.axhline(y=0, color='red', linestyle='--', alpha=0.3)
 plt.tight_layout()
 plt.show()
 ```
+
+# A great plot
+```{python}
+#| code-fold: true
+
+# Read the data
+df = pd.read_excel('data/temp_anomaly_data.xlsx')
+
+# Aggregate to yearly averages
+yearly_df = df.groupby('Year')['Anomaly'].mean().reset_index()
+
+# Set the style
+fig, ax = plt.subplots(figsize=(12, 6))
+
+# Create the main line plot
+plt.plot(yearly_df['Year'], yearly_df['Anomaly'], 
+         color='#FF5733', 
+         linewidth=1.5, 
+         alpha=0.7)
+
+# Calculate rolling mean on yearly data
+rolling_mean = yearly_df['Anomaly'].rolling(window=10, center=True, min_periods=5).mean()
+plt.plot(yearly_df['Year'], rolling_mean,
+         color='#C70039', 
+         linewidth=2.5, 
+         label='10-year Moving Average')
+
+# Fill between the line and zero
+plt.fill_between(yearly_df['Year'], yearly_df['Anomaly'], 0, 
+                 where=(yearly_df['Anomaly'] >= 0), 
+                 color='#FF5733', 
+                 alpha=0.3, 
+                 label='Positive Anomaly')
+plt.fill_between(yearly_df['Year'], yearly_df['Anomaly'], 0, 
+                 where=(yearly_df['Anomaly'] < 0), 
+                 color='#3498DB', 
+                 alpha=0.3, 
+                 label='Negative Anomaly')
+
+# Customize the plot
+plt.title('Global Temperature Anomalies (1880-2023)', 
+         fontsize=14, 
+         pad=15)
+plt.xlabel('Year', fontsize=12)
+plt.ylabel('Temperature Anomaly (°C)', fontsize=12)
+plt.grid(True, alpha=0.3)
+plt.legend()
+
+# Add a horizontal line at y=0
+plt.axhline(y=0, color='black', linestyle='--', alpha=0.3)
+
+# Add text annotation for context
+plt.text(1885, 1.2, 
+         'Temperature anomalies relative to\n1951-1980 average', 
+         fontsize=10, 
+         alpha=0.7)
+
+plt.tight_layout()
+plt.show()
+```
+
+## Good Plotting in Action
+
+[Task:]{.task} Create a plot of your own for the temperature anomaly data.
+
+. . .
+
+```{python}
+# TODO: Load the data from the `temp_anomaly_data.xlsx` file you have saved last lecture yourself and plot the temperature anomaly data. Find a way to make the plot meaningful and attractive in order to tell a story for the reader.
+# YOUR CODE HERE
+```
+
+# [Creating Dashboards]{.flow} {.title}
+
+## Dash for Dashboards
+
+- Dash is a framework for building web applications
+- It is built on top of Flask, Plotly.js, and React.js
+- It is used to build interactive web applications
+- React.js is also used for these slides!
+
+## Streamlit for Dashboards
+
+- It is a rather new and popular library
+- It is very easy to use and customizable
+- Has some drawbacks on the performance side
+
+## NiceGUI for Dashboards
+
+- Also a relatively new library
+- It is very easy to use and customizable
+- Has a very Pythonic API
+
+# [Creating GUIs with PySide6]{.flow} {.title}
+
+## PySide6 for GUIs
+
+- It is a mature library
+- It is very easy to use
+- It is very customizable
+
