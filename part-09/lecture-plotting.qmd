@@ -408,8 +408,8 @@ plt.show()
     - **Matplotlib**: The foundation for most Python plotting libraries
     - **Seaborn**: Interface for statistical data visualization
     - **Plotly**: Interactive and customizable plotting library
+    - **Bokeh**: Interactive and complex plots
     - **Joypy**: Easy ridgeline plots
-    - **Many more!**
 
 ## Matplotlib Module
 
@@ -526,6 +526,23 @@ y1 = np.sin(x) # sine function
 y2 = np.cos(x) # cosine function
 ```
 
+## Solution
+
+```{python}
+#| echo: false
+import numpy as np
+import matplotlib.pyplot as plt
+
+x = np.linspace(0, 10, 100) # 100 points between 0 and 10
+y1 = np.sin(x) # sine function
+y2 = np.cos(x) # cosine function
+
+plt.plot(x, y1, label='sin(x)')
+plt.plot(x, y2, label='cos(x)')
+plt.legend()
+plt.show()
+```
+
 # [Plotting the Right Way]{.flow} {.title}
 
 ## The Message Matters
@@ -542,12 +559,12 @@ y2 = np.cos(x) # cosine function
 Let's load the temperature dataset from our last tutorial.
 
 ```{python}
-#| output-location: slide
+#| output: fragment
 import pandas as pd
-
 df = pd.read_excel('data/temp_anomaly_data.xlsx')
 print(df.head())
 ```
+
 ## Example of a bad plot
 ```{python}
 #| code-fold: true
@@ -563,7 +580,7 @@ df['Month_num'] = df['Month'].map(month_map)
 df = df.sort_values(['Year', 'Month_num'])
 
 # Create the plot
-plt.figure(figsize=(12, 6))
+plt.figure(figsize=(12, 4))
 
 # Plot each year as a separate line
 for year in df['Year'].unique():
@@ -585,7 +602,7 @@ plt.tight_layout()
 
 plt.show()
 ```
-## A better plot
+## An okay plot
 ```{python}
 #| code-fold: true
 import pandas as pd
@@ -600,9 +617,9 @@ pivot_df = df.pivot(index='Year', columns='Month', values='Anomaly')
 pivot_df = pivot_df[month_order]  # Reorder columns according to month_order
 
 # Create the plot with a blue-to-red gradient for winter-to-summer
-plt.figure(figsize=(12, 6))
+fig, ax = plt.subplots(figsize=(12, 4))  # Create figure and axes objects
 
-# Create color gradient (unchanged)
+# Create color gradient
 colors = []
 for i in range(12):
     if i <= 5:  # January to June
@@ -614,9 +631,8 @@ for i in range(12):
         b = (i-6) / 5
         colors.append((r, 0, b))
 
-pivot_df.plot(marker='x', linewidth=1, alpha=0.5, color=colors)
+pivot_df.plot(ax=ax, marker='x', linewidth=1, alpha=0.5, color=colors)
 
-# Rest of the customization remains the same
 plt.title('Temperature Anomalies by Month for Each Year')
 plt.xlabel('Month')
 plt.ylabel('Temperature Anomaly (°C)')
@@ -625,14 +641,14 @@ plt.legend(bbox_to_anchor=(1.05, 1), loc='upper left', title='Year')
 plt.tight_layout()
 plt.show()
 ```
-## An even better plot
+## A better plot
 ```{python}
 #| code-fold: true
 # Calculate yearly averages
 yearly_means = df.groupby('Year')['Anomaly'].agg(['mean', 'std'])
 
 # Create the plot
-plt.figure(figsize=(12, 6))
+plt.figure(figsize=(12, 4))
 
 # Plot mean values as a line
 plt.plot(yearly_means.index, yearly_means['mean'], 
@@ -660,7 +676,7 @@ plt.tight_layout()
 plt.show()
 ```
 
-# A great plot
+# A good plot
 ```{python}
 #| code-fold: true
 
@@ -671,7 +687,7 @@ df = pd.read_excel('data/temp_anomaly_data.xlsx')
 yearly_df = df.groupby('Year')['Anomaly'].mean().reset_index()
 
 # Set the style
-fig, ax = plt.subplots(figsize=(12, 6))
+fig, ax = plt.subplots(figsize=(12, 4))
 
 # Create the main line plot
 plt.plot(yearly_df['Year'], yearly_df['Anomaly'], 
@@ -711,7 +727,7 @@ plt.legend()
 plt.axhline(y=0, color='black', linestyle='--', alpha=0.3)
 
 # Add text annotation for context
-plt.text(1885, 1.2, 
+plt.text(1890, 1.15, 
          'Temperature anomalies relative to\n1951-1980 average', 
          fontsize=10, 
          alpha=0.7)
@@ -720,9 +736,24 @@ plt.tight_layout()
 plt.show()
 ```
 
+## How to build such a plot?
+
+- **Think**: about what you want to build
+- **Describe**: what you want to build in detail
+- **Use AI**: to build the plot for you
+- **Use Libraries**: documentation to fine-tune the plot
+
+. . .
+
+:::{.callout-tip}
+
+As usual, the best way to learn is by **doing**! [AI makes it very easy to get started.]{.highlight}
+
+:::
+
 ## Good Plotting in Action
 
-[Task:]{.task} Create a plot of your own for the temperature anomaly data.
+[Task:]{.task} Create a plot of your own for the data.
 
 . . .
 
@@ -735,28 +766,79 @@ plt.show()
 
 ## Dash for Dashboards
 
-- Dash is a framework for building web applications
-- It is built on top of Flask, Plotly.js, and React.js
-- It is used to build interactive web applications
-- React.js is also used for these slides!
+- [Dash](https://dash.plotly.com) is a framework for **building web applications**
+- It is built on top of [Flask](https://flask.palletsprojects.com), [Plotly.js](https://plotly.com/javascript/), and [React.js](https://react.dev/)
+- This lecture is build on top of [React.js]{.highlight}
+- It is very customizable and has a lot of **examples**
+
+## Panel for Dashboards
+
+- [Panel](https://panel.holoviz.org) is built on top of [Bokeh]{.highlight} (instead of Plotly.js)
+- **Reasonably** easy to use, but not super easy
+- **Highly customizable**, also for multiple pages
+- **Good performance** even for more complex dashboards
 
 ## Streamlit for Dashboards
 
-- It is a rather new and popular library
-- It is very easy to use and customizable
-- Has some drawbacks on the performance side
+- [Streamlit](https://streamlit.io) is a rather **new and popular** library
+- Very easy and [fast way to build dashboards]{.highlight}
+- Performance only good on **simpler dashboards**
+- **Not as many examples** and as customizable
 
 ## NiceGUI for Dashboards
 
-- Also a relatively new library
-- It is very easy to use and customizable
-- Has a very Pythonic API
+- [NiceGUI](https://nicegui.io) is also a **relatively new library**
+- **Very customizable** and a large fan base
+- **Not as many examples** and as easy to use as Streamlit
+- Allows building [web-based desktop applications]{.highlight}
 
-# [Creating GUIs with PySide6]{.flow} {.title}
+## Which one to choose?
+
+- **Streamlit**: if you want to build a dashboard [fast]{.highlight}
+- **Dash**: if you want more flexibility and [Plotly.js]{.highlight}
+- **Panel**: if you want a [Bokeh-based]{.highlight} solution with more flexibility
+- **NiceGUI**: if you want to build a [desktop-like application]{.highlight}
+
+. . .
+
+:::{.callout-tip}
+
+There are many opinions on which tool is the best one. My approach is usually just to try the main contenders to see which one suits my workflow best.
+
+:::
+
+## How to build a dashboard
+
+- We **won't go into details** on how to build dashboards
+- The best way to learn is by **doing!**
+- **Use AI and the libraries documentation** as starting points
+- We will also [build a dashboard in today's tutorial]{.highlight}
+
+# [Creating GUIs]{.flow} {.title}
 
 ## PySide6 for GUIs
 
-- It is a mature library
-- It is very easy to use
-- It is very customizable
+- Here, the **recommendation is much easier!**
+- In the past, `tkinter` was often the way to go
+- But currently, my recommendation is `PySide6`
+- It's a mature library we can use to build [cross-platform desktop applications]{.highlight}
+
+. . .
+
+:::{.callout-note}
+**And that's it for todays lecture!**\
+You now have the basic knowledge to start working with [Plots, Dashboards and GUIs!]{.highlight}.
+:::
+
+# [Literature]{.flow} {.title}
+
+## Interesting Books
+
+- Wilke, C. (2019). Fundamentals of data visualization: A primer on making informative and compelling figures (First edition). O’Reilly Media.
+    - A book that is highly recommended to understand the principles of data visualization and how to create effective visualizations.
+    - [Link to the free book website](https://clauswilke.com/dataviz/)
+
+. . .
+
+For more interesting literature to learn more about Python, take a look at the [literature list](../general/literature.qmd) of this course.
 
