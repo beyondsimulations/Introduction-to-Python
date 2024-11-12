@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Tutorial VII - NumPy and Pandas for Scientific Computing – Programming with Python</title>
+<title>Tutorial VII - NumPy for Scientific Computing – Programming with Python</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -439,7 +439,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
    
   <ul>
   <li><a href="#analyzing-climate-data" id="toc-analyzing-climate-data" class="nav-link active" data-scroll-target="#analyzing-climate-data">Analyzing Climate Data</a></li>
-  <li><a href="#nasa-gistemp-climate-change-analysis" id="toc-nasa-gistemp-climate-change-analysis" class="nav-link" data-scroll-target="#nasa-gistemp-climate-change-analysis">NASA GISTEMP Climate Change Analysis</a></li>
   <li><a href="#thats-it" id="toc-thats-it" class="nav-link" data-scroll-target="#thats-it">That’s it!</a></li>
   </ul>
 <div class="toc-actions"><ul><li><a href="https://github.com/beyondsimulations/Introduction-to-Python/edit/main/part-07/tutorial-scientific.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/beyondsimulations/Introduction-to-Python/blob/main/part-07/tutorial-scientific.qmd" class="toc-action"><i class="bi empty"></i>View source</a></li><li><a href="https://github.com/beyondsimulations/Introduction-to-Python/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div><div class="quarto-alternate-formats"><h2>Other Formats</h2><ul><li><a href="tutorial-scientific.pdf"><i class="bi bi-file-pdf"></i>PDF</a></li></ul></div></nav>
@@ -449,7 +448,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../part-07/lecture-scientific.html">07 Scientific Computing</a></li><li class="breadcrumb-item"><a href="../part-07/tutorial-scientific.html">Tutorial</a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title">Tutorial VII - NumPy and Pandas for Scientific Computing</h1>
+<h1 class="title">Tutorial VII - NumPy for Scientific Computing</h1>
 <p class="subtitle lead">Programming with Python</p>
 </div>
 
@@ -480,7 +479,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </ul>
 <p>If you want to find those informations along an axis, you can use the same function with <code>axis</code> as an additional argument. Here, <code>axis=0</code> is for the columns and <code>axis=1</code> is for the rows.</p>
 <p>For example, to find the maximum of each row, you can use <code>np.max(data_set, axis=1)</code>. To find the index of the maximum of each column, you can use <code>np.argmax(data_set, axis=0)</code>.</p>
-<div id="d5a3f3b5" class="cell" data-execution_count="1">
+<div id="6e684035" class="cell" data-execution_count="1">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Let's analyze temperature data from 10 weather stations over 30 days</span></span>
@@ -496,7 +495,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a><span class="co"># </span><span class="al">TODO</span><span class="co">: b) Find the highest temperature recorded and the station index and print it</span></span>
-<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a><span class="co"># Hint: Use np.max() and np.argmax()</span></span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a><span class="co"># Hint: Use np.max() and np.argmax(). Note, that argmax returns the index of a flattened array, so you need to convert it to the original shape!</span></span>
 <span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a><span class="co"># Your code here</span></span>
 <span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a><span class="co"># </span><span class="al">TODO</span><span class="co">: c) Find the lowest temperature recorded and the station index and print it</span></span>
@@ -518,40 +517,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb1-35"><a href="#cb1-35" aria-hidden="true" tabindex="-1"></a><span class="co"># Hint: Use np.argmax() and np.argmin()</span></span>
 <span id="cb1-36"><a href="#cb1-36" aria-hidden="true" tabindex="-1"></a><span class="co"># Your code here</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>Average temperature for the first station: 15.80°C
-The first station had 5 days above 30°C</code></pre>
+<pre><code>Average temperature for the first station: 18.40°C
+The first station had 7 days above 30°C</code></pre>
 </div>
-</div>
-</section>
-<section id="nasa-gistemp-climate-change-analysis" class="level1">
-<h1>NASA GISTEMP Climate Change Analysis</h1>
-<p>In this exercise, you’ll use Pandas to analyze real global temperature anomaly data from NASA, helping to understand trends in climate change over time.</p>
-<p>The dataset is provided by the GISS Team, 2024: GISS Surface Temperature Analysis (GISTEMP), version 4. NASA Goddard Institute for Space Studies. Dataset at https://data.giss.nasa.gov/gistemp/.</p>
-<div id="fc34057e" class="cell" data-execution_count="2">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="co"># First, we load the NASA GISTEMP dataset for global temperature anomalies.</span></span>
-<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>url <span class="op">=</span> <span class="st">"https://data.giss.nasa.gov/gistemp/tabledata_v4/GLB.Ts+dSST.csv"</span></span>
-<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>temp_anomaly_data <span class="op">=</span> pd.read_csv(url, skiprows<span class="op">=</span><span class="dv">1</span>) <span class="co"># skiprows=1 ensures that the first column is not read as a row index</span></span>
-<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Convert all numeric columns (except 'Year') to float, replacing '***' with NaN</span></span>
-<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>numeric_columns <span class="op">=</span> temp_anomaly_data.columns.drop(<span class="st">'Year'</span>)</span>
-<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a>temp_anomaly_data[numeric_columns] <span class="op">=</span> temp_anomaly_data[numeric_columns].replace(<span class="st">'***'</span>, <span class="bu">float</span>(<span class="st">'nan'</span>)).astype(<span class="bu">float</span>)</span>
-<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a><span class="co"># </span><span class="al">TODO</span><span class="co">: a) Display the first 5 rows to learn basic information about the DataFrame. For your work, you only need the 'Year' and and the data from all months. Drop the rest of the columns.</span></span>
-<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a><span class="co"># Your code here</span></span>
-<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a><span class="co"># </span><span class="al">TODO</span><span class="co">: b) Calculate and print the average temperature anomaly for each year. </span></span>
-<span id="cb3-16"><a href="#cb3-16" aria-hidden="true" tabindex="-1"></a><span class="co"># Hint: To do so, you first need to pd.melt()` the DataFrame to convert months to a single column. </span></span>
-<span id="cb3-17"><a href="#cb3-17" aria-hidden="true" tabindex="-1"></a><span class="co"># Your code here</span></span>
-<span id="cb3-18"><a href="#cb3-18" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-19"><a href="#cb3-19" aria-hidden="true" tabindex="-1"></a><span class="co"># </span><span class="al">TODO</span><span class="co">: c) Find the year with the highest temperature anomaly and the year with the lowest.</span></span>
-<span id="cb3-20"><a href="#cb3-20" aria-hidden="true" tabindex="-1"></a><span class="co"># Hint: Use the `idxmax()` and `idxmin()` methods</span></span>
-<span id="cb3-21"><a href="#cb3-21" aria-hidden="true" tabindex="-1"></a><span class="co"># Your code here</span></span>
-<span id="cb3-22"><a href="#cb3-22" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-23"><a href="#cb3-23" aria-hidden="true" tabindex="-1"></a><span class="co"># </span><span class="al">TODO</span><span class="co">: e) Save the melted DataFrame to a Excel file with the name 'temp_anomaly_data.xlsx' for next lecture.</span></span>
-<span id="cb3-24"><a href="#cb3-24" aria-hidden="true" tabindex="-1"></a><span class="co"># Your code here</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="thats-it" class="level1">
