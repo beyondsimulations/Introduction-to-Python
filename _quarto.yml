@@ -23,9 +23,10 @@ website:
   site-url: https://beyondsimulations.github.io/Introduction-to-Python
   repo-actions: [edit, source, issue]
   bread-crumbs: true
-  reader-mode: true
+  favicon: https://images.beyondsimulations.com/logo/image_python.png
   sidebar:
     style: floating
+    logo: https://images.beyondsimulations.com/logo/image_python.png
     collapse-level: 1 
     search: true
     contents:
@@ -115,7 +116,8 @@ website:
 
 format:
   html:
-    theme: litera
+    html:
+        theme: [litera, ../styles_html.scss]
     toc: true
     highlight-style: arrow
     code-overflow: wrap
@@ -124,6 +126,8 @@ format:
     code-copy: true
     code-link: true
     toc-location: right
+    include-in-header:
+      - general/header.html
   pdf:
     documentclass: report
     geometry:
