@@ -1,38 +1,54 @@
+
 /*-- scss:defaults --*/
-@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap');
 $presentation-title-slide-text-align: left;
 
-// fonts
-$font-family-sans-serif: "Roboto", "Book Antiqua", Palatino,
-  FreeSerif, serif !default;
+// fonts from Google Fonts
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap');
+
+// colors background
+$background-color: #ffffff;
+
+// theme colors
+$theme-color-primary: #8C3048;
+$theme-color-secondary: #023059;
+$theme-color-tertiary: #AD5769;
+$theme-color-quaternary: #F4E2DE;
+
+// fonts colors
+$font-color: #000000;
+$font-color-inverted: $background-color;
+$font-color-loud: $theme-color-secondary;
 
 // colors
-$body-bg: #F7F3EB !default;
-$body-color: #191717 !default;
-$link-color: #a60000 !default;
+$body-bg: $background-color;
+$body-color: $font-color;
+$link-color: $theme-color-tertiary;
 
 // headings
-$presentation-heading-font: "Palatino Linotype", "Book Antiqua", Palatino,
-  FreeSerif, serif !default;
-$presentation-heading-color: #1a1b1b !default;
-$presentation-line-height: 1.3 !default;
-$presentation-heading-line-height: 1.3 !default;
+$presentation-heading-font: "Palatino Linotype", "Book Antiqua", Palatino, FreeSerif, serif !default;
 
+// line height
+$presentation-line-height: 1.5 !default;
+$presentation-heading-line-height: 1.5 !default;
 
 /*-- scss:rules --*/
 
-.question {
-  color: #AD5769;
+.title-slide.title {
+  background-color: $theme-color-quaternary !important;
+}
+
+.highlight {
+  color: $theme-color-primary;
   font-weight: bold;
 }
 
 .task {
-  color: #4d6749;
+  color: $theme-color-secondary;
   font-weight: bold;
 }
 
-.highlight {
-  color: #579dad;
+.question {
+  color: $theme-color-tertiary;
   font-weight: bold;
 }
 
@@ -41,43 +57,36 @@ $presentation-heading-line-height: 1.3 !default;
   font-weight: bold;
 }
 
-.white {
-  color: #ffffff;
+.invert-font {
+  color: $font-color-inverted;
+  background-color: #000000;
+  border-width: 10px;
+  border-radius: 0px;
+  border-color: #000000;
+  border-style: solid;
 }
 
-.picture {
-  margin: auto;
-  padding: 10pt;
-  width: auto;
-}
-
-.reveal a {
-  line-height: 1.8em;
-}
-
-.reveal .title {
-  background-color: #FFE0D3;
+.loud-slide {
+  background-color: $theme-color-primary !important; 
+  color: $font-color-loud !important;
+  font-weight: bold !important;
 }
 
 .flow {
-  background-image: url(https://images.unsplash.com/photo-1487058792275-0ad4aaf24ca7);
-  background-attachment: fixed;
+  background-image: url("https://images.beyondsimulations.com/logo/image_introduction-python.png");
   -webkit-text-fill-color: transparent;
   -webkit-background-clip: text;
   background-clip: text;
-	animation: animate 40s linear infinite;
-	font-weight: 900;
+  animation: animate 120s linear infinite;
+  background-size: cover;  
+  background-repeat: repeat;
 }
 
 @keyframes animate {
-	0% {
-		background-position: left 700px top 100px;
-	}
-	40% {
-		background-position: left 700px top 500px;
-	}
-}
-
-.reveal table {
-  font-size: smaller;
+  0% {
+    background-position: left 192px top 108px;
+  }
+  100% {
+    background-position: left 1728px top 972px;
+  }
 }
