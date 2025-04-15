@@ -21,7 +21,7 @@ website:
   title: "Programming with Python"
   repo-url: https://github.com/beyondsimulations/Introduction-to-Python
   site-url: https://beyondsimulations.github.io/Introduction-to-Python
-  repo-actions: [edit, source, issue]
+  repo-actions: [source, issue]
   bread-crumbs: true
   sidebar:
     style: floating
@@ -101,6 +101,8 @@ website:
             href: assignments/assignment-2.qmd
       - text: "Cheatsheet"
         href: general/cheatsheet.qmd
+      - text: "Chatbot"
+        href: general/chat.qmd
       - text: "FAQs"
         href: general/faq.qmd
       - text: "Literature"
@@ -112,7 +114,10 @@ website:
         href: https://github.com/beyondsimulations/Introduction-to-Python
       - icon: linkedin
         href: https://linkedin.com/in/tobiasvlcek
-
+      - icon: envelope
+        href: mailto:vlcek@beyondsimulations.com
+      - icon: privacy
+        href: general/privacy.qmd
 format:
   html:
     html:
@@ -127,6 +132,38 @@ format:
     toc-location: right
     include-in-header:
       - general/header.html
+    include-after-body: 
+      text: |
+        <script>
+          window.difyChatbotConfig = {
+            token: 'XCLkkdVV1UtPggWt',
+            baseUrl: 'https://flow.byndsim.com',
+            systemVariables: {
+              // user_id: 'YOU CAN DEFINE USER ID HERE',
+            },
+            containerProps: {
+              style: {
+                  backgroundColor: '#ffffff',
+                  borderRadius: '0px',
+              },
+            },
+          }
+        </script>
+        <script
+          src="https://flow.byndsim.com/embed.min.js"
+          id="XCLkkdVV1UtPggWt"
+          defer>
+        </script>
+        <style>
+          #dify-chatbot-bubble-button {
+            background-color: #8C3048 !important;
+          }
+          #dify-chatbot-bubble-window {
+            width: 24rem !important;
+            height: 80vh !important;
+            position: fixed !important;
+          }
+        </style>
   pdf:
     documentclass: report
     geometry:

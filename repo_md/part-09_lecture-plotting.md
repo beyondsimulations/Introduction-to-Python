@@ -1,38 +1,12 @@
----
-title: "Lecture IX - Data Visualization"
-subtitle: "Programming with Python"
-author: "Dr. Tobias Vlćek"
-#institute: "Kühne Logistics University Hamburg - Fall 2024"
-title-slide-attributes:
-    data-background-color: "#FFE0D3"
+# Lecture IX - Data Visualization
+Dr. Tobias Vlćek
 
-execute:
-    echo: true
-
-format:
-    revealjs:
-        theme: [default, ../styles.scss]
-        transition: slide
-        transition-speed: fast
-        highlight-style: arrow
-        code-overflow: wrap
-        slide-number: true
-        code-copy: true
-        code-link: true
-        width: 1152
-        height: 648
-        preview-links: auto
-        footer: " {{< meta title >}} | {{< meta author >}} | [Home](lecture-plotting.qmd)"
-        output-file: lecture-scientific-presentation.html
-    html:
-        theme: [litera, ../styles.scss]
----
-
-# [Quick Recap of the last Lecture]{.flow} {.title}
+# <span class="flow">Quick Recap of the last Lecture</span>
 
 ## Pandas: Data Analysis
 
-- Powerful library for [data manipulation and analysis]{.highlight}
+- Powerful library for <span class="highlight">data manipulation and
+  analysis</span>
 - Built on top of NumPy, providing additional functionality
 - Key features of Pandas include:
   - Data loading from various file formats
@@ -42,34 +16,37 @@ format:
 
 ## Why NumPy and Pandas are Essential
 
-- Basic tools for [scientific computing]{.highlight} and [data analysis]{.highlight}
-- [Efficient data structures]{.highlight} and operations for large data
+- Basic tools for <span class="highlight">scientific computing</span>
+  and <span class="highlight">data analysis</span>
+- <span class="highlight">Efficient data structures</span> and
+  operations for large data
 - Integration with other scientific Python libraries
 - Used in data science, machine learning, and research
 
 . . .
 
-::: {.callout-tip}
-You might also need them in future lectures here!
-:::
+> [!TIP]
+>
+> You might also need them in future lectures here!
 
-# [Data Visualization]{.flow} {.title}
+# <span class="flow">Data Visualization</span>
 
-##
+## 
 
-::: {.r-fit-text}
+<div class="r-fit-text">
 
-[Question:]{.question} What is
+<span class="question">Question:</span> What is
 
 data visualization?
 
-:::
+</div>
 
 ## Visual Representations of Data
 
-```{python}
-#| code-fold: true
+<details class="code-fold">
+<summary>Code</summary>
 
+``` python
 import matplotlib.pyplot as plt
 import numpy as np
 
@@ -105,30 +82,35 @@ plt.tight_layout()
 plt.show()
 ```
 
+</details>
+
+![](lecture-plotting_files/figure-commonmark/cell-2-output-1.png)
+
 ## Importance of Data Visualization
 
-- [Communicates]{.highlight} complex information clearly
-- Helps in [decision-making]{.highlight} processes
+- <span class="highlight">Communicates</span> complex information
+  clearly
+- Helps in <span class="highlight">decision-making</span> processes
 - Reveals hidden patterns and relationships in data
-- Makes data more [accessible]{.highlight} and engaging
+- Makes data more <span class="highlight">accessible</span> and engaging
 
 . . .
 
-::: {.callout-tip}
+> [!TIP]
+>
+> Helps to <span class="highlight">convice</span> stakeholders!
 
-Helps to [convice]{.highlight} stakeholders!
-
-:::
-
-# [Common Types of Data Visualizations]{.flow} {.title}
+# <span class="flow">Common Types of Data Visualizations</span>
 
 ## Bar Charts and Histograms
 
 - **Bar charts**: Compare quantities across categories
 - **Histograms**: Show distribution of a continuous variable
 
-```{python}
-#| code-fold: true
+<details class="code-fold">
+<summary>Code</summary>
+
+``` python
 import matplotlib.pyplot as plt
 import numpy as np
 
@@ -152,13 +134,19 @@ plt.tight_layout()
 plt.show()
 ```
 
+</details>
+
+![](lecture-plotting_files/figure-commonmark/cell-3-output-1.png)
+
 ## Line Charts and Area Charts
 
 - **Line charts**: Show trends over time or continuous data
 - **Area charts**: Similar to line charts, but with filled areas
 
-```{python}
-#| code-fold: true
+<details class="code-fold">
+<summary>Code</summary>
+
+``` python
 import matplotlib.pyplot as plt
 import numpy as np
 
@@ -183,13 +171,19 @@ plt.tight_layout()
 plt.show()
 ```
 
+</details>
+
+![](lecture-plotting_files/figure-commonmark/cell-4-output-1.png)
+
 ## Scatter Plots and Bubble Charts
 
 - **Scatter plots**: Show relationship between two variables
 - **Bubble charts**: Adds dimension with varying point sizes
 
-```{python}
-#| code-fold: true
+<details class="code-fold">
+<summary>Code</summary>
+
+``` python
 import matplotlib.pyplot as plt
 import numpy as np
 
@@ -210,13 +204,19 @@ plt.tight_layout()
 plt.show()
 ```
 
+</details>
+
+![](lecture-plotting_files/figure-commonmark/cell-5-output-1.png)
+
 ## Pie Charts and Donut Charts
 
 - **Pie charts**: Show composition of a whole
 - **Donut charts**: Similar to pie charts, but with a hole
 
-```{python}
-#| code-fold: true
+<details class="code-fold">
+<summary>Code</summary>
+
+``` python
 import matplotlib.pyplot as plt
 
 labels = 'A', 'B', 'C', 'D'
@@ -240,13 +240,19 @@ plt.tight_layout()
 plt.show()
 ```
 
+</details>
+
+![](lecture-plotting_files/figure-commonmark/cell-6-output-1.png)
+
 ## Box Plots and Violin Plots
 
 - **Box plots**: Show distribution of data through quartiles
 - **Violin plots**: Combine box plot with kernel density
 
-```{python}
-#| code-fold: true
+<details class="code-fold">
+<summary>Code</summary>
+
+``` python
 import matplotlib.pyplot as plt
 import seaborn as sns
 import numpy as np
@@ -266,13 +272,19 @@ plt.tight_layout()
 plt.show()
 ```
 
+</details>
+
+![](lecture-plotting_files/figure-commonmark/cell-7-output-1.png)
+
 ## Network Graphs and Trees
 
 - **Network graphs**: Show relationships between entities
 - **Tree diagrams**: Display hierarchical structures
 
-```{python}
-#| code-fold: true
+<details class="code-fold">
+<summary>Code</summary>
+
+``` python
 import matplotlib.pyplot as plt
 import networkx as nx
 import numpy as np
@@ -319,13 +331,18 @@ plt.tight_layout()
 plt.show()
 ```
 
+</details>
+
+![](lecture-plotting_files/figure-commonmark/cell-8-output-1.png)
+
 ## Ridgeline Plots
 
 - **Ridgeline plots**: Show distribution of data across categories
 
-```{python}
-#| code-fold: true
+<details class="code-fold">
+<summary>Code</summary>
 
+``` python
 import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
@@ -400,37 +417,44 @@ plt.xlabel("Temperature (°C)")
 plt.show()
 ```
 
-# [How to Plot in Python]{.flow} {.title}
+</details>
+
+![](lecture-plotting_files/figure-commonmark/cell-9-output-1.png)
+
+# <span class="flow">How to Plot in Python</span>
 
 ## Python Plotting Libraries
 
-- There are [many libraries for data visualization in Python]{.highlight}
-    - **Matplotlib**: The foundation for most Python plotting libraries
-    - **Seaborn**: Interface for statistical data visualization
-    - **Plotly**: Interactive and customizable plotting library
-    - **Bokeh**: Interactive and complex plots
-    - **Joypy**: Easy ridgeline plots
+- There are <span class="highlight">many libraries for data
+  visualization in Python</span>
+  - **Matplotlib**: The foundation for most Python plotting libraries
+  - **Seaborn**: Interface for statistical data visualization
+  - **Plotly**: Interactive and customizable plotting library
+  - **Bokeh**: Interactive and complex plots
+  - **Joypy**: Easy ridgeline plots
 
 ## Matplotlib Module
 
-- Matplotlib is the [foundation for most Python plotting libraries]{.highlight}
+- Matplotlib is the <span class="highlight">foundation for most Python
+  plotting libraries</span>
 - **Customizable** and suitable for high-quality figures
 - Provides **easy to use** functions for plotting
 - Works well with **Pandas** DataFrames
 
 ## Basic Matplotlib Example
 
-```{python}
-#| output-location: fragment
+``` python
 import matplotlib.pyplot as plt # .pyplot is the main module in the package
 plt.plot([1, 2, 3, 4], [10, 20, 25, 30]) # first is x-axis, second is y-axis
 plt.show()
 ```
 
+![](lecture-plotting_files/figure-commonmark/cell-10-output-1.png)
+
 ## Customizing Plots
 
 - **Line Types**: with `ls=`
-  - `-`, `--`, `-.`, `:`, `None`; 
+  - `-`, `--`, `-.`, `:`, `None`;
 - **Colors**: with `color=`
   - `r`, `g`, `b`, `c`, `m`, `y`, `k`, . . .
 - **Markers**: with `marker=`
@@ -439,8 +463,7 @@ plt.show()
 
 ## Red dashed line with circles
 
-```{python}
-#| output-location: slide
+``` python
 plt.plot(
     [1, 2, 3, 4], 
     [10, 20, 25, 30], 
@@ -450,14 +473,15 @@ plt.plot(
 plt.show()
 ```
 
+![](lecture-plotting_files/figure-commonmark/cell-11-output-1.png)
+
 ## Blue dotted line with squares
 
-[Question:]{.question} How can we create such a plot?
+<span class="question">Question:</span> How can we create such a plot?
 
 . . .
 
-```{python}
-#| output-location: slide
+``` python
 plt.plot(
     [1, 2, 3, 4], 
     [10, 20, 25, 30], 
@@ -469,10 +493,11 @@ plt.legend()
 plt.show()
 ```
 
+![](lecture-plotting_files/figure-commonmark/cell-12-output-1.png)
+
 ## Multiple Plots
 
-```{python}
-#| output-location: slide
+``` python
 plt.plot(
     [1, 2, 3, 4], 
     [8, 22, 21, 36], 
@@ -491,10 +516,11 @@ plt.legend()
 plt.show()
 ```
 
+![](lecture-plotting_files/figure-commonmark/cell-13-output-1.png)
+
 ## Type and Size of the Plot
 
-```{python}
-#| output-location: slide
+``` python
 plt.figure(figsize=(14, 4))
 plt.scatter(
     [1, 2, 3, 4], 
@@ -513,11 +539,14 @@ plt.legend()
 plt.show()
 ```
 
+![](lecture-plotting_files/figure-commonmark/cell-14-output-1.png)
+
 ## Plots in Action
 
-[Task:]{.task} Create two line plots of the following data:
+<span class="task">Task:</span> Create two line plots of the following
+data:
 
-```{python}
+``` python
 # Make sure to label the plots! Color and marker are optional.
 import numpy as np
 
@@ -528,46 +557,40 @@ y2 = np.cos(x) # cosine function
 
 ## Solution
 
-```{python}
-#| echo: false
-import numpy as np
-import matplotlib.pyplot as plt
+![](lecture-plotting_files/figure-commonmark/cell-16-output-1.png)
 
-x = np.linspace(0, 10, 100) # 100 points between 0 and 10
-y1 = np.sin(x) # sine function
-y2 = np.cos(x) # cosine function
-
-plt.plot(x, y1, label='sin(x)')
-plt.plot(x, y2, label='cos(x)')
-plt.legend()
-plt.show()
-```
-
-# [Plotting the Right Way]{.flow} {.title}
+# <span class="flow">Plotting the Right Way</span>
 
 ## The Message Matters
 
 - Making beautiful plots is **rather easy**[^1]
 - It is important to **understand** the underlying data
 - What kind of plots are **appropriate** for your data?
-- What is the [message you want to convey?]{.highlight}
-
-[^1]: At least nowadays with the assistance of AI!
+- What is the <span class="highlight">message you want to convey?</span>
 
 # Temperature Dataset
 
-Let's load the temperature dataset from our last tutorial.
+Let’s load the temperature dataset from our last tutorial.
 
-```{python}
-#| output: fragment
+``` python
 import pandas as pd
 df = pd.read_excel('data/temp_anomaly_data.xlsx')
 print(df.head())
 ```
 
+       Year Month  Anomaly
+    0  1880   Jan    -0.20
+    1  1881   Jan    -0.20
+    2  1882   Jan     0.16
+    3  1883   Jan    -0.29
+    4  1884   Jan    -0.13
+
 ## Example of a bad plot
-```{python}
-#| code-fold: true
+
+<details class="code-fold">
+<summary>Code</summary>
+
+``` python
 import pandas as pd
 import matplotlib.pyplot as plt
 
@@ -602,9 +625,17 @@ plt.tight_layout()
 
 plt.show()
 ```
+
+</details>
+
+![](lecture-plotting_files/figure-commonmark/cell-18-output-1.png)
+
 ## An okay plot
-```{python}
-#| code-fold: true
+
+<details class="code-fold">
+<summary>Code</summary>
+
+``` python
 import pandas as pd
 import matplotlib.pyplot as plt
 
@@ -641,9 +672,17 @@ plt.legend(bbox_to_anchor=(1.05, 1), loc='upper left', title='Year')
 plt.tight_layout()
 plt.show()
 ```
+
+</details>
+
+![](lecture-plotting_files/figure-commonmark/cell-19-output-1.png)
+
 ## A better plot
-```{python}
-#| code-fold: true
+
+<details class="code-fold">
+<summary>Code</summary>
+
+``` python
 # Calculate yearly averages
 yearly_means = df.groupby('Year')['Anomaly'].agg(['mean', 'std'])
 
@@ -676,10 +715,16 @@ plt.tight_layout()
 plt.show()
 ```
 
-# A good plot
-```{python}
-#| code-fold: true
+</details>
 
+![](lecture-plotting_files/figure-commonmark/cell-20-output-1.png)
+
+# A good plot
+
+<details class="code-fold">
+<summary>Code</summary>
+
+``` python
 # Read the data
 df = pd.read_excel('data/temp_anomaly_data.xlsx')
 
@@ -736,6 +781,10 @@ plt.tight_layout()
 plt.show()
 ```
 
+</details>
+
+![](lecture-plotting_files/figure-commonmark/cell-21-output-1.png)
+
 ## How to build such a plot?
 
 - **Think**: about what you want to build
@@ -745,43 +794,49 @@ plt.show()
 
 . . .
 
-:::{.callout-tip}
-
-As usual, the best way to learn is by **doing**! [AI makes it very easy to get started.]{.highlight}
-
-:::
+> [!TIP]
+>
+> As usual, the best way to learn is by **doing**!
+> <span class="highlight">AI makes it very easy to get started.</span>
 
 ## Good Plotting in Action
 
-[Task:]{.task} Create a plot of your own for the data.
+<span class="task">Task:</span> Create a plot of your own for the data.
 
 . . .
 
-```{python}
+``` python
 # TODO: Load the data from the `temp_anomaly_data.xlsx` file you have saved last lecture yourself and plot the temperature anomaly data. Find a way to make the plot meaningful and attractive in order to tell a story for the reader.
 # YOUR CODE HERE
 ```
 
-# [Creating Dashboards]{.flow} {.title}
+# <span class="flow">Creating Dashboards</span>
 
 ## Dash for Dashboards
 
-- [Dash](https://dash.plotly.com) is a framework for **building web applications**
-- It is built on top of [Flask](https://flask.palletsprojects.com), [Plotly.js](https://plotly.com/javascript/), and [React.js](https://react.dev/)
-- This lecture is build on top of [React.js]{.highlight}
+- [Dash](https://dash.plotly.com) is a framework for **building web
+  applications**
+- It is built on top of [Flask](https://flask.palletsprojects.com),
+  [Plotly.js](https://plotly.com/javascript/), and
+  [React.js](https://react.dev/)
+- This lecture is build on top of
+  <span class="highlight">React.js</span>
 - It is very customizable and has a lot of **examples**
 
 ## Panel for Dashboards
 
-- [Panel](https://panel.holoviz.org) is built on top of [Bokeh]{.highlight} (instead of Plotly.js)
+- [Panel](https://panel.holoviz.org) is built on top of
+  <span class="highlight">Bokeh</span> (instead of Plotly.js)
 - **Reasonably** easy to use, but not super easy
 - **Highly customizable**, also for multiple pages
 - **Good performance** even for more complex dashboards
 
 ## Streamlit for Dashboards
 
-- [Streamlit](https://streamlit.io) is a rather **new and popular** library
-- Very easy and [fast way to build dashboards]{.highlight}
+- [Streamlit](https://streamlit.io) is a rather **new and popular**
+  library
+- Very easy and <span class="highlight">fast way to build
+  dashboards</span>
 - Performance only good on **simpler dashboards**
 - **Not as many examples** and as customizable
 
@@ -790,55 +845,68 @@ As usual, the best way to learn is by **doing**! [AI makes it very easy to get s
 - [NiceGUI](https://nicegui.io) is also a **relatively new library**
 - **Very customizable** and a large fan base
 - **Not as many examples** and as easy to use as Streamlit
-- Allows building [web-based desktop applications]{.highlight}
+- Allows building <span class="highlight">web-based desktop
+  applications</span>
 
 ## Which one to choose?
 
-- **Streamlit**: if you want to build a dashboard [fast]{.highlight}
-- **Dash**: if you want more flexibility and [Plotly.js]{.highlight}
-- **Panel**: if you want a [Bokeh-based]{.highlight} solution with more flexibility
-- **NiceGUI**: if you want to build a [desktop-like application]{.highlight}
+- **Streamlit**: if you want to build a dashboard
+  <span class="highlight">fast</span>
+- **Dash**: if you want more flexibility and
+  <span class="highlight">Plotly.js</span>
+- **Panel**: if you want a <span class="highlight">Bokeh-based</span>
+  solution with more flexibility
+- **NiceGUI**: if you want to build a
+  <span class="highlight">desktop-like application</span>
 
 . . .
 
-:::{.callout-tip}
-
-There are many opinions on which tool is the best one. My approach is usually just to try the main contenders to see which one suits my workflow best.
-
-:::
+> [!TIP]
+>
+> There are many opinions on which tool is the best one. My approach is
+> usually just to try the main contenders to see which one suits my
+> workflow best.
 
 ## How to build a dashboard
 
-- We **won't go into details** on how to build dashboards
+- We **won’t go into details** on how to build dashboards
 - The best way to learn is by **doing!**
 - **Use AI and the libraries documentation** as starting points
-- We will also [build a dashboard in today's tutorial]{.highlight}
+- We will also <span class="highlight">build a dashboard in today’s
+  tutorial</span>
 
-# [Creating GUIs]{.flow} {.title}
+# <span class="flow">Creating GUIs</span>
 
 ## PySide6 for GUIs
 
 - Here, the **recommendation is much easier!**
 - In the past, `tkinter` was often the way to go
 - But currently, my recommendation is `PySide6`
-- It's a mature library we can use to build [cross-platform desktop applications]{.highlight}
+- It’s a mature library we can use to build
+  <span class="highlight">cross-platform desktop applications</span>
 
 . . .
 
-:::{.callout-note}
-**And that's it for todays lecture!**\
-You now have the basic knowledge to start working with [Plots, Dashboards and GUIs!]{.highlight}.
-:::
+> [!NOTE]
+>
+> **And that’s it for todays lecture!**  
+> You now have the basic knowledge to start working with
+> <span class="highlight">Plots, Dashboards and GUIs!</span>.
 
-# [Literature]{.flow} {.title}
+# <span class="flow">Literature</span>
 
 ## Interesting Books
 
-- Wilke, C. (2019). Fundamentals of data visualization: A primer on making informative and compelling figures (First edition). O’Reilly Media.
-    - A book that is highly recommended to understand the principles of data visualization and how to create effective visualizations.
-    - [Link to the free book website](https://clauswilke.com/dataviz/)
+- Wilke, C. (2019). Fundamentals of data visualization: A primer on
+  making informative and compelling figures (First edition). O’Reilly
+  Media.
+  - A book that is highly recommended to understand the principles of
+    data visualization and how to create effective visualizations.
+  - [Link to the free book website](https://clauswilke.com/dataviz/)
 
 . . .
 
-For more interesting literature to learn more about Python, take a look at the [literature list](../general/literature.qmd) of this course.
+For more interesting literature to learn more about Python, take a look
+at the [literature list](../general/literature.qmd) of this course.
 
+[^1]: At least nowadays with the assistance of AI!

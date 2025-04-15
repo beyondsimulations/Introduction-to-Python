@@ -1,52 +1,24 @@
----
-title: "Lecture VI - Using Modules and Packages"
-subtitle: "Programming with Python"
-author: "Dr. Tobias Vlćek"
-#institute: "Kühne Logistics University Hamburg - Fall 2024"
-title-slide-attributes:
-    data-background-color: "#FFE0D3"
+# Lecture VI - Using Modules and Packages
+Dr. Tobias Vlćek
 
-execute:
-    echo: true
-
-format:
-    revealjs:
-        theme: [default, ../styles.scss]
-        transition: slide
-        transition-speed: fast
-        highlight-style: arrow
-        code-overflow: wrap
-        width: 1260
-        height: 840
-        slide-number: true
-        code-copy: true
-        code-link: true
-        preview-links: auto
-        footer: " {{< meta title >}} | {{< meta author >}} | [Home](lecture-modules.qmd)"
-        output-file: lecture-modules-presentation.html
-    html:
-        theme: [litera, ../styles.scss]
----
-
-# [Quick Recap of the last Lecture]{.flow} {.title}
-
+# <span class="flow">Quick Recap of the last Lecture</span>
 
 ## Exceptions and Error Handling
 
-- Exceptions are [discovered errors]{.highlight} during program execution
+- Exceptions are <span class="highlight">discovered errors</span> during
+  program execution
 - Common built-in exceptions: `ValueError`, `TypeError`, etc.
 
 . . .
 
-```{python}
-#| eval: false
-
+``` python
 x = int("Hello, World!")
 ```
 
 . . .
 
-[>ValueError]{.errors}: invalid literal for int() with base 10: 'Hello, World!'
+<span class="errors">\>ValueError</span>: invalid literal for int() with
+base 10: ‘Hello, World!’
 
 ## Try-Except Blocks
 
@@ -56,7 +28,7 @@ x = int("Hello, World!")
 
 . . .
 
-```python
+``` python
 try:
     # Code that might raise an exception
     # ...
@@ -76,17 +48,16 @@ except Exception as e:
 
 . . .
 
-```{python}
-#| eval: false
-
+``` python
 raise ValueError("This is a custom error message")
 ```
 
 . . .
 
-::: {.callout-note}
-The type if raised exception **has to exist** or you have to create a custom error type before.
-:::
+> [!NOTE]
+>
+> The type if raised exception **has to exist** or you have to create a
+> custom error type before.
 
 ## Assertions
 
@@ -96,35 +67,36 @@ The type if raised exception **has to exist** or you have to create a custom err
 
 . . .
 
-```{python}
-#| eval: false
-
+``` python
 x = -1
 assert x > 0, "x must be positive"
 ```
 
 . . .
 
-[Question:]{.question} Will this raise an AssertionError?
+<span class="question">Question:</span> Will this raise an
+AssertionError?
 
 ## Debugging
 
-- Debugging is the process of [finding and fixing errors]{.highlight} in code
+- Debugging is the process of <span class="highlight">finding and fixing
+  errors</span> in code
 - Using `print` and `assert` statements
 - Using logging
 - Using built-in debugging tools in IDEs
 
 . . .
 
-::: {.callout-tip}
-That's why IDEs are so helpful in coding.
-:::
+> [!TIP]
+>
+> That’s why IDEs are so helpful in coding.
 
-# [Modules]{.flow} {.title}
+# <span class="flow">Modules</span>
 
 ## Why Modules?
 
-- Modular programming breaks [large tasks into smaller subtasks]{.highlight}
+- Modular programming breaks <span class="highlight">large tasks into
+  smaller subtasks</span>
 - Modules are like **building blocks** for larger applications
 - Individual modules can be **combined** to create a complete program
 - This approach enhances code organization and reusability
@@ -132,61 +104,65 @@ That's why IDEs are so helpful in coding.
 ## Creating Modules
 
 - Modules are simply `.py` files containing Python code
-- They can define [functions, classes, and variables]{.highlight}
+- They can define <span class="highlight">functions, classes, and
+  variables</span>
 - They can be imported into other Python scripts
 
-```{python}
-#| eval: true
-#| output-location: fragment
-
+``` python
 # The script new_module.py is in the same directory as this script
 import new_module # Here we import the module
 new_module.my_function() # Here we call the function from the module
 ```
 
+    Hello from my_function!
+
 ## Importing functions from modules
 
-- We can also import [specific functions]{.highlight} from a module
+- We can also import <span class="highlight">specific functions</span>
+  from a module
 - This is useful if we only need a **few functions** from a module
 - Analogously, we can import **classes or variables** from a module
 
 . . .
 
-```{python}
-#| eval: true
-#| output-location: fragment
+``` python
 # Multiple imports from a module are possible as well!
 from new_module import another_function, yet_another_function
 another_function()
 yet_another_function()
 ```
 
+    Hello from another_function!
+    Hello from yet_another_function!
+
 . . .
 
-::: {.callout-tip}
-This is a good way to avoid importing too much from a module. In addition, we don't need to use the module name before the function name when we use the functions from the module.
-:::
+> [!TIP]
+>
+> This is a good way to avoid importing too much from a module. In
+> addition, we don’t need to use the module name before the function
+> name when we use the functions from the module.
 
 ## Built-in Modules
 
-Python comes with many [built-in modules]{.highlight}. Common ones include:
+Python comes with many <span class="highlight">built-in modules</span>.
+Common ones include:
 
-| Module    | Description                           |
-|-----------|---------------------------------------|
-| `math`    | Different mathematical functions      |
-| `random`  | Random number generation              |
-| `datetime`| Date and time manipulation            |
-| `os`      | Operating system interaction          |
-| `csv`     | Reading and writing CSV files         |
-| `re`      | Regular expression operations         |
+| Module     | Description                      |
+|------------|----------------------------------|
+| `math`     | Different mathematical functions |
+| `random`   | Random number generation         |
+| `datetime` | Date and time manipulation       |
+| `os`       | Operating system interaction     |
+| `csv`      | Reading and writing CSV files    |
+| `re`       | Regular expression operations    |
 
 ## Importing from the Standard Library
 
-[Task:]{.task} Use Python's `math` module to calculate the area of a circle.
+<span class="task">Task:</span> Use Python’s `math` module to calculate
+the area of a circle.
 
-```{python}
-#| eval: false
-
+``` python
 # Import the `math` module.
 # Define a function named `calculate_area` that takes the radius `r` as an argument.
 # Inside the function, use the `math.pi` constant to get the value of π.
@@ -199,13 +175,15 @@ assert calculate_area(5) == 78.53981633974483
 
 . . .
 
-::: {.callout-tip}
-Note, how assertations can be used to check if a function works correctly.
-:::
+> [!TIP]
+>
+> Note, how assertations can be used to check if a function works
+> correctly.
 
-# [Standard Libraries]{.flow} {.title}  
+# <span class="flow">Standard Libraries</span>
 
 ## Random Numbers
+
 The `random` module provides functions for random numbers
 
 - `random.random()`: random float between 0 and 1
@@ -214,17 +192,18 @@ The `random` module provides functions for random numbers
 - `random.choice(list)`: random element from a list
 - `random.shuffle(list)`: shuffle a list
 
-::: {.callout-tip}
-There are many more functions in the `random` module. Use the `help()` function to get more information about a module or function.
-:::
+> [!TIP]
+>
+> There are many more functions in the `random` module. Use the `help()`
+> function to get more information about a module or function.
 
 ## Random Numbers in Action
 
-[Task:]{.task} Time for a task! Import the `random` module and create a [small number guessing game]{.highlight} with the following requirements:
+<span class="task">Task:</span> Time for a task! Import the `random`
+module and create a <span class="highlight">small number guessing
+game</span> with the following requirements:
 
-```{python}
-#| eval: false
-
+``` python
 # Generate a random integer between 1 and 10 using randint().
 # Ask the user to guess the number with input().
 # Print whether the guess was correct.
@@ -236,9 +215,9 @@ There are many more functions in the `random` module. Use the `help()` function 
 
 . . .
 
-::: {.callout-tip}
-Remember, that the input function always returns a string!
-:::
+> [!TIP]
+>
+> Remember, that the input function always returns a string!
 
 ## OS Module
 
@@ -250,9 +229,11 @@ Remember, that the input function always returns a string!
 
 . . .
 
-::: {.callout-tip}
-These can be quite useful for file handling. The `os` module contains many more functions, e.g. for changing the current working directory, for renaming and moving files, etc.
-:::
+> [!TIP]
+>
+> These can be quite useful for file handling. The `os` module contains
+> many more functions, e.g. for changing the current working directory,
+> for renaming and moving files, etc.
 
 ## CSV Module
 
@@ -262,9 +243,7 @@ These can be quite useful for file handling. The `os` module contains many more 
 
 . . .
 
-```{python}
-#| eval: true
-
+``` python
 import csv # Import the csv module
 
 with open('secret_message.csv', 'w') as file: # Open the file in write mode
@@ -276,14 +255,14 @@ with open('secret_message.csv', 'w') as file: # Open the file in write mode
 
 . . .
 
-[Task:]{.task} Copy the code and run it. Do you have a new file?
+<span class="task">Task:</span> Copy the code and run it. Do you have a
+new file?
 
 ## OS and CSV Module in Action
 
-[Task:]{.task} Time for another task! Do the following:
+<span class="task">Task:</span> Time for another task! Do the following:
 
-```{python}
-#| eval: false  
+``` python
 # First, check if a directory called `module_directory` exists.
 # If it does not, create it.
 # Then, list all files in the current directory and save them in a CSV file called `current_files.csv` in the new `module_directory`.
@@ -294,48 +273,49 @@ if not os.path.exists('module_directory'):
 # Your code here
 ```
 
-# [Regular Expressions]{.flow} {.title}
+# <span class="flow">Regular Expressions</span>
 
 ## What are Regular Expressions?
 
-- Regular expressions are a way to [search for patterns in text]{.highlight}
+- Regular expressions are a way to <span class="highlight">search for
+  patterns in text</span>
 - They are a useful tool for string manipulation
 - We can use the `re` module to work with regular expressions
 
 . . .
 
-```{python}
-#| eval: true
-#| output-location: fragment
-#| 
+``` python
 import re
 pattern = r'World' # This is the pattern we are searching for
 string = 'Hello, World!' # This is the string we are searching in
 print(re.search(pattern, string)) # This will search for the pattern in the string
 ```
 
+    <re.Match object; span=(7, 12), match='World'>
+
 . . .
 
-::: {.callout-note}
-So far, we could also have achieved this with the `find` method of a string.
-:::
+> [!NOTE]
+>
+> So far, we could also have achieved this with the `find` method of a
+> string.
 
 ## Why Regular Expressions?
 
-```{python}
-#| eval: true
-#| output-location: fragment
-#| 
+``` python
 import re
 pattern = 'World' # This is the pattern we are searching for
 string = 'Hello, World!' # This is the string we are searching in
 print(string.find(pattern)) # No regular expressions here!
 ```
 
+    7
+
 . . .
 
 - But regular expressions are more **powerful and flexible**
-- They have [special characters]{.highlight} that allow for complex patterns
+- They have <span class="highlight">special characters</span> that allow
+  for complex patterns
 - They are widely used in text processing and web scraping
 
 ## Using Regular Expressions
@@ -348,18 +328,17 @@ print(string.find(pattern)) # No regular expressions here!
 
 . . .
 
-::: {.callout-note}
-As always, there is more. But these are a good foundation to build upon.
-:::
-
+> [!NOTE]
+>
+> As always, there is more. But these are a good foundation to build
+> upon.
 
 ## Regular Expression in Action
 
-[Task]{.task}: Replace all occurences of `Python` by "SECRET".
+<span class="task">Task</span>: Replace all occurences of `Python` by
+“SECRET”.
 
-```{python}
-#| eval: false
-
+``` python
 import re
 string = """
 Python is a programming language. 
@@ -371,10 +350,10 @@ Monty Python was a theater group.
 
 . . .
 
-::: {.callout-note}
-Regular expressions are even **more powerful** when combined with [special characters]{.highlight}.
-:::
-
+> [!NOTE]
+>
+> Regular expressions are even **more powerful** when combined with
+> <span class="highlight">special characters</span>.
 
 ## Special Characters I
 
@@ -391,30 +370,34 @@ Regular expressions are even **more powerful** when combined with [special chara
 ## Special Characters II
 
 - There are **many more special characters** in regular expressions
-- In order to [keep things simple]{.highlight}, we will not cover them here
+- In order to <span class="highlight">keep things simple</span>, we will
+  not cover them here
 
 . . .
 
-```{python}
-#| eval: true
-#| output-location: fragment
+``` python
 import re
 print(re.findall(r'\d{3}-\d{2}-\d{4}', 'Here is a phone number: 123-45-6789.'))
 ```
 
+    ['123-45-6789']
+
 . . .
 
-::: {.callout-tip}
-It can be quite complicated to get the hang of these special characters, especially at the beginning. Gladly, there are tools like [regexr.com](https://regexr.com) that can help with building the right pattern. Apart from that, `help(re)` in the terminal can also be very helpful.
-:::
+> [!TIP]
+>
+> It can be quite complicated to get the hang of these special
+> characters, especially at the beginning. Gladly, there are tools like
+> [regexr.com](https://regexr.com) that can help with building the right
+> pattern. Apart from that, `help(re)` in the terminal can also be very
+> helpful.
 
 ## Advanced Regular Expressions in Action
 
-[Task:]{.task} Use regular expressions to extract all dates from the text.
+<span class="task">Task:</span> Use regular expressions to extract all
+dates from the text.
 
-```{python}
-#| eval: true
-
+``` python
 dates = """
 On 07-04-1776, the United States declared its independence. Many years later, 
 on 11-09-1989, the Berlin Wall fell. In more recent history, the COVID-19 
@@ -424,44 +407,51 @@ pandemic was declared a global emergency on 04-11-2020.
 # Your code here
 ```
 
-# [Packages]{.flow} {.title}
+# <span class="flow">Packages</span>
 
 ## What are Packages?
 
 - Packages are esentially **collections of modules**
 - They can contain multiple modules, subpackages, and data files
-- Many packages are available in the [Python Package Index (PyPI)]{.highlight}
-- You don't have to invent the wheel yourself
+- Many packages are available in the <span class="highlight">Python
+  Package Index (PyPI)</span>
+- You don’t have to invent the wheel yourself
 - **A lot of functionality** is already implemented by others!
 
 ## Installing Packages
 
 - Packages are **installed in the shell**
 - Use `pip install <package_name>` to install a specific package
-- Afterward you can [import from the package]{.highlight} in your Python scripts
+- Afterward you can <span class="highlight">import from the
+  package</span> in your Python scripts
 
 . . .
 
-::: {.callout-tip}
-With Thonny you can install packages directly in the IDE. Simply click on [Tools -> Manage packages]{.highlight} and search for the package you want to install.
-:::
+> [!TIP]
+>
+> With Thonny you can install packages directly in the IDE. Simply click
+> on <span class="highlight">Tools -\> Manage packages</span> and search
+> for the package you want to install.
 
 ## Packages in Action
 
-[Task:]{.task} Install the `pandas` and `numpy` packages, which are commonly used for data analysis. We will use them together next week!
+<span class="task">Task:</span> Install the `pandas` and `numpy`
+packages, which are commonly used for data analysis. We will use them
+together next week!
 
 . . .
 
-```{bash}
+``` {bash}
 pip install pandas numpy
 ```
 
 . . .
 
-::: {.callout-tip}
-If you install packages like this, you can use the shell to do so! Alternatively, you can use `pip install <package_name>` in the Python terminal or Thonny.
-:::
-
+> [!TIP]
+>
+> If you install packages like this, you can use the shell to do so!
+> Alternatively, you can use `pip install <package_name>` in the Python
+> terminal or Thonny.
 
 ## Virtual Environments
 
@@ -472,24 +462,30 @@ If you install packages like this, you can use the shell to do so! Alternatively
 
 . . .
 
-:::{.callout-note}
-**And that's it for todays lecture!**\
-We now have completed the first step into data science in Python. Next week, we can use this new knowledge to start to work with some tabular data and matrices.
-:::
+> [!NOTE]
+>
+> **And that’s it for todays lecture!**  
+> We now have completed the first step into data science in Python. Next
+> week, we can use this new knowledge to start to work with some tabular
+> data and matrices.
 
-# [Literature]{.flow} {.title}
+# <span class="flow">Literature</span>
 
 ## Interesting Books
 
-- Downey, A. B. (2024). Think Python: How to think like a computer scientist (Third edition). O’Reilly. [Link to free online version](https://greenteapress.com/wp/think-python-3rd-edition/)
-- Elter, S. (2021). Schrödinger programmiert Python: Das etwas andere Fachbuch (1. Auflage). Rheinwerk Verlag.
+- Downey, A. B. (2024). Think Python: How to think like a computer
+  scientist (Third edition). O’Reilly. [Link to free online
+  version](https://greenteapress.com/wp/think-python-3rd-edition/)
+- Elter, S. (2021). Schrödinger programmiert Python: Das etwas andere
+  Fachbuch (1. Auflage). Rheinwerk Verlag.
 
 . . .
 
-::: {.callout-tip}
-Nothing new here, but these are still great books!
-::: 
+> [!TIP]
+>
+> Nothing new here, but these are still great books!
 
 . . .
 
-For more interesting literature to learn more about Python, take a look at the [literature list](../general/literature.qmd) of this course.
+For more interesting literature to learn more about Python, take a look
+at the [literature list](../general/literature.qmd) of this course.

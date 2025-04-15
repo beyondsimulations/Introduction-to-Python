@@ -1,0 +1,59 @@
+# Tutorial VII - Pandas and AI
+
+
+# NASA GISTEMP Climate Change Analysis
+
+In this exercise, you’ll use Pandas to analyze real global temperature
+anomaly data from NASA, helping to understand trends in climate change
+over time. Work together with the LLM in your Code Editor to complete
+the task.
+
+The dataset is provided by the GISS Team, 2024: GISS Surface Temperature
+Analysis (GISTEMP), version 4. NASA Goddard Institute for Space Studies.
+Dataset at https://data.giss.nasa.gov/gistemp/.
+
+``` python
+import pandas as pd
+import matplotlib.pyplot as plt
+
+# First, we load the NASA GISTEMP dataset for global temperature anomalies.
+url = "https://data.giss.nasa.gov/gistemp/tabledata_v4/GLB.Ts+dSST.csv"
+temp_anomaly_data = pd.read_csv(url, skiprows=1) # skiprows=1 ensures that the first column is not read as a row index
+
+# Convert all numeric columns (except 'Year') to float, replacing '***' with NaN
+numeric_columns = temp_anomaly_data.columns.drop('Year')
+temp_anomaly_data[numeric_columns] = temp_anomaly_data[numeric_columns].replace('***', float('nan')).astype(float)
+
+# TODO: a) Display the first 5 rows to learn basic information about the DataFrame. For your work, you only need the 'Year' and and the data from all months. Drop the rest of the columns.
+# Your code here
+
+# TODO: b) Calculate and print the average temperature anomaly for each year. 
+# Hint: To do so, you first need to pd.melt()` the DataFrame to convert months to a single column. 
+# Your code here
+
+# TODO: c) Find the year with the highest temperature anomaly and the year with the lowest.
+# Hint: Use the `idxmax()` and `idxmin()` methods
+# Your code here
+
+# TODO: e) Save the melted DataFrame to a Excel file with the name 'temp_anomaly_data.xlsx' for next lecture.
+# Your code here
+```
+
+# Create a Game with AI
+
+In this exercise, you’ll use Pygame to create a jump and run game. Work
+together with the LLM in your Code Editor to complete the task. Start by
+asking the LLM to generate the game code for a simple jump and run game.
+Then, continue to improve the game together with the LLM step by step.
+We will present the most interesting games today at the end of the
+lecture.
+
+# That’s it!
+
+You can find the solutions to these exercises online in the associated
+GitHub repository, but we will also quickly go over them in next week’s
+tutorial. To access the solutions, click on the Github button on the
+lower right and search for the folder with today’s lecture and tutorial.
+Alternatively, you can ask ChatGPT or Claude to explain them to you.
+Remember, the goal is not just to complete the exercises, but to
+understand the concepts and improve your programming abilities.

@@ -1,80 +1,61 @@
----
-title: "Lecture VII - NumPy for Scientific Computing"
-subtitle: "Programming with Python"
-author: "Dr. Tobias Vlćek"
-#institute: "Kühne Logistics University Hamburg - Fall 2024"
-title-slide-attributes:
-    data-background-color: "#FFE0D3"
+# Lecture VII - NumPy for Scientific Computing
+Dr. Tobias Vlćek
 
-execute:
-    echo: true
-
-format:
-    revealjs:
-        theme: [default, ../styles.scss]
-        transition: slide
-        transition-speed: fast
-        highlight-style: arrow
-        code-overflow: wrap
-        slide-number: true
-        code-copy: true
-        code-link: true
-        width: 1152
-        height: 648
-        preview-links: auto
-        footer: " {{< meta title >}} | {{< meta author >}} | [Home](lecture-scientific.qmd)"
-        output-file: lecture-scientific-presentation.html
-    html:
-        theme: [litera, ../styles.scss]
----
-
-# [Quick Recap of the last Lecture]{.flow} {.title}
+# <span class="flow">Quick Recap of the last Lecture</span>
 
 ## Modules
-- [Modules]{.highlight} are `.py` files containing Python code
+
+- <span class="highlight">Modules</span> are `.py` files containing
+  Python code
 - They are used to organize and reuse code
 - They can define functions, classes, and variables
 - Can be imported into other scripts
 
 . . .
 
-:::{.callout-tip}
-We can import entire modules or individual functions, classes or variables.
-:::
+> [!TIP]
+>
+> We can import entire modules or individual functions, classes or
+> variables.
 
 ## Standard Libraries
+
 - Python includes many built-in modules like:
-    - `random` provides functions for random numbers
-    - `os` allows interaction with the operating system
-    - `csv` is used for reading and writing CSV files
-    - `re` is used for working with regular expressions
+  - `random` provides functions for random numbers
+  - `os` allows interaction with the operating system
+  - `csv` is used for reading and writing CSV files
+  - `re` is used for working with regular expressions
 
 ## Packages
-- [Packages]{.highlight} are collections of modules
+
+- <span class="highlight">Packages</span> are collections of modules
 - Often available from the Python Package Index (PyPI)
 - Install using `pip install <package_name>`
 - Virtual environments help manage dependencies
 
 . . .
 
-:::{.callout-tip}
-Virtual environments are not that important for you right now, as they are mostly used if you work on several projects with different dependecies at once.
-:::
+> [!TIP]
+>
+> Virtual environments are not that important for you right now, as they
+> are mostly used if you work on several projects with different
+> dependecies at once.
 
-# [NumPy Module]{.flow} {.title}
+# <span class="flow">NumPy Module</span>
 
 ## What is NumPy?
 
 - **NumPy** is a package for scientific computing in Python
-- Provides large, [multi-dimensional arrays and matrices]{.highlight}
+- Provides large, <span class="highlight">multi-dimensional arrays and
+  matrices</span>
 - Wide range of functions to operate on these
 - Python lists can be slow - Numpy arrays are much faster
 
 . . .
 
-:::{.callout-note}
-The name of the package comes from Numerical Python.
-:::
+> [!NOTE]
+>
+> The name of the package comes from Numerical Python.
 
 ## Why is NumPy so fast?
 
@@ -84,69 +65,71 @@ The name of the package comes from Numerical Python.
 
 . . .
 
-[Question:]{.question} Have you heard of C and C++?
+<span class="question">Question:</span> Have you heard of C and C++?
 
 ## How to get started
 
-1. Install NumPy using `pip install numpy`
-2. In Thonny, `Tools -> Manage Packages...`
-3. Import NumPy in a script using `import numpy as np`
+1.  Install NumPy using `pip install numpy`
+2.  In Thonny, `Tools -> Manage Packages...`
+3.  Import NumPy in a script using `import numpy as np`
 
 . . .
 
-```{python}
-#| eval: true
+``` python
 import numpy as np
 x = np.array([1, 2, 3, 4, 5]); type(x)
 ```
 
+    numpy.ndarray
+
 . . .
 
-:::{.callout-note}
-You don't have to use `as np`. But it is a common practice to do so.
-:::
+> [!NOTE]
+>
+> You don’t have to use `as np`. But it is a common practice to do so.
 
 ## Creating Arrays
 
 - The backbone of Numpy is the so called `ndarray`
 - Can be initialized from different data structures:
 
-```{python}
-#| eval: true
-#| output-location: fragment
+``` python
 import numpy as np
 
 array_from_list = np.array([1, 1, 1, 1])
 print(array_from_list)
 ```
 
-```{python}
-#| eval: true
-#| output-location: fragment
+    [1 1 1 1]
+
+``` python
 import numpy as np
 
 array_from_tuple = np.array((2, 2, 2, 2))
 print(array_from_tuple)
 ```
 
+    [2 2 2 2]
+
 ## Hetergenous Data Types
 
 - It is possible to store different data types in a `ndarray`
 
-```{python}
-#| eval: true
-#| output-location: fragment
+``` python
 import numpy as np
 
 array_different_types = np.array(["s", 2, 2.0, "i"])
 print(array_different_types)
 ```
 
+    ['s' '2' '2.0' 'i']
+
 . . .
 
-:::{.callout-note}
-But it is mostly not recommended, as it can lead to performance issues. If possible, try to **keep the types homogenous**.
-:::
+> [!NOTE]
+>
+> But it is mostly not recommended, as it can lead to performance
+> issues. If possible, try to **keep the types homogenous**.
 
 ## Prefilled Arrays
 
@@ -159,9 +142,10 @@ Improve performance by **allocating memory upfront**
 
 . . .
 
-:::{.callout-note}
-The shape refers to the [size of the array]{.highlight}. It can have one or multiple dimensions.
-:::
+> [!NOTE]
+>
+> The shape refers to the <span class="highlight">size of the
+> array</span>. It can have one or multiple dimensions.
 
 ## Dimensions
 
@@ -170,7 +154,7 @@ The shape refers to the [size of the array]{.highlight}. It can have one or mult
 - `(2,2)` creates a 2-dimensional array (matrix)
 - `(2,2,2)` 3-dimensional array (3rd order tensor)
 - `(2,2,2,2)` 4-dimensional array (4th order tensor)
-- ...
+- …
 
 ## Computations
 
@@ -179,22 +163,19 @@ The shape refers to the [size of the array]{.highlight}. It can have one or mult
 
 . . .
 
-```{python}
-#| eval: true
-#| output-location: fragment
-#| 
+``` python
 import numpy as np
 x = np.array([1, 2, 3, 4, 5])
 x + 1
 ```
 
+    array([2, 3, 4, 5, 6])
+
 ## Arrays in Action
 
-[Task]{.task}: Practice working with Numpy:
+<span class="task">Task</span>: Practice working with Numpy:
 
-```{python}
-#| eval: false
-
+``` python
 # TODO: Create a 3-dimensional tensor with filled with zeros
 # Choose the shape of the tensor, but it should have 200 elements
 # Add the number 5 to all values of the tensor
@@ -214,21 +195,26 @@ assert sum(tensor) == 1000
 
 . . .
 
-[Question]{.question}: What do you expect will be printed?
+<span class="question">Question</span>: What do you expect will be
+printed?
 
-```{python}
-#| eval: true
-#| output-location: fragment
-#| 
+``` python
 import numpy as np
 x = np.random.randint(0, 10, size=(3, 3))
 print(x); print("---")
 print(x[0:2,0:2])
 ```
 
+    [[6 8 6]
+     [2 8 4]
+     [2 5 7]]
+    ---
+    [[6 8]
+     [2 8]]
+
 ## Data Types
 
-- Numpy provides [data types as characters]{.highlight}
+- Numpy provides <span class="highlight">data types as characters</span>
 - `i`: integer
 - `b`: boolean
 - `f`: float
@@ -237,12 +223,11 @@ print(x[0:2,0:2])
 
 . . .
 
-```{python}
-#| eval: true
-#| output-location: fragment
-#| 
+``` python
 string_array = np.array(["Hello", "World"]); string_array.dtype
 ```
+
+    dtype('<U5')
 
 ## Enforcing Data Types
 
@@ -250,58 +235,57 @@ string_array = np.array(["Hello", "World"]); string_array.dtype
 
 . . .
 
-```{python}
-#| eval: true
-#| output-location: fragment
-
+``` python
 x = np.array([1, 2, 3, 4, 5],  dtype = 'f'); print(x.dtype)
 ```
+
+    float32
 
 . . .
 
 - Or we can **change** them for existing arrays
 
-```{python}
-#| eval: true
-#| output-location: fragment
-
+``` python
 x = np.array([1, 2, 3, 4, 5],  dtype = 'f'); print(x.astype('i').dtype)
 ```
 
+    int32
+
 . . .
 
-:::{.callout-note}
-Note, how the types are specified as `int32` and `float32`.
-:::
+> [!NOTE]
+>
+> Note, how the types are specified as `int32` and `float32`.
 
 ## Sidenote: Bits
 
-[Question:]{.question} Do you have an idea what `32` stands for?
+<span class="question">Question:</span> Do you have an idea what `32`
+stands for?
 
 . . .
 
-- It's the number of bits used to represent a number
-    - `int16` is a 16-bit integer
-    - `float32` is a 32-bit floating point number
-    - `int64` is a 64-bit integer
-    - `float128` is a 128-bit floating point number
+- It’s the number of bits used to represent a number
+  - `int16` is a 16-bit integer
+  - `float32` is a 32-bit floating point number
+  - `int64` is a 64-bit integer
+  - `float128` is a 128-bit floating point number
 
 ## Why do Bits Matter?
 
 - They matter, because they can affect:
-    - the performance of your code
-    - the precision of your results
+  - the performance of your code
+  - the precision of your results
 
 . . .
 
-- That's why numbers can have a limited precision!
-    - An `int8` has to be in the range of -128 to 127
-    - An `int16` has to be in the range of -32768 to 32767
+- That’s why numbers can have a limited precision!
+  - An `int8` has to be in the range of -128 to 127
+  - An `int16` has to be in the range of -32768 to 32767
 
 . . .
 
-[Question:]{.question} Size difference between `int16` and `int64`?
-
+<span class="question">Question:</span> Size difference between `int16`
+and `int64`?
 
 ## Joining Arrays
 
@@ -311,17 +295,19 @@ Note, how the types are specified as `int32` and `float32`.
 
 . . .
 
-[Question]{.question}: What do you expect will be printed?
+<span class="question">Question</span>: What do you expect will be
+printed?
 
-```{python}
-#| eval: true
-#| output-location: fragment
-
+``` python
 import numpy as np
 ones = np.array((1,1,1,1))
 twos = np.array((1,1,1,1)) *2
 print(np.vstack((ones,twos))); print(np.hstack((ones,twos)))
 ```
+
+    [[1 1 1 1]
+     [2 2 2 2]]
+    [1 1 1 1 2 2 2 2]
 
 ## Common Methods
 
@@ -333,18 +319,17 @@ print(np.vstack((ones,twos))); print(np.hstack((ones,twos)))
 
 . . .
 
-:::{.callout-tip}
-Try experiment with these methods, they can make your [work much easier.]{.highlight}
-:::
+> [!TIP]
+>
+> Try experiment with these methods, they can make your
+> <span class="highlight">work much easier.</span>
 
 ## Speed Differences in Action
 
-[Task]{.task}: Complete the following task to practice with Numpy:
+<span class="task">Task</span>: Complete the following task to practice
+with Numpy:
 
-```{python}
-#| eval: true
-#| output-location: fragment
-
+``` python
 # TODO: Create a 2-dimensional matrix with filled with ones of size 1000 x 1000.
 # Afterward, flatten the matrix to a vector and loop over the vector.
 # In each loop iteration, add a random number between 1 and 10000.
@@ -358,21 +343,27 @@ end = time.time()
 print(end - start) # time in seconds
 ```
 
-# That's it for today!
+    1.0013580322265625e-05
 
-:::{.callout-note}
-**And that's it for todays lecture!**\
-You now have the basic knowledge to start working with [scientific computing]{.highlight}.
-:::
+# That’s it for today!
 
-# [Literature]{.flow} {.title}
+> [!NOTE]
+>
+> **And that’s it for todays lecture!**  
+> You now have the basic knowledge to start working with
+> <span class="highlight">scientific computing</span>.
+
+# <span class="flow">Literature</span>
 
 ## Interesting Books
 
-- Downey, A. B. (2024). Think Python: How to think like a computer scientist (Third edition). O’Reilly. [Link to free online version](https://greenteapress.com/wp/think-python-3rd-edition/)
-- Elter, S. (2021). Schrödinger programmiert Python: Das etwas andere Fachbuch (1. Auflage). Rheinwerk Verlag.
+- Downey, A. B. (2024). Think Python: How to think like a computer
+  scientist (Third edition). O’Reilly. [Link to free online
+  version](https://greenteapress.com/wp/think-python-3rd-edition/)
+- Elter, S. (2021). Schrödinger programmiert Python: Das etwas andere
+  Fachbuch (1. Auflage). Rheinwerk Verlag.
 
 . . .
 
-For more interesting literature to learn more about Python, take a look at the [literature list](../general/literature.qmd) of this course.
-
+For more interesting literature to learn more about Python, take a look
+at the [literature list](../general/literature.qmd) of this course.

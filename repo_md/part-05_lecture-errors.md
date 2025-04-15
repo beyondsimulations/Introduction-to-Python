@@ -1,38 +1,11 @@
----
-title: "Lecture V - Handling Errors"
-subtitle: "Programming with Python"
-author: "Dr. Tobias Vlćek"
-#institute: "Kühne Logistics University Hamburg - Fall 2024"
-title-slide-attributes:
-    data-background-color: "#FFE0D3"
+# Lecture V - Handling Errors
+Dr. Tobias Vlćek
 
-execute:
-    echo: true
-
-format:
-    revealjs:
-        theme: [default, ../styles.scss]
-        transition: slide
-        transition-speed: fast
-        highlight-style: arrow
-        code-overflow: wrap
-        width: 1260
-        height: 840
-        slide-number: true
-        code-copy: true
-        code-link: true
-        preview-links: auto
-        footer: " {{< meta title >}} | {{< meta author >}} | [Home](lecture-errors.qmd)"
-        output-file: lecture-errors-presentation.html
-    html:
-        theme: [litera, ../styles.scss]
----
-
-# [Quick Recap of the last Lecture]{.flow} {.title} 
+# <span class="flow">Quick Recap of the last Lecture</span>
 
 ## Data Structures
 
-- [Newly]{.highlight} introduced data structures:
+- <span class="highlight">Newly</span> introduced data structures:
   - **Tuples**: Ordered, immutable collections
   - **Lists**: Ordered, mutable collections
   - **Sets**: Unordered collections of unique elements
@@ -40,9 +13,7 @@ format:
 
 . . .
 
-```{python}
-#| eval: false
-
+``` python
 list_example = [1, 2, 3, 4, 5]
 set_example = {1, 2, 3, 4, 5}
 dict_example = {"a": 1, "b": 2, "c": 3}
@@ -58,9 +29,10 @@ tuple_example = (1, 2, 3, 4, 5)
 
 . . .
 
-::: {.callout-tip}
-**Comprehensions** for concise creation of these structures are often used in practice to create new data structures from existing ones.
-:::
+> [!TIP]
+>
+> **Comprehensions** for concise creation of these structures are often
+> used in practice to create new data structures from existing ones.
 
 ## I/O and File Handling
 
@@ -71,21 +43,21 @@ tuple_example = (1, 2, 3, 4, 5)
 
 . . .
 
-::: {.callout-note}
-This covers the main points from our last lecture on data structures and file handling in Python.
-:::
+> [!NOTE]
+>
+> This covers the main points from our last lecture on data structures
+> and file handling in Python.
 
-# [Exceptions]{.flow} {.title} 
+# <span class="flow">Exceptions</span>
 
 ## What are Exceptions?
 
-- Exceptions are [discovered errors]{.highlight} that occur during the execution
+- Exceptions are <span class="highlight">discovered errors</span> that
+  occur during the execution
 
-. . . 
+. . .
 
-```{python}
-#| eval: false
-
+``` python
 def divide_numbers(a, b):
         result = a / b
         return result 
@@ -96,13 +68,14 @@ print("I will not be printed as the program crashed before.")
 
 . . .
 
-[ZeroDivisionError:]{.errors} division by zero
+<span class="errors">ZeroDivisionError:</span> division by zero
 
 . . .
 
-:::{.callout-warning}
-Undiscovered errors can be very **hard to debug** and can cause **crashes** and **other issues**.
-:::
+> [!WARNING]
+>
+> Undiscovered errors can be very **hard to debug** and can cause
+> **crashes** and **other issues**.
 
 ## Common Built-in Exceptions I
 
@@ -124,10 +97,11 @@ Undiscovered errors can be very **hard to debug** and can cause **crashes** and 
 
 . . .
 
-::: {.callout-note}
-The list of built-in exceptions is even longer, these are just the most common ones. We won't cover the errors listed here in detail, but it is good to be aware of them.
-:::
-
+> [!NOTE]
+>
+> The list of built-in exceptions is even longer, these are just the
+> most common ones. We won’t cover the errors listed here in detail, but
+> it is good to be aware of them.
 
 ## try-except Blocks
 
@@ -137,10 +111,7 @@ The list of built-in exceptions is even longer, these are just the most common o
 
 . . .
 
-```{python}
-#| eval: true
-#| output-location: fragment
-
+``` python
 def divide_numbers(a, b):
     try:
         result = a / b
@@ -152,12 +123,16 @@ print(divide_numbers(10, 0))
 print("I will be printed as the exception was handled!")
 ```
 
+    Error: Division by zero is not allowed.
+    I will be printed as the exception was handled!
+
 ## try-except Blocks for specific exceptions
 
-- We can also specify [the type of exception]{.highlight} we want to catch
+- We can also specify <span class="highlight">the type of
+  exception</span> we want to catch
 - This allows for more **specific error handling**
 
-```python
+``` python
 try:
     # Code that might raise an exception
     # ...
@@ -171,19 +146,19 @@ except Exception as e:
 
 . . .
 
-::: {.callout-note}
-`as e` is used to store the exception in a variable. Not mandatory, but good practice to do so.
-:::
+> [!NOTE]
+>
+> `as e` is used to store the exception in a variable. Not mandatory,
+> but good practice to do so.
 
 ## try-except Blocks in Action
 
-[>Grouptask:]{.task} Solve the following problem using try-except blocks:
+<span class="task">\>Grouptask:</span> Solve the following problem using
+try-except blocks:
 
 . . .
 
-```{python}
-#| eval: false
-
+``` python
 # Implement a function that converts a string to an integer
 # 1. Try to convert the input_string to an integer
 # 2. If successful, return the integer
@@ -201,20 +176,20 @@ print(string_to_int([123]))
 
 . . .
 
-[Question:]{.question} What is the output of the last line?
+<span class="question">Question:</span> What is the output of the last
+line?
 
-# [Raising Exceptions]{.flow} {.title}
+# <span class="flow">Raising Exceptions</span>
 
 ## Raising Exceptions
 
-- We can [raise exceptions ourselves]{.highlight} using the `raise` statement
+- We can <span class="highlight">raise exceptions ourselves</span> using
+  the `raise` statement
 - It allows us to handle errors in a more controlled manner
 
 . . .
 
-```{python} 
-#| eval: false
-
+``` python
 def validate_age(age):
     if age < 0:
         raise ValueError
@@ -224,18 +199,18 @@ print(validate_age(25)) # This will print 25
 print(validate_age(-1)) # This will raise a ValueError
 ```
 
-[>Task:]{.task} Try to raise an exception in the function above by passing a string to the `validate_age` function. What happens?
+<span class="task">\>Task:</span> Try to raise an exception in the
+function above by passing a string to the `validate_age` function. What
+happens?
 
 ## Raising Exceptions with Custom Messages
 
-- We can also raise exceptions with custom messages 
+- We can also raise exceptions with custom messages
 - This helps to provide more information about the error
 
 . . .
 
-```{python}
-#| eval: false  
-
+``` python
 def validate_age(age):
     if age < 0:
         raise ValueError("Age cannot be negative")
@@ -247,15 +222,16 @@ print(validate_age(-1)) # This will raise a ValueError
 
 . . .
 
-[>Question:]{.question} What do you think the `raise` statement will show now?
+<span class="question">\>Question:</span> What do you think the `raise`
+statement will show now?
 
 ## Creating Custom Exceptions
 
-- We do so by [inheriting from the built-in Exception class]{.highlight}
+- We do so by <span class="highlight">inheriting from the built-in
+  Exception class</span>
 - This allows us to create more specific exceptions for our own code
 
-```{python}
-#| eval: false  
+``` python
 class InvalidUsernameError(Exception):
     pass
 def get_valid_username():
@@ -270,43 +246,42 @@ def get_valid_username():
             print("Please try again.")
 ```
 
-
-# [Assertions]{.flow} {.title}
+# <span class="flow">Assertions</span>
 
 ## What are Assertions?
 
-- Assertions are [statements that check if a condition is true]{.highlight}
+- Assertions are <span class="highlight">statements that check if a
+  condition is true</span>
 - If the condition is false, an `AssertionError` is raised
 - We could use them to check the results of a calculation
 
 . . .
 
-```{python} 
-#| eval: false
-
+``` python
 x = 9
 y = 10
 assert x < y, "x is not smaller than y"
 assert isinstance(y, float), "y is not a float"
 ```
 
-. . . 
+. . .
 
-[>Task:]{.task} Try to run the code above and discuss what happens.
+<span class="task">\>Task:</span> Try to run the code above and discuss
+what happens.
 
 . . .
 
-::: {.callout-note}
-`isinstance` is a built-in function that checks if an object is an instance of a class.
-::: 
+> [!NOTE]
+>
+> `isinstance` is a built-in function that checks if an object is an
+> instance of a class.
 
 ## Assertions in Action
 
-[>Grouptask:]{.task} Solve the following problem using assertions:
+<span class="task">\>Grouptask:</span> Solve the following problem using
+assertions:
 
-```{python}
-#| eval: false
-
+``` python
 # Implement a function that takes a list of integers and returns the sum of the numbers. 
 # 1. Use assertions to check if the input is a list 
 # 2. Use assertions to check if the list contains only integers.
@@ -319,32 +294,34 @@ print(sum_of_numbers([1, 2, 3, 4, 5])) # Should print: 15
 print(sum_of_numbers([1, 2.0, 3, 4, 5])) # Should print: AssertionError
 ```
 
-
-# [Debugging]{.flow} {.title}
+# <span class="flow">Debugging</span>
 
 ## What is Debugging?
 
-- Debugging is the process of [finding and fixing errors]{.highlight} in code
+- Debugging is the process of <span class="highlight">finding and fixing
+  errors</span> in code
 - We can use `print` and `assert` statements to debug our code
 - We can also use **debugging tools** that are built into most IDEs
 
 <br>
 
 <center>
-<iframe src="https://giphy.com/embed/oYQ9HRm5Mo7VXeMNVR" width="480" height="360" style="" frameBorder="0" class="giphy-embed" allowFullScreen></iframe>
+
+<iframe src="https://giphy.com/embed/oYQ9HRm5Mo7VXeMNVR" width="480" height="360" style frameBorder="0" class="giphy-embed" allowFullScreen>
+
+</iframe>
+
 </center>
 
 ## Using Print and Assert
 
-- `print`: check [the values of variables]{.highlight} at different points
+- `print`: check <span class="highlight">the values of variables</span>
+  at different points
 - `assert`: check calculations or the types of variables
 
 . . .
 
-```{python}
-#| eval: true
-#| output-location: fragment
-
+``` python
 x = "Hello" # x is a string
 print(x)
 x = 42.0 # x is a float
@@ -353,25 +330,28 @@ assert isinstance(x, float), "x is not a float"
 assert x == 42.0, "x is not 42.0"
 ```
 
+    Hello
+    42.0
+
 . . .
 
-::: {.callout-note}
-While this can be useful, it is not always the best way to debug code.
-:::
+> [!NOTE]
+>
+> While this can be useful, it is not always the best way to debug code.
 
 ## Using Debugging Tools
 
-- We can also use debugging tools [built into most IDEs]{.highlight}
+- We can also use debugging tools <span class="highlight">built into
+  most IDEs</span>
 - Allow to step through code, set breakpoints, and inspect variables
 - We will use Thonny, but there are **many other options**
 
 ## Debugging in Thonny I
 
-[>Task:]{.task} Open Thonny and copy the following code:
+<span class="task">\>Task:</span> Open Thonny and copy the following
+code:
 
-```{python}
-#| eval: false
-
+``` python
 def calculate_average(numbers):
     total = 0
     count = 0
@@ -397,57 +377,71 @@ for i, test_list in enumerate(test_lists):
 
 ## Debugging in Thonny II
 
-- Click on the [bug icon]{.highlight} on the left side of the screen
+- Click on the <span class="highlight">bug icon</span> on the left side
+  of the screen
 
 ![](images/thonny_debug.png)
 
-
 ## Debugging Tools
-[>Task:]{.task} Run the code and use the debugging tools to find the error.
 
-- Use **step over, step into and step out** to [navigate]{.highlight} through your code
-- Use the **variable viewer** to [inspect variables]{.highlight} at different points
-- Use the **breakpoints** to [pause the execution]{.highlight} at a specific point
+<span class="task">\>Task:</span> Run the code and use the debugging
+tools to find the error.
+
+- Use **step over, step into and step out** to
+  <span class="highlight">navigate</span> through your code
+- Use the **variable viewer** to <span class="highlight">inspect
+  variables</span> at different points
+- Use the **breakpoints** to <span class="highlight">pause the
+  execution</span> at a specific point
 
 . . .
 
-[>Question:]{.question} What do you think the error is?
+<span class="question">\>Question:</span> What do you think the error
+is?
 
 . . .
 
-::: {.callout-note}
-The `enumerate` function used in the code is super helpful function that returns a tuple containing the index and the value of the item in the list and it is not the error.
-:::
+> [!NOTE]
+>
+> The `enumerate` function used in the code is super helpful function
+> that returns a tuple containing the index and the value of the item in
+> the list and it is not the error.
 
 ## Using Logging
 
-- We can also use logging to [track the execution]{.highlight} of a program
+- We can also use logging to <span class="highlight">track the
+  execution</span> of a program
 - It is a **structured** way to log errors and other issues
 - You can specify the **level of severity** for each log message
-- **Hide** messages of a certain severity if you want to during execution
+- **Hide** messages of a certain severity if you want to during
+  execution
 
 . . .
 
-:::{.callout-note}
-**And that's it for todays lecture!**\
-We now have covered the basics of errors, exceptions and debugging in Python. Logging is beyond our scope, but it is good to know should you work with larger codebases later on.
-:::
+> [!NOTE]
+>
+> **And that’s it for todays lecture!**  
+> We now have covered the basics of errors, exceptions and debugging in
+> Python. Logging is beyond our scope, but it is good to know should you
+> work with larger codebases later on.
 
-# [Literature]{.flow} {.title}
+# <span class="flow">Literature</span>
 
 ## Interesting Books
 
-- Downey, A. B. (2024). Think Python: How to think like a computer scientist (Third edition). O’Reilly. [Link to free online version](https://greenteapress.com/wp/think-python-3rd-edition/)
-- Elter, S. (2021). Schrödinger programmiert Python: Das etwas andere Fachbuch (1. Auflage). Rheinwerk Verlag.
+- Downey, A. B. (2024). Think Python: How to think like a computer
+  scientist (Third edition). O’Reilly. [Link to free online
+  version](https://greenteapress.com/wp/think-python-3rd-edition/)
+- Elter, S. (2021). Schrödinger programmiert Python: Das etwas andere
+  Fachbuch (1. Auflage). Rheinwerk Verlag.
 
 . . .
 
-::: {.callout-tip}
-Nothing new here, but these are still great books!
-::: 
+> [!TIP]
+>
+> Nothing new here, but these are still great books!
 
 . . .
 
-For more interesting literature to learn more about Python, take a look at the [literature list](../general/literature.qmd) of this course.
-
-
+For more interesting literature to learn more about Python, take a look
+at the [literature list](../general/literature.qmd) of this course.
