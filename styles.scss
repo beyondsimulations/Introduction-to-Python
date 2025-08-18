@@ -1,92 +1,178 @@
-
 /*-- scss:defaults --*/
-$presentation-title-slide-text-align: left;
 
-// fonts from Google Fonts
-@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap');
+// ========================================================================
+// GOOGLE FONTS IMPORT
+// ========================================================================
+@import url("https://fonts.googleapis.com/css2?family=Merriweather:wght@300;400;700;900&family=Reddit+Sans:wght@300;400;500;700&display=swap");
 
-// colors background
+// ========================================================================
+// COLOR PALETTE - YOUR BRAND COLORS
+// ========================================================================
+
+// Base colors
 $background-color: #ffffff;
 
-// theme colors
-$theme-color-primary: #8C3048;
-$theme-color-secondary: #023059;
-$theme-color-tertiary: #AD5769;
-$theme-color-quaternary: #F4E2DE;
+// Theme colors
+$theme-color-primary: #4c8087; // Teal - primary brand color
+$theme-color-secondary: #f2c49b; // Light orange/cream
+$theme-color-tertiary: #d99f7e; // Warm orange/peach
+$theme-color-quaternary: #99bfbb; // Soft blue-green
+$theme-color-quinary: #8c3545; // Muted red/pink
+$theme-color-code: #f0f0f2; // Greyish
 
-// fonts colors
-$font-color: #000000;
+// Text colors
+$font-color: #465059; // Main text color
+$body-color: $font-color !default;
+
 $font-color-inverted: $background-color;
 $font-color-loud: $theme-color-secondary;
 
-// colors
+// Dark Mode
+$enable-dark-mode: true;
+
+// ========================================================================
+// HTML BASE THEME VARS (applies to all HTML, including presentations)
+// ========================================================================
+
+// Typography
+$font-size-sm: 0.7rem !default;
+$font-size-lg: 1.2rem !default;
+$font-size-base: 1rem !default;
+
+$font-family-serif: "Merriweather", serif;
+$font-family-sans-serif: "Reddit Sans", sans-serif;
+
+$headings-font-family: $font-family-serif;
+$headings-color: $font-color;
+
+body {
+    font-family: $font-family-sans-serif;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-family: $font-family-serif;
+    line-height: 1.2;
+}
+
+blockquote {
+    font-style: italic;
+    font-family: $font-family-serif;
+}
+
+.lead {
+    font-family: $font-family-sans-serif;
+    color: $font-color;
+}
+
+footer,
+table,
+.table,
+.nav,
+.breadcrumb,
+.pagination,
+.dropdown-menu,
+.list-group {
+    font-size: $font-size-sm;
+}
+
+// Base colors
 $body-bg: $background-color;
 $body-color: $font-color;
-$link-color: $theme-color-tertiary;
 
-// headings
-$presentation-heading-font: "Palatino Linotype", "Book Antiqua", Palatino, FreeSerif, serif !default;
+// Links
+$link-color: $theme-color-quinary;
+$link-hover-color: darken($theme-color-quinary, 15%);
+$link-visited-color: darken($theme-color-quinary, 10%);
 
-// line height
-$presentation-line-height: 1.5 !default;
-$presentation-heading-line-height: 1.5 !default;
+// Borders, figures
+$border-color: lighten($font-color, 40%);
+$figure-caption-color: lighten($font-color, 30%);
 
-/*-- scss:rules --*/
+// Code styling
+$code-bg: $theme-color-code;
+$code-block-border-left: $theme-color-quinary;
 
-.title-slide.title {
-  background-color: $theme-color-quaternary !important;
-}
+// Callouts
+$callout-color-note: $theme-color-quaternary;
+$callout-color-tip: $theme-color-secondary;
+$callout-color-warning: $theme-color-primary;
+$callout-color-important: $theme-color-quinary;
+$callout-color-caution: $theme-color-tertiary;
 
+// ========================================================================
+// REVEAL.JS PRESENTATION VARS (override to match HTML theme)
+// ========================================================================
+$presentation-heading-font: $font-family-serif;
+$presentation-font-family: $font-family-sans-serif;
+$presentation-line-height: 1.5;
+$presentation-heading-line-height: 1.5;
+$presentation-title-slide-text-align: left;
+$presentation-font-size-root: 38px;
+
+// ========================================================================
+// RULES: only for custom visual effects / overrides
+// ========================================================================
+
+// Utility text classes
 .highlight {
-  color: $theme-color-primary;
-  font-weight: bold;
+    color: $theme-color-primary;
+    font-weight: bold;
 }
-
 .task {
-  color: $theme-color-secondary;
-  font-weight: bold;
+    color: $theme-color-secondary;
+    font-weight: bold;
 }
-
 .question {
-  color: $theme-color-tertiary;
-  font-weight: bold;
+    color: $theme-color-tertiary;
+    font-weight: bold;
 }
-
+.light {
+    color: $theme-color-quaternary;
+}
 .errors {
-  color: #e3a14a;
-  font-weight: bold;
+    color: $theme-color-quinary;
+    font-weight: bold;
 }
 
+// Inverted font block
 .invert-font {
-  color: $font-color-inverted;
-  background-color: #000000;
-  border-width: 10px;
-  border-radius: 0px;
-  border-color: #000000;
-  border-style: solid;
+    color: $font-color-inverted;
+    background-color: $font-color;
+    border: 5px solid $font-color;
+    border-radius: 0;
 }
 
+// Slide-specific
+.title-slide.title {
+    background-color: $theme-color-quaternary !important;
+}
 .loud-slide {
-  background-color: $theme-color-primary !important; 
-  color: $font-color-loud !important;
-  font-weight: bold !important;
+    background-color: $theme-color-primary !important;
+    color: $font-color-loud !important;
+    font-weight: bold !important;
 }
 
+// Animation effect
 .flow {
-  background-image: url("https://images.beyondsimulations.com/logo/midjourney-programming.png");
-  -webkit-text-fill-color: transparent;
-  -webkit-background-clip: text;
-  background-clip: text;
-  animation: animate 120s linear infinite;
-  background-size: cover;  
-  background-repeat: repeat;
+    background-image: url("https://images.beyondsimulations.com/logo/main-web.png");
+    background-size: 3840px 2160px;
+    -webkit-text-fill-color: transparent;
+    -webkit-background-clip: text;
+    background-clip: text;
+    animation: animate 60s linear infinite;
+    font-family: $presentation-heading-font;
 }
 
 @keyframes animate {
-  0% {
-    background-position: left 192px top 108px;
-  }
-  100% {
-    background-position: left 1728px top 972px;
-  }
+    0% {
+        background-position: left 384px top 216px;
+    }
+    100% {
+        background-position: left 3456px top 1944px;
+    }
 }
