@@ -1771,33 +1771,18 @@ Tip
     </div>
   </div>
 </footer>
+<script src="https://cdn.jsdelivr.net/gh/beyondsimulations/web-embedded-chat@main/floating-chat.js"></script>
 <script>
-  window.difyChatbotConfig = {
-    token: 'XCLkkdVV1UtPggWt',
-    baseUrl: 'https://flow.byndsim.com',
-    systemVariables: {
-      // user_id: 'YOU CAN DEFINE USER ID HERE',
-    },
-    containerProps: {
-      style: {
-          backgroundColor: '#ffffff',
-          borderRadius: '0px',
-      },
-    },
-  }
+    new UniversalChatWidget({
+        title: "Python Assistant",
+        apiEndpoint: "https://model-proxy.vlcek-4b4.workers.dev",
+        model: "python-programming",
+        userMessageOpacity: 0.5,
+        assistantMessageOpacity: 0.5,
+        position: "bottom-right",
+        windowHeight: 800
+    });
 </script>
-<script src="https://flow.byndsim.com/embed.min.js" id="XCLkkdVV1UtPggWt" defer="">
-</script>
-<style>
-  #dify-chatbot-bubble-button {
-    background-color: #8C3048 !important;
-  }
-  #dify-chatbot-bubble-window {
-    width: 24rem !important;
-    height: 80vh !important;
-    position: fixed !important;
-  }
-</style>
 
 
 
