@@ -6,9 +6,8 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="author" content="Dr.&nbsp;Tobias Vlćek">
 
-<title>Lecture VII - NumPy for Scientific Computing – Programming with Python</title>
+<title>Assignment II – Programming with Python</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -118,7 +117,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../part-07/lecture-scientific.html">07 Scientific Computing</a></li><li class="breadcrumb-item"><a href="../part-07/lecture-scientific.html">Lecture</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../assignments/assignment-1.html">Assignments</a></li><li class="breadcrumb-item"><a href="../assignments/assignment-2.html">02 Assignment</a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -299,16 +298,16 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-7" role="navigation" aria-expanded="true">
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-7" role="navigation" aria-expanded="false">
  <span class="menu-text">07 Scientific Computing</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-7" role="navigation" aria-expanded="true" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-7" role="navigation" aria-expanded="false" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-7" class="collapse list-unstyled sidebar-section depth1 show">  
+      <ul id="quarto-sidebar-section-7" class="collapse list-unstyled sidebar-section depth1 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../part-07/lecture-scientific.html" class="sidebar-item-text sidebar-link active">
+  <a href="../part-07/lecture-scientific.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Lecture</span></a>
   </div>
 </li>
@@ -388,13 +387,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-11" role="navigation" aria-expanded="false">
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-11" role="navigation" aria-expanded="true">
  <span class="menu-text">Assignments</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-11" role="navigation" aria-expanded="false" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-11" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-11" class="collapse list-unstyled sidebar-section depth1 ">  
+      <ul id="quarto-sidebar-section-11" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../assignments/assignment-1.html" class="sidebar-item-text sidebar-link">
@@ -403,7 +402,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../assignments/assignment-2.html" class="sidebar-item-text sidebar-link">
+  <a href="../assignments/assignment-2.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text">02 Assignment</span></a>
   </div>
 </li>
@@ -443,67 +442,28 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#quick-recap-of-the-last-lecture" id="toc-quick-recap-of-the-last-lecture" class="nav-link active" data-scroll-target="#quick-recap-of-the-last-lecture"><span class="flow">Quick Recap of the last Lecture</span></a>
-  <ul class="collapse">
-  <li><a href="#modules" id="toc-modules" class="nav-link" data-scroll-target="#modules">Modules</a></li>
-  <li><a href="#standard-libraries" id="toc-standard-libraries" class="nav-link" data-scroll-target="#standard-libraries">Standard Libraries</a></li>
-  <li><a href="#packages" id="toc-packages" class="nav-link" data-scroll-target="#packages">Packages</a></li>
-  </ul></li>
-  <li><a href="#numpy-module" id="toc-numpy-module" class="nav-link" data-scroll-target="#numpy-module"><span class="flow">NumPy Module</span></a>
-  <ul class="collapse">
-  <li><a href="#what-is-numpy" id="toc-what-is-numpy" class="nav-link" data-scroll-target="#what-is-numpy">What is NumPy?</a></li>
-  <li><a href="#why-is-numpy-so-fast" id="toc-why-is-numpy-so-fast" class="nav-link" data-scroll-target="#why-is-numpy-so-fast">Why is NumPy so fast?</a></li>
-  <li><a href="#how-to-get-started" id="toc-how-to-get-started" class="nav-link" data-scroll-target="#how-to-get-started">How to get started</a></li>
-  <li><a href="#creating-arrays" id="toc-creating-arrays" class="nav-link" data-scroll-target="#creating-arrays">Creating Arrays</a></li>
-  <li><a href="#hetergenous-data-types" id="toc-hetergenous-data-types" class="nav-link" data-scroll-target="#hetergenous-data-types">Hetergenous Data Types</a></li>
-  <li><a href="#prefilled-arrays" id="toc-prefilled-arrays" class="nav-link" data-scroll-target="#prefilled-arrays">Prefilled Arrays</a></li>
-  <li><a href="#dimensions" id="toc-dimensions" class="nav-link" data-scroll-target="#dimensions">Dimensions</a></li>
-  <li><a href="#computations" id="toc-computations" class="nav-link" data-scroll-target="#computations">Computations</a></li>
-  <li><a href="#arrays-in-action" id="toc-arrays-in-action" class="nav-link" data-scroll-target="#arrays-in-action">Arrays in Action</a></li>
-  <li><a href="#indexing-and-slicing" id="toc-indexing-and-slicing" class="nav-link" data-scroll-target="#indexing-and-slicing">Indexing and Slicing</a></li>
-  <li><a href="#data-types" id="toc-data-types" class="nav-link" data-scroll-target="#data-types">Data Types</a></li>
-  <li><a href="#enforcing-data-types" id="toc-enforcing-data-types" class="nav-link" data-scroll-target="#enforcing-data-types">Enforcing Data Types</a></li>
-  <li><a href="#sidenote-bits" id="toc-sidenote-bits" class="nav-link" data-scroll-target="#sidenote-bits">Sidenote: Bits</a></li>
-  <li><a href="#why-do-bits-matter" id="toc-why-do-bits-matter" class="nav-link" data-scroll-target="#why-do-bits-matter">Why do Bits Matter?</a></li>
-  <li><a href="#joining-arrays" id="toc-joining-arrays" class="nav-link" data-scroll-target="#joining-arrays">Joining Arrays</a></li>
-  <li><a href="#common-methods" id="toc-common-methods" class="nav-link" data-scroll-target="#common-methods">Common Methods</a></li>
-  <li><a href="#speed-differences-in-action" id="toc-speed-differences-in-action" class="nav-link" data-scroll-target="#speed-differences-in-action">Speed Differences in Action</a></li>
-  </ul></li>
-  <li><a href="#thats-it-for-today" id="toc-thats-it-for-today" class="nav-link" data-scroll-target="#thats-it-for-today">That’s it for today!</a></li>
-  <li><a href="#literature" id="toc-literature" class="nav-link" data-scroll-target="#literature"><span class="flow">Literature</span></a>
-  <ul class="collapse">
-  <li><a href="#interesting-books" id="toc-interesting-books" class="nav-link" data-scroll-target="#interesting-books">Interesting Books</a></li>
-  </ul></li>
+  <li><a href="#introduction" id="toc-introduction" class="nav-link active" data-scroll-target="#introduction">Introduction</a></li>
+  <li><a href="#redact-secret-information" id="toc-redact-secret-information" class="nav-link" data-scroll-target="#redact-secret-information">Redact secret information</a></li>
+  <li><a href="#dice-roll-simulator" id="toc-dice-roll-simulator" class="nav-link" data-scroll-target="#dice-roll-simulator">Dice roll simulator</a></li>
+  <li><a href="#regression-analysis" id="toc-regression-analysis" class="nav-link" data-scroll-target="#regression-analysis">Regression analysis</a></li>
+  <li><a href="#dashboards" id="toc-dashboards" class="nav-link" data-scroll-target="#dashboards">Dashboards</a></li>
   </ul>
-<div class="toc-actions"><ul><li><a href="https://github.com/beyondsimulations/Introduction-to-Python/blob/main/part-07/lecture-scientific.qmd" class="toc-action"><i class="bi bi-github"></i>View source</a></li><li><a href="https://github.com/beyondsimulations/Introduction-to-Python/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div><div class="quarto-alternate-formats"><h2>Other Formats</h2><ul><li><a href="lecture-scientific-presentation.html"><i class="bi bi-file-slides"></i>RevealJS</a></li></ul></div></nav>
+<div class="toc-actions"><ul><li><a href="https://github.com/beyondsimulations/Introduction-to-Python/blob/main/assignments/assignment-2.qmd" class="toc-action"><i class="bi bi-github"></i>View source</a></li><li><a href="https://github.com/beyondsimulations/Introduction-to-Python/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div><div class="quarto-alternate-formats"><h2>Other Formats</h2><ul><li><a href="assignment-2.pdf"><i class="bi bi-file-pdf"></i>PDF</a></li></ul></div></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../part-07/lecture-scientific.html">07 Scientific Computing</a></li><li class="breadcrumb-item"><a href="../part-07/lecture-scientific.html">Lecture</a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../assignments/assignment-1.html">Assignments</a></li><li class="breadcrumb-item"><a href="../assignments/assignment-2.html">02 Assignment</a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title">Lecture VII - NumPy for Scientific Computing</h1>
+<h1 class="title">Assignment II</h1>
 <p class="subtitle lead">Programming with Python</p>
 </div>
 
 
-<div class="quarto-title-meta-author">
-  <div class="quarto-title-meta-heading">Author</div>
-  <div class="quarto-title-meta-heading">Affiliation</div>
-  
-    <div class="quarto-title-meta-contents">
-    <p class="author">Dr.&nbsp;Tobias Vlćek </p>
-  </div>
-  <div class="quarto-title-meta-contents">
-        <p class="affiliation">
-            Kühne Logistics University Hamburg - Fall 2024
-          </p>
-      </div>
-  </div>
 
 <div class="quarto-title-meta">
 
-      
+    
   
     
   </div>
@@ -513,78 +473,31 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<section id="quick-recap-of-the-last-lecture" class="level1 title">
-<h1 class="title"><span class="flow">Quick Recap of the last Lecture</span></h1>
-<section id="modules" class="level2">
-<h2 class="anchored" data-anchor-id="modules">Modules</h2>
-<ul>
-<li><span class="highlight">Modules</span> are <code>.py</code> files containing Python code</li>
-<li>They are used to organize and reuse code</li>
-<li>They can define functions, classes, and variables</li>
-<li>Can be imported into other scripts</li>
-</ul>
-<p>. . .</p>
-<div class="callout callout-style-default callout-tip callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Tip
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>We can import entire modules or individual functions, classes or variables.</p>
-</div>
+<section id="introduction" class="level1">
+<h1>Introduction</h1>
+<p>This is the second of the two assignments for this course. It will be graded as pass/fail and you and your group of up to 3 students will need to submit it before the start of the last lecture. Please hand in one assignment per group via the e-mail address <a href="mailto:vlcek@beyondsimulations.com">vlcek@beyondsimulations.com</a>.</p>
+<p>In the assignment, you will practice the concepts you learned in the second part of the course. You will find a lot of information online and you are welcome to use generative AI to help you with the assignment. However, you are not allowed to copy the code from other groups and you have to indicate where and how you used AI to help you. Try to use comments to structure and to explain your code. Furthermore, use descriptive variable names and format your code nicely in order to make it more readable.</p>
+</section>
+<section id="redact-secret-information" class="level1">
+<h1>Redact secret information</h1>
+<p>In this excercise, you will create a program that is able to redact secret information in a text. The program should be able to redact the following: <strong>zip codes, names, email addresses and phone numbers.</strong> The program should ask the user <strong>for a filename</strong> and then read the file and <strong>redact the secret information</strong>. The program should then print the redacted text to the console and write it to a new file called <code>redacted.txt</code>. You can find a file with secret information in the git repository under <code>assignments/secret-text.txt</code>.</p>
+<div id="1674834e" class="cell" data-execution_count="1">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Secret information redactor</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="co"># </span><span class="al">TODO</span><span class="co">: Create a program that is able to redact secret information in a text.</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="co"># YOUR CODE HERE</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section>
-<section id="standard-libraries" class="level2">
-<h2 class="anchored" data-anchor-id="standard-libraries">Standard Libraries</h2>
-<ul>
-<li>Python includes many built-in modules like:
-<ul>
-<li><code>random</code> provides functions for random numbers</li>
-<li><code>os</code> allows interaction with the operating system</li>
-<li><code>csv</code> is used for reading and writing CSV files</li>
-<li><code>re</code> is used for working with regular expressions</li>
-</ul></li>
-</ul>
-</section>
-<section id="packages" class="level2">
-<h2 class="anchored" data-anchor-id="packages">Packages</h2>
-<ul>
-<li><span class="highlight">Packages</span> are collections of modules</li>
-<li>Often available from the Python Package Index (PyPI)</li>
-<li>Install using <code>pip install &lt;package_name&gt;</code></li>
-<li>Virtual environments help manage dependencies</li>
-</ul>
-<p>. . .</p>
-<div class="callout callout-style-default callout-tip callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Tip
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>Virtual environments are not that important for you right now, as they are mostly used if you work on several projects with different dependecies at once.</p>
-</div>
+<section id="dice-roll-simulator" class="level1">
+<h1>Dice roll simulator</h1>
+<p>In this excercise, you will create a program that is able to simulate dice rolls and visualizes their distribution. The program should ask the user for <strong>the number of sides on the dice and the number of dices to roll</strong>. Then, the program should simulate the dice rolls 10000 times and <strong>visualize the distribution</strong> of the dice rolls using a histogram.</p>
+<div id="f5cafe5d" class="cell" data-execution_count="2">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Dice roll simulator</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="co"># </span><span class="al">TODO</span><span class="co">: Create a program that is able to simulate a dice roll.</span></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="co"># YOUR CODE HERE</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section>
-</section>
-<section id="numpy-module" class="level1 title">
-<h1 class="title"><span class="flow">NumPy Module</span></h1>
-<section id="what-is-numpy" class="level2">
-<h2 class="anchored" data-anchor-id="what-is-numpy">What is NumPy?</h2>
-<ul>
-<li><strong>NumPy</strong> is a package for scientific computing in Python</li>
-<li>Provides large, <span class="highlight">multi-dimensional arrays and matrices</span></li>
-<li>Wide range of functions to operate on these</li>
-<li>Python lists can be slow - Numpy arrays are much faster</li>
-</ul>
-<p>. . .</p>
+<section id="regression-analysis" class="level1">
+<h1>Regression analysis</h1>
 <div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -595,36 +508,26 @@ Note
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>The name of the package comes from Numerical Python.</p>
+<p>You will either have to to this excercise or the next one about dashboards.</p>
 </div>
 </div>
-</section>
-<section id="why-is-numpy-so-fast" class="level2">
-<h2 class="anchored" data-anchor-id="why-is-numpy-so-fast">Why is NumPy so fast?</h2>
+<p>In this excercise, you will create a program that performs linear regression on a dataset with housing prices. The dataset can be found in the git repository under <code>assignments/hamburg_housing_prices.csv</code>. The dataset contains the following columns:</p>
 <ul>
-<li>Arrays are stored in a contiguous block of memory</li>
-<li>This allows for efficient memory access patterns</li>
-<li>Operations are implemented in the languages <code>C</code> and <code>C++</code></li>
+<li>Price: The price of the house in Euros.</li>
+<li>Area: The area of the house in square meters.</li>
+<li>Rooms: The number of rooms in the house.</li>
+<li>Year_Built: The year the house was built.</li>
+<li>Distance_to_Center: The distance to the center of Hamburg in kilometers.</li>
 </ul>
-<p>. . .</p>
-<p><span class="question">Question:</span> Have you heard of C and C++?</p>
+<p>Your task is to perform a <strong>linear regression analysis</strong> on the dataset and to predict the price of a house based on its area, number of rooms, year it was built and its distance to the center of Hamburg. You can use the <code>pandas</code> library to read the dataset and the <code>numpy</code> library to perform the linear regression analysis. After performing the linear regression analysis, use the <code>matplotlib</code> library to visualize the relationship between the price and the other features as well as the predicted prices for a given set of features.</p>
+<div id="d42dd7eb" class="cell" data-execution_count="3">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Regression analysis</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="co"># </span><span class="al">TODO</span><span class="co">: Create a program that performs linear regression analysis on the dataset.</span></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="co"># YOUR CODE HERE</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
 </section>
-<section id="how-to-get-started" class="level2">
-<h2 class="anchored" data-anchor-id="how-to-get-started">How to get started</h2>
-<ol type="1">
-<li>Install NumPy using <code>pip install numpy</code></li>
-<li>In Thonny, <code>Tools -&gt; Manage Packages...</code></li>
-<li>Import NumPy in a script using <code>import numpy as np</code></li>
-</ol>
-<p>. . .</p>
-<div id="85a126be" class="cell" data-execution_count="1">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> np.array([<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">5</span>])<span class="op">;</span> <span class="bu">type</span>(x)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-display" data-execution_count="1">
-<pre><code>numpy.ndarray</code></pre>
-</div>
-</div>
-<p>. . .</p>
+<section id="dashboards" class="level1">
+<h1>Dashboards</h1>
 <div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -635,50 +538,10 @@ Note
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>You don’t have to use <code>as np</code>. But it is a common practice to do so.</p>
+<p>You will either have to to this excercise or the previous one about regression analysis.</p>
 </div>
 </div>
-</section>
-<section id="creating-arrays" class="level2">
-<h2 class="anchored" data-anchor-id="creating-arrays">Creating Arrays</h2>
-<ul>
-<li>The backbone of Numpy is the so called <code>ndarray</code></li>
-<li>Can be initialized from different data structures:</li>
-</ul>
-<div id="14f6a823" class="cell" data-output-location="fragment" data-execution_count="2">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>array_from_list <span class="op">=</span> np.array([<span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">1</span>])</span>
-<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(array_from_list)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1 1 1 1]</code></pre>
-</div>
-</div>
-<div id="c7633618" class="cell" data-output-location="fragment" data-execution_count="3">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>array_from_tuple <span class="op">=</span> np.array((<span class="dv">2</span>, <span class="dv">2</span>, <span class="dv">2</span>, <span class="dv">2</span>))</span>
-<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(array_from_tuple)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[2 2 2 2]</code></pre>
-</div>
-</div>
-</section>
-<section id="hetergenous-data-types" class="level2">
-<h2 class="anchored" data-anchor-id="hetergenous-data-types">Hetergenous Data Types</h2>
-<ul>
-<li>It is possible to store different data types in a <code>ndarray</code></li>
-</ul>
-<div id="645ed90b" class="cell" data-output-location="fragment" data-execution_count="4">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
-<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>array_different_types <span class="op">=</span> np.array([<span class="st">"s"</span>, <span class="dv">2</span>, <span class="fl">2.0</span>, <span class="st">"i"</span>])</span>
-<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(array_different_types)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>['s' '2' '2.0' 'i']</code></pre>
-</div>
-</div>
-<p>. . .</p>
+<p>In this exercise, you will create a program that visualizes a data set of your choice in a dashboard. For this excercise, you can choose any data set of your interest. The data should be visualized in a dashboard with at least two plots. You can use one of the dashboard libraries we discussed in the lecture.</p>
 <div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -689,285 +552,16 @@ Note
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>But it is mostly not recommended, as it can lead to performance issues. If possible, try to <strong>keep the types homogenous</strong>.</p>
+<p>The dashboard should be programmed in a separate file I can call for evaluation.</p>
 </div>
 </div>
-</section>
-<section id="prefilled-arrays" class="level2">
-<h2 class="anchored" data-anchor-id="prefilled-arrays">Prefilled Arrays</h2>
-<p>Improve performance by <strong>allocating memory upfront</strong></p>
-<ul>
-<li><code>np.zeros(shape)</code>: to create an array of zeros</li>
-<li><code>np.random.rand(shape)</code>: array of random values</li>
-<li><code>np.arange(start, stop, step)</code>: evenly spaced</li>
-<li><code>np.linspace(start, stop, num)</code>: evenly spaced</li>
-</ul>
-<p>. . .</p>
-<div class="callout callout-style-default callout-note callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
+<div id="f74c1e52" class="cell" data-execution_count="4">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Dashboards</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="co"># </span><span class="al">TODO</span><span class="co">: Create a program that visualizes a data set of your choice in a dashboard.</span></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="co"># YOUR CODE HERE</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
-<div class="callout-title-container flex-fill">
-Note
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>The shape refers to the <span class="highlight">size of the array</span>. It can have one or multiple dimensions.</p>
-</div>
-</div>
-</section>
-<section id="dimensions" class="level2">
-<h2 class="anchored" data-anchor-id="dimensions">Dimensions</h2>
-<ul>
-<li>The shape is specified as tuple in these arrays</li>
-<li><code>(2)</code> or <code>2</code> creates a 1-dimensional array (vetor)</li>
-<li><code>(2,2)</code> creates a 2-dimensional array (matrix)</li>
-<li><code>(2,2,2)</code> 3-dimensional array (3rd order tensor)</li>
-<li><code>(2,2,2,2)</code> 4-dimensional array (4th order tensor)</li>
-<li>…</li>
-</ul>
-</section>
-<section id="computations" class="level2">
-<h2 class="anchored" data-anchor-id="computations">Computations</h2>
-<ul>
-<li>We can apply operations to the entire array at once</li>
-<li>This is much faster than applying them element-wise</li>
-</ul>
-<p>. . .</p>
-<div id="e09af5a2" class="cell" data-output-location="fragment" data-execution_count="5">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
-<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> np.array([<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">5</span>])</span>
-<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>x <span class="op">+</span> <span class="dv">1</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-display" data-execution_count="5">
-<pre><code>array([2, 3, 4, 5, 6])</code></pre>
-</div>
-</div>
-</section>
-<section id="arrays-in-action" class="level2">
-<h2 class="anchored" data-anchor-id="arrays-in-action">Arrays in Action</h2>
-<p><span class="task">Task</span>: Practice working with Numpy:</p>
-<div id="cfb7b456" class="cell" data-execution_count="6">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="co"># </span><span class="al">TODO</span><span class="co">: Create a 3-dimensional tensor with filled with zeros</span></span>
-<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Choose the shape of the tensor, but it should have 200 elements</span></span>
-<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Add the number 5 to all values of the tensor</span></span>
-<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Your code here</span></span>
-<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a><span class="cf">assert</span> <span class="bu">sum</span>(tensor) <span class="op">==</span> <span class="dv">1000</span></span>
-<span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-8"><a href="#cb11-8" aria-hidden="true" tabindex="-1"></a><span class="co"># </span><span class="al">TODO</span><span class="co">: Print the shape of the tensor using the method shape()</span></span>
-<span id="cb11-9"><a href="#cb11-9" aria-hidden="true" tabindex="-1"></a><span class="co"># </span><span class="al">TODO</span><span class="co">: Print the dtype of the tensor using the method dtype()</span></span>
-<span id="cb11-10"><a href="#cb11-10" aria-hidden="true" tabindex="-1"></a><span class="co"># </span><span class="al">TODO</span><span class="co">: Print the size of the tensor using the method size()</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</div>
-</section>
-<section id="indexing-and-slicing" class="level2">
-<h2 class="anchored" data-anchor-id="indexing-and-slicing">Indexing and Slicing</h2>
-<ul>
-<li>Accessing and slicing <code>ndarray</code> works as before</li>
-<li>Higher dimension element access with multiple indices</li>
-</ul>
-<p>. . .</p>
-<p><span class="question">Question</span>: What do you expect will be printed?</p>
-<div id="9a09642b" class="cell" data-output-location="fragment" data-execution_count="7">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
-<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> np.random.randint(<span class="dv">0</span>, <span class="dv">10</span>, size<span class="op">=</span>(<span class="dv">3</span>, <span class="dv">3</span>))</span>
-<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(x)<span class="op">;</span> <span class="bu">print</span>(<span class="st">"---"</span>)</span>
-<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(x[<span class="dv">0</span>:<span class="dv">2</span>,<span class="dv">0</span>:<span class="dv">2</span>])</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[[6 3 4]
- [6 7 2]
- [4 4 0]]
----
-[[6 3]
- [6 7]]</code></pre>
-</div>
-</div>
-</section>
-<section id="data-types" class="level2">
-<h2 class="anchored" data-anchor-id="data-types">Data Types</h2>
-<ul>
-<li>Numpy provides <span class="highlight">data types as characters</span></li>
-<li><code>i</code>: integer</li>
-<li><code>b</code>: boolean</li>
-<li><code>f</code>: float</li>
-<li><code>S</code>: string</li>
-<li><code>U</code>: unicode</li>
-</ul>
-<p>. . .</p>
-<div id="287d3bd2" class="cell" data-output-location="fragment" data-execution_count="8">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>string_array <span class="op">=</span> np.array([<span class="st">"Hello"</span>, <span class="st">"World"</span>])<span class="op">;</span> string_array.dtype</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-display" data-execution_count="7">
-<pre><code>dtype('&lt;U5')</code></pre>
-</div>
-</div>
-</section>
-<section id="enforcing-data-types" class="level2">
-<h2 class="anchored" data-anchor-id="enforcing-data-types">Enforcing Data Types</h2>
-<ul>
-<li>We can also <strong>provide</strong> the type when creating arrays</li>
-</ul>
-<p>. . .</p>
-<div id="9c7cf731" class="cell" data-output-location="fragment" data-execution_count="9">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> np.array([<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">5</span>],  dtype <span class="op">=</span> <span class="st">'f'</span>)<span class="op">;</span> <span class="bu">print</span>(x.dtype)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>float32</code></pre>
-</div>
-</div>
-<p>. . .</p>
-<ul>
-<li>Or we can <strong>change</strong> them for existing arrays</li>
-</ul>
-<div id="90fe0016" class="cell" data-output-location="fragment" data-execution_count="10">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb18"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> np.array([<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">5</span>],  dtype <span class="op">=</span> <span class="st">'f'</span>)<span class="op">;</span> <span class="bu">print</span>(x.astype(<span class="st">'i'</span>).dtype)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>int32</code></pre>
-</div>
-</div>
-<p>. . .</p>
-<div class="callout callout-style-default callout-note callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Note
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>Note, how the types are specified as <code>int32</code> and <code>float32</code>.</p>
-</div>
-</div>
-</section>
-<section id="sidenote-bits" class="level2">
-<h2 class="anchored" data-anchor-id="sidenote-bits">Sidenote: Bits</h2>
-<p><span class="question">Question:</span> Do you have an idea what <code>32</code> stands for?</p>
-<p>. . .</p>
-<ul>
-<li>It’s the number of bits used to represent a number
-<ul>
-<li><code>int16</code> is a 16-bit integer</li>
-<li><code>float32</code> is a 32-bit floating point number</li>
-<li><code>int64</code> is a 64-bit integer</li>
-<li><code>float128</code> is a 128-bit floating point number</li>
-</ul></li>
-</ul>
-</section>
-<section id="why-do-bits-matter" class="level2">
-<h2 class="anchored" data-anchor-id="why-do-bits-matter">Why do Bits Matter?</h2>
-<ul>
-<li>They matter, because they can affect:
-<ul>
-<li>the performance of your code</li>
-<li>the precision of your results</li>
-</ul></li>
-</ul>
-<p>. . .</p>
-<ul>
-<li>That’s why numbers can have a limited precision!
-<ul>
-<li>An <code>int8</code> has to be in the range of -128 to 127</li>
-<li>An <code>int16</code> has to be in the range of -32768 to 32767</li>
-</ul></li>
-</ul>
-<p>. . .</p>
-<p><span class="question">Question:</span> Size difference between <code>int16</code> and <code>int64</code>?</p>
-</section>
-<section id="joining-arrays" class="level2">
-<h2 class="anchored" data-anchor-id="joining-arrays">Joining Arrays</h2>
-<ul>
-<li>You can use <code>concatenate</code> two <strong>join arrays</strong></li>
-<li>With <code>axis</code> you can specify the dimension</li>
-<li>In 2-dimensions <code>hstack()</code> and <code>vstack()</code> are easier</li>
-</ul>
-<p>. . .</p>
-<p><span class="question">Question</span>: What do you expect will be printed?</p>
-<div id="f625ad67" class="cell" data-output-location="fragment" data-execution_count="11">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb20"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
-<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a>ones <span class="op">=</span> np.array((<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">1</span>))</span>
-<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a>twos <span class="op">=</span> np.array((<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">1</span>)) <span class="op">*</span><span class="dv">2</span></span>
-<span id="cb20-4"><a href="#cb20-4" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(np.vstack((ones,twos)))<span class="op">;</span> <span class="bu">print</span>(np.hstack((ones,twos)))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[[1 1 1 1]
- [2 2 2 2]]
-[1 1 1 1 2 2 2 2]</code></pre>
-</div>
-</div>
-</section>
-<section id="common-methods" class="level2">
-<h2 class="anchored" data-anchor-id="common-methods">Common Methods</h2>
-<ul>
-<li><code>sort()</code>: sort the array from low to high</li>
-<li><code>reshape()</code>: reshape the array into a new shape</li>
-<li><code>flatten()</code>: flatten the array into a 1D array</li>
-<li><code>squeeze()</code>: squeeze the array to remove 1D entries</li>
-<li><code>transpose()</code>: transpose the array</li>
-</ul>
-<p>. . .</p>
-<div class="callout callout-style-default callout-tip callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Tip
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>Try experiment with these methods, they can make your <span class="highlight">work much easier.</span></p>
-</div>
-</div>
-</section>
-<section id="speed-differences-in-action" class="level2">
-<h2 class="anchored" data-anchor-id="speed-differences-in-action">Speed Differences in Action</h2>
-<p><span class="task">Task</span>: Complete the following task to practice with Numpy:</p>
-<div id="c25e9290" class="cell" data-output-location="fragment" data-execution_count="12">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb22"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="co"># </span><span class="al">TODO</span><span class="co">: Create a 2-dimensional matrix with filled with ones of size 1000 x 1000.</span></span>
-<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Afterward, flatten the matrix to a vector and loop over the vector.</span></span>
-<span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a><span class="co"># In each loop iteration, add a random number between 1 and 10000.</span></span>
-<span id="cb22-4"><a href="#cb22-4" aria-hidden="true" tabindex="-1"></a><span class="co"># </span><span class="al">TODO</span><span class="co">: Now, do the same with a list of the same size and fill it with random numbers. </span></span>
-<span id="cb22-5"><a href="#cb22-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Then, sort the list as you have done with the Numpy vector before.</span></span>
-<span id="cb22-6"><a href="#cb22-6" aria-hidden="true" tabindex="-1"></a><span class="co"># You can use the `time` module to compare the runtime of both approaches.</span></span>
-<span id="cb22-7"><a href="#cb22-7" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> time</span>
-<span id="cb22-8"><a href="#cb22-8" aria-hidden="true" tabindex="-1"></a>start <span class="op">=</span> time.time()</span>
-<span id="cb22-9"><a href="#cb22-9" aria-hidden="true" tabindex="-1"></a><span class="co"># Your code here</span></span>
-<span id="cb22-10"><a href="#cb22-10" aria-hidden="true" tabindex="-1"></a>end <span class="op">=</span> time.time()</span>
-<span id="cb22-11"><a href="#cb22-11" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(end <span class="op">-</span> start) <span class="co"># time in seconds</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>1.0013580322265625e-05</code></pre>
-</div>
-</div>
-</section>
-</section>
-<section id="thats-it-for-today" class="level1">
-<h1>That’s it for today!</h1>
-<div class="callout callout-style-default callout-note callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Note
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p><strong>And that’s it for todays lecture!</strong><br>
-You now have the basic knowledge to start working with <span class="highlight">scientific computing</span>.</p>
-</div>
-</div>
-</section>
-<section id="literature" class="level1 title">
-<h1 class="title"><span class="flow">Literature</span></h1>
-<section id="interesting-books" class="level2">
-<h2 class="anchored" data-anchor-id="interesting-books">Interesting Books</h2>
-<ul>
-<li>Downey, A. B. (2024). Think Python: How to think like a computer scientist (Third edition). O’Reilly. <a href="https://greenteapress.com/wp/think-python-3rd-edition/">Link to free online version</a></li>
-<li>Elter, S. (2021). Schrödinger programmiert Python: Das etwas andere Fachbuch (1. Auflage). Rheinwerk Verlag.</li>
-</ul>
-<p>. . .</p>
-<p>For more interesting literature to learn more about Python, take a look at the <a href="../general/literature.html">literature list</a> of this course.</p>
 
 
-</section>
 </section>
 
 </main> <!-- /main -->
@@ -1378,7 +972,7 @@ You now have the basic knowledge to start working with <span class="highlight">s
     </div>   
     <div class="nav-footer-center">
 <p>Programming with Python, Tobias Vlćek<br>CC BY-NC-SA 4.0</p>
-<div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/beyondsimulations/Introduction-to-Python/blob/main/part-07/lecture-scientific.qmd" class="toc-action"><i class="bi bi-github"></i>View source</a></li><li><a href="https://github.com/beyondsimulations/Introduction-to-Python/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div>
+<div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/beyondsimulations/Introduction-to-Python/blob/main/assignments/assignment-2.qmd" class="toc-action"><i class="bi bi-github"></i>View source</a></li><li><a href="https://github.com/beyondsimulations/Introduction-to-Python/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div>
     <div class="nav-footer-right">
       <ul class="footer-items list-unstyled">
     <li class="nav-item compact">
@@ -1408,18 +1002,33 @@ You now have the basic knowledge to start working with <span class="highlight">s
     </div>
   </div>
 </footer>
-<script src="https://cdn.jsdelivr.net/gh/beyondsimulations/web-embedded-chat@main/floating-chat.js"></script>
 <script>
-    new UniversalChatWidget({
-        title: "Python Assistant",
-        apiEndpoint: "https://model-proxy.vlcek-4b4.workers.dev/api",
-        model: "python-programming",
-        userMessageOpacity: 0.5,
-        assistantMessageOpacity: 0.5,
-        position: "bottom-right",
-        windowHeight: 800
-    });
+  window.difyChatbotConfig = {
+    token: 'XCLkkdVV1UtPggWt',
+    baseUrl: 'https://flow.byndsim.com',
+    systemVariables: {
+      // user_id: 'YOU CAN DEFINE USER ID HERE',
+    },
+    containerProps: {
+      style: {
+          backgroundColor: '#ffffff',
+          borderRadius: '0px',
+      },
+    },
+  }
 </script>
+<script src="https://flow.byndsim.com/embed.min.js" id="XCLkkdVV1UtPggWt" defer="">
+</script>
+<style>
+  #dify-chatbot-bubble-button {
+    background-color: #8C3048 !important;
+  }
+  #dify-chatbot-bubble-window {
+    width: 24rem !important;
+    height: 80vh !important;
+    position: fixed !important;
+  }
+</style>
 
 
 
