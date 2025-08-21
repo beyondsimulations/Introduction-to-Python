@@ -6,8 +6,8 @@
 <script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
 <link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
 <link href="../site_libs/quarto-html/light-border.css" rel="stylesheet">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-689fc875c3a293fcb1b951c2696ee1e3.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
-  <meta name="generator" content="quarto-1.7.23">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-576b9f41c70a4567257a401afe658f5d.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
+  <meta name="generator" content="quarto-1.8.19">
 
   <meta name="author" content="Dr.&nbsp;Tobias Vlćek">
   <title>Programming with Python – Lecture IV - Handling Data in more than one Dimension</title>
@@ -97,7 +97,7 @@
     code span.vs { color: #da4453; } /* VerbatimString */
     code span.wa { color: #da4453; } /* Warning */
   </style>
-  <link rel="stylesheet" href="../site_libs/revealjs/dist/theme/quarto-4ec49d2af0ea0cf95f3338391b2ebc1a.css">
+  <link rel="stylesheet" href="../site_libs/revealjs/dist/theme/quarto-75783f539da56c810846ce7437e215be.css">
   <link href="../site_libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
   <link href="../site_libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
   <link href="../site_libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
@@ -225,10 +225,10 @@ Dr.&nbsp;Tobias Vlćek
 </ul>
 <div class="fragment">
 <div id="401202df" class="cell" data-execution_count="1">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a></a><span class="kw">def</span> greet(name):</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a></a><span class="kw">def</span> greet(name):</span>
 <span id="cb1-2"><a></a>    <span class="cf">return</span> <span class="ss">f"Welcome to this lecture, </span><span class="sc">{</span>name<span class="sc">}</span><span class="ss">!"</span></span>
 <span id="cb1-3"><a></a></span>
-<span id="cb1-4"><a></a><span class="bu">print</span>(greet(<span class="st">"Students"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb1-4"><a></a><span class="bu">print</span>(greet(<span class="st">"Students"</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <div class="cell fragment" data-execution_count="1">
 <div class="cell-output cell-output-stdout">
@@ -247,11 +247,11 @@ Dr.&nbsp;Tobias Vlćek
 </ul>
 <div class="fragment">
 <div id="f90a70be" class="cell" data-execution_count="2">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a></a><span class="kw">def</span> greet(name):</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a></a><span class="kw">def</span> greet(name):</span>
 <span id="cb3-2"><a></a>    greeting <span class="op">=</span> <span class="ss">f"Welcome to this lecture, </span><span class="sc">{</span>name<span class="sc">}</span><span class="ss">!"</span></span>
 <span id="cb3-3"><a></a>    <span class="cf">return</span> greeting</span>
 <span id="cb3-4"><a></a></span>
-<span id="cb3-5"><a></a><span class="bu">print</span>(greeting) <span class="co"># This will cause an error</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb3-5"><a></a><span class="bu">print</span>(greeting) <span class="co"># This will cause an error</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p><span class="question">&gt;Question:</span> Why does this cause an error?</p>
 </div>
@@ -265,7 +265,7 @@ Dr.&nbsp;Tobias Vlćek
 </ul>
 <div class="fragment">
 <div id="35cb37f9" class="cell" data-execution_count="3">
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a></a><span class="kw">class</span> Lectures:  </span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a></a><span class="kw">class</span> Lectures:  </span>
 <span id="cb4-2"><a></a>    <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>, name, length_minutes):</span>
 <span id="cb4-3"><a></a>        <span class="va">self</span>.name <span class="op">=</span> name</span>
 <span id="cb4-4"><a></a>        <span class="va">self</span>.length <span class="op">=</span> length_minutes</span>
@@ -274,7 +274,7 @@ Dr.&nbsp;Tobias Vlćek
 <span id="cb4-7"><a></a>        <span class="cf">return</span> <span class="ss">f"Lecture '</span><span class="sc">{</span><span class="va">self</span><span class="sc">.</span>name<span class="sc">}</span><span class="ss">' is </span><span class="sc">{</span><span class="va">self</span><span class="sc">.</span>length<span class="sc">}</span><span class="ss"> minutes long!"</span></span>
 <span id="cb4-8"><a></a></span>
 <span id="cb4-9"><a></a>lecture_4 <span class="op">=</span> Lectures(<span class="st">"4. Data in more than one dimension"</span>, <span class="dv">90</span>)</span>
-<span id="cb4-10"><a></a><span class="bu">print</span>(lecture_4.duration())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb4-10"><a></a><span class="bu">print</span>(lecture_4.duration())</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <div class="cell fragment" data-execution_count="3">
 <div class="cell-output cell-output-stdout">
@@ -298,8 +298,8 @@ Dr.&nbsp;Tobias Vlćek
 </ul>
 <div class="fragment">
 <div id="d63a2e45" class="cell" data-execution_count="4">
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a></a>my_tuple <span class="op">=</span> (<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">5</span>)</span>
-<span id="cb6-2"><a></a><span class="bu">print</span>(my_tuple)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a></a>my_tuple <span class="op">=</span> (<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">5</span>)</span>
+<span id="cb6-2"><a></a><span class="bu">print</span>(my_tuple)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <div class="cell fragment" data-execution_count="4">
 <div class="cell-output cell-output-stdout">
@@ -319,10 +319,10 @@ Dr.&nbsp;Tobias Vlćek
 <div class="fragment">
 <p><span class="question">&gt;Question:</span> What will the following code print?</p>
 <div id="8fd77f2a" class="cell" data-execution_count="5">
-<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a></a>my_tuple <span class="op">=</span> (<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>)    </span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a></a>my_tuple <span class="op">=</span> (<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>)    </span>
 <span id="cb8-2"><a></a><span class="bu">print</span>(my_tuple[<span class="dv">1</span>:<span class="dv">3</span>])</span>
 <span id="cb8-3"><a></a><span class="bu">print</span>(my_tuple <span class="op">+</span> (<span class="dv">4</span>, <span class="dv">5</span>, <span class="dv">6</span>))</span>
-<span id="cb8-4"><a></a><span class="bu">print</span>(my_tuple <span class="op">*</span> <span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb8-4"><a></a><span class="bu">print</span>(my_tuple <span class="op">*</span> <span class="dv">2</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <div class="cell fragment" data-execution_count="5">
 <div class="cell-output cell-output-stdout">
@@ -345,9 +345,9 @@ Dr.&nbsp;Tobias Vlćek
 <div class="fragment">
 <p><span class="question">&gt;Question:</span> What will this code print?</p>
 <div id="35e85b05" class="cell" data-execution_count="6">
-<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a></a>my_tuple <span class="op">=</span> (<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">2</span>, <span class="dv">4</span>, <span class="dv">2</span>)</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a></a>my_tuple <span class="op">=</span> (<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">2</span>, <span class="dv">4</span>, <span class="dv">2</span>)</span>
 <span id="cb10-2"><a></a><span class="bu">print</span>(my_tuple.count(<span class="dv">2</span>))</span>
-<span id="cb10-3"><a></a><span class="bu">print</span>(my_tuple.index(<span class="dv">3</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb10-3"><a></a><span class="bu">print</span>(my_tuple.index(<span class="dv">3</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <div class="cell fragment" data-execution_count="6">
 <div class="cell-output cell-output-stdout">
@@ -363,8 +363,8 @@ Dr.&nbsp;Tobias Vlćek
 <li>Tuples can contain elements of <span class="highlight">different data types</span></li>
 </ul>
 <div id="198d411d" class="cell" data-execution_count="7">
-<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a></a>my_tuple <span class="op">=</span> (<span class="st">"Peter"</span>, <span class="dv">25</span>, <span class="st">"Hamburg"</span>)</span>
-<span id="cb12-2"><a></a><span class="bu">print</span>(my_tuple)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb12"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a></a>my_tuple <span class="op">=</span> (<span class="st">"Peter"</span>, <span class="dv">25</span>, <span class="st">"Hamburg"</span>)</span>
+<span id="cb12-2"><a></a><span class="bu">print</span>(my_tuple)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <div class="cell fragment" data-execution_count="7">
 <div class="cell-output cell-output-stdout">
@@ -373,9 +373,9 @@ Dr.&nbsp;Tobias Vlćek
 </div>
 <div class="fragment">
 <div id="e28e3e70" class="cell" data-execution_count="8">
-<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a></a><span class="co"># This works as well</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb14"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a></a><span class="co"># This works as well</span></span>
 <span id="cb14-2"><a></a>my_tuple <span class="op">=</span> <span class="st">"Peter"</span>, <span class="dv">25</span>, <span class="st">"Hamburg"</span></span>
-<span id="cb14-3"><a></a><span class="bu">print</span>(my_tuple)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb14-3"><a></a><span class="bu">print</span>(my_tuple)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <div class="cell fragment" data-execution_count="8">
 <div class="cell-output cell-output-stdout">
@@ -407,11 +407,11 @@ Dr.&nbsp;Tobias Vlćek
 </ul>
 <div class="fragment">
 <div id="835db2af" class="cell" data-execution_count="9">
-<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a></a><span class="kw">def</span> get_student_info(name, age, city):</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb16"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a></a><span class="kw">def</span> get_student_info(name, age, city):</span>
 <span id="cb16-2"><a></a>    <span class="cf">return</span> name, age, city</span>
 <span id="cb16-3"><a></a></span>
 <span id="cb16-4"><a></a>student_info <span class="op">=</span> get_student_info(<span class="st">"Peter"</span>, <span class="dv">25</span>, <span class="st">"Hamburg"</span>)</span>
-<span id="cb16-5"><a></a><span class="bu">print</span>(student_info)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb16-5"><a></a><span class="bu">print</span>(student_info)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <div class="cell fragment" data-execution_count="9">
 <div class="cell-output cell-output-stdout">
@@ -432,11 +432,11 @@ Dr.&nbsp;Tobias Vlćek
 </ul>
 <div class="fragment">
 <div id="e4fafb90" class="cell" data-execution_count="10">
-<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a></a><span class="kw">def</span> get_student_info(name, age, city):</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb18"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a></a><span class="kw">def</span> get_student_info(name, age, city):</span>
 <span id="cb18-2"><a></a>    <span class="cf">return</span> name, age, city</span>
 <span id="cb18-3"><a></a>name, <span class="op">*</span>rest <span class="op">=</span> get_student_info(<span class="st">"Peter"</span>, <span class="dv">25</span>, <span class="st">"Hamburg"</span>)</span>
 <span id="cb18-4"><a></a><span class="bu">print</span>(<span class="ss">f"Name: </span><span class="sc">{</span>name<span class="sc">}</span><span class="ss">"</span>)</span>
-<span id="cb18-5"><a></a><span class="bu">print</span>(<span class="ss">f"Other info: </span><span class="sc">{</span>rest<span class="sc">}</span><span class="ss">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb18-5"><a></a><span class="bu">print</span>(<span class="ss">f"Other info: </span><span class="sc">{</span>rest<span class="sc">}</span><span class="ss">"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <div class="cell fragment" data-execution_count="10">
 <div class="cell-output cell-output-stdout">
@@ -477,8 +477,8 @@ Other info: [25, 'Hamburg']</code></pre>
 </ul>
 <div class="fragment">
 <div id="638cc30d" class="cell" data-execution_count="11">
-<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a></a>my_list <span class="op">=</span> [<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">5</span>]</span>
-<span id="cb20-2"><a></a><span class="bu">print</span>(my_list)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb20"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a></a>my_list <span class="op">=</span> [<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">5</span>]</span>
+<span id="cb20-2"><a></a><span class="bu">print</span>(my_list)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <div class="cell fragment" data-execution_count="11">
 <div class="cell-output cell-output-stdout">
@@ -511,8 +511,8 @@ Other info: [25, 'Hamburg']</code></pre>
 <h2>Lists in Action</h2>
 <p><span class="task">&gt;Task:</span> Solve the following problem using lists:</p>
 <div id="a265e13c" class="cell" data-execution_count="12">
-<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a></a><span class="co"># Imagine the following shoppping list for this weekend</span></span>
-<span id="cb22-2"><a></a>shopping_list <span class="op">=</span> [<span class="st">"cider"</span>, <span class="st">"beer"</span>, <span class="st">"bread"</span>, <span class="st">"frozen_pizza"</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb22"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a></a><span class="co"># Imagine the following shoppping list for this weekend</span></span>
+<span id="cb22-2"><a></a>shopping_list <span class="op">=</span> [<span class="st">"cider"</span>, <span class="st">"beer"</span>, <span class="st">"bread"</span>, <span class="st">"frozen_pizza"</span>]</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <div class="fragment">
 <ul>
@@ -554,8 +554,8 @@ Other info: [25, 'Hamburg']</code></pre>
 </ul>
 <div class="fragment">
 <div id="51d4b4fa" class="cell" data-execution_count="13">
-<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a></a>my_set <span class="op">=</span> {<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">2</span>, <span class="dv">5</span>, <span class="dv">5</span>}</span>
-<span id="cb23-2"><a></a><span class="bu">print</span>(my_set)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb23"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a></a>my_set <span class="op">=</span> {<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">2</span>, <span class="dv">5</span>, <span class="dv">5</span>}</span>
+<span id="cb23-2"><a></a><span class="bu">print</span>(my_set)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <div class="cell fragment" data-execution_count="13">
 <div class="cell-output cell-output-stdout">
@@ -608,9 +608,9 @@ Other info: [25, 'Hamburg']</code></pre>
 <h2>Sets in Action</h2>
 <p><span class="task">&gt;Task:</span> Solve the following problem using sets:</p>
 <div id="b68249f0" class="cell" data-execution_count="14">
-<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb25-1"><a></a><span class="co"># You have a list of friends from two different groups</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb25"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb25-1"><a></a><span class="co"># You have a list of friends from two different groups</span></span>
 <span id="cb25-2"><a></a>friends_group_1 <span class="op">=</span> [<span class="st">"Neo"</span>, <span class="st">"Morpheus"</span>, <span class="st">"Trinity"</span>, <span class="st">"Cypher"</span>]</span>
-<span id="cb25-3"><a></a>friends_group_2 <span class="op">=</span> [ <span class="st">"Smith"</span>, <span class="st">"Apoc"</span>, <span class="st">"Cypher"</span>, <span class="st">"Morpheus"</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb25-3"><a></a>friends_group_2 <span class="op">=</span> [ <span class="st">"Smith"</span>, <span class="st">"Apoc"</span>, <span class="st">"Cypher"</span>, <span class="st">"Morpheus"</span>]</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <div class="fragment">
 <ul>
@@ -653,8 +653,8 @@ Other info: [25, 'Hamburg']</code></pre>
 </ul>
 <div class="fragment">
 <div id="1cf5a868" class="cell" data-execution_count="15">
-<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb26-1"><a></a>who_am_i <span class="op">=</span> {<span class="st">"name"</span>: <span class="st">"Tobias"</span>, <span class="st">"age"</span>: <span class="dv">30</span>, <span class="st">"city"</span>: <span class="st">"Hamburg"</span>}</span>
-<span id="cb26-2"><a></a><span class="bu">print</span>(who_am_i)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb26"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb26-1"><a></a>who_am_i <span class="op">=</span> {<span class="st">"name"</span>: <span class="st">"Tobias"</span>, <span class="st">"age"</span>: <span class="dv">30</span>, <span class="st">"city"</span>: <span class="st">"Hamburg"</span>}</span>
+<span id="cb26-2"><a></a><span class="bu">print</span>(who_am_i)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <div class="cell fragment" data-execution_count="15">
 <div class="cell-output cell-output-stdout">
@@ -671,8 +671,8 @@ Other info: [25, 'Hamburg']</code></pre>
 </ul>
 <div class="fragment">
 <div id="69b659bd" class="cell" data-execution_count="16">
-<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb28-1"><a></a>who_am_i <span class="op">=</span> {<span class="st">"name"</span>: <span class="st">"Tobias"</span>, <span class="st">"age"</span>: <span class="dv">30</span>, <span class="st">"city"</span>: <span class="st">"Hamburg"</span>}</span>
-<span id="cb28-2"><a></a><span class="bu">print</span>(who_am_i[<span class="st">"name"</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb28"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb28-1"><a></a>who_am_i <span class="op">=</span> {<span class="st">"name"</span>: <span class="st">"Tobias"</span>, <span class="st">"age"</span>: <span class="dv">30</span>, <span class="st">"city"</span>: <span class="st">"Hamburg"</span>}</span>
+<span id="cb28-2"><a></a><span class="bu">print</span>(who_am_i[<span class="st">"name"</span>])</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <div class="cell fragment" data-execution_count="16">
 <div class="cell-output cell-output-stdout">
@@ -711,8 +711,8 @@ Other info: [25, 'Hamburg']</code></pre>
 <h2>Dictionaries in Action</h2>
 <p><span class="task">&gt;Task:</span> Solve the following problem using dictionaries:</p>
 <div id="e56fd0a6" class="cell" data-execution_count="17">
-<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb30-1"><a></a><span class="co"># Create a dictionary with the following information about yourself: name, age, city</span></span>
-<span id="cb30-2"><a></a>i_am <span class="op">=</span> {}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb30"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb30-1"><a></a><span class="co"># Create a dictionary with the following information about yourself: name, age, city</span></span>
+<span id="cb30-2"><a></a>i_am <span class="op">=</span> {}</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <div class="fragment">
 <ul>
@@ -786,7 +786,7 @@ Other info: [25, 'Hamburg']</code></pre>
 <div id="bf6cfe57" class="cell" data-execution_count="18">
 <details class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb31-1"><a></a><span class="im">import</span> timeit</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb31"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb31-1"><a></a><span class="im">import</span> timeit</span>
 <span id="cb31-2"><a></a></span>
 <span id="cb31-3"><a></a><span class="co"># Number of elements in each data structure</span></span>
 <span id="cb31-4"><a></a>n <span class="op">=</span> <span class="dv">10000000</span></span>
@@ -813,7 +813,7 @@ Other info: [25, 'Hamburg']</code></pre>
 <span id="cb31-25"><a></a>    time_taken <span class="op">=</span> timeit.timeit(stmt, setup<span class="op">=</span>setup, number<span class="op">=</span><span class="dv">1</span>)</span>
 <span id="cb31-26"><a></a>    <span class="bu">print</span>(<span class="ss">f"</span><span class="sc">{</span>name<span class="sc">:&lt;10}</span><span class="ss">: </span><span class="sc">{</span>time_taken<span class="sc">:.8f}</span><span class="ss">"</span>)</span>
 <span id="cb31-27"><a></a><span class="bu">print</span>(<span class="st">"-"</span> <span class="op">*</span> <span class="dv">75</span>)</span>
-<span id="cb31-28"><a></a><span class="bu">print</span>(<span class="st">"Note, that theses values are machine dependent and just for illustration!"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb31-28"><a></a><span class="bu">print</span>(<span class="st">"Note, that theses values are machine dependent and just for illustration!"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 </div>
 <div class="cell fragment" data-execution_count="18">
@@ -864,9 +864,9 @@ Note, that theses values are machine dependent and just for illustration!</code>
 </ul>
 <div class="fragment">
 <div id="ef0ac6f0" class="cell" data-execution_count="19">
-<div class="sourceCode cell-code" id="cb33"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb33-1"><a></a>shopping_list <span class="op">=</span> [<span class="st">"cider"</span>, <span class="st">"beer"</span>, <span class="st">"bread"</span>, <span class="st">"frozen_pizza"</span>]</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb33"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb33-1"><a></a>shopping_list <span class="op">=</span> [<span class="st">"cider"</span>, <span class="st">"beer"</span>, <span class="st">"bread"</span>, <span class="st">"frozen_pizza"</span>]</span>
 <span id="cb33-2"><a></a><span class="cf">for</span> item <span class="kw">in</span> shopping_list:</span>
-<span id="cb33-3"><a></a>    <span class="bu">print</span>(item)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb33-3"><a></a>    <span class="bu">print</span>(item)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <div class="cell fragment" data-execution_count="19">
 <div class="cell-output cell-output-stdout">
@@ -879,9 +879,9 @@ frozen_pizza</code></pre>
 </div>
 <div class="fragment">
 <div id="f72758e1" class="cell" data-execution_count="20">
-<div class="sourceCode cell-code" id="cb35"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb35-1"><a></a>who_am_i <span class="op">=</span> {<span class="st">"name"</span>: <span class="st">"Tobias"</span>, <span class="st">"age"</span>: <span class="dv">30</span>, <span class="st">"city"</span>: <span class="st">"Hamburg"</span>}</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb35"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb35-1"><a></a>who_am_i <span class="op">=</span> {<span class="st">"name"</span>: <span class="st">"Tobias"</span>, <span class="st">"age"</span>: <span class="dv">30</span>, <span class="st">"city"</span>: <span class="st">"Hamburg"</span>}</span>
 <span id="cb35-2"><a></a><span class="cf">for</span> key, value <span class="kw">in</span> who_am_i.items():</span>
-<span id="cb35-3"><a></a>    <span class="bu">print</span>(<span class="ss">f"</span><span class="sc">{</span>key<span class="sc">}</span><span class="ss">: </span><span class="sc">{</span>value<span class="sc">}</span><span class="ss">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb35-3"><a></a>    <span class="bu">print</span>(<span class="ss">f"</span><span class="sc">{</span>key<span class="sc">}</span><span class="ss">: </span><span class="sc">{</span>value<span class="sc">}</span><span class="ss">"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <div class="cell fragment" data-execution_count="20">
 <div class="cell-output cell-output-stdout">
@@ -900,11 +900,11 @@ city: Hamburg</code></pre>
 </ul>
 <div class="fragment">
 <div id="a4f036a8" class="cell" data-execution_count="21">
-<div class="sourceCode cell-code" id="cb37"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb37-1"><a></a>normal_list <span class="op">=</span> [<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">5</span>]</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb37"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb37-1"><a></a>normal_list <span class="op">=</span> [<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">5</span>]</span>
 <span id="cb37-2"><a></a>nested_list <span class="op">=</span> [<span class="st">"Hello, World!"</span>, normal_list, (<span class="dv">1</span>,<span class="dv">2</span>)]</span>
 <span id="cb37-3"><a></a></span>
 <span id="cb37-4"><a></a><span class="bu">print</span>(nested_list)</span>
-<span id="cb37-5"><a></a><span class="bu">print</span>(nested_list[<span class="dv">2</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb37-5"><a></a><span class="bu">print</span>(nested_list[<span class="dv">2</span>])</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <div class="cell fragment" data-execution_count="21">
 <div class="cell-output cell-output-stdout">
@@ -944,8 +944,8 @@ city: Hamburg</code></pre>
 </ul>
 <div class="fragment">
 <div id="ce80b757" class="cell" data-execution_count="22">
-<div class="sourceCode cell-code" id="cb39"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb39-1"><a></a>name <span class="op">=</span> <span class="bu">input</span>(<span class="st">"Please enter your name: "</span>)    </span>
-<span id="cb39-2"><a></a><span class="bu">print</span>(<span class="ss">f"Hello, </span><span class="sc">{</span>name<span class="sc">}</span><span class="ss">!"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb39"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb39-1"><a></a>name <span class="op">=</span> <span class="bu">input</span>(<span class="st">"Please enter your name: "</span>)    </span>
+<span id="cb39-2"><a></a><span class="bu">print</span>(<span class="ss">f"Hello, </span><span class="sc">{</span>name<span class="sc">}</span><span class="ss">!"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </div>
 <div class="fragment">
@@ -984,10 +984,10 @@ city: Hamburg</code></pre>
 <section id="file-handling-in-action" class="slide level2">
 <h2>File Handling in Action</h2>
 <div id="5399c330" class="cell" data-execution_count="23">
-<div class="sourceCode cell-code" id="cb40"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb40-1"><a></a><span class="bu">file</span> <span class="op">=</span> <span class="bu">open</span>(<span class="st">"hi.txt"</span>, <span class="st">"w"</span>) <span class="co"># This creates a file called "hi.txt"</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb40"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb40-1"><a></a><span class="bu">file</span> <span class="op">=</span> <span class="bu">open</span>(<span class="st">"hi.txt"</span>, <span class="st">"w"</span>) <span class="co"># This creates a file called "hi.txt"</span></span>
 <span id="cb40-2"><a></a><span class="bu">file</span>.write(<span class="st">"Hello, World!"</span>) <span class="co"># This writes "Hello, World!" to the file</span></span>
 <span id="cb40-3"><a></a><span class="bu">file</span>.close() <span class="co"># This closes the file</span></span>
-<span id="cb40-4"><a></a><span class="bu">print</span>(<span class="st">"File successfully written"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb40-4"><a></a><span class="bu">print</span>(<span class="st">"File successfully written"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <div class="cell fragment" data-execution_count="23">
 <div class="cell-output cell-output-stdout">
@@ -999,10 +999,10 @@ city: Hamburg</code></pre>
 </div>
 <div class="fragment">
 <div id="a170fbc7" class="cell" data-execution_count="24">
-<div class="sourceCode cell-code" id="cb42"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb42-1"><a></a><span class="bu">file</span> <span class="op">=</span> <span class="bu">open</span>(<span class="st">"hi.txt"</span>, <span class="st">"r"</span>) <span class="co"># This opens the file "hi.txt"</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb42"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb42-1"><a></a><span class="bu">file</span> <span class="op">=</span> <span class="bu">open</span>(<span class="st">"hi.txt"</span>, <span class="st">"r"</span>) <span class="co"># This opens the file "hi.txt"</span></span>
 <span id="cb42-2"><a></a>content <span class="op">=</span> <span class="bu">file</span>.read() <span class="co"># This reads the content of the file</span></span>
 <span id="cb42-3"><a></a><span class="bu">file</span>.close() <span class="co"># This closes the file</span></span>
-<span id="cb42-4"><a></a><span class="bu">print</span>(content) <span class="co"># This prints the content of the file</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb42-4"><a></a><span class="bu">print</span>(content) <span class="co"># This prints the content of the file</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <div class="cell fragment" data-execution_count="24">
 <div class="cell-output cell-output-stdout">
@@ -1034,10 +1034,10 @@ city: Hamburg</code></pre>
 <li>It’s a good practice to use it when working with files</li>
 </ul>
 <div id="dde484fd" class="cell" data-execution_count="25">
-<div class="sourceCode cell-code" id="cb44"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb44-1"><a></a><span class="cf">with</span> <span class="bu">open</span>(<span class="st">"hi_again.txt"</span>, <span class="st">"w"</span>) <span class="im">as</span> <span class="bu">file</span>:</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb44"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb44-1"><a></a><span class="cf">with</span> <span class="bu">open</span>(<span class="st">"hi_again.txt"</span>, <span class="st">"w"</span>) <span class="im">as</span> <span class="bu">file</span>:</span>
 <span id="cb44-2"><a></a>    <span class="bu">file</span>.write(<span class="st">"Hello again, World!"</span>)</span>
 <span id="cb44-3"><a></a></span>
-<span id="cb44-4"><a></a><span class="bu">print</span>(<span class="st">"File successfully written"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb44-4"><a></a><span class="bu">print</span>(<span class="st">"File successfully written"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <div class="cell fragment" data-execution_count="25">
 <div class="cell-output cell-output-stdout">
@@ -1290,7 +1290,7 @@ We now have covered the basics of tuples, sets, lists and dictionaries as well a
         margin: 0.1,
 
         math: {
-          mathjax: 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/MathJax.js',
+          mathjax: 'https://cdn.jsdelivr.net/npm/mathjax@2.7.9/MathJax.js',
           config: 'TeX-AMS_HTML-full',
           tex2jax: {
             inlineMath: [['\\(','\\)']],

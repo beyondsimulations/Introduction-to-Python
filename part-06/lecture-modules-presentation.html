@@ -6,8 +6,8 @@
 <script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
 <link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
 <link href="../site_libs/quarto-html/light-border.css" rel="stylesheet">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-226bd0f977fa82dfae4534cac220d79a.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
-  <meta name="generator" content="quarto-1.7.23">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-46eeb4c476de49ef7df495821a6125d9.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
+  <meta name="generator" content="quarto-1.8.19">
 
   <meta name="author" content="Dr.&nbsp;Tobias Vlćek">
   <title>Programming with Python – Lecture VI - Using Modules and Packages</title>
@@ -95,7 +95,7 @@
     code span.vs { color: #20794d; } /* VerbatimString */
     code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   </style>
-  <link rel="stylesheet" href="../site_libs/revealjs/dist/theme/quarto-38e4668cf1c002d2b8546313ddac9881.css">
+  <link rel="stylesheet" href="../site_libs/revealjs/dist/theme/quarto-3880509b7154f37e3029810125150c9a.css">
   <link href="../site_libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
   <link href="../site_libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
   <link href="../site_libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
@@ -221,7 +221,7 @@ Dr.&nbsp;Tobias Vlćek
 </ul>
 <div class="fragment">
 <div id="733c47d9" class="cell" data-execution_count="1">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a></a>x <span class="op">=</span> <span class="bu">int</span>(<span class="st">"Hello, World!"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a></a>x <span class="op">=</span> <span class="bu">int</span>(<span class="st">"Hello, World!"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </div>
 <div class="fragment">
@@ -236,7 +236,7 @@ Dr.&nbsp;Tobias Vlćek
 <li><code>except</code> block contains code executed if an exception occurs</li>
 </ul>
 <div class="fragment">
-<div class="sourceCode" id="cb2"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a></a><span class="cf">try</span>:</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a></a><span class="cf">try</span>:</span>
 <span id="cb2-2"><a></a>    <span class="co"># Code that might raise an exception</span></span>
 <span id="cb2-3"><a></a>    <span class="co"># ...</span></span>
 <span id="cb2-4"><a></a><span class="cf">except</span> ExceptionType <span class="im">as</span> e:</span>
@@ -244,7 +244,7 @@ Dr.&nbsp;Tobias Vlćek
 <span id="cb2-6"><a></a>    <span class="co"># ...</span></span>
 <span id="cb2-7"><a></a><span class="cf">except</span> <span class="pp">Exception</span> <span class="im">as</span> e:</span>
 <span id="cb2-8"><a></a>    <span class="co"># Code to handle any other exceptions</span></span>
-<span id="cb2-9"><a></a>    <span class="co"># ...</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb2-9"><a></a>    <span class="co"># ...</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section>
 <section id="raising-exceptions" class="slide level2">
@@ -256,7 +256,7 @@ Dr.&nbsp;Tobias Vlćek
 </ul>
 <div class="fragment">
 <div id="ffa93e3f" class="cell" data-execution_count="2">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a></a><span class="cf">raise</span> <span class="pp">ValueError</span>(<span class="st">"This is a custom error message"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a></a><span class="cf">raise</span> <span class="pp">ValueError</span>(<span class="st">"This is a custom error message"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </div>
 <div class="fragment">
@@ -284,8 +284,8 @@ Dr.&nbsp;Tobias Vlćek
 </ul>
 <div class="fragment">
 <div id="0a906045" class="cell" data-execution_count="3">
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a></a>x <span class="op">=</span> <span class="op">-</span><span class="dv">1</span></span>
-<span id="cb4-2"><a></a><span class="cf">assert</span> x <span class="op">&gt;</span> <span class="dv">0</span>, <span class="st">"x must be positive"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a></a>x <span class="op">=</span> <span class="op">-</span><span class="dv">1</span></span>
+<span id="cb4-2"><a></a><span class="cf">assert</span> x <span class="op">&gt;</span> <span class="dv">0</span>, <span class="st">"x must be positive"</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </div>
 <div class="fragment">
@@ -338,9 +338,9 @@ Dr.&nbsp;Tobias Vlćek
 <li>They can be imported into other Python scripts</li>
 </ul>
 <div id="e4d3260d" class="cell" data-execution_count="4">
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a></a><span class="co"># The script new_module.py is in the same directory as this script</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a></a><span class="co"># The script new_module.py is in the same directory as this script</span></span>
 <span id="cb5-2"><a></a><span class="im">import</span> new_module <span class="co"># Here we import the module</span></span>
-<span id="cb5-3"><a></a>new_module.my_function() <span class="co"># Here we call the function from the module</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb5-3"><a></a>new_module.my_function() <span class="co"># Here we call the function from the module</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <div class="cell fragment" data-execution_count="4">
 <div class="cell-output cell-output-stdout">
@@ -357,10 +357,10 @@ Dr.&nbsp;Tobias Vlćek
 </ul>
 <div class="fragment">
 <div id="51d436a3" class="cell" data-execution_count="5">
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a></a><span class="co"># Multiple imports from a module are possible as well!</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a></a><span class="co"># Multiple imports from a module are possible as well!</span></span>
 <span id="cb7-2"><a></a><span class="im">from</span> new_module <span class="im">import</span> another_function, yet_another_function</span>
 <span id="cb7-3"><a></a>another_function()</span>
-<span id="cb7-4"><a></a>yet_another_function()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb7-4"><a></a>yet_another_function()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <div class="cell fragment" data-execution_count="5">
 <div class="cell-output cell-output-stdout">
@@ -427,14 +427,14 @@ Hello from yet_another_function!</code></pre>
 <h2>Importing from the Standard Library</h2>
 <p><span class="task">Task:</span> Use Python’s <code>math</code> module to calculate the area of a circle.</p>
 <div id="d0bacf11" class="cell" data-execution_count="6">
-<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a></a><span class="co"># Import the `math` module.</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a></a><span class="co"># Import the `math` module.</span></span>
 <span id="cb9-2"><a></a><span class="co"># Define a function named `calculate_area` that takes the radius `r` as an argument.</span></span>
 <span id="cb9-3"><a></a><span class="co"># Inside the function, use the `math.pi` constant to get the value of π.</span></span>
 <span id="cb9-4"><a></a><span class="co"># Calculate the area in the function and return it.</span></span>
 <span id="cb9-5"><a></a></span>
 <span id="cb9-6"><a></a><span class="co"># Your code here</span></span>
 <span id="cb9-7"><a></a></span>
-<span id="cb9-8"><a></a><span class="cf">assert</span> calculate_area(<span class="dv">5</span>) <span class="op">==</span> <span class="fl">78.53981633974483</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb9-8"><a></a><span class="cf">assert</span> calculate_area(<span class="dv">5</span>) <span class="op">==</span> <span class="fl">78.53981633974483</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <div class="fragment">
 <div class="callout callout-tip callout-titled callout-style-default">
@@ -485,13 +485,13 @@ Hello from yet_another_function!</code></pre>
 <h2>Random Numbers in Action</h2>
 <p><span class="task">Task:</span> Time for a task! Import the <code>random</code> module and create a <span class="highlight">small number guessing game</span> with the following requirements:</p>
 <div id="1328b985" class="cell" data-execution_count="7">
-<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a></a><span class="co"># Generate a random integer between 1 and 10 using randint().</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a></a><span class="co"># Generate a random integer between 1 and 10 using randint().</span></span>
 <span id="cb10-2"><a></a><span class="co"># Ask the user to guess the number with input().</span></span>
 <span id="cb10-3"><a></a><span class="co"># Print whether the guess was correct.</span></span>
 <span id="cb10-4"><a></a><span class="co"># Give a hint if the guess was too high or too low.</span></span>
 <span id="cb10-5"><a></a><span class="co"># Repeat the game until the user guesses the number.</span></span>
 <span id="cb10-6"><a></a></span>
-<span id="cb10-7"><a></a><span class="co"># Your code here</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb10-7"><a></a><span class="co"># Your code here</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <div class="fragment">
 <div class="callout callout-tip callout-titled callout-style-default">
@@ -543,13 +543,13 @@ Hello from yet_another_function!</code></pre>
 </ul>
 <div class="fragment">
 <div id="31ebfdc4" class="cell" data-execution_count="8">
-<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a></a><span class="im">import</span> csv <span class="co"># Import the csv module</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a></a><span class="im">import</span> csv <span class="co"># Import the csv module</span></span>
 <span id="cb11-2"><a></a></span>
 <span id="cb11-3"><a></a><span class="cf">with</span> <span class="bu">open</span>(<span class="st">'secret_message.csv'</span>, <span class="st">'w'</span>) <span class="im">as</span> <span class="bu">file</span>: <span class="co"># Open the file in write mode</span></span>
 <span id="cb11-4"><a></a>    writer <span class="op">=</span> csv.writer(<span class="bu">file</span>) <span class="co"># Create a writer object</span></span>
 <span id="cb11-5"><a></a>    writer.writerow([<span class="st">'Entry'</span>, <span class="st">'Message'</span>]) <span class="co"># Write the header</span></span>
 <span id="cb11-6"><a></a>    writer.writerow([<span class="st">'1'</span>, <span class="st">'Do not open the file'</span>]) <span class="co"># Write the first row</span></span>
-<span id="cb11-7"><a></a>    writer.writerow([<span class="st">'2'</span>, <span class="st">'This is a secret message'</span>]) <span class="co"># Write the second row</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb11-7"><a></a>    writer.writerow([<span class="st">'2'</span>, <span class="st">'This is a secret message'</span>]) <span class="co"># Write the second row</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </div>
 <div class="fragment">
@@ -560,14 +560,14 @@ Hello from yet_another_function!</code></pre>
 <h2>OS and CSV Module in Action</h2>
 <p><span class="task">Task:</span> Time for another task! Do the following:</p>
 <div id="11b3cac6" class="cell" data-execution_count="9">
-<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a></a><span class="co"># First, check if a directory called `module_directory` exists.</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb12"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a></a><span class="co"># First, check if a directory called `module_directory` exists.</span></span>
 <span id="cb12-2"><a></a><span class="co"># If it does not, create it.</span></span>
 <span id="cb12-3"><a></a><span class="co"># Then, list all files in the current directory and save them in a CSV file called `current_files.csv` in the new `module_directory`.</span></span>
 <span id="cb12-4"><a></a></span>
 <span id="cb12-5"><a></a><span class="im">import</span> os</span>
 <span id="cb12-6"><a></a><span class="cf">if</span> <span class="kw">not</span> os.path.exists(<span class="st">'module_directory'</span>):</span>
 <span id="cb12-7"><a></a>    <span class="cf">pass</span></span>
-<span id="cb12-8"><a></a><span class="co"># Your code here</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb12-8"><a></a><span class="co"># Your code here</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section></section>
 <section>
@@ -584,10 +584,10 @@ Hello from yet_another_function!</code></pre>
 </ul>
 <div class="fragment">
 <div id="578414fd" class="cell" data-execution_count="10">
-<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a></a><span class="im">import</span> re</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a></a><span class="im">import</span> re</span>
 <span id="cb13-2"><a></a>pattern <span class="op">=</span> <span class="vs">r'World'</span> <span class="co"># This is the pattern we are searching for</span></span>
 <span id="cb13-3"><a></a>string <span class="op">=</span> <span class="st">'Hello, World!'</span> <span class="co"># This is the string we are searching in</span></span>
-<span id="cb13-4"><a></a><span class="bu">print</span>(re.search(pattern, string)) <span class="co"># This will search for the pattern in the string</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb13-4"><a></a><span class="bu">print</span>(re.search(pattern, string)) <span class="co"># This will search for the pattern in the string</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <div class="cell fragment" data-execution_count="10">
 <div class="cell-output cell-output-stdout">
@@ -614,10 +614,10 @@ Hello from yet_another_function!</code></pre>
 <section id="why-regular-expressions" class="slide level2">
 <h2>Why Regular Expressions?</h2>
 <div id="c3eb489c" class="cell" data-execution_count="11">
-<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a></a><span class="im">import</span> re</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb15"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a></a><span class="im">import</span> re</span>
 <span id="cb15-2"><a></a>pattern <span class="op">=</span> <span class="st">'World'</span> <span class="co"># This is the pattern we are searching for</span></span>
 <span id="cb15-3"><a></a>string <span class="op">=</span> <span class="st">'Hello, World!'</span> <span class="co"># This is the string we are searching in</span></span>
-<span id="cb15-4"><a></a><span class="bu">print</span>(string.find(pattern)) <span class="co"># No regular expressions here!</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb15-4"><a></a><span class="bu">print</span>(string.find(pattern)) <span class="co"># No regular expressions here!</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <div class="cell fragment" data-execution_count="11">
 <div class="cell-output cell-output-stdout">
@@ -661,13 +661,13 @@ Hello from yet_another_function!</code></pre>
 <h2>Regular Expression in Action</h2>
 <p><span class="task">Task</span>: Replace all occurences of <code>Python</code> by “SECRET”.</p>
 <div id="b53ad262" class="cell" data-execution_count="12">
-<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a></a><span class="im">import</span> re</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb17"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a></a><span class="im">import</span> re</span>
 <span id="cb17-2"><a></a>string <span class="op">=</span> <span class="st">"""</span></span>
 <span id="cb17-3"><a></a><span class="st">Python is a programming language. </span></span>
 <span id="cb17-4"><a></a><span class="st">Python is also a snake. </span></span>
 <span id="cb17-5"><a></a><span class="st">Monty Python was a theater group.</span></span>
 <span id="cb17-6"><a></a><span class="st">"""</span></span>
-<span id="cb17-7"><a></a><span class="co"># Your code here</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb17-7"><a></a><span class="co"># Your code here</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <div class="fragment">
 <div class="callout callout-note callout-titled callout-style-default">
@@ -707,8 +707,8 @@ Hello from yet_another_function!</code></pre>
 </ul>
 <div class="fragment">
 <div id="ceb50c2c" class="cell" data-execution_count="13">
-<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a></a><span class="im">import</span> re</span>
-<span id="cb18-2"><a></a><span class="bu">print</span>(re.findall(<span class="vs">r'</span><span class="dv">\d</span><span class="op">{3}</span><span class="vs">-</span><span class="dv">\d</span><span class="op">{2}</span><span class="vs">-</span><span class="dv">\d</span><span class="op">{4}</span><span class="vs">'</span>, <span class="st">'Here is a phone number: 123-45-6789.'</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb18"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a></a><span class="im">import</span> re</span>
+<span id="cb18-2"><a></a><span class="bu">print</span>(re.findall(<span class="vs">r'</span><span class="dv">\d</span><span class="op">{3}</span><span class="vs">-</span><span class="dv">\d</span><span class="op">{2}</span><span class="vs">-</span><span class="dv">\d</span><span class="op">{4}</span><span class="vs">'</span>, <span class="st">'Here is a phone number: 123-45-6789.'</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <div class="cell fragment" data-execution_count="13">
 <div class="cell-output cell-output-stdout">
@@ -736,13 +736,13 @@ Hello from yet_another_function!</code></pre>
 <h2>Advanced Regular Expressions in Action</h2>
 <p><span class="task">Task:</span> Use regular expressions to extract all dates from the text.</p>
 <div id="b4b4d0a7" class="cell" data-execution_count="14">
-<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a></a>dates <span class="op">=</span> <span class="st">"""</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb20"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a></a>dates <span class="op">=</span> <span class="st">"""</span></span>
 <span id="cb20-2"><a></a><span class="st">On 07-04-1776, the United States declared its independence. Many years later, </span></span>
 <span id="cb20-3"><a></a><span class="st">on 11-09-1989, the Berlin Wall fell. In more recent history, the COVID-19 </span></span>
 <span id="cb20-4"><a></a><span class="st">pandemic was declared a global emergency on 04-11-2020.</span></span>
 <span id="cb20-5"><a></a><span class="st">"""</span></span>
 <span id="cb20-6"><a></a><span class="co"># Try to find all dates in the above text with findall()</span></span>
-<span id="cb20-7"><a></a><span class="co"># Your code here</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb20-7"><a></a><span class="co"># Your code here</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section></section>
 <section>
@@ -787,7 +787,7 @@ Hello from yet_another_function!</code></pre>
 <h2>Packages in Action</h2>
 <p><span class="task">Task:</span> Install the <code>pandas</code> and <code>numpy</code> packages, which are commonly used for data analysis. We will use them together next week!</p>
 <div class="fragment">
-<div class="sourceCode" id="cb21"><pre class="sourceCode numberSource {bash} number-lines code-with-copy"><code class="sourceCode"><span id="cb21-1"><a></a>pip install pandas numpy</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb21"><pre class="sourceCode numberSource {bash} number-lines code-with-copy"><code class="sourceCode"><span id="cb21-1"><a></a>pip install pandas numpy</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <div class="fragment">
 <div class="callout callout-tip callout-titled callout-style-default">
@@ -1051,7 +1051,7 @@ We now have completed the first step into data science in Python. Next week, we 
         margin: 0.1,
 
         math: {
-          mathjax: 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/MathJax.js',
+          mathjax: 'https://cdn.jsdelivr.net/npm/mathjax@2.7.9/MathJax.js',
           config: 'TeX-AMS_HTML-full',
           tex2jax: {
             inlineMath: [['\\(','\\)']],
