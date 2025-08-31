@@ -2,30 +2,11 @@
 title: "Lecture VII - NumPy for Scientific Computing"
 subtitle: "Programming with Python"
 author: "Dr. Tobias Vlćek"
-#institute: "Kühne Logistics University Hamburg - Fall 2024"
-title-slide-attributes:
-    data-background-color: "#FFE0D3"
-
-execute:
-    echo: true
-
+institute: "Kühne Logistics University Hamburg - Fall 2025"
 format:
-    revealjs:
-        theme: [default, ../styles.scss]
-        transition: slide
-        transition-speed: fast
-        highlight-style: arrow
-        code-overflow: wrap
-        slide-number: true
-        code-copy: true
-        code-link: true
-        width: 1152
-        height: 648
-        preview-links: auto
-        footer: " {{< meta title >}} | {{< meta author >}} | [Home](lecture-scientific.qmd)"
-        output-file: lecture-scientific-presentation.html
-    html:
-        theme: [litera, ../styles.scss]
+  revealjs:
+    footer: " {{< meta title >}} | {{< meta author >}} | [Home](lec-07-scientific.qmd)"
+    output-file: lec-01-presentation.html
 ---
 
 # [Quick Recap of the last Lecture]{.flow} {.title}
@@ -182,7 +163,7 @@ The shape refers to the [size of the array]{.highlight}. It can have one or mult
 ```{python}
 #| eval: true
 #| output-location: fragment
-#| 
+#|
 import numpy as np
 x = np.array([1, 2, 3, 4, 5])
 x + 1
@@ -219,7 +200,7 @@ assert sum(tensor) == 1000
 ```{python}
 #| eval: true
 #| output-location: fragment
-#| 
+#|
 import numpy as np
 x = np.random.randint(0, 10, size=(3, 3))
 print(x); print("---")
@@ -240,7 +221,7 @@ print(x[0:2,0:2])
 ```{python}
 #| eval: true
 #| output-location: fragment
-#| 
+#|
 string_array = np.array(["Hello", "World"]); string_array.dtype
 ```
 
@@ -348,7 +329,7 @@ Try experiment with these methods, they can make your [work much easier.]{.highl
 # TODO: Create a 2-dimensional matrix with filled with ones of size 1000 x 1000.
 # Afterward, flatten the matrix to a vector and loop over the vector.
 # In each loop iteration, add a random number between 1 and 10000.
-# TODO: Now, do the same with a list of the same size and fill it with random numbers. 
+# TODO: Now, do the same with a list of the same size and fill it with random numbers.
 # Then, sort the list as you have done with the Numpy vector before.
 # You can use the `time` module to compare the runtime of both approaches.
 import time
@@ -375,4 +356,3 @@ You now have the basic knowledge to start working with [scientific computing]{.h
 . . .
 
 For more interesting literature to learn more about Python, take a look at the [literature list](../general/literature.qmd) of this course.
-

@@ -2,30 +2,11 @@
 title: "Lecture II - Control Structures for Your Code"
 subtitle: "Programming with Python"
 author: "Dr. Tobias Vlćek"
-#institute: "Kühne Logistics University Hamburg - Fall 2024"
-title-slide-attributes:
-    data-background-color: "#FFE0D3"
-
-execute:
-    echo: true
-
+institute: "Kühne Logistics University Hamburg - Fall 2025"
 format:
-    revealjs:
-        theme: [default, ../styles.scss]
-        transition: slide
-        transition-speed: fast
-        highlight-style: arrow
-        code-overflow: wrap
-        width: 1260
-        height: 840
-        slide-number: true
-        code-copy: true
-        code-link: true
-        preview-links: auto
-        footer: " {{< meta title >}} | {{< meta author >}} | [Home](lecture-control.qmd)"
-        output-file: lecture-control-presentation.html
-    html:
-        theme: [litera, ../styles.scss]
+  revealjs:
+    footer: " {{< meta title >}} | {{< meta author >}} | [Home](lec-02-control.qmd)"
+    output-file: lec-01-presentation.html
 ---
 
 # [Quick Recap of the last Lecture]{.flow} {.title}
@@ -40,7 +21,7 @@ format:
 ```{python}
 #| eval: true
 #| output-location: fragment
-#| 
+#|
 # Let's illustrate f-strings with a small example:
 name = "Mr. Smith"
 age = 30
@@ -95,7 +76,7 @@ Modulo
 `/`   \
 `//`  \
 `**`  \
-`%`    
+`%`
 :::
 ::: {.column width="60%"}
 Adds two numbers \
@@ -104,7 +85,7 @@ Multiplies two numbers \
 Floating-point division \
 Integer division \
 Power of \
-Remainder of division 
+Remainder of division
 :::
 :::
 
@@ -257,7 +238,7 @@ Here we chained methods together to perform multiple operations after another in
 string_to_index = "Hello, World!"
 print(string_to_index[0])  # Accessing the first character
 print(string_to_index[-1]) # Accessing the last character
-``` 
+```
 
 ## Slicing
 
@@ -338,11 +319,11 @@ print(lower_number != upper_number) # Inequality
 print(lower_number > upper_number) # Greater than
 print(lower_number < upper_number) # Less than
 print(lower_number >= upper_number) # Greater than or equal to
-print(lower_number <= upper_number) # Less than or equal to 
+print(lower_number <= upper_number) # Less than or equal to
 ```
 
 ## Logical Operators
- 
+
 - Logical operators combine multiple comparison operators
 - Common logical operators: `and`, `or`, `not`
 
@@ -355,7 +336,7 @@ print(lower_number <= upper_number) # Less than or equal to
 #| output-location: fragment
 #| code-line-numbers: 1-2|3|4
 
-lower_number = 2; middle_number = 5; upper_number = 9; 
+lower_number = 2; middle_number = 5; upper_number = 9;
 print(lower_number < middle_number and middle_number < upper_number) # and
 print(lower_number < middle_number or middle_number > upper_number) # or
 print(lower_number == lower_number and not lower_number > middle_number) # not
@@ -368,7 +349,7 @@ Note, that `and` and `or` are evaluated from left to right.
 :::
 
 ## Membership Operators
- 
+
 - Used to check if a value is present in a sequence
 - Common membership operators: `in`, `not in`
 
@@ -556,7 +537,7 @@ Nested control structures through further indentation are allowed as well, we th
 
 for i in range(5):
     print(i)
-``` 
+```
 
 ```{python}
 #| eval: true
@@ -564,7 +545,7 @@ for i in range(5):
 
 for i in range(0, 10, 2):
     print(i)
-``` 
+```
 
 . . .
 
@@ -665,10 +646,8 @@ We now have covered the basics on String methods, Comparisons, conditional state
 
 ::: {.callout-tip}
 Nothing new here, but these are still great books to start with!
-::: 
+:::
 
 . . .
 
 For more interesting literature to learn more about Python, take a look at the [literature list](../general/literature.qmd) of this course.
-
-

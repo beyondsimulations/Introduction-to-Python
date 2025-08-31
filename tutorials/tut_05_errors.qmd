@@ -1,24 +1,6 @@
 ---
 title: "Tutorial V - Handling Errors"
 subtitle: "Programming with Python"
-
-format:
-    html:
-        theme: [litera, ../styles.scss]
-        highlight-style: arrow
-        linkcolor: "#a60000"
-        code-copy: true
-        code-link: true
-        toc: true
-        toc-location: right
-        code-overflow: wrap
-    pdf: 
-        documentclass: report
-        geometry:
-            - margin=1in
-        fontfamily: roboto
-        fontfamilyoptions: sfdefault
-        colorlinks: true
 ---
 
 # Basic exception handling
@@ -75,7 +57,7 @@ def get_valid_username():
     while True:
         try:
             username = input("Please enter a username (no spaces): ")
-            if " " in username: 
+            if " " in username:
                 raise InvalidUsernameError("Username must not contain spaces.")
             return username
         except InvalidUsernameError as e:

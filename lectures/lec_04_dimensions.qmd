@@ -2,32 +2,14 @@
 title: "Lecture IV - Handling Data in more than one Dimension"
 subtitle: "Programming with Python"
 author: "Dr. Tobias Vlćek"
-#institute: "Kühne Logistics University Hamburg - Fall 2024"
-title-slide-attributes:
-    data-background-color: "#FFE0D3"
-
-execute:
-    echo: true
-
+institute: "Kühne Logistics University Hamburg - Fall 2025"
 format:
-    revealjs:
-        theme: [default, ../styles.scss]
-        transition: slide
-        transition-speed: fast
-        highlight-style: breezedark
-        width: 1260
-        height: 840
-        slide-number: true
-        code-copy: true
-        code-link: true
-        preview-links: auto
-        footer: " {{< meta title >}} | {{< meta author >}} | [Home](lecture-dimensions.qmd)"
-        output-file: lecture-dimensions-presentation.html
-    html:
-        theme: [litera, ../styles.scss]
+  revealjs:
+    footer: " {{< meta title >}} | {{< meta author >}} | [Home](lec-04-dimensions.qmd)"
+    output-file: lec-01-presentation.html
 ---
 
-# [Quick Recap of the last Lecture]{.flow} {.title} 
+# [Quick Recap of the last Lecture]{.flow} {.title}
 
 
 ## Functions
@@ -82,7 +64,7 @@ print(greeting) # This will cause an error
 #| eval: true
 #| output-location: fragment
 
-class Lectures:  
+class Lectures:
     def __init__(self, name, length_minutes):
         self.name = name
         self.length = length_minutes
@@ -105,13 +87,13 @@ print(lecture_4.duration())
 
 . . .
 
-```{python} 
+```{python}
 #| eval: true
 #| output-location: fragment
 
 my_tuple = (1, 2, 3, 4, 5)
 print(my_tuple)
-``` 
+```
 
 ## Tuple Operations
 
@@ -124,11 +106,11 @@ print(my_tuple)
 
 [>Question:]{.question} What will the following code print?
 
-```{python} 
+```{python}
 #| eval: true
 #| output-location: fragment
 
-my_tuple = (1, 2, 3)    
+my_tuple = (1, 2, 3)
 print(my_tuple[1:3])
 print(my_tuple + (4, 5, 6))
 print(my_tuple * 2)
@@ -144,7 +126,7 @@ print(my_tuple * 2)
 
 [>Question:]{.question} What will this code print?
 
-```{python} 
+```{python}
 #| eval: true
 #| output-location: fragment
 
@@ -157,23 +139,23 @@ print(my_tuple.index(3))
 
 - Tuples can contain elements of [different data types]{.highlight}
 
-```{python} 
+```{python}
 #| eval: true
 #| output-location: fragment
 
 my_tuple = ("Peter", 25, "Hamburg")
 print(my_tuple)
-``` 
+```
 
 . . .
 
-```{python} 
+```{python}
 #| eval: true
 #| output-location: fragment
 # This works as well
 my_tuple = "Peter", 25, "Hamburg"
 print(my_tuple)
-``` 
+```
 
 . . .
 
@@ -189,7 +171,7 @@ We can also create tuples by listing the elements separated by commas.
 
 . . .
 
-```{python} 
+```{python}
 #| eval: true
 #| output-location: fragment
 
@@ -213,7 +195,7 @@ print(student_info)
 
 . . .
 
-```{python} 
+```{python}
 #| eval: true
 #| output-location: fragment
 
@@ -243,13 +225,13 @@ The output is positional, so we have to be careful with the order of the variabl
 
 . . .
 
-```{python} 
+```{python}
 #| eval: true
 #| output-location: fragment
 
 my_list = [1, 2, 3, 4, 5]
 print(my_list)
-``` 
+```
 
 . . .
 
@@ -262,7 +244,7 @@ print(my_list)
     - `append(x)`: Adds an element `x` to the end of the list
     - `insert(i, x)`: Inserts an element `x` at index `i`
     - `remove(x)`: Removes the first occurrence of element `x`
-    - `index(x)`: Returns the index of the first occurrence of `x`  
+    - `index(x)`: Returns the index of the first occurrence of `x`
     - `pop([i])`: Removes the element at index `i` and returns it
     - `sort()`: Sorts the list in ascending order
     - `reverse()`: Reverses the list
@@ -275,7 +257,7 @@ print(my_list)
 
 ```{python}
 #| eval: false
-#| 
+#|
 # Imagine the following shoppping list for this weekend
 shopping_list = ["cider", "beer", "bread", "frozen_pizza"]
 ```
@@ -285,7 +267,7 @@ shopping_list = ["cider", "beer", "bread", "frozen_pizza"]
 - First, add some apples to the list for a healthy option
 - Next, remove the cider as you already have some at home
 - Sort all items in the list alphabetically
-- Print each item of the list on a new line 
+- Print each item of the list on a new line
 
 . . .
 
@@ -306,7 +288,7 @@ You can use the methods and loops we learned so far to solve the problem.
 
 . . .
 
-```{python} 
+```{python}
 #| eval: true
 #| output-location: fragment
 
@@ -342,7 +324,7 @@ There are more methods for sets! If you are working intensively with sets, keep 
 
 ```{python}
 #| eval: false
-#| 
+#|
 # You have a list of friends from two different groups
 friends_group_1 = ["Neo", "Morpheus", "Trinity", "Cypher"]
 friends_group_2 = [ "Smith", "Apoc", "Cypher", "Morpheus"]
@@ -352,7 +334,7 @@ friends_group_2 = [ "Smith", "Apoc", "Cypher", "Morpheus"]
 - First, find the mutual friends in both groups
 - Then create a new set of all friends from both groups
 - Count the number of friends in total
-- Print each item of the set on a new line 
+- Print each item of the set on a new line
 
 . . .
 
@@ -373,7 +355,7 @@ Notice, there is a small error in the given code that you have to fix.
 
 . . .
 
-```{python} 
+```{python}
 #| eval: true
 #| output-location: fragment
 
@@ -388,7 +370,7 @@ print(who_am_i)
 
 . . .
 
-```{python} 
+```{python}
 #| eval: true
 #| output-location: fragment
 
@@ -544,7 +526,7 @@ for key, value in who_am_i.items():
 - We can **nest data structures** within each other
 - This is useful if we want to store more complex data
 
-. . . 
+. . .
 
 ```{python}
 #| eval: true
@@ -577,7 +559,7 @@ You can also nest lists within lists within lists, etc.
 ```{python}
 #| eval: false
 
-name = input("Please enter your name: ")    
+name = input("Please enter your name: ")
 print(f"Hello, {name}!")
 ```
 . . .
@@ -602,7 +584,7 @@ Thus, we have already worked with I/O in Python!
 ```{python}
 #| eval: true
 #| output-location: fragment
-#| 
+#|
 file = open("hi.txt", "w") # This creates a file called "hi.txt"
 file.write("Hello, World!") # This writes "Hello, World!" to the file
 file.close() # This closes the file
@@ -661,7 +643,7 @@ print("File successfully written")
 
 :::{.callout-note}
 **And that's it for todays lecture!**\
-We now have covered the basics of tuples, sets, lists and dictionaries as well as some basic file handling. For now, just remember that advanced reading and writing is possible and that there are libraries that help with this. 
+We now have covered the basics of tuples, sets, lists and dictionaries as well as some basic file handling. For now, just remember that advanced reading and writing is possible and that there are libraries that help with this.
 :::
 
 [Literature]{.flow} {.title}
@@ -675,9 +657,8 @@ We now have covered the basics of tuples, sets, lists and dictionaries as well a
 
 ::: {.callout-tip}
 Nothing new here, but these are still great books!
-::: 
+:::
 
 . . .
 
 For more interesting literature to learn more about Python, take a look at the [literature list](../general/literature.qmd) of this course.
-

@@ -2,30 +2,11 @@
 title: "Lecture IX - Data Visualization"
 subtitle: "Programming with Python"
 author: "Dr. Tobias Vlćek"
-#institute: "Kühne Logistics University Hamburg - Fall 2024"
-title-slide-attributes:
-    data-background-color: "#FFE0D3"
-
-execute:
-    echo: true
-
+institute: "Kühne Logistics University Hamburg - Fall 2025"
 format:
-    revealjs:
-        theme: [default, ../styles.scss]
-        transition: slide
-        transition-speed: fast
-        highlight-style: arrow
-        code-overflow: wrap
-        slide-number: true
-        code-copy: true
-        code-link: true
-        width: 1152
-        height: 648
-        preview-links: auto
-        footer: " {{< meta title >}} | {{< meta author >}} | [Home](lecture-plotting.qmd)"
-        output-file: lecture-scientific-presentation.html
-    html:
-        theme: [litera, ../styles.scss]
+  revealjs:
+    footer: " {{< meta title >}} | {{< meta author >}} | [Home](lec-09-plotting.qmd)"
+    output-file: lec-01-presentation.html
 ---
 
 # [Quick Recap of the last Lecture]{.flow} {.title}
@@ -231,7 +212,7 @@ plt.title('Pie Chart')
 
 # Donut chart (right subplot)
 plt.subplot(122)
-plt.pie(sizes, labels=labels, autopct='%1.1f%%', 
+plt.pie(sizes, labels=labels, autopct='%1.1f%%',
         pctdistance=0.7, labeldistance=1.1,
         wedgeprops=dict(width=0.5, edgecolor='white'))
 plt.title('Donut Chart')
@@ -284,7 +265,7 @@ plt.figure(figsize=(12, 3))
 plt.subplot(121)
 G = nx.random_geometric_graph(15, 0.3)  # Reduced nodes for clarity
 pos = nx.spring_layout(G, k=1, seed=42)  # Better layout with fixed seed
-nx.draw_networkx_nodes(G, pos, 
+nx.draw_networkx_nodes(G, pos,
                       node_color='lightblue',
                       node_size=500,
                       edgecolors='navy',
@@ -430,7 +411,7 @@ plt.show()
 ## Customizing Plots
 
 - **Line Types**: with `ls=`
-  - `-`, `--`, `-.`, `:`, `None`; 
+  - `-`, `--`, `-.`, `:`, `None`;
 - **Colors**: with `color=`
   - `r`, `g`, `b`, `c`, `m`, `y`, `k`, . . .
 - **Markers**: with `marker=`
@@ -442,10 +423,10 @@ plt.show()
 ```{python}
 #| output-location: slide
 plt.plot(
-    [1, 2, 3, 4], 
-    [10, 20, 25, 30], 
-    color='red', 
-    linestyle='--', 
+    [1, 2, 3, 4],
+    [10, 20, 25, 30],
+    color='red',
+    linestyle='--',
     marker='o')
 plt.show()
 ```
@@ -459,11 +440,11 @@ plt.show()
 ```{python}
 #| output-location: slide
 plt.plot(
-    [1, 2, 3, 4], 
-    [10, 20, 25, 30], 
-    color='blue', 
-    linestyle=':', 
-    marker='s', 
+    [1, 2, 3, 4],
+    [10, 20, 25, 30],
+    color='blue',
+    linestyle=':',
+    marker='s',
     label='Blue Dotted Line with Squares')
 plt.legend()
 plt.show()
@@ -474,18 +455,18 @@ plt.show()
 ```{python}
 #| output-location: slide
 plt.plot(
-    [1, 2, 3, 4], 
-    [8, 22, 21, 36], 
-    color='red', 
-    linestyle='--', 
-    marker='o', 
+    [1, 2, 3, 4],
+    [8, 22, 21, 36],
+    color='red',
+    linestyle='--',
+    marker='o',
     label='Red Dashed Line with Circles')
 plt.plot(
-    [1, 2, 3, 4], 
-    [10, 20, 25, 30], 
-    color='blue', 
-    linestyle=':', 
-    marker='s', 
+    [1, 2, 3, 4],
+    [10, 20, 25, 30],
+    color='blue',
+    linestyle=':',
+    marker='s',
     label='Blue Dotted Line with Squares')
 plt.legend()
 plt.show()
@@ -497,17 +478,17 @@ plt.show()
 #| output-location: slide
 plt.figure(figsize=(14, 4))
 plt.scatter(
-    [1, 2, 3, 4], 
-    [8, 22, 21, 36], 
-    color='red', 
-    marker='o', 
+    [1, 2, 3, 4],
+    [8, 22, 21, 36],
+    color='red',
+    marker='o',
     label='Red Circles')
 plt.plot(
-    [1, 2, 3, 4], 
-    [10, 20, 25, 30], 
-    color='blue', 
-    linestyle=':', 
-    marker='s', 
+    [1, 2, 3, 4],
+    [10, 20, 25, 30],
+    color='blue',
+    linestyle=':',
+    marker='s',
     label='Blue Dotted Line with Squares')
 plt.legend()
 plt.show()
@@ -594,7 +575,7 @@ plt.ylabel('Temperature Anomaly (°C)')
 plt.grid(True, linestyle='--', alpha=0.7)
 
 # Set x-axis ticks to show month names
-plt.xticks(range(1, 13), ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 
+plt.xticks(range(1, 13), ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun',
                           'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'])
 
 # Adjust layout to prevent legend cutoff
@@ -609,7 +590,7 @@ import pandas as pd
 import matplotlib.pyplot as plt
 
 # Define correct month order
-month_order = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 
+month_order = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun',
                'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
 
 # Pivot the data and reorder columns
@@ -651,8 +632,8 @@ yearly_means = df.groupby('Year')['Anomaly'].agg(['mean', 'std'])
 plt.figure(figsize=(12, 4))
 
 # Plot mean values as a line
-plt.plot(yearly_means.index, yearly_means['mean'], 
-         color='navy', linewidth=2, marker='o', 
+plt.plot(yearly_means.index, yearly_means['mean'],
+         color='navy', linewidth=2, marker='o',
          label='Mean Temperature Anomaly')
 
 # Add shaded area for standard deviation
@@ -690,33 +671,33 @@ yearly_df = df.groupby('Year')['Anomaly'].mean().reset_index()
 fig, ax = plt.subplots(figsize=(12, 4))
 
 # Create the main line plot
-plt.plot(yearly_df['Year'], yearly_df['Anomaly'], 
-         color='#FF5733', 
-         linewidth=1.5, 
+plt.plot(yearly_df['Year'], yearly_df['Anomaly'],
+         color='#FF5733',
+         linewidth=1.5,
          alpha=0.7)
 
 # Calculate rolling mean on yearly data
 rolling_mean = yearly_df['Anomaly'].rolling(window=10, center=True, min_periods=5).mean()
 plt.plot(yearly_df['Year'], rolling_mean,
-         color='#C70039', 
-         linewidth=2.5, 
+         color='#C70039',
+         linewidth=2.5,
          label='10-year Moving Average')
 
 # Fill between the line and zero
-plt.fill_between(yearly_df['Year'], yearly_df['Anomaly'], 0, 
-                 where=(yearly_df['Anomaly'] >= 0), 
-                 color='#FF5733', 
-                 alpha=0.3, 
+plt.fill_between(yearly_df['Year'], yearly_df['Anomaly'], 0,
+                 where=(yearly_df['Anomaly'] >= 0),
+                 color='#FF5733',
+                 alpha=0.3,
                  label='Positive Anomaly')
-plt.fill_between(yearly_df['Year'], yearly_df['Anomaly'], 0, 
-                 where=(yearly_df['Anomaly'] < 0), 
-                 color='#3498DB', 
-                 alpha=0.3, 
+plt.fill_between(yearly_df['Year'], yearly_df['Anomaly'], 0,
+                 where=(yearly_df['Anomaly'] < 0),
+                 color='#3498DB',
+                 alpha=0.3,
                  label='Negative Anomaly')
 
 # Customize the plot
-plt.title('Global Temperature Anomalies (1880-2023)', 
-         fontsize=14, 
+plt.title('Global Temperature Anomalies (1880-2023)',
+         fontsize=14,
          pad=15)
 plt.xlabel('Year', fontsize=12)
 plt.ylabel('Temperature Anomaly (°C)', fontsize=12)
@@ -727,9 +708,9 @@ plt.legend()
 plt.axhline(y=0, color='black', linestyle='--', alpha=0.3)
 
 # Add text annotation for context
-plt.text(1890, 1.15, 
-         'Temperature anomalies relative to\n1951-1980 average', 
-         fontsize=10, 
+plt.text(1890, 1.15,
+         'Temperature anomalies relative to\n1951-1980 average',
+         fontsize=10,
          alpha=0.7)
 
 plt.tight_layout()
@@ -841,4 +822,3 @@ You now have the basic knowledge to start working with [Plots, Dashboards and GU
 . . .
 
 For more interesting literature to learn more about Python, take a look at the [literature list](../general/literature.qmd) of this course.
-

@@ -2,30 +2,11 @@
 title: "Lecture III - Building Reusable Functions"
 subtitle: "Programming with Python"
 author: "Dr. Tobias Vlćek"
-#institute: "Kühne Logistics University Hamburg - Fall 2024"
-title-slide-attributes:
-    data-background-color: "#FFE0D3"
-
-execute:
-    echo: true
-
+institute: "Kühne Logistics University Hamburg - Fall 2025"
 format:
-    revealjs:
-        theme: [default, ../styles.scss]
-        transition: slide
-        transition-speed: fast
-        highlight-style: arrow
-        code-overflow: wrap
-        width: 1260
-        height: 840
-        slide-number: true
-        code-copy: true
-        code-link: true
-        preview-links: auto
-        footer: " {{< meta title >}} | {{< meta author >}} | [Home](lecture-functions.qmd)"
-        output-file: lecture-functions-presentation.html
-    html:
-        theme: [litera, ../styles.scss]
+  revealjs:
+    footer: " {{< meta title >}} | {{< meta author >}} | [Home](lec-03-functions.qmd)"
+    output-file: lec-01-presentation.html
 ---
 
 # [Quick Recap of the last Lecture]{.flow} {.title}
@@ -146,7 +127,7 @@ It is common practice to leave out one line after the definition of a function, 
 ```{python}
 #| eval: true
 #| output-location: fragment
-#| 
+#|
 def greet():
     """
     This function will be used later and has currently
@@ -166,7 +147,7 @@ help(greet)
 
 [> Question:]{.question} Which of the following is a good name for a function? \
 
-- `myfunctionthatmultipliesvalues`\ 
+- `myfunctionthatmultipliesvalues`\
 - `multiply_two_values`\
 - `multiplyTwoValues`
 
@@ -179,7 +160,7 @@ help(greet)
 ```{python}
 #| eval: true
 #| output-location: fragment
-#| 
+#|
 def greet():
     print("Hello, stranger!")
 greet()
@@ -238,7 +219,7 @@ This is especially useful when we want to avoid errors due to missing arguments!
 ```{python}
 #| eval: true
 #| output-location: fragment
-#| 
+#|
 def call_parameters(parameter_a, parameter_b):
     print(parameter_a, parameter_b)
 
@@ -247,7 +228,7 @@ call_parameters(parameter_b="Hello", parameter_a="World")
 
 ## Function Return Values
 - Functions can return values using the `return` statement
-- The return statement ends the function 
+- The return statement ends the function
 - It then **returns** the specified value
 
 . . .
@@ -255,7 +236,7 @@ call_parameters(parameter_b="Hello", parameter_a="World")
 ```{python}
 #| eval: true
 #| output-location: fragment
-#| 
+#|
 def simple_multiplication(a,b):
     result = a*b
     return result
@@ -267,7 +248,7 @@ print(simple_multiplication(2,21))
 ```{python}
 #| eval: true
 #| output-location: fragment
-#| 
+#|
 def simple_multiplication(a,b):
     return a*b # even shorter!
 print(simple_multiplication(2,21))
@@ -282,7 +263,7 @@ print(simple_multiplication(2,21))
 ```{python}
 #| eval: true
 #| output-location: fragment
-#| 
+#|
 def simple_multiplication(a,b):
     return a*b # even shorter!
 
@@ -297,7 +278,7 @@ print(result)
 ```{python}
 #| eval: true
 #| output-location: fragment
-#| 
+#|
 def simple_multiplication(a,b):
     result = a*b
 
@@ -350,7 +331,7 @@ Recursion can be a powerful tool, but it can also be [quite tricky]{.highlight} 
 ```python
 def greet(name):
     greeting = f"Hello, {name}!"
-    
+
 print(greeting)  # This will cause an error
 ```
 
@@ -439,7 +420,7 @@ student.know_answer()
 
 ```{python}
 #| eval: false
-#| 
+#|
 # This won't work as self is missing
 class Students: # Class definition
     def know_answer(): # Method definition without self
@@ -507,7 +488,7 @@ student.knows_answer()
 
 
 ## Inheritance
-- Inheritance allows a class to [inherit attributes and methods]{.highlight} 
+- Inheritance allows a class to [inherit attributes and methods]{.highlight}
 - The class that inherits is called the **subclass**
 - The class that is being inherited from is called the **superclass**
 
@@ -531,11 +512,11 @@ class Student: # Superclass
 class SmartStudent(Student): # Subclass
     def when_asked(self):
         return f"{self.name} knows the answer!"
-        
+
 class LazyStudent(Student): # Subclass
     def when_asked(self):
         return f"{self.name} has to ask ChatGPT!"
-``` 
+```
 
 [>Task:]{.task} Create two students. One is smart and the other one is lazy. Make sure that both students reaction to a question is printed.
 

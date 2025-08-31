@@ -2,30 +2,11 @@
 title: "Lecture VII - Pandas and AI"
 subtitle: "Programming with Python"
 author: "Dr. Tobias Vlćek"
-#institute: "Kühne Logistics University Hamburg - Fall 2024"
-title-slide-attributes:
-    data-background-color: "#FFE0D3"
-
-execute:
-    echo: true
-
+institute: "Kühne Logistics University Hamburg - Fall 2025"
 format:
-    revealjs:
-        theme: [default, ../styles.scss]
-        transition: slide
-        transition-speed: fast
-        highlight-style: arrow
-        code-overflow: wrap
-        slide-number: true
-        code-copy: true
-        code-link: true
-        width: 1152
-        height: 648
-        preview-links: auto
-        footer: " {{< meta title >}} | {{< meta author >}} | [Home](lecture-pandas.qmd)"
-        output-file: lecture-pandas-presentation.html
-    html:
-        theme: [litera, ../styles.scss]
+  revealjs:
+    footer: " {{< meta title >}} | {{< meta author >}} | [Home](lec-08-pandas.qmd)"
+    output-file: lec-01-presentation.html
 ---
 
 # [Quick Recap of the last Lecture]{.flow} {.title}
@@ -58,7 +39,7 @@ NumPy arrays are stored in contiguous memory blocks, making operations very effi
     - Array indexing and slicing
     - Shape manipulation (`reshape`, `flatten`)
     - Sorting and transposing
-    
+
 . . .
 
 :::{.callout-tip}
@@ -325,7 +306,7 @@ print(df)
 
 ## Merging DataFrames on Columns
 
-- `pd.merge(df_name, on='column', how='type')` 
+- `pd.merge(df_name, on='column', how='type')`
 - merge DataFrames along [shared columns]{.highlight}
 - `how` specifies the type of merge
     - `inner`: rows with matching keys in both DataFrames
@@ -509,7 +490,7 @@ print(df)
 ::: {.r-fit-text .white .bold}
 How do
 
-Large Language 
+Large Language
 
 Models work?
 
@@ -523,8 +504,8 @@ Models work?
 
 ## Large Language Models (LLMs)
 
-- Think of them like [advanced pattern recognition systems]{.highlight} 
-- They have "read" **massive amounts of text** 
+- Think of them like [advanced pattern recognition systems]{.highlight}
+- They have "read" **massive amounts of text**
 - Books, websites, articles, code, and more
 - Text is broken into **tokens**, parts of words or punctuation
 - Based on patterns, they can **generate new text**
@@ -632,4 +613,3 @@ You now have the basic knowledge to start working with [tabular data and AI!]{.h
 . . .
 
 For more interesting literature to learn more about Python, take a look at the [literature list](../general/literature.qmd) of this course.
-

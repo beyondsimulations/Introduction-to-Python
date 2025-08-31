@@ -1,20 +1,13 @@
 project:
   type: website
-
+  post-render:
+    - helpers/convert_qmd_to_md.py
   render:
-    - 404.qmd
     - index.qmd
+    - 404.qmd
     - general/*.qmd
-    - part-01/*.qmd
-    - part-02/*.qmd
-    - part-03/*.qmd
-    - part-04/*.qmd
-    - part-05/*.qmd
-    - part-06/*.qmd
-    - part-07/*.qmd
-    - part-08/*.qmd
-    - part-09/*.qmd
-    - part-10/*.qmd
+    - lectures/*.qmd
+    - tutorials/*.qmd
     - assignments/*.qmd
 
 website:
@@ -37,72 +30,70 @@ website:
       - section: "01 Introduction "
         contents:
           - text: "Lecture"
-            href: part-01/lecture-introduction.qmd
+            href: lectures/lec_01_introduction.qmd
           - text: "Tutorial"
-            href: part-01/tutorial-introduction.qmd
+            href: tutorials/tut_01_introduction.qmd
       - section: "02 Control Flow"
         contents:
           - text: "Lecture"
-            href: part-02/lecture-control.qmd
+            href: lectures/lec_02_control.qmd
           - text: "Tutorial"
-            href: part-02/tutorial-control.qmd
+            href: tutorials/tut_02_control.qmd
       - section: "03 Functions"
         contents:
           - text: "Lecture"
-            href: part-03/lecture-functions.qmd
+            href: lectures/lec_03_functions.qmd
           - text: "Tutorial"
-            href: part-03/tutorial-functions.qmd
+            href: tutorials/tut_03_functions.qmd
       - section: "04 Dimensions"
         contents:
           - text: "Lecture"
-            href: part-04/lecture-dimensions.qmd
+            href: lectures/lec_04_dimensions.qmd
           - text: "Tutorial"
-            href: part-04/tutorial-dimensions.qmd
+            href: tutorials/tut_04_dimensions.qmd
       - section: "05 Errors"
         contents:
           - text: "Lecture"
-            href: part-05/lecture-errors.qmd
+            href: lectures/lec_05_errors.qmd
           - text: "Tutorial"
-            href: part-05/tutorial-errors.qmd
+            href: tutorials/tut_05_errors.qmd
       - section: "06 Modules"
         contents:
           - text: "Lecture"
-            href: part-06/lecture-modules.qmd
+            href: lectures/lec_06_modules.qmd
           - text: "Tutorial"
-            href: part-06/tutorial-modules.qmd
+            href: tutorials/tut_06_modules.qmd
       - section: "07 Scientific Computing"
         contents:
           - text: "Lecture"
-            href: part-07/lecture-scientific.qmd
+            href: lectures/lec_07_scientific.qmd
           - text: "Tutorial"
-            href: part-07/tutorial-scientific.qmd
+            href: tutorials/tut_07_scientific.qmd
       - section: "08 Pandas and AI"
         contents:
           - text: "Lecture"
-            href: part-08/lecture-pandas.qmd
+            href: lectures/lec_08_pandas.qmd
           - text: "Tutorial"
-            href: part-08/tutorial-pandas.qmd
+            href: tutorials/tut_08_pandas.qmd
       - section: "09 Plotting"
         contents:
           - text: "Lecture"
-            href: part-09/lecture-plotting.qmd
+            href: lectures/lec_09_plotting.qmd
           - text: "Tutorial"
-            href: part-09/tutorial-plotting.qmd
+            href: tutorials/tut_09_plotting.qmd
       - section: "10 Projects"
         contents:
           - text: "Lecture"
-            href: part-10/lecture-projects.qmd
+            href: lectures/lec_10_projects.qmd
       - text: "***"
       - section: "Assignments"
         contents:
           - text: "01 Assignment"
-            href: assignments/assignment-1.qmd
+            href: assignments/assignment_01.qmd
           - text: "02 Assignment"
-            href: assignments/assignment-2.qmd
+            href: assignments/assignment_02.qmd
       - text: "Cheatsheet"
         href: general/cheatsheet.qmd
-      - text: "Chatbot"
-        href: general/chat.qmd
       - text: "FAQs"
         href: general/faq.qmd
       - text: "Literature"
@@ -111,25 +102,28 @@ website:
     center: "Programming with Python, Tobias Vlćek</br>CC BY-NC-SA 4.0"
     right:
       - icon: github
-        href: https://github.com/beyondsimulations/Introduction-to-Python
+        href: https://github.com/beyondsimulations/Applied-Optimization
       - icon: linkedin
         href: https://linkedin.com/in/tobiasvlcek
       - icon: envelope
         href: mailto:vlcek@beyondsimulations.com
-      - icon: privacy
+      - icon: lock
         href: general/privacy.qmd
 format:
   html:
-    html:
-      theme: [litera, ../styles.scss]
+    theme:
+      - default
+      - styles.scss
+      - brand
     toc: true
     highlight-style: arrow
-    code-overflow: wrap
-    linkcolor: "#a60000"
-    slide-number: true
     code-copy: true
     code-link: true
     toc-location: right
+    code-overflow: wrap
+    html-math-method:
+      method: mathjax
+      url: "https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"
     include-in-header:
       - general/header.html
     include-after-body:
@@ -147,17 +141,15 @@ format:
                 debug: true
             });
         </script>
-  pdf:
-    documentclass: report
-    geometry:
-      - margin=1in
-    fontfamily: roboto
-    fontfamilyoptions: sfdefault
-    colorlinks: true
-    include-in-header:
-      text: |
-        \usepackage{fvextra}
-        \DefineVerbatimEnvironment{Highlighting}{Verbatim}{breaklines,commandchars=\\\{\}}
+  hugo-md: default
+  typst:
+    papersize: a4
+
+format-links:
+  - html
+  - format: typst
+    text: PDF
+    icon: file-pdf
 
 execute:
   freeze: true

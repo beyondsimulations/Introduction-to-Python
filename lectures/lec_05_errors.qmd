@@ -2,33 +2,14 @@
 title: "Lecture V - Handling Errors"
 subtitle: "Programming with Python"
 author: "Dr. Tobias Vlćek"
-#institute: "Kühne Logistics University Hamburg - Fall 2024"
-title-slide-attributes:
-    data-background-color: "#FFE0D3"
-
-execute:
-    echo: true
-
+institute: "Kühne Logistics University Hamburg - Fall 2025"
 format:
-    revealjs:
-        theme: [default, ../styles.scss]
-        transition: slide
-        transition-speed: fast
-        highlight-style: arrow
-        code-overflow: wrap
-        width: 1260
-        height: 840
-        slide-number: true
-        code-copy: true
-        code-link: true
-        preview-links: auto
-        footer: " {{< meta title >}} | {{< meta author >}} | [Home](lecture-errors.qmd)"
-        output-file: lecture-errors-presentation.html
-    html:
-        theme: [litera, ../styles.scss]
+  revealjs:
+    footer: " {{< meta title >}} | {{< meta author >}} | [Home](lec-05-errors.qmd)"
+    output-file: lec-01-presentation.html
 ---
 
-# [Quick Recap of the last Lecture]{.flow} {.title} 
+# [Quick Recap of the last Lecture]{.flow} {.title}
 
 ## Data Structures
 
@@ -75,20 +56,20 @@ tuple_example = (1, 2, 3, 4, 5)
 This covers the main points from our last lecture on data structures and file handling in Python.
 :::
 
-# [Exceptions]{.flow} {.title} 
+# [Exceptions]{.flow} {.title}
 
 ## What are Exceptions?
 
 - Exceptions are [discovered errors]{.highlight} that occur during the execution
 
-. . . 
+. . .
 
 ```{python}
 #| eval: false
 
 def divide_numbers(a, b):
         result = a / b
-        return result 
+        return result
 
 print(divide_numbers(10, 0))
 print("I will not be printed as the program crashed before.")
@@ -188,15 +169,15 @@ except Exception as e:
 # 1. Try to convert the input_string to an integer
 # 2. If successful, return the integer
 # 3. If a ValueError occurs, catch it and return "Invalid input: not a number"
-# 4. If any other exception occurs, catch it and return 
+# 4. If any other exception occurs, catch it and return
 # "An unexpected error occurred: [type of exception]"
 
 # Your code here
 
 # Test cases
 print(string_to_int("42"))        # Should print: 42
-print(string_to_int("Hello"))     # Should print: Invalid 
-print(string_to_int([123]))       
+print(string_to_int("Hello"))     # Should print: Invalid
+print(string_to_int([123]))
 ```
 
 . . .
@@ -212,7 +193,7 @@ print(string_to_int([123]))
 
 . . .
 
-```{python} 
+```{python}
 #| eval: false
 
 def validate_age(age):
@@ -228,13 +209,13 @@ print(validate_age(-1)) # This will raise a ValueError
 
 ## Raising Exceptions with Custom Messages
 
-- We can also raise exceptions with custom messages 
+- We can also raise exceptions with custom messages
 - This helps to provide more information about the error
 
 . . .
 
 ```{python}
-#| eval: false  
+#| eval: false
 
 def validate_age(age):
     if age < 0:
@@ -255,14 +236,14 @@ print(validate_age(-1)) # This will raise a ValueError
 - This allows us to create more specific exceptions for our own code
 
 ```{python}
-#| eval: false  
+#| eval: false
 class InvalidUsernameError(Exception):
     pass
 def get_valid_username():
     while True:
         try:
             username = input("Please enter a username (no spaces): ")
-            if " " in username: 
+            if " " in username:
                 raise InvalidUsernameError("Username must not contain spaces.")
             return username
         except InvalidUsernameError as e:
@@ -281,7 +262,7 @@ def get_valid_username():
 
 . . .
 
-```{python} 
+```{python}
 #| eval: false
 
 x = 9
@@ -290,7 +271,7 @@ assert x < y, "x is not smaller than y"
 assert isinstance(y, float), "y is not a float"
 ```
 
-. . . 
+. . .
 
 [>Task:]{.task} Try to run the code above and discuss what happens.
 
@@ -298,7 +279,7 @@ assert isinstance(y, float), "y is not a float"
 
 ::: {.callout-note}
 `isinstance` is a built-in function that checks if an object is an instance of a class.
-::: 
+:::
 
 ## Assertions in Action
 
@@ -307,8 +288,8 @@ assert isinstance(y, float), "y is not a float"
 ```{python}
 #| eval: false
 
-# Implement a function that takes a list of integers and returns the sum of the numbers. 
-# 1. Use assertions to check if the input is a list 
+# Implement a function that takes a list of integers and returns the sum of the numbers.
+# 1. Use assertions to check if the input is a list
 # 2. Use assertions to check if the list contains only integers.
 # 3. If the list contains only integers, return the sum of the numbers
 
@@ -378,7 +359,7 @@ def calculate_average(numbers):
     for num in numbers:
         total += num
         count += 1
-    
+
     average = total / count
     return average
 
@@ -388,7 +369,7 @@ test_lists = [
     [10, 20, 30],
     []
     ]
-    
+
 for i, test_list in enumerate(test_lists):
     print(f"Test case {i + 1}:")
     result = calculate_average(test_list)
@@ -399,7 +380,7 @@ for i, test_list in enumerate(test_lists):
 
 - Click on the [bug icon]{.highlight} on the left side of the screen
 
-![](images/thonny_debug.png)
+![](../images/thonny_debug.png)
 
 
 ## Debugging Tools
@@ -444,10 +425,8 @@ We now have covered the basics of errors, exceptions and debugging in Python. Lo
 
 ::: {.callout-tip}
 Nothing new here, but these are still great books!
-::: 
+:::
 
 . . .
 
 For more interesting literature to learn more about Python, take a look at the [literature list](../general/literature.qmd) of this course.
-
-
