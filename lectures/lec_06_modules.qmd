@@ -6,7 +6,7 @@ institute: "Kühne Logistics University Hamburg - Fall 2025"
 format:
   revealjs:
     footer: " {{< meta title >}} | {{< meta author >}} | [Home](lec-06-modules.qmd)"
-    output-file: lec-01-presentation.html
+    output-file: lec-06-presentation.html
 ---
 
 # [Quick Recap of the last Lecture]{.flow} {.title}
@@ -121,7 +121,7 @@ That's why IDEs are so helpful in coding.
 #| output-location: fragment
 
 # The script new_module.py is in the same directory as this script
-import new_module # Here we import the module
+import lec_06_new_module as new_module # Here we import the module
 new_module.my_function() # Here we call the function from the module
 ```
 
@@ -137,7 +137,7 @@ new_module.my_function() # Here we call the function from the module
 #| eval: true
 #| output-location: fragment
 # Multiple imports from a module are possible as well!
-from new_module import another_function, yet_another_function
+from lec_06_new_module import another_function, yet_another_function
 another_function()
 yet_another_function()
 ```

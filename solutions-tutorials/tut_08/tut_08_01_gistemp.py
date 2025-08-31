@@ -15,8 +15,8 @@ temp_anomaly_data[numeric_columns] = temp_anomaly_data[numeric_columns].replace(
 temp_anomaly_data = temp_anomaly_data.drop(columns=['J-D', 'D-N','DJF','MAM','JJA','SON'])
 print(temp_anomaly_data.head())
 
-# TODO: b) Calculate and print the average temperature anomaly for each year. 
-# Hint: To do so, you first need to pd.melt()` the DataFrame to convert months to a single column. 
+# TODO: b) Calculate and print the average temperature anomaly for each year.
+# Hint: To do so, you first need to pd.melt()` the DataFrame to convert months to a single column.
 # Your code here
 melted_data = pd.melt(temp_anomaly_data, id_vars=['Year'], var_name='Month', value_name='Anomaly')
 yearly_avg = melted_data.groupby('Year')['Anomaly'].mean()
@@ -33,5 +33,5 @@ print(f"Year with lowest anomaly: {min_year}")
 
 # TODO: d) Save the melted DataFrame to a Excel file with the name 'temp_anomaly_data.xlsx' for next lecture.
 # Your code here
-melted_data.to_excel('part-07/solution/temp_anomaly_data.xlsx', index=False)
+melted_data.to_excel('solutions-tutorials/tut_08/temp_anomaly_data.xlsx', index=False)
 print("\nData saved to 'temp_anomaly_data.xlsx'")

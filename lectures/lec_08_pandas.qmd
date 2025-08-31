@@ -6,7 +6,7 @@ institute: "Kühne Logistics University Hamburg - Fall 2025"
 format:
   revealjs:
     footer: " {{< meta title >}} | {{< meta author >}} | [Home](lec-08-pandas.qmd)"
-    output-file: lec-01-presentation.html
+    output-file: lec-08-presentation.html
 ---
 
 # [Quick Recap of the last Lecture]{.flow} {.title}
@@ -122,7 +122,7 @@ df = pd.DataFrame({ # DataFrame is created from a dictionary
 ```{python}
 #| eval: true
 #| output-location: fragment
-df = pd.read_csv("data/employees.csv") # Reads the CSV file
+df = pd.read_csv("supplementary/lec_08/employees.csv") # Reads the CSV file
 print(df)
 ```
 
@@ -136,7 +136,7 @@ print(df)
 ```{python}
 #| eval: true
 #| output-location: fragment
-df = pd.read_csv("data/employees.csv")
+df = pd.read_csv("supplementary/lec_08/employees.csv")
 print(df.tail())
 ```
 
@@ -150,7 +150,7 @@ print(df.tail())
 ```{python}
 #| eval: true
 #| output-location: fragment
-df = pd.read_csv("data/employees.csv")
+df = pd.read_csv("supplementary/lec_08/employees.csv")
 print(df.info())
 ```
 
@@ -164,7 +164,7 @@ print(df.info())
 ```{python}
 #| eval: true
 #| output-location: fragment
-df = pd.read_csv("data/employees.csv")
+df = pd.read_csv("supplementary/lec_08/employees.csv")
 print(df.describe())
 ```
 
@@ -178,7 +178,7 @@ print(df.describe())
 ```{python}
 #| eval: true
 #| output-location: fragment
-df = pd.read_csv("data/employees.csv")
+df = pd.read_csv("supplementary/lec_08/employees.csv")
 df_high_salary = df[df['Salary'] >= 67000]
 print(df_high_salary)
 print(df_high_salary.iloc[2]["Name"]) #Access the third row and the "Name" column
@@ -218,7 +218,7 @@ Note, that we can use the `mean()` method on the `Salary` column, as it is a num
 ```{python}
 #| eval: true
 #| output-location: slide
-df = pd.read_csv("data/employees.csv")
+df = pd.read_csv("supplementary/lec_08/employees.csv")
 df.groupby(['Position']).sum() # Sum per position
 ```
 
@@ -234,7 +234,7 @@ df.groupby(['Position']).sum() # Sum per position
 ```{python}
 #| eval: true
 #| output-location: slide
-df = pd.read_csv("data/employees.csv")
+df = pd.read_csv("supplementary/lec_08/employees.csv")
 numeric_cols = df.select_dtypes(include=['number']).columns
 print(df.groupby("Position")[numeric_cols].sum())
 ```
@@ -249,7 +249,7 @@ print(df.groupby("Position")[numeric_cols].sum())
 ```{python}
 #| eval: true
 #| output-location: slide
-df = pd.read_csv("data/employees.csv")
+df = pd.read_csv("supplementary/lec_08/employees.csv")
 df = df.drop(columns=["Name"])
 # Max per position and department
 df.groupby(['Position', "Department"]).max()
@@ -272,7 +272,7 @@ df.groupby(['Position', "Department"]).max()
 # TODO: Load the employees.csv again into a DataFrame
 # First, group by the "Position" column and count the employees per position
 # Then, group by the "Department" column and calculate the mean of all other columns per department
-df = pd.read_csv("data/employees.csv")
+df = pd.read_csv("supplementary/lec_08/employees.csv")
 # Your code here
 ```
 
@@ -358,8 +358,8 @@ df2 = pd.DataFrame({
 ```{python}
 #| eval: true
 import pandas as pd
-df = pd.read_csv("data/employees.csv")
-df.to_excel("data/employees.xlsx", index=False)
+df = pd.read_csv("supplementary/lec_08/employees.csv")
+df.to_excel("supplementary/lec_08/employees.xlsx", index=False)
 ```
 
 . . .
@@ -376,7 +376,7 @@ We can also [specify the sheet name]{.highlight} when reading and writing
 #| eval: true
 
 # Writes to the Employees sheet and does not include row indices
-df.to_excel("data/employees.xlsx", sheet_name="Employees", index=False)
+df.to_excel("supplementary/lec_08/employees.xlsx", sheet_name="Employees", index=False)
 ```
 
 . . .
@@ -385,7 +385,7 @@ df.to_excel("data/employees.xlsx", sheet_name="Employees", index=False)
 #| eval: true
 #| output-location: fragment
 # Reads from the Employees sheet
-df = pd.read_excel("data/employees.xlsx", sheet_name="Employees")
+df = pd.read_excel("supplementary/lec_08/employees.xlsx", sheet_name="Employees")
 print(df.head())
 ```
 
@@ -420,7 +420,7 @@ For example, the following DataFrame is in [wide format]{.highlight}:
 ```{python}
 #| eval: true
 #| echo: false
-df = pd.read_excel("data/temperatures.xlsx")
+df = pd.read_excel("supplementary/lec_08/temperatures.xlsx")
 print(df)
 ```
 
@@ -431,7 +431,7 @@ The melting process transforms it into the following [long format]{.highlight}:
 ```{python}
 #| eval: true
 #| echo: false
-df = pd.read_excel("data/temperatures.xlsx")
+df = pd.read_excel("supplementary/lec_08/temperatures.xlsx")
 df = pd.melt(df, id_vars=['Date'], var_name='City', value_name='Temperature')
 print(df)
 ```
@@ -449,7 +449,7 @@ print(df)
 ```{python}
 #| eval: true
 #| output-location: slide
-df = pd.read_csv("data/employees.csv")
+df = pd.read_csv("supplementary/lec_08/employees.csv")
 df = pd.melt(df, id_vars=['Position'], var_name='Variables', value_name='Values')
 print(df)
 ```

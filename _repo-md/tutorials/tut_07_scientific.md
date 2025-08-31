@@ -1,0 +1,67 @@
+---
+title: Tutorial VII - NumPy for Scientific Computing
+subtitle: Programming with Python
+---
+
+
+# Analyzing Climate Data
+
+Imagine you're a climate scientist working on a project to analyze temperature data from weather stations across the country. You've been given a large dataset, and you need to use NumPy to process and analyze this data efficiently.
+
+To solve this task, you'll need to use NumPy to perform various operations on the temperature data. Here, you'll need some new functions you haven't seen yet.
+
+-   `np.mean()`: calculate the mean of an array
+-   `np.max()`: calculate the maximum of an array
+-   `np.min()`: calculate the minimum of an array
+-   `np.argmax()`: find the index of the maximum of an array
+-   `np.argmin()`: find the index of the minimum of an array
+
+If you want to find those informations along an axis, you can use the same function with `axis` as an additional argument. Here, `axis=0` is for the columns and `axis=1` is for the rows.
+
+For example, to find the maximum of each row, you can use `np.max(data_set, axis=1)`. To find the index of the maximum of each column, you can use `np.argmax(data_set, axis=0)`.
+
+``` python
+import numpy as np
+
+# Let's analyze temperature data from 10 weather stations over 30 days
+temp_data = np.random.randint(0, 40, size=(10, 30))
+
+# Example: Calculate the average temperature for the first station
+first_station_avg = np.mean(temp_data[0,:])
+print(f"Average temperature for the first station: {first_station_avg:.2f}°C")
+
+# TODO: a) Calculate the average temperature for each station and print it. Make sure to round the result to 2 decimal places!
+# Hint: Use np.mean() with axis=1
+# Your code here
+
+
+# TODO: b) Find the highest temperature recorded and the station index and print it
+# Hint: Use np.max() and np.argmax(). Note, that argmax returns the index of a flattened array, so you need to convert it to the original shape!
+# Your code here
+
+# TODO: c) Find the lowest temperature recorded and the station index and print it
+# Hint: Use np.min()
+# Your code here
+
+# TODO: d) Calculate the overall average temperature and print it
+# Hint: Use np.mean() on the entire temp_data array
+# Your code here
+
+# Example: Identify days above 30°C for the first station
+hot_days = np.sum(temp_data[0,:] > 30)
+print(f"The first station had {hot_days} days above 30°C")
+
+# TODO: e) Count the number of days above 30°C for each station
+# Your code here
+
+# TODO: f) Find the hottest and coldest stations and determine the index of the station with the highest average temperature and the station with the lowest average temperature.
+# Hint: Use np.argmax() and np.argmin()
+# Your code here
+```
+
+    Average temperature for the first station: 18.73°C
+    The first station had 4 days above 30°C
+
+# That's it!
+
+You can find the solutions to these exercises online in the associated GitHub repository, but we will also quickly go over them in next week's tutorial. To access the solutions, click on the Github button on the lower right and search for the folder with today's lecture and tutorial. Alternatively, you can ask ChatGPT or Claude to explain them to you. Remember, the goal is not just to complete the exercises, but to understand the concepts and improve your programming abilities.
