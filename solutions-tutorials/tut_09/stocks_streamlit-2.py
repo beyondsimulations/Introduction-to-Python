@@ -1,7 +1,6 @@
 import streamlit as st
 import yfinance as yf
 import plotly.graph_objects as go
-from datetime import datetime
 
 st.set_page_config(page_title="Stock Analyzer", layout="wide")
 
@@ -11,10 +10,10 @@ st.title('Stock Price Analysis')
 # Sidebar controls
 with st.sidebar:
     st.header('Settings')
-    
+
     # Stock ticker input
     ticker = st.text_input('Stock Ticker', 'REMEDY.HE')
-    
+
     # Time range selector
     timeframe = st.radio(
         'Select Timeframe',
@@ -37,13 +36,13 @@ def load_data(ticker_symbol):
 try:
     # Load the data
     df = load_data(ticker)
-    
+
     # Filter based on selected timeframe
     filtered_df = df.iloc[-timeframe[1]:]
-    
+
     # Create candlestick chart
     fig = go.Figure()
-    
+
     # Add candlestick
     fig.add_trace(go.Candlestick(
         x=filtered_df.index,
@@ -53,7 +52,7 @@ try:
         close=filtered_df['Close'],
         name='OHLC'
     ))
-    
+
     # Add volume bars
     fig.add_trace(go.Bar(
         x=filtered_df.index,
@@ -62,7 +61,7 @@ try:
         yaxis='y2',
         marker_color='rgba(128,128,128,0.5)'
     ))
-    
+
     # Update layout
     fig.update_layout(
         title=f'{ticker} Stock Price',
@@ -76,32 +75,32 @@ try:
         template='plotly_white',
         height=600
     )
-    
+
     # Display the chart
     st.plotly_chart(fig, use_container_width=True)
-    
+
     # Display additional information
     col1, col2, col3 = st.columns(3)
-    
+
     with col1:
         st.metric(
             "Current Price",
             f"${filtered_df['Close'][-1]:.2f}",
             f"{((filtered_df['Close'][-1] - filtered_df['Close'][-2]) / filtered_df['Close'][-2] * 100):.2f}%"
         )
-    
+
     with col2:
         st.metric(
             "Highest Price",
             f"${filtered_df['High'].max():.2f}"
         )
-    
+
     with col3:
         st.metric(
             "Lowest Price",
             f"${filtered_df['Low'].min():.2f}"
         )
-    
+
     # Display raw data if desired
     if st.checkbox('Show Raw Data'):
         st.dataframe(filtered_df)

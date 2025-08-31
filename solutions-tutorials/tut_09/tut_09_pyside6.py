@@ -3,10 +3,8 @@ from PySide6.QtWidgets import (QApplication, QMainWindow, QWidget, QVBoxLayout,
                               QLabel, QLineEdit, QPushButton, QGridLayout, QHBoxLayout,
                               QFrame)
 from PySide6.QtCore import Qt
-from PySide6.QtGui import QFont
 import matplotlib.pyplot as plt
-from matplotlib.backends.backend_qt5agg import FigureCanvasQTAgg as FigureCanvas
-import numpy as np
+from matplotlib.backends.backend_qtagg import FigureCanvasQTAgg as FigureCanvas
 
 class ModernFrame(QFrame):
     def __init__(self):
@@ -25,7 +23,7 @@ class InvestmentCalculator(QMainWindow):
         super().__init__()
         self.setWindowTitle("Investment Calculator")
         self.setMinimumSize(1000, 600)
-        
+
         # Set the main window style
         self.setStyleSheet("""
             QMainWindow {
@@ -125,19 +123,19 @@ class InvestmentCalculator(QMainWindow):
         # Create buttons with modern styling
         button_layout = QHBoxLayout()
         button_layout.setSpacing(10)
-        
+
         calc_button = QPushButton("Calculate")
         calc_button.setObjectName("calculateBtn")
         calc_button.clicked.connect(self.calculate)
-        
+
         reset_button = QPushButton("Reset")
         reset_button.setObjectName("resetBtn")
         reset_button.clicked.connect(self.reset)
-        
+
         button_layout.addWidget(calc_button)
         button_layout.addWidget(reset_button)
         button_layout.addStretch()
-        
+
         left_layout.addLayout(button_layout)
 
         # Create result label
@@ -145,7 +143,7 @@ class InvestmentCalculator(QMainWindow):
         self.result_label.setObjectName("resultLabel")
         self.result_label.setAlignment(Qt.AlignCenter)
         left_layout.addWidget(self.result_label)
-        
+
         left_layout.addStretch()
 
         # Create right panel for graph with modern frame
@@ -193,21 +191,21 @@ class InvestmentCalculator(QMainWindow):
             # Update graph
             self.ax.clear()
             years_list = list(range(years + 1))
-            
+
             # Plot with modern colors
             self.ax.plot(years_list, values, color='#3498db', linewidth=3, label='Investment Value')
             contributions = [initial + annual * year for year in years_list]
-            self.ax.plot(years_list, contributions, color='#e74c3c', linewidth=2, 
+            self.ax.plot(years_list, contributions, color='#e74c3c', linewidth=2,
                         linestyle='--', label='Contributions')
-            
+
             # Customize the graph
             self.ax.set_xlabel('Years', fontsize=10, color='#2c3e50')
             self.ax.set_ylabel('Value (€)', fontsize=10, color='#2c3e50')
-            self.ax.set_title('Investment Growth Over Time', fontsize=12, 
+            self.ax.set_title('Investment Growth Over Time', fontsize=12,
                             color='#2c3e50', pad=20)
             self.ax.grid(True, linestyle='--', alpha=0.7)
             self.ax.legend(frameon=True, fancybox=True, shadow=True)
-            
+
             # Format y-axis
             self.ax.yaxis.set_major_formatter(
                 plt.FuncFormatter(lambda x, p: f'€{x:,.0f}')

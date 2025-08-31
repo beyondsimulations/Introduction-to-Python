@@ -1,5 +1,4 @@
 import pygame
-import random
 
 # Initialize Pygame
 pygame.init()
@@ -30,16 +29,16 @@ def show_game_over():
     font = pygame.font.Font(None, 74)
     text = font.render('Game Over', True, RED)
     text_rect = text.get_rect(center=(WINDOW_WIDTH/2, WINDOW_HEIGHT/2))
-    
+
     retry_font = pygame.font.Font(None, 36)
     retry_text = retry_font.render('Press SPACE to retry or Q to quit', True, WHITE)
     retry_rect = retry_text.get_rect(center=(WINDOW_WIDTH/2, WINDOW_HEIGHT/2 + 50))
-    
+
     screen.fill(BLACK)
     screen.blit(text, text_rect)
     screen.blit(retry_text, retry_rect)
     pygame.display.flip()
-    
+
     waiting = True
     while waiting:
         for event in pygame.event.get():
@@ -56,16 +55,16 @@ def show_winner():
     font = pygame.font.Font(None, 74)
     text = font.render('You Win!', True, GREEN)
     text_rect = text.get_rect(center=(WINDOW_WIDTH/2, WINDOW_HEIGHT/2))
-    
+
     retry_font = pygame.font.Font(None, 36)
     retry_text = retry_font.render('Press SPACE to play again or Q to quit', True, WHITE)
     retry_rect = retry_text.get_rect(center=(WINDOW_WIDTH/2, WINDOW_HEIGHT/2 + 50))
-    
+
     screen.fill(BLACK)
     screen.blit(text, text_rect)
     screen.blit(retry_text, retry_rect)
     pygame.display.flip()
-    
+
     waiting = True
     while waiting:
         for event in pygame.event.get():
@@ -85,13 +84,13 @@ class Player(pygame.sprite.Sprite):
         self.image = pygame.Surface([PLAYER_WIDTH, PLAYER_HEIGHT])
         self.image.fill(BLACK)
         self.facing_right = True
-        
+
         # Add pixel art details
         pygame.draw.rect(self.image, WHITE, [8, 8, 24, 44])  # Body
         pygame.draw.rect(self.image, BLACK, [14, 15, 4, 4])  # Eye
         pygame.draw.rect(self.image, BLACK, [22, 15, 4, 4])  # Eye
         pygame.draw.rect(self.image, BLACK, [14, 25, 12, 2])  # Mouth
-        
+
         self.rect = self.image.get_rect()
         self.rect.x = 50
         self.rect.y = WINDOW_HEIGHT - 100
@@ -124,11 +123,11 @@ class Platform(pygame.sprite.Sprite):
         super().__init__()
         self.image = pygame.Surface([width, height])
         self.image.fill(WHITE)
-        
+
         # Add texture to platform
         for i in range(0, width, 4):
             pygame.draw.line(self.image, GRAY_LIGHT, (i, 0), (i, height), 1)
-        
+
         self.rect = self.image.get_rect()
         self.rect.x = x
         self.rect.y = y
@@ -138,13 +137,13 @@ class Enemy(pygame.sprite.Sprite):
         super().__init__()
         self.image = pygame.Surface([30, 30])
         self.image.fill(BLACK)
-        
+
         # Add pixel art details
         pygame.draw.rect(self.image, WHITE, [2, 2, 26, 26])  # Body
         pygame.draw.rect(self.image, BLACK, [8, 8, 4, 4])    # Eye
         pygame.draw.rect(self.image, BLACK, [18, 8, 4, 4])   # Eye
         pygame.draw.rect(self.image, BLACK, [8, 18, 14, 2])  # Angry mouth
-        
+
         self.rect = self.image.get_rect()
         self.rect.x = x
         self.rect.y = y
@@ -163,7 +162,7 @@ class Goal(pygame.sprite.Sprite):
         super().__init__()
         self.image = pygame.Surface([30, 30])
         self.image.fill(BLACK)
-        
+
         # Create a star pattern
         points = [
             (15, 0), (20, 10), (30, 12),
@@ -172,7 +171,7 @@ class Goal(pygame.sprite.Sprite):
             (10, 10)
         ]
         pygame.draw.polygon(self.image, WHITE, points)
-        
+
         self.rect = self.image.get_rect()
         self.rect.x = x
         self.rect.y = y
@@ -182,12 +181,12 @@ def draw_background(screen):
     # Update star positions based on time
     global star_time
     star_time += 0.1  # Very slow movement - adjust this value to change speed
-    
+
     # Near stars (move slightly faster)
     for x in range(-20 + (int(star_time) % 20), WINDOW_WIDTH + 20, 20):
         for y in range(0, WINDOW_HEIGHT, 20):
             pygame.draw.rect(screen, GRAY_DARK, [x, y, 2, 2])
-    
+
     # Far stars (move slower)
     for x in range(-40 + (int(star_time/2) % 40), WINDOW_WIDTH + 40, 40):
         for y in range(0, WINDOW_HEIGHT, 40):
@@ -212,12 +211,12 @@ all_sprites.add(player)
 platform_list = [
     # Starting platform
     Platform(50, 500, 200, 20),
-    
+
     # Middle platforms creating a path
     Platform(300, 400, 200, 20),
     Platform(100, 300, 200, 20),
     Platform(400, 250, 200, 20),
-    
+
     # Higher platforms
     Platform(200, 150, 150, 20),
     Platform(500, 150, 150, 20),
