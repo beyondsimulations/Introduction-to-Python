@@ -29,4 +29,4 @@ If you have any questions regarding the course, please contact:
 
 ## Contributors
 
-Thanks to [Phillip Bach](https://github.com/PhilippBach) whose original course material laid the foundation for this course.
+Thanks to [Phillip Bach](https://github.com/PhilippBach) whose original course laid the foundation for this course.
