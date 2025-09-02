@@ -1,0 +1,134 @@
+---
+title: "Installing Python"
+subtitle: "How to get started with uv to handle Python"
+---
+
+## Introduction to `uv`
+
+`uv` is a modern package manager programmed in Rust for Python. It is rather young but really simplifies the process of installing Python, managing packages, and handling virtual environments. We will use it for this course, to make sure that everyone has the same setup with Python and to avoid issues with package management.
+
+## Installing `uv`
+
+To get started with `uv`, you need to install it first. You can do this by running on of the following commands, depending on your operating system:
+
+On MacOS or Linux, run:
+
+```bash
+curl -LsSf https://astral.sh/uv/install.sh | sh
+```
+
+If that does not work, you are likely missing `curl`. In that case, you can also use:
+
+```bash
+wget -qO- https://astral.sh/uv/install.sh | sh
+```
+
+On Windows, use PowerShell for the installation. Open Powershell as an administrator and run:
+
+```powershell
+powershell -ExecutionPolicy ByPass -c "irm https://astral.sh/uv/install.ps1 | iex"
+```
+
+This script will download and install `uv` on your system.
+
+## Installing Python with `uv`
+
+`uv` can automatically download and install Python for you. To install Python, use the following command from the terminal:
+
+```bash
+uv python install
+```
+
+This command will download the latest version of Python and set it up for you.
+
+If you ever want to see which versions of Python are generally available on your computer, you can use:
+
+```bash
+uv python list
+```
+This will show you all the Python versions that `uv` can manage.
+
+## Creating a new project
+
+Now, we are ready to start a new project with `uv` (and later also add some packages). For the lecture, I would recommmend to work with one new project for each of our sessions to keep things organized.
+
+Generall, there are two ways to create a new project with `uv`:
+
+1. Create a new directory (a new folder) for your project, navigate into it (open the folder in your IDE), and run `uv init` to initialize a new project.
+2. Use `uv new <project-name>` to create a new project in a new directory. Open the project in your IDE and you are ready to go.
+
+## Run scripts with Python and `uv`
+
+As quite common in programming, we will use a small file that prints "Hello, World!" to test if everything is working. Luckily, `uv` already installed Python for us **and** created a file called `main.py` in the project directory that does exactly that.
+
+Run the following command in your terminal:
+
+```bash
+uv run python main.py
+```
+
+This command will execute the `main.py` script using the Python version managed by `uv`. You should see the output "Hello, World!" in your terminal.
+
+If this **does not work**, please check again if you have opened the project folder. If you already did that, please ask me for help and we will figure it out together.
+
+## Managing Packages with `uv`
+
+`uv` provides a straightforward way to manage Python packages. If you haven't heard of packages yet, you can skip the rest of the file and come back later. If you know them,  here are some common commands to get you started:
+
+- **Install a package:**
+
+  ```bash
+  uv add <package-name>
+  ```
+
+- **Remove a package:**
+
+  ```bash
+  uv remove <package-name>
+  ```
+
+- **Sync your environment:**
+
+  ```bash
+  uv sync
+  ```
+
+These commands allow you to add, remove, and synchronize your Python packages efficiently.
+
+## Activating `uv` in your terminal
+
+From here on, we will cover some advanced features of `uv`. If you are still just getting started, you can **skip this section for now without missing anything**. This is just to make your life easier in the long run.
+
+Basically, if you want to use `uv` commands directly in your terminal without prefixing them with `uv`, you can activate `uv` in your terminal session by running the following on MacOs:
+
+```bash
+source .venv/bin/activate
+```
+
+On Windows, use:
+
+```powershell
+.venv\Scripts\Activate.ps1
+```
+
+If you do this, you can run scripts in your terminal by just using (for example) the following without adding `uv run` in front of it:
+
+```bash
+python main.py
+```
+
+To deactivate `uv` in your terminal session, simply run:
+
+```bash
+deactivate
+```
+
+## Best Practices
+
+- **Always use virtual environments to isolate project dependencies.** Although it might seem like an extra step at first, it prevents many issues down the line and prevents the so called "dependency hell".
+- Regularly update your packages to benefit from the latest features and security patches. `uv` makes this easy with the `uv update` command and will ensure that your project remains stable.
+
+
+Now, we have covered how to use `uv` to install Python, manage packages, and handle virtual environments. `uv` really simplifies these tasks, making it a great tool for Python development.
+
+Explore the [official documentation](https://docs.astral.sh/uv/) for more advanced features and usage.
