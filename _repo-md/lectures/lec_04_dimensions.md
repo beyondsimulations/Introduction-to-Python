@@ -5,8 +5,8 @@ author: Dr. Tobias Vlćek
 institute: Kühne Logistics University Hamburg - Fall 2025
 format:
   revealjs:
-    footer: ' {{< meta title >}} | {{< meta author >}} | [Home](lec-04-dimensions.qmd)'
-    output-file: lec-04-presentation.html
+    footer: ' {{< meta title >}} | {{< meta author >}} | [Home](lec_04_dimensions.qmd)'
+    output-file: lec_04_presentation.html
 ---
 
 
