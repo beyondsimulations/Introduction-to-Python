@@ -59,8 +59,8 @@ print(f"The first station had {hot_days} days above 30°C")
 # Your code here
 ```
 
-    Average temperature for the first station: 18.73°C
-    The first station had 4 days above 30°C
+    Average temperature for the first station: 16.07°C
+    The first station had 3 days above 30°C
 
 # That's it!
 

@@ -468,10 +468,10 @@ print("Note, that theses values are machine dependent and just for illustration!
 
     Time taken for a single membership test in 10000000 elements (in seconds):
     ---------------------------------------------------------------------------
-    Tuple     : 0.06136883
-    List      : 0.06001900
-    Set       : 0.00000187
-    Dictionary: 0.00000192
+    Tuple     : 0.03899804
+    List      : 0.04008592
+    Set       : 0.00000175
+    Dictionary: 0.00000317
     ---------------------------------------------------------------------------
     Note, that theses values are machine dependent and just for illustration!
 

@@ -173,27 +173,28 @@ In case you find errors and typos in the lecture notes, please report them in th
 
 # <span class="flow">Setting up Python</span>
 
-## Install Python
+## Installing an IDE
 
--   Sources are the [Python website](https://www.python.org/downloads/) or [Anaconda](https://www.anaconda.com/products/individual)
--   **But I would recommend we start by installing [Thonny](https://thonny.org/)**
--   An open source IDE running on Windows, Linux and Mac
--   Built in Python interpreter and package management!
+-   In this course, we will use Zed as our IDE
+-   Download and install it from <https://zed.dev/>
+-   It is available for Windows, Mac and Linux
+-   It is free to use, lightweight and fast
+-   Has AI support built-in, which we will use later
 
 ## What is an IDE?
 
 -   Integrated Development Environment `=` application
 -   It allows you to write, run and debug code scripts
--   Thonny is an IDE specifically for Python beginners
--   **It is easy to use as beginner!**
--   Other IDEs include for example [PyCharm](https://www.jetbrains.com/pycharm/) from JetBrains or [Visual Studio Code](https://code.visualstudio.com/) from Microsoft
+-   Other IDEs include for example:
+    -   [PyCharm](https://www.jetbrains.com/pycharm/) from JetBrains
+    -   [Visual Studio Code](https://code.visualstudio.com/) from Microsoft
 
-## Thonny
+## Installing Python with `uv`
 
-<figure>
-<img src="../images/thonny_start.png" alt="First start of Thonny" />
-<figcaption aria-hidden="true">First start of Thonny</figcaption>
-</figure>
+-   We will use `uv` to install and manage Python versions
+-   It works on Windows, Mac and Linux
+-   It helps us to manage packages and virtual environments
+-   Now, we all [go here](general/uv.qmd) and install `uv` and Python
 
 ## Python on iPads
 
@@ -207,39 +208,32 @@ In case you find errors and typos in the lecture notes, please report them in th
 >
 > Not all packages available in Python are available in Pythonista, thus you might need a computer to solve certain problems.
 
-## First start of Pythonista
-
-<figure>
-<img src="../images/start_pythonista.png" alt="First start of Pythonista" />
-<figcaption aria-hidden="true">First start of Pythonista</figcaption>
-</figure>
-
 # <span class="flow">Your first code</span>
 
-## Hello, World!
+## Hello, my name is ...!
 
-<span class="task">Task</span>: Create a directory for the course and create a new file called `hello_world.py` with the following code:
+<span class="task">Task</span>: Open the directory you created for the course and create a new file called `hello.py` with the following code:
 
 ``` python
 # This is a comment in Python
-print("Hello, World!")
+print("Hello, my name is [YOUR NAME HERE]!")
 ```
 
-    Hello, World!
+    Hello, my name is [YOUR NAME HERE]!
 
 . . .
 
-Run it with the green 'run' button or by pressing <span class="task">F5</span>!
+Run it by executing the following command in your terminal:
+
+``` bash
+uv run python hello.py
+```
 
 . . .
-
-> **Note**
->
-> "Hello world" is a classic example to start with. It is often used as a test to check if your computer is working properly and that you have installed the necessary software.
 
 ## Hello, World in a Message
 
-<span class="task">Task</span>: Change the code in your `hello_world.py` file. Assign the string `"Hello, World!"` to a variable called `message` and print the variable.
+<span class="task">Task</span>: Create a new file called `message_world.py` file. Assign the string `"Hello, World!"` to a variable called `message` and print the variable.
 
 . . .
 

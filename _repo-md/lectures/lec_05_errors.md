@@ -328,11 +328,11 @@ assert x == 42.0, "x is not 42.0"
 
 -   We can also use debugging tools <span class="highlight">built into most IDEs</span>
 -   Allow to step through code, set breakpoints, and inspect variables
--   We will use Thonny, but there are **many other options**
+-   We will use Zed, but there are **many other options**
 
-## Debugging in Thonny I
+## Debugging in Zed
 
-<span class="task">\>Task:</span> Open Thonny and copy the following code:
+<span class="task">\>Task:</span> Open Zed and copy the following code to `main.py`.
 
 ``` python
 def calculate_average(numbers):
@@ -358,19 +358,13 @@ for i, test_list in enumerate(test_lists):
     print(f"Average: {result}\n")
 ```
 
-## Debugging in Thonny II
-
--   Click on the <span class="highlight">bug icon</span> on the left side of the screen
-
-![](../images/thonny_debug.png)
-
 ## Debugging Tools
 
-<span class="task">\>Task:</span> Run the code and use the debugging tools to find the error.
+<span class="task">\>Task:</span> Run the code and use the debugging tools by clicking on the small bug icon in the lower right corner to find the error and select `run [YOUR PATH TO THE FILE]/main.py`.
 
+-   Use the **breakpoints** to <span class="highlight">pause the execution</span> at a specific point
 -   Use **step over, step into and step out** to <span class="highlight">navigate</span> through your code
 -   Use the **variable viewer** to <span class="highlight">inspect variables</span> at different points
--   Use the **breakpoints** to <span class="highlight">pause the execution</span> at a specific point
 
 . . .
 
