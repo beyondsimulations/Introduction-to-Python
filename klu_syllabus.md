@@ -19,7 +19,7 @@ All assignments are due by the end of the quarter (earlier submissions are highl
 
 ## Lecturer
 
-**Dr. Tobias Vlček**  
+**Dr. Tobias Vlček**
 Email: vlcek@beyondsimulations.com
 
 ## Module Dates
@@ -68,7 +68,7 @@ Basic data science tools in Python covering data manipulation, descriptive and e
 |---------|-------|---------|
 | VI | Using Modules and Packages | Standard libraries, random numbers and their applications |
 | VII | NumPy for Scientific Computing | Fast array operations with NumPy |
-| VIII | Pandas and AI | Pandas for data manipulation, AI with Cursor |
+| VIII | Pandas and AI | Pandas for data manipulation and AI |
 | IX | Plotting Data | Matplotlib with AI based on hands-on examples |
 
 ### Part III: Programming Projects
