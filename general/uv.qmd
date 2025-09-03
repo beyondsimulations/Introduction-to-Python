@@ -1,166 +1,262 @@
 ---
 title: "Installing Python"
-subtitle: "How to get started with uv to handle Python"
+subtitle: "A beginner-friendly guide using uv"
 ---
 
-## Introduction to `uv`
+## Why we use `uv` for this course
 
-`uv` is a modern package manager programmed in Rust for Python. It is rather young but really simplifies the process of installing Python, managing packages, and handling virtual environments. We will use it for this course, to make sure that everyone has the same setup with Python and to avoid issues with package management.
+`uv` is a new (and very fast) Python tool written in Rust. It:
+- Installs Python for you (no manual downloads).
+- Creates isolated *virtual environments* (safe sandboxes per project).
+- Installs and updates packages quickly.
 
 ::: callout-note
-What is a virtual environment? Imagine each project gets its own little sandbox. That sandbox has its own Python and its own packages and changes inside one sandbox do not touch your other projects. **Why it matters:** It prevents projects from accidentally breaking if different packages are involved across different projects and you do not want to have to worry about that.
+WHAT is a virtual environment?
+Think of each project as its own coffee shop with its own supplies. One shop changing its menu does **not** affect the others.
+WHY it matters: You avoid random breakage when different projects need different versions of the same package.
 :::
 
-## Installing `uv`
+## Install `uv`
 
-To get started with `uv`, you need to install it first. You can do this by running one of the following commands, depending on your operating system:
+Choose the instructions for your operating system.
 
-On macOS or Linux, run:
+### macOS or Linux (Terminal)
 
 ```bash
 curl -LsSf https://astral.sh/uv/install.sh | sh
 ```
 
-If that does not work, you are likely missing `curl`. In that case, you can also use:
+If `curl` is missing:
 
 ```bash
 wget -qO- https://astral.sh/uv/install.sh | sh
 ```
 
-On Windows, use PowerShell for the installation. Open PowerShell as an administrator and run:
+After installation: **close and reopen** your terminal (so your PATH updates).
+
+### Windows (PowerShell)
+
+Open PowerShell and run:
 
 ```powershell
-powershell -ExecutionPolicy ByPass -c "irm https://astral.sh/uv/install.ps1 | iex"
+powershell -ExecutionPolicy Bypass -c "irm https://astral.sh/uv/install.ps1 | iex"
 ```
 
-This script will download and install `uv` on your system.
+If you see a script execution warning, you can alternatively first run:
 
-::: callout-note
-You can quickly verfiy whether `uv` is installed correctly by running the following command  `uv --version`. If you see a version number, `uv` is installed correctly.
-:::
+```powershell
+Set-ExecutionPolicy -ExecutionPolicy Bypass -Scope Process
+```
 
-## Installing Python with `uv`
+Then re-run the install line.
 
-`uv` can automatically download and install Python for you. To install Python, use the following command from the terminal:
+### Verify installation
+
+Run (macOS / Linux / Windows):
 
 ```bash
-uv python install
+uv --version
 ```
 
-This command will download the latest version of Python and set it up for you.
+If you see a version number: great!
 
-::: callout-note
-Quick verification to check whether Python is installed correctly: `uv --version`.
-If this shows you a Python version, your Python setup is ready.
+::: callout-warning
+If you get "command not found" or "'uv' is not recognized":
+
+1. Close and reopen the terminal (important).
+2. On Windows: make sure you used PowerShell (not Command Prompt).
+3. Still broken? Ask for help, no need of guessing the error.
 :::
 
-If you ever want to see which versions of Python are generally available on your computer, you can use:
+---
+
+## Install (and pin) Python
+
+We want everyone on the **same** Python version for consistency. Thus, we’ll use Python 3.12 for the course this year.
+
+Install (you only need to do this once):
 
 ```bash
-uv python list
-```
-This will show you all the Python versions that `uv` can manage.
-
-## Creating a new project
-
-Now, we are ready to start a new project with `uv` (and later also add some packages). For the lecture, I would recommend working with one new project for each of our sessions to keep things organized.
-
-Generally, there are two ways to create a new project with `uv`, but for the sake of simplicity we will just cover one way in detail. Start by creating a new directory (a new folder) for your project, navigate into it (open the folder in your IDE), and run `uv init` to initialize a new project.
-
-## Run scripts with Python and `uv`
-
-As quite common in programming, we will use a small file that prints "Hello, World!" to test if everything is working. Luckily, `uv` already installed Python for us and created a file called `main.py` in our project directory that does exactly that.
-
-Inside `main.py`, you can see the following code (wihout the comments):
-
-```python
-def main():
-    # This line prints a message to your terminal/output window.
-    print("Hello from test!")
-
-# This condition is True only when you run this file directly,
-# so main() gets called and the message appears.
-if __name__ == "__main__":
-    main()
+uv python install 3.12
 ```
 
-:::{:callout-note}
-This tiny program defines a function called main that tells Python to display some text on the screen. The special line if __name__ == "__main__": is Python’s way of saying “Only run main() if this file is executed directly. If this file is imported from another file, do not run main() automatically.” When you run the file, Python reaches that line, calls main(), and you see the message printed.
+Check the installation:
+
+```bash
+uv run python --version
+```
+
+Expected output starts with:
+
+```
+Python 3.12.
+```
+
+::: callout-note
+Why pin a version? If the latest Python version moves forward mid‑semester, subtle bugs can appear that might break working code (unlikely, but possible). Pinning keeps everyone in the course aligned.
 :::
 
-Don't worry about the details of the code for now; we will cover that in future sessions. For now, just make sure that you have opened the project folder in your IDE.
+---
 
-Now, run the following command in your terminal:
+## Create your first project
+
+Pick a folder where you keep course work. If you do not have one, make sure to create one! Open the course folder in your IDE and then run the following from the terminal:
+
+```bash
+uv init my-first-project
+cd my-first-project
+```
+
+The first line creates a new folder named `my-first-project` (you can name it anything). The second line moves you into that folder. Alternatively, you can create the folder manually before, open it in your IDE and run `uv init .` inside it.
+
+`uv init` creates:
+- `main.py` (starter script)
+- `pyproject.toml` (project + dependencies config)
+- `.python-version` (records the Python version we chose)
+- `.gitignore` (useful if you ever use Git)
+- `README.md` (you can jot notes here)
+- (A `.venv` folder will appear later once packages are added or synced.)
+
+You do **not** need to edit any of these (except maybe `README.md` for your notes and `main.py` if you want to run something different).
+
+---
+
+## Run the starter script
+
+Inside the project folder:
 
 ```bash
 uv run python main.py
 ```
 
-This command will execute the `main.py` script using the Python version managed by `uv`. You should see the output "Hello, World!" in your terminal.
+You should see something like:
 
-If this **does not work**, please check again if you have opened the project folder. If you already did that, please ask me for help and we will figure it out together.
+```
+Hello World!
+```
 
-:::{:callout-note}
+(If you want, you can open `main.py` and change the message, then re-run.)
 
-`uv`has also created some other files for you, including a `pyproject.toml` file. This file is used to manage your project's dependencies and settings. You can open it in your IDE to see its contents, but for now, you don't need to modify it. The other files are `.gitignore` (to ignore certain files if you use Git for version control), `.python-version` (which specifies the Python version for your project), `Readme.md` (a markdown file for project documentation), and `.venv` (which contains your virtual environment and will only be created after you add your first package). **Basically, we will not need to worry about these files or touch them**, except for the `Readme.md` file if you want to add some notes about your project. All other files will be handled by `uv` automatically.
+### What does that code mean?
 
-:::
+```python
+def main():
+    print("Hello, World!")
 
-## Managing Packages with `uv`
+if __name__ == "__main__":
+    main()
+```
 
-`uv` provides a straightforward way to manage Python packages. If you haven't heard of packages yet, you can skip the rest of the file and come back later. If you know them,  here are some common commands to get you started:
+- `def main():` defines a function (a reusable block of code).
+- `print(...)` shows text in the terminal.
+- The line `if __name__ == "__main__":` ensures this only auto-runs when the file is executed directly.
 
-- **Install a package:**
+Don’t worry about this yet, we'll gradually build up to it.
 
-  ```bash
-  uv add <package-name>
-  ```
+---
 
-- **Remove a package:**
+## Adding packages (later in the course)
 
-  ```bash
-  uv remove <package-name>
-  ```
+If/when you need a package (example: `pandas`):
 
-- **Sync your environment:**
+```bash
+uv add pandas
+```
 
-  ```bash
-  uv sync
-  ```
+If you added the wrong one:
 
-These commands allow you to add, remove, and synchronize your Python packages efficiently.
+```bash
+uv remove pandas
+```
 
-## Activating `uv` in your terminal
+If your `pyproject.toml` changed (e.g. you pulled code from someone else):
 
-From here on, we will cover some advanced features of `uv`. If you are still just getting started, you can **skip this section for now without missing anything**. This is just to make your life easier in the long run.
+```bash
+uv sync
+```
 
-Basically, if you want to use `uv` commands directly in your terminal without prefixing them with `uv`, you can activate the virtual environment in your terminal session by running the following on macOS:
+Update everything to newer allowed versions:
+
+```bash
+uv update
+```
+
+---
+
+## (Optional) Activating the virtual environment
+
+You can either:
+- Always run scripts with `uv run ...` (safest for beginners), OR
+- “Activate” the environment so `python` refers to the project’s Python directly.
+
+Activate (macOS / Linux):
 
 ```bash
 source .venv/bin/activate
 ```
 
-On Windows, use:
+Activate (Windows PowerShell):
 
 ```powershell
 .venv\Scripts\Activate.ps1
 ```
 
-If you do this, you can run scripts in your terminal by just using (for example) the following without adding `uv run` in front of it:
+You’ll see your prompt change (e.g. `(my-first-project)` at the start of the terminal line).
+
+Now you can just run:
 
 ```bash
 python main.py
 ```
 
-To deactivate `uv` in your terminal session, simply run:
+Deactivate when done:
 
 ```bash
 deactivate
 ```
 
-## Best Practices
+::: callout-tip
+If something seems “off”, just close the terminal and reopen in the project folder. Fresh starts fix many early mistakes.
+:::
 
-- **Always use virtual environments to isolate project dependencies.** Although it might seem like an extra step at first, it prevents many issues down the line and prevents the so-called "dependency hell".
-- Regularly update your packages to benefit from the latest features and security patches. `uv` makes this easy with the `uv update` command and will ensure that your project remains stable.
+## Updating `uv`
 
-Now, we have covered how to use `uv` to install Python, manage packages, and handle virtual environments. `uv` really simplifies these tasks, making it a great tool for Python development. Explore the [official documentation](https://docs.astral.sh/uv/) for more advanced features and usage. You can also always use `uv --help` to get a list of all commands and options available with `uv`.
+Occasionally:
+
+```bash
+uv self update
+```
+
+(If it ever errors, you can just reinstall using the same one-liner from earlier.)
+
+---
+
+## Best practices for this course
+
+- One project folder per session or assignment keeps everything tidy.
+- Never install packages “globally” outside a project.
+- Prefer `uv run python <file>` instead of environment activation.
+- Keep a short personal log in each project’s `README.md` (What did I do? What still confuses me?).
+- Ask early for help, guessing usually takes much more time than asking.
+
+## 10. Where to go next
+
+Explore the official docs later if you’re curious:
+[https://docs.astral.sh/uv/](https://docs.astral.sh/uv/)
+
+You can always see available commands:
+
+```bash
+uv --help
+```
+
+## Recap
+
+You can now:
+1. Install `uv`.
+2. Install a pinned Python version.
+3. Create a project.
+4. Run a script.
+5. Add/remove/sync packages.
+
+Now, you’re set for the rest of the course.
