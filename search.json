@@ -26,7 +26,7 @@
     "href": "tutorials/tut_07_scientific.html",
     "title": "Tutorial VII - NumPy for Scientific Computing",
     "section": "",
-    "text": "Analyzing Climate Data\nImagine you’re a climate scientist working on a project to analyze temperature data from weather stations across the country. You’ve been given a large dataset, and you need to use NumPy to process and analyze this data efficiently.\nTo solve this task, you’ll need to use NumPy to perform various operations on the temperature data. Here, you’ll need some new functions you haven’t seen yet.\n\nnp.mean(): calculate the mean of an array\nnp.max(): calculate the maximum of an array\nnp.min(): calculate the minimum of an array\nnp.argmax(): find the index of the maximum of an array\nnp.argmin(): find the index of the minimum of an array\n\nIf you want to find those informations along an axis, you can use the same function with axis as an additional argument. Here, axis=0 is for the columns and axis=1 is for the rows.\nFor example, to find the maximum of each row, you can use np.max(data_set, axis=1). To find the index of the maximum of each column, you can use np.argmax(data_set, axis=0).\n\nimport numpy as np\n\n# Let's analyze temperature data from 10 weather stations over 30 days\ntemp_data = np.random.randint(0, 40, size=(10, 30))\n\n# Example: Calculate the average temperature for the first station\nfirst_station_avg = np.mean(temp_data[0,:])\nprint(f\"Average temperature for the first station: {first_station_avg:.2f}°C\")\n\n# TODO: a) Calculate the average temperature for each station and print it. Make sure to round the result to 2 decimal places!\n# Hint: Use np.mean() with axis=1\n# Your code here\n\n\n# TODO: b) Find the highest temperature recorded and the station index and print it\n# Hint: Use np.max() and np.argmax(). Note, that argmax returns the index of a flattened array, so you need to convert it to the original shape!\n# Your code here\n\n# TODO: c) Find the lowest temperature recorded and the station index and print it\n# Hint: Use np.min()\n# Your code here\n\n# TODO: d) Calculate the overall average temperature and print it\n# Hint: Use np.mean() on the entire temp_data array\n# Your code here\n\n# Example: Identify days above 30°C for the first station\nhot_days = np.sum(temp_data[0,:] &gt; 30)\nprint(f\"The first station had {hot_days} days above 30°C\")\n\n# TODO: e) Count the number of days above 30°C for each station\n# Your code here\n\n# TODO: f) Find the hottest and coldest stations and determine the index of the station with the highest average temperature and the station with the lowest average temperature.\n# Hint: Use np.argmax() and np.argmin()\n# Your code here\n\nAverage temperature for the first station: 19.37°C\nThe first station had 8 days above 30°C\n\n\n\n\nThat’s it!\nYou can find the solutions to these exercises online in the associated GitHub repository, but we will also quickly go over them in next week’s tutorial. To access the solutions, click on the Github button on the lower right and search for the folder with today’s lecture and tutorial. Alternatively, you can ask ChatGPT or Claude to explain them to you. Remember, the goal is not just to complete the exercises, but to understand the concepts and improve your programming abilities.",
+    "text": "Analyzing Climate Data\nImagine you’re a climate scientist working on a project to analyze temperature data from weather stations across the country. You’ve been given a large dataset, and you need to use NumPy to process and analyze this data efficiently.\nTo solve this task, you’ll need to use NumPy to perform various operations on the temperature data. Here, you’ll need some new functions you haven’t seen yet.\n\nnp.mean(): calculate the mean of an array\nnp.max(): calculate the maximum of an array\nnp.min(): calculate the minimum of an array\nnp.argmax(): find the index of the maximum of an array\nnp.argmin(): find the index of the minimum of an array\n\nIf you want to find those informations along an axis, you can use the same function with axis as an additional argument. Here, axis=0 is for the columns and axis=1 is for the rows.\nFor example, to find the maximum of each row, you can use np.max(data_set, axis=1). To find the index of the maximum of each column, you can use np.argmax(data_set, axis=0).\n\nimport numpy as np\n\n# Let's analyze temperature data from 10 weather stations over 30 days\ntemp_data = np.random.randint(0, 40, size=(10, 30))\n\n# Example: Calculate the average temperature for the first station\nfirst_station_avg = np.mean(temp_data[0,:])\nprint(f\"Average temperature for the first station: {first_station_avg:.2f}°C\")\n\n# TODO: a) Calculate the average temperature for each station and print it. Make sure to round the result to 2 decimal places!\n# Hint: Use np.mean() with axis=1\n# Your code here\n\n\n# TODO: b) Find the highest temperature recorded and the station index and print it\n# Hint: Use np.max() and np.argmax(). Note, that argmax returns the index of a flattened array, so you need to convert it to the original shape!\n# Your code here\n\n# TODO: c) Find the lowest temperature recorded and the station index and print it\n# Hint: Use np.min()\n# Your code here\n\n# TODO: d) Calculate the overall average temperature and print it\n# Hint: Use np.mean() on the entire temp_data array\n# Your code here\n\n# Example: Identify days above 30°C for the first station\nhot_days = np.sum(temp_data[0,:] &gt; 30)\nprint(f\"The first station had {hot_days} days above 30°C\")\n\n# TODO: e) Count the number of days above 30°C for each station\n# Your code here\n\n# TODO: f) Find the hottest and coldest stations and determine the index of the station with the highest average temperature and the station with the lowest average temperature.\n# Hint: Use np.argmax() and np.argmin()\n# Your code here\n\nAverage temperature for the first station: 17.80°C\nThe first station had 5 days above 30°C\n\n\n\n\nThat’s it!\nYou can find the solutions to these exercises online in the associated GitHub repository, but we will also quickly go over them in next week’s tutorial. To access the solutions, click on the Github button on the lower right and search for the folder with today’s lecture and tutorial. Alternatively, you can ask ChatGPT or Claude to explain them to you. Remember, the goal is not just to complete the exercises, but to understand the concepts and improve your programming abilities.",
     "crumbs": [
       "07 Scientific Computing",
       "Tutorial"
@@ -815,7 +815,7 @@
     "href": "lectures/lec_07_presentation.html#packages",
     "title": "Lecture VII - NumPy for Scientific Computing",
     "section": "Packages",
-    "text": "Packages\n\nPackages are collections of modules\nOften available from the Python Package Index (PyPI)\nInstall using pip install &lt;package_name&gt;\nVirtual environments help manage dependencies\n\n\n\n\n\n\n\n\nTip\n\n\nVirtual environments are not that important for you right now, as they are mostly used if you work on several projects with different dependecies at once."
+    "text": "Packages\n\nPackages are collections of modules\nOften available from the Python Package Index (PyPI)\nInstall using uv add &lt;package_name&gt;\nVirtual environments help manage dependencies\n\n\n\n\n\n\n\n\nTip\n\n\nVirtual environments are not that important for you right now, as they are mostly used if you work on several projects with different dependecies at once."
   },
   {
     "objectID": "lectures/lec_07_presentation.html#what-is-numpy",
@@ -836,7 +836,7 @@
     "href": "lectures/lec_07_presentation.html#how-to-get-started",
     "title": "Lecture VII - NumPy for Scientific Computing",
     "section": "How to get started",
-    "text": "How to get started\n\nInstall NumPy using pip install numpy\nIn Thonny, Tools -&gt; Manage Packages...\nImport NumPy in a script using import numpy as np\n\n\n\nimport numpy as np\nx = np.array([1, 2, 3, 4, 5]); type(x)\n\nnumpy.ndarray\n\n\n\n\n\n\n\n\n\n\nNote\n\n\nYou don’t have to use as np. But it is a common practice to do so."
+    "text": "How to get started\n\nInstall NumPy using uv add numpy\nImport NumPy in a script using import numpy as np\n\n\n\nimport numpy as np\nx = np.array([1, 2, 3, 4, 5]); type(x)\n\nnumpy.ndarray\n\n\n\n\n\n\n\n\n\n\nNote\n\n\nYou don’t have to use as np. But it is a common practice to do so."
   },
   {
     "objectID": "lectures/lec_07_presentation.html#creating-arrays",
@@ -885,7 +885,7 @@
     "href": "lectures/lec_07_presentation.html#indexing-and-slicing",
     "title": "Lecture VII - NumPy for Scientific Computing",
     "section": "Indexing and Slicing",
-    "text": "Indexing and Slicing\n\nAccessing and slicing ndarray works as before\nHigher dimension element access with multiple indices\n\n\nQuestion: What do you expect will be printed?\n\nimport numpy as np\nx = np.random.randint(0, 10, size=(3, 3))\nprint(x); print(\"---\")\nprint(x[0:2,0:2])\n\n\n\n[[2 0 4]\n [8 8 4]\n [8 8 0]]\n---\n[[2 0]\n [8 8]]"
+    "text": "Indexing and Slicing\n\nAccessing and slicing ndarray works as before\nHigher dimension element access with multiple indices\n\n\nQuestion: What do you expect will be printed?\n\nimport numpy as np\nx = np.random.randint(0, 10, size=(3, 3))\nprint(x); print(\"---\")\nprint(x[0:2,0:2])\n\n\n\n[[6 5 4]\n [2 5 7]\n [3 5 1]]\n---\n[[6 5]\n [2 5]]"
   },
   {
     "objectID": "lectures/lec_07_presentation.html#data-types",
@@ -934,7 +934,7 @@
     "href": "lectures/lec_07_presentation.html#speed-differences-in-action",
     "title": "Lecture VII - NumPy for Scientific Computing",
     "section": "Speed Differences in Action",
-    "text": "Speed Differences in Action\nTask: Complete the following task to practice with Numpy:\n\n# TODO: Create a 2-dimensional matrix with filled with ones of size 1000 x 1000.\n# Afterward, flatten the matrix to a vector and loop over the vector.\n# In each loop iteration, add a random number between 1 and 10000.\n# TODO: Now, do the same with a list of the same size and fill it with random numbers.\n# Then, sort the list as you have done with the Numpy vector before.\n# You can use the `time` module to compare the runtime of both approaches.\nimport time\nstart = time.time()\n# Your code here\nend = time.time()\nprint(end - start) # time in seconds\n\n\n\n7.152557373046875e-06"
+    "text": "Speed Differences in Action\nTask: Complete the following task to practice with Numpy:\n\n# TODO: Create a 2-dimensional matrix with filled with ones of size 1000 x 1000.\n# Afterward, flatten the matrix to a vector and loop over the vector.\n# In each loop iteration, add a random number between 1 and 10000.\n# TODO: Now, do the same with a list of the same size and fill it with random numbers.\n# Then, sort the list as you have done with the Numpy vector before.\n# You can use the `time` module to compare the runtime of both approaches.\nimport time\nstart = time.time()\n# Your code here\nend = time.time()\nprint(end - start) # time in seconds\n\n\n\n5.9604644775390625e-06"
   },
   {
     "objectID": "lectures/lec_07_presentation.html#interesting-books",
@@ -948,7 +948,7 @@
     "href": "lectures/lec_07_scientific.html",
     "title": "Lecture VII - NumPy for Scientific Computing",
     "section": "",
-    "text": "Modules are .py files containing Python code\nThey are used to organize and reuse code\nThey can define functions, classes, and variables\nCan be imported into other scripts\n\n. . .\n\n\n\n\n\n\nTip\n\n\n\nWe can import entire modules or individual functions, classes or variables.\n\n\n\n\n\n\nPython includes many built-in modules like:\n\nrandom provides functions for random numbers\nos allows interaction with the operating system\ncsv is used for reading and writing CSV files\nre is used for working with regular expressions\n\n\n\n\n\n\nPackages are collections of modules\nOften available from the Python Package Index (PyPI)\nInstall using pip install &lt;package_name&gt;\nVirtual environments help manage dependencies\n\n. . .\n\n\n\n\n\n\nTip\n\n\n\nVirtual environments are not that important for you right now, as they are mostly used if you work on several projects with different dependecies at once.",
+    "text": "Modules are .py files containing Python code\nThey are used to organize and reuse code\nThey can define functions, classes, and variables\nCan be imported into other scripts\n\n. . .\n\n\n\n\n\n\nTip\n\n\n\nWe can import entire modules or individual functions, classes or variables.\n\n\n\n\n\n\nPython includes many built-in modules like:\n\nrandom provides functions for random numbers\nos allows interaction with the operating system\ncsv is used for reading and writing CSV files\nre is used for working with regular expressions\n\n\n\n\n\n\nPackages are collections of modules\nOften available from the Python Package Index (PyPI)\nInstall using uv add &lt;package_name&gt;\nVirtual environments help manage dependencies\n\n. . .\n\n\n\n\n\n\nTip\n\n\n\nVirtual environments are not that important for you right now, as they are mostly used if you work on several projects with different dependecies at once.",
     "crumbs": [
       "07 Scientific Computing",
       "Lecture"
@@ -981,7 +981,7 @@
     "href": "lectures/lec_07_scientific.html#packages",
     "title": "Lecture VII - NumPy for Scientific Computing",
     "section": "",
-    "text": "Packages are collections of modules\nOften available from the Python Package Index (PyPI)\nInstall using pip install &lt;package_name&gt;\nVirtual environments help manage dependencies\n\n. . .\n\n\n\n\n\n\nTip\n\n\n\nVirtual environments are not that important for you right now, as they are mostly used if you work on several projects with different dependecies at once.",
+    "text": "Packages are collections of modules\nOften available from the Python Package Index (PyPI)\nInstall using uv add &lt;package_name&gt;\nVirtual environments help manage dependencies\n\n. . .\n\n\n\n\n\n\nTip\n\n\n\nVirtual environments are not that important for you right now, as they are mostly used if you work on several projects with different dependecies at once.",
     "crumbs": [
       "07 Scientific Computing",
       "Lecture"
@@ -1014,7 +1014,7 @@
     "href": "lectures/lec_07_scientific.html#how-to-get-started",
     "title": "Lecture VII - NumPy for Scientific Computing",
     "section": "How to get started",
-    "text": "How to get started\n\nInstall NumPy using pip install numpy\nIn Thonny, Tools -&gt; Manage Packages...\nImport NumPy in a script using import numpy as np\n\n. . .\n\nimport numpy as np\nx = np.array([1, 2, 3, 4, 5]); type(x)\n\nnumpy.ndarray\n\n\n. . .\n\n\n\n\n\n\nNote\n\n\n\nYou don’t have to use as np. But it is a common practice to do so.",
+    "text": "How to get started\n\nInstall NumPy using uv add numpy\nImport NumPy in a script using import numpy as np\n\n. . .\n\nimport numpy as np\nx = np.array([1, 2, 3, 4, 5]); type(x)\n\nnumpy.ndarray\n\n\n. . .\n\n\n\n\n\n\nNote\n\n\n\nYou don’t have to use as np. But it is a common practice to do so.",
     "crumbs": [
       "07 Scientific Computing",
       "Lecture"
@@ -1091,7 +1091,7 @@
     "href": "lectures/lec_07_scientific.html#indexing-and-slicing",
     "title": "Lecture VII - NumPy for Scientific Computing",
     "section": "Indexing and Slicing",
-    "text": "Indexing and Slicing\n\nAccessing and slicing ndarray works as before\nHigher dimension element access with multiple indices\n\n. . .\nQuestion: What do you expect will be printed?\n\nimport numpy as np\nx = np.random.randint(0, 10, size=(3, 3))\nprint(x); print(\"---\")\nprint(x[0:2,0:2])\n\n[[2 0 4]\n [8 8 4]\n [8 8 0]]\n---\n[[2 0]\n [8 8]]",
+    "text": "Indexing and Slicing\n\nAccessing and slicing ndarray works as before\nHigher dimension element access with multiple indices\n\n. . .\nQuestion: What do you expect will be printed?\n\nimport numpy as np\nx = np.random.randint(0, 10, size=(3, 3))\nprint(x); print(\"---\")\nprint(x[0:2,0:2])\n\n[[6 5 4]\n [2 5 7]\n [3 5 1]]\n---\n[[6 5]\n [2 5]]",
     "crumbs": [
       "07 Scientific Computing",
       "Lecture"
@@ -1168,7 +1168,7 @@
     "href": "lectures/lec_07_scientific.html#speed-differences-in-action",
     "title": "Lecture VII - NumPy for Scientific Computing",
     "section": "Speed Differences in Action",
-    "text": "Speed Differences in Action\nTask: Complete the following task to practice with Numpy:\n\n# TODO: Create a 2-dimensional matrix with filled with ones of size 1000 x 1000.\n# Afterward, flatten the matrix to a vector and loop over the vector.\n# In each loop iteration, add a random number between 1 and 10000.\n# TODO: Now, do the same with a list of the same size and fill it with random numbers.\n# Then, sort the list as you have done with the Numpy vector before.\n# You can use the `time` module to compare the runtime of both approaches.\nimport time\nstart = time.time()\n# Your code here\nend = time.time()\nprint(end - start) # time in seconds\n\n7.152557373046875e-06",
+    "text": "Speed Differences in Action\nTask: Complete the following task to practice with Numpy:\n\n# TODO: Create a 2-dimensional matrix with filled with ones of size 1000 x 1000.\n# Afterward, flatten the matrix to a vector and loop over the vector.\n# In each loop iteration, add a random number between 1 and 10000.\n# TODO: Now, do the same with a list of the same size and fill it with random numbers.\n# Then, sort the list as you have done with the Numpy vector before.\n# You can use the `time` module to compare the runtime of both approaches.\nimport time\nstart = time.time()\n# Your code here\nend = time.time()\nprint(end - start) # time in seconds\n\n5.9604644775390625e-06",
     "crumbs": [
       "07 Scientific Computing",
       "Lecture"
@@ -2126,7 +2126,7 @@
     "href": "lectures/lec_01_presentation.html#participation",
     "title": "Lecture I - Introduction",
     "section": "Participation",
-    "text": "Participation\n\nPrequisite for course Management Science (Prof. Goel)\nTry actively participating in this course\nYou will find it much (!) easier to follow Prof. Goel\nMaterials will be provided in the KLU portal\nSlides are hosted at beyondsimulations.github.io/Introduction-to-Python"
+    "text": "Participation\n\nPrequisite for course Management Science (taught by me)\nTry actively participating in this course\nYou will find it much (!) easier to follow later\nMaterials will be provided in the KLU portal\nSlides are hosted at beyondsimulations.github.io/Introduction-to-Python"
   },
   {
     "objectID": "lectures/lec_01_presentation.html#teaching",
@@ -2238,14 +2238,7 @@
     "href": "lectures/lec_01_presentation.html#learning-path",
     "title": "Lecture I - Introduction",
     "section": "Learning Path",
-    "text": "Learning Path\n\nThe learning path can be quite steep!\nFirst of all help each other!\nTry to find help in lecture materials and books, the Python documentation, and online (e.g. Google, ChatGPT, StackOverflow, …)\nIn case you get frustrated, read the following helpful blog post about the challenges on medium.com"
-  },
-  {
-    "objectID": "lectures/lec_01_presentation.html#errors",
-    "href": "lectures/lec_01_presentation.html#errors",
-    "title": "Lecture I - Introduction",
-    "section": "Errors",
-    "text": "Errors\nIn case you find errors and typos in the lecture notes, please report them in the following form:\nhttps://tally.so/r/w7oapa"
+    "text": "Learning Path\n\nThe learning path can be quite steep!\nFirst of all help each other!\nTry to find help in lecture materials and books, the Python documentation, and online (e.g. Google, ChatGPT, StackOverflow, …)\nIn case you get frustrated, read the following helpful blog post about the challenges on medium.com\nIn case you find errors or typos, please report them via e-mail to me"
   },
   {
     "objectID": "lectures/lec_01_presentation.html#installing-an-ide",
@@ -2490,7 +2483,7 @@
     "href": "lectures/lec_01_introduction.html",
     "title": "Lecture I - Introduction",
     "section": "",
-    "text": "Field: Optimizing and simulating complex systems\nLanguages: of choice: Julia, Python and Rust\nInterest: Modelling, Simulations, Machine Learning\nTeaching: OR, Algorithms, and Programming\nContact: vlcek@beyondsimulations.com\n\n\n. . .\n\n\n\n\n\n\nTip\n\n\n\nI really appreciate active participation and interaction!\n\n\n\n\n\n\nPart I: Introduction to Programming with Python\nPart II: Data Science Tools with Python\nPart III: Programming Projects\n\n\n\n\n\nPrequisite for course Management Science (Prof. Goel)\nTry actively participating in this course\nYou will find it much (!) easier to follow Prof. Goel\nMaterials will be provided in the KLU portal\nSlides are hosted at beyondsimulations.github.io/Introduction-to-Python\n\n\n\n\n\nLecture: Presentation of tools and concepts, based on small examples and code snippets\nTutorial: Hands-on examples to be solved in groups\nDifficulty: Difficult at first, but gradually easier\n\n\n\n\n\nPass/fail course\n75% attendance required for passing the course\n2 assignments and 1 little project\nYou will be given programming exercises to solve\nYou can group up (3 students) and work together\nEach student group submits one solution\n\n\n\n\n\nProvide a code solution to the problem (.py files)\nCode files need to be executable\nDetailed explanations of your code should be provided\nUse comments or docstrings in your code\nProvide a general (verbal) introduction to each problem\n\n. . .\n\n\n\n\n\n\nTip\n\n\n\nI’d encourage you to start and submit your solution early\n\n\n\n\n\n\nWe’ll cover the basics of programming (in Python) at first\nThis is similar to learning a new foreign language\nFirst, you have to get used to the language and learn words\nLater, you’ll be able to apply it and see results\nSimilar to learning a language: Practice, practice, practice!\n\n\n\n\n\nSome investment in the beginning to see the return later\nYou can ask questions and get support anytime\nAfter completion, you will be able to read code\nand write your own program using Python\nThat’s quite something!\n\n\n\n\n\nEssential concepts and tools of modern programming\nAutomated solutions for recurrent tasks\nAlgorithm-based solutions of complex problems\nUsage of AI in a specific context\n\n\n\n\n\nOrigins: Conceived in late 1980s as a teaching and scripting language\nSimple Syntax: Python’s syntax is straightforward and easy to learn\nVersatility: Used in web development, data analysis, artificial intelligence, and more\nCommunity Support: A large community of users and extensive documentation\n\n\n\n\n\nYou are allowed to use AI (GitHub Copilot, ChatGPT, LLama3 …)\nThese new tools are really powerful for learning Python!\nThey can help you a lot to get started with programming\n\n. . .\n\n\n\n\n\n\nWarning\n\n\n\nBut you should not simply use them to replace your learning.",
+    "text": "Field: Optimizing and simulating complex systems\nLanguages: of choice: Julia, Python and Rust\nInterest: Modelling, Simulations, Machine Learning\nTeaching: OR, Algorithms, and Programming\nContact: vlcek@beyondsimulations.com\n\n\n. . .\n\n\n\n\n\n\nTip\n\n\n\nI really appreciate active participation and interaction!\n\n\n\n\n\n\nPart I: Introduction to Programming with Python\nPart II: Data Science Tools with Python\nPart III: Programming Projects\n\n\n\n\n\nPrequisite for course Management Science (taught by me)\nTry actively participating in this course\nYou will find it much (!) easier to follow later\nMaterials will be provided in the KLU portal\nSlides are hosted at beyondsimulations.github.io/Introduction-to-Python\n\n\n\n\n\nLecture: Presentation of tools and concepts, based on small examples and code snippets\nTutorial: Hands-on examples to be solved in groups\nDifficulty: Difficult at first, but gradually easier\n\n\n\n\n\nPass/fail course\n75% attendance required for passing the course\n2 assignments and 1 little project\nYou will be given programming exercises to solve\nYou can group up (3 students) and work together\nEach student group submits one solution\n\n\n\n\n\nProvide a code solution to the problem (.py files)\nCode files need to be executable\nDetailed explanations of your code should be provided\nUse comments or docstrings in your code\nProvide a general (verbal) introduction to each problem\n\n. . .\n\n\n\n\n\n\nTip\n\n\n\nI’d encourage you to start and submit your solution early\n\n\n\n\n\n\nWe’ll cover the basics of programming (in Python) at first\nThis is similar to learning a new foreign language\nFirst, you have to get used to the language and learn words\nLater, you’ll be able to apply it and see results\nSimilar to learning a language: Practice, practice, practice!\n\n\n\n\n\nSome investment in the beginning to see the return later\nYou can ask questions and get support anytime\nAfter completion, you will be able to read code\nand write your own program using Python\nThat’s quite something!\n\n\n\n\n\nEssential concepts and tools of modern programming\nAutomated solutions for recurrent tasks\nAlgorithm-based solutions of complex problems\nUsage of AI in a specific context\n\n\n\n\n\nOrigins: Conceived in late 1980s as a teaching and scripting language\nSimple Syntax: Python’s syntax is straightforward and easy to learn\nVersatility: Used in web development, data analysis, artificial intelligence, and more\nCommunity Support: A large community of users and extensive documentation\n\n\n\n\n\nYou are allowed to use AI (GitHub Copilot, ChatGPT, LLama3 …)\nThese new tools are really powerful for learning Python!\nThey can help you a lot to get started with programming\n\n. . .\n\n\n\n\n\n\nWarning\n\n\n\nBut you should not simply use them to replace your learning.",
     "crumbs": [
       "01 Introduction ",
       "Lecture"
@@ -2523,7 +2516,7 @@
     "href": "lectures/lec_01_introduction.html#participation",
     "title": "Lecture I - Introduction",
     "section": "",
-    "text": "Prequisite for course Management Science (Prof. Goel)\nTry actively participating in this course\nYou will find it much (!) easier to follow Prof. Goel\nMaterials will be provided in the KLU portal\nSlides are hosted at beyondsimulations.github.io/Introduction-to-Python",
+    "text": "Prequisite for course Management Science (taught by me)\nTry actively participating in this course\nYou will find it much (!) easier to follow later\nMaterials will be provided in the KLU portal\nSlides are hosted at beyondsimulations.github.io/Introduction-to-Python",
     "crumbs": [
       "01 Introduction ",
       "Lecture"
@@ -2699,18 +2692,7 @@
     "href": "lectures/lec_01_introduction.html#learning-path",
     "title": "Lecture I - Introduction",
     "section": "Learning Path",
-    "text": "Learning Path\n\nThe learning path can be quite steep!\nFirst of all help each other!\nTry to find help in lecture materials and books, the Python documentation, and online (e.g. Google, ChatGPT, StackOverflow, …)\nIn case you get frustrated, read the following helpful blog post about the challenges on medium.com",
-    "crumbs": [
-      "01 Introduction ",
-      "Lecture"
-    ]
-  },
-  {
-    "objectID": "lectures/lec_01_introduction.html#errors",
-    "href": "lectures/lec_01_introduction.html#errors",
-    "title": "Lecture I - Introduction",
-    "section": "Errors",
-    "text": "Errors\nIn case you find errors and typos in the lecture notes, please report them in the following form:\nhttps://tally.so/r/w7oapa",
+    "text": "Learning Path\n\nThe learning path can be quite steep!\nFirst of all help each other!\nTry to find help in lecture materials and books, the Python documentation, and online (e.g. Google, ChatGPT, StackOverflow, …)\nIn case you get frustrated, read the following helpful blog post about the challenges on medium.com\nIn case you find errors or typos, please report them via e-mail to me",
     "crumbs": [
       "01 Introduction ",
       "Lecture"
@@ -3575,7 +3557,7 @@
     "href": "general/cheatsheet.html#package-management",
     "title": "Cheatsheet",
     "section": "Package Management",
-    "text": "Package Management\n# Installing packages\npip install package_name\npip install package1 package2\n\n# Upgrading packages\npip install --upgrade package_name\n\n# List installed packages\npip list",
+    "text": "Package Management\n# Installing packages\nuv add package_name\nuv add package1 package2\n\n# Remove packages\nuv remove package_name",
     "crumbs": [
       "Cheatsheet"
     ]
@@ -3757,7 +3739,7 @@
     "section": "",
     "text": "uv is a new (and very fast) Python tool written in Rust. It: - Installs Python for you (no manual downloads). - Creates isolated virtual environments (safe sandboxes per project). - Installs and updates packages quickly.\n\n\n\n\n\n\nNote\n\n\n\nWHAT is a virtual environment? Think of each project as its own coffee shop with its own supplies. One shop changing its menu does not affect the others. WHY it matters: You avoid random breakage when different projects need different versions of the same package.",
     "crumbs": [
-      "Install Python"
+      "Installing Python"
     ]
   },
   {
@@ -3767,7 +3749,7 @@
     "section": "",
     "text": "uv is a new (and very fast) Python tool written in Rust. It: - Installs Python for you (no manual downloads). - Creates isolated virtual environments (safe sandboxes per project). - Installs and updates packages quickly.\n\n\n\n\n\n\nNote\n\n\n\nWHAT is a virtual environment? Think of each project as its own coffee shop with its own supplies. One shop changing its menu does not affect the others. WHY it matters: You avoid random breakage when different projects need different versions of the same package.",
     "crumbs": [
-      "Install Python"
+      "Installing Python"
     ]
   },
   {
@@ -3777,7 +3759,7 @@
     "section": "Install uv",
     "text": "Install uv\nChoose the instructions for your operating system.\n\nmacOS or Linux (Terminal)\ncurl -LsSf https://astral.sh/uv/install.sh | sh\nIf curl is missing:\nwget -qO- https://astral.sh/uv/install.sh | sh\nAfter installation: close and reopen your terminal (so your PATH updates).\n\n\nWindows (PowerShell)\nOpen PowerShell and run:\npowershell -ExecutionPolicy Bypass -c \"irm https://astral.sh/uv/install.ps1 | iex\"\nIf you see a script execution warning, you can alternatively first run:\nSet-ExecutionPolicy -ExecutionPolicy Bypass -Scope Process\nThen re-run the install line.\n\n\nVerify installation\nRun (macOS / Linux / Windows):\nuv --version\nIf you see a version number: great!\n\n\n\n\n\n\nWarning\n\n\n\nIf you get “command not found” or “‘uv’ is not recognized”:\n\nClose and reopen the terminal (important).\nOn Windows: make sure you used PowerShell (not Command Prompt).\nStill broken? Ask for help, no need of guessing the error.",
     "crumbs": [
-      "Install Python"
+      "Installing Python"
     ]
   },
   {
@@ -3787,7 +3769,7 @@
     "section": "Install (and pin) Python",
     "text": "Install (and pin) Python\nWe want everyone on the same Python version for consistency. Thus, we’ll use Python 3.12 for the course this year.\nInstall (you only need to do this once):\nuv python install 3.12\nCheck the installation:\nuv run python --version\nExpected output starts with:\nPython 3.12.\n\n\n\n\n\n\nNote\n\n\n\nWhy pin a version? If the latest Python version moves forward mid‑semester, subtle bugs can appear that might break working code (unlikely, but possible). Pinning keeps everyone in the course aligned.",
     "crumbs": [
-      "Install Python"
+      "Installing Python"
     ]
   },
   {
@@ -3797,7 +3779,7 @@
     "section": "Create your first project",
     "text": "Create your first project\nPick a folder where you keep course work. If you do not have one, make sure to create one! Open the course folder in your IDE and then run the following from the terminal:\nuv init my-first-project\ncd my-first-project\nThe first line creates a new folder named my-first-project (you can name it anything). The second line moves you into that folder. Alternatively, you can create the folder manually before, open it in your IDE and run uv init . inside it.\nuv init creates: - main.py (starter script) - pyproject.toml (project + dependencies config) - .python-version (records the Python version we chose) - .gitignore (useful if you ever use Git) - README.md (you can jot notes here) - (A .venv folder will appear later once packages are added or synced.)\nYou do not need to edit any of these (except maybe README.md for your notes and main.py if you want to run something different).",
     "crumbs": [
-      "Install Python"
+      "Installing Python"
     ]
   },
   {
@@ -3807,7 +3789,7 @@
     "section": "Run the starter script",
     "text": "Run the starter script\nInside the project folder:\nuv run python main.py\nYou should see something like:\nHello World!\n(If you want, you can open main.py and change the message, then re-run.)\n\nWhat does that code mean?\ndef main():\n    print(\"Hello, World!\")\n\nif __name__ == \"__main__\":\n    main()\n\ndef main(): defines a function (a reusable block of code).\nprint(...) shows text in the terminal.\nThe line if __name__ == \"__main__\": ensures this only auto-runs when the file is executed directly.\n\nDon’t worry about this yet, we’ll gradually build up to it.",
     "crumbs": [
-      "Install Python"
+      "Installing Python"
     ]
   },
   {
@@ -3817,7 +3799,7 @@
     "section": "Adding packages (later in the course)",
     "text": "Adding packages (later in the course)\nIf/when you need a package (example: pandas):\nuv add pandas\nIf you added the wrong one:\nuv remove pandas\nIf your pyproject.toml changed (e.g. you pulled code from someone else):\nuv sync\nUpdate everything to newer allowed versions:\nuv update",
     "crumbs": [
-      "Install Python"
+      "Installing Python"
     ]
   },
   {
@@ -3827,7 +3809,7 @@
     "section": "(Optional) Activating the virtual environment",
     "text": "(Optional) Activating the virtual environment\nYou can either: - Always run scripts with uv run ... (safest for beginners), OR - “Activate” the environment so python refers to the project’s Python directly.\nActivate (macOS / Linux):\nsource .venv/bin/activate\nActivate (Windows PowerShell):\n.venv\\Scripts\\Activate.ps1\nYou’ll see your prompt change (e.g. (my-first-project) at the start of the terminal line).\nNow you can just run:\npython main.py\nDeactivate when done:\ndeactivate\n\n\n\n\n\n\nTip\n\n\n\nIf something seems “off”, just close the terminal and reopen in the project folder. Fresh starts fix many early mistakes.",
     "crumbs": [
-      "Install Python"
+      "Installing Python"
     ]
   },
   {
@@ -3837,7 +3819,7 @@
     "section": "Updating uv",
     "text": "Updating uv\nOccasionally:\nuv self update\n(If it ever errors, you can just reinstall using the same one-liner from earlier.)",
     "crumbs": [
-      "Install Python"
+      "Installing Python"
     ]
   },
   {
@@ -3847,7 +3829,7 @@
     "section": "Best practices for this course",
     "text": "Best practices for this course\n\nOne project folder per session or assignment keeps everything tidy.\nNever install packages “globally” outside a project.\nPrefer uv run python &lt;file&gt; instead of environment activation.\nKeep a short personal log in each project’s README.md (What did I do? What still confuses me?).\nAsk early for help, guessing usually takes much more time than asking.",
     "crumbs": [
-      "Install Python"
+      "Installing Python"
     ]
   },
   {
@@ -3857,7 +3839,7 @@
     "section": "10. Where to go next",
     "text": "10. Where to go next\nExplore the official docs later if you’re curious: https://docs.astral.sh/uv/\nYou can always see available commands:\nuv --help",
     "crumbs": [
-      "Install Python"
+      "Installing Python"
     ]
   },
   {
@@ -3867,7 +3849,7 @@
     "section": "Recap",
     "text": "Recap\nYou can now: 1. Install uv. 2. Install a pinned Python version. 3. Create a project. 4. Run a script. 5. Add/remove/sync packages.\nNow, you’re set for the rest of the course.",
     "crumbs": [
-      "Install Python"
+      "Installing Python"
     ]
   },
   {
@@ -4715,7 +4697,7 @@
     "href": "lectures/lec_04_dimensions.html#speed-differences",
     "title": "Lecture IV - Handling Data in more than one Dimension",
     "section": "Speed Differences",
-    "text": "Speed Differences\n\nLists are the most versatile, but slowest\nTuples are generally faster than lists\nSets are generally faster than lists and tuples\nDictionaries depend, but are generally faster than lists and tuples\n\n\n\nCode\nimport timeit\n\n# Number of elements in each data structure\nn = 10000000\n\n# Setup for each data structure, including the test function\nsetup_template = \"\"\"\ndef test_membership(data_structure, element):\n    return element in data_structure\ndata = {data_structure}\n\"\"\"\n\nsetups = {\n    'Tuple': setup_template.format(data_structure=f\"tuple(range({n}))\"),\n    'List': setup_template.format(data_structure=f\"list(range({n}))\"),\n    'Set': setup_template.format(data_structure=f\"set(range({n}))\"),\n    'Dictionary': setup_template.format(data_structure=f\"{{i: i for i in range({n})}}\")\n}\n\n# Measure time for each data structure\nprint(f\"Time taken for a single membership test in {n} elements (in seconds):\")\nprint(\"-\" * 75)\nfor name, setup in setups.items():\n    stmt = f\"test_membership(data, {n-1})\"  # Test membership of the last element\n    time_taken = timeit.timeit(stmt, setup=setup, number=1)\n    print(f\"{name:&lt;10}: {time_taken:.8f}\")\nprint(\"-\" * 75)\nprint(\"Note, that theses values are machine dependent and just for illustration!\")\n\n\nTime taken for a single membership test in 10000000 elements (in seconds):\n---------------------------------------------------------------------------\nTuple     : 0.04244792\nList      : 0.04288167\nSet       : 0.00000375\nDictionary: 0.00000396\n---------------------------------------------------------------------------\nNote, that theses values are machine dependent and just for illustration!",
+    "text": "Speed Differences\n\nLists are the most versatile, but slowest\nTuples are generally faster than lists\nSets are generally faster than lists and tuples\nDictionaries depend, but are generally faster than lists and tuples\n\n\n\nCode\nimport timeit\n\n# Number of elements in each data structure\nn = 10000000\n\n# Setup for each data structure, including the test function\nsetup_template = \"\"\"\ndef test_membership(data_structure, element):\n    return element in data_structure\ndata = {data_structure}\n\"\"\"\n\nsetups = {\n    'Tuple': setup_template.format(data_structure=f\"tuple(range({n}))\"),\n    'List': setup_template.format(data_structure=f\"list(range({n}))\"),\n    'Set': setup_template.format(data_structure=f\"set(range({n}))\"),\n    'Dictionary': setup_template.format(data_structure=f\"{{i: i for i in range({n})}}\")\n}\n\n# Measure time for each data structure\nprint(f\"Time taken for a single membership test in {n} elements (in seconds):\")\nprint(\"-\" * 75)\nfor name, setup in setups.items():\n    stmt = f\"test_membership(data, {n-1})\"  # Test membership of the last element\n    time_taken = timeit.timeit(stmt, setup=setup, number=1)\n    print(f\"{name:&lt;10}: {time_taken:.8f}\")\nprint(\"-\" * 75)\nprint(\"Note, that theses values are machine dependent and just for illustration!\")\n\n\nTime taken for a single membership test in 10000000 elements (in seconds):\n---------------------------------------------------------------------------\nTuple     : 0.04318071\nList      : 0.04249842\nSet       : 0.00000183\nDictionary: 0.00000238\n---------------------------------------------------------------------------\nNote, that theses values are machine dependent and just for illustration!",
     "crumbs": [
       "04 Dimensions",
       "Lecture"
@@ -4979,7 +4961,7 @@
     "href": "lectures/lec_04_presentation.html#speed-differences",
     "title": "Lecture IV - Handling Data in more than one Dimension",
     "section": "Speed Differences",
-    "text": "Speed Differences\n\nLists are the most versatile, but slowest\nTuples are generally faster than lists\nSets are generally faster than lists and tuples\nDictionaries depend, but are generally faster than lists and tuples\n\n\n\nCode\nimport timeit\n\n# Number of elements in each data structure\nn = 10000000\n\n# Setup for each data structure, including the test function\nsetup_template = \"\"\"\ndef test_membership(data_structure, element):\n    return element in data_structure\ndata = {data_structure}\n\"\"\"\n\nsetups = {\n    'Tuple': setup_template.format(data_structure=f\"tuple(range({n}))\"),\n    'List': setup_template.format(data_structure=f\"list(range({n}))\"),\n    'Set': setup_template.format(data_structure=f\"set(range({n}))\"),\n    'Dictionary': setup_template.format(data_structure=f\"{{i: i for i in range({n})}}\")\n}\n\n# Measure time for each data structure\nprint(f\"Time taken for a single membership test in {n} elements (in seconds):\")\nprint(\"-\" * 75)\nfor name, setup in setups.items():\n    stmt = f\"test_membership(data, {n-1})\"  # Test membership of the last element\n    time_taken = timeit.timeit(stmt, setup=setup, number=1)\n    print(f\"{name:&lt;10}: {time_taken:.8f}\")\nprint(\"-\" * 75)\nprint(\"Note, that theses values are machine dependent and just for illustration!\")\n\n\n\n\nTime taken for a single membership test in 10000000 elements (in seconds):\n---------------------------------------------------------------------------\nTuple     : 0.04244792\nList      : 0.04288167\nSet       : 0.00000375\nDictionary: 0.00000396\n---------------------------------------------------------------------------\nNote, that theses values are machine dependent and just for illustration!"
+    "text": "Speed Differences\n\nLists are the most versatile, but slowest\nTuples are generally faster than lists\nSets are generally faster than lists and tuples\nDictionaries depend, but are generally faster than lists and tuples\n\n\n\nCode\nimport timeit\n\n# Number of elements in each data structure\nn = 10000000\n\n# Setup for each data structure, including the test function\nsetup_template = \"\"\"\ndef test_membership(data_structure, element):\n    return element in data_structure\ndata = {data_structure}\n\"\"\"\n\nsetups = {\n    'Tuple': setup_template.format(data_structure=f\"tuple(range({n}))\"),\n    'List': setup_template.format(data_structure=f\"list(range({n}))\"),\n    'Set': setup_template.format(data_structure=f\"set(range({n}))\"),\n    'Dictionary': setup_template.format(data_structure=f\"{{i: i for i in range({n})}}\")\n}\n\n# Measure time for each data structure\nprint(f\"Time taken for a single membership test in {n} elements (in seconds):\")\nprint(\"-\" * 75)\nfor name, setup in setups.items():\n    stmt = f\"test_membership(data, {n-1})\"  # Test membership of the last element\n    time_taken = timeit.timeit(stmt, setup=setup, number=1)\n    print(f\"{name:&lt;10}: {time_taken:.8f}\")\nprint(\"-\" * 75)\nprint(\"Note, that theses values are machine dependent and just for illustration!\")\n\n\n\n\nTime taken for a single membership test in 10000000 elements (in seconds):\n---------------------------------------------------------------------------\nTuple     : 0.04318071\nList      : 0.04249842\nSet       : 0.00000183\nDictionary: 0.00000238\n---------------------------------------------------------------------------\nNote, that theses values are machine dependent and just for illustration!"
   },
   {
     "objectID": "lectures/lec_04_presentation.html#comprehensions",
@@ -5313,7 +5295,7 @@
     "href": "lectures/lec_06_modules.html#installing-packages",
     "title": "Lecture VI - Using Modules and Packages",
     "section": "Installing Packages",
-    "text": "Installing Packages\n\nPackages are installed in the shell\nUse pip install &lt;package_name&gt; to install a specific package\nAfterward you can import from the package in your Python scripts\n\n. . .\n\n\n\n\n\n\nTip\n\n\n\nWith Thonny you can install packages directly in the IDE. Simply click on Tools -&gt; Manage packages and search for the package you want to install.",
+    "text": "Installing Packages\n\nPackages are installed in the shell\nUse uv add &lt;package_name&gt; to install a specific package\nAfterward you can import from the package in your Python scripts\n\n. . .",
     "crumbs": [
       "06 Modules",
       "Lecture"
@@ -5324,7 +5306,7 @@
     "href": "lectures/lec_06_modules.html#packages-in-action",
     "title": "Lecture VI - Using Modules and Packages",
     "section": "Packages in Action",
-    "text": "Packages in Action\nTask: Install the pandas and numpy packages, which are commonly used for data analysis. We will use them together next week!\n. . .\npip install pandas numpy\n. . .\n\n\n\n\n\n\nTip\n\n\n\nIf you install packages like this, you can use the shell to do so! Alternatively, you can use pip install &lt;package_name&gt; in the Python terminal or Thonny.",
+    "text": "Packages in Action\nTask: Install the pandas and numpy packages, which are commonly used for data analysis. We will use them together next week!\n. . .\nuv add pandas numpy\n. . .\n\n\n\n\n\n\nTip\n\n\n\nIf you install packages like this, you can use the shell to do so! Alternatively, you can use uv add &lt;package_name&gt; in the Python terminal.",
     "crumbs": [
       "06 Modules",
       "Lecture"
@@ -5518,14 +5500,14 @@
     "href": "lectures/lec_06_presentation.html#installing-packages",
     "title": "Lecture VI - Using Modules and Packages",
     "section": "Installing Packages",
-    "text": "Installing Packages\n\nPackages are installed in the shell\nUse pip install &lt;package_name&gt; to install a specific package\nAfterward you can import from the package in your Python scripts\n\n\n\n\n\n\n\n\nTip\n\n\nWith Thonny you can install packages directly in the IDE. Simply click on Tools -&gt; Manage packages and search for the package you want to install."
+    "text": "Installing Packages\n\nPackages are installed in the shell\nUse uv add &lt;package_name&gt; to install a specific package\nAfterward you can import from the package in your Python scripts"
   },
   {
     "objectID": "lectures/lec_06_presentation.html#packages-in-action",
     "href": "lectures/lec_06_presentation.html#packages-in-action",
     "title": "Lecture VI - Using Modules and Packages",
     "section": "Packages in Action",
-    "text": "Packages in Action\nTask: Install the pandas and numpy packages, which are commonly used for data analysis. We will use them together next week!\n\npip install pandas numpy\n\n\n\n\n\n\n\n\nTip\n\n\nIf you install packages like this, you can use the shell to do so! Alternatively, you can use pip install &lt;package_name&gt; in the Python terminal or Thonny."
+    "text": "Packages in Action\nTask: Install the pandas and numpy packages, which are commonly used for data analysis. We will use them together next week!\n\nuv add pandas numpy\n\n\n\n\n\n\n\n\nTip\n\n\nIf you install packages like this, you can use the shell to do so! Alternatively, you can use uv add &lt;package_name&gt; in the Python terminal."
   },
   {
     "objectID": "lectures/lec_06_presentation.html#virtual-environments",
@@ -5623,7 +5605,7 @@
     "href": "lectures/lec_08_pandas.html#how-to-install-pandas",
     "title": "Lecture VII - Pandas and AI",
     "section": "How to install Pandas",
-    "text": "How to install Pandas\n\nIn the last lecture, we have installed it with pip install pandas or with Thonny\nNow, import the package import pandas as pd\n\n. . .\n\n\n\n\n\n\nNote\n\n\n\nYou can also use a different abbreviation, but pd is the most common one.",
+    "text": "How to install Pandas\n\nIn the last lecture, we have installed it with uv install pandas\nNow, import the package import pandas as pd\n\n. . .\n\n\n\n\n\n\nNote\n\n\n\nYou can also use a different abbreviation, but pd is the most common one.",
     "crumbs": [
       "08 Pandas and AI",
       "Lecture"
@@ -6105,7 +6087,7 @@
     "href": "lectures/lec_08_presentation.html#how-to-install-pandas",
     "title": "Lecture VII - Pandas and AI",
     "section": "How to install Pandas",
-    "text": "How to install Pandas\n\nIn the last lecture, we have installed it with pip install pandas or with Thonny\nNow, import the package import pandas as pd\n\n\n\n\n\n\n\n\nNote\n\n\nYou can also use a different abbreviation, but pd is the most common one."
+    "text": "How to install Pandas\n\nIn the last lecture, we have installed it with uv install pandas\nNow, import the package import pandas as pd\n\n\n\n\n\n\n\n\nNote\n\n\nYou can also use a different abbreviation, but pd is the most common one."
   },
   {
     "objectID": "lectures/lec_08_presentation.html#creating-dataframes",
