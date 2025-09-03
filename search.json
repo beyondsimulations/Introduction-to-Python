@@ -26,7 +26,7 @@
     "href": "tutorials/tut_07_scientific.html",
     "title": "Tutorial VII - NumPy for Scientific Computing",
     "section": "",
-    "text": "Analyzing Climate Data\nImagine you’re a climate scientist working on a project to analyze temperature data from weather stations across the country. You’ve been given a large dataset, and you need to use NumPy to process and analyze this data efficiently.\nTo solve this task, you’ll need to use NumPy to perform various operations on the temperature data. Here, you’ll need some new functions you haven’t seen yet.\n\nnp.mean(): calculate the mean of an array\nnp.max(): calculate the maximum of an array\nnp.min(): calculate the minimum of an array\nnp.argmax(): find the index of the maximum of an array\nnp.argmin(): find the index of the minimum of an array\n\nIf you want to find those informations along an axis, you can use the same function with axis as an additional argument. Here, axis=0 is for the columns and axis=1 is for the rows.\nFor example, to find the maximum of each row, you can use np.max(data_set, axis=1). To find the index of the maximum of each column, you can use np.argmax(data_set, axis=0).\n\nimport numpy as np\n\n# Let's analyze temperature data from 10 weather stations over 30 days\ntemp_data = np.random.randint(0, 40, size=(10, 30))\n\n# Example: Calculate the average temperature for the first station\nfirst_station_avg = np.mean(temp_data[0,:])\nprint(f\"Average temperature for the first station: {first_station_avg:.2f}°C\")\n\n# TODO: a) Calculate the average temperature for each station and print it. Make sure to round the result to 2 decimal places!\n# Hint: Use np.mean() with axis=1\n# Your code here\n\n\n# TODO: b) Find the highest temperature recorded and the station index and print it\n# Hint: Use np.max() and np.argmax(). Note, that argmax returns the index of a flattened array, so you need to convert it to the original shape!\n# Your code here\n\n# TODO: c) Find the lowest temperature recorded and the station index and print it\n# Hint: Use np.min()\n# Your code here\n\n# TODO: d) Calculate the overall average temperature and print it\n# Hint: Use np.mean() on the entire temp_data array\n# Your code here\n\n# Example: Identify days above 30°C for the first station\nhot_days = np.sum(temp_data[0,:] &gt; 30)\nprint(f\"The first station had {hot_days} days above 30°C\")\n\n# TODO: e) Count the number of days above 30°C for each station\n# Your code here\n\n# TODO: f) Find the hottest and coldest stations and determine the index of the station with the highest average temperature and the station with the lowest average temperature.\n# Hint: Use np.argmax() and np.argmin()\n# Your code here\n\nAverage temperature for the first station: 19.13°C\nThe first station had 5 days above 30°C\n\n\n\n\nThat’s it!\nYou can find the solutions to these exercises online in the associated GitHub repository, but we will also quickly go over them in next week’s tutorial. To access the solutions, click on the Github button on the lower right and search for the folder with today’s lecture and tutorial. Alternatively, you can ask ChatGPT or Claude to explain them to you. Remember, the goal is not just to complete the exercises, but to understand the concepts and improve your programming abilities.",
+    "text": "Analyzing Climate Data\nImagine you’re a climate scientist working on a project to analyze temperature data from weather stations across the country. You’ve been given a large dataset, and you need to use NumPy to process and analyze this data efficiently.\nTo solve this task, you’ll need to use NumPy to perform various operations on the temperature data. Here, you’ll need some new functions you haven’t seen yet.\n\nnp.mean(): calculate the mean of an array\nnp.max(): calculate the maximum of an array\nnp.min(): calculate the minimum of an array\nnp.argmax(): find the index of the maximum of an array\nnp.argmin(): find the index of the minimum of an array\n\nIf you want to find those informations along an axis, you can use the same function with axis as an additional argument. Here, axis=0 is for the columns and axis=1 is for the rows.\nFor example, to find the maximum of each row, you can use np.max(data_set, axis=1). To find the index of the maximum of each column, you can use np.argmax(data_set, axis=0).\n\nimport numpy as np\n\n# Let's analyze temperature data from 10 weather stations over 30 days\ntemp_data = np.random.randint(0, 40, size=(10, 30))\n\n# Example: Calculate the average temperature for the first station\nfirst_station_avg = np.mean(temp_data[0,:])\nprint(f\"Average temperature for the first station: {first_station_avg:.2f}°C\")\n\n# TODO: a) Calculate the average temperature for each station and print it. Make sure to round the result to 2 decimal places!\n# Hint: Use np.mean() with axis=1\n# Your code here\n\n\n# TODO: b) Find the highest temperature recorded and the station index and print it\n# Hint: Use np.max() and np.argmax(). Note, that argmax returns the index of a flattened array, so you need to convert it to the original shape!\n# Your code here\n\n# TODO: c) Find the lowest temperature recorded and the station index and print it\n# Hint: Use np.min()\n# Your code here\n\n# TODO: d) Calculate the overall average temperature and print it\n# Hint: Use np.mean() on the entire temp_data array\n# Your code here\n\n# Example: Identify days above 30°C for the first station\nhot_days = np.sum(temp_data[0,:] &gt; 30)\nprint(f\"The first station had {hot_days} days above 30°C\")\n\n# TODO: e) Count the number of days above 30°C for each station\n# Your code here\n\n# TODO: f) Find the hottest and coldest stations and determine the index of the station with the highest average temperature and the station with the lowest average temperature.\n# Hint: Use np.argmax() and np.argmin()\n# Your code here\n\nAverage temperature for the first station: 19.37°C\nThe first station had 8 days above 30°C\n\n\n\n\nThat’s it!\nYou can find the solutions to these exercises online in the associated GitHub repository, but we will also quickly go over them in next week’s tutorial. To access the solutions, click on the Github button on the lower right and search for the folder with today’s lecture and tutorial. Alternatively, you can ask ChatGPT or Claude to explain them to you. Remember, the goal is not just to complete the exercises, but to understand the concepts and improve your programming abilities.",
     "crumbs": [
       "07 Scientific Computing",
       "Tutorial"
@@ -885,7 +885,7 @@
     "href": "lectures/lec_07_presentation.html#indexing-and-slicing",
     "title": "Lecture VII - NumPy for Scientific Computing",
     "section": "Indexing and Slicing",
-    "text": "Indexing and Slicing\n\nAccessing and slicing ndarray works as before\nHigher dimension element access with multiple indices\n\n\nQuestion: What do you expect will be printed?\n\nimport numpy as np\nx = np.random.randint(0, 10, size=(3, 3))\nprint(x); print(\"---\")\nprint(x[0:2,0:2])\n\n\n\n[[4 5 5]\n [0 1 5]\n [9 8 5]]\n---\n[[4 5]\n [0 1]]"
+    "text": "Indexing and Slicing\n\nAccessing and slicing ndarray works as before\nHigher dimension element access with multiple indices\n\n\nQuestion: What do you expect will be printed?\n\nimport numpy as np\nx = np.random.randint(0, 10, size=(3, 3))\nprint(x); print(\"---\")\nprint(x[0:2,0:2])\n\n\n\n[[2 0 4]\n [8 8 4]\n [8 8 0]]\n---\n[[2 0]\n [8 8]]"
   },
   {
     "objectID": "lectures/lec_07_presentation.html#data-types",
@@ -934,7 +934,7 @@
     "href": "lectures/lec_07_presentation.html#speed-differences-in-action",
     "title": "Lecture VII - NumPy for Scientific Computing",
     "section": "Speed Differences in Action",
-    "text": "Speed Differences in Action\nTask: Complete the following task to practice with Numpy:\n\n# TODO: Create a 2-dimensional matrix with filled with ones of size 1000 x 1000.\n# Afterward, flatten the matrix to a vector and loop over the vector.\n# In each loop iteration, add a random number between 1 and 10000.\n# TODO: Now, do the same with a list of the same size and fill it with random numbers.\n# Then, sort the list as you have done with the Numpy vector before.\n# You can use the `time` module to compare the runtime of both approaches.\nimport time\nstart = time.time()\n# Your code here\nend = time.time()\nprint(end - start) # time in seconds\n\n\n\n1.0013580322265625e-05"
+    "text": "Speed Differences in Action\nTask: Complete the following task to practice with Numpy:\n\n# TODO: Create a 2-dimensional matrix with filled with ones of size 1000 x 1000.\n# Afterward, flatten the matrix to a vector and loop over the vector.\n# In each loop iteration, add a random number between 1 and 10000.\n# TODO: Now, do the same with a list of the same size and fill it with random numbers.\n# Then, sort the list as you have done with the Numpy vector before.\n# You can use the `time` module to compare the runtime of both approaches.\nimport time\nstart = time.time()\n# Your code here\nend = time.time()\nprint(end - start) # time in seconds\n\n\n\n7.152557373046875e-06"
   },
   {
     "objectID": "lectures/lec_07_presentation.html#interesting-books",
@@ -1091,7 +1091,7 @@
     "href": "lectures/lec_07_scientific.html#indexing-and-slicing",
     "title": "Lecture VII - NumPy for Scientific Computing",
     "section": "Indexing and Slicing",
-    "text": "Indexing and Slicing\n\nAccessing and slicing ndarray works as before\nHigher dimension element access with multiple indices\n\n. . .\nQuestion: What do you expect will be printed?\n\nimport numpy as np\nx = np.random.randint(0, 10, size=(3, 3))\nprint(x); print(\"---\")\nprint(x[0:2,0:2])\n\n[[4 5 5]\n [0 1 5]\n [9 8 5]]\n---\n[[4 5]\n [0 1]]",
+    "text": "Indexing and Slicing\n\nAccessing and slicing ndarray works as before\nHigher dimension element access with multiple indices\n\n. . .\nQuestion: What do you expect will be printed?\n\nimport numpy as np\nx = np.random.randint(0, 10, size=(3, 3))\nprint(x); print(\"---\")\nprint(x[0:2,0:2])\n\n[[2 0 4]\n [8 8 4]\n [8 8 0]]\n---\n[[2 0]\n [8 8]]",
     "crumbs": [
       "07 Scientific Computing",
       "Lecture"
@@ -1168,7 +1168,7 @@
     "href": "lectures/lec_07_scientific.html#speed-differences-in-action",
     "title": "Lecture VII - NumPy for Scientific Computing",
     "section": "Speed Differences in Action",
-    "text": "Speed Differences in Action\nTask: Complete the following task to practice with Numpy:\n\n# TODO: Create a 2-dimensional matrix with filled with ones of size 1000 x 1000.\n# Afterward, flatten the matrix to a vector and loop over the vector.\n# In each loop iteration, add a random number between 1 and 10000.\n# TODO: Now, do the same with a list of the same size and fill it with random numbers.\n# Then, sort the list as you have done with the Numpy vector before.\n# You can use the `time` module to compare the runtime of both approaches.\nimport time\nstart = time.time()\n# Your code here\nend = time.time()\nprint(end - start) # time in seconds\n\n1.0013580322265625e-05",
+    "text": "Speed Differences in Action\nTask: Complete the following task to practice with Numpy:\n\n# TODO: Create a 2-dimensional matrix with filled with ones of size 1000 x 1000.\n# Afterward, flatten the matrix to a vector and loop over the vector.\n# In each loop iteration, add a random number between 1 and 10000.\n# TODO: Now, do the same with a list of the same size and fill it with random numbers.\n# Then, sort the list as you have done with the Numpy vector before.\n# You can use the `time` module to compare the runtime of both approaches.\nimport time\nstart = time.time()\n# Your code here\nend = time.time()\nprint(end - start) # time in seconds\n\n7.152557373046875e-06",
     "crumbs": [
       "07 Scientific Computing",
       "Lecture"
@@ -1302,28 +1302,21 @@
     "href": "lectures/lec_05_presentation.html#using-debugging-tools",
     "title": "Lecture V - Handling Errors",
     "section": "Using Debugging Tools",
-    "text": "Using Debugging Tools\n\nWe can also use debugging tools built into most IDEs\nAllow to step through code, set breakpoints, and inspect variables\nWe will use Thonny, but there are many other options"
+    "text": "Using Debugging Tools\n\nWe can also use debugging tools built into most IDEs\nAllow to step through code, set breakpoints, and inspect variables\nWe will use Zed, but there are many other options"
   },
   {
-    "objectID": "lectures/lec_05_presentation.html#debugging-in-thonny-i",
-    "href": "lectures/lec_05_presentation.html#debugging-in-thonny-i",
+    "objectID": "lectures/lec_05_presentation.html#debugging-in-zed",
+    "href": "lectures/lec_05_presentation.html#debugging-in-zed",
     "title": "Lecture V - Handling Errors",
-    "section": "Debugging in Thonny I",
-    "text": "Debugging in Thonny I\n&gt;Task: Open Thonny and copy the following code:\n\ndef calculate_average(numbers):\n    total = 0\n    count = 0\n    for num in numbers:\n        total += num\n        count += 1\n\n    average = total / count\n    return average\n\n# Test cases\ntest_lists = [\n    [1, 2, 3, 4, 5],\n    [10, 20, 30],\n    []\n    ]\n\nfor i, test_list in enumerate(test_lists):\n    print(f\"Test case {i + 1}:\")\n    result = calculate_average(test_list)\n    print(f\"Average: {result}\\n\")"
-  },
-  {
-    "objectID": "lectures/lec_05_presentation.html#debugging-in-thonny-ii",
-    "href": "lectures/lec_05_presentation.html#debugging-in-thonny-ii",
-    "title": "Lecture V - Handling Errors",
-    "section": "Debugging in Thonny II",
-    "text": "Debugging in Thonny II\n\nClick on the bug icon on the left side of the screen"
+    "section": "Debugging in Zed",
+    "text": "Debugging in Zed\n&gt;Task: Open Zed and copy the following code to main.py.\n\ndef calculate_average(numbers):\n    total = 0\n    count = 0\n    for num in numbers:\n        total += num\n        count += 1\n\n    average = total / count\n    return average\n\n# Test cases\ntest_lists = [\n    [1, 2, 3, 4, 5],\n    [10, 20, 30],\n    []\n    ]\n\nfor i, test_list in enumerate(test_lists):\n    print(f\"Test case {i + 1}:\")\n    result = calculate_average(test_list)\n    print(f\"Average: {result}\\n\")"
   },
   {
     "objectID": "lectures/lec_05_presentation.html#debugging-tools",
     "href": "lectures/lec_05_presentation.html#debugging-tools",
     "title": "Lecture V - Handling Errors",
     "section": "Debugging Tools",
-    "text": "Debugging Tools\n&gt;Task: Run the code and use the debugging tools to find the error.\n\nUse step over, step into and step out to navigate through your code\nUse the variable viewer to inspect variables at different points\nUse the breakpoints to pause the execution at a specific point\n\n\n&gt;Question: What do you think the error is?\n\n\n\n\n\n\n\n\nNote\n\n\nThe enumerate function used in the code is super helpful function that returns a tuple containing the index and the value of the item in the list and it is not the error."
+    "text": "Debugging Tools\n&gt;Task: Run the code and use the debugging tools by clicking on the small bug icon in the lower right corner to find the error and select run [YOUR PATH TO THE FILE]/main.py.\n\nUse the breakpoints to pause the execution at a specific point\nUse step over, step into and step out to navigate through your code\nUse the variable viewer to inspect variables at different points\n\n\n&gt;Question: What do you think the error is?\n\n\n\n\n\n\n\n\nNote\n\n\nThe enumerate function used in the code is super helpful function that returns a tuple containing the index and the value of the item in the list and it is not the error."
   },
   {
     "objectID": "lectures/lec_05_presentation.html#using-logging",
@@ -1531,29 +1524,18 @@
     "href": "lectures/lec_05_errors.html#using-debugging-tools",
     "title": "Lecture V - Handling Errors",
     "section": "Using Debugging Tools",
-    "text": "Using Debugging Tools\n\nWe can also use debugging tools built into most IDEs\nAllow to step through code, set breakpoints, and inspect variables\nWe will use Thonny, but there are many other options",
+    "text": "Using Debugging Tools\n\nWe can also use debugging tools built into most IDEs\nAllow to step through code, set breakpoints, and inspect variables\nWe will use Zed, but there are many other options",
     "crumbs": [
       "05 Errors",
       "Lecture"
     ]
   },
   {
-    "objectID": "lectures/lec_05_errors.html#debugging-in-thonny-i",
-    "href": "lectures/lec_05_errors.html#debugging-in-thonny-i",
+    "objectID": "lectures/lec_05_errors.html#debugging-in-zed",
+    "href": "lectures/lec_05_errors.html#debugging-in-zed",
     "title": "Lecture V - Handling Errors",
-    "section": "Debugging in Thonny I",
-    "text": "Debugging in Thonny I\n&gt;Task: Open Thonny and copy the following code:\n\ndef calculate_average(numbers):\n    total = 0\n    count = 0\n    for num in numbers:\n        total += num\n        count += 1\n\n    average = total / count\n    return average\n\n# Test cases\ntest_lists = [\n    [1, 2, 3, 4, 5],\n    [10, 20, 30],\n    []\n    ]\n\nfor i, test_list in enumerate(test_lists):\n    print(f\"Test case {i + 1}:\")\n    result = calculate_average(test_list)\n    print(f\"Average: {result}\\n\")",
-    "crumbs": [
-      "05 Errors",
-      "Lecture"
-    ]
-  },
-  {
-    "objectID": "lectures/lec_05_errors.html#debugging-in-thonny-ii",
-    "href": "lectures/lec_05_errors.html#debugging-in-thonny-ii",
-    "title": "Lecture V - Handling Errors",
-    "section": "Debugging in Thonny II",
-    "text": "Debugging in Thonny II\n\nClick on the bug icon on the left side of the screen",
+    "section": "Debugging in Zed",
+    "text": "Debugging in Zed\n&gt;Task: Open Zed and copy the following code to main.py.\n\ndef calculate_average(numbers):\n    total = 0\n    count = 0\n    for num in numbers:\n        total += num\n        count += 1\n\n    average = total / count\n    return average\n\n# Test cases\ntest_lists = [\n    [1, 2, 3, 4, 5],\n    [10, 20, 30],\n    []\n    ]\n\nfor i, test_list in enumerate(test_lists):\n    print(f\"Test case {i + 1}:\")\n    result = calculate_average(test_list)\n    print(f\"Average: {result}\\n\")",
     "crumbs": [
       "05 Errors",
       "Lecture"
@@ -1564,7 +1546,7 @@
     "href": "lectures/lec_05_errors.html#debugging-tools",
     "title": "Lecture V - Handling Errors",
     "section": "Debugging Tools",
-    "text": "Debugging Tools\n&gt;Task: Run the code and use the debugging tools to find the error.\n\nUse step over, step into and step out to navigate through your code\nUse the variable viewer to inspect variables at different points\nUse the breakpoints to pause the execution at a specific point\n\n. . .\n&gt;Question: What do you think the error is?\n. . .\n\n\n\n\n\n\nNote\n\n\n\nThe enumerate function used in the code is super helpful function that returns a tuple containing the index and the value of the item in the list and it is not the error.",
+    "text": "Debugging Tools\n&gt;Task: Run the code and use the debugging tools by clicking on the small bug icon in the lower right corner to find the error and select run [YOUR PATH TO THE FILE]/main.py.\n\nUse the breakpoints to pause the execution at a specific point\nUse step over, step into and step out to navigate through your code\nUse the variable viewer to inspect variables at different points\n\n. . .\n&gt;Question: What do you think the error is?\n. . .\n\n\n\n\n\n\nNote\n\n\n\nThe enumerate function used in the code is super helpful function that returns a tuple containing the index and the value of the item in the list and it is not the error.",
     "crumbs": [
       "05 Errors",
       "Lecture"
@@ -2266,25 +2248,25 @@
     "text": "Errors\nIn case you find errors and typos in the lecture notes, please report them in the following form:\nhttps://tally.so/r/w7oapa"
   },
   {
-    "objectID": "lectures/lec_01_presentation.html#install-python",
-    "href": "lectures/lec_01_presentation.html#install-python",
+    "objectID": "lectures/lec_01_presentation.html#installing-an-ide",
+    "href": "lectures/lec_01_presentation.html#installing-an-ide",
     "title": "Lecture I - Introduction",
-    "section": "Install Python",
-    "text": "Install Python\n\nSources are the Python website or Anaconda\nBut I would recommend we start by installing Thonny\nAn open source IDE running on Windows, Linux and Mac\nBuilt in Python interpreter and package management!"
+    "section": "Installing an IDE",
+    "text": "Installing an IDE\n\nIn this course, we will use Zed as our IDE\nDownload and install it from https://zed.dev/\nIt is available for Windows, Mac and Linux\nIt is free to use, lightweight and fast\nHas AI support built-in, which we will use later"
   },
   {
     "objectID": "lectures/lec_01_presentation.html#what-is-an-ide",
     "href": "lectures/lec_01_presentation.html#what-is-an-ide",
     "title": "Lecture I - Introduction",
     "section": "What is an IDE?",
-    "text": "What is an IDE?\n\nIntegrated Development Environment = application\nIt allows you to write, run and debug code scripts\nThonny is an IDE specifically for Python beginners\nIt is easy to use as beginner!\nOther IDEs include for example PyCharm from JetBrains or Visual Studio Code from Microsoft"
+    "text": "What is an IDE?\n\nIntegrated Development Environment = application\nIt allows you to write, run and debug code scripts\nOther IDEs include for example:\n\nPyCharm from JetBrains\nVisual Studio Code from Microsoft"
   },
   {
-    "objectID": "lectures/lec_01_presentation.html#thonny",
-    "href": "lectures/lec_01_presentation.html#thonny",
+    "objectID": "lectures/lec_01_presentation.html#installing-python-with-uv",
+    "href": "lectures/lec_01_presentation.html#installing-python-with-uv",
     "title": "Lecture I - Introduction",
-    "section": "Thonny",
-    "text": "Thonny\n\nFirst start of Thonny"
+    "section": "Installing Python with uv",
+    "text": "Installing Python with uv\n\nWe will use uv to install and manage Python versions\nIt works on Windows, Mac and Linux\nIt helps us to manage packages and virtual environments\nNow, we all go here and install uv and Python"
   },
   {
     "objectID": "lectures/lec_01_presentation.html#python-on-ipads",
@@ -2294,25 +2276,18 @@
     "text": "Python on iPads\n\nAlthough you can run Python scripts from on your iPad, it is not recommended for the course\nNonetheless, you could use Pythonista\nIt works locally on your iPad and can run most scripts\n\n\n\n\n\n\n\n\nCaution\n\n\nNot all packages available in Python are available in Pythonista, thus you might need a computer to solve certain problems."
   },
   {
-    "objectID": "lectures/lec_01_presentation.html#first-start-of-pythonista",
-    "href": "lectures/lec_01_presentation.html#first-start-of-pythonista",
+    "objectID": "lectures/lec_01_presentation.html#hello-my-name-is",
+    "href": "lectures/lec_01_presentation.html#hello-my-name-is",
     "title": "Lecture I - Introduction",
-    "section": "First start of Pythonista",
-    "text": "First start of Pythonista\n\nFirst start of Pythonista"
-  },
-  {
-    "objectID": "lectures/lec_01_presentation.html#hello-world",
-    "href": "lectures/lec_01_presentation.html#hello-world",
-    "title": "Lecture I - Introduction",
-    "section": "Hello, World!",
-    "text": "Hello, World!\nTask: Create a directory for the course and create a new file called hello_world.py with the following code:\n\n# This is a comment in Python\nprint(\"Hello, World!\")\n\n\n\nHello, World!\n\n\n\nRun it with the green ‘run’ button or by pressing F5!\n\n\n\n\n\n\n\n\nNote\n\n\n“Hello world” is a classic example to start with. It is often used as a test to check if your computer is working properly and that you have installed the necessary software."
+    "section": "Hello, my name is …!",
+    "text": "Hello, my name is …!\nTask: Open the directory you created for the course and create a new file called hello.py with the following code:\n\n# This is a comment in Python\nprint(\"Hello, my name is [YOUR NAME HERE]!\")\n\n\n\nHello, my name is [YOUR NAME HERE]!\n\n\n\nRun it by executing the following command in your terminal:\nuv run python hello.py"
   },
   {
     "objectID": "lectures/lec_01_presentation.html#hello-world-in-a-message",
     "href": "lectures/lec_01_presentation.html#hello-world-in-a-message",
     "title": "Lecture I - Introduction",
     "section": "Hello, World in a Message",
-    "text": "Hello, World in a Message\nTask: Change the code in your hello_world.py file. Assign the string \"Hello, World!\" to a variable called message and print the variable.\n\n\nUse the equals sign (=)\nVariable name goes on the left\nValue to be assigned goes on the right\n\n\n\n\n# Here we assign the string \"Hello, World!\" to variable message and print it\nmessage = \"Hello, World!\"\nprint(message)\n\n\n\nHello, World!"
+    "text": "Hello, World in a Message\nTask: Create a new file called message_world.py file. Assign the string \"Hello, World!\" to a variable called message and print the variable.\n\n\nUse the equals sign (=)\nVariable name goes on the left\nValue to be assigned goes on the right\n\n\n\n\n# Here we assign the string \"Hello, World!\" to variable message and print it\nmessage = \"Hello, World!\"\nprint(message)\n\n\n\nHello, World!"
   },
   {
     "objectID": "lectures/lec_01_presentation.html#hello-world-in-parentheses",
@@ -2742,11 +2717,11 @@
     ]
   },
   {
-    "objectID": "lectures/lec_01_introduction.html#install-python",
-    "href": "lectures/lec_01_introduction.html#install-python",
+    "objectID": "lectures/lec_01_introduction.html#installing-an-ide",
+    "href": "lectures/lec_01_introduction.html#installing-an-ide",
     "title": "Lecture I - Introduction",
-    "section": "Install Python",
-    "text": "Install Python\n\nSources are the Python website or Anaconda\nBut I would recommend we start by installing Thonny\nAn open source IDE running on Windows, Linux and Mac\nBuilt in Python interpreter and package management!",
+    "section": "Installing an IDE",
+    "text": "Installing an IDE\n\nIn this course, we will use Zed as our IDE\nDownload and install it from https://zed.dev/\nIt is available for Windows, Mac and Linux\nIt is free to use, lightweight and fast\nHas AI support built-in, which we will use later",
     "crumbs": [
       "01 Introduction ",
       "Lecture"
@@ -2757,18 +2732,18 @@
     "href": "lectures/lec_01_introduction.html#what-is-an-ide",
     "title": "Lecture I - Introduction",
     "section": "What is an IDE?",
-    "text": "What is an IDE?\n\nIntegrated Development Environment = application\nIt allows you to write, run and debug code scripts\nThonny is an IDE specifically for Python beginners\nIt is easy to use as beginner!\nOther IDEs include for example PyCharm from JetBrains or Visual Studio Code from Microsoft",
+    "text": "What is an IDE?\n\nIntegrated Development Environment = application\nIt allows you to write, run and debug code scripts\nOther IDEs include for example:\n\nPyCharm from JetBrains\nVisual Studio Code from Microsoft",
     "crumbs": [
       "01 Introduction ",
       "Lecture"
     ]
   },
   {
-    "objectID": "lectures/lec_01_introduction.html#thonny",
-    "href": "lectures/lec_01_introduction.html#thonny",
+    "objectID": "lectures/lec_01_introduction.html#installing-python-with-uv",
+    "href": "lectures/lec_01_introduction.html#installing-python-with-uv",
     "title": "Lecture I - Introduction",
-    "section": "Thonny",
-    "text": "Thonny\n\n\n\nFirst start of Thonny",
+    "section": "Installing Python with uv",
+    "text": "Installing Python with uv\n\nWe will use uv to install and manage Python versions\nIt works on Windows, Mac and Linux\nIt helps us to manage packages and virtual environments\nNow, we all go here and install uv and Python",
     "crumbs": [
       "01 Introduction ",
       "Lecture"
@@ -2786,22 +2761,11 @@
     ]
   },
   {
-    "objectID": "lectures/lec_01_introduction.html#first-start-of-pythonista",
-    "href": "lectures/lec_01_introduction.html#first-start-of-pythonista",
+    "objectID": "lectures/lec_01_introduction.html#hello-my-name-is",
+    "href": "lectures/lec_01_introduction.html#hello-my-name-is",
     "title": "Lecture I - Introduction",
-    "section": "First start of Pythonista",
-    "text": "First start of Pythonista\n\n\n\nFirst start of Pythonista",
-    "crumbs": [
-      "01 Introduction ",
-      "Lecture"
-    ]
-  },
-  {
-    "objectID": "lectures/lec_01_introduction.html#hello-world",
-    "href": "lectures/lec_01_introduction.html#hello-world",
-    "title": "Lecture I - Introduction",
-    "section": "Hello, World!",
-    "text": "Hello, World!\nTask: Create a directory for the course and create a new file called hello_world.py with the following code:\n\n# This is a comment in Python\nprint(\"Hello, World!\")\n\nHello, World!\n\n\n. . .\nRun it with the green ‘run’ button or by pressing F5!\n. . .\n\n\n\n\n\n\nNote\n\n\n\n“Hello world” is a classic example to start with. It is often used as a test to check if your computer is working properly and that you have installed the necessary software.",
+    "section": "Hello, my name is …!",
+    "text": "Hello, my name is …!\nTask: Open the directory you created for the course and create a new file called hello.py with the following code:\n\n# This is a comment in Python\nprint(\"Hello, my name is [YOUR NAME HERE]!\")\n\nHello, my name is [YOUR NAME HERE]!\n\n\n. . .\nRun it by executing the following command in your terminal:\nuv run python hello.py\n. . .",
     "crumbs": [
       "01 Introduction ",
       "Lecture"
@@ -2812,7 +2776,7 @@
     "href": "lectures/lec_01_introduction.html#hello-world-in-a-message",
     "title": "Lecture I - Introduction",
     "section": "Hello, World in a Message",
-    "text": "Hello, World in a Message\nTask: Change the code in your hello_world.py file. Assign the string \"Hello, World!\" to a variable called message and print the variable.\n. . .\n\nUse the equals sign (=)\nVariable name goes on the left\nValue to be assigned goes on the right\n\n. . .\n\n# Here we assign the string \"Hello, World!\" to variable message and print it\nmessage = \"Hello, World!\"\nprint(message)\n\nHello, World!",
+    "text": "Hello, World in a Message\nTask: Create a new file called message_world.py file. Assign the string \"Hello, World!\" to a variable called message and print the variable.\n. . .\n\nUse the equals sign (=)\nVariable name goes on the left\nValue to be assigned goes on the right\n\n. . .\n\n# Here we assign the string \"Hello, World!\" to variable message and print it\nmessage = \"Hello, World!\"\nprint(message)\n\nHello, World!",
     "crumbs": [
       "01 Introduction ",
       "Lecture"
@@ -4751,7 +4715,7 @@
     "href": "lectures/lec_04_dimensions.html#speed-differences",
     "title": "Lecture IV - Handling Data in more than one Dimension",
     "section": "Speed Differences",
-    "text": "Speed Differences\n\nLists are the most versatile, but slowest\nTuples are generally faster than lists\nSets are generally faster than lists and tuples\nDictionaries depend, but are generally faster than lists and tuples\n\n\n\nCode\nimport timeit\n\n# Number of elements in each data structure\nn = 10000000\n\n# Setup for each data structure, including the test function\nsetup_template = \"\"\"\ndef test_membership(data_structure, element):\n    return element in data_structure\ndata = {data_structure}\n\"\"\"\n\nsetups = {\n    'Tuple': setup_template.format(data_structure=f\"tuple(range({n}))\"),\n    'List': setup_template.format(data_structure=f\"list(range({n}))\"),\n    'Set': setup_template.format(data_structure=f\"set(range({n}))\"),\n    'Dictionary': setup_template.format(data_structure=f\"{{i: i for i in range({n})}}\")\n}\n\n# Measure time for each data structure\nprint(f\"Time taken for a single membership test in {n} elements (in seconds):\")\nprint(\"-\" * 75)\nfor name, setup in setups.items():\n    stmt = f\"test_membership(data, {n-1})\"  # Test membership of the last element\n    time_taken = timeit.timeit(stmt, setup=setup, number=1)\n    print(f\"{name:&lt;10}: {time_taken:.8f}\")\nprint(\"-\" * 75)\nprint(\"Note, that theses values are machine dependent and just for illustration!\")\n\n\nTime taken for a single membership test in 10000000 elements (in seconds):\n---------------------------------------------------------------------------\nTuple     : 0.05730954\nList      : 0.05840187\nSet       : 0.00000254\nDictionary: 0.00000162\n---------------------------------------------------------------------------\nNote, that theses values are machine dependent and just for illustration!",
+    "text": "Speed Differences\n\nLists are the most versatile, but slowest\nTuples are generally faster than lists\nSets are generally faster than lists and tuples\nDictionaries depend, but are generally faster than lists and tuples\n\n\n\nCode\nimport timeit\n\n# Number of elements in each data structure\nn = 10000000\n\n# Setup for each data structure, including the test function\nsetup_template = \"\"\"\ndef test_membership(data_structure, element):\n    return element in data_structure\ndata = {data_structure}\n\"\"\"\n\nsetups = {\n    'Tuple': setup_template.format(data_structure=f\"tuple(range({n}))\"),\n    'List': setup_template.format(data_structure=f\"list(range({n}))\"),\n    'Set': setup_template.format(data_structure=f\"set(range({n}))\"),\n    'Dictionary': setup_template.format(data_structure=f\"{{i: i for i in range({n})}}\")\n}\n\n# Measure time for each data structure\nprint(f\"Time taken for a single membership test in {n} elements (in seconds):\")\nprint(\"-\" * 75)\nfor name, setup in setups.items():\n    stmt = f\"test_membership(data, {n-1})\"  # Test membership of the last element\n    time_taken = timeit.timeit(stmt, setup=setup, number=1)\n    print(f\"{name:&lt;10}: {time_taken:.8f}\")\nprint(\"-\" * 75)\nprint(\"Note, that theses values are machine dependent and just for illustration!\")\n\n\nTime taken for a single membership test in 10000000 elements (in seconds):\n---------------------------------------------------------------------------\nTuple     : 0.04244792\nList      : 0.04288167\nSet       : 0.00000375\nDictionary: 0.00000396\n---------------------------------------------------------------------------\nNote, that theses values are machine dependent and just for illustration!",
     "crumbs": [
       "04 Dimensions",
       "Lecture"
@@ -5015,7 +4979,7 @@
     "href": "lectures/lec_04_presentation.html#speed-differences",
     "title": "Lecture IV - Handling Data in more than one Dimension",
     "section": "Speed Differences",
-    "text": "Speed Differences\n\nLists are the most versatile, but slowest\nTuples are generally faster than lists\nSets are generally faster than lists and tuples\nDictionaries depend, but are generally faster than lists and tuples\n\n\n\nCode\nimport timeit\n\n# Number of elements in each data structure\nn = 10000000\n\n# Setup for each data structure, including the test function\nsetup_template = \"\"\"\ndef test_membership(data_structure, element):\n    return element in data_structure\ndata = {data_structure}\n\"\"\"\n\nsetups = {\n    'Tuple': setup_template.format(data_structure=f\"tuple(range({n}))\"),\n    'List': setup_template.format(data_structure=f\"list(range({n}))\"),\n    'Set': setup_template.format(data_structure=f\"set(range({n}))\"),\n    'Dictionary': setup_template.format(data_structure=f\"{{i: i for i in range({n})}}\")\n}\n\n# Measure time for each data structure\nprint(f\"Time taken for a single membership test in {n} elements (in seconds):\")\nprint(\"-\" * 75)\nfor name, setup in setups.items():\n    stmt = f\"test_membership(data, {n-1})\"  # Test membership of the last element\n    time_taken = timeit.timeit(stmt, setup=setup, number=1)\n    print(f\"{name:&lt;10}: {time_taken:.8f}\")\nprint(\"-\" * 75)\nprint(\"Note, that theses values are machine dependent and just for illustration!\")\n\n\n\n\nTime taken for a single membership test in 10000000 elements (in seconds):\n---------------------------------------------------------------------------\nTuple     : 0.05730954\nList      : 0.05840187\nSet       : 0.00000254\nDictionary: 0.00000162\n---------------------------------------------------------------------------\nNote, that theses values are machine dependent and just for illustration!"
+    "text": "Speed Differences\n\nLists are the most versatile, but slowest\nTuples are generally faster than lists\nSets are generally faster than lists and tuples\nDictionaries depend, but are generally faster than lists and tuples\n\n\n\nCode\nimport timeit\n\n# Number of elements in each data structure\nn = 10000000\n\n# Setup for each data structure, including the test function\nsetup_template = \"\"\"\ndef test_membership(data_structure, element):\n    return element in data_structure\ndata = {data_structure}\n\"\"\"\n\nsetups = {\n    'Tuple': setup_template.format(data_structure=f\"tuple(range({n}))\"),\n    'List': setup_template.format(data_structure=f\"list(range({n}))\"),\n    'Set': setup_template.format(data_structure=f\"set(range({n}))\"),\n    'Dictionary': setup_template.format(data_structure=f\"{{i: i for i in range({n})}}\")\n}\n\n# Measure time for each data structure\nprint(f\"Time taken for a single membership test in {n} elements (in seconds):\")\nprint(\"-\" * 75)\nfor name, setup in setups.items():\n    stmt = f\"test_membership(data, {n-1})\"  # Test membership of the last element\n    time_taken = timeit.timeit(stmt, setup=setup, number=1)\n    print(f\"{name:&lt;10}: {time_taken:.8f}\")\nprint(\"-\" * 75)\nprint(\"Note, that theses values are machine dependent and just for illustration!\")\n\n\n\n\nTime taken for a single membership test in 10000000 elements (in seconds):\n---------------------------------------------------------------------------\nTuple     : 0.04244792\nList      : 0.04288167\nSet       : 0.00000375\nDictionary: 0.00000396\n---------------------------------------------------------------------------\nNote, that theses values are machine dependent and just for illustration!"
   },
   {
     "objectID": "lectures/lec_04_presentation.html#comprehensions",
