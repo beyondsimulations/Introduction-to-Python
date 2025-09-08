@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.8.19">
+<meta name="generator" content="quarto-1.8.24">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -37,14 +37,14 @@ ul.task-list li input[type="checkbox"] {
 <script src="/Introduction-to-Python/site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="/Introduction-to-Python/site_libs/quarto-html/anchor.min.js"></script>
 <link href="/Introduction-to-Python/site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="/Introduction-to-Python/site_libs/quarto-html/quarto-syntax-highlighting-b894b9c929d8ec314e30f6a6ecf92c61.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
-<link href="/Introduction-to-Python/site_libs/quarto-html/quarto-syntax-highlighting-dark-cfd0fb6c7fb98acfb91a93419e555fd2.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
-<link href="/Introduction-to-Python/site_libs/quarto-html/quarto-syntax-highlighting-b894b9c929d8ec314e30f6a6ecf92c61.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
+<link href="/Introduction-to-Python/site_libs/quarto-html/quarto-syntax-highlighting-4a6bbdacf3f8933310e97f086414c96e.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="/Introduction-to-Python/site_libs/quarto-html/quarto-syntax-highlighting-dark-e79e4f58e2322206cbc0681e20e54604.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<link href="/Introduction-to-Python/site_libs/quarto-html/quarto-syntax-highlighting-4a6bbdacf3f8933310e97f086414c96e.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
 <script src="/Introduction-to-Python/site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="/Introduction-to-Python/site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="/Introduction-to-Python/site_libs/bootstrap/bootstrap-9a9500657fe3ac7a295f509e9f62d5d0.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="/Introduction-to-Python/site_libs/bootstrap/bootstrap-dark-597803e0a959e9696c62f305233b6166.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="light">
-<link href="/Introduction-to-Python/site_libs/bootstrap/bootstrap-9a9500657fe3ac7a295f509e9f62d5d0.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
+<link href="/Introduction-to-Python/site_libs/bootstrap/bootstrap-e5732fcb72049d46fcd462468bc5aa83.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="/Introduction-to-Python/site_libs/bootstrap/bootstrap-dark-95b174f200e2bd53de69785a01b7dc9f.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="light">
+<link href="/Introduction-to-Python/site_libs/bootstrap/bootstrap-e5732fcb72049d46fcd462468bc5aa83.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -488,13 +488,14 @@ ul.task-list li input[type="checkbox"] {
       e.clearSelection();
     }
     const getTextToCopy = function(trigger) {
-        const codeEl = trigger.previousElementSibling.cloneNode(true);
-        for (const childEl of codeEl.children) {
-          if (isCodeAnnotation(childEl)) {
-            childEl.remove();
-          }
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
         }
-        return codeEl.innerText;
+      }
+      return codeEl.innerText;
     }
     const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
       text: getTextToCopy
