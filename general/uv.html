@@ -77,9 +77,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <link href="../site_libs/quarto-html/quarto-syntax-highlighting-46d4eb725d7d2b8695ccd307f5b3c105.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
 <script src="../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../site_libs/bootstrap/bootstrap-13da071fdb667561ee34df51a028b34a.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="../site_libs/bootstrap/bootstrap-dark-d87ee36645a49097a9832a8c68008af2.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="light">
-<link href="../site_libs/bootstrap/bootstrap-13da071fdb667561ee34df51a028b34a.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-22c5f25fcfc5fd5610dfced435a3b672.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-dark-f088ff709e1277e0222aba4cda41ab4d.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-22c5f25fcfc5fd5610dfced435a3b672.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -460,7 +460,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#what-does-that-code-mean" id="toc-what-does-that-code-mean" class="nav-link" data-scroll-target="#what-does-that-code-mean">What does that code mean?</a></li>
   </ul></li>
   <li><a href="#adding-packages-later-in-the-course" id="toc-adding-packages-later-in-the-course" class="nav-link" data-scroll-target="#adding-packages-later-in-the-course">Adding packages (later in the course)</a></li>
-  <li><a href="#optional-activating-the-virtual-environment" id="toc-optional-activating-the-virtual-environment" class="nav-link" data-scroll-target="#optional-activating-the-virtual-environment">(Optional) Activating the virtual environment</a></li>
   <li><a href="#updating-uv" id="toc-updating-uv" class="nav-link" data-scroll-target="#updating-uv">Updating <code>uv</code></a></li>
   <li><a href="#best-practices-for-this-course" id="toc-best-practices-for-this-course" class="nav-link" data-scroll-target="#best-practices-for-this-course">Best practices for this course</a></li>
   <li><a href="#where-to-go-next" id="toc-where-to-go-next" class="nav-link" data-scroll-target="#where-to-go-next">10. Where to go next</a></li>
@@ -617,22 +616,6 @@ Note
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb14"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="ex">uv</span> remove pandas</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>If your <code>pyproject.toml</code> changed (e.g.&nbsp;you pulled code from someone else):</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb15"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="ex">uv</span> sync</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p>Update everything to newer allowed versions:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb16"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="ex">uv</span> update</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<hr>
-</section>
-<section id="optional-activating-the-virtual-environment" class="level2">
-<h2 class="anchored" data-anchor-id="optional-activating-the-virtual-environment">(Optional) Activating the virtual environment</h2>
-<p>You can either: - Always run scripts with <code>uv run ...</code> (safest for beginners), OR - “Activate” the environment so <code>python</code> refers to the project’s Python directly.</p>
-<p>Activate (macOS / Linux):</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb17"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="bu">source</span> .venv/bin/activate</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p>Activate (Windows PowerShell):</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb18"><pre class="sourceCode powershell code-with-copy"><code class="sourceCode powershell"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="op">.</span><span class="fu">venv</span>\Scripts\Activate<span class="op">.</span><span class="fu">ps1</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p>You’ll see your prompt change (e.g.&nbsp;<code>(my-first-project)</code> at the start of the terminal line).</p>
-<p>Now you can just run:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb19"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="ex">python</span> main.py</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p>Deactivate when done:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb20"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="ex">deactivate</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="callout callout-style-default callout-tip callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -650,7 +633,7 @@ Tip
 <section id="updating-uv" class="level2">
 <h2 class="anchored" data-anchor-id="updating-uv">Updating <code>uv</code></h2>
 <p>Occasionally:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb21"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="ex">uv</span> self update</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb16"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="ex">uv</span> self update</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>(If it ever errors, you can just reinstall using the same one-liner from earlier.)</p>
 <hr>
 </section>
@@ -668,11 +651,11 @@ Tip
 <h2 class="anchored" data-anchor-id="where-to-go-next">10. Where to go next</h2>
 <p>Explore the official docs later if you’re curious: <a href="https://docs.astral.sh/uv/">https://docs.astral.sh/uv/</a></p>
 <p>You can always see available commands:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb22"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="ex">uv</span> <span class="at">--help</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb17"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="ex">uv</span> <span class="at">--help</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </section>
 <section id="recap" class="level2">
 <h2 class="anchored" data-anchor-id="recap">Recap</h2>
-<p>You can now: 1. Install <code>uv</code>. 2. Install a pinned Python version. 3. Create a project. 4. Run a script. 5. Add/remove/sync packages.</p>
+<p>You can now: 1. Install <code>uv</code>. 2. Create a project. 3. Run a script. 4. Add/remove/sync packages.</p>
 <p>Now, you’re set for the rest of the course.</p>
 
 
