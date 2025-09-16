@@ -220,7 +220,7 @@ Dr.&nbsp;Tobias Vlćek
 <li>Common built-in exceptions: <code>ValueError</code>, <code>TypeError</code>, etc.</li>
 </ul>
 <div class="fragment">
-<div id="b33e1599" class="cell" data-execution_count="1">
+<div id="d2567162" class="cell" data-execution_count="1">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a></a>x <span class="op">=</span> <span class="bu">int</span>(<span class="st">"Hello, World!"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </div>
@@ -255,18 +255,15 @@ Dr.&nbsp;Tobias Vlćek
 <li>Can include custom error messages</li>
 </ul>
 <div class="fragment">
-<div id="7193cd80" class="cell" data-execution_count="2">
+<div id="a90726bc" class="cell" data-execution_count="2">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a></a><span class="cf">raise</span> <span class="pp">ValueError</span>(<span class="st">"This is a custom error message"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </div>
 <div class="fragment">
-<div class="callout callout-note callout-titled callout-style-default">
+<div class="callout callout-note callout-style-simple">
 <div class="callout-body">
-<div class="callout-title">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
-</div>
-<p><strong>Note</strong></p>
 </div>
 <div class="callout-content">
 <p>The type if raised exception <strong>has to exist</strong> or you have to create a custom error type before.</p>
@@ -283,7 +280,7 @@ Dr.&nbsp;Tobias Vlćek
 <li>Useful for checking calculations or variable types</li>
 </ul>
 <div class="fragment">
-<div id="ee65e00f" class="cell" data-execution_count="3">
+<div id="dc41ce8a" class="cell" data-execution_count="3">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a></a>x <span class="op">=</span> <span class="op">-</span><span class="dv">1</span></span>
 <span id="cb4-2"><a></a><span class="cf">assert</span> x <span class="op">&gt;</span> <span class="dv">0</span>, <span class="st">"x must be positive"</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
@@ -301,13 +298,10 @@ Dr.&nbsp;Tobias Vlćek
 <li>Using built-in debugging tools in IDEs</li>
 </ul>
 <div class="fragment">
-<div class="callout callout-tip callout-titled callout-style-default">
+<div class="callout callout-tip callout-style-simple">
 <div class="callout-body">
-<div class="callout-title">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
-</div>
-<p><strong>Tip</strong></p>
 </div>
 <div class="callout-content">
 <p>That’s why IDEs are so helpful in coding.</p>
@@ -337,7 +331,7 @@ Dr.&nbsp;Tobias Vlćek
 <li>They can define <span class="highlight">functions, classes, and variables</span></li>
 <li>They can be imported into other Python scripts</li>
 </ul>
-<div id="61d30b0e" class="cell" data-execution_count="4">
+<div id="1d523b11" class="cell" data-execution_count="4">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a></a><span class="co"># The script new_module.py is in the same directory as this script</span></span>
 <span id="cb5-2"><a></a><span class="im">import</span> lec_06_new_module <span class="im">as</span> new_module <span class="co"># Here we import the module</span></span>
 <span id="cb5-3"><a></a>new_module.my_function() <span class="co"># Here we call the function from the module</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
@@ -356,7 +350,7 @@ Dr.&nbsp;Tobias Vlćek
 <li>Analogously, we can import <strong>classes or variables</strong> from a module</li>
 </ul>
 <div class="fragment">
-<div id="69cf7664" class="cell" data-execution_count="5">
+<div id="140d4dd3" class="cell" data-execution_count="5">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a></a><span class="co"># Multiple imports from a module are possible as well!</span></span>
 <span id="cb7-2"><a></a><span class="im">from</span> lec_06_new_module <span class="im">import</span> another_function, yet_another_function</span>
 <span id="cb7-3"><a></a>another_function()</span>
@@ -370,13 +364,10 @@ Hello from yet_another_function!</code></pre>
 </div>
 </div>
 <div class="fragment">
-<div class="callout callout-tip callout-titled callout-style-default">
+<div class="callout callout-tip callout-style-simple">
 <div class="callout-body">
-<div class="callout-title">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
-</div>
-<p><strong>Tip</strong></p>
 </div>
 <div class="callout-content">
 <p>This is a good way to avoid importing too much from a module. In addition, we don’t need to use the module name before the function name when we use the functions from the module.</p>
@@ -426,7 +417,7 @@ Hello from yet_another_function!</code></pre>
 <section id="importing-from-the-standard-library" class="slide level2">
 <h2>Importing from the Standard Library</h2>
 <p><span class="task">Task:</span> Use Python’s <code>math</code> module to calculate the area of a circle.</p>
-<div id="081e7d78" class="cell" data-execution_count="6">
+<div id="61f90376" class="cell" data-execution_count="6">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a></a><span class="co"># Import the `math` module.</span></span>
 <span id="cb9-2"><a></a><span class="co"># Define a function named `calculate_area` that takes the radius `r` as an argument.</span></span>
 <span id="cb9-3"><a></a><span class="co"># Inside the function, use the `math.pi` constant to get the value of π.</span></span>
@@ -437,13 +428,10 @@ Hello from yet_another_function!</code></pre>
 <span id="cb9-8"><a></a><span class="cf">assert</span> calculate_area(<span class="dv">5</span>) <span class="op">==</span> <span class="fl">78.53981633974483</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <div class="fragment">
-<div class="callout callout-tip callout-titled callout-style-default">
+<div class="callout callout-tip callout-style-simple">
 <div class="callout-body">
-<div class="callout-title">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
-</div>
-<p><strong>Tip</strong></p>
 </div>
 <div class="callout-content">
 <p>Note, how assertations can be used to check if a function works correctly.</p>
@@ -467,13 +455,10 @@ Hello from yet_another_function!</code></pre>
 <li><code>random.choice(list)</code>: random element from a list</li>
 <li><code>random.shuffle(list)</code>: shuffle a list</li>
 </ul>
-<div class="callout callout-tip callout-titled callout-style-default">
+<div class="callout callout-tip callout-style-simple">
 <div class="callout-body">
-<div class="callout-title">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
-</div>
-<p><strong>Tip</strong></p>
 </div>
 <div class="callout-content">
 <p>There are many more functions in the <code>random</code> module. Use the <code>help()</code> function to get more information about a module or function.</p>
@@ -484,7 +469,7 @@ Hello from yet_another_function!</code></pre>
 <section id="random-numbers-in-action" class="slide level2">
 <h2>Random Numbers in Action</h2>
 <p><span class="task">Task:</span> Time for a task! Import the <code>random</code> module and create a <span class="highlight">small number guessing game</span> with the following requirements:</p>
-<div id="a99bf750" class="cell" data-execution_count="7">
+<div id="ad653936" class="cell" data-execution_count="7">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a></a><span class="co"># Generate a random integer between 1 and 10 using randint().</span></span>
 <span id="cb10-2"><a></a><span class="co"># Ask the user to guess the number with input().</span></span>
 <span id="cb10-3"><a></a><span class="co"># Print whether the guess was correct.</span></span>
@@ -494,13 +479,10 @@ Hello from yet_another_function!</code></pre>
 <span id="cb10-7"><a></a><span class="co"># Your code here</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <div class="fragment">
-<div class="callout callout-tip callout-titled callout-style-default">
+<div class="callout callout-tip callout-style-simple">
 <div class="callout-body">
-<div class="callout-title">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
-</div>
-<p><strong>Tip</strong></p>
 </div>
 <div class="callout-content">
 <p>Remember, that the input function always returns a string!</p>
@@ -519,13 +501,10 @@ Hello from yet_another_function!</code></pre>
 <li><code>os.makedirs(path)</code>: create a directory</li>
 </ul>
 <div class="fragment">
-<div class="callout callout-tip callout-titled callout-style-default">
+<div class="callout callout-tip callout-style-simple">
 <div class="callout-body">
-<div class="callout-title">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
-</div>
-<p><strong>Tip</strong></p>
 </div>
 <div class="callout-content">
 <p>These can be quite useful for file handling. The <code>os</code> module contains many more functions, e.g.&nbsp;for changing the current working directory, for renaming and moving files, etc.</p>
@@ -542,7 +521,7 @@ Hello from yet_another_function!</code></pre>
 <li>Read: <code>csv.reader(file)</code></li>
 </ul>
 <div class="fragment">
-<div id="0da579a0" class="cell" data-execution_count="8">
+<div id="d4ad3cfd" class="cell" data-execution_count="8">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a></a><span class="im">import</span> csv <span class="co"># Import the csv module</span></span>
 <span id="cb11-2"><a></a></span>
 <span id="cb11-3"><a></a><span class="cf">with</span> <span class="bu">open</span>(<span class="st">'secret_message.csv'</span>, <span class="st">'w'</span>) <span class="im">as</span> <span class="bu">file</span>: <span class="co"># Open the file in write mode</span></span>
@@ -559,7 +538,7 @@ Hello from yet_another_function!</code></pre>
 <section id="os-and-csv-module-in-action" class="slide level2">
 <h2>OS and CSV Module in Action</h2>
 <p><span class="task">Task:</span> Time for another task! Do the following:</p>
-<div id="6ce40f39" class="cell" data-execution_count="9">
+<div id="4c307c4a" class="cell" data-execution_count="9">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb12"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a></a><span class="co"># First, check if a directory called `module_directory` exists.</span></span>
 <span id="cb12-2"><a></a><span class="co"># If it does not, create it.</span></span>
 <span id="cb12-3"><a></a><span class="co"># Then, list all files in the current directory and save them in a CSV file called `current_files.csv` in the new `module_directory`.</span></span>
@@ -583,7 +562,7 @@ Hello from yet_another_function!</code></pre>
 <li>We can use the <code>re</code> module to work with regular expressions</li>
 </ul>
 <div class="fragment">
-<div id="53d99708" class="cell" data-execution_count="10">
+<div id="1098f105" class="cell" data-execution_count="10">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a></a><span class="im">import</span> re</span>
 <span id="cb13-2"><a></a>pattern <span class="op">=</span> <span class="vs">r'World'</span> <span class="co"># This is the pattern we are searching for</span></span>
 <span id="cb13-3"><a></a>string <span class="op">=</span> <span class="st">'Hello, World!'</span> <span class="co"># This is the string we are searching in</span></span>
@@ -596,13 +575,10 @@ Hello from yet_another_function!</code></pre>
 </div>
 </div>
 <div class="fragment">
-<div class="callout callout-note callout-titled callout-style-default">
+<div class="callout callout-note callout-style-simple">
 <div class="callout-body">
-<div class="callout-title">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
-</div>
-<p><strong>Note</strong></p>
 </div>
 <div class="callout-content">
 <p>So far, we could also have achieved this with the <code>find</code> method of a string.</p>
@@ -613,7 +589,7 @@ Hello from yet_another_function!</code></pre>
 </section>
 <section id="why-regular-expressions" class="slide level2">
 <h2>Why Regular Expressions?</h2>
-<div id="a8d9bb7c" class="cell" data-execution_count="11">
+<div id="e23ac631" class="cell" data-execution_count="11">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb15"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a></a><span class="im">import</span> re</span>
 <span id="cb15-2"><a></a>pattern <span class="op">=</span> <span class="st">'World'</span> <span class="co"># This is the pattern we are searching for</span></span>
 <span id="cb15-3"><a></a>string <span class="op">=</span> <span class="st">'Hello, World!'</span> <span class="co"># This is the string we are searching in</span></span>
@@ -642,13 +618,10 @@ Hello from yet_another_function!</code></pre>
 <li><code>re.split(pat, str)</code>: split a string by a pattern</li>
 </ul>
 <div class="fragment">
-<div class="callout callout-note callout-titled callout-style-default">
+<div class="callout callout-note callout-style-simple">
 <div class="callout-body">
-<div class="callout-title">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
-</div>
-<p><strong>Note</strong></p>
 </div>
 <div class="callout-content">
 <p>As always, there is more. But these are a good foundation to build upon.</p>
@@ -660,7 +633,7 @@ Hello from yet_another_function!</code></pre>
 <section id="regular-expression-in-action" class="slide level2">
 <h2>Regular Expression in Action</h2>
 <p><span class="task">Task</span>: Replace all occurences of <code>Python</code> by “SECRET”.</p>
-<div id="9c95427c" class="cell" data-execution_count="12">
+<div id="72f532e9" class="cell" data-execution_count="12">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb17"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a></a><span class="im">import</span> re</span>
 <span id="cb17-2"><a></a>string <span class="op">=</span> <span class="st">"""</span></span>
 <span id="cb17-3"><a></a><span class="st">Python is a programming language.</span></span>
@@ -670,13 +643,10 @@ Hello from yet_another_function!</code></pre>
 <span id="cb17-7"><a></a><span class="co"># Your code here</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <div class="fragment">
-<div class="callout callout-note callout-titled callout-style-default">
+<div class="callout callout-note callout-style-simple">
 <div class="callout-body">
-<div class="callout-title">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
-</div>
-<p><strong>Note</strong></p>
 </div>
 <div class="callout-content">
 <p>Regular expressions are even <strong>more powerful</strong> when combined with <span class="highlight">special characters</span>.</p>
@@ -706,7 +676,7 @@ Hello from yet_another_function!</code></pre>
 <li>In order to <span class="highlight">keep things simple</span>, we will not cover them here</li>
 </ul>
 <div class="fragment">
-<div id="6be4e3dd" class="cell" data-execution_count="13">
+<div id="ea8bf74e" class="cell" data-execution_count="13">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb18"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a></a><span class="im">import</span> re</span>
 <span id="cb18-2"><a></a><span class="bu">print</span>(re.findall(<span class="vs">r'</span><span class="dv">\d</span><span class="op">{3}</span><span class="vs">-</span><span class="dv">\d</span><span class="op">{2}</span><span class="vs">-</span><span class="dv">\d</span><span class="op">{4}</span><span class="vs">'</span>, <span class="st">'Here is a phone number: 123-45-6789.'</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
@@ -717,13 +687,10 @@ Hello from yet_another_function!</code></pre>
 </div>
 </div>
 <div class="fragment">
-<div class="callout callout-tip callout-titled callout-style-default">
+<div class="callout callout-tip callout-style-simple">
 <div class="callout-body">
-<div class="callout-title">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
-</div>
-<p><strong>Tip</strong></p>
 </div>
 <div class="callout-content">
 <p>It can be quite complicated to get the hang of these special characters, especially at the beginning. Gladly, there are tools like <a href="https://regexr.com">regexr.com</a> that can help with building the right pattern. Apart from that, <code>help(re)</code> in the terminal can also be very helpful.</p>
@@ -735,7 +702,7 @@ Hello from yet_another_function!</code></pre>
 <section id="advanced-regular-expressions-in-action" class="slide level2">
 <h2>Advanced Regular Expressions in Action</h2>
 <p><span class="task">Task:</span> Use regular expressions to extract all dates from the text.</p>
-<div id="72d6452f" class="cell" data-execution_count="14">
+<div id="8d93d5d2" class="cell" data-execution_count="14">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb20"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a></a>dates <span class="op">=</span> <span class="st">"""</span></span>
 <span id="cb20-2"><a></a><span class="st">On 07-04-1776, the United States declared its independence. Many years later,</span></span>
 <span id="cb20-3"><a></a><span class="st">on 11-09-1989, the Berlin Wall fell. In more recent history, the COVID-19</span></span>
@@ -775,13 +742,10 @@ Hello from yet_another_function!</code></pre>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb21"><pre class="sourceCode numberSource {bash} number-lines code-with-copy"><code class="sourceCode"><span id="cb21-1"><a></a>uv add pandas numpy</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <div class="fragment">
-<div class="callout callout-tip callout-titled callout-style-default">
+<div class="callout callout-tip callout-style-simple">
 <div class="callout-body">
-<div class="callout-title">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
-</div>
-<p><strong>Tip</strong></p>
 </div>
 <div class="callout-content">
 <p>If you install packages like this, you can use the shell to do so! Alternatively, you can use <code>uv add &lt;package_name&gt;</code> in the Python terminal.</p>
@@ -799,13 +763,10 @@ Hello from yet_another_function!</code></pre>
 <li>This becomes important if you work on several projects at once</li>
 </ul>
 <div class="fragment">
-<div class="callout callout-note callout-titled callout-style-default">
+<div class="callout callout-note callout-style-simple">
 <div class="callout-body">
-<div class="callout-title">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
-</div>
-<p><strong>Note</strong></p>
 </div>
 <div class="callout-content">
 <p><strong>And that’s it for todays lecture!</strong><br>
@@ -827,13 +788,10 @@ We now have completed the first step into data science in Python. Next week, we 
 <li>Elter, S. (2021). Schrödinger programmiert Python: Das etwas andere Fachbuch (1. Auflage). Rheinwerk Verlag.</li>
 </ul>
 <div class="fragment">
-<div class="callout callout-tip callout-titled callout-style-default">
+<div class="callout callout-tip callout-style-simple">
 <div class="callout-body">
-<div class="callout-title">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
-</div>
-<p><strong>Tip</strong></p>
 </div>
 <div class="callout-content">
 <p>Nothing new here, but these are still great books!</p>

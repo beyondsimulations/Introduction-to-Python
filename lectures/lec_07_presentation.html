@@ -222,13 +222,10 @@ Dr.&nbsp;Tobias Vlćek
 <li>Can be imported into other scripts</li>
 </ul>
 <div class="fragment">
-<div class="callout callout-tip callout-titled callout-style-default">
+<div class="callout callout-tip callout-style-simple">
 <div class="callout-body">
-<div class="callout-title">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
-</div>
-<p><strong>Tip</strong></p>
 </div>
 <div class="callout-content">
 <p>We can import entire modules or individual functions, classes or variables.</p>
@@ -258,13 +255,10 @@ Dr.&nbsp;Tobias Vlćek
 <li>Virtual environments help manage dependencies</li>
 </ul>
 <div class="fragment">
-<div class="callout callout-tip callout-titled callout-style-default">
+<div class="callout callout-tip callout-style-simple">
 <div class="callout-body">
-<div class="callout-title">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
-</div>
-<p><strong>Tip</strong></p>
 </div>
 <div class="callout-content">
 <p>Virtual environments are not that important for you right now, as they are mostly used if you work on several projects with different dependecies at once.</p>
@@ -287,13 +281,10 @@ Dr.&nbsp;Tobias Vlćek
 <li>Python lists can be slow - Numpy arrays are much faster</li>
 </ul>
 <div class="fragment">
-<div class="callout callout-note callout-titled callout-style-default">
+<div class="callout callout-note callout-style-simple">
 <div class="callout-body">
-<div class="callout-title">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
-</div>
-<p><strong>Note</strong></p>
 </div>
 <div class="callout-content">
 <p>The name of the package comes from Numerical Python.</p>
@@ -320,7 +311,7 @@ Dr.&nbsp;Tobias Vlćek
 <li>Import NumPy in a script using <code>import numpy as np</code></li>
 </ol>
 <div class="fragment">
-<div id="996f34b5" class="cell" data-execution_count="1">
+<div id="b608abde" class="cell" data-execution_count="1">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb1-2"><a></a>x <span class="op">=</span> np.array([<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">5</span>])<span class="op">;</span> <span class="bu">type</span>(x)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="1">
@@ -329,13 +320,10 @@ Dr.&nbsp;Tobias Vlćek
 </div>
 </div>
 <div class="fragment">
-<div class="callout callout-note callout-titled callout-style-default">
+<div class="callout callout-note callout-style-simple">
 <div class="callout-body">
-<div class="callout-title">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
-</div>
-<p><strong>Note</strong></p>
 </div>
 <div class="callout-content">
 <p>You don’t have to use <code>as np</code>. But it is a common practice to do so.</p>
@@ -350,7 +338,7 @@ Dr.&nbsp;Tobias Vlćek
 <li>The backbone of Numpy is the so called <code>ndarray</code></li>
 <li>Can be initialized from different data structures:</li>
 </ul>
-<div id="b0f68597" class="cell" data-execution_count="2">
+<div id="a737548d" class="cell" data-execution_count="2">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb3-2"><a></a></span>
 <span id="cb3-3"><a></a>array_from_list <span class="op">=</span> np.array([<span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">1</span>])</span>
@@ -361,7 +349,7 @@ Dr.&nbsp;Tobias Vlćek
 <pre><code>[1 1 1 1]</code></pre>
 </div>
 </div>
-<div id="8dab3e7c" class="cell" data-execution_count="3">
+<div id="1673be55" class="cell" data-execution_count="3">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb5-2"><a></a></span>
 <span id="cb5-3"><a></a>array_from_tuple <span class="op">=</span> np.array((<span class="dv">2</span>, <span class="dv">2</span>, <span class="dv">2</span>, <span class="dv">2</span>))</span>
@@ -378,7 +366,7 @@ Dr.&nbsp;Tobias Vlćek
 <ul>
 <li>It is possible to store different data types in a <code>ndarray</code></li>
 </ul>
-<div id="360b5469" class="cell" data-execution_count="4">
+<div id="57c9bd72" class="cell" data-execution_count="4">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb7-2"><a></a></span>
 <span id="cb7-3"><a></a>array_different_types <span class="op">=</span> np.array([<span class="st">"s"</span>, <span class="dv">2</span>, <span class="fl">2.0</span>, <span class="st">"i"</span>])</span>
@@ -390,13 +378,10 @@ Dr.&nbsp;Tobias Vlćek
 </div>
 </div>
 <div class="fragment">
-<div class="callout callout-note callout-titled callout-style-default">
+<div class="callout callout-note callout-style-simple">
 <div class="callout-body">
-<div class="callout-title">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
-</div>
-<p><strong>Note</strong></p>
 </div>
 <div class="callout-content">
 <p>But it is mostly not recommended, as it can lead to performance issues. If possible, try to <strong>keep the types homogenous</strong>.</p>
@@ -415,13 +400,10 @@ Dr.&nbsp;Tobias Vlćek
 <li><code>np.linspace(start, stop, num)</code>: evenly spaced</li>
 </ul>
 <div class="fragment">
-<div class="callout callout-note callout-titled callout-style-default">
+<div class="callout callout-note callout-style-simple">
 <div class="callout-body">
-<div class="callout-title">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
-</div>
-<p><strong>Note</strong></p>
 </div>
 <div class="callout-content">
 <p>The shape refers to the <span class="highlight">size of the array</span>. It can have one or multiple dimensions.</p>
@@ -448,7 +430,7 @@ Dr.&nbsp;Tobias Vlćek
 <li>This is much faster than applying them element-wise</li>
 </ul>
 <div class="fragment">
-<div id="82768ad8" class="cell" data-execution_count="5">
+<div id="6cc06fc3" class="cell" data-execution_count="5">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb9-2"><a></a>x <span class="op">=</span> np.array([<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">5</span>])</span>
 <span id="cb9-3"><a></a>x <span class="op">+</span> <span class="dv">1</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
@@ -463,7 +445,7 @@ Dr.&nbsp;Tobias Vlćek
 <section id="arrays-in-action" class="slide level2">
 <h2>Arrays in Action</h2>
 <p><span class="task">Task</span>: Practice working with Numpy:</p>
-<div id="f4e0e893" class="cell" data-execution_count="6">
+<div id="d47cec70" class="cell" data-execution_count="6">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a></a><span class="co"># </span><span class="al">TODO</span><span class="co">: Create a 3-dimensional tensor with filled with zeros</span></span>
 <span id="cb11-2"><a></a><span class="co"># Choose the shape of the tensor, but it should have 200 elements</span></span>
 <span id="cb11-3"><a></a><span class="co"># Add the number 5 to all values of the tensor</span></span>
@@ -484,7 +466,7 @@ Dr.&nbsp;Tobias Vlćek
 </ul>
 <div class="fragment">
 <p><span class="question">Question</span>: What do you expect will be printed?</p>
-<div id="b6b6d323" class="cell" data-execution_count="7">
+<div id="3af62c22" class="cell" data-execution_count="7">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb12"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb12-2"><a></a>x <span class="op">=</span> np.random.randint(<span class="dv">0</span>, <span class="dv">10</span>, size<span class="op">=</span>(<span class="dv">3</span>, <span class="dv">3</span>))</span>
 <span id="cb12-3"><a></a><span class="bu">print</span>(x)<span class="op">;</span> <span class="bu">print</span>(<span class="st">"---"</span>)</span>
@@ -492,12 +474,12 @@ Dr.&nbsp;Tobias Vlćek
 </div>
 <div class="cell fragment" data-execution_count="7">
 <div class="cell-output cell-output-stdout">
-<pre><code>[[0 0 0]
- [3 0 0]
- [4 9 9]]
+<pre><code>[[3 9 8]
+ [5 7 7]
+ [0 8 9]]
 ---
-[[0 0]
- [3 0]]</code></pre>
+[[3 9]
+ [5 7]]</code></pre>
 </div>
 </div>
 </div>
@@ -513,7 +495,7 @@ Dr.&nbsp;Tobias Vlćek
 <li><code>U</code>: unicode</li>
 </ul>
 <div class="fragment">
-<div id="58082b01" class="cell" data-execution_count="8">
+<div id="5d9ebae2" class="cell" data-execution_count="8">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb14"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a></a>string_array <span class="op">=</span> np.array([<span class="st">"Hello"</span>, <span class="st">"World"</span>])<span class="op">;</span> string_array.dtype</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <div class="cell fragment" data-execution_count="8">
@@ -529,7 +511,7 @@ Dr.&nbsp;Tobias Vlćek
 <li>We can also <strong>provide</strong> the type when creating arrays</li>
 </ul>
 <div class="fragment">
-<div id="e15e763d" class="cell" data-execution_count="9">
+<div id="8d949040" class="cell" data-execution_count="9">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb16"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a></a>x <span class="op">=</span> np.array([<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">5</span>],  dtype <span class="op">=</span> <span class="st">'f'</span>)<span class="op">;</span> <span class="bu">print</span>(x.dtype)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <div class="cell fragment" data-execution_count="9">
@@ -542,7 +524,7 @@ Dr.&nbsp;Tobias Vlćek
 <ul>
 <li>Or we can <strong>change</strong> them for existing arrays</li>
 </ul>
-<div id="b6be08ea" class="cell" data-execution_count="10">
+<div id="17497c5c" class="cell" data-execution_count="10">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb18"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a></a>x <span class="op">=</span> np.array([<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">5</span>],  dtype <span class="op">=</span> <span class="st">'f'</span>)<span class="op">;</span> <span class="bu">print</span>(x.astype(<span class="st">'i'</span>).dtype)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <div class="cell fragment" data-execution_count="10">
@@ -552,13 +534,10 @@ Dr.&nbsp;Tobias Vlćek
 </div>
 </div>
 <div class="fragment">
-<div class="callout callout-note callout-titled callout-style-default">
+<div class="callout callout-note callout-style-simple">
 <div class="callout-body">
-<div class="callout-title">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
-</div>
-<p><strong>Note</strong></p>
 </div>
 <div class="callout-content">
 <p>Note, how the types are specified as <code>int32</code> and <code>float32</code>.</p>
@@ -613,7 +592,7 @@ Dr.&nbsp;Tobias Vlćek
 </ul>
 <div class="fragment">
 <p><span class="question">Question</span>: What do you expect will be printed?</p>
-<div id="4760bfcd" class="cell" data-execution_count="11">
+<div id="ffb1e19b" class="cell" data-execution_count="11">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb20"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb20-2"><a></a>ones <span class="op">=</span> np.array((<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">1</span>))</span>
 <span id="cb20-3"><a></a>twos <span class="op">=</span> np.array((<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">1</span>)) <span class="op">*</span><span class="dv">2</span></span>
@@ -638,13 +617,10 @@ Dr.&nbsp;Tobias Vlćek
 <li><code>transpose()</code>: transpose the array</li>
 </ul>
 <div class="fragment">
-<div class="callout callout-tip callout-titled callout-style-default">
+<div class="callout callout-tip callout-style-simple">
 <div class="callout-body">
-<div class="callout-title">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
-</div>
-<p><strong>Tip</strong></p>
 </div>
 <div class="callout-content">
 <p>Try experiment with these methods, they can make your <span class="highlight">work much easier.</span></p>
@@ -656,7 +632,7 @@ Dr.&nbsp;Tobias Vlćek
 <section id="speed-differences-in-action" class="slide level2">
 <h2>Speed Differences in Action</h2>
 <p><span class="task">Task</span>: Complete the following task to practice with Numpy:</p>
-<div id="30b3c804" class="cell" data-execution_count="12">
+<div id="a037e5ec" class="cell" data-execution_count="12">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb22"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a></a><span class="co"># </span><span class="al">TODO</span><span class="co">: Create a 2-dimensional matrix with filled with ones of size 1000 x 1000.</span></span>
 <span id="cb22-2"><a></a><span class="co"># Afterward, flatten the matrix to a vector and loop over the vector.</span></span>
 <span id="cb22-3"><a></a><span class="co"># In each loop iteration, add a random number between 1 and 10000.</span></span>
@@ -671,19 +647,16 @@ Dr.&nbsp;Tobias Vlćek
 </div>
 <div class="cell fragment" data-execution_count="12">
 <div class="cell-output cell-output-stdout">
-<pre><code>6.9141387939453125e-06</code></pre>
+<pre><code>5.9604644775390625e-06</code></pre>
 </div>
 </div>
 </section></section>
 <section id="thats-it-for-today" class="title-slide slide level1 center">
 <h1>That’s it for today!</h1>
-<div class="callout callout-note callout-titled callout-style-default">
+<div class="callout callout-note callout-style-simple">
 <div class="callout-body">
-<div class="callout-title">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
-</div>
-<p><strong>Note</strong></p>
 </div>
 <div class="callout-content">
 <p><strong>And that’s it for todays lecture!</strong><br>
