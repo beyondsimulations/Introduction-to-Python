@@ -449,6 +449,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#introduction" id="toc-introduction" class="nav-link active" data-scroll-target="#introduction">Introduction</a></li>
   <li><a href="#small-functions-for-various-tasks" id="toc-small-functions-for-various-tasks" class="nav-link" data-scroll-target="#small-functions-for-various-tasks">Small Functions for various tasks</a></li>
   <li><a href="#different-classes-for-different-tasks" id="toc-different-classes-for-different-tasks" class="nav-link" data-scroll-target="#different-classes-for-different-tasks">Different classes for different tasks</a></li>
+  <li><a href="#advanced-calculator-function" id="toc-advanced-calculator-function" class="nav-link" data-scroll-target="#advanced-calculator-function">Advanced Calculator Function</a></li>
   <li><a href="#thats-it" id="toc-thats-it" class="nav-link" data-scroll-target="#thats-it">That’s it!</a></li>
   </ul>
 <div class="toc-actions"><ul><li><a href="https://github.com/beyondsimulations/Introduction-to-Python/blob/main/tutorials/tut_03_functions.qmd" class="toc-action"><i class="bi bi-github"></i>View source</a></li><li><a href="https://github.com/beyondsimulations/Introduction-to-Python/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div><div class="quarto-alternate-formats"><h2>Other Formats</h2><ul><li><a href="tut_03_functions.pdf"><i class="bi bi-file-pdf"></i>PDF</a></li></ul></div></nav>
@@ -484,7 +485,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="small-functions-for-various-tasks" class="level1">
 <h1>Small Functions for various tasks</h1>
 <p>In this exercise, you will practice writing small functions for various tasks. You will also practice using the <code>return</code> statement to return a value from a function and the <code>global</code> keyword to modify a global variable.</p>
-<div id="b204b174" class="cell" data-execution_count="1">
+<div id="de66b688" class="cell" data-execution_count="1">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># a) </span><span class="al">TODO</span><span class="co">: Write a function that takes two numbers as input and returns their squared sum.</span></span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> squared_sum(a, b):</span>
@@ -535,7 +536,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="different-classes-for-different-tasks" class="level1">
 <h1>Different classes for different tasks</h1>
 <p>In this exercise, you will practice creating different classes for different tasks. You will create a class for a bank account, a class for a car, and a class for a computer.</p>
-<div id="3065a6e9" class="cell" data-execution_count="2">
+<div id="d67c7f2e" class="cell" data-execution_count="2">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># a) </span><span class="al">TODO</span><span class="co">: Extend the class called 'Books' with the following specifications:</span></span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="co"># - It should have attributes for 'title', 'author', and 'pages'</span></span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="co"># - Use the `__init__` method to initialize the attributes</span></span>
@@ -566,6 +567,21 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb2-28"><a href="#cb2-28" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb2-29"><a href="#cb2-29" aria-hidden="true" tabindex="-1"></a><span class="co"># d) </span><span class="al">TODO</span><span class="co">: Create your yourself as an object to the class you just created. Check if you are excellent and print your grade.</span></span>
 <span id="cb2-30"><a href="#cb2-30" aria-hidden="true" tabindex="-1"></a><span class="co"># Your code here</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</section>
+<section id="advanced-calculator-function" class="level1">
+<h1>Advanced Calculator Function</h1>
+<p>In this task, you are going to implement a calculator function that performs basic arithmetic operations and print out the computation as formated string.</p>
+<div id="6855ec34" class="cell" data-execution_count="3">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># </span><span class="al">TODO</span><span class="co">: Create a function called 'advanced_calculator' that takes three parameters:</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="co"># - num1 (number)</span></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="co"># - num2 (number)</span></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="co"># - operation (string: "add", "subtract", "multiply", "divide", "power", "modulo")</span></span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a><span class="co"># The function should:</span></span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a><span class="co"># - Perform the requested operation</span></span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a><span class="co"># - Handle division by zero (return "Error: Division by zero")</span></span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a><span class="co"># - Return the result as a formatted string like "5 + 3 = 8"</span></span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a><span class="co"># Your code here</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section>
 <section id="thats-it" class="level1">

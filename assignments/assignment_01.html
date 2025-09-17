@@ -450,6 +450,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#tax-refund-for-donations" id="toc-tax-refund-for-donations" class="nav-link" data-scroll-target="#tax-refund-for-donations">Tax refund for donations</a></li>
   <li><a href="#text-based-adventure-game" id="toc-text-based-adventure-game" class="nav-link" data-scroll-target="#text-based-adventure-game">Text based adventure game</a></li>
   <li><a href="#hangman" id="toc-hangman" class="nav-link" data-scroll-target="#hangman">Hangman</a></li>
+  <li><a href="#caesar-cipher" id="toc-caesar-cipher" class="nav-link" data-scroll-target="#caesar-cipher">Caesar Cipher</a></li>
   </ul>
 <div class="toc-actions"><ul><li><a href="https://github.com/beyondsimulations/Introduction-to-Python/blob/main/assignments/assignment_01.qmd" class="toc-action"><i class="bi bi-github"></i>View source</a></li><li><a href="https://github.com/beyondsimulations/Introduction-to-Python/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div><div class="quarto-alternate-formats"><h2>Other Formats</h2><ul><li><a href="assignment_01.pdf"><i class="bi bi-file-pdf"></i>PDF</a></li></ul></div></nav>
     </div>
@@ -478,13 +479,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <section id="introduction" class="level1">
 <h1>Introduction</h1>
-<p>This is the first of the two assignments for this course. It will be graded as pass/fail and you and your group of up to 3 students will need to submit it before the start of the last lecture. Please hand in one assignment per group via the e-mail address <a href="mailto:vlcek@beyondsimulations.com">vlcek@beyondsimulations.com</a>.</p>
+<p>This is the first of the two assignments for this course. It will be graded as pass/fail. You and your group of up to 3 students will need to submit it <strong>before the start of lecture 7 on scientific programming</strong>. Please hand in one assignment per group via the e-mail address <a href="mailto:vlcek@beyondsimulations.com">vlcek@beyondsimulations.com</a>.</p>
 <p>In the assignment, you will practice the concepts you learned in the first part of the course. You will find a lot of information online and you are welcome to use generative AI to help you with the assignment. However, you are not allowed to copy the code from other groups and you have to indicate where and how you used AI to help you. Try to use comments to structure and to explain your code. Furthermore, use descriptive variable names and format your code nicely in order to make it more readable.</p>
 </section>
 <section id="tax-refund-for-donations" class="level1">
 <h1>Tax refund for donations</h1>
 <p>In this excercise, you will create a program that is able to calculate the amount of tax a person can get back for a donation. First, research the rules for tax refunds for donations in Germany. Then, create a program that is able to <strong>calculate the amount of tax a person can get back</strong> for a donation. The program should ask the user for the <strong>amount of the donation and the yearly income</strong> and then calculate the amount of tax the user can get back. The program should then print the amount of tax to the console. Note, that the program should also handle wrong inputs from the user, e.g.&nbsp;if the user enters a negative donation amount or a non-numeric income.</p>
-<div id="049bd0bd" class="cell" data-execution_count="1">
+<div id="0c5041de" class="cell" data-execution_count="1">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Tax refund for donations</span></span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="co"># </span><span class="al">TODO</span><span class="co">: Create a program that is able to calculate the amount of tax a person can get back for a donation.</span></span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Your code here</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
@@ -502,8 +503,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 <section id="text-based-adventure-game" class="level1">
 <h1>Text based adventure game</h1>
-<p>In this excercise, you will create a text based adventure game. You are completely free in the choice of the story, but it must <strong>at least include 3 choices, 2 different endings and the choice to restart the game</strong>. Try to use the concepts of conditionals, loops, and functions to create a game that is both fun and interactive for the user. Note, that the program should also handle wrong inputs from the user, e.g.&nbsp;if the user enters a choice that is not available.</p>
-<div id="2967dad9" class="cell" data-execution_count="2">
+<p>In this excercise, you will create a text based adventure game. You are completely free in the choice of the story, but it must <strong>at least include 4 choices, 3 different endings, the choice to restart the game and yourself as a character of the game</strong>. Try to use the concepts of conditionals, loops, and functions to create a game that is both fun and interactive for the user. Note, that the program should also handle wrong inputs from the user, e.g.&nbsp;if the user enters a choice that is not available.</p>
+<div id="51fcfe00" class="cell" data-execution_count="2">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Test based adventure game</span></span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="co"># </span><span class="al">TODO</span><span class="co">: Create a text based adventure game with at least 3 choices, 2 different endings and the choice to restart the game.</span></span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Your code here</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
@@ -512,10 +513,18 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="hangman" class="level1">
 <h1>Hangman</h1>
 <p>In this excercise, you will create a program that is able to play the game Hangman. The program should ask the <strong>game master for a secret word</strong>. Afterward, it should ask the player to guess a letter and then check if the letter is in the word. The program should then print the word with the guessed letters and the number of tries left. The program should also handle wrong inputs from the user, e.g.&nbsp;if the user enters a non-letter or a letter that is already guessed.</p>
-<div id="eb9552bd" class="cell" data-execution_count="3">
+<div id="34d3be3b" class="cell" data-execution_count="3">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Hangman</span></span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="co"># </span><span class="al">TODO</span><span class="co">: Create a program that is able to play the game Hangman with a game master and one player.</span></span>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Your code here</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</section>
+<section id="caesar-cipher" class="level1">
+<h1>Caesar Cipher</h1>
+<p>In this excercise, you will create a program that is able to <strong>encrypt and decrypt messages</strong> using the Caesar Cipher. The program should ask the user for a <strong>message and a key</strong> and whether to encrypt or decrypt the message. The program should then <strong>encrypt the message</strong> by shifting each letter of the message by the key or <strong>decrypt the message</strong> by shifting each letter of the message back by the key. The program should then print the encrypted or decrypted message and asks the user whether to continue with the next message or to quit the program. Note, that you only need to encrypt or decrypt letters, keep other characters unchanged.</p>
+<div id="a7c92fe6" class="cell" data-execution_count="4">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co"># </span><span class="al">TODO</span><span class="co">: Create a programm able to encrypt and decrypt messages using the Caesar Cipher.</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Your code here</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 
 
