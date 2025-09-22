@@ -26,7 +26,7 @@
     "href": "tutorials/tut_07_scientific.html",
     "title": "Tutorial VII - NumPy for Scientific Computing",
     "section": "",
-    "text": "Analyzing Climate Data\nImagine you’re a climate scientist working on a project to analyze temperature data from weather stations across the country. You’ve been given a large dataset, and you need to use NumPy to process and analyze this data efficiently.\nTo solve this task, you’ll need to use NumPy to perform various operations on the temperature data. Here, you’ll need some new functions you haven’t seen yet.\n\nnp.mean(): calculate the mean of an array\nnp.max(): calculate the maximum of an array\nnp.min(): calculate the minimum of an array\nnp.argmax(): find the index of the maximum of an array\nnp.argmin(): find the index of the minimum of an array\n\nIf you want to find those informations along an axis, you can use the same function with axis as an additional argument. Here, axis=0 is for the columns and axis=1 is for the rows.\nFor example, to find the maximum of each row, you can use np.max(data_set, axis=1). To find the index of the maximum of each column, you can use np.argmax(data_set, axis=0).\n\nimport numpy as np\n\n# Let's analyze temperature data from 10 weather stations over 30 days\ntemp_data = np.random.randint(0, 40, size=(10, 30))\n\n# Example: Calculate the average temperature for the first station\nfirst_station_avg = np.mean(temp_data[0,:])\nprint(f\"Average temperature for the first station: {first_station_avg:.2f}°C\")\n\n# TODO: a) Calculate the average temperature for each station and print it. Make sure to round the result to 2 decimal places!\n# Hint: Use np.mean() with axis=1\n# Your code here\n\n\n# TODO: b) Find the highest temperature recorded and the station index and print it\n# Hint: Use np.max() and np.argmax(). Note, that argmax returns the index of a flattened array, so you need to convert it to the original shape!\n# Your code here\n\n# TODO: c) Find the lowest temperature recorded and the station index and print it\n# Hint: Use np.min()\n# Your code here\n\n# TODO: d) Calculate the overall average temperature and print it\n# Hint: Use np.mean() on the entire temp_data array\n# Your code here\n\n# Example: Identify days above 30°C for the first station\nhot_days = np.sum(temp_data[0,:] &gt; 30)\nprint(f\"The first station had {hot_days} days above 30°C\")\n\n# TODO: e) Count the number of days above 30°C for each station\n# Your code here\n\n# TODO: f) Find the hottest and coldest stations and determine the index of the station with the highest average temperature and the station with the lowest average temperature.\n# Hint: Use np.argmax() and np.argmin()\n# Your code here\n\nAverage temperature for the first station: 20.23°C\nThe first station had 6 days above 30°C\n\n\n\n\nThat’s it!\nAfter a week, you can find the solutions to these exercises online in the associated GitHub repository, but we will also quickly go over them in next week’s tutorial. To access the solutions, click on the Github button on the lower right and search for the folder with today’s lecture and tutorial. Alternatively, you can ask ChatGPT or Claude to explain them to you. Remember, the goal is not just to complete the exercises, but to understand the concepts and improve your programming abilities.",
+    "text": "Analyzing Climate Data\nImagine you’re a climate scientist working on a project to analyze temperature data from weather stations across the country. You’ve been given a large dataset, and you need to use NumPy to process and analyze this data efficiently.\nTo solve this task, you’ll need to use NumPy to perform various operations on the temperature data. Here, you’ll need some new functions you haven’t seen yet.\n\nnp.mean(): calculate the mean of an array\nnp.max(): calculate the maximum of an array\nnp.min(): calculate the minimum of an array\nnp.argmax(): find the index of the maximum of an array\nnp.argmin(): find the index of the minimum of an array\n\nIf you want to find those informations along an axis, you can use the same function with axis as an additional argument. Here, axis=0 is for the columns and axis=1 is for the rows.\nFor example, to find the maximum of each row, you can use np.max(data_set, axis=1). To find the index of the maximum of each column, you can use np.argmax(data_set, axis=0).\n\nimport numpy as np\n\n# Let's analyze temperature data from 10 weather stations over 30 days\ntemp_data = np.random.randint(0, 40, size=(10, 30))\n\n# Example: Calculate the average temperature for the first station\nfirst_station_avg = np.mean(temp_data[0,:])\nprint(f\"Average temperature for the first station: {first_station_avg:.2f}°C\")\n\n# TODO: a) Calculate the average temperature for each station and print it. Make sure to round the result to 2 decimal places!\n# Hint: Use np.mean() with axis=1\n# Your code here\n\n\n# TODO: b) Find the highest temperature recorded and the station index and print it\n# Hint: Use np.max() and np.argmax(). Note, that argmax returns the index of a flattened array, so you need to convert it to the original shape!\n# Your code here\n\n# TODO: c) Find the lowest temperature recorded and the station index and print it\n# Hint: Use np.min()\n# Your code here\n\n# TODO: d) Calculate the overall average temperature and print it\n# Hint: Use np.mean() on the entire temp_data array\n# Your code here\n\n# Example: Identify days above 30°C for the first station\nhot_days = np.sum(temp_data[0,:] &gt; 30)\nprint(f\"The first station had {hot_days} days above 30°C\")\n\n# TODO: e) Count the number of days above 30°C for each station\n# Your code here\n\n# TODO: f) Find the hottest and coldest stations and determine the index of the station with the highest average temperature and the station with the lowest average temperature.\n# Hint: Use np.argmax() and np.argmin()\n# Your code here\n\nAverage temperature for the first station: 19.20°C\nThe first station had 6 days above 30°C\n\n\n\n\nThat’s it!\nAfter a week, you can find the solutions to these exercises online in the associated GitHub repository, but we will also quickly go over them in next week’s tutorial. To access the solutions, click on the Github button on the lower right and search for the folder with today’s lecture and tutorial. Alternatively, you can ask ChatGPT or Claude to explain them to you. Remember, the goal is not just to complete the exercises, but to understand the concepts and improve your programming abilities.",
     "crumbs": [
       "07 Scientific Computing",
       "Tutorial"
@@ -885,7 +885,7 @@
     "href": "lectures/lec_07_presentation.html#indexing-and-slicing",
     "title": "Lecture VII - NumPy for Scientific Computing",
     "section": "Indexing and Slicing",
-    "text": "Indexing and Slicing\n\nAccessing and slicing ndarray works as before\nHigher dimension element access with multiple indices\n\n\nQuestion: What do you expect will be printed?\n\nimport numpy as np\nx = np.random.randint(0, 10, size=(3, 3))\nprint(x); print(\"---\")\nprint(x[0:2,0:2])\n\n\n\n[[0 1 0]\n [2 7 1]\n [1 1 6]]\n---\n[[0 1]\n [2 7]]"
+    "text": "Indexing and Slicing\n\nAccessing and slicing ndarray works as before\nHigher dimension element access with multiple indices\n\n\nQuestion: What do you expect will be printed?\n\nimport numpy as np\nx = np.random.randint(0, 10, size=(3, 3))\nprint(x); print(\"---\")\nprint(x[0:2,0:2])\n\n\n\n[[2 7 0]\n [1 4 4]\n [7 6 6]]\n---\n[[2 7]\n [1 4]]"
   },
   {
     "objectID": "lectures/lec_07_presentation.html#data-types",
@@ -934,7 +934,7 @@
     "href": "lectures/lec_07_presentation.html#speed-differences-in-action",
     "title": "Lecture VII - NumPy for Scientific Computing",
     "section": "Speed Differences in Action",
-    "text": "Speed Differences in Action\nTask: Complete the following task to practice with Numpy:\n\n# TODO: Create a 2-dimensional matrix with filled with ones of size 1000 x 1000.\n# Afterward, flatten the matrix to a vector and loop over the vector.\n# In each loop iteration, add a random number between 1 and 10000.\n# TODO: Now, do the same with a list of the same size and fill it with random numbers.\n# Then, sort the list as you have done with the Numpy vector before.\n# You can use the `time` module to compare the runtime of both approaches.\nimport time\nstart = time.time()\n# Your code here\nend = time.time()\nprint(end - start) # time in seconds\n\n\n\n7.152557373046875e-06"
+    "text": "Speed Differences in Action\nTask: Complete the following task to practice with Numpy:\n\n# TODO: Create a 2-dimensional matrix with filled with ones of size 1000 x 1000.\n# Afterward, flatten the matrix to a vector and loop over the vector.\n# In each loop iteration, add a random number between 1 and 10000.\n# TODO: Now, do the same with a list of the same size and fill it with random numbers.\n# Then, sort the list as you have done with the Numpy vector before.\n# You can use the `time` module to compare the runtime of both approaches.\nimport time\nstart = time.time()\n# Your code here\nend = time.time()\nprint(end - start) # time in seconds\n\n\n\n5.9604644775390625e-06"
   },
   {
     "objectID": "lectures/lec_07_presentation.html#interesting-books",
@@ -1091,7 +1091,7 @@
     "href": "lectures/lec_07_scientific.html#indexing-and-slicing",
     "title": "Lecture VII - NumPy for Scientific Computing",
     "section": "Indexing and Slicing",
-    "text": "Indexing and Slicing\n\nAccessing and slicing ndarray works as before\nHigher dimension element access with multiple indices\n\n. . .\nQuestion: What do you expect will be printed?\n\nimport numpy as np\nx = np.random.randint(0, 10, size=(3, 3))\nprint(x); print(\"---\")\nprint(x[0:2,0:2])\n\n[[0 1 0]\n [2 7 1]\n [1 1 6]]\n---\n[[0 1]\n [2 7]]",
+    "text": "Indexing and Slicing\n\nAccessing and slicing ndarray works as before\nHigher dimension element access with multiple indices\n\n. . .\nQuestion: What do you expect will be printed?\n\nimport numpy as np\nx = np.random.randint(0, 10, size=(3, 3))\nprint(x); print(\"---\")\nprint(x[0:2,0:2])\n\n[[2 7 0]\n [1 4 4]\n [7 6 6]]\n---\n[[2 7]\n [1 4]]",
     "crumbs": [
       "07 Scientific Computing",
       "Lecture"
@@ -1168,7 +1168,7 @@
     "href": "lectures/lec_07_scientific.html#speed-differences-in-action",
     "title": "Lecture VII - NumPy for Scientific Computing",
     "section": "Speed Differences in Action",
-    "text": "Speed Differences in Action\nTask: Complete the following task to practice with Numpy:\n\n# TODO: Create a 2-dimensional matrix with filled with ones of size 1000 x 1000.\n# Afterward, flatten the matrix to a vector and loop over the vector.\n# In each loop iteration, add a random number between 1 and 10000.\n# TODO: Now, do the same with a list of the same size and fill it with random numbers.\n# Then, sort the list as you have done with the Numpy vector before.\n# You can use the `time` module to compare the runtime of both approaches.\nimport time\nstart = time.time()\n# Your code here\nend = time.time()\nprint(end - start) # time in seconds\n\n7.152557373046875e-06",
+    "text": "Speed Differences in Action\nTask: Complete the following task to practice with Numpy:\n\n# TODO: Create a 2-dimensional matrix with filled with ones of size 1000 x 1000.\n# Afterward, flatten the matrix to a vector and loop over the vector.\n# In each loop iteration, add a random number between 1 and 10000.\n# TODO: Now, do the same with a list of the same size and fill it with random numbers.\n# Then, sort the list as you have done with the Numpy vector before.\n# You can use the `time` module to compare the runtime of both approaches.\nimport time\nstart = time.time()\n# Your code here\nend = time.time()\nprint(end - start) # time in seconds\n\n5.9604644775390625e-06",
     "crumbs": [
       "07 Scientific Computing",
       "Lecture"
@@ -1603,11 +1603,11 @@
     "text": "What is a Function?\n\nFunctions can accept inputs (parameters) and return outputs\nEncapsulate logic, making code easier to maintain\nFunctions can be called multiple times from different part\nThey help reduce code duplication and improve readability\n\n\n# I'm a function.\ntype(print)\n\n\n\nbuiltin_function_or_method\n\n\n\n\n\n\n\n\n\nRemember, methods are functions that are called on an object."
   },
   {
-    "objectID": "lectures/lec_03_presentation.html#some-built-in-functions-already-used",
-    "href": "lectures/lec_03_presentation.html#some-built-in-functions-already-used",
+    "objectID": "lectures/lec_03_presentation.html#built-in-functions-already-used",
+    "href": "lectures/lec_03_presentation.html#built-in-functions-already-used",
     "title": "Lecture III - Building Reusable Functions",
-    "section": "Some Built-in Functions already used",
-    "text": "Some Built-in Functions already used\n\nprint(): Print text to console\ninput(): Read text from console\nlen(): Get the length of a sequence\nrange(): Generate a sequence of numbers\nround(): Round a number to a specified number of decimal places\ntype(): Get the type of an object\nint(): Convert a string to an integer\nfloat(): Convert a string to a floating-point number\nstr(): Convert an object to a string"
+    "section": "Built-in Functions already used",
+    "text": "Built-in Functions already used\n\nprint(): Print text to console\ninput(): Read text from console\nlen(): Get the length of a sequence\nrange(): Generate a sequence of numbers\nround(): Round number to a specified number of decimal places\ntype(): Get the type of an object\nint(): Convert a string to an integer\nfloat(): Convert a string to a floating-point number\nstr(): Convert an object to a string"
   },
   {
     "objectID": "lectures/lec_03_presentation.html#defining-a-function",
@@ -1635,14 +1635,14 @@
     "href": "lectures/lec_03_presentation.html#function-parameters",
     "title": "Lecture III - Building Reusable Functions",
     "section": "Function Parameters",
-    "text": "Function Parameters\n\nParameters are variables that the function accepts\nThey allow you to pass data to the function\nTry to name them as variables: short and meaningful\nWe can also leave them out or define several inputs!\n\n\ndef greet():\n    print(\"Hello, stranger!\")\ngreet()\n\n\n\nHello, stranger!"
+    "text": "Function Parameters\n\nParameters are variables that the function accepts\nThey allow you to pass data to the function\nTry to name them as variables: short and meaningful\nWe can also leave them out or define several inputs!\n\n\n# This function has no parameter yet!\ndef greet():\n    print(\"Hello, stranger!\")\ngreet()\n\n\n\nHello, stranger!"
   },
   {
     "objectID": "lectures/lec_03_presentation.html#function-arguments",
     "href": "lectures/lec_03_presentation.html#function-arguments",
     "title": "Lecture III - Building Reusable Functions",
     "section": "Function Arguments",
-    "text": "Function Arguments\n\nArguments are the actual values passed to the function\nThey replace the parameters in the function definition\n\n\n&gt; Question: What could be the correct arguments here?\n\ndef greet(university_name, lecture):\n    print(f\"Hello, students at the {university_name}!\")\n    print(f\"You are in lecture {lecture}!\")\n\n# Your code here"
+    "text": "Function Arguments\n\nArguments are the actual values passed to the function\nThey replace the parameters in the function definition\n\n\n&gt; Task: Use the function properly with parameters.\n\ndef greet(university_name, lecture):\n    print(f\"Hello, students at the {university_name}!\")\n    print(f\"You are in lecture {lecture}!\")\n\n# Your code here"
   },
   {
     "objectID": "lectures/lec_03_presentation.html#initializing-parameters",
@@ -1656,14 +1656,14 @@
     "href": "lectures/lec_03_presentation.html#multiple-parameters",
     "title": "Lecture III - Building Reusable Functions",
     "section": "Multiple Parameters",
-    "text": "Multiple Parameters\n\nWe can also have multiple parameters in a function definition\nThey are called positional arguments and are separated by commas\nWhen we call them, they must be provided in the same order\nAlternatively, we could call them by name, as for example in this function call print(\"h\",\"i\",sep='')\n\n\n&gt; Question: What will be printed here?\n\ndef call_parameters(parameter_a, parameter_b):\n    print(parameter_a, parameter_b)\n\ncall_parameters(parameter_b=\"Hello\", parameter_a=\"World\")\n\n\n\nWorld Hello"
+    "text": "Multiple Parameters\n\nAs seen before, we can have multiple parameters in a function\nCalled positional arguments and are separated by commas\nWhen we call them, they must be provided in the same order\nAlternatively, we could call them by name!\n\n\n&gt; Question: What will be printed here?\n\ndef call_parameters(parameter_a, parameter_b):\n    print(parameter_a, parameter_b)\n\ncall_parameters(parameter_b=\"Hello\", parameter_a=\"World\")\n\n\n\nWorld Hello"
   },
   {
     "objectID": "lectures/lec_03_presentation.html#function-return-values",
     "href": "lectures/lec_03_presentation.html#function-return-values",
     "title": "Lecture III - Building Reusable Functions",
     "section": "Function Return Values",
-    "text": "Function Return Values\n\nFunctions can return values using the return statement\nThe return statement ends the function\nIt then returns the specified value\n\n\n\ndef simple_multiplication(a,b):\n    result = a*b\n    return result\nprint(simple_multiplication(2,21))\n\n\n\n42\n\n\n\n\n\ndef simple_multiplication(a,b):\n    return a*b # even shorter!\nprint(simple_multiplication(2,21))\n\n\n\n42"
+    "text": "Function Return Values\n\nFunctions can return values using the return statement\nThe return statement ends the function\nIt then returns the specified value\n\n\n\ndef simple_multiplication(a,b):\n    result = a*b\n    return a\n\nprint(simple_multiplication(2,21))\n\n\n\n2\n\n\n\n\n\ndef simple_multiplication(a,b):\n    return a*b # or shorter, but this time a*b!\n\nprint(simple_multiplication(2,21))\n\n\n\n42"
   },
   {
     "objectID": "lectures/lec_03_presentation.html#access-return-values",
@@ -1687,6 +1687,13 @@
     "text": "Recursion\n\nRecursion is a technique where a function calls itself\nHelps to break down problems into smaller problems\n\n\n\ndef fibonacci(n): # Classical example to introduce recursion\n    if n &lt;= 1:\n        return n\n    else:\n        return fibonacci(n-1) + fibonacci(n-2)\n\nprint(fibonacci(6))\n\n\n\n8\n\n\n\n\n\n\n\n\n\n\nRecursion can be a powerful tool, but it can also be quite tricky to get right."
   },
   {
+    "objectID": "lectures/lec_03_presentation.html#lets-practice-recursion",
+    "href": "lectures/lec_03_presentation.html#lets-practice-recursion",
+    "title": "Lecture III - Building Reusable Functions",
+    "section": "Let’s practice Recursion",
+    "text": "Let’s practice Recursion\n&gt; Task: Create a recursive function called countdown that prints numbers from n down to 1, then prints “Blast off!”. For example, countdown(5) should print 5, 4, 3, 2, 1, Blast off! (each on a new line). Start with the number 10.\n\n\n\n\n\n\n\nUse the return statement to stop the recursion."
+  },
+  {
     "objectID": "lectures/lec_03_presentation.html#function-scope",
     "href": "lectures/lec_03_presentation.html#function-scope",
     "title": "Lecture III - Building Reusable Functions",
@@ -1698,7 +1705,7 @@
     "href": "lectures/lec_03_presentation.html#global-scope",
     "title": "Lecture III - Building Reusable Functions",
     "section": "Global Scope",
-    "text": "Global Scope\n\nVariables defined outside all functions are in the global scope\nThey can be accessed from anywhere in the program\n\n\n\ngreeting = \"Hello, Stranger!\"\ndef greet(name):\n   greeting = f\"Hello, {name}!\"\n   return greeting\nprint(greet(\"Students\")) # Greet students\nprint(greeting) # Greet ????\n\n\n\nHello, Students!\nHello, Stranger!\n\n\n\n\n\n\n\n\n\n\nWe don’t change global variables inside a function! The original value can still be accessed from outside the function."
+    "text": "Global Scope\n\nVariables defined outside all functions are in the global scope\nThey can be accessed from anywhere in the program\n\n\n\ngreeting = \"Hello, Stranger!\"\ndef greet(name):\n   greeting = f\"Hello, {name}!\"\n   return greeting\n\nprint(greet(\"Students\")) # Greet students\nprint(greeting) # Greet ????\n\n\n\nHello, Students!\nHello, Stranger!\n\n\n\n\n\n\n\n\n\n\nWe don’t change global variables inside a function! The original value can still be accessed from outside the function."
   },
   {
     "objectID": "lectures/lec_03_presentation.html#global-keyword",
@@ -1733,7 +1740,7 @@
     "href": "lectures/lec_03_presentation.html#class-attributes",
     "title": "Lecture III - Building Reusable Functions",
     "section": "Class Attributes",
-    "text": "Class Attributes\n\nClass attributes are attributes that are shared by all class instances\nThey are defined within the class but outside any methods\n\n\n&gt;Question: What do you think will happen here?\n\nclass Students: # Class definition\n    smart = True # Class attribute\n\nstudent_A = Students() # Object instantiation student_A\nstudent_B = Students() # Object instantiation student_B\n\nprint(student_A.smart)\nprint(student_B.smart)\n\n\n\nTrue\nTrue"
+    "text": "Class Attributes\n\nClass attributes are attributes that are shared by all instances\nThey are defined within the class but outside any methods\n\n\n&gt;Question: What do you think will happen here?\n\nclass Students: # Class definition\n    smart = True # Class attribute\n\nstudent_A = Students() # Object instantiation student_A\nstudent_B = Students() # Object instantiation student_B\n\nprint(student_A.smart)\nprint(student_B.smart)\n\n\n\nTrue\nTrue"
   },
   {
     "objectID": "lectures/lec_03_presentation.html#instance-attributes",
@@ -1747,7 +1754,7 @@
     "href": "lectures/lec_03_presentation.html#inheritance",
     "title": "Lecture III - Building Reusable Functions",
     "section": "Inheritance",
-    "text": "Inheritance\n\nInheritance allows a class to inherit attributes and methods\nThe class that inherits is called the subclass\nThe class that is being inherited from is called the superclass\n\n\n\n\n\n\n\n\nDon’t worry!  It can be quite much right now. Hang in there and soon it will get easier again!"
+    "text": "Inheritance\n\nInheritance allows a class to inherit attributes and methods\nThe class that inherits is called the subclass\nThe class that is being inherited from is called the superclass\n\n\n\n\n\n\n\n\nDon’t worry! It can be quite much right now."
   },
   {
     "objectID": "lectures/lec_03_presentation.html#inheritance-in-action",
@@ -1761,7 +1768,7 @@
     "href": "lectures/lec_03_presentation.html#encapsulation",
     "title": "Lecture III - Building Reusable Functions",
     "section": "Encapsulation",
-    "text": "Encapsulation\n\nEncapsulation is the concept of bundling data (attributes) and methods (behavior) that operate on the data into a single unit (class)\nIt is a key aspect of object oriented programming (OOP)\nIt helps in organizing code and controlling access\n\n\n\n\n\n\n\n\nFortunately, this is an introduction to Python, so we won’t go into details of encapsulation."
+    "text": "Encapsulation\n\nMeans keeping related data and functions together\nLike a capsule that contains everything needed for that object\nOur Student class is already using encapsulation!\n\n\n\nclass Student:\n    def __init__(self, name):\n        self.name = name        # Data (attribute)\n\n    def when_asked(self):       # Behavior (method)\n        return f\"{self.name} is thinking...\"\n\nalice = Student(\"Alice\")\nprint(alice.when_asked())  # Data and behavior work together\n\n\n\nAlice is thinking...\n\n\n\n\n\n\n\n\n\n\nYou are already doing encapsulation! Every time you create a class with attributes and methods, you’re bundling related data and behavior together. That’s the core idea!"
   },
   {
     "objectID": "lectures/lec_03_presentation.html#the-end",
@@ -1833,11 +1840,11 @@
     ]
   },
   {
-    "objectID": "lectures/lec_03_functions.html#some-built-in-functions-already-used",
-    "href": "lectures/lec_03_functions.html#some-built-in-functions-already-used",
+    "objectID": "lectures/lec_03_functions.html#built-in-functions-already-used",
+    "href": "lectures/lec_03_functions.html#built-in-functions-already-used",
     "title": "Lecture III - Building Reusable Functions",
-    "section": "Some Built-in Functions already used",
-    "text": "Some Built-in Functions already used\n\nprint(): Print text to console\ninput(): Read text from console\nlen(): Get the length of a sequence\nrange(): Generate a sequence of numbers\nround(): Round a number to a specified number of decimal places\ntype(): Get the type of an object\nint(): Convert a string to an integer\nfloat(): Convert a string to a floating-point number\nstr(): Convert an object to a string",
+    "section": "Built-in Functions already used",
+    "text": "Built-in Functions already used\n\nprint(): Print text to console\ninput(): Read text from console\nlen(): Get the length of a sequence\nrange(): Generate a sequence of numbers\nround(): Round number to a specified number of decimal places\ntype(): Get the type of an object\nint(): Convert a string to an integer\nfloat(): Convert a string to a floating-point number\nstr(): Convert an object to a string",
     "crumbs": [
       "03 Functions",
       "Lecture"
@@ -1881,7 +1888,7 @@
     "href": "lectures/lec_03_functions.html#function-parameters",
     "title": "Lecture III - Building Reusable Functions",
     "section": "Function Parameters",
-    "text": "Function Parameters\n\nParameters are variables that the function accepts\nThey allow you to pass data to the function\nTry to name them as variables: short and meaningful\nWe can also leave them out or define several inputs!\n\n\ndef greet():\n    print(\"Hello, stranger!\")\ngreet()\n\nHello, stranger!",
+    "text": "Function Parameters\n\nParameters are variables that the function accepts\nThey allow you to pass data to the function\nTry to name them as variables: short and meaningful\nWe can also leave them out or define several inputs!\n\n\n# This function has no parameter yet!\ndef greet():\n    print(\"Hello, stranger!\")\ngreet()\n\nHello, stranger!",
     "crumbs": [
       "03 Functions",
       "Lecture"
@@ -1892,7 +1899,7 @@
     "href": "lectures/lec_03_functions.html#function-arguments",
     "title": "Lecture III - Building Reusable Functions",
     "section": "Function Arguments",
-    "text": "Function Arguments\n\nArguments are the actual values passed to the function\nThey replace the parameters in the function definition\n\n. . .\n&gt; Question: What could be the correct arguments here?\n\ndef greet(university_name, lecture):\n    print(f\"Hello, students at the {university_name}!\")\n    print(f\"You are in lecture {lecture}!\")\n\n# Your code here",
+    "text": "Function Arguments\n\nArguments are the actual values passed to the function\nThey replace the parameters in the function definition\n\n. . .\n&gt; Task: Use the function properly with parameters.\n\ndef greet(university_name, lecture):\n    print(f\"Hello, students at the {university_name}!\")\n    print(f\"You are in lecture {lecture}!\")\n\n# Your code here",
     "crumbs": [
       "03 Functions",
       "Lecture"
@@ -1914,7 +1921,7 @@
     "href": "lectures/lec_03_functions.html#multiple-parameters",
     "title": "Lecture III - Building Reusable Functions",
     "section": "Multiple Parameters",
-    "text": "Multiple Parameters\n\nWe can also have multiple parameters in a function definition\nThey are called positional arguments and are separated by commas\nWhen we call them, they must be provided in the same order\nAlternatively, we could call them by name, as for example in this function call print(\"h\",\"i\",sep='')\n\n. . .\n&gt; Question: What will be printed here?\n\ndef call_parameters(parameter_a, parameter_b):\n    print(parameter_a, parameter_b)\n\ncall_parameters(parameter_b=\"Hello\", parameter_a=\"World\")\n\nWorld Hello",
+    "text": "Multiple Parameters\n\nAs seen before, we can have multiple parameters in a function\nCalled positional arguments and are separated by commas\nWhen we call them, they must be provided in the same order\nAlternatively, we could call them by name!\n\n. . .\n&gt; Question: What will be printed here?\n\ndef call_parameters(parameter_a, parameter_b):\n    print(parameter_a, parameter_b)\n\ncall_parameters(parameter_b=\"Hello\", parameter_a=\"World\")\n\nWorld Hello",
     "crumbs": [
       "03 Functions",
       "Lecture"
@@ -1925,7 +1932,7 @@
     "href": "lectures/lec_03_functions.html#function-return-values",
     "title": "Lecture III - Building Reusable Functions",
     "section": "Function Return Values",
-    "text": "Function Return Values\n\nFunctions can return values using the return statement\nThe return statement ends the function\nIt then returns the specified value\n\n. . .\n\ndef simple_multiplication(a,b):\n    result = a*b\n    return result\nprint(simple_multiplication(2,21))\n\n42\n\n\n. . .\n\ndef simple_multiplication(a,b):\n    return a*b # even shorter!\nprint(simple_multiplication(2,21))\n\n42",
+    "text": "Function Return Values\n\nFunctions can return values using the return statement\nThe return statement ends the function\nIt then returns the specified value\n\n. . .\n\ndef simple_multiplication(a,b):\n    result = a*b\n    return a\n\nprint(simple_multiplication(2,21))\n\n2\n\n\n. . .\n\ndef simple_multiplication(a,b):\n    return a*b # or shorter, but this time a*b!\n\nprint(simple_multiplication(2,21))\n\n42",
     "crumbs": [
       "03 Functions",
       "Lecture"
@@ -1965,6 +1972,17 @@
     ]
   },
   {
+    "objectID": "lectures/lec_03_functions.html#lets-practice-recursion",
+    "href": "lectures/lec_03_functions.html#lets-practice-recursion",
+    "title": "Lecture III - Building Reusable Functions",
+    "section": "Let’s practice Recursion",
+    "text": "Let’s practice Recursion\n&gt; Task: Create a recursive function called countdown that prints numbers from n down to 1, then prints “Blast off!”. For example, countdown(5) should print 5, 4, 3, 2, 1, Blast off! (each on a new line). Start with the number 10.\n. . .\n\n\n\n\n\n\nUse the return statement to stop the recursion.",
+    "crumbs": [
+      "03 Functions",
+      "Lecture"
+    ]
+  },
+  {
     "objectID": "lectures/lec_03_functions.html#function-scope",
     "href": "lectures/lec_03_functions.html#function-scope",
     "title": "Lecture III - Building Reusable Functions",
@@ -1980,7 +1998,7 @@
     "href": "lectures/lec_03_functions.html#global-scope",
     "title": "Lecture III - Building Reusable Functions",
     "section": "Global Scope",
-    "text": "Global Scope\n\nVariables defined outside all functions are in the global scope\nThey can be accessed from anywhere in the program\n\n. . .\n\ngreeting = \"Hello, Stranger!\"\ndef greet(name):\n   greeting = f\"Hello, {name}!\"\n   return greeting\nprint(greet(\"Students\")) # Greet students\nprint(greeting) # Greet ????\n\nHello, Students!\nHello, Stranger!\n\n\n. . .\n\n\n\n\n\n\nWe don’t change global variables inside a function! The original value can still be accessed from outside the function.",
+    "text": "Global Scope\n\nVariables defined outside all functions are in the global scope\nThey can be accessed from anywhere in the program\n\n. . .\n\ngreeting = \"Hello, Stranger!\"\ndef greet(name):\n   greeting = f\"Hello, {name}!\"\n   return greeting\n\nprint(greet(\"Students\")) # Greet students\nprint(greeting) # Greet ????\n\nHello, Students!\nHello, Stranger!\n\n\n. . .\n\n\n\n\n\n\nWe don’t change global variables inside a function! The original value can still be accessed from outside the function.",
     "crumbs": [
       "03 Functions",
       "Lecture"
@@ -2035,7 +2053,7 @@
     "href": "lectures/lec_03_functions.html#class-attributes",
     "title": "Lecture III - Building Reusable Functions",
     "section": "Class Attributes",
-    "text": "Class Attributes\n\nClass attributes are attributes that are shared by all class instances\nThey are defined within the class but outside any methods\n\n. . .\n&gt;Question: What do you think will happen here?\n\nclass Students: # Class definition\n    smart = True # Class attribute\n\nstudent_A = Students() # Object instantiation student_A\nstudent_B = Students() # Object instantiation student_B\n\nprint(student_A.smart)\nprint(student_B.smart)\n\nTrue\nTrue",
+    "text": "Class Attributes\n\nClass attributes are attributes that are shared by all instances\nThey are defined within the class but outside any methods\n\n. . .\n&gt;Question: What do you think will happen here?\n\nclass Students: # Class definition\n    smart = True # Class attribute\n\nstudent_A = Students() # Object instantiation student_A\nstudent_B = Students() # Object instantiation student_B\n\nprint(student_A.smart)\nprint(student_B.smart)\n\nTrue\nTrue",
     "crumbs": [
       "03 Functions",
       "Lecture"
@@ -2057,7 +2075,7 @@
     "href": "lectures/lec_03_functions.html#inheritance",
     "title": "Lecture III - Building Reusable Functions",
     "section": "Inheritance",
-    "text": "Inheritance\n\nInheritance allows a class to inherit attributes and methods\nThe class that inherits is called the subclass\nThe class that is being inherited from is called the superclass\n\n. . .\n\n\n\n\n\n\nDon’t worry!  It can be quite much right now. Hang in there and soon it will get easier again!",
+    "text": "Inheritance\n\nInheritance allows a class to inherit attributes and methods\nThe class that inherits is called the subclass\nThe class that is being inherited from is called the superclass\n\n. . .\n\n\n\n\n\n\nDon’t worry! It can be quite much right now.",
     "crumbs": [
       "03 Functions",
       "Lecture"
@@ -2079,7 +2097,7 @@
     "href": "lectures/lec_03_functions.html#encapsulation",
     "title": "Lecture III - Building Reusable Functions",
     "section": "Encapsulation",
-    "text": "Encapsulation\n\nEncapsulation is the concept of bundling data (attributes) and methods (behavior) that operate on the data into a single unit (class)\nIt is a key aspect of object oriented programming (OOP)\nIt helps in organizing code and controlling access\n\n. . .\n\n\n\n\n\n\nFortunately, this is an introduction to Python, so we won’t go into details of encapsulation.",
+    "text": "Encapsulation\n\nMeans keeping related data and functions together\nLike a capsule that contains everything needed for that object\nOur Student class is already using encapsulation!\n\n. . .\n\nclass Student:\n    def __init__(self, name):\n        self.name = name        # Data (attribute)\n\n    def when_asked(self):       # Behavior (method)\n        return f\"{self.name} is thinking...\"\n\nalice = Student(\"Alice\")\nprint(alice.when_asked())  # Data and behavior work together\n\nAlice is thinking...\n\n\n. . .\n\n\n\n\n\n\nYou are already doing encapsulation! Every time you create a class with attributes and methods, you’re bundling related data and behavior together. That’s the core idea!",
     "crumbs": [
       "03 Functions",
       "Lecture"
@@ -3765,7 +3783,7 @@
     "href": "general/uv.html",
     "title": "Installing Python",
     "section": "",
-    "text": "uv is a new (and very fast) Python tool written in Rust. It: - Installs Python for you (no manual downloads). - Creates isolated virtual environments (safe sandboxes per project). - Installs and updates packages quickly.\n\n\n\n\n\n\nWHAT is a virtual environment? Think of each project as its own coffee shop with its own supplies. One shop changing its menu does not affect the others. WHY it matters: You avoid random breakage when different projects need different versions of the same package.",
+    "text": "uv is a new (and very fast) Python tool written in Rust. It:\n\nInstalls Python for you (no manual downloads).\nCreates isolated virtual environments (safe sandboxes per project).\nInstalls and updates packages quickly.\n\n\n\n\n\n\n\nWHAT is a virtual environment? Think of each project as its own coffee shop with its own supplies. One shop changing its menu does not affect the others. WHY it matters: You avoid random breakage when different projects need different versions of the same package.",
     "crumbs": [
       "Installing Python"
     ]
@@ -3775,7 +3793,7 @@
     "href": "general/uv.html#why-we-use-uv-for-this-course",
     "title": "Installing Python",
     "section": "",
-    "text": "uv is a new (and very fast) Python tool written in Rust. It: - Installs Python for you (no manual downloads). - Creates isolated virtual environments (safe sandboxes per project). - Installs and updates packages quickly.\n\n\n\n\n\n\nWHAT is a virtual environment? Think of each project as its own coffee shop with its own supplies. One shop changing its menu does not affect the others. WHY it matters: You avoid random breakage when different projects need different versions of the same package.",
+    "text": "uv is a new (and very fast) Python tool written in Rust. It:\n\nInstalls Python for you (no manual downloads).\nCreates isolated virtual environments (safe sandboxes per project).\nInstalls and updates packages quickly.\n\n\n\n\n\n\n\nWHAT is a virtual environment? Think of each project as its own coffee shop with its own supplies. One shop changing its menu does not affect the others. WHY it matters: You avoid random breakage when different projects need different versions of the same package.",
     "crumbs": [
       "Installing Python"
     ]
@@ -4751,7 +4769,7 @@
     "href": "lectures/lec_04_dimensions.html#speed-differences",
     "title": "Lecture IV - Handling Data in more than one Dimension",
     "section": "Speed Differences",
-    "text": "Speed Differences\n\nLists are the most versatile, but slowest\nTuples are generally faster than lists\nSets are generally faster than lists and tuples\nDictionaries depend, but are generally faster than lists and tuples\n\n\n\nCode\nimport timeit\n\n# Number of elements in each data structure\nn = 10000000\n\n# Setup for each data structure, including the test function\nsetup_template = \"\"\"\ndef test_membership(data_structure, element):\n    return element in data_structure\ndata = {data_structure}\n\"\"\"\n\nsetups = {\n    'Tuple': setup_template.format(data_structure=f\"tuple(range({n}))\"),\n    'List': setup_template.format(data_structure=f\"list(range({n}))\"),\n    'Set': setup_template.format(data_structure=f\"set(range({n}))\"),\n    'Dictionary': setup_template.format(data_structure=f\"{{i: i for i in range({n})}}\")\n}\n\n# Measure time for each data structure\nprint(f\"Time taken for a single membership test in {n} elements (in seconds):\")\nprint(\"-\" * 75)\nfor name, setup in setups.items():\n    stmt = f\"test_membership(data, {n-1})\"  # Test membership of the last element\n    time_taken = timeit.timeit(stmt, setup=setup, number=1)\n    print(f\"{name:&lt;10}: {time_taken:.8f}\")\nprint(\"-\" * 75)\nprint(\"Note, that theses values are machine dependent and just for illustration!\")\n\n\nTime taken for a single membership test in 10000000 elements (in seconds):\n---------------------------------------------------------------------------\nTuple     : 0.04582404\nList      : 0.04247979\nSet       : 0.00000271\nDictionary: 0.00000275\n---------------------------------------------------------------------------\nNote, that theses values are machine dependent and just for illustration!",
+    "text": "Speed Differences\n\nLists are the most versatile, but slowest\nTuples are generally faster than lists\nSets are generally faster than lists and tuples\nDictionaries depend, but are generally faster than lists and tuples\n\n\n\nCode\nimport timeit\n\n# Number of elements in each data structure\nn = 10000000\n\n# Setup for each data structure, including the test function\nsetup_template = \"\"\"\ndef test_membership(data_structure, element):\n    return element in data_structure\ndata = {data_structure}\n\"\"\"\n\nsetups = {\n    'Tuple': setup_template.format(data_structure=f\"tuple(range({n}))\"),\n    'List': setup_template.format(data_structure=f\"list(range({n}))\"),\n    'Set': setup_template.format(data_structure=f\"set(range({n}))\"),\n    'Dictionary': setup_template.format(data_structure=f\"{{i: i for i in range({n})}}\")\n}\n\n# Measure time for each data structure\nprint(f\"Time taken for a single membership test in {n} elements (in seconds):\")\nprint(\"-\" * 75)\nfor name, setup in setups.items():\n    stmt = f\"test_membership(data, {n-1})\"  # Test membership of the last element\n    time_taken = timeit.timeit(stmt, setup=setup, number=1)\n    print(f\"{name:&lt;10}: {time_taken:.8f}\")\nprint(\"-\" * 75)\nprint(\"Note, that theses values are machine dependent and just for illustration!\")\n\n\nTime taken for a single membership test in 10000000 elements (in seconds):\n---------------------------------------------------------------------------\nTuple     : 0.03715408\nList      : 0.03911146\nSet       : 0.00000175\nDictionary: 0.00000317\n---------------------------------------------------------------------------\nNote, that theses values are machine dependent and just for illustration!",
     "crumbs": [
       "04 Dimensions",
       "Lecture"
@@ -5015,7 +5033,7 @@
     "href": "lectures/lec_04_presentation.html#speed-differences",
     "title": "Lecture IV - Handling Data in more than one Dimension",
     "section": "Speed Differences",
-    "text": "Speed Differences\n\nLists are the most versatile, but slowest\nTuples are generally faster than lists\nSets are generally faster than lists and tuples\nDictionaries depend, but are generally faster than lists and tuples\n\n\n\nCode\nimport timeit\n\n# Number of elements in each data structure\nn = 10000000\n\n# Setup for each data structure, including the test function\nsetup_template = \"\"\"\ndef test_membership(data_structure, element):\n    return element in data_structure\ndata = {data_structure}\n\"\"\"\n\nsetups = {\n    'Tuple': setup_template.format(data_structure=f\"tuple(range({n}))\"),\n    'List': setup_template.format(data_structure=f\"list(range({n}))\"),\n    'Set': setup_template.format(data_structure=f\"set(range({n}))\"),\n    'Dictionary': setup_template.format(data_structure=f\"{{i: i for i in range({n})}}\")\n}\n\n# Measure time for each data structure\nprint(f\"Time taken for a single membership test in {n} elements (in seconds):\")\nprint(\"-\" * 75)\nfor name, setup in setups.items():\n    stmt = f\"test_membership(data, {n-1})\"  # Test membership of the last element\n    time_taken = timeit.timeit(stmt, setup=setup, number=1)\n    print(f\"{name:&lt;10}: {time_taken:.8f}\")\nprint(\"-\" * 75)\nprint(\"Note, that theses values are machine dependent and just for illustration!\")\n\n\n\n\nTime taken for a single membership test in 10000000 elements (in seconds):\n---------------------------------------------------------------------------\nTuple     : 0.04582404\nList      : 0.04247979\nSet       : 0.00000271\nDictionary: 0.00000275\n---------------------------------------------------------------------------\nNote, that theses values are machine dependent and just for illustration!"
+    "text": "Speed Differences\n\nLists are the most versatile, but slowest\nTuples are generally faster than lists\nSets are generally faster than lists and tuples\nDictionaries depend, but are generally faster than lists and tuples\n\n\n\nCode\nimport timeit\n\n# Number of elements in each data structure\nn = 10000000\n\n# Setup for each data structure, including the test function\nsetup_template = \"\"\"\ndef test_membership(data_structure, element):\n    return element in data_structure\ndata = {data_structure}\n\"\"\"\n\nsetups = {\n    'Tuple': setup_template.format(data_structure=f\"tuple(range({n}))\"),\n    'List': setup_template.format(data_structure=f\"list(range({n}))\"),\n    'Set': setup_template.format(data_structure=f\"set(range({n}))\"),\n    'Dictionary': setup_template.format(data_structure=f\"{{i: i for i in range({n})}}\")\n}\n\n# Measure time for each data structure\nprint(f\"Time taken for a single membership test in {n} elements (in seconds):\")\nprint(\"-\" * 75)\nfor name, setup in setups.items():\n    stmt = f\"test_membership(data, {n-1})\"  # Test membership of the last element\n    time_taken = timeit.timeit(stmt, setup=setup, number=1)\n    print(f\"{name:&lt;10}: {time_taken:.8f}\")\nprint(\"-\" * 75)\nprint(\"Note, that theses values are machine dependent and just for illustration!\")\n\n\n\n\nTime taken for a single membership test in 10000000 elements (in seconds):\n---------------------------------------------------------------------------\nTuple     : 0.03715408\nList      : 0.03911146\nSet       : 0.00000175\nDictionary: 0.00000317\n---------------------------------------------------------------------------\nNote, that theses values are machine dependent and just for illustration!"
   },
   {
     "objectID": "lectures/lec_04_presentation.html#comprehensions",
