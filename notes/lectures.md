@@ -4,3 +4,5 @@
 
 # Lecture 02
 - Lecture was good paced with no issues or problems.
+
+# Lecture 03

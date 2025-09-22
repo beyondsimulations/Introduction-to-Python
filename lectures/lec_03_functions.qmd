@@ -83,12 +83,12 @@ type(print)
 Remember, methods are [functions]{.highlight} that are called on an [object]{.highlight}.
 :::
 
-## Some Built-in Functions already used
+## Built-in Functions already used
 - `print()`: Print text to console
 - `input()`: Read text from console
 - `len()`: Get the length of a sequence
 - `range()`: Generate a sequence of numbers
-- `round()`: Round a number to a specified number of decimal places
+- `round()`: Round number to a specified number of decimal places
 - `type()`: Get the type of an object
 - `int()`: Convert a string to an integer
 - `float()`: Convert a string to a floating-point number
@@ -141,7 +141,7 @@ help(greet)
 ## Naming Functions (and Methods)
 
 - Function names should be short, but descriptive
-- Use underscores (_) instead of spaces in the names
+- Use underscores (`_`) instead of spaces in the names
 - Avoid using Python keywords as function names (e.g., `print`)
 - Try to avoid using built-in functions and methods that have a similar name (e.g., `sum` and `len`)
 
@@ -161,6 +161,7 @@ help(greet)
 #| eval: true
 #| output-location: fragment
 #|
+# This function has no parameter yet!
 def greet():
     print("Hello, stranger!")
 greet()
@@ -172,7 +173,7 @@ greet()
 
 . . .
 
-[> Question:]{.question} What could be the correct arguments here?
+[> Task:]{.question} Use the function properly with parameters.
 
 ```{python}
 #| eval: false
@@ -208,10 +209,10 @@ This is especially useful when we want to avoid errors due to missing arguments!
 :::
 
 ## Multiple Parameters
-- We can also have **multiple parameters** in a function definition
-- They are called [positional arguments]{.highlight} and are separated by commas
+- As seen before, we can have **multiple parameters** in a function
+- Called [positional arguments]{.highlight} and are separated by commas
 - When we call them, they must be provided in the same order
-- Alternatively, we could call them by name, as for example in this function call `print("h","i",sep='')`
+- Alternatively, we could call them by name!
 
 . . .
 
@@ -239,7 +240,8 @@ call_parameters(parameter_b="Hello", parameter_a="World")
 #|
 def simple_multiplication(a,b):
     result = a*b
-    return result
+    return a
+
 print(simple_multiplication(2,21))
 ```
 
@@ -250,7 +252,8 @@ print(simple_multiplication(2,21))
 #| output-location: fragment
 #|
 def simple_multiplication(a,b):
-    return a*b # even shorter!
+    return a*b # or shorter, but this time a*b!
+
 print(simple_multiplication(2,21))
 ```
 
@@ -320,6 +323,16 @@ print(fibonacci(6))
 Recursion can be a powerful tool, but it can also be [quite tricky]{.highlight} to get right.
 :::
 
+## Let's practice Recursion
+
+[> Task:]{.task} Create a recursive function called `countdown` that prints numbers from n down to 1, then prints "Blast off!". For example, `countdown(5)` should print 5, 4, 3, 2, 1, Blast off! (each on a new line). Start with the number 10.
+
+. . .
+
+:::{.callout-tip}
+Use the `return` statement to stop the recursion.
+:::
+
 # [Scope]{.flow} {.title}
 
 ## Function Scope
@@ -353,6 +366,7 @@ greeting = "Hello, Stranger!"
 def greet(name):
    greeting = f"Hello, {name}!"
    return greeting
+
 print(greet("Students")) # Greet students
 print(greeting) # Greet ????
 ```
@@ -394,7 +408,7 @@ print(greeting) # Greet students again
 - Classes are [blueprints]{.highlight} for creating objects
 - They encapsulate data (attributes) and behavior (methods)
 - Objects are instances of classes
-- Methods are functions that are defined within a class
+- **Methods are functions that are defined within a class**
 
 . . .
 
@@ -444,7 +458,7 @@ student.know_answer()
 [Question:]{.question} Which of the following is a good class name? `smart_student`, `SmartStudent`, or `SmartStudents`
 
 ## Class Attributes
-- Class attributes are attributes that are shared by all class instances
+- Class attributes are attributes that are shared by all instances
 - They are defined **within** the class but **outside** any methods
 
 . . .
@@ -495,7 +509,7 @@ student.knows_answer()
 . . .
 
 :::{.callout-tip}
-Don't worry! \ It can be quite much right now. Hang in there and soon it will get easier again!
+Don't worry! It can be quite much right now.
 :::
 
 
@@ -521,15 +535,34 @@ class LazyStudent(Student): # Subclass
 [>Task:]{.task} Create two students. One is smart and the other one is lazy. Make sure that both students reaction to a question is printed.
 
 ## Encapsulation
-- Encapsulation is the concept of bundling data (attributes) and methods (behavior) that operate on the data into a single unit (class)
-- It is a key aspect of object oriented programming (OOP)
-- It helps in organizing code and controlling access
+
+- Means [keeping related data and functions together]{.highlight}
+- Like a **capsule** that contains everything needed for that object
+- Our `Student` class is already using encapsulation!
+
+. . .
+
+```{python}
+#| eval: true
+#| output-location: fragment
+
+class Student:
+    def __init__(self, name):
+        self.name = name        # Data (attribute)
+
+    def when_asked(self):       # Behavior (method)
+        return f"{self.name} is thinking..."
+
+alice = Student("Alice")
+print(alice.when_asked())  # Data and behavior work together
+```
 
 . . .
 
 :::{.callout-note}
-Fortunately, this is an introduction to Python, so we won't go into details of encapsulation.
+You are already doing encapsulation! Every time you create a class with attributes and methods, you're bundling related data and behavior together. That's the core idea!
 :::
+
 
 ## The End
 
