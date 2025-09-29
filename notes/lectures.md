@@ -6,3 +6,7 @@
 - Lecture was good paced with no issues or problems.
 
 # Lecture 03
+- Slightly too short, add more in class computation tasks!
+
+# Lecture 05
+- Add how to work with types!

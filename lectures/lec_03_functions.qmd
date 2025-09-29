@@ -486,7 +486,7 @@ print(student_B.smart)
 #| eval: true
 #| output-location: fragment
 
-class Student: # Class definition
+class Students: # Class definition
     def __init__(self, name, is_smart): # Method for initalization
         self.name = name
         self.smart = is_smart
@@ -496,7 +496,7 @@ class Student: # Class definition
         else:
             print(f"{self.name} does not know the answer to the question.")
 
-student = Student("Buddy",False) # Note, we don't need to call self here!
+student = Students("Buddy",False) # Note, we don't need to call self here!
 student.knows_answer()
 ```
 
@@ -517,17 +517,17 @@ Don't worry! It can be quite much right now.
 
 ```{python}
 #| eval: false
-class Student: # Superclass
+class Students: # Superclass
     def __init__(self, name):
         self.name = name
     def when_asked(self):
         pass
 
-class SmartStudent(Student): # Subclass
+class SmartStudents(Students): # Subclass
     def when_asked(self):
         return f"{self.name} knows the answer!"
 
-class LazyStudent(Student): # Subclass
+class LazyStudents(Students): # Subclass
     def when_asked(self):
         return f"{self.name} has to ask ChatGPT!"
 ```
@@ -546,14 +546,14 @@ class LazyStudent(Student): # Subclass
 #| eval: true
 #| output-location: fragment
 
-class Student:
+class Students:
     def __init__(self, name):
         self.name = name        # Data (attribute)
 
     def when_asked(self):       # Behavior (method)
         return f"{self.name} is thinking..."
 
-alice = Student("Alice")
+alice = Students("Alice")
 print(alice.when_asked())  # Data and behavior work together
 ```
 
