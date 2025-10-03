@@ -101,4 +101,104 @@ print(sum_even_numbers([1, 2, 3, 4, 5, 6]))  # Should print: 12, but it's not wo
 # Bonus challenge: Add error handling to make this function more robust
 ```
 
+# Anagram Scramble Game
+In this final exercise, you'll create an anagram game that combines everything you've learned about error handling, functions, and file I/O. The computer will scramble a word from a file, and the player must unscramble it within a limited number of tries.
+
+## Game Rules:
+1. Load words from the file `words.txt`
+2. Computer randomly selects and scrambles a word
+3. Player has 5 tries to guess the original word
+4. Player can type "quit" to end the game
+5. Display success or the correct answer at the end
+
+## Your Tasks:
+
+```{python}
+#| eval: false
+
+import random
+
+# TODO: Implement the function to load words from file
+def load_words(filename):
+    """
+    Load words from a file (one word per line).
+
+    Returns a list of words (converted to lowercase and stripped).
+    Handle FileNotFoundError - print error message and return empty list.
+    """
+    # Your code here
+    pass
+
+# TODO: Implement word scrambling function
+def scramble_word(word):
+    """
+    Scramble the letters of a word randomly.
+
+    Hint: Convert to list, use random.shuffle(), convert back to string.
+    Make sure the scrambled word is different from the original.
+    """
+    # Your code here
+    pass
+
+# TODO: Implement input validation
+def validate_guess(guess, original_word):
+    """
+    Validate that a guess is acceptable.
+
+    - Raise ValueError if guess is empty or contains only spaces
+    - Raise ValueError if guess contains numbers or special characters (use .isalpha())
+    - Raise ValueError if guess length doesn't match original word
+    - Return True if guess matches original word (case-insensitive), False otherwise
+    """
+    # Your code here
+    pass
+
+# TODO: Implement the main game function
+def play_anagram_game():
+    """
+    Main game function that orchestrates the entire game.
+
+    1. Load words from 'words.txt'
+    2. If no words loaded, print error and return
+    3. Randomly select a word using random.choice()
+    4. Scramble the word
+    5. Give player 5 attempts
+    6. In a loop:
+       - Show scrambled word and remaining tries
+       - Get player input
+       - Handle "quit" to exit
+       - Validate the guess using validate_guess()
+       - Catch and handle all exceptions with appropriate messages
+       - Check if guess is correct
+       - Break loop if correct or out of tries
+    7. Display win message or reveal the correct word
+    """
+    # Your code here
+    pass
+
+# Test the game
+if __name__ == "__main__":
+    play_anagram_game()
+```
+
+## Requirements Checklist:
+- [ ] Load words from file with FileNotFoundError handling
+- [ ] Scramble word randomly (ensure it's different from original)
+- [ ] Validate empty input (ValueError)
+- [ ] Validate input contains only letters (ValueError)
+- [ ] Validate guess length matches word (ValueError)
+- [ ] Player has exactly 5 tries
+- [ ] Handle "quit" command
+- [ ] Display clear feedback for each error type
+- [ ] Show win/lose message with correct word
+
+## Tips:
+- Use `random.choice(words)` to select a random word from the list
+- Use `random.shuffle()` on a list of characters to scramble
+- Use `.strip()` and `.lower()` for input processing
+- Use `.isalpha()` to check if string contains only letters
+- Use a while loop with a counter for tries
+- Make sure scrambled word ≠ original (use a while loop to keep shuffling if needed)
+- Use try-except blocks in the main game loop to keep game running after errors
+
 {{< include ../include/tutorial_end.qmd >}}

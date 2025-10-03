@@ -394,6 +394,63 @@ for i, test_list in enumerate(test_lists):
 The `enumerate` function used in the code is super helpful function that returns a tuple containing the index and the value of the item in the list and it is not the error.
 :::
 
+# [Script Organization]{.flow} {.title}
+
+## The Main Function Pattern
+
+- You'll often see `if __name__ == "__main__":` at the end of Python scripts
+- This checks [whether the script is being run directly]{.highlight} or imported
+
+. . .
+
+```{python}
+#| eval: false
+
+def greet(name):
+    return f"Hello, {name}!"
+
+if __name__ == "__main__":
+    print(greet("Students"))
+```
+
+. . .
+
+:::{.callout-note}
+The code inside the `if` block only runs when you execute the script directly, not when you import it as a module. So far, we didn't import modules but we will soon.
+:::
+
+## Why Use It?
+
+- **Reusability**: Functions can be imported without executing test code
+- **Testing**: You can test functions in the same file
+- **Organization**: Clear separation between definitions and execution
+
+. . .
+
+```{python}
+#| eval: true
+#| output-location: fragment
+
+def add(a, b):
+    """Add two numbers."""
+    return a + b
+
+def subtract(a, b):
+    """Subtract two numbers."""
+    return a - b
+
+# This only runs when script is executed directly
+if __name__ == "__main__":
+    print(f"5 + 3 = {add(5, 3)}")
+    print(f"5 - 3 = {subtract(5, 3)}")
+```
+
+. . .
+
+:::{.callout-tip}
+If another script imports this file, only the functions are available, not the print statements!
+:::
+
 ## Using Logging
 
 - We can also use logging to [track the execution]{.highlight} of a program
