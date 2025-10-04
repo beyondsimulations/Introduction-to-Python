@@ -451,6 +451,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#raising-your-own-exceptions" id="toc-raising-your-own-exceptions" class="nav-link" data-scroll-target="#raising-your-own-exceptions">Raising your own exceptions</a></li>
   <li><a href="#using-assertions" id="toc-using-assertions" class="nav-link" data-scroll-target="#using-assertions">Using Assertions</a></li>
   <li><a href="#debugging" id="toc-debugging" class="nav-link" data-scroll-target="#debugging">Debugging</a></li>
+  <li><a href="#anagram-scramble-game" id="toc-anagram-scramble-game" class="nav-link" data-scroll-target="#anagram-scramble-game">Anagram Scramble Game</a>
+  <ul class="collapse">
+  <li><a href="#game-rules" id="toc-game-rules" class="nav-link" data-scroll-target="#game-rules">Game Rules:</a></li>
+  <li><a href="#your-tasks" id="toc-your-tasks" class="nav-link" data-scroll-target="#your-tasks">Your Tasks:</a></li>
+  <li><a href="#requirements-checklist" id="toc-requirements-checklist" class="nav-link" data-scroll-target="#requirements-checklist">Requirements Checklist:</a></li>
+  <li><a href="#tips" id="toc-tips" class="nav-link" data-scroll-target="#tips">Tips:</a></li>
+  </ul></li>
   <li><a href="#thats-it" id="toc-thats-it" class="nav-link" data-scroll-target="#thats-it">That’s it!</a></li>
   </ul>
 <div class="toc-actions"><ul><li><a href="https://github.com/beyondsimulations/Introduction-to-Python/blob/main/tutorials/tut_05_errors.qmd" class="toc-action"><i class="bi bi-github"></i>View source</a></li><li><a href="https://github.com/beyondsimulations/Introduction-to-Python/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div><div class="quarto-alternate-formats"><h2>Other Formats</h2><ul><li><a href="tut_05_errors.pdf"><i class="bi bi-file-pdf"></i>PDF</a></li></ul></div></nav>
@@ -481,7 +488,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="basic-exception-handling" class="level1">
 <h1>Basic exception handling</h1>
 <p>We start with a simple task to get you familiar with the concept of exception handling. You are given an empty function that takes three numbers as input. It adds the first two numbers and then divides the result by the third number. You have to use a try-except block to handle the ZeroDivisionError.</p>
-<div id="60cf3f8f" class="cell" data-execution_count="1">
+<div id="fa334162" class="cell" data-execution_count="1">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># </span><span class="al">TODO</span><span class="co">: Write a function that takes three numbers as input. It adds the first two numbers and then divides the result by the third number. Use a try-except block to handle the ZeroDivisionError.</span></span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> safe_divide(add_1, add_2, div):</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Your code here</span></span>
@@ -495,7 +502,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="handling-multiple-exceptions" class="level1">
 <h1>Handling Multiple Exceptions</h1>
 <p>In this exercise, you’ll have to handle multiple exceptions in one try-except block, as we also want to catch exceptions with a wrong type of input, e.g.&nbsp;when the user inputs a string instead of a number.</p>
-<div id="435fb948" class="cell" data-execution_count="2">
+<div id="0e831025" class="cell" data-execution_count="2">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># a) </span><span class="al">TODO</span><span class="co">: Modify the previous function to handle both ZeroDivisionError and TypeError</span></span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> safe_divide_v2(add_1, add_2, div):</span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Your code here</span></span>
@@ -514,7 +521,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="raising-your-own-exceptions" class="level1">
 <h1>Raising your own exceptions</h1>
 <p>In this exercise, you’ll have to raise your own exceptions when the user inputs a wrong type of input, e.g.&nbsp;when the user inputs a string instead of a number. Yout task is to write a function that asks the user a username and then checks if the username is valid. A valid username is considered to be a number that is at least 5 characters long and contains no spaces. If the username is not valid, you should raise an exception, tell the user that the username is not valid and ask for a new username. You should only accept the username if it is valid.</p>
-<div id="ebb51177" class="cell" data-execution_count="3">
+<div id="37277265" class="cell" data-execution_count="3">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># </span><span class="al">TODO</span><span class="co">: Write a function that asks the user for a username and then checks if the username is valid.</span></span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="co"># - A valid username is considered to be a number that is at least 5 characters long and contains no spaces.</span></span>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="co"># - If the username is not valid, you should raise an exception, tell the user that the username is not valid and ask for a new username.</span></span>
@@ -539,7 +546,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="using-assertions" class="level1">
 <h1>Using Assertions</h1>
 <p>By using assertions, we can check if the input of a function is correct. If the assertion is not correct, an <code>AssertionError</code> is raised. This is especially useful in the development phase to catch errors that should not occur.</p>
-<div id="808ec792" class="cell" data-execution_count="4">
+<div id="dd170ee1" class="cell" data-execution_count="4">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co"># </span><span class="al">TODO</span><span class="co">: Write a function that calculates the area of a rectangle. Ensure that the length and width are positive numbers.</span></span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> calculate_rectangle_area(length, width):</span>
 <span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Your code here</span></span>
@@ -554,7 +561,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="debugging" class="level1">
 <h1>Debugging</h1>
 <p>In the following exercise, you’ll have to debug a function that is supposed to return the sum of all even numbers in a list. However, there is a bug in the code. Can you find it and fix it? Use either print statements, assertions, or an IDE’s debugger to fix the code.</p>
-<div id="f0b840f9" class="cell" data-execution_count="5">
+<div id="f63c0206" class="cell" data-execution_count="5">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># </span><span class="al">TODO</span><span class="co">: Fix the bug in the following function.</span></span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> sum_even_numbers(numbers):</span>
 <span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>    total <span class="op">=</span> <span class="dv">0</span></span>
@@ -568,6 +575,114 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a><span class="co"># Bonus challenge: Add error handling to make this function more robust</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
+</section>
+<section id="anagram-scramble-game" class="level1">
+<h1>Anagram Scramble Game</h1>
+<p>In this final exercise, you’ll create an anagram game that combines everything you’ve learned about error handling, functions, and file I/O. The computer will scramble a word from a file, and the player must unscramble it within a limited number of tries.</p>
+<section id="game-rules" class="level2">
+<h2 class="anchored" data-anchor-id="game-rules">Game Rules:</h2>
+<ol type="1">
+<li>Load words from the file <code>words.txt</code></li>
+<li>Computer randomly selects and scrambles a word</li>
+<li>Player has 5 tries to guess the original word</li>
+<li>Player can type “quit” to end the game</li>
+<li>Display success or the correct answer at the end</li>
+</ol>
+</section>
+<section id="your-tasks" class="level2">
+<h2 class="anchored" data-anchor-id="your-tasks">Your Tasks:</h2>
+<div id="e3aeac26" class="cell" data-execution_count="6">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> random</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="co"># </span><span class="al">TODO</span><span class="co">: Implement the function to load words from file</span></span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> load_words(filename):</span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>    <span class="co">"""</span></span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a><span class="co">    Load words from a file (one word per line).</span></span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a><span class="co">    Returns a list of words (converted to lowercase and stripped).</span></span>
+<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a><span class="co">    Handle FileNotFoundError - print error message and return empty list.</span></span>
+<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a><span class="co">    """</span></span>
+<span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Your code here</span></span>
+<span id="cb6-12"><a href="#cb6-12" aria-hidden="true" tabindex="-1"></a>    <span class="cf">pass</span></span>
+<span id="cb6-13"><a href="#cb6-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-14"><a href="#cb6-14" aria-hidden="true" tabindex="-1"></a><span class="co"># </span><span class="al">TODO</span><span class="co">: Implement word scrambling function</span></span>
+<span id="cb6-15"><a href="#cb6-15" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> scramble_word(word):</span>
+<span id="cb6-16"><a href="#cb6-16" aria-hidden="true" tabindex="-1"></a>    <span class="co">"""</span></span>
+<span id="cb6-17"><a href="#cb6-17" aria-hidden="true" tabindex="-1"></a><span class="co">    Scramble the letters of a word randomly.</span></span>
+<span id="cb6-18"><a href="#cb6-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-19"><a href="#cb6-19" aria-hidden="true" tabindex="-1"></a><span class="co">    Hint: Convert to list, use random.shuffle(), convert back to string.</span></span>
+<span id="cb6-20"><a href="#cb6-20" aria-hidden="true" tabindex="-1"></a><span class="co">    Make sure the scrambled word is different from the original.</span></span>
+<span id="cb6-21"><a href="#cb6-21" aria-hidden="true" tabindex="-1"></a><span class="co">    """</span></span>
+<span id="cb6-22"><a href="#cb6-22" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Your code here</span></span>
+<span id="cb6-23"><a href="#cb6-23" aria-hidden="true" tabindex="-1"></a>    <span class="cf">pass</span></span>
+<span id="cb6-24"><a href="#cb6-24" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-25"><a href="#cb6-25" aria-hidden="true" tabindex="-1"></a><span class="co"># </span><span class="al">TODO</span><span class="co">: Implement input validation</span></span>
+<span id="cb6-26"><a href="#cb6-26" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> validate_guess(guess, original_word):</span>
+<span id="cb6-27"><a href="#cb6-27" aria-hidden="true" tabindex="-1"></a>    <span class="co">"""</span></span>
+<span id="cb6-28"><a href="#cb6-28" aria-hidden="true" tabindex="-1"></a><span class="co">    Validate that a guess is acceptable.</span></span>
+<span id="cb6-29"><a href="#cb6-29" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-30"><a href="#cb6-30" aria-hidden="true" tabindex="-1"></a><span class="co">    - Raise ValueError if guess is empty or contains only spaces</span></span>
+<span id="cb6-31"><a href="#cb6-31" aria-hidden="true" tabindex="-1"></a><span class="co">    - Raise ValueError if guess contains numbers or special characters (use .isalpha())</span></span>
+<span id="cb6-32"><a href="#cb6-32" aria-hidden="true" tabindex="-1"></a><span class="co">    - Raise ValueError if guess length doesn't match original word</span></span>
+<span id="cb6-33"><a href="#cb6-33" aria-hidden="true" tabindex="-1"></a><span class="co">    - Return True if guess matches original word (case-insensitive), False otherwise</span></span>
+<span id="cb6-34"><a href="#cb6-34" aria-hidden="true" tabindex="-1"></a><span class="co">    """</span></span>
+<span id="cb6-35"><a href="#cb6-35" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Your code here</span></span>
+<span id="cb6-36"><a href="#cb6-36" aria-hidden="true" tabindex="-1"></a>    <span class="cf">pass</span></span>
+<span id="cb6-37"><a href="#cb6-37" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-38"><a href="#cb6-38" aria-hidden="true" tabindex="-1"></a><span class="co"># </span><span class="al">TODO</span><span class="co">: Implement the main game function</span></span>
+<span id="cb6-39"><a href="#cb6-39" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> play_anagram_game():</span>
+<span id="cb6-40"><a href="#cb6-40" aria-hidden="true" tabindex="-1"></a>    <span class="co">"""</span></span>
+<span id="cb6-41"><a href="#cb6-41" aria-hidden="true" tabindex="-1"></a><span class="co">    Main game function that orchestrates the entire game.</span></span>
+<span id="cb6-42"><a href="#cb6-42" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-43"><a href="#cb6-43" aria-hidden="true" tabindex="-1"></a><span class="co">    1. Load words from 'words.txt'</span></span>
+<span id="cb6-44"><a href="#cb6-44" aria-hidden="true" tabindex="-1"></a><span class="co">    2. If no words loaded, print error and return</span></span>
+<span id="cb6-45"><a href="#cb6-45" aria-hidden="true" tabindex="-1"></a><span class="co">    3. Randomly select a word using random.choice()</span></span>
+<span id="cb6-46"><a href="#cb6-46" aria-hidden="true" tabindex="-1"></a><span class="co">    4. Scramble the word</span></span>
+<span id="cb6-47"><a href="#cb6-47" aria-hidden="true" tabindex="-1"></a><span class="co">    5. Give player 5 attempts</span></span>
+<span id="cb6-48"><a href="#cb6-48" aria-hidden="true" tabindex="-1"></a><span class="co">    6. In a loop:</span></span>
+<span id="cb6-49"><a href="#cb6-49" aria-hidden="true" tabindex="-1"></a><span class="co">       - Show scrambled word and remaining tries</span></span>
+<span id="cb6-50"><a href="#cb6-50" aria-hidden="true" tabindex="-1"></a><span class="co">       - Get player input</span></span>
+<span id="cb6-51"><a href="#cb6-51" aria-hidden="true" tabindex="-1"></a><span class="co">       - Handle "quit" to exit</span></span>
+<span id="cb6-52"><a href="#cb6-52" aria-hidden="true" tabindex="-1"></a><span class="co">       - Validate the guess using validate_guess()</span></span>
+<span id="cb6-53"><a href="#cb6-53" aria-hidden="true" tabindex="-1"></a><span class="co">       - Catch and handle all exceptions with appropriate messages</span></span>
+<span id="cb6-54"><a href="#cb6-54" aria-hidden="true" tabindex="-1"></a><span class="co">       - Check if guess is correct</span></span>
+<span id="cb6-55"><a href="#cb6-55" aria-hidden="true" tabindex="-1"></a><span class="co">       - Break loop if correct or out of tries</span></span>
+<span id="cb6-56"><a href="#cb6-56" aria-hidden="true" tabindex="-1"></a><span class="co">    7. Display win message or reveal the correct word</span></span>
+<span id="cb6-57"><a href="#cb6-57" aria-hidden="true" tabindex="-1"></a><span class="co">    """</span></span>
+<span id="cb6-58"><a href="#cb6-58" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Your code here</span></span>
+<span id="cb6-59"><a href="#cb6-59" aria-hidden="true" tabindex="-1"></a>    <span class="cf">pass</span></span>
+<span id="cb6-60"><a href="#cb6-60" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-61"><a href="#cb6-61" aria-hidden="true" tabindex="-1"></a><span class="co"># Test the game</span></span>
+<span id="cb6-62"><a href="#cb6-62" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> <span class="va">__name__</span> <span class="op">==</span> <span class="st">"__main__"</span>:</span>
+<span id="cb6-63"><a href="#cb6-63" aria-hidden="true" tabindex="-1"></a>    play_anagram_game()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</section>
+<section id="requirements-checklist" class="level2">
+<h2 class="anchored" data-anchor-id="requirements-checklist">Requirements Checklist:</h2>
+<ul class="task-list">
+<li><label><input type="checkbox">Load words from file with FileNotFoundError handling</label></li>
+<li><label><input type="checkbox">Scramble word randomly (ensure it’s different from original)</label></li>
+<li><label><input type="checkbox">Validate empty input (ValueError)</label></li>
+<li><label><input type="checkbox">Validate input contains only letters (ValueError)</label></li>
+<li><label><input type="checkbox">Validate guess length matches word (ValueError)</label></li>
+<li><label><input type="checkbox">Player has exactly 5 tries</label></li>
+<li><label><input type="checkbox">Handle “quit” command</label></li>
+<li><label><input type="checkbox">Display clear feedback for each error type</label></li>
+<li><label><input type="checkbox">Show win/lose message with correct word</label></li>
+</ul>
+</section>
+<section id="tips" class="level2">
+<h2 class="anchored" data-anchor-id="tips">Tips:</h2>
+<ul>
+<li>Use <code>random.choice(words)</code> to select a random word from the list</li>
+<li>Use <code>random.shuffle()</code> on a list of characters to scramble</li>
+<li>Use <code>.strip()</code> and <code>.lower()</code> for input processing</li>
+<li>Use <code>.isalpha()</code> to check if string contains only letters</li>
+<li>Use a while loop with a counter for tries</li>
+<li>Make sure scrambled word ≠ original (use a while loop to keep shuffling if needed)</li>
+<li>Use try-except blocks in the main game loop to keep game running after errors</li>
+</ul>
+</section>
 </section>
 <section id="thats-it" class="level1">
 <h1>That’s it!</h1>
