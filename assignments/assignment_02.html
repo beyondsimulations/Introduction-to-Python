@@ -447,6 +447,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
    
   <ul>
   <li><a href="#introduction" id="toc-introduction" class="nav-link active" data-scroll-target="#introduction">Introduction</a></li>
+  <li><a href="#grading-of-the-assignment" id="toc-grading-of-the-assignment" class="nav-link" data-scroll-target="#grading-of-the-assignment">Grading of the Assignment</a></li>
+  <li><a href="#submission-format" id="toc-submission-format" class="nav-link" data-scroll-target="#submission-format">Submission format</a></li>
   <li><a href="#redact-secret-information" id="toc-redact-secret-information" class="nav-link" data-scroll-target="#redact-secret-information">Redact secret information</a></li>
   <li><a href="#dice-roll-simulator" id="toc-dice-roll-simulator" class="nav-link" data-scroll-target="#dice-roll-simulator">Dice roll simulator</a></li>
   <li><a href="#future-self-predictor" id="toc-future-self-predictor" class="nav-link" data-scroll-target="#future-self-predictor">Future Self Predictor</a></li>
@@ -477,15 +479,103 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<section id="introduction" class="level1">
-<h1>Introduction</h1>
-<p>This is the second of the two assignments for this course. It will be graded as pass/fail and you and your group of up to 3 students will need to submit it <strong>before the start of the last lecture.</strong> Please hand in one assignment per group via the e-mail address <a href="mailto:vlcek@beyondsimulations.com">vlcek@beyondsimulations.com</a>.</p>
-<p>In the assignment, you will practice the concepts you learned in the second part of the course. You will find a lot of information online and you are welcome to use generative AI to help you with the assignment. However, you are not allowed to copy the code from other groups and you have to indicate where and how you used AI to help you. Try to use comments to structure and to explain your code. Furthermore, use descriptive variable names and format your code nicely in order to make it more readable.</p>
+<section id="introduction" class="level2">
+<h2 class="anchored" data-anchor-id="introduction">Introduction</h2>
+<p>This is the second of the two assignments, where you will practice the concepts you learned in the second part of the course.</p>
+</section>
+<section id="grading-of-the-assignment" class="level2">
+<h2 class="anchored" data-anchor-id="grading-of-the-assignment">Grading of the Assignment</h2>
+<p>It is graded pass/fail and at least 50 % of the tasks in the assignments have to be passed in oder to pass the assigment. You may work in groups of up to three students and you should submit one assignment per group via email to <a href="mailto:vlcek@beyondsimulations.com">vlcek@beyondsimulations.com</a> before the start of Lecture 7 on scientific programming.</p>
+<p>You may use online resources and generative AI (gAI) for assistance. However, you must not copy code from other groups, and you must include a short paragraph titled <code>How I used generative AI</code> that explains where and how you used gAI.</p>
+<div class="callout callout-style-simple callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>How I used generative AI (template)
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<ul>
+<li>Provider(s) used (e.g., “OpenAI, Anthropic, Google”)</li>
+<li>Whether you used a browser or an IDE to communicate with the provider</li>
+<li>Your key prompts (1–3 lines), or a brief description of them</li>
+<li>How you verified correctness (tests, docs checks, manual reasoning)</li>
+</ul>
+</div>
+</div>
+<p>Note, you are fully responsible for the correctness and originality of submitted work, regardless of gAI use.</p>
+<div class="callout callout-style-simple callout-warning">
+<div class="callout-body d-flex">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-body-container">
+<p>If you use gAI without including a paragraph on its use (use of gAI is typically easy to spot), the assignment will be marked as failed.</p>
+</div>
+</div>
+</div>
+<p>Use comments and docstrings to explain your code. Do not include gAI-generated meta-comments describing what gAI changed. Thus, keep comments focused on explaining the code itself.</p>
+<div class="callout callout-style-simple callout-warning">
+<div class="callout-body d-flex">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-body-container">
+<p>If I find multiple instances of such gAI meta-comments, the assignment will be marked as failed. Keep your comments clean and relevant.</p>
+</div>
+</div>
+</div>
+<p>Use descriptive variable names and format your code consistently to maximize readability. Read the instructions carefully and follow them exactly. gAI may hallucinate additional features that are not required.</p>
+<div class="callout callout-style-simple callout-warning">
+<div class="callout-body d-flex">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-body-container">
+<p>Ensure the tasks of the assignment run without any errors or mistakes just by calling <code>uv run [your filename]</code>. If you used external packages, include your <code>pyproject.toml</code> so I can replicate your environments.</p>
+</div>
+</div>
+</div>
+</section>
+<section id="submission-format" class="level2">
+<h2 class="anchored" data-anchor-id="submission-format">Submission format</h2>
+<ul>
+<li>Submit a single ZIP named <code>a2_group-&lt;number&gt;_&lt;lastname1-lastname2_lastname3&gt;.zip</code></li>
+<li>Include:
+<ul>
+<li><code>assignment_2_task1.py</code>, <code>assignment_2_task2.py</code>, and so on</li>
+<li>Any data files used in a <code>data/</code> folder (if used)</li>
+<li>Any images in an <code>assets/</code> folder (if used)</li>
+</ul></li>
+<li>Email subject: <code>Intro to Python – Assignment 2</code></li>
+</ul>
+<div class="callout callout-style-simple callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Submission checklist
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<ul class="task-list">
+<li><label><input type="checkbox">Runs without errors from a clean environment by using <code>uv</code></label></li>
+<li><label><input type="checkbox">No unexplained gAI meta-comments, all comments explain code</label></li>
+<li><label><input type="checkbox">“How I used generative AI” paragraph included (if gAI used)</label></li>
+<li><label><input type="checkbox">Data/assets included and paths correct (if used)</label></li>
+<li><label><input type="checkbox"><code>pyproject.toml</code> included (if external packages are used)</label></li>
+<li><label><input type="checkbox">File naming and email subject follow the conventions</label></li>
+</ul>
+</div>
+</div>
 </section>
 <section id="redact-secret-information" class="level1">
 <h1>Redact secret information</h1>
 <p>In this excercise, you will create a program that is able to redact secret information in a text. The program should be able to redact the following: <strong>zip codes, names, email addresses and phone numbers.</strong> The program should ask the user <strong>for a filename</strong> and then read the file and <strong>redact the secret information</strong>. The program should then print the redacted text to the console and write it to a new file called <code>redacted.txt</code>. You can find a file with secret information in the git repository under <code>assignments/secret-text.txt</code>.</p>
-<div id="815df7b4" class="cell" data-execution_count="1">
+<div id="bf9fc032" class="cell" data-execution_count="1">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Secret information redactor</span></span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="co"># </span><span class="al">TODO</span><span class="co">: Create a program that is able to redact secret information in a text.</span></span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="co"># YOUR CODE HERE</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
@@ -494,7 +584,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="dice-roll-simulator" class="level1">
 <h1>Dice roll simulator</h1>
 <p>In this excercise, you will create a program that is able to simulate dice rolls and visualizes their distribution. The program should ask the user for <strong>the number of sides on the dice and the number of dices to roll</strong>. Then, the program should simulate the dice rolls 10000 times and <strong>visualize the distribution</strong> of the dice rolls using a histogram.</p>
-<div id="0a1c6ddb" class="cell" data-execution_count="2">
+<div id="224b95ca" class="cell" data-execution_count="2">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Dice roll simulator</span></span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="co"># </span><span class="al">TODO</span><span class="co">: Create a program that is able to simulate a dice roll.</span></span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="co"># YOUR CODE HERE</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
@@ -503,7 +593,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="future-self-predictor" class="level1">
 <h1>Future Self Predictor</h1>
 <p>In this exercise, you will create an <strong>interactive program</strong> that predicts a users future based on his or her answers. The program should ask <strong>5 questions</strong> about users where user can either add the answers in the terminal freely or choose from a number of options. It should then generate <strong>3 entertaining predictions, and save them to a separate file with the user name as filename.</strong> The predictions should be a <strong>5-year, 10-year, and 30-year prediction of where the user is going to be in life</strong>. Note, the program should be able to <strong>handle user input errors gracefully.</strong></p>
-<div id="8dd1bd4c" class="cell" data-execution_count="3">
+<div id="87f942ef" class="cell" data-execution_count="3">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Future Self Predictor</span></span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="co"># </span><span class="al">TODO</span><span class="co">: Create a program that is able to predict the future.</span></span>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="co"># YOUR CODE HERE</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
@@ -522,7 +612,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 </div>
-<div id="04b25caf" class="cell" data-execution_count="4">
+<div id="d41f3b6c" class="cell" data-execution_count="4">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Dashboards</span></span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="co"># </span><span class="al">TODO</span><span class="co">: Create a program that visualizes a data set of your choice in a dashboard.</span></span>
 <span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="co"># YOUR CODE HERE</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>

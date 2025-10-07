@@ -447,6 +447,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
    
   <ul>
   <li><a href="#introduction" id="toc-introduction" class="nav-link active" data-scroll-target="#introduction">Introduction</a></li>
+  <li><a href="#grading-of-the-assignment" id="toc-grading-of-the-assignment" class="nav-link" data-scroll-target="#grading-of-the-assignment">Grading of the Assignment</a></li>
+  <li><a href="#submission-format" id="toc-submission-format" class="nav-link" data-scroll-target="#submission-format">Submission format</a></li>
   <li><a href="#tax-refund-for-donations" id="toc-tax-refund-for-donations" class="nav-link" data-scroll-target="#tax-refund-for-donations">Tax refund for donations</a></li>
   <li><a href="#text-based-adventure-game" id="toc-text-based-adventure-game" class="nav-link" data-scroll-target="#text-based-adventure-game">Text based adventure game</a></li>
   <li><a href="#hangman" id="toc-hangman" class="nav-link" data-scroll-target="#hangman">Hangman</a></li>
@@ -477,15 +479,103 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<section id="introduction" class="level1">
-<h1>Introduction</h1>
-<p>This is the first of the two assignments for this course. It will be graded as pass/fail. You and your group of up to 3 students will need to submit it <strong>before the start of lecture 7 on scientific programming</strong>. Please hand in one assignment per group via the e-mail address <a href="mailto:vlcek@beyondsimulations.com">vlcek@beyondsimulations.com</a>.</p>
-<p>In the assignment, you will practice the concepts you learned in the first part of the course. You will find a lot of information online and you are welcome to use generative AI to help you with the assignment. However, you are not allowed to copy the code from other groups and you have to indicate where and how you used AI to help you. Try to use comments to structure and to explain your code. Furthermore, use descriptive variable names and format your code nicely in order to make it more readable.</p>
+<section id="introduction" class="level2">
+<h2 class="anchored" data-anchor-id="introduction">Introduction</h2>
+<p>This is the first of two course assignments and here you will practice concepts from the first part of the course from lecture 01 to 06.</p>
+</section>
+<section id="grading-of-the-assignment" class="level2">
+<h2 class="anchored" data-anchor-id="grading-of-the-assignment">Grading of the Assignment</h2>
+<p>It is graded pass/fail and at least 50 % of the tasks in the assignments have to be passed in oder to pass the assigment. You may work in groups of up to three students and you should submit one assignment per group via email to <a href="mailto:vlcek@beyondsimulations.com">vlcek@beyondsimulations.com</a> before the start of Lecture 7 on scientific programming.</p>
+<p>You may use online resources and generative AI (gAI) for assistance. However, you must not copy code from other groups, and you must include a short paragraph titled <code>How I used generative AI</code> that explains where and how you used gAI.</p>
+<div class="callout callout-style-simple callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>How I used generative AI (template)
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<ul>
+<li>Provider(s) used (e.g., “OpenAI, Anthropic, Google”)</li>
+<li>Whether you used a browser or an IDE to communicate with the provider</li>
+<li>Your key prompts (1–3 lines), or a brief description of them</li>
+<li>How you verified correctness (tests, docs checks, manual reasoning)</li>
+</ul>
+</div>
+</div>
+<p>Note, you are fully responsible for the correctness and originality of submitted work, regardless of gAI use.</p>
+<div class="callout callout-style-simple callout-warning">
+<div class="callout-body d-flex">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-body-container">
+<p>If you use gAI without including a paragraph on its use (use of gAI is typically easy to spot), the assignment will be marked as failed.</p>
+</div>
+</div>
+</div>
+<p>Use comments and docstrings to explain your code. Do not include gAI-generated meta-comments describing what gAI changed. Thus, keep comments focused on explaining the code itself.</p>
+<div class="callout callout-style-simple callout-warning">
+<div class="callout-body d-flex">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-body-container">
+<p>If I find multiple instances of such gAI meta-comments, the assignment will be marked as failed. Keep your comments clean and relevant.</p>
+</div>
+</div>
+</div>
+<p>Use descriptive variable names and format your code consistently to maximize readability. Read the instructions carefully and follow them exactly. gAI may hallucinate additional features that are not required.</p>
+<div class="callout callout-style-simple callout-warning">
+<div class="callout-body d-flex">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-body-container">
+<p>Ensure the tasks of the assignment run without any errors or mistakes just by calling <code>uv run [your filename]</code>. If you used external packages, include your <code>pyproject.toml</code> so I can replicate your environments.</p>
+</div>
+</div>
+</div>
+</section>
+<section id="submission-format" class="level2">
+<h2 class="anchored" data-anchor-id="submission-format">Submission format</h2>
+<ul>
+<li>Submit a single ZIP named <code>a1_group-&lt;number&gt;_&lt;lastname1-lastname2_lastname3&gt;.zip</code></li>
+<li>Include:
+<ul>
+<li><code>assignment_1_task1.py</code>, <code>assignment_1_task2.py</code>, and so on</li>
+<li>Any data files used in a <code>data/</code> folder (if used)</li>
+<li>Any images in an <code>assets/</code> folder (if used)</li>
+</ul></li>
+<li>Email subject: <code>Intro to Python – Assignment 1</code></li>
+</ul>
+<div class="callout callout-style-simple callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Submission checklist
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<ul class="task-list">
+<li><label><input type="checkbox">Runs without errors from a clean environment by using <code>uv</code></label></li>
+<li><label><input type="checkbox">No unexplained gAI meta-comments, all comments explain code</label></li>
+<li><label><input type="checkbox">“How I used generative AI” paragraph included (if gAI used)</label></li>
+<li><label><input type="checkbox">Data/assets included and paths correct (if used)</label></li>
+<li><label><input type="checkbox"><code>pyproject.toml</code> included (if external packages are used)</label></li>
+<li><label><input type="checkbox">File naming and email subject follow the conventions</label></li>
+</ul>
+</div>
+</div>
 </section>
 <section id="tax-refund-for-donations" class="level1">
 <h1>Tax refund for donations</h1>
 <p>In this excercise, you will create a program that is able to calculate the amount of tax a person can get back for a donation. First, research the rules for tax refunds for donations in Germany. Then, create a program that is able to <strong>calculate the amount of tax a person can get back</strong> for a donation. The program should ask the user for the <strong>amount of the donation and the yearly income</strong> and then calculate the amount of tax the user can get back. The program should then print the amount of tax to the console. Note, that the program should also handle wrong inputs from the user, e.g.&nbsp;if the user enters a negative donation amount or a non-numeric income.</p>
-<div id="64bedc81" class="cell" data-execution_count="1">
+<div id="b59d7b47" class="cell" data-execution_count="1">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Tax refund for donations</span></span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="co"># </span><span class="al">TODO</span><span class="co">: Create a program that is able to calculate the amount of tax a person can get back for a donation.</span></span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Your code here</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
@@ -514,7 +604,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="text-based-adventure-game" class="level1">
 <h1>Text based adventure game</h1>
 <p>In this excercise, you will create a text based adventure game. You are completely free in the choice of the story, but it must <strong>at least include 4 choices, 3 different endings, the choice to restart the game and yourself as a character of the game</strong>. Try to use the concepts of conditionals, loops, and functions to create a game that is both fun and interactive for the user. Note, that the program should also handle wrong inputs from the user, e.g.&nbsp;if the user enters a choice that is not available.</p>
-<div id="14884b1d" class="cell" data-execution_count="2">
+<div id="46405228" class="cell" data-execution_count="2">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Test based adventure game</span></span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="co"># </span><span class="al">TODO</span><span class="co">: Create a text based adventure game with at least 3 choices, 2 different endings and the choice to restart the game.</span></span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Your code here</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
@@ -523,7 +613,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="hangman" class="level1">
 <h1>Hangman</h1>
 <p>In this excercise, you will create a program that is able to play the game Hangman. The program should ask the <strong>game master for a secret word</strong>. Afterward, it should ask the player to guess a letter and then check if the letter is in the word. The program should then print the word with the guessed letters and the number of tries left. The program should also handle wrong inputs from the user, e.g.&nbsp;if the user enters a non-letter or a letter that is already guessed.</p>
-<div id="764886ec" class="cell" data-execution_count="3">
+<div id="52a9a5b0" class="cell" data-execution_count="3">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Hangman</span></span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="co"># </span><span class="al">TODO</span><span class="co">: Create a program that is able to play the game Hangman with a game master and one player.</span></span>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Your code here</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
@@ -532,7 +622,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="caesar-cipher" class="level1">
 <h1>Caesar Cipher</h1>
 <p>In this excercise, you will create a program that is able to <strong>encrypt and decrypt messages</strong> using the Caesar Cipher. The program should ask the user for a <strong>message and a key</strong> and whether to encrypt or decrypt the message. The program should then <strong>encrypt the message</strong> by shifting each letter of the message by the key or <strong>decrypt the message</strong> by shifting each letter of the message back by the key. The program should then print the encrypted or decrypted message and asks the user whether to continue with the next message or to quit the program. Note, that you only need to encrypt or decrypt letters, keep other characters unchanged.</p>
-<div id="31bd905a" class="cell" data-execution_count="4">
+<div id="81ba4a48" class="cell" data-execution_count="4">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co"># </span><span class="al">TODO</span><span class="co">: Create a programm able to encrypt and decrypt messages using the Caesar Cipher.</span></span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Your code here</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
