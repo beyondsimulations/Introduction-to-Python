@@ -303,21 +303,185 @@ So far, we could also have achieved this with the `find` method of a string.
 
 ## Why Regular Expressions?
 
+Let's see the [limitations of basic string methods]{.highlight}:
+
 ```{python}
 #| eval: true
 #| output-location: fragment
-#|
-import re
-pattern = 'World' # This is the pattern we are searching for
-string = 'Hello, World!' # This is the string we are searching in
-print(string.find(pattern)) # No regular expressions here!
+
+text = "Contact us at: tobias@beyondsimulations.com or call 123-456-7890"
+
+# Find email - how would you do this with basic string methods?
+# Find phone number - what about this?
+# What if there are multiple emails with different formats?
+
+print("This is hard with just .find() and .split()!")
 ```
 
 . . .
 
-- But regular expressions are more **powerful and flexible**
-- They have [special characters]{.highlight} that allow for complex patterns
-- They are widely used in text processing and web scraping
+Regular expressions solve these problems by finding **patterns**, not just exact text.
+
+## Regular Expressions: Step by Step
+
+Let's work with this sample text throughout our examples:
+
+```{python}
+#| eval: true
+sample_text = """
+User john123 logged in at 2024-01-15
+User mary_doe logged in at 2024-01-16
+User bob logged in at 2024-01-17
+Error: user invalid_user! failed login
+"""
+```
+
+## Literal Matching
+
+```{python}
+#| eval: true
+#| output-location: fragment
+import re
+
+# Find exact word "User"
+result = re.findall(r'User', sample_text)
+print(f"Found 'User': {result}")
+```
+
+. . .
+
+[Task:]{.task} Find all occurrences of "logged" in the sample text.
+
+## Special Character: The Dot (.)
+
+The `.` matches **any single character**:
+
+```{python}
+#| eval: true
+#| output-location: fragment
+
+# Find "User" followed by any character, then "o"
+result = re.findall(r'bo.', sample_text)
+print(f"Found 'bo.': {result}")  # This finds "bob"
+```
+
+. . .
+
+[Task:]{.task} Use `.` to find all 4-letter words starting with "use".
+
+. . .
+
+::: {.callout-tip}
+The dot is like a wildcard - it fills in for any single character you don't know.
+:::
+
+## Character Classes: `[abc]`
+
+Square brackets match **any character inside them**:
+
+```{python}
+#| eval: true
+#| output-location: fragment
+
+# Find usernames that start with 'j' or 'm'
+result = re.findall(r'User [jm]\w+', sample_text)
+print(f"Users starting with j or m: {result}")
+```
+
+**Useful character classes:**
+
+- `[abc]` - matches a, b, or c
+- `[a-z]` - matches any lowercase letter
+- `[0-9]` - matches any digit
+- `[a-zA-Z0-9]` - matches letters and numbers
+
+. . .
+
+[Task:]{.task} Find all years.
+
+## Common Pattern Shortcuts
+
+Instead of writing `[0-9]`, we can use shortcuts:
+
+| Shortcut | Meaning | Same as |
+|----------|---------|---------|
+| `\d` | Any digit | `[0-9]` |
+| `\w` | Word character | `[a-zA-Z0-9_]` |
+| `\s` | Whitespace | `[ \t\n]` |
+
+```{python}
+#| eval: true
+#| output-location: fragment
+
+# Find dates using \d (much cleaner!)
+result = re.findall(r'\d\d\d\d-\d\d-\d\d', sample_text)
+print(f"Found dates: {result}")
+```
+
+. . .
+
+[Task:]{.task} Find all usernames using `\w`.
+
+## Quantifiers: How Many Times?
+
+Instead of repeating `\d\d\d\d`, we can specify quantities:
+
+| Quantifier | Meaning |
+|------------|---------|
+| `{4}` | Exactly 4 times |
+| `{2,4}` | Between 2 and 4 times |
+| `+` | One or more times |
+| `*` | Zero or more times |
+| `?` | Zero or one time |
+
+```{python}
+#| eval: true
+#| output-location: fragment
+
+# Much cleaner date pattern!
+result = re.findall(r'\d{4}-\d{2}-\d{2}', sample_text)
+print(f"Dates with quantifiers: {result}")
+
+# Find usernames of any length
+result = re.findall(r'User \w+', sample_text)
+print(f"All usernames: {result}")
+```
+
+## Putting It Together: Email Finder
+
+Let's build an email pattern step by step:
+
+```{python}
+#| eval: true
+email_text = "Contact: john@email.com, mary.doe@company.org, or bob@test.co.uk"
+
+# Step 1: Basic pattern
+basic = r'\w+@\w+\.\w+'
+print("Basic emails:", re.findall(basic, email_text))
+
+# Step 2: Handle dots in names
+better = r'[\w.]+@\w+\.\w+'
+print("Better emails:", re.findall(better, email_text))
+
+# Step 3: Handle multiple domain parts
+best = r'[\w.]+@[\w.]+\.\w+'
+print("Best emails:", re.findall(best, email_text))
+```
+
+## Debugging Regular Expressions
+
+When your regex doesn't work:
+
+1. **Test with simple examples first**
+2. **Build the pattern gradually**
+3. **Use online tools** like [regexr.com](https://regexr.com)
+4. **Print intermediate results**
+
+. . .
+
+::: {.callout-tip}
+Remember: regex can be complex, but you don't need to master everything at once. Start simple and build up!
+:::
 
 ## Using Regular Expressions
 
@@ -349,45 +513,6 @@ Monty Python was a theater group.
 """
 # Your code here
 ```
-
-. . .
-
-::: {.callout-note}
-Regular expressions are even **more powerful** when combined with [special characters]{.highlight}.
-:::
-
-
-## Special Characters I
-
-- `.` matches any character
-- `*` matches zero or more of the preceding element
-- `+` matches one or more of the preceding element
-- `?` matches zero or one of the preceding element
-- `[]` matches any character in the brackets
-- `|` matches either the left or the right side
-- `\d` matches any digit
-- `\w` matches any word character (alphanumeric and underscore)
-- `\s` matches any whitespace character
-
-## Special Characters II
-
-- There are **many more special characters** in regular expressions
-- In order to [keep things simple]{.highlight}, we will not cover them here
-
-. . .
-
-```{python}
-#| eval: true
-#| output-location: fragment
-import re
-print(re.findall(r'\d{3}-\d{2}-\d{4}', 'Here is a phone number: 123-45-6789.'))
-```
-
-. . .
-
-::: {.callout-tip}
-It can be quite complicated to get the hang of these special characters, especially at the beginning. Gladly, there are tools like [regexr.com](https://regexr.com) that can help with building the right pattern. Apart from that, `help(re)` in the terminal can also be very helpful.
-:::
 
 ## Advanced Regular Expressions in Action
 
@@ -438,21 +563,30 @@ uv add pandas numpy
 . . .
 
 ::: {.callout-tip}
-If you install packages like this, you can use the shell to do so! Alternatively, you can use `uv add <package_name>` in the Python terminal.
+If you install packages like this, you can use the shell to do so! Alternatively, you can use `uv add <package_name>` in the terminal in the IDE.
 :::
 
 
 ## Virtual Environments
 
-- Virtual environments are used to manage dependencies
-- They allow you to have different environments for projects
-- They can be created using the `venv` module
-- This becomes important if you work on several projects at once
+- Virtual environments isolate a project's dependencies
+- With uv, the environment is created and managed automatically for the project — no manual venv creation or activation needed
+- This becomes especially important when working on several projects at once
+
+Common uv command you'll use:
+
+```{bash}
+# Install dependencies from pyproject.toml (to use the code from others)
+uv sync
+
+# Start a Python REPL in the project environment (you can then work directly here)
+uv run python
+```
 
 . . .
 
 :::{.callout-note}
-**And that's it for todays lecture!**\
+**And that's it for today’s lecture!**
 We now have completed the first step into data science in Python. Next week, we can use this new knowledge to start to work with some tabular data and matrices.
 :::
 
