@@ -473,19 +473,22 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </ul></li>
   <li><a href="#regular-expressions" id="toc-regular-expressions" class="nav-link" data-scroll-target="#regular-expressions"><span class="flow">Regular Expressions</span></a>
   <ul class="collapse">
-  <li><a href="#what-are-regular-expressions" id="toc-what-are-regular-expressions" class="nav-link" data-scroll-target="#what-are-regular-expressions">What are Regular Expressions?</a></li>
   <li><a href="#why-regular-expressions" id="toc-why-regular-expressions" class="nav-link" data-scroll-target="#why-regular-expressions">Why Regular Expressions?</a></li>
   <li><a href="#using-regular-expressions" id="toc-using-regular-expressions" class="nav-link" data-scroll-target="#using-regular-expressions">Using Regular Expressions</a></li>
-  <li><a href="#regular-expression-in-action" id="toc-regular-expression-in-action" class="nav-link" data-scroll-target="#regular-expression-in-action">Regular Expression in Action</a></li>
-  <li><a href="#special-characters-i" id="toc-special-characters-i" class="nav-link" data-scroll-target="#special-characters-i">Special Characters I</a></li>
-  <li><a href="#special-characters-ii" id="toc-special-characters-ii" class="nav-link" data-scroll-target="#special-characters-ii">Special Characters II</a></li>
-  <li><a href="#advanced-regular-expressions-in-action" id="toc-advanced-regular-expressions-in-action" class="nav-link" data-scroll-target="#advanced-regular-expressions-in-action">Advanced Regular Expressions in Action</a></li>
+  <li><a href="#literal-matching" id="toc-literal-matching" class="nav-link" data-scroll-target="#literal-matching">Literal Matching</a></li>
+  <li><a href="#special-character-the-dot-." id="toc-special-character-the-dot-." class="nav-link" data-scroll-target="#special-character-the-dot-.">Special Character: The Dot (.)</a></li>
+  <li><a href="#character-classes-abc" id="toc-character-classes-abc" class="nav-link" data-scroll-target="#character-classes-abc">Character Classes: <code>[abc]</code></a></li>
+  <li><a href="#common-pattern-shortcuts" id="toc-common-pattern-shortcuts" class="nav-link" data-scroll-target="#common-pattern-shortcuts">Common Pattern Shortcuts</a></li>
+  <li><a href="#quantifiers-how-many-times" id="toc-quantifiers-how-many-times" class="nav-link" data-scroll-target="#quantifiers-how-many-times">Quantifiers: How Many Times?</a></li>
+  <li><a href="#putting-it-together-email-finder" id="toc-putting-it-together-email-finder" class="nav-link" data-scroll-target="#putting-it-together-email-finder">Putting It Together: Email Finder</a></li>
+  <li><a href="#debugging-regular-expressions" id="toc-debugging-regular-expressions" class="nav-link" data-scroll-target="#debugging-regular-expressions">Debugging Regular Expressions</a></li>
+  <li><a href="#regex-in-action" id="toc-regex-in-action" class="nav-link" data-scroll-target="#regex-in-action">Regex in Action</a></li>
+  <li><a href="#advanced-regex-in-action" id="toc-advanced-regex-in-action" class="nav-link" data-scroll-target="#advanced-regex-in-action">Advanced Regex in Action</a></li>
   </ul></li>
   <li><a href="#packages" id="toc-packages" class="nav-link" data-scroll-target="#packages"><span class="flow">Packages</span></a>
   <ul class="collapse">
   <li><a href="#what-are-packages" id="toc-what-are-packages" class="nav-link" data-scroll-target="#what-are-packages">What are Packages?</a></li>
   <li><a href="#installing-packages" id="toc-installing-packages" class="nav-link" data-scroll-target="#installing-packages">Installing Packages</a></li>
-  <li><a href="#packages-in-action" id="toc-packages-in-action" class="nav-link" data-scroll-target="#packages-in-action">Packages in Action</a></li>
   <li><a href="#virtual-environments" id="toc-virtual-environments" class="nav-link" data-scroll-target="#virtual-environments">Virtual Environments</a></li>
   </ul></li>
   <li><a href="#literature" id="toc-literature" class="nav-link" data-scroll-target="#literature"><span class="flow">Literature</span></a>
@@ -540,7 +543,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li>Common built-in exceptions: <code>ValueError</code>, <code>TypeError</code>, etc.</li>
 </ul>
 <p>. . .</p>
-<div id="24cc2181" class="cell" data-execution_count="1">
+<div id="b9cc423f" class="cell" data-execution_count="1">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> <span class="bu">int</span>(<span class="st">"Hello, World!"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>. . .</p>
@@ -572,7 +575,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li>Can include custom error messages</li>
 </ul>
 <p>. . .</p>
-<div id="15460e44" class="cell" data-execution_count="2">
+<div id="1e357831" class="cell" data-execution_count="2">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="cf">raise</span> <span class="pp">ValueError</span>(<span class="st">"This is a custom error message"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>. . .</p>
@@ -595,7 +598,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li>Useful for checking calculations or variable types</li>
 </ul>
 <p>. . .</p>
-<div id="b8f6611c" class="cell" data-execution_count="3">
+<div id="62456b0e" class="cell" data-execution_count="3">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> <span class="op">-</span><span class="dv">1</span></span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="cf">assert</span> x <span class="op">&gt;</span> <span class="dv">0</span>, <span class="st">"x must be positive"</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
@@ -641,7 +644,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li>They can define <span class="highlight">functions, classes, and variables</span></li>
 <li>They can be imported into other Python scripts</li>
 </ul>
-<div id="0a03c36e" class="cell" data-output-location="fragment" data-execution_count="4">
+<div id="031ddadb" class="cell" data-output-location="fragment" data-execution_count="4">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># The script new_module.py is in the same directory as this script</span></span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> lec_06_new_module <span class="im">as</span> new_module <span class="co"># Here we import the module</span></span>
 <span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>new_module.my_function() <span class="co"># Here we call the function from the module</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
@@ -658,7 +661,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li>Analogously, we can import <strong>classes or variables</strong> from a module</li>
 </ul>
 <p>. . .</p>
-<div id="3503aff7" class="cell" data-output-location="fragment" data-execution_count="5">
+<div id="190c5379" class="cell" data-output-location="fragment" data-execution_count="5">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Multiple imports from a module are possible as well!</span></span>
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> lec_06_new_module <span class="im">import</span> another_function, yet_another_function</span>
 <span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>another_function()</span>
@@ -721,7 +724,7 @@ Hello from yet_another_function!</code></pre>
 <section id="importing-from-the-standard-library" class="level2">
 <h2 class="anchored" data-anchor-id="importing-from-the-standard-library">Importing from the Standard Library</h2>
 <p><span class="task">Task:</span> Use Python’s <code>math</code> module to calculate the area of a circle.</p>
-<div id="7e9e26c3" class="cell" data-execution_count="6">
+<div id="ca5054b4" class="cell" data-execution_count="6">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Import the `math` module.</span></span>
 <span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Define a function named `calculate_area` that takes the radius `r` as an argument.</span></span>
 <span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Inside the function, use the `math.pi` constant to get the value of π.</span></span>
@@ -770,14 +773,15 @@ Hello from yet_another_function!</code></pre>
 <section id="random-numbers-in-action" class="level2">
 <h2 class="anchored" data-anchor-id="random-numbers-in-action">Random Numbers in Action</h2>
 <p><span class="task">Task:</span> Time for a task! Import the <code>random</code> module and create a <span class="highlight">small number guessing game</span> with the following requirements:</p>
-<div id="8a2640a2" class="cell" data-execution_count="7">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Generate a random integer between 1 and 10 using randint().</span></span>
-<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Ask the user to guess the number with input().</span></span>
-<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Print whether the guess was correct.</span></span>
-<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Give a hint if the guess was too high or too low.</span></span>
-<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Repeat the game until the user guesses the number.</span></span>
-<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Your code here</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div id="36083574" class="cell" data-execution_count="7">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="co"># </span><span class="al">TODO</span><span class="co">: Implement a random number guessing game.</span></span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="co"># The game should work as follows:</span></span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a><span class="co"># - The computer selects a random number between 1 and 10</span></span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a><span class="co"># - The user has to guess the number and has three guesses</span></span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a><span class="co"># - The computer tells the user whether their guess is too high, too low, or correct</span></span>
+<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a><span class="co"># - The computer should also print how many guesses the user made before guessing the number correctly</span></span>
+<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a><span class="co"># - It should also ask the user if they want to play again</span></span>
+<span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Your code here</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>. . .</p>
 <div class="callout callout-style-simple callout-tip">
@@ -820,7 +824,7 @@ Hello from yet_another_function!</code></pre>
 <li>Read: <code>csv.reader(file)</code></li>
 </ul>
 <p>. . .</p>
-<div id="d79a9537" class="cell" data-execution_count="8">
+<div id="84d38ac5" class="cell" data-execution_count="8">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> csv <span class="co"># Import the csv module</span></span>
 <span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a><span class="cf">with</span> <span class="bu">open</span>(<span class="st">'secret_message.csv'</span>, <span class="st">'w'</span>) <span class="im">as</span> <span class="bu">file</span>: <span class="co"># Open the file in write mode</span></span>
@@ -835,7 +839,7 @@ Hello from yet_another_function!</code></pre>
 <section id="os-and-csv-module-in-action" class="level2">
 <h2 class="anchored" data-anchor-id="os-and-csv-module-in-action">OS and CSV Module in Action</h2>
 <p><span class="task">Task:</span> Time for another task! Do the following:</p>
-<div id="0c2fe2d2" class="cell" data-execution_count="9">
+<div id="d9608fb9" class="cell" data-execution_count="9">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="co"># First, check if a directory called `module_directory` exists.</span></span>
 <span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a><span class="co"># If it does not, create it.</span></span>
 <span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Then, list all files in the current directory and save them in a CSV file called `current_files.csv` in the new `module_directory`.</span></span>
@@ -849,52 +853,27 @@ Hello from yet_another_function!</code></pre>
 </section>
 <section id="regular-expressions" class="level1 title">
 <h1 class="title"><span class="flow">Regular Expressions</span></h1>
-<section id="what-are-regular-expressions" class="level2">
-<h2 class="anchored" data-anchor-id="what-are-regular-expressions">What are Regular Expressions?</h2>
-<ul>
-<li>Regular expressions are a way to <span class="highlight">search for patterns in text</span></li>
-<li>They are a useful tool for string manipulation</li>
-<li>We can use the <code>re</code> module to work with regular expressions</li>
-</ul>
-<p>. . .</p>
-<div id="5d0e5788" class="cell" data-output-location="fragment" data-execution_count="10">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> re</span>
-<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>pattern <span class="op">=</span> <span class="vs">r'World'</span> <span class="co"># This is the pattern we are searching for</span></span>
-<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>string <span class="op">=</span> <span class="st">'Hello, World!'</span> <span class="co"># This is the string we are searching in</span></span>
-<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(re.search(pattern, string)) <span class="co"># This will search for the pattern in the string</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>&lt;re.Match object; span=(7, 12), match='World'&gt;</code></pre>
-</div>
-</div>
-<p>. . .</p>
-<div class="callout callout-style-simple callout-note">
-<div class="callout-body d-flex">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-body-container">
-<p>So far, we could also have achieved this with the <code>find</code> method of a string.</p>
-</div>
-</div>
-</div>
-</section>
 <section id="why-regular-expressions" class="level2">
 <h2 class="anchored" data-anchor-id="why-regular-expressions">Why Regular Expressions?</h2>
-<div id="6771cd88" class="cell" data-output-location="fragment" data-execution_count="11">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> re</span>
-<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>pattern <span class="op">=</span> <span class="st">'World'</span> <span class="co"># This is the pattern we are searching for</span></span>
-<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>string <span class="op">=</span> <span class="st">'Hello, World!'</span> <span class="co"># This is the string we are searching in</span></span>
-<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(string.find(pattern)) <span class="co"># No regular expressions here!</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>7</code></pre>
-</div>
+<p>Let’s see the <span class="highlight">limitations of basic string methods</span>:</p>
+<div id="96f44989" class="cell" data-output-location="fragment" data-execution_count="10">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>text <span class="op">=</span> <span class="st">"Contact us at: tobias@beyondsimulations.com or call 123-456-7890"</span></span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Find email - how would you do this with basic string methods?</span></span>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Find phone number - what about this?</span></span>
+<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a><span class="co"># What if there are multiple emails with different formats?</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>. . .</p>
-<ul>
-<li>But regular expressions are more <strong>powerful and flexible</strong></li>
-<li>They have <span class="highlight">special characters</span> that allow for complex patterns</li>
-<li>They are widely used in text processing and web scraping</li>
-</ul>
+<p>Regular expressions solve these problems by finding <strong>patterns</strong>! Let’s work with this sample text throughout our examples:</p>
+<p>. . .</p>
+<div id="17c50b3d" class="cell" data-execution_count="11">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>sample_text <span class="op">=</span> <span class="st">"""</span></span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a><span class="st">User john123 logged in at 2024-01-15</span></span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a><span class="st">User mary_doe logged in at 2024-01-16</span></span>
+<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a><span class="st">User bob logged in at 2024-01-17</span></span>
+<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a><span class="st">Error: user invalid_user! failed login</span></span>
+<span id="cb14-6"><a href="#cb14-6" aria-hidden="true" tabindex="-1"></a><span class="st">"""</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
 </section>
 <section id="using-regular-expressions" class="level2">
 <h2 class="anchored" data-anchor-id="using-regular-expressions">Using Regular Expressions</h2>
@@ -917,58 +896,48 @@ Hello from yet_another_function!</code></pre>
 </div>
 </div>
 </section>
-<section id="regular-expression-in-action" class="level2">
-<h2 class="anchored" data-anchor-id="regular-expression-in-action">Regular Expression in Action</h2>
-<p><span class="task">Task</span>: Replace all occurences of <code>Python</code> by “SECRET”.</p>
-<div id="122e3f28" class="cell" data-execution_count="12">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb17"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> re</span>
-<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>string <span class="op">=</span> <span class="st">"""</span></span>
-<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a><span class="st">Python is a programming language.</span></span>
-<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a><span class="st">Python is also a snake.</span></span>
-<span id="cb17-5"><a href="#cb17-5" aria-hidden="true" tabindex="-1"></a><span class="st">Monty Python was a theater group.</span></span>
-<span id="cb17-6"><a href="#cb17-6" aria-hidden="true" tabindex="-1"></a><span class="st">"""</span></span>
-<span id="cb17-7"><a href="#cb17-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Your code here</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</div>
-<p>. . .</p>
-<div class="callout callout-style-simple callout-note">
-<div class="callout-body d-flex">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-body-container">
-<p>Regular expressions are even <strong>more powerful</strong> when combined with <span class="highlight">special characters</span>.</p>
-</div>
-</div>
-</div>
-</section>
-<section id="special-characters-i" class="level2">
-<h2 class="anchored" data-anchor-id="special-characters-i">Special Characters I</h2>
-<ul>
-<li><code>.</code> matches any character</li>
-<li><code>*</code> matches zero or more of the preceding element</li>
-<li><code>+</code> matches one or more of the preceding element</li>
-<li><code>?</code> matches zero or one of the preceding element</li>
-<li><code>[]</code> matches any character in the brackets</li>
-<li><code>|</code> matches either the left or the right side</li>
-<li><code>\d</code> matches any digit</li>
-<li><code>\w</code> matches any word character (alphanumeric and underscore)</li>
-<li><code>\s</code> matches any whitespace character</li>
-</ul>
-</section>
-<section id="special-characters-ii" class="level2">
-<h2 class="anchored" data-anchor-id="special-characters-ii">Special Characters II</h2>
-<ul>
-<li>There are <strong>many more special characters</strong> in regular expressions</li>
-<li>In order to <span class="highlight">keep things simple</span>, we will not cover them here</li>
-</ul>
-<p>. . .</p>
-<div id="18520f8f" class="cell" data-output-location="fragment" data-execution_count="13">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb18"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> re</span>
-<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(re.findall(<span class="vs">r'</span><span class="dv">\d</span><span class="op">{3}</span><span class="vs">-</span><span class="dv">\d</span><span class="op">{2}</span><span class="vs">-</span><span class="dv">\d</span><span class="op">{4}</span><span class="vs">'</span>, <span class="st">'Here is a phone number: 123-45-6789.'</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<section id="literal-matching" class="level2">
+<h2 class="anchored" data-anchor-id="literal-matching">Literal Matching</h2>
+<div id="b4eb3b11" class="cell" data-output-location="fragment" data-execution_count="12">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> re</span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>sample_text <span class="op">=</span> <span class="st">"""</span></span>
+<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a><span class="st">User john123 logged in at 2024-01-15</span></span>
+<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a><span class="st">User mary_doe logged in at 2024-01-16</span></span>
+<span id="cb15-6"><a href="#cb15-6" aria-hidden="true" tabindex="-1"></a><span class="st">User bob logged in at 2024-01-17</span></span>
+<span id="cb15-7"><a href="#cb15-7" aria-hidden="true" tabindex="-1"></a><span class="st">Error: user invalid_user! failed login</span></span>
+<span id="cb15-8"><a href="#cb15-8" aria-hidden="true" tabindex="-1"></a><span class="st">"""</span></span>
+<span id="cb15-9"><a href="#cb15-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-10"><a href="#cb15-10" aria-hidden="true" tabindex="-1"></a><span class="co"># Find exact word "User"</span></span>
+<span id="cb15-11"><a href="#cb15-11" aria-hidden="true" tabindex="-1"></a>result <span class="op">=</span> re.findall(<span class="vs">r'User'</span>, sample_text)</span>
+<span id="cb15-12"><a href="#cb15-12" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Found 'User': </span><span class="sc">{</span>result<span class="sc">}</span><span class="ss">"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>['123-45-6789']</code></pre>
+<pre><code>Found 'User': ['User', 'User', 'User']</code></pre>
 </div>
 </div>
+<p>. . .</p>
+<p><span class="task">Task:</span> Find all occurrences of “logged” in the sample text.</p>
+</section>
+<section id="special-character-the-dot-." class="level2">
+<h2 class="anchored" data-anchor-id="special-character-the-dot-.">Special Character: The Dot (.)</h2>
+<p>The <code>.</code> matches <strong>any single character</strong>:</p>
+<div id="65802572" class="cell" data-output-location="fragment" data-execution_count="13">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb17"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>sample_text <span class="op">=</span> <span class="st">"""</span></span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a><span class="st">User john123 logged in at 2024-01-15</span></span>
+<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a><span class="st">User mary_doe logged in at 2024-01-16</span></span>
+<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a><span class="st">User bob logged in at 2024-01-17</span></span>
+<span id="cb17-5"><a href="#cb17-5" aria-hidden="true" tabindex="-1"></a><span class="st">Error: user invalid_user! failed login</span></span>
+<span id="cb17-6"><a href="#cb17-6" aria-hidden="true" tabindex="-1"></a><span class="st">"""</span></span>
+<span id="cb17-7"><a href="#cb17-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-8"><a href="#cb17-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Find "User" followed by any character, then "o"</span></span>
+<span id="cb17-9"><a href="#cb17-9" aria-hidden="true" tabindex="-1"></a>result <span class="op">=</span> re.findall(<span class="vs">r'bo</span><span class="dv">.</span><span class="vs">'</span>, sample_text)</span>
+<span id="cb17-10"><a href="#cb17-10" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Found 'bo.': </span><span class="sc">{</span>result<span class="sc">}</span><span class="ss">"</span>)  <span class="co"># This finds "bob"</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Found 'bo.': ['bob']</code></pre>
+</div>
+</div>
+<p>. . .</p>
+<p><span class="task">Task:</span> Use <code>.</code> to find all 4-letter words starting with “use”.</p>
 <p>. . .</p>
 <div class="callout callout-style-simple callout-tip">
 <div class="callout-body d-flex">
@@ -976,22 +945,197 @@ Hello from yet_another_function!</code></pre>
 <i class="callout-icon"></i>
 </div>
 <div class="callout-body-container">
-<p>It can be quite complicated to get the hang of these special characters, especially at the beginning. Gladly, there are tools like <a href="https://regexr.com">regexr.com</a> that can help with building the right pattern. Apart from that, <code>help(re)</code> in the terminal can also be very helpful.</p>
+<p>The dot is like a wildcard - it fills in for any single character you don’t know.</p>
 </div>
 </div>
 </div>
 </section>
-<section id="advanced-regular-expressions-in-action" class="level2">
-<h2 class="anchored" data-anchor-id="advanced-regular-expressions-in-action">Advanced Regular Expressions in Action</h2>
+<section id="character-classes-abc" class="level2">
+<h2 class="anchored" data-anchor-id="character-classes-abc">Character Classes: <code>[abc]</code></h2>
+<p>Square brackets match <strong>any character inside them</strong>:</p>
+<div id="c423f33b" class="cell" data-output-location="fragment" data-execution_count="14">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb19"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Find usernames that start with 'j' or 'm'</span></span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>result <span class="op">=</span> re.findall(<span class="vs">r'User </span><span class="pp">[jm]</span><span class="dv">\w</span><span class="op">+</span><span class="vs">'</span>, sample_text)</span>
+<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Users starting with j or m: </span><span class="sc">{</span>result<span class="sc">}</span><span class="ss">"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Users starting with j or m: ['User john123', 'User mary_doe']</code></pre>
+</div>
+</div>
+<p>. . .</p>
+<p><strong>Useful character classes:</strong></p>
+<ul>
+<li><code>[abc]</code> - matches a, b, or c</li>
+<li><code>[a-z]</code> - matches any lowercase letter</li>
+<li><code>[0-9]</code> - matches any digit</li>
+<li><code>[a-zA-Z0-9]</code> - matches letters and numbers</li>
+</ul>
+<p>. . .</p>
+<p><span class="task">Task:</span> Find all years.</p>
+</section>
+<section id="common-pattern-shortcuts" class="level2">
+<h2 class="anchored" data-anchor-id="common-pattern-shortcuts">Common Pattern Shortcuts</h2>
+<p>Instead of writing <code>[0-9]</code>, we can use shortcuts:</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Shortcut</th>
+<th>Meaning</th>
+<th>Same as</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>\d</code></td>
+<td>Any digit</td>
+<td><code>[0-9]</code></td>
+</tr>
+<tr class="even">
+<td><code>\w</code></td>
+<td>Word character</td>
+<td><code>[a-zA-Z0-9_]</code></td>
+</tr>
+<tr class="odd">
+<td><code>\s</code></td>
+<td>Whitespace</td>
+<td><code>[ \t\n]</code></td>
+</tr>
+</tbody>
+</table>
+<p>. . .</p>
+<div id="4b9bb09d" class="cell" data-output-location="fragment" data-execution_count="15">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb21"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Find dates using \d (much cleaner!)</span></span>
+<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>result <span class="op">=</span> re.findall(<span class="vs">r'</span><span class="dv">\d\d\d\d</span><span class="vs">-</span><span class="dv">\d\d</span><span class="vs">-</span><span class="dv">\d\d</span><span class="vs">'</span>, sample_text)</span>
+<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Found dates: </span><span class="sc">{</span>result<span class="sc">}</span><span class="ss">"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Found dates: ['2024-01-15', '2024-01-16', '2024-01-17']</code></pre>
+</div>
+</div>
+<p>. . .</p>
+<p><span class="task">Task:</span> Find all usernames using <code>\w</code>.</p>
+</section>
+<section id="quantifiers-how-many-times" class="level2">
+<h2 class="anchored" data-anchor-id="quantifiers-how-many-times">Quantifiers: How Many Times?</h2>
+<p>Instead of repeating <code>\d\d\d\d</code>, we can specify quantities:</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Quantifier</th>
+<th>Meaning</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>{4}</code></td>
+<td>Exactly 4 times</td>
+</tr>
+<tr class="even">
+<td><code>{2,4}</code></td>
+<td>Between 2 and 4 times</td>
+</tr>
+<tr class="odd">
+<td><code>+</code></td>
+<td>One or more times</td>
+</tr>
+<tr class="even">
+<td><code>*</code></td>
+<td>Zero or more times</td>
+</tr>
+<tr class="odd">
+<td><code>?</code></td>
+<td>Zero or one time</td>
+</tr>
+</tbody>
+</table>
+<p>. . .</p>
+<div id="caecff21" class="cell" data-output-location="fragment" data-execution_count="16">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb23"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Much cleaner date pattern!</span></span>
+<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a>result <span class="op">=</span> re.findall(<span class="vs">r'</span><span class="dv">\d</span><span class="op">{4}</span><span class="vs">-</span><span class="dv">\d</span><span class="op">{2}</span><span class="vs">-</span><span class="dv">\d</span><span class="op">{2}</span><span class="vs">'</span>, sample_text)</span>
+<span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Dates with quantifiers: </span><span class="sc">{</span>result<span class="sc">}</span><span class="ss">"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Dates with quantifiers: ['2024-01-15', '2024-01-16', '2024-01-17']</code></pre>
+</div>
+</div>
+<p>. . .</p>
+<p><span class="task">Task:</span> Find usernames of any length with <code>\w+</code>.</p>
+</section>
+<section id="putting-it-together-email-finder" class="level2">
+<h2 class="anchored" data-anchor-id="putting-it-together-email-finder">Putting It Together: Email Finder</h2>
+<p><span class="highlight">Let’s build an email pattern step by step!</span></p>
+<p>. . .</p>
+<div id="76f1d9db" class="cell" data-output-location="fragment" data-execution_count="17">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb25"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a>email_text <span class="op">=</span> <span class="st">"Contact: john@email.com, mary.doe@company.org, or bob@test.co.uk"</span></span>
+<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Step 1: Basic pattern</span></span>
+<span id="cb25-4"><a href="#cb25-4" aria-hidden="true" tabindex="-1"></a>basic <span class="op">=</span> <span class="vs">r'</span><span class="dv">\w</span><span class="op">+</span><span class="vs">@</span><span class="dv">\w</span><span class="op">+</span><span class="ch">\.</span><span class="dv">\w</span><span class="op">+</span><span class="vs">'</span></span>
+<span id="cb25-5"><a href="#cb25-5" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Basic emails:"</span>, re.findall(basic, email_text))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Basic emails: ['john@email.com', 'doe@company.org', 'bob@test.co']</code></pre>
+</div>
+</div>
+<p>. . .</p>
+<div id="94003766" class="cell" data-output-location="fragment" data-execution_count="18">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb27"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Step 2: Handle dots in names</span></span>
+<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a>better <span class="op">=</span> <span class="vs">r'</span><span class="pp">[</span><span class="dv">\w</span><span class="pp">.]</span><span class="op">+</span><span class="vs">@</span><span class="dv">\w</span><span class="op">+</span><span class="ch">\.</span><span class="dv">\w</span><span class="op">+</span><span class="vs">'</span></span>
+<span id="cb27-3"><a href="#cb27-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Better emails:"</span>, re.findall(better, email_text))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Better emails: ['john@email.com', 'mary.doe@company.org', 'bob@test.co']</code></pre>
+</div>
+</div>
+<p>. . .</p>
+<div id="f75cd3ec" class="cell" data-output-location="fragment" data-execution_count="19">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb29"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Step 3: Handle multiple domain parts</span></span>
+<span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a>best <span class="op">=</span> <span class="vs">r'</span><span class="pp">[</span><span class="dv">\w</span><span class="pp">.]</span><span class="op">+</span><span class="vs">@</span><span class="pp">[</span><span class="dv">\w</span><span class="pp">.]</span><span class="op">+</span><span class="ch">\.</span><span class="dv">\w</span><span class="op">+</span><span class="vs">'</span></span>
+<span id="cb29-3"><a href="#cb29-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Best emails:"</span>, re.findall(best, email_text))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Best emails: ['john@email.com', 'mary.doe@company.org', 'bob@test.co.uk']</code></pre>
+</div>
+</div>
+</section>
+<section id="debugging-regular-expressions" class="level2">
+<h2 class="anchored" data-anchor-id="debugging-regular-expressions">Debugging Regular Expressions</h2>
+<p><span class="highlight">When your regex doesn’t work:</span></p>
+<ol type="1">
+<li><strong>Test with simple examples first</strong></li>
+<li><strong>Build the pattern gradually</strong></li>
+<li><strong>Use online tools</strong> like <a href="https://regexr.com">regexr.com</a></li>
+<li><strong>Print intermediate results</strong></li>
+</ol>
+<p>. . .</p>
+<div class="callout callout-style-simple callout-tip">
+<div class="callout-body d-flex">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-body-container">
+<p>Remember: regex can be complex, but you don’t need to master everything at once. Start simple and build up!</p>
+</div>
+</div>
+</div>
+</section>
+<section id="regex-in-action" class="level2">
+<h2 class="anchored" data-anchor-id="regex-in-action">Regex in Action</h2>
+<p><span class="task">Task</span>: Replace all occurences of <code>Python</code> by “SECRET”.</p>
+<div id="08cd2c19" class="cell" data-execution_count="20">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb31"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> re</span>
+<span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a>string <span class="op">=</span> <span class="st">"""</span></span>
+<span id="cb31-3"><a href="#cb31-3" aria-hidden="true" tabindex="-1"></a><span class="st">Python is a programming language.</span></span>
+<span id="cb31-4"><a href="#cb31-4" aria-hidden="true" tabindex="-1"></a><span class="st">Python is also a snake.</span></span>
+<span id="cb31-5"><a href="#cb31-5" aria-hidden="true" tabindex="-1"></a><span class="st">Monty Python was a theater group.</span></span>
+<span id="cb31-6"><a href="#cb31-6" aria-hidden="true" tabindex="-1"></a><span class="st">"""</span></span>
+<span id="cb31-7"><a href="#cb31-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Your code here</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</section>
+<section id="advanced-regex-in-action" class="level2">
+<h2 class="anchored" data-anchor-id="advanced-regex-in-action">Advanced Regex in Action</h2>
 <p><span class="task">Task:</span> Use regular expressions to extract all dates from the text.</p>
-<div id="59af64ea" class="cell" data-execution_count="14">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb20"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>dates <span class="op">=</span> <span class="st">"""</span></span>
-<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a><span class="st">On 07-04-1776, the United States declared its independence. Many years later,</span></span>
-<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a><span class="st">on 11-09-1989, the Berlin Wall fell. In more recent history, the COVID-19</span></span>
-<span id="cb20-4"><a href="#cb20-4" aria-hidden="true" tabindex="-1"></a><span class="st">pandemic was declared a global emergency on 04-11-2020.</span></span>
-<span id="cb20-5"><a href="#cb20-5" aria-hidden="true" tabindex="-1"></a><span class="st">"""</span></span>
-<span id="cb20-6"><a href="#cb20-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Try to find all dates in the above text with findall()</span></span>
-<span id="cb20-7"><a href="#cb20-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Your code here</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div id="c5db89a6" class="cell" data-execution_count="21">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb32"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a>dates <span class="op">=</span> <span class="st">"""</span></span>
+<span id="cb32-2"><a href="#cb32-2" aria-hidden="true" tabindex="-1"></a><span class="st">On 07-04-1776, the United States declared its independence. Many years later,</span></span>
+<span id="cb32-3"><a href="#cb32-3" aria-hidden="true" tabindex="-1"></a><span class="st">on 11-09-1989, the Berlin Wall fell. In more recent history, the COVID-19</span></span>
+<span id="cb32-4"><a href="#cb32-4" aria-hidden="true" tabindex="-1"></a><span class="st">pandemic was declared a global emergency on 04-11-2020.</span></span>
+<span id="cb32-5"><a href="#cb32-5" aria-hidden="true" tabindex="-1"></a><span class="st">"""</span></span>
+<span id="cb32-6"><a href="#cb32-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Try to find all dates in the above text with findall()</span></span>
+<span id="cb32-7"><a href="#cb32-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Your code here</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section>
 </section>
@@ -1012,12 +1156,9 @@ Hello from yet_another_function!</code></pre>
 <ul>
 <li>Packages are <strong>installed in the shell</strong></li>
 <li>Use <code>uv add &lt;package_name&gt;</code> to install a specific package</li>
-<li>Afterward you can <span class="highlight">import from the package</span> in your Python scripts</li>
+<li>Afterward you can <span class="highlight">import from the package</span> in your scripts</li>
 </ul>
 <p>. . .</p>
-</section>
-<section id="packages-in-action" class="level2">
-<h2 class="anchored" data-anchor-id="packages-in-action">Packages in Action</h2>
 <p><span class="task">Task:</span> Install the <code>pandas</code> and <code>numpy</code> packages, which are commonly used for data analysis. We will use them together next week!</p>
 <p>. . .</p>
 <pre class="{bash}"><code>uv add pandas numpy</code></pre>
@@ -1028,7 +1169,7 @@ Hello from yet_another_function!</code></pre>
 <i class="callout-icon"></i>
 </div>
 <div class="callout-body-container">
-<p>If you install packages like this, you can use the shell to do so! Alternatively, you can use <code>uv add &lt;package_name&gt;</code> in the Python terminal.</p>
+<p>If you install packages like this, you can use the shell to do so! Alternatively, you can use <code>uv add &lt;package_name&gt;</code> in the terminal in the IDE.</p>
 </div>
 </div>
 </div>
@@ -1036,11 +1177,18 @@ Hello from yet_another_function!</code></pre>
 <section id="virtual-environments" class="level2">
 <h2 class="anchored" data-anchor-id="virtual-environments">Virtual Environments</h2>
 <ul>
-<li>Virtual environments are used to manage dependencies</li>
-<li>They allow you to have different environments for projects</li>
-<li>They can be created using the <code>venv</code> module</li>
-<li>This becomes important if you work on several projects at once</li>
+<li>Virtual environments <strong>isolate a project’s dependencies</strong></li>
+<li>With uv, the environment is <strong>created and managed automatically</strong></li>
+<li>No manual venv creation needed and others can replicate</li>
+<li><span class="highlight">Especially important when working on several projects at once</span></li>
 </ul>
+<p>. . .</p>
+<p>Common uv command you’ll use:</p>
+<pre class="{bash}"><code># Install dependencies from pyproject.toml (to use the code from others)
+uv sync
+
+# Start a Python REPL in the project environment (you can then work directly here)
+uv run python</code></pre>
 <p>. . .</p>
 <div class="callout callout-style-simple callout-note">
 <div class="callout-body d-flex">
@@ -1048,8 +1196,7 @@ Hello from yet_another_function!</code></pre>
 <i class="callout-icon"></i>
 </div>
 <div class="callout-body-container">
-<p><strong>And that’s it for todays lecture!</strong><br>
-We now have completed the first step into data science in Python. Next week, we can use this new knowledge to start to work with some tabular data and matrices.</p>
+<p><strong>And that’s it for today’s lecture!</strong> We now have completed the first step into data science in Python. Next week, we can use this new knowledge to start to work with some tabular data and matrices.</p>
 </div>
 </div>
 </div>
