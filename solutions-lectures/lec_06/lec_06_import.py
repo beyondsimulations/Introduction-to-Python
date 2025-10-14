@@ -6,8 +6,10 @@
 # Your code here
 import math
 
-def calculate_area(r):
-    return math.pi * r**2 * 2
-    
+
+def calculate_area(r: float):
+    return math.pi * r**2
+
+
 print(calculate_area(5))
 assert calculate_area(5) == 78.53981633974483

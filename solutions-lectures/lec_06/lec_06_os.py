@@ -5,10 +5,10 @@
 import os
 import csv
 
-if not os.path.exists('part-06/module_directory'):
-    os.makedirs('part-06/module_directory')
+if not os.path.exists("part-06/module_directory"):
+    os.makedirs("part-06/module_directory")
 
-with open('part-06/module_directory/current_files.csv', 'w') as f:
+with open("part-06/module_directory/current_files.csv", "w") as f:
     writer = csv.writer(f)
     for file in os.listdir():
         writer.writerow([file])
