@@ -1,0 +1,1519 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-html/tabby.min.js"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/light-border.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-a6e161b2431e1f94a14e0f5d32135a3c.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
+  <meta name="generator" content="quarto-1.8.24">
+
+  <meta name="author" content="Dr.&nbsp;Tobias Vlćek">
+  <title>Programming with Python – Lecture II - Control Structures for Your Code</title>
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+  <link rel="stylesheet" href="../site_libs/revealjs/dist/reset.css">
+  <link rel="stylesheet" href="../site_libs/revealjs/dist/reveal.css">
+  <style>
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    div.columns{display: flex; gap: min(4vw, 1.5em);}
+    div.column{flex: auto; overflow-x: auto;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    ul.task-list{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+      vertical-align: middle;
+    }
+    /* CSS for syntax highlighting */
+    html { -webkit-text-size-adjust: 100%; }
+    pre > code.sourceCode { white-space: pre; position: relative; }
+    pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+    pre > code.sourceCode > span:empty { height: 1.2em; }
+    .sourceCode { overflow: visible; }
+    code.sourceCode > span { color: inherit; text-decoration: inherit; }
+    div.sourceCode { margin: 1em 0; }
+    pre.sourceCode { margin: 0; }
+    @media screen {
+    div.sourceCode { overflow: auto; }
+    }
+    @media print {
+    pre > code.sourceCode { white-space: pre-wrap; }
+    pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+    }
+    pre.numberSource code
+      { counter-reset: source-line 0; }
+    pre.numberSource code > span
+      { position: relative; left: -4em; counter-increment: source-line; }
+    pre.numberSource code > span > a:first-child::before
+      { content: counter(source-line);
+        position: relative; left: -1em; text-align: right; vertical-align: baseline;
+        border: none; display: inline-block;
+        -webkit-touch-callout: none; -webkit-user-select: none;
+        -khtml-user-select: none; -moz-user-select: none;
+        -ms-user-select: none; user-select: none;
+        padding: 0 4px; width: 4em;
+      }
+    pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+    div.sourceCode
+      { color: #24292e;  }
+    @media screen {
+    pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+    }
+    code span { color: #24292e; } /* Normal */
+    code span.al { color: #ff5555; font-weight: bold; } /* Alert */
+    code span.an { color: #6a737d; } /* Annotation */
+    code span.at { color: #d73a49; } /* Attribute */
+    code span.bn { color: #005cc5; } /* BaseN */
+    code span.bu { color: #d73a49; } /* BuiltIn */
+    code span.cf { color: #d73a49; } /* ControlFlow */
+    code span.ch { color: #032f62; } /* Char */
+    code span.cn { color: #005cc5; } /* Constant */
+    code span.co { color: #6a737d; } /* Comment */
+    code span.cv { color: #6a737d; } /* CommentVar */
+    code span.do { color: #6a737d; } /* Documentation */
+    code span.dt { color: #d73a49; } /* DataType */
+    code span.dv { color: #005cc5; } /* DecVal */
+    code span.er { color: #ff5555; text-decoration: underline; } /* Error */
+    code span.ex { color: #d73a49; font-weight: bold; } /* Extension */
+    code span.fl { color: #005cc5; } /* Float */
+    code span.fu { color: #6f42c1; } /* Function */
+    code span.im { color: #032f62; } /* Import */
+    code span.in { color: #6a737d; } /* Information */
+    code span.kw { color: #d73a49; } /* Keyword */
+    code span.op { color: #24292e; } /* Operator */
+    code span.ot { color: #6f42c1; } /* Other */
+    code span.pp { color: #d73a49; } /* Preprocessor */
+    code span.re { color: #6a737d; } /* RegionMarker */
+    code span.sc { color: #005cc5; } /* SpecialChar */
+    code span.ss { color: #032f62; } /* SpecialString */
+    code span.st { color: #032f62; } /* String */
+    code span.va { color: #e36209; } /* Variable */
+    code span.vs { color: #032f62; } /* VerbatimString */
+    code span.wa { color: #ff5555; } /* Warning */
+  </style>
+  <link rel="stylesheet" href="../site_libs/revealjs/dist/theme/quarto-707dfb535249e6eca862c92c22a86177.css">
+  <link href="../site_libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
+  <link href="../site_libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
+  <link href="../site_libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
+  <link href="../site_libs/revealjs/plugin/quarto-support/footer.css" rel="stylesheet">
+  <style type="text/css">
+    .reveal div.sourceCode {
+      margin: 0;
+      overflow: auto;
+    }
+    .reveal div.hanging-indent {
+      margin-left: 1em;
+      text-indent: -1em;
+    }
+    .reveal .slide:not(.center) {
+      height: 100%;
+    }
+    .reveal .slide.scrollable {
+      overflow-y: auto;
+    }
+    .reveal .footnotes {
+      height: 100%;
+      overflow-y: auto;
+    }
+    .reveal .slide .absolute {
+      position: absolute;
+      display: block;
+    }
+    .reveal .footnotes ol {
+      counter-reset: ol;
+      list-style-type: none; 
+      margin-left: 0;
+    }
+    .reveal .footnotes ol li:before {
+      counter-increment: ol;
+      content: counter(ol) ". "; 
+    }
+    .reveal .footnotes ol li > p:first-child {
+      display: inline-block;
+    }
+    .reveal .slide ul,
+    .reveal .slide ol {
+      margin-bottom: 0.5em;
+    }
+    .reveal .slide ul li,
+    .reveal .slide ol li {
+      margin-top: 0.4em;
+      margin-bottom: 0.2em;
+    }
+    .reveal .slide ul[role="tablist"] li {
+      margin-bottom: 0;
+    }
+    .reveal .slide ul li > *:first-child,
+    .reveal .slide ol li > *:first-child {
+      margin-block-start: 0;
+    }
+    .reveal .slide ul li > *:last-child,
+    .reveal .slide ol li > *:last-child {
+      margin-block-end: 0;
+    }
+    .reveal .slide .columns:nth-child(3) {
+      margin-block-start: 0.8em;
+    }
+    .reveal blockquote {
+      box-shadow: none;
+    }
+    .reveal .tippy-content>* {
+      margin-top: 0.2em;
+      margin-bottom: 0.7em;
+    }
+    .reveal .tippy-content>*:last-child {
+      margin-bottom: 0.2em;
+    }
+    .reveal .slide > img.stretch.quarto-figure-center,
+    .reveal .slide > img.r-stretch.quarto-figure-center {
+      display: block;
+      margin-left: auto;
+      margin-right: auto; 
+    }
+    .reveal .slide > img.stretch.quarto-figure-left,
+    .reveal .slide > img.r-stretch.quarto-figure-left  {
+      display: block;
+      margin-left: 0;
+      margin-right: auto; 
+    }
+    .reveal .slide > img.stretch.quarto-figure-right,
+    .reveal .slide > img.r-stretch.quarto-figure-right  {
+      display: block;
+      margin-left: auto;
+      margin-right: 0; 
+    }
+  </style>
+</head>
+<body class="quarto-light">
+  <div class="reveal">
+    <div class="slides">
+
+<section id="title-slide" class="quarto-title-block center">
+  <h1 class="title">Lecture II - Control Structures for Your Code</h1>
+  <p class="subtitle">Programming with Python</p>
+
+<div class="quarto-title-authors">
+<div class="quarto-title-author">
+<div class="quarto-title-author-name">
+Dr.&nbsp;Tobias Vlćek 
+</div>
+        <p class="quarto-title-affiliation">
+            Kühne Logistics University Hamburg - Fall 2025
+          </p>
+    </div>
+</div>
+
+</section>
+<section>
+<section id="quick-recap-of-the-last-lecture" class="title-slide slide level1 title center">
+<h1><span class="flow">Quick Recap of the last Lecture</span></h1>
+
+</section>
+<section id="f-strings" class="slide level2">
+<h2>F-Strings</h2>
+<ul>
+<li>F-strings provide a way to embed expressions inside string literals</li>
+<li>You can include expressions by placing them inside curly braces <code>{}</code></li>
+<li>This makes it easier to include dynamic content</li>
+</ul>
+<div class="fragment">
+<div id="173648fb" class="cell" data-execution_count="1">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a></a><span class="co"># Let's illustrate f-strings with a small example:</span></span>
+<span id="cb1-2"><a></a>name <span class="op">=</span> <span class="st">"Mr. Smith"</span></span>
+<span id="cb1-3"><a></a>age <span class="op">=</span> <span class="dv">30</span></span>
+<span id="cb1-4"><a></a>height <span class="op">=</span> <span class="fl">1.826549</span></span>
+<span id="cb1-5"><a></a><span class="bu">print</span>(<span class="ss">f"My name is </span><span class="sc">{</span>name<span class="sc">}</span><span class="ss">, I'm </span><span class="sc">{</span>age<span class="sc">}</span><span class="ss"> years old, and </span><span class="sc">{</span>height<span class="sc">:.2f}</span><span class="ss"> meters tall."</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<div class="cell fragment" data-execution_count="1">
+<div class="cell-output cell-output-stdout">
+<pre><code>My name is Mr. Smith, I'm 30 years old, and 1.83 meters tall.</code></pre>
+</div>
+</div>
+</div>
+<div class="fragment">
+<div class="callout callout-tip callout-style-simple">
+<div class="callout-body">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-content">
+<p>We used the <code>:.2f</code> format specifier to round the number to two decimal places.</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="variables-and-data-types" class="slide level2">
+<h2>Variables and Data Types</h2>
+<ul>
+<li>Python uses dynamic typing, i.e.&nbsp;the type is determined at runtime</li>
+<li>Basic data types in Python are: <code>int</code>, <code>float</code>, <code>str</code>, <code>bool</code></li>
+<li>Variables are created by assignment with the <code>=</code> operator</li>
+</ul>
+<div class="fragment">
+<p><span class="question">&gt; Question:</span> What are the types of <code>y</code>, <code>z</code>, <code>w</code>?</p>
+<div id="26f1bb38" class="cell" data-execution_count="2">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a></a>y <span class="op">=</span> <span class="fl">2.5</span></span>
+<span id="cb3-2"><a></a>z <span class="op">=</span> <span class="st">"Hello"</span></span>
+<span id="cb3-3"><a></a>w <span class="op">=</span> <span class="va">True</span></span>
+<span id="cb3-4"><a></a><span class="bu">print</span>(<span class="ss">f"y is of type </span><span class="sc">{</span><span class="bu">type</span>(y)<span class="sc">.</span><span class="va">__name__</span><span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb3-5"><a></a><span class="bu">print</span>(<span class="ss">f"z is of type </span><span class="sc">{</span><span class="bu">type</span>(z)<span class="sc">.</span><span class="va">__name__</span><span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb3-6"><a></a><span class="bu">print</span>(<span class="ss">f"w is of type </span><span class="sc">{</span><span class="bu">type</span>(w)<span class="sc">.</span><span class="va">__name__</span><span class="sc">}</span><span class="ss">"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<div class="cell fragment" data-execution_count="2">
+<div class="cell-output cell-output-stdout">
+<pre><code>y is of type float
+z is of type str
+w is of type bool</code></pre>
+</div>
+</div>
+</div>
+</section>
+<section id="arithmetic-operators" class="slide level2">
+<h2>Arithmetic Operators</h2>
+<div class="columns">
+<div class="column" style="width:30%;">
+<p>Addition<br>
+Subtraction<br>
+Multiplication<br>
+Division<br>
+Floor Division<br>
+Exponentiation<br>
+Modulo</p>
+</div><div class="column" style="width:10%;">
+<p><code>+</code><br>
+<code>-</code><br>
+<code>*</code><br>
+<code>/</code><br>
+<code>//</code><br>
+<code>**</code><br>
+<code>%</code></p>
+</div><div class="column" style="width:60%;">
+<p>Adds two numbers<br>
+Subtracts one number from another<br>
+Multiplies two numbers<br>
+Floating-point division<br>
+Integer division<br>
+Power of<br>
+Remainder of division</p>
+</div></div>
+<div class="fragment">
+<div class="callout callout-note callout-style-simple">
+<div class="callout-body">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-content">
+<p>Note, that the <code>/</code> operator always returns a float, even if the division is even. Furthermore, the <code>+</code> operator can be used to concatenate strings and that the <code>*</code> operator can be used to repeat strings.</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="arithmetic-operators-with-variables" class="slide level2">
+<h2>Arithmetic Operators with Variables</h2>
+<ul>
+<li>Additional operators can update the value of a variable <span class="highlight">(new)</span></li>
+<li>We can use <code>+=</code>, <code>-=</code>, <code>*=</code>, <code>/=</code>, <code>//=</code>, <code>**=</code>, <code>%=</code></li>
+</ul>
+<div class="fragment">
+<p><span class="question">&gt; Question:</span> What is the value of <code>x</code> after the operations?</p>
+<div id="3eb5445d" class="cell" data-execution_count="3">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a></a>x <span class="op">=</span> <span class="dv">10</span></span>
+<span id="cb5-2"><a></a><span class="bu">print</span>(<span class="ss">f"Initial value of x: </span><span class="sc">{</span>x<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb5-3"><a></a>x <span class="op">+=</span> <span class="dv">5</span>  <span class="co"># Equivalent to x = x + 5</span></span>
+<span id="cb5-4"><a></a><span class="bu">print</span>(<span class="ss">f"After x += 5: </span><span class="sc">{</span>x<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb5-5"><a></a>x <span class="op">*=</span> <span class="dv">2</span>  <span class="co"># Equivalent to x = x * 2</span></span>
+<span id="cb5-6"><a></a><span class="bu">print</span>(<span class="ss">f"After x *= 2: </span><span class="sc">{</span>x<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb5-7"><a></a>x <span class="op">%=</span> <span class="dv">4</span>  <span class="co"># Equivalent to x = x % 4</span></span>
+<span id="cb5-8"><a></a><span class="bu">print</span>(<span class="ss">f"After x %= 4: </span><span class="sc">{</span>x<span class="sc">}</span><span class="ss">"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<div class="cell fragment" data-execution_count="3">
+<div class="cell-output cell-output-stdout">
+<pre><code>Initial value of x: 10
+After x += 5: 15
+After x *= 2: 30
+After x %= 4: 2</code></pre>
+</div>
+</div>
+</div>
+</section>
+<section id="arithmetic-operators-task" class="slide level2">
+<h2>Arithmetic Operators Task</h2>
+<p><span class="task">&gt; Task:</span> Calculate the final value step by step:</p>
+<div id="ddcaaa65" class="cell" data-execution_count="4">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a></a><span class="co"># Start with the following values</span></span>
+<span id="cb7-2"><a></a>price <span class="op">=</span> <span class="dv">100</span></span>
+<span id="cb7-3"><a></a>discount_percent <span class="op">=</span> <span class="dv">15</span></span>
+<span id="cb7-4"><a></a>tax_rate <span class="op">=</span> <span class="fl">0.08</span></span>
+<span id="cb7-5"><a></a></span>
+<span id="cb7-6"><a></a><span class="co"># Your task:</span></span>
+<span id="cb7-7"><a></a><span class="co"># 1. Apply the discount to the price (price reduced by discount_percent)</span></span>
+<span id="cb7-8"><a></a><span class="co"># 2. Add tax to the discounted price</span></span>
+<span id="cb7-9"><a></a><span class="co"># 3. Round the final price to 2 decimal places</span></span>
+<span id="cb7-10"><a></a><span class="co"># Your code here</span></span>
+<span id="cb7-11"><a></a></span>
+<span id="cb7-12"><a></a>final_price <span class="op">=</span> ?  <span class="co"># What should this be?</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<div class="callout callout-tip callout-style-simple">
+<div class="callout-body">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-content">
+<p>You can use the <code>round()</code> function to round a number to a specific number of decimal places. For example: <code>round(3.14159, 2)</code> returns <code>3.14</code>.</p>
+</div>
+</div>
+</div>
+</section></section>
+<section>
+<section id="objects-and-methods" class="title-slide slide level1 title center">
+<h1><span class="flow">Objects and Methods</span></h1>
+
+</section>
+<section id="objects" class="slide level2">
+<h2>Objects</h2>
+<ul>
+<li>Objects are <strong>instances of classes</strong></li>
+<li>We will learn more about classes <strong>later</strong> in the course</li>
+<li>In Python, <span class="highlight">virtually</span> everything is an object</li>
+<li>Common built-in objects: <span class="highlight">integers, strings, lists, dictionaries</span></li>
+<li>For now, think of objects as a collection of data and methods</li>
+</ul>
+<div class="fragment">
+<div class="callout callout-note callout-style-simple">
+<div class="callout-body">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-content">
+<p>For most programming purposes, you can treat everything in Python as an object. This means you can assign all types to variables, pass them to functions, and in many cases, call methods on them.</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="methods" class="slide level2">
+<h2>Methods</h2>
+<ul>
+<li>Methods are <span class="highlight">functions</span> that are called on an <span class="highlight">object</span></li>
+<li>The syntax is <code>object.method([arguments])</code></li>
+<li>Methods are specific to the type of object they’re called on</li>
+<li>They can modify the object or return information about it</li>
+</ul>
+<div class="fragment">
+<div class="callout callout-tip callout-style-simple">
+<div class="callout-body">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-content">
+<p>You can use the <code>dir()</code> function to list all methods and attributes of an object.</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="string-methods" class="slide level2">
+<h2>String Methods</h2>
+<p>Here are some commonly used string methods:</p>
+<ul>
+<li><code>upper()</code>: Converts all characters in the string to uppercase</li>
+<li><code>lower()</code>: Converts all characters in the string to lowercase</li>
+<li><code>title()</code>: Converts first character of each word to uppercase</li>
+<li><code>strip()</code>: Removes leading and trailing whitespace</li>
+<li><code>replace()</code>: Replaces a substring with another substring</li>
+<li><code>find()</code>: Finds first substring and returns its index</li>
+<li><code>count()</code>: Counts the number of occurrences of a substring</li>
+</ul>
+</section>
+<section id="string-methods-in-action" class="slide level2">
+<h2>String Methods in Action</h2>
+<p><span class="question">&gt; Question:</span> What will be the output of the following code?</p>
+<div id="986951dd" class="cell" data-execution_count="5">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8" data-code-line-numbers="2|3|4|5|6|7"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a></a>message <span class="op">=</span> <span class="st">"Hello, World!"</span></span>
+<span id="cb8-2"><a></a><span class="bu">print</span>(message.upper())  <span class="co"># Converts to uppercase</span></span>
+<span id="cb8-3"><a></a><span class="bu">print</span>(message.lower())  <span class="co"># Converts to lowercase</span></span>
+<span id="cb8-4"><a></a><span class="bu">print</span>(message.title())  <span class="co"># Converts to title case</span></span>
+<span id="cb8-5"><a></a><span class="bu">print</span>(message.replace(<span class="st">"World"</span>, <span class="st">"Python"</span>))  <span class="co"># Replaces "World"</span></span>
+<span id="cb8-6"><a></a><span class="bu">print</span>(message.find(<span class="st">"World"</span>))  <span class="co"># Finds "World" and returns its index</span></span>
+<span id="cb8-7"><a></a><span class="bu">print</span>(message.count(<span class="st">"o"</span>))  <span class="co"># Counts the number of occurrences of "o"</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<div class="cell fragment" data-execution_count="5">
+<div class="cell-output cell-output-stdout">
+<pre><code>HELLO, WORLD!
+hello, world!
+Hello, World!
+Hello, Python!
+7
+2</code></pre>
+</div>
+</div>
+<div class="fragment">
+<div class="callout callout-note callout-style-simple">
+<div class="callout-body">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-content">
+<p>Note, how <code>replace()</code> does not modify the original string. Instead, it returns a new string.</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="string-task" class="slide level2">
+<h2>String Task</h2>
+<p><span class="task">&gt; Task:</span> Discuss and implement the following task:</p>
+<div id="5e1932a2" class="cell" data-execution_count="6">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a></a><span class="co"># Change the following message to get the desired output</span></span>
+<span id="cb10-2"><a></a>message <span class="op">=</span> <span class="st">" the snake programmer. "</span></span>
+<span id="cb10-3"><a></a><span class="co"># Your code here</span></span>
+<span id="cb10-4"><a></a></span>
+<span id="cb10-5"><a></a>output <span class="op">=</span> <span class="st">"The Python Programmer."</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<div class="fragment">
+<div class="callout callout-tip callout-style-simple">
+<div class="callout-body">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-content">
+<p>Remember, that these methods return a new string. The original string is not modified.</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="string-task-in-action" class="slide level2">
+<h2>String Task in Action</h2>
+<div id="5d0ee646" class="cell" data-execution_count="7">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a></a>message <span class="op">=</span> <span class="st">" the snake programmer. "</span></span>
+<span id="cb11-2"><a></a><span class="bu">print</span>(message.strip().title().replace(<span class="st">"Snake"</span>, <span class="st">"Python"</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<div class="cell fragment" data-execution_count="7">
+<div class="cell-output cell-output-stdout">
+<pre><code>The Python Programmer.</code></pre>
+</div>
+</div>
+<div class="fragment">
+<div class="callout callout-tip callout-style-simple">
+<div class="callout-body">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-content">
+<p>Here we chained methods together to perform multiple operations after another in one line.</p>
+</div>
+</div>
+</div>
+</div>
+</section></section>
+<section>
+<section id="indexing-and-slicing" class="title-slide slide level1 title center">
+<h1><span class="flow">Indexing and Slicing</span></h1>
+
+</section>
+<section id="indexing" class="slide level2">
+<h2>Indexing</h2>
+<ul>
+<li>We have used indexing to access elements of a string last lecture</li>
+<li>It allows you to access <strong>elements of a sequence</strong> by position</li>
+<li><strong>Positive indexing</strong> starts at 0 for the first element</li>
+<li><strong>Negative indexing</strong> starts at -1 for the last element <span class="highlight">(new)</span></li>
+</ul>
+<div class="fragment">
+<div id="1cd44cc9" class="cell" data-execution_count="8">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a></a>string_to_index <span class="op">=</span> <span class="st">"Hello, World!"</span></span>
+<span id="cb13-2"><a></a><span class="bu">print</span>(string_to_index[<span class="dv">0</span>])  <span class="co"># Accessing the first character</span></span>
+<span id="cb13-3"><a></a><span class="bu">print</span>(string_to_index[<span class="op">-</span><span class="dv">1</span>]) <span class="co"># Accessing the last character</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<div class="cell fragment" data-execution_count="8">
+<div class="cell-output cell-output-stdout">
+<pre><code>H
+!</code></pre>
+</div>
+</div>
+</div>
+</section>
+<section id="slicing" class="slide level2">
+<h2>Slicing</h2>
+<ul>
+<li>Slicing allows you to <strong>extract a portion of a sequence</strong></li>
+<li>Syntax: <code>sequence[start:stop:step]</code></li>
+<li><code>start</code> is the index of the <strong>first element to include</strong></li>
+<li><code>stop</code> is the index of the <strong>first element to exclude</strong></li>
+<li><code>step</code> is the increment between indices (default is 1)</li>
+<li>The result is a <strong>new sequence</strong> containing the extracted elements</li>
+</ul>
+<div class="fragment">
+<div id="c7dc65df" class="cell" data-execution_count="9">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb15"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a></a>string_to_slice <span class="op">=</span> <span class="st">"Hello, World!"</span></span>
+<span id="cb15-2"><a></a><span class="bu">print</span>(string_to_slice[<span class="dv">7</span>:<span class="dv">12</span>])   <span class="co"># Accessing the last five characters from the start</span></span>
+<span id="cb15-3"><a></a><span class="bu">print</span>(string_to_slice[<span class="op">-</span><span class="dv">6</span>:<span class="op">-</span><span class="dv">1</span>])  <span class="co"># Accessing the last five characters from the end</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<div class="cell fragment" data-execution_count="9">
+<div class="cell-output cell-output-stdout">
+<pre><code>World
+World</code></pre>
+</div>
+</div>
+</div>
+</section>
+<section id="slicing-simplified" class="slide level2">
+<h2>Slicing Simplified</h2>
+<ul>
+<li>If we omit <code>start</code> or <code>stop</code>, it will be replaced by the <strong>start or end</strong> of the sequence, respectively</li>
+<li>If we omit <code>step</code>, it will be replaced by 1</li>
+</ul>
+<div class="fragment">
+<div id="0c6777c9" class="cell" data-execution_count="10">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb17"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a></a>string_to_slice <span class="op">=</span> <span class="st">"Hello, World!"</span></span>
+<span id="cb17-2"><a></a><span class="bu">print</span>(string_to_slice[::<span class="dv">2</span>])   <span class="co"># Accessing every second character</span></span>
+<span id="cb17-3"><a></a><span class="bu">print</span>(string_to_slice[::<span class="op">-</span><span class="dv">1</span>])  <span class="co"># Accessing the string in reverse</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<div class="cell fragment" data-execution_count="10">
+<div class="cell-output cell-output-stdout">
+<pre><code>Hlo ol!
+!dlroW ,olleH</code></pre>
+</div>
+</div>
+</div>
+</section>
+<section id="slicing-string-task" class="slide level2">
+<h2>Slicing String Task</h2>
+<p><span class="task">&gt; Task:</span> Discuss and implement the following task:</p>
+<div id="ae8c4788" class="cell" data-execution_count="11">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb19"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a></a><span class="co"># Slice the following message to create the described output</span></span>
+<span id="cb19-2"><a></a>message <span class="op">=</span> <span class="st">"y6S0-teru89d23e'.n*ut"</span></span>
+<span id="cb19-3"><a></a><span class="co"># Your code here</span></span>
+<span id="cb19-4"><a></a></span>
+<span id="cb19-5"><a></a>output <span class="op">=</span> <span class="st">"Student"</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<div class="fragment">
+<div class="callout callout-tip callout-style-simple">
+<div class="callout-body">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-content">
+<p>Remember, that these methods return a new string. The original string is not modified.</p>
+</div>
+</div>
+</div>
+</div>
+</section></section>
+<section>
+<section id="comparisons" class="title-slide slide level1 title center">
+<h1><span class="flow">Comparisons</span></h1>
+
+</section>
+<section id="comparison-operators" class="slide level2">
+<h2>Comparison Operators</h2>
+<ul>
+<li>Comparison operators are used to compare two values</li>
+<li>The result of a comparison is a boolean value (<code>True</code> or <code>False</code>)</li>
+</ul>
+<div class="fragment">
+<p><span class="question">&gt; Question:</span> What will be the output of the following code?</p>
+<div id="97b877f1" class="cell" data-execution_count="12">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb20" data-code-line-numbers="1-2|3|4|5|6|7|8"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a></a>lower_number <span class="op">=</span> <span class="dv">2</span><span class="op">;</span> upper_number <span class="op">=</span> <span class="dv">9</span></span>
+<span id="cb20-2"><a></a><span class="bu">print</span>(lower_number <span class="op">==</span> upper_number) <span class="co"># Equality</span></span>
+<span id="cb20-3"><a></a><span class="bu">print</span>(lower_number <span class="op">!=</span> upper_number) <span class="co"># Inequality</span></span>
+<span id="cb20-4"><a></a><span class="bu">print</span>(lower_number <span class="op">&gt;</span> upper_number) <span class="co"># Greater than</span></span>
+<span id="cb20-5"><a></a><span class="bu">print</span>(lower_number <span class="op">&lt;</span> upper_number) <span class="co"># Less than</span></span>
+<span id="cb20-6"><a></a><span class="bu">print</span>(lower_number <span class="op">&gt;=</span> upper_number) <span class="co"># Greater than or equal to</span></span>
+<span id="cb20-7"><a></a><span class="bu">print</span>(lower_number <span class="op">&lt;=</span> upper_number) <span class="co"># Less than or equal to</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<div class="cell fragment" data-execution_count="12">
+<div class="cell-output cell-output-stdout">
+<pre><code>False
+True
+False
+True
+False
+True</code></pre>
+</div>
+</div>
+</div>
+</section>
+<section id="logical-operators" class="slide level2">
+<h2>Logical Operators</h2>
+<ul>
+<li>Logical operators combine multiple comparison operators</li>
+<li>Common logical operators: <code>and</code>, <code>or</code>, <code>not</code></li>
+</ul>
+<div class="fragment">
+<p><span class="question">&gt; Question:</span> Which of the following expressions is <code>True</code>?</p>
+<div id="26a69091" class="cell" data-execution_count="13">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb22" data-code-line-numbers="1-2|3|4"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a></a>lower_number <span class="op">=</span> <span class="dv">2</span><span class="op">;</span> middle_number <span class="op">=</span> <span class="dv">5</span><span class="op">;</span> upper_number <span class="op">=</span> <span class="dv">9</span><span class="op">;</span></span>
+<span id="cb22-2"><a></a><span class="bu">print</span>(lower_number <span class="op">&lt;</span> middle_number <span class="kw">and</span> middle_number <span class="op">&lt;</span> upper_number) <span class="co"># and</span></span>
+<span id="cb22-3"><a></a><span class="bu">print</span>(lower_number <span class="op">&lt;</span> middle_number <span class="kw">or</span> middle_number <span class="op">&gt;</span> upper_number) <span class="co"># or</span></span>
+<span id="cb22-4"><a></a><span class="bu">print</span>(lower_number <span class="op">==</span> lower_number <span class="kw">and</span> <span class="kw">not</span> lower_number <span class="op">&gt;</span> middle_number) <span class="co"># not</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<div class="cell fragment" data-execution_count="13">
+<div class="cell-output cell-output-stdout">
+<pre><code>True
+True
+True</code></pre>
+</div>
+</div>
+</div>
+<div class="fragment">
+<div class="callout callout-note callout-style-simple">
+<div class="callout-body">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-content">
+<p>Note, that <code>and</code> and <code>or</code> are evaluated from left to right.</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="membership-operators" class="slide level2">
+<h2>Membership Operators</h2>
+<ul>
+<li>Used to check if a value is present in a sequence</li>
+<li>Common membership operators: <code>in</code>, <code>not in</code></li>
+</ul>
+<div class="fragment">
+<p><span class="question">&gt; Question:</span> Which of these expressions is <code>True</code>?</p>
+<div id="3677a7c4" class="cell" data-execution_count="14">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb24"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb24-1"><a></a>an_apple <span class="op">=</span> <span class="st">"apple"</span></span>
+<span id="cb24-2"><a></a><span class="bu">print</span>(<span class="st">"a"</span> <span class="kw">in</span> an_apple) <span class="co"># Check if "a" is in the string "apple"</span></span>
+<span id="cb24-3"><a></a><span class="bu">print</span>(<span class="st">"pp"</span> <span class="kw">not</span> <span class="kw">in</span> an_apple) <span class="co"># Check if "pp" is not in the string</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<div class="cell fragment" data-execution_count="14">
+<div class="cell-output cell-output-stdout">
+<pre><code>True
+False</code></pre>
+</div>
+</div>
+</div>
+<div class="fragment">
+<div class="callout callout-note callout-style-simple">
+<div class="callout-body">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-content">
+<p>Note, that <code>in</code> and <code>not in</code> can be used for strings, lists, tuples, sets, and dictionaries. <span class="highlight">Don’t worry!</span> We will learn about lists, tuples, sets, and dictionaries later in the course.</p>
+</div>
+</div>
+</div>
+</div>
+</section></section>
+<section>
+<section id="control-structures" class="title-slide slide level1 title center">
+<h1><span class="flow">Control Structures</span></h1>
+
+</section>
+<section id="control-structures-1" class="slide level2">
+<h2>Control Structures</h2>
+<ul>
+<li>Used to <strong>control the flow of execution</strong> in a program</li>
+<li>They can be used to <span class="highlight">make decisions</span> and <span class="highlight">repeat code blocks</span></li>
+<li><code>if</code>, <code>elif</code>, <code>else</code>, <code>for</code>, <code>while</code>, <code>break</code>, <code>continue</code></li>
+</ul>
+<div class="fragment">
+<p><span class="question">&gt; Question:</span> What do you think each of the above does?</p>
+</div>
+</section>
+<section id="indentation" class="slide level2">
+<h2>Indentation</h2>
+<ul>
+<li>Indentation is crucial in Python!</li>
+<li>It is used to indicate the block of code that belongs to the structure</li>
+<li>The standard indentation is 4 spaces</li>
+<li>You can use tabs, but you <span class="highlight">should be careful</span> with that</li>
+</ul>
+<div class="fragment">
+<div class="callout callout-warning callout-style-simple">
+<div class="callout-body">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-content">
+<p>Mixing tabs and spaces can cause errors that are difficult to debug. The Python style guide (PEP 8) recommends using 4 spaces per indentation level for consistency and readability.</p>
+</div>
+</div>
+</div>
+</div>
+</section></section>
+<section>
+<section id="conditional-statements" class="title-slide slide level1 title center">
+<h1><span class="flow">Conditional Statements</span></h1>
+
+</section>
+<section id="conditional-statements-1" class="slide level2">
+<h2>Conditional Statements</h2>
+<ul>
+<li>They are used to execute <span class="highlight">different blocks of code</span> based on whether a condition is <span class="highlight">true or false</span>:
+<ul>
+<li><code>if</code> statements execute a block of code if a condition is <code>True</code></li>
+<li><code>elif</code> statements execute a block of code if the previous condition is <code>False</code> and the current condition is <code>True</code></li>
+<li><code>else</code> statements execute a block of code if the previous conditions are <code>False</code></li>
+</ul></li>
+</ul>
+<div class="fragment">
+<div class="callout callout-tip callout-style-simple">
+<div class="callout-body">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-content">
+<p>You can use the <code>and</code> and <code>or</code> operators to combine multiple conditions.</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="if-statements" class="slide level2">
+<h2>if-statements</h2>
+<div id="210f38c9" class="cell" data-execution_count="15">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb26"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb26-1"><a></a>condition <span class="op">=</span> <span class="va">True</span></span>
+<span id="cb26-2"><a></a><span class="cf">if</span> condition:</span>
+<span id="cb26-3"><a></a>    <span class="bu">print</span>(<span class="st">"The condition is True!"</span>) <span class="co"># Code block to execute if condition is True</span></span>
+<span id="cb26-4"><a></a><span class="bu">print</span>(<span class="st">"This will always be printed!"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<div class="cell fragment" data-execution_count="15">
+<div class="cell-output cell-output-stdout">
+<pre><code>The condition is True!
+This will always be printed!</code></pre>
+</div>
+</div>
+<div class="fragment">
+<div id="0d9876ce" class="cell" data-execution_count="16">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb28"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb28-1"><a></a>condition <span class="op">=</span> <span class="va">False</span></span>
+<span id="cb28-2"><a></a><span class="cf">if</span> condition:</span>
+<span id="cb28-3"><a></a>    <span class="bu">print</span>(<span class="st">"The condition is True!"</span>) <span class="co"># Code block to execute if condition is True</span></span>
+<span id="cb28-4"><a></a><span class="bu">print</span>(<span class="st">"This will always be printed!"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<div class="cell fragment" data-execution_count="16">
+<div class="cell-output cell-output-stdout">
+<pre><code>This will always be printed!</code></pre>
+</div>
+</div>
+</div>
+<div class="fragment">
+<div class="callout callout-tip callout-style-simple">
+<div class="callout-body">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-content">
+<p>Writing <code>if condition:</code> is equivalent to <code>if condition == True:</code></p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="else-statements" class="slide level2">
+<h2>else-statements</h2>
+<div id="090de33d" class="cell" data-execution_count="17">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb30"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb30-1"><a></a>condition <span class="op">=</span> <span class="va">True</span></span>
+<span id="cb30-2"><a></a><span class="cf">if</span> condition:</span>
+<span id="cb30-3"><a></a>    <span class="bu">print</span>(<span class="st">"The condition is True!"</span>) <span class="co"># Code block to execute if condition is True</span></span>
+<span id="cb30-4"><a></a><span class="cf">else</span>:</span>
+<span id="cb30-5"><a></a>    <span class="bu">print</span>(<span class="st">"The condition is False!"</span>) <span class="co"># Code block to execute if condition is False</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<div class="cell fragment" data-execution_count="17">
+<div class="cell-output cell-output-stdout">
+<pre><code>The condition is True!</code></pre>
+</div>
+</div>
+<div class="fragment">
+<div id="d6933d5a" class="cell" data-execution_count="18">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb32"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb32-1"><a></a>condition <span class="op">=</span> <span class="va">False</span></span>
+<span id="cb32-2"><a></a><span class="cf">if</span> condition:</span>
+<span id="cb32-3"><a></a>    <span class="bu">print</span>(<span class="st">"The condition is True!"</span>) <span class="co"># Code block to execute if condition is True</span></span>
+<span id="cb32-4"><a></a><span class="cf">else</span>:</span>
+<span id="cb32-5"><a></a>    <span class="bu">print</span>(<span class="st">"The condition is False!"</span>) <span class="co"># Code block to execute if condition is False</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<div class="cell fragment" data-execution_count="18">
+<div class="cell-output cell-output-stdout">
+<pre><code>The condition is False!</code></pre>
+</div>
+</div>
+</div>
+</section>
+<section id="elif-statements" class="slide level2">
+<h2>elif-statements</h2>
+<div id="8b3993f0" class="cell" data-execution_count="19">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb34"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb34-1"><a></a>temperature <span class="op">=</span> <span class="dv">11</span></span>
+<span id="cb34-2"><a></a><span class="cf">if</span> temperature <span class="op">&gt;</span> <span class="dv">10</span>:</span>
+<span id="cb34-3"><a></a>    <span class="bu">print</span>(<span class="st">"The temperature is greater than 10!"</span>)</span>
+<span id="cb34-4"><a></a><span class="cf">elif</span> temperature <span class="op">==</span> <span class="dv">10</span>:</span>
+<span id="cb34-5"><a></a>    <span class="bu">print</span>(<span class="st">"The temperature is equal to 10!"</span>)</span>
+<span id="cb34-6"><a></a><span class="cf">else</span>:</span>
+<span id="cb34-7"><a></a>    <span class="bu">print</span>(<span class="st">"The temperature is less than 10!"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<div class="cell fragment" data-execution_count="19">
+<div class="cell-output cell-output-stdout">
+<pre><code>The temperature is greater than 10!</code></pre>
+</div>
+</div>
+<div class="fragment">
+<div id="11d79e2a" class="cell" data-execution_count="20">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb36"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb36-1"><a></a>temperature <span class="op">=</span> <span class="dv">10</span></span>
+<span id="cb36-2"><a></a><span class="cf">if</span> temperature <span class="op">&gt;</span> <span class="dv">10</span>:</span>
+<span id="cb36-3"><a></a>    <span class="bu">print</span>(<span class="st">"The temperature is greater than 10!"</span>)</span>
+<span id="cb36-4"><a></a><span class="cf">elif</span> temperature <span class="op">==</span> <span class="dv">10</span>:</span>
+<span id="cb36-5"><a></a>    <span class="bu">print</span>(<span class="st">"The temperature is equal to 10!"</span>)</span>
+<span id="cb36-6"><a></a><span class="cf">else</span>:</span>
+<span id="cb36-7"><a></a>    <span class="bu">print</span>(<span class="st">"The temperature is less than 10!"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<div class="cell fragment" data-execution_count="20">
+<div class="cell-output cell-output-stdout">
+<pre><code>The temperature is equal to 10!</code></pre>
+</div>
+</div>
+</div>
+</section>
+<section id="comparisons-and-conditional-statements" class="slide level2">
+<h2>Comparisons and Conditional Statements</h2>
+<p><span class="question">&gt; Question:</span> What will be the output of the following code?</p>
+<div id="5654d1f8" class="cell" data-execution_count="21">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb38"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb38-1"><a></a>name <span class="op">=</span> <span class="st">"Harry"</span></span>
+<span id="cb38-2"><a></a>profession <span class="op">=</span> <span class="st">"wizard"</span></span>
+<span id="cb38-3"><a></a>age <span class="op">=</span> <span class="dv">16</span></span>
+<span id="cb38-4"><a></a><span class="cf">if</span> name <span class="op">==</span> <span class="st">"Harry"</span> <span class="kw">and</span> profession <span class="op">==</span> <span class="st">"wizard"</span> <span class="kw">and</span> age <span class="op">&lt;</span> <span class="dv">18</span>:</span>
+<span id="cb38-5"><a></a>    <span class="bu">print</span>(<span class="st">"You are the chosen one still visiting school!"</span>)</span>
+<span id="cb38-6"><a></a><span class="cf">elif</span> name <span class="op">==</span> <span class="st">"Harry"</span> <span class="kw">and</span> profession <span class="op">==</span> <span class="st">"wizard"</span> <span class="kw">and</span> age <span class="op">&gt;=</span> <span class="dv">18</span>:</span>
+<span id="cb38-7"><a></a>    <span class="bu">print</span>(<span class="st">"You are the chosen one and can start your journey!"</span>)</span>
+<span id="cb38-8"><a></a><span class="cf">else</span>:</span>
+<span id="cb38-9"><a></a>    <span class="bu">print</span>(<span class="st">"You are not the chosen one!"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<div class="cell fragment" data-execution_count="21">
+<div class="cell-output cell-output-stdout">
+<pre><code>You are the chosen one still visiting school!</code></pre>
+</div>
+</div>
+</section>
+<section id="conditional-logic-task" class="slide level2">
+<h2>Conditional Logic Task</h2>
+<p><span class="task">&gt; Task:</span> Create a grade classifier:</p>
+<div id="fb085ed7" class="cell" data-execution_count="22">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb40"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb40-1"><a></a><span class="co"># Given a numerical score, classify it into letter grades</span></span>
+<span id="cb40-2"><a></a>score <span class="op">=</span> <span class="dv">87</span>  <span class="co"># You can test with different values</span></span>
+<span id="cb40-3"><a></a></span>
+<span id="cb40-4"><a></a><span class="co"># Your task: Create if/elif/else statements that assign letter grades:</span></span>
+<span id="cb40-5"><a></a><span class="co"># 90-100: "A"</span></span>
+<span id="cb40-6"><a></a><span class="co"># 80-89: "B"</span></span>
+<span id="cb40-7"><a></a><span class="co"># 70-79: "C"</span></span>
+<span id="cb40-8"><a></a><span class="co"># 60-69: "D"</span></span>
+<span id="cb40-9"><a></a><span class="co"># Below 60: "F"</span></span>
+<span id="cb40-10"><a></a><span class="co"># Also handle invalid scores (negative or &gt; 100)</span></span>
+<span id="cb40-11"><a></a></span>
+<span id="cb40-12"><a></a><span class="co"># Your code here</span></span>
+<span id="cb40-13"><a></a></span>
+<span id="cb40-14"><a></a><span class="bu">print</span>(<span class="ss">f"Score: </span><span class="sc">{</span>score<span class="sc">}</span><span class="ss">, Grade: </span><span class="sc">{</span>grade<span class="sc">}</span><span class="ss">"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</section></section>
+<section>
+<section id="loops" class="title-slide slide level1 title center">
+<h1><span class="flow">Loops</span></h1>
+
+</section>
+<section id="loops-1" class="slide level2">
+<h2>Loops</h2>
+<ul>
+<li>Loops allow you to execute a block of code <span class="highlight">repeatedly</span></li>
+<li>There are two types of loops: <code>for</code> and <code>while</code></li>
+<li><code>for</code> loops are used to iterate over a sequence (e.g., list, tuple, string)</li>
+<li><code>while</code> loops execute repeatedly until a condition is <code>False</code></li>
+</ul>
+<div class="fragment">
+<div class="callout callout-tip callout-style-simple">
+<div class="callout-body">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-content">
+<p>Nested control structures through further indentation are allowed as well, we thus can chain multiple control structures together.</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="for-loops" class="slide level2">
+<h2>for-loops</h2>
+<div id="1a6d0225" class="cell" data-execution_count="23">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb41"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb41-1"><a></a><span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">5</span>):</span>
+<span id="cb41-2"><a></a>    <span class="bu">print</span>(i)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<div class="cell fragment" data-execution_count="23">
+<div class="cell-output cell-output-stdout">
+<pre><code>0
+1
+2
+3
+4</code></pre>
+</div>
+</div>
+<div id="29371144" class="cell" data-execution_count="24">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb43"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb43-1"><a></a><span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">0</span>, <span class="dv">10</span>, <span class="dv">2</span>):</span>
+<span id="cb43-2"><a></a>    <span class="bu">print</span>(i)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<div class="cell fragment" data-execution_count="24">
+<div class="cell-output cell-output-stdout">
+<pre><code>0
+2
+4
+6
+8</code></pre>
+</div>
+</div>
+<div class="fragment">
+<div class="callout callout-tip callout-style-simple">
+<div class="callout-body">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-content">
+<p>The <code>range()</code> function can take up to three arguments: start, stop, and step.</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="for-loops-with-strings" class="slide level2">
+<h2>for-loops with Strings</h2>
+<p><span class="question">&gt; Question:</span> What do you expect will be the output?</p>
+<div id="a0d31d43" class="cell" data-execution_count="25">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb45"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb45-1"><a></a>fruit <span class="op">=</span> <span class="st">"yellow banana"</span></span>
+<span id="cb45-2"><a></a><span class="cf">for</span> letter <span class="kw">in</span> fruit:</span>
+<span id="cb45-3"><a></a>    <span class="bu">print</span>(letter)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<div class="cell fragment" data-execution_count="25">
+<div class="cell-output cell-output-stdout">
+<pre><code>y
+e
+l
+l
+o
+w
+ 
+b
+a
+n
+a
+n
+a</code></pre>
+</div>
+</div>
+</section>
+<section id="while-loops" class="slide level2">
+<h2>while-loops</h2>
+<div id="b4bd4580" class="cell" data-execution_count="26">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb47"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb47-1"><a></a>i <span class="op">=</span> <span class="dv">0</span></span>
+<span id="cb47-2"><a></a><span class="cf">while</span> i <span class="op">&lt;</span> <span class="dv">5</span>:</span>
+<span id="cb47-3"><a></a>    <span class="bu">print</span>(i)</span>
+<span id="cb47-4"><a></a>    i <span class="op">+=</span> <span class="dv">1</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<div class="cell fragment" data-execution_count="26">
+<div class="cell-output cell-output-stdout">
+<pre><code>0
+1
+2
+3
+4</code></pre>
+</div>
+</div>
+<div class="fragment">
+<p><span class="question">&gt; Question:</span> What could be an issue with poorly written while-loops?</p>
+</div>
+</section>
+<section id="while-true" class="slide level2">
+<h2>while True</h2>
+<p><span class="question">&gt; Question:</span> Anybody an idea what this code does?</p>
+<div id="56d5fb6d" class="cell" data-execution_count="27">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb49"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb49-1"><a></a>i <span class="op">=</span> <span class="dv">0</span></span>
+<span id="cb49-2"><a></a><span class="cf">while</span> <span class="va">True</span>:</span>
+<span id="cb49-3"><a></a>    <span class="cf">if</span> i <span class="op">%</span> <span class="dv">10</span> <span class="op">==</span> <span class="dv">0</span>:</span>
+<span id="cb49-4"><a></a>         <span class="bu">print</span>(i)</span>
+<span id="cb49-5"><a></a>    <span class="cf">if</span> i <span class="op">&gt;</span> <span class="dv">100</span>:</span>
+<span id="cb49-6"><a></a>        <span class="cf">break</span></span>
+<span id="cb49-7"><a></a>    i <span class="op">+=</span> <span class="dv">1</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<div class="cell fragment" data-execution_count="27">
+<div class="cell-output cell-output-stdout">
+<pre><code>0
+10
+20
+30
+40
+50
+60
+70
+80
+90
+100</code></pre>
+</div>
+</div>
+</section>
+<section id="importance-of-control-flow" class="slide level2">
+<h2>Importance of Control Flow</h2>
+<ul>
+<li>Allows programs to make decisions based on <strong>conditions</strong></li>
+<li>Enables <strong>repetition</strong> of code blocks</li>
+<li>Helps manage program complexity</li>
+<li>Improves efficiency by <span class="highlight">executing only necessary code</span></li>
+<li>Facilitates creation of dynamic, responsive programs</li>
+</ul>
+<div class="fragment">
+<div class="callout callout-note callout-style-simple">
+<div class="callout-body">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-content">
+<p>Without control flow, programs would execute linearly from top to bottom, limiting their functionality and flexibility.</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="loop-task" class="slide level2">
+<h2>Loop Task</h2>
+<p><span class="task">&gt; Task:</span> Implement the following task:</p>
+<div id="ddd7a59c" class="cell" data-execution_count="28">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb51"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb51-1"><a></a><span class="co"># Implement a while-loop that prints all even numbers between 0 and 100 excluding both 0 and 100.</span></span>
+<span id="cb51-2"><a></a>number <span class="op">=</span> <span class="dv">0</span></span>
+<span id="cb51-3"><a></a><span class="co"># Your code here</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<div class="fragment">
+<div class="callout callout-note callout-style-simple">
+<div class="callout-body">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-content">
+<p><strong>And that’s it for todays lecture!</strong><br>
+We now have covered the basics on String methods, Comparisons, conditional statements and loops.</p>
+</div>
+</div>
+</div>
+</div>
+</section></section>
+<section>
+<section id="literature" class="title-slide slide level1 title center">
+<h1><span class="flow">Literature</span></h1>
+
+</section>
+<section id="interesting-books-to-start" class="slide level2">
+<h2>Interesting Books to start</h2>
+<ul>
+<li>Downey, A. B. (2024). Think Python: How to think like a computer scientist (Third edition). O’Reilly. <a href="https://greenteapress.com/wp/think-python-3rd-edition/">Link to free online version</a></li>
+<li>Elter, S. (2021). Schrödinger programmiert Python: Das etwas andere Fachbuch (1. Auflage). Rheinwerk Verlag.</li>
+</ul>
+<div class="fragment">
+<div class="callout callout-tip callout-style-simple">
+<div class="callout-body">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-content">
+<p>Nothing new here, but these are still great books to start with!</p>
+</div>
+</div>
+</div>
+</div>
+<div class="fragment">
+<p>For more interesting literature to learn more about Python, take a look at the <a href="../general/literature.html">literature list</a> of this course.</p>
+
+
+</div>
+</section></section>
+    </div>
+  <div class="quarto-auto-generated-content" style="display: none;">
+<div class="footer footer-default">
+<p>Lecture II - Control Structures for Your Code | Dr.&nbsp;Tobias Vlćek | <a href="../lectures/lec_02_control.html">Home</a></p>
+</div>
+</div></div>
+
+  <script>window.backupDefine = window.define; window.define = undefined;</script>
+  <script src="../site_libs/revealjs/dist/reveal.js"></script>
+  <!-- reveal.js plugins -->
+  <script src="../site_libs/revealjs/plugin/quarto-line-highlight/line-highlight.js"></script>
+  <script src="../site_libs/revealjs/plugin/pdf-export/pdfexport.js"></script>
+  <script src="../site_libs/revealjs/plugin/reveal-menu/menu.js"></script>
+  <script src="../site_libs/revealjs/plugin/reveal-menu/quarto-menu.js"></script>
+  <script src="../site_libs/revealjs/plugin/quarto-support/support.js"></script>
+  
+
+  <script src="../site_libs/revealjs/plugin/notes/notes.js"></script>
+  <script src="../site_libs/revealjs/plugin/search/search.js"></script>
+  <script src="../site_libs/revealjs/plugin/zoom/zoom.js"></script>
+  <script src="../site_libs/revealjs/plugin/math/math.js"></script>
+  <script>window.define = window.backupDefine; window.backupDefine = undefined;</script>
+
+  <script>
+
+      // Full list of configuration options available at:
+      // https://revealjs.com/config/
+      Reveal.initialize({
+'controlsAuto': true,
+'previewLinksAuto': true,
+'pdfSeparateFragments': false,
+'autoAnimateEasing': "ease",
+'autoAnimateDuration': 1,
+'autoAnimateUnmatched': true,
+'jumpToSlide': true,
+'menu': {"side":"left","useTextContentForMissingTitles":true,"markers":false,"loadIcons":false,"custom":[{"title":"Tools","icon":"<i class=\"fas fa-gear\"></i>","content":"<ul class=\"slide-menu-items\">\n<li class=\"slide-tool-item active\" data-item=\"0\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.fullscreen(event)\"><kbd>f</kbd> Fullscreen</a></li>\n<li class=\"slide-tool-item\" data-item=\"1\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.speakerMode(event)\"><kbd>s</kbd> Speaker View</a></li>\n<li class=\"slide-tool-item\" data-item=\"2\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.overview(event)\"><kbd>o</kbd> Slide Overview</a></li>\n<li class=\"slide-tool-item\" data-item=\"3\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.togglePdfExport(event)\"><kbd>e</kbd> PDF Export Mode</a></li>\n<li class=\"slide-tool-item\" data-item=\"4\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.toggleScrollView(event)\"><kbd>r</kbd> Scroll View Mode</a></li>\n<li class=\"slide-tool-item\" data-item=\"5\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.keyboardHelp(event)\"><kbd>?</kbd> Keyboard Help</a></li>\n</ul>"}],"openButton":true},
+'smaller': false,
+ 
+        // Display controls in the bottom right corner
+        controls: false,
+
+        // Help the user learn the controls by providing hints, for example by
+        // bouncing the down arrow when they first encounter a vertical slide
+        controlsTutorial: false,
+
+        // Determines where controls appear, "edges" or "bottom-right"
+        controlsLayout: 'edges',
+
+        // Visibility rule for backwards navigation arrows; "faded", "hidden"
+        // or "visible"
+        controlsBackArrows: 'faded',
+
+        // Display a presentation progress bar
+        progress: true,
+
+        // Display the page number of the current slide
+        slideNumber: 'c/t',
+
+        // 'all', 'print', or 'speaker'
+        showSlideNumber: 'all',
+
+        // Add the current slide number to the URL hash so that reloading the
+        // page/copying the URL will return you to the same slide
+        hash: true,
+
+        // Start with 1 for the hash rather than 0
+        hashOneBasedIndex: false,
+
+        // Flags if we should monitor the hash and change slides accordingly
+        respondToHashChanges: true,
+
+        // Push each slide change to the browser history
+        history: true,
+
+        // Enable keyboard shortcuts for navigation
+        keyboard: true,
+
+        // Enable the slide overview mode
+        overview: true,
+
+        // Disables the default reveal.js slide layout (scaling and centering)
+        // so that you can use custom CSS layout
+        disableLayout: false,
+
+        // Vertical centering of slides
+        center: false,
+
+        // Enables touch navigation on devices with touch input
+        touch: true,
+
+        // Loop the presentation
+        loop: false,
+
+        // Change the presentation direction to be RTL
+        rtl: false,
+
+        // see https://revealjs.com/vertical-slides/#navigation-mode
+        navigationMode: 'linear',
+
+        // Randomizes the order of slides each time the presentation loads
+        shuffle: false,
+
+        // Turns fragments on and off globally
+        fragments: true,
+
+        // Flags whether to include the current fragment in the URL,
+        // so that reloading brings you to the same fragment position
+        fragmentInURL: false,
+
+        // Flags if the presentation is running in an embedded mode,
+        // i.e. contained within a limited portion of the screen
+        embedded: false,
+
+        // Flags if we should show a help overlay when the questionmark
+        // key is pressed
+        help: true,
+
+        // Flags if it should be possible to pause the presentation (blackout)
+        pause: true,
+
+        // Flags if speaker notes should be visible to all viewers
+        showNotes: false,
+
+        // Global override for autoplaying embedded media (null/true/false)
+        autoPlayMedia: null,
+
+        // Global override for preloading lazy-loaded iframes (null/true/false)
+        preloadIframes: null,
+
+        // Number of milliseconds between automatically proceeding to the
+        // next slide, disabled when set to 0, this value can be overwritten
+        // by using a data-autoslide attribute on your slides
+        autoSlide: 0,
+
+        // Stop auto-sliding after user input
+        autoSlideStoppable: true,
+
+        // Use this method for navigation when auto-sliding
+        autoSlideMethod: null,
+
+        // Specify the average time in seconds that you think you will spend
+        // presenting each slide. This is used to show a pacing timer in the
+        // speaker view
+        defaultTiming: null,
+
+        // Enable slide navigation via mouse wheel
+        mouseWheel: false,
+
+        // The display mode that will be used to show slides
+        display: 'block',
+
+        // Hide cursor if inactive
+        hideInactiveCursor: true,
+
+        // Time before the cursor is hidden (in ms)
+        hideCursorTime: 5000,
+
+        // Opens links in an iframe preview overlay
+        previewLinks: false,
+
+        // Transition style (none/fade/slide/convex/concave/zoom)
+        transition: 'slide',
+
+        // Transition speed (default/fast/slow)
+        transitionSpeed: 'fast',
+
+        // Transition style for full page slide backgrounds
+        // (none/fade/slide/convex/concave/zoom)
+        backgroundTransition: 'none',
+
+        // Number of slides away from the current that are visible
+        viewDistance: 3,
+
+        // Number of slides away from the current that are visible on mobile
+        // devices. It is advisable to set this to a lower number than
+        // viewDistance in order to save resources.
+        mobileViewDistance: 2,
+
+        // The "normal" size of the presentation, aspect ratio will be preserved
+        // when the presentation is scaled to fit different resolutions. Can be
+        // specified using percentage units.
+        width: 1200,
+
+        height: 800,
+
+        // Factor of the display size that should remain empty around the content
+        margin: 0.1,
+
+        math: {
+          mathjax: 'https://cdn.jsdelivr.net/npm/mathjax@2.7.9/MathJax.js',
+          config: 'TeX-AMS_HTML-full',
+          tex2jax: {
+            inlineMath: [['\\(','\\)']],
+            displayMath: [['\\[','\\]']],
+            balanceBraces: true,
+            processEscapes: false,
+            processRefs: true,
+            processEnvironments: true,
+            preview: 'TeX',
+            skipTags: ['script','noscript','style','textarea','pre','code'],
+            ignoreClass: 'tex2jax_ignore',
+            processClass: 'tex2jax_process'
+          },
+        },
+
+        // reveal.js plugins
+        plugins: [QuartoLineHighlight, PdfExport, RevealMenu, QuartoSupport,
+
+          RevealMath,
+          RevealNotes,
+          RevealSearch,
+          RevealZoom
+        ]
+      });
+    </script>
+    <script id="quarto-html-after-body" type="application/javascript">
+      window.document.addEventListener("DOMContentLoaded", function (event) {
+        const tabsets =  window.document.querySelectorAll(".panel-tabset-tabby")
+        tabsets.forEach(function(tabset) {
+          const tabby = new Tabby('#' + tabset.id);
+        });
+        const isCodeAnnotation = (el) => {
+          for (const clz of el.classList) {
+            if (clz.startsWith('code-annotation-')) {                     
+              return true;
+            }
+          }
+          return false;
+        }
+        const onCopySuccess = function(e) {
+          // button target
+          const button = e.trigger;
+          // don't keep focus
+          button.blur();
+          // flash "checked"
+          button.classList.add('code-copy-button-checked');
+          var currentTitle = button.getAttribute("title");
+          button.setAttribute("title", "Copied!");
+          let tooltip;
+          if (window.bootstrap) {
+            button.setAttribute("data-bs-toggle", "tooltip");
+            button.setAttribute("data-bs-placement", "left");
+            button.setAttribute("data-bs-title", "Copied!");
+            tooltip = new bootstrap.Tooltip(button, 
+              { trigger: "manual", 
+                customClass: "code-copy-button-tooltip",
+                offset: [0, -8]});
+            tooltip.show();    
+          }
+          setTimeout(function() {
+            if (tooltip) {
+              tooltip.hide();
+              button.removeAttribute("data-bs-title");
+              button.removeAttribute("data-bs-toggle");
+              button.removeAttribute("data-bs-placement");
+            }
+            button.setAttribute("title", currentTitle);
+            button.classList.remove('code-copy-button-checked');
+          }, 1000);
+          // clear code selection
+          e.clearSelection();
+        }
+        const getTextToCopy = function(trigger) {
+          const outerScaffold = trigger.parentElement.cloneNode(true);
+          const codeEl = outerScaffold.querySelector('code');
+          for (const childEl of codeEl.children) {
+            if (isCodeAnnotation(childEl)) {
+              childEl.remove();
+            }
+          }
+          return codeEl.innerText;
+        }
+        const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+          text: getTextToCopy
+        });
+        clipboard.on('success', onCopySuccess);
+        if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+          const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+            text: getTextToCopy,
+            container: window.document.getElementById('quarto-embedded-source-code-modal')
+          });
+          clipboardModal.on('success', onCopySuccess);
+        }
+          var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+          var mailtoRegex = new RegExp(/^mailto:/);
+            var filterRegex = new RegExp("https:\/\/beyondsimulations\.github\.io\/Introduction-to-Python");
+          var isInternal = (href) => {
+              return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+          }
+          // Inspect non-navigation links and adorn them if external
+         var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+          for (var i=0; i<links.length; i++) {
+            const link = links[i];
+            if (!isInternal(link.href)) {
+              // undo the damage that might have been done by quarto-nav.js in the case of
+              // links that we want to consider external
+              if (link.dataset.originalHref !== undefined) {
+                link.href = link.dataset.originalHref;
+              }
+            }
+          }
+        function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+          const config = {
+            allowHTML: true,
+            maxWidth: 500,
+            delay: 100,
+            arrow: false,
+            appendTo: function(el) {
+                return el.closest('section.slide') || el.parentElement;
+            },
+            interactive: true,
+            interactiveBorder: 10,
+            theme: 'light-border',
+            placement: 'bottom-start',
+          };
+          if (contentFn) {
+            config.content = contentFn;
+          }
+          if (onTriggerFn) {
+            config.onTrigger = onTriggerFn;
+          }
+          if (onUntriggerFn) {
+            config.onUntrigger = onUntriggerFn;
+          }
+            config['offset'] = [0,0];
+            config['maxWidth'] = 700;
+          window.tippy(el, config); 
+        }
+        const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+        for (var i=0; i<noterefs.length; i++) {
+          const ref = noterefs[i];
+          tippyHover(ref, function() {
+            // use id or data attribute instead here
+            let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+            try { href = new URL(href).hash; } catch {}
+            const id = href.replace(/^#\/?/, "");
+            const note = window.document.getElementById(id);
+            if (note) {
+              return note.innerHTML;
+            } else {
+              return "";
+            }
+          });
+        }
+        const findCites = (el) => {
+          const parentEl = el.parentElement;
+          if (parentEl) {
+            const cites = parentEl.dataset.cites;
+            if (cites) {
+              return {
+                el,
+                cites: cites.split(' ')
+              };
+            } else {
+              return findCites(el.parentElement)
+            }
+          } else {
+            return undefined;
+          }
+        };
+        var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+        for (var i=0; i<bibliorefs.length; i++) {
+          const ref = bibliorefs[i];
+          const citeInfo = findCites(ref);
+          if (citeInfo) {
+            tippyHover(citeInfo.el, function() {
+              var popup = window.document.createElement('div');
+              citeInfo.cites.forEach(function(cite) {
+                var citeDiv = window.document.createElement('div');
+                citeDiv.classList.add('hanging-indent');
+                citeDiv.classList.add('csl-entry');
+                var biblioDiv = window.document.getElementById('ref-' + cite);
+                if (biblioDiv) {
+                  citeDiv.innerHTML = biblioDiv.innerHTML;
+                }
+                popup.appendChild(citeDiv);
+              });
+              return popup.innerHTML;
+            });
+          }
+        }
+      });
+      </script>
+    
+
+</body></html>
