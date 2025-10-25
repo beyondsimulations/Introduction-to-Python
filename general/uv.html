@@ -453,7 +453,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#windows-powershell" id="toc-windows-powershell" class="nav-link" data-scroll-target="#windows-powershell">Windows (PowerShell)</a></li>
   <li><a href="#verify-installation" id="toc-verify-installation" class="nav-link" data-scroll-target="#verify-installation">Verify installation</a></li>
   </ul></li>
-  <li><a href="#install-python" id="toc-install-python" class="nav-link" data-scroll-target="#install-python">Install Python</a></li>
+  <li><a href="#installpython" id="toc-installpython" class="nav-link" data-scroll-target="#installpython">InstallPython</a></li>
   <li><a href="#create-your-first-project" id="toc-create-your-first-project" class="nav-link" data-scroll-target="#create-your-first-project">Create your first project</a></li>
   <li><a href="#run-the-starter-script" id="toc-run-the-starter-script" class="nav-link" data-scroll-target="#run-the-starter-script">Run the starter script</a>
   <ul class="collapse">
@@ -462,7 +462,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#adding-packages-later-in-the-course" id="toc-adding-packages-later-in-the-course" class="nav-link" data-scroll-target="#adding-packages-later-in-the-course">Adding packages (later in the course)</a></li>
   <li><a href="#updating-uv" id="toc-updating-uv" class="nav-link" data-scroll-target="#updating-uv">Updating <code>uv</code></a></li>
   <li><a href="#best-practices-for-this-course" id="toc-best-practices-for-this-course" class="nav-link" data-scroll-target="#best-practices-for-this-course">Best practices for this course</a></li>
-  <li><a href="#where-to-go-next" id="toc-where-to-go-next" class="nav-link" data-scroll-target="#where-to-go-next">10. Where to go next</a></li>
   <li><a href="#recap" id="toc-recap" class="nav-link" data-scroll-target="#recap">Recap</a></li>
   </ul>
 <div class="toc-actions"><ul><li><a href="https://github.com/beyondsimulations/Introduction-to-Python/blob/main/general/uv.qmd" class="toc-action"><i class="bi bi-github"></i>View source</a></li><li><a href="https://github.com/beyondsimulations/Introduction-to-Python/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div><div class="quarto-alternate-formats"><h2>Other Formats</h2><ul><li><a href="uv.pdf"><i class="bi bi-file-pdf"></i>PDF</a></li></ul></div></nav>
@@ -473,7 +472,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
 <h1 class="title">Installing Python</h1>
-<p class="subtitle lead">A beginner-friendly guide using uv</p>
+<p class="subtitle lead">A short guide using uv</p>
 </div>
 
 
@@ -492,12 +491,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <section id="why-we-use-uv-for-this-course" class="level2">
 <h2 class="anchored" data-anchor-id="why-we-use-uv-for-this-course">Why we use <code>uv</code> for this course</h2>
-<p><code>uv</code> is a new (and very fast) Python tool written in Rust. It:</p>
-<ul>
-<li>Installs Python for you (no manual downloads).</li>
-<li>Creates isolated <em>virtual environments</em> (safe sandboxes per project).</li>
-<li>Installs and updates packages quickly.</li>
-</ul>
+<p><code>uv</code> is a new (and very fast) Python tool written in Rust. It: - Installs Python for you (no manual downloads). - Creates isolated <em>virtual environments</em> (safe sandboxes per project). - Installs and updates packages quickly.</p>
 <div class="callout callout-style-simple callout-note">
 <div class="callout-body d-flex">
 <div class="callout-icon-container">
@@ -547,11 +541,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 </div>
-<hr>
 </section>
 </section>
-<section id="install-python" class="level2">
-<h2 class="anchored" data-anchor-id="install-python">Install Python</h2>
+<section id="installpython" class="level2">
+<h2 class="anchored" data-anchor-id="installpython">InstallPython</h2>
 <p>We want everyone on the <strong>same</strong> Python version for consistency. Thus, we’ll use Python 3.12 for the course this year.</p>
 <p>Install (you only need to do this once):</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb6"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="ex">uv</span> python install 3.12</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
@@ -559,11 +552,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb7"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="ex">uv</span> run python <span class="at">--version</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>Expected output starts with:</p>
 <pre><code>Python 3.12.</code></pre>
-<hr>
 </section>
 <section id="create-your-first-project" class="level2">
 <h2 class="anchored" data-anchor-id="create-your-first-project">Create your first project</h2>
-<p>Pick a folder where you keep course work. If you do not have one, make sure to create one! Open the course folder in your IDE and then run the following from the terminal:</p>
+<p>Pick a folder where you keep course work. <strong>If you do not have one, make sure to create one!</strong> Open the course folder in your IDE and then run the following from the terminal:</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb9"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="ex">uv</span> init my-first-project</span>
 <span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> my-first-project</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>The first line creates a new folder named <code>my-first-project</code> (you can name it anything). The second line moves you into that folder. Alternatively, you can create the folder manually before, open it in your IDE and run <code>uv init .</code> inside it.</p>
@@ -591,7 +583,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li>The line <code>if __name__ == "__main__":</code> ensures this only auto-runs when the file is executed directly.</li>
 </ul>
 <p>Don’t worry about this yet, we’ll gradually build up to it.</p>
-<hr>
 </section>
 </section>
 <section id="adding-packages-later-in-the-course" class="level2">
@@ -623,23 +614,18 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="best-practices-for-this-course" class="level2">
 <h2 class="anchored" data-anchor-id="best-practices-for-this-course">Best practices for this course</h2>
 <ul>
-<li>One project folder per session or assignment keeps everything tidy.</li>
+<li>One folder for the course keeps everything tidy.</li>
 <li>Never install packages “globally” outside a project.</li>
-<li>Prefer <code>uv run python &lt;file&gt;</code> instead of environment activation.</li>
 <li>Keep a short personal log in each project’s <code>README.md</code> (What did I do? What still confuses me?).</li>
 <li>Ask early for help, guessing usually takes much more time than asking.</li>
 </ul>
-</section>
-<section id="where-to-go-next" class="level2">
-<h2 class="anchored" data-anchor-id="where-to-go-next">10. Where to go next</h2>
-<p>Explore the official docs later if you’re curious: <a href="https://docs.astral.sh/uv/">https://docs.astral.sh/uv/</a></p>
 <p>You can always see available commands:</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb17"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="ex">uv</span> <span class="at">--help</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </section>
 <section id="recap" class="level2">
 <h2 class="anchored" data-anchor-id="recap">Recap</h2>
 <p>You can now: 1. Install <code>uv</code>. 2. Create a project. 3. Run a script. 4. Add/remove/sync packages.</p>
-<p>Now, you’re set for the rest of the course.</p>
+<p>Now, you’re set to continue the course.</p>
 
 
 </section>
@@ -1051,7 +1037,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <div class="nav-footer-left">
       <ul class="footer-items list-unstyled">
     <li class="nav-item compact">
-    <a class="nav-link" href="https://github.com/beyondsimulations/Applied-Optimization">
+    <a class="nav-link" href="https://beyondsimulations.github.io/Introduction-to-Python/">
       <i class="bi bi-github" role="img">
 </i> 
     </a>
