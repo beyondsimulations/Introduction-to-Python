@@ -165,14 +165,13 @@ The shape refers to the [size of the array]{.highlight}. It can have one or mult
 
 # TODO: Create a 3-dimensional tensor with filled with zeros
 # Choose the shape of the tensor, but it should have 200 elements
-# Add the number 5 to all values of the tensor
 
 # Your code here
-assert sum(tensor) == 1000
+assert sum(tensor) == 200
 
-# TODO: Print the shape of the tensor using the method shape()
-# TODO: Print the dtype of the tensor using the method dtype()
-# TODO: Print the size of the tensor using the method size()
+# TODO: Access the shape of the tensor using the property tensor.shape
+# TODO: Print the dtype of the tensor using the method tensor.dtype
+# TODO: Print the size of the tensor using the method tensor.size
 ```
 
 # [Operations]{.flow} {.title}
@@ -231,36 +230,17 @@ print("Matrix:"); print(matrix); print("Vector:", vector); print("---")
 print("Broadcasting result:"); print(matrix + vector)
 ```
 
-## Broadcasting Rules
-
-Broadcasting works when:
-
-1. Arrays have the same number of dimensions, OR
-2. One array has fewer dimensions (padded with 1s)
-3. Corresponding dimensions are equal OR one is 1
-
-. . .
-
-[Question:]{.question} What happens with shapes `(3,4)` and `(4,)`?
-
 ## Coffee Shop Analytics
 
-[Task]{.task}: Analyze coffee shop sales using broadcasting:
+[Task]{.task}: Analyze prices using broadcasting:
 
 ```{python}
 #| eval: false
 
-# Daily sales for 3 products over 4 days (Monday-Thursday)
-sales = np.array([[25, 30, 28, 35],    # Coffee
-                  [15, 18, 20, 22],    # Pastries
-                  [8, 12, 10, 15]])    # Sandwiches
+# Prices for 3 products
+sales = np.array([3, 2, 5])
 
-print("Original sales:\n", sales)
-
-# TODO: Apply a 10% Friday discount to all products using broadcasting
-
-
-# TODO: Calculate total revenue if coffee=3€, pastries=2€, sandwiches=5€
+# TODO: Apply a 10% discount to all products using broadcasting
 
 
 ```

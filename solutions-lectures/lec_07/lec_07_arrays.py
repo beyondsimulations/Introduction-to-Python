@@ -5,11 +5,17 @@
 # Your code here
 import numpy as np
 
-tensor = np.zeros((2,2,50))
-tensor += 5
-shape = tensor.shape()
-dtype = tensor.dtype()
-size = tensor.size()
+tensor = np.zeros((2, 2, 50))
+print(tensor)
+for x in range(0, len(tensor)):
+    for y in range(0, len(tensor[x])):
+        for z in range(0, len(tensor[x][y])):
+            tensor[x][y][z] = 5
+
+# tensor += 5
+shape = tensor.shape
+dtype = tensor.dtype
+size = tensor.size
 
 print("Sum of tensor:", np.sum(tensor))
 
