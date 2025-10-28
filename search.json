@@ -876,7 +876,7 @@
     "href": "lectures/lec_07_presentation.html#creating-arrays",
     "title": "Lecture VII - NumPy for Scientific Computing",
     "section": "Creating Arrays",
-    "text": "Creating Arrays\n\nThe backbone of Numpy is the so called ndarray\nCan be initialized from different data structures:\n\n\nimport numpy as np\n\narray_from_list = np.array([1, 1, 1, 1])\nprint(array_from_list)\n\n\n\n[1 1 1 1]\n\n\n\nimport numpy as np\n\narray_from_tuple = np.array((2, 2, 2, 2))\nprint(array_from_tuple)\n\n\n\n[2 2 2 2]"
+    "text": "Creating Arrays\n\nThe backbone of Numpy is the so called ndarray\nCan be initialized from different data structures:\n\n\nimport numpy as np\n\narray_from_list = np.array([1, 1, 1, 1])\nprint(array_from_list)\n\n\n\n[1 1 1 1]\n\n\n\n\nimport numpy as np\n\narray_from_tuple = np.array((2, 2, 2, 2))\nprint(array_from_tuple)\n\n\n\n[2 2 2 2]"
   },
   {
     "objectID": "lectures/lec_07_presentation.html#hetergenous-data-types",
@@ -900,13 +900,6 @@
     "text": "Dimensions\n\nThe shape is specified as tuple in these arrays\n(2) or 2 creates a 1-dimensional array (vetor)\n(2,2) creates a 2-dimensional array (matrix)\n(2,2,2) 3-dimensional array (3rd order tensor)\n(2,2,2,2) 4-dimensional array (4th order tensor)\n…"
   },
   {
-    "objectID": "lectures/lec_07_presentation.html#computations",
-    "href": "lectures/lec_07_presentation.html#computations",
-    "title": "Lecture VII - NumPy for Scientific Computing",
-    "section": "Computations",
-    "text": "Computations\n\nWe can apply operations to the entire array at once\nThis is much faster than applying them element-wise\n\n\n\nimport numpy as np\nx = np.array([1, 2, 3, 4, 5])\nx + 1\n\n\n\narray([2, 3, 4, 5, 6])"
-  },
-  {
     "objectID": "lectures/lec_07_presentation.html#arrays-in-action",
     "href": "lectures/lec_07_presentation.html#arrays-in-action",
     "title": "Lecture VII - NumPy for Scientific Computing",
@@ -914,11 +907,102 @@
     "text": "Arrays in Action\nTask: Practice working with Numpy:\n\n# TODO: Create a 3-dimensional tensor with filled with zeros\n# Choose the shape of the tensor, but it should have 200 elements\n# Add the number 5 to all values of the tensor\n\n# Your code here\nassert sum(tensor) == 1000\n\n# TODO: Print the shape of the tensor using the method shape()\n# TODO: Print the dtype of the tensor using the method dtype()\n# TODO: Print the size of the tensor using the method size()"
   },
   {
+    "objectID": "lectures/lec_07_presentation.html#element-wise-operations",
+    "href": "lectures/lec_07_presentation.html#element-wise-operations",
+    "title": "Lecture VII - NumPy for Scientific Computing",
+    "section": "Element-wise Operations",
+    "text": "Element-wise Operations\n\nWe can apply operations to the entire array at once\nThis is much faster than applying them element-wise\n\n\nQuestion: What would happen here?\n\nimport numpy as np\na = np.array([1, 2, 3])\nb = np.array([4, 5, 6])\n\nprint(\"Addition:\", a + b)\nprint(\"Multiplication:\", a * b)\nprint(\"Division:\", a / b)\nprint(\"Power:\", a ** 2)\n\n\n\nAddition: [5 7 9]\nMultiplication: [ 4 10 18]\nDivision: [0.25 0.4  0.5 ]\nPower: [1 4 9]"
+  },
+  {
+    "objectID": "lectures/lec_07_presentation.html#matrix-vs-element-wise",
+    "href": "lectures/lec_07_presentation.html#matrix-vs-element-wise",
+    "title": "Lecture VII - NumPy for Scientific Computing",
+    "section": "Matrix vs Element-wise",
+    "text": "Matrix vs Element-wise\nImportant: * is element-wise, @ is matrix multiplication:\n\nA = np.array([[1, 2], [3, 4]])\nB = np.array([[5, 6], [7, 8]])\n\nprint(\"Element-wise (*):\"); print(A * B); print(\"---\")\nprint(\"Matrix multiplication (@):\"); print(A @ B)\n\n\n\nElement-wise (*):\n[[ 5 12]\n [21 32]]\n---\nMatrix multiplication (@):\n[[19 22]\n [43 50]]"
+  },
+  {
+    "objectID": "lectures/lec_07_presentation.html#broadcasting",
+    "href": "lectures/lec_07_presentation.html#broadcasting",
+    "title": "Lecture VII - NumPy for Scientific Computing",
+    "section": "Broadcasting",
+    "text": "Broadcasting\nNumPy can perform operations on arrays with different shapes!\n\nQuestion: What would you expect here?\n\nmatrix = np.array([[1, 2, 3], [4, 5, 6]])\nvector = np.array([10, 20, 30])\n\nprint(\"Matrix:\"); print(matrix); print(\"Vector:\", vector); print(\"---\")\nprint(\"Broadcasting result:\"); print(matrix + vector)\n\n\n\nMatrix:\n[[1 2 3]\n [4 5 6]]\nVector: [10 20 30]\n---\nBroadcasting result:\n[[11 22 33]\n [14 25 36]]"
+  },
+  {
+    "objectID": "lectures/lec_07_presentation.html#broadcasting-rules",
+    "href": "lectures/lec_07_presentation.html#broadcasting-rules",
+    "title": "Lecture VII - NumPy for Scientific Computing",
+    "section": "Broadcasting Rules",
+    "text": "Broadcasting Rules\nBroadcasting works when:\n\nArrays have the same number of dimensions, OR\nOne array has fewer dimensions (padded with 1s)\nCorresponding dimensions are equal OR one is 1\n\n\nQuestion: What happens with shapes (3,4) and (4,)?"
+  },
+  {
+    "objectID": "lectures/lec_07_presentation.html#coffee-shop-analytics",
+    "href": "lectures/lec_07_presentation.html#coffee-shop-analytics",
+    "title": "Lecture VII - NumPy for Scientific Computing",
+    "section": "Coffee Shop Analytics",
+    "text": "Coffee Shop Analytics\nTask: Analyze coffee shop sales using broadcasting:\n\n# Daily sales for 3 products over 4 days (Monday-Thursday)\nsales = np.array([[25, 30, 28, 35],    # Coffee\n                  [15, 18, 20, 22],    # Pastries\n                  [8, 12, 10, 15]])    # Sandwiches\n\nprint(\"Original sales:\\n\", sales)\n\n# TODO: Apply a 10% Friday discount to all products using broadcasting\n\n\n# TODO: Calculate total revenue if coffee=3€, pastries=2€, sandwiches=5€"
+  },
+  {
+    "objectID": "lectures/lec_07_presentation.html#axis-specific-operations",
+    "href": "lectures/lec_07_presentation.html#axis-specific-operations",
+    "title": "Lecture VII - NumPy for Scientific Computing",
+    "section": "Axis-specific Operations",
+    "text": "Axis-specific Operations\nFor multi-dimensional arrays, specify the axis:\n\nmatrix = np.array([[1, 2, 3], [4, 5, 6], [7, 8, 9]])\n\nprint(\"Matrix:\"); print(matrix); print(\"---\")\nprint(\"Sum along axis 0 (columns):\", np.sum(matrix, axis=0))\nprint(\"Mean along axis 1 (rows):\", np.mean(matrix, axis=1))\n\n\n\nMatrix:\n[[1 2 3]\n [4 5 6]\n [7 8 9]]\n---\nSum along axis 0 (columns): [12 15 18]\nMean along axis 1 (rows): [2. 5. 8.]"
+  },
+  {
+    "objectID": "lectures/lec_07_presentation.html#joining-arrays",
+    "href": "lectures/lec_07_presentation.html#joining-arrays",
+    "title": "Lecture VII - NumPy for Scientific Computing",
+    "section": "Joining Arrays",
+    "text": "Joining Arrays\n\nYou can use concatenate two join arrays\nWith axis you can specify the dimension\nIn 2-dimensions hstack() and vstack() are easier\n\n\nQuestion: What do you expect will be printed?\n\nimport numpy as np\nones = np.array((1,1,1,1))\ntwos = np.array((1,1,1,1)) *2\nprint(np.vstack((ones,twos))); print(np.hstack((ones,twos)))\n\n\n\n[[1 1 1 1]\n [2 2 2 2]]\n[1 1 1 1 2 2 2 2]"
+  },
+  {
+    "objectID": "lectures/lec_07_presentation.html#statistical-functions",
+    "href": "lectures/lec_07_presentation.html#statistical-functions",
+    "title": "Lecture VII - NumPy for Scientific Computing",
+    "section": "Statistical Functions",
+    "text": "Statistical Functions\nNumPy provides many built-in statistical functions:\n\ndata = np.array([1, 2, 3, 4, 5, 6, 7, 8, 9, 10])\n\nprint(\"Mean:\", np.mean(data))\nprint(\"Standard deviation:\", np.std(data))\nprint(\"Minimum:\", np.min(data))\nprint(\"Maximum:\", np.max(data))\nprint(\"Sum:\", np.sum(data))\n\n\n\nMean: 5.5\nStandard deviation: 2.8722813232690143\nMinimum: 1\nMaximum: 10\nSum: 55"
+  },
+  {
+    "objectID": "lectures/lec_07_presentation.html#student-grade-analysis",
+    "href": "lectures/lec_07_presentation.html#student-grade-analysis",
+    "title": "Lecture VII - NumPy for Scientific Computing",
+    "section": "Student Grade Analysis",
+    "text": "Student Grade Analysis\nTask: Analyze a class of student grades:\n\n# German grades: 1.0 (best) to 5.0 (worst), 4.0 is passing grade\ngrades = np.array([1.0, 1.3, 1.7, 2.0, 2.3, 2.7, 3.0, 3.3,\n                   3.7, 4.0, 4.0, 2.3, 1.7, 2.0, 3.3, 2.7])\n\nprint(\"Student grades:\", grades)\n\n# TODO: Calculate and print the following statistics:\n# - Class average\n# - Standard deviation\n# - Best grade\n# - Worst grade\n\n# Your statistical analysis here"
+  },
+  {
     "objectID": "lectures/lec_07_presentation.html#indexing-and-slicing",
     "href": "lectures/lec_07_presentation.html#indexing-and-slicing",
     "title": "Lecture VII - NumPy for Scientific Computing",
     "section": "Indexing and Slicing",
-    "text": "Indexing and Slicing\n\nAccessing and slicing ndarray works as before\nHigher dimension element access with multiple indices\n\n\nQuestion: What do you expect will be printed?\n\nimport numpy as np\nx = np.random.randint(0, 10, size=(3, 3))\nprint(x); print(\"---\")\nprint(x[0:2,0:2])\n\n\n\n[[6 8 3]\n [9 4 7]\n [9 0 3]]\n---\n[[6 8]\n [9 4]]"
+    "text": "Indexing and Slicing\n\nAccessing and slicing ndarray works as before\nHigher dimension element access with multiple indices\n\n\nQuestion: What do you expect will be printed?\n\nimport numpy as np\nx = np.random.randint(0, 10, size=(3, 3))\nprint(x); print(\"---\")\nprint(x[0:2,0:2])\n\n\n\n[[3 2 7]\n [9 2 4]\n [2 9 1]]\n---\n[[3 2]\n [9 2]]"
+  },
+  {
+    "objectID": "lectures/lec_07_presentation.html#boolean-indexing",
+    "href": "lectures/lec_07_presentation.html#boolean-indexing",
+    "title": "Lecture VII - NumPy for Scientific Computing",
+    "section": "Boolean Indexing",
+    "text": "Boolean Indexing\nUse boolean arrays to filter elements based on conditions:\n\nimport numpy as np\ndata = np.array([1, 5, 3, 8, 2, 9, 4])\nprint(\"Original data:\", data)\nprint(\"Values &gt; 4:\", data[data &gt; 4])\nprint(\"Even numbers:\", data[data % 2 == 0])\n\n\n\nOriginal data: [1 5 3 8 2 9 4]\nValues &gt; 4: [5 8 9]\nEven numbers: [8 2 4]"
+  },
+  {
+    "objectID": "lectures/lec_07_presentation.html#fancy-indexing",
+    "href": "lectures/lec_07_presentation.html#fancy-indexing",
+    "title": "Lecture VII - NumPy for Scientific Computing",
+    "section": "Fancy Indexing",
+    "text": "Fancy Indexing\nAccess multiple elements using arrays of indices:\n\ndata = np.array([10, 20, 30, 40, 50])\nindices = np.array([0, 2, 4])\nprint(\"Original data:\", data)\nprint(\"Selected elements:\", data[indices])\n\n\n\nOriginal data: [10 20 30 40 50]\nSelected elements: [10 30 50]\n\n\n\nQuestion: What happens if we use negative indices?"
+  },
+  {
+    "objectID": "lectures/lec_07_presentation.html#most-common-methods",
+    "href": "lectures/lec_07_presentation.html#most-common-methods",
+    "title": "Lecture VII - NumPy for Scientific Computing",
+    "section": "Most Common Methods",
+    "text": "Most Common Methods\n\nsort(): sort the array from low to high\nreshape(): reshape the array into a new shape\nflatten(): flatten the array into a 1D array\nsqueeze(): squeeze the array to remove 1D entries\ntranspose(): transpose the array\n\n\n\n\n\n\n\n\nTry experiment with these methods, they can make your work much easier."
+  },
+  {
+    "objectID": "lectures/lec_07_presentation.html#weekly-fitness-challenge",
+    "href": "lectures/lec_07_presentation.html#weekly-fitness-challenge",
+    "title": "Lecture VII - NumPy for Scientific Computing",
+    "section": "Weekly Fitness Challenge",
+    "text": "Weekly Fitness Challenge\nTask: Track your weekly step count progress:\n\n# Your daily step counts for one week\nsteps = np.array([8500, 12000, 6800, 9500, 11200, 15000, 7800])\ndays = np.array([\"Mon\", \"Tue\", \"Wed\", \"Thu\", \"Fri\", \"Sat\", \"Sun\"])\ntarget = 10000  # Daily step goal\n\n# TODO: Find days where you exceeded your target (&gt;= 10000 steps)\n\n\n# TODO: Print the successful days using fancy indexing\n\n\n# TODO: Calculate your weekly achievement rate (percentage of successful days)"
   },
   {
     "objectID": "lectures/lec_07_presentation.html#data-types",
@@ -947,27 +1031,6 @@
     "title": "Lecture VII - NumPy for Scientific Computing",
     "section": "Why do Bits Matter?",
     "text": "Why do Bits Matter?\n\nThey matter, because they can affect:\n\nthe performance of your code\nthe precision of your results\n\n\n\n\nThat’s why numbers can have a limited precision!\n\nAn int8 has to be in the range of -128 to 127\nAn int16 has to be in the range of -32768 to 32767\n\n\n\n\nQuestion: Size difference between int16 and int64?"
-  },
-  {
-    "objectID": "lectures/lec_07_presentation.html#joining-arrays",
-    "href": "lectures/lec_07_presentation.html#joining-arrays",
-    "title": "Lecture VII - NumPy for Scientific Computing",
-    "section": "Joining Arrays",
-    "text": "Joining Arrays\n\nYou can use concatenate two join arrays\nWith axis you can specify the dimension\nIn 2-dimensions hstack() and vstack() are easier\n\n\nQuestion: What do you expect will be printed?\n\nimport numpy as np\nones = np.array((1,1,1,1))\ntwos = np.array((1,1,1,1)) *2\nprint(np.vstack((ones,twos))); print(np.hstack((ones,twos)))\n\n\n\n[[1 1 1 1]\n [2 2 2 2]]\n[1 1 1 1 2 2 2 2]"
-  },
-  {
-    "objectID": "lectures/lec_07_presentation.html#common-methods",
-    "href": "lectures/lec_07_presentation.html#common-methods",
-    "title": "Lecture VII - NumPy for Scientific Computing",
-    "section": "Common Methods",
-    "text": "Common Methods\n\nsort(): sort the array from low to high\nreshape(): reshape the array into a new shape\nflatten(): flatten the array into a 1D array\nsqueeze(): squeeze the array to remove 1D entries\ntranspose(): transpose the array\n\n\n\n\n\n\n\n\nTry experiment with these methods, they can make your work much easier."
-  },
-  {
-    "objectID": "lectures/lec_07_presentation.html#speed-differences-in-action",
-    "href": "lectures/lec_07_presentation.html#speed-differences-in-action",
-    "title": "Lecture VII - NumPy for Scientific Computing",
-    "section": "Speed Differences in Action",
-    "text": "Speed Differences in Action\nTask: Complete the following task to practice with Numpy:\n\n# TODO: Create a 2-dimensional matrix with filled with ones of size 1000 x 1000.\n# Afterward, flatten the matrix to a vector and loop over the vector.\n# In each loop iteration, add a random number between 1 and 10000.\n# TODO: Now, do the same with a list of the same size and fill it with random numbers.\n# Then, sort the list as you have done with the Numpy vector before.\n# You can use the `time` module to compare the runtime of both approaches.\nimport time\nstart = time.time()\n# Your code here\nend = time.time()\nprint(end - start) # time in seconds\n\n\n\n5.9604644775390625e-06"
   },
   {
     "objectID": "lectures/lec_07_presentation.html#interesting-books",
@@ -1058,7 +1121,7 @@
     "href": "lectures/lec_07_scientific.html#creating-arrays",
     "title": "Lecture VII - NumPy for Scientific Computing",
     "section": "Creating Arrays",
-    "text": "Creating Arrays\n\nThe backbone of Numpy is the so called ndarray\nCan be initialized from different data structures:\n\n\nimport numpy as np\n\narray_from_list = np.array([1, 1, 1, 1])\nprint(array_from_list)\n\n[1 1 1 1]\n\n\n\nimport numpy as np\n\narray_from_tuple = np.array((2, 2, 2, 2))\nprint(array_from_tuple)\n\n[2 2 2 2]",
+    "text": "Creating Arrays\n\nThe backbone of Numpy is the so called ndarray\nCan be initialized from different data structures:\n\n\nimport numpy as np\n\narray_from_list = np.array([1, 1, 1, 1])\nprint(array_from_list)\n\n[1 1 1 1]\n\n\n. . .\n\nimport numpy as np\n\narray_from_tuple = np.array((2, 2, 2, 2))\nprint(array_from_tuple)\n\n[2 2 2 2]",
     "crumbs": [
       "07 Scientific Computing",
       "Lecture"
@@ -1098,17 +1161,6 @@
     ]
   },
   {
-    "objectID": "lectures/lec_07_scientific.html#computations",
-    "href": "lectures/lec_07_scientific.html#computations",
-    "title": "Lecture VII - NumPy for Scientific Computing",
-    "section": "Computations",
-    "text": "Computations\n\nWe can apply operations to the entire array at once\nThis is much faster than applying them element-wise\n\n. . .\n\nimport numpy as np\nx = np.array([1, 2, 3, 4, 5])\nx + 1\n\narray([2, 3, 4, 5, 6])",
-    "crumbs": [
-      "07 Scientific Computing",
-      "Lecture"
-    ]
-  },
-  {
     "objectID": "lectures/lec_07_scientific.html#arrays-in-action",
     "href": "lectures/lec_07_scientific.html#arrays-in-action",
     "title": "Lecture VII - NumPy for Scientific Computing",
@@ -1120,11 +1172,154 @@
     ]
   },
   {
+    "objectID": "lectures/lec_07_scientific.html#element-wise-operations",
+    "href": "lectures/lec_07_scientific.html#element-wise-operations",
+    "title": "Lecture VII - NumPy for Scientific Computing",
+    "section": "Element-wise Operations",
+    "text": "Element-wise Operations\n\nWe can apply operations to the entire array at once\nThis is much faster than applying them element-wise\n\n. . .\nQuestion: What would happen here?\n\nimport numpy as np\na = np.array([1, 2, 3])\nb = np.array([4, 5, 6])\n\nprint(\"Addition:\", a + b)\nprint(\"Multiplication:\", a * b)\nprint(\"Division:\", a / b)\nprint(\"Power:\", a ** 2)\n\nAddition: [5 7 9]\nMultiplication: [ 4 10 18]\nDivision: [0.25 0.4  0.5 ]\nPower: [1 4 9]",
+    "crumbs": [
+      "07 Scientific Computing",
+      "Lecture"
+    ]
+  },
+  {
+    "objectID": "lectures/lec_07_scientific.html#matrix-vs-element-wise",
+    "href": "lectures/lec_07_scientific.html#matrix-vs-element-wise",
+    "title": "Lecture VII - NumPy for Scientific Computing",
+    "section": "Matrix vs Element-wise",
+    "text": "Matrix vs Element-wise\nImportant: * is element-wise, @ is matrix multiplication:\n\nA = np.array([[1, 2], [3, 4]])\nB = np.array([[5, 6], [7, 8]])\n\nprint(\"Element-wise (*):\"); print(A * B); print(\"---\")\nprint(\"Matrix multiplication (@):\"); print(A @ B)\n\nElement-wise (*):\n[[ 5 12]\n [21 32]]\n---\nMatrix multiplication (@):\n[[19 22]\n [43 50]]",
+    "crumbs": [
+      "07 Scientific Computing",
+      "Lecture"
+    ]
+  },
+  {
+    "objectID": "lectures/lec_07_scientific.html#broadcasting",
+    "href": "lectures/lec_07_scientific.html#broadcasting",
+    "title": "Lecture VII - NumPy for Scientific Computing",
+    "section": "Broadcasting",
+    "text": "Broadcasting\nNumPy can perform operations on arrays with different shapes!\n. . .\nQuestion: What would you expect here?\n\nmatrix = np.array([[1, 2, 3], [4, 5, 6]])\nvector = np.array([10, 20, 30])\n\nprint(\"Matrix:\"); print(matrix); print(\"Vector:\", vector); print(\"---\")\nprint(\"Broadcasting result:\"); print(matrix + vector)\n\nMatrix:\n[[1 2 3]\n [4 5 6]]\nVector: [10 20 30]\n---\nBroadcasting result:\n[[11 22 33]\n [14 25 36]]",
+    "crumbs": [
+      "07 Scientific Computing",
+      "Lecture"
+    ]
+  },
+  {
+    "objectID": "lectures/lec_07_scientific.html#broadcasting-rules",
+    "href": "lectures/lec_07_scientific.html#broadcasting-rules",
+    "title": "Lecture VII - NumPy for Scientific Computing",
+    "section": "Broadcasting Rules",
+    "text": "Broadcasting Rules\nBroadcasting works when:\n\nArrays have the same number of dimensions, OR\nOne array has fewer dimensions (padded with 1s)\nCorresponding dimensions are equal OR one is 1\n\n. . .\nQuestion: What happens with shapes (3,4) and (4,)?",
+    "crumbs": [
+      "07 Scientific Computing",
+      "Lecture"
+    ]
+  },
+  {
+    "objectID": "lectures/lec_07_scientific.html#coffee-shop-analytics",
+    "href": "lectures/lec_07_scientific.html#coffee-shop-analytics",
+    "title": "Lecture VII - NumPy for Scientific Computing",
+    "section": "Coffee Shop Analytics",
+    "text": "Coffee Shop Analytics\nTask: Analyze coffee shop sales using broadcasting:\n\n# Daily sales for 3 products over 4 days (Monday-Thursday)\nsales = np.array([[25, 30, 28, 35],    # Coffee\n                  [15, 18, 20, 22],    # Pastries\n                  [8, 12, 10, 15]])    # Sandwiches\n\nprint(\"Original sales:\\n\", sales)\n\n# TODO: Apply a 10% Friday discount to all products using broadcasting\n\n\n# TODO: Calculate total revenue if coffee=3€, pastries=2€, sandwiches=5€",
+    "crumbs": [
+      "07 Scientific Computing",
+      "Lecture"
+    ]
+  },
+  {
+    "objectID": "lectures/lec_07_scientific.html#axis-specific-operations",
+    "href": "lectures/lec_07_scientific.html#axis-specific-operations",
+    "title": "Lecture VII - NumPy for Scientific Computing",
+    "section": "Axis-specific Operations",
+    "text": "Axis-specific Operations\nFor multi-dimensional arrays, specify the axis:\n\nmatrix = np.array([[1, 2, 3], [4, 5, 6], [7, 8, 9]])\n\nprint(\"Matrix:\"); print(matrix); print(\"---\")\nprint(\"Sum along axis 0 (columns):\", np.sum(matrix, axis=0))\nprint(\"Mean along axis 1 (rows):\", np.mean(matrix, axis=1))\n\nMatrix:\n[[1 2 3]\n [4 5 6]\n [7 8 9]]\n---\nSum along axis 0 (columns): [12 15 18]\nMean along axis 1 (rows): [2. 5. 8.]",
+    "crumbs": [
+      "07 Scientific Computing",
+      "Lecture"
+    ]
+  },
+  {
+    "objectID": "lectures/lec_07_scientific.html#joining-arrays",
+    "href": "lectures/lec_07_scientific.html#joining-arrays",
+    "title": "Lecture VII - NumPy for Scientific Computing",
+    "section": "Joining Arrays",
+    "text": "Joining Arrays\n\nYou can use concatenate two join arrays\nWith axis you can specify the dimension\nIn 2-dimensions hstack() and vstack() are easier\n\n. . .\nQuestion: What do you expect will be printed?\n\nimport numpy as np\nones = np.array((1,1,1,1))\ntwos = np.array((1,1,1,1)) *2\nprint(np.vstack((ones,twos))); print(np.hstack((ones,twos)))\n\n[[1 1 1 1]\n [2 2 2 2]]\n[1 1 1 1 2 2 2 2]",
+    "crumbs": [
+      "07 Scientific Computing",
+      "Lecture"
+    ]
+  },
+  {
+    "objectID": "lectures/lec_07_scientific.html#statistical-functions",
+    "href": "lectures/lec_07_scientific.html#statistical-functions",
+    "title": "Lecture VII - NumPy for Scientific Computing",
+    "section": "Statistical Functions",
+    "text": "Statistical Functions\nNumPy provides many built-in statistical functions:\n\ndata = np.array([1, 2, 3, 4, 5, 6, 7, 8, 9, 10])\n\nprint(\"Mean:\", np.mean(data))\nprint(\"Standard deviation:\", np.std(data))\nprint(\"Minimum:\", np.min(data))\nprint(\"Maximum:\", np.max(data))\nprint(\"Sum:\", np.sum(data))\n\nMean: 5.5\nStandard deviation: 2.8722813232690143\nMinimum: 1\nMaximum: 10\nSum: 55",
+    "crumbs": [
+      "07 Scientific Computing",
+      "Lecture"
+    ]
+  },
+  {
+    "objectID": "lectures/lec_07_scientific.html#student-grade-analysis",
+    "href": "lectures/lec_07_scientific.html#student-grade-analysis",
+    "title": "Lecture VII - NumPy for Scientific Computing",
+    "section": "Student Grade Analysis",
+    "text": "Student Grade Analysis\nTask: Analyze a class of student grades:\n\n# German grades: 1.0 (best) to 5.0 (worst), 4.0 is passing grade\ngrades = np.array([1.0, 1.3, 1.7, 2.0, 2.3, 2.7, 3.0, 3.3,\n                   3.7, 4.0, 4.0, 2.3, 1.7, 2.0, 3.3, 2.7])\n\nprint(\"Student grades:\", grades)\n\n# TODO: Calculate and print the following statistics:\n# - Class average\n# - Standard deviation\n# - Best grade\n# - Worst grade\n\n# Your statistical analysis here",
+    "crumbs": [
+      "07 Scientific Computing",
+      "Lecture"
+    ]
+  },
+  {
     "objectID": "lectures/lec_07_scientific.html#indexing-and-slicing",
     "href": "lectures/lec_07_scientific.html#indexing-and-slicing",
     "title": "Lecture VII - NumPy for Scientific Computing",
     "section": "Indexing and Slicing",
-    "text": "Indexing and Slicing\n\nAccessing and slicing ndarray works as before\nHigher dimension element access with multiple indices\n\n. . .\nQuestion: What do you expect will be printed?\n\nimport numpy as np\nx = np.random.randint(0, 10, size=(3, 3))\nprint(x); print(\"---\")\nprint(x[0:2,0:2])\n\n[[6 8 3]\n [9 4 7]\n [9 0 3]]\n---\n[[6 8]\n [9 4]]",
+    "text": "Indexing and Slicing\n\nAccessing and slicing ndarray works as before\nHigher dimension element access with multiple indices\n\n. . .\nQuestion: What do you expect will be printed?\n\nimport numpy as np\nx = np.random.randint(0, 10, size=(3, 3))\nprint(x); print(\"---\")\nprint(x[0:2,0:2])\n\n[[3 2 7]\n [9 2 4]\n [2 9 1]]\n---\n[[3 2]\n [9 2]]",
+    "crumbs": [
+      "07 Scientific Computing",
+      "Lecture"
+    ]
+  },
+  {
+    "objectID": "lectures/lec_07_scientific.html#boolean-indexing",
+    "href": "lectures/lec_07_scientific.html#boolean-indexing",
+    "title": "Lecture VII - NumPy for Scientific Computing",
+    "section": "Boolean Indexing",
+    "text": "Boolean Indexing\nUse boolean arrays to filter elements based on conditions:\n\nimport numpy as np\ndata = np.array([1, 5, 3, 8, 2, 9, 4])\nprint(\"Original data:\", data)\nprint(\"Values &gt; 4:\", data[data &gt; 4])\nprint(\"Even numbers:\", data[data % 2 == 0])\n\nOriginal data: [1 5 3 8 2 9 4]\nValues &gt; 4: [5 8 9]\nEven numbers: [8 2 4]",
+    "crumbs": [
+      "07 Scientific Computing",
+      "Lecture"
+    ]
+  },
+  {
+    "objectID": "lectures/lec_07_scientific.html#fancy-indexing",
+    "href": "lectures/lec_07_scientific.html#fancy-indexing",
+    "title": "Lecture VII - NumPy for Scientific Computing",
+    "section": "Fancy Indexing",
+    "text": "Fancy Indexing\nAccess multiple elements using arrays of indices:\n\ndata = np.array([10, 20, 30, 40, 50])\nindices = np.array([0, 2, 4])\nprint(\"Original data:\", data)\nprint(\"Selected elements:\", data[indices])\n\nOriginal data: [10 20 30 40 50]\nSelected elements: [10 30 50]\n\n\n. . .\nQuestion: What happens if we use negative indices?",
+    "crumbs": [
+      "07 Scientific Computing",
+      "Lecture"
+    ]
+  },
+  {
+    "objectID": "lectures/lec_07_scientific.html#most-common-methods",
+    "href": "lectures/lec_07_scientific.html#most-common-methods",
+    "title": "Lecture VII - NumPy for Scientific Computing",
+    "section": "Most Common Methods",
+    "text": "Most Common Methods\n\nsort(): sort the array from low to high\nreshape(): reshape the array into a new shape\nflatten(): flatten the array into a 1D array\nsqueeze(): squeeze the array to remove 1D entries\ntranspose(): transpose the array\n\n. . .\n\n\n\n\n\n\nTry experiment with these methods, they can make your work much easier.",
+    "crumbs": [
+      "07 Scientific Computing",
+      "Lecture"
+    ]
+  },
+  {
+    "objectID": "lectures/lec_07_scientific.html#weekly-fitness-challenge",
+    "href": "lectures/lec_07_scientific.html#weekly-fitness-challenge",
+    "title": "Lecture VII - NumPy for Scientific Computing",
+    "section": "Weekly Fitness Challenge",
+    "text": "Weekly Fitness Challenge\nTask: Track your weekly step count progress:\n\n# Your daily step counts for one week\nsteps = np.array([8500, 12000, 6800, 9500, 11200, 15000, 7800])\ndays = np.array([\"Mon\", \"Tue\", \"Wed\", \"Thu\", \"Fri\", \"Sat\", \"Sun\"])\ntarget = 10000  # Daily step goal\n\n# TODO: Find days where you exceeded your target (&gt;= 10000 steps)\n\n\n# TODO: Print the successful days using fancy indexing\n\n\n# TODO: Calculate your weekly achievement rate (percentage of successful days)",
     "crumbs": [
       "07 Scientific Computing",
       "Lecture"
@@ -1169,39 +1364,6 @@
     "title": "Lecture VII - NumPy for Scientific Computing",
     "section": "Why do Bits Matter?",
     "text": "Why do Bits Matter?\n\nThey matter, because they can affect:\n\nthe performance of your code\nthe precision of your results\n\n\n. . .\n\nThat’s why numbers can have a limited precision!\n\nAn int8 has to be in the range of -128 to 127\nAn int16 has to be in the range of -32768 to 32767\n\n\n. . .\nQuestion: Size difference between int16 and int64?",
-    "crumbs": [
-      "07 Scientific Computing",
-      "Lecture"
-    ]
-  },
-  {
-    "objectID": "lectures/lec_07_scientific.html#joining-arrays",
-    "href": "lectures/lec_07_scientific.html#joining-arrays",
-    "title": "Lecture VII - NumPy for Scientific Computing",
-    "section": "Joining Arrays",
-    "text": "Joining Arrays\n\nYou can use concatenate two join arrays\nWith axis you can specify the dimension\nIn 2-dimensions hstack() and vstack() are easier\n\n. . .\nQuestion: What do you expect will be printed?\n\nimport numpy as np\nones = np.array((1,1,1,1))\ntwos = np.array((1,1,1,1)) *2\nprint(np.vstack((ones,twos))); print(np.hstack((ones,twos)))\n\n[[1 1 1 1]\n [2 2 2 2]]\n[1 1 1 1 2 2 2 2]",
-    "crumbs": [
-      "07 Scientific Computing",
-      "Lecture"
-    ]
-  },
-  {
-    "objectID": "lectures/lec_07_scientific.html#common-methods",
-    "href": "lectures/lec_07_scientific.html#common-methods",
-    "title": "Lecture VII - NumPy for Scientific Computing",
-    "section": "Common Methods",
-    "text": "Common Methods\n\nsort(): sort the array from low to high\nreshape(): reshape the array into a new shape\nflatten(): flatten the array into a 1D array\nsqueeze(): squeeze the array to remove 1D entries\ntranspose(): transpose the array\n\n. . .\n\n\n\n\n\n\nTry experiment with these methods, they can make your work much easier.",
-    "crumbs": [
-      "07 Scientific Computing",
-      "Lecture"
-    ]
-  },
-  {
-    "objectID": "lectures/lec_07_scientific.html#speed-differences-in-action",
-    "href": "lectures/lec_07_scientific.html#speed-differences-in-action",
-    "title": "Lecture VII - NumPy for Scientific Computing",
-    "section": "Speed Differences in Action",
-    "text": "Speed Differences in Action\nTask: Complete the following task to practice with Numpy:\n\n# TODO: Create a 2-dimensional matrix with filled with ones of size 1000 x 1000.\n# Afterward, flatten the matrix to a vector and loop over the vector.\n# In each loop iteration, add a random number between 1 and 10000.\n# TODO: Now, do the same with a list of the same size and fill it with random numbers.\n# Then, sort the list as you have done with the Numpy vector before.\n# You can use the `time` module to compare the runtime of both approaches.\nimport time\nstart = time.time()\n# Your code here\nend = time.time()\nprint(end - start) # time in seconds\n\n5.9604644775390625e-06",
     "crumbs": [
       "07 Scientific Computing",
       "Lecture"
