@@ -86,6 +86,8 @@ x = np.array([1, 2, 3, 4, 5]); type(x)
 You don't have to use `as np`. But it is a common practice to do so.
 :::
 
+# [Array Basics]{.flow} {.title}
+
 ## Creating Arrays
 
 - The backbone of Numpy is the so called `ndarray`
@@ -99,6 +101,8 @@ import numpy as np
 array_from_list = np.array([1, 1, 1, 1])
 print(array_from_list)
 ```
+
+. . .
 
 ```{python}
 #| eval: true
@@ -152,22 +156,6 @@ The shape refers to the [size of the array]{.highlight}. It can have one or mult
 - `(2,2,2,2)` 4-dimensional array (4th order tensor)
 - ...
 
-## Computations
-
-- We can apply operations to the entire array at once
-- This is much faster than applying them element-wise
-
-. . .
-
-```{python}
-#| eval: true
-#| output-location: fragment
-#|
-import numpy as np
-x = np.array([1, 2, 3, 4, 5])
-x + 1
-```
-
 ## Arrays in Action
 
 [Task]{.task}: Practice working with Numpy:
@@ -187,6 +175,171 @@ assert sum(tensor) == 1000
 # TODO: Print the size of the tensor using the method size()
 ```
 
+# [Operations]{.flow} {.title}
+
+## Element-wise Operations
+
+- We can apply operations to the entire array at once
+- This is much faster than applying them element-wise
+
+. . .
+
+[Question:]{.question} What would happen here?
+
+```{python}
+#| eval: true
+#| output-location: fragment
+import numpy as np
+a = np.array([1, 2, 3])
+b = np.array([4, 5, 6])
+
+print("Addition:", a + b)
+print("Multiplication:", a * b)
+print("Division:", a / b)
+print("Power:", a ** 2)
+```
+
+## Matrix vs Element-wise
+
+[Important]{.highlight}: `*` is element-wise, `@` is matrix multiplication:
+
+```{python}
+#| eval: true
+#| output-location: fragment
+A = np.array([[1, 2], [3, 4]])
+B = np.array([[5, 6], [7, 8]])
+
+print("Element-wise (*):"); print(A * B); print("---")
+print("Matrix multiplication (@):"); print(A @ B)
+```
+
+## Broadcasting
+
+NumPy can perform operations on arrays with [different shapes]{.highlight}!
+
+. . .
+
+[Question:]{.question} What would you expect here?
+
+```{python}
+#| eval: true
+#| output-location: fragment
+matrix = np.array([[1, 2, 3], [4, 5, 6]])
+vector = np.array([10, 20, 30])
+
+print("Matrix:"); print(matrix); print("Vector:", vector); print("---")
+print("Broadcasting result:"); print(matrix + vector)
+```
+
+## Broadcasting Rules
+
+Broadcasting works when:
+
+1. Arrays have the same number of dimensions, OR
+2. One array has fewer dimensions (padded with 1s)
+3. Corresponding dimensions are equal OR one is 1
+
+. . .
+
+[Question:]{.question} What happens with shapes `(3,4)` and `(4,)`?
+
+## Coffee Shop Analytics
+
+[Task]{.task}: Analyze coffee shop sales using broadcasting:
+
+```{python}
+#| eval: false
+
+# Daily sales for 3 products over 4 days (Monday-Thursday)
+sales = np.array([[25, 30, 28, 35],    # Coffee
+                  [15, 18, 20, 22],    # Pastries
+                  [8, 12, 10, 15]])    # Sandwiches
+
+print("Original sales:\n", sales)
+
+# TODO: Apply a 10% Friday discount to all products using broadcasting
+
+
+# TODO: Calculate total revenue if coffee=3€, pastries=2€, sandwiches=5€
+
+
+```
+
+## Axis-specific Operations
+
+For multi-dimensional arrays, specify the [axis]{.highlight}:
+
+```{python}
+#| eval: true
+#| output-location: fragment
+matrix = np.array([[1, 2, 3], [4, 5, 6], [7, 8, 9]])
+
+print("Matrix:"); print(matrix); print("---")
+print("Sum along axis 0 (columns):", np.sum(matrix, axis=0))
+print("Mean along axis 1 (rows):", np.mean(matrix, axis=1))
+```
+
+## Joining Arrays
+
+- You can use `concatenate` two **join arrays**
+- With `axis` you can specify the dimension
+- In 2-dimensions `hstack()` and `vstack()` are easier
+
+. . .
+
+[Question]{.question}: What do you expect will be printed?
+
+```{python}
+#| eval: true
+#| output-location: fragment
+
+import numpy as np
+ones = np.array((1,1,1,1))
+twos = np.array((1,1,1,1)) *2
+print(np.vstack((ones,twos))); print(np.hstack((ones,twos)))
+```
+
+## Statistical Functions
+
+NumPy provides [many built-in statistical functions:]{.highlight}
+
+```{python}
+#| eval: true
+#| output-location: fragment
+data = np.array([1, 2, 3, 4, 5, 6, 7, 8, 9, 10])
+
+print("Mean:", np.mean(data))
+print("Standard deviation:", np.std(data))
+print("Minimum:", np.min(data))
+print("Maximum:", np.max(data))
+print("Sum:", np.sum(data))
+```
+
+## Student Grade Analysis
+
+[Task]{.task}: Analyze a class of student grades:
+
+```{python}
+#| eval: false
+
+# German grades: 1.0 (best) to 5.0 (worst), 4.0 is passing grade
+grades = np.array([1.0, 1.3, 1.7, 2.0, 2.3, 2.7, 3.0, 3.3,
+                   3.7, 4.0, 4.0, 2.3, 1.7, 2.0, 3.3, 2.7])
+
+print("Student grades:", grades)
+
+# TODO: Calculate and print the following statistics:
+# - Class average
+# - Standard deviation
+# - Best grade
+# - Worst grade
+
+# Your statistical analysis here
+
+```
+
+# [Indexing and Methods]{.flow} {.title}
+
 ## Indexing and Slicing
 
 - Accessing and slicing `ndarray` works as before
@@ -205,6 +358,76 @@ x = np.random.randint(0, 10, size=(3, 3))
 print(x); print("---")
 print(x[0:2,0:2])
 ```
+
+## Boolean Indexing
+
+Use boolean arrays to filter elements based on conditions:
+
+```{python}
+#| eval: true
+#| output-location: fragment
+import numpy as np
+data = np.array([1, 5, 3, 8, 2, 9, 4])
+print("Original data:", data)
+print("Values > 4:", data[data > 4])
+print("Even numbers:", data[data % 2 == 0])
+```
+
+## Fancy Indexing
+
+Access multiple elements using arrays of indices:
+
+```{python}
+#| eval: true
+#| output-location: fragment
+data = np.array([10, 20, 30, 40, 50])
+indices = np.array([0, 2, 4])
+print("Original data:", data)
+print("Selected elements:", data[indices])
+```
+
+. . .
+
+[Question:]{.question} What happens if we use negative indices?
+
+## Most Common Methods
+
+- `sort()`: sort the array from low to high
+- `reshape()`: reshape the array into a new shape
+- `flatten()`: flatten the array into a 1D array
+- `squeeze()`: squeeze the array to remove 1D entries
+- `transpose()`: transpose the array
+
+. . .
+
+:::{.callout-tip}
+Try experiment with these methods, they can make your [work much easier.]{.highlight}
+:::
+
+## Weekly Fitness Challenge
+
+[Task]{.task}: Track your weekly step count progress:
+
+```{python}
+#| eval: false
+
+# Your daily step counts for one week
+steps = np.array([8500, 12000, 6800, 9500, 11200, 15000, 7800])
+days = np.array(["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"])
+target = 10000  # Daily step goal
+
+# TODO: Find days where you exceeded your target (>= 10000 steps)
+
+
+# TODO: Print the successful days using fancy indexing
+
+
+# TODO: Calculate your weekly achievement rate (percentage of successful days)
+
+
+```
+
+# [Types]{.flow} {.title}
 
 ## Data Types
 
@@ -282,61 +505,6 @@ Note, how the types are specified as `int32` and `float32`.
 
 [Question:]{.question} Size difference between `int16` and `int64`?
 
-
-## Joining Arrays
-
-- You can use `concatenate` two **join arrays**
-- With `axis` you can specify the dimension
-- In 2-dimensions `hstack()` and `vstack()` are easier
-
-. . .
-
-[Question]{.question}: What do you expect will be printed?
-
-```{python}
-#| eval: true
-#| output-location: fragment
-
-import numpy as np
-ones = np.array((1,1,1,1))
-twos = np.array((1,1,1,1)) *2
-print(np.vstack((ones,twos))); print(np.hstack((ones,twos)))
-```
-
-## Common Methods
-
-- `sort()`: sort the array from low to high
-- `reshape()`: reshape the array into a new shape
-- `flatten()`: flatten the array into a 1D array
-- `squeeze()`: squeeze the array to remove 1D entries
-- `transpose()`: transpose the array
-
-. . .
-
-:::{.callout-tip}
-Try experiment with these methods, they can make your [work much easier.]{.highlight}
-:::
-
-## Speed Differences in Action
-
-[Task]{.task}: Complete the following task to practice with Numpy:
-
-```{python}
-#| eval: true
-#| output-location: fragment
-
-# TODO: Create a 2-dimensional matrix with filled with ones of size 1000 x 1000.
-# Afterward, flatten the matrix to a vector and loop over the vector.
-# In each loop iteration, add a random number between 1 and 10000.
-# TODO: Now, do the same with a list of the same size and fill it with random numbers.
-# Then, sort the list as you have done with the Numpy vector before.
-# You can use the `time` module to compare the runtime of both approaches.
-import time
-start = time.time()
-# Your code here
-end = time.time()
-print(end - start) # time in seconds
-```
 
 # That's it for today!
 
