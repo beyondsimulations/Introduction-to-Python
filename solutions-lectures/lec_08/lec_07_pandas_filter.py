@@ -5,9 +5,9 @@
 
 import pandas as pd
 
-df = pd.read_csv("part-08/data/employees.csv")
+df = pd.read_csv("solutions-lectures/employees.csv")
 
-#df = df[df["Position"] == "Manager"]
+# df = df[df["Position"] == "Manager"]
 
 print("Filtered DataFrame:")
 print(df.head())

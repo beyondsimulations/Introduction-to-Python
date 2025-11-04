@@ -4,7 +4,9 @@
 
 import pandas as pd
 
-df = pd.read_excel("part-08/data/temperatures.xlsx", sheet_name="Temperatures")
+df = pd.read_excel(
+    "lectures/supplementary/lec_08/temperatures.xlsx", sheet_name="Temperatures"
+)
 
 print(df.head())
 print("Average temperature in Hamburg:")
