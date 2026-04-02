@@ -145,7 +145,38 @@ if __name__ == "__main__":
 - `print(...)` shows text in the terminal.
 - The line `if __name__ == "__main__":` ensures this only auto-runs when the file is executed directly.
 
-Don’t worry about this yet, we'll gradually build up to it.
+Don't worry about this yet, we'll gradually build up to it.
+
+## Run scripts directly in Zed
+
+Instead of switching to the terminal every time, you can set up a **task** in Zed to run the currently open Python file with a single shortcut.
+
+### Create the task file
+
+Inside your project folder, create a `.zed/` directory and add a file called `tasks.json` inside it:
+
+```json
+[
+  {
+    "label": "Run current Python file",
+    "command": "uv run python $ZED_FILE",
+    "use_new_terminal": false
+  }
+]
+```
+
+`$ZED_FILE` is a variable Zed fills in automatically with the path of the file you have open.
+
+### Run the task
+
+1. Open any `.py` file in your project.
+2. Open the task picker with `Cmd+Shift+P` (macOS) / `Ctrl+Shift+P` (Windows/Linux).
+3. Type **task** and choose **task: spawn**.
+4. Select **Run current Python file** — Zed will execute `uv run python <your-file>` in the built-in terminal.
+
+::: callout-tip
+You can also bind the task to a keyboard shortcut. Open **Zed → Settings → Key Bindings** and add an entry for `"task: spawn"` to make it even faster.
+:::
 
 ## Adding packages (later in the course)
 
