@@ -4070,6 +4070,16 @@
     ]
   },
   {
+    "objectID": "general/uv.html#run-scripts-directly-in-zed",
+    "href": "general/uv.html#run-scripts-directly-in-zed",
+    "title": "Installing Python",
+    "section": "Run scripts directly in Zed",
+    "text": "Run scripts directly in Zed\nInstead of switching to the terminal every time, you can set up a task in Zed to run the currently open Python file with a single shortcut.\n\nCreate the task file\nInside your project folder, create a .zed/ directory and add a file called tasks.json inside it:\n[\n  {\n    \"label\": \"Run current Python file\",\n    \"command\": \"uv run python $ZED_FILE\",\n    \"use_new_terminal\": false\n  }\n]\n$ZED_FILE is a variable Zed fills in automatically with the path of the file you have open.\n\n\nRun the task\n\nOpen any .py file in your project.\nOpen the task picker with Cmd+Shift+P (macOS) / Ctrl+Shift+P (Windows/Linux).\nType task and choose task: spawn.\nSelect Run current Python file — Zed will execute uv run python &lt;your-file&gt; in the built-in terminal.\n\n\n\n\n\n\n\nYou can also bind the task to a keyboard shortcut. Open Zed → Settings → Key Bindings and add an entry for \"task: spawn\" to make it even faster.",
+    "crumbs": [
+      "Installing Python"
+    ]
+  },
+  {
     "objectID": "general/uv.html#adding-packages-later-in-the-course",
     "href": "general/uv.html#adding-packages-later-in-the-course",
     "title": "Installing Python",

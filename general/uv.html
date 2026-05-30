@@ -2,13 +2,16 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.8.24">
+<meta name="generator" content="quarto-1.9.37">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
 <title>Installing Python – Programming with Python</title>
 <style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
 div.columns{display: flex; gap: min(4vw, 1.5em);}
@@ -67,19 +70,18 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <meta name="quarto:offset" content="../">
 <script src="../site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
-<script src="../site_libs/quarto-html/axe/axe-check.js" type="module"></script>
 <script src="../site_libs/quarto-html/popper.min.js"></script>
 <script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="../site_libs/quarto-html/anchor.min.js"></script>
 <link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-46d4eb725d7d2b8695ccd307f5b3c105.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-dark-197188da37a79cb9418c4f38e6d23e8d.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-46d4eb725d7d2b8695ccd307f5b3c105.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-b7f2a80d65e4e0c38aaa0b1d52f53cc7.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-dark-082c280d0266c6330b148fdd5ce36071.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-b7f2a80d65e4e0c38aaa0b1d52f53cc7.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
 <script src="../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../site_libs/bootstrap/bootstrap-d52245bb7ba9b6ab6a7d9ea1e3d6d73b.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="../site_libs/bootstrap/bootstrap-dark-5f96869ffd51bc4c837006638a84c664.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="light">
-<link href="../site_libs/bootstrap/bootstrap-d52245bb7ba9b6ab6a7d9ea1e3d6d73b.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-428acf6cea68d18b6c08f06d03b90179.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-dark-0eb2fbb249c04a5542fe58ab745df198.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-428acf6cea68d18b6c08f06d03b90179.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -468,6 +470,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <ul class="collapse">
   <li><a href="#what-does-that-code-mean" id="toc-what-does-that-code-mean" class="nav-link" data-scroll-target="#what-does-that-code-mean">What does that code mean?</a></li>
   </ul></li>
+  <li><a href="#run-scripts-directly-in-zed" id="toc-run-scripts-directly-in-zed" class="nav-link" data-scroll-target="#run-scripts-directly-in-zed">Run scripts directly in Zed</a>
+  <ul class="collapse">
+  <li><a href="#create-the-task-file" id="toc-create-the-task-file" class="nav-link" data-scroll-target="#create-the-task-file">Create the task file</a></li>
+  <li><a href="#run-the-task" id="toc-run-the-task" class="nav-link" data-scroll-target="#run-the-task">Run the task</a></li>
+  </ul></li>
   <li><a href="#adding-packages-later-in-the-course" id="toc-adding-packages-later-in-the-course" class="nav-link" data-scroll-target="#adding-packages-later-in-the-course">Adding packages (later in the course)</a></li>
   <li><a href="#updating-uv" id="toc-updating-uv" class="nav-link" data-scroll-target="#updating-uv">Updating <code>uv</code></a></li>
   <li><a href="#best-practices-for-this-course" id="toc-best-practices-for-this-course" class="nav-link" data-scroll-target="#best-practices-for-this-course">Best practices for this course</a></li>
@@ -594,14 +601,49 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>Don’t worry about this yet, we’ll gradually build up to it.</p>
 </section>
 </section>
+<section id="run-scripts-directly-in-zed" class="level2">
+<h2 class="anchored" data-anchor-id="run-scripts-directly-in-zed">Run scripts directly in Zed</h2>
+<p>Instead of switching to the terminal every time, you can set up a <strong>task</strong> in Zed to run the currently open Python file with a single shortcut.</p>
+<section id="create-the-task-file" class="level3">
+<h3 class="anchored" data-anchor-id="create-the-task-file">Create the task file</h3>
+<p>Inside your project folder, create a <code>.zed/</code> directory and add a file called <code>tasks.json</code> inside it:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb13"><pre class="sourceCode json code-with-copy"><code class="sourceCode json"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="ot">[</span></span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">{</span></span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>    <span class="dt">"label"</span><span class="fu">:</span> <span class="st">"Run current Python file"</span><span class="fu">,</span></span>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a>    <span class="dt">"command"</span><span class="fu">:</span> <span class="st">"uv run python $ZED_FILE"</span><span class="fu">,</span></span>
+<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a>    <span class="dt">"use_new_terminal"</span><span class="fu">:</span> <span class="kw">false</span></span>
+<span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">}</span></span>
+<span id="cb13-7"><a href="#cb13-7" aria-hidden="true" tabindex="-1"></a><span class="ot">]</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p><code>$ZED_FILE</code> is a variable Zed fills in automatically with the path of the file you have open.</p>
+</section>
+<section id="run-the-task" class="level3">
+<h3 class="anchored" data-anchor-id="run-the-task">Run the task</h3>
+<ol type="1">
+<li>Open any <code>.py</code> file in your project.</li>
+<li>Open the task picker with <code>Cmd+Shift+P</code> (macOS) / <code>Ctrl+Shift+P</code> (Windows/Linux).</li>
+<li>Type <strong>task</strong> and choose <strong>task: spawn</strong>.</li>
+<li>Select <strong>Run current Python file</strong> — Zed will execute <code>uv run python &lt;your-file&gt;</code> in the built-in terminal.</li>
+</ol>
+<div class="callout callout-style-simple callout-tip">
+<div class="callout-body d-flex">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-body-container">
+<p>You can also bind the task to a keyboard shortcut. Open <strong>Zed → Settings → Key Bindings</strong> and add an entry for <code>"task: spawn"</code> to make it even faster.</p>
+</div>
+</div>
+</div>
+</section>
+</section>
 <section id="adding-packages-later-in-the-course" class="level2">
 <h2 class="anchored" data-anchor-id="adding-packages-later-in-the-course">Adding packages (later in the course)</h2>
 <p>If/when you need a package (example: <code>pandas</code>):</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb13"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="ex">uv</span> add pandas</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb14"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="ex">uv</span> add pandas</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>If you added the wrong one:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb14"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="ex">uv</span> remove pandas</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb15"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="ex">uv</span> remove pandas</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>If your <code>pyproject.toml</code> changed (e.g.&nbsp;you pulled code from someone else):</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb15"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="ex">uv</span> sync</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb16"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="ex">uv</span> sync</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="callout callout-style-simple callout-tip">
 <div class="callout-body d-flex">
 <div class="callout-icon-container">
@@ -616,7 +658,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="updating-uv" class="level2">
 <h2 class="anchored" data-anchor-id="updating-uv">Updating <code>uv</code></h2>
 <p>Occasionally:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb16"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="ex">uv</span> self update</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb17"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="ex">uv</span> self update</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>(If it ever errors, you can just reinstall using the same one-liner from earlier.)</p>
 <hr>
 </section>
@@ -629,7 +671,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li>Ask early for help, guessing usually takes much more time than asking.</li>
 </ul>
 <p>You can always see available commands:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb17"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="ex">uv</span> <span class="at">--help</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb18"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="ex">uv</span> <span class="at">--help</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </section>
 <section id="recap" class="level2">
 <h2 class="anchored" data-anchor-id="recap">Recap</h2>
@@ -1064,7 +1106,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     </a>
   </li>  
     <li class="nav-item compact">
-    <a class="nav-link" href="https://beyondsimulations.github.io/lectures">
+    <a class="nav-link" href="https://tobiasvlcek.com/lectures/">
       <i class="bi bi-skip-backward" role="img">
 </i> 
     </a>
@@ -1084,16 +1126,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     </div>
   </div>
 </footer>
-<script src="https://agents.byndsim.com/static/floating-chat.js"></script>
+<script defer="" src="https://oshu.eu/widget.js"></script>
 <script>
-new UniversalChatWidget({
-  "apiEndpoint": "https://chat.byndsim.com/chat",
-  "model": "introduction-python",
-  "title": "Python Assistant",
-  "welcomeMessage": "Hi! How can I help you with the course?",
-  "titleBackgroundColor": "#363D45",
-  "titleFontColor": "#FDF8ED"
-});
+  document.addEventListener('DOMContentLoaded', function () {
+    ChatWidget.init({
+      tenant: "platform",
+      agent: "introduction-python",
+      layoutMode: "sidebar",
+    });
+  });
 </script>
 
 
