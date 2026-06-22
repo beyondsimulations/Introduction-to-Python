@@ -11,28 +11,28 @@ execute:
 
 ## Python Basics
 
--   Python is an **interpreted language** - code is executed line by line
--   Comments start with `#`
--   Code blocks are defined by indentation
+- Python is an **interpreted language** - code is executed line by line
+- Comments start with `#`
+- Code blocks are defined by indentation
 
 ## Variables
 
--   Created using assignment operator `=`
--   Must start with letter or underscore
--   Case sensitive
--   Cannot use reserved words
+- Created using assignment operator `=`
+- Must start with letter or underscore
+- Case sensitive
+- Cannot use reserved words
 
 ## Data Types
 
 1.  **Strings (str)**
-    -   Enclosed in quotes: `"Hello"` or `'Hello'`
-    -   F-strings: `f"Value is {variable}"`
-    -   Format: `f"{variable:<width>.<precision>f}"`
+    - Enclosed in quotes: `"Hello"` or `'Hello'`
+    - F-strings: `f"Value is {variable}"`
+    - Format: `f"{variable:<width>.<precision>f}"`
 2.  **Numbers**
-    -   Integers (int): `1`, `-3`, `0`
-    -   Floats: `-4.78`, `0.1`, `1.23e2`
+    - Integers (int): `1`, `-3`, `0`
+    - Floats: `-4.78`, `0.1`, `1.23e2`
 3.  **Booleans (bool)**
-    -   `True` or `False`
+    - `True` or `False`
 
 ## Basic Operators
 
@@ -103,12 +103,12 @@ text[::-1]   # Reverse string: "!dlroW ,olleH"
 
 ## Comparison Operators
 
--   `==` Equal to
--   `!=` Not equal to
--   `<` Less than
--   `>` Greater than
--   `<=` Less than or equal to
--   `>=` Greater than or equal to
+- `==` Equal to
+- `!=` Not equal to
+- `<` Less than
+- `>` Greater than
+- `<=` Less than or equal to
+- `>=` Greater than or equal to
 
 ## Logical Operators
 
@@ -310,9 +310,9 @@ class Child(Parent):
 3.  Keep functions focused on a single task
 4.  Use meaningful parameter names
 5.  Follow Python naming conventions:
-    -   function_name (snake_case)
-    -   ClassName (PascalCase)
-    -   variable_name (snake_case)
+    - function_name (snake_case)
+    - ClassName (PascalCase)
+    - variable_name (snake_case)
 
 ------------------------------------------------------------------------
 
@@ -424,10 +424,10 @@ with open("file.txt", "r") as file:
 
 ## Data Type Comparison
 
--   **Tuples**: Immutable, ordered, allows duplicates
--   **Lists**: Mutable, ordered, allows duplicates
--   **Sets**: Mutable, unordered, no duplicates
--   **Dictionaries**: Mutable, unordered, unique keys
+- **Tuples**: Immutable, ordered, allows duplicates
+- **Lists**: Mutable, ordered, allows duplicates
+- **Sets**: Mutable, unordered, no duplicates
+- **Dictionaries**: Mutable, unordered, unique keys
 
 ## Best Practices
 
@@ -444,18 +444,18 @@ with open("file.txt", "r") as file:
 
 ## Common Built-in Exceptions
 
--   **ValueError**: Wrong value type (e.g., converting "hello" to int)
--   **TypeError**: Wrong operation for type (e.g., "hello" + 5)
--   **NameError**: Variable not found
--   **IndexError**: List index out of range
--   **KeyError**: Dictionary key not found
--   **FileNotFoundError**: File/directory not found
--   **ZeroDivisionError**: Division by zero
--   **AttributeError**: Object has no attribute/method
--   **ImportError**: Module import fails
--   **SyntaxError**: Invalid Python syntax
--   **IndentationError**: Incorrect indentation
--   **RuntimeError**: Generic runtime error
+- **ValueError**: Wrong value type (e.g., converting "hello" to int)
+- **TypeError**: Wrong operation for type (e.g., "hello" + 5)
+- **NameError**: Variable not found
+- **IndexError**: List index out of range
+- **KeyError**: Dictionary key not found
+- **FileNotFoundError**: File/directory not found
+- **ZeroDivisionError**: Division by zero
+- **AttributeError**: Object has no attribute/method
+- **ImportError**: Module import fails
+- **SyntaxError**: Invalid Python syntax
+- **IndentationError**: Incorrect indentation
+- **RuntimeError**: Generic runtime error
 
 ## Try-Except Blocks
 
@@ -528,10 +528,10 @@ assert x == expected_value, f"x should be {expected_value}, but got {x}"
 
 1.  **IDE Debugging**
 
--   Set breakpoints
--   Step through code
--   Inspect variables
--   Use watch windows
+- Set breakpoints
+- Step through code
+- Inspect variables
+- Use watch windows
 
 ## Best Practices
 

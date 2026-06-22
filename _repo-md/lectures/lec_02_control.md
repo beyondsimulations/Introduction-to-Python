@@ -14,9 +14,9 @@ format:
 
 ## F-Strings
 
--   F-strings provide a way to embed expressions inside string literals
--   You can include expressions by placing them inside curly braces `{}`
--   This makes it easier to include dynamic content
+- F-strings provide a way to embed expressions inside string literals
+- You can include expressions by placing them inside curly braces `{}`
+- This makes it easier to include dynamic content
 
 . . .
 
@@ -38,9 +38,9 @@ print(f"My name is {name}, I'm {age} years old, and {height:.2f} meters tall.")
 
 ## Variables and Data Types
 
--   Python uses dynamic typing, i.e. the type is determined at runtime
--   Basic data types in Python are: `int`, `float`, `str`, `bool`
--   Variables are created by assignment with the `=` operator
+- Python uses dynamic typing, i.e. the type is determined at runtime
+- Basic data types in Python are: `int`, `float`, `str`, `bool`
+- Variables are created by assignment with the `=` operator
 
 . . .
 
@@ -93,8 +93,8 @@ Remainder of division
 
 ## Arithmetic Operators with Variables
 
--   Additional operators can update the value of a variable <span class="highlight">(new)</span>
--   We can use `+=`, `-=`, `*=`, `/=`, `//=`, `**=`, `%=`
+- Additional operators can update the value of a variable <span class="highlight">(new)</span>
+- We can use `+=`, `-=`, `*=`, `/=`, `//=`, `**=`, `%=`
 
 . . .
 
@@ -143,11 +143,11 @@ final_price = ?  # What should this be?
 
 ## Objects
 
--   Objects are **instances of classes**
--   We will learn more about classes **later** in the course
--   In Python, <span class="highlight">virtually</span> everything is an object
--   Common built-in objects: <span class="highlight">integers, strings, lists, dictionaries</span>
--   For now, think of objects as a collection of data and methods
+- Objects are **instances of classes**
+- We will learn more about classes **later** in the course
+- In Python, <span class="highlight">virtually</span> everything is an object
+- Common built-in objects: <span class="highlight">integers, strings, lists, dictionaries</span>
+- For now, think of objects as a collection of data and methods
 
 . . .
 
@@ -157,10 +157,10 @@ final_price = ?  # What should this be?
 
 ## Methods
 
--   Methods are <span class="highlight">functions</span> that are called on an <span class="highlight">object</span>
--   The syntax is `object.method([arguments])`
--   Methods are specific to the type of object they're called on
--   They can modify the object or return information about it
+- Methods are <span class="highlight">functions</span> that are called on an <span class="highlight">object</span>
+- The syntax is `object.method([arguments])`
+- Methods are specific to the type of object they're called on
+- They can modify the object or return information about it
 
 . . .
 
@@ -172,13 +172,13 @@ final_price = ?  # What should this be?
 
 Here are some commonly used string methods:
 
--   `upper()`: Converts all characters in the string to uppercase
--   `lower()`: Converts all characters in the string to lowercase
--   `title()`: Converts first character of each word to uppercase
--   `strip()`: Removes leading and trailing whitespace
--   `replace()`: Replaces a substring with another substring
--   `find()`: Finds first substring and returns its index
--   `count()`: Counts the number of occurrences of a substring
+- `upper()`: Converts all characters in the string to uppercase
+- `lower()`: Converts all characters in the string to lowercase
+- `title()`: Converts first character of each word to uppercase
+- `strip()`: Removes leading and trailing whitespace
+- `replace()`: Replaces a substring with another substring
+- `find()`: Finds first substring and returns its index
+- `count()`: Counts the number of occurrences of a substring
 
 ## String Methods in Action
 
@@ -244,10 +244,10 @@ print(message.strip().title().replace("Snake", "Python"))
 
 ## Indexing
 
--   We have used indexing to access elements of a string last lecture
--   It allows you to access **elements of a sequence** by position
--   **Positive indexing** starts at 0 for the first element
--   **Negative indexing** starts at -1 for the last element <span class="highlight">(new)</span>
+- We have used indexing to access elements of a string last lecture
+- It allows you to access **elements of a sequence** by position
+- **Positive indexing** starts at 0 for the first element
+- **Negative indexing** starts at -1 for the last element <span class="highlight">(new)</span>
 
 . . .
 
@@ -262,12 +262,12 @@ print(string_to_index[-1]) # Accessing the last character
 
 ## Slicing
 
--   Slicing allows you to **extract a portion of a sequence**
--   Syntax: `sequence[start:stop:step]`
--   `start` is the index of the **first element to include**
--   `stop` is the index of the **first element to exclude**
--   `step` is the increment between indices (default is 1)
--   The result is a **new sequence** containing the extracted elements
+- Slicing allows you to **extract a portion of a sequence**
+- Syntax: `sequence[start:stop:step]`
+- `start` is the index of the **first element to include**
+- `stop` is the index of the **first element to exclude**
+- `step` is the increment between indices (default is 1)
+- The result is a **new sequence** containing the extracted elements
 
 . . .
 
@@ -282,8 +282,8 @@ print(string_to_slice[-6:-1])  # Accessing the last five characters from the end
 
 ## Slicing Simplified
 
--   If we omit `start` or `stop`, it will be replaced by the **start or end** of the sequence, respectively
--   If we omit `step`, it will be replaced by 1
+- If we omit `start` or `stop`, it will be replaced by the **start or end** of the sequence, respectively
+- If we omit `step`, it will be replaced by 1
 
 . . .
 
@@ -318,8 +318,8 @@ output = "Student"
 
 ## Comparison Operators
 
--   Comparison operators are used to compare two values
--   The result of a comparison is a boolean value (`True` or `False`)
+- Comparison operators are used to compare two values
+- The result of a comparison is a boolean value (`True` or `False`)
 
 . . .
 
@@ -344,8 +344,8 @@ print(lower_number <= upper_number) # Less than or equal to
 
 ## Logical Operators
 
--   Logical operators combine multiple comparison operators
--   Common logical operators: `and`, `or`, `not`
+- Logical operators combine multiple comparison operators
+- Common logical operators: `and`, `or`, `not`
 
 . . .
 
@@ -370,8 +370,8 @@ print(lower_number == lower_number and not lower_number > middle_number) # not
 
 ## Membership Operators
 
--   Used to check if a value is present in a sequence
--   Common membership operators: `in`, `not in`
+- Used to check if a value is present in a sequence
+- Common membership operators: `in`, `not in`
 
 . . .
 
@@ -396,9 +396,9 @@ print("pp" not in an_apple) # Check if "pp" is not in the string
 
 ## Control Structures
 
--   Used to **control the flow of execution** in a program
--   They can be used to <span class="highlight">make decisions</span> and <span class="highlight">repeat code blocks</span>
--   `if`, `elif`, `else`, `for`, `while`, `break`, `continue`
+- Used to **control the flow of execution** in a program
+- They can be used to <span class="highlight">make decisions</span> and <span class="highlight">repeat code blocks</span>
+- `if`, `elif`, `else`, `for`, `while`, `break`, `continue`
 
 . . .
 
@@ -406,10 +406,10 @@ print("pp" not in an_apple) # Check if "pp" is not in the string
 
 ## Indentation
 
--   Indentation is crucial in Python!
--   It is used to indicate the block of code that belongs to the structure
--   The standard indentation is 4 spaces
--   You can use tabs, but you <span class="highlight">should be careful</span> with that
+- Indentation is crucial in Python!
+- It is used to indicate the block of code that belongs to the structure
+- The standard indentation is 4 spaces
+- You can use tabs, but you <span class="highlight">should be careful</span> with that
 
 . . .
 
@@ -421,10 +421,10 @@ print("pp" not in an_apple) # Check if "pp" is not in the string
 
 ## Conditional Statements
 
--   They are used to execute <span class="highlight">different blocks of code</span> based on whether a condition is <span class="highlight">true or false</span>:
-    -   `if` statements execute a block of code if a condition is `True`
-    -   `elif` statements execute a block of code if the previous condition is `False` and the current condition is `True`
-    -   `else` statements execute a block of code if the previous conditions are `False`
+- They are used to execute <span class="highlight">different blocks of code</span> based on whether a condition is <span class="highlight">true or false</span>:
+  - `if` statements execute a block of code if a condition is `True`
+  - `elif` statements execute a block of code if the previous condition is `False` and the current condition is `True`
+  - `else` statements execute a block of code if the previous conditions are `False`
 
 . . .
 
@@ -556,10 +556,10 @@ print(f"Score: {score}, Grade: {grade}")
 
 ## Loops
 
--   Loops allow you to execute a block of code <span class="highlight">repeatedly</span>
--   There are two types of loops: `for` and `while`
--   `for` loops are used to iterate over a sequence (e.g., list, tuple, string)
--   `while` loops execute repeatedly until a condition is `False`
+- Loops allow you to execute a block of code <span class="highlight">repeatedly</span>
+- There are two types of loops: `for` and `while`
+- `for` loops are used to iterate over a sequence (e.g., list, tuple, string)
+- `while` loops execute repeatedly until a condition is `False`
 
 . . .
 
@@ -670,11 +670,11 @@ while True:
 
 ## Importance of Control Flow
 
--   Allows programs to make decisions based on **conditions**
--   Enables **repetition** of code blocks
--   Helps manage program complexity
--   Improves efficiency by <span class="highlight">executing only necessary code</span>
--   Facilitates creation of dynamic, responsive programs
+- Allows programs to make decisions based on **conditions**
+- Enables **repetition** of code blocks
+- Helps manage program complexity
+- Improves efficiency by <span class="highlight">executing only necessary code</span>
+- Facilitates creation of dynamic, responsive programs
 
 . . .
 
@@ -703,8 +703,8 @@ number = 0
 
 ## Interesting Books to start
 
--   Downey, A. B. (2024). Think Python: How to think like a computer scientist (Third edition). O'Reilly. [Link to free online version](https://greenteapress.com/wp/think-python-3rd-edition/)
--   Elter, S. (2021). Schrödinger programmiert Python: Das etwas andere Fachbuch (1. Auflage). Rheinwerk Verlag.
+- Downey, A. B. (2024). Think Python: How to think like a computer scientist (Third edition). O'Reilly. [Link to free online version](https://greenteapress.com/wp/think-python-3rd-edition/)
+- Elter, S. (2021). Schrödinger programmiert Python: Das etwas andere Fachbuch (1. Auflage). Rheinwerk Verlag.
 
 . . .
 

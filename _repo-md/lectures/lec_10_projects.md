@@ -26,10 +26,10 @@ You've learned your first steps to program with Python! :tada:
 
 ## Structure
 
--   Over the upcoming weeks you <span class="highlight">will work on a project</span>
--   You will present it in the last week of this course
--   You can work in groups of up to 3 people
--   Choose from a list of ideas or **propose your own idea!**
+- Over the upcoming weeks you <span class="highlight">will work on a project</span>
+- You will present it in the last week of this course
+- You can work in groups of up to 3 people
+- Choose from a list of ideas or **propose your own idea!**
 
 . . .
 
@@ -39,10 +39,10 @@ You've learned your first steps to program with Python! :tada:
 
 ## Presentation
 
--   Each group has **10 minutes** for the presentation with 5 additional minutes for questions
--   Introduce your idea and the development cycle
--   Provide code examples and/or visualizations
--   Comment on <span class="highlight">challenges and what you've learned</span>
+- Each group has **10 minutes** for the presentation with 5 additional minutes for questions
+- Introduce your idea and the development cycle
+- Provide code examples and/or visualizations
+- Comment on <span class="highlight">challenges and what you've learned</span>
 
 . . .
 
@@ -54,10 +54,10 @@ You've learned your first steps to program with Python! :tada:
 
 ## Idea 1: Data Analytics Platform
 
--   Build a <span class="highlight">complete data pipeline</span>
--   Implement automated data cleaning and validation
--   Create interactive dashboards with real-time updates
--   Add predictive modeling and automated reporting
+- Build a <span class="highlight">complete data pipeline</span>
+- Implement automated data cleaning and validation
+- Create interactive dashboards with real-time updates
+- Add predictive modeling and automated reporting
 
 . . .
 
@@ -65,11 +65,11 @@ You've learned your first steps to program with Python! :tada:
 
 ## Idea 2: Web Scraping System
 
--   Build a <span class="highlight">multi-source scraping pipeline</span>
--   Implement error handling and retry logic
--   Store data in a database (SQLite or PostgreSQL)
--   Create a monitoring dashboard with visualization
--   Add automated alerts when target data changes
+- Build a <span class="highlight">multi-source scraping pipeline</span>
+- Implement error handling and retry logic
+- Store data in a database (SQLite or PostgreSQL)
+- Create a monitoring dashboard with visualization
+- Add automated alerts when target data changes
 
 . . .
 
@@ -77,10 +77,10 @@ You've learned your first steps to program with Python! :tada:
 
 ## Idea 3: ML Model with Deployment
 
--   Build an <span class="highlight">end-to-end ML pipeline</span> for a real-world problem
--   Implement data preprocessing, feature engineering, and model training
--   Build a web interface for users to interact with the model
--   Add model monitoring and performance tracking
+- Build an <span class="highlight">end-to-end ML pipeline</span> for a real-world problem
+- Implement data preprocessing, feature engineering, and model training
+- Build a web interface for users to interact with the model
+- Add model monitoring and performance tracking
 
 . . .
 
@@ -88,10 +88,10 @@ You've learned your first steps to program with Python! :tada:
 
 ## Idea 4: Real-Time Computer Vision
 
--   Build a <span class="highlight">real-time video processing pipeline</span>
--   Implement object detection, tracking, and analytics
--   Create a web interface to view live results
--   Store and analyze detection statistics over time
+- Build a <span class="highlight">real-time video processing pipeline</span>
+- Implement object detection, tracking, and analytics
+- Create a web interface to view live results
+- Store and analyze detection statistics over time
 
 . . .
 
@@ -99,11 +99,11 @@ You've learned your first steps to program with Python! :tada:
 
 ## Idea 5: Advanced Simulation System
 
--   Build a <span class="highlight">complex simulation</span>
--   Implement Monte Carlo methods or agent-based modeling
--   Create interactive visualizations with parameter controls
--   Add sensitivity analysis and scenario comparison
--   Generate automated reports with statistical analysis
+- Build a <span class="highlight">complex simulation</span>
+- Implement Monte Carlo methods or agent-based modeling
+- Create interactive visualizations with parameter controls
+- Add sensitivity analysis and scenario comparison
+- Generate automated reports with statistical analysis
 
 . . .
 
@@ -111,9 +111,9 @@ You've learned your first steps to program with Python! :tada:
 
 ## Idea 6: Game Development
 
--   Create a <span class="highlight">complete game</span> with multiple levels/stages
--   Add save/load system, high scores, and user profiles
--   Include sound effects, music, and polished graphics
+- Create a <span class="highlight">complete game</span> with multiple levels/stages
+- Add save/load system, high scores, and user profiles
+- Include sound effects, music, and polished graphics
 
 . . .
 
@@ -121,11 +121,11 @@ You've learned your first steps to program with Python! :tada:
 
 ## Idea 7: Automation System
 
--   Build a <span class="highlight">robust automation framework</span> for repetitive tasks
--   Implement error detection, logging, and automatic recovery
--   Create a web interface to monitor and control automation
--   Add scheduling, notifications (email/Slack), and reporting
--   Include configuration management for different scenarios
+- Build a <span class="highlight">robust automation framework</span> for repetitive tasks
+- Implement error detection, logging, and automatic recovery
+- Create a web interface to monitor and control automation
+- Add scheduling, notifications (email/Slack), and reporting
+- Include configuration management for different scenarios
 
 . . .
 
@@ -133,20 +133,20 @@ You've learned your first steps to program with Python! :tada:
 
 ## Idea 8: Your Idea?
 
--   Have an idea that is not on the list?
--   Something that potentially would help you personally?
--   <span class="highlight">Make it ambitious and do it!</span>
--   Consider: deployment, testing, user interface
--   Combine multiple technologies and concepts
--   **Let me know and we can discuss scope and feasibility!**
+- Have an idea that is not on the list?
+- Something that potentially would help you personally?
+- <span class="highlight">Make it ambitious and do it!</span>
+- Consider: deployment, testing, user interface
+- Combine multiple technologies and concepts
+- **Let me know and we can discuss scope and feasibility!**
 
 # <span class="flow">Help over the upcoming weeks</span>
 
 ## Ask Questions
 
--   In case you need help, you can always ask me!
--   The next lectures are there to work on your project
--   You can also write me an email at <vlcek@beyondsimulations.com>
+- In case you need help, you can always ask me!
+- The next lectures are there to work on your project
+- You can also write me an email at <vlcek@beyondsimulations.com>
 
 > **Tip**
 >
@@ -154,9 +154,9 @@ You've learned your first steps to program with Python! :tada:
 
 ## Use of AI Tools
 
--   <span class="highlight">Strongly encouraged</span> to use AI tools for your project!
--   Remember: AI accelerates development, but <span class="highlight">understanding is essential</span>
--   Use AI to learn patterns, debug issues, and explore solutions
+- <span class="highlight">Strongly encouraged</span> to use AI tools for your project!
+- Remember: AI accelerates development, but <span class="highlight">understanding is essential</span>
+- Use AI to learn patterns, debug issues, and explore solutions
 
 . . .
 
@@ -172,10 +172,10 @@ You've learned your first steps to program with Python! :tada:
 
 **How it works:**
 
--   You describe what you want to achieve
--   The AI agent plans and executes multiple steps
--   It can run tests, fix errors, and iterate independently
--   You review and guide the overall direction
+- You describe what you want to achieve
+- The AI agent plans and executes multiple steps
+- It can run tests, fix errors, and iterate independently
+- You review and guide the overall direction
 
 . . .
 
@@ -191,10 +191,10 @@ You've learned your first steps to program with Python! :tada:
 
 **Key Features:**
 
--   Understands entire codebases, not just single files
--   Can edit multiple files simultaneously
--   Explains complex code patterns clearly
--   Helps with debugging and refactoring
+- Understands entire codebases, not just single files
+- Can edit multiple files simultaneously
+- Explains complex code patterns clearly
+- Helps with debugging and refactoring
 
 . . .
 
@@ -210,9 +210,9 @@ Beyond Claude Code, many tools are available:
 
 **Popular Options:**
 
--   **Open Code**: Open Source alternative to Claude Code
--   **Cursor**: AI-first code editor based on VS Code
--   **Zed**: Lightweight editor with Claude & ChatGPT integration
+- **Open Code**: Open Source alternative to Claude Code
+- **Cursor**: AI-first code editor based on VS Code
+- **Zed**: Lightweight editor with Claude & ChatGPT integration
 
 . . .
 
@@ -232,9 +232,9 @@ Each tool has strengths, experiment to find your preference!
 
 **Benefits:**
 
--   Complete privacy - your code never leaves your machine
--   No API costs or rate limits
--   Works offline with full control over model selection
+- Complete privacy - your code never leaves your machine
+- No API costs or rate limits
+- Works offline with full control over model selection
 
 . . .
 
@@ -248,17 +248,17 @@ Each tool has strengths, experiment to find your preference!
 
 ## How to continue after the presentations?
 
--   The best way to continue learning is to <span class="highlight">keep programming in the future</span>
--   Potentially, you will continue to do so during your studies
--   Coding in your Thesis is a another great way to improve
--   Try to find a way to apply programming in your work
--   **There are many interesting topics to explore!**
+- The best way to continue learning is to <span class="highlight">keep programming in the future</span>
+- Potentially, you will continue to do so during your studies
+- Coding in your Thesis is a another great way to improve
+- Try to find a way to apply programming in your work
+- **There are many interesting topics to explore!**
 
 ## Advent of Code
 
--   [Advent of Code](https://adventofcode.com/) is a fun way to keep programming
--   Here you can solve programming puzzles during Advent
--   It is completely free and ad-free and starts at 01.12.
+- [Advent of Code](https://adventofcode.com/) is a fun way to keep programming
+- Here you can solve programming puzzles during Advent
+- It is completely free and ad-free and starts at 01.12.
 
 <center>
 <iframe src="https://giphy.com/embed/F1Gh6u8YEG3FctxYWc" width="280" height="280" style frameBorder="0" class="giphy-embed" allowFullScreen>
@@ -267,10 +267,10 @@ Each tool has strengths, experiment to find your preference!
 
 ## That's it for the Lecture Series!
 
--   We now have covered the basics of Python
--   I hope you enjoyed the lecture and found it helpful
--   If you have questions or feedback, <span class="highlight">please let me know!</span>
--   I wish you all the best for your studies and your career!
+- We now have covered the basics of Python
+- I hope you enjoyed the lecture and found it helpful
+- If you have questions or feedback, <span class="highlight">please let me know!</span>
+- I wish you all the best for your studies and your career!
 
 ## 
 
@@ -283,8 +283,8 @@ Each tool has strengths, experiment to find your preference!
 
 ## Interesting Books
 
--   Downey, A. B. (2024). Think Python: How to think like a computer scientist (Third edition). O'Reilly. [Link to free online version](https://greenteapress.com/wp/think-python-3rd-edition/)
--   Elter, S. (2021). Schrödinger programmiert Python: Das etwas andere Fachbuch (1. Auflage). Rheinwerk Verlag.
+- Downey, A. B. (2024). Think Python: How to think like a computer scientist (Third edition). O'Reilly. [Link to free online version](https://greenteapress.com/wp/think-python-3rd-edition/)
+- Elter, S. (2021). Schrödinger programmiert Python: Das etwas andere Fachbuch (1. Auflage). Rheinwerk Verlag.
 
 . . .
 

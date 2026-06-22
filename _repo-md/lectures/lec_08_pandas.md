@@ -19,10 +19,10 @@ format:
 
 ## What is NumPy?
 
--   NumPy is a package for scientific computing in Python
--   Provides <span class="highlight">multi-dimensional arrays and matrices</span>
--   Much faster than Python lists for numerical operations
--   Operations are implemented in C and C++
+- NumPy is a package for scientific computing in Python
+- Provides <span class="highlight">multi-dimensional arrays and matrices</span>
+- Much faster than Python lists for numerical operations
+- Operations are implemented in C and C++
 
 . . .
 
@@ -32,22 +32,22 @@ format:
 
 ## Creating Arrays
 
--   Core data structure is the `ndarray`
--   Can create arrays from lists, tuples, or other data structures
--   Special functions like:
-    -   `np.zeros()` for arrays of zeros
-    -   `np.random.rand()` for random values
-    -   `np.arange()` for evenly spaced values
-    -   `np.linspace()` for linearly spaced values
+- Core data structure is the `ndarray`
+- Can create arrays from lists, tuples, or other data structures
+- Special functions like:
+  - `np.zeros()` for arrays of zeros
+  - `np.random.rand()` for random values
+  - `np.arange()` for evenly spaced values
+  - `np.linspace()` for linearly spaced values
 
 ## Working with Arrays
 
--   Support for multi-dimensional operations
--   Common operations:
-    -   Element-wise arithmetic (`+`, `-`, `*`, `/`)
-    -   Array indexing and slicing
-    -   Shape manipulation (`reshape`, `flatten`)
-    -   Sorting and transposing
+- Support for multi-dimensional operations
+- Common operations:
+  - Element-wise arithmetic (`+`, `-`, `*`, `/`)
+  - Array indexing and slicing
+  - Shape manipulation (`reshape`, `flatten`)
+  - Sorting and transposing
 
 . . .
 
@@ -88,15 +88,15 @@ array = np.array([[1, 2, 3], [4, 5, 6], [7, 8, 9]])
 
 ## What is Pandas?
 
--   Pandas is a <span class="highlight">data manipulation and analysis library</span>
--   It provides data structures like **DataFrames and Series**
--   Tools for data cleaning, analysis, and visualization
--   It can also be used to <span class="highlight">work with Excel files!</span>
+- Pandas is a <span class="highlight">data manipulation and analysis library</span>
+- It provides data structures like **DataFrames and Series**
+- Tools for data cleaning, analysis, and visualization
+- It can also be used to <span class="highlight">work with Excel files!</span>
 
 ## How to install Pandas
 
--   In the last lecture, we have installed it with `uv install pandas`
--   Now, import the package `import pandas as pd`
+- In the last lecture, we have installed it with `uv install pandas`
+- Now, import the package `import pandas as pd`
 
 . . .
 
@@ -106,8 +106,8 @@ array = np.array([[1, 2, 3], [4, 5, 6], [7, 8, 9]])
 
 ## Creating DataFrames
 
--   DataFrames behave quite similar to Numpy arrays
--   But they have <span class="highlight">row and column labels</span>
+- DataFrames behave quite similar to Numpy arrays
+- But they have <span class="highlight">row and column labels</span>
 
 . . .
 
@@ -187,8 +187,8 @@ print(df)
 
 ## Basic Operations
 
--   Use the `df.head()` method to display the first 5 rows
--   Use the `df.tail()` method to display the last 5 rows
+- Use the `df.head()` method to display the first 5 rows
+- Use the `df.tail()` method to display the last 5 rows
 
 . . .
 
@@ -206,7 +206,7 @@ print(df.tail())
 
 ## Information about the DataFrame
 
--   Use `df.info()` to display information about a DataFrame
+- Use `df.info()` to display information about a DataFrame
 
 . . .
 
@@ -231,8 +231,8 @@ print(df.info())
 
 ## Statistics about a DataFrame
 
--   Use `df.describe()` to display summary statistics
--   Use the `df.index` **attribute** to access the **index**
+- Use `df.describe()` to display summary statistics
+- Use the `df.index` **attribute** to access the **index**
 
 . . .
 
@@ -253,8 +253,8 @@ print(df.describe())
 
 ## Filtering DataFrames
 
--   Use `df['column_name']` to access a column
--   Use the `df[df['column'] > value]` method to filter
+- Use `df['column_name']` to access a column
+- Use the `df[df['column'] > value]` method to filter
 
 . . .
 
@@ -294,10 +294,10 @@ print(df_high_salary.loc[40]["Name"]) #Access the label 40 and the "Name" column
 
 ## Grouping
 
--   Grouping is a <span class="highlight">powerful feature</span> of Pandas
--   Groups data by one or more columns
--   And then <span class="highlight">perform operations</span>
--   Syntax is `df.groupby('column').method()`
+- Grouping is a <span class="highlight">powerful feature</span> of Pandas
+- Groups data by one or more columns
+- And then <span class="highlight">perform operations</span>
+- Syntax is `df.groupby('column').method()`
 
 . . .
 
@@ -335,10 +335,10 @@ df.groupby(['Position']).sum() # Sum per position
 
 ## Grouping Numeric Columns
 
--   To prevent errors, we can <span class="highlight">select numeric columns first</span>
--   Afterwards, perform the operation on the **selected columns**
--   Helps to avoid errors when grouping by non-numeric columns
--   Or **drop columns** by `df.drop(columns=["column"])`
+- To prevent errors, we can <span class="highlight">select numeric columns first</span>
+- Afterwards, perform the operation on the **selected columns**
+- Helps to avoid errors when grouping by non-numeric columns
+- Or **drop columns** by `df.drop(columns=["column"])`
 
 . . .
 
@@ -359,8 +359,8 @@ print(df.groupby("Position")[numeric_cols].sum())
 
 ## Grouping by Multiple Columns
 
--   Group by multiple columns `['column1', 'column2']`
--   You can use <span class="highlight">lists or tuples</span> to specify multiple columns
+- Group by multiple columns `['column1', 'column2']`
+- You can use <span class="highlight">lists or tuples</span> to specify multiple columns
 
 . . .
 
@@ -386,27 +386,76 @@ df.groupby(['Position', "Department"]).max()
     }
 </style>
 
-|                |            | Age | Salary |
-|----------------|------------|-----|--------|
-| Position       | Department |     |        |
-| Analyst        | Finance    | 28  | 57000  |
-| Assistant      | HR         | 31  | 49000  |
-| Developer      | IT         | 34  | 69000  |
-| Executive      | Marketing  | 35  | 56000  |
-| Manager        | HR         | 30  | 54000  |
-|                | Marketing  | 33  | 62000  |
-| Representative | Sales      | 32  | 52000  |
+<table class="dataframe" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr style="text-align: right;">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">Age</th>
+<th data-quarto-table-cell-role="th">Salary</th>
+</tr>
+<tr>
+<th data-quarto-table-cell-role="th">Position</th>
+<th data-quarto-table-cell-role="th">Department</th>
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th"></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td data-quarto-table-cell-role="th">Analyst</td>
+<td data-quarto-table-cell-role="th">Finance</td>
+<td>28</td>
+<td>57000</td>
+</tr>
+<tr>
+<td data-quarto-table-cell-role="th">Assistant</td>
+<td data-quarto-table-cell-role="th">HR</td>
+<td>31</td>
+<td>49000</td>
+</tr>
+<tr>
+<td data-quarto-table-cell-role="th">Developer</td>
+<td data-quarto-table-cell-role="th">IT</td>
+<td>34</td>
+<td>69000</td>
+</tr>
+<tr>
+<td data-quarto-table-cell-role="th">Executive</td>
+<td data-quarto-table-cell-role="th">Marketing</td>
+<td>35</td>
+<td>56000</td>
+</tr>
+<tr>
+<td rowspan="2" data-quarto-table-cell-role="th" data-valign="top">Manager</td>
+<td data-quarto-table-cell-role="th">HR</td>
+<td>30</td>
+<td>54000</td>
+</tr>
+<tr>
+<td data-quarto-table-cell-role="th">Marketing</td>
+<td>33</td>
+<td>62000</td>
+</tr>
+<tr>
+<td data-quarto-table-cell-role="th">Representative</td>
+<td data-quarto-table-cell-role="th">Sales</td>
+<td>32</td>
+<td>52000</td>
+</tr>
+</tbody>
+</table>
 
 </div>
 
 ## Grouping with Aggregations
 
--   We can use different aggregation functions:
-    -   `sum()`: sum of the values
-    -   `mean()`: mean of the values
-    -   `max()`: maximum of the values
-    -   `min()`: minimum of the values
-    -   `count()`: count of the values
+- We can use different aggregation functions:
+  - `sum()`: sum of the values
+  - `mean()`: mean of the values
+  - `max()`: maximum of the values
+  - `min()`: minimum of the values
+  - `count()`: count of the values
 
 ## Pandas in Action
 
@@ -424,7 +473,7 @@ df = pd.read_csv("supplementary/lec_08/employees.csv")
 
 ## Concatenating DataFrames
 
--   `pd.concat()` to concatenate along shared columns
+- `pd.concat()` to concatenate along shared columns
 
 ``` python
 df1 = pd.DataFrame({"A": [1, 2, 3], "B": [4, 5, 6]})
@@ -443,8 +492,8 @@ print(df)
 
 ## Joining DataFrames
 
--   Use `pd.join()` to join DataFrames along columns
--   Joining is <span class="highlight">done on the index</span> by default!
+- Use `pd.join()` to join DataFrames along columns
+- Joining is <span class="highlight">done on the index</span> by default!
 
 ``` python
 df1 = pd.DataFrame({"A": [1, 2, 3], "B": [4, 5, 6]}, index=['x', 'y', 'z'])
@@ -460,13 +509,13 @@ print(df)
 
 ## Merging DataFrames on Columns
 
--   `pd.merge(df_name, on='column', how='type')`
--   merge DataFrames along <span class="highlight">shared columns</span>
--   `how` specifies the type of merge
-    -   `inner`: rows with matching keys in both DataFrames
-    -   `outer`: rows from both are kept, missing values are filled
-    -   `left`: rows from the left are kept, missing values are filled
-    -   `right`: rows from right are kept, missing values are filled
+- `pd.merge(df_name, on='column', how='type')`
+- merge DataFrames along <span class="highlight">shared columns</span>
+- `how` specifies the type of merge
+  - `inner`: rows with matching keys in both DataFrames
+  - `outer`: rows from both are kept, missing values are filled
+  - `left`: rows from the left are kept, missing values are filled
+  - `right`: rows from right are kept, missing values are filled
 
 ## Outer Merge
 
@@ -506,8 +555,8 @@ df2 = pd.DataFrame({
 
 ## Reading Excel Files
 
--   Read using the `pd.read_excel(file_path)` function
--   Write using the `df.to_excel(file_path)` method
+- Read using the `pd.read_excel(file_path)` function
+- Write using the `df.to_excel(file_path)` method
 
 . . .
 
@@ -561,10 +610,10 @@ print(df.head())
 
 ## Melting
 
--   Sometimes, you want to <span class="highlight">transform a DataFrame</span>
--   Instead of **wide** format, you want **long** format
--   This is useful for certain types of **visualizations**
--   And when working with **time series data**
+- Sometimes, you want to <span class="highlight">transform a DataFrame</span>
+- Instead of **wide** format, you want **long** format
+- This is useful for certain types of **visualizations**
+- And when working with **time series data**
 
 . . .
 
@@ -610,11 +659,11 @@ The melting process transforms it into the following <span class="highlight">lon
 
 ## How to melt DataFrames
 
--   Use `pd.melt()` to transform from wide to long
--   Parameters:
-    -   `id_vars`: columns to keep
-    -   `var_name`: name of the new column that will contain the names of the original columns
-    -   `value_name`: name of the new column that will contain the values of the original columns
+- Use `pd.melt()` to transform from wide to long
+- Parameters:
+  - `id_vars`: columns to keep
+  - `var_name`: name of the new column that will contain the names of the original columns
+  - `value_name`: name of the new column that will contain the values of the original columns
 
 . . .
 
@@ -657,8 +706,8 @@ print(df)
 
 ## Using AI to generate code
 
--   Coding by hand is <span class="highlight">not the only way to generate code</span>
--   Most likely, a lot of you have already used **ChatGPT**
+- Coding by hand is <span class="highlight">not the only way to generate code</span>
+- Most likely, a lot of you have already used **ChatGPT**
 
 . . .
 
@@ -680,48 +729,48 @@ Models work?
 
 ## Large Language Models (LLMs)
 
--   Think of them like <span class="highlight">advanced pattern recognition systems</span>
--   They have "read" **massive amounts of text**
--   Books, websites, articles, code, and more
--   Text is broken into **tokens**, parts of words or punctuation
--   Based on patterns, they can **generate new text**
+- Think of them like <span class="highlight">advanced pattern recognition systems</span>
+- They have "read" **massive amounts of text**
+- Books, websites, articles, code, and more
+- Text is broken into **tokens**, parts of words or punctuation
+- Based on patterns, they can **generate new text**
 
 ## Training LLMs
 
--   Imagine learning a language by <span class="highlight">reading millions of books</span>
--   Learns patterns in **how words and ideas connect** via tokens
--   Interconnected nodes with **weights representing patterns**
--   During training, these **weights are adjusted**
--   Once trained, **applying** them takes much less ressources
+- Imagine learning a language by <span class="highlight">reading millions of books</span>
+- Learns patterns in **how words and ideas connect** via tokens
+- Interconnected nodes with **weights representing patterns**
+- During training, these **weights are adjusted**
+- Once trained, **applying** them takes much less ressources
 
 ## Pattern Recognition
 
--   <span class="highlight">Not like a search engine!</span>
--   When asked, it looks for **relevant patterns** it learned
--   Like having a **huge library** in its "memory" to draw from
--   It can find **patterns between concepts** and your question
--   Knows only limited text at once (**context window**)
+- <span class="highlight">Not like a search engine!</span>
+- When asked, it looks for **relevant patterns** it learned
+- Like having a **huge library** in its "memory" to draw from
+- It can find **patterns between concepts** and your question
+- Knows only limited text at once (**context window**)
 
 ## Probability based responses
 
--   After each written token, it predicts <span class="highlight">"what should come next?"</span>
--   Like a advanced version of the **word prediction** on your phone
--   Chooses the **most likely next token** based on training
--   <span class="highlight">But can't actually "think" or "understand" like humans</span>
+- After each written token, it predicts <span class="highlight">"what should come next?"</span>
+- Like a advanced version of the **word prediction** on your phone
+- Chooses the **most likely next token** based on training
+- <span class="highlight">But can't actually "think" or "understand" like humans</span>
 
 ## Limitations
 
--   **No true understanding** of cause and effect
--   Sometimes **makes mistakes or "hallucinates"**
--   Mostly only knows what it **was trained on**
--   Can **reflect biases** present in training data
--   No emotional understanding (but <span class="highlight">can simulate responses!</span>)
+- **No true understanding** of cause and effect
+- Sometimes **makes mistakes or "hallucinates"**
+- Mostly only knows what it **was trained on**
+- Can **reflect biases** present in training data
+- No emotional understanding (but <span class="highlight">can simulate responses!</span>)
 
 ## Impact on Jobs
 
--   <span class="question">Question</span>: What do you think about their impact on jobs?
--   <span class="question">Question</span>: What are the implications for us?
--   <span class="question">Question</span>: Can we use them to our advantage?
+- <span class="question">Question</span>: What do you think about their impact on jobs?
+- <span class="question">Question</span>: What are the implications for us?
+- <span class="question">Question</span>: Can we use them to our advantage?
 
 . . .
 
@@ -733,11 +782,11 @@ Models work?
 
 ## (Current) Choices for Programmers
 
--   [Github Copilot](https://github.com/features/copilot): Integrated into VS Code by Microsoft
--   [Cursor](https://www.cursor.com/): Fork of VS Code with AI assistance built in
--   [Aider](https://aider.chat): Chat interface for AI to write code in the terminal
--   [Zed](https://www.zed.dev/): Lightweight IDE with AI features
--   [Claude Code](https://claude.ai/): Coding-Assistant in the terminal
+- [Github Copilot](https://github.com/features/copilot): Integrated into VS Code by Microsoft
+- [Cursor](https://www.cursor.com/): Fork of VS Code with AI assistance built in
+- [Aider](https://aider.chat): Chat interface for AI to write code in the terminal
+- [Zed](https://www.zed.dev/): Lightweight IDE with AI features
+- [Claude Code](https://claude.ai/): Coding-Assistant in the terminal
 
 . . .
 
@@ -753,9 +802,9 @@ Models work?
 
 **Think of it as:**
 
--   An autocomplete for entire lines or blocks of code
--   A coding assistant that understands context
--   A learning tool that shows you coding patterns
+- An autocomplete for entire lines or blocks of code
+- A coding assistant that understands context
+- A learning tool that shows you coding patterns
 
 . . .
 
@@ -795,9 +844,9 @@ Models work?
 
 ## More on Copilot
 
--   While working with Copilot, it will **suggest** you code changes
--   You can **accept** or **reject** them
--   The rest you will **learn by doing!**
+- While working with Copilot, it will **suggest** you code changes
+- You can **accept** or **reject** them
+- The rest you will **learn by doing!**
 
 . . .
 
@@ -810,8 +859,8 @@ Models work?
 
 ## Interesting Books
 
--   Downey, A. B. (2024). Think Python: How to think like a computer scientist (Third edition). O'Reilly. [Link to free online version](https://greenteapress.com/wp/think-python-3rd-edition/)
--   Elter, S. (2021). Schrödinger programmiert Python: Das etwas andere Fachbuch (1. Auflage). Rheinwerk Verlag.
+- Downey, A. B. (2024). Think Python: How to think like a computer scientist (Third edition). O'Reilly. [Link to free online version](https://greenteapress.com/wp/think-python-3rd-edition/)
+- Elter, S. (2021). Schrödinger programmiert Python: Das etwas andere Fachbuch (1. Auflage). Rheinwerk Verlag.
 
 . . .
 

@@ -33,11 +33,11 @@ def scramble_word(word):
 # Your code here
 ```
 
--   Use `random.choice(words)` to select a random word from the list
--   Use `random.shuffle()` on a list of characters to scramble
--   Use `.strip()` and `.lower()` for input processing
--   Use a while loop with a counter for tries
--   Use try-except blocks in the main game loop to keep game running after errors
+- Use `random.choice(words)` to select a random word from the list
+- Use `random.shuffle()` on a list of characters to scramble
+- Use `.strip()` and `.lower()` for input processing
+- Use a while loop with a counter for tries
+- Use try-except blocks in the main game loop to keep game running after errors
 
 ## Custom Modules
 

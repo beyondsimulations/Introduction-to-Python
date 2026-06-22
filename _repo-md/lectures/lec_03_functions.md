@@ -14,11 +14,11 @@ format:
 
 ## Slicing
 
--   With slicing we can get a range of elements from a sequence
--   Syntax: `sequence[start:stop:step]`
--   `start` is the index of the first element to include
--   `stop` is the index of the first element to exclude
--   `step` is the increment between indices
+- With slicing we can get a range of elements from a sequence
+- Syntax: `sequence[start:stop:step]`
+- `start` is the index of the first element to include
+- `stop` is the index of the first element to exclude
+- `step` is the increment between indices
 
 . . .
 
@@ -28,9 +28,9 @@ format:
 
 ## Comparison Operators
 
--   Comparison operators are used to compare two values
--   The result of a comparison is a boolean value (`True` or `False`)
--   Operators include: `==`, `!=`, `>`, `<`, `>=`, `<=`
+- Comparison operators are used to compare two values
+- The result of a comparison is a boolean value (`True` or `False`)
+- Operators include: `==`, `!=`, `>`, `<`, `>=`, `<=`
 
 . . .
 
@@ -47,11 +47,11 @@ print(one == two)
 
 ## Control Structures
 
--   Control structures allow us to control the flow of execution
--   It includes conditional statements and loops
--   Conditional statements: `if`, `elif`, `else`
--   Loops: `for` and `while`
--   Control flow statements (in loops): `continue` and `break`
+- Control structures allow us to control the flow of execution
+- It includes conditional statements and loops
+- Conditional statements: `if`, `elif`, `else`
+- Loops: `for` and `while`
+- Control flow statements (in loops): `continue` and `break`
 
 . . .
 
@@ -63,10 +63,10 @@ print(one == two)
 
 ## What is a Function?
 
--   Functions can accept <span class="highlight">inputs (parameters)</span> and <span class="highlight">return outputs</span>
--   Encapsulate logic, making code easier to maintain
--   Functions can be called **multiple times** from different part
--   They help **reduce code duplication** and improve readability
+- Functions can accept <span class="highlight">inputs (parameters)</span> and <span class="highlight">return outputs</span>
+- Encapsulate logic, making code easier to maintain
+- Functions can be called **multiple times** from different part
+- They help **reduce code duplication** and improve readability
 
 ``` python
 # I'm a function.
@@ -83,22 +83,22 @@ type(print)
 
 ## Built-in Functions already used
 
--   `print()`: Print text to console
--   `input()`: Read text from console
--   `len()`: Get the length of a sequence
--   `range()`: Generate a sequence of numbers
--   `round()`: Round number to a specified number of decimal places
--   `type()`: Get the type of an object
--   `int()`: Convert a string to an integer
--   `float()`: Convert a string to a floating-point number
--   `str()`: Convert an object to a string
+- `print()`: Print text to console
+- `input()`: Read text from console
+- `len()`: Get the length of a sequence
+- `range()`: Generate a sequence of numbers
+- `round()`: Round number to a specified number of decimal places
+- `type()`: Get the type of an object
+- `int()`: Convert a string to an integer
+- `float()`: Convert a string to a floating-point number
+- `str()`: Convert an object to a string
 
 ## Defining a Function
 
--   Use the `def` keyword followed by the function name
--   Inside parentheses we list the inputs (parameters)
--   The code block within every function starts with a colon (:)
--   It is <span class="highlight">indented</span>, just as the loops from the last lecture
+- Use the `def` keyword followed by the function name
+- Inside parentheses we list the inputs (parameters)
+- The code block within every function starts with a colon (:)
+- It is <span class="highlight">indented</span>, just as the loops from the last lecture
 
 . . .
 
@@ -118,8 +118,8 @@ greet("Students")
 
 ## Comment Functions
 
--   It is good practice to include a comment at the top of your functions
--   If you do it with three `"""`, it will appear in the help menu
+- It is good practice to include a comment at the top of your functions
+- If you do it with three `"""`, it will appear in the help menu
 
 . . .
 
@@ -142,23 +142,23 @@ help(greet)
 
 ## Naming Functions (and Methods)
 
--   Function names should be short, but descriptive
--   Use underscores (`_`) instead of spaces in the names
--   Avoid using Python keywords as function names (e.g., `print`)
--   Try to avoid using built-in functions and methods that have a similar name (e.g., `sum` and `len`)
+- Function names should be short, but descriptive
+- Use underscores (`_`) instead of spaces in the names
+- Avoid using Python keywords as function names (e.g., `print`)
+- Try to avoid using built-in functions and methods that have a similar name (e.g., `sum` and `len`)
 
 <span class="question">\> Question:</span> Which of the following is a good name for a function?  
 
--   `myfunctionthatmultipliesvalues`  
--   `multiply_two_values`  
--   `multiplyTwoValues`
+- `myfunctionthatmultipliesvalues`  
+- `multiply_two_values`  
+- `multiplyTwoValues`
 
 ## Function Parameters
 
--   Parameters are variables that the function accepts
--   They allow you to pass data to the function
--   Try to name them as variables: <span class="highlight">short and meaningful</span>
--   We can also **leave them out** or define **several inputs**!
+- Parameters are variables that the function accepts
+- They allow you to pass data to the function
+- Try to name them as variables: <span class="highlight">short and meaningful</span>
+- We can also **leave them out** or define **several inputs**!
 
 ``` python
 # This function has no parameter yet!
@@ -171,8 +171,8 @@ greet()
 
 ## Function Arguments
 
--   Arguments are the actual values passed to the function
--   They replace the parameters in the function definition
+- Arguments are the actual values passed to the function
+- They replace the parameters in the function definition
 
 . . .
 
@@ -188,9 +188,9 @@ def greet(university_name, lecture):
 
 ## Initializing Parameters
 
--   We can also **initialize parameters** to a default value!
--   To do this we use the `=` sign and provide it with a value
--   This is called a <span class="highlight">keyword argument</span>
+- We can also **initialize parameters** to a default value!
+- To do this we use the `=` sign and provide it with a value
+- This is called a <span class="highlight">keyword argument</span>
 
 ``` python
 def greet(lecture="Programming with Python"):
@@ -211,10 +211,10 @@ greet("Super Advanced Programming with Python")
 
 ## Multiple Parameters
 
--   As seen before, we can have **multiple parameters** in a function
--   Called <span class="highlight">positional arguments</span> and are separated by commas
--   When we call them, they must be provided in the same order
--   Alternatively, we could call them by name!
+- As seen before, we can have **multiple parameters** in a function
+- Called <span class="highlight">positional arguments</span> and are separated by commas
+- When we call them, they must be provided in the same order
+- Alternatively, we could call them by name!
 
 . . .
 
@@ -231,9 +231,9 @@ call_parameters(parameter_b="Hello", parameter_a="World")
 
 ## Function Return Values
 
--   Functions can return values using the `return` statement
--   The return statement ends the function
--   It then **returns** the specified value
+- Functions can return values using the `return` statement
+- The return statement ends the function
+- It then **returns** the specified value
 
 . . .
 
@@ -260,8 +260,8 @@ print(simple_multiplication(2,21))
 
 ## Access return values
 
--   We can also **save** the return value from a function in a variable
--   That way we can use it later on in the program
+- We can also **save** the return value from a function in a variable
+- That way we can use it later on in the program
 
 . . .
 
@@ -277,7 +277,7 @@ print(result)
 
 ## Returning None
 
--   If we don't specify `return`, functions will return `None`
+- If we don't specify `return`, functions will return `None`
 
 ``` python
 def simple_multiplication(a,b):
@@ -300,8 +300,8 @@ print(simple_multiplication(2,21))
 
 ## Recursion
 
--   Recursion is a technique where a <span class="highlight">function calls itself</span>
--   Helps to break down problems into **smaller problems**
+- Recursion is a technique where a <span class="highlight">function calls itself</span>
+- Helps to break down problems into **smaller problems**
 
 . . .
 
@@ -337,8 +337,8 @@ print(fibonacci(6))
 
 ## Function Scope
 
--   Variables defined inside a function are local to that function
--   They <span class="highlight">cannot</span> be accessed outside the function
+- Variables defined inside a function are local to that function
+- They <span class="highlight">cannot</span> be accessed outside the function
 
 . . .
 
@@ -355,8 +355,8 @@ print(greeting)  # This will cause an error
 
 ## Global Scope
 
--   Variables defined **outside** all functions are in the global scope
--   They can be accessed from <span class="highlight">anywhere</span> in the program
+- Variables defined **outside** all functions are in the global scope
+- They can be accessed from <span class="highlight">anywhere</span> in the program
 
 . . .
 
@@ -381,8 +381,8 @@ print(greeting) # Greet ????
 
 ## Global Keyword
 
--   Still, we can change the value of `greeting` from <span class="highlight">inside</span> a function!
--   By using the `global` keyword to modify a global variable
+- Still, we can change the value of `greeting` from <span class="highlight">inside</span> a function!
+- By using the `global` keyword to modify a global variable
 
 . . .
 
@@ -409,10 +409,10 @@ print(greeting) # Greet students again
 
 ## Classes
 
--   Classes are <span class="highlight">blueprints</span> for creating objects
--   They encapsulate data (attributes) and behavior (methods)
--   Objects are instances of classes
--   **Methods are functions that are defined within a class**
+- Classes are <span class="highlight">blueprints</span> for creating objects
+- They encapsulate data (attributes) and behavior (methods)
+- Objects are instances of classes
+- **Methods are functions that are defined within a class**
 
 . . .
 
@@ -429,10 +429,10 @@ student.know_answer()
 
 ## Self
 
--   Classes can be <span class="highlight">quite tricky at first</span>, especially the `self` keyword
--   When we call `self` in a method, it refers to the object itself
--   It is used to **access** the attributes and methods of the class
--   `self` always needs to be included in method definitions
+- Classes can be <span class="highlight">quite tricky at first</span>, especially the `self` keyword
+- When we call `self` in a method, it refers to the object itself
+- It is used to **access** the attributes and methods of the class
+- `self` always needs to be included in method definitions
 
 . . .
 
@@ -452,9 +452,9 @@ student.know_answer()
 
 ## Naming Classes
 
--   Classes can be named anything, but it is common to use the plural form of their name (e.g., `People`)
--   CamelCase is used for class names, and snake_case is used for method and attribute names (e.g., `TallPeople`)
--   Classes are usually defined in a file with the same name as their class, but with a `.py` extension
+- Classes can be named anything, but it is common to use the plural form of their name (e.g., `People`)
+- CamelCase is used for class names, and snake_case is used for method and attribute names (e.g., `TallPeople`)
+- Classes are usually defined in a file with the same name as their class, but with a `.py` extension
 
 . . .
 
@@ -462,8 +462,8 @@ student.know_answer()
 
 ## Class Attributes
 
--   Class attributes are attributes that are shared by all instances
--   They are defined **within** the class but **outside** any methods
+- Class attributes are attributes that are shared by all instances
+- They are defined **within** the class but **outside** any methods
 
 . . .
 
@@ -485,8 +485,8 @@ print(student_B.smart)
 
 ## Instance Attributes
 
--   Instance attributes are attributes unique to each class instance
--   They are defined within the `__init__` method
+- Instance attributes are attributes unique to each class instance
+- They are defined within the `__init__` method
 
 ``` python
 class Students: # Class definition
@@ -507,9 +507,9 @@ student.knows_answer()
 
 ## Inheritance
 
--   Inheritance allows a class to <span class="highlight">inherit attributes and methods</span>
--   The class that inherits is called the **subclass**
--   The class that is being inherited from is called the **superclass**
+- Inheritance allows a class to <span class="highlight">inherit attributes and methods</span>
+- The class that inherits is called the **subclass**
+- The class that is being inherited from is called the **superclass**
 
 . . .
 
@@ -539,9 +539,9 @@ class LazyStudents(Students): # Subclass
 
 ## Encapsulation
 
--   Means <span class="highlight">keeping related data and functions together</span>
--   Like a **capsule** that contains everything needed for that object
--   Our `Student` class is already using encapsulation!
+- Means <span class="highlight">keeping related data and functions together</span>
+- Like a **capsule** that contains everything needed for that object
+- Our `Student` class is already using encapsulation!
 
 . . .
 
@@ -567,10 +567,10 @@ print(alice.when_asked())  # Data and behavior work together
 
 ## The End
 
--   Interested in more detail about classes and OOP?
--   Check out <span class="highlight">access modifiers, getters and setters</span>
--   They are definitely a bit more complicated for beginners...
--   Though they are worth learning if you build **complex programs**
+- Interested in more detail about classes and OOP?
+- Check out <span class="highlight">access modifiers, getters and setters</span>
+- They are definitely a bit more complicated for beginners...
+- Though they are worth learning if you build **complex programs**
 
 . . .
 
@@ -583,7 +583,7 @@ print(alice.when_asked())  # Data and behavior work together
 
 ## Interesting Book to dive deeper
 
--   Thomas, D., & Hunt, A. (2019). The pragmatic programmer, 20th anniversary edition: Journey to mastery (Second edition). Addison-Wesley.
+- Thomas, D., & Hunt, A. (2019). The pragmatic programmer, 20th anniversary edition: Journey to mastery (Second edition). Addison-Wesley.
 
 . . .
 

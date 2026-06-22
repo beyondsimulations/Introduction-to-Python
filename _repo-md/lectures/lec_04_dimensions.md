@@ -14,10 +14,10 @@ format:
 
 ## Functions
 
--   Functions are **reusable blocks** of code that perform <span class="highlight">specific tasks</span>
--   They can accept inputs (parameters) and return outputs
--   `def` followed by the function name, parameters and a colon
--   Help in organizing code and reducing repetition
+- Functions are **reusable blocks** of code that perform <span class="highlight">specific tasks</span>
+- They can accept inputs (parameters) and return outputs
+- `def` followed by the function name, parameters and a colon
+- Help in organizing code and reducing repetition
 
 . . .
 
@@ -32,10 +32,10 @@ print(greet("Students"))
 
 ## Scope
 
--   Scope determines the visibility and lifetime of variables
--   Variables defined inside a function are **local** to that function
--   Variables defined outside of all functions are **global**
--   They can be <span class="highlight">accessed from anywhere</span> in the program
+- Scope determines the visibility and lifetime of variables
+- Variables defined inside a function are **local** to that function
+- Variables defined outside of all functions are **global**
+- They can be <span class="highlight">accessed from anywhere</span> in the program
 
 . . .
 
@@ -51,9 +51,9 @@ print(greeting) # This will cause an error
 
 ## Classes
 
--   Classes are **blueprints** for creating objects
--   They encapsulate data (attributes) and behavior (methods)
--   Help in <span class="highlight">organizing code</span> and creating objects with similar structures
+- Classes are **blueprints** for creating objects
+- They encapsulate data (attributes) and behavior (methods)
+- Help in <span class="highlight">organizing code</span> and creating objects with similar structures
 
 . . .
 
@@ -76,10 +76,10 @@ print(lecture_4.duration())
 
 ## What are Tuples?
 
--   Tuples are **ordered collections** of items
--   They are **immutable** (cannot be changed after creation)
--   Help in <span class="highlight">storing multiple items</span> in a single variable
--   Created using the `tuple()` function or the `()` syntax
+- Tuples are **ordered collections** of items
+- They are **immutable** (cannot be changed after creation)
+- Help in <span class="highlight">storing multiple items</span> in a single variable
+- Created using the `tuple()` function or the `()` syntax
 
 . . .
 
@@ -92,10 +92,10 @@ print(my_tuple)
 
 ## Tuple Operations
 
--   Tuples support the <span class="highlight">same operations as strings</span>
--   We can use indexing and slicing to access elements
--   We can use the `+` operator to concatenate tuples
--   We can use the `*` operator to repeat a tuple
+- Tuples support the <span class="highlight">same operations as strings</span>
+- We can use indexing and slicing to access elements
+- We can use the `+` operator to concatenate tuples
+- We can use the `*` operator to repeat a tuple
 
 . . .
 
@@ -114,9 +114,9 @@ print(my_tuple * 2)
 
 ## Tuple Methods
 
--   Tuples support the following methods:
-    -   `count(x)`: Returns the number of times `x` appears in the tuple
-    -   `index(x)`: Returns the index of the first occurrence of `x`
+- Tuples support the following methods:
+  - `count(x)`: Returns the number of times `x` appears in the tuple
+  - `index(x)`: Returns the index of the first occurrence of `x`
 
 . . .
 
@@ -133,7 +133,7 @@ print(my_tuple.index(3))
 
 ## Tuple Data Types
 
--   Tuples can contain elements of <span class="highlight">different data types</span>
+- Tuples can contain elements of <span class="highlight">different data types</span>
 
 ``` python
 my_tuple = ("Peter", 25, "Hamburg")
@@ -160,8 +160,8 @@ print(my_tuple)
 
 ## Tuples from Functions
 
--   Functions can return tuples
--   This is useful if we want to **return multiple values** from a function
+- Functions can return tuples
+- This is useful if we want to **return multiple values** from a function
 
 . . .
 
@@ -181,9 +181,9 @@ print(student_info)
 
 ## Tuple Unpacking
 
--   Allows us to assign the <span class="highlight">elements of a tuple to variables</span>
--   The number of variables **must match** the number of elements
--   Use the `*` operator to assign the remaining elements to a variable
+- Allows us to assign the <span class="highlight">elements of a tuple to variables</span>
+- The number of variables **must match** the number of elements
+- Use the `*` operator to assign the remaining elements to a variable
 
 . . .
 
@@ -208,11 +208,11 @@ print(f"Other info: {rest}")
 
 ## What are Lists?
 
--   Lists are **ordered collections** of items
--   They are **mutable** (can be changed after creation)
--   Created using the `list()` function or the `[]` syntax
--   They support the **same operations** as strings and tuples
--   Have much more methods and are more versatile than tuples
+- Lists are **ordered collections** of items
+- They are **mutable** (can be changed after creation)
+- Created using the `list()` function or the `[]` syntax
+- They support the **same operations** as strings and tuples
+- Have much more methods and are more versatile than tuples
 
 . . .
 
@@ -229,15 +229,15 @@ print(my_list)
 
 ## List Methods
 
--   Common methods for lists:
-    -   `count(x)`: Returns the number of times `x` appears in the list
-    -   `append(x)`: Adds an element `x` to the end of the list
-    -   `insert(i, x)`: Inserts an element `x` at index `i`
-    -   `remove(x)`: Removes the first occurrence of element `x`
-    -   `index(x)`: Returns the index of the first occurrence of `x`
-    -   `pop([i])`: Removes the element at index `i` and returns it
-    -   `sort()`: Sorts the list in ascending order
-    -   `reverse()`: Reverses the list
+- Common methods for lists:
+  - `count(x)`: Returns the number of times `x` appears in the list
+  - `append(x)`: Adds an element `x` to the end of the list
+  - `insert(i, x)`: Inserts an element `x` at index `i`
+  - `remove(x)`: Removes the first occurrence of element `x`
+  - `index(x)`: Returns the index of the first occurrence of `x`
+  - `pop([i])`: Removes the element at index `i` and returns it
+  - `sort()`: Sorts the list in ascending order
+  - `reverse()`: Reverses the list
 
 ## Lists in Action
 
@@ -250,10 +250,10 @@ shopping_list = ["cider", "beer", "bread", "frozen_pizza"]
 
 . . .
 
--   First, add some apples to the list for a healthy option
--   Next, remove the cider as you already have some at home
--   Sort all items in the list alphabetically
--   Print each item of the list on a new line
+- First, add some apples to the list for a healthy option
+- Next, remove the cider as you already have some at home
+- Sort all items in the list alphabetically
+- Print each item of the list on a new line
 
 . . .
 
@@ -265,11 +265,11 @@ shopping_list = ["cider", "beer", "bread", "frozen_pizza"]
 
 ## What are Sets?
 
--   Sets are **unordered collections** of <span class="highlight">unique elements</span>
--   They are **mutable** (can be changed after creation)
--   Created using the `set()` function or the `{}` syntax
--   Supports `+` and `*` operations like lists and tuples
--   Unlike lists and tuples, **sets do not support indexing**
+- Sets are **unordered collections** of <span class="highlight">unique elements</span>
+- They are **mutable** (can be changed after creation)
+- Created using the `set()` function or the `{}` syntax
+- Supports `+` and `*` operations like lists and tuples
+- Unlike lists and tuples, **sets do not support indexing**
 
 . . .
 
@@ -282,20 +282,20 @@ print(my_set)
 
 ## Set Methods
 
--   Common methods for sets:
-    -   `add(x)`: Adds an element `x` to the set
-    -   `remove(x)`: Removes an element `x` from the set
-    -   `discard(x)`: Removes an element `x` from the set if it is present
-    -   `pop()`: Removes and returns an arbitrary element from the set
-    -   `update(other)`: Adds all elements from `other` to the set
+- Common methods for sets:
+  - `add(x)`: Adds an element `x` to the set
+  - `remove(x)`: Removes an element `x` from the set
+  - `discard(x)`: Removes an element `x` from the set if it is present
+  - `pop()`: Removes and returns an arbitrary element from the set
+  - `update(other)`: Adds all elements from `other` to the set
 
 ## Set Theory
 
--   Additional methods are derived from set theory
-    -   `union(other)`: New set with elements from both sets
-    -   `intersection(other)`: New set with common elements
-    -   `isdisjoint(other)`: `True` if no elements in common
-    -   `issubset(other)`: `True` if subset of `other`
+- Additional methods are derived from set theory
+  - `union(other)`: New set with elements from both sets
+  - `intersection(other)`: New set with common elements
+  - `isdisjoint(other)`: `True` if no elements in common
+  - `issubset(other)`: `True` if subset of `other`
 
 . . .
 
@@ -315,10 +315,10 @@ friends_group_2 = [ "Smith", "Apoc", "Cypher", "Morpheus"]
 
 . . .
 
--   First, find the mutual friends in both groups
--   Then create a new set of all friends from both groups
--   Count the number of friends in total
--   Print each item of the set on a new line
+- First, find the mutual friends in both groups
+- Then create a new set of all friends from both groups
+- Count the number of friends in total
+- Print each item of the set on a new line
 
 . . .
 
@@ -330,12 +330,12 @@ friends_group_2 = [ "Smith", "Apoc", "Cypher", "Morpheus"]
 
 ## What are Dictionaries?
 
--   Dictionaries are **unordered collections** of key-value pairs
--   They are **mutable** (can be changed after creation)
--   Keys must be **unique** and **immutable**
--   Values can be of any type
--   Created using the `dict()` function or the `{}` syntax
--   As sets we **cannot access them by index**
+- Dictionaries are **unordered collections** of key-value pairs
+- They are **mutable** (can be changed after creation)
+- Keys must be **unique** and **immutable**
+- Values can be of any type
+- Created using the `dict()` function or the `{}` syntax
+- As sets we **cannot access them by index**
 
 . . .
 
@@ -348,8 +348,8 @@ print(who_am_i)
 
 ## Key-Value Pairs
 
--   We can <span class="highlight">access them by their keys</span>, though!
--   You can think of them as a set of key-value pairs
+- We can <span class="highlight">access them by their keys</span>, though!
+- You can think of them as a set of key-value pairs
 
 . . .
 
@@ -368,17 +368,17 @@ print(who_am_i["name"])
 
 ## Dictionary Operations
 
--   Common operations and methods:
+- Common operations and methods:
 
--   `in` operation to check if a key is in the dictionary
+- `in` operation to check if a key is in the dictionary
 
--   `for` loop to iterate over the dictionary
+- `for` loop to iterate over the dictionary
 
--   `keys()` method to return a view of the dictionary's keys
+- `keys()` method to return a view of the dictionary's keys
 
--   `values()` method to return a view of the dictionary's values
+- `values()` method to return a view of the dictionary's values
 
--   `pop(key[, default])` to remove a key and return its value
+- `pop(key[, default])` to remove a key and return its value
 
 ## Dictionaries in Action
 
@@ -391,18 +391,18 @@ i_am = {}
 
 . . .
 
--   Add your favorite color and food to the dictionary
--   Remove the city from the dictionary
--   Print your name and age in a formatted sentence
+- Add your favorite color and food to the dictionary
+- Remove the city from the dictionary
+- Print your name and age in a formatted sentence
 
 # <span class="flow">Overview of new Data Types</span>
 
 ## Comparison between Data Types
 
--   **Tuple**: Immutable, ordered, duplicates allowed
--   **List**: Mutable, ordered, duplicates allowed
--   **Set**: Mutable, unordered, no duplicates
--   **Dictionary**: Mutable, unordered, no duplicates, key-value pairs
+- **Tuple**: Immutable, ordered, duplicates allowed
+- **List**: Mutable, ordered, duplicates allowed
+- **Set**: Mutable, unordered, no duplicates
+- **Dictionary**: Mutable, unordered, no duplicates, key-value pairs
 
 . . .
 
@@ -412,10 +412,10 @@ i_am = {}
 
 ## When to use which?
 
--   **Tuples**: store a collection of items that <span class="highlight">should not be changed</span>
--   **Lists**: store a collection of items that <span class="highlight">should be changed</span>
--   **Sets**: store a collection of items that <span class="highlight">should not be changed</span> and <span class="highlight">duplicates are not allowed</span>
--   **Dictionaries**: store a collection of items that should be changed, <span class="highlight">duplicates are not allowed</span> and require <span class="highlight">key-value pairs</span>
+- **Tuples**: store a collection of items that <span class="highlight">should not be changed</span>
+- **Lists**: store a collection of items that <span class="highlight">should be changed</span>
+- **Sets**: store a collection of items that <span class="highlight">should not be changed</span> and <span class="highlight">duplicates are not allowed</span>
+- **Dictionaries**: store a collection of items that should be changed, <span class="highlight">duplicates are not allowed</span> and require <span class="highlight">key-value pairs</span>
 
 . . .
 
@@ -425,10 +425,10 @@ i_am = {}
 
 ## Speed Differences
 
--   **Lists** are the <span class="highlight">most versatile, but slowest</span>
--   **Tuples** are generally <span class="highlight">faster than lists</span>
--   **Sets** are generally <span class="highlight">faster than lists and tuples</span>
--   **Dictionaries** depend, but are generally <span class="highlight">faster than lists and tuples</span>
+- **Lists** are the <span class="highlight">most versatile, but slowest</span>
+- **Tuples** are generally <span class="highlight">faster than lists</span>
+- **Sets** are generally <span class="highlight">faster than lists and tuples</span>
+- **Dictionaries** depend, but are generally <span class="highlight">faster than lists and tuples</span>
 
 <details class="code-fold">
 <summary>Code</summary>
@@ -477,11 +477,11 @@ print("Note, that theses values are machine dependent and just for illustration!
 
 ## Comprehensions
 
--   Comprehensions provide a concise way to create data structures
-    -   **Tuple** comprehensions: `(x for x in iterable)`
-    -   **List** comprehensions: `[x for x in iterable]`
-    -   **Set** comprehensions: `{x for x in iterable}`
-    -   **Dictionary** comprehensions: `{x: y for x, y in iterable}`
+- Comprehensions provide a concise way to create data structures
+  - **Tuple** comprehensions: `(x for x in iterable)`
+  - **List** comprehensions: `[x for x in iterable]`
+  - **Set** comprehensions: `{x for x in iterable}`
+  - **Dictionary** comprehensions: `{x: y for x, y in iterable}`
 
 . . .
 
@@ -505,8 +505,8 @@ exam_data = [("Alice", 85), ("Bob", 92), ("Charlie", 78), ("Diana", 96), ("Eve",
 
 ## Iterables
 
--   <span class="highlight">We have already introduced those!</span>
--   We can use the `for` loop to iterate over an iterable
+- <span class="highlight">We have already introduced those!</span>
+- We can use the `for` loop to iterate over an iterable
 
 . . .
 
@@ -535,8 +535,8 @@ for key, value in who_am_i.items():
 
 ## Nesting
 
--   We can **nest data structures** within each other
--   This is useful if we want to store more complex data
+- We can **nest data structures** within each other
+- This is useful if we want to store more complex data
 
 . . .
 
@@ -561,10 +561,10 @@ print(nested_list[2])
 
 ## Input/Output
 
--   A common task in programming is to <span class="highlight">interact with users</span>
--   Remember the `input()` function from the first lecture?
--   It is a classical example of **user input**
--   An example of **output** is the `print()` function
+- A common task in programming is to <span class="highlight">interact with users</span>
+- Remember the `input()` function from the first lecture?
+- It is a classical example of **user input**
+- An example of **output** is the `print()` function
 
 . . .
 
@@ -581,14 +581,14 @@ print(f"Hello, {name}!")
 
 ## Reading and Writing Files
 
--   We also need to <span class="highlight">interact with data</span>
--   File handling in Python is quite simple:
-    -   Use `open(file_name, mode)` to open a file
-    -   Modes: `"r"` (read), `"w"` (write), `"a"` (append)
--   Basic operations:
-    -   Read: `file.read()`
-    -   Write: `file.write(content)`
-    -   Close: `file.close()`
+- We also need to <span class="highlight">interact with data</span>
+- File handling in Python is quite simple:
+  - Use `open(file_name, mode)` to open a file
+  - Modes: `"r"` (read), `"w"` (write), `"a"` (append)
+- Basic operations:
+  - Read: `file.read()`
+  - Write: `file.write(content)`
+  - Close: `file.close()`
 
 ## File Handling in Action
 
@@ -624,9 +624,9 @@ print(content) # This prints the content of the file
 
 ## Easier File Handling with with
 
--   We can also use the `with` statement to open a file
--   This ensures the file is properly closed after its handling finishes
--   It's a good practice to use it when working with files
+- We can also use the `with` statement to open a file
+- This ensures the file is properly closed after its handling finishes
+- It's a good practice to use it when working with files
 
 ``` python
 with open("hi_again.txt", "w") as file:
@@ -643,10 +643,10 @@ print("File successfully written")
 
 ## Working with other file types
 
--   Naturally, we also want to <span class="highlight">work with other file types!</span>
--   Reading and writing **CSV files** is a common tasks in data analysis
--   Excel files are used in many applications and companies
--   We will see how to do this **later** in the course
+- Naturally, we also want to <span class="highlight">work with other file types!</span>
+- Reading and writing **CSV files** is a common tasks in data analysis
+- Excel files are used in many applications and companies
+- We will see how to do this **later** in the course
 
 . . .
 
@@ -659,8 +659,8 @@ print("File successfully written")
 
 ## Interesting Books
 
--   Downey, A. B. (2024). Think Python: How to think like a computer scientist (Third edition). O'Reilly. [Link to free online version](https://greenteapress.com/wp/think-python-3rd-edition/)
--   Elter, S. (2021). Schrödinger programmiert Python: Das etwas andere Fachbuch (1. Auflage). Rheinwerk Verlag.
+- Downey, A. B. (2024). Think Python: How to think like a computer scientist (Third edition). O'Reilly. [Link to free online version](https://greenteapress.com/wp/think-python-3rd-edition/)
+- Elter, S. (2021). Schrödinger programmiert Python: Das etwas andere Fachbuch (1. Auflage). Rheinwerk Verlag.
 
 . . .
 

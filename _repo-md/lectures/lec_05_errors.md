@@ -14,11 +14,11 @@ format:
 
 ## Data Structures
 
--   <span class="highlight">Newly</span> introduced data structures:
-    -   **Tuples**: Ordered, immutable collections
-    -   **Lists**: Ordered, mutable collections
-    -   **Sets**: Unordered collections of unique elements
-    -   **Dictionaries**: Key-value pairs
+- <span class="highlight">Newly</span> introduced data structures:
+  - **Tuples**: Ordered, immutable collections
+  - **Lists**: Ordered, mutable collections
+  - **Sets**: Unordered collections of unique elements
+  - **Dictionaries**: Key-value pairs
 
 . . .
 
@@ -31,10 +31,10 @@ tuple_example = (1, 2, 3, 4, 5)
 
 ## Operations and Methods
 
--   Each data structure has specific operations and methods:
-    -   Tuples and Lists: Indexing, slicing, concatenation
-    -   Sets: Union, intersection, difference
-    -   Dictionaries: Key-based access, `keys()`, `values()`
+- Each data structure has specific operations and methods:
+  - Tuples and Lists: Indexing, slicing, concatenation
+  - Sets: Union, intersection, difference
+  - Dictionaries: Key-based access, `keys()`, `values()`
 
 . . .
 
@@ -44,10 +44,10 @@ tuple_example = (1, 2, 3, 4, 5)
 
 ## I/O and File Handling
 
--   Basic file operations
-    -   Opening files with `open()`
-    -   Reading and writing files
-    -   Using the `with` statement for safer file handling
+- Basic file operations
+  - Opening files with `open()`
+  - Reading and writing files
+  - Using the `with` statement for safer file handling
 
 . . .
 
@@ -59,7 +59,7 @@ tuple_example = (1, 2, 3, 4, 5)
 
 ## What are Exceptions?
 
--   Exceptions are <span class="highlight">discovered errors</span> that occur during the execution
+- Exceptions are <span class="highlight">discovered errors</span> that occur during the execution
 
 . . .
 
@@ -84,21 +84,21 @@ print("I will not be printed as the program crashed before.")
 
 ## Common Built-in Exceptions I
 
--   `ValueError`: argument of correct type but inappropriate value
--   `TypeError`: function applied to object of inappropriate type
--   `NameError`: raised when a local or global name is not found
--   `IndexError`: raised when a sequence subscript is out of range
--   `KeyError`: raised when a dictionary key is not found
--   `FileNotFoundError`: file or directory not found
--   `ZeroDivisionError`: division or modulo by zero
+- `ValueError`: argument of correct type but inappropriate value
+- `TypeError`: function applied to object of inappropriate type
+- `NameError`: raised when a local or global name is not found
+- `IndexError`: raised when a sequence subscript is out of range
+- `KeyError`: raised when a dictionary key is not found
+- `FileNotFoundError`: file or directory not found
+- `ZeroDivisionError`: division or modulo by zero
 
 ## Common Built-in Exceptions II
 
--   `AttributeError`: attribute reference or assignment fails
--   `ImportError`: import of a modulefails
--   `SyntaxError`: parser encounters a syntax error
--   `IndentationError`: indentation is not correct
--   `RuntimeError`: error does not fall into any category
+- `AttributeError`: attribute reference or assignment fails
+- `ImportError`: import of a modulefails
+- `SyntaxError`: parser encounters a syntax error
+- `IndentationError`: indentation is not correct
+- `RuntimeError`: error does not fall into any category
 
 . . .
 
@@ -108,9 +108,9 @@ print("I will not be printed as the program crashed before.")
 
 ## try-except Blocks
 
--   `try-except` blocks are used to handle exceptions
--   `try` block contains the code that might raise an exception
--   `except` block contains the executed code if an exception occurs
+- `try-except` blocks are used to handle exceptions
+- `try` block contains the code that might raise an exception
+- `except` block contains the executed code if an exception occurs
 
 . . .
 
@@ -131,8 +131,8 @@ print("I will be printed as the exception was handled!")
 
 ## try-except Blocks for specific exceptions
 
--   We can also specify <span class="highlight">the type of exception</span> we want to catch
--   This allows for more **specific error handling**
+- We can also specify <span class="highlight">the type of exception</span> we want to catch
+- This allows for more **specific error handling**
 
 ``` python
 try:
@@ -182,8 +182,8 @@ print(string_to_int([123]))
 
 ## Raising Exceptions
 
--   We can <span class="highlight">raise exceptions ourselves</span> using the `raise` statement
--   It allows us to handle errors in a more controlled manner
+- We can <span class="highlight">raise exceptions ourselves</span> using the `raise` statement
+- It allows us to handle errors in a more controlled manner
 
 . . .
 
@@ -201,8 +201,8 @@ print(validate_age(-1)) # This will raise a ValueError
 
 ## Raising Exceptions with Custom Messages
 
--   We can also raise exceptions with custom messages
--   This helps to provide more information about the error
+- We can also raise exceptions with custom messages
+- This helps to provide more information about the error
 
 . . .
 
@@ -222,8 +222,8 @@ print(validate_age(-1)) # This will raise a ValueError
 
 ## Creating Custom Exceptions
 
--   We do so by <span class="highlight">inheriting from the built-in Exception class</span>
--   This allows us to create more specific exceptions for our own code
+- We do so by <span class="highlight">inheriting from the built-in Exception class</span>
+- This allows us to create more specific exceptions for our own code
 
 ``` python
 class InvalidUsernameError(Exception):
@@ -244,9 +244,9 @@ def get_valid_username():
 
 ## What are Assertions?
 
--   Assertions are <span class="highlight">statements that check if a condition is true</span>
--   If the condition is false, an `AssertionError` is raised
--   We could use them to check the results of a calculation
+- Assertions are <span class="highlight">statements that check if a condition is true</span>
+- If the condition is false, an `AssertionError` is raised
+- We could use them to check the results of a calculation
 
 . . .
 
@@ -288,9 +288,9 @@ print(sum_of_numbers([1, 2.0, 3, 4, 5])) # Should print: AssertionError
 
 ## What is Debugging?
 
--   Debugging is the process of <span class="highlight">finding and fixing errors</span> in code
--   We can use `print` and `assert` statements to debug our code
--   We can also use **debugging tools** that are built into most IDEs
+- Debugging is the process of <span class="highlight">finding and fixing errors</span> in code
+- We can use `print` and `assert` statements to debug our code
+- We can also use **debugging tools** that are built into most IDEs
 
 <br>
 
@@ -301,8 +301,8 @@ print(sum_of_numbers([1, 2.0, 3, 4, 5])) # Should print: AssertionError
 
 ## Using Print and Assert
 
--   `print`: check <span class="highlight">the values of variables</span> at different points
--   `assert`: check calculations or the types of variables
+- `print`: check <span class="highlight">the values of variables</span> at different points
+- `assert`: check calculations or the types of variables
 
 . . .
 
@@ -326,9 +326,9 @@ assert x == 42.0, "x is not 42.0"
 
 ## Using Debugging Tools
 
--   We can also use debugging tools <span class="highlight">built into most IDEs</span>
--   Allow to step through code, set breakpoints, and inspect variables
--   We will use Zed, but there are **many other options**
+- We can also use debugging tools <span class="highlight">built into most IDEs</span>
+- Allow to step through code, set breakpoints, and inspect variables
+- We will use Zed, but there are **many other options**
 
 ## Debugging in Zed
 
@@ -362,9 +362,9 @@ for i, test_list in enumerate(test_lists):
 
 <span class="task">\>Task:</span> Run the code and use the debugging tools by clicking on the small bug icon in the lower right corner to find the error and select `run [YOUR PATH TO THE FILE]/main.py`.
 
--   Use the **breakpoints** to <span class="highlight">pause the execution</span> at a specific point
--   Use **step over, step into and step out** to <span class="highlight">navigate</span> through your code
--   Use the **variable viewer** to <span class="highlight">inspect variables</span> at different points
+- Use the **breakpoints** to <span class="highlight">pause the execution</span> at a specific point
+- Use **step over, step into and step out** to <span class="highlight">navigate</span> through your code
+- Use the **variable viewer** to <span class="highlight">inspect variables</span> at different points
 
 . . .
 
@@ -380,8 +380,8 @@ for i, test_list in enumerate(test_lists):
 
 ## The Main Function Pattern
 
--   You'll often see `if __name__ == "__main__":` at the end of Python scripts
--   This checks <span class="highlight">whether the script is being run directly</span> or imported
+- You'll often see `if __name__ == "__main__":` at the end of Python scripts
+- This checks <span class="highlight">whether the script is being run directly</span> or imported
 
 . . .
 
@@ -401,9 +401,9 @@ if __name__ == "__main__":
 
 ## Why Use It?
 
--   **Reusability**: Functions can be imported without executing tests
--   **Testing**: You can test functions in the same file
--   **Organization**: Separation between definitions and execution
+- **Reusability**: Functions can be imported without executing tests
+- **Testing**: You can test functions in the same file
+- **Organization**: Separation between definitions and execution
 
 . . .
 
@@ -430,10 +430,10 @@ if __name__ == "__main__":
 
 ## Using Logging
 
--   We can also use logging to <span class="highlight">track the execution</span> of a program
--   It is a **structured** way to log errors and other issues
--   You can specify the **level of severity** for each log message
--   **Hide** messages of a certain severity if you want to during execution
+- We can also use logging to <span class="highlight">track the execution</span> of a program
+- It is a **structured** way to log errors and other issues
+- You can specify the **level of severity** for each log message
+- **Hide** messages of a certain severity if you want to during execution
 
 . . .
 
@@ -446,8 +446,8 @@ if __name__ == "__main__":
 
 ## Interesting Books
 
--   Downey, A. B. (2024). Think Python: How to think like a computer scientist (Third edition). O'Reilly. [Link to free online version](https://greenteapress.com/wp/think-python-3rd-edition/)
--   Elter, S. (2021). Schrödinger programmiert Python: Das etwas andere Fachbuch (1. Auflage). Rheinwerk Verlag.
+- Downey, A. B. (2024). Think Python: How to think like a computer scientist (Third edition). O'Reilly. [Link to free online version](https://greenteapress.com/wp/think-python-3rd-edition/)
+- Elter, S. (2021). Schrödinger programmiert Python: Das etwas andere Fachbuch (1. Auflage). Rheinwerk Verlag.
 
 . . .
 

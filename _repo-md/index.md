@@ -13,12 +13,12 @@ This module introduces **programming with python**. Python is a modern and power
 
 Upon completion of the course, students ...
 
--   can implement solutions to complex problems in python
--   know basic concepts of programming and algorithms such as loops, functions
--   can apply basic data manipulation and visualization
--   will be able to read and write code
--   will have experience working with python libraries such as NumPy, Pandas, Matplotlib
--   will know how to collaborate in a small team to find solutions for problems at hand
+- can implement solutions to complex problems in python
+- know basic concepts of programming and algorithms such as loops, functions
+- can apply basic data manipulation and visualization
+- will be able to read and write code
+- will have experience working with python libraries such as NumPy, Pandas, Matplotlib
+- will know how to collaborate in a small team to find solutions for problems at hand
 
 Please note that this course is **specifically designed for business students**. That is, it is **not required to have any prior knowledge or experience in programming** to attend this course. The teaching format will make it possible to account for different levels of programming skills such that every student can take the most out of the course.
 
@@ -42,17 +42,17 @@ You can find more information on the course blocks and the corresponding lecture
 
 # How to see the slides
 
--   This course is based on [Quarto](https://quarto.org/)
--   It uses [revealjs](https://revealjs.com/) to render the slides
--   You find the slides for each lecture in the corresponding lecture
--   To see the slides, click on `RevealJS` in the top right corner
+- This course is based on [Quarto](https://quarto.org/)
+- It uses [revealjs](https://revealjs.com/) to render the slides
+- You find the slides for each lecture in the corresponding lecture
+- To see the slides, click on `RevealJS` in the top right corner
 
 # Passing the Course
 
--   75% attendance required for passing the course
--   You will be given two programming assignments and one project to solve with Python
--   You can group up (3 students) and work together
--   Each student group submits one solution together
+- 75% attendance required for passing the course
+- You will be given two programming assignments and one project to solve with Python
+- You can group up (3 students) and work together
+- Each student group submits one solution together
 
 ## AI Policy
 

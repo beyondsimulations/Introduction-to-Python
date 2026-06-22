@@ -10,11 +10,11 @@ Imagine you're a climate scientist working on a project to analyze temperature d
 
 To solve this task, you'll need to use NumPy to perform various operations on the temperature data. Here, you'll need some new functions you haven't seen yet.
 
--   `np.mean()`: calculate the mean of an array
--   `np.max()`: calculate the maximum of an array
--   `np.min()`: calculate the minimum of an array
--   `np.argmax()`: find the index of the maximum of an array
--   `np.argmin()`: find the index of the minimum of an array
+- `np.mean()`: calculate the mean of an array
+- `np.max()`: calculate the maximum of an array
+- `np.min()`: calculate the minimum of an array
+- `np.argmax()`: find the index of the maximum of an array
+- `np.argmin()`: find the index of the minimum of an array
 
 If you want to find those informations along an axis, you can use the same function with `axis` as an additional argument. Here, `axis=0` is for the columns and `axis=1` is for the rows.
 

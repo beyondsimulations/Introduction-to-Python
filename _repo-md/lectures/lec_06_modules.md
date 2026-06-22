@@ -14,8 +14,8 @@ format:
 
 ## Exceptions and Error Handling
 
--   Exceptions are <span class="highlight">discovered errors</span> during program execution
--   Common built-in exceptions: `ValueError`, `TypeError`, etc.
+- Exceptions are <span class="highlight">discovered errors</span> during program execution
+- Common built-in exceptions: `ValueError`, `TypeError`, etc.
 
 . . .
 
@@ -29,9 +29,9 @@ x = int("Hello, World!")
 
 ## Try-Except Blocks
 
--   `try-except` blocks are used to handle exceptions
--   `try` block contains code that might raise an exception
--   `except` block contains code executed if an exception occurs
+- `try-except` blocks are used to handle exceptions
+- `try` block contains code that might raise an exception
+- `except` block contains code executed if an exception occurs
 
 . . .
 
@@ -49,9 +49,9 @@ except Exception as e:
 
 ## Raising Exceptions
 
--   We can raise exceptions using the `raise` statement
--   Allows for more controlled error handling
--   Can include custom error messages
+- We can raise exceptions using the `raise` statement
+- Allows for more controlled error handling
+- Can include custom error messages
 
 . . .
 
@@ -67,9 +67,9 @@ raise ValueError("This is a custom error message")
 
 ## Assertions
 
--   Assertions check if a condition is true
--   If the condition is false, an `AssertionError` is raised
--   Useful for checking calculations or variable types
+- Assertions check if a condition is true
+- If the condition is false, an `AssertionError` is raised
+- Useful for checking calculations or variable types
 
 . . .
 
@@ -84,10 +84,10 @@ assert x > 0, "x must be positive"
 
 ## Debugging
 
--   Debugging is the process of <span class="highlight">finding and fixing errors</span> in code
--   Using `print` and `assert` statements
--   Using logging
--   Using built-in debugging tools in IDEs
+- Debugging is the process of <span class="highlight">finding and fixing errors</span> in code
+- Using `print` and `assert` statements
+- Using logging
+- Using built-in debugging tools in IDEs
 
 . . .
 
@@ -99,16 +99,16 @@ assert x > 0, "x must be positive"
 
 ## Why Modules?
 
--   Modular programming breaks <span class="highlight">large tasks into smaller subtasks</span>
--   Modules are like **building blocks** for larger applications
--   Individual modules can be **combined** to create a complete program
--   This approach enhances code organization and reusability
+- Modular programming breaks <span class="highlight">large tasks into smaller subtasks</span>
+- Modules are like **building blocks** for larger applications
+- Individual modules can be **combined** to create a complete program
+- This approach enhances code organization and reusability
 
 ## Creating Modules
 
--   Modules are simply `.py` files containing Python code
--   They can define <span class="highlight">functions, classes, and variables</span>
--   They can be imported into other Python scripts
+- Modules are simply `.py` files containing Python code
+- They can define <span class="highlight">functions, classes, and variables</span>
+- They can be imported into other Python scripts
 
 ``` python
 # The script new_module.py is in the same directory as this script
@@ -120,9 +120,9 @@ new_module.my_function() # Here we call the function from the module
 
 ## Importing functions from modules
 
--   We can also import <span class="highlight">specific functions</span> from a module
--   This is useful if we only need a **few functions** from a module
--   Analogously, we can import **classes or variables** from a module
+- We can also import <span class="highlight">specific functions</span> from a module
+- This is useful if we only need a **few functions** from a module
+- Analogously, we can import **classes or variables** from a module
 
 . . .
 
@@ -182,11 +182,11 @@ assert calculate_area(5) == 78.53981633974483
 
 The `random` module provides functions for random numbers
 
--   `random.random()`: random float between 0 and 1
--   `random.uniform(a, b)`: random float between `a` and `b`
--   `random.randint(a, b)`: random integer between `a` and `b`
--   `random.choice(list)`: random element from a list
--   `random.shuffle(list)`: shuffle a list
+- `random.random()`: random float between 0 and 1
+- `random.uniform(a, b)`: random float between `a` and `b`
+- `random.randint(a, b)`: random integer between `a` and `b`
+- `random.choice(list)`: random element from a list
+- `random.shuffle(list)`: shuffle a list
 
 > **Tip**
 >
@@ -215,11 +215,11 @@ The `random` module provides functions for random numbers
 
 ## OS Module
 
--   The `os` module provides functions to interact with the OS
--   `os.listdir(path)`: list all files and directories in a directory
--   `os.path.isfile(path)`: check if a path is a file
--   `os.path.exists(path)`: check if a path exists
--   `os.makedirs(path)`: create a directory
+- The `os` module provides functions to interact with the OS
+- `os.listdir(path)`: list all files and directories in a directory
+- `os.path.isfile(path)`: check if a path is a file
+- `os.path.exists(path)`: check if a path exists
+- `os.makedirs(path)`: create a directory
 
 . . .
 
@@ -229,9 +229,9 @@ The `random` module provides functions for random numbers
 
 ## CSV Module
 
--   Comma-Separated Values files are used to store tabular data
--   Write: `csv.writer(file)`
--   Read: `csv.reader(file)`
+- Comma-Separated Values files are used to store tabular data
+- Write: `csv.writer(file)`
+- Read: `csv.reader(file)`
 
 . . .
 
@@ -295,11 +295,11 @@ Error: user invalid_user! failed login
 
 ## Using Regular Expressions
 
--   `re.search(pat, str)`: search for a pattern in a string
--   `re.findall(pat, str)`: find all occurrences of a pattern
--   `re.fullmatch(pat, str)`: check if entire string matches pattern
--   `re.sub(pat, repl, str)`: replace a pattern in a string
--   `re.split(pat, str)`: split a string by a pattern
+- `re.search(pat, str)`: search for a pattern in a string
+- `re.findall(pat, str)`: find all occurrences of a pattern
+- `re.fullmatch(pat, str)`: check if entire string matches pattern
+- `re.sub(pat, repl, str)`: replace a pattern in a string
+- `re.split(pat, str)`: split a string by a pattern
 
 . . .
 
@@ -375,10 +375,10 @@ print(f"Users starting with j or m: {result}")
 
 **Useful character classes:**
 
--   `[abc]` - matches a, b, or c
--   `[a-z]` - matches any lowercase letter
--   `[0-9]` - matches any digit
--   `[a-zA-Z0-9]` - matches letters and numbers
+- `[abc]` - matches a, b, or c
+- `[a-z]` - matches any lowercase letter
+- `[0-9]` - matches any digit
+- `[a-zA-Z0-9]` - matches letters and numbers
 
 . . .
 
@@ -517,17 +517,17 @@ pandemic was declared a global emergency on 04-11-2020.
 
 ## What are Packages?
 
--   Packages are esentially **collections of modules**
--   They can contain multiple modules, subpackages, and data files
--   Many packages are available in the <span class="highlight">Python Package Index (PyPI)</span>
--   You don't have to invent the wheel yourself
--   **A lot of functionality** is already implemented by others!
+- Packages are esentially **collections of modules**
+- They can contain multiple modules, subpackages, and data files
+- Many packages are available in the <span class="highlight">Python Package Index (PyPI)</span>
+- You don't have to invent the wheel yourself
+- **A lot of functionality** is already implemented by others!
 
 ## Installing Packages
 
--   Packages are **installed in the shell**
--   Use `uv add <package_name>` to install a specific package
--   Afterward you can <span class="highlight">import from the package</span> in your scripts
+- Packages are **installed in the shell**
+- Use `uv add <package_name>` to install a specific package
+- Afterward you can <span class="highlight">import from the package</span> in your scripts
 
 . . .
 
@@ -547,10 +547,10 @@ uv add pandas numpy
 
 ## Virtual Environments
 
--   Virtual environments **isolate a project's dependencies**
--   With uv, the environment is **created and managed automatically**
--   No manual venv creation needed and others can replicate
--   <span class="highlight">Especially important when working on several projects at once</span>
+- Virtual environments **isolate a project's dependencies**
+- With uv, the environment is **created and managed automatically**
+- No manual venv creation needed and others can replicate
+- <span class="highlight">Especially important when working on several projects at once</span>
 
 . . .
 
@@ -575,8 +575,8 @@ uv run python
 
 ## Interesting Books
 
--   Downey, A. B. (2024). Think Python: How to think like a computer scientist (Third edition). O'Reilly. [Link to free online version](https://greenteapress.com/wp/think-python-3rd-edition/)
--   Elter, S. (2021). Schrödinger programmiert Python: Das etwas andere Fachbuch (1. Auflage). Rheinwerk Verlag.
+- Downey, A. B. (2024). Think Python: How to think like a computer scientist (Third edition). O'Reilly. [Link to free online version](https://greenteapress.com/wp/think-python-3rd-edition/)
+- Elter, S. (2021). Schrödinger programmiert Python: Das etwas andere Fachbuch (1. Auflage). Rheinwerk Verlag.
 
 . . .
 

@@ -136,9 +136,9 @@ if __name__ == "__main__":
     main()
 ```
 
--   `def main():` defines a function (a reusable block of code).
--   `print(...)` shows text in the terminal.
--   The line `if __name__ == "__main__":` ensures this only auto-runs when the file is executed directly.
+- `def main():` defines a function (a reusable block of code).
+- `print(...)` shows text in the terminal.
+- The line `if __name__ == "__main__":` ensures this only auto-runs when the file is executed directly.
 
 Don't worry about this yet, we'll gradually build up to it.
 
@@ -164,10 +164,10 @@ Inside your project folder, create a `.zed/` directory and add a file called `ta
 
 ### Run the task
 
-1. Open any `.py` file in your project.
-2. Open the task picker with `Cmd+Shift+P` (macOS) / `Ctrl+Shift+P` (Windows/Linux).
-3. Type **task** and choose **task: spawn**.
-4. Select **Run current Python file** — Zed will execute `uv run python <your-file>` in the built-in terminal.
+1.  Open any `.py` file in your project.
+2.  Open the task picker with `Cmd+Shift+P` (macOS) / `Ctrl+Shift+P` (Windows/Linux).
+3.  Type **task** and choose **task: spawn**.
+4.  Select **Run current Python file** --- Zed will execute `uv run python <your-file>` in the built-in terminal.
 
 > **Tip**
 >
@@ -211,10 +211,10 @@ uv self update
 
 ## Best practices for this course
 
--   One folder for the course keeps everything tidy.
--   Never install packages "globally" outside a project.
--   Keep a short personal log in each project's `README.md` (What did I do? What still confuses me?).
--   Ask early for help, guessing usually takes much more time than asking.
+- One folder for the course keeps everything tidy.
+- Never install packages "globally" outside a project.
+- Keep a short personal log in each project's `README.md` (What did I do? What still confuses me?).
+- Ask early for help, guessing usually takes much more time than asking.
 
 You can always see available commands:
 

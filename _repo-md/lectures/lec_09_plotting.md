@@ -14,20 +14,20 @@ format:
 
 ## Pandas: Data Analysis
 
--   Powerful library for <span class="highlight">data manipulation and analysis</span>
--   Built on top of NumPy, providing additional functionality
--   Key features of Pandas include:
-    -   Data loading from various file formats
-    -   Data cleaning and preprocessing
-    -   Powerful grouping and aggregation operations
-    -   Merging and joining datasets
+- Powerful library for <span class="highlight">data manipulation and analysis</span>
+- Built on top of NumPy, providing additional functionality
+- Key features of Pandas include:
+  - Data loading from various file formats
+  - Data cleaning and preprocessing
+  - Powerful grouping and aggregation operations
+  - Merging and joining datasets
 
 ## Why NumPy and Pandas are Essential
 
--   Basic tools for <span class="highlight">scientific computing</span> and <span class="highlight">data analysis</span>
--   <span class="highlight">Efficient data structures</span> and operations for large data
--   Integration with other scientific Python libraries
--   Used in data science, machine learning, and research
+- Basic tools for <span class="highlight">scientific computing</span> and <span class="highlight">data analysis</span>
+- <span class="highlight">Efficient data structures</span> and operations for large data
+- Integration with other scientific Python libraries
+- Used in data science, machine learning, and research
 
 . . .
 
@@ -90,10 +90,10 @@ plt.show()
 
 ## Importance of Data Visualization
 
--   <span class="highlight">Communicates</span> complex information clearly
--   Helps in <span class="highlight">decision-making</span> processes
--   Reveals hidden patterns and relationships in data
--   Makes data more <span class="highlight">accessible</span> and engaging
+- <span class="highlight">Communicates</span> complex information clearly
+- Helps in <span class="highlight">decision-making</span> processes
+- Reveals hidden patterns and relationships in data
+- Makes data more <span class="highlight">accessible</span> and engaging
 
 . . .
 
@@ -105,8 +105,8 @@ plt.show()
 
 ## Bar Charts and Histograms
 
--   **Bar charts**: Compare quantities across categories
--   **Histograms**: Show distribution of a continuous variable
+- **Bar charts**: Compare quantities across categories
+- **Histograms**: Show distribution of a continuous variable
 
 <details class="code-fold">
 <summary>Code</summary>
@@ -141,8 +141,8 @@ plt.show()
 
 ## Line Charts and Area Charts
 
--   **Line charts**: Show trends over time or continuous data
--   **Area charts**: Similar to line charts, but with filled areas
+- **Line charts**: Show trends over time or continuous data
+- **Area charts**: Similar to line charts, but with filled areas
 
 <details class="code-fold">
 <summary>Code</summary>
@@ -178,8 +178,8 @@ plt.show()
 
 ## Scatter Plots and Bubble Charts
 
--   **Scatter plots**: Show relationship between two variables
--   **Bubble charts**: Adds dimension with varying point sizes
+- **Scatter plots**: Show relationship between two variables
+- **Bubble charts**: Adds dimension with varying point sizes
 
 <details class="code-fold">
 <summary>Code</summary>
@@ -211,8 +211,8 @@ plt.show()
 
 ## Pie Charts and Donut Charts
 
--   **Pie charts**: Show composition of a whole
--   **Donut charts**: Similar to pie charts, but with a hole
+- **Pie charts**: Show composition of a whole
+- **Donut charts**: Similar to pie charts, but with a hole
 
 <details class="code-fold">
 <summary>Code</summary>
@@ -247,8 +247,8 @@ plt.show()
 
 ## Box Plots and Violin Plots
 
--   **Box plots**: Show distribution of data through quartiles
--   **Violin plots**: Combine box plot with kernel density
+- **Box plots**: Show distribution of data through quartiles
+- **Violin plots**: Combine box plot with kernel density
 
 <details class="code-fold">
 <summary>Code</summary>
@@ -279,8 +279,8 @@ plt.show()
 
 ## Network Graphs and Trees
 
--   **Network graphs**: Show relationships between entities
--   **Tree diagrams**: Display hierarchical structures
+- **Network graphs**: Show relationships between entities
+- **Tree diagrams**: Display hierarchical structures
 
 <details class="code-fold">
 <summary>Code</summary>
@@ -338,7 +338,7 @@ plt.show()
 
 ## Ridgeline Plots
 
--   **Ridgeline plots**: Show distribution of data across categories
+- **Ridgeline plots**: Show distribution of data across categories
 
 <details class="code-fold">
 <summary>Code</summary>
@@ -426,19 +426,19 @@ plt.show()
 
 ## Python Plotting Libraries
 
--   There are <span class="highlight">many libraries for data visualization in Python</span>
-    -   **Matplotlib**: The foundation for most Python plotting libraries
-    -   **Seaborn**: Interface for statistical data visualization
-    -   **Plotly**: Interactive and customizable plotting library
-    -   **Bokeh**: Interactive and complex plots
-    -   **Joypy**: Easy ridgeline plots
+- There are <span class="highlight">many libraries for data visualization in Python</span>
+  - **Matplotlib**: The foundation for most Python plotting libraries
+  - **Seaborn**: Interface for statistical data visualization
+  - **Plotly**: Interactive and customizable plotting library
+  - **Bokeh**: Interactive and complex plots
+  - **Joypy**: Easy ridgeline plots
 
 ## Matplotlib Module
 
--   Matplotlib is the <span class="highlight">foundation for most Python plotting libraries</span>
--   **Customizable** and suitable for high-quality figures
--   Provides **easy to use** functions for plotting
--   Works well with **Pandas** DataFrames
+- Matplotlib is the <span class="highlight">foundation for most Python plotting libraries</span>
+- **Customizable** and suitable for high-quality figures
+- Provides **easy to use** functions for plotting
+- Works well with **Pandas** DataFrames
 
 ## Basic Matplotlib Example
 
@@ -452,13 +452,13 @@ plt.show()
 
 ## Customizing Plots
 
--   **Line Types**: with `ls=`
-    -   `-`, `--`, `-.`, `:`, `None`;
--   **Colors**: with `color=`
-    -   `r`, `g`, `b`, `c`, `m`, `y`, `k`, . . .
--   **Markers**: with `marker=`
-    -   `o`, `s`, `D`, `p`, `*`, `x`, . . .
--   **Labels**: with `label=`, `title=`, `xlabel=`, `ylabel=`
+- **Line Types**: with `ls=`
+  - `-`, `--`, `-.`, `:`, `None`;
+- **Colors**: with `color=`
+  - `r`, `g`, `b`, `c`, `m`, `y`, `k`, . . .
+- **Markers**: with `marker=`
+  - `o`, `s`, `D`, `p`, `*`, `x`, . . .
+- **Labels**: with `label=`, `title=`, `xlabel=`, `ylabel=`
 
 ## Red dashed line with circles
 
@@ -561,10 +561,10 @@ y2 = np.cos(x) # cosine function
 
 ## The Message Matters
 
--   Making beautiful plots is **rather easy**[^1]
--   It is important to **understand** the underlying data
--   What kind of plots are **appropriate** for your data?
--   What is the <span class="highlight">message you want to convey?</span>
+- Making beautiful plots is **rather easy**[^1]
+- It is important to **understand** the underlying data
+- What kind of plots are **appropriate** for your data?
+- What is the <span class="highlight">message you want to convey?</span>
 
 # Temperature Dataset
 
@@ -785,10 +785,10 @@ plt.show()
 
 ## How to build such a plot?
 
--   **Think**: about what you want to build
--   **Describe**: what you want to build in detail
--   **Use AI**: to build the plot for you
--   **Use Libraries**: documentation to fine-tune the plot
+- **Think**: about what you want to build
+- **Describe**: what you want to build in detail
+- **Use AI**: to build the plot for you
+- **Use Libraries**: documentation to fine-tune the plot
 
 . . .
 
@@ -811,38 +811,38 @@ plt.show()
 
 ## Dash for Dashboards
 
--   [Dash](https://dash.plotly.com) is a framework for **building web applications**
--   It is built on top of [Flask](https://flask.palletsprojects.com), [Plotly.js](https://plotly.com/javascript/), and [React.js](https://react.dev/)
--   This lecture is build on top of <span class="highlight">React.js</span>
--   It is very customizable and has a lot of **examples**
+- [Dash](https://dash.plotly.com) is a framework for **building web applications**
+- It is built on top of [Flask](https://flask.palletsprojects.com), [Plotly.js](https://plotly.com/javascript/), and [React.js](https://react.dev/)
+- This lecture is build on top of <span class="highlight">React.js</span>
+- It is very customizable and has a lot of **examples**
 
 ## Panel for Dashboards
 
--   [Panel](https://panel.holoviz.org) is built on top of <span class="highlight">Bokeh</span> (instead of Plotly.js)
--   **Reasonably** easy to use, but not super easy
--   **Highly customizable**, also for multiple pages
--   **Good performance** even for more complex dashboards
+- [Panel](https://panel.holoviz.org) is built on top of <span class="highlight">Bokeh</span> (instead of Plotly.js)
+- **Reasonably** easy to use, but not super easy
+- **Highly customizable**, also for multiple pages
+- **Good performance** even for more complex dashboards
 
 ## Streamlit for Dashboards
 
--   [Streamlit](https://streamlit.io) is a rather **new and popular** library
--   Very easy and <span class="highlight">fast way to build dashboards</span>
--   Performance only good on **simpler dashboards**
--   **Not as many examples** and as customizable
+- [Streamlit](https://streamlit.io) is a rather **new and popular** library
+- Very easy and <span class="highlight">fast way to build dashboards</span>
+- Performance only good on **simpler dashboards**
+- **Not as many examples** and as customizable
 
 ## NiceGUI for Dashboards
 
--   [NiceGUI](https://nicegui.io) is also a **relatively new library**
--   **Very customizable** and a large fan base
--   **Not as many examples** and as easy to use as Streamlit
--   Allows building <span class="highlight">web-based desktop applications</span>
+- [NiceGUI](https://nicegui.io) is also a **relatively new library**
+- **Very customizable** and a large fan base
+- **Not as many examples** and as easy to use as Streamlit
+- Allows building <span class="highlight">web-based desktop applications</span>
 
 ## Which one to choose?
 
--   **Streamlit**: if you want to build a dashboard <span class="highlight">fast</span>
--   **Dash**: if you want more flexibility and <span class="highlight">Plotly.js</span>
--   **Panel**: if you want a <span class="highlight">Bokeh-based</span> solution with more flexibility
--   **NiceGUI**: if you want to build a <span class="highlight">desktop-like application</span>
+- **Streamlit**: if you want to build a dashboard <span class="highlight">fast</span>
+- **Dash**: if you want more flexibility and <span class="highlight">Plotly.js</span>
+- **Panel**: if you want a <span class="highlight">Bokeh-based</span> solution with more flexibility
+- **NiceGUI**: if you want to build a <span class="highlight">desktop-like application</span>
 
 . . .
 
@@ -852,19 +852,19 @@ plt.show()
 
 ## How to build a dashboard
 
--   We **won't go into details** on how to build dashboards
--   The best way to learn is by **doing!**
--   **Use AI and the libraries documentation** as starting points
--   We will also <span class="highlight">build a dashboard in today's tutorial</span>
+- We **won't go into details** on how to build dashboards
+- The best way to learn is by **doing!**
+- **Use AI and the libraries documentation** as starting points
+- We will also <span class="highlight">build a dashboard in today's tutorial</span>
 
 # <span class="flow">Creating GUIs</span>
 
 ## PySide6 for GUIs
 
--   Here, the **recommendation is much easier!**
--   In the past, `tkinter` was often the way to go
--   But currently, my recommendation is `PySide6`
--   It's a mature library we can use to build <span class="highlight">cross-platform desktop applications</span>
+- Here, the **recommendation is much easier!**
+- In the past, `tkinter` was often the way to go
+- But currently, my recommendation is `PySide6`
+- It's a mature library we can use to build <span class="highlight">cross-platform desktop applications</span>
 
 . . .
 
@@ -877,9 +877,9 @@ plt.show()
 
 ## Interesting Books
 
--   Wilke, C. (2019). Fundamentals of data visualization: A primer on making informative and compelling figures (First edition). O'Reilly Media.
-    -   A book that is highly recommended to understand the principles of data visualization and how to create effective visualizations.
-    -   [Link to the free book website](https://clauswilke.com/dataviz/)
+- Wilke, C. (2019). Fundamentals of data visualization: A primer on making informative and compelling figures (First edition). O'Reilly Media.
+  - A book that is highly recommended to understand the principles of data visualization and how to create effective visualizations.
+  - [Link to the free book website](https://clauswilke.com/dataviz/)
 
 . . .
 

@@ -14,10 +14,10 @@ format:
 
 ## Modules
 
--   <span class="highlight">Modules</span> are `.py` files containing Python code
--   They are used to organize and reuse code
--   They can define functions, classes, and variables
--   Can be imported into other scripts
+- <span class="highlight">Modules</span> are `.py` files containing Python code
+- They are used to organize and reuse code
+- They can define functions, classes, and variables
+- Can be imported into other scripts
 
 . . .
 
@@ -27,18 +27,18 @@ format:
 
 ## Standard Libraries
 
--   Python includes many built-in modules like:
-    -   `random` provides functions for random numbers
-    -   `os` allows interaction with the operating system
-    -   `csv` is used for reading and writing CSV files
-    -   `re` is used for working with regular expressions
+- Python includes many built-in modules like:
+  - `random` provides functions for random numbers
+  - `os` allows interaction with the operating system
+  - `csv` is used for reading and writing CSV files
+  - `re` is used for working with regular expressions
 
 ## Packages
 
--   <span class="highlight">Packages</span> are collections of modules
--   Often available from the Python Package Index (PyPI)
--   Install using `uv add <package_name>`
--   Virtual environments help manage dependencies
+- <span class="highlight">Packages</span> are collections of modules
+- Often available from the Python Package Index (PyPI)
+- Install using `uv add <package_name>`
+- Virtual environments help manage dependencies
 
 . . .
 
@@ -50,10 +50,10 @@ format:
 
 ## What is NumPy?
 
--   **NumPy** is a package for scientific computing in Python
--   Provides large, <span class="highlight">multi-dimensional arrays and matrices</span>
--   Wide range of functions to operate on these
--   Python lists can be slow - Numpy arrays are much faster
+- **NumPy** is a package for scientific computing in Python
+- Provides large, <span class="highlight">multi-dimensional arrays and matrices</span>
+- Wide range of functions to operate on these
+- Python lists can be slow - Numpy arrays are much faster
 
 . . .
 
@@ -63,9 +63,9 @@ format:
 
 ## Why is NumPy so fast?
 
--   Arrays are stored in a contiguous block of memory
--   This allows for efficient memory access patterns
--   Operations are implemented in the languages `C` and `C++`
+- Arrays are stored in a contiguous block of memory
+- This allows for efficient memory access patterns
+- Operations are implemented in the languages `C` and `C++`
 
 . . .
 
@@ -93,8 +93,8 @@ x = np.array([1, 2, 3, 4, 5]); type(x)
 
 ## Creating Arrays
 
--   The backbone of Numpy is the so called `ndarray`
--   Can be initialized from different data structures:
+- The backbone of Numpy is the so called `ndarray`
+- Can be initialized from different data structures:
 
 ``` python
 import numpy as np
@@ -116,7 +116,7 @@ print(array_from_tuple)
 
 ## Hetergenous Data Types
 
--   It is possible to store different data types in a `ndarray`
+- It is possible to store different data types in a `ndarray`
 
 ``` python
 import numpy as np
@@ -137,10 +137,10 @@ print(array_different_types)
 
 Improve performance by **allocating memory upfront**
 
--   `np.zeros(shape)`: to create an array of zeros
--   `np.random.rand(shape)`: array of random values
--   `np.arange(start, stop, step)`: evenly spaced
--   `np.linspace(start, stop, num)`: evenly spaced
+- `np.zeros(shape)`: to create an array of zeros
+- `np.random.rand(shape)`: array of random values
+- `np.arange(start, stop, step)`: evenly spaced
+- `np.linspace(start, stop, num)`: evenly spaced
 
 . . .
 
@@ -150,17 +150,17 @@ Improve performance by **allocating memory upfront**
 
 ## Dimensions
 
--   The shape is specified as tuple in these arrays
--   `(2)` or `2` creates a 1-dimensional array (vetor)
--   `(2,2)` creates a 2-dimensional array (matrix)
--   `(2,2,2)` 3-dimensional array (3rd order tensor)
--   `(2,2,2,2)` 4-dimensional array (4th order tensor)
--   ...
+- The shape is specified as tuple in these arrays
+- `(2)` or `2` creates a 1-dimensional array (vetor)
+- `(2,2)` creates a 2-dimensional array (matrix)
+- `(2,2,2)` 3-dimensional array (3rd order tensor)
+- `(2,2,2,2)` 4-dimensional array (4th order tensor)
+- ...
 
 ## Computations
 
--   We can apply operations to the entire array at once
--   This is much faster than applying them element-wise
+- We can apply operations to the entire array at once
+- This is much faster than applying them element-wise
 
 . . .
 
@@ -191,8 +191,8 @@ assert sum(tensor) == 1000
 
 ## Indexing and Slicing
 
--   Accessing and slicing `ndarray` works as before
--   Higher dimension element access with multiple indices
+- Accessing and slicing `ndarray` works as before
+- Higher dimension element access with multiple indices
 
 . . .
 
@@ -214,12 +214,12 @@ print(x[0:2,0:2])
 
 ## Data Types
 
--   Numpy provides <span class="highlight">data types as characters</span>
--   `i`: integer
--   `b`: boolean
--   `f`: float
--   `S`: string
--   `U`: unicode
+- Numpy provides <span class="highlight">data types as characters</span>
+- `i`: integer
+- `b`: boolean
+- `f`: float
+- `S`: string
+- `U`: unicode
 
 . . .
 
@@ -231,7 +231,7 @@ string_array = np.array(["Hello", "World"]); string_array.dtype
 
 ## Enforcing Data Types
 
--   We can also **provide** the type when creating arrays
+- We can also **provide** the type when creating arrays
 
 . . .
 
@@ -243,7 +243,7 @@ x = np.array([1, 2, 3, 4, 5],  dtype = 'f'); print(x.dtype)
 
 . . .
 
--   Or we can **change** them for existing arrays
+- Or we can **change** them for existing arrays
 
 ``` python
 x = np.array([1, 2, 3, 4, 5],  dtype = 'f'); print(x.astype('i').dtype)
@@ -263,23 +263,23 @@ x = np.array([1, 2, 3, 4, 5],  dtype = 'f'); print(x.astype('i').dtype)
 
 . . .
 
--   It's the number of bits used to represent a number
-    -   `int16` is a 16-bit integer
-    -   `float32` is a 32-bit floating point number
-    -   `int64` is a 64-bit integer
-    -   `float128` is a 128-bit floating point number
+- It's the number of bits used to represent a number
+  - `int16` is a 16-bit integer
+  - `float32` is a 32-bit floating point number
+  - `int64` is a 64-bit integer
+  - `float128` is a 128-bit floating point number
 
 ## Why do Bits Matter?
 
--   They matter, because they can affect:
-    -   the performance of your code
-    -   the precision of your results
+- They matter, because they can affect:
+  - the performance of your code
+  - the precision of your results
 
 . . .
 
--   That's why numbers can have a limited precision!
-    -   An `int8` has to be in the range of -128 to 127
-    -   An `int16` has to be in the range of -32768 to 32767
+- That's why numbers can have a limited precision!
+  - An `int8` has to be in the range of -128 to 127
+  - An `int16` has to be in the range of -32768 to 32767
 
 . . .
 
@@ -287,9 +287,9 @@ x = np.array([1, 2, 3, 4, 5],  dtype = 'f'); print(x.astype('i').dtype)
 
 ## Joining Arrays
 
--   You can use `concatenate` two **join arrays**
--   With `axis` you can specify the dimension
--   In 2-dimensions `hstack()` and `vstack()` are easier
+- You can use `concatenate` two **join arrays**
+- With `axis` you can specify the dimension
+- In 2-dimensions `hstack()` and `vstack()` are easier
 
 . . .
 
@@ -308,11 +308,11 @@ print(np.vstack((ones,twos))); print(np.hstack((ones,twos)))
 
 ## Common Methods
 
--   `sort()`: sort the array from low to high
--   `reshape()`: reshape the array into a new shape
--   `flatten()`: flatten the array into a 1D array
--   `squeeze()`: squeeze the array to remove 1D entries
--   `transpose()`: transpose the array
+- `sort()`: sort the array from low to high
+- `reshape()`: reshape the array into a new shape
+- `flatten()`: flatten the array into a 1D array
+- `squeeze()`: squeeze the array to remove 1D entries
+- `transpose()`: transpose the array
 
 . . .
 
@@ -351,8 +351,8 @@ print(end - start) # time in seconds
 
 ## Interesting Books
 
--   Downey, A. B. (2024). Think Python: How to think like a computer scientist (Third edition). O'Reilly. [Link to free online version](https://greenteapress.com/wp/think-python-3rd-edition/)
--   Elter, S. (2021). Schrödinger programmiert Python: Das etwas andere Fachbuch (1. Auflage). Rheinwerk Verlag.
+- Downey, A. B. (2024). Think Python: How to think like a computer scientist (Third edition). O'Reilly. [Link to free online version](https://greenteapress.com/wp/think-python-3rd-edition/)
+- Elter, S. (2021). Schrödinger programmiert Python: Das etwas andere Fachbuch (1. Auflage). Rheinwerk Verlag.
 
 . . .
 

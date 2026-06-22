@@ -14,11 +14,11 @@ format:
 
 ## About me
 
--   **Field:** Optimizing and simulating complex systems
--   **Languages:** of choice: Julia, Python and Rust
--   **Interest:** Modelling, Simulations, Machine Learning
--   **Teaching:** OR, Algorithms, and Programming
--   **Contact:** <vlcek@beyondsimulations.com>
+- **Field:** Optimizing and simulating complex systems
+- **Languages:** of choice: Julia, Python and Rust
+- **Interest:** Modelling, Simulations, Machine Learning
+- **Teaching:** OR, Algorithms, and Programming
+- **Contact:** <vlcek@beyondsimulations.com>
 
 . . .
 
@@ -28,40 +28,40 @@ format:
 
 ## Course Outline
 
--   **Part I:** Introduction to Programming with Python
--   **Part II:** Data Science Tools with Python
--   **Part III:** Programming Projects
+- **Part I:** Introduction to Programming with Python
+- **Part II:** Data Science Tools with Python
+- **Part III:** Programming Projects
 
 ## Participation
 
--   Prequisite for course *Management Science* (taught by me)
--   Try actively participating in this course
--   You will find it much (!) easier to follow later
--   Materials will be provided in the KLU portal
--   Slides are hosted at [beyondsimulations.github.io/Introduction-to-Python](https://beyondsimulations.github.io/Introduction-to-Python/)
+- Prequisite for course *Management Science* (taught by me)
+- Try actively participating in this course
+- You will find it much (!) easier to follow later
+- Materials will be provided in the KLU portal
+- Slides are hosted at [beyondsimulations.github.io/Introduction-to-Python](https://beyondsimulations.github.io/Introduction-to-Python/)
 
 ## Teaching
 
--   **Lecture:** Presentation of tools and concepts, based on small examples and code snippets
--   **Tutorial:** Hands-on examples to be solved in groups
--   **Difficulty:** Difficult at first, but gradually easier
+- **Lecture:** Presentation of tools and concepts, based on small examples and code snippets
+- **Tutorial:** Hands-on examples to be solved in groups
+- **Difficulty:** Difficult at first, but gradually easier
 
 ## Passing the Course
 
--   Pass/fail course
--   <span class="highlight">75% attendance</span> required for passing the course
--   2 assignments and 1 final project
--   You will be given programming exercises to solve
--   You can group up (3 students) and work together
--   Each student group submits one solution
+- Pass/fail course
+- <span class="highlight">75% attendance</span> required for passing the course
+- 2 assignments and 1 final project
+- You will be given programming exercises to solve
+- You can group up (3 students) and work together
+- Each student group submits one solution
 
 ## Solution
 
--   Provide a code solution to the problem (`.py` files)
--   Code files need to be executable
--   Detailed explanations of your code should be provided
--   Use comments or docstrings in your code
--   Provide a general (verbal) introduction to each problem
+- Provide a code solution to the problem (`.py` files)
+- Code files need to be executable
+- Detailed explanations of your code should be provided
+- Use comments or docstrings in your code
+- Provide a general (verbal) introduction to each problem
 
 . . .
 
@@ -71,44 +71,44 @@ format:
 
 ## Difficulty of the Course
 
--   We'll cover the basics of programming (in Python) at first
--   This is similar to learning a **new foreign language**
--   First, you have to get used to the language and learn words
--   **Later**, you'll be able to apply it and see results
--   Similar to learning a language: *Practice, practice, practice!*
+- We'll cover the basics of programming (in Python) at first
+- This is similar to learning a **new foreign language**
+- First, you have to get used to the language and learn words
+- **Later**, you'll be able to apply it and see results
+- Similar to learning a language: *Practice, practice, practice!*
 
 ## What to expect
 
--   Some **investment** in the beginning to see the **return** later
--   You can ask questions and get support anytime
--   After completion, you will be able to read code
--   **and** write your own program using Python
--   **That's quite something!**
+- Some **investment** in the beginning to see the **return** later
+- You can ask questions and get support anytime
+- After completion, you will be able to read code
+- **and** write your own program using Python
+- **That's quite something!**
 
 ## Goals of the Course
 
--   Essential concepts and tools of modern programming
--   Automated solutions for recurrent tasks
--   Algorithm-based solutions of complex problems
--   **Usage of AI** in a specific context
+- Essential concepts and tools of modern programming
+- Automated solutions for recurrent tasks
+- Algorithm-based solutions of complex problems
+- **Usage of AI** in a specific context
 
 ## Python as Language
 
--   **Origins**: Conceived in late 1980s as a teaching and scripting language
--   **Simple Syntax**: Python's syntax is straightforward and easy to learn
--   **Versatility**: Used in web development, data analysis, artificial intelligence, and more
--   **Community Support**: A large community of users and extensive documentation
+- **Origins**: Conceived in late 1980s as a teaching and scripting language
+- **Simple Syntax**: Python's syntax is straightforward and easy to learn
+- **Versatility**: Used in web development, data analysis, artificial intelligence, and more
+- **Community Support**: A large community of users and extensive documentation
 
 # <span class="flow">Artificial Intelligence</span>
 
 ## How to use AI
 
--   We base our assessment on the KLU classification:
-    -   <span class="highlight">Level 1: Pause: Use of AI defined by the educator</span>
--   You are <span class="highlight">allowed to use AI</span> (Claude, ChatGPT, Mistral ...)
--   Use them to **support understanding**
--   A course chatbot is available **on the learning website**
--   It is designed to **guide** your problem-solving process
+- We base our assessment on the KLU classification:
+  - <span class="highlight">Level 1: Pause: Use of AI defined by the educator</span>
+- You are <span class="highlight">allowed to use AI</span> (Claude, ChatGPT, Mistral ...)
+- Use them to **support understanding**
+- A course chatbot is available **on the learning website**
+- It is designed to **guide** your problem-solving process
 
 . . .
 
@@ -118,13 +118,13 @@ format:
 
 ## How to use the Chatbot
 
--   Just click the <span class="highlight">chatbot bubble</span> on the website
--   The chat will open an you can **ask your questions**
--   It is programmed by us and uses <span class="highlight">Mistral AI</span> as backend
--   Ask your question as specific as possible
--   This ensures enough **context for the model**
--   We can see aggregated logs, but cannot identify you
--   Please don't provide <span class="highlight">personal information</span>
+- Just click the <span class="highlight">chatbot bubble</span> on the website
+- The chat will open an you can **ask your questions**
+- It is programmed by us and uses <span class="highlight">Mistral AI</span> as backend
+- Ask your question as specific as possible
+- This ensures enough **context for the model**
+- We can see aggregated logs, but cannot identify you
+- Please don't provide <span class="highlight">personal information</span>
 
 # <span class="flow">Why learn programming?</span>
 
@@ -164,8 +164,8 @@ format:
 
 ## Don't give up!
 
--   Programming is **problem solving**, don't get **frustrated**!
--   Expect to **stretch** your comfort zone
+- Programming is **problem solving**, don't get **frustrated**!
+- Expect to **stretch** your comfort zone
 
 <center>
 
@@ -176,42 +176,42 @@ format:
 
 ## Learning Path
 
--   The learning path can be quite steep!
--   <span class="highlight">First of all help each other!</span>
--   Try to find help in lecture materials and books, the Python documentation, and online (e.g. Google, ChatGPT, StackOverflow, ...)
--   In case you get frustrated, read the following [helpful blog post about the challenges on medium.com](https://medium.com/sololearn/why-learning-to-code-is-soooo-hard-3c2372e9d12c)
--   In case you find errors or typos, please report them [via e-mail](vlcek@beyondsimulations.com) to me
+- The learning path can be quite steep!
+- <span class="highlight">First of all help each other!</span>
+- Try to find help in lecture materials and books, the Python documentation, and online (e.g. Google, ChatGPT, StackOverflow, ...)
+- In case you get frustrated, read the following [helpful blog post about the challenges on medium.com](https://medium.com/sololearn/why-learning-to-code-is-soooo-hard-3c2372e9d12c)
+- In case you find errors or typos, please report them [via e-mail](vlcek@beyondsimulations.com) to me
 
 # <span class="flow">Setting up Python</span>
 
 ## Installing an IDE
 
--   In this course, we will use Zed as our IDE
--   Download and install it from <https://zed.dev/>
--   It is available for Windows, Mac and Linux
--   It is free to use, lightweight and fast
--   Has AI support built-in, which we will use later
+- In this course, we will use Zed as our IDE
+- Download and install it from <https://zed.dev/>
+- It is available for Windows, Mac and Linux
+- It is free to use, lightweight and fast
+- Has AI support built-in, which we will use later
 
 ## What is an IDE?
 
--   Integrated Development Environment `=` application
--   It allows you to write, run and debug code scripts
--   Other IDEs include for example:
-    -   [PyCharm](https://www.jetbrains.com/pycharm/) from JetBrains
-    -   [Visual Studio Code](https://code.visualstudio.com/) from Microsoft
+- Integrated Development Environment `=` application
+- It allows you to write, run and debug code scripts
+- Other IDEs include for example:
+  - [PyCharm](https://www.jetbrains.com/pycharm/) from JetBrains
+  - [Visual Studio Code](https://code.visualstudio.com/) from Microsoft
 
 ## Installing Python with `uv`
 
--   We will use `uv` to install and manage Python versions
--   It works on Windows, Mac and Linux
--   It helps us to manage packages and virtual environments
--   Now, we all [go here](../general/uv.qmd) and install `uv` and Python
+- We will use `uv` to install and manage Python versions
+- It works on Windows, Mac and Linux
+- It helps us to manage packages and virtual environments
+- Now, we all [go here](../general/uv.qmd) and install `uv` and Python
 
 ## Python on iPads
 
--   Although you can run Python scripts from on your iPad, it is not recommended for the course
--   Nonetheless, you could use [Pythonista](https://apps.apple.com/de/app/pythonista-3/id1085978097)
--   It works locally on your iPad and can run most scripts
+- Although you can run Python scripts from on your iPad, it is not recommended for the course
+- Nonetheless, you could use [Pythonista](https://apps.apple.com/de/app/pythonista-3/id1085978097)
+- It works locally on your iPad and can run most scripts
 
 . . .
 
@@ -248,9 +248,9 @@ uv run python hello.py
 
 . . .
 
--   Use the equals sign (=)
--   Variable name goes on the left
--   Value to be assigned goes on the right
+- Use the equals sign (=)
+- Variable name goes on the left
+- Value to be assigned goes on the right
 
 . . .
 
@@ -293,30 +293,30 @@ print(message)
 
 <span class="errors">SyntaxError</span>: invalid syntax
 
--   The code is not valid Python syntax
--   Likely the most common error that you will encounter!
--   Happens when you make a mistake, e.g., illegal character, missing a colon, parentheses or quotations
--   You can fix this by correcting the code and re-running
--   **In the lecture you will encounter many more errors!**
+- The code is not valid Python syntax
+- Likely the most common error that you will encounter!
+- Happens when you make a mistake, e.g., illegal character, missing a colon, parentheses or quotations
+- You can fix this by correcting the code and re-running
+- **In the lecture you will encounter many more errors!**
 
 # <span class="flow">Program</span>
 
 ## What is a Program?
 
--   Sequence of instructions telling a computer what to do
--   Written in a language the computer can understand
--   Basic operations in most languages:
-    -   **Input**: Data from keyboard, file, network, sensors, etc.
-    -   **Output**: Display data, save it, send over network, etc.
-    -   **Processing**: Perform calculations, analyze data, make decisions, find patterns, etc.
+- Sequence of instructions telling a computer what to do
+- Written in a language the computer can understand
+- Basic operations in most languages:
+  - **Input**: Data from keyboard, file, network, sensors, etc.
+  - **Output**: Display data, save it, send over network, etc.
+  - **Processing**: Perform calculations, analyze data, make decisions, find patterns, etc.
 
 ## Key concepts
 
--   Key concepts in most languages:
-    -   **Variables**: Store and manipulate data
-    -   **Conditional execution**: Check and execute accordingly
-    -   **Loops**: Perform actions repeatedly
-    -   **Functions**: Group instructions for reusability
+- Key concepts in most languages:
+  - **Variables**: Store and manipulate data
+  - **Conditional execution**: Check and execute accordingly
+  - **Loops**: Perform actions repeatedly
+  - **Functions**: Group instructions for reusability
 
 . . .
 
@@ -326,10 +326,10 @@ print(message)
 
 ## How Python executes code
 
--   Python is an **interpreted language**
--   The source code is executed line by line
--   The interpreter checks the syntax and executes the code
--   This is in contrast to compiled languages, where the code is compiled into machine code before execution
+- Python is an **interpreted language**
+- The source code is executed line by line
+- The interpreter checks the syntax and executes the code
+- This is in contrast to compiled languages, where the code is compiled into machine code before execution
 
 ## Hello again, World!
 
@@ -343,14 +343,14 @@ print(message)
 
 . . .
 
--   **Comment**: In the first line we define a comment with `#`
--   **Variable**: In the second we define a variable `message`
--   **Function**: In the third line we call a function `print`
+- **Comment**: In the first line we define a comment with `#`
+- **Variable**: In the second we define a variable `message`
+- **Function**: In the third line we call a function `print`
 
 ## Don't worry!
 
--   <span class="blue">Already confused?</span> Don't worry about it for now!
--   We'll learn more about variables and functions later
+- <span class="blue">Already confused?</span> Don't worry about it for now!
+- We'll learn more about variables and functions later
 
 <center>
   
@@ -361,9 +361,9 @@ print(message)
 
 ## The Zen of Python
 
--   Python's name originally comes from Monty Python
--   Style is based on a philosophy called <span class="highlight">Zen of Python</span>
--   Collection of 19 statements with general principles
+- Python's name originally comes from Monty Python
+- Style is based on a philosophy called <span class="highlight">Zen of Python</span>
+- Collection of 19 statements with general principles
 
 . . .
 
@@ -376,9 +376,9 @@ import this
 
 ## Variables
 
--   A variable in Python is a name that points to a value
--   Created by using the assignment operator `=`
--   Python does not require a declaration of variable types
+- A variable in Python is a name that points to a value
+- Created by using the assignment operator `=`
+- Python does not require a declaration of variable types
 
 ``` python
 a = 2 # Variable a assigned the value 2
@@ -395,11 +395,11 @@ c(b) # Now we can call the print function with c
 
 ## Variable Naming Conventions
 
--   Must start with a letter or underscore `_`
--   Can contain letters, numbers and underscores
--   Names are case sensitive, e.g., `a` and `A` are different!
--   Cannot be a reserved word, e.g., `for`, `if`, `def`, etc
--   Good names are short and meaningful for humans!
+- Must start with a letter or underscore `_`
+- Can contain letters, numbers and underscores
+- Names are case sensitive, e.g., `a` and `A` are different!
+- Cannot be a reserved word, e.g., `for`, `if`, `def`, etc
+- Good names are short and meaningful for humans!
 
 . . .
 
@@ -409,9 +409,9 @@ a, \_duration, 1x, time_left, 1_minute, oneWorld, xy4792
 
 ## Functions
 
--   Functions are named blocks of code
--   Can take arguments `function([arguments])`
--   Can return results or `None`
+- Functions are named blocks of code
+- Can take arguments `function([arguments])`
+- Can return results or `None`
 
 . . .
 
@@ -434,12 +434,12 @@ print("Hello","World!", sep=", ") # It can also take multiple arguments
 
 ## What are Values and Types?
 
--   **Value**: Fundamental thing that a program manipulates
-    -   In Python, values are either numbers or strings
--   **Type**: Type of a value
-    -   Determines what operations can be performed on it
-    -   `type()` is a function that returns the type of a value
-    -   Takes one argument and returns its type as string
+- **Value**: Fundamental thing that a program manipulates
+  - In Python, values are either numbers or strings
+- **Type**: Type of a value
+  - Determines what operations can be performed on it
+  - `type()` is a function that returns the type of a value
+  - Takes one argument and returns its type as string
 
 ## Strings
 
@@ -469,9 +469,9 @@ print(f"{message} is a {message_type}")
 
 ## Formated Strings
 
--   **f-strings** are strings that start with `f`
--   They contain **expressions**, e.g., <span class="highlight">variables</span>, in braces
--   Evaluated at run time and inserted into the string
+- **f-strings** are strings that start with `f`
+- They contain **expressions**, e.g., <span class="highlight">variables</span>, in braces
+- Evaluated at run time and inserted into the string
 
 . . .
 
@@ -489,11 +489,11 @@ print("{} is a {}".format(message, message_type))
 
 ## Specifying Formatted Strings
 
--   We can further specify their format with `{<to_print>:<width>.<precision>f}`
--   `width` can be a number specifying the output width
--   `<`, `^`, `>` can be used before the width to align the text
--   `precision` can be used to specify the decimals
--   `.f` can be used to format floats
+- We can further specify their format with `{<to_print>:<width>.<precision>f}`
+- `width` can be a number specifying the output width
+- `<`, `^`, `>` can be used before the width to align the text
+- `precision` can be used to specify the decimals
+- `.f` can be used to format floats
 
 ``` python
 x = "hello"
@@ -504,10 +504,10 @@ print(f"{x:<10} has {len(x):>10.2f} characters.")
 
 ## Expressions
 
--   Produce a value when evaluated
--   Can be used as part of larger expressions or statements
--   Statements are expressions that don't produce a value
--   Examples: arithmetic operations, function calls, variables
+- Produce a value when evaluated
+- Can be used as part of larger expressions or statements
+- Statements are expressions that don't produce a value
+- Examples: arithmetic operations, function calls, variables
 
 ``` python
 x = 1 # Statement that assigns the value 3 to x
@@ -519,9 +519,9 @@ print(f"Great, the result is {y}")
 
 ## A step back: What is a String?
 
--   <span class="blue">Remember</span>: "Hello, World" is a string - in short 'str'
--   A string is a sequence of characters enclosed in quotes
--   Examples: `"Hello"`, `'World'`, `"123"`, `'1World23'`
+- <span class="blue">Remember</span>: "Hello, World" is a string - in short 'str'
+- A string is a sequence of characters enclosed in quotes
+- Examples: `"Hello"`, `'World'`, `"123"`, `'1World23'`
 
 ``` python
 hello = "Hello"
@@ -539,8 +539,8 @@ print(hello,world,sep=", ") # We can specify the separator with the argument sep
 
 ## String Operations
 
--   <span class="highlight">But we can also do much more with strings!</span>
--   String concatenation, indexing, slicing, length, etc.
+- <span class="highlight">But we can also do much more with strings!</span>
+- String concatenation, indexing, slicing, length, etc.
 
 ``` python
 two_strings = "Hello" + ", " + "World!" # String concatenation
@@ -575,10 +575,10 @@ print("--x--"*3) # We can also repeat strings
 
 ## Booleans
 
--   Booleans represent two values: `True` and `False`
--   Internally they are represented as `1` and `0`, respectively
--   They are used for logical operations and control flow
--   E.g.: `if`, `while`, `for`, `elif`, \`else
+- Booleans represent two values: `True` and `False`
+- Internally they are represented as `1` and `0`, respectively
+- They are used for logical operations and control flow
+- E.g.: `if`, `while`, `for`, `elif`, \`else
 
 . . .
 
@@ -598,9 +598,9 @@ print(type(y))
 
 ## Integers and Floats
 
--   Integers are whole numbers, e.g.: `1`, `-3`, `0` or `100`
--   Floats are decimal numbers, e.g.: `-4.78`, `0.1` or `1.23e2`
--   Bit size is **not specified** (e.g.: 64 bits) in Python!
+- Integers are whole numbers, e.g.: `1`, `-3`, `0` or `100`
+- Floats are decimal numbers, e.g.: `-4.78`, `0.1` or `1.23e2`
+- Bit size is **not specified** (e.g.: 64 bits) in Python!
 
 . . .
 
@@ -641,9 +641,9 @@ modulo = 10 % 3;            print(f"Result: modulo is {modulo}")
 
 ## Precedence
 
--   Operators are the same as in most other languages
--   Can be combined with each other and variables
--   <span class="highlight">Normal rules of precedence apply</span>
+- Operators are the same as in most other languages
+- Can be combined with each other and variables
+- <span class="highlight">Normal rules of precedence apply</span>
 
 . . .
 
@@ -667,9 +667,9 @@ print(f"(2 + 3) * 4 = {parentheses_operation}")
 
 ## The input() Function
 
--   Used to get user input <span class="blue">as string</span> from the console
--   Syntax: `input([userprompt])`
--   Displays optional prompt and waits for user input
+- Used to get user input <span class="blue">as string</span> from the console
+- Syntax: `input([userprompt])`
+- Displays optional prompt and waits for user input
 
 . . .
 
@@ -762,8 +762,8 @@ print(f"{no_int} converted to {round(no_int,1)} of type {type(round(no_int,1))}"
 
 ## Interesting Books to start
 
--   Downey, A. B. (2024). Think Python: How to think like a computer scientist (Third edition). O'Reilly. [Link to free online version](https://greenteapress.com/wp/think-python-3rd-edition/)
--   Elter, S. (2021). Schrödinger programmiert Python: Das etwas andere Fachbuch (1. Auflage). Rheinwerk Verlag.
+- Downey, A. B. (2024). Think Python: How to think like a computer scientist (Third edition). O'Reilly. [Link to free online version](https://greenteapress.com/wp/think-python-3rd-edition/)
+- Elter, S. (2021). Schrödinger programmiert Python: Das etwas andere Fachbuch (1. Auflage). Rheinwerk Verlag.
 
 . . .
 

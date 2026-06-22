@@ -17,10 +17,10 @@ You may use online resources and generative AI (gAI) for assistance. However, yo
 
 > **How I used generative AI (template)**
 >
-> -   Provider(s) used (e.g., "OpenAI, Anthropic, Google")
-> -   Whether you used a browser or an IDE to communicate with the provider
-> -   Your key prompts (1--3 lines), or a brief description of them
-> -   How you verified correctness (tests, docs checks, manual reasoning)
+> - Provider(s) used (e.g., "OpenAI, Anthropic, Google")
+> - Whether you used a browser or an IDE to communicate with the provider
+> - Your key prompts (1--3 lines), or a brief description of them
+> - How you verified correctness (tests, docs checks, manual reasoning)
 
 Note, you are fully responsible for the correctness and originality of submitted work, regardless of gAI use.
 
@@ -42,21 +42,21 @@ Use descriptive variable names and format your code consistently to maximize rea
 
 ## Submission format
 
--   Submit a single ZIP named `a1_group-<number>_<lastname1-lastname2_lastname3>.zip`
--   Include:
-    -   `assignment_1_task1.py`, `assignment_1_task2.py`, and so on
-    -   Any data files used in a `data/` folder (if used)
-    -   Any images in an `assets/` folder (if used)
--   Email subject: `Intro to Python – Assignment 1`
+- Submit a single ZIP named `a1_group-<number>_<lastname1-lastname2_lastname3>.zip`
+- Include:
+  - `assignment_1_task1.py`, `assignment_1_task2.py`, and so on
+  - Any data files used in a `data/` folder (if used)
+  - Any images in an `assets/` folder (if used)
+- Email subject: `Intro to Python – Assignment 1`
 
 > **Submission checklist**
 >
-> -   [ ] Runs without errors from a clean environment by using `uv`
-> -   [ ] No unexplained gAI meta-comments, all comments explain code
-> -   [ ] "How I used generative AI" paragraph included (if gAI used)
-> -   [ ] Data/assets included and paths correct (if used)
-> -   [ ] `pyproject.toml` included (if external packages are used)
-> -   [ ] File naming and email subject follow the conventions
+> - [ ] Runs without errors from a clean environment by using `uv`
+> - [ ] No unexplained gAI meta-comments, all comments explain code
+> - [ ] "How I used generative AI" paragraph included (if gAI used)
+> - [ ] Data/assets included and paths correct (if used)
+> - [ ] `pyproject.toml` included (if external packages are used)
+> - [ ] File naming and email subject follow the conventions
 
 # Tax refund for donations
 

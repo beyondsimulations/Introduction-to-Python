@@ -33,10 +33,10 @@ For this exercise, you'll create a simple investment calculator application usin
 Your task is to create a GUI application that:
 
 1.  Allows users to input:
-    -   Initial investment amount
-    -   Annual contribution
-    -   Expected return rate (%)
-    -   Investment period (years)
+    - Initial investment amount
+    - Annual contribution
+    - Expected return rate (%)
+    - Investment period (years)
 2.  Calculates the future value of the investment
 3.  Displays the result in a formatted way
 
@@ -113,10 +113,10 @@ if __name__ == "__main__":
 
 Try running this program and then enhance it with additional features such as:
 
--   Including a reset button
--   Adding a table showing year-by-year breakdown
--   Creating a graph showing the investment growth
--   Adding a dropdown menu to select different currencies
+- Including a reset button
+- Adding a table showing year-by-year breakdown
+- Creating a graph showing the investment growth
+- Adding a dropdown menu to select different currencies
 
 # Plotting Stocks with a Dashboard
 
@@ -133,8 +133,8 @@ Finally, let's plot some stock data by building a simple Dashboard. To do so, yo
 
 If you have some time left, try to enhance your Dashboards with additional features.
 
--   Adding a menu to switch between different stocks
--   Adding a graph to compare multiple stocks
+- Adding a menu to switch between different stocks
+- Adding a graph to compare multiple stocks
 
 # That's it!
 
