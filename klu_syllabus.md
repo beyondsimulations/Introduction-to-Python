@@ -1,25 +1,38 @@
 # Programming with Python
 
-**Semester 3, 2025**
+**Semester 3, 2026** · *(pass/fail)*
 
-## Course Information
+## Form of Examination
 
-### Form of Examination
-Pass/fail with 75% required attendance, 2 assignments and a final presentation
+Pass/fail. To pass, students need at least **60 points**, attendance of at least **75%** of sessions, and a final group presentation.
 
-### Grades
-The course is not graded and can only be passed/failed. Requirements:
-- **Attendance**: At least 75% required
-- **Assignments**: Two assignments must be submitted by the end of the quarter
-- **Presentation**: One brief presentation must be held at the end
-- **Performance**: At least 50% of assignment solutions must be correct
-- **Collaboration**: Groups of up to 3 students are permitted
+## How You Pass
 
-All assignments are due by the end of the quarter (earlier submissions are highly encouraged). Each assignment addresses an algorithmic problem from the course that must be solved independently. More details will be provided at the introductory lecture.
+This course is pass/fail; there are no grades. To pass, you need at least **60 points** and attendance of at least **75%** of sessions.
+
+Points come from two things: the five checkpoints (12 points each, 60 in total) and the final group project together with its presentation (40 points). That makes 100 points, of which 60 are needed to pass.
+
+### The checkpoints
+
+Five exercises, **mostly done in class** during the term. In each one, you write and run your own code. The tasks vary: writing a function, working out what a piece of code prints, fixing a bug, or answering multiple-choice questions. You work individually.
+
+In Part I the checkpoints are **AI-free**; in Part II you may use AI (see the AI policy below). The dates are announced at the start of the course.
+
+### The final project
+
+In the last part of the course you build a project of your own choosing, in **groups of up to 2**, and present it in the final session. A list of business-related problems to choose from is provided, but I encourage you to come up with your own idea.
+
+## Working with AI
+
+This course follows KLU's general policy on AI tools, linked below, and sets some additonal rules on top of it. The idea behind those rules is straightforward: you need to be able to read and write code yourself before you rely on a tool that writes it for you. The two halves of the course therefore treat AI differently.
+
+**Part I (foundations): no AI.** While you are learning syntax, control flow, functions, and data structures, AI assistants are not allowed in the checkpoints, and the provided course chatbot gives hints rather than solutions. Using AI in an AI-free checkpoint counts as unauthorised aid under KLU's examination rules.
+
+**Parts II and III: AI allowed, and taught.** Once the basics are in place, we use AI openly and spend time on how to work with it: how to prompt, how to check and debug what it produces, and how to spot invented functions and APIs. Whenever you use AI in submitted work, including the project, say so and note which tools you used and what for. Undisclosed use is treated as academic misconduct.
 
 ## Lecturer
 
-**Dr. Tobias Vlček**
+**Dr. Tobias Vlćek**
 Email: vlcek@beyondsimulations.com
 
 ## Module Dates
@@ -28,81 +41,51 @@ You can find the lecture dates in your myKLU calendar.
 
 ## Module Objectives
 
-This module introduces programming with Python. Python is a modern and powerful programming language widely used in industry and academic projects. Students will learn how to find code-based solutions to basic and complex problems through many practical examples.
+This module introduces programming with Python, a language used widely in industry and research. By the end of the course, students will be able to:
 
-Upon completion of the course, students will:
-- Be able to implement solutions to complex problems in Python
-- Know basic concepts of programming and algorithms (loops, functions, object classes)
-- Be able to apply basic techniques of data manipulation and visualization
-- Be able to read and write code
-- Acquire experience working with core Python libraries (NumPy, Pandas, Matplotlib)
-- Know how to collaborate in a team to solve problems
+- implement solutions to basic and complex problems in Python;
+- apply core programming and algorithmic concepts (loops, functions, classes);
+- read and trace code, not only write it (this is assessed directly);
+- apply basic techniques of data manipulation and visualization;
+- work with core Python libraries (NumPy, Pandas, Matplotlib);
+- use AI coding tools with judgement;
+- collaborate in a team to solve a problem.
 
-**Note**: This course is specifically designed for business students. No prior programming knowledge or experience is required. The teaching format accommodates different skill levels so every student can maximize their learning.
+**Note**: This course is for **business students** and assumes **no prior programming experience**. The format works for a mix of experience levels, so everyone has something to take from it.
 
 ## Programming Environment
 
-This course uses **Python 3** as our primary programming language. We'll ensure everyone has a consistent development environment by walking through the setup process together during our first session.
+This course uses **Python 3** with **marimo** notebooks that run in the browser, so there is nothing to install before the first session. For the project phase, we set up a local environment and an AI-assisted editor together.
 
-**What You Need**: Please bring your laptop to class. We'll guide you through the installation process step-by-step for Windows, Mac, or Linux.
+**What you need**: bring your laptop (not a tablet!) to every session.
 
 ## Module Structure
 
-### Part I: Introduction to Programming with Python
+The course has three parts.
 
-Introduction to basic programming concepts in Python, including syntax, data types, loops, functions, and object classes. Core Python libraries (NumPy and Pandas) will also be introduced.
+**Part I, Introduction to Programming with Python** *(AI-free).* The basics: syntax, variables and data types; conditionals and loops; functions, scope and classes; lists, tuples, sets and dictionaries with basic input and output; and error handling and debugging.
 
-| Session | Topic | Content |
-|---------|-------|---------|
-| I | Welcome and Introduction | Basics of Python syntax, variables, data types |
-| II | Control Structures for Your Code | String methods, comparisons, conditional statements, loops |
-| III | Building Reusable Functions | Functions, arguments, return values, scope, classes |
-| IV | Handling Data in More Than One Dimension | Tuples, lists, sets, dictionaries, and basic I/O |
-| V | Handling Errors and Strings | Exceptions, try-except blocks, debugging |
+**Part II, Data Science with Python** *(AI allowed).* Modules and packages, numerical computing with NumPy, data handling with Pandas, and plotting with Matplotlib, together with a proper introduction to using AI tools well.
 
-### Part II: Data Science with Python
+**Part III, Programming Project** *(AI allowed).* Students apply what they have learned in a group project and present it in the final session.
 
-Basic data science tools in Python covering data manipulation, descriptive and explorative analysis, and visualization, with an outlook on next steps in Python.
-
-| Session | Topic | Content |
-|---------|-------|---------|
-| VI | Using Modules and Packages | Standard libraries, random numbers and their applications |
-| VII | NumPy for Scientific Computing | Fast array operations with NumPy |
-| VIII | Pandas and AI | Pandas for data manipulation and AI |
-| IX | Plotting Data | Matplotlib with AI based on hands-on examples |
-
-### Part III: Programming Projects
-
-Students work on mini projects in Python applying their knowledge in groups. Each group presents results and receives feedback at semester's end.
-
-| Session | Topic | Content |
-|---------|-------|---------|
-| X | Your First Project I | Choose your project that ties together course concepts |
-| XI | Your First Project II | Progress your group project with assistance |
-| XII | Your First Project III | Finalize your group project with your team |
-| XIII | Presentations and Discussion | Present your group's work and share learnings |
+The five checkpoints fall in Parts I and II; the dates are announced at the start of the course.
 
 ## Lecture Materials
 
-**Lecture Slides**: [https://beyondsimulations.github.io/Introduction-to-Python/](https://beyondsimulations.github.io/Introduction-to-Python/)
+**Course website and slides**: [https://beyondsimulations.github.io/Introduction-to-Python/](https://beyondsimulations.github.io/Introduction-to-Python/)
 
 ## Required Readings
 
-| Book | Author | Usage | Type | Pre-reading |
-|------|--------|-------|------|-------------|
-| Algorithmic Thinking, 2nd Edition: Unlock Your Programming Potential | Zingaro, D. (2024) | Entire Lecture | Mandatory | No |
-| Think Python: How to Think Like a Computer Scientist (Third Edition) | Downey, A. B. (2024) | Entire Lecture | Recommended | No |
+| Literature | Session / Date of use | M / R | Pre-reading |
+|------------|----------------------|-------|-------------|
+| Zingaro, D. (2024). *Algorithmic Thinking*, 2nd edition: Unlock Your Programming Potential. No Starch Press. *[ISBN to confirm]* | Entire lecture | M | No |
+| Downey, A. B. (2024). *Think Python: How to Think Like a Computer Scientist*, 3rd edition. O'Reilly. *[ISBN to confirm]* | Entire lecture | R | No |
 
 ## Additional Readings
 
-### Programming Practice Platforms
-- **[Advent of Code](https://adventofcode.com/)**: Daily programming challenges during Christmas time. Highly recommended for improving skills playfully.
-- **[Codewars](https://codewars.com/)**: Platform to strengthen coding skills by solving challenges. Compete with others, see alternative solutions, and learn from others' code.
-- **[Tiny Python Projects](http://tinypythonprojects.com/)**: Interesting and fun projects to improve programming skills.
+- **[Advent of Code](https://adventofcode.com/)** — daily programming challenges in December; a playful way to practise.
+- **[Codewars](https://codewars.com/)** — coding challenges with community solutions to learn from.
+- **[Tiny Python Projects](http://tinypythonprojects.com/)** — small projects to build programming skills.
 
-### AI Tools
-- **ChatGPT and Other AI Tools**: Information about AI tool usage will be provided during the course.
-
----
-
-*This syllabus supports KLU's commitment to Inclusion, Diversity & Equality.*
+*This course follows KLU's commitment to Inclusion, Diversity & Equality. If you need any accommodations, please contact me.*
