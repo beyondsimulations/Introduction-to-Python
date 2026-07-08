@@ -1,0 +1,75 @@
+{
+  "planPath": "docs/superpowers/plans/2026-07-08-overhaul-plan-1-foundations.md",
+  "tasks": [
+    {
+      "id": 0,
+      "subject": "Task 1: Add marimo + verification spikes",
+      "status": "pending",
+      "description": "**Goal:** marimo installed; download-format and localStorage spikes run and recorded.\n\n**Files:** pyproject.toml; docs/superpowers/specs/2026-07-08-spike-results.md\n\n```json:metadata\n{\"files\": [\"pyproject.toml\", \"docs/superpowers/specs/2026-07-08-spike-results.md\"], \"verifyCommand\": \"uv run marimo --version\", \"acceptanceCriteria\": [\"marimo installed\", \"download format verdict recorded\", \"localStorage verdict recorded\"]}\n```"
+    },
+    {
+      "id": 1,
+      "subject": "Task 2: Notebook template _template.py",
+      "status": "pending",
+      "blockedBy": [0],
+      "description": "**Goal:** Canonical notebook skeleton (name input, check/hint/progress patterns). Full code in plan Task 2.\n\n```json:metadata\n{\"files\": [\"notebooks/_template.py\"], \"verifyCommand\": \"uv run marimo edit notebooks/_template.py\", \"acceptanceCriteria\": [\"all cells green\", \"reactive check works\", \"progress cell counts\"]}\n```"
+    },
+    {
+      "id": 2,
+      "subject": "Task 3: WASM export pipeline",
+      "status": "pending",
+      "blockedBy": [0],
+      "description": "**Goal:** helpers/export_marimo.py exports notebooks to _site/notebooks/, wired into Quarto post-render. Full code in plan Task 3.\n\n```json:metadata\n{\"files\": [\"helpers/export_marimo.py\", \"_quarto.yml\"], \"verifyCommand\": \"uv run python helpers/export_marimo.py\", \"acceptanceCriteria\": [\"exports every nb_/ex_ notebook\", \"_template excluded\", \"runs in quarto render\"]}\n```"
+    },
+    {
+      "id": 3,
+      "subject": "Task 4: Tutorial launcher page pattern (tut_01)",
+      "status": "pending",
+      "blockedBy": [2],
+      "description": "**Goal:** tut_01_introduction.qmd becomes slim two-button launcher. Full content in plan Task 4 (relative links!).\n\n```json:metadata\n{\"files\": [\"tutorials/tut_01_introduction.qmd\"], \"verifyCommand\": \"quarto render tutorials/tut_01_introduction.qmd\", \"acceptanceCriteria\": [\"two buttons\", \"persistence explainer\", \"no exercises on page\"]}\n```"
+    },
+    {
+      "id": 4,
+      "subject": "Task 5: Session I lab notebook nb_01_lab_founding.py",
+      "status": "pending",
+      "blockedBy": [1, 2],
+      "description": "**Goal:** Complete Episode 1 lab; exercise table in plan Task 5; all 4 CP task types.\n\n```json:metadata\n{\"files\": [\"notebooks/nb_01_lab_founding.py\"], \"verifyCommand\": \"uv run python helpers/export_marimo.py\", \"acceptanceCriteria\": [\"6+ core, 2+ bonus exercises\", \"all 4 CP task types\", \"runs in edit and WASM\"]}\n```"
+    },
+    {
+      "id": 5,
+      "subject": "Task 6: Session I in-lecture exercises (a/b/c)",
+      "status": "pending",
+      "blockedBy": [1, 2],
+      "description": "**Goal:** Three one-screen predict-first exercises. Bugs = runtime errors only, never syntax errors. Code in plan Task 6.\n\n```json:metadata\n{\"files\": [\"notebooks/exercises/ex_01_a.py\", \"notebooks/exercises/ex_01_b.py\", \"notebooks/exercises/ex_01_c.py\"], \"verifyCommand\": \"uv run python helpers/export_marimo.py\", \"acceptanceCriteria\": [\"one screen each\", \"reactive check\", \"sandbox closing line\"]}\n```"
+    },
+    {
+      "id": 6,
+      "subject": "Task 7: Lecture 1 deck integration",
+      "status": "pending",
+      "blockedBy": [5],
+      "description": "**Goal:** lec_01 startup cold-open + 3 QR exercise-break slides; Copilot removed; helpers/make_qr.py. Code in plan Task 7.\n\n```json:metadata\n{\"files\": [\"lectures/lec_01_introduction.qmd\", \"helpers/make_qr.py\"], \"verifyCommand\": \"quarto render lectures/lec_01_introduction.qmd\", \"acceptanceCriteria\": [\"cold-open slide\", \"3 QR break slides\", \"no copilot refs\"]}\n```"
+    },
+    {
+      "id": 7,
+      "subject": "Task 8: Private checkpoint repo + grading script (TDD)",
+      "status": "pending",
+      "blockedBy": [0],
+      "description": "**Goal:** ../Introduction-to-Python-checkpoints private repo with tested grader (both formats, timeout, manual-review bucket). Full code in plan Task 8.\n\n```json:metadata\n{\"files\": [\"../Introduction-to-Python-checkpoints/grader/grade.py\", \"../Introduction-to-Python-checkpoints/grader/runner.py\", \"../Introduction-to-Python-checkpoints/grader/hashcheck.py\"], \"verifyCommand\": \"cd ../Introduction-to-Python-checkpoints && uv run pytest -v\", \"acceptanceCriteria\": [\"handles notebook + flat formats\", \"syntax error -> manual_review\", \"timeout -> manual_review\", \"CSV output\"]}\n```"
+    },
+    {
+      "id": 8,
+      "subject": "Task 9: Dress-rehearsal checkpoint cp0",
+      "status": "pending",
+      "blockedBy": [7],
+      "description": "**Goal:** cp0 notebook: code-only answers, hashed live checks, score cell; 6/6 via grading pipeline. Key cells in plan Task 9.\n\n```json:metadata\n{\"files\": [\"../Introduction-to-Python-checkpoints/checkpoints/cp0/cp0_dress_rehearsal.py\"], \"verifyCommand\": \"uv run python -m grader.grade checkpoints/cp0 /tmp/cp0_subs/\", \"acceptanceCriteria\": [\"code-only answers\", \"hashed checks\", \"6/6 end-to-end\"]}\n```"
+    },
+    {
+      "id": 9,
+      "subject": "Task 10: Full dress rehearsal + deploy path",
+      "status": "pending",
+      "blockedBy": [8],
+      "description": "**Goal:** GitHub Education application, private deploy of cp0, weak-laptop run, Moodle round-trip, molab login screenshot; results recorded.\n\n```json:metadata\n{\"files\": [\"docs/superpowers/specs/2026-07-08-dress-rehearsal-results.md\"], \"verifyCommand\": \"cat docs/superpowers/specs/2026-07-08-dress-rehearsal-results.md\", \"acceptanceCriteria\": [\"deploy works\", \"weak-laptop run graded 6/6\", \"molab login documented\", \"GH Education status recorded\"]}\n```"
+    }
+  ],
+  "lastUpdated": "2026-07-08"
+}
