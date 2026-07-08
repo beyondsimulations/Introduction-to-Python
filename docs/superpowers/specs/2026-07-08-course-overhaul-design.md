@@ -69,13 +69,34 @@ Lectures are scoped to 3 × 20-min blocks — existing decks must be trimmed/spl
 
 ## 4. Content design
 
-### The startup arc
+### The startup arc — a sitcom in 9 episodes
 
-One fixed **campus food-delivery startup**. Students "found" it in Notebook 1.1 and name it via `mo.ui.text`; the name propagates reactively through the notebook (first marimo wow-moment). Mechanics, data, and all grading asserts are **name-agnostic**. Each notebook re-asks the name (WASM notebooks are standalone; one input cell, two seconds).
+One fixed **campus food-delivery startup**. Students "found" it in Notebook 1.1 and name it via `mo.ui.text`; the name propagates reactively through the notebook (first marimo wow-moment). Mechanics, data, and all grading asserts are **name-agnostic**. Each notebook re-asks the name in its first cell — WASM notebooks are standalone, so no cross-notebook state; the re-ask is a deliberate, robust design choice (works identically in browser/molab/local; can be played for laughs).
 
-Arc across sessions: menu & pricing → order logic (control flow) → reusable order functions → customers & delivery zones (dicts/lists) → order validation & error handling → randomized demand simulation (modules/random) → delivery metrics (NumPy) → sales analysis on messy data (Pandas) → dashboards (plotting).
+**Tone:** full sitcom in the notebooks; slides stay restrained (story as framing, jokes sparse).
 
-Mini-games woven in where mechanics fit (slightly meta is acceptable): price-guessing game (control flow), dice-based delivery simulator (random), text-based "order adventure" (dicts). Each framed as something the startup builds or plays.
+**Recurring cast:**
+- **Kevin, the co-founder** — confident, terrible ideas, worse code. Source of debugging exercises (his 3-AM checkout script), messy data (his Excel exports), and chart crimes (his pitch slides).
+- **The investor** — appears in Part II demanding numbers, dashboards, "insights by Friday."
+- **The authorities** — German bureaucracy as running gag (health inspector, data-protection office, *Formular 27b/6*).
+- **MunchCorp** — the soulless mega-competitor (price wars, competitive analysis).
+
+**Episode beats (session → story → topic):**
+
+| # | Episode | Topic payload |
+|---|---|---|
+| I | Founding: name the company, first menu; Kevin wants all prices at 9.99 "for psychological reasons" | syntax, variables, types, arithmetic |
+| II | City decrees no delivery after 22:00; discount rules; **Haggling Bot** game (guess-the-number reskin) | conditionals, loops, string methods |
+| III | Copy-paste soup → reusable receipt/tip/discount functions, `Order` class; **Tip Calculator Championship** (whose function survives the weirdest inputs) | functions, scope, classes |
+| IV | Menu becomes a dict, delivery zones nested structures; **A Day as a Courier** text adventure on a dict-based campus map | lists, tuples, sets, dicts, I/O |
+| V | Kevin coded the checkout at 3 AM on energy drinks — debug it; health-inspector audit ("every order MUST have price ≥ 0") | exceptions, try/except, debugging, assertions |
+| VI | Demand simulation with event cards ("influencer visits", "rain doubles orders"), dice-delivery mini-game; **the government episode**: data-protection office demands all emails/phones/names redacted from a reviews file before publication | modules, random, string methods, `re` |
+| VII | Investor wants delivery-time statistics; zone×hour arrays; **Beat the Average** (optimize a schedule against class stats) | NumPy |
+| VIII | Due diligence: sales data is Kevin's Excel export (duplicates, "12,50 €" as text, three date formats); AI allowed as the new intern whose work must be verified | Pandas, data cleaning, AI craft |
+| IX | The pitch deck; **Chart Crimes** — spot Kevin's manipulated axes, then build the honest dashboard | Matplotlib, data literacy, critiquing AI output |
+| X–XIII | Exit: the startup "gets acquired"; students spin off their own ideas as the final project | project phase handoff |
+
+Checkpoints get one line of story flavor each ("quarterly board review") — zero extra grading complexity. No KLU-specific locations (no campus cafeteria exists); campus references stay generic.
 
 ### Notebooks
 
