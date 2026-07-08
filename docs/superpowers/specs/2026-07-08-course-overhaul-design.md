@@ -100,9 +100,27 @@ Checkpoints get one line of story flavor each ("quarterly board review") — zer
 
 ### Notebooks
 
-- Tutorial notebooks `nb_XX_YY_*.py` (marimo format), 2–3 per lecture, styled after Management-Science: narrative intro → teaching cells → exercises marked "YOUR CODE BELOW" → `assert`-based self-tests with encouraging messages.
-- In-lecture exercises `ex_XX_[a-d].py`: single-concept, 5–10 min, reached via QR/short link from slides.
-- Topic gaps folded in: comprehensions/idiomatic Python (sessions II & IV), extra data wrangling incl. messy CSVs and groupby (session VIII notebooks), AI craft (session VIII lecture + woven through IX), environment/tooling + git (session X).
+**Per lecture: one main lab notebook + one optional side quest** (not 2–3 equal notebooks):
+
+- `nb_XX_lab_<topic>.py` — ~45–60 min of core exercises for the consecutive end-of-session lab block. Arc: story cold-open → teach/try sections → one **boss exercise** combining the session's skills and resolving the episode. Exercises marked *core* vs *bonus*.
+- `nb_XX_sidequest_<topic>.py` — optional extra practice for fast students / homework. Never required.
+- In-lecture exercises `ex_XX_[a-d].py`: single-concept, 5–10 min, one screen (no scrolling), named by lecture block so slides map 1:1. **Predict-first pattern**: slide shows code → students commit to a prediction → then run to verify. Each ends with "nothing to save — this was a sandbox."
+
+**Reactive-notebook mechanics (the marimo advantage over the Jupyter-style Management-Science pattern):**
+
+- **Reactive checks, not test cells**: a check cell below each exercise re-runs automatically on any code change and renders ✅/❌ with a message — no "run the test cell" step.
+- **Live progress cell** at the bottom of every notebook ("Core exercises: 6/8 ✅", story-skinned as Kevin's approval) — the same mechanic as the checkpoint score cell, rehearsed weekly from Notebook 1.1.
+- **Graduated hints** per exercise via `mo.accordion`: Hint 1 (nudge) → Hint 2 (structure). Full solutions published *after* each session as separate read-only WASM notebooks. Built-in help reduces AI temptation in the AI-free phase.
+- **Checkpoint task types rehearsed weekly**: every lab notebook contains all four CP task types — write a function, trace code (predict-before-run via `mo.ui.radio` with reveal), fix a bug (Kevin's code), MCQ. By CP1, only the stakes are new.
+- **Wrap-up ritual** (last 5 min of lab): progress-cell check, download-your-`.py` reminder, next-episode teaser — weekly rehearsal of the checkpoint submission motion.
+
+**Authoring rules:**
+
+- `notebooks/_template.py` is built first and every notebook inherits its skeleton (cold-open, section rhythm, check-cell pattern, hint accordion, progress cell, estimated time at top, download reminder, teaser).
+- Marimo forbids redefining a variable across cells — exercise cells use disciplined suffix naming (`price_ex2`), codified in the template, not tribal knowledge.
+- Datasets load via `mo.notebook_location()` so the same file works in WASM and locally in Part III.
+
+Topic gaps folded in: comprehensions/idiomatic Python (sessions II & IV), extra data wrangling incl. messy CSVs and groupby (session VIII notebooks), AI craft (session VIII lecture + woven through IX), environment/tooling + git (session X).
 
 ### Student access: two buttons, honest labeling
 
@@ -121,8 +139,10 @@ In-lecture exercises: browser button only (ephemeral by design). Checkpoints: ne
 
 ```
 notebooks/                    # marimo .py sources (source of truth)
-  nb_XX_YY_<topic>.py
-  exercises/ex_XX_<n>.py
+  _template.py                # skeleton every notebook inherits (built first)
+  nb_XX_lab_<topic>.py        # main lab notebook per lecture
+  nb_XX_sidequest_<topic>.py  # optional extra practice
+  exercises/ex_XX_<a-d>.py    # in-lecture, named by lecture block
 helpers/export_marimo.sh      # marimo export html-wasm --mode edit per notebook
 helpers/convert_qmd_to_md.py  # existing post-render (kept)
 lectures/lec_XX_*.qmd         # revealjs, updated: startup examples, QR exercise slides, Copilot removed
