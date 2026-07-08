@@ -7,7 +7,7 @@
 ## 1. Why this overhaul
 
 - GitHub Copilot's free student access is gone → the AI tooling story must be rebuilt (Mistral Free, own subscriptions, Zed).
-- Students must master basics *before* leaning on AI — the new syllabus (`klu_syllabus.md`) makes Part I AI-free and assesses via 5 in-class checkpoints.
+- Students must master basics *before* leaning on AI — the new syllabus (`klu_syllabus.md`) keeps Part I AI-free. **Parts I and II are both assessed via the 5 in-class checkpoints** (CP1–3 on Part I material, AI-free; CP4–5 on Part II material, AI allowed).
 - Lectures should be hands-on, not passive: marimo notebooks in the browser, business-student motivation via a semester-long startup narrative (modeled on the Management-Science course's `nb_XX_YY` notebooks).
 - Everything must be ready **before semester start**.
 
