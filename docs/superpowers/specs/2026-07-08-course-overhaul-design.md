@@ -6,7 +6,7 @@
 
 ## 1. Why this overhaul
 
-- GitHub Copilot's free student access is gone → the AI tooling story must be rebuilt (Mistral Free, own subscriptions, Zed).
+- GitHub Copilot's free student plan has **new sign-ups paused indefinitely since April 2026** (existing verified students keep it with restricted model choice) — a fresh cohort cannot rely on it, so the AI tooling story must be rebuilt (Mistral Free, own subscriptions, Zed). Course materials say "paused", not "ended".
 - Students must master basics *before* leaning on AI — the new syllabus (`klu_syllabus.md`) keeps Part I AI-free. **Parts I and II are both assessed via the 5 in-class checkpoints** (CP1–3 on Part I material, AI-free; CP4–5 on Part II material, AI allowed).
 - Lectures should be hands-on, not passive: marimo notebooks in the browser, business-student motivation via a semester-long startup narrative (modeled on the Management-Science course's `nb_XX_YY` notebooks).
 - Everything must be ready **before semester start**.
@@ -24,7 +24,7 @@
 | Session shape | Interleaved 20-min lecture blocks + 10-min exercises + ~60-min lab block |
 | CP timing | First ~40 min of the *following* session (sessions III, V, VI, VIII, X) |
 | Missed CPs | No make-ups; point math absorbs one miss (88 pts still reachable) |
-| CP privacy | Private companion repo + unlisted deploy URLs |
+| CP privacy | Private companion repo; WASM deploys to a **separate host** (private-repo GitHub Pages via free GitHub Education Team, or Cloudflare Pages) — never through the public course repo |
 | Git | Taught in Session X (trimmed 60–90 min session from the other lecture) |
 | Project submission | GitHub repo per pair + AI-disclosure note |
 | Chatbot | Kept as-is; hint-only mode in Part I; system prompt updated |
@@ -117,8 +117,10 @@ Checkpoints get one line of story flavor each ("quarterly board review") — zer
 **Authoring rules:**
 
 - `notebooks/_template.py` is built first and every notebook inherits its skeleton (cold-open, section rhythm, check-cell pattern, hint accordion, progress cell, estimated time at top, download reminder, teaser).
-- Marimo forbids redefining a variable across cells — exercise cells use disciplined suffix naming (`price_ex2`), codified in the template, not tribal knowledge.
-- Datasets load via `mo.notebook_location()` so the same file works in WASM and locally in Part III.
+- Marimo forbids redefining a global across cells — **and `+=`/`-=` count as redefinitions**. Exercise cells use disciplined suffix naming (`price_ex2`); underscore-prefixed names (`_tmp`) are cell-private and reusable. Codified in the template, not tribal knowledge.
+- **Placeholder discipline:** every exercise cell pre-defines its answer name (`revenue_ex2 = None  # YOUR CODE BELOW`) so reactive check cells always run and degrade to "not attempted yet" instead of erroring.
+- Datasets load via `mo.notebook_location()` from a `public/` folder (documented to work in WASM and locally). Keep datasets small: WASM has a **2 GB memory cap** and weak laptops crash on data-heavy cells.
+- Side quests are **buffer scope**: authored last, cut first, never blocking semester start.
 
 Topic gaps folded in: comprehensions/idiomatic Python (sessions II & IV), extra data wrangling incl. messy CSVs and groupby (session VIII notebooks), AI craft (session VIII lecture + woven through IX), environment/tooling + git (session X).
 
@@ -127,7 +129,7 @@ Topic gaps folded in: comprehensions/idiomatic Python (sessions II & IV), extra 
 Every tutorial page offers both, with the differences stated plainly:
 
 - **"Open in browser" (recommended default):** runs entirely on your machine in the browser tab — after the page loads, no internet or account is needed. Your work usually resumes automatically when you reopen the page **on the same computer and browser** (stored in browser storage — lost if you clear browser data, use private mode, or switch machines). Download your `.py` anytime as a safety copy.
-- **"Open in molab" (for cross-device certainty):** marimo's free cloud service (login with GitHub/Google). Your copy autosaves to your account and reopens on any device. Use this if you know you'll switch computers or want to be certain nothing is lost. Optional — nothing graded ever requires it.
+- **"Open in molab" (for cross-device certainty):** marimo's free cloud service (account required; the login method is undocumented — verify on the live site before publishing instructions). Opening our notebook forks a personal copy that autosaves to the student's account and reopens on any device. Use this if you know you'll switch computers or want to be certain nothing is lost. Optional — nothing graded ever requires it. Note for students: sessions idle >90 min are shut down (work is saved).
 
 Known one-way door, stated in course FAQ: a downloaded `.py` **cannot be uploaded back** into the browser editor; it is for submission, backup, and later local use in Part III.
 
@@ -158,16 +160,18 @@ general/git-basics.qmd        # NEW: companion page to Session X git material
 
 ### Private companion repo (`Introduction-to-Python-checkpoints`)
 
-- 5 checkpoint notebooks + reference solutions + reference test suites.
-- `grade_checkpoints.py`: takes a folder of Moodle-downloaded submissions, executes each against **reference tests** (embedded tests are for live feedback only — tampering doesn't matter), emits points CSV.
-- Deploy script: exports a checkpoint to WASM and publishes it to an **unlisted URL** on the course site shortly before the session; QR shared in class.
+- 5 checkpoint notebooks + reference solutions + **hidden reference test suites** (extra cases beyond the embedded live checks) + post-session solution notebooks for the tutorials (committed to the public repo only after the relevant session).
+- `grade_checkpoints.py`: takes a folder of Moodle-downloaded submissions, executes each in an isolated subprocess with a timeout, extracts defined names (via marimo's documented `outputs, defs = app.run()` if the download is notebook-format, or namespace-exec if it is a flat script — day-1 spike settles which), runs the reference tests, emits a points CSV. Submissions that fail to execute (syntax errors, renamed cells) land in a **manual-review bucket**, never crash the run.
+- **Deploy target is NOT the public course site** (its repo is public — exported WASM assets would expose checkpoint source pre-session, with CI-minutes latency at that). Instead: GitHub Pages of a private repo — free via the **GitHub Education Teacher benefit** (free GitHub Team unlocks Pages on private repos; the served site is public-but-unlisted, source stays hidden) — or Cloudflare Pages free tier as fallback. QR/short link shared in class.
+- Checkpoint WASM code is **always retrievable by students** (marimo docs: code-hiding flags are "aesthetic choices, not security features"). Therefore: live feedback checks in checkpoints use **hashed expected values** (`sha256(answer) == "<hash>"`) so they can't leak trace/MCQ answers, and the real referee is the hidden server-side suite.
 
 ## 6. Checkpoints & grading
 
 - 5 checkpoints × 12 points = 60; pass needs 60/100 total (project + presentation = 40) plus 75% attendance.
 - Internal structure per checkpoint: ~6 tasks × 2 points, **all-or-nothing per task**; live score cell shows the provisional result before submission.
-- Task mix (per syllabus): write a function, trace code ("what does this print?"), fix a bug, MCQs (`mo.ui.radio`).
-- Identity: name + student-ID cell at top; filename convention `cpN_<studentid>.py` enforced by instructions and checked by the grading script.
+- **Everything graded is a code assignment, never UI-element state** (verified: the downloaded `.py` contains code only — `mo.ui` values are not serialized). MCQs are answered as `answer_q3 = "B"`; identity is `STUDENT_NAME = "..."` / `STUDENT_ID = "..."` assignments at the top. `mo.ui` widgets appear in checkpoints only for ungraded convenience, if at all.
+- Task mix (per syllabus): write a function, trace code ("what does this print?"), fix a bug, MCQs — all as code assignments per the rule above.
+- Identity: Moodle identifies the uploader (primary); the in-file `STUDENT_ID` assignment is the cross-check. Filename convention is a nice-to-have, not load-bearing.
 - Flow: unlisted URL at session start → ~40 supervised minutes → download `.py` → Moodle upload with deadline. Moodle provides identity + timestamps.
 - AI-free enforcement (CP1–3): supervision + AI-resistant task design (tracing, debugging, twists on in-class material, tight timing). Social enforcement, not technical lockdown.
 - CP4–5: AI explicitly allowed per syllabus.
@@ -176,7 +180,12 @@ general/git-basics.qmd        # NEW: companion page to Session X git material
 ## 7. AI & tooling story
 
 - **Part I (sessions I–V):** no AI. Course chatbot (hint-only) is the sanctioned helper.
-- **Part II (VI–IX):** AI allowed and taught. Session VIII front half = AI craft. `general/ai-tools.qmd` documents: Mistral Free signup (guaranteed baseline for every student), using own ChatGPT/Claude/Mistral subscriptions, Zed as AI editor + **Zed student program** link, disclosure requirements.
+- **Part II (VI–IX):** AI allowed and taught. Session VIII front half = AI craft. `general/ai-tools.qmd` documents (all facts verified July 2026, re-verify before publishing):
+  - **Zed education**: 12 months Zed Pro + $10/month AI credits for enrolled students; info at zed.dev/education, apply at dashboard.zed.dev/education/apply. Note the 12-month expiry.
+  - **Provider truth table for Zed**: ChatGPT Plus/Pro works via native OpenAI sign-in (no API key); **Claude Pro/Max does NOT work with Zed's built-in Anthropic provider** (needs separate API credits — document the distinction so students aren't surprised); Mistral requires a free La Plateforme API key.
+  - **Mistral Free** (the guaranteed zero-cost baseline): free Le Chat + free La Plateforme Experiment API tier usable in Zed. Do **not** publish rate-limit numbers (account-specific, unpublished); do flag that free-tier API data is used for training by default and show the opt-out (Admin Console → Privacy).
+  - **OpenRouter free models** as one-line no-credit-card fallback.
+  - **Copilot**: described as "new sign-ups paused indefinitely since April 2026" — students verified before then may still have it and may use it.
 - **Session X:** local environment together — uv, Zed (with chosen AI provider), git session (trimmed import from the other lecture: init/commit/push/clone/pull + GitHub; no branching/PRs).
 - **Part III (X–XIII):** plain `.py` development in Zed. GitHub repo per pair = collaboration + submission channel (repo link + AI-disclosure note); commit history doubles as process evidence.
 - All Copilot references removed from lectures, FAQ, and installation guides.
@@ -188,12 +197,16 @@ general/git-basics.qmd        # NEW: companion page to Session X git material
 
 ## 9. Risks & early verification spikes
 
-1. **WASM download UX** (submission backbone): verify "download as `.py`" works smoothly in edit-mode exports — spike in week 1 of implementation.
-2. **localStorage resume**: verify work actually survives reload on the self-hosted export (undocumented behavior we describe to students) — same spike.
-3. **Pyodide performance** on weak laptops with `mo.ui`-heavy notebooks — keep notebooks lean; test on a slow machine.
-4. **Checkpoint gameability**: server-side re-run against reference tests is the referee; embedded tests are convenience only.
-5. **molab dependency**: optional-only by design; if the free tier changes, students lose a convenience, not a course component.
+Verification status (July 2026, three-agent doc/web review): download-as-`.py` in WASM edit mode CONFIRMED (recently hardened, PR #9268); localStorage persistence on same-origin pages CONFIRMED (embedding guide); UI-state-not-in-`.py` CONFIRMED; `app.run()` grading path CONFIRMED; numpy/pandas/matplotlib preinstalled in WASM CONFIRMED (2 GB memory cap); `mo.notebook_location()` CONFIRMED; single-definition constraint CONFIRMED. Remaining spikes:
+
+1. **Download format** (day-1 spike): confirm whether the edit-mode download produces the decorated notebook format (gradable via `app.run()`) or a flat topologically-ordered script (gradable via namespace-exec) — the grading script supports whichever it is; graded names are plain assignments either way.
+2. **End-to-end dress rehearsal**: author one dummy checkpoint, deploy to the private-Pages host, take it as a student on a weak laptop, download, upload to Moodle, grade — before session I.
+3. **molab login flow**: undocumented — do one live pass and screenshot it for the course FAQ before publishing the button.
+4. **GitHub Education Teacher verification**: apply early; it gates the private-repo Pages deploy path (fallback: Cloudflare Pages free tier, verified viable).
+5. **Checkpoint gameability**: hidden server-side reference suite is the referee; embedded live checks use hashed expected values. Accepted residual risk: a determined student can read checkpoint code — supervision + task design carry the rest.
 6. **Session X density** (tooling + git + kickoff + CP5): dry-run the timing; fallback is moving CP5 to end of session IX.
+7. **molab dependency**: optional-only by design ("free as long as usage is reasonable" is a soft promise); if it tightens, students lose a convenience, not a course component.
+8. **No load-time claims**: do not publish WASM startup-time numbers in course materials without measuring on real hardware.
 
 ## 10. Out of scope
 
