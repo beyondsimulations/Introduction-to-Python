@@ -10,7 +10,7 @@ def _():
     return (mo,)
 
 
-@app.cell
+@app.cell(hide_code=True)
 def _():
     # Helper — echoes the student's current answer as a "Your result" preview.
     def show_result(value):

@@ -33,7 +33,7 @@ def _():
     return (mo,)
 
 
-@app.cell
+@app.cell(hide_code=True)
 def _():
     # Helper — echoes a student's current answer as a "Your result" preview so
     # they SEE their output (e.g. a receipt's alignment), not just ✅/❌. Strings
@@ -49,23 +49,27 @@ def _():
 
 
 @app.cell(hide_code=True)
-def _(mo, startup_name_input):
-    startup_name = startup_name_input.value.strip() or "Nameless Bites GmbH"
-    mo.md(
-        f"First order of business — the name. Type it once and it sticks for "
-        f"the whole notebook.\n\nWelcome to **{startup_name}**! "
-        f"(Kevin already forgot it.)"
-    )
-    return (startup_name,)
-
-
-@app.cell(hide_code=True)
 def _(mo):
     startup_name_input = mo.ui.text(
         label="Your startup's name:", placeholder="e.g. SnackRocket"
     )
-    startup_name_input
+    mo.vstack(
+        [
+            mo.md(
+                "First order of business — the name. Type it once and it "
+                "sticks for the whole notebook."
+            ),
+            startup_name_input,
+        ]
+    )
     return (startup_name_input,)
+
+
+@app.cell(hide_code=True)
+def _(mo, startup_name_input):
+    startup_name = startup_name_input.value.strip() or "Nameless Bites GmbH"
+    mo.md(f"Welcome to **{startup_name}**! (Kevin already forgot it.)")
+    return (startup_name,)
 
 
 # ─────────────────────────────────────────────────────────────────────────
@@ -137,7 +141,7 @@ def _(menu_item_ex11, mo, portions_ex11, price_ex11):
         _msg = "❌ Exercise 1.1: `portions_ex11` should be the int `3`."
     else:
         ex11_ok = True
-        _msg = "✅ Exercise 1.1: the menu has its first entry. The investor takes a note."
+        _msg = "✅ Exercise 1.1: the menu has its first entry. Kevin orders celebratory stickers."
     mo.md(_msg)
     return (ex11_ok,)
 
@@ -147,7 +151,7 @@ def _(mo):
     mo.accordion(
         {
             "💡 Hint 1 (a nudge)": "Three separate assignments with `=`. Text goes in quotes; `8.90` and `3` do not.",
-            "💡 Hint 2 (the structure)": "menu_item_ex11 = \"Pad Thai\"  ·  price_ex11 = 8.90  ·  portions_ex11 = 3",
+            "💡 Hint 2 (the structure)": "menu_item_ex11 = \"___\"  ·  price_ex11 = ___  ·  portions_ex11 = ___  — text gets quotes, the two numbers don't.",
         }
     )
     return
@@ -197,7 +201,7 @@ def _(mo):
     mo.accordion(
         {
             "💡 Hint 1 (a nudge)": "Multiply the two variables from 1.1, then round the whole thing to 2 decimal places.",
-            "💡 Hint 2 (the structure)": "revenue_ex12 = round(price_ex11 * portions_ex11, 2)",
+            "💡 Hint 2 (the structure)": "revenue_ex12 = round(___ * ___, 2)",
         }
     )
     return
@@ -225,7 +229,7 @@ def _(mo):
 def _(mo):
     mo.md(
         r"""
-    ### Exercise 2.1 (core, trace) — predict before you run
+    ### Exercise 2.1 (trace — predict first) — what does this print?
 
     This is a **trace** exercise: predict the output first, *then* reveal the
     answer. What does this line print?
@@ -307,7 +311,7 @@ def _(mo):
     mo.accordion(
         {
             "💡 Hint 1 (a nudge)": "Margin = price − cost. Both numbers are given in the task.",
-            "💡 Hint 2 (the structure)": "margin_ex22 = 9.99 - 7.40",
+            "💡 Hint 2 (the structure)": "margin_ex22 = ___ - ___",
         }
     )
     return
@@ -355,7 +359,7 @@ def _(mo):
     mo.accordion(
         {
             "💡 Hint 1 (a nudge)": "The quotes are the problem: `\"9.99\"` is text. What is `9.99` without quotes?",
-            "💡 Hint 2 (the structure)": "total_ex23 = 9.99 * 3",
+            "💡 Hint 2 (the structure)": "total_ex23 = ___ * 3  — the blank is a number, not text in quotes.",
         }
     )
     return
@@ -430,7 +434,7 @@ def _(mo):
     mo.accordion(
         {
             "💡 Hint 1 (a nudge)": "Start the string with `f\"`. Drop the qty, item and total into `{}` slots.",
-            "💡 Hint 2 (the structure)": "receipt_ex31 = f\"{receipt_qty}x {receipt_item}: {receipt_total:.2f} EUR\"",
+            "💡 Hint 2 (the structure)": "receipt_ex31 = f\"{___}x {___}: {___:.2f} EUR\"",
         }
     )
     return
@@ -485,7 +489,7 @@ def _(mo):
     mo.accordion(
         {
             "💡 Hint 1 (a nudge)": "Two f-string pieces joined by `\\n`. Each price uses `{value:>8.2f}`.",
-            "💡 Hint 2 (the structure)": "receipt_multi_ex32 = f\"Pad Thai {26.70:>8.2f}\\nFalafel Wrap {4.60:>8.2f}\"",
+            "💡 Hint 2 (the structure)": "receipt_multi_ex32 = f\"Pad Thai {___:>8.2f}\\nFalafel Wrap {___:>8.2f}\"",
         }
     )
     return
@@ -501,11 +505,14 @@ def _(mo):
     ## 🥊 Boss exercise (core) — the day-one summary
 
     Word arrives that **MunchCorp**, the soulless mega-competitor, just
-    launched "the same app but worse". Time to show the investor your numbers.
+    launched "the same app but worse". Time to put your day-one numbers on
+    the table — and this is where the whole session comes together.
 
     Write `day_one_summary_ex40`: **one f-string** that mentions your startup
-    name and contains both **`26.70`** (the day-one revenue) and **`2.59`**
-    (Kevin's margin), each formatted with two decimals. For example:
+    name and drops in your **earlier results** — `revenue_ex12` (the day-one
+    revenue) and `margin_ex22` (Kevin's margin) — each formatted with two
+    decimals (`:.2f`). Don't retype the numbers; reuse the variables, and
+    marimo pulls in the values you computed above. For example:
 
     ```
     SnackRocket day one: 26.70 EUR revenue, 2.59 EUR margin per dish.
@@ -513,6 +520,8 @@ def _(mo):
 
     The grader only checks the numbers, so your wording (and name) can be
     anything.
+
+    *Solve 1.2 and 2.2 first — this line uses those results.*
     """
     )
     return
@@ -520,7 +529,8 @@ def _(mo):
 
 @app.cell
 def _():
-    # YOUR CODE BELOW — one f-string mentioning your name + the two numbers
+    # YOUR CODE BELOW — one f-string reusing startup_name, revenue_ex12
+    # and margin_ex22 (solve 1.2 and 2.2 first)
     day_one_summary_ex40 = None
     return (day_one_summary_ex40,)
 
@@ -535,7 +545,7 @@ def _(day_one_summary_ex40, mo, show_result):
         _msg = "❌ Boss exercise: `day_one_summary_ex40` should be a string (an f-string)."
     elif "26.70" in day_one_summary_ex40 and "2.59" in day_one_summary_ex40:
         ex40_ok = True
-        _msg = "✅ Boss exercise: numbers on the table. The investor stops MunchCorp mid-sentence."
+        _msg = "✅ Boss exercise: numbers on the table. MunchCorp's growth team goes very quiet."
     else:
         ex40_ok = False
         _msg = "❌ Boss exercise: the text must contain both `26.70` and `2.59` (use `:.2f`)."
@@ -547,47 +557,11 @@ def _(day_one_summary_ex40, mo, show_result):
 def _(mo):
     mo.accordion(
         {
-            "💡 Hint 1 (a nudge)": "One f-string. Put the two numbers in `{}` slots with `:.2f`, and your name too.",
-            "💡 Hint 2 (the structure)": "day_one_summary_ex40 = f\"{startup_name} day one: {26.70:.2f} EUR revenue, {2.59:.2f} EUR margin per dish.\"",
+            "💡 Hint 1 (a nudge)": "One f-string. Put `revenue_ex12` and `margin_ex22` in `{}` slots with `:.2f`, and `startup_name` too — no retyped numbers.",
+            "💡 Hint 2 (the structure)": "day_one_summary_ex40 = f\"{startup_name} day one: {___:.2f} EUR revenue, {___:.2f} EUR margin per dish.\"  — the blanks are your variables from 1.2 and 2.2.",
         }
     )
     return
-
-
-@app.cell(hide_code=True)
-def _(mo):
-    mo.md(
-        r"""
-    ### Bonus — the price war
-
-    MunchCorp lists your dish at **8.50**. To undercut them you want to be
-    **10% cheaper**. Compute that price into `price_war_ex60`.
-    (Bonus — not required.)
-    """
-    )
-    return
-
-
-@app.cell
-def _():
-    # YOUR CODE BELOW — 10% below 8.50
-    price_war_ex60 = None
-    return (price_war_ex60,)
-
-
-@app.cell(hide_code=True)
-def _(mo, price_war_ex60, show_result):
-    if price_war_ex60 is None:
-        ex60_ok = False
-        _msg = "🔲 Bonus price war: not attempted yet."
-    elif isinstance(price_war_ex60, (int, float)) and round(price_war_ex60, 2) == 7.65:
-        ex60_ok = True
-        _msg = "✅ Bonus price war: 7.65 EUR. MunchCorp's growth team notices."
-    else:
-        ex60_ok = False
-        _msg = "❌ Bonus price war: not 7.65 — take 90% of 8.50."
-    mo.md(_msg + show_result(price_war_ex60))
-    return (ex60_ok,)
 
 
 @app.cell(hide_code=True)
@@ -630,6 +604,42 @@ def _(answer_ex50, mo):
         _msg = "❌ Quiz: not quite. Which name starts with a letter, has no `-`, and isn't a Python keyword?"
     mo.md(_msg)
     return (ex50_ok,)
+
+
+@app.cell(hide_code=True)
+def _(mo):
+    mo.md(
+        r"""
+    ### Bonus — the price war
+
+    MunchCorp lists your dish at **8.50**. To undercut them you want to be
+    **10% cheaper**. Compute that price into `price_war_ex60`.
+    (Bonus — not required.)
+    """
+    )
+    return
+
+
+@app.cell
+def _():
+    # YOUR CODE BELOW — 10% below 8.50
+    price_war_ex60 = None
+    return (price_war_ex60,)
+
+
+@app.cell(hide_code=True)
+def _(mo, price_war_ex60, show_result):
+    if price_war_ex60 is None:
+        ex60_ok = False
+        _msg = "🔲 Bonus price war: not attempted yet."
+    elif isinstance(price_war_ex60, (int, float)) and round(price_war_ex60, 2) == 7.65:
+        ex60_ok = True
+        _msg = "✅ Bonus price war: 7.65 EUR. MunchCorp's growth team notices."
+    else:
+        ex60_ok = False
+        _msg = "❌ Bonus price war: not 7.65 — take 90% of 8.50."
+    mo.md(_msg + show_result(price_war_ex60))
+    return (ex60_ok,)
 
 
 # ─────────────────────────────────────────────────────────────────────────

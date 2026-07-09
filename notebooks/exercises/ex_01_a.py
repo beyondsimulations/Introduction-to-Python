@@ -26,11 +26,11 @@ def _(mo):
 
 @app.cell
 def _():
-    # FIX KEVIN'S FORM BELOW (3 problems — all run, all wrong)
+    # FIX KEVIN'S FORM (some values and/or types are wrong)
     company_type = "UG (haftungsbeschränkt)"
-    first_employee = "kevin "       # problem 1: registrar wants exact "Kevin"
-    share_capital = "300"           # problem 2: that's text, not money
-    founded_year = "2026"           # problem 3: should be a number
+    first_employee = "kevin "
+    share_capital = "300"
+    founded_year = "2026"
     return (company_type, first_employee, founded_year, share_capital)
 
 

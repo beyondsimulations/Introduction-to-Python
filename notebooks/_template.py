@@ -27,7 +27,7 @@ def _():
     return (mo,)
 
 
-@app.cell
+@app.cell(hide_code=True)
 def _():
     # Helper — renders a student's current answer as a "Your result" preview so
     # they SEE their output (e.g. a receipt's alignment), not just ✅/❌. Strings
@@ -121,7 +121,7 @@ def _(mo):
     mo.accordion(
         {
             "💡 Hint 1 (a nudge)": "TODO: conceptual nudge, no code.",
-            "💡 Hint 2 (the structure)": "TODO: code skeleton with a blank to fill.",
+            "💡 Hint 2 (the structure)": "TODO: code skeleton with blanks, e.g. `revenue_ex1 = round(___ * ___, 2)` — NEVER the full pasteable answer (that lives in the post-session solution notebook).",
         }
     )
     return
