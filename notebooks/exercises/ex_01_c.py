@@ -10,16 +10,28 @@ def _():
     return (mo,)
 
 
+@app.cell
+def _():
+    # Helper — echoes the student's current answer as a "Your result" preview.
+    def show_result(value):
+        if value is None:
+            return ""
+        if isinstance(value, str):
+            return f"\n\n**Your result:**\n\n```\n{value}\n```"
+        return f"\n\n**Your result:** `{value}`"
+
+    return (show_result,)
+
+
 @app.cell(hide_code=True)
 def _(mo):
     mo.md(
         r"""
     # ⚡ Quick exercise: the first receipt line (5 min)
 
-    A customer just ordered. Using the variables below and an f-string with
-    `:.2f`, build **one** receipt line of the form
-    `"2x Falafel Wrap: 13.80 EUR"` (quantity, item, total price to two
-    decimals, currency).
+    A customer just ordered. Using `qty`, `item`, and `total` below and an
+    f-string with `:.2f`, build **one** receipt line that reads exactly
+    `"2x Falafel Wrap: 13.80 EUR"`.
     """
     )
     return
@@ -30,8 +42,8 @@ def _():
     # Given — do not change these
     item = "Falafel Wrap"
     qty = 2
-    price = 6.90
-    return (item, price, qty)
+    total = 13.80
+    return (item, qty, total)
 
 
 @app.cell
@@ -42,7 +54,7 @@ def _():
 
 
 @app.cell(hide_code=True)
-def _(line_exc, mo):
+def _(line_exc, mo, show_result):
     # Reactive check — re-runs automatically whenever the cell above changes.
     if line_exc is None:
         _ok = False
@@ -52,8 +64,8 @@ def _(line_exc, mo):
         _msg = "✅ Correct! The receipt printer purrs."
     else:
         _ok = False
-        _msg = "❌ Not quite — check the format `qty x item: price:.2f EUR`."
-    mo.callout(mo.md(_msg), kind="success" if _ok else "warn")
+        _msg = "❌ Not quite — check the format `qty x item: total:.2f EUR`."
+    mo.callout(mo.md(_msg + show_result(line_exc)), kind="success" if _ok else "warn")
     return
 
 

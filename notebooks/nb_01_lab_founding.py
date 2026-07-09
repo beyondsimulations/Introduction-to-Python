@@ -33,6 +33,21 @@ def _():
     return (mo,)
 
 
+@app.cell
+def _():
+    # Helper — echoes a student's current answer as a "Your result" preview so
+    # they SEE their output (e.g. a receipt's alignment), not just ✅/❌. Strings
+    # render in a fenced block; everything else inline. See _template.py.
+    def show_result(value):
+        if value is None:
+            return ""
+        if isinstance(value, str):
+            return f"\n\n**Your result:**\n\n```\n{value}\n```"
+        return f"\n\n**Your result:** `{value}`"
+
+    return (show_result,)
+
+
 @app.cell(hide_code=True)
 def _(mo, startup_name_input):
     startup_name = startup_name_input.value.strip() or "Nameless Bites GmbH"
@@ -163,7 +178,7 @@ def _():
 
 
 @app.cell(hide_code=True)
-def _(mo, revenue_ex12):
+def _(mo, revenue_ex12, show_result):
     if revenue_ex12 is None:
         ex12_ok = False
         _msg = "🔲 Exercise 1.2: not attempted yet."
@@ -173,7 +188,7 @@ def _(mo, revenue_ex12):
     else:
         ex12_ok = False
         _msg = "❌ Exercise 1.2: not 26.70 — multiply price × portions and `round(..., 2)`."
-    mo.md(_msg)
+    mo.md(_msg + show_result(revenue_ex12))
     return (ex12_ok,)
 
 
@@ -259,8 +274,7 @@ def _(mo):
     ### Exercise 2.2 (core) — Kevin's 9.99 theory, costed
 
     Kevin insists everything sells at **9.99**. Each dish costs you **7.40** to
-    make. Compute the **margin** (selling price minus cost) into `margin_ex22`,
-    rounded to 2 decimals.
+    make. Compute the **margin** (selling price minus cost) into `margin_ex22`.
     """
     )
     return
@@ -268,23 +282,23 @@ def _(mo):
 
 @app.cell
 def _():
-    # YOUR CODE BELOW — 9.99 minus the 7.40 cost, rounded to 2 places
+    # YOUR CODE BELOW — 9.99 minus the 7.40 cost
     margin_ex22 = None
     return (margin_ex22,)
 
 
 @app.cell(hide_code=True)
-def _(margin_ex22, mo):
+def _(margin_ex22, mo, show_result):
     if margin_ex22 is None:
         ex22_ok = False
         _msg = "🔲 Exercise 2.2: not attempted yet."
-    elif margin_ex22 == 2.59:
+    elif isinstance(margin_ex22, (int, float)) and round(margin_ex22, 2) == 2.59:
         ex22_ok = True
         _msg = "✅ Exercise 2.2: 2.59 EUR per dish. Kevin calls it 'basically infinite money'."
     else:
         ex22_ok = False
-        _msg = "❌ Exercise 2.2: not 2.59 — compute `9.99 - 7.40` and `round(..., 2)`."
-    mo.md(_msg)
+        _msg = "❌ Exercise 2.2: not 2.59 — compute `9.99 - 7.40`."
+    mo.md(_msg + show_result(margin_ex22))
     return (ex22_ok,)
 
 
@@ -293,7 +307,7 @@ def _(mo):
     mo.accordion(
         {
             "💡 Hint 1 (a nudge)": "Margin = price − cost. Both numbers are given in the task.",
-            "💡 Hint 2 (the structure)": "margin_ex22 = round(9.99 - 7.40, 2)",
+            "💡 Hint 2 (the structure)": "margin_ex22 = 9.99 - 7.40",
         }
     )
     return
@@ -322,7 +336,7 @@ def _():
 
 
 @app.cell(hide_code=True)
-def _(mo, total_ex23):
+def _(mo, show_result, total_ex23):
     if isinstance(total_ex23, str):
         ex23_ok = False
         _msg = "❌ Exercise 2.3: still text (a `str`). Drop the quotes so it's a number."
@@ -332,7 +346,7 @@ def _(mo, total_ex23):
     else:
         ex23_ok = False
         _msg = "❌ Exercise 2.3: not 29.97 — you want `9.99 * 3` as numbers."
-    mo.md(_msg)
+    mo.md(_msg + show_result(total_ex23))
     return (ex23_ok,)
 
 
@@ -394,7 +408,7 @@ def _():
 
 
 @app.cell(hide_code=True)
-def _(mo, receipt_ex31):
+def _(mo, receipt_ex31, show_result):
     if receipt_ex31 is None:
         ex31_ok = False
         _msg = "🔲 Exercise 3.1: not attempted yet."
@@ -407,7 +421,7 @@ def _(mo, receipt_ex31):
             "❌ Exercise 3.1: not an exact match. You need "
             "`\"3x Pad Thai: 26.70 EUR\"` — mind the `x`, the colon, and `:.2f`."
         )
-    mo.md(_msg)
+    mo.md(_msg + show_result(receipt_ex31))
     return (ex31_ok,)
 
 
@@ -451,7 +465,7 @@ def _():
 
 
 @app.cell(hide_code=True)
-def _(mo, receipt_multi_ex32):
+def _(mo, receipt_multi_ex32, show_result):
     _expected = f"Pad Thai {26.70:>8.2f}\nFalafel Wrap {4.60:>8.2f}"
     if receipt_multi_ex32 is None:
         ex32_ok = False
@@ -462,7 +476,7 @@ def _(mo, receipt_multi_ex32):
     else:
         ex32_ok = False
         _msg = "❌ Bonus 3.2: not an exact match — check the `\\n` and the `:>8.2f` widths."
-    mo.md(_msg)
+    mo.md(_msg + show_result(receipt_multi_ex32))
     return (ex32_ok,)
 
 
@@ -512,7 +526,7 @@ def _():
 
 
 @app.cell(hide_code=True)
-def _(day_one_summary_ex40, mo):
+def _(day_one_summary_ex40, mo, show_result):
     if day_one_summary_ex40 is None:
         ex40_ok = False
         _msg = "🔲 Boss exercise: not attempted yet."
@@ -525,7 +539,7 @@ def _(day_one_summary_ex40, mo):
     else:
         ex40_ok = False
         _msg = "❌ Boss exercise: the text must contain both `26.70` and `2.59` (use `:.2f`)."
-    mo.md(_msg)
+    mo.md(_msg + show_result(day_one_summary_ex40))
     return (ex40_ok,)
 
 
@@ -547,8 +561,8 @@ def _(mo):
     ### Bonus — the price war
 
     MunchCorp lists your dish at **8.50**. To undercut them you want to be
-    **10% cheaper**, rounded to 2 decimals. Compute that price into
-    `price_war_ex60`. (Bonus — not required.)
+    **10% cheaper**. Compute that price into `price_war_ex60`.
+    (Bonus — not required.)
     """
     )
     return
@@ -556,23 +570,23 @@ def _(mo):
 
 @app.cell
 def _():
-    # YOUR CODE BELOW — 10% below 8.50, rounded to 2 places
+    # YOUR CODE BELOW — 10% below 8.50
     price_war_ex60 = None
     return (price_war_ex60,)
 
 
 @app.cell(hide_code=True)
-def _(mo, price_war_ex60):
+def _(mo, price_war_ex60, show_result):
     if price_war_ex60 is None:
         ex60_ok = False
         _msg = "🔲 Bonus price war: not attempted yet."
-    elif price_war_ex60 == 7.65:
+    elif isinstance(price_war_ex60, (int, float)) and round(price_war_ex60, 2) == 7.65:
         ex60_ok = True
         _msg = "✅ Bonus price war: 7.65 EUR. MunchCorp's growth team notices."
     else:
         ex60_ok = False
-        _msg = "❌ Bonus price war: not 7.65 — take 90% of 8.50 and `round(..., 2)`."
-    mo.md(_msg)
+        _msg = "❌ Bonus price war: not 7.65 — take 90% of 8.50."
+    mo.md(_msg + show_result(price_war_ex60))
     return (ex60_ok,)
 
 

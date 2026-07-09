@@ -27,6 +27,22 @@ def _():
     return (mo,)
 
 
+@app.cell
+def _():
+    # Helper — renders a student's current answer as a "Your result" preview so
+    # they SEE their output (e.g. a receipt's alignment), not just ✅/❌. Strings
+    # render in a fenced block (multi-line formatting shows); everything else
+    # inline. Append `show_result(answer)` to any check cell's message.
+    def show_result(value):
+        if value is None:
+            return ""
+        if isinstance(value, str):
+            return f"\n\n**Your result:**\n\n```\n{value}\n```"
+        return f"\n\n**Your result:** `{value}`"
+
+    return (show_result,)
+
+
 @app.cell(hide_code=True)
 def _(mo):
     startup_name_input = mo.ui.text(
@@ -84,7 +100,7 @@ def _():
 
 
 @app.cell(hide_code=True)
-def _(mo, revenue_ex1):
+def _(mo, revenue_ex1, show_result):
     # Reactive check — re-runs automatically whenever the cell above changes.
     if revenue_ex1 is None:
         ex1_ok = False
@@ -95,7 +111,8 @@ def _(mo, revenue_ex1):
     else:
         ex1_ok = False
         _msg = "❌ Exercise 1.1: not quite — check your multiplication."
-    mo.md(_msg)
+    # show_result echoes the student's current answer below the ✅/❌ message.
+    mo.md(_msg + show_result(revenue_ex1))
     return (ex1_ok,)
 
 
