@@ -29,3 +29,10 @@ Buffer scope (spec §4): authored last, cut first, never blocking semester start
 - lec_03: inheritance / superclass-subclass slides — out of scope (course explicitly stops at one small class)
 - lec_03: class attributes (shared vs instance) and the encapsulation framing slides — deeper OOP, cut for beginners
 - lec_03: multiple/keyword positional-argument ordering demo (`call_parameters(b=..., a=...)`) — niche, cut for time
+- lec_04: tuple methods (`.count()`, `.index()`) and tuple unpacking (`name, *rest = ...`) — one honest tuple slide replaces the full tour; revisit unpacking as a Part-II convenience note
+- lec_04: tuples-returned-from-functions slide — folds naturally into the functions material; not needed for the data-structures day
+- lec_04: set-theory methods (`union`, `intersection`, `isdisjoint`, `issubset`) — sets earn one uniqueness slide; the algebra is a side-quest
+- lec_04: the big data-type comparison table (mutable/ordered/duplicates) + "when to use which" slides — encyclopedic; the blocks teach each type in context instead
+- lec_04: `timeit` membership-speed benchmark slide — performance framing is premature for beginners, cut
+- lec_04: file I/O (`open`/`with`, read/write modes, `input()`) — WASM notebooks have no filesystem; real files land in Part III, pandas in Session VIII (replaced by the inline-data slide)
+- lec_04: generator expressions (`(x for x in ...)`) — niche beside list/dict comprehensions, cut for beginners
