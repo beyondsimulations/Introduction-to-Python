@@ -635,10 +635,10 @@ def _(mo):
         r"""
     ### Bonus — the Haggling Bot (just for fun, ungraded)
 
-    A falafel supplier will sell you chickpeas, but won't name a price — you
-    have to guess. Their secret number is **7.25 EUR/kg**. Drag the slider to
-    make an offer; the bot reacts. There's nothing to submit here — it's a
-    warm-up for the number-guessing game in the tutorial.
+    A falafel supplier will sell you chickpeas, but won't name a price — the
+    supplier has a number in mind, and you have to find the exact price they'll
+    accept. Drag the slider to make an offer; the bot reacts. There's nothing
+    to submit here — it's a warm-up for the number-guessing game in the tutorial.
     """
     )
     return
