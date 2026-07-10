@@ -6,7 +6,10 @@ import segno
 
 BASE = "https://beyondsimulations.github.io/Introduction-to-Python/notebooks"
 OUT = Path(__file__).resolve().parent.parent / "lectures" / "assets" / "qr"
-EXERCISES = ["ex_01_a", "ex_01_b", "ex_01_c"]  # extend in later plans
+EXERCISES = [
+    "ex_01_a", "ex_01_b", "ex_01_c",
+    "ex_02_a", "ex_02_b", "ex_02_c",
+]  # extend in later plans
 
 OUT.mkdir(parents=True, exist_ok=True)
 for ex in EXERCISES:
