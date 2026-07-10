@@ -107,14 +107,16 @@ You don't have to memorise all of Python's exceptions. Recognise these five on s
 
 ## `try` / `except`: catch the fall
 
-A **`try` / `except`** block runs risky code and catches the failure instead of stopping the program:
+First, the happy path: text that **looks** like a number converts cleanly — text that doesn't, explodes. A **`try` / `except`** block runs the risky code and catches the failure instead of stopping the program:
 
 ```{python}
 #| eval: true
 #| output-location: fragment
 
+print(float("5.50"))          # numeric text converts cleanly → 5.5
+
 try:
-    tip = float("generous")   # this raises ValueError...
+    tip = float("generous")   # non-numeric text raises ValueError...
 except ValueError:
     tip = 0.0                 # ...caught here, so the checkout keeps going
 
