@@ -13,3 +13,8 @@ Buffer scope (spec §4): authored last, cut first, never blocking semester start
 - lec_01: live SyntaxError demo (broken quotes) — errors get full treatment in Session V
 - lec_01: `**` exponentiation operator — niche for beginner money math, cut
 - lec_01: Zen of Python (`import this`), expressions-vs-statements, and legacy `.format()` interpolation — cultural/legacy filler, cut
+- lec_01: "Learning Path" slide (help-each-other, docs/StackOverflow, frustration blog post, typo-reporting process) — practical support guidance, no substitute in new deck
+- lec_01: "My Recommendation" slide (3-step study recipe + Codewars pointer) — concrete external practice resource
+- lec_01: "Goals of the Course" slide (named AI usage as an explicit course goal) — goals framing not fully covered by "How to use AI"
+- lec_01: "Teaching" slide (lecture-vs-tutorial format mechanics) — course-mechanics info
+- lec_01: "Python as Language" slide (origin/use-case orientation) — nice-to-have context
