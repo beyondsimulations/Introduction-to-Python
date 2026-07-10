@@ -9,6 +9,7 @@ OUT = Path(__file__).resolve().parent.parent / "lectures" / "assets" / "qr"
 EXERCISES = [
     "ex_01_a", "ex_01_b", "ex_01_c",
     "ex_02_a", "ex_02_b", "ex_02_c",
+    "ex_03_a", "ex_03_b",
 ]  # extend in later plans
 
 OUT.mkdir(parents=True, exist_ok=True)
