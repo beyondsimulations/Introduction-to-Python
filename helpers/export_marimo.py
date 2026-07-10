@@ -46,6 +46,10 @@ def main() -> int:
     if not editable and not readonly:
         print("no notebooks found — nothing to export")
         return 0
+    collisions = {p.stem for p in editable} & {p.stem for p in readonly}
+    if collisions:
+        print(f"stem collision between editable and solutions exports: {sorted(collisions)}", file=sys.stderr)
+        return 1
     # Ensure the output tree exists even when run standalone (before any render).
     OUT.mkdir(parents=True, exist_ok=True)
     failures = [nb for nb in editable if not export(nb, "edit")]
