@@ -1151,7 +1151,7 @@ TASKS = {
 |---|---|---|
 | t1 write fn | `safe_price_t1(text)`: float or 0.0 on ValueError (live-check probes different strings than the hidden suite; hidden probes '7.75'/'zwoelf' — FRESH, nb_05 used '4.20'/'drei'/'kaputt') | function |
 | t2 trace | FRESH dict, not nb_05's Wrap trace: `zones = {"Nord": 2.50}` · `print(zones["nord"])` → a) 2.50 b) None c) TypeError d) KeyError | `"d"` |
-| t3 fix | Kevin's crashing day-total over `[20.80, 15.20, 8.90]` (bug: he indexes one past the end in his loop — `range(len(prices) + 1)`) | `orders_total_t3 = 44.90` |
+| t3 fix | Kevin's short day-total over `[20.80, 15.20, 8.90]` (bug: his loop starts at index 1 — `range(1, len(prices))` — silently dropping the first order → 24.10; must-run rule forbids the crashing `range(len+1)` variant) | `orders_total_t3 = 44.90` |
 | t4 recap | Count deliveries over 30 min in `[12, 31, 45, 18, 22]` (loop + condition, sessions I–II recap) | `late_t4 = 2` |
 | t5 recap | f-string from `item = "Miso Ramen"`, `price = 11.50`: `"Miso Ramen costs 11.50 EUR"` | string |
 | t6 mcq | `try/except ValueError` around code that raises KeyError — what happens? a) except runs b) the KeyError propagates (crash) c) both | `"b"` |
