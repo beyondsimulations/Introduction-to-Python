@@ -142,11 +142,12 @@ A **slice** `list[start:stop]` returns a new list — from `start` up to, but **
 
 drinks = ["Mate", "Spezi", "Ayran"]
 print(drinks[0:2])   # items 0 and 1
+print(drinks[-2:])   # the last two — negative start, open end
 ```
 
 . . .
 
-The `stop` index is left out. `drinks[0:2]` gives you two items, not three.
+The `stop` index is left out. `drinks[0:2]` gives you two items, not three. And leaving a side **empty** means "all the way": `drinks[-2:]` starts two from the end and runs to the finish.
 
 ## Predict: where does the slice stop?
 
@@ -310,21 +311,23 @@ Use `[]` when the key **must** be there; use `.get()` when it might not.
 
 ## Updating and adding
 
-Assigning to a key **updates** it if it exists, or **adds** it if it doesn't:
+Assigning to a key **updates** it if it exists, or **adds** it if it doesn't. Work on a **copy** (`dict()`) when the original must survive:
 
 ```{python}
 #| eval: true
 #| output-location: fragment
 
 prices = {"Mate": 3.50, "Spezi": 3.20}
-prices["Spezi"] = 3.40       # update an existing key
-prices["Kombucha"] = 4.20    # add a brand-new key
-print(prices)
+winter = dict(prices)        # a copy — keep the original safe
+winter["Spezi"] = 3.40       # update an existing key
+winter["Kombucha"] = 4.20    # add a brand-new key
+print(winter)
+print(prices)                # untouched — the summer menu comes back in April
 ```
 
 . . .
 
-One syntax, two jobs — Python decides by whether the key is already present.
+One syntax, two jobs — Python decides by whether the key is already present. And the copy means next April needs no un-editing.
 
 ## Predict: the missing drink
 
