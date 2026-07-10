@@ -23,3 +23,9 @@ Buffer scope (spec §4): authored last, cut first, never blocking semester start
 - lec_01: "Goals of the Course" slide (named AI usage as an explicit course goal) — goals framing not fully covered by "How to use AI"
 - lec_01: "Teaching" slide (lecture-vs-tutorial format mechanics) — course-mechanics info
 - lec_01: "Python as Language" slide (origin/use-case orientation) — nice-to-have context
+- lec_03: recursion (`fibonacci`, `countdown`) — elegant but not needed for the receipt/class arc; revisit as a side-quest
+- lec_03: docstrings + `help()` on functions — good hygiene, cut for CP-day time budget; fold into a lab note
+- lec_03: the `global` keyword — deliberately omitted; the course's stance is "catch the return", not mutate globals
+- lec_03: inheritance / superclass-subclass slides — out of scope (course explicitly stops at one small class)
+- lec_03: class attributes (shared vs instance) and the encapsulation framing slides — deeper OOP, cut for beginners
+- lec_03: multiple/keyword positional-argument ordering demo (`call_parameters(b=..., a=...)`) — niche, cut for time
