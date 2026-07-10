@@ -4,26 +4,26 @@
     {
       "id": 1,
       "subject": "Task 1: Authoring conventions doc + headless validator + template touch-up",
-      "status": "pending",
+      "status": "completed",
       "description": "**Goal:** Lock in every convention Plans 2–4 copy (incl. letter=slide-order) + automated notebook smoke test.\n\n**Files:** Create docs/authoring-conventions.md, docs/side-quest-backlog.md, helpers/validate_notebooks.py; Modify notebooks/_template.py.\n\n**Verify:** uv run python helpers/validate_notebooks.py → all ok.\n\n```json:metadata\n{\"files\": [\"docs/authoring-conventions.md\", \"docs/side-quest-backlog.md\", \"helpers/validate_notebooks.py\", \"notebooks/_template.py\"], \"verifyCommand\": \"uv run python helpers/validate_notebooks.py\", \"acceptanceCriteria\": [\"conventions doc complete per plan\", \"validator green on nb_01 + ex_01_*\", \"backlog file exists\"]}\n```"
     },
     {
       "id": 2,
       "subject": "Task 2: Solution-notebook pipeline, proven with sol_01",
-      "status": "pending",
+      "status": "completed",
       "blockedBy": [1],
       "description": "**Goal:** Private authoring → --mode run export → tutorial-page link, proven once with Episode 1, then reverted.\n\n**Files:** Modify helpers/export_marimo.py, tutorials/tut_01_introduction.qmd; Create (private) solutions/sol_01_lab_founding.py; private README runbook.\n\n```json:metadata\n{\"files\": [\"helpers/export_marimo.py\", \"tutorials/tut_01_introduction.qmd\"], \"verifyCommand\": \"uv run python helpers/export_marimo.py\", \"acceptanceCriteria\": [\"solutions export read-only\", \"motion proven then reverted\", \"dormant link in tut_01\"]}\n```"
     },
     {
       "id": 3,
       "subject": "Task 3: Chatbot hint-only system prompt (external install deliverable)",
-      "status": "pending",
+      "status": "completed",
       "description": "**Goal:** Ready-to-paste Part-I hint-only prompt (docs/chatbot-system-prompt.md); install is Tobias's task, gate before Session I. Full text in plan Task 3.\n\n```json:metadata\n{\"files\": [\"docs/chatbot-system-prompt.md\"], \"verifyCommand\": \"grep -c 'NEVER' docs/chatbot-system-prompt.md\", \"acceptanceCriteria\": [\"full text, no placeholders\"]}\n```"
     },
     {
       "id": 4,
       "subject": "Task 4: lec_01 full rewrite",
-      "status": "pending",
+      "status": "completed",
       "blockedBy": [1],
       "description": "**Goal:** Session I deck rebuilt: 3×20-min blocks, startup-woven, predict-first; corrected mechanics slides kept verbatim; skeleton exemplar for all deck rewrites.\n\n```json:metadata\n{\"files\": [\"lectures/lec_01_introduction.qmd\", \"docs/side-quest-backlog.md\"], \"verifyCommand\": \"quarto render lectures/lec_01_introduction.qmd\", \"acceptanceCriteria\": [\"3 blocks per plan table\", \"QR letters match block order\", \"cuts logged\", \"git checkout -- _repo-md/ after render\"]}\n```"
     },
@@ -140,5 +140,5 @@
       "description": "**Goal:** Full green sweep (validator, exports, 5 decks + 5 tut renders, private pytest, no-copilot grep, no public solutions), docs/memory sync, PR body update. NO AI-attribution lines.\n\n```json:metadata\n{\"files\": [\"docs/superpowers/specs/2026-07-09-fable-review.md\", \"docs/side-quest-backlog.md\"], \"verifyCommand\": \"uv run python helpers/validate_notebooks.py && uv run python helpers/export_marimo.py\", \"acceptanceCriteria\": [\"all commands exit 0\", \"no copilot in 01-05\", \"PR updated without attribution\"]}\n```"
     }
   ],
-  "lastUpdated": "2026-07-10T00:00:00Z"
+  "lastUpdated": "2026-07-10T12:00:00Z"
 }

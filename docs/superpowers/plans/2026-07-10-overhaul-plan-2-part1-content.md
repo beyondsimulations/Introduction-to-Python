@@ -557,7 +557,7 @@ git add solutions/sol_02_lab_curfew.py && git commit -m "feat: episode 2 solutio
 **Acceptance Criteria:**
 - [ ] Skeleton per conventions doc: title → cold open → 🔥 warm-up (3 questions + answer slides) → Block 1 → QR a → Block 2 → QR b → Block 3 → QR c → lab handoff → wrap-up/teaser
 - [ ] Warm-up questions recap Session I (see Step 1) — question slide then answer slide, vote before reveal
-- [ ] Blocks: (1) comparisons, booleans, `if/elif/else` — curfew + discount ladder; (2) `while`, `break`, loop safety — the price war; (3) `for`, `range`, iterating lists/strings, `.strip()/.title()/.upper()`, one comprehension-seed slide
+- [ ] Blocks: (1) comparisons, booleans, `if/elif/else` — curfew + discount ladder; (2) `for`, `range`, iterating lists, one comprehension-seed slide — summing the day's orders; (3) `while`, `break`, loop safety — the price war — plus string methods `.strip()/.title()/.upper()` — de-shouting Kevin's menu. (Block order matches exercise letters: b = for-loop, c = strings; the while-based price war lands right before the lab whose boss is a while loop.)
 - [ ] ≥1 predict-first micro-question per block; cuts logged; render clean
 
 **Verify:** `quarto render lectures/lec_02_control.qmd` clean; `grep -c 'exercise-slide' lectures/lec_02_control.qmd` ≥ 4 (warm-up + 3 QR).
@@ -609,7 +609,7 @@ a\) `3.5 1`   b) `3 1`   c) `3 0.5`
 **b)** — `//` floors, `%` gives the remainder. Together: "how many fit, what's left."
 ```
 
-- [ ] **Step 2: Rewrite the three blocks** per the acceptance criteria (inventory the old deck first; keep only explanations that survive the 20-min budget; cuts → backlog). QR slides: copy the exact `# ⚡ Your turn — 10 minutes {.exercise-slide}` form from `lec_01` with `ex_02_a/b/c` URLs + QR PNGs. No-hang teaching moment in Block 2: show a `while` that never ends, as a SCREENSHOT/static code block with a "never run this in the browser tab" warning — do not ship it runnable.
+- [ ] **Step 2: Rewrite the three blocks** per the acceptance criteria (inventory the old deck first; keep only explanations that survive the 20-min budget; cuts → backlog). QR slides: copy the exact `# ⚡ Your turn — 10 minutes {.exercise-slide}` form from `lec_01` with `ex_02_a/b/c` URLs + QR PNGs. No-hang teaching moment in Block 3: show a `while` that never ends, as a SCREENSHOT/static code block with a "never run this in the browser tab" warning — do not ship it runnable.
 
 - [ ] **Step 3: Render, checkout, commit**
 
