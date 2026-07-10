@@ -1111,10 +1111,10 @@ TASKS = {
         "points": 2,
         "names": [],
         "exprs": {
-            "t1_good": "safe_price_t1('4.20')",
-            "t1_bad": "safe_price_t1('kaputt')",
+            "t1_good": "safe_price_t1('7.75')",
+            "t1_bad": "safe_price_t1('zwoelf')",
         },
-        "test": lambda d: d.get("t1_good") == 4.20 and d.get("t1_bad") == 0.0,
+        "test": lambda d: d.get("t1_good") == 7.75 and d.get("t1_bad") == 0.0,
     },
     "t2_trace": {
         "points": 2,
@@ -1149,8 +1149,8 @@ TASKS = {
 
 | Task | Prompt | Expected |
 |---|---|---|
-| t1 write fn | `safe_price_t1(text)`: float or 0.0 on ValueError (live-check probes different strings than the hidden suite) | function |
-| t2 trace | `menu = {"Wrap": 6.90}` · `print(menu["wrap"])` → a) 6.90 b) None c) TypeError d) KeyError | `"d"` |
+| t1 write fn | `safe_price_t1(text)`: float or 0.0 on ValueError (live-check probes different strings than the hidden suite; hidden probes '7.75'/'zwoelf' — FRESH, nb_05 used '4.20'/'drei'/'kaputt') | function |
+| t2 trace | FRESH dict, not nb_05's Wrap trace: `zones = {"Nord": 2.50}` · `print(zones["nord"])` → a) 2.50 b) None c) TypeError d) KeyError | `"d"` |
 | t3 fix | Kevin's crashing day-total over `[20.80, 15.20, 8.90]` (bug: he indexes one past the end in his loop — `range(len(prices) + 1)`) | `orders_total_t3 = 44.90` |
 | t4 recap | Count deliveries over 30 min in `[12, 31, 45, 18, 22]` (loop + condition, sessions I–II recap) | `late_t4 = 2` |
 | t5 recap | f-string from `item = "Miso Ramen"`, `price = 11.50`: `"Miso Ramen costs 11.50 EUR"` | string |
