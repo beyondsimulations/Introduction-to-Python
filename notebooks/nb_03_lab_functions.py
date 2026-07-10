@@ -424,7 +424,7 @@ def _(mo):
     mo.accordion(
         {
             "💡 Hint 1 (a nudge)": "Look at the last line of the function. Showing a value on screen and handing it back to the caller are two different actions — which one is Kevin doing?",
-            "💡 Hint 2 (the structure)": "The final line is `print(_running)`. Replace it so the function `return`s `_running` instead of printing it.",
+            "💡 Hint 2 (the structure)": "def receipt_total_ex22(prices):\n    _running = 0\n    for _p in prices:\n        _running = _running + _p\n    ___ _running   — the last line decides what callers receive; fill the keyword that hands a value back.",
         }
     )
     return
@@ -521,7 +521,9 @@ def _(mo):
     ```
 
     Build one and call its method: `Courier("Amir").greeting()` → `"Hi, I'm Amir!"`.
-    Read and run the worked example, then write your own class.
+    Read and run the worked example, then write your own class. (In the example
+    cell it's spelled `_Courier` — real class names don't start with `_`; the
+    underscore just keeps this scratch example private to its cell.)
     """
     )
     return
@@ -530,14 +532,14 @@ def _(mo):
 @app.cell
 def _():
     # Worked example (read + run this) — a class bundles data with behaviour
-    class Courier:
+    class _Courier:
         def __init__(self, name):
             self.name = name
 
         def greeting(self):
             return "Hi, I'm " + self.name + "!"
 
-    _amir = Courier("Amir")
+    _amir = _Courier("Amir")
     print(_amir.greeting())
     return
 
