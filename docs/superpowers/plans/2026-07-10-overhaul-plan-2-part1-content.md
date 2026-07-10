@@ -659,7 +659,7 @@ TASKS = {
     "t3_fix": {
         "points": 2,
         "names": ["count_t3"],
-        "test": lambda d: d.get("count_t3") == 3,
+        "test": lambda d: d.get("count_t3") == 4,
     },
     "t4_loop": {
         "points": 2,
@@ -670,7 +670,7 @@ TASKS = {
     "t5_receipt": {
         "points": 2,
         "names": ["line_t5"],
-        "test": lambda d: d.get("line_t5") == "2x Pad Thai: 19.80 EUR",
+        "test": lambda d: d.get("line_t5") == "2x Bao Box: 19.80 EUR",
     },
     "t6_mcq": {
         "points": 2,
@@ -686,12 +686,12 @@ TASKS = {
 |---|---|---|
 | t1 write | Founders Bowl: base 8.40 + topping 2.10, three portions, `round(_, 2)` | `total_t1 = 31.50` |
 | t2 trace | `total = 0` · `for price in [4, 7]:` · `    total = total + price` · `    print(total)` — what is printed? a) `11` b) `4 7` c) `4` then `11` d) `7` then `11` | `answer_t2 = "c"` |
-| t3 fix | Kevin counts orders ≥ 10 over `[12.50, 10.00, 8.90, 15.20]`, wrote `>` — fix the comparison | `count_t3 = 3` |
+| t3 fix | Kevin counts orders ≥ 10 over `[16.40, 10.00, 9.10, 12.75, 10.00]`, wrote `>` — fix the comparison (values AND expected count deliberately differ from nb_02's ex23, so lab recall can't answer it) | `count_t3 = 4` |
 | t4 write | Loop-sum the board-day orders `[14.20, 9.90, 22.50, 8.45]` | `revenue_t4 = 55.05` |
-| t5 write | f-string with `:.2f` from given `qty = 2`, `item = "Pad Thai"`, `total = 19.80` | `line_t5 = "2x Pad Thai: 19.80 EUR"` |
-| t6 mcq | Kevin writes `price = "9.99"`. `type(price)` is: a) float b) str c) int d) Error | `answer_t6 = "b"` |
+| t5 write | f-string with `:.2f` from given `qty = 2`, `item = "Bao Box"`, `total = 19.80` | `line_t5 = "2x Bao Box: 19.80 EUR"` |
+| t6 mcq | Kevin writes `price = "4.99"`. `type(price)` is: a) float b) str c) int d) Error | `answer_t6 = "b"` |
 
-Generate hash literals: `uv run python -c "from grader.hashcheck import expected_hash as h; print(h(31.50), h('c'), h(3), h(55.05), h('2x Pad Thai: 19.80 EUR'), h('b'))"` — paste into the live-check cells (centralized `hash_answer` helper cell like cp0).
+Generate hash literals: `uv run python -c "from grader.hashcheck import expected_hash as h; print(h(31.50), h('c'), h(4), h(55.05), h('2x Bao Box: 19.80 EUR'), h('b'))"` — paste into the live-check cells (centralized `hash_answer` helper cell like cp0).
 
 - [ ] **Step 3: Fixtures + test.** `cp1_solved.py`: minimal marimo notebook assigning all six names correctly + identity. `cp1_blank.py`: all answers `None`/empty. `tests/test_checkpoints.py`:
 
