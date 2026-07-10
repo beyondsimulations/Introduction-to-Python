@@ -48,6 +48,12 @@ No warm-up on CP days (the checkpoint is the warm-up).
 One `# 🔥 Warm-up {.exercise-slide}` section, then per question a `##` slide
 (question + options a–c) and a `##` answer slide (answer + one-line why).
 Everyone commits by hand vote BEFORE the reveal — predict-first, zero infra.
+Warm-up answer slides are prose-only (no live execution) — deliberate: oral
+pace, three questions in ~10 min. In-block predict pairs DO re-run the code
+executable on the answer slide. Never annotate a question slide's code with
+spoiler comments — the misconception must survive until the reveal.
+Layout nicety (optional): short symbol lists may pair two items per bullet
+joined by a middle dot ("`<` less than · `>` greater than").
 
 ### QR exercise slide (exact form)
     # ⚡ Your turn — 10 minutes {.exercise-slide}
