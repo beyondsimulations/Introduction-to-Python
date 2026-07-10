@@ -1,0 +1,144 @@
+{
+  "planPath": "docs/superpowers/plans/2026-07-10-overhaul-plan-2-part1-content.md",
+  "tasks": [
+    {
+      "id": 1,
+      "subject": "Task 1: Authoring conventions doc + headless validator + template touch-up",
+      "status": "pending",
+      "description": "**Goal:** Lock in every convention Plans 2–4 copy (incl. letter=slide-order) + automated notebook smoke test.\n\n**Files:** Create docs/authoring-conventions.md, docs/side-quest-backlog.md, helpers/validate_notebooks.py; Modify notebooks/_template.py.\n\n**Verify:** uv run python helpers/validate_notebooks.py → all ok.\n\n```json:metadata\n{\"files\": [\"docs/authoring-conventions.md\", \"docs/side-quest-backlog.md\", \"helpers/validate_notebooks.py\", \"notebooks/_template.py\"], \"verifyCommand\": \"uv run python helpers/validate_notebooks.py\", \"acceptanceCriteria\": [\"conventions doc complete per plan\", \"validator green on nb_01 + ex_01_*\", \"backlog file exists\"]}\n```"
+    },
+    {
+      "id": 2,
+      "subject": "Task 2: Solution-notebook pipeline, proven with sol_01",
+      "status": "pending",
+      "blockedBy": [1],
+      "description": "**Goal:** Private authoring → --mode run export → tutorial-page link, proven once with Episode 1, then reverted.\n\n**Files:** Modify helpers/export_marimo.py, tutorials/tut_01_introduction.qmd; Create (private) solutions/sol_01_lab_founding.py; private README runbook.\n\n```json:metadata\n{\"files\": [\"helpers/export_marimo.py\", \"tutorials/tut_01_introduction.qmd\"], \"verifyCommand\": \"uv run python helpers/export_marimo.py\", \"acceptanceCriteria\": [\"solutions export read-only\", \"motion proven then reverted\", \"dormant link in tut_01\"]}\n```"
+    },
+    {
+      "id": 3,
+      "subject": "Task 3: Chatbot hint-only system prompt (external install deliverable)",
+      "status": "pending",
+      "description": "**Goal:** Ready-to-paste Part-I hint-only prompt (docs/chatbot-system-prompt.md); install is Tobias's task, gate before Session I. Full text in plan Task 3.\n\n```json:metadata\n{\"files\": [\"docs/chatbot-system-prompt.md\"], \"verifyCommand\": \"grep -c 'NEVER' docs/chatbot-system-prompt.md\", \"acceptanceCriteria\": [\"full text, no placeholders\"]}\n```"
+    },
+    {
+      "id": 4,
+      "subject": "Task 4: lec_01 full rewrite",
+      "status": "pending",
+      "blockedBy": [1],
+      "description": "**Goal:** Session I deck rebuilt: 3×20-min blocks, startup-woven, predict-first; corrected mechanics slides kept verbatim; skeleton exemplar for all deck rewrites.\n\n```json:metadata\n{\"files\": [\"lectures/lec_01_introduction.qmd\", \"docs/side-quest-backlog.md\"], \"verifyCommand\": \"quarto render lectures/lec_01_introduction.qmd\", \"acceptanceCriteria\": [\"3 blocks per plan table\", \"QR letters match block order\", \"cuts logged\", \"git checkout -- _repo-md/ after render\"]}\n```"
+    },
+    {
+      "id": 5,
+      "subject": "Task 5: Session II in-lecture exercises (ex_02_a/b/c)",
+      "status": "pending",
+      "blockedBy": [1],
+      "description": "**Goal:** fee ladder (fee_exa==1.50), loop predict+sum (minutes_exb==28), de-shout strings (item_exc==\"Falafel Wrap\"). Extend make_qr.py, regen PNGs.\n\n```json:metadata\n{\"files\": [\"notebooks/exercises/ex_02_a.py\", \"notebooks/exercises/ex_02_b.py\", \"notebooks/exercises/ex_02_c.py\", \"helpers/make_qr.py\"], \"verifyCommand\": \"uv run python helpers/validate_notebooks.py 'exercises/ex_02_*.py'\", \"acceptanceCriteria\": [\"checks match plan literals\", \"QR PNGs regenerated\"]}\n```"
+    },
+    {
+      "id": 6,
+      "subject": "Task 6: Episode 2 lab + solutions + launcher (nb_02/sol_02/tut_02)",
+      "status": "pending",
+      "blockedBy": [1, 2],
+      "description": "**Goal:** \"The Curfew\": 7 cores + trace + 2 bonus per plan Task 6 table; sol_02 (private); tut_02 → launcher with dormant Solutions link.\n\n```json:metadata\n{\"files\": [\"notebooks/nb_02_lab_curfew.py\", \"tutorials/tut_02_control.qmd\"], \"verifyCommand\": \"uv run python helpers/validate_notebooks.py 'nb_02*'\", \"acceptanceCriteria\": [\"4 CP task types\", \"nb_01 patterns copied\", \"browser solve reaches 7/7\", \"sol_02 green\"]}\n```"
+    },
+    {
+      "id": 7,
+      "subject": "Task 7: lec_02 full rewrite (warm-up pattern debut)",
+      "status": "pending",
+      "blockedBy": [4, 5],
+      "description": "**Goal:** Warm-up vote slides (exact content in plan Task 7 Step 1), 3 blocks (conditionals / while / for+strings), QR a/b/c. Infinite-loop example static only.\n\n```json:metadata\n{\"files\": [\"lectures/lec_02_control.qmd\", \"docs/side-quest-backlog.md\"], \"verifyCommand\": \"quarto render lectures/lec_02_control.qmd\", \"acceptanceCriteria\": [\"warm-up 3 Q+A pairs\", \">=4 exercise-slide\", \"cuts logged\"]}\n```"
+    },
+    {
+      "id": 8,
+      "subject": "Task 8: CP1 — sessions I–II (private repo)",
+      "status": "pending",
+      "blockedBy": [6],
+      "description": "**Goal:** CP1 notebook + reference_tests (full code in plan Task 8) + fixtures + tests/test_checkpoints.py. Solved 12/12, blank 0.\n\n```json:metadata\n{\"files\": [\"../Introduction-to-Python-checkpoints/checkpoints/cp1/cp1_board_review.py\", \"../Introduction-to-Python-checkpoints/checkpoints/cp1/reference_tests.py\", \"../Introduction-to-Python-checkpoints/tests/test_checkpoints.py\"], \"verifyCommand\": \"cd ../Introduction-to-Python-checkpoints && uv run pytest -v\", \"acceptanceCriteria\": [\"hashed live checks\", \"values differ from labs\", \"solved 12/12, blank 0\"]}\n```"
+    },
+    {
+      "id": 9,
+      "subject": "Task 9: Session III in-lecture exercises (ex_03_a/b)",
+      "status": "pending",
+      "blockedBy": [1],
+      "description": "**Goal:** wrap_price_exa function write; fix Kevin's Order.total(). Probes guarded with try/except. QRs.\n\n```json:metadata\n{\"files\": [\"notebooks/exercises/ex_03_a.py\", \"notebooks/exercises/ex_03_b.py\", \"helpers/make_qr.py\"], \"verifyCommand\": \"uv run python helpers/validate_notebooks.py 'exercises/ex_03_*.py'\", \"acceptanceCriteria\": [\"probes guarded\", \"QR PNGs regenerated\"]}\n```"
+    },
+    {
+      "id": 10,
+      "subject": "Task 10: Episode 3 lab + solutions + launcher (nb_03/sol_03/tut_03)",
+      "status": "pending",
+      "blockedBy": [1, 2],
+      "description": "**Goal:** \"The Copy-Paste Soup\": functions/scope/defaults/Order class per plan Task 10 table; boss day_total_ex40==58.50; Championship bonus; sol_03; tut_03 launcher.\n\n```json:metadata\n{\"files\": [\"notebooks/nb_03_lab_functions.py\", \"tutorials/tut_03_functions.qmd\"], \"verifyCommand\": \"uv run python helpers/validate_notebooks.py 'nb_03*'\", \"acceptanceCriteria\": [\"probes guarded\", \"7/7 in browser\", \"sol_03 green\"]}\n```"
+    },
+    {
+      "id": 11,
+      "subject": "Task 11: lec_03 full rewrite (CP-session deck pattern debut)",
+      "status": "pending",
+      "blockedBy": [4, 9],
+      "description": "**Goal:** First CP-day deck: CP1 procedure slide (no URL in deck), no warm-up, 2 blocks, QR a/b.\n\n```json:metadata\n{\"files\": [\"lectures/lec_03_functions.qmd\", \"docs/side-quest-backlog.md\"], \"verifyCommand\": \"quarto render lectures/lec_03_functions.qmd\", \"acceptanceCriteria\": [\"CP slide per pattern\", \"2 blocks + QR a/b\", \"cuts logged\"]}\n```"
+    },
+    {
+      "id": 12,
+      "subject": "Task 12: Session IV in-lecture exercises (ex_04_a/b/c)",
+      "status": "pending",
+      "blockedBy": [1],
+      "description": "**Goal:** slicing predict+write, dict copy/update, happy-hour comprehension with round — exact values in plan Task 12 table. QRs.\n\n```json:metadata\n{\"files\": [\"notebooks/exercises/ex_04_a.py\", \"notebooks/exercises/ex_04_b.py\", \"notebooks/exercises/ex_04_c.py\", \"helpers/make_qr.py\"], \"verifyCommand\": \"uv run python helpers/validate_notebooks.py 'exercises/ex_04_*.py'\", \"acceptanceCriteria\": [\"checks match plan literals\", \"QR PNGs regenerated\"]}\n```"
+    },
+    {
+      "id": 13,
+      "subject": "Task 13: Episode 4 lab + solutions + launcher (nb_04/sol_04/tut_04) + public/ spike",
+      "status": "pending",
+      "blockedBy": [1, 2],
+      "description": "**Goal:** \"The Menu Grows Up\": 8 cores per plan Task 13 table; courier-map boss; TIMEBOXED public/-folder spike (verdict recorded in conventions doc); sol_04; tut_04 launcher.\n\n```json:metadata\n{\"files\": [\"notebooks/nb_04_lab_menu.py\", \"tutorials/tut_04_dimensions.qmd\", \"docs/authoring-conventions.md\"], \"verifyCommand\": \"uv run python helpers/validate_notebooks.py 'nb_04*'\", \"acceptanceCriteria\": [\"spike resolved + recorded\", \"8/8 in browser\", \"sol_04 green\"]}\n```"
+    },
+    {
+      "id": 14,
+      "subject": "Task 14: lec_04 full rewrite",
+      "status": "pending",
+      "blockedBy": [4, 12, 13],
+      "description": "**Goal:** Regular skeleton, warm-up recapping Session III, 3 blocks (lists+tuples / dicts+sets / nesting+comprehensions+data slide per spike verdict), QR a/b/c.\n\n```json:metadata\n{\"files\": [\"lectures/lec_04_dimensions.qmd\", \"docs/side-quest-backlog.md\"], \"verifyCommand\": \"quarto render lectures/lec_04_dimensions.qmd\", \"acceptanceCriteria\": [\"warm-up per plan\", \"data slide matches spike verdict\", \"cuts logged\"]}\n```"
+    },
+    {
+      "id": 15,
+      "subject": "Task 15: CP2 — sessions III–IV (private repo)",
+      "status": "pending",
+      "blockedBy": [10, 13],
+      "description": "**Goal:** First exprs-graded checkpoint (function fee_t1 + class Order); full reference_tests code in plan Task 15; live checks probe different inputs than hidden suite; fixtures + CASES extension.\n\n```json:metadata\n{\"files\": [\"../Introduction-to-Python-checkpoints/checkpoints/cp2/cp2_board_review.py\", \"../Introduction-to-Python-checkpoints/checkpoints/cp2/reference_tests.py\", \"../Introduction-to-Python-checkpoints/tests/test_checkpoints.py\"], \"verifyCommand\": \"cd ../Introduction-to-Python-checkpoints && uv run pytest -v\", \"acceptanceCriteria\": [\"exprs probes differ from notebook inputs\", \"JSON-safe values only\", \"solved 12/12, blank 0\"]}\n```"
+    },
+    {
+      "id": 16,
+      "subject": "Task 16: Session V in-lecture exercises (ex_05_a/b)",
+      "status": "pending",
+      "blockedBy": [1],
+      "description": "**Goal:** int(\"3.5\") predict→fix (qty_exa==3.5); try/except default (price_exb==0.0). QRs.\n\n```json:metadata\n{\"files\": [\"notebooks/exercises/ex_05_a.py\", \"notebooks/exercises/ex_05_b.py\", \"helpers/make_qr.py\"], \"verifyCommand\": \"uv run python helpers/validate_notebooks.py 'exercises/ex_05_*.py'\", \"acceptanceCriteria\": [\"checks match plan literals\", \"QR PNGs regenerated\"]}\n```"
+    },
+    {
+      "id": 17,
+      "subject": "Task 17: Episode 5 lab + solutions + launcher (nb_05/sol_05/tut_05)",
+      "status": "pending",
+      "blockedBy": [1, 2],
+      "description": "**Goal:** \"The 3-AM Checkout\": exceptions/assertions/debugging per plan Task 17 table; boss robust_total_ex40==22.70; sol_05; tut_05 launcher.\n\n```json:metadata\n{\"files\": [\"notebooks/nb_05_lab_checkout.py\", \"tutorials/tut_05_errors.qmd\"], \"verifyCommand\": \"uv run python helpers/validate_notebooks.py 'nb_05*'\", \"acceptanceCriteria\": [\"probes guarded\", \"Kevin bugs terminate\", \"7/7 in browser\", \"sol_05 green\"]}\n```"
+    },
+    {
+      "id": 18,
+      "subject": "Task 18: lec_05 full rewrite",
+      "status": "pending",
+      "blockedBy": [4, 16],
+      "description": "**Goal:** CP-day skeleton (CP2 slide, no warm-up), 2 blocks (tracebacks+try/except / debugging+assert+raise), QR a/b.\n\n```json:metadata\n{\"files\": [\"lectures/lec_05_errors.qmd\", \"docs/side-quest-backlog.md\"], \"verifyCommand\": \"quarto render lectures/lec_05_errors.qmd\", \"acceptanceCriteria\": [\"CP2 slide per pattern\", \"blocks per plan\", \"cuts logged\"]}\n```"
+    },
+    {
+      "id": 19,
+      "subject": "Task 19: CP3 — session V + Part I recap (private repo)",
+      "status": "pending",
+      "blockedBy": [17],
+      "description": "**Goal:** CP3: exceptions + recap I–IV; full reference_tests code in plan Task 19; fixtures + CASES extension.\n\n```json:metadata\n{\"files\": [\"../Introduction-to-Python-checkpoints/checkpoints/cp3/cp3_board_review.py\", \"../Introduction-to-Python-checkpoints/checkpoints/cp3/reference_tests.py\", \"../Introduction-to-Python-checkpoints/tests/test_checkpoints.py\"], \"verifyCommand\": \"cd ../Introduction-to-Python-checkpoints && uv run pytest -v\", \"acceptanceCriteria\": [\"per plan table\", \"solved 12/12, blank 0\"]}\n```"
+    },
+    {
+      "id": 20,
+      "subject": "Task 20: Part-I validation pass + docs sync",
+      "status": "pending",
+      "blockedBy": [3, 7, 8, 11, 14, 15, 18, 19],
+      "description": "**Goal:** Full green sweep (validator, exports, 5 decks + 5 tut renders, private pytest, no-copilot grep, no public solutions), docs/memory sync, PR body update. NO AI-attribution lines.\n\n```json:metadata\n{\"files\": [\"docs/superpowers/specs/2026-07-09-fable-review.md\", \"docs/side-quest-backlog.md\"], \"verifyCommand\": \"uv run python helpers/validate_notebooks.py && uv run python helpers/export_marimo.py\", \"acceptanceCriteria\": [\"all commands exit 0\", \"no copilot in 01-05\", \"PR updated without attribution\"]}\n```"
+    }
+  ],
+  "lastUpdated": "2026-07-10T00:00:00Z"
+}
