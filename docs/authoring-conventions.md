@@ -27,6 +27,13 @@
 - Progress cell counts core exercises only; wrap-up ritual cell closes every lab.
 - Story: sitcom in notebooks, investor only cameos until Part II, name-agnostic
   checks (never assert on the startup name).
+- Data in notebooks: inline string/dict data until Part III; `public/` files
+  revisit with pandas in Session VIII. (Spike 2026-07-10: a `public/` file IS
+  copied on WASM export and reachable, but `mo.notebook_location()` yields a
+  `URLPath` — beginner-natural `open(path)` fails with `FileNotFoundError` and
+  `path.read_text()` fails with `AttributeError`; only
+  `urllib.request.urlopen(str(path))` works, which is not Session-IV-appropriate.
+  So ship file-like data as an inline multi-line string until pandas.)
 
 ## In-lecture exercises (ex_XX_<letter>.py)
 - **Letter = slide order** (Fable #10): `ex_XX_a` belongs to lecture block 1,
