@@ -8,6 +8,11 @@ Buffer scope (spec §4): authored last, cut first, never blocking semester start
 
 ## Material cut from lecture decks (Plan 2 rewrites)
 - (one line per cut concept: "lec_02: while/else clause — niche, cut")
+- lec_02: `+=` / `-=` / `*=` compound-assignment operators — useful shorthand, but the accumulator pattern is taught longhand first; revisit as a Session-IV convenience note
+- lec_02: membership operators (`in` / `not in`) — belong with sequences in Session IV where lists/dicts are taught properly
+- lec_02: indexing & slicing (`s[0]`, `s[-1]`, `s[start:stop:step]`) — moved to Session IV (matches lec_01's slicing cut)
+- lec_02: `**` exponentiation and `dir()` introspection — niche for beginner control-flow day, cut
+- lec_02: objects/methods framing slides (everything-is-an-object) — string methods now taught directly without the abstract preamble
 - lec_01: input() + type conversion (int/float/str/bool of input) — WASM notebooks have no stdin; revisit if a UI-input exercise appears
 - lec_01: string indexing / slicing / len() / repeat (`*`) — moved to Session IV where sequences are taught properly
 - lec_01: live SyntaxError demo (broken quotes) — errors get full treatment in Session V
