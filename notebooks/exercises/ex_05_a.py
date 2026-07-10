@@ -30,8 +30,7 @@ def _(mo):
     # ⚡ Quick exercise: which error? (5 min)
 
     The checkout crashed live during the lunch rush — Kevin swears he only
-    changed "one tiny thing". The crashing line reads the quantity field
-    straight into a whole number:
+    changed "one tiny thing". Here's the crashing line:
 
     ```python
     qty_text = "3.5"
