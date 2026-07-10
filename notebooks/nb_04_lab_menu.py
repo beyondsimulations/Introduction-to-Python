@@ -371,13 +371,14 @@ def _():
 
 
 @app.cell(hide_code=True)
-def _(menu_ex22, mo, show_result):
+def _(menu_ex21, menu_ex22, mo, show_result):
     _expected = {
         "Falafel Wrap": 6.90,
         "Pad Thai": 9.20,
         "Founders Bowl": 10.40,
         "Miso Ramen": 11.50,
     }
+    _original = {"Falafel Wrap": 6.90, "Pad Thai": 8.90, "Founders Bowl": 10.40}
     if not menu_ex22:
         ex22_ok = False
         _msg = "🔲 Exercise 2.2: not attempted yet."
@@ -385,6 +386,10 @@ def _(menu_ex22, mo, show_result):
     elif not isinstance(menu_ex22, dict):
         ex22_ok = False
         _msg = "❌ Exercise 2.2: `menu_ex22` should be a **dictionary**. Copy the old one, then adjust the copy."
+        _preview = show_result(menu_ex22)
+    elif menu_ex22 == _expected and menu_ex21 != _original:
+        ex22_ok = False
+        _msg = "❌ Exercise 2.2: `menu_ex22` looks right — but the ORIGINAL menu changed too. You edited `menu_ex21` through an alias; make a real copy with `dict(...)` first, then change the copy."
         _preview = show_result(menu_ex22)
     elif menu_ex22 == _expected:
         ex22_ok = True

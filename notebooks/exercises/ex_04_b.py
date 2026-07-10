@@ -53,7 +53,7 @@ def _(menu):
 
 
 @app.cell(hide_code=True)
-def _(menu_exb, mo, show_result):
+def _(menu, menu_exb, mo, show_result):
     # Reactive check — re-runs automatically whenever the cell above changes.
     _expected = {
         "Falafel Wrap": 6.90,
@@ -61,9 +61,13 @@ def _(menu_exb, mo, show_result):
         "Founders Bowl": 10.40,
         "Miso Ramen": 11.50,
     }
+    _original = {"Falafel Wrap": 6.90, "Pad Thai": 8.90, "Founders Bowl": 10.40}
     if menu_exb is None:
         _ok = False
         _msg = "🔲 Not attempted yet."
+    elif menu_exb == _expected and menu != _original:
+        _ok = False
+        _msg = "❌ Not quite — `menu_exb` looks right, but the ORIGINAL `menu` changed too. You edited it through an alias; make a real copy with `dict(...)` first, then change the copy."
     elif menu_exb == _expected:
         _ok = True
         _msg = "✅ Correct! The winter menu is live."

@@ -497,6 +497,10 @@ def _(bad_index_ex23, mo, show_result):
         ex23_ok = False
         _msg = "🔲 Exercise 2.3: not attempted yet."
         _preview = ""
+    elif isinstance(bad_index_ex23, float) and bad_index_ex23 == -1.0:
+        ex23_ok = False
+        _msg = "❌ Exercise 2.3: `-1.0` is the *price* — the check wants its POSITION in the list, not the value. You want the index it sits at, counting from 0."
+        _preview = show_result(bad_index_ex23)
     elif not isinstance(bad_index_ex23, int):
         ex23_ok = False
         _msg = "❌ Exercise 2.3: this should be a whole **number** — a position in the list."
@@ -508,10 +512,6 @@ def _(bad_index_ex23, mo, show_result):
     elif bad_index_ex23 == 3:
         ex23_ok = False
         _msg = "❌ Exercise 2.3: position 3 is `-1.0`? Count again from **0**: 6.90 is at 0, 8.90 at 1, then the bad one. Indices start at zero."
-        _preview = show_result(bad_index_ex23)
-    elif bad_index_ex23 == -1.0:
-        ex23_ok = False
-        _msg = "❌ Exercise 2.3: `-1.0` is the *price*, not its **index**. You want the position it sits at in the list, not the value."
         _preview = show_result(bad_index_ex23)
     else:
         ex23_ok = False

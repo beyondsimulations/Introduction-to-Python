@@ -95,3 +95,10 @@ Add new exercises to `helpers/make_qr.py` EXERCISES and re-run it.
 - Prompts state the RULE and the SYMPTOM, never the expected value or the bug's
   location ("the investor says the number is too low", not "should be 4" /
   "wrong comparison"). Grading is value-only — a stated answer is a free answer.
+- Live checks and reference tests must apply IDENTICAL comparison leniency (the
+  hash helper normalizes strip+lower — reference tests mirror it).
+- MCQ/trace answers get a neutral "recorded" acknowledgment, never a live ✅/❌
+  (a 4-letter space is enumerable).
+- Hash literals are per-task salted (`expected_hash(answer, task="cpN.tM")`) so
+  equal answers never share a literal.
+- expr keys are task-prefixed and unique (enforced by `load_tasks`).
