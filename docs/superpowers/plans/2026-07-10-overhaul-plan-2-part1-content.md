@@ -66,6 +66,14 @@ PATTERNS = ("nb_*.py", "exercises/ex_*.py", "solutions/sol_*.py")
 TIMEOUT_S = 60
 
 
+class _Timeout(Exception):
+    pass
+
+
+def _on_alarm(signum, frame):
+    raise _Timeout(f"notebook exceeded {TIMEOUT_S}s")
+
+
 def run(nb: Path) -> bool:
     signal.alarm(TIMEOUT_S)
     try:
@@ -73,7 +81,8 @@ def run(nb: Path) -> bool:
         module = importlib.util.module_from_spec(spec)
         spec.loader.exec_module(module)
         module.app.run()
-    except Exception as exc:
+    # BaseException: also catch SystemExit from stray exit() calls and the alarm
+    except BaseException as exc:
         print(f"FAIL {nb.relative_to(ROOT)}: {exc!r}", file=sys.stderr)
         return False
     finally:
@@ -93,7 +102,9 @@ def main() -> int:
     if not sources:
         print("no notebooks matched", file=sys.stderr)
         return 1
-    results = [run(nb) for nb in sources]  # list() — no short-circuit
+    # Unix-only; must run in the main thread
+    signal.signal(signal.SIGALRM, _on_alarm)
+    results = [run(nb) for nb in sources]  # full list first — no short-circuit, validate everything
     return 0 if all(results) else 1
 
 
