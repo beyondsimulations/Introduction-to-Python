@@ -958,10 +958,14 @@ TASKS = {
             "t1_low": "fee_t1(12.0)",
             "t1_mid": "fee_t1(25.0)",
             "t1_high": "fee_t1(60.0)",
+            "t1_b20": "fee_t1(20.0)",   # boundary: 20 belongs to the middle band
+            "t1_b40": "fee_t1(40.0)",   # boundary: 40 belongs to the free band
         },
         "test": lambda d: d.get("t1_low") == 3.50
         and d.get("t1_mid") == 2.00
-        and d.get("t1_high") == 0,
+        and d.get("t1_high") == 0
+        and d.get("t1_b20") == 2.00
+        and d.get("t1_b40") == 0,
     },
     "t2_trace": {
         "points": 2,
@@ -979,7 +983,7 @@ TASKS = {
         "points": 2,
         "names": ["menu_t4"],
         "test": lambda d: d.get("menu_t4")
-        == {"Falafel Wrap": 7.20, "Pad Thai": 9.20, "Miso Ramen": 11.50},
+        == {"Falafel Wrap": 7.20, "Pad Thai": 9.80, "Miso Ramen": 12.30},
     },
     "t5_comprehension": {
         "points": 2,
@@ -1001,7 +1005,7 @@ TASKS = {
 | t1 write fn | `fee_t1(total)`: < 20 → 3.50, 20–40 → 2.00, ≥ 40 → 0 ("the new courier tariff"). Notebook live-check probes DIFFERENT inputs than the hidden suite (e.g. 15/30/45) so grader probes can't be pattern-matched | function |
 | t2 trace | the `boost(p)` scope snippet with new names — printed value of the untouched global: a) 5 b) 6 c) Error | `"a"` |
 | t3 fix class | Kevin's `Order.total()` returns `self.price` — fix to `qty * price` | method |
-| t4 write | Build the winter menu dict: Falafel Wrap 7.20, Pad Thai 9.20, Miso Ramen 11.50 | dict |
+| t4 write | Build the board's tasting-menu dict: Falafel Wrap 7.20, Pad Thai 9.80, Miso Ramen 12.30 (fresh values — nb_04's winter menu uses 9.20/11.50, which must NOT appear here) | dict |
 | t5 write | Comprehension: double `[12.5, 8.9, 15.2]` | `[25.0, 17.8, 30.4]` |
 | t6 mcq | `orders = [1, 2, 3]; orders.append([4, 5]); len(orders)` → a) 4 b) 5 c) Error | `"a"` |
 
