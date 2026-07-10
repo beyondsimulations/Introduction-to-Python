@@ -36,3 +36,9 @@ Buffer scope (spec §4): authored last, cut first, never blocking semester start
 - lec_04: `timeit` membership-speed benchmark slide — performance framing is premature for beginners, cut
 - lec_04: file I/O (`open`/`with`, read/write modes, `input()`) — WASM notebooks have no filesystem; real files land in Part III, pandas in Session VIII (replaced by the inline-data slide)
 - lec_04: generator expressions (`(x for x in ...)`) — niche beside list/dict comprehensions, cut for beginners
+- lec_05: custom exception classes (`class InvalidUsernameError(Exception)`) — inheritance is out of scope; the course stops at one small class in Session III
+- lec_05: the full built-in-exception catalogue (`NameError`, `AttributeError`, `ImportError`, `SyntaxError`, `IndentationError`, `RuntimeError`, `FileNotFoundError`) — trimmed to the "big five" students actually hit; recognise the rest by reading the last line
+- lec_05: `except ... as e` variable binding as its own teaching point — used in worked examples, but the mechanics slide is cut for CP-day time
+- lec_05: IDE debugger walkthrough (Zed breakpoints / step-over / variable viewer) — no IDE in the WASM lab; `print()` is the beginner's flashlight instead
+- lec_05: the `if __name__ == "__main__":` main-function pattern + script organisation slides — belongs with modules/imports (Session VI), not the errors day
+- lec_05: `logging` module overview — beyond scope for beginners; a larger-codebase concern, cut
