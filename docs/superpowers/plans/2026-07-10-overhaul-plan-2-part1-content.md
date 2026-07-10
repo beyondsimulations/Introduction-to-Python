@@ -856,11 +856,11 @@ All function/class probes in check cells wrapped in try/except (as in Task 9). S
 - Modify: `docs/authoring-conventions.md` (record the spike verdict)
 
 **Acceptance Criteria:**
-- [ ] 8 cores + 1 ungraded trace + 2 bonus per the table; patterns copied; launcher + dormant solutions link
+- [ ] 9 cores (ex11, ex12, ex21, ex22, ex23, ex32, ex33, ex40, ex50 — the MCQ counts) + 1 ungraded trace + 2 bonus per the table; patterns copied; launcher + dormant solutions link
 - [ ] **Spike resolved and recorded:** either `notebooks/public/` files load in the WASM export (then the order-log exercise reads the file) or they don't (then the log ships as an inline multi-line string and the conventions doc says "inline data until Part III")
 - [ ] Validator + full browser run green
 
-**Verify:** validator ok → export → solve in browser (progress 8/8) → conventions doc has a "Data in notebooks" verdict line.
+**Verify:** validator ok → export → solve in browser (progress 9/9) → conventions doc has a "Data in notebooks" verdict line.
 
 **Steps:**
 
@@ -906,7 +906,7 @@ campus_map = {
 
 Story: Kevin's forgotten wrap must reach the dorms before it achieves sentience.
 
-- [ ] **Step 3–5:** solutions (private), `tut_04` launcher ("Episode 4 — The Menu Grows Up"), validate/export/render/commit both repos (`"feat: episode 4 lab — data structures and the courier run"`). Note: progress cell counts 8 cores here (header must say 8).
+- [ ] **Step 3–5:** solutions (private), `tut_04` launcher ("Episode 4 — The Menu Grows Up"), validate/export/render/commit both repos (`"feat: episode 4 lab — data structures and the courier run"`). Note: progress cell counts 9 cores here (header must say 9 — the MCQ is core, as in every lab).
 
 ---
 
