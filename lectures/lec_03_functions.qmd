@@ -285,14 +285,15 @@ class Delivery:
     def __init__(self, courier, distance_km):  # runs when you build one
         self.courier = courier          # store data ON the object
         self.distance_km = distance_km
+        self.rate_per_km = 1.20         # every delivery carries its rate
 
     def fee(self):                       # a method — note self
-        return round(self.distance_km * 1.20, 2)
+        return round(self.distance_km * self.rate_per_km, 2)
 ```
 
 . . .
 
-`__init__` sets up a new object · `self` is *this* object · attributes are stored on `self` and read back through `self`.
+`__init__` sets up a new object · `self` is *this* object · attributes are stored on `self` and read back through `self` — `fee()` multiplies **two** stored attributes.
 
 ## Build one, call its method
 
@@ -361,3 +362,20 @@ First **predict** what happens — then run it.
 ::: {.callout-note}
 **Next time — Episode 4:** the menu outgrows Kevin's **seventeen loose variables** — `price1`, `price2`, `price_final_FINAL2` — and nobody can find anything. We give the data a **shape**: lists and dictionaries.
 :::
+
+# [Literature]{.flow} {.title}
+
+## Books to start with
+
+- Downey, A. B. (2024). Think Python: How to think like a computer scientist (Third edition). O’Reilly. [Link to free online version](https://greenteapress.com/wp/think-python-3rd-edition/)
+- Elter, S. (2021). Schrödinger programmiert Python: Das etwas andere Fachbuch (1. Auflage). Rheinwerk Verlag.
+
+. . .
+
+::: {.callout-note}
+Nothing new here, but these are still great books to start with!
+:::
+
+. . .
+
+For more, see the [literature list](../general/literature.qmd) of this course.
