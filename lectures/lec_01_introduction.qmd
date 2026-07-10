@@ -165,7 +165,7 @@ print(sticker_budget)
 
 . . .
 
-[Question]{.question}: Which of these are valid variable names?\
+[Question — we solve this together, out loud]{.question}: Which of these are valid variable names?\
 `sticker_budget`, `1st_employee`, `firstEmployee`, `company-name`, `_kevin`
 
 ## Four basic types
@@ -263,6 +263,7 @@ print(300 / 8)       # division — always gives a float
 # The 300 EUR budget, boxes at 7 EUR each
 print(300 // 7)      # whole boxes we can buy
 print(300 % 7)       # EUR left over
+print(10 // 2.5)     # 4.0 — floor division on floats floors, but returns a float
 ```
 
 ## Precedence: like on paper
@@ -350,7 +351,7 @@ A string is **text in quotes**. Single or double quotes both work — just be co
 #| eval: true
 #| output-location: fragment
 
-item = "Falafel Wrap"
+item = "Miso Ramen"
 print(item)
 print('Kevin shouts "9.99!"')   # mix quotes to include a quote inside
 ```
@@ -364,13 +365,14 @@ You can glue strings with `+` — but numbers must be converted first, and it ge
 #| output-location: fragment
 
 qty = 2
-item = "Falafel Wrap"
-total = 13.80
+item = "Miso Ramen"
+total = 23.00
 print(str(qty) + "x " + item + ": " + str(total) + " EUR")
 ```
 
 . . .
 
+(`str(...)` turns a value into text — clumsy, and we're about to see the better way.)
 Forget one `str()` and Python raises a `TypeError`.
 
 ## f-strings: the clean way
@@ -382,8 +384,8 @@ Put an `f` before the quote and write values in `{ }` — Python fills them in:
 #| output-location: fragment
 
 qty = 2
-item = "Falafel Wrap"
-total = 13.80
+item = "Miso Ramen"
+total = 23.00
 print(f"{qty}x {item}: {total} EUR")
 ```
 
@@ -399,10 +401,14 @@ Inside the braces, `:.2f` forces **two decimals** — exactly what a receipt nee
 #| eval: true
 #| output-location: fragment
 
-total = 13.8
-print(f"{total} EUR")          # 13.8 — looks unfinished
-print(f"{total:.2f} EUR")      # 13.80 — a proper price
+total = 23.00
+print(f"{total} EUR")          # 23.0 EUR — one decimal, looks broken on a receipt
+print(f"{total:.2f} EUR")      # 23.00 EUR — a proper price
 ```
+
+. . .
+
+Python stores `23.00` as the number `23.0` — only *you* know it's money. `:.2f` says so.
 
 ## Multi-line receipts with `\n`
 
