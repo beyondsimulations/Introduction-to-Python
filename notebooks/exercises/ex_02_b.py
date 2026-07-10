@@ -37,9 +37,6 @@ def _(mo):
         total = total + p
     print(total)
     ```
-
-    Look carefully at the indentation — `print` is **not** indented, so it
-    runs once, after the loop is done.
     """
     )
     return
@@ -79,11 +76,8 @@ def _(mo, trace_exb):
 def _(mo):
     mo.md(
         r"""
-    Now the real task: today's delivery times (in minutes) are in `minutes`
-    below. Write a `for` loop that sums them into `minutes_exb`.
-
-    (The accumulator pattern from the trace above works fine inside one
-    cell: start at `0`, then add each value as you loop.)
+    Now write one yourself: the curfew means every delivery minute counts —
+    sum today's three runs in `minutes` with a `for` loop into `minutes_exb`.
     """
     )
     return

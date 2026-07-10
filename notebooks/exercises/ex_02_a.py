@@ -34,12 +34,12 @@ def _(mo):
 
     | `order_total` | fee |
     |---|---|
-    | < 15 | 2.90 |
-    | 15 – 30 | 1.50 |
-    | ≥ 30 | 0 |
+    | `order_total < 15` | 2.90 |
+    | `15 <= order_total < 30` | 1.50 |
+    | `order_total >= 30` | 0 |
 
-    Using an `if`/`elif`/`else` ladder, compute the fee for `order_total`
-    below into `fee_exa`.
+    Using an `if`/`elif`/`else` ladder, store the correct fee in `fee_exa`,
+    based on `order_total` below.
     """
     )
     return
