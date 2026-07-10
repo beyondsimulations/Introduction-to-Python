@@ -510,6 +510,11 @@ def _(mo):
 
     And when a key might be **missing**, `menu["Sushi"]` raises a `KeyError` and
     stops everything — but `menu.get("Sushi")` quietly hands back `None` instead.
+
+    One marimo habit to know: if a cell shows a **red error**, every cell that
+    depends on it — including the progress box — pauses until you fix it. Nothing
+    is lost; fix the red cell and everything comes back.
+
     Read and run the worked example, then use all three.
     """
     )
@@ -840,7 +845,7 @@ def _(mo):
     mo.accordion(
         {
             "💡 Hint 1 (a nudge)": "Keep a variable for where the wrap currently is, starting at \"gate\". Loop over `route`; on each step, replace that variable with the place the current direction leads to — exactly like the two-stop worked example above.",
-            "💡 Hint 2 (the structure)": "position = \"gate\"\nfor direction in route:\n    position = campus_map[position][___]\ndestination_ex40 = position   — fill the blank with the loop variable.",
+            "💡 Hint 2 (the structure)": "_pos = \"gate\"\nfor _step in route:\n    _pos = ___[___][_step]\ndestination_ex40 = _pos   — fill in what to look up, and what to look it up BY. (Which dict holds the map? And whose exits are you reading each time around the loop?)",
         }
     )
     return

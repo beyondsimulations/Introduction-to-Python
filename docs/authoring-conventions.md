@@ -22,6 +22,10 @@
   the paste-able answer. Full answers live in the solution notebook only.
 - Kevin's bugs: logic/runtime only (never syntax errors), and always terminating
   (never a possible infinite loop — it freezes the WASM tab).
+- An erroring answer cell pauses its check cell AND the progress cell (reactive
+  dependency). Labs with easy-to-crash exercises (dict lookups, indexing) must
+  include the "red error pauses everything below — fix it and it comes back"
+  teach line.
 - Trace exercises: `mo.ui.radio` + reveal, labeled "(trace — predict first)",
   ungraded (not counted in the progress cell).
 - Progress cell counts core exercises only; wrap-up ritual cell closes every lab.
