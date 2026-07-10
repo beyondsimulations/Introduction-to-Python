@@ -78,4 +78,9 @@ Add new exercises to `helpers/make_qr.py` EXERCISES and re-run it.
   `exprs` probes with instructor-chosen inputs.
 - JSON constraint: the runner serializes to JSON — tuples become lists, sets are
   not serializable. Graded answers: numbers, strings, bools, lists, dicts only.
-- CP task values must DIFFER from lab/exercise values (same skill, new numbers).
+- CP task values must DIFFER from lab/exercise values (same skill, new numbers) —
+  AND the expected ANSWER must differ too (a fresh list that still sums to the
+  lab's answer defeats the purpose; lab recall must never score points).
+- Prompts state the RULE and the SYMPTOM, never the expected value or the bug's
+  location ("the investor says the number is too low", not "should be 4" /
+  "wrong comparison"). Grading is value-only — a stated answer is a free answer.
