@@ -64,7 +64,7 @@ a\) `3.5 1`   b) `3 1`   c) `3 0.5`
 
 ## Asking a yes/no question
 
-A **comparison** asks a question and answers with a **boolean** — `True` or `False`:
+A **comparison** asks a question and answers with a **boolean** — `True` or `False`, the `bool` type you met last week:
 
 ```{python}
 #| eval: true
@@ -156,19 +156,40 @@ else:
 print(tier)
 ```
 
-## The first true branch wins
+## Predict: Kevin reorders the ladder
 
-Python checks branches **top to bottom** and stops at the **first** `True`. So order matters — a loose test placed too early swallows the rest:
+Kevin rewrote the tier ladder "to keep the common case on top". A customer with **25 past orders** walks in. Which tier do they get?
+
+```python
+past_orders = 25
+if past_orders >= 5:
+    tier = "Silver"
+elif past_orders >= 20:
+    tier = "Gold"
+else:
+    tier = "Bronze"
+print(tier)
+```
+
+a\) `Gold`   b) `Silver`   c) `Bronze`
+
+. . .
+
+[Predict first]{.question} — commit to an answer before the next slide.
+
+## Answer: the first true branch wins
+
+**b) `Silver`** — Python checks branches **top to bottom** and takes the **first** `True` one. `25 >= 5` is already `True`, so the `Gold` branch is never even looked at. Order your ladder from **strictest to loosest**.
 
 ```{python}
 #| eval: true
 #| output-location: fragment
 
-past_orders = 25            # a Gold customer!
+past_orders = 25
 if past_orders >= 5:
-    tier = "Silver"         # 25 stops HERE — wrong
+    tier = "Silver"
 elif past_orders >= 20:
-    tier = "Gold"           # never reached
+    tier = "Gold"
 else:
     tier = "Bronze"
 print(tier)
@@ -176,7 +197,7 @@ print(tier)
 
 . . .
 
-Test the **strictest** condition first. (One misplaced `elif` and Kevin demotes every VIP.)
+(One misplaced `elif` and Kevin demotes every VIP.)
 
 ## Predict: exactly at curfew
 
@@ -279,7 +300,7 @@ After the loop, `total` holds the sum. This is how you replace Kevin's hand-coun
 #| output-location: fragment
 
 for i in range(3):
-    print(i)
+    print(i)      # ping the courier's phone 3 times
 ```
 
 . . .
@@ -295,8 +316,8 @@ Three passes: `0`, `1`, `2`. (It stops *before* 3 — a beginner's favourite sur
 #| eval: true
 #| output-location: fragment
 
-print(list(range(2, 5)))       # 2, 3, 4
-print(list(range(0, 10, 3)))   # 0, 3, 6, 9
+print(list(range(2, 5)))       # delivery windows 2, 3 and 4 o'clock
+print(list(range(0, 10, 3)))   # every 3rd order gets a flyer: 0, 3, 6, 9
 ```
 
 ## Looping over a string
