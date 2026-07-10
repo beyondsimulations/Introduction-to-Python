@@ -107,6 +107,14 @@ def _():
     example_hour = 20
     example_open = example_hour < 22          # a boolean: True or False
     print("At", example_hour, "o'clock, open?", example_open)
+    # Three branches — Python runs the FIRST one whose condition is True:
+    example_rating = 4
+    if example_rating >= 5:
+        print("A glowing review!")
+    elif example_rating >= 3:
+        print("Fine — could be faster.")
+    else:
+        print("Kevin answers the complaint phone.")
     return
 
 
@@ -234,6 +242,12 @@ def _(mo):
     for price in [4.00, 6.50]:
         print(price)
     ```
+
+    To repeat something a set number of times, loop over a **`range`**:
+
+    - `range(5)` counts from 0 up to (but **not including**) 5
+    - `range(1, 5)` starts at 1 and stops before 5
+    - `range(0, 5, 2)` goes from 0 towards 5 in jumps of 2
 
     First a quick prediction, then you'll rebuild his dashboard properly.
     """
@@ -497,9 +511,19 @@ def _(mo):
 
 @app.cell
 def _():
-    # YOUR CODE BELOW — start the price at 11.90 and rounds at 0.
-    # While the price is still 8.50 or higher, cut it 10 % (price = round(price * 0.9, 2))
-    # and add 1 to the round counter.
+    # Worked example (read + run this) — a while loop that always ends,
+    # because the number it watches shrinks on every pass:
+    _stickers = 3
+    while _stickers > 0:
+        _stickers = _stickers - 1
+        print("Kevin hands out a sticker —", _stickers, "left")
+    print("Out of stickers. Kevin is devastated.")
+    return
+
+
+@app.cell
+def _():
+    # YOUR CODE BELOW — start at 11.90, count rounds while you're not yet under 8.50
     rounds_ex40 = None
     return (rounds_ex40,)
 
@@ -520,7 +544,13 @@ def _(mo, rounds_ex40, show_result):
         )
     else:
         ex40_ok = False
-        _msg = "❌ Boss exercise: not 4 — count each 10 % cut until the price first drops below 8.50."
+        if isinstance(rounds_ex40, float):
+            _msg = (
+                "❌ Boss exercise: looks like you stored the price — the check "
+                "wants the number of rounds (a whole number of cuts)."
+            )
+        else:
+            _msg = "❌ Boss exercise: not 4 — count each 10 % cut until the price first drops below 8.50."
     mo.md(_msg + show_result(rounds_ex40))
     return (ex40_ok,)
 
@@ -638,7 +668,7 @@ def _(mo):
     A falafel supplier will sell you chickpeas, but won't name a price — the
     supplier has a number in mind, and you have to find the exact price they'll
     accept. Drag the slider to make an offer; the bot reacts. There's nothing
-    to submit here — it's a warm-up for the number-guessing game in the tutorial.
+    to submit here — this one is purely for fun.
     """
     )
     return
