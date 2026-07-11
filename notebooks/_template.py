@@ -3,6 +3,9 @@
 # Rules (spec §4): one global name per cell; += counts as a definition;
 # every exercise pre-defines its answer as None; suffix exercise names (_ex1);
 # underscore-prefixed names are cell-private.
+# - exercise letters in ex_XX_<letter>.py map 1:1 to lecture block order (a=block 1)
+# - never a possible infinite loop (freezes the WASM tab); Kevin's bugs always terminate
+# - check literals must survive round(x, 2) exactly; avoid .xx5 boundaries
 import marimo
 
 app = marimo.App(width="medium")

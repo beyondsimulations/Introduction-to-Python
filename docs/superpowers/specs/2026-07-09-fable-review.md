@@ -25,6 +25,15 @@ Session I) · #7 molab login = pre-semester gate (rehearsal B5) · #10 write dow
 "exercise letter = slide order" · #12 drop retired Assignments nav from
 `_quarto.yml` (Plan 4). Take-down/variants stay parked.
 
+**Plan 2 resolution (2026-07-10):** #4 RESOLVED in Plan 2 Task 2 — solution
+notebooks are authored in the private repo, exported with `--mode run`, and
+linked from tutorials via dormant links; runbook lives in the private README
+and the conventions doc. #5 DRAFTED in Plan 2 Task 3
+(`docs/chatbot-system-prompt.md`) — external installation by Tobias remains a
+pre-Session-I gate. #10 CODIFIED in `docs/authoring-conventions.md` and applied
+in all five decks. #7 remains user-led (dress-rehearsal B5). #12 remains
+Plan 4.
+
 ## Findings (prioritized)
 
 ### 1. DESIGN-BLOCKER — Grader architecture cannot grade the "write a function" task type

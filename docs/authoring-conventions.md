@@ -1,0 +1,104 @@
+# Authoring conventions (Plans 2–4 copy these — do not improvise)
+
+## Repos & publishing
+- Public repo: lectures, tutorials (launcher pages), lab + exercise notebooks.
+- Private repo (`../Introduction-to-Python-checkpoints`): checkpoint notebooks,
+  reference tests, ALL solution notebooks (`solutions/sol_XX_*.py`).
+- Commit rule: never add AI-attribution lines (Co-Authored-By etc.) in either repo.
+- Single-file `quarto render` deletes sibling `_repo-md/*.md` — run
+  `git checkout -- _repo-md/` afterwards; only full renders may update `_repo-md`.
+
+## Notebooks (see notebooks/_template.py for the skeleton)
+- One global per cell; `+=`/`*=` count as definitions; `_name` is cell-private.
+- Every exercise pre-defines its answer: `fee_ex11 = None  # YOUR CODE BELOW`.
+- Suffix naming: `<meaning>_exNM` (section N, exercise M); boss = `_ex40`,
+  MCQ = `answer_ex50`, bonuses = `_ex60`+. Classes keep their natural name
+  (`Order`), no suffix.
+- Checks: `isinstance` + `round(x, 2) == LITERAL` for numbers; degrade to
+  "🔲 not attempted" on None; `mo.callout` + `show_result(value)`.
+- Float safety: expected values must survive `round(_, 2)` exactly; avoid
+  `.xx5` boundaries (32.775 → 32.77!). Verify every literal in Python first.
+- Hints: Hint 1 = nudge (no code); Hint 2 = skeleton with `___` blanks — never
+  the paste-able answer. Full answers live in the solution notebook only.
+- Kevin's bugs: logic/runtime only (never syntax errors), and always terminating
+  (never a possible infinite loop — it freezes the WASM tab).
+- An erroring answer cell pauses its check cell AND the progress cell (reactive
+  dependency). Labs with easy-to-crash exercises (dict lookups, indexing) must
+  include the "red error pauses everything below — fix it and it comes back"
+  teach line.
+- Trace exercises: `mo.ui.radio` + reveal, labeled "(trace — predict first)",
+  ungraded (not counted in the progress cell).
+- Progress cell counts core exercises only; wrap-up ritual cell closes every lab.
+- Story: sitcom in notebooks, investor only cameos until Part II, name-agnostic
+  checks (never assert on the startup name).
+- Data in notebooks: inline string/dict data until Part III; `public/` files
+  revisit with pandas in Session VIII. (Spike 2026-07-10: a `public/` file IS
+  copied on WASM export and reachable, but `mo.notebook_location()` yields a
+  `URLPath` — beginner-natural `open(path)` fails with `FileNotFoundError` and
+  `path.read_text()` fails with `AttributeError`; only
+  `urllib.request.urlopen(str(path))` works, which is not Session-IV-appropriate.
+  So ship file-like data as an inline multi-line string until pandas.)
+
+## In-lecture exercises (ex_XX_<letter>.py)
+- **Letter = slide order** (Fable #10): `ex_XX_a` belongs to lecture block 1,
+  `_b` to block 2, `_c` to block 3. CP sessions have 2 blocks → letters a–b only.
+- One concept, one screen, 5–10 min, one exercise + one reactive check,
+  closing cell: "*Nothing to save — this was a sandbox.*"
+
+## Lecture decks (revealjs)
+Regular session skeleton:
+1. Title slide (Fall 2026) → 2. Cold open (1 slide, episode framing, restrained)
+3. 🔥 Warm-up (3 recap questions; see below) → 4. Block 1 (≤20 min)
+5. ⚡ QR exercise a → 6. Block 2 → 7. QR b → [break] → 8. Block 3 → 9. QR c
+10. Lab handoff (tutorial URL) → 11. Wrap-up: 3 takeaways + next-episode teaser.
+CP sessions (III, V, VI, VIII, X): title → 📋 checkpoint slide (procedure) →
+cold open → Block 1 → QR a → Block 2 → QR b → lab handoff → wrap-up.
+No warm-up on CP days (the checkpoint is the warm-up).
+
+### Warm-up pattern (oral + vote)
+One `# 🔥 Warm-up {.exercise-slide}` section, then per question a `##` slide
+(question + options a–c) and a `##` answer slide (answer + one-line why).
+Everyone commits by hand vote BEFORE the reveal — predict-first, zero infra.
+Warm-up answer slides are prose-only (no live execution) — deliberate: oral
+pace, three questions in ~10 min. In-block predict pairs DO re-run the code
+executable on the answer slide. Never annotate a question slide's code with
+spoiler comments — the misconception must survive until the reveal.
+Layout nicety (optional): short symbol lists may pair two items per bullet
+joined by a middle dot ("`<` less than · `>` greater than").
+
+### QR exercise slide (exact form)
+    # ⚡ Your turn — 10 minutes {.exercise-slide}
+    …URL + QR image (assets/qr/ex_XX_x.png, width 280) + "First **predict** — then run."
+Add new exercises to `helpers/make_qr.py` EXERCISES and re-run it.
+
+## Solution notebooks (Fable #4)
+- Authored in the PRIVATE repo as `solutions/sol_XX_lab_<topic>.py`: the lab
+  notebook with answers filled in, checks green, header "Solutions — Episode XX",
+  hint accordions removed, wrap-up replaced by "compare, don't memorize" note.
+- Publish AFTER the session: copy to public `notebooks/solutions/`, run
+  `quarto render` (full) or `uv run python helpers/export_marimo.py`,
+  un-comment the Solutions link in that episode's tutorial page, commit, push.
+- Exported read-only (`--mode run`) by helpers/export_marimo.py automatically.
+- Nothing in `notebooks/solutions/` before its session has happened.
+
+## Checkpoints (private repo)
+- ~6 tasks × 2 pts, all-or-nothing; answers are CODE assignments (`answer_t2 = "b"`),
+  never `mo.ui` state; `STUDENT_NAME`/`STUDENT_ID` assignments at the top.
+- Live checks use sha256 hashes (`grader.hashcheck.expected_hash`) — answers never
+  in plaintext. Real referee = `reference_tests.py` (hidden), functions graded via
+  `exprs` probes with instructor-chosen inputs.
+- JSON constraint: the runner serializes to JSON — tuples become lists, sets are
+  not serializable. Graded answers: numbers, strings, bools, lists, dicts only.
+- CP task values must DIFFER from lab/exercise values (same skill, new numbers) —
+  AND the expected ANSWER must differ too (a fresh list that still sums to the
+  lab's answer defeats the purpose; lab recall must never score points).
+- Prompts state the RULE and the SYMPTOM, never the expected value or the bug's
+  location ("the investor says the number is too low", not "should be 4" /
+  "wrong comparison"). Grading is value-only — a stated answer is a free answer.
+- Live checks and reference tests must apply IDENTICAL comparison leniency (the
+  hash helper normalizes strip+lower — reference tests mirror it).
+- MCQ/trace answers get a neutral "recorded" acknowledgment, never a live ✅/❌
+  (a 4-letter space is enumerable).
+- Hash literals are per-task salted (`expected_hash(answer, task="cpN.tM")`) so
+  equal answers never share a literal.
+- expr keys are task-prefixed and unique (enforced by `load_tasks`).

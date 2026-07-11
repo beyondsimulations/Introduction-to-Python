@@ -2,700 +2,568 @@
 title: "Lecture II - Control Structures for Your Code"
 subtitle: "Programming with Python"
 author: "Dr. Tobias Vlćek"
-institute: "Kühne Logistics University Hamburg - Fall 2025"
+institute: "Kühne Logistics University Hamburg - Fall 2026"
 format:
   revealjs:
     footer: " {{< meta title >}} | {{< meta author >}} | [Home](lec_02_control.qmd)"
     output-file: lec_02_presentation.html
 ---
 
-# [Quick Recap of the last Lecture]{.flow} {.title}
+# [Episode 2: The Curfew]{.flow} {.title}
 
-## F-Strings
+## A decree from the city
 
-- F-strings provide a way to embed expressions inside string literals
-- You can include expressions by placing them inside curly braces `{}`
-- This makes it easier to include dynamic content
+Overnight the city banned delivery after **22:00**. Your app can no longer just say yes to every order — today the code starts **making decisions**, **repeating** work over every order, and **tidying up** Kevin's menu.
 
 . . .
-```{python}
-#| eval: true
-#| output-location: fragment
-#|
-# Let's illustrate f-strings with a small example:
-name = "Mr. Smith"
-age = 30
-height = 1.826549
-print(f"My name is {name}, I'm {age} years old, and {height:.2f} meters tall.")
+
+*(Kevin's fix: "we just deliver yesterday's orders the next morning." A lawyer disagreed.)*
+
+# 🔥 Warm-up {.exercise-slide}
+
+Three questions from Episode 1. Commit — hands up **before** the reveal.
+
+## Question 1
+
+```python
+price = 8.90
+print(f"{price * 2:.2f}")
 ```
 
-. . .
+a\) `17.8`   b) `17.80`   c) `Error`
 
-:::{.callout-tip}
-We used the `:.2f` format specifier to round the number to two decimal places.
-:::
+## Answer 1
 
-## Variables and Data Types
+**b)** — `:.2f` always prints two decimals. That's the whole receipt trick.
 
-- Python uses dynamic typing, i.e. the type is determined at runtime
-- Basic data types in Python are: `int`, `float`, `str`, `bool`
-- Variables are created by assignment with the `=` operator
+## Question 2
 
-. . .
-
-[> Question:]{.question} What are the types of `y`, `z`, `w`?
-
-```{python}
-#| eval: true
-#| output-location: fragment
-
-y = 2.5
-z = "Hello"
-w = True
-print(f"y is of type {type(y).__name__}")
-print(f"z is of type {type(z).__name__}")
-print(f"w is of type {type(w).__name__}")
+```python
+print(type("9.99"))
 ```
 
-## Arithmetic Operators
+a\) `float`   b) `str`   c) `int`
 
-::: {.columns}
-::: {.column width="30%"}
-Addition  \
-Subtraction  \
-Multiplication  \
-Division  \
-Floor Division  \
-Exponentiation  \
-Modulo
-:::
-::: {.column width="10%"}
-`+`   \
-`-`   \
-`*`   \
-`/`   \
-`//`  \
-`**`  \
-`%`
-:::
-::: {.column width="60%"}
-Adds two numbers \
-Subtracts one number from another \
-Multiplies two numbers \
-Floating-point division \
-Integer division \
-Power of \
-Remainder of division
-:::
-:::
+## Answer 2
 
-. . .
+**b)** — quotes make it text, no matter how numeric it looks. (Kevin learned this the hard way.)
 
-:::{.callout-note}
-Note, that the `/` operator always returns a float, even if the division is even. Furthermore, the `+` operator can be used to concatenate strings and that the `*` operator can be used to repeat strings.
-:::
+## Question 3
 
-## Arithmetic Operators with Variables
-
-- Additional operators can update the value of a variable [(new)]{.highlight}
-- We can use `+=`, `-=`, `*=`, `/=`, `//=`, `**=`, `%=`
-
-. . .
-
-[> Question:]{.question} What is the value of `x` after the operations?
-```{python}
-#| eval: true
-#| output-location: fragment
-
-x = 10
-print(f"Initial value of x: {x}")
-x += 5  # Equivalent to x = x + 5
-print(f"After x += 5: {x}")
-x *= 2  # Equivalent to x = x * 2
-print(f"After x *= 2: {x}")
-x %= 4  # Equivalent to x = x % 4
-print(f"After x %= 4: {x}")
+```python
+print(7 // 2, 7 % 2)
 ```
 
-## Arithmetic Operators Task
+a\) `3.5 1`   b) `3 1`   c) `3 0.5`
 
-[> Task:]{.task} Calculate the final value step by step:
+## Answer 3
 
-```{python}
-#| eval: false
+**b)** — `//` floors, `%` gives the remainder. Together: "how many fit, what's left."
 
-# Start with the following values
-price = 100
-discount_percent = 15
-tax_rate = 0.08
+# [Making Decisions]{.flow} {.title}
 
-# Your task:
-# 1. Apply the discount to the price (price reduced by discount_percent)
-# 2. Add tax to the discounted price
-# 3. Round the final price to 2 decimal places
-# Your code here
+## Asking a yes/no question
 
-final_price = ?  # What should this be?
-
-```
-
-:::{.callout-tip}
-You can use the `round()` function to round a number to a specific number of decimal places. For example: `round(3.14159, 2)` returns `3.14`.
-:::
-
-# [Objects and Methods]{.flow} {.title}
-
-
-## Objects
-
-- Objects are **instances of classes**
-- We will learn more about classes **later** in the course
-- In Python, [virtually]{.highlight} everything is an object
-- Common built-in objects: [integers, strings, lists, dictionaries]{.highlight}
-- For now, think of objects as a collection of data and methods
-
-. . .
-
-:::{.callout-note}
-For most programming purposes, you can treat everything in Python as an object. This means you can assign all types to variables, pass them to functions, and in many cases, call methods on them.
-:::
-
-## Methods
-
-- Methods are [functions]{.highlight} that are called on an [object]{.highlight}
-- The syntax is `object.method([arguments])`
-- Methods are specific to the type of object they're called on
-- They can modify the object or return information about it
-
-. . .
-
-:::{.callout-tip}
-You can use the `dir()` function to list all methods and attributes of an object.
-:::
-
-## String Methods
-Here are some commonly used string methods:
-
-- `upper()`: Converts all characters in the string to uppercase
-- `lower()`: Converts all characters in the string to lowercase
-- `title()`: Converts first character of each word to uppercase
-- `strip()`: Removes leading and trailing whitespace
-- `replace()`: Replaces a substring with another substring
-- `find()`: Finds first substring and returns its index
-- `count()`: Counts the number of occurrences of a substring
-
-## String Methods in Action
-
-[> Question:]{.question} What will be the output of the following code?
-
-```{python}
-#| eval: true
-#| output-location: fragment
-#| code-line-numbers: 2|3|4|5|6|7
-
-message = "Hello, World!"
-print(message.upper())  # Converts to uppercase
-print(message.lower())  # Converts to lowercase
-print(message.title())  # Converts to title case
-print(message.replace("World", "Python"))  # Replaces "World"
-print(message.find("World"))  # Finds "World" and returns its index
-print(message.count("o"))  # Counts the number of occurrences of "o"
-```
-
-. . .
-
-:::{.callout-note}
-Note, how `replace()` does not modify the original string. Instead, it returns a new string.
-:::
-
-## String Task
-
-[> Task:]{.task} Discuss and implement the following task:
-
-```{python}
-#| eval: false
-
-# Change the following message to get the desired output
-message = " the snake programmer. "
-# Your code here
-
-output = "The Python Programmer."
-```
-
-. . .
-
-:::{.callout-tip}
-Remember, that these methods return a new string. The original string is not modified.
-:::
-
-## String Task in Action
+A **comparison** asks a question and answers with a **boolean** — `True` or `False`, the `bool` type you met last week:
 
 ```{python}
 #| eval: true
 #| output-location: fragment
 
-message = " the snake programmer. "
-print(message.strip().title().replace("Snake", "Python"))
+delivery_hour = 21
+print(delivery_hour < 22)    # before curfew?
+print(delivery_hour == 22)   # exactly at curfew?
 ```
 
-. . .
+## The comparison operators
 
-:::{.callout-tip}
-Here we chained methods together to perform multiple operations after another in one line.
-:::
+Six operators, all returning `True` or `False`:
 
-
-# [Indexing and Slicing]{.flow} {.title}
-
-## Indexing
-
-- We have used indexing to access elements of a string last lecture
-- It allows you to access **elements of a sequence** by position
-- **Positive indexing** starts at 0 for the first element
-- **Negative indexing** starts at -1 for the last element [(new)]{.highlight}
-
-. . .
-
-```{python}
-#| eval: true
-#| output-location: fragment
-
-string_to_index = "Hello, World!"
-print(string_to_index[0])  # Accessing the first character
-print(string_to_index[-1]) # Accessing the last character
-```
-
-## Slicing
-
-- Slicing allows you to **extract a portion of a sequence**
-- Syntax: `sequence[start:stop:step]`
-- `start` is the index of the **first element to include**
-- `stop` is the index of the **first element to exclude**
-- `step` is the increment between indices (default is 1)
-- The result is a **new sequence** containing the extracted elements
-
-. . .
-
-```{python}
-#| eval: true
-#| output-location: fragment
-
-string_to_slice = "Hello, World!"
-print(string_to_slice[7:12])   # Accessing the last five characters from the start
-print(string_to_slice[-6:-1])  # Accessing the last five characters from the end
-```
-
-## Slicing Simplified
-
-- If we omit `start` or `stop`, it will be replaced by the **start or end** of the sequence, respectively
-- If we omit `step`, it will be replaced by 1
-
-. . .
-
-```{python}
-#| eval: true
-#| output-location: fragment
-
-string_to_slice = "Hello, World!"
-print(string_to_slice[::2])   # Accessing every second character
-print(string_to_slice[::-1])  # Accessing the string in reverse
-```
-
-## Slicing String Task
-
-[> Task:]{.task} Discuss and implement the following task:
-
-```{python}
-#| eval: false
-
-# Slice the following message to create the described output
-message = "y6S0-teru89d23e'.n*ut"
-# Your code here
-
-output = "Student"
-```
-
-. . .
-
-
-:::{.callout-tip}
-Remember, that these methods return a new string. The original string is not modified.
-:::
-
-# [Comparisons]{.flow} {.title}
-
-## Comparison Operators
-
-- Comparison operators are used to compare two values
-- The result of a comparison is a boolean value (`True` or `False`)
-
-. . .
-
-[> Question:]{.question} What will be the output of the following code?
-
-```{python}
-#| eval: true
-#| output-location: fragment
-#| code-line-numbers: 1-2|3|4|5|6|7|8
-
-lower_number = 2; upper_number = 9
-print(lower_number == upper_number) # Equality
-print(lower_number != upper_number) # Inequality
-print(lower_number > upper_number) # Greater than
-print(lower_number < upper_number) # Less than
-print(lower_number >= upper_number) # Greater than or equal to
-print(lower_number <= upper_number) # Less than or equal to
-```
-
-## Logical Operators
-
-- Logical operators combine multiple comparison operators
-- Common logical operators: `and`, `or`, `not`
-
-. . .
-
-[> Question:]{.question} Which of the following expressions is `True`?
-
-```{python}
-#| eval: true
-#| output-location: fragment
-#| code-line-numbers: 1-2|3|4
-
-lower_number = 2; middle_number = 5; upper_number = 9;
-print(lower_number < middle_number and middle_number < upper_number) # and
-print(lower_number < middle_number or middle_number > upper_number) # or
-print(lower_number == lower_number and not lower_number > middle_number) # not
-```
-
-. . .
-
-:::{.callout-note}
-Note, that `and` and `or` are evaluated from left to right.
-:::
-
-## Membership Operators
-
-- Used to check if a value is present in a sequence
-- Common membership operators: `in`, `not in`
-
-. . .
-
-[> Question:]{.question} Which of these expressions is `True`?
-
-```{python}
-#| eval: true
-#| output-location: fragment
-
-an_apple = "apple"
-print("a" in an_apple) # Check if "a" is in the string "apple"
-print("pp" not in an_apple) # Check if "pp" is not in the string
-```
-
-. . .
-
-:::{.callout-note}
-Note, that `in` and `not in` can be used for strings, lists, tuples, sets, and dictionaries. [Don't worry!]{.highlight} We will learn about lists, tuples, sets, and dictionaries later in the course.
-:::
-
-# [Control Structures]{.flow} {.title}
-
-## Control Structures
-
-- Used to **control the flow of execution** in a program
-- They can be used to [make decisions]{.highlight} and [repeat code blocks]{.highlight}
-- `if`, `elif`, `else`, `for`, `while`, `break`, `continue`
-
-. . .
-
-[> Question:]{.question} What do you think each of the above does?
-
-## Indentation
-
-- Indentation is crucial in Python!
-- It is used to indicate the block of code that belongs to the structure
-- The standard indentation is 4 spaces
-- You can use tabs, but you [should be careful]{.highlight} with that
+- `<` less than · `>` greater than
+- `<=` at most · `>=` at least
+- `==` equal · `!=` not equal
 
 . . .
 
 :::{.callout-warning}
-Mixing tabs and spaces can cause errors that are difficult to debug. The Python style guide (PEP 8) recommends using 4 spaces per indentation level for consistency and readability.
+`=` **assigns** a value; `==` **compares** two values. Mixing them up is the classic first-week bug.
 :::
 
+## Combining conditions
 
-# [Conditional Statements]{.flow} {.title}
-
-## Conditional Statements
-
-- They are used to execute [different blocks of code]{.highlight} based on whether a condition is [true or false]{.highlight}:
-    - `if` statements execute a block of code if a condition is `True`
-    - `elif` statements execute a block of code if the previous condition is `False` and the current condition is `True`
-    - `else` statements execute a block of code if the previous conditions are `False`
-
-. . .
-
-:::{.callout-tip}
-You can use the `and` and `or` operators to combine multiple conditions.
-:::
-
-## if-statements
+`and`, `or`, `not` glue booleans together:
 
 ```{python}
 #| eval: true
 #| output-location: fragment
-condition = True
-if condition:
-    print("The condition is True!") # Code block to execute if condition is True
-print("This will always be printed!")
+
+is_weekday = True
+before_curfew = 21 < 22
+print(is_weekday and before_curfew)   # both must be True
 ```
 
 . . .
 
+`and` needs **both** sides true; `or` needs **at least one**; `not` flips it.
+
+## `if`: do something only when
+
+An `if` runs its indented block **only** when the condition is `True`:
+
 ```{python}
 #| eval: true
 #| output-location: fragment
-condition = False
-if condition:
-    print("The condition is True!") # Code block to execute if condition is True
-print("This will always be printed!")
+
+delivery_hour = 21
+if delivery_hour < 22:
+    print("Open — send the courier.")
 ```
 
 . . .
 
-:::{.callout-tip}
-Writing `if condition:` is equivalent to `if condition == True:`
-:::
+The **indentation** (4 spaces) is what marks the block. Python is strict about it.
 
+## `if` / `else`: two paths
 
-## else-statements
+`else` catches every case the `if` missed:
 
 ```{python}
 #| eval: true
 #| output-location: fragment
-condition = True
-if condition:
-    print("The condition is True!") # Code block to execute if condition is True
+
+delivery_hour = 23
+if delivery_hour < 22:
+    print("Open — send the courier.")
 else:
-    print("The condition is False!") # Code block to execute if condition is False
+    print("Curfew — kitchen closed.")
 ```
 
-. . .
+## `if` / `elif` / `else`: a ladder
+
+More than two cases? Stack `elif` branches. Reward loyal customers by tier:
 
 ```{python}
 #| eval: true
 #| output-location: fragment
-condition = False
-if condition:
-    print("The condition is True!") # Code block to execute if condition is True
+
+past_orders = 8
+if past_orders >= 20:
+    tier = "Gold"
+elif past_orders >= 5:
+    tier = "Silver"
 else:
-    print("The condition is False!") # Code block to execute if condition is False
+    tier = "Bronze"
+print(tier)
 ```
 
-## elif-statements
+## Predict: Kevin reorders the ladder
 
-```{python}
-#| eval: true
-#| output-location: fragment
-temperature = 11
-if temperature > 10:
-    print("The temperature is greater than 10!")
-elif temperature == 10:
-    print("The temperature is equal to 10!")
+Kevin rewrote the tier ladder "to keep the common case on top". A customer with **25 past orders** walks in. Which tier do they get?
+
+```python
+past_orders = 25
+if past_orders >= 5:
+    tier = "Silver"
+elif past_orders >= 20:
+    tier = "Gold"
 else:
-    print("The temperature is less than 10!")
-
+    tier = "Bronze"
+print(tier)
 ```
 
+a\) `Gold`   b) `Silver`   c) `Bronze`
+
 . . .
+
+[Predict first]{.question} — commit to an answer before the next slide.
+
+## Answer: the first true branch wins
+
+**b) `Silver`** — Python checks branches **top to bottom** and takes the **first** `True` one. `25 >= 5` is already `True`, so the `Gold` branch is never even looked at. Order your ladder from **strictest to loosest**.
 
 ```{python}
 #| eval: true
 #| output-location: fragment
-temperature = 10
-if temperature > 10:
-    print("The temperature is greater than 10!")
-elif temperature == 10:
-    print("The temperature is equal to 10!")
+
+past_orders = 25
+if past_orders >= 5:
+    tier = "Silver"
+elif past_orders >= 20:
+    tier = "Gold"
 else:
-    print("The temperature is less than 10!")
-
-```
-
-## Comparisons and Conditional Statements
-
-[> Question:]{.question} What will be the output of the following code?
-
-```{python}
-#| eval: true
-#| output-location: fragment
-name = "Harry"
-profession = "wizard"
-age = 16
-if name == "Harry" and profession == "wizard" and age < 18:
-    print("You are the chosen one still visiting school!")
-elif name == "Harry" and profession == "wizard" and age >= 18:
-    print("You are the chosen one and can start your journey!")
-else:
-    print("You are not the chosen one!")
-```
-
-## Conditional Logic Task
-
-[> Task:]{.task} Create a grade classifier:
-
-```{python}
-#| eval: false
-
-# Given a numerical score, classify it into letter grades
-score = 87  # You can test with different values
-
-# Your task: Create if/elif/else statements that assign letter grades:
-# 90-100: "A"
-# 80-89: "B"
-# 70-79: "C"
-# 60-69: "D"
-# Below 60: "F"
-# Also handle invalid scores (negative or > 100)
-
-# Your code here
-
-print(f"Score: {score}, Grade: {grade}")
-```
-
-# [Loops]{.flow} {.title}
-
-## Loops
-
-- Loops allow you to execute a block of code [repeatedly]{.highlight}
-- There are two types of loops: `for` and `while`
-- `for` loops are used to iterate over a sequence (e.g., list, tuple, string)
-- `while` loops execute repeatedly until a condition is `False`
-
-. . .
-
-:::{.callout-tip}
-Nested control structures through further indentation are allowed as well, we thus can chain multiple control structures together.
-:::
-
-## for-loops
-
-```{python}
-#| eval: true
-#| output-location: fragment
-
-for i in range(5):
-    print(i)
-```
-
-```{python}
-#| eval: true
-#| output-location: fragment
-
-for i in range(0, 10, 2):
-    print(i)
+    tier = "Bronze"
+print(tier)
 ```
 
 . . .
 
-:::{.callout-tip}
-The `range()` function can take up to three arguments: start, stop, and step.
-:::
+(One misplaced `elif` and Kevin demotes every VIP.)
+
+## Predict: exactly at curfew
+
+The curfew is 22:00. An order comes in at **exactly** 22:00. What prints?
+
+```python
+delivery_hour = 22
+print(delivery_hour < 22)
+```
+
+a\) `True`   b) `False`   c) `Error`
 
 . . .
 
-## for-loops with Strings
+[Predict first]{.question} — commit to an answer before the next slide.
 
-[> Question:]{.question} What do you expect will be the output?
+## Answer: `22 < 22`
+
+**b) `False`** — `<` is **strict**. 22 is not *less than* 22, so at 22:00 sharp the kitchen is already closed. Use `<=` when the boundary should count.
 
 ```{python}
 #| eval: true
 #| output-location: fragment
 
-fruit = "yellow banana"
-for letter in fruit:
+delivery_hour = 22
+print(delivery_hour < 22)
+```
+
+# ⚡ Your turn — 10 minutes {.exercise-slide}
+
+Open the exercise (scan the QR or type the link):
+
+**[beyondsimulations.github.io/Introduction-to-Python/notebooks/ex_02_a/](https://beyondsimulations.github.io/Introduction-to-Python/notebooks/ex_02_a/)**
+
+![](assets/qr/ex_02_a.png){width=280}
+
+First **predict** what happens — then run it.
+
+# [Doing Things Many Times]{.flow} {.title}
+
+## The copy-paste pain
+
+Kevin totals the day's orders by hand, one `print` per order:
+
+```{python}
+#| eval: true
+#| output-location: fragment
+
+print("Falafel Wrap")
+print("Pad Thai")
+print("Miso Ramen")
+```
+
+. . .
+
+Three lines for three items. A hundred orders? A hundred lines. There is a better way.
+
+## `for`: one step for every item
+
+A **`for` loop** runs its block once for each item in a list:
+
+```{python}
+#| eval: true
+#| output-location: fragment
+
+menu = ["Falafel Wrap", "Pad Thai", "Miso Ramen"]
+for item in menu:
+    print(item)
+```
+
+. . .
+
+`item` is the **loop variable** — it takes each value in turn. The name is yours to choose.
+
+## The accumulator pattern
+
+Start a total at 0, then **add each item** as the loop visits it:
+
+```{python}
+#| eval: true
+#| output-location: fragment
+
+prices = [5.00, 3.50, 6.50]
+total = 0
+for price in prices:
+    total = total + price
+print(total)
+```
+
+. . .
+
+After the loop, `total` holds the sum. This is how you replace Kevin's hand-counted dashboard.
+
+## `range()`: count without a list
+
+`range(n)` counts from **0** up to — but **not including** — `n`:
+
+```{python}
+#| eval: true
+#| output-location: fragment
+
+for i in range(3):
+    print(i)      # ping the courier's phone 3 times
+```
+
+. . .
+
+Three passes: `0`, `1`, `2`. (It stops *before* 3 — a beginner's favourite surprise.)
+
+## `range()` with two and three arguments
+
+- `range(start, stop)` — begin at `start`, stop before `stop`
+- `range(start, stop, step)` — jump by `step` each time
+
+```{python}
+#| eval: true
+#| output-location: fragment
+
+print(list(range(2, 5)))       # delivery windows 2, 3 and 4 o'clock
+print(list(range(0, 10, 3)))   # every 3rd order gets a flyer: 0, 3, 6, 9
+```
+
+## Looping over a string
+
+A string is a sequence too — a `for` loop walks it character by character:
+
+```{python}
+#| eval: true
+#| output-location: fragment
+
+for letter in "Pad":
     print(letter)
 ```
 
-## while-loops
+## A loop in one line (a preview)
+
+A **list comprehension** is a `for` loop compressed into one line that builds a list:
 
 ```{python}
 #| eval: true
 #| output-location: fragment
 
-i = 0
-while i < 5:
-    print(i)
-    i += 1
+doubled = [n * 2 for n in [4, 5, 6]]
+print(doubled)
 ```
-
-. . .
-
-[> Question:]{.question} What could be an issue with poorly written while-loops?
-
-## while True
-
-[> Question:]{.question} Anybody an idea what this code does?
-
-```{python}
-#| eval: true
-#| output-location: fragment
-
-i = 0
-while True:
-    if i % 10 == 0:
-         print(i)
-    if i > 100:
-        break
-    i += 1
-```
-
-## Importance of Control Flow
-
-- Allows programs to make decisions based on **conditions**
-- Enables **repetition** of code blocks
-- Helps manage program complexity
-- Improves efficiency by [executing only necessary code]{.highlight}
-- Facilitates creation of dynamic, responsive programs
 
 . . .
 
 :::{.callout-note}
-Without control flow, programs would execute linearly from top to bottom, limiting their functionality and flexibility.
+Just a taste — Session IV gives comprehensions their proper treatment. For now: recognise the shape.
 :::
 
+## Predict: where does `print` run?
 
-## Loop Task
+The `print` is **not** indented. What does this show?
 
-[> Task:]{.task} Implement the following task:
+```python
+total = 0
+for n in [10, 20]:
+    total = total + n
+print(total)
+```
+
+a\) `10`   b) `30`   c) `10` then `30`
+
+. . .
+
+[Predict first]{.question} — then turn the page.
+
+## Answer: the unindented `print`
+
+**b) `30`** — `print` sits **outside** the loop, so it runs **once**, after the loop finishes, showing the final total. Indent it and it would print on every pass. Indentation decides what repeats.
 
 ```{python}
-#| eval: false
-# Implement a while-loop that prints all even numbers between 0 and 100 excluding both 0 and 100.
-number = 0
-# Your code here
+#| eval: true
+#| output-location: fragment
 
+total = 0
+for n in [10, 20]:
+    total = total + n
+print(total)
+```
+
+# ⚡ Your turn — 10 minutes {.exercise-slide}
+
+Open the exercise (scan the QR or type the link):
+
+**[beyondsimulations.github.io/Introduction-to-Python/notebooks/ex_02_b/](https://beyondsimulations.github.io/Introduction-to-Python/notebooks/ex_02_b/)**
+
+![](assets/qr/ex_02_b.png){width=280}
+
+First **predict** what happens — then run it.
+
+# [Repeat Until, and Clean Text]{.flow} {.title}
+
+## `while`: repeat as long as
+
+A **`while` loop** repeats **as long as** its condition stays `True`. MunchCorp just undercut you — cut your price each round until you drop below their price:
+
+```{python}
+#| eval: true
+#| output-location: fragment
+
+price = 10.00
+rounds = 0
+while price >= 7.00:
+    price = round(price * 0.8, 2)   # 20% off each round
+    rounds = rounds + 1
+print(rounds, price)
 ```
 
 . . .
 
+Two rounds and you're under 7.00. (The lab's price war against MunchCorp is your boss fight tonight.)
+
+## The loop must move toward its goal
+
+Every pass must nudge the condition **closer to `False`** — here the price shrinks, so the loop is guaranteed to end.
+
+. . .
+
+If nothing changes, the condition never flips and the loop runs **forever**:
+
+```python
+# ⚠️ NEVER run this — it never stops, and freezes the browser tab
+count = 1
+while count > 0:
+    count = count + 1    # count only grows — condition stays True forever
+```
+
+. . .
+
+:::{.callout-warning}
+An endless `while` will freeze your marimo tab. Always check that **something inside the loop changes** the condition.
+:::
+
+## `break`: an early exit
+
+`break` jumps out of a loop immediately — handy with `while True`:
+
+```{python}
+#| eval: true
+#| output-location: fragment
+
+count = 0
+while True:
+    count = count + 1
+    if count == 3:
+        break
+print(count)
+```
+
+. . .
+
+The loop would run forever, but `break` stops it the moment `count` hits 3.
+
+## Cleaning up text
+
+Kevin typed the daily special IN ALL CAPS with stray spaces. Strings have **methods** that return a cleaned-up **copy**:
+
+```{python}
+#| eval: true
+#| output-location: fragment
+
+raw = "  miso ramen  "
+print(raw.strip())          # drop outer spaces
+print(raw.strip().title())  # then Capitalise Each Word
+print("special".upper())    # SHOUT
+```
+
+. . .
+
+Methods can be **chained** left to right: `raw.strip().title()`.
+
+## Trimming specific characters
+
+`.strip()` drops spaces; `.rstrip("!")` drops trailing `!` — chain them to fix Kevin's shouting:
+
+```{python}
+#| eval: true
+#| output-location: fragment
+
+print("SALE!!!".rstrip("!"))            # SALE
+print("SALE!!!".rstrip("!").title())    # Sale
+```
+
+. . .
+
+The original string is never changed — each method hands back a **new** one.
+
+## Predict: chained methods
+
+What does this print?
+
+```python
+print("  MOIN  ".strip().lower())
+```
+
+a\) `MOIN`   b) `moin`   c) `  moin  `
+
+. . .
+
+[Predict first]{.question} — then reveal.
+
+## Answer: `"  MOIN  ".strip().lower()`
+
+**b) `moin`** — `.strip()` removes the outer spaces, then `.lower()` lowercases the result. Chained methods run **left to right**, each acting on the previous one's output.
+
+```{python}
+#| eval: true
+#| output-location: fragment
+
+print("  MOIN  ".strip().lower())
+```
+
+# ⚡ Your turn — 10 minutes {.exercise-slide}
+
+Open the exercise (scan the QR or type the link):
+
+**[beyondsimulations.github.io/Introduction-to-Python/notebooks/ex_02_c/](https://beyondsimulations.github.io/Introduction-to-Python/notebooks/ex_02_c/)**
+
+![](assets/qr/ex_02_c.png){width=280}
+
+First **predict** what happens — then run it.
+
+# [To the Lab]{.flow} {.title}
+
+## Tonight's episode
+
+- Head to the lab notebook: [Episode 2 — The Curfew](../tutorials/tut_02_control.qmd)
+- You'll enforce the 22:00 curfew, total the day's orders in a loop, de-shout Kevin's menu, and fight the **MunchCorp price war** with a `while` loop
+- It runs entirely in your browser — no setup, just click and code
+
+. . .
+
+:::{.callout-important}
+**Download your `.py` before you leave.** Closing the tab without downloading loses your work — and downloading is exactly how you hand in the checkpoints.
+:::
+
+# [Wrap-up]{.flow} {.title}
+
+## Three things to remember
+
+1. **`if` / `elif` / `else`** run the **first** true branch — test the strictest condition first
+2. **`for`** repeats over every item (accumulator: start at 0, add each); **`while`** repeats until its condition flips — and something inside must move it there
+3. **String methods** (`.strip()`, `.title()`, `.upper()`, `.rstrip("!")`) return a cleaned **copy**, and **chain** left to right
+
+. . .
+
 ::: {.callout-note}
-**And that's it for todays lecture!**\
-We now have covered the basics on String methods, Comparisons, conditional statements and loops.
+**Next time — Episode 3:** Kevin has pasted the same receipt code **14 times**, and one small change now takes him an afternoon. We bring in **functions** to the rescue.
 :::
 
 # [Literature]{.flow} {.title}
 
-## Interesting Books to start
+## Books to start with
 
 - Downey, A. B. (2024). Think Python: How to think like a computer scientist (Third edition). O’Reilly. [Link to free online version](https://greenteapress.com/wp/think-python-3rd-edition/)
 - Elter, S. (2021). Schrödinger programmiert Python: Das etwas andere Fachbuch (1. Auflage). Rheinwerk Verlag.
 
 . . .
 
-::: {.callout-tip}
+::: {.callout-note}
 Nothing new here, but these are still great books to start with!
 :::
 
 . . .
 
-For more interesting literature to learn more about Python, take a look at the [literature list](../general/literature.qmd) of this course.
+For more, see the [literature list](../general/literature.qmd) of this course.

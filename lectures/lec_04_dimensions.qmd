@@ -2,678 +2,593 @@
 title: "Lecture IV - Handling Data in more than one Dimension"
 subtitle: "Programming with Python"
 author: "Dr. Tobias Vlćek"
-institute: "Kühne Logistics University Hamburg - Fall 2025"
+institute: "Kühne Logistics University Hamburg - Fall 2026"
 format:
   revealjs:
     footer: " {{< meta title >}} | {{< meta author >}} | [Home](lec_04_dimensions.qmd)"
     output-file: lec_04_presentation.html
 ---
 
-# [Quick Recap of the last Lecture]{.flow} {.title}
+# [Episode 4: The Menu Grows Up]{.flow} {.title}
 
-## Functions
+## Seventeen variables and counting
 
-- Functions are **reusable blocks** of code that perform [specific tasks]{.highlight}
-- They can accept inputs (parameters) and return outputs
-- `def` followed by the function name, parameters and a colon
-- Help in organizing code and reducing repetition
+The menu started with two dishes. Kevin tracked them in variables: `price1`, `price2`. Then came `price3`, a `price_final`, and — after a rough Tuesday — a `price_final_FINAL2`.
 
 . . .
+
+Seventeen variables for one menu. Add a dish and you touch seventeen lines. Today the data gets **structure**: one name that holds many values, and a way to look things up by name instead of by counting.
+
+# 🔥 Warm-up {.exercise-slide}
+
+Three questions from Episode 3. Commit — hands up **before** the reveal.
+
+## Question 1
+
+```python
+def announce(item):
+    print(f"Fresh today: {item}")
+
+result = announce("Mate")
+print(result)
+```
+
+The **second** `print` shows what?
+
+a\) `Fresh today: Mate`   b) `None`   c) `Error`
+
+## Answer 1
+
+**b) `None`** — `announce` has no `return`, so it hands back `None`. Printing something is not the same as returning it.
+
+## Question 2
+
+```python
+def restock(n):
+    n = n + 10
+    return n
+
+stock = 5
+restock(stock)
+print(stock)
+```
+
+a\) `5`   b) `15`   c) `Error`
+
+## Answer 2
+
+**a) `5`** — the function works on its own copy. We never caught its result, so the global `stock` is untouched. To keep a result, assign it back.
+
+## Question 3
+
+```python
+class Order:
+    def __init__(self, item, qty, price):
+        self.item = item
+        self.qty = qty
+        self.price = price
+
+    def total(self):
+        return self.qty * self.price
+
+print(Order("Wrap", 2, 6.90).total())
+```
+
+a\) `6.90`   b) `13.80`   c) `2`
+
+## Answer 3
+
+**b) `13.80`** — `total()` multiplies `qty` by `price`: `2 * 6.90`. The object carries its own data, the method does the arithmetic.
+
+# [Lists & Tuples]{.flow} {.title}
+
+## One name for many values
+
+A **list** holds many values under one name, in order. That's the cure for seventeen variables:
 
 ```{python}
 #| eval: true
 #| output-location: fragment
 
-def greet(name):
-    return f"Welcome to this lecture, {name}!"
-
-print(greet("Students"))
+drinks = ["Mate", "Spezi", "Ayran"]
+print(drinks)
 ```
-
-## Scope
-
-- Scope determines the visibility and lifetime of variables
-- Variables defined inside a function are **local** to that function
-- Variables defined outside of all functions are **global**
-- They can be [accessed from anywhere]{.highlight} in the program
 
 . . .
 
-```{python}
-#| eval: false
+Square brackets `[]`, items separated by commas. Add a drink tomorrow and the list just grows — no new variable names.
 
-def greet(name):
-    greeting = f"Welcome to this lecture, {name}!"
-    return greeting
+## Reaching in by position
 
-print(greeting) # This will cause an error
-```
-[>Question:]{.question} Why does this cause an error?
-
-
-## Classes
-
-- Classes are **blueprints** for creating objects
-- They encapsulate data (attributes) and behavior (methods)
-- Help in [organizing code]{.highlight} and creating objects with similar structures
-
-. . .
+Each item has an **index**. Python counts from **0**:
 
 ```{python}
 #| eval: true
 #| output-location: fragment
 
-class Lectures:
-    def __init__(self, name, length_minutes):
-        self.name = name
-        self.length = length_minutes
-
-    def duration(self):
-        return f"Lecture '{self.name}' is {self.length} minutes long!"
-
-lecture_4 = Lectures("4. Data in more than one dimension", 90)
-print(lecture_4.duration())
-```
-
-# [Tuples]{.flow} {.title}
-
-## What are Tuples?
-
-- Tuples are **ordered collections** of items
-- They are **immutable** (cannot be changed after creation)
-- Help in [storing multiple items]{.highlight} in a single variable
-- Created using the `tuple()` function or the `()` syntax
-
-. . .
-
-```{python}
-#| eval: true
-#| output-location: fragment
-
-my_tuple = (1, 2, 3, 4, 5)
-print(my_tuple)
-```
-
-## Tuple Operations
-
-- Tuples support the [same operations as strings]{.highlight}
-- We can use indexing and slicing to access elements
-- We can use the `+` operator to concatenate tuples
-- We can use the `*` operator to repeat a tuple
-
-. . .
-
-[>Question:]{.question} What will the following code print?
-
-```{python}
-#| eval: true
-#| output-location: fragment
-
-my_tuple = (1, 2, 3)
-print(my_tuple[1:3])
-print(my_tuple + (4, 5, 6))
-print(my_tuple * 2)
-```
-
-## Tuple Methods
-
-- Tuples support the following methods:
-    - `count(x)`: Returns the number of times `x` appears in the tuple
-    - `index(x)`: Returns the index of the first occurrence of `x`
-
-. . .
-
-[>Question:]{.question} What will this code print?
-
-```{python}
-#| eval: true
-#| output-location: fragment
-
-my_tuple = (1, 2, 3, 2, 4, 2)
-print(my_tuple.count(2))
-print(my_tuple.index(3))
-```
-
-## Tuple Data Types
-
-- Tuples can contain elements of [different data types]{.highlight}
-
-```{python}
-#| eval: true
-#| output-location: fragment
-
-my_tuple = ("Peter", 25, "Hamburg")
-print(my_tuple)
+drinks = ["Mate", "Spezi", "Ayran"]
+print(drinks[0])   # the first item
+print(drinks[2])   # the third item
 ```
 
 . . .
 
+The first item is `drinks[0]`, not `drinks[1]`. Off-by-one is the classic beginner stumble.
+
+## Counting from the end
+
+A **negative** index counts backwards from the end — no need to know the length:
+
 ```{python}
 #| eval: true
 #| output-location: fragment
-# This works as well
-my_tuple = "Peter", 25, "Hamburg"
-print(my_tuple)
+
+drinks = ["Mate", "Spezi", "Ayran"]
+print(drinks[-1])   # last item
+print(drinks[-2])   # second to last
+```
+
+. . .
+
+`-1` is always the last item. Handy for "the most recent order".
+
+## Slicing: a range of items
+
+A **slice** `list[start:stop]` returns a new list — from `start` up to, but **not including**, `stop`:
+
+```{python}
+#| eval: true
+#| output-location: fragment
+
+drinks = ["Mate", "Spezi", "Ayran"]
+print(drinks[0:2])   # items 0 and 1
+print(drinks[-2:])   # the last two — negative start, open end
+```
+
+. . .
+
+The `stop` index is left out. `drinks[0:2]` gives you two items, not three. And leaving a side **empty** means "all the way": `drinks[-2:]` starts two from the end and runs to the finish.
+
+## Predict: where does the slice stop?
+
+A courier carries four cup sizes. What does this print?
+
+```python
+sizes = ["S", "M", "L", "XL"]
+print(sizes[1:3])
+```
+
+a\) `['M', 'L']`   b) `['M', 'L', 'XL']`   c) `['S', 'M', 'L']`
+
+. . .
+
+[Predict first]{.question} — commit to an answer before the next slide.
+
+## Answer: the `stop` index is excluded
+
+**a) `['M', 'L']`** — the slice starts at index 1 (`"M"`) and stops **before** index 3, so index 3 (`"XL"`) is never included. A slice from `1:3` gives you exactly `3 - 1 = 2` items.
+
+```{python}
+#| eval: true
+#| output-location: fragment
+
+sizes = ["S", "M", "L", "XL"]
+print(sizes[1:3])
+```
+
+## Growing a list
+
+Lists are **mutable** — you can change them after creation. `.append()` adds one item to the end; `+` joins two lists into a new one:
+
+```{python}
+#| eval: true
+#| output-location: fragment
+
+drinks = ["Mate", "Spezi"]
+drinks.append("Ayran")
+print(drinks)
+
+combined = ["Mate"] + ["Kombucha"]
+print(combined)
+```
+
+. . .
+
+`.append()` changes the list in place; `+` builds a fresh one.
+
+## How long is it?
+
+`len()` tells you how many items a list holds — the honest replacement for counting variables by hand:
+
+```{python}
+#| eval: true
+#| output-location: fragment
+
+drinks = ["Mate", "Spezi", "Ayran"]
+print(len(drinks))
+```
+
+. . .
+
+`len()` also works on strings (letters) and, soon, on dictionaries (keys).
+
+## Tuples: fixed-length records
+
+A **tuple** looks like a list but uses `()` and **cannot be changed** — perfect for a record whose shape never varies, like opening hours `(hour, minute)`:
+
+```{python}
+#| eval: true
+#| output-location: fragment
+
+opening = (9, 0)   # 9:00 sharp
+print(opening[0])
+print(opening[1])
 ```
 
 . . .
 
 :::{.callout-note}
-We can also create tuples by listing the elements separated by commas.
+Indexing and slicing work exactly as on lists — you just can't `.append()` to a tuple. Heads up: some tools quietly turn a tuple into a list when they store it. Remember that in **Part II**.
 :::
 
+# ⚡ Your turn — 10 minutes {.exercise-slide}
 
-## Tuples from Functions
+Open the exercise (scan the QR or type the link):
 
-- Functions can return tuples
-- This is useful if we want to **return multiple values** from a function
+**[beyondsimulations.github.io/Introduction-to-Python/notebooks/ex_04_a/](https://beyondsimulations.github.io/Introduction-to-Python/notebooks/ex_04_a/)**
 
-. . .
+![](assets/qr/ex_04_a.png){width=280}
+
+First **predict** what happens — then run it.
+
+# [Dictionaries & Sets]{.flow} {.title}
+
+## Look things up by name
+
+A list finds items by **position**. But "what does a Spezi cost?" is a question about a **name**, not a position. A **dictionary** maps a **key** to a **value**:
 
 ```{python}
 #| eval: true
 #| output-location: fragment
 
-def get_student_info(name, age, city):
-    return name, age, city
-
-student_info = get_student_info("Peter", 25, "Hamburg")
-print(student_info)
+prices = {"Mate": 3.50, "Spezi": 3.20, "Ayran": 2.80}
+print(prices["Spezi"])
 ```
 
 . . .
 
-[>Question:]{.question} How would you access the age from the tuple?
+Curly braces `{}`, each pair written `key: value`. No more remembering that Spezi lives at index 1.
 
+## Building a dictionary
 
-## Tuple Unpacking
-
-- Allows us to assign the [elements of a tuple to variables]{.highlight}
-- The number of variables **must match** the number of elements
-- Use the `*` operator to assign the remaining elements to a variable
-
-. . .
+Keys are usually strings; values can be anything. Read a value with `dict[key]`:
 
 ```{python}
 #| eval: true
 #| output-location: fragment
 
-def get_student_info(name, age, city):
-    return name, age, city
-name, *rest = get_student_info("Peter", 25, "Hamburg")
-print(f"Name: {name}")
-print(f"Other info: {rest}")
+prices = {"Mate": 3.50, "Spezi": 3.20, "Ayran": 2.80}
+print(prices["Mate"])
+print(prices["Ayran"])
+```
+
+. . .
+
+The same square brackets as a list — but now the thing inside is a **key**, not a number.
+
+## The key that isn't there
+
+Ask for a key that doesn't exist and Python raises a **`KeyError`** — it stops rather than guess:
+
+```python
+prices = {"Mate": 3.50, "Spezi": 3.20}
+print(prices["Cola"])
+# KeyError: 'Cola'
 ```
 
 . . .
 
 :::{.callout-warning}
-The output is positional, so we have to be careful with the order of the variables.
+A `KeyError` is not a crash to fear — it's Python telling you the key is spelled wrong or was never added. You'll read exactly this error in tonight's lab.
 :::
 
+## A safer read with `.get()`
 
-# [Lists]{.flow} {.title}
-
-## What are Lists?
-
-- Lists are **ordered collections** of items
-- They are **mutable** (can be changed after creation)
-- Created using the `list()` function or the `[]` syntax
-- They support the **same operations** as strings and tuples
-- Have much more methods and are more versatile than tuples
-
-. . .
+`.get()` returns `None` for a missing key instead of raising — and you can supply a fallback:
 
 ```{python}
 #| eval: true
 #| output-location: fragment
 
-my_list = [1, 2, 3, 4, 5]
-print(my_list)
+prices = {"Mate": 3.50, "Spezi": 3.20}
+print(prices.get("Cola"))       # missing → None
+print(prices.get("Cola", 0))    # missing → your fallback
 ```
 
 . . .
 
-[>Question:]{.question} Any idea why lists support more methods?
+Use `[]` when the key **must** be there; use `.get()` when it might not.
 
-## List Methods
+## Updating and adding
 
-- Common methods for lists:
-    - `count(x)`: Returns the number of times `x` appears in the list
-    - `append(x)`: Adds an element `x` to the end of the list
-    - `insert(i, x)`: Inserts an element `x` at index `i`
-    - `remove(x)`: Removes the first occurrence of element `x`
-    - `index(x)`: Returns the index of the first occurrence of `x`
-    - `pop([i])`: Removes the element at index `i` and returns it
-    - `sort()`: Sorts the list in ascending order
-    - `reverse()`: Reverses the list
-
-
-
-## Lists in Action
-
-[>Task:]{.task} Solve the following problem using lists:
-
-```{python}
-#| eval: false
-#|
-# Imagine the following shoppping list for this weekend
-shopping_list = ["cider", "beer", "bread", "frozen_pizza"]
-```
-
-. . .
-
-- First, add some apples to the list for a healthy option
-- Next, remove the cider as you already have some at home
-- Sort all items in the list alphabetically
-- Print each item of the list on a new line
-
-. . .
-
-:::{.callout-tip}
-You can use the methods and loops we learned so far to solve the problem.
-:::
-
-
-# [Sets]{.flow} {.title}
-
-## What are Sets?
-
-- Sets are **unordered collections** of [unique elements]{.highlight}
-- They are **mutable** (can be changed after creation)
-- Created using the `set()` function or the `{}` syntax
-- Supports `+` and `*` operations like lists and tuples
-- Unlike lists and tuples, **sets do not support indexing**
-
-. . .
+Assigning to a key **updates** it if it exists, or **adds** it if it doesn't. Work on a **copy** (`dict()`) when the original must survive:
 
 ```{python}
 #| eval: true
 #| output-location: fragment
 
-my_set = {1, 2, 2, 5, 5}
-print(my_set)
+prices = {"Mate": 3.50, "Spezi": 3.20}
+winter = dict(prices)        # a copy — keep the original safe
+winter["Spezi"] = 3.40       # update an existing key
+winter["Kombucha"] = 4.20    # add a brand-new key
+print(winter)
+print(prices)                # untouched — the summer menu comes back in April
 ```
 
-## Set Methods
-
-- Common methods for sets:
-    - `add(x)`: Adds an element `x` to the set
-    - `remove(x)`: Removes an element `x` from the set
-    - `discard(x)`: Removes an element `x` from the set if it is present
-    - `pop()`: Removes and returns an arbitrary element from the set
-    - `update(other)`: Adds all elements from `other` to the set
-
-## Set Theory
-- Additional methods are derived from set theory
-    - `union(other)`: New set with elements from both sets
-    - `intersection(other)`: New set with common elements
-    - `isdisjoint(other)`: `True` if no elements in common
-    - `issubset(other)`: `True` if subset of `other`
-
 . . .
 
-:::{.callout-tip}
-There are more methods for sets! If you are working intensively with sets, keep that in mind.
-:::
+One syntax, two jobs — Python decides by whether the key is already present. And the copy means next April needs no un-editing.
 
-## Sets in Action
+## Predict: the missing drink
 
-[>Task:]{.task} Solve the following problem using sets:
+A customer orders a Cola. It's not on the menu. What does this line do?
 
-```{python}
-#| eval: false
-#|
-# You have a list of friends from two different groups
-friends_group_1 = ["Neo", "Morpheus", "Trinity", "Cypher"]
-friends_group_2 = [ "Smith", "Apoc", "Cypher", "Morpheus"]
+```python
+prices = {"Mate": 3.50, "Spezi": 3.20}
+print(prices["Cola"])
 ```
-. . .
 
-- First, find the mutual friends in both groups
-- Then create a new set of all friends from both groups
-- Count the number of friends in total
-- Print each item of the set on a new line
+a\) prints `None`   b) prints `""`   c) raises `KeyError`   d) adds `"Cola"`
 
 . . .
 
-:::{.callout-tip}
-Notice, there is a small error in the given code that you have to fix.
-:::
+[Predict first]{.question} — commit to an answer before the next slide.
 
-# [Dictionaries]{.flow} {.title}
+## Answer: reading with `[]` demands the key
 
-## What are Dictionaries?
-
-- Dictionaries are **unordered collections** of key-value pairs
-- They are **mutable** (can be changed after creation)
-- Keys must be **unique** and **immutable**
-- Values can be of any type
-- Created using the `dict()` function or the `{}` syntax
-- As sets we **cannot access them by index**
-
-. . .
+**c) raises `KeyError`** — square-bracket reads never invent a value and never add one. Reach for `.get()` when a key might be missing:
 
 ```{python}
 #| eval: true
 #| output-location: fragment
 
-who_am_i = {"name": "Tobias", "age": 30, "city": "Hamburg"}
-print(who_am_i)
+prices = {"Mate": 3.50, "Spezi": 3.20}
+try:
+    print(prices["Cola"])
+except KeyError as missing:
+    print("KeyError:", missing)
 ```
 
-## Key-Value Pairs
+## Sets: only the unique ones
 
-- We can [access them by their keys]{.highlight}, though!
-- You can think of them as a set of key-value pairs
-
-. . .
+A **set** keeps each value **once** — feed it duplicates and they collapse. Perfect for counting *distinct* things, like today's regulars:
 
 ```{python}
 #| eval: true
 #| output-location: fragment
 
-who_am_i = {"name": "Tobias", "age": 30, "city": "Hamburg"}
-print(who_am_i["name"])
+visitors = ["nina", "tom", "nina", "ada", "tom"]
+regulars = set(visitors)
+print(regulars)
+print(len(regulars))   # how many different people
 ```
 
 . . .
 
-:::{.callout-note}
-Note, how we can use the `[]` operator to access the value of a key?
-:::
+Five visits, three people. A set answers "how many *different*?" in one step.
 
-## Dictionary Operations
-- Common operations and methods:
+# ⚡ Your turn — 10 minutes {.exercise-slide}
 
-- `in` operation to check if a key is in the dictionary
-- `for` loop to iterate over the dictionary
-- `keys()` method to return a view of the dictionary's keys
-- `values()` method to return a view of the dictionary's values
-- `pop(key[, default])` to remove a key and return its value
+Open the exercise (scan the QR or type the link):
 
-## Dictionaries in Action
+**[beyondsimulations.github.io/Introduction-to-Python/notebooks/ex_04_b/](https://beyondsimulations.github.io/Introduction-to-Python/notebooks/ex_04_b/)**
 
-[>Task:]{.task} Solve the following problem using dictionaries:
+![](assets/qr/ex_04_b.png){width=280}
 
-```{python}
-#| eval: false
+First **predict** what happens — then run it.
 
-# Create a dictionary with the following information about yourself: name, age, city
-i_am = {}
-```
+# [Nesting, Comprehensions & Data]{.flow} {.title}
 
-. . .
+## A dictionary inside a dictionary
 
-- Add your favorite color and food to the dictionary
-- Remove the city from the dictionary
-- Print your name and age in a formatted sentence
-
-
-# [Overview of new Data Types]{.flow} {.title}
-
-## Comparison between Data Types
-
-- **Tuple**: Immutable, ordered, duplicates allowed
-- **List**: Mutable, ordered, duplicates allowed
-- **Set**: Mutable, unordered, no duplicates
-- **Dictionary**: Mutable, unordered, no duplicates, key-value pairs
-
-. . .
-
-:::{.callout-tip}
-This impacts your code, the [operations you can perform]{.highlight} and the [speed of your program]{.highlight}. Thus, it makes sense to understand the differences and choose the right data type for the task.
-:::
-
-## When to use which?
-
-- **Tuples**: store a collection of items that [should not be changed]{.highlight}
-- **Lists**: store a collection of items that [should be changed]{.highlight}
-- **Sets**: store a collection of items that [should not be changed]{.highlight} and [duplicates are not allowed]{.highlight}
-- **Dictionaries**: store a collection of items that should be changed, [duplicates are not allowed]{.highlight} and require [key-value pairs]{.highlight}
-
-. . .
-
-:::{.callout-tip}
-You can convert between the data types using `tuple()`, `list()`, `set()` and `dict()`. Note, that this is not always possible, e.g. you cannot convert a list to a dictionary without specifying a key.
-:::
-
-## Speed Differences
-- **Lists** are the [most versatile, but slowest]{.highlight}
-- **Tuples** are generally [faster than lists]{.highlight}
-- **Sets** are generally [faster than lists and tuples]{.highlight}
-- **Dictionaries** depend, but are generally [faster than lists and tuples]{.highlight}
-
+Values can themselves be dictionaries. Each delivery **zone** carries its own fee and estimated time:
 
 ```{python}
 #| eval: true
-#| code-fold: true
 #| output-location: fragment
 
-import timeit
-
-# Number of elements in each data structure
-n = 10000000
-
-# Setup for each data structure, including the test function
-setup_template = """
-def test_membership(data_structure, element):
-    return element in data_structure
-data = {data_structure}
-"""
-
-setups = {
-    'Tuple': setup_template.format(data_structure=f"tuple(range({n}))"),
-    'List': setup_template.format(data_structure=f"list(range({n}))"),
-    'Set': setup_template.format(data_structure=f"set(range({n}))"),
-    'Dictionary': setup_template.format(data_structure=f"{{i: i for i in range({n})}}")
+zones = {
+    "Altstadt": {"fee": 1.50, "eta": 12},
+    "Hafen": {"fee": 2.50, "eta": 20},
 }
-
-# Measure time for each data structure
-print(f"Time taken for a single membership test in {n} elements (in seconds):")
-print("-" * 75)
-for name, setup in setups.items():
-    stmt = f"test_membership(data, {n-1})"  # Test membership of the last element
-    time_taken = timeit.timeit(stmt, setup=setup, number=1)
-    print(f"{name:<10}: {time_taken:.8f}")
-print("-" * 75)
-print("Note, that theses values are machine dependent and just for illustration!")
+print(zones["Hafen"])
 ```
-
-## Comprehensions
-- Comprehensions provide a concise way to create data structures
-    - **Tuple** comprehensions: `(x for x in iterable)`
-    - **List** comprehensions: `[x for x in iterable]`
-    - **Set** comprehensions: `{x for x in iterable}`
-    - **Dictionary** comprehensions: `{x: y for x, y in iterable}`
 
 . . .
 
-:::{.callout-tip}
- The iterable can be **any object that can be iterated over**, e.g. a list, tuple, set, dictionary, etc.
-:::
+One key (`"Hafen"`) points to a whole dictionary. This is how real data grows — structures inside structures.
 
-## Practice Comprehensions
+## Reading nested values
 
-[>Task:]{.task} Practice with comprehensions using the following scenario:
-
-```{python}
-#| eval: false
-
-# You have exam scores for different students
-exam_data = [("Alice", 85), ("Bob", 92), ("Charlie", 78), ("Diana", 96), ("Eve", 81)]
-
-# Task 1: Create a list of all student names using list comprehension
-# Task 2: Create a set of scores above 80 using set comprehension
-# Task 3: Create a dictionary mapping names to "Pass"/"Fail" (80+ is pass) using dict comprehension
-# Task 4: Try creating a generator expression for names of students who passed
-```
-
-## Iterables
-
-- [We have already introduced those!]{.highlight}
-- We can use the `for` loop to iterate over an iterable
-
-. . .
+To reach an inner value, use **two** keys in a row — outer first, then inner:
 
 ```{python}
 #| eval: true
 #| output-location: fragment
 
-shopping_list = ["cider", "beer", "bread", "frozen_pizza"]
-for item in shopping_list:
-    print(item)
+zones = {
+    "Altstadt": {"fee": 1.50, "eta": 12},
+    "Hafen": {"fee": 2.50, "eta": 20},
+}
+print(zones["Hafen"]["fee"])
+print(zones["Altstadt"]["eta"])
 ```
 
 . . .
+
+Read it left to right: "in `zones`, take `Hafen`, then its `fee`."
+
+## From a loop to one line
+
+You already know the loop that builds a list. A **list comprehension** is that same loop, written on one line:
 
 ```{python}
 #| eval: true
 #| output-location: fragment
 
-who_am_i = {"name": "Tobias", "age": 30, "city": "Hamburg"}
-for key, value in who_am_i.items():
-    print(f"{key}: {value}")
+counts = [2, 1, 3]
+
+# the loop you know
+doubled = []
+for c in counts:
+    doubled.append(c * 2)
+print(doubled)
+
+# the one-liner
+doubled = [c * 2 for c in counts]
+print(doubled)
 ```
 
-## Nesting
-
-- We can **nest data structures** within each other
-- This is useful if we want to store more complex data
-
 . . .
+
+Read it as "`c * 2` **for** each `c` **in** `counts`". Same result, less typing.
+
+## `round` inside a comprehension
+
+Any expression can go in front of the `for` — including `round()`. Loyalty pricing: 10% off, cleaned to two decimals:
 
 ```{python}
 #| eval: true
 #| output-location: fragment
 
-normal_list = [1, 2, 3, 4, 5]
-nested_list = ["Hello, World!", normal_list, (1,2)]
+drink_prices = [3.50, 3.20, 2.80]
 
-print(nested_list)
-print(nested_list[2])
+print([p * 0.9 for p in drink_prices])            # raw floats — ugly
+print([round(p * 0.9, 2) for p in drink_prices])  # rounded — clean
 ```
 
 . . .
 
-:::{.callout-tip}
-You can also nest lists within lists within lists, etc.
-:::
+The raw version leaks a `2.88000...3` float. Wrapping each price in `round(_, 2)` is the same receipt trick you use for money.
 
-# [I/O]{.flow} {.title}
+## Comprehensions build dictionaries too
 
-## Input/Output
-
-- A common task in programming is to [interact with users]{.highlight}
-- Remember the `input()` function from the first lecture?
-- It is a classical example of **user input**
-- An example of **output** is the `print()` function
-
-. . .
-
-```{python}
-#| eval: false
-
-name = input("Please enter your name: ")
-print(f"Hello, {name}!")
-```
-. . .
-
-:::{.callout-note}
-Thus, we have already worked with I/O in Python!
-:::
-
-## Reading and Writing Files
-
-- We also need to [interact with data]{.highlight}
-- File handling in Python is quite simple:
-  - Use `open(file_name, mode)` to open a file
-  - Modes: `"r"` (read), `"w"` (write), `"a"` (append)
-- Basic operations:
-  - Read: `file.read()`
-  - Write: `file.write(content)`
-  - Close: `file.close()`
-
-## File Handling in Action
-
-```{python}
-#| eval: true
-#| output-location: fragment
-#|
-file = open("hi.txt", "w") # This creates a file called "hi.txt"
-file.write("Hello, World!") # This writes "Hello, World!" to the file
-file.close() # This closes the file
-print("File successfully written")
-```
-. . .
-
-[>Question:]{.question} Any ideas how to read the file?
-
-. . .
+Swap the brackets for braces and give a `key: value` — now you rebuild a whole menu in one line:
 
 ```{python}
 #| eval: true
 #| output-location: fragment
 
-file = open("hi.txt", "r") # This opens the file "hi.txt"
-content = file.read() # This reads the content of the file
-file.close() # This closes the file
-print(content) # This prints the content of the file
+prices = {"Mate": 3.50, "Spezi": 3.20, "Ayran": 2.80}
+loyalty = {name: round(price * 0.9, 2) for name, price in prices.items()}
+print(loyalty)
 ```
 
 . . .
 
-:::{.callout-tip}
-Close files with `file.close()` to free up system resources and ensure data is properly saved.
-:::
+`.items()` hands you each `key, value` pair to work with. The whole discounted menu, no loop body in sight.
 
-## Easier File Handling with with
+## Predict: the comprehension
 
-- We can also use the `with` statement to open a file
-- This ensures the file is properly closed after its handling finishes
-- It's a good practice to use it when working with files
+What does this build?
+
+```python
+nums = [1, 2, 3, 4]
+print([n * n for n in nums])
+```
+
+a\) `[1, 4, 9, 16]`   b) `[2, 4, 6, 8]`   c) `[1, 2, 3, 4]`
+
+. . .
+
+[Predict first]{.question} — commit to an answer before the next slide.
+
+## Answer: square each item
+
+**a) `[1, 4, 9, 16]`** — the expression `n * n` runs once per item, so each number becomes its own square. `2 * n` would double them; the bare `n` would just copy the list.
 
 ```{python}
 #| eval: true
 #| output-location: fragment
 
-with open("hi_again.txt", "w") as file:
-    file.write("Hello again, World!")
-
-print("File successfully written")
+nums = [1, 2, 3, 4]
+print([n * n for n in nums])
 ```
 
-. . .
+## Getting data into a notebook
 
-[>Task:]{.task} Open the file `hi_again.txt` and print its content using `with`
+Your browser notebook has no files on it. So in Part I, data **ships inside the code** — as lists, dicts, or a multi-line string you can split apart:
 
-## Working with other file types
+```{python}
+#| eval: true
+#| output-location: fragment
 
-- Naturally, we also want to [work with other file types!]{.highlight}
-- Reading and writing **CSV files** is a common tasks in data analysis
-- Excel files are used in many applications and companies
-- We will see how to do this **later** in the course
+orders = """Mate;2
+Spezi;1
+Ayran;3"""
+
+for line in orders.splitlines():
+    name, qty = line.split(";")
+    print(name, qty)
+```
 
 . . .
 
 :::{.callout-note}
-**And that's it for todays lecture!**\
-We now have covered the basics of tuples, sets, lists and dictionaries as well as some basic file handling. For now, just remember that advanced reading and writing is possible and that there are libraries that help with this.
+Reading **real files** from your own machine comes in **Part III**, and **pandas** loads them properly in **Session VIII**. For now, inline data is all you need.
 :::
 
-[Literature]{.flow} {.title}
+# ⚡ Your turn — 10 minutes {.exercise-slide}
 
-## Interesting Books
+Open the exercise (scan the QR or type the link):
+
+**[beyondsimulations.github.io/Introduction-to-Python/notebooks/ex_04_c/](https://beyondsimulations.github.io/Introduction-to-Python/notebooks/ex_04_c/)**
+
+![](assets/qr/ex_04_c.png){width=280}
+
+First **predict** what happens — then run it.
+
+# [To the Lab]{.flow} {.title}
+
+## Tonight's episode
+
+- Head to the lab notebook: [Episode 4 — The Menu Grows Up](../tutorials/tut_04_dimensions.qmd)
+- You'll rebuild the menu as a dictionary, count the regulars with a set, discount the card with a comprehension, and steer a lost courier through a **nested campus map** to the dorms
+- It runs entirely in your browser — no setup, just click and code
+
+. . .
+
+:::{.callout-important}
+**Download your `.py` before you leave.** Closing the tab without downloading loses your work — and downloading is exactly how you hand in the checkpoints.
+:::
+
+# [Wrap-up]{.flow} {.title}
+
+## Three things to remember
+
+1. **Lists** hold many values in order — index from `0`, count back with `-1`, slice with a `stop` that's **excluded**
+2. **Dictionaries** look up a **value by its key**; a missing key raises `KeyError`, so reach for `.get()` when it might not be there; **sets** keep each value once
+3. **Comprehensions** compress a loop into one line — `[expr for x in things]` for lists, `{k: v for ...}` for dicts, `round()` welcome inside
+
+. . .
+
+::: {.callout-note}
+**Next time — Episode 5:** Kevin rewrites the checkout at **3 AM** on four energy drinks. What could go wrong? We learn to read tracebacks and catch errors before the customer does.
+:::
+
+# [Literature]{.flow} {.title}
+
+## Books to start with
 
 - Downey, A. B. (2024). Think Python: How to think like a computer scientist (Third edition). O’Reilly. [Link to free online version](https://greenteapress.com/wp/think-python-3rd-edition/)
 - Elter, S. (2021). Schrödinger programmiert Python: Das etwas andere Fachbuch (1. Auflage). Rheinwerk Verlag.
 
 . . .
 
-::: {.callout-tip}
-Nothing new here, but these are still great books!
+::: {.callout-note}
+Nothing new here, but these are still great books to start with!
 :::
 
 . . .
 
-For more interesting literature to learn more about Python, take a look at the [literature list](../general/literature.qmd) of this course.
+For more, see the [literature list](../general/literature.qmd) of this course.

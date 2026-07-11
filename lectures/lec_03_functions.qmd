@@ -2,594 +2,380 @@
 title: "Lecture III - Building Reusable Functions"
 subtitle: "Programming with Python"
 author: "Dr. Tobias Vlćek"
-institute: "Kühne Logistics University Hamburg - Fall 2025"
+institute: "Kühne Logistics University Hamburg - Fall 2026"
 format:
   revealjs:
     footer: " {{< meta title >}} | {{< meta author >}} | [Home](lec_03_functions.qmd)"
     output-file: lec_03_presentation.html
 ---
 
-# [Quick Recap of the last Lecture]{.flow} {.title}
+# 📋 Checkpoint 1 — the quarterly board review {.exercise-slide}
 
-## Slicing
+The first **40 minutes** are the checkpoint. It starts **now**.
 
-- With slicing we can get a range of elements from a sequence
-- Syntax: `sequence[start:stop:step]`
-- `start` is the index of the first element to include
-- `stop` is the index of the first element to exclude
-- `step` is the increment between indices
+- **Individual work** — no AI, no neighbours, no chat
+- The **link and QR** are handed out in class — open it and start
+- ~6 short tasks: write code, trace code, fix a bug, answer a multiple choice
 
-. . .
-
-:::{.callout-tip}
-If left out, the step defaults to 1. Else, start defaults to 0 and stop defaults to the length of the sequence. Negative indices can be used to slice from the end of the sequence.
-:::
-
-
-## Comparison Operators
-
-- Comparison operators are used to compare two values
-- The result of a comparison is a boolean value (`True` or `False`)
-- Operators include: `==`, `!=`, `>`, `<`, `>=`, `<=`
+<!-- QR handed out live — never in the deck -->
 
 . . .
 
-[> Question:]{.question} Is this `True`?
-
-```{python}
-#| eval: true
-#| output-location: fragment
-
-# Careful here!
-one = 1
-two = 1
-print(one == two)
-```
-
-## Control Structures
-
-- Control structures allow us to control the flow of execution
-- It includes conditional statements and loops
-- Conditional statements: `if`, `elif`, `else`
-- Loops: `for` and `while`
-- Control flow statements (in loops): `continue` and `break`
+**When you're done:** menu → *Download* → *Download Python code* → upload the `.py` to the **"Checkpoint 1"** assignment on Moodle.
 
 . . .
 
 :::{.callout-note}
-The statement `continue` skips the rest of the current iteration and moves to the next one in a loop while the `break` statement exits the loop entirely.
+The green ✅ live checks are **provisional** — the final grading runs on our side. And take a breath: everything in it was rehearsed in the labs.
 :::
 
+# [Episode 3: The Copy-Paste Soup]{.flow} {.title}
 
-# [Functions in Detail]{.flow} {.title}
+## After the board review
 
-## What is a Function?
-- Functions can accept [inputs (parameters)]{.highlight} and [return outputs]{.highlight}
-- Encapsulate logic, making code easier to maintain
-- Functions can be called **multiple times** from different part
-- They help **reduce code duplication** and improve readability
+Pens down — the checkpoint is behind you. Now the reason we're all here.
+
+. . .
+
+Kevin has been "reusing" code the only way he knows how: he pasted the same receipt block **14 times**, once per menu item. A ten-cent price change last week cost him a whole afternoon of hunting down copies.
+
+. . .
+
+Today the code learns to **reuse itself**. We meet the **function**, and build a first **class**.
+
+# [Writing Functions]{.flow} {.title}
+
+## The copy-paste pain
+
+Kevin totals each receipt line by hand — the same shape, over and over:
 
 ```{python}
 #| eval: true
 #| output-location: fragment
 
-# I'm a function.
-type(print)
+print(round(2 * 4.50, 2))    # 2 wraps
+print(round(1 * 12.00, 2))   # 1 bowl
+print(round(5 * 3.20, 2))    # 5 fries
 ```
 
 . . .
 
-::: {.callout-important}
-Remember, methods are [functions]{.highlight} that are called on an [object]{.highlight}.
-:::
+Same calculation, retyped every time. Change the rule once and you must fix it everywhere. There is a better way.
 
-## Built-in Functions already used
-- `print()`: Print text to console
-- `input()`: Read text from console
-- `len()`: Get the length of a sequence
-- `range()`: Generate a sequence of numbers
-- `round()`: Round number to a specified number of decimal places
-- `type()`: Get the type of an object
-- `int()`: Convert a string to an integer
-- `float()`: Convert a string to a floating-point number
-- `str()`: Convert an object to a string
+## `def`: name the calculation once
 
-## Defining a Function
-- Use the `def` keyword followed by the function name
-- Inside parentheses we list the inputs (parameters)
-- The code block within every function starts with a colon (:)
-- It is [indented]{.highlight}, just as the loops from the last lecture
-
-. . .
+Write the calculation **once**, give it a name, and call it whenever you need it:
 
 ```{python}
 #| eval: true
 #| output-location: fragment
 
-def greet(a_parameter):
-    print(f"Hello, {a_parameter}!")
-greet("Students")
+def line_total(qty, price):     # def NAME(inputs):
+    return round(qty * price, 2)  # indented body, hands a value back
+
+print(line_total(2, 4.50))
 ```
 
 . . .
 
-:::{.callout-tip}
-It is common practice to leave out one line after the definition of a function, although we will not always do that in the lecture to save space on the slides.
-:::
+`def` starts the definition · the name is `line_total` · the block is **indented** · `return` hands the answer back.
 
-## Comment Functions
+## Parameters vs arguments
 
-- It is good practice to include a comment at the top of your functions
-- If you do it with three `"""`, it will appear in the help menu
-
-. . .
-
-```{python}
-#| eval: true
-#| output-location: fragment
-#|
-def greet():
-    """
-    This function will be used later and has currently
-    absolutely no use for anything.
-    """
-    pass # Necessary placeholder to avoid error
-
-help(greet)
-```
-
-## Naming Functions (and Methods)
-
-- Function names should be short, but descriptive
-- Use underscores (`_`) instead of spaces in the names
-- Avoid using Python keywords as function names (e.g., `print`)
-- Try to avoid using built-in functions and methods that have a similar name (e.g., `sum` and `len`)
-
-[> Question:]{.question} Which of the following is a good name for a function? \
-
-- `myfunctionthatmultipliesvalues`\
-- `multiply_two_values`\
-- `multiplyTwoValues`
-
-## Function Parameters
-- Parameters are variables that the function accepts
-- They allow you to pass data to the function
-- Try to name them as variables: [short and meaningful]{.highlight}
-- We can also **leave them out** or define **several inputs**!
-
-```{python}
-#| eval: true
-#| output-location: fragment
-#|
-# This function has no parameter yet!
-def greet():
-    print("Hello, stranger!")
-greet()
-```
-
-## Function Arguments
-- Arguments are the actual values passed to the function
-- They replace the parameters in the function definition
-
-. . .
-
-[> Task:]{.question} Use the function properly with parameters.
-
-```{python}
-#| eval: false
-
-def greet(university_name, lecture):
-    print(f"Hello, students at the {university_name}!")
-    print(f"You are in lecture {lecture}!")
-
-# Your code here
-```
-
-## Initializing Parameters
-- We can also **initialize parameters** to a default value!
-- To do this we use the `=` sign and provide it with a value
-- This is called a [keyword argument]{.highlight}
-
+- **Parameters** are the names in the definition — the function's inputs: `qty`, `price`
+- **Arguments** are the actual values you pass when you **call** it: `2`, `4.50`
 
 ```{python}
 #| eval: true
 #| output-location: fragment
 
-def greet(lecture="Programming with Python"):
-    print(f"You are in lecture '{lecture}'!")
+def line_total(qty, price):      # qty and price are PARAMETERS
+    return round(qty * price, 2)
 
-greet()
-greet("Super Advanced Programming with Python")
+print(line_total(3, 3.20))       # 3 and 3.20 are ARGUMENTS
 ```
 
 . . .
 
-::: {.callout-tip}
-This is especially useful when we want to avoid errors due to missing arguments!
-:::
+Same function, different arguments, different result — no retyping.
 
-## Multiple Parameters
-- As seen before, we can have **multiple parameters** in a function
-- Called [positional arguments]{.highlight} and are separated by commas
-- When we call them, they must be provided in the same order
-- Alternatively, we could call them by name!
+## `return`: hand the value back
 
-. . .
+`return` sends a value **back to whoever called** the function, so you can store it and use it later:
 
-[> Question:]{.question} What will be printed here?
 ```{python}
 #| eval: true
 #| output-location: fragment
-#|
-def call_parameters(parameter_a, parameter_b):
-    print(parameter_a, parameter_b)
 
-call_parameters(parameter_b="Hello", parameter_a="World")
+def line_total(qty, price):
+    return round(qty * price, 2)
+
+subtotal = line_total(3, 3.20)   # catch what came back
+print(subtotal)
+print(subtotal + 1.50)           # ...and keep using it
 ```
 
-## Function Return Values
-- Functions can return values using the `return` statement
-- The return statement ends the function
-- It then **returns** the specified value
+## Predict: print or return?
 
-. . .
+`label_price` **prints** but has no `return`. What does the **last line** show?
 
-```{python}
-#| eval: true
-#| output-location: fragment
-#|
-def simple_multiplication(a,b):
-    result = a*b
-    return a
+```python
+def label_price(price):
+    print(f"{price:.2f} EUR")
 
-print(simple_multiplication(2,21))
-```
-
-. . .
-
-```{python}
-#| eval: true
-#| output-location: fragment
-#|
-def simple_multiplication(a,b):
-    return a*b # or shorter, but this time a*b!
-
-print(simple_multiplication(2,21))
-```
-
-## Access return values
-- We can also **save** the return value from a function in a variable
-- That way we can use it later on in the program
-
-. . .
-
-```{python}
-#| eval: true
-#| output-location: fragment
-#|
-def simple_multiplication(a,b):
-    return a*b # even shorter!
-
-result = simple_multiplication(2,21)
+result = label_price(8.50)
 print(result)
 ```
 
-
-## Returning None
-- If we don't specify `return`, functions will return `None`
-
-```{python}
-#| eval: true
-#| output-location: fragment
-#|
-def simple_multiplication(a,b):
-    result = a*b
-
-print(simple_multiplication(2,21))
-```
+a\) `8.50 EUR`   b) `None`   c) `Error`
 
 . . .
 
-[> Task:]{.task} Come up with a function that checks whether a number is positive or negative. It returns `"positive"` for positive numbers and `"negative"` for negative numbers. If the number is zero, it returns `None`.
+[Predict first]{.question} — commit to an answer before the next slide.
 
-. . .
+## Answer: `print` shows, `return` hands back
 
-::: {.callout-tip}
-You can also use **multiple return statements** in a function.
-:::
-
-## Recursion
-- Recursion is a technique where a [function calls itself]{.highlight}
-- Helps to break down problems into **smaller problems**
-
-. . .
+**b) `None`** — `label_price` prints its line while running, but with **no `return`** it hands back `None`. That `None` is what lands in `result`. Printing is not returning.
 
 ```{python}
 #| eval: true
 #| output-location: fragment
 
-def fibonacci(n): # Classical example to introduce recursion
-    if n <= 1:
-        return n
-    else:
-        return fibonacci(n-1) + fibonacci(n-2)
+def label_price(price):
+    print(f"{price:.2f} EUR")
 
-print(fibonacci(6))
+result = label_price(8.50)   # prints while running...
+print(result)                # ...but the value handed back is None
+```
+
+## Default arguments
+
+A parameter can carry a **default** — used when the caller leaves it out:
+
+```{python}
+#| eval: true
+#| output-location: fragment
+
+def service_fee(total, rate=0.05):   # rate defaults to 5 %
+    return round(total * rate, 2)
+
+print(service_fee(80))         # default rate → 4.0
+print(service_fee(80, 0.10))   # override it → 8.0
 ```
 
 . . .
 
-:::{.callout-note}
-Recursion can be a powerful tool, but it can also be [quite tricky]{.highlight} to get right.
-:::
+Defaults let one function cover the common case **and** the special case.
 
-## Let's practice Recursion
+## Functions can call functions
 
-[> Task:]{.task} Create a recursive function called `countdown` that prints numbers from n down to 1, then prints "Blast off!". For example, `countdown(5)` should print 5, 4, 3, 2, 1, Blast off! (each on a new line). Start with the number 10.
+A function can use another function you already wrote — reuse builds on reuse:
+
+```{python}
+#| eval: true
+#| output-location: fragment
+
+def bill(qty, price):
+    items = line_total(qty, price)        # reuse line_total
+    return round(items + service_fee(items), 2)  # ...and service_fee
+
+print(bill(2, 4.50))
+```
+
+. . .
+
+`line_total` and `service_fee` do their jobs; `bill` just orchestrates. That's how small pieces become a program.
+
+# ⚡ Your turn — 10 minutes {.exercise-slide}
+
+Open the exercise (scan the QR or type the link):
+
+**[beyondsimulations.github.io/Introduction-to-Python/notebooks/ex_03_a/](https://beyondsimulations.github.io/Introduction-to-Python/notebooks/ex_03_a/)**
+
+![](assets/qr/ex_03_a.png){width=280}
+
+First **predict** what happens — then run it.
+
+# [Scope, then a First Class]{.flow} {.title}
+
+## Local names stay local
+
+A parameter is the function's **own private copy**. What happens inside stays inside:
+
+```{python}
+#| eval: true
+#| output-location: fragment
+
+def bump(n):
+    n = n + 10       # changes the function's OWN copy of n
+    return n
+
+print(bump(3))       # 13 — the returned value
+```
+
+. . .
+
+Names created inside a function live in its **scope** — they vanish when the function ends.
+
+## Predict: does the global move?
+
+`bump` adds ten to its parameter. We call it, then print `stock`. What does the **last line** print?
+
+```python
+def bump(n):
+    n = n + 10
+    return n
+
+stock = 3
+bump(stock)
+print(stock)
+```
+
+a\) `3`   b) `13`   c) `Error`
+
+. . .
+
+[Predict first]{.question} — commit to an answer before the next slide.
+
+## Answer: the outside variable is untouched
+
+**a) `3`** — `bump` changes only its own copy `n`. We never stored what it returned, so `stock` out here never moves. The function cannot reach out and rewrite your variables.
+
+```{python}
+#| eval: true
+#| output-location: fragment
+
+def bump(n):
+    n = n + 10
+    return n
+
+stock = 3
+bump(stock)      # the return value is thrown away
+print(stock)     # still 3
+```
+
+## Why that's a feature, not a limit
+
+- A function can't **secretly** change your variables — no spooky action at a distance
+- You can call it a hundred times and trust your data stays put
+- To use a result, you **catch the return** (`stock = bump(stock)`) — deliberate, visible
+
+. . .
+
+Isolation is what makes functions **safe to reuse**. That is the whole point of this episode.
+
+## A class bundles data with behaviour
+
+Sometimes data and the things you do with it belong **together**. A **class** is a blueprint that bundles both:
+
+- **data** — the facts about one thing (a courier's name, their distance)
+- **behaviour** — what you can compute from it (their fee)
+
+. . .
+
+A **method** is just a function that lives inside a class and can read the object's own data.
+
+## `class`, `__init__`, and `self`
+
+```{python}
+#| eval: true
+#| output-location: fragment
+
+class Delivery:
+    def __init__(self, courier, distance_km):  # runs when you build one
+        self.courier = courier          # store data ON the object
+        self.distance_km = distance_km
+        self.rate_per_km = 1.20         # every delivery carries its rate
+
+    def fee(self):                       # a method — note self
+        return round(self.distance_km * self.rate_per_km, 2)
+```
+
+. . .
+
+`__init__` sets up a new object · `self` is *this* object · attributes are stored on `self` and read back through `self` — `fee()` multiplies **two** stored attributes.
+
+## Build one, call its method
+
+**Instantiate** the class to make an object, then use its data and its methods:
+
+```{python}
+#| eval: true
+#| output-location: fragment
+
+trip = Delivery("Nadia", 4)   # build one — __init__ runs
+
+print(trip.courier)           # read stored data
+print(trip.fee())             # call the method
+```
+
+. . .
+
+`trip` is one `Delivery` object. `trip.fee()` computes from *its own* stored distance — data and behaviour, travelling together.
+
+## One honest slide about classes
+
+- Today you write **one small class** with an `__init__` and **one method** — that's it
+- Classes get **tricky fast** (inheritance, `self` confusion) — and that is **not this course**
+- We use them only to *bundle* data with behaviour, nothing deeper
 
 . . .
 
 :::{.callout-tip}
-Use the `return` statement to stop the recursion.
+If the `self` keyword feels odd right now, that's completely normal. Copy the shape from the worked example — the intuition follows the practice.
 :::
 
-# [Scope]{.flow} {.title}
+# ⚡ Your turn — 10 minutes {.exercise-slide}
 
-## Function Scope
-- Variables defined inside a function are local to that function
-- They [cannot]{.highlight} be accessed outside the function
+Open the exercise (scan the QR or type the link):
 
-. . .
+**[beyondsimulations.github.io/Introduction-to-Python/notebooks/ex_03_b/](https://beyondsimulations.github.io/Introduction-to-Python/notebooks/ex_03_b/)**
 
-```python
-def greet(name):
-    greeting = f"Hello, {name}!"
+![](assets/qr/ex_03_b.png){width=280}
 
-print(greeting)  # This will cause an error
-```
+First **predict** what happens — then run it.
 
-. . .
+# [To the Lab]{.flow} {.title}
 
-[> Question:]{.question} Any idea how to access `greeting`?
+## Tonight's episode
 
-## Global Scope
-- Variables defined **outside** all functions are in the global scope
-- They can be accessed from [anywhere]{.highlight} in the program
-
-. . .
-
-```{python}
-#| eval: true
-#| output-location: fragment
-#|
-greeting = "Hello, Stranger!"
-def greet(name):
-   greeting = f"Hello, {name}!"
-   return greeting
-
-print(greet("Students")) # Greet students
-print(greeting) # Greet ????
-```
+- Head to the lab notebook: [Episode 3 — The Copy-Paste Soup](../tutorials/tut_03_functions.qmd)
+- You'll write the fee and tip functions, fix a function that forgets to `return`, give a parameter a default, and build the startup's first `Order` class — ending in the **Tip Calculator Championship**
+- It runs entirely in your browser — no setup, just click and code
 
 . . .
 
 :::{.callout-important}
-We don't change global variables inside a function! The original value can still be accessed from [outside]{.highlight} the function.
+**Download your `.py` before you leave.** Closing the tab without downloading loses your work — and downloading is exactly how you just handed in the checkpoint.
 :::
 
-## Global Keyword
-- Still, we can change the value of `greeting` from [inside]{.highlight} a function!
-- By using the `global` keyword to modify a global variable
+# [Wrap-up]{.flow} {.title}
 
-. . .
+## Three things to remember
 
-```{python}
-#| eval: true
-#| output-location: fragment
-#|
-greeting = "Hello, Stranger!"
-
-def greet(name):
-   global greeting
-   greeting = f"Hello, {name}!"
-   return greeting
-
-print(greet("Students")) # Greet students
-print(greeting) # Greet students again
-```
-
-. . .
-
-[>Question:]{.question} This can be confusing. Do you think you got the idea?
-
-# [Classes]{.flow} {.title}
-
-## Classes
-- Classes are [blueprints]{.highlight} for creating objects
-- They encapsulate data (attributes) and behavior (methods)
-- Objects are instances of classes
-- **Methods are functions that are defined within a class**
-
-. . .
-
-```{python}
-#| eval: true
-#| output-location: fragment
-
-class Students: # Class definition
-    def know_answer(self): # Method definition
-        print(f"They know the answer to all questions.")
-
-student = Students() # Object instantiation
-student.know_answer()
-```
-
-## Self
-- Classes can be [quite tricky at first]{.highlight}, especially the `self` keyword
-- When we call `self` in a method, it refers to the object itself
-- It is used to **access** the attributes and methods of the class
-- `self` always needs to be included in method definitions
-
-. . .
-
-```{python}
-#| eval: false
-#|
-# This won't work as self is missing
-class Students: # Class definition
-    def know_answer(): # Method definition without self
-        print(f"They know the answer to all questions.")
-
-student = Students()
-student.know_answer()
-```
-
-. . .
-
-[>Task:]{.task} Try it yourself, what is the error?
-
-## Naming Classes
-- Classes can be named anything, but it is common to use the plural form of their name (e.g., `People`)
-- CamelCase is used for class names, and snake_case is used for method and attribute names (e.g., `TallPeople`)
-- Classes are usually defined in a file with the same name as their class, but with a `.py` extension
-
-. . .
-
-[Question:]{.question} Which of the following is a good class name? `smart_student`, `SmartStudent`, or `SmartStudents`
-
-## Class Attributes
-- Class attributes are attributes that are shared by all instances
-- They are defined **within** the class but **outside** any methods
-
-. . .
-
-[>Question:]{.question} What do you think will happen here?
-
-```{python}
-#| eval: true
-#| output-location: fragment
-
-class Students: # Class definition
-    smart = True # Class attribute
-
-student_A = Students() # Object instantiation student_A
-student_B = Students() # Object instantiation student_B
-
-print(student_A.smart)
-print(student_B.smart)
-```
-## Instance Attributes
-- Instance attributes are attributes unique to each class instance
-- They are defined within the `__init__` method
-
-```{python}
-#| eval: true
-#| output-location: fragment
-
-class Students: # Class definition
-    def __init__(self, name, is_smart): # Method for initalization
-        self.name = name
-        self.smart = is_smart
-    def knows_answer(self): # Method to be called
-        if self.smart:
-            print(f"{self.name} knows the answer to the question.")
-        else:
-            print(f"{self.name} does not know the answer to the question.")
-
-student = Students("Buddy",False) # Note, we don't need to call self here!
-student.knows_answer()
-```
-
-
-## Inheritance
-- Inheritance allows a class to [inherit attributes and methods]{.highlight}
-- The class that inherits is called the **subclass**
-- The class that is being inherited from is called the **superclass**
-
-. . .
-
-:::{.callout-tip}
-Don't worry! It can be quite much right now.
-:::
-
-
-## Inheritance in Action
-
-```{python}
-#| eval: false
-class Students: # Superclass
-    def __init__(self, name):
-        self.name = name
-    def when_asked(self):
-        pass
-
-class SmartStudents(Students): # Subclass
-    def when_asked(self):
-        return f"{self.name} knows the answer!"
-
-class LazyStudents(Students): # Subclass
-    def when_asked(self):
-        return f"{self.name} has to ask ChatGPT!"
-```
-
-[>Task:]{.task} Create two students. One is smart and the other one is lazy. Make sure that both students reaction to a question is printed.
-
-## Encapsulation
-
-- Means [keeping related data and functions together]{.highlight}
-- Like a **capsule** that contains everything needed for that object
-- Our `Student` class is already using encapsulation!
-
-. . .
-
-```{python}
-#| eval: true
-#| output-location: fragment
-
-class Students:
-    def __init__(self, name):
-        self.name = name        # Data (attribute)
-
-    def when_asked(self):       # Behavior (method)
-        return f"{self.name} is thinking..."
-
-alice = Students("Alice")
-print(alice.when_asked())  # Data and behavior work together
-```
-
-. . .
-
-:::{.callout-note}
-You are already doing encapsulation! Every time you create a class with attributes and methods, you're bundling related data and behavior together. That's the core idea!
-:::
-
-
-## The End
-
-- Interested in more detail about classes and OOP?
-- Check out [access modifiers, getters and setters]{.highlight}
-- They are definitely a bit more complicated for beginners...
-- Though they are worth learning if you build **complex programs**
+1. A **function** is written once with `def`, takes **parameters**, and hands a value back with `return` — `print` shows, `return` gives back (no `return` → `None`)
+2. Names inside a function are **local** — it can't quietly change your variables, which is exactly what makes it safe to reuse
+3. A **class** bundles **data** (on `self`, via `__init__`) with **behaviour** (methods) — you'll write just one small one today
 
 . . .
 
 ::: {.callout-note}
-**And that's it for todays lecture!**\
-We now have covered the basics of funtions and classes. We will continue with some slightly easier topics in the next lectures.
+**Next time — Episode 4:** the menu outgrows Kevin's **seventeen loose variables** — `price1`, `price2`, `price_final_FINAL2` — and nobody can find anything. We give the data a **shape**: lists and dictionaries.
 :::
 
 # [Literature]{.flow} {.title}
 
-## Interesting Book to dive deeper
+## Books to start with
 
-- Thomas, D., & Hunt, A. (2019). The pragmatic programmer, 20th anniversary edition: Journey to mastery (Second edition). Addison-Wesley.
+- Downey, A. B. (2024). Think Python: How to think like a computer scientist (Third edition). O’Reilly. [Link to free online version](https://greenteapress.com/wp/think-python-3rd-edition/)
+- Elter, S. (2021). Schrödinger programmiert Python: Das etwas andere Fachbuch (1. Auflage). Rheinwerk Verlag.
 
 . . .
 
-::: {.callout-tip}
-A fantastic textbook to understand the principles of modern software development and how to create effective software. Also available as a really good audiobook!
+::: {.callout-note}
+Nothing new here, but these are still great books to start with!
 :::
 
 . . .
 
-For more interesting literature to learn more about Python, take a look at the [literature list](../general/literature.qmd) of this course.
+For more, see the [literature list](../general/literature.qmd) of this course.
