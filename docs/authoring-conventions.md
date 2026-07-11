@@ -38,6 +38,25 @@
   `path.read_text()` fails with `AttributeError`; only
   `urllib.request.urlopen(str(path))` works, which is not Session-IV-appropriate.
   So ship file-like data as an inline multi-line string until pandas.)
+- Loading `public/*.csv` with pandas (Session VIII+, Spike 2026-07-11):
+  `pd.read_csv` is NOT `open()` — it has its own URL-aware I/O layer, so the
+  same one-liner works unchanged in both local runs (plain filesystem path)
+  and exported WASM (`URLPath` → `http://` URL, fetched via pyodide-http). No
+  `try`/`except` fallback needed; execution-verified in a real browser and
+  locally. Canonical loader cell (assumes an earlier cell does
+  `import pandas as pd` and returns `(pd,)` — copy that too, not just this cell):
+  ```python
+  @app.cell(hide_code=True)
+  def _(mo, pd):
+      _loc = mo.notebook_location() / "public" / "orders.csv"
+      orders = pd.read_csv(str(_loc))
+      return (orders,)
+  ```
+  (One-off flake observed once: pyodide's package CDN fetch for a pandas
+  dependency can transiently fail over flaky wifi, surfacing as `import
+  pandas` raising `ImportError`; a page reload fixed it. Worth a one-line
+  "if pandas fails to import, reload the page" note in Session VIII lab
+  instructions, not a loader-pattern change.)
 
 ## In-lecture exercises (ex_XX_<letter>.py)
 - **Letter = slide order** (Fable #10): `ex_XX_a` belongs to lecture block 1,
