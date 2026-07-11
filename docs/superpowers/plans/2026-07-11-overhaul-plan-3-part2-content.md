@@ -545,11 +545,14 @@ a) `math.ceil(3.2)` · b) `ceil(3.2)` · c) both
 **b)** — `from math import ceil` binds only the NAME `ceil`; `math` itself was never imported.
 
 ## Question 2
-`random.seed(42)` … then the same three `randint` calls, twice. Second run gives…
-a) the same three numbers · b) different numbers · c) an error
+Kevin runs a script — `random.seed(42)` then three printed `randint` calls — today
+and again tomorrow. Tomorrow's numbers are…
+a) the same three numbers · b) different — random is random · c) an error
 
 ## Answer 2
-**a)** — that is the entire job of a seed: reproducible randomness.
+**a)** — every run starts from seed 42, so the stream replays from the top.
+(Two batches *inside one run* would differ — the stream continues; a fresh run
+rewinds it. That was lec_06's predict pair.)
 
 ## Question 3
 `statistics.median([9, 2, 5])` returns…
