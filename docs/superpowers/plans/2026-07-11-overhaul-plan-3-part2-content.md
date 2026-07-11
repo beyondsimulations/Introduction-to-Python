@@ -993,9 +993,11 @@ Intro: pitch meeting Friday. The investor's one instruction: "Charts I can't arg
 - **1.1** daily revenue: `daily = orders.groupby("day")["total_eur"].sum()`; graded `best_day_ex11 = int(daily.idxmax())` → ⟨csv⟩; line chart of `daily` (ungraded).
 - **1.2** chart anatomy: add xlabel/ylabel/title to 1.1's chart (ungraded aesthetics); graded `days_ex12 = int(len(daily))` → **14**.
 - **2.1** zone bar chart: `by_zone = orders.groupby("zone")["total_eur"].sum().round(2)`; graded `by_zone_ex21 = by_zone.to_dict()` → ⟨csv⟩ (same dict as nb_08's 3.2 — deliberate cross-episode repetition, note it in the md: "you computed this in the data room; now it becomes a picture").
-- **2.2** histogram of `total_eur`; graded `over_20_ex22 = int((orders["total_eur"] > 20).sum())` → ⟨csv⟩ ("the tail of the histogram, counted").
-- **2.3** scatter `delivery_min` vs `total_eur`; graded `slowest_ex23 = int(orders["delivery_min"].max())` → ⟨csv⟩.
-- **3.1 Kevin's bug (fix-it):** Kevin's "growth chart" of the two weekly totals uses `plt.ylim` to start just under the smaller value — symptom: "week 2 looks 5× week 1; the numbers say otherwise." Fix: axis from 0; graded `growth_pct_ex31 = float(round((week2 - week1) / week1 * 100, 2))` → ⟨csv⟩ (weekly totals = days 1–7 vs 8–14).
+- **2.2** histogram of `total_eur`; graded `over_25_ex22 = int((orders["total_eur"] > 25).sum())` → ⟨csv⟩ (13 — an actual tail; do NOT use >20, that catches 54% of orders and calling it a "tail" misreads the histogram; frame as "the expensive tail, counted").
+- **2.3** scatter `delivery_min` vs `total_eur`; graded `slowest_ex23 = int(orders["delivery_min"].max())` → ⟨csv⟩. The scatter shows NO correlation (independent columns, r ≈ -0.03) — the md must own that as the teaching point ("sometimes the honest answer is: no relationship"), never ask students to describe a pattern that isn't there.
+- **3.1 Kevin's bug (fix-it):** Kevin's "growth chart" of the two weekly totals uses `plt.ylim` to start just under the smaller value — symptom: "week 2 looks 5× week 1; the numbers say otherwise." Fix: axis from 0; graded `growth_pct_ex31 = float(round((week2 - week1) / week1 * 100, 2))` → ⟨csv⟩ (weekly totals = days 1–7 vs 8–14; the true delta is ≈ -0.66% — essentially flat, which makes Kevin's rocket chart an even better lie; the story beat should exploit that).
+
+Dataset note for implementers (nb_08 + nb_09): the `rating` column is deliberately decorative in the graded cores — it may appear in `.head()`/`.describe()` discussion but nothing grades it.
 - **Boss (ex40):** assemble the pitch dict: `pitch_ex40 = {"revenue": <total>, "best_zone": <argmax zone>, "orders": <row count>}` (all ⟨csv⟩; dict check with rounded values).
 
 *Trace radio:* what displays if a cell's last line is `plt.plot(xs, ys)` vs `plt.gca()` (list-of-Line2D vs the axes — reveal). *MCQ (`answer_ex50`):* which chart for "how are order values distributed?" a) line b) histogram c) pie d) scatter → **"b"**.
