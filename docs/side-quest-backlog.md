@@ -42,3 +42,10 @@ Buffer scope (spec §4): authored last, cut first, never blocking semester start
 - lec_05: IDE debugger walkthrough (Zed breakpoints / step-over / variable viewer) — no IDE in the WASM lab; `print()` is the beginner's flashlight instead
 - lec_05: the `if __name__ == "__main__":` main-function pattern + script organisation slides — belongs with modules/imports (Session VI), not the errors day
 - lec_05: `logging` module overview — beyond scope for beginners; a larger-codebase concern, cut
+
+## Material cut from lecture decks (Plan 3 rewrites)
+- lec_06: regular expressions (whole section — `re.search/findall/sub/split`, character classes, quantifiers, email/date patterns) — rich but heavy for a CP-day; returns as a side-quest ("regex treasure hunt": hunt patterns out of log/receipt text)
+- lec_06: `os` module (`listdir`, `path.exists`, `makedirs`) — needs a real filesystem; Session X preview when we leave the WASM browser for real files
+- lec_06: `csv` module (`csv.writer`/`csv.reader`, writing `secret_message.csv`) — real file I/O; Session X (and tabular data proper lands in pandas, Session VIII)
+- lec_06: creating your own module files (`import lec_06_new_module`, `from ... import another_function`) — needs real `.py` files side-by-side; Session X where students work in a real editor/filesystem
+- lec_06: installing packages + virtual environments with uv (`uv add`, `uv sync`, `uv run`) — no shell in the WASM lab; Session X where the local toolchain is set up
