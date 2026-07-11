@@ -34,7 +34,7 @@ CP values AND answers must differ from all lecture-demo/exercise/lab values (con
 | lec_06 demos | ceil(130/48)=3 · median ratings 4.5 · seed(7)×5 randint(1,20)=[11,5,13,2,3] · floor(-2.5)=-3 |
 | ex_06_a / ex_06_b | crates 9 · demand [10,18,18,25,14,20,11] (seed 21) |
 | nb_06 | crates 7 · median 4.3 / mean 4.27 · mean 17 · seed(4) [15,17,11,20,23,12,10] · Kevin fix seed(9) [22,27,19,16,12,13,29] · raffle seed(12) ['Altstadt','Hafen','Hafen','Sued'] · boss mean 14.2 |
-| lec_07 demos | VAT [14.28,10.71,17.85] · late count 4 / mean 42.5 · zone totals [46,37,35,26] |
+| lec_07 demos | VAT [14.28,10.71,17.85] · late count 4 / mean 42.5 · zone totals [37,46,35,26], argmax 1 'Sued', grand 144 |
 | ex_07_a/b/c | gross [9.52,13.09,16.66] · late 3 / 46.0 · totals [30,34,38], best idx 2 |
 | nb_07 | discount [5.4,8.1,10.8,16.2] · critical count 2 · on-time rate 0.8 · days sum 105 · zone totals [141,109,100,82], best day total 84, best 'Nord' |
 | CP4 | crates probes 5/4/1 · count 5 / mean 48.8 · zone totals [1545,1370,1260,1665] · seed(23) [6,3,2,6,8] · MCQs b, b |
