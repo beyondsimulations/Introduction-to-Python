@@ -839,8 +839,8 @@ def _(mo):
        guaranteed copy.
     3. Next episode: the investor liked the numbers — now she wants a **deck**.
        You'll turn a week of orders into the metrics that go on a slide: totals,
-       per-zone breakdowns, the best day, the growth rate. **Episode 7: the
-       numbers deck.**
+       per-zone breakdowns, the best day, which zone is strongest. **Episode 7:
+       the numbers deck.**
     """
     )
     return
