@@ -36,7 +36,7 @@ CP values AND answers must differ from all lecture-demo/exercise/lab values (con
 | nb_06 | crates 7 · median 4.3 / mean 4.27 · mean 17 · seed(4) [15,17,11,20,23,12,10] · Kevin fix seed(9) [22,27,19,16,12,13,29] · raffle seed(12) ['Altstadt','Hafen','Hafen','Sued'] · boss mean 14.2 |
 | lec_07 demos | VAT [14.28,10.71,17.85] · late count 4 / mean 42.5 · zone totals [46,37,35,26] |
 | ex_07_a/b/c | gross [9.52,13.09,16.66] · late 3 / 46.0 · totals [30,34,38], best idx 2 |
-| nb_07 | discount [5.4,8.1,10.8,16.2] · slow 2 / 57.5 · zone totals [141,109,100,82], best 'Nord', zone means [20.14,15.57,14.29,11.71] |
+| nb_07 | discount [5.4,8.1,10.8,16.2] · critical count 2 · on-time rate 0.8 · days sum 105 · zone totals [141,109,100,82], best day total 84, best 'Nord' |
 | CP4 | crates probes 5/4/1 · count 5 / mean 48.8 · zone totals [1545,1370,1260,1665] · seed(23) [6,3,2,6,8] · MCQs b, b |
 | ex_08_a/b | Nord mean 14.5 · count 3 / revenue 57.0 |
 | nb_08 / nb_09 | computed from committed orders.csv (Task 12) — implementer records them in the lab header comment and checks them against this ledger |
