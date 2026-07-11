@@ -873,6 +873,7 @@ Inline df: `items = [1, 2, 1, 3, 1, 2]`, `total_eur = [11.20, 18.40, 6.80, 24.00
 - [ ] 9 graded cores + trace radio + MCQ = "X/10"; every check literal COMPUTED from the committed CSV (show the computation in a `# ledger:` comment at the top of the notebook) and cross-checked against the freshness ledger for collisions
 - [ ] Kevin bug: a `KeyError` from a wrong column name — red-error-pause teach line REQUIRED
 - [ ] WASM export of this notebook loads the CSV (manual browser spot-check, same motion as Task 1 Step 3)
+- [ ] Launcher page carries the one-line CDN-flake note from the spike ("if the notebook fails to boot with a network error, reload the page once")
 
 **Steps:**
 
@@ -978,6 +979,7 @@ Given an "AI-generated" snippet plotting weekly revenue `[50, 52, 53, 55]` (k€
 **Acceptance Criteria:**
 - [ ] Loader cell verbatim from conventions; 7 graded cores + trace radio + MCQ = "X/8"; ⟨csv⟩ literals computed from the committed file with a `# ledger:` comment
 - [ ] Every chart cell returns a matplotlib object as its last expression (marimo display); NO `plt.show()`
+- [ ] Launcher page carries the one-line CDN-flake note from the spike ("if the notebook fails to boot with a network error, reload the page once")
 - [ ] Solutions + launcher per the standard motion
 
 **Steps:**
