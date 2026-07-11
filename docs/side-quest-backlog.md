@@ -49,3 +49,9 @@ Buffer scope (spec §4): authored last, cut first, never blocking semester start
 - lec_06: `csv` module (`csv.writer`/`csv.reader`, writing `secret_message.csv`) — real file I/O; Session X (and tabular data proper lands in pandas, Session VIII)
 - lec_06: creating your own module files (`import lec_06_new_module`, `from ... import another_function`) — needs real `.py` files side-by-side; Session X where students work in a real editor/filesystem
 - lec_06: installing packages + virtual environments with uv (`uv add`, `uv sync`, `uv run`) — no shell in the WASM lab; Session X where the local toolchain is set up
+- lec_07: fancy indexing (`data[np.array([0, 2, 4])]`) — niche beside boolean masks; returns as a side-quest once positional selection is actually needed
+- lec_07: dtype character codes (`'i'`/`'f'`/`'S'`/`'U'`) + bits/precision section (int8/int16/float32, ranges, `.astype`) — hardware-flavoured detail; revisit if a memory/precision bug ever bites in a later data session
+- lec_07: joining arrays (`concatenate`, `hstack`, `vstack`) — array assembly is rare for beginners; folds into pandas concat/merge in Session VIII
+- lec_07: heterogeneous arrays (`np.array(["s", 2, 2.0])`) — anti-pattern for beginners; one-line mention stays in the deck ("one dtype for the whole array"); full treatment only if a side quest needs mixed data
+- lec_07: matrix multiplication `@` vs element-wise `*` — linear algebra is out of scope for this course; side-quest for a maths-heavy cohort
+- lec_07: `np.random` (numpy's own RNG, `rand`/`randint`) — superseded by the `random` module taught in Session VI; one RNG story is enough, numpy's is cut; returns if a Part-III project needs vectorized sampling
