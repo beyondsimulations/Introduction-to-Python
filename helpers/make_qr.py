@@ -15,6 +15,7 @@ EXERCISES = [
     "ex_06_a", "ex_06_b",
     "ex_07_a", "ex_07_b", "ex_07_c",
     "ex_08_a", "ex_08_b",
+    "ex_09_a", "ex_09_b", "ex_09_c",
 ]  # extend in later plans
 
 OUT.mkdir(parents=True, exist_ok=True)
