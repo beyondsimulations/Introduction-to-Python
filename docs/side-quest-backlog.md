@@ -55,3 +55,10 @@ Buffer scope (spec §4): authored last, cut first, never blocking semester start
 - lec_07: heterogeneous arrays (`np.array(["s", 2, 2.0])`) — anti-pattern for beginners; one-line mention stays in the deck ("one dtype for the whole array"); full treatment only if a side quest needs mixed data
 - lec_07: matrix multiplication `@` vs element-wise `*` — linear algebra is out of scope for this course; side-quest for a maths-heavy cohort
 - lec_07: `np.random` (numpy's own RNG, `rand`/`randint`) — superseded by the `random` module taught in Session VI; one RNG story is enough, numpy's is cut; returns if a Part-III project needs vectorized sampling
+- lec_08: NumPy recap section (arrays/ndarray/vectorized-ops refresher) — CP-day decks carry no warm-up; the checkpoint sweeps NumPy instead
+- lec_08: `merge` / `join` / `concat` (combining DataFrames, `how=` inner/outer/left/right) — multi-table joins are a Part-III concern; returns when a project needs to combine data sources
+- lec_08: Excel I/O (`pd.read_excel`/`df.to_excel`/`openpyxl`, sheet names) — one file format is enough for the intro; revisit if a Part-III project ships `.xlsx`
+- lec_08: `melt` / wide-vs-long reshaping (`id_vars`/`var_name`/`value_name`) — tidy-data reshaping is a side-quest; needed only once a plot demands long format (Session IX+)
+- lec_08: LLM-internals slides (tokens, weights, training, context window, probability-based next-token) — the deck teaches AI *craft* (verify workflow), not model mechanics; a "how LLMs work" side-quest for the curious
+- lec_08: `iloc`/`loc` positional-vs-label deep-dive — one `.loc` mention stays in the deck; the full indexing tour returns when a project needs positional selection
+- lec_08: Copilot section (VS Code setup, GitHub Student Pack signup, tool roundup) — removed for policy; gone entirely, not returning
