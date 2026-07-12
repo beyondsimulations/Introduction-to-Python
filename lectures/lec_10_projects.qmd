@@ -168,27 +168,29 @@ The project does not have to be flawless. Show that you scoped it honestly, buil
 
 Right now, in the room:
 
-- **Find your partner** (or decide to go solo if the count is odd)
+- **Find your partner** (or decide to go solo if the count is odd) — no partner yet? **Come to the front**, we'll match you
 - **Pick a direction** from the menu — or bring your own
 - Talk it through: what's the *core* you can definitely finish, what's a *bonus* if time allows?
 
 . . .
 
 :::{.callout-tip}
-**A good outcome by the end of this block:** a **one-sentence pitch** ("we're building X that does Y for Z") and a **name** for the project. That's all — the sentence keeps you honest about scope; the name goes on the repo in a minute.
+**A good outcome by the end of this block:** a **one-sentence pitch** ("we're building X that does Y for Z"), a **name** for the project, and a decision on **who owns the shared repo** (the owner creates it in the git block; the partner clones). The sentence keeps you honest about scope; the name goes on the repo in a minute.
 :::
 
 # [Your Toolchain]{.flow} {.title}
 
 ## Check your install
 
-Before we build anything, the two installs from the Session IX homework need to work. In a terminal:
+Before we build anything, the installs from the Session IX homework need to work. In a terminal:
 
 ```bash
 uv --version
+git --version
+gh --version
 ```
 
-- A version number? You're set.
+- Three version numbers? You're set.
 - Zed opens when you launch it? Good.
 
 . . .
@@ -256,7 +258,7 @@ We'll do each one **live, in your real project repo** — mistakes are cheap whe
 
 ## Once per machine
 
-Before any push reaches GitHub, your machine has to prove it's allowed to. Signing in to **Zed does not do this** — git needs its own setup. Once per computer, in a terminal:
+Before any push reaches GitHub, your machine has to prove it's allowed to. Signing in to **Zed does not do this** — git needs its own setup. You need a **(free) GitHub account** and the `gh` tool — not installed? Get it via the [Git Basics](../general/git-basics.qmd) page first. Then, once per computer, in a terminal:
 
 ```bash
 gh auth login
@@ -272,6 +274,12 @@ git config --global pull.rebase false
 
 :::{.callout-note}
 Full walkthrough (installing `gh`, checking it worked) is on the [Git Basics](../general/git-basics.qmd) page — your at-home reference for all of this.
+:::
+
+. . .
+
+:::{.callout-important}
+**Auth fighting you?** Same rule as the toolchain: **flag it**, follow along on the slides, and finish the push at home with the [Git Basics](../general/git-basics.qmd) page — or with us in the supervised sessions. Nobody's project stalls on a login.
 :::
 
 ## Your first commit
@@ -292,9 +300,11 @@ git commit -m "Initial project setup"
 
 A commit lives **only on your computer** so far. Next we send it to GitHub.
 
-## Put it on GitHub
+## Put it on GitHub — repo owner only
 
-GitHub doesn't know about your project yet. Three steps:
+**This slide is for the repo owner** you picked in the pairing block. **Partner: watch** — you'll clone in a minute; **don't create your own GitHub repo.**
+
+GitHub doesn't know about your project yet. Three steps, done by the owner:
 
 1. On **github.com**, create a new **empty** repository (no README — keep it empty). *(There's no "publish" button inside Zed — the GitHub-side repo is made on the website.)*
 2. In Zed: **`git: create remote`**, paste the repo's **HTTPS URL** (`https://github.com/you/project.git`)
@@ -310,7 +320,7 @@ After this one-time command, every later push is just **`git: push`** in Zed (te
 
 ## Your partner joins
 
-One of you owns the repo and invites the other (GitHub → **Settings → Collaborators**). The **partner** gets onto the project by cloning it:
+The owner invites the partner (GitHub → **Settings → Collaborators**). The **partner** gets onto the project by cloning it — **into a fresh folder**, not inside the practice project from the toolchain block (set that one aside; the clone is your real working copy):
 
 - In Zed: **`git: clone`**, paste the same **HTTPS URL**
 
@@ -321,6 +331,12 @@ git clone https://github.com/you/project.git
 . . .
 
 Cloning brings the whole project and its history, and sets up the connection automatically — the partner pushes and pulls normally from the first moment. Now **both of you pull** (`git: pull` / `git pull`) to confirm you're in sync.
+
+. . .
+
+:::{.callout-note}
+**Clock ran out?** This step keeps — inviting and cloning works just as well at the start of **Session XI**, with us in the room.
+:::
 
 ## How we work together
 
