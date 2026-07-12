@@ -146,52 +146,6 @@ and pasting a public key into GitHub's settings — more steps for a
 business-student audience with no prior dev-tooling experience than the
 `gh auth login` browser-code flow.
 
-## Copy for authors
-
-Use this verbatim as the basis for the git-basics guide's "GitHub setup &
-auth" section and the lecture's setup bullet. It is self-contained — no need
-to re-read the Findings above to write correct student-facing instructions.
-
-**One-time machine setup, before first use of Zed's git panel:**
-
-1. Install the GitHub CLI (`gh`) if not already present.
-2. Run `gh auth login` in a terminal. Choose GitHub.com, HTTPS as the
-   preferred protocol, and authenticate via the browser (device code) flow.
-   When asked "Authenticate Git with your GitHub credentials?", answer yes —
-   this runs `gh auth setup-git` for you and configures git's HTTPS
-   credential helper.
-3. Confirm with `gh auth status` — it should show "Logged in to github.com"
-   and "Git operations for github.com configured to use https protocol."
-4. Separately, sign in to the Zed app itself (`client: sign in` in the
-   command palette, or the Sign In button) if collaboration or Zed-hosted AI
-   features are wanted. **This sign-in is unrelated to git push
-   authentication and does not need to happen for git operations to work** —
-   do not present it as a git auth step.
-
-**Starting a project (two cases):**
-
-- New project: `uv init <project-name>` in a terminal (this already creates
-  a `.git/` repo — no separate `git init` needed). Then create an empty
-  repository on github.com (or `gh repo create`), and in Zed use
-  `git: create remote` to point the local repo at it, then `git: push`
-  (first push needs `-u`/upstream tracking set — Zed's push handles this,
-  but if using the terminal instead, `git push -u origin main`).
-- Joining a partner's existing repo: use Zed's command palette `git: clone`
-  (or terminal `git clone <url>`) with the HTTPS URL of the GitHub repo. No
-  `uv init` or `git init` needed — the clone brings the existing project and
-  its `.git/` history.
-
-**Day-to-day work, entirely inside Zed's git panel:** stage (`git: stage
-all` or per-file checkboxes), commit (`git: commit`, `cmd/ctrl-enter`), pull
-before starting work (`git: pull`), push when done (`git: push`). Terminal
-equivalents (`git add`, `git commit`, `git pull`, `git push`) should be shown
-alongside each, since Zed's panel is a UI over the same operations and
-students will see both in videos/screenshots from other sources.
-
-**If a push is rejected with a credential prompt or fails silently:** this
-means step 2 above (`gh auth login` / `gh auth setup-git`) was not completed
-correctly on that machine — re-run `gh auth login`, not the Zed sign-in.
-
 ## Verify-live-before-semester list
 
 These items either came from secondary sources (community wiki/GitHub
@@ -222,3 +176,56 @@ close to semester start:
   `gh auth login` — worth a quick check on the university's network before
   the lab session, per the existing corporate-firewall caveat in Zed's own
   docs.
+
+## Copy for authors
+
+Use this verbatim as the basis for the git-basics guide's "GitHub setup &
+auth" section and the lecture's setup bullet. It is self-contained — no need
+to re-read the Findings above to write correct student-facing instructions.
+
+**One-time machine setup, before first use of Zed's git panel:**
+
+1. Install the GitHub CLI (`gh`) if not already present.
+2. Run `gh auth login` in a terminal. Choose GitHub.com, HTTPS as the
+   preferred protocol, and authenticate via the browser (device code) flow.
+   When asked "Authenticate Git with your GitHub credentials?", answer yes —
+   this runs `gh auth setup-git` for you and configures git's HTTPS
+   credential helper.
+3. Confirm with `gh auth status` — it should show "Logged in to github.com"
+   and "Git operations for github.com configured to use https protocol."
+4. Separately, sign in to the Zed app itself (`client: sign in` in the
+   command palette, or the Sign In button) if collaboration or Zed-hosted AI
+   features are wanted. **This sign-in is unrelated to git push
+   authentication and does not need to happen for git operations to work** —
+   do not present it as a git auth step.
+
+**Starting a project (two cases):**
+
+- New project: `uv init <project-name>` in a terminal (this already creates
+  a `.git/` repo — no separate `git init` needed). Then create an empty
+  repository on github.com (or `gh repo create`), and in Zed use
+  `git: create remote` to point the local repo at it. For the **first push**,
+  teach the terminal command `git push -u origin main` as the guaranteed
+  path — the `-u` sets upstream tracking, which every later `git: push` in
+  Zed relies on. Whether Zed's own push button sets upstream tracking
+  automatically on a first push is **unconfirmed** (see the
+  Verify-live-before-semester item above); if the live check confirms it
+  does, authors may simplify this to `git: push` — until then, present the
+  terminal command as the first-push step and Zed's `git: push` for all
+  subsequent pushes.
+- Joining a partner's existing repo: use Zed's command palette `git: clone`
+  (or terminal `git clone <url>`) with the HTTPS URL of the GitHub repo. No
+  `uv init` or `git init` needed — the clone brings the existing project and
+  its `.git/` history (and cloning sets upstream tracking automatically, so
+  Zed's `git: push` works from the first push in this case).
+
+**Day-to-day work, entirely inside Zed's git panel:** stage (`git: stage
+all` or per-file checkboxes), commit (`git: commit`, `cmd/ctrl-enter`), pull
+before starting work (`git: pull`), push when done (`git: push`). Terminal
+equivalents (`git add`, `git commit`, `git pull`, `git push`) should be shown
+alongside each, since Zed's panel is a UI over the same operations and
+students will see both in videos/screenshots from other sources.
+
+**If a push is rejected with a credential prompt or fails silently:** this
+means step 2 above (`gh auth login` / `gh auth setup-git`) was not completed
+correctly on that machine — re-run `gh auth login`, not the Zed sign-in.
