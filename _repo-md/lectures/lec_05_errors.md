@@ -1,8 +1,8 @@
 ---
-title: Lecture V - Handling Errors
+title: Lecture V - Errors and Debugging
 subtitle: Programming with Python
 author: Dr. Tobias Vlćek
-institute: Kühne Logistics University Hamburg - Fall 2025
+institute: Kühne Logistics University Hamburg - Fall 2026
 format:
   revealjs:
     footer: ' {{< meta title >}} | {{< meta author >}} | [Home](lec_05_errors.qmd)'
@@ -10,451 +10,365 @@ format:
 ---
 
 
-# <span class="flow">Quick Recap of the last Lecture</span>
+# 📋 Checkpoint 2 --- before the doors open
 
-## Data Structures
+The first **40 minutes** are the checkpoint. It starts **now**.
 
-- <span class="highlight">Newly</span> introduced data structures:
-  - **Tuples**: Ordered, immutable collections
-  - **Lists**: Ordered, mutable collections
-  - **Sets**: Unordered collections of unique elements
-  - **Dictionaries**: Key-value pairs
+- **Individual work** --- no AI, no neighbours, no chat
+- The **link and QR** are handed out in class --- open it and start
+- ~6 short tasks: write code, trace code, fix a bug, answer a multiple choice
 
-. . .
-
-``` python
-list_example = [1, 2, 3, 4, 5]
-set_example = {1, 2, 3, 4, 5}
-dict_example = {"a": 1, "b": 2, "c": 3}
-tuple_example = (1, 2, 3, 4, 5)
-```
-
-## Operations and Methods
-
-- Each data structure has specific operations and methods:
-  - Tuples and Lists: Indexing, slicing, concatenation
-  - Sets: Union, intersection, difference
-  - Dictionaries: Key-based access, `keys()`, `values()`
+<!-- QR handed out live — never in the deck -->
 
 . . .
 
-> **Tip**
->
-> **Comprehensions** for concise creation of these structures are often used in practice to create new data structures from existing ones.
-
-## I/O and File Handling
-
-- Basic file operations
-  - Opening files with `open()`
-  - Reading and writing files
-  - Using the `with` statement for safer file handling
+**When you're done:** menu → *Download* → *Download Python code* → upload the `.py` to the **"Checkpoint 2"** assignment on Moodle.
 
 . . .
 
 > **Note**
 >
-> This covers the main points from our last lecture on data structures and file handling in Python.
+> The green ✅ live checks are **provisional** --- the final grading runs on our side. And take a breath: everything in it was rehearsed in the labs.
 
-# <span class="flow">Exceptions</span>
+# <span class="flow">Episode 5: The 3-AM Checkout</span>
 
-## What are Exceptions?
+## After the checkpoint
 
-- Exceptions are <span class="highlight">discovered errors</span> that occur during the execution
+Pens down --- the checkpoint is behind you. Now the reason we're all here.
 
 . . .
 
-``` python
-def divide_numbers(a, b):
-        result = a / b
-        return result
+At 3 AM, running on his fourth energy drink, Kevin rewrote the **entire checkout** "to make it faster." He went to bed very pleased. This morning two things are true: the till is a minefield of crashes, and the **health inspector** just called to announce a surprise visit.
 
-print(divide_numbers(10, 0))
-print("I will not be printed as the program crashed before.")
+. . .
+
+So today the code learns to survive things going wrong. We read a **traceback**, catch failures with **try/except**, and let our own code **refuse** bad input.
+
+# <span class="flow">Reading the Explosion</span>
+
+## Kevin's 3-AM checkout, live
+
+A customer typed `generous` into the tip box. Kevin's new checkout did this:
+
+``` python
+tip_text = "generous"
+tip = float(tip_text)     # 💥
 ```
 
 . . .
 
-<span class="errors">ZeroDivisionError:</span> division by zero
+Python stopped and printed a **traceback** --- a crash report. It looks scary, but it is the most useful thing on your screen:
+
+    Traceback (most recent call last):
+      File "checkout.py", line 12, in <module>
+        tip = float(tip_text)
+    ValueError: could not convert string to float: 'generous'
+
+## Read the traceback bottom-up
+
+You read a traceback from the **bottom up**:
+
+- the **last line** names *what* went wrong --- `ValueError` --- and gives a hint
+- the lines **above** show *where* --- the file, the line number, the guilty code
+
+<!-- -->
+
+          File "checkout.py", line 12, in <module>   ← WHERE it happened
+            tip = float(tip_text)                    ← the exact line
+        ValueError: could not convert ...            ← WHAT went wrong (read me first)
+
+. . .
+
+Two facts and you know where to go: **line 12**, and it's a **`ValueError`**. The scary wall of text is really just an address and a reason.
+
+## The big five (1)
+
+A handful of exception types cover almost everything you'll hit. The first three:
+
+- **`ValueError`** --- right *type*, senseless *value*: `int("lots")`
+- **`TypeError`** --- the wrong type entirely: `"Bowl " + 9`
+- **`KeyError`** --- a dictionary key that isn't there: `table_map["C3"]`
+
+. . .
+
+Each one is Python refusing to guess. `int("lots")` has no sensible number; `"Bowl " + 9` mixes text and a number; `table_map["C3"]` asks for a key that was never added.
+
+## The big five (2)
+
+The other two you'll meet constantly:
+
+- **`IndexError`** --- a list position past the end: `seats[9]` on a 3-item list
+- **`ZeroDivisionError`** --- dividing by zero: `88.00 / 0` when splitting a bill among no guests
+
+. . .
+
+You don't have to memorise all of Python's exceptions. Recognise these five on sight, and read the last line for the rest.
+
+## `try` / `except`: catch the fall
+
+First, the happy path: text that **looks** like a number converts cleanly --- text that doesn't, explodes. A **`try` / `except`** block runs the risky code and catches the failure instead of stopping the program:
+
+``` python
+print(float("5.50"))          # numeric text converts cleanly → 5.5
+
+try:
+    tip = float("generous")   # non-numeric text raises ValueError...
+except ValueError:
+    tip = 0.0                 # ...caught here, so the checkout keeps going
+
+print(tip)
+```
+
+    5.5
+    0.0
+
+. . .
+
+The risky line goes in the `try`; the recovery goes in the `except`. No crash --- the program lands in the `except` and carries on.
+
+## Catch the *specific* type
+
+Name the exact exception you expect. `except ValueError:` catches **only** value errors and lets anything else through:
+
+``` python
+try:
+    tip = float(tip_text)
+except ValueError:            # only this kind
+    tip = 0.0
+```
 
 . . .
 
 > **Warning**
 >
-> Undiscovered errors can be very **hard to debug** and can cause **crashes** and **other issues**.
+> A **bare** `except:` catches *everything* --- including your own typos (a misspelled variable would vanish silently). Catch the **specific** type, so real bugs still surface.
 
-## Common Built-in Exceptions I
+## Predict: which explosion?
 
-- `ValueError`: argument of correct type but inappropriate value
-- `TypeError`: function applied to object of inappropriate type
-- `NameError`: raised when a local or global name is not found
-- `IndexError`: raised when a sequence subscript is out of range
-- `KeyError`: raised when a dictionary key is not found
-- `FileNotFoundError`: file or directory not found
-- `ZeroDivisionError`: division or modulo by zero
-
-## Common Built-in Exceptions II
-
-- `AttributeError`: attribute reference or assignment fails
-- `ImportError`: import of a modulefails
-- `SyntaxError`: parser encounters a syntax error
-- `IndentationError`: indentation is not correct
-- `RuntimeError`: error does not fall into any category
-
-. . .
-
-> **Note**
->
-> The list of built-in exceptions is even longer, these are just the most common ones. We won't cover the errors listed here in detail, but it is good to be aware of them.
-
-## try-except Blocks
-
-- `try-except` blocks are used to handle exceptions
-- `try` block contains the code that might raise an exception
-- `except` block contains the executed code if an exception occurs
-
-. . .
+Kevin builds a table label. `guests` is the number `3`. What does the **last line** do?
 
 ``` python
-def divide_numbers(a, b):
-    try:
-        result = a / b
-        return result
-    except ZeroDivisionError:
-        return "Error: Division by zero is not allowed."
-
-print(divide_numbers(10, 0))
-print("I will be printed as the exception was handled!")
+guests = 3
+label = "Party of " + guests
+print(label)
 ```
 
-    Error: Division by zero is not allowed.
-    I will be printed as the exception was handled!
+a\) prints `Party of 3` b) raises `TypeError` c) raises `ValueError`
 
-## try-except Blocks for specific exceptions
+. . .
 
-- We can also specify <span class="highlight">the type of exception</span> we want to catch
-- This allows for more **specific error handling**
+<span class="question">Predict first</span> --- commit to an answer before the next slide.
+
+## Answer: text and numbers won't mix
+
+**b) raises `TypeError`** --- `+` can glue two strings *or* add two numbers, but it refuses to mix a string and an `int`. The fix is to convert first (`str(guests)`):
 
 ``` python
+guests = 3
 try:
-    # Code that might raise an exception
-    # ...
-except ExceptionType as e:
-    # Code to handle the specific exception type
-    # ...
-except Exception as e:
-    # Code to handle any other exceptions
-    # ...
+    label = "Party of " + guests
+except TypeError as e:
+    print("TypeError:", e)
 ```
+
+    TypeError: can only concatenate str (not "int") to str
+
+# ⚡ Your turn --- 10 minutes
+
+Open the exercise (scan the QR or type the link):
+
+**[beyondsimulations.github.io/Introduction-to-Python/notebooks/ex_05_a/](https://beyondsimulations.github.io/Introduction-to-Python/notebooks/ex_05_a/)**
+
+<img src="assets/qr/ex_05_a.png" width="280" />
+
+First **predict** what happens --- then run it.
+
+# <span class="flow">Debugging and Defending</span>
+
+## The debugging loop
+
+When something is wrong, you don't guess randomly --- you follow a loop:
+
+1.  **Read** the traceback --- it hands you the *what* and the *where*
+2.  **Reproduce** the crash --- make it happen on demand
+3.  **Isolate** --- narrow down to the smallest failing piece
+4.  **Fix** --- change one thing, then run again
+
+. . .
+
+The inspector debugs the same way: find the broken thing, make it repeat, corner it, fix it. Panic is not a step.
+
+## `print()` --- the beginner's flashlight
+
+The simplest debugger is a well-placed `print()`. When you can't see what a value *is*, shine a light on it:
+
+``` python
+def line_total(qty, price):
+    print("DEBUG qty =", qty, "price =", price)   # the flashlight
+    return round(qty * price, 2)
+
+print(line_total(3, 5.50))
+```
+
+    DEBUG qty = 3 price = 5.5
+    16.5
+
+. . .
+
+Real debuggers with breakpoints exist and are wonderful --- but a `print()` in the right spot solves most beginner bugs in seconds. Remove it once you've seen enough.
+
+## `raise` --- when your code should refuse
+
+Sometimes *your own* code should reject bad input on the spot. The inspector's rule is non-negotiable: **every price ≥ 0**. `raise` throws an error deliberately:
+
+``` python
+def charge(amount):
+    if amount < 0:
+        raise ValueError("price cannot be negative")
+    return amount
+
+try:
+    charge(-4.50)                  # your code refuses it...
+except ValueError as e:
+    print("refused:", e)           # ...on your terms
+```
+
+    refused: price cannot be negative
+
+. . .
+
+A bad value stops *here*, at the door, instead of poisoning the books three screens later.
+
+## `assert` --- a tripwire for invariants
+
+An **`assert`** guards an *invariant* --- a fact that must **always** hold. If it's true, nothing happens; if it's false, the program stops right there with an `AssertionError`:
+
+``` python
+subtotal = 9.60
+assert subtotal >= 0, "subtotal went negative — bug upstream"
+print("passed the tripwire:", subtotal)
+```
+
+    passed the tripwire: 9.6
+
+. . .
+
+Think of it as a note to yourself, checked automatically: *"if this is ever false, something broke earlier --- stop before it spreads."*
+
+## Try, then fall back
+
+A friendly, common pattern: **try** the risky thing; if it fails, **fall back** to a sensible default so the program keeps moving.
+
+``` python
+def seats(text):
+    try:
+        return int(text)
+    except ValueError:
+        return 2               # a table seats two, unless told otherwise
+
+print(seats("6"))              # a clean number → 6
+print(seats("full"))           # nonsense → the safe default, 2
+```
+
+    6
+    2
+
+. . .
+
+The caller never has to worry about a crash. Garbage in, sane default out.
+
+## Predict: what happens after the `except`?
+
+`to_price` catches a bad value and returns `0.0`. After that, does the program reach the **next line**?
+
+``` python
+def to_price(text):
+    try:
+        return float(text)
+    except ValueError:
+        return 0.0
+
+print(to_price("bad"))
+print("checkout still running")
+```
+
+a\) it never runs --- the program already stopped b) it runs normally --- the program carried on c) the `try` block runs a second time
+
+. . .
+
+<span class="question">Predict first</span> --- commit to an answer before the next slide.
+
+## Answer: it carries on
+
+**b) it runs normally** --- that's the whole point of `try` / `except`. It *handles* the failure; once the `except` has run, control simply drops to the code after it, as if nothing had gone wrong:
+
+``` python
+def to_price(text):
+    try:
+        return float(text)
+    except ValueError:
+        return 0.0
+
+print(to_price("bad"))           # 0.0 — recovered
+print("checkout still running")  # ...and we get here
+```
+
+    0.0
+    checkout still running
+
+# ⚡ Your turn --- 10 minutes
+
+Open the exercise (scan the QR or type the link):
+
+**[beyondsimulations.github.io/Introduction-to-Python/notebooks/ex_05_b/](https://beyondsimulations.github.io/Introduction-to-Python/notebooks/ex_05_b/)**
+
+<img src="assets/qr/ex_05_b.png" width="280" />
+
+First **predict** what happens --- then run it.
+
+# <span class="flow">To the Lab</span>
+
+## Tonight's episode
+
+- Head to the lab notebook: [Episode 5 --- The 3-AM Checkout](../tutorials/tut_05_errors.qmd)
+- You'll read a traceback, write a price box that won't crash, fix Kevin's 3-AM receipt, make your code **refuse** negative prices with `raise`, and harden the whole checkout against a batch of poisoned orders
+- It runs entirely in your browser --- no setup, just click and code
+
+. . .
+
+> **Important**
+>
+> **Download your `.py` before you leave.** Closing the tab without downloading loses your work --- and downloading is exactly how you just handed in the checkpoint. Expect **red cells** in this lab: you'll cause errors on purpose. A red cell pauses everything below it --- fix it, and everything springs back.
+
+# <span class="flow">Wrap-up</span>
+
+## Three things to remember
+
+1.  A **traceback** is a crash report you read **bottom-up**: the last line names *what* broke, the lines above show *where* --- that's an address and a reason, not a wall of noise
+2.  **`try` / `except`** catches a failure so the program **recovers** instead of stopping --- catch the **specific** type (`except ValueError`), never a bare `except` that also hides your own typos
+3.  Defend your own code: **`raise`** to refuse bad input (prices ≥ 0), **`assert`** to guard an invariant that must always hold, and **fall back** to a safe default when a conversion fails
 
 . . .
 
 > **Note**
 >
-> `as e` is used to store the exception in a variable. Not mandatory, but good practice to do so.
-
-## try-except Blocks in Action
-
-<span class="task">\>Grouptask:</span> Solve the following problem using try-except blocks:
-
-. . .
-
-``` python
-# Implement a function that converts a string to an integer
-# 1. Try to convert the input_string to an integer
-# 2. If successful, return the integer
-# 3. If a ValueError occurs, catch it and return "Invalid input: not a number"
-# 4. If any other exception occurs, catch it and return
-# "An unexpected error occurred: [type of exception]"
-
-# Your code here
-
-# Test cases
-print(string_to_int("42"))        # Should print: 42
-print(string_to_int("Hello"))     # Should print: Invalid
-print(string_to_int([123]))
-```
-
-. . .
-
-<span class="question">Question:</span> What is the output of the last line?
-
-# <span class="flow">Raising Exceptions</span>
-
-## Raising Exceptions
-
-- We can <span class="highlight">raise exceptions ourselves</span> using the `raise` statement
-- It allows us to handle errors in a more controlled manner
-
-. . .
-
-``` python
-def validate_age(age):
-    if age < 0:
-        raise ValueError
-    return age
-
-print(validate_age(25)) # This will print 25
-print(validate_age(-1)) # This will raise a ValueError
-```
-
-<span class="task">\>Task:</span> Try to raise an exception in the function above by passing a string to the `validate_age` function. What happens?
-
-## Raising Exceptions with Custom Messages
-
-- We can also raise exceptions with custom messages
-- This helps to provide more information about the error
-
-. . .
-
-``` python
-def validate_age(age):
-    if age < 0:
-        raise ValueError("Age cannot be negative")
-    return age
-
-print(validate_age(25)) # This will print 25
-print(validate_age(-1)) # This will raise a ValueError
-```
-
-. . .
-
-<span class="question">\>Question:</span> What do you think the `raise` statement will show now?
-
-## Creating Custom Exceptions
-
-- We do so by <span class="highlight">inheriting from the built-in Exception class</span>
-- This allows us to create more specific exceptions for our own code
-
-``` python
-class InvalidUsernameError(Exception):
-    pass
-def get_valid_username():
-    while True:
-        try:
-            username = input("Please enter a username (no spaces): ")
-            if " " in username:
-                raise InvalidUsernameError("Username must not contain spaces.")
-            return username
-        except InvalidUsernameError as e:
-            print(f"Invalid username: {e}")
-            print("Please try again.")
-```
-
-# <span class="flow">Assertions</span>
-
-## What are Assertions?
-
-- Assertions are <span class="highlight">statements that check if a condition is true</span>
-- If the condition is false, an `AssertionError` is raised
-- We could use them to check the results of a calculation
-
-. . .
-
-``` python
-x = 9
-y = 10
-assert x < y, "x is not smaller than y"
-assert isinstance(y, float), "y is not a float"
-```
-
-. . .
-
-<span class="task">\>Task:</span> Try to run the code above and discuss what happens.
-
-. . .
-
-> **Note**
->
-> `isinstance` is a built-in function that checks if an object is an instance of a class.
-
-## Assertions in Action
-
-<span class="task">\>Grouptask:</span> Solve the following problem using assertions:
-
-``` python
-# Implement a function that takes a list of integers and returns the sum of the numbers.
-# 1. Use assertions to check if the input is a list
-# 2. Use assertions to check if the list contains only integers.
-# 3. If the list contains only integers, return the sum of the numbers
-
-# Your code here
-
-# Test cases
-print(sum_of_numbers([1, 2, 3, 4, 5])) # Should print: 15
-print(sum_of_numbers([1, 2.0, 3, 4, 5])) # Should print: AssertionError
-```
-
-# <span class="flow">Debugging</span>
-
-## What is Debugging?
-
-- Debugging is the process of <span class="highlight">finding and fixing errors</span> in code
-- We can use `print` and `assert` statements to debug our code
-- We can also use **debugging tools** that are built into most IDEs
-
-<br>
-
-<center>
-<iframe src="https://giphy.com/embed/oYQ9HRm5Mo7VXeMNVR" width="480" height="360" style frameBorder="0" class="giphy-embed" allowFullScreen>
-</iframe>
-</center>
-
-## Using Print and Assert
-
-- `print`: check <span class="highlight">the values of variables</span> at different points
-- `assert`: check calculations or the types of variables
-
-. . .
-
-``` python
-x = "Hello" # x is a string
-print(x)
-x = 42.0 # x is a float
-print(x)
-assert isinstance(x, float), "x is not a float"
-assert x == 42.0, "x is not 42.0"
-```
-
-    Hello
-    42.0
-
-. . .
-
-> **Note**
->
-> While this can be useful, it is not always the best way to debug code.
-
-## Using Debugging Tools
-
-- We can also use debugging tools <span class="highlight">built into most IDEs</span>
-- Allow to step through code, set breakpoints, and inspect variables
-- We will use Zed, but there are **many other options**
-
-## Debugging in Zed
-
-<span class="task">\>Task:</span> Open Zed and copy the following code to `main.py`.
-
-``` python
-def calculate_average(numbers):
-    total = 0
-    count = 0
-    for num in numbers:
-        total += num
-        count += 1
-
-    average = total / count
-    return average
-
-# Test cases
-test_lists = [
-    [1, 2, 3, 4, 5],
-    [10, 20, 30],
-    []
-    ]
-
-for i, test_list in enumerate(test_lists):
-    print(f"Test case {i + 1}:")
-    result = calculate_average(test_list)
-    print(f"Average: {result}\n")
-```
-
-## Debugging Tools
-
-<span class="task">\>Task:</span> Run the code and use the debugging tools by clicking on the small bug icon in the lower right corner to find the error and select `run [YOUR PATH TO THE FILE]/main.py`.
-
-- Use the **breakpoints** to <span class="highlight">pause the execution</span> at a specific point
-- Use **step over, step into and step out** to <span class="highlight">navigate</span> through your code
-- Use the **variable viewer** to <span class="highlight">inspect variables</span> at different points
-
-. . .
-
-<span class="question">\>Question:</span> What do you think the error is?
-
-. . .
-
-> **Note**
->
-> The `enumerate` function used in the code is super helpful function that returns a tuple containing the index and the value of the item in the list and it is not the error.
-
-# <span class="flow">Script Organization</span>
-
-## The Main Function Pattern
-
-- You'll often see `if __name__ == "__main__":` at the end of Python scripts
-- This checks <span class="highlight">whether the script is being run directly</span> or imported
-
-. . .
-
-``` python
-def greet(name):
-    return f"Hello, {name}!"
-
-if __name__ == "__main__":
-    print(greet("Students"))
-```
-
-. . .
-
-> **Note**
->
-> The code inside the `if` block only runs when you execute the script directly, not when you import it as a module. So far, we didn't import modules but we will soon.
-
-## Why Use It?
-
-- **Reusability**: Functions can be imported without executing tests
-- **Testing**: You can test functions in the same file
-- **Organization**: Separation between definitions and execution
-
-. . .
-
-``` python
-def add(a, b):
-    """Add two numbers."""
-    return a + b
-
-def subtract(a, b):
-    """Subtract two numbers."""
-    return a - b
-
-# This only runs when script is executed directly
-if __name__ == "__main__":
-    print(f"5 + 3 = {add(5, 3)}")
-    print(f"5 - 3 = {subtract(5, 3)}")
-```
-
-. . .
-
-> **Tip**
->
-> If another script imports this file, only the functions are available, not the print statements!
-
-## Using Logging
-
-- We can also use logging to <span class="highlight">track the execution</span> of a program
-- It is a **structured** way to log errors and other issues
-- You can specify the **level of severity** for each log message
-- **Hide** messages of a certain severity if you want to during execution
-
-. . .
-
-> **Note**
->
-> **And that's it for todays lecture!**  
-> We now have covered the basics of errors, exceptions and debugging in Python. Logging is beyond our scope, but it is good to know should you work with larger codebases later on.
+> **Next time --- Episode 6** starts with **Checkpoint 3**, which sweeps everything from Episodes 1--5 --- so keep this notebook and the last four close. Then someone new walks into the shop, uncaps a marker, and writes one question on the whiteboard. **Part II begins.**
 
 # <span class="flow">Literature</span>
 
-## Interesting Books
+## Books to start with
 
 - Downey, A. B. (2024). Think Python: How to think like a computer scientist (Third edition). O'Reilly. [Link to free online version](https://greenteapress.com/wp/think-python-3rd-edition/)
 - Elter, S. (2021). Schrödinger programmiert Python: Das etwas andere Fachbuch (1. Auflage). Rheinwerk Verlag.
 
 . . .
 
-> **Tip**
+> **Note**
 >
-> Nothing new here, but these are still great books!
+> Nothing new here, but these are still great books to start with!
 
 . . .
 
-For more interesting literature to learn more about Python, take a look at the [literature list](../general/literature.qmd) of this course.
+For more, see the [literature list](../general/literature.qmd) of this course.
+</content>
+</invoke>

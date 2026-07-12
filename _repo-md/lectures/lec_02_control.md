@@ -2,7 +2,7 @@
 title: Lecture II - Control Structures for Your Code
 subtitle: Programming with Python
 author: Dr. Tobias Vlćek
-institute: Kühne Logistics University Hamburg - Fall 2025
+institute: Kühne Logistics University Hamburg - Fall 2026
 format:
   revealjs:
     footer: ' {{< meta title >}} | {{< meta author >}} | [Home](lec_02_control.qmd)'
@@ -10,708 +10,554 @@ format:
 ---
 
 
-# <span class="flow">Quick Recap of the last Lecture</span>
+# <span class="flow">Episode 2: The Curfew</span>
 
-## F-Strings
+## A decree from the city
 
-- F-strings provide a way to embed expressions inside string literals
-- You can include expressions by placing them inside curly braces `{}`
-- This makes it easier to include dynamic content
+Overnight the city banned delivery after **22:00**. Your app can no longer just say yes to every order --- today the code starts **making decisions**, **repeating** work over every order, and **tidying up** Kevin's menu.
 
 . . .
 
+*(Kevin's fix: "we just deliver yesterday's orders the next morning." A lawyer disagreed.)*
+
+# 🔥 Warm-up
+
+Three questions from Episode 1. Commit --- hands up **before** the reveal.
+
+## Question 1
+
 ``` python
-# Let's illustrate f-strings with a small example:
-name = "Mr. Smith"
-age = 30
-height = 1.826549
-print(f"My name is {name}, I'm {age} years old, and {height:.2f} meters tall.")
+price = 8.90
+print(f"{price * 2:.2f}")
 ```
 
-    My name is Mr. Smith, I'm 30 years old, and 1.83 meters tall.
+a\) `17.8` b) `17.80` c) `Error`
 
-. . .
+## Answer 1
 
-> **Tip**
->
-> We used the `:.2f` format specifier to round the number to two decimal places.
+**b)** --- `:.2f` always prints two decimals. That's the whole receipt trick.
 
-## Variables and Data Types
-
-- Python uses dynamic typing, i.e. the type is determined at runtime
-- Basic data types in Python are: `int`, `float`, `str`, `bool`
-- Variables are created by assignment with the `=` operator
-
-. . .
-
-<span class="question">\> Question:</span> What are the types of `y`, `z`, `w`?
+## Question 2
 
 ``` python
-y = 2.5
-z = "Hello"
-w = True
-print(f"y is of type {type(y).__name__}")
-print(f"z is of type {type(z).__name__}")
-print(f"w is of type {type(w).__name__}")
+print(type("9.99"))
 ```
 
-    y is of type float
-    z is of type str
-    w is of type bool
+a\) `float` b) `str` c) `int`
 
-## Arithmetic Operators
+## Answer 2
 
-Addition  
-Subtraction  
-Multiplication  
-Division  
-Floor Division  
-Exponentiation  
-Modulo
+**b)** --- quotes make it text, no matter how numeric it looks. (Kevin learned this the hard way.)
 
-`+`  
-`-`  
-`*`  
-`/`  
-`//`  
-`**`  
-`%`
-
-Adds two numbers  
-Subtracts one number from another  
-Multiplies two numbers  
-Floating-point division  
-Integer division  
-Power of  
-Remainder of division
-
-. . .
-
-> **Note**
->
-> Note, that the `/` operator always returns a float, even if the division is even. Furthermore, the `+` operator can be used to concatenate strings and that the `*` operator can be used to repeat strings.
-
-## Arithmetic Operators with Variables
-
-- Additional operators can update the value of a variable <span class="highlight">(new)</span>
-- We can use `+=`, `-=`, `*=`, `/=`, `//=`, `**=`, `%=`
-
-. . .
-
-<span class="question">\> Question:</span> What is the value of `x` after the operations?
+## Question 3
 
 ``` python
-x = 10
-print(f"Initial value of x: {x}")
-x += 5  # Equivalent to x = x + 5
-print(f"After x += 5: {x}")
-x *= 2  # Equivalent to x = x * 2
-print(f"After x *= 2: {x}")
-x %= 4  # Equivalent to x = x % 4
-print(f"After x %= 4: {x}")
+print(7 // 2, 7 % 2)
 ```
 
-    Initial value of x: 10
-    After x += 5: 15
-    After x *= 2: 30
-    After x %= 4: 2
+a\) `3.5 1` b) `3 1` c) `3 0.5`
 
-## Arithmetic Operators Task
+## Answer 3
 
-<span class="task">\> Task:</span> Calculate the final value step by step:
+**b)** --- `//` floors, `%` gives the remainder. Together: "how many fit, what's left."
 
-``` python
-# Start with the following values
-price = 100
-discount_percent = 15
-tax_rate = 0.08
+# <span class="flow">Making Decisions</span>
 
-# Your task:
-# 1. Apply the discount to the price (price reduced by discount_percent)
-# 2. Add tax to the discounted price
-# 3. Round the final price to 2 decimal places
-# Your code here
+## Asking a yes/no question
 
-final_price = ?  # What should this be?
-```
-
-> **Tip**
->
-> You can use the `round()` function to round a number to a specific number of decimal places. For example: `round(3.14159, 2)` returns `3.14`.
-
-# <span class="flow">Objects and Methods</span>
-
-## Objects
-
-- Objects are **instances of classes**
-- We will learn more about classes **later** in the course
-- In Python, <span class="highlight">virtually</span> everything is an object
-- Common built-in objects: <span class="highlight">integers, strings, lists, dictionaries</span>
-- For now, think of objects as a collection of data and methods
-
-. . .
-
-> **Note**
->
-> For most programming purposes, you can treat everything in Python as an object. This means you can assign all types to variables, pass them to functions, and in many cases, call methods on them.
-
-## Methods
-
-- Methods are <span class="highlight">functions</span> that are called on an <span class="highlight">object</span>
-- The syntax is `object.method([arguments])`
-- Methods are specific to the type of object they're called on
-- They can modify the object or return information about it
-
-. . .
-
-> **Tip**
->
-> You can use the `dir()` function to list all methods and attributes of an object.
-
-## String Methods
-
-Here are some commonly used string methods:
-
-- `upper()`: Converts all characters in the string to uppercase
-- `lower()`: Converts all characters in the string to lowercase
-- `title()`: Converts first character of each word to uppercase
-- `strip()`: Removes leading and trailing whitespace
-- `replace()`: Replaces a substring with another substring
-- `find()`: Finds first substring and returns its index
-- `count()`: Counts the number of occurrences of a substring
-
-## String Methods in Action
-
-<span class="question">\> Question:</span> What will be the output of the following code?
+A **comparison** asks a question and answers with a **boolean** --- `True` or `False`, the `bool` type you met last week:
 
 ``` python
-message = "Hello, World!"
-print(message.upper())  # Converts to uppercase
-print(message.lower())  # Converts to lowercase
-print(message.title())  # Converts to title case
-print(message.replace("World", "Python"))  # Replaces "World"
-print(message.find("World"))  # Finds "World" and returns its index
-print(message.count("o"))  # Counts the number of occurrences of "o"
-```
-
-    HELLO, WORLD!
-    hello, world!
-    Hello, World!
-    Hello, Python!
-    7
-    2
-
-. . .
-
-> **Note**
->
-> Note, how `replace()` does not modify the original string. Instead, it returns a new string.
-
-## String Task
-
-<span class="task">\> Task:</span> Discuss and implement the following task:
-
-``` python
-# Change the following message to get the desired output
-message = " the snake programmer. "
-# Your code here
-
-output = "The Python Programmer."
-```
-
-. . .
-
-> **Tip**
->
-> Remember, that these methods return a new string. The original string is not modified.
-
-## String Task in Action
-
-``` python
-message = " the snake programmer. "
-print(message.strip().title().replace("Snake", "Python"))
-```
-
-    The Python Programmer.
-
-. . .
-
-> **Tip**
->
-> Here we chained methods together to perform multiple operations after another in one line.
-
-# <span class="flow">Indexing and Slicing</span>
-
-## Indexing
-
-- We have used indexing to access elements of a string last lecture
-- It allows you to access **elements of a sequence** by position
-- **Positive indexing** starts at 0 for the first element
-- **Negative indexing** starts at -1 for the last element <span class="highlight">(new)</span>
-
-. . .
-
-``` python
-string_to_index = "Hello, World!"
-print(string_to_index[0])  # Accessing the first character
-print(string_to_index[-1]) # Accessing the last character
-```
-
-    H
-    !
-
-## Slicing
-
-- Slicing allows you to **extract a portion of a sequence**
-- Syntax: `sequence[start:stop:step]`
-- `start` is the index of the **first element to include**
-- `stop` is the index of the **first element to exclude**
-- `step` is the increment between indices (default is 1)
-- The result is a **new sequence** containing the extracted elements
-
-. . .
-
-``` python
-string_to_slice = "Hello, World!"
-print(string_to_slice[7:12])   # Accessing the last five characters from the start
-print(string_to_slice[-6:-1])  # Accessing the last five characters from the end
-```
-
-    World
-    World
-
-## Slicing Simplified
-
-- If we omit `start` or `stop`, it will be replaced by the **start or end** of the sequence, respectively
-- If we omit `step`, it will be replaced by 1
-
-. . .
-
-``` python
-string_to_slice = "Hello, World!"
-print(string_to_slice[::2])   # Accessing every second character
-print(string_to_slice[::-1])  # Accessing the string in reverse
-```
-
-    Hlo ol!
-    !dlroW ,olleH
-
-## Slicing String Task
-
-<span class="task">\> Task:</span> Discuss and implement the following task:
-
-``` python
-# Slice the following message to create the described output
-message = "y6S0-teru89d23e'.n*ut"
-# Your code here
-
-output = "Student"
-```
-
-. . .
-
-> **Tip**
->
-> Remember, that these methods return a new string. The original string is not modified.
-
-# <span class="flow">Comparisons</span>
-
-## Comparison Operators
-
-- Comparison operators are used to compare two values
-- The result of a comparison is a boolean value (`True` or `False`)
-
-. . .
-
-<span class="question">\> Question:</span> What will be the output of the following code?
-
-``` python
-lower_number = 2; upper_number = 9
-print(lower_number == upper_number) # Equality
-print(lower_number != upper_number) # Inequality
-print(lower_number > upper_number) # Greater than
-print(lower_number < upper_number) # Less than
-print(lower_number >= upper_number) # Greater than or equal to
-print(lower_number <= upper_number) # Less than or equal to
-```
-
-    False
-    True
-    False
-    True
-    False
-    True
-
-## Logical Operators
-
-- Logical operators combine multiple comparison operators
-- Common logical operators: `and`, `or`, `not`
-
-. . .
-
-<span class="question">\> Question:</span> Which of the following expressions is `True`?
-
-``` python
-lower_number = 2; middle_number = 5; upper_number = 9;
-print(lower_number < middle_number and middle_number < upper_number) # and
-print(lower_number < middle_number or middle_number > upper_number) # or
-print(lower_number == lower_number and not lower_number > middle_number) # not
-```
-
-    True
-    True
-    True
-
-. . .
-
-> **Note**
->
-> Note, that `and` and `or` are evaluated from left to right.
-
-## Membership Operators
-
-- Used to check if a value is present in a sequence
-- Common membership operators: `in`, `not in`
-
-. . .
-
-<span class="question">\> Question:</span> Which of these expressions is `True`?
-
-``` python
-an_apple = "apple"
-print("a" in an_apple) # Check if "a" is in the string "apple"
-print("pp" not in an_apple) # Check if "pp" is not in the string
+delivery_hour = 21
+print(delivery_hour < 22)    # before curfew?
+print(delivery_hour == 22)   # exactly at curfew?
 ```
 
     True
     False
 
-. . .
+## The comparison operators
 
-> **Note**
->
-> Note, that `in` and `not in` can be used for strings, lists, tuples, sets, and dictionaries. <span class="highlight">Don't worry!</span> We will learn about lists, tuples, sets, and dictionaries later in the course.
+Six operators, all returning `True` or `False`:
 
-# <span class="flow">Control Structures</span>
-
-## Control Structures
-
-- Used to **control the flow of execution** in a program
-- They can be used to <span class="highlight">make decisions</span> and <span class="highlight">repeat code blocks</span>
-- `if`, `elif`, `else`, `for`, `while`, `break`, `continue`
-
-. . .
-
-<span class="question">\> Question:</span> What do you think each of the above does?
-
-## Indentation
-
-- Indentation is crucial in Python!
-- It is used to indicate the block of code that belongs to the structure
-- The standard indentation is 4 spaces
-- You can use tabs, but you <span class="highlight">should be careful</span> with that
+- `<` less than · `>` greater than
+- `<=` at most · `>=` at least
+- `==` equal · `!=` not equal
 
 . . .
 
 > **Warning**
 >
-> Mixing tabs and spaces can cause errors that are difficult to debug. The Python style guide (PEP 8) recommends using 4 spaces per indentation level for consistency and readability.
+> `=` **assigns** a value; `==` **compares** two values. Mixing them up is the classic first-week bug.
 
-# <span class="flow">Conditional Statements</span>
+## Combining conditions
 
-## Conditional Statements
-
-- They are used to execute <span class="highlight">different blocks of code</span> based on whether a condition is <span class="highlight">true or false</span>:
-  - `if` statements execute a block of code if a condition is `True`
-  - `elif` statements execute a block of code if the previous condition is `False` and the current condition is `True`
-  - `else` statements execute a block of code if the previous conditions are `False`
-
-. . .
-
-> **Tip**
->
-> You can use the `and` and `or` operators to combine multiple conditions.
-
-## if-statements
+`and`, `or`, `not` glue booleans together:
 
 ``` python
-condition = True
-if condition:
-    print("The condition is True!") # Code block to execute if condition is True
-print("This will always be printed!")
+is_weekday = True
+before_curfew = 21 < 22
+print(is_weekday and before_curfew)   # both must be True
 ```
 
-    The condition is True!
-    This will always be printed!
+    True
 
 . . .
 
+`and` needs **both** sides true; `or` needs **at least one**; `not` flips it.
+
+## `if`: do something only when
+
+An `if` runs its indented block **only** when the condition is `True`:
+
 ``` python
-condition = False
-if condition:
-    print("The condition is True!") # Code block to execute if condition is True
-print("This will always be printed!")
+delivery_hour = 21
+if delivery_hour < 22:
+    print("Open — send the courier.")
 ```
 
-    This will always be printed!
+    Open — send the courier.
 
 . . .
 
-> **Tip**
->
-> Writing `if condition:` is equivalent to `if condition == True:`
+The **indentation** (4 spaces) is what marks the block. Python is strict about it.
 
-## else-statements
+## `if` / `else`: two paths
+
+`else` catches every case the `if` missed:
 
 ``` python
-condition = True
-if condition:
-    print("The condition is True!") # Code block to execute if condition is True
+delivery_hour = 23
+if delivery_hour < 22:
+    print("Open — send the courier.")
 else:
-    print("The condition is False!") # Code block to execute if condition is False
+    print("Curfew — kitchen closed.")
 ```
 
-    The condition is True!
+    Curfew — kitchen closed.
+
+## `if` / `elif` / `else`: a ladder
+
+More than two cases? Stack `elif` branches. Reward loyal customers by tier:
+
+``` python
+past_orders = 8
+if past_orders >= 20:
+    tier = "Gold"
+elif past_orders >= 5:
+    tier = "Silver"
+else:
+    tier = "Bronze"
+print(tier)
+```
+
+    Silver
+
+## Predict: Kevin reorders the ladder
+
+Kevin rewrote the tier ladder "to keep the common case on top". A customer with **25 past orders** walks in. Which tier do they get?
+
+``` python
+past_orders = 25
+if past_orders >= 5:
+    tier = "Silver"
+elif past_orders >= 20:
+    tier = "Gold"
+else:
+    tier = "Bronze"
+print(tier)
+```
+
+a\) `Gold` b) `Silver` c) `Bronze`
 
 . . .
 
-``` python
-condition = False
-if condition:
-    print("The condition is True!") # Code block to execute if condition is True
-else:
-    print("The condition is False!") # Code block to execute if condition is False
-```
+<span class="question">Predict first</span> --- commit to an answer before the next slide.
 
-    The condition is False!
+## Answer: the first true branch wins
 
-## elif-statements
+**b) `Silver`** --- Python checks branches **top to bottom** and takes the **first** `True` one. `25 >= 5` is already `True`, so the `Gold` branch is never even looked at. Order your ladder from **strictest to loosest**.
 
 ``` python
-temperature = 11
-if temperature > 10:
-    print("The temperature is greater than 10!")
-elif temperature == 10:
-    print("The temperature is equal to 10!")
+past_orders = 25
+if past_orders >= 5:
+    tier = "Silver"
+elif past_orders >= 20:
+    tier = "Gold"
 else:
-    print("The temperature is less than 10!")
+    tier = "Bronze"
+print(tier)
 ```
 
-    The temperature is greater than 10!
+    Silver
 
 . . .
 
-``` python
-temperature = 10
-if temperature > 10:
-    print("The temperature is greater than 10!")
-elif temperature == 10:
-    print("The temperature is equal to 10!")
-else:
-    print("The temperature is less than 10!")
-```
+(One misplaced `elif` and Kevin demotes every VIP.)
 
-    The temperature is equal to 10!
+## Predict: exactly at curfew
 
-## Comparisons and Conditional Statements
-
-<span class="question">\> Question:</span> What will be the output of the following code?
+The curfew is 22:00. An order comes in at **exactly** 22:00. What prints?
 
 ``` python
-name = "Harry"
-profession = "wizard"
-age = 16
-if name == "Harry" and profession == "wizard" and age < 18:
-    print("You are the chosen one still visiting school!")
-elif name == "Harry" and profession == "wizard" and age >= 18:
-    print("You are the chosen one and can start your journey!")
-else:
-    print("You are not the chosen one!")
+delivery_hour = 22
+print(delivery_hour < 22)
 ```
 
-    You are the chosen one still visiting school!
-
-## Conditional Logic Task
-
-<span class="task">\> Task:</span> Create a grade classifier:
-
-``` python
-# Given a numerical score, classify it into letter grades
-score = 87  # You can test with different values
-
-# Your task: Create if/elif/else statements that assign letter grades:
-# 90-100: "A"
-# 80-89: "B"
-# 70-79: "C"
-# 60-69: "D"
-# Below 60: "F"
-# Also handle invalid scores (negative or > 100)
-
-# Your code here
-
-print(f"Score: {score}, Grade: {grade}")
-```
-
-# <span class="flow">Loops</span>
-
-## Loops
-
-- Loops allow you to execute a block of code <span class="highlight">repeatedly</span>
-- There are two types of loops: `for` and `while`
-- `for` loops are used to iterate over a sequence (e.g., list, tuple, string)
-- `while` loops execute repeatedly until a condition is `False`
+a\) `True` b) `False` c) `Error`
 
 . . .
 
-> **Tip**
->
-> Nested control structures through further indentation are allowed as well, we thus can chain multiple control structures together.
+<span class="question">Predict first</span> --- commit to an answer before the next slide.
 
-## for-loops
+## Answer: `22 < 22`
+
+**b) `False`** --- `<` is **strict**. 22 is not *less than* 22, so at 22:00 sharp the kitchen is already closed. Use `<=` when the boundary should count.
 
 ``` python
-for i in range(5):
-    print(i)
+delivery_hour = 22
+print(delivery_hour < 22)
+```
+
+    False
+
+# ⚡ Your turn --- 10 minutes
+
+Open the exercise (scan the QR or type the link):
+
+**[beyondsimulations.github.io/Introduction-to-Python/notebooks/ex_02_a/](https://beyondsimulations.github.io/Introduction-to-Python/notebooks/ex_02_a/)**
+
+<img src="assets/qr/ex_02_a.png" width="280" />
+
+First **predict** what happens --- then run it.
+
+# <span class="flow">Doing Things Many Times</span>
+
+## The copy-paste pain
+
+Kevin totals the day's orders by hand, one `print` per order:
+
+``` python
+print("Falafel Wrap")
+print("Pad Thai")
+print("Miso Ramen")
+```
+
+    Falafel Wrap
+    Pad Thai
+    Miso Ramen
+
+. . .
+
+Three lines for three items. A hundred orders? A hundred lines. There is a better way.
+
+## `for`: one step for every item
+
+A **`for` loop** runs its block once for each item in a list:
+
+``` python
+menu = ["Falafel Wrap", "Pad Thai", "Miso Ramen"]
+for item in menu:
+    print(item)
+```
+
+    Falafel Wrap
+    Pad Thai
+    Miso Ramen
+
+. . .
+
+`item` is the **loop variable** --- it takes each value in turn. The name is yours to choose.
+
+## The accumulator pattern
+
+Start a total at 0, then **add each item** as the loop visits it:
+
+``` python
+prices = [5.00, 3.50, 6.50]
+total = 0
+for price in prices:
+    total = total + price
+print(total)
+```
+
+    15.0
+
+. . .
+
+After the loop, `total` holds the sum. This is how you replace Kevin's hand-counted dashboard.
+
+## `range()`: count without a list
+
+`range(n)` counts from **0** up to --- but **not including** --- `n`:
+
+``` python
+for i in range(3):
+    print(i)      # ping the courier's phone 3 times
 ```
 
     0
     1
     2
-    3
-    4
+
+. . .
+
+Three passes: `0`, `1`, `2`. (It stops *before* 3 --- a beginner's favourite surprise.)
+
+## `range()` with two and three arguments
+
+- `range(start, stop)` --- begin at `start`, stop before `stop`
+- `range(start, stop, step)` --- jump by `step` each time
 
 ``` python
-for i in range(0, 10, 2):
-    print(i)
+print(list(range(2, 5)))       # delivery windows 2, 3 and 4 o'clock
+print(list(range(0, 10, 3)))   # every 3rd order gets a flyer: 0, 3, 6, 9
 ```
 
-    0
-    2
-    4
-    6
-    8
+    [2, 3, 4]
+    [0, 3, 6, 9]
 
-. . .
+## Looping over a string
 
-> **Tip**
->
-> The `range()` function can take up to three arguments: start, stop, and step.
-
-. . .
-
-## for-loops with Strings
-
-<span class="question">\> Question:</span> What do you expect will be the output?
+A string is a sequence too --- a `for` loop walks it character by character:
 
 ``` python
-fruit = "yellow banana"
-for letter in fruit:
+for letter in "Pad":
     print(letter)
 ```
 
-    y
-    e
-    l
-    l
-    o
-    w
-     
-    b
+    P
     a
-    n
-    a
-    n
-    a
+    d
 
-## while-loops
+## A loop in one line (a preview)
+
+A **list comprehension** is a `for` loop compressed into one line that builds a list:
 
 ``` python
-i = 0
-while i < 5:
-    print(i)
-    i += 1
+doubled = [n * 2 for n in [4, 5, 6]]
+print(doubled)
 ```
 
-    0
-    1
-    2
-    3
-    4
+    [8, 10, 12]
 
 . . .
 
-<span class="question">\> Question:</span> What could be an issue with poorly written while-loops?
+> **Note**
+>
+> Just a taste --- Session IV gives comprehensions their proper treatment. For now: recognise the shape.
 
-## while True
+## Predict: where does `print` run?
 
-<span class="question">\> Question:</span> Anybody an idea what this code does?
+The `print` is **not** indented. What does this show?
 
 ``` python
-i = 0
-while True:
-    if i % 10 == 0:
-         print(i)
-    if i > 100:
-        break
-    i += 1
+total = 0
+for n in [10, 20]:
+    total = total + n
+print(total)
 ```
 
-    0
-    10
-    20
+a\) `10` b) `30` c) `10` then `30`
+
+. . .
+
+<span class="question">Predict first</span> --- then turn the page.
+
+## Answer: the unindented `print`
+
+**b) `30`** --- `print` sits **outside** the loop, so it runs **once**, after the loop finishes, showing the final total. Indent it and it would print on every pass. Indentation decides what repeats.
+
+``` python
+total = 0
+for n in [10, 20]:
+    total = total + n
+print(total)
+```
+
     30
-    40
-    50
-    60
-    70
-    80
-    90
-    100
 
-## Importance of Control Flow
+# ⚡ Your turn --- 10 minutes
 
-- Allows programs to make decisions based on **conditions**
-- Enables **repetition** of code blocks
-- Helps manage program complexity
-- Improves efficiency by <span class="highlight">executing only necessary code</span>
-- Facilitates creation of dynamic, responsive programs
+Open the exercise (scan the QR or type the link):
+
+**[beyondsimulations.github.io/Introduction-to-Python/notebooks/ex_02_b/](https://beyondsimulations.github.io/Introduction-to-Python/notebooks/ex_02_b/)**
+
+<img src="assets/qr/ex_02_b.png" width="280" />
+
+First **predict** what happens --- then run it.
+
+# <span class="flow">Repeat Until, and Clean Text</span>
+
+## `while`: repeat as long as
+
+A **`while` loop** repeats **as long as** its condition stays `True`. MunchCorp just undercut you --- cut your price each round until you drop below their price:
+
+``` python
+price = 10.00
+rounds = 0
+while price >= 7.00:
+    price = round(price * 0.8, 2)   # 20% off each round
+    rounds = rounds + 1
+print(rounds, price)
+```
+
+    2 6.4
 
 . . .
 
-> **Note**
->
-> Without control flow, programs would execute linearly from top to bottom, limiting their functionality and flexibility.
+Two rounds and you're under 7.00. (The lab's price war against MunchCorp is your boss fight tonight.)
 
-## Loop Task
+## The loop must move toward its goal
 
-<span class="task">\> Task:</span> Implement the following task:
+Every pass must nudge the condition **closer to `False`** --- here the price shrinks, so the loop is guaranteed to end.
+
+. . .
+
+If nothing changes, the condition never flips and the loop runs **forever**:
 
 ``` python
-# Implement a while-loop that prints all even numbers between 0 and 100 excluding both 0 and 100.
-number = 0
-# Your code here
+# ⚠️ NEVER run this — it never stops, and freezes the browser tab
+count = 1
+while count > 0:
+    count = count + 1    # count only grows — condition stays True forever
 ```
 
 . . .
 
+> **Warning**
+>
+> An endless `while` will freeze your marimo tab. Always check that **something inside the loop changes** the condition.
+
+## `break`: an early exit
+
+`break` jumps out of a loop immediately --- handy with `while True`:
+
+``` python
+count = 0
+while True:
+    count = count + 1
+    if count == 3:
+        break
+print(count)
+```
+
+    3
+
+. . .
+
+The loop would run forever, but `break` stops it the moment `count` hits 3.
+
+## Cleaning up text
+
+Kevin typed the daily special IN ALL CAPS with stray spaces. Strings have **methods** that return a cleaned-up **copy**:
+
+``` python
+raw = "  miso ramen  "
+print(raw.strip())          # drop outer spaces
+print(raw.strip().title())  # then Capitalise Each Word
+print("special".upper())    # SHOUT
+```
+
+    miso ramen
+    Miso Ramen
+    SPECIAL
+
+. . .
+
+Methods can be **chained** left to right: `raw.strip().title()`.
+
+## Trimming specific characters
+
+`.strip()` drops spaces; `.rstrip("!")` drops trailing `!` --- chain them to fix Kevin's shouting:
+
+``` python
+print("SALE!!!".rstrip("!"))            # SALE
+print("SALE!!!".rstrip("!").title())    # Sale
+```
+
+    SALE
+    Sale
+
+. . .
+
+The original string is never changed --- each method hands back a **new** one.
+
+## Predict: chained methods
+
+What does this print?
+
+``` python
+print("  MOIN  ".strip().lower())
+```
+
+a\) `MOIN` b) `moin` c) `moin`
+
+. . .
+
+<span class="question">Predict first</span> --- then reveal.
+
+## Answer: `"  MOIN  ".strip().lower()`
+
+**b) `moin`** --- `.strip()` removes the outer spaces, then `.lower()` lowercases the result. Chained methods run **left to right**, each acting on the previous one's output.
+
+``` python
+print("  MOIN  ".strip().lower())
+```
+
+    moin
+
+# ⚡ Your turn --- 10 minutes
+
+Open the exercise (scan the QR or type the link):
+
+**[beyondsimulations.github.io/Introduction-to-Python/notebooks/ex_02_c/](https://beyondsimulations.github.io/Introduction-to-Python/notebooks/ex_02_c/)**
+
+<img src="assets/qr/ex_02_c.png" width="280" />
+
+First **predict** what happens --- then run it.
+
+# <span class="flow">To the Lab</span>
+
+## Tonight's episode
+
+- Head to the lab notebook: [Episode 2 --- The Curfew](../tutorials/tut_02_control.qmd)
+- You'll enforce the 22:00 curfew, total the day's orders in a loop, de-shout Kevin's menu, and fight the **MunchCorp price war** with a `while` loop
+- It runs entirely in your browser --- no setup, just click and code
+
+. . .
+
+> **Important**
+>
+> **Download your `.py` before you leave.** Closing the tab without downloading loses your work --- and downloading is exactly how you hand in the checkpoints.
+
+# <span class="flow">Wrap-up</span>
+
+## Three things to remember
+
+1.  **`if` / `elif` / `else`** run the **first** true branch --- test the strictest condition first
+2.  **`for`** repeats over every item (accumulator: start at 0, add each); **`while`** repeats until its condition flips --- and something inside must move it there
+3.  **String methods** (`.strip()`, `.title()`, `.upper()`, `.rstrip("!")`) return a cleaned **copy**, and **chain** left to right
+
+. . .
+
 > **Note**
 >
-> **And that's it for todays lecture!**  
-> We now have covered the basics on String methods, Comparisons, conditional statements and loops.
+> **Next time --- Episode 3:** Kevin has pasted the same receipt code **14 times**, and one small change now takes him an afternoon. We bring in **functions** to the rescue.
 
 # <span class="flow">Literature</span>
 
-## Interesting Books to start
+## Books to start with
 
 - Downey, A. B. (2024). Think Python: How to think like a computer scientist (Third edition). O'Reilly. [Link to free online version](https://greenteapress.com/wp/think-python-3rd-edition/)
 - Elter, S. (2021). Schrödinger programmiert Python: Das etwas andere Fachbuch (1. Auflage). Rheinwerk Verlag.
 
 . . .
 
-> **Tip**
+> **Note**
 >
 > Nothing new here, but these are still great books to start with!
 
 . . .
 
-For more interesting literature to learn more about Python, take a look at the [literature list](../general/literature.qmd) of this course.
+For more, see the [literature list](../general/literature.qmd) of this course.

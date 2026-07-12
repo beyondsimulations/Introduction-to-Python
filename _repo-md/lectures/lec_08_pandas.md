@@ -1,8 +1,8 @@
 ---
-title: Lecture VII - Pandas and AI
+title: Lecture VIII - Pandas and AI Craft
 subtitle: Programming with Python
 author: Dr. Tobias Vlćek
-institute: Kühne Logistics University Hamburg - Fall 2025
+institute: Kühne Logistics University Hamburg - Fall 2026
 format:
   revealjs:
     footer: ' {{< meta title >}} | {{< meta author >}} | [Home](lec_08_pandas.qmd)'
@@ -10,858 +10,432 @@ format:
 ---
 
 
-<script src="https://cdn.jsdelivr.net/npm/requirejs@2.3.6/require.min.js" integrity="sha384-c9c+LnTbwQ3aujuU7ULEPVvgLs+Fn6fJUvIGTsuu1ZcCf11fiEubah0ttpca4ntM sha384-6V1/AdqZRWk1KAlWbKBlGhN7VG4iE/yAZcO6NZPMF8od0vukrvr0tg4qY6NSrItx" crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js" integrity="sha384-ZvpUoO/+PpLXR1lu4jmpXWu80pZlYUAfxl5NsBMWOEPSjUn/6Z/hRTt8+pR6L4N2" crossorigin="anonymous" data-relocate-top="true"></script>
-<script type="application/javascript">define('jquery', [],function() {return window.jQuery;})</script>
+# 📋 Checkpoint 4 --- Sessions VI--VII
 
+The first **40 minutes** are the checkpoint. It starts **now** --- before the investor opens her data room.
 
-# <span class="flow">Quick Recap of the last Lecture</span>
+- **Individual work** --- no neighbours, no chat
+- **AI tools are allowed** --- being able to **VERIFY** the output is the skill being graded
+- The **link and QR** are handed out in class --- open it and start
+- ~6 short tasks: write code, trace code, fix a bug, answer a multiple choice
+- It sweeps **Sessions VI--VII** --- modules, `random` and seeds, NumPy arrays and masks
 
-## What is NumPy?
-
-- NumPy is a package for scientific computing in Python
-- Provides <span class="highlight">multi-dimensional arrays and matrices</span>
-- Much faster than Python lists for numerical operations
-- Operations are implemented in C and C++
+<!-- QR handed out live — never in the deck -->
 
 . . .
 
-> **Tip**
->
-> NumPy arrays are stored in contiguous memory blocks, making operations very efficient.
-
-## Creating Arrays
-
-- Core data structure is the `ndarray`
-- Can create arrays from lists, tuples, or other data structures
-- Special functions like:
-  - `np.zeros()` for arrays of zeros
-  - `np.random.rand()` for random values
-  - `np.arange()` for evenly spaced values
-  - `np.linspace()` for linearly spaced values
-
-## Working with Arrays
-
-- Support for multi-dimensional operations
-- Common operations:
-  - Element-wise arithmetic (`+`, `-`, `*`, `/`)
-  - Array indexing and slicing
-  - Shape manipulation (`reshape`, `flatten`)
-  - Sorting and transposing
-
-. . .
-
-> **Tip**
->
-> NumPy operations are vectorized, meaning they operate on entire arrays at once rather than element by element.
-
-## NumPy in Action I
-
-<span class="task">Task</span>: Complete the following task:
-
-``` python
-# TODO: Create an array with 10 evenly spaced numbers over the interval from 0 to 73.
-
-import numpy as np
-# YOUR CODE HERE
-```
+**When you're done:** menu → *Download* → *Download Python code* → upload the `.py` to the **"Checkpoint 4"** assignment on Moodle. **No retakes** --- one sitting.
 
 . . .
 
 > **Note**
 >
-> Note, that you can always use the `help()` function to get more information about a function. But be sure to import the package first, otherwise you will get an error. To quit the help page, press `q`.
+> The green ✅ live checks are **provisional** --- the final grading runs on our side. And take a breath: everything in it was rehearsed in the labs.
 
-## NumPy in Action II
+# <span class="flow">Episode 8: The Data Room</span>
 
-<span class="task">Task</span>: Complete the following task:
+## Show me the data
 
-``` python
-# TODO: Take the following 3x3 array and reduce it to a 1D array.
-
-import numpy as np
-array = np.array([[1, 2, 3], [4, 5, 6], [7, 8, 9]])
-# YOUR CODE HERE
-```
-
-# <span class="flow">Pandas Basics</span>
-
-## What is Pandas?
-
-- Pandas is a <span class="highlight">data manipulation and analysis library</span>
-- It provides data structures like **DataFrames and Series**
-- Tools for data cleaning, analysis, and visualization
-- It can also be used to <span class="highlight">work with Excel files!</span>
-
-## How to install Pandas
-
-- In the last lecture, we have installed it with `uv install pandas`
-- Now, import the package `import pandas as pd`
+Pens down --- the checkpoint is behind you. This morning the rival chain **MunchCorp** put out a press release bragging about their **"data-driven growth."** The evidence attached: exactly **one pie chart.** The investor slid it across the table and said, *"Yours will be better. Show me the data."*
 
 . . .
 
-> **Note**
->
-> You can also use a different abbreviation, but `pd` is the most common one.
+Kevin didn't wait. He'd pasted the question into a chatbot, proudly turned the laptop around, and hit run:
 
-## Creating DataFrames
-
-- DataFrames behave quite similar to Numpy arrays
-- But they have <span class="highlight">row and column labels</span>
+`AttributeError: 'DataFrame' object has no attribute 'overview'`
 
 . . .
+
+The AI sounded certain. The method it called **does not exist.** Today is about that difference --- and about the tool that answers the investor for real: **pandas.**
+
+# <span class="flow">AI joins the team --- professionally</span>
+
+## Prompting that works: context + constraints
+
+An AI is only as good as what you tell it. Two things turn a vague request into a useful answer:
+
+- **Context** --- say what the data *is*: "I have a DataFrame `orders` with columns `zone` (text) and `total_eur` (float)."
+- **Constraints** --- say exactly what you want *back*: "Give me the total `total_eur` for zone `Nord`, as a single number."
+
+. . .
+
+> *"I have a pandas DataFrame `orders` with a text column `zone` and a float column `total_eur`. Write one line that returns the total `total_eur` for rows where `zone` is `Nord`."*
+
+Vague in, vague out. Specific in, checkable out --- and then you **iterate**.
+
+## The verify workflow
+
+Kevin's mistake wasn't *using* AI. It was **shipping without checking.** Every line an AI hands you gets three passes:
+
+1.  **Read it** --- do you understand what each line claims to do?
+2.  **Run it** --- does it actually execute, or does it crash?
+3.  **Test it** --- try it on a small case where **you already know the answer.**
+
+. . .
+
+Step 3 in action --- five orders with values you can add in your head, and the AI's suggested line for the Nord average:
 
 ``` python
 import pandas as pd
-df = pd.DataFrame({ # DataFrame is created from a dictionary
-    "Name": ["Tobias", "Robin", "Nils", "Nikolai"],
-    "Kids": [2, 1, 0, 0],
-    "City": ["Oststeinbek", "Oststeinbek", "Hamburg", "Lübeck"],
-    "Salary": [3000, 3200, 4000, 2500]}); print(df)
+
+check = pd.DataFrame({
+    "zone":      ["Nord", "Sued", "Nord", "Hafen", "Nord"],
+    "total_eur": [10.0, 7.5, 20.0, 5.0, 30.0],
+})
+print(check[check["zone"] == "Nord"]["total_eur"].mean())
 ```
 
-          Name  Kids         City  Salary
-    0   Tobias     2  Oststeinbek    3000
-    1    Robin     1  Oststeinbek    3200
-    2     Nils     0      Hamburg    4000
-    3  Nikolai     0       Lübeck    2500
+    20.0
 
-## Reading from CSV Files
+. . .
+
+The Nord orders are 10, 20 and 30 --- you can average those in your head. Does the AI's answer match? Then the line has earned some trust on eight hundred rows. Verification is the job now --- not typing.
+
+## Predict: does `.summarize()` exist?
+
+The AI wrote this for Kevin. `orders` is a tiny two-row frame. What happens on the last line?
 
 ``` python
-df = pd.read_csv("supplementary/lec_08/employees.csv") # Reads the CSV file
+import pandas as pd
+orders = pd.DataFrame({"zone": ["Nord", "Sued"], "total_eur": [12.0, 9.5]})
+
+orders.summarize()
+```
+
+a\) prints a summary table b) raises an `AttributeError` c) returns an empty DataFrame
+
+. . .
+
+<span class="question">Predict first</span> --- commit to an answer before the next slide.
+
+## Answer: the method never existed
+
+**b) `AttributeError`** --- pandas has no `.summarize()`. The AI invented a plausible-sounding name, and Python answers with a traceback you've read since Episode 5:
+
+``` python
+import pandas as pd
+orders = pd.DataFrame({"zone": ["Nord", "Sued"], "total_eur": [12.0, 9.5]})
+
+orders.summarize()                     # the method the AI invented
+```
+
+<pre><span class="ansi-red-fg">---------------------------------------------------------------------------</span>
+<span class="ansi-red-fg">AttributeError</span>                            Traceback (most recent call last)
+<span class="ansi-green-fg">/var/folders/_5/jkkjxxdd5f1955l380dky7n80000gn/T/ipykernel_92941/1876211805.py</span> in <span class="ansi-cyan-fg">?</span><span class="ansi-blue-fg">()</span>
+<span class="ansi-green-fg">      1</span> <span style="font-weight:bold;color:rgb(0,135,0)">import</span> pandas <span style="font-weight:bold;color:rgb(0,135,0)">as</span> pd
+<span class="ansi-green-fg">      2</span> orders = pd.DataFrame({<span class="ansi-yellow-fg">"zone"</span>: [<span class="ansi-yellow-fg">"Nord"</span>, <span class="ansi-yellow-fg">"Sued"</span>], <span class="ansi-yellow-fg">"total_eur"</span>: [<span class="ansi-green-fg">12.0</span>, <span class="ansi-green-fg">9.5</span>]})
+<span class="ansi-green-fg">      3</span> 
+<span class="ansi-green-fg">----&gt; </span><span class="ansi-green-fg">4</span> orders.summarize()                     <span style="font-style:italic;color:rgb(95,135,135)"># the method the AI invented</span>
+
+<span class="ansi-green-fg">~/development/lectures/Introduction-to-Python/.venv/lib/python3.12/site-packages/pandas/core/generic.py</span> in <span class="ansi-cyan-fg">?</span><span class="ansi-blue-fg">(self, name)</span>
+<span class="ansi-green-fg">   6314</span>             <span style="font-weight:bold;color:rgb(0,135,0)">and</span> name <span style="font-weight:bold;color:rgb(0,135,0)">not</span> <span style="font-weight:bold;color:rgb(0,135,0)">in</span> self._accessors
+<span class="ansi-green-fg">   6315</span>             <span style="font-weight:bold;color:rgb(0,135,0)">and</span> self._info_axis._can_hold_identifiers_and_holds_name(name)
+<span class="ansi-green-fg">   6316</span>         ):
+<span class="ansi-green-fg">   6317</span>             <span style="font-weight:bold;color:rgb(0,135,0)">return</span> self[name]
+<span class="ansi-green-fg">-&gt; </span><span class="ansi-green-fg">6318</span>         <span style="font-weight:bold;color:rgb(0,135,0)">return</span> object.__getattribute__(self, name)
+
+<span class="ansi-red-fg">AttributeError</span>: 'DataFrame' object has no attribute 'summarize'</pre>
+
+. . .
+
+The real method is `.describe()`:
+
+``` python
+print(orders.describe())               # the method that actually exists
+```
+
+           total_eur
+    count   2.000000
+    mean   10.750000
+    std     1.767767
+    min     9.500000
+    25%    10.125000
+    50%    10.750000
+    75%    11.375000
+    max    12.000000
+
+. . .
+
+**An AI that sounds sure is not the same as an API that exists.**
+
+## Disclosure: one line, every time
+
+From Session VI the course rule stands: every submission that used AI carries a **one-line note** saying what you used it for.
+
+- *"Used the chatbot to draft the `groupby` line; I checked the totals by hand."*
+- Not a confession --- a professional reflex.
+
+. . .
+
+It protects **you**: it separates the work you understand from the work you pasted, so when a reviewer (or the investor) asks "how does this line work?", you're never caught claiming something you can't explain.
+
+## When NOT to reach for AI
+
+Sometimes the fastest path is the one you already own. You built a whole muscle in Part I:
+
+- A red traceback? **You've read those since Episode 5.** The last line names the error and points at the file --- often faster than describing it to a chatbot.
+- A one-line filter you've written ten times? Just write it.
+
+. . .
+
+> **Tip**
+>
+> Use AI to draft the unfamiliar and to explain the confusing --- not to dodge the thinking you're perfectly able to do. The pilot flies; the co-pilot advises.
+
+# ⚡ Your turn --- 10 minutes
+
+Open the exercise (scan the QR or type the link):
+
+**[beyondsimulations.github.io/Introduction-to-Python/notebooks/ex_08_a/](https://beyondsimulations.github.io/Introduction-to-Python/notebooks/ex_08_a/)**
+
+<img src="assets/qr/ex_08_a.png" width="280" />
+
+First **predict** what happens --- then run it.
+
+# <span class="flow">The DataFrame</span>
+
+## What pandas adds over NumPy
+
+Last session, a NumPy array turned a thousand numbers into one fast object --- but every value had to share **one type**, and columns had no names.
+
+- A **DataFrame** is a table: **named columns**, and each column can be a **different type**
+- Text zones next to float euros next to integer counts --- all in one object
+- It's the spreadsheet the investor handed you, loaded into Python
+
+. . .
+
+The convention everyone uses: `import pandas as pd`.
+
+## A DataFrame from a dictionary
+
+Keys become **column names**; each list becomes a **column**. One order per row:
+
+``` python
+import pandas as pd
+
+df = pd.DataFrame({
+    "order_id":  [101, 102, 103, 104, 105],
+    "zone":      ["Nord", "Sued", "Nord", "Hafen", "Sued"],
+    "items":     [2, 1, 3, 1, 4],
+    "total_eur": [18.50, 7.20, 24.00, 6.80, 31.40],
+})
 print(df)
 ```
 
-           Name  Age Department        Position  Salary
-    0     Alice   30         HR         Manager   50000
-    1       Bob   25         IT       Developer   60000
-    2   Charlie   28    Finance         Analyst   55000
-    3     David   35  Marketing       Executive   52000
-    4       Eve   32      Sales  Representative   48000
-    5     Frank   29         IT       Developer   61000
-    6     Grace   31         HR       Assistant   45000
-    7      Hank   27    Finance         Analyst   53000
-    8       Ivy   33  Marketing         Manager   58000
-    9      Jack   26      Sales  Representative   47000
-    10     Kara   34         IT       Developer   62000
-    11      Leo   30         HR         Manager   51000
-    12     Mona   28    Finance         Analyst   54000
-    13     Nina   35  Marketing       Executive   53000
-    14    Oscar   32      Sales  Representative   49000
-    15     Paul   29         IT       Developer   63000
-    16    Quinn   31         HR       Assistant   46000
-    17     Rita   27    Finance         Analyst   52000
-    18      Sam   33  Marketing         Manager   59000
-    19     Tina   26      Sales  Representative   48000
-    20      Uma   34         IT       Developer   64000
-    21    Vince   30         HR         Manager   52000
-    22     Walt   28    Finance         Analyst   55000
-    23     Xena   35  Marketing       Executive   54000
-    24     Yara   32      Sales  Representative   50000
-    25     Zane   29         IT       Developer   65000
-    26     Anna   31         HR       Assistant   47000
-    27      Ben   27    Finance         Analyst   53000
-    28    Cathy   33  Marketing         Manager   60000
-    29    Dylan   26      Sales  Representative   49000
-    30     Ella   34         IT       Developer   66000
-    31     Finn   30         HR         Manager   53000
-    32     Gina   28    Finance         Analyst   56000
-    33     Hugo   35  Marketing       Executive   55000
-    34     Iris   32      Sales  Representative   51000
-    35     Jake   29         IT       Developer   67000
-    36     Kyla   31         HR       Assistant   48000
-    37     Liam   27    Finance         Analyst   54000
-    38      Mia   33  Marketing         Manager   61000
-    39     Noah   26      Sales  Representative   50000
-    40    Olive   34         IT       Developer   68000
-    41     Pete   30         HR         Manager   54000
-    42   Quincy   28    Finance         Analyst   57000
-    43     Rose   35  Marketing       Executive   56000
-    44    Steve   32      Sales  Representative   52000
-    45     Tara   29         IT       Developer   69000
-    46     Umar   31         HR       Assistant   49000
-    47     Vera   27    Finance         Analyst   55000
-    48     Will   33  Marketing         Manager   62000
-    49     Zara   26      Sales  Representative   51000
-
-## Basic Operations
-
-- Use the `df.head()` method to display the first 5 rows
-- Use the `df.tail()` method to display the last 5 rows
+       order_id   zone  items  total_eur
+    0       101   Nord      2       18.5
+    1       102   Sued      1        7.2
+    2       103   Nord      3       24.0
+    3       104  Hafen      1        6.8
+    4       105   Sued      4       31.4
 
 . . .
 
-``` python
-df = pd.read_csv("supplementary/lec_08/employees.csv")
-print(df.tail())
-```
-
-        Name  Age Department        Position  Salary
-    45  Tara   29         IT       Developer   69000
-    46  Umar   31         HR       Assistant   49000
-    47  Vera   27    Finance         Analyst   55000
-    48  Will   33  Marketing         Manager   62000
-    49  Zara   26      Sales  Representative   51000
-
-## Information about the DataFrame
-
-- Use `df.info()` to display information about a DataFrame
+Five orders, four columns, mixed types --- text, integers, floats --- living happily together.
 
 . . .
 
+> **Note**
+>
+> You won't type the investor's eighty orders by hand --- in tonight's lab a real CSV loads in one line, `orders = pd.read_csv("public/orders.csv")`. In the browser notebook that same line fetches the file over the web instead of from disk --- pandas doesn't care, your code doesn't change.
+
+## First look: `.head()` and `.info()`
+
+Before analysing a table, glance at it. `.head()` shows the top rows; `.info()` reports columns, types, and counts:
+
 ``` python
-df = pd.read_csv("supplementary/lec_08/employees.csv")
-print(df.info())
+print(df.head(3))     # first 3 rows
+print()
+df.info()             # columns, dtypes, non-null counts
 ```
+
+       order_id  zone  items  total_eur
+    0       101  Nord      2       18.5
+    1       102  Sued      1        7.2
+    2       103  Nord      3       24.0
 
     <class 'pandas.core.frame.DataFrame'>
-    RangeIndex: 50 entries, 0 to 49
-    Data columns (total 5 columns):
-     #   Column      Non-Null Count  Dtype 
-    ---  ------      --------------  ----- 
-     0   Name        50 non-null     object
-     1   Age         50 non-null     int64 
-     2   Department  50 non-null     object
-     3   Position    50 non-null     object
-     4   Salary      50 non-null     int64 
-    dtypes: int64(2), object(3)
-    memory usage: 2.1+ KB
-    None
-
-## Statistics about a DataFrame
-
-- Use `df.describe()` to display summary statistics
-- Use the `df.index` **attribute** to access the **index**
+    RangeIndex: 5 entries, 0 to 4
+    Data columns (total 4 columns):
+     #   Column     Non-Null Count  Dtype  
+    ---  ------     --------------  -----  
+     0   order_id   5 non-null      int64  
+     1   zone       5 non-null      object 
+     2   items      5 non-null      int64  
+     3   total_eur  5 non-null      float64
+    dtypes: float64(1), int64(2), object(1)
+    memory usage: 292.0+ bytes
 
 . . .
 
+`.info()` is your first sanity check: right number of rows? Any column a surprising type?
+
+## The numbers at a glance: `.describe()`
+
+`.describe()` computes count, mean, min, max and quartiles for every **numeric** column at once:
+
 ``` python
-df = pd.read_csv("supplementary/lec_08/employees.csv")
 print(df.describe())
 ```
 
-                 Age        Salary
-    count  50.000000     50.000000
-    mean   30.320000  54980.000000
-    std     2.958488   6175.957333
-    min    25.000000  45000.000000
-    25%    28.000000  50250.000000
-    50%    30.000000  54000.000000
-    75%    33.000000  59750.000000
-    max    35.000000  69000.000000
-
-## Filtering DataFrames
-
-- Use `df['column_name']` to access a column
-- Use the `df[df['column'] > value]` method to filter
+             order_id    items  total_eur
+    count    5.000000  5.00000   5.000000
+    mean   103.000000  2.20000  17.580000
+    std      1.581139  1.30384  10.688873
+    min    101.000000  1.00000   6.800000
+    25%    102.000000  1.00000   7.200000
+    50%    103.000000  2.00000  18.500000
+    75%    104.000000  3.00000  24.000000
+    max    105.000000  4.00000  31.400000
 
 . . .
 
-``` python
-df = pd.read_csv("supplementary/lec_08/employees.csv")
-df_high_salary = df[df['Salary'] >= 67000]
-print(df_high_salary)
-print(df_high_salary.iloc[2]["Name"]) #Access the third row and the "Name" column
-print(df_high_salary.loc[40]["Name"]) #Access the label 40 and the "Name" column
-```
+One call, the whole numeric summary --- this is the `.summarize()` the AI wished existed, spelled correctly.
 
-         Name  Age Department   Position  Salary
-    35   Jake   29         IT  Developer   67000
-    40  Olive   34         IT  Developer   68000
-    45   Tara   29         IT  Developer   69000
-    Tara
-    Olive
+## Selecting a column, filtering rows
 
-## Filtering in Action
-
-<span class="task">Task</span>: Complete the following task:
+Pick one column by name; keep rows with a **boolean mask** --- exactly the NumPy idea from last session:
 
 ``` python
-# TODO: Load the employees.csv located in the git repository into a DataFrame
-# First, filter the DataFrame for employees with a manager position
-# Then, print the average salary of the remaining employees
-# Finally, print the name of the employee with the lowest salary
+print(df["zone"])                  # one column (a Series)
+print()
+print(df[df["zone"] == "Nord"])    # only the Nord rows — case-sensitive!
 ```
+
+    0     Nord
+    1     Sued
+    2     Nord
+    3    Hafen
+    4     Sued
+    Name: zone, dtype: object
+
+       order_id  zone  items  total_eur
+    0       101  Nord      2       18.5
+    2       103  Nord      3       24.0
+
+. . .
+
+`df["zone"] == "Nord"` builds a column of `True`/`False`; indexing with it keeps the `True` rows. `.loc` exists for label-based selection, but a plain mask covers today.
+
+## Adding a column, sorting
+
+Compute a new column from existing ones, then sort. Work on a **copy** so the original stays intact:
+
+``` python
+priced = df.copy()
+priced["eur_per_item"] = priced["total_eur"] / priced["items"]
+print(priced.sort_values("total_eur", ascending=False))
+```
+
+       order_id   zone  items  total_eur  eur_per_item
+    4       105   Sued      4       31.4          7.85
+    2       103   Nord      3       24.0          8.00
+    0       101   Nord      2       18.5          9.25
+    1       102   Sued      1        7.2          7.20
+    3       104  Hafen      1        6.8          6.80
+
+. . .
+
+`sort_values` reorders rows by a column --- biggest orders first here. The new column is just arithmetic on two others, computed for every row at once.
+
+## Predict: filtering with the wrong case
+
+Kevin filters for the Nord zone --- but types it **lowercase**. The data spells it `"Nord"`. What does this print?
+
+``` python
+print(df[df["zone"] == "nord"])
+```
+
+a\) the Nord rows anyway b) an empty table, no error c) a `KeyError`
+
+. . .
+
+<span class="question">Predict first</span> --- commit to an answer before the next slide.
+
+## Answer: an empty table, no warning
+
+**b) an empty table** --- `"nord"` matches nothing, so the mask is all `False` and pandas hands back **zero rows**. No error, no complaint:
+
+``` python
+print(df[df["zone"] == "nord"])          # nothing matches "nord"
+print("rows:", len(df[df["zone"] == "nord"]))
+```
+
+    Empty DataFrame
+    Columns: [order_id, zone, items, total_eur]
+    Index: []
+    rows: 0
+
+. . .
+
+This is the dangerous kind of bug: it **runs**, it just returns nothing. **pandas won't warn you; YOU verify** --- which is exactly why you test filters on a case whose answer you know.
+
+## One more tool: `groupby`
+
+The investor's real question isn't about one row --- it's **per zone**: which area brings in the most?
+
+- `groupby` splits the table by a category, then computes **once per group**
+- `df.groupby("zone")["total_eur"].sum()` → one total for each zone
 
 . . .
 
 > **Note**
 >
-> Note, that we can use the `mean()` method on the `Salary` column, as it is a numeric column. In addition, we can use the `min()` method on the `Salary` column to find the lowest salary.
+> That's the teaser --- tonight's lab does the heavy lifting with `groupby`, turning eighty raw orders into the handful of numbers the investor actually asked for.
 
-# <span class="flow">Grouping DataFrames</span>
+# ⚡ Your turn --- 10 minutes
 
-## Grouping
+Open the exercise (scan the QR or type the link):
 
-- Grouping is a <span class="highlight">powerful feature</span> of Pandas
-- Groups data by one or more columns
-- And then <span class="highlight">perform operations</span>
-- Syntax is `df.groupby('column').method()`
+**[beyondsimulations.github.io/Introduction-to-Python/notebooks/ex_08_b/](https://beyondsimulations.github.io/Introduction-to-Python/notebooks/ex_08_b/)**
 
-. . .
+<img src="assets/qr/ex_08_b.png" width="280" />
 
-``` python
-df = pd.read_csv("supplementary/lec_08/employees.csv")
-df.groupby(['Position']).sum() # Sum per position
-```
+First **predict** what happens --- then run it.
 
-<div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
+# <span class="flow">To the Lab</span>
 
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
+## Tonight's episode
 
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
-
-|  | Name | Age | Department | Salary |
-|----|----|----|----|----|
-| Position |  |  |  |  |
-| Analyst | CharlieHankMonaRitaWaltBenGinaLiamQuincyVera | 275 | FinanceFinanceFinanceFinanceFinanceFinanceFina\... | 544000 |
-| Assistant | GraceQuinnAnnaKylaUmar | 155 | HRHRHRHRHR | 235000 |
-| Developer | BobFrankKaraPaulUmaZaneEllaJakeOliveTara | 306 | ITITITITITITITITITIT | 645000 |
-| Executive | DavidNinaXenaHugoRose | 175 | MarketingMarketingMarketingMarketingMarketing | 270000 |
-| Manager | AliceIvyLeoSamVinceCathyFinnMiaPeteWill | 315 | HRMarketingHRMarketingHRMarketingHRMarketingHR\... | 560000 |
-| Representative | EveJackOscarTinaYaraDylanIrisNoahSteveZara | 290 | SalesSalesSalesSalesSalesSalesSalesSalesSalesS\... | 495000 |
-
-</div>
-
-## Grouping Numeric Columns
-
-- To prevent errors, we can <span class="highlight">select numeric columns first</span>
-- Afterwards, perform the operation on the **selected columns**
-- Helps to avoid errors when grouping by non-numeric columns
-- Or **drop columns** by `df.drop(columns=["column"])`
+- Head to the lab notebook: [Episode 8 --- The Data Room](../tutorials/tut_08_pandas.qmd)
+- The investor slides a **USB stick** across the table --- every order, two full weeks. It's now `orders.csv`, eighty rows, loaded with one `pd.read_csv` line
+- You'll `.head()`, `.info()` and `.describe()` it, filter with masks, add a column on a safe copy, and answer per-zone questions with `groupby`
+- Kevin has discovered AI --- your real job is to **supervise** it and catch the confident nonsense
+- It runs entirely in your browser --- no setup, just click and code
 
 . . .
 
-``` python
-df = pd.read_csv("supplementary/lec_08/employees.csv")
-numeric_cols = df.select_dtypes(include=['number']).columns
-print(df.groupby("Position")[numeric_cols].sum())
-```
+> **Important**
+>
+> **Download your `.py` before you leave.** Closing the tab without downloading loses your work --- the same motion you used to hand in the checkpoint this morning.
 
-                    Age  Salary
-    Position                   
-    Analyst         275  544000
-    Assistant       155  235000
-    Developer       306  645000
-    Executive       175  270000
-    Manager         315  560000
-    Representative  290  495000
+# <span class="flow">Wrap-up</span>
 
-## Grouping by Multiple Columns
+## Three things to remember
 
-- Group by multiple columns `['column1', 'column2']`
-- You can use <span class="highlight">lists or tuples</span> to specify multiple columns
-
-. . .
-
-``` python
-df = pd.read_csv("supplementary/lec_08/employees.csv")
-df = df.drop(columns=["Name"])
-# Max per position and department
-df.groupby(['Position', "Department"]).max()
-```
-
-<div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
-
-<table class="dataframe" data-quarto-postprocess="true" data-border="1">
-<thead>
-<tr style="text-align: right;">
-<th data-quarto-table-cell-role="th"></th>
-<th data-quarto-table-cell-role="th"></th>
-<th data-quarto-table-cell-role="th">Age</th>
-<th data-quarto-table-cell-role="th">Salary</th>
-</tr>
-<tr>
-<th data-quarto-table-cell-role="th">Position</th>
-<th data-quarto-table-cell-role="th">Department</th>
-<th data-quarto-table-cell-role="th"></th>
-<th data-quarto-table-cell-role="th"></th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td data-quarto-table-cell-role="th">Analyst</td>
-<td data-quarto-table-cell-role="th">Finance</td>
-<td>28</td>
-<td>57000</td>
-</tr>
-<tr>
-<td data-quarto-table-cell-role="th">Assistant</td>
-<td data-quarto-table-cell-role="th">HR</td>
-<td>31</td>
-<td>49000</td>
-</tr>
-<tr>
-<td data-quarto-table-cell-role="th">Developer</td>
-<td data-quarto-table-cell-role="th">IT</td>
-<td>34</td>
-<td>69000</td>
-</tr>
-<tr>
-<td data-quarto-table-cell-role="th">Executive</td>
-<td data-quarto-table-cell-role="th">Marketing</td>
-<td>35</td>
-<td>56000</td>
-</tr>
-<tr>
-<td rowspan="2" data-quarto-table-cell-role="th" data-valign="top">Manager</td>
-<td data-quarto-table-cell-role="th">HR</td>
-<td>30</td>
-<td>54000</td>
-</tr>
-<tr>
-<td data-quarto-table-cell-role="th">Marketing</td>
-<td>33</td>
-<td>62000</td>
-</tr>
-<tr>
-<td data-quarto-table-cell-role="th">Representative</td>
-<td data-quarto-table-cell-role="th">Sales</td>
-<td>32</td>
-<td>52000</td>
-</tr>
-</tbody>
-</table>
-
-</div>
-
-## Grouping with Aggregations
-
-- We can use different aggregation functions:
-  - `sum()`: sum of the values
-  - `mean()`: mean of the values
-  - `max()`: maximum of the values
-  - `min()`: minimum of the values
-  - `count()`: count of the values
-
-## Pandas in Action
-
-<span class="task">Task</span>: Complete the following task:
-
-``` python
-# TODO: Load the employees.csv again into a DataFrame
-# First, group by the "Position" column and count the employees per position
-# Then, group by the "Department" column and calculate the mean of all other columns per department
-df = pd.read_csv("supplementary/lec_08/employees.csv")
-# Your code here
-```
-
-# <span class="flow">Combining DataFrames</span>
-
-## Concatenating DataFrames
-
-- `pd.concat()` to concatenate along shared columns
-
-``` python
-df1 = pd.DataFrame({"A": [1, 2, 3], "B": [4, 5, 6]})
-df2 = pd.DataFrame({"A": [7, 8, 9], "B": [10, 11, 12]})
-df = pd.concat([df1, df2])
-print(df)
-```
-
-       A   B
-    0  1   4
-    1  2   5
-    2  3   6
-    0  7  10
-    1  8  11
-    2  9  12
-
-## Joining DataFrames
-
-- Use `pd.join()` to join DataFrames along columns
-- Joining is <span class="highlight">done on the index</span> by default!
-
-``` python
-df1 = pd.DataFrame({"A": [1, 2, 3], "B": [4, 5, 6]}, index=['x', 'y', 'z'])
-df2 = pd.DataFrame({"C": [7, 8, 9], "D": [10, 11, 12]}, index=['z', 'y', 'w'])
-df = df1.join(df2)
-print(df)
-```
-
-       A  B    C     D
-    x  1  4  NaN   NaN
-    y  2  5  8.0  11.0
-    z  3  6  7.0  10.0
-
-## Merging DataFrames on Columns
-
-- `pd.merge(df_name, on='column', how='type')`
-- merge DataFrames along <span class="highlight">shared columns</span>
-- `how` specifies the type of merge
-  - `inner`: rows with matching keys in both DataFrames
-  - `outer`: rows from both are kept, missing values are filled
-  - `left`: rows from the left are kept, missing values are filled
-  - `right`: rows from right are kept, missing values are filled
-
-## Outer Merge
-
-``` python
-df3 = pd.DataFrame({"A": [1, 2, 3], "B": [4, 5, 6]})
-df4 = pd.DataFrame({"A": [2, 3, 4], "C": [7, 8, 9]})
-df_merged = df3.merge(df4, on="A", how="outer")
-print(df_merged)
-```
-
-       A    B    C
-    0  1  4.0  NaN
-    1  2  5.0  7.0
-    2  3  6.0  8.0
-    3  4  NaN  9.0
-
-## Merging in Action
-
-<span class="task">Task</span>: Complete the following task:
-
-``` python
-df1 = pd.DataFrame({
-    "Name": ["John", "Alice", "Bob", "Carol"],
-    "Department": ["Sales", "IT", "HR", "Sales"],
-    "Salary": [50000, 60000, 55000, 52000]})
-df2 = pd.DataFrame({
-    "Name": ["Alice", "Bob", "Dave", "Eve"],
-    "Position": ["Developer", "Manager", "Analyst", "Developer"],
-    "Years": [5, 8, 3, 4]})
-
-# TODO: Merge the two DataFrames on the "Name" column
-# Try different types of merges (inner, outer, left, right)
-# Observe and describe the differences in the results
-```
-
-# <span class="flow">Working with Excel Files</span>
-
-## Reading Excel Files
-
-- Read using the `pd.read_excel(file_path)` function
-- Write using the `df.to_excel(file_path)` method
-
-. . .
-
-``` python
-import pandas as pd
-df = pd.read_csv("supplementary/lec_08/employees.csv")
-df.to_excel("supplementary/lec_08/employees.xlsx", index=False)
-```
+1.  **AI is a co-pilot you verify.** Give it **context and constraints**, then **read it → run it → test it** on a case you know. An AI that sounds sure is not the same as an API that exists.
+2.  **A DataFrame is a named, mixed-type table.** `pd.DataFrame` from a dict, `pd.read_csv` from a file; `.head()`, `.info()`, `.describe()` to look before you leap.
+3.  **Select, filter, add, group.** `df["col"]`, a boolean mask (`df[df["zone"] == "Nord"]` --- case-sensitive!), a new column on a `.copy()`, and `groupby` for per-category answers. pandas won't warn you --- you verify.
 
 . . .
 
 > **Note**
 >
-> Note, that you likely need to install the `openpyxl` package to be able to write Excel files, as it handles the file format.
-
-## Advanced Excel file handling
-
-We can also <span class="highlight">specify the sheet name</span> when reading and writing
-
-``` python
-# Writes to the Employees sheet and does not include row indices
-df.to_excel("supplementary/lec_08/employees.xlsx", sheet_name="Employees", index=False)
-```
-
-. . .
-
-``` python
-# Reads from the Employees sheet
-df = pd.read_excel("supplementary/lec_08/employees.xlsx", sheet_name="Employees")
-print(df.head())
-```
-
-          Name  Age Department        Position  Salary
-    0    Alice   30         HR         Manager   50000
-    1      Bob   25         IT       Developer   60000
-    2  Charlie   28    Finance         Analyst   55000
-    3    David   35  Marketing       Executive   52000
-    4      Eve   32      Sales  Representative   48000
-
-## Excel in Action
-
-<span class="task">Task</span>: Complete the following task:
-
-``` python
-# TODO: Load the temperatures.xlsx file into a DataFrame
-# Look at the first few rows of the DataFrame
-# Then, print the average temperature per city
-```
-
-# <span class="flow">Melting DataFrames</span>
-
-## Melting
-
-- Sometimes, you want to <span class="highlight">transform a DataFrame</span>
-- Instead of **wide** format, you want **long** format
-- This is useful for certain types of **visualizations**
-- And when working with **time series data**
-
-. . .
-
-<span class="question">Question</span>: Anybody ever heard of the terms?
-
-## Wide Format
-
-For example, the following DataFrame is in <span class="highlight">wide format</span>:
-
-             Date  Hamburg  Los_Angeles  Tokyo
-    0  2024-03-01     12.0         18.2   14.8
-    1  2024-03-02      9.8         23.0   17.6
-    2  2024-03-03      7.6         20.3   16.0
-    3  2024-03-04     10.1         21.1   13.4
-    4  2024-03-05     11.2         18.5   15.1
-    ..        ...      ...          ...    ...
-    87 2024-05-27     12.4         24.5   24.9
-    88 2024-05-28     17.8         20.6   22.3
-    89 2024-05-29     16.2         20.4   20.2
-    90 2024-05-30     15.5         20.7   21.7
-    91 2024-05-31     12.6         22.0   22.9
-
-    [92 rows x 4 columns]
-
-## Long Format
-
-The melting process transforms it into the following <span class="highlight">long format</span>:
-
-              Date     City  Temperature
-    0   2024-03-01  Hamburg         12.0
-    1   2024-03-02  Hamburg          9.8
-    2   2024-03-03  Hamburg          7.6
-    3   2024-03-04  Hamburg         10.1
-    4   2024-03-05  Hamburg         11.2
-    ..         ...      ...          ...
-    271 2024-05-27    Tokyo         24.9
-    272 2024-05-28    Tokyo         22.3
-    273 2024-05-29    Tokyo         20.2
-    274 2024-05-30    Tokyo         21.7
-    275 2024-05-31    Tokyo         22.9
-
-    [276 rows x 3 columns]
-
-## How to melt DataFrames
-
-- Use `pd.melt()` to transform from wide to long
-- Parameters:
-  - `id_vars`: columns to keep
-  - `var_name`: name of the new column that will contain the names of the original columns
-  - `value_name`: name of the new column that will contain the values of the original columns
-
-. . .
-
-``` python
-df = pd.read_csv("supplementary/lec_08/employees.csv")
-df = pd.melt(df, id_vars=['Position'], var_name='Variables', value_name='Values')
-print(df)
-```
-
-               Position Variables   Values
-    0           Manager      Name    Alice
-    1         Developer      Name      Bob
-    2           Analyst      Name  Charlie
-    3         Executive      Name    David
-    4    Representative      Name      Eve
-    ..              ...       ...      ...
-    195       Developer    Salary    69000
-    196       Assistant    Salary    49000
-    197         Analyst    Salary    55000
-    198         Manager    Salary    62000
-    199  Representative    Salary    51000
-
-    [200 rows x 3 columns]
-
-## Melting in Action
-
-<span class="task">Task</span>: Complete the following task:
-
-``` python
-# TODO: Load and transform the temperatures.xlsx file by melting it
-# Expected output format:
-#         Date        City  Temperature
-# 0  2024-03-01    Hamburg         7.2
-# 1  2024-03-01 Los_Angeles       18.5
-# 2  2024-03-01      Tokyo        12.3
-# Then, print the maximum temperature per city by grouping by the "City" column
-```
-
-# <span class="flow">Programming with AI</span>
-
-## Using AI to generate code
-
-- Coding by hand is <span class="highlight">not the only way to generate code</span>
-- Most likely, a lot of you have already used **ChatGPT**
-
-. . .
-
-<center>
-<iframe src="https://giphy.com/embed/0lGd2OXXHe4tFhb7Wh" width="400" height="400" style frameBorder="0" class="giphy-embed" allowFullScreen>
-</iframe>
-</p>
-</center>
-
-## 
-
-How do
-
-Large Language
-
-Models work?
-
-<span class="white">Photo by <a href="https://unsplash.com/@tvick">Taylor Vick</a> on Unsplash</span>
-
-## Large Language Models (LLMs)
-
-- Think of them like <span class="highlight">advanced pattern recognition systems</span>
-- They have "read" **massive amounts of text**
-- Books, websites, articles, code, and more
-- Text is broken into **tokens**, parts of words or punctuation
-- Based on patterns, they can **generate new text**
-
-## Training LLMs
-
-- Imagine learning a language by <span class="highlight">reading millions of books</span>
-- Learns patterns in **how words and ideas connect** via tokens
-- Interconnected nodes with **weights representing patterns**
-- During training, these **weights are adjusted**
-- Once trained, **applying** them takes much less ressources
-
-## Pattern Recognition
-
-- <span class="highlight">Not like a search engine!</span>
-- When asked, it looks for **relevant patterns** it learned
-- Like having a **huge library** in its "memory" to draw from
-- It can find **patterns between concepts** and your question
-- Knows only limited text at once (**context window**)
-
-## Probability based responses
-
-- After each written token, it predicts <span class="highlight">"what should come next?"</span>
-- Like a advanced version of the **word prediction** on your phone
-- Chooses the **most likely next token** based on training
-- <span class="highlight">But can't actually "think" or "understand" like humans</span>
-
-## Limitations
-
-- **No true understanding** of cause and effect
-- Sometimes **makes mistakes or "hallucinates"**
-- Mostly only knows what it **was trained on**
-- Can **reflect biases** present in training data
-- No emotional understanding (but <span class="highlight">can simulate responses!</span>)
-
-## Impact on Jobs
-
-- <span class="question">Question</span>: What do you think about their impact on jobs?
-- <span class="question">Question</span>: What are the implications for us?
-- <span class="question">Question</span>: Can we use them to our advantage?
-
-. . .
-
-> **Warning**
->
-> If you use free models, be aware that your prompts are going to be used by the providers and are not private. But for learning and experimenting, this should be no issue.
-
-# <span class="flow">AI Coding Partner</span>
-
-## (Current) Choices for Programmers
-
-- [Github Copilot](https://github.com/features/copilot): Integrated into VS Code by Microsoft
-- [Cursor](https://www.cursor.com/): Fork of VS Code with AI assistance built in
-- [Aider](https://aider.chat): Chat interface for AI to write code in the terminal
-- [Zed](https://www.zed.dev/): Lightweight IDE with AI features
-- [Claude Code](https://claude.ai/): Coding-Assistant in the terminal
-
-. . .
-
-> **Tip**
->
-> Currently, [Zed](https://www.zed.dev/) in combination with [Claude Code](https://claude.ai/) is my favorite one. But this might change in the future, as there is a lot of competition in this space.
-
-## GitHub Copilot
-
-<span class="highlight">GitHub Copilot</span> helps you write code faster and with less effort.
-
-. . .
-
-**Think of it as:**
-
-- An autocomplete for entire lines or blocks of code
-- A coding assistant that understands context
-- A learning tool that shows you coding patterns
-
-. . .
-
-> **Note**
->
-> Copilot uses AI trained on billions of lines of public code to suggest completions based on what you're typing.
-
-## Get Free Access
-
-**GitHub Student Developer Pack** gives you free Copilot access!
-
-. . .
-
-**How to get it:**
-
-1.  Go to [education.github.com/pack](https://education.github.com/pack)
-2.  Sign up with your university email
-3.  Verify your student status
-4.  Wait for approval (usually 1-2 days)
-5.  Login into your account in VS Code
-
-. . .
-
-> **Note**
->
-> You'll need a GitHub account. Create one at [github.com](https://github.com) if you don't have one.
-
-## Asking for help
-
-<span class="task">Task</span>: Paste the following prompt in to the chat:
-
-*Can you please write me a small number guessing game in python? It should work for one player in the terminal. The player should guess a number between 1-10 and get hints about whether his guess was too large or too small. After 3 tries, end the game if he didn't succeed with a nice message.*
-
-. . .
-
-<span class="highlight">Copy the generated code and paste it into your file.</span>
-
-## More on Copilot
-
-- While working with Copilot, it will **suggest** you code changes
-- You can **accept** or **reject** them
-- The rest you will **learn by doing!**
-
-. . .
-
-> **Note**
->
-> **And that's it for todays lecture!**  
-> You now have the basic knowledge to start working with <span class="highlight">tabular data and AI!</span>.
+> **Next episode: charts the investor can't argue with.** Numbers convince the careful; a good plot convinces the room --- we turn the data room into pictures.
 
 # <span class="flow">Literature</span>
 
-## Interesting Books
+## Books to start with
 
 - Downey, A. B. (2024). Think Python: How to think like a computer scientist (Third edition). O'Reilly. [Link to free online version](https://greenteapress.com/wp/think-python-3rd-edition/)
 - Elter, S. (2021). Schrödinger programmiert Python: Das etwas andere Fachbuch (1. Auflage). Rheinwerk Verlag.
 
 . . .
 
-For more interesting literature to learn more about Python, take a look at the [literature list](../general/literature.qmd) of this course.
+> **Note**
+>
+> Working with AI this session? Revisit the [AI Tools page](../general/ai-tools.qmd) --- context-and-constraints prompting, the verify workflow, and the one-line disclosure habit. For pandas itself, the official [10 minutes to pandas](https://pandas.pydata.org/docs/user_guide/10min.html) guide is the friendliest next step.
+
+. . .
+
+For more, see the [literature list](../general/literature.qmd) of this course.

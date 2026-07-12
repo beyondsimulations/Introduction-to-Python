@@ -1,9 +1,17 @@
 #!/usr/bin/env python3
+import os
 import shutil
 from pathlib import Path
 
 def move_md_files():
     """Find all .md files in _site and move them to _repo-md maintaining structure."""
+
+    # Only rebuild _repo-md on a full project render. Quarto sets
+    # QUARTO_PROJECT_RENDER_ALL=1 for `quarto render`; a single-file render does
+    # not, and wiping _repo-md there would delete every other page's mirror.
+    if os.environ.get("QUARTO_PROJECT_RENDER_ALL") != "1":
+        print("Single-file render detected; leaving _repo-md/ untouched.")
+        return
 
     site_dir = Path("_site")
     output_dir = Path("_repo-md")

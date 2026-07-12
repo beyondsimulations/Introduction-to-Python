@@ -1,0 +1,51 @@
+{
+  "planPath": "docs/superpowers/plans/2026-07-12-overhaul-plan-4-part3.md",
+  "tasks": [
+    {
+      "id": 1,
+      "subject": "Task 1: Zed git auth spike",
+      "status": "completed",
+      "description": "**Goal:** Verify from current web sources + local check how a fresh Zed install pushes to GitHub (panel capabilities, auth mechanism, uv init git behavior); write the spike doc with a \"Copy for authors\" section.\n\n**Files:** Create: docs/superpowers/specs/2026-07-12-zed-git-auth-spike.md\n\n```json:metadata\n{\"files\": [\"docs/superpowers/specs/2026-07-12-zed-git-auth-spike.md\"], \"verifyCommand\": \"grep -c 'Copy for authors' docs/superpowers/specs/2026-07-12-zed-git-auth-spike.md\", \"acceptanceCriteria\": [\"Zed git panel capabilities sourced with dates\", \"push auth mechanism resolved (Zed sign-in vs gh bridge)\", \"uv init git behavior recorded\", \"Copy for authors section present\", \"unverified claims flagged verify-live\"]}\n```"
+    },
+    {
+      "id": 2,
+      "subject": "Task 2: Retired-content sweep + _quarto.yml cleanup",
+      "status": "completed",
+      "description": "**Goal:** Atomically untrack solutions-lectures/, solutions-tutorials/, assignments/ into untracked archive/; delete strays (hi.txt, hi_again.txt, _repo-md/assignments, __pycache__); update .gitignore (add archive/, drop stale tut_06-09 lines); _quarto.yml drops assignments render+nav and excludes Management-Science/.\n\n**Files:** Modify: .gitignore, _quarto.yml; untrack/move 84 files; delete strays\n\n```json:metadata\n{\"files\": [\".gitignore\", \"_quarto.yml\"], \"verifyCommand\": \"git ls-files | grep -cE '^(solutions-lectures|solutions-tutorials|assignments)/'\", \"acceptanceCriteria\": [\"retired dirs untracked but on disk in archive/\", \"strays deleted\", \"assignments render+nav gone\", \"Management-Science excluded from render\", \"gitignore updated\"]}\n```"
+    },
+    {
+      "id": 3,
+      "subject": "Task 3: index.qmd — checkpoint grading + phased AI policy",
+      "status": "completed",
+      "description": "**Goal:** Landing page states 2026 reality: checkpoints item in Course Structure, real passing math (5x12 + 40, 60/100, 75% attendance, pairs), phased AI policy linking ai-tools.qmd, mailto KLU26. Full replacement copy in plan Task 3.\n\n**Files:** Modify: index.qmd\n\n```json:metadata\n{\"files\": [\"index.qmd\"], \"verifyCommand\": \"grep -ci 'two programming assignments' index.qmd\", \"acceptanceCriteria\": [\"no assignments as assessment\", \"passing math correct\", \"phased AI policy with ai-tools link\", \"KLU26 mailto\"]}\n```"
+    },
+    {
+      "id": 4,
+      "subject": "Task 4: FAQ additions + syllabus Session X update",
+      "status": "completed",
+      "description": "**Goal:** Add three FAQ entries (download one-way door; where work is saved — align with tut_01 launcher wording; how checkpoints are graded), bump KLU25→26 subjects; syllabus Session X retitled to Tooling/Git/Project. Copy in plan Task 4.\n\n**Files:** Modify: general/faq.qmd, general/syllabus.qmd\n\n```json:metadata\n{\"files\": [\"general/faq.qmd\", \"general/syllabus.qmd\"], \"verifyCommand\": \"grep -c KLU26 general/faq.qmd\", \"acceptanceCriteria\": [\"three FAQ entries consistent with tut_01 persistence wording\", \"mailto subjects bumped\", \"syllabus X retitled, XI-XIII untouched\"]}\n```"
+    },
+    {
+      "id": 5,
+      "subject": "Task 5: general/git-basics.qmd + sidebar entry",
+      "status": "completed",
+      "blockedBy": [1],
+      "description": "**Goal:** New Zed-first git reference: why VC → five operations (concept/Zed path/terminal/when) → GitHub auth (verbatim from spike doc) → pair workflow → troubleshooting → cheatsheet table. Sidebar entry after Installing Python. No screenshots; only spike-verified Zed paths.\n\n**Files:** Create: general/git-basics.qmd; Modify: _quarto.yml\n\n```json:metadata\n{\"files\": [\"general/git-basics.qmd\", \"_quarto.yml\"], \"verifyCommand\": \"grep -c git-basics _quarto.yml\", \"acceptanceCriteria\": [\"all six sections in order\", \"auth section from spike Copy for authors\", \"cheatsheet table complete\", \"sidebar entry placed\", \"terminal command shown for every operation\"]}\n```"
+    },
+    {
+      "id": 6,
+      "subject": "Task 6: lec_10 rewrite — Tooling, Git & Your Project",
+      "status": "completed",
+      "blockedBy": [1],
+      "description": "**Goal:** Full deck rewrite: CP5 opener (lec_08 pattern, matched to real CP5 notebook) → Episode 10 The Exit (matter-of-fact reveal) → kickoff (brief, 8-idea menu from spec §2, pair formation) → toolchain (verify installs, uv init, run downloaded lab in Zed, AI provider) → git block (vocab, Zed follow-along in project repo, norms, terminal equivalents) → trimmed send-off. Slide skeletons + beats in plan Task 6.\n\n**Files:** Modify: lectures/lec_10_projects.qmd\n\n```json:metadata\n{\"files\": [\"lectures/lec_10_projects.qmd\"], \"verifyCommand\": \"grep -ci copilot lectures/lec_10_projects.qmd\", \"acceptanceCriteria\": [\"block order per spec\", \"CP5 opener matches real notebook\", \"reveal matter-of-fact\", \"8-idea menu with core+bonus\", \"brief states all deliverable facts\", \"no giphy/Copilot/groups-of-3\", \"Fall 2026 header\"]}\n```"
+    },
+    {
+      "id": 7,
+      "subject": "Task 7: Final battery",
+      "status": "completed",
+      "blockedBy": [2, 3, 4, 5, 6],
+      "description": "**Goal:** Full-site quarto render green (Management-Science excluded), lec_10 typst render, reference greps clean (assignments/solutions/Copilot/part-0X data), validate_notebooks.py green, archive untracked-and-present. Commit _repo-md refresh if changed. Command battery in plan Task 7.\n\n**Files:** Modify: _repo-md/ (regenerated only)\n\n```json:metadata\n{\"files\": [\"_repo-md/\"], \"verifyCommand\": \"quarto render\", \"acceptanceCriteria\": [\"full render exits 0\", \"typst render of lec_10 exits 0\", \"all four greps return 0\", \"validate_notebooks green\", \"archive ignored and present\"]}\n```"
+    }
+  ],
+  "lastUpdated": "2026-07-12"
+}
