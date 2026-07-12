@@ -105,7 +105,7 @@ git clone https://github.com/name/project.git
 Before any push or pull can reach GitHub, your computer has to prove it is allowed to (this is **authentication**). Signing in to the Zed app itself does **not** do this, it only unlocks Zed's own collaboration and AI features. Git needs its own separate setup, and the reliable way to do it is the **GitHub CLI**, a small terminal tool called `gh`. You do this **once per computer**.
 
 ::: callout-warning
-Signing in to Zed is not the same as authenticating git. Even fully signed in to Zed, a push will fail until you complete the `gh` steps below. If a push ever asks for a password or fails, the fix is to redo these steps, not to sign in to Zed again.
+Signing in to Zed is not the same as authenticating git. Even fully signed in to Zed, a push will fail until you complete the `gh` steps below. If a push ever asks for a password or reports a permission or authentication error, the fix is to redo these steps, not to sign in to Zed again.
 :::
 
 ### One-time setup
@@ -133,6 +133,14 @@ Signing in to Zed is not the same as authenticating git. Even fully signed in to
    ```
 
    It should report that you are logged in to github.com and that git operations use the https protocol.
+
+4. **Tell git how to combine work when you pull:**
+
+   ```bash
+   git config --global pull.rebase false
+   ```
+
+   This tells git to simply combine your partner's work with yours when you pull — you only set this once. Without it, git may refuse a pull with a confusing message about "divergent branches".
 
 ::: callout-note
 Signing in to the Zed app (`client: sign in` in the command palette) is optional and only for Zed's collaboration and AI features. It has nothing to do with git push, so do not treat it as part of git setup.
@@ -184,12 +192,12 @@ If you and your partner both change **the same lines** of the same file, git can
 Each entry gives the **symptom** first, then the **fix**.
 
 **Symptom: a push is rejected with `! [rejected]`, "fetch first", or "the remote contains work that you do not have locally".**
-Fix: your partner pushed commits that you do not have yet. This is completely **normal in a pair** and is *not* an authentication problem. Pull first (**`git: pull`** or `git pull`), then push again. Never force anything — no `--force`, no "force push".
+Fix: your partner pushed commits that you do not have yet. This is completely **normal in a pair** and is *not* an authentication problem. Pull first (**`git: pull`** or `git pull`), then push again. If the pull complains about "divergent branches", run the one-time command from the setup section (`git config --global pull.rebase false`), then pull again. If the pull instead reports a **conflict**, see [What a conflict looks like](#what-a-conflict-looks-like) — that pull is exactly when one can appear. Never force anything — no `--force`, no "force push".
 
 **Symptom: you committed, but your partner still does not see your changes.**
 Fix: a commit only saves the snapshot **on your computer**. It reaches GitHub (and your partner) when you push — run **`git: push`**.
 
-**Symptom: a push asks for a username/password, or fails without pushing.**
+**Symptom: a push asks for a username/password, or reports a permission or authentication error.**
 Fix: your machine's git login is not set up (or expired). Redo the GitHub setup above: run `gh auth login` again and answer **yes** to "Authenticate Git with your GitHub credentials?". Do **not** sign in to the Zed app to fix this, that is a different thing.
 
 **Symptom: a git command says `fatal: not a git repository`.**
@@ -225,7 +233,7 @@ The very first push of a project you created yourself is the one exception: run 
 You can now:
 
 1. Explain what a repository, a commit, push, pull, and clone are.
-2. Set up GitHub authentication once per machine with `gh auth login`.
+2. Set up your machine once: GitHub authentication with `gh auth login`, plus the one-time pull setting.
 3. Connect a new `uv init` project to GitHub and do the first push.
 4. Work in a pair: pull before you start, commit as you go, push when you stop.
 5. Recognise a conflict and know the course rule — bring it to class instead of fixing it alone.
