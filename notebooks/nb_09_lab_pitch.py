@@ -1011,9 +1011,9 @@ def _(mo):
     machine, and you'll want two tools installed **before** you arrive:
 
     - **uv** — the Python environment manager this course uses. Follow
-      [the uv guide](../general/uv.qmd).
+      [the uv guide](https://beyondsimulations.github.io/Introduction-to-Python/general/uv.html).
     - **Zed** (with its AI assistant) — the editor you'll actually write code in.
-      Follow [the AI-tools guide](../general/ai-tools.qmd).
+      Follow [the AI-tools guide](https://beyondsimulations.github.io/Introduction-to-Python/general/ai-tools.html).
 
     Do this in advance — Session X *builds on* a working toolchain, it doesn't wait
     for one. Budget about 15 minutes; if the install fights you, bring it to office
