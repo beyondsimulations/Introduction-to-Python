@@ -662,7 +662,8 @@ def _(mo):
 
     **First, the honest chart (ungraded):** re-plot the same `week1` and `week2`,
     but let the y-axis start at 0 — `plt.ylim(0, 900)`. Watch the cliff flatten
-    into what it really is: two nearly identical bars.
+    into what it really is: a nearly flat line — two points at almost the same
+    height.
 
     **Then, the honest number (graded):** compute the real week-over-week change as
     a **percent**. Percent growth compares the *change* to where you *started*:
@@ -1015,7 +1016,8 @@ def _(mo):
       Follow [the AI-tools guide](../general/ai-tools.qmd).
 
     Do this in advance — Session X *builds on* a working toolchain, it doesn't wait
-    for one.
+    for one. Budget about 15 minutes; if the install fights you, bring it to office
+    hours before Session X — don't burn an evening on it.
 
     **Season finale next:** git, real files on your own disk, and the project
     kickoff. See you there. 🎬
