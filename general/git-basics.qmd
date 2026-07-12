@@ -110,11 +110,17 @@ Signing in to Zed is not the same as authenticating git. Even fully signed in to
 
 ### One-time setup
 
-1. **Install `gh`** if you do not have it. Find the installer for your system at [cli.github.com](https://cli.github.com).
+1. **Install git itself.** Check with `git --version` in a terminal.
+   - macOS: if git is missing, that command offers to install it — accept.
+   - Windows: `winget install Git.Git` (or the installer from [git-scm.com](https://git-scm.com)).
+
+   Then re-run `git --version` to confirm you see a version number.
+
+2. **Install `gh`** if you do not have it. Find the installer for your system at [cli.github.com](https://cli.github.com). Installing `gh` does **not** install git itself — that was step 1.
    - macOS: `brew install gh`
    - Windows: `winget install GitHub.cli`
 
-2. **Log in.** Run this in a terminal:
+3. **Log in.** Run this in a terminal:
 
    ```bash
    gh auth login
@@ -126,7 +132,7 @@ Signing in to Zed is not the same as authenticating git. Even fully signed in to
    gh auth setup-git
    ```
 
-3. **Check it worked:**
+4. **Check it worked:**
 
    ```bash
    gh auth status
@@ -134,7 +140,7 @@ Signing in to Zed is not the same as authenticating git. Even fully signed in to
 
    It should report that you are logged in to github.com and that git operations use the https protocol.
 
-4. **Tell git how to combine work when you pull:**
+5. **Tell git how to combine work when you pull:**
 
    ```bash
    git config --global pull.rebase false
