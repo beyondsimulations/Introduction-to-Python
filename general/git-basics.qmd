@@ -7,7 +7,7 @@ subtitle: "Version control for your project, from Zed"
 
 When you write code over several days, you keep changing files. Without a record, you cannot tell what changed, when, or why, and you cannot go back to a version that worked. **Version control** is a tool that saves snapshots of your project so you always have a history you can return to. In this course we use **git**, the standard tool for this, and **GitHub**, a website that stores a copy of your project online so a partner can see it too.
 
-You do not need to understand how git works inside. You need five simple actions, and you can do all of them from **Zed**, the editor we install in Session X. Zed has a **git panel** (a side panel that shows your changes and has buttons for git). We show the matching **terminal command** next to each action as well, because the words are the same everywhere, and you will see those commands in videos, tutorials, and error messages. Learn the word once and it works in both places.
+You do not need to understand how git works inside. You need five simple actions, and you can do all of them from **Zed**, the editor we install in Session X. Zed has a **git panel** (a side panel that shows your changes) and, like everything in Zed, git actions are available from the **command palette** (`Cmd+Shift+P` on macOS, `Ctrl+Shift+P` on Windows/Linux). This page uses the command-palette names — they always work, whatever the panel looks like. We show the matching **terminal command** next to each action as well, because the words are the same everywhere, and you will see those commands in videos, tutorials, and error messages. Learn the word once and it works in both places.
 
 ::: callout-note
 This page assumes you already have **uv** and **Zed** installed from the Session IX homework. If not, do [Installing Python](uv.qmd) first.
@@ -27,7 +27,7 @@ You almost never create one by hand in this course. When you start a project wit
 uv init my-project
 ```
 
-The only time you make a repo yourself is if you have an existing folder that is *not* yet under git. In Zed you can open the command palette (`Cmd+Shift+P` on macOS, `Ctrl+Shift+P` on Windows/Linux) and run **`git: init`**. The terminal equivalent is:
+The only time you make a repo yourself is if you have an existing folder that is *not* yet under git. In Zed you run **`git: init`** from the command palette. The terminal equivalent is:
 
 ```bash
 git init
@@ -41,7 +41,7 @@ A **commit** is one saved snapshot of your project, with a short message describ
 
 A commit has two small steps: first you **stage** the changes you want to include (mark them as "part of this snapshot"), then you commit them with a message.
 
-In Zed's git panel you tick the files you want (or run **`git: stage all`**), type a message, and commit with **`git: commit`** (`Cmd+Enter` on macOS, `Ctrl+Enter` on Windows/Linux). The terminal equivalent is two commands:
+In Zed you run **`git: stage all`** from the command palette, type a message, and commit with **`git: commit`** (`Cmd+Enter` on macOS, `Ctrl+Enter` on Windows/Linux). The terminal equivalent is two commands:
 
 ```bash
 git add .
@@ -56,7 +56,7 @@ git commit -m "Add price calculation"
 
 **Push** sends your commits from your computer up to GitHub, so the online copy matches your local one.
 
-In Zed you run **`git: push`** from the command palette (or the push button in the git panel).
+In Zed you run **`git: push`** from the command palette.
 
 ::: callout-warning
 **The very first push of a brand-new project is different.** Run this exact terminal command once, from inside your project folder:
@@ -65,7 +65,7 @@ In Zed you run **`git: push`** from the command palette (or the push button in t
 git push -u origin HEAD
 ```
 
-The `-u` connects your local project to the GitHub copy, and `HEAD` means "push whatever branch I am on" (so it works no matter what your branch is called). After this one-time command, every later push can be the normal **`git: push`** button in Zed. If you *cloned* a partner's repo instead of starting your own, you do not need this step, cloning already sets up the connection.
+The `-u` connects your local project to the GitHub copy, and `HEAD` means "push whatever branch I am on" (so it works no matter what your branch is called). After this one-time command, every later push can be the normal **`git: push`** action in Zed. If you *cloned* a partner's repo instead of starting your own, you do not need this step, cloning already sets up the connection.
 :::
 
 The everyday terminal equivalent, after that first push, is:
@@ -80,7 +80,7 @@ git push
 
 **Pull** brings commits *down* from GitHub into your computer, so you get whatever your partner pushed.
 
-In Zed you run **`git: pull`** from the command palette (or the pull button in the git panel). The terminal equivalent is:
+In Zed you run **`git: pull`** from the command palette. The terminal equivalent is:
 
 ```bash
 git pull
@@ -120,7 +120,11 @@ Signing in to Zed is not the same as authenticating git. Even fully signed in to
    gh auth login
    ```
 
-   Answer the prompts: choose **GitHub.com**, choose **HTTPS** as the protocol, and authenticate through the **browser** (it shows you a short code to type into a GitHub page). When it asks *"Authenticate Git with your GitHub credentials?"*, answer **yes**, this is the step that lets git push and pull.
+   Answer the prompts: choose **GitHub.com**, choose **HTTPS** as the protocol, and authenticate through the **browser** (it shows you a short code to type into a GitHub page). When it asks *"Authenticate Git with your GitHub credentials?"*, answer **yes** — this runs `gh auth setup-git` for you, which is the step that lets git push and pull. (If you answered no by mistake, you can run it yourself afterwards:)
+
+   ```bash
+   gh auth setup-git
+   ```
 
 3. **Check it worked:**
 
@@ -202,8 +206,8 @@ Fix: do **not** try to rewrite history. Two safe options:
 | Operation | What it does | In Zed | Terminal | When you need it |
 |---|---|---|---|---|
 | Create repo | Makes a folder that git tracks | `uv init` (auto), or `git: init` | `uv init <name>` / `git init` | Start of a new project (uv does it for you) |
-| Stage + commit | Saves a labelled snapshot | tick files (or `git: stage all`), then `git: commit` | `git add .` then `git commit -m "msg"` | Every time you finish a piece of work |
+| Stage + commit | Saves a labelled snapshot | `git: stage all`, then `git: commit` | `git add .` then `git commit -m "msg"` | Every time you finish a piece of work |
 | Push | Sends commits up to GitHub | `git: push` | `git push` (first time: `git push -u origin HEAD`) | When you stop working |
 | Pull | Brings partner's commits down | `git: pull` | `git pull` | **Before** you start working |
 | Clone | Copies a repo from GitHub | `git: clone` | `git clone <url>` | Once, when you join a partner's project |
-| Status / history | Shows changes and past commits | git panel (open changes list) | `git status` / `git log` | Any time, to see where you are |
+| Status / history | Shows changes and past commits | git panel shows changes | `git status` / `git log --oneline` | Any time, to see where you are |
