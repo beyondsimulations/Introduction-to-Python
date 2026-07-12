@@ -7,7 +7,7 @@ subtitle: "Version control for your project, from Zed"
 
 When you write code over several days, you keep changing files. Without a record, you cannot tell what changed, when, or why, and you cannot go back to a version that worked. **Version control** is a tool that saves snapshots of your project so you always have a history you can return to. In this course we use **git**, the standard tool for this, and **GitHub**, a website that stores a copy of your project online so a partner can see it too.
 
-You do not need to understand how git works inside. You need five simple actions, and you can do all of them from **Zed**, the editor we install in Session X. Zed has a **git panel** (a side panel that shows your changes) and, like everything in Zed, git actions are available from the **command palette** (`Cmd+Shift+P` on macOS, `Ctrl+Shift+P` on Windows/Linux). This page uses the command-palette names — they always work, whatever the panel looks like. We show the matching **terminal command** next to each action as well, because the words are the same everywhere, and you will see those commands in videos, tutorials, and error messages. Learn the word once and it works in both places.
+You do not need to understand how git works inside. You need five simple actions, and you can do all of them from **Zed**, the editor you set up before Session X. Zed has a **git panel** (a side panel that shows your changes) and, like everything in Zed, git actions are available from the **command palette** (`Cmd+Shift+P` on macOS, `Ctrl+Shift+P` on Windows/Linux). This page uses the command-palette names — they always work, whatever the panel looks like. We show the matching **terminal command** next to each action as well, because the words are the same everywhere, and you will see those commands in videos, tutorials, and error messages. Learn the word once and it works in both places.
 
 ::: callout-note
 This page assumes you already have **uv** and **Zed** installed from the Session IX homework. If not, do [Installing Python](uv.qmd) first.
@@ -183,6 +183,12 @@ If you and your partner both change **the same lines** of the same file, git can
 
 Each entry gives the **symptom** first, then the **fix**.
 
+**Symptom: a push is rejected with `! [rejected]`, "fetch first", or "the remote contains work that you do not have locally".**
+Fix: your partner pushed commits that you do not have yet. This is completely **normal in a pair** and is *not* an authentication problem. Pull first (**`git: pull`** or `git pull`), then push again. Never force anything — no `--force`, no "force push".
+
+**Symptom: you committed, but your partner still does not see your changes.**
+Fix: a commit only saves the snapshot **on your computer**. It reaches GitHub (and your partner) when you push — run **`git: push`**.
+
 **Symptom: a push asks for a username/password, or fails without pushing.**
 Fix: your machine's git login is not set up (or expired). Redo the GitHub setup above: run `gh auth login` again and answer **yes** to "Authenticate Git with your GitHub credentials?". Do **not** sign in to the Zed app to fix this, that is a different thing.
 
@@ -190,16 +196,16 @@ Fix: your machine's git login is not set up (or expired). Redo the GitHub setup 
 Fix: you are running git in a folder that is not a repo (or above your project folder). Move into your project folder first. In a terminal, `cd my-project`. In Zed, make sure the folder you opened is the project folder that contains your code. Remember `uv init` already made it a repo, so this usually means you are just in the wrong place.
 
 **Symptom: you committed the wrong thing (bad message, or forgot a file).**
-Fix: do **not** try to rewrite history. Two safe options:
+Fix: never rewrite history that others may already have. Two safe options:
 
-- If you *just* made the commit and want to fix the message or add a forgotten file, stage the fix and amend the last commit:
+- **Only if you have not pushed that commit yet** (it is still just on your computer, so nobody has seen it), you can fix the last commit in place — stage the correction and amend:
 
   ```bash
   git add .
   git commit --amend -m "Better message"
   ```
 
-- Otherwise, simplest of all: just make a **new commit** that corrects the mistake. A tidy extra commit is completely fine in this course, and it never puts your shared history at risk.
+- If you already pushed it — or you are unsure — simplest of all: just make a **new commit** that corrects the mistake. A tidy extra commit is completely fine in this course, and it never puts your shared history at risk.
 
 ## Cheatsheet
 
@@ -207,7 +213,19 @@ Fix: do **not** try to rewrite history. Two safe options:
 |---|---|---|---|---|
 | Create repo | Makes a folder that git tracks | `uv init` (auto), or `git: init` | `uv init <name>` / `git init` | Start of a new project (uv does it for you) |
 | Stage + commit | Saves a labelled snapshot | `git: stage all`, then `git: commit` | `git add .` then `git commit -m "msg"` | Every time you finish a piece of work |
-| Push | Sends commits up to GitHub | `git: push` | `git push` (first time: `git push -u origin HEAD`) | When you stop working |
+| Push | Sends commits up to GitHub | `git: push` | `git push` | When you stop working |
 | Pull | Brings partner's commits down | `git: pull` | `git pull` | **Before** you start working |
 | Clone | Copies a repo from GitHub | `git: clone` | `git clone <url>` | Once, when you join a partner's project |
 | Status / history | Shows changes and past commits | git panel shows changes | `git status` / `git log --oneline` | Any time, to see where you are |
+
+The very first push of a project you created yourself is the one exception: run `git push -u origin HEAD` once in the terminal (see [Push](#push)).
+
+## Recap
+
+You can now:
+
+1. Explain what a repository, a commit, push, pull, and clone are.
+2. Set up GitHub authentication once per machine with `gh auth login`.
+3. Connect a new `uv init` project to GitHub and do the first push.
+4. Work in a pair: pull before you start, commit as you go, push when you stop.
+5. Recognise a conflict and know the course rule — bring it to class instead of fixing it alone.
