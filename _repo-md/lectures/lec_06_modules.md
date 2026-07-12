@@ -1,8 +1,8 @@
 ---
-title: Lecture VI - Using Modules and Packages
+title: Lecture VI - Modules and the Standard Library
 subtitle: Programming with Python
 author: Dr. Tobias Vlćek
-institute: Kühne Logistics University Hamburg - Fall 2025
+institute: Kühne Logistics University Hamburg - Fall 2026
 format:
   revealjs:
     footer: ' {{< meta title >}} | {{< meta author >}} | [Home](lec_06_modules.qmd)'
@@ -10,580 +10,345 @@ format:
 ---
 
 
-# <span class="flow">Quick Recap of the last Lecture</span>
+# 📋 Checkpoint 3 --- Sessions I--V
 
-## Exceptions and Error Handling
+The first **40 minutes** are the checkpoint. It starts **now** --- before the investor sits down.
 
-- Exceptions are <span class="highlight">discovered errors</span> during program execution
-- Common built-in exceptions: `ValueError`, `TypeError`, etc.
+- **Individual work** --- no AI, no neighbours, no chat
+- The **link and QR** are handed out in class --- open it and start
+- ~6 short tasks: write code, trace code, fix a bug, answer a multiple choice
+- It sweeps **everything from Sessions I--V** --- variables, control flow, functions, data structures, errors
 
-. . .
-
-``` python
-x = int("Hello, World!")
-```
+<!-- QR handed out live — never in the deck -->
 
 . . .
 
-<span class="errors">\>ValueError</span>: invalid literal for int() with base 10: 'Hello, World!'
-
-## Try-Except Blocks
-
-- `try-except` blocks are used to handle exceptions
-- `try` block contains code that might raise an exception
-- `except` block contains code executed if an exception occurs
-
-. . .
-
-``` python
-try:
-    # Code that might raise an exception
-    # ...
-except ExceptionType as e:
-    # Code to handle the exception
-    # ...
-except Exception as e:
-    # Code to handle any other exceptions
-    # ...
-```
-
-## Raising Exceptions
-
-- We can raise exceptions using the `raise` statement
-- Allows for more controlled error handling
-- Can include custom error messages
-
-. . .
-
-``` python
-raise ValueError("This is a custom error message")
-```
+**When you're done:** menu → *Download* → *Download Python code* → upload the `.py` to the **"Checkpoint 3"** assignment on Moodle. **No retakes** --- one sitting.
 
 . . .
 
 > **Note**
 >
-> The type if raised exception **has to exist** or you have to create a custom error type before.
+> The green ✅ live checks are **provisional** --- the final grading runs on our side. And take a breath: everything in it was rehearsed in the labs.
 
-## Assertions
+# <span class="flow">Episode 6: Due Diligence Week</span>
 
-- Assertions check if a condition is true
-- If the condition is false, an `AssertionError` is raised
-- Useful for checking calculations or variable types
+## The investor walks in
+
+Pens down --- the checkpoint is behind you. Now the reason today matters.
 
 . . .
 
+An hour ago the **investor** walked into the shop unannounced. It's **due-diligence week**: before she signs anything, she wants to see how this place actually runs. Kevin offered her a coffee and a spreadsheet he "mostly trusts."
+
+. . .
+
+She didn't drink the coffee. She walked to the whiteboard, uncapped a marker, and wrote one question:
+
+> **"Why is everything built from scratch?"**
+
+## Part II: the rules change
+
+For five sessions you built everything by hand --- on purpose. From today, that changes.
+
+- **AI is now allowed and taught.** We work *with* it, deliberately, starting in tonight's lab.
+- **The disclosure habit:** every submission that used AI carries a **one-line note** saying what you used it for. Not a confession --- a professional reflex.
+- **The course chatbot** (sidebar widget) now gives you **full code** on request, not just hints.
+
+. . .
+
+Full details on the [AI Tools page](../general/ai-tools.qmd).
+
+. . .
+
+You spent five sessions learning to think without a co-pilot. Now you get one --- and you'll be the pilot.
+
+# <span class="flow">Don't build it, import it</span>
+
+## What's a module?
+
+The investor's question has an answer: **you shouldn't build it from scratch.** Most of what you need is already written.
+
+- A **module** is a toolbox of code someone already wrote and tested
+- Python ships with a whole shelf of them --- the **standard library**
+- You `import` a module, then reach for the tools inside it with a dot: `math.ceil(...)`
+
+. . .
+
+Kevin has been hand-rolling arithmetic for months. The standard library did most of it before he was born.
+
+## `import math`: stop rounding by hand
+
+130 pastries need to ship. They go in crates of 48. How many crates? You need to round **up** --- a half-full crate still ships as a whole one.
+
 ``` python
-x = -1
-assert x > 0, "x must be positive"
+import math
+
+pastries = 130
+per_crate = 48
+crates = math.ceil(pastries / per_crate)   # ceil = round UP
+print(crates)
 ```
 
-. . .
-
-<span class="question">Question:</span> Will this raise an AssertionError?
-
-## Debugging
-
-- Debugging is the process of <span class="highlight">finding and fixing errors</span> in code
-- Using `print` and `assert` statements
-- Using logging
-- Using built-in debugging tools in IDEs
+    3
 
 . . .
 
-> **Tip**
->
-> That's why IDEs are so helpful in coding.
+`130 / 48` is `2.7…`; `math.ceil` bumps it to **3**. No fiddling with "if there's a remainder, add one" --- the tool already knows.
 
-# <span class="flow">Modules</span>
+## `from statistics import ...`
 
-## Why Modules?
-
-- Modular programming breaks <span class="highlight">large tasks into smaller subtasks</span>
-- Modules are like **building blocks** for larger applications
-- Individual modules can be **combined** to create a complete program
-- This approach enhances code organization and reusability
-
-## Creating Modules
-
-- Modules are simply `.py` files containing Python code
-- They can define <span class="highlight">functions, classes, and variables</span>
-- They can be imported into other Python scripts
+Sometimes you only want a couple of tools, not the whole box. Import them **by name** and use them directly --- no `statistics.` prefix:
 
 ``` python
-# The script new_module.py is in the same directory as this script
-import lec_06_new_module as new_module # Here we import the module
-new_module.my_function() # Here we call the function from the module
+from statistics import mean, median
+
+ratings = [4.5, 4.8, 1.0, 5.0, 4.2]
+print(mean(ratings))     # the average
+print(median(ratings))   # the middle value
 ```
 
-    Hello from my_function!
-
-## Importing functions from modules
-
-- We can also import <span class="highlight">specific functions</span> from a module
-- This is useful if we only need a **few functions** from a module
-- Analogously, we can import **classes or variables** from a module
+    3.9
+    4.5
 
 . . .
 
+One furious review --- a **1.0** --- drags the mean down to **3.9**. The investor asked for the **typical** rating: `median` sorts the values and hands back the middle one --- **4.5** --- unmoved by one angry customer.
+
+## Aliases: a shorter name
+
+Some module names are long, or you'll type them fifty times. `import ... as` gives a module a **nickname** for the rest of the file:
+
 ``` python
-# Multiple imports from a module are possible as well!
-from lec_06_new_module import another_function, yet_another_function
-another_function()
-yet_another_function()
+import statistics as stats
+
+print(stats.median([4.5, 4.8, 1.0, 5.0, 4.2]))
 ```
 
-    Hello from another_function!
-    Hello from yet_another_function!
+    4.5
 
 . . .
 
-> **Tip**
->
-> This is a good way to avoid importing too much from a module. In addition, we don't need to use the module name before the function name when we use the functions from the module.
+`stats.median` is the same tool as `statistics.median` --- just less to type. You'll meet fixed conventions soon (`import pandas as pd`); using the community's nickname makes your code instantly readable to everyone else.
 
-## Built-in Modules
+## Looking inside a module
 
-Python comes with many <span class="highlight">built-in modules</span>. Common ones include:
-
-| Module     | Description                      |
-|------------|----------------------------------|
-| `math`     | Different mathematical functions |
-| `random`   | Random number generation         |
-| `datetime` | Date and time manipulation       |
-| `os`       | Operating system interaction     |
-| `csv`      | Reading and writing CSV files    |
-| `re`       | Regular expression operations    |
-
-## Importing from the Standard Library
-
-<span class="task">Task:</span> Use Python's `math` module to calculate the area of a circle.
+You don't have to memorise a module. Python will tell you what's in it and what each tool does:
 
 ``` python
-# Import the `math` module.
-# Define a function named `calculate_area` that takes the radius `r` as an argument.
-# Inside the function, use the `math.pi` constant to get the value of π.
-# Calculate the area in the function and return it.
+import math
 
-# Your code here
-
-assert calculate_area(5) == 78.53981633974483
-```
-
-. . .
-
-> **Tip**
->
-> Note, how assertations can be used to check if a function works correctly.
-
-# <span class="flow">Standard Libraries</span>
-
-## Random Numbers
-
-The `random` module provides functions for random numbers
-
-- `random.random()`: random float between 0 and 1
-- `random.uniform(a, b)`: random float between `a` and `b`
-- `random.randint(a, b)`: random integer between `a` and `b`
-- `random.choice(list)`: random element from a list
-- `random.shuffle(list)`: shuffle a list
-
-> **Tip**
->
-> There are many more functions in the `random` module. Use the `help()` function to get more information about a module or function.
-
-## Random Numbers in Action
-
-<span class="task">Task:</span> Time for a task! Import the `random` module and create a <span class="highlight">small number guessing game</span> with the following requirements:
-
-``` python
-# TODO: Implement a random number guessing game.
-# The game should work as follows:
-# - The computer selects a random number between 1 and 10
-# - The user has to guess the number and has three guesses
-# - The computer tells the user whether their guess is too high, too low, or correct
-# - The computer should also print how many guesses the user made before guessing the number correctly
-# - It should also ask the user if they want to play again
-# Your code here
+dir(math)          # lists every name in the module
+help(math.ceil)    # prints what ceil does, and how to call it
 ```
 
 . . .
 
 > **Tip**
 >
-> Remember, that the input function always returns a string!
+> `dir()` is the drawer of tools; `help()` is the little instruction card taped to each one. Between them you can explore any module without leaving your editor.
 
-## OS Module
+## Predict: which way does floor go?
 
-- The `os` module provides functions to interact with the OS
-- `os.listdir(path)`: list all files and directories in a directory
-- `os.path.isfile(path)`: check if a path is a file
-- `os.path.exists(path)`: check if a path exists
-- `os.makedirs(path)`: create a directory
+`math.ceil` rounds up. Its partner `math.floor` rounds **down** --- but *down* from a negative number is the tricky part. What does the last line print?
+
+``` python
+import math
+print(math.floor(-2.5))
+```
+
+a\) `-2` b) `-3` c) an error
 
 . . .
 
-> **Tip**
+<span class="question">Predict first</span> --- commit to an answer before the next slide.
+
+## Answer: floor goes down, not toward zero
+
+**b) `-3`** --- `floor` always heads **down** the number line, toward more negative. From `-2.5`, down is `-3`, not the `-2` you'd get by rounding toward zero:
+
+``` python
+import math
+print(math.floor(-2.5))   # down the number line → -3
+```
+
+    -3
+
+. . .
+
+"Down" means *smaller*, and `-3` is smaller than `-2`. Keep the number line in your head, not the distance to zero.
+
+# ⚡ Your turn --- 10 minutes
+
+Open the exercise (scan the QR or type the link):
+
+**[beyondsimulations.github.io/Introduction-to-Python/notebooks/ex_06_a/](https://beyondsimulations.github.io/Introduction-to-Python/notebooks/ex_06_a/)**
+
+<img src="assets/qr/ex_06_a.png" width="280" />
+
+First **predict** what happens --- then run it.
+
+# <span class="flow">Rehearsing luck</span>
+
+## The `random` toolbox
+
+The investor wants to see how the shop copes with a **busy day** --- but the busy day hasn't happened yet. So we *rehearse* it with made-up numbers. The `random` module deals them:
+
+``` python
+import random
+
+print(random.random())                       # a float in [0.0, 1.0)
+print(random.randint(1, 20))                  # an integer 1–20, ends included
+print(random.choice(["latte", "mocha", "tea"]))  # one item, picked at random
+
+queue = [1, 2, 3, 4, 5]
+random.shuffle(queue)                         # reorders the list in place
+print(queue)
+```
+
+    0.790249447133187
+    18
+    tea
+    [3, 2, 4, 5, 1]
+
+. . .
+
+Four tools, four flavours of luck: a raw float, a bounded integer, a pick from a list, and a reshuffle.
+
+## "Run it again"
+
+The investor leans over and says: **"Run it again."** Kevin does --- and gets **completely different numbers**:
+
+``` python
+import random
+
+print([random.randint(1, 20) for _ in range(5)])   # one run
+print([random.randint(1, 20) for _ in range(5)])   # ...and again — different!
+```
+
+    [2, 20, 18, 17, 16]
+    [20, 16, 20, 1, 10]
+
+. . .
+
+Two runs, two answers. That's *exactly* what random is supposed to do --- but it's useless for due diligence. A projection nobody can reproduce is a projection nobody can trust.
+
+## `random.seed` makes luck repeatable
+
+`random.seed(n)` fixes the starting point of the number stream. Same seed → **same sequence, every time**:
+
+``` python
+import random
+
+random.seed(7)
+print([random.randint(1, 20) for _ in range(5)])   # → [11, 5, 13, 2, 3]
+
+random.seed(7)
+print([random.randint(1, 20) for _ in range(5)])   # same seed → same list
+```
+
+    [11, 5, 13, 2, 3]
+    [11, 5, 13, 2, 3]
+
+. . .
+
+Both lines print `[11, 5, 13, 2, 3]`. The numbers still *look* random --- but now the investor can run it herself and land on the identical result.
+
+## Predict: seeded once, built twice
+
+Kevin seeds **once**, then builds two lists the same way --- without touching the seed in between. Are `first` and `second` equal?
+
+``` python
+import random
+
+random.seed(42)
+first  = [random.randint(1, 20) for _ in range(3)]
+second = [random.randint(1, 20) for _ in range(3)]
+
+print(first)
+print(second)
+```
+
+a\) equal --- the seed is set, so both come out the same b) different --- the second list continues where the first stopped c) an error
+
+. . .
+
+<span class="question">Predict first</span> --- commit to an answer before the next slide.
+
+## Answer: different
+
+**b) different** --- a seed doesn't freeze `random`, it fixes the whole **sequence**. The first list eats the first three numbers of the stream; the second list simply **continues** from number four:
+
+``` python
+import random
+
+random.seed(42)
+first  = [random.randint(1, 20) for _ in range(3)]
+second = [random.randint(1, 20) for _ in range(3)]
+
+print(first)    # [4, 1, 9]  — the stream's first three numbers
+print(second)   # [8, 8, 5]  — the stream carries on
+```
+
+    [4, 1, 9]
+    [8, 8, 5]
+
+. . .
+
+To get the *same* list twice, you re-seed before each run --- that rewinds the stream to the start. One seed, one fixed sequence: that's the entire job of a seed.
+
+# ⚡ Your turn --- 10 minutes
+
+Open the exercise (scan the QR or type the link):
+
+**[beyondsimulations.github.io/Introduction-to-Python/notebooks/ex_06_b/](https://beyondsimulations.github.io/Introduction-to-Python/notebooks/ex_06_b/)**
+
+<img src="assets/qr/ex_06_b.png" width="280" />
+
+First **predict** what happens --- then run it.
+
+# <span class="flow">To the Lab</span>
+
+## Tonight's episode
+
+- Head to the lab notebook: [Episode 6 --- Due Diligence Week](../tutorials/tut_06_modules.qmd)
+- You'll `import math` and `statistics` for investor-grade counts and averages, then use `random` --- with and without a `seed` --- to rehearse a busy day she can reproduce
+- It's the **first lab where AI is allowed** --- so try the chatbot, and add your one-line disclosure note
+- It runs entirely in your browser --- no setup, just click and code
+
+. . .
+
+> **Important**
 >
-> These can be quite useful for file handling. The `os` module contains many more functions, e.g. for changing the current working directory, for renaming and moving files, etc.
+> **Download your `.py` before you leave.** Closing the tab without downloading loses your work --- and downloading is exactly how you handed in the checkpoint this morning.
 
-## CSV Module
+# <span class="flow">Wrap-up</span>
 
-- Comma-Separated Values files are used to store tabular data
-- Write: `csv.writer(file)`
-- Read: `csv.reader(file)`
+## Three things to remember
 
-. . .
-
-``` python
-import csv # Import the csv module
-
-with open('secret_message.csv', 'w') as file: # Open the file in write mode
-    writer = csv.writer(file) # Create a writer object
-    writer.writerow(['Entry', 'Message']) # Write the header
-    writer.writerow(['1', 'Do not open the file']) # Write the first row
-    writer.writerow(['2', 'This is a secret message']) # Write the second row
-```
-
-. . .
-
-<span class="task">Task:</span> Copy the code and run it. Do you have a new file?
-
-## OS and CSV Module in Action
-
-<span class="task">Task:</span> Time for another task! Do the following:
-
-``` python
-# First, check if a directory called `module_directory` exists.
-# If it does not, create it.
-# Then, list all files in the current directory and save them in a CSV file called `current_files.csv` in the new `module_directory`.
-
-import os
-if not os.path.exists('module_directory'):
-    pass
-# Your code here
-```
-
-# <span class="flow">Regular Expressions</span>
-
-## Why Regular Expressions?
-
-Let's see the <span class="highlight">limitations of basic string methods</span>:
-
-``` python
-text = "Contact us at: tobias@beyondsimulations.com or call 123-456-7890"
-
-# Find email - how would you do this with basic string methods?
-# Find phone number - what about this?
-# What if there are multiple emails with different formats?
-```
-
-. . .
-
-Regular expressions solve these problems by finding **patterns**! Let's work with this sample text throughout our examples:
-
-. . .
-
-``` python
-sample_text = """
-User john123 logged in at 2024-01-15
-User mary_doe logged in at 2024-01-16
-User bob logged in at 2024-01-17
-Error: user invalid_user! failed login
-"""
-```
-
-## Using Regular Expressions
-
-- `re.search(pat, str)`: search for a pattern in a string
-- `re.findall(pat, str)`: find all occurrences of a pattern
-- `re.fullmatch(pat, str)`: check if entire string matches pattern
-- `re.sub(pat, repl, str)`: replace a pattern in a string
-- `re.split(pat, str)`: split a string by a pattern
+1.  **Don't build it, import it.** A **module** is a toolbox someone already wrote --- `import math`, `from statistics import median`, `import ... as` for a nickname. `dir()` and `help()` show you what's inside.
+2.  **`random` deals the luck** --- `random()`, `randint`, `choice`, `shuffle` --- perfect for rehearsing a day that hasn't happened yet.
+3.  **`random.seed(n)` makes luck repeatable.** Same seed → same sequence, every run. A projection you can reproduce is a projection an investor can trust.
 
 . . .
 
 > **Note**
 >
-> As always, there is more. But these are a good foundation to build upon.
-
-## Literal Matching
-
-``` python
-import re
-
-sample_text = """
-User john123 logged in at 2024-01-15
-User mary_doe logged in at 2024-01-16
-User bob logged in at 2024-01-17
-Error: user invalid_user! failed login
-"""
-
-# Find exact word "User"
-result = re.findall(r'User', sample_text)
-print(f"Found 'User': {result}")
-```
-
-    Found 'User': ['User', 'User', 'User']
-
-. . .
-
-<span class="task">Task:</span> Find all occurrences of "logged" in the sample text.
-
-## Special Character: The Dot (.)
-
-The `.` matches **any single character**:
-
-``` python
-sample_text = """
-User john123 logged in at 2024-01-15
-User mary_doe logged in at 2024-01-16
-User bob logged in at 2024-01-17
-Error: user invalid_user! failed login
-"""
-
-# Find "User" followed by any character, then "o"
-result = re.findall(r'bo.', sample_text)
-print(f"Found 'bo.': {result}")  # This finds "bob"
-```
-
-    Found 'bo.': ['bob']
-
-. . .
-
-<span class="task">Task:</span> Use `.` to find all 4-letter words starting with "use".
-
-. . .
-
-> **Tip**
->
-> The dot is like a wildcard - it fills in for any single character you don't know.
-
-## Character Classes: `[abc]`
-
-Square brackets match **any character inside them**:
-
-``` python
-# Find usernames that start with 'j' or 'm'
-result = re.findall(r'User [jm]\w+', sample_text)
-print(f"Users starting with j or m: {result}")
-```
-
-    Users starting with j or m: ['User john123', 'User mary_doe']
-
-. . .
-
-**Useful character classes:**
-
-- `[abc]` - matches a, b, or c
-- `[a-z]` - matches any lowercase letter
-- `[0-9]` - matches any digit
-- `[a-zA-Z0-9]` - matches letters and numbers
-
-. . .
-
-<span class="task">Task:</span> Find all years.
-
-## Common Pattern Shortcuts
-
-Instead of writing `[0-9]`, we can use shortcuts:
-
-| Shortcut | Meaning        | Same as        |
-|----------|----------------|----------------|
-| `\d`     | Any digit      | `[0-9]`        |
-| `\w`     | Word character | `[a-zA-Z0-9_]` |
-| `\s`     | Whitespace     | `[ \t\n]`      |
-
-. . .
-
-``` python
-# Find dates using \d (much cleaner!)
-result = re.findall(r'\d\d\d\d-\d\d-\d\d', sample_text)
-print(f"Found dates: {result}")
-```
-
-    Found dates: ['2024-01-15', '2024-01-16', '2024-01-17']
-
-. . .
-
-<span class="task">Task:</span> Find all usernames using `\w`.
-
-## Quantifiers: How Many Times?
-
-Instead of repeating `\d\d\d\d`, we can specify quantities:
-
-| Quantifier | Meaning               |
-|------------|-----------------------|
-| `{4}`      | Exactly 4 times       |
-| `{2,4}`    | Between 2 and 4 times |
-| `+`        | One or more times     |
-| `*`        | Zero or more times    |
-| `?`        | Zero or one time      |
-
-. . .
-
-``` python
-# Much cleaner date pattern!
-result = re.findall(r'\d{4}-\d{2}-\d{2}', sample_text)
-print(f"Dates with quantifiers: {result}")
-```
-
-    Dates with quantifiers: ['2024-01-15', '2024-01-16', '2024-01-17']
-
-. . .
-
-<span class="task">Task:</span> Find usernames of any length with `\w+`.
-
-## Putting It Together: Email Finder
-
-<span class="highlight">Let's build an email pattern step by step!</span>
-
-. . .
-
-``` python
-email_text = "Contact: john@email.com, mary.doe@company.org, or bob@test.co.uk"
-
-# Step 1: Basic pattern
-basic = r'\w+@\w+\.\w+'
-print("Basic emails:", re.findall(basic, email_text))
-```
-
-    Basic emails: ['john@email.com', 'doe@company.org', 'bob@test.co']
-
-. . .
-
-``` python
-# Step 2: Handle dots in names
-better = r'[\w.]+@\w+\.\w+'
-print("Better emails:", re.findall(better, email_text))
-```
-
-    Better emails: ['john@email.com', 'mary.doe@company.org', 'bob@test.co']
-
-. . .
-
-``` python
-# Step 3: Handle multiple domain parts
-best = r'[\w.]+@[\w.]+\.\w+'
-print("Best emails:", re.findall(best, email_text))
-```
-
-    Best emails: ['john@email.com', 'mary.doe@company.org', 'bob@test.co.uk']
-
-## Debugging Regular Expressions
-
-<span class="highlight">When your regex doesn't work:</span>
-
-1.  **Test with simple examples first**
-2.  **Build the pattern gradually**
-3.  **Use online tools** like [regexr.com](https://regexr.com)
-4.  **Print intermediate results**
-
-. . .
-
-> **Tip**
->
-> Remember: regex can be complex, but you don't need to master everything at once. Start simple and build up!
-
-## Regex in Action
-
-<span class="task">Task</span>: Replace all occurences of `Python` by "SECRET".
-
-``` python
-import re
-string = """
-Python is a programming language.
-Python is also a snake.
-Monty Python was a theater group.
-"""
-# Your code here
-```
-
-## Advanced Regex in Action
-
-<span class="task">Task:</span> Use regular expressions to extract all dates from the text.
-
-``` python
-dates = """
-On 07-04-1776, the United States declared its independence. Many years later,
-on 11-09-1989, the Berlin Wall fell. In more recent history, the COVID-19
-pandemic was declared a global emergency on 04-11-2020.
-"""
-# Try to find all dates in the above text with findall()
-# Your code here
-```
-
-# <span class="flow">Packages</span>
-
-## What are Packages?
-
-- Packages are esentially **collections of modules**
-- They can contain multiple modules, subpackages, and data files
-- Many packages are available in the <span class="highlight">Python Package Index (PyPI)</span>
-- You don't have to invent the wheel yourself
-- **A lot of functionality** is already implemented by others!
-
-## Installing Packages
-
-- Packages are **installed in the shell**
-- Use `uv add <package_name>` to install a specific package
-- Afterward you can <span class="highlight">import from the package</span> in your scripts
-
-. . .
-
-<span class="task">Task:</span> Install the `pandas` and `numpy` packages, which are commonly used for data analysis. We will use them together next week!
-
-. . .
-
-``` {bash}
-uv add pandas numpy
-```
-
-. . .
-
-> **Tip**
->
-> If you install packages like this, you can use the shell to do so! Alternatively, you can use `uv add <package_name>` in the terminal in the IDE.
-
-## Virtual Environments
-
-- Virtual environments **isolate a project's dependencies**
-- With uv, the environment is **created and managed automatically**
-- No manual venv creation needed and others can replicate
-- <span class="highlight">Especially important when working on several projects at once</span>
-
-. . .
-
-Common uv command you'll use:
-
-``` {bash}
-# Install dependencies from pyproject.toml (to use the code from others)
-uv sync
-
-# Start a Python REPL in the project environment (you can then work directly here)
-uv run python
-```
-
-. . .
-
-> **Note**
->
-> **And that's it for today's lecture!**
-> We now have completed the first step into data science in Python. Next week, we can use this new knowledge to start to work with some tabular data and matrices.
+> **Next episode: one array to rule a thousand orders.** The shop's data has outgrown plain lists --- and NumPy turns a thousand numbers into a single, fast object.
 
 # <span class="flow">Literature</span>
 
-## Interesting Books
+## Books to start with
 
 - Downey, A. B. (2024). Think Python: How to think like a computer scientist (Third edition). O'Reilly. [Link to free online version](https://greenteapress.com/wp/think-python-3rd-edition/)
 - Elter, S. (2021). Schrödinger programmiert Python: Das etwas andere Fachbuch (1. Auflage). Rheinwerk Verlag.
 
 . . .
 
-> **Tip**
+> **Note**
 >
-> Nothing new here, but these are still great books!
+> New this session: the [AI Tools page](../general/ai-tools.qmd) --- how and when to use AI in Part II, and the one-line disclosure habit that goes on every submission from here on.
 
 . . .
 
-For more interesting literature to learn more about Python, take a look at the [literature list](../general/literature.qmd) of this course.
+For more, see the [literature list](../general/literature.qmd) of this course.

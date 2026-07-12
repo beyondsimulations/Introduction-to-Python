@@ -6,11 +6,11 @@ subtitle: Answers to common questions
 
 ## Unanswered Questions
 
-If you have a question that is not answered here, please let me know by sending me an e-mail to [vlcek@beyondsimulations.com](mailto:vlcek@beyondsimulations.com?subject=ProgrammingPythonKLU25) or by creating an issue on [GitHub](https://github.com/beyondsimulations/Introduction-to-Python/issues).
+If you have a question that is not answered here, please let me know by sending me an e-mail to [vlcek@beyondsimulations.com](mailto:vlcek@beyondsimulations.com?subject=ProgrammingPythonKLU26) or by creating an issue on [GitHub](https://github.com/beyondsimulations/Introduction-to-Python/issues).
 
 ## Contribution and Mistakes
 
-If you have found a mistake in the course material or if you have any suggestion on how to improve the course, please let me know by sending me an e-mail to [vlcek@beyondsimulations.com](mailto:vlcek@beyondsimulations.com?subject=ProgrammingPythonKLU25Mistake) or by creating an issue on [GitHub](https://github.com/beyondsimulations/Introduction-to-Python/issues).
+If you have found a mistake in the course material or if you have any suggestion on how to improve the course, please let me know by sending me an e-mail to [vlcek@beyondsimulations.com](mailto:vlcek@beyondsimulations.com?subject=ProgrammingPythonKLU26Mistake) or by creating an issue on [GitHub](https://github.com/beyondsimulations/Introduction-to-Python/issues).
 
 ## FAQs
 
@@ -26,6 +26,18 @@ If you have found a mistake in the course material or if you have any suggestion
 >
 > Unfortunately, this method does not work perfectly on all browsers. If you have a Chrome based browser, you should be fine.
 
-## How does the chatbot work?
+### Can I upload my downloaded `.py` back into the browser?
+
+No --- this is a one-way door. The browser editor cannot open an uploaded file. Your download is for three things: submitting checkpoints, keeping a safety copy, and working locally in Part III of the course. If you want to keep working in the browser, reloading the page is fine --- but treat the downloaded file as your real safety net (see the next question).
+
+### Where is my notebook work saved?
+
+Your progress lives in the browser tab: reloading the page keeps it, but closing the tab and opening the course link again later starts you from a clean notebook --- there is no cross-device sync in the browser, and clearing browser data or private mode also wipes it. The only guaranteed copy is menu → *Download* → *Download Python code*. Make that download a habit at the end of every session.
+
+### How are checkpoints graded?
+
+The green ✅ checks inside a checkpoint are provisional --- they tell you you're on track. Final grading re-runs your submitted `.py` against a reference test suite on our side. Upload your download to the matching Moodle assignment before the deadline; Moodle's clock decides what is on time.
+
+### How does the chatbot work?
 
 The course AI is a chatbot that uses the [Mistral](https://mistral.ai) and some custom code hosted on Hetzner in Germany. If you have any questions about the course, feel free to ask the AI. Note, that the AI is not perfect and sometimes the answers might be incorrect. For more information about how the data is processed, please refer to the [privacy policy](privacy.qmd).

@@ -1,67 +1,47 @@
 ---
-title: Tutorial VII - NumPy for Scientific Computing
-subtitle: Programming with Python
+title: Episode 7 — The Numbers Deck
+subtitle: Programming with Python · Tutorial 07
 ---
 
 
-# Analyzing Climate Data
+The investor liked last week's honest numbers --- now she wants a **one-page
+metrics deck**: totals, a per-zone breakdown, the busiest day, the strongest
+zone. Kevin's counter-proposal, a 40-tab spreadsheet with a formula pointing at
+a workbook he can't find, is gently disqualified. So this week you learn the
+tool that turns a pile of orders into metrics without a single hand-written
+loop: **NumPy**. You'll build arrays, multiply a whole price list in one
+expression, use boolean **masks** to count and filter, and total a 2-D grid by
+row or by column with `axis`.
 
-Imagine you're a climate scientist working on a project to analyze temperature data from weather stations across the country. You've been given a large dataset, and you need to use NumPy to process and analyze this data efficiently.
+## Work on the notebook
 
-To solve this task, you'll need to use NumPy to perform various operations on the temperature data. Here, you'll need some new functions you haven't seen yet.
+<a href="../notebooks/nb_07_lab_metrics/" class="btn btn-primary">Open in browser</a>
+[![Open in molab](https://marimo.io/molab-shield.svg)](https://molab.marimo.io/github/beyondsimulations/Introduction-to-Python/blob/main/notebooks/nb_07_lab_metrics.py)
 
-- `np.mean()`: calculate the mean of an array
-- `np.max()`: calculate the maximum of an array
-- `np.min()`: calculate the minimum of an array
-- `np.argmax()`: find the index of the maximum of an array
-- `np.argmin()`: find the index of the minimum of an array
+**Open in browser (recommended):** runs entirely on your machine, in this tab ---
+no account, no installation, and after it loads no internet is needed.
 
-If you want to find those informations along an axis, you can use the same function with `axis` as an additional argument. Here, `axis=0` is for the columns and `axis=1` is for the rows.
+> **How your work is saved (read this once)**
+>
+> Your progress lives **in this browser tab**. If you **reload** the page
+> (Cmd/Ctrl + R) your work is still there. But if you **close the tab and open
+> the link again later, you start from a clean notebook** --- there is no
+> cross-device sync in the browser, and clearing browser data or private mode
+> also wipes it.
+>
+> So: **download your `.py` before you leave** (menu → Download → *Download Python
+> code*). That download is the *only* guaranteed copy --- and handing in files works
+> exactly like this in the checkpoints, so you get to practise the motion every
+> week. Note: a downloaded `.py` is for submission and backup --- you can't upload
+> it back into the browser editor.
 
-For example, to find the maximum of each row, you can use `np.max(data_set, axis=1)`. To find the index of the maximum of each column, you can use `np.argmax(data_set, axis=0)`.
+**Open in molab:** marimo's free cloud (account required). Your copy saves to
+your account and reopens on **any device**. Choose this if you know you'll
+switch computers or want to be certain nothing is lost. Optional --- nothing
+graded ever requires it.
 
-``` python
-import numpy as np
+<!-- PUBLISH AFTER SESSION VII (see docs/authoring-conventions.md → Solution notebooks):
+## Solutions
 
-# Let's analyze temperature data from 10 weather stations over 30 days
-temp_data = np.random.randint(0, 40, size=(10, 30))
-
-# Example: Calculate the average temperature for the first station
-first_station_avg = np.mean(temp_data[0,:])
-print(f"Average temperature for the first station: {first_station_avg:.2f}°C")
-
-# TODO: a) Calculate the average temperature for each station and print it. Make sure to round the result to 2 decimal places!
-# Hint: Use np.mean() with axis=1
-# Your code here
-
-
-# TODO: b) Find the highest temperature recorded and the station index and print it
-# Hint: Use np.max() and np.argmax(). Note, that argmax returns the index of a flattened array, so you need to convert it to the original shape!
-# Your code here
-
-# TODO: c) Find the lowest temperature recorded and the station index and print it
-# Hint: Use np.min()
-# Your code here
-
-# TODO: d) Calculate the overall average temperature and print it
-# Hint: Use np.mean() on the entire temp_data array
-# Your code here
-
-# Example: Identify days above 30°C for the first station
-hot_days = np.sum(temp_data[0,:] > 30)
-print(f"The first station had {hot_days} days above 30°C")
-
-# TODO: e) Count the number of days above 30°C for each station
-# Your code here
-
-# TODO: f) Find the hottest and coldest stations and determine the index of the station with the highest average temperature and the station with the lowest average temperature.
-# Hint: Use np.argmax() and np.argmin()
-# Your code here
-```
-
-    Average temperature for the first station: 18.93°C
-    The first station had 9 days above 30°C
-
-# That's it!
-
-After a week, you can find the solutions to these exercises online in the associated GitHub repository, but we will also quickly go over them in next week's tutorial. To access the solutions, click on the Github button on the lower right and search for the folder with today's lecture and tutorial. Alternatively, you can ask ChatGPT or Claude to explain them to you. Remember, the goal is not just to complete the exercises, but to understand the concepts and improve your programming abilities.
+[Solutions notebook (read-only)](../notebooks/sol_07_lab_metrics/){.btn}
+-->

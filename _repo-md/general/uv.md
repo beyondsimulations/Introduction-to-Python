@@ -104,7 +104,7 @@ The first line creates a new folder named `my-first-project` (you can name it an
 - `main.py` (starter script)
 - `pyproject.toml` (project + dependencies config)
 - `.python-version` (records the Python version we chose)
-- `.gitignore` (useful if you ever use Git)
+- `.gitignore` (used by Git in Part III --- see the [Git Basics](git-basics.qmd) guide)
 - `README.md` (you can jot notes here)
 - (A `.venv` folder will appear later once packages are added or synced.)
 

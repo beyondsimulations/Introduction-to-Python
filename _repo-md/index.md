@@ -18,17 +18,17 @@ Upon completion of the course, students ...
 - can apply basic data manipulation and visualization
 - will be able to read and write code
 - will have experience working with python libraries such as NumPy, Pandas, Matplotlib
-- will know how to collaborate in a small team to find solutions for problems at hand
+- will know how to collaborate in a pair to find solutions for problems at hand
 
 Please note that this course is **specifically designed for business students**. That is, it is **not required to have any prior knowledge or experience in programming** to attend this course. The teaching format will make it possible to account for different levels of programming skills such that every student can take the most out of the course.
 
 # Course Structure
 
-The course is based on a hands-on approach with a two-fold structure:
+The course is based on a hands-on approach with three elements:
 
 1.  **Lectures**: In the lectures, we will introduce concepts and illustrate them in reproducible examples.
 2.  **Hands-on Tutorials**: Students will practically apply the concepts of the lecture in hands-on examples.
-3.  **Assignments**: Students will solve programming exercises in groups of up to three students that they will have to hand in.
+3.  **Checkpoints**: Five short in-class checkpoints let you show what you have learned. They run in the browser, are solved individually, and are graded automatically.
 
 # Course Blocks
 
@@ -49,27 +49,25 @@ You can find more information on the course blocks and the corresponding lecture
 
 # Passing the Course
 
-- 75% attendance required for passing the course
-- You will be given two programming assignments and one project to solve with Python
-- You can group up (3 students) and work together
-- Each student group submits one solution together
+- 75% attendance is required to pass the course
+- Five in-class checkpoints, worth 12 points each (60 points total)
+- One final project with a presentation, worth 40 points
+- You need 60 of 100 points to pass
+- The project is done in pairs; each pair submits one GitHub repository
 
 ## AI Policy
 
-**Level 1: Pause -- Use of AI defined by the educator**
+The course uses a phased AI policy that mirrors how the skills build on each other:
 
-A course chatbot is available on the learning website for exploratory study. It is designed to guide your problem-solving process rather than provide answers directly. Use it as a learning tool, not a solution generator.
+- **Part I (Sessions I--V): AI-free.** You are building foundations. The course chatbot on this website is the sanctioned helper --- it gives hints, not solutions. Checkpoints 1--3 are taken without AI.
+- **Part II (Sessions VI--IX): AI allowed and taught.** We bring AI in deliberately: how to prompt with context and constraints, how to verify its output, and how to notice when it confidently makes things up. Checkpoints 4--5 explicitly allow AI tools.
+- **Part III (Sessions X--XIII): AI encouraged.** Use what makes you productive on your project --- and disclose what you used in your repository's README.
 
-You may also use external AI tools (e.g., ChatGPT, Claude, Mistral, Gemini). However:
-
-1.  Please be careful and try to understand the code generated.
-2.  Relying on AI to solve tasks for you weakens your own learning.
-3.  AI should ideally support understanding --- not replace practice.
-4.  Using AI without understand the code can lead to security risks.
+Whatever the phase: understand every line you submit. See the [AI Tools guide](general/ai-tools.qmd) for free options and setup.
 
 # Questions
 
-If you have any questions regarding the course, please contact me under [vlcek@beyondsimulations.com](mailto:vlcek@beyondsimulations.com?subject=ProgrammingPythonKLU25).
+If you have any questions regarding the course, please contact me under [vlcek@beyondsimulations.com](mailto:vlcek@beyondsimulations.com?subject=ProgrammingPythonKLU26).
 
 # Contributors
 

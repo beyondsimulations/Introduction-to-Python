@@ -1,291 +1,404 @@
 ---
-title: Lecture X - Programming Projects
+title: Lecture X - Tooling, Git and Your Project
 subtitle: Programming with Python
 author: Dr. Tobias Vlćek
-institute: Kühne Logistics University Hamburg - Fall 2025
+institute: Kühne Logistics University Hamburg - Fall 2026
 format:
   revealjs:
     footer: ' {{< meta title >}} | {{< meta author >}} | [Home](lec_10_projects.qmd)'
     output-file: lec_10_presentation.html
-from: markdown+emoji
 ---
 
 
-# <span class="flow">General</span>
+# 📋 Checkpoint 5 --- Sessions VIII--IX
 
-## Congratulations
+The first **40 minutes** are the checkpoint. It starts **now** --- the acquirer runs one final audit before signing.
 
-You've learned your first steps to program with Python! :tada:
+- **Individual work** --- no neighbours, no chat
+- **AI tools are allowed** --- being able to **VERIFY** the output is the skill being graded
+- The **link and QR** are handed out in class --- open it and start
+- 6 short tasks: pull the right number out of a pandas table, fix a line the AI got wrong, and read a chart honestly
+- It sweeps **Sessions VIII--IX** --- pandas filtering and `groupby`, and telling an honest chart from a misleading one
+
+<!-- QR handed out live — never in the deck -->
 
 . . .
 
-<center>
-<iframe src="https://giphy.com/embed/scZPhLqaVOM1qG4lT9" width="480" height="480" style frameBorder="0" class="giphy-embed" allowFullScreen>
-</iframe>
-</center>
+**When you're done:** menu → *Download* → *Download Python code* → upload the `.py` to the **"Checkpoint 5"** assignment on Moodle. **No retakes** --- one sitting.
 
-## Structure
+. . .
 
-- Over the upcoming weeks you <span class="highlight">will work on a project</span>
-- You will present it in the last week of this course
-- You can work in groups of up to 3 people
-- Choose from a list of ideas or **propose your own idea!**
+> **Note**
+>
+> The green ✅ live checks are **provisional** --- the final grading runs on our side. The two multiple-choice tasks only say *"recorded"*, not ✅ --- that's expected, they're scored later. And take a breath: everything in it was rehearsed in the labs.
+
+# <span class="flow">Episode 10: The Exit</span>
+
+## The deal closes
+
+Pens down --- the checkpoint is behind you, and so, it turns out, is the startup. Overnight the rival chain **MunchCorp** stopped competing and made an offer: they're **buying the company.**
+
+. . .
+
+The lawyers will tell you deals close on the numbers. This one closed on **yours.** The clean order data you pulled together in the due diligence (Session VIII) and the honest dashboard you built for the pitch (Session IX) are exactly what convinced the acquirer the books were real.
+
+. . .
+
+No cliff-edge growth chart with a chopped axis. Just data that survived a second look. **That's why they signed.**
+
+## The handover note
+
+Kevin's job today is to hand over the **data room** --- every file the company ever built. He tapes a note to the folder:
+
+. . .
+
+> *"It's all here. And it was never anything fancy --- every notebook you downloaded all semester was already a plain `.py` file. Same code, same lines. Open one in a real editor and it just runs."*
+
+. . .
+
+That's the whole reveal, and most of you already suspected it. Those downloads stop being **backups** today and become the **real thing** --- on your own machine, in a real editor, under your control.
+
+## Your exit package
+
+Every acquisition comes with an exit package. Here's yours: you don't join MunchCorp. You **spin off your own idea** and build it.
+
+. . .
+
+- The tools are the same ones professionals use: **uv**, **Zed**, **git**, **GitHub**
+- The work is a real project, built with a partner, over the next weeks
+- Today we set up the machine and the repo; the building starts here
+
+. . .
+
+Let's get you kitted out.
+
+# <span class="flow">The Project</span>
+
+## The brief
+
+Over the next weeks you build **one real project** and present it in the final session.
+
+- Work in **pairs** --- solo is fine if the numbers don't come out even
+- **Deliverable:** a **GitHub repository link**, submitted on Moodle
+- The repo's `README.md` carries a short **AI-disclosure section**: which tools you used, what for, and what you **verified yourself**
+- You **present in Session XIII**: **10 minutes**, plus **5 minutes** for questions
 
 . . .
 
 > **Tip**
 >
-> You have enough time to discuss different ideas in your group today. From my experience, it is a good idea to choose a project that you are **really interested in**.
+> Pick something you're **actually interested in**. You'll spend real hours on it --- curiosity is the fuel that carries a project past the boring middle.
 
-## Presentation
+## How it counts
 
-- Each group has **10 minutes** for the presentation with 5 additional minutes for questions
-- Introduce your idea and the development cycle
-- Provide code examples and/or visualizations
-- Comment on <span class="highlight">challenges and what you've learned</span>
+- Project **and** presentation together are worth **40 of the 100** course points
+- Your **commit history counts** --- it's the evidence of *how* the work happened, not just the final state. Commit small and often (git block, shortly)
+- **Sessions XI and XII are supervised work sessions** --- we're in the room while you build, so bring your questions
+
+. . .
+
+> **Note**
+>
+> The project does not have to be flawless. Show that you scoped it honestly, built it in the open, and can explain your own code. That's the whole bar.
+
+## Idea 1 & 2
+
+**Data analytics dashboard**
+
+- **Core:** load and clean a real CSV with pandas, answer **3 business questions** with charts
+
+*Bonus:* interactive dashboard (streamlit), automated reporting.
+
+. . .
+
+**Web scraping pipeline**
+
+- **Core:** scrape **one** site politely into a CSV and analyse it
+
+*Bonus:* multi-source, change detection, alerts.
+
+## Idea 3 & 4
+
+**Simulation study**
+
+- **Core:** a Monte Carlo simulation of a business decision (pricing, staffing, inventory) with matplotlib results
+
+*Bonus:* interactive parameters, scenario comparison.
+
+. . .
+
+**Automation assistant**
+
+- **Core:** a script that does a real repetitive task **end to end**, with error handling and logging
+
+*Bonus:* scheduling, notifications, a small UI.
+
+## Idea 5 & 6
+
+**Game**
+
+- **Core:** a complete playable **terminal or pygame** game with save/load
+
+*Bonus:* levels, high scores, procedural content.
+
+. . .
+
+**ML-powered app** *(ambitious --- lean on AI)*
+
+- **Core:** train a **simple** model on tabular data and wrap it in a small interface
+
+*Bonus:* monitoring, A/B comparison.
+
+## Idea 7 & 8
+
+**Your startup spin-off**
+
+- **Core:** take any system from the course universe --- courier routing, review moderation, demand forecasting --- and build the **real** version
+
+*Bonus:* wherever your version wants to grow.
+
+. . .
+
+**Your own idea** --- the open door
+
+- Have something else in mind? **Make it ambitious.** Bring it and we'll discuss scope and feasibility together.
+
+# <span class="flow">Form your pair, pick your direction</span>
+
+## Take ~25 minutes
+
+Right now, in the room:
+
+- **Find your partner** (or decide to go solo if the count is odd) --- no partner yet? **Come to the front**, we'll match you
+- **Pick a direction** from the menu --- or bring your own
+- Talk it through: what's the *core* you can definitely finish, what's a *bonus* if time allows?
 
 . . .
 
 > **Tip**
 >
-> Your project does not have to be perfect! To pass, you simply have to show that you tried your best. Try, fail potentially and learn. <span class="highlight">That's the best way to improve your coding skills.</span>
+> **A good outcome by the end of this block:** a **one-sentence pitch** ("we're building X that does Y for Z"), a **name** for the project, and a decision on **who owns the shared repo** (the owner creates it in the git block; the partner clones). The sentence keeps you honest about scope; the name goes on the repo in a minute.
 
-# <span class="flow">Project Ideas</span>
+# <span class="flow">Your Toolchain</span>
 
-## Idea 1: Data Analytics Platform
+## Check your install
 
-- Build a <span class="highlight">complete data pipeline</span>
-- Implement automated data cleaning and validation
-- Create interactive dashboards with real-time updates
-- Add predictive modeling and automated reporting
+Before we build anything, the installs from the Session IX homework need to work. In a terminal:
 
-. . .
+``` bash
+uv --version
+git --version
+gh --version
+```
 
-**Bonus:** Integrate multiple data sources, add email alerts
-
-## Idea 2: Web Scraping System
-
-- Build a <span class="highlight">multi-source scraping pipeline</span>
-- Implement error handling and retry logic
-- Store data in a database (SQLite or PostgreSQL)
-- Create a monitoring dashboard with visualization
-- Add automated alerts when target data changes
+- Three version numbers? You're set.
+- Zed opens when you launch it? Good.
 
 . . .
 
-**Bonus:** Add proxy rotation, detect website structure changes
-
-## Idea 3: ML Model with Deployment
-
-- Build an <span class="highlight">end-to-end ML pipeline</span> for a real-world problem
-- Implement data preprocessing, feature engineering, and model training
-- Build a web interface for users to interact with the model
-- Add model monitoring and performance tracking
-
-. . .
-
-**Bonus:** A/B testing, explainability dashboard
-
-## Idea 4: Real-Time Computer Vision
-
-- Build a <span class="highlight">real-time video processing pipeline</span>
-- Implement object detection, tracking, and analytics
-- Create a web interface to view live results
-- Store and analyze detection statistics over time
-
-. . .
-
-**Bonus:** Multi-camera support, alert system
-
-## Idea 5: Advanced Simulation System
-
-- Build a <span class="highlight">complex simulation</span>
-- Implement Monte Carlo methods or agent-based modeling
-- Create interactive visualizations with parameter controls
-- Add sensitivity analysis and scenario comparison
-- Generate automated reports with statistical analysis
-
-. . .
-
-**Bonus:** GPU acceleration, parallel processing
-
-## Idea 6: Game Development
-
-- Create a <span class="highlight">complete game</span> with multiple levels/stages
-- Add save/load system, high scores, and user profiles
-- Include sound effects, music, and polished graphics
-
-. . .
-
-**Bonus:** Procedural level generation, achievement system
-
-## Idea 7: Automation System
-
-- Build a <span class="highlight">robust automation framework</span> for repetitive tasks
-- Implement error detection, logging, and automatic recovery
-- Create a web interface to monitor and control automation
-- Add scheduling, notifications (email/Slack), and reporting
-- Include configuration management for different scenarios
-
-. . .
-
-**Bonus:** OCR for screen reading, computer vision for UI detection
-
-## Idea 8: Your Idea?
-
-- Have an idea that is not on the list?
-- Something that potentially would help you personally?
-- <span class="highlight">Make it ambitious and do it!</span>
-- Consider: deployment, testing, user interface
-- Combine multiple technologies and concepts
-- **Let me know and we can discuss scope and feasibility!**
-
-# <span class="flow">Help over the upcoming weeks</span>
-
-## Ask Questions
-
-- In case you need help, you can always ask me!
-- The next lectures are there to work on your project
-- You can also write me an email at <vlcek@beyondsimulations.com>
-
-> **Tip**
+> **Important**
 >
-> I am always happy to help you with your project. There are no stupid questions!
+> **Didn't work?** Don't burn the session fighting it. **Flag it for office hours**, pair up with your partner's working machine, and **follow along on the slides** for now. Nobody gets left behind.
 
-## Use of AI Tools
+## Start the project: `uv init`
 
-- <span class="highlight">Strongly encouraged</span> to use AI tools for your project!
-- Remember: AI accelerates development, but <span class="highlight">understanding is essential</span>
-- Use AI to learn patterns, debug issues, and explore solutions
+Pick the folder where you keep course work, then create the project (name it after your pitch):
+
+``` bash
+uv init my-project
+cd my-project
+```
+
+`uv init` creates `main.py`, `pyproject.toml`, `.python-version`, `.gitignore`, and `README.md`.
 
 . . .
 
-> **Tip**
+> **Note**
 >
-> Try multiple AI tools to find what works best for your workflow. Claude Code, Zed, Copilot, Cursor, OpenCode and LM Studio are all excellent choices!
+> It also **already turns the folder into a git repository** --- there's a hidden `.git/` inside. You do **not** run `git init` yourself. Your project is version-controlled from its very first second.
 
-## Agentic Coding
+## Open a notebook in Zed
 
-<span class="highlight">Agentic coding</span> means AI agents work autonomously on tasks
+Here's the reveal made concrete. Open Zed, open your project folder, and drag in **any lab `.py` you downloaded this semester**. It's just code --- read it.
 
-. . .
+Now run it, no browser required:
 
-**How it works:**
-
-- You describe what you want to achieve
-- The AI agent plans and executes multiple steps
-- It can run tests, fix errors, and iterate independently
-- You review and guide the overall direction
+``` bash
+uv run python tut_08_pandas.py
+```
 
 . . .
 
-> **Tip**
+`uv run` uses the project's own Python and packages. The file that lived in a browser tab all semester now runs on **your machine, from your editor.** That's the whole point of today.
+
+## Connect your AI
+
+Part III **encourages** AI --- you've earned the co-pilot. Connect one provider in Zed following the [AI-tools guide](../general/ai-tools.qmd) (the free **Mistral** key is the guaranteed path; paste it into Zed's assistant settings).
+
+. . .
+
+> **Important**
 >
-> **Best for:** Complex refactoring, adding test suites, documentation generation, multi-step implementations
+> The disclosure rule still stands, now in writing: your repo's `README.md` says **which tools you used, what for, and what you checked yourself.** AI drafts; **you verify** --- same reflex as the checkpoint you just sat.
 
-## Claude Code
+# <span class="flow">Git</span>
 
-[Claude Code](https://code.claude.com/) is an AI coding assistant by Anthropic
+## The five words
+
+Git has a small vocabulary. Learn these five and you can do everything this project needs:
+
+- **Repository** --- a folder git watches, with its whole history
+- **Commit** --- one saved snapshot, with a short message
+- **Push** --- send your commits up to GitHub
+- **Pull** --- bring your partner's commits down to you
+- **Clone** --- make your own copy of a repo from GitHub
 
 . . .
 
-**Key Features:**
+We'll do each one **live, in your real project repo** --- mistakes are cheap when the repo is two minutes old.
 
-- Understands entire codebases, not just single files
-- Can edit multiple files simultaneously
-- Explains complex code patterns clearly
-- Helps with debugging and refactoring
+## Once per machine
+
+Before any push reaches GitHub, your machine has to prove it's allowed to. Signing in to **Zed does not do this** --- git needs its own setup. You need a **(free) GitHub account** and the `gh` tool --- not installed? Get it via the [Git Basics](../general/git-basics.qmd) page first. Then, once per computer, in a terminal:
+
+``` bash
+gh auth login
+```
+
+Choose **GitHub.com**, **HTTPS**, authenticate in the **browser**, and answer **yes** to *"Authenticate Git with your GitHub credentials?"*. Then, once:
+
+``` bash
+git config --global pull.rebase false
+```
 
 . . .
 
-> **Tip**
+> **Note**
 >
-> Great for: Understanding project structure, implementing features across multiple files, learning best practices
-
-## Alternative AI Coding Tools
-
-Beyond Claude Code, many tools are available:
+> Full walkthrough (installing `gh`, checking it worked) is on the [Git Basics](../general/git-basics.qmd) page --- your at-home reference for all of this.
 
 . . .
 
-**Popular Options:**
-
-- **Open Code**: Open Source alternative to Claude Code
-- **Cursor**: AI-first code editor based on VS Code
-- **Zed**: Lightweight editor with Claude & ChatGPT integration
-
-. . .
-
-Each tool has strengths, experiment to find your preference!
-
-. . .
-
-> **Tip**
+> **Important**
 >
-> Personally, I work with Zed, Claude Code and OpenCode with Mistral.
+> **Auth fighting you?** Same rule as the toolchain: **flag it**, follow along on the slides, and finish the push at home with the [Git Basics](../general/git-basics.qmd) page --- or with us in the supervised sessions. Nobody's project stalls on a login.
 
-## LM Studio: Local AI for Privacy
+## Your first commit
 
-[LM Studio](https://lmstudio.ai/) runs AI models entirely on your computer
+Your `uv init` folder already has files worth saving. In Zed's **command palette** (`Cmd/Ctrl+Shift+P`):
+
+- **`git: stage all`** --- mark everything as part of the snapshot
+- **`git: commit`** (`Cmd/Ctrl+Enter`) --- type a message, save it
 
 . . .
 
-**Benefits:**
+The same thing in the terminal, the words you'll see everywhere:
 
-- Complete privacy - your code never leaves your machine
-- No API costs or rate limits
-- Works offline with full control over model selection
+``` bash
+git add .
+git commit -m "Initial project setup"
+```
+
+A commit lives **only on your computer** so far. Next we send it to GitHub.
+
+## Put it on GitHub --- repo owner only
+
+**This slide is for the repo owner** you picked in the pairing block. **Partner: watch** --- you'll clone in a minute; **don't create your own GitHub repo.**
+
+GitHub doesn't know about your project yet. Three steps, done by the owner:
+
+1.  On **github.com**, create a new **empty** repository (no README --- keep it empty). *(There's no "publish" button inside Zed --- the GitHub-side repo is made on the website.)*
+2.  In Zed: **`git: create remote`**, paste the repo's **HTTPS URL** (`https://github.com/you/project.git`)
+3.  Do the **first push** from the terminal --- this exact line, once:
+
+``` bash
+git push -u origin HEAD
+```
+
+. . .
+
+After this one-time command, every later push is just **`git: push`** in Zed (terminal: `git push`).
+
+## Your partner joins
+
+The owner invites the partner (GitHub → **Settings → Collaborators**). The **partner** gets onto the project by cloning it --- **into a fresh folder**, not inside the practice project from the toolchain block (set that one aside; the clone is your real working copy):
+
+- In Zed: **`git: clone`**, paste the same **HTTPS URL**
+
+``` bash
+git clone https://github.com/you/project.git
+```
+
+. . .
+
+Cloning brings the whole project and its history, and sets up the connection automatically --- the partner pushes and pulls normally from the first moment. Now **both of you pull** (`git: pull` / `git pull`) to confirm you're in sync.
+
+. . .
+
+> **Note**
+>
+> **Clock ran out?** This step keeps --- inviting and cloning works just as well at the start of **Session XI**, with us in the room.
+
+## How we work together
+
+Two people, one repo. Four habits keep it painless:
+
+- **Pull before you start.** `git: pull` first, every session --- this alone prevents almost every problem
+- **Commit small and often.** Little snapshots with honest messages beat one giant one
+- **A conflict? Call me.** If git marks a clash, don't fix it alone in week one --- bring it to class
+- **Never force anything.** No `--force`, no "force push", ever
+
+. . .
+
+> **Note**
+>
+> Everything today --- the actions, the terminal equivalents, the setup, and a **cheatsheet table** --- lives on the [Git Basics](../general/git-basics.qmd) page. When today's follow-along is a fading memory, that's the page you reopen.
+
+# <span class="flow">Send-off</span>
+
+## The road to the finish
+
+- **Sessions XI and XII** --- supervised work sessions. We're in the room; you build, we help. Pull before you start, push when you stop.
+- **Session XIII** --- presentations. **10 minutes** each, **5 minutes** of questions. Show the idea, the build, and one thing that broke and how you fixed it.
 
 . . .
 
 > **Tip**
 >
-> Ideal if you're working with sensitive data or want to learn without internet dependency. Requires a decent GPU for best performance.
+> Between now and then, the repo tells your story. Commit as you go --- a steady history is worth more than a heroic final night.
 
-# <span class="flow">Discuss your ideas!</span>
+## Keep programming
 
-# <span class="flow">How to continue?</span>
+The skill fades if it sits idle. A few honest ways to keep it alive:
 
-## How to continue after the presentations?
+- Use Python in your **thesis** --- data cleaning, analysis, plots you can defend
+- Find a way to **apply it at work** --- the repetitive task nobody wants to do by hand
+- **[Advent of Code](https://adventofcode.com/)** --- free, ad-free programming puzzles, one a day from **December 1st**. A genuinely fun way to keep the muscle warm.
 
-- The best way to continue learning is to <span class="highlight">keep programming in the future</span>
-- Potentially, you will continue to do so during your studies
-- Coding in your Thesis is a another great way to improve
-- Try to find a way to apply programming in your work
-- **There are many interesting topics to explore!**
+## Thank you
 
-## Advent of Code
+- We covered the basics of Python --- from a first `print` to a real project on your own machine
+- You debugged, you verified AI, you shipped honest data
+- I hope you enjoyed it, and I hope it's useful long after the grade
+- If you have questions or feedback, [please tell me](mailto:vlcek@beyondsimulations.com)
 
-- [Advent of Code](https://adventofcode.com/) is a fun way to keep programming
-- Here you can solve programming puzzles during Advent
-- It is completely free and ad-free and starts at 01.12.
+. . .
 
-<center>
-<iframe src="https://giphy.com/embed/F1Gh6u8YEG3FctxYWc" width="280" height="280" style frameBorder="0" class="giphy-embed" allowFullScreen>
-</iframe>
-</center>
-
-## That's it for the Lecture Series!
-
-- We now have covered the basics of Python
-- I hope you enjoyed the lecture and found it helpful
-- If you have questions or feedback, <span class="highlight">please let me know!</span>
-- I wish you all the best for your studies and your career!
-
-## 
-
-<center>
-<iframe src="https://giphy.com/embed/YVg3fCdaBpLEc" width="480" height="355" style frameBorder="0" class="giphy-embed" allowFullScreen>
-</iframe>
-</center>
+All the best for your studies and your career. Now go build the thing.
 
 # <span class="flow">Literature</span>
 
-## Interesting Books
+## Books to start with
 
 - Downey, A. B. (2024). Think Python: How to think like a computer scientist (Third edition). O'Reilly. [Link to free online version](https://greenteapress.com/wp/think-python-3rd-edition/)
 - Elter, S. (2021). Schrödinger programmiert Python: Das etwas andere Fachbuch (1. Auflage). Rheinwerk Verlag.
 
 . . .
 
-For more interesting literature to learn more about Python, take a look at the [literature list](../general/literature.qmd) of this course.
+> **Note**
+>
+> Setting up the toolchain? The [Installing Python](../general/uv.qmd), [AI Tools](../general/ai-tools.qmd) and [Git Basics](../general/git-basics.qmd) pages are the reference versions of everything we did live today.
+
+. . .
+
+For more, see the [literature list](../general/literature.qmd) of this course.

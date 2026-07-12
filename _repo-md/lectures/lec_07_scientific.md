@@ -2,7 +2,7 @@
 title: Lecture VII - NumPy for Scientific Computing
 subtitle: Programming with Python
 author: Dr. Tobias Vlćek
-institute: Kühne Logistics University Hamburg - Fall 2025
+institute: Kühne Logistics University Hamburg - Fall 2026
 format:
   revealjs:
     footer: ' {{< meta title >}} | {{< meta author >}} | [Home](lec_07_scientific.qmd)'
@@ -10,350 +10,432 @@ format:
 ---
 
 
-# <span class="flow">Quick Recap of the last Lecture</span>
+# <span class="flow">Episode 7: One Array to Rule a Thousand Orders</span>
 
-## Modules
+## The numbers deck is due
 
-- <span class="highlight">Modules</span> are `.py` files containing Python code
-- They are used to organize and reuse code
-- They can define functions, classes, and variables
-- Can be imported into other scripts
+The investor wants a numbers deck by Friday. A **thousand orders** sit in the system --- one row each: minutes, price, zone.
 
 . . .
 
-> **Tip**
->
-> We can import entire modules or individual functions, classes or variables.
+Kevin's plan is a **40-tab spreadsheet**, one tab per zone, copied by hand. He looks at the pile, then at his list-of-lists, and says the only true thing he'll say all week:
 
-## Standard Libraries
-
-- Python includes many built-in modules like:
-  - `random` provides functions for random numbers
-  - `os` allows interaction with the operating system
-  - `csv` is used for reading and writing CSV files
-  - `re` is used for working with regular expressions
-
-## Packages
-
-- <span class="highlight">Packages</span> are collections of modules
-- Often available from the Python Package Index (PyPI)
-- Install using `uv add <package_name>`
-- Virtual environments help manage dependencies
+> **"We need a bigger boat than a list."**
 
 . . .
 
-> **Tip**
+Today we get the bigger boat: **NumPy** --- one object that holds a thousand numbers and does arithmetic on all of them at once.
+
+# 🔥 Warm-up
+
+Three questions from Episode 6. Commit --- hands up **before** the reveal.
+
+## Question 1
+
+``` python
+from math import ceil
+
+# which line works?
+```
+
+a\) `math.ceil(3.2)` b) `ceil(3.2)` c) both
+
+## Answer 1
+
+**b) `ceil(3.2)`** --- `from math import ceil` binds only the **name** `ceil`. The module `math` itself was never imported, so `math.ceil` has nothing to reach through.
+
+## Question 2
+
+``` python
+import random
+
+random.seed(42)
+print(random.randint(1, 20))
+print(random.randint(1, 20))
+print(random.randint(1, 20))
+```
+
+Kevin runs this exact script today and again tomorrow. Tomorrow's numbers are...
+
+a\) the same three numbers b) different --- random is random c) an error
+
+## Answer 2
+
+**a) the same three numbers** --- every run starts from seed 42, so the stream replays from the top. That is the entire job of a seed: reproducible randomness. (Two batches *inside one run* would differ --- the stream continues; a fresh run rewinds it.)
+
+## Question 3
+
+``` python
+import statistics
+
+statistics.median([9, 2, 5])
+```
+
+returns...
+
+a\) `2` b) `5` c) an error --- the list is not sorted
+
+## Answer 3
+
+**b) `5`** --- `median` sorts the values internally before picking the middle one. You never have to sort first; `5` is the middle of `2, 5, 9`.
+
+# <span class="flow">A thousand orders at once</span>
+
+## From a list to an array
+
+A **NumPy array** holds many numbers under one name --- like a list, but built for maths. You make one from a list, then ask it about itself:
+
+``` python
+import numpy as np
+
+prices = np.array([12.0, 9.0, 15.0])
+print(prices)
+print(prices.shape)   # how many, in each dimension
+print(prices.dtype)   # what kind of number
+print(prices.size)    # how many in total
+```
+
+    [12.  9. 15.]
+    (3,)
+    float64
+    3
+
+. . .
+
+`np.array([...])` wraps a list; `import numpy as np` is the nickname everyone uses. `.shape` is `(3,)`, `.dtype` is `float64`, `.size` is `3`. One `dtype` for the **whole** array --- every element shares the same type; that's part of what makes it fast.
+
+## One operation, every element
+
+Here's the bigger boat. The deck needs **gross** prices --- 19% VAT on all three. With a list you loop; with an array you just multiply:
+
+``` python
+# the painful way — a loop, item by item
+gross = []
+for p in [12.0, 9.0, 15.0]:
+    gross.append(p * 1.19)
+```
+
+``` python
+import numpy as np
+
+prices = np.array([12.0, 9.0, 15.0])
+print(prices * 1.19)   # every element, one expression
+```
+
+    [14.28 10.71 17.85]
+
+. . .
+
+One operation lands on **all** elements at once: `[14.28 10.71 17.85]`. No loop, no `.append` --- and on a thousand orders it's also far faster.
+
+## Arrays from scratch
+
+Two builders make evenly-spaced arrays without typing every number --- handy for axes and ranges:
+
+``` python
+import numpy as np
+
+print(np.arange(0, 10, 2))     # start, stop (excluded), step
+print(np.linspace(0, 1, 5))    # start, stop (included), how many
+```
+
+    [0 2 4 6 8]
+    [0.   0.25 0.5  0.75 1.  ]
+
+. . .
+
+`arange` walks by a **step** and stops **before** the end --- just like `range`. `linspace` splits a span into a fixed **count** of points, endpoints included.
+
+## Predict: times two
+
+Kevin multiplies a row of counts by two. What does this print?
+
+``` python
+print([1, 2, 3] * 2)
+```
+
+a\) `[2, 4, 6]` b) `[1, 2, 3, 1, 2, 3]` c) an error
+
+. . .
+
+<span class="question">Predict first</span> --- commit to an answer before the next slide.
+
+## Answer: lists repeat, arrays compute
+
+**b) `[1, 2, 3, 1, 2, 3]`** --- that's a plain **list**, and `* 2` on a list *repeats* it. Wrap it in an array and the same `* 2` does the maths instead:
+
+``` python
+import numpy as np
+
+print([1, 2, 3] * 2)              # list → repeated
+print(np.array([1, 2, 3]) * 2)    # array → doubled
+```
+
+    [1, 2, 3, 1, 2, 3]
+    [2 4 6]
+
+. . .
+
+Lists repeat; arrays compute. That's why we're here.
+
+# ⚡ Your turn --- 10 minutes
+
+Open the exercise (scan the QR or type the link):
+
+**[beyondsimulations.github.io/Introduction-to-Python/notebooks/ex_07_a/](https://beyondsimulations.github.io/Introduction-to-Python/notebooks/ex_07_a/)**
+
+<img src="assets/qr/ex_07_a.png" width="280" />
+
+First **predict** what happens --- then run it.
+
+# <span class="flow">Asking questions of data</span>
+
+## A comparison makes a mask
+
+Compare an array to a number and you don't get one `True`/`False` --- you get a **whole array** of them, one per element. That's a **mask**, and you can filter with it:
+
+``` python
+import numpy as np
+
+times = np.array([25, 41, 18, 33])
+print(times > 30)            # a True/False for every element
+print(times[times > 30])     # keep only where the mask is True
+```
+
+    [False  True False  True]
+    [41 33]
+
+. . .
+
+`times > 30` is the mask; `times[times > 30]` reads the array **through** the mask and returns just the matching values. No loop, no `if`.
+
+## Counting without a loop
+
+A mask answers two investor questions at once. `.sum()` counts the `True`s (each counts as `1`); `.mean()` gives the **share** that are `True`:
+
+``` python
+import numpy as np
+
+times = np.array([25, 41, 18, 33, 52, 29, 44, 12])
+late = times > 30
+print(int(late.sum()))              # how many were late
+print(float(times[late].mean()))    # average of just the late ones
+print(float(late.mean()))           # the SHARE that were late
+```
+
+    4
+    42.5
+    0.5
+
+. . .
+
+`4` deliveries over 30 minutes, averaging `42.5`, and `late.mean()` says **half** the run was late --- one line each, straight into the deck.
+
+## Predict: counting the Trues
+
+What does calling `.sum()` on the mask give?
+
+``` python
+print((np.array([1, 5, 3]) > 2).sum())
+```
+
+a\) `2` b) `True` c) `[False, True, True]`
+
+. . .
+
+<span class="question">Predict first</span> --- commit to an answer before the next slide.
+
+## Answer: True counts as 1
+
+**a) `2`** --- `.sum()` adds the mask up, and each `True` is worth `1`, each `False` `0`. Two elements clear the bar, so the count is `2`:
+
+``` python
+import numpy as np
+
+print(np.array([1, 5, 3]) > 2)            # [False  True  True]
+print((np.array([1, 5, 3]) > 2).sum())    # Trues add up to 2
+```
+
+    [False  True  True]
+    2
+
+. . .
+
+Summing a mask counts; averaging a mask shares. Same two tricks the lab asks for.
+
+# ⚡ Your turn --- 10 minutes
+
+Open the exercise (scan the QR or type the link):
+
+**[beyondsimulations.github.io/Introduction-to-Python/notebooks/ex_07_b/](https://beyondsimulations.github.io/Introduction-to-Python/notebooks/ex_07_b/)**
+
+<img src="assets/qr/ex_07_b.png" width="280" />
+
+First **predict** what happens --- then run it.
+
+# <span class="flow">The days-by-zones grid</span>
+
+## A grid of numbers
+
+Real data isn't one row. Stack rows and you get a **2D array** --- here three **days** (rows) across four **zones** (columns: Nord, Sued, Hafen, Altstadt):
+
+``` python
+import numpy as np
+
+deliveries = np.array([[ 9, 14, 11,  6],
+                       [15, 12,  8,  9],
+                       [13, 20, 16, 11]])
+print(deliveries.shape)      # (rows, columns) → (3, 4)
+print(deliveries[0, 2])      # row 0, column 2
+```
+
+    (3, 4)
+    11
+
+. . .
+
+`.shape` is now `(3, 4)`: three days, four zones. One index picks the **row**, a second the **column** --- `deliveries[0, 2]` is day 0, zone 2 (Hafen).
+
+## Which way to collapse?
+
+To sum a grid you must say **which way** to collapse it. The `axis` tells NumPy which direction disappears:
+
+              Nord  Sued  Hafen  Altstadt
+       day0  [  9    14    11      6  ]
+       day1  [ 15    12     8      9  ]
+       day2  [ 13    20    16     11  ]
+
+       axis=0 collapses DOWN the rows:
+                ↓     ↓     ↓      ↓
+               37    46    35     26      one number per column (zone)
+
+       axis=1 collapses ACROSS the columns:
+       day0 → 40   ·   day1 → 44   ·   day2 → 60      one number per row (day)
+
+``` python
+import numpy as np
+
+deliveries = np.array([[ 9, 14, 11,  6],
+                       [15, 12,  8,  9],
+                       [13, 20, 16, 11]])
+print(deliveries.sum(axis=0))   # DOWN the rows → per zone
+print(deliveries.sum(axis=1))   # ACROSS the columns → per day
+```
+
+    [37 46 35 26]
+    [40 44 60]
+
+. . .
+
+**`axis=0` collapses DOWN the rows --- one number per column (zone):** `[37 46 35 26]`. `axis=1` collapses across, one per day: `[40 44 60]`.
+
+## Where does the max sit?
+
+The per-zone totals answer "how many?" --- but the investor asks "**which** zone?". `argmax` tells you **WHERE** the maximum sits, as an index:
+
+``` python
+import numpy as np
+
+deliveries = np.array([[ 9, 14, 11,  6],
+                       [15, 12,  8,  9],
+                       [13, 20, 16, 11]])
+zone_totals = deliveries.sum(axis=0)   # [37 46 35 26]
+print(int(zone_totals.argmax()))        # index of the biggest
+```
+
+    1
+
+. . .
+
+`max` would give the value `46`; `argmax` gives its **position**, `1` --- the busiest zone is **Sued**, sitting at index 1, not at the front. Position, not value: that's the whole point of `argmax`.
+
+## Predict: which call collapses which way?
+
+The investor wants **four** numbers --- one per zone. Which call?
+
+``` python
+week = np.array([[ 9, 14, 11,  6],
+                 [15, 12,  8,  9],
+                 [13, 20, 16, 11]])
+```
+
+a\) `week.sum(axis=0)` b) `week.sum(axis=1)` c) `week.sum()`
+
+. . .
+
+<span class="question">Predict first</span> --- commit to an answer before the next slide.
+
+## Answer: collapse the days, keep the zones
+
+**a) `week.sum(axis=0)`** --- four zones means four numbers, so the **days** must disappear: `axis=0` collapses DOWN the rows, one number per column (zone):
+
+``` python
+import numpy as np
+
+week = np.array([[ 9, 14, 11,  6],
+                 [15, 12,  8,  9],
+                 [13, 20, 16, 11]])
+print(week.sum(axis=0))
+```
+
+    [37 46 35 26]
+
+. . .
+
+b\) would give **three** numbers (one per day); c) would give **one** number --- the grand total, `144`.
+
+# ⚡ Your turn --- 10 minutes
+
+Open the exercise (scan the QR or type the link):
+
+**[beyondsimulations.github.io/Introduction-to-Python/notebooks/ex_07_c/](https://beyondsimulations.github.io/Introduction-to-Python/notebooks/ex_07_c/)**
+
+<img src="assets/qr/ex_07_c.png" width="280" />
+
+First **predict** what happens --- then run it.
+
+# <span class="flow">To the Lab</span>
+
+## Tonight's episode
+
+- Head to the lab notebook: [Episode 7 --- One Array to Rule a Thousand Orders](../tutorials/tut_07_scientific.qmd)
+- You'll turn the order log into arrays, add VAT to a whole price column at once, mask out the late deliveries to count and average them, and collapse a days-by-zones grid to find the winning zone
+- AI is allowed --- try the chatbot, and keep your one-line disclosure note on the submission
+- It runs entirely in your browser --- no setup, just click and code
+
+. . .
+
+> **Important**
 >
-> Virtual environments are not that important for you right now, as they are mostly used if you work on several projects with different dependecies at once.
+> **Download your `.py` before you leave.** Closing the tab without downloading loses your work.
 
-# <span class="flow">NumPy Module</span>
+# <span class="flow">Wrap-up</span>
 
-## What is NumPy?
+## Three things to remember
 
-- **NumPy** is a package for scientific computing in Python
-- Provides large, <span class="highlight">multi-dimensional arrays and matrices</span>
-- Wide range of functions to operate on these
-- Python lists can be slow - Numpy arrays are much faster
+1.  **One array, one operation.** `np.array([...])` holds many numbers; arithmetic hits **every element at once** --- no loop. Ask it `.shape`, `.dtype`, `.size` to know what you're holding.
+2.  **A comparison makes a mask.** `arr > 30` is a True/False array --- `arr[mask]` filters, `.sum()` counts the Trues, `.mean()` gives their share.
+3.  **In 2D, pick an axis.** `axis=0` collapses **DOWN the rows** (one number per column), `axis=1` **across the columns** (one per row); `argmax` tells you **where** the maximum sits.
 
 . . .
 
 > **Note**
 >
-> The name of the package comes from Numerical Python.
-
-## Why is NumPy so fast?
-
-- Arrays are stored in a contiguous block of memory
-- This allows for efficient memory access patterns
-- Operations are implemented in the languages `C` and `C++`
-
-. . .
-
-<span class="question">Question:</span> Have you heard of C and C++?
-
-## How to get started
-
-1.  Install NumPy using `uv add numpy`
-2.  Import NumPy in a script using `import numpy as np`
-
-. . .
-
-``` python
-import numpy as np
-x = np.array([1, 2, 3, 4, 5]); type(x)
-```
-
-    numpy.ndarray
-
-. . .
-
-> **Note**
->
-> You don't have to use `as np`. But it is a common practice to do so.
-
-## Creating Arrays
-
-- The backbone of Numpy is the so called `ndarray`
-- Can be initialized from different data structures:
-
-``` python
-import numpy as np
-
-array_from_list = np.array([1, 1, 1, 1])
-print(array_from_list)
-```
-
-    [1 1 1 1]
-
-``` python
-import numpy as np
-
-array_from_tuple = np.array((2, 2, 2, 2))
-print(array_from_tuple)
-```
-
-    [2 2 2 2]
-
-## Hetergenous Data Types
-
-- It is possible to store different data types in a `ndarray`
-
-``` python
-import numpy as np
-
-array_different_types = np.array(["s", 2, 2.0, "i"])
-print(array_different_types)
-```
-
-    ['s' '2' '2.0' 'i']
-
-. . .
-
-> **Note**
->
-> But it is mostly not recommended, as it can lead to performance issues. If possible, try to **keep the types homogenous**.
-
-## Prefilled Arrays
-
-Improve performance by **allocating memory upfront**
-
-- `np.zeros(shape)`: to create an array of zeros
-- `np.random.rand(shape)`: array of random values
-- `np.arange(start, stop, step)`: evenly spaced
-- `np.linspace(start, stop, num)`: evenly spaced
-
-. . .
-
-> **Note**
->
-> The shape refers to the <span class="highlight">size of the array</span>. It can have one or multiple dimensions.
-
-## Dimensions
-
-- The shape is specified as tuple in these arrays
-- `(2)` or `2` creates a 1-dimensional array (vetor)
-- `(2,2)` creates a 2-dimensional array (matrix)
-- `(2,2,2)` 3-dimensional array (3rd order tensor)
-- `(2,2,2,2)` 4-dimensional array (4th order tensor)
-- ...
-
-## Computations
-
-- We can apply operations to the entire array at once
-- This is much faster than applying them element-wise
-
-. . .
-
-``` python
-import numpy as np
-x = np.array([1, 2, 3, 4, 5])
-x + 1
-```
-
-    array([2, 3, 4, 5, 6])
-
-## Arrays in Action
-
-<span class="task">Task</span>: Practice working with Numpy:
-
-``` python
-# TODO: Create a 3-dimensional tensor with filled with zeros
-# Choose the shape of the tensor, but it should have 200 elements
-# Add the number 5 to all values of the tensor
-
-# Your code here
-assert sum(tensor) == 1000
-
-# TODO: Print the shape of the tensor using the method shape()
-# TODO: Print the dtype of the tensor using the method dtype()
-# TODO: Print the size of the tensor using the method size()
-```
-
-## Indexing and Slicing
-
-- Accessing and slicing `ndarray` works as before
-- Higher dimension element access with multiple indices
-
-. . .
-
-<span class="question">Question</span>: What do you expect will be printed?
-
-``` python
-import numpy as np
-x = np.random.randint(0, 10, size=(3, 3))
-print(x); print("---")
-print(x[0:2,0:2])
-```
-
-    [[6 9 4]
-     [2 1 3]
-     [5 4 2]]
-    ---
-    [[6 9]
-     [2 1]]
-
-## Data Types
-
-- Numpy provides <span class="highlight">data types as characters</span>
-- `i`: integer
-- `b`: boolean
-- `f`: float
-- `S`: string
-- `U`: unicode
-
-. . .
-
-``` python
-string_array = np.array(["Hello", "World"]); string_array.dtype
-```
-
-    dtype('<U5')
-
-## Enforcing Data Types
-
-- We can also **provide** the type when creating arrays
-
-. . .
-
-``` python
-x = np.array([1, 2, 3, 4, 5],  dtype = 'f'); print(x.dtype)
-```
-
-    float32
-
-. . .
-
-- Or we can **change** them for existing arrays
-
-``` python
-x = np.array([1, 2, 3, 4, 5],  dtype = 'f'); print(x.astype('i').dtype)
-```
-
-    int32
-
-. . .
-
-> **Note**
->
-> Note, how the types are specified as `int32` and `float32`.
-
-## Sidenote: Bits
-
-<span class="question">Question:</span> Do you have an idea what `32` stands for?
-
-. . .
-
-- It's the number of bits used to represent a number
-  - `int16` is a 16-bit integer
-  - `float32` is a 32-bit floating point number
-  - `int64` is a 64-bit integer
-  - `float128` is a 128-bit floating point number
-
-## Why do Bits Matter?
-
-- They matter, because they can affect:
-  - the performance of your code
-  - the precision of your results
-
-. . .
-
-- That's why numbers can have a limited precision!
-  - An `int8` has to be in the range of -128 to 127
-  - An `int16` has to be in the range of -32768 to 32767
-
-. . .
-
-<span class="question">Question:</span> Size difference between `int16` and `int64`?
-
-## Joining Arrays
-
-- You can use `concatenate` two **join arrays**
-- With `axis` you can specify the dimension
-- In 2-dimensions `hstack()` and `vstack()` are easier
-
-. . .
-
-<span class="question">Question</span>: What do you expect will be printed?
-
-``` python
-import numpy as np
-ones = np.array((1,1,1,1))
-twos = np.array((1,1,1,1)) *2
-print(np.vstack((ones,twos))); print(np.hstack((ones,twos)))
-```
-
-    [[1 1 1 1]
-     [2 2 2 2]]
-    [1 1 1 1 2 2 2 2]
-
-## Common Methods
-
-- `sort()`: sort the array from low to high
-- `reshape()`: reshape the array into a new shape
-- `flatten()`: flatten the array into a 1D array
-- `squeeze()`: squeeze the array to remove 1D entries
-- `transpose()`: transpose the array
-
-. . .
-
-> **Tip**
->
-> Try experiment with these methods, they can make your <span class="highlight">work much easier.</span>
-
-## Speed Differences in Action
-
-<span class="task">Task</span>: Complete the following task to practice with Numpy:
-
-``` python
-# TODO: Create a 2-dimensional matrix with filled with ones of size 1000 x 1000.
-# Afterward, flatten the matrix to a vector and loop over the vector.
-# In each loop iteration, add a random number between 1 and 10000.
-# TODO: Now, do the same with a list of the same size and fill it with random numbers.
-# Then, sort the list as you have done with the Numpy vector before.
-# You can use the `time` module to compare the runtime of both approaches.
-import time
-start = time.time()
-# Your code here
-end = time.time()
-print(end - start) # time in seconds
-```
-
-    5.9604644775390625e-06
-
-# That's it for today!
-
-> **Note**
->
-> **And that's it for todays lecture!**  
-> You now have the basic knowledge to start working with <span class="highlight">scientific computing</span>.
+> **Next episode: the investor opens a data room --- and Kevin lets an AI write his pandas.** The arrays get column names, and a thousand orders become a table you can query.
 
 # <span class="flow">Literature</span>
 
-## Interesting Books
+## Books to start with
 
 - Downey, A. B. (2024). Think Python: How to think like a computer scientist (Third edition). O'Reilly. [Link to free online version](https://greenteapress.com/wp/think-python-3rd-edition/)
 - Elter, S. (2021). Schrödinger programmiert Python: Das etwas andere Fachbuch (1. Auflage). Rheinwerk Verlag.
 
 . . .
 
-For more interesting literature to learn more about Python, take a look at the [literature list](../general/literature.qmd) of this course.
+> **Note**
+>
+> NumPy has excellent free docs --- the [NumPy absolute beginner's guide](https://numpy.org/doc/stable/user/absolute_beginners.html) covers everything in this session and a little more.
+
+. . .
+
+For more, see the [literature list](../general/literature.qmd) of this course.
