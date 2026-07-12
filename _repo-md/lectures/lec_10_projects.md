@@ -219,7 +219,7 @@ cd my-project
 
 ## Open a notebook in Zed
 
-Here's the reveal made concrete. Open Zed, open your project folder, and drag in **any lab `.py` you downloaded in Part I**. It's just code --- read it.
+Here's the reveal made concrete. Grab **a lab `.py` you downloaded in Part I** --- we'll use `nb_03_lab_functions.py`. Copy it **into your project folder** first (in Finder/Explorer, or drop it onto Zed's file tree --- dropping on the editor just opens a buffer, it doesn't move the file). Then open it in Zed: it's just code --- read it.
 
 The file needs its tools first --- adding a package to a project is one command:
 
@@ -314,7 +314,7 @@ A commit lives **only on your computer** so far. Next we send it to GitHub.
 GitHub doesn't know about your project yet. Three steps, done by the owner:
 
 1.  On **github.com**, create a new **empty** repository (no README --- keep it empty). *(There's no "publish" button inside Zed --- the GitHub-side repo is made on the website.)*
-2.  In Zed: **`git: create remote`**, paste the repo's **HTTPS URL** (`https://github.com/you/project.git`)
+2.  In Zed: **`git: create remote`**, paste the repo's **HTTPS URL** (`https://github.com/you/project.git`) --- if it asks for a remote name, use `origin` (terminal: `git remote add origin <HTTPS url>`)
 3.  Do the **first push** from the terminal --- this exact line, once:
 
 ``` bash

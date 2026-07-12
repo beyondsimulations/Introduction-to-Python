@@ -56,12 +56,12 @@ In the third part, students will be assigned mini projects in Python where they 
 ## Lectures
 
 **Tooling, Git and Your Project (X)**  
-Bring your own machine with Python and an editor installed beforehand, learn git and GitHub, form pairs, and choose your project
+Bring your own machine with the Session IX pre-work done (uv, Zed, GitHub CLI, and a free GitHub account), learn git and GitHub, form pairs, and choose your project
 
-**Your first Project II (XI)**  
+**Project Work I (XI)**  
 Progress your pair project under assistance
 
-**Your first Project III (XII)**  
+**Project Work II (XII)**  
 Finalize your pair project with your partner
 
 **Presentations and Discussion (XIII)**  

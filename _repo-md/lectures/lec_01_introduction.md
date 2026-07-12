@@ -43,7 +43,7 @@ Materials live in the KLU portal and are hosted at [beyondsimulations.github.io/
 - Final project + presentation = 40 points
 - You pass with <span class="highlight">60 points</span> and <span class="highlight">75% attendance</span>
 - No make-ups for missed checkpoints --- but the point math absorbs one miss
-- The project is done individually or in pairs
+- The project is done in pairs --- solo works if the numbers don't come out even
 
 ## Checkpoints
 

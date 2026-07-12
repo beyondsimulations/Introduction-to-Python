@@ -22,7 +22,7 @@ Below are the only five git operations you need for this course. Each one has a 
 
 A **repository** (or "repo") is a folder that git watches. Everything inside it, and its whole history, is tracked together.
 
-You almost never create one by hand in this course. When you start a project with `uv init`, **uv already turns that folder into a git repository for you** (it creates a hidden `.git/` folder). So after this command you already have a repo:
+You almost never create one by hand in this course. When you start a project with `uv init`, **uv also turns that folder into a git repository for you** --- as long as git is already installed (which step 1 of the one-time setup below handles first). So after this command you already have a repo:
 
 ``` bash
 uv init my-project
@@ -34,7 +34,7 @@ The only time you make a repo yourself is if you have an existing folder that is
 git init
 ```
 
-**When you need it:** almost never on its own. `uv init` covers the normal case. Use `git init` only to add git to an old folder that does not have it yet.
+**When you need it:** almost never on its own. `uv init` covers the normal case. Use `git init` only to add git to an old folder that does not have it yet --- or if you ran `uv init` *before* installing git, in which case run `git init` once inside that folder to add the repo it skipped.
 
 ### Commit
 
@@ -161,7 +161,7 @@ When *you* create the project (with `uv init`), GitHub does not know about it ye
 
 1.  On [github.com](https://github.com), create a new **empty** repository (do not add a README, so it stays empty).
 
-2.  In Zed, run **`git: create remote`** from the command palette and paste the repository's **HTTPS URL** (`https://github.com/<you>/<repo>.git`). Use the HTTPS URL, not the SSH one, the login you set up above only works over HTTPS.
+2.  In Zed, run **`git: create remote`** from the command palette and paste the repository's **HTTPS URL** (`https://github.com/<you>/<repo>.git`). Use the HTTPS URL, not the SSH one, the login you set up above only works over HTTPS. If Zed asks for a remote name, use `origin`. (The terminal equivalent that guarantees the name is `git remote add origin <HTTPS url>`.)
 
 3.  Do the one-time **first push** from the terminal:
 
@@ -212,7 +212,7 @@ Fix: a commit only saves the snapshot **on your computer**. It reaches GitHub (a
 Fix: your machine's git login is not set up (or expired). Redo the GitHub setup above: run `gh auth login` again and answer **yes** to "Authenticate Git with your GitHub credentials?". Do **not** sign in to the Zed app to fix this, that is a different thing.
 
 **Symptom: a git command says `fatal: not a git repository`.**
-Fix: you are running git in a folder that is not a repo (or above your project folder). Move into your project folder first. In a terminal, `cd my-project`. In Zed, make sure the folder you opened is the project folder that contains your code. Remember `uv init` already made it a repo, so this usually means you are just in the wrong place.
+Fix: usually you are running git in a folder that is not a repo (or above your project folder). Move into your project folder first. In a terminal, `cd my-project`. In Zed, make sure the folder you opened is the project folder that contains your code. The other cause: you created the folder with `uv init` *before* git was installed, so uv could not make the repo --- fix that by running `git init` once inside the project folder.
 
 **Symptom: you committed the wrong thing (bad message, or forgot a file).**
 Fix: never rewrite history that others may already have. Two safe options:

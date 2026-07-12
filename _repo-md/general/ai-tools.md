@@ -2,14 +2,15 @@
 
 ## The course policy
 
-This course is split into two halves, and the rules for AI are different in each.
+The course runs a phased AI policy, and the rules are different in each part.
 
 - **Part I (Sessions I--V): no AI.** You learn to read, write and debug Python yourself. The only assistant you may use is the **course chatbot** (the widget in the sidebar), and in Part I it deliberately explains and hints rather than handing you finished code.
-- **Part II (Session VI onwards): AI is allowed and taught.** From Session VI we work *with* AI on purpose. Checkpoints 4 and 5 explicitly allow AI.
+- **Part II (Sessions VI--IX): AI is allowed and taught.** From Session VI we work *with* AI on purpose. Checkpoints 4 and 5 explicitly allow AI.
+- **Part III (Sessions X--XIII): AI is encouraged**, with disclosure. Use what makes you productive on your project.
 
 > **Important**
 >
-> **The disclosure rule.** Every submission that used AI carries a one-line note saying what the AI was used for. For example: *"Used AI to explain a `KeyError` and to draft the docstring for `load_data()`."* This is not about catching anyone out. Being able to say clearly what a tool did for you is part of using it well.
+> **The disclosure rule.** Every submission that used AI says so. In Parts I--II that is a one-line note on the submission saying what the AI was used for --- for example: *"Used AI to explain a `KeyError` and to draft the docstring for `load_data()`."* In Part III it lives in a short section of your project repo's `README`: which tools you used, what for, and what you verified yourself. This is not about catching anyone out. Being able to say clearly what a tool did for you is part of using it well.
 
 The rest of this page shows you how to get a working, **zero-cost** AI setup. You need at least one. The Mistral path below is the guaranteed-free baseline; everything after it is optional.
 
@@ -44,7 +45,7 @@ If you later want AI *inside your editor* (see the Zed section below), you need 
 
 ## Zed + AI
 
-Zed is the editor we install in Session X. This section only covers the **AI-provider** side, connecting an AI model to Zed. The install and setup steps live in the Session X materials.
+Zed is the editor we use from Session X on, but you install it **before** then, as part of the Session IX pre-work. Download it from [zed.dev](https://zed.dev) (there are builds for macOS, Windows and Linux), run the installer, and open it once to confirm it launches. This section only covers the **AI-provider** side, connecting an AI model to Zed.
 
 ### The education program
 

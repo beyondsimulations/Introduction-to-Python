@@ -5,8 +5,8 @@
 - Private repo (`../Introduction-to-Python-checkpoints`): checkpoint notebooks,
   reference tests, ALL solution notebooks (`solutions/sol_XX_*.py`).
 - Commit rule: never add AI-attribution lines (Co-Authored-By etc.) in either repo.
-- Single-file `quarto render` deletes sibling `_repo-md/*.md` — run
-  `git checkout -- _repo-md/` afterwards; only full renders may update `_repo-md`.
+- The convert script only rebuilds `_repo-md/` on a full render (guarded by
+  `QUARTO_PROJECT_RENDER_ALL`), so single-file renders leave `_repo-md/` alone.
 
 ## Notebooks (see notebooks/_template.py for the skeleton)
 - One global per cell; `+=`/`*=` count as definitions; `_name` is cell-private.
@@ -85,6 +85,10 @@ Regular session skeleton:
 CP sessions (III, V, VI, VIII, X): title → 📋 checkpoint slide (procedure) →
 cold open → Block 1 → QR a → Block 2 → QR b → lab handoff → wrap-up.
 No warm-up on CP days (the checkpoint is the warm-up).
+Exception — Session X follows the Plan-4 kickoff shape instead (CP5 opener →
+episode → project kickoff → toolchain → git → send-off; no QR exercises or lab
+handoff by design, and no tut_10/nb_10 — see
+docs/superpowers/specs/2026-07-12-part3-plan4-design.md).
 
 ### Warm-up pattern (oral + vote)
 One `# 🔥 Warm-up {.exercise-slide}` section, then per question a `##` slide

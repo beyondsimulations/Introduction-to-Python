@@ -53,7 +53,7 @@ You can find more information on the course blocks and the corresponding lecture
 - Five in-class checkpoints, worth 12 points each (60 points total)
 - One final project with a presentation, worth 40 points
 - You need 60 of 100 points to pass
-- The project is done in pairs; each pair submits one GitHub repository
+- The project is done in pairs (solo works if the numbers don't come out even); each pair submits one GitHub repository
 
 ## AI Policy
 
