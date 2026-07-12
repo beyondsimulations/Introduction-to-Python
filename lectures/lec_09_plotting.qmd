@@ -2,823 +2,461 @@
 title: "Lecture IX - Data Visualization"
 subtitle: "Programming with Python"
 author: "Dr. Tobias Vlćek"
-institute: "Kühne Logistics University Hamburg - Fall 2025"
+institute: "Kühne Logistics University Hamburg - Fall 2026"
 format:
   revealjs:
     footer: " {{< meta title >}} | {{< meta author >}} | [Home](lec_09_plotting.qmd)"
     output-file: lec_09_presentation.html
 ---
 
-# [Quick Recap of the last Lecture]{.flow} {.title}
+# [Episode 9: The Pitch Deck]{.flow} {.title}
 
-## Pandas: Data Analysis
+## Charts are arguments
 
-- Powerful library for [data manipulation and analysis]{.highlight}
-- Built on top of NumPy, providing additional functionality
-- Key features of Pandas include:
-  - Data loading from various file formats
-  - Data cleaning and preprocessing
-  - Powerful grouping and aggregation operations
-  - Merging and joining datasets
-
-## Why NumPy and Pandas are Essential
-
-- Basic tools for [scientific computing]{.highlight} and [data analysis]{.highlight}
-- [Efficient data structures]{.highlight} and operations for large data
-- Integration with other scientific Python libraries
-- Used in data science, machine learning, and research
+It's **Friday**. The boardroom. The investor slides a pencil out of her jacket and **sharpens it** while you set up — the sound louder than it has any right to be.
 
 . . .
 
-::: {.callout-tip}
-You might also need them in future lectures here!
-:::
+Last week you handed her honest numbers, a table she could trust. She read exactly one row, looked up, and said the thing this whole session is about:
 
-# [Data Visualization]{.flow} {.title}
-
-##
-
-::: {.r-fit-text}
-
-[Question:]{.question} What is
-
-data visualization?
-
-:::
-
-## Visual Representations of Data
-
-```{python}
-#| code-fold: true
-
-import matplotlib.pyplot as plt
-import numpy as np
-
-
-# Generate data
-np.random.seed(42)
-x = np.linspace(0, 10, 50)
-y = 3 + 2*x + np.random.randn(50)
-sizes = np.random.randint(20, 200, 50)
-colors = np.random.rand(50)
-
-# Create the plot
-plt.figure(figsize=(12, 5))
-scatter = plt.scatter(x, y, c=colors, s=sizes, alpha=0.6, cmap='viridis')
-
-# Add trend line
-z = np.polyfit(x, y, 1)
-p = np.poly1d(z)
-plt.plot(x, p(x), "r--", alpha=0.8, linewidth=2)
-
-# Customize the plot
-plt.title("ScatterPlot with Trend Line", fontsize=16)
-plt.xlabel("X-axis", fontsize=12)
-plt.ylabel("Y-axis", fontsize=12)
-plt.colorbar(scatter, label="Color Scale")
-
-# Add a text annotation
-plt.annotate("Interesting point", xy=(8, 21), xytext=(6.5, 23),
-             arrowprops=dict(facecolor='black', shrink=0.05))
-
-plt.grid(True, alpha=0.3)
-plt.tight_layout()
-plt.show()
-```
-
-## Importance of Data Visualization
-
-- [Communicates]{.highlight} complex information clearly
-- Helps in [decision-making]{.highlight} processes
-- Reveals hidden patterns and relationships in data
-- Makes data more [accessible]{.highlight} and engaging
+> **"Tables are homework. Charts are arguments."**
 
 . . .
 
-::: {.callout-tip}
+A number convinces the careful. A **picture** convinces the room. Today: draw the right chart for the question — and refuse to draw a dishonest one.
 
-Helps to [convice]{.highlight} stakeholders!
+# 🔥 Warm-up {.exercise-slide}
 
-:::
+Three questions from Episode 8. Commit — hands up **before** the reveal.
 
-# [Common Types of Data Visualizations]{.flow} {.title}
+## Question 1
 
-## Bar Charts and Histograms
-
-- **Bar charts**: Compare quantities across categories
-- **Histograms**: Show distribution of a continuous variable
-
-```{python}
-#| code-fold: true
-import matplotlib.pyplot as plt
-import numpy as np
-
-# Bar chart
-categories = ['A', 'B', 'C', 'D']
-values = [4, 7, 2, 8]
-
-plt.figure(figsize=(12, 3))
-plt.subplot(121)
-plt.bar(categories, values)
-plt.title('Bar Chart')
-
-# Histogram
-data = np.random.randn(1000)
-
-plt.subplot(122)
-plt.hist(data, bins=30)
-plt.title('Histogram')
-
-plt.tight_layout()
-plt.show()
+```python
+orders[orders["zone"] == "Nord"]
 ```
 
-## Line Charts and Area Charts
+returns…
 
-- **Line charts**: Show trends over time or continuous data
-- **Area charts**: Similar to line charts, but with filled areas
+a\) a True/False column   b) only the Nord rows   c) an error
 
-```{python}
-#| code-fold: true
-import matplotlib.pyplot as plt
-import numpy as np
+## Answer 1
 
-x = np.linspace(0, 10, 100)
-y1 = np.sin(x)
-y2 = np.cos(x)
+**b) only the Nord rows** — the True/False column is what the **inner** expression `orders["zone"] == "Nord"` makes. Wrapped in `orders[...]`, that mask keeps the rows where it's `True` and drops the rest.
 
-plt.figure(figsize=(12, 3))
-plt.subplot(121)
-plt.plot(x, y1, label='sin(x)')
-plt.plot(x, y2, label='cos(x)')
-plt.title('Line Chart')
-plt.legend()
+## Question 2
 
-plt.subplot(122)
-plt.fill_between(x, y1, label='sin(x)')
-plt.fill_between(x, y2, label='cos(x)', alpha=0.5)
-plt.title('Area Chart')
-plt.legend()
+Kevin's AI wrote this. `orders` is a normal DataFrame. What happens?
 
-plt.tight_layout()
-plt.show()
+```python
+orders.summarize()
 ```
 
-## Scatter Plots and Bubble Charts
+a\) a summary table   b) an `AttributeError`   c) an empty DataFrame
 
-- **Scatter plots**: Show relationship between two variables
-- **Bubble charts**: Adds dimension with varying point sizes
+## Answer 2
 
-```{python}
-#| code-fold: true
-import matplotlib.pyplot as plt
-import numpy as np
+**b) `AttributeError`** — pandas has `.describe()`, not `.summarize()`. The AI invented a plausible name. An AI that **sounds sure** is not the same as an API that **exists** — you verify, every time.
 
-x = np.random.rand(50)
-y = np.random.rand(50)
-sizes = np.random.rand(50) * 500
+## Question 3
 
-plt.figure(figsize=(12, 3))
-plt.subplot(121)
-plt.scatter(x, y)
-plt.title('Scatter Plot')
-
-plt.subplot(122)
-plt.scatter(x, y, s=sizes, alpha=0.5)
-plt.title('Bubble Chart')
-
-plt.tight_layout()
-plt.show()
+```python
+orders["total_eur"].describe()
 ```
 
-## Pie Charts and Donut Charts
+shows…
 
-- **Pie charts**: Show composition of a whole
-- **Donut charts**: Similar to pie charts, but with a hole
+a\) count / mean / std / min / quartiles / max   b) the first five rows   c) the column's type
 
-```{python}
-#| code-fold: true
-import matplotlib.pyplot as plt
+## Answer 3
 
-labels = 'A', 'B', 'C', 'D'
-sizes = [15, 30, 45, 10]
+**a) count / mean / std / min / quartiles / max** — one line, the column's whole statistical fingerprint. That's the real method Kevin's AI was reaching for.
 
-plt.figure(figsize=(12, 3))
+# [The first chart]{.flow} {.title}
 
-# Pie chart (left subplot)
-plt.subplot(121)
-plt.pie(sizes, labels=labels, autopct='%1.1f%%')
-plt.title('Pie Chart')
+## Matplotlib in four lines
 
-# Donut chart (right subplot)
-plt.subplot(122)
-plt.pie(sizes, labels=labels, autopct='%1.1f%%',
-        pctdistance=0.7, labeldistance=1.1,
-        wedgeprops=dict(width=0.5, edgecolor='white'))
-plt.title('Donut Chart')
-
-plt.tight_layout()
-plt.show()
-```
-
-## Box Plots and Violin Plots
-
-- **Box plots**: Show distribution of data through quartiles
-- **Violin plots**: Combine box plot with kernel density
+The library everyone plots with is **matplotlib**; `import matplotlib.pyplot as plt` is the nickname. Four lines turn a list of numbers into a picture:
 
 ```{python}
-#| code-fold: true
-import matplotlib.pyplot as plt
-import seaborn as sns
-import numpy as np
-
-data = [np.random.normal(0, std, 100) for std in range(1, 5)]
-
-plt.figure(figsize=(12, 3))
-plt.subplot(121)
-plt.boxplot(data)
-plt.title('Box Plot')
-
-plt.subplot(122)
-sns.violinplot(data)
-plt.title('Violin Plot')
-
-plt.tight_layout()
-plt.show()
-```
-
-## Network Graphs and Trees
-
-- **Network graphs**: Show relationships between entities
-- **Tree diagrams**: Display hierarchical structures
-
-```{python}
-#| code-fold: true
-import matplotlib.pyplot as plt
-import networkx as nx
-import numpy as np
-
-# Create figure
-plt.figure(figsize=(12, 3))
-
-# Network graph (left subplot)
-plt.subplot(121)
-G = nx.random_geometric_graph(15, 0.3)  # Reduced nodes for clarity
-pos = nx.spring_layout(G, k=1, seed=42)  # Better layout with fixed seed
-nx.draw_networkx_nodes(G, pos,
-                      node_color='lightblue',
-                      node_size=500,
-                      edgecolors='navy',
-                      linewidths=1)
-nx.draw_networkx_edges(G, pos,
-                      edge_color='gray',
-                      width=1,
-                      alpha=0.5)
-nx.draw_networkx_labels(G, pos,
-                       font_size=8,
-                       font_weight='bold')
-plt.title('Network Graph', pad=10)
-
-# Tree diagram (right subplot)
-plt.subplot(122)
-T = nx.balanced_tree(2, 2)  # Create a balanced tree with 2 children, depth 2
-pos_tree = nx.spring_layout(T, k=1.5, seed=42)
-nx.draw_networkx_nodes(T, pos_tree,
-                      node_color='lightgreen',
-                      node_size=500,
-                      edgecolors='darkgreen',
-                      linewidths=1)
-nx.draw_networkx_edges(T, pos_tree,
-                      edge_color='forestgreen',
-                      width=1)
-nx.draw_networkx_labels(T, pos_tree,
-                       font_size=8,
-                       font_weight='bold')
-plt.title('Tree', pad=10)
-
-plt.tight_layout()
-plt.show()
-```
-
-## Ridgeline Plots
-
-- **Ridgeline plots**: Show distribution of data across categories
-
-```{python}
-#| code-fold: true
-
-import numpy as np
-import pandas as pd
-import matplotlib.pyplot as plt
-import joypy
-
-# Create realistic temperature distributions
-np.random.seed(42)
-months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
-data = []
-
-# Temperature parameters for Helsinki, Finland (as an example)
-mean_temps = [
-    -3.5,   # Jan
-    -4.5,   # Feb
-    -1.0,   # Mar
-    4.5,    # Apr
-    10.8,   # May
-    15.5,   # Jun
-    18.0,   # Jul
-    16.3,   # Aug
-    11.5,   # Sep
-    6.6,    # Oct
-    1.6,    # Nov
-    -2.0    # Dec
-]
-
-# Winter months have more variance than summer months
-variances = [
-    2.5,    # Jan
-    2.5,    # Feb
-    2.2,    # Mar
-    2.0,    # Apr
-    1.8,    # May
-    1.5,    # Jun
-    1.2,    # Jul
-    1.5,    # Aug
-    1.8,    # Sep
-    2.0,    # Oct
-    2.2,    # Nov
-    2.5     # Dec
-]
-
-for month, mean_temp, variance in zip(months, mean_temps, variances):
-    # Add some random noise to make it more natural
-    distribution = np.random.normal(loc=mean_temp, scale=variance, size=1000)
-    # Add slight skewness to winter months (more extreme cold than warm days)
-    if mean_temp < 5:
-        distribution = distribution - 0.3 * np.abs(distribution)
-    data.append(pd.DataFrame({
-        'temperature': distribution,
-        'month': month
-    }))
-
-df = pd.concat(data, ignore_index=True)
-
-# Create the ridgeline plot
-joypy.joyplot(
-    data=df,
-    by="month",
-    column="temperature",
-    colormap=plt.cm.viridis,
-    title="Monthly Temperature Distributions",
-    labels=months,
-    range_style='all',
-    tails=0.2,
-    overlap=0.7,
-    grid=True,
-    figsize=(12, 4)
-)
-
-plt.xlabel("Temperature (°C)")
-plt.show()
-```
-
-# [How to Plot in Python]{.flow} {.title}
-
-## Python Plotting Libraries
-
-- There are [many libraries for data visualization in Python]{.highlight}
-    - **Matplotlib**: The foundation for most Python plotting libraries
-    - **Seaborn**: Interface for statistical data visualization
-    - **Plotly**: Interactive and customizable plotting library
-    - **Bokeh**: Interactive and complex plots
-    - **Joypy**: Easy ridgeline plots
-
-## Matplotlib Module
-
-- Matplotlib is the [foundation for most Python plotting libraries]{.highlight}
-- **Customizable** and suitable for high-quality figures
-- Provides **easy to use** functions for plotting
-- Works well with **Pandas** DataFrames
-
-## Basic Matplotlib Example
-
-```{python}
+#| eval: true
 #| output-location: fragment
-import matplotlib.pyplot as plt # .pyplot is the main module in the package
-plt.plot([1, 2, 3, 4], [10, 20, 25, 30]) # first is x-axis, second is y-axis
-plt.show()
+import matplotlib.pyplot as plt
+
+days = [1, 2, 3, 4, 5]
+revenue = [120, 90, 140, 160, 130]
+
+plt.figure()          # OPEN: a fresh canvas, so this chart
+                      #       doesn't draw on the last one
+plt.plot(days, revenue)   # x, then y
+plt.title("This week's revenue")
+plt.gca()             # SHOW: "get current axes" — the chart
 ```
-
-## Customizing Plots
-
-- **Line Types**: with `ls=`
-  - `-`, `--`, `-.`, `:`, `None`;
-- **Colors**: with `color=`
-  - `r`, `g`, `b`, `c`, `m`, `y`, `k`, . . .
-- **Markers**: with `marker=`
-  - `o`, `s`, `D`, `p`, `*`, `x`, . . .
-- **Labels**: with `label=`, `title=`, `xlabel=`, `ylabel=`
-
-## Red dashed line with circles
-
-```{python}
-#| output-location: slide
-plt.plot(
-    [1, 2, 3, 4],
-    [10, 20, 25, 30],
-    color='red',
-    linestyle='--',
-    marker='o')
-plt.show()
-```
-
-## Blue dotted line with squares
-
-[Question:]{.question} How can we create such a plot?
 
 . . .
 
-```{python}
-#| output-location: slide
-plt.plot(
-    [1, 2, 3, 4],
-    [10, 20, 25, 30],
-    color='blue',
-    linestyle=':',
-    marker='s',
-    label='Blue Dotted Line with Squares')
-plt.legend()
-plt.show()
-```
-
-## Multiple Plots
-
-```{python}
-#| output-location: slide
-plt.plot(
-    [1, 2, 3, 4],
-    [8, 22, 21, 36],
-    color='red',
-    linestyle='--',
-    marker='o',
-    label='Red Dashed Line with Circles')
-plt.plot(
-    [1, 2, 3, 4],
-    [10, 20, 25, 30],
-    color='blue',
-    linestyle=':',
-    marker='s',
-    label='Blue Dotted Line with Squares')
-plt.legend()
-plt.show()
-```
-
-## Type and Size of the Plot
-
-```{python}
-#| output-location: slide
-plt.figure(figsize=(14, 4))
-plt.scatter(
-    [1, 2, 3, 4],
-    [8, 22, 21, 36],
-    color='red',
-    marker='o',
-    label='Red Circles')
-plt.plot(
-    [1, 2, 3, 4],
-    [10, 20, 25, 30],
-    color='blue',
-    linestyle='--',
-    marker='s',
-    label='Blue Dashed Line with Squares')
-plt.legend()
-plt.show()
-```
-
-## Plots in Action
-
-[Task:]{.task} Create two line plots of the following data:
-
-```{python}
-# Make sure to label the plots! Color and marker are optional.
-import numpy as np
-
-x = np.linspace(0, 10, 100) # 100 points between 0 and 10
-y1 = np.sin(x) # sine function
-y2 = np.cos(x) # cosine function
-```
-
-## Solution
-
-```{python}
-#| echo: false
-import numpy as np
-import matplotlib.pyplot as plt
-
-x = np.linspace(0, 10, 100) # 100 points between 0 and 10
-y1 = np.sin(x) # sine function
-y2 = np.cos(x) # cosine function
-
-plt.plot(x, y1, label='sin(x)')
-plt.plot(x, y2, label='cos(x)')
-plt.legend()
-plt.show()
-```
-
-# [Plotting the Right Way]{.flow} {.title}
-
-## The Message Matters
-
-- Making beautiful plots is **rather easy**[^1]
-- It is important to **understand** the underlying data
-- What kind of plots are **appropriate** for your data?
-- What is the [message you want to convey?]{.highlight}
-
-[^1]: At least nowadays with the assistance of AI!
-
-# Temperature Dataset
-
-Let's load the temperature dataset from our last tutorial.
-
-```{python}
-#| output: fragment
-import pandas as pd
-df = pd.read_excel('supplementary/lec_09/temp_anomaly_data.xlsx')
-print(df.head())
-```
-
-## Example of a bad plot
-```{python}
-#| code-fold: true
-import pandas as pd
-import matplotlib.pyplot as plt
-
-# Convert Month to numeric for proper ordering
-month_map = {'Jan': 1, 'Feb': 2, 'Mar': 3, 'Apr': 4, 'May': 5, 'Jun': 6,
-             'Jul': 7, 'Aug': 8, 'Sep': 9, 'Oct': 10, 'Nov': 11, 'Dec': 12}
-df['Month_num'] = df['Month'].map(month_map)
-
-# Sort by Year and Month
-df = df.sort_values(['Year', 'Month_num'])
-
-# Create the plot
-plt.figure(figsize=(12, 4))
-
-# Plot each year as a separate line
-for year in df['Year'].unique():
-    year_data = df[df['Year'] == year]
-    plt.plot(year_data['Month_num'], year_data['Anomaly'], label=str(year), marker='o')
-
-# Customize the plot
-plt.title('Temperature Anomalies by Month for Each Year')
-plt.xlabel('Month')
-plt.ylabel('Temperature Anomaly (°C)')
-plt.grid(True, linestyle='--', alpha=0.7)
-
-# Set x-axis ticks to show month names
-plt.xticks(range(1, 13), ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun',
-                          'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'])
-
-# Adjust layout to prevent legend cutoff
-plt.tight_layout()
-
-plt.show()
-```
-## An okay plot
-```{python}
-#| code-fold: true
-import pandas as pd
-import matplotlib.pyplot as plt
-
-# Define correct month order
-month_order = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun',
-               'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
-
-# Pivot the data and reorder columns
-pivot_df = df.pivot(index='Year', columns='Month', values='Anomaly')
-pivot_df = pivot_df[month_order]  # Reorder columns according to month_order
-
-# Create the plot with a blue-to-red gradient for winter-to-summer
-fig, ax = plt.subplots(figsize=(12, 4))  # Create figure and axes objects
-
-# Create color gradient
-colors = []
-for i in range(12):
-    if i <= 5:  # January to June
-        r = i / 5
-        b = 1 - (i / 5)
-        colors.append((r, 0, b))
-    else:  # July to December
-        r = 1 - ((i-6) / 5)
-        b = (i-6) / 5
-        colors.append((r, 0, b))
-
-pivot_df.plot(ax=ax, marker='x', linewidth=1, alpha=0.5, color=colors)
-
-plt.title('Temperature Anomalies by Month for Each Year')
-plt.xlabel('Month')
-plt.ylabel('Temperature Anomaly (°C)')
-plt.grid(True, linestyle='--', alpha=0.7)
-plt.legend(bbox_to_anchor=(1.05, 1), loc='upper left', title='Year')
-plt.tight_layout()
-plt.show()
-```
-## A better plot
-```{python}
-#| code-fold: true
-# Calculate yearly averages
-yearly_means = df.groupby('Year')['Anomaly'].agg(['mean', 'std'])
-
-# Create the plot
-plt.figure(figsize=(12, 4))
-
-# Plot mean values as a line
-plt.plot(yearly_means.index, yearly_means['mean'],
-         color='navy', linewidth=2, marker='o',
-         label='Mean Temperature Anomaly')
-
-# Add shaded area for standard deviation
-plt.fill_between(yearly_means.index,
-                yearly_means['mean'] - yearly_means['std'],
-                yearly_means['mean'] + yearly_means['std'],
-                color='lightblue', alpha=0.3,
-                label='±1 Standard Deviation')
-
-# Customize the plot
-plt.title('Yearly Average Temperature Anomalies with Confidence Interval')
-plt.xlabel('Year')
-plt.ylabel('Temperature Anomaly (°C)')
-plt.grid(True, linestyle='--', alpha=0.7)
-plt.legend()
-
-# Add zero reference line
-plt.axhline(y=0, color='red', linestyle='--', alpha=0.3)
-
-plt.tight_layout()
-plt.show()
-```
-
-# A good plot
-```{python}
-#| code-fold: true
-
-# Read the data
-df = pd.read_excel('supplementary/lec_09/temp_anomaly_data.xlsx')
-
-# Aggregate to yearly averages
-yearly_df = df.groupby('Year')['Anomaly'].mean().reset_index()
-
-# Set the style
-fig, ax = plt.subplots(figsize=(12, 4))
-
-# Create the main line plot
-plt.plot(yearly_df['Year'], yearly_df['Anomaly'],
-         color='#FF5733',
-         linewidth=1.5,
-         alpha=0.7)
-
-# Calculate rolling mean on yearly data
-rolling_mean = yearly_df['Anomaly'].rolling(window=10, center=True, min_periods=5).mean()
-plt.plot(yearly_df['Year'], rolling_mean,
-         color='#C70039',
-         linewidth=2.5,
-         label='10-year Moving Average')
-
-# Fill between the line and zero
-plt.fill_between(yearly_df['Year'], yearly_df['Anomaly'], 0,
-                 where=(yearly_df['Anomaly'] >= 0),
-                 color='#FF5733',
-                 alpha=0.3,
-                 label='Positive Anomaly')
-plt.fill_between(yearly_df['Year'], yearly_df['Anomaly'], 0,
-                 where=(yearly_df['Anomaly'] < 0),
-                 color='#3498DB',
-                 alpha=0.3,
-                 label='Negative Anomaly')
-
-# Customize the plot
-plt.title('Global Temperature Anomalies (1880-2023)',
-         fontsize=14,
-         pad=15)
-plt.xlabel('Year', fontsize=12)
-plt.ylabel('Temperature Anomaly (°C)', fontsize=12)
-plt.grid(True, alpha=0.3)
-plt.legend()
-
-# Add a horizontal line at y=0
-plt.axhline(y=0, color='black', linestyle='--', alpha=0.3)
-
-# Add text annotation for context
-plt.text(1890, 1.15,
-         'Temperature anomalies relative to\n1951-1980 average',
-         fontsize=10,
-         alpha=0.7)
-
-plt.tight_layout()
-plt.show()
-```
-
-## How to build such a plot?
-
-- **Think**: about what you want to build
-- **Describe**: what you want to build in detail
-- **Use AI**: to build the plot for you
-- **Use Libraries**: documentation to fine-tune the plot
-
-. . .
-
-:::{.callout-tip}
-
-As usual, the best way to learn is by **doing**! [AI makes it very easy to get started.]{.highlight}
-
+::: {.callout-note}
+Two habits for **every** chart cell: **open** with `plt.figure()` (a clean canvas) and **end** with `plt.gca()`. In marimo and scripts there's no `plt.show()` — the figure appears as the cell's **last expression**, and `plt.plot(...)` alone returns line objects, not a picture. Same frame around every chart in tonight's lab.
 :::
 
-## Good Plotting in Action
+## The parts of a chart
 
-[Task:]{.task} Create a plot of your own for the data.
-
-. . .
+Every honest chart names its axes. `xlabel`, `ylabel`, `title`, and — when there's more than one line — a `legend`:
 
 ```{python}
-# TODO: Load the data from the `temp_anomaly_data.xlsx` file you have saved last lecture yourself and plot the temperature anomaly data. Find a way to make the plot meaningful and attractive in order to tell a story for the reader.
-# YOUR CODE HERE
+#| eval: true
+#| output-location: fragment
+import matplotlib.pyplot as plt
+
+days = [1, 2, 3, 4, 5]
+revenue = [120, 90, 140, 160, 130]
+
+plt.figure()
+plt.plot(days, revenue, label="Revenue")   # label feeds the legend
+plt.xlabel("Day")        # what the x-axis counts
+plt.ylabel("Revenue (€)")  # what the y-axis measures
+plt.title("This week's revenue")  # what the picture is about
+plt.legend()             # the little key, one entry per label
+plt.gca()
 ```
 
-# [Creating Dashboards]{.flow} {.title}
+## A little styling — and only a little
 
-## Dash for Dashboards
+Two keywords cover almost everything: `color` and `linestyle`. Restraint is the professional move — one clear line beats a rainbow:
 
-- [Dash](https://dash.plotly.com) is a framework for **building web applications**
-- It is built on top of [Flask](https://flask.palletsprojects.com), [Plotly.js](https://plotly.com/javascript/), and [React.js](https://react.dev/)
-- This lecture is build on top of [React.js]{.highlight}
-- It is very customizable and has a lot of **examples**
+```{python}
+#| eval: true
+#| output-location: fragment
+import matplotlib.pyplot as plt
 
-## Panel for Dashboards
+days = [1, 2, 3, 4, 5]
+revenue = [120, 90, 140, 160, 130]
 
-- [Panel](https://panel.holoviz.org) is built on top of [Bokeh]{.highlight} (instead of Plotly.js)
-- **Reasonably** easy to use, but not super easy
-- **Highly customizable**, also for multiple pages
-- **Good performance** even for more complex dashboards
+plt.figure()
+plt.plot(days, revenue, color="crimson", linestyle="--")
+plt.title("Styled, not decorated")
+plt.gca()
+```
 
-## Streamlit for Dashboards
+## Predict: one chart or two?
 
-- [Streamlit](https://streamlit.io) is a rather **new and popular** library
-- Very easy and [fast way to build dashboards]{.highlight}
-- Performance only good on **simpler dashboards**
-- **Not as many examples** and as customizable
+Kevin runs **two** `plot` calls, back to back, with no `plt.figure()` between them:
 
-## NiceGUI for Dashboards
+```python
+plt.plot([3, 1, 2])
+plt.plot([1, 2, 3])
+```
 
-- [NiceGUI](https://nicegui.io) is also a **relatively new library**
-- **Very customizable** and a large fan base
-- **Not as many examples** and as easy to use as Streamlit
-- Allows building [web-based desktop applications]{.highlight}
-
-## Which one to choose?
-
-- **Streamlit**: if you want to build a dashboard [fast]{.highlight}
-- **Dash**: if you want more flexibility and [Plotly.js]{.highlight}
-- **Panel**: if you want a [Bokeh-based]{.highlight} solution with more flexibility
-- **NiceGUI**: if you want to build a [desktop-like application]{.highlight}
+a\) two separate charts   b) one chart with two lines   c) an error
 
 . . .
 
-:::{.callout-tip}
+[Predict first]{.question} — commit to an answer before the next slide.
 
-There are many opinions on which tool is the best one. My approach is usually just to try the main contenders to see which one suits my workflow best.
+## Answer: one chart, two lines
 
+**b) one chart with two lines** — matplotlib keeps drawing on the **current** figure until you start a new one with `plt.figure()`:
+
+```{python}
+#| eval: true
+#| output-location: fragment
+import matplotlib.pyplot as plt
+
+plt.figure()
+plt.plot([3, 1, 2])
+plt.plot([1, 2, 3])   # same canvas — a second line, not a second chart
+plt.gca()
+```
+
+. . .
+
+That's exactly why every chart cell **opens** with `plt.figure()`: it's how you say "new picture, start clean."
+
+# ⚡ Your turn — 10 minutes {.exercise-slide}
+
+Open the exercise (scan the QR or type the link):
+
+**[beyondsimulations.github.io/Introduction-to-Python/notebooks/ex_09_a/](https://beyondsimulations.github.io/Introduction-to-Python/notebooks/ex_09_a/)**
+
+![](assets/qr/ex_09_a.png){width=280}
+
+First **predict** what happens — then run it.
+
+# [The right chart for the question]{.flow} {.title}
+
+## Match the chart to the question
+
+The wrong chart is its own kind of lie. Start from the **question**, not the chart:
+
+| The question | The chart | The call |
+|---|---|---|
+| Compare **categories**? | bar | `plt.bar(labels, heights)` |
+| See a **distribution**? | histogram | `plt.hist(values)` |
+| **Two numbers** per order? | scatter | `plt.scatter(x, y)` |
+| Change over **time**? | line | `plt.plot(x, y)` |
+
+. . .
+
+- **Line** you already own — it's the `plt.plot` from block one, time on the x-axis. The other three get a slide each.
+
+. . .
+
+::: {.callout-note}
+Notice what's missing: the **pie chart**. It's usually the wrong answer — the eye can't compare slice sizes well. When in doubt, a bar chart is clearer.
 :::
 
-## How to build a dashboard
+## Categories → bar
 
-- We **won't go into details** on how to build dashboards
-- The best way to learn is by **doing!**
-- **Use AI and the libraries documentation** as starting points
-- We will also [build a dashboard in today's tutorial]{.highlight}
+*"Which dish sells best?"* Categories to compare — that's a **bar**:
 
-# [Creating GUIs]{.flow} {.title}
+```{python}
+#| eval: true
+#| output-location: fragment
+import matplotlib.pyplot as plt
 
-## PySide6 for GUIs
+dishes = ["Pizza", "Pasta", "Salad", "Wrap"]
+sold = [12, 9, 5, 7]
 
-- Here, the **recommendation is much easier!**
-- In the past, `tkinter` was often the way to go
-- But currently, my recommendation is `PySide6`
-- It's a mature library we can use to build [cross-platform desktop applications]{.highlight}
+plt.figure()
+plt.bar(dishes, sold)
+plt.title("Orders per dish")
+plt.gca()
+```
+
+The tallest bar answers the question at a glance — Pizza.
+
+## A distribution → histogram
+
+*"How are our delivery times spread out?"* One column of numbers, dropped into buckets — that's a **histogram**:
+
+```{python}
+#| eval: true
+#| output-location: fragment
+import matplotlib.pyplot as plt
+
+minutes = [19, 22, 23, 24, 24, 25, 26, 28, 31, 44]
+
+plt.figure()
+plt.hist(minutes, bins=5)
+plt.title("Delivery times")
+plt.gca()
+```
+
+Most deliveries land in the mid-20s, with one lonely slow one far right. A histogram shows **shape**, not individual values.
+
+## Two numbers → scatter
+
+*"Do bigger orders take longer?"* Two numbers per order, one on each axis — that's a **scatter**:
+
+```{python}
+#| eval: true
+#| output-location: fragment
+import matplotlib.pyplot as plt
+
+minutes = [19, 22, 23, 24, 25, 26, 28, 31, 40, 44]
+euros   = [24, 9, 31, 12, 8, 30, 15, 22, 11, 19]
+
+plt.figure()
+plt.scatter(minutes, euros)
+plt.xlabel("Delivery time (min)")
+plt.ylabel("Order value (€)")
+plt.gca()
+```
+
+Just a cloud — no upward drift. Sometimes the honest answer is **"there's no pattern here."**
+
+## Predict: how many bars?
+
+The **same four numbers**, two ways. On the left, a bar per number; on the right, a histogram:
+
+```python
+values = [8, 12, 9, 15]
+plt.bar(range(4), values)   # left
+plt.hist(values, bins=3)    # right
+```
+
+The bar chart shows 4 bars. How many bars does the **histogram** show?
+
+a\) 4 — one per number   b) about 2–3 lumps — it counts ranges   c) 15
 
 . . .
 
-:::{.callout-note}
-**And that's it for todays lecture!**\
-You now have the basic knowledge to start working with [Plots, Dashboards and GUIs!]{.highlight}.
+[Predict first]{.question} — commit to an answer before the next slide.
+
+## Answer: bar counts categories, hist counts ranges
+
+**b) about 2–3 lumps** — the histogram groups the numbers into **ranges** and counts how many fall in each. `8` and `9` land in the same bucket, so that bar is **two tall**:
+
+```{python}
+#| eval: true
+#| output-location: fragment
+import matplotlib.pyplot as plt
+
+values = [8, 12, 9, 15]
+
+plt.figure()
+plt.subplot(1, 2, 1)
+plt.bar(range(4), values)     # one bar per NUMBER
+plt.title("bar: 4 categories")
+plt.subplot(1, 2, 2)
+plt.hist(values, bins=3)      # counts how many per RANGE
+plt.title("hist: 3 ranges")
+plt.gca()
+```
+
+. . .
+
+**Bar counts CATEGORIES; histogram counts RANGES.** Same numbers, different question.
+
+# ⚡ Your turn — 10 minutes {.exercise-slide}
+
+Open the exercise (scan the QR or type the link):
+
+**[beyondsimulations.github.io/Introduction-to-Python/notebooks/ex_09_b/](https://beyondsimulations.github.io/Introduction-to-Python/notebooks/ex_09_b/)**
+
+![](assets/qr/ex_09_b.png){width=280}
+
+First **predict** what happens — then run it.
+
+::: {.callout-tip}
+Take the break after this one — five minutes, then honest charts.
+:::
+
+# [Honest charts + the AI chart assistant]{.flow} {.title}
+
+## The same data, told two ways
+
+Four weeks of revenue: `[96, 98, 97, 99]`. Barely moving. But **where the y-axis starts** decides whether the room sees a rocket or the truth:
+
+```{python}
+#| eval: true
+#| output-location: fragment
+import matplotlib.pyplot as plt
+
+weeks = [1, 2, 3, 4]
+revenue = [96, 98, 97, 99]
+
+plt.figure()
+plt.subplot(1, 2, 1)
+plt.plot(weeks, revenue, marker="o")
+plt.ylim(96, 99)             # tight — DRAMA
+plt.title("Rocket (ylim 96–99)")
+plt.subplot(1, 2, 2)
+plt.plot(weeks, revenue, marker="o")
+plt.ylim(0, 100)             # from zero — TRUTH
+plt.title("Honest (from 0)")
+plt.gca()
+```
+
+Same numbers. The left one gets you a term sheet; the right one gets you trusted.
+
+## The rule: growth starts at zero
+
+- A **growth claim** on a chart starts the y-axis at **0**. Anything else magnifies a wobble into a cliff.
+- The investor **will** check — she reads the axis before she reads the line.
+
+. . .
+
+::: {.callout-tip}
+She's the type who reads Formular 27b/6 for fun. A stretched axis is the first thing she catches — and the last thing you want to explain.
+:::
+
+## AI as your chart assistant
+
+AI is genuinely good at plotting code — if you drive it like a co-pilot:
+
+1. **Describe** the data and the question: *"I have `orders` with columns `zone` (text) and `total_eur` (float). Bar chart of total revenue per zone."*
+2. Let it **draft** the plot code.
+3. **Verify** three things before you believe the picture:
+   - Do the **columns** it used actually exist?
+   - Does the **y-axis** start where you claim?
+   - Does the **chart type** fit the question?
+
+. . .
+
+The pilot flies; the co-pilot advises. You still land the plane.
+
+## Two ways AI charts lie
+
+- **Invented column names.** The AI writes `orders["revenue"]`, but your column is `total_eur` — a `KeyError`, exactly the confident-nonsense you caught in Episode 8. Read the code before you run it.
+- **Silently "dramatic" defaults.** Ask for a growth chart and some assistants hand back a **tight y-axis** that flatters the trend — no warning, no comment. The chart runs; that's what makes it dangerous.
+
+. . .
+
+::: {.callout-important}
+Both threads, one rule: **an AI chart runs long before it's true.** You verify the columns *and* the axis — every time.
+:::
+
+# ⚡ Your turn — 10 minutes {.exercise-slide}
+
+Open the exercise (scan the QR or type the link):
+
+**[beyondsimulations.github.io/Introduction-to-Python/notebooks/ex_09_c/](https://beyondsimulations.github.io/Introduction-to-Python/notebooks/ex_09_c/)**
+
+![](assets/qr/ex_09_c.png){width=280}
+
+First **predict** what happens — then run it.
+
+# Before Session X {.exercise-slide}
+
+The season finale leaves the browser for **your own machine**. Two installs to do **before** you arrive — budget about **15 minutes**:
+
+- **uv** — the Python environment manager this course uses. Follow [the uv guide](../general/uv.qmd).
+- **Zed** — the editor you'll write code in, with **one** AI provider connected. Follow [the AI-tools guide](../general/ai-tools.qmd).
+
+. . .
+
+:::{.callout-important}
+Do it in advance — **Session X builds on** a working toolchain, it doesn't wait for one. If the install fights you, bring it to **office hours** before then — don't burn an evening. And **bring the laptop**.
+:::
+
+. . .
+
+Session X builds the real toolchain and reveals what your notebooks have been all along.
+
+# [To the Lab]{.flow} {.title}
+
+## Tonight's episode
+
+- Head to the lab notebook: [Episode 9 — The Pitch Deck](../tutorials/tut_09_plotting.qmd)
+- Same eighty orders, now with pictures: a line for daily revenue, a bar for zones, a histogram for the value spread, a scatter that finds **no** pattern — and Kevin's cliff-edge growth slide, which you'll flatten into the truth
+- Every chart opens with `plt.figure()` and closes with `plt.gca()`
+- AI is allowed — draft with it, then **verify** the columns and the axis before you believe it
+- It runs entirely in your browser — no setup, just click and code
+
+. . .
+
+:::{.callout-important}
+**Download your `.py` before you leave.** It's the appendix of your pitch — the file that proves every chart came from the real data.
+:::
+
+# [Wrap-up]{.flow} {.title}
+
+## Three things to remember
+
+1. **Every chart, one frame.** Open with `plt.figure()`, close with `plt.gca()`; label the axes and title it. A chart nobody can read argues nothing.
+2. **Match the chart to the question.** Categories → bar, distribution → histogram, two numbers → scatter, time → line. The wrong chart is a lie; and "no pattern" is a real finding.
+3. **Honest axis, verified code.** Growth charts start at **0**, and every AI-drafted plot gets checked — do the columns exist, does the axis start where you claim?
+
+. . .
+
+::: {.callout-note}
+**Season finale next: git, real files, and the project kickoff.** We leave the browser for your own machine — the toolchain you install this week is the price of admission.
 :::
 
 # [Literature]{.flow} {.title}
 
-## Interesting Books
+## Books to start with
 
-- Wilke, C. (2019). Fundamentals of data visualization: A primer on making informative and compelling figures (First edition). O’Reilly Media.
-    - A book that is highly recommended to understand the principles of data visualization and how to create effective visualizations.
-    - [Link to the free book website](https://clauswilke.com/dataviz/)
+- Wilke, C. (2019). Fundamentals of data visualization: A primer on making informative and compelling figures (First edition). O’Reilly Media. [Link to the free book website](https://clauswilke.com/dataviz/)
+    - The best single book on *why* a chart works — principles, not just code. Highly recommended.
+- Downey, A. B. (2024). Think Python: How to think like a computer scientist (Third edition). O’Reilly. [Link to free online version](https://greenteapress.com/wp/think-python-3rd-edition/)
 
 . . .
 
-For more interesting literature to learn more about Python, take a look at the [literature list](../general/literature.qmd) of this course.
+::: {.callout-note}
+Building charts with AI this session? Revisit the [AI Tools page](../general/ai-tools.qmd) — describe-then-verify is the whole workflow. Matplotlib's own [pyplot tutorial](https://matplotlib.org/stable/tutorials/pyplot.html) is a friendly next step.
+:::
+
+. . .
+
+For more, see the [literature list](../general/literature.qmd) of this course.

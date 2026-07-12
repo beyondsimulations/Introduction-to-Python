@@ -62,3 +62,11 @@ Buffer scope (spec §4): authored last, cut first, never blocking semester start
 - lec_08: LLM-internals slides (tokens, weights, training, context window, probability-based next-token) — the deck teaches AI *craft* (verify workflow), not model mechanics; a "how LLMs work" side-quest for the curious
 - lec_08: `iloc`/`loc` positional-vs-label deep-dive — one `.loc` mention stays in the deck; the full indexing tour returns when a project needs positional selection
 - lec_08: Copilot section (VS Code setup, GitHub Student Pack signup, tool roundup) — removed for policy; gone entirely, not returning
+- lec_09: seaborn box/violin plots — statistical distributions beyond the four core charts; returns as a side-quest once a project needs quartile/density views
+- lec_09: networkx network graphs / tree diagrams — graph visualization is its own topic; side-quest for a project with relationship data
+- lec_09: joypy ridgeline / joyplot (monthly-temperature distributions) — niche, one-library trick; side-quest for a distribution-heavy dataset
+- lec_09: pie / donut deep-dive — reduced to a one-line "pie: usually the wrong answer" mention in the chart-matrix slide; full treatment not returning
+- lec_09: dashboards (Dash / Panel / Streamlit / NiceGUI) — Part III project material; returns when a project needs an interactive app
+- lec_09: PySide6 / desktop GUIs — Part III project material; returns with the dashboards for the same reason
+- lec_09: polyfit / trendline overlay (`np.polyfit` + `poly1d` on a scatter) — invites reading a trend into a cloud; the course's stance is "no pattern is a finding", so cut; side-quest for a stats-flavoured cohort
+- lec_09: temp-anomaly climate dataset (`temp_anomaly_data.xlsx`, the bad→okay→better→good plot ladder) — Excel I/O plus a non-startup dataset; the pitch-deck arc uses `orders.csv` instead; dataset orphan deleted
