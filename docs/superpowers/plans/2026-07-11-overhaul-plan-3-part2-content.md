@@ -39,7 +39,7 @@ CP values AND answers must differ from all lecture-demo/exercise/lab values (con
 | nb_07 | discount [5.4,8.1,10.8,16.2] · critical count 2 · on-time rate 0.8 · days sum 105 · zone totals [141,109,100,82], best day total 84, best 'Nord' |
 | CP4 | crates probes 5/4/1 · count 5 / mean 48.8 · zone totals [1545,1370,1260,1665] · seed(23) [6,3,2,6,8] · MCQs b, c |
 | ex_08_a/b | Nord mean 14.5 · count 3 / revenue 57.0 |
-| nb_08 / nb_09 | computed from committed orders.csv (Task 12) — implementer records them in the lab header comment and checks them against this ledger |
+| nb_08 / nb_09 | from committed orders.csv: rows 80 · cols 9 · revenue 1571.6 · Nord count 22 · Sued-bulk 15 · Hafen 354.2 · max/item 11.9 · zone dict {A 408.4, H 354.2, N 378.9, S 430.1} · avg-winner 'Sued' · best day 3 · days 14 · over-25 count 20 · slowest 58 · growth -0.66 · pitch {1571.6, 'Sued', 80} |
 | ex_09_a/b/c | total 1336.5, best day 6 · best zone 'Nord' (412.60) · growth 10.0 |
 | CP5 | Altstadt 53.7 · mean 18.13 · dict {Altstadt 53.7, Hafen 34.7, Nord 48.3, Sued 44.6} · count 6 · MCQs c, b (letters per option order in Task 19) |
 
@@ -993,7 +993,7 @@ Intro: pitch meeting Friday. The investor's one instruction: "Charts I can't arg
 - **1.1** daily revenue: `daily = orders.groupby("day")["total_eur"].sum()`; graded `best_day_ex11 = int(daily.idxmax())` → ⟨csv⟩; line chart of `daily` (ungraded).
 - **1.2** chart anatomy: add xlabel/ylabel/title to 1.1's chart (ungraded aesthetics); graded `days_ex12 = int(len(daily))` → **14**.
 - **2.1** zone bar chart: `by_zone = orders.groupby("zone")["total_eur"].sum().round(2)`; graded `by_zone_ex21 = by_zone.to_dict()` → ⟨csv⟩ (same dict as nb_08's 3.2 — deliberate cross-episode repetition, note it in the md: "you computed this in the data room; now it becomes a picture").
-- **2.2** histogram of `total_eur`; graded `over_25_ex22 = int((orders["total_eur"] > 25).sum())` → ⟨csv⟩ (13 — an actual tail; do NOT use >20, that catches 54% of orders and calling it a "tail" misreads the histogram; frame as "the expensive tail, counted").
+- **2.2** histogram of `total_eur`; graded `over_25_ex22 = int((orders["total_eur"] > 25).sum())` → ⟨csv⟩ (**20** — the top quartile; an earlier review note claimed 13, which is the count above 26 — the committed CSV is authoritative; do NOT use >20, that catches 54% of orders; frame as "the expensive tail, counted").
 - **2.3** scatter `delivery_min` vs `total_eur`; graded `slowest_ex23 = int(orders["delivery_min"].max())` → ⟨csv⟩. The scatter shows NO correlation (independent columns, r ≈ -0.03) — the md must own that as the teaching point ("sometimes the honest answer is: no relationship"), never ask students to describe a pattern that isn't there.
 - **3.1 Kevin's bug (fix-it):** Kevin's "growth chart" of the two weekly totals uses `plt.ylim` to start just under the smaller value — symptom: "week 2 looks 5× week 1; the numbers say otherwise." Fix: axis from 0; graded `growth_pct_ex31 = float(round((week2 - week1) / week1 * 100, 2))` → ⟨csv⟩ (weekly totals = days 1–7 vs 8–14; the true delta is ≈ -0.66% — essentially flat, which makes Kevin's rocket chart an even better lie; the story beat should exploit that).
 
