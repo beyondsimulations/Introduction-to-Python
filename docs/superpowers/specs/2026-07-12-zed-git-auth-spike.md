@@ -122,6 +122,44 @@ build of uv 0.11.25 on 2026-07-12; it is `uv`'s own documented default
 behavior (`uv init` runs `git init` unless `--no-workspace`/`--vcs none` is
 passed or the directory is already inside a repo), not a Zed feature.
 
+### Which branch does `uv init` create?
+
+Re-ran the scratch check capturing the branch (2026-07-12):
+
+```
+$ uv init spike-test
+Initialized project `spike-test` at `/private/tmp/spike-test`
+
+$ git -C spike-test branch --show-current
+main
+```
+
+But **this `main` is a property of the machine's git, not of uv.** Checked
+uv's source directly
+([crates/uv-configuration/src/vcs.rs on astral-sh/uv main](https://raw.githubusercontent.com/astral-sh/uv/main/crates/uv-configuration/src/vcs.rs),
+fetched 2026-07-12): `VersionControlSystem::init` builds the command as
+`.arg("init")` only — plain `git init`, **no `--initial-branch` argument** —
+so the branch name is whatever the machine's git decides. Evidence gathered
+on the branch-name question:
+
+- This machine's `git config --show-origin --get init.defaultBranch` →
+  `file:/Applications/Xcode.app/Contents/Developer/usr/share/git-core/gitconfig  main`
+  (Apple ships `init.defaultBranch = main` in Apple Git's system gitconfig).
+- With all git config suppressed
+  (`GIT_CONFIG_GLOBAL=/dev/null GIT_CONFIG_SYSTEM=/dev/null`, empty `HOME`),
+  both `uv init` and a plain `git init` on this machine *still* produced
+  `main` — Apple Git-155 (git 2.50.1) defaults to `main` even without config.
+- Upstream (non-Apple) git's compiled default, absent `init.defaultBranch`,
+  is still `master` — so a config-less Linux or Git-for-Windows machine may
+  produce `master` where a Mac produces `main`. Per-OS defaults on actual
+  student machines are on the verify-live list.
+
+**Consequence:** the branch name after `uv init` on a fresh student machine
+is *not* guaranteed to be `main`. Any scripted first-push command must be
+branch-agnostic — hence "Copy for authors" teaches
+`git push -u origin HEAD` (pushes the current branch under its own name,
+whatever it is), not `git push -u origin main`.
+
 **Implication for Session X:** the course's Session X flow does **not** need
 a separate `git: init` / `git init` step for the "start a new project"
 branch — running `uv init <project>` already produces a git repo. `git: init`
@@ -137,8 +175,10 @@ during setup**, before any Zed git panel use. Rationale, per the "prefer the
 robust path" instruction: Zed's own GitHub sign-in verifiably does not cover
 git push auth (scoped to `read:user` only, per Zed's docs, and independently
 confirmed as a real friction point in issue #52218 even for a user signed
-into Zed). `gh auth login` is a single terminal command, works identically on
-macOS/Windows/Linux, configures git's HTTPS credential helper
+into Zed). `gh auth login` is a single terminal command, is distributed for
+macOS, Windows, and Linux (only macOS was exercised live in this spike —
+cross-platform parity of the flow is a documented claim of the GitHub CLI,
+not something verified here), configures git's HTTPS credential helper
 (`gh auth setup-git`, which `gh auth login` offers to run automatically), and
 is the credential path GitHub's own docs recommend for HTTPS. SSH key setup
 was not adopted as the primary path because it requires generating a keypair
@@ -161,6 +201,24 @@ close to semester start:
   from general knowledge of the GitHub CLI flow and search-result summaries
   of `cli.github.com/manual/gh_auth_login`, not a fresh fetch-and-read of
   that manual page's full text in this spike.
+- **`gh auth status` exact success output** — the quoted lines ("Logged in to
+  github.com", "Git operations for github.com configured to use https
+  protocol") are from general knowledge of the CLI, not captured from a live
+  run in this spike; re-run `gh auth status` on a freshly-authed machine and
+  paste the real wording into the guide.
+- **`gh repo create` default git protocol** — believed to follow
+  `gh config get git_protocol`, whose out-of-the-box default is `https`, but
+  this default was not verified from the gh manual in this spike. Confirm
+  before recommending `gh repo create` without an explicit protocol flag; the
+  "Copy for authors" section already instructs choosing the HTTPS URL
+  explicitly, which is safe regardless.
+- **Default git branch name on actual student machines** — `uv init` runs
+  plain `git init` (verified from uv source), so the branch is `main` on
+  macOS (Apple Git defaults to `main` even with no config — verified live)
+  but may be `master` on config-less Linux/Windows git installs (upstream
+  git's compiled default). "Copy for authors" sidesteps this with
+  `git push -u origin HEAD`; still worth a quick `git init` check on a lab
+  Windows machine before scripting any branch-name-dependent demo step.
 - **Whether Zed's first push from a freshly-`git: create remote`d repo
   auto-sets the upstream tracking branch**, or whether students need an
   extra "set upstream" step/prompt the first time — not explicitly stated in
@@ -185,14 +243,19 @@ to re-read the Findings above to write correct student-facing instructions.
 
 **One-time machine setup, before first use of Zed's git panel:**
 
-1. Install the GitHub CLI (`gh`) if not already present.
+1. Install the GitHub CLI (`gh`) if not already present — installers and
+   package-manager commands for macOS, Windows, and Linux are at
+   [cli.github.com](https://cli.github.com) (macOS: `brew install gh`;
+   Windows: `winget install GitHub.cli`).
 2. Run `gh auth login` in a terminal. Choose GitHub.com, HTTPS as the
    preferred protocol, and authenticate via the browser (device code) flow.
    When asked "Authenticate Git with your GitHub credentials?", answer yes —
    this runs `gh auth setup-git` for you and configures git's HTTPS
    credential helper.
-3. Confirm with `gh auth status` — it should show "Logged in to github.com"
-   and "Git operations for github.com configured to use https protocol."
+3. Confirm with `gh auth status` — it should report being logged in to
+   github.com with git operations configured for the https protocol (exact
+   output wording is on the verify-live list; capture it from a live run
+   before quoting it verbatim to students).
 4. Separately, sign in to the Zed app itself (`client: sign in` in the
    command palette, or the Sign In button) if collaboration or Zed-hosted AI
    features are wanted. **This sign-in is unrelated to git push
@@ -204,15 +267,22 @@ to re-read the Findings above to write correct student-facing instructions.
 - New project: `uv init <project-name>` in a terminal (this already creates
   a `.git/` repo — no separate `git init` needed). Then create an empty
   repository on github.com (or `gh repo create`), and in Zed use
-  `git: create remote` to point the local repo at it. For the **first push**,
-  teach the terminal command `git push -u origin main` as the guaranteed
-  path — the `-u` sets upstream tracking, which every later `git: push` in
-  Zed relies on. Whether Zed's own push button sets upstream tracking
-  automatically on a first push is **unconfirmed** (see the
-  Verify-live-before-semester item above); if the live check confirms it
-  does, authors may simplify this to `git: push` — until then, present the
-  terminal command as the first-push step and Zed's `git: push` for all
-  subsequent pushes.
+  `git: create remote` to point the local repo at it — **use the repository's
+  HTTPS URL** (`https://github.com/<user>/<repo>.git`), not the SSH one: the
+  auth set up in steps 1–3 is an HTTPS credential helper and does not apply
+  to SSH remotes. (If using `gh repo create`, note its remote protocol
+  follows `gh config get git_protocol` — see the verify-live item on its
+  default; pasting the HTTPS URL explicitly avoids the question.) For the
+  **first push**, teach the terminal command `git push -u origin HEAD` as
+  the guaranteed path — `HEAD` pushes the current branch under its own name
+  (the branch after `uv init` is `main` on macOS but may be `master` on
+  other platforms' default git, so do not hard-code a branch name), and the
+  `-u` sets upstream tracking, which every later `git: push` in Zed relies
+  on. Whether Zed's own push button sets upstream tracking automatically on
+  a first push is **unconfirmed** (see the Verify-live-before-semester item
+  above); if the live check confirms it does, authors may simplify this to
+  `git: push` — until then, present the terminal command as the first-push
+  step and Zed's `git: push` for all subsequent pushes.
 - Joining a partner's existing repo: use Zed's command palette `git: clone`
   (or terminal `git clone <url>`) with the HTTPS URL of the GitHub repo. No
   `uv init` or `git init` needed — the clone brings the existing project and
