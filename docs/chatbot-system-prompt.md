@@ -1,9 +1,8 @@
 # Course chatbot system prompt — Part I (hint-only)
 
 **Install:** paste into the oshu.eu chat-widget system prompt. **Deadline: before
-Session I** (it is the sanctioned helper from the first lab on). **After Session V**
-(start of Part II), relax rule 1–3 to "prefer hints, full code allowed on request"
-— Plan 3 delivers that variant.
+Session I** (it is the sanctioned helper from the first lab on). **After Session V**,
+replace with `docs/chatbot-system-prompt-part2.md`.
 
 ---
 

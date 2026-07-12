@@ -1,0 +1,156 @@
+# notebooks/exercises/ex_08_a.py
+import marimo
+
+app = marimo.App(width="medium")
+
+
+@app.cell
+def _():
+    import marimo as mo
+    return (mo,)
+
+
+@app.cell(hide_code=True)
+def _():
+    # Helper — echoes the student's current answer as a "Your result" preview.
+    def show_result(value):
+        if value is None:
+            return ""
+        if isinstance(value, str):
+            return f"\n\n**Your result:**\n\n```\n{value}\n```"
+        return f"\n\n**Your result:** `{value}`"
+
+    return (show_result,)
+
+
+@app.cell(hide_code=True)
+def _(mo):
+    mo.md(
+        r"""
+    # ⚡ Quick exercise: verifying AI code (5–10 min)
+
+    AI wrote this for Kevin. Two things are wrong — one method doesn't
+    exist, one comparison quietly returns nothing. Fix both, and you've
+    done today's most important professional skill: verifying output.
+
+    Filtering a DataFrame works just like the NumPy masks from last
+    session: `df[df["col"] == value]` keeps the matching rows.
+
+    **Predict** first: what does the cell below print, then run it.
+    """
+    )
+    return
+
+
+@app.cell
+def _():
+    import pandas as pd
+    return (pd,)
+
+
+@app.cell
+def _(pd):
+    # Worked example (read + run this)
+    _demo = pd.DataFrame({"team": ["Ost", "Ost", "West"], "score": [10, 6, 20]})
+    print(_demo[_demo["team"] == "Ost"])
+    print(_demo[_demo["team"] == "Ost"]["score"].mean())
+    return
+
+
+@app.cell(hide_code=True)
+def _(mo):
+    mo.md(
+        r"""
+    `kevin_df` below is the real order data. Kevin's AI draft is shown
+    as a **comment** underneath it — read it, spot the two bugs, then
+    write correct code of your own to compute `mean_exa`: the average
+    `total_eur` for the "Nord" zone.
+
+    (If you paste Kevin's broken lines and run them for real, the cell
+    turns red — that's expected. A red error pauses everything below it
+    until you fix it; that's the workflow, not a crash.)
+    """
+    )
+    return
+
+
+@app.cell
+def _(pd):
+    # Given — do not change this
+    kevin_df = pd.DataFrame(
+        {
+            "zone": ["Nord", "Nord", "Sued", "Nord", "Hafen"],
+            "total_eur": [12.40, 8.90, 15.10, 22.20, 9.60],
+        }
+    )
+    return (kevin_df,)
+
+
+@app.cell
+def _(kevin_df):
+    # Kevin's AI draft (broken — fix it in your own code below):
+    #   nord = kevin_df[kevin_df["zone"] == "nord"]        # quietly empty… why?
+    #   mean_exa = nord["total_eur"].summarize()           # AttributeError… why?
+    mean_exa = None  # YOUR CODE BELOW
+    return (mean_exa,)
+
+
+@app.cell(hide_code=True)
+def _(mean_exa, mo, pd, show_result):
+    # Reactive check — re-runs automatically whenever the cell above changes.
+    _expected = 14.5
+    _all_zones_mean = 13.64  # Kevin's "averaged everything" trap
+    _result = None
+    if mean_exa is None:
+        _ok = False
+        _msg = "🔲 Not attempted yet."
+    elif isinstance(mean_exa, (pd.Series, pd.DataFrame)):
+        _ok = False
+        _result = f"mean_exa={mean_exa!r}"
+        _msg = "❌ `mean_exa` is still a whole column/table — `.mean()` collapses it to one number."
+    else:
+        # Coerce to a plain float first — anything that can't be must
+        # degrade to a message, never crash the check.
+        try:
+            _v = round(float(mean_exa), 2)
+        except (TypeError, ValueError):
+            _ok = False
+            _v = None
+            _msg = "❌ That's not a number yet — check what `.mean()` actually returns."
+        else:
+            _result = f"mean_exa={mean_exa}"
+            if pd.isna(_v):
+                _ok = False
+                _msg = '❌ Your filter came back empty — pandas comparisons are case-sensitive; check the zone spelling ("Nord" vs "nord").'
+            elif _v == _expected:
+                _ok = True
+                _msg = "✅ Correct! 14.5 — and you just did today's most important professional skill: verifying AI output."
+            elif _v == _all_zones_mean:
+                _ok = False
+                _msg = "❌ You averaged every zone, not just Nord — filter first, then take the mean."
+            else:
+                _ok = False
+                _msg = '❌ Not quite — filter to `zone == "Nord"` (case matters!), then call `.mean()`.'
+    mo.callout(mo.md(_msg + show_result(_result)), kind="success" if _ok else "warn")
+    return
+
+
+@app.cell(hide_code=True)
+def _(mo):
+    mo.accordion(
+        {
+            "💡 Hint 1 (a nudge)": "String comparison is case-sensitive; and does pandas really have `summarize`? Check the docs — or ask an AI and VERIFY.",
+            "💡 Hint 2 (the structure)": '_nord = kevin_df[kevin_df["zone"] == "___"]\nmean_exa = float(_nord["total_eur"].___())',
+        }
+    )
+    return
+
+
+@app.cell(hide_code=True)
+def _(mo):
+    mo.md("*Nothing to save — this was a sandbox.*")
+    return
+
+
+if __name__ == "__main__":
+    app.run()

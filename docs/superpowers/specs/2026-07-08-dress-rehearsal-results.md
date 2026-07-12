@@ -77,6 +77,19 @@ Do these in order before Session I. Record findings inline (replace the ⬜).
 - Login method observed: ______________________
 - Screenshot saved to: ______________________
 
+### 6. ⬜ Part II items — verify on the REAL deployed host (Plan 3 battery)
+- **Auto-run of pandas-heavy WASM labs.** The local spot-check harness (threaded
+  server, Task-20 battery) showed nb_06–09 do NOT auto-run every compute/check
+  cell on cold boot — a one-time **Run all** (Cmd/Ctrl+Shift+R) was needed
+  before checks rendered (nb_06) and charts drew (nb_09: 8 matplotlib figures,
+  CSV loaded, no errors). This may be a single-threaded-localhost artifact.
+  **Action:** open a deployed nb_06–09 export on GitHub Pages; if cells still sit
+  idle after boot, add a one-line "after it loads, press **Run all**" note to the
+  nb_06–09 launcher pages. If they auto-run on the real host, no change needed.
+  - Auto-runs on deployed host? ⬜ yes (no note) · ⬜ no (added Run-all note on ___)
+- **CDN-flake reload note** is already present on the nb_08/nb_09 launchers
+  ("if pandas fails to import, reload the page") — no action unless it recurs.
+
 ---
 
 ## C. Friction / notes to feed into Plan 2

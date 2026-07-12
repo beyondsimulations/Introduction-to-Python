@@ -1,0 +1,96 @@
+<!-- Facts on this page re-verified against the live web on 2026-07-11. -->
+
+## The course policy
+
+This course is split into two halves, and the rules for AI are different in each.
+
+- **Part I (Sessions I--V): no AI.** You learn to read, write and debug Python yourself. The only assistant you may use is the **course chatbot** (the widget in the sidebar), and in Part I it deliberately explains and hints rather than handing you finished code.
+- **Part II (Session VI onwards): AI is allowed and taught.** From Session VI we work *with* AI on purpose. Checkpoints 4 and 5 explicitly allow AI.
+
+> **Important**
+>
+> **The disclosure rule.** Every submission that used AI carries a one-line note saying what the AI was used for. For example: *"Used AI to explain a `KeyError` and to draft the docstring for `load_data()`."* This is not about catching anyone out. Being able to say clearly what a tool did for you is part of using it well.
+
+The rest of this page shows you how to get a working, **zero-cost** AI setup. You need at least one. The Mistral path below is the guaranteed-free baseline; everything after it is optional.
+
+*Menu paths and program terms on this page are current as of July 2026.*
+
+## The guaranteed free setup: Mistral
+
+This path costs nothing and needs no credit card. Do this one first.
+
+### 1. Create a free Le Chat account
+
+Go to [chat.mistral.ai](https://chat.mistral.ai) and sign up. **Le Chat** is Mistral's chat assistant (the equivalent of ChatGPT or Claude in your browser). The free tier is enough for asking questions, explaining errors and drafting code.
+
+### 2. Get a free La Plateforme API key
+
+If you later want AI *inside your editor* (see the Zed section below), you need an API key.
+
+1.  Go to [console.mistral.ai](https://console.mistral.ai) and sign in with the same account.
+2.  Choose the free **"Experiment"** tier when prompted.
+3.  Open the **API Keys** page and create a new key.
+4.  Copy the key somewhere safe. You will paste it into Zed later. **The key is shown only once**, right when you create it, and cannot be displayed again --- if you miss it, you have to generate a new one.
+
+> **Warning**
+>
+> **Free-tier data is used for training by default.** On the free Experiment tier, your API inputs and outputs may be used to improve Mistral's models unless you opt out. To opt out:
+>
+> 1.  Open the Admin Console at [admin.mistral.ai](https://admin.mistral.ai).
+> 2.  Click **Privacy** in the left-hand menu.
+> 3.  Find the **"Anonymous improvement data"** section and turn the toggle **off**.
+>
+> Do this before you paste real coursework into the API. The free Le Chat tier also uses your conversations for training by default; you can turn that off in the Admin Console under **Vibe → Privacy** (on the mobile app: **Settings → Data & Account Controls**).
+
+## Zed + AI
+
+Zed is the editor we install in Session X. This section only covers the **AI-provider** side, connecting an AI model to Zed. The install and setup steps live in the Session X materials.
+
+### The education program
+
+If you are an enrolled student, Zed gives you its paid plan for free:
+
+- **12 months of Zed Pro**, plus **\$10/month in AI token credits**.
+- Read about it at [zed.dev/education](https://zed.dev/education).
+- Apply at [dashboard.zed.dev/education/apply](https://dashboard.zed.dev/education/apply).
+
+> **Note**
+>
+> **The 12 months expire.** After 12 months the Student plan automatically downgrades to the free plan. It is a great head start, not a permanent free ride, so don't build a habit that depends on the credits lasting forever. This is exactly why the Mistral path above matters: it stays free.
+
+### Which subscription actually works in Zed?
+
+This is the part that surprises people. Having a paid AI subscription does **not** automatically mean you can use it inside Zed. Here is the truth table:
+
+| You have | Works in Zed? | How |
+|------------------------|------------------------|------------------------|
+| **ChatGPT Plus / Pro** | Yes | Sign in with your OpenAI account directly in Zed. No API key needed. |
+| **Claude Pro / Max** | No (not via the built-in Anthropic provider) | Zed's built-in Anthropic provider needs **separate Anthropic API credits**, which a Pro/Max subscription does **not** include. |
+| **Mistral (free API key)** | Yes | Paste the free La Plateforme key from the section above. |
+
+> **Warning**
+>
+> **Claude Pro/Max is the common trap.** A Claude Pro or Max subscription is for the Claude apps and websites. It is **not** the same as Anthropic API credits, and Zed's built-in Anthropic provider bills against API credits. So a Claude subscription alone will **not** power the assistant in Zed. If your only paid plan is Claude, use the free Mistral key for in-editor AI instead.
+
+## Fallback: OpenRouter free models
+
+[OpenRouter](https://openrouter.ai) is a second zero-cost option. Sign up with an email (no credit card), create an API key, and you can call a set of **free** models. It is OpenAI-compatible, so any tool that accepts an OpenAI-style key plus a server address (the "base URL") can use it. Treat this as a backup if the Mistral path ever gives you trouble.
+
+## What about Copilot?
+
+You may have heard of **GitHub Copilot**. Since **April 2026, GitHub has paused new sign-ups** for its paid Copilot plans indefinitely, with no announced reopening date. If you already had Copilot set up before then, you may keep using it. If not, don't count on it for this course --- use one of the free paths above.
+
+## The course chatbot
+
+The chat widget in the sidebar stays available in Part II as well. The difference: in Part I it hints and explains; in Part II it will give you **full code** on request, because by then working with AI-generated code is part of what you are learning. It knows the course material, so it is often the fastest way to get an answer that fits what we have actually covered.
+
+## Recap
+
+You now have:
+
+1.  A free Le Chat account for questions and explanations.
+2.  A free La Plateforme API key (with the training opt-out done) for AI inside your editor.
+3.  Optionally, a Zed education application and an OpenRouter fallback key.
+4.  The one habit that applies everywhere: a one-line AI-disclosure note on every submission that used AI.
+
+Bring your Mistral API key to Session X --- that is where we plug it into Zed.

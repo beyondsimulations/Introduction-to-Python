@@ -42,3 +42,31 @@ Buffer scope (spec §4): authored last, cut first, never blocking semester start
 - lec_05: IDE debugger walkthrough (Zed breakpoints / step-over / variable viewer) — no IDE in the WASM lab; `print()` is the beginner's flashlight instead
 - lec_05: the `if __name__ == "__main__":` main-function pattern + script organisation slides — belongs with modules/imports (Session VI), not the errors day
 - lec_05: `logging` module overview — beyond scope for beginners; a larger-codebase concern, cut
+
+## Material cut from lecture decks (Plan 3 rewrites)
+- lec_06: regular expressions (whole section — `re.search/findall/sub/split`, character classes, quantifiers, email/date patterns) — rich but heavy for a CP-day; returns as a side-quest ("regex treasure hunt": hunt patterns out of log/receipt text)
+- lec_06: `os` module (`listdir`, `path.exists`, `makedirs`) — needs a real filesystem; Session X preview when we leave the WASM browser for real files
+- lec_06: `csv` module (`csv.writer`/`csv.reader`, writing `secret_message.csv`) — real file I/O; Session X (and tabular data proper lands in pandas, Session VIII)
+- lec_06: creating your own module files (`import lec_06_new_module`, `from ... import another_function`) — needs real `.py` files side-by-side; Session X where students work in a real editor/filesystem
+- lec_06: installing packages + virtual environments with uv (`uv add`, `uv sync`, `uv run`) — no shell in the WASM lab; Session X where the local toolchain is set up
+- lec_07: fancy indexing (`data[np.array([0, 2, 4])]`) — niche beside boolean masks; returns as a side-quest once positional selection is actually needed
+- lec_07: dtype character codes (`'i'`/`'f'`/`'S'`/`'U'`) + bits/precision section (int8/int16/float32, ranges, `.astype`) — hardware-flavoured detail; revisit if a memory/precision bug ever bites in a later data session
+- lec_07: joining arrays (`concatenate`, `hstack`, `vstack`) — array assembly is rare for beginners; folds into pandas concat/merge in Session VIII
+- lec_07: heterogeneous arrays (`np.array(["s", 2, 2.0])`) — anti-pattern for beginners; one-line mention stays in the deck ("one dtype for the whole array"); full treatment only if a side quest needs mixed data
+- lec_07: matrix multiplication `@` vs element-wise `*` — linear algebra is out of scope for this course; side-quest for a maths-heavy cohort
+- lec_07: `np.random` (numpy's own RNG, `rand`/`randint`) — superseded by the `random` module taught in Session VI; one RNG story is enough, numpy's is cut; returns if a Part-III project needs vectorized sampling
+- lec_08: NumPy recap section (arrays/ndarray/vectorized-ops refresher) — CP-day decks carry no warm-up; the checkpoint sweeps NumPy instead
+- lec_08: `merge` / `join` / `concat` (combining DataFrames, `how=` inner/outer/left/right) — multi-table joins are a Part-III concern; returns when a project needs to combine data sources
+- lec_08: Excel I/O (`pd.read_excel`/`df.to_excel`/`openpyxl`, sheet names) — one file format is enough for the intro; revisit if a Part-III project ships `.xlsx`
+- lec_08: `melt` / wide-vs-long reshaping (`id_vars`/`var_name`/`value_name`) — tidy-data reshaping is a side-quest; needed only once a plot demands long format (Session IX+)
+- lec_08: LLM-internals slides (tokens, weights, training, context window, probability-based next-token) — the deck teaches AI *craft* (verify workflow), not model mechanics; a "how LLMs work" side-quest for the curious
+- lec_08: `iloc`/`loc` positional-vs-label deep-dive — one `.loc` mention stays in the deck; the full indexing tour returns when a project needs positional selection
+- lec_08: Copilot section (VS Code setup, GitHub Student Pack signup, tool roundup) — removed for policy; gone entirely, not returning
+- lec_09: seaborn box/violin plots — statistical distributions beyond the four core charts; returns as a side-quest once a project needs quartile/density views
+- lec_09: networkx network graphs / tree diagrams — graph visualization is its own topic; side-quest for a project with relationship data
+- lec_09: joypy ridgeline / joyplot (monthly-temperature distributions) — niche, one-library trick; side-quest for a distribution-heavy dataset
+- lec_09: pie / donut deep-dive — reduced to a one-line "pie: usually the wrong answer" mention in the chart-matrix slide; full treatment not returning
+- lec_09: dashboards (Dash / Panel / Streamlit / NiceGUI) — Part III project material; returns when a project needs an interactive app
+- lec_09: PySide6 / desktop GUIs — Part III project material; returns with the dashboards for the same reason
+- lec_09: polyfit / trendline overlay (`np.polyfit` + `poly1d` on a scatter) — invites reading a trend into a cloud; the course's stance is "no pattern is a finding", so cut; side-quest for a stats-flavoured cohort
+- lec_09: temp-anomaly climate dataset (`temp_anomaly_data.xlsx`, the bad→okay→better→good plot ladder) — Excel I/O plus a non-startup dataset; the pitch-deck arc uses `orders.csv` instead; dataset orphan deleted
