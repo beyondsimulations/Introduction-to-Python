@@ -16,6 +16,12 @@
   (`Order`), no suffix.
 - Checks: `isinstance` + `round(x, 2) == LITERAL` for numbers; degrade to
   "🔲 not attempted" on None; `mo.callout` + `show_result(value)`.
+- Check cells must NEVER crash on a plausible wrong answer (a crash pauses the
+  progress cell and hides the ✅). Guard/try-except every coercion: `int()`/
+  `float()` may hit an array/Series/string, not a scalar; use `pd.isna(x)` for a
+  NaN from an empty filter (`nan != nan`, so `== LITERAL` silently fails); use
+  `np.ndim(x)` to catch a still-an-array branch. Simulate the wrong paths in
+  Python before committing (Plan 3, Part II data/NumPy labs).
 - Float safety: expected values must survive `round(_, 2)` exactly; avoid
   `.xx5` boundaries (32.775 → 32.77!). Verify every literal in Python first.
 - Hints: Hint 1 = nudge (no code); Hint 2 = skeleton with `___` blanks — never
@@ -57,12 +63,18 @@
   pandas` raising `ImportError`; a page reload fixed it. Worth a one-line
   "if pandas fails to import, reload the page" note in Session VIII lab
   instructions, not a loader-pattern change.)
+- Pandas-era labs work on a COPY for any derived column (`work = orders.copy()`;
+  then `work["per_item"] = …`) — never mutate the shared `orders` global, or a
+  later cell reading `orders` sees the mutation and reactive re-runs diverge.
 
 ## In-lecture exercises (ex_XX_<letter>.py)
 - **Letter = slide order** (Fable #10): `ex_XX_a` belongs to lecture block 1,
   `_b` to block 2, `_c` to block 3. CP sessions have 2 blocks → letters a–b only.
 - One concept, one screen, 5–10 min, one exercise + one reactive check,
   closing cell: "*Nothing to save — this was a sandbox.*"
+- From `ex_06` onward in-lecture exercises carry hint accordions (Hint 1 = nudge,
+  Hint 2 = `___` skeleton), matching the lab hint ladder — the `ex_01`–`ex_05`
+  family predates this and stays hint-free.
 
 ## Lecture decks (revealjs)
 Regular session skeleton:
@@ -84,6 +96,9 @@ executable on the answer slide. Never annotate a question slide's code with
 spoiler comments — the misconception must survive until the reveal.
 Layout nicety (optional): short symbol lists may pair two items per bullet
 joined by a middle dot ("`<` less than · `>` greater than").
+A predict pair whose reveal is meant to CRASH (e.g. lec_08's `df.summarize()`
+hallucination) must mark that cell `#| error: true` so Quarto captures the
+traceback into the slide — a bare crashing cell aborts the whole render.
 
 ### QR exercise slide (exact form)
     # ⚡ Your turn — 10 minutes {.exercise-slide}
@@ -121,3 +136,19 @@ Add new exercises to `helpers/make_qr.py` EXERCISES and re-run it.
 - Hash literals are per-task salted (`expected_hash(answer, task="cpN.tM")`) so
   equal answers never share a literal.
 - expr keys are task-prefixed and unique (enforced by `load_tasks`).
+- CP5 (the Part-II finale) is deliberately all names-based — no `exprs` probe
+  task — a confidence landing before the project phase; from the AI-allowed era
+  (Session VI+), AI-computed graded VALUES are sanctioned at CP4/CP5 by policy
+  (understanding is still required via fix/apply tasks, not trace tasks).
+
+## Part II additions (Plan 3)
+- Plotting artifacts are UNGRADED: the graded names are the NUMBERS behind a
+  chart, never the figure. Every chart cell opens with `plt.figure()` (first
+  occurrence commented `# fresh figure`) and ends with `plt.gca()` so marimo
+  renders it inline; never call `plt.show()` (no-op in WASM, muddies the cell).
+- WASM spot-check harness: serve exports with a THREADED local server
+  (`ThreadingHTTPServer`) — a single-threaded `python -m http.server` deadlocks
+  pyodide-http's synchronous `fetch`, so pandas labs that load `public/*.csv`
+  hang forever. Pandas-heavy labs also may not auto-run every cell on cold boot;
+  a one-time "Run all" (Cmd/Ctrl+Shift+R) drives them (see the dress-rehearsal
+  spec for the deployed-host follow-up).
