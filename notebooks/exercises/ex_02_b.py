@@ -76,8 +76,8 @@ def _(mo, trace_exb):
 def _(mo):
     mo.md(
         r"""
-    Now write one yourself: the curfew means every delivery minute counts —
-    sum today's three runs in `minutes` with a `for` loop into `minutes_exb`.
+    Now write one yourself: the curfew means every delivery minute counts.
+    Sum today's three runs in `minutes` with a `for` loop into `minutes_exb`.
     """
     )
     return
@@ -115,7 +115,7 @@ def _(minutes_exb, mo, show_result):
 
 @app.cell(hide_code=True)
 def _(mo):
-    mo.md("*Nothing to save — this was a sandbox.*")
+    mo.md("*Nothing to save. This was a sandbox.*")
     return
 
 
