@@ -42,7 +42,7 @@ def _(mo):
     text isn't a number, the checkout **survives** and `price_exb` falls back
     to `0.0` instead of crashing.
 
-    Careful: hardcoding `price_exb = 0.0` defeats the point — your code must
+    Careful: hardcoding `price_exb = 0.0` defeats the point. Your code must
     still work when the text *is* a number.
     """
     )
@@ -81,7 +81,7 @@ def _(mo, price_exb, show_result):
 
 @app.cell(hide_code=True)
 def _(mo):
-    mo.md("*Nothing to save — this was a sandbox.*")
+    mo.md("*Nothing to save. This was a sandbox.*")
     return
 
 
