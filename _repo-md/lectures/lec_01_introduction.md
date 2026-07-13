@@ -16,7 +16,7 @@ format:
 
 - **Field:** Optimizing and simulating complex systems
 - **Languages:** of choice: Julia, Python and Rust
-- **Interest:** Modelling, Simulations, Machine Learning
+- **Interest:** Modeling, Simulations, Machine Learning
 - **Teaching:** OR, Algorithms, and Programming
 - **Contact:** <vlcek@beyondsimulations.com>
 
@@ -42,8 +42,8 @@ Materials live in the KLU portal and are hosted at [beyondsimulations.github.io/
 - <span class="highlight">5 in-class checkpoints</span> × 12 points = 60 points
 - Final project + presentation = 40 points
 - You pass with <span class="highlight">60 points</span> and <span class="highlight">75% attendance</span>
-- No make-ups for missed checkpoints --- but the point math absorbs one miss
-- The project is done in pairs --- solo works if the numbers don't come out even
+- No make-ups for missed checkpoints, but the point math absorbs one miss
+- Your project is done in pairs; solo works if the numbers don't come out even
 
 ## Checkpoints
 
@@ -56,7 +56,7 @@ Materials live in the KLU portal and are hosted at [beyondsimulations.github.io/
 
 > **Tip**
 >
-> The weekly lab exercises rehearse exactly this routine --- do them and the checkpoints will feel familiar.
+> The weekly lab exercises rehearse exactly this routine. Do them, and the checkpoints will feel familiar.
 
 ## How to use AI
 
@@ -64,7 +64,7 @@ Materials live in the KLU portal and are hosted at [beyondsimulations.github.io/
   - <span class="highlight">Level 1: Pause: Use of AI defined by the educator</span>
 - <span class="highlight">Part I (Sessions I--V) is AI-free</span> --- no Claude, ChatGPT, Mistral & Co.
 - Your sanctioned helper is the **course chatbot** on the learning website
-- It gives **hints**, not solutions --- it guides your problem-solving
+- It gives **hints**, not solutions, and guides your problem-solving
 - AI tools are introduced (and then allowed) in <span class="highlight">Part II</span>, from Session VI on
 
 . . .
@@ -85,7 +85,7 @@ Materials live in the KLU portal and are hosted at [beyondsimulations.github.io/
 
 ## No setup needed today
 
-- Everything in Part I runs <span class="highlight">in the browser</span> --- nothing to install
+- Everything in Part I runs <span class="highlight">in the browser</span>: nothing to install
 - The lab notebooks and exercises run on **marimo**: click a link, start coding
 - We set up a local environment together in **Session X** (Python via `uv`, the Zed editor)
 - Until then: a laptop and a browser is all you need
@@ -106,7 +106,7 @@ This semester you are founding a campus food-delivery startup. Today it gets a n
 
 - A **program** is a list of instructions the computer follows
 - It runs **top to bottom**, one line at a time
-- Writing a program *is* writing that list --- in a language the computer understands
+- Writing a program *is* writing that list, in a language the computer understands
 
 . . .
 
@@ -126,7 +126,7 @@ print("Welcome to your food-delivery startup!")
 ## Variables: named values
 
 - A **variable** is a name that points to a value
-- Create one with `=` --- name on the **left**, value on the **right**
+- Create one with `=`: name on the **left**, value on the **right**
 - You don't declare a type; Python figures it out from the value
 
 ``` python
@@ -167,7 +167,7 @@ print(sticker_budget)
 
 ## Four basic types
 
-Every value has a **type** --- it decides what you can do with the value:
+Every value has a **type**, which decides what you can do with the value:
 
 - `str` --- text, in quotes: `"Kevin"`, `"Falafel Wrap"`
 - `int` --- whole numbers: `2026`, `300`
@@ -176,7 +176,7 @@ Every value has a **type** --- it decides what you can do with the value:
 
 ## Checking a type with `type()`
 
-`type()` tells you the type of any value --- priceless when a bug surprises you:
+`type()` tells you the type of any value, and it's priceless when a bug surprises you:
 
 ``` python
 print(type(2026))       # int
@@ -200,11 +200,11 @@ a\) `<class 'float'>` b) `<class 'str'>` c) `<class 'int'>`
 
 . . .
 
-<span class="question">Predict first</span> --- commit to an answer before the next slide.
+<span class="question">Predict first</span>. Commit to an answer before the next slide.
 
 ## Answer: `type("9.99")`
 
-**b) `str`** --- the quotes make it **text**, however numeric it looks. Kevin's "price" can't be multiplied until it is converted to a number.
+**b) `str`** --- the quotes make it text, however numeric it looks. Kevin's "price" can't be multiplied until it is converted to a number.
 
 ``` python
 print(type("9.99"))
@@ -220,7 +220,7 @@ Open the exercise (scan the QR or type the link):
 
 <img src="assets/qr/ex_01_a.png" width="280" />
 
-First **predict** what happens --- then run it.
+First **predict** what happens, then run it.
 
 # <span class="flow">Numbers & Arithmetic</span>
 
@@ -251,8 +251,8 @@ print(300 / 8)       # division — always gives a float
 
 ## `//` and `%`: how many fit, what's left
 
-- `//` **floor division** --- how many whole times something fits
-- `%` **modulo** --- the remainder left over
+- `//` **floor division**: how many whole times something fits
+- `%` **modulo**: the remainder left over
 
 ``` python
 # The 300 EUR budget, boxes at 7 EUR each
@@ -289,11 +289,11 @@ a\) `7200` b) `0` c) `Error`
 
 . . .
 
-<span class="question">Predict first</span> --- then turn the page.
+<span class="question">Predict first</span>, then turn the page.
 
 ## Answer: `300 - 12 * 25`
 
-**b) `0`** --- `12 * 25 = 300` happens **first**, so the budget is wiped out. Reading left to right would give `7200`, but Python follows precedence, not reading order.
+**b) `0`** --- `12 * 25 = 300` happens first, so the budget is wiped out. Reading left to right would give `7200`, but Python follows precedence, not reading order.
 
 ``` python
 print(300 - 12 * 25)
@@ -305,7 +305,7 @@ print(300 - 12 * 25)
 
 - `int` + `int` stays an `int`; `/` **always** produces a `float`
 - Mixing an `int` and a `float` gives a `float`
-- Money is decimals --- so margins are floats
+- Money is decimals, so margins are floats
 
 ``` python
 margin = 9.99 - 4.20
@@ -318,7 +318,7 @@ print(type(margin))
 
 ## `round()`: clean money
 
-Division can leave a long tail of decimals. `round(value, 2)` keeps two --- cents.
+Division can leave a long tail of decimals. `round(value, 2)` keeps two. Cents.
 
 ``` python
 # Split a 10 EUR order three ways
@@ -337,13 +337,13 @@ Open the exercise (scan the QR or type the link):
 
 <img src="assets/qr/ex_01_b.png" width="280" />
 
-First **predict** what happens --- then run it.
+First **predict** what happens, then run it.
 
 # <span class="flow">Strings & f-strings</span>
 
 ## The first receipt line
 
-A string is **text in quotes**. Single or double quotes both work --- just be consistent.
+A string is **text in quotes**. Single or double quotes both work, just be consistent.
 
 ``` python
 item = "Miso Ramen"
@@ -356,7 +356,7 @@ print('Kevin shouts "9.99!"')   # mix quotes to include a quote inside
 
 ## Concatenation, and why it hurts
 
-You can glue strings with `+` --- but numbers must be converted first, and it gets clumsy fast:
+You can glue strings with `+`, but numbers must be converted first, and it gets clumsy fast:
 
 ``` python
 qty = 2
@@ -369,12 +369,12 @@ print(str(qty) + "x " + item + ": " + str(total) + " EUR")
 
 . . .
 
-(`str(...)` turns a value into text --- clumsy, and we're about to see the better way.)
+(`str(...)` turns a value into text, which is clumsy. We're about to see the better way.)
 Forget one `str()` and Python raises a `TypeError`.
 
 ## f-strings: the clean way
 
-Put an `f` before the quote and write values in `{ }` --- Python fills them in:
+Put an `f` before the quote and write values in `{ }`, and Python fills them in:
 
 ``` python
 qty = 2
@@ -391,7 +391,7 @@ No `str()`, no `+` --- just the sentence you want.
 
 ## Formatting money with `:.2f`
 
-Inside the braces, `:.2f` forces **two decimals** --- exactly what a receipt needs:
+Inside the braces, `:.2f` forces **two decimals**, exactly what a receipt needs:
 
 ``` python
 total = 23.00
@@ -404,11 +404,11 @@ print(f"{total:.2f} EUR")      # 23.00 EUR — a proper price
 
 . . .
 
-Python stores `23.00` as the number `23.0` --- only *you* know it's money. `:.2f` says so.
+Python stores `23.00` as the number `23.0`. Only *you* know it's money, and `:.2f` says so.
 
 ## Multi-line receipts with `\n`
 
-`\n` inside a string starts a new line --- one string, several lines:
+`\n` inside a string starts a new line: one string, several lines.
 
 ``` python
 print(f"Falafel Wrap: 6.90 EUR\nPad Thai: 8.90 EUR")
@@ -430,11 +430,11 @@ a\) `6` and `6` b) `6` and `2 * 3` c) `2 * 3` and `2 * 3`
 
 . . .
 
-<span class="question">Predict first</span> --- then reveal.
+<span class="question">Predict first</span>, then reveal.
 
 ## Answer: `f"{2 * 3}"` vs `"2 * 3"`
 
-**b) `6` and `2 * 3`** --- the f-string **evaluates** what's in the braces; plain quotes keep the text literal. The `f` and the `{ }` are what do the work.
+**b) `6` and `2 * 3`** --- the f-string evaluates what's in the braces; plain quotes keep the text literal. The `f` and the `{ }` are what do the work.
 
 ``` python
 print(f"{2 * 3}")
@@ -452,7 +452,7 @@ Open the exercise (scan the QR or type the link):
 
 <img src="assets/qr/ex_01_c.png" width="280" />
 
-First **predict** what happens --- then run it.
+First **predict** what happens, then run it.
 
 # <span class="flow">To the Lab</span>
 
@@ -460,20 +460,20 @@ First **predict** what happens --- then run it.
 
 - Head to the lab notebook: [Episode 1 --- The Founding](../tutorials/tut_01_introduction.qmd)
 - You'll name the company, set prices, and put Kevin's 9.99 theory on trial
-- It runs entirely in your browser --- no setup, just click and code
+- It runs entirely in your browser: no setup, just click and code
 
 . . .
 
 > **Important**
 >
-> **Download your `.py` before you leave.** Closing the tab without downloading loses your work --- and downloading is exactly how you hand in the checkpoints.
+> **Download your `.py` before you leave.** Closing the tab without downloading loses your work, and downloading is exactly how you hand in the checkpoints.
 
 # <span class="flow">Wrap-up</span>
 
 ## Three things to remember
 
 1.  **Variables** name values, and every value has a **type** (`str`, `int`, `float`, `bool`)
-2.  Arithmetic follows **precedence** --- `*` and `/` before `+` and `-`; `round(x, 2)` for money
+2.  Arithmetic follows **precedence**: `*` and `/` before `+` and `-`; `round(x, 2)` for money
 3.  **f-strings** with `{value:.2f}` turn numbers into clean receipt lines
 
 . . .

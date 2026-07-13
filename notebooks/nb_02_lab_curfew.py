@@ -58,7 +58,7 @@ def _(mo):
     mo.vstack(
         [
             mo.md(
-                "Remind me — what's the company called again? Type it once and "
+                "Remind me: what's the company called again? Type it once and "
                 "it sticks for the whole notebook. (New tab, so we ask afresh.)"
             ),
             startup_name_input,
@@ -361,11 +361,11 @@ def _(mo):
         r"""
     ### Exercise 2.3 (core, fix the bug) — Kevin miscounts the big orders
 
-    Kevin wants to count the **big orders** — the ones of **at least 10 EUR** —
+    Kevin wants to count the **big orders**, the ones of **at least 10 EUR**,
     across `[12.50, 10.00, 8.90, 15.20]`. His dashboard says **2**, but he
     counted **3** on his fingers, and this time Kevin is right.
 
-    His loop is below. It runs fine — the logic is just slightly off. Fix the
+    His loop is below. It runs fine. The logic is just slightly off. Fix the
     comparison so `big_orders_ex23` becomes **3**.
     """
     )
@@ -422,7 +422,7 @@ def _(mo):
     **methods** that return a cleaned-up copy:
 
     - `.strip()` removes leading/trailing spaces
-    - `.title()` Capitalises Each Word
+    - `.title()` Capitalizes Each Word
     - `.upper()` / `.lower()` change the case
 
     You can **chain** them: `text.strip().title()`.
@@ -439,7 +439,7 @@ def _(mo):
 
     The menu system received `raw_special = "  PIZZA CALZONE  "` (given below).
     Produce `clean_ex31` that reads exactly `"Pizza Calzone"` — no surrounding
-    spaces, each word Capitalised.
+    spaces, each word Capitalized.
     """
     )
     return
@@ -475,8 +475,8 @@ def _(clean_ex31, mo, show_result):
 def _(mo):
     mo.accordion(
         {
-            "💡 Hint 1 (a nudge)": "Chain two methods: first drop the outer spaces, then fix the capitalisation. The order matters — strip first.",
-            "💡 Hint 2 (the structure)": "clean_ex31 = raw_special.___().___()   — one method removes spaces, the other Capitalises Each Word.",
+            "💡 Hint 1 (a nudge)": "Chain two methods: first drop the outer spaces, then fix the capitalization. The order matters — strip first.",
+            "💡 Hint 2 (the structure)": "clean_ex31 = raw_special.___().___()   — one method removes spaces, the other Capitalizes Each Word.",
         }
     )
     return
@@ -500,8 +500,8 @@ def _(mo):
 
     ::: {.callout-warning}
     A `while` loop only stops if each pass moves it **toward** the goal. Here the
-    price shrinks by 10 % every round, so it is guaranteed to fall below 8.50 —
-    the loop always ends. A `while` whose condition can never become `False`
+    price shrinks by 10 % every round, so it is guaranteed to fall below 8.50.
+    The loop always ends. A `while` whose condition can never become `False`
     would freeze this browser tab, so always check that something changes inside.
     :::
     """
@@ -620,7 +620,7 @@ def _(mo):
     Here is a preview of something Session IV covers properly: a **for-loop in
     one line**, called a *list comprehension*. Build `discounted_ex60`: take
     each price in `[12.50, 10.00, 8.90, 15.20]`, knock **10 %** off, and round
-    to 2 decimals — all in a single list. (Bonus — not required.)
+    to 2 decimals, all in a single list. (Bonus, not required.)
     """
     )
     return
@@ -665,10 +665,10 @@ def _(mo):
         r"""
     ### Bonus — the Haggling Bot (just for fun, ungraded)
 
-    A falafel supplier will sell you chickpeas, but won't name a price — the
+    A falafel supplier will sell you chickpeas, but won't name a price. The
     supplier has a number in mind, and you have to find the exact price they'll
     accept. Drag the slider to make an offer; the bot reacts. There's nothing
-    to submit here — this one is purely for fun.
+    to submit here; this one is purely for fun.
     """
     )
     return
@@ -727,7 +727,7 @@ def _(mo):
     1. Check the progress box above — all seven core exercises green?
     2. **Download your work**: menu → Download → *Download Python code*.
        Reloading this exact tab (Cmd/Ctrl+R) keeps your work, but closing the
-       tab and reopening the link starts you fresh — the download is the only
+       tab and reopening the link starts you fresh. The download is the only
        guaranteed copy.
     3. Next episode: Kevin has pasted the same receipt code **14 times**, and
        one small change now takes him an afternoon. Next week we teach him

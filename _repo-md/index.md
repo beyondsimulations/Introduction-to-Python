@@ -53,15 +53,15 @@ You can find more information on the course blocks and the corresponding lecture
 - Five in-class checkpoints, worth 12 points each (60 points total)
 - One final project with a presentation, worth 40 points
 - You need 60 of 100 points to pass
-- The project is done in pairs (solo works if the numbers don't come out even); each pair submits one GitHub repository
+- Your project is done in pairs (solo works if the numbers don't come out even); each pair submits one GitHub repository
 
 ## AI Policy
 
 The course uses a phased AI policy that mirrors how the skills build on each other:
 
-- **Part I (Sessions I--V): AI-free.** You are building foundations. The course chatbot on this website is the sanctioned helper --- it gives hints, not solutions. Checkpoints 1--3 are taken without AI.
+- **Part I (Sessions I--V): AI-free.** You are building foundations. The course chatbot on this website is the sanctioned helper: it gives hints, not solutions. Checkpoints 1--3 are taken without AI.
 - **Part II (Sessions VI--IX): AI allowed and taught.** We bring AI in deliberately: how to prompt with context and constraints, how to verify its output, and how to notice when it confidently makes things up. Checkpoints 4--5 explicitly allow AI tools.
-- **Part III (Sessions X--XIII): AI encouraged.** Use what makes you productive on your project --- and disclose what you used in your repository's README.
+- **Part III (Sessions X--XIII): AI encouraged.** Use what makes you productive on your project, and disclose what you used in your repository's README.
 
 Whatever the phase: understand every line you submit. See the [AI Tools guide](general/ai-tools.qmd) for free options and setup.
 

@@ -11,7 +11,7 @@ execute:
 
 ## Python Basics
 
-- Python is an **interpreted language** - code is executed line by line
+- Python is an **interpreted language**: code is executed line by line
 - Comments start with `#`
 - Code blocks are defined by indentation
 

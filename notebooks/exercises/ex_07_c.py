@@ -30,8 +30,8 @@ def _(mo):
     # ⚡ Quick exercise: 2D arrays and axis (5–10 min)
 
     A 2D array has rows and columns, and `.sum()` needs to know which one
-    to collapse: `axis=0` collapses DOWN the rows — one number per column.
-    `axis=1` collapses ACROSS the columns — one number per row.
+    to collapse: `axis=0` collapses DOWN the rows (one number per column).
+    `axis=1` collapses ACROSS the columns (one number per row).
 
     **Predict** first: what do the prints below show, then run it.
     """
@@ -64,7 +64,7 @@ def _(mo):
     zone, and which zone is winning.
 
     Compute `zone_totals_exc` (one total per zone) and `best_zone_exc`
-    (the **index** of the best zone — `argmax` tells you WHERE the
+    (the **index** of the best zone: `argmax` tells you WHERE the
     maximum sits).
     """
     )
@@ -138,7 +138,7 @@ def _(mo):
 
 @app.cell(hide_code=True)
 def _(mo):
-    mo.md("*Nothing to save — this was a sandbox.*")
+    mo.md("*Nothing to save. This was a sandbox.*")
     return
 
 

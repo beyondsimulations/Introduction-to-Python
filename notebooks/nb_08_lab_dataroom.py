@@ -40,19 +40,19 @@ def _(mo):
     impressed by a slide; she was impressed by *data*. So she slides a USB stick
     across the table: **every order, two full weeks.** "Impress me."
 
-    That stick is now a file: `public/orders.csv` — one row per order, eighty of
+    That stick is now a file: `public/orders.csv`, one row per order, eighty of
     them. Too many to eyeball, too many for a hand-written loop. This is what
     **pandas** is for: it loads a whole spreadsheet into one object (a
-    *DataFrame*), and answers questions about it — filter, count, total, group —
+    *DataFrame*), and answers questions about it (filter, count, total, group)
     in one honest line each.
 
     Kevin, meanwhile, has **discovered AI**. He now pastes every question into a
     chatbot and ships whatever comes back. Your real job this week isn't writing
-    pandas from scratch — it's **supervising**: reading what the data actually
+    pandas from scratch. It's **supervising**: reading what the data actually
     says and catching the confident nonsense.
 
-    > **If the notebook fails to boot with a network error** — or the very first
-    > cell complains that pandas can't be imported — **reload the page once**
+    > **If the notebook fails to boot with a network error** (or the very first
+    > cell complains that pandas can't be imported), **reload the page once**
     > (Cmd/Ctrl + R). The first load fetches pandas over the network and can
     > flake; a reload almost always fixes it.
     """
@@ -102,7 +102,7 @@ def _(mo):
     mo.vstack(
         [
             mo.md(
-                "Before we open the data room — remind me of the company name? "
+                "Before we open the data room, remind me of the company name? "
                 "Type it once and it sticks for the whole notebook. (New tab, so "
                 "we ask afresh.)"
             ),
@@ -117,7 +117,7 @@ def _(mo, startup_name_input):
     startup_name = startup_name_input.value.strip() or "Nameless Bites GmbH"
     mo.md(
         f"Opening the data room for **{startup_name}**. Eighty orders, two weeks, "
-        "one investor watching. Let's read what the data actually says — and keep "
+        "one investor watching. Let's read what the data actually says, and keep "
         "Kevin's chatbot honest."
     )
     return (startup_name,)
@@ -132,16 +132,16 @@ def _(mo):
         r"""
     ## Section 1 — First look: the DataFrame
 
-    The file is already loaded for you into a **DataFrame** called `orders` — a
+    The file is already loaded for you into a **DataFrame** called `orders`, a
     spreadsheet Python can reason about. Two moves to get your bearings:
 
-    - **`orders.head()`** shows the first five rows — a peek, not the whole thing.
+    - **`orders.head()`** shows the first five rows: a peek, not the whole thing.
     - **`len(orders)`** counts the rows; **`orders.shape`** is `(rows, columns)`,
       so `orders.shape[1]` is the number of columns.
 
     And to reach into one column you name it in square brackets, like a
     dictionary key: `orders["total_eur"]` is the whole euro column, and a column
-    knows how to total itself — `orders["total_eur"].sum()`.
+    knows how to total itself: `orders["total_eur"].sum()`.
 
     Read and run the worked example (it prints the first five orders), then
     answer for real.
@@ -164,7 +164,7 @@ def _(mo):
     ### Exercise 1.1 (core) — how many orders?
 
     The investor's first question is the simplest: **how many orders are on the
-    stick?** Don't scroll and count — ask the DataFrame. Store the row count, as a
+    stick?** Don't scroll and count. Ask the DataFrame. Store the row count, as a
     plain `int`, in `rows_ex11` (use `int(len(orders))`).
     """
     )
@@ -229,7 +229,7 @@ def _(mo):
 
     Every column is a fact the investor might ask about (zone, dish, delivery
     time…). **How many columns** does the file carry? `orders.shape` is a
-    `(rows, columns)` pair, so the second item — `orders.shape[1]` — is the
+    `(rows, columns)` pair, so the second item, `orders.shape[1]`, is the
     column count. Store it, as a plain `int`, in `n_cols_ex12`.
     """
     )
@@ -360,13 +360,13 @@ def _(mo):
     ## Section 2 — Slicing the room
 
     Now the sharper questions: *which* orders, not just how many. A **boolean
-    mask** filters a DataFrame exactly like it filtered a NumPy array last week —
+    mask** filters a DataFrame exactly like it filtered a NumPy array last week:
     `orders[orders["zone"] == "Nord"]` keeps only the rows where the test is
     `True`. From there, `len(...)` counts them and `["total_eur"].sum()` totals
     their revenue.
 
     > One marimo habit for this section: a typo in a column name (or an empty
-    > filter) is a **red error that pauses everything below it** — including the
+    > filter) is a **red error that pauses everything below it**, including the
     > progress box. Nothing is lost; fix the red cell and it all comes back. You
     > will meet exactly this in 2.3, on purpose.
 
@@ -464,7 +464,7 @@ def _(mo):
     The investor gets specific: **Sued orders that were also bulk** — zone is
     `"Sued"` **and** at least 2 items. Two conditions on the same rows.
 
-    In pandas you combine masks with **`&`** (and), **`|`** (or) — and **each
+    In pandas you combine masks with **`&`** (and), **`|`** (or), and **each
     condition needs its own parentheses**, because `&` binds tighter than `==`
     and `>=`. So the shape is always:
 
@@ -472,7 +472,7 @@ def _(mo):
     df[(df["col_a"] == x) & (df["col_b"] >= y)]
     ```
 
-    Miss a pair of parentheses and pandas raises a red error — that's the syntax
+    Miss a pair of parentheses and pandas raises a red error. That's the syntax
     reminding you. Count the Sued-and-bulk orders and store the count, as a plain
     `int`, in `sued_bulk_ex22`.
     """
@@ -518,7 +518,7 @@ def _(mo, pd, show_result, sued_bulk_ex22):
                 _msg = "❌ Exercise 2.2: this should be a whole **number** — count the rows that pass *both* conditions."
             elif _c == 15:
                 ex22_ok = True
-                _msg = "✅ Exercise 2.2: **15** Sued orders with 2+ items. `(zone == \"Sued\") & (items >= 2)` — two masks, each parenthesised, joined with `&`."
+                _msg = "✅ Exercise 2.2: **15** Sued orders with 2+ items. `(zone == \"Sued\") & (items >= 2)` — two masks, each parenthesized, joined with `&`."
             elif _c == 19:
                 ex22_ok = False
                 _msg = "❌ Exercise 2.2: 19 is *all* Sued orders — you dropped the items condition. Add `& (orders[\"items\"] >= 2)`."
@@ -547,10 +547,10 @@ def _(mo):
     ### Exercise 2.3 (core, fix the bug) — Kevin's KeyError
 
     Kevin asked the AI for "Hafen's revenue" and pasted the answer straight into
-    the cell below — it's waiting there as a **comment**. Uncomment his line and
+    the cell below. It's waiting there as a **comment**. Uncomment his line and
     run it, exactly as it is. The cell goes **red**: `KeyError: 'Zone'`.
 
-    That red moment is expected — and recoverable. An erroring cell pauses every
+    That red moment is expected, and recoverable. An erroring cell pauses every
     cell below it (this check, the progress box); nothing is lost, and the
     moment you fix the bug, everything comes back.
 
@@ -628,11 +628,11 @@ def _(mo):
     ## Section 3 — The questions that matter
 
     Counting rows is warm-up. The investor wants **derived** numbers and
-    **per-group** numbers — the two moves that turn a table into an argument.
+    **per-group** numbers: the two moves that turn a table into an argument.
 
     - A **new column** is just column arithmetic: `df["a"] / df["b"]` computes
       row by row. **Professional habit:** when you're adding a column to explore,
-      work on a *copy* — `df.copy()` — so you never quietly mutate the original
+      work on a *copy* (`df.copy()`) so you never quietly mutate the original
       table other cells rely on.
     - **`groupby`** splits the rows by a category and runs one calculation per
       group: `df.groupby("zone")["total_eur"].sum()` gives one total per zone, all
@@ -730,8 +730,8 @@ def _(mo):
 
     The investor wants the **per-zone breakdown**: total revenue for each of the
     four zones, handed over as a **plain dict** (zone → euros, rounded to 2
-    decimals) so it's easy to read. That's exactly what `groupby` is built for —
-    the worked example below shows the whole move on toy data.
+    decimals) so it's easy to read. That's exactly what `groupby` is built for.
+    The worked example below shows the whole move on toy data.
 
     Store the dict in `by_zone_ex32`. (If you end up with a Series instead of a
     dict, the check will nudge you.)
@@ -820,11 +820,11 @@ def _(mo):
     The totals in 3.2 crown one winner. But the investor asks a trickier
     question: **which zone has the highest AVERAGE order value?** A total
     rewards whoever had the *most* orders; the average rewards whoever's orders
-    were *bigger*. They need not be the same zone — let the data decide.
+    were *bigger*. They need not be the same zone. Let the data decide.
 
     Two tools exist for exactly this: **`.mean()`** (in place of `.sum()`)
     averages each group, and **`.idxmax()`** returns the *label* of a Series'
-    largest value — here, a zone name. Store the winning zone's **name** (a
+    largest value, here a zone name. Store the winning zone's **name** (a
     string) in `best_avg_zone_ex40`.
     """
     )
@@ -899,8 +899,8 @@ def _(mo):
         r"""
     ### Exercise (trace — predict first) — the mask vs. the filter
 
-    This is a **trace** exercise: predict first, *then* reveal. It's ungraded —
-    the point is committing. Here are two expressions on the same data:
+    This is a **trace** exercise: predict first, *then* reveal. It's ungraded.
+    The point is committing. Here are two expressions on the same data:
 
     ```python
     orders[orders["items"] == 3].shape     # A
@@ -908,7 +908,7 @@ def _(mo):
     ```
 
     One of them **is the True/False column itself** (a `True`/`False` for every
-    row — the mask). The other **uses** that mask to filter, then reports the
+    row, the mask). The other **uses** that mask to filter, then reports the
     filtered table's `(rows, columns)`. Which expression is the mask?
     """
     )
@@ -958,7 +958,7 @@ def _(mo):
         r"""
     ### Quiz (core, MCQ) — what does `.describe()` show?
 
-    You'll reach for `orders.describe()` constantly — but what does it actually
+    You'll reach for `orders.describe()` constantly, but what does it actually
     return? Assign the letter (as text) to `answer_ex50`:
 
     - **a)** the first five rows
@@ -1042,13 +1042,13 @@ def _(mo):
 
     1. Check the progress box above — all **ten** green? If not, reopen the hints,
        reread the worked examples, and try again. Load, filter, derive a column,
-       group — that's the whole pandas loop, and it's the same loop on 80 rows or
+       group: that's the whole pandas loop, and it's the same loop on 80 rows or
        80 million.
     2. **Download your work**: menu → Download → *Download Python code*.
        Reloading this exact tab (Cmd/Ctrl+R) keeps your work, but closing the tab
-       and reopening the link starts you fresh — the download is the only
+       and reopening the link starts you fresh. The download is the only
        guaranteed copy.
-    3. Next episode: the numbers are honest — now they need to be *seen*. You'll
+    3. Next episode: the numbers are honest. Now they need to be *seen*. You'll
        turn these totals and breakdowns into **charts the investor can't argue
        with**. **Episode 9: the pitch.**
     """

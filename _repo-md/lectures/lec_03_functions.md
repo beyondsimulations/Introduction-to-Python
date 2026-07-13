@@ -14,8 +14,8 @@ format:
 
 The first **40 minutes** are the checkpoint. It starts **now**.
 
-- **Individual work** --- no AI, no neighbours, no chat
-- The **link and QR** are handed out in class --- open it and start
+- **Individual work**: no AI, no neighbors, no chat
+- The **link and QR** are handed out in class. Open it and start
 - ~6 short tasks: write code, trace code, fix a bug, answer a multiple choice
 
 <!-- QR handed out live — never in the deck -->
@@ -28,13 +28,13 @@ The first **40 minutes** are the checkpoint. It starts **now**.
 
 > **Note**
 >
-> The green ✅ live checks are **provisional** --- the final grading runs on our side. And take a breath: everything in it was rehearsed in the labs.
+> The green ✅ live checks are **provisional**. The final grading runs on our side. And take a breath: everything in it was rehearsed in the labs.
 
 # <span class="flow">Episode 3: The Copy-Paste Soup</span>
 
 ## After the board review
 
-Pens down --- the checkpoint is behind you. Now the reason we're all here.
+Pens down. The checkpoint is behind you. Now the reason we're all here.
 
 . . .
 
@@ -48,7 +48,7 @@ Today the code learns to **reuse itself**. We meet the **function**, and build a
 
 ## The copy-paste pain
 
-Kevin totals each receipt line by hand --- the same shape, over and over:
+Kevin totals each receipt line by hand, the same shape, over and over:
 
 ``` python
 print(round(2 * 4.50, 2))    # 2 wraps
@@ -83,7 +83,7 @@ print(line_total(2, 4.50))
 
 ## Parameters vs arguments
 
-- **Parameters** are the names in the definition --- the function's inputs: `qty`, `price`
+- **Parameters** are the names in the definition, the function's inputs: `qty`, `price`
 - **Arguments** are the actual values you pass when you **call** it: `2`, `4.50`
 
 ``` python
@@ -97,7 +97,7 @@ print(line_total(3, 3.20))       # 3 and 3.20 are ARGUMENTS
 
 . . .
 
-Same function, different arguments, different result --- no retyping.
+Same function, different arguments, different result. No retyping.
 
 ## `return`: hand the value back
 
@@ -131,11 +131,11 @@ a\) `8.50 EUR` b) `None` c) `Error`
 
 . . .
 
-<span class="question">Predict first</span> --- commit to an answer before the next slide.
+<span class="question">Predict first</span>. Commit to an answer before the next slide.
 
 ## Answer: `print` shows, `return` hands back
 
-**b) `None`** --- `label_price` prints its line while running, but with **no `return`** it hands back `None`. That `None` is what lands in `result`. Printing is not returning.
+**b) `None`** --- `label_price` prints its line while running, but with no `return` it hands back `None`. That `None` is what lands in `result`. Printing is not returning.
 
 ``` python
 def label_price(price):
@@ -150,7 +150,7 @@ print(result)                # ...but the value handed back is None
 
 ## Default arguments
 
-A parameter can carry a **default** --- used when the caller leaves it out:
+A parameter can carry a **default**, used when the caller leaves it out:
 
 ``` python
 def service_fee(total, rate=0.05):   # rate defaults to 5 %
@@ -165,7 +165,7 @@ print(service_fee(80, 0.10))   # override it → 8.0
 
 . . .
 
-Defaults let one function cover the common case **and** the special case.
+Defaults let one function cover the common case and the special case.
 
 ## Functions can call functions
 
@@ -193,7 +193,7 @@ Open the exercise (scan the QR or type the link):
 
 <img src="assets/qr/ex_03_a.png" width="280" />
 
-First **predict** what happens --- then run it.
+First **predict** what happens, then run it.
 
 # <span class="flow">Scope, then a First Class</span>
 
@@ -213,7 +213,7 @@ print(bump(3))       # 13 — the returned value
 
 . . .
 
-Names created inside a function live in its **scope** --- they vanish when the function ends.
+Names created inside a function live in its **scope**. They vanish when the function ends.
 
 ## Predict: does the global move?
 
@@ -233,7 +233,7 @@ a\) `3` b) `13` c) `Error`
 
 . . .
 
-<span class="question">Predict first</span> --- commit to an answer before the next slide.
+<span class="question">Predict first</span>. Commit to an answer before the next slide.
 
 ## Answer: the outside variable is untouched
 
@@ -253,20 +253,20 @@ print(stock)     # still 3
 
 ## Why that's a feature, not a limit
 
-- A function can't **secretly** change your variables --- no spooky action at a distance
+- A function can't **secretly** change your variables, no spooky action at a distance
 - You can call it a hundred times and trust your data stays put
-- To use a result, you **catch the return** (`stock = bump(stock)`) --- deliberate, visible
+- To use a result, you **catch the return** (`stock = bump(stock)`). Deliberate, visible
 
 . . .
 
 Isolation is what makes functions **safe to reuse**. That is the whole point of this episode.
 
-## A class bundles data with behaviour
+## A class bundles data with behavior
 
 Sometimes data and the things you do with it belong **together**. A **class** is a blueprint that bundles both:
 
-- **data** --- the facts about one thing (a courier's name, their distance)
-- **behaviour** --- what you can compute from it (their fee)
+- **data**: the facts about one thing (a courier's name, their distance)
+- **behavior**: what you can compute from it (their fee)
 
 . . .
 
@@ -287,7 +287,7 @@ class Delivery:
 
 . . .
 
-`__init__` sets up a new object · `self` is *this* object · attributes are stored on `self` and read back through `self` --- `fee()` multiplies **two** stored attributes.
+`__init__` sets up a new object · `self` is *this* object · attributes are stored on `self` and read back through `self`. `fee()` multiplies **two** stored attributes.
 
 ## Build one, call its method
 
@@ -305,19 +305,19 @@ print(trip.fee())             # call the method
 
 . . .
 
-`trip` is one `Delivery` object. `trip.fee()` computes from *its own* stored distance --- data and behaviour, travelling together.
+`trip` is one `Delivery` object. `trip.fee()` computes from *its own* stored distance: data and behavior, traveling together.
 
 ## One honest slide about classes
 
-- Today you write **one small class** with an `__init__` and **one method** --- that's it
-- Classes get **tricky fast** (inheritance, `self` confusion) --- and that is **not this course**
-- We use them only to *bundle* data with behaviour, nothing deeper
+- Today you write **one small class** with an `__init__` and **one method**. That's it
+- Classes get tricky fast (inheritance, `self` confusion), and that is **not this course**
+- We use them only to *bundle* data with behavior, nothing deeper
 
 . . .
 
 > **Tip**
 >
-> If the `self` keyword feels odd right now, that's completely normal. Copy the shape from the worked example --- the intuition follows the practice.
+> If the `self` keyword feels odd right now, that's completely normal. Copy the shape from the worked example. The intuition follows the practice.
 
 # ⚡ Your turn --- 10 minutes
 
@@ -327,35 +327,35 @@ Open the exercise (scan the QR or type the link):
 
 <img src="assets/qr/ex_03_b.png" width="280" />
 
-First **predict** what happens --- then run it.
+First **predict** what happens, then run it.
 
 # <span class="flow">To the Lab</span>
 
 ## Tonight's episode
 
 - Head to the lab notebook: [Episode 3 --- The Copy-Paste Soup](../tutorials/tut_03_functions.qmd)
-- You'll write the fee and tip functions, fix a function that forgets to `return`, give a parameter a default, and build the startup's first `Order` class --- ending in the **Tip Calculator Championship**
-- It runs entirely in your browser --- no setup, just click and code
+- You'll write the fee and tip functions, fix a function that forgets to `return`, give a parameter a default, and build the startup's first `Order` class, ending in the **Tip Calculator Championship**
+- It runs entirely in your browser: no setup, just click and code
 
 . . .
 
 > **Important**
 >
-> **Download your `.py` before you leave.** Closing the tab without downloading loses your work --- and downloading is exactly how you just handed in the checkpoint.
+> **Download your `.py` before you leave.** Closing the tab without downloading loses your work, and downloading is exactly how you just handed in the checkpoint.
 
 # <span class="flow">Wrap-up</span>
 
 ## Three things to remember
 
-1.  A **function** is written once with `def`, takes **parameters**, and hands a value back with `return` --- `print` shows, `return` gives back (no `return` → `None`)
-2.  Names inside a function are **local** --- it can't quietly change your variables, which is exactly what makes it safe to reuse
-3.  A **class** bundles **data** (on `self`, via `__init__`) with **behaviour** (methods) --- you'll write just one small one today
+1.  A **function** is written once with `def`, takes **parameters**, and hands a value back with `return`: `print` shows, `return` gives back (no `return` → `None`)
+2.  Names inside a function are **local**: it can't quietly change your variables, which is exactly what makes it safe to reuse
+3.  A **class** bundles **data** (on `self`, via `__init__`) with **behavior** (methods). You'll write just one small one today
 
 . . .
 
 > **Note**
 >
-> **Next time --- Episode 4:** the menu outgrows Kevin's **seventeen loose variables** --- `price1`, `price2`, `price_final_FINAL2` --- and nobody can find anything. We give the data a **shape**: lists and dictionaries.
+> **Next time --- Episode 4:** the menu outgrows Kevin's **seventeen loose variables** (`price1`, `price2`, `price_final_FINAL2`), and nobody can find anything. We give the data a **shape**: lists and dictionaries.
 
 # <span class="flow">Literature</span>
 

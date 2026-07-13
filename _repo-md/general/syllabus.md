@@ -1,6 +1,6 @@
 ---
 title: Syllabus
-subtitle: This years course structure
+subtitle: This year's course structure
 ---
 
 
@@ -45,13 +45,13 @@ Fast array operations with NumPy
 Pandas for data manipulation and AI
 
 **Plotting Data (IX)**  
-Matplotlib with AI based on hand-on examples
+Matplotlib with AI based on hands-on examples
 
 # Part III
 
 ## Programming Projects
 
-In the third part, students will be assigned mini projects in Python where they can apply their new knowledge in pairs on a project of their choice. Each pair will present their results and get feedback at the end of the semester.
+In the third part, students take on a final project in Python where they apply their new knowledge in pairs on a topic of their choice. Each pair will present their results and get feedback at the end of the semester.
 
 ## Lectures
 

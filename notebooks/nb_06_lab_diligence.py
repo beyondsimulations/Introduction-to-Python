@@ -26,13 +26,13 @@ def _(mo):
 
     Kevin's proposal is to "go on vibes". The investor's expression does not
     change. So this week you stop hand-rolling arithmetic and reach for Python's
-    **standard library** — code that already ships with Python, written and tested
+    **standard library**: code that already ships with Python, written and tested
     by people who are not Kevin. You'll `import math` and `statistics` for
     professional-grade numbers, then use `random` to *rehearse* next week's
-    demand — and learn why a good simulation is one you can run twice and trust.
+    demand, and learn why a good simulation is one you can run twice and trust.
 
     > **New this week: AI is allowed.** From this session on you may use an AI
-    > assistant — see the course's [AI tools
+    > assistant; see the course's [AI tools
     > guide](https://beyondsimulations.github.io/Introduction-to-Python/general/ai-tools.html).
     > One thing does not change: the ✅ checks below only go green on code that
     > actually runs. AI can draft a line for you; you still have to make it work,
@@ -71,7 +71,7 @@ def _(mo):
     mo.vstack(
         [
             mo.md(
-                "Before the investor sits down — remind me what the company's "
+                "Before the investor sits down, remind me what the company's "
                 "called? Type it once and it sticks for the whole notebook. (New "
                 "tab, so we ask afresh.)"
             ),
@@ -85,7 +85,7 @@ def _(mo):
 def _(mo, startup_name_input):
     startup_name = startup_name_input.value.strip() or "Nameless Bites GmbH"
     mo.md(
-        f"Due diligence at **{startup_name}** begins. Clipboard out — let's give "
+        f"Due diligence at **{startup_name}** begins. Clipboard out. Let's give "
         "her numbers she can trust."
     )
     return (startup_name,)
@@ -101,7 +101,7 @@ def _(mo):
     ## Section 1 — Don't build it, import it
 
     A **module** is a bundle of ready-made code that ships with Python. You don't
-    rewrite it — you `import` it and use it. Three ways to bring one in:
+    rewrite it. You `import` it and use it. Three ways to bring one in:
 
     ```python
     import math                      # then call math.ceil(...), math.floor(...)
@@ -111,7 +111,7 @@ def _(mo):
 
     Two `math` tools for counting whole things: **`math.ceil(x)`** rounds *up* to
     the next whole number, **`math.floor(x)`** rounds *down*. And `statistics`
-    gives you `mean` (the average) and `median` (the middle value) for free — no
+    gives you `mean` (the average) and `median` (the middle value) for free: no
     hand-rolled loops, no off-by-one bugs to explain to an investor.
 
     Read and run the worked example, then answer for real.
@@ -137,7 +137,7 @@ def _(mo):
 
     The investor wants to know the reorder. There are **75 delivery bags** to
     stock, and a crate holds **12**. You can only buy *whole* crates, so 6 crates
-    (72 bags) wouldn't be enough — you need to round **up**. Use `math.ceil` to
+    (72 bags) wouldn't be enough. You need to round **up**. Use `math.ceil` to
     store the number of crates in `crates_ex11`.
     """
     )
@@ -194,7 +194,7 @@ def _(mo):
         r"""
     ### Exercise 1.2 (core) — the honest average
 
-    The investor read the reviews and wants the ratings summarised properly.
+    The investor read the reviews and wants the ratings summarized properly.
     Here are the six ratings:
 
     ```python
@@ -207,7 +207,7 @@ def _(mo):
     - `mean_ex12` — the **average** rating (`statistics.mean`).
 
     One thing to notice: this list has an **even** number of ratings, so there's
-    no single middle value — the median is the **mean of the two middle** values
+    no single middle value: the median is the **mean of the two middle** values
     once they're sorted. `statistics.median` handles that for you.
     """
     )
@@ -384,13 +384,13 @@ def _(mo):
     ```
 
     The key idea for due diligence is **`random.seed(n)`**. Random numbers are
-    unpredictable by design — but if you *seed* the generator with a fixed number
+    unpredictable by design, but if you *seed* the generator with a fixed number
     first, you get the **same sequence every time**. That's what makes a
     projection you can hand over: the investor runs it and sees exactly what you
     saw.
 
     One marimo habit for this section: editing a loop is easy to get slightly
-    wrong, and a **red error pauses everything below it** — including the progress
+    wrong, and a **red error pauses everything below it**, including the progress
     box. Nothing is lost; fix the red cell and everything comes back.
 
     Read and run the worked example, then simulate.
@@ -474,7 +474,7 @@ def _(mo):
         r"""
     ### Exercise 2.2 (core, fix the bug) — the photocopy projection
 
-    Kevin also tried to project seven days. His code runs — no red error — but
+    Kevin also tried to project seven days. His code runs (no red error), but
     every single day comes out **identical**. That's not a projection, that's a
     photocopy, and the investor noticed immediately.
 
@@ -488,7 +488,7 @@ def _(mo):
     # kevin_demand → [22, 22, 22, 22, 22, 22, 22]
     ```
 
-    Write a corrected version into `fixed_ex22` — a list of seven demand values
+    Write a corrected version into `fixed_ex22`: a list of seven demand values
     (still `random.seed(9)`, still `random.randint(8, 30)`) that **actually
     vary** from day to day.
     """
@@ -551,7 +551,7 @@ def _(mo):
         r"""
     ### Exercise 2.3 (core) — the flyer raffle
 
-    To pick which neighbourhoods get flyers, you draw zones at random — **with
+    To pick which neighborhoods get flyers, you draw zones at random, **with
     repetition**, because a popular zone can be picked more than once. The zones:
 
     ```python
@@ -631,7 +631,7 @@ def _(mo):
 
     Time to write the line the investor actually asked for: *"On an average day
     next week, how many orders should we expect?"* You'll answer it by combining
-    both modules from today — simulate the week with `random`, then summarise it
+    both modules from today: simulate the week with `random`, then summarize it
     with `statistics`.
 
     Do all of this:
@@ -684,7 +684,7 @@ def _(boss_ex40, mo, show_result):
 def _(mo):
     mo.accordion(
         {
-            "💡 Hint 1 (a nudge)": "Three moves: seed, simulate, summarise. Build a list of five `random.randint(10, 26)` draws (after seeding once), then feed that whole list to `statistics.mean(...)`.",
+            "💡 Hint 1 (a nudge)": "Three moves: seed, simulate, summarize. Build a list of five `random.randint(10, 26)` draws (after seeding once), then feed that whole list to `statistics.mean(...)`.",
             "💡 Hint 2 (the structure)": "random.seed(2)\n_days = [random.randint(10, 26) for _ in range(5)]\nboss_ex40 = statistics.mean(___)   — put the list of days in the blank.",
         }
     )
@@ -701,7 +701,7 @@ def _(mo):
     ### Exercise (trace — predict first) — which way does floor go?
 
     This is a **trace** exercise: predict the answer first, *then* reveal it. It's
-    ungraded — the point is the prediction. Kevin runs:
+    ungraded. The point is the prediction. Kevin runs:
 
     ```python
     import math
@@ -831,13 +831,13 @@ def _(mo):
 
     1. Check the progress box above — all **eight** green? If not, reopen the
        hints, reread the worked examples, and try again. `math`, `statistics` and
-       `random` are tools you'll reach for constantly — and seeding is the habit
+       `random` are tools you'll reach for constantly, and seeding is the habit
        that turns "some random numbers" into "a result someone can verify".
     2. **Download your work**: menu → Download → *Download Python code*.
        Reloading this exact tab (Cmd/Ctrl+R) keeps your work, but closing the tab
-       and reopening the link starts you fresh — the download is the only
+       and reopening the link starts you fresh. The download is the only
        guaranteed copy.
-    3. Next episode: the investor liked the numbers — now she wants a **deck**.
+    3. Next episode: the investor liked the numbers. Now she wants a **deck**.
        You'll turn a week of orders into the metrics that go on a slide: totals,
        per-zone breakdowns, the best day, which zone is strongest. **Episode 7:
        the numbers deck.**

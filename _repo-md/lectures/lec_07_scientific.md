@@ -14,7 +14,7 @@ format:
 
 ## The numbers deck is due
 
-The investor wants a numbers deck by Friday. A **thousand orders** sit in the system --- one row each: minutes, price, zone.
+The investor wants a numbers deck by Friday. A **thousand orders** sit in the system, one row each: minutes, price, zone.
 
 . . .
 
@@ -24,11 +24,11 @@ Kevin's plan is a **40-tab spreadsheet**, one tab per zone, copied by hand. He l
 
 . . .
 
-Today we get the bigger boat: **NumPy** --- one object that holds a thousand numbers and does arithmetic on all of them at once.
+Today we get the bigger boat: **NumPy**, one object that holds a thousand numbers and does arithmetic on all of them at once.
 
 # 🔥 Warm-up
 
-Three questions from Episode 6. Commit --- hands up **before** the reveal.
+Three questions from Episode 6. Commit. Hands up **before** the reveal.
 
 ## Question 1
 
@@ -57,11 +57,11 @@ print(random.randint(1, 20))
 
 Kevin runs this exact script today and again tomorrow. Tomorrow's numbers are...
 
-a\) the same three numbers b) different --- random is random c) an error
+a\) the same three numbers b) different: random is random c) an error
 
 ## Answer 2
 
-**a) the same three numbers** --- every run starts from seed 42, so the stream replays from the top. That is the entire job of a seed: reproducible randomness. (Two batches *inside one run* would differ --- the stream continues; a fresh run rewinds it.)
+**a) the same three numbers** --- every run starts from seed 42, so the stream replays from the top. That is the entire job of a seed: reproducible randomness. (Two batches *inside one run* would differ: the stream continues; a fresh run rewinds it.)
 
 ## Question 3
 
@@ -73,7 +73,7 @@ statistics.median([9, 2, 5])
 
 returns...
 
-a\) `2` b) `5` c) an error --- the list is not sorted
+a\) `2` b) `5` c) an error: the list is not sorted
 
 ## Answer 3
 
@@ -83,7 +83,7 @@ a\) `2` b) `5` c) an error --- the list is not sorted
 
 ## From a list to an array
 
-A **NumPy array** holds many numbers under one name --- like a list, but built for maths. You make one from a list, then ask it about itself:
+A **NumPy array** holds many numbers under one name, like a list, but built for math. You make one from a list, then ask it about itself:
 
 ``` python
 import numpy as np
@@ -102,11 +102,11 @@ print(prices.size)    # how many in total
 
 . . .
 
-`np.array([...])` wraps a list; `import numpy as np` is the nickname everyone uses. `.shape` is `(3,)`, `.dtype` is `float64`, `.size` is `3`. One `dtype` for the **whole** array --- every element shares the same type; that's part of what makes it fast.
+`np.array([...])` wraps a list; `import numpy as np` is the nickname everyone uses. `.shape` is `(3,)`, `.dtype` is `float64`, `.size` is `3`. One `dtype` for the **whole** array: every element shares the same type; that's part of what makes it fast.
 
 ## One operation, every element
 
-Here's the bigger boat. The deck needs **gross** prices --- 19% VAT on all three. With a list you loop; with an array you just multiply:
+Here's the bigger boat. The deck needs **gross** prices: 19% VAT on all three. With a list you loop; with an array you just multiply:
 
 ``` python
 # the painful way — a loop, item by item
@@ -126,11 +126,11 @@ print(prices * 1.19)   # every element, one expression
 
 . . .
 
-One operation lands on **all** elements at once: `[14.28 10.71 17.85]`. No loop, no `.append` --- and on a thousand orders it's also far faster.
+One operation lands on **all** elements at once: `[14.28 10.71 17.85]`. No loop, no `.append`, and on a thousand orders it's also far faster.
 
 ## Arrays from scratch
 
-Two builders make evenly-spaced arrays without typing every number --- handy for axes and ranges:
+Two builders make evenly-spaced arrays without typing every number, handy for axes and ranges:
 
 ``` python
 import numpy as np
@@ -144,7 +144,7 @@ print(np.linspace(0, 1, 5))    # start, stop (included), how many
 
 . . .
 
-`arange` walks by a **step** and stops **before** the end --- just like `range`. `linspace` splits a span into a fixed **count** of points, endpoints included.
+`arange` walks by a **step** and stops **before** the end, just like `range`. `linspace` splits a span into a fixed **count** of points, endpoints included.
 
 ## Predict: times two
 
@@ -158,11 +158,11 @@ a\) `[2, 4, 6]` b) `[1, 2, 3, 1, 2, 3]` c) an error
 
 . . .
 
-<span class="question">Predict first</span> --- commit to an answer before the next slide.
+<span class="question">Predict first</span>. Commit to an answer before the next slide.
 
 ## Answer: lists repeat, arrays compute
 
-**b) `[1, 2, 3, 1, 2, 3]`** --- that's a plain **list**, and `* 2` on a list *repeats* it. Wrap it in an array and the same `* 2` does the maths instead:
+**b) `[1, 2, 3, 1, 2, 3]`** --- that's a plain **list**, and `* 2` on a list *repeats* it. Wrap it in an array and the same `* 2` does the math instead:
 
 ``` python
 import numpy as np
@@ -186,13 +186,13 @@ Open the exercise (scan the QR or type the link):
 
 <img src="assets/qr/ex_07_a.png" width="280" />
 
-First **predict** what happens --- then run it.
+First **predict** what happens, then run it.
 
 # <span class="flow">Asking questions of data</span>
 
 ## A comparison makes a mask
 
-Compare an array to a number and you don't get one `True`/`False` --- you get a **whole array** of them, one per element. That's a **mask**, and you can filter with it:
+Compare an array to a number and you don't get one `True`/`False`. You get a **whole array** of them, one per element. That's a **mask**, and you can filter with it:
 
 ``` python
 import numpy as np
@@ -229,7 +229,7 @@ print(float(late.mean()))           # the SHARE that were late
 
 . . .
 
-`4` deliveries over 30 minutes, averaging `42.5`, and `late.mean()` says **half** the run was late --- one line each, straight into the deck.
+`4` deliveries over 30 minutes, averaging `42.5`, and `late.mean()` says **half** the run was late, one line each, straight into the deck.
 
 ## Predict: counting the Trues
 
@@ -243,7 +243,7 @@ a\) `2` b) `True` c) `[False, True, True]`
 
 . . .
 
-<span class="question">Predict first</span> --- commit to an answer before the next slide.
+<span class="question">Predict first</span>. Commit to an answer before the next slide.
 
 ## Answer: True counts as 1
 
@@ -271,13 +271,13 @@ Open the exercise (scan the QR or type the link):
 
 <img src="assets/qr/ex_07_b.png" width="280" />
 
-First **predict** what happens --- then run it.
+First **predict** what happens, then run it.
 
 # <span class="flow">The days-by-zones grid</span>
 
 ## A grid of numbers
 
-Real data isn't one row. Stack rows and you get a **2D array** --- here three **days** (rows) across four **zones** (columns: Nord, Sued, Hafen, Altstadt):
+Real data isn't one row. Stack rows and you get a **2D array**: here three **days** (rows) across four **zones** (columns: Nord, Sued, Hafen, Altstadt):
 
 ``` python
 import numpy as np
@@ -294,7 +294,7 @@ print(deliveries[0, 2])      # row 0, column 2
 
 . . .
 
-`.shape` is now `(3, 4)`: three days, four zones. One index picks the **row**, a second the **column** --- `deliveries[0, 2]` is day 0, zone 2 (Hafen).
+`.shape` is now `(3, 4)`: three days, four zones. One index picks the **row**, a second the **column**: `deliveries[0, 2]` is day 0, zone 2 (Hafen).
 
 ## Which way to collapse?
 
@@ -327,11 +327,11 @@ print(deliveries.sum(axis=1))   # ACROSS the columns → per day
 
 . . .
 
-**`axis=0` collapses DOWN the rows --- one number per column (zone):** `[37 46 35 26]`. `axis=1` collapses across, one per day: `[40 44 60]`.
+**`axis=0` collapses DOWN the rows, one number per column (zone):** `[37 46 35 26]`. `axis=1` collapses across, one per day: `[40 44 60]`.
 
 ## Where does the max sit?
 
-The per-zone totals answer "how many?" --- but the investor asks "**which** zone?". `argmax` tells you **WHERE** the maximum sits, as an index:
+The per-zone totals answer "how many?", but the investor asks "**which** zone?". `argmax` tells you **WHERE** the maximum sits, as an index:
 
 ``` python
 import numpy as np
@@ -347,11 +347,11 @@ print(int(zone_totals.argmax()))        # index of the biggest
 
 . . .
 
-`max` would give the value `46`; `argmax` gives its **position**, `1` --- the busiest zone is **Sued**, sitting at index 1, not at the front. Position, not value: that's the whole point of `argmax`.
+`max` would give the value `46`; `argmax` gives its **position**, `1`. The busiest zone is **Sued**, sitting at index 1, not at the front. Position, not value: that's the whole point of `argmax`.
 
 ## Predict: which call collapses which way?
 
-The investor wants **four** numbers --- one per zone. Which call?
+The investor wants **four** numbers, one per zone. Which call?
 
 ``` python
 week = np.array([[ 9, 14, 11,  6],
@@ -363,7 +363,7 @@ a\) `week.sum(axis=0)` b) `week.sum(axis=1)` c) `week.sum()`
 
 . . .
 
-<span class="question">Predict first</span> --- commit to an answer before the next slide.
+<span class="question">Predict first</span>. Commit to an answer before the next slide.
 
 ## Answer: collapse the days, keep the zones
 
@@ -382,7 +382,7 @@ print(week.sum(axis=0))
 
 . . .
 
-b\) would give **three** numbers (one per day); c) would give **one** number --- the grand total, `144`.
+b\) would give **three** numbers (one per day); c) would give **one** number: the grand total, `144`.
 
 # ⚡ Your turn --- 10 minutes
 
@@ -392,7 +392,7 @@ Open the exercise (scan the QR or type the link):
 
 <img src="assets/qr/ex_07_c.png" width="280" />
 
-First **predict** what happens --- then run it.
+First **predict** what happens, then run it.
 
 # <span class="flow">To the Lab</span>
 
@@ -400,8 +400,8 @@ First **predict** what happens --- then run it.
 
 - Head to the lab notebook: [Episode 7 --- One Array to Rule a Thousand Orders](../tutorials/tut_07_scientific.qmd)
 - You'll turn the order log into arrays, add VAT to a whole price column at once, mask out the late deliveries to count and average them, and collapse a days-by-zones grid to find the winning zone
-- AI is allowed --- try the chatbot, and keep your one-line disclosure note on the submission
-- It runs entirely in your browser --- no setup, just click and code
+- AI is allowed, so try the chatbot, and keep your one-line disclosure note on the submission
+- It runs entirely in your browser: no setup, just click and code
 
 . . .
 
@@ -413,15 +413,15 @@ First **predict** what happens --- then run it.
 
 ## Three things to remember
 
-1.  **One array, one operation.** `np.array([...])` holds many numbers; arithmetic hits **every element at once** --- no loop. Ask it `.shape`, `.dtype`, `.size` to know what you're holding.
-2.  **A comparison makes a mask.** `arr > 30` is a True/False array --- `arr[mask]` filters, `.sum()` counts the Trues, `.mean()` gives their share.
+1.  **One array, one operation.** `np.array([...])` holds many numbers; arithmetic hits **every element at once**. No loop. Ask it `.shape`, `.dtype`, `.size` to know what you're holding.
+2.  **A comparison makes a mask.** `arr > 30` is a True/False array: `arr[mask]` filters, `.sum()` counts the Trues, `.mean()` gives their share.
 3.  **In 2D, pick an axis.** `axis=0` collapses **DOWN the rows** (one number per column), `axis=1` **across the columns** (one per row); `argmax` tells you **where** the maximum sits.
 
 . . .
 
 > **Note**
 >
-> **Next episode: the investor opens a data room --- and Kevin lets an AI write his pandas.** The arrays get column names, and a thousand orders become a table you can query.
+> **Next episode: the investor opens a data room, and Kevin lets an AI write his pandas.** The arrays get column names, and a thousand orders become a table you can query.
 
 # <span class="flow">Literature</span>
 
@@ -434,7 +434,7 @@ First **predict** what happens --- then run it.
 
 > **Note**
 >
-> NumPy has excellent free docs --- the [NumPy absolute beginner's guide](https://numpy.org/doc/stable/user/absolute_beginners.html) covers everything in this session and a little more.
+> NumPy has excellent free docs: the [NumPy absolute beginner's guide](https://numpy.org/doc/stable/user/absolute_beginners.html) covers everything in this session and a little more.
 
 . . .
 

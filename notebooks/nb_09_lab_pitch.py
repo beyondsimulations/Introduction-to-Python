@@ -50,10 +50,10 @@ def _(mo):
 
     > **"Bring me charts I can't argue with."**
 
-    A chart you *can* argue with is worse than no chart — it's the thing that
+    A chart you *can* argue with is worse than no chart: it's the thing that
     sinks a pitch. So this week is two skills at once: draw the right chart for
     the question, and refuse to draw a dishonest one. Same eighty orders, same
-    `orders` DataFrame — now with a picture attached.
+    `orders` DataFrame, now with a picture attached.
 
     Kevin, naturally, has already "built the deck". His growth slide looks
     *incredible*. Your job, again, is to **supervise**: some of his charts are
@@ -68,13 +68,13 @@ def _(mo):
       expression is what marimo shows. Never `plt.show()`; in the browser it
       just does nothing.
 
-    > **If the notebook fails to boot with a network error** — or the first cell
-    > that imports `pandas` or `matplotlib` complains it can't be imported —
+    > **If the notebook fails to boot with a network error** (or the first cell
+    > that imports `pandas` or `matplotlib` complains it can't be imported),
     > **reload the page once** (Cmd/Ctrl + R). The first load fetches those
     > libraries over the network and can flake; a reload almost always fixes it.
 
-    > One more marimo habit worth naming: a typo in a column name — or a chart
-    > that errors — turns the cell **red and pauses everything below it**,
+    > One more marimo habit worth naming: a typo in a column name (or a chart
+    > that errors) turns the cell **red and pauses everything below it**,
     > including the progress box. Nothing is lost. Fix the red cell and it all
     > comes back.
     """
@@ -132,7 +132,7 @@ def _(mo):
     ## Section 1 — The first chart
 
     The pitch opens with momentum: **revenue, day by day.** You already know how
-    to get one number per group — that was `groupby` last week. Here the group is
+    to get one number per group: that was `groupby` last week. Here the group is
     the **day**, so the given cell below hands you a `daily` Series: one revenue
     total for each of the fourteen days.
 
@@ -171,7 +171,7 @@ def _(mo):
 
     Plot `daily` as a line chart in the cell below (that's the picture — it isn't
     graded). Then read it for the investor: **which day brought in the most
-    revenue?** Don't eyeball the chart — ask the Series. `daily.idxmax()` returns
+    revenue?** Don't eyeball the chart. Ask the Series. `daily.idxmax()` returns
     the *label* of its largest value (here, a day number). Store that day, as a
     plain `int`, in `best_day_ex11`.
     """
@@ -246,7 +246,7 @@ def _(mo):
         r"""
     ### Exercise 1.2 (core) — chart anatomy
 
-    A line with no labels is a Rorschach test — the investor shouldn't have to
+    A line with no labels is a Rorschach test: the investor shouldn't have to
     guess what the axes mean. Go back to your chart above (or copy it into the
     cell below) and give it the three parts every honest chart carries:
 
@@ -255,7 +255,7 @@ def _(mo):
     - `plt.title("Daily revenue")` — what the whole picture is about.
 
     That's aesthetics, and it isn't graded. The graded question is a fact about
-    the axis you just labelled: **how many days** does the chart span? `daily` has
+    the axis you just labeled: **how many days** does the chart span? `daily` has
     one entry per day, so `len(daily)` counts them. Store it, as a plain `int`, in
     `days_ex12`.
     """
@@ -353,11 +353,11 @@ def _(mo):
         r"""
     ### Exercise 2.1 (core) — revenue by zone, as a picture
 
-    You computed this exact breakdown in the data room last week — total revenue
+    You computed this exact breakdown in the data room last week: total revenue
     per zone. Now it becomes a **picture**. First rebuild the numbers: group by
     `zone`, sum `total_eur`, round to 2 decimals, and hand it over as a **plain
     dict** (zone → euros) in `by_zone_ex21`. Then plot those four totals as a bar
-    chart (ungraded — the check reads the dict, not the bars).
+    chart (ungraded: the check reads the dict, not the bars).
 
     (If you end up with a Series instead of a dict, the check will nudge you.)
     """
@@ -438,15 +438,15 @@ def _(mo):
     ### Exercise 2.2 (core) — the expensive tail, counted
 
     Now a *distribution* question: how are order values spread out? A histogram
-    answers it — `plt.hist(orders["total_eur"])` drops every order into a euro
+    answers it: `plt.hist(orders["total_eur"])` drops every order into a euro
     bucket so you see the shape. Plot it (ungraded), then look: most orders cluster
     low, with a thinning tail of pricey ones on the right.
 
-    The investor wants that tail *quantified*. Count the orders above **25 €** — the
-    genuinely expensive ones — and store the count, as a plain `int`, in
+    The investor wants that tail *quantified*. Count the orders above **25 €** (the
+    genuinely expensive ones) and store the count, as a plain `int`, in
     `over_25_ex22`.
 
-    > Why 25 and not 20? More than half the orders already sit above 20 € — calling
+    > Why 25 and not 20? More than half the orders already sit above 20 €. Calling
     > *half your data* a "tail" would misread the histogram. 25 € is where the
     > expensive stuff actually starts.
     """
@@ -525,14 +525,14 @@ def _(mo):
     ### Exercise 2.3 (core) — does slower mean bigger?
 
     Kevin has a theory: "big orders take longer, obviously." A **scatter** plot is
-    how you check a claim like that — two numbers per order, one on each axis:
+    how you check a claim like that. Two numbers per order, one on each axis:
     `plt.scatter(orders["delivery_min"], orders["total_eur"])`. Plot it (ungraded)
     and actually *look*.
 
-    You'll see… nothing. No upward drift, no line — just a cloud. Delivery time and
+    You'll see… nothing. No upward drift, no line, just a cloud. Delivery time and
     order value have essentially **no relationship** (the correlation is about
     −0.03, which is a fancy way of saying *zero*). That's a real finding, and the
-    honest chart says so. Sometimes the answer is "there's no pattern here" — and
+    honest chart says so. Sometimes the answer is "there's no pattern here", and
     you never describe a trend that isn't on the screen.
 
     So drop Kevin's theory and report the fact the investor actually asked for:
@@ -612,7 +612,7 @@ def _(mo):
     and the eye believes the shape long before it reads the numbers.
 
     Kevin built the pitch's "growth slide" this way. The given cells below compute
-    the two weekly totals — one honest number each — and Kevin's chart plots them.
+    the two weekly totals (one honest number each) and Kevin's chart plots them.
     His chart *runs*; that's exactly why it's dangerous.
     """
     )
@@ -652,7 +652,7 @@ def _(mo):
         r"""
     ### Exercise 3.1 (core, fix the chart) — the truth about the trend
 
-    Look at Kevin's chart. Week 2 drops to the floor — it reads like the startup
+    Look at Kevin's chart. Week 2 drops to the floor. It reads like the startup
     is **falling off a cliff**, revenue collapsing week to week. An investor
     seeing that panics. But check the y-axis: it runs from **782 to 789**. The
     *entire* chart is a five-euro sliver, magnified until a rounding-error wobble
@@ -661,8 +661,8 @@ def _(mo):
     Two jobs.
 
     **First, the honest chart (ungraded):** re-plot the same `week1` and `week2`,
-    but let the y-axis start at 0 — `plt.ylim(0, 900)`. Watch the cliff flatten
-    into what it really is: a nearly flat line — two points at almost the same
+    but let the y-axis start at 0: `plt.ylim(0, 900)`. Watch the cliff flatten
+    into what it really is: a nearly flat line, two points at almost the same
     height.
 
     **Then, the honest number (graded):** compute the real week-over-week change as
@@ -745,12 +745,12 @@ def _(mo):
     ## 🏆 Boss exercise (core) — assemble the pitch
 
     One slide, three numbers, no typos. The investor wants a single **summary
-    dict** she can read in five seconds — `pitch_ex40` — with exactly these three
+    dict** she can read in five seconds (`pitch_ex40`) with exactly these three
     keys, every value **computed from `orders`**, never hand-typed:
 
     - `"revenue"` — total revenue across all orders (sum of `total_eur`, rounded to
       2 decimals, a `float`).
-    - `"best_zone"` — the zone with the highest **total** revenue (a string — you
+    - `"best_zone"` — the zone with the highest **total** revenue (a string: you
       already have every zone's total from 2.1; which one is largest?).
     - `"orders"` — how many orders there are (an `int`).
 
@@ -852,7 +852,7 @@ def _(mo):
         r"""
     ### Exercise (trace — predict first) — why `plt.gca()`?
 
-    This is a **trace** exercise: predict first, *then* reveal. It's ungraded — the
+    This is a **trace** exercise: predict first, *then* reveal. It's ungraded. The
     point is committing. Here are two chart cells that differ only in the **last
     line**:
 
@@ -996,9 +996,9 @@ def _(mo):
 
     1. Check the progress box above — all **eight** green? If not, reopen the
        hints, reread the worked examples, and try again. Right chart for the
-       question, honest axis, numbers you can defend — that's the whole job.
+       question, honest axis, numbers you can defend: that's the whole job.
     2. **Download your work**: menu → Download → *Download Python code*. This one
-       is more than a backup — it's the **appendix of your pitch**, the file that
+       is more than a backup: it's the **appendix of your pitch**, the file that
        proves every chart came from the real data. Reloading this tab (Cmd/Ctrl+R)
        keeps your work; closing it and reopening the link starts you fresh, so the
        download is the only guaranteed copy.
@@ -1015,9 +1015,9 @@ def _(mo):
     - **Zed** (with its AI assistant) — the editor you'll actually write code in.
       Follow [the AI-tools guide](https://beyondsimulations.github.io/Introduction-to-Python/general/ai-tools.html).
 
-    Do this in advance — Session X *builds on* a working toolchain, it doesn't wait
+    Do this in advance: Session X *builds on* a working toolchain — it doesn't wait
     for one. Budget about 15 minutes; if the install fights you, bring it to office
-    hours before Session X — don't burn an evening on it.
+    hours before Session X. Don't burn an evening on it.
 
     **Season finale next:** git, real files on your own disk, and the project
     kickoff. See you there. 🎬

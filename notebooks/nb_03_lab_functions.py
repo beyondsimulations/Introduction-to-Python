@@ -19,14 +19,14 @@ def _(mo):
 
     Kevin has been "reusing" code the only way he knows how: he pasted the same
     receipt block **14 times**, once per menu item. Yesterday the wrap price
-    changed by ten cents, and fixing it took him a whole afternoon — he had to
+    changed by ten cents, and fixing it took him a whole afternoon. He had to
     hunt down all fourteen copies, and he *still* missed three of them.
 
     Today you give him the thing that ends copy-paste soup forever: the
-    **function** — a named block of code you write once and call anywhere. You'll
+    **function**, a named block of code you write once and call anywhere. You'll
     write functions with **parameters** and **return values**, learn why a
     function can't quietly reach out and change your variables (**scope**), give a
-    parameter a **default**, and bundle data with behaviour in a first **class**.
+    parameter a **default**, and bundle data with behavior in a first **class**.
     It ends in the **Tip Calculator Championship**.
     """
     )
@@ -62,7 +62,7 @@ def _(mo):
     mo.vstack(
         [
             mo.md(
-                "Remind me — what's the company called again? Type it once and "
+                "Remind me: what's the company called again? Type it once and "
                 "it sticks for the whole notebook. (New tab, so we ask afresh.)"
             ),
             startup_name_input,
@@ -74,7 +74,7 @@ def _(mo):
 @app.cell(hide_code=True)
 def _(mo, startup_name_input):
     startup_name = startup_name_input.value.strip() or "Nameless Bites GmbH"
-    mo.md(f"Kitchen open again at **{startup_name}**. Now — about all that pasting…")
+    mo.md(f"Kitchen open again at **{startup_name}**. Now, about all that pasting…")
     return (startup_name,)
 
 
@@ -95,10 +95,10 @@ def _(mo):
         return grams * 2         # `return` hands the answer back to the caller
     ```
 
-    Call it by name and it does the work every time — no pasting:
+    Call it by name and it does the work every time, no pasting:
     `double_portion(150)` gives `300`.
 
-    **`return` vs `print` — this trips everyone up once.** `print` *shows* a
+    **`return` vs `print`** trips everyone up once. `print` *shows* a
     value on screen; `return` *hands it back* so you can store and use it. A
     function with no `return` hands back `None`. Read and run the worked example
     below and watch the difference.
@@ -137,7 +137,7 @@ def _(mo):
     - total **15 up to 30 EUR** (15 counts, 30 does not) → fee **1.50**
     - total **30 EUR or more** → fee **0**
 
-    Same logic as before — but written *once*, callable *everywhere*.
+    Same logic as before, but written *once*, callable *everywhere*.
     """
     )
     return
@@ -198,7 +198,7 @@ def _(mo):
     ### Exercise 1.2 (core) — the tip function
 
     Customers can add a tip as a **percentage** of the total. Write
-    `tip_ex12(total, percent)` — **two parameters** this time — that returns the
+    `tip_ex12(total, percent)` (**two parameters** this time) that returns the
     tip amount: `percent` percent of `total`, rounded to 2 decimals.
 
     For example, a 10 % tip on a 20 EUR order is 2.00 EUR.
@@ -266,8 +266,8 @@ def _(mo):
     ## Section 2 — Scope and defaults
 
     A parameter is the function's **own private copy** of its input. Changing it
-    inside the function does **not** reach back out and change your variable —
-    that separation is called **scope**, and it's what makes functions safe to
+    inside the function does **not** reach back out and change your variable.
+    That separation is called **scope**, and it's what makes functions safe to
     reuse.
 
     A parameter can also carry a **default value**, used when the caller leaves
@@ -367,7 +367,7 @@ def _(mo):
     ### Exercise 2.2 (core, fix the bug) — the receipt total goes missing
 
     Kevin wrote `receipt_total_ex22(prices)` to add up a receipt. It runs
-    without any error, and the total even appears on screen when he calls it —
+    without any error, and the total even appears on screen when he calls it,
     but every order total downstream comes out as **`None`**, and the app can't
     do anything with a `None`.
 
@@ -504,7 +504,7 @@ def _(mo):
 def _(mo):
     mo.md(
         r"""
-    ## Section 3 — Bundling data and behaviour: a class
+    ## Section 3 — Bundling data and behavior: a class
 
     A **class** is a blueprint that bundles some **data** with the **things you
     can do** with it. `__init__` runs when you build one and stores the data on
@@ -522,7 +522,7 @@ def _(mo):
 
     Build one and call its method: `Courier("Amir").greeting()` → `"Hi, I'm Amir!"`.
     Read and run the worked example, then write your own class. (In the example
-    cell it's spelled `_Courier` — real class names don't start with `_`; the
+    cell it's spelled `_Courier`. Real class names don't start with `_`; the
     underscore just keeps this scratch example private to its cell.)
     """
     )
@@ -531,7 +531,7 @@ def _(mo):
 
 @app.cell
 def _():
-    # Worked example (read + run this) — a class bundles data with behaviour
+    # Worked example (read + run this) — a class bundles data with behavior
     class _Courier:
         def __init__(self, name):
             self.name = name
@@ -552,7 +552,7 @@ def _(mo):
 
     Give the startup a proper `Order`. The `__init__` is written for you: it
     stores `item`, `qty` and `price` on the order. Your job is the `total()`
-    **method** — it should return what this order costs: `qty` portions at
+    **method**. It should return what this order costs: `qty` portions at
     `price` each, rounded to 2 decimals.
 
     A 2× Wrap order at 6.90 each should total **13.80**.
@@ -591,7 +591,7 @@ def _(Order, mo, show_result):
             _preview = ""
         elif isinstance(_t, (int, float)) and round(_t, 2) == 13.80:
             ex31_ok = True
-            _msg = "✅ Exercise 3.1: 13.80 — the order knows its own total. Data and behaviour, bundled."
+            _msg = "✅ Exercise 3.1: 13.80 — the order knows its own total. Data and behavior, bundled."
             _preview = show_result(_t)
         elif isinstance(_t, (int, float)) and round(_t, 2) == 6.90:
             ex31_ok = False
@@ -636,10 +636,10 @@ def _(mo):
     Every order bills the customer its **item total plus its delivery fee**. You
     already have both tools: `Order` computes the item total, and `fee_ex11`
     computes the delivery fee **from that total**. Build the three orders, and
-    add up — for each one — its `total()` **plus** its `fee_ex11(total())`. Store
+    for each one add up its `total()` **plus** its `fee_ex11(total())`. Store
     the grand total in `day_total_ex40`.
 
-    Both `Order` and `fee_ex11` from earlier are in scope here — reuse them, don't
+    Both `Order` and `fee_ex11` from earlier are in scope here. Reuse them, don't
     rewrite them. (That's the whole point of this episode.)
     """
     )
@@ -754,10 +754,10 @@ def _(mo):
         r"""
     ### 🏆 Bonus — the Tip Calculator Championship (not required)
 
-    Your `tip_ex12` works on tidy inputs — but the whole class is entering their
+    Your `tip_ex12` works on tidy inputs, but the whole class is entering their
     tip functions into a **Championship**: whose survives the weirdest receipts?
-    The judges throw a battery of nasty inputs at each one — a **0** order, a
-    **negative −5** refund, and a **100000** whale order — and crown the function
+    The judges throw a battery of nasty inputs at each one: a **0** order, a
+    **negative −5** refund, and a **100000** whale order, then crown the function
     that never breaks. Winner gets bragging rights and Kevin's parking spot.
 
     Write `tip_safe_ex60(total, percent)`: return **0.0** when `total` is zero or
@@ -785,7 +785,7 @@ def _(mo, show_result, tip_safe_ex60):
         _normal = tip_safe_ex60(20, 10)
     except Exception:
         ex60_ok = False
-        _msg = "❌ Championship: a weird receipt knocked it out — the function crashed. Guard the total before you do the maths."
+        _msg = "❌ Championship: a weird receipt knocked it out — the function crashed. Guard the total before you do the math."
         _preview = ""
     else:
         if _zero is None:
@@ -855,10 +855,10 @@ def _(mo):
        ones you fought for are the ones that stick.
     2. **Download your work**: menu → Download → *Download Python code*.
        Reloading this exact tab (Cmd/Ctrl+R) keeps your work, but closing the
-       tab and reopening the link starts you fresh — the download is the only
+       tab and reopening the link starts you fresh. The download is the only
        guaranteed copy.
-    3. Next episode: the menu outgrows Kevin's seventeen loose variables —
-       `price1`, `price2`, `price_final_FINAL2` — and nobody can find anything.
+    3. Next episode: the menu outgrows Kevin's seventeen loose variables
+       (`price1`, `price2`, `price_final_FINAL2`) and nobody can find anything.
        Next week we give the data a **shape**: lists and dictionaries.
     """
     )

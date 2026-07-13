@@ -12,31 +12,31 @@ format:
 
 # 📋 Checkpoint 4 --- Sessions VI--VII
 
-The first **40 minutes** are the checkpoint. It starts **now** --- before the investor opens her data room.
+The first **40 minutes** are the checkpoint. It starts **now**, before the investor opens her data room.
 
-- **Individual work** --- no neighbours, no chat
-- **AI tools are allowed** --- being able to **VERIFY** the output is the skill being graded
-- The **link and QR** are handed out in class --- open it and start
+- **Individual work**: no neighbors, no chat
+- **AI tools are allowed**: being able to **VERIFY** the output is the skill being graded
+- The **link and QR** are handed out in class. Open it and start
 - ~6 short tasks: write code, trace code, fix a bug, answer a multiple choice
-- It sweeps **Sessions VI--VII** --- modules, `random` and seeds, NumPy arrays and masks
+- It sweeps **Sessions VI--VII**: modules, `random` and seeds, NumPy arrays and masks
 
 <!-- QR handed out live — never in the deck -->
 
 . . .
 
-**When you're done:** menu → *Download* → *Download Python code* → upload the `.py` to the **"Checkpoint 4"** assignment on Moodle. **No retakes** --- one sitting.
+**When you're done:** menu → *Download* → *Download Python code* → upload the `.py` to the **"Checkpoint 4"** assignment on Moodle. **No retakes**: one sitting.
 
 . . .
 
 > **Note**
 >
-> The green ✅ live checks are **provisional** --- the final grading runs on our side. And take a breath: everything in it was rehearsed in the labs.
+> The green ✅ live checks are **provisional**. The final grading runs on our side. And take a breath: everything in it was rehearsed in the labs.
 
 # <span class="flow">Episode 8: The Data Room</span>
 
 ## Show me the data
 
-Pens down --- the checkpoint is behind you. This morning the rival chain **MunchCorp** put out a press release bragging about their **"data-driven growth."** The evidence attached: exactly **one pie chart.** The investor slid it across the table and said, *"Yours will be better. Show me the data."*
+Pens down. The checkpoint is behind you. This morning the rival chain **MunchCorp** put out a press release bragging about their **"data-driven growth."** The evidence attached: exactly **one pie chart.** The investor slid it across the table and said, *"Yours will be better. Show me the data."*
 
 . . .
 
@@ -46,7 +46,7 @@ Kevin didn't wait. He'd pasted the question into a chatbot, proudly turned the l
 
 . . .
 
-The AI sounded certain. The method it called **does not exist.** Today is about that difference --- and about the tool that answers the investor for real: **pandas.**
+The AI sounded certain. The method it called **does not exist.** Today is about that difference, and about the tool that answers the investor for real: **pandas.**
 
 # <span class="flow">AI joins the team --- professionally</span>
 
@@ -61,19 +61,19 @@ An AI is only as good as what you tell it. Two things turn a vague request into 
 
 > *"I have a pandas DataFrame `orders` with a text column `zone` and a float column `total_eur`. Write one line that returns the total `total_eur` for rows where `zone` is `Nord`."*
 
-Vague in, vague out. Specific in, checkable out --- and then you **iterate**.
+Vague in, vague out. Specific in, checkable out, and then you **iterate**.
 
 ## The verify workflow
 
 Kevin's mistake wasn't *using* AI. It was **shipping without checking.** Every line an AI hands you gets three passes:
 
-1.  **Read it** --- do you understand what each line claims to do?
-2.  **Run it** --- does it actually execute, or does it crash?
-3.  **Test it** --- try it on a small case where **you already know the answer.**
+1.  **Read it**: do you understand what each line claims to do?
+2.  **Run it**: does it actually execute, or does it crash?
+3.  **Test it**: try it on a small case where **you already know the answer.**
 
 . . .
 
-Step 3 in action --- five orders with values you can add in your head, and the AI's suggested line for the Nord average:
+Step 3 in action. Five orders with values you can add in your head, and the AI's suggested line for the Nord average:
 
 ``` python
 import pandas as pd
@@ -89,7 +89,7 @@ print(check[check["zone"] == "Nord"]["total_eur"].mean())
 
 . . .
 
-The Nord orders are 10, 20 and 30 --- you can average those in your head. Does the AI's answer match? Then the line has earned some trust on eight hundred rows. Verification is the job now --- not typing.
+The Nord orders are 10, 20 and 30. You can average those in your head. Does the AI's answer match? Then the line has earned some trust on eight hundred rows. Verification is the job now, not typing.
 
 ## Predict: does `.summarize()` exist?
 
@@ -106,7 +106,7 @@ a\) prints a summary table b) raises an `AttributeError` c) returns an empty Dat
 
 . . .
 
-<span class="question">Predict first</span> --- commit to an answer before the next slide.
+<span class="question">Predict first</span>. Commit to an answer before the next slide.
 
 ## Answer: the method never existed
 
@@ -121,7 +121,7 @@ orders.summarize()                     # the method the AI invented
 
 <pre><span class="ansi-red-fg">---------------------------------------------------------------------------</span>
 <span class="ansi-red-fg">AttributeError</span>                            Traceback (most recent call last)
-<span class="ansi-green-fg">/var/folders/_5/jkkjxxdd5f1955l380dky7n80000gn/T/ipykernel_92941/1876211805.py</span> in <span class="ansi-cyan-fg">?</span><span class="ansi-blue-fg">()</span>
+<span class="ansi-green-fg">/var/folders/_5/jkkjxxdd5f1955l380dky7n80000gn/T/ipykernel_94212/1876211805.py</span> in <span class="ansi-cyan-fg">?</span><span class="ansi-blue-fg">()</span>
 <span class="ansi-green-fg">      1</span> <span style="font-weight:bold;color:rgb(0,135,0)">import</span> pandas <span style="font-weight:bold;color:rgb(0,135,0)">as</span> pd
 <span class="ansi-green-fg">      2</span> orders = pd.DataFrame({<span class="ansi-yellow-fg">"zone"</span>: [<span class="ansi-yellow-fg">"Nord"</span>, <span class="ansi-yellow-fg">"Sued"</span>], <span class="ansi-yellow-fg">"total_eur"</span>: [<span class="ansi-green-fg">12.0</span>, <span class="ansi-green-fg">9.5</span>]})
 <span class="ansi-green-fg">      3</span> 
@@ -163,7 +163,7 @@ print(orders.describe())               # the method that actually exists
 From Session VI the course rule stands: every submission that used AI carries a **one-line note** saying what you used it for.
 
 - *"Used the chatbot to draft the `groupby` line; I checked the totals by hand."*
-- Not a confession --- a professional reflex.
+- Not a confession. A professional reflex.
 
 . . .
 
@@ -173,14 +173,14 @@ It protects **you**: it separates the work you understand from the work you past
 
 Sometimes the fastest path is the one you already own. You built a whole muscle in Part I:
 
-- A red traceback? **You've read those since Episode 5.** The last line names the error and points at the file --- often faster than describing it to a chatbot.
+- A red traceback? **You've read those since Episode 5.** The last line names the error and points at the file, often faster than describing it to a chatbot.
 - A one-line filter you've written ten times? Just write it.
 
 . . .
 
 > **Tip**
 >
-> Use AI to draft the unfamiliar and to explain the confusing --- not to dodge the thinking you're perfectly able to do. The pilot flies; the co-pilot advises.
+> Use AI to draft the unfamiliar and to explain the confusing, not to dodge the thinking you're perfectly able to do. The pilot flies; the co-pilot advises.
 
 # ⚡ Your turn --- 10 minutes
 
@@ -190,16 +190,16 @@ Open the exercise (scan the QR or type the link):
 
 <img src="assets/qr/ex_08_a.png" width="280" />
 
-First **predict** what happens --- then run it.
+First **predict** what happens, then run it.
 
 # <span class="flow">The DataFrame</span>
 
 ## What pandas adds over NumPy
 
-Last session, a NumPy array turned a thousand numbers into one fast object --- but every value had to share **one type**, and columns had no names.
+Last session, a NumPy array turned a thousand numbers into one fast object, but every value had to share **one type**, and columns had no names.
 
 - A **DataFrame** is a table: **named columns**, and each column can be a **different type**
-- Text zones next to float euros next to integer counts --- all in one object
+- Text zones next to float euros next to integer counts, all in one object
 - It's the spreadsheet the investor handed you, loaded into Python
 
 . . .
@@ -231,17 +231,17 @@ print(df)
 
 . . .
 
-Five orders, four columns, mixed types --- text, integers, floats --- living happily together.
+Five orders, four columns, mixed types (text, integers, floats) living happily together.
 
 . . .
 
 > **Note**
 >
-> You won't type the investor's eighty orders by hand --- in tonight's lab a real CSV loads in one line, `orders = pd.read_csv("public/orders.csv")`. In the browser notebook that same line fetches the file over the web instead of from disk --- pandas doesn't care, your code doesn't change.
+> You won't type the investor's eighty orders by hand. In tonight's lab a real CSV loads in one line, `orders = pd.read_csv("public/orders.csv")`. In the browser notebook that same line fetches the file over the web instead of from disk; pandas doesn't care, your code doesn't change.
 
 ## First look: `.head()` and `.info()`
 
-Before analysing a table, glance at it. `.head()` shows the top rows; `.info()` reports columns, types, and counts:
+Before analyzing a table, glance at it. `.head()` shows the top rows; `.info()` reports columns, types, and counts:
 
 ``` python
 print(df.head(3))     # first 3 rows
@@ -290,11 +290,11 @@ print(df.describe())
 
 . . .
 
-One call, the whole numeric summary --- this is the `.summarize()` the AI wished existed, spelled correctly.
+One call, the whole numeric summary: this is the `.summarize()` the AI wished existed, spelled correctly.
 
 ## Selecting a column, filtering rows
 
-Pick one column by name; keep rows with a **boolean mask** --- exactly the NumPy idea from last session:
+Pick one column by name; keep rows with a **boolean mask**, exactly the NumPy idea from last session:
 
 ``` python
 print(df["zone"])                  # one column (a Series)
@@ -336,11 +336,11 @@ print(priced.sort_values("total_eur", ascending=False))
 
 . . .
 
-`sort_values` reorders rows by a column --- biggest orders first here. The new column is just arithmetic on two others, computed for every row at once.
+`sort_values` reorders rows by a column, biggest orders first here. The new column is just arithmetic on two others, computed for every row at once.
 
 ## Predict: filtering with the wrong case
 
-Kevin filters for the Nord zone --- but types it **lowercase**. The data spells it `"Nord"`. What does this print?
+Kevin filters for the Nord zone, but types it **lowercase**. The data spells it `"Nord"`. What does this print?
 
 ``` python
 print(df[df["zone"] == "nord"])
@@ -350,7 +350,7 @@ a\) the Nord rows anyway b) an empty table, no error c) a `KeyError`
 
 . . .
 
-<span class="question">Predict first</span> --- commit to an answer before the next slide.
+<span class="question">Predict first</span>. Commit to an answer before the next slide.
 
 ## Answer: an empty table, no warning
 
@@ -368,11 +368,11 @@ print("rows:", len(df[df["zone"] == "nord"]))
 
 . . .
 
-This is the dangerous kind of bug: it **runs**, it just returns nothing. **pandas won't warn you; YOU verify** --- which is exactly why you test filters on a case whose answer you know.
+This is the dangerous kind of bug: it **runs**, it just returns nothing. **pandas won't warn you; YOU verify**, which is exactly why you test filters on a case whose answer you know.
 
 ## One more tool: `groupby`
 
-The investor's real question isn't about one row --- it's **per zone**: which area brings in the most?
+The investor's real question isn't about one row. It's **per zone**: which area brings in the most?
 
 - `groupby` splits the table by a category, then computes **once per group**
 - `df.groupby("zone")["total_eur"].sum()` → one total for each zone
@@ -381,7 +381,7 @@ The investor's real question isn't about one row --- it's **per zone**: which ar
 
 > **Note**
 >
-> That's the teaser --- tonight's lab does the heavy lifting with `groupby`, turning eighty raw orders into the handful of numbers the investor actually asked for.
+> That's the teaser: tonight's lab does the heavy lifting with `groupby`, turning eighty raw orders into the handful of numbers the investor actually asked for.
 
 # ⚡ Your turn --- 10 minutes
 
@@ -391,23 +391,23 @@ Open the exercise (scan the QR or type the link):
 
 <img src="assets/qr/ex_08_b.png" width="280" />
 
-First **predict** what happens --- then run it.
+First **predict** what happens, then run it.
 
 # <span class="flow">To the Lab</span>
 
 ## Tonight's episode
 
 - Head to the lab notebook: [Episode 8 --- The Data Room](../tutorials/tut_08_pandas.qmd)
-- The investor slides a **USB stick** across the table --- every order, two full weeks. It's now `orders.csv`, eighty rows, loaded with one `pd.read_csv` line
+- The investor slides a **USB stick** across the table: every order, two full weeks. It's now `orders.csv`, eighty rows, loaded with one `pd.read_csv` line
 - You'll `.head()`, `.info()` and `.describe()` it, filter with masks, add a column on a safe copy, and answer per-zone questions with `groupby`
-- Kevin has discovered AI --- your real job is to **supervise** it and catch the confident nonsense
-- It runs entirely in your browser --- no setup, just click and code
+- Kevin has discovered AI; your real job is to **supervise** it and catch the confident nonsense
+- It runs entirely in your browser: no setup, just click and code
 
 . . .
 
 > **Important**
 >
-> **Download your `.py` before you leave.** Closing the tab without downloading loses your work --- the same motion you used to hand in the checkpoint this morning.
+> **Download your `.py` before you leave.** Closing the tab without downloading loses your work, the same motion you used to hand in the checkpoint this morning.
 
 # <span class="flow">Wrap-up</span>
 
@@ -415,13 +415,13 @@ First **predict** what happens --- then run it.
 
 1.  **AI is a co-pilot you verify.** Give it **context and constraints**, then **read it → run it → test it** on a case you know. An AI that sounds sure is not the same as an API that exists.
 2.  **A DataFrame is a named, mixed-type table.** `pd.DataFrame` from a dict, `pd.read_csv` from a file; `.head()`, `.info()`, `.describe()` to look before you leap.
-3.  **Select, filter, add, group.** `df["col"]`, a boolean mask (`df[df["zone"] == "Nord"]` --- case-sensitive!), a new column on a `.copy()`, and `groupby` for per-category answers. pandas won't warn you --- you verify.
+3.  **Select, filter, add, group.** `df["col"]`, a boolean mask (`df[df["zone"] == "Nord"]`, case-sensitive!), a new column on a `.copy()`, and `groupby` for per-category answers. pandas won't warn you; you verify.
 
 . . .
 
 > **Note**
 >
-> **Next episode: charts the investor can't argue with.** Numbers convince the careful; a good plot convinces the room --- we turn the data room into pictures.
+> **Next episode: charts the investor can't argue with.** Numbers convince the careful; a good plot convinces the room. We turn the data room into pictures.
 
 # <span class="flow">Literature</span>
 
@@ -434,7 +434,7 @@ First **predict** what happens --- then run it.
 
 > **Note**
 >
-> Working with AI this session? Revisit the [AI Tools page](../general/ai-tools.qmd) --- context-and-constraints prompting, the verify workflow, and the one-line disclosure habit. For pandas itself, the official [10 minutes to pandas](https://pandas.pydata.org/docs/user_guide/10min.html) guide is the friendliest next step.
+> Working with AI this session? Revisit the [AI Tools page](../general/ai-tools.qmd): context-and-constraints prompting, the verify workflow, and the one-line disclosure habit. For pandas itself, the official [10 minutes to pandas](https://pandas.pydata.org/docs/user_guide/10min.html) guide is the friendliest next step.
 
 . . .
 

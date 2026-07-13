@@ -29,9 +29,9 @@ def _(mo):
         r"""
     # ⚡ Quick exercise: filter + count (pandas) (5–10 min)
 
-    Filtering a DataFrame with a boolean mask works exactly like NumPy —
+    Filtering a DataFrame with a boolean mask works exactly like NumPy:
     `df[df["col"] >= value]` keeps only the matching rows. Same mask
-    idea as NumPy — pandas speaks it too.
+    idea as NumPy, pandas speaks it too.
 
     **Predict** first: what does the cell below print, then run it.
     """
@@ -156,7 +156,7 @@ def _(mo):
 
 @app.cell(hide_code=True)
 def _(mo):
-    mo.md("*Nothing to save — this was a sandbox.*")
+    mo.md("*Nothing to save. This was a sandbox.*")
     return
 
 

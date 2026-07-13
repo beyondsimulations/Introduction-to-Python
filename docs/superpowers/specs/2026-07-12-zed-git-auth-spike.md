@@ -188,6 +188,12 @@ business-student audience with no prior dev-tooling experience than the
 
 ## Verify-live-before-semester list
 
+> **Status (2026-07-13):** deferred by decision at the end of the Plan-5 copy
+> pass — to be run as a dedicated live session on the instructor's machine
+> closer to semester start, when Zed/gh UI wording is least likely to drift
+> again before the course runs. None of the items below has been verified live
+> yet.
+
 These items either came from secondary sources (community wiki/GitHub
 discussion summaries rather than primary docs text I read myself), or are
 time-sensitive UI details that could drift before the course runs. Re-check

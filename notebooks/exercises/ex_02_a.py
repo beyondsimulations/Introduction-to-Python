@@ -29,7 +29,7 @@ def _(mo):
         r"""
     # ⚡ Quick exercise: the delivery fee (5 min)
 
-    The city allows delivery again — but the startup now charges a delivery
+    The city allows delivery again, but the startup now charges a delivery
     fee that depends on the order size:
 
     | `order_total` | fee |
@@ -77,7 +77,7 @@ def _(fee_exa, mo, show_result):
 
 @app.cell(hide_code=True)
 def _(mo):
-    mo.md("*Nothing to save — this was a sandbox.*")
+    mo.md("*Nothing to save. This was a sandbox.*")
     return
 
 

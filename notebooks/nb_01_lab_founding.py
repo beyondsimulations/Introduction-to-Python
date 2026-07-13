@@ -56,7 +56,7 @@ def _(mo):
     mo.vstack(
         [
             mo.md(
-                "First order of business — the name. Type it once and it "
+                "First order of business: the name. Type it once and it "
                 "sticks for the whole notebook."
             ),
             startup_name_input,
@@ -81,7 +81,7 @@ def _(mo):
         r"""
     ## Section 1 — Variables & types
 
-    A **variable** is a labelled box you put a value in. The value has a
+    A **variable** is a labeled box you put a value in. The value has a
     **type**: text is a `str` (`"Pad Thai"`), whole numbers are `int` (`3`),
     and decimals are `float` (`8.90`). Python figures out the type from the
     value you assign. Read and run the worked example, then do the exercises.
@@ -455,7 +455,7 @@ def _(mo):
     Falafel Wrap     4.60
     ```
 
-    (The prices are `26.70` and `4.60`. Bonus — not required.)
+    (The prices are `26.70` and `4.60`. Bonus, not required.)
     """
     )
     return
@@ -506,7 +506,7 @@ def _(mo):
 
     Word arrives that **MunchCorp**, the soulless mega-competitor, just
     launched "the same app but worse". Time to put your day-one numbers on
-    the table — and this is where the whole session comes together.
+    the table. This is where the whole session comes together.
 
     Write `day_one_summary_ex40`: **one f-string** that mentions your startup
     name and drops in your **earlier results** — `revenue_ex12` (the day-one
@@ -521,7 +521,7 @@ def _(mo):
     The grader only checks the numbers, so your wording (and name) can be
     anything.
 
-    *Solve 1.2 and 2.2 first — this line uses those results.*
+    *Solve 1.2 and 2.2 first; this line uses those results.*
     """
     )
     return
@@ -614,7 +614,7 @@ def _(mo):
 
     MunchCorp lists your dish at **8.50**. To undercut them you want to be
     **10% cheaper**. Compute that price into `price_war_ex60`.
-    (Bonus — not required.)
+    (Bonus, not required.)
     """
     )
     return
@@ -668,7 +668,7 @@ def _(mo):
     1. Check the progress box above — all seven core exercises green?
     2. **Download your work**: menu → Download → *Download Python code*.
        Reloading this exact tab (Cmd/Ctrl+R) keeps your work, but closing the
-       tab and reopening the link starts you fresh — the download is the only
+       tab and reopening the link starts you fresh. The download is the only
        guaranteed copy.
     3. Next episode: the city bans deliveries after 22:00, and Kevin wants to
        build a haggling bot. You'll need `if` and loops.

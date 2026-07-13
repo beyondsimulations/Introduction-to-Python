@@ -16,9 +16,9 @@ def _(mo):
         r"""
     # ⚡ Quick exercise: the founding form (5 min)
 
-    Kevin filled in the company register form — as Python variables. One line
-    has the wrong **value** and two have the wrong **type**. **First predict
-    which, then fix all three.**
+    Kevin filled in the company register form, as Python variables. One line
+    has the wrong **value** and two have the wrong **type**. First **predict**
+    which, then fix all three.
     """
     )
     return
@@ -50,7 +50,7 @@ def _(mo, first_employee, founded_year, share_capital):
 
 @app.cell(hide_code=True)
 def _(mo):
-    mo.md("*Nothing to save — this was a sandbox.*")
+    mo.md("*Nothing to save. This was a sandbox.*")
     return
 
 

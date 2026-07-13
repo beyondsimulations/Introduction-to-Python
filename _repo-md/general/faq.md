@@ -28,15 +28,15 @@ If you have found a mistake in the course material or if you have any suggestion
 
 ### Can I upload my downloaded `.py` back into the browser?
 
-No --- this is a one-way door. The browser editor cannot open an uploaded file. Your download is for three things: submitting checkpoints, keeping a safety copy, and working locally in Part III of the course. If you want to keep working in the browser, reloading the page is fine --- but treat the downloaded file as your real safety net (see the next question).
+No. This is a one-way door. The browser editor cannot open an uploaded file. Your download is for three things: submitting checkpoints, keeping a safety copy, and working locally in Part III of the course. If you want to keep working in the browser, reloading the page is fine, but treat the downloaded file as your real safety net (see the next question).
 
 ### Where is my notebook work saved?
 
-Your progress lives in the browser tab: reloading the page keeps it, but closing the tab and opening the course link again later starts you from a clean notebook --- there is no cross-device sync in the browser, and clearing browser data or private mode also wipes it. The only guaranteed copy is menu → *Download* → *Download Python code*. Make that download a habit at the end of every session.
+Your progress lives in the browser tab: reloading the page keeps it, but closing the tab and opening the course link again later starts you from a clean notebook. There is no cross-device sync in the browser, and clearing browser data or private mode also wipes it. The only guaranteed copy is menu → *Download* → *Download Python code*. Make that download a habit at the end of every session.
 
 ### How are checkpoints graded?
 
-The green ✅ checks inside a checkpoint are provisional --- they tell you you're on track. Final grading re-runs your submitted `.py` against a reference test suite on our side. Upload your download to the matching Moodle assignment before the deadline; Moodle's clock decides what is on time.
+The green ✅ checks inside a checkpoint are provisional: they tell you you're on track. Final grading re-runs your submitted `.py` against a reference test suite on our side. Upload your download to the matching Moodle assignment before the deadline; Moodle's clock decides what is on time.
 
 ### How does the chatbot work?
 

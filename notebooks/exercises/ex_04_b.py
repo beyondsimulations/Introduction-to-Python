@@ -30,7 +30,7 @@ def _(mo):
     # ⚡ Quick exercise: the menu update (5 min)
 
     Winter menu day. Start from a **copy** of `menu` (never edit the
-    original — Kevin still needs it for the archive), call it `menu_exb`,
+    original: Kevin still needs it for the archive), call it `menu_exb`,
     then: raise `"Pad Thai"` to `9.20`, and add a new dish, `"Miso Ramen"`,
     at `11.50`. Do it all in the answer cell below.
     """
@@ -86,7 +86,7 @@ def _(menu, menu_exb, mo, show_result):
 
 @app.cell(hide_code=True)
 def _(mo):
-    mo.md("*Nothing to save — this was a sandbox.*")
+    mo.md("*Nothing to save. This was a sandbox.*")
     return
 
 

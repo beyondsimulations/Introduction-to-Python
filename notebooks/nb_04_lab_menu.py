@@ -19,8 +19,8 @@ def _(mo):
     **Estimated time: 45–60 min · Core exercises: 9 (+ 1 trace, 2 bonus)**
 
     The menu has outgrown Kevin. Last week he was tracking prices in seventeen
-    loose variables — `price1`, `price2`, `price_final`, and the notorious
-    `price_final_FINAL2` — and nobody, Kevin included, could remember which was
+    loose variables (`price1`, `price2`, `price_final`, and the notorious
+    `price_final_FINAL2`) and nobody, Kevin included, could remember which was
     which. When a supplier raised the falafel price, he changed the wrong one and
     the till undercharged all afternoon.
 
@@ -28,7 +28,7 @@ def _(mo):
     sliceable), map dish names to prices in a **dictionary** (look one up
     instantly), count unique regulars with a **set**, reach into **nested**
     dictionaries, and rewrite the whole menu in a single **comprehension**. It
-    ends with a courier run across campus — Kevin's forgotten wrap has to reach
+    ends with a courier run across campus. Kevin's forgotten wrap has to reach
     the dorms before it achieves sentience.
     """
     )
@@ -64,7 +64,7 @@ def _(mo):
     mo.vstack(
         [
             mo.md(
-                "Remind me — what's the company called again? Type it once and "
+                "Remind me: what's the company called again? Type it once and "
                 "it sticks for the whole notebook. (New tab, so we ask afresh.)"
             ),
             startup_name_input,
@@ -77,7 +77,7 @@ def _(mo):
 def _(mo, startup_name_input):
     startup_name = startup_name_input.value.strip() or "Nameless Bites GmbH"
     mo.md(
-        f"Back in business at **{startup_name}** — now let's get that menu under "
+        f"Back in business at **{startup_name}**. Now let's get that menu under "
         "control."
     )
     return (startup_name,)
@@ -134,7 +134,7 @@ def _(mo):
     ### Exercise 1.1 (core) — join the queue
 
     Four orders are already waiting in the kitchen queue (given below). A late
-    order for a **Falafel Wrap** just came in — it goes to the **end** of the
+    order for a **Falafel Wrap** just came in. It goes to the **end** of the
     line. Build `queue_ex11`: the same four orders, with `"Falafel Wrap"` added
     as the last item.
     """
@@ -247,7 +247,7 @@ def _(mo):
     ## Section 2 — Look it up: dictionaries and sets
 
     A **dictionary** maps a **key** to a **value**. Instead of counting positions,
-    you look a value up by its key — instantly:
+    you look a value up by its key, instantly:
 
     ```python
     prices = {"cola": 2.50, "water": 1.00}   # key: value, comma-separated
@@ -257,7 +257,7 @@ def _(mo):
     ```
 
     A **set** is a bag of values with **no duplicates**. Wrapping a list in
-    `set(...)` throws the repeats away — handy for counting *unique* things:
+    `set(...)` throws the repeats away, handy for counting *unique* things:
 
     ```python
     seen = ["cola", "water", "cola"]
@@ -356,7 +356,7 @@ def _(mo):
     - **raises Pad Thai** to `9.20`, and
     - **adds** a new dish, `"Miso Ramen"`, at `11.50`.
 
-    Leave the original `menu_ex21` untouched — make a **copy** first, then change
+    Leave the original `menu_ex21` untouched. Make a **copy** first, then change
     the copy. (Copy a dict with `dict(other)`.)
     """
     )
@@ -496,7 +496,7 @@ def _(mo):
         r"""
     ## Section 3 — Deeper: nesting, comprehensions, and `.get()`
 
-    Values in a dictionary can themselves be dictionaries — that's **nesting**.
+    Values in a dictionary can themselves be dictionaries. That's **nesting**.
     You reach inside with a second set of brackets:
 
     ```python
@@ -514,10 +514,10 @@ def _(mo):
     ```
 
     And when a key might be **missing**, `menu["Sushi"]` raises a `KeyError` and
-    stops everything — but `menu.get("Sushi")` quietly hands back `None` instead.
+    stops everything, but `menu.get("Sushi")` quietly hands back `None` instead.
 
     One marimo habit to know: if a cell shows a **red error**, every cell that
-    depends on it — including the progress box — pauses until you fix it. Nothing
+    depends on it, including the progress box, pauses until you fix it. Nothing
     is lost; fix the red cell and everything comes back.
 
     Read and run the worked example, then use all three.
@@ -676,7 +676,7 @@ def _(mo):
         r"""
     ### Exercise 3.3 (core, fix the bug) — the price comes back empty
 
-    Kevin wired up the price lookup, and it *looks* fine — no error, no red text.
+    Kevin wired up the price lookup, and it *looks* fine: no error, no red text.
     But every time an order for Pad Thai comes through, the price on the receipt
     **comes back empty** and the customer gets charged nothing.
 
@@ -731,7 +731,7 @@ def _(mo, pad_price_ex33, show_result):
 def _(mo):
     mo.accordion(
         {
-            "💡 Hint 1 (a nudge)": "Dictionary keys are exact: capitalisation and spaces all matter. Look at how Pad Thai is written as a key back in Exercise 2.2, then match it here.",
+            "💡 Hint 1 (a nudge)": "Dictionary keys are exact: capitalization and spaces all matter. Look at how Pad Thai is written as a key back in Exercise 2.2, then match it here.",
             "💡 Hint 2 (the structure)": "pad_price_ex33 = menu_ex22.get(\"___\")   — put the dish's key, spelled exactly as it appears in the menu, in the blank.",
         }
     )
@@ -754,7 +754,7 @@ def _(mo):
     You'll **walk the map**: start at a position, and for each step follow the
     direction to the next place. The trick is that the *next* position becomes the
     place you look up on the following step. Here's the pattern on a tiny
-    two-stop map — read and run it:
+    two-stop map. Read and run it:
     """
     )
     return
@@ -917,7 +917,7 @@ def _(mo):
         r"""
     ### 🧾 Bonus — count the day's portions (not required)
 
-    The day's orders arrived as one text log — each line is a dish, a semicolon,
+    The day's orders arrived as one text log. Each line is a dish, a semicolon,
     and how many portions:
 
     ```
@@ -931,7 +931,7 @@ def _(mo):
     every line and store the total in `portions_ex60`.
 
     *(Why a string and not a file? In the browser, notebooks can't just `open()` a
-    file — so day-to-day data rides along as text like this. You'll load real
+    file, so day-to-day data rides along as text like this. You'll load real
     files later in the course, with pandas.)*
     """
     )
@@ -1077,9 +1077,9 @@ def _(mo):
        and sets are the containers you'll reach for in every program from here on.
     2. **Download your work**: menu → Download → *Download Python code*.
        Reloading this exact tab (Cmd/Ctrl+R) keeps your work, but closing the tab
-       and reopening the link starts you fresh — the download is the only
+       and reopening the link starts you fresh. The download is the only
        guaranteed copy.
-    3. Next episode: with real data flowing in, things start going *wrong* — a
+    3. Next episode: with real data flowing in, things start going *wrong*: a
        customer types "free" into the price box, an order has zero items, the till
        divides by nobody. Kevin rewrites the checkout at 3 AM. What could possibly
        go wrong? Next week: **errors** — catching them before they catch you.

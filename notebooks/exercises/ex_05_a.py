@@ -29,7 +29,7 @@ def _(mo):
         r"""
     # ⚡ Quick exercise: which error? (5 min)
 
-    The checkout crashed live during the lunch rush — Kevin swears he only
+    The checkout crashed live during the lunch rush. Kevin swears he only
     changed "one tiny thing". Here's the crashing line:
 
     ```python
@@ -115,7 +115,7 @@ def _(mo, qty_exa, show_result):
 
 @app.cell(hide_code=True)
 def _(mo):
-    mo.md("*Nothing to save — this was a sandbox.*")
+    mo.md("*Nothing to save. This was a sandbox.*")
     return
 
 

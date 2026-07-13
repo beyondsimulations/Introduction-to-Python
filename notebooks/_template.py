@@ -153,7 +153,7 @@ def _(mo):
     1. Check the progress box above — all green?
     2. **Download your work**: menu → Download → Python. Reloading this exact
        tab (Cmd/Ctrl+R) keeps your work, but closing the tab and reopening the
-       link starts you fresh — the download is the only guaranteed copy.
+       link starts you fresh. The download is the only guaranteed copy.
     3. Next episode: TODO teaser sentence.
     """
     )

@@ -6,7 +6,7 @@
 # names (_exNN); underscore-prefixed names are cell-private; never a possible
 # infinite loop. Kevin's bugs are logic/runtime only, always terminating.
 # This is the ERRORS lab: students cause exceptions on purpose, so the marimo
-# "red cell pauses everything below" behaviour is taught early as a feature.
+# "red cell pauses everything below" behavior is taught early as a feature.
 import marimo
 
 app = marimo.App(width="medium")
@@ -28,7 +28,7 @@ def _(mo):
     So today you learn to work *with* things going wrong. You'll read a
     **traceback** (Python's crash report), catch failures with **try/except**,
     let your own code **refuse** bad input with **raise**, guard invariants with
-    **assert**, and debug Kevin's 3-AM checkout line by line — before the
+    **assert**, and debug Kevin's 3-AM checkout line by line, before the
     inspector finds the bodies.
     """
     )
@@ -64,7 +64,7 @@ def _(mo):
     mo.vstack(
         [
             mo.md(
-                "Remind me — what's the company called again? Type it once and "
+                "Remind me: what's the company called again? Type it once and "
                 "it sticks for the whole notebook. (New tab, so we ask afresh.)"
             ),
             startup_name_input,
@@ -77,7 +77,7 @@ def _(mo):
 def _(mo, startup_name_input):
     startup_name = startup_name_input.value.strip() or "Nameless Bites GmbH"
     mo.md(
-        f"Back at **{startup_name}** — mop in one hand, debugger in the other. "
+        f"Back at **{startup_name}**, mop in one hand, debugger in the other. "
         "Let's clean up the checkout."
     )
     return (startup_name,)
@@ -92,7 +92,7 @@ def _(mo):
         r"""
     ## Section 1 — Reading the crash: tracebacks and `try` / `except`
 
-    When Python hits something it can't do, it stops and prints a **traceback** —
+    When Python hits something it can't do, it stops and prints a **traceback**,
     a crash report. It looks scary, but it's read from the **bottom up**: the
     **last line** names *what* went wrong, and the lines above show *where*.
 
@@ -103,7 +103,7 @@ def _(mo):
     KeyError: 'Wrap'
     ```
 
-    Read the last line first: **`KeyError: 'Wrap'`** — a key that isn't in the
+    Read the last line first: **`KeyError: 'Wrap'`**, a key that isn't in the
     dictionary. A few you'll meet constantly:
 
     - **`KeyError`** — a dictionary key that doesn't exist
@@ -121,8 +121,8 @@ def _(mo):
         n = 0                # ...and we land here instead of crashing
     ```
 
-    **One marimo habit — important today.** In this lab you will cause errors
-    **on purpose**. When a cell goes **red**, every cell below it pauses —
+    **One marimo habit, important today.** In this lab you will cause errors
+    **on purpose**. When a cell goes **red**, every cell below it pauses,
     including the progress box at the end. Nothing is lost. Read the error, fix
     the red cell, and everything below springs back to life. **That loop — crash,
     read, fix, recover — is what debugging *is*.**
@@ -211,7 +211,7 @@ def _(mo):
 
     Customers type prices into a box, and some of them type `"drei"` instead of
     `3`. Right now that crashes the whole checkout. Write `safe_price_ex12(text)`
-    that returns `float(text)` when it can — but if the text isn't a number,
+    that returns `float(text)` when it can, but if the text isn't a number,
     catch the **`ValueError`** and return `0.0` instead of crashing.
     """
     )
@@ -282,7 +282,7 @@ def _(mo):
     ## Section 2 — The inspector's rule: fixing bugs and `raise`
 
     The health inspector has one non-negotiable rule for the till: **every order
-    must have a price of at least 0** — no negative prices, ever. (Kevin once
+    must have a price of at least 0**, no negative prices, ever. (Kevin once
     "refunded" a salad by typing `-8.30`, and the books never recovered.)
 
     Sometimes *your own* code should refuse bad input on the spot. The **`raise`**
@@ -296,7 +296,7 @@ def _(mo):
         return True
     ```
 
-    Calling `check_age(-5)` raises `ValueError` — exactly like Python's own
+    Calling `check_age(-5)` raises `ValueError`, exactly like Python's own
     crashes, but on *your* terms. Read and run the worked example, then face
     Kevin's checkout.
     """
@@ -326,8 +326,8 @@ def _(mo):
     ### Exercise 2.1 (core, fix the bug) — the 3-AM receipt
 
     Here is Kevin's checkout, exactly as he left it at 3 AM. The order is **two
-    Founders Bowls at 12.50** each, plus **one side salad at 8.30** — the customer
-    owes **33.30**. This cell *runs* — no red error — but it's wrong **twice
+    Founders Bowls at 12.50** each, plus **one side salad at 8.30**. The customer
+    owes **33.30**. This cell *runs* (no red error), but it's wrong **twice
     over**: the number it stores is too small, and the receipt it prints shows a
     *different* too-small number.
 
@@ -393,7 +393,7 @@ def _(mo):
       sand), and
     - otherwise **returns `True`**.
 
-    This is your own code *refusing* bad input — a negative price never makes it
+    This is your own code *refusing* bad input: a negative price never makes it
     into the books again.
     """
     )
@@ -581,7 +581,7 @@ def _(mo):
     ### Exercise 3.1 (core) — how many wraps?
 
     The quantity box is as unreliable as the price box. Write `parse_qty_ex31(text)`
-    that returns `int(text)` when it can — but if the text isn't a whole number,
+    that returns `int(text)` when it can, but if the text isn't a whole number,
     catch the **`ValueError`** and return `1` instead. (As Kevin says, *"one wrap
     is always a safe default."*)
     """
@@ -649,7 +649,7 @@ def _(mo):
     ## 🧾 Boss exercise (core) — harden the checkout
 
     The inspector wants the total to survive **anything** the day throws at it.
-    Here is a batch of orders — and it's a mess:
+    Here is a batch of orders, and it's a mess:
 
     ```python
     orders_ex40 = [("Wrap", 13.80), ("Ramen", -2.0), ("Bowl", "kaputt"), ("Thai", 8.90)]
@@ -657,13 +657,13 @@ def _(mo):
 
     Two of the four are poison: `-2.0` breaks the inspector's rule, and
     `"kaputt"` isn't even a number. Write `robust_total_ex40(orders)` that **sums
-    the prices of the good orders only** — skipping any price that is **negative**
-    *or* **not a number** — and returns the total, rounded to 2 decimals.
+    the prices of the good orders only**, skipping any price that is **negative**
+    *or* **not a number**, and returns the total, rounded to 2 decimals.
 
     There are two ways to skip a bad price, and both are worth knowing:
 
     - **Ask first (type check):** `isinstance(price, (int, float))` is `True` only
-      for real numbers — check that *before* comparing to 0.
+      for real numbers, so check that *before* comparing to 0.
     - **Try and recover:** attempt to use the price inside a `try`, and `except`
       the failure to skip it.
 
@@ -861,7 +861,7 @@ def _(mo):
     ### 🧷 Bonus — assert the invariant (not required)
 
     Experienced programmers plant **`assert`** statements to guard an
-    *invariant* — a fact that should always be true. If it isn't, the program
+    *invariant*, a fact that should always be true. If it isn't, the program
     stops immediately with an `AssertionError`, right where the assumption broke:
 
     ```python
@@ -971,15 +971,15 @@ def _(mo):
        between a program that survives real users and one that doesn't.
     2. **Download your work**: menu → Download → *Download Python code*.
        Reloading this exact tab (Cmd/Ctrl+R) keeps your work, but closing the tab
-       and reopening the link starts you fresh — the download is the only
+       and reopening the link starts you fresh. The download is the only
        guaranteed copy.
-    3. That's a wrap on **Part I** — you can now store data, shape it, loop over
+    3. That's a wrap on **Part I**: you can now store data, shape it, loop over
        it, wrap it in functions, and keep it standing when things go wrong. Next
        session opens with **Checkpoint 3**, which sweeps everything from Episodes
-       1–5 — so keep this notebook (and the last four) close.
+       1–5, so keep this notebook (and the last four) close.
     4. And the teaser: the inspector leaves satisfied, but mentions the visit to a
        colleague. Word travels. Soon the authorities notice the startup is quietly
-       holding a pile of **customer data** — and somewhere in a grey office, a form
+       holding a pile of **customer data**, and somewhere in a gray office, a form
        is being readied. **Formular 27b/6 awaits.** Part II begins.
     """
     )
