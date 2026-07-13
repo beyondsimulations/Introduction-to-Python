@@ -29,7 +29,7 @@ def _(mo):
         r"""
     # ⚡ Quick exercise: vectorized arithmetic (5–10 min)
 
-    Kevin's 40-tab spreadsheet is on its way out — the investor wants
+    Kevin's 40-tab spreadsheet is on its way out. The investor wants
     metrics, and numpy arrays are the replacement. The key idea: an
     operation on an array applies to *every element at once*. No loop.
 
@@ -58,7 +58,7 @@ def _(mo):
     mo.md(
         r"""
     The investor's numbers deck needs gross prices. Three net menu prices
-    need 19% VAT added — all three, in **one expression**, no loop.
+    need 19% VAT added: all three, in **one expression**, no loop.
 
     Compute it as `gross_exa` below.
     """
@@ -119,7 +119,7 @@ def _(mo):
 
 @app.cell(hide_code=True)
 def _(mo):
-    mo.md("*Nothing to save — this was a sandbox.*")
+    mo.md("*Nothing to save. This was a sandbox.*")
     return
 
 

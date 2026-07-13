@@ -29,7 +29,7 @@ def _(mo):
         r"""
     # ⚡ Quick exercise: boolean masks (5–10 min)
 
-    Comparing an array to a number doesn't give one `True`/`False` — it
+    Comparing an array to a number doesn't give one `True`/`False`. It
     gives a whole array of them, one per element. That array of booleans
     is a **mask**, and it's the tool for filtering and counting without a
     loop.
@@ -143,7 +143,7 @@ def _(mo):
 
 @app.cell(hide_code=True)
 def _(mo):
-    mo.md("*Nothing to save — this was a sandbox.*")
+    mo.md("*Nothing to save. This was a sandbox.*")
     return
 
 
