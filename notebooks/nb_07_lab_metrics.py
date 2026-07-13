@@ -22,7 +22,7 @@ def _(mo):
 
     The investor liked last week's honest numbers. Now she wants a **one-page
     metrics deck**: totals, a per-zone breakdown, the busiest day, the strongest
-    zone — the kind of sheet you could slide across a table without apologising.
+    zone, the kind of sheet you could slide across a table without apologizing.
 
     Kevin has *also* prepared a deck. It is a **40-tab spreadsheet** with a tab
     called `FINAL_final_v3` and one formula that references a cell in a workbook
@@ -30,7 +30,7 @@ def _(mo):
 
     So this week you learn the tool that turns a pile of orders into metrics
     without a single hand-written loop: **NumPy**. A NumPy *array* is like a list
-    that does maths — multiply the whole thing at once, compare it to a number to
+    that does math: multiply the whole thing at once, compare it to a number to
     get a filter, stack it into a grid and total it by row or by column. That's
     the entire deck, computed in a few honest lines.
     """
@@ -67,7 +67,7 @@ def _(mo):
     mo.vstack(
         [
             mo.md(
-                "Before we build the deck — what's the company called again? Type "
+                "Before we build the deck, what's the company called again? Type "
                 "it once and it sticks for the whole notebook. (New tab, so we ask "
                 "afresh.)"
             ),
@@ -82,7 +82,7 @@ def _(mo, startup_name_input):
     startup_name = startup_name_input.value.strip() or "Nameless Bites GmbH"
     mo.md(
         f"Building the metrics deck for **{startup_name}**. One page, real "
-        "numbers — let's make Kevin's 40 tabs look as silly as they are."
+        "numbers. Let's make Kevin's 40 tabs look as silly as they are."
     )
     return (startup_name,)
 
@@ -94,7 +94,7 @@ def _(mo, startup_name_input):
 def _(mo):
     mo.md(
         r"""
-    ## Section 1 — Arrays: a list that does maths
+    ## Section 1 — Arrays: a list that does math
 
     A **NumPy array** looks like a list, but it's built for numbers. You make one
     from a list with `np.array([...])`, and it comes with handy facts about
@@ -110,10 +110,10 @@ def _(mo):
 
     Two more moves you'll use constantly:
 
-    - **Vectorized maths**: `prices * 2` multiplies *every* element at once — no
+    - **Vectorized math**: `prices * 2` multiplies *every* element at once, no
       loop. That's the whole point of an array.
     - **`np.arange(start, stop)`**: builds an array of whole numbers from `start`
-      up to *but not including* `stop` — like `range`, but an array you can total.
+      up to *but not including* `stop`, like `range`, but an array you can total.
 
     Read and run the worked example, then answer for real.
     """
@@ -223,7 +223,7 @@ def _(mo):
     hh_prices = np.array([6.0, 9.0, 12.0, 18.0])
     ```
 
-    Taking 10% off means keeping 90% — so multiply by `0.9`. Do it to the **whole
+    Taking 10% off means keeping 90%, so multiply by `0.9`. Do it to the **whole
     array in one expression** (no loop, no indexing) and store the result in
     `sale_ex12`.
     """
@@ -299,7 +299,7 @@ def _(mo):
     ### Exercise 1.3 (core) — the campaign calendar
 
     The flyer campaign runs for **14 days**, numbered 1 through 14. Build those day
-    numbers with `np.arange` — remember it stops *before* the second number, so
+    numbers with `np.arange`. Remember it stops *before* the second number, so
     reaching 14 means going up to **15**. Then total them (the array's `.sum()`)
     and store that total, as a plain `int`, in `days_sum_ex13`.
 
@@ -382,7 +382,7 @@ def _(mo):
         r"""
     ## Section 2 — Masks: counting and filtering without a loop
 
-    Compare an array to a number and you don't get one `True`/`False` — you get a
+    Compare an array to a number and you don't get one `True`/`False`. You get a
     whole array of them, one per element. That boolean array is a **mask**, and
     it's how you count and filter without writing a loop:
 
@@ -394,10 +394,10 @@ def _(mo):
     ```
 
     So `(array > n).sum()` **counts** how many pass, and `array[array > n]`
-    **keeps** the ones that do — ready for `.mean()` or `.sum()`.
+    **keeps** the ones that do, ready for `.mean()` or `.sum()`.
 
-    > One marimo habit for this section: array maths and indexing are easy to get
-    > slightly wrong, and a **red error pauses everything below it** — including
+    > One marimo habit for this section: array math and indexing are easy to get
+    > slightly wrong, and a **red error pauses everything below it**, including
     > the progress box. Nothing is lost; fix the red cell and it all comes back.
 
     Read and run the worked example, then answer for real.
@@ -495,8 +495,8 @@ def _(mo):
     ### Exercise 2.2 (core) — the on-time rate
 
     One more trick hides in the mask: take its **`.mean()`**. `True` counts as 1
-    and `False` as 0, so a True/False array's `.mean()` is the **share of Trues**
-    — count ÷ total in one call. The investor loves percentages.
+    and `False` as 0, so a True/False array's `.mean()` is the **share of Trues**:
+    count ÷ total in one call. The investor loves percentages.
 
     A delivery is **on time** when it takes **50 minutes or less**. Using the same
     `delivery_times`, compute the share of deliveries that were on time and store
@@ -578,7 +578,7 @@ def _(mo):
     small.sum(axis=1)   # array([6, 15])     — one total per row (across the columns)
     ```
 
-    The investor asked for **four zone totals** — one number per zone. Kevin sent
+    The investor asked for **four zone totals**, one number per zone. Kevin sent
     her **seven** numbers. Here's the line he ran:
 
     ```python
@@ -587,7 +587,7 @@ def _(mo):
     # kevin_totals → [59, 65, 58, 65, 61, 72, 52]   (seven numbers, not four)
     ```
 
-    Store the *correct* per-zone totals — four numbers, one per zone — in
+    Store the *correct* per-zone totals (four numbers, one per zone) in
     `zone_totals_ex23`.
     """
     )
@@ -669,7 +669,7 @@ def _(mo):
         r"""
     ## Section 3 — Two dimensions: the deck comes together
 
-    Here's the real week as a grid — `week_sales`, 7 days down, 4 zones across —
+    Here's the real week as a grid (`week_sales`, 7 days down, 4 zones across),
     and the zone names in `zones`, left to right:
 
     ```python
@@ -685,7 +685,7 @@ def _(mo):
 
     Same `axis` idea as Kevin's fix: `axis=1` totals **across the zones** (one
     number per day), `axis=0` totals **down the days** (one number per zone).
-    Two metrics left on the deck — let's compute both.
+    Two metrics left on the deck. Let's compute both.
     """
     )
     return
@@ -783,7 +783,7 @@ def _(mo):
     ## 🏆 Boss exercise (core) — which zone wins the week?
 
     The headline metric: **which zone sold the most all week?** You already fixed
-    this computation in Exercise 2.3 — total down the days (`axis=0`) to get the
+    this computation in Exercise 2.3: total down the days (`axis=0`) to get the
     four zone totals. Now go one step further: find *which* zone is biggest with
     **`.argmax()`** (it gives the *position* of the largest value, `0`–`3`), and
     use that position to look up the name in `zones`.
@@ -852,7 +852,7 @@ def _(mo):
     ### Exercise (trace — predict first) — a list is not an array
 
     This is a **trace** exercise: predict the answer first, *then* reveal it. It's
-    ungraded — the point is committing to a prediction. Note the brackets: this is
+    ungraded. The point is committing to a prediction. Note the brackets: this is
     a **plain Python list**, not a NumPy array. Kevin runs:
 
     ```python
@@ -991,13 +991,13 @@ def _(mo):
 
     1. Check the progress box above — all **nine** green? If not, reopen the hints,
        reread the worked examples, and try again. Arrays, masks and axis totals are
-       the whole toolkit for turning raw numbers into a metric — you'll reach for
+       the whole toolkit for turning raw numbers into a metric. You'll reach for
        them any time data shows up.
     2. **Download your work**: menu → Download → *Download Python code*.
        Reloading this exact tab (Cmd/Ctrl+R) keeps your work, but closing the tab
-       and reopening the link starts you fresh — the download is the only
+       and reopening the link starts you fresh. The download is the only
        guaranteed copy.
-    3. Next episode: the investor opens a **data room** — real files, thousands of
+    3. Next episode: the investor opens a **data room**. Real files, thousands of
        rows, more than any array wants to hold by hand. Kevin, naturally, lets an
        AI write his pandas. **Episode 8: the data room.**
     """
