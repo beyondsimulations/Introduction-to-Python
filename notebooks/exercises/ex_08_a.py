@@ -29,7 +29,7 @@ def _(mo):
         r"""
     # ⚡ Quick exercise: verifying AI code (5–10 min)
 
-    AI wrote this for Kevin. Two things are wrong — one method doesn't
+    AI wrote this for Kevin. Two things are wrong: one method doesn't
     exist, one comparison quietly returns nothing. Fix both, and you've
     done today's most important professional skill: verifying output.
 
@@ -62,12 +62,12 @@ def _(mo):
     mo.md(
         r"""
     `kevin_df` below is the real order data. Kevin's AI draft is shown
-    as a **comment** underneath it — read it, spot the two bugs, then
+    as a **comment** underneath it. Read it, spot the two bugs, then
     write correct code of your own to compute `mean_exa`: the average
     `total_eur` for the "Nord" zone.
 
     (If you paste Kevin's broken lines and run them for real, the cell
-    turns red — that's expected. A red error pauses everything below it
+    turns red. That's expected. A red error pauses everything below it
     until you fix it; that's the workflow, not a crash.)
     """
     )
@@ -148,7 +148,7 @@ def _(mo):
 
 @app.cell(hide_code=True)
 def _(mo):
-    mo.md("*Nothing to save — this was a sandbox.*")
+    mo.md("*Nothing to save. This was a sandbox.*")
     return
 
 
