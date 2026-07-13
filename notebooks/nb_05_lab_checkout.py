@@ -6,7 +6,7 @@
 # names (_exNN); underscore-prefixed names are cell-private; never a possible
 # infinite loop. Kevin's bugs are logic/runtime only, always terminating.
 # This is the ERRORS lab: students cause exceptions on purpose, so the marimo
-# "red cell pauses everything below" behaviour is taught early as a feature.
+# "red cell pauses everything below" behavior is taught early as a feature.
 import marimo
 
 app = marimo.App(width="medium")

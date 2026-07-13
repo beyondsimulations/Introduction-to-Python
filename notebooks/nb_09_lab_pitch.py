@@ -1015,7 +1015,7 @@ def _(mo):
     - **Zed** (with its AI assistant) — the editor you'll actually write code in.
       Follow [the AI-tools guide](https://beyondsimulations.github.io/Introduction-to-Python/general/ai-tools.html).
 
-    Do this in advance: Session X *builds on* a working toolchain, it doesn't wait
+    Do this in advance: Session X *builds on* a working toolchain — it doesn't wait
     for one. Budget about 15 minutes; if the install fights you, bring it to office
     hours before Session X. Don't burn an evening on it.
 

@@ -88,7 +88,7 @@ def _(mo, startup_name_input):
 
 
 # ─────────────────────────────────────────────────────────────────────────
-# SECTION 1 — Arrays: a list that does maths
+# SECTION 1 — Arrays: a list that does math
 # ─────────────────────────────────────────────────────────────────────────
 @app.cell(hide_code=True)
 def _(mo):
@@ -635,13 +635,13 @@ def _(mo, np, show_result, zone_totals_ex23):
             _msg = "❌ Exercise 2.3: this should be four zone totals (numbers). Total the grid along one axis."
         elif _arr.shape == (7,):
             ex23_ok = False
-            _msg = "❌ Exercise 2.3: seven numbers — that's Kevin's bug. You totalled *across the zones* (one number per DAY, `axis=1`). The investor wants one number per ZONE: total *down the days* instead."
+            _msg = "❌ Exercise 2.3: seven numbers — that's Kevin's bug. You totaled *across the zones* (one number per DAY, `axis=1`). The investor wants one number per ZONE: total *down the days* instead."
         elif _arr.shape != (4,):
             ex23_ok = False
             _msg = "❌ Exercise 2.3: expected exactly four zone totals, one per column. Total the grid down its seven days."
         elif np.allclose(np.round(_arr, 2), _expected):
             ex23_ok = True
-            _msg = "✅ Exercise 2.3: `[141, 109, 100, 82]` — four zones, four numbers. Totalling *down the days* (the other axis) is what the investor actually asked for."
+            _msg = "✅ Exercise 2.3: `[141, 109, 100, 82]` — four zones, four numbers. Totaling *down the days* (the other axis) is what the investor actually asked for."
         else:
             ex23_ok = False
             _msg = "❌ Exercise 2.3: four numbers, but not the expected totals. Sum each column of `week_grid` down its seven days."
@@ -754,10 +754,10 @@ def _(best_day_total_ex31, mo, np, show_result):
                 _msg = "❌ Exercise 3.1: this should be one whole **number** — the busiest day's total."
         elif _t == 84:
             ex31_ok = True
-            _msg = "✅ Exercise 3.1: **84** — the busiest day. You totalled each day across its zones (`axis=1`), then took the max."
+            _msg = "✅ Exercise 3.1: **84** — the busiest day. You totaled each day across its zones (`axis=1`), then took the max."
         elif _t == 141:
             ex31_ok = False
-            _msg = "❌ Exercise 3.1: 141 is the biggest *zone* total (totalling down the days, `axis=0`). The busiest DAY totals across the four zones (`axis=1`), then takes the max."
+            _msg = "❌ Exercise 3.1: 141 is the biggest *zone* total (totaling down the days, `axis=0`). The busiest DAY totals across the four zones (`axis=1`), then takes the max."
         else:
             ex31_ok = False
             _msg = f"❌ Exercise 3.1: expected 84, got {_t}. Total each day across its zones, then take the max: `week_sales.sum(axis=1).max()`."

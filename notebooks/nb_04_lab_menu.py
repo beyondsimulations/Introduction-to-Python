@@ -731,7 +731,7 @@ def _(mo, pad_price_ex33, show_result):
 def _(mo):
     mo.accordion(
         {
-            "💡 Hint 1 (a nudge)": "Dictionary keys are exact: capitalisation and spaces all matter. Look at how Pad Thai is written as a key back in Exercise 2.2, then match it here.",
+            "💡 Hint 1 (a nudge)": "Dictionary keys are exact: capitalization and spaces all matter. Look at how Pad Thai is written as a key back in Exercise 2.2, then match it here.",
             "💡 Hint 2 (the structure)": "pad_price_ex33 = menu_ex22.get(\"___\")   — put the dish's key, spelled exactly as it appears in the menu, in the blank.",
         }
     )

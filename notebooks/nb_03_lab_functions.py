@@ -531,7 +531,7 @@ def _(mo):
 
 @app.cell
 def _():
-    # Worked example (read + run this) — a class bundles data with behaviour
+    # Worked example (read + run this) — a class bundles data with behavior
     class _Courier:
         def __init__(self, name):
             self.name = name
@@ -591,7 +591,7 @@ def _(Order, mo, show_result):
             _preview = ""
         elif isinstance(_t, (int, float)) and round(_t, 2) == 13.80:
             ex31_ok = True
-            _msg = "✅ Exercise 3.1: 13.80 — the order knows its own total. Data and behaviour, bundled."
+            _msg = "✅ Exercise 3.1: 13.80 — the order knows its own total. Data and behavior, bundled."
             _preview = show_result(_t)
         elif isinstance(_t, (int, float)) and round(_t, 2) == 6.90:
             ex31_ok = False

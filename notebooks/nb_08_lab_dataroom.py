@@ -518,7 +518,7 @@ def _(mo, pd, show_result, sued_bulk_ex22):
                 _msg = "❌ Exercise 2.2: this should be a whole **number** — count the rows that pass *both* conditions."
             elif _c == 15:
                 ex22_ok = True
-                _msg = "✅ Exercise 2.2: **15** Sued orders with 2+ items. `(zone == \"Sued\") & (items >= 2)` — two masks, each parenthesised, joined with `&`."
+                _msg = "✅ Exercise 2.2: **15** Sued orders with 2+ items. `(zone == \"Sued\") & (items >= 2)` — two masks, each parenthesized, joined with `&`."
             elif _c == 19:
                 ex22_ok = False
                 _msg = "❌ Exercise 2.2: 19 is *all* Sued orders — you dropped the items condition. Add `& (orders[\"items\"] >= 2)`."

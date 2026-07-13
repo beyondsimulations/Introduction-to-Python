@@ -684,7 +684,7 @@ def _(boss_ex40, mo, show_result):
 def _(mo):
     mo.accordion(
         {
-            "💡 Hint 1 (a nudge)": "Three moves: seed, simulate, summarise. Build a list of five `random.randint(10, 26)` draws (after seeding once), then feed that whole list to `statistics.mean(...)`.",
+            "💡 Hint 1 (a nudge)": "Three moves: seed, simulate, summarize. Build a list of five `random.randint(10, 26)` draws (after seeding once), then feed that whole list to `statistics.mean(...)`.",
             "💡 Hint 2 (the structure)": "random.seed(2)\n_days = [random.randint(10, 26) for _ in range(5)]\nboss_ex40 = statistics.mean(___)   — put the list of days in the blank.",
         }
     )
