@@ -476,7 +476,7 @@ def _(mo):
     mo.accordion(
         {
             "💡 Hint 1 (a nudge)": "Chain two methods: first drop the outer spaces, then fix the capitalization. The order matters — strip first.",
-            "💡 Hint 2 (the structure)": "clean_ex31 = raw_special.___().___()   — one method removes spaces, the other Capitalises Each Word.",
+            "💡 Hint 2 (the structure)": "clean_ex31 = raw_special.___().___()   — one method removes spaces, the other Capitalizes Each Word.",
         }
     )
     return

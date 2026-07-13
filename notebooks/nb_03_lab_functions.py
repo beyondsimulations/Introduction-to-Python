@@ -785,7 +785,7 @@ def _(mo, show_result, tip_safe_ex60):
         _normal = tip_safe_ex60(20, 10)
     except Exception:
         ex60_ok = False
-        _msg = "❌ Championship: a weird receipt knocked it out — the function crashed. Guard the total before you do the maths."
+        _msg = "❌ Championship: a weird receipt knocked it out — the function crashed. Guard the total before you do the math."
         _preview = ""
     else:
         if _zero is None:
