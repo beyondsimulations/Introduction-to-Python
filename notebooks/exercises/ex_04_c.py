@@ -30,7 +30,7 @@ def _(mo):
     # ⚡ Quick exercise: happy hour (5–10 min)
 
     Kevin's idea: 20% off every price on `menu`, for one hour only. Build
-    `happy_exc` with a **dict comprehension** — same items, each price cut
+    `happy_exc` with a **dict comprehension**: same items, each price cut
     by 20% and rounded to 2 decimals.
     """
     )
@@ -85,7 +85,7 @@ def _(happy_exc, mo, show_result):
 
 @app.cell(hide_code=True)
 def _(mo):
-    mo.md("*Nothing to save — this was a sandbox.*")
+    mo.md("*Nothing to save. This was a sandbox.*")
     return
 
 
