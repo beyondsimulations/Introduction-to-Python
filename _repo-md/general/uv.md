@@ -69,7 +69,7 @@ If you see a version number: great!
 > 2.  On Windows: make sure you used PowerShell (not Command Prompt).
 > 3.  Still broken? Ask for help, no need of guessing the error.
 
-## InstallPython
+## Install Python
 
 We want everyone on the **same** Python version for consistency. Thus, we'll use Python 3.12 for the course this year.
 
@@ -104,7 +104,7 @@ The first line creates a new folder named `my-first-project` (you can name it an
 - `main.py` (starter script)
 - `pyproject.toml` (project + dependencies config)
 - `.python-version` (records the Python version we chose)
-- `.gitignore` (used by Git in Part III --- see the [Git Basics](git-basics.qmd) guide)
+- `.gitignore` (used by Git in Part III: see the [Git Basics](git-basics.qmd) guide)
 - `README.md` (you can jot notes here)
 - (A `.venv` folder will appear later once packages are added or synced.)
 
@@ -167,7 +167,7 @@ Inside your project folder, create a `.zed/` directory and add a file called `ta
 1.  Open any `.py` file in your project.
 2.  Open the task picker with `Cmd+Shift+P` (macOS) / `Ctrl+Shift+P` (Windows/Linux).
 3.  Type **task** and choose **task: spawn**.
-4.  Select **Run current Python file** --- Zed will execute `uv run python <your-file>` in the built-in terminal.
+4.  Select **Run current Python file**. Zed will execute `uv run python <your-file>` in the built-in terminal.
 
 > **Tip**
 >

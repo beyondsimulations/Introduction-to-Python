@@ -14,8 +14,8 @@ format:
 
 The first **40 minutes** are the checkpoint. It starts **now**.
 
-- **Individual work** --- no AI, no neighbours, no chat
-- The **link and QR** are handed out in class --- open it and start
+- **Individual work**: no AI, no neighbors, no chat
+- The **link and QR** are handed out in class. Open it and start
 - ~6 short tasks: write code, trace code, fix a bug, answer a multiple choice
 
 <!-- QR handed out live — never in the deck -->
@@ -28,13 +28,13 @@ The first **40 minutes** are the checkpoint. It starts **now**.
 
 > **Note**
 >
-> The green ✅ live checks are **provisional** --- the final grading runs on our side. And take a breath: everything in it was rehearsed in the labs.
+> The green ✅ live checks are **provisional**. The final grading runs on our side. And take a breath: everything in it was rehearsed in the labs.
 
 # <span class="flow">Episode 5: The 3-AM Checkout</span>
 
 ## After the checkpoint
 
-Pens down --- the checkpoint is behind you. Now the reason we're all here.
+Pens down. The checkpoint is behind you. Now the reason we're all here.
 
 . . .
 
@@ -57,7 +57,7 @@ tip = float(tip_text)     # 💥
 
 . . .
 
-Python stopped and printed a **traceback** --- a crash report. It looks scary, but it is the most useful thing on your screen:
+Python stopped and printed a **traceback**, a crash report. It looks scary, but it is the most useful thing on your screen:
 
     Traceback (most recent call last):
       File "checkout.py", line 12, in <module>
@@ -68,8 +68,8 @@ Python stopped and printed a **traceback** --- a crash report. It looks scary, b
 
 You read a traceback from the **bottom up**:
 
-- the **last line** names *what* went wrong --- `ValueError` --- and gives a hint
-- the lines **above** show *where* --- the file, the line number, the guilty code
+- the **last line** names *what* went wrong (`ValueError`) and gives a hint
+- the lines **above** show *where*: the file, the line number, the guilty code
 
 <!-- -->
 
@@ -102,11 +102,11 @@ The other two you'll meet constantly:
 
 . . .
 
-You don't have to memorise all of Python's exceptions. Recognise these five on sight, and read the last line for the rest.
+You don't have to memorize all of Python's exceptions. Recognize these five on sight, and read the last line for the rest.
 
 ## `try` / `except`: catch the fall
 
-First, the happy path: text that **looks** like a number converts cleanly --- text that doesn't, explodes. A **`try` / `except`** block runs the risky code and catches the failure instead of stopping the program:
+First, the happy path: text that **looks** like a number converts cleanly; text that doesn't, explodes. A **`try` / `except`** block runs the risky code and catches the failure instead of stopping the program:
 
 ``` python
 print(float("5.50"))          # numeric text converts cleanly → 5.5
@@ -124,7 +124,7 @@ print(tip)
 
 . . .
 
-The risky line goes in the `try`; the recovery goes in the `except`. No crash --- the program lands in the `except` and carries on.
+The risky line goes in the `try`; the recovery goes in the `except`. No crash. The program lands in the `except` and carries on.
 
 ## Catch the *specific* type
 
@@ -141,7 +141,7 @@ except ValueError:            # only this kind
 
 > **Warning**
 >
-> A **bare** `except:` catches *everything* --- including your own typos (a misspelled variable would vanish silently). Catch the **specific** type, so real bugs still surface.
+> A **bare** `except:` catches *everything*, including your own typos (a misspelled variable would vanish silently). Catch the **specific** type, so real bugs still surface.
 
 ## Predict: which explosion?
 
@@ -157,7 +157,7 @@ a\) prints `Party of 3` b) raises `TypeError` c) raises `ValueError`
 
 . . .
 
-<span class="question">Predict first</span> --- commit to an answer before the next slide.
+<span class="question">Predict first</span>. Commit to an answer before the next slide.
 
 ## Answer: text and numbers won't mix
 
@@ -181,18 +181,18 @@ Open the exercise (scan the QR or type the link):
 
 <img src="assets/qr/ex_05_a.png" width="280" />
 
-First **predict** what happens --- then run it.
+First **predict** what happens, then run it.
 
 # <span class="flow">Debugging and Defending</span>
 
 ## The debugging loop
 
-When something is wrong, you don't guess randomly --- you follow a loop:
+When something is wrong, you don't guess randomly. You follow a loop:
 
-1.  **Read** the traceback --- it hands you the *what* and the *where*
-2.  **Reproduce** the crash --- make it happen on demand
-3.  **Isolate** --- narrow down to the smallest failing piece
-4.  **Fix** --- change one thing, then run again
+1.  **Read** the traceback: it hands you the *what* and the *where*
+2.  **Reproduce** the crash: make it happen on demand
+3.  **Isolate**: narrow down to the smallest failing piece
+4.  **Fix**: change one thing, then run again
 
 . . .
 
@@ -215,7 +215,7 @@ print(line_total(3, 5.50))
 
 . . .
 
-Real debuggers with breakpoints exist and are wonderful --- but a `print()` in the right spot solves most beginner bugs in seconds. Remove it once you've seen enough.
+Real debuggers with breakpoints exist and are wonderful, but a `print()` in the right spot solves most beginner bugs in seconds. Remove it once you've seen enough.
 
 ## `raise` --- when your code should refuse
 
@@ -241,7 +241,7 @@ A bad value stops *here*, at the door, instead of poisoning the books three scre
 
 ## `assert` --- a tripwire for invariants
 
-An **`assert`** guards an *invariant* --- a fact that must **always** hold. If it's true, nothing happens; if it's false, the program stops right there with an `AssertionError`:
+An **`assert`** guards an *invariant*, a fact that must **always** hold. If it's true, nothing happens; if it's false, the program stops right there with an `AssertionError`:
 
 ``` python
 subtotal = 9.60
@@ -253,7 +253,7 @@ print("passed the tripwire:", subtotal)
 
 . . .
 
-Think of it as a note to yourself, checked automatically: *"if this is ever false, something broke earlier --- stop before it spreads."*
+Think of it as a note to yourself, checked automatically: *"if this is ever false, something broke earlier. Stop before it spreads."*
 
 ## Try, then fall back
 
@@ -292,11 +292,11 @@ print(to_price("bad"))
 print("checkout still running")
 ```
 
-a\) it never runs --- the program already stopped b) it runs normally --- the program carried on c) the `try` block runs a second time
+a\) it never runs: the program already stopped b) it runs normally: the program carried on c) the `try` block runs a second time
 
 . . .
 
-<span class="question">Predict first</span> --- commit to an answer before the next slide.
+<span class="question">Predict first</span>. Commit to an answer before the next slide.
 
 ## Answer: it carries on
 
@@ -324,7 +324,7 @@ Open the exercise (scan the QR or type the link):
 
 <img src="assets/qr/ex_05_b.png" width="280" />
 
-First **predict** what happens --- then run it.
+First **predict** what happens, then run it.
 
 # <span class="flow">To the Lab</span>
 
@@ -332,27 +332,27 @@ First **predict** what happens --- then run it.
 
 - Head to the lab notebook: [Episode 5 --- The 3-AM Checkout](../tutorials/tut_05_errors.qmd)
 - You'll read a traceback, write a price box that won't crash, fix Kevin's 3-AM receipt, make your code **refuse** negative prices with `raise`, and harden the whole checkout against a batch of poisoned orders
-- It runs entirely in your browser --- no setup, just click and code
+- It runs entirely in your browser: no setup, just click and code
 
 . . .
 
 > **Important**
 >
-> **Download your `.py` before you leave.** Closing the tab without downloading loses your work --- and downloading is exactly how you just handed in the checkpoint. Expect **red cells** in this lab: you'll cause errors on purpose. A red cell pauses everything below it --- fix it, and everything springs back.
+> **Download your `.py` before you leave.** Closing the tab without downloading loses your work, and downloading is exactly how you just handed in the checkpoint. Expect **red cells** in this lab: you'll cause errors on purpose. A red cell pauses everything below it. Fix it, and everything springs back.
 
 # <span class="flow">Wrap-up</span>
 
 ## Three things to remember
 
-1.  A **traceback** is a crash report you read **bottom-up**: the last line names *what* broke, the lines above show *where* --- that's an address and a reason, not a wall of noise
-2.  **`try` / `except`** catches a failure so the program **recovers** instead of stopping --- catch the **specific** type (`except ValueError`), never a bare `except` that also hides your own typos
+1.  A **traceback** is a crash report you read **bottom-up**: the last line names *what* broke, the lines above show *where*. That's an address and a reason, not a wall of noise
+2.  **`try` / `except`** catches a failure so the program **recovers** instead of stopping. Catch the **specific** type (`except ValueError`), never a bare `except` that also hides your own typos
 3.  Defend your own code: **`raise`** to refuse bad input (prices ≥ 0), **`assert`** to guard an invariant that must always hold, and **fall back** to a safe default when a conversion fails
 
 . . .
 
 > **Note**
 >
-> **Next time --- Episode 6** starts with **Checkpoint 3**, which sweeps everything from Episodes 1--5 --- so keep this notebook and the last four close. Then someone new walks into the shop, uncaps a marker, and writes one question on the whiteboard. **Part II begins.**
+> **Next time --- Episode 6** starts with **Checkpoint 3**, which sweeps everything from Episodes 1--5, so keep this notebook and the last four close. Then someone new walks into the shop, uncaps a marker, and writes one question on the whiteboard. **Part II begins.**
 
 # <span class="flow">Literature</span>
 

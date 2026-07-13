@@ -14,7 +14,7 @@ format:
 
 ## Charts are arguments
 
-It's **Friday**. The boardroom. The investor slides a pencil out of her jacket and **sharpens it** while you set up --- the sound louder than it has any right to be.
+It's **Friday**. The boardroom. The investor slides a pencil out of her jacket and **sharpens it** while you set up, the sound louder than it has any right to be.
 
 . . .
 
@@ -24,11 +24,11 @@ Last week you handed her honest numbers, a table she could trust. She read exact
 
 . . .
 
-A number convinces the careful. A **picture** convinces the room. Today: draw the right chart for the question --- and refuse to draw a dishonest one.
+A number convinces the careful. A **picture** convinces the room. Today: draw the right chart for the question, and refuse to draw a dishonest one.
 
 # 🔥 Warm-up
 
-Three questions from Episode 8. Commit --- hands up **before** the reveal.
+Three questions from Episode 8. Commit. Hands up **before** the reveal.
 
 ## Question 1
 
@@ -56,7 +56,7 @@ a\) a summary table b) an `AttributeError` c) an empty DataFrame
 
 ## Answer 2
 
-**b) `AttributeError`** --- pandas has `.describe()`, not `.summarize()`. The AI invented a plausible name. An AI that **sounds sure** is not the same as an API that **exists** --- you verify, every time.
+**b) `AttributeError`** --- pandas has `.describe()`, not `.summarize()`. The AI invented a plausible name. An AI that **sounds sure** is not the same as an API that **exists**. You verify, every time.
 
 ## Question 3
 
@@ -97,11 +97,11 @@ plt.gca()             # SHOW: "get current axes" — the chart
 
 > **Note**
 >
-> Two habits for **every** chart cell: **open** with `plt.figure()` (a clean canvas) and **end** with `plt.gca()`. In marimo and scripts there's no `plt.show()` --- the figure appears as the cell's **last expression**, and `plt.plot(...)` alone returns line objects, not a picture. Same frame around every chart in tonight's lab.
+> Two habits for **every** chart cell: **open** with `plt.figure()` (a clean canvas) and **end** with `plt.gca()`. In marimo and scripts there's no `plt.show()`; the figure appears as the cell's **last expression**, and `plt.plot(...)` alone returns line objects, not a picture. Same frame around every chart in tonight's lab.
 
 ## The parts of a chart
 
-Every honest chart names its axes. `xlabel`, `ylabel`, `title`, and --- when there's more than one line --- a `legend`:
+Every honest chart names its axes. `xlabel`, `ylabel`, `title`, and (when there's more than one line) a `legend`:
 
 ``` python
 import matplotlib.pyplot as plt
@@ -122,7 +122,7 @@ plt.gca()
 
 ## A little styling --- and only a little
 
-Two keywords cover almost everything: `color` and `linestyle`. Restraint is the professional move --- one clear line beats a rainbow:
+Two keywords cover almost everything: `color` and `linestyle`. Restraint is the professional move. One clear line beats a rainbow:
 
 ``` python
 import matplotlib.pyplot as plt
@@ -151,7 +151,7 @@ a\) two separate charts b) one chart with two lines c) an error
 
 . . .
 
-<span class="question">Predict first</span> --- commit to an answer before the next slide.
+<span class="question">Predict first</span>. Commit to an answer before the next slide.
 
 ## Answer: one chart, two lines
 
@@ -180,7 +180,7 @@ Open the exercise (scan the QR or type the link):
 
 <img src="assets/qr/ex_09_a.png" width="280" />
 
-First **predict** what happens --- then run it.
+First **predict** what happens, then run it.
 
 # <span class="flow">The right chart for the question</span>
 
@@ -197,13 +197,13 @@ The wrong chart is its own kind of lie. Start from the **question**, not the cha
 
 . . .
 
-- **Line** you already own --- it's the `plt.plot` from block one, time on the x-axis. The other three get a slide each.
+- **Line** you already own: it's the `plt.plot` from block one, time on the x-axis. The other three get a slide each.
 
 . . .
 
 > **Note**
 >
-> Notice what's missing: the **pie chart**. It's usually the wrong answer --- the eye can't compare slice sizes well. When in doubt, a bar chart is clearer.
+> Notice what's missing: the **pie chart**. It's usually the wrong answer: the eye can't compare slice sizes well. When in doubt, a bar chart is clearer.
 
 ## Categories → bar
 
@@ -223,7 +223,7 @@ plt.gca()
 
 <img src="lec_09_plotting_files/figure-markdown_strict/cell-6-output-1.png" width="641" height="431" />
 
-The tallest bar answers the question at a glance --- Pizza.
+The tallest bar answers the question at a glance: Pizza.
 
 ## A distribution → histogram
 
@@ -263,7 +263,7 @@ plt.gca()
 
 <img src="lec_09_plotting_files/figure-markdown_strict/cell-8-output-1.png" width="662" height="429" />
 
-Just a cloud --- no upward drift. Sometimes the honest answer is **"there's no pattern here."**
+Just a cloud. No upward drift. Sometimes the honest answer is **"there's no pattern here."**
 
 ## Predict: how many bars?
 
@@ -277,11 +277,11 @@ plt.hist(values, bins=3)    # right
 
 The bar chart shows 4 bars. How many bars does the **histogram** show?
 
-a\) 4 --- one per number b) about 2--3 lumps --- it counts ranges c) 15
+a\) 4: one per number b) about 2--3 lumps: it counts ranges c) 15
 
 . . .
 
-<span class="question">Predict first</span> --- commit to an answer before the next slide.
+<span class="question">Predict first</span>. Commit to an answer before the next slide.
 
 ## Answer: bar counts categories, hist counts ranges
 
@@ -316,11 +316,11 @@ Open the exercise (scan the QR or type the link):
 
 <img src="assets/qr/ex_09_b.png" width="280" />
 
-First **predict** what happens --- then run it.
+First **predict** what happens, then run it.
 
 > **Tip**
 >
-> Take the break after this one --- five minutes, then honest charts.
+> Take the break after this one: five minutes, then honest charts.
 
 # <span class="flow">Honest charts + the AI chart assistant</span>
 
@@ -353,17 +353,17 @@ Same numbers. The left one gets you a term sheet; the right one gets you trusted
 ## The rule: growth starts at zero
 
 - A **growth claim** on a chart starts the y-axis at **0**. Anything else magnifies a wobble into a cliff.
-- The investor **will** check --- she reads the axis before she reads the line.
+- The investor **will** check: she reads the axis before she reads the line.
 
 . . .
 
 > **Tip**
 >
-> She's the type who reads Formular 27b/6 for fun. A stretched axis is the first thing she catches --- and the last thing you want to explain.
+> She's the type who reads Formular 27b/6 for fun. A stretched axis is the first thing she catches, and the last thing you want to explain.
 
 ## AI as your chart assistant
 
-AI is genuinely good at plotting code --- if you drive it like a co-pilot:
+AI is genuinely good at plotting code, if you drive it like a co-pilot:
 
 1.  **Describe** the data and the question: *"I have `orders` with columns `zone` (text) and `total_eur` (float). Bar chart of total revenue per zone."*
 2.  Let it **draft** the plot code.
@@ -378,14 +378,14 @@ The pilot flies; the co-pilot advises. You still land the plane.
 
 ## Two ways AI charts lie
 
-- **Invented column names.** The AI writes `orders["revenue"]`, but your column is `total_eur` --- a `KeyError`, exactly the confident-nonsense you caught in Episode 8. Read the code before you run it.
-- **Silently "dramatic" defaults.** Ask for a growth chart and some assistants hand back a **tight y-axis** that flatters the trend --- no warning, no comment. The chart runs; that's what makes it dangerous.
+- **Invented column names.** The AI writes `orders["revenue"]`, but your column is `total_eur`: a `KeyError`, exactly the confident-nonsense you caught in Episode 8. Read the code before you run it.
+- **Silently "dramatic" defaults.** Ask for a growth chart and some assistants hand back a **tight y-axis** that flatters the trend: no warning, no comment. The chart runs; that's what makes it dangerous.
 
 . . .
 
 > **Important**
 >
-> Both threads, one rule: **an AI chart runs long before it's true.** You verify the columns *and* the axis --- every time.
+> Both threads, one rule: **an AI chart runs long before it's true.** You verify the columns *and* the axis, every time.
 
 # ⚡ Your turn --- 10 minutes
 
@@ -395,22 +395,22 @@ Open the exercise (scan the QR or type the link):
 
 <img src="assets/qr/ex_09_c.png" width="280" />
 
-First **predict** what happens --- then run it.
+First **predict** what happens, then run it.
 
 # Before Session X
 
-The season finale leaves the browser for **your own machine**. Four things to do **before** you arrive --- budget about **20 minutes**:
+The season finale leaves the browser for **your own machine**. Four things to do **before** you arrive, budget about **20 minutes**:
 
-- **uv** --- the Python environment manager this course uses. Follow [the uv guide](../general/uv.qmd).
-- **Zed** --- the editor you'll write code in, with **one** AI provider connected. Follow [the AI-tools guide](../general/ai-tools.qmd).
-- **The GitHub CLI (`gh`)** --- the small tool that lets your machine talk to GitHub. Follow [the Git Basics guide](../general/git-basics.qmd).
-- **A free GitHub account** --- sign up at [github.com](https://github.com) if you don't have one.
+- **uv**: the Python environment manager this course uses. Follow [the uv guide](../general/uv.qmd).
+- **Zed**: the editor you'll write code in, with **one** AI provider connected. Follow [the AI-tools guide](../general/ai-tools.qmd).
+- **The GitHub CLI (`gh`)**: the small tool that lets your machine talk to GitHub. Follow [the Git Basics guide](../general/git-basics.qmd).
+- **A free GitHub account**: sign up at [github.com](https://github.com) if you don't have one.
 
 . . .
 
 > **Important**
 >
-> Do it in advance --- **Session X builds on** a working toolchain, it doesn't wait for one. If the install fights you, bring it to **office hours** before then --- don't burn an evening. And **bring the laptop**.
+> Do it in advance. **Session X builds on** a working toolchain, it doesn't wait for one. If the install fights you, bring it to **office hours** before then, don't burn an evening. And **bring the laptop**.
 
 . . .
 
@@ -421,16 +421,16 @@ Session X builds the real toolchain and reveals what your notebooks have been al
 ## Tonight's episode
 
 - Head to the lab notebook: [Episode 9 --- The Pitch Deck](../tutorials/tut_09_plotting.qmd)
-- Same eighty orders, now with pictures: a line for daily revenue, a bar for zones, a histogram for the value spread, a scatter that finds **no** pattern --- and Kevin's cliff-edge growth slide, which you'll flatten into the truth
+- Same eighty orders, now with pictures: a line for daily revenue, a bar for zones, a histogram for the value spread, a scatter that finds **no** pattern, and Kevin's cliff-edge growth slide, which you'll flatten into the truth
 - Every chart opens with `plt.figure()` and closes with `plt.gca()`
-- AI is allowed --- draft with it, then **verify** the columns and the axis before you believe it
-- It runs entirely in your browser --- no setup, just click and code
+- AI is allowed: draft with it, then **verify** the columns and the axis before you believe it
+- It runs entirely in your browser: no setup, just click and code
 
 . . .
 
 > **Important**
 >
-> **Download your `.py` before you leave.** It's the appendix of your pitch --- the file that proves every chart came from the real data.
+> **Download your `.py` before you leave.** It's the appendix of your pitch: the file that proves every chart came from the real data.
 
 # <span class="flow">Wrap-up</span>
 
@@ -438,27 +438,27 @@ Session X builds the real toolchain and reveals what your notebooks have been al
 
 1.  **Every chart, one frame.** Open with `plt.figure()`, close with `plt.gca()`; label the axes and title it. A chart nobody can read argues nothing.
 2.  **Match the chart to the question.** Categories → bar, distribution → histogram, two numbers → scatter, time → line. The wrong chart is a lie; and "no pattern" is a real finding.
-3.  **Honest axis, verified code.** Growth charts start at **0**, and every AI-drafted plot gets checked --- do the columns exist, does the axis start where you claim?
+3.  **Honest axis, verified code.** Growth charts start at **0**, and every AI-drafted plot gets checked: do the columns exist, does the axis start where you claim?
 
 . . .
 
 > **Note**
 >
-> **Season finale next: git, real files, and the project kickoff.** We leave the browser for your own machine --- the toolchain you install this week is the price of admission.
+> **Season finale next: git, real files, and the project kickoff.** We leave the browser for your own machine: the toolchain you install this week is the price of admission.
 
 # <span class="flow">Literature</span>
 
 ## Books to start with
 
 - Wilke, C. (2019). Fundamentals of data visualization: A primer on making informative and compelling figures (First edition). O'Reilly Media. [Link to the free book website](https://clauswilke.com/dataviz/)
-  - The best single book on *why* a chart works --- principles, not just code. Highly recommended.
+  - The best single book on *why* a chart works: principles, not just code. Highly recommended.
 - Downey, A. B. (2024). Think Python: How to think like a computer scientist (Third edition). O'Reilly. [Link to free online version](https://greenteapress.com/wp/think-python-3rd-edition/)
 
 . . .
 
 > **Note**
 >
-> Building charts with AI this session? Revisit the [AI Tools page](../general/ai-tools.qmd) --- describe-then-verify is the whole workflow. Matplotlib's own [pyplot tutorial](https://matplotlib.org/stable/tutorials/pyplot.html) is a friendly next step.
+> Building charts with AI this session? Revisit the [AI Tools page](../general/ai-tools.qmd): describe-then-verify is the whole workflow. Matplotlib's own [pyplot tutorial](https://matplotlib.org/stable/tutorials/pyplot.html) is a friendly next step.
 
 . . .
 

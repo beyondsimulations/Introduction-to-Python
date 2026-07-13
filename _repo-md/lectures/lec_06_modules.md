@@ -12,30 +12,30 @@ format:
 
 # 📋 Checkpoint 3 --- Sessions I--V
 
-The first **40 minutes** are the checkpoint. It starts **now** --- before the investor sits down.
+The first **40 minutes** are the checkpoint. It starts **now**, before the investor sits down.
 
-- **Individual work** --- no AI, no neighbours, no chat
-- The **link and QR** are handed out in class --- open it and start
+- **Individual work**: no AI, no neighbors, no chat
+- The **link and QR** are handed out in class. Open it and start
 - ~6 short tasks: write code, trace code, fix a bug, answer a multiple choice
-- It sweeps **everything from Sessions I--V** --- variables, control flow, functions, data structures, errors
+- It sweeps **everything from Sessions I--V**: variables, control flow, functions, data structures, errors
 
 <!-- QR handed out live — never in the deck -->
 
 . . .
 
-**When you're done:** menu → *Download* → *Download Python code* → upload the `.py` to the **"Checkpoint 3"** assignment on Moodle. **No retakes** --- one sitting.
+**When you're done:** menu → *Download* → *Download Python code* → upload the `.py` to the **"Checkpoint 3"** assignment on Moodle. **No retakes**: one sitting.
 
 . . .
 
 > **Note**
 >
-> The green ✅ live checks are **provisional** --- the final grading runs on our side. And take a breath: everything in it was rehearsed in the labs.
+> The green ✅ live checks are **provisional**. The final grading runs on our side. And take a breath: everything in it was rehearsed in the labs.
 
 # <span class="flow">Episode 6: Due Diligence Week</span>
 
 ## The investor walks in
 
-Pens down --- the checkpoint is behind you. Now the reason today matters.
+Pens down. The checkpoint is behind you. Now the reason today matters.
 
 . . .
 
@@ -49,10 +49,10 @@ She didn't drink the coffee. She walked to the whiteboard, uncapped a marker, an
 
 ## Part II: the rules change
 
-For five sessions you built everything by hand --- on purpose. From today, that changes.
+For five sessions you built everything by hand, on purpose. From today, that changes.
 
 - **AI is now allowed and taught.** We work *with* it, deliberately, starting in tonight's lab.
-- **The disclosure habit:** every submission that used AI carries a **one-line note** saying what you used it for. Not a confession --- a professional reflex.
+- **The disclosure habit:** every submission that used AI carries a **one-line note** saying what you used it for. Not a confession. A professional reflex.
 - **The course chatbot** (sidebar widget) now gives you **full code** on request, not just hints.
 
 . . .
@@ -70,7 +70,7 @@ You spent five sessions learning to think without a co-pilot. Now you get one --
 The investor's question has an answer: **you shouldn't build it from scratch.** Most of what you need is already written.
 
 - A **module** is a toolbox of code someone already wrote and tested
-- Python ships with a whole shelf of them --- the **standard library**
+- Python ships with a whole shelf of them: the **standard library**
 - You `import` a module, then reach for the tools inside it with a dot: `math.ceil(...)`
 
 . . .
@@ -79,7 +79,7 @@ Kevin has been hand-rolling arithmetic for months. The standard library did most
 
 ## `import math`: stop rounding by hand
 
-130 pastries need to ship. They go in crates of 48. How many crates? You need to round **up** --- a half-full crate still ships as a whole one.
+130 pastries need to ship. They go in crates of 48. How many crates? You need to round **up**: a half-full crate still ships as a whole one.
 
 ``` python
 import math
@@ -94,11 +94,11 @@ print(crates)
 
 . . .
 
-`130 / 48` is `2.7…`; `math.ceil` bumps it to **3**. No fiddling with "if there's a remainder, add one" --- the tool already knows.
+`130 / 48` is `2.7…`; `math.ceil` bumps it to **3**. No fiddling with "if there's a remainder, add one." The tool already knows.
 
 ## `from statistics import ...`
 
-Sometimes you only want a couple of tools, not the whole box. Import them **by name** and use them directly --- no `statistics.` prefix:
+Sometimes you only want a couple of tools, not the whole box. Import them **by name** and use them directly, no `statistics.` prefix:
 
 ``` python
 from statistics import mean, median
@@ -113,7 +113,7 @@ print(median(ratings))   # the middle value
 
 . . .
 
-One furious review --- a **1.0** --- drags the mean down to **3.9**. The investor asked for the **typical** rating: `median` sorts the values and hands back the middle one --- **4.5** --- unmoved by one angry customer.
+One furious review (a **1.0**) drags the mean down to **3.9**. The investor asked for the **typical** rating: `median` sorts the values and hands back the middle one (**4.5**), unmoved by one angry customer.
 
 ## Aliases: a shorter name
 
@@ -129,11 +129,11 @@ print(stats.median([4.5, 4.8, 1.0, 5.0, 4.2]))
 
 . . .
 
-`stats.median` is the same tool as `statistics.median` --- just less to type. You'll meet fixed conventions soon (`import pandas as pd`); using the community's nickname makes your code instantly readable to everyone else.
+`stats.median` is the same tool as `statistics.median`, just less to type. You'll meet fixed conventions soon (`import pandas as pd`); using the community's nickname makes your code instantly readable to everyone else.
 
 ## Looking inside a module
 
-You don't have to memorise a module. Python will tell you what's in it and what each tool does:
+You don't have to memorize a module. Python will tell you what's in it and what each tool does:
 
 ``` python
 import math
@@ -150,7 +150,7 @@ help(math.ceil)    # prints what ceil does, and how to call it
 
 ## Predict: which way does floor go?
 
-`math.ceil` rounds up. Its partner `math.floor` rounds **down** --- but *down* from a negative number is the tricky part. What does the last line print?
+`math.ceil` rounds up. Its partner `math.floor` rounds **down**, but *down* from a negative number is the tricky part. What does the last line print?
 
 ``` python
 import math
@@ -161,7 +161,7 @@ a\) `-2` b) `-3` c) an error
 
 . . .
 
-<span class="question">Predict first</span> --- commit to an answer before the next slide.
+<span class="question">Predict first</span>. Commit to an answer before the next slide.
 
 ## Answer: floor goes down, not toward zero
 
@@ -186,13 +186,13 @@ Open the exercise (scan the QR or type the link):
 
 <img src="assets/qr/ex_06_a.png" width="280" />
 
-First **predict** what happens --- then run it.
+First **predict** what happens, then run it.
 
 # <span class="flow">Rehearsing luck</span>
 
 ## The `random` toolbox
 
-The investor wants to see how the shop copes with a **busy day** --- but the busy day hasn't happened yet. So we *rehearse* it with made-up numbers. The `random` module deals them:
+The investor wants to see how the shop copes with a **busy day**, but the busy day hasn't happened yet. So we *rehearse* it with made-up numbers. The `random` module deals them:
 
 ``` python
 import random
@@ -206,18 +206,18 @@ random.shuffle(queue)                         # reorders the list in place
 print(queue)
 ```
 
-    0.790249447133187
-    18
-    tea
-    [3, 2, 4, 5, 1]
+    0.581091687741644
+    2
+    latte
+    [2, 5, 1, 4, 3]
 
 . . .
 
-Four tools, four flavours of luck: a raw float, a bounded integer, a pick from a list, and a reshuffle.
+Four tools, four flavors of luck: a raw float, a bounded integer, a pick from a list, and a reshuffle.
 
 ## "Run it again"
 
-The investor leans over and says: **"Run it again."** Kevin does --- and gets **completely different numbers**:
+The investor leans over and says: **"Run it again."** Kevin does, and gets **completely different numbers**:
 
 ``` python
 import random
@@ -226,12 +226,12 @@ print([random.randint(1, 20) for _ in range(5)])   # one run
 print([random.randint(1, 20) for _ in range(5)])   # ...and again — different!
 ```
 
-    [2, 20, 18, 17, 16]
-    [20, 16, 20, 1, 10]
+    [3, 18, 7, 7, 6]
+    [16, 12, 13, 8, 2]
 
 . . .
 
-Two runs, two answers. That's *exactly* what random is supposed to do --- but it's useless for due diligence. A projection nobody can reproduce is a projection nobody can trust.
+Two runs, two answers. That's *exactly* what random is supposed to do, but it's useless for due diligence. A projection nobody can reproduce is a projection nobody can trust.
 
 ## `random.seed` makes luck repeatable
 
@@ -252,11 +252,11 @@ print([random.randint(1, 20) for _ in range(5)])   # same seed → same list
 
 . . .
 
-Both lines print `[11, 5, 13, 2, 3]`. The numbers still *look* random --- but now the investor can run it herself and land on the identical result.
+Both lines print `[11, 5, 13, 2, 3]`. The numbers still *look* random, but now the investor can run it herself and land on the identical result.
 
 ## Predict: seeded once, built twice
 
-Kevin seeds **once**, then builds two lists the same way --- without touching the seed in between. Are `first` and `second` equal?
+Kevin seeds **once**, then builds two lists the same way, without touching the seed in between. Are `first` and `second` equal?
 
 ``` python
 import random
@@ -269,11 +269,11 @@ print(first)
 print(second)
 ```
 
-a\) equal --- the seed is set, so both come out the same b) different --- the second list continues where the first stopped c) an error
+a\) equal: the seed is set, so both come out the same b) different: the second list continues where the first stopped c) an error
 
 . . .
 
-<span class="question">Predict first</span> --- commit to an answer before the next slide.
+<span class="question">Predict first</span>. Commit to an answer before the next slide.
 
 ## Answer: different
 
@@ -295,7 +295,7 @@ print(second)   # [8, 8, 5]  — the stream carries on
 
 . . .
 
-To get the *same* list twice, you re-seed before each run --- that rewinds the stream to the start. One seed, one fixed sequence: that's the entire job of a seed.
+To get the *same* list twice, you re-seed before each run, and that rewinds the stream to the start. One seed, one fixed sequence: that's the entire job of a seed.
 
 # ⚡ Your turn --- 10 minutes
 
@@ -305,36 +305,36 @@ Open the exercise (scan the QR or type the link):
 
 <img src="assets/qr/ex_06_b.png" width="280" />
 
-First **predict** what happens --- then run it.
+First **predict** what happens, then run it.
 
 # <span class="flow">To the Lab</span>
 
 ## Tonight's episode
 
 - Head to the lab notebook: [Episode 6 --- Due Diligence Week](../tutorials/tut_06_modules.qmd)
-- You'll `import math` and `statistics` for investor-grade counts and averages, then use `random` --- with and without a `seed` --- to rehearse a busy day she can reproduce
-- It's the **first lab where AI is allowed** --- so try the chatbot, and add your one-line disclosure note
-- It runs entirely in your browser --- no setup, just click and code
+- You'll `import math` and `statistics` for investor-grade counts and averages, then use `random` (with and without a `seed`) to rehearse a busy day she can reproduce
+- It's the **first lab where AI is allowed**, so try the chatbot, and add your one-line disclosure note
+- It runs entirely in your browser: no setup, just click and code
 
 . . .
 
 > **Important**
 >
-> **Download your `.py` before you leave.** Closing the tab without downloading loses your work --- and downloading is exactly how you handed in the checkpoint this morning.
+> **Download your `.py` before you leave.** Closing the tab without downloading loses your work, and downloading is exactly how you handed in the checkpoint this morning.
 
 # <span class="flow">Wrap-up</span>
 
 ## Three things to remember
 
-1.  **Don't build it, import it.** A **module** is a toolbox someone already wrote --- `import math`, `from statistics import median`, `import ... as` for a nickname. `dir()` and `help()` show you what's inside.
-2.  **`random` deals the luck** --- `random()`, `randint`, `choice`, `shuffle` --- perfect for rehearsing a day that hasn't happened yet.
+1.  **Don't build it, import it.** A **module** is a toolbox someone already wrote: `import math`, `from statistics import median`, `import ... as` for a nickname. `dir()` and `help()` show you what's inside.
+2.  **`random` deals the luck** (`random()`, `randint`, `choice`, `shuffle`), perfect for rehearsing a day that hasn't happened yet.
 3.  **`random.seed(n)` makes luck repeatable.** Same seed → same sequence, every run. A projection you can reproduce is a projection an investor can trust.
 
 . . .
 
 > **Note**
 >
-> **Next episode: one array to rule a thousand orders.** The shop's data has outgrown plain lists --- and NumPy turns a thousand numbers into a single, fast object.
+> **Next episode: one array to rule a thousand orders.** The shop's data has outgrown plain lists, and NumPy turns a thousand numbers into a single, fast object.
 
 # <span class="flow">Literature</span>
 
@@ -347,7 +347,7 @@ First **predict** what happens --- then run it.
 
 > **Note**
 >
-> New this session: the [AI Tools page](../general/ai-tools.qmd) --- how and when to use AI in Part II, and the one-line disclosure habit that goes on every submission from here on.
+> New this session: the [AI Tools page](../general/ai-tools.qmd): how and when to use AI in Part II, and the one-line disclosure habit that goes on every submission from here on.
 
 . . .
 

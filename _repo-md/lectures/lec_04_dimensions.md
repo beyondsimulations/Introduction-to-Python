@@ -22,7 +22,7 @@ Seventeen variables for one menu. Add a dish and you touch seventeen lines. Toda
 
 # 🔥 Warm-up
 
-Three questions from Episode 3. Commit --- hands up **before** the reveal.
+Three questions from Episode 3. Commit. Hands up **before** the reveal.
 
 ## Question 1
 
@@ -96,7 +96,7 @@ print(drinks)
 
 . . .
 
-Square brackets `[]`, items separated by commas. Add a drink tomorrow and the list just grows --- no new variable names.
+Square brackets `[]`, items separated by commas. Add a drink tomorrow and the list just grows. No new variable names.
 
 ## Reaching in by position
 
@@ -117,7 +117,7 @@ The first item is `drinks[0]`, not `drinks[1]`. Off-by-one is the classic beginn
 
 ## Counting from the end
 
-A **negative** index counts backwards from the end --- no need to know the length:
+A **negative** index counts backwards from the end, no need to know the length:
 
 ``` python
 drinks = ["Mate", "Spezi", "Ayran"]
@@ -134,7 +134,7 @@ print(drinks[-2])   # second to last
 
 ## Slicing: a range of items
 
-A **slice** `list[start:stop]` returns a new list --- from `start` up to, but **not including**, `stop`:
+A **slice** `list[start:stop]` returns a new list, from `start` up to, but **not including**, `stop`:
 
 ``` python
 drinks = ["Mate", "Spezi", "Ayran"]
@@ -162,11 +162,11 @@ a\) `['M', 'L']` b) `['M', 'L', 'XL']` c) `['S', 'M', 'L']`
 
 . . .
 
-<span class="question">Predict first</span> --- commit to an answer before the next slide.
+<span class="question">Predict first</span>. Commit to an answer before the next slide.
 
 ## Answer: the `stop` index is excluded
 
-**a) `['M', 'L']`** --- the slice starts at index 1 (`"M"`) and stops **before** index 3, so index 3 (`"XL"`) is never included. A slice from `1:3` gives you exactly `3 - 1 = 2` items.
+**a) `['M', 'L']`** --- the slice starts at index 1 (`"M"`) and stops before index 3, so index 3 (`"XL"`) is never included. A slice from `1:3` gives you exactly `3 - 1 = 2` items.
 
 ``` python
 sizes = ["S", "M", "L", "XL"]
@@ -177,7 +177,7 @@ print(sizes[1:3])
 
 ## Growing a list
 
-Lists are **mutable** --- you can change them after creation. `.append()` adds one item to the end; `+` joins two lists into a new one:
+Lists are **mutable**: you can change them after creation. `.append()` adds one item to the end; `+` joins two lists into a new one:
 
 ``` python
 drinks = ["Mate", "Spezi"]
@@ -197,7 +197,7 @@ print(combined)
 
 ## How long is it?
 
-`len()` tells you how many items a list holds --- the honest replacement for counting variables by hand:
+`len()` tells you how many items a list holds, the honest replacement for counting variables by hand:
 
 ``` python
 drinks = ["Mate", "Spezi", "Ayran"]
@@ -212,7 +212,7 @@ print(len(drinks))
 
 ## Tuples: fixed-length records
 
-A **tuple** looks like a list but uses `()` and **cannot be changed** --- perfect for a record whose shape never varies, like opening hours `(hour, minute)`:
+A **tuple** looks like a list but uses `()` and **cannot be changed**, perfect for a record whose shape never varies, like opening hours `(hour, minute)`:
 
 ``` python
 opening = (9, 0)   # 9:00 sharp
@@ -227,7 +227,7 @@ print(opening[1])
 
 > **Note**
 >
-> Indexing and slicing work exactly as on lists --- you just can't `.append()` to a tuple. Heads up: some tools quietly turn a tuple into a list when they store it. Remember that in **Part II**.
+> Indexing and slicing work exactly as on lists. You just can't `.append()` to a tuple. Heads up: some tools quietly turn a tuple into a list when they store it. Remember that in **Part II**.
 
 # ⚡ Your turn --- 10 minutes
 
@@ -237,7 +237,7 @@ Open the exercise (scan the QR or type the link):
 
 <img src="assets/qr/ex_04_a.png" width="280" />
 
-First **predict** what happens --- then run it.
+First **predict** what happens, then run it.
 
 # <span class="flow">Dictionaries & Sets</span>
 
@@ -271,11 +271,11 @@ print(prices["Ayran"])
 
 . . .
 
-The same square brackets as a list --- but now the thing inside is a **key**, not a number.
+The same square brackets as a list, but now the thing inside is a **key**, not a number.
 
 ## The key that isn't there
 
-Ask for a key that doesn't exist and Python raises a **`KeyError`** --- it stops rather than guess:
+Ask for a key that doesn't exist and Python raises a **`KeyError`**. It stops rather than guess:
 
 ``` python
 prices = {"Mate": 3.50, "Spezi": 3.20}
@@ -287,11 +287,11 @@ print(prices["Cola"])
 
 > **Warning**
 >
-> A `KeyError` is not a crash to fear --- it's Python telling you the key is spelled wrong or was never added. You'll read exactly this error in tonight's lab.
+> A `KeyError` is not a crash to fear. It's Python telling you the key is spelled wrong or was never added. You'll read exactly this error in tonight's lab.
 
 ## A safer read with `.get()`
 
-`.get()` returns `None` for a missing key instead of raising --- and you can supply a fallback:
+`.get()` returns `None` for a missing key instead of raising, and you can supply a fallback:
 
 ``` python
 prices = {"Mate": 3.50, "Spezi": 3.20}
@@ -324,7 +324,7 @@ print(prices)                # untouched — the summer menu comes back in April
 
 . . .
 
-One syntax, two jobs --- Python decides by whether the key is already present. And the copy means next April needs no un-editing.
+One syntax, two jobs. Python decides by whether the key is already present. And the copy means next April needs no un-editing.
 
 ## Predict: the missing drink
 
@@ -339,7 +339,7 @@ a\) prints `None` b) prints `""` c) raises `KeyError` d) adds `"Cola"`
 
 . . .
 
-<span class="question">Predict first</span> --- commit to an answer before the next slide.
+<span class="question">Predict first</span>. Commit to an answer before the next slide.
 
 ## Answer: reading with `[]` demands the key
 
@@ -357,7 +357,7 @@ except KeyError as missing:
 
 ## Sets: only the unique ones
 
-A **set** keeps each value **once** --- feed it duplicates and they collapse. Perfect for counting *distinct* things, like today's regulars:
+A **set** keeps each value **once**. Feed it duplicates and they collapse. Perfect for counting *distinct* things, like today's regulars:
 
 ``` python
 visitors = ["nina", "tom", "nina", "ada", "tom"]
@@ -381,7 +381,7 @@ Open the exercise (scan the QR or type the link):
 
 <img src="assets/qr/ex_04_b.png" width="280" />
 
-First **predict** what happens --- then run it.
+First **predict** what happens, then run it.
 
 # <span class="flow">Nesting, Comprehensions & Data</span>
 
@@ -401,11 +401,11 @@ print(zones["Hafen"])
 
 . . .
 
-One key (`"Hafen"`) points to a whole dictionary. This is how real data grows --- structures inside structures.
+One key (`"Hafen"`) points to a whole dictionary. This is how real data grows: structures inside structures.
 
 ## Reading nested values
 
-To reach an inner value, use **two** keys in a row --- outer first, then inner:
+To reach an inner value, use **two** keys in a row, outer first, then inner:
 
 ``` python
 zones = {
@@ -450,7 +450,7 @@ Read it as "`c * 2` **for** each `c` **in** `counts`". Same result, less typing.
 
 ## `round` inside a comprehension
 
-Any expression can go in front of the `for` --- including `round()`. Loyalty pricing: 10% off, cleaned to two decimals:
+Any expression can go in front of the `for`, including `round()`. Loyalty pricing: 10% off, cleaned to two decimals:
 
 ``` python
 drink_prices = [3.50, 3.20, 2.80]
@@ -468,7 +468,7 @@ The raw version leaks a `2.88000...3` float. Wrapping each price in `round(_, 2)
 
 ## Comprehensions build dictionaries too
 
-Swap the brackets for braces and give a `key: value` --- now you rebuild a whole menu in one line:
+Swap the brackets for braces and give a `key: value`. Now you rebuild a whole menu in one line:
 
 ``` python
 prices = {"Mate": 3.50, "Spezi": 3.20, "Ayran": 2.80}
@@ -495,7 +495,7 @@ a\) `[1, 4, 9, 16]` b) `[2, 4, 6, 8]` c) `[1, 2, 3, 4]`
 
 . . .
 
-<span class="question">Predict first</span> --- commit to an answer before the next slide.
+<span class="question">Predict first</span>. Commit to an answer before the next slide.
 
 ## Answer: square each item
 
@@ -510,7 +510,7 @@ print([n * n for n in nums])
 
 ## Getting data into a notebook
 
-Your browser notebook has no files on it. So in Part I, data **ships inside the code** --- as lists, dicts, or a multi-line string you can split apart:
+Your browser notebook has no files on it. So in Part I, data **ships inside the code**, as lists, dicts, or a multi-line string you can split apart:
 
 ``` python
 orders = """Mate;2
@@ -540,7 +540,7 @@ Open the exercise (scan the QR or type the link):
 
 <img src="assets/qr/ex_04_c.png" width="280" />
 
-First **predict** what happens --- then run it.
+First **predict** what happens, then run it.
 
 # <span class="flow">To the Lab</span>
 
@@ -548,21 +548,21 @@ First **predict** what happens --- then run it.
 
 - Head to the lab notebook: [Episode 4 --- The Menu Grows Up](../tutorials/tut_04_dimensions.qmd)
 - You'll rebuild the menu as a dictionary, count the regulars with a set, discount the card with a comprehension, and steer a lost courier through a **nested campus map** to the dorms
-- It runs entirely in your browser --- no setup, just click and code
+- It runs entirely in your browser: no setup, just click and code
 
 . . .
 
 > **Important**
 >
-> **Download your `.py` before you leave.** Closing the tab without downloading loses your work --- and downloading is exactly how you hand in the checkpoints.
+> **Download your `.py` before you leave.** Closing the tab without downloading loses your work, and downloading is exactly how you hand in the checkpoints.
 
 # <span class="flow">Wrap-up</span>
 
 ## Three things to remember
 
-1.  **Lists** hold many values in order --- index from `0`, count back with `-1`, slice with a `stop` that's **excluded**
+1.  **Lists** hold many values in order: index from `0`, count back with `-1`, slice with a `stop` that's **excluded**
 2.  **Dictionaries** look up a **value by its key**; a missing key raises `KeyError`, so reach for `.get()` when it might not be there; **sets** keep each value once
-3.  **Comprehensions** compress a loop into one line --- `[expr for x in things]` for lists, `{k: v for ...}` for dicts, `round()` welcome inside
+3.  **Comprehensions** compress a loop into one line: `[expr for x in things]` for lists, `{k: v for ...}` for dicts, `round()` welcome inside
 
 . . .
 

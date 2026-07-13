@@ -14,7 +14,7 @@ format:
 
 ## A decree from the city
 
-Overnight the city banned delivery after **22:00**. Your app can no longer just say yes to every order --- today the code starts **making decisions**, **repeating** work over every order, and **tidying up** Kevin's menu.
+Overnight the city banned delivery after **22:00**. Your app can no longer just say yes to every order. Today the code starts **making decisions**, **repeating** work over every order, and **tidying up** Kevin's menu.
 
 . . .
 
@@ -22,7 +22,7 @@ Overnight the city banned delivery after **22:00**. Your app can no longer just 
 
 # 🔥 Warm-up
 
-Three questions from Episode 1. Commit --- hands up **before** the reveal.
+Three questions from Episode 1. Commit. Hands up **before** the reveal.
 
 ## Question 1
 
@@ -65,7 +65,7 @@ a\) `3.5 1` b) `3 1` c) `3 0.5`
 
 ## Asking a yes/no question
 
-A **comparison** asks a question and answers with a **boolean** --- `True` or `False`, the `bool` type you met last week:
+A **comparison** asks a question and answers with a **boolean**: `True` or `False`, the `bool` type you met last week:
 
 ``` python
 delivery_hour = 21
@@ -172,11 +172,11 @@ a\) `Gold` b) `Silver` c) `Bronze`
 
 . . .
 
-<span class="question">Predict first</span> --- commit to an answer before the next slide.
+<span class="question">Predict first</span>. Commit to an answer before the next slide.
 
 ## Answer: the first true branch wins
 
-**b) `Silver`** --- Python checks branches **top to bottom** and takes the **first** `True` one. `25 >= 5` is already `True`, so the `Gold` branch is never even looked at. Order your ladder from **strictest to loosest**.
+**b) `Silver`** --- Python checks branches top to bottom and takes the first `True` one. `25 >= 5` is already `True`, so the `Gold` branch is never even looked at. Order your ladder from strictest to loosest.
 
 ``` python
 past_orders = 25
@@ -208,7 +208,7 @@ a\) `True` b) `False` c) `Error`
 
 . . .
 
-<span class="question">Predict first</span> --- commit to an answer before the next slide.
+<span class="question">Predict first</span>. Commit to an answer before the next slide.
 
 ## Answer: `22 < 22`
 
@@ -229,7 +229,7 @@ Open the exercise (scan the QR or type the link):
 
 <img src="assets/qr/ex_02_a.png" width="280" />
 
-First **predict** what happens --- then run it.
+First **predict** what happens, then run it.
 
 # <span class="flow">Doing Things Many Times</span>
 
@@ -267,7 +267,7 @@ for item in menu:
 
 . . .
 
-`item` is the **loop variable** --- it takes each value in turn. The name is yours to choose.
+`item` is the **loop variable**. It takes each value in turn, and the name is yours to choose.
 
 ## The accumulator pattern
 
@@ -289,7 +289,7 @@ After the loop, `total` holds the sum. This is how you replace Kevin's hand-coun
 
 ## `range()`: count without a list
 
-`range(n)` counts from **0** up to --- but **not including** --- `n`:
+`range(n)` counts from `0` up to, but **not including**, `n`:
 
 ``` python
 for i in range(3):
@@ -302,12 +302,12 @@ for i in range(3):
 
 . . .
 
-Three passes: `0`, `1`, `2`. (It stops *before* 3 --- a beginner's favourite surprise.)
+Three passes: `0`, `1`, `2`. (It stops *before* 3 --- a beginner's favorite surprise.)
 
 ## `range()` with two and three arguments
 
-- `range(start, stop)` --- begin at `start`, stop before `stop`
-- `range(start, stop, step)` --- jump by `step` each time
+- `range(start, stop)`: begin at `start`, stop before `stop`
+- `range(start, stop, step)`: jump by `step` each time
 
 ``` python
 print(list(range(2, 5)))       # delivery windows 2, 3 and 4 o'clock
@@ -319,7 +319,7 @@ print(list(range(0, 10, 3)))   # every 3rd order gets a flyer: 0, 3, 6, 9
 
 ## Looping over a string
 
-A string is a sequence too --- a `for` loop walks it character by character:
+A string is a sequence too, and a `for` loop walks it character by character:
 
 ``` python
 for letter in "Pad":
@@ -345,7 +345,7 @@ print(doubled)
 
 > **Note**
 >
-> Just a taste --- Session IV gives comprehensions their proper treatment. For now: recognise the shape.
+> Just a taste. Session IV gives comprehensions their proper treatment. For now: recognize the shape.
 
 ## Predict: where does `print` run?
 
@@ -362,11 +362,11 @@ a\) `10` b) `30` c) `10` then `30`
 
 . . .
 
-<span class="question">Predict first</span> --- then turn the page.
+<span class="question">Predict first</span>, then turn the page.
 
 ## Answer: the unindented `print`
 
-**b) `30`** --- `print` sits **outside** the loop, so it runs **once**, after the loop finishes, showing the final total. Indent it and it would print on every pass. Indentation decides what repeats.
+**b) `30`** --- `print` sits outside the loop, so it runs once, after the loop finishes, showing the final total. Indent it and it would print on every pass. Indentation decides what repeats.
 
 ``` python
 total = 0
@@ -385,13 +385,13 @@ Open the exercise (scan the QR or type the link):
 
 <img src="assets/qr/ex_02_b.png" width="280" />
 
-First **predict** what happens --- then run it.
+First **predict** what happens, then run it.
 
 # <span class="flow">Repeat Until, and Clean Text</span>
 
 ## `while`: repeat as long as
 
-A **`while` loop** repeats **as long as** its condition stays `True`. MunchCorp just undercut you --- cut your price each round until you drop below their price:
+A **`while` loop** repeats **as long as** its condition stays `True`. MunchCorp just undercut you. Cut your price each round until you drop below their price:
 
 ``` python
 price = 10.00
@@ -410,7 +410,7 @@ Two rounds and you're under 7.00. (The lab's price war against MunchCorp is your
 
 ## The loop must move toward its goal
 
-Every pass must nudge the condition **closer to `False`** --- here the price shrinks, so the loop is guaranteed to end.
+Every pass must nudge the condition **closer to `False`**: here the price shrinks, so the loop is guaranteed to end.
 
 . . .
 
@@ -431,7 +431,7 @@ while count > 0:
 
 ## `break`: an early exit
 
-`break` jumps out of a loop immediately --- handy with `while True`:
+`break` jumps out of a loop immediately, handy with `while True`:
 
 ``` python
 count = 0
@@ -469,7 +469,7 @@ Methods can be **chained** left to right: `raw.strip().title()`.
 
 ## Trimming specific characters
 
-`.strip()` drops spaces; `.rstrip("!")` drops trailing `!` --- chain them to fix Kevin's shouting:
+`.strip()` drops spaces; `.rstrip("!")` drops trailing `!`. Chain them to fix Kevin's shouting:
 
 ``` python
 print("SALE!!!".rstrip("!"))            # SALE
@@ -495,11 +495,11 @@ a\) `MOIN` b) `moin` c) `moin`
 
 . . .
 
-<span class="question">Predict first</span> --- then reveal.
+<span class="question">Predict first</span>, then reveal.
 
 ## Answer: `"  MOIN  ".strip().lower()`
 
-**b) `moin`** --- `.strip()` removes the outer spaces, then `.lower()` lowercases the result. Chained methods run **left to right**, each acting on the previous one's output.
+**b) `moin`** --- `.strip()` removes the outer spaces, then `.lower()` lowercases the result. Chained methods run left to right, each acting on the previous one's output.
 
 ``` python
 print("  MOIN  ".strip().lower())
@@ -515,7 +515,7 @@ Open the exercise (scan the QR or type the link):
 
 <img src="assets/qr/ex_02_c.png" width="280" />
 
-First **predict** what happens --- then run it.
+First **predict** what happens, then run it.
 
 # <span class="flow">To the Lab</span>
 
@@ -523,21 +523,21 @@ First **predict** what happens --- then run it.
 
 - Head to the lab notebook: [Episode 2 --- The Curfew](../tutorials/tut_02_control.qmd)
 - You'll enforce the 22:00 curfew, total the day's orders in a loop, de-shout Kevin's menu, and fight the **MunchCorp price war** with a `while` loop
-- It runs entirely in your browser --- no setup, just click and code
+- It runs entirely in your browser: no setup, just click and code
 
 . . .
 
 > **Important**
 >
-> **Download your `.py` before you leave.** Closing the tab without downloading loses your work --- and downloading is exactly how you hand in the checkpoints.
+> **Download your `.py` before you leave.** Closing the tab without downloading loses your work, and downloading is exactly how you hand in the checkpoints.
 
 # <span class="flow">Wrap-up</span>
 
 ## Three things to remember
 
-1.  **`if` / `elif` / `else`** run the **first** true branch --- test the strictest condition first
-2.  **`for`** repeats over every item (accumulator: start at 0, add each); **`while`** repeats until its condition flips --- and something inside must move it there
-3.  **String methods** (`.strip()`, `.title()`, `.upper()`, `.rstrip("!")`) return a cleaned **copy**, and **chain** left to right
+1.  **`if` / `elif` / `else`** run the first true branch: test the strictest condition first
+2.  **`for`** repeats over every item (accumulator: start at 0, add each); **`while`** repeats until its condition flips, and something inside must move it there
+3.  **String methods** (`.strip()`, `.title()`, `.upper()`, `.rstrip("!")`) return a cleaned copy, and chain left to right
 
 . . .
 

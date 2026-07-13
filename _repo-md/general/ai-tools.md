@@ -10,7 +10,7 @@ The course runs a phased AI policy, and the rules are different in each part.
 
 > **Important**
 >
-> **The disclosure rule.** Every submission that used AI says so. In Parts I--II that is a one-line note on the submission saying what the AI was used for --- for example: *"Used AI to explain a `KeyError` and to draft the docstring for `load_data()`."* In Part III it lives in a short section of your project repo's `README`: which tools you used, what for, and what you verified yourself. This is not about catching anyone out. Being able to say clearly what a tool did for you is part of using it well.
+> **The disclosure rule.** Every submission that used AI says so. In Parts I--II that is a one-line note on the submission saying what the AI was used for. For example: *"Used AI to explain a `KeyError` and to draft the docstring for `load_data()`."* In Part III it lives in a short section of your project repo's `README`: which tools you used, what for, and what you verified yourself. This is not about catching anyone out. Being able to say clearly what a tool did for you is part of using it well.
 
 The rest of this page shows you how to get a working, **zero-cost** AI setup. You need at least one. The Mistral path below is the guaranteed-free baseline; everything after it is optional.
 
@@ -31,7 +31,7 @@ If you later want AI *inside your editor* (see the Zed section below), you need 
 1.  Go to [console.mistral.ai](https://console.mistral.ai) and sign in with the same account.
 2.  Choose the free **"Experiment"** tier when prompted.
 3.  Open the **API Keys** page and create a new key.
-4.  Copy the key somewhere safe. You will paste it into Zed later. **The key is shown only once**, right when you create it, and cannot be displayed again --- if you miss it, you have to generate a new one.
+4.  Copy the key somewhere safe. You will paste it into Zed later. **The key is shown only once**, right when you create it, and cannot be displayed again. If you miss it, you have to generate a new one.
 
 > **Warning**
 >
@@ -79,7 +79,7 @@ This is the part that surprises people. Having a paid AI subscription does **not
 
 ## What about Copilot?
 
-You may have heard of **GitHub Copilot**. Since **April 2026, GitHub has paused new sign-ups** for its paid Copilot plans indefinitely, with no announced reopening date. If you already had Copilot set up before then, you may keep using it. If not, don't count on it for this course --- use one of the free paths above.
+You may have heard of **GitHub Copilot**. Since **April 2026, GitHub has paused new sign-ups** for its paid Copilot plans indefinitely, with no announced reopening date. If you already had Copilot set up before then, you may keep using it. If not, don't count on it for this course. Use one of the free paths above.
 
 ## The course chatbot
 
@@ -94,4 +94,4 @@ You now have:
 3.  Optionally, a Zed education application and an OpenRouter fallback key.
 4.  The one habit that applies everywhere: a one-line AI-disclosure note on every submission that used AI.
 
-Bring your Mistral API key to Session X --- that is where we plug it into Zed.
+Bring your Mistral API key to Session X. That is where we plug it into Zed.
