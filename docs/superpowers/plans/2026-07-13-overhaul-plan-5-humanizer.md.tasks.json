@@ -4,48 +4,48 @@
     {
       "id": 1,
       "subject": "Task 1: Editing brief + term glossary",
-      "status": "pending",
+      "status": "completed",
       "description": "**Goal:** One committed brief merging all four rubrics, register cards, guardrails, and a decided term glossary.\n\n**Files:** Create: docs/superpowers/specs/2026-07-13-plan5-editing-brief.md\n\n**Note:** Coordinator-authored (Fable in-session, spec §7 exception); Opus scout sweep feeds it.\n\n```json:metadata\n{\"files\": [\"docs/superpowers/specs/2026-07-13-plan5-editing-brief.md\"], \"verifyCommand\": \"grep -c '^## ' docs/superpowers/specs/2026-07-13-plan5-editing-brief.md\", \"acceptanceCriteria\": [\"all required sections present\", \"glossary decided with winners+losers\", \"explicit banned-word list with allowlist rules\", \"committed\"]}\n```"
     },
     {
       "id": 2,
       "subject": "Task 2: Calibration — lec_01 + user gate",
-      "status": "pending",
+      "status": "completed",
       "blockedBy": [1],
       "description": "**Goal:** lec_01 through the full protocol (register deck); user skims the commit and approves tone before fan-out.\n\n**Files:** Modify: lectures/lec_01_introduction.qmd\n\n```json:metadata\n{\"files\": [\"lectures/lec_01_introduction.qmd\"], \"verifyCommand\": \"quarto render lectures/lec_01_introduction.qmd\", \"acceptanceCriteria\": [\"protocol followed, reviewer clean, Fable read\", \"single-file render exit 0\", \"USER GATE: tone approved in chat before Tasks 3-7\", \"rejection path: revise brief, redo lec_01\"]}\n```"
     },
     {
       "id": 3,
       "subject": "Task 3: Decks lec_02–lec_10",
-      "status": "pending",
+      "status": "completed",
       "blockedBy": [2],
       "description": "**Goal:** Nine decks through the protocol (register deck), one commit each; lec_10 also gets the uv-init conditional-wording alignment.\n\n**Files:** Modify: lectures/lec_02…lec_10 (9 decks)\n\n```json:metadata\n{\"files\": [\"lectures/lec_02_control.qmd\", \"lectures/lec_03_functions.qmd\", \"lectures/lec_04_dimensions.qmd\", \"lectures/lec_05_errors.qmd\", \"lectures/lec_06_modules.qmd\", \"lectures/lec_07_scientific.qmd\", \"lectures/lec_08_pandas.qmd\", \"lectures/lec_09_plotting.qmd\", \"lectures/lec_10_projects.qmd\"], \"verifyCommand\": \"grep -rinE '\\\\b(behaviour|analyse)\\\\b' lectures/\", \"acceptanceCriteria\": [\"nine style: commits\", \"UK spellings gone (lec_03, lec_10)\", \"lec_10 uv-init aligned to git-basics conditional wording\", \"episode canon intact\", \"each deck renders exit 0\"]}\n```"
     },
     {
       "id": 4,
       "subject": "Task 4: index.qmd + general pages",
-      "status": "pending",
+      "status": "completed",
       "blockedBy": [2],
       "description": "**Goal:** Eight reference-register files scrubbed, one commit each; imprint/privacy untouched.\n\n**Files:** Modify: index.qmd, general/{ai-tools,faq,syllabus,uv,git-basics,cheatsheet,literature}.qmd\n\n```json:metadata\n{\"files\": [\"index.qmd\", \"general/ai-tools.qmd\", \"general/faq.qmd\", \"general/syllabus.qmd\", \"general/uv.qmd\", \"general/git-basics.qmd\", \"general/cheatsheet.qmd\", \"general/literature.qmd\"], \"verifyCommand\": \"git diff main..HEAD -- general/imprint.qmd general/privacy.qmd\", \"acceptanceCriteria\": [\"8 commits\", \"cheatsheet code tables byte-identical\", \"literature citations untouched\", \"imprint/privacy diff empty\", \"ai-tools facts/dates unchanged\", \"git-basics symptom-first headings kept\"]}\n```"
     },
     {
       "id": 5,
       "subject": "Task 5: Tutorial launchers",
-      "status": "pending",
+      "status": "completed",
       "blockedBy": [2],
       "description": "**Goal:** Nine launchers scrubbed (register reference) in two batched commits; links/buttons byte-identical.\n\n**Files:** Modify: tutorials/tut_01…tut_09\n\n```json:metadata\n{\"files\": [\"tutorials/tut_01_introduction.qmd\", \"tutorials/tut_02_control.qmd\", \"tutorials/tut_03_functions.qmd\", \"tutorials/tut_04_dimensions.qmd\", \"tutorials/tut_05_errors.qmd\", \"tutorials/tut_06_modules.qmd\", \"tutorials/tut_07_scientific.qmd\", \"tutorials/tut_08_pandas.qmd\", \"tutorials/tut_09_plotting.qmd\"], \"verifyCommand\": \"git diff main..HEAD --stat -- tutorials/\", \"acceptanceCriteria\": [\"two batch commits tut_01-05 and tut_06-09\", \"launch buttons/links byte-identical (before/after grep counts match)\", \"tut_01 persistence wording consistent with faq\", \"tut_08/09 CDN reload note preserved\"]}\n```"
     },
     {
       "id": 6,
       "subject": "Task 6: Public notebook prose",
-      "status": "pending",
+      "status": "completed",
       "blockedBy": [2],
       "description": "**Goal:** mo.md() prose in _template + 9 labs + 23 exercises (register notebook), validation-gated, revert-on-fail.\n\n**Files:** Modify: notebooks/_template.py, nb_01…nb_09, exercises/ex_01_a…ex_09_c\n\n```json:metadata\n{\"files\": [\"notebooks/_template.py\", \"notebooks/nb_01_lab_founding.py\", \"notebooks/nb_02_lab_curfew.py\", \"notebooks/nb_03_lab_functions.py\", \"notebooks/nb_04_lab_menu.py\", \"notebooks/nb_05_lab_checkout.py\", \"notebooks/nb_06_lab_diligence.py\", \"notebooks/nb_07_lab_metrics.py\", \"notebooks/nb_08_lab_dataroom.py\", \"notebooks/nb_09_lab_pitch.py\"], \"verifyCommand\": \"uv run python helpers/validate_notebooks.py\", \"acceptanceCriteria\": [\"commits: template + 9 labs + 9 ex-session batches\", \"prose-only rule enforced\", \"prompts stay symptom-only\", \"hint skeletons/check cells/expected values untouched\", \"32/32 validation green after every batch\", \"failing notebooks reverted not patched\"]}\n```"
     },
     {
       "id": 7,
       "subject": "Task 7: Private repo prose (CPs + solutions)",
-      "status": "pending",
+      "status": "completed",
       "blockedBy": [2],
       "description": "**Goal:** cp1–cp5 task wording + sol_01–09 walkthroughs scrubbed (register notebook); graded semantics frozen; 38 tests green.\n\n**Files (../Introduction-to-Python-checkpoints/):** checkpoints/cp1…cp5/*.py, solutions/sol_01…sol_09\n\n```json:metadata\n{\"files\": [\"../Introduction-to-Python-checkpoints/checkpoints/\", \"../Introduction-to-Python-checkpoints/solutions/\"], \"verifyCommand\": \"cd ../Introduction-to-Python-checkpoints && uv run pytest -q\", \"acceptanceCriteria\": [\"7 private commits: 5 CPs + 2 sol batches\", \"variable names/expected values/semantics/points/hash salts frozen\", \"MCQ 'recorded' neutrality preserved\", \"38 passed after every commit\", \"cp0 + reference_tests.py untouched\", \"no AI meta in private commits\"]}\n```"
     },
