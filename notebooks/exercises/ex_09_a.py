@@ -34,10 +34,10 @@ def _(mo):
 
     `plt.plot(x, y)` draws the line; `plt.xlabel`, `plt.ylabel`, and
     `plt.title` label it. One marimo rule that trips everyone up once:
-    the LAST expression in a cell is what displays — so chart cells end
+    the LAST expression in a cell is what displays, so chart cells end
     with `plt.gca()` ("get current axes"), never `plt.show()`.
 
-    **Predict** first: look at the numbers in the demo below — which way
+    **Predict** first: look at the numbers in the demo below: which way
     does the line slope, up or down?
     """
     )
@@ -70,7 +70,7 @@ def _(mo):
     for the investor: the week's **total** revenue, and **which day**
     (1 = Monday … 7 = Sunday) brought in the most.
 
-    The chart itself isn't graded — the check below reads your numbers,
+    The chart itself isn't graded. The check below reads your numbers,
     not your art.
     """
     )
@@ -167,7 +167,7 @@ def _(mo):
 
 @app.cell(hide_code=True)
 def _(mo):
-    mo.md("*Nothing to save — this was a sandbox.*")
+    mo.md("*Nothing to save. This was a sandbox.*")
     return
 
 

@@ -29,14 +29,14 @@ def _(mo):
         r"""
     # ⚡ Quick exercise: the right chart for categories (5–10 min)
 
-    Line charts show change over TIME. Zones aren't a timeline — they're
+    Line charts show change over TIME. Zones aren't a timeline: they're
     categories to compare, and `plt.bar(labels, heights)` is the chart
     for that job.
 
     Same marimo rule as last time: the LAST expression in a cell
     displays, so chart cells end with `plt.gca()`.
 
-    **Predict** first: look at the two demo numbers below — which bar
+    **Predict** first: look at the two demo numbers below: which bar
     will be taller?
     """
     )
@@ -67,9 +67,9 @@ def _(mo):
         r"""
     `zones_exb` and `totals_exb` below are tonight's revenue by delivery
     zone. Plot a bar chart, then tell the investor which ZONE brought in
-    the most — as a name, not a number.
+    the most, as a name, not a number.
 
-    The chart itself isn't graded — the check below reads
+    The chart itself isn't graded. The check below reads
     `best_zone_exb`, not your bars.
     """
     )
@@ -147,7 +147,7 @@ def _(mo):
 
 @app.cell(hide_code=True)
 def _(mo):
-    mo.md("*Nothing to save — this was a sandbox.*")
+    mo.md("*Nothing to save. This was a sandbox.*")
     return
 
 

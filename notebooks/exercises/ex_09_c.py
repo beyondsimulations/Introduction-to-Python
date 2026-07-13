@@ -70,7 +70,7 @@ def _(mo):
     mo.md(
         r"""
     Looks like a rocket, doesn't it? Check the y-axis: it starts at 49,
-    not 0 — a few k€ of real growth gets stretched into a near-vertical
+    not 0. A few k€ of real growth gets stretched into a near-vertical
     line.
 
     The investor wants the real growth number for the pitch. Compute
@@ -145,7 +145,7 @@ def _(mo):
     ### Now fix the chart
 
     Re-plot the same `weekly_exc` data, but this time let the y-axis
-    start at 0 (`plt.ylim(0, 60)`). Same numbers, honest axis — watch
+    start at 0 (`plt.ylim(0, 60)`). Same numbers, honest axis. Watch
     how much the slope changes just by telling the truth about the
     baseline.
 
@@ -171,7 +171,7 @@ def _(mo):
 
 @app.cell(hide_code=True)
 def _(mo):
-    mo.md("*Nothing to save — this was a sandbox.*")
+    mo.md("*Nothing to save. This was a sandbox.*")
     return
 
 
