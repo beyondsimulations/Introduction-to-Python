@@ -32,7 +32,7 @@ def _(mo):
     Normally `random` hands you a new sequence every time a cell reruns.
     Sometimes you want the opposite: the *same* sequence, every single
     time, so a demo or a test is reproducible. `random.seed(n)` fixes the
-    starting point of the sequence — anyone who seeds with the same number
+    starting point of the sequence. Anyone who seeds with the same number
     sees the same "random" results.
 
     **Predict** first: will the dice rolls below change when the cell
@@ -61,7 +61,7 @@ def _(random):
 def _(mo):
     mo.md(
         r"""
-    The investor wants the demand projection to be *reproducible* — the
+    The investor wants the demand projection to be *reproducible*: the
     same numbers every time she clicks run, no matter how often the
     notebook re-executes.
 
@@ -114,7 +114,7 @@ def _(mo):
 
 @app.cell(hide_code=True)
 def _(mo):
-    mo.md("*Nothing to save — this was a sandbox.*")
+    mo.md("*Nothing to save. This was a sandbox.*")
     return
 
 

@@ -30,12 +30,12 @@ def _(mo):
     # ⚡ Quick exercise: import a tool instead of building it (5 min)
 
     Need a whole-number result that always rounds *up*, never down? Don't
-    write your own rounding logic — the standard library already has it:
-    `math.ceil` always rounds up to the next whole number — exactly what
+    write your own rounding logic. The standard library already has it:
+    `math.ceil` always rounds up to the next whole number, exactly what
     you need whenever a fraction of a box, crate, or shipment still counts
     as a whole one.
 
-    300 / 48 is 6.25 — **predict** what the cell below prints, then run it.
+    300 / 48 is 6.25. **Predict** what the cell below prints, then run it.
     """
     )
     return
@@ -63,7 +63,7 @@ def _(mo):
     and the bakery boxes hold 24 quiches each. How many boxes does Kevin
     need to order?
 
-    Compute it as `boxes_exa` below — using `math`, not guesswork.
+    Compute it as `boxes_exa` below, using `math`, not guesswork.
     """
     )
     return
@@ -105,7 +105,7 @@ def _(mo):
 
 @app.cell(hide_code=True)
 def _(mo):
-    mo.md("*Nothing to save — this was a sandbox.*")
+    mo.md("*Nothing to save. This was a sandbox.*")
     return
 
 
