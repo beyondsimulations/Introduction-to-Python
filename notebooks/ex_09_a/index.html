@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" href="./favicon.ico" />
+    <!-- Preload is necessary because we show these images when we disconnect from the server,
+    but at that point we cannot load these images from the server -->
+    <link rel="preload" href="./assets/gradient-yHQUC_QB.png" as="image" />
+    <link rel="preload" href="./assets/noise-60BoTA8O.png" as="image" />
+    <!-- Preload the fonts -->
+    <link rel="preload" href="./assets/Lora-VariableFont_wght-CZceb_kH.woff2" as="font" type="font/woff2" crossorigin="anonymous" />
+    <link rel="preload" href="./assets/PTSans-Regular-Bam3NpBI.woff2" as="font" type="font/woff2" crossorigin="anonymous" />
+    <link rel="preload" href="./assets/PTSans-Bold-C_DwAp7Z.woff2" as="font" type="font/woff2" crossorigin="anonymous" />
+    <link rel="preload" href="./assets/FiraMono-Regular-CEsLFVD9.woff2" as="font" type="font/woff2" crossorigin="anonymous" />
+    <link rel="preload" href="./assets/FiraMono-Medium-D5MAsWEG.woff2" as="font" type="font/woff2" crossorigin="anonymous" />
+    <link rel="preload" href="./assets/FiraMono-Bold-C6PDArdf.woff2" as="font" type="font/woff2" crossorigin="anonymous" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#000000" />
+    <meta name="description" content="a marimo app" />
+    <link rel="apple-touch-icon" href="./apple-touch-icon.png" />
+    <link rel="manifest" href="./manifest.json" />
+
+    <script data-marimo="true">
+      function __resizeIframe(obj) {
+        const scrollbarHeight = 20; // Max between windows, mac, and linux
+
+        function setHeight() {
+          // Guard against race condition where iframe isn't ready
+          if (!obj.contentWindow?.document?.documentElement) {
+            return;
+          }
+          const element = obj.contentWindow.document.documentElement;
+          // If there is no vertical scrollbar, we don't need to resize the iframe
+          if (element.scrollHeight === element.clientHeight) {
+            return;
+          }
+
+          // Create a new height that includes the scrollbar height if it's visible
+          const hasHorizontalScrollbar = element.scrollWidth > element.clientWidth;
+          const newHeight = element.scrollHeight + (hasHorizontalScrollbar ? scrollbarHeight : 0);
+
+          // Only update the height if it's different from the current height
+          if (obj.style.height !== `${newHeight}px`) {
+            obj.style.height = `${newHeight}px`;
+          }
+        }
+
+        // Resize the iframe to the height of the content and bottom scrollbar height
+        setHeight();
+
+        // Resize the iframe when the content changes
+        const resizeObserver = new ResizeObserver((_entries) => {
+          setHeight();
+        });
+        // Only observe if iframe content is ready
+        if (obj.contentWindow?.document?.body) {
+          resizeObserver.observe(obj.contentWindow.document.body);
+        }
+      }
+    </script>
+    <marimo-filename hidden>notebook.py</marimo-filename>
+    <!-- TODO(Trevor): Legacy, required by VS Code plugin. Remove when plugin is updated (see marimo/server/_templates/template.py) -->
+    <marimo-version data-version="{{ version }}" hidden></marimo-version>
+    <marimo-user-config data-config="{{ user_config }}" hidden></marimo-user-config>
+    <marimo-server-token data-token="{{ server_token }}" hidden></marimo-server-token>
+    <!-- /TODO -->
+    <title>ex 09 a</title>
+    <script type="module" crossorigin src="./assets/index-iAj2M3os.js"></script>
+    <link rel="modulepreload" crossorigin href="./assets/preload-helper-y72bE5iF.js">
+    <link rel="modulepreload" crossorigin href="./assets/chunk-LvLJmgfZ.js">
+    <link rel="modulepreload" crossorigin href="./assets/react-Bj1aDYRI.js">
+    <link rel="modulepreload" crossorigin href="./assets/compiler-runtime-B3qBwwSJ.js">
+    <link rel="modulepreload" crossorigin href="./assets/jsx-runtime-PbYoItBR.js">
+    <link rel="modulepreload" crossorigin href="./assets/useEventListener-BakX-tnw.js">
+    <link rel="modulepreload" crossorigin href="./assets/defaultLocale-CuYNS33t.js">
+    <link rel="modulepreload" crossorigin href="./assets/precisionRound-CCOoIlcP.js">
+    <link rel="modulepreload" crossorigin href="./assets/defaultLocale-CGfP-Ye3.js">
+    <link rel="modulepreload" crossorigin href="./assets/vega-loader.browser-BJ9oKrvH.js">
+    <link rel="modulepreload" crossorigin href="./assets/utils-BIlJBJIu.js">
+    <link rel="modulepreload" crossorigin href="./assets/clsx-BtEcuwwV.js">
+    <link rel="modulepreload" crossorigin href="./assets/cn-X2M2usMq.js">
+    <link rel="modulepreload" crossorigin href="./assets/badge-CFAaMy0O.js">
+    <link rel="modulepreload" crossorigin href="./assets/button-BF7GSjhW.js">
+    <link rel="modulepreload" crossorigin href="./assets/react-dom-CSu739Rf.js">
+    <link rel="modulepreload" crossorigin href="./assets/fullscreen-BXI8V5i6.js">
+    <link rel="modulepreload" crossorigin href="./assets/menu-items-CQMqwayA.js">
+    <link rel="modulepreload" crossorigin href="./assets/dist-DCqDlsgq.js">
+    <link rel="modulepreload" crossorigin href="./assets/createLucideIcon-BTp1tQDO.js">
+    <link rel="modulepreload" crossorigin href="./assets/check-DQmqoJgr.js">
+    <link rel="modulepreload" crossorigin href="./assets/x-9vLEgLY6.js">
+    <link rel="modulepreload" crossorigin href="./assets/select-Cjly7tmx.js">
+    <link rel="modulepreload" crossorigin href="./assets/tooltip-CgQpRVyN.js">
+    <link rel="modulepreload" crossorigin href="./assets/use-toast-BH8bU9Xf.js">
+    <link rel="modulepreload" crossorigin href="./assets/useEvent-D91BmmQi.js">
+    <link rel="modulepreload" crossorigin href="./assets/invariant-C2E8KCbD.js">
+    <link rel="modulepreload" crossorigin href="./assets/isObject-DvLSfCY5.js">
+    <link rel="modulepreload" crossorigin href="./assets/_baseFor-DKD1r8uL.js">
+    <link rel="modulepreload" crossorigin href="./assets/merge-_9WLTEyt.js">
+    <link rel="modulepreload" crossorigin href="./assets/zod-H_cgTO0M.js">
+    <link rel="modulepreload" crossorigin href="./assets/utils-Dev6I_Kv.js">
+    <link rel="modulepreload" crossorigin href="./assets/Deferred-CfyqLOPG.js">
+    <link rel="modulepreload" crossorigin href="./assets/uuid-BukULOeS.js">
+    <link rel="modulepreload" crossorigin href="./assets/DeferredRequestRegistry-EP9ZArpv.js">
+    <link rel="modulepreload" crossorigin href="./assets/constants-B9JJ72XE.js">
+    <link rel="modulepreload" crossorigin href="./assets/session-B6_8umQX.js">
+    <link rel="modulepreload" crossorigin href="./assets/config-BE150fVL.js">
+    <link rel="modulepreload" crossorigin href="./assets/requests-KshNNAOp.js">
+    <link rel="modulepreload" crossorigin href="./assets/useLifecycle-Baf35rp4.js">
+    <link rel="modulepreload" crossorigin href="./assets/useNonce-0SWz6w4W.js">
+    <link rel="modulepreload" crossorigin href="./assets/useTheme-CWoNQwFz.js">
+    <link rel="modulepreload" crossorigin href="./assets/arrays-DWxvyYxP.js">
+    <link rel="modulepreload" crossorigin href="./assets/strings-DvZlHYnD.js">
+    <link rel="modulepreload" crossorigin href="./assets/once-CXj_gH7S.js">
+    <link rel="modulepreload" crossorigin href="./assets/capabilities-CjNGDxxx.js">
+    <link rel="modulepreload" crossorigin href="./assets/createReducer-3wF4dU7I.js">
+    <link rel="modulepreload" crossorigin href="./assets/paths-kNeJ8nbe.js">
+    <link rel="modulepreload" crossorigin href="./assets/dist-Dez1I5M9.js">
+    <link rel="modulepreload" crossorigin href="./assets/dist-B0WqBUnf.js">
+    <link rel="modulepreload" crossorigin href="./assets/dist-CwfKvuyQ.js">
+    <link rel="modulepreload" crossorigin href="./assets/dist-D-o1OXc9.js">
+    <link rel="modulepreload" crossorigin href="./assets/dist-BZhJ1bTM.js">
+    <link rel="modulepreload" crossorigin href="./assets/dist-Bj9Iedc0.js">
+    <link rel="modulepreload" crossorigin href="./assets/dist-DHMtQYxT.js">
+    <link rel="modulepreload" crossorigin href="./assets/dist-DnIl7RU-.js">
+    <link rel="modulepreload" crossorigin href="./assets/dist-CfGDksO-.js">
+    <link rel="modulepreload" crossorigin href="./assets/stex-C6JeW1YI.js">
+    <link rel="modulepreload" crossorigin href="./assets/toDate-DCE7d2fN.js">
+    <link rel="modulepreload" crossorigin href="./assets/purify.es-DdxMtdqK.js">
+    <link rel="modulepreload" crossorigin href="./assets/cjs-DXo9vDEJ.js">
+    <link rel="modulepreload" crossorigin href="./assets/isSymbol-BT6B8Bon.js">
+    <link rel="modulepreload" crossorigin href="./assets/now-CsYTPAhW.js">
+    <link rel="modulepreload" crossorigin href="./assets/debounce-OiXznToA.js">
+    <link rel="modulepreload" crossorigin href="./assets/database-zap-DIlSqcdp.js">
+    <link rel="modulepreload" crossorigin href="./assets/main-DmhaVp6Y.js">
+    <link rel="modulepreload" crossorigin href="./assets/cells-DQ5n6Zef.js">
+    <link rel="modulepreload" crossorigin href="./assets/ErrorBoundary-Bo313Z9X.js">
+    <link rel="modulepreload" crossorigin href="./assets/kbd-BCXa3Ocm.js">
+    <link rel="modulepreload" crossorigin href="./assets/useInstallPackage-DEHK-C20.js">
+    <link rel="modulepreload" crossorigin href="./assets/alert-dialog-CC0gG4Av.js">
+    <link rel="modulepreload" crossorigin href="./assets/dialog-Dr_Y1zNi.js">
+    <link rel="modulepreload" crossorigin href="./assets/useDebounce-BlBSYv0n.js">
+    <link rel="modulepreload" crossorigin href="./assets/numbers-BKZTJMZ6.js">
+    <link rel="modulepreload" crossorigin href="./assets/SSRProvider-DrpctNAg.js">
+    <link rel="modulepreload" crossorigin href="./assets/context-DE_5rdOV.js">
+    <link rel="modulepreload" crossorigin href="./assets/useNumberFormatter-DCM-63YT.js">
+    <link rel="modulepreload" crossorigin href="./assets/usePress-mjvipKvz.js">
+    <link rel="modulepreload" crossorigin href="./assets/input-b2KTOk0X.js">
+    <link rel="modulepreload" crossorigin href="./assets/ImperativeModal-MQnbMIO2.js">
+    <link rel="modulepreload" crossorigin href="./assets/cell-link-LArpBcY-.js">
+    <link rel="modulepreload" crossorigin href="./assets/multi-map-9ogswH46.js">
+    <link rel="modulepreload" crossorigin href="./assets/alert-Bjh7v4lb.js">
+    <link rel="modulepreload" crossorigin href="./assets/chevron-right-C7RH0Nc7.js">
+    <link rel="modulepreload" crossorigin href="./assets/dropdown-menu-DfGLyCbP.js">
+    <link rel="modulepreload" crossorigin href="./assets/links-DK7te6sJ.js">
+    <link rel="modulepreload" crossorigin href="./assets/useRunCells-bcK6jTD2.js">
+    <link rel="modulepreload" crossorigin href="./assets/copy-CyasABTK.js">
+    <link rel="modulepreload" crossorigin href="./assets/copy-IBNGDypD.js">
+    <link rel="modulepreload" crossorigin href="./assets/copy-icon-BCIGtBo0.js">
+    <link rel="modulepreload" crossorigin href="./assets/RenderHTML-BLBwT24G.js">
+    <link rel="modulepreload" crossorigin href="./assets/datasource-BT-L2LDD.js">
+    <link rel="modulepreload" crossorigin href="./assets/state-VxOqftwq.js">
+    <link rel="modulepreload" crossorigin href="./assets/package-BoMcg6sy.js">
+    <link rel="modulepreload" crossorigin href="./assets/sparkles-DctOjjEz.js">
+    <link rel="modulepreload" crossorigin href="./assets/MarimoErrorOutput-DcImOp4r.js">
+    <link rel="modulepreload" crossorigin href="./assets/eye-off-DI0EQXw0.js">
+    <link rel="modulepreload" crossorigin href="./assets/refresh-cw-DcEasnos.js">
+    <link rel="modulepreload" crossorigin href="./assets/tree-actions-CjikjOBA.js">
+    <link rel="modulepreload" crossorigin href="./assets/spinner-DTBVbtl-.js">
+    <link rel="modulepreload" crossorigin href="./assets/html-to-image-CmK-WSPG.js">
+    <link rel="modulepreload" crossorigin href="./assets/focus-Dol5ybck.js">
+    <link rel="modulepreload" crossorigin href="./assets/useAsyncData-CT1LpOBD.js">
+    <link rel="modulepreload" crossorigin href="./assets/LazyAnyLanguageCodeMirror-CUQODgGJ.js">
+    <link rel="modulepreload" crossorigin href="./assets/micromark-factory-space-P--XWZhg.js">
+    <link rel="modulepreload" crossorigin href="./assets/chunk-5FQGJX7Z-C6VN0dQj.js">
+    <link rel="modulepreload" crossorigin href="./assets/markdown-renderer-f3mfGw8u.js">
+    <link rel="modulepreload" crossorigin href="./assets/command-CsbsBLBw.js">
+    <link rel="modulepreload" crossorigin href="./assets/field-CA9HCE2Y.js">
+    <link rel="modulepreload" crossorigin href="./assets/popover-DMNO6Poc.js">
+    <link rel="modulepreload" crossorigin href="./assets/errors-48KFPvCp.js">
+    <link rel="modulepreload" crossorigin href="./assets/download-rKGlekSQ.js">
+    <link rel="modulepreload" crossorigin href="./assets/table-Fk_msRcD.js">
+    <link rel="modulepreload" crossorigin href="./assets/useIframeCapabilities-DuGyzPVb.js">
+    <link rel="modulepreload" crossorigin href="./assets/error-banner-C4DZksWV.js">
+    <link rel="modulepreload" crossorigin href="./assets/formats-Dkhsq416.js">
+    <link rel="modulepreload" crossorigin href="./assets/en-US-DZwIjHwu.js">
+    <link rel="modulepreload" crossorigin href="./assets/isValid-Cgon0fXK.js">
+    <link rel="modulepreload" crossorigin href="./assets/dates-CnrjjcMO.js">
+    <link rel="modulepreload" crossorigin href="./assets/extends-2LbFKIQQ.js">
+    <link rel="modulepreload" crossorigin href="./assets/emotion-is-prop-valid.esm-DiQGBfwj.js">
+    <link rel="modulepreload" crossorigin href="./assets/useDateFormatter-CANi6nSX.js">
+    <link rel="modulepreload" crossorigin href="./assets/react-icons.esm-C2u-_EAQ.js">
+    <link rel="modulepreload" crossorigin href="./assets/RSPContexts-CXueMbRb.js">
+    <link rel="modulepreload" crossorigin href="./assets/table-DxdydCSG.js">
+    <link rel="modulepreload" crossorigin href="./assets/ellipsis-D0iYysLh.js">
+    <link rel="modulepreload" crossorigin href="./assets/external-link-BktyywYg.js">
+    <link rel="modulepreload" crossorigin href="./assets/message-circle-D_YIPPZo.js">
+    <link rel="modulepreload" crossorigin href="./assets/plus-CExKUszm.js">
+    <link rel="modulepreload" crossorigin href="./assets/trash-2-CjPoUZCP.js">
+    <link rel="modulepreload" crossorigin href="./assets/react-resizable-panels.browser.esm-CgWOEYeG.js">
+    <link rel="modulepreload" crossorigin href="./assets/JsonOutput-DTeVFctC.js">
+    <link rel="modulepreload" crossorigin href="./assets/chart-no-axes-column-DVEV2j1H.js">
+    <link rel="modulepreload" crossorigin href="./assets/square-function-CPbVtjKW.js">
+    <link rel="modulepreload" crossorigin href="./assets/spec-BzxoPflZ.js">
+    <link rel="modulepreload" crossorigin href="./assets/column-preview-VcOeHtkt.js">
+    <link rel="modulepreload" crossorigin href="./assets/icons-D3YFXNmD.js">
+    <link rel="modulepreload" crossorigin href="./assets/radio-group-D7RG9Px_.js">
+    <link rel="modulepreload" crossorigin href="./assets/floating-outline-CPTvLHMl.js">
+    <link rel="modulepreload" crossorigin href="./assets/objectWithoutPropertiesLoose-Msf1n32r.js">
+    <link rel="modulepreload" crossorigin href="./assets/esm-DSv-aO_T.js">
+    <link rel="modulepreload" crossorigin href="./assets/readonly-python-code-DHJTIc4H.js">
+    <link rel="modulepreload" crossorigin href="./assets/file-headphone-CUN2DC78.js">
+    <link rel="modulepreload" crossorigin href="./assets/file-BvoBtS_V.js">
+    <link rel="modulepreload" crossorigin href="./assets/image-jhXeQEgs.js">
+    <link rel="modulepreload" crossorigin href="./assets/file-icons-DBMviz_K.js">
+    <link rel="modulepreload" crossorigin href="./assets/switch-DHhZkGEv.js">
+    <link rel="modulepreload" crossorigin href="./assets/events-BRbNg7Li.js">
+    <link rel="modulepreload" crossorigin href="./assets/globals-BDWM3c_z.js">
+    <link rel="modulepreload" crossorigin href="./assets/share-vrPro738.js">
+    <link rel="modulepreload" crossorigin href="./assets/blob-dGUJ3Bw8.js">
+    <link rel="modulepreload" crossorigin href="./assets/memoize-Tp7rARFe.js">
+    <link rel="modulepreload" crossorigin href="./assets/get-C-qh_et5.js">
+    <link rel="modulepreload" crossorigin href="./assets/_baseSet-CsW0tABf.js">
+    <link rel="modulepreload" crossorigin href="./assets/state-D7fu7IC3.js">
+    <link rel="modulepreload" crossorigin href="./assets/label-CFvCMYuj.js">
+    <link rel="modulepreload" crossorigin href="./assets/textarea-DD5BwHTh.js">
+    <link rel="modulepreload" crossorigin href="./assets/refresh-ccw-CUkO1Vlo.js">
+    <link rel="modulepreload" crossorigin href="./assets/form-B9I9mpZy.js">
+    <link rel="modulepreload" crossorigin href="./assets/renderShortcut-CKbqJyj4.js">
+    <link rel="modulepreload" crossorigin href="./assets/useBoolean-48bgGoSa.js">
+    <link rel="modulepreload" crossorigin href="./assets/useDeepCompareMemoize-zUHU--0D.js">
+    <link rel="modulepreload" crossorigin href="./assets/types-xF5uWODg.js">
+    <link rel="modulepreload" crossorigin href="./assets/semaphore-FlZezxaf.js">
+    <link rel="modulepreload" crossorigin href="./assets/fileToBase64-Doh9J-g6.js">
+    <link rel="modulepreload" crossorigin href="./assets/pathUtils-ANiMIEDI.js">
+    <link rel="modulepreload" crossorigin href="./assets/prop-types-D_pYuT11.js">
+    <link rel="modulepreload" crossorigin href="./assets/es-Cy7KBUrF.js">
+    <link rel="modulepreload" crossorigin href="./assets/_hasPath-hMc_3QZy.js">
+    <link rel="modulepreload" crossorigin href="./assets/hasIn-CSsM95b1.js">
+    <link rel="modulepreload" crossorigin href="./assets/flatten-Bd5tsfm_.js">
+    <link rel="modulepreload" crossorigin href="./assets/pick-D1xb4gl6.js">
+    <link rel="modulepreload" crossorigin href="./assets/code-xml-tqeFGeKJ.js">
+    <link rel="modulepreload" crossorigin href="./assets/house-DkdBWh44.js">
+    <link rel="modulepreload" crossorigin href="./assets/square-DPWHdF_-.js">
+    <link rel="modulepreload" crossorigin href="./assets/triangle-alert-CV7pqa1o.js">
+    <link rel="modulepreload" crossorigin href="./assets/bundle.esm-BULc9l6b.js">
+    <link rel="stylesheet" crossorigin href="./assets/cells-BVzo2MHf.css">
+    <link rel="stylesheet" crossorigin href="./assets/markdown-renderer-DdDKmWlR.css">
+    <link rel="stylesheet" crossorigin href="./assets/JsonOutput-BQtz7-np.css">
+    <link rel="stylesheet" crossorigin href="./assets/index-CaelsqOA.css">
+  <marimo-wasm hidden=""></marimo-wasm>
+    <script>
+        if (window.location.protocol === 'file:') {
+            alert('Warning: This file must be served by an HTTP server to function correctly.');
+        }
+    </script>
+    
+    <style>
+        #save-button {
+            display: none !important;
+        }
+        #filename-input {
+            display: none !important;
+        }
+    </style>
+    
+<script data-marimo="true">
+    Object.defineProperty(window, "__MARIMO_EXPORT_CONTEXT__", {
+        value: Object.freeze({
+            trusted: true,
+            notebookCode: "# notebooks/exercises/ex_09_a.py\n\nimport marimo\n\n__generated_with = \"0.23.13\"\napp = marimo.App(width=\"medium\")\n\n\n@app.cell\ndef _():\n    import marimo as mo\n\n    return (mo,)\n\n\n@app.function(hide_code=True)\n# Helper \u2014 echoes the student's current answer as a \"Your result\" preview.\ndef show_result(value):\n    if value is None:\n        return \"\"\n    if isinstance(value, str):\n        return f\"\\n\\n**Your result:**\\n\\n```\\n{value}\\n```\"\n    return f\"\\n\\n**Your result:** `{value}`\"\n\n\n@app.cell(hide_code=True)\ndef _(mo):\n    mo.md(r\"\"\"\n    # \u26a1 Quick exercise: your first chart (5\u201310 min)\n\n    Episode 9: the investor's one instruction was \"charts I can't argue\n    with.\" A table of seven numbers doesn't argue anything \u2014 a line does.\n\n    `plt.plot(x, y)` draws the line; `plt.xlabel`, `plt.ylabel`, and\n    `plt.title` label it. One marimo rule that trips everyone up once:\n    the LAST expression in a cell is what displays, so chart cells end\n    with `plt.gca()` (\"get current axes\"), never `plt.show()`.\n\n    **Predict** first: look at the numbers in the demo below: which way\n    does the line slope, up or down?\n    \"\"\")\n    return\n\n\n@app.cell\ndef _():\n    import matplotlib.pyplot as plt\n\n    return (plt,)\n\n\n@app.cell\ndef _(plt):\n    # Worked example (read + run this)\n    _demo_signups = [80, 55, 20]\n    plt.figure()  # starts a fresh figure \u2014 keeps this chart from drawing on top of the last one\n    plt.plot(_demo_signups)\n    plt.title(\"Demo: three weeks of signups\")\n    plt.gca()\n    return\n\n\n@app.cell(hide_code=True)\ndef _(mo):\n    mo.md(r\"\"\"\n    `revenues_exa` below is one real week (Monday \u2192 Sunday). Plot it the\n    same way as the demo, then read the chart to answer two questions\n    for the investor: the week's **total** revenue, and **which day**\n    (1 = Monday \u2026 7 = Sunday) brought in the most.\n\n    The chart itself isn't graded. The check below reads your numbers,\n    not your art.\n    \"\"\")\n    return\n\n\n@app.cell\ndef _():\n    # Given \u2014 do not change this\n    revenues_exa = [142.50, 168.20, 155.90, 201.40, 189.60, 246.80, 232.10]\n    return\n\n\n@app.cell\ndef _(plt):\n    plt.figure()\n    # YOUR CODE BELOW \u2014 plot revenues_exa (labels/title optional, ungraded)\n    plt.gca()\n    return\n\n\n@app.cell\ndef _():\n    # YOUR CODE BELOW \u2014 replace None\n    total_exa = None\n    return (total_exa,)\n\n\n@app.cell\ndef _():\n    # YOUR CODE BELOW \u2014 replace None\n    best_day_exa = None\n    return (best_day_exa,)\n\n\n@app.cell(hide_code=True)\ndef _(best_day_exa, mo, total_exa):\n    # Reactive check \u2014 re-runs automatically whenever the cells above change.\n    _expected_total = 1336.5\n    _expected_day = 6\n    _result = None\n    if total_exa is None or best_day_exa is None:\n        _ok = False\n        _msg = \"\ud83d\udd32 Not attempted yet.\"\n    elif isinstance(total_exa, (list, tuple)) or isinstance(best_day_exa, (list, tuple)):\n        _ok = False\n        _result = f\"total_exa={total_exa!r}, best_day_exa={best_day_exa!r}\"\n        _msg = \"\u274c One of these is still a whole list \u2014 the investor wants two single numbers.\"\n    else:\n        # Coerce to plain numbers first \u2014 anything that can't be must\n        # degrade to a message, never crash the check.\n        try:\n            _total = round(float(total_exa), 2)\n            _day = float(best_day_exa)\n        except (TypeError, ValueError):\n            _ok = False\n            _total = None\n            _day = None\n            _msg = \"\u274c These should both be plain numbers \u2014 check what your expressions actually return.\"\n        else:\n            _result = f\"total_exa={total_exa}, best_day_exa={best_day_exa}\"\n            if _total == _expected_total and _day == _expected_day:\n                _ok = True\n                _msg = \"\u2705 Correct! A solid week \u2014 and you know exactly which day carried it.\"\n            elif _day == 5:\n                _ok = False\n                _msg = \"\u274c `best_day_exa` is off by one \u2014 Python counts positions from 0, but days count from 1. What do you need to add?\"\n            elif _day == 246.8:\n                _ok = False\n                _msg = \"\u274c `best_day_exa` looks like a revenue number, not a day \u2014 that's the VALUE. The investor asked WHICH day.\"\n            elif _total == _expected_total:\n                _ok = False\n                _msg = \"\u274c Your total is right, but `best_day_exa` isn't \u2014 find the POSITION of the biggest number, not the number itself.\"\n            elif _day == _expected_day:\n                _ok = False\n                _msg = \"\u274c `best_day_exa` is right, but your total isn't \u2014 check your sum over all seven days.\"\n            else:\n                _ok = False\n                _msg = \"\u274c Not quite \u2014 `total_exa` is a sum over the week, `best_day_exa` is a position from 1 to 7.\"\n    mo.callout(mo.md(_msg + show_result(_result)), kind=\"success\" if _ok else \"warn\")\n    return\n\n\n@app.cell(hide_code=True)\ndef _(mo):\n    mo.accordion(\n        {\n            \"\ud83d\udca1 Hint 1 (a nudge)\": \"`plt.plot(range(1, 8), revenues_exa)` draws the line for your eyes \u2014 the check only reads `total_exa` and `best_day_exa`. For the total, add up the week. For the day, find the POSITION of the biggest number \u2014 then remember days start at 1, Python starts at 0.\",\n            \"\ud83d\udca1 Hint 2 (the structure)\": \"total_exa = float(sum(___))\\nbest_day_exa = revenues_exa.index(max(revenues_exa)) + ___\",\n        }\n    )\n    return\n\n\n@app.cell(hide_code=True)\ndef _(mo):\n    mo.md(\"\"\"\n    *Nothing to save. This was a sandbox.*\n    \"\"\")\n    return\n\n\nif __name__ == \"__main__\":\n    app.run()\n",
+        }),
+        writable: false,
+        configurable: false,
+    });
+</script>
+<marimo-code hidden="">%23%20notebooks%2Fexercises%2Fex_09_a.py%0A%0Aimport%20marimo%0A%0A__generated_with%20%3D%20%220.23.13%22%0Aapp%20%3D%20marimo.App(width%3D%22medium%22)%0A%0A%0A%40app.cell%0Adef%20_()%3A%0A%20%20%20%20import%20marimo%20as%20mo%0A%0A%20%20%20%20return%20(mo%2C)%0A%0A%0A%40app.function(hide_code%3DTrue)%0A%23%20Helper%20%E2%80%94%20echoes%20the%20student's%20current%20answer%20as%20a%20%22Your%20result%22%20preview.%0Adef%20show_result(value)%3A%0A%20%20%20%20if%20value%20is%20None%3A%0A%20%20%20%20%20%20%20%20return%20%22%22%0A%20%20%20%20if%20isinstance(value%2C%20str)%3A%0A%20%20%20%20%20%20%20%20return%20f%22%5Cn%5Cn**Your%20result%3A**%5Cn%5Cn%60%60%60%5Cn%7Bvalue%7D%5Cn%60%60%60%22%0A%20%20%20%20return%20f%22%5Cn%5Cn**Your%20result%3A**%20%60%7Bvalue%7D%60%22%0A%0A%0A%40app.cell(hide_code%3DTrue)%0Adef%20_(mo)%3A%0A%20%20%20%20mo.md(r%22%22%22%0A%20%20%20%20%23%20%E2%9A%A1%20Quick%20exercise%3A%20your%20first%20chart%20(5%E2%80%9310%20min)%0A%0A%20%20%20%20Episode%209%3A%20the%20investor's%20one%20instruction%20was%20%22charts%20I%20can't%20argue%0A%20%20%20%20with.%22%20A%20table%20of%20seven%20numbers%20doesn't%20argue%20anything%20%E2%80%94%20a%20line%20does.%0A%0A%20%20%20%20%60plt.plot(x%2C%20y)%60%20draws%20the%20line%3B%20%60plt.xlabel%60%2C%20%60plt.ylabel%60%2C%20and%0A%20%20%20%20%60plt.title%60%20label%20it.%20One%20marimo%20rule%20that%20trips%20everyone%20up%20once%3A%0A%20%20%20%20the%20LAST%20expression%20in%20a%20cell%20is%20what%20displays%2C%20so%20chart%20cells%20end%0A%20%20%20%20with%20%60plt.gca()%60%20(%22get%20current%20axes%22)%2C%20never%20%60plt.show()%60.%0A%0A%20%20%20%20**Predict**%20first%3A%20look%20at%20the%20numbers%20in%20the%20demo%20below%3A%20which%20way%0A%20%20%20%20does%20the%20line%20slope%2C%20up%20or%20down%3F%0A%20%20%20%20%22%22%22)%0A%20%20%20%20return%0A%0A%0A%40app.cell%0Adef%20_()%3A%0A%20%20%20%20import%20matplotlib.pyplot%20as%20plt%0A%0A%20%20%20%20return%20(plt%2C)%0A%0A%0A%40app.cell%0Adef%20_(plt)%3A%0A%20%20%20%20%23%20Worked%20example%20(read%20%2B%20run%20this)%0A%20%20%20%20_demo_signups%20%3D%20%5B80%2C%2055%2C%2020%5D%0A%20%20%20%20plt.figure()%20%20%23%20starts%20a%20fresh%20figure%20%E2%80%94%20keeps%20this%20chart%20from%20drawing%20on%20top%20of%20the%20last%20one%0A%20%20%20%20plt.plot(_demo_signups)%0A%20%20%20%20plt.title(%22Demo%3A%20three%20weeks%20of%20signups%22)%0A%20%20%20%20plt.gca()%0A%20%20%20%20return%0A%0A%0A%40app.cell(hide_code%3DTrue)%0Adef%20_(mo)%3A%0A%20%20%20%20mo.md(r%22%22%22%0A%20%20%20%20%60revenues_exa%60%20below%20is%20one%20real%20week%20(Monday%20%E2%86%92%20Sunday).%20Plot%20it%20the%0A%20%20%20%20same%20way%20as%20the%20demo%2C%20then%20read%20the%20chart%20to%20answer%20two%20questions%0A%20%20%20%20for%20the%20investor%3A%20the%20week's%20**total**%20revenue%2C%20and%20**which%20day**%0A%20%20%20%20(1%20%3D%20Monday%20%E2%80%A6%207%20%3D%20Sunday)%20brought%20in%20the%20most.%0A%0A%20%20%20%20The%20chart%20itself%20isn't%20graded.%20The%20check%20below%20reads%20your%20numbers%2C%0A%20%20%20%20not%20your%20art.%0A%20%20%20%20%22%22%22)%0A%20%20%20%20return%0A%0A%0A%40app.cell%0Adef%20_()%3A%0A%20%20%20%20%23%20Given%20%E2%80%94%20do%20not%20change%20this%0A%20%20%20%20revenues_exa%20%3D%20%5B142.50%2C%20168.20%2C%20155.90%2C%20201.40%2C%20189.60%2C%20246.80%2C%20232.10%5D%0A%20%20%20%20return%0A%0A%0A%40app.cell%0Adef%20_(plt)%3A%0A%20%20%20%20plt.figure()%0A%20%20%20%20%23%20YOUR%20CODE%20BELOW%20%E2%80%94%20plot%20revenues_exa%20(labels%2Ftitle%20optional%2C%20ungraded)%0A%20%20%20%20plt.gca()%0A%20%20%20%20return%0A%0A%0A%40app.cell%0Adef%20_()%3A%0A%20%20%20%20%23%20YOUR%20CODE%20BELOW%20%E2%80%94%20replace%20None%0A%20%20%20%20total_exa%20%3D%20None%0A%20%20%20%20return%20(total_exa%2C)%0A%0A%0A%40app.cell%0Adef%20_()%3A%0A%20%20%20%20%23%20YOUR%20CODE%20BELOW%20%E2%80%94%20replace%20None%0A%20%20%20%20best_day_exa%20%3D%20None%0A%20%20%20%20return%20(best_day_exa%2C)%0A%0A%0A%40app.cell(hide_code%3DTrue)%0Adef%20_(best_day_exa%2C%20mo%2C%20total_exa)%3A%0A%20%20%20%20%23%20Reactive%20check%20%E2%80%94%20re-runs%20automatically%20whenever%20the%20cells%20above%20change.%0A%20%20%20%20_expected_total%20%3D%201336.5%0A%20%20%20%20_expected_day%20%3D%206%0A%20%20%20%20_result%20%3D%20None%0A%20%20%20%20if%20total_exa%20is%20None%20or%20best_day_exa%20is%20None%3A%0A%20%20%20%20%20%20%20%20_ok%20%3D%20False%0A%20%20%20%20%20%20%20%20_msg%20%3D%20%22%F0%9F%94%B2%20Not%20attempted%20yet.%22%0A%20%20%20%20elif%20isinstance(total_exa%2C%20(list%2C%20tuple))%20or%20isinstance(best_day_exa%2C%20(list%2C%20tuple))%3A%0A%20%20%20%20%20%20%20%20_ok%20%3D%20False%0A%20%20%20%20%20%20%20%20_result%20%3D%20f%22total_exa%3D%7Btotal_exa!r%7D%2C%20best_day_exa%3D%7Bbest_day_exa!r%7D%22%0A%20%20%20%20%20%20%20%20_msg%20%3D%20%22%E2%9D%8C%20One%20of%20these%20is%20still%20a%20whole%20list%20%E2%80%94%20the%20investor%20wants%20two%20single%20numbers.%22%0A%20%20%20%20else%3A%0A%20%20%20%20%20%20%20%20%23%20Coerce%20to%20plain%20numbers%20first%20%E2%80%94%20anything%20that%20can't%20be%20must%0A%20%20%20%20%20%20%20%20%23%20degrade%20to%20a%20message%2C%20never%20crash%20the%20check.%0A%20%20%20%20%20%20%20%20try%3A%0A%20%20%20%20%20%20%20%20%20%20%20%20_total%20%3D%20round(float(total_exa)%2C%202)%0A%20%20%20%20%20%20%20%20%20%20%20%20_day%20%3D%20float(best_day_exa)%0A%20%20%20%20%20%20%20%20except%20(TypeError%2C%20ValueError)%3A%0A%20%20%20%20%20%20%20%20%20%20%20%20_ok%20%3D%20False%0A%20%20%20%20%20%20%20%20%20%20%20%20_total%20%3D%20None%0A%20%20%20%20%20%20%20%20%20%20%20%20_day%20%3D%20None%0A%20%20%20%20%20%20%20%20%20%20%20%20_msg%20%3D%20%22%E2%9D%8C%20These%20should%20both%20be%20plain%20numbers%20%E2%80%94%20check%20what%20your%20expressions%20actually%20return.%22%0A%20%20%20%20%20%20%20%20else%3A%0A%20%20%20%20%20%20%20%20%20%20%20%20_result%20%3D%20f%22total_exa%3D%7Btotal_exa%7D%2C%20best_day_exa%3D%7Bbest_day_exa%7D%22%0A%20%20%20%20%20%20%20%20%20%20%20%20if%20_total%20%3D%3D%20_expected_total%20and%20_day%20%3D%3D%20_expected_day%3A%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20_ok%20%3D%20True%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20_msg%20%3D%20%22%E2%9C%85%20Correct!%20A%20solid%20week%20%E2%80%94%20and%20you%20know%20exactly%20which%20day%20carried%20it.%22%0A%20%20%20%20%20%20%20%20%20%20%20%20elif%20_day%20%3D%3D%205%3A%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20_ok%20%3D%20False%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20_msg%20%3D%20%22%E2%9D%8C%20%60best_day_exa%60%20is%20off%20by%20one%20%E2%80%94%20Python%20counts%20positions%20from%200%2C%20but%20days%20count%20from%201.%20What%20do%20you%20need%20to%20add%3F%22%0A%20%20%20%20%20%20%20%20%20%20%20%20elif%20_day%20%3D%3D%20246.8%3A%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20_ok%20%3D%20False%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20_msg%20%3D%20%22%E2%9D%8C%20%60best_day_exa%60%20looks%20like%20a%20revenue%20number%2C%20not%20a%20day%20%E2%80%94%20that's%20the%20VALUE.%20The%20investor%20asked%20WHICH%20day.%22%0A%20%20%20%20%20%20%20%20%20%20%20%20elif%20_total%20%3D%3D%20_expected_total%3A%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20_ok%20%3D%20False%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20_msg%20%3D%20%22%E2%9D%8C%20Your%20total%20is%20right%2C%20but%20%60best_day_exa%60%20isn't%20%E2%80%94%20find%20the%20POSITION%20of%20the%20biggest%20number%2C%20not%20the%20number%20itself.%22%0A%20%20%20%20%20%20%20%20%20%20%20%20elif%20_day%20%3D%3D%20_expected_day%3A%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20_ok%20%3D%20False%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20_msg%20%3D%20%22%E2%9D%8C%20%60best_day_exa%60%20is%20right%2C%20but%20your%20total%20isn't%20%E2%80%94%20check%20your%20sum%20over%20all%20seven%20days.%22%0A%20%20%20%20%20%20%20%20%20%20%20%20else%3A%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20_ok%20%3D%20False%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20_msg%20%3D%20%22%E2%9D%8C%20Not%20quite%20%E2%80%94%20%60total_exa%60%20is%20a%20sum%20over%20the%20week%2C%20%60best_day_exa%60%20is%20a%20position%20from%201%20to%207.%22%0A%20%20%20%20mo.callout(mo.md(_msg%20%2B%20show_result(_result))%2C%20kind%3D%22success%22%20if%20_ok%20else%20%22warn%22)%0A%20%20%20%20return%0A%0A%0A%40app.cell(hide_code%3DTrue)%0Adef%20_(mo)%3A%0A%20%20%20%20mo.accordion(%0A%20%20%20%20%20%20%20%20%7B%0A%20%20%20%20%20%20%20%20%20%20%20%20%22%F0%9F%92%A1%20Hint%201%20(a%20nudge)%22%3A%20%22%60plt.plot(range(1%2C%208)%2C%20revenues_exa)%60%20draws%20the%20line%20for%20your%20eyes%20%E2%80%94%20the%20check%20only%20reads%20%60total_exa%60%20and%20%60best_day_exa%60.%20For%20the%20total%2C%20add%20up%20the%20week.%20For%20the%20day%2C%20find%20the%20POSITION%20of%20the%20biggest%20number%20%E2%80%94%20then%20remember%20days%20start%20at%201%2C%20Python%20starts%20at%200.%22%2C%0A%20%20%20%20%20%20%20%20%20%20%20%20%22%F0%9F%92%A1%20Hint%202%20(the%20structure)%22%3A%20%22total_exa%20%3D%20float(sum(___))%5Cnbest_day_exa%20%3D%20revenues_exa.index(max(revenues_exa))%20%2B%20___%22%2C%0A%20%20%20%20%20%20%20%20%7D%0A%20%20%20%20)%0A%20%20%20%20return%0A%0A%0A%40app.cell(hide_code%3DTrue)%0Adef%20_(mo)%3A%0A%20%20%20%20mo.md(%22%22%22%0A%20%20%20%20*Nothing%20to%20save.%20This%20was%20a%20sandbox.*%0A%20%20%20%20%22%22%22)%0A%20%20%20%20return%0A%0A%0Aif%20__name__%20%3D%3D%20%22__main__%22%3A%0A%20%20%20%20app.run()%0A</marimo-code></head>
+  <body>
+    <div id="root"></div>
+    <!-- This is a portal for the data editor to render in -->
+    <div id="portal" data-testid="glide-portal" style="position: fixed; left: 0; top: 0; z-index: 9999"></div>
+    <script data-marimo="true">
+      Object.defineProperty(window, "__MARIMO_MOUNT_CONFIG__", {
+        value: Object.freeze({
+            "filename": "notebook.py",
+            "cwd": "",
+            "lspWorkspace": null,
+            "mode": "edit",
+            "version": "0.23.13",
+            "serverToken": "unused",
+            "config": {"ai": {"custom_providers": {}, "enabled": true, "models": {"custom_models": [], "displayed_models": []}}, "completion": {"activate_on_typing": true, "auto_close_pairs": true, "copilot": false, "signature_hint_on_typing": false}, "diagnostics": {"sql_linter": true}, "display": {"cell_output": "below", "code_editor_font_size": 14, "dataframes": "rich", "default_table_max_columns": 50, "default_table_page_size": 10, "default_width": "medium", "reference_highlighting": true, "theme": "light"}, "formatting": {"line_length": 79}, "keymap": {"overrides": {}, "preset": "default"}, "language_servers": {"pylsp": {"enable_flake8": false, "enable_mypy": true, "enable_pydocstyle": false, "enable_pyflakes": false, "enable_pylint": false, "enable_ruff": true, "enabled": false}}, "mcp": {"mcpServers": {}, "presets": []}, "package_management": {"manager": "uv"}, "runtime": {"auto_instantiate": false, "auto_reload": "off", "default_csv_encoding": "utf-8", "default_sql_output": "auto", "on_cell_change": "autorun", "output_max_bytes": 8000000, "reactive_tests": true, "show_tracebacks": false, "std_stream_max_bytes": 1000000, "watcher_on_save": "lazy"}, "save": {"autosave": "off", "autosave_delay": 1000, "format_on_save": false}, "server": {"browser": "default", "follow_symlink": false}, "snippets": {"custom_paths": [], "include_default_snippets": true}},
+            "configOverrides": {},
+            "appConfig": {"sql_output": "auto", "width": "medium"},
+            "view": {"showAppCode": false},
+            "notebook": null,
+            "session": null,
+            "runtimeConfig": null,
+        }),
+        writable: false,
+        configurable: false,
+      });
+    </script>
+  </body>
+</html>

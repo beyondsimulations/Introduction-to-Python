@@ -6,11 +6,11 @@
 <script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
 <link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
 <link href="../site_libs/quarto-html/light-border.css" rel="stylesheet">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-acf12a64177840b8d86f2d4f01b2e9fb.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
-  <meta name="generator" content="quarto-1.9.37">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-de63f62b328812d8e578a4d74e282472.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
+  <meta name="generator" content="quarto-1.9.38">
 
   <meta name="author" content="Dr.&nbsp;Tobias Vlćek">
-  <title>Programming with Python – Lecture V - Handling Errors</title>
+  <title>Programming with Python – Lecture V - Errors and Debugging</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
@@ -98,7 +98,7 @@
     code span.vs { color: #032f62; } /* VerbatimString */
     code span.wa { color: #ff5555; } /* Warning */
   </style>
-  <link rel="stylesheet" href="../site_libs/revealjs/dist/theme/quarto-f85b3b3185a4ab11126f7e6ba17b9231.css">
+  <link rel="stylesheet" href="../site_libs/revealjs/dist/theme/quarto-98747a31849c37b7af6917e6faa4a735.css">
   <link href="../site_libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
   <link href="../site_libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
   <link href="../site_libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
@@ -196,7 +196,7 @@
     <div class="slides">
 
 <section id="title-slide" class="quarto-title-block center">
-  <h1 class="title">Lecture V - Handling Errors</h1>
+  <h1 class="title">Lecture V - Errors and Debugging</h1>
   <p class="subtitle">Programming with Python</p>
 
 <div class="quarto-title-authors">
@@ -205,70 +205,24 @@
 Dr.&nbsp;Tobias Vlćek 
 </div>
         <p class="quarto-title-affiliation">
-            Kühne Logistics University Hamburg - Fall 2025
+            Kühne Logistics University Hamburg - Fall 2026
           </p>
     </div>
 </div>
 
 </section>
-<section>
-<section id="quick-recap-of-the-last-lecture" class="title-slide slide level1 title center">
-<h1><span class="flow">Quick Recap of the last Lecture</span></h1>
-
-</section>
-<section id="data-structures" class="slide level2">
-<h2>Data Structures</h2>
+<section id="checkpoint-2-before-the-doors-open" class="title-slide slide level1 exercise-slide center">
+<h1>📋 Checkpoint 2 — before the doors open</h1>
+<p>The first <strong>40 minutes</strong> are the checkpoint. It starts <strong>now</strong>.</p>
 <ul>
-<li><span class="highlight">Newly</span> introduced data structures:
-<ul>
-<li><strong>Tuples</strong>: Ordered, immutable collections</li>
-<li><strong>Lists</strong>: Ordered, mutable collections</li>
-<li><strong>Sets</strong>: Unordered collections of unique elements</li>
-<li><strong>Dictionaries</strong>: Key-value pairs</li>
-</ul></li>
+<li><strong>Individual work</strong>: no AI, no neighbors, no chat</li>
+<li>The <strong>link and QR</strong> are handed out in class. Open it and start</li>
+<li>~6 short tasks: write code, trace code, fix a bug, answer a multiple choice</li>
 </ul>
+<!-- QR handed out live — never in the deck -->
 <div class="fragment">
-<div id="190ea25a" class="cell" data-execution_count="1">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a></a>list_example <span class="op">=</span> [<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">5</span>]</span>
-<span id="cb1-2"><a></a>set_example <span class="op">=</span> {<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">5</span>}</span>
-<span id="cb1-3"><a></a>dict_example <span class="op">=</span> {<span class="st">"a"</span>: <span class="dv">1</span>, <span class="st">"b"</span>: <span class="dv">2</span>, <span class="st">"c"</span>: <span class="dv">3</span>}</span>
-<span id="cb1-4"><a></a>tuple_example <span class="op">=</span> (<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">5</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p><strong>When you’re done:</strong> menu → <em>Download</em> → <em>Download Python code</em> → upload the <code>.py</code> to the <strong>“Checkpoint 2”</strong> assignment on Moodle.</p>
 </div>
-</div>
-</section>
-<section id="operations-and-methods" class="slide level2">
-<h2>Operations and Methods</h2>
-<ul>
-<li>Each data structure has specific operations and methods:
-<ul>
-<li>Tuples and Lists: Indexing, slicing, concatenation</li>
-<li>Sets: Union, intersection, difference</li>
-<li>Dictionaries: Key-based access, <code>keys()</code>, <code>values()</code></li>
-</ul></li>
-</ul>
-<div class="fragment">
-<div class="callout callout-tip callout-style-simple">
-<div class="callout-body">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-content">
-<p><strong>Comprehensions</strong> for concise creation of these structures are often used in practice to create new data structures from existing ones.</p>
-</div>
-</div>
-</div>
-</div>
-</section>
-<section id="io-and-file-handling" class="slide level2">
-<h2>I/O and File Handling</h2>
-<ul>
-<li>Basic file operations
-<ul>
-<li>Opening files with <code>open()</code></li>
-<li>Reading and writing files</li>
-<li>Using the <code>with</code> statement for safer file handling</li>
-</ul></li>
-</ul>
 <div class="fragment">
 <div class="callout callout-note callout-style-simple">
 <div class="callout-body">
@@ -276,35 +230,113 @@ Dr.&nbsp;Tobias Vlćek
 <i class="callout-icon"></i>
 </div>
 <div class="callout-content">
-<p>This covers the main points from our last lecture on data structures and file handling in Python.</p>
+<p>The green ✅ live checks are <strong>provisional</strong>. The final grading runs on our side. And take a breath: everything in it was rehearsed in the labs.</p>
 </div>
 </div>
 </div>
+</div>
+</section>
+
+<section>
+<section id="episode-5-the-3-am-checkout" class="title-slide slide level1 title center">
+<h1><span class="flow">Episode 5: The 3-AM Checkout</span></h1>
+
+</section>
+<section id="after-the-checkpoint" class="slide level2">
+<h2>After the checkpoint</h2>
+<p>Pens down. The checkpoint is behind you. Now the reason we’re all here.</p>
+<div class="fragment">
+<p>At 3 AM, running on his fourth energy drink, Kevin rewrote the <strong>entire checkout</strong> “to make it faster.” He went to bed very pleased. This morning two things are true: the till is a minefield of crashes, and the <strong>health inspector</strong> just called to announce a surprise visit.</p>
+</div>
+<div class="fragment">
+<p>So today the code learns to survive things going wrong. We read a <strong>traceback</strong>, catch failures with <strong>try/except</strong>, and let our own code <strong>refuse</strong> bad input.</p>
 </div>
 </section></section>
 <section>
-<section id="exceptions" class="title-slide slide level1 title center">
-<h1><span class="flow">Exceptions</span></h1>
+<section id="reading-the-explosion" class="title-slide slide level1 title center">
+<h1><span class="flow">Reading the Explosion</span></h1>
 
 </section>
-<section id="what-are-exceptions" class="slide level2">
-<h2>What are Exceptions?</h2>
+<section id="kevins-3-am-checkout-live" class="slide level2">
+<h2>Kevin’s 3-AM checkout, live</h2>
+<p>A customer typed <code>generous</code> into the tip box. Kevin’s new checkout did this:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a></a>tip_text <span class="op">=</span> <span class="st">"generous"</span></span>
+<span id="cb1-2"><a></a>tip <span class="op">=</span> <span class="bu">float</span>(tip_text)     <span class="co"># 💥</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="fragment">
+<p>Python stopped and printed a <strong>traceback</strong>, a crash report. It looks scary, but it is the most useful thing on your screen:</p>
+<pre><code>Traceback (most recent call last):
+  File "checkout.py", line 12, in &lt;module&gt;
+    tip = float(tip_text)
+ValueError: could not convert string to float: 'generous'</code></pre>
+</div>
+</section>
+<section id="read-the-traceback-bottom-up" class="slide level2">
+<h2>Read the traceback bottom-up</h2>
+<p>You read a traceback from the <strong>bottom up</strong>:</p>
 <ul>
-<li>Exceptions are <span class="highlight">discovered errors</span> that occur during the execution</li>
+<li>the <strong>last line</strong> names <em>what</em> went wrong (<code>ValueError</code>) and gives a hint</li>
+<li>the lines <strong>above</strong> show <em>where</em>: the file, the line number, the guilty code</li>
+</ul>
+<pre><code>      File "checkout.py", line 12, in &lt;module&gt;   ← WHERE it happened
+        tip = float(tip_text)                    ← the exact line
+    ValueError: could not convert ...            ← WHAT went wrong (read me first)</code></pre>
+<div class="fragment">
+<p>Two facts and you know where to go: <strong>line 12</strong>, and it’s a <strong><code>ValueError</code></strong>. The scary wall of text is really just an address and a reason.</p>
+</div>
+</section>
+<section id="the-big-five-1" class="slide level2">
+<h2>The big five (1)</h2>
+<p>A handful of exception types cover almost everything you’ll hit. The first three:</p>
+<ul>
+<li><strong><code>ValueError</code></strong> — right <em>type</em>, senseless <em>value</em>: <code>int("lots")</code></li>
+<li><strong><code>TypeError</code></strong> — the wrong type entirely: <code>"Bowl " + 9</code></li>
+<li><strong><code>KeyError</code></strong> — a dictionary key that isn’t there: <code>table_map["C3"]</code></li>
 </ul>
 <div class="fragment">
-<div id="fbfd603e" class="cell" data-execution_count="2">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a></a><span class="kw">def</span> divide_numbers(a, b):</span>
-<span id="cb2-2"><a></a>        result <span class="op">=</span> a <span class="op">/</span> b</span>
-<span id="cb2-3"><a></a>        <span class="cf">return</span> result</span>
-<span id="cb2-4"><a></a></span>
-<span id="cb2-5"><a></a><span class="bu">print</span>(divide_numbers(<span class="dv">10</span>, <span class="dv">0</span>))</span>
-<span id="cb2-6"><a></a><span class="bu">print</span>(<span class="st">"I will not be printed as the program crashed before."</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Each one is Python refusing to guess. <code>int("lots")</code> has no sensible number; <code>"Bowl " + 9</code> mixes text and a number; <code>table_map["C3"]</code> asks for a key that was never added.</p>
+</div>
+</section>
+<section id="the-big-five-2" class="slide level2">
+<h2>The big five (2)</h2>
+<p>The other two you’ll meet constantly:</p>
+<ul>
+<li><strong><code>IndexError</code></strong> — a list position past the end: <code>seats[9]</code> on a 3-item list</li>
+<li><strong><code>ZeroDivisionError</code></strong> — dividing by zero: <code>88.00 / 0</code> when splitting a bill among no guests</li>
+</ul>
+<div class="fragment">
+<p>You don’t have to memorize all of Python’s exceptions. Recognize these five on sight, and read the last line for the rest.</p>
+</div>
+</section>
+<section id="try-except-catch-the-fall" class="slide level2">
+<h2><code>try</code> / <code>except</code>: catch the fall</h2>
+<p>First, the happy path: text that <strong>looks</strong> like a number converts cleanly; text that doesn’t, explodes. A <strong><code>try</code> / <code>except</code></strong> block runs the risky code and catches the failure instead of stopping the program:</p>
+<div id="063580e0" class="cell" data-execution_count="1">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a></a><span class="bu">print</span>(<span class="bu">float</span>(<span class="st">"5.50"</span>))          <span class="co"># numeric text converts cleanly → 5.5</span></span>
+<span id="cb4-2"><a></a></span>
+<span id="cb4-3"><a></a><span class="cf">try</span>:</span>
+<span id="cb4-4"><a></a>    tip <span class="op">=</span> <span class="bu">float</span>(<span class="st">"generous"</span>)   <span class="co"># non-numeric text raises ValueError...</span></span>
+<span id="cb4-5"><a></a><span class="cf">except</span> <span class="pp">ValueError</span>:</span>
+<span id="cb4-6"><a></a>    tip <span class="op">=</span> <span class="fl">0.0</span>                 <span class="co"># ...caught here, so the checkout keeps going</span></span>
+<span id="cb4-7"><a></a></span>
+<span id="cb4-8"><a></a><span class="bu">print</span>(tip)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<div class="cell fragment" data-execution_count="1">
+<div class="cell-output cell-output-stdout">
+<pre><code>5.5
+0.0</code></pre>
 </div>
 </div>
 <div class="fragment">
-<p><span class="errors">ZeroDivisionError:</span> division by zero</p>
+<p>The risky line goes in the <code>try</code>; the recovery goes in the <code>except</code>. No crash. The program lands in the <code>except</code> and carries on.</p>
 </div>
+</section>
+<section id="catch-the-specific-type" class="slide level2">
+<h2>Catch the <em>specific</em> type</h2>
+<p>Name the exact exception you expect. <code>except ValueError:</code> catches <strong>only</strong> value errors and lets anything else through:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb6"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a></a><span class="cf">try</span>:</span>
+<span id="cb6-2"><a></a>    tip <span class="op">=</span> <span class="bu">float</span>(tip_text)</span>
+<span id="cb6-3"><a></a><span class="cf">except</span> <span class="pp">ValueError</span>:            <span class="co"># only this kind</span></span>
+<span id="cb6-4"><a></a>    tip <span class="op">=</span> <span class="fl">0.0</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="fragment">
 <div class="callout callout-warning callout-style-simple">
 <div class="callout-body">
@@ -312,375 +344,229 @@ Dr.&nbsp;Tobias Vlćek
 <i class="callout-icon"></i>
 </div>
 <div class="callout-content">
-<p>Undiscovered errors can be very <strong>hard to debug</strong> and can cause <strong>crashes</strong> and <strong>other issues</strong>.</p>
+<p>A <strong>bare</strong> <code>except:</code> catches <em>everything</em>, including your own typos (a misspelled variable would vanish silently). Catch the <strong>specific</strong> type, so real bugs still surface.</p>
 </div>
 </div>
 </div>
 </div>
 </section>
-<section id="common-built-in-exceptions-i" class="slide level2">
-<h2>Common Built-in Exceptions I</h2>
-<ul>
-<li><code>ValueError</code>: argument of correct type but inappropriate value</li>
-<li><code>TypeError</code>: function applied to object of inappropriate type</li>
-<li><code>NameError</code>: raised when a local or global name is not found</li>
-<li><code>IndexError</code>: raised when a sequence subscript is out of range</li>
-<li><code>KeyError</code>: raised when a dictionary key is not found</li>
-<li><code>FileNotFoundError</code>: file or directory not found</li>
-<li><code>ZeroDivisionError</code>: division or modulo by zero</li>
-</ul>
-</section>
-<section id="common-built-in-exceptions-ii" class="slide level2">
-<h2>Common Built-in Exceptions II</h2>
-<ul>
-<li><code>AttributeError</code>: attribute reference or assignment fails</li>
-<li><code>ImportError</code>: import of a modulefails</li>
-<li><code>SyntaxError</code>: parser encounters a syntax error</li>
-<li><code>IndentationError</code>: indentation is not correct</li>
-<li><code>RuntimeError</code>: error does not fall into any category</li>
-</ul>
+<section id="predict-which-explosion" class="slide level2">
+<h2>Predict: which explosion?</h2>
+<p>Kevin builds a table label. <code>guests</code> is the number <code>3</code>. What does the <strong>last line</strong> do?</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb7"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a></a>guests <span class="op">=</span> <span class="dv">3</span></span>
+<span id="cb7-2"><a></a>label <span class="op">=</span> <span class="st">"Party of "</span> <span class="op">+</span> guests</span>
+<span id="cb7-3"><a></a><span class="bu">print</span>(label)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>a) prints <code>Party of 3</code> b) raises <code>TypeError</code> c) raises <code>ValueError</code></p>
 <div class="fragment">
-<div class="callout callout-note callout-style-simple">
-<div class="callout-body">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-content">
-<p>The list of built-in exceptions is even longer, these are just the most common ones. We won’t cover the errors listed here in detail, but it is good to be aware of them.</p>
-</div>
-</div>
-</div>
+<p><span class="question">Predict first</span>. Commit to an answer before the next slide.</p>
 </div>
 </section>
-<section id="try-except-blocks" class="slide level2">
-<h2>try-except Blocks</h2>
-<ul>
-<li><code>try-except</code> blocks are used to handle exceptions</li>
-<li><code>try</code> block contains the code that might raise an exception</li>
-<li><code>except</code> block contains the executed code if an exception occurs</li>
-</ul>
+<section id="answer-text-and-numbers-wont-mix" class="slide level2">
+<h2>Answer: text and numbers won’t mix</h2>
+<p><strong>b) raises <code>TypeError</code></strong> — <code>+</code> can glue two strings <em>or</em> add two numbers, but it refuses to mix a string and an <code>int</code>. The fix is to convert first (<code>str(guests)</code>):</p>
+<div id="c6e94522" class="cell" data-execution_count="2">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a></a>guests <span class="op">=</span> <span class="dv">3</span></span>
+<span id="cb8-2"><a></a><span class="cf">try</span>:</span>
+<span id="cb8-3"><a></a>    label <span class="op">=</span> <span class="st">"Party of "</span> <span class="op">+</span> guests</span>
+<span id="cb8-4"><a></a><span class="cf">except</span> <span class="pp">TypeError</span> <span class="im">as</span> e:</span>
+<span id="cb8-5"><a></a>    <span class="bu">print</span>(<span class="st">"TypeError:"</span>, e)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<div class="cell fragment" data-execution_count="2">
+<div class="cell-output cell-output-stdout">
+<pre><code>TypeError: can only concatenate str (not "int") to str</code></pre>
+</div>
+</div>
+</section></section>
+<section id="your-turn-10-minutes" class="title-slide slide level1 exercise-slide center">
+<h1>⚡ Your turn — 10 minutes</h1>
+<p>Open the exercise (scan the QR or type the link):</p>
+<p><strong><a href="https://beyondsimulations.github.io/Introduction-to-Python/notebooks/ex_05_a/">beyondsimulations.github.io/Introduction-to-Python/notebooks/ex_05_a/</a></strong></p>
+
+<img data-src="assets/qr/ex_05_a.png" width="280" class="r-stretch"><p>First <strong>predict</strong> what happens, then run it.</p>
+</section>
+
+<section>
+<section id="debugging-and-defending" class="title-slide slide level1 title center">
+<h1><span class="flow">Debugging and Defending</span></h1>
+
+</section>
+<section id="the-debugging-loop" class="slide level2">
+<h2>The debugging loop</h2>
+<p>When something is wrong, you don’t guess randomly. You follow a loop:</p>
+<ol type="1">
+<li><strong>Read</strong> the traceback: it hands you the <em>what</em> and the <em>where</em></li>
+<li><strong>Reproduce</strong> the crash: make it happen on demand</li>
+<li><strong>Isolate</strong>: narrow down to the smallest failing piece</li>
+<li><strong>Fix</strong>: change one thing, then run again</li>
+</ol>
 <div class="fragment">
-<div id="2cfdd04b" class="cell" data-execution_count="3">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a></a><span class="kw">def</span> divide_numbers(a, b):</span>
-<span id="cb3-2"><a></a>    <span class="cf">try</span>:</span>
-<span id="cb3-3"><a></a>        result <span class="op">=</span> a <span class="op">/</span> b</span>
-<span id="cb3-4"><a></a>        <span class="cf">return</span> result</span>
-<span id="cb3-5"><a></a>    <span class="cf">except</span> <span class="pp">ZeroDivisionError</span>:</span>
-<span id="cb3-6"><a></a>        <span class="cf">return</span> <span class="st">"Error: Division by zero is not allowed."</span></span>
-<span id="cb3-7"><a></a></span>
-<span id="cb3-8"><a></a><span class="bu">print</span>(divide_numbers(<span class="dv">10</span>, <span class="dv">0</span>))</span>
-<span id="cb3-9"><a></a><span class="bu">print</span>(<span class="st">"I will be printed as the exception was handled!"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>The inspector debugs the same way: find the broken thing, make it repeat, corner it, fix it. Panic is not a step.</p>
+</div>
+</section>
+<section id="print-the-beginners-flashlight" class="slide level2">
+<h2><code>print()</code> — the beginner’s flashlight</h2>
+<p>The simplest debugger is a well-placed <code>print()</code>. When you can’t see what a value <em>is</em>, shine a light on it:</p>
+<div id="8790b6e7" class="cell" data-execution_count="3">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a></a><span class="kw">def</span> line_total(qty, price):</span>
+<span id="cb10-2"><a></a>    <span class="bu">print</span>(<span class="st">"DEBUG qty ="</span>, qty, <span class="st">"price ="</span>, price)   <span class="co"># the flashlight</span></span>
+<span id="cb10-3"><a></a>    <span class="cf">return</span> <span class="bu">round</span>(qty <span class="op">*</span> price, <span class="dv">2</span>)</span>
+<span id="cb10-4"><a></a></span>
+<span id="cb10-5"><a></a><span class="bu">print</span>(line_total(<span class="dv">3</span>, <span class="fl">5.50</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <div class="cell fragment" data-execution_count="3">
 <div class="cell-output cell-output-stdout">
-<pre><code>Error: Division by zero is not allowed.
-I will be printed as the exception was handled!</code></pre>
+<pre><code>DEBUG qty = 3 price = 5.5
+16.5</code></pre>
 </div>
 </div>
+<div class="fragment">
+<p>Real debuggers with breakpoints exist and are wonderful, but a <code>print()</code> in the right spot solves most beginner bugs in seconds. Remove it once you’ve seen enough.</p>
 </div>
 </section>
-<section id="try-except-blocks-for-specific-exceptions" class="slide level2">
-<h2>try-except Blocks for specific exceptions</h2>
-<ul>
-<li>We can also specify <span class="highlight">the type of exception</span> we want to catch</li>
-<li>This allows for more <strong>specific error handling</strong></li>
-</ul>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a></a><span class="cf">try</span>:</span>
-<span id="cb5-2"><a></a>    <span class="co"># Code that might raise an exception</span></span>
-<span id="cb5-3"><a></a>    <span class="co"># ...</span></span>
-<span id="cb5-4"><a></a><span class="cf">except</span> ExceptionType <span class="im">as</span> e:</span>
-<span id="cb5-5"><a></a>    <span class="co"># Code to handle the specific exception type</span></span>
-<span id="cb5-6"><a></a>    <span class="co"># ...</span></span>
-<span id="cb5-7"><a></a><span class="cf">except</span> <span class="pp">Exception</span> <span class="im">as</span> e:</span>
-<span id="cb5-8"><a></a>    <span class="co"># Code to handle any other exceptions</span></span>
-<span id="cb5-9"><a></a>    <span class="co"># ...</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="fragment">
-<div class="callout callout-note callout-style-simple">
-<div class="callout-body">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
+<section id="raise-when-your-code-should-refuse" class="slide level2">
+<h2><code>raise</code> — when your code should refuse</h2>
+<p>Sometimes <em>your own</em> code should reject bad input on the spot. The inspector’s rule is non-negotiable: <strong>every price ≥ 0</strong>. <code>raise</code> throws an error deliberately:</p>
+<div id="f2c907fc" class="cell" data-execution_count="4">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb12"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a></a><span class="kw">def</span> charge(amount):</span>
+<span id="cb12-2"><a></a>    <span class="cf">if</span> amount <span class="op">&lt;</span> <span class="dv">0</span>:</span>
+<span id="cb12-3"><a></a>        <span class="cf">raise</span> <span class="pp">ValueError</span>(<span class="st">"price cannot be negative"</span>)</span>
+<span id="cb12-4"><a></a>    <span class="cf">return</span> amount</span>
+<span id="cb12-5"><a></a></span>
+<span id="cb12-6"><a></a><span class="cf">try</span>:</span>
+<span id="cb12-7"><a></a>    charge(<span class="op">-</span><span class="fl">4.50</span>)                  <span class="co"># your code refuses it...</span></span>
+<span id="cb12-8"><a></a><span class="cf">except</span> <span class="pp">ValueError</span> <span class="im">as</span> e:</span>
+<span id="cb12-9"><a></a>    <span class="bu">print</span>(<span class="st">"refused:"</span>, e)           <span class="co"># ...on your terms</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
-<div class="callout-content">
-<p><code>as e</code> is used to store the exception in a variable. Not mandatory, but good practice to do so.</p>
-</div>
-</div>
-</div>
-</div>
-</section>
-<section id="try-except-blocks-in-action" class="slide level2">
-<h2>try-except Blocks in Action</h2>
-<p><span class="task">&gt;Grouptask:</span> Solve the following problem using try-except blocks:</p>
-<div class="fragment">
-<div id="903868af" class="cell" data-execution_count="4">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a></a><span class="co"># Implement a function that converts a string to an integer</span></span>
-<span id="cb6-2"><a></a><span class="co"># 1. Try to convert the input_string to an integer</span></span>
-<span id="cb6-3"><a></a><span class="co"># 2. If successful, return the integer</span></span>
-<span id="cb6-4"><a></a><span class="co"># 3. If a ValueError occurs, catch it and return "Invalid input: not a number"</span></span>
-<span id="cb6-5"><a></a><span class="co"># 4. If any other exception occurs, catch it and return</span></span>
-<span id="cb6-6"><a></a><span class="co"># "An unexpected error occurred: [type of exception]"</span></span>
-<span id="cb6-7"><a></a></span>
-<span id="cb6-8"><a></a><span class="co"># Your code here</span></span>
-<span id="cb6-9"><a></a></span>
-<span id="cb6-10"><a></a><span class="co"># Test cases</span></span>
-<span id="cb6-11"><a></a><span class="bu">print</span>(string_to_int(<span class="st">"42"</span>))        <span class="co"># Should print: 42</span></span>
-<span id="cb6-12"><a></a><span class="bu">print</span>(string_to_int(<span class="st">"Hello"</span>))     <span class="co"># Should print: Invalid</span></span>
-<span id="cb6-13"><a></a><span class="bu">print</span>(string_to_int([<span class="dv">123</span>]))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</div>
-</div>
-<div class="fragment">
-<p><span class="question">Question:</span> What is the output of the last line?</p>
-</div>
-</section></section>
-<section>
-<section id="raising-exceptions" class="title-slide slide level1 title center">
-<h1><span class="flow">Raising Exceptions</span></h1>
-
-</section>
-<section id="raising-exceptions-1" class="slide level2">
-<h2>Raising Exceptions</h2>
-<ul>
-<li>We can <span class="highlight">raise exceptions ourselves</span> using the <code>raise</code> statement</li>
-<li>It allows us to handle errors in a more controlled manner</li>
-</ul>
-<div class="fragment">
-<div id="a2144ebb" class="cell" data-execution_count="5">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a></a><span class="kw">def</span> validate_age(age):</span>
-<span id="cb7-2"><a></a>    <span class="cf">if</span> age <span class="op">&lt;</span> <span class="dv">0</span>:</span>
-<span id="cb7-3"><a></a>        <span class="cf">raise</span> <span class="pp">ValueError</span></span>
-<span id="cb7-4"><a></a>    <span class="cf">return</span> age</span>
-<span id="cb7-5"><a></a></span>
-<span id="cb7-6"><a></a><span class="bu">print</span>(validate_age(<span class="dv">25</span>)) <span class="co"># This will print 25</span></span>
-<span id="cb7-7"><a></a><span class="bu">print</span>(validate_age(<span class="op">-</span><span class="dv">1</span>)) <span class="co"># This will raise a ValueError</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</div>
-<p><span class="task">&gt;Task:</span> Try to raise an exception in the function above by passing a string to the <code>validate_age</code> function. What happens?</p>
-</div>
-</section>
-<section id="raising-exceptions-with-custom-messages" class="slide level2">
-<h2>Raising Exceptions with Custom Messages</h2>
-<ul>
-<li>We can also raise exceptions with custom messages</li>
-<li>This helps to provide more information about the error</li>
-</ul>
-<div class="fragment">
-<div id="a29f1eda" class="cell" data-execution_count="6">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a></a><span class="kw">def</span> validate_age(age):</span>
-<span id="cb8-2"><a></a>    <span class="cf">if</span> age <span class="op">&lt;</span> <span class="dv">0</span>:</span>
-<span id="cb8-3"><a></a>        <span class="cf">raise</span> <span class="pp">ValueError</span>(<span class="st">"Age cannot be negative"</span>)</span>
-<span id="cb8-4"><a></a>    <span class="cf">return</span> age</span>
-<span id="cb8-5"><a></a></span>
-<span id="cb8-6"><a></a><span class="bu">print</span>(validate_age(<span class="dv">25</span>)) <span class="co"># This will print 25</span></span>
-<span id="cb8-7"><a></a><span class="bu">print</span>(validate_age(<span class="op">-</span><span class="dv">1</span>)) <span class="co"># This will raise a ValueError</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</div>
-</div>
-<div class="fragment">
-<p><span class="question">&gt;Question:</span> What do you think the <code>raise</code> statement will show now?</p>
-</div>
-</section>
-<section id="creating-custom-exceptions" class="slide level2">
-<h2>Creating Custom Exceptions</h2>
-<ul>
-<li>We do so by <span class="highlight">inheriting from the built-in Exception class</span></li>
-<li>This allows us to create more specific exceptions for our own code</li>
-</ul>
-<div id="6b01f968" class="cell" data-execution_count="7">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a></a><span class="kw">class</span> InvalidUsernameError(<span class="pp">Exception</span>):</span>
-<span id="cb9-2"><a></a>    <span class="cf">pass</span></span>
-<span id="cb9-3"><a></a><span class="kw">def</span> get_valid_username():</span>
-<span id="cb9-4"><a></a>    <span class="cf">while</span> <span class="va">True</span>:</span>
-<span id="cb9-5"><a></a>        <span class="cf">try</span>:</span>
-<span id="cb9-6"><a></a>            username <span class="op">=</span> <span class="bu">input</span>(<span class="st">"Please enter a username (no spaces): "</span>)</span>
-<span id="cb9-7"><a></a>            <span class="cf">if</span> <span class="st">" "</span> <span class="kw">in</span> username:</span>
-<span id="cb9-8"><a></a>                <span class="cf">raise</span> InvalidUsernameError(<span class="st">"Username must not contain spaces."</span>)</span>
-<span id="cb9-9"><a></a>            <span class="cf">return</span> username</span>
-<span id="cb9-10"><a></a>        <span class="cf">except</span> InvalidUsernameError <span class="im">as</span> e:</span>
-<span id="cb9-11"><a></a>            <span class="bu">print</span>(<span class="ss">f"Invalid username: </span><span class="sc">{</span>e<span class="sc">}</span><span class="ss">"</span>)</span>
-<span id="cb9-12"><a></a>            <span class="bu">print</span>(<span class="st">"Please try again."</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</div>
-</section></section>
-<section>
-<section id="assertions" class="title-slide slide level1 title center">
-<h1><span class="flow">Assertions</span></h1>
-
-</section>
-<section id="what-are-assertions" class="slide level2">
-<h2>What are Assertions?</h2>
-<ul>
-<li>Assertions are <span class="highlight">statements that check if a condition is true</span></li>
-<li>If the condition is false, an <code>AssertionError</code> is raised</li>
-<li>We could use them to check the results of a calculation</li>
-</ul>
-<div class="fragment">
-<div id="e4774b37" class="cell" data-execution_count="8">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a></a>x <span class="op">=</span> <span class="dv">9</span></span>
-<span id="cb10-2"><a></a>y <span class="op">=</span> <span class="dv">10</span></span>
-<span id="cb10-3"><a></a><span class="cf">assert</span> x <span class="op">&lt;</span> y, <span class="st">"x is not smaller than y"</span></span>
-<span id="cb10-4"><a></a><span class="cf">assert</span> <span class="bu">isinstance</span>(y, <span class="bu">float</span>), <span class="st">"y is not a float"</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</div>
-</div>
-<div class="fragment">
-<p><span class="task">&gt;Task:</span> Try to run the code above and discuss what happens.</p>
-</div>
-<div class="fragment">
-<div class="callout callout-note callout-style-simple">
-<div class="callout-body">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-content">
-<p><code>isinstance</code> is a built-in function that checks if an object is an instance of a class.</p>
-</div>
-</div>
-</div>
-</div>
-</section>
-<section id="assertions-in-action" class="slide level2">
-<h2>Assertions in Action</h2>
-<p><span class="task">&gt;Grouptask:</span> Solve the following problem using assertions:</p>
-<div id="a867ab56" class="cell" data-execution_count="9">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a></a><span class="co"># Implement a function that takes a list of integers and returns the sum of the numbers.</span></span>
-<span id="cb11-2"><a></a><span class="co"># 1. Use assertions to check if the input is a list</span></span>
-<span id="cb11-3"><a></a><span class="co"># 2. Use assertions to check if the list contains only integers.</span></span>
-<span id="cb11-4"><a></a><span class="co"># 3. If the list contains only integers, return the sum of the numbers</span></span>
-<span id="cb11-5"><a></a></span>
-<span id="cb11-6"><a></a><span class="co"># Your code here</span></span>
-<span id="cb11-7"><a></a></span>
-<span id="cb11-8"><a></a><span class="co"># Test cases</span></span>
-<span id="cb11-9"><a></a><span class="bu">print</span>(sum_of_numbers([<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">5</span>])) <span class="co"># Should print: 15</span></span>
-<span id="cb11-10"><a></a><span class="bu">print</span>(sum_of_numbers([<span class="dv">1</span>, <span class="fl">2.0</span>, <span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">5</span>])) <span class="co"># Should print: AssertionError</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</div>
-</section></section>
-<section>
-<section id="debugging" class="title-slide slide level1 title center">
-<h1><span class="flow">Debugging</span></h1>
-
-</section>
-<section id="what-is-debugging" class="slide level2">
-<h2>What is Debugging?</h2>
-<ul>
-<li>Debugging is the process of <span class="highlight">finding and fixing errors</span> in code</li>
-<li>We can use <code>print</code> and <code>assert</code> statements to debug our code</li>
-<li>We can also use <strong>debugging tools</strong> that are built into most IDEs</li>
-</ul>
-<p><br></p>
-<center>
-<iframe src="https://giphy.com/embed/oYQ9HRm5Mo7VXeMNVR" width="480" height="360" style="" frameborder="0" class="giphy-embed" allowfullscreen="">
-</iframe>
-</center>
-</section>
-<section id="using-print-and-assert" class="slide level2">
-<h2>Using Print and Assert</h2>
-<ul>
-<li><code>print</code>: check <span class="highlight">the values of variables</span> at different points</li>
-<li><code>assert</code>: check calculations or the types of variables</li>
-</ul>
-<div class="fragment">
-<div id="188651dd" class="cell" data-execution_count="10">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb12"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a></a>x <span class="op">=</span> <span class="st">"Hello"</span> <span class="co"># x is a string</span></span>
-<span id="cb12-2"><a></a><span class="bu">print</span>(x)</span>
-<span id="cb12-3"><a></a>x <span class="op">=</span> <span class="fl">42.0</span> <span class="co"># x is a float</span></span>
-<span id="cb12-4"><a></a><span class="bu">print</span>(x)</span>
-<span id="cb12-5"><a></a><span class="cf">assert</span> <span class="bu">isinstance</span>(x, <span class="bu">float</span>), <span class="st">"x is not a float"</span></span>
-<span id="cb12-6"><a></a><span class="cf">assert</span> x <span class="op">==</span> <span class="fl">42.0</span>, <span class="st">"x is not 42.0"</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</div>
-<div class="cell fragment" data-execution_count="10">
+<div class="cell fragment" data-execution_count="4">
 <div class="cell-output cell-output-stdout">
-<pre><code>Hello
-42.0</code></pre>
-</div>
+<pre><code>refused: price cannot be negative</code></pre>
 </div>
 </div>
 <div class="fragment">
-<div class="callout callout-note callout-style-simple">
+<p>A bad value stops <em>here</em>, at the door, instead of poisoning the books three screens later.</p>
+</div>
+</section>
+<section id="assert-a-tripwire-for-invariants" class="slide level2">
+<h2><code>assert</code> — a tripwire for invariants</h2>
+<p>An <strong><code>assert</code></strong> guards an <em>invariant</em>, a fact that must <strong>always</strong> hold. If it’s true, nothing happens; if it’s false, the program stops right there with an <code>AssertionError</code>:</p>
+<div id="b237ec1a" class="cell" data-execution_count="5">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb14"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a></a>subtotal <span class="op">=</span> <span class="fl">9.60</span></span>
+<span id="cb14-2"><a></a><span class="cf">assert</span> subtotal <span class="op">&gt;=</span> <span class="dv">0</span>, <span class="st">"subtotal went negative — bug upstream"</span></span>
+<span id="cb14-3"><a></a><span class="bu">print</span>(<span class="st">"passed the tripwire:"</span>, subtotal)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<div class="cell fragment" data-execution_count="5">
+<div class="cell-output cell-output-stdout">
+<pre><code>passed the tripwire: 9.6</code></pre>
+</div>
+</div>
+<div class="fragment">
+<p>Think of it as a note to yourself, checked automatically: <em>“if this is ever false, something broke earlier. Stop before it spreads.”</em></p>
+</div>
+</section>
+<section id="try-then-fall-back" class="slide level2">
+<h2>Try, then fall back</h2>
+<p>A friendly, common pattern: <strong>try</strong> the risky thing; if it fails, <strong>fall back</strong> to a sensible default so the program keeps moving.</p>
+<div id="070882b8" class="cell" data-execution_count="6">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb16"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a></a><span class="kw">def</span> seats(text):</span>
+<span id="cb16-2"><a></a>    <span class="cf">try</span>:</span>
+<span id="cb16-3"><a></a>        <span class="cf">return</span> <span class="bu">int</span>(text)</span>
+<span id="cb16-4"><a></a>    <span class="cf">except</span> <span class="pp">ValueError</span>:</span>
+<span id="cb16-5"><a></a>        <span class="cf">return</span> <span class="dv">2</span>               <span class="co"># a table seats two, unless told otherwise</span></span>
+<span id="cb16-6"><a></a></span>
+<span id="cb16-7"><a></a><span class="bu">print</span>(seats(<span class="st">"6"</span>))              <span class="co"># a clean number → 6</span></span>
+<span id="cb16-8"><a></a><span class="bu">print</span>(seats(<span class="st">"full"</span>))           <span class="co"># nonsense → the safe default, 2</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<div class="cell fragment" data-execution_count="6">
+<div class="cell-output cell-output-stdout">
+<pre><code>6
+2</code></pre>
+</div>
+</div>
+<div class="fragment">
+<p>The caller never has to worry about a crash. Garbage in, sane default out.</p>
+</div>
+</section>
+<section id="predict-what-happens-after-the-except" class="slide level2">
+<h2>Predict: what happens after the <code>except</code>?</h2>
+<p><code>to_price</code> catches a bad value and returns <code>0.0</code>. After that, does the program reach the <strong>next line</strong>?</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb18"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a></a><span class="kw">def</span> to_price(text):</span>
+<span id="cb18-2"><a></a>    <span class="cf">try</span>:</span>
+<span id="cb18-3"><a></a>        <span class="cf">return</span> <span class="bu">float</span>(text)</span>
+<span id="cb18-4"><a></a>    <span class="cf">except</span> <span class="pp">ValueError</span>:</span>
+<span id="cb18-5"><a></a>        <span class="cf">return</span> <span class="fl">0.0</span></span>
+<span id="cb18-6"><a></a></span>
+<span id="cb18-7"><a></a><span class="bu">print</span>(to_price(<span class="st">"bad"</span>))</span>
+<span id="cb18-8"><a></a><span class="bu">print</span>(<span class="st">"checkout still running"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>a) it never runs: the program already stopped b) it runs normally: the program carried on c) the <code>try</code> block runs a second time</p>
+<div class="fragment">
+<p><span class="question">Predict first</span>. Commit to an answer before the next slide.</p>
+</div>
+</section>
+<section id="answer-it-carries-on" class="slide level2">
+<h2>Answer: it carries on</h2>
+<p><strong>b) it runs normally</strong> — that’s the whole point of <code>try</code> / <code>except</code>. It <em>handles</em> the failure; once the <code>except</code> has run, control simply drops to the code after it, as if nothing had gone wrong:</p>
+<div id="d72eeae8" class="cell" data-execution_count="7">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb19"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a></a><span class="kw">def</span> to_price(text):</span>
+<span id="cb19-2"><a></a>    <span class="cf">try</span>:</span>
+<span id="cb19-3"><a></a>        <span class="cf">return</span> <span class="bu">float</span>(text)</span>
+<span id="cb19-4"><a></a>    <span class="cf">except</span> <span class="pp">ValueError</span>:</span>
+<span id="cb19-5"><a></a>        <span class="cf">return</span> <span class="fl">0.0</span></span>
+<span id="cb19-6"><a></a></span>
+<span id="cb19-7"><a></a><span class="bu">print</span>(to_price(<span class="st">"bad"</span>))           <span class="co"># 0.0 — recovered</span></span>
+<span id="cb19-8"><a></a><span class="bu">print</span>(<span class="st">"checkout still running"</span>)  <span class="co"># ...and we get here</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<div class="cell fragment" data-execution_count="7">
+<div class="cell-output cell-output-stdout">
+<pre><code>0.0
+checkout still running</code></pre>
+</div>
+</div>
+</section></section>
+<section id="your-turn-10-minutes-1" class="title-slide slide level1 exercise-slide center">
+<h1>⚡ Your turn — 10 minutes</h1>
+<p>Open the exercise (scan the QR or type the link):</p>
+<p><strong><a href="https://beyondsimulations.github.io/Introduction-to-Python/notebooks/ex_05_b/">beyondsimulations.github.io/Introduction-to-Python/notebooks/ex_05_b/</a></strong></p>
+
+<img data-src="assets/qr/ex_05_b.png" width="280" class="r-stretch"><p>First <strong>predict</strong> what happens, then run it.</p>
+</section>
+
+<section>
+<section id="to-the-lab" class="title-slide slide level1 title center">
+<h1><span class="flow">To the Lab</span></h1>
+
+</section>
+<section id="tonights-episode" class="slide level2">
+<h2>Tonight’s episode</h2>
+<ul>
+<li>Head to the lab notebook: <a href="../tutorials/tut_05_errors.html">Episode 5 — The 3-AM Checkout</a></li>
+<li>You’ll read a traceback, write a price box that won’t crash, fix Kevin’s 3-AM receipt, make your code <strong>refuse</strong> negative prices with <code>raise</code>, and harden the whole checkout against a batch of poisoned orders</li>
+<li>It runs entirely in your browser: no setup, just click and code</li>
+</ul>
+<div class="fragment">
+<div class="callout callout-important callout-style-simple">
 <div class="callout-body">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-content">
-<p>While this can be useful, it is not always the best way to debug code.</p>
-</div>
-</div>
-</div>
-</div>
-</section>
-<section id="using-debugging-tools" class="slide level2">
-<h2>Using Debugging Tools</h2>
-<ul>
-<li>We can also use debugging tools <span class="highlight">built into most IDEs</span></li>
-<li>Allow to step through code, set breakpoints, and inspect variables</li>
-<li>We will use Zed, but there are <strong>many other options</strong></li>
-</ul>
-</section>
-<section id="debugging-in-zed" class="slide level2">
-<h2>Debugging in Zed</h2>
-<p><span class="task">&gt;Task:</span> Open Zed and copy the following code to <code>main.py</code>.</p>
-<div id="19a8485f" class="cell" data-execution_count="11">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb14"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a></a><span class="kw">def</span> calculate_average(numbers):</span>
-<span id="cb14-2"><a></a>    total <span class="op">=</span> <span class="dv">0</span></span>
-<span id="cb14-3"><a></a>    count <span class="op">=</span> <span class="dv">0</span></span>
-<span id="cb14-4"><a></a>    <span class="cf">for</span> num <span class="kw">in</span> numbers:</span>
-<span id="cb14-5"><a></a>        total <span class="op">+=</span> num</span>
-<span id="cb14-6"><a></a>        count <span class="op">+=</span> <span class="dv">1</span></span>
-<span id="cb14-7"><a></a></span>
-<span id="cb14-8"><a></a>    average <span class="op">=</span> total <span class="op">/</span> count</span>
-<span id="cb14-9"><a></a>    <span class="cf">return</span> average</span>
-<span id="cb14-10"><a></a></span>
-<span id="cb14-11"><a></a><span class="co"># Test cases</span></span>
-<span id="cb14-12"><a></a>test_lists <span class="op">=</span> [</span>
-<span id="cb14-13"><a></a>    [<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">5</span>],</span>
-<span id="cb14-14"><a></a>    [<span class="dv">10</span>, <span class="dv">20</span>, <span class="dv">30</span>],</span>
-<span id="cb14-15"><a></a>    []</span>
-<span id="cb14-16"><a></a>    ]</span>
-<span id="cb14-17"><a></a></span>
-<span id="cb14-18"><a></a><span class="cf">for</span> i, test_list <span class="kw">in</span> <span class="bu">enumerate</span>(test_lists):</span>
-<span id="cb14-19"><a></a>    <span class="bu">print</span>(<span class="ss">f"Test case </span><span class="sc">{</span>i <span class="op">+</span> <span class="dv">1</span><span class="sc">}</span><span class="ss">:"</span>)</span>
-<span id="cb14-20"><a></a>    result <span class="op">=</span> calculate_average(test_list)</span>
-<span id="cb14-21"><a></a>    <span class="bu">print</span>(<span class="ss">f"Average: </span><span class="sc">{</span>result<span class="sc">}</span><span class="ch">\n</span><span class="ss">"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</div>
-</section>
-<section id="debugging-tools" class="slide level2">
-<h2>Debugging Tools</h2>
-<p><span class="task">&gt;Task:</span> Run the code and use the debugging tools by clicking on the small bug icon in the lower right corner to find the error and select <code>run [YOUR PATH TO THE FILE]/main.py</code>.</p>
-<ul>
-<li>Use the <strong>breakpoints</strong> to <span class="highlight">pause the execution</span> at a specific point</li>
-<li>Use <strong>step over, step into and step out</strong> to <span class="highlight">navigate</span> through your code</li>
-<li>Use the <strong>variable viewer</strong> to <span class="highlight">inspect variables</span> at different points</li>
-</ul>
-<div class="fragment">
-<p><span class="question">&gt;Question:</span> What do you think the error is?</p>
-</div>
-<div class="fragment">
-<div class="callout callout-note callout-style-simple">
-<div class="callout-body">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-content">
-<p>The <code>enumerate</code> function used in the code is super helpful function that returns a tuple containing the index and the value of the item in the list and it is not the error.</p>
+<p><strong>Download your <code>.py</code> before you leave.</strong> Closing the tab without downloading loses your work, and downloading is exactly how you just handed in the checkpoint. Expect <strong>red cells</strong> in this lab: you’ll cause errors on purpose. A red cell pauses everything below it. Fix it, and everything springs back.</p>
 </div>
 </div>
 </div>
 </div>
 </section></section>
 <section>
-<section id="script-organization" class="title-slide slide level1 title center">
-<h1><span class="flow">Script Organization</span></h1>
+<section id="wrap-up" class="title-slide slide level1 title center">
+<h1><span class="flow">Wrap-up</span></h1>
 
 </section>
-<section id="the-main-function-pattern" class="slide level2">
-<h2>The Main Function Pattern</h2>
-<ul>
-<li>You’ll often see <code>if __name__ == "__main__":</code> at the end of Python scripts</li>
-<li>This checks <span class="highlight">whether the script is being run directly</span> or imported</li>
-</ul>
-<div class="fragment">
-<div id="29dd04de" class="cell" data-execution_count="12">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb15"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a></a><span class="kw">def</span> greet(name):</span>
-<span id="cb15-2"><a></a>    <span class="cf">return</span> <span class="ss">f"Hello, </span><span class="sc">{</span>name<span class="sc">}</span><span class="ss">!"</span></span>
-<span id="cb15-3"><a></a></span>
-<span id="cb15-4"><a></a><span class="cf">if</span> <span class="va">__name__</span> <span class="op">==</span> <span class="st">"__main__"</span>:</span>
-<span id="cb15-5"><a></a>    <span class="bu">print</span>(greet(<span class="st">"Students"</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</div>
-</div>
+<section id="three-things-to-remember" class="slide level2">
+<h2>Three things to remember</h2>
+<ol type="1">
+<li>A <strong>traceback</strong> is a crash report you read <strong>bottom-up</strong>: the last line names <em>what</em> broke, the lines above show <em>where</em>. That’s an address and a reason, not a wall of noise</li>
+<li><strong><code>try</code> / <code>except</code></strong> catches a failure so the program <strong>recovers</strong> instead of stopping. Catch the <strong>specific</strong> type (<code>except ValueError</code>), never a bare <code>except</code> that also hides your own typos</li>
+<li>Defend your own code: <strong><code>raise</code></strong> to refuse bad input (prices ≥ 0), <strong><code>assert</code></strong> to guard an invariant that must always hold, and <strong>fall back</strong> to a safe default when a conversion fails</li>
+</ol>
 <div class="fragment">
 <div class="callout callout-note callout-style-simple">
 <div class="callout-body">
@@ -688,68 +574,7 @@ I will be printed as the exception was handled!</code></pre>
 <i class="callout-icon"></i>
 </div>
 <div class="callout-content">
-<p>The code inside the <code>if</code> block only runs when you execute the script directly, not when you import it as a module. So far, we didn’t import modules but we will soon.</p>
-</div>
-</div>
-</div>
-</div>
-</section>
-<section id="why-use-it" class="slide level2">
-<h2>Why Use It?</h2>
-<ul>
-<li><strong>Reusability</strong>: Functions can be imported without executing tests</li>
-<li><strong>Testing</strong>: You can test functions in the same file</li>
-<li><strong>Organization</strong>: Separation between definitions and execution</li>
-</ul>
-<div class="fragment">
-<div id="3a864960" class="cell" data-execution_count="13">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb16"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a></a><span class="kw">def</span> add(a, b):</span>
-<span id="cb16-2"><a></a>    <span class="co">"""Add two numbers."""</span></span>
-<span id="cb16-3"><a></a>    <span class="cf">return</span> a <span class="op">+</span> b</span>
-<span id="cb16-4"><a></a></span>
-<span id="cb16-5"><a></a><span class="kw">def</span> subtract(a, b):</span>
-<span id="cb16-6"><a></a>    <span class="co">"""Subtract two numbers."""</span></span>
-<span id="cb16-7"><a></a>    <span class="cf">return</span> a <span class="op">-</span> b</span>
-<span id="cb16-8"><a></a></span>
-<span id="cb16-9"><a></a><span class="co"># This only runs when script is executed directly</span></span>
-<span id="cb16-10"><a></a><span class="cf">if</span> <span class="va">__name__</span> <span class="op">==</span> <span class="st">"__main__"</span>:</span>
-<span id="cb16-11"><a></a>    <span class="bu">print</span>(<span class="ss">f"5 + 3 = </span><span class="sc">{</span>add(<span class="dv">5</span>, <span class="dv">3</span>)<span class="sc">}</span><span class="ss">"</span>)</span>
-<span id="cb16-12"><a></a>    <span class="bu">print</span>(<span class="ss">f"5 - 3 = </span><span class="sc">{</span>subtract(<span class="dv">5</span>, <span class="dv">3</span>)<span class="sc">}</span><span class="ss">"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</div>
-<div class="cell fragment" data-execution_count="13">
-
-</div>
-</div>
-<div class="fragment">
-<div class="callout callout-tip callout-style-simple">
-<div class="callout-body">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-content">
-<p>If another script imports this file, only the functions are available, not the print statements!</p>
-</div>
-</div>
-</div>
-</div>
-</section>
-<section id="using-logging" class="slide level2">
-<h2>Using Logging</h2>
-<ul>
-<li>We can also use logging to <span class="highlight">track the execution</span> of a program</li>
-<li>It is a <strong>structured</strong> way to log errors and other issues</li>
-<li>You can specify the <strong>level of severity</strong> for each log message</li>
-<li><strong>Hide</strong> messages of a certain severity if you want to during execution</li>
-</ul>
-<div class="fragment">
-<div class="callout callout-note callout-style-simple">
-<div class="callout-body">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-content">
-<p><strong>And that’s it for todays lecture!</strong><br>
-We now have covered the basics of errors, exceptions and debugging in Python. Logging is beyond our scope, but it is good to know should you work with larger codebases later on.</p>
+<p><strong>Next time — Episode 6</strong> starts with <strong>Checkpoint 3</strong>, which sweeps everything from Episodes 1–5, so keep this notebook and the last four close. Then someone new walks into the shop, uncaps a marker, and writes one question on the whiteboard. <strong>Part II begins.</strong></p>
 </div>
 </div>
 </div>
@@ -760,26 +585,26 @@ We now have covered the basics of errors, exceptions and debugging in Python. Lo
 <h1><span class="flow">Literature</span></h1>
 
 </section>
-<section id="interesting-books" class="slide level2">
-<h2>Interesting Books</h2>
+<section id="books-to-start-with" class="slide level2">
+<h2>Books to start with</h2>
 <ul>
 <li>Downey, A. B. (2024). Think Python: How to think like a computer scientist (Third edition). O’Reilly. <a href="https://greenteapress.com/wp/think-python-3rd-edition/">Link to free online version</a></li>
 <li>Elter, S. (2021). Schrödinger programmiert Python: Das etwas andere Fachbuch (1. Auflage). Rheinwerk Verlag.</li>
 </ul>
 <div class="fragment">
-<div class="callout callout-tip callout-style-simple">
+<div class="callout callout-note callout-style-simple">
 <div class="callout-body">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-content">
-<p>Nothing new here, but these are still great books!</p>
+<p>Nothing new here, but these are still great books to start with!</p>
 </div>
 </div>
 </div>
 </div>
 <div class="fragment">
-<p>For more interesting literature to learn more about Python, take a look at the <a href="../general/literature.html">literature list</a> of this course.</p>
+<p>For more, see the <a href="../general/literature.html">literature list</a> of this course.  </p>
 
 
 </div>
@@ -787,7 +612,7 @@ We now have covered the basics of errors, exceptions and debugging in Python. Lo
     </div>
   <div class="quarto-auto-generated-content" style="display: none;">
 <div class="footer footer-default">
-<p>Lecture V - Handling Errors | Dr.&nbsp;Tobias Vlćek | <a href="../lectures/lec_05_errors.html">Home</a></p>
+<p>Lecture V - Errors and Debugging | Dr.&nbsp;Tobias Vlćek | <a href="../lectures/lec_05_errors.html">Home</a></p>
 </div>
 </div></div>
 

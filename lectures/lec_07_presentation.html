@@ -6,8 +6,8 @@
 <script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
 <link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
 <link href="../site_libs/quarto-html/light-border.css" rel="stylesheet">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-acf12a64177840b8d86f2d4f01b2e9fb.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
-  <meta name="generator" content="quarto-1.9.37">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-de63f62b328812d8e578a4d74e282472.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
+  <meta name="generator" content="quarto-1.9.38">
 
   <meta name="author" content="Dr.&nbsp;Tobias Vlćek">
   <title>Programming with Python – Lecture VII - NumPy for Scientific Computing</title>
@@ -98,7 +98,7 @@
     code span.vs { color: #032f62; } /* VerbatimString */
     code span.wa { color: #ff5555; } /* Warning */
   </style>
-  <link rel="stylesheet" href="../site_libs/revealjs/dist/theme/quarto-f85b3b3185a4ab11126f7e6ba17b9231.css">
+  <link rel="stylesheet" href="../site_libs/revealjs/dist/theme/quarto-98747a31849c37b7af6917e6faa4a735.css">
   <link href="../site_libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
   <link href="../site_libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
   <link href="../site_libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
@@ -205,609 +205,421 @@
 Dr.&nbsp;Tobias Vlćek 
 </div>
         <p class="quarto-title-affiliation">
-            Kühne Logistics University Hamburg - Fall 2025
+            Kühne Logistics University Hamburg - Fall 2026
           </p>
     </div>
 </div>
 
 </section>
 <section>
-<section id="quick-recap-of-the-last-lecture" class="title-slide slide level1 title center">
-<h1><span class="flow">Quick Recap of the last Lecture</span></h1>
+<section id="episode-7-one-array-to-rule-a-thousand-orders" class="title-slide slide level1 title center">
+<h1><span class="flow">Episode 7: One Array to Rule a Thousand Orders</span></h1>
 
 </section>
-<section id="modules" class="slide level2">
-<h2>Modules</h2>
-<ul>
-<li><span class="highlight">Modules</span> are <code>.py</code> files containing Python code</li>
-<li>They are used to organize and reuse code</li>
-<li>They can define functions, classes, and variables</li>
-<li>Can be imported into other scripts</li>
-</ul>
+<section id="the-numbers-deck-is-due" class="slide level2">
+<h2>The numbers deck is due</h2>
+<p>The investor wants a numbers deck by Friday. A <strong>thousand orders</strong> sit in the system, one row each: minutes, price, zone.</p>
 <div class="fragment">
-<div class="callout callout-tip callout-style-simple">
-<div class="callout-body">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
+<p>Kevin’s plan is a <strong>40-tab spreadsheet</strong>, one tab per zone, copied by hand. He looks at the pile, then at his list-of-lists, and says the only true thing he’ll say all week:</p>
+<blockquote>
+<p><strong>“We need a bigger boat than a list.”</strong></p>
+</blockquote>
 </div>
-<div class="callout-content">
-<p>We can import entire modules or individual functions, classes or variables.</p>
-</div>
-</div>
-</div>
-</div>
-</section>
-<section id="standard-libraries" class="slide level2">
-<h2>Standard Libraries</h2>
-<ul>
-<li>Python includes many built-in modules like:
-<ul>
-<li><code>random</code> provides functions for random numbers</li>
-<li><code>os</code> allows interaction with the operating system</li>
-<li><code>csv</code> is used for reading and writing CSV files</li>
-<li><code>re</code> is used for working with regular expressions</li>
-</ul></li>
-</ul>
-</section>
-<section id="packages" class="slide level2">
-<h2>Packages</h2>
-<ul>
-<li><span class="highlight">Packages</span> are collections of modules</li>
-<li>Often available from the Python Package Index (PyPI)</li>
-<li>Install using <code>uv add &lt;package_name&gt;</code></li>
-<li>Virtual environments help manage dependencies</li>
-</ul>
 <div class="fragment">
-<div class="callout callout-tip callout-style-simple">
-<div class="callout-body">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-content">
-<p>Virtual environments are not that important for you right now, as they are mostly used if you work on several projects with different dependecies at once.</p>
-</div>
-</div>
-</div>
+<p>Today we get the bigger boat: <strong>NumPy</strong>, one object that holds a thousand numbers and does arithmetic on all of them at once.</p>
 </div>
 </section></section>
 <section>
-<section id="numpy-module" class="title-slide slide level1 title center">
-<h1><span class="flow">NumPy Module</span></h1>
-
+<section id="warm-up" class="title-slide slide level1 exercise-slide center">
+<h1>🔥 Warm-up</h1>
+<p>Three questions from Episode 6. Commit. Hands up <strong>before</strong> the reveal.</p>
 </section>
-<section id="what-is-numpy" class="slide level2">
-<h2>What is NumPy?</h2>
-<ul>
-<li><strong>NumPy</strong> is a package for scientific computing in Python</li>
-<li>Provides large, <span class="highlight">multi-dimensional arrays and matrices</span></li>
-<li>Wide range of functions to operate on these</li>
-<li>Python lists can be slow - Numpy arrays are much faster</li>
-</ul>
-<div class="fragment">
-<div class="callout callout-note callout-style-simple">
-<div class="callout-body">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-content">
-<p>The name of the package comes from Numerical Python.</p>
-</div>
-</div>
-</div>
-</div>
+<section id="question-1" class="slide level2">
+<h2>Question 1</h2>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a></a><span class="im">from</span> math <span class="im">import</span> ceil</span>
+<span id="cb1-2"><a></a></span>
+<span id="cb1-3"><a></a><span class="co"># which line works?</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>a) <code>math.ceil(3.2)</code> b) <code>ceil(3.2)</code> c) both</p>
 </section>
-<section id="why-is-numpy-so-fast" class="slide level2">
-<h2>Why is NumPy so fast?</h2>
-<ul>
-<li>Arrays are stored in a contiguous block of memory</li>
-<li>This allows for efficient memory access patterns</li>
-<li>Operations are implemented in the languages <code>C</code> and <code>C++</code></li>
-</ul>
-<div class="fragment">
-<p><span class="question">Question:</span> Have you heard of C and C++?</p>
-</div>
+<section id="answer-1" class="slide level2">
+<h2>Answer 1</h2>
+<p><strong>b) <code>ceil(3.2)</code></strong> — <code>from math import ceil</code> binds only the <strong>name</strong> <code>ceil</code>. The module <code>math</code> itself was never imported, so <code>math.ceil</code> has nothing to reach through.</p>
 </section>
-<section id="how-to-get-started" class="slide level2">
-<h2>How to get started</h2>
-<ol type="1">
-<li>Install NumPy using <code>uv add numpy</code></li>
-<li>Import NumPy in a script using <code>import numpy as np</code></li>
-</ol>
-<div class="fragment">
-<div id="86bdef71" class="cell" data-execution_count="1">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
-<span id="cb1-2"><a></a>x <span class="op">=</span> np.array([<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">5</span>])<span class="op">;</span> <span class="bu">type</span>(x)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-display" data-execution_count="560">
-<pre><code>numpy.ndarray</code></pre>
-</div>
-</div>
-</div>
-<div class="fragment">
-<div class="callout callout-note callout-style-simple">
-<div class="callout-body">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-content">
-<p>You don’t have to use <code>as np</code>. But it is a common practice to do so.</p>
-</div>
-</div>
-</div>
-</div>
-</section></section>
-<section>
-<section id="array-basics" class="title-slide slide level1 title center">
-<h1><span class="flow">Array Basics</span></h1>
-
+<section id="question-2" class="slide level2">
+<h2>Question 2</h2>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a></a><span class="im">import</span> random</span>
+<span id="cb2-2"><a></a></span>
+<span id="cb2-3"><a></a>random.seed(<span class="dv">42</span>)</span>
+<span id="cb2-4"><a></a><span class="bu">print</span>(random.randint(<span class="dv">1</span>, <span class="dv">20</span>))</span>
+<span id="cb2-5"><a></a><span class="bu">print</span>(random.randint(<span class="dv">1</span>, <span class="dv">20</span>))</span>
+<span id="cb2-6"><a></a><span class="bu">print</span>(random.randint(<span class="dv">1</span>, <span class="dv">20</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Kevin runs this exact script today and again tomorrow. Tomorrow’s numbers are…</p>
+<p>a) the same three numbers b) different: random is random c) an error</p>
 </section>
-<section id="creating-arrays" class="slide level2">
-<h2>Creating Arrays</h2>
-<ul>
-<li>The backbone of Numpy is the so called <code>ndarray</code></li>
-<li>Can be initialized from different data structures:</li>
-</ul>
-<div id="5a9f330e" class="cell" data-execution_count="2">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<section id="answer-2" class="slide level2">
+<h2>Answer 2</h2>
+<p><strong>a) the same three numbers</strong> — every run starts from seed 42, so the stream replays from the top. That is the entire job of a seed: reproducible randomness. (Two batches <em>inside one run</em> would differ: the stream continues; a fresh run rewinds it.)</p>
+</section>
+<section id="question-3" class="slide level2">
+<h2>Question 3</h2>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a></a><span class="im">import</span> statistics</span>
 <span id="cb3-2"><a></a></span>
-<span id="cb3-3"><a></a>array_from_list <span class="op">=</span> np.array([<span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">1</span>])</span>
-<span id="cb3-4"><a></a><span class="bu">print</span>(array_from_list)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb3-3"><a></a>statistics.median([<span class="dv">9</span>, <span class="dv">2</span>, <span class="dv">5</span>])</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>returns…</p>
+<p>a) <code>2</code> b) <code>5</code> c) an error: the list is not sorted</p>
+</section>
+<section id="answer-3" class="slide level2">
+<h2>Answer 3</h2>
+<p><strong>b) <code>5</code></strong> — <code>median</code> sorts the values internally before picking the middle one. You never have to sort first; <code>5</code> is the middle of <code>2, 5, 9</code>.</p>
+</section></section>
+<section>
+<section id="a-thousand-orders-at-once" class="title-slide slide level1 title center">
+<h1><span class="flow">A thousand orders at once</span></h1>
+
+</section>
+<section id="from-a-list-to-an-array" class="slide level2">
+<h2>From a list to an array</h2>
+<p>A <strong>NumPy array</strong> holds many numbers under one name, like a list, but built for math. You make one from a list, then ask it about itself:</p>
+<div id="a2926b4f" class="cell" data-execution_count="1">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb4-2"><a></a></span>
+<span id="cb4-3"><a></a>prices <span class="op">=</span> np.array([<span class="fl">12.0</span>, <span class="fl">9.0</span>, <span class="fl">15.0</span>])</span>
+<span id="cb4-4"><a></a><span class="bu">print</span>(prices)</span>
+<span id="cb4-5"><a></a><span class="bu">print</span>(prices.shape)   <span class="co"># how many, in each dimension</span></span>
+<span id="cb4-6"><a></a><span class="bu">print</span>(prices.dtype)   <span class="co"># what kind of number</span></span>
+<span id="cb4-7"><a></a><span class="bu">print</span>(prices.size)    <span class="co"># how many in total</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<div class="cell fragment" data-execution_count="1">
+<div class="cell-output cell-output-stdout">
+<pre><code>[12.  9. 15.]
+(3,)
+float64
+3</code></pre>
+</div>
+</div>
+<div class="fragment">
+<p><code>np.array([...])</code> wraps a list; <code>import numpy as np</code> is the nickname everyone uses. <code>.shape</code> is <code>(3,)</code>, <code>.dtype</code> is <code>float64</code>, <code>.size</code> is <code>3</code>. One <code>dtype</code> for the <strong>whole</strong> array: every element shares the same type; that’s part of what makes it fast.</p>
+</div>
+</section>
+<section id="one-operation-every-element" class="slide level2">
+<h2>One operation, every element</h2>
+<p>Here’s the bigger boat. The deck needs <strong>gross</strong> prices: 19% VAT on all three. With a list you loop; with an array you just multiply:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb6"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a></a><span class="co"># the painful way — a loop, item by item</span></span>
+<span id="cb6-2"><a></a>gross <span class="op">=</span> []</span>
+<span id="cb6-3"><a></a><span class="cf">for</span> p <span class="kw">in</span> [<span class="fl">12.0</span>, <span class="fl">9.0</span>, <span class="fl">15.0</span>]:</span>
+<span id="cb6-4"><a></a>    gross.append(p <span class="op">*</span> <span class="fl">1.19</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div id="b7f6aa02" class="cell" data-execution_count="2">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb7-2"><a></a></span>
+<span id="cb7-3"><a></a>prices <span class="op">=</span> np.array([<span class="fl">12.0</span>, <span class="fl">9.0</span>, <span class="fl">15.0</span>])</span>
+<span id="cb7-4"><a></a><span class="bu">print</span>(prices <span class="op">*</span> <span class="fl">1.19</span>)   <span class="co"># every element, one expression</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <div class="cell fragment" data-execution_count="2">
 <div class="cell-output cell-output-stdout">
-<pre><code>[1 1 1 1]</code></pre>
+<pre><code>[14.28 10.71 17.85]</code></pre>
 </div>
 </div>
 <div class="fragment">
-<div id="4656fcb4" class="cell" data-execution_count="3">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
-<span id="cb5-2"><a></a></span>
-<span id="cb5-3"><a></a>array_from_tuple <span class="op">=</span> np.array((<span class="dv">2</span>, <span class="dv">2</span>, <span class="dv">2</span>, <span class="dv">2</span>))</span>
-<span id="cb5-4"><a></a><span class="bu">print</span>(array_from_tuple)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>One operation lands on <strong>all</strong> elements at once: <code>[14.28 10.71 17.85]</code>. No loop, no <code>.append</code>, and on a thousand orders it’s also far faster.</p>
+</div>
+</section>
+<section id="arrays-from-scratch" class="slide level2">
+<h2>Arrays from scratch</h2>
+<p>Two builders make evenly-spaced arrays without typing every number, handy for axes and ranges:</p>
+<div id="5a6ee3ef" class="cell" data-execution_count="3">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb9-2"><a></a></span>
+<span id="cb9-3"><a></a><span class="bu">print</span>(np.arange(<span class="dv">0</span>, <span class="dv">10</span>, <span class="dv">2</span>))     <span class="co"># start, stop (excluded), step</span></span>
+<span id="cb9-4"><a></a><span class="bu">print</span>(np.linspace(<span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">5</span>))    <span class="co"># start, stop (included), how many</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <div class="cell fragment" data-execution_count="3">
 <div class="cell-output cell-output-stdout">
-<pre><code>[2 2 2 2]</code></pre>
+<pre><code>[0 2 4 6 8]
+[0.   0.25 0.5  0.75 1.  ]</code></pre>
 </div>
 </div>
+<div class="fragment">
+<p><code>arange</code> walks by a <strong>step</strong> and stops <strong>before</strong> the end, just like <code>range</code>. <code>linspace</code> splits a span into a fixed <strong>count</strong> of points, endpoints included.</p>
 </div>
 </section>
-<section id="hetergenous-data-types" class="slide level2">
-<h2>Hetergenous Data Types</h2>
-<ul>
-<li>It is possible to store different data types in a <code>ndarray</code></li>
-</ul>
-<div id="65521e7b" class="cell" data-execution_count="4">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
-<span id="cb7-2"><a></a></span>
-<span id="cb7-3"><a></a>array_different_types <span class="op">=</span> np.array([<span class="st">"s"</span>, <span class="dv">2</span>, <span class="fl">2.0</span>, <span class="st">"i"</span>])</span>
-<span id="cb7-4"><a></a><span class="bu">print</span>(array_different_types)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<section id="predict-times-two" class="slide level2">
+<h2>Predict: times two</h2>
+<p>Kevin multiplies a row of counts by two. What does this print?</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb11"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a></a><span class="bu">print</span>([<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>] <span class="op">*</span> <span class="dv">2</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>a) <code>[2, 4, 6]</code> b) <code>[1, 2, 3, 1, 2, 3]</code> c) an error</p>
+<div class="fragment">
+<p><span class="question">Predict first</span>. Commit to an answer before the next slide.</p>
+</div>
+</section>
+<section id="answer-lists-repeat-arrays-compute" class="slide level2">
+<h2>Answer: lists repeat, arrays compute</h2>
+<p><strong>b) <code>[1, 2, 3, 1, 2, 3]</code></strong> — that’s a plain <strong>list</strong>, and <code>* 2</code> on a list <em>repeats</em> it. Wrap it in an array and the same <code>* 2</code> does the math instead:</p>
+<div id="7564d3a8" class="cell" data-execution_count="4">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb12"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb12-2"><a></a></span>
+<span id="cb12-3"><a></a><span class="bu">print</span>([<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>] <span class="op">*</span> <span class="dv">2</span>)              <span class="co"># list → repeated</span></span>
+<span id="cb12-4"><a></a><span class="bu">print</span>(np.array([<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>]) <span class="op">*</span> <span class="dv">2</span>)    <span class="co"># array → doubled</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <div class="cell fragment" data-execution_count="4">
 <div class="cell-output cell-output-stdout">
-<pre><code>['s' '2' '2.0' 'i']</code></pre>
+<pre><code>[1, 2, 3, 1, 2, 3]
+[2 4 6]</code></pre>
 </div>
 </div>
 <div class="fragment">
-<div class="callout callout-note callout-style-simple">
-<div class="callout-body">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-content">
-<p>But it is mostly not recommended, as it can lead to performance issues. If possible, try to <strong>keep the types homogenous</strong>.</p>
-</div>
-</div>
-</div>
-</div>
-</section>
-<section id="prefilled-arrays" class="slide level2">
-<h2>Prefilled Arrays</h2>
-<p>Improve performance by <strong>allocating memory upfront</strong></p>
-<ul>
-<li><code>np.zeros(shape)</code>: to create an array of zeros</li>
-<li><code>np.random.rand(shape)</code>: array of random values</li>
-<li><code>np.arange(start, stop, step)</code>: evenly spaced</li>
-<li><code>np.linspace(start, stop, num)</code>: evenly spaced</li>
-</ul>
-<div class="fragment">
-<div class="callout callout-note callout-style-simple">
-<div class="callout-body">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-content">
-<p>The shape refers to the <span class="highlight">size of the array</span>. It can have one or multiple dimensions.</p>
-</div>
-</div>
-</div>
-</div>
-</section>
-<section id="dimensions" class="slide level2">
-<h2>Dimensions</h2>
-<ul>
-<li>The shape is specified as tuple in these arrays</li>
-<li><code>(2)</code> or <code>2</code> creates a 1-dimensional array (vetor)</li>
-<li><code>(2,2)</code> creates a 2-dimensional array (matrix)</li>
-<li><code>(2,2,2)</code> 3-dimensional array (3rd order tensor)</li>
-<li><code>(2,2,2,2)</code> 4-dimensional array (4th order tensor)</li>
-<li>…</li>
-</ul>
-</section>
-<section id="arrays-in-action" class="slide level2">
-<h2>Arrays in Action</h2>
-<p><span class="task">Task</span>: Practice working with Numpy:</p>
-<div id="00c536c2" class="cell" data-execution_count="5">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a></a><span class="co"># </span><span class="al">TODO</span><span class="co">: Create a 3-dimensional tensor with filled with zeros</span></span>
-<span id="cb9-2"><a></a><span class="co"># Choose the shape of the tensor, but it should have 200 elements</span></span>
-<span id="cb9-3"><a></a><span class="co"># Add the number 5 to all values of the tensor</span></span>
-<span id="cb9-4"><a></a></span>
-<span id="cb9-5"><a></a><span class="co"># Your code here</span></span>
-<span id="cb9-6"><a></a><span class="cf">assert</span> <span class="bu">sum</span>(tensor) <span class="op">==</span> <span class="dv">1000</span></span>
-<span id="cb9-7"><a></a></span>
-<span id="cb9-8"><a></a><span class="co"># </span><span class="al">TODO</span><span class="co">: Print the shape of the tensor using the method shape()</span></span>
-<span id="cb9-9"><a></a><span class="co"># </span><span class="al">TODO</span><span class="co">: Print the dtype of the tensor using the method dtype()</span></span>
-<span id="cb9-10"><a></a><span class="co"># </span><span class="al">TODO</span><span class="co">: Print the size of the tensor using the method size()</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Lists repeat; arrays compute. That’s why we’re here.</p>
 </div>
 </section></section>
+<section id="your-turn-10-minutes" class="title-slide slide level1 exercise-slide center">
+<h1>⚡ Your turn — 10 minutes</h1>
+<p>Open the exercise (scan the QR or type the link):</p>
+<p><strong><a href="https://beyondsimulations.github.io/Introduction-to-Python/notebooks/ex_07_a/">beyondsimulations.github.io/Introduction-to-Python/notebooks/ex_07_a/</a></strong></p>
+
+<img data-src="assets/qr/ex_07_a.png" width="280" class="r-stretch"><p>First <strong>predict</strong> what happens, then run it.</p>
+</section>
+
 <section>
-<section id="operations" class="title-slide slide level1 title center">
-<h1><span class="flow">Operations</span></h1>
+<section id="asking-questions-of-data" class="title-slide slide level1 title center">
+<h1><span class="flow">Asking questions of data</span></h1>
 
 </section>
-<section id="element-wise-operations" class="slide level2">
-<h2>Element-wise Operations</h2>
-<ul>
-<li>We can apply operations to the entire array at once</li>
-<li>This is much faster than applying them element-wise</li>
-</ul>
+<section id="a-comparison-makes-a-mask" class="slide level2">
+<h2>A comparison makes a mask</h2>
+<p>Compare an array to a number and you don’t get one <code>True</code>/<code>False</code>. You get a <strong>whole array</strong> of them, one per element. That’s a <strong>mask</strong>, and you can filter with it:</p>
+<div id="de7fb211" class="cell" data-execution_count="5">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb14"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb14-2"><a></a></span>
+<span id="cb14-3"><a></a>times <span class="op">=</span> np.array([<span class="dv">25</span>, <span class="dv">41</span>, <span class="dv">18</span>, <span class="dv">33</span>])</span>
+<span id="cb14-4"><a></a><span class="bu">print</span>(times <span class="op">&gt;</span> <span class="dv">30</span>)            <span class="co"># a True/False for every element</span></span>
+<span id="cb14-5"><a></a><span class="bu">print</span>(times[times <span class="op">&gt;</span> <span class="dv">30</span>])     <span class="co"># keep only where the mask is True</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<div class="cell fragment" data-execution_count="5">
+<div class="cell-output cell-output-stdout">
+<pre><code>[False  True False  True]
+[41 33]</code></pre>
+</div>
+</div>
 <div class="fragment">
-<p><span class="question">Question:</span> What would happen here?</p>
-<div id="a28ad79e" class="cell" data-execution_count="6">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
-<span id="cb10-2"><a></a>a <span class="op">=</span> np.array([<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>])</span>
-<span id="cb10-3"><a></a>b <span class="op">=</span> np.array([<span class="dv">4</span>, <span class="dv">5</span>, <span class="dv">6</span>])</span>
-<span id="cb10-4"><a></a></span>
-<span id="cb10-5"><a></a><span class="bu">print</span>(<span class="st">"Addition:"</span>, a <span class="op">+</span> b)</span>
-<span id="cb10-6"><a></a><span class="bu">print</span>(<span class="st">"Multiplication:"</span>, a <span class="op">*</span> b)</span>
-<span id="cb10-7"><a></a><span class="bu">print</span>(<span class="st">"Division:"</span>, a <span class="op">/</span> b)</span>
-<span id="cb10-8"><a></a><span class="bu">print</span>(<span class="st">"Power:"</span>, a <span class="op">**</span> <span class="dv">2</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p><code>times &gt; 30</code> is the mask; <code>times[times &gt; 30]</code> reads the array <strong>through</strong> the mask and returns just the matching values. No loop, no <code>if</code>.</p>
+</div>
+</section>
+<section id="counting-without-a-loop" class="slide level2">
+<h2>Counting without a loop</h2>
+<p>A mask answers two investor questions at once. <code>.sum()</code> counts the <code>True</code>s (each counts as <code>1</code>); <code>.mean()</code> gives the <strong>share</strong> that are <code>True</code>:</p>
+<div id="5e6d151d" class="cell" data-execution_count="6">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb16"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb16-2"><a></a></span>
+<span id="cb16-3"><a></a>times <span class="op">=</span> np.array([<span class="dv">25</span>, <span class="dv">41</span>, <span class="dv">18</span>, <span class="dv">33</span>, <span class="dv">52</span>, <span class="dv">29</span>, <span class="dv">44</span>, <span class="dv">12</span>])</span>
+<span id="cb16-4"><a></a>late <span class="op">=</span> times <span class="op">&gt;</span> <span class="dv">30</span></span>
+<span id="cb16-5"><a></a><span class="bu">print</span>(<span class="bu">int</span>(late.<span class="bu">sum</span>()))              <span class="co"># how many were late</span></span>
+<span id="cb16-6"><a></a><span class="bu">print</span>(<span class="bu">float</span>(times[late].mean()))    <span class="co"># average of just the late ones</span></span>
+<span id="cb16-7"><a></a><span class="bu">print</span>(<span class="bu">float</span>(late.mean()))           <span class="co"># the SHARE that were late</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <div class="cell fragment" data-execution_count="6">
 <div class="cell-output cell-output-stdout">
-<pre><code>Addition: [5 7 9]
-Multiplication: [ 4 10 18]
-Division: [0.25 0.4  0.5 ]
-Power: [1 4 9]</code></pre>
+<pre><code>4
+42.5
+0.5</code></pre>
 </div>
 </div>
+<div class="fragment">
+<p><code>4</code> deliveries over 30 minutes, averaging <code>42.5</code>, and <code>late.mean()</code> says <strong>half</strong> the run was late, one line each, straight into the deck.</p>
 </div>
 </section>
-<section id="matrix-vs-element-wise" class="slide level2">
-<h2>Matrix vs Element-wise</h2>
-<p><span class="highlight">Important</span>: <code>*</code> is element-wise, <code>@</code> is matrix multiplication:</p>
-<div id="3d83de66" class="cell" data-execution_count="7">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb12"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a></a>A <span class="op">=</span> np.array([[<span class="dv">1</span>, <span class="dv">2</span>], [<span class="dv">3</span>, <span class="dv">4</span>]])</span>
-<span id="cb12-2"><a></a>B <span class="op">=</span> np.array([[<span class="dv">5</span>, <span class="dv">6</span>], [<span class="dv">7</span>, <span class="dv">8</span>]])</span>
-<span id="cb12-3"><a></a></span>
-<span id="cb12-4"><a></a><span class="bu">print</span>(<span class="st">"Element-wise (*):"</span>)<span class="op">;</span> <span class="bu">print</span>(A <span class="op">*</span> B)<span class="op">;</span> <span class="bu">print</span>(<span class="st">"---"</span>)</span>
-<span id="cb12-5"><a></a><span class="bu">print</span>(<span class="st">"Matrix multiplication (@):"</span>)<span class="op">;</span> <span class="bu">print</span>(A <span class="op">@</span> B)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<section id="predict-counting-the-trues" class="slide level2">
+<h2>Predict: counting the Trues</h2>
+<p>What does calling <code>.sum()</code> on the mask give?</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb18"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a></a><span class="bu">print</span>((np.array([<span class="dv">1</span>, <span class="dv">5</span>, <span class="dv">3</span>]) <span class="op">&gt;</span> <span class="dv">2</span>).<span class="bu">sum</span>())</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>a) <code>2</code> b) <code>True</code> c) <code>[False, True, True]</code></p>
+<div class="fragment">
+<p><span class="question">Predict first</span>. Commit to an answer before the next slide.</p>
+</div>
+</section>
+<section id="answer-true-counts-as-1" class="slide level2">
+<h2>Answer: True counts as 1</h2>
+<p><strong>a) <code>2</code></strong> — <code>.sum()</code> adds the mask up, and each <code>True</code> is worth <code>1</code>, each <code>False</code> <code>0</code>. Two elements clear the bar, so the count is <code>2</code>:</p>
+<div id="f286dc0f" class="cell" data-execution_count="7">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb19"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb19-2"><a></a></span>
+<span id="cb19-3"><a></a><span class="bu">print</span>(np.array([<span class="dv">1</span>, <span class="dv">5</span>, <span class="dv">3</span>]) <span class="op">&gt;</span> <span class="dv">2</span>)            <span class="co"># [False  True  True]</span></span>
+<span id="cb19-4"><a></a><span class="bu">print</span>((np.array([<span class="dv">1</span>, <span class="dv">5</span>, <span class="dv">3</span>]) <span class="op">&gt;</span> <span class="dv">2</span>).<span class="bu">sum</span>())    <span class="co"># Trues add up to 2</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <div class="cell fragment" data-execution_count="7">
 <div class="cell-output cell-output-stdout">
-<pre><code>Element-wise (*):
-[[ 5 12]
- [21 32]]
----
-Matrix multiplication (@):
-[[19 22]
- [43 50]]</code></pre>
+<pre><code>[False  True  True]
+2</code></pre>
 </div>
 </div>
-</section>
-<section id="broadcasting" class="slide level2">
-<h2>Broadcasting</h2>
-<p>NumPy can perform operations on arrays with <span class="highlight">different shapes</span>!</p>
 <div class="fragment">
-<p><span class="question">Question:</span> What would you expect here?</p>
-<div id="e9c2928f" class="cell" data-execution_count="8">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb14"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a></a>matrix <span class="op">=</span> np.array([[<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>], [<span class="dv">4</span>, <span class="dv">5</span>, <span class="dv">6</span>]])</span>
-<span id="cb14-2"><a></a>vector <span class="op">=</span> np.array([<span class="dv">10</span>, <span class="dv">20</span>, <span class="dv">30</span>])</span>
-<span id="cb14-3"><a></a></span>
-<span id="cb14-4"><a></a><span class="bu">print</span>(<span class="st">"Matrix:"</span>)<span class="op">;</span> <span class="bu">print</span>(matrix)<span class="op">;</span> <span class="bu">print</span>(<span class="st">"Vector:"</span>, vector)<span class="op">;</span> <span class="bu">print</span>(<span class="st">"---"</span>)</span>
-<span id="cb14-5"><a></a><span class="bu">print</span>(<span class="st">"Broadcasting result:"</span>)<span class="op">;</span> <span class="bu">print</span>(matrix <span class="op">+</span> vector)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Summing a mask counts; averaging a mask shares. Same two tricks the lab asks for.</p>
+</div>
+</section></section>
+<section id="your-turn-10-minutes-1" class="title-slide slide level1 exercise-slide center">
+<h1>⚡ Your turn — 10 minutes</h1>
+<p>Open the exercise (scan the QR or type the link):</p>
+<p><strong><a href="https://beyondsimulations.github.io/Introduction-to-Python/notebooks/ex_07_b/">beyondsimulations.github.io/Introduction-to-Python/notebooks/ex_07_b/</a></strong></p>
+
+<img data-src="assets/qr/ex_07_b.png" width="280" class="r-stretch"><p>First <strong>predict</strong> what happens, then run it.</p>
+</section>
+
+<section>
+<section id="the-days-by-zones-grid" class="title-slide slide level1 title center">
+<h1><span class="flow">The days-by-zones grid</span></h1>
+
+</section>
+<section id="a-grid-of-numbers" class="slide level2">
+<h2>A grid of numbers</h2>
+<p>Real data isn’t one row. Stack rows and you get a <strong>2D array</strong>: here three <strong>days</strong> (rows) across four <strong>zones</strong> (columns: Nord, Sued, Hafen, Altstadt):</p>
+<div id="92927f85" class="cell" data-execution_count="8">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb21"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb21-2"><a></a></span>
+<span id="cb21-3"><a></a>deliveries <span class="op">=</span> np.array([[ <span class="dv">9</span>, <span class="dv">14</span>, <span class="dv">11</span>,  <span class="dv">6</span>],</span>
+<span id="cb21-4"><a></a>                       [<span class="dv">15</span>, <span class="dv">12</span>,  <span class="dv">8</span>,  <span class="dv">9</span>],</span>
+<span id="cb21-5"><a></a>                       [<span class="dv">13</span>, <span class="dv">20</span>, <span class="dv">16</span>, <span class="dv">11</span>]])</span>
+<span id="cb21-6"><a></a><span class="bu">print</span>(deliveries.shape)      <span class="co"># (rows, columns) → (3, 4)</span></span>
+<span id="cb21-7"><a></a><span class="bu">print</span>(deliveries[<span class="dv">0</span>, <span class="dv">2</span>])      <span class="co"># row 0, column 2</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <div class="cell fragment" data-execution_count="8">
 <div class="cell-output cell-output-stdout">
-<pre><code>Matrix:
-[[1 2 3]
- [4 5 6]]
-Vector: [10 20 30]
----
-Broadcasting result:
-[[11 22 33]
- [14 25 36]]</code></pre>
+<pre><code>(3, 4)
+11</code></pre>
 </div>
 </div>
-</div>
-</section>
-<section id="broadcasting-rules" class="slide level2">
-<h2>Broadcasting Rules</h2>
-<p>Broadcasting works when:</p>
-<ol type="1">
-<li>Arrays have the same number of dimensions, OR</li>
-<li>One array has fewer dimensions (padded with 1s)</li>
-<li>Corresponding dimensions are equal OR one is 1</li>
-</ol>
 <div class="fragment">
-<p><span class="question">Question:</span> What happens with shapes <code>(3,4)</code> and <code>(4,)</code>?</p>
+<p><code>.shape</code> is now <code>(3, 4)</code>: three days, four zones. One index picks the <strong>row</strong>, a second the <strong>column</strong>: <code>deliveries[0, 2]</code> is day 0, zone 2 (Hafen).</p>
 </div>
 </section>
-<section id="coffee-shop-analytics" class="slide level2">
-<h2>Coffee Shop Analytics</h2>
-<p><span class="task">Task</span>: Analyze coffee shop sales using broadcasting:</p>
-<div id="4170f0ef" class="cell" data-execution_count="9">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb16"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a></a><span class="co"># Daily sales for 3 products over 4 days (Monday-Thursday)</span></span>
-<span id="cb16-2"><a></a>sales <span class="op">=</span> np.array([[<span class="dv">25</span>, <span class="dv">30</span>, <span class="dv">28</span>, <span class="dv">35</span>],    <span class="co"># Coffee</span></span>
-<span id="cb16-3"><a></a>                  [<span class="dv">15</span>, <span class="dv">18</span>, <span class="dv">20</span>, <span class="dv">22</span>],    <span class="co"># Pastries</span></span>
-<span id="cb16-4"><a></a>                  [<span class="dv">8</span>, <span class="dv">12</span>, <span class="dv">10</span>, <span class="dv">15</span>]])    <span class="co"># Sandwiches</span></span>
-<span id="cb16-5"><a></a></span>
-<span id="cb16-6"><a></a><span class="bu">print</span>(<span class="st">"Original sales:</span><span class="ch">\n</span><span class="st">"</span>, sales)</span>
-<span id="cb16-7"><a></a></span>
-<span id="cb16-8"><a></a><span class="co"># </span><span class="al">TODO</span><span class="co">: Apply a 10% Friday discount to all products using broadcasting</span></span>
-<span id="cb16-9"><a></a></span>
-<span id="cb16-10"><a></a></span>
-<span id="cb16-11"><a></a><span class="co"># </span><span class="al">TODO</span><span class="co">: Calculate total revenue if coffee=3€, pastries=2€, sandwiches=5€</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<section id="which-way-to-collapse" class="slide level2">
+<h2>Which way to collapse?</h2>
+<p>To sum a grid you must say <strong>which way</strong> to collapse it. The <code>axis</code> tells NumPy which direction disappears:</p>
+<pre><code>          Nord  Sued  Hafen  Altstadt
+   day0  [  9    14    11      6  ]
+   day1  [ 15    12     8      9  ]
+   day2  [ 13    20    16     11  ]
+
+   axis=0 collapses DOWN the rows:
+            ↓     ↓     ↓      ↓
+           37    46    35     26      one number per column (zone)
+
+   axis=1 collapses ACROSS the columns:
+   day0 → 40   ·   day1 → 44   ·   day2 → 60      one number per row (day)</code></pre>
+<div id="81ca99dd" class="cell" data-execution_count="9">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb24"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb24-1"><a></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb24-2"><a></a></span>
+<span id="cb24-3"><a></a>deliveries <span class="op">=</span> np.array([[ <span class="dv">9</span>, <span class="dv">14</span>, <span class="dv">11</span>,  <span class="dv">6</span>],</span>
+<span id="cb24-4"><a></a>                       [<span class="dv">15</span>, <span class="dv">12</span>,  <span class="dv">8</span>,  <span class="dv">9</span>],</span>
+<span id="cb24-5"><a></a>                       [<span class="dv">13</span>, <span class="dv">20</span>, <span class="dv">16</span>, <span class="dv">11</span>]])</span>
+<span id="cb24-6"><a></a><span class="bu">print</span>(deliveries.<span class="bu">sum</span>(axis<span class="op">=</span><span class="dv">0</span>))   <span class="co"># DOWN the rows → per zone</span></span>
+<span id="cb24-7"><a></a><span class="bu">print</span>(deliveries.<span class="bu">sum</span>(axis<span class="op">=</span><span class="dv">1</span>))   <span class="co"># ACROSS the columns → per day</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<div class="cell fragment" data-execution_count="9">
+<div class="cell-output cell-output-stdout">
+<pre><code>[37 46 35 26]
+[40 44 60]</code></pre>
+</div>
+</div>
+<div class="fragment">
+<p><strong><code>axis=0</code> collapses DOWN the rows, one number per column (zone):</strong> <code>[37 46 35 26]</code>. <code>axis=1</code> collapses across, one per day: <code>[40 44 60]</code>.</p>
 </div>
 </section>
-<section id="axis-specific-operations" class="slide level2">
-<h2>Axis-specific Operations</h2>
-<p>For multi-dimensional arrays, specify the <span class="highlight">axis</span>:</p>
-<div id="e8ca0bc4" class="cell" data-execution_count="10">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb17"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a></a>matrix <span class="op">=</span> np.array([[<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>], [<span class="dv">4</span>, <span class="dv">5</span>, <span class="dv">6</span>], [<span class="dv">7</span>, <span class="dv">8</span>, <span class="dv">9</span>]])</span>
-<span id="cb17-2"><a></a></span>
-<span id="cb17-3"><a></a><span class="bu">print</span>(<span class="st">"Matrix:"</span>)<span class="op">;</span> <span class="bu">print</span>(matrix)<span class="op">;</span> <span class="bu">print</span>(<span class="st">"---"</span>)</span>
-<span id="cb17-4"><a></a><span class="bu">print</span>(<span class="st">"Sum along axis 0 (columns):"</span>, np.<span class="bu">sum</span>(matrix, axis<span class="op">=</span><span class="dv">0</span>))</span>
-<span id="cb17-5"><a></a><span class="bu">print</span>(<span class="st">"Mean along axis 1 (rows):"</span>, np.mean(matrix, axis<span class="op">=</span><span class="dv">1</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<section id="where-does-the-max-sit" class="slide level2">
+<h2>Where does the max sit?</h2>
+<p>The per-zone totals answer “how many?”, but the investor asks “<strong>which</strong> zone?”. <code>argmax</code> tells you <strong>WHERE</strong> the maximum sits, as an index:</p>
+<div id="9b12bc13" class="cell" data-execution_count="10">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb26"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb26-1"><a></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb26-2"><a></a></span>
+<span id="cb26-3"><a></a>deliveries <span class="op">=</span> np.array([[ <span class="dv">9</span>, <span class="dv">14</span>, <span class="dv">11</span>,  <span class="dv">6</span>],</span>
+<span id="cb26-4"><a></a>                       [<span class="dv">15</span>, <span class="dv">12</span>,  <span class="dv">8</span>,  <span class="dv">9</span>],</span>
+<span id="cb26-5"><a></a>                       [<span class="dv">13</span>, <span class="dv">20</span>, <span class="dv">16</span>, <span class="dv">11</span>]])</span>
+<span id="cb26-6"><a></a>zone_totals <span class="op">=</span> deliveries.<span class="bu">sum</span>(axis<span class="op">=</span><span class="dv">0</span>)   <span class="co"># [37 46 35 26]</span></span>
+<span id="cb26-7"><a></a><span class="bu">print</span>(<span class="bu">int</span>(zone_totals.argmax()))        <span class="co"># index of the biggest</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <div class="cell fragment" data-execution_count="10">
 <div class="cell-output cell-output-stdout">
-<pre><code>Matrix:
-[[1 2 3]
- [4 5 6]
- [7 8 9]]
----
-Sum along axis 0 (columns): [12 15 18]
-Mean along axis 1 (rows): [2. 5. 8.]</code></pre>
+<pre><code>1</code></pre>
 </div>
+</div>
+<div class="fragment">
+<p><code>max</code> would give the value <code>46</code>; <code>argmax</code> gives its <strong>position</strong>, <code>1</code>. The busiest zone is <strong>Sued</strong>, sitting at index 1, not at the front. Position, not value: that’s the whole point of <code>argmax</code>.</p>
 </div>
 </section>
-<section id="joining-arrays" class="slide level2">
-<h2>Joining Arrays</h2>
-<ul>
-<li>You can use <code>concatenate</code> two <strong>join arrays</strong></li>
-<li>With <code>axis</code> you can specify the dimension</li>
-<li>In 2-dimensions <code>hstack()</code> and <code>vstack()</code> are easier</li>
-</ul>
+<section id="predict-which-call-collapses-which-way" class="slide level2">
+<h2>Predict: which call collapses which way?</h2>
+<p>The investor wants <strong>four</strong> numbers, one per zone. Which call?</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb28"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb28-1"><a></a>week <span class="op">=</span> np.array([[ <span class="dv">9</span>, <span class="dv">14</span>, <span class="dv">11</span>,  <span class="dv">6</span>],</span>
+<span id="cb28-2"><a></a>                 [<span class="dv">15</span>, <span class="dv">12</span>,  <span class="dv">8</span>,  <span class="dv">9</span>],</span>
+<span id="cb28-3"><a></a>                 [<span class="dv">13</span>, <span class="dv">20</span>, <span class="dv">16</span>, <span class="dv">11</span>]])</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>a) <code>week.sum(axis=0)</code> b) <code>week.sum(axis=1)</code> c) <code>week.sum()</code></p>
 <div class="fragment">
-<p><span class="question">Question</span>: What do you expect will be printed?</p>
-<div id="acbe9c84" class="cell" data-execution_count="11">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb19"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
-<span id="cb19-2"><a></a>ones <span class="op">=</span> np.array((<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">1</span>))</span>
-<span id="cb19-3"><a></a>twos <span class="op">=</span> np.array((<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">1</span>)) <span class="op">*</span><span class="dv">2</span></span>
-<span id="cb19-4"><a></a><span class="bu">print</span>(np.vstack((ones,twos)))<span class="op">;</span> <span class="bu">print</span>(np.hstack((ones,twos)))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p><span class="question">Predict first</span>. Commit to an answer before the next slide.</p>
+</div>
+</section>
+<section id="answer-collapse-the-days-keep-the-zones" class="slide level2">
+<h2>Answer: collapse the days, keep the zones</h2>
+<p><strong>a) <code>week.sum(axis=0)</code></strong> — four zones means four numbers, so the <strong>days</strong> must disappear: <code>axis=0</code> collapses DOWN the rows, one number per column (zone):</p>
+<div id="782f4f5a" class="cell" data-execution_count="11">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb29"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb29-1"><a></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb29-2"><a></a></span>
+<span id="cb29-3"><a></a>week <span class="op">=</span> np.array([[ <span class="dv">9</span>, <span class="dv">14</span>, <span class="dv">11</span>,  <span class="dv">6</span>],</span>
+<span id="cb29-4"><a></a>                 [<span class="dv">15</span>, <span class="dv">12</span>,  <span class="dv">8</span>,  <span class="dv">9</span>],</span>
+<span id="cb29-5"><a></a>                 [<span class="dv">13</span>, <span class="dv">20</span>, <span class="dv">16</span>, <span class="dv">11</span>]])</span>
+<span id="cb29-6"><a></a><span class="bu">print</span>(week.<span class="bu">sum</span>(axis<span class="op">=</span><span class="dv">0</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <div class="cell fragment" data-execution_count="11">
 <div class="cell-output cell-output-stdout">
-<pre><code>[[1 1 1 1]
- [2 2 2 2]]
-[1 1 1 1 2 2 2 2]</code></pre>
+<pre><code>[37 46 35 26]</code></pre>
 </div>
 </div>
-</div>
-</section>
-<section id="statistical-functions" class="slide level2">
-<h2>Statistical Functions</h2>
-<p>NumPy provides <span class="highlight">many built-in statistical functions:</span></p>
-<div id="9d113276" class="cell" data-execution_count="12">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb21"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a></a>data <span class="op">=</span> np.array([<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">5</span>, <span class="dv">6</span>, <span class="dv">7</span>, <span class="dv">8</span>, <span class="dv">9</span>, <span class="dv">10</span>])</span>
-<span id="cb21-2"><a></a></span>
-<span id="cb21-3"><a></a><span class="bu">print</span>(<span class="st">"Mean:"</span>, np.mean(data))</span>
-<span id="cb21-4"><a></a><span class="bu">print</span>(<span class="st">"Standard deviation:"</span>, np.std(data))</span>
-<span id="cb21-5"><a></a><span class="bu">print</span>(<span class="st">"Minimum:"</span>, np.<span class="bu">min</span>(data))</span>
-<span id="cb21-6"><a></a><span class="bu">print</span>(<span class="st">"Maximum:"</span>, np.<span class="bu">max</span>(data))</span>
-<span id="cb21-7"><a></a><span class="bu">print</span>(<span class="st">"Sum:"</span>, np.<span class="bu">sum</span>(data))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</div>
-<div class="cell fragment" data-execution_count="12">
-<div class="cell-output cell-output-stdout">
-<pre><code>Mean: 5.5
-Standard deviation: 2.8722813232690143
-Minimum: 1
-Maximum: 10
-Sum: 55</code></pre>
-</div>
-</div>
-</section>
-<section id="student-grade-analysis" class="slide level2">
-<h2>Student Grade Analysis</h2>
-<p><span class="task">Task</span>: Analyze a class of student grades:</p>
-<div id="e44e97df" class="cell" data-execution_count="13">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb23"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a></a><span class="co"># German grades: 1.0 (best) to 5.0 (worst), 4.0 is passing grade</span></span>
-<span id="cb23-2"><a></a>grades <span class="op">=</span> np.array([<span class="fl">1.0</span>, <span class="fl">1.3</span>, <span class="fl">1.7</span>, <span class="fl">2.0</span>, <span class="fl">2.3</span>, <span class="fl">2.7</span>, <span class="fl">3.0</span>, <span class="fl">3.3</span>,</span>
-<span id="cb23-3"><a></a>                   <span class="fl">3.7</span>, <span class="fl">4.0</span>, <span class="fl">4.0</span>, <span class="fl">2.3</span>, <span class="fl">1.7</span>, <span class="fl">2.0</span>, <span class="fl">3.3</span>, <span class="fl">2.7</span>])</span>
-<span id="cb23-4"><a></a></span>
-<span id="cb23-5"><a></a><span class="bu">print</span>(<span class="st">"Student grades:"</span>, grades)</span>
-<span id="cb23-6"><a></a></span>
-<span id="cb23-7"><a></a><span class="co"># </span><span class="al">TODO</span><span class="co">: Calculate and print the following statistics:</span></span>
-<span id="cb23-8"><a></a><span class="co"># - Class average</span></span>
-<span id="cb23-9"><a></a><span class="co"># - Standard deviation</span></span>
-<span id="cb23-10"><a></a><span class="co"># - Best grade</span></span>
-<span id="cb23-11"><a></a><span class="co"># - Worst grade</span></span>
-<span id="cb23-12"><a></a></span>
-<span id="cb23-13"><a></a><span class="co"># Your statistical analysis here</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="fragment">
+<p>b) would give <strong>three</strong> numbers (one per day); c) would give <strong>one</strong> number: the grand total, <code>144</code>.</p>
 </div>
 </section></section>
+<section id="your-turn-10-minutes-2" class="title-slide slide level1 exercise-slide center">
+<h1>⚡ Your turn — 10 minutes</h1>
+<p>Open the exercise (scan the QR or type the link):</p>
+<p><strong><a href="https://beyondsimulations.github.io/Introduction-to-Python/notebooks/ex_07_c/">beyondsimulations.github.io/Introduction-to-Python/notebooks/ex_07_c/</a></strong></p>
+
+<img data-src="assets/qr/ex_07_c.png" width="280" class="r-stretch"><p>First <strong>predict</strong> what happens, then run it.</p>
+</section>
+
 <section>
-<section id="indexing-and-methods" class="title-slide slide level1 title center">
-<h1><span class="flow">Indexing and Methods</span></h1>
+<section id="to-the-lab" class="title-slide slide level1 title center">
+<h1><span class="flow">To the Lab</span></h1>
 
 </section>
-<section id="indexing-and-slicing" class="slide level2">
-<h2>Indexing and Slicing</h2>
+<section id="tonights-episode" class="slide level2">
+<h2>Tonight’s episode</h2>
 <ul>
-<li>Accessing and slicing <code>ndarray</code> works as before</li>
-<li>Higher dimension element access with multiple indices</li>
+<li>Head to the lab notebook: <a href="../tutorials/tut_07_scientific.html">Episode 7 — One Array to Rule a Thousand Orders</a></li>
+<li>You’ll turn the order log into arrays, add VAT to a whole price column at once, mask out the late deliveries to count and average them, and collapse a days-by-zones grid to find the winning zone</li>
+<li>AI is allowed, so try the chatbot, and keep your one-line disclosure note on the submission</li>
+<li>It runs entirely in your browser: no setup, just click and code</li>
 </ul>
 <div class="fragment">
-<p><span class="question">Question</span>: What do you expect will be printed?</p>
-<div id="e9ee1d4f" class="cell" data-execution_count="14">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb24"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb24-1"><a></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
-<span id="cb24-2"><a></a>x <span class="op">=</span> np.random.randint(<span class="dv">0</span>, <span class="dv">10</span>, size<span class="op">=</span>(<span class="dv">3</span>, <span class="dv">3</span>))</span>
-<span id="cb24-3"><a></a><span class="bu">print</span>(x)<span class="op">;</span> <span class="bu">print</span>(<span class="st">"---"</span>)</span>
-<span id="cb24-4"><a></a><span class="bu">print</span>(x[<span class="dv">0</span>:<span class="dv">2</span>,<span class="dv">0</span>:<span class="dv">2</span>])</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</div>
-<div class="cell fragment" data-execution_count="14">
-<div class="cell-output cell-output-stdout">
-<pre><code>[[3 2 7]
- [9 2 4]
- [2 9 1]]
----
-[[3 2]
- [9 2]]</code></pre>
-</div>
-</div>
-</div>
-</section>
-<section id="boolean-indexing" class="slide level2">
-<h2>Boolean Indexing</h2>
-<p>Use boolean arrays to filter elements based on conditions:</p>
-<div id="17459b9f" class="cell" data-execution_count="15">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb26"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb26-1"><a></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
-<span id="cb26-2"><a></a>data <span class="op">=</span> np.array([<span class="dv">1</span>, <span class="dv">5</span>, <span class="dv">3</span>, <span class="dv">8</span>, <span class="dv">2</span>, <span class="dv">9</span>, <span class="dv">4</span>])</span>
-<span id="cb26-3"><a></a><span class="bu">print</span>(<span class="st">"Original data:"</span>, data)</span>
-<span id="cb26-4"><a></a><span class="bu">print</span>(<span class="st">"Values &gt; 4:"</span>, data[data <span class="op">&gt;</span> <span class="dv">4</span>])</span>
-<span id="cb26-5"><a></a><span class="bu">print</span>(<span class="st">"Even numbers:"</span>, data[data <span class="op">%</span> <span class="dv">2</span> <span class="op">==</span> <span class="dv">0</span>])</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</div>
-<div class="cell fragment" data-execution_count="15">
-<div class="cell-output cell-output-stdout">
-<pre><code>Original data: [1 5 3 8 2 9 4]
-Values &gt; 4: [5 8 9]
-Even numbers: [8 2 4]</code></pre>
-</div>
-</div>
-</section>
-<section id="fancy-indexing" class="slide level2">
-<h2>Fancy Indexing</h2>
-<p>Access multiple elements using arrays of indices:</p>
-<div id="1b30edc8" class="cell" data-execution_count="16">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb28"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb28-1"><a></a>data <span class="op">=</span> np.array([<span class="dv">10</span>, <span class="dv">20</span>, <span class="dv">30</span>, <span class="dv">40</span>, <span class="dv">50</span>])</span>
-<span id="cb28-2"><a></a>indices <span class="op">=</span> np.array([<span class="dv">0</span>, <span class="dv">2</span>, <span class="dv">4</span>])</span>
-<span id="cb28-3"><a></a><span class="bu">print</span>(<span class="st">"Original data:"</span>, data)</span>
-<span id="cb28-4"><a></a><span class="bu">print</span>(<span class="st">"Selected elements:"</span>, data[indices])</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</div>
-<div class="cell fragment" data-execution_count="16">
-<div class="cell-output cell-output-stdout">
-<pre><code>Original data: [10 20 30 40 50]
-Selected elements: [10 30 50]</code></pre>
-</div>
-</div>
-<div class="fragment">
-<p><span class="question">Question:</span> What happens if we use negative indices?</p>
-</div>
-</section>
-<section id="most-common-methods" class="slide level2">
-<h2>Most Common Methods</h2>
-<ul>
-<li><code>sort()</code>: sort the array from low to high</li>
-<li><code>reshape()</code>: reshape the array into a new shape</li>
-<li><code>flatten()</code>: flatten the array into a 1D array</li>
-<li><code>squeeze()</code>: squeeze the array to remove 1D entries</li>
-<li><code>transpose()</code>: transpose the array</li>
-</ul>
-<div class="fragment">
-<div class="callout callout-tip callout-style-simple">
+<div class="callout callout-important callout-style-simple">
 <div class="callout-body">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-content">
-<p>Try experiment with these methods, they can make your <span class="highlight">work much easier.</span></p>
+<p><strong>Download your <code>.py</code> before you leave.</strong> Closing the tab without downloading loses your work.</p>
 </div>
 </div>
 </div>
-</div>
-</section>
-<section id="weekly-fitness-challenge" class="slide level2">
-<h2>Weekly Fitness Challenge</h2>
-<p><span class="task">Task</span>: Track your weekly step count progress:</p>
-<div id="872847fb" class="cell" data-execution_count="17">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb30"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb30-1"><a></a><span class="co"># Your daily step counts for one week</span></span>
-<span id="cb30-2"><a></a>steps <span class="op">=</span> np.array([<span class="dv">8500</span>, <span class="dv">12000</span>, <span class="dv">6800</span>, <span class="dv">9500</span>, <span class="dv">11200</span>, <span class="dv">15000</span>, <span class="dv">7800</span>])</span>
-<span id="cb30-3"><a></a>days <span class="op">=</span> np.array([<span class="st">"Mon"</span>, <span class="st">"Tue"</span>, <span class="st">"Wed"</span>, <span class="st">"Thu"</span>, <span class="st">"Fri"</span>, <span class="st">"Sat"</span>, <span class="st">"Sun"</span>])</span>
-<span id="cb30-4"><a></a>target <span class="op">=</span> <span class="dv">10000</span>  <span class="co"># Daily step goal</span></span>
-<span id="cb30-5"><a></a></span>
-<span id="cb30-6"><a></a><span class="co"># </span><span class="al">TODO</span><span class="co">: Find days where you exceeded your target (&gt;= 10000 steps)</span></span>
-<span id="cb30-7"><a></a></span>
-<span id="cb30-8"><a></a></span>
-<span id="cb30-9"><a></a><span class="co"># </span><span class="al">TODO</span><span class="co">: Print the successful days using fancy indexing</span></span>
-<span id="cb30-10"><a></a></span>
-<span id="cb30-11"><a></a></span>
-<span id="cb30-12"><a></a><span class="co"># </span><span class="al">TODO</span><span class="co">: Calculate your weekly achievement rate (percentage of successful days)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section></section>
 <section>
-<section id="types" class="title-slide slide level1 title center">
-<h1><span class="flow">Types</span></h1>
+<section id="wrap-up" class="title-slide slide level1 title center">
+<h1><span class="flow">Wrap-up</span></h1>
 
 </section>
-<section id="data-types" class="slide level2">
-<h2>Data Types</h2>
-<ul>
-<li>Numpy provides <span class="highlight">data types as characters</span></li>
-<li><code>i</code>: integer</li>
-<li><code>b</code>: boolean</li>
-<li><code>f</code>: float</li>
-<li><code>S</code>: string</li>
-<li><code>U</code>: unicode</li>
-</ul>
-<div class="fragment">
-<div id="51b88fb9" class="cell" data-execution_count="18">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb31"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb31-1"><a></a>string_array <span class="op">=</span> np.array([<span class="st">"Hello"</span>, <span class="st">"World"</span>])<span class="op">;</span> string_array.dtype</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</div>
-<div class="cell fragment" data-execution_count="18">
-<div class="cell-output cell-output-display" data-execution_count="573">
-<pre><code>dtype('&lt;U5')</code></pre>
-</div>
-</div>
-</div>
-</section>
-<section id="enforcing-data-types" class="slide level2">
-<h2>Enforcing Data Types</h2>
-<ul>
-<li>We can also <strong>provide</strong> the type when creating arrays</li>
-</ul>
-<div class="fragment">
-<div id="469cd74d" class="cell" data-execution_count="19">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb33"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb33-1"><a></a>x <span class="op">=</span> np.array([<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">5</span>],  dtype <span class="op">=</span> <span class="st">'f'</span>)<span class="op">;</span> <span class="bu">print</span>(x.dtype)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</div>
-<div class="cell fragment" data-execution_count="19">
-<div class="cell-output cell-output-stdout">
-<pre><code>float32</code></pre>
-</div>
-</div>
-</div>
-<div class="fragment">
-<ul>
-<li>Or we can <strong>change</strong> them for existing arrays</li>
-</ul>
-<div id="c9341666" class="cell" data-execution_count="20">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb35"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb35-1"><a></a>x <span class="op">=</span> np.array([<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">5</span>],  dtype <span class="op">=</span> <span class="st">'f'</span>)<span class="op">;</span> <span class="bu">print</span>(x.astype(<span class="st">'i'</span>).dtype)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</div>
-<div class="cell fragment" data-execution_count="20">
-<div class="cell-output cell-output-stdout">
-<pre><code>int32</code></pre>
-</div>
-</div>
-</div>
+<section id="three-things-to-remember" class="slide level2">
+<h2>Three things to remember</h2>
+<ol type="1">
+<li><strong>One array, one operation.</strong> <code>np.array([...])</code> holds many numbers; arithmetic hits <strong>every element at once</strong>. No loop. Ask it <code>.shape</code>, <code>.dtype</code>, <code>.size</code> to know what you’re holding.</li>
+<li><strong>A comparison makes a mask.</strong> <code>arr &gt; 30</code> is a True/False array: <code>arr[mask]</code> filters, <code>.sum()</code> counts the Trues, <code>.mean()</code> gives their share.</li>
+<li><strong>In 2D, pick an axis.</strong> <code>axis=0</code> collapses <strong>DOWN the rows</strong> (one number per column), <code>axis=1</code> <strong>across the columns</strong> (one per row); <code>argmax</code> tells you <strong>where</strong> the maximum sits.</li>
+</ol>
 <div class="fragment">
 <div class="callout callout-note callout-style-simple">
 <div class="callout-body">
@@ -815,77 +627,37 @@ Selected elements: [10 30 50]</code></pre>
 <i class="callout-icon"></i>
 </div>
 <div class="callout-content">
-<p>Note, how the types are specified as <code>int32</code> and <code>float32</code>.</p>
+<p><strong>Next episode: the investor opens a data room, and Kevin lets an AI write his pandas.</strong> The arrays get column names, and a thousand orders become a table you can query.</p>
 </div>
 </div>
 </div>
-</div>
-</section>
-<section id="sidenote-bits" class="slide level2">
-<h2>Sidenote: Bits</h2>
-<p><span class="question">Question:</span> Do you have an idea what <code>32</code> stands for?</p>
-<div class="fragment">
-<ul>
-<li>It’s the number of bits used to represent a number
-<ul>
-<li><code>int16</code> is a 16-bit integer</li>
-<li><code>float32</code> is a 32-bit floating point number</li>
-<li><code>int64</code> is a 64-bit integer</li>
-<li><code>float128</code> is a 128-bit floating point number</li>
-</ul></li>
-</ul>
-</div>
-</section>
-<section id="why-do-bits-matter" class="slide level2">
-<h2>Why do Bits Matter?</h2>
-<ul>
-<li>They matter, because they can affect:
-<ul>
-<li>the performance of your code</li>
-<li>the precision of your results</li>
-</ul></li>
-</ul>
-<div class="fragment">
-<ul>
-<li>That’s why numbers can have a limited precision!
-<ul>
-<li>An <code>int8</code> has to be in the range of -128 to 127</li>
-<li>An <code>int16</code> has to be in the range of -32768 to 32767</li>
-</ul></li>
-</ul>
-</div>
-<div class="fragment">
-<p><span class="question">Question:</span> Size difference between <code>int16</code> and <code>int64</code>?</p>
 </div>
 </section></section>
-<section id="thats-it-for-today" class="title-slide slide level1 center">
-<h1>That’s it for today!</h1>
-<div class="callout callout-note callout-style-simple">
-<div class="callout-body">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-content">
-<p><strong>And that’s it for todays lecture!</strong><br>
-You now have the basic knowledge to start working with <span class="highlight">scientific computing</span>.</p>
-</div>
-</div>
-</div>
-</section>
-
 <section>
 <section id="literature" class="title-slide slide level1 title center">
 <h1><span class="flow">Literature</span></h1>
 
 </section>
-<section id="interesting-books" class="slide level2">
-<h2>Interesting Books</h2>
+<section id="books-to-start-with" class="slide level2">
+<h2>Books to start with</h2>
 <ul>
 <li>Downey, A. B. (2024). Think Python: How to think like a computer scientist (Third edition). O’Reilly. <a href="https://greenteapress.com/wp/think-python-3rd-edition/">Link to free online version</a></li>
 <li>Elter, S. (2021). Schrödinger programmiert Python: Das etwas andere Fachbuch (1. Auflage). Rheinwerk Verlag.</li>
 </ul>
 <div class="fragment">
-<p>For more interesting literature to learn more about Python, take a look at the <a href="../general/literature.html">literature list</a> of this course.</p>
+<div class="callout callout-note callout-style-simple">
+<div class="callout-body">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-content">
+<p>NumPy has excellent free docs: the <a href="https://numpy.org/doc/stable/user/absolute_beginners.html">NumPy absolute beginner’s guide</a> covers everything in this session and a little more.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="fragment">
+<p>For more, see the <a href="../general/literature.html">literature list</a> of this course.</p>
 
 
 </div>

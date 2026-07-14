@@ -2,13 +2,13 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.9.37">
+<meta name="generator" content="quarto-1.9.38">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Dr.&nbsp;Tobias Vlćek">
 
-<title>Lecture X - Programming Projects – Programming with Python</title>
+<title>Lecture X - Tooling, Git and Your Project – Programming with Python</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -23,6 +23,41 @@ ul.task-list li input[type="checkbox"] {
   width: 0.8em;
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
 </style>
 
@@ -40,14 +75,14 @@ ul.task-list li input[type="checkbox"] {
 <script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="../site_libs/quarto-html/anchor.min.js"></script>
 <link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-b7f2a80d65e4e0c38aaa0b1d52f53cc7.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-dark-082c280d0266c6330b148fdd5ce36071.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-b7f2a80d65e4e0c38aaa0b1d52f53cc7.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-018a56f84f553ab074084cbaa177a14c.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-dark-c366505a46d5b46cf7fae82eb9e8fbfc.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-018a56f84f553ab074084cbaa177a14c.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
 <script src="../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../site_libs/bootstrap/bootstrap-428acf6cea68d18b6c08f06d03b90179.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="../site_libs/bootstrap/bootstrap-dark-0eb2fbb249c04a5542fe58ab745df198.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="light">
-<link href="../site_libs/bootstrap/bootstrap-428acf6cea68d18b6c08f06d03b90179.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-88e33f2e0ab1128d41062d5b01c8d931.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-dark-7515642ede3fcc5588bf9724b4d2b926.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-88e33f2e0ab1128d41062d5b01c8d931.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -366,29 +401,6 @@ ul.task-list li input[type="checkbox"] {
         <li class="sidebar-item">
  <span class="menu-text">***</span>
   </li>
-        <li class="sidebar-item sidebar-item-section">
-      <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-11" role="navigation" aria-expanded="false">
- <span class="menu-text">Assignments</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-11" role="navigation" aria-expanded="false" aria-label="Toggle section">
-            <i class="bi bi-chevron-right ms-2"></i>
-          </a> 
-      </div>
-      <ul id="quarto-sidebar-section-11" class="collapse list-unstyled sidebar-section depth1 ">  
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../assignments/assignment_01.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">01 Assignment</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../assignments/assignment_02.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">02 Assignment</span></a>
-  </div>
-</li>
-      </ul>
-  </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../general/cheatsheet.html" class="sidebar-item-text sidebar-link">
@@ -399,6 +411,18 @@ ul.task-list li input[type="checkbox"] {
   <div class="sidebar-item-container"> 
   <a href="../general/uv.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Installing Python</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../general/git-basics.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Git Basics</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../general/ai-tools.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">AI Tools</span></a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -423,43 +447,51 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#general" id="toc-general" class="nav-link active" data-scroll-target="#general"><span class="flow">General</span></a>
+  <li><a href="#checkpoint-5-sessions-viiiix" id="toc-checkpoint-5-sessions-viiiix" class="nav-link active" data-scroll-target="#checkpoint-5-sessions-viiiix">📋 Checkpoint 5 — Sessions VIII–IX</a></li>
+  <li><a href="#episode-10-the-exit" id="toc-episode-10-the-exit" class="nav-link" data-scroll-target="#episode-10-the-exit"><span class="flow">Episode 10: The Exit</span></a>
   <ul class="collapse">
-  <li><a href="#congratulations" id="toc-congratulations" class="nav-link" data-scroll-target="#congratulations">Congratulations</a></li>
-  <li><a href="#structure" id="toc-structure" class="nav-link" data-scroll-target="#structure">Structure</a></li>
-  <li><a href="#presentation" id="toc-presentation" class="nav-link" data-scroll-target="#presentation">Presentation</a></li>
+  <li><a href="#the-deal-closes" id="toc-the-deal-closes" class="nav-link" data-scroll-target="#the-deal-closes">The deal closes</a></li>
+  <li><a href="#the-handover-note" id="toc-the-handover-note" class="nav-link" data-scroll-target="#the-handover-note">The handover note</a></li>
+  <li><a href="#your-exit-package" id="toc-your-exit-package" class="nav-link" data-scroll-target="#your-exit-package">Your exit package</a></li>
   </ul></li>
-  <li><a href="#project-ideas" id="toc-project-ideas" class="nav-link" data-scroll-target="#project-ideas"><span class="flow">Project Ideas</span></a>
+  <li><a href="#the-project" id="toc-the-project" class="nav-link" data-scroll-target="#the-project"><span class="flow">The Project</span></a>
   <ul class="collapse">
-  <li><a href="#idea-1-data-analytics-platform" id="toc-idea-1-data-analytics-platform" class="nav-link" data-scroll-target="#idea-1-data-analytics-platform">Idea 1: Data Analytics Platform</a></li>
-  <li><a href="#idea-2-web-scraping-system" id="toc-idea-2-web-scraping-system" class="nav-link" data-scroll-target="#idea-2-web-scraping-system">Idea 2: Web Scraping System</a></li>
-  <li><a href="#idea-3-ml-model-with-deployment" id="toc-idea-3-ml-model-with-deployment" class="nav-link" data-scroll-target="#idea-3-ml-model-with-deployment">Idea 3: ML Model with Deployment</a></li>
-  <li><a href="#idea-4-real-time-computer-vision" id="toc-idea-4-real-time-computer-vision" class="nav-link" data-scroll-target="#idea-4-real-time-computer-vision">Idea 4: Real-Time Computer Vision</a></li>
-  <li><a href="#idea-5-advanced-simulation-system" id="toc-idea-5-advanced-simulation-system" class="nav-link" data-scroll-target="#idea-5-advanced-simulation-system">Idea 5: Advanced Simulation System</a></li>
-  <li><a href="#idea-6-game-development" id="toc-idea-6-game-development" class="nav-link" data-scroll-target="#idea-6-game-development">Idea 6: Game Development</a></li>
-  <li><a href="#idea-7-automation-system" id="toc-idea-7-automation-system" class="nav-link" data-scroll-target="#idea-7-automation-system">Idea 7: Automation System</a></li>
-  <li><a href="#idea-8-your-idea" id="toc-idea-8-your-idea" class="nav-link" data-scroll-target="#idea-8-your-idea">Idea 8: Your Idea?</a></li>
+  <li><a href="#the-brief" id="toc-the-brief" class="nav-link" data-scroll-target="#the-brief">The brief</a></li>
+  <li><a href="#how-it-counts" id="toc-how-it-counts" class="nav-link" data-scroll-target="#how-it-counts">How it counts</a></li>
+  <li><a href="#idea-1-2" id="toc-idea-1-2" class="nav-link" data-scroll-target="#idea-1-2">Idea 1 &amp; 2</a></li>
+  <li><a href="#idea-3-4" id="toc-idea-3-4" class="nav-link" data-scroll-target="#idea-3-4">Idea 3 &amp; 4</a></li>
+  <li><a href="#idea-5-6" id="toc-idea-5-6" class="nav-link" data-scroll-target="#idea-5-6">Idea 5 &amp; 6</a></li>
+  <li><a href="#idea-7-8" id="toc-idea-7-8" class="nav-link" data-scroll-target="#idea-7-8">Idea 7 &amp; 8</a></li>
   </ul></li>
-  <li><a href="#help-over-the-upcoming-weeks" id="toc-help-over-the-upcoming-weeks" class="nav-link" data-scroll-target="#help-over-the-upcoming-weeks"><span class="flow">Help over the upcoming weeks</span></a>
+  <li><a href="#form-your-pair-pick-your-direction" id="toc-form-your-pair-pick-your-direction" class="nav-link" data-scroll-target="#form-your-pair-pick-your-direction"><span class="flow">Form your pair, pick your direction</span></a>
   <ul class="collapse">
-  <li><a href="#ask-questions" id="toc-ask-questions" class="nav-link" data-scroll-target="#ask-questions">Ask Questions</a></li>
-  <li><a href="#use-of-ai-tools" id="toc-use-of-ai-tools" class="nav-link" data-scroll-target="#use-of-ai-tools">Use of AI Tools</a></li>
-  <li><a href="#agentic-coding" id="toc-agentic-coding" class="nav-link" data-scroll-target="#agentic-coding">Agentic Coding</a></li>
-  <li><a href="#claude-code" id="toc-claude-code" class="nav-link" data-scroll-target="#claude-code">Claude Code</a></li>
-  <li><a href="#alternative-ai-coding-tools" id="toc-alternative-ai-coding-tools" class="nav-link" data-scroll-target="#alternative-ai-coding-tools">Alternative AI Coding Tools</a></li>
-  <li><a href="#lm-studio-local-ai-for-privacy" id="toc-lm-studio-local-ai-for-privacy" class="nav-link" data-scroll-target="#lm-studio-local-ai-for-privacy">LM Studio: Local AI for Privacy</a></li>
+  <li><a href="#take-25-minutes" id="toc-take-25-minutes" class="nav-link" data-scroll-target="#take-25-minutes">Take ~25 minutes</a></li>
   </ul></li>
-  <li><a href="#discuss-your-ideas" id="toc-discuss-your-ideas" class="nav-link" data-scroll-target="#discuss-your-ideas"><span class="flow">Discuss your ideas!</span></a></li>
-  <li><a href="#how-to-continue" id="toc-how-to-continue" class="nav-link" data-scroll-target="#how-to-continue"><span class="flow">How to continue?</span></a>
+  <li><a href="#your-toolchain" id="toc-your-toolchain" class="nav-link" data-scroll-target="#your-toolchain"><span class="flow">Your Toolchain</span></a>
   <ul class="collapse">
-  <li><a href="#how-to-continue-after-the-presentations" id="toc-how-to-continue-after-the-presentations" class="nav-link" data-scroll-target="#how-to-continue-after-the-presentations">How to continue after the presentations?</a></li>
-  <li><a href="#advent-of-code" id="toc-advent-of-code" class="nav-link" data-scroll-target="#advent-of-code">Advent of Code</a></li>
-  <li><a href="#thats-it-for-the-lecture-series" id="toc-thats-it-for-the-lecture-series" class="nav-link" data-scroll-target="#thats-it-for-the-lecture-series">That’s it for the Lecture Series!</a></li>
-  <li><a href="#section" id="toc-section" class="nav-link" data-scroll-target="#section"></a></li>
+  <li><a href="#check-your-install" id="toc-check-your-install" class="nav-link" data-scroll-target="#check-your-install">Check your install</a></li>
+  <li><a href="#start-the-project-uv-init" id="toc-start-the-project-uv-init" class="nav-link" data-scroll-target="#start-the-project-uv-init">Start the project: <code>uv init</code></a></li>
+  <li><a href="#open-a-notebook-in-zed" id="toc-open-a-notebook-in-zed" class="nav-link" data-scroll-target="#open-a-notebook-in-zed">Open a notebook in Zed</a></li>
+  <li><a href="#connect-your-ai" id="toc-connect-your-ai" class="nav-link" data-scroll-target="#connect-your-ai">Connect your AI</a></li>
+  </ul></li>
+  <li><a href="#git" id="toc-git" class="nav-link" data-scroll-target="#git"><span class="flow">Git</span></a>
+  <ul class="collapse">
+  <li><a href="#the-five-words" id="toc-the-five-words" class="nav-link" data-scroll-target="#the-five-words">The five words</a></li>
+  <li><a href="#once-per-machine" id="toc-once-per-machine" class="nav-link" data-scroll-target="#once-per-machine">Once per machine</a></li>
+  <li><a href="#your-first-commit" id="toc-your-first-commit" class="nav-link" data-scroll-target="#your-first-commit">Your first commit</a></li>
+  <li><a href="#put-it-on-github-repo-owner-only" id="toc-put-it-on-github-repo-owner-only" class="nav-link" data-scroll-target="#put-it-on-github-repo-owner-only">Put it on GitHub — repo owner only</a></li>
+  <li><a href="#your-partner-joins" id="toc-your-partner-joins" class="nav-link" data-scroll-target="#your-partner-joins">Your partner joins</a></li>
+  <li><a href="#how-we-work-together" id="toc-how-we-work-together" class="nav-link" data-scroll-target="#how-we-work-together">How we work together</a></li>
+  </ul></li>
+  <li><a href="#send-off" id="toc-send-off" class="nav-link" data-scroll-target="#send-off"><span class="flow">Send-off</span></a>
+  <ul class="collapse">
+  <li><a href="#the-road-to-the-finish" id="toc-the-road-to-the-finish" class="nav-link" data-scroll-target="#the-road-to-the-finish">The road to the finish</a></li>
+  <li><a href="#keep-programming" id="toc-keep-programming" class="nav-link" data-scroll-target="#keep-programming">Keep programming</a></li>
+  <li><a href="#thank-you" id="toc-thank-you" class="nav-link" data-scroll-target="#thank-you">Thank you</a></li>
   </ul></li>
   <li><a href="#literature" id="toc-literature" class="nav-link" data-scroll-target="#literature"><span class="flow">Literature</span></a>
   <ul class="collapse">
-  <li><a href="#interesting-books" id="toc-interesting-books" class="nav-link" data-scroll-target="#interesting-books">Interesting Books</a></li>
+  <li><a href="#books-to-start-with" id="toc-books-to-start-with" class="nav-link" data-scroll-target="#books-to-start-with">Books to start with</a></li>
   </ul></li>
   </ul>
 <div class="toc-actions"><ul><li><a href="https://github.com/beyondsimulations/Introduction-to-Python/blob/main/lectures/lec_10_projects.qmd" class="toc-action"><i class="bi bi-github"></i>View source</a></li><li><a href="https://github.com/beyondsimulations/Introduction-to-Python/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div><div class="quarto-alternate-formats"><h2>Other Formats</h2><ul><li><a href="lec_10_projects.pdf"><i class="bi bi-file-pdf"></i>PDF</a></li><li><a href="lec_10_presentation.html"><i class="bi bi-file-slides"></i>RevealJS</a></li></ul></div></nav>
@@ -469,7 +501,7 @@ ul.task-list li input[type="checkbox"] {
 
 <header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../lectures/lec_10_projects.html">10 Projects</a></li><li class="breadcrumb-item"><a href="../lectures/lec_10_projects.html">Lecture</a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title">Lecture X - Programming Projects</h1>
+<h1 class="title">Lecture X - Tooling, Git and Your Project</h1>
 <p class="subtitle lead">Programming with Python</p>
 </div>
 
@@ -483,7 +515,7 @@ ul.task-list li input[type="checkbox"] {
   </div>
   <div class="quarto-title-meta-contents">
         <p class="affiliation">
-            Kühne Logistics University Hamburg - Fall 2025
+            Kühne Logistics University Hamburg - Fall 2026
           </p>
       </div>
   </div>
@@ -500,24 +532,74 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<section id="general" class="level1 title">
-<h1 class="title"><span class="flow">General</span></h1>
-<section id="congratulations" class="level2">
-<h2 class="anchored" data-anchor-id="congratulations">Congratulations</h2>
-<p>You’ve learned your first steps to program with Python! <span class="emoji" data-emoji="tada">🎉</span></p>
-<p>. . .</p>
-<center>
-<iframe src="https://giphy.com/embed/scZPhLqaVOM1qG4lT9" width="480" height="480" style="" frameborder="0" class="giphy-embed" allowfullscreen="">
-</iframe>
-</center>
-</section>
-<section id="structure" class="level2">
-<h2 class="anchored" data-anchor-id="structure">Structure</h2>
+<section id="checkpoint-5-sessions-viiiix" class="level1 exercise-slide">
+<h1 class="exercise-slide">📋 Checkpoint 5 — Sessions VIII–IX</h1>
+<p>The first <strong>40 minutes</strong> are the checkpoint. It starts <strong>now</strong>: the acquirer runs one final audit before signing.</p>
 <ul>
-<li>Over the upcoming weeks you <span class="highlight">will work on a project</span></li>
-<li>You will present it in the last week of this course</li>
-<li>You can work in groups of up to 3 people</li>
-<li>Choose from a list of ideas or <strong>propose your own idea!</strong></li>
+<li><strong>Individual work</strong>: no neighbors, no chat</li>
+<li><strong>AI tools are allowed</strong>: being able to <strong>VERIFY</strong> the output is the skill being graded</li>
+<li>The <strong>link and QR</strong> are handed out in class. Open it and start</li>
+<li>6 short tasks: pull the right number out of a pandas table, fix a line the AI got wrong, and read a chart honestly</li>
+<li>It sweeps <strong>Sessions VIII–IX</strong>: pandas filtering and <code>groupby</code>, and telling an honest chart from a misleading one</li>
+</ul>
+<!-- QR handed out live — never in the deck -->
+<p>. . .</p>
+<p><strong>When you’re done:</strong> menu → <em>Download</em> → <em>Download Python code</em> → upload the <code>.py</code> to the <strong>“Checkpoint 5”</strong> assignment on Moodle. <strong>No retakes</strong>: one sitting.</p>
+<p>. . .</p>
+<div class="callout callout-style-simple callout-note">
+<div class="callout-body d-flex">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-body-container">
+<p>The green ✅ live checks are <strong>provisional</strong>. The final grading runs on our side. The two multiple-choice tasks only say <em>“recorded”</em>, not ✅. That’s expected, they’re scored later. And take a breath: everything in it was rehearsed in the labs.</p>
+</div>
+</div>
+</div>
+</section>
+<section id="episode-10-the-exit" class="level1 title">
+<h1 class="title"><span class="flow">Episode 10: The Exit</span></h1>
+<section id="the-deal-closes" class="level2">
+<h2 class="anchored" data-anchor-id="the-deal-closes">The deal closes</h2>
+<p>Pens down. The checkpoint is behind you, and so, it turns out, is the startup. Overnight the rival chain <strong>MunchCorp</strong> stopped competing and made an offer: they’re <strong>buying the company.</strong></p>
+<p>. . .</p>
+<p>The lawyers will tell you deals close on the numbers. This one closed on <strong>yours.</strong> The clean order data you pulled together in the due diligence (Session VIII) and the honest dashboard you built for the pitch (Session IX) are exactly what convinced the acquirer the books were real.</p>
+<p>. . .</p>
+<p>No cliff-edge growth chart with a chopped axis. Just data that survived a second look. <strong>That’s why they signed.</strong></p>
+</section>
+<section id="the-handover-note" class="level2">
+<h2 class="anchored" data-anchor-id="the-handover-note">The handover note</h2>
+<p>Kevin’s job today is to hand over the <strong>data room</strong>: every file the company ever built. He tapes a note to the folder:</p>
+<p>. . .</p>
+<blockquote class="blockquote">
+<p><em>“It’s all here. And it was never anything fancy — every notebook you downloaded all semester was already a plain <code>.py</code> file. Same code, same lines. Open one in a real editor and it just runs.”</em></p>
+</blockquote>
+<p>. . .</p>
+<p>That’s the whole reveal, and most of you already suspected it. Those downloads stop being <strong>backups</strong> today and become the <strong>real thing</strong>: on your own machine, in a real editor, under your control.</p>
+</section>
+<section id="your-exit-package" class="level2">
+<h2 class="anchored" data-anchor-id="your-exit-package">Your exit package</h2>
+<p>Every acquisition comes with an exit package. Here’s yours: you don’t join MunchCorp. You <strong>spin off your own idea</strong> and build it.</p>
+<p>. . .</p>
+<ul>
+<li>The tools are the same ones professionals use: <strong>uv</strong>, <strong>Zed</strong>, <strong>git</strong>, <strong>GitHub</strong></li>
+<li>The work is a real project, built with a partner, over the next weeks</li>
+<li>Today we set up the machine and the repo; the building starts here</li>
+</ul>
+<p>. . .</p>
+<p>Let’s get you kitted out.</p>
+</section>
+</section>
+<section id="the-project" class="level1 title">
+<h1 class="title"><span class="flow">The Project</span></h1>
+<section id="the-brief" class="level2">
+<h2 class="anchored" data-anchor-id="the-brief">The brief</h2>
+<p>Over the next weeks you build <strong>one real project</strong> and present it in the final session.</p>
+<ul>
+<li>Work in <strong>pairs</strong>: solo is fine if the numbers don’t come out even</li>
+<li><strong>Deliverable:</strong> a <strong>GitHub repository link</strong>, submitted on Moodle</li>
+<li>The repo’s <code>README.md</code> carries a short <strong>AI-disclosure section</strong>: which tools you used, what for, and what you <strong>verified yourself</strong></li>
+<li>You <strong>present in Session XIII</strong>: <strong>10 minutes</strong>, plus <strong>5 minutes</strong> for questions</li>
 </ul>
 <p>. . .</p>
 <div class="callout callout-style-simple callout-tip">
@@ -526,18 +608,95 @@ ul.task-list li input[type="checkbox"] {
 <i class="callout-icon"></i>
 </div>
 <div class="callout-body-container">
-<p>You have enough time to discuss different ideas in your group today. From my experience, it is a good idea to choose a project that you are <strong>really interested in</strong>.</p>
+<p>Pick something you’re <strong>actually interested in</strong>. You’ll spend real hours on it. Curiosity is the fuel that carries a project past the boring middle.</p>
 </div>
 </div>
 </div>
 </section>
-<section id="presentation" class="level2">
-<h2 class="anchored" data-anchor-id="presentation">Presentation</h2>
+<section id="how-it-counts" class="level2">
+<h2 class="anchored" data-anchor-id="how-it-counts">How it counts</h2>
 <ul>
-<li>Each group has <strong>10 minutes</strong> for the presentation with 5 additional minutes for questions</li>
-<li>Introduce your idea and the development cycle</li>
-<li>Provide code examples and/or visualizations</li>
-<li>Comment on <span class="highlight">challenges and what you’ve learned</span></li>
+<li>Project <strong>and</strong> presentation together are worth <strong>40 of the 100</strong> course points</li>
+<li>Your <strong>commit history counts</strong>: it’s the evidence of <em>how</em> the work happened, not just the final state. Commit small and often (git block, shortly)</li>
+<li><strong>Sessions XI and XII are supervised work sessions</strong>: we’re in the room while you build, so bring your questions</li>
+</ul>
+<p>. . .</p>
+<div class="callout callout-style-simple callout-note">
+<div class="callout-body d-flex">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-body-container">
+<p>The project does not have to be flawless. Show that you scoped it honestly, built it in the open, and can explain your own code. That’s the whole bar.</p>
+</div>
+</div>
+</div>
+</section>
+<section id="idea-1-2" class="level2">
+<h2 class="anchored" data-anchor-id="idea-1-2">Idea 1 &amp; 2</h2>
+<p><strong>Data analytics dashboard</strong></p>
+<ul>
+<li><strong>Core:</strong> load and clean a real CSV with pandas, answer <strong>3 business questions</strong> with charts</li>
+</ul>
+<p><em>Bonus:</em> interactive dashboard (streamlit), automated reporting.</p>
+<p>. . .</p>
+<p><strong>Web scraping pipeline</strong></p>
+<ul>
+<li><strong>Core:</strong> scrape <strong>one</strong> site politely into a CSV and analyze it</li>
+</ul>
+<p><em>Bonus:</em> multi-source, change detection, alerts.</p>
+</section>
+<section id="idea-3-4" class="level2">
+<h2 class="anchored" data-anchor-id="idea-3-4">Idea 3 &amp; 4</h2>
+<p><strong>Simulation study</strong></p>
+<ul>
+<li><strong>Core:</strong> a Monte Carlo simulation of a business decision (pricing, staffing, inventory) with matplotlib results</li>
+</ul>
+<p><em>Bonus:</em> interactive parameters, scenario comparison.</p>
+<p>. . .</p>
+<p><strong>Automation assistant</strong></p>
+<ul>
+<li><strong>Core:</strong> a script that does a real repetitive task <strong>end to end</strong>, with error handling and logging</li>
+</ul>
+<p><em>Bonus:</em> scheduling, notifications, a small UI.</p>
+</section>
+<section id="idea-5-6" class="level2">
+<h2 class="anchored" data-anchor-id="idea-5-6">Idea 5 &amp; 6</h2>
+<p><strong>Game</strong></p>
+<ul>
+<li><strong>Core:</strong> a complete playable <strong>terminal or pygame</strong> game with save/load</li>
+</ul>
+<p><em>Bonus:</em> levels, high scores, procedural content.</p>
+<p>. . .</p>
+<p><strong>ML-powered app</strong> <em>(ambitious: lean on AI)</em></p>
+<ul>
+<li><strong>Core:</strong> train a <strong>simple</strong> model on tabular data and wrap it in a small interface</li>
+</ul>
+<p><em>Bonus:</em> monitoring, A/B comparison.</p>
+</section>
+<section id="idea-7-8" class="level2">
+<h2 class="anchored" data-anchor-id="idea-7-8">Idea 7 &amp; 8</h2>
+<p><strong>Your startup spin-off</strong></p>
+<ul>
+<li><strong>Core:</strong> take any system from the course universe (courier routing, review moderation, demand forecasting) and build the <strong>real</strong> version</li>
+</ul>
+<p><em>Bonus:</em> wherever your version wants to grow.</p>
+<p>. . .</p>
+<p><strong>Your own idea</strong>: the open door</p>
+<ul>
+<li>Have something else in mind? <strong>Make it ambitious.</strong> Bring it and we’ll discuss scope and feasibility together.</li>
+</ul>
+</section>
+</section>
+<section id="form-your-pair-pick-your-direction" class="level1 title">
+<h1 class="title"><span class="flow">Form your pair, pick your direction</span></h1>
+<section id="take-25-minutes" class="level2">
+<h2 class="anchored" data-anchor-id="take-25-minutes">Take ~25 minutes</h2>
+<p>Right now, in the room:</p>
+<ul>
+<li><strong>Find your partner</strong> (or decide to go solo if the count is odd). No partner yet? <strong>Come to the front</strong>, we’ll match you</li>
+<li><strong>Pick a direction</strong> from the menu, or bring your own</li>
+<li>Talk it through: what’s the <em>core</em> you can definitely finish, what’s a <em>bonus</em> if time allows?</li>
 </ul>
 <p>. . .</p>
 <div class="callout callout-style-simple callout-tip">
@@ -546,223 +705,200 @@ ul.task-list li input[type="checkbox"] {
 <i class="callout-icon"></i>
 </div>
 <div class="callout-body-container">
-<p>Your project does not have to be perfect! To pass, you simply have to show that you tried your best. Try, fail potentially and learn. <span class="highlight">That’s the best way to improve your coding skills.</span></p>
+<p><strong>A good outcome by the end of this block:</strong> a <strong>one-sentence pitch</strong> (“we’re building X that does Y for Z”), a <strong>name</strong> for the project, and a decision on <strong>who owns the shared repo</strong> (the owner creates it in the git block; the partner clones). The sentence keeps you honest about scope; the name goes on the repo in a minute.</p>
 </div>
 </div>
 </div>
 </section>
 </section>
-<section id="project-ideas" class="level1 title">
-<h1 class="title"><span class="flow">Project Ideas</span></h1>
-<section id="idea-1-data-analytics-platform" class="level2">
-<h2 class="anchored" data-anchor-id="idea-1-data-analytics-platform">Idea 1: Data Analytics Platform</h2>
+<section id="your-toolchain" class="level1 title">
+<h1 class="title"><span class="flow">Your Toolchain</span></h1>
+<section id="check-your-install" class="level2">
+<h2 class="anchored" data-anchor-id="check-your-install">Check your install</h2>
+<p>Before we build anything, the installs from the Session IX homework need to work. In a terminal:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="ex">uv</span> <span class="at">--version</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> <span class="at">--version</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="ex">gh</span> <span class="at">--version</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <ul>
-<li>Build a <span class="highlight">complete data pipeline</span></li>
-<li>Implement automated data cleaning and validation</li>
-<li>Create interactive dashboards with real-time updates</li>
-<li>Add predictive modeling and automated reporting</li>
+<li>Three version numbers? You’re set.</li>
+<li>Zed opens when you launch it? Good.</li>
 </ul>
 <p>. . .</p>
-<p><strong>Bonus:</strong> Integrate multiple data sources, add email alerts</p>
-</section>
-<section id="idea-2-web-scraping-system" class="level2">
-<h2 class="anchored" data-anchor-id="idea-2-web-scraping-system">Idea 2: Web Scraping System</h2>
-<ul>
-<li>Build a <span class="highlight">multi-source scraping pipeline</span></li>
-<li>Implement error handling and retry logic</li>
-<li>Store data in a database (SQLite or PostgreSQL)</li>
-<li>Create a monitoring dashboard with visualization</li>
-<li>Add automated alerts when target data changes</li>
-</ul>
-<p>. . .</p>
-<p><strong>Bonus:</strong> Add proxy rotation, detect website structure changes</p>
-</section>
-<section id="idea-3-ml-model-with-deployment" class="level2">
-<h2 class="anchored" data-anchor-id="idea-3-ml-model-with-deployment">Idea 3: ML Model with Deployment</h2>
-<ul>
-<li>Build an <span class="highlight">end-to-end ML pipeline</span> for a real-world problem</li>
-<li>Implement data preprocessing, feature engineering, and model training</li>
-<li>Build a web interface for users to interact with the model</li>
-<li>Add model monitoring and performance tracking</li>
-</ul>
-<p>. . .</p>
-<p><strong>Bonus:</strong> A/B testing, explainability dashboard</p>
-</section>
-<section id="idea-4-real-time-computer-vision" class="level2">
-<h2 class="anchored" data-anchor-id="idea-4-real-time-computer-vision">Idea 4: Real-Time Computer Vision</h2>
-<ul>
-<li>Build a <span class="highlight">real-time video processing pipeline</span></li>
-<li>Implement object detection, tracking, and analytics</li>
-<li>Create a web interface to view live results</li>
-<li>Store and analyze detection statistics over time</li>
-</ul>
-<p>. . .</p>
-<p><strong>Bonus:</strong> Multi-camera support, alert system</p>
-</section>
-<section id="idea-5-advanced-simulation-system" class="level2">
-<h2 class="anchored" data-anchor-id="idea-5-advanced-simulation-system">Idea 5: Advanced Simulation System</h2>
-<ul>
-<li>Build a <span class="highlight">complex simulation</span></li>
-<li>Implement Monte Carlo methods or agent-based modeling</li>
-<li>Create interactive visualizations with parameter controls</li>
-<li>Add sensitivity analysis and scenario comparison</li>
-<li>Generate automated reports with statistical analysis</li>
-</ul>
-<p>. . .</p>
-<p><strong>Bonus:</strong> GPU acceleration, parallel processing</p>
-</section>
-<section id="idea-6-game-development" class="level2">
-<h2 class="anchored" data-anchor-id="idea-6-game-development">Idea 6: Game Development</h2>
-<ul>
-<li>Create a <span class="highlight">complete game</span> with multiple levels/stages</li>
-<li>Add save/load system, high scores, and user profiles</li>
-<li>Include sound effects, music, and polished graphics</li>
-</ul>
-<p>. . .</p>
-<p><strong>Bonus:</strong> Procedural level generation, achievement system</p>
-</section>
-<section id="idea-7-automation-system" class="level2">
-<h2 class="anchored" data-anchor-id="idea-7-automation-system">Idea 7: Automation System</h2>
-<ul>
-<li>Build a <span class="highlight">robust automation framework</span> for repetitive tasks</li>
-<li>Implement error detection, logging, and automatic recovery</li>
-<li>Create a web interface to monitor and control automation</li>
-<li>Add scheduling, notifications (email/Slack), and reporting</li>
-<li>Include configuration management for different scenarios</li>
-</ul>
-<p>. . .</p>
-<p><strong>Bonus:</strong> OCR for screen reading, computer vision for UI detection</p>
-</section>
-<section id="idea-8-your-idea" class="level2">
-<h2 class="anchored" data-anchor-id="idea-8-your-idea">Idea 8: Your Idea?</h2>
-<ul>
-<li>Have an idea that is not on the list?</li>
-<li>Something that potentially would help you personally?</li>
-<li><span class="highlight">Make it ambitious and do it!</span></li>
-<li>Consider: deployment, testing, user interface</li>
-<li>Combine multiple technologies and concepts</li>
-<li><strong>Let me know and we can discuss scope and feasibility!</strong></li>
-</ul>
-</section>
-</section>
-<section id="help-over-the-upcoming-weeks" class="level1 title">
-<h1 class="title"><span class="flow">Help over the upcoming weeks</span></h1>
-<section id="ask-questions" class="level2">
-<h2 class="anchored" data-anchor-id="ask-questions">Ask Questions</h2>
-<ul>
-<li>In case you need help, you can always ask me!</li>
-<li>The next lectures are there to work on your project</li>
-<li>You can also write me an email at <a href="mailto:vlcek@beyondsimulations.com">vlcek@beyondsimulations.com</a></li>
-</ul>
-<div class="callout callout-style-simple callout-tip">
+<div class="callout callout-style-simple callout-important">
 <div class="callout-body d-flex">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-body-container">
-<p>I am always happy to help you with your project. There are no stupid questions!</p>
+<p><strong>Didn’t work?</strong> Don’t burn the session fighting it. <strong>Flag it for office hours</strong>, pair up with your partner’s working machine, and <strong>follow along on the slides</strong> for now. Nobody gets left behind.</p>
 </div>
 </div>
 </div>
 </section>
-<section id="use-of-ai-tools" class="level2">
-<h2 class="anchored" data-anchor-id="use-of-ai-tools">Use of AI Tools</h2>
-<ul>
-<li><span class="highlight">Strongly encouraged</span> to use AI tools for your project!</li>
-<li>Remember: AI accelerates development, but <span class="highlight">understanding is essential</span></li>
-<li>Use AI to learn patterns, debug issues, and explore solutions</li>
-</ul>
+<section id="start-the-project-uv-init" class="level2">
+<h2 class="anchored" data-anchor-id="start-the-project-uv-init">Start the project: <code>uv init</code></h2>
+<p>Pick the folder where you keep course work, then create the project (name it after your pitch):</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="ex">uv</span> init my-project</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> my-project</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p><code>uv init</code> creates <code>main.py</code>, <code>pyproject.toml</code>, <code>.python-version</code>, <code>.gitignore</code>, and <code>README.md</code>.</p>
 <p>. . .</p>
-<div class="callout callout-style-simple callout-tip">
+<div class="callout callout-style-simple callout-note">
 <div class="callout-body d-flex">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-body-container">
-<p>Try multiple AI tools to find what works best for your workflow. Claude Code, Zed, Copilot, Cursor, OpenCode and LM Studio are all excellent choices!</p>
+<p>As long as git is installed (you confirmed that a moment ago with <code>git --version</code>), it also <strong>already turns the folder into a git repository</strong>: there’s a hidden <code>.git/</code> inside. You do <strong>not</strong> run <code>git init</code> yourself. Your project is version-controlled from its very first second.</p>
 </div>
 </div>
 </div>
 </section>
-<section id="agentic-coding" class="level2">
-<h2 class="anchored" data-anchor-id="agentic-coding">Agentic Coding</h2>
-<p><span class="highlight">Agentic coding</span> means AI agents work autonomously on tasks</p>
+<section id="open-a-notebook-in-zed" class="level2">
+<h2 class="anchored" data-anchor-id="open-a-notebook-in-zed">Open a notebook in Zed</h2>
+<p>Here’s the reveal made concrete. Grab <strong>a lab <code>.py</code> you downloaded in Part I</strong>: we’ll use <code>nb_03_lab_functions.py</code>. Copy it <strong>into your project folder</strong> first (in Finder/Explorer, or drop it onto Zed’s file tree; dropping on the editor just opens a buffer, it doesn’t move the file). Then open it in Zed: it’s just code. Read it.</p>
+<p>The file needs its tools first. Adding a package to a project is one command:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="ex">uv</span> add marimo</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Now run it, no browser required:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="ex">uv</span> run python nb_03_lab_functions.py</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>. . .</p>
-<p><strong>How it works:</strong></p>
-<ul>
-<li>You describe what you want to achieve</li>
-<li>The AI agent plans and executes multiple steps</li>
-<li>It can run tests, fix errors, and iterate independently</li>
-<li>You review and guide the overall direction</li>
-</ul>
+<p><code>uv run</code> uses the project’s own Python and packages. The file that lived in a browser tab all semester now runs on <strong>your machine, from your editor.</strong> That’s the whole point of today. <em>(The Part-II pandas labs also want <code>uv add pandas</code> and their data file next to them; stick with a Part-I lab today.)</em></p>
+</section>
+<section id="connect-your-ai" class="level2">
+<h2 class="anchored" data-anchor-id="connect-your-ai">Connect your AI</h2>
+<p>Part III <strong>encourages</strong> AI. You’ve earned the co-pilot. Connect one provider in Zed following the <a href="../general/ai-tools.html">AI-tools guide</a> (the free <strong>Mistral</strong> key is the guaranteed path; paste it into Zed’s assistant settings).</p>
 <p>. . .</p>
-<div class="callout callout-style-simple callout-tip">
+<div class="callout callout-style-simple callout-important">
 <div class="callout-body d-flex">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-body-container">
-<p><strong>Best for:</strong> Complex refactoring, adding test suites, documentation generation, multi-step implementations</p>
+<p>The disclosure rule still stands, now in writing: your repo’s <code>README.md</code> says <strong>which tools you used, what for, and what you checked yourself.</strong> AI drafts; <strong>you verify</strong>, same reflex as the checkpoint you just sat.</p>
 </div>
 </div>
 </div>
 </section>
-<section id="claude-code" class="level2">
-<h2 class="anchored" data-anchor-id="claude-code">Claude Code</h2>
-<p><a href="https://code.claude.com/">Claude Code</a> is an AI coding assistant by Anthropic</p>
-<p>. . .</p>
-<p><strong>Key Features:</strong></p>
+</section>
+<section id="git" class="level1 title">
+<h1 class="title"><span class="flow">Git</span></h1>
+<section id="the-five-words" class="level2">
+<h2 class="anchored" data-anchor-id="the-five-words">The five words</h2>
+<p>Git has a small vocabulary. Learn these five and you can do everything this project needs:</p>
 <ul>
-<li>Understands entire codebases, not just single files</li>
-<li>Can edit multiple files simultaneously</li>
-<li>Explains complex code patterns clearly</li>
-<li>Helps with debugging and refactoring</li>
+<li><strong>Repository</strong>: a folder git watches, with its whole history</li>
+<li><strong>Commit</strong>: one saved snapshot, with a short message</li>
+<li><strong>Push</strong>: send your commits up to GitHub</li>
+<li><strong>Pull</strong>: bring your partner’s commits down to you</li>
+<li><strong>Clone</strong>: make your own copy of a repo from GitHub</li>
 </ul>
 <p>. . .</p>
-<div class="callout callout-style-simple callout-tip">
+<p>We’ll do each one <strong>live, in your real project repo</strong>. Mistakes are cheap when the repo is two minutes old.</p>
+</section>
+<section id="once-per-machine" class="level2">
+<h2 class="anchored" data-anchor-id="once-per-machine">Once per machine</h2>
+<p>Before any push reaches GitHub, your machine has to prove it’s allowed to. Signing in to <strong>Zed does not do this</strong>; git needs its own setup. You need a <strong>(free) GitHub account</strong> and the <code>gh</code> tool. Not installed? Get it via the <a href="../general/git-basics.html">Git Basics</a> page first. Then, once per computer, in a terminal:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="ex">gh</span> auth login</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Choose <strong>GitHub.com</strong>, <strong>HTTPS</strong>, authenticate in the <strong>browser</strong>, and answer <strong>yes</strong> to <em>“Authenticate Git with your GitHub credentials?”</em>. Then, once:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb6"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> config <span class="at">--global</span> pull.rebase false</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>. . .</p>
+<div class="callout callout-style-simple callout-note">
 <div class="callout-body d-flex">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-body-container">
-<p>Great for: Understanding project structure, implementing features across multiple files, learning best practices</p>
+<p>Full walkthrough (installing <code>gh</code>, checking it worked) is on the <a href="../general/git-basics.html">Git Basics</a> page, your at-home reference for all of this.</p>
 </div>
 </div>
 </div>
-</section>
-<section id="alternative-ai-coding-tools" class="level2">
-<h2 class="anchored" data-anchor-id="alternative-ai-coding-tools">Alternative AI Coding Tools</h2>
-<p>Beyond Claude Code, many tools are available:</p>
 <p>. . .</p>
-<p><strong>Popular Options:</strong></p>
-<ul>
-<li><strong>Open Code</strong>: Open Source alternative to Claude Code</li>
-<li><strong>Cursor</strong>: AI-first code editor based on VS Code</li>
-<li><strong>Zed</strong>: Lightweight editor with Claude &amp; ChatGPT integration</li>
-</ul>
-<p>. . .</p>
-<p>Each tool has strengths, experiment to find your preference!</p>
-<p>. . .</p>
-<div class="callout callout-style-simple callout-tip">
+<div class="callout callout-style-simple callout-important">
 <div class="callout-body d-flex">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-body-container">
-<p>Personally, I work with Zed, Claude Code and OpenCode with Mistral.</p>
+<p><strong>Auth fighting you?</strong> Same rule as the toolchain: <strong>flag it</strong>, follow along on the slides, and finish the push at home with the <a href="../general/git-basics.html">Git Basics</a> page, or with us in the supervised sessions. Nobody’s project stalls on a login.</p>
 </div>
 </div>
 </div>
 </section>
-<section id="lm-studio-local-ai-for-privacy" class="level2">
-<h2 class="anchored" data-anchor-id="lm-studio-local-ai-for-privacy">LM Studio: Local AI for Privacy</h2>
-<p><a href="https://lmstudio.ai/">LM Studio</a> runs AI models entirely on your computer</p>
-<p>. . .</p>
-<p><strong>Benefits:</strong></p>
+<section id="your-first-commit" class="level2">
+<h2 class="anchored" data-anchor-id="your-first-commit">Your first commit</h2>
+<p>Your <code>uv init</code> folder already has files worth saving. In Zed’s <strong>command palette</strong> (<code>Cmd/Ctrl+Shift+P</code>):</p>
 <ul>
-<li>Complete privacy - your code never leaves your machine</li>
-<li>No API costs or rate limits</li>
-<li>Works offline with full control over model selection</li>
+<li><strong><code>git: stage all</code></strong>: mark everything as part of the snapshot</li>
+<li><strong><code>git: commit</code></strong> (<code>Cmd/Ctrl+Enter</code>): type a message, save it</li>
+</ul>
+<p>. . .</p>
+<p>The same thing in the terminal, the words you’ll see everywhere:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb7"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> add .</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> commit <span class="at">-m</span> <span class="st">"Initial project setup"</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>A commit lives <strong>only on your computer</strong> so far. Next we send it to GitHub.</p>
+</section>
+<section id="put-it-on-github-repo-owner-only" class="level2">
+<h2 class="anchored" data-anchor-id="put-it-on-github-repo-owner-only">Put it on GitHub — repo owner only</h2>
+<p><strong>This slide is for the repo owner</strong> you picked in the pairing block. <strong>Partner: watch</strong>. You’ll clone in a minute; <strong>don’t create your own GitHub repo.</strong></p>
+<p>GitHub doesn’t know about your project yet. Three steps, done by the owner:</p>
+<ol type="1">
+<li>On <strong>github.com</strong>, create a new <strong>empty</strong> repository (no README, keep it empty). <em>(There’s no “publish” button inside Zed; the GitHub-side repo is made on the website.)</em></li>
+<li>In Zed: <strong><code>git: create remote</code></strong>, paste the repo’s <strong>HTTPS URL</strong> (<code>https://github.com/you/project.git</code>); if it asks for a remote name, use <code>origin</code> (terminal: <code>git remote add origin &lt;HTTPS url&gt;</code>)</li>
+<li>Do the <strong>first push</strong> from the terminal, this exact line, once:</li>
+</ol>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb8"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> push <span class="at">-u</span> origin HEAD</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>. . .</p>
+<p>After this one-time command, every later push is just <strong><code>git: push</code></strong> in Zed (terminal: <code>git push</code>).</p>
+</section>
+<section id="your-partner-joins" class="level2">
+<h2 class="anchored" data-anchor-id="your-partner-joins">Your partner joins</h2>
+<p>The owner invites the partner (GitHub → <strong>Settings → Collaborators</strong>). The <strong>partner</strong> gets onto the project by cloning it <strong>into a fresh folder</strong>, not inside the practice project from the toolchain block (set that one aside; the clone is your real working copy):</p>
+<ul>
+<li>In Zed: <strong><code>git: clone</code></strong>, paste the same <strong>HTTPS URL</strong></li>
+</ul>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb9"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> clone https://github.com/you/project.git</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>. . .</p>
+<p>Cloning brings the whole project and its history, and sets up the connection automatically. The partner pushes and pulls normally from the first moment. Now <strong>both of you pull</strong> (<code>git: pull</code> / <code>git pull</code>) to confirm you’re in sync.</p>
+<p>. . .</p>
+<div class="callout callout-style-simple callout-note">
+<div class="callout-body d-flex">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-body-container">
+<p><strong>Clock ran out?</strong> This step keeps: inviting and cloning works just as well at the start of <strong>Session XI</strong>, with us in the room.</p>
+</div>
+</div>
+</div>
+</section>
+<section id="how-we-work-together" class="level2">
+<h2 class="anchored" data-anchor-id="how-we-work-together">How we work together</h2>
+<p>Two people, one repo. Four habits keep it painless:</p>
+<ul>
+<li><strong>Pull before you start.</strong> <code>git: pull</code> first, every session: this alone prevents almost every problem</li>
+<li><strong>Commit small and often.</strong> Little snapshots with honest messages beat one giant one</li>
+<li><strong>A conflict? Call me.</strong> If git marks a clash, don’t fix it alone in week one — bring it to class</li>
+<li><strong>Never force anything.</strong> No <code>--force</code>, no “force push”, ever</li>
+</ul>
+<p>. . .</p>
+<div class="callout callout-style-simple callout-note">
+<div class="callout-body d-flex">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-body-container">
+<p>Everything today (the actions, the terminal equivalents, the setup, and a <strong>cheatsheet table</strong>) lives on the <a href="../general/git-basics.html">Git Basics</a> page. When today’s follow-along is a fading memory, that’s the page you reopen.</p>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="send-off" class="level1 title">
+<h1 class="title"><span class="flow">Send-off</span></h1>
+<section id="the-road-to-the-finish" class="level2">
+<h2 class="anchored" data-anchor-id="the-road-to-the-finish">The road to the finish</h2>
+<ul>
+<li><strong>Sessions XI and XII</strong>: supervised work sessions. We’re in the room; you build, we help. Pull before you start, push when you stop.</li>
+<li><strong>Session XIII</strong>: presentations. <strong>10 minutes</strong> each, <strong>5 minutes</strong> of questions. Show the idea, the build, and one thing that broke and how you fixed it.</li>
 </ul>
 <p>. . .</p>
 <div class="callout callout-style-simple callout-tip">
@@ -771,66 +907,53 @@ ul.task-list li input[type="checkbox"] {
 <i class="callout-icon"></i>
 </div>
 <div class="callout-body-container">
-<p>Ideal if you’re working with sensitive data or want to learn without internet dependency. Requires a decent GPU for best performance.</p>
+<p>Between now and then, the repo tells your story. Commit as you go. A steady history is worth more than a heroic final night.</p>
 </div>
 </div>
 </div>
 </section>
-</section>
-<section id="discuss-your-ideas" class="level1 title">
-<h1 class="title"><span class="flow">Discuss your ideas!</span></h1>
-</section>
-<section id="how-to-continue" class="level1 title">
-<h1 class="title"><span class="flow">How to continue?</span></h1>
-<section id="how-to-continue-after-the-presentations" class="level2">
-<h2 class="anchored" data-anchor-id="how-to-continue-after-the-presentations">How to continue after the presentations?</h2>
+<section id="keep-programming" class="level2">
+<h2 class="anchored" data-anchor-id="keep-programming">Keep programming</h2>
+<p>The skill fades if it sits idle. A few honest ways to keep it alive:</p>
 <ul>
-<li>The best way to continue learning is to <span class="highlight">keep programming in the future</span></li>
-<li>Potentially, you will continue to do so during your studies</li>
-<li>Coding in your Thesis is a another great way to improve</li>
-<li>Try to find a way to apply programming in your work</li>
-<li><strong>There are many interesting topics to explore!</strong></li>
+<li>Use Python in your <strong>thesis</strong>: data cleaning, analysis, plots you can defend</li>
+<li>Find a way to <strong>apply it at work</strong>: the repetitive task nobody wants to do by hand</li>
+<li><strong><a href="https://adventofcode.com/">Advent of Code</a></strong>: free, ad-free programming puzzles, one a day from <strong>December 1st</strong>. A genuinely fun way to keep the muscle warm.</li>
 </ul>
 </section>
-<section id="advent-of-code" class="level2">
-<h2 class="anchored" data-anchor-id="advent-of-code">Advent of Code</h2>
+<section id="thank-you" class="level2">
+<h2 class="anchored" data-anchor-id="thank-you">Thank you</h2>
 <ul>
-<li><a href="https://adventofcode.com/">Advent of Code</a> is a fun way to keep programming</li>
-<li>Here you can solve programming puzzles during Advent</li>
-<li>It is completely free and ad-free and starts at 01.12.</li>
+<li>We covered the basics of Python: from a first <code>print</code> to a real project on your own machine</li>
+<li>You debugged, you verified AI, you shipped honest data</li>
+<li>I hope you enjoyed it, and I hope it’s useful long after the grade</li>
+<li>If you have questions or feedback, <a href="mailto:vlcek@beyondsimulations.com">please tell me</a></li>
 </ul>
-<center>
-<iframe src="https://giphy.com/embed/F1Gh6u8YEG3FctxYWc" width="280" height="280" style="" frameborder="0" class="giphy-embed" allowfullscreen="">
-</iframe>
-</center>
-</section>
-<section id="thats-it-for-the-lecture-series" class="level2">
-<h2 class="anchored" data-anchor-id="thats-it-for-the-lecture-series">That’s it for the Lecture Series!</h2>
-<ul>
-<li>We now have covered the basics of Python</li>
-<li>I hope you enjoyed the lecture and found it helpful</li>
-<li>If you have questions or feedback, <span class="highlight">please let me know!</span></li>
-<li>I wish you all the best for your studies and your career!</li>
-</ul>
-</section>
-<section id="section" class="level2" data-background-color="#000000">
-<h2 data-background-color="#000000" class="anchored" data-anchor-id="section"></h2>
-<center>
-<iframe src="https://giphy.com/embed/YVg3fCdaBpLEc" width="480" height="355" style="" frameborder="0" class="giphy-embed" allowfullscreen="">
-</iframe>
-</center>
+<p>. . .</p>
+<p>All the best for your studies and your career. Now go build the thing.</p>
 </section>
 </section>
 <section id="literature" class="level1 title">
 <h1 class="title"><span class="flow">Literature</span></h1>
-<section id="interesting-books" class="level2">
-<h2 class="anchored" data-anchor-id="interesting-books">Interesting Books</h2>
+<section id="books-to-start-with" class="level2">
+<h2 class="anchored" data-anchor-id="books-to-start-with">Books to start with</h2>
 <ul>
 <li>Downey, A. B. (2024). Think Python: How to think like a computer scientist (Third edition). O’Reilly. <a href="https://greenteapress.com/wp/think-python-3rd-edition/">Link to free online version</a></li>
 <li>Elter, S. (2021). Schrödinger programmiert Python: Das etwas andere Fachbuch (1. Auflage). Rheinwerk Verlag.</li>
 </ul>
 <p>. . .</p>
-<p>For more interesting literature to learn more about Python, take a look at the <a href="../general/literature.html">literature list</a> of this course.</p>
+<div class="callout callout-style-simple callout-note">
+<div class="callout-body d-flex">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-body-container">
+<p>Setting up the toolchain? The <a href="../general/uv.html">Installing Python</a>, <a href="../general/ai-tools.html">AI Tools</a> and <a href="../general/git-basics.html">Git Basics</a> pages are the reference versions of everything we did live today.</p>
+</div>
+</div>
+</div>
+<p>. . .</p>
+<p>For more, see the <a href="../general/literature.html">literature list</a> of this course.</p>
 
 
 </section>

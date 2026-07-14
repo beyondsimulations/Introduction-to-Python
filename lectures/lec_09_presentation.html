@@ -6,8 +6,8 @@
 <script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
 <link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
 <link href="../site_libs/quarto-html/light-border.css" rel="stylesheet">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-acf12a64177840b8d86f2d4f01b2e9fb.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
-  <meta name="generator" content="quarto-1.9.37">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-de63f62b328812d8e578a4d74e282472.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
+  <meta name="generator" content="quarto-1.9.38">
 
   <meta name="author" content="Dr.&nbsp;Tobias Vlćek">
   <title>Programming with Python – Lecture IX - Data Visualization</title>
@@ -98,7 +98,7 @@
     code span.vs { color: #032f62; } /* VerbatimString */
     code span.wa { color: #ff5555; } /* Warning */
   </style>
-  <link rel="stylesheet" href="../site_libs/revealjs/dist/theme/quarto-f85b3b3185a4ab11126f7e6ba17b9231.css">
+  <link rel="stylesheet" href="../site_libs/revealjs/dist/theme/quarto-98747a31849c37b7af6917e6faa4a735.css">
   <link href="../site_libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
   <link href="../site_libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
   <link href="../site_libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
@@ -205,1038 +205,94 @@
 Dr.&nbsp;Tobias Vlćek 
 </div>
         <p class="quarto-title-affiliation">
-            Kühne Logistics University Hamburg - Fall 2025
+            Kühne Logistics University Hamburg - Fall 2026
           </p>
     </div>
 </div>
 
 </section>
 <section>
-<section id="quick-recap-of-the-last-lecture" class="title-slide slide level1 title center">
-<h1><span class="flow">Quick Recap of the last Lecture</span></h1>
+<section id="episode-9-the-pitch-deck" class="title-slide slide level1 title center">
+<h1><span class="flow">Episode 9: The Pitch Deck</span></h1>
 
 </section>
-<section id="pandas-data-analysis" class="slide level2">
-<h2>Pandas: Data Analysis</h2>
-<ul>
-<li>Powerful library for <span class="highlight">data manipulation and analysis</span></li>
-<li>Built on top of NumPy, providing additional functionality</li>
-<li>Key features of Pandas include:
-<ul>
-<li>Data loading from various file formats</li>
-<li>Data cleaning and preprocessing</li>
-<li>Powerful grouping and aggregation operations</li>
-<li>Merging and joining datasets</li>
-</ul></li>
-</ul>
-</section>
-<section id="why-numpy-and-pandas-are-essential" class="slide level2">
-<h2>Why NumPy and Pandas are Essential</h2>
-<ul>
-<li>Basic tools for <span class="highlight">scientific computing</span> and <span class="highlight">data analysis</span></li>
-<li><span class="highlight">Efficient data structures</span> and operations for large data</li>
-<li>Integration with other scientific Python libraries</li>
-<li>Used in data science, machine learning, and research</li>
-</ul>
+<section id="charts-are-arguments" class="slide level2">
+<h2>Charts are arguments</h2>
+<p>It’s <strong>Friday</strong>. The boardroom. The investor slides a pencil out of her jacket and <strong>sharpens it</strong> while you set up, the sound louder than it has any right to be.</p>
 <div class="fragment">
-<div class="callout callout-tip callout-style-simple">
-<div class="callout-body">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
+<p>Last week you handed her honest numbers, a table she could trust. She read exactly one row, looked up, and said the thing this whole session is about:</p>
+<blockquote>
+<p><strong>“Tables are homework. Charts are arguments.”</strong></p>
+</blockquote>
 </div>
-<div class="callout-content">
-<p>You might also need them in future lectures here!</p>
-</div>
-</div>
-</div>
+<div class="fragment">
+<p>A number convinces the careful. A <strong>picture</strong> convinces the room. Today: draw the right chart for the question, and refuse to draw a dishonest one.</p>
 </div>
 </section></section>
 <section>
-<section id="data-visualization" class="title-slide slide level1 title center">
-<h1><span class="flow">Data Visualization</span></h1>
-
+<section id="warm-up" class="title-slide slide level1 exercise-slide center">
+<h1>🔥 Warm-up</h1>
+<p>Three questions from Episode 8. Commit. Hands up <strong>before</strong> the reveal.</p>
 </section>
-<section id="section" class="slide level2">
-<h2></h2>
-<div class="r-fit-text">
-<p><span class="question">Question:</span> What is</p>
-<p>data visualization?</p>
-</div>
+<section id="question-1" class="slide level2">
+<h2>Question 1</h2>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a></a>orders[orders[<span class="st">"zone"</span>] <span class="op">==</span> <span class="st">"Nord"</span>]</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>returns…</p>
+<p>a) a True/False column b) only the Nord rows c) an error</p>
 </section>
-<section id="visual-representations-of-data" class="slide level2">
-<h2>Visual Representations of Data</h2>
-<div id="ae770f2f" class="cell" data-execution_count="1">
-<details class="code-fold">
-<summary>Code</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
-<span id="cb1-2"><a></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
-<span id="cb1-3"><a></a></span>
-<span id="cb1-4"><a></a></span>
-<span id="cb1-5"><a></a><span class="co"># Generate data</span></span>
-<span id="cb1-6"><a></a>np.random.seed(<span class="dv">42</span>)</span>
-<span id="cb1-7"><a></a>x <span class="op">=</span> np.linspace(<span class="dv">0</span>, <span class="dv">10</span>, <span class="dv">50</span>)</span>
-<span id="cb1-8"><a></a>y <span class="op">=</span> <span class="dv">3</span> <span class="op">+</span> <span class="dv">2</span><span class="op">*</span>x <span class="op">+</span> np.random.randn(<span class="dv">50</span>)</span>
-<span id="cb1-9"><a></a>sizes <span class="op">=</span> np.random.randint(<span class="dv">20</span>, <span class="dv">200</span>, <span class="dv">50</span>)</span>
-<span id="cb1-10"><a></a>colors <span class="op">=</span> np.random.rand(<span class="dv">50</span>)</span>
-<span id="cb1-11"><a></a></span>
-<span id="cb1-12"><a></a><span class="co"># Create the plot</span></span>
-<span id="cb1-13"><a></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">12</span>, <span class="dv">5</span>))</span>
-<span id="cb1-14"><a></a>scatter <span class="op">=</span> plt.scatter(x, y, c<span class="op">=</span>colors, s<span class="op">=</span>sizes, alpha<span class="op">=</span><span class="fl">0.6</span>, cmap<span class="op">=</span><span class="st">'viridis'</span>)</span>
-<span id="cb1-15"><a></a></span>
-<span id="cb1-16"><a></a><span class="co"># Add trend line</span></span>
-<span id="cb1-17"><a></a>z <span class="op">=</span> np.polyfit(x, y, <span class="dv">1</span>)</span>
-<span id="cb1-18"><a></a>p <span class="op">=</span> np.poly1d(z)</span>
-<span id="cb1-19"><a></a>plt.plot(x, p(x), <span class="st">"r--"</span>, alpha<span class="op">=</span><span class="fl">0.8</span>, linewidth<span class="op">=</span><span class="dv">2</span>)</span>
-<span id="cb1-20"><a></a></span>
-<span id="cb1-21"><a></a><span class="co"># Customize the plot</span></span>
-<span id="cb1-22"><a></a>plt.title(<span class="st">"ScatterPlot with Trend Line"</span>, fontsize<span class="op">=</span><span class="dv">16</span>)</span>
-<span id="cb1-23"><a></a>plt.xlabel(<span class="st">"X-axis"</span>, fontsize<span class="op">=</span><span class="dv">12</span>)</span>
-<span id="cb1-24"><a></a>plt.ylabel(<span class="st">"Y-axis"</span>, fontsize<span class="op">=</span><span class="dv">12</span>)</span>
-<span id="cb1-25"><a></a>plt.colorbar(scatter, label<span class="op">=</span><span class="st">"Color Scale"</span>)</span>
-<span id="cb1-26"><a></a></span>
-<span id="cb1-27"><a></a><span class="co"># Add a text annotation</span></span>
-<span id="cb1-28"><a></a>plt.annotate(<span class="st">"Interesting point"</span>, xy<span class="op">=</span>(<span class="dv">8</span>, <span class="dv">21</span>), xytext<span class="op">=</span>(<span class="fl">6.5</span>, <span class="dv">23</span>),</span>
-<span id="cb1-29"><a></a>             arrowprops<span class="op">=</span><span class="bu">dict</span>(facecolor<span class="op">=</span><span class="st">'black'</span>, shrink<span class="op">=</span><span class="fl">0.05</span>))</span>
-<span id="cb1-30"><a></a></span>
-<span id="cb1-31"><a></a>plt.grid(<span class="va">True</span>, alpha<span class="op">=</span><span class="fl">0.3</span>)</span>
-<span id="cb1-32"><a></a>plt.tight_layout()</span>
-<span id="cb1-33"><a></a>plt.show()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</details>
-<div class="cell-output cell-output-display">
-<div>
-<figure>
-<p><img data-src="lec_09_plotting_files/figure-revealjs/cell-2-output-1.png" width="1051" height="471"></p>
-</figure>
-</div>
-</div>
-</div>
+<section id="answer-1" class="slide level2">
+<h2>Answer 1</h2>
+<p><strong>b) only the Nord rows</strong> — the True/False column is what the <strong>inner</strong> expression <code>orders["zone"] == "Nord"</code> makes. Wrapped in <code>orders[...]</code>, that mask keeps the rows where it’s <code>True</code> and drops the rest.</p>
 </section>
-<section id="importance-of-data-visualization" class="slide level2">
-<h2>Importance of Data Visualization</h2>
-<ul>
-<li><span class="highlight">Communicates</span> complex information clearly</li>
-<li>Helps in <span class="highlight">decision-making</span> processes</li>
-<li>Reveals hidden patterns and relationships in data</li>
-<li>Makes data more <span class="highlight">accessible</span> and engaging</li>
-</ul>
-<div class="fragment">
-<div class="callout callout-tip callout-style-simple">
-<div class="callout-body">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-content">
-<p>Helps to <span class="highlight">convice</span> stakeholders!</p>
-</div>
-</div>
-</div>
-</div>
+<section id="question-2" class="slide level2">
+<h2>Question 2</h2>
+<p>Kevin’s AI wrote this. <code>orders</code> is a normal DataFrame. What happens?</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a></a>orders.summarize()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>a) a summary table b) an <code>AttributeError</code> c) an empty DataFrame</p>
+</section>
+<section id="answer-2" class="slide level2">
+<h2>Answer 2</h2>
+<p><strong>b) <code>AttributeError</code></strong> — pandas has <code>.describe()</code>, not <code>.summarize()</code>. The AI invented a plausible name. An AI that <strong>sounds sure</strong> is not the same as an API that <strong>exists</strong>. You verify, every time.</p>
+</section>
+<section id="question-3" class="slide level2">
+<h2>Question 3</h2>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a></a>orders[<span class="st">"total_eur"</span>].describe()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>shows…</p>
+<p>a) count / mean / std / min / quartiles / max b) the first five rows c) the column’s type</p>
+</section>
+<section id="answer-3" class="slide level2">
+<h2>Answer 3</h2>
+<p><strong>a) count / mean / std / min / quartiles / max</strong> — one line, the column’s whole statistical fingerprint. That’s the real method Kevin’s AI was reaching for.</p>
 </section></section>
 <section>
-<section id="common-types-of-data-visualizations" class="title-slide slide level1 title center">
-<h1><span class="flow">Common Types of Data Visualizations</span></h1>
+<section id="the-first-chart" class="title-slide slide level1 title center">
+<h1><span class="flow">The first chart</span></h1>
 
 </section>
-<section id="bar-charts-and-histograms" class="slide level2">
-<h2>Bar Charts and Histograms</h2>
-<ul>
-<li><strong>Bar charts</strong>: Compare quantities across categories</li>
-<li><strong>Histograms</strong>: Show distribution of a continuous variable</li>
-</ul>
-<div id="c4cce8d4" class="cell" data-execution_count="2">
-<details class="code-fold">
-<summary>Code</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
-<span id="cb2-2"><a></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
-<span id="cb2-3"><a></a></span>
-<span id="cb2-4"><a></a><span class="co"># Bar chart</span></span>
-<span id="cb2-5"><a></a>categories <span class="op">=</span> [<span class="st">'A'</span>, <span class="st">'B'</span>, <span class="st">'C'</span>, <span class="st">'D'</span>]</span>
-<span id="cb2-6"><a></a>values <span class="op">=</span> [<span class="dv">4</span>, <span class="dv">7</span>, <span class="dv">2</span>, <span class="dv">8</span>]</span>
-<span id="cb2-7"><a></a></span>
-<span id="cb2-8"><a></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">12</span>, <span class="dv">3</span>))</span>
-<span id="cb2-9"><a></a>plt.subplot(<span class="dv">121</span>)</span>
-<span id="cb2-10"><a></a>plt.bar(categories, values)</span>
-<span id="cb2-11"><a></a>plt.title(<span class="st">'Bar Chart'</span>)</span>
-<span id="cb2-12"><a></a></span>
-<span id="cb2-13"><a></a><span class="co"># Histogram</span></span>
-<span id="cb2-14"><a></a>data <span class="op">=</span> np.random.randn(<span class="dv">1000</span>)</span>
-<span id="cb2-15"><a></a></span>
-<span id="cb2-16"><a></a>plt.subplot(<span class="dv">122</span>)</span>
-<span id="cb2-17"><a></a>plt.hist(data, bins<span class="op">=</span><span class="dv">30</span>)</span>
-<span id="cb2-18"><a></a>plt.title(<span class="st">'Histogram'</span>)</span>
-<span id="cb2-19"><a></a></span>
-<span id="cb2-20"><a></a>plt.tight_layout()</span>
-<span id="cb2-21"><a></a>plt.show()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</details>
-<div class="cell-output cell-output-display">
-<div>
-<figure>
-<p><img data-src="lec_09_plotting_files/figure-revealjs/cell-3-output-1.png" width="1142" height="278"></p>
-</figure>
-</div>
-</div>
-</div>
-</section>
-<section id="line-charts-and-area-charts" class="slide level2">
-<h2>Line Charts and Area Charts</h2>
-<ul>
-<li><strong>Line charts</strong>: Show trends over time or continuous data</li>
-<li><strong>Area charts</strong>: Similar to line charts, but with filled areas</li>
-</ul>
-<div id="a9e88850" class="cell" data-execution_count="3">
-<details class="code-fold">
-<summary>Code</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
-<span id="cb3-2"><a></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
-<span id="cb3-3"><a></a></span>
-<span id="cb3-4"><a></a>x <span class="op">=</span> np.linspace(<span class="dv">0</span>, <span class="dv">10</span>, <span class="dv">100</span>)</span>
-<span id="cb3-5"><a></a>y1 <span class="op">=</span> np.sin(x)</span>
-<span id="cb3-6"><a></a>y2 <span class="op">=</span> np.cos(x)</span>
-<span id="cb3-7"><a></a></span>
-<span id="cb3-8"><a></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">12</span>, <span class="dv">3</span>))</span>
-<span id="cb3-9"><a></a>plt.subplot(<span class="dv">121</span>)</span>
-<span id="cb3-10"><a></a>plt.plot(x, y1, label<span class="op">=</span><span class="st">'sin(x)'</span>)</span>
-<span id="cb3-11"><a></a>plt.plot(x, y2, label<span class="op">=</span><span class="st">'cos(x)'</span>)</span>
-<span id="cb3-12"><a></a>plt.title(<span class="st">'Line Chart'</span>)</span>
-<span id="cb3-13"><a></a>plt.legend()</span>
-<span id="cb3-14"><a></a></span>
-<span id="cb3-15"><a></a>plt.subplot(<span class="dv">122</span>)</span>
-<span id="cb3-16"><a></a>plt.fill_between(x, y1, label<span class="op">=</span><span class="st">'sin(x)'</span>)</span>
-<span id="cb3-17"><a></a>plt.fill_between(x, y2, label<span class="op">=</span><span class="st">'cos(x)'</span>, alpha<span class="op">=</span><span class="fl">0.5</span>)</span>
-<span id="cb3-18"><a></a>plt.title(<span class="st">'Area Chart'</span>)</span>
-<span id="cb3-19"><a></a>plt.legend()</span>
-<span id="cb3-20"><a></a></span>
-<span id="cb3-21"><a></a>plt.tight_layout()</span>
-<span id="cb3-22"><a></a>plt.show()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</details>
-<div class="cell-output cell-output-display">
-<div>
-<figure>
-<p><img data-src="lec_09_plotting_files/figure-revealjs/cell-4-output-1.png" width="1142" height="278"></p>
-</figure>
-</div>
-</div>
-</div>
-</section>
-<section id="scatter-plots-and-bubble-charts" class="slide level2">
-<h2>Scatter Plots and Bubble Charts</h2>
-<ul>
-<li><strong>Scatter plots</strong>: Show relationship between two variables</li>
-<li><strong>Bubble charts</strong>: Adds dimension with varying point sizes</li>
-</ul>
-<div id="18eb1699" class="cell" data-execution_count="4">
-<details class="code-fold">
-<summary>Code</summary>
+<section id="matplotlib-in-four-lines" class="slide level2">
+<h2>Matplotlib in four lines</h2>
+<p>The library everyone plots with is <strong>matplotlib</strong>; <code>import matplotlib.pyplot as plt</code> is the nickname. Four lines turn a list of numbers into a picture:</p>
+<div id="b466ac16" class="cell" data-execution_count="1">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
-<span id="cb4-2"><a></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
-<span id="cb4-3"><a></a></span>
-<span id="cb4-4"><a></a>x <span class="op">=</span> np.random.rand(<span class="dv">50</span>)</span>
-<span id="cb4-5"><a></a>y <span class="op">=</span> np.random.rand(<span class="dv">50</span>)</span>
-<span id="cb4-6"><a></a>sizes <span class="op">=</span> np.random.rand(<span class="dv">50</span>) <span class="op">*</span> <span class="dv">500</span></span>
-<span id="cb4-7"><a></a></span>
-<span id="cb4-8"><a></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">12</span>, <span class="dv">3</span>))</span>
-<span id="cb4-9"><a></a>plt.subplot(<span class="dv">121</span>)</span>
-<span id="cb4-10"><a></a>plt.scatter(x, y)</span>
-<span id="cb4-11"><a></a>plt.title(<span class="st">'Scatter Plot'</span>)</span>
-<span id="cb4-12"><a></a></span>
-<span id="cb4-13"><a></a>plt.subplot(<span class="dv">122</span>)</span>
-<span id="cb4-14"><a></a>plt.scatter(x, y, s<span class="op">=</span>sizes, alpha<span class="op">=</span><span class="fl">0.5</span>)</span>
-<span id="cb4-15"><a></a>plt.title(<span class="st">'Bubble Chart'</span>)</span>
-<span id="cb4-16"><a></a></span>
-<span id="cb4-17"><a></a>plt.tight_layout()</span>
-<span id="cb4-18"><a></a>plt.show()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</details>
+<span id="cb4-2"><a></a></span>
+<span id="cb4-3"><a></a>days <span class="op">=</span> [<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">5</span>]</span>
+<span id="cb4-4"><a></a>revenue <span class="op">=</span> [<span class="dv">120</span>, <span class="dv">90</span>, <span class="dv">140</span>, <span class="dv">160</span>, <span class="dv">130</span>]</span>
+<span id="cb4-5"><a></a></span>
+<span id="cb4-6"><a></a>plt.figure()          <span class="co"># OPEN: a fresh canvas, so this chart</span></span>
+<span id="cb4-7"><a></a>                      <span class="co">#       doesn't draw on the last one</span></span>
+<span id="cb4-8"><a></a>plt.plot(days, revenue)   <span class="co"># x, then y</span></span>
+<span id="cb4-9"><a></a>plt.title(<span class="st">"This week's revenue"</span>)</span>
+<span id="cb4-10"><a></a>plt.gca()             <span class="co"># SHOW: "get current axes" — the chart</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<div class="cell fragment" data-execution_count="1">
 <div class="cell-output cell-output-display">
 <div>
 <figure>
-<p><img data-src="lec_09_plotting_files/figure-revealjs/cell-5-output-1.png" width="1142" height="278"></p>
+<p><img data-src="lec_09_plotting_files/figure-html/cell-2-output-1.png" width="575" height="431"></p>
 </figure>
 </div>
 </div>
 </div>
-</section>
-<section id="pie-charts-and-donut-charts" class="slide level2">
-<h2>Pie Charts and Donut Charts</h2>
-<ul>
-<li><strong>Pie charts</strong>: Show composition of a whole</li>
-<li><strong>Donut charts</strong>: Similar to pie charts, but with a hole</li>
-</ul>
-<div id="a1e6fb6b" class="cell" data-execution_count="5">
-<details class="code-fold">
-<summary>Code</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
-<span id="cb5-2"><a></a></span>
-<span id="cb5-3"><a></a>labels <span class="op">=</span> <span class="st">'A'</span>, <span class="st">'B'</span>, <span class="st">'C'</span>, <span class="st">'D'</span></span>
-<span id="cb5-4"><a></a>sizes <span class="op">=</span> [<span class="dv">15</span>, <span class="dv">30</span>, <span class="dv">45</span>, <span class="dv">10</span>]</span>
-<span id="cb5-5"><a></a></span>
-<span id="cb5-6"><a></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">12</span>, <span class="dv">3</span>))</span>
-<span id="cb5-7"><a></a></span>
-<span id="cb5-8"><a></a><span class="co"># Pie chart (left subplot)</span></span>
-<span id="cb5-9"><a></a>plt.subplot(<span class="dv">121</span>)</span>
-<span id="cb5-10"><a></a>plt.pie(sizes, labels<span class="op">=</span>labels, autopct<span class="op">=</span><span class="st">'</span><span class="sc">%1.1f%%</span><span class="st">'</span>)</span>
-<span id="cb5-11"><a></a>plt.title(<span class="st">'Pie Chart'</span>)</span>
-<span id="cb5-12"><a></a></span>
-<span id="cb5-13"><a></a><span class="co"># Donut chart (right subplot)</span></span>
-<span id="cb5-14"><a></a>plt.subplot(<span class="dv">122</span>)</span>
-<span id="cb5-15"><a></a>plt.pie(sizes, labels<span class="op">=</span>labels, autopct<span class="op">=</span><span class="st">'</span><span class="sc">%1.1f%%</span><span class="st">'</span>,</span>
-<span id="cb5-16"><a></a>        pctdistance<span class="op">=</span><span class="fl">0.7</span>, labeldistance<span class="op">=</span><span class="fl">1.1</span>,</span>
-<span id="cb5-17"><a></a>        wedgeprops<span class="op">=</span><span class="bu">dict</span>(width<span class="op">=</span><span class="fl">0.5</span>, edgecolor<span class="op">=</span><span class="st">'white'</span>))</span>
-<span id="cb5-18"><a></a>plt.title(<span class="st">'Donut Chart'</span>)</span>
-<span id="cb5-19"><a></a></span>
-<span id="cb5-20"><a></a>plt.tight_layout()</span>
-<span id="cb5-21"><a></a>plt.show()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</details>
-<div class="cell-output cell-output-display">
-<div>
-<figure>
-<p><img data-src="lec_09_plotting_files/figure-revealjs/cell-6-output-1.png" width="735" height="278"></p>
-</figure>
-</div>
-</div>
-</div>
-</section>
-<section id="box-plots-and-violin-plots" class="slide level2">
-<h2>Box Plots and Violin Plots</h2>
-<ul>
-<li><strong>Box plots</strong>: Show distribution of data through quartiles</li>
-<li><strong>Violin plots</strong>: Combine box plot with kernel density</li>
-</ul>
-<div id="1ed6902b" class="cell" data-execution_count="6">
-<details class="code-fold">
-<summary>Code</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
-<span id="cb6-2"><a></a><span class="im">import</span> seaborn <span class="im">as</span> sns</span>
-<span id="cb6-3"><a></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
-<span id="cb6-4"><a></a></span>
-<span id="cb6-5"><a></a>data <span class="op">=</span> [np.random.normal(<span class="dv">0</span>, std, <span class="dv">100</span>) <span class="cf">for</span> std <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">1</span>, <span class="dv">5</span>)]</span>
-<span id="cb6-6"><a></a></span>
-<span id="cb6-7"><a></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">12</span>, <span class="dv">3</span>))</span>
-<span id="cb6-8"><a></a>plt.subplot(<span class="dv">121</span>)</span>
-<span id="cb6-9"><a></a>plt.boxplot(data)</span>
-<span id="cb6-10"><a></a>plt.title(<span class="st">'Box Plot'</span>)</span>
-<span id="cb6-11"><a></a></span>
-<span id="cb6-12"><a></a>plt.subplot(<span class="dv">122</span>)</span>
-<span id="cb6-13"><a></a>sns.violinplot(data)</span>
-<span id="cb6-14"><a></a>plt.title(<span class="st">'Violin Plot'</span>)</span>
-<span id="cb6-15"><a></a></span>
-<span id="cb6-16"><a></a>plt.tight_layout()</span>
-<span id="cb6-17"><a></a>plt.show()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</details>
-<div class="cell-output cell-output-display">
-<div>
-<figure>
-<p><img data-src="lec_09_plotting_files/figure-revealjs/cell-7-output-1.png" width="1142" height="278"></p>
-</figure>
-</div>
-</div>
-</div>
-</section>
-<section id="network-graphs-and-trees" class="slide level2">
-<h2>Network Graphs and Trees</h2>
-<ul>
-<li><strong>Network graphs</strong>: Show relationships between entities</li>
-<li><strong>Tree diagrams</strong>: Display hierarchical structures</li>
-</ul>
-<div id="4cd320ec" class="cell" data-execution_count="7">
-<details class="code-fold">
-<summary>Code</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
-<span id="cb7-2"><a></a><span class="im">import</span> networkx <span class="im">as</span> nx</span>
-<span id="cb7-3"><a></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
-<span id="cb7-4"><a></a></span>
-<span id="cb7-5"><a></a><span class="co"># Create figure</span></span>
-<span id="cb7-6"><a></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">12</span>, <span class="dv">3</span>))</span>
-<span id="cb7-7"><a></a></span>
-<span id="cb7-8"><a></a><span class="co"># Network graph (left subplot)</span></span>
-<span id="cb7-9"><a></a>plt.subplot(<span class="dv">121</span>)</span>
-<span id="cb7-10"><a></a>G <span class="op">=</span> nx.random_geometric_graph(<span class="dv">15</span>, <span class="fl">0.3</span>)  <span class="co"># Reduced nodes for clarity</span></span>
-<span id="cb7-11"><a></a>pos <span class="op">=</span> nx.spring_layout(G, k<span class="op">=</span><span class="dv">1</span>, seed<span class="op">=</span><span class="dv">42</span>)  <span class="co"># Better layout with fixed seed</span></span>
-<span id="cb7-12"><a></a>nx.draw_networkx_nodes(G, pos,</span>
-<span id="cb7-13"><a></a>                      node_color<span class="op">=</span><span class="st">'lightblue'</span>,</span>
-<span id="cb7-14"><a></a>                      node_size<span class="op">=</span><span class="dv">500</span>,</span>
-<span id="cb7-15"><a></a>                      edgecolors<span class="op">=</span><span class="st">'navy'</span>,</span>
-<span id="cb7-16"><a></a>                      linewidths<span class="op">=</span><span class="dv">1</span>)</span>
-<span id="cb7-17"><a></a>nx.draw_networkx_edges(G, pos,</span>
-<span id="cb7-18"><a></a>                      edge_color<span class="op">=</span><span class="st">'gray'</span>,</span>
-<span id="cb7-19"><a></a>                      width<span class="op">=</span><span class="dv">1</span>,</span>
-<span id="cb7-20"><a></a>                      alpha<span class="op">=</span><span class="fl">0.5</span>)</span>
-<span id="cb7-21"><a></a>nx.draw_networkx_labels(G, pos,</span>
-<span id="cb7-22"><a></a>                       font_size<span class="op">=</span><span class="dv">8</span>,</span>
-<span id="cb7-23"><a></a>                       font_weight<span class="op">=</span><span class="st">'bold'</span>)</span>
-<span id="cb7-24"><a></a>plt.title(<span class="st">'Network Graph'</span>, pad<span class="op">=</span><span class="dv">10</span>)</span>
-<span id="cb7-25"><a></a></span>
-<span id="cb7-26"><a></a><span class="co"># Tree diagram (right subplot)</span></span>
-<span id="cb7-27"><a></a>plt.subplot(<span class="dv">122</span>)</span>
-<span id="cb7-28"><a></a>T <span class="op">=</span> nx.balanced_tree(<span class="dv">2</span>, <span class="dv">2</span>)  <span class="co"># Create a balanced tree with 2 children, depth 2</span></span>
-<span id="cb7-29"><a></a>pos_tree <span class="op">=</span> nx.spring_layout(T, k<span class="op">=</span><span class="fl">1.5</span>, seed<span class="op">=</span><span class="dv">42</span>)</span>
-<span id="cb7-30"><a></a>nx.draw_networkx_nodes(T, pos_tree,</span>
-<span id="cb7-31"><a></a>                      node_color<span class="op">=</span><span class="st">'lightgreen'</span>,</span>
-<span id="cb7-32"><a></a>                      node_size<span class="op">=</span><span class="dv">500</span>,</span>
-<span id="cb7-33"><a></a>                      edgecolors<span class="op">=</span><span class="st">'darkgreen'</span>,</span>
-<span id="cb7-34"><a></a>                      linewidths<span class="op">=</span><span class="dv">1</span>)</span>
-<span id="cb7-35"><a></a>nx.draw_networkx_edges(T, pos_tree,</span>
-<span id="cb7-36"><a></a>                      edge_color<span class="op">=</span><span class="st">'forestgreen'</span>,</span>
-<span id="cb7-37"><a></a>                      width<span class="op">=</span><span class="dv">1</span>)</span>
-<span id="cb7-38"><a></a>nx.draw_networkx_labels(T, pos_tree,</span>
-<span id="cb7-39"><a></a>                       font_size<span class="op">=</span><span class="dv">8</span>,</span>
-<span id="cb7-40"><a></a>                       font_weight<span class="op">=</span><span class="st">'bold'</span>)</span>
-<span id="cb7-41"><a></a>plt.title(<span class="st">'Tree'</span>, pad<span class="op">=</span><span class="dv">10</span>)</span>
-<span id="cb7-42"><a></a></span>
-<span id="cb7-43"><a></a>plt.tight_layout()</span>
-<span id="cb7-44"><a></a>plt.show()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</details>
-<div class="cell-output cell-output-display">
-<div>
-<figure>
-<p><img data-src="lec_09_plotting_files/figure-revealjs/cell-8-output-1.png" width="1142" height="278"></p>
-</figure>
-</div>
-</div>
-</div>
-</section>
-<section id="ridgeline-plots" class="slide level2">
-<h2>Ridgeline Plots</h2>
-<ul>
-<li><strong>Ridgeline plots</strong>: Show distribution of data across categories</li>
-</ul>
-<div id="6df41089" class="cell" data-execution_count="8">
-<details class="code-fold">
-<summary>Code</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
-<span id="cb8-2"><a></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
-<span id="cb8-3"><a></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
-<span id="cb8-4"><a></a><span class="im">import</span> joypy</span>
-<span id="cb8-5"><a></a></span>
-<span id="cb8-6"><a></a><span class="co"># Create realistic temperature distributions</span></span>
-<span id="cb8-7"><a></a>np.random.seed(<span class="dv">42</span>)</span>
-<span id="cb8-8"><a></a>months <span class="op">=</span> [<span class="st">'Jan'</span>, <span class="st">'Feb'</span>, <span class="st">'Mar'</span>, <span class="st">'Apr'</span>, <span class="st">'May'</span>, <span class="st">'Jun'</span>, <span class="st">'Jul'</span>, <span class="st">'Aug'</span>, <span class="st">'Sep'</span>, <span class="st">'Oct'</span>, <span class="st">'Nov'</span>, <span class="st">'Dec'</span>]</span>
-<span id="cb8-9"><a></a>data <span class="op">=</span> []</span>
-<span id="cb8-10"><a></a></span>
-<span id="cb8-11"><a></a><span class="co"># Temperature parameters for Helsinki, Finland (as an example)</span></span>
-<span id="cb8-12"><a></a>mean_temps <span class="op">=</span> [</span>
-<span id="cb8-13"><a></a>    <span class="op">-</span><span class="fl">3.5</span>,   <span class="co"># Jan</span></span>
-<span id="cb8-14"><a></a>    <span class="op">-</span><span class="fl">4.5</span>,   <span class="co"># Feb</span></span>
-<span id="cb8-15"><a></a>    <span class="op">-</span><span class="fl">1.0</span>,   <span class="co"># Mar</span></span>
-<span id="cb8-16"><a></a>    <span class="fl">4.5</span>,    <span class="co"># Apr</span></span>
-<span id="cb8-17"><a></a>    <span class="fl">10.8</span>,   <span class="co"># May</span></span>
-<span id="cb8-18"><a></a>    <span class="fl">15.5</span>,   <span class="co"># Jun</span></span>
-<span id="cb8-19"><a></a>    <span class="fl">18.0</span>,   <span class="co"># Jul</span></span>
-<span id="cb8-20"><a></a>    <span class="fl">16.3</span>,   <span class="co"># Aug</span></span>
-<span id="cb8-21"><a></a>    <span class="fl">11.5</span>,   <span class="co"># Sep</span></span>
-<span id="cb8-22"><a></a>    <span class="fl">6.6</span>,    <span class="co"># Oct</span></span>
-<span id="cb8-23"><a></a>    <span class="fl">1.6</span>,    <span class="co"># Nov</span></span>
-<span id="cb8-24"><a></a>    <span class="op">-</span><span class="fl">2.0</span>    <span class="co"># Dec</span></span>
-<span id="cb8-25"><a></a>]</span>
-<span id="cb8-26"><a></a></span>
-<span id="cb8-27"><a></a><span class="co"># Winter months have more variance than summer months</span></span>
-<span id="cb8-28"><a></a>variances <span class="op">=</span> [</span>
-<span id="cb8-29"><a></a>    <span class="fl">2.5</span>,    <span class="co"># Jan</span></span>
-<span id="cb8-30"><a></a>    <span class="fl">2.5</span>,    <span class="co"># Feb</span></span>
-<span id="cb8-31"><a></a>    <span class="fl">2.2</span>,    <span class="co"># Mar</span></span>
-<span id="cb8-32"><a></a>    <span class="fl">2.0</span>,    <span class="co"># Apr</span></span>
-<span id="cb8-33"><a></a>    <span class="fl">1.8</span>,    <span class="co"># May</span></span>
-<span id="cb8-34"><a></a>    <span class="fl">1.5</span>,    <span class="co"># Jun</span></span>
-<span id="cb8-35"><a></a>    <span class="fl">1.2</span>,    <span class="co"># Jul</span></span>
-<span id="cb8-36"><a></a>    <span class="fl">1.5</span>,    <span class="co"># Aug</span></span>
-<span id="cb8-37"><a></a>    <span class="fl">1.8</span>,    <span class="co"># Sep</span></span>
-<span id="cb8-38"><a></a>    <span class="fl">2.0</span>,    <span class="co"># Oct</span></span>
-<span id="cb8-39"><a></a>    <span class="fl">2.2</span>,    <span class="co"># Nov</span></span>
-<span id="cb8-40"><a></a>    <span class="fl">2.5</span>     <span class="co"># Dec</span></span>
-<span id="cb8-41"><a></a>]</span>
-<span id="cb8-42"><a></a></span>
-<span id="cb8-43"><a></a><span class="cf">for</span> month, mean_temp, variance <span class="kw">in</span> <span class="bu">zip</span>(months, mean_temps, variances):</span>
-<span id="cb8-44"><a></a>    <span class="co"># Add some random noise to make it more natural</span></span>
-<span id="cb8-45"><a></a>    distribution <span class="op">=</span> np.random.normal(loc<span class="op">=</span>mean_temp, scale<span class="op">=</span>variance, size<span class="op">=</span><span class="dv">1000</span>)</span>
-<span id="cb8-46"><a></a>    <span class="co"># Add slight skewness to winter months (more extreme cold than warm days)</span></span>
-<span id="cb8-47"><a></a>    <span class="cf">if</span> mean_temp <span class="op">&lt;</span> <span class="dv">5</span>:</span>
-<span id="cb8-48"><a></a>        distribution <span class="op">=</span> distribution <span class="op">-</span> <span class="fl">0.3</span> <span class="op">*</span> np.<span class="bu">abs</span>(distribution)</span>
-<span id="cb8-49"><a></a>    data.append(pd.DataFrame({</span>
-<span id="cb8-50"><a></a>        <span class="st">'temperature'</span>: distribution,</span>
-<span id="cb8-51"><a></a>        <span class="st">'month'</span>: month</span>
-<span id="cb8-52"><a></a>    }))</span>
-<span id="cb8-53"><a></a></span>
-<span id="cb8-54"><a></a>df <span class="op">=</span> pd.concat(data, ignore_index<span class="op">=</span><span class="va">True</span>)</span>
-<span id="cb8-55"><a></a></span>
-<span id="cb8-56"><a></a><span class="co"># Create the ridgeline plot</span></span>
-<span id="cb8-57"><a></a>joypy.joyplot(</span>
-<span id="cb8-58"><a></a>    data<span class="op">=</span>df,</span>
-<span id="cb8-59"><a></a>    by<span class="op">=</span><span class="st">"month"</span>,</span>
-<span id="cb8-60"><a></a>    column<span class="op">=</span><span class="st">"temperature"</span>,</span>
-<span id="cb8-61"><a></a>    colormap<span class="op">=</span>plt.cm.viridis,</span>
-<span id="cb8-62"><a></a>    title<span class="op">=</span><span class="st">"Monthly Temperature Distributions"</span>,</span>
-<span id="cb8-63"><a></a>    labels<span class="op">=</span>months,</span>
-<span id="cb8-64"><a></a>    range_style<span class="op">=</span><span class="st">'all'</span>,</span>
-<span id="cb8-65"><a></a>    tails<span class="op">=</span><span class="fl">0.2</span>,</span>
-<span id="cb8-66"><a></a>    overlap<span class="op">=</span><span class="fl">0.7</span>,</span>
-<span id="cb8-67"><a></a>    grid<span class="op">=</span><span class="va">True</span>,</span>
-<span id="cb8-68"><a></a>    figsize<span class="op">=</span>(<span class="dv">12</span>, <span class="dv">4</span>)</span>
-<span id="cb8-69"><a></a>)</span>
-<span id="cb8-70"><a></a></span>
-<span id="cb8-71"><a></a>plt.xlabel(<span class="st">"Temperature (°C)"</span>)</span>
-<span id="cb8-72"><a></a>plt.show()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</details>
-<div class="cell-output cell-output-display">
-<div>
-<figure>
-<p><img data-src="lec_09_plotting_files/figure-revealjs/cell-9-output-1.png" width="1142" height="387"></p>
-</figure>
-</div>
-</div>
-</div>
-</section></section>
-<section>
-<section id="how-to-plot-in-python" class="title-slide slide level1 title center">
-<h1><span class="flow">How to Plot in Python</span></h1>
-
-</section>
-<section id="python-plotting-libraries" class="slide level2">
-<h2>Python Plotting Libraries</h2>
-<ul>
-<li>There are <span class="highlight">many libraries for data visualization in Python</span>
-<ul>
-<li><strong>Matplotlib</strong>: The foundation for most Python plotting libraries</li>
-<li><strong>Seaborn</strong>: Interface for statistical data visualization</li>
-<li><strong>Plotly</strong>: Interactive and customizable plotting library</li>
-<li><strong>Bokeh</strong>: Interactive and complex plots</li>
-<li><strong>Joypy</strong>: Easy ridgeline plots</li>
-</ul></li>
-</ul>
-</section>
-<section id="matplotlib-module" class="slide level2">
-<h2>Matplotlib Module</h2>
-<ul>
-<li>Matplotlib is the <span class="highlight">foundation for most Python plotting libraries</span></li>
-<li><strong>Customizable</strong> and suitable for high-quality figures</li>
-<li>Provides <strong>easy to use</strong> functions for plotting</li>
-<li>Works well with <strong>Pandas</strong> DataFrames</li>
-</ul>
-</section>
-<section id="basic-matplotlib-example" class="slide level2">
-<h2>Basic Matplotlib Example</h2>
-<div id="86f292d6" class="cell" data-execution_count="9">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt <span class="co"># .pyplot is the main module in the package</span></span>
-<span id="cb9-2"><a></a>plt.plot([<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>], [<span class="dv">10</span>, <span class="dv">20</span>, <span class="dv">25</span>, <span class="dv">30</span>]) <span class="co"># first is x-axis, second is y-axis</span></span>
-<span id="cb9-3"><a></a>plt.show()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</div>
-<div class="cell fragment" data-execution_count="9">
-<div class="cell-output cell-output-display">
-<div>
-<figure>
-<p><img data-src="lec_09_plotting_files/figure-revealjs/cell-10-output-1.png" width="802" height="411"></p>
-</figure>
-</div>
-</div>
-</div>
-</section>
-<section id="customizing-plots" class="slide level2">
-<h2>Customizing Plots</h2>
-<ul>
-<li><strong>Line Types</strong>: with <code>ls=</code>
-<ul>
-<li><code>-</code>, <code>--</code>, <code>-.</code>, <code>:</code>, <code>None</code>;</li>
-</ul></li>
-<li><strong>Colors</strong>: with <code>color=</code>
-<ul>
-<li><code>r</code>, <code>g</code>, <code>b</code>, <code>c</code>, <code>m</code>, <code>y</code>, <code>k</code>, . . .</li>
-</ul></li>
-<li><strong>Markers</strong>: with <code>marker=</code>
-<ul>
-<li><code>o</code>, <code>s</code>, <code>D</code>, <code>p</code>, <code>*</code>, <code>x</code>, . . .</li>
-</ul></li>
-<li><strong>Labels</strong>: with <code>label=</code>, <code>title=</code>, <code>xlabel=</code>, <code>ylabel=</code></li>
-</ul>
-</section>
-<section id="red-dashed-line-with-circles" class="slide level2">
-<h2>Red dashed line with circles</h2>
-<div id="75db2038" class="cell" data-execution_count="10">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a></a>plt.plot(</span>
-<span id="cb10-2"><a></a>    [<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>],</span>
-<span id="cb10-3"><a></a>    [<span class="dv">10</span>, <span class="dv">20</span>, <span class="dv">25</span>, <span class="dv">30</span>],</span>
-<span id="cb10-4"><a></a>    color<span class="op">=</span><span class="st">'red'</span>,</span>
-<span id="cb10-5"><a></a>    linestyle<span class="op">=</span><span class="st">'--'</span>,</span>
-<span id="cb10-6"><a></a>    marker<span class="op">=</span><span class="st">'o'</span>)</span>
-<span id="cb10-7"><a></a>plt.show()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</div>
-
-</section>
-<section id="red-dashed-line-with-circles-output" class="slide level2 output-location-slide"><h2>Red dashed line with circles</h2><div class="cell output-location-slide" data-execution_count="10">
-<div class="cell-output cell-output-display">
-<div>
-<figure>
-<p><img data-src="lec_09_plotting_files/figure-revealjs/cell-11-output-1.png" width="802" height="411"></p>
-</figure>
-</div>
-</div>
-</div></section><section id="blue-dotted-line-with-squares" class="slide level2">
-<h2>Blue dotted line with squares</h2>
-<p><span class="question">Question:</span> How can we create such a plot?</p>
-<div class="fragment">
-<div id="96922264" class="cell" data-execution_count="11">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a></a>plt.plot(</span>
-<span id="cb11-2"><a></a>    [<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>],</span>
-<span id="cb11-3"><a></a>    [<span class="dv">10</span>, <span class="dv">20</span>, <span class="dv">25</span>, <span class="dv">30</span>],</span>
-<span id="cb11-4"><a></a>    color<span class="op">=</span><span class="st">'blue'</span>,</span>
-<span id="cb11-5"><a></a>    linestyle<span class="op">=</span><span class="st">':'</span>,</span>
-<span id="cb11-6"><a></a>    marker<span class="op">=</span><span class="st">'s'</span>,</span>
-<span id="cb11-7"><a></a>    label<span class="op">=</span><span class="st">'Blue Dotted Line with Squares'</span>)</span>
-<span id="cb11-8"><a></a>plt.legend()</span>
-<span id="cb11-9"><a></a>plt.show()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</div>
-
-</div>
-</section>
-<section id="blue-dotted-line-with-squares-output" class="slide level2 output-location-slide"><h2>Blue dotted line with squares</h2><div class="cell output-location-slide" data-execution_count="11">
-<div class="cell-output cell-output-display">
-<div>
-<figure>
-<p><img data-src="lec_09_plotting_files/figure-revealjs/cell-12-output-1.png" width="802" height="411"></p>
-</figure>
-</div>
-</div>
-</div></section><section id="multiple-plots" class="slide level2">
-<h2>Multiple Plots</h2>
-<div id="3576361b" class="cell" data-execution_count="12">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb12"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a></a>plt.plot(</span>
-<span id="cb12-2"><a></a>    [<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>],</span>
-<span id="cb12-3"><a></a>    [<span class="dv">8</span>, <span class="dv">22</span>, <span class="dv">21</span>, <span class="dv">36</span>],</span>
-<span id="cb12-4"><a></a>    color<span class="op">=</span><span class="st">'red'</span>,</span>
-<span id="cb12-5"><a></a>    linestyle<span class="op">=</span><span class="st">'--'</span>,</span>
-<span id="cb12-6"><a></a>    marker<span class="op">=</span><span class="st">'o'</span>,</span>
-<span id="cb12-7"><a></a>    label<span class="op">=</span><span class="st">'Red Dashed Line with Circles'</span>)</span>
-<span id="cb12-8"><a></a>plt.plot(</span>
-<span id="cb12-9"><a></a>    [<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>],</span>
-<span id="cb12-10"><a></a>    [<span class="dv">10</span>, <span class="dv">20</span>, <span class="dv">25</span>, <span class="dv">30</span>],</span>
-<span id="cb12-11"><a></a>    color<span class="op">=</span><span class="st">'blue'</span>,</span>
-<span id="cb12-12"><a></a>    linestyle<span class="op">=</span><span class="st">':'</span>,</span>
-<span id="cb12-13"><a></a>    marker<span class="op">=</span><span class="st">'s'</span>,</span>
-<span id="cb12-14"><a></a>    label<span class="op">=</span><span class="st">'Blue Dotted Line with Squares'</span>)</span>
-<span id="cb12-15"><a></a>plt.legend()</span>
-<span id="cb12-16"><a></a>plt.show()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</div>
-
-</section>
-<section id="multiple-plots-output" class="slide level2 output-location-slide"><h2>Multiple Plots</h2><div class="cell output-location-slide" data-execution_count="12">
-<div class="cell-output cell-output-display">
-<div>
-<figure>
-<p><img data-src="lec_09_plotting_files/figure-revealjs/cell-13-output-1.png" width="790" height="411"></p>
-</figure>
-</div>
-</div>
-</div></section><section id="type-and-size-of-the-plot" class="slide level2">
-<h2>Type and Size of the Plot</h2>
-<div id="d4c6cfb0" class="cell" data-execution_count="13">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">14</span>, <span class="dv">4</span>))</span>
-<span id="cb13-2"><a></a>plt.scatter(</span>
-<span id="cb13-3"><a></a>    [<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>],</span>
-<span id="cb13-4"><a></a>    [<span class="dv">8</span>, <span class="dv">22</span>, <span class="dv">21</span>, <span class="dv">36</span>],</span>
-<span id="cb13-5"><a></a>    color<span class="op">=</span><span class="st">'red'</span>,</span>
-<span id="cb13-6"><a></a>    marker<span class="op">=</span><span class="st">'o'</span>,</span>
-<span id="cb13-7"><a></a>    label<span class="op">=</span><span class="st">'Red Circles'</span>)</span>
-<span id="cb13-8"><a></a>plt.plot(</span>
-<span id="cb13-9"><a></a>    [<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>],</span>
-<span id="cb13-10"><a></a>    [<span class="dv">10</span>, <span class="dv">20</span>, <span class="dv">25</span>, <span class="dv">30</span>],</span>
-<span id="cb13-11"><a></a>    color<span class="op">=</span><span class="st">'blue'</span>,</span>
-<span id="cb13-12"><a></a>    linestyle<span class="op">=</span><span class="st">':'</span>,</span>
-<span id="cb13-13"><a></a>    marker<span class="op">=</span><span class="st">'s'</span>,</span>
-<span id="cb13-14"><a></a>    label<span class="op">=</span><span class="st">'Blue Dotted Line with Squares'</span>)</span>
-<span id="cb13-15"><a></a>plt.legend()</span>
-<span id="cb13-16"><a></a>plt.show()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</div>
-
-</section>
-<section id="type-and-size-of-the-plot-output" class="slide level2 output-location-slide"><h2>Type and Size of the Plot</h2><div class="cell output-location-slide" data-execution_count="13">
-<div class="cell-output cell-output-display">
-<div>
-<figure>
-<p><img data-src="lec_09_plotting_files/figure-revealjs/cell-14-output-1.png" width="1087" height="337"></p>
-</figure>
-</div>
-</div>
-</div></section><section id="plots-in-action" class="slide level2">
-<h2>Plots in Action</h2>
-<p><span class="task">Task:</span> Create two line plots of the following data:</p>
-<div id="6c38d69a" class="cell" data-execution_count="14">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb14"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a></a><span class="co"># Make sure to label the plots! Color and marker are optional.</span></span>
-<span id="cb14-2"><a></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
-<span id="cb14-3"><a></a></span>
-<span id="cb14-4"><a></a>x <span class="op">=</span> np.linspace(<span class="dv">0</span>, <span class="dv">10</span>, <span class="dv">100</span>) <span class="co"># 100 points between 0 and 10</span></span>
-<span id="cb14-5"><a></a>y1 <span class="op">=</span> np.sin(x) <span class="co"># sine function</span></span>
-<span id="cb14-6"><a></a>y2 <span class="op">=</span> np.cos(x) <span class="co"># cosine function</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</div>
-</section>
-<section id="solution" class="slide level2">
-<h2>Solution</h2>
-<div id="7889709e" class="cell" data-execution_count="15">
-<div class="cell-output cell-output-display">
-<div>
-<figure>
-<p><img data-src="lec_09_plotting_files/figure-revealjs/cell-16-output-1.png" width="813" height="411"></p>
-</figure>
-</div>
-</div>
-</div>
-</section></section>
-<section>
-<section id="plotting-the-right-way" class="title-slide slide level1 title center">
-<h1><span class="flow">Plotting the Right Way</span></h1>
-
-</section>
-<section id="the-message-matters" class="slide level2">
-<h2>The Message Matters</h2>
-<ul>
-<li>Making beautiful plots is <strong>rather easy</strong><sup>1</sup></li>
-<li>It is important to <strong>understand</strong> the underlying data</li>
-<li>What kind of plots are <strong>appropriate</strong> for your data?</li>
-<li>What is the <span class="highlight">message you want to convey?</span></li>
-</ul>
-<aside><ol class="aside-footnotes"><li id="fn1"><p>At least nowadays with the assistance of AI!</p></li></ol></aside></section></section>
-<section>
-<section id="temperature-dataset" class="title-slide slide level1 center">
-<h1>Temperature Dataset</h1>
-<p>Let’s load the temperature dataset from our last tutorial.</p>
-<div id="a90c0522" class="cell" data-execution_count="16">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb15"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
-<span id="cb15-2"><a></a>df <span class="op">=</span> pd.read_excel(<span class="st">'supplementary/lec_09/temp_anomaly_data.xlsx'</span>)</span>
-<span id="cb15-3"><a></a><span class="bu">print</span>(df.head())</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>   Year Month  Anomaly
-0  1880   Jan    -0.18
-1  1881   Jan    -0.20
-2  1882   Jan     0.16
-3  1883   Jan    -0.29
-4  1884   Jan    -0.13</code></pre>
-</div>
-</div>
-</section>
-<section id="example-of-a-bad-plot" class="slide level2">
-<h2>Example of a bad plot</h2>
-<div id="862e15e4" class="cell" data-execution_count="17">
-<details class="code-fold">
-<summary>Code</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb17"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
-<span id="cb17-2"><a></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
-<span id="cb17-3"><a></a></span>
-<span id="cb17-4"><a></a><span class="co"># Convert Month to numeric for proper ordering</span></span>
-<span id="cb17-5"><a></a>month_map <span class="op">=</span> {<span class="st">'Jan'</span>: <span class="dv">1</span>, <span class="st">'Feb'</span>: <span class="dv">2</span>, <span class="st">'Mar'</span>: <span class="dv">3</span>, <span class="st">'Apr'</span>: <span class="dv">4</span>, <span class="st">'May'</span>: <span class="dv">5</span>, <span class="st">'Jun'</span>: <span class="dv">6</span>,</span>
-<span id="cb17-6"><a></a>             <span class="st">'Jul'</span>: <span class="dv">7</span>, <span class="st">'Aug'</span>: <span class="dv">8</span>, <span class="st">'Sep'</span>: <span class="dv">9</span>, <span class="st">'Oct'</span>: <span class="dv">10</span>, <span class="st">'Nov'</span>: <span class="dv">11</span>, <span class="st">'Dec'</span>: <span class="dv">12</span>}</span>
-<span id="cb17-7"><a></a>df[<span class="st">'Month_num'</span>] <span class="op">=</span> df[<span class="st">'Month'</span>].<span class="bu">map</span>(month_map)</span>
-<span id="cb17-8"><a></a></span>
-<span id="cb17-9"><a></a><span class="co"># Sort by Year and Month</span></span>
-<span id="cb17-10"><a></a>df <span class="op">=</span> df.sort_values([<span class="st">'Year'</span>, <span class="st">'Month_num'</span>])</span>
-<span id="cb17-11"><a></a></span>
-<span id="cb17-12"><a></a><span class="co"># Create the plot</span></span>
-<span id="cb17-13"><a></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">12</span>, <span class="dv">4</span>))</span>
-<span id="cb17-14"><a></a></span>
-<span id="cb17-15"><a></a><span class="co"># Plot each year as a separate line</span></span>
-<span id="cb17-16"><a></a><span class="cf">for</span> year <span class="kw">in</span> df[<span class="st">'Year'</span>].unique():</span>
-<span id="cb17-17"><a></a>    year_data <span class="op">=</span> df[df[<span class="st">'Year'</span>] <span class="op">==</span> year]</span>
-<span id="cb17-18"><a></a>    plt.plot(year_data[<span class="st">'Month_num'</span>], year_data[<span class="st">'Anomaly'</span>], label<span class="op">=</span><span class="bu">str</span>(year), marker<span class="op">=</span><span class="st">'o'</span>)</span>
-<span id="cb17-19"><a></a></span>
-<span id="cb17-20"><a></a><span class="co"># Customize the plot</span></span>
-<span id="cb17-21"><a></a>plt.title(<span class="st">'Temperature Anomalies by Month for Each Year'</span>)</span>
-<span id="cb17-22"><a></a>plt.xlabel(<span class="st">'Month'</span>)</span>
-<span id="cb17-23"><a></a>plt.ylabel(<span class="st">'Temperature Anomaly (°C)'</span>)</span>
-<span id="cb17-24"><a></a>plt.grid(<span class="va">True</span>, linestyle<span class="op">=</span><span class="st">'--'</span>, alpha<span class="op">=</span><span class="fl">0.7</span>)</span>
-<span id="cb17-25"><a></a></span>
-<span id="cb17-26"><a></a><span class="co"># Set x-axis ticks to show month names</span></span>
-<span id="cb17-27"><a></a>plt.xticks(<span class="bu">range</span>(<span class="dv">1</span>, <span class="dv">13</span>), [<span class="st">'Jan'</span>, <span class="st">'Feb'</span>, <span class="st">'Mar'</span>, <span class="st">'Apr'</span>, <span class="st">'May'</span>, <span class="st">'Jun'</span>,</span>
-<span id="cb17-28"><a></a>                          <span class="st">'Jul'</span>, <span class="st">'Aug'</span>, <span class="st">'Sep'</span>, <span class="st">'Oct'</span>, <span class="st">'Nov'</span>, <span class="st">'Dec'</span>])</span>
-<span id="cb17-29"><a></a></span>
-<span id="cb17-30"><a></a><span class="co"># Adjust layout to prevent legend cutoff</span></span>
-<span id="cb17-31"><a></a>plt.tight_layout()</span>
-<span id="cb17-32"><a></a></span>
-<span id="cb17-33"><a></a>plt.show()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</details>
-<div class="cell-output cell-output-display">
-<div>
-<figure>
-<p><img data-src="lec_09_plotting_files/figure-revealjs/cell-18-output-1.png" width="1142" height="374"></p>
-</figure>
-</div>
-</div>
-</div>
-</section>
-<section id="an-okay-plot" class="slide level2">
-<h2>An okay plot</h2>
-<div id="91299463" class="cell" data-execution_count="18">
-<details class="code-fold">
-<summary>Code</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb18"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
-<span id="cb18-2"><a></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
-<span id="cb18-3"><a></a></span>
-<span id="cb18-4"><a></a><span class="co"># Define correct month order</span></span>
-<span id="cb18-5"><a></a>month_order <span class="op">=</span> [<span class="st">'Jan'</span>, <span class="st">'Feb'</span>, <span class="st">'Mar'</span>, <span class="st">'Apr'</span>, <span class="st">'May'</span>, <span class="st">'Jun'</span>,</span>
-<span id="cb18-6"><a></a>               <span class="st">'Jul'</span>, <span class="st">'Aug'</span>, <span class="st">'Sep'</span>, <span class="st">'Oct'</span>, <span class="st">'Nov'</span>, <span class="st">'Dec'</span>]</span>
-<span id="cb18-7"><a></a></span>
-<span id="cb18-8"><a></a><span class="co"># Pivot the data and reorder columns</span></span>
-<span id="cb18-9"><a></a>pivot_df <span class="op">=</span> df.pivot(index<span class="op">=</span><span class="st">'Year'</span>, columns<span class="op">=</span><span class="st">'Month'</span>, values<span class="op">=</span><span class="st">'Anomaly'</span>)</span>
-<span id="cb18-10"><a></a>pivot_df <span class="op">=</span> pivot_df[month_order]  <span class="co"># Reorder columns according to month_order</span></span>
-<span id="cb18-11"><a></a></span>
-<span id="cb18-12"><a></a><span class="co"># Create the plot with a blue-to-red gradient for winter-to-summer</span></span>
-<span id="cb18-13"><a></a>fig, ax <span class="op">=</span> plt.subplots(figsize<span class="op">=</span>(<span class="dv">12</span>, <span class="dv">4</span>))  <span class="co"># Create figure and axes objects</span></span>
-<span id="cb18-14"><a></a></span>
-<span id="cb18-15"><a></a><span class="co"># Create color gradient</span></span>
-<span id="cb18-16"><a></a>colors <span class="op">=</span> []</span>
-<span id="cb18-17"><a></a><span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">12</span>):</span>
-<span id="cb18-18"><a></a>    <span class="cf">if</span> i <span class="op">&lt;=</span> <span class="dv">5</span>:  <span class="co"># January to June</span></span>
-<span id="cb18-19"><a></a>        r <span class="op">=</span> i <span class="op">/</span> <span class="dv">5</span></span>
-<span id="cb18-20"><a></a>        b <span class="op">=</span> <span class="dv">1</span> <span class="op">-</span> (i <span class="op">/</span> <span class="dv">5</span>)</span>
-<span id="cb18-21"><a></a>        colors.append((r, <span class="dv">0</span>, b))</span>
-<span id="cb18-22"><a></a>    <span class="cf">else</span>:  <span class="co"># July to December</span></span>
-<span id="cb18-23"><a></a>        r <span class="op">=</span> <span class="dv">1</span> <span class="op">-</span> ((i<span class="op">-</span><span class="dv">6</span>) <span class="op">/</span> <span class="dv">5</span>)</span>
-<span id="cb18-24"><a></a>        b <span class="op">=</span> (i<span class="op">-</span><span class="dv">6</span>) <span class="op">/</span> <span class="dv">5</span></span>
-<span id="cb18-25"><a></a>        colors.append((r, <span class="dv">0</span>, b))</span>
-<span id="cb18-26"><a></a></span>
-<span id="cb18-27"><a></a>pivot_df.plot(ax<span class="op">=</span>ax, marker<span class="op">=</span><span class="st">'x'</span>, linewidth<span class="op">=</span><span class="dv">1</span>, alpha<span class="op">=</span><span class="fl">0.5</span>, color<span class="op">=</span>colors)</span>
-<span id="cb18-28"><a></a></span>
-<span id="cb18-29"><a></a>plt.title(<span class="st">'Temperature Anomalies by Month for Each Year'</span>)</span>
-<span id="cb18-30"><a></a>plt.xlabel(<span class="st">'Month'</span>)</span>
-<span id="cb18-31"><a></a>plt.ylabel(<span class="st">'Temperature Anomaly (°C)'</span>)</span>
-<span id="cb18-32"><a></a>plt.grid(<span class="va">True</span>, linestyle<span class="op">=</span><span class="st">'--'</span>, alpha<span class="op">=</span><span class="fl">0.7</span>)</span>
-<span id="cb18-33"><a></a>plt.legend(bbox_to_anchor<span class="op">=</span>(<span class="fl">1.05</span>, <span class="dv">1</span>), loc<span class="op">=</span><span class="st">'upper left'</span>, title<span class="op">=</span><span class="st">'Year'</span>)</span>
-<span id="cb18-34"><a></a>plt.tight_layout()</span>
-<span id="cb18-35"><a></a>plt.show()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</details>
-<div class="cell-output cell-output-display">
-<div>
-<figure>
-<p><img data-src="lec_09_plotting_files/figure-revealjs/cell-19-output-1.png" width="1144" height="374"></p>
-</figure>
-</div>
-</div>
-</div>
-</section>
-<section id="a-better-plot" class="slide level2">
-<h2>A better plot</h2>
-<div id="ad962b71" class="cell" data-execution_count="19">
-<details class="code-fold">
-<summary>Code</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb19"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a></a><span class="co"># Calculate yearly averages</span></span>
-<span id="cb19-2"><a></a>yearly_means <span class="op">=</span> df.groupby(<span class="st">'Year'</span>)[<span class="st">'Anomaly'</span>].agg([<span class="st">'mean'</span>, <span class="st">'std'</span>])</span>
-<span id="cb19-3"><a></a></span>
-<span id="cb19-4"><a></a><span class="co"># Create the plot</span></span>
-<span id="cb19-5"><a></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">12</span>, <span class="dv">4</span>))</span>
-<span id="cb19-6"><a></a></span>
-<span id="cb19-7"><a></a><span class="co"># Plot mean values as a line</span></span>
-<span id="cb19-8"><a></a>plt.plot(yearly_means.index, yearly_means[<span class="st">'mean'</span>],</span>
-<span id="cb19-9"><a></a>         color<span class="op">=</span><span class="st">'navy'</span>, linewidth<span class="op">=</span><span class="dv">2</span>, marker<span class="op">=</span><span class="st">'o'</span>,</span>
-<span id="cb19-10"><a></a>         label<span class="op">=</span><span class="st">'Mean Temperature Anomaly'</span>)</span>
-<span id="cb19-11"><a></a></span>
-<span id="cb19-12"><a></a><span class="co"># Add shaded area for standard deviation</span></span>
-<span id="cb19-13"><a></a>plt.fill_between(yearly_means.index,</span>
-<span id="cb19-14"><a></a>                yearly_means[<span class="st">'mean'</span>] <span class="op">-</span> yearly_means[<span class="st">'std'</span>],</span>
-<span id="cb19-15"><a></a>                yearly_means[<span class="st">'mean'</span>] <span class="op">+</span> yearly_means[<span class="st">'std'</span>],</span>
-<span id="cb19-16"><a></a>                color<span class="op">=</span><span class="st">'lightblue'</span>, alpha<span class="op">=</span><span class="fl">0.3</span>,</span>
-<span id="cb19-17"><a></a>                label<span class="op">=</span><span class="st">'±1 Standard Deviation'</span>)</span>
-<span id="cb19-18"><a></a></span>
-<span id="cb19-19"><a></a><span class="co"># Customize the plot</span></span>
-<span id="cb19-20"><a></a>plt.title(<span class="st">'Yearly Average Temperature Anomalies with Confidence Interval'</span>)</span>
-<span id="cb19-21"><a></a>plt.xlabel(<span class="st">'Year'</span>)</span>
-<span id="cb19-22"><a></a>plt.ylabel(<span class="st">'Temperature Anomaly (°C)'</span>)</span>
-<span id="cb19-23"><a></a>plt.grid(<span class="va">True</span>, linestyle<span class="op">=</span><span class="st">'--'</span>, alpha<span class="op">=</span><span class="fl">0.7</span>)</span>
-<span id="cb19-24"><a></a>plt.legend()</span>
-<span id="cb19-25"><a></a></span>
-<span id="cb19-26"><a></a><span class="co"># Add zero reference line</span></span>
-<span id="cb19-27"><a></a>plt.axhline(y<span class="op">=</span><span class="dv">0</span>, color<span class="op">=</span><span class="st">'red'</span>, linestyle<span class="op">=</span><span class="st">'--'</span>, alpha<span class="op">=</span><span class="fl">0.3</span>)</span>
-<span id="cb19-28"><a></a></span>
-<span id="cb19-29"><a></a>plt.tight_layout()</span>
-<span id="cb19-30"><a></a>plt.show()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</details>
-<div class="cell-output cell-output-display">
-<div>
-<figure>
-<p><img data-src="lec_09_plotting_files/figure-revealjs/cell-20-output-1.png" width="1142" height="374"></p>
-</figure>
-</div>
-</div>
-</div>
-</section></section>
-<section>
-<section id="a-good-plot" class="title-slide slide level1 center">
-<h1>A good plot</h1>
-<div id="b2fbf54e" class="cell" data-execution_count="20">
-<details class="code-fold">
-<summary>Code</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb20"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a></a><span class="co"># Read the data</span></span>
-<span id="cb20-2"><a></a>df <span class="op">=</span> pd.read_excel(<span class="st">'supplementary/lec_09/temp_anomaly_data.xlsx'</span>)</span>
-<span id="cb20-3"><a></a></span>
-<span id="cb20-4"><a></a><span class="co"># Aggregate to yearly averages</span></span>
-<span id="cb20-5"><a></a>yearly_df <span class="op">=</span> df.groupby(<span class="st">'Year'</span>)[<span class="st">'Anomaly'</span>].mean().reset_index()</span>
-<span id="cb20-6"><a></a></span>
-<span id="cb20-7"><a></a><span class="co"># Set the style</span></span>
-<span id="cb20-8"><a></a>fig, ax <span class="op">=</span> plt.subplots(figsize<span class="op">=</span>(<span class="dv">12</span>, <span class="dv">4</span>))</span>
-<span id="cb20-9"><a></a></span>
-<span id="cb20-10"><a></a><span class="co"># Create the main line plot</span></span>
-<span id="cb20-11"><a></a>plt.plot(yearly_df[<span class="st">'Year'</span>], yearly_df[<span class="st">'Anomaly'</span>],</span>
-<span id="cb20-12"><a></a>         color<span class="op">=</span><span class="st">'#FF5733'</span>,</span>
-<span id="cb20-13"><a></a>         linewidth<span class="op">=</span><span class="fl">1.5</span>,</span>
-<span id="cb20-14"><a></a>         alpha<span class="op">=</span><span class="fl">0.7</span>)</span>
-<span id="cb20-15"><a></a></span>
-<span id="cb20-16"><a></a><span class="co"># Calculate rolling mean on yearly data</span></span>
-<span id="cb20-17"><a></a>rolling_mean <span class="op">=</span> yearly_df[<span class="st">'Anomaly'</span>].rolling(window<span class="op">=</span><span class="dv">10</span>, center<span class="op">=</span><span class="va">True</span>, min_periods<span class="op">=</span><span class="dv">5</span>).mean()</span>
-<span id="cb20-18"><a></a>plt.plot(yearly_df[<span class="st">'Year'</span>], rolling_mean,</span>
-<span id="cb20-19"><a></a>         color<span class="op">=</span><span class="st">'#C70039'</span>,</span>
-<span id="cb20-20"><a></a>         linewidth<span class="op">=</span><span class="fl">2.5</span>,</span>
-<span id="cb20-21"><a></a>         label<span class="op">=</span><span class="st">'10-year Moving Average'</span>)</span>
-<span id="cb20-22"><a></a></span>
-<span id="cb20-23"><a></a><span class="co"># Fill between the line and zero</span></span>
-<span id="cb20-24"><a></a>plt.fill_between(yearly_df[<span class="st">'Year'</span>], yearly_df[<span class="st">'Anomaly'</span>], <span class="dv">0</span>,</span>
-<span id="cb20-25"><a></a>                 where<span class="op">=</span>(yearly_df[<span class="st">'Anomaly'</span>] <span class="op">&gt;=</span> <span class="dv">0</span>),</span>
-<span id="cb20-26"><a></a>                 color<span class="op">=</span><span class="st">'#FF5733'</span>,</span>
-<span id="cb20-27"><a></a>                 alpha<span class="op">=</span><span class="fl">0.3</span>,</span>
-<span id="cb20-28"><a></a>                 label<span class="op">=</span><span class="st">'Positive Anomaly'</span>)</span>
-<span id="cb20-29"><a></a>plt.fill_between(yearly_df[<span class="st">'Year'</span>], yearly_df[<span class="st">'Anomaly'</span>], <span class="dv">0</span>,</span>
-<span id="cb20-30"><a></a>                 where<span class="op">=</span>(yearly_df[<span class="st">'Anomaly'</span>] <span class="op">&lt;</span> <span class="dv">0</span>),</span>
-<span id="cb20-31"><a></a>                 color<span class="op">=</span><span class="st">'#3498DB'</span>,</span>
-<span id="cb20-32"><a></a>                 alpha<span class="op">=</span><span class="fl">0.3</span>,</span>
-<span id="cb20-33"><a></a>                 label<span class="op">=</span><span class="st">'Negative Anomaly'</span>)</span>
-<span id="cb20-34"><a></a></span>
-<span id="cb20-35"><a></a><span class="co"># Customize the plot</span></span>
-<span id="cb20-36"><a></a>plt.title(<span class="st">'Global Temperature Anomalies (1880-2023)'</span>,</span>
-<span id="cb20-37"><a></a>         fontsize<span class="op">=</span><span class="dv">14</span>,</span>
-<span id="cb20-38"><a></a>         pad<span class="op">=</span><span class="dv">15</span>)</span>
-<span id="cb20-39"><a></a>plt.xlabel(<span class="st">'Year'</span>, fontsize<span class="op">=</span><span class="dv">12</span>)</span>
-<span id="cb20-40"><a></a>plt.ylabel(<span class="st">'Temperature Anomaly (°C)'</span>, fontsize<span class="op">=</span><span class="dv">12</span>)</span>
-<span id="cb20-41"><a></a>plt.grid(<span class="va">True</span>, alpha<span class="op">=</span><span class="fl">0.3</span>)</span>
-<span id="cb20-42"><a></a>plt.legend()</span>
-<span id="cb20-43"><a></a></span>
-<span id="cb20-44"><a></a><span class="co"># Add a horizontal line at y=0</span></span>
-<span id="cb20-45"><a></a>plt.axhline(y<span class="op">=</span><span class="dv">0</span>, color<span class="op">=</span><span class="st">'black'</span>, linestyle<span class="op">=</span><span class="st">'--'</span>, alpha<span class="op">=</span><span class="fl">0.3</span>)</span>
-<span id="cb20-46"><a></a></span>
-<span id="cb20-47"><a></a><span class="co"># Add text annotation for context</span></span>
-<span id="cb20-48"><a></a>plt.text(<span class="dv">1890</span>, <span class="fl">1.15</span>,</span>
-<span id="cb20-49"><a></a>         <span class="st">'Temperature anomalies relative to</span><span class="ch">\n</span><span class="st">1951-1980 average'</span>,</span>
-<span id="cb20-50"><a></a>         fontsize<span class="op">=</span><span class="dv">10</span>,</span>
-<span id="cb20-51"><a></a>         alpha<span class="op">=</span><span class="fl">0.7</span>)</span>
-<span id="cb20-52"><a></a></span>
-<span id="cb20-53"><a></a>plt.tight_layout()</span>
-<span id="cb20-54"><a></a>plt.show()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</details>
-<div class="cell-output cell-output-display">
-<div>
-<figure>
-<p><img data-src="lec_09_plotting_files/figure-revealjs/cell-21-output-1.png" width="1143" height="374"></p>
-</figure>
-</div>
-</div>
-</div>
-</section>
-<section id="how-to-build-such-a-plot" class="slide level2">
-<h2>How to build such a plot?</h2>
-<ul>
-<li><strong>Think</strong>: about what you want to build</li>
-<li><strong>Describe</strong>: what you want to build in detail</li>
-<li><strong>Use AI</strong>: to build the plot for you</li>
-<li><strong>Use Libraries</strong>: documentation to fine-tune the plot</li>
-</ul>
-<div class="fragment">
-<div class="callout callout-tip callout-style-simple">
-<div class="callout-body">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-content">
-<p>As usual, the best way to learn is by <strong>doing</strong>! <span class="highlight">AI makes it very easy to get started.</span></p>
-</div>
-</div>
-</div>
-</div>
-</section>
-<section id="good-plotting-in-action" class="slide level2">
-<h2>Good Plotting in Action</h2>
-<p><span class="task">Task:</span> Create a plot of your own for the data.</p>
-<div class="fragment">
-<div id="3fd5ce0e" class="cell" data-execution_count="21">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb21"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a></a><span class="co"># </span><span class="al">TODO</span><span class="co">: Load the data from the `temp_anomaly_data.xlsx` file you have saved last lecture yourself and plot the temperature anomaly data. Find a way to make the plot meaningful and attractive in order to tell a story for the reader.</span></span>
-<span id="cb21-2"><a></a><span class="co"># YOUR CODE HERE</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</div>
-</div>
-</section></section>
-<section>
-<section id="creating-dashboards" class="title-slide slide level1 title center">
-<h1><span class="flow">Creating Dashboards</span></h1>
-
-</section>
-<section id="dash-for-dashboards" class="slide level2">
-<h2>Dash for Dashboards</h2>
-<ul>
-<li><a href="https://dash.plotly.com">Dash</a> is a framework for <strong>building web applications</strong></li>
-<li>It is built on top of <a href="https://flask.palletsprojects.com">Flask</a>, <a href="https://plotly.com/javascript/">Plotly.js</a>, and <a href="https://react.dev/">React.js</a></li>
-<li>This lecture is build on top of <span class="highlight">React.js</span></li>
-<li>It is very customizable and has a lot of <strong>examples</strong></li>
-</ul>
-</section>
-<section id="panel-for-dashboards" class="slide level2">
-<h2>Panel for Dashboards</h2>
-<ul>
-<li><a href="https://panel.holoviz.org">Panel</a> is built on top of <span class="highlight">Bokeh</span> (instead of Plotly.js)</li>
-<li><strong>Reasonably</strong> easy to use, but not super easy</li>
-<li><strong>Highly customizable</strong>, also for multiple pages</li>
-<li><strong>Good performance</strong> even for more complex dashboards</li>
-</ul>
-</section>
-<section id="streamlit-for-dashboards" class="slide level2">
-<h2>Streamlit for Dashboards</h2>
-<ul>
-<li><a href="https://streamlit.io">Streamlit</a> is a rather <strong>new and popular</strong> library</li>
-<li>Very easy and <span class="highlight">fast way to build dashboards</span></li>
-<li>Performance only good on <strong>simpler dashboards</strong></li>
-<li><strong>Not as many examples</strong> and as customizable</li>
-</ul>
-</section>
-<section id="nicegui-for-dashboards" class="slide level2">
-<h2>NiceGUI for Dashboards</h2>
-<ul>
-<li><a href="https://nicegui.io">NiceGUI</a> is also a <strong>relatively new library</strong></li>
-<li><strong>Very customizable</strong> and a large fan base</li>
-<li><strong>Not as many examples</strong> and as easy to use as Streamlit</li>
-<li>Allows building <span class="highlight">web-based desktop applications</span></li>
-</ul>
-</section>
-<section id="which-one-to-choose" class="slide level2">
-<h2>Which one to choose?</h2>
-<ul>
-<li><strong>Streamlit</strong>: if you want to build a dashboard <span class="highlight">fast</span></li>
-<li><strong>Dash</strong>: if you want more flexibility and <span class="highlight">Plotly.js</span></li>
-<li><strong>Panel</strong>: if you want a <span class="highlight">Bokeh-based</span> solution with more flexibility</li>
-<li><strong>NiceGUI</strong>: if you want to build a <span class="highlight">desktop-like application</span></li>
-</ul>
-<div class="fragment">
-<div class="callout callout-tip callout-style-simple">
-<div class="callout-body">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-content">
-<p>There are many opinions on which tool is the best one. My approach is usually just to try the main contenders to see which one suits my workflow best.</p>
-</div>
-</div>
-</div>
-</div>
-</section>
-<section id="how-to-build-a-dashboard" class="slide level2">
-<h2>How to build a dashboard</h2>
-<ul>
-<li>We <strong>won’t go into details</strong> on how to build dashboards</li>
-<li>The best way to learn is by <strong>doing!</strong></li>
-<li><strong>Use AI and the libraries documentation</strong> as starting points</li>
-<li>We will also <span class="highlight">build a dashboard in today’s tutorial</span></li>
-</ul>
-</section></section>
-<section>
-<section id="creating-guis" class="title-slide slide level1 title center">
-<h1><span class="flow">Creating GUIs</span></h1>
-
-</section>
-<section id="pyside6-for-guis" class="slide level2">
-<h2>PySide6 for GUIs</h2>
-<ul>
-<li>Here, the <strong>recommendation is much easier!</strong></li>
-<li>In the past, <code>tkinter</code> was often the way to go</li>
-<li>But currently, my recommendation is <code>PySide6</code></li>
-<li>It’s a mature library we can use to build <span class="highlight">cross-platform desktop applications</span></li>
-</ul>
 <div class="fragment">
 <div class="callout callout-note callout-style-simple">
 <div class="callout-body">
@@ -1244,8 +300,469 @@ Dr.&nbsp;Tobias Vlćek
 <i class="callout-icon"></i>
 </div>
 <div class="callout-content">
-<p><strong>And that’s it for todays lecture!</strong><br>
-You now have the basic knowledge to start working with <span class="highlight">Plots, Dashboards and GUIs!</span>.</p>
+<p>Two habits for <strong>every</strong> chart cell: <strong>open</strong> with <code>plt.figure()</code> (a clean canvas) and <strong>end</strong> with <code>plt.gca()</code>. In marimo and scripts there’s no <code>plt.show()</code>; the figure appears as the cell’s <strong>last expression</strong>, and <code>plt.plot(...)</code> alone returns line objects, not a picture. Same frame around every chart in tonight’s lab.</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="the-parts-of-a-chart" class="slide level2">
+<h2>The parts of a chart</h2>
+<p>Every honest chart names its axes. <code>xlabel</code>, <code>ylabel</code>, <code>title</code>, and (when there’s more than one line) a <code>legend</code>:</p>
+<div id="ebf0787a" class="cell" data-execution_count="2">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb5-2"><a></a></span>
+<span id="cb5-3"><a></a>days <span class="op">=</span> [<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">5</span>]</span>
+<span id="cb5-4"><a></a>revenue <span class="op">=</span> [<span class="dv">120</span>, <span class="dv">90</span>, <span class="dv">140</span>, <span class="dv">160</span>, <span class="dv">130</span>]</span>
+<span id="cb5-5"><a></a></span>
+<span id="cb5-6"><a></a>plt.figure()</span>
+<span id="cb5-7"><a></a>plt.plot(days, revenue, label<span class="op">=</span><span class="st">"Revenue"</span>)   <span class="co"># label feeds the legend</span></span>
+<span id="cb5-8"><a></a>plt.xlabel(<span class="st">"Day"</span>)        <span class="co"># what the x-axis counts</span></span>
+<span id="cb5-9"><a></a>plt.ylabel(<span class="st">"Revenue (€)"</span>)  <span class="co"># what the y-axis measures</span></span>
+<span id="cb5-10"><a></a>plt.title(<span class="st">"This week's revenue"</span>)  <span class="co"># what the picture is about</span></span>
+<span id="cb5-11"><a></a>plt.legend()             <span class="co"># the little key, one entry per label</span></span>
+<span id="cb5-12"><a></a>plt.gca()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<div class="cell fragment" data-execution_count="2">
+<div class="cell-output cell-output-display">
+<div>
+<figure>
+<p><img data-src="lec_09_plotting_files/figure-html/cell-3-output-1.png" width="593" height="449"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="a-little-styling-and-only-a-little" class="slide level2">
+<h2>A little styling — and only a little</h2>
+<p>Two keywords cover almost everything: <code>color</code> and <code>linestyle</code>. Restraint is the professional move. One clear line beats a rainbow:</p>
+<div id="e3632aa6" class="cell" data-execution_count="3">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb6-2"><a></a></span>
+<span id="cb6-3"><a></a>days <span class="op">=</span> [<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">5</span>]</span>
+<span id="cb6-4"><a></a>revenue <span class="op">=</span> [<span class="dv">120</span>, <span class="dv">90</span>, <span class="dv">140</span>, <span class="dv">160</span>, <span class="dv">130</span>]</span>
+<span id="cb6-5"><a></a></span>
+<span id="cb6-6"><a></a>plt.figure()</span>
+<span id="cb6-7"><a></a>plt.plot(days, revenue, color<span class="op">=</span><span class="st">"crimson"</span>, linestyle<span class="op">=</span><span class="st">"--"</span>)</span>
+<span id="cb6-8"><a></a>plt.title(<span class="st">"Styled, not decorated"</span>)</span>
+<span id="cb6-9"><a></a>plt.gca()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<div class="cell fragment" data-execution_count="3">
+<div class="cell-output cell-output-display">
+<div>
+<figure>
+<p><img data-src="lec_09_plotting_files/figure-html/cell-4-output-1.png" width="575" height="431"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="predict-one-chart-or-two" class="slide level2">
+<h2>Predict: one chart or two?</h2>
+<p>Kevin runs <strong>two</strong> <code>plot</code> calls, back to back, with no <code>plt.figure()</code> between them:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb7"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a></a>plt.plot([<span class="dv">3</span>, <span class="dv">1</span>, <span class="dv">2</span>])</span>
+<span id="cb7-2"><a></a>plt.plot([<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>])</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>a) two separate charts b) one chart with two lines c) an error</p>
+<div class="fragment">
+<p><span class="question">Predict first</span>. Commit to an answer before the next slide.</p>
+</div>
+</section>
+<section id="answer-one-chart-two-lines" class="slide level2">
+<h2>Answer: one chart, two lines</h2>
+<p><strong>b) one chart with two lines</strong> — matplotlib keeps drawing on the <strong>current</strong> figure until you start a new one with <code>plt.figure()</code>:</p>
+<div id="9d4e4f39" class="cell" data-execution_count="4">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb8-2"><a></a></span>
+<span id="cb8-3"><a></a>plt.figure()</span>
+<span id="cb8-4"><a></a>plt.plot([<span class="dv">3</span>, <span class="dv">1</span>, <span class="dv">2</span>])</span>
+<span id="cb8-5"><a></a>plt.plot([<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>])   <span class="co"># same canvas — a second line, not a second chart</span></span>
+<span id="cb8-6"><a></a>plt.gca()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<div class="cell fragment" data-execution_count="4">
+<div class="cell-output cell-output-display">
+<div>
+<figure>
+<p><img data-src="lec_09_plotting_files/figure-html/cell-5-output-1.png" width="579" height="411"></p>
+</figure>
+</div>
+</div>
+</div>
+<div class="fragment">
+<p>That’s exactly why every chart cell <strong>opens</strong> with <code>plt.figure()</code>: it’s how you say “new picture, start clean.”</p>
+</div>
+</section></section>
+<section id="your-turn-10-minutes" class="title-slide slide level1 exercise-slide center">
+<h1>⚡ Your turn — 10 minutes</h1>
+<p>Open the exercise (scan the QR or type the link):</p>
+<p><strong><a href="https://beyondsimulations.github.io/Introduction-to-Python/notebooks/ex_09_a/">beyondsimulations.github.io/Introduction-to-Python/notebooks/ex_09_a/</a></strong></p>
+
+<img data-src="assets/qr/ex_09_a.png" width="280" class="r-stretch"><p>First <strong>predict</strong> what happens, then run it.</p>
+</section>
+
+<section>
+<section id="the-right-chart-for-the-question" class="title-slide slide level1 title center">
+<h1><span class="flow">The right chart for the question</span></h1>
+
+</section>
+<section id="match-the-chart-to-the-question" class="slide level2">
+<h2>Match the chart to the question</h2>
+<p>The wrong chart is its own kind of lie. Start from the <strong>question</strong>, not the chart:</p>
+<table class="caption-top">
+<thead>
+<tr class="header">
+<th>The question</th>
+<th>The chart</th>
+<th>The call</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Compare <strong>categories</strong>?</td>
+<td>bar</td>
+<td><code>plt.bar(labels, heights)</code></td>
+</tr>
+<tr class="even">
+<td>See a <strong>distribution</strong>?</td>
+<td>histogram</td>
+<td><code>plt.hist(values)</code></td>
+</tr>
+<tr class="odd">
+<td><strong>Two numbers</strong> per order?</td>
+<td>scatter</td>
+<td><code>plt.scatter(x, y)</code></td>
+</tr>
+<tr class="even">
+<td>Change over <strong>time</strong>?</td>
+<td>line</td>
+<td><code>plt.plot(x, y)</code></td>
+</tr>
+</tbody>
+</table>
+<div class="fragment">
+<ul>
+<li><strong>Line</strong> you already own: it’s the <code>plt.plot</code> from block one, time on the x-axis. The other three get a slide each.</li>
+</ul>
+</div>
+<div class="fragment">
+<div class="callout callout-note callout-style-simple">
+<div class="callout-body">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-content">
+<p>Notice what’s missing: the <strong>pie chart</strong>. It’s usually the wrong answer: the eye can’t compare slice sizes well. When in doubt, a bar chart is clearer.</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="categories-bar" class="slide level2">
+<h2>Categories → bar</h2>
+<p><em>“Which dish sells best?”</em> Categories to compare — that’s a <strong>bar</strong>:</p>
+<div id="6907723d" class="cell" data-execution_count="5">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb9-2"><a></a></span>
+<span id="cb9-3"><a></a>dishes <span class="op">=</span> [<span class="st">"Pizza"</span>, <span class="st">"Pasta"</span>, <span class="st">"Salad"</span>, <span class="st">"Wrap"</span>]</span>
+<span id="cb9-4"><a></a>sold <span class="op">=</span> [<span class="dv">12</span>, <span class="dv">9</span>, <span class="dv">5</span>, <span class="dv">7</span>]</span>
+<span id="cb9-5"><a></a></span>
+<span id="cb9-6"><a></a>plt.figure()</span>
+<span id="cb9-7"><a></a>plt.bar(dishes, sold)</span>
+<span id="cb9-8"><a></a>plt.title(<span class="st">"Orders per dish"</span>)</span>
+<span id="cb9-9"><a></a>plt.gca()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<div class="cell fragment" data-execution_count="5">
+<div class="cell-output cell-output-display">
+<div>
+<figure>
+<p><img data-src="lec_09_plotting_files/figure-html/cell-6-output-1.png" width="566" height="431"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>The tallest bar answers the question at a glance: Pizza.</p>
+</section>
+<section id="a-distribution-histogram" class="slide level2">
+<h2>A distribution → histogram</h2>
+<p><em>“How are our delivery times spread out?”</em> One column of numbers, dropped into buckets — that’s a <strong>histogram</strong>:</p>
+<div id="d80ee9e0" class="cell" data-execution_count="6">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb10-2"><a></a></span>
+<span id="cb10-3"><a></a>minutes <span class="op">=</span> [<span class="dv">19</span>, <span class="dv">22</span>, <span class="dv">23</span>, <span class="dv">24</span>, <span class="dv">24</span>, <span class="dv">25</span>, <span class="dv">26</span>, <span class="dv">28</span>, <span class="dv">31</span>, <span class="dv">44</span>]</span>
+<span id="cb10-4"><a></a></span>
+<span id="cb10-5"><a></a>plt.figure()</span>
+<span id="cb10-6"><a></a>plt.hist(minutes, bins<span class="op">=</span><span class="dv">5</span>)</span>
+<span id="cb10-7"><a></a>plt.title(<span class="st">"Delivery times"</span>)</span>
+<span id="cb10-8"><a></a>plt.gca()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<div class="cell fragment" data-execution_count="6">
+<div class="cell-output cell-output-display">
+<div>
+<figure>
+<p><img data-src="lec_09_plotting_files/figure-html/cell-7-output-1.png" width="562" height="431"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>Most deliveries land in the mid-20s, with one lonely slow one far right. A histogram shows <strong>shape</strong>, not individual values.</p>
+</section>
+<section id="two-numbers-scatter" class="slide level2">
+<h2>Two numbers → scatter</h2>
+<p><em>“Do bigger orders take longer?”</em> Two numbers per order, one on each axis — that’s a <strong>scatter</strong>:</p>
+<div id="43af36aa" class="cell" data-execution_count="7">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb11-2"><a></a></span>
+<span id="cb11-3"><a></a>minutes <span class="op">=</span> [<span class="dv">19</span>, <span class="dv">22</span>, <span class="dv">23</span>, <span class="dv">24</span>, <span class="dv">25</span>, <span class="dv">26</span>, <span class="dv">28</span>, <span class="dv">31</span>, <span class="dv">40</span>, <span class="dv">44</span>]</span>
+<span id="cb11-4"><a></a>euros   <span class="op">=</span> [<span class="dv">24</span>, <span class="dv">9</span>, <span class="dv">31</span>, <span class="dv">12</span>, <span class="dv">8</span>, <span class="dv">30</span>, <span class="dv">15</span>, <span class="dv">22</span>, <span class="dv">11</span>, <span class="dv">19</span>]</span>
+<span id="cb11-5"><a></a></span>
+<span id="cb11-6"><a></a>plt.figure()</span>
+<span id="cb11-7"><a></a>plt.scatter(minutes, euros)</span>
+<span id="cb11-8"><a></a>plt.xlabel(<span class="st">"Delivery time (min)"</span>)</span>
+<span id="cb11-9"><a></a>plt.ylabel(<span class="st">"Order value (€)"</span>)</span>
+<span id="cb11-10"><a></a>plt.gca()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<div class="cell fragment" data-execution_count="7">
+<div class="cell-output cell-output-display">
+<div>
+<figure>
+<p><img data-src="lec_09_plotting_files/figure-html/cell-8-output-1.png" width="588" height="429"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>Just a cloud. No upward drift. Sometimes the honest answer is <strong>“there’s no pattern here.”</strong></p>
+</section>
+<section id="predict-how-many-bars" class="slide level2">
+<h2>Predict: how many bars?</h2>
+<p>The <strong>same four numbers</strong>, two ways. On the left, a bar per number; on the right, a histogram:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb12"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a></a>values <span class="op">=</span> [<span class="dv">8</span>, <span class="dv">12</span>, <span class="dv">9</span>, <span class="dv">15</span>]</span>
+<span id="cb12-2"><a></a>plt.bar(<span class="bu">range</span>(<span class="dv">4</span>), values)   <span class="co"># left</span></span>
+<span id="cb12-3"><a></a>plt.hist(values, bins<span class="op">=</span><span class="dv">3</span>)    <span class="co"># right</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>The bar chart shows 4 bars. How many bars does the <strong>histogram</strong> show?</p>
+<p>a) 4: one per number b) about 2–3 lumps: it counts ranges c) 15</p>
+<div class="fragment">
+<p><span class="question">Predict first</span>. Commit to an answer before the next slide.</p>
+</div>
+</section>
+<section id="answer-bar-counts-categories-hist-counts-ranges" class="slide level2">
+<h2>Answer: bar counts categories, hist counts ranges</h2>
+<p><strong>b) about 2–3 lumps</strong> — the histogram groups the numbers into <strong>ranges</strong> and counts how many fall in each. <code>8</code> and <code>9</code> land in the same bucket, so that bar is <strong>two tall</strong>:</p>
+<div id="66897774" class="cell" data-execution_count="8">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb13-2"><a></a></span>
+<span id="cb13-3"><a></a>values <span class="op">=</span> [<span class="dv">8</span>, <span class="dv">12</span>, <span class="dv">9</span>, <span class="dv">15</span>]</span>
+<span id="cb13-4"><a></a></span>
+<span id="cb13-5"><a></a>plt.figure()</span>
+<span id="cb13-6"><a></a>plt.subplot(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">1</span>)</span>
+<span id="cb13-7"><a></a>plt.bar(<span class="bu">range</span>(<span class="dv">4</span>), values)     <span class="co"># one bar per NUMBER</span></span>
+<span id="cb13-8"><a></a>plt.title(<span class="st">"bar: 4 categories"</span>)</span>
+<span id="cb13-9"><a></a>plt.subplot(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">2</span>)</span>
+<span id="cb13-10"><a></a>plt.hist(values, bins<span class="op">=</span><span class="dv">3</span>)      <span class="co"># counts how many per RANGE</span></span>
+<span id="cb13-11"><a></a>plt.title(<span class="st">"hist: 3 ranges"</span>)</span>
+<span id="cb13-12"><a></a>plt.gca()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<div class="cell fragment" data-execution_count="8">
+<div class="cell-output cell-output-display">
+<div>
+<figure>
+<p><img data-src="lec_09_plotting_files/figure-html/cell-9-output-1.png" width="566" height="431"></p>
+</figure>
+</div>
+</div>
+</div>
+<div class="fragment">
+<p><strong>Bar counts CATEGORIES; histogram counts RANGES.</strong> Same numbers, different question.</p>
+</div>
+</section></section>
+<section id="your-turn-10-minutes-1" class="title-slide slide level1 exercise-slide center">
+<h1>⚡ Your turn — 10 minutes</h1>
+<p>Open the exercise (scan the QR or type the link):</p>
+<p><strong><a href="https://beyondsimulations.github.io/Introduction-to-Python/notebooks/ex_09_b/">beyondsimulations.github.io/Introduction-to-Python/notebooks/ex_09_b/</a></strong></p>
+
+<img data-src="assets/qr/ex_09_b.png" width="280" class="r-stretch"><p>First <strong>predict</strong> what happens, then run it.</p>
+<div class="callout callout-tip callout-style-simple">
+<div class="callout-body">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-content">
+<p>Take the break after this one: five minutes, then honest charts.</p>
+</div>
+</div>
+</div>
+</section>
+
+<section>
+<section id="honest-charts-the-ai-chart-assistant" class="title-slide slide level1 title center">
+<h1><span class="flow">Honest charts + the AI chart assistant</span></h1>
+
+</section>
+<section id="the-same-data-told-two-ways" class="slide level2">
+<h2>The same data, told two ways</h2>
+<p>Four weeks of revenue: <code>[96, 98, 97, 99]</code>. Barely moving. But <strong>where the y-axis starts</strong> decides whether the room sees a rocket or the truth:</p>
+<div id="8f89ca2b" class="cell" data-execution_count="9">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb14"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb14-2"><a></a></span>
+<span id="cb14-3"><a></a>weeks <span class="op">=</span> [<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>]</span>
+<span id="cb14-4"><a></a>revenue <span class="op">=</span> [<span class="dv">96</span>, <span class="dv">98</span>, <span class="dv">97</span>, <span class="dv">99</span>]</span>
+<span id="cb14-5"><a></a></span>
+<span id="cb14-6"><a></a>plt.figure()</span>
+<span id="cb14-7"><a></a>plt.subplot(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">1</span>)</span>
+<span id="cb14-8"><a></a>plt.plot(weeks, revenue, marker<span class="op">=</span><span class="st">"o"</span>)</span>
+<span id="cb14-9"><a></a>plt.ylim(<span class="dv">96</span>, <span class="dv">99</span>)             <span class="co"># tight — DRAMA</span></span>
+<span id="cb14-10"><a></a>plt.title(<span class="st">"Rocket (ylim 96–99)"</span>)</span>
+<span id="cb14-11"><a></a>plt.subplot(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">2</span>)</span>
+<span id="cb14-12"><a></a>plt.plot(weeks, revenue, marker<span class="op">=</span><span class="st">"o"</span>)</span>
+<span id="cb14-13"><a></a>plt.ylim(<span class="dv">0</span>, <span class="dv">100</span>)             <span class="co"># from zero — TRUTH</span></span>
+<span id="cb14-14"><a></a>plt.title(<span class="st">"Honest (from 0)"</span>)</span>
+<span id="cb14-15"><a></a>plt.gca()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<div class="cell fragment" data-execution_count="9">
+<div class="cell-output cell-output-display">
+<div>
+<figure>
+<p><img data-src="lec_09_plotting_files/figure-html/cell-10-output-1.png" width="579" height="431"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>Same numbers. The left one gets you a term sheet; the right one gets you trusted.</p>
+</section>
+<section id="the-rule-growth-starts-at-zero" class="slide level2">
+<h2>The rule: growth starts at zero</h2>
+<ul>
+<li>A <strong>growth claim</strong> on a chart starts the y-axis at <strong>0</strong>. Anything else magnifies a wobble into a cliff.</li>
+<li>The investor <strong>will</strong> check: she reads the axis before she reads the line.</li>
+</ul>
+<div class="fragment">
+<div class="callout callout-tip callout-style-simple">
+<div class="callout-body">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-content">
+<p>She’s the type who reads Formular 27b/6 for fun. A stretched axis is the first thing she catches, and the last thing you want to explain.</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="ai-as-your-chart-assistant" class="slide level2">
+<h2>AI as your chart assistant</h2>
+<p>AI is genuinely good at plotting code, if you drive it like a co-pilot:</p>
+<ol type="1">
+<li><strong>Describe</strong> the data and the question: <em>“I have <code>orders</code> with columns <code>zone</code> (text) and <code>total_eur</code> (float). Bar chart of total revenue per zone.”</em></li>
+<li>Let it <strong>draft</strong> the plot code.</li>
+<li><strong>Verify</strong> three things before you believe the picture:
+<ul>
+<li>Do the <strong>columns</strong> it used actually exist?</li>
+<li>Does the <strong>y-axis</strong> start where you claim?</li>
+<li>Does the <strong>chart type</strong> fit the question?</li>
+</ul></li>
+</ol>
+<div class="fragment">
+<p>The pilot flies; the co-pilot advises. You still land the plane.</p>
+</div>
+</section>
+<section id="two-ways-ai-charts-lie" class="slide level2">
+<h2>Two ways AI charts lie</h2>
+<ul>
+<li><strong>Invented column names.</strong> The AI writes <code>orders["revenue"]</code>, but your column is <code>total_eur</code>: a <code>KeyError</code>, exactly the confident-nonsense you caught in Episode 8. Read the code before you run it.</li>
+<li><strong>Silently “dramatic” defaults.</strong> Ask for a growth chart and some assistants hand back a <strong>tight y-axis</strong> that flatters the trend: no warning, no comment. The chart runs; that’s what makes it dangerous.</li>
+</ul>
+<div class="fragment">
+<div class="callout callout-important callout-style-simple">
+<div class="callout-body">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-content">
+<p>Both threads, one rule: <strong>an AI chart runs long before it’s true.</strong> You verify the columns <em>and</em> the axis, every time.</p>
+</div>
+</div>
+</div>
+</div>
+</section></section>
+<section id="your-turn-10-minutes-2" class="title-slide slide level1 exercise-slide center">
+<h1>⚡ Your turn — 10 minutes</h1>
+<p>Open the exercise (scan the QR or type the link):</p>
+<p><strong><a href="https://beyondsimulations.github.io/Introduction-to-Python/notebooks/ex_09_c/">beyondsimulations.github.io/Introduction-to-Python/notebooks/ex_09_c/</a></strong></p>
+
+<img data-src="assets/qr/ex_09_c.png" width="280" class="r-stretch"><p>First <strong>predict</strong> what happens, then run it.</p>
+</section>
+
+<section id="before-session-x" class="title-slide slide level1 exercise-slide center">
+<h1>Before Session X</h1>
+<p>The season finale leaves the browser for <strong>your own machine</strong>. Four things to do <strong>before</strong> you arrive, budget about <strong>20 minutes</strong>:</p>
+<ul>
+<li><strong>uv</strong>: the Python environment manager this course uses. Follow <a href="../general/uv.html">the uv guide</a>.</li>
+<li><strong>Zed</strong>: the editor you’ll write code in, with <strong>one</strong> AI provider connected. Follow <a href="../general/ai-tools.html">the AI-tools guide</a>.</li>
+<li><strong>The GitHub CLI (<code>gh</code>)</strong>: the small tool that lets your machine talk to GitHub. Follow <a href="../general/git-basics.html">the Git Basics guide</a>.</li>
+<li><strong>A free GitHub account</strong>: sign up at <a href="https://github.com">github.com</a> if you don’t have one.</li>
+</ul>
+<div class="fragment">
+<div class="callout callout-important callout-style-simple">
+<div class="callout-body">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-content">
+<p>Do it in advance. <strong>Session X builds on</strong> a working toolchain, it doesn’t wait for one. If the install fights you, bring it to <strong>office hours</strong> before then, don’t burn an evening. And <strong>bring the laptop</strong>.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="fragment">
+<p>Session X builds the real toolchain and reveals what your notebooks have been all along.</p>
+</div>
+</section>
+
+<section>
+<section id="to-the-lab" class="title-slide slide level1 title center">
+<h1><span class="flow">To the Lab</span></h1>
+
+</section>
+<section id="tonights-episode" class="slide level2">
+<h2>Tonight’s episode</h2>
+<ul>
+<li>Head to the lab notebook: <a href="../tutorials/tut_09_plotting.html">Episode 9 — The Pitch Deck</a></li>
+<li>Same eighty orders, now with pictures: a line for daily revenue, a bar for zones, a histogram for the value spread, a scatter that finds <strong>no</strong> pattern, and Kevin’s cliff-edge growth slide, which you’ll flatten into the truth</li>
+<li>Every chart opens with <code>plt.figure()</code> and closes with <code>plt.gca()</code></li>
+<li>AI is allowed: draft with it, then <strong>verify</strong> the columns and the axis before you believe it</li>
+<li>It runs entirely in your browser: no setup, just click and code</li>
+</ul>
+<div class="fragment">
+<div class="callout callout-important callout-style-simple">
+<div class="callout-body">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-content">
+<p><strong>Download your <code>.py</code> before you leave.</strong> It’s the appendix of your pitch: the file that proves every chart came from the real data.</p>
+</div>
+</div>
+</div>
+</div>
+</section></section>
+<section>
+<section id="wrap-up" class="title-slide slide level1 title center">
+<h1><span class="flow">Wrap-up</span></h1>
+
+</section>
+<section id="three-things-to-remember" class="slide level2">
+<h2>Three things to remember</h2>
+<ol type="1">
+<li><strong>Every chart, one frame.</strong> Open with <code>plt.figure()</code>, close with <code>plt.gca()</code>; label the axes and title it. A chart nobody can read argues nothing.</li>
+<li><strong>Match the chart to the question.</strong> Categories → bar, distribution → histogram, two numbers → scatter, time → line. The wrong chart is a lie; and “no pattern” is a real finding.</li>
+<li><strong>Honest axis, verified code.</strong> Growth charts start at <strong>0</strong>, and every AI-drafted plot gets checked: do the columns exist, does the axis start where you claim?</li>
+</ol>
+<div class="fragment">
+<div class="callout callout-note callout-style-simple">
+<div class="callout-body">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-content">
+<p><strong>Season finale next: git, real files, and the project kickoff.</strong> We leave the browser for your own machine: the toolchain you install this week is the price of admission.</p>
 </div>
 </div>
 </div>
@@ -1256,22 +773,33 @@ You now have the basic knowledge to start working with <span class="highlight">P
 <h1><span class="flow">Literature</span></h1>
 
 </section>
-<section id="interesting-books" class="slide level2">
-<h2>Interesting Books</h2>
+<section id="books-to-start-with" class="slide level2">
+<h2>Books to start with</h2>
 <ul>
-<li>Wilke, C. (2019). Fundamentals of data visualization: A primer on making informative and compelling figures (First edition). O’Reilly Media.
+<li>Wilke, C. (2019). Fundamentals of data visualization: A primer on making informative and compelling figures (First edition). O’Reilly Media. <a href="https://clauswilke.com/dataviz/">Link to the free book website</a>
 <ul>
-<li>A book that is highly recommended to understand the principles of data visualization and how to create effective visualizations.</li>
-<li><a href="https://clauswilke.com/dataviz/">Link to the free book website</a></li>
+<li>The best single book on <em>why</em> a chart works: principles, not just code. Highly recommended.</li>
 </ul></li>
+<li>Downey, A. B. (2024). Think Python: How to think like a computer scientist (Third edition). O’Reilly. <a href="https://greenteapress.com/wp/think-python-3rd-edition/">Link to free online version</a></li>
 </ul>
 <div class="fragment">
-<p>For more interesting literature to learn more about Python, take a look at the <a href="../general/literature.html">literature list</a> of this course.</p>
+<div class="callout callout-note callout-style-simple">
+<div class="callout-body">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-content">
+<p>Building charts with AI this session? Revisit the <a href="../general/ai-tools.html">AI Tools page</a>: describe-then-verify is the whole workflow. Matplotlib’s own <a href="https://matplotlib.org/stable/tutorials/pyplot.html">pyplot tutorial</a> is a friendly next step.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="fragment">
+<p>For more, see the <a href="../general/literature.html">literature list</a> of this course.</p>
 
 
 </div>
 </section></section>
-
     </div>
   <div class="quarto-auto-generated-content" style="display: none;">
 <div class="footer footer-default">

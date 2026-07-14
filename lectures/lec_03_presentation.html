@@ -6,8 +6,8 @@
 <script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
 <link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
 <link href="../site_libs/quarto-html/light-border.css" rel="stylesheet">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-acf12a64177840b8d86f2d4f01b2e9fb.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
-  <meta name="generator" content="quarto-1.9.37">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-de63f62b328812d8e578a4d74e282472.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
+  <meta name="generator" content="quarto-1.9.38">
 
   <meta name="author" content="Dr.&nbsp;Tobias Vlćek">
   <title>Programming with Python – Lecture III - Building Reusable Functions</title>
@@ -98,7 +98,7 @@
     code span.vs { color: #032f62; } /* VerbatimString */
     code span.wa { color: #ff5555; } /* Warning */
   </style>
-  <link rel="stylesheet" href="../site_libs/revealjs/dist/theme/quarto-f85b3b3185a4ab11126f7e6ba17b9231.css">
+  <link rel="stylesheet" href="../site_libs/revealjs/dist/theme/quarto-98747a31849c37b7af6917e6faa4a735.css">
   <link href="../site_libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
   <link href="../site_libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
   <link href="../site_libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
@@ -205,380 +205,335 @@
 Dr.&nbsp;Tobias Vlćek 
 </div>
         <p class="quarto-title-affiliation">
-            Kühne Logistics University Hamburg - Fall 2025
+            Kühne Logistics University Hamburg - Fall 2026
           </p>
     </div>
 </div>
 
 </section>
-<section>
-<section id="quick-recap-of-the-last-lecture" class="title-slide slide level1 title center">
-<h1><span class="flow">Quick Recap of the last Lecture</span></h1>
-
-</section>
-<section id="slicing" class="slide level2">
-<h2>Slicing</h2>
+<section id="checkpoint-1-the-quarterly-board-review" class="title-slide slide level1 exercise-slide center">
+<h1>📋 Checkpoint 1 — the quarterly board review</h1>
+<p>The first <strong>40 minutes</strong> are the checkpoint. It starts <strong>now</strong>.</p>
 <ul>
-<li>With slicing we can get a range of elements from a sequence</li>
-<li>Syntax: <code>sequence[start:stop:step]</code></li>
-<li><code>start</code> is the index of the first element to include</li>
-<li><code>stop</code> is the index of the first element to exclude</li>
-<li><code>step</code> is the increment between indices</li>
+<li><strong>Individual work</strong>: no AI, no neighbors, no chat</li>
+<li>The <strong>link and QR</strong> are handed out in class. Open it and start</li>
+<li>~6 short tasks: write code, trace code, fix a bug, answer a multiple choice</li>
 </ul>
+<!-- QR handed out live — never in the deck -->
 <div class="fragment">
-<div class="callout callout-tip callout-style-simple">
+<p><strong>When you’re done:</strong> menu → <em>Download</em> → <em>Download Python code</em> → upload the <code>.py</code> to the <strong>“Checkpoint 1”</strong> assignment on Moodle.</p>
+</div>
+<div class="fragment">
+<div class="callout callout-note callout-style-simple">
 <div class="callout-body">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-content">
-<p>If left out, the step defaults to 1. Else, start defaults to 0 and stop defaults to the length of the sequence. Negative indices can be used to slice from the end of the sequence.</p>
+<p>The green ✅ live checks are <strong>provisional</strong>. The final grading runs on our side. And take a breath: everything in it was rehearsed in the labs.</p>
 </div>
 </div>
 </div>
 </div>
 </section>
-<section id="comparison-operators" class="slide level2">
-<h2>Comparison Operators</h2>
-<ul>
-<li>Comparison operators are used to compare two values</li>
-<li>The result of a comparison is a boolean value (<code>True</code> or <code>False</code>)</li>
-<li>Operators include: <code>==</code>, <code>!=</code>, <code>&gt;</code>, <code>&lt;</code>, <code>&gt;=</code>, <code>&lt;=</code></li>
-</ul>
+
+<section>
+<section id="episode-3-the-copy-paste-soup" class="title-slide slide level1 title center">
+<h1><span class="flow">Episode 3: The Copy-Paste Soup</span></h1>
+
+</section>
+<section id="after-the-board-review" class="slide level2">
+<h2>After the board review</h2>
+<p>Pens down. The checkpoint is behind you. Now the reason we’re all here.</p>
 <div class="fragment">
-<p><span class="question">&gt; Question:</span> Is this <code>True</code>?</p>
-<div id="ebacd166" class="cell" data-execution_count="1">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a></a><span class="co"># Careful here!</span></span>
-<span id="cb1-2"><a></a>one <span class="op">=</span> <span class="dv">1</span></span>
-<span id="cb1-3"><a></a>two <span class="op">=</span> <span class="dv">1</span></span>
-<span id="cb1-4"><a></a><span class="bu">print</span>(one <span class="op">==</span> two)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Kevin has been “reusing” code the only way he knows how: he pasted the same receipt block <strong>14 times</strong>, once per menu item. A ten-cent price change last week cost him a whole afternoon of hunting down copies.</p>
+</div>
+<div class="fragment">
+<p>Today the code learns to <strong>reuse itself</strong>. We meet the <strong>function</strong>, and build a first <strong>class</strong>.</p>
+</div>
+</section></section>
+<section>
+<section id="writing-functions" class="title-slide slide level1 title center">
+<h1><span class="flow">Writing Functions</span></h1>
+
+</section>
+<section id="the-copy-paste-pain" class="slide level2">
+<h2>The copy-paste pain</h2>
+<p>Kevin totals each receipt line by hand, the same shape, over and over:</p>
+<div id="7df06b6b" class="cell" data-execution_count="1">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a></a><span class="bu">print</span>(<span class="bu">round</span>(<span class="dv">2</span> <span class="op">*</span> <span class="fl">4.50</span>, <span class="dv">2</span>))    <span class="co"># 2 wraps</span></span>
+<span id="cb1-2"><a></a><span class="bu">print</span>(<span class="bu">round</span>(<span class="dv">1</span> <span class="op">*</span> <span class="fl">12.00</span>, <span class="dv">2</span>))   <span class="co"># 1 bowl</span></span>
+<span id="cb1-3"><a></a><span class="bu">print</span>(<span class="bu">round</span>(<span class="dv">5</span> <span class="op">*</span> <span class="fl">3.20</span>, <span class="dv">2</span>))    <span class="co"># 5 fries</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <div class="cell fragment" data-execution_count="1">
 <div class="cell-output cell-output-stdout">
-<pre><code>True</code></pre>
+<pre><code>9.0
+12.0
+16.0</code></pre>
 </div>
 </div>
-</div>
-</section>
-<section id="control-structures" class="slide level2">
-<h2>Control Structures</h2>
-<ul>
-<li>Control structures allow us to control the flow of execution</li>
-<li>It includes conditional statements and loops</li>
-<li>Conditional statements: <code>if</code>, <code>elif</code>, <code>else</code></li>
-<li>Loops: <code>for</code> and <code>while</code></li>
-<li>Control flow statements (in loops): <code>continue</code> and <code>break</code></li>
-</ul>
 <div class="fragment">
-<div class="callout callout-note callout-style-simple">
-<div class="callout-body">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
+<p>Same calculation, retyped every time. Change the rule once and you must fix it everywhere. There is a better way.</p>
 </div>
-<div class="callout-content">
-<p>The statement <code>continue</code> skips the rest of the current iteration and moves to the next one in a loop while the <code>break</code> statement exits the loop entirely.</p>
-</div>
-</div>
-</div>
-</div>
-</section></section>
-<section>
-<section id="functions-in-detail" class="title-slide slide level1 title center">
-<h1><span class="flow">Functions in Detail</span></h1>
-
 </section>
-<section id="what-is-a-function" class="slide level2">
-<h2>What is a Function?</h2>
-<ul>
-<li>Functions can accept <span class="highlight">inputs (parameters)</span> and <span class="highlight">return outputs</span></li>
-<li>Encapsulate logic, making code easier to maintain</li>
-<li>Functions can be called <strong>multiple times</strong> from different part</li>
-<li>They help <strong>reduce code duplication</strong> and improve readability</li>
-</ul>
-<div id="df9ef5f7" class="cell" data-execution_count="2">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a></a><span class="co"># I'm a function.</span></span>
-<span id="cb3-2"><a></a><span class="bu">type</span>(<span class="bu">print</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<section id="def-name-the-calculation-once" class="slide level2">
+<h2><code>def</code>: name the calculation once</h2>
+<p>Write the calculation <strong>once</strong>, give it a name, and call it whenever you need it:</p>
+<div id="b69de12d" class="cell" data-execution_count="2">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a></a><span class="kw">def</span> line_total(qty, price):     <span class="co"># def NAME(inputs):</span></span>
+<span id="cb3-2"><a></a>    <span class="cf">return</span> <span class="bu">round</span>(qty <span class="op">*</span> price, <span class="dv">2</span>)  <span class="co"># indented body, hands a value back</span></span>
+<span id="cb3-3"><a></a></span>
+<span id="cb3-4"><a></a><span class="bu">print</span>(line_total(<span class="dv">2</span>, <span class="fl">4.50</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <div class="cell fragment" data-execution_count="2">
-<div class="cell-output cell-output-display" data-execution_count="2">
-<pre><code>builtin_function_or_method</code></pre>
+<div class="cell-output cell-output-stdout">
+<pre><code>9.0</code></pre>
 </div>
 </div>
 <div class="fragment">
-<div class="callout callout-important callout-style-simple">
-<div class="callout-body">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-content">
-<p>Remember, methods are <span class="highlight">functions</span> that are called on an <span class="highlight">object</span>.</p>
-</div>
-</div>
-</div>
+<p><code>def</code> starts the definition · the name is <code>line_total</code> · the block is <strong>indented</strong> · <code>return</code> hands the answer back.</p>
 </div>
 </section>
-<section id="built-in-functions-already-used" class="slide level2">
-<h2>Built-in Functions already used</h2>
+<section id="parameters-vs-arguments" class="slide level2">
+<h2>Parameters vs arguments</h2>
 <ul>
-<li><code>print()</code>: Print text to console</li>
-<li><code>input()</code>: Read text from console</li>
-<li><code>len()</code>: Get the length of a sequence</li>
-<li><code>range()</code>: Generate a sequence of numbers</li>
-<li><code>round()</code>: Round number to a specified number of decimal places</li>
-<li><code>type()</code>: Get the type of an object</li>
-<li><code>int()</code>: Convert a string to an integer</li>
-<li><code>float()</code>: Convert a string to a floating-point number</li>
-<li><code>str()</code>: Convert an object to a string</li>
+<li><strong>Parameters</strong> are the names in the definition, the function’s inputs: <code>qty</code>, <code>price</code></li>
+<li><strong>Arguments</strong> are the actual values you pass when you <strong>call</strong> it: <code>2</code>, <code>4.50</code></li>
 </ul>
-</section>
-<section id="defining-a-function" class="slide level2">
-<h2>Defining a Function</h2>
-<ul>
-<li>Use the <code>def</code> keyword followed by the function name</li>
-<li>Inside parentheses we list the inputs (parameters)</li>
-<li>The code block within every function starts with a colon (:)</li>
-<li>It is <span class="highlight">indented</span>, just as the loops from the last lecture</li>
-</ul>
-<div class="fragment">
-<div id="55f4229e" class="cell" data-execution_count="3">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a></a><span class="kw">def</span> greet(a_parameter):</span>
-<span id="cb5-2"><a></a>    <span class="bu">print</span>(<span class="ss">f"Hello, </span><span class="sc">{</span>a_parameter<span class="sc">}</span><span class="ss">!"</span>)</span>
-<span id="cb5-3"><a></a>greet(<span class="st">"Students"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div id="e304ef3c" class="cell" data-execution_count="3">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a></a><span class="kw">def</span> line_total(qty, price):      <span class="co"># qty and price are PARAMETERS</span></span>
+<span id="cb5-2"><a></a>    <span class="cf">return</span> <span class="bu">round</span>(qty <span class="op">*</span> price, <span class="dv">2</span>)</span>
+<span id="cb5-3"><a></a></span>
+<span id="cb5-4"><a></a><span class="bu">print</span>(line_total(<span class="dv">3</span>, <span class="fl">3.20</span>))       <span class="co"># 3 and 3.20 are ARGUMENTS</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <div class="cell fragment" data-execution_count="3">
 <div class="cell-output cell-output-stdout">
-<pre><code>Hello, Students!</code></pre>
-</div>
+<pre><code>9.6</code></pre>
 </div>
 </div>
 <div class="fragment">
-<div class="callout callout-tip callout-style-simple">
-<div class="callout-body">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-content">
-<p>It is common practice to leave out one line after the definition of a function, although we will not always do that in the lecture to save space on the slides.</p>
-</div>
-</div>
-</div>
+<p>Same function, different arguments, different result. No retyping.</p>
 </div>
 </section>
-<section id="comment-functions" class="slide level2">
-<h2>Comment Functions</h2>
-<ul>
-<li>It is good practice to include a comment at the top of your functions</li>
-<li>If you do it with three <code>"""</code>, it will appear in the help menu</li>
-</ul>
-<div class="fragment">
-<div id="f7727b2a" class="cell" data-execution_count="4">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a></a><span class="kw">def</span> greet():</span>
-<span id="cb7-2"><a></a>    <span class="co">"""</span></span>
-<span id="cb7-3"><a></a><span class="co">    This function will be used later and has currently</span></span>
-<span id="cb7-4"><a></a><span class="co">    absolutely no use for anything.</span></span>
-<span id="cb7-5"><a></a><span class="co">    """</span></span>
-<span id="cb7-6"><a></a>    <span class="cf">pass</span> <span class="co"># Necessary placeholder to avoid error</span></span>
-<span id="cb7-7"><a></a></span>
-<span id="cb7-8"><a></a><span class="bu">help</span>(greet)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<section id="return-hand-the-value-back" class="slide level2">
+<h2><code>return</code>: hand the value back</h2>
+<p><code>return</code> sends a value <strong>back to whoever called</strong> the function, so you can store it and use it later:</p>
+<div id="8e53f5d8" class="cell" data-execution_count="4">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a></a><span class="kw">def</span> line_total(qty, price):</span>
+<span id="cb7-2"><a></a>    <span class="cf">return</span> <span class="bu">round</span>(qty <span class="op">*</span> price, <span class="dv">2</span>)</span>
+<span id="cb7-3"><a></a></span>
+<span id="cb7-4"><a></a>subtotal <span class="op">=</span> line_total(<span class="dv">3</span>, <span class="fl">3.20</span>)   <span class="co"># catch what came back</span></span>
+<span id="cb7-5"><a></a><span class="bu">print</span>(subtotal)</span>
+<span id="cb7-6"><a></a><span class="bu">print</span>(subtotal <span class="op">+</span> <span class="fl">1.50</span>)           <span class="co"># ...and keep using it</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <div class="cell fragment" data-execution_count="4">
 <div class="cell-output cell-output-stdout">
-<pre><code>Help on function greet in module __main__:
-
-greet()
-    This function will be used later and has currently
-    absolutely no use for anything.
-</code></pre>
-</div>
+<pre><code>9.6
+11.1</code></pre>
 </div>
 </div>
 </section>
-<section id="naming-functions-and-methods" class="slide level2">
-<h2>Naming Functions (and Methods)</h2>
-<ul>
-<li>Function names should be short, but descriptive</li>
-<li>Use underscores (<code>_</code>) instead of spaces in the names</li>
-<li>Avoid using Python keywords as function names (e.g., <code>print</code>)</li>
-<li>Try to avoid using built-in functions and methods that have a similar name (e.g., <code>sum</code> and <code>len</code>)</li>
-</ul>
-<p><span class="question">&gt; Question:</span> Which of the following is a good name for a function?<br>
-</p>
-<ul>
-<li><code>myfunctionthatmultipliesvalues</code><br>
-</li>
-<li><code>multiply_two_values</code><br>
-</li>
-<li><code>multiplyTwoValues</code></li>
-</ul>
+<section id="predict-print-or-return" class="slide level2">
+<h2>Predict: print or return?</h2>
+<p><code>label_price</code> <strong>prints</strong> but has no <code>return</code>. What does the <strong>last line</strong> show?</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb9"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a></a><span class="kw">def</span> label_price(price):</span>
+<span id="cb9-2"><a></a>    <span class="bu">print</span>(<span class="ss">f"</span><span class="sc">{</span>price<span class="sc">:.2f}</span><span class="ss"> EUR"</span>)</span>
+<span id="cb9-3"><a></a></span>
+<span id="cb9-4"><a></a>result <span class="op">=</span> label_price(<span class="fl">8.50</span>)</span>
+<span id="cb9-5"><a></a><span class="bu">print</span>(result)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>a) <code>8.50 EUR</code> b) <code>None</code> c) <code>Error</code></p>
+<div class="fragment">
+<p><span class="question">Predict first</span>. Commit to an answer before the next slide.</p>
+</div>
 </section>
-<section id="function-parameters" class="slide level2">
-<h2>Function Parameters</h2>
-<ul>
-<li>Parameters are variables that the function accepts</li>
-<li>They allow you to pass data to the function</li>
-<li>Try to name them as variables: <span class="highlight">short and meaningful</span></li>
-<li>We can also <strong>leave them out</strong> or define <strong>several inputs</strong>!</li>
-</ul>
-<div id="b44bb995" class="cell" data-execution_count="5">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a></a><span class="co"># This function has no parameter yet!</span></span>
-<span id="cb9-2"><a></a><span class="kw">def</span> greet():</span>
-<span id="cb9-3"><a></a>    <span class="bu">print</span>(<span class="st">"Hello, stranger!"</span>)</span>
-<span id="cb9-4"><a></a>greet()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<section id="answer-print-shows-return-hands-back" class="slide level2">
+<h2>Answer: <code>print</code> shows, <code>return</code> hands back</h2>
+<p><strong>b) <code>None</code></strong> — <code>label_price</code> prints its line while running, but with no <code>return</code> it hands back <code>None</code>. That <code>None</code> is what lands in <code>result</code>. Printing is not returning.</p>
+<div id="2db1b54c" class="cell" data-execution_count="5">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a></a><span class="kw">def</span> label_price(price):</span>
+<span id="cb10-2"><a></a>    <span class="bu">print</span>(<span class="ss">f"</span><span class="sc">{</span>price<span class="sc">:.2f}</span><span class="ss"> EUR"</span>)</span>
+<span id="cb10-3"><a></a></span>
+<span id="cb10-4"><a></a>result <span class="op">=</span> label_price(<span class="fl">8.50</span>)   <span class="co"># prints while running...</span></span>
+<span id="cb10-5"><a></a><span class="bu">print</span>(result)                <span class="co"># ...but the value handed back is None</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <div class="cell fragment" data-execution_count="5">
 <div class="cell-output cell-output-stdout">
-<pre><code>Hello, stranger!</code></pre>
+<pre><code>8.50 EUR
+None</code></pre>
 </div>
 </div>
 </section>
-<section id="function-arguments" class="slide level2">
-<h2>Function Arguments</h2>
-<ul>
-<li>Arguments are the actual values passed to the function</li>
-<li>They replace the parameters in the function definition</li>
-</ul>
-<div class="fragment">
-<p><span class="question">&gt; Task:</span> Use the function properly with parameters.</p>
-<div id="3efaa6ab" class="cell" data-execution_count="6">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a></a><span class="kw">def</span> greet(university_name, lecture):</span>
-<span id="cb11-2"><a></a>    <span class="bu">print</span>(<span class="ss">f"Hello, students at the </span><span class="sc">{</span>university_name<span class="sc">}</span><span class="ss">!"</span>)</span>
-<span id="cb11-3"><a></a>    <span class="bu">print</span>(<span class="ss">f"You are in lecture </span><span class="sc">{</span>lecture<span class="sc">}</span><span class="ss">!"</span>)</span>
-<span id="cb11-4"><a></a></span>
-<span id="cb11-5"><a></a><span class="co"># Your code here</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</div>
-</div>
-</section>
-<section id="initializing-parameters" class="slide level2">
-<h2>Initializing Parameters</h2>
-<ul>
-<li>We can also <strong>initialize parameters</strong> to a default value!</li>
-<li>To do this we use the <code>=</code> sign and provide it with a value</li>
-<li>This is called a <span class="highlight">keyword argument</span></li>
-</ul>
-<div id="eee40499" class="cell" data-execution_count="7">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb12"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a></a><span class="kw">def</span> greet(lecture<span class="op">=</span><span class="st">"Programming with Python"</span>):</span>
-<span id="cb12-2"><a></a>    <span class="bu">print</span>(<span class="ss">f"You are in lecture '</span><span class="sc">{</span>lecture<span class="sc">}</span><span class="ss">'!"</span>)</span>
+<section id="default-arguments" class="slide level2">
+<h2>Default arguments</h2>
+<p>A parameter can carry a <strong>default</strong>, used when the caller leaves it out:</p>
+<div id="e1e7bf56" class="cell" data-execution_count="6">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb12"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a></a><span class="kw">def</span> service_fee(total, rate<span class="op">=</span><span class="fl">0.05</span>):   <span class="co"># rate defaults to 5 %</span></span>
+<span id="cb12-2"><a></a>    <span class="cf">return</span> <span class="bu">round</span>(total <span class="op">*</span> rate, <span class="dv">2</span>)</span>
 <span id="cb12-3"><a></a></span>
-<span id="cb12-4"><a></a>greet()</span>
-<span id="cb12-5"><a></a>greet(<span class="st">"Super Advanced Programming with Python"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb12-4"><a></a><span class="bu">print</span>(service_fee(<span class="dv">80</span>))         <span class="co"># default rate → 4.0</span></span>
+<span id="cb12-5"><a></a><span class="bu">print</span>(service_fee(<span class="dv">80</span>, <span class="fl">0.10</span>))   <span class="co"># override it → 8.0</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<div class="cell fragment" data-execution_count="6">
+<div class="cell-output cell-output-stdout">
+<pre><code>4.0
+8.0</code></pre>
+</div>
+</div>
+<div class="fragment">
+<p>Defaults let one function cover the common case and the special case.</p>
+</div>
+</section>
+<section id="functions-can-call-functions" class="slide level2">
+<h2>Functions can call functions</h2>
+<p>A function can use another function you already wrote — reuse builds on reuse:</p>
+<div id="a13ac8c0" class="cell" data-execution_count="7">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb14"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a></a><span class="kw">def</span> bill(qty, price):</span>
+<span id="cb14-2"><a></a>    items <span class="op">=</span> line_total(qty, price)        <span class="co"># reuse line_total</span></span>
+<span id="cb14-3"><a></a>    <span class="cf">return</span> <span class="bu">round</span>(items <span class="op">+</span> service_fee(items), <span class="dv">2</span>)  <span class="co"># ...and service_fee</span></span>
+<span id="cb14-4"><a></a></span>
+<span id="cb14-5"><a></a><span class="bu">print</span>(bill(<span class="dv">2</span>, <span class="fl">4.50</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <div class="cell fragment" data-execution_count="7">
 <div class="cell-output cell-output-stdout">
-<pre><code>You are in lecture 'Programming with Python'!
-You are in lecture 'Super Advanced Programming with Python'!</code></pre>
+<pre><code>9.45</code></pre>
 </div>
 </div>
 <div class="fragment">
-<div class="callout callout-tip callout-style-simple">
-<div class="callout-body">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
+<p><code>line_total</code> and <code>service_fee</code> do their jobs; <code>bill</code> just orchestrates. That’s how small pieces become a program.</p>
 </div>
-<div class="callout-content">
-<p>This is especially useful when we want to avoid errors due to missing arguments!</p>
-</div>
-</div>
-</div>
-</div>
+</section></section>
+<section id="your-turn-10-minutes" class="title-slide slide level1 exercise-slide center">
+<h1>⚡ Your turn — 10 minutes</h1>
+<p>Open the exercise (scan the QR or type the link):</p>
+<p><strong><a href="https://beyondsimulations.github.io/Introduction-to-Python/notebooks/ex_03_a/">beyondsimulations.github.io/Introduction-to-Python/notebooks/ex_03_a/</a></strong></p>
+
+<img data-src="assets/qr/ex_03_a.png" width="280" class="r-stretch"><p>First <strong>predict</strong> what happens, then run it.</p>
 </section>
-<section id="multiple-parameters" class="slide level2">
-<h2>Multiple Parameters</h2>
-<ul>
-<li>As seen before, we can have <strong>multiple parameters</strong> in a function</li>
-<li>Called <span class="highlight">positional arguments</span> and are separated by commas</li>
-<li>When we call them, they must be provided in the same order</li>
-<li>Alternatively, we could call them by name!</li>
-</ul>
-<div class="fragment">
-<p><span class="question">&gt; Question:</span> What will be printed here?</p>
-<div id="9911a144" class="cell" data-execution_count="8">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb14"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a></a><span class="kw">def</span> call_parameters(parameter_a, parameter_b):</span>
-<span id="cb14-2"><a></a>    <span class="bu">print</span>(parameter_a, parameter_b)</span>
-<span id="cb14-3"><a></a></span>
-<span id="cb14-4"><a></a>call_parameters(parameter_b<span class="op">=</span><span class="st">"Hello"</span>, parameter_a<span class="op">=</span><span class="st">"World"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+
+<section>
+<section id="scope-then-a-first-class" class="title-slide slide level1 title center">
+<h1><span class="flow">Scope, then a First Class</span></h1>
+
+</section>
+<section id="local-names-stay-local" class="slide level2">
+<h2>Local names stay local</h2>
+<p>A parameter is the function’s <strong>own private copy</strong>. What happens inside stays inside:</p>
+<div id="97d04b14" class="cell" data-execution_count="8">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb16"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a></a><span class="kw">def</span> bump(n):</span>
+<span id="cb16-2"><a></a>    n <span class="op">=</span> n <span class="op">+</span> <span class="dv">10</span>       <span class="co"># changes the function's OWN copy of n</span></span>
+<span id="cb16-3"><a></a>    <span class="cf">return</span> n</span>
+<span id="cb16-4"><a></a></span>
+<span id="cb16-5"><a></a><span class="bu">print</span>(bump(<span class="dv">3</span>))       <span class="co"># 13 — the returned value</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <div class="cell fragment" data-execution_count="8">
 <div class="cell-output cell-output-stdout">
-<pre><code>World Hello</code></pre>
+<pre><code>13</code></pre>
 </div>
 </div>
+<div class="fragment">
+<p>Names created inside a function live in its <strong>scope</strong>. They vanish when the function ends.</p>
 </div>
 </section>
-<section id="function-return-values" class="slide level2">
-<h2>Function Return Values</h2>
-<ul>
-<li>Functions can return values using the <code>return</code> statement</li>
-<li>The return statement ends the function</li>
-<li>It then <strong>returns</strong> the specified value</li>
-</ul>
+<section id="predict-does-the-global-move" class="slide level2">
+<h2>Predict: does the global move?</h2>
+<p><code>bump</code> adds ten to its parameter. We call it, then print <code>stock</code>. What does the <strong>last line</strong> print?</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb18"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a></a><span class="kw">def</span> bump(n):</span>
+<span id="cb18-2"><a></a>    n <span class="op">=</span> n <span class="op">+</span> <span class="dv">10</span></span>
+<span id="cb18-3"><a></a>    <span class="cf">return</span> n</span>
+<span id="cb18-4"><a></a></span>
+<span id="cb18-5"><a></a>stock <span class="op">=</span> <span class="dv">3</span></span>
+<span id="cb18-6"><a></a>bump(stock)</span>
+<span id="cb18-7"><a></a><span class="bu">print</span>(stock)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>a) <code>3</code> b) <code>13</code> c) <code>Error</code></p>
 <div class="fragment">
-<div id="736c2774" class="cell" data-execution_count="9">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb16"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a></a><span class="kw">def</span> simple_multiplication(a,b):</span>
-<span id="cb16-2"><a></a>    result <span class="op">=</span> a<span class="op">*</span>b</span>
-<span id="cb16-3"><a></a>    <span class="cf">return</span> a</span>
-<span id="cb16-4"><a></a></span>
-<span id="cb16-5"><a></a><span class="bu">print</span>(simple_multiplication(<span class="dv">2</span>,<span class="dv">21</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p><span class="question">Predict first</span>. Commit to an answer before the next slide.</p>
+</div>
+</section>
+<section id="answer-the-outside-variable-is-untouched" class="slide level2">
+<h2>Answer: the outside variable is untouched</h2>
+<p><strong>a) <code>3</code></strong> — <code>bump</code> changes only its own copy <code>n</code>. We never stored what it returned, so <code>stock</code> out here never moves. The function cannot reach out and rewrite your variables.</p>
+<div id="7ffa2aa4" class="cell" data-execution_count="9">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb19"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a></a><span class="kw">def</span> bump(n):</span>
+<span id="cb19-2"><a></a>    n <span class="op">=</span> n <span class="op">+</span> <span class="dv">10</span></span>
+<span id="cb19-3"><a></a>    <span class="cf">return</span> n</span>
+<span id="cb19-4"><a></a></span>
+<span id="cb19-5"><a></a>stock <span class="op">=</span> <span class="dv">3</span></span>
+<span id="cb19-6"><a></a>bump(stock)      <span class="co"># the return value is thrown away</span></span>
+<span id="cb19-7"><a></a><span class="bu">print</span>(stock)     <span class="co"># still 3</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <div class="cell fragment" data-execution_count="9">
 <div class="cell-output cell-output-stdout">
-<pre><code>2</code></pre>
-</div>
-</div>
-</div>
-<div class="fragment">
-<div id="e7f8022f" class="cell" data-execution_count="10">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb18"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a></a><span class="kw">def</span> simple_multiplication(a,b):</span>
-<span id="cb18-2"><a></a>    <span class="cf">return</span> a<span class="op">*</span>b <span class="co"># or shorter, but this time a*b!</span></span>
-<span id="cb18-3"><a></a></span>
-<span id="cb18-4"><a></a><span class="bu">print</span>(simple_multiplication(<span class="dv">2</span>,<span class="dv">21</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</div>
-<div class="cell fragment" data-execution_count="10">
-<div class="cell-output cell-output-stdout">
-<pre><code>42</code></pre>
-</div>
+<pre><code>3</code></pre>
 </div>
 </div>
 </section>
-<section id="access-return-values" class="slide level2">
-<h2>Access return values</h2>
+<section id="why-thats-a-feature-not-a-limit" class="slide level2">
+<h2>Why that’s a feature, not a limit</h2>
 <ul>
-<li>We can also <strong>save</strong> the return value from a function in a variable</li>
-<li>That way we can use it later on in the program</li>
+<li>A function can’t <strong>secretly</strong> change your variables, no spooky action at a distance</li>
+<li>You can call it a hundred times and trust your data stays put</li>
+<li>To use a result, you <strong>catch the return</strong> (<code>stock = bump(stock)</code>). Deliberate, visible</li>
 </ul>
 <div class="fragment">
-<div id="ab4fa683" class="cell" data-execution_count="11">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb20"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a></a><span class="kw">def</span> simple_multiplication(a,b):</span>
-<span id="cb20-2"><a></a>    <span class="cf">return</span> a<span class="op">*</span>b <span class="co"># even shorter!</span></span>
-<span id="cb20-3"><a></a></span>
-<span id="cb20-4"><a></a>result <span class="op">=</span> simple_multiplication(<span class="dv">2</span>,<span class="dv">21</span>)</span>
-<span id="cb20-5"><a></a><span class="bu">print</span>(result)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Isolation is what makes functions <strong>safe to reuse</strong>. That is the whole point of this episode.</p>
+</div>
+</section>
+<section id="a-class-bundles-data-with-behavior" class="slide level2">
+<h2>A class bundles data with behavior</h2>
+<p>Sometimes data and the things you do with it belong <strong>together</strong>. A <strong>class</strong> is a blueprint that bundles both:</p>
+<ul>
+<li><strong>data</strong>: the facts about one thing (a courier’s name, their distance)</li>
+<li><strong>behavior</strong>: what you can compute from it (their fee)</li>
+</ul>
+<div class="fragment">
+<p>A <strong>method</strong> is just a function that lives inside a class and can read the object’s own data.</p>
+</div>
+</section>
+<section id="class-__init__-and-self" class="slide level2">
+<h2><code>class</code>, <code>__init__</code>, and <code>self</code></h2>
+<div id="5308c842" class="cell" data-execution_count="10">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb21"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a></a><span class="kw">class</span> Delivery:</span>
+<span id="cb21-2"><a></a>    <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>, courier, distance_km):  <span class="co"># runs when you build one</span></span>
+<span id="cb21-3"><a></a>        <span class="va">self</span>.courier <span class="op">=</span> courier          <span class="co"># store data ON the object</span></span>
+<span id="cb21-4"><a></a>        <span class="va">self</span>.distance_km <span class="op">=</span> distance_km</span>
+<span id="cb21-5"><a></a>        <span class="va">self</span>.rate_per_km <span class="op">=</span> <span class="fl">1.20</span>         <span class="co"># every delivery carries its rate</span></span>
+<span id="cb21-6"><a></a></span>
+<span id="cb21-7"><a></a>    <span class="kw">def</span> fee(<span class="va">self</span>):                       <span class="co"># a method — note self</span></span>
+<span id="cb21-8"><a></a>        <span class="cf">return</span> <span class="bu">round</span>(<span class="va">self</span>.distance_km <span class="op">*</span> <span class="va">self</span>.rate_per_km, <span class="dv">2</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<div class="cell fragment" data-execution_count="10">
+
+</div>
+<div class="fragment">
+<p><code>__init__</code> sets up a new object · <code>self</code> is <em>this</em> object · attributes are stored on <code>self</code> and read back through <code>self</code>. <code>fee()</code> multiplies <strong>two</strong> stored attributes.</p>
+</div>
+</section>
+<section id="build-one-call-its-method" class="slide level2">
+<h2>Build one, call its method</h2>
+<p><strong>Instantiate</strong> the class to make an object, then use its data and its methods:</p>
+<div id="44961f3d" class="cell" data-execution_count="11">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb22"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a></a>trip <span class="op">=</span> Delivery(<span class="st">"Nadia"</span>, <span class="dv">4</span>)   <span class="co"># build one — __init__ runs</span></span>
+<span id="cb22-2"><a></a></span>
+<span id="cb22-3"><a></a><span class="bu">print</span>(trip.courier)           <span class="co"># read stored data</span></span>
+<span id="cb22-4"><a></a><span class="bu">print</span>(trip.fee())             <span class="co"># call the method</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <div class="cell fragment" data-execution_count="11">
 <div class="cell-output cell-output-stdout">
-<pre><code>42</code></pre>
-</div>
-</div>
-</div>
-</section>
-<section id="returning-none" class="slide level2">
-<h2>Returning None</h2>
-<ul>
-<li>If we don’t specify <code>return</code>, functions will return <code>None</code></li>
-</ul>
-<div id="dfb18844" class="cell" data-execution_count="12">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb22"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a></a><span class="kw">def</span> simple_multiplication(a,b):</span>
-<span id="cb22-2"><a></a>    result <span class="op">=</span> a<span class="op">*</span>b</span>
-<span id="cb22-3"><a></a></span>
-<span id="cb22-4"><a></a><span class="bu">print</span>(simple_multiplication(<span class="dv">2</span>,<span class="dv">21</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</div>
-<div class="cell fragment" data-execution_count="12">
-<div class="cell-output cell-output-stdout">
-<pre><code>None</code></pre>
+<pre><code>Nadia
+4.8</code></pre>
 </div>
 </div>
 <div class="fragment">
-<p><span class="task">&gt; Task:</span> Come up with a function that checks whether a number is positive or negative. It returns <code>"positive"</code> for positive numbers and <code>"negative"</code> for negative numbers. If the number is zero, it returns <code>None</code>.</p>
+<p><code>trip</code> is one <code>Delivery</code> object. <code>trip.fee()</code> computes from <em>its own</em> stored distance: data and behavior, traveling together.</p>
 </div>
+</section>
+<section id="one-honest-slide-about-classes" class="slide level2">
+<h2>One honest slide about classes</h2>
+<ul>
+<li>Today you write <strong>one small class</strong> with an <code>__init__</code> and <strong>one method</strong>. That’s it</li>
+<li>Classes get tricky fast (inheritance, <code>self</code> confusion), and that is <strong>not this course</strong></li>
+<li>We use them only to <em>bundle</em> data with behavior, nothing deeper</li>
+</ul>
 <div class="fragment">
 <div class="callout callout-tip callout-style-simple">
 <div class="callout-body">
@@ -586,107 +541,32 @@ You are in lecture 'Super Advanced Programming with Python'!</code></pre>
 <i class="callout-icon"></i>
 </div>
 <div class="callout-content">
-<p>You can also use <strong>multiple return statements</strong> in a function.</p>
-</div>
-</div>
-</div>
-</div>
-</section>
-<section id="recursion" class="slide level2">
-<h2>Recursion</h2>
-<ul>
-<li>Recursion is a technique where a <span class="highlight">function calls itself</span></li>
-<li>Helps to break down problems into <strong>smaller problems</strong></li>
-</ul>
-<div class="fragment">
-<div id="1746aa58" class="cell" data-execution_count="13">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb24"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb24-1"><a></a><span class="kw">def</span> fibonacci(n): <span class="co"># Classical example to introduce recursion</span></span>
-<span id="cb24-2"><a></a>    <span class="cf">if</span> n <span class="op">&lt;=</span> <span class="dv">1</span>:</span>
-<span id="cb24-3"><a></a>        <span class="cf">return</span> n</span>
-<span id="cb24-4"><a></a>    <span class="cf">else</span>:</span>
-<span id="cb24-5"><a></a>        <span class="cf">return</span> fibonacci(n<span class="op">-</span><span class="dv">1</span>) <span class="op">+</span> fibonacci(n<span class="op">-</span><span class="dv">2</span>)</span>
-<span id="cb24-6"><a></a></span>
-<span id="cb24-7"><a></a><span class="bu">print</span>(fibonacci(<span class="dv">6</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</div>
-<div class="cell fragment" data-execution_count="13">
-<div class="cell-output cell-output-stdout">
-<pre><code>8</code></pre>
-</div>
-</div>
-</div>
-<div class="fragment">
-<div class="callout callout-note callout-style-simple">
-<div class="callout-body">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-content">
-<p>Recursion can be a powerful tool, but it can also be <span class="highlight">quite tricky</span> to get right.</p>
-</div>
-</div>
-</div>
-</div>
-</section>
-<section id="lets-practice-recursion" class="slide level2">
-<h2>Let’s practice Recursion</h2>
-<p><span class="task">&gt; Task:</span> Create a recursive function called <code>countdown</code> that prints numbers from n down to 1, then prints “Blast off!”. For example, <code>countdown(5)</code> should print 5, 4, 3, 2, 1, Blast off! (each on a new line). Start with the number 10.</p>
-<div class="fragment">
-<div class="callout callout-tip callout-style-simple">
-<div class="callout-body">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-content">
-<p>Use the <code>return</code> statement to stop the recursion.</p>
+<p>If the <code>self</code> keyword feels odd right now, that’s completely normal. Copy the shape from the worked example. The intuition follows the practice.</p>
 </div>
 </div>
 </div>
 </div>
 </section></section>
+<section id="your-turn-10-minutes-1" class="title-slide slide level1 exercise-slide center">
+<h1>⚡ Your turn — 10 minutes</h1>
+<p>Open the exercise (scan the QR or type the link):</p>
+<p><strong><a href="https://beyondsimulations.github.io/Introduction-to-Python/notebooks/ex_03_b/">beyondsimulations.github.io/Introduction-to-Python/notebooks/ex_03_b/</a></strong></p>
+
+<img data-src="assets/qr/ex_03_b.png" width="280" class="r-stretch"><p>First <strong>predict</strong> what happens, then run it.</p>
+</section>
+
 <section>
-<section id="scope" class="title-slide slide level1 title center">
-<h1><span class="flow">Scope</span></h1>
+<section id="to-the-lab" class="title-slide slide level1 title center">
+<h1><span class="flow">To the Lab</span></h1>
 
 </section>
-<section id="function-scope" class="slide level2">
-<h2>Function Scope</h2>
+<section id="tonights-episode" class="slide level2">
+<h2>Tonight’s episode</h2>
 <ul>
-<li>Variables defined inside a function are local to that function</li>
-<li>They <span class="highlight">cannot</span> be accessed outside the function</li>
+<li>Head to the lab notebook: <a href="../tutorials/tut_03_functions.html">Episode 3 — The Copy-Paste Soup</a></li>
+<li>You’ll write the fee and tip functions, fix a function that forgets to <code>return</code>, give a parameter a default, and build the startup’s first <code>Order</code> class, ending in the <strong>Tip Calculator Championship</strong></li>
+<li>It runs entirely in your browser: no setup, just click and code</li>
 </ul>
-<div class="fragment">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb26"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb26-1"><a></a><span class="kw">def</span> greet(name):</span>
-<span id="cb26-2"><a></a>    greeting <span class="op">=</span> <span class="ss">f"Hello, </span><span class="sc">{</span>name<span class="sc">}</span><span class="ss">!"</span></span>
-<span id="cb26-3"><a></a></span>
-<span id="cb26-4"><a></a><span class="bu">print</span>(greeting)  <span class="co"># This will cause an error</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</div>
-<div class="fragment">
-<p><span class="question">&gt; Question:</span> Any idea how to access <code>greeting</code>?</p>
-</div>
-</section>
-<section id="global-scope" class="slide level2">
-<h2>Global Scope</h2>
-<ul>
-<li>Variables defined <strong>outside</strong> all functions are in the global scope</li>
-<li>They can be accessed from <span class="highlight">anywhere</span> in the program</li>
-</ul>
-<div class="fragment">
-<div id="ff1724eb" class="cell" data-execution_count="14">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb27"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb27-1"><a></a>greeting <span class="op">=</span> <span class="st">"Hello, Stranger!"</span></span>
-<span id="cb27-2"><a></a><span class="kw">def</span> greet(name):</span>
-<span id="cb27-3"><a></a>   greeting <span class="op">=</span> <span class="ss">f"Hello, </span><span class="sc">{</span>name<span class="sc">}</span><span class="ss">!"</span></span>
-<span id="cb27-4"><a></a>   <span class="cf">return</span> greeting</span>
-<span id="cb27-5"><a></a></span>
-<span id="cb27-6"><a></a><span class="bu">print</span>(greet(<span class="st">"Students"</span>)) <span class="co"># Greet students</span></span>
-<span id="cb27-7"><a></a><span class="bu">print</span>(greeting) <span class="co"># Greet ????</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</div>
-<div class="cell fragment" data-execution_count="14">
-<div class="cell-output cell-output-stdout">
-<pre><code>Hello, Students!
-Hello, Stranger!</code></pre>
-</div>
-</div>
-</div>
 <div class="fragment">
 <div class="callout callout-important callout-style-simple">
 <div class="callout-body">
@@ -694,220 +574,24 @@ Hello, Stranger!</code></pre>
 <i class="callout-icon"></i>
 </div>
 <div class="callout-content">
-<p>We don’t change global variables inside a function! The original value can still be accessed from <span class="highlight">outside</span> the function.</p>
+<p><strong>Download your <code>.py</code> before you leave.</strong> Closing the tab without downloading loses your work, and downloading is exactly how you just handed in the checkpoint.</p>
 </div>
 </div>
 </div>
-</div>
-</section>
-<section id="global-keyword" class="slide level2">
-<h2>Global Keyword</h2>
-<ul>
-<li>Still, we can change the value of <code>greeting</code> from <span class="highlight">inside</span> a function!</li>
-<li>By using the <code>global</code> keyword to modify a global variable</li>
-</ul>
-<div class="fragment">
-<div id="276aa8b0" class="cell" data-execution_count="15">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb29"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb29-1"><a></a>greeting <span class="op">=</span> <span class="st">"Hello, Stranger!"</span></span>
-<span id="cb29-2"><a></a></span>
-<span id="cb29-3"><a></a><span class="kw">def</span> greet(name):</span>
-<span id="cb29-4"><a></a>   <span class="kw">global</span> greeting</span>
-<span id="cb29-5"><a></a>   greeting <span class="op">=</span> <span class="ss">f"Hello, </span><span class="sc">{</span>name<span class="sc">}</span><span class="ss">!"</span></span>
-<span id="cb29-6"><a></a>   <span class="cf">return</span> greeting</span>
-<span id="cb29-7"><a></a></span>
-<span id="cb29-8"><a></a><span class="bu">print</span>(greet(<span class="st">"Students"</span>)) <span class="co"># Greet students</span></span>
-<span id="cb29-9"><a></a><span class="bu">print</span>(greeting) <span class="co"># Greet students again</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</div>
-<div class="cell fragment" data-execution_count="15">
-<div class="cell-output cell-output-stdout">
-<pre><code>Hello, Students!
-Hello, Students!</code></pre>
-</div>
-</div>
-</div>
-<div class="fragment">
-<p><span class="question">&gt;Question:</span> This can be confusing. Do you think you got the idea?</p>
 </div>
 </section></section>
 <section>
-<section id="classes" class="title-slide slide level1 title center">
-<h1><span class="flow">Classes</span></h1>
+<section id="wrap-up" class="title-slide slide level1 title center">
+<h1><span class="flow">Wrap-up</span></h1>
 
 </section>
-<section id="classes-1" class="slide level2">
-<h2>Classes</h2>
-<ul>
-<li>Classes are <span class="highlight">blueprints</span> for creating objects</li>
-<li>They encapsulate data (attributes) and behavior (methods)</li>
-<li>Objects are instances of classes</li>
-<li><strong>Methods are functions that are defined within a class</strong></li>
-</ul>
-<div class="fragment">
-<div id="e014b167" class="cell" data-execution_count="16">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb31"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb31-1"><a></a><span class="kw">class</span> Students: <span class="co"># Class definition</span></span>
-<span id="cb31-2"><a></a>    <span class="kw">def</span> know_answer(<span class="va">self</span>): <span class="co"># Method definition</span></span>
-<span id="cb31-3"><a></a>        <span class="bu">print</span>(<span class="ss">f"They know the answer to all questions."</span>)</span>
-<span id="cb31-4"><a></a></span>
-<span id="cb31-5"><a></a>student <span class="op">=</span> Students() <span class="co"># Object instantiation</span></span>
-<span id="cb31-6"><a></a>student.know_answer()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</div>
-<div class="cell fragment" data-execution_count="16">
-<div class="cell-output cell-output-stdout">
-<pre><code>They know the answer to all questions.</code></pre>
-</div>
-</div>
-</div>
-</section>
-<section id="self" class="slide level2">
-<h2>Self</h2>
-<ul>
-<li>Classes can be <span class="highlight">quite tricky at first</span>, especially the <code>self</code> keyword</li>
-<li>When we call <code>self</code> in a method, it refers to the object itself</li>
-<li>It is used to <strong>access</strong> the attributes and methods of the class</li>
-<li><code>self</code> always needs to be included in method definitions</li>
-</ul>
-<div class="fragment">
-<div id="e983b445" class="cell" data-execution_count="17">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb33"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb33-1"><a></a><span class="co"># This won't work as self is missing</span></span>
-<span id="cb33-2"><a></a><span class="kw">class</span> Students: <span class="co"># Class definition</span></span>
-<span id="cb33-3"><a></a>    <span class="kw">def</span> know_answer(): <span class="co"># Method definition without self</span></span>
-<span id="cb33-4"><a></a>        <span class="bu">print</span>(<span class="ss">f"They know the answer to all questions."</span>)</span>
-<span id="cb33-5"><a></a></span>
-<span id="cb33-6"><a></a>student <span class="op">=</span> Students()</span>
-<span id="cb33-7"><a></a>student.know_answer()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</div>
-</div>
-<div class="fragment">
-<p><span class="task">&gt;Task:</span> Try it yourself, what is the error?</p>
-</div>
-</section>
-<section id="naming-classes" class="slide level2">
-<h2>Naming Classes</h2>
-<ul>
-<li>Classes can be named anything, but it is common to use the plural form of their name (e.g., <code>People</code>)</li>
-<li>CamelCase is used for class names, and snake_case is used for method and attribute names (e.g., <code>TallPeople</code>)</li>
-<li>Classes are usually defined in a file with the same name as their class, but with a <code>.py</code> extension</li>
-</ul>
-<div class="fragment">
-<p><span class="question">Question:</span> Which of the following is a good class name? <code>smart_student</code>, <code>SmartStudent</code>, or <code>SmartStudents</code></p>
-</div>
-</section>
-<section id="class-attributes" class="slide level2">
-<h2>Class Attributes</h2>
-<ul>
-<li>Class attributes are attributes that are shared by all instances</li>
-<li>They are defined <strong>within</strong> the class but <strong>outside</strong> any methods</li>
-</ul>
-<div class="fragment">
-<p><span class="question">&gt;Question:</span> What do you think will happen here?</p>
-<div id="87c0c56e" class="cell" data-execution_count="18">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb34"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb34-1"><a></a><span class="kw">class</span> Students: <span class="co"># Class definition</span></span>
-<span id="cb34-2"><a></a>    smart <span class="op">=</span> <span class="va">True</span> <span class="co"># Class attribute</span></span>
-<span id="cb34-3"><a></a></span>
-<span id="cb34-4"><a></a>student_A <span class="op">=</span> Students() <span class="co"># Object instantiation student_A</span></span>
-<span id="cb34-5"><a></a>student_B <span class="op">=</span> Students() <span class="co"># Object instantiation student_B</span></span>
-<span id="cb34-6"><a></a></span>
-<span id="cb34-7"><a></a><span class="bu">print</span>(student_A.smart)</span>
-<span id="cb34-8"><a></a><span class="bu">print</span>(student_B.smart)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</div>
-<div class="cell fragment" data-execution_count="18">
-<div class="cell-output cell-output-stdout">
-<pre><code>True
-True</code></pre>
-</div>
-</div>
-</div>
-</section>
-<section id="instance-attributes" class="slide level2">
-<h2>Instance Attributes</h2>
-<ul>
-<li>Instance attributes are attributes unique to each class instance</li>
-<li>They are defined within the <code>__init__</code> method</li>
-</ul>
-<div id="6e55d9b7" class="cell" data-execution_count="19">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb36"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb36-1"><a></a><span class="kw">class</span> Students: <span class="co"># Class definition</span></span>
-<span id="cb36-2"><a></a>    <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>, name, is_smart): <span class="co"># Method for initalization</span></span>
-<span id="cb36-3"><a></a>        <span class="va">self</span>.name <span class="op">=</span> name</span>
-<span id="cb36-4"><a></a>        <span class="va">self</span>.smart <span class="op">=</span> is_smart</span>
-<span id="cb36-5"><a></a>    <span class="kw">def</span> knows_answer(<span class="va">self</span>): <span class="co"># Method to be called</span></span>
-<span id="cb36-6"><a></a>        <span class="cf">if</span> <span class="va">self</span>.smart:</span>
-<span id="cb36-7"><a></a>            <span class="bu">print</span>(<span class="ss">f"</span><span class="sc">{</span><span class="va">self</span><span class="sc">.</span>name<span class="sc">}</span><span class="ss"> knows the answer to the question."</span>)</span>
-<span id="cb36-8"><a></a>        <span class="cf">else</span>:</span>
-<span id="cb36-9"><a></a>            <span class="bu">print</span>(<span class="ss">f"</span><span class="sc">{</span><span class="va">self</span><span class="sc">.</span>name<span class="sc">}</span><span class="ss"> does not know the answer to the question."</span>)</span>
-<span id="cb36-10"><a></a></span>
-<span id="cb36-11"><a></a>student <span class="op">=</span> Students(<span class="st">"Buddy"</span>,<span class="va">False</span>) <span class="co"># Note, we don't need to call self here!</span></span>
-<span id="cb36-12"><a></a>student.knows_answer()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</div>
-<div class="cell fragment" data-execution_count="19">
-<div class="cell-output cell-output-stdout">
-<pre><code>Buddy does not know the answer to the question.</code></pre>
-</div>
-</div>
-</section>
-<section id="inheritance" class="slide level2">
-<h2>Inheritance</h2>
-<ul>
-<li>Inheritance allows a class to <span class="highlight">inherit attributes and methods</span></li>
-<li>The class that inherits is called the <strong>subclass</strong></li>
-<li>The class that is being inherited from is called the <strong>superclass</strong></li>
-</ul>
-<div class="fragment">
-<div class="callout callout-tip callout-style-simple">
-<div class="callout-body">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-content">
-<p>Don’t worry! It can be quite much right now.</p>
-</div>
-</div>
-</div>
-</div>
-</section>
-<section id="inheritance-in-action" class="slide level2">
-<h2>Inheritance in Action</h2>
-<div id="d5150072" class="cell" data-execution_count="20">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb38"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb38-1"><a></a><span class="kw">class</span> Students: <span class="co"># Superclass</span></span>
-<span id="cb38-2"><a></a>    <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>, name):</span>
-<span id="cb38-3"><a></a>        <span class="va">self</span>.name <span class="op">=</span> name</span>
-<span id="cb38-4"><a></a>    <span class="kw">def</span> when_asked(<span class="va">self</span>):</span>
-<span id="cb38-5"><a></a>        <span class="cf">pass</span></span>
-<span id="cb38-6"><a></a></span>
-<span id="cb38-7"><a></a><span class="kw">class</span> SmartStudents(Students): <span class="co"># Subclass</span></span>
-<span id="cb38-8"><a></a>    <span class="kw">def</span> when_asked(<span class="va">self</span>):</span>
-<span id="cb38-9"><a></a>        <span class="cf">return</span> <span class="ss">f"</span><span class="sc">{</span><span class="va">self</span><span class="sc">.</span>name<span class="sc">}</span><span class="ss"> knows the answer!"</span></span>
-<span id="cb38-10"><a></a></span>
-<span id="cb38-11"><a></a><span class="kw">class</span> LazyStudents(Students): <span class="co"># Subclass</span></span>
-<span id="cb38-12"><a></a>    <span class="kw">def</span> when_asked(<span class="va">self</span>):</span>
-<span id="cb38-13"><a></a>        <span class="cf">return</span> <span class="ss">f"</span><span class="sc">{</span><span class="va">self</span><span class="sc">.</span>name<span class="sc">}</span><span class="ss"> has to ask ChatGPT!"</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</div>
-<p><span class="task">&gt;Task:</span> Create two students. One is smart and the other one is lazy. Make sure that both students reaction to a question is printed.</p>
-</section>
-<section id="encapsulation" class="slide level2">
-<h2>Encapsulation</h2>
-<ul>
-<li>Means <span class="highlight">keeping related data and functions together</span></li>
-<li>Like a <strong>capsule</strong> that contains everything needed for that object</li>
-<li>Our <code>Student</code> class is already using encapsulation!</li>
-</ul>
-<div class="fragment">
-<div id="de8c8944" class="cell" data-execution_count="21">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb39"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb39-1"><a></a><span class="kw">class</span> Students:</span>
-<span id="cb39-2"><a></a>    <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>, name):</span>
-<span id="cb39-3"><a></a>        <span class="va">self</span>.name <span class="op">=</span> name        <span class="co"># Data (attribute)</span></span>
-<span id="cb39-4"><a></a></span>
-<span id="cb39-5"><a></a>    <span class="kw">def</span> when_asked(<span class="va">self</span>):       <span class="co"># Behavior (method)</span></span>
-<span id="cb39-6"><a></a>        <span class="cf">return</span> <span class="ss">f"</span><span class="sc">{</span><span class="va">self</span><span class="sc">.</span>name<span class="sc">}</span><span class="ss"> is thinking..."</span></span>
-<span id="cb39-7"><a></a></span>
-<span id="cb39-8"><a></a>alice <span class="op">=</span> Students(<span class="st">"Alice"</span>)</span>
-<span id="cb39-9"><a></a><span class="bu">print</span>(alice.when_asked())  <span class="co"># Data and behavior work together</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</div>
-<div class="cell fragment" data-execution_count="21">
-<div class="cell-output cell-output-stdout">
-<pre><code>Alice is thinking...</code></pre>
-</div>
-</div>
-</div>
+<section id="three-things-to-remember" class="slide level2">
+<h2>Three things to remember</h2>
+<ol type="1">
+<li>A <strong>function</strong> is written once with <code>def</code>, takes <strong>parameters</strong>, and hands a value back with <code>return</code>: <code>print</code> shows, <code>return</code> gives back (no <code>return</code> → <code>None</code>)</li>
+<li>Names inside a function are <strong>local</strong>: it can’t quietly change your variables, which is exactly what makes it safe to reuse</li>
+<li>A <strong>class</strong> bundles <strong>data</strong> (on <code>self</code>, via <code>__init__</code>) with <strong>behavior</strong> (methods). You’ll write just one small one today</li>
+</ol>
 <div class="fragment">
 <div class="callout callout-note callout-style-simple">
 <div class="callout-body">
@@ -915,29 +599,7 @@ True</code></pre>
 <i class="callout-icon"></i>
 </div>
 <div class="callout-content">
-<p>You are already doing encapsulation! Every time you create a class with attributes and methods, you’re bundling related data and behavior together. That’s the core idea!</p>
-</div>
-</div>
-</div>
-</div>
-</section>
-<section id="the-end" class="slide level2">
-<h2>The End</h2>
-<ul>
-<li>Interested in more detail about classes and OOP?</li>
-<li>Check out <span class="highlight">access modifiers, getters and setters</span></li>
-<li>They are definitely a bit more complicated for beginners…</li>
-<li>Though they are worth learning if you build <strong>complex programs</strong></li>
-</ul>
-<div class="fragment">
-<div class="callout callout-note callout-style-simple">
-<div class="callout-body">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-content">
-<p><strong>And that’s it for todays lecture!</strong><br>
-We now have covered the basics of funtions and classes. We will continue with some slightly easier topics in the next lectures.</p>
+<p><strong>Next time — Episode 4:</strong> the menu outgrows Kevin’s <strong>seventeen loose variables</strong> (<code>price1</code>, <code>price2</code>, <code>price_final_FINAL2</code>), and nobody can find anything. We give the data a <strong>shape</strong>: lists and dictionaries.</p>
 </div>
 </div>
 </div>
@@ -948,25 +610,26 @@ We now have covered the basics of funtions and classes. We will continue with so
 <h1><span class="flow">Literature</span></h1>
 
 </section>
-<section id="interesting-book-to-dive-deeper" class="slide level2">
-<h2>Interesting Book to dive deeper</h2>
+<section id="books-to-start-with" class="slide level2">
+<h2>Books to start with</h2>
 <ul>
-<li>Thomas, D., &amp; Hunt, A. (2019). The pragmatic programmer, 20th anniversary edition: Journey to mastery (Second edition). Addison-Wesley.</li>
+<li>Downey, A. B. (2024). Think Python: How to think like a computer scientist (Third edition). O’Reilly. <a href="https://greenteapress.com/wp/think-python-3rd-edition/">Link to free online version</a></li>
+<li>Elter, S. (2021). Schrödinger programmiert Python: Das etwas andere Fachbuch (1. Auflage). Rheinwerk Verlag.</li>
 </ul>
 <div class="fragment">
-<div class="callout callout-tip callout-style-simple">
+<div class="callout callout-note callout-style-simple">
 <div class="callout-body">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-content">
-<p>A fantastic textbook to understand the principles of modern software development and how to create effective software. Also available as a really good audiobook!</p>
+<p>Nothing new here, but these are still great books to start with!</p>
 </div>
 </div>
 </div>
 </div>
 <div class="fragment">
-<p>For more interesting literature to learn more about Python, take a look at the <a href="../general/literature.html">literature list</a> of this course.</p>
+<p>For more, see the <a href="../general/literature.html">literature list</a> of this course.</p>
 
 
 </div>

@@ -2,13 +2,13 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.9.37">
+<meta name="generator" content="quarto-1.9.38">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Dr.&nbsp;Tobias Vlćek">
 
-<title>Lecture VI - Using Modules and Packages – Programming with Python</title>
+<title>Lecture VI - Modules and the Standard Library – Programming with Python</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -75,14 +75,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="../site_libs/quarto-html/anchor.min.js"></script>
 <link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-b7f2a80d65e4e0c38aaa0b1d52f53cc7.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-dark-082c280d0266c6330b148fdd5ce36071.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-b7f2a80d65e4e0c38aaa0b1d52f53cc7.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-018a56f84f553ab074084cbaa177a14c.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-dark-c366505a46d5b46cf7fae82eb9e8fbfc.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-018a56f84f553ab074084cbaa177a14c.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
 <script src="../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../site_libs/bootstrap/bootstrap-428acf6cea68d18b6c08f06d03b90179.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="../site_libs/bootstrap/bootstrap-dark-0eb2fbb249c04a5542fe58ab745df198.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="light">
-<link href="../site_libs/bootstrap/bootstrap-428acf6cea68d18b6c08f06d03b90179.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-88e33f2e0ab1128d41062d5b01c8d931.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-dark-7515642ede3fcc5588bf9724b4d2b926.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-88e33f2e0ab1128d41062d5b01c8d931.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -401,29 +401,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
         <li class="sidebar-item">
  <span class="menu-text">***</span>
   </li>
-        <li class="sidebar-item sidebar-item-section">
-      <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-11" role="navigation" aria-expanded="false">
- <span class="menu-text">Assignments</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-11" role="navigation" aria-expanded="false" aria-label="Toggle section">
-            <i class="bi bi-chevron-right ms-2"></i>
-          </a> 
-      </div>
-      <ul id="quarto-sidebar-section-11" class="collapse list-unstyled sidebar-section depth1 ">  
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../assignments/assignment_01.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">01 Assignment</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../assignments/assignment_02.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">02 Assignment</span></a>
-  </div>
-</li>
-      </ul>
-  </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../general/cheatsheet.html" class="sidebar-item-text sidebar-link">
@@ -434,6 +411,18 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <div class="sidebar-item-container"> 
   <a href="../general/uv.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Installing Python</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../general/git-basics.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Git Basics</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../general/ai-tools.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">AI Tools</span></a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -458,53 +447,43 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#quick-recap-of-the-last-lecture" id="toc-quick-recap-of-the-last-lecture" class="nav-link active" data-scroll-target="#quick-recap-of-the-last-lecture"><span class="flow">Quick Recap of the last Lecture</span></a>
+  <li><a href="#checkpoint-3-sessions-iv" id="toc-checkpoint-3-sessions-iv" class="nav-link active" data-scroll-target="#checkpoint-3-sessions-iv">📋 Checkpoint 3 — Sessions I–V</a></li>
+  <li><a href="#episode-6-due-diligence-week" id="toc-episode-6-due-diligence-week" class="nav-link" data-scroll-target="#episode-6-due-diligence-week"><span class="flow">Episode 6: Due Diligence Week</span></a>
   <ul class="collapse">
-  <li><a href="#exceptions-and-error-handling" id="toc-exceptions-and-error-handling" class="nav-link" data-scroll-target="#exceptions-and-error-handling">Exceptions and Error Handling</a></li>
-  <li><a href="#try-except-blocks" id="toc-try-except-blocks" class="nav-link" data-scroll-target="#try-except-blocks">Try-Except Blocks</a></li>
-  <li><a href="#raising-exceptions" id="toc-raising-exceptions" class="nav-link" data-scroll-target="#raising-exceptions">Raising Exceptions</a></li>
-  <li><a href="#assertions" id="toc-assertions" class="nav-link" data-scroll-target="#assertions">Assertions</a></li>
-  <li><a href="#debugging" id="toc-debugging" class="nav-link" data-scroll-target="#debugging">Debugging</a></li>
+  <li><a href="#the-investor-walks-in" id="toc-the-investor-walks-in" class="nav-link" data-scroll-target="#the-investor-walks-in">The investor walks in</a></li>
+  <li><a href="#part-ii-the-rules-change" id="toc-part-ii-the-rules-change" class="nav-link" data-scroll-target="#part-ii-the-rules-change">Part II: the rules change</a></li>
   </ul></li>
-  <li><a href="#modules" id="toc-modules" class="nav-link" data-scroll-target="#modules"><span class="flow">Modules</span></a>
+  <li><a href="#dont-build-it-import-it" id="toc-dont-build-it-import-it" class="nav-link" data-scroll-target="#dont-build-it-import-it"><span class="flow">Don’t build it, import it</span></a>
   <ul class="collapse">
-  <li><a href="#why-modules" id="toc-why-modules" class="nav-link" data-scroll-target="#why-modules">Why Modules?</a></li>
-  <li><a href="#creating-modules" id="toc-creating-modules" class="nav-link" data-scroll-target="#creating-modules">Creating Modules</a></li>
-  <li><a href="#importing-functions-from-modules" id="toc-importing-functions-from-modules" class="nav-link" data-scroll-target="#importing-functions-from-modules">Importing functions from modules</a></li>
-  <li><a href="#built-in-modules" id="toc-built-in-modules" class="nav-link" data-scroll-target="#built-in-modules">Built-in Modules</a></li>
-  <li><a href="#importing-from-the-standard-library" id="toc-importing-from-the-standard-library" class="nav-link" data-scroll-target="#importing-from-the-standard-library">Importing from the Standard Library</a></li>
+  <li><a href="#whats-a-module" id="toc-whats-a-module" class="nav-link" data-scroll-target="#whats-a-module">What’s a module?</a></li>
+  <li><a href="#import-math-stop-rounding-by-hand" id="toc-import-math-stop-rounding-by-hand" class="nav-link" data-scroll-target="#import-math-stop-rounding-by-hand"><code>import math</code>: stop rounding by hand</a></li>
+  <li><a href="#from-statistics-import-..." id="toc-from-statistics-import-..." class="nav-link" data-scroll-target="#from-statistics-import-..."><code>from statistics import ...</code></a></li>
+  <li><a href="#aliases-a-shorter-name" id="toc-aliases-a-shorter-name" class="nav-link" data-scroll-target="#aliases-a-shorter-name">Aliases: a shorter name</a></li>
+  <li><a href="#looking-inside-a-module" id="toc-looking-inside-a-module" class="nav-link" data-scroll-target="#looking-inside-a-module">Looking inside a module</a></li>
+  <li><a href="#predict-which-way-does-floor-go" id="toc-predict-which-way-does-floor-go" class="nav-link" data-scroll-target="#predict-which-way-does-floor-go">Predict: which way does floor go?</a></li>
+  <li><a href="#answer-floor-goes-down-not-toward-zero" id="toc-answer-floor-goes-down-not-toward-zero" class="nav-link" data-scroll-target="#answer-floor-goes-down-not-toward-zero">Answer: floor goes down, not toward zero</a></li>
   </ul></li>
-  <li><a href="#standard-libraries" id="toc-standard-libraries" class="nav-link" data-scroll-target="#standard-libraries"><span class="flow">Standard Libraries</span></a>
+  <li><a href="#your-turn-10-minutes" id="toc-your-turn-10-minutes" class="nav-link" data-scroll-target="#your-turn-10-minutes">⚡ Your turn — 10 minutes</a></li>
+  <li><a href="#rehearsing-luck" id="toc-rehearsing-luck" class="nav-link" data-scroll-target="#rehearsing-luck"><span class="flow">Rehearsing luck</span></a>
   <ul class="collapse">
-  <li><a href="#random-numbers" id="toc-random-numbers" class="nav-link" data-scroll-target="#random-numbers">Random Numbers</a></li>
-  <li><a href="#random-numbers-in-action" id="toc-random-numbers-in-action" class="nav-link" data-scroll-target="#random-numbers-in-action">Random Numbers in Action</a></li>
-  <li><a href="#os-module" id="toc-os-module" class="nav-link" data-scroll-target="#os-module">OS Module</a></li>
-  <li><a href="#csv-module" id="toc-csv-module" class="nav-link" data-scroll-target="#csv-module">CSV Module</a></li>
-  <li><a href="#os-and-csv-module-in-action" id="toc-os-and-csv-module-in-action" class="nav-link" data-scroll-target="#os-and-csv-module-in-action">OS and CSV Module in Action</a></li>
+  <li><a href="#the-random-toolbox" id="toc-the-random-toolbox" class="nav-link" data-scroll-target="#the-random-toolbox">The <code>random</code> toolbox</a></li>
+  <li><a href="#run-it-again" id="toc-run-it-again" class="nav-link" data-scroll-target="#run-it-again">“Run it again”</a></li>
+  <li><a href="#random.seed-makes-luck-repeatable" id="toc-random.seed-makes-luck-repeatable" class="nav-link" data-scroll-target="#random.seed-makes-luck-repeatable"><code>random.seed</code> makes luck repeatable</a></li>
+  <li><a href="#predict-seeded-once-built-twice" id="toc-predict-seeded-once-built-twice" class="nav-link" data-scroll-target="#predict-seeded-once-built-twice">Predict: seeded once, built twice</a></li>
+  <li><a href="#answer-different" id="toc-answer-different" class="nav-link" data-scroll-target="#answer-different">Answer: different</a></li>
   </ul></li>
-  <li><a href="#regular-expressions" id="toc-regular-expressions" class="nav-link" data-scroll-target="#regular-expressions"><span class="flow">Regular Expressions</span></a>
+  <li><a href="#your-turn-10-minutes-1" id="toc-your-turn-10-minutes-1" class="nav-link" data-scroll-target="#your-turn-10-minutes-1">⚡ Your turn — 10 minutes</a></li>
+  <li><a href="#to-the-lab" id="toc-to-the-lab" class="nav-link" data-scroll-target="#to-the-lab"><span class="flow">To the Lab</span></a>
   <ul class="collapse">
-  <li><a href="#why-regular-expressions" id="toc-why-regular-expressions" class="nav-link" data-scroll-target="#why-regular-expressions">Why Regular Expressions?</a></li>
-  <li><a href="#using-regular-expressions" id="toc-using-regular-expressions" class="nav-link" data-scroll-target="#using-regular-expressions">Using Regular Expressions</a></li>
-  <li><a href="#literal-matching" id="toc-literal-matching" class="nav-link" data-scroll-target="#literal-matching">Literal Matching</a></li>
-  <li><a href="#special-character-the-dot-." id="toc-special-character-the-dot-." class="nav-link" data-scroll-target="#special-character-the-dot-.">Special Character: The Dot (.)</a></li>
-  <li><a href="#character-classes-abc" id="toc-character-classes-abc" class="nav-link" data-scroll-target="#character-classes-abc">Character Classes: <code>[abc]</code></a></li>
-  <li><a href="#common-pattern-shortcuts" id="toc-common-pattern-shortcuts" class="nav-link" data-scroll-target="#common-pattern-shortcuts">Common Pattern Shortcuts</a></li>
-  <li><a href="#quantifiers-how-many-times" id="toc-quantifiers-how-many-times" class="nav-link" data-scroll-target="#quantifiers-how-many-times">Quantifiers: How Many Times?</a></li>
-  <li><a href="#putting-it-together-email-finder" id="toc-putting-it-together-email-finder" class="nav-link" data-scroll-target="#putting-it-together-email-finder">Putting It Together: Email Finder</a></li>
-  <li><a href="#debugging-regular-expressions" id="toc-debugging-regular-expressions" class="nav-link" data-scroll-target="#debugging-regular-expressions">Debugging Regular Expressions</a></li>
-  <li><a href="#regex-in-action" id="toc-regex-in-action" class="nav-link" data-scroll-target="#regex-in-action">Regex in Action</a></li>
-  <li><a href="#advanced-regex-in-action" id="toc-advanced-regex-in-action" class="nav-link" data-scroll-target="#advanced-regex-in-action">Advanced Regex in Action</a></li>
+  <li><a href="#tonights-episode" id="toc-tonights-episode" class="nav-link" data-scroll-target="#tonights-episode">Tonight’s episode</a></li>
   </ul></li>
-  <li><a href="#packages" id="toc-packages" class="nav-link" data-scroll-target="#packages"><span class="flow">Packages</span></a>
+  <li><a href="#wrap-up" id="toc-wrap-up" class="nav-link" data-scroll-target="#wrap-up"><span class="flow">Wrap-up</span></a>
   <ul class="collapse">
-  <li><a href="#what-are-packages" id="toc-what-are-packages" class="nav-link" data-scroll-target="#what-are-packages">What are Packages?</a></li>
-  <li><a href="#installing-packages" id="toc-installing-packages" class="nav-link" data-scroll-target="#installing-packages">Installing Packages</a></li>
-  <li><a href="#virtual-environments" id="toc-virtual-environments" class="nav-link" data-scroll-target="#virtual-environments">Virtual Environments</a></li>
+  <li><a href="#three-things-to-remember" id="toc-three-things-to-remember" class="nav-link" data-scroll-target="#three-things-to-remember">Three things to remember</a></li>
   </ul></li>
   <li><a href="#literature" id="toc-literature" class="nav-link" data-scroll-target="#literature"><span class="flow">Literature</span></a>
   <ul class="collapse">
-  <li><a href="#interesting-books" id="toc-interesting-books" class="nav-link" data-scroll-target="#interesting-books">Interesting Books</a></li>
+  <li><a href="#books-to-start-with" id="toc-books-to-start-with" class="nav-link" data-scroll-target="#books-to-start-with">Books to start with</a></li>
   </ul></li>
   </ul>
 <div class="toc-actions"><ul><li><a href="https://github.com/beyondsimulations/Introduction-to-Python/blob/main/lectures/lec_06_modules.qmd" class="toc-action"><i class="bi bi-github"></i>View source</a></li><li><a href="https://github.com/beyondsimulations/Introduction-to-Python/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div><div class="quarto-alternate-formats"><h2>Other Formats</h2><ul><li><a href="lec_06_modules.pdf"><i class="bi bi-file-pdf"></i>PDF</a></li><li><a href="lec_06_presentation.html"><i class="bi bi-file-slides"></i>RevealJS</a></li></ul></div></nav>
@@ -514,7 +493,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../lectures/lec_06_modules.html">06 Modules</a></li><li class="breadcrumb-item"><a href="../lectures/lec_06_modules.html">Lecture</a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title">Lecture VI - Using Modules and Packages</h1>
+<h1 class="title">Lecture VI - Modules and the Standard Library</h1>
 <p class="subtitle lead">Programming with Python</p>
 </div>
 
@@ -528,7 +507,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </div>
   <div class="quarto-title-meta-contents">
         <p class="affiliation">
-            Kühne Logistics University Hamburg - Fall 2025
+            Kühne Logistics University Hamburg - Fall 2026
           </p>
       </div>
   </div>
@@ -545,50 +524,18 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<section id="quick-recap-of-the-last-lecture" class="level1 title">
-<h1 class="title"><span class="flow">Quick Recap of the last Lecture</span></h1>
-<section id="exceptions-and-error-handling" class="level2">
-<h2 class="anchored" data-anchor-id="exceptions-and-error-handling">Exceptions and Error Handling</h2>
+<section id="checkpoint-3-sessions-iv" class="level1 exercise-slide">
+<h1 class="exercise-slide">📋 Checkpoint 3 — Sessions I–V</h1>
+<p>The first <strong>40 minutes</strong> are the checkpoint. It starts <strong>now</strong>, before the investor sits down.</p>
 <ul>
-<li>Exceptions are <span class="highlight">discovered errors</span> during program execution</li>
-<li>Common built-in exceptions: <code>ValueError</code>, <code>TypeError</code>, etc.</li>
+<li><strong>Individual work</strong>: no AI, no neighbors, no chat</li>
+<li>The <strong>link and QR</strong> are handed out in class. Open it and start</li>
+<li>~6 short tasks: write code, trace code, fix a bug, answer a multiple choice</li>
+<li>It sweeps <strong>everything from Sessions I–V</strong>: variables, control flow, functions, data structures, errors</li>
 </ul>
+<!-- QR handed out live — never in the deck -->
 <p>. . .</p>
-<div id="b9cc423f" class="cell" data-execution_count="1">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> <span class="bu">int</span>(<span class="st">"Hello, World!"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</div>
-<p>. . .</p>
-<p><span class="errors">&gt;ValueError</span>: invalid literal for int() with base 10: ‘Hello, World!’</p>
-</section>
-<section id="try-except-blocks" class="level2">
-<h2 class="anchored" data-anchor-id="try-except-blocks">Try-Except Blocks</h2>
-<ul>
-<li><code>try-except</code> blocks are used to handle exceptions</li>
-<li><code>try</code> block contains code that might raise an exception</li>
-<li><code>except</code> block contains code executed if an exception occurs</li>
-</ul>
-<p>. . .</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="cf">try</span>:</span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Code that might raise an exception</span></span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>    <span class="co"># ...</span></span>
-<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="cf">except</span> ExceptionType <span class="im">as</span> e:</span>
-<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Code to handle the exception</span></span>
-<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>    <span class="co"># ...</span></span>
-<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a><span class="cf">except</span> <span class="pp">Exception</span> <span class="im">as</span> e:</span>
-<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Code to handle any other exceptions</span></span>
-<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>    <span class="co"># ...</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</section>
-<section id="raising-exceptions" class="level2">
-<h2 class="anchored" data-anchor-id="raising-exceptions">Raising Exceptions</h2>
-<ul>
-<li>We can raise exceptions using the <code>raise</code> statement</li>
-<li>Allows for more controlled error handling</li>
-<li>Can include custom error messages</li>
-</ul>
-<p>. . .</p>
-<div id="1e357831" class="cell" data-execution_count="2">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="cf">raise</span> <span class="pp">ValueError</span>(<span class="st">"This is a custom error message"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</div>
+<p><strong>When you’re done:</strong> menu → <em>Download</em> → <em>Download Python code</em> → upload the <code>.py</code> to the <strong>“Checkpoint 3”</strong> assignment on Moodle. <strong>No retakes</strong>: one sitting.</p>
 <p>. . .</p>
 <div class="callout callout-style-simple callout-note">
 <div class="callout-body d-flex">
@@ -596,92 +543,106 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <i class="callout-icon"></i>
 </div>
 <div class="callout-body-container">
-<p>The type if raised exception <strong>has to exist</strong> or you have to create a custom error type before.</p>
+<p>The green ✅ live checks are <strong>provisional</strong>. The final grading runs on our side. And take a breath: everything in it was rehearsed in the labs.</p>
 </div>
 </div>
 </div>
 </section>
-<section id="assertions" class="level2">
-<h2 class="anchored" data-anchor-id="assertions">Assertions</h2>
+<section id="episode-6-due-diligence-week" class="level1 title">
+<h1 class="title"><span class="flow">Episode 6: Due Diligence Week</span></h1>
+<section id="the-investor-walks-in" class="level2">
+<h2 class="anchored" data-anchor-id="the-investor-walks-in">The investor walks in</h2>
+<p>Pens down. The checkpoint is behind you. Now the reason today matters.</p>
+<p>. . .</p>
+<p>An hour ago the <strong>investor</strong> walked into the shop unannounced. It’s <strong>due-diligence week</strong>: before she signs anything, she wants to see how this place actually runs. Kevin offered her a coffee and a spreadsheet he “mostly trusts.”</p>
+<p>. . .</p>
+<p>She didn’t drink the coffee. She walked to the whiteboard, uncapped a marker, and wrote one question:</p>
+<blockquote class="blockquote">
+<p><strong>“Why is everything built from scratch?”</strong></p>
+</blockquote>
+</section>
+<section id="part-ii-the-rules-change" class="level2">
+<h2 class="anchored" data-anchor-id="part-ii-the-rules-change">Part II: the rules change</h2>
+<p>For five sessions you built everything by hand, on purpose. From today, that changes.</p>
 <ul>
-<li>Assertions check if a condition is true</li>
-<li>If the condition is false, an <code>AssertionError</code> is raised</li>
-<li>Useful for checking calculations or variable types</li>
+<li><strong>AI is now allowed and taught.</strong> We work <em>with</em> it, deliberately, starting in tonight’s lab.</li>
+<li><strong>The disclosure habit:</strong> every submission that used AI carries a <strong>one-line note</strong> saying what you used it for. Not a confession. A professional reflex.</li>
+<li><strong>The course chatbot</strong> (sidebar widget) now gives you <strong>full code</strong> on request, not just hints.</li>
 </ul>
 <p>. . .</p>
-<div id="62456b0e" class="cell" data-execution_count="3">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> <span class="op">-</span><span class="dv">1</span></span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="cf">assert</span> x <span class="op">&gt;</span> <span class="dv">0</span>, <span class="st">"x must be positive"</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</div>
+<p>Full details on the <a href="../general/ai-tools.html">AI Tools page</a>.</p>
 <p>. . .</p>
-<p><span class="question">Question:</span> Will this raise an AssertionError?</p>
+<p>You spent five sessions learning to think without a co-pilot. Now you get one — and you’ll be the pilot.</p>
 </section>
-<section id="debugging" class="level2">
-<h2 class="anchored" data-anchor-id="debugging">Debugging</h2>
+</section>
+<section id="dont-build-it-import-it" class="level1 title">
+<h1 class="title"><span class="flow">Don’t build it, import it</span></h1>
+<section id="whats-a-module" class="level2">
+<h2 class="anchored" data-anchor-id="whats-a-module">What’s a module?</h2>
+<p>The investor’s question has an answer: <strong>you shouldn’t build it from scratch.</strong> Most of what you need is already written.</p>
 <ul>
-<li>Debugging is the process of <span class="highlight">finding and fixing errors</span> in code</li>
-<li>Using <code>print</code> and <code>assert</code> statements</li>
-<li>Using logging</li>
-<li>Using built-in debugging tools in IDEs</li>
+<li>A <strong>module</strong> is a toolbox of code someone already wrote and tested</li>
+<li>Python ships with a whole shelf of them: the <strong>standard library</strong></li>
+<li>You <code>import</code> a module, then reach for the tools inside it with a dot: <code>math.ceil(...)</code></li>
 </ul>
 <p>. . .</p>
-<div class="callout callout-style-simple callout-tip">
-<div class="callout-body d-flex">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-body-container">
-<p>That’s why IDEs are so helpful in coding.</p>
-</div>
-</div>
-</div>
+<p>Kevin has been hand-rolling arithmetic for months. The standard library did most of it before he was born.</p>
 </section>
-</section>
-<section id="modules" class="level1 title">
-<h1 class="title"><span class="flow">Modules</span></h1>
-<section id="why-modules" class="level2">
-<h2 class="anchored" data-anchor-id="why-modules">Why Modules?</h2>
-<ul>
-<li>Modular programming breaks <span class="highlight">large tasks into smaller subtasks</span></li>
-<li>Modules are like <strong>building blocks</strong> for larger applications</li>
-<li>Individual modules can be <strong>combined</strong> to create a complete program</li>
-<li>This approach enhances code organization and reusability</li>
-</ul>
-</section>
-<section id="creating-modules" class="level2">
-<h2 class="anchored" data-anchor-id="creating-modules">Creating Modules</h2>
-<ul>
-<li>Modules are simply <code>.py</code> files containing Python code</li>
-<li>They can define <span class="highlight">functions, classes, and variables</span></li>
-<li>They can be imported into other Python scripts</li>
-</ul>
-<div id="031ddadb" class="cell" data-output-location="fragment" data-execution_count="4">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># The script new_module.py is in the same directory as this script</span></span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> lec_06_new_module <span class="im">as</span> new_module <span class="co"># Here we import the module</span></span>
-<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>new_module.my_function() <span class="co"># Here we call the function from the module</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<section id="import-math-stop-rounding-by-hand" class="level2">
+<h2 class="anchored" data-anchor-id="import-math-stop-rounding-by-hand"><code>import math</code>: stop rounding by hand</h2>
+<p>130 pastries need to ship. They go in crates of 48. How many crates? You need to round <strong>up</strong>: a half-full crate still ships as a whole one.</p>
+<div id="c58894ef" class="cell" data-output-location="fragment" data-execution_count="1">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> math</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>pastries <span class="op">=</span> <span class="dv">130</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>per_crate <span class="op">=</span> <span class="dv">48</span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>crates <span class="op">=</span> math.ceil(pastries <span class="op">/</span> per_crate)   <span class="co"># ceil = round UP</span></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(crates)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>Hello from my_function!</code></pre>
+<pre><code>3</code></pre>
 </div>
 </div>
-</section>
-<section id="importing-functions-from-modules" class="level2">
-<h2 class="anchored" data-anchor-id="importing-functions-from-modules">Importing functions from modules</h2>
-<ul>
-<li>We can also import <span class="highlight">specific functions</span> from a module</li>
-<li>This is useful if we only need a <strong>few functions</strong> from a module</li>
-<li>Analogously, we can import <strong>classes or variables</strong> from a module</li>
-</ul>
 <p>. . .</p>
-<div id="190c5379" class="cell" data-output-location="fragment" data-execution_count="5">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Multiple imports from a module are possible as well!</span></span>
-<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> lec_06_new_module <span class="im">import</span> another_function, yet_another_function</span>
-<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>another_function()</span>
-<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>yet_another_function()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p><code>130 / 48</code> is <code>2.7…</code>; <code>math.ceil</code> bumps it to <strong>3</strong>. No fiddling with “if there’s a remainder, add one.” The tool already knows.</p>
+</section>
+<section id="from-statistics-import-..." class="level2">
+<h2 class="anchored" data-anchor-id="from-statistics-import-..."><code>from statistics import ...</code></h2>
+<p>Sometimes you only want a couple of tools, not the whole box. Import them <strong>by name</strong> and use them directly, no <code>statistics.</code> prefix:</p>
+<div id="72775118" class="cell" data-output-location="fragment" data-execution_count="2">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> statistics <span class="im">import</span> mean, median</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>ratings <span class="op">=</span> [<span class="fl">4.5</span>, <span class="fl">4.8</span>, <span class="fl">1.0</span>, <span class="fl">5.0</span>, <span class="fl">4.2</span>]</span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(mean(ratings))     <span class="co"># the average</span></span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(median(ratings))   <span class="co"># the middle value</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>Hello from another_function!
-Hello from yet_another_function!</code></pre>
+<pre><code>3.9
+4.5</code></pre>
 </div>
 </div>
+<p>. . .</p>
+<p>One furious review (a <strong>1.0</strong>) drags the mean down to <strong>3.9</strong>. The investor asked for the <strong>typical</strong> rating: <code>median</code> sorts the values and hands back the middle one (<strong>4.5</strong>), unmoved by one angry customer.</p>
+</section>
+<section id="aliases-a-shorter-name" class="level2">
+<h2 class="anchored" data-anchor-id="aliases-a-shorter-name">Aliases: a shorter name</h2>
+<p>Some module names are long, or you’ll type them fifty times. <code>import ... as</code> gives a module a <strong>nickname</strong> for the rest of the file:</p>
+<div id="538d2a77" class="cell" data-output-location="fragment" data-execution_count="3">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> statistics <span class="im">as</span> stats</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(stats.median([<span class="fl">4.5</span>, <span class="fl">4.8</span>, <span class="fl">1.0</span>, <span class="fl">5.0</span>, <span class="fl">4.2</span>]))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>4.5</code></pre>
+</div>
+</div>
+<p>. . .</p>
+<p><code>stats.median</code> is the same tool as <code>statistics.median</code>, just less to type. You’ll meet fixed conventions soon (<code>import pandas as pd</code>); using the community’s nickname makes your code instantly readable to everyone else.</p>
+</section>
+<section id="looking-inside-a-module" class="level2">
+<h2 class="anchored" data-anchor-id="looking-inside-a-module">Looking inside a module</h2>
+<p>You don’t have to memorize a module. Python will tell you what’s in it and what each tool does:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> math</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="bu">dir</span>(math)          <span class="co"># lists every name in the module</span></span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a><span class="bu">help</span>(math.ceil)    <span class="co"># prints what ceil does, and how to call it</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>. . .</p>
 <div class="callout callout-style-simple callout-tip">
 <div class="callout-body d-flex">
@@ -689,525 +650,184 @@ Hello from yet_another_function!</code></pre>
 <i class="callout-icon"></i>
 </div>
 <div class="callout-body-container">
-<p>This is a good way to avoid importing too much from a module. In addition, we don’t need to use the module name before the function name when we use the functions from the module.</p>
+<p><code>dir()</code> is the drawer of tools; <code>help()</code> is the little instruction card taped to each one. Between them you can explore any module without leaving your editor.</p>
 </div>
 </div>
 </div>
 </section>
-<section id="built-in-modules" class="level2">
-<h2 class="anchored" data-anchor-id="built-in-modules">Built-in Modules</h2>
-<p>Python comes with many <span class="highlight">built-in modules</span>. Common ones include:</p>
-<table class="caption-top table">
-<thead>
-<tr class="header">
-<th>Module</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td><code>math</code></td>
-<td>Different mathematical functions</td>
-</tr>
-<tr class="even">
-<td><code>random</code></td>
-<td>Random number generation</td>
-</tr>
-<tr class="odd">
-<td><code>datetime</code></td>
-<td>Date and time manipulation</td>
-</tr>
-<tr class="even">
-<td><code>os</code></td>
-<td>Operating system interaction</td>
-</tr>
-<tr class="odd">
-<td><code>csv</code></td>
-<td>Reading and writing CSV files</td>
-</tr>
-<tr class="even">
-<td><code>re</code></td>
-<td>Regular expression operations</td>
-</tr>
-</tbody>
-</table>
+<section id="predict-which-way-does-floor-go" class="level2">
+<h2 class="anchored" data-anchor-id="predict-which-way-does-floor-go">Predict: which way does floor go?</h2>
+<p><code>math.ceil</code> rounds up. Its partner <code>math.floor</code> rounds <strong>down</strong>, but <em>down</em> from a negative number is the tricky part. What does the last line print?</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> math</span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(math.floor(<span class="op">-</span><span class="fl">2.5</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>a) <code>-2</code> b) <code>-3</code> c) an error</p>
+<p>. . .</p>
+<p><span class="question">Predict first</span>. Commit to an answer before the next slide.</p>
 </section>
-<section id="importing-from-the-standard-library" class="level2">
-<h2 class="anchored" data-anchor-id="importing-from-the-standard-library">Importing from the Standard Library</h2>
-<p><span class="task">Task:</span> Use Python’s <code>math</code> module to calculate the area of a circle.</p>
-<div id="ca5054b4" class="cell" data-execution_count="6">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Import the `math` module.</span></span>
-<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Define a function named `calculate_area` that takes the radius `r` as an argument.</span></span>
-<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Inside the function, use the `math.pi` constant to get the value of π.</span></span>
-<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Calculate the area in the function and return it.</span></span>
-<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Your code here</span></span>
-<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a><span class="cf">assert</span> calculate_area(<span class="dv">5</span>) <span class="op">==</span> <span class="fl">78.53981633974483</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<section id="answer-floor-goes-down-not-toward-zero" class="level2">
+<h2 class="anchored" data-anchor-id="answer-floor-goes-down-not-toward-zero">Answer: floor goes down, not toward zero</h2>
+<p><strong>b) <code>-3</code></strong> — <code>floor</code> always heads <strong>down</strong> the number line, toward more negative. From <code>-2.5</code>, down is <code>-3</code>, not the <code>-2</code> you’d get by rounding toward zero:</p>
+<div id="dfce37dc" class="cell" data-output-location="fragment" data-execution_count="4">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> math</span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(math.floor(<span class="op">-</span><span class="fl">2.5</span>))   <span class="co"># down the number line → -3</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>-3</code></pre>
+</div>
 </div>
 <p>. . .</p>
-<div class="callout callout-style-simple callout-tip">
-<div class="callout-body d-flex">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-body-container">
-<p>Note, how assertations can be used to check if a function works correctly.</p>
-</div>
-</div>
-</div>
+<p>“Down” means <em>smaller</em>, and <code>-3</code> is smaller than <code>-2</code>. Keep the number line in your head, not the distance to zero.</p>
 </section>
 </section>
-<section id="standard-libraries" class="level1 title">
-<h1 class="title"><span class="flow">Standard Libraries</span></h1>
-<section id="random-numbers" class="level2">
-<h2 class="anchored" data-anchor-id="random-numbers">Random Numbers</h2>
-<p>The <code>random</code> module provides functions for random numbers</p>
-<ul>
-<li><code>random.random()</code>: random float between 0 and 1</li>
-<li><code>random.uniform(a, b)</code>: random float between <code>a</code> and <code>b</code></li>
-<li><code>random.randint(a, b)</code>: random integer between <code>a</code> and <code>b</code></li>
-<li><code>random.choice(list)</code>: random element from a list</li>
-<li><code>random.shuffle(list)</code>: shuffle a list</li>
-</ul>
-<div class="callout callout-style-simple callout-tip">
-<div class="callout-body d-flex">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-body-container">
-<p>There are many more functions in the <code>random</code> module. Use the <code>help()</code> function to get more information about a module or function.</p>
-</div>
-</div>
-</div>
+<section id="your-turn-10-minutes" class="level1 exercise-slide">
+<h1 class="exercise-slide">⚡ Your turn — 10 minutes</h1>
+<p>Open the exercise (scan the QR or type the link):</p>
+<p><strong><a href="https://beyondsimulations.github.io/Introduction-to-Python/notebooks/ex_06_a/">beyondsimulations.github.io/Introduction-to-Python/notebooks/ex_06_a/</a></strong></p>
+<p><img src="assets/qr/ex_06_a.png" class="img-fluid" width="280"></p>
+<p>First <strong>predict</strong> what happens, then run it.</p>
 </section>
-<section id="random-numbers-in-action" class="level2">
-<h2 class="anchored" data-anchor-id="random-numbers-in-action">Random Numbers in Action</h2>
-<p><span class="task">Task:</span> Time for a task! Import the <code>random</code> module and create a <span class="highlight">small number guessing game</span> with the following requirements:</p>
-<div id="36083574" class="cell" data-execution_count="7">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="co"># </span><span class="al">TODO</span><span class="co">: Implement a random number guessing game.</span></span>
-<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="co"># The game should work as follows:</span></span>
-<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a><span class="co"># - The computer selects a random number between 1 and 10</span></span>
-<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a><span class="co"># - The user has to guess the number and has three guesses</span></span>
-<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a><span class="co"># - The computer tells the user whether their guess is too high, too low, or correct</span></span>
-<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a><span class="co"># - The computer should also print how many guesses the user made before guessing the number correctly</span></span>
-<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a><span class="co"># - It should also ask the user if they want to play again</span></span>
-<span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Your code here</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</div>
-<p>. . .</p>
-<div class="callout callout-style-simple callout-tip">
-<div class="callout-body d-flex">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-body-container">
-<p>Remember, that the input function always returns a string!</p>
-</div>
-</div>
-</div>
-</section>
-<section id="os-module" class="level2">
-<h2 class="anchored" data-anchor-id="os-module">OS Module</h2>
-<ul>
-<li>The <code>os</code> module provides functions to interact with the OS</li>
-<li><code>os.listdir(path)</code>: list all files and directories in a directory</li>
-<li><code>os.path.isfile(path)</code>: check if a path is a file</li>
-<li><code>os.path.exists(path)</code>: check if a path exists</li>
-<li><code>os.makedirs(path)</code>: create a directory</li>
-</ul>
-<p>. . .</p>
-<div class="callout callout-style-simple callout-tip">
-<div class="callout-body d-flex">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-body-container">
-<p>These can be quite useful for file handling. The <code>os</code> module contains many more functions, e.g.&nbsp;for changing the current working directory, for renaming and moving files, etc.</p>
-</div>
-</div>
-</div>
-</section>
-<section id="csv-module" class="level2">
-<h2 class="anchored" data-anchor-id="csv-module">CSV Module</h2>
-<ul>
-<li>Comma-Separated Values files are used to store tabular data</li>
-<li>Write: <code>csv.writer(file)</code></li>
-<li>Read: <code>csv.reader(file)</code></li>
-</ul>
-<p>. . .</p>
-<div id="84d38ac5" class="cell" data-execution_count="8">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> csv <span class="co"># Import the csv module</span></span>
+<section id="rehearsing-luck" class="level1 title">
+<h1 class="title"><span class="flow">Rehearsing luck</span></h1>
+<section id="the-random-toolbox" class="level2">
+<h2 class="anchored" data-anchor-id="the-random-toolbox">The <code>random</code> toolbox</h2>
+<p>The investor wants to see how the shop copes with a <strong>busy day</strong>, but the busy day hasn’t happened yet. So we <em>rehearse</em> it with made-up numbers. The <code>random</code> module deals them:</p>
+<div id="daef8263" class="cell" data-output-location="fragment" data-execution_count="5">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> random</span>
 <span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a><span class="cf">with</span> <span class="bu">open</span>(<span class="st">'secret_message.csv'</span>, <span class="st">'w'</span>) <span class="im">as</span> <span class="bu">file</span>: <span class="co"># Open the file in write mode</span></span>
-<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>    writer <span class="op">=</span> csv.writer(<span class="bu">file</span>) <span class="co"># Create a writer object</span></span>
-<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a>    writer.writerow([<span class="st">'Entry'</span>, <span class="st">'Message'</span>]) <span class="co"># Write the header</span></span>
-<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a>    writer.writerow([<span class="st">'1'</span>, <span class="st">'Do not open the file'</span>]) <span class="co"># Write the first row</span></span>
-<span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a>    writer.writerow([<span class="st">'2'</span>, <span class="st">'This is a secret message'</span>]) <span class="co"># Write the second row</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(random.random())                       <span class="co"># a float in [0.0, 1.0)</span></span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(random.randint(<span class="dv">1</span>, <span class="dv">20</span>))                  <span class="co"># an integer 1–20, ends included</span></span>
+<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(random.choice([<span class="st">"latte"</span>, <span class="st">"mocha"</span>, <span class="st">"tea"</span>]))  <span class="co"># one item, picked at random</span></span>
+<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a>queue <span class="op">=</span> [<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">5</span>]</span>
+<span id="cb11-8"><a href="#cb11-8" aria-hidden="true" tabindex="-1"></a>random.shuffle(queue)                         <span class="co"># reorders the list in place</span></span>
+<span id="cb11-9"><a href="#cb11-9" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(queue)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>0.1678239958315848
+16
+tea
+[5, 2, 1, 4, 3]</code></pre>
+</div>
 </div>
 <p>. . .</p>
-<p><span class="task">Task:</span> Copy the code and run it. Do you have a new file?</p>
+<p>Four tools, four flavors of luck: a raw float, a bounded integer, a pick from a list, and a reshuffle.</p>
 </section>
-<section id="os-and-csv-module-in-action" class="level2">
-<h2 class="anchored" data-anchor-id="os-and-csv-module-in-action">OS and CSV Module in Action</h2>
-<p><span class="task">Task:</span> Time for another task! Do the following:</p>
-<div id="d9608fb9" class="cell" data-execution_count="9">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="co"># First, check if a directory called `module_directory` exists.</span></span>
-<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a><span class="co"># If it does not, create it.</span></span>
-<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Then, list all files in the current directory and save them in a CSV file called `current_files.csv` in the new `module_directory`.</span></span>
-<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> os</span>
-<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> <span class="kw">not</span> os.path.exists(<span class="st">'module_directory'</span>):</span>
-<span id="cb12-7"><a href="#cb12-7" aria-hidden="true" tabindex="-1"></a>    <span class="cf">pass</span></span>
-<span id="cb12-8"><a href="#cb12-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Your code here</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</div>
-</section>
-</section>
-<section id="regular-expressions" class="level1 title">
-<h1 class="title"><span class="flow">Regular Expressions</span></h1>
-<section id="why-regular-expressions" class="level2">
-<h2 class="anchored" data-anchor-id="why-regular-expressions">Why Regular Expressions?</h2>
-<p>Let’s see the <span class="highlight">limitations of basic string methods</span>:</p>
-<div id="96f44989" class="cell" data-output-location="fragment" data-execution_count="10">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>text <span class="op">=</span> <span class="st">"Contact us at: tobias@beyondsimulations.com or call 123-456-7890"</span></span>
+<section id="run-it-again" class="level2">
+<h2 class="anchored" data-anchor-id="run-it-again">“Run it again”</h2>
+<p>The investor leans over and says: <strong>“Run it again.”</strong> Kevin does, and gets <strong>completely different numbers</strong>:</p>
+<div id="cc70c3f7" class="cell" data-output-location="fragment" data-execution_count="6">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> random</span>
 <span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Find email - how would you do this with basic string methods?</span></span>
-<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Find phone number - what about this?</span></span>
-<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a><span class="co"># What if there are multiple emails with different formats?</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>([random.randint(<span class="dv">1</span>, <span class="dv">20</span>) <span class="cf">for</span> _ <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">5</span>)])   <span class="co"># one run</span></span>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>([random.randint(<span class="dv">1</span>, <span class="dv">20</span>) <span class="cf">for</span> _ <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">5</span>)])   <span class="co"># ...and again — different!</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[5, 7, 5, 8, 11]
+[3, 3, 3, 15, 19]</code></pre>
+</div>
 </div>
 <p>. . .</p>
-<p>Regular expressions solve these problems by finding <strong>patterns</strong>! Let’s work with this sample text throughout our examples:</p>
-<p>. . .</p>
-<div id="17c50b3d" class="cell" data-execution_count="11">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>sample_text <span class="op">=</span> <span class="st">"""</span></span>
-<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a><span class="st">User john123 logged in at 2024-01-15</span></span>
-<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a><span class="st">User mary_doe logged in at 2024-01-16</span></span>
-<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a><span class="st">User bob logged in at 2024-01-17</span></span>
-<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a><span class="st">Error: user invalid_user! failed login</span></span>
-<span id="cb14-6"><a href="#cb14-6" aria-hidden="true" tabindex="-1"></a><span class="st">"""</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</div>
+<p>Two runs, two answers. That’s <em>exactly</em> what random is supposed to do, but it’s useless for due diligence. A projection nobody can reproduce is a projection nobody can trust.</p>
 </section>
-<section id="using-regular-expressions" class="level2">
-<h2 class="anchored" data-anchor-id="using-regular-expressions">Using Regular Expressions</h2>
-<ul>
-<li><code>re.search(pat, str)</code>: search for a pattern in a string</li>
-<li><code>re.findall(pat, str)</code>: find all occurrences of a pattern</li>
-<li><code>re.fullmatch(pat, str)</code>: check if entire string matches pattern</li>
-<li><code>re.sub(pat, repl, str)</code>: replace a pattern in a string</li>
-<li><code>re.split(pat, str)</code>: split a string by a pattern</li>
-</ul>
-<p>. . .</p>
-<div class="callout callout-style-simple callout-note">
-<div class="callout-body d-flex">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-body-container">
-<p>As always, there is more. But these are a good foundation to build upon.</p>
-</div>
-</div>
-</div>
-</section>
-<section id="literal-matching" class="level2">
-<h2 class="anchored" data-anchor-id="literal-matching">Literal Matching</h2>
-<div id="b4eb3b11" class="cell" data-output-location="fragment" data-execution_count="12">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> re</span>
+<section id="random.seed-makes-luck-repeatable" class="level2">
+<h2 class="anchored" data-anchor-id="random.seed-makes-luck-repeatable"><code>random.seed</code> makes luck repeatable</h2>
+<p><code>random.seed(n)</code> fixes the starting point of the number stream. Same seed → <strong>same sequence, every time</strong>:</p>
+<div id="bdf3124f" class="cell" data-output-location="fragment" data-execution_count="7">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> random</span>
 <span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>sample_text <span class="op">=</span> <span class="st">"""</span></span>
-<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a><span class="st">User john123 logged in at 2024-01-15</span></span>
-<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a><span class="st">User mary_doe logged in at 2024-01-16</span></span>
-<span id="cb15-6"><a href="#cb15-6" aria-hidden="true" tabindex="-1"></a><span class="st">User bob logged in at 2024-01-17</span></span>
-<span id="cb15-7"><a href="#cb15-7" aria-hidden="true" tabindex="-1"></a><span class="st">Error: user invalid_user! failed login</span></span>
-<span id="cb15-8"><a href="#cb15-8" aria-hidden="true" tabindex="-1"></a><span class="st">"""</span></span>
-<span id="cb15-9"><a href="#cb15-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb15-10"><a href="#cb15-10" aria-hidden="true" tabindex="-1"></a><span class="co"># Find exact word "User"</span></span>
-<span id="cb15-11"><a href="#cb15-11" aria-hidden="true" tabindex="-1"></a>result <span class="op">=</span> re.findall(<span class="vs">r'User'</span>, sample_text)</span>
-<span id="cb15-12"><a href="#cb15-12" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Found 'User': </span><span class="sc">{</span>result<span class="sc">}</span><span class="ss">"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>random.seed(<span class="dv">7</span>)</span>
+<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>([random.randint(<span class="dv">1</span>, <span class="dv">20</span>) <span class="cf">for</span> _ <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">5</span>)])   <span class="co"># → [11, 5, 13, 2, 3]</span></span>
+<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-6"><a href="#cb15-6" aria-hidden="true" tabindex="-1"></a>random.seed(<span class="dv">7</span>)</span>
+<span id="cb15-7"><a href="#cb15-7" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>([random.randint(<span class="dv">1</span>, <span class="dv">20</span>) <span class="cf">for</span> _ <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">5</span>)])   <span class="co"># same seed → same list</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>Found 'User': ['User', 'User', 'User']</code></pre>
+<pre><code>[11, 5, 13, 2, 3]
+[11, 5, 13, 2, 3]</code></pre>
 </div>
 </div>
 <p>. . .</p>
-<p><span class="task">Task:</span> Find all occurrences of “logged” in the sample text.</p>
+<p>Both lines print <code>[11, 5, 13, 2, 3]</code>. The numbers still <em>look</em> random, but now the investor can run it herself and land on the identical result.</p>
 </section>
-<section id="special-character-the-dot-." class="level2">
-<h2 class="anchored" data-anchor-id="special-character-the-dot-.">Special Character: The Dot (.)</h2>
-<p>The <code>.</code> matches <strong>any single character</strong>:</p>
-<div id="65802572" class="cell" data-output-location="fragment" data-execution_count="13">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb17"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>sample_text <span class="op">=</span> <span class="st">"""</span></span>
-<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a><span class="st">User john123 logged in at 2024-01-15</span></span>
-<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a><span class="st">User mary_doe logged in at 2024-01-16</span></span>
-<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a><span class="st">User bob logged in at 2024-01-17</span></span>
-<span id="cb17-5"><a href="#cb17-5" aria-hidden="true" tabindex="-1"></a><span class="st">Error: user invalid_user! failed login</span></span>
-<span id="cb17-6"><a href="#cb17-6" aria-hidden="true" tabindex="-1"></a><span class="st">"""</span></span>
-<span id="cb17-7"><a href="#cb17-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb17-8"><a href="#cb17-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Find "User" followed by any character, then "o"</span></span>
-<span id="cb17-9"><a href="#cb17-9" aria-hidden="true" tabindex="-1"></a>result <span class="op">=</span> re.findall(<span class="vs">r'bo</span><span class="dv">.</span><span class="vs">'</span>, sample_text)</span>
-<span id="cb17-10"><a href="#cb17-10" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Found 'bo.': </span><span class="sc">{</span>result<span class="sc">}</span><span class="ss">"</span>)  <span class="co"># This finds "bob"</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<section id="predict-seeded-once-built-twice" class="level2">
+<h2 class="anchored" data-anchor-id="predict-seeded-once-built-twice">Predict: seeded once, built twice</h2>
+<p>Kevin seeds <strong>once</strong>, then builds two lists the same way, without touching the seed in between. Are <code>first</code> and <code>second</code> equal?</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb17"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> random</span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a>random.seed(<span class="dv">42</span>)</span>
+<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a>first  <span class="op">=</span> [random.randint(<span class="dv">1</span>, <span class="dv">20</span>) <span class="cf">for</span> _ <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">3</span>)]</span>
+<span id="cb17-5"><a href="#cb17-5" aria-hidden="true" tabindex="-1"></a>second <span class="op">=</span> [random.randint(<span class="dv">1</span>, <span class="dv">20</span>) <span class="cf">for</span> _ <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">3</span>)]</span>
+<span id="cb17-6"><a href="#cb17-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-7"><a href="#cb17-7" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(first)</span>
+<span id="cb17-8"><a href="#cb17-8" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(second)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>a) equal: the seed is set, so both come out the same b) different: the second list continues where the first stopped c) an error</p>
+<p>. . .</p>
+<p><span class="question">Predict first</span>. Commit to an answer before the next slide.</p>
+</section>
+<section id="answer-different" class="level2">
+<h2 class="anchored" data-anchor-id="answer-different">Answer: different</h2>
+<p><strong>b) different</strong> — a seed doesn’t freeze <code>random</code>, it fixes the whole <strong>sequence</strong>. The first list eats the first three numbers of the stream; the second list simply <strong>continues</strong> from number four:</p>
+<div id="525c6b27" class="cell" data-output-location="fragment" data-execution_count="8">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb18"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> random</span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a>random.seed(<span class="dv">42</span>)</span>
+<span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a>first  <span class="op">=</span> [random.randint(<span class="dv">1</span>, <span class="dv">20</span>) <span class="cf">for</span> _ <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">3</span>)]</span>
+<span id="cb18-5"><a href="#cb18-5" aria-hidden="true" tabindex="-1"></a>second <span class="op">=</span> [random.randint(<span class="dv">1</span>, <span class="dv">20</span>) <span class="cf">for</span> _ <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">3</span>)]</span>
+<span id="cb18-6"><a href="#cb18-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-7"><a href="#cb18-7" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(first)    <span class="co"># [4, 1, 9]  — the stream's first three numbers</span></span>
+<span id="cb18-8"><a href="#cb18-8" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(second)   <span class="co"># [8, 8, 5]  — the stream carries on</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>Found 'bo.': ['bob']</code></pre>
+<pre><code>[4, 1, 9]
+[8, 8, 5]</code></pre>
 </div>
 </div>
 <p>. . .</p>
-<p><span class="task">Task:</span> Use <code>.</code> to find all 4-letter words starting with “use”.</p>
+<p>To get the <em>same</em> list twice, you re-seed before each run, and that rewinds the stream to the start. One seed, one fixed sequence: that’s the entire job of a seed.</p>
+</section>
+</section>
+<section id="your-turn-10-minutes-1" class="level1 exercise-slide">
+<h1 class="exercise-slide">⚡ Your turn — 10 minutes</h1>
+<p>Open the exercise (scan the QR or type the link):</p>
+<p><strong><a href="https://beyondsimulations.github.io/Introduction-to-Python/notebooks/ex_06_b/">beyondsimulations.github.io/Introduction-to-Python/notebooks/ex_06_b/</a></strong></p>
+<p><img src="assets/qr/ex_06_b.png" class="img-fluid" width="280"></p>
+<p>First <strong>predict</strong> what happens, then run it.</p>
+</section>
+<section id="to-the-lab" class="level1 title">
+<h1 class="title"><span class="flow">To the Lab</span></h1>
+<section id="tonights-episode" class="level2">
+<h2 class="anchored" data-anchor-id="tonights-episode">Tonight’s episode</h2>
+<ul>
+<li>Head to the lab notebook: <a href="../tutorials/tut_06_modules.html">Episode 6 — Due Diligence Week</a></li>
+<li>You’ll <code>import math</code> and <code>statistics</code> for investor-grade counts and averages, then use <code>random</code> (with and without a <code>seed</code>) to rehearse a busy day she can reproduce</li>
+<li>It’s the <strong>first lab where AI is allowed</strong>, so try the chatbot, and add your one-line disclosure note</li>
+<li>It runs entirely in your browser: no setup, just click and code</li>
+</ul>
 <p>. . .</p>
-<div class="callout callout-style-simple callout-tip">
+<div class="callout callout-style-simple callout-important">
 <div class="callout-body d-flex">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-body-container">
-<p>The dot is like a wildcard - it fills in for any single character you don’t know.</p>
+<p><strong>Download your <code>.py</code> before you leave.</strong> Closing the tab without downloading loses your work, and downloading is exactly how you handed in the checkpoint this morning.</p>
 </div>
 </div>
 </div>
 </section>
-<section id="character-classes-abc" class="level2">
-<h2 class="anchored" data-anchor-id="character-classes-abc">Character Classes: <code>[abc]</code></h2>
-<p>Square brackets match <strong>any character inside them</strong>:</p>
-<div id="c423f33b" class="cell" data-output-location="fragment" data-execution_count="14">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb19"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Find usernames that start with 'j' or 'm'</span></span>
-<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>result <span class="op">=</span> re.findall(<span class="vs">r'User </span><span class="pp">[jm]</span><span class="dv">\w</span><span class="op">+</span><span class="vs">'</span>, sample_text)</span>
-<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Users starting with j or m: </span><span class="sc">{</span>result<span class="sc">}</span><span class="ss">"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>Users starting with j or m: ['User john123', 'User mary_doe']</code></pre>
-</div>
-</div>
-<p>. . .</p>
-<p><strong>Useful character classes:</strong></p>
-<ul>
-<li><code>[abc]</code> - matches a, b, or c</li>
-<li><code>[a-z]</code> - matches any lowercase letter</li>
-<li><code>[0-9]</code> - matches any digit</li>
-<li><code>[a-zA-Z0-9]</code> - matches letters and numbers</li>
-</ul>
-<p>. . .</p>
-<p><span class="task">Task:</span> Find all years.</p>
 </section>
-<section id="common-pattern-shortcuts" class="level2">
-<h2 class="anchored" data-anchor-id="common-pattern-shortcuts">Common Pattern Shortcuts</h2>
-<p>Instead of writing <code>[0-9]</code>, we can use shortcuts:</p>
-<table class="caption-top table">
-<thead>
-<tr class="header">
-<th>Shortcut</th>
-<th>Meaning</th>
-<th>Same as</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td><code>\d</code></td>
-<td>Any digit</td>
-<td><code>[0-9]</code></td>
-</tr>
-<tr class="even">
-<td><code>\w</code></td>
-<td>Word character</td>
-<td><code>[a-zA-Z0-9_]</code></td>
-</tr>
-<tr class="odd">
-<td><code>\s</code></td>
-<td>Whitespace</td>
-<td><code>[ \t\n]</code></td>
-</tr>
-</tbody>
-</table>
-<p>. . .</p>
-<div id="4b9bb09d" class="cell" data-output-location="fragment" data-execution_count="15">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb21"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Find dates using \d (much cleaner!)</span></span>
-<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>result <span class="op">=</span> re.findall(<span class="vs">r'</span><span class="dv">\d\d\d\d</span><span class="vs">-</span><span class="dv">\d\d</span><span class="vs">-</span><span class="dv">\d\d</span><span class="vs">'</span>, sample_text)</span>
-<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Found dates: </span><span class="sc">{</span>result<span class="sc">}</span><span class="ss">"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>Found dates: ['2024-01-15', '2024-01-16', '2024-01-17']</code></pre>
-</div>
-</div>
-<p>. . .</p>
-<p><span class="task">Task:</span> Find all usernames using <code>\w</code>.</p>
-</section>
-<section id="quantifiers-how-many-times" class="level2">
-<h2 class="anchored" data-anchor-id="quantifiers-how-many-times">Quantifiers: How Many Times?</h2>
-<p>Instead of repeating <code>\d\d\d\d</code>, we can specify quantities:</p>
-<table class="caption-top table">
-<thead>
-<tr class="header">
-<th>Quantifier</th>
-<th>Meaning</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td><code>{4}</code></td>
-<td>Exactly 4 times</td>
-</tr>
-<tr class="even">
-<td><code>{2,4}</code></td>
-<td>Between 2 and 4 times</td>
-</tr>
-<tr class="odd">
-<td><code>+</code></td>
-<td>One or more times</td>
-</tr>
-<tr class="even">
-<td><code>*</code></td>
-<td>Zero or more times</td>
-</tr>
-<tr class="odd">
-<td><code>?</code></td>
-<td>Zero or one time</td>
-</tr>
-</tbody>
-</table>
-<p>. . .</p>
-<div id="caecff21" class="cell" data-output-location="fragment" data-execution_count="16">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb23"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Much cleaner date pattern!</span></span>
-<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a>result <span class="op">=</span> re.findall(<span class="vs">r'</span><span class="dv">\d</span><span class="op">{4}</span><span class="vs">-</span><span class="dv">\d</span><span class="op">{2}</span><span class="vs">-</span><span class="dv">\d</span><span class="op">{2}</span><span class="vs">'</span>, sample_text)</span>
-<span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Dates with quantifiers: </span><span class="sc">{</span>result<span class="sc">}</span><span class="ss">"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>Dates with quantifiers: ['2024-01-15', '2024-01-16', '2024-01-17']</code></pre>
-</div>
-</div>
-<p>. . .</p>
-<p><span class="task">Task:</span> Find usernames of any length with <code>\w+</code>.</p>
-</section>
-<section id="putting-it-together-email-finder" class="level2">
-<h2 class="anchored" data-anchor-id="putting-it-together-email-finder">Putting It Together: Email Finder</h2>
-<p><span class="highlight">Let’s build an email pattern step by step!</span></p>
-<p>. . .</p>
-<div id="76f1d9db" class="cell" data-output-location="fragment" data-execution_count="17">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb25"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a>email_text <span class="op">=</span> <span class="st">"Contact: john@email.com, mary.doe@company.org, or bob@test.co.uk"</span></span>
-<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Step 1: Basic pattern</span></span>
-<span id="cb25-4"><a href="#cb25-4" aria-hidden="true" tabindex="-1"></a>basic <span class="op">=</span> <span class="vs">r'</span><span class="dv">\w</span><span class="op">+</span><span class="vs">@</span><span class="dv">\w</span><span class="op">+</span><span class="ch">\.</span><span class="dv">\w</span><span class="op">+</span><span class="vs">'</span></span>
-<span id="cb25-5"><a href="#cb25-5" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Basic emails:"</span>, re.findall(basic, email_text))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>Basic emails: ['john@email.com', 'doe@company.org', 'bob@test.co']</code></pre>
-</div>
-</div>
-<p>. . .</p>
-<div id="94003766" class="cell" data-output-location="fragment" data-execution_count="18">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb27"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Step 2: Handle dots in names</span></span>
-<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a>better <span class="op">=</span> <span class="vs">r'</span><span class="pp">[</span><span class="dv">\w</span><span class="pp">.]</span><span class="op">+</span><span class="vs">@</span><span class="dv">\w</span><span class="op">+</span><span class="ch">\.</span><span class="dv">\w</span><span class="op">+</span><span class="vs">'</span></span>
-<span id="cb27-3"><a href="#cb27-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Better emails:"</span>, re.findall(better, email_text))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>Better emails: ['john@email.com', 'mary.doe@company.org', 'bob@test.co']</code></pre>
-</div>
-</div>
-<p>. . .</p>
-<div id="f75cd3ec" class="cell" data-output-location="fragment" data-execution_count="19">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb29"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Step 3: Handle multiple domain parts</span></span>
-<span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a>best <span class="op">=</span> <span class="vs">r'</span><span class="pp">[</span><span class="dv">\w</span><span class="pp">.]</span><span class="op">+</span><span class="vs">@</span><span class="pp">[</span><span class="dv">\w</span><span class="pp">.]</span><span class="op">+</span><span class="ch">\.</span><span class="dv">\w</span><span class="op">+</span><span class="vs">'</span></span>
-<span id="cb29-3"><a href="#cb29-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Best emails:"</span>, re.findall(best, email_text))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>Best emails: ['john@email.com', 'mary.doe@company.org', 'bob@test.co.uk']</code></pre>
-</div>
-</div>
-</section>
-<section id="debugging-regular-expressions" class="level2">
-<h2 class="anchored" data-anchor-id="debugging-regular-expressions">Debugging Regular Expressions</h2>
-<p><span class="highlight">When your regex doesn’t work:</span></p>
+<section id="wrap-up" class="level1 title">
+<h1 class="title"><span class="flow">Wrap-up</span></h1>
+<section id="three-things-to-remember" class="level2">
+<h2 class="anchored" data-anchor-id="three-things-to-remember">Three things to remember</h2>
 <ol type="1">
-<li><strong>Test with simple examples first</strong></li>
-<li><strong>Build the pattern gradually</strong></li>
-<li><strong>Use online tools</strong> like <a href="https://regexr.com">regexr.com</a></li>
-<li><strong>Print intermediate results</strong></li>
+<li><strong>Don’t build it, import it.</strong> A <strong>module</strong> is a toolbox someone already wrote: <code>import math</code>, <code>from statistics import median</code>, <code>import ... as</code> for a nickname. <code>dir()</code> and <code>help()</code> show you what’s inside.</li>
+<li><strong><code>random</code> deals the luck</strong> (<code>random()</code>, <code>randint</code>, <code>choice</code>, <code>shuffle</code>), perfect for rehearsing a day that hasn’t happened yet.</li>
+<li><strong><code>random.seed(n)</code> makes luck repeatable.</strong> Same seed → same sequence, every run. A projection you can reproduce is a projection an investor can trust.</li>
 </ol>
 <p>. . .</p>
-<div class="callout callout-style-simple callout-tip">
-<div class="callout-body d-flex">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-body-container">
-<p>Remember: regex can be complex, but you don’t need to master everything at once. Start simple and build up!</p>
-</div>
-</div>
-</div>
-</section>
-<section id="regex-in-action" class="level2">
-<h2 class="anchored" data-anchor-id="regex-in-action">Regex in Action</h2>
-<p><span class="task">Task</span>: Replace all occurences of <code>Python</code> by “SECRET”.</p>
-<div id="08cd2c19" class="cell" data-execution_count="20">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb31"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> re</span>
-<span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a>string <span class="op">=</span> <span class="st">"""</span></span>
-<span id="cb31-3"><a href="#cb31-3" aria-hidden="true" tabindex="-1"></a><span class="st">Python is a programming language.</span></span>
-<span id="cb31-4"><a href="#cb31-4" aria-hidden="true" tabindex="-1"></a><span class="st">Python is also a snake.</span></span>
-<span id="cb31-5"><a href="#cb31-5" aria-hidden="true" tabindex="-1"></a><span class="st">Monty Python was a theater group.</span></span>
-<span id="cb31-6"><a href="#cb31-6" aria-hidden="true" tabindex="-1"></a><span class="st">"""</span></span>
-<span id="cb31-7"><a href="#cb31-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Your code here</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</div>
-</section>
-<section id="advanced-regex-in-action" class="level2">
-<h2 class="anchored" data-anchor-id="advanced-regex-in-action">Advanced Regex in Action</h2>
-<p><span class="task">Task:</span> Use regular expressions to extract all dates from the text.</p>
-<div id="c5db89a6" class="cell" data-execution_count="21">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb32"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a>dates <span class="op">=</span> <span class="st">"""</span></span>
-<span id="cb32-2"><a href="#cb32-2" aria-hidden="true" tabindex="-1"></a><span class="st">On 07-04-1776, the United States declared its independence. Many years later,</span></span>
-<span id="cb32-3"><a href="#cb32-3" aria-hidden="true" tabindex="-1"></a><span class="st">on 11-09-1989, the Berlin Wall fell. In more recent history, the COVID-19</span></span>
-<span id="cb32-4"><a href="#cb32-4" aria-hidden="true" tabindex="-1"></a><span class="st">pandemic was declared a global emergency on 04-11-2020.</span></span>
-<span id="cb32-5"><a href="#cb32-5" aria-hidden="true" tabindex="-1"></a><span class="st">"""</span></span>
-<span id="cb32-6"><a href="#cb32-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Try to find all dates in the above text with findall()</span></span>
-<span id="cb32-7"><a href="#cb32-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Your code here</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</div>
-</section>
-</section>
-<section id="packages" class="level1 title">
-<h1 class="title"><span class="flow">Packages</span></h1>
-<section id="what-are-packages" class="level2">
-<h2 class="anchored" data-anchor-id="what-are-packages">What are Packages?</h2>
-<ul>
-<li>Packages are esentially <strong>collections of modules</strong></li>
-<li>They can contain multiple modules, subpackages, and data files</li>
-<li>Many packages are available in the <span class="highlight">Python Package Index (PyPI)</span></li>
-<li>You don’t have to invent the wheel yourself</li>
-<li><strong>A lot of functionality</strong> is already implemented by others!</li>
-</ul>
-</section>
-<section id="installing-packages" class="level2">
-<h2 class="anchored" data-anchor-id="installing-packages">Installing Packages</h2>
-<ul>
-<li>Packages are <strong>installed in the shell</strong></li>
-<li>Use <code>uv add &lt;package_name&gt;</code> to install a specific package</li>
-<li>Afterward you can <span class="highlight">import from the package</span> in your scripts</li>
-</ul>
-<p>. . .</p>
-<p><span class="task">Task:</span> Install the <code>pandas</code> and <code>numpy</code> packages, which are commonly used for data analysis. We will use them together next week!</p>
-<p>. . .</p>
-<pre class="{bash}"><code>uv add pandas numpy</code></pre>
-<p>. . .</p>
-<div class="callout callout-style-simple callout-tip">
-<div class="callout-body d-flex">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-body-container">
-<p>If you install packages like this, you can use the shell to do so! Alternatively, you can use <code>uv add &lt;package_name&gt;</code> in the terminal in the IDE.</p>
-</div>
-</div>
-</div>
-</section>
-<section id="virtual-environments" class="level2">
-<h2 class="anchored" data-anchor-id="virtual-environments">Virtual Environments</h2>
-<ul>
-<li>Virtual environments <strong>isolate a project’s dependencies</strong></li>
-<li>With uv, the environment is <strong>created and managed automatically</strong></li>
-<li>No manual venv creation needed and others can replicate</li>
-<li><span class="highlight">Especially important when working on several projects at once</span></li>
-</ul>
-<p>. . .</p>
-<p>Common uv command you’ll use:</p>
-<pre class="{bash}"><code># Install dependencies from pyproject.toml (to use the code from others)
-uv sync
-
-# Start a Python REPL in the project environment (you can then work directly here)
-uv run python</code></pre>
-<p>. . .</p>
 <div class="callout callout-style-simple callout-note">
 <div class="callout-body d-flex">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-body-container">
-<p><strong>And that’s it for today’s lecture!</strong> We now have completed the first step into data science in Python. Next week, we can use this new knowledge to start to work with some tabular data and matrices.</p>
+<p><strong>Next episode: one array to rule a thousand orders.</strong> The shop’s data has outgrown plain lists, and NumPy turns a thousand numbers into a single, fast object.</p>
 </div>
 </div>
 </div>
@@ -1215,25 +835,25 @@ uv run python</code></pre>
 </section>
 <section id="literature" class="level1 title">
 <h1 class="title"><span class="flow">Literature</span></h1>
-<section id="interesting-books" class="level2">
-<h2 class="anchored" data-anchor-id="interesting-books">Interesting Books</h2>
+<section id="books-to-start-with" class="level2">
+<h2 class="anchored" data-anchor-id="books-to-start-with">Books to start with</h2>
 <ul>
 <li>Downey, A. B. (2024). Think Python: How to think like a computer scientist (Third edition). O’Reilly. <a href="https://greenteapress.com/wp/think-python-3rd-edition/">Link to free online version</a></li>
 <li>Elter, S. (2021). Schrödinger programmiert Python: Das etwas andere Fachbuch (1. Auflage). Rheinwerk Verlag.</li>
 </ul>
 <p>. . .</p>
-<div class="callout callout-style-simple callout-tip">
+<div class="callout callout-style-simple callout-note">
 <div class="callout-body d-flex">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-body-container">
-<p>Nothing new here, but these are still great books!</p>
+<p>New this session: the <a href="../general/ai-tools.html">AI Tools page</a>: how and when to use AI in Part II, and the one-line disclosure habit that goes on every submission from here on.</p>
 </div>
 </div>
 </div>
 <p>. . .</p>
-<p>For more interesting literature to learn more about Python, take a look at the <a href="../general/literature.html">literature list</a> of this course.</p>
+<p>For more, see the <a href="../general/literature.html">literature list</a> of this course.</p>
 
 
 </section>
