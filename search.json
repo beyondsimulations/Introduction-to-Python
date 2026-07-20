@@ -121,7 +121,7 @@
     "href": "lectures/lec_09_presentation.html#question-1",
     "title": "Lecture IX - Data Visualization",
     "section": "Question 1",
-    "text": "Question 1\norders[orders[\"zone\"] == \"Nord\"]\nreturns…\na) a True/False column b) only the Nord rows c) an error"
+    "text": "Question 1\norders[orders[\"zone\"] == \"Nord\"]\nreturns…\na) a True/False column b) only the Nord rows c) an error from comparing text"
   },
   {
     "objectID": "lectures/lec_09_presentation.html#answer-1",
@@ -135,28 +135,28 @@
     "href": "lectures/lec_09_presentation.html#question-2",
     "title": "Lecture IX - Data Visualization",
     "section": "Question 2",
-    "text": "Question 2\nKevin’s AI wrote this. orders is a normal DataFrame. What happens?\norders.summarize()\na) a summary table b) an AttributeError c) an empty DataFrame"
+    "text": "Question 2\nKevin’s AI wrote this. orders is a normal DataFrame. What happens?\norders.summarize()\na) a summary table b) an empty DataFrame c) an AttributeError"
   },
   {
     "objectID": "lectures/lec_09_presentation.html#answer-2",
     "href": "lectures/lec_09_presentation.html#answer-2",
     "title": "Lecture IX - Data Visualization",
     "section": "Answer 2",
-    "text": "Answer 2\nb) AttributeError — pandas has .describe(), not .summarize(). The AI invented a plausible name. An AI that sounds sure is not the same as an API that exists. You verify, every time."
+    "text": "Answer 2\nc) AttributeError — pandas has .describe(), not .summarize(). The AI invented a plausible name. An AI that sounds sure is not the same as an API that exists. You verify, every time."
   },
   {
     "objectID": "lectures/lec_09_presentation.html#question-3",
     "href": "lectures/lec_09_presentation.html#question-3",
     "title": "Lecture IX - Data Visualization",
     "section": "Question 3",
-    "text": "Question 3\norders[\"total_eur\"].describe()\nshows…\na) count / mean / std / min / quartiles / max b) the first five rows c) the column’s type"
+    "text": "Question 3\norders[\"total_eur\"].describe()\nshows…\na) the first five rows of the column, like .head() b) count / mean / std / min / quartiles / max c) the column’s dtype, like .dtypes"
   },
   {
     "objectID": "lectures/lec_09_presentation.html#answer-3",
     "href": "lectures/lec_09_presentation.html#answer-3",
     "title": "Lecture IX - Data Visualization",
     "section": "Answer 3",
-    "text": "Answer 3\na) count / mean / std / min / quartiles / max — one line, the column’s whole statistical fingerprint. That’s the real method Kevin’s AI was reaching for."
+    "text": "Answer 3\nb) count / mean / std / min / quartiles / max — one line, the column’s whole statistical fingerprint. That’s the real method Kevin’s AI was reaching for."
   },
   {
     "objectID": "lectures/lec_09_presentation.html#matplotlib-in-four-lines",
@@ -184,14 +184,14 @@
     "href": "lectures/lec_09_presentation.html#predict-one-chart-or-two",
     "title": "Lecture IX - Data Visualization",
     "section": "Predict: one chart or two?",
-    "text": "Predict: one chart or two?\nKevin runs two plot calls, back to back, with no plt.figure() between them:\nplt.plot([3, 1, 2])\nplt.plot([1, 2, 3])\na) two separate charts b) one chart with two lines c) an error\n\nPredict first. Commit to an answer before the next slide."
+    "text": "Predict: one chart or two?\nKevin runs two plot calls, back to back, with no plt.figure() between them:\nplt.plot([3, 1, 2])\nplt.plot([1, 2, 3])\na) one chart with two lines b) two separate charts, one per call c) an error: the figure is already in use\n\nPredict first. Commit to an answer before the next slide."
   },
   {
     "objectID": "lectures/lec_09_presentation.html#answer-one-chart-two-lines",
     "href": "lectures/lec_09_presentation.html#answer-one-chart-two-lines",
     "title": "Lecture IX - Data Visualization",
     "section": "Answer: one chart, two lines",
-    "text": "Answer: one chart, two lines\nb) one chart with two lines — matplotlib keeps drawing on the current figure until you start a new one with plt.figure():\n\nimport matplotlib.pyplot as plt\n\nplt.figure()\nplt.plot([3, 1, 2])\nplt.plot([1, 2, 3])   # same canvas — a second line, not a second chart\nplt.gca()\n\n\n\n\n\n\n\n\n\n\n\nThat’s exactly why every chart cell opens with plt.figure(): it’s how you say “new picture, start clean.”"
+    "text": "Answer: one chart, two lines\na) one chart with two lines — matplotlib keeps drawing on the current figure until you start a new one with plt.figure():\n\nimport matplotlib.pyplot as plt\n\nplt.figure()\nplt.plot([3, 1, 2])\nplt.plot([1, 2, 3])   # same canvas — a second line, not a second chart\nplt.gca()\n\n\n\n\n\n\n\n\n\n\n\nThat’s exactly why every chart cell opens with plt.figure(): it’s how you say “new picture, start clean.”"
   },
   {
     "objectID": "lectures/lec_09_presentation.html#match-the-chart-to-the-question",
@@ -226,14 +226,14 @@
     "href": "lectures/lec_09_presentation.html#predict-how-many-bars",
     "title": "Lecture IX - Data Visualization",
     "section": "Predict: how many bars?",
-    "text": "Predict: how many bars?\nThe same four numbers, two ways. On the left, a bar per number; on the right, a histogram:\nvalues = [8, 12, 9, 15]\nplt.bar(range(4), values)   # left\nplt.hist(values, bins=3)    # right\nThe bar chart shows 4 bars. How many bars does the histogram show?\na) 4: one per number b) about 2–3 lumps: it counts ranges c) 15\n\nPredict first. Commit to an answer before the next slide."
+    "text": "Predict: how many bars?\nThe same four numbers, two ways. On the left, a bar per number; on the right, a histogram:\nvalues = [8, 12, 9, 15]\nplt.bar(range(4), values)   # left\nplt.hist(values, bins=3)    # right\nThe bar chart shows 4 bars. How many bars does the histogram show?\na) 4: one bar per number b) 15: one bar per unit up to the max c) about 2–3 lumps: it counts ranges\n\nPredict first. Commit to an answer before the next slide."
   },
   {
     "objectID": "lectures/lec_09_presentation.html#answer-bar-counts-categories-hist-counts-ranges",
     "href": "lectures/lec_09_presentation.html#answer-bar-counts-categories-hist-counts-ranges",
     "title": "Lecture IX - Data Visualization",
     "section": "Answer: bar counts categories, hist counts ranges",
-    "text": "Answer: bar counts categories, hist counts ranges\nb) about 2–3 lumps — the histogram groups the numbers into ranges and counts how many fall in each. 8 and 9 land in the same bucket, so that bar is two tall:\n\nimport matplotlib.pyplot as plt\n\nvalues = [8, 12, 9, 15]\n\nplt.figure()\nplt.subplot(1, 2, 1)\nplt.bar(range(4), values)     # one bar per NUMBER\nplt.title(\"bar: 4 categories\")\nplt.subplot(1, 2, 2)\nplt.hist(values, bins=3)      # counts how many per RANGE\nplt.title(\"hist: 3 ranges\")\nplt.gca()\n\n\n\n\n\n\n\n\n\n\n\nBar counts CATEGORIES; histogram counts RANGES. Same numbers, different question."
+    "text": "Answer: bar counts categories, hist counts ranges\nc) about 2–3 lumps — the histogram groups the numbers into ranges and counts how many fall in each. 8 and 9 land in the same bucket, so that bar is two tall:\n\nimport matplotlib.pyplot as plt\n\nvalues = [8, 12, 9, 15]\n\nplt.figure()\nplt.subplot(1, 2, 1)\nplt.bar(range(4), values)     # one bar per NUMBER\nplt.title(\"bar: 4 categories\")\nplt.subplot(1, 2, 2)\nplt.hist(values, bins=3)      # counts how many per RANGE\nplt.title(\"hist: 3 ranges\")\nplt.gca()\n\n\n\n\n\n\n\n\n\n\n\nBar counts CATEGORIES; histogram counts RANGES. Same numbers, different question."
   },
   {
     "objectID": "lectures/lec_09_presentation.html#the-same-data-told-two-ways",
@@ -311,7 +311,7 @@
     "href": "lectures/lec_09_plotting.html#question-1",
     "title": "Lecture IX - Data Visualization",
     "section": "Question 1",
-    "text": "Question 1\norders[orders[\"zone\"] == \"Nord\"]\nreturns…\na) a True/False column b) only the Nord rows c) an error",
+    "text": "Question 1\norders[orders[\"zone\"] == \"Nord\"]\nreturns…\na) a True/False column b) only the Nord rows c) an error from comparing text",
     "crumbs": [
       "09 Plotting",
       "Lecture"
@@ -333,7 +333,7 @@
     "href": "lectures/lec_09_plotting.html#question-2",
     "title": "Lecture IX - Data Visualization",
     "section": "Question 2",
-    "text": "Question 2\nKevin’s AI wrote this. orders is a normal DataFrame. What happens?\norders.summarize()\na) a summary table b) an AttributeError c) an empty DataFrame",
+    "text": "Question 2\nKevin’s AI wrote this. orders is a normal DataFrame. What happens?\norders.summarize()\na) a summary table b) an empty DataFrame c) an AttributeError",
     "crumbs": [
       "09 Plotting",
       "Lecture"
@@ -344,7 +344,7 @@
     "href": "lectures/lec_09_plotting.html#answer-2",
     "title": "Lecture IX - Data Visualization",
     "section": "Answer 2",
-    "text": "Answer 2\nb) AttributeError — pandas has .describe(), not .summarize(). The AI invented a plausible name. An AI that sounds sure is not the same as an API that exists. You verify, every time.",
+    "text": "Answer 2\nc) AttributeError — pandas has .describe(), not .summarize(). The AI invented a plausible name. An AI that sounds sure is not the same as an API that exists. You verify, every time.",
     "crumbs": [
       "09 Plotting",
       "Lecture"
@@ -355,7 +355,7 @@
     "href": "lectures/lec_09_plotting.html#question-3",
     "title": "Lecture IX - Data Visualization",
     "section": "Question 3",
-    "text": "Question 3\norders[\"total_eur\"].describe()\nshows…\na) count / mean / std / min / quartiles / max b) the first five rows c) the column’s type",
+    "text": "Question 3\norders[\"total_eur\"].describe()\nshows…\na) the first five rows of the column, like .head() b) count / mean / std / min / quartiles / max c) the column’s dtype, like .dtypes",
     "crumbs": [
       "09 Plotting",
       "Lecture"
@@ -366,7 +366,7 @@
     "href": "lectures/lec_09_plotting.html#answer-3",
     "title": "Lecture IX - Data Visualization",
     "section": "Answer 3",
-    "text": "Answer 3\na) count / mean / std / min / quartiles / max — one line, the column’s whole statistical fingerprint. That’s the real method Kevin’s AI was reaching for.",
+    "text": "Answer 3\nb) count / mean / std / min / quartiles / max — one line, the column’s whole statistical fingerprint. That’s the real method Kevin’s AI was reaching for.",
     "crumbs": [
       "09 Plotting",
       "Lecture"
@@ -410,7 +410,7 @@
     "href": "lectures/lec_09_plotting.html#predict-one-chart-or-two",
     "title": "Lecture IX - Data Visualization",
     "section": "Predict: one chart or two?",
-    "text": "Predict: one chart or two?\nKevin runs two plot calls, back to back, with no plt.figure() between them:\nplt.plot([3, 1, 2])\nplt.plot([1, 2, 3])\na) two separate charts b) one chart with two lines c) an error\n. . .\nPredict first. Commit to an answer before the next slide.",
+    "text": "Predict: one chart or two?\nKevin runs two plot calls, back to back, with no plt.figure() between them:\nplt.plot([3, 1, 2])\nplt.plot([1, 2, 3])\na) one chart with two lines b) two separate charts, one per call c) an error: the figure is already in use\n. . .\nPredict first. Commit to an answer before the next slide.",
     "crumbs": [
       "09 Plotting",
       "Lecture"
@@ -421,7 +421,7 @@
     "href": "lectures/lec_09_plotting.html#answer-one-chart-two-lines",
     "title": "Lecture IX - Data Visualization",
     "section": "Answer: one chart, two lines",
-    "text": "Answer: one chart, two lines\nb) one chart with two lines — matplotlib keeps drawing on the current figure until you start a new one with plt.figure():\n\nimport matplotlib.pyplot as plt\n\nplt.figure()\nplt.plot([3, 1, 2])\nplt.plot([1, 2, 3])   # same canvas — a second line, not a second chart\nplt.gca()\n\n\n\n\n\n\n\n\n. . .\nThat’s exactly why every chart cell opens with plt.figure(): it’s how you say “new picture, start clean.”",
+    "text": "Answer: one chart, two lines\na) one chart with two lines — matplotlib keeps drawing on the current figure until you start a new one with plt.figure():\n\nimport matplotlib.pyplot as plt\n\nplt.figure()\nplt.plot([3, 1, 2])\nplt.plot([1, 2, 3])   # same canvas — a second line, not a second chart\nplt.gca()\n\n\n\n\n\n\n\n\n. . .\nThat’s exactly why every chart cell opens with plt.figure(): it’s how you say “new picture, start clean.”",
     "crumbs": [
       "09 Plotting",
       "Lecture"
@@ -476,7 +476,7 @@
     "href": "lectures/lec_09_plotting.html#predict-how-many-bars",
     "title": "Lecture IX - Data Visualization",
     "section": "Predict: how many bars?",
-    "text": "Predict: how many bars?\nThe same four numbers, two ways. On the left, a bar per number; on the right, a histogram:\nvalues = [8, 12, 9, 15]\nplt.bar(range(4), values)   # left\nplt.hist(values, bins=3)    # right\nThe bar chart shows 4 bars. How many bars does the histogram show?\na) 4: one per number b) about 2–3 lumps: it counts ranges c) 15\n. . .\nPredict first. Commit to an answer before the next slide.",
+    "text": "Predict: how many bars?\nThe same four numbers, two ways. On the left, a bar per number; on the right, a histogram:\nvalues = [8, 12, 9, 15]\nplt.bar(range(4), values)   # left\nplt.hist(values, bins=3)    # right\nThe bar chart shows 4 bars. How many bars does the histogram show?\na) 4: one bar per number b) 15: one bar per unit up to the max c) about 2–3 lumps: it counts ranges\n. . .\nPredict first. Commit to an answer before the next slide.",
     "crumbs": [
       "09 Plotting",
       "Lecture"
@@ -487,7 +487,7 @@
     "href": "lectures/lec_09_plotting.html#answer-bar-counts-categories-hist-counts-ranges",
     "title": "Lecture IX - Data Visualization",
     "section": "Answer: bar counts categories, hist counts ranges",
-    "text": "Answer: bar counts categories, hist counts ranges\nb) about 2–3 lumps — the histogram groups the numbers into ranges and counts how many fall in each. 8 and 9 land in the same bucket, so that bar is two tall:\n\nimport matplotlib.pyplot as plt\n\nvalues = [8, 12, 9, 15]\n\nplt.figure()\nplt.subplot(1, 2, 1)\nplt.bar(range(4), values)     # one bar per NUMBER\nplt.title(\"bar: 4 categories\")\nplt.subplot(1, 2, 2)\nplt.hist(values, bins=3)      # counts how many per RANGE\nplt.title(\"hist: 3 ranges\")\nplt.gca()\n\n\n\n\n\n\n\n\n. . .\nBar counts CATEGORIES; histogram counts RANGES. Same numbers, different question.",
+    "text": "Answer: bar counts categories, hist counts ranges\nc) about 2–3 lumps — the histogram groups the numbers into ranges and counts how many fall in each. 8 and 9 land in the same bucket, so that bar is two tall:\n\nimport matplotlib.pyplot as plt\n\nvalues = [8, 12, 9, 15]\n\nplt.figure()\nplt.subplot(1, 2, 1)\nplt.bar(range(4), values)     # one bar per NUMBER\nplt.title(\"bar: 4 categories\")\nplt.subplot(1, 2, 2)\nplt.hist(values, bins=3)      # counts how many per RANGE\nplt.title(\"hist: 3 ranges\")\nplt.gca()\n\n\n\n\n\n\n\n\n. . .\nBar counts CATEGORIES; histogram counts RANGES. Same numbers, different question.",
     "crumbs": [
       "09 Plotting",
       "Lecture"
@@ -582,28 +582,28 @@
     "href": "lectures/lec_07_presentation.html#question-1",
     "title": "Lecture VII - NumPy for Scientific Computing",
     "section": "Question 1",
-    "text": "Question 1\nfrom math import ceil\n\n# which line works?\na) math.ceil(3.2) b) ceil(3.2) c) both"
+    "text": "Question 1\nfrom math import ceil\n\n# which line works?\na) ceil(3.2) b) math.ceil(3.2) c) both"
   },
   {
     "objectID": "lectures/lec_07_presentation.html#answer-1",
     "href": "lectures/lec_07_presentation.html#answer-1",
     "title": "Lecture VII - NumPy for Scientific Computing",
     "section": "Answer 1",
-    "text": "Answer 1\nb) ceil(3.2) — from math import ceil binds only the name ceil. The module math itself was never imported, so math.ceil has nothing to reach through."
+    "text": "Answer 1\na) ceil(3.2) — from math import ceil binds only the name ceil. The module math itself was never imported, so math.ceil has nothing to reach through."
   },
   {
     "objectID": "lectures/lec_07_presentation.html#question-2",
     "href": "lectures/lec_07_presentation.html#question-2",
     "title": "Lecture VII - NumPy for Scientific Computing",
     "section": "Question 2",
-    "text": "Question 2\nimport random\n\nrandom.seed(42)\nprint(random.randint(1, 20))\nprint(random.randint(1, 20))\nprint(random.randint(1, 20))\nKevin runs this exact script today and again tomorrow. Tomorrow’s numbers are…\na) the same three numbers b) different: random is random c) an error"
+    "text": "Question 2\nimport random\n\nrandom.seed(42)\nprint(random.randint(1, 20))\nprint(random.randint(1, 20))\nprint(random.randint(1, 20))\nKevin runs this exact script today and again tomorrow. Tomorrow’s numbers are…\na) different: random is random b) an error: seed 42 was already used c) the same three numbers"
   },
   {
     "objectID": "lectures/lec_07_presentation.html#answer-2",
     "href": "lectures/lec_07_presentation.html#answer-2",
     "title": "Lecture VII - NumPy for Scientific Computing",
     "section": "Answer 2",
-    "text": "Answer 2\na) the same three numbers — every run starts from seed 42, so the stream replays from the top. That is the entire job of a seed: reproducible randomness. (Two batches inside one run would differ: the stream continues; a fresh run rewinds it.)"
+    "text": "Answer 2\nc) the same three numbers — every run starts from seed 42, so the stream replays from the top. That is the entire job of a seed: reproducible randomness. (Two batches inside one run would differ: the stream continues; a fresh run rewinds it.)"
   },
   {
     "objectID": "lectures/lec_07_presentation.html#question-3",
@@ -645,14 +645,14 @@
     "href": "lectures/lec_07_presentation.html#predict-times-two",
     "title": "Lecture VII - NumPy for Scientific Computing",
     "section": "Predict: times two",
-    "text": "Predict: times two\nKevin multiplies a row of counts by two. What does this print?\nprint([1, 2, 3] * 2)\na) [2, 4, 6] b) [1, 2, 3, 1, 2, 3] c) an error\n\nPredict first. Commit to an answer before the next slide."
+    "text": "Predict: times two\nKevin multiplies a row of counts by two. What does this print?\nprint([1, 2, 3] * 2)\na) [1, 2, 3, 1, 2, 3] b) [2, 4, 6] c) an error\n\nPredict first. Commit to an answer before the next slide."
   },
   {
     "objectID": "lectures/lec_07_presentation.html#answer-lists-repeat-arrays-compute",
     "href": "lectures/lec_07_presentation.html#answer-lists-repeat-arrays-compute",
     "title": "Lecture VII - NumPy for Scientific Computing",
     "section": "Answer: lists repeat, arrays compute",
-    "text": "Answer: lists repeat, arrays compute\nb) [1, 2, 3, 1, 2, 3] — that’s a plain list, and * 2 on a list repeats it. Wrap it in an array and the same * 2 does the math instead:\n\nimport numpy as np\n\nprint([1, 2, 3] * 2)              # list → repeated\nprint(np.array([1, 2, 3]) * 2)    # array → doubled\n\n\n\n[1, 2, 3, 1, 2, 3]\n[2 4 6]\n\n\n\nLists repeat; arrays compute. That’s why we’re here."
+    "text": "Answer: lists repeat, arrays compute\na) [1, 2, 3, 1, 2, 3] — that’s a plain list, and * 2 on a list repeats it. Wrap it in an array and the same * 2 does the math instead:\n\nimport numpy as np\n\nprint([1, 2, 3] * 2)              # list → repeated\nprint(np.array([1, 2, 3]) * 2)    # array → doubled\n\n\n\n[1, 2, 3, 1, 2, 3]\n[2 4 6]\n\n\n\nLists repeat; arrays compute. That’s why we’re here."
   },
   {
     "objectID": "lectures/lec_07_presentation.html#a-comparison-makes-a-mask",
@@ -673,14 +673,14 @@
     "href": "lectures/lec_07_presentation.html#predict-counting-the-trues",
     "title": "Lecture VII - NumPy for Scientific Computing",
     "section": "Predict: counting the Trues",
-    "text": "Predict: counting the Trues\nWhat does calling .sum() on the mask give?\nprint((np.array([1, 5, 3]) &gt; 2).sum())\na) 2 b) True c) [False, True, True]\n\nPredict first. Commit to an answer before the next slide."
+    "text": "Predict: counting the Trues\nWhat does calling .sum() on the mask give?\nprint((np.array([1, 5, 3]) &gt; 2).sum())\na) True b) 2 c) [False, True, True]\n\nPredict first. Commit to an answer before the next slide."
   },
   {
     "objectID": "lectures/lec_07_presentation.html#answer-true-counts-as-1",
     "href": "lectures/lec_07_presentation.html#answer-true-counts-as-1",
     "title": "Lecture VII - NumPy for Scientific Computing",
     "section": "Answer: True counts as 1",
-    "text": "Answer: True counts as 1\na) 2 — .sum() adds the mask up, and each True is worth 1, each False 0. Two elements clear the bar, so the count is 2:\n\nimport numpy as np\n\nprint(np.array([1, 5, 3]) &gt; 2)            # [False  True  True]\nprint((np.array([1, 5, 3]) &gt; 2).sum())    # Trues add up to 2\n\n\n\n[False  True  True]\n2\n\n\n\nSumming a mask counts; averaging a mask shares. Same two tricks the lab asks for."
+    "text": "Answer: True counts as 1\nb) 2 — .sum() adds the mask up, and each True is worth 1, each False 0. Two elements clear the bar, so the count is 2:\n\nimport numpy as np\n\nprint(np.array([1, 5, 3]) &gt; 2)            # [False  True  True]\nprint((np.array([1, 5, 3]) &gt; 2).sum())    # Trues add up to 2\n\n\n\n[False  True  True]\n2\n\n\n\nSumming a mask counts; averaging a mask shares. Same two tricks the lab asks for."
   },
   {
     "objectID": "lectures/lec_07_presentation.html#a-grid-of-numbers",
@@ -708,14 +708,14 @@
     "href": "lectures/lec_07_presentation.html#predict-which-call-collapses-which-way",
     "title": "Lecture VII - NumPy for Scientific Computing",
     "section": "Predict: which call collapses which way?",
-    "text": "Predict: which call collapses which way?\nThe investor wants four numbers, one per zone. Which call?\nweek = np.array([[ 9, 14, 11,  6],\n                 [15, 12,  8,  9],\n                 [13, 20, 16, 11]])\na) week.sum(axis=0) b) week.sum(axis=1) c) week.sum()\n\nPredict first. Commit to an answer before the next slide."
+    "text": "Predict: which call collapses which way?\nThe investor wants four numbers, one per zone. Which call?\nweek = np.array([[ 9, 14, 11,  6],\n                 [15, 12,  8,  9],\n                 [13, 20, 16, 11]])\na) week.sum(axis=1) b) week.sum() c) week.sum(axis=0)\n\nPredict first. Commit to an answer before the next slide."
   },
   {
     "objectID": "lectures/lec_07_presentation.html#answer-collapse-the-days-keep-the-zones",
     "href": "lectures/lec_07_presentation.html#answer-collapse-the-days-keep-the-zones",
     "title": "Lecture VII - NumPy for Scientific Computing",
     "section": "Answer: collapse the days, keep the zones",
-    "text": "Answer: collapse the days, keep the zones\na) week.sum(axis=0) — four zones means four numbers, so the days must disappear: axis=0 collapses DOWN the rows, one number per column (zone):\n\nimport numpy as np\n\nweek = np.array([[ 9, 14, 11,  6],\n                 [15, 12,  8,  9],\n                 [13, 20, 16, 11]])\nprint(week.sum(axis=0))\n\n\n\n[37 46 35 26]\n\n\n\nb) would give three numbers (one per day); c) would give one number: the grand total, 144."
+    "text": "Answer: collapse the days, keep the zones\nc) week.sum(axis=0) — four zones means four numbers, so the days must disappear: axis=0 collapses DOWN the rows, one number per column (zone):\n\nimport numpy as np\n\nweek = np.array([[ 9, 14, 11,  6],\n                 [15, 12,  8,  9],\n                 [13, 20, 16, 11]])\nprint(week.sum(axis=0))\n\n\n\n[37 46 35 26]\n\n\n\nb) would give three numbers (one per day); c) would give one number: the grand total, 144."
   },
   {
     "objectID": "lectures/lec_07_presentation.html#tonights-episode",
@@ -765,7 +765,7 @@
     "href": "lectures/lec_07_scientific.html#question-1",
     "title": "Lecture VII - NumPy for Scientific Computing",
     "section": "Question 1",
-    "text": "Question 1\nfrom math import ceil\n\n# which line works?\na) math.ceil(3.2) b) ceil(3.2) c) both",
+    "text": "Question 1\nfrom math import ceil\n\n# which line works?\na) ceil(3.2) b) math.ceil(3.2) c) both",
     "crumbs": [
       "07 Scientific Computing",
       "Lecture"
@@ -776,7 +776,7 @@
     "href": "lectures/lec_07_scientific.html#answer-1",
     "title": "Lecture VII - NumPy for Scientific Computing",
     "section": "Answer 1",
-    "text": "Answer 1\nb) ceil(3.2) — from math import ceil binds only the name ceil. The module math itself was never imported, so math.ceil has nothing to reach through.",
+    "text": "Answer 1\na) ceil(3.2) — from math import ceil binds only the name ceil. The module math itself was never imported, so math.ceil has nothing to reach through.",
     "crumbs": [
       "07 Scientific Computing",
       "Lecture"
@@ -787,7 +787,7 @@
     "href": "lectures/lec_07_scientific.html#question-2",
     "title": "Lecture VII - NumPy for Scientific Computing",
     "section": "Question 2",
-    "text": "Question 2\nimport random\n\nrandom.seed(42)\nprint(random.randint(1, 20))\nprint(random.randint(1, 20))\nprint(random.randint(1, 20))\nKevin runs this exact script today and again tomorrow. Tomorrow’s numbers are…\na) the same three numbers b) different: random is random c) an error",
+    "text": "Question 2\nimport random\n\nrandom.seed(42)\nprint(random.randint(1, 20))\nprint(random.randint(1, 20))\nprint(random.randint(1, 20))\nKevin runs this exact script today and again tomorrow. Tomorrow’s numbers are…\na) different: random is random b) an error: seed 42 was already used c) the same three numbers",
     "crumbs": [
       "07 Scientific Computing",
       "Lecture"
@@ -798,7 +798,7 @@
     "href": "lectures/lec_07_scientific.html#answer-2",
     "title": "Lecture VII - NumPy for Scientific Computing",
     "section": "Answer 2",
-    "text": "Answer 2\na) the same three numbers — every run starts from seed 42, so the stream replays from the top. That is the entire job of a seed: reproducible randomness. (Two batches inside one run would differ: the stream continues; a fresh run rewinds it.)",
+    "text": "Answer 2\nc) the same three numbers — every run starts from seed 42, so the stream replays from the top. That is the entire job of a seed: reproducible randomness. (Two batches inside one run would differ: the stream continues; a fresh run rewinds it.)",
     "crumbs": [
       "07 Scientific Computing",
       "Lecture"
@@ -864,7 +864,7 @@
     "href": "lectures/lec_07_scientific.html#predict-times-two",
     "title": "Lecture VII - NumPy for Scientific Computing",
     "section": "Predict: times two",
-    "text": "Predict: times two\nKevin multiplies a row of counts by two. What does this print?\nprint([1, 2, 3] * 2)\na) [2, 4, 6] b) [1, 2, 3, 1, 2, 3] c) an error\n. . .\nPredict first. Commit to an answer before the next slide.",
+    "text": "Predict: times two\nKevin multiplies a row of counts by two. What does this print?\nprint([1, 2, 3] * 2)\na) [1, 2, 3, 1, 2, 3] b) [2, 4, 6] c) an error\n. . .\nPredict first. Commit to an answer before the next slide.",
     "crumbs": [
       "07 Scientific Computing",
       "Lecture"
@@ -875,7 +875,7 @@
     "href": "lectures/lec_07_scientific.html#answer-lists-repeat-arrays-compute",
     "title": "Lecture VII - NumPy for Scientific Computing",
     "section": "Answer: lists repeat, arrays compute",
-    "text": "Answer: lists repeat, arrays compute\nb) [1, 2, 3, 1, 2, 3] — that’s a plain list, and * 2 on a list repeats it. Wrap it in an array and the same * 2 does the math instead:\n\nimport numpy as np\n\nprint([1, 2, 3] * 2)              # list → repeated\nprint(np.array([1, 2, 3]) * 2)    # array → doubled\n\n[1, 2, 3, 1, 2, 3]\n[2 4 6]\n\n\n. . .\nLists repeat; arrays compute. That’s why we’re here.",
+    "text": "Answer: lists repeat, arrays compute\na) [1, 2, 3, 1, 2, 3] — that’s a plain list, and * 2 on a list repeats it. Wrap it in an array and the same * 2 does the math instead:\n\nimport numpy as np\n\nprint([1, 2, 3] * 2)              # list → repeated\nprint(np.array([1, 2, 3]) * 2)    # array → doubled\n\n[1, 2, 3, 1, 2, 3]\n[2 4 6]\n\n\n. . .\nLists repeat; arrays compute. That’s why we’re here.",
     "crumbs": [
       "07 Scientific Computing",
       "Lecture"
@@ -908,7 +908,7 @@
     "href": "lectures/lec_07_scientific.html#predict-counting-the-trues",
     "title": "Lecture VII - NumPy for Scientific Computing",
     "section": "Predict: counting the Trues",
-    "text": "Predict: counting the Trues\nWhat does calling .sum() on the mask give?\nprint((np.array([1, 5, 3]) &gt; 2).sum())\na) 2 b) True c) [False, True, True]\n. . .\nPredict first. Commit to an answer before the next slide.",
+    "text": "Predict: counting the Trues\nWhat does calling .sum() on the mask give?\nprint((np.array([1, 5, 3]) &gt; 2).sum())\na) True b) 2 c) [False, True, True]\n. . .\nPredict first. Commit to an answer before the next slide.",
     "crumbs": [
       "07 Scientific Computing",
       "Lecture"
@@ -919,7 +919,7 @@
     "href": "lectures/lec_07_scientific.html#answer-true-counts-as-1",
     "title": "Lecture VII - NumPy for Scientific Computing",
     "section": "Answer: True counts as 1",
-    "text": "Answer: True counts as 1\na) 2 — .sum() adds the mask up, and each True is worth 1, each False 0. Two elements clear the bar, so the count is 2:\n\nimport numpy as np\n\nprint(np.array([1, 5, 3]) &gt; 2)            # [False  True  True]\nprint((np.array([1, 5, 3]) &gt; 2).sum())    # Trues add up to 2\n\n[False  True  True]\n2\n\n\n. . .\nSumming a mask counts; averaging a mask shares. Same two tricks the lab asks for.",
+    "text": "Answer: True counts as 1\nb) 2 — .sum() adds the mask up, and each True is worth 1, each False 0. Two elements clear the bar, so the count is 2:\n\nimport numpy as np\n\nprint(np.array([1, 5, 3]) &gt; 2)            # [False  True  True]\nprint((np.array([1, 5, 3]) &gt; 2).sum())    # Trues add up to 2\n\n[False  True  True]\n2\n\n\n. . .\nSumming a mask counts; averaging a mask shares. Same two tricks the lab asks for.",
     "crumbs": [
       "07 Scientific Computing",
       "Lecture"
@@ -963,7 +963,7 @@
     "href": "lectures/lec_07_scientific.html#predict-which-call-collapses-which-way",
     "title": "Lecture VII - NumPy for Scientific Computing",
     "section": "Predict: which call collapses which way?",
-    "text": "Predict: which call collapses which way?\nThe investor wants four numbers, one per zone. Which call?\nweek = np.array([[ 9, 14, 11,  6],\n                 [15, 12,  8,  9],\n                 [13, 20, 16, 11]])\na) week.sum(axis=0) b) week.sum(axis=1) c) week.sum()\n. . .\nPredict first. Commit to an answer before the next slide.",
+    "text": "Predict: which call collapses which way?\nThe investor wants four numbers, one per zone. Which call?\nweek = np.array([[ 9, 14, 11,  6],\n                 [15, 12,  8,  9],\n                 [13, 20, 16, 11]])\na) week.sum(axis=1) b) week.sum() c) week.sum(axis=0)\n. . .\nPredict first. Commit to an answer before the next slide.",
     "crumbs": [
       "07 Scientific Computing",
       "Lecture"
@@ -974,7 +974,7 @@
     "href": "lectures/lec_07_scientific.html#answer-collapse-the-days-keep-the-zones",
     "title": "Lecture VII - NumPy for Scientific Computing",
     "section": "Answer: collapse the days, keep the zones",
-    "text": "Answer: collapse the days, keep the zones\na) week.sum(axis=0) — four zones means four numbers, so the days must disappear: axis=0 collapses DOWN the rows, one number per column (zone):\n\nimport numpy as np\n\nweek = np.array([[ 9, 14, 11,  6],\n                 [15, 12,  8,  9],\n                 [13, 20, 16, 11]])\nprint(week.sum(axis=0))\n\n[37 46 35 26]\n\n\n. . .\nb) would give three numbers (one per day); c) would give one number: the grand total, 144.",
+    "text": "Answer: collapse the days, keep the zones\nc) week.sum(axis=0) — four zones means four numbers, so the days must disappear: axis=0 collapses DOWN the rows, one number per column (zone):\n\nimport numpy as np\n\nweek = np.array([[ 9, 14, 11,  6],\n                 [15, 12,  8,  9],\n                 [13, 20, 16, 11]])\nprint(week.sum(axis=0))\n\n[37 46 35 26]\n\n\n. . .\nb) would give three numbers (one per day); c) would give one number: the grand total, 144.",
     "crumbs": [
       "07 Scientific Computing",
       "Lecture"
@@ -1067,14 +1067,14 @@
     "href": "lectures/lec_05_presentation.html#predict-which-explosion",
     "title": "Lecture V - Errors and Debugging",
     "section": "Predict: which explosion?",
-    "text": "Predict: which explosion?\nKevin builds a table label. guests is the number 3. What does the last line do?\nguests = 3\nlabel = \"Party of \" + guests\nprint(label)\na) prints Party of 3 b) raises TypeError c) raises ValueError\n\nPredict first. Commit to an answer before the next slide."
+    "text": "Predict: which explosion?\nKevin builds a table label. guests is the number 3. What does the last line do?\nguests = 3\nlabel = \"Party of \" + guests\nprint(label)\na) raises TypeError b) prints Party of 3 c) raises ValueError\n\nPredict first. Commit to an answer before the next slide."
   },
   {
     "objectID": "lectures/lec_05_presentation.html#answer-text-and-numbers-wont-mix",
     "href": "lectures/lec_05_presentation.html#answer-text-and-numbers-wont-mix",
     "title": "Lecture V - Errors and Debugging",
     "section": "Answer: text and numbers won’t mix",
-    "text": "Answer: text and numbers won’t mix\nb) raises TypeError — + can glue two strings or add two numbers, but it refuses to mix a string and an int. The fix is to convert first (str(guests)):\n\nguests = 3\ntry:\n    label = \"Party of \" + guests\nexcept TypeError as e:\n    print(\"TypeError:\", e)\n\n\n\nTypeError: can only concatenate str (not \"int\") to str"
+    "text": "Answer: text and numbers won’t mix\na) raises TypeError — + can glue two strings or add two numbers, but it refuses to mix a string and an int. The fix is to convert first (str(guests)):\n\nguests = 3\ntry:\n    label = \"Party of \" + guests\nexcept TypeError as e:\n    print(\"TypeError:\", e)\n\n\n\nTypeError: can only concatenate str (not \"int\") to str"
   },
   {
     "objectID": "lectures/lec_05_presentation.html#the-debugging-loop",
@@ -1116,14 +1116,14 @@
     "href": "lectures/lec_05_presentation.html#predict-what-happens-after-the-except",
     "title": "Lecture V - Errors and Debugging",
     "section": "Predict: what happens after the except?",
-    "text": "Predict: what happens after the except?\nto_price catches a bad value and returns 0.0. After that, does the program reach the next line?\ndef to_price(text):\n    try:\n        return float(text)\n    except ValueError:\n        return 0.0\n\nprint(to_price(\"bad\"))\nprint(\"checkout still running\")\na) it never runs: the program already stopped b) it runs normally: the program carried on c) the try block runs a second time\n\nPredict first. Commit to an answer before the next slide."
+    "text": "Predict: what happens after the except?\nto_price catches a bad value and returns 0.0. After that, does the program reach the next line?\ndef to_price(text):\n    try:\n        return float(text)\n    except ValueError:\n        return 0.0\n\nprint(to_price(\"bad\"))\nprint(\"checkout still running\")\na) it never runs: the program already stopped b) the try block runs a second time c) it runs normally: the program carried on\n\nPredict first. Commit to an answer before the next slide."
   },
   {
     "objectID": "lectures/lec_05_presentation.html#answer-it-carries-on",
     "href": "lectures/lec_05_presentation.html#answer-it-carries-on",
     "title": "Lecture V - Errors and Debugging",
     "section": "Answer: it carries on",
-    "text": "Answer: it carries on\nb) it runs normally — that’s the whole point of try / except. It handles the failure; once the except has run, control simply drops to the code after it, as if nothing had gone wrong:\n\ndef to_price(text):\n    try:\n        return float(text)\n    except ValueError:\n        return 0.0\n\nprint(to_price(\"bad\"))           # 0.0 — recovered\nprint(\"checkout still running\")  # ...and we get here\n\n\n\n0.0\ncheckout still running"
+    "text": "Answer: it carries on\nc) it runs normally — that’s the whole point of try / except. It handles the failure; once the except has run, control simply drops to the code after it, as if nothing had gone wrong:\n\ndef to_price(text):\n    try:\n        return float(text)\n    except ValueError:\n        return 0.0\n\nprint(to_price(\"bad\"))           # 0.0 — recovered\nprint(\"checkout still running\")  # ...and we get here\n\n\n\n0.0\ncheckout still running"
   },
   {
     "objectID": "lectures/lec_05_presentation.html#tonights-episode",
@@ -1239,7 +1239,7 @@
     "href": "lectures/lec_05_errors.html#predict-which-explosion",
     "title": "Lecture V - Errors and Debugging",
     "section": "Predict: which explosion?",
-    "text": "Predict: which explosion?\nKevin builds a table label. guests is the number 3. What does the last line do?\nguests = 3\nlabel = \"Party of \" + guests\nprint(label)\na) prints Party of 3 b) raises TypeError c) raises ValueError\n. . .\nPredict first. Commit to an answer before the next slide.",
+    "text": "Predict: which explosion?\nKevin builds a table label. guests is the number 3. What does the last line do?\nguests = 3\nlabel = \"Party of \" + guests\nprint(label)\na) raises TypeError b) prints Party of 3 c) raises ValueError\n. . .\nPredict first. Commit to an answer before the next slide.",
     "crumbs": [
       "05 Errors",
       "Lecture"
@@ -1250,7 +1250,7 @@
     "href": "lectures/lec_05_errors.html#answer-text-and-numbers-wont-mix",
     "title": "Lecture V - Errors and Debugging",
     "section": "Answer: text and numbers won’t mix",
-    "text": "Answer: text and numbers won’t mix\nb) raises TypeError — + can glue two strings or add two numbers, but it refuses to mix a string and an int. The fix is to convert first (str(guests)):\n\nguests = 3\ntry:\n    label = \"Party of \" + guests\nexcept TypeError as e:\n    print(\"TypeError:\", e)\n\nTypeError: can only concatenate str (not \"int\") to str",
+    "text": "Answer: text and numbers won’t mix\na) raises TypeError — + can glue two strings or add two numbers, but it refuses to mix a string and an int. The fix is to convert first (str(guests)):\n\nguests = 3\ntry:\n    label = \"Party of \" + guests\nexcept TypeError as e:\n    print(\"TypeError:\", e)\n\nTypeError: can only concatenate str (not \"int\") to str",
     "crumbs": [
       "05 Errors",
       "Lecture"
@@ -1316,7 +1316,7 @@
     "href": "lectures/lec_05_errors.html#predict-what-happens-after-the-except",
     "title": "Lecture V - Errors and Debugging",
     "section": "Predict: what happens after the except?",
-    "text": "Predict: what happens after the except?\nto_price catches a bad value and returns 0.0. After that, does the program reach the next line?\ndef to_price(text):\n    try:\n        return float(text)\n    except ValueError:\n        return 0.0\n\nprint(to_price(\"bad\"))\nprint(\"checkout still running\")\na) it never runs: the program already stopped b) it runs normally: the program carried on c) the try block runs a second time\n. . .\nPredict first. Commit to an answer before the next slide.",
+    "text": "Predict: what happens after the except?\nto_price catches a bad value and returns 0.0. After that, does the program reach the next line?\ndef to_price(text):\n    try:\n        return float(text)\n    except ValueError:\n        return 0.0\n\nprint(to_price(\"bad\"))\nprint(\"checkout still running\")\na) it never runs: the program already stopped b) the try block runs a second time c) it runs normally: the program carried on\n. . .\nPredict first. Commit to an answer before the next slide.",
     "crumbs": [
       "05 Errors",
       "Lecture"
@@ -1327,7 +1327,7 @@
     "href": "lectures/lec_05_errors.html#answer-it-carries-on",
     "title": "Lecture V - Errors and Debugging",
     "section": "Answer: it carries on",
-    "text": "Answer: it carries on\nb) it runs normally — that’s the whole point of try / except. It handles the failure; once the except has run, control simply drops to the code after it, as if nothing had gone wrong:\n\ndef to_price(text):\n    try:\n        return float(text)\n    except ValueError:\n        return 0.0\n\nprint(to_price(\"bad\"))           # 0.0 — recovered\nprint(\"checkout still running\")  # ...and we get here\n\n0.0\ncheckout still running",
+    "text": "Answer: it carries on\nc) it runs normally — that’s the whole point of try / except. It handles the failure; once the except has run, control simply drops to the code after it, as if nothing had gone wrong:\n\ndef to_price(text):\n    try:\n        return float(text)\n    except ValueError:\n        return 0.0\n\nprint(to_price(\"bad\"))           # 0.0 — recovered\nprint(\"checkout still running\")  # ...and we get here\n\n0.0\ncheckout still running",
     "crumbs": [
       "05 Errors",
       "Lecture"
@@ -1406,14 +1406,14 @@
     "href": "lectures/lec_03_presentation.html#predict-print-or-return",
     "title": "Lecture III - Building Reusable Functions",
     "section": "Predict: print or return?",
-    "text": "Predict: print or return?\nlabel_price prints but has no return. What does the last line show?\ndef label_price(price):\n    print(f\"{price:.2f} EUR\")\n\nresult = label_price(8.50)\nprint(result)\na) 8.50 EUR b) None c) Error\n\nPredict first. Commit to an answer before the next slide."
+    "text": "Predict: print or return?\nlabel_price prints but has no return. What does the last line show?\ndef label_price(price):\n    print(f\"{price:.2f} EUR\")\n\nresult = label_price(8.50)\nprint(result)\na) 8.50 EUR b) Error c) None\n\nPredict first. Commit to an answer before the next slide."
   },
   {
     "objectID": "lectures/lec_03_presentation.html#answer-print-shows-return-hands-back",
     "href": "lectures/lec_03_presentation.html#answer-print-shows-return-hands-back",
     "title": "Lecture III - Building Reusable Functions",
     "section": "Answer: print shows, return hands back",
-    "text": "Answer: print shows, return hands back\nb) None — label_price prints its line while running, but with no return it hands back None. That None is what lands in result. Printing is not returning.\n\ndef label_price(price):\n    print(f\"{price:.2f} EUR\")\n\nresult = label_price(8.50)   # prints while running...\nprint(result)                # ...but the value handed back is None\n\n\n\n8.50 EUR\nNone"
+    "text": "Answer: print shows, return hands back\nc) None — label_price prints its line while running, but with no return it hands back None. That None is what lands in result. Printing is not returning.\n\ndef label_price(price):\n    print(f\"{price:.2f} EUR\")\n\nresult = label_price(8.50)   # prints while running...\nprint(result)                # ...but the value handed back is None\n\n\n\n8.50 EUR\nNone"
   },
   {
     "objectID": "lectures/lec_03_presentation.html#default-arguments",
@@ -1577,7 +1577,7 @@
     "href": "lectures/lec_03_functions.html#predict-print-or-return",
     "title": "Lecture III - Building Reusable Functions",
     "section": "Predict: print or return?",
-    "text": "Predict: print or return?\nlabel_price prints but has no return. What does the last line show?\ndef label_price(price):\n    print(f\"{price:.2f} EUR\")\n\nresult = label_price(8.50)\nprint(result)\na) 8.50 EUR b) None c) Error\n. . .\nPredict first. Commit to an answer before the next slide.",
+    "text": "Predict: print or return?\nlabel_price prints but has no return. What does the last line show?\ndef label_price(price):\n    print(f\"{price:.2f} EUR\")\n\nresult = label_price(8.50)\nprint(result)\na) 8.50 EUR b) Error c) None\n. . .\nPredict first. Commit to an answer before the next slide.",
     "crumbs": [
       "03 Functions",
       "Lecture"
@@ -1588,7 +1588,7 @@
     "href": "lectures/lec_03_functions.html#answer-print-shows-return-hands-back",
     "title": "Lecture III - Building Reusable Functions",
     "section": "Answer: print shows, return hands back",
-    "text": "Answer: print shows, return hands back\nb) None — label_price prints its line while running, but with no return it hands back None. That None is what lands in result. Printing is not returning.\n\ndef label_price(price):\n    print(f\"{price:.2f} EUR\")\n\nresult = label_price(8.50)   # prints while running...\nprint(result)                # ...but the value handed back is None\n\n8.50 EUR\nNone",
+    "text": "Answer: print shows, return hands back\nc) None — label_price prints its line while running, but with no return it hands back None. That None is what lands in result. Printing is not returning.\n\ndef label_price(price):\n    print(f\"{price:.2f} EUR\")\n\nresult = label_price(8.50)   # prints while running...\nprint(result)                # ...but the value handed back is None\n\n8.50 EUR\nNone",
     "crumbs": [
       "03 Functions",
       "Lecture"
@@ -1847,14 +1847,14 @@
     "href": "lectures/lec_01_presentation.html#predict-quotes-around-a-number",
     "title": "Lecture I - Introduction",
     "section": "Predict: quotes around a number",
-    "text": "Predict: quotes around a number\nKevin typed the price with quotes. What does this print?\nprint(type(\"9.99\"))\na) &lt;class 'float'&gt; b) &lt;class 'str'&gt; c) &lt;class 'int'&gt;\n\nPredict first. Commit to an answer before the next slide."
+    "text": "Predict: quotes around a number\nKevin typed the price with quotes. What does this print?\nprint(type(\"9.99\"))\na) &lt;class 'float'&gt; b) &lt;class 'int'&gt; c) &lt;class 'str'&gt;\n\nPredict first. Commit to an answer before the next slide."
   },
   {
     "objectID": "lectures/lec_01_presentation.html#answer-type9.99",
     "href": "lectures/lec_01_presentation.html#answer-type9.99",
     "title": "Lecture I - Introduction",
     "section": "Answer: type(\"9.99\")",
-    "text": "Answer: type(\"9.99\")\nb) str — the quotes make it text, however numeric it looks. Kevin’s “price” can’t be multiplied until it is converted to a number.\n\nprint(type(\"9.99\"))\n\n\n\n&lt;class 'str'&gt;"
+    "text": "Answer: type(\"9.99\")\nc) str — the quotes make it text, however numeric it looks. Kevin’s “price” can’t be multiplied until it is converted to a number.\n\nprint(type(\"9.99\"))\n\n\n\n&lt;class 'str'&gt;"
   },
   {
     "objectID": "lectures/lec_01_presentation.html#kevins-9.99-theory",
@@ -1889,14 +1889,14 @@
     "href": "lectures/lec_01_presentation.html#predict-the-sticker-budget",
     "title": "Lecture I - Introduction",
     "section": "Predict: the sticker budget",
-    "text": "Predict: the sticker budget\nKevin buys 12 boxes at 25 EUR from the 300 EUR budget. What prints?\nprint(300 - 12 * 25)\na) 7200 b) 0 c) Error\n\nPredict first, then turn the page."
+    "text": "Predict: the sticker budget\nKevin buys 12 boxes at 25 EUR from the 300 EUR budget. What prints?\nprint(300 - 12 * 25)\na) 0 b) 7200 c) Error\n\nPredict first, then turn the page."
   },
   {
     "objectID": "lectures/lec_01_presentation.html#answer-300---12-25",
     "href": "lectures/lec_01_presentation.html#answer-300---12-25",
     "title": "Lecture I - Introduction",
     "section": "Answer: 300 - 12 * 25",
-    "text": "Answer: 300 - 12 * 25\nb) 0 — 12 * 25 = 300 happens first, so the budget is wiped out. Reading left to right would give 7200, but Python follows precedence, not reading order.\n\nprint(300 - 12 * 25)\n\n\n\n0"
+    "text": "Answer: 300 - 12 * 25\na) 0 — 12 * 25 = 300 happens first, so the budget is wiped out. Reading left to right would give 7200, but Python follows precedence, not reading order.\n\nprint(300 - 12 * 25)\n\n\n\n0"
   },
   {
     "objectID": "lectures/lec_01_presentation.html#whole-numbers-vs-decimals",
@@ -2163,7 +2163,7 @@
     "href": "lectures/lec_01_introduction.html#predict-quotes-around-a-number",
     "title": "Lecture I - Introduction",
     "section": "Predict: quotes around a number",
-    "text": "Predict: quotes around a number\nKevin typed the price with quotes. What does this print?\nprint(type(\"9.99\"))\na) &lt;class 'float'&gt; b) &lt;class 'str'&gt; c) &lt;class 'int'&gt;\n. . .\nPredict first. Commit to an answer before the next slide.",
+    "text": "Predict: quotes around a number\nKevin typed the price with quotes. What does this print?\nprint(type(\"9.99\"))\na) &lt;class 'float'&gt; b) &lt;class 'int'&gt; c) &lt;class 'str'&gt;\n. . .\nPredict first. Commit to an answer before the next slide.",
     "crumbs": [
       "01 Introduction ",
       "Lecture"
@@ -2174,7 +2174,7 @@
     "href": "lectures/lec_01_introduction.html#answer-type9.99",
     "title": "Lecture I - Introduction",
     "section": "Answer: type(\"9.99\")",
-    "text": "Answer: type(\"9.99\")\nb) str — the quotes make it text, however numeric it looks. Kevin’s “price” can’t be multiplied until it is converted to a number.\n\nprint(type(\"9.99\"))\n\n&lt;class 'str'&gt;",
+    "text": "Answer: type(\"9.99\")\nc) str — the quotes make it text, however numeric it looks. Kevin’s “price” can’t be multiplied until it is converted to a number.\n\nprint(type(\"9.99\"))\n\n&lt;class 'str'&gt;",
     "crumbs": [
       "01 Introduction ",
       "Lecture"
@@ -2229,7 +2229,7 @@
     "href": "lectures/lec_01_introduction.html#predict-the-sticker-budget",
     "title": "Lecture I - Introduction",
     "section": "Predict: the sticker budget",
-    "text": "Predict: the sticker budget\nKevin buys 12 boxes at 25 EUR from the 300 EUR budget. What prints?\nprint(300 - 12 * 25)\na) 7200 b) 0 c) Error\n. . .\nPredict first, then turn the page.",
+    "text": "Predict: the sticker budget\nKevin buys 12 boxes at 25 EUR from the 300 EUR budget. What prints?\nprint(300 - 12 * 25)\na) 0 b) 7200 c) Error\n. . .\nPredict first, then turn the page.",
     "crumbs": [
       "01 Introduction ",
       "Lecture"
@@ -2240,7 +2240,7 @@
     "href": "lectures/lec_01_introduction.html#answer-300---12-25",
     "title": "Lecture I - Introduction",
     "section": "Answer: 300 - 12 * 25",
-    "text": "Answer: 300 - 12 * 25\nb) 0 — 12 * 25 = 300 happens first, so the budget is wiped out. Reading left to right would give 7200, but Python follows precedence, not reading order.\n\nprint(300 - 12 * 25)\n\n0",
+    "text": "Answer: 300 - 12 * 25\na) 0 — 12 * 25 = 300 happens first, so the budget is wiped out. Reading left to right would give 7200, but Python follows precedence, not reading order.\n\nprint(300 - 12 * 25)\n\n0",
     "crumbs": [
       "01 Introduction ",
       "Lecture"
@@ -3385,7 +3385,7 @@
     "href": "lectures/lec_02_control.html#question-2",
     "title": "Lecture II - Control Structures for Your Code",
     "section": "Question 2",
-    "text": "Question 2\nprint(type(\"9.99\"))\na) float b) str c) int",
+    "text": "Question 2\nprint(type(\"9.99\"))\na) float b) int c) str",
     "crumbs": [
       "02 Control Flow",
       "Lecture"
@@ -3396,7 +3396,7 @@
     "href": "lectures/lec_02_control.html#answer-2",
     "title": "Lecture II - Control Structures for Your Code",
     "section": "Answer 2",
-    "text": "Answer 2\nb) — quotes make it text, no matter how numeric it looks. (Kevin learned this the hard way.)",
+    "text": "Answer 2\nc) — quotes make it text, no matter how numeric it looks. (Kevin learned this the hard way.)",
     "crumbs": [
       "02 Control Flow",
       "Lecture"
@@ -3495,7 +3495,7 @@
     "href": "lectures/lec_02_control.html#predict-kevin-reorders-the-ladder",
     "title": "Lecture II - Control Structures for Your Code",
     "section": "Predict: Kevin reorders the ladder",
-    "text": "Predict: Kevin reorders the ladder\nKevin rewrote the tier ladder “to keep the common case on top”. A customer with 25 past orders walks in. Which tier do they get?\npast_orders = 25\nif past_orders &gt;= 5:\n    tier = \"Silver\"\nelif past_orders &gt;= 20:\n    tier = \"Gold\"\nelse:\n    tier = \"Bronze\"\nprint(tier)\na) Gold b) Silver c) Bronze\n. . .\nPredict first. Commit to an answer before the next slide.",
+    "text": "Predict: Kevin reorders the ladder\nKevin rewrote the tier ladder “to keep the common case on top”. A customer with 25 past orders walks in. Which tier do they get?\npast_orders = 25\nif past_orders &gt;= 5:\n    tier = \"Silver\"\nelif past_orders &gt;= 20:\n    tier = \"Gold\"\nelse:\n    tier = \"Bronze\"\nprint(tier)\na) Gold b) Bronze c) Silver\n. . .\nPredict first. Commit to an answer before the next slide.",
     "crumbs": [
       "02 Control Flow",
       "Lecture"
@@ -3506,7 +3506,7 @@
     "href": "lectures/lec_02_control.html#answer-the-first-true-branch-wins",
     "title": "Lecture II - Control Structures for Your Code",
     "section": "Answer: the first true branch wins",
-    "text": "Answer: the first true branch wins\nb) Silver — Python checks branches top to bottom and takes the first True one. 25 &gt;= 5 is already True, so the Gold branch is never even looked at. Order your ladder from strictest to loosest.\n\npast_orders = 25\nif past_orders &gt;= 5:\n    tier = \"Silver\"\nelif past_orders &gt;= 20:\n    tier = \"Gold\"\nelse:\n    tier = \"Bronze\"\nprint(tier)\n\nSilver\n\n\n. . .\n(One misplaced elif and Kevin demotes every VIP.)",
+    "text": "Answer: the first true branch wins\nc) Silver — Python checks branches top to bottom and takes the first True one. 25 &gt;= 5 is already True, so the Gold branch is never even looked at. Order your ladder from strictest to loosest.\n\npast_orders = 25\nif past_orders &gt;= 5:\n    tier = \"Silver\"\nelif past_orders &gt;= 20:\n    tier = \"Gold\"\nelse:\n    tier = \"Bronze\"\nprint(tier)\n\nSilver\n\n\n. . .\n(One misplaced elif and Kevin demotes every VIP.)",
     "crumbs": [
       "02 Control Flow",
       "Lecture"
@@ -3517,7 +3517,7 @@
     "href": "lectures/lec_02_control.html#predict-exactly-at-curfew",
     "title": "Lecture II - Control Structures for Your Code",
     "section": "Predict: exactly at curfew",
-    "text": "Predict: exactly at curfew\nThe curfew is 22:00. An order comes in at exactly 22:00. What prints?\ndelivery_hour = 22\nprint(delivery_hour &lt; 22)\na) True b) False c) Error\n. . .\nPredict first. Commit to an answer before the next slide.",
+    "text": "Predict: exactly at curfew\nThe curfew is 22:00. An order comes in at exactly 22:00. What prints?\ndelivery_hour = 22\nprint(delivery_hour &lt; 22)\na) False b) True c) Error\n. . .\nPredict first. Commit to an answer before the next slide.",
     "crumbs": [
       "02 Control Flow",
       "Lecture"
@@ -3528,7 +3528,7 @@
     "href": "lectures/lec_02_control.html#answer-22-22",
     "title": "Lecture II - Control Structures for Your Code",
     "section": "Answer: 22 < 22",
-    "text": "Answer: 22 &lt; 22\nb) False — &lt; is strict. 22 is not less than 22, so at 22:00 sharp the kitchen is already closed. Use &lt;= when the boundary should count.\n\ndelivery_hour = 22\nprint(delivery_hour &lt; 22)\n\nFalse",
+    "text": "Answer: 22 &lt; 22\na) False — &lt; is strict. 22 is not less than 22, so at 22:00 sharp the kitchen is already closed. Use &lt;= when the boundary should count.\n\ndelivery_hour = 22\nprint(delivery_hour &lt; 22)\n\nFalse",
     "crumbs": [
       "02 Control Flow",
       "Lecture"
@@ -3616,7 +3616,7 @@
     "href": "lectures/lec_02_control.html#predict-where-does-print-run",
     "title": "Lecture II - Control Structures for Your Code",
     "section": "Predict: where does print run?",
-    "text": "Predict: where does print run?\nThe print is not indented. What does this show?\ntotal = 0\nfor n in [10, 20]:\n    total = total + n\nprint(total)\na) 10 b) 30 c) 10 then 30\n. . .\nPredict first, then turn the page.",
+    "text": "Predict: where does print run?\nThe print is not indented. What does this show?\ntotal = 0\nfor n in [10, 20]:\n    total = total + n\nprint(total)\na) 10 b) 10 then 30 c) 30\n. . .\nPredict first, then turn the page.",
     "crumbs": [
       "02 Control Flow",
       "Lecture"
@@ -3627,7 +3627,7 @@
     "href": "lectures/lec_02_control.html#answer-the-unindented-print",
     "title": "Lecture II - Control Structures for Your Code",
     "section": "Answer: the unindented print",
-    "text": "Answer: the unindented print\nb) 30 — print sits outside the loop, so it runs once, after the loop finishes, showing the final total. Indent it and it would print on every pass. Indentation decides what repeats.\n\ntotal = 0\nfor n in [10, 20]:\n    total = total + n\nprint(total)\n\n30",
+    "text": "Answer: the unindented print\nc) 30 — print sits outside the loop, so it runs once, after the loop finishes, showing the final total. Indent it and it would print on every pass. Indentation decides what repeats.\n\ntotal = 0\nfor n in [10, 20]:\n    total = total + n\nprint(total)\n\n30",
     "crumbs": [
       "02 Control Flow",
       "Lecture"
@@ -3769,14 +3769,14 @@
     "href": "lectures/lec_02_presentation.html#question-2",
     "title": "Lecture II - Control Structures for Your Code",
     "section": "Question 2",
-    "text": "Question 2\nprint(type(\"9.99\"))\na) float b) str c) int"
+    "text": "Question 2\nprint(type(\"9.99\"))\na) float b) int c) str"
   },
   {
     "objectID": "lectures/lec_02_presentation.html#answer-2",
     "href": "lectures/lec_02_presentation.html#answer-2",
     "title": "Lecture II - Control Structures for Your Code",
     "section": "Answer 2",
-    "text": "Answer 2\nb) — quotes make it text, no matter how numeric it looks. (Kevin learned this the hard way.)"
+    "text": "Answer 2\nc) — quotes make it text, no matter how numeric it looks. (Kevin learned this the hard way.)"
   },
   {
     "objectID": "lectures/lec_02_presentation.html#question-3",
@@ -3839,28 +3839,28 @@
     "href": "lectures/lec_02_presentation.html#predict-kevin-reorders-the-ladder",
     "title": "Lecture II - Control Structures for Your Code",
     "section": "Predict: Kevin reorders the ladder",
-    "text": "Predict: Kevin reorders the ladder\nKevin rewrote the tier ladder “to keep the common case on top”. A customer with 25 past orders walks in. Which tier do they get?\npast_orders = 25\nif past_orders &gt;= 5:\n    tier = \"Silver\"\nelif past_orders &gt;= 20:\n    tier = \"Gold\"\nelse:\n    tier = \"Bronze\"\nprint(tier)\na) Gold b) Silver c) Bronze\n\nPredict first. Commit to an answer before the next slide."
+    "text": "Predict: Kevin reorders the ladder\nKevin rewrote the tier ladder “to keep the common case on top”. A customer with 25 past orders walks in. Which tier do they get?\npast_orders = 25\nif past_orders &gt;= 5:\n    tier = \"Silver\"\nelif past_orders &gt;= 20:\n    tier = \"Gold\"\nelse:\n    tier = \"Bronze\"\nprint(tier)\na) Gold b) Bronze c) Silver\n\nPredict first. Commit to an answer before the next slide."
   },
   {
     "objectID": "lectures/lec_02_presentation.html#answer-the-first-true-branch-wins",
     "href": "lectures/lec_02_presentation.html#answer-the-first-true-branch-wins",
     "title": "Lecture II - Control Structures for Your Code",
     "section": "Answer: the first true branch wins",
-    "text": "Answer: the first true branch wins\nb) Silver — Python checks branches top to bottom and takes the first True one. 25 &gt;= 5 is already True, so the Gold branch is never even looked at. Order your ladder from strictest to loosest.\n\npast_orders = 25\nif past_orders &gt;= 5:\n    tier = \"Silver\"\nelif past_orders &gt;= 20:\n    tier = \"Gold\"\nelse:\n    tier = \"Bronze\"\nprint(tier)\n\n\n\nSilver\n\n\n\n(One misplaced elif and Kevin demotes every VIP.)"
+    "text": "Answer: the first true branch wins\nc) Silver — Python checks branches top to bottom and takes the first True one. 25 &gt;= 5 is already True, so the Gold branch is never even looked at. Order your ladder from strictest to loosest.\n\npast_orders = 25\nif past_orders &gt;= 5:\n    tier = \"Silver\"\nelif past_orders &gt;= 20:\n    tier = \"Gold\"\nelse:\n    tier = \"Bronze\"\nprint(tier)\n\n\n\nSilver\n\n\n\n(One misplaced elif and Kevin demotes every VIP.)"
   },
   {
     "objectID": "lectures/lec_02_presentation.html#predict-exactly-at-curfew",
     "href": "lectures/lec_02_presentation.html#predict-exactly-at-curfew",
     "title": "Lecture II - Control Structures for Your Code",
     "section": "Predict: exactly at curfew",
-    "text": "Predict: exactly at curfew\nThe curfew is 22:00. An order comes in at exactly 22:00. What prints?\ndelivery_hour = 22\nprint(delivery_hour &lt; 22)\na) True b) False c) Error\n\nPredict first. Commit to an answer before the next slide."
+    "text": "Predict: exactly at curfew\nThe curfew is 22:00. An order comes in at exactly 22:00. What prints?\ndelivery_hour = 22\nprint(delivery_hour &lt; 22)\na) False b) True c) Error\n\nPredict first. Commit to an answer before the next slide."
   },
   {
     "objectID": "lectures/lec_02_presentation.html#answer-22-22",
     "href": "lectures/lec_02_presentation.html#answer-22-22",
     "title": "Lecture II - Control Structures for Your Code",
     "section": "Answer: 22 < 22",
-    "text": "Answer: 22 &lt; 22\nb) False — &lt; is strict. 22 is not less than 22, so at 22:00 sharp the kitchen is already closed. Use &lt;= when the boundary should count.\n\ndelivery_hour = 22\nprint(delivery_hour &lt; 22)\n\n\n\nFalse"
+    "text": "Answer: 22 &lt; 22\na) False — &lt; is strict. 22 is not less than 22, so at 22:00 sharp the kitchen is already closed. Use &lt;= when the boundary should count.\n\ndelivery_hour = 22\nprint(delivery_hour &lt; 22)\n\n\n\nFalse"
   },
   {
     "objectID": "lectures/lec_02_presentation.html#the-copy-paste-pain",
@@ -3916,14 +3916,14 @@
     "href": "lectures/lec_02_presentation.html#predict-where-does-print-run",
     "title": "Lecture II - Control Structures for Your Code",
     "section": "Predict: where does print run?",
-    "text": "Predict: where does print run?\nThe print is not indented. What does this show?\ntotal = 0\nfor n in [10, 20]:\n    total = total + n\nprint(total)\na) 10 b) 30 c) 10 then 30\n\nPredict first, then turn the page."
+    "text": "Predict: where does print run?\nThe print is not indented. What does this show?\ntotal = 0\nfor n in [10, 20]:\n    total = total + n\nprint(total)\na) 10 b) 10 then 30 c) 30\n\nPredict first, then turn the page."
   },
   {
     "objectID": "lectures/lec_02_presentation.html#answer-the-unindented-print",
     "href": "lectures/lec_02_presentation.html#answer-the-unindented-print",
     "title": "Lecture II - Control Structures for Your Code",
     "section": "Answer: the unindented print",
-    "text": "Answer: the unindented print\nb) 30 — print sits outside the loop, so it runs once, after the loop finishes, showing the final total. Indent it and it would print on every pass. Indentation decides what repeats.\n\ntotal = 0\nfor n in [10, 20]:\n    total = total + n\nprint(total)\n\n\n\n30"
+    "text": "Answer: the unindented print\nc) 30 — print sits outside the loop, so it runs once, after the loop finishes, showing the final total. Indent it and it would print on every pass. Indentation decides what repeats.\n\ntotal = 0\nfor n in [10, 20]:\n    total = total + n\nprint(total)\n\n\n\n30"
   },
   {
     "objectID": "lectures/lec_02_presentation.html#while-repeat-as-long-as",
@@ -4022,7 +4022,7 @@
     "href": "lectures/lec_04_dimensions.html#question-1",
     "title": "Lecture IV - Handling Data in more than one Dimension",
     "section": "Question 1",
-    "text": "Question 1\ndef announce(item):\n    print(f\"Fresh today: {item}\")\n\nresult = announce(\"Mate\")\nprint(result)\nThe second print shows what?\na) Fresh today: Mate b) None c) Error",
+    "text": "Question 1\ndef announce(item):\n    print(f\"Fresh today: {item}\")\n\nresult = announce(\"Mate\")\nprint(result)\nThe second print shows what?\na) Fresh today: Mate b) Error c) None",
     "crumbs": [
       "04 Dimensions",
       "Lecture"
@@ -4033,7 +4033,7 @@
     "href": "lectures/lec_04_dimensions.html#answer-1",
     "title": "Lecture IV - Handling Data in more than one Dimension",
     "section": "Answer 1",
-    "text": "Answer 1\nb) None — announce has no return, so it hands back None. Printing something is not the same as returning it.",
+    "text": "Answer 1\nc) None — announce has no return, so it hands back None. Printing something is not the same as returning it.",
     "crumbs": [
       "04 Dimensions",
       "Lecture"
@@ -4132,7 +4132,7 @@
     "href": "lectures/lec_04_dimensions.html#predict-where-does-the-slice-stop",
     "title": "Lecture IV - Handling Data in more than one Dimension",
     "section": "Predict: where does the slice stop?",
-    "text": "Predict: where does the slice stop?\nA courier carries four cup sizes. What does this print?\nsizes = [\"S\", \"M\", \"L\", \"XL\"]\nprint(sizes[1:3])\na) ['M', 'L'] b) ['M', 'L', 'XL'] c) ['S', 'M', 'L']\n. . .\nPredict first. Commit to an answer before the next slide.",
+    "text": "Predict: where does the slice stop?\nA courier carries four cup sizes. What does this print?\nsizes = [\"S\", \"M\", \"L\", \"XL\"]\nprint(sizes[1:3])\na) ['M', 'L', 'XL'] b) ['M', 'L'] c) ['S', 'M', 'L']\n. . .\nPredict first. Commit to an answer before the next slide.",
     "crumbs": [
       "04 Dimensions",
       "Lecture"
@@ -4143,7 +4143,7 @@
     "href": "lectures/lec_04_dimensions.html#answer-the-stop-index-is-excluded",
     "title": "Lecture IV - Handling Data in more than one Dimension",
     "section": "Answer: the stop index is excluded",
-    "text": "Answer: the stop index is excluded\na) ['M', 'L'] — the slice starts at index 1 (\"M\") and stops before index 3, so index 3 (\"XL\") is never included. A slice from 1:3 gives you exactly 3 - 1 = 2 items.\n\nsizes = [\"S\", \"M\", \"L\", \"XL\"]\nprint(sizes[1:3])\n\n['M', 'L']",
+    "text": "Answer: the stop index is excluded\nb) ['M', 'L'] — the slice starts at index 1 (\"M\") and stops before index 3, so index 3 (\"XL\") is never included. A slice from 1:3 gives you exactly 3 - 1 = 2 items.\n\nsizes = [\"S\", \"M\", \"L\", \"XL\"]\nprint(sizes[1:3])\n\n['M', 'L']",
     "crumbs": [
       "04 Dimensions",
       "Lecture"
@@ -4264,7 +4264,7 @@
     "href": "lectures/lec_04_dimensions.html#sets-only-the-unique-ones",
     "title": "Lecture IV - Handling Data in more than one Dimension",
     "section": "Sets: only the unique ones",
-    "text": "Sets: only the unique ones\nA set keeps each value once. Feed it duplicates and they collapse. Perfect for counting distinct things, like today’s regulars:\n\nvisitors = [\"nina\", \"tom\", \"nina\", \"ada\", \"tom\"]\nregulars = set(visitors)\nprint(regulars)\nprint(len(regulars))   # how many different people\n\n{'nina', 'tom', 'ada'}\n3\n\n\n. . .\nFive visits, three people. A set answers “how many different?” in one step.",
+    "text": "Sets: only the unique ones\nA set keeps each value once. Feed it duplicates and they collapse. Perfect for counting distinct things, like today’s regulars:\n\nvisitors = [\"nina\", \"tom\", \"nina\", \"ada\", \"tom\"]\nregulars = set(visitors)\nprint(regulars)\nprint(len(regulars))   # how many different people\n\n{'ada', 'nina', 'tom'}\n3\n\n\n. . .\nFive visits, three people. A set answers “how many different?” in one step.",
     "crumbs": [
       "04 Dimensions",
       "Lecture"
@@ -4403,14 +4403,14 @@
     "href": "lectures/lec_04_presentation.html#question-1",
     "title": "Lecture IV - Handling Data in more than one Dimension",
     "section": "Question 1",
-    "text": "Question 1\ndef announce(item):\n    print(f\"Fresh today: {item}\")\n\nresult = announce(\"Mate\")\nprint(result)\nThe second print shows what?\na) Fresh today: Mate b) None c) Error"
+    "text": "Question 1\ndef announce(item):\n    print(f\"Fresh today: {item}\")\n\nresult = announce(\"Mate\")\nprint(result)\nThe second print shows what?\na) Fresh today: Mate b) Error c) None"
   },
   {
     "objectID": "lectures/lec_04_presentation.html#answer-1",
     "href": "lectures/lec_04_presentation.html#answer-1",
     "title": "Lecture IV - Handling Data in more than one Dimension",
     "section": "Answer 1",
-    "text": "Answer 1\nb) None — announce has no return, so it hands back None. Printing something is not the same as returning it."
+    "text": "Answer 1\nc) None — announce has no return, so it hands back None. Printing something is not the same as returning it."
   },
   {
     "objectID": "lectures/lec_04_presentation.html#question-2",
@@ -4473,14 +4473,14 @@
     "href": "lectures/lec_04_presentation.html#predict-where-does-the-slice-stop",
     "title": "Lecture IV - Handling Data in more than one Dimension",
     "section": "Predict: where does the slice stop?",
-    "text": "Predict: where does the slice stop?\nA courier carries four cup sizes. What does this print?\nsizes = [\"S\", \"M\", \"L\", \"XL\"]\nprint(sizes[1:3])\na) ['M', 'L'] b) ['M', 'L', 'XL'] c) ['S', 'M', 'L']\n\nPredict first. Commit to an answer before the next slide."
+    "text": "Predict: where does the slice stop?\nA courier carries four cup sizes. What does this print?\nsizes = [\"S\", \"M\", \"L\", \"XL\"]\nprint(sizes[1:3])\na) ['M', 'L', 'XL'] b) ['M', 'L'] c) ['S', 'M', 'L']\n\nPredict first. Commit to an answer before the next slide."
   },
   {
     "objectID": "lectures/lec_04_presentation.html#answer-the-stop-index-is-excluded",
     "href": "lectures/lec_04_presentation.html#answer-the-stop-index-is-excluded",
     "title": "Lecture IV - Handling Data in more than one Dimension",
     "section": "Answer: the stop index is excluded",
-    "text": "Answer: the stop index is excluded\na) ['M', 'L'] — the slice starts at index 1 (\"M\") and stops before index 3, so index 3 (\"XL\") is never included. A slice from 1:3 gives you exactly 3 - 1 = 2 items.\n\nsizes = [\"S\", \"M\", \"L\", \"XL\"]\nprint(sizes[1:3])\n\n\n\n['M', 'L']"
+    "text": "Answer: the stop index is excluded\nb) ['M', 'L'] — the slice starts at index 1 (\"M\") and stops before index 3, so index 3 (\"XL\") is never included. A slice from 1:3 gives you exactly 3 - 1 = 2 items.\n\nsizes = [\"S\", \"M\", \"L\", \"XL\"]\nprint(sizes[1:3])\n\n\n\n['M', 'L']"
   },
   {
     "objectID": "lectures/lec_04_presentation.html#growing-a-list",
@@ -4557,7 +4557,7 @@
     "href": "lectures/lec_04_presentation.html#sets-only-the-unique-ones",
     "title": "Lecture IV - Handling Data in more than one Dimension",
     "section": "Sets: only the unique ones",
-    "text": "Sets: only the unique ones\nA set keeps each value once. Feed it duplicates and they collapse. Perfect for counting distinct things, like today’s regulars:\n\nvisitors = [\"nina\", \"tom\", \"nina\", \"ada\", \"tom\"]\nregulars = set(visitors)\nprint(regulars)\nprint(len(regulars))   # how many different people\n\n\n\n{'nina', 'tom', 'ada'}\n3\n\n\n\nFive visits, three people. A set answers “how many different?” in one step."
+    "text": "Sets: only the unique ones\nA set keeps each value once. Feed it duplicates and they collapse. Perfect for counting distinct things, like today’s regulars:\n\nvisitors = [\"nina\", \"tom\", \"nina\", \"ada\", \"tom\"]\nregulars = set(visitors)\nprint(regulars)\nprint(len(regulars))   # how many different people\n\n\n\n{'ada', 'nina', 'tom'}\n3\n\n\n\nFive visits, three people. A set answers “how many different?” in one step."
   },
   {
     "objectID": "lectures/lec_04_presentation.html#a-dictionary-inside-a-dictionary",
@@ -4729,7 +4729,7 @@
     "href": "lectures/lec_06_modules.html#predict-which-way-does-floor-go",
     "title": "Lecture VI - Modules and the Standard Library",
     "section": "Predict: which way does floor go?",
-    "text": "Predict: which way does floor go?\nmath.ceil rounds up. Its partner math.floor rounds down, but down from a negative number is the tricky part. What does the last line print?\nimport math\nprint(math.floor(-2.5))\na) -2 b) -3 c) an error\n. . .\nPredict first. Commit to an answer before the next slide.",
+    "text": "Predict: which way does floor go?\nmath.ceil rounds up. Its partner math.floor rounds down, but down from a negative number is the tricky part. What does the last line print?\nimport math\nprint(math.floor(-2.5))\na) -3 b) -2 c) an error\n. . .\nPredict first. Commit to an answer before the next slide.",
     "crumbs": [
       "06 Modules",
       "Lecture"
@@ -4740,7 +4740,7 @@
     "href": "lectures/lec_06_modules.html#answer-floor-goes-down-not-toward-zero",
     "title": "Lecture VI - Modules and the Standard Library",
     "section": "Answer: floor goes down, not toward zero",
-    "text": "Answer: floor goes down, not toward zero\nb) -3 — floor always heads down the number line, toward more negative. From -2.5, down is -3, not the -2 you’d get by rounding toward zero:\n\nimport math\nprint(math.floor(-2.5))   # down the number line → -3\n\n-3\n\n\n. . .\n“Down” means smaller, and -3 is smaller than -2. Keep the number line in your head, not the distance to zero.",
+    "text": "Answer: floor goes down, not toward zero\na) -3 — floor always heads down the number line, toward more negative. From -2.5, down is -3, not the -2 you’d get by rounding toward zero:\n\nimport math\nprint(math.floor(-2.5))   # down the number line → -3\n\n-3\n\n\n. . .\n“Down” means smaller, and -3 is smaller than -2. Keep the number line in your head, not the distance to zero.",
     "crumbs": [
       "06 Modules",
       "Lecture"
@@ -4751,7 +4751,7 @@
     "href": "lectures/lec_06_modules.html#the-random-toolbox",
     "title": "Lecture VI - Modules and the Standard Library",
     "section": "The random toolbox",
-    "text": "The random toolbox\nThe investor wants to see how the shop copes with a busy day, but the busy day hasn’t happened yet. So we rehearse it with made-up numbers. The random module deals them:\n\nimport random\n\nprint(random.random())                       # a float in [0.0, 1.0)\nprint(random.randint(1, 20))                  # an integer 1–20, ends included\nprint(random.choice([\"latte\", \"mocha\", \"tea\"]))  # one item, picked at random\n\nqueue = [1, 2, 3, 4, 5]\nrandom.shuffle(queue)                         # reorders the list in place\nprint(queue)\n\n0.1678239958315848\n16\ntea\n[5, 2, 1, 4, 3]\n\n\n. . .\nFour tools, four flavors of luck: a raw float, a bounded integer, a pick from a list, and a reshuffle.",
+    "text": "The random toolbox\nThe investor wants to see how the shop copes with a busy day, but the busy day hasn’t happened yet. So we rehearse it with made-up numbers. The random module deals them:\n\nimport random\n\nprint(random.random())                       # a float in [0.0, 1.0)\nprint(random.randint(1, 20))                  # an integer 1–20, ends included\nprint(random.choice([\"latte\", \"mocha\", \"tea\"]))  # one item, picked at random\n\nqueue = [1, 2, 3, 4, 5]\nrandom.shuffle(queue)                         # reorders the list in place\nprint(queue)\n\n0.9252263675891648\n20\nlatte\n[4, 2, 3, 5, 1]\n\n\n. . .\nFour tools, four flavors of luck: a raw float, a bounded integer, a pick from a list, and a reshuffle.",
     "crumbs": [
       "06 Modules",
       "Lecture"
@@ -4762,7 +4762,7 @@
     "href": "lectures/lec_06_modules.html#run-it-again",
     "title": "Lecture VI - Modules and the Standard Library",
     "section": "“Run it again”",
-    "text": "“Run it again”\nThe investor leans over and says: “Run it again.” Kevin does, and gets completely different numbers:\n\nimport random\n\nprint([random.randint(1, 20) for _ in range(5)])   # one run\nprint([random.randint(1, 20) for _ in range(5)])   # ...and again — different!\n\n[5, 7, 5, 8, 11]\n[3, 3, 3, 15, 19]\n\n\n. . .\nTwo runs, two answers. That’s exactly what random is supposed to do, but it’s useless for due diligence. A projection nobody can reproduce is a projection nobody can trust.",
+    "text": "“Run it again”\nThe investor leans over and says: “Run it again.” Kevin does, and gets completely different numbers:\n\nimport random\n\nprint([random.randint(1, 20) for _ in range(5)])   # one run\nprint([random.randint(1, 20) for _ in range(5)])   # ...and again — different!\n\n[4, 9, 13, 8, 17]\n[5, 11, 15, 17, 7]\n\n\n. . .\nTwo runs, two answers. That’s exactly what random is supposed to do, but it’s useless for due diligence. A projection nobody can reproduce is a projection nobody can trust.",
     "crumbs": [
       "06 Modules",
       "Lecture"
@@ -4784,7 +4784,7 @@
     "href": "lectures/lec_06_modules.html#predict-seeded-once-built-twice",
     "title": "Lecture VI - Modules and the Standard Library",
     "section": "Predict: seeded once, built twice",
-    "text": "Predict: seeded once, built twice\nKevin seeds once, then builds two lists the same way, without touching the seed in between. Are first and second equal?\nimport random\n\nrandom.seed(42)\nfirst  = [random.randint(1, 20) for _ in range(3)]\nsecond = [random.randint(1, 20) for _ in range(3)]\n\nprint(first)\nprint(second)\na) equal: the seed is set, so both come out the same b) different: the second list continues where the first stopped c) an error\n. . .\nPredict first. Commit to an answer before the next slide.",
+    "text": "Predict: seeded once, built twice\nKevin seeds once, then builds two lists the same way, without touching the seed in between. Are first and second equal?\nimport random\n\nrandom.seed(42)\nfirst  = [random.randint(1, 20) for _ in range(3)]\nsecond = [random.randint(1, 20) for _ in range(3)]\n\nprint(first)\nprint(second)\na) different: the second list continues where the first stopped b) equal: the seed is set, so both come out the same c) an error: the stream is empty after three draws\n. . .\nPredict first. Commit to an answer before the next slide.",
     "crumbs": [
       "06 Modules",
       "Lecture"
@@ -4795,7 +4795,7 @@
     "href": "lectures/lec_06_modules.html#answer-different",
     "title": "Lecture VI - Modules and the Standard Library",
     "section": "Answer: different",
-    "text": "Answer: different\nb) different — a seed doesn’t freeze random, it fixes the whole sequence. The first list eats the first three numbers of the stream; the second list simply continues from number four:\n\nimport random\n\nrandom.seed(42)\nfirst  = [random.randint(1, 20) for _ in range(3)]\nsecond = [random.randint(1, 20) for _ in range(3)]\n\nprint(first)    # [4, 1, 9]  — the stream's first three numbers\nprint(second)   # [8, 8, 5]  — the stream carries on\n\n[4, 1, 9]\n[8, 8, 5]\n\n\n. . .\nTo get the same list twice, you re-seed before each run, and that rewinds the stream to the start. One seed, one fixed sequence: that’s the entire job of a seed.",
+    "text": "Answer: different\na) different — a seed doesn’t freeze random, it fixes the whole sequence. The first list eats the first three numbers of the stream; the second list simply continues from number four:\n\nimport random\n\nrandom.seed(42)\nfirst  = [random.randint(1, 20) for _ in range(3)]\nsecond = [random.randint(1, 20) for _ in range(3)]\n\nprint(first)    # [4, 1, 9]  — the stream's first three numbers\nprint(second)   # [8, 8, 5]  — the stream carries on\n\n[4, 1, 9]\n[8, 8, 5]\n\n\n. . .\nTo get the same list twice, you re-seed before each run, and that rewinds the stream to the start. One seed, one fixed sequence: that’s the entire job of a seed.",
     "crumbs": [
       "06 Modules",
       "Lecture"
@@ -4888,28 +4888,28 @@
     "href": "lectures/lec_06_presentation.html#predict-which-way-does-floor-go",
     "title": "Lecture VI - Modules and the Standard Library",
     "section": "Predict: which way does floor go?",
-    "text": "Predict: which way does floor go?\nmath.ceil rounds up. Its partner math.floor rounds down, but down from a negative number is the tricky part. What does the last line print?\nimport math\nprint(math.floor(-2.5))\na) -2 b) -3 c) an error\n\nPredict first. Commit to an answer before the next slide."
+    "text": "Predict: which way does floor go?\nmath.ceil rounds up. Its partner math.floor rounds down, but down from a negative number is the tricky part. What does the last line print?\nimport math\nprint(math.floor(-2.5))\na) -3 b) -2 c) an error\n\nPredict first. Commit to an answer before the next slide."
   },
   {
     "objectID": "lectures/lec_06_presentation.html#answer-floor-goes-down-not-toward-zero",
     "href": "lectures/lec_06_presentation.html#answer-floor-goes-down-not-toward-zero",
     "title": "Lecture VI - Modules and the Standard Library",
     "section": "Answer: floor goes down, not toward zero",
-    "text": "Answer: floor goes down, not toward zero\nb) -3 — floor always heads down the number line, toward more negative. From -2.5, down is -3, not the -2 you’d get by rounding toward zero:\n\nimport math\nprint(math.floor(-2.5))   # down the number line → -3\n\n\n\n-3\n\n\n\n“Down” means smaller, and -3 is smaller than -2. Keep the number line in your head, not the distance to zero."
+    "text": "Answer: floor goes down, not toward zero\na) -3 — floor always heads down the number line, toward more negative. From -2.5, down is -3, not the -2 you’d get by rounding toward zero:\n\nimport math\nprint(math.floor(-2.5))   # down the number line → -3\n\n\n\n-3\n\n\n\n“Down” means smaller, and -3 is smaller than -2. Keep the number line in your head, not the distance to zero."
   },
   {
     "objectID": "lectures/lec_06_presentation.html#the-random-toolbox",
     "href": "lectures/lec_06_presentation.html#the-random-toolbox",
     "title": "Lecture VI - Modules and the Standard Library",
     "section": "The random toolbox",
-    "text": "The random toolbox\nThe investor wants to see how the shop copes with a busy day, but the busy day hasn’t happened yet. So we rehearse it with made-up numbers. The random module deals them:\n\nimport random\n\nprint(random.random())                       # a float in [0.0, 1.0)\nprint(random.randint(1, 20))                  # an integer 1–20, ends included\nprint(random.choice([\"latte\", \"mocha\", \"tea\"]))  # one item, picked at random\n\nqueue = [1, 2, 3, 4, 5]\nrandom.shuffle(queue)                         # reorders the list in place\nprint(queue)\n\n\n\n0.1678239958315848\n16\ntea\n[5, 2, 1, 4, 3]\n\n\n\nFour tools, four flavors of luck: a raw float, a bounded integer, a pick from a list, and a reshuffle."
+    "text": "The random toolbox\nThe investor wants to see how the shop copes with a busy day, but the busy day hasn’t happened yet. So we rehearse it with made-up numbers. The random module deals them:\n\nimport random\n\nprint(random.random())                       # a float in [0.0, 1.0)\nprint(random.randint(1, 20))                  # an integer 1–20, ends included\nprint(random.choice([\"latte\", \"mocha\", \"tea\"]))  # one item, picked at random\n\nqueue = [1, 2, 3, 4, 5]\nrandom.shuffle(queue)                         # reorders the list in place\nprint(queue)\n\n\n\n0.9252263675891648\n20\nlatte\n[4, 2, 3, 5, 1]\n\n\n\nFour tools, four flavors of luck: a raw float, a bounded integer, a pick from a list, and a reshuffle."
   },
   {
     "objectID": "lectures/lec_06_presentation.html#run-it-again",
     "href": "lectures/lec_06_presentation.html#run-it-again",
     "title": "Lecture VI - Modules and the Standard Library",
     "section": "“Run it again”",
-    "text": "“Run it again”\nThe investor leans over and says: “Run it again.” Kevin does, and gets completely different numbers:\n\nimport random\n\nprint([random.randint(1, 20) for _ in range(5)])   # one run\nprint([random.randint(1, 20) for _ in range(5)])   # ...and again — different!\n\n\n\n[5, 7, 5, 8, 11]\n[3, 3, 3, 15, 19]\n\n\n\nTwo runs, two answers. That’s exactly what random is supposed to do, but it’s useless for due diligence. A projection nobody can reproduce is a projection nobody can trust."
+    "text": "“Run it again”\nThe investor leans over and says: “Run it again.” Kevin does, and gets completely different numbers:\n\nimport random\n\nprint([random.randint(1, 20) for _ in range(5)])   # one run\nprint([random.randint(1, 20) for _ in range(5)])   # ...and again — different!\n\n\n\n[4, 9, 13, 8, 17]\n[5, 11, 15, 17, 7]\n\n\n\nTwo runs, two answers. That’s exactly what random is supposed to do, but it’s useless for due diligence. A projection nobody can reproduce is a projection nobody can trust."
   },
   {
     "objectID": "lectures/lec_06_presentation.html#random.seed-makes-luck-repeatable",
@@ -4923,14 +4923,14 @@
     "href": "lectures/lec_06_presentation.html#predict-seeded-once-built-twice",
     "title": "Lecture VI - Modules and the Standard Library",
     "section": "Predict: seeded once, built twice",
-    "text": "Predict: seeded once, built twice\nKevin seeds once, then builds two lists the same way, without touching the seed in between. Are first and second equal?\nimport random\n\nrandom.seed(42)\nfirst  = [random.randint(1, 20) for _ in range(3)]\nsecond = [random.randint(1, 20) for _ in range(3)]\n\nprint(first)\nprint(second)\na) equal: the seed is set, so both come out the same b) different: the second list continues where the first stopped c) an error\n\nPredict first. Commit to an answer before the next slide."
+    "text": "Predict: seeded once, built twice\nKevin seeds once, then builds two lists the same way, without touching the seed in between. Are first and second equal?\nimport random\n\nrandom.seed(42)\nfirst  = [random.randint(1, 20) for _ in range(3)]\nsecond = [random.randint(1, 20) for _ in range(3)]\n\nprint(first)\nprint(second)\na) different: the second list continues where the first stopped b) equal: the seed is set, so both come out the same c) an error: the stream is empty after three draws\n\nPredict first. Commit to an answer before the next slide."
   },
   {
     "objectID": "lectures/lec_06_presentation.html#answer-different",
     "href": "lectures/lec_06_presentation.html#answer-different",
     "title": "Lecture VI - Modules and the Standard Library",
     "section": "Answer: different",
-    "text": "Answer: different\nb) different — a seed doesn’t freeze random, it fixes the whole sequence. The first list eats the first three numbers of the stream; the second list simply continues from number four:\n\nimport random\n\nrandom.seed(42)\nfirst  = [random.randint(1, 20) for _ in range(3)]\nsecond = [random.randint(1, 20) for _ in range(3)]\n\nprint(first)    # [4, 1, 9]  — the stream's first three numbers\nprint(second)   # [8, 8, 5]  — the stream carries on\n\n\n\n[4, 1, 9]\n[8, 8, 5]\n\n\n\nTo get the same list twice, you re-seed before each run, and that rewinds the stream to the start. One seed, one fixed sequence: that’s the entire job of a seed."
+    "text": "Answer: different\na) different — a seed doesn’t freeze random, it fixes the whole sequence. The first list eats the first three numbers of the stream; the second list simply continues from number four:\n\nimport random\n\nrandom.seed(42)\nfirst  = [random.randint(1, 20) for _ in range(3)]\nsecond = [random.randint(1, 20) for _ in range(3)]\n\nprint(first)    # [4, 1, 9]  — the stream's first three numbers\nprint(second)   # [8, 8, 5]  — the stream carries on\n\n\n\n[4, 1, 9]\n[8, 8, 5]\n\n\n\nTo get the same list twice, you re-seed before each run, and that rewinds the stream to the start. One seed, one fixed sequence: that’s the entire job of a seed."
   },
   {
     "objectID": "lectures/lec_06_presentation.html#tonights-episode",
@@ -5013,7 +5013,7 @@
     "href": "lectures/lec_08_pandas.html#answer-the-method-never-existed",
     "title": "Lecture VIII - Pandas and AI Craft",
     "section": "Answer: the method never existed",
-    "text": "Answer: the method never existed\nb) AttributeError — pandas has no .summarize(). The AI invented a plausible-sounding name, and Python answers with a traceback you’ve read since Episode 5:\n\nimport pandas as pd\norders = pd.DataFrame({\"zone\": [\"Nord\", \"Sued\"], \"total_eur\": [12.0, 9.5]})\n\norders.summarize()                     # the method the AI invented\n\n\n---------------------------------------------------------------------------\nAttributeError                            Traceback (most recent call last)\n/var/folders/_5/jkkjxxdd5f1955l380dky7n80000gn/T/ipykernel_94193/1876211805.py in ?()\n      1 import pandas as pd\n      2 orders = pd.DataFrame({\"zone\": [\"Nord\", \"Sued\"], \"total_eur\": [12.0, 9.5]})\n      3 \n----&gt; 4 orders.summarize()                     # the method the AI invented\n\n~/development/lectures/Introduction-to-Python/.venv/lib/python3.12/site-packages/pandas/core/generic.py in ?(self, name)\n   6314             and name not in self._accessors\n   6315             and self._info_axis._can_hold_identifiers_and_holds_name(name)\n   6316         ):\n   6317             return self[name]\n-&gt; 6318         return object.__getattribute__(self, name)\n\nAttributeError: 'DataFrame' object has no attribute 'summarize'\n\n\n\n. . .\nThe real method is .describe():\n\nprint(orders.describe())               # the method that actually exists\n\n       total_eur\ncount   2.000000\nmean   10.750000\nstd     1.767767\nmin     9.500000\n25%    10.125000\n50%    10.750000\n75%    11.375000\nmax    12.000000\n\n\n. . .\nAn AI that sounds sure is not the same as an API that exists.",
+    "text": "Answer: the method never existed\nb) AttributeError — pandas has no .summarize(). The AI invented a plausible-sounding name, and Python answers with a traceback you’ve read since Episode 5:\n\nimport pandas as pd\norders = pd.DataFrame({\"zone\": [\"Nord\", \"Sued\"], \"total_eur\": [12.0, 9.5]})\n\norders.summarize()                     # the method the AI invented\n\n\n---------------------------------------------------------------------------\nAttributeError                            Traceback (most recent call last)\n/var/folders/_5/jkkjxxdd5f1955l380dky7n80000gn/T/ipykernel_66286/1876211805.py in ?()\n      1 import pandas as pd\n      2 orders = pd.DataFrame({\"zone\": [\"Nord\", \"Sued\"], \"total_eur\": [12.0, 9.5]})\n      3 \n----&gt; 4 orders.summarize()                     # the method the AI invented\n\n~/development/lectures/Introduction-to-Python/.venv/lib/python3.12/site-packages/pandas/core/generic.py in ?(self, name)\n   6314             and name not in self._accessors\n   6315             and self._info_axis._can_hold_identifiers_and_holds_name(name)\n   6316         ):\n   6317             return self[name]\n-&gt; 6318         return object.__getattribute__(self, name)\n\nAttributeError: 'DataFrame' object has no attribute 'summarize'\n\n\n\n. . .\nThe real method is .describe():\n\nprint(orders.describe())               # the method that actually exists\n\n       total_eur\ncount   2.000000\nmean   10.750000\nstd     1.767767\nmin     9.500000\n25%    10.125000\n50%    10.750000\n75%    11.375000\nmax    12.000000\n\n\n. . .\nAn AI that sounds sure is not the same as an API that exists.",
     "crumbs": [
       "08 Pandas and AI",
       "Lecture"
@@ -5112,7 +5112,7 @@
     "href": "lectures/lec_08_pandas.html#predict-filtering-with-the-wrong-case",
     "title": "Lecture VIII - Pandas and AI Craft",
     "section": "Predict: filtering with the wrong case",
-    "text": "Predict: filtering with the wrong case\nKevin filters for the Nord zone, but types it lowercase. The data spells it \"Nord\". What does this print?\nprint(df[df[\"zone\"] == \"nord\"])\na) the Nord rows anyway b) an empty table, no error c) a KeyError\n. . .\nPredict first. Commit to an answer before the next slide.",
+    "text": "Predict: filtering with the wrong case\nKevin filters for the Nord zone, but types it lowercase. The data spells it \"Nord\". What does this print?\nprint(df[df[\"zone\"] == \"nord\"])\na) an empty table, no error b) the Nord rows anyway: case is ignored c) a KeyError for the missing zone\n. . .\nPredict first. Commit to an answer before the next slide.",
     "crumbs": [
       "08 Pandas and AI",
       "Lecture"
@@ -5123,7 +5123,7 @@
     "href": "lectures/lec_08_pandas.html#answer-an-empty-table-no-warning",
     "title": "Lecture VIII - Pandas and AI Craft",
     "section": "Answer: an empty table, no warning",
-    "text": "Answer: an empty table, no warning\nb) an empty table — \"nord\" matches nothing, so the mask is all False and pandas hands back zero rows. No error, no complaint:\n\nprint(df[df[\"zone\"] == \"nord\"])          # nothing matches \"nord\"\nprint(\"rows:\", len(df[df[\"zone\"] == \"nord\"]))\n\nEmpty DataFrame\nColumns: [order_id, zone, items, total_eur]\nIndex: []\nrows: 0\n\n\n. . .\nThis is the dangerous kind of bug: it runs, it just returns nothing. pandas won’t warn you; YOU verify, which is exactly why you test filters on a case whose answer you know.",
+    "text": "Answer: an empty table, no warning\na) an empty table — \"nord\" matches nothing, so the mask is all False and pandas hands back zero rows. No error, no complaint:\n\nprint(df[df[\"zone\"] == \"nord\"])          # nothing matches \"nord\"\nprint(\"rows:\", len(df[df[\"zone\"] == \"nord\"]))\n\nEmpty DataFrame\nColumns: [order_id, zone, items, total_eur]\nIndex: []\nrows: 0\n\n\n. . .\nThis is the dangerous kind of bug: it runs, it just returns nothing. pandas won’t warn you; YOU verify, which is exactly why you test filters on a case whose answer you know.",
     "crumbs": [
       "08 Pandas and AI",
       "Lecture"
@@ -5206,7 +5206,7 @@
     "href": "lectures/lec_08_presentation.html#answer-the-method-never-existed",
     "title": "Lecture VIII - Pandas and AI Craft",
     "section": "Answer: the method never existed",
-    "text": "Answer: the method never existed\nb) AttributeError — pandas has no .summarize(). The AI invented a plausible-sounding name, and Python answers with a traceback you’ve read since Episode 5:\n\nimport pandas as pd\norders = pd.DataFrame({\"zone\": [\"Nord\", \"Sued\"], \"total_eur\": [12.0, 9.5]})\n\norders.summarize()                     # the method the AI invented\n\n\n---------------------------------------------------------------------------\nAttributeError                            Traceback (most recent call last)\n/var/folders/_5/jkkjxxdd5f1955l380dky7n80000gn/T/ipykernel_94193/1876211805.py in ?()\n      1 import pandas as pd\n      2 orders = pd.DataFrame({\"zone\": [\"Nord\", \"Sued\"], \"total_eur\": [12.0, 9.5]})\n      3 \n----&gt; 4 orders.summarize()                     # the method the AI invented\n\n~/development/lectures/Introduction-to-Python/.venv/lib/python3.12/site-packages/pandas/core/generic.py in ?(self, name)\n   6314             and name not in self._accessors\n   6315             and self._info_axis._can_hold_identifiers_and_holds_name(name)\n   6316         ):\n   6317             return self[name]\n-&gt; 6318         return object.__getattribute__(self, name)\n\nAttributeError: 'DataFrame' object has no attribute 'summarize'\n\n\n\n\nThe real method is .describe():\n\nprint(orders.describe())               # the method that actually exists\n\n\n\n       total_eur\ncount   2.000000\nmean   10.750000\nstd     1.767767\nmin     9.500000\n25%    10.125000\n50%    10.750000\n75%    11.375000\nmax    12.000000\n\n\n\n\nAn AI that sounds sure is not the same as an API that exists."
+    "text": "Answer: the method never existed\nb) AttributeError — pandas has no .summarize(). The AI invented a plausible-sounding name, and Python answers with a traceback you’ve read since Episode 5:\n\nimport pandas as pd\norders = pd.DataFrame({\"zone\": [\"Nord\", \"Sued\"], \"total_eur\": [12.0, 9.5]})\n\norders.summarize()                     # the method the AI invented\n\n\n---------------------------------------------------------------------------\nAttributeError                            Traceback (most recent call last)\n/var/folders/_5/jkkjxxdd5f1955l380dky7n80000gn/T/ipykernel_66286/1876211805.py in ?()\n      1 import pandas as pd\n      2 orders = pd.DataFrame({\"zone\": [\"Nord\", \"Sued\"], \"total_eur\": [12.0, 9.5]})\n      3 \n----&gt; 4 orders.summarize()                     # the method the AI invented\n\n~/development/lectures/Introduction-to-Python/.venv/lib/python3.12/site-packages/pandas/core/generic.py in ?(self, name)\n   6314             and name not in self._accessors\n   6315             and self._info_axis._can_hold_identifiers_and_holds_name(name)\n   6316         ):\n   6317             return self[name]\n-&gt; 6318         return object.__getattribute__(self, name)\n\nAttributeError: 'DataFrame' object has no attribute 'summarize'\n\n\n\n\nThe real method is .describe():\n\nprint(orders.describe())               # the method that actually exists\n\n\n\n       total_eur\ncount   2.000000\nmean   10.750000\nstd     1.767767\nmin     9.500000\n25%    10.125000\n50%    10.750000\n75%    11.375000\nmax    12.000000\n\n\n\n\nAn AI that sounds sure is not the same as an API that exists."
   },
   {
     "objectID": "lectures/lec_08_presentation.html#disclosure-one-line-every-time",
@@ -5269,14 +5269,14 @@
     "href": "lectures/lec_08_presentation.html#predict-filtering-with-the-wrong-case",
     "title": "Lecture VIII - Pandas and AI Craft",
     "section": "Predict: filtering with the wrong case",
-    "text": "Predict: filtering with the wrong case\nKevin filters for the Nord zone, but types it lowercase. The data spells it \"Nord\". What does this print?\nprint(df[df[\"zone\"] == \"nord\"])\na) the Nord rows anyway b) an empty table, no error c) a KeyError\n\nPredict first. Commit to an answer before the next slide."
+    "text": "Predict: filtering with the wrong case\nKevin filters for the Nord zone, but types it lowercase. The data spells it \"Nord\". What does this print?\nprint(df[df[\"zone\"] == \"nord\"])\na) an empty table, no error b) the Nord rows anyway: case is ignored c) a KeyError for the missing zone\n\nPredict first. Commit to an answer before the next slide."
   },
   {
     "objectID": "lectures/lec_08_presentation.html#answer-an-empty-table-no-warning",
     "href": "lectures/lec_08_presentation.html#answer-an-empty-table-no-warning",
     "title": "Lecture VIII - Pandas and AI Craft",
     "section": "Answer: an empty table, no warning",
-    "text": "Answer: an empty table, no warning\nb) an empty table — \"nord\" matches nothing, so the mask is all False and pandas hands back zero rows. No error, no complaint:\n\nprint(df[df[\"zone\"] == \"nord\"])          # nothing matches \"nord\"\nprint(\"rows:\", len(df[df[\"zone\"] == \"nord\"]))\n\n\n\nEmpty DataFrame\nColumns: [order_id, zone, items, total_eur]\nIndex: []\nrows: 0\n\n\n\nThis is the dangerous kind of bug: it runs, it just returns nothing. pandas won’t warn you; YOU verify, which is exactly why you test filters on a case whose answer you know."
+    "text": "Answer: an empty table, no warning\na) an empty table — \"nord\" matches nothing, so the mask is all False and pandas hands back zero rows. No error, no complaint:\n\nprint(df[df[\"zone\"] == \"nord\"])          # nothing matches \"nord\"\nprint(\"rows:\", len(df[df[\"zone\"] == \"nord\"]))\n\n\n\nEmpty DataFrame\nColumns: [order_id, zone, items, total_eur]\nIndex: []\nrows: 0\n\n\n\nThis is the dangerous kind of bug: it runs, it just returns nothing. pandas won’t warn you; YOU verify, which is exactly why you test filters on a case whose answer you know."
   },
   {
     "objectID": "lectures/lec_08_presentation.html#one-more-tool-groupby",

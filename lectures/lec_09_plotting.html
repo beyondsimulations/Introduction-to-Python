@@ -566,7 +566,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h2 class="anchored" data-anchor-id="question-1">Question 1</h2>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>orders[orders[<span class="st">"zone"</span>] <span class="op">==</span> <span class="st">"Nord"</span>]</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>returns…</p>
-<p>a) a True/False column b) only the Nord rows c) an error</p>
+<p>a) a True/False column b) only the Nord rows c) an error from comparing text</p>
 </section>
 <section id="answer-1" class="level2">
 <h2 class="anchored" data-anchor-id="answer-1">Answer 1</h2>
@@ -576,21 +576,21 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h2 class="anchored" data-anchor-id="question-2">Question 2</h2>
 <p>Kevin’s AI wrote this. <code>orders</code> is a normal DataFrame. What happens?</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>orders.summarize()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p>a) a summary table b) an <code>AttributeError</code> c) an empty DataFrame</p>
+<p>a) a summary table b) an empty DataFrame c) an <code>AttributeError</code></p>
 </section>
 <section id="answer-2" class="level2">
 <h2 class="anchored" data-anchor-id="answer-2">Answer 2</h2>
-<p><strong>b) <code>AttributeError</code></strong> — pandas has <code>.describe()</code>, not <code>.summarize()</code>. The AI invented a plausible name. An AI that <strong>sounds sure</strong> is not the same as an API that <strong>exists</strong>. You verify, every time.</p>
+<p><strong>c) <code>AttributeError</code></strong> — pandas has <code>.describe()</code>, not <code>.summarize()</code>. The AI invented a plausible name. An AI that <strong>sounds sure</strong> is not the same as an API that <strong>exists</strong>. You verify, every time.</p>
 </section>
 <section id="question-3" class="level2">
 <h2 class="anchored" data-anchor-id="question-3">Question 3</h2>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>orders[<span class="st">"total_eur"</span>].describe()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>shows…</p>
-<p>a) count / mean / std / min / quartiles / max b) the first five rows c) the column’s type</p>
+<p>a) the first five rows of the column, like <code>.head()</code> b) count / mean / std / min / quartiles / max c) the column’s dtype, like <code>.dtypes</code></p>
 </section>
 <section id="answer-3" class="level2">
 <h2 class="anchored" data-anchor-id="answer-3">Answer 3</h2>
-<p><strong>a) count / mean / std / min / quartiles / max</strong> — one line, the column’s whole statistical fingerprint. That’s the real method Kevin’s AI was reaching for.</p>
+<p><strong>b) count / mean / std / min / quartiles / max</strong> — one line, the column’s whole statistical fingerprint. That’s the real method Kevin’s AI was reaching for.</p>
 </section>
 </section>
 <section id="the-first-chart" class="level1 title">
@@ -598,7 +598,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="matplotlib-in-four-lines" class="level2">
 <h2 class="anchored" data-anchor-id="matplotlib-in-four-lines">Matplotlib in four lines</h2>
 <p>The library everyone plots with is <strong>matplotlib</strong>; <code>import matplotlib.pyplot as plt</code> is the nickname. Four lines turn a list of numbers into a picture:</p>
-<div id="b466ac16" class="cell" data-output-location="fragment" data-execution_count="1">
+<div id="9179c60c" class="cell" data-output-location="fragment" data-execution_count="1">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>days <span class="op">=</span> [<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">5</span>]</span>
@@ -612,7 +612,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="lec_09_plotting_files/figure-html/cell-2-output-1.png" width="575" height="431" class="figure-img"></p>
+<p><img src="lec_09_plotting_files/figure-revealjs/cell-2-output-1.png" width="798" height="431" class="figure-img"></p>
 </figure>
 </div>
 </div>
@@ -632,7 +632,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="the-parts-of-a-chart" class="level2">
 <h2 class="anchored" data-anchor-id="the-parts-of-a-chart">The parts of a chart</h2>
 <p>Every honest chart names its axes. <code>xlabel</code>, <code>ylabel</code>, <code>title</code>, and (when there’s more than one line) a <code>legend</code>:</p>
-<div id="ebf0787a" class="cell" data-output-location="fragment" data-execution_count="2">
+<div id="e990efa9" class="cell" data-output-location="fragment" data-execution_count="2">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>days <span class="op">=</span> [<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">5</span>]</span>
@@ -648,7 +648,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="lec_09_plotting_files/figure-html/cell-3-output-1.png" width="593" height="449" class="figure-img"></p>
+<p><img src="lec_09_plotting_files/figure-revealjs/cell-3-output-1.png" width="816" height="449" class="figure-img"></p>
 </figure>
 </div>
 </div>
@@ -657,7 +657,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="a-little-styling-and-only-a-little" class="level2">
 <h2 class="anchored" data-anchor-id="a-little-styling-and-only-a-little">A little styling — and only a little</h2>
 <p>Two keywords cover almost everything: <code>color</code> and <code>linestyle</code>. Restraint is the professional move. One clear line beats a rainbow:</p>
-<div id="e3632aa6" class="cell" data-output-location="fragment" data-execution_count="3">
+<div id="d5d77890" class="cell" data-output-location="fragment" data-execution_count="3">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>days <span class="op">=</span> [<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">5</span>]</span>
@@ -670,7 +670,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="lec_09_plotting_files/figure-html/cell-4-output-1.png" width="575" height="431" class="figure-img"></p>
+<p><img src="lec_09_plotting_files/figure-revealjs/cell-4-output-1.png" width="798" height="431" class="figure-img"></p>
 </figure>
 </div>
 </div>
@@ -681,14 +681,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>Kevin runs <strong>two</strong> <code>plot</code> calls, back to back, with no <code>plt.figure()</code> between them:</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>plt.plot([<span class="dv">3</span>, <span class="dv">1</span>, <span class="dv">2</span>])</span>
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>plt.plot([<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>])</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p>a) two separate charts b) one chart with two lines c) an error</p>
+<p>a) one chart with two lines b) two separate charts, one per call c) an error: the figure is already in use</p>
 <p>. . .</p>
 <p><span class="question">Predict first</span>. Commit to an answer before the next slide.</p>
 </section>
 <section id="answer-one-chart-two-lines" class="level2">
 <h2 class="anchored" data-anchor-id="answer-one-chart-two-lines">Answer: one chart, two lines</h2>
-<p><strong>b) one chart with two lines</strong> — matplotlib keeps drawing on the <strong>current</strong> figure until you start a new one with <code>plt.figure()</code>:</p>
-<div id="9d4e4f39" class="cell" data-output-location="fragment" data-execution_count="4">
+<p><strong>a) one chart with two lines</strong> — matplotlib keeps drawing on the <strong>current</strong> figure until you start a new one with <code>plt.figure()</code>:</p>
+<div id="0ca0d906" class="cell" data-output-location="fragment" data-execution_count="4">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
 <span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>plt.figure()</span>
@@ -698,7 +698,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="lec_09_plotting_files/figure-html/cell-5-output-1.png" width="579" height="411" class="figure-img"></p>
+<p><img src="lec_09_plotting_files/figure-revealjs/cell-5-output-1.png" width="802" height="411" class="figure-img"></p>
 </figure>
 </div>
 </div>
@@ -769,7 +769,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="categories-bar" class="level2">
 <h2 class="anchored" data-anchor-id="categories-bar">Categories → bar</h2>
 <p><em>“Which dish sells best?”</em> Categories to compare — that’s a <strong>bar</strong>:</p>
-<div id="6907723d" class="cell" data-output-location="fragment" data-execution_count="5">
+<div id="e0e5444a" class="cell" data-output-location="fragment" data-execution_count="5">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
 <span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>dishes <span class="op">=</span> [<span class="st">"Pizza"</span>, <span class="st">"Pasta"</span>, <span class="st">"Salad"</span>, <span class="st">"Wrap"</span>]</span>
@@ -782,7 +782,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="lec_09_plotting_files/figure-html/cell-6-output-1.png" width="566" height="431" class="figure-img"></p>
+<p><img src="lec_09_plotting_files/figure-revealjs/cell-6-output-1.png" width="789" height="431" class="figure-img"></p>
 </figure>
 </div>
 </div>
@@ -792,7 +792,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="a-distribution-histogram" class="level2">
 <h2 class="anchored" data-anchor-id="a-distribution-histogram">A distribution → histogram</h2>
 <p><em>“How are our delivery times spread out?”</em> One column of numbers, dropped into buckets — that’s a <strong>histogram</strong>:</p>
-<div id="d80ee9e0" class="cell" data-output-location="fragment" data-execution_count="6">
+<div id="3acd7331" class="cell" data-output-location="fragment" data-execution_count="6">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
 <span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>minutes <span class="op">=</span> [<span class="dv">19</span>, <span class="dv">22</span>, <span class="dv">23</span>, <span class="dv">24</span>, <span class="dv">24</span>, <span class="dv">25</span>, <span class="dv">26</span>, <span class="dv">28</span>, <span class="dv">31</span>, <span class="dv">44</span>]</span>
@@ -804,7 +804,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="lec_09_plotting_files/figure-html/cell-7-output-1.png" width="562" height="431" class="figure-img"></p>
+<p><img src="lec_09_plotting_files/figure-revealjs/cell-7-output-1.png" width="783" height="431" class="figure-img"></p>
 </figure>
 </div>
 </div>
@@ -814,7 +814,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="two-numbers-scatter" class="level2">
 <h2 class="anchored" data-anchor-id="two-numbers-scatter">Two numbers → scatter</h2>
 <p><em>“Do bigger orders take longer?”</em> Two numbers per order, one on each axis — that’s a <strong>scatter</strong>:</p>
-<div id="43af36aa" class="cell" data-output-location="fragment" data-execution_count="7">
+<div id="1dd4c624" class="cell" data-output-location="fragment" data-execution_count="7">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
 <span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>minutes <span class="op">=</span> [<span class="dv">19</span>, <span class="dv">22</span>, <span class="dv">23</span>, <span class="dv">24</span>, <span class="dv">25</span>, <span class="dv">26</span>, <span class="dv">28</span>, <span class="dv">31</span>, <span class="dv">40</span>, <span class="dv">44</span>]</span>
@@ -828,7 +828,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="lec_09_plotting_files/figure-html/cell-8-output-1.png" width="588" height="429" class="figure-img"></p>
+<p><img src="lec_09_plotting_files/figure-revealjs/cell-8-output-1.png" width="810" height="429" class="figure-img"></p>
 </figure>
 </div>
 </div>
@@ -842,14 +842,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>plt.bar(<span class="bu">range</span>(<span class="dv">4</span>), values)   <span class="co"># left</span></span>
 <span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>plt.hist(values, bins<span class="op">=</span><span class="dv">3</span>)    <span class="co"># right</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>The bar chart shows 4 bars. How many bars does the <strong>histogram</strong> show?</p>
-<p>a) 4: one per number b) about 2–3 lumps: it counts ranges c) 15</p>
+<p>a) 4: one bar per number b) 15: one bar per unit up to the max c) about 2–3 lumps: it counts ranges</p>
 <p>. . .</p>
 <p><span class="question">Predict first</span>. Commit to an answer before the next slide.</p>
 </section>
 <section id="answer-bar-counts-categories-hist-counts-ranges" class="level2">
 <h2 class="anchored" data-anchor-id="answer-bar-counts-categories-hist-counts-ranges">Answer: bar counts categories, hist counts ranges</h2>
-<p><strong>b) about 2–3 lumps</strong> — the histogram groups the numbers into <strong>ranges</strong> and counts how many fall in each. <code>8</code> and <code>9</code> land in the same bucket, so that bar is <strong>two tall</strong>:</p>
-<div id="66897774" class="cell" data-output-location="fragment" data-execution_count="8">
+<p><strong>c) about 2–3 lumps</strong> — the histogram groups the numbers into <strong>ranges</strong> and counts how many fall in each. <code>8</code> and <code>9</code> land in the same bucket, so that bar is <strong>two tall</strong>:</p>
+<div id="d10ea4a8" class="cell" data-output-location="fragment" data-execution_count="8">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
 <span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>values <span class="op">=</span> [<span class="dv">8</span>, <span class="dv">12</span>, <span class="dv">9</span>, <span class="dv">15</span>]</span>
@@ -865,7 +865,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="lec_09_plotting_files/figure-html/cell-9-output-1.png" width="566" height="431" class="figure-img"></p>
+<p><img src="lec_09_plotting_files/figure-revealjs/cell-9-output-1.png" width="789" height="431" class="figure-img"></p>
 </figure>
 </div>
 </div>
@@ -896,7 +896,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="the-same-data-told-two-ways" class="level2">
 <h2 class="anchored" data-anchor-id="the-same-data-told-two-ways">The same data, told two ways</h2>
 <p>Four weeks of revenue: <code>[96, 98, 97, 99]</code>. Barely moving. But <strong>where the y-axis starts</strong> decides whether the room sees a rocket or the truth:</p>
-<div id="8f89ca2b" class="cell" data-output-location="fragment" data-execution_count="9">
+<div id="04b104e3" class="cell" data-output-location="fragment" data-execution_count="9">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
 <span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>weeks <span class="op">=</span> [<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>]</span>
@@ -915,7 +915,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="lec_09_plotting_files/figure-html/cell-10-output-1.png" width="579" height="431" class="figure-img"></p>
+<p><img src="lec_09_plotting_files/figure-revealjs/cell-10-output-1.png" width="802" height="431" class="figure-img"></p>
 </figure>
 </div>
 </div>
