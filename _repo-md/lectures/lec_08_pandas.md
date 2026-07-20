@@ -121,7 +121,7 @@ orders.summarize()                     # the method the AI invented
 
 <pre><span class="ansi-red-fg">---------------------------------------------------------------------------</span>
 <span class="ansi-red-fg">AttributeError</span>                            Traceback (most recent call last)
-<span class="ansi-green-fg">/var/folders/_5/jkkjxxdd5f1955l380dky7n80000gn/T/ipykernel_94212/1876211805.py</span> in <span class="ansi-cyan-fg">?</span><span class="ansi-blue-fg">()</span>
+<span class="ansi-green-fg">/var/folders/_5/jkkjxxdd5f1955l380dky7n80000gn/T/ipykernel_66388/1876211805.py</span> in <span class="ansi-cyan-fg">?</span><span class="ansi-blue-fg">()</span>
 <span class="ansi-green-fg">      1</span> <span style="font-weight:bold;color:rgb(0,135,0)">import</span> pandas <span style="font-weight:bold;color:rgb(0,135,0)">as</span> pd
 <span class="ansi-green-fg">      2</span> orders = pd.DataFrame({<span class="ansi-yellow-fg">"zone"</span>: [<span class="ansi-yellow-fg">"Nord"</span>, <span class="ansi-yellow-fg">"Sued"</span>], <span class="ansi-yellow-fg">"total_eur"</span>: [<span class="ansi-green-fg">12.0</span>, <span class="ansi-green-fg">9.5</span>]})
 <span class="ansi-green-fg">      3</span> 
@@ -346,7 +346,7 @@ Kevin filters for the Nord zone, but types it **lowercase**. The data spells it 
 print(df[df["zone"] == "nord"])
 ```
 
-a\) the Nord rows anyway b) an empty table, no error c) a `KeyError`
+a\) an empty table, no error b) the Nord rows anyway: case is ignored c) a `KeyError` for the missing zone
 
 . . .
 
@@ -354,7 +354,7 @@ a\) the Nord rows anyway b) an empty table, no error c) a `KeyError`
 
 ## Answer: an empty table, no warning
 
-**b) an empty table** --- `"nord"` matches nothing, so the mask is all `False` and pandas hands back **zero rows**. No error, no complaint:
+**a) an empty table** --- `"nord"` matches nothing, so the mask is all `False` and pandas hands back **zero rows**. No error, no complaint:
 
 ``` python
 print(df[df["zone"] == "nord"])          # nothing matches "nord"

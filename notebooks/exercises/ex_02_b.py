@@ -45,7 +45,7 @@ def _(mo):
 @app.cell(hide_code=True)
 def _(mo):
     trace_exb = mo.ui.radio(
-        options=["a) 3", "b) 8", "c) 3 then 8"],
+        options=["a) 3", "b) 3 then 8", "c) 8"],
         label="Your prediction:",
     )
     trace_exb
@@ -56,7 +56,7 @@ def _(mo):
 def _(mo, trace_exb):
     if trace_exb.value is None:
         _msg = "🔲 Pick a prediction above first — commit before you peek!"
-    elif trace_exb.value == "b) 8":
+    elif trace_exb.value == "c) 8":
         _msg = (
             "✅ Correct: the `print` line runs once, **after** the loop "
             "finishes, so it prints the final total — `8`. If `print` were "

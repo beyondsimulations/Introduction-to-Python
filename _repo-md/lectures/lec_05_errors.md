@@ -153,7 +153,7 @@ label = "Party of " + guests
 print(label)
 ```
 
-a\) prints `Party of 3` b) raises `TypeError` c) raises `ValueError`
+a\) raises `TypeError` b) prints `Party of 3` c) raises `ValueError`
 
 . . .
 
@@ -161,7 +161,7 @@ a\) prints `Party of 3` b) raises `TypeError` c) raises `ValueError`
 
 ## Answer: text and numbers won't mix
 
-**b) raises `TypeError`** --- `+` can glue two strings *or* add two numbers, but it refuses to mix a string and an `int`. The fix is to convert first (`str(guests)`):
+**a) raises `TypeError`** --- `+` can glue two strings *or* add two numbers, but it refuses to mix a string and an `int`. The fix is to convert first (`str(guests)`):
 
 ``` python
 guests = 3
@@ -292,7 +292,7 @@ print(to_price("bad"))
 print("checkout still running")
 ```
 
-a\) it never runs: the program already stopped b) it runs normally: the program carried on c) the `try` block runs a second time
+a\) it never runs: the program already stopped b) the `try` block runs a second time c) it runs normally: the program carried on
 
 . . .
 
@@ -300,7 +300,7 @@ a\) it never runs: the program already stopped b) it runs normally: the program 
 
 ## Answer: it carries on
 
-**b) it runs normally** --- that's the whole point of `try` / `except`. It *handles* the failure; once the `except` has run, control simply drops to the code after it, as if nothing had gone wrong:
+**c) it runs normally** --- that's the whole point of `try` / `except`. It *handles* the failure; once the `except` has run, control simply drops to the code after it, as if nothing had gone wrong:
 
 ``` python
 def to_price(text):

@@ -288,7 +288,7 @@ Kevin filters for the Nord zone, but types it **lowercase**. The data spells it 
 print(df[df["zone"] == "nord"])
 ```
 
-a\) the Nord rows anyway   b) an empty table, no error   c) a `KeyError`
+a\) an empty table, no error   b) the Nord rows anyway: case is ignored   c) a `KeyError` for the missing zone
 
 . . .
 
@@ -296,7 +296,7 @@ a\) the Nord rows anyway   b) an empty table, no error   c) a `KeyError`
 
 ## Answer: an empty table, no warning
 
-**b) an empty table** — `"nord"` matches nothing, so the mask is all `False` and pandas hands back **zero rows**. No error, no complaint:
+**a) an empty table** — `"nord"` matches nothing, so the mask is all `False` and pandas hands back **zero rows**. No error, no complaint:
 
 ```{python}
 #| eval: true

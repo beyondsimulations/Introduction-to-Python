@@ -875,7 +875,7 @@ def _(mo):
         options=[
             "A — both show the chart; the last line makes no difference",
             "B — A shows a list like [<matplotlib.lines.Line2D>]; B shows the chart",
-            "C — one of them raises an error",
+            "C — one of them raises an error instead of showing anything",
         ],
         label="What does each cell display?",
     )

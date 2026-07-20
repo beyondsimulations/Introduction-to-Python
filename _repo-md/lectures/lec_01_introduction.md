@@ -196,7 +196,7 @@ Kevin typed the price **with quotes**. What does this print?
 print(type("9.99"))
 ```
 
-a\) `<class 'float'>` b) `<class 'str'>` c) `<class 'int'>`
+a\) `<class 'float'>` b) `<class 'int'>` c) `<class 'str'>`
 
 . . .
 
@@ -204,7 +204,7 @@ a\) `<class 'float'>` b) `<class 'str'>` c) `<class 'int'>`
 
 ## Answer: `type("9.99")`
 
-**b) `str`** --- the quotes make it text, however numeric it looks. Kevin's "price" can't be multiplied until it is converted to a number.
+**c) `str`** --- the quotes make it text, however numeric it looks. Kevin's "price" can't be multiplied until it is converted to a number.
 
 ``` python
 print(type("9.99"))
@@ -285,7 +285,7 @@ Kevin buys 12 boxes at 25 EUR from the 300 EUR budget. What prints?
 print(300 - 12 * 25)
 ```
 
-a\) `7200` b) `0` c) `Error`
+a\) `0` b) `7200` c) `Error`
 
 . . .
 
@@ -293,7 +293,7 @@ a\) `7200` b) `0` c) `Error`
 
 ## Answer: `300 - 12 * 25`
 
-**b) `0`** --- `12 * 25 = 300` happens first, so the budget is wiped out. Reading left to right would give `7200`, but Python follows precedence, not reading order.
+**a) `0`** --- `12 * 25 = 300` happens first, so the budget is wiped out. Reading left to right would give `7200`, but Python follows precedence, not reading order.
 
 ``` python
 print(300 - 12 * 25)

@@ -575,8 +575,8 @@ def _(mo):
 def _(mo):
     trace_ex31 = mo.ui.radio(
         options=[
+            '{"fee": 1.50, "minutes": 20}',
             "1.50",
-            '{"fee": 1.50, "minutes": 20}  (the whole inner dict)',
             "a KeyError",
         ],
         label="Your prediction for `zones[\"north\"][\"fee\"]`:",
@@ -873,10 +873,10 @@ def _(mo):
 
     What happens? Assign the letter (as text) to `answer_ex50`:
 
-    - **a)** it returns `None`
+    - **a)** it returns `None`, like `.get()` would
     - **b)** it returns an empty string `""`
-    - **c)** it raises a `KeyError`
-    - **d)** it silently adds `"Sushi"` to the menu
+    - **c)** it silently adds `"Sushi"` to the menu
+    - **d)** it raises a `KeyError` and stops
     """
     )
     return
@@ -894,10 +894,10 @@ def _(answer_ex50, mo):
     if answer_ex50 == "":
         ex50_ok = False
         _msg = "🔲 Quiz: not attempted yet."
-    elif str(answer_ex50).strip().lower() == "c":
+    elif str(answer_ex50).strip().lower() == "d":
         ex50_ok = True
         _msg = (
-            "✅ Quiz: **c**. Square-bracket lookup on a missing key raises a "
+            "✅ Quiz: **d**. Square-bracket lookup on a missing key raises a "
             "`KeyError` and stops the program — exactly the crash `.get()` avoided "
             "back in 3.3."
         )

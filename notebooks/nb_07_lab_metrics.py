@@ -868,7 +868,7 @@ def _(mo):
 @app.cell(hide_code=True)
 def _(mo):
     trace_repeat = mo.ui.radio(
-        options=["[2, 4, 6]", "[1, 2, 3, 1, 2, 3]", "an error"],
+        options=["[1, 2, 3, 1, 2, 3]", "[2, 4, 6]", "an error"],
         label="Your prediction for `[1, 2, 3] * 2`:",
     )
     trace_repeat
@@ -913,9 +913,9 @@ def _(mo):
     Assign the letter (as text) to `answer_ex50`:
 
     - **a)** the sum of all the delivery times
-    - **b)** how many delivery times exceed 40
-    - **c)** the largest delivery time
-    - **d)** an error
+    - **b)** the largest delivery time
+    - **c)** an error: you can't sum True/False values
+    - **d)** how many delivery times exceed 40
     """
     )
     return
@@ -933,10 +933,10 @@ def _(answer_ex50, mo):
     if answer_ex50 == "":
         ex50_ok = False
         _msg = "🔲 Quiz: not attempted yet."
-    elif str(answer_ex50).strip().lower() == "b":
+    elif str(answer_ex50).strip().lower() == "d":
         ex50_ok = True
         _msg = (
-            "✅ Quiz: **b**. `delivery_times > 40` is a True/False mask; `True` "
+            "✅ Quiz: **d**. `delivery_times > 40` is a True/False mask; `True` "
             "counts as 1, so `.sum()` counts how many times cleared 40 — a count, "
             "not a total or a maximum."
         )

@@ -752,9 +752,9 @@ def _(mo):
     the block ends. What does the program do next? Assign the letter (as text) to
     `answer_ex50`:
 
-    - **a)** it crashes anyway
-    - **b)** it continues normally with the code after the `try` / `except`
-    - **c)** it jumps back and re-runs the `try`
+    - **a)** it crashes anyway, once the `except` block ends
+    - **b)** it jumps back and re-runs the `try`
+    - **c)** it continues normally with the code after the `try` / `except`
     """
     )
     return
@@ -772,10 +772,10 @@ def _(answer_ex50, mo):
     if answer_ex50 == "":
         ex50_ok = False
         _msg = "🔲 Quiz: not attempted yet."
-    elif str(answer_ex50).strip().lower() == "b":
+    elif str(answer_ex50).strip().lower() == "c":
         ex50_ok = True
         _msg = (
-            "✅ Quiz: **b**. That's the whole point of `try` / `except` — it *handles* "
+            "✅ Quiz: **c**. That's the whole point of `try` / `except` — it *handles* "
             "the error and carries on. Once the `except` has run, control drops to "
             "the code right after the block, as if nothing had gone wrong."
         )

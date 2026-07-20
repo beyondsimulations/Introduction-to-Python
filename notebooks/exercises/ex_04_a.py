@@ -51,7 +51,7 @@ def _():
 @app.cell(hide_code=True)
 def _(mo):
     trace_exa = mo.ui.radio(
-        options=["a) \"Pad Thai\"", "b) \"Miso Ramen\"", "c) Error"],
+        options=["a) \"Miso Ramen\"", "b) \"Pad Thai\"", "c) Error"],
         label="Your prediction:",
     )
     trace_exa
@@ -62,7 +62,7 @@ def _(mo):
 def _(mo, trace_exa):
     if trace_exa.value is None:
         _msg = "🔲 Pick a prediction above first — commit before you peek!"
-    elif trace_exa.value == "b) \"Miso Ramen\"":
+    elif trace_exa.value == "a) \"Miso Ramen\"":
         _msg = (
             "✅ Correct: a negative index counts from the end, so `-1` is "
             "the last item — `\"Miso Ramen\"`."

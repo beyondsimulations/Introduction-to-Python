@@ -717,7 +717,7 @@ def _(mo):
 @app.cell(hide_code=True)
 def _(mo):
     trace_floor = mo.ui.radio(
-        options=["-2", "-3", "an error"],
+        options=["-3", "-2", "an error"],
         label="Your prediction for `math.floor(-2.5)`:",
     )
     trace_floor
@@ -753,10 +753,10 @@ def _(mo):
     You seeded every simulation today. **Why** does seeding a simulation matter?
     Assign the letter (as text) to `answer_ex50`:
 
-    - **a)** it makes the random numbers generate faster
-    - **b)** it makes the results reproducible — same seed, same sequence
-    - **c)** it makes the numbers more random
-    - **d)** the numpy library requires it
+    - **a)** it makes the results reproducible — same seed, same sequence
+    - **b)** it makes the random numbers generate faster
+    - **c)** it makes the numbers more evenly spread out
+    - **d)** the numpy library refuses to draw without a seed
     """
     )
     return
@@ -774,19 +774,19 @@ def _(answer_ex50, mo):
     if answer_ex50 == "":
         ex50_ok = False
         _msg = "🔲 Quiz: not attempted yet."
-    elif str(answer_ex50).strip().lower() == "b":
+    elif str(answer_ex50).strip().lower() == "a":
         ex50_ok = True
         _msg = (
-            "✅ Quiz: **b**. A seed pins the *starting point* of the sequence, so "
+            "✅ Quiz: **a**. A seed pins the *starting point* of the sequence, so "
             "the same seed replays the same numbers. That's what let the investor "
             "re-run your projection and see exactly what you saw."
         )
     else:
         ex50_ok = False
         _msg = (
-            "❌ Quiz: not quite. Seeding doesn't change speed or make numbers "
-            "'more random' — think about what let your projection come out the same "
-            "way twice in a row."
+            "❌ Quiz: not quite. Seeding doesn't change speed or spread, and numpy "
+            "draws happily without one — think about what let your projection come "
+            "out the same way twice in a row."
         )
     mo.md(_msg)
     return (ex50_ok,)

@@ -67,6 +67,28 @@
   then `work["per_item"] = …`) — never mutate the shared `orders` global, or a
   later cell reading `orders` sees the mutation and reactive re-runs diverge.
 
+## MC questions — no answer-revealing cues (fleet directive 2026-07-20)
+Applies to every MC format in this repo: lecture warm-up/predict option rows
+(`a\) …   b) …   c) …` + `**x)` reveal), lab MCQ cells (`- **a)** …` +
+`== "x"` check), and `mo.ui.radio` traces. Checker:
+`uv run python helpers/check_quiz_balance.py` (exit 1 gates; run it after
+touching any question; `--stats` for the per-question table).
+- Length: within a question, longest option ≤ 1.8x shortest (visible text).
+  Balance by ENRICHING distractors with specific detail — never by
+  vague-ifying the correct answer. After enriching a distractor, re-verify it
+  is still unambiguously wrong (RUN the code when wrongness depends on
+  runtime behavior). Pure code-literal/output options are exempt (their
+  length is forced by the program), but the checker must agree they are.
+- Position: neither slides nor `mo.ui.radio` shuffle options, so SOURCE order
+  is the only defense — do not default the correct answer to one letter
+  (pre-sweep it was "b" in 41 of 56). Vary it; the checker prints the
+  distribution.
+- Absolutes: keep always/never/only/every-style terms at similar rates in
+  wrong and correct options; soften blatant absolute distractors.
+- Correctness never changes in a balance pass: reorder + update the reveal
+  letter / `== "x"` letter / letter prefixes inside radio option strings
+  together, and keep feedback wording in sync.
+
 ## In-lecture exercises (ex_XX_<letter>.py)
 - **Letter = slide order** (Fable #10): `ex_XX_a` belongs to lecture block 1,
   `_b` to block 2, `_c` to block 3. CP sessions have 2 blocks → letters a–b only.

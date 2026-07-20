@@ -961,10 +961,10 @@ def _(mo):
     You'll reach for `orders.describe()` constantly, but what does it actually
     return? Assign the letter (as text) to `answer_ex50`:
 
-    - **a)** the first five rows
-    - **b)** count, mean, std, min, the quartiles and max for each numeric column
-    - **c)** the column types only
-    - **d)** a bar chart
+    - **a)** count, mean, std, min, the quartiles and max for each numeric column
+    - **b)** the first five rows of each column, like `.head()`
+    - **c)** the data type of each column, like `.dtypes`
+    - **d)** a bar chart of each numeric column's values
     """
     )
     return
@@ -982,10 +982,10 @@ def _(answer_ex50, mo):
     if answer_ex50 == "":
         ex50_ok = False
         _msg = "🔲 Quiz: not attempted yet."
-    elif str(answer_ex50).strip().lower() == "b":
+    elif str(answer_ex50).strip().lower() == "a":
         ex50_ok = True
         _msg = (
-            "✅ Quiz: **b**. `.describe()` gives a summary table — count, mean, std, "
+            "✅ Quiz: **a**. `.describe()` gives a summary table — count, mean, std, "
             "min, the 25/50/75% quartiles and max — for every numeric column. One "
             "call, the whole shape of the data. (The first five rows are `.head()`; "
             "the column types are `.dtypes`.)"

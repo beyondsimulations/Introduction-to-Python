@@ -37,7 +37,7 @@ orders[orders["zone"] == "Nord"]
 
 returns…
 
-a\) a True/False column   b) only the Nord rows   c) an error
+a\) a True/False column   b) only the Nord rows   c) an error from comparing text
 
 ## Answer 1
 
@@ -51,11 +51,11 @@ Kevin's AI wrote this. `orders` is a normal DataFrame. What happens?
 orders.summarize()
 ```
 
-a\) a summary table   b) an `AttributeError`   c) an empty DataFrame
+a\) a summary table   b) an empty DataFrame   c) an `AttributeError`
 
 ## Answer 2
 
-**b) `AttributeError`** — pandas has `.describe()`, not `.summarize()`. The AI invented a plausible name. An AI that **sounds sure** is not the same as an API that **exists**. You verify, every time.
+**c) `AttributeError`** — pandas has `.describe()`, not `.summarize()`. The AI invented a plausible name. An AI that **sounds sure** is not the same as an API that **exists**. You verify, every time.
 
 ## Question 3
 
@@ -65,11 +65,11 @@ orders["total_eur"].describe()
 
 shows…
 
-a\) count / mean / std / min / quartiles / max   b) the first five rows   c) the column's type
+a\) the first five rows of the column, like `.head()`   b) count / mean / std / min / quartiles / max   c) the column's dtype, like `.dtypes`
 
 ## Answer 3
 
-**a) count / mean / std / min / quartiles / max** — one line, the column's whole statistical fingerprint. That's the real method Kevin's AI was reaching for.
+**b) count / mean / std / min / quartiles / max** — one line, the column's whole statistical fingerprint. That's the real method Kevin's AI was reaching for.
 
 # [The first chart]{.flow} {.title}
 
@@ -146,7 +146,7 @@ plt.plot([3, 1, 2])
 plt.plot([1, 2, 3])
 ```
 
-a\) two separate charts   b) one chart with two lines   c) an error
+a\) one chart with two lines   b) two separate charts, one per call   c) an error: the figure is already in use
 
 . . .
 
@@ -154,7 +154,7 @@ a\) two separate charts   b) one chart with two lines   c) an error
 
 ## Answer: one chart, two lines
 
-**b) one chart with two lines** — matplotlib keeps drawing on the **current** figure until you start a new one with `plt.figure()`:
+**a) one chart with two lines** — matplotlib keeps drawing on the **current** figure until you start a new one with `plt.figure()`:
 
 ```{python}
 #| eval: true
@@ -276,7 +276,7 @@ plt.hist(values, bins=3)    # right
 
 The bar chart shows 4 bars. How many bars does the **histogram** show?
 
-a\) 4: one per number   b) about 2–3 lumps: it counts ranges   c) 15
+a\) 4: one bar per number   b) 15: one bar per unit up to the max   c) about 2–3 lumps: it counts ranges
 
 . . .
 
@@ -284,7 +284,7 @@ a\) 4: one per number   b) about 2–3 lumps: it counts ranges   c) 15
 
 ## Answer: bar counts categories, hist counts ranges
 
-**b) about 2–3 lumps** — the histogram groups the numbers into **ranges** and counts how many fall in each. `8` and `9` land in the same bucket, so that bar is **two tall**:
+**c) about 2–3 lumps** — the histogram groups the numbers into **ranges** and counts how many fall in each. `8` and `9` land in the same bucket, so that bar is **two tall**:
 
 ```{python}
 #| eval: true

@@ -157,7 +157,7 @@ import math
 print(math.floor(-2.5))
 ```
 
-a\) `-2` b) `-3` c) an error
+a\) `-3` b) `-2` c) an error
 
 . . .
 
@@ -165,7 +165,7 @@ a\) `-2` b) `-3` c) an error
 
 ## Answer: floor goes down, not toward zero
 
-**b) `-3`** --- `floor` always heads **down** the number line, toward more negative. From `-2.5`, down is `-3`, not the `-2` you'd get by rounding toward zero:
+**a) `-3`** --- `floor` always heads **down** the number line, toward more negative. From `-2.5`, down is `-3`, not the `-2` you'd get by rounding toward zero:
 
 ``` python
 import math
@@ -206,10 +206,10 @@ random.shuffle(queue)                         # reorders the list in place
 print(queue)
 ```
 
-    0.581091687741644
-    2
-    latte
-    [2, 5, 1, 4, 3]
+    0.8994900232048377
+    14
+    tea
+    [4, 2, 3, 5, 1]
 
 . . .
 
@@ -226,8 +226,8 @@ print([random.randint(1, 20) for _ in range(5)])   # one run
 print([random.randint(1, 20) for _ in range(5)])   # ...and again — different!
 ```
 
-    [3, 18, 7, 7, 6]
-    [16, 12, 13, 8, 2]
+    [9, 15, 10, 4, 9]
+    [2, 5, 7, 15, 10]
 
 . . .
 
@@ -269,7 +269,7 @@ print(first)
 print(second)
 ```
 
-a\) equal: the seed is set, so both come out the same b) different: the second list continues where the first stopped c) an error
+a\) different: the second list continues where the first stopped b) equal: the seed is set, so both come out the same c) an error: the stream is empty after three draws
 
 . . .
 
@@ -277,7 +277,7 @@ a\) equal: the seed is set, so both come out the same b) different: the second l
 
 ## Answer: different
 
-**b) different** --- a seed doesn't freeze `random`, it fixes the whole **sequence**. The first list eats the first three numbers of the stream; the second list simply **continues** from number four:
+**a) different** --- a seed doesn't freeze `random`, it fixes the whole **sequence**. The first list eats the first three numbers of the stream; the second list simply **continues** from number four:
 
 ``` python
 import random

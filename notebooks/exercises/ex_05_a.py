@@ -46,7 +46,7 @@ def _(mo):
 @app.cell(hide_code=True)
 def _(mo):
     trace_exa = mo.ui.radio(
-        options=["a) 3", "b) 3.5", "c) ValueError", "d) TypeError"],
+        options=["a) 3.5", "b) ValueError", "c) 3", "d) TypeError"],
         label="Your prediction:",
     )
     trace_exa
@@ -57,7 +57,7 @@ def _(mo):
 def _(mo, trace_exa):
     if trace_exa.value is None:
         _msg = "🔲 Pick a prediction above first — commit before you peek!"
-    elif trace_exa.value == "c) ValueError":
+    elif trace_exa.value == "b) ValueError":
         _msg = (
             "✅ Correct: `int()` refuses decimal **strings** — reading the "
             "last line of the traceback tells you this."

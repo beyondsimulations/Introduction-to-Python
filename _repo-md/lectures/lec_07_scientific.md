@@ -38,11 +38,11 @@ from math import ceil
 # which line works?
 ```
 
-a\) `math.ceil(3.2)` b) `ceil(3.2)` c) both
+a\) `ceil(3.2)` b) `math.ceil(3.2)` c) both
 
 ## Answer 1
 
-**b) `ceil(3.2)`** --- `from math import ceil` binds only the **name** `ceil`. The module `math` itself was never imported, so `math.ceil` has nothing to reach through.
+**a) `ceil(3.2)`** --- `from math import ceil` binds only the **name** `ceil`. The module `math` itself was never imported, so `math.ceil` has nothing to reach through.
 
 ## Question 2
 
@@ -57,11 +57,11 @@ print(random.randint(1, 20))
 
 Kevin runs this exact script today and again tomorrow. Tomorrow's numbers are...
 
-a\) the same three numbers b) different: random is random c) an error
+a\) different: random is random b) an error: seed 42 was already used c) the same three numbers
 
 ## Answer 2
 
-**a) the same three numbers** --- every run starts from seed 42, so the stream replays from the top. That is the entire job of a seed: reproducible randomness. (Two batches *inside one run* would differ: the stream continues; a fresh run rewinds it.)
+**c) the same three numbers** --- every run starts from seed 42, so the stream replays from the top. That is the entire job of a seed: reproducible randomness. (Two batches *inside one run* would differ: the stream continues; a fresh run rewinds it.)
 
 ## Question 3
 
@@ -154,7 +154,7 @@ Kevin multiplies a row of counts by two. What does this print?
 print([1, 2, 3] * 2)
 ```
 
-a\) `[2, 4, 6]` b) `[1, 2, 3, 1, 2, 3]` c) an error
+a\) `[1, 2, 3, 1, 2, 3]` b) `[2, 4, 6]` c) an error
 
 . . .
 
@@ -162,7 +162,7 @@ a\) `[2, 4, 6]` b) `[1, 2, 3, 1, 2, 3]` c) an error
 
 ## Answer: lists repeat, arrays compute
 
-**b) `[1, 2, 3, 1, 2, 3]`** --- that's a plain **list**, and `* 2` on a list *repeats* it. Wrap it in an array and the same `* 2` does the math instead:
+**a) `[1, 2, 3, 1, 2, 3]`** --- that's a plain **list**, and `* 2` on a list *repeats* it. Wrap it in an array and the same `* 2` does the math instead:
 
 ``` python
 import numpy as np
@@ -239,7 +239,7 @@ What does calling `.sum()` on the mask give?
 print((np.array([1, 5, 3]) > 2).sum())
 ```
 
-a\) `2` b) `True` c) `[False, True, True]`
+a\) `True` b) `2` c) `[False, True, True]`
 
 . . .
 
@@ -247,7 +247,7 @@ a\) `2` b) `True` c) `[False, True, True]`
 
 ## Answer: True counts as 1
 
-**a) `2`** --- `.sum()` adds the mask up, and each `True` is worth `1`, each `False` `0`. Two elements clear the bar, so the count is `2`:
+**b) `2`** --- `.sum()` adds the mask up, and each `True` is worth `1`, each `False` `0`. Two elements clear the bar, so the count is `2`:
 
 ``` python
 import numpy as np
@@ -359,7 +359,7 @@ week = np.array([[ 9, 14, 11,  6],
                  [13, 20, 16, 11]])
 ```
 
-a\) `week.sum(axis=0)` b) `week.sum(axis=1)` c) `week.sum()`
+a\) `week.sum(axis=1)` b) `week.sum()` c) `week.sum(axis=0)`
 
 . . .
 
@@ -367,7 +367,7 @@ a\) `week.sum(axis=0)` b) `week.sum(axis=1)` c) `week.sum()`
 
 ## Answer: collapse the days, keep the zones
 
-**a) `week.sum(axis=0)`** --- four zones means four numbers, so the **days** must disappear: `axis=0` collapses DOWN the rows, one number per column (zone):
+**c) `week.sum(axis=0)`** --- four zones means four numbers, so the **days** must disappear: `axis=0` collapses DOWN the rows, one number per column (zone):
 
 ``` python
 import numpy as np

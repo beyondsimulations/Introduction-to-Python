@@ -245,7 +245,7 @@ def _(mo):
 @app.cell(hide_code=True)
 def _(mo):
     trace_ex21 = mo.ui.radio(
-        options=["3 2", "3 1", "3.5 1", "1 3"],
+        options=["3 2", "3.5 1", "3 1", "1 3"],
         label="Your prediction for `print(7 // 2, 7 % 2)`:",
     )
     trace_ex21
@@ -573,9 +573,9 @@ def _(mo):
     Answer by assigning the letter (as text) to `answer_ex50`:
 
     - **a)** `2nd_price`
-    - **b)** `menu_item`
-    - **c)** `class`
-    - **d)** `my-price`
+    - **b)** `class`
+    - **c)** `my-price`
+    - **d)** `menu_item`
     """
     )
     return
@@ -593,10 +593,10 @@ def _(answer_ex50, mo):
     if answer_ex50 is None:
         ex50_ok = False
         _msg = "🔲 Quiz: not attempted yet."
-    elif str(answer_ex50).strip().lower() == "b":
+    elif str(answer_ex50).strip().lower() == "d":
         ex50_ok = True
         _msg = (
-            "✅ Quiz: **b**. `2nd_price` can't start with a digit, `class` is a "
+            "✅ Quiz: **d**. `2nd_price` can't start with a digit, `class` is a "
             "reserved word, and `my-price` has a minus sign. `menu_item` is fine."
         )
     else:

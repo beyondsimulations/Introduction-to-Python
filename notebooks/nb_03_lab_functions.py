@@ -333,7 +333,7 @@ def _(mo):
 @app.cell(hide_code=True)
 def _(mo):
     trace_ex21 = mo.ui.radio(
-        options=["5", "6", "Error"],
+        options=["6", "5", "Error"],
         label="Your prediction for what the last line prints:",
     )
     trace_ex21
@@ -710,7 +710,7 @@ def _(mo):
 
     What is stored in `result`? Assign the letter (as text) to `answer_ex50`:
 
-    - **a)** the text `"42"`
+    - **a)** `"42"`
     - **b)** `0`
     - **c)** `None`
     - **d)** an error

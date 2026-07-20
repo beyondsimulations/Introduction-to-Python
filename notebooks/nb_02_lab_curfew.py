@@ -276,7 +276,7 @@ def _(mo):
 @app.cell(hide_code=True)
 def _(mo):
     trace_ex21 = mo.ui.radio(
-        options=["2, 4, 6", "0, 2, 4", "0, 1, 2"],
+        options=["0, 2, 4", "2, 4, 6", "0, 1, 2"],
         label="Your prediction for the numbers printed:",
     )
     trace_ex21
@@ -578,8 +578,8 @@ def _(mo):
     Which loop body runs **exactly 5 times**? Answer by assigning the letter
     (as text) to `answer_ex50`:
 
-    - **a)** `for i in range(1, 5):`
-    - **b)** `for i in range(5):`
+    - **a)** `for i in range(5):`
+    - **b)** `for i in range(1, 5):`
     - **c)** `for i in range(0, 5, 2):`
     """
     )
@@ -598,10 +598,10 @@ def _(answer_ex50, mo):
     if answer_ex50 is None:
         ex50_ok = False
         _msg = "🔲 Quiz: not attempted yet."
-    elif str(answer_ex50).strip().lower() == "b":
+    elif str(answer_ex50).strip().lower() == "a":
         ex50_ok = True
         _msg = (
-            "✅ Quiz: **b**. `range(5)` gives 0, 1, 2, 3, 4 — five passes. "
+            "✅ Quiz: **a**. `range(5)` gives 0, 1, 2, 3, 4 — five passes. "
             "`range(1, 5)` gives only four, and `range(0, 5, 2)` steps by 2 → just three."
         )
     else:

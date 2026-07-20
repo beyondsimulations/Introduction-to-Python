@@ -36,11 +36,11 @@ print(result)
 
 The **second** `print` shows what?
 
-a\) `Fresh today: Mate` b) `None` c) `Error`
+a\) `Fresh today: Mate` b) `Error` c) `None`
 
 ## Answer 1
 
-**b) `None`** --- `announce` has no `return`, so it hands back `None`. Printing something is not the same as returning it.
+**c) `None`** --- `announce` has no `return`, so it hands back `None`. Printing something is not the same as returning it.
 
 ## Question 2
 
@@ -158,7 +158,7 @@ sizes = ["S", "M", "L", "XL"]
 print(sizes[1:3])
 ```
 
-a\) `['M', 'L']` b) `['M', 'L', 'XL']` c) `['S', 'M', 'L']`
+a\) `['M', 'L', 'XL']` b) `['M', 'L']` c) `['S', 'M', 'L']`
 
 . . .
 
@@ -166,7 +166,7 @@ a\) `['M', 'L']` b) `['M', 'L', 'XL']` c) `['S', 'M', 'L']`
 
 ## Answer: the `stop` index is excluded
 
-**a) `['M', 'L']`** --- the slice starts at index 1 (`"M"`) and stops before index 3, so index 3 (`"XL"`) is never included. A slice from `1:3` gives you exactly `3 - 1 = 2` items.
+**b) `['M', 'L']`** --- the slice starts at index 1 (`"M"`) and stops before index 3, so index 3 (`"XL"`) is never included. A slice from `1:3` gives you exactly `3 - 1 = 2` items.
 
 ``` python
 sizes = ["S", "M", "L", "XL"]
@@ -366,7 +366,7 @@ print(regulars)
 print(len(regulars))   # how many different people
 ```
 
-    {'nina', 'ada', 'tom'}
+    {'nina', 'tom', 'ada'}
     3
 
 . . .
