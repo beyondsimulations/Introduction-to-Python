@@ -105,7 +105,7 @@ def _(mo):
     prices = np.array([3, 8, 5, 9])
     prices.size    # 4      — how many elements
     prices.shape   # (4,)   — its dimensions
-    prices.dtype   # int64  — the type of every element
+    prices.dtype   # int64  — the type of every element (int32 in the browser)
     ```
 
     Two more moves you'll use constantly:
@@ -849,14 +849,14 @@ def _(mo):
 def _(mo):
     mo.md(
         r"""
-    ### Exercise (trace — predict first) — a list is not an array
+    ### Exercise (trace — predict first) — an array is not a list
 
     This is a **trace** exercise: predict the answer first, *then* reveal it. It's
-    ungraded. The point is committing to a prediction. Note the brackets: this is
-    a **plain Python list**, not a NumPy array. Kevin runs:
+    ungraded. The point is committing to a prediction. In the lecture, `* 2` on a
+    **plain list** repeated it. Now Kevin wraps the same numbers in `np.array`:
 
     ```python
-    print([1, 2, 3] * 2)
+    print(np.array([1, 2, 3]) * 2)
     ```
 
     What gets printed?
@@ -868,8 +868,8 @@ def _(mo):
 @app.cell(hide_code=True)
 def _(mo):
     trace_repeat = mo.ui.radio(
-        options=["[1, 2, 3, 1, 2, 3]", "[2, 4, 6]", "an error"],
-        label="Your prediction for `[1, 2, 3] * 2`:",
+        options=["[1 2 3 1 2 3]", "[2 4 6]", "an error"],
+        label="Your prediction for `np.array([1, 2, 3]) * 2`:",
     )
     trace_repeat
     return (trace_repeat,)
@@ -879,18 +879,18 @@ def _(mo):
 def _(mo, trace_repeat):
     if trace_repeat.value is None:
         _msg = "🔲 Pick a prediction above first — commit before you peek!"
-    elif trace_repeat.value == "[1, 2, 3, 1, 2, 3]":
+    elif trace_repeat.value == "[2 4 6]":
         _msg = (
-            "✅ Correct: **`[1, 2, 3, 1, 2, 3]`**. On a plain list, `* 2` *repeats* "
-            "the list. On a NumPy array, `* 2` would *double every element* to "
-            "`[2, 4, 6]`. Lists repeat; arrays compute — that's exactly why the deck "
-            "uses arrays."
+            "✅ Correct: **`[2 4 6]`**. On a NumPy array, `* 2` *doubles every "
+            "element*; on the plain list in the lecture it *repeated* the list. "
+            "Lists repeat; arrays compute — that's exactly why this episode uses "
+            "arrays. (Arrays print without commas.)"
         )
     else:
         _msg = (
-            "❌ Not quite — it's **`[1, 2, 3, 1, 2, 3]`**. `* 2` on a plain *list* "
-            "repeats it. Only a NumPy *array* would double each element to "
-            "`[2, 4, 6]`. Lists repeat; arrays compute. (Ungraded — the point is "
+            "❌ Not quite — it's **`[2 4 6]`**. `* 2` on a NumPy *array* hits every "
+            "element. Only the plain *list* repeats itself, and arrays print "
+            "without commas. Lists repeat; arrays compute. (Ungraded — the point is "
             "the prediction.)"
         )
     mo.callout(mo.md(_msg), kind="info")

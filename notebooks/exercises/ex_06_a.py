@@ -27,7 +27,7 @@ def _():
 def _(mo):
     mo.md(
         r"""
-    # ⚡ Quick exercise: import a tool instead of building it (5 min)
+    # ⚡ Quick exercise: import a tool instead of building it (10 min)
 
     Need a whole-number result that always rounds *up*, never down? Don't
     write your own rounding logic. The standard library already has it:

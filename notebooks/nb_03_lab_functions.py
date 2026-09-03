@@ -551,9 +551,13 @@ def _(mo):
     ### Exercise 3.1 (core) — the `Order` class
 
     Give the startup a proper `Order`. The `__init__` is written for you: it
-    stores `item`, `qty` and `price` on the order. Your job is the `total()`
-    **method**. It should return what this order costs: `qty` portions at
-    `price` each, rounded to 2 decimals.
+    stores `item`, `qty` and `price` on the order. Your job is **two methods**:
+
+    - `total()` returns what this order costs: `qty` portions at `price` each,
+      rounded to 2 decimals.
+    - `receipt_line()` returns the receipt text from Episode 1, in the form
+      `"2x Wrap: 13.80 EUR"`: quantity, `x`, item, colon, the total with two
+      decimals, `EUR`. One method may call another: `self.total()`.
 
     A 2× Wrap order at 6.90 each should total **13.80**.
     """
@@ -573,13 +577,19 @@ def _():
             # YOUR CODE BELOW — return qty portions at price each, rounded to 2 decimals
             return None
 
+        def receipt_line(self):
+            # YOUR CODE BELOW — f"{qty}x {item}: {total:.2f} EUR", all from self
+            return None
+
     return (Order,)
 
 
 @app.cell(hide_code=True)
 def _(Order, mo, show_result):
     try:
-        _t = Order("Wrap", 2, 6.90).total()
+        _o = Order("Wrap", 2, 6.90)
+        _t = _o.total()
+        _line = _o.receipt_line()
     except Exception:
         ex31_ok = False
         _msg = "❌ Exercise 3.1: it's crashing — read the error above and fix it before the check can run."
@@ -589,10 +599,18 @@ def _(Order, mo, show_result):
             ex31_ok = False
             _msg = "🔲 Exercise 3.1: not attempted yet (`total()` still returns None)."
             _preview = ""
-        elif isinstance(_t, (int, float)) and round(_t, 2) == 13.80:
+        elif isinstance(_t, (int, float)) and round(_t, 2) == 13.80 and _line == "2x Wrap: 13.80 EUR":
             ex31_ok = True
-            _msg = "✅ Exercise 3.1: 13.80 — the order knows its own total. Data and behavior, bundled."
+            _msg = "✅ Exercise 3.1: 13.80, and the receipt line writes itself. Data and behavior, bundled."
+            _preview = show_result(_line)
+        elif isinstance(_t, (int, float)) and round(_t, 2) == 13.80 and _line is None:
+            ex31_ok = False
+            _msg = "❌ Exercise 3.1: `total()` is right — now `receipt_line()`, which still returns `None`. Build the f-string from `self.qty`, `self.item` and `self.total()`."
             _preview = show_result(_t)
+        elif isinstance(_t, (int, float)) and round(_t, 2) == 13.80:
+            ex31_ok = False
+            _msg = "❌ Exercise 3.1: `total()` is right, but `receipt_line()` should read exactly `2x Wrap: 13.80 EUR` — check the `x`, the colon, `:.2f` and `EUR`."
+            _preview = show_result(_line)
         elif isinstance(_t, (int, float)) and round(_t, 2) == 6.90:
             ex31_ok = False
             _msg = "❌ Exercise 3.1: that's the price of **one** portion — `total()` needs the quantity too. What should `self.qty` multiply?"
@@ -609,8 +627,8 @@ def _(Order, mo, show_result):
 def _(mo):
     mo.accordion(
         {
-            "💡 Hint 1 (a nudge)": "Inside `total()`, reach the stored data through `self`: the quantity is `self.qty`, the unit price is `self.price`. Multiply them and round.",
-            "💡 Hint 2 (the structure)": "    def total(self):\n        return round(self.___ * self.___, 2)   — fill in the two attribute names.",
+            "💡 Hint 1 (a nudge)": "Inside `total()`, reach the stored data through `self`: the quantity is `self.qty`, the unit price is `self.price`. Multiply them and round. `receipt_line()` is the Episode 1 f-string, with `self.total()` in the money slot.",
+            "💡 Hint 2 (the structure)": "    def total(self):\n        return round(self.___ * self.___, 2)\n\n    def receipt_line(self):\n        return f\"{self.___}x {self.___}: {self.total():.2f} EUR\"   — fill in the attribute names.",
         }
     )
     return
@@ -641,6 +659,10 @@ def _(mo):
 
     Both `Order` and `fee_ex11` from earlier are in scope here. Reuse them, don't
     rewrite them. (That's the whole point of this episode.)
+
+    *Finish 1.1 first:* while `fee_ex11` still returns `None`, this cell goes
+    **red**, and a red cell pauses everything below it, including the progress
+    box. Nothing is lost; fix the red cell and it all comes back.
     """
     )
     return
@@ -788,9 +810,13 @@ def _(mo, show_result, tip_safe_ex60):
         _msg = "❌ Championship: a weird receipt knocked it out — the function crashed. Guard the total before you do the math."
         _preview = ""
     else:
-        if _zero is None:
+        if _zero is None and _normal is None:
             ex60_ok = False
             _msg = "🔲 Championship: not entered yet (the function still returns None)."
+            _preview = ""
+        elif _zero is None or _neg is None:
+            ex60_ok = False
+            _msg = "❌ Championship: a zero or negative total comes back as `None` — that branch has no `return`. Every path through the function needs one."
             _preview = ""
         elif (
             _zero == 0.0 and _neg == 0.0

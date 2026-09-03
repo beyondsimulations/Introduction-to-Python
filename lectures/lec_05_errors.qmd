@@ -16,12 +16,13 @@ format:
 - **Individual work**: no AI, no neighbors, no chat
 - The **link and QR** are handed out in class. Open it and start
 - ~6 short tasks: write code, trace code, fix a bug, answer a multiple choice
+- It sweeps **Sessions III–IV**: functions, scope, classes, lists and dictionaries, comprehensions
 
 <!-- QR handed out live — never in the deck -->
 
 ## When you're done
 
-Menu → *Download* → *Download Python code* → upload the `.py` to the **"Checkpoint 2"** assignment on Moodle.
+Menu → *Download* → *Download Python code* → upload the `.py` to the **"Checkpoint 2"** assignment on Moodle, **before the 40 minutes are up**. **No retakes**: one sitting.
 
 . . .
 
@@ -175,6 +176,10 @@ except TypeError as e:
     print("TypeError:", e)
 ```
 
+. . .
+
+`as e` keeps the error object in a variable, so you can print its message instead of losing it. Any name works; `e` is the habit.
+
 # ⚡ Your turn — 10 minutes {.exercise-slide}
 
 Open the exercise (scan the QR or type the link):
@@ -279,7 +284,7 @@ print(seats("full"))           # nonsense → the safe default, 2
 
 . . .
 
-The caller never has to worry about a crash. Garbage in, sane default out.
+The caller never has to worry about a crash. Garbage in, sane default out. Not every check needs a `try`: `isinstance(x, (int, float))` asks *is this a number?* and returns `True`/`False`, so an `if` can skip bad values before they explode.
 
 ## Predict: what happens after the `except`?
 

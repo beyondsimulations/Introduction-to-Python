@@ -27,7 +27,7 @@ def _():
 def _(mo):
     mo.md(
         r"""
-    # ⚡ Quick exercise: your first chart (5–10 min)
+    # ⚡ Quick exercise: your first chart (10 min)
 
     Episode 9: the investor's one instruction was "charts I can't argue
     with." A table of seven numbers doesn't argue anything — a line does.

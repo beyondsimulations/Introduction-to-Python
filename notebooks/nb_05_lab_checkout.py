@@ -249,6 +249,10 @@ def _(mo, safe_price_ex12, show_result):
             ex12_ok = True
             _msg = "✅ Exercise 1.2: `\"4.20\"` → 4.2, `\"drei\"` → 0.0. The checkout survives a customer who can't type. That's `try` / `except` earning its keep."
             _preview = show_result(_good)
+        elif _bad == 0.0 and not isinstance(_bad, float):
+            ex12_ok = False
+            _msg = "❌ Exercise 1.2: `\"drei\"` came back as the integer `0`. Return the float `0.0` in the `except`, so the checkout stays in floats."
+            _preview = show_result(_bad)
         elif _bad != 0.0:
             ex12_ok = False
             _msg = "❌ Exercise 1.2: `\"drei\"` should come back as `0.0`, not crash or return something else. Catch `ValueError` in the `except` and return `0.0` there."
@@ -720,6 +724,10 @@ def _(mo, orders_ex40, robust_total_ex40, show_result):
             ex40_ok = False
             _msg = "❌ Boss exercise: 13.80 is only the Wrap — the Thai (8.90) is a perfectly good order and should be counted too. Skip *only* the negative and the non-number."
             _preview = show_result(_messy)
+        elif isinstance(_messy, (int, float)) and round(_messy, 2) == 22.70:
+            ex40_ok = False
+            _msg = "❌ Boss exercise: 22.70 for the messy list, but a clean list of `1.0` and `2.0` doesn't come out as 3.0 — the number is hardcoded, or the function ignores its argument. Compute the total from the list it is given."
+            _preview = show_result(_clean)
         else:
             ex40_ok = False
             _msg = "❌ Boss exercise: not 22.70. Add up only the prices that are numbers *and* ≥ 0 — that's the Wrap (13.80) and the Thai (8.90) — then `round(..., 2)`."
@@ -748,13 +756,13 @@ def _(mo):
         r"""
     ### Quiz (core, MCQ) — after the `except`
 
-    A `try` / `except` catches a `ValueError`, the `except` block runs, and then
-    the block ends. What does the program do next? Assign the letter (as text) to
-    `answer_ex50`:
+    A `try` block runs `int("drei")`, which raises a `ValueError`. The only
+    handler is `except TypeError:`. What does the program do? Assign the letter
+    (as text) to `answer_ex50`:
 
-    - **a)** it crashes anyway, once the `except` block ends
-    - **b)** it jumps back and re-runs the `try`
-    - **c)** it continues normally with the code after the `try` / `except`
+    - **a)** the `ValueError` is not caught: it crashes with a traceback
+    - **b)** the `except TypeError` block runs anyway, any error counts
+    - **c)** it skips the rest of the `try` quietly and continues after it
     """
     )
     return
@@ -772,12 +780,12 @@ def _(answer_ex50, mo):
     if answer_ex50 == "":
         ex50_ok = False
         _msg = "🔲 Quiz: not attempted yet."
-    elif str(answer_ex50).strip().lower() == "c":
+    elif str(answer_ex50).strip().lower() == "a":
         ex50_ok = True
         _msg = (
-            "✅ Quiz: **c**. That's the whole point of `try` / `except` — it *handles* "
-            "the error and carries on. Once the `except` has run, control drops to "
-            "the code right after the block, as if nothing had gone wrong."
+            "✅ Quiz: **a**. An `except` only catches the type it names. A "
+            "`ValueError` walks straight past `except TypeError:` and crashes the "
+            "program — which is why you catch the *specific* error you expect."
         )
     else:
         ex50_ok = False

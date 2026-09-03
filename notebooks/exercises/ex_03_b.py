@@ -27,7 +27,7 @@ def _():
 def _(mo):
     mo.md(
         r"""
-    # ⚡ Quick exercise: fix the Order class (5 min)
+    # ⚡ Quick exercise: fix the Order class (10 min)
 
     Kevin wrote the startup's first class — an `Order` that's supposed to
     compute its own total. Except a 2× Pad Thai order charges like a single

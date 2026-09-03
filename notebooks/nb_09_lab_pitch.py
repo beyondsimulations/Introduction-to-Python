@@ -233,7 +233,7 @@ def _(best_day_ex11, mo, pd, show_result):
 def _(mo):
     mo.accordion(
         {
-            "💡 Hint 1 (a nudge)": "`plt.plot(daily.index, daily.values)` draws the line for your eyes — the check only reads the number. `.max()` gives the biggest VALUE; `.idxmax()` gives its LABEL (the day), which is what the investor asked for.",
+            "💡 Hint 1 (a nudge)": "`plt.plot(daily)` draws the line for your eyes — the check only reads the number. `.max()` gives the biggest VALUE; `.idxmax()` gives its LABEL (the day), which is what the investor asked for.",
             "💡 Hint 2 (the structure)": "best_day_ex11 = int(daily.___())   — the method that returns the label (not the value) of the largest entry.",
         }
     )
@@ -1008,19 +1008,23 @@ def _(mo):
     ### 🧰 Homework before Session X — set up the real toolchain
 
     So far everything has run in the browser. The season finale moves to your own
-    machine, and you'll want two tools installed **before** you arrive:
+    machine, and four things need to work **before** you arrive, in this order:
 
-    - **uv** — the Python environment manager this course uses. Follow
-      [the uv guide](https://beyondsimulations.github.io/Introduction-to-Python/general/uv.html).
-    - **Zed** (with its AI assistant) — the editor you'll actually write code in.
-      Follow [the AI-tools guide](https://beyondsimulations.github.io/Introduction-to-Python/general/ai-tools.html).
+    1. **GitHub account** from Session I. None yet? Make one tonight.
+    2. **git + GitHub CLI (`gh`)** — install and log in once. Follow the one-time
+       setup in [the Git Basics guide](https://beyondsimulations.github.io/Introduction-to-Python/general/git-basics.html#one-time-setup).
+    3. **uv** — the Python environment manager this course uses. Follow
+       [the uv guide](https://beyondsimulations.github.io/Introduction-to-Python/general/uv.html).
+    4. **Zed + Mistral Vibe** — the editor you'll write code in, with the AI agent
+       inside it. Follow [the AI-tools guide](https://beyondsimulations.github.io/Introduction-to-Python/general/ai-tools.html).
 
     Do this in advance: Session X *builds on* a working toolchain — it doesn't wait
-    for one. Budget about 15 minutes; if the install fights you, bring it to office
-    hours before Session X. Don't burn an evening on it.
+    for one. Budget about 45 minutes; if an install fights you, ask in class or by
+    e-mail before Session X. Don't burn an evening on it. Bring the laptop, and one
+    downloaded lab `.py` from Part I.
 
-    **Season finale next:** git, real files on your own disk, and the project
-    kickoff. See you there. 🎬
+    **Season finale next:** it opens with **Checkpoint 5** (Sessions VIII–IX), then
+    git, real files on your own disk, and the project kickoff. See you there. 🎬
     """
     )
     return

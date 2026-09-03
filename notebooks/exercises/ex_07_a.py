@@ -27,7 +27,7 @@ def _():
 def _(mo):
     mo.md(
         r"""
-    # ⚡ Quick exercise: vectorized arithmetic (5–10 min)
+    # ⚡ Quick exercise: vectorized arithmetic (10 min)
 
     Kevin's 40-tab spreadsheet is on its way out. The investor wants
     metrics, and numpy arrays are the replacement. The key idea: an

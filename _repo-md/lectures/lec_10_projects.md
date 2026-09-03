@@ -186,9 +186,9 @@ Right now, in the room:
 Before we build anything, the installs from the Session IX homework need to work. In a terminal:
 
 ``` bash
-uv --version
 git --version
 gh --version
+uv --version
 ```
 
 - Three version numbers? You're set.
@@ -198,30 +198,78 @@ gh --version
 
 > **Important**
 >
-> **Didn't work?** Don't burn the session fighting it. **Flag it for office hours**, pair up with your partner's working machine, and **follow along on the slides** for now. Nobody gets left behind.
+> **Didn't work?** Don't burn the session fighting it. **Flag it**, pair up with your partner's working machine, and **follow along on the slides** for now. We sort it out in class or by e-mail; nobody gets left behind.
 
-## Start the project: `uv init`
+## Once per machine
 
-Pick the folder where you keep course work, then create the project (name it after your pitch):
+Before your laptop can talk to GitHub, it has to prove it's allowed to. Signing in to **Zed does not do this**; git needs its own login, and the `gh` tool handles it. Once per computer, in a terminal:
 
 ``` bash
-uv init my-project
-cd my-project
+gh auth login
 ```
 
-`uv init` creates `main.py`, `pyproject.toml`, `.python-version`, `.gitignore`, and `README.md`.
+Choose **GitHub.com**, **HTTPS**, authenticate in the **browser**, and answer **yes** to *"Authenticate Git with your GitHub credentials?"*. Then, once:
+
+``` bash
+git config --global pull.rebase false
+```
+
+. . .
+
+> **Important**
+>
+> **Login fighting you?** Same rule: **flag it**, follow along on the slides, and finish at home with the [Git Basics](../general/git-basics.qmd) page, or with us in the supervised sessions. Nobody's project stalls on a login.
+
+## Your project starts on GitHub
+
+Everyone, right now, a **practice repo**. On [github.com](https://github.com) click **New repository**, then:
+
+- **Name**: `python-practice`
+- **Private**
+- Tick **Add a README file**
+- **.gitignore template**: `Python`
+
+**Create repository**, then copy the **HTTPS URL** from the green *Code* button: `https://github.com/you/python-practice.git`
+
+. . .
+
+That's a **repository**: a folder git watches, with its whole history. So far it lives only on GitHub. Next we bring it down.
+
+## Bring it down: clone
+
+In Zed's **command palette** (`Cmd/Ctrl+Shift+P`): **`git: clone`**, paste the URL, and pick the folder where you keep course work. Zed opens the new folder as your **workspace**: the file tree on the left shows `README.md` and `.gitignore`.
+
+``` bash
+git clone https://github.com/you/python-practice.git
+```
 
 . . .
 
 > **Note**
 >
-> As long as git is installed (you confirmed that a moment ago with `git --version`), it also **already turns the folder into a git repository**: there's a hidden `.git/` inside. You do **not** run `git init` yourself. Your project is version-controlled from its very first second.
+> Everything from here on happens **inside this folder**: git, uv, the AI. If Zed ever shows an empty file tree, **File → Open Folder** and pick the cloned folder itself, not the one above it.
+
+## Make it a Python project: `uv init`
+
+Open Zed's built-in terminal (`` Ctrl+` ``); it starts inside your workspace. Then:
+
+``` bash
+uv init --no-package
+```
+
+`uv init` adds `main.py`, `pyproject.toml` and `.python-version` next to the `README.md` and `.gitignore` that GitHub made.
+
+. . .
+
+> **Note**
+>
+> **`--no-package`** keeps it a flat folder of scripts, the shape you know from the labs; without it, uv builds an installable package layout you don't need yet. And no `git init`: the folder came from GitHub, it **is** a git repository already.
 
 ## Open a notebook in Zed
 
-Grab **a lab `.py` you downloaded in Part I**: we'll use `nb_03_lab_functions.py`. Copy it **into your project folder** first (in Finder/Explorer), then open it in Zed: it's just code. Read it.
+Grab **a lab `.py` you downloaded in Part I**: we'll use `nb_03_lab_functions.py`. Copy it **into your project folder**, then open it in Zed: it's just code. Read it.
 
-The file needs its tools first. Adding a package to a project is one command:
+The file needs its tools first; adding a package is one command:
 
 ``` bash
 uv add marimo
@@ -235,11 +283,11 @@ uv run python nb_03_lab_functions.py
 
 . . .
 
-`uv run` uses the project's own Python and packages. The file that lived in a browser tab all semester now runs on **your machine, from your editor.** That's the whole point of today. *(Stick with a Part-I lab; the pandas labs also need `uv add pandas` and their CSV.)*
+`uv run` uses the project's own Python and packages. The file that lived in a browser tab all semester now runs on **your machine, from your editor.** That's the whole point of today. *(Part-I labs only today; the pandas labs need more packages and their CSV.)*
 
 ## Connect your AI
 
-Part III **encourages** AI. You've earned the co-pilot, and it's already installed: **Mistral Vibe**, running inside Zed on the key from Session VI (setup in the [AI-tools guide](../general/ai-tools.qmd)). Open the **agent panel**, pick **Mistral Vibe**, and try it on your two-minute-old project:
+Part III **encourages** AI. You've earned the co-pilot, and it's already installed: **Mistral Vibe**, running inside Zed on the key from Session VI (setup in the [AI-tools guide](../general/ai-tools.qmd)). Open the **agent panel**, pick **Mistral Vibe**, and try it on your five-minute-old project:
 
 > *Explain what `main.py` does, then add a docstring. Don't change anything else.*
 
@@ -265,31 +313,11 @@ Git has a small vocabulary. Learn these five and you can do everything this proj
 
 . . .
 
-We'll do each one **live, in your real project repo**. Mistakes are cheap when the repo is two minutes old.
-
-## Once per machine
-
-Before any push reaches GitHub, your machine has to prove it's allowed to. Signing in to **Zed does not do this**; git needs its own setup. You need a **(free) GitHub account** and the `gh` tool. Not installed? Get it via the [Git Basics](../general/git-basics.qmd) page first. Then, once per computer, in a terminal:
-
-``` bash
-gh auth login
-```
-
-Choose **GitHub.com**, **HTTPS**, authenticate in the **browser**, and answer **yes** to *"Authenticate Git with your GitHub credentials?"*. Then, once:
-
-``` bash
-git config --global pull.rebase false
-```
-
-. . .
-
-> **Important**
->
-> **Auth fighting you?** Same rule as the toolchain: **flag it**, follow along on the slides, and finish the push at home with the [Git Basics](../general/git-basics.qmd) page, or with us in the supervised sessions. Nobody's project stalls on a login.
+Two of them you've already done: the repo exists, and you cloned it. The other three now, **live, in your practice repo**. Mistakes are cheap when the repo is five minutes old.
 
 ## Your first commit
 
-Your `uv init` folder already has files worth saving. In Zed's **command palette** (`Cmd/Ctrl+Shift+P`):
+Your folder has new files worth saving: `main.py`, `pyproject.toml`, `.python-version`, the lab. In Zed's **command palette**:
 
 - **`git: stage all`**: mark everything as part of the snapshot
 - **`git: commit`** (`Cmd/Ctrl+Enter`): type a message, save it
@@ -300,40 +328,48 @@ The same thing in the terminal, the words you'll see everywhere:
 
 ``` bash
 git add .
-git commit -m "Initial project setup"
+git commit -m "Set up the project"
 ```
 
 A commit lives **only on your computer** so far. Next we send it to GitHub.
 
-## Put it on GitHub --- repo owner only
+## Push
 
-**Repo owner only.** Partner: watch, you clone in a minute; **don't create your own repo.** GitHub doesn't know about the project yet, three steps:
-
-1.  On **github.com**, create a new **empty** repository (no README). The GitHub side is made on the website, not in Zed
-2.  In Zed: **`git: create remote`**, paste the **HTTPS URL** (`https://github.com/you/project.git`), name it `origin`
-3.  Do the **first push** from the terminal, this exact line, once:
+Because the folder came from GitHub, git already knows where "up" is. In Zed: **`git: push`**. In the terminal:
 
 ``` bash
-git push -u origin HEAD
+git push
 ```
 
 . . .
 
-After this one-time command, every later push is just **`git: push`** in Zed (terminal: `git push`).
+Reload the repo page on github.com: `main.py` is there. That's the loop you'll repeat all project long: **edit → commit → push**. Pull is the other direction; you'll see it in a minute.
+
+## The real project repo: owner only
+
+Now the one that counts. **Repo owner only**, same recipe as the practice repo, with three extras:
+
+1.  Name it after your **pitch**; **Private**, README, Python `.gitignore`
+2.  **Settings → Collaborators**: invite your **partner** and **us** (our GitHub username is on Moodle), so we can read it for grading
+3.  Clone it in Zed, `uv init --no-package`, commit, push, exactly as before
+
+. . .
+
+Partner: **don't create a second project repo.** Yours arrives by invitation in a moment.
 
 ## Your partner joins
 
-The owner invites the partner (GitHub → **Settings → Collaborators**). The **partner** gets onto the project by cloning it **into a fresh folder**, not inside the practice project from the toolchain block (set that one aside; the clone is your real working copy):
+The **partner** accepts the invitation (GitHub e-mails it) and clones the project **into a fresh folder**, next to the practice repo:
 
-- In Zed: **`git: clone`**, paste the same **HTTPS URL**
+- In Zed: **`git: clone`**, paste the project's **HTTPS URL**
 
 ``` bash
-git clone https://github.com/you/project.git
+git clone https://github.com/owner/project.git
 ```
 
 . . .
 
-Cloning brings the whole project and its history, and sets up the connection automatically. The partner pushes and pulls normally from the first moment. Now **both of you pull** (`git: pull` / `git pull`) to confirm you're in sync.
+Cloning brings the whole project, its history and the connection to GitHub; the partner pushes and pulls normally from the first moment. Now the **owner** edits `README.md`, commits and pushes, and the **partner** runs **`git: pull`** (`git pull`): the change lands on the second laptop. That's the fifth word.
 
 . . .
 

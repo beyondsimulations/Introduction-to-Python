@@ -27,7 +27,7 @@ def _():
 def _(mo):
     mo.md(
         r"""
-    # ⚡ Quick exercise: the right chart for categories (5–10 min)
+    # ⚡ Quick exercise: the right chart for categories (10 min)
 
     Line charts show change over TIME. Zones aren't a timeline: they're
     categories to compare, and `plt.bar(labels, heights)` is the chart

@@ -698,14 +698,14 @@ def _(mo):
 def _(mo):
     mo.md(
         r"""
-    ### Exercise (trace — predict first) — which way does floor go?
+    ### Exercise (trace — predict first) — which way does ceil go?
 
     This is a **trace** exercise: predict the answer first, *then* reveal it. It's
     ungraded. The point is the prediction. Kevin runs:
 
     ```python
     import math
-    print(math.floor(-2.5))
+    print(math.ceil(-2.5))
     ```
 
     What gets printed?
@@ -718,7 +718,7 @@ def _(mo):
 def _(mo):
     trace_floor = mo.ui.radio(
         options=["-3", "-2", "an error"],
-        label="Your prediction for `math.floor(-2.5)`:",
+        label="Your prediction for `math.ceil(-2.5)`:",
     )
     trace_floor
     return (trace_floor,)
@@ -728,16 +728,16 @@ def _(mo):
 def _(mo, trace_floor):
     if trace_floor.value is None:
         _msg = "🔲 Pick a prediction above first — commit before you peek!"
-    elif trace_floor.value == "-3":
+    elif trace_floor.value == "-2":
         _msg = (
-            "✅ Correct: **-3**. `floor` goes DOWN, not toward zero. On the number "
-            "line -3 sits below -2.5, so flooring lands on -3. (`math.ceil(-2.5)` "
-            "would go the other way, up to -2.)"
+            "✅ Correct: **-2**. `ceil` goes UP, not away from zero. On the number "
+            "line -2 sits above -2.5, so the ceiling lands on -2. (`math.floor(-2.5)`, "
+            "the deck's question, goes the other way, down to -3.)"
         )
     else:
         _msg = (
-            "❌ Not quite — it's **-3**. `floor` always rounds *down* (toward "
-            "negative infinity), not toward zero. -3 is below -2.5, so that's where "
+            "❌ Not quite — it's **-2**. `ceil` always rounds *up* (toward "
+            "positive infinity), not away from zero. -2 is above -2.5, so that's where "
             "it lands. (Ungraded — the point is the prediction.)"
         )
     mo.callout(mo.md(_msg), kind="info")

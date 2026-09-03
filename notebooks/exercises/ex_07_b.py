@@ -27,7 +27,7 @@ def _():
 def _(mo):
     mo.md(
         r"""
-    # ⚡ Quick exercise: boolean masks (5–10 min)
+    # ⚡ Quick exercise: boolean masks (10 min)
 
     Comparing an array to a number doesn't give one `True`/`False`. It
     gives a whole array of them, one per element. That array of booleans

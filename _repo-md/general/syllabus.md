@@ -8,7 +8,7 @@ subtitle: This year's course structure
 
 ## Introduction to Programming with Python
 
-In the first part, an introduction to the basic concepts of programming in Python is provided. Students will learn the Python syntax, data types, as well as how to implement loops, functions, and object classes in Python. We will introduce core Python libraries, too, including NumPy and Pandas. Once these concepts are understood, we will learn how they can be used to solve problems.
+In the first part, an introduction to the basic concepts of programming in Python is provided. Students will learn the Python syntax, data types, as well as how to implement loops, functions, and object classes in Python. Once these concepts are understood, we will learn how they can be used to solve problems.
 
 ## Lectures
 
@@ -22,9 +22,9 @@ String methods, comparisons, conditional statements, loops
 Functions, arguments, return values, scope, classes
 
 **Handling Data in more than one Dimension (IV)**  
-Tuples, lists, sets, dictionaries, and basic I/O
+Tuples, lists, sets, dictionaries
 
-**Handling Errors and Strings (V)**  
+**Errors and Debugging (V)**  
 Exceptions, try-except blocks, debugging
 
 # Part II
@@ -41,10 +41,10 @@ Standard libraries, random numbers and how to use them
 **NumPy for Scientific Computing (VII)**  
 Fast array operations with NumPy
 
-**Pandas and AI (VIII)**  
+**Pandas and AI Craft (VIII)**  
 Pandas for data manipulation and AI
 
-**Plotting Data (IX)**  
+**Data Visualization (IX)**  
 Matplotlib with AI based on hands-on examples
 
 # Part III
@@ -56,7 +56,7 @@ In the third part, students take on a final project in Python where they apply t
 ## Lectures
 
 **Tooling, Git and Your Project (X)**  
-Bring your own machine with the Session IX pre-work done (uv, Zed with Mistral Vibe, GitHub CLI), learn git and GitHub, form pairs, and choose your project
+Bring your own machine with the Session IX pre-work done (git and the GitHub CLI, uv, Zed with Mistral Vibe), learn git and GitHub, form pairs, and choose your project
 
 **Project Work I (XI)**  
 Progress your pair project under assistance
@@ -66,3 +66,15 @@ Finalize your pair project with your partner
 
 **Presentations and Discussion (XIII)**  
 Present your pair's work and the learnings you have made
+
+# Checkpoints
+
+Five in-class checkpoints, 12 points each, always the **first 40 minutes** of the session, individual work, uploaded to Moodle before the time is up. No make-ups: the point math absorbs one miss.
+
+| Checkpoint | Opens        | Covers            | AI      |
+|------------|--------------|-------------------|---------|
+| 1          | Session III  | Sessions I--II    | no      |
+| 2          | Session V    | Sessions III--IV  | no      |
+| 3          | Session VI   | Sessions I--V     | no      |
+| 4          | Session VIII | Sessions VI--VII  | allowed |
+| 5          | Session X    | Sessions VIII--IX | allowed |

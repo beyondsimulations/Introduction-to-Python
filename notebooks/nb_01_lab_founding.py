@@ -84,7 +84,7 @@ def _(mo):
     A **variable** is a labeled box you put a value in. The value has a
     **type**: text is a `str` (`"Pad Thai"`), whole numbers are `int` (`3`),
     and decimals are `float` (`8.90`). Python figures out the type from the
-    value you assign. Read and run the worked example, then do the exercises.
+    value you assign. Read and run the worked example (click into the cell, `Cmd/Ctrl+Enter`), then do the exercises.
     """
     )
     return
@@ -451,8 +451,8 @@ def _(mo):
     field with two decimals (`:>8.2f`):
 
     ```
-    Pad Thai        26.70
-    Falafel Wrap     4.60
+    Pad Thai    26.70
+    Calamari     4.60
     ```
 
     (The prices are `26.70` and `4.60`. Bonus, not required.)
@@ -470,7 +470,7 @@ def _():
 
 @app.cell(hide_code=True)
 def _(mo, receipt_multi_ex32, show_result):
-    _expected = f"Pad Thai {26.70:>8.2f}\nFalafel Wrap {4.60:>8.2f}"
+    _expected = f"Pad Thai {26.70:>8.2f}\nCalamari {4.60:>8.2f}"
     if receipt_multi_ex32 is None:
         ex32_ok = False
         _msg = "🔲 Bonus 3.2: not attempted yet."
@@ -489,7 +489,7 @@ def _(mo):
     mo.accordion(
         {
             "💡 Hint 1 (a nudge)": "Two f-string pieces joined by `\\n`. Each price uses `{value:>8.2f}`.",
-            "💡 Hint 2 (the structure)": "receipt_multi_ex32 = f\"Pad Thai {___:>8.2f}\\nFalafel Wrap {___:>8.2f}\"",
+            "💡 Hint 2 (the structure)": "receipt_multi_ex32 = f\"Pad Thai {___:>8.2f}\\nCalamari {___:>8.2f}\"",
         }
     )
     return
@@ -521,7 +521,10 @@ def _(mo):
     The grader only checks the numbers, so your wording (and name) can be
     anything.
 
-    *Solve 1.2 and 2.2 first; this line uses those results.*
+    *Solve 1.2 and 2.2 first; this line uses those results.* While either is
+    still `None`, this cell goes **red**, and a red cell pauses everything below
+    it, including the progress box. Nothing is lost; fix the red cell and it all
+    comes back.
     """
     )
     return

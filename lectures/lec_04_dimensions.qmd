@@ -74,11 +74,11 @@ class Order:
 print(Order("Wrap", 2, 6.90).total())
 ```
 
-a\) `6.90`   b) `13.80`   c) `2`
+a\) `6.9`   b) `13.8`   c) `2`
 
 ## Answer 3
 
-**b) `13.80`** — `total()` multiplies `qty` by `price`: `2 * 6.90`. The object carries its own data, the method does the arithmetic.
+**b) `13.8`** — `total()` multiplies `qty` by `price`: `2 * 6.90`, and `print` shows a float without the trailing zero. The object carries its own data, the method does the arithmetic.
 
 # [Lists & Tuples]{.flow} {.title}
 
@@ -369,7 +369,7 @@ A **set** keeps each value **once**. Feed it duplicates and they collapse. Perfe
 
 visitors = ["nina", "tom", "nina", "ada", "tom"]
 regulars = set(visitors)
-print(regulars)
+print(regulars)        # order is arbitrary: a set has none
 print(len(regulars))   # how many different people
 ```
 
@@ -535,7 +535,7 @@ for line in orders.splitlines():
 . . .
 
 :::{.callout-note}
-Reading **real files** from your own machine comes in **Part III**, and **pandas** loads them properly in **Session VIII**. For now, inline data is all you need.
+Reading **real files** is a job for **pandas**, which loads them in one line from **Session VIII** on. For now, inline data is all you need.
 :::
 
 # ⚡ Your turn — 10 minutes {.exercise-slide}

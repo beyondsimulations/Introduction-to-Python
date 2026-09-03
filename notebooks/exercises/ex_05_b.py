@@ -27,7 +27,7 @@ def _():
 def _(mo):
     mo.md(
         r"""
-    # ⚡ Quick exercise: the crash-proof price (5–10 min)
+    # ⚡ Quick exercise: the crash-proof price (10 min)
 
     A customer typed `"drei"` into the price field instead of a number, and
     the checkout went straight to a traceback in front of the whole queue.

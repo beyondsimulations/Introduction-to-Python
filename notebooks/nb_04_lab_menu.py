@@ -137,6 +137,9 @@ def _(mo):
     order for a **Falafel Wrap** just came in. It goes to the **end** of the
     line. Build `queue_ex11`: the same four orders, with `"Falafel Wrap"` added
     as the last item.
+
+    Use `+` here, not `.append()`: marimo re-runs a cell every time you edit it,
+    and `.append()` would push another wrap onto the shared `queue` on every run.
     """
     )
     return
@@ -168,6 +171,10 @@ def _(mo, queue_ex11, show_result):
     elif len(queue_ex11) == 5 and queue_ex11[-1] == "Falafel Wrap":
         ex11_ok = True
         _msg = "✅ Exercise 1.1: five orders, and the Falafel Wrap is last in line. Lists keep their order, so 'last' really means last."
+        _preview = show_result(queue_ex11)
+    elif len(queue_ex11) > 5 and queue_ex11[-1] == "Falafel Wrap":
+        ex11_ok = False
+        _msg = "❌ Exercise 1.1: more than 5 orders — `.append()` ran once per re-run of the cell and kept growing the shared `queue`. Use `queue + [\"Falafel Wrap\"]`, which leaves `queue` alone."
         _preview = show_result(queue_ex11)
     else:
         ex11_ok = False
@@ -353,8 +360,8 @@ def _(mo):
 
     Winter changes the menu. Starting from `menu_ex21`, make `menu_ex22` that:
 
-    - **raises Pad Thai** to `9.20`, and
-    - **adds** a new dish, `"Miso Ramen"`, at `11.50`.
+    - **raises the Founders Bowl** to `10.90`, and
+    - **adds** a new dish, `"Bao Box"`, at `7.80`.
 
     Leave the original `menu_ex21` untouched. Make a **copy** first, then change
     the copy. (Copy a dict with `dict(other)`.)
@@ -365,7 +372,7 @@ def _(mo):
 
 @app.cell
 def _():
-    # YOUR CODE BELOW — copy menu_ex21, raise Pad Thai to 9.20, add Miso Ramen 11.50
+    # YOUR CODE BELOW — copy menu_ex21, raise Founders Bowl to 10.90, add Bao Box 7.80
     menu_ex22 = {}
     return (menu_ex22,)
 
@@ -374,9 +381,9 @@ def _():
 def _(menu_ex21, menu_ex22, mo, show_result):
     _expected = {
         "Falafel Wrap": 6.90,
-        "Pad Thai": 9.20,
-        "Founders Bowl": 10.40,
-        "Miso Ramen": 11.50,
+        "Pad Thai": 8.90,
+        "Founders Bowl": 10.90,
+        "Bao Box": 7.80,
     }
     _original = {"Falafel Wrap": 6.90, "Pad Thai": 8.90, "Founders Bowl": 10.40}
     if not menu_ex22:
@@ -393,15 +400,15 @@ def _(menu_ex21, menu_ex22, mo, show_result):
         _preview = show_result(menu_ex22)
     elif menu_ex22 == _expected:
         ex22_ok = True
-        _msg = "✅ Exercise 2.2: Pad Thai up to 9.20, Miso Ramen on the board at 11.50 — four dishes, and the original menu is safe."
+        _msg = "✅ Exercise 2.2: Founders Bowl up to 10.90, Bao Box on the board at 7.80 — four dishes, and the original menu is safe."
         _preview = show_result(menu_ex22)
-    elif menu_ex22.get("Pad Thai") == 8.90:
+    elif menu_ex22.get("Founders Bowl") == 10.40:
         ex22_ok = False
-        _msg = "❌ Exercise 2.2: Pad Thai is still 8.90 — you need to **update** its value to 9.20 after copying."
+        _msg = "❌ Exercise 2.2: the Founders Bowl is still 10.40 — you need to **update** its value to 10.90 after copying."
         _preview = show_result(menu_ex22)
     else:
         ex22_ok = False
-        _msg = "❌ Exercise 2.2: four dishes expected — Pad Thai at 9.20 and a new `\"Miso Ramen\": 11.50`, everything else unchanged."
+        _msg = "❌ Exercise 2.2: four dishes expected — Founders Bowl at 10.90 and a new `\"Bao Box\": 7.80`, everything else unchanged."
         _preview = show_result(menu_ex22)
     mo.callout(mo.md(_msg + _preview), kind="success" if ex22_ok else "warn")
     return (ex22_ok,)
@@ -412,7 +419,7 @@ def _(mo):
     mo.accordion(
         {
             "💡 Hint 1 (a nudge)": "First copy: `dict(menu_ex21)` gives you an independent dictionary. Then assign into it by key — one line to change Pad Thai, one line to add Miso Ramen.",
-            "💡 Hint 2 (the structure)": "menu_ex22 = dict(menu_ex21)\nmenu_ex22[\"Pad Thai\"] = ___\nmenu_ex22[___] = 11.50   — fill the new price and the new dish name.",
+            "💡 Hint 2 (the structure)": "menu_ex22 = dict(menu_ex21)\nmenu_ex22[\"Founders Bowl\"] = ___\nmenu_ex22[___] = 7.80   — fill the new price and the new dish name.",
         }
     )
     return
@@ -611,8 +618,8 @@ def _(mo):
         r"""
     ### Exercise 3.2 (core) — happy hour
 
-    Happy hour knocks **20 % off** every dish. Build `happy_ex32`: a new
-    dictionary from `menu_ex22` (the winter menu) where every price is **80 % of
+    Happy hour knocks **30 % off** every dish. Build `happy_ex32`: a new
+    dictionary from `menu_ex22` (the winter menu) where every price is **70 % of
     the original**, each rounded to 2 decimals. Do it in a single **dict
     comprehension**.
     """
@@ -622,7 +629,7 @@ def _(mo):
 
 @app.cell
 def _():
-    # YOUR CODE BELOW — 20% off every price in menu_ex22, rounded to 2 decimals
+    # YOUR CODE BELOW — 30% off every price in menu_ex22, rounded to 2 decimals
     happy_ex32 = None
     return (happy_ex32,)
 
@@ -630,10 +637,10 @@ def _():
 @app.cell(hide_code=True)
 def _(happy_ex32, mo, show_result):
     _expected = {
-        "Falafel Wrap": 5.52,
-        "Pad Thai": 7.36,
-        "Founders Bowl": 8.32,
-        "Miso Ramen": 9.20,
+        "Falafel Wrap": 4.83,
+        "Pad Thai": 6.23,
+        "Founders Bowl": 7.63,
+        "Bao Box": 5.46,
     }
     if happy_ex32 is None:
         ex32_ok = False
@@ -649,11 +656,11 @@ def _(happy_ex32, mo, show_result):
         _preview = show_result(happy_ex32)
     elif set(happy_ex32.keys()) == set(_expected.keys()):
         ex32_ok = False
-        _msg = "❌ Exercise 3.2: right dishes, wrong numbers — 20 % off means `price * 0.8`, and each result must be `round(..., 2)` (otherwise you get long tails like 7.3599999)."
+        _msg = "❌ Exercise 3.2: right dishes, wrong numbers — 30 % off means `price * 0.7`, and each result must be `round(..., 2)` (otherwise you get long tails like 6.2299999)."
         _preview = show_result(happy_ex32)
     else:
         ex32_ok = False
-        _msg = "❌ Exercise 3.2: build it from `menu_ex22` so every dish is there, each at 80 % of its price, rounded to 2 decimals."
+        _msg = "❌ Exercise 3.2: build it from `menu_ex22` so every dish is there, each at 70 % of its price, rounded to 2 decimals."
         _preview = show_result(happy_ex32)
     mo.callout(mo.md(_msg + _preview), kind="success" if ex32_ok else "warn")
     return (ex32_ok,)
@@ -664,7 +671,7 @@ def _(mo):
     mo.accordion(
         {
             "💡 Hint 1 (a nudge)": "A dict comprehension looks like `{key: new_value for key, value in something.items()}`. Here the new value is 80 % of the old price, rounded to 2 decimals.",
-            "💡 Hint 2 (the structure)": "happy_ex32 = {name: round(price * ___, 2) for name, price in menu_ex22.items()}   — fill the multiplier for 20 % off.",
+            "💡 Hint 2 (the structure)": "happy_ex32 = {name: round(price * ___, 2) for name, price in menu_ex22.items()}   — fill the multiplier for 30 % off.",
         }
     )
     return
@@ -697,8 +704,12 @@ def _(menu_ex22):
 
 
 @app.cell(hide_code=True)
-def _(mo, pad_price_ex33, show_result):
-    if pad_price_ex33 is None:
+def _(menu_ex22, mo, pad_price_ex33, show_result):
+    if pad_price_ex33 is None and not menu_ex22:
+        ex33_ok = False
+        _msg = "🔲 Exercise 3.3: `menu_ex22` is still empty, so there is nothing to look up yet. Get Exercise 2.2 green first."
+        _preview = ""
+    elif pad_price_ex33 is None:
         ex33_ok = False
         _msg = (
             "❌ Exercise 3.3: still empty (`None`). `.get(...)` hands back `None` "
@@ -707,10 +718,10 @@ def _(mo, pad_price_ex33, show_result):
             "the dish is written in the menu."
         )
         _preview = ""
-    elif isinstance(pad_price_ex33, (int, float)) and round(pad_price_ex33, 2) == 9.20:
+    elif isinstance(pad_price_ex33, (int, float)) and round(pad_price_ex33, 2) == 8.90:
         ex33_ok = True
         _msg = (
-            "✅ Exercise 3.3: 9.20 — the key now matches the menu exactly. Bonus "
+            "✅ Exercise 3.3: 8.90 — the key now matches the menu exactly. Bonus "
             "lesson: `.get(\"padthai\")` returned `None` instead of crashing, but "
             "square brackets — `menu_ex22[\"padthai\"]` — would have raised a "
             "`KeyError` and taken the whole till down. `.get()` is the gentle lookup."
@@ -868,15 +879,15 @@ def _(mo):
     The menu has no `"Sushi"`. Kevin runs:
 
     ```python
-    menu["Sushi"]
+    menu.get("Sushi", 0)
     ```
 
     What happens? Assign the letter (as text) to `answer_ex50`:
 
-    - **a)** it returns `None`, like `.get()` would
-    - **b)** it returns an empty string `""`
-    - **c)** it silently adds `"Sushi"` to the menu
-    - **d)** it raises a `KeyError` and stops
+    - **a)** it raises a `KeyError` and stops the program
+    - **b)** it returns `None`, the usual `.get()` answer
+    - **c)** it silently adds `"Sushi": 0` to the menu
+    - **d)** it returns `0`, the fallback, and leaves the menu alone
     """
     )
     return
@@ -897,9 +908,9 @@ def _(answer_ex50, mo):
     elif str(answer_ex50).strip().lower() == "d":
         ex50_ok = True
         _msg = (
-            "✅ Quiz: **d**. Square-bracket lookup on a missing key raises a "
-            "`KeyError` and stops the program — exactly the crash `.get()` avoided "
-            "back in 3.3."
+            "✅ Quiz: **d**. `.get()` never raises and never adds: with a second "
+            "argument it hands back that fallback instead of `None`. The menu is "
+            "untouched."
         )
     else:
         ex50_ok = False

@@ -26,8 +26,8 @@ no account, no installation, and after it loads no internet is needed.
 > cross-device sync in the browser, and clearing browser data or private mode
 > also wipes it.
 >
-> So: **download your `.py` before you leave** (menu → Download → *Download Python
-> code*). That download is the *only* guaranteed copy. Handing in files works
+> So: **download your `.py` before you leave** (top-right notebook menu → Download → *Download
+> Python code*). That download is the *only* guaranteed copy. Handing in files works
 > exactly like this in the checkpoints, so you get to practice the motion every
 > week. Note: a downloaded `.py` is for submission and backup. You can't upload
 > it back into the browser editor.

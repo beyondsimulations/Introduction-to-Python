@@ -27,7 +27,7 @@ def _():
 def _(mo):
     mo.md(
         r"""
-    # ⚡ Quick exercise: verifying AI code (5–10 min)
+    # ⚡ Quick exercise: verifying AI code (10 min)
 
     AI wrote this for Kevin. Two things are wrong: one method doesn't
     exist, one comparison quietly returns nothing. Fix both, and you've
@@ -61,7 +61,7 @@ def _(pd):
 def _(mo):
     mo.md(
         r"""
-    `kevin_df` below is the real order data. Kevin's AI draft is shown
+    `kevin_df` below stands in for the real order data. Kevin's AI draft is shown
     as a **comment** underneath it. Read it, spot the two bugs, then
     write correct code of your own to compute `mean_exa`: the average
     `total_eur` for the "Nord" zone.

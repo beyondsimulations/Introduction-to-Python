@@ -14,7 +14,7 @@ def _():
 def _(mo):
     mo.md(
         r"""
-    # ⚡ Quick exercise: the sticker budget (5 min)
+    # ⚡ Quick exercise: the sticker budget (10 min)
 
     Kevin has 300 EUR left and wants to know how much survives after buying
     12 boxes at 25 EUR each. **Predict the result of `300 - 12 * 25` before

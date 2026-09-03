@@ -18,7 +18,7 @@ WHY it matters: You avoid random breakage when different projects need different
 
 ## Install `uv`
 
-Choose the instructions for your operating system.
+Everything below happens in a **terminal**, a window where you type commands. On macOS open the **Terminal** app (Spotlight: `Cmd+Space`, type *Terminal*). On Windows open **PowerShell** (Start menu, type *PowerShell*). Choose the instructions for your operating system.
 
 ### macOS or Linux (Terminal)
 
@@ -94,22 +94,25 @@ Python 3.12.
 
 ## Create your first project
 
-Pick a folder where you keep course work. **If you do not have one, make sure to create one!** Open the course folder in your IDE and then run the following from the terminal:
+Pick a folder where you keep course work. **If you do not have one, make sure to create one!** In the terminal, move into that folder (`cd` followed by its path, or drag the folder onto the terminal window) and run:
 
 ```bash
-uv init my-first-project
+uv init --no-package my-first-project
 cd my-first-project
 ```
 
-The first line creates a new folder named `my-first-project` (you can name it anything). The second line moves you into that folder. Alternatively, you can create the folder manually before, open it in your IDE and run `uv init .` inside it.
+The first line creates a new folder named `my-first-project` (you can name it anything). The second line moves you into that folder. In Session X you will instead run `uv init --no-package` *inside* a folder cloned from GitHub; same command, no name.
 
-`uv init` creates:
+`uv init --no-package` creates:
 - `main.py` (starter script)
 - `pyproject.toml` (project + dependencies config)
 - `.python-version` (records the Python version we chose)
-- `.gitignore` (used by Git in Part III: see the [Git Basics](git-basics.qmd) guide)
-- `README.md` (you can jot notes here)
+- `.gitignore` and `README.md` (only when the folder is new; a folder cloned from GitHub already has both)
 - (A `.venv` folder will appear later once packages are added or synced.)
+
+::: callout-note
+**Why `--no-package`?** Without it, recent versions of uv build an installable *package* layout (`src/my_first_project/`) with no `main.py`. For scripts, which is all this course needs, the flat layout is simpler.
+:::
 
 You do **not** need to edit any of these (except maybe `README.md` for your notes and `main.py` if you want to run something different).
 
@@ -126,7 +129,7 @@ uv run python main.py
 You should see something like:
 
 ```
-Hello World!
+Hello from my-first-project!
 ```
 
 (If you want, you can open `main.py` and change the message, then re-run.)
@@ -135,7 +138,8 @@ Hello World!
 
 ```python
 def main():
-    print("Hello, World!")
+    print("Hello from my-first-project!")
+
 
 if __name__ == "__main__":
     main()
@@ -149,7 +153,7 @@ Don't worry about this yet, we'll gradually build up to it.
 
 ## Run scripts directly in Zed
 
-Instead of switching to the terminal every time, you can set up a **task** in Zed to run the currently open Python file with a single shortcut.
+This section needs **Zed**, which you install with the [AI-tools guide](ai-tools.qmd); come back to it afterwards. Instead of switching to the terminal every time, you can set up a **task** in Zed to run the currently open Python file with a single shortcut.
 
 ### Create the task file
 

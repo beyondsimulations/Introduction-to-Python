@@ -440,6 +440,10 @@ def _(mo):
     The menu system received `raw_special = "  PIZZA CALZONE  "` (given below).
     Produce `clean_ex31` that reads exactly `"Pizza Calzone"` — no surrounding
     spaces, each word Capitalized.
+
+    A misspelled method (`.tittle()`) turns the cell **red**, and a red cell
+    pauses everything below it, including the progress box. Nothing is lost;
+    fix the typo and it all comes back.
     """
     )
     return

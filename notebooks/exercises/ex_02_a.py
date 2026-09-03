@@ -27,7 +27,7 @@ def _():
 def _(mo):
     mo.md(
         r"""
-    # ⚡ Quick exercise: the delivery fee (5 min)
+    # ⚡ Quick exercise: the delivery fee (10 min)
 
     The city allows delivery again, but the startup now charges a delivery
     fee that depends on the order size:
@@ -35,7 +35,7 @@ def _(mo):
     | `order_total` | fee |
     |---|---|
     | `order_total < 15` | 2.90 |
-    | `15 <= order_total < 30` | 1.50 |
+    | `order_total >= 15 and order_total < 30` | 1.50 |
     | `order_total >= 30` | 0 |
 
     Using an `if`/`elif`/`else` ladder, store the correct fee in `fee_exa`,

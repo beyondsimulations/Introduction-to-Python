@@ -27,7 +27,7 @@ def _():
 def _(mo):
     mo.md(
         r"""
-    # ⚡ Quick exercise: the wrap price function (5 min)
+    # ⚡ Quick exercise: the wrap price function (10 min)
 
     Every receipt line needs the price of `qty` Falafel Wraps — and Kevin
     keeps retyping `6.90 * qty` by hand, typos and all. Time to make it a

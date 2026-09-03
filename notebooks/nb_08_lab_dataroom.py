@@ -365,10 +365,11 @@ def _(mo):
     `True`. From there, `len(...)` counts them and `["total_eur"].sum()` totals
     their revenue.
 
-    > One marimo habit for this section: a typo in a column name (or an empty
-    > filter) is a **red error that pauses everything below it**, including the
-    > progress box. Nothing is lost; fix the red cell and it all comes back. You
-    > will meet exactly this in 2.3, on purpose.
+    > One marimo habit for this section: a typo in a **column name** is a
+    > **red error that pauses everything below it**, including the progress
+    > box. Nothing is lost; fix the red cell and it all comes back. A typo in a
+    > **value** (`"hafen"`) is sneakier: no error at all, just zero rows and a
+    > total of 0.0. You will meet both in 2.3, on purpose.
 
     Read and run the worked example, then answer for real.
     """
@@ -591,9 +592,9 @@ def _(hafen_revenue_ex23, mo, pd, show_result):
             if _v is None:
                 ex23_ok = False
                 _msg = "❌ Exercise 2.3: this should be a single euro **number** — Hafen's total. Filter, take `total_eur`, `.sum()`."
-            elif pd.isna(_v):
+            elif _v == 0.0:
                 ex23_ok = False
-                _msg = "❌ Exercise 2.3: your filter came back empty (NaN). Case matters — the zone is spelled \"Hafen\" (capital H), the column is \"zone\" (lowercase)."
+                _msg = "❌ Exercise 2.3: 0.0 means your filter matched **no rows** — no error, just an empty table summed. Case matters — the zone is spelled \"Hafen\" (capital H), the column is \"zone\" (lowercase)."
             elif _v == 354.2:
                 ex23_ok = True
                 _msg = "✅ Exercise 2.3: **354.2 €** from Hafen. You caught Kevin's KeyError — lowercase `zone` — and the red cell went green again."

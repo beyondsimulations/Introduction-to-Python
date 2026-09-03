@@ -27,7 +27,7 @@ def _():
 def _(mo):
     mo.md(
         r"""
-    # ⚡ Quick exercise: 2D arrays and axis (5–10 min)
+    # ⚡ Quick exercise: 2D arrays and axis (10 min)
 
     A 2D array has rows and columns, and `.sum()` needs to know which one
     to collapse: `axis=0` collapses DOWN the rows (one number per column).

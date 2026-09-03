@@ -1,9 +1,9 @@
-<!-- Facts on this page re-verified against the live web on 2026-07-11; Zed student plan and Mistral Vibe sections on 2026-09-03. -->
-
 ---
 title: "AI Tools"
 subtitle: "How and when to use AI in this course"
 ---
+
+<!-- Facts on this page re-verified against the live web on 2026-07-11; Zed student plan and Mistral Vibe sections on 2026-09-03. -->
 
 ## The course policy
 
@@ -14,7 +14,7 @@ The course runs a phased AI policy, and the rules are different in each part.
 - **Part III (Sessions X–XIII): AI is encouraged**, with disclosure. Use what makes you productive on your project.
 
 ::: callout-important
-**The disclosure rule.** Every submission that used AI says so. In Parts I–II that is a one-line note on the submission saying what the AI was used for. For example: *"Used AI to explain a `KeyError` and to draft the docstring for `load_data()`."* In Part III it lives in a short section of your project repo's `README`: which tools you used, what for, and what you verified yourself. This is not about catching anyone out. Being able to say clearly what a tool did for you is part of using it well.
+**The disclosure rule.** Every submission that used AI says so. In Part II that is a one-line note on the submission saying what the AI was used for (Part I is AI-free, so there is nothing to disclose). For example: *"Used AI to explain a `KeyError` and to draft the docstring for `load_data()`."* In Part III it lives in a short section of your project repo's `README`: which tools you used, what for, and what you verified yourself. This is not about catching anyone out. Being able to say clearly what a tool did for you is part of using it well.
 :::
 
 The rest of this page shows you how to get a working, **zero-cost** AI setup. It costs nothing and needs no credit card. Everything happens on a schedule:
@@ -45,13 +45,7 @@ If you later want AI *inside your editor* (see the Zed section below), you need 
 4. Copy the key somewhere safe. Mistral Vibe, the AI agent in your editor, asks for it later. **The key is shown only once**, right when you create it, and cannot be displayed again. If you miss it, you have to generate a new one.
 
 ::: callout-warning
-**Free-tier data is used for training by default.** On the free Experiment tier, your API inputs and outputs may be used to improve Mistral's models unless you opt out. To opt out:
-
-1. Open the Admin Console at [admin.mistral.ai](https://admin.mistral.ai).
-2. Click **Privacy** in the left-hand menu.
-3. Find the **"Anonymous improvement data"** section and turn the toggle **off**.
-
-Do this before you paste real coursework into the API. The free Le Chat tier also uses your conversations for training by default; you can turn that off in the Admin Console under **Vibe → Privacy** (on the mobile app: **Settings → Data & Account Controls**).
+**Free-tier data is used for training by default.** On the free tiers, both your Le Chat conversations and your API inputs and outputs may be used to improve Mistral's models unless you opt out. In your Mistral account settings (the Admin Console at [admin.mistral.ai](https://admin.mistral.ai)), find the **privacy** section and turn off the use of your data for training; there may be one switch for Le Chat and a separate one for the API, so check both. Do this before you paste real coursework into either.
 :::
 
 ## The Zed student plan (Session VI)
@@ -70,7 +64,7 @@ If your KLU address isn't recognized by the verification system, or your GitHub 
 
 ## AI inside Zed: Mistral Vibe (before Session X)
 
-The AI you program with in Part III is **[Mistral Vibe](https://github.com/mistralai/mistral-vibe)**, Mistral's coding agent. It runs inside Zed's agent panel and uses the API key from Session VI. Do this as part of the Session IX pre-work, **after** [installing uv](uv.qmd) and Zed:
+The AI you program with in Part III is **[Mistral Vibe](https://github.com/mistralai/mistral-vibe)**, Mistral's coding agent. It runs inside Zed's agent panel and uses the API key from Session VI. **Nothing in this section is needed before Session IX.** Do it as part of the Session IX pre-work, after the [git and gh setup](git-basics.qmd#one-time-setup) and [installing uv](uv.qmd):
 
 1. **Install Zed** from [zed.dev](https://zed.dev) (macOS, Windows, Linux), run the installer, and open it once to confirm it launches.
 2. **Install Vibe** in a terminal. uv is already on your machine, so one command works on every system:
@@ -80,7 +74,7 @@ The AI you program with in Part III is **[Mistral Vibe](https://github.com/mistr
    ```
 
 3. **Give it your key.** Run `vibe` once in the terminal; it asks for the API key and saves it for future runs. Type `exit` to leave.
-4. **Tell Zed about it.** In Zed, open the command palette (`Cmd/Ctrl+Shift+P`), run **`zed: open settings`**, and add this inside the outer braces:
+4. **Tell Zed about it.** In Zed, open the command palette (`Cmd/Ctrl+Shift+P`), run **`zed: open settings`**, and add this inside the outer braces. The file already has entries, so put a **comma** after the last existing one before you paste; JSON insists on it, and a missing comma is the classic first-timer error here:
 
    ```json
    "agent_servers": {
