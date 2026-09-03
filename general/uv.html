@@ -519,7 +519,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 <section id="install-uv" class="level2">
 <h2 class="anchored" data-anchor-id="install-uv">Install <code>uv</code></h2>
-<p>Choose the instructions for your operating system.</p>
+<p>Everything below happens in a <strong>terminal</strong>, a window where you type commands. On macOS open the <strong>Terminal</strong> app (Spotlight: <code>Cmd+Space</code>, type <em>Terminal</em>). On Windows open <strong>PowerShell</strong> (Start menu, type <em>PowerShell</em>). Choose the instructions for your operating system.</p>
 <section id="macos-or-linux-terminal" class="level3">
 <h3 class="anchored" data-anchor-id="macos-or-linux-terminal">macOS or Linux (Terminal)</h3>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="ex">curl</span> <span class="at">-LsSf</span> https://astral.sh/uv/install.sh <span class="kw">|</span> <span class="fu">sh</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
@@ -569,11 +569,21 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 <section id="create-your-first-project" class="level2">
 <h2 class="anchored" data-anchor-id="create-your-first-project">Create your first project</h2>
-<p>Pick a folder where you keep course work. <strong>If you do not have one, make sure to create one!</strong> Open the course folder in your IDE and then run the following from the terminal:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb9"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="ex">uv</span> init my-first-project</span>
+<p>Pick a folder where you keep course work. <strong>If you do not have one, make sure to create one!</strong> In the terminal, move into that folder (<code>cd</code> followed by its path, or drag the folder onto the terminal window) and run:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb9"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="ex">uv</span> init <span class="at">--no-package</span> my-first-project</span>
 <span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> my-first-project</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p>The first line creates a new folder named <code>my-first-project</code> (you can name it anything). The second line moves you into that folder. Alternatively, you can create the folder manually before, open it in your IDE and run <code>uv init .</code> inside it.</p>
-<p><code>uv init</code> creates: - <code>main.py</code> (starter script) - <code>pyproject.toml</code> (project + dependencies config) - <code>.python-version</code> (records the Python version we chose) - <code>.gitignore</code> (used by Git in Part III: see the <a href="../general/git-basics.html">Git Basics</a> guide) - <code>README.md</code> (you can jot notes here) - (A <code>.venv</code> folder will appear later once packages are added or synced.)</p>
+<p>The first line creates a new folder named <code>my-first-project</code> (you can name it anything). The second line moves you into that folder. In Session X you will instead run <code>uv init --no-package</code> <em>inside</em> a folder cloned from GitHub; same command, no name.</p>
+<p><code>uv init --no-package</code> creates: - <code>main.py</code> (starter script) - <code>pyproject.toml</code> (project + dependencies config) - <code>.python-version</code> (records the Python version we chose) - <code>.gitignore</code> and <code>README.md</code> (only when the folder is new; a folder cloned from GitHub already has both) - (A <code>.venv</code> folder will appear later once packages are added or synced.)</p>
+<div class="callout callout-style-simple callout-note">
+<div class="callout-body d-flex">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-body-container">
+<p><strong>Why <code>--no-package</code>?</strong> Without it, recent versions of uv build an installable <em>package</em> layout (<code>src/my_first_project/</code>) with no <code>main.py</code>. For scripts, which is all this course needs, the flat layout is simpler.</p>
+</div>
+</div>
+</div>
 <p>You do <strong>not</strong> need to edit any of these (except maybe <code>README.md</code> for your notes and <code>main.py</code> if you want to run something different).</p>
 <hr>
 </section>
@@ -582,15 +592,16 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>Inside the project folder:</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb10"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="ex">uv</span> run python main.py</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>You should see something like:</p>
-<pre><code>Hello World!</code></pre>
+<pre><code>Hello from my-first-project!</code></pre>
 <p>(If you want, you can open <code>main.py</code> and change the message, then re-run.)</p>
 <section id="what-does-that-code-mean" class="level3">
 <h3 class="anchored" data-anchor-id="what-does-that-code-mean">What does that code mean?</h3>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> main():</span>
-<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">"Hello, World!"</span>)</span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">"Hello from my-first-project!"</span>)</span>
 <span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> <span class="va">__name__</span> <span class="op">==</span> <span class="st">"__main__"</span>:</span>
-<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a>    main()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> <span class="va">__name__</span> <span class="op">==</span> <span class="st">"__main__"</span>:</span>
+<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a>    main()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <ul>
 <li><code>def main():</code> defines a function (a reusable block of code).</li>
 <li><code>print(...)</code> shows text in the terminal.</li>
@@ -601,7 +612,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 <section id="run-scripts-directly-in-zed" class="level2">
 <h2 class="anchored" data-anchor-id="run-scripts-directly-in-zed">Run scripts directly in Zed</h2>
-<p>Instead of switching to the terminal every time, you can set up a <strong>task</strong> in Zed to run the currently open Python file with a single shortcut.</p>
+<p>This section needs <strong>Zed</strong>, which you install with the <a href="../general/ai-tools.html">AI-tools guide</a>; come back to it afterwards. Instead of switching to the terminal every time, you can set up a <strong>task</strong> in Zed to run the currently open Python file with a single shortcut.</p>
 <section id="create-the-task-file" class="level3">
 <h3 class="anchored" data-anchor-id="create-the-task-file">Create the task file</h3>
 <p>Inside your project folder, create a <code>.zed/</code> directory and add a file called <code>tasks.json</code> inside it:</p>

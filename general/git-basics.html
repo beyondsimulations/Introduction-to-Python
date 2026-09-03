@@ -467,7 +467,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#github-setup-and-authentication" id="toc-github-setup-and-authentication" class="nav-link" data-scroll-target="#github-setup-and-authentication">GitHub setup and authentication</a>
   <ul class="collapse">
   <li><a href="#one-time-setup" id="toc-one-time-setup" class="nav-link" data-scroll-target="#one-time-setup">One-time setup</a></li>
-  <li><a href="#connecting-a-new-project-to-github" id="toc-connecting-a-new-project-to-github" class="nav-link" data-scroll-target="#connecting-a-new-project-to-github">Connecting a new project to GitHub</a></li>
+  <li><a href="#starting-a-project-github-first" id="toc-starting-a-project-github-first" class="nav-link" data-scroll-target="#starting-a-project-github-first">Starting a project: GitHub first</a></li>
   </ul></li>
   <li><a href="#working-as-a-pair" id="toc-working-as-a-pair" class="nav-link" data-scroll-target="#working-as-a-pair">Working as a pair</a>
   <ul class="collapse">
@@ -512,7 +512,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <i class="callout-icon"></i>
 </div>
 <div class="callout-body-container">
-<p>This page assumes you already have <strong>uv</strong> and <strong>Zed</strong> installed from the Session IX homework. If not, do <a href="../general/uv.html">Installing Python</a> first.</p>
+<p><strong>Before Session X</strong>, do only the <a href="#one-time-setup">one-time setup</a> below: install git and <code>gh</code>, log in once. It needs neither uv nor Zed. Everything else on this page is what we do together in Session X.</p>
 </div>
 </div>
 </div>
@@ -523,19 +523,18 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="repository" class="level3">
 <h3 class="anchored" data-anchor-id="repository">Repository</h3>
 <p>A <strong>repository</strong> (or “repo”) is a folder that git watches. Everything inside it, and its whole history, is tracked together.</p>
-<p>You almost never create one by hand in this course. When you start a project with <code>uv init</code>, <strong>uv also turns that folder into a git repository for you</strong>, as long as git is already installed (which step 1 of the one-time setup below handles first). So after this command you already have a repo:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="ex">uv</span> init my-project</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p>The only time you make a repo yourself is if you have an existing folder that is <em>not</em> yet under git. In Zed you run <strong><code>git: init</code></strong> from the command palette. The terminal equivalent is:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> init</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p><strong>When you need it:</strong> almost never on its own. <code>uv init</code> covers the normal case. Use <code>git init</code> only to add git to an old folder that does not have it yet, or if you ran <code>uv init</code> <em>before</em> installing git, in which case run <code>git init</code> once inside that folder to add the repo it skipped.</p>
+<p>In this course a repository <strong>starts on GitHub</strong>: you create it on the website (with a README), then <strong>clone</strong> it onto your computer (see <a href="#clone">Clone</a>). Inside that cloned folder, <code>uv init --no-package</code> adds the Python files. Because the folder came from GitHub, it is already a repo and already knows where to push.</p>
+<p>The only time you make a repo by hand is an existing folder that is <em>not</em> yet under git. In Zed you run <strong><code>git: init</code></strong> from the command palette. The terminal equivalent is:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> init</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p><strong>When you need it:</strong> almost never. Use <code>git init</code> only to add git to an old folder that does not have it yet.</p>
 </section>
 <section id="commit" class="level3">
 <h3 class="anchored" data-anchor-id="commit">Commit</h3>
 <p>A <strong>commit</strong> is one saved snapshot of your project, with a short message describing what you changed. Think of it as a labeled save point you can always come back to.</p>
 <p>A commit has two small steps: first you <strong>stage</strong> the changes you want to include (mark them as “part of this snapshot”), then you commit them with a message.</p>
 <p>In Zed you run <strong><code>git: stage all</code></strong> from the command palette, type a message, and commit with <strong><code>git: commit</code></strong> (<code>Cmd+Enter</code> on macOS, <code>Ctrl+Enter</code> on Windows/Linux). The terminal equivalent is two commands:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> add .</span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> commit <span class="at">-m</span> <span class="st">"Add price calculation"</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> add .</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> commit <span class="at">-m</span> <span class="st">"Add price calculation"</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p><code>git add .</code> stages every changed file; <code>git commit -m "..."</code> saves the snapshot with your message.</p>
 <p><strong>When you need it:</strong> every time you finish a meaningful piece of work. Commit often, with short honest messages.</p>
 </section>
@@ -543,34 +542,22 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h3 class="anchored" data-anchor-id="push">Push</h3>
 <p><strong>Push</strong> sends your commits from your computer up to GitHub, so the online copy matches your local one.</p>
 <p>In Zed you run <strong><code>git: push</code></strong> from the command palette.</p>
-<div class="callout callout-style-simple callout-warning">
-<div class="callout-body d-flex">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-body-container">
-<p><strong>The very first push of a brand-new project is different.</strong> Run this exact terminal command once, from inside your project folder:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> push <span class="at">-u</span> origin HEAD</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p>The <code>-u</code> connects your local project to the GitHub copy, and <code>HEAD</code> means “push whatever branch I am on” (so it works no matter what your branch is called). After this one-time command, every later push can be the normal <strong><code>git: push</code></strong> action in Zed. If you <em>cloned</em> a partner’s repo instead of starting your own, you do not need this step, cloning already sets up the connection.</p>
-</div>
-</div>
-</div>
-<p>The everyday terminal equivalent, after that first push, is:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> push</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Because every project in this course is cloned from GitHub, git already knows where “up” is; there is no extra connection step. The terminal equivalent is:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> push</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p><strong>When you need it:</strong> whenever you stop working, so your partner (and a safe online backup) has your latest commits.</p>
 </section>
 <section id="pull" class="level3">
 <h3 class="anchored" data-anchor-id="pull">Pull</h3>
 <p><strong>Pull</strong> brings commits <em>down</em> from GitHub into your computer, so you get whatever your partner pushed.</p>
 <p>In Zed you run <strong><code>git: pull</code></strong> from the command palette. The terminal equivalent is:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb6"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> pull</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> pull</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p><strong>When you need it:</strong> every time <em>before</em> you start working. This is the single most important habit when you share a repo. Pull first, and you almost never run into trouble.</p>
 </section>
 <section id="clone" class="level3">
 <h3 class="anchored" data-anchor-id="clone">Clone</h3>
-<p><strong>Clone</strong> makes a full copy of a repository from GitHub onto your computer, including all its history. This is how you get onto your partner’s project the first time.</p>
-<p>In Zed, open the command palette and run <strong><code>git: clone</code></strong>, then paste the repository’s web address (its HTTPS URL, which looks like <code>https://github.com/name/project.git</code>). The terminal equivalent is:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb7"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> clone https://github.com/name/project.git</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p><strong>Clone</strong> makes a full copy of a repository from GitHub onto your computer, including all its history. This is how every project in this course arrives on your computer: the one you created on GitHub yourself, and your partner’s.</p>
+<p>In Zed, open the command palette and run <strong><code>git: clone</code></strong>, paste the repository’s web address (its HTTPS URL, which looks like <code>https://github.com/name/project.git</code>, copied from the green <em>Code</em> button on GitHub), and pick the folder where you keep course work. Zed then opens the cloned folder as your workspace. The terminal equivalent is:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> clone https://github.com/name/project.git</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p><strong>When you need it:</strong> once, when you join a project someone else created. After cloning you have the repo locally and can commit, push, and pull like normal.</p>
 </section>
 </section>
@@ -596,20 +583,16 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li>Windows: <code>winget install Git.Git</code> (or the installer from <a href="https://git-scm.com">git-scm.com</a>).</li>
 </ul>
 <p>Then re-run <code>git --version</code> to confirm you see a version number.</p></li>
-<li><p><strong>Install <code>gh</code></strong> if you do not have it. Find the installer for your system at <a href="https://cli.github.com">cli.github.com</a>. Installing <code>gh</code> does <strong>not</strong> install git itself. That was step 1.</p>
-<ul>
-<li>macOS: <code>brew install gh</code></li>
-<li>Windows: <code>winget install GitHub.cli</code></li>
-</ul></li>
+<li><p><strong>Install <code>gh</code></strong> if you do not have it. Download the installer for your system from <a href="https://cli.github.com">cli.github.com</a> (macOS: the <code>.pkg</code>; Windows: the <code>.msi</code>, or <code>winget install GitHub.cli</code>). Installing <code>gh</code> does <strong>not</strong> install git itself. That was step 1.</p></li>
 <li><p><strong>Log in.</strong> Run this in a terminal:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb8"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="ex">gh</span> auth login</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb6"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="ex">gh</span> auth login</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>Answer the prompts: choose <strong>GitHub.com</strong>, choose <strong>HTTPS</strong> as the protocol, and authenticate through the <strong>browser</strong> (it shows you a short code to type into a GitHub page). When it asks <em>“Authenticate Git with your GitHub credentials?”</em>, answer <strong>yes</strong>. This runs <code>gh auth setup-git</code> for you, which is the step that lets git push and pull. (If you answered no by mistake, you can run it yourself afterwards:)</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb9"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="ex">gh</span> auth setup-git</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div></li>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb7"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="ex">gh</span> auth setup-git</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div></li>
 <li><p><strong>Check it worked:</strong></p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb10"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="ex">gh</span> auth status</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb8"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="ex">gh</span> auth status</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>It should report that you are logged in to github.com and that git operations use the https protocol.</p></li>
 <li><p><strong>Tell git how to combine work when you pull:</strong></p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb11"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> config <span class="at">--global</span> pull.rebase false</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb9"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> config <span class="at">--global</span> pull.rebase false</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>This tells git to simply combine your partner’s work with yours when you pull. You only set this once. Without it, git may refuse a pull with a confusing message about “divergent branches”.</p></li>
 </ol>
 <div class="callout callout-style-simple callout-note">
@@ -623,16 +606,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 </section>
-<section id="connecting-a-new-project-to-github" class="level3">
-<h3 class="anchored" data-anchor-id="connecting-a-new-project-to-github">Connecting a new project to GitHub</h3>
-<p>When <em>you</em> create the project (with <code>uv init</code>), GitHub does not know about it yet. Three small steps connect them:</p>
+<section id="starting-a-project-github-first" class="level3">
+<h3 class="anchored" data-anchor-id="starting-a-project-github-first">Starting a project: GitHub first</h3>
+<p>A project in this course begins on the website and comes down to your computer, never the other way round. Four steps:</p>
 <ol type="1">
-<li><p>On <a href="https://github.com">github.com</a>, create a new <strong>empty</strong> repository (do not add a README, so it stays empty).</p></li>
-<li><p>In Zed, run <strong><code>git: create remote</code></strong> from the command palette and paste the repository’s <strong>HTTPS URL</strong> (<code>https://github.com/&lt;you&gt;/&lt;repo&gt;.git</code>). Use the HTTPS URL, not the SSH one, the login you set up above only works over HTTPS. If Zed asks for a remote name, use <code>origin</code>. (The terminal equivalent that guarantees the name is <code>git remote add origin &lt;HTTPS url&gt;</code>.)</p></li>
-<li><p>Do the one-time <strong>first push</strong> from the terminal:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb12"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> push <span class="at">-u</span> origin HEAD</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div></li>
+<li>On <a href="https://github.com">github.com</a>, click <strong>New repository</strong>. Give it a name, set it to <strong>Private</strong>, tick <strong>Add a README file</strong>, and choose the <strong>Python</strong> <code>.gitignore</code> template (it keeps the <code>.venv</code> folder out of git). Click <strong>Create repository</strong>.</li>
+<li>Copy the repository’s <strong>HTTPS URL</strong> from the green <em>Code</em> button (<code>https://github.com/&lt;you&gt;/&lt;repo&gt;.git</code>). Use HTTPS, not SSH: the login you set up above only works over HTTPS.</li>
+<li>In Zed, run <strong><code>git: clone</code></strong>, paste the URL, and pick the folder where you keep course work (terminal: <code>git clone &lt;url&gt;</code>). Zed opens the new folder; everything below happens <strong>inside</strong> it.</li>
+<li>In Zed’s built-in terminal (<code>Ctrl+`</code>, it opens inside your workspace) run <code>uv init --no-package</code>. It adds <code>main.py</code>, <code>pyproject.toml</code> and <code>.python-version</code> next to the README. Commit and push, and the project is live on GitHub.</li>
 </ol>
-<p>After this, everyday pushing is just <strong><code>git: push</code></strong> in Zed.</p>
 </section>
 </section>
 <section id="working-as-a-pair" class="level2">
@@ -640,8 +622,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>In this course you work in pairs, and you share one GitHub repository. There are two clear roles.</p>
 <p><strong>The repo owner</strong> creates the project and invites the partner:</p>
 <ol type="1">
-<li>Create the project (<code>uv init</code>), connect it to GitHub, and do the first push (the three steps above).</li>
-<li>On GitHub, open the repository’s <strong>Settings → Collaborators</strong> and invite your partner by their GitHub username. This gives them permission to push.</li>
+<li>Create the project on GitHub, clone it, run <code>uv init --no-package</code> inside, commit and push (the four steps above).</li>
+<li>On GitHub, open the repository’s <strong>Settings → Collaborators</strong> and invite your partner by their GitHub username. This gives them permission to push. Invite the course team as well (our GitHub username is on Moodle), so we can read the private repo for grading.</li>
 </ol>
 <p><strong>The partner</strong> joins the existing project by cloning it:</p>
 <ol type="1">
@@ -662,7 +644,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <i class="callout-icon"></i>
 </div>
 <div class="callout-body-container">
-<p><strong>Do not try to fix a conflict alone in week one.</strong> Bring it to class or office hours, we will resolve it together. The one habit that prevents almost all conflicts: <strong>pull before you start working</strong>, so you build on your partner’s latest version instead of an old one.</p>
+<p><strong>Do not try to fix a conflict alone in week one.</strong> Bring it to class or e-mail us, we will resolve it together. The one habit that prevents almost all conflicts: <strong>pull before you start working</strong>, so you build on your partner’s latest version instead of an old one.</p>
 </div>
 </div>
 </div>
@@ -674,12 +656,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p><strong>Symptom: a push is rejected with <code>! [rejected]</code>, “fetch first”, or “the remote contains work that you do not have locally”.</strong> Fix: your partner pushed commits that you do not have yet. This is completely <strong>normal in a pair</strong> and is <em>not</em> an authentication problem. Pull first (<strong><code>git: pull</code></strong> or <code>git pull</code>), then push again. If the pull complains about “divergent branches”, run the one-time command from the setup section (<code>git config --global pull.rebase false</code>), then pull again. If the pull instead reports a <strong>conflict</strong>, see <a href="#what-a-conflict-looks-like">What a conflict looks like</a>. That pull is exactly when one can appear. Never force anything: no <code>--force</code>, no “force push”.</p>
 <p><strong>Symptom: you committed, but your partner still does not see your changes.</strong> Fix: a commit only saves the snapshot <strong>on your computer</strong>. It reaches GitHub (and your partner) when you push. Run <strong><code>git: push</code></strong>.</p>
 <p><strong>Symptom: a push asks for a username/password, or reports a permission or authentication error.</strong> Fix: your machine’s git login is not set up (or expired). Redo the GitHub setup above: run <code>gh auth login</code> again and answer <strong>yes</strong> to “Authenticate Git with your GitHub credentials?”. Do <strong>not</strong> sign in to the Zed app to fix this, that is a different thing.</p>
-<p><strong>Symptom: a git command says <code>fatal: not a git repository</code>.</strong> Fix: usually you are running git in a folder that is not a repo (or above your project folder). Move into your project folder first. In a terminal, <code>cd my-project</code>. In Zed, make sure the folder you opened is the project folder that contains your code. The other cause: you created the folder with <code>uv init</code> <em>before</em> git was installed, so uv could not make the repo. Fix that by running <code>git init</code> once inside the project folder.</p>
+<p><strong>Symptom: a git command says <code>fatal: not a git repository</code>.</strong> Fix: usually you are running git in a folder that is not a repo (or above your project folder). Move into your project folder first. In a terminal, <code>cd my-project</code>. In Zed, make sure the folder you opened is the cloned project folder that contains your code, not the folder above it.</p>
 <p><strong>Symptom: you committed the wrong thing (bad message, or forgot a file).</strong> Fix: never rewrite history that others may already have. Two safe options:</p>
 <ul>
 <li><p><strong>Only if you have not pushed that commit yet</strong> (it is still just on your computer, so nobody has seen it), you can fix the last commit in place. Stage the correction and amend:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb13"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> add .</span>
-<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> commit <span class="at">--amend</span> <span class="at">-m</span> <span class="st">"Better message"</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div></li>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb10"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> add .</span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> commit <span class="at">--amend</span> <span class="at">-m</span> <span class="st">"Better message"</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div></li>
 <li><p>If you already pushed it (or you are unsure), simplest of all: just make a <strong>new commit</strong> that corrects the mistake. A tidy extra commit is completely fine in this course, and it never puts your shared history at risk.</p></li>
 </ul>
 </section>
@@ -706,9 +688,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <tr class="odd">
 <td>Create repo</td>
 <td>Makes a folder that git tracks</td>
-<td><code>uv init</code> (auto), or <code>git: init</code></td>
-<td><code>uv init &lt;name&gt;</code> / <code>git init</code></td>
-<td>Start of a new project (uv does it for you)</td>
+<td>New repository on github.com, then <code>git: clone</code></td>
+<td><code>git clone &lt;url&gt;</code></td>
+<td>Start of a new project (GitHub first, then clone)</td>
 </tr>
 <tr class="even">
 <td>Stage + commit</td>
@@ -736,7 +718,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <td>Copies a repo from GitHub</td>
 <td><code>git: clone</code></td>
 <td><code>git clone &lt;url&gt;</code></td>
-<td>Once, when you join a partner’s project</td>
+<td>Once per project: your own, or your partner’s</td>
 </tr>
 <tr class="even">
 <td>Status / history</td>
@@ -747,7 +729,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </tr>
 </tbody>
 </table>
-<p>The very first push of a project you created yourself is the one exception: run <code>git push -u origin HEAD</code> once in the terminal (see <a href="#push">Push</a>).</p>
 </section>
 <section id="recap" class="level2">
 <h2 class="anchored" data-anchor-id="recap">Recap</h2>
@@ -755,7 +736,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <ol type="1">
 <li>Explain what a repository, a commit, push, pull, and clone are.</li>
 <li>Set up your machine once: GitHub authentication with <code>gh auth login</code>, plus the one-time pull setting.</li>
-<li>Connect a new <code>uv init</code> project to GitHub and do the first push.</li>
+<li>Start a project GitHub-first: create it on the website, clone it, <code>uv init --no-package</code> inside, commit, push.</li>
 <li>Work in a pair: pull before you start, commit as you go, push when you stop.</li>
 <li>Recognize a conflict and know the course rule: bring it to class instead of fixing it alone.</li>
 </ol>

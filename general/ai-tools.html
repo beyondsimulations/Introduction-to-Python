@@ -506,7 +506,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <i class="callout-icon"></i>
 </div>
 <div class="callout-body-container">
-<p><strong>The disclosure rule.</strong> Every submission that used AI says so. In Parts I–II that is a one-line note on the submission saying what the AI was used for. For example: <em>“Used AI to explain a <code>KeyError</code> and to draft the docstring for <code>load_data()</code>.”</em> In Part III it lives in a short section of your project repo’s <code>README</code>: which tools you used, what for, and what you verified yourself. This is not about catching anyone out. Being able to say clearly what a tool did for you is part of using it well.</p>
+<p><strong>The disclosure rule.</strong> Every submission that used AI says so. In Part II that is a one-line note on the submission saying what the AI was used for (Part I is AI-free, so there is nothing to disclose). For example: <em>“Used AI to explain a <code>KeyError</code> and to draft the docstring for <code>load_data()</code>.”</em> In Part III it lives in a short section of your project repo’s <code>README</code>: which tools you used, what for, and what you verified yourself. This is not about catching anyone out. Being able to say clearly what a tool did for you is part of using it well.</p>
 </div>
 </div>
 </div>
@@ -561,13 +561,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <i class="callout-icon"></i>
 </div>
 <div class="callout-body-container">
-<p><strong>Free-tier data is used for training by default.</strong> On the free Experiment tier, your API inputs and outputs may be used to improve Mistral’s models unless you opt out. To opt out:</p>
-<ol type="1">
-<li>Open the Admin Console at <a href="https://admin.mistral.ai">admin.mistral.ai</a>.</li>
-<li>Click <strong>Privacy</strong> in the left-hand menu.</li>
-<li>Find the <strong>“Anonymous improvement data”</strong> section and turn the toggle <strong>off</strong>.</li>
-</ol>
-<p>Do this before you paste real coursework into the API. The free Le Chat tier also uses your conversations for training by default; you can turn that off in the Admin Console under <strong>Vibe → Privacy</strong> (on the mobile app: <strong>Settings → Data &amp; Account Controls</strong>).</p>
+<p><strong>Free-tier data is used for training by default.</strong> On the free tiers, both your Le Chat conversations and your API inputs and outputs may be used to improve Mistral’s models unless you opt out. In your Mistral account settings (the Admin Console at <a href="https://admin.mistral.ai">admin.mistral.ai</a>), find the <strong>privacy</strong> section and turn off the use of your data for training; there may be one switch for Le Chat and a separate one for the API, so check both. Do this before you paste real coursework into either.</p>
 </div>
 </div>
 </div>
@@ -595,13 +589,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 <section id="ai-inside-zed-mistral-vibe-before-session-x" class="level2">
 <h2 class="anchored" data-anchor-id="ai-inside-zed-mistral-vibe-before-session-x">AI inside Zed: Mistral Vibe (before Session X)</h2>
-<p>The AI you program with in Part III is <strong><a href="https://github.com/mistralai/mistral-vibe">Mistral Vibe</a></strong>, Mistral’s coding agent. It runs inside Zed’s agent panel and uses the API key from Session VI. Do this as part of the Session IX pre-work, <strong>after</strong> <a href="../general/uv.html">installing uv</a> and Zed:</p>
+<p>The AI you program with in Part III is <strong><a href="https://github.com/mistralai/mistral-vibe">Mistral Vibe</a></strong>, Mistral’s coding agent. It runs inside Zed’s agent panel and uses the API key from Session VI. <strong>Nothing in this section is needed before Session IX.</strong> Do it as part of the Session IX pre-work, after the <a href="../general/git-basics.html#one-time-setup">git and gh setup</a> and <a href="../general/uv.html">installing uv</a>:</p>
 <ol type="1">
 <li><p><strong>Install Zed</strong> from <a href="https://zed.dev">zed.dev</a> (macOS, Windows, Linux), run the installer, and open it once to confirm it launches.</p></li>
 <li><p><strong>Install Vibe</strong> in a terminal. uv is already on your machine, so one command works on every system:</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="ex">uv</span> tool install mistral-vibe</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div></li>
 <li><p><strong>Give it your key.</strong> Run <code>vibe</code> once in the terminal; it asks for the API key and saves it for future runs. Type <code>exit</code> to leave.</p></li>
-<li><p><strong>Tell Zed about it.</strong> In Zed, open the command palette (<code>Cmd/Ctrl+Shift+P</code>), run <strong><code>zed: open settings</code></strong>, and add this inside the outer braces:</p>
+<li><p><strong>Tell Zed about it.</strong> In Zed, open the command palette (<code>Cmd/Ctrl+Shift+P</code>), run <strong><code>zed: open settings</code></strong>, and add this inside the outer braces. The file already has entries, so put a <strong>comma</strong> after the last existing one before you paste; JSON insists on it, and a missing comma is the classic first-timer error here:</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode json code-with-copy"><code class="sourceCode json"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="st">"agent_servers"</span><span class="er">:</span> <span class="fu">{</span></span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>  <span class="dt">"Mistral Vibe"</span><span class="fu">:</span> <span class="fu">{</span></span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>    <span class="dt">"type"</span><span class="fu">:</span> <span class="st">"custom"</span><span class="fu">,</span></span>
