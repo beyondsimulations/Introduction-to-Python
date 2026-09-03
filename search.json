@@ -163,7 +163,14 @@
     "href": "lectures/lec_09_presentation.html#matplotlib-in-four-lines",
     "title": "Lecture IX - Data Visualization",
     "section": "Matplotlib in four lines",
-    "text": "Matplotlib in four lines\nThe library everyone plots with is matplotlib; import matplotlib.pyplot as plt is the nickname. Four lines turn a list of numbers into a picture:\n\nimport matplotlib.pyplot as plt\n\ndays = [1, 2, 3, 4, 5]\nrevenue = [120, 90, 140, 160, 130]\n\nplt.figure()          # OPEN: a fresh canvas, so this chart\n                      #       doesn't draw on the last one\nplt.plot(days, revenue)   # x, then y\nplt.title(\"This week's revenue\")\nplt.gca()             # SHOW: \"get current axes\" — the chart\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nTwo habits for every chart cell: open with plt.figure() (a clean canvas) and end with plt.gca(). In marimo and scripts there’s no plt.show(); the figure appears as the cell’s last expression, and plt.plot(...) alone returns line objects, not a picture. Same frame around every chart in tonight’s lab."
+    "text": "Matplotlib in four lines\nEveryone plots with matplotlib, imported as plt. Four lines turn a list of numbers into a picture:\n\nimport matplotlib.pyplot as plt\n\ndays = [1, 2, 3, 4, 5]\nrevenue = [120, 90, 140, 160, 130]\n\nplt.figure()          # OPEN: a fresh canvas, so this chart\n                      #       doesn't draw on the last one\nplt.plot(days, revenue)   # x, then y\nplt.title(\"This week's revenue\")\nplt.gca()             # SHOW: \"get current axes\" — the chart\n\n\n\n\n\n\n\n\n\nTwo habits for every chart cell: open with plt.figure() (a clean canvas) and end with plt.gca(). In marimo and scripts there’s no plt.show(); the figure appears as the cell’s last expression, and plt.plot(...) alone returns line objects, not a picture. Same frame around every chart in tonight’s lab."
+  },
+  {
+    "objectID": "lectures/lec_09_presentation.html#matplotlib-in-four-lines-output",
+    "href": "lectures/lec_09_presentation.html#matplotlib-in-four-lines-output",
+    "title": "Lecture IX - Data Visualization",
+    "section": "Matplotlib in four lines",
+    "text": "Matplotlib in four lines"
   },
   {
     "objectID": "lectures/lec_09_presentation.html#the-parts-of-a-chart",
@@ -173,11 +180,25 @@
     "text": "The parts of a chart\nEvery honest chart names its axes. xlabel, ylabel, title, and (when there’s more than one line) a legend:\n\nimport matplotlib.pyplot as plt\n\ndays = [1, 2, 3, 4, 5]\nrevenue = [120, 90, 140, 160, 130]\n\nplt.figure()\nplt.plot(days, revenue, label=\"Revenue\")   # label feeds the legend\nplt.xlabel(\"Day\")        # what the x-axis counts\nplt.ylabel(\"Revenue (€)\")  # what the y-axis measures\nplt.title(\"This week's revenue\")  # what the picture is about\nplt.legend()             # the little key, one entry per label\nplt.gca()"
   },
   {
+    "objectID": "lectures/lec_09_presentation.html#the-parts-of-a-chart-output",
+    "href": "lectures/lec_09_presentation.html#the-parts-of-a-chart-output",
+    "title": "Lecture IX - Data Visualization",
+    "section": "The parts of a chart",
+    "text": "The parts of a chart"
+  },
+  {
     "objectID": "lectures/lec_09_presentation.html#a-little-styling-and-only-a-little",
     "href": "lectures/lec_09_presentation.html#a-little-styling-and-only-a-little",
     "title": "Lecture IX - Data Visualization",
     "section": "A little styling — and only a little",
     "text": "A little styling — and only a little\nTwo keywords cover almost everything: color and linestyle. Restraint is the professional move. One clear line beats a rainbow:\n\nimport matplotlib.pyplot as plt\n\ndays = [1, 2, 3, 4, 5]\nrevenue = [120, 90, 140, 160, 130]\n\nplt.figure()\nplt.plot(days, revenue, color=\"crimson\", linestyle=\"--\")\nplt.title(\"Styled, not decorated\")\nplt.gca()"
+  },
+  {
+    "objectID": "lectures/lec_09_presentation.html#a-little-styling-and-only-a-little-output",
+    "href": "lectures/lec_09_presentation.html#a-little-styling-and-only-a-little-output",
+    "title": "Lecture IX - Data Visualization",
+    "section": "A little styling — and only a little",
+    "text": "A little styling — and only a little"
   },
   {
     "objectID": "lectures/lec_09_presentation.html#predict-one-chart-or-two",
@@ -191,35 +212,63 @@
     "href": "lectures/lec_09_presentation.html#answer-one-chart-two-lines",
     "title": "Lecture IX - Data Visualization",
     "section": "Answer: one chart, two lines",
-    "text": "Answer: one chart, two lines\na) one chart with two lines — matplotlib keeps drawing on the current figure until you start a new one with plt.figure():\n\nimport matplotlib.pyplot as plt\n\nplt.figure()\nplt.plot([3, 1, 2])\nplt.plot([1, 2, 3])   # same canvas — a second line, not a second chart\nplt.gca()\n\n\n\n\n\n\n\n\n\n\n\nThat’s exactly why every chart cell opens with plt.figure(): it’s how you say “new picture, start clean.”"
+    "text": "Answer: one chart, two lines\na) one chart with two lines — matplotlib keeps drawing on the current figure until you start a new one with plt.figure():\n\nimport matplotlib.pyplot as plt\n\nplt.figure()\nplt.plot([3, 1, 2])\nplt.plot([1, 2, 3])   # same canvas — a second line, not a second chart\nplt.gca()\n\n\n\nThat’s exactly why every chart cell opens with plt.figure(): it’s how you say “new picture, start clean.”"
+  },
+  {
+    "objectID": "lectures/lec_09_presentation.html#answer-one-chart-two-lines-output",
+    "href": "lectures/lec_09_presentation.html#answer-one-chart-two-lines-output",
+    "title": "Lecture IX - Data Visualization",
+    "section": "Answer: one chart, two lines",
+    "text": "Answer: one chart, two lines"
   },
   {
     "objectID": "lectures/lec_09_presentation.html#match-the-chart-to-the-question",
     "href": "lectures/lec_09_presentation.html#match-the-chart-to-the-question",
     "title": "Lecture IX - Data Visualization",
     "section": "Match the chart to the question",
-    "text": "Match the chart to the question\nThe wrong chart is its own kind of lie. Start from the question, not the chart:\n\n\n\nThe question\nThe chart\nThe call\n\n\n\n\nCompare categories?\nbar\nplt.bar(labels, heights)\n\n\nSee a distribution?\nhistogram\nplt.hist(values)\n\n\nTwo numbers per order?\nscatter\nplt.scatter(x, y)\n\n\nChange over time?\nline\nplt.plot(x, y)\n\n\n\n\n\nLine you already own: it’s the plt.plot from block one, time on the x-axis. The other three get a slide each.\n\n\n\n\n\n\n\n\n\nNotice what’s missing: the pie chart. It’s usually the wrong answer: the eye can’t compare slice sizes well. When in doubt, a bar chart is clearer."
+    "text": "Match the chart to the question\nThe wrong chart is its own kind of lie. Start from the question, not the chart:\n\n\n\nThe question\nThe chart\nThe call\n\n\n\n\nCompare categories?\nbar\nplt.bar(labels, heights)\n\n\nSee a distribution?\nhistogram\nplt.hist(values)\n\n\nTwo numbers per order?\nscatter\nplt.scatter(x, y)\n\n\nChange over time?\nline\nplt.plot(x, y)\n\n\n\n\n\n\n\n\n\n\nLine you already own from block one. Missing on purpose: the pie chart. The eye can’t compare slice sizes; a bar is clearer."
   },
   {
     "objectID": "lectures/lec_09_presentation.html#categories-bar",
     "href": "lectures/lec_09_presentation.html#categories-bar",
     "title": "Lecture IX - Data Visualization",
     "section": "Categories → bar",
-    "text": "Categories → bar\n“Which dish sells best?” Categories to compare — that’s a bar:\n\nimport matplotlib.pyplot as plt\n\ndishes = [\"Pizza\", \"Pasta\", \"Salad\", \"Wrap\"]\nsold = [12, 9, 5, 7]\n\nplt.figure()\nplt.bar(dishes, sold)\nplt.title(\"Orders per dish\")\nplt.gca()\n\n\n\n\n\n\n\n\n\n\nThe tallest bar answers the question at a glance: Pizza."
+    "text": "Categories → bar\n“Which dish sells best?” Categories to compare — that’s a bar:\n\nimport matplotlib.pyplot as plt\n\ndishes = [\"Pizza\", \"Pasta\", \"Salad\", \"Wrap\"]\nsold = [12, 9, 5, 7]\n\nplt.figure()\nplt.bar(dishes, sold)\nplt.title(\"Orders per dish\")\nplt.gca()\n\n\nThe tallest bar answers the question at a glance: Pizza."
+  },
+  {
+    "objectID": "lectures/lec_09_presentation.html#categories-bar-output",
+    "href": "lectures/lec_09_presentation.html#categories-bar-output",
+    "title": "Lecture IX - Data Visualization",
+    "section": "Categories → bar",
+    "text": "Categories → bar"
   },
   {
     "objectID": "lectures/lec_09_presentation.html#a-distribution-histogram",
     "href": "lectures/lec_09_presentation.html#a-distribution-histogram",
     "title": "Lecture IX - Data Visualization",
     "section": "A distribution → histogram",
-    "text": "A distribution → histogram\n“How are our delivery times spread out?” One column of numbers, dropped into buckets — that’s a histogram:\n\nimport matplotlib.pyplot as plt\n\nminutes = [19, 22, 23, 24, 24, 25, 26, 28, 31, 44]\n\nplt.figure()\nplt.hist(minutes, bins=5)\nplt.title(\"Delivery times\")\nplt.gca()\n\n\n\n\n\n\n\n\n\n\nMost deliveries land in the mid-20s, with one lonely slow one far right. A histogram shows shape, not individual values."
+    "text": "A distribution → histogram\n“How are our delivery times spread out?” One column of numbers, dropped into buckets — that’s a histogram:\n\nimport matplotlib.pyplot as plt\n\nminutes = [19, 22, 23, 24, 24, 25, 26, 28, 31, 44]\n\nplt.figure()\nplt.hist(minutes, bins=5)\nplt.title(\"Delivery times\")\nplt.gca()\n\n\nMost deliveries land in the mid-20s, with one lonely slow one far right. A histogram shows shape, not individual values."
+  },
+  {
+    "objectID": "lectures/lec_09_presentation.html#a-distribution-histogram-output",
+    "href": "lectures/lec_09_presentation.html#a-distribution-histogram-output",
+    "title": "Lecture IX - Data Visualization",
+    "section": "A distribution → histogram",
+    "text": "A distribution → histogram"
   },
   {
     "objectID": "lectures/lec_09_presentation.html#two-numbers-scatter",
     "href": "lectures/lec_09_presentation.html#two-numbers-scatter",
     "title": "Lecture IX - Data Visualization",
     "section": "Two numbers → scatter",
-    "text": "Two numbers → scatter\n“Do bigger orders take longer?” Two numbers per order, one on each axis — that’s a scatter:\n\nimport matplotlib.pyplot as plt\n\nminutes = [19, 22, 23, 24, 25, 26, 28, 31, 40, 44]\neuros   = [24, 9, 31, 12, 8, 30, 15, 22, 11, 19]\n\nplt.figure()\nplt.scatter(minutes, euros)\nplt.xlabel(\"Delivery time (min)\")\nplt.ylabel(\"Order value (€)\")\nplt.gca()\n\n\n\n\n\n\n\n\n\n\nJust a cloud. No upward drift. Sometimes the honest answer is “there’s no pattern here.”"
+    "text": "Two numbers → scatter\n“Do bigger orders take longer?” Two numbers per order, one on each axis — that’s a scatter:\n\nimport matplotlib.pyplot as plt\n\nminutes = [19, 22, 23, 24, 25, 26, 28, 31, 40, 44]\neuros   = [24, 9, 31, 12, 8, 30, 15, 22, 11, 19]\n\nplt.figure()\nplt.scatter(minutes, euros)\nplt.xlabel(\"Delivery time (min)\")\nplt.ylabel(\"Order value (€)\")\nplt.gca()\n\n\nJust a cloud. No upward drift. Sometimes the honest answer is “there’s no pattern here.”"
+  },
+  {
+    "objectID": "lectures/lec_09_presentation.html#two-numbers-scatter-output",
+    "href": "lectures/lec_09_presentation.html#two-numbers-scatter-output",
+    "title": "Lecture IX - Data Visualization",
+    "section": "Two numbers → scatter",
+    "text": "Two numbers → scatter"
   },
   {
     "objectID": "lectures/lec_09_presentation.html#predict-how-many-bars",
@@ -229,18 +278,32 @@
     "text": "Predict: how many bars?\nThe same four numbers, two ways. On the left, a bar per number; on the right, a histogram:\nvalues = [8, 12, 9, 15]\nplt.bar(range(4), values)   # left\nplt.hist(values, bins=3)    # right\nThe bar chart shows 4 bars. How many bars does the histogram show?\na) 4: one bar per number b) 15: one bar per unit up to the max c) about 2–3 lumps: it counts ranges\n\nPredict first. Commit to an answer before the next slide."
   },
   {
-    "objectID": "lectures/lec_09_presentation.html#answer-bar-counts-categories-hist-counts-ranges",
-    "href": "lectures/lec_09_presentation.html#answer-bar-counts-categories-hist-counts-ranges",
+    "objectID": "lectures/lec_09_presentation.html#answer-about-23-lumps",
+    "href": "lectures/lec_09_presentation.html#answer-about-23-lumps",
     "title": "Lecture IX - Data Visualization",
-    "section": "Answer: bar counts categories, hist counts ranges",
-    "text": "Answer: bar counts categories, hist counts ranges\nc) about 2–3 lumps — the histogram groups the numbers into ranges and counts how many fall in each. 8 and 9 land in the same bucket, so that bar is two tall:\n\nimport matplotlib.pyplot as plt\n\nvalues = [8, 12, 9, 15]\n\nplt.figure()\nplt.subplot(1, 2, 1)\nplt.bar(range(4), values)     # one bar per NUMBER\nplt.title(\"bar: 4 categories\")\nplt.subplot(1, 2, 2)\nplt.hist(values, bins=3)      # counts how many per RANGE\nplt.title(\"hist: 3 ranges\")\nplt.gca()\n\n\n\n\n\n\n\n\n\n\n\nBar counts CATEGORIES; histogram counts RANGES. Same numbers, different question."
+    "section": "Answer: about 2–3 lumps",
+    "text": "Answer: about 2–3 lumps\nc) about 2–3 lumps — the histogram groups the numbers into ranges and counts how many fall in each. 8 and 9 land in the same bucket, so that bar is two tall:\n\nimport matplotlib.pyplot as plt\n\nvalues = [8, 12, 9, 15]\n\nplt.figure()\nplt.subplot(1, 2, 1)\nplt.bar(range(4), values)     # one bar per NUMBER\nplt.title(\"bar: 4 categories\")\nplt.subplot(1, 2, 2)\nplt.hist(values, bins=3)      # counts how many per RANGE\nplt.title(\"hist: 3 ranges\")\nplt.gca()\n\n\n\nBar counts CATEGORIES; histogram counts RANGES. Same numbers, different question."
+  },
+  {
+    "objectID": "lectures/lec_09_presentation.html#answer-about-23-lumps-output",
+    "href": "lectures/lec_09_presentation.html#answer-about-23-lumps-output",
+    "title": "Lecture IX - Data Visualization",
+    "section": "Answer: about 2–3 lumps",
+    "text": "Answer: about 2–3 lumps"
   },
   {
     "objectID": "lectures/lec_09_presentation.html#the-same-data-told-two-ways",
     "href": "lectures/lec_09_presentation.html#the-same-data-told-two-ways",
     "title": "Lecture IX - Data Visualization",
     "section": "The same data, told two ways",
-    "text": "The same data, told two ways\nFour weeks of revenue: [96, 98, 97, 99]. Barely moving. But where the y-axis starts decides whether the room sees a rocket or the truth:\n\nimport matplotlib.pyplot as plt\n\nweeks = [1, 2, 3, 4]\nrevenue = [96, 98, 97, 99]\n\nplt.figure()\nplt.subplot(1, 2, 1)\nplt.plot(weeks, revenue, marker=\"o\")\nplt.ylim(96, 99)             # tight — DRAMA\nplt.title(\"Rocket (ylim 96–99)\")\nplt.subplot(1, 2, 2)\nplt.plot(weeks, revenue, marker=\"o\")\nplt.ylim(0, 100)             # from zero — TRUTH\nplt.title(\"Honest (from 0)\")\nplt.gca()\n\n\n\n\n\n\n\n\n\n\nSame numbers. The left one gets you a term sheet; the right one gets you trusted."
+    "text": "The same data, told two ways\nFour weeks of revenue, [96, 98, 97, 99], barely moving. Where the y-axis starts decides: the left gets you a term sheet, the right gets you trusted. Same numbers, and the room sees a rocket or the truth:\n\nimport matplotlib.pyplot as plt\n\nweeks = [1, 2, 3, 4]\nrevenue = [96, 98, 97, 99]\n\nplt.figure()\nplt.subplot(1, 2, 1)\nplt.plot(weeks, revenue, marker=\"o\")\nplt.ylim(96, 99)             # tight — DRAMA\nplt.title(\"Rocket (ylim 96–99)\")\nplt.subplot(1, 2, 2)\nplt.plot(weeks, revenue, marker=\"o\")\nplt.ylim(0, 100)             # from zero — TRUTH\nplt.title(\"Honest (from 0)\")\nplt.gca()"
+  },
+  {
+    "objectID": "lectures/lec_09_presentation.html#the-same-data-told-two-ways-output",
+    "href": "lectures/lec_09_presentation.html#the-same-data-told-two-ways-output",
+    "title": "Lecture IX - Data Visualization",
+    "section": "The same data, told two ways",
+    "text": "The same data, told two ways"
   },
   {
     "objectID": "lectures/lec_09_presentation.html#the-rule-growth-starts-at-zero",
@@ -377,7 +440,7 @@
     "href": "lectures/lec_09_plotting.html#matplotlib-in-four-lines",
     "title": "Lecture IX - Data Visualization",
     "section": "Matplotlib in four lines",
-    "text": "Matplotlib in four lines\nThe library everyone plots with is matplotlib; import matplotlib.pyplot as plt is the nickname. Four lines turn a list of numbers into a picture:\n\nimport matplotlib.pyplot as plt\n\ndays = [1, 2, 3, 4, 5]\nrevenue = [120, 90, 140, 160, 130]\n\nplt.figure()          # OPEN: a fresh canvas, so this chart\n                      #       doesn't draw on the last one\nplt.plot(days, revenue)   # x, then y\nplt.title(\"This week's revenue\")\nplt.gca()             # SHOW: \"get current axes\" — the chart\n\n\n\n\n\n\n\n\n. . .\n\n\n\n\n\n\nTwo habits for every chart cell: open with plt.figure() (a clean canvas) and end with plt.gca(). In marimo and scripts there’s no plt.show(); the figure appears as the cell’s last expression, and plt.plot(...) alone returns line objects, not a picture. Same frame around every chart in tonight’s lab.",
+    "text": "Matplotlib in four lines\nEveryone plots with matplotlib, imported as plt. Four lines turn a list of numbers into a picture:\n\nimport matplotlib.pyplot as plt\n\ndays = [1, 2, 3, 4, 5]\nrevenue = [120, 90, 140, 160, 130]\n\nplt.figure()          # OPEN: a fresh canvas, so this chart\n                      #       doesn't draw on the last one\nplt.plot(days, revenue)   # x, then y\nplt.title(\"This week's revenue\")\nplt.gca()             # SHOW: \"get current axes\" — the chart\n\n\n\n\n\n\n\n\n. . .\n\n\n\n\n\n\nTwo habits for every chart cell: open with plt.figure() (a clean canvas) and end with plt.gca(). In marimo and scripts there’s no plt.show(); the figure appears as the cell’s last expression, and plt.plot(...) alone returns line objects, not a picture. Same frame around every chart in tonight’s lab.",
     "crumbs": [
       "09 Plotting",
       "Lecture"
@@ -432,7 +495,7 @@
     "href": "lectures/lec_09_plotting.html#match-the-chart-to-the-question",
     "title": "Lecture IX - Data Visualization",
     "section": "Match the chart to the question",
-    "text": "Match the chart to the question\nThe wrong chart is its own kind of lie. Start from the question, not the chart:\n\n\n\nThe question\nThe chart\nThe call\n\n\n\n\nCompare categories?\nbar\nplt.bar(labels, heights)\n\n\nSee a distribution?\nhistogram\nplt.hist(values)\n\n\nTwo numbers per order?\nscatter\nplt.scatter(x, y)\n\n\nChange over time?\nline\nplt.plot(x, y)\n\n\n\n. . .\n\nLine you already own: it’s the plt.plot from block one, time on the x-axis. The other three get a slide each.\n\n. . .\n\n\n\n\n\n\nNotice what’s missing: the pie chart. It’s usually the wrong answer: the eye can’t compare slice sizes well. When in doubt, a bar chart is clearer.",
+    "text": "Match the chart to the question\nThe wrong chart is its own kind of lie. Start from the question, not the chart:\n\n\n\nThe question\nThe chart\nThe call\n\n\n\n\nCompare categories?\nbar\nplt.bar(labels, heights)\n\n\nSee a distribution?\nhistogram\nplt.hist(values)\n\n\nTwo numbers per order?\nscatter\nplt.scatter(x, y)\n\n\nChange over time?\nline\nplt.plot(x, y)\n\n\n\n. . .\n\n\n\n\n\n\nLine you already own from block one. Missing on purpose: the pie chart. The eye can’t compare slice sizes; a bar is clearer.",
     "crumbs": [
       "09 Plotting",
       "Lecture"
@@ -483,11 +546,11 @@
     ]
   },
   {
-    "objectID": "lectures/lec_09_plotting.html#answer-bar-counts-categories-hist-counts-ranges",
-    "href": "lectures/lec_09_plotting.html#answer-bar-counts-categories-hist-counts-ranges",
+    "objectID": "lectures/lec_09_plotting.html#answer-about-23-lumps",
+    "href": "lectures/lec_09_plotting.html#answer-about-23-lumps",
     "title": "Lecture IX - Data Visualization",
-    "section": "Answer: bar counts categories, hist counts ranges",
-    "text": "Answer: bar counts categories, hist counts ranges\nc) about 2–3 lumps — the histogram groups the numbers into ranges and counts how many fall in each. 8 and 9 land in the same bucket, so that bar is two tall:\n\nimport matplotlib.pyplot as plt\n\nvalues = [8, 12, 9, 15]\n\nplt.figure()\nplt.subplot(1, 2, 1)\nplt.bar(range(4), values)     # one bar per NUMBER\nplt.title(\"bar: 4 categories\")\nplt.subplot(1, 2, 2)\nplt.hist(values, bins=3)      # counts how many per RANGE\nplt.title(\"hist: 3 ranges\")\nplt.gca()\n\n\n\n\n\n\n\n\n. . .\nBar counts CATEGORIES; histogram counts RANGES. Same numbers, different question.",
+    "section": "Answer: about 2–3 lumps",
+    "text": "Answer: about 2–3 lumps\nc) about 2–3 lumps — the histogram groups the numbers into ranges and counts how many fall in each. 8 and 9 land in the same bucket, so that bar is two tall:\n\nimport matplotlib.pyplot as plt\n\nvalues = [8, 12, 9, 15]\n\nplt.figure()\nplt.subplot(1, 2, 1)\nplt.bar(range(4), values)     # one bar per NUMBER\nplt.title(\"bar: 4 categories\")\nplt.subplot(1, 2, 2)\nplt.hist(values, bins=3)      # counts how many per RANGE\nplt.title(\"hist: 3 ranges\")\nplt.gca()\n\n\n\n\n\n\n\n\n. . .\nBar counts CATEGORIES; histogram counts RANGES. Same numbers, different question.",
     "crumbs": [
       "09 Plotting",
       "Lecture"
@@ -498,7 +561,7 @@
     "href": "lectures/lec_09_plotting.html#the-same-data-told-two-ways",
     "title": "Lecture IX - Data Visualization",
     "section": "The same data, told two ways",
-    "text": "The same data, told two ways\nFour weeks of revenue: [96, 98, 97, 99]. Barely moving. But where the y-axis starts decides whether the room sees a rocket or the truth:\n\nimport matplotlib.pyplot as plt\n\nweeks = [1, 2, 3, 4]\nrevenue = [96, 98, 97, 99]\n\nplt.figure()\nplt.subplot(1, 2, 1)\nplt.plot(weeks, revenue, marker=\"o\")\nplt.ylim(96, 99)             # tight — DRAMA\nplt.title(\"Rocket (ylim 96–99)\")\nplt.subplot(1, 2, 2)\nplt.plot(weeks, revenue, marker=\"o\")\nplt.ylim(0, 100)             # from zero — TRUTH\nplt.title(\"Honest (from 0)\")\nplt.gca()\n\n\n\n\n\n\n\n\nSame numbers. The left one gets you a term sheet; the right one gets you trusted.",
+    "text": "The same data, told two ways\nFour weeks of revenue, [96, 98, 97, 99], barely moving. Where the y-axis starts decides: the left gets you a term sheet, the right gets you trusted. Same numbers, and the room sees a rocket or the truth:\n\nimport matplotlib.pyplot as plt\n\nweeks = [1, 2, 3, 4]\nrevenue = [96, 98, 97, 99]\n\nplt.figure()\nplt.subplot(1, 2, 1)\nplt.plot(weeks, revenue, marker=\"o\")\nplt.ylim(96, 99)             # tight — DRAMA\nplt.title(\"Rocket (ylim 96–99)\")\nplt.subplot(1, 2, 2)\nplt.plot(weeks, revenue, marker=\"o\")\nplt.ylim(0, 100)             # from zero — TRUTH\nplt.title(\"Honest (from 0)\")\nplt.gca()",
     "crumbs": [
       "09 Plotting",
       "Lecture"
@@ -694,7 +757,14 @@
     "href": "lectures/lec_07_presentation.html#which-way-to-collapse",
     "title": "Lecture VII - NumPy for Scientific Computing",
     "section": "Which way to collapse?",
-    "text": "Which way to collapse?\nTo sum a grid you must say which way to collapse it. The axis tells NumPy which direction disappears:\n          Nord  Sued  Hafen  Altstadt\n   day0  [  9    14    11      6  ]\n   day1  [ 15    12     8      9  ]\n   day2  [ 13    20    16     11  ]\n\n   axis=0 collapses DOWN the rows:\n            ↓     ↓     ↓      ↓\n           37    46    35     26      one number per column (zone)\n\n   axis=1 collapses ACROSS the columns:\n   day0 → 40   ·   day1 → 44   ·   day2 → 60      one number per row (day)\n\nimport numpy as np\n\ndeliveries = np.array([[ 9, 14, 11,  6],\n                       [15, 12,  8,  9],\n                       [13, 20, 16, 11]])\nprint(deliveries.sum(axis=0))   # DOWN the rows → per zone\nprint(deliveries.sum(axis=1))   # ACROSS the columns → per day\n\n\n\n[37 46 35 26]\n[40 44 60]\n\n\n\naxis=0 collapses DOWN the rows, one number per column (zone): [37 46 35 26]. axis=1 collapses across, one per day: [40 44 60]."
+    "text": "Which way to collapse?\nTo sum a grid you must say which way to collapse it. The axis tells NumPy which direction disappears:\n          Nord  Sued  Hafen  Altstadt\n   day0  [  9    14    11      6  ]\n   day1  [ 15    12     8      9  ]\n   day2  [ 13    20    16     11  ]\n\n   axis=0 collapses DOWN the rows:\n            ↓     ↓     ↓      ↓\n           37    46    35     26      one number per column (zone)\n\n   axis=1 collapses ACROSS the columns:\n   day0 → 40   ·   day1 → 44   ·   day2 → 60      one number per row (day)"
+  },
+  {
+    "objectID": "lectures/lec_07_presentation.html#axis-in-code",
+    "href": "lectures/lec_07_presentation.html#axis-in-code",
+    "title": "Lecture VII - NumPy for Scientific Computing",
+    "section": "axis in code",
+    "text": "axis in code\nThe same grid, the same two collapses, one keyword each:\n\nimport numpy as np\n\ndeliveries = np.array([[ 9, 14, 11,  6],\n                       [15, 12,  8,  9],\n                       [13, 20, 16, 11]])\nprint(deliveries.sum(axis=0))   # DOWN the rows → per zone\nprint(deliveries.sum(axis=1))   # ACROSS the columns → per day\n\n\n\n[37 46 35 26]\n[40 44 60]\n\n\n\naxis=0 collapses DOWN the rows, one number per column (zone): [37 46 35 26]. axis=1 collapses across, one per day: [40 44 60]."
   },
   {
     "objectID": "lectures/lec_07_presentation.html#where-does-the-max-sit",
@@ -941,7 +1011,18 @@
     "href": "lectures/lec_07_scientific.html#which-way-to-collapse",
     "title": "Lecture VII - NumPy for Scientific Computing",
     "section": "Which way to collapse?",
-    "text": "Which way to collapse?\nTo sum a grid you must say which way to collapse it. The axis tells NumPy which direction disappears:\n          Nord  Sued  Hafen  Altstadt\n   day0  [  9    14    11      6  ]\n   day1  [ 15    12     8      9  ]\n   day2  [ 13    20    16     11  ]\n\n   axis=0 collapses DOWN the rows:\n            ↓     ↓     ↓      ↓\n           37    46    35     26      one number per column (zone)\n\n   axis=1 collapses ACROSS the columns:\n   day0 → 40   ·   day1 → 44   ·   day2 → 60      one number per row (day)\n\nimport numpy as np\n\ndeliveries = np.array([[ 9, 14, 11,  6],\n                       [15, 12,  8,  9],\n                       [13, 20, 16, 11]])\nprint(deliveries.sum(axis=0))   # DOWN the rows → per zone\nprint(deliveries.sum(axis=1))   # ACROSS the columns → per day\n\n[37 46 35 26]\n[40 44 60]\n\n\n. . .\naxis=0 collapses DOWN the rows, one number per column (zone): [37 46 35 26]. axis=1 collapses across, one per day: [40 44 60].",
+    "text": "Which way to collapse?\nTo sum a grid you must say which way to collapse it. The axis tells NumPy which direction disappears:\n          Nord  Sued  Hafen  Altstadt\n   day0  [  9    14    11      6  ]\n   day1  [ 15    12     8      9  ]\n   day2  [ 13    20    16     11  ]\n\n   axis=0 collapses DOWN the rows:\n            ↓     ↓     ↓      ↓\n           37    46    35     26      one number per column (zone)\n\n   axis=1 collapses ACROSS the columns:\n   day0 → 40   ·   day1 → 44   ·   day2 → 60      one number per row (day)",
+    "crumbs": [
+      "07 Scientific Computing",
+      "Lecture"
+    ]
+  },
+  {
+    "objectID": "lectures/lec_07_scientific.html#axis-in-code",
+    "href": "lectures/lec_07_scientific.html#axis-in-code",
+    "title": "Lecture VII - NumPy for Scientific Computing",
+    "section": "axis in code",
+    "text": "axis in code\nThe same grid, the same two collapses, one keyword each:\n\nimport numpy as np\n\ndeliveries = np.array([[ 9, 14, 11,  6],\n                       [15, 12,  8,  9],\n                       [13, 20, 16, 11]])\nprint(deliveries.sum(axis=0))   # DOWN the rows → per zone\nprint(deliveries.sum(axis=1))   # ACROSS the columns → per day\n\n[37 46 35 26]\n[40 44 60]\n\n\n. . .\naxis=0 collapses DOWN the rows, one number per column (zone): [37 46 35 26]. axis=1 collapses across, one per day: [40 44 60].",
     "crumbs": [
       "07 Scientific Computing",
       "Lecture"
@@ -1012,6 +1093,13 @@
       "07 Scientific Computing",
       "Lecture"
     ]
+  },
+  {
+    "objectID": "lectures/lec_05_presentation.html#when-youre-done",
+    "href": "lectures/lec_05_presentation.html#when-youre-done",
+    "title": "Lecture V - Errors and Debugging",
+    "section": "When you’re done",
+    "text": "When you’re done\nMenu → Download → Download Python code → upload the .py to the “Checkpoint 2” assignment on Moodle.\n\n\n\n\n\n\n\nThe green ✅ live checks are provisional. The final grading runs on our side. And take a breath: everything in it was rehearsed in the labs."
   },
   {
     "objectID": "lectures/lec_05_presentation.html#after-the-checkpoint",
@@ -1151,7 +1239,18 @@
     "href": "lectures/lec_05_errors.html",
     "title": "Lecture V - Errors and Debugging",
     "section": "",
-    "text": "The first 40 minutes are the checkpoint. It starts now.\n\nIndividual work: no AI, no neighbors, no chat\nThe link and QR are handed out in class. Open it and start\n~6 short tasks: write code, trace code, fix a bug, answer a multiple choice\n\n\n. . .\nWhen you’re done: menu → Download → Download Python code → upload the .py to the “Checkpoint 2” assignment on Moodle.\n. . .\n\n\n\n\n\n\nThe green ✅ live checks are provisional. The final grading runs on our side. And take a breath: everything in it was rehearsed in the labs.",
+    "text": "Before the doors open. The first 40 minutes are the checkpoint. It starts now.\n\nIndividual work: no AI, no neighbors, no chat\nThe link and QR are handed out in class. Open it and start\n~6 short tasks: write code, trace code, fix a bug, answer a multiple choice\n\n\n\n\nMenu → Download → Download Python code → upload the .py to the “Checkpoint 2” assignment on Moodle.\n. . .\n\n\n\n\n\n\nThe green ✅ live checks are provisional. The final grading runs on our side. And take a breath: everything in it was rehearsed in the labs.",
+    "crumbs": [
+      "05 Errors",
+      "Lecture"
+    ]
+  },
+  {
+    "objectID": "lectures/lec_05_errors.html#when-youre-done",
+    "href": "lectures/lec_05_errors.html#when-youre-done",
+    "title": "Lecture V - Errors and Debugging",
+    "section": "",
+    "text": "Menu → Download → Download Python code → upload the .py to the “Checkpoint 2” assignment on Moodle.\n. . .\n\n\n\n\n\n\nThe green ✅ live checks are provisional. The final grading runs on our side. And take a breath: everything in it was rehearsed in the labs.",
     "crumbs": [
       "05 Errors",
       "Lecture"
@@ -1367,6 +1466,13 @@
     ]
   },
   {
+    "objectID": "lectures/lec_03_presentation.html#when-youre-done",
+    "href": "lectures/lec_03_presentation.html#when-youre-done",
+    "title": "Lecture III - Building Reusable Functions",
+    "section": "When you’re done",
+    "text": "When you’re done\nMenu → Download → Download Python code → upload the .py to the “Checkpoint 1” assignment on Moodle.\n\n\n\n\n\n\n\nThe green ✅ live checks are provisional. The final grading runs on our side. And take a breath: everything in it was rehearsed in the labs."
+  },
+  {
     "objectID": "lectures/lec_03_presentation.html#after-the-board-review",
     "href": "lectures/lec_03_presentation.html#after-the-board-review",
     "title": "Lecture III - Building Reusable Functions",
@@ -1511,7 +1617,18 @@
     "href": "lectures/lec_03_functions.html",
     "title": "Lecture III - Building Reusable Functions",
     "section": "",
-    "text": "The first 40 minutes are the checkpoint. It starts now.\n\nIndividual work: no AI, no neighbors, no chat\nThe link and QR are handed out in class. Open it and start\n~6 short tasks: write code, trace code, fix a bug, answer a multiple choice\n\n\n. . .\nWhen you’re done: menu → Download → Download Python code → upload the .py to the “Checkpoint 1” assignment on Moodle.\n. . .\n\n\n\n\n\n\nThe green ✅ live checks are provisional. The final grading runs on our side. And take a breath: everything in it was rehearsed in the labs.",
+    "text": "The quarterly board review. The first 40 minutes are the checkpoint. It starts now.\n\nIndividual work: no AI, no neighbors, no chat\nThe link and QR are handed out in class. Open it and start\n~6 short tasks: write code, trace code, fix a bug, answer a multiple choice\n\n\n\n\nMenu → Download → Download Python code → upload the .py to the “Checkpoint 1” assignment on Moodle.\n. . .\n\n\n\n\n\n\nThe green ✅ live checks are provisional. The final grading runs on our side. And take a breath: everything in it was rehearsed in the labs.",
+    "crumbs": [
+      "03 Functions",
+      "Lecture"
+    ]
+  },
+  {
+    "objectID": "lectures/lec_03_functions.html#when-youre-done",
+    "href": "lectures/lec_03_functions.html#when-youre-done",
+    "title": "Lecture III - Building Reusable Functions",
+    "section": "",
+    "text": "Menu → Download → Download Python code → upload the .py to the “Checkpoint 1” assignment on Moodle.\n. . .\n\n\n\n\n\n\nThe green ✅ live checks are provisional. The final grading runs on our side. And take a breath: everything in it was rehearsed in the labs.",
     "crumbs": [
       "03 Functions",
       "Lecture"
@@ -1784,7 +1901,14 @@
     "href": "lectures/lec_01_presentation.html#no-setup-needed-today",
     "title": "Lecture I - Introduction",
     "section": "No setup needed today",
-    "text": "No setup needed today\n\nEverything in Part I runs in the browser: nothing to install\nThe lab notebooks and exercises run on marimo: click a link, start coding\nWe set up a local environment together in Session X (Python via uv, the Zed editor)\nUntil then: a laptop and a browser is all you need"
+    "text": "No setup needed today\n\nEverything in Part I runs in the browser: nothing to install\nThe lab notebooks and exercises run on marimo: click a link, start coding\nWe set up a local environment together in Session X (Python via uv, the Zed editor)\nUntil then: a laptop, a browser, and one free account (next slide) is all you need"
+  },
+  {
+    "objectID": "lectures/lec_01_presentation.html#one-account-today-github",
+    "href": "lectures/lec_01_presentation.html#one-account-today-github",
+    "title": "Lecture I - Introduction",
+    "section": "One account, today: GitHub",
+    "text": "One account, today: GitHub\n\nOpen github.com → Sign up. Phones out for the verification code, this takes five minutes, right now\nUse an e-mail you’ll still read next year; your KLU address works well\nPick a username you’d be happy to show a future employer\nAlready have one? Great, you’re done\n\n\n\n\n\n\n\n\nWhy now? From Session VI you get Zed’s paid editor plan for free as a student, and Zed only accepts GitHub accounts that are at least 30 days old. In Session X your project lives on GitHub. Nothing else to install until then."
   },
   {
     "objectID": "lectures/lec_01_presentation.html#a-new-venture",
@@ -1966,7 +2090,7 @@
     "href": "lectures/lec_01_presentation.html#tonights-episode",
     "title": "Lecture I - Introduction",
     "section": "Tonight’s episode",
-    "text": "Tonight’s episode\n\nHead to the lab notebook: Episode 1 — The Founding\nYou’ll name the company, set prices, and put Kevin’s 9.99 theory on trial\nIt runs entirely in your browser: no setup, just click and code\n\n\n\n\n\n\n\n\nDownload your .py before you leave. Closing the tab without downloading loses your work, and downloading is exactly how you hand in the checkpoints."
+    "text": "Tonight’s episode\n\nHead to the lab notebook: Episode 1 — The Founding\nYou’ll name the company, set prices, and put Kevin’s 9.99 theory on trial\nIt runs entirely in your browser: no setup, just click and code\nDidn’t finish the GitHub sign-up in class? Do it tonight, the 30-day clock is ticking\n\n\n\n\n\n\n\n\nDownload your .py before you leave. Closing the tab without downloading loses your work, and downloading is exactly how you hand in the checkpoints."
   },
   {
     "objectID": "lectures/lec_01_presentation.html#three-things-to-remember",
@@ -1987,7 +2111,7 @@
     "href": "lectures/lec_01_introduction.html",
     "title": "Lecture I - Introduction",
     "section": "",
-    "text": "Field: Optimizing and simulating complex systems\nLanguages: of choice: Julia, Python and Rust\nInterest: Modeling, Simulations, Machine Learning\nTeaching: OR, Algorithms, and Programming\nContact: vlcek@beyondsimulations.com\n\n\n. . .\n\n\n\n\n\n\nI really appreciate active participation and interaction!\n\n\n\n\n\n\n\nPart I: Introduction to Programming with Python\nPart II: Data Science Tools with Python\nPart III: Programming Projects\n\n. . .\nMaterials live in the KLU portal and are hosted at beyondsimulations.github.io/Introduction-to-Python.\n\n\n\n\nPass/fail course, 100 points in total\n5 in-class checkpoints × 12 points = 60 points\nFinal project + presentation = 40 points\nYou pass with 60 points and 75% attendance\nNo make-ups for missed checkpoints, but the point math absorbs one miss\nYour project is done in pairs; solo works if the numbers don’t come out even\n\n\n\n\n\nShort, supervised exercises at the start of some sessions\nSolved in the browser, just like our lab notebooks\n~6 small tasks each: write code, trace code, fix a bug, MCQs\nAt the end you download your .py file and upload it to Moodle\n\n. . .\n\n\n\n\n\n\nThe weekly lab exercises rehearse exactly this routine. Do them, and the checkpoints will feel familiar.\n\n\n\n\n\n\n\nWe base our assessment on the KLU classification:\n\nLevel 1: Pause: Use of AI defined by the educator\n\nPart I (Sessions I–V) is AI-free — no Claude, ChatGPT, Mistral & Co.\nYour sanctioned helper is the course chatbot on the learning website\nIt gives hints, not solutions, and guides your problem-solving\nAI tools are introduced (and then allowed) in Part II, from Session VI on\n\n. . .\n\n\n\n\n\n\nLearning the basics without AI first is what lets you judge AI output later.\n\n\n\n\n\n\n\nJust click the chatbot bubble on the website\nThe chat will open and you can ask your questions\nIt is programmed by us and uses Mistral AI as backend\nAsk your question as specific as possible\nThis ensures enough context for the model\nWe can see aggregated logs, but cannot identify you\nPlease don’t provide personal information\n\n\n\n\n\nEverything in Part I runs in the browser: nothing to install\nThe lab notebooks and exercises run on marimo: click a link, start coding\nWe set up a local environment together in Session X (Python via uv, the Zed editor)\nUntil then: a laptop and a browser is all you need",
+    "text": "Field: Optimizing and simulating complex systems\nLanguages: of choice: Julia, Python and Rust\nInterest: Modeling, Simulations, Machine Learning\nTeaching: OR, Algorithms, and Programming\nContact: vlcek@beyondsimulations.com\n\n\n. . .\n\n\n\n\n\n\nI really appreciate active participation and interaction!\n\n\n\n\n\n\n\nPart I: Introduction to Programming with Python\nPart II: Data Science Tools with Python\nPart III: Programming Projects\n\n. . .\nMaterials live in the KLU portal and are hosted at beyondsimulations.github.io/Introduction-to-Python.\n\n\n\n\nPass/fail course, 100 points in total\n5 in-class checkpoints × 12 points = 60 points\nFinal project + presentation = 40 points\nYou pass with 60 points and 75% attendance\nNo make-ups for missed checkpoints, but the point math absorbs one miss\nYour project is done in pairs; solo works if the numbers don’t come out even\n\n\n\n\n\nShort, supervised exercises at the start of some sessions\nSolved in the browser, just like our lab notebooks\n~6 small tasks each: write code, trace code, fix a bug, MCQs\nAt the end you download your .py file and upload it to Moodle\n\n. . .\n\n\n\n\n\n\nThe weekly lab exercises rehearse exactly this routine. Do them, and the checkpoints will feel familiar.\n\n\n\n\n\n\n\nWe base our assessment on the KLU classification:\n\nLevel 1: Pause: Use of AI defined by the educator\n\nPart I (Sessions I–V) is AI-free — no Claude, ChatGPT, Mistral & Co.\nYour sanctioned helper is the course chatbot on the learning website\nIt gives hints, not solutions, and guides your problem-solving\nAI tools are introduced (and then allowed) in Part II, from Session VI on\n\n. . .\n\n\n\n\n\n\nLearning the basics without AI first is what lets you judge AI output later.\n\n\n\n\n\n\n\nJust click the chatbot bubble on the website\nThe chat will open and you can ask your questions\nIt is programmed by us and uses Mistral AI as backend\nAsk your question as specific as possible\nThis ensures enough context for the model\nWe can see aggregated logs, but cannot identify you\nPlease don’t provide personal information\n\n\n\n\n\nEverything in Part I runs in the browser: nothing to install\nThe lab notebooks and exercises run on marimo: click a link, start coding\nWe set up a local environment together in Session X (Python via uv, the Zed editor)\nUntil then: a laptop, a browser, and one free account (next slide) is all you need\n\n\n\n\n\nOpen github.com → Sign up. Phones out for the verification code, this takes five minutes, right now\nUse an e-mail you’ll still read next year; your KLU address works well\nPick a username you’d be happy to show a future employer\nAlready have one? Great, you’re done\n\n. . .\n\n\n\n\n\n\nWhy now? From Session VI you get Zed’s paid editor plan for free as a student, and Zed only accepts GitHub accounts that are at least 30 days old. In Session X your project lives on GitHub. Nothing else to install until then.",
     "crumbs": [
       "01 Introduction ",
       "Lecture"
@@ -2064,7 +2188,18 @@
     "href": "lectures/lec_01_introduction.html#no-setup-needed-today",
     "title": "Lecture I - Introduction",
     "section": "",
-    "text": "Everything in Part I runs in the browser: nothing to install\nThe lab notebooks and exercises run on marimo: click a link, start coding\nWe set up a local environment together in Session X (Python via uv, the Zed editor)\nUntil then: a laptop and a browser is all you need",
+    "text": "Everything in Part I runs in the browser: nothing to install\nThe lab notebooks and exercises run on marimo: click a link, start coding\nWe set up a local environment together in Session X (Python via uv, the Zed editor)\nUntil then: a laptop, a browser, and one free account (next slide) is all you need",
+    "crumbs": [
+      "01 Introduction ",
+      "Lecture"
+    ]
+  },
+  {
+    "objectID": "lectures/lec_01_introduction.html#one-account-today-github",
+    "href": "lectures/lec_01_introduction.html#one-account-today-github",
+    "title": "Lecture I - Introduction",
+    "section": "",
+    "text": "Open github.com → Sign up. Phones out for the verification code, this takes five minutes, right now\nUse an e-mail you’ll still read next year; your KLU address works well\nPick a username you’d be happy to show a future employer\nAlready have one? Great, you’re done\n\n. . .\n\n\n\n\n\n\nWhy now? From Session VI you get Zed’s paid editor plan for free as a student, and Zed only accepts GitHub accounts that are at least 30 days old. In Session X your project lives on GitHub. Nothing else to install until then.",
     "crumbs": [
       "01 Introduction ",
       "Lecture"
@@ -2350,7 +2485,7 @@
     "href": "lectures/lec_01_introduction.html#tonights-episode",
     "title": "Lecture I - Introduction",
     "section": "Tonight’s episode",
-    "text": "Tonight’s episode\n\nHead to the lab notebook: Episode 1 — The Founding\nYou’ll name the company, set prices, and put Kevin’s 9.99 theory on trial\nIt runs entirely in your browser: no setup, just click and code\n\n. . .\n\n\n\n\n\n\nDownload your .py before you leave. Closing the tab without downloading loses your work, and downloading is exactly how you hand in the checkpoints.",
+    "text": "Tonight’s episode\n\nHead to the lab notebook: Episode 1 — The Founding\nYou’ll name the company, set prices, and put Kevin’s 9.99 theory on trial\nIt runs entirely in your browser: no setup, just click and code\nDidn’t finish the GitHub sign-up in class? Do it tonight, the 30-day clock is ticking\n\n. . .\n\n\n\n\n\n\nDownload your .py before you leave. Closing the tab without downloading loses your work, and downloading is exactly how you hand in the checkpoints.",
     "crumbs": [
       "01 Introduction ",
       "Lecture"
@@ -2443,7 +2578,7 @@
     "href": "general/syllabus.html#lectures-2",
     "title": "Syllabus",
     "section": "Lectures",
-    "text": "Lectures\nTooling, Git and Your Project (X)\nBring your own machine with the Session IX pre-work done (uv, Zed, GitHub CLI, and a free GitHub account), learn git and GitHub, form pairs, and choose your project\nProject Work I (XI)\nProgress your pair project under assistance\nProject Work II (XII)\nFinalize your pair project with your partner\nPresentations and Discussion (XIII)\nPresent your pair’s work and the learnings you have made",
+    "text": "Lectures\nTooling, Git and Your Project (X)\nBring your own machine with the Session IX pre-work done (uv, Zed with Mistral Vibe, GitHub CLI), learn git and GitHub, form pairs, and choose your project\nProject Work I (XI)\nProgress your pair project under assistance\nProject Work II (XII)\nFinalize your pair project with your partner\nPresentations and Discussion (XIII)\nPresent your pair’s work and the learnings you have made",
     "crumbs": [
       "Syllabus"
     ]
@@ -3013,7 +3148,7 @@
     "href": "general/ai-tools.html",
     "title": "AI Tools",
     "section": "",
-    "text": "The course runs a phased AI policy, and the rules are different in each part.\n\nPart I (Sessions I–V): no AI. You learn to read, write and debug Python yourself. The only assistant you may use is the course chatbot (the widget in the sidebar), and in Part I it deliberately explains and hints rather than handing you finished code.\nPart II (Sessions VI–IX): AI is allowed and taught. From Session VI we work with AI on purpose. Checkpoints 4 and 5 explicitly allow AI.\nPart III (Sessions X–XIII): AI is encouraged, with disclosure. Use what makes you productive on your project.\n\n\n\n\n\n\n\nThe disclosure rule. Every submission that used AI says so. In Parts I–II that is a one-line note on the submission saying what the AI was used for. For example: “Used AI to explain a KeyError and to draft the docstring for load_data().” In Part III it lives in a short section of your project repo’s README: which tools you used, what for, and what you verified yourself. This is not about catching anyone out. Being able to say clearly what a tool did for you is part of using it well.\n\n\n\nThe rest of this page shows you how to get a working, zero-cost AI setup. You need at least one. The Mistral path below is the guaranteed-free baseline; everything after it is optional.\nMenu paths and program terms on this page are current as of July 2026.",
+    "text": "The course runs a phased AI policy, and the rules are different in each part.\n\nPart I (Sessions I–V): no AI. You learn to read, write and debug Python yourself. The only assistant you may use is the course chatbot (the widget in the sidebar), and in Part I it deliberately explains and hints rather than handing you finished code.\nPart II (Sessions VI–IX): AI is allowed and taught. From Session VI we work with AI on purpose. Checkpoints 4 and 5 explicitly allow AI.\nPart III (Sessions X–XIII): AI is encouraged, with disclosure. Use what makes you productive on your project.\n\n\n\n\n\n\n\nThe disclosure rule. Every submission that used AI says so. In Parts I–II that is a one-line note on the submission saying what the AI was used for. For example: “Used AI to explain a KeyError and to draft the docstring for load_data().” In Part III it lives in a short section of your project repo’s README: which tools you used, what for, and what you verified yourself. This is not about catching anyone out. Being able to say clearly what a tool did for you is part of using it well.\n\n\n\nThe rest of this page shows you how to get a working, zero-cost AI setup. It costs nothing and needs no credit card. Everything happens on a schedule:\n\n\n\nWhen\nWhat\nWhy then\n\n\n\n\nSession I\nFree GitHub account\nZed’s student plan only accepts GitHub accounts older than 30 days, and your project lives on GitHub from Session X\n\n\nSession VI\nMistral account + API key, Zed student plan application\nAI becomes allowed; the GitHub account is old enough now\n\n\nBefore Session X\nInstall uv, Zed, Mistral Vibe and the GitHub CLI\nSession X builds on a working toolchain\n\n\n\nMenu paths and program terms on this page are current as of September 2026.",
     "crumbs": [
       "AI Tools"
     ]
@@ -3023,7 +3158,7 @@
     "href": "general/ai-tools.html#the-course-policy",
     "title": "AI Tools",
     "section": "",
-    "text": "The course runs a phased AI policy, and the rules are different in each part.\n\nPart I (Sessions I–V): no AI. You learn to read, write and debug Python yourself. The only assistant you may use is the course chatbot (the widget in the sidebar), and in Part I it deliberately explains and hints rather than handing you finished code.\nPart II (Sessions VI–IX): AI is allowed and taught. From Session VI we work with AI on purpose. Checkpoints 4 and 5 explicitly allow AI.\nPart III (Sessions X–XIII): AI is encouraged, with disclosure. Use what makes you productive on your project.\n\n\n\n\n\n\n\nThe disclosure rule. Every submission that used AI says so. In Parts I–II that is a one-line note on the submission saying what the AI was used for. For example: “Used AI to explain a KeyError and to draft the docstring for load_data().” In Part III it lives in a short section of your project repo’s README: which tools you used, what for, and what you verified yourself. This is not about catching anyone out. Being able to say clearly what a tool did for you is part of using it well.\n\n\n\nThe rest of this page shows you how to get a working, zero-cost AI setup. You need at least one. The Mistral path below is the guaranteed-free baseline; everything after it is optional.\nMenu paths and program terms on this page are current as of July 2026.",
+    "text": "The course runs a phased AI policy, and the rules are different in each part.\n\nPart I (Sessions I–V): no AI. You learn to read, write and debug Python yourself. The only assistant you may use is the course chatbot (the widget in the sidebar), and in Part I it deliberately explains and hints rather than handing you finished code.\nPart II (Sessions VI–IX): AI is allowed and taught. From Session VI we work with AI on purpose. Checkpoints 4 and 5 explicitly allow AI.\nPart III (Sessions X–XIII): AI is encouraged, with disclosure. Use what makes you productive on your project.\n\n\n\n\n\n\n\nThe disclosure rule. Every submission that used AI says so. In Parts I–II that is a one-line note on the submission saying what the AI was used for. For example: “Used AI to explain a KeyError and to draft the docstring for load_data().” In Part III it lives in a short section of your project repo’s README: which tools you used, what for, and what you verified yourself. This is not about catching anyone out. Being able to say clearly what a tool did for you is part of using it well.\n\n\n\nThe rest of this page shows you how to get a working, zero-cost AI setup. It costs nothing and needs no credit card. Everything happens on a schedule:\n\n\n\nWhen\nWhat\nWhy then\n\n\n\n\nSession I\nFree GitHub account\nZed’s student plan only accepts GitHub accounts older than 30 days, and your project lives on GitHub from Session X\n\n\nSession VI\nMistral account + API key, Zed student plan application\nAI becomes allowed; the GitHub account is old enough now\n\n\nBefore Session X\nInstall uv, Zed, Mistral Vibe and the GitHub CLI\nSession X builds on a working toolchain\n\n\n\nMenu paths and program terms on this page are current as of September 2026.",
     "crumbs": [
       "AI Tools"
     ]
@@ -3033,37 +3168,27 @@
     "href": "general/ai-tools.html#the-guaranteed-free-setup-mistral",
     "title": "AI Tools",
     "section": "The guaranteed free setup: Mistral",
-    "text": "The guaranteed free setup: Mistral\nThis path costs nothing and needs no credit card. Do this one first.\n\n1. Create a free Le Chat account\nGo to chat.mistral.ai and sign up. Le Chat is Mistral’s chat assistant (the equivalent of ChatGPT or Claude in your browser). The free tier is enough for asking questions, explaining errors and drafting code.\n\n\n2. Get a free La Plateforme API key\nIf you later want AI inside your editor (see the Zed section below), you need an API key.\n\nGo to console.mistral.ai and sign in with the same account.\nChoose the free “Experiment” tier when prompted.\nOpen the API Keys page and create a new key.\nCopy the key somewhere safe. You will paste it into Zed later. The key is shown only once, right when you create it, and cannot be displayed again. If you miss it, you have to generate a new one.\n\n\n\n\n\n\n\nFree-tier data is used for training by default. On the free Experiment tier, your API inputs and outputs may be used to improve Mistral’s models unless you opt out. To opt out:\n\nOpen the Admin Console at admin.mistral.ai.\nClick Privacy in the left-hand menu.\nFind the “Anonymous improvement data” section and turn the toggle off.\n\nDo this before you paste real coursework into the API. The free Le Chat tier also uses your conversations for training by default; you can turn that off in the Admin Console under Vibe → Privacy (on the mobile app: Settings → Data & Account Controls).",
+    "text": "The guaranteed free setup: Mistral\nThis path costs nothing and needs no credit card. Do this one first.\n\n1. Create a free Le Chat account\nGo to chat.mistral.ai and sign up. Le Chat is Mistral’s chat assistant (the equivalent of ChatGPT or Claude in your browser). The free tier is enough for asking questions, explaining errors and drafting code.\n\n\n2. Get a free La Plateforme API key\nIf you later want AI inside your editor (see the Zed section below), you need an API key.\n\nGo to console.mistral.ai and sign in with the same account.\nChoose the free “Experiment” tier when prompted.\nOpen the API Keys page and create a new key.\nCopy the key somewhere safe. Mistral Vibe, the AI agent in your editor, asks for it later. The key is shown only once, right when you create it, and cannot be displayed again. If you miss it, you have to generate a new one.\n\n\n\n\n\n\n\nFree-tier data is used for training by default. On the free Experiment tier, your API inputs and outputs may be used to improve Mistral’s models unless you opt out. To opt out:\n\nOpen the Admin Console at admin.mistral.ai.\nClick Privacy in the left-hand menu.\nFind the “Anonymous improvement data” section and turn the toggle off.\n\nDo this before you paste real coursework into the API. The free Le Chat tier also uses your conversations for training by default; you can turn that off in the Admin Console under Vibe → Privacy (on the mobile app: Settings → Data & Account Controls).",
     "crumbs": [
       "AI Tools"
     ]
   },
   {
-    "objectID": "general/ai-tools.html#zed-ai",
-    "href": "general/ai-tools.html#zed-ai",
+    "objectID": "general/ai-tools.html#the-zed-student-plan-session-vi",
+    "href": "general/ai-tools.html#the-zed-student-plan-session-vi",
     "title": "AI Tools",
-    "section": "Zed + AI",
-    "text": "Zed + AI\nZed is the editor we use from Session X on, but you install it before then, as part of the Session IX pre-work. Download it from zed.dev (there are builds for macOS, Windows and Linux), run the installer, and open it once to confirm it launches. This section only covers the AI-provider side, connecting an AI model to Zed.\n\nThe education program\nIf you are an enrolled student, Zed gives you its paid plan for free:\n\n12 months of Zed Pro, plus $10/month in AI token credits.\nRead about it at zed.dev/education.\nApply at dashboard.zed.dev/education/apply.\n\n\n\n\n\n\n\nThe 12 months expire. After 12 months the Student plan automatically downgrades to the free plan. It is a great head start, not a permanent free ride, so don’t build a habit that depends on the credits lasting forever. This is exactly why the Mistral path above matters: it stays free.\n\n\n\n\n\nWhich subscription actually works in Zed?\nThis is the part that surprises people. Having a paid AI subscription does not automatically mean you can use it inside Zed. Here is the truth table:\n\n\n\n\n\n\n\n\nYou have\nWorks in Zed?\nHow\n\n\n\n\nChatGPT Plus / Pro\nYes\nSign in with your OpenAI account directly in Zed. No API key needed.\n\n\nClaude Pro / Max\nNo (not via the built-in Anthropic provider)\nZed’s built-in Anthropic provider needs separate Anthropic API credits, which a Pro/Max subscription does not include.\n\n\nMistral (free API key)\nYes\nPaste the free La Plateforme key from the section above.\n\n\n\n\n\n\n\n\n\nClaude Pro/Max is the common trap. A Claude Pro or Max subscription is for the Claude apps and websites. It is not the same as Anthropic API credits, and Zed’s built-in Anthropic provider bills against API credits. So a Claude subscription alone will not power the assistant in Zed. If your only paid plan is Claude, use the free Mistral key for in-editor AI instead.",
+    "section": "The Zed student plan (Session VI)",
+    "text": "The Zed student plan (Session VI)\nZed is the editor we use from Session X on. If you are an enrolled student, Zed gives you its paid plan for free, and you apply for it in Session VI, well before you need it:\n\nGo to dashboard.zed.dev/education/apply and sign in with GitHub. Zed requires the GitHub account to be at least 30 days old, which is why you created it in Session I.\nSubmit your KLU e-mail address for verification. This can take up to 72 hours.\nOnce verified you get 12 months of Zed Pro: unlimited edit predictions and $10/month in AI token credits. Details at zed.dev/education.\n\n\n\n\n\n\n\nThe 12 months expire. After 12 months the Student plan automatically downgrades to the free plan. It is a great head start, not a permanent free ride, so don’t build a habit that depends on the credits lasting forever. This is exactly why the Mistral path above matters: it stays free, and nothing in the course depends on the plan.\n\n\n\nIf your KLU address isn’t recognized by the verification system, or your GitHub account is still too young, ask me. Both can be resolved.",
     "crumbs": [
       "AI Tools"
     ]
   },
   {
-    "objectID": "general/ai-tools.html#fallback-openrouter-free-models",
-    "href": "general/ai-tools.html#fallback-openrouter-free-models",
+    "objectID": "general/ai-tools.html#ai-inside-zed-mistral-vibe-before-session-x",
+    "href": "general/ai-tools.html#ai-inside-zed-mistral-vibe-before-session-x",
     "title": "AI Tools",
-    "section": "Fallback: OpenRouter free models",
-    "text": "Fallback: OpenRouter free models\nOpenRouter is a second zero-cost option. Sign up with an email (no credit card), create an API key, and you can call a set of free models. It is OpenAI-compatible, so any tool that accepts an OpenAI-style key plus a server address (the “base URL”) can use it. Treat this as a backup if the Mistral path ever gives you trouble.",
-    "crumbs": [
-      "AI Tools"
-    ]
-  },
-  {
-    "objectID": "general/ai-tools.html#what-about-copilot",
-    "href": "general/ai-tools.html#what-about-copilot",
-    "title": "AI Tools",
-    "section": "What about Copilot?",
-    "text": "What about Copilot?\nYou may have heard of GitHub Copilot. Since April 2026, GitHub has paused new sign-ups for its paid Copilot plans indefinitely, with no announced reopening date. If you already had Copilot set up before then, you may keep using it. If not, don’t count on it for this course. Use one of the free paths above.",
+    "section": "AI inside Zed: Mistral Vibe (before Session X)",
+    "text": "AI inside Zed: Mistral Vibe (before Session X)\nThe AI you program with in Part III is Mistral Vibe, Mistral’s coding agent. It runs inside Zed’s agent panel and uses the API key from Session VI. Do this as part of the Session IX pre-work, after installing uv and Zed:\n\nInstall Zed from zed.dev (macOS, Windows, Linux), run the installer, and open it once to confirm it launches.\nInstall Vibe in a terminal. uv is already on your machine, so one command works on every system:\nuv tool install mistral-vibe\nGive it your key. Run vibe once in the terminal; it asks for the API key and saves it for future runs. Type exit to leave.\nTell Zed about it. In Zed, open the command palette (Cmd/Ctrl+Shift+P), run zed: open settings, and add this inside the outer braces:\n\"agent_servers\": {\n  \"Mistral Vibe\": {\n    \"type\": \"custom\",\n    \"command\": \"vibe-acp\",\n    \"args\": [],\n    \"env\": {}\n  }\n}\nTry it. Open the agent panel (the sparkle icon at the bottom right, or agent: new thread in the command palette), pick Mistral Vibe from the agent dropdown, and ask it something about an open file. If it answers, you’re ready for Session X.\n\n\n\n\n\n\n\nAlready paying for ChatGPT or Claude? You may use those in Zed’s own agent under their own rules, but the course teaches and supports one path: Mistral Vibe. One trap to know: a Claude Pro/Max subscription does not work in Zed’s built-in Anthropic provider, which bills separate API credits. Use the free Mistral key.",
     "crumbs": [
       "AI Tools"
     ]
@@ -3083,7 +3208,7 @@
     "href": "general/ai-tools.html#recap",
     "title": "AI Tools",
     "section": "Recap",
-    "text": "Recap\nYou now have:\n\nA free Le Chat account for questions and explanations.\nA free La Plateforme API key (with the training opt-out done) for AI inside your editor.\nOptionally, a Zed education application and an OpenRouter fallback key.\nThe one habit that applies everywhere: a one-line AI-disclosure note on every submission that used AI.\n\nBring your Mistral API key to Session X. That is where we plug it into Zed.",
+    "text": "Recap\nYou now have:\n\nA GitHub account from Session I, old enough for the Zed student plan.\nA free Le Chat account for questions and explanations.\nA free La Plateforme API key (with the training opt-out done) that powers Mistral Vibe in Zed.\nA Zed student plan application on its way, and Vibe installed before Session X.\nThe one habit that applies everywhere: a one-line AI-disclosure note on every submission that used AI.",
     "crumbs": [
       "AI Tools"
     ]
@@ -4641,7 +4766,18 @@
     "href": "lectures/lec_06_modules.html",
     "title": "Lecture VI - Modules and the Standard Library",
     "section": "",
-    "text": "The first 40 minutes are the checkpoint. It starts now, before the investor sits down.\n\nIndividual work: no AI, no neighbors, no chat\nThe link and QR are handed out in class. Open it and start\n~6 short tasks: write code, trace code, fix a bug, answer a multiple choice\nIt sweeps everything from Sessions I–V: variables, control flow, functions, data structures, errors\n\n\n. . .\nWhen you’re done: menu → Download → Download Python code → upload the .py to the “Checkpoint 3” assignment on Moodle. No retakes: one sitting.\n. . .\n\n\n\n\n\n\nThe green ✅ live checks are provisional. The final grading runs on our side. And take a breath: everything in it was rehearsed in the labs.",
+    "text": "Sessions I–V. The first 40 minutes are the checkpoint. It starts now, before the investor sits down.\n\nIndividual work: no AI, no neighbors, no chat\nThe link and QR are handed out in class. Open it and start\n~6 short tasks: write code, trace code, fix a bug, answer a multiple choice\nIt sweeps everything from Sessions I–V: variables, control flow, functions, data structures, errors\n\n\n\n\nMenu → Download → Download Python code → upload the .py to the “Checkpoint 3” assignment on Moodle. No retakes: one sitting.\n. . .\n\n\n\n\n\n\nThe green ✅ live checks are provisional. The final grading runs on our side. And take a breath: everything in it was rehearsed in the labs.",
+    "crumbs": [
+      "06 Modules",
+      "Lecture"
+    ]
+  },
+  {
+    "objectID": "lectures/lec_06_modules.html#when-youre-done",
+    "href": "lectures/lec_06_modules.html#when-youre-done",
+    "title": "Lecture VI - Modules and the Standard Library",
+    "section": "",
+    "text": "Menu → Download → Download Python code → upload the .py to the “Checkpoint 3” assignment on Moodle. No retakes: one sitting.\n. . .\n\n\n\n\n\n\nThe green ✅ live checks are provisional. The final grading runs on our side. And take a breath: everything in it was rehearsed in the labs.",
     "crumbs": [
       "06 Modules",
       "Lecture"
@@ -4663,7 +4799,18 @@
     "href": "lectures/lec_06_modules.html#part-ii-the-rules-change",
     "title": "Lecture VI - Modules and the Standard Library",
     "section": "Part II: the rules change",
-    "text": "Part II: the rules change\nFor five sessions you built everything by hand, on purpose. From today, that changes.\n\nAI is now allowed and taught. We work with it, deliberately, starting in tonight’s lab.\nThe disclosure habit: every submission that used AI carries a one-line note saying what you used it for. Not a confession. A professional reflex.\nThe course chatbot (sidebar widget) now gives you full code on request, not just hints.\n\n. . .\nFull details on the AI Tools page.\n. . .\nYou spent five sessions learning to think without a co-pilot. Now you get one — and you’ll be the pilot.",
+    "text": "Part II: the rules change\nFor five sessions you built everything by hand, on purpose. From today, that changes.\n\nAI is now allowed and taught. We work with it, deliberately, starting in tonight’s lab.\nThe disclosure habit: every submission that used AI carries a one-line note saying what you used it for. Not a confession. A professional reflex.\nThe course chatbot (sidebar widget) now gives you full code on request, not just hints.\n\n. . .\nYou spent five sessions learning to think without a co-pilot. Now you get one — and you’ll be the pilot.",
+    "crumbs": [
+      "06 Modules",
+      "Lecture"
+    ]
+  },
+  {
+    "objectID": "lectures/lec_06_modules.html#two-accounts-this-week",
+    "href": "lectures/lec_06_modules.html#two-accounts-this-week",
+    "title": "Lecture VI - Modules and the Standard Library",
+    "section": "Two accounts this week",
+    "text": "Two accounts this week\nBoth are free, both are on the AI Tools page, together about ten minutes:\n\nMistral: a Le Chat account for questions, plus an API key. The same key later powers the AI agent inside your editor\nZed student plan: sign in with the GitHub account you made in Session I (it’s old enough now) and apply with your KLU e-mail. Verification takes up to 72 hours, so the free year of Zed Pro is ready long before Session X\n\n. . .\n\n\n\n\n\n\nTurn off Mistral’s training-data toggle before you paste coursework (steps on the AI Tools page). Nothing here needs a credit card.",
     "crumbs": [
       "06 Modules",
       "Lecture"
@@ -4751,7 +4898,7 @@
     "href": "lectures/lec_06_modules.html#the-random-toolbox",
     "title": "Lecture VI - Modules and the Standard Library",
     "section": "The random toolbox",
-    "text": "The random toolbox\nThe investor wants to see how the shop copes with a busy day, but the busy day hasn’t happened yet. So we rehearse it with made-up numbers. The random module deals them:\n\nimport random\n\nprint(random.random())                       # a float in [0.0, 1.0)\nprint(random.randint(1, 20))                  # an integer 1–20, ends included\nprint(random.choice([\"latte\", \"mocha\", \"tea\"]))  # one item, picked at random\n\nqueue = [1, 2, 3, 4, 5]\nrandom.shuffle(queue)                         # reorders the list in place\nprint(queue)\n\n0.9252263675891648\n20\nlatte\n[4, 2, 3, 5, 1]\n\n\n. . .\nFour tools, four flavors of luck: a raw float, a bounded integer, a pick from a list, and a reshuffle.",
+    "text": "The random toolbox\nThe investor wants to see how the shop copes with a busy day, but the busy day hasn’t happened yet. So we rehearse it with made-up numbers. The random module deals them:\n\nimport random\n\nprint(random.random())                       # a float in [0.0, 1.0)\nprint(random.randint(1, 20))                  # an integer 1–20, ends included\nprint(random.choice([\"latte\", \"mocha\", \"tea\"]))  # one item, picked at random\n\nqueue = [1, 2, 3, 4, 5]\nrandom.shuffle(queue)                         # reorders the list in place\nprint(queue)\n\n0.8713324762734287\n13\ntea\n[4, 2, 1, 3, 5]\n\n\n. . .\nFour tools, four flavors of luck: a raw float, a bounded integer, a pick from a list, and a reshuffle.",
     "crumbs": [
       "06 Modules",
       "Lecture"
@@ -4762,7 +4909,7 @@
     "href": "lectures/lec_06_modules.html#run-it-again",
     "title": "Lecture VI - Modules and the Standard Library",
     "section": "“Run it again”",
-    "text": "“Run it again”\nThe investor leans over and says: “Run it again.” Kevin does, and gets completely different numbers:\n\nimport random\n\nprint([random.randint(1, 20) for _ in range(5)])   # one run\nprint([random.randint(1, 20) for _ in range(5)])   # ...and again — different!\n\n[4, 9, 13, 8, 17]\n[5, 11, 15, 17, 7]\n\n\n. . .\nTwo runs, two answers. That’s exactly what random is supposed to do, but it’s useless for due diligence. A projection nobody can reproduce is a projection nobody can trust.",
+    "text": "“Run it again”\nThe investor leans over and says: “Run it again.” Kevin does, and gets completely different numbers:\n\nimport random\n\nprint([random.randint(1, 20) for _ in range(5)])   # one run\nprint([random.randint(1, 20) for _ in range(5)])   # ...and again — different!\n\n[7, 17, 20, 15, 7]\n[2, 9, 9, 17, 6]\n\n\n. . .\nTwo runs, two answers. That’s exactly what random is supposed to do, but it’s useless for due diligence. A projection nobody can reproduce is a projection nobody can trust.",
     "crumbs": [
       "06 Modules",
       "Lecture"
@@ -4806,7 +4953,7 @@
     "href": "lectures/lec_06_modules.html#tonights-episode",
     "title": "Lecture VI - Modules and the Standard Library",
     "section": "Tonight’s episode",
-    "text": "Tonight’s episode\n\nHead to the lab notebook: Episode 6 — Due Diligence Week\nYou’ll import math and statistics for investor-grade counts and averages, then use random (with and without a seed) to rehearse a busy day she can reproduce\nIt’s the first lab where AI is allowed, so try the chatbot, and add your one-line disclosure note\nIt runs entirely in your browser: no setup, just click and code\n\n. . .\n\n\n\n\n\n\nDownload your .py before you leave. Closing the tab without downloading loses your work, and downloading is exactly how you handed in the checkpoint this morning.",
+    "text": "Tonight’s episode\n\nHead to the lab notebook: Episode 6 — Due Diligence Week\nYou’ll import math and statistics for investor-grade counts and averages, then use random (with and without a seed) to rehearse a busy day she can reproduce\nIt’s the first lab where AI is allowed, so try the chatbot, and add your one-line disclosure note\nThis week’s homework: the Mistral account and the Zed student plan from the AI Tools page\nIt runs entirely in your browser: no setup, just click and code\n\n. . .\n\n\n\n\n\n\nDownload your .py before you leave. Closing the tab without downloading loses your work, and downloading is exactly how you handed in the checkpoint this morning.",
     "crumbs": [
       "06 Modules",
       "Lecture"
@@ -4835,6 +4982,13 @@
     ]
   },
   {
+    "objectID": "lectures/lec_06_presentation.html#when-youre-done",
+    "href": "lectures/lec_06_presentation.html#when-youre-done",
+    "title": "Lecture VI - Modules and the Standard Library",
+    "section": "When you’re done",
+    "text": "When you’re done\nMenu → Download → Download Python code → upload the .py to the “Checkpoint 3” assignment on Moodle. No retakes: one sitting.\n\n\n\n\n\n\n\nThe green ✅ live checks are provisional. The final grading runs on our side. And take a breath: everything in it was rehearsed in the labs."
+  },
+  {
     "objectID": "lectures/lec_06_presentation.html#the-investor-walks-in",
     "href": "lectures/lec_06_presentation.html#the-investor-walks-in",
     "title": "Lecture VI - Modules and the Standard Library",
@@ -4846,7 +5000,14 @@
     "href": "lectures/lec_06_presentation.html#part-ii-the-rules-change",
     "title": "Lecture VI - Modules and the Standard Library",
     "section": "Part II: the rules change",
-    "text": "Part II: the rules change\nFor five sessions you built everything by hand, on purpose. From today, that changes.\n\nAI is now allowed and taught. We work with it, deliberately, starting in tonight’s lab.\nThe disclosure habit: every submission that used AI carries a one-line note saying what you used it for. Not a confession. A professional reflex.\nThe course chatbot (sidebar widget) now gives you full code on request, not just hints.\n\n\nFull details on the AI Tools page.\n\n\nYou spent five sessions learning to think without a co-pilot. Now you get one — and you’ll be the pilot."
+    "text": "Part II: the rules change\nFor five sessions you built everything by hand, on purpose. From today, that changes.\n\nAI is now allowed and taught. We work with it, deliberately, starting in tonight’s lab.\nThe disclosure habit: every submission that used AI carries a one-line note saying what you used it for. Not a confession. A professional reflex.\nThe course chatbot (sidebar widget) now gives you full code on request, not just hints.\n\n\nYou spent five sessions learning to think without a co-pilot. Now you get one — and you’ll be the pilot."
+  },
+  {
+    "objectID": "lectures/lec_06_presentation.html#two-accounts-this-week",
+    "href": "lectures/lec_06_presentation.html#two-accounts-this-week",
+    "title": "Lecture VI - Modules and the Standard Library",
+    "section": "Two accounts this week",
+    "text": "Two accounts this week\nBoth are free, both are on the AI Tools page, together about ten minutes:\n\nMistral: a Le Chat account for questions, plus an API key. The same key later powers the AI agent inside your editor\nZed student plan: sign in with the GitHub account you made in Session I (it’s old enough now) and apply with your KLU e-mail. Verification takes up to 72 hours, so the free year of Zed Pro is ready long before Session X\n\n\n\n\n\n\n\n\nTurn off Mistral’s training-data toggle before you paste coursework (steps on the AI Tools page). Nothing here needs a credit card."
   },
   {
     "objectID": "lectures/lec_06_presentation.html#whats-a-module",
@@ -4902,14 +5063,14 @@
     "href": "lectures/lec_06_presentation.html#the-random-toolbox",
     "title": "Lecture VI - Modules and the Standard Library",
     "section": "The random toolbox",
-    "text": "The random toolbox\nThe investor wants to see how the shop copes with a busy day, but the busy day hasn’t happened yet. So we rehearse it with made-up numbers. The random module deals them:\n\nimport random\n\nprint(random.random())                       # a float in [0.0, 1.0)\nprint(random.randint(1, 20))                  # an integer 1–20, ends included\nprint(random.choice([\"latte\", \"mocha\", \"tea\"]))  # one item, picked at random\n\nqueue = [1, 2, 3, 4, 5]\nrandom.shuffle(queue)                         # reorders the list in place\nprint(queue)\n\n\n\n0.9252263675891648\n20\nlatte\n[4, 2, 3, 5, 1]\n\n\n\nFour tools, four flavors of luck: a raw float, a bounded integer, a pick from a list, and a reshuffle."
+    "text": "The random toolbox\nThe investor wants to see how the shop copes with a busy day, but the busy day hasn’t happened yet. So we rehearse it with made-up numbers. The random module deals them:\n\nimport random\n\nprint(random.random())                       # a float in [0.0, 1.0)\nprint(random.randint(1, 20))                  # an integer 1–20, ends included\nprint(random.choice([\"latte\", \"mocha\", \"tea\"]))  # one item, picked at random\n\nqueue = [1, 2, 3, 4, 5]\nrandom.shuffle(queue)                         # reorders the list in place\nprint(queue)\n\n\n\n0.8713324762734287\n13\ntea\n[4, 2, 1, 3, 5]\n\n\n\nFour tools, four flavors of luck: a raw float, a bounded integer, a pick from a list, and a reshuffle."
   },
   {
     "objectID": "lectures/lec_06_presentation.html#run-it-again",
     "href": "lectures/lec_06_presentation.html#run-it-again",
     "title": "Lecture VI - Modules and the Standard Library",
     "section": "“Run it again”",
-    "text": "“Run it again”\nThe investor leans over and says: “Run it again.” Kevin does, and gets completely different numbers:\n\nimport random\n\nprint([random.randint(1, 20) for _ in range(5)])   # one run\nprint([random.randint(1, 20) for _ in range(5)])   # ...and again — different!\n\n\n\n[4, 9, 13, 8, 17]\n[5, 11, 15, 17, 7]\n\n\n\nTwo runs, two answers. That’s exactly what random is supposed to do, but it’s useless for due diligence. A projection nobody can reproduce is a projection nobody can trust."
+    "text": "“Run it again”\nThe investor leans over and says: “Run it again.” Kevin does, and gets completely different numbers:\n\nimport random\n\nprint([random.randint(1, 20) for _ in range(5)])   # one run\nprint([random.randint(1, 20) for _ in range(5)])   # ...and again — different!\n\n\n\n[7, 17, 20, 15, 7]\n[2, 9, 9, 17, 6]\n\n\n\nTwo runs, two answers. That’s exactly what random is supposed to do, but it’s useless for due diligence. A projection nobody can reproduce is a projection nobody can trust."
   },
   {
     "objectID": "lectures/lec_06_presentation.html#random.seed-makes-luck-repeatable",
@@ -4937,7 +5098,7 @@
     "href": "lectures/lec_06_presentation.html#tonights-episode",
     "title": "Lecture VI - Modules and the Standard Library",
     "section": "Tonight’s episode",
-    "text": "Tonight’s episode\n\nHead to the lab notebook: Episode 6 — Due Diligence Week\nYou’ll import math and statistics for investor-grade counts and averages, then use random (with and without a seed) to rehearse a busy day she can reproduce\nIt’s the first lab where AI is allowed, so try the chatbot, and add your one-line disclosure note\nIt runs entirely in your browser: no setup, just click and code\n\n\n\n\n\n\n\n\nDownload your .py before you leave. Closing the tab without downloading loses your work, and downloading is exactly how you handed in the checkpoint this morning."
+    "text": "Tonight’s episode\n\nHead to the lab notebook: Episode 6 — Due Diligence Week\nYou’ll import math and statistics for investor-grade counts and averages, then use random (with and without a seed) to rehearse a busy day she can reproduce\nIt’s the first lab where AI is allowed, so try the chatbot, and add your one-line disclosure note\nThis week’s homework: the Mistral account and the Zed student plan from the AI Tools page\nIt runs entirely in your browser: no setup, just click and code\n\n\n\n\n\n\n\n\nDownload your .py before you leave. Closing the tab without downloading loses your work, and downloading is exactly how you handed in the checkpoint this morning."
   },
   {
     "objectID": "lectures/lec_06_presentation.html#three-things-to-remember",
@@ -4958,7 +5119,18 @@
     "href": "lectures/lec_08_pandas.html",
     "title": "Lecture VIII - Pandas and AI Craft",
     "section": "",
-    "text": "The first 40 minutes are the checkpoint. It starts now, before the investor opens her data room.\n\nIndividual work: no neighbors, no chat\nAI tools are allowed: being able to VERIFY the output is the skill being graded\nThe link and QR are handed out in class. Open it and start\n~6 short tasks: write code, trace code, fix a bug, answer a multiple choice\nIt sweeps Sessions VI–VII: modules, random and seeds, NumPy arrays and masks\n\n\n. . .\nWhen you’re done: menu → Download → Download Python code → upload the .py to the “Checkpoint 4” assignment on Moodle. No retakes: one sitting.\n. . .\n\n\n\n\n\n\nThe green ✅ live checks are provisional. The final grading runs on our side. And take a breath: everything in it was rehearsed in the labs.",
+    "text": "Sessions VI–VII. The first 40 minutes are the checkpoint. It starts now, before the investor opens her data room.\n\nIndividual work: no neighbors, no chat\nAI tools are allowed: being able to VERIFY the output is the skill being graded\nThe link and QR are handed out in class. Open it and start\n~6 short tasks: write code, trace code, fix a bug, answer a multiple choice\nIt sweeps Sessions VI–VII: modules, random and seeds, NumPy arrays and masks\n\n\n\n\nMenu → Download → Download Python code → upload the .py to the “Checkpoint 4” assignment on Moodle. No retakes: one sitting.\n. . .\n\n\n\n\n\n\nThe green ✅ live checks are provisional. The final grading runs on our side. And take a breath: everything in it was rehearsed in the labs.",
+    "crumbs": [
+      "08 Pandas and AI",
+      "Lecture"
+    ]
+  },
+  {
+    "objectID": "lectures/lec_08_pandas.html#when-youre-done",
+    "href": "lectures/lec_08_pandas.html#when-youre-done",
+    "title": "Lecture VIII - Pandas and AI Craft",
+    "section": "",
+    "text": "Menu → Download → Download Python code → upload the .py to the “Checkpoint 4” assignment on Moodle. No retakes: one sitting.\n. . .\n\n\n\n\n\n\nThe green ✅ live checks are provisional. The final grading runs on our side. And take a breath: everything in it was rehearsed in the labs.",
     "crumbs": [
       "08 Pandas and AI",
       "Lecture"
@@ -4976,11 +5148,11 @@
     ]
   },
   {
-    "objectID": "lectures/lec_08_pandas.html#prompting-that-works-context-constraints",
-    "href": "lectures/lec_08_pandas.html#prompting-that-works-context-constraints",
+    "objectID": "lectures/lec_08_pandas.html#prompting-context-constraints",
+    "href": "lectures/lec_08_pandas.html#prompting-context-constraints",
     "title": "Lecture VIII - Pandas and AI Craft",
-    "section": "Prompting that works: context + constraints",
-    "text": "Prompting that works: context + constraints\nAn AI is only as good as what you tell it. Two things turn a vague request into a useful answer:\n\nContext — say what the data is: “I have a DataFrame orders with columns zone (text) and total_eur (float).”\nConstraints — say exactly what you want back: “Give me the total total_eur for zone Nord, as a single number.”\n\n. . .\n\n“I have a pandas DataFrame orders with a text column zone and a float column total_eur. Write one line that returns the total total_eur for rows where zone is Nord.”\n\nVague in, vague out. Specific in, checkable out, and then you iterate.",
+    "section": "Prompting: context + constraints",
+    "text": "Prompting: context + constraints\nTwo things turn a vague request into a useful answer:\n\nContext — say what the data is: “I have a DataFrame orders with columns zone (text) and total_eur (float).”\nConstraints — say exactly what you want back: “Give me the total total_eur for zone Nord, as a single number.”\n\n. . .\n\n“DataFrame orders, text column zone, float column total_eur. Write one line that returns the total total_eur where zone is Nord.”\n\nVague in, vague out. Specific in, checkable out, and then you iterate.",
     "crumbs": [
       "08 Pandas and AI",
       "Lecture"
@@ -4991,7 +5163,18 @@
     "href": "lectures/lec_08_pandas.html#the-verify-workflow",
     "title": "Lecture VIII - Pandas and AI Craft",
     "section": "The verify workflow",
-    "text": "The verify workflow\nKevin’s mistake wasn’t using AI. It was shipping without checking. Every line an AI hands you gets three passes:\n\nRead it: do you understand what each line claims to do?\nRun it: does it actually execute, or does it crash?\nTest it: try it on a small case where you already know the answer.\n\n. . .\nStep 3 in action. Five orders with values you can add in your head, and the AI’s suggested line for the Nord average:\n\nimport pandas as pd\n\ncheck = pd.DataFrame({\n    \"zone\":      [\"Nord\", \"Sued\", \"Nord\", \"Hafen\", \"Nord\"],\n    \"total_eur\": [10.0, 7.5, 20.0, 5.0, 30.0],\n})\nprint(check[check[\"zone\"] == \"Nord\"][\"total_eur\"].mean())\n\n20.0\n\n\n. . .\nThe Nord orders are 10, 20 and 30. You can average those in your head. Does the AI’s answer match? Then the line has earned some trust on eight hundred rows. Verification is the job now, not typing.",
+    "text": "The verify workflow\nKevin’s mistake wasn’t using AI. It was shipping without checking. Every line an AI hands you gets three passes:\n\nRead it: do you understand what each line claims to do?\nRun it: does it actually execute, or does it crash?\nTest it: try it on a small case where you already know the answer.",
+    "crumbs": [
+      "08 Pandas and AI",
+      "Lecture"
+    ]
+  },
+  {
+    "objectID": "lectures/lec_08_pandas.html#step-3-in-action",
+    "href": "lectures/lec_08_pandas.html#step-3-in-action",
+    "title": "Lecture VIII - Pandas and AI Craft",
+    "section": "Step 3 in action",
+    "text": "Step 3 in action\nFive orders with values you can add in your head, and the AI’s suggested line for the Nord average:\n\nimport pandas as pd\n\ncheck = pd.DataFrame({\n    \"zone\":      [\"Nord\", \"Sued\", \"Nord\", \"Hafen\", \"Nord\"],\n    \"total_eur\": [10.0, 7.5, 20.0, 5.0, 30.0],\n})\nprint(check[check[\"zone\"] == \"Nord\"][\"total_eur\"].mean())\n\n20.0\n\n\n. . .\nThe Nord orders are 10, 20 and 30. You can average those in your head. Does the AI’s answer match? Then the line has earned some trust on eight hundred rows. Verification is the job now, not typing.",
     "crumbs": [
       "08 Pandas and AI",
       "Lecture"
@@ -5013,7 +5196,7 @@
     "href": "lectures/lec_08_pandas.html#answer-the-method-never-existed",
     "title": "Lecture VIII - Pandas and AI Craft",
     "section": "Answer: the method never existed",
-    "text": "Answer: the method never existed\nb) AttributeError — pandas has no .summarize(). The AI invented a plausible-sounding name, and Python answers with a traceback you’ve read since Episode 5:\n\nimport pandas as pd\norders = pd.DataFrame({\"zone\": [\"Nord\", \"Sued\"], \"total_eur\": [12.0, 9.5]})\n\norders.summarize()                     # the method the AI invented\n\n\n---------------------------------------------------------------------------\nAttributeError                            Traceback (most recent call last)\n/var/folders/_5/jkkjxxdd5f1955l380dky7n80000gn/T/ipykernel_66286/1876211805.py in ?()\n      1 import pandas as pd\n      2 orders = pd.DataFrame({\"zone\": [\"Nord\", \"Sued\"], \"total_eur\": [12.0, 9.5]})\n      3 \n----&gt; 4 orders.summarize()                     # the method the AI invented\n\n~/development/lectures/Introduction-to-Python/.venv/lib/python3.12/site-packages/pandas/core/generic.py in ?(self, name)\n   6314             and name not in self._accessors\n   6315             and self._info_axis._can_hold_identifiers_and_holds_name(name)\n   6316         ):\n   6317             return self[name]\n-&gt; 6318         return object.__getattribute__(self, name)\n\nAttributeError: 'DataFrame' object has no attribute 'summarize'\n\n\n\n. . .\nThe real method is .describe():\n\nprint(orders.describe())               # the method that actually exists\n\n       total_eur\ncount   2.000000\nmean   10.750000\nstd     1.767767\nmin     9.500000\n25%    10.125000\n50%    10.750000\n75%    11.375000\nmax    12.000000\n\n\n. . .\nAn AI that sounds sure is not the same as an API that exists.",
+    "text": "Answer: the method never existed\nb) AttributeError — pandas has no .summarize(). The AI invented it:\n\nimport pandas as pd\norders = pd.DataFrame({\"zone\": [\"Nord\", \"Sued\"], \"total_eur\": [12.0, 9.5]})\norders.summarize()                     # the method the AI invented\n\n\nAttributeError: 'DataFrame' object has no attribute 'summarize'\n\n\n\n\n. . .\nThe real method is .describe():\n\nprint(orders.describe())               # the method that actually exists\n\n       total_eur\ncount   2.000000\nmean   10.750000\nstd     1.767767\nmin     9.500000\n25%    10.125000\n50%    10.750000\n75%    11.375000\nmax    12.000000\n\n\n. . .\nAn AI that sounds sure is not the same as an API that exists.",
     "crumbs": [
       "08 Pandas and AI",
       "Lecture"
@@ -5057,7 +5240,7 @@
     "href": "lectures/lec_08_pandas.html#a-dataframe-from-a-dictionary",
     "title": "Lecture VIII - Pandas and AI Craft",
     "section": "A DataFrame from a dictionary",
-    "text": "A DataFrame from a dictionary\nKeys become column names; each list becomes a column. One order per row:\n\nimport pandas as pd\n\ndf = pd.DataFrame({\n    \"order_id\":  [101, 102, 103, 104, 105],\n    \"zone\":      [\"Nord\", \"Sued\", \"Nord\", \"Hafen\", \"Sued\"],\n    \"items\":     [2, 1, 3, 1, 4],\n    \"total_eur\": [18.50, 7.20, 24.00, 6.80, 31.40],\n})\nprint(df)\n\n   order_id   zone  items  total_eur\n0       101   Nord      2       18.5\n1       102   Sued      1        7.2\n2       103   Nord      3       24.0\n3       104  Hafen      1        6.8\n4       105   Sued      4       31.4\n\n\n. . .\nFive orders, four columns, mixed types (text, integers, floats) living happily together.\n. . .\n\n\n\n\n\n\nYou won’t type the investor’s eighty orders by hand. In tonight’s lab a real CSV loads in one line, orders = pd.read_csv(\"public/orders.csv\"). In the browser notebook that same line fetches the file over the web instead of from disk; pandas doesn’t care, your code doesn’t change.",
+    "text": "A DataFrame from a dictionary\nKeys become column names; each list becomes a column; one order per row, mixed types together:\n\nimport pandas as pd\ndf = pd.DataFrame({\n    \"order_id\":  [101, 102, 103, 104, 105],\n    \"zone\":      [\"Nord\", \"Sued\", \"Nord\", \"Hafen\", \"Sued\"],\n    \"items\":     [2, 1, 3, 1, 4],\n    \"total_eur\": [18.50, 7.20, 24.00, 6.80, 31.40],\n})\nprint(df)\n\n   order_id   zone  items  total_eur\n0       101   Nord      2       18.5\n1       102   Sued      1        7.2\n2       103   Nord      3       24.0\n3       104  Hafen      1        6.8\n4       105   Sued      4       31.4\n\n\n. . .\n\n\n\n\n\n\nNobody types eighty orders by hand: tonight’s lab loads a real CSV in one line, orders = pd.read_csv(\"public/orders.csv\"). In the browser that line fetches over the web instead of from disk; your code doesn’t change.",
     "crumbs": [
       "08 Pandas and AI",
       "Lecture"
@@ -5068,7 +5251,7 @@
     "href": "lectures/lec_08_pandas.html#first-look-.head-and-.info",
     "title": "Lecture VIII - Pandas and AI Craft",
     "section": "First look: .head() and .info()",
-    "text": "First look: .head() and .info()\nBefore analyzing a table, glance at it. .head() shows the top rows; .info() reports columns, types, and counts:\n\nprint(df.head(3))     # first 3 rows\nprint()\ndf.info()             # columns, dtypes, non-null counts\n\n   order_id  zone  items  total_eur\n0       101  Nord      2       18.5\n1       102  Sued      1        7.2\n2       103  Nord      3       24.0\n\n&lt;class 'pandas.core.frame.DataFrame'&gt;\nRangeIndex: 5 entries, 0 to 4\nData columns (total 4 columns):\n #   Column     Non-Null Count  Dtype  \n---  ------     --------------  -----  \n 0   order_id   5 non-null      int64  \n 1   zone       5 non-null      object \n 2   items      5 non-null      int64  \n 3   total_eur  5 non-null      float64\ndtypes: float64(1), int64(2), object(1)\nmemory usage: 292.0+ bytes\n\n\n. . .\n.info() is your first sanity check: right number of rows? Any column a surprising type?",
+    "text": "First look: .head() and .info()\nBefore analyzing a table, glance at it. .head() shows the top rows; .info() is your first sanity check: right number of rows? Any column a surprising type?\n\nprint(df.head(3))     # first 3 rows\ndf.info()             # columns, dtypes, non-null counts\n\n   order_id  zone  items  total_eur\n0       101  Nord      2       18.5\n1       102  Sued      1        7.2\n2       103  Nord      3       24.0\n&lt;class 'pandas.core.frame.DataFrame'&gt;\nRangeIndex: 5 entries, 0 to 4\nData columns (total 4 columns):\n #   Column     Non-Null Count  Dtype  \n---  ------     --------------  -----  \n 0   order_id   5 non-null      int64  \n 1   zone       5 non-null      object \n 2   items      5 non-null      int64  \n 3   total_eur  5 non-null      float64\ndtypes: float64(1), int64(2), object(1)\nmemory usage: 292.0+ bytes",
     "crumbs": [
       "08 Pandas and AI",
       "Lecture"
@@ -5145,7 +5328,7 @@
     "href": "lectures/lec_08_pandas.html#tonights-episode",
     "title": "Lecture VIII - Pandas and AI Craft",
     "section": "Tonight’s episode",
-    "text": "Tonight’s episode\n\nHead to the lab notebook: Episode 8 — The Data Room\nThe investor slides a USB stick across the table: every order, two full weeks. It’s now orders.csv, eighty rows, loaded with one pd.read_csv line\nYou’ll .head(), .info() and .describe() it, filter with masks, add a column on a safe copy, and answer per-zone questions with groupby\nKevin has discovered AI; your real job is to supervise it and catch the confident nonsense\nIt runs entirely in your browser: no setup, just click and code\n\n. . .\n\n\n\n\n\n\nDownload your .py before you leave. Closing the tab without downloading loses your work, the same motion you used to hand in the checkpoint this morning.",
+    "text": "Tonight’s episode\n\nHead to the lab notebook: Episode 8 — The Data Room, in your browser as always\nThe investor slides a USB stick across the table: every order of two weeks, now orders.csv, eighty rows, one pd.read_csv line\nYou’ll .head(), .info() and .describe() it, filter with masks, add a column on a safe copy, and answer per-zone questions with groupby\nKevin has discovered AI; your real job is to supervise it and catch the confident nonsense\n\n. . .\n\n\n\n\n\n\nDownload your .py before you leave. Closing the tab without downloading loses your work, the same motion you used to hand in the checkpoint this morning.",
     "crumbs": [
       "08 Pandas and AI",
       "Lecture"
@@ -5156,7 +5339,7 @@
     "href": "lectures/lec_08_pandas.html#three-things-to-remember",
     "title": "Lecture VIII - Pandas and AI Craft",
     "section": "Three things to remember",
-    "text": "Three things to remember\n\nAI is a co-pilot you verify. Give it context and constraints, then read it → run it → test it on a case you know. An AI that sounds sure is not the same as an API that exists.\nA DataFrame is a named, mixed-type table. pd.DataFrame from a dict, pd.read_csv from a file; .head(), .info(), .describe() to look before you leap.\nSelect, filter, add, group. df[\"col\"], a boolean mask (df[df[\"zone\"] == \"Nord\"], case-sensitive!), a new column on a .copy(), and groupby for per-category answers. pandas won’t warn you; you verify.\n\n. . .\n\n\n\n\n\n\nNext episode: charts the investor can’t argue with. Numbers convince the careful; a good plot convinces the room. We turn the data room into pictures.",
+    "text": "Three things to remember\n\nAI is a co-pilot you verify. Give it context and constraints, then read it → run it → test it on a case you know.\nA DataFrame is a named, mixed-type table. pd.DataFrame from a dict, pd.read_csv from a file; .head(), .info(), .describe() to look before you leap.\nSelect, filter, add, group. df[\"col\"], a boolean mask (df[df[\"zone\"] == \"Nord\"], case-sensitive!), a new column on a .copy(), and groupby for per-category answers. pandas won’t warn you; you verify.\n\n. . .\n\n\n\n\n\n\nNext episode: charts the investor can’t argue with. Numbers convince the careful; a good plot convinces the room. We turn the data room into pictures.",
     "crumbs": [
       "08 Pandas and AI",
       "Lecture"
@@ -5174,6 +5357,13 @@
     ]
   },
   {
+    "objectID": "lectures/lec_08_presentation.html#when-youre-done",
+    "href": "lectures/lec_08_presentation.html#when-youre-done",
+    "title": "Lecture VIII - Pandas and AI Craft",
+    "section": "When you’re done",
+    "text": "When you’re done\nMenu → Download → Download Python code → upload the .py to the “Checkpoint 4” assignment on Moodle. No retakes: one sitting.\n\n\n\n\n\n\n\nThe green ✅ live checks are provisional. The final grading runs on our side. And take a breath: everything in it was rehearsed in the labs."
+  },
+  {
     "objectID": "lectures/lec_08_presentation.html#show-me-the-data",
     "href": "lectures/lec_08_presentation.html#show-me-the-data",
     "title": "Lecture VIII - Pandas and AI Craft",
@@ -5181,18 +5371,25 @@
     "text": "Show me the data\nPens down. The checkpoint is behind you. This morning the rival chain MunchCorp put out a press release bragging about their “data-driven growth.” The evidence attached: exactly one pie chart. The investor slid it across the table and said, “Yours will be better. Show me the data.”\n\nKevin didn’t wait. He’d pasted the question into a chatbot, proudly turned the laptop around, and hit run:\nAttributeError: 'DataFrame' object has no attribute 'overview'\n\n\nThe AI sounded certain. The method it called does not exist. Today is about that difference, and about the tool that answers the investor for real: pandas."
   },
   {
-    "objectID": "lectures/lec_08_presentation.html#prompting-that-works-context-constraints",
-    "href": "lectures/lec_08_presentation.html#prompting-that-works-context-constraints",
+    "objectID": "lectures/lec_08_presentation.html#prompting-context-constraints",
+    "href": "lectures/lec_08_presentation.html#prompting-context-constraints",
     "title": "Lecture VIII - Pandas and AI Craft",
-    "section": "Prompting that works: context + constraints",
-    "text": "Prompting that works: context + constraints\nAn AI is only as good as what you tell it. Two things turn a vague request into a useful answer:\n\nContext — say what the data is: “I have a DataFrame orders with columns zone (text) and total_eur (float).”\nConstraints — say exactly what you want back: “Give me the total total_eur for zone Nord, as a single number.”\n\n\n\n“I have a pandas DataFrame orders with a text column zone and a float column total_eur. Write one line that returns the total total_eur for rows where zone is Nord.”\n\nVague in, vague out. Specific in, checkable out, and then you iterate."
+    "section": "Prompting: context + constraints",
+    "text": "Prompting: context + constraints\nTwo things turn a vague request into a useful answer:\n\nContext — say what the data is: “I have a DataFrame orders with columns zone (text) and total_eur (float).”\nConstraints — say exactly what you want back: “Give me the total total_eur for zone Nord, as a single number.”\n\n\n\n“DataFrame orders, text column zone, float column total_eur. Write one line that returns the total total_eur where zone is Nord.”\n\nVague in, vague out. Specific in, checkable out, and then you iterate."
   },
   {
     "objectID": "lectures/lec_08_presentation.html#the-verify-workflow",
     "href": "lectures/lec_08_presentation.html#the-verify-workflow",
     "title": "Lecture VIII - Pandas and AI Craft",
     "section": "The verify workflow",
-    "text": "The verify workflow\nKevin’s mistake wasn’t using AI. It was shipping without checking. Every line an AI hands you gets three passes:\n\nRead it: do you understand what each line claims to do?\nRun it: does it actually execute, or does it crash?\nTest it: try it on a small case where you already know the answer.\n\n\nStep 3 in action. Five orders with values you can add in your head, and the AI’s suggested line for the Nord average:\n\nimport pandas as pd\n\ncheck = pd.DataFrame({\n    \"zone\":      [\"Nord\", \"Sued\", \"Nord\", \"Hafen\", \"Nord\"],\n    \"total_eur\": [10.0, 7.5, 20.0, 5.0, 30.0],\n})\nprint(check[check[\"zone\"] == \"Nord\"][\"total_eur\"].mean())\n\n\n\n20.0\n\n\n\n\nThe Nord orders are 10, 20 and 30. You can average those in your head. Does the AI’s answer match? Then the line has earned some trust on eight hundred rows. Verification is the job now, not typing."
+    "text": "The verify workflow\nKevin’s mistake wasn’t using AI. It was shipping without checking. Every line an AI hands you gets three passes:\n\nRead it: do you understand what each line claims to do?\nRun it: does it actually execute, or does it crash?\nTest it: try it on a small case where you already know the answer."
+  },
+  {
+    "objectID": "lectures/lec_08_presentation.html#step-3-in-action",
+    "href": "lectures/lec_08_presentation.html#step-3-in-action",
+    "title": "Lecture VIII - Pandas and AI Craft",
+    "section": "Step 3 in action",
+    "text": "Step 3 in action\nFive orders with values you can add in your head, and the AI’s suggested line for the Nord average:\n\nimport pandas as pd\n\ncheck = pd.DataFrame({\n    \"zone\":      [\"Nord\", \"Sued\", \"Nord\", \"Hafen\", \"Nord\"],\n    \"total_eur\": [10.0, 7.5, 20.0, 5.0, 30.0],\n})\nprint(check[check[\"zone\"] == \"Nord\"][\"total_eur\"].mean())\n\n\n\n20.0\n\n\n\nThe Nord orders are 10, 20 and 30. You can average those in your head. Does the AI’s answer match? Then the line has earned some trust on eight hundred rows. Verification is the job now, not typing."
   },
   {
     "objectID": "lectures/lec_08_presentation.html#predict-does-.summarize-exist",
@@ -5206,7 +5403,7 @@
     "href": "lectures/lec_08_presentation.html#answer-the-method-never-existed",
     "title": "Lecture VIII - Pandas and AI Craft",
     "section": "Answer: the method never existed",
-    "text": "Answer: the method never existed\nb) AttributeError — pandas has no .summarize(). The AI invented a plausible-sounding name, and Python answers with a traceback you’ve read since Episode 5:\n\nimport pandas as pd\norders = pd.DataFrame({\"zone\": [\"Nord\", \"Sued\"], \"total_eur\": [12.0, 9.5]})\n\norders.summarize()                     # the method the AI invented\n\n\n---------------------------------------------------------------------------\nAttributeError                            Traceback (most recent call last)\n/var/folders/_5/jkkjxxdd5f1955l380dky7n80000gn/T/ipykernel_66286/1876211805.py in ?()\n      1 import pandas as pd\n      2 orders = pd.DataFrame({\"zone\": [\"Nord\", \"Sued\"], \"total_eur\": [12.0, 9.5]})\n      3 \n----&gt; 4 orders.summarize()                     # the method the AI invented\n\n~/development/lectures/Introduction-to-Python/.venv/lib/python3.12/site-packages/pandas/core/generic.py in ?(self, name)\n   6314             and name not in self._accessors\n   6315             and self._info_axis._can_hold_identifiers_and_holds_name(name)\n   6316         ):\n   6317             return self[name]\n-&gt; 6318         return object.__getattribute__(self, name)\n\nAttributeError: 'DataFrame' object has no attribute 'summarize'\n\n\n\n\nThe real method is .describe():\n\nprint(orders.describe())               # the method that actually exists\n\n\n\n       total_eur\ncount   2.000000\nmean   10.750000\nstd     1.767767\nmin     9.500000\n25%    10.125000\n50%    10.750000\n75%    11.375000\nmax    12.000000\n\n\n\n\nAn AI that sounds sure is not the same as an API that exists."
+    "text": "Answer: the method never existed\nb) AttributeError — pandas has no .summarize(). The AI invented it:\n\nimport pandas as pd\norders = pd.DataFrame({\"zone\": [\"Nord\", \"Sued\"], \"total_eur\": [12.0, 9.5]})\norders.summarize()                     # the method the AI invented\n\n\nAttributeError: 'DataFrame' object has no attribute 'summarize'\n\n\n\n\n\nThe real method is .describe():\n\nprint(orders.describe())               # the method that actually exists\n\n\n\n       total_eur\ncount   2.000000\nmean   10.750000\nstd     1.767767\nmin     9.500000\n25%    10.125000\n50%    10.750000\n75%    11.375000\nmax    12.000000\n\n\n\n\nAn AI that sounds sure is not the same as an API that exists."
   },
   {
     "objectID": "lectures/lec_08_presentation.html#disclosure-one-line-every-time",
@@ -5234,14 +5431,14 @@
     "href": "lectures/lec_08_presentation.html#a-dataframe-from-a-dictionary",
     "title": "Lecture VIII - Pandas and AI Craft",
     "section": "A DataFrame from a dictionary",
-    "text": "A DataFrame from a dictionary\nKeys become column names; each list becomes a column. One order per row:\n\nimport pandas as pd\n\ndf = pd.DataFrame({\n    \"order_id\":  [101, 102, 103, 104, 105],\n    \"zone\":      [\"Nord\", \"Sued\", \"Nord\", \"Hafen\", \"Sued\"],\n    \"items\":     [2, 1, 3, 1, 4],\n    \"total_eur\": [18.50, 7.20, 24.00, 6.80, 31.40],\n})\nprint(df)\n\n\n\n   order_id   zone  items  total_eur\n0       101   Nord      2       18.5\n1       102   Sued      1        7.2\n2       103   Nord      3       24.0\n3       104  Hafen      1        6.8\n4       105   Sued      4       31.4\n\n\n\nFive orders, four columns, mixed types (text, integers, floats) living happily together.\n\n\n\n\n\n\n\n\nYou won’t type the investor’s eighty orders by hand. In tonight’s lab a real CSV loads in one line, orders = pd.read_csv(\"public/orders.csv\"). In the browser notebook that same line fetches the file over the web instead of from disk; pandas doesn’t care, your code doesn’t change."
+    "text": "A DataFrame from a dictionary\nKeys become column names; each list becomes a column; one order per row, mixed types together:\n\nimport pandas as pd\ndf = pd.DataFrame({\n    \"order_id\":  [101, 102, 103, 104, 105],\n    \"zone\":      [\"Nord\", \"Sued\", \"Nord\", \"Hafen\", \"Sued\"],\n    \"items\":     [2, 1, 3, 1, 4],\n    \"total_eur\": [18.50, 7.20, 24.00, 6.80, 31.40],\n})\nprint(df)\n\n\n\n   order_id   zone  items  total_eur\n0       101   Nord      2       18.5\n1       102   Sued      1        7.2\n2       103   Nord      3       24.0\n3       104  Hafen      1        6.8\n4       105   Sued      4       31.4\n\n\n\n\n\n\n\n\n\nNobody types eighty orders by hand: tonight’s lab loads a real CSV in one line, orders = pd.read_csv(\"public/orders.csv\"). In the browser that line fetches over the web instead of from disk; your code doesn’t change."
   },
   {
     "objectID": "lectures/lec_08_presentation.html#first-look-.head-and-.info",
     "href": "lectures/lec_08_presentation.html#first-look-.head-and-.info",
     "title": "Lecture VIII - Pandas and AI Craft",
     "section": "First look: .head() and .info()",
-    "text": "First look: .head() and .info()\nBefore analyzing a table, glance at it. .head() shows the top rows; .info() reports columns, types, and counts:\n\nprint(df.head(3))     # first 3 rows\nprint()\ndf.info()             # columns, dtypes, non-null counts\n\n\n\n   order_id  zone  items  total_eur\n0       101  Nord      2       18.5\n1       102  Sued      1        7.2\n2       103  Nord      3       24.0\n\n&lt;class 'pandas.core.frame.DataFrame'&gt;\nRangeIndex: 5 entries, 0 to 4\nData columns (total 4 columns):\n #   Column     Non-Null Count  Dtype  \n---  ------     --------------  -----  \n 0   order_id   5 non-null      int64  \n 1   zone       5 non-null      object \n 2   items      5 non-null      int64  \n 3   total_eur  5 non-null      float64\ndtypes: float64(1), int64(2), object(1)\nmemory usage: 292.0+ bytes\n\n\n\n.info() is your first sanity check: right number of rows? Any column a surprising type?"
+    "text": "First look: .head() and .info()\nBefore analyzing a table, glance at it. .head() shows the top rows; .info() is your first sanity check: right number of rows? Any column a surprising type?\n\nprint(df.head(3))     # first 3 rows\ndf.info()             # columns, dtypes, non-null counts\n\n\n\n   order_id  zone  items  total_eur\n0       101  Nord      2       18.5\n1       102  Sued      1        7.2\n2       103  Nord      3       24.0\n&lt;class 'pandas.core.frame.DataFrame'&gt;\nRangeIndex: 5 entries, 0 to 4\nData columns (total 4 columns):\n #   Column     Non-Null Count  Dtype  \n---  ------     --------------  -----  \n 0   order_id   5 non-null      int64  \n 1   zone       5 non-null      object \n 2   items      5 non-null      int64  \n 3   total_eur  5 non-null      float64\ndtypes: float64(1), int64(2), object(1)\nmemory usage: 292.0+ bytes"
   },
   {
     "objectID": "lectures/lec_08_presentation.html#the-numbers-at-a-glance-.describe",
@@ -5290,14 +5487,14 @@
     "href": "lectures/lec_08_presentation.html#tonights-episode",
     "title": "Lecture VIII - Pandas and AI Craft",
     "section": "Tonight’s episode",
-    "text": "Tonight’s episode\n\nHead to the lab notebook: Episode 8 — The Data Room\nThe investor slides a USB stick across the table: every order, two full weeks. It’s now orders.csv, eighty rows, loaded with one pd.read_csv line\nYou’ll .head(), .info() and .describe() it, filter with masks, add a column on a safe copy, and answer per-zone questions with groupby\nKevin has discovered AI; your real job is to supervise it and catch the confident nonsense\nIt runs entirely in your browser: no setup, just click and code\n\n\n\n\n\n\n\n\nDownload your .py before you leave. Closing the tab without downloading loses your work, the same motion you used to hand in the checkpoint this morning."
+    "text": "Tonight’s episode\n\nHead to the lab notebook: Episode 8 — The Data Room, in your browser as always\nThe investor slides a USB stick across the table: every order of two weeks, now orders.csv, eighty rows, one pd.read_csv line\nYou’ll .head(), .info() and .describe() it, filter with masks, add a column on a safe copy, and answer per-zone questions with groupby\nKevin has discovered AI; your real job is to supervise it and catch the confident nonsense\n\n\n\n\n\n\n\n\nDownload your .py before you leave. Closing the tab without downloading loses your work, the same motion you used to hand in the checkpoint this morning."
   },
   {
     "objectID": "lectures/lec_08_presentation.html#three-things-to-remember",
     "href": "lectures/lec_08_presentation.html#three-things-to-remember",
     "title": "Lecture VIII - Pandas and AI Craft",
     "section": "Three things to remember",
-    "text": "Three things to remember\n\nAI is a co-pilot you verify. Give it context and constraints, then read it → run it → test it on a case you know. An AI that sounds sure is not the same as an API that exists.\nA DataFrame is a named, mixed-type table. pd.DataFrame from a dict, pd.read_csv from a file; .head(), .info(), .describe() to look before you leap.\nSelect, filter, add, group. df[\"col\"], a boolean mask (df[df[\"zone\"] == \"Nord\"], case-sensitive!), a new column on a .copy(), and groupby for per-category answers. pandas won’t warn you; you verify.\n\n\n\n\n\n\n\n\nNext episode: charts the investor can’t argue with. Numbers convince the careful; a good plot convinces the room. We turn the data room into pictures."
+    "text": "Three things to remember\n\nAI is a co-pilot you verify. Give it context and constraints, then read it → run it → test it on a case you know.\nA DataFrame is a named, mixed-type table. pd.DataFrame from a dict, pd.read_csv from a file; .head(), .info(), .describe() to look before you leap.\nSelect, filter, add, group. df[\"col\"], a boolean mask (df[df[\"zone\"] == \"Nord\"], case-sensitive!), a new column on a .copy(), and groupby for per-category answers. pandas won’t warn you; you verify.\n\n\n\n\n\n\n\n\nNext episode: charts the investor can’t argue with. Numbers convince the careful; a good plot convinces the room. We turn the data room into pictures."
   },
   {
     "objectID": "lectures/lec_08_presentation.html#books-to-start-with",
@@ -5311,7 +5508,18 @@
     "href": "lectures/lec_10_projects.html",
     "title": "Lecture X - Tooling, Git and Your Project",
     "section": "",
-    "text": "The first 40 minutes are the checkpoint. It starts now: the acquirer runs one final audit before signing.\n\nIndividual work: no neighbors, no chat\nAI tools are allowed: being able to VERIFY the output is the skill being graded\nThe link and QR are handed out in class. Open it and start\n6 short tasks: pull the right number out of a pandas table, fix a line the AI got wrong, and read a chart honestly\nIt sweeps Sessions VIII–IX: pandas filtering and groupby, and telling an honest chart from a misleading one\n\n\n. . .\nWhen you’re done: menu → Download → Download Python code → upload the .py to the “Checkpoint 5” assignment on Moodle. No retakes: one sitting.\n. . .\n\n\n\n\n\n\nThe green ✅ live checks are provisional. The final grading runs on our side. The two multiple-choice tasks only say “recorded”, not ✅. That’s expected, they’re scored later. And take a breath: everything in it was rehearsed in the labs.",
+    "text": "Sessions VIII–IX. The first 40 minutes are the checkpoint. It starts now: the acquirer runs one final audit before signing.\n\nIndividual work: no neighbors, no chat\nAI tools are allowed: being able to VERIFY the output is the skill being graded\nThe link and QR are handed out in class. Open it and start\n6 short tasks: the right number out of a pandas table, a line the AI got wrong, an honest read of a chart\nIt sweeps Sessions VIII–IX: pandas filtering and groupby, honest charts vs. misleading ones\n\n\n\n\nMenu → Download → Download Python code → upload the .py to the “Checkpoint 5” assignment on Moodle. No retakes: one sitting.\n. . .\n\n\n\n\n\n\nThe green ✅ live checks are provisional. The final grading runs on our side. The two multiple-choice tasks only say “recorded”, not ✅. That’s expected, they’re scored later. And take a breath: everything in it was rehearsed in the labs.",
+    "crumbs": [
+      "10 Projects",
+      "Lecture"
+    ]
+  },
+  {
+    "objectID": "lectures/lec_10_projects.html#when-youre-done",
+    "href": "lectures/lec_10_projects.html#when-youre-done",
+    "title": "Lecture X - Tooling, Git and Your Project",
+    "section": "",
+    "text": "Menu → Download → Download Python code → upload the .py to the “Checkpoint 5” assignment on Moodle. No retakes: one sitting.\n. . .\n\n\n\n\n\n\nThe green ✅ live checks are provisional. The final grading runs on our side. The two multiple-choice tasks only say “recorded”, not ✅. That’s expected, they’re scored later. And take a breath: everything in it was rehearsed in the labs.",
     "crumbs": [
       "10 Projects",
       "Lecture"
@@ -5432,7 +5640,7 @@
     "href": "lectures/lec_10_projects.html#check-your-install",
     "title": "Lecture X - Tooling, Git and Your Project",
     "section": "Check your install",
-    "text": "Check your install\nBefore we build anything, the installs from the Session IX homework need to work. In a terminal:\nuv --version\ngit --version\ngh --version\n\nThree version numbers? You’re set.\nZed opens when you launch it? Good.\n\n. . .\n\n\n\n\n\n\nDidn’t work? Don’t burn the session fighting it. Flag it for office hours, pair up with your partner’s working machine, and follow along on the slides for now. Nobody gets left behind.",
+    "text": "Check your install\nBefore we build anything, the installs from the Session IX homework need to work. In a terminal:\nuv --version\ngit --version\ngh --version\n\nThree version numbers? You’re set.\nZed opens, and Mistral Vibe shows up in its agent panel? Good.\n\n. . .\n\n\n\n\n\n\nDidn’t work? Don’t burn the session fighting it. Flag it for office hours, pair up with your partner’s working machine, and follow along on the slides for now. Nobody gets left behind.",
     "crumbs": [
       "10 Projects",
       "Lecture"
@@ -5454,7 +5662,7 @@
     "href": "lectures/lec_10_projects.html#open-a-notebook-in-zed",
     "title": "Lecture X - Tooling, Git and Your Project",
     "section": "Open a notebook in Zed",
-    "text": "Open a notebook in Zed\nHere’s the reveal made concrete. Grab a lab .py you downloaded in Part I: we’ll use nb_03_lab_functions.py. Copy it into your project folder first (in Finder/Explorer, or drop it onto Zed’s file tree; dropping on the editor just opens a buffer, it doesn’t move the file). Then open it in Zed: it’s just code. Read it.\nThe file needs its tools first. Adding a package to a project is one command:\nuv add marimo\nNow run it, no browser required:\nuv run python nb_03_lab_functions.py\n. . .\nuv run uses the project’s own Python and packages. The file that lived in a browser tab all semester now runs on your machine, from your editor. That’s the whole point of today. (The Part-II pandas labs also want uv add pandas and their data file next to them; stick with a Part-I lab today.)",
+    "text": "Open a notebook in Zed\nGrab a lab .py you downloaded in Part I: we’ll use nb_03_lab_functions.py. Copy it into your project folder first (in Finder/Explorer), then open it in Zed: it’s just code. Read it.\nThe file needs its tools first. Adding a package to a project is one command:\nuv add marimo\nNow run it, no browser required:\nuv run python nb_03_lab_functions.py\n. . .\nuv run uses the project’s own Python and packages. The file that lived in a browser tab all semester now runs on your machine, from your editor. That’s the whole point of today. (Stick with a Part-I lab; the pandas labs also need uv add pandas and their CSV.)",
     "crumbs": [
       "10 Projects",
       "Lecture"
@@ -5465,7 +5673,7 @@
     "href": "lectures/lec_10_projects.html#connect-your-ai",
     "title": "Lecture X - Tooling, Git and Your Project",
     "section": "Connect your AI",
-    "text": "Connect your AI\nPart III encourages AI. You’ve earned the co-pilot. Connect one provider in Zed following the AI-tools guide (the free Mistral key is the guaranteed path; paste it into Zed’s assistant settings).\n. . .\n\n\n\n\n\n\nThe disclosure rule still stands, now in writing: your repo’s README.md says which tools you used, what for, and what you checked yourself. AI drafts; you verify, same reflex as the checkpoint you just sat.",
+    "text": "Connect your AI\nPart III encourages AI. You’ve earned the co-pilot, and it’s already installed: Mistral Vibe, running inside Zed on the key from Session VI (setup in the AI-tools guide). Open the agent panel, pick Mistral Vibe, and try it on your two-minute-old project:\n\nExplain what main.py does, then add a docstring. Don’t change anything else.\n\nRead the diff Zed shows you before you accept it. That’s the whole workflow: you ask, it drafts, you verify.\n. . .\n\n\n\n\n\n\nThe disclosure rule still stands, now in writing: your repo’s README.md says which tools you used, what for, and what you checked yourself. AI drafts; you verify, same reflex as the checkpoint you just sat.",
     "crumbs": [
       "10 Projects",
       "Lecture"
@@ -5487,7 +5695,7 @@
     "href": "lectures/lec_10_projects.html#once-per-machine",
     "title": "Lecture X - Tooling, Git and Your Project",
     "section": "Once per machine",
-    "text": "Once per machine\nBefore any push reaches GitHub, your machine has to prove it’s allowed to. Signing in to Zed does not do this; git needs its own setup. You need a (free) GitHub account and the gh tool. Not installed? Get it via the Git Basics page first. Then, once per computer, in a terminal:\ngh auth login\nChoose GitHub.com, HTTPS, authenticate in the browser, and answer yes to “Authenticate Git with your GitHub credentials?”. Then, once:\ngit config --global pull.rebase false\n. . .\n\n\n\n\n\n\nFull walkthrough (installing gh, checking it worked) is on the Git Basics page, your at-home reference for all of this.\n\n\n\n. . .\n\n\n\n\n\n\nAuth fighting you? Same rule as the toolchain: flag it, follow along on the slides, and finish the push at home with the Git Basics page, or with us in the supervised sessions. Nobody’s project stalls on a login.",
+    "text": "Once per machine\nBefore any push reaches GitHub, your machine has to prove it’s allowed to. Signing in to Zed does not do this; git needs its own setup. You need a (free) GitHub account and the gh tool. Not installed? Get it via the Git Basics page first. Then, once per computer, in a terminal:\ngh auth login\nChoose GitHub.com, HTTPS, authenticate in the browser, and answer yes to “Authenticate Git with your GitHub credentials?”. Then, once:\ngit config --global pull.rebase false\n. . .\n\n\n\n\n\n\nAuth fighting you? Same rule as the toolchain: flag it, follow along on the slides, and finish the push at home with the Git Basics page, or with us in the supervised sessions. Nobody’s project stalls on a login.",
     "crumbs": [
       "10 Projects",
       "Lecture"
@@ -5509,7 +5717,7 @@
     "href": "lectures/lec_10_projects.html#put-it-on-github-repo-owner-only",
     "title": "Lecture X - Tooling, Git and Your Project",
     "section": "Put it on GitHub — repo owner only",
-    "text": "Put it on GitHub — repo owner only\nThis slide is for the repo owner you picked in the pairing block. Partner: watch. You’ll clone in a minute; don’t create your own GitHub repo.\nGitHub doesn’t know about your project yet. Three steps, done by the owner:\n\nOn github.com, create a new empty repository (no README, keep it empty). (There’s no “publish” button inside Zed; the GitHub-side repo is made on the website.)\nIn Zed: git: create remote, paste the repo’s HTTPS URL (https://github.com/you/project.git); if it asks for a remote name, use origin (terminal: git remote add origin &lt;HTTPS url&gt;)\nDo the first push from the terminal, this exact line, once:\n\ngit push -u origin HEAD\n. . .\nAfter this one-time command, every later push is just git: push in Zed (terminal: git push).",
+    "text": "Put it on GitHub — repo owner only\nRepo owner only. Partner: watch, you clone in a minute; don’t create your own repo. GitHub doesn’t know about the project yet, three steps:\n\nOn github.com, create a new empty repository (no README). The GitHub side is made on the website, not in Zed\nIn Zed: git: create remote, paste the HTTPS URL (https://github.com/you/project.git), name it origin\nDo the first push from the terminal, this exact line, once:\n\ngit push -u origin HEAD\n. . .\nAfter this one-time command, every later push is just git: push in Zed (terminal: git push).",
     "crumbs": [
       "10 Projects",
       "Lecture"
@@ -5580,6 +5788,13 @@
       "10 Projects",
       "Lecture"
     ]
+  },
+  {
+    "objectID": "lectures/lec_10_presentation.html#when-youre-done",
+    "href": "lectures/lec_10_presentation.html#when-youre-done",
+    "title": "Lecture X - Tooling, Git and Your Project",
+    "section": "When you’re done",
+    "text": "When you’re done\nMenu → Download → Download Python code → upload the .py to the “Checkpoint 5” assignment on Moodle. No retakes: one sitting.\n\n\n\n\n\n\n\nThe green ✅ live checks are provisional. The final grading runs on our side. The two multiple-choice tasks only say “recorded”, not ✅. That’s expected, they’re scored later. And take a breath: everything in it was rehearsed in the labs."
   },
   {
     "objectID": "lectures/lec_10_presentation.html#the-deal-closes",
@@ -5656,7 +5871,7 @@
     "href": "lectures/lec_10_presentation.html#check-your-install",
     "title": "Lecture X - Tooling, Git and Your Project",
     "section": "Check your install",
-    "text": "Check your install\nBefore we build anything, the installs from the Session IX homework need to work. In a terminal:\nuv --version\ngit --version\ngh --version\n\nThree version numbers? You’re set.\nZed opens when you launch it? Good.\n\n\n\n\n\n\n\n\nDidn’t work? Don’t burn the session fighting it. Flag it for office hours, pair up with your partner’s working machine, and follow along on the slides for now. Nobody gets left behind."
+    "text": "Check your install\nBefore we build anything, the installs from the Session IX homework need to work. In a terminal:\nuv --version\ngit --version\ngh --version\n\nThree version numbers? You’re set.\nZed opens, and Mistral Vibe shows up in its agent panel? Good.\n\n\n\n\n\n\n\n\nDidn’t work? Don’t burn the session fighting it. Flag it for office hours, pair up with your partner’s working machine, and follow along on the slides for now. Nobody gets left behind."
   },
   {
     "objectID": "lectures/lec_10_presentation.html#start-the-project-uv-init",
@@ -5670,14 +5885,14 @@
     "href": "lectures/lec_10_presentation.html#open-a-notebook-in-zed",
     "title": "Lecture X - Tooling, Git and Your Project",
     "section": "Open a notebook in Zed",
-    "text": "Open a notebook in Zed\nHere’s the reveal made concrete. Grab a lab .py you downloaded in Part I: we’ll use nb_03_lab_functions.py. Copy it into your project folder first (in Finder/Explorer, or drop it onto Zed’s file tree; dropping on the editor just opens a buffer, it doesn’t move the file). Then open it in Zed: it’s just code. Read it.\nThe file needs its tools first. Adding a package to a project is one command:\nuv add marimo\nNow run it, no browser required:\nuv run python nb_03_lab_functions.py\n\nuv run uses the project’s own Python and packages. The file that lived in a browser tab all semester now runs on your machine, from your editor. That’s the whole point of today. (The Part-II pandas labs also want uv add pandas and their data file next to them; stick with a Part-I lab today.)"
+    "text": "Open a notebook in Zed\nGrab a lab .py you downloaded in Part I: we’ll use nb_03_lab_functions.py. Copy it into your project folder first (in Finder/Explorer), then open it in Zed: it’s just code. Read it.\nThe file needs its tools first. Adding a package to a project is one command:\nuv add marimo\nNow run it, no browser required:\nuv run python nb_03_lab_functions.py\n\nuv run uses the project’s own Python and packages. The file that lived in a browser tab all semester now runs on your machine, from your editor. That’s the whole point of today. (Stick with a Part-I lab; the pandas labs also need uv add pandas and their CSV.)"
   },
   {
     "objectID": "lectures/lec_10_presentation.html#connect-your-ai",
     "href": "lectures/lec_10_presentation.html#connect-your-ai",
     "title": "Lecture X - Tooling, Git and Your Project",
     "section": "Connect your AI",
-    "text": "Connect your AI\nPart III encourages AI. You’ve earned the co-pilot. Connect one provider in Zed following the AI-tools guide (the free Mistral key is the guaranteed path; paste it into Zed’s assistant settings).\n\n\n\n\n\n\n\nThe disclosure rule still stands, now in writing: your repo’s README.md says which tools you used, what for, and what you checked yourself. AI drafts; you verify, same reflex as the checkpoint you just sat."
+    "text": "Connect your AI\nPart III encourages AI. You’ve earned the co-pilot, and it’s already installed: Mistral Vibe, running inside Zed on the key from Session VI (setup in the AI-tools guide). Open the agent panel, pick Mistral Vibe, and try it on your two-minute-old project:\n\nExplain what main.py does, then add a docstring. Don’t change anything else.\n\nRead the diff Zed shows you before you accept it. That’s the whole workflow: you ask, it drafts, you verify.\n\n\n\n\n\n\n\nThe disclosure rule still stands, now in writing: your repo’s README.md says which tools you used, what for, and what you checked yourself. AI drafts; you verify, same reflex as the checkpoint you just sat."
   },
   {
     "objectID": "lectures/lec_10_presentation.html#the-five-words",
@@ -5691,7 +5906,7 @@
     "href": "lectures/lec_10_presentation.html#once-per-machine",
     "title": "Lecture X - Tooling, Git and Your Project",
     "section": "Once per machine",
-    "text": "Once per machine\nBefore any push reaches GitHub, your machine has to prove it’s allowed to. Signing in to Zed does not do this; git needs its own setup. You need a (free) GitHub account and the gh tool. Not installed? Get it via the Git Basics page first. Then, once per computer, in a terminal:\ngh auth login\nChoose GitHub.com, HTTPS, authenticate in the browser, and answer yes to “Authenticate Git with your GitHub credentials?”. Then, once:\ngit config --global pull.rebase false\n\n\n\n\n\n\n\nFull walkthrough (installing gh, checking it worked) is on the Git Basics page, your at-home reference for all of this.\n\n\n\n\n\n\n\n\n\n\n\nAuth fighting you? Same rule as the toolchain: flag it, follow along on the slides, and finish the push at home with the Git Basics page, or with us in the supervised sessions. Nobody’s project stalls on a login."
+    "text": "Once per machine\nBefore any push reaches GitHub, your machine has to prove it’s allowed to. Signing in to Zed does not do this; git needs its own setup. You need a (free) GitHub account and the gh tool. Not installed? Get it via the Git Basics page first. Then, once per computer, in a terminal:\ngh auth login\nChoose GitHub.com, HTTPS, authenticate in the browser, and answer yes to “Authenticate Git with your GitHub credentials?”. Then, once:\ngit config --global pull.rebase false\n\n\n\n\n\n\n\nAuth fighting you? Same rule as the toolchain: flag it, follow along on the slides, and finish the push at home with the Git Basics page, or with us in the supervised sessions. Nobody’s project stalls on a login."
   },
   {
     "objectID": "lectures/lec_10_presentation.html#your-first-commit",
@@ -5705,7 +5920,7 @@
     "href": "lectures/lec_10_presentation.html#put-it-on-github-repo-owner-only",
     "title": "Lecture X - Tooling, Git and Your Project",
     "section": "Put it on GitHub — repo owner only",
-    "text": "Put it on GitHub — repo owner only\nThis slide is for the repo owner you picked in the pairing block. Partner: watch. You’ll clone in a minute; don’t create your own GitHub repo.\nGitHub doesn’t know about your project yet. Three steps, done by the owner:\n\nOn github.com, create a new empty repository (no README, keep it empty). (There’s no “publish” button inside Zed; the GitHub-side repo is made on the website.)\nIn Zed: git: create remote, paste the repo’s HTTPS URL (https://github.com/you/project.git); if it asks for a remote name, use origin (terminal: git remote add origin &lt;HTTPS url&gt;)\nDo the first push from the terminal, this exact line, once:\n\ngit push -u origin HEAD\n\nAfter this one-time command, every later push is just git: push in Zed (terminal: git push)."
+    "text": "Put it on GitHub — repo owner only\nRepo owner only. Partner: watch, you clone in a minute; don’t create your own repo. GitHub doesn’t know about the project yet, three steps:\n\nOn github.com, create a new empty repository (no README). The GitHub side is made on the website, not in Zed\nIn Zed: git: create remote, paste the HTTPS URL (https://github.com/you/project.git), name it origin\nDo the first push from the terminal, this exact line, once:\n\ngit push -u origin HEAD\n\nAfter this one-time command, every later push is just git: push in Zed (terminal: git push)."
   },
   {
     "objectID": "lectures/lec_10_presentation.html#your-partner-joins",

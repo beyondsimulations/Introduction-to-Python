@@ -7,8 +7,8 @@
 <script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
 <link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
 <link href="../site_libs/quarto-html/light-border.css" rel="stylesheet">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-de63f62b328812d8e578a4d74e282472.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
-  <meta name="generator" content="quarto-1.9.38">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-bb62276ab45c84d9efd712f51ff97b5a.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
+  <meta name="generator" content="quarto-1.10.18">
 
   <meta name="author" content="Dr.&nbsp;Tobias Vlćek">
   <title>Programming with Python – Lecture VII - NumPy for Scientific Computing</title>
@@ -21,10 +21,13 @@
     /* Default styles provided by pandoc.
     ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
     */
-    code{white-space: pre-wrap;}
     span.smallcaps{font-variant: small-caps;}
-    div.columns{display: flex; gap: min(4vw, 1.5em);}
-    div.column{flex: auto; overflow-x: auto;}
+    div.columns{display: flex; gap: 1.5em;}
+    div.column{flex: auto;}
+    @media screen {
+    div.columns{gap: min(4vw, 1.5em);}
+    div.column{overflow-x: auto;}
+    }
     div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
     ul.task-list{list-style: none;}
     ul.task-list li input[type="checkbox"] {
@@ -203,7 +206,7 @@
 <div class="quarto-title-authors">
 <div class="quarto-title-author">
 <div class="quarto-title-author-name">
-Dr.&nbsp;Tobias Vlćek 
+Dr.&nbsp;Tobias Vlćek
 </div>
         <p class="quarto-title-affiliation">
             Kühne Logistics University Hamburg - Fall 2026
@@ -237,9 +240,9 @@ Dr.&nbsp;Tobias Vlćek
 </section>
 <section id="question-1" class="slide level2">
 <h2>Question 1</h2>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a></a><span class="im">from</span> math <span class="im">import</span> ceil</span>
-<span id="cb1-2"><a></a></span>
-<span id="cb1-3"><a></a><span class="co"># which line works?</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a aria-label="1"></a><span class="im">from</span> math <span class="im">import</span> ceil</span>
+<span id="cb1-2"><a aria-label="2"></a></span>
+<span id="cb1-3"><a aria-label="3"></a><span class="co"># which line works?</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>a) <code>ceil(3.2)</code> b) <code>math.ceil(3.2)</code> c) both</p>
 </section>
 <section id="answer-1" class="slide level2">
@@ -248,12 +251,12 @@ Dr.&nbsp;Tobias Vlćek
 </section>
 <section id="question-2" class="slide level2">
 <h2>Question 2</h2>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a></a><span class="im">import</span> random</span>
-<span id="cb2-2"><a></a></span>
-<span id="cb2-3"><a></a>random.seed(<span class="dv">42</span>)</span>
-<span id="cb2-4"><a></a><span class="bu">print</span>(random.randint(<span class="dv">1</span>, <span class="dv">20</span>))</span>
-<span id="cb2-5"><a></a><span class="bu">print</span>(random.randint(<span class="dv">1</span>, <span class="dv">20</span>))</span>
-<span id="cb2-6"><a></a><span class="bu">print</span>(random.randint(<span class="dv">1</span>, <span class="dv">20</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a aria-label="1"></a><span class="im">import</span> random</span>
+<span id="cb2-2"><a aria-label="2"></a></span>
+<span id="cb2-3"><a aria-label="3"></a>random.seed(<span class="dv">42</span>)</span>
+<span id="cb2-4"><a aria-label="4"></a><span class="bu">print</span>(random.randint(<span class="dv">1</span>, <span class="dv">20</span>))</span>
+<span id="cb2-5"><a aria-label="5"></a><span class="bu">print</span>(random.randint(<span class="dv">1</span>, <span class="dv">20</span>))</span>
+<span id="cb2-6"><a aria-label="6"></a><span class="bu">print</span>(random.randint(<span class="dv">1</span>, <span class="dv">20</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>Kevin runs this exact script today and again tomorrow. Tomorrow’s numbers are…</p>
 <p>a) different: random is random b) an error: seed 42 was already used c) the same three numbers</p>
 </section>
@@ -263,9 +266,9 @@ Dr.&nbsp;Tobias Vlćek
 </section>
 <section id="question-3" class="slide level2">
 <h2>Question 3</h2>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a></a><span class="im">import</span> statistics</span>
-<span id="cb3-2"><a></a></span>
-<span id="cb3-3"><a></a>statistics.median([<span class="dv">9</span>, <span class="dv">2</span>, <span class="dv">5</span>])</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a aria-label="1"></a><span class="im">import</span> statistics</span>
+<span id="cb3-2"><a aria-label="2"></a></span>
+<span id="cb3-3"><a aria-label="3"></a>statistics.median([<span class="dv">9</span>, <span class="dv">2</span>, <span class="dv">5</span>])</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>returns…</p>
 <p>a) <code>2</code> b) <code>5</code> c) an error: the list is not sorted</p>
 </section>
@@ -281,14 +284,14 @@ Dr.&nbsp;Tobias Vlćek
 <section id="from-a-list-to-an-array" class="slide level2">
 <h2>From a list to an array</h2>
 <p>A <strong>NumPy array</strong> holds many numbers under one name, like a list, but built for math. You make one from a list, then ask it about itself:</p>
-<div id="6549778a" class="cell" data-execution_count="1">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
-<span id="cb4-2"><a></a></span>
-<span id="cb4-3"><a></a>prices <span class="op">=</span> np.array([<span class="fl">12.0</span>, <span class="fl">9.0</span>, <span class="fl">15.0</span>])</span>
-<span id="cb4-4"><a></a><span class="bu">print</span>(prices)</span>
-<span id="cb4-5"><a></a><span class="bu">print</span>(prices.shape)   <span class="co"># how many, in each dimension</span></span>
-<span id="cb4-6"><a></a><span class="bu">print</span>(prices.dtype)   <span class="co"># what kind of number</span></span>
-<span id="cb4-7"><a></a><span class="bu">print</span>(prices.size)    <span class="co"># how many in total</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div id="ae22cf60" class="cell" data-execution_count="1">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a aria-label="1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb4-2"><a aria-label="2"></a></span>
+<span id="cb4-3"><a aria-label="3"></a>prices <span class="op">=</span> np.array([<span class="fl">12.0</span>, <span class="fl">9.0</span>, <span class="fl">15.0</span>])</span>
+<span id="cb4-4"><a aria-label="4"></a><span class="bu">print</span>(prices)</span>
+<span id="cb4-5"><a aria-label="5"></a><span class="bu">print</span>(prices.shape)   <span class="co"># how many, in each dimension</span></span>
+<span id="cb4-6"><a aria-label="6"></a><span class="bu">print</span>(prices.dtype)   <span class="co"># what kind of number</span></span>
+<span id="cb4-7"><a aria-label="7"></a><span class="bu">print</span>(prices.size)    <span class="co"># how many in total</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <div class="cell fragment" data-execution_count="1">
 <div class="cell-output cell-output-stdout">
@@ -305,15 +308,15 @@ float64
 <section id="one-operation-every-element" class="slide level2">
 <h2>One operation, every element</h2>
 <p>Here’s the bigger boat. The deck needs <strong>gross</strong> prices: 19% VAT on all three. With a list you loop; with an array you just multiply:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb6"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a></a><span class="co"># the painful way — a loop, item by item</span></span>
-<span id="cb6-2"><a></a>gross <span class="op">=</span> []</span>
-<span id="cb6-3"><a></a><span class="cf">for</span> p <span class="kw">in</span> [<span class="fl">12.0</span>, <span class="fl">9.0</span>, <span class="fl">15.0</span>]:</span>
-<span id="cb6-4"><a></a>    gross.append(p <span class="op">*</span> <span class="fl">1.19</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div id="71dfe1b5" class="cell" data-execution_count="2">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
-<span id="cb7-2"><a></a></span>
-<span id="cb7-3"><a></a>prices <span class="op">=</span> np.array([<span class="fl">12.0</span>, <span class="fl">9.0</span>, <span class="fl">15.0</span>])</span>
-<span id="cb7-4"><a></a><span class="bu">print</span>(prices <span class="op">*</span> <span class="fl">1.19</span>)   <span class="co"># every element, one expression</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb6"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a aria-label="1"></a><span class="co"># the painful way — a loop, item by item</span></span>
+<span id="cb6-2"><a aria-label="2"></a>gross <span class="op">=</span> []</span>
+<span id="cb6-3"><a aria-label="3"></a><span class="cf">for</span> p <span class="kw">in</span> [<span class="fl">12.0</span>, <span class="fl">9.0</span>, <span class="fl">15.0</span>]:</span>
+<span id="cb6-4"><a aria-label="4"></a>    gross.append(p <span class="op">*</span> <span class="fl">1.19</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div id="b9c16682" class="cell" data-execution_count="2">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a aria-label="1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb7-2"><a aria-label="2"></a></span>
+<span id="cb7-3"><a aria-label="3"></a>prices <span class="op">=</span> np.array([<span class="fl">12.0</span>, <span class="fl">9.0</span>, <span class="fl">15.0</span>])</span>
+<span id="cb7-4"><a aria-label="4"></a><span class="bu">print</span>(prices <span class="op">*</span> <span class="fl">1.19</span>)   <span class="co"># every element, one expression</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <div class="cell fragment" data-execution_count="2">
 <div class="cell-output cell-output-stdout">
@@ -327,11 +330,11 @@ float64
 <section id="arrays-from-scratch" class="slide level2">
 <h2>Arrays from scratch</h2>
 <p>Two builders make evenly-spaced arrays without typing every number, handy for axes and ranges:</p>
-<div id="93fa6bbf" class="cell" data-execution_count="3">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
-<span id="cb9-2"><a></a></span>
-<span id="cb9-3"><a></a><span class="bu">print</span>(np.arange(<span class="dv">0</span>, <span class="dv">10</span>, <span class="dv">2</span>))     <span class="co"># start, stop (excluded), step</span></span>
-<span id="cb9-4"><a></a><span class="bu">print</span>(np.linspace(<span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">5</span>))    <span class="co"># start, stop (included), how many</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div id="674fd659" class="cell" data-execution_count="3">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a aria-label="1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb9-2"><a aria-label="2"></a></span>
+<span id="cb9-3"><a aria-label="3"></a><span class="bu">print</span>(np.arange(<span class="dv">0</span>, <span class="dv">10</span>, <span class="dv">2</span>))     <span class="co"># start, stop (excluded), step</span></span>
+<span id="cb9-4"><a aria-label="4"></a><span class="bu">print</span>(np.linspace(<span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">5</span>))    <span class="co"># start, stop (included), how many</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <div class="cell fragment" data-execution_count="3">
 <div class="cell-output cell-output-stdout">
@@ -346,7 +349,7 @@ float64
 <section id="predict-times-two" class="slide level2">
 <h2>Predict: times two</h2>
 <p>Kevin multiplies a row of counts by two. What does this print?</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb11"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a></a><span class="bu">print</span>([<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>] <span class="op">*</span> <span class="dv">2</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb11"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a aria-label="1"></a><span class="bu">print</span>([<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>] <span class="op">*</span> <span class="dv">2</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>a) <code>[1, 2, 3, 1, 2, 3]</code> b) <code>[2, 4, 6]</code> c) an error</p>
 <div class="fragment">
 <p><span class="question">Predict first</span>. Commit to an answer before the next slide.</p>
@@ -355,11 +358,11 @@ float64
 <section id="answer-lists-repeat-arrays-compute" class="slide level2">
 <h2>Answer: lists repeat, arrays compute</h2>
 <p><strong>a) <code>[1, 2, 3, 1, 2, 3]</code></strong> — that’s a plain <strong>list</strong>, and <code>* 2</code> on a list <em>repeats</em> it. Wrap it in an array and the same <code>* 2</code> does the math instead:</p>
-<div id="6efee7d4" class="cell" data-execution_count="4">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb12"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
-<span id="cb12-2"><a></a></span>
-<span id="cb12-3"><a></a><span class="bu">print</span>([<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>] <span class="op">*</span> <span class="dv">2</span>)              <span class="co"># list → repeated</span></span>
-<span id="cb12-4"><a></a><span class="bu">print</span>(np.array([<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>]) <span class="op">*</span> <span class="dv">2</span>)    <span class="co"># array → doubled</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div id="44c45a86" class="cell" data-execution_count="4">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb12"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a aria-label="1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb12-2"><a aria-label="2"></a></span>
+<span id="cb12-3"><a aria-label="3"></a><span class="bu">print</span>([<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>] <span class="op">*</span> <span class="dv">2</span>)              <span class="co"># list → repeated</span></span>
+<span id="cb12-4"><a aria-label="4"></a><span class="bu">print</span>(np.array([<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>]) <span class="op">*</span> <span class="dv">2</span>)    <span class="co"># array → doubled</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <div class="cell fragment" data-execution_count="4">
 <div class="cell-output cell-output-stdout">
@@ -387,12 +390,12 @@ float64
 <section id="a-comparison-makes-a-mask" class="slide level2">
 <h2>A comparison makes a mask</h2>
 <p>Compare an array to a number and you don’t get one <code>True</code>/<code>False</code>. You get a <strong>whole array</strong> of them, one per element. That’s a <strong>mask</strong>, and you can filter with it:</p>
-<div id="ddda368b" class="cell" data-execution_count="5">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb14"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
-<span id="cb14-2"><a></a></span>
-<span id="cb14-3"><a></a>times <span class="op">=</span> np.array([<span class="dv">25</span>, <span class="dv">41</span>, <span class="dv">18</span>, <span class="dv">33</span>])</span>
-<span id="cb14-4"><a></a><span class="bu">print</span>(times <span class="op">&gt;</span> <span class="dv">30</span>)            <span class="co"># a True/False for every element</span></span>
-<span id="cb14-5"><a></a><span class="bu">print</span>(times[times <span class="op">&gt;</span> <span class="dv">30</span>])     <span class="co"># keep only where the mask is True</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div id="cf2303da" class="cell" data-execution_count="5">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb14"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a aria-label="1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb14-2"><a aria-label="2"></a></span>
+<span id="cb14-3"><a aria-label="3"></a>times <span class="op">=</span> np.array([<span class="dv">25</span>, <span class="dv">41</span>, <span class="dv">18</span>, <span class="dv">33</span>])</span>
+<span id="cb14-4"><a aria-label="4"></a><span class="bu">print</span>(times <span class="op">&gt;</span> <span class="dv">30</span>)            <span class="co"># a True/False for every element</span></span>
+<span id="cb14-5"><a aria-label="5"></a><span class="bu">print</span>(times[times <span class="op">&gt;</span> <span class="dv">30</span>])     <span class="co"># keep only where the mask is True</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <div class="cell fragment" data-execution_count="5">
 <div class="cell-output cell-output-stdout">
@@ -407,14 +410,14 @@ float64
 <section id="counting-without-a-loop" class="slide level2">
 <h2>Counting without a loop</h2>
 <p>A mask answers two investor questions at once. <code>.sum()</code> counts the <code>True</code>s (each counts as <code>1</code>); <code>.mean()</code> gives the <strong>share</strong> that are <code>True</code>:</p>
-<div id="6971259a" class="cell" data-execution_count="6">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb16"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
-<span id="cb16-2"><a></a></span>
-<span id="cb16-3"><a></a>times <span class="op">=</span> np.array([<span class="dv">25</span>, <span class="dv">41</span>, <span class="dv">18</span>, <span class="dv">33</span>, <span class="dv">52</span>, <span class="dv">29</span>, <span class="dv">44</span>, <span class="dv">12</span>])</span>
-<span id="cb16-4"><a></a>late <span class="op">=</span> times <span class="op">&gt;</span> <span class="dv">30</span></span>
-<span id="cb16-5"><a></a><span class="bu">print</span>(<span class="bu">int</span>(late.<span class="bu">sum</span>()))              <span class="co"># how many were late</span></span>
-<span id="cb16-6"><a></a><span class="bu">print</span>(<span class="bu">float</span>(times[late].mean()))    <span class="co"># average of just the late ones</span></span>
-<span id="cb16-7"><a></a><span class="bu">print</span>(<span class="bu">float</span>(late.mean()))           <span class="co"># the SHARE that were late</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div id="a5a8b7a2" class="cell" data-execution_count="6">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb16"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a aria-label="1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb16-2"><a aria-label="2"></a></span>
+<span id="cb16-3"><a aria-label="3"></a>times <span class="op">=</span> np.array([<span class="dv">25</span>, <span class="dv">41</span>, <span class="dv">18</span>, <span class="dv">33</span>, <span class="dv">52</span>, <span class="dv">29</span>, <span class="dv">44</span>, <span class="dv">12</span>])</span>
+<span id="cb16-4"><a aria-label="4"></a>late <span class="op">=</span> times <span class="op">&gt;</span> <span class="dv">30</span></span>
+<span id="cb16-5"><a aria-label="5"></a><span class="bu">print</span>(<span class="bu">int</span>(late.<span class="bu">sum</span>()))              <span class="co"># how many were late</span></span>
+<span id="cb16-6"><a aria-label="6"></a><span class="bu">print</span>(<span class="bu">float</span>(times[late].mean()))    <span class="co"># average of just the late ones</span></span>
+<span id="cb16-7"><a aria-label="7"></a><span class="bu">print</span>(<span class="bu">float</span>(late.mean()))           <span class="co"># the SHARE that were late</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <div class="cell fragment" data-execution_count="6">
 <div class="cell-output cell-output-stdout">
@@ -430,7 +433,7 @@ float64
 <section id="predict-counting-the-trues" class="slide level2">
 <h2>Predict: counting the Trues</h2>
 <p>What does calling <code>.sum()</code> on the mask give?</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb18"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a></a><span class="bu">print</span>((np.array([<span class="dv">1</span>, <span class="dv">5</span>, <span class="dv">3</span>]) <span class="op">&gt;</span> <span class="dv">2</span>).<span class="bu">sum</span>())</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb18"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a aria-label="1"></a><span class="bu">print</span>((np.array([<span class="dv">1</span>, <span class="dv">5</span>, <span class="dv">3</span>]) <span class="op">&gt;</span> <span class="dv">2</span>).<span class="bu">sum</span>())</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>a) <code>True</code> b) <code>2</code> c) <code>[False, True, True]</code></p>
 <div class="fragment">
 <p><span class="question">Predict first</span>. Commit to an answer before the next slide.</p>
@@ -439,11 +442,11 @@ float64
 <section id="answer-true-counts-as-1" class="slide level2">
 <h2>Answer: True counts as 1</h2>
 <p><strong>b) <code>2</code></strong> — <code>.sum()</code> adds the mask up, and each <code>True</code> is worth <code>1</code>, each <code>False</code> <code>0</code>. Two elements clear the bar, so the count is <code>2</code>:</p>
-<div id="2bb86a4e" class="cell" data-execution_count="7">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb19"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
-<span id="cb19-2"><a></a></span>
-<span id="cb19-3"><a></a><span class="bu">print</span>(np.array([<span class="dv">1</span>, <span class="dv">5</span>, <span class="dv">3</span>]) <span class="op">&gt;</span> <span class="dv">2</span>)            <span class="co"># [False  True  True]</span></span>
-<span id="cb19-4"><a></a><span class="bu">print</span>((np.array([<span class="dv">1</span>, <span class="dv">5</span>, <span class="dv">3</span>]) <span class="op">&gt;</span> <span class="dv">2</span>).<span class="bu">sum</span>())    <span class="co"># Trues add up to 2</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div id="481f0bf3" class="cell" data-execution_count="7">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb19"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a aria-label="1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb19-2"><a aria-label="2"></a></span>
+<span id="cb19-3"><a aria-label="3"></a><span class="bu">print</span>(np.array([<span class="dv">1</span>, <span class="dv">5</span>, <span class="dv">3</span>]) <span class="op">&gt;</span> <span class="dv">2</span>)            <span class="co"># [False  True  True]</span></span>
+<span id="cb19-4"><a aria-label="4"></a><span class="bu">print</span>((np.array([<span class="dv">1</span>, <span class="dv">5</span>, <span class="dv">3</span>]) <span class="op">&gt;</span> <span class="dv">2</span>).<span class="bu">sum</span>())    <span class="co"># Trues add up to 2</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <div class="cell fragment" data-execution_count="7">
 <div class="cell-output cell-output-stdout">
@@ -471,14 +474,14 @@ float64
 <section id="a-grid-of-numbers" class="slide level2">
 <h2>A grid of numbers</h2>
 <p>Real data isn’t one row. Stack rows and you get a <strong>2D array</strong>: here three <strong>days</strong> (rows) across four <strong>zones</strong> (columns: Nord, Sued, Hafen, Altstadt):</p>
-<div id="598a9967" class="cell" data-execution_count="8">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb21"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
-<span id="cb21-2"><a></a></span>
-<span id="cb21-3"><a></a>deliveries <span class="op">=</span> np.array([[ <span class="dv">9</span>, <span class="dv">14</span>, <span class="dv">11</span>,  <span class="dv">6</span>],</span>
-<span id="cb21-4"><a></a>                       [<span class="dv">15</span>, <span class="dv">12</span>,  <span class="dv">8</span>,  <span class="dv">9</span>],</span>
-<span id="cb21-5"><a></a>                       [<span class="dv">13</span>, <span class="dv">20</span>, <span class="dv">16</span>, <span class="dv">11</span>]])</span>
-<span id="cb21-6"><a></a><span class="bu">print</span>(deliveries.shape)      <span class="co"># (rows, columns) → (3, 4)</span></span>
-<span id="cb21-7"><a></a><span class="bu">print</span>(deliveries[<span class="dv">0</span>, <span class="dv">2</span>])      <span class="co"># row 0, column 2</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div id="016bddf8" class="cell" data-execution_count="8">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb21"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a aria-label="1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb21-2"><a aria-label="2"></a></span>
+<span id="cb21-3"><a aria-label="3"></a>deliveries <span class="op">=</span> np.array([[ <span class="dv">9</span>, <span class="dv">14</span>, <span class="dv">11</span>,  <span class="dv">6</span>],</span>
+<span id="cb21-4"><a aria-label="4"></a>                       [<span class="dv">15</span>, <span class="dv">12</span>,  <span class="dv">8</span>,  <span class="dv">9</span>],</span>
+<span id="cb21-5"><a aria-label="5"></a>                       [<span class="dv">13</span>, <span class="dv">20</span>, <span class="dv">16</span>, <span class="dv">11</span>]])</span>
+<span id="cb21-6"><a aria-label="6"></a><span class="bu">print</span>(deliveries.shape)      <span class="co"># (rows, columns) → (3, 4)</span></span>
+<span id="cb21-7"><a aria-label="7"></a><span class="bu">print</span>(deliveries[<span class="dv">0</span>, <span class="dv">2</span>])      <span class="co"># row 0, column 2</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <div class="cell fragment" data-execution_count="8">
 <div class="cell-output cell-output-stdout">
@@ -504,14 +507,18 @@ float64
 
    axis=1 collapses ACROSS the columns:
    day0 → 40   ·   day1 → 44   ·   day2 → 60      one number per row (day)</code></pre>
-<div id="0a9b9089" class="cell" data-execution_count="9">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb24"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb24-1"><a></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
-<span id="cb24-2"><a></a></span>
-<span id="cb24-3"><a></a>deliveries <span class="op">=</span> np.array([[ <span class="dv">9</span>, <span class="dv">14</span>, <span class="dv">11</span>,  <span class="dv">6</span>],</span>
-<span id="cb24-4"><a></a>                       [<span class="dv">15</span>, <span class="dv">12</span>,  <span class="dv">8</span>,  <span class="dv">9</span>],</span>
-<span id="cb24-5"><a></a>                       [<span class="dv">13</span>, <span class="dv">20</span>, <span class="dv">16</span>, <span class="dv">11</span>]])</span>
-<span id="cb24-6"><a></a><span class="bu">print</span>(deliveries.<span class="bu">sum</span>(axis<span class="op">=</span><span class="dv">0</span>))   <span class="co"># DOWN the rows → per zone</span></span>
-<span id="cb24-7"><a></a><span class="bu">print</span>(deliveries.<span class="bu">sum</span>(axis<span class="op">=</span><span class="dv">1</span>))   <span class="co"># ACROSS the columns → per day</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+<section id="axis-in-code" class="slide level2">
+<h2><code>axis</code> in code</h2>
+<p>The same grid, the same two collapses, one keyword each:</p>
+<div id="e5d95ce0" class="cell" data-execution_count="9">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb24"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb24-1"><a aria-label="1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb24-2"><a aria-label="2"></a></span>
+<span id="cb24-3"><a aria-label="3"></a>deliveries <span class="op">=</span> np.array([[ <span class="dv">9</span>, <span class="dv">14</span>, <span class="dv">11</span>,  <span class="dv">6</span>],</span>
+<span id="cb24-4"><a aria-label="4"></a>                       [<span class="dv">15</span>, <span class="dv">12</span>,  <span class="dv">8</span>,  <span class="dv">9</span>],</span>
+<span id="cb24-5"><a aria-label="5"></a>                       [<span class="dv">13</span>, <span class="dv">20</span>, <span class="dv">16</span>, <span class="dv">11</span>]])</span>
+<span id="cb24-6"><a aria-label="6"></a><span class="bu">print</span>(deliveries.<span class="bu">sum</span>(axis<span class="op">=</span><span class="dv">0</span>))   <span class="co"># DOWN the rows → per zone</span></span>
+<span id="cb24-7"><a aria-label="7"></a><span class="bu">print</span>(deliveries.<span class="bu">sum</span>(axis<span class="op">=</span><span class="dv">1</span>))   <span class="co"># ACROSS the columns → per day</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <div class="cell fragment" data-execution_count="9">
 <div class="cell-output cell-output-stdout">
@@ -526,14 +533,14 @@ float64
 <section id="where-does-the-max-sit" class="slide level2">
 <h2>Where does the max sit?</h2>
 <p>The per-zone totals answer “how many?”, but the investor asks “<strong>which</strong> zone?”. <code>argmax</code> tells you <strong>WHERE</strong> the maximum sits, as an index:</p>
-<div id="bc5db4cc" class="cell" data-execution_count="10">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb26"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb26-1"><a></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
-<span id="cb26-2"><a></a></span>
-<span id="cb26-3"><a></a>deliveries <span class="op">=</span> np.array([[ <span class="dv">9</span>, <span class="dv">14</span>, <span class="dv">11</span>,  <span class="dv">6</span>],</span>
-<span id="cb26-4"><a></a>                       [<span class="dv">15</span>, <span class="dv">12</span>,  <span class="dv">8</span>,  <span class="dv">9</span>],</span>
-<span id="cb26-5"><a></a>                       [<span class="dv">13</span>, <span class="dv">20</span>, <span class="dv">16</span>, <span class="dv">11</span>]])</span>
-<span id="cb26-6"><a></a>zone_totals <span class="op">=</span> deliveries.<span class="bu">sum</span>(axis<span class="op">=</span><span class="dv">0</span>)   <span class="co"># [37 46 35 26]</span></span>
-<span id="cb26-7"><a></a><span class="bu">print</span>(<span class="bu">int</span>(zone_totals.argmax()))        <span class="co"># index of the biggest</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div id="905587c7" class="cell" data-execution_count="10">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb26"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb26-1"><a aria-label="1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb26-2"><a aria-label="2"></a></span>
+<span id="cb26-3"><a aria-label="3"></a>deliveries <span class="op">=</span> np.array([[ <span class="dv">9</span>, <span class="dv">14</span>, <span class="dv">11</span>,  <span class="dv">6</span>],</span>
+<span id="cb26-4"><a aria-label="4"></a>                       [<span class="dv">15</span>, <span class="dv">12</span>,  <span class="dv">8</span>,  <span class="dv">9</span>],</span>
+<span id="cb26-5"><a aria-label="5"></a>                       [<span class="dv">13</span>, <span class="dv">20</span>, <span class="dv">16</span>, <span class="dv">11</span>]])</span>
+<span id="cb26-6"><a aria-label="6"></a>zone_totals <span class="op">=</span> deliveries.<span class="bu">sum</span>(axis<span class="op">=</span><span class="dv">0</span>)   <span class="co"># [37 46 35 26]</span></span>
+<span id="cb26-7"><a aria-label="7"></a><span class="bu">print</span>(<span class="bu">int</span>(zone_totals.argmax()))        <span class="co"># index of the biggest</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <div class="cell fragment" data-execution_count="10">
 <div class="cell-output cell-output-stdout">
@@ -547,9 +554,9 @@ float64
 <section id="predict-which-call-collapses-which-way" class="slide level2">
 <h2>Predict: which call collapses which way?</h2>
 <p>The investor wants <strong>four</strong> numbers, one per zone. Which call?</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb28"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb28-1"><a></a>week <span class="op">=</span> np.array([[ <span class="dv">9</span>, <span class="dv">14</span>, <span class="dv">11</span>,  <span class="dv">6</span>],</span>
-<span id="cb28-2"><a></a>                 [<span class="dv">15</span>, <span class="dv">12</span>,  <span class="dv">8</span>,  <span class="dv">9</span>],</span>
-<span id="cb28-3"><a></a>                 [<span class="dv">13</span>, <span class="dv">20</span>, <span class="dv">16</span>, <span class="dv">11</span>]])</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb28"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb28-1"><a aria-label="1"></a>week <span class="op">=</span> np.array([[ <span class="dv">9</span>, <span class="dv">14</span>, <span class="dv">11</span>,  <span class="dv">6</span>],</span>
+<span id="cb28-2"><a aria-label="2"></a>                 [<span class="dv">15</span>, <span class="dv">12</span>,  <span class="dv">8</span>,  <span class="dv">9</span>],</span>
+<span id="cb28-3"><a aria-label="3"></a>                 [<span class="dv">13</span>, <span class="dv">20</span>, <span class="dv">16</span>, <span class="dv">11</span>]])</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>a) <code>week.sum(axis=1)</code> b) <code>week.sum()</code> c) <code>week.sum(axis=0)</code></p>
 <div class="fragment">
 <p><span class="question">Predict first</span>. Commit to an answer before the next slide.</p>
@@ -558,13 +565,13 @@ float64
 <section id="answer-collapse-the-days-keep-the-zones" class="slide level2">
 <h2>Answer: collapse the days, keep the zones</h2>
 <p><strong>c) <code>week.sum(axis=0)</code></strong> — four zones means four numbers, so the <strong>days</strong> must disappear: <code>axis=0</code> collapses DOWN the rows, one number per column (zone):</p>
-<div id="4181dfca" class="cell" data-execution_count="11">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb29"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb29-1"><a></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
-<span id="cb29-2"><a></a></span>
-<span id="cb29-3"><a></a>week <span class="op">=</span> np.array([[ <span class="dv">9</span>, <span class="dv">14</span>, <span class="dv">11</span>,  <span class="dv">6</span>],</span>
-<span id="cb29-4"><a></a>                 [<span class="dv">15</span>, <span class="dv">12</span>,  <span class="dv">8</span>,  <span class="dv">9</span>],</span>
-<span id="cb29-5"><a></a>                 [<span class="dv">13</span>, <span class="dv">20</span>, <span class="dv">16</span>, <span class="dv">11</span>]])</span>
-<span id="cb29-6"><a></a><span class="bu">print</span>(week.<span class="bu">sum</span>(axis<span class="op">=</span><span class="dv">0</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div id="f52bae39" class="cell" data-execution_count="11">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb29"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb29-1"><a aria-label="1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb29-2"><a aria-label="2"></a></span>
+<span id="cb29-3"><a aria-label="3"></a>week <span class="op">=</span> np.array([[ <span class="dv">9</span>, <span class="dv">14</span>, <span class="dv">11</span>,  <span class="dv">6</span>],</span>
+<span id="cb29-4"><a aria-label="4"></a>                 [<span class="dv">15</span>, <span class="dv">12</span>,  <span class="dv">8</span>,  <span class="dv">9</span>],</span>
+<span id="cb29-5"><a aria-label="5"></a>                 [<span class="dv">13</span>, <span class="dv">20</span>, <span class="dv">16</span>, <span class="dv">11</span>]])</span>
+<span id="cb29-6"><a aria-label="6"></a><span class="bu">print</span>(week.<span class="bu">sum</span>(axis<span class="op">=</span><span class="dv">0</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <div class="cell fragment" data-execution_count="11">
 <div class="cell-output cell-output-stdout">

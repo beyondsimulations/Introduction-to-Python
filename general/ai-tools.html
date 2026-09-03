@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.9.38">
+<meta name="generator" content="quarto-1.10.18">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -12,16 +12,54 @@
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
 */
-code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
-div.columns{display: flex; gap: min(4vw, 1.5em);}
-div.column{flex: auto; overflow-x: auto;}
+div.columns{display: flex; gap: 1.5em;}
+div.column{flex: auto;}
+@media screen {
+div.columns{gap: min(4vw, 1.5em);}
+div.column{overflow-x: auto;}
+}
 div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
 ul.task-list{list-style: none;}
 ul.task-list li input[type="checkbox"] {
   width: 0.8em;
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
 </style>
 
@@ -40,14 +78,14 @@ ul.task-list li input[type="checkbox"] {
 <script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="../site_libs/quarto-html/anchor.min.js"></script>
 <link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-018a56f84f553ab074084cbaa177a14c.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-dark-c366505a46d5b46cf7fae82eb9e8fbfc.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-018a56f84f553ab074084cbaa177a14c.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-07311628652e75f956396d70ae2c81bf.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-dark-fcd1a2993490c2d386cd11edf595946f.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-07311628652e75f956396d70ae2c81bf.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
 <script src="../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../site_libs/bootstrap/bootstrap-2f19b2db3fad15d2f175130959bbc86e.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="../site_libs/bootstrap/bootstrap-dark-8d6508a0f4ab1fa03a98911d51c1ef8f.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="light">
-<link href="../site_libs/bootstrap/bootstrap-2f19b2db3fad15d2f175130959bbc86e.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-6f2612d10d43eecceb942efa6a96e350.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-dark-3e719430d8a2385e43a703e698505b45.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-6f2612d10d43eecceb942efa6a96e350.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -423,13 +461,8 @@ ul.task-list li input[type="checkbox"] {
   <li><a href="#create-a-free-le-chat-account" id="toc-create-a-free-le-chat-account" class="nav-link" data-scroll-target="#create-a-free-le-chat-account">1. Create a free Le Chat account</a></li>
   <li><a href="#get-a-free-la-plateforme-api-key" id="toc-get-a-free-la-plateforme-api-key" class="nav-link" data-scroll-target="#get-a-free-la-plateforme-api-key">2. Get a free La Plateforme API key</a></li>
   </ul></li>
-  <li><a href="#zed-ai" id="toc-zed-ai" class="nav-link" data-scroll-target="#zed-ai">Zed + AI</a>
-  <ul class="collapse">
-  <li><a href="#the-education-program" id="toc-the-education-program" class="nav-link" data-scroll-target="#the-education-program">The education program</a></li>
-  <li><a href="#which-subscription-actually-works-in-zed" id="toc-which-subscription-actually-works-in-zed" class="nav-link" data-scroll-target="#which-subscription-actually-works-in-zed">Which subscription actually works in Zed?</a></li>
-  </ul></li>
-  <li><a href="#fallback-openrouter-free-models" id="toc-fallback-openrouter-free-models" class="nav-link" data-scroll-target="#fallback-openrouter-free-models">Fallback: OpenRouter free models</a></li>
-  <li><a href="#what-about-copilot" id="toc-what-about-copilot" class="nav-link" data-scroll-target="#what-about-copilot">What about Copilot?</a></li>
+  <li><a href="#the-zed-student-plan-session-vi" id="toc-the-zed-student-plan-session-vi" class="nav-link" data-scroll-target="#the-zed-student-plan-session-vi">The Zed student plan (Session VI)</a></li>
+  <li><a href="#ai-inside-zed-mistral-vibe-before-session-x" id="toc-ai-inside-zed-mistral-vibe-before-session-x" class="nav-link" data-scroll-target="#ai-inside-zed-mistral-vibe-before-session-x">AI inside Zed: Mistral Vibe (before Session X)</a></li>
   <li><a href="#the-course-chatbot" id="toc-the-course-chatbot" class="nav-link" data-scroll-target="#the-course-chatbot">The course chatbot</a></li>
   <li><a href="#recap" id="toc-recap" class="nav-link" data-scroll-target="#recap">Recap</a></li>
   </ul>
@@ -458,7 +491,7 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<!-- Facts on this page re-verified against the live web on 2026-07-11. -->
+<!-- Facts on this page re-verified against the live web on 2026-07-11; Zed student plan and Mistral Vibe sections on 2026-09-03. -->
 <section id="the-course-policy" class="level2">
 <h2 class="anchored" data-anchor-id="the-course-policy">The course policy</h2>
 <p>The course runs a phased AI policy, and the rules are different in each part.</p>
@@ -477,8 +510,34 @@ ul.task-list li input[type="checkbox"] {
 </div>
 </div>
 </div>
-<p>The rest of this page shows you how to get a working, <strong>zero-cost</strong> AI setup. You need at least one. The Mistral path below is the guaranteed-free baseline; everything after it is optional.</p>
-<p><em>Menu paths and program terms on this page are current as of July 2026.</em></p>
+<p>The rest of this page shows you how to get a working, <strong>zero-cost</strong> AI setup. It costs nothing and needs no credit card. Everything happens on a schedule:</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>When</th>
+<th>What</th>
+<th>Why then</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>Session I</strong></td>
+<td>Free <a href="https://github.com">GitHub</a> account</td>
+<td>Zed’s student plan only accepts GitHub accounts <strong>older than 30 days</strong>, and your project lives on GitHub from Session X</td>
+</tr>
+<tr class="even">
+<td><strong>Session VI</strong></td>
+<td>Mistral account + API key, Zed student plan application</td>
+<td>AI becomes allowed; the GitHub account is old enough now</td>
+</tr>
+<tr class="odd">
+<td><strong>Before Session X</strong></td>
+<td>Install uv, Zed, Mistral Vibe and the GitHub CLI</td>
+<td>Session X builds on a working toolchain</td>
+</tr>
+</tbody>
+</table>
+<p><em>Menu paths and program terms on this page are current as of September 2026.</em></p>
 </section>
 <section id="the-guaranteed-free-setup-mistral" class="level2">
 <h2 class="anchored" data-anchor-id="the-guaranteed-free-setup-mistral">The guaranteed free setup: Mistral</h2>
@@ -494,7 +553,7 @@ ul.task-list li input[type="checkbox"] {
 <li>Go to <a href="https://console.mistral.ai">console.mistral.ai</a> and sign in with the same account.</li>
 <li>Choose the free <strong>“Experiment”</strong> tier when prompted.</li>
 <li>Open the <strong>API Keys</strong> page and create a new key.</li>
-<li>Copy the key somewhere safe. You will paste it into Zed later. <strong>The key is shown only once</strong>, right when you create it, and cannot be displayed again. If you miss it, you have to generate a new one.</li>
+<li>Copy the key somewhere safe. Mistral Vibe, the AI agent in your editor, asks for it later. <strong>The key is shown only once</strong>, right when you create it, and cannot be displayed again. If you miss it, you have to generate a new one.</li>
 </ol>
 <div class="callout callout-style-simple callout-warning">
 <div class="callout-body d-flex">
@@ -514,81 +573,55 @@ ul.task-list li input[type="checkbox"] {
 </div>
 </section>
 </section>
-<section id="zed-ai" class="level2">
-<h2 class="anchored" data-anchor-id="zed-ai">Zed + AI</h2>
-<p>Zed is the editor we use from Session X on, but you install it <strong>before</strong> then, as part of the Session IX pre-work. Download it from <a href="https://zed.dev">zed.dev</a> (there are builds for macOS, Windows and Linux), run the installer, and open it once to confirm it launches. This section only covers the <strong>AI-provider</strong> side, connecting an AI model to Zed.</p>
-<section id="the-education-program" class="level3">
-<h3 class="anchored" data-anchor-id="the-education-program">The education program</h3>
-<p>If you are an enrolled student, Zed gives you its paid plan for free:</p>
-<ul>
-<li><strong>12 months of Zed Pro</strong>, plus <strong>$10/month in AI token credits</strong>.</li>
-<li>Read about it at <a href="https://zed.dev/education">zed.dev/education</a>.</li>
-<li>Apply at <a href="https://dashboard.zed.dev/education/apply">dashboard.zed.dev/education/apply</a>.</li>
-</ul>
+<section id="the-zed-student-plan-session-vi" class="level2">
+<h2 class="anchored" data-anchor-id="the-zed-student-plan-session-vi">The Zed student plan (Session VI)</h2>
+<p>Zed is the editor we use from Session X on. If you are an enrolled student, Zed gives you its paid plan for free, and you apply for it in <strong>Session VI</strong>, well before you need it:</p>
+<ol type="1">
+<li>Go to <a href="https://dashboard.zed.dev/education/apply">dashboard.zed.dev/education/apply</a> and <strong>sign in with GitHub</strong>. Zed requires the GitHub account to be <strong>at least 30 days old</strong>, which is why you created it in Session I.</li>
+<li>Submit your <strong>KLU e-mail address</strong> for verification. This can take up to 72 hours.</li>
+<li>Once verified you get <strong>12 months of Zed Pro</strong>: unlimited edit predictions and <strong>$10/month in AI token credits</strong>. Details at <a href="https://zed.dev/education">zed.dev/education</a>.</li>
+</ol>
 <div class="callout callout-style-simple callout-note">
 <div class="callout-body d-flex">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-body-container">
-<p><strong>The 12 months expire.</strong> After 12 months the Student plan automatically downgrades to the free plan. It is a great head start, not a permanent free ride, so don’t build a habit that depends on the credits lasting forever. This is exactly why the Mistral path above matters: it stays free.</p>
+<p><strong>The 12 months expire.</strong> After 12 months the Student plan automatically downgrades to the free plan. It is a great head start, not a permanent free ride, so don’t build a habit that depends on the credits lasting forever. This is exactly why the Mistral path above matters: it stays free, and nothing in the course depends on the plan.</p>
 </div>
 </div>
 </div>
+<p>If your KLU address isn’t recognized by the verification system, or your GitHub account is still too young, <strong>ask me</strong>. Both can be resolved.</p>
 </section>
-<section id="which-subscription-actually-works-in-zed" class="level3">
-<h3 class="anchored" data-anchor-id="which-subscription-actually-works-in-zed">Which subscription actually works in Zed?</h3>
-<p>This is the part that surprises people. Having a paid AI subscription does <strong>not</strong> automatically mean you can use it inside Zed. Here is the truth table:</p>
-<table class="caption-top table">
-<colgroup>
-<col style="width: 33%">
-<col style="width: 33%">
-<col style="width: 33%">
-</colgroup>
-<thead>
-<tr class="header">
-<th>You have</th>
-<th>Works in Zed?</th>
-<th>How</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td><strong>ChatGPT Plus / Pro</strong></td>
-<td>Yes</td>
-<td>Sign in with your OpenAI account directly in Zed. No API key needed.</td>
-</tr>
-<tr class="even">
-<td><strong>Claude Pro / Max</strong></td>
-<td>No (not via the built-in Anthropic provider)</td>
-<td>Zed’s built-in Anthropic provider needs <strong>separate Anthropic API credits</strong>, which a Pro/Max subscription does <strong>not</strong> include.</td>
-</tr>
-<tr class="odd">
-<td><strong>Mistral (free API key)</strong></td>
-<td>Yes</td>
-<td>Paste the free La Plateforme key from the section above.</td>
-</tr>
-</tbody>
-</table>
+<section id="ai-inside-zed-mistral-vibe-before-session-x" class="level2">
+<h2 class="anchored" data-anchor-id="ai-inside-zed-mistral-vibe-before-session-x">AI inside Zed: Mistral Vibe (before Session X)</h2>
+<p>The AI you program with in Part III is <strong><a href="https://github.com/mistralai/mistral-vibe">Mistral Vibe</a></strong>, Mistral’s coding agent. It runs inside Zed’s agent panel and uses the API key from Session VI. Do this as part of the Session IX pre-work, <strong>after</strong> <a href="../general/uv.html">installing uv</a> and Zed:</p>
+<ol type="1">
+<li><p><strong>Install Zed</strong> from <a href="https://zed.dev">zed.dev</a> (macOS, Windows, Linux), run the installer, and open it once to confirm it launches.</p></li>
+<li><p><strong>Install Vibe</strong> in a terminal. uv is already on your machine, so one command works on every system:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="ex">uv</span> tool install mistral-vibe</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div></li>
+<li><p><strong>Give it your key.</strong> Run <code>vibe</code> once in the terminal; it asks for the API key and saves it for future runs. Type <code>exit</code> to leave.</p></li>
+<li><p><strong>Tell Zed about it.</strong> In Zed, open the command palette (<code>Cmd/Ctrl+Shift+P</code>), run <strong><code>zed: open settings</code></strong>, and add this inside the outer braces:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode json code-with-copy"><code class="sourceCode json"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="st">"agent_servers"</span><span class="er">:</span> <span class="fu">{</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>  <span class="dt">"Mistral Vibe"</span><span class="fu">:</span> <span class="fu">{</span></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>    <span class="dt">"type"</span><span class="fu">:</span> <span class="st">"custom"</span><span class="fu">,</span></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>    <span class="dt">"command"</span><span class="fu">:</span> <span class="st">"vibe-acp"</span><span class="fu">,</span></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>    <span class="dt">"args"</span><span class="fu">:</span> <span class="ot">[]</span><span class="fu">,</span></span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>    <span class="dt">"env"</span><span class="fu">:</span> <span class="fu">{}</span></span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">}</span></span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a><span class="fu">}</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div></li>
+<li><p><strong>Try it.</strong> Open the agent panel (the sparkle icon at the bottom right, or <strong><code>agent: new thread</code></strong> in the command palette), pick <strong>Mistral Vibe</strong> from the agent dropdown, and ask it something about an open file. If it answers, you’re ready for Session X.</p></li>
+</ol>
 <div class="callout callout-style-simple callout-warning">
 <div class="callout-body d-flex">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-body-container">
-<p><strong>Claude Pro/Max is the common trap.</strong> A Claude Pro or Max subscription is for the Claude apps and websites. It is <strong>not</strong> the same as Anthropic API credits, and Zed’s built-in Anthropic provider bills against API credits. So a Claude subscription alone will <strong>not</strong> power the assistant in Zed. If your only paid plan is Claude, use the free Mistral key for in-editor AI instead.</p>
+<p><strong>Already paying for ChatGPT or Claude?</strong> You may use those in Zed’s own agent under their own rules, but the course teaches and supports one path: Mistral Vibe. One trap to know: a <strong>Claude Pro/Max subscription does not work</strong> in Zed’s built-in Anthropic provider, which bills separate API credits. Use the free Mistral key.</p>
 </div>
 </div>
 </div>
-</section>
-</section>
-<section id="fallback-openrouter-free-models" class="level2">
-<h2 class="anchored" data-anchor-id="fallback-openrouter-free-models">Fallback: OpenRouter free models</h2>
-<p><a href="https://openrouter.ai">OpenRouter</a> is a second zero-cost option. Sign up with an email (no credit card), create an API key, and you can call a set of <strong>free</strong> models. It is OpenAI-compatible, so any tool that accepts an OpenAI-style key plus a server address (the “base URL”) can use it. Treat this as a backup if the Mistral path ever gives you trouble.</p>
-</section>
-<section id="what-about-copilot" class="level2">
-<h2 class="anchored" data-anchor-id="what-about-copilot">What about Copilot?</h2>
-<p>You may have heard of <strong>GitHub Copilot</strong>. Since <strong>April 2026, GitHub has paused new sign-ups</strong> for its paid Copilot plans indefinitely, with no announced reopening date. If you already had Copilot set up before then, you may keep using it. If not, don’t count on it for this course. Use one of the free paths above.</p>
 </section>
 <section id="the-course-chatbot" class="level2">
 <h2 class="anchored" data-anchor-id="the-course-chatbot">The course chatbot</h2>
@@ -598,12 +631,12 @@ ul.task-list li input[type="checkbox"] {
 <h2 class="anchored" data-anchor-id="recap">Recap</h2>
 <p>You now have:</p>
 <ol type="1">
+<li>A GitHub account from Session I, old enough for the Zed student plan.</li>
 <li>A free Le Chat account for questions and explanations.</li>
-<li>A free La Plateforme API key (with the training opt-out done) for AI inside your editor.</li>
-<li>Optionally, a Zed education application and an OpenRouter fallback key.</li>
+<li>A free La Plateforme API key (with the training opt-out done) that powers Mistral Vibe in Zed.</li>
+<li>A Zed student plan application on its way, and Vibe installed before Session X.</li>
 <li>The one habit that applies everywhere: a one-line AI-disclosure note on every submission that used AI.</li>
 </ol>
-<p>Bring your Mistral API key to Session X. That is where we plug it into Zed.</p>
 
 
 </section>

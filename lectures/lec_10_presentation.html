@@ -7,8 +7,8 @@
 <script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
 <link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
 <link href="../site_libs/quarto-html/light-border.css" rel="stylesheet">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-de63f62b328812d8e578a4d74e282472.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
-  <meta name="generator" content="quarto-1.9.38">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-bb62276ab45c84d9efd712f51ff97b5a.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
+  <meta name="generator" content="quarto-1.10.18">
 
   <meta name="author" content="Dr.&nbsp;Tobias Vlćek">
   <title>Programming with Python – Lecture X - Tooling, Git and Your Project</title>
@@ -21,10 +21,13 @@
     /* Default styles provided by pandoc.
     ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
     */
-    code{white-space: pre-wrap;}
     span.smallcaps{font-variant: small-caps;}
-    div.columns{display: flex; gap: min(4vw, 1.5em);}
-    div.column{flex: auto; overflow-x: auto;}
+    div.columns{display: flex; gap: 1.5em;}
+    div.column{flex: auto;}
+    @media screen {
+    div.columns{gap: min(4vw, 1.5em);}
+    div.column{overflow-x: auto;}
+    }
     div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
     ul.task-list{list-style: none;}
     ul.task-list li input[type="checkbox"] {
@@ -203,7 +206,7 @@
 <div class="quarto-title-authors">
 <div class="quarto-title-author">
 <div class="quarto-title-author-name">
-Dr.&nbsp;Tobias Vlćek 
+Dr.&nbsp;Tobias Vlćek
 </div>
         <p class="quarto-title-affiliation">
             Kühne Logistics University Hamburg - Fall 2026
@@ -212,20 +215,22 @@ Dr.&nbsp;Tobias Vlćek
 </div>
 
 </section>
-<section id="checkpoint-5-sessions-viiiix" class="title-slide slide level1 exercise-slide center">
-<h1>📋 Checkpoint 5 — Sessions VIII–IX</h1>
-<p>The first <strong>40 minutes</strong> are the checkpoint. It starts <strong>now</strong>: the acquirer runs one final audit before signing.</p>
+<section>
+<section id="checkpoint-5" class="title-slide slide level1 exercise-slide center">
+<h1>📋 Checkpoint 5</h1>
+<p><strong>Sessions VIII–IX.</strong> The first <strong>40 minutes</strong> are the checkpoint. It starts <strong>now</strong>: the acquirer runs one final audit before signing.</p>
 <ul>
 <li><strong>Individual work</strong>: no neighbors, no chat</li>
 <li><strong>AI tools are allowed</strong>: being able to <strong>VERIFY</strong> the output is the skill being graded</li>
 <li>The <strong>link and QR</strong> are handed out in class. Open it and start</li>
-<li>6 short tasks: pull the right number out of a pandas table, fix a line the AI got wrong, and read a chart honestly</li>
-<li>It sweeps <strong>Sessions VIII–IX</strong>: pandas filtering and <code>groupby</code>, and telling an honest chart from a misleading one</li>
+<li>6 short tasks: the right number out of a pandas table, a line the AI got wrong, an honest read of a chart</li>
+<li>It sweeps <strong>Sessions VIII–IX</strong>: pandas filtering and <code>groupby</code>, honest charts vs.&nbsp;misleading ones</li>
 </ul>
 <!-- QR handed out live — never in the deck -->
-<div class="fragment">
-<p><strong>When you’re done:</strong> menu → <em>Download</em> → <em>Download Python code</em> → upload the <code>.py</code> to the <strong>“Checkpoint 5”</strong> assignment on Moodle. <strong>No retakes</strong>: one sitting.</p>
-</div>
+</section>
+<section id="when-youre-done" class="slide level2">
+<h2>When you’re done</h2>
+<p>Menu → <em>Download</em> → <em>Download Python code</em> → upload the <code>.py</code> to the <strong>“Checkpoint 5”</strong> assignment on Moodle. <strong>No retakes</strong>: one sitting.</p>
 <div class="fragment">
 <div class="callout callout-note callout-style-simple">
 <div class="callout-body">
@@ -238,8 +243,7 @@ Dr.&nbsp;Tobias Vlćek
 </div>
 </div>
 </div>
-</section>
-
+</section></section>
 <section>
 <section id="episode-10-the-exit" class="title-slide slide level1 title center">
 <h1><span class="flow">Episode 10: The Exit</span></h1>
@@ -421,12 +425,12 @@ Dr.&nbsp;Tobias Vlćek
 <section id="check-your-install" class="slide level2">
 <h2>Check your install</h2>
 <p>Before we build anything, the installs from the Session IX homework need to work. In a terminal:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a></a><span class="ex">uv</span> <span class="at">--version</span></span>
-<span id="cb1-2"><a></a><span class="fu">git</span> <span class="at">--version</span></span>
-<span id="cb1-3"><a></a><span class="ex">gh</span> <span class="at">--version</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a aria-label="1"></a><span class="ex">uv</span> <span class="at">--version</span></span>
+<span id="cb1-2"><a aria-label="2"></a><span class="fu">git</span> <span class="at">--version</span></span>
+<span id="cb1-3"><a aria-label="3"></a><span class="ex">gh</span> <span class="at">--version</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <ul>
 <li>Three version numbers? You’re set.</li>
-<li>Zed opens when you launch it? Good.</li>
+<li>Zed opens, and <strong>Mistral Vibe</strong> shows up in its agent panel? Good.</li>
 </ul>
 <div class="fragment">
 <div class="callout callout-important callout-style-simple">
@@ -444,8 +448,8 @@ Dr.&nbsp;Tobias Vlćek
 <section id="start-the-project-uv-init" class="slide level2">
 <h2>Start the project: <code>uv init</code></h2>
 <p>Pick the folder where you keep course work, then create the project (name it after your pitch):</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a></a><span class="ex">uv</span> init my-project</span>
-<span id="cb2-2"><a></a><span class="bu">cd</span> my-project</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a aria-label="1"></a><span class="ex">uv</span> init my-project</span>
+<span id="cb2-2"><a aria-label="2"></a><span class="bu">cd</span> my-project</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p><code>uv init</code> creates <code>main.py</code>, <code>pyproject.toml</code>, <code>.python-version</code>, <code>.gitignore</code>, and <code>README.md</code>.</p>
 <div class="fragment">
 <div class="callout callout-note callout-style-simple">
@@ -462,18 +466,22 @@ Dr.&nbsp;Tobias Vlćek
 </section>
 <section id="open-a-notebook-in-zed" class="slide level2">
 <h2>Open a notebook in Zed</h2>
-<p>Here’s the reveal made concrete. Grab <strong>a lab <code>.py</code> you downloaded in Part I</strong>: we’ll use <code>nb_03_lab_functions.py</code>. Copy it <strong>into your project folder</strong> first (in Finder/Explorer, or drop it onto Zed’s file tree; dropping on the editor just opens a buffer, it doesn’t move the file). Then open it in Zed: it’s just code. Read it.</p>
+<p>Grab <strong>a lab <code>.py</code> you downloaded in Part I</strong>: we’ll use <code>nb_03_lab_functions.py</code>. Copy it <strong>into your project folder</strong> first (in Finder/Explorer), then open it in Zed: it’s just code. Read it.</p>
 <p>The file needs its tools first. Adding a package to a project is one command:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a></a><span class="ex">uv</span> add marimo</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a aria-label="1"></a><span class="ex">uv</span> add marimo</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>Now run it, no browser required:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb4-1"><a></a><span class="ex">uv</span> run python nb_03_lab_functions.py</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb4-1"><a aria-label="1"></a><span class="ex">uv</span> run python nb_03_lab_functions.py</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="fragment">
-<p><code>uv run</code> uses the project’s own Python and packages. The file that lived in a browser tab all semester now runs on <strong>your machine, from your editor.</strong> That’s the whole point of today. <em>(The Part-II pandas labs also want <code>uv add pandas</code> and their data file next to them; stick with a Part-I lab today.)</em></p>
+<p><code>uv run</code> uses the project’s own Python and packages. The file that lived in a browser tab all semester now runs on <strong>your machine, from your editor.</strong> That’s the whole point of today. <em>(Stick with a Part-I lab; the pandas labs also need <code>uv add pandas</code> and their CSV.)</em></p>
 </div>
 </section>
 <section id="connect-your-ai" class="slide level2">
 <h2>Connect your AI</h2>
-<p>Part III <strong>encourages</strong> AI. You’ve earned the co-pilot. Connect one provider in Zed following the <a href="../general/ai-tools.html">AI-tools guide</a> (the free <strong>Mistral</strong> key is the guaranteed path; paste it into Zed’s assistant settings).</p>
+<p>Part III <strong>encourages</strong> AI. You’ve earned the co-pilot, and it’s already installed: <strong>Mistral Vibe</strong>, running inside Zed on the key from Session VI (setup in the <a href="../general/ai-tools.html">AI-tools guide</a>). Open the <strong>agent panel</strong>, pick <strong>Mistral Vibe</strong>, and try it on your two-minute-old project:</p>
+<blockquote>
+<p><em>Explain what <code>main.py</code> does, then add a docstring. Don’t change anything else.</em></p>
+</blockquote>
+<p>Read the diff Zed shows you <strong>before</strong> you accept it. That’s the whole workflow: you ask, it drafts, you verify.</p>
 <div class="fragment">
 <div class="callout callout-important callout-style-simple">
 <div class="callout-body">
@@ -509,21 +517,9 @@ Dr.&nbsp;Tobias Vlćek
 <section id="once-per-machine" class="slide level2">
 <h2>Once per machine</h2>
 <p>Before any push reaches GitHub, your machine has to prove it’s allowed to. Signing in to <strong>Zed does not do this</strong>; git needs its own setup. You need a <strong>(free) GitHub account</strong> and the <code>gh</code> tool. Not installed? Get it via the <a href="../general/git-basics.html">Git Basics</a> page first. Then, once per computer, in a terminal:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb5-1"><a></a><span class="ex">gh</span> auth login</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb5-1"><a aria-label="1"></a><span class="ex">gh</span> auth login</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>Choose <strong>GitHub.com</strong>, <strong>HTTPS</strong>, authenticate in the <strong>browser</strong>, and answer <strong>yes</strong> to <em>“Authenticate Git with your GitHub credentials?”</em>. Then, once:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb6"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb6-1"><a></a><span class="fu">git</span> config <span class="at">--global</span> pull.rebase false</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="fragment">
-<div class="callout callout-note callout-style-simple">
-<div class="callout-body">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-content">
-<p>Full walkthrough (installing <code>gh</code>, checking it worked) is on the <a href="../general/git-basics.html">Git Basics</a> page, your at-home reference for all of this.</p>
-</div>
-</div>
-</div>
-</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb6"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb6-1"><a aria-label="1"></a><span class="fu">git</span> config <span class="at">--global</span> pull.rebase false</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="fragment">
 <div class="callout callout-important callout-style-simple">
 <div class="callout-body">
@@ -546,21 +542,20 @@ Dr.&nbsp;Tobias Vlćek
 </ul>
 <div class="fragment">
 <p>The same thing in the terminal, the words you’ll see everywhere:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb7"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb7-1"><a></a><span class="fu">git</span> add .</span>
-<span id="cb7-2"><a></a><span class="fu">git</span> commit <span class="at">-m</span> <span class="st">"Initial project setup"</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb7"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb7-1"><a aria-label="1"></a><span class="fu">git</span> add .</span>
+<span id="cb7-2"><a aria-label="2"></a><span class="fu">git</span> commit <span class="at">-m</span> <span class="st">"Initial project setup"</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>A commit lives <strong>only on your computer</strong> so far. Next we send it to GitHub.</p>
 </div>
 </section>
 <section id="put-it-on-github-repo-owner-only" class="slide level2">
 <h2>Put it on GitHub — repo owner only</h2>
-<p><strong>This slide is for the repo owner</strong> you picked in the pairing block. <strong>Partner: watch</strong>. You’ll clone in a minute; <strong>don’t create your own GitHub repo.</strong></p>
-<p>GitHub doesn’t know about your project yet. Three steps, done by the owner:</p>
+<p><strong>Repo owner only.</strong> Partner: watch, you clone in a minute; <strong>don’t create your own repo.</strong> GitHub doesn’t know about the project yet, three steps:</p>
 <ol type="1">
-<li>On <strong>github.com</strong>, create a new <strong>empty</strong> repository (no README, keep it empty). <em>(There’s no “publish” button inside Zed; the GitHub-side repo is made on the website.)</em></li>
-<li>In Zed: <strong><code>git: create remote</code></strong>, paste the repo’s <strong>HTTPS URL</strong> (<code>https://github.com/you/project.git</code>); if it asks for a remote name, use <code>origin</code> (terminal: <code>git remote add origin &lt;HTTPS url&gt;</code>)</li>
+<li>On <strong>github.com</strong>, create a new <strong>empty</strong> repository (no README). The GitHub side is made on the website, not in Zed</li>
+<li>In Zed: <strong><code>git: create remote</code></strong>, paste the <strong>HTTPS URL</strong> (<code>https://github.com/you/project.git</code>), name it <code>origin</code></li>
 <li>Do the <strong>first push</strong> from the terminal, this exact line, once:</li>
 </ol>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb8"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb8-1"><a></a><span class="fu">git</span> push <span class="at">-u</span> origin HEAD</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb8"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb8-1"><a aria-label="1"></a><span class="fu">git</span> push <span class="at">-u</span> origin HEAD</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="fragment">
 <p>After this one-time command, every later push is just <strong><code>git: push</code></strong> in Zed (terminal: <code>git push</code>).</p>
 </div>
@@ -571,7 +566,7 @@ Dr.&nbsp;Tobias Vlćek
 <ul>
 <li>In Zed: <strong><code>git: clone</code></strong>, paste the same <strong>HTTPS URL</strong></li>
 </ul>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb9"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb9-1"><a></a><span class="fu">git</span> clone https://github.com/you/project.git</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb9"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb9-1"><a aria-label="1"></a><span class="fu">git</span> clone https://github.com/you/project.git</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="fragment">
 <p>Cloning brings the whole project and its history, and sets up the connection automatically. The partner pushes and pulls normally from the first moment. Now <strong>both of you pull</strong> (<code>git: pull</code> / <code>git pull</code>) to confirm you’re in sync.</p>
 </div>

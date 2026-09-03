@@ -7,8 +7,8 @@
 <script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
 <link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
 <link href="../site_libs/quarto-html/light-border.css" rel="stylesheet">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-de63f62b328812d8e578a4d74e282472.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
-  <meta name="generator" content="quarto-1.9.38">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-bb62276ab45c84d9efd712f51ff97b5a.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
+  <meta name="generator" content="quarto-1.10.18">
 
   <meta name="author" content="Dr.&nbsp;Tobias Vlćek">
   <title>Programming with Python – Lecture V - Errors and Debugging</title>
@@ -21,10 +21,13 @@
     /* Default styles provided by pandoc.
     ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
     */
-    code{white-space: pre-wrap;}
     span.smallcaps{font-variant: small-caps;}
-    div.columns{display: flex; gap: min(4vw, 1.5em);}
-    div.column{flex: auto; overflow-x: auto;}
+    div.columns{display: flex; gap: 1.5em;}
+    div.column{flex: auto;}
+    @media screen {
+    div.columns{gap: min(4vw, 1.5em);}
+    div.column{overflow-x: auto;}
+    }
     div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
     ul.task-list{list-style: none;}
     ul.task-list li input[type="checkbox"] {
@@ -203,7 +206,7 @@
 <div class="quarto-title-authors">
 <div class="quarto-title-author">
 <div class="quarto-title-author-name">
-Dr.&nbsp;Tobias Vlćek 
+Dr.&nbsp;Tobias Vlćek
 </div>
         <p class="quarto-title-affiliation">
             Kühne Logistics University Hamburg - Fall 2026
@@ -212,18 +215,20 @@ Dr.&nbsp;Tobias Vlćek
 </div>
 
 </section>
-<section id="checkpoint-2-before-the-doors-open" class="title-slide slide level1 exercise-slide center">
-<h1>📋 Checkpoint 2 — before the doors open</h1>
-<p>The first <strong>40 minutes</strong> are the checkpoint. It starts <strong>now</strong>.</p>
+<section>
+<section id="checkpoint-2" class="title-slide slide level1 exercise-slide center">
+<h1>📋 Checkpoint 2</h1>
+<p><strong>Before the doors open.</strong> The first <strong>40 minutes</strong> are the checkpoint. It starts <strong>now</strong>.</p>
 <ul>
 <li><strong>Individual work</strong>: no AI, no neighbors, no chat</li>
 <li>The <strong>link and QR</strong> are handed out in class. Open it and start</li>
 <li>~6 short tasks: write code, trace code, fix a bug, answer a multiple choice</li>
 </ul>
 <!-- QR handed out live — never in the deck -->
-<div class="fragment">
-<p><strong>When you’re done:</strong> menu → <em>Download</em> → <em>Download Python code</em> → upload the <code>.py</code> to the <strong>“Checkpoint 2”</strong> assignment on Moodle.</p>
-</div>
+</section>
+<section id="when-youre-done" class="slide level2">
+<h2>When you’re done</h2>
+<p>Menu → <em>Download</em> → <em>Download Python code</em> → upload the <code>.py</code> to the <strong>“Checkpoint 2”</strong> assignment on Moodle.</p>
 <div class="fragment">
 <div class="callout callout-note callout-style-simple">
 <div class="callout-body">
@@ -236,8 +241,7 @@ Dr.&nbsp;Tobias Vlćek
 </div>
 </div>
 </div>
-</section>
-
+</section></section>
 <section>
 <section id="episode-5-the-3-am-checkout" class="title-slide slide level1 title center">
 <h1><span class="flow">Episode 5: The 3-AM Checkout</span></h1>
@@ -261,8 +265,8 @@ Dr.&nbsp;Tobias Vlćek
 <section id="kevins-3-am-checkout-live" class="slide level2">
 <h2>Kevin’s 3-AM checkout, live</h2>
 <p>A customer typed <code>generous</code> into the tip box. Kevin’s new checkout did this:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a></a>tip_text <span class="op">=</span> <span class="st">"generous"</span></span>
-<span id="cb1-2"><a></a>tip <span class="op">=</span> <span class="bu">float</span>(tip_text)     <span class="co"># 💥</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a aria-label="1"></a>tip_text <span class="op">=</span> <span class="st">"generous"</span></span>
+<span id="cb1-2"><a aria-label="2"></a>tip <span class="op">=</span> <span class="bu">float</span>(tip_text)     <span class="co"># 💥</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="fragment">
 <p>Python stopped and printed a <strong>traceback</strong>, a crash report. It looks scary, but it is the most useful thing on your screen:</p>
 <pre><code>Traceback (most recent call last):
@@ -311,15 +315,15 @@ ValueError: could not convert string to float: 'generous'</code></pre>
 <section id="try-except-catch-the-fall" class="slide level2">
 <h2><code>try</code> / <code>except</code>: catch the fall</h2>
 <p>First, the happy path: text that <strong>looks</strong> like a number converts cleanly; text that doesn’t, explodes. A <strong><code>try</code> / <code>except</code></strong> block runs the risky code and catches the failure instead of stopping the program:</p>
-<div id="1f39cba2" class="cell" data-execution_count="1">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a></a><span class="bu">print</span>(<span class="bu">float</span>(<span class="st">"5.50"</span>))          <span class="co"># numeric text converts cleanly → 5.5</span></span>
-<span id="cb4-2"><a></a></span>
-<span id="cb4-3"><a></a><span class="cf">try</span>:</span>
-<span id="cb4-4"><a></a>    tip <span class="op">=</span> <span class="bu">float</span>(<span class="st">"generous"</span>)   <span class="co"># non-numeric text raises ValueError...</span></span>
-<span id="cb4-5"><a></a><span class="cf">except</span> <span class="pp">ValueError</span>:</span>
-<span id="cb4-6"><a></a>    tip <span class="op">=</span> <span class="fl">0.0</span>                 <span class="co"># ...caught here, so the checkout keeps going</span></span>
-<span id="cb4-7"><a></a></span>
-<span id="cb4-8"><a></a><span class="bu">print</span>(tip)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div id="d5882dd8" class="cell" data-execution_count="1">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a aria-label="1"></a><span class="bu">print</span>(<span class="bu">float</span>(<span class="st">"5.50"</span>))          <span class="co"># numeric text converts cleanly → 5.5</span></span>
+<span id="cb4-2"><a aria-label="2"></a></span>
+<span id="cb4-3"><a aria-label="3"></a><span class="cf">try</span>:</span>
+<span id="cb4-4"><a aria-label="4"></a>    tip <span class="op">=</span> <span class="bu">float</span>(<span class="st">"generous"</span>)   <span class="co"># non-numeric text raises ValueError...</span></span>
+<span id="cb4-5"><a aria-label="5"></a><span class="cf">except</span> <span class="pp">ValueError</span>:</span>
+<span id="cb4-6"><a aria-label="6"></a>    tip <span class="op">=</span> <span class="fl">0.0</span>                 <span class="co"># ...caught here, so the checkout keeps going</span></span>
+<span id="cb4-7"><a aria-label="7"></a></span>
+<span id="cb4-8"><a aria-label="8"></a><span class="bu">print</span>(tip)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <div class="cell fragment" data-execution_count="1">
 <div class="cell-output cell-output-stdout">
@@ -334,10 +338,10 @@ ValueError: could not convert string to float: 'generous'</code></pre>
 <section id="catch-the-specific-type" class="slide level2">
 <h2>Catch the <em>specific</em> type</h2>
 <p>Name the exact exception you expect. <code>except ValueError:</code> catches <strong>only</strong> value errors and lets anything else through:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb6"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a></a><span class="cf">try</span>:</span>
-<span id="cb6-2"><a></a>    tip <span class="op">=</span> <span class="bu">float</span>(tip_text)</span>
-<span id="cb6-3"><a></a><span class="cf">except</span> <span class="pp">ValueError</span>:            <span class="co"># only this kind</span></span>
-<span id="cb6-4"><a></a>    tip <span class="op">=</span> <span class="fl">0.0</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb6"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a aria-label="1"></a><span class="cf">try</span>:</span>
+<span id="cb6-2"><a aria-label="2"></a>    tip <span class="op">=</span> <span class="bu">float</span>(tip_text)</span>
+<span id="cb6-3"><a aria-label="3"></a><span class="cf">except</span> <span class="pp">ValueError</span>:            <span class="co"># only this kind</span></span>
+<span id="cb6-4"><a aria-label="4"></a>    tip <span class="op">=</span> <span class="fl">0.0</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="fragment">
 <div class="callout callout-warning callout-style-simple">
 <div class="callout-body">
@@ -354,9 +358,9 @@ ValueError: could not convert string to float: 'generous'</code></pre>
 <section id="predict-which-explosion" class="slide level2">
 <h2>Predict: which explosion?</h2>
 <p>Kevin builds a table label. <code>guests</code> is the number <code>3</code>. What does the <strong>last line</strong> do?</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb7"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a></a>guests <span class="op">=</span> <span class="dv">3</span></span>
-<span id="cb7-2"><a></a>label <span class="op">=</span> <span class="st">"Party of "</span> <span class="op">+</span> guests</span>
-<span id="cb7-3"><a></a><span class="bu">print</span>(label)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb7"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a aria-label="1"></a>guests <span class="op">=</span> <span class="dv">3</span></span>
+<span id="cb7-2"><a aria-label="2"></a>label <span class="op">=</span> <span class="st">"Party of "</span> <span class="op">+</span> guests</span>
+<span id="cb7-3"><a aria-label="3"></a><span class="bu">print</span>(label)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>a) raises <code>TypeError</code> b) prints <code>Party of 3</code> c) raises <code>ValueError</code></p>
 <div class="fragment">
 <p><span class="question">Predict first</span>. Commit to an answer before the next slide.</p>
@@ -365,12 +369,12 @@ ValueError: could not convert string to float: 'generous'</code></pre>
 <section id="answer-text-and-numbers-wont-mix" class="slide level2">
 <h2>Answer: text and numbers won’t mix</h2>
 <p><strong>a) raises <code>TypeError</code></strong> — <code>+</code> can glue two strings <em>or</em> add two numbers, but it refuses to mix a string and an <code>int</code>. The fix is to convert first (<code>str(guests)</code>):</p>
-<div id="99ed9693" class="cell" data-execution_count="2">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a></a>guests <span class="op">=</span> <span class="dv">3</span></span>
-<span id="cb8-2"><a></a><span class="cf">try</span>:</span>
-<span id="cb8-3"><a></a>    label <span class="op">=</span> <span class="st">"Party of "</span> <span class="op">+</span> guests</span>
-<span id="cb8-4"><a></a><span class="cf">except</span> <span class="pp">TypeError</span> <span class="im">as</span> e:</span>
-<span id="cb8-5"><a></a>    <span class="bu">print</span>(<span class="st">"TypeError:"</span>, e)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div id="ad6d7402" class="cell" data-execution_count="2">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a aria-label="1"></a>guests <span class="op">=</span> <span class="dv">3</span></span>
+<span id="cb8-2"><a aria-label="2"></a><span class="cf">try</span>:</span>
+<span id="cb8-3"><a aria-label="3"></a>    label <span class="op">=</span> <span class="st">"Party of "</span> <span class="op">+</span> guests</span>
+<span id="cb8-4"><a aria-label="4"></a><span class="cf">except</span> <span class="pp">TypeError</span> <span class="im">as</span> e:</span>
+<span id="cb8-5"><a aria-label="5"></a>    <span class="bu">print</span>(<span class="st">"TypeError:"</span>, e)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <div class="cell fragment" data-execution_count="2">
 <div class="cell-output cell-output-stdout">
@@ -407,12 +411,12 @@ ValueError: could not convert string to float: 'generous'</code></pre>
 <section id="print-the-beginners-flashlight" class="slide level2">
 <h2><code>print()</code> — the beginner’s flashlight</h2>
 <p>The simplest debugger is a well-placed <code>print()</code>. When you can’t see what a value <em>is</em>, shine a light on it:</p>
-<div id="ffcdf27e" class="cell" data-execution_count="3">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a></a><span class="kw">def</span> line_total(qty, price):</span>
-<span id="cb10-2"><a></a>    <span class="bu">print</span>(<span class="st">"DEBUG qty ="</span>, qty, <span class="st">"price ="</span>, price)   <span class="co"># the flashlight</span></span>
-<span id="cb10-3"><a></a>    <span class="cf">return</span> <span class="bu">round</span>(qty <span class="op">*</span> price, <span class="dv">2</span>)</span>
-<span id="cb10-4"><a></a></span>
-<span id="cb10-5"><a></a><span class="bu">print</span>(line_total(<span class="dv">3</span>, <span class="fl">5.50</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div id="0d158b65" class="cell" data-execution_count="3">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a aria-label="1"></a><span class="kw">def</span> line_total(qty, price):</span>
+<span id="cb10-2"><a aria-label="2"></a>    <span class="bu">print</span>(<span class="st">"DEBUG qty ="</span>, qty, <span class="st">"price ="</span>, price)   <span class="co"># the flashlight</span></span>
+<span id="cb10-3"><a aria-label="3"></a>    <span class="cf">return</span> <span class="bu">round</span>(qty <span class="op">*</span> price, <span class="dv">2</span>)</span>
+<span id="cb10-4"><a aria-label="4"></a></span>
+<span id="cb10-5"><a aria-label="5"></a><span class="bu">print</span>(line_total(<span class="dv">3</span>, <span class="fl">5.50</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <div class="cell fragment" data-execution_count="3">
 <div class="cell-output cell-output-stdout">
@@ -427,16 +431,16 @@ ValueError: could not convert string to float: 'generous'</code></pre>
 <section id="raise-when-your-code-should-refuse" class="slide level2">
 <h2><code>raise</code> — when your code should refuse</h2>
 <p>Sometimes <em>your own</em> code should reject bad input on the spot. The inspector’s rule is non-negotiable: <strong>every price ≥ 0</strong>. <code>raise</code> throws an error deliberately:</p>
-<div id="ebac133f" class="cell" data-execution_count="4">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb12"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a></a><span class="kw">def</span> charge(amount):</span>
-<span id="cb12-2"><a></a>    <span class="cf">if</span> amount <span class="op">&lt;</span> <span class="dv">0</span>:</span>
-<span id="cb12-3"><a></a>        <span class="cf">raise</span> <span class="pp">ValueError</span>(<span class="st">"price cannot be negative"</span>)</span>
-<span id="cb12-4"><a></a>    <span class="cf">return</span> amount</span>
-<span id="cb12-5"><a></a></span>
-<span id="cb12-6"><a></a><span class="cf">try</span>:</span>
-<span id="cb12-7"><a></a>    charge(<span class="op">-</span><span class="fl">4.50</span>)                  <span class="co"># your code refuses it...</span></span>
-<span id="cb12-8"><a></a><span class="cf">except</span> <span class="pp">ValueError</span> <span class="im">as</span> e:</span>
-<span id="cb12-9"><a></a>    <span class="bu">print</span>(<span class="st">"refused:"</span>, e)           <span class="co"># ...on your terms</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div id="f4907970" class="cell" data-execution_count="4">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb12"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a aria-label="1"></a><span class="kw">def</span> charge(amount):</span>
+<span id="cb12-2"><a aria-label="2"></a>    <span class="cf">if</span> amount <span class="op">&lt;</span> <span class="dv">0</span>:</span>
+<span id="cb12-3"><a aria-label="3"></a>        <span class="cf">raise</span> <span class="pp">ValueError</span>(<span class="st">"price cannot be negative"</span>)</span>
+<span id="cb12-4"><a aria-label="4"></a>    <span class="cf">return</span> amount</span>
+<span id="cb12-5"><a aria-label="5"></a></span>
+<span id="cb12-6"><a aria-label="6"></a><span class="cf">try</span>:</span>
+<span id="cb12-7"><a aria-label="7"></a>    charge(<span class="op">-</span><span class="fl">4.50</span>)                  <span class="co"># your code refuses it...</span></span>
+<span id="cb12-8"><a aria-label="8"></a><span class="cf">except</span> <span class="pp">ValueError</span> <span class="im">as</span> e:</span>
+<span id="cb12-9"><a aria-label="9"></a>    <span class="bu">print</span>(<span class="st">"refused:"</span>, e)           <span class="co"># ...on your terms</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <div class="cell fragment" data-execution_count="4">
 <div class="cell-output cell-output-stdout">
@@ -450,10 +454,10 @@ ValueError: could not convert string to float: 'generous'</code></pre>
 <section id="assert-a-tripwire-for-invariants" class="slide level2">
 <h2><code>assert</code> — a tripwire for invariants</h2>
 <p>An <strong><code>assert</code></strong> guards an <em>invariant</em>, a fact that must <strong>always</strong> hold. If it’s true, nothing happens; if it’s false, the program stops right there with an <code>AssertionError</code>:</p>
-<div id="4c459cff" class="cell" data-execution_count="5">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb14"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a></a>subtotal <span class="op">=</span> <span class="fl">9.60</span></span>
-<span id="cb14-2"><a></a><span class="cf">assert</span> subtotal <span class="op">&gt;=</span> <span class="dv">0</span>, <span class="st">"subtotal went negative — bug upstream"</span></span>
-<span id="cb14-3"><a></a><span class="bu">print</span>(<span class="st">"passed the tripwire:"</span>, subtotal)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div id="47aa6e6c" class="cell" data-execution_count="5">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb14"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a aria-label="1"></a>subtotal <span class="op">=</span> <span class="fl">9.60</span></span>
+<span id="cb14-2"><a aria-label="2"></a><span class="cf">assert</span> subtotal <span class="op">&gt;=</span> <span class="dv">0</span>, <span class="st">"subtotal went negative — bug upstream"</span></span>
+<span id="cb14-3"><a aria-label="3"></a><span class="bu">print</span>(<span class="st">"passed the tripwire:"</span>, subtotal)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <div class="cell fragment" data-execution_count="5">
 <div class="cell-output cell-output-stdout">
@@ -467,15 +471,15 @@ ValueError: could not convert string to float: 'generous'</code></pre>
 <section id="try-then-fall-back" class="slide level2">
 <h2>Try, then fall back</h2>
 <p>A friendly, common pattern: <strong>try</strong> the risky thing; if it fails, <strong>fall back</strong> to a sensible default so the program keeps moving.</p>
-<div id="0eea00bd" class="cell" data-execution_count="6">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb16"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a></a><span class="kw">def</span> seats(text):</span>
-<span id="cb16-2"><a></a>    <span class="cf">try</span>:</span>
-<span id="cb16-3"><a></a>        <span class="cf">return</span> <span class="bu">int</span>(text)</span>
-<span id="cb16-4"><a></a>    <span class="cf">except</span> <span class="pp">ValueError</span>:</span>
-<span id="cb16-5"><a></a>        <span class="cf">return</span> <span class="dv">2</span>               <span class="co"># a table seats two, unless told otherwise</span></span>
-<span id="cb16-6"><a></a></span>
-<span id="cb16-7"><a></a><span class="bu">print</span>(seats(<span class="st">"6"</span>))              <span class="co"># a clean number → 6</span></span>
-<span id="cb16-8"><a></a><span class="bu">print</span>(seats(<span class="st">"full"</span>))           <span class="co"># nonsense → the safe default, 2</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div id="b4694881" class="cell" data-execution_count="6">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb16"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a aria-label="1"></a><span class="kw">def</span> seats(text):</span>
+<span id="cb16-2"><a aria-label="2"></a>    <span class="cf">try</span>:</span>
+<span id="cb16-3"><a aria-label="3"></a>        <span class="cf">return</span> <span class="bu">int</span>(text)</span>
+<span id="cb16-4"><a aria-label="4"></a>    <span class="cf">except</span> <span class="pp">ValueError</span>:</span>
+<span id="cb16-5"><a aria-label="5"></a>        <span class="cf">return</span> <span class="dv">2</span>               <span class="co"># a table seats two, unless told otherwise</span></span>
+<span id="cb16-6"><a aria-label="6"></a></span>
+<span id="cb16-7"><a aria-label="7"></a><span class="bu">print</span>(seats(<span class="st">"6"</span>))              <span class="co"># a clean number → 6</span></span>
+<span id="cb16-8"><a aria-label="8"></a><span class="bu">print</span>(seats(<span class="st">"full"</span>))           <span class="co"># nonsense → the safe default, 2</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <div class="cell fragment" data-execution_count="6">
 <div class="cell-output cell-output-stdout">
@@ -490,14 +494,14 @@ ValueError: could not convert string to float: 'generous'</code></pre>
 <section id="predict-what-happens-after-the-except" class="slide level2">
 <h2>Predict: what happens after the <code>except</code>?</h2>
 <p><code>to_price</code> catches a bad value and returns <code>0.0</code>. After that, does the program reach the <strong>next line</strong>?</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb18"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a></a><span class="kw">def</span> to_price(text):</span>
-<span id="cb18-2"><a></a>    <span class="cf">try</span>:</span>
-<span id="cb18-3"><a></a>        <span class="cf">return</span> <span class="bu">float</span>(text)</span>
-<span id="cb18-4"><a></a>    <span class="cf">except</span> <span class="pp">ValueError</span>:</span>
-<span id="cb18-5"><a></a>        <span class="cf">return</span> <span class="fl">0.0</span></span>
-<span id="cb18-6"><a></a></span>
-<span id="cb18-7"><a></a><span class="bu">print</span>(to_price(<span class="st">"bad"</span>))</span>
-<span id="cb18-8"><a></a><span class="bu">print</span>(<span class="st">"checkout still running"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb18"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a aria-label="1"></a><span class="kw">def</span> to_price(text):</span>
+<span id="cb18-2"><a aria-label="2"></a>    <span class="cf">try</span>:</span>
+<span id="cb18-3"><a aria-label="3"></a>        <span class="cf">return</span> <span class="bu">float</span>(text)</span>
+<span id="cb18-4"><a aria-label="4"></a>    <span class="cf">except</span> <span class="pp">ValueError</span>:</span>
+<span id="cb18-5"><a aria-label="5"></a>        <span class="cf">return</span> <span class="fl">0.0</span></span>
+<span id="cb18-6"><a aria-label="6"></a></span>
+<span id="cb18-7"><a aria-label="7"></a><span class="bu">print</span>(to_price(<span class="st">"bad"</span>))</span>
+<span id="cb18-8"><a aria-label="8"></a><span class="bu">print</span>(<span class="st">"checkout still running"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>a) it never runs: the program already stopped b) the <code>try</code> block runs a second time c) it runs normally: the program carried on</p>
 <div class="fragment">
 <p><span class="question">Predict first</span>. Commit to an answer before the next slide.</p>
@@ -506,15 +510,15 @@ ValueError: could not convert string to float: 'generous'</code></pre>
 <section id="answer-it-carries-on" class="slide level2">
 <h2>Answer: it carries on</h2>
 <p><strong>c) it runs normally</strong> — that’s the whole point of <code>try</code> / <code>except</code>. It <em>handles</em> the failure; once the <code>except</code> has run, control simply drops to the code after it, as if nothing had gone wrong:</p>
-<div id="539dee8a" class="cell" data-execution_count="7">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb19"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a></a><span class="kw">def</span> to_price(text):</span>
-<span id="cb19-2"><a></a>    <span class="cf">try</span>:</span>
-<span id="cb19-3"><a></a>        <span class="cf">return</span> <span class="bu">float</span>(text)</span>
-<span id="cb19-4"><a></a>    <span class="cf">except</span> <span class="pp">ValueError</span>:</span>
-<span id="cb19-5"><a></a>        <span class="cf">return</span> <span class="fl">0.0</span></span>
-<span id="cb19-6"><a></a></span>
-<span id="cb19-7"><a></a><span class="bu">print</span>(to_price(<span class="st">"bad"</span>))           <span class="co"># 0.0 — recovered</span></span>
-<span id="cb19-8"><a></a><span class="bu">print</span>(<span class="st">"checkout still running"</span>)  <span class="co"># ...and we get here</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div id="d10c35a8" class="cell" data-execution_count="7">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb19"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a aria-label="1"></a><span class="kw">def</span> to_price(text):</span>
+<span id="cb19-2"><a aria-label="2"></a>    <span class="cf">try</span>:</span>
+<span id="cb19-3"><a aria-label="3"></a>        <span class="cf">return</span> <span class="bu">float</span>(text)</span>
+<span id="cb19-4"><a aria-label="4"></a>    <span class="cf">except</span> <span class="pp">ValueError</span>:</span>
+<span id="cb19-5"><a aria-label="5"></a>        <span class="cf">return</span> <span class="fl">0.0</span></span>
+<span id="cb19-6"><a aria-label="6"></a></span>
+<span id="cb19-7"><a aria-label="7"></a><span class="bu">print</span>(to_price(<span class="st">"bad"</span>))           <span class="co"># 0.0 — recovered</span></span>
+<span id="cb19-8"><a aria-label="8"></a><span class="bu">print</span>(<span class="st">"checkout still running"</span>)  <span class="co"># ...and we get here</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <div class="cell fragment" data-execution_count="7">
 <div class="cell-output cell-output-stdout">

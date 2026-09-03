@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.9.38">
+<meta name="generator" content="quarto-1.10.18">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -13,10 +13,13 @@
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
 */
-code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
-div.columns{display: flex; gap: min(4vw, 1.5em);}
-div.column{flex: auto; overflow-x: auto;}
+div.columns{display: flex; gap: 1.5em;}
+div.column{flex: auto;}
+@media screen {
+div.columns{gap: min(4vw, 1.5em);}
+div.column{overflow-x: auto;}
+}
 div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
 ul.task-list{list-style: none;}
 ul.task-list li input[type="checkbox"] {
@@ -76,14 +79,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="../site_libs/quarto-html/anchor.min.js"></script>
 <link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-018a56f84f553ab074084cbaa177a14c.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-dark-c366505a46d5b46cf7fae82eb9e8fbfc.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-018a56f84f553ab074084cbaa177a14c.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-07311628652e75f956396d70ae2c81bf.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-dark-fcd1a2993490c2d386cd11edf595946f.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-07311628652e75f956396d70ae2c81bf.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
 <script src="../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../site_libs/bootstrap/bootstrap-2f19b2db3fad15d2f175130959bbc86e.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="../site_libs/bootstrap/bootstrap-dark-8d6508a0f4ab1fa03a98911d51c1ef8f.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="light">
-<link href="../site_libs/bootstrap/bootstrap-2f19b2db3fad15d2f175130959bbc86e.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-6f2612d10d43eecceb942efa6a96e350.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-dark-3e719430d8a2385e43a703e698505b45.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-6f2612d10d43eecceb942efa6a96e350.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -453,15 +456,19 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#checkpoint-4-sessions-vivii" id="toc-checkpoint-4-sessions-vivii" class="nav-link active" data-scroll-target="#checkpoint-4-sessions-vivii">📋 Checkpoint 4 — Sessions VI–VII</a></li>
+  <li><a href="#checkpoint-4" id="toc-checkpoint-4" class="nav-link active" data-scroll-target="#checkpoint-4">📋 Checkpoint 4</a>
+  <ul class="collapse">
+  <li><a href="#when-youre-done" id="toc-when-youre-done" class="nav-link" data-scroll-target="#when-youre-done">When you’re done</a></li>
+  </ul></li>
   <li><a href="#episode-8-the-data-room" id="toc-episode-8-the-data-room" class="nav-link" data-scroll-target="#episode-8-the-data-room"><span class="flow">Episode 8: The Data Room</span></a>
   <ul class="collapse">
   <li><a href="#show-me-the-data" id="toc-show-me-the-data" class="nav-link" data-scroll-target="#show-me-the-data">Show me the data</a></li>
   </ul></li>
   <li><a href="#ai-joins-the-team-professionally" id="toc-ai-joins-the-team-professionally" class="nav-link" data-scroll-target="#ai-joins-the-team-professionally"><span class="flow">AI joins the team — professionally</span></a>
   <ul class="collapse">
-  <li><a href="#prompting-that-works-context-constraints" id="toc-prompting-that-works-context-constraints" class="nav-link" data-scroll-target="#prompting-that-works-context-constraints">Prompting that works: context + constraints</a></li>
+  <li><a href="#prompting-context-constraints" id="toc-prompting-context-constraints" class="nav-link" data-scroll-target="#prompting-context-constraints">Prompting: context + constraints</a></li>
   <li><a href="#the-verify-workflow" id="toc-the-verify-workflow" class="nav-link" data-scroll-target="#the-verify-workflow">The verify workflow</a></li>
+  <li><a href="#step-3-in-action" id="toc-step-3-in-action" class="nav-link" data-scroll-target="#step-3-in-action">Step 3 in action</a></li>
   <li><a href="#predict-does-.summarize-exist" id="toc-predict-does-.summarize-exist" class="nav-link" data-scroll-target="#predict-does-.summarize-exist">Predict: does <code>.summarize()</code> exist?</a></li>
   <li><a href="#answer-the-method-never-existed" id="toc-answer-the-method-never-existed" class="nav-link" data-scroll-target="#answer-the-method-never-existed">Answer: the method never existed</a></li>
   <li><a href="#disclosure-one-line-every-time" id="toc-disclosure-one-line-every-time" class="nav-link" data-scroll-target="#disclosure-one-line-every-time">Disclosure: one line, every time</a></li>
@@ -532,9 +539,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<section id="checkpoint-4-sessions-vivii" class="level1 exercise-slide">
-<h1 class="exercise-slide">📋 Checkpoint 4 — Sessions VI–VII</h1>
-<p>The first <strong>40 minutes</strong> are the checkpoint. It starts <strong>now</strong>, before the investor opens her data room.</p>
+<section id="checkpoint-4" class="level1 exercise-slide">
+<h1 class="exercise-slide">📋 Checkpoint 4</h1>
+<p><strong>Sessions VI–VII.</strong> The first <strong>40 minutes</strong> are the checkpoint. It starts <strong>now</strong>, before the investor opens her data room.</p>
 <ul>
 <li><strong>Individual work</strong>: no neighbors, no chat</li>
 <li><strong>AI tools are allowed</strong>: being able to <strong>VERIFY</strong> the output is the skill being graded</li>
@@ -543,8 +550,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li>It sweeps <strong>Sessions VI–VII</strong>: modules, <code>random</code> and seeds, NumPy arrays and masks</li>
 </ul>
 <!-- QR handed out live — never in the deck -->
-<p>. . .</p>
-<p><strong>When you’re done:</strong> menu → <em>Download</em> → <em>Download Python code</em> → upload the <code>.py</code> to the <strong>“Checkpoint 4”</strong> assignment on Moodle. <strong>No retakes</strong>: one sitting.</p>
+<section id="when-youre-done" class="level2">
+<h2 class="anchored" data-anchor-id="when-youre-done">When you’re done</h2>
+<p>Menu → <em>Download</em> → <em>Download Python code</em> → upload the <code>.py</code> to the <strong>“Checkpoint 4”</strong> assignment on Moodle. <strong>No retakes</strong>: one sitting.</p>
 <p>. . .</p>
 <div class="callout callout-style-simple callout-note">
 <div class="callout-body d-flex">
@@ -556,6 +564,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 </div>
+</section>
 </section>
 <section id="episode-8-the-data-room" class="level1 title">
 <h1 class="title"><span class="flow">Episode 8: The Data Room</span></h1>
@@ -571,16 +580,16 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 <section id="ai-joins-the-team-professionally" class="level1 title">
 <h1 class="title"><span class="flow">AI joins the team — professionally</span></h1>
-<section id="prompting-that-works-context-constraints" class="level2">
-<h2 class="anchored" data-anchor-id="prompting-that-works-context-constraints">Prompting that works: context + constraints</h2>
-<p>An AI is only as good as what you tell it. Two things turn a vague request into a useful answer:</p>
+<section id="prompting-context-constraints" class="level2">
+<h2 class="anchored" data-anchor-id="prompting-context-constraints">Prompting: context + constraints</h2>
+<p>Two things turn a vague request into a useful answer:</p>
 <ul>
 <li><strong>Context</strong> — say what the data <em>is</em>: “I have a DataFrame <code>orders</code> with columns <code>zone</code> (text) and <code>total_eur</code> (float).”</li>
 <li><strong>Constraints</strong> — say exactly what you want <em>back</em>: “Give me the total <code>total_eur</code> for zone <code>Nord</code>, as a single number.”</li>
 </ul>
 <p>. . .</p>
 <blockquote class="blockquote">
-<p><em>“I have a pandas DataFrame <code>orders</code> with a text column <code>zone</code> and a float column <code>total_eur</code>. Write one line that returns the total <code>total_eur</code> for rows where <code>zone</code> is <code>Nord</code>.”</em></p>
+<p><em>“DataFrame <code>orders</code>, text column <code>zone</code>, float column <code>total_eur</code>. Write one line that returns the total <code>total_eur</code> where <code>zone</code> is <code>Nord</code>.”</em></p>
 </blockquote>
 <p>Vague in, vague out. Specific in, checkable out, and then you <strong>iterate</strong>.</p>
 </section>
@@ -592,9 +601,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li><strong>Run it</strong>: does it actually execute, or does it crash?</li>
 <li><strong>Test it</strong>: try it on a small case where <strong>you already know the answer.</strong></li>
 </ol>
-<p>. . .</p>
-<p>Step 3 in action. Five orders with values you can add in your head, and the AI’s suggested line for the Nord average:</p>
-<div id="86b8ebe5" class="cell" data-output-location="fragment" data-execution_count="1">
+</section>
+<section id="step-3-in-action" class="level2">
+<h2 class="anchored" data-anchor-id="step-3-in-action">Step 3 in action</h2>
+<p>Five orders with values you can add in your head, and the AI’s suggested line for the Nord average:</p>
+<div id="71820ae0" class="cell" data-output-location="fragment" data-execution_count="1">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>check <span class="op">=</span> pd.DataFrame({</span>
@@ -622,36 +633,21 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 <section id="answer-the-method-never-existed" class="level2">
 <h2 class="anchored" data-anchor-id="answer-the-method-never-existed">Answer: the method never existed</h2>
-<p><strong>b) <code>AttributeError</code></strong> — pandas has no <code>.summarize()</code>. The AI invented a plausible-sounding name, and Python answers with a traceback you’ve read since Episode 5:</p>
-<div id="bb91262b" class="cell" data-execution_count="2">
+<p><strong>b) <code>AttributeError</code></strong> — pandas has no <code>.summarize()</code>. The AI invented it:</p>
+<div id="87d02303" class="cell" data-execution_count="3">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>orders <span class="op">=</span> pd.DataFrame({<span class="st">"zone"</span>: [<span class="st">"Nord"</span>, <span class="st">"Sued"</span>], <span class="st">"total_eur"</span>: [<span class="fl">12.0</span>, <span class="fl">9.5</span>]})</span>
-<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>orders.summarize()                     <span class="co"># the method the AI invented</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>orders.summarize()                     <span class="co"># the method the AI invented</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-error">
 <div class="ansi-escaped-output">
-<pre><span class="ansi-red-fg">---------------------------------------------------------------------------</span>
-<span class="ansi-red-fg">AttributeError</span>                            Traceback (most recent call last)
-<span class="ansi-green-fg">/var/folders/_5/jkkjxxdd5f1955l380dky7n80000gn/T/ipykernel_66286/1876211805.py</span> in <span class="ansi-cyan-fg">?</span><span class="ansi-blue-fg">()</span>
-<span class="ansi-green-fg">      1</span> <span style="font-weight:bold;color:rgb(0,135,0)">import</span> pandas <span style="font-weight:bold;color:rgb(0,135,0)">as</span> pd
-<span class="ansi-green-fg">      2</span> orders = pd.DataFrame({<span class="ansi-yellow-fg">"zone"</span>: [<span class="ansi-yellow-fg">"Nord"</span>, <span class="ansi-yellow-fg">"Sued"</span>], <span class="ansi-yellow-fg">"total_eur"</span>: [<span class="ansi-green-fg">12.0</span>, <span class="ansi-green-fg">9.5</span>]})
-<span class="ansi-green-fg">      3</span> 
-<span class="ansi-green-fg">----&gt; </span><span class="ansi-green-fg">4</span> orders.summarize()                     <span style="font-style:italic;color:rgb(95,135,135)"># the method the AI invented</span>
-
-<span class="ansi-green-fg">~/development/lectures/Introduction-to-Python/.venv/lib/python3.12/site-packages/pandas/core/generic.py</span> in <span class="ansi-cyan-fg">?</span><span class="ansi-blue-fg">(self, name)</span>
-<span class="ansi-green-fg">   6314</span>             <span style="font-weight:bold;color:rgb(0,135,0)">and</span> name <span style="font-weight:bold;color:rgb(0,135,0)">not</span> <span style="font-weight:bold;color:rgb(0,135,0)">in</span> self._accessors
-<span class="ansi-green-fg">   6315</span>             <span style="font-weight:bold;color:rgb(0,135,0)">and</span> self._info_axis._can_hold_identifiers_and_holds_name(name)
-<span class="ansi-green-fg">   6316</span>         ):
-<span class="ansi-green-fg">   6317</span>             <span style="font-weight:bold;color:rgb(0,135,0)">return</span> self[name]
-<span class="ansi-green-fg">-&gt; </span><span class="ansi-green-fg">6318</span>         <span style="font-weight:bold;color:rgb(0,135,0)">return</span> object.__getattribute__(self, name)
-
-<span class="ansi-red-fg">AttributeError</span>: 'DataFrame' object has no attribute 'summarize'</pre>
+<pre><span class="ansi-red-fg">AttributeError</span><span class="ansi-red-fg">:</span> 'DataFrame' object has no attribute 'summarize'
+</pre>
 </div>
 </div>
 </div>
 <p>. . .</p>
 <p>The real method is <code>.describe()</code>:</p>
-<div id="61e1b761" class="cell" data-output-location="fragment" data-execution_count="3">
+<div id="d59ed99b" class="cell" data-output-location="fragment" data-execution_count="4">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(orders.describe())               <span class="co"># the method that actually exists</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>       total_eur
@@ -720,17 +716,16 @@ max    12.000000</code></pre>
 </section>
 <section id="a-dataframe-from-a-dictionary" class="level2">
 <h2 class="anchored" data-anchor-id="a-dataframe-from-a-dictionary">A DataFrame from a dictionary</h2>
-<p>Keys become <strong>column names</strong>; each list becomes a <strong>column</strong>. One order per row:</p>
-<div id="20980557" class="cell" data-output-location="fragment" data-execution_count="4">
+<p>Keys become <strong>column names</strong>; each list becomes a <strong>column</strong>; one order per row, mixed types together:</p>
+<div id="8a379b22" class="cell" data-output-location="fragment" data-execution_count="5">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
-<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> pd.DataFrame({</span>
-<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>    <span class="st">"order_id"</span>:  [<span class="dv">101</span>, <span class="dv">102</span>, <span class="dv">103</span>, <span class="dv">104</span>, <span class="dv">105</span>],</span>
-<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>    <span class="st">"zone"</span>:      [<span class="st">"Nord"</span>, <span class="st">"Sued"</span>, <span class="st">"Nord"</span>, <span class="st">"Hafen"</span>, <span class="st">"Sued"</span>],</span>
-<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>    <span class="st">"items"</span>:     [<span class="dv">2</span>, <span class="dv">1</span>, <span class="dv">3</span>, <span class="dv">1</span>, <span class="dv">4</span>],</span>
-<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a>    <span class="st">"total_eur"</span>: [<span class="fl">18.50</span>, <span class="fl">7.20</span>, <span class="fl">24.00</span>, <span class="fl">6.80</span>, <span class="fl">31.40</span>],</span>
-<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a>})</span>
-<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(df)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> pd.DataFrame({</span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>    <span class="st">"order_id"</span>:  [<span class="dv">101</span>, <span class="dv">102</span>, <span class="dv">103</span>, <span class="dv">104</span>, <span class="dv">105</span>],</span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>    <span class="st">"zone"</span>:      [<span class="st">"Nord"</span>, <span class="st">"Sued"</span>, <span class="st">"Nord"</span>, <span class="st">"Hafen"</span>, <span class="st">"Sued"</span>],</span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>    <span class="st">"items"</span>:     [<span class="dv">2</span>, <span class="dv">1</span>, <span class="dv">3</span>, <span class="dv">1</span>, <span class="dv">4</span>],</span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>    <span class="st">"total_eur"</span>: [<span class="fl">18.50</span>, <span class="fl">7.20</span>, <span class="fl">24.00</span>, <span class="fl">6.80</span>, <span class="fl">31.40</span>],</span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a>})</span>
+<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(df)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>   order_id   zone  items  total_eur
 0       101   Nord      2       18.5
@@ -741,32 +736,28 @@ max    12.000000</code></pre>
 </div>
 </div>
 <p>. . .</p>
-<p>Five orders, four columns, mixed types (text, integers, floats) living happily together.</p>
-<p>. . .</p>
 <div class="callout callout-style-simple callout-note">
 <div class="callout-body d-flex">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-body-container">
-<p>You won’t type the investor’s eighty orders by hand. In tonight’s lab a real CSV loads in one line, <code>orders = pd.read_csv("public/orders.csv")</code>. In the browser notebook that same line fetches the file over the web instead of from disk; pandas doesn’t care, your code doesn’t change.</p>
+<p>Nobody types eighty orders by hand: tonight’s lab loads a real CSV in one line, <code>orders = pd.read_csv("public/orders.csv")</code>. In the browser that line fetches over the web instead of from disk; your code doesn’t change.</p>
 </div>
 </div>
 </div>
 </section>
 <section id="first-look-.head-and-.info" class="level2">
 <h2 class="anchored" data-anchor-id="first-look-.head-and-.info">First look: <code>.head()</code> and <code>.info()</code></h2>
-<p>Before analyzing a table, glance at it. <code>.head()</code> shows the top rows; <code>.info()</code> reports columns, types, and counts:</p>
-<div id="7d9c7648" class="cell" data-output-location="fragment" data-execution_count="5">
+<p>Before analyzing a table, glance at it. <code>.head()</code> shows the top rows; <code>.info()</code> is your first sanity check: right number of rows? Any column a surprising type?</p>
+<div id="8d6a87db" class="cell" data-output-location="fragment" data-execution_count="6">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(df.head(<span class="dv">3</span>))     <span class="co"># first 3 rows</span></span>
-<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>()</span>
-<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>df.info()             <span class="co"># columns, dtypes, non-null counts</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>df.info()             <span class="co"># columns, dtypes, non-null counts</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>   order_id  zone  items  total_eur
 0       101  Nord      2       18.5
 1       102  Sued      1        7.2
 2       103  Nord      3       24.0
-
 &lt;class 'pandas.core.frame.DataFrame'&gt;
 RangeIndex: 5 entries, 0 to 4
 Data columns (total 4 columns):
@@ -780,13 +771,11 @@ dtypes: float64(1), int64(2), object(1)
 memory usage: 292.0+ bytes</code></pre>
 </div>
 </div>
-<p>. . .</p>
-<p><code>.info()</code> is your first sanity check: right number of rows? Any column a surprising type?</p>
 </section>
 <section id="the-numbers-at-a-glance-.describe" class="level2">
 <h2 class="anchored" data-anchor-id="the-numbers-at-a-glance-.describe">The numbers at a glance: <code>.describe()</code></h2>
 <p><code>.describe()</code> computes count, mean, min, max and quartiles for every <strong>numeric</strong> column at once:</p>
-<div id="3cf6f3d2" class="cell" data-output-location="fragment" data-execution_count="6">
+<div id="b66a535a" class="cell" data-output-location="fragment" data-execution_count="7">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(df.describe())</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>         order_id    items  total_eur
@@ -806,7 +795,7 @@ max    105.000000  4.00000  31.400000</code></pre>
 <section id="selecting-a-column-filtering-rows" class="level2">
 <h2 class="anchored" data-anchor-id="selecting-a-column-filtering-rows">Selecting a column, filtering rows</h2>
 <p>Pick one column by name; keep rows with a <strong>boolean mask</strong>, exactly the NumPy idea from last session:</p>
-<div id="f6d5e92b" class="cell" data-output-location="fragment" data-execution_count="7">
+<div id="5b079be7" class="cell" data-output-location="fragment" data-execution_count="8">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(df[<span class="st">"zone"</span>])                  <span class="co"># one column (a Series)</span></span>
 <span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>()</span>
 <span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(df[df[<span class="st">"zone"</span>] <span class="op">==</span> <span class="st">"Nord"</span>])    <span class="co"># only the Nord rows — case-sensitive!</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
@@ -829,7 +818,7 @@ Name: zone, dtype: object
 <section id="adding-a-column-sorting" class="level2">
 <h2 class="anchored" data-anchor-id="adding-a-column-sorting">Adding a column, sorting</h2>
 <p>Compute a new column from existing ones, then sort. Work on a <strong>copy</strong> so the original stays intact:</p>
-<div id="184d593c" class="cell" data-output-location="fragment" data-execution_count="8">
+<div id="494e7bee" class="cell" data-output-location="fragment" data-execution_count="9">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>priced <span class="op">=</span> df.copy()</span>
 <span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>priced[<span class="st">"eur_per_item"</span>] <span class="op">=</span> priced[<span class="st">"total_eur"</span>] <span class="op">/</span> priced[<span class="st">"items"</span>]</span>
 <span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(priced.sort_values(<span class="st">"total_eur"</span>, ascending<span class="op">=</span><span class="va">False</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
@@ -856,7 +845,7 @@ Name: zone, dtype: object
 <section id="answer-an-empty-table-no-warning" class="level2">
 <h2 class="anchored" data-anchor-id="answer-an-empty-table-no-warning">Answer: an empty table, no warning</h2>
 <p><strong>a) an empty table</strong> — <code>"nord"</code> matches nothing, so the mask is all <code>False</code> and pandas hands back <strong>zero rows</strong>. No error, no complaint:</p>
-<div id="20ada398" class="cell" data-output-location="fragment" data-execution_count="9">
+<div id="ed5950c2" class="cell" data-output-location="fragment" data-execution_count="10">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb18"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(df[df[<span class="st">"zone"</span>] <span class="op">==</span> <span class="st">"nord"</span>])          <span class="co"># nothing matches "nord"</span></span>
 <span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"rows:"</span>, <span class="bu">len</span>(df[df[<span class="st">"zone"</span>] <span class="op">==</span> <span class="st">"nord"</span>]))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
@@ -901,11 +890,10 @@ rows: 0</code></pre>
 <section id="tonights-episode" class="level2">
 <h2 class="anchored" data-anchor-id="tonights-episode">Tonight’s episode</h2>
 <ul>
-<li>Head to the lab notebook: <a href="../tutorials/tut_08_pandas.html">Episode 8 — The Data Room</a></li>
-<li>The investor slides a <strong>USB stick</strong> across the table: every order, two full weeks. It’s now <code>orders.csv</code>, eighty rows, loaded with one <code>pd.read_csv</code> line</li>
+<li>Head to the lab notebook: <a href="../tutorials/tut_08_pandas.html">Episode 8 — The Data Room</a>, in your browser as always</li>
+<li>The investor slides a <strong>USB stick</strong> across the table: every order of two weeks, now <code>orders.csv</code>, eighty rows, one <code>pd.read_csv</code> line</li>
 <li>You’ll <code>.head()</code>, <code>.info()</code> and <code>.describe()</code> it, filter with masks, add a column on a safe copy, and answer per-zone questions with <code>groupby</code></li>
 <li>Kevin has discovered AI; your real job is to <strong>supervise</strong> it and catch the confident nonsense</li>
-<li>It runs entirely in your browser: no setup, just click and code</li>
 </ul>
 <p>. . .</p>
 <div class="callout callout-style-simple callout-important">
@@ -925,7 +913,7 @@ rows: 0</code></pre>
 <section id="three-things-to-remember" class="level2">
 <h2 class="anchored" data-anchor-id="three-things-to-remember">Three things to remember</h2>
 <ol type="1">
-<li><strong>AI is a co-pilot you verify.</strong> Give it <strong>context and constraints</strong>, then <strong>read it → run it → test it</strong> on a case you know. An AI that sounds sure is not the same as an API that exists.</li>
+<li><strong>AI is a co-pilot you verify.</strong> Give it <strong>context and constraints</strong>, then <strong>read it → run it → test it</strong> on a case you know.</li>
 <li><strong>A DataFrame is a named, mixed-type table.</strong> <code>pd.DataFrame</code> from a dict, <code>pd.read_csv</code> from a file; <code>.head()</code>, <code>.info()</code>, <code>.describe()</code> to look before you leap.</li>
 <li><strong>Select, filter, add, group.</strong> <code>df["col"]</code>, a boolean mask (<code>df[df["zone"] == "Nord"]</code>, case-sensitive!), a new column on a <code>.copy()</code>, and <code>groupby</code> for per-category answers. pandas won’t warn you; you verify.</li>
 </ol>

@@ -7,8 +7,8 @@
 <script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
 <link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
 <link href="../site_libs/quarto-html/light-border.css" rel="stylesheet">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-de63f62b328812d8e578a4d74e282472.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
-  <meta name="generator" content="quarto-1.9.38">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-bb62276ab45c84d9efd712f51ff97b5a.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
+  <meta name="generator" content="quarto-1.10.18">
 
   <meta name="author" content="Dr.&nbsp;Tobias Vlćek">
   <title>Programming with Python – Lecture VI - Modules and the Standard Library</title>
@@ -21,10 +21,13 @@
     /* Default styles provided by pandoc.
     ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
     */
-    code{white-space: pre-wrap;}
     span.smallcaps{font-variant: small-caps;}
-    div.columns{display: flex; gap: min(4vw, 1.5em);}
-    div.column{flex: auto; overflow-x: auto;}
+    div.columns{display: flex; gap: 1.5em;}
+    div.column{flex: auto;}
+    @media screen {
+    div.columns{gap: min(4vw, 1.5em);}
+    div.column{overflow-x: auto;}
+    }
     div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
     ul.task-list{list-style: none;}
     ul.task-list li input[type="checkbox"] {
@@ -203,7 +206,7 @@
 <div class="quarto-title-authors">
 <div class="quarto-title-author">
 <div class="quarto-title-author-name">
-Dr.&nbsp;Tobias Vlćek 
+Dr.&nbsp;Tobias Vlćek
 </div>
         <p class="quarto-title-affiliation">
             Kühne Logistics University Hamburg - Fall 2026
@@ -212,9 +215,10 @@ Dr.&nbsp;Tobias Vlćek
 </div>
 
 </section>
-<section id="checkpoint-3-sessions-iv" class="title-slide slide level1 exercise-slide center">
-<h1>📋 Checkpoint 3 — Sessions I–V</h1>
-<p>The first <strong>40 minutes</strong> are the checkpoint. It starts <strong>now</strong>, before the investor sits down.</p>
+<section>
+<section id="checkpoint-3" class="title-slide slide level1 exercise-slide center">
+<h1>📋 Checkpoint 3</h1>
+<p><strong>Sessions I–V.</strong> The first <strong>40 minutes</strong> are the checkpoint. It starts <strong>now</strong>, before the investor sits down.</p>
 <ul>
 <li><strong>Individual work</strong>: no AI, no neighbors, no chat</li>
 <li>The <strong>link and QR</strong> are handed out in class. Open it and start</li>
@@ -222,9 +226,10 @@ Dr.&nbsp;Tobias Vlćek
 <li>It sweeps <strong>everything from Sessions I–V</strong>: variables, control flow, functions, data structures, errors</li>
 </ul>
 <!-- QR handed out live — never in the deck -->
-<div class="fragment">
-<p><strong>When you’re done:</strong> menu → <em>Download</em> → <em>Download Python code</em> → upload the <code>.py</code> to the <strong>“Checkpoint 3”</strong> assignment on Moodle. <strong>No retakes</strong>: one sitting.</p>
-</div>
+</section>
+<section id="when-youre-done" class="slide level2">
+<h2>When you’re done</h2>
+<p>Menu → <em>Download</em> → <em>Download Python code</em> → upload the <code>.py</code> to the <strong>“Checkpoint 3”</strong> assignment on Moodle. <strong>No retakes</strong>: one sitting.</p>
 <div class="fragment">
 <div class="callout callout-note callout-style-simple">
 <div class="callout-body">
@@ -237,8 +242,7 @@ Dr.&nbsp;Tobias Vlćek
 </div>
 </div>
 </div>
-</section>
-
+</section></section>
 <section>
 <section id="episode-6-due-diligence-week" class="title-slide slide level1 title center">
 <h1><span class="flow">Episode 6: Due Diligence Week</span></h1>
@@ -266,10 +270,27 @@ Dr.&nbsp;Tobias Vlćek
 <li><strong>The course chatbot</strong> (sidebar widget) now gives you <strong>full code</strong> on request, not just hints.</li>
 </ul>
 <div class="fragment">
-<p>Full details on the <a href="../general/ai-tools.html">AI Tools page</a>.</p>
-</div>
-<div class="fragment">
 <p>You spent five sessions learning to think without a co-pilot. Now you get one — and you’ll be the pilot.</p>
+</div>
+</section>
+<section id="two-accounts-this-week" class="slide level2">
+<h2>Two accounts this week</h2>
+<p>Both are free, both are on the <a href="../general/ai-tools.html">AI Tools page</a>, together about ten minutes:</p>
+<ul>
+<li><strong>Mistral:</strong> a Le Chat account for questions, plus an API key. The same key later powers the AI agent inside your editor</li>
+<li><strong>Zed student plan:</strong> sign in with the GitHub account you made in Session I (it’s old enough now) and apply with your KLU e-mail. Verification takes up to 72 hours, so the free year of Zed Pro is ready long before Session X</li>
+</ul>
+<div class="fragment">
+<div class="callout callout-important callout-style-simple">
+<div class="callout-body">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-content">
+<p>Turn <strong>off</strong> Mistral’s training-data toggle before you paste coursework (steps on the AI Tools page). Nothing here needs a credit card.</p>
+</div>
+</div>
+</div>
 </div>
 </section></section>
 <section>
@@ -292,13 +313,13 @@ Dr.&nbsp;Tobias Vlćek
 <section id="import-math-stop-rounding-by-hand" class="slide level2">
 <h2><code>import math</code>: stop rounding by hand</h2>
 <p>130 pastries need to ship. They go in crates of 48. How many crates? You need to round <strong>up</strong>: a half-full crate still ships as a whole one.</p>
-<div id="408b8b68" class="cell" data-execution_count="1">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a></a><span class="im">import</span> math</span>
-<span id="cb1-2"><a></a></span>
-<span id="cb1-3"><a></a>pastries <span class="op">=</span> <span class="dv">130</span></span>
-<span id="cb1-4"><a></a>per_crate <span class="op">=</span> <span class="dv">48</span></span>
-<span id="cb1-5"><a></a>crates <span class="op">=</span> math.ceil(pastries <span class="op">/</span> per_crate)   <span class="co"># ceil = round UP</span></span>
-<span id="cb1-6"><a></a><span class="bu">print</span>(crates)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div id="3a5a27cb" class="cell" data-execution_count="1">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a aria-label="1"></a><span class="im">import</span> math</span>
+<span id="cb1-2"><a aria-label="2"></a></span>
+<span id="cb1-3"><a aria-label="3"></a>pastries <span class="op">=</span> <span class="dv">130</span></span>
+<span id="cb1-4"><a aria-label="4"></a>per_crate <span class="op">=</span> <span class="dv">48</span></span>
+<span id="cb1-5"><a aria-label="5"></a>crates <span class="op">=</span> math.ceil(pastries <span class="op">/</span> per_crate)   <span class="co"># ceil = round UP</span></span>
+<span id="cb1-6"><a aria-label="6"></a><span class="bu">print</span>(crates)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <div class="cell fragment" data-execution_count="1">
 <div class="cell-output cell-output-stdout">
@@ -312,12 +333,12 @@ Dr.&nbsp;Tobias Vlćek
 <section id="from-statistics-import-..." class="slide level2">
 <h2><code>from statistics import ...</code></h2>
 <p>Sometimes you only want a couple of tools, not the whole box. Import them <strong>by name</strong> and use them directly, no <code>statistics.</code> prefix:</p>
-<div id="2aa35c71" class="cell" data-execution_count="2">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a></a><span class="im">from</span> statistics <span class="im">import</span> mean, median</span>
-<span id="cb3-2"><a></a></span>
-<span id="cb3-3"><a></a>ratings <span class="op">=</span> [<span class="fl">4.5</span>, <span class="fl">4.8</span>, <span class="fl">1.0</span>, <span class="fl">5.0</span>, <span class="fl">4.2</span>]</span>
-<span id="cb3-4"><a></a><span class="bu">print</span>(mean(ratings))     <span class="co"># the average</span></span>
-<span id="cb3-5"><a></a><span class="bu">print</span>(median(ratings))   <span class="co"># the middle value</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div id="b297ba49" class="cell" data-execution_count="2">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a aria-label="1"></a><span class="im">from</span> statistics <span class="im">import</span> mean, median</span>
+<span id="cb3-2"><a aria-label="2"></a></span>
+<span id="cb3-3"><a aria-label="3"></a>ratings <span class="op">=</span> [<span class="fl">4.5</span>, <span class="fl">4.8</span>, <span class="fl">1.0</span>, <span class="fl">5.0</span>, <span class="fl">4.2</span>]</span>
+<span id="cb3-4"><a aria-label="4"></a><span class="bu">print</span>(mean(ratings))     <span class="co"># the average</span></span>
+<span id="cb3-5"><a aria-label="5"></a><span class="bu">print</span>(median(ratings))   <span class="co"># the middle value</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <div class="cell fragment" data-execution_count="2">
 <div class="cell-output cell-output-stdout">
@@ -332,10 +353,10 @@ Dr.&nbsp;Tobias Vlćek
 <section id="aliases-a-shorter-name" class="slide level2">
 <h2>Aliases: a shorter name</h2>
 <p>Some module names are long, or you’ll type them fifty times. <code>import ... as</code> gives a module a <strong>nickname</strong> for the rest of the file:</p>
-<div id="ca740977" class="cell" data-execution_count="3">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a></a><span class="im">import</span> statistics <span class="im">as</span> stats</span>
-<span id="cb5-2"><a></a></span>
-<span id="cb5-3"><a></a><span class="bu">print</span>(stats.median([<span class="fl">4.5</span>, <span class="fl">4.8</span>, <span class="fl">1.0</span>, <span class="fl">5.0</span>, <span class="fl">4.2</span>]))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div id="2cc2ca21" class="cell" data-execution_count="3">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a aria-label="1"></a><span class="im">import</span> statistics <span class="im">as</span> stats</span>
+<span id="cb5-2"><a aria-label="2"></a></span>
+<span id="cb5-3"><a aria-label="3"></a><span class="bu">print</span>(stats.median([<span class="fl">4.5</span>, <span class="fl">4.8</span>, <span class="fl">1.0</span>, <span class="fl">5.0</span>, <span class="fl">4.2</span>]))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <div class="cell fragment" data-execution_count="3">
 <div class="cell-output cell-output-stdout">
@@ -349,10 +370,10 @@ Dr.&nbsp;Tobias Vlćek
 <section id="looking-inside-a-module" class="slide level2">
 <h2>Looking inside a module</h2>
 <p>You don’t have to memorize a module. Python will tell you what’s in it and what each tool does:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb7"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a></a><span class="im">import</span> math</span>
-<span id="cb7-2"><a></a></span>
-<span id="cb7-3"><a></a><span class="bu">dir</span>(math)          <span class="co"># lists every name in the module</span></span>
-<span id="cb7-4"><a></a><span class="bu">help</span>(math.ceil)    <span class="co"># prints what ceil does, and how to call it</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb7"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a aria-label="1"></a><span class="im">import</span> math</span>
+<span id="cb7-2"><a aria-label="2"></a></span>
+<span id="cb7-3"><a aria-label="3"></a><span class="bu">dir</span>(math)          <span class="co"># lists every name in the module</span></span>
+<span id="cb7-4"><a aria-label="4"></a><span class="bu">help</span>(math.ceil)    <span class="co"># prints what ceil does, and how to call it</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="fragment">
 <div class="callout callout-tip callout-style-simple">
 <div class="callout-body">
@@ -369,8 +390,8 @@ Dr.&nbsp;Tobias Vlćek
 <section id="predict-which-way-does-floor-go" class="slide level2">
 <h2>Predict: which way does floor go?</h2>
 <p><code>math.ceil</code> rounds up. Its partner <code>math.floor</code> rounds <strong>down</strong>, but <em>down</em> from a negative number is the tricky part. What does the last line print?</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb8"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a></a><span class="im">import</span> math</span>
-<span id="cb8-2"><a></a><span class="bu">print</span>(math.floor(<span class="op">-</span><span class="fl">2.5</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb8"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a aria-label="1"></a><span class="im">import</span> math</span>
+<span id="cb8-2"><a aria-label="2"></a><span class="bu">print</span>(math.floor(<span class="op">-</span><span class="fl">2.5</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>a) <code>-3</code> b) <code>-2</code> c) an error</p>
 <div class="fragment">
 <p><span class="question">Predict first</span>. Commit to an answer before the next slide.</p>
@@ -379,9 +400,9 @@ Dr.&nbsp;Tobias Vlćek
 <section id="answer-floor-goes-down-not-toward-zero" class="slide level2">
 <h2>Answer: floor goes down, not toward zero</h2>
 <p><strong>a) <code>-3</code></strong> — <code>floor</code> always heads <strong>down</strong> the number line, toward more negative. From <code>-2.5</code>, down is <code>-3</code>, not the <code>-2</code> you’d get by rounding toward zero:</p>
-<div id="94ceb18e" class="cell" data-execution_count="4">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a></a><span class="im">import</span> math</span>
-<span id="cb9-2"><a></a><span class="bu">print</span>(math.floor(<span class="op">-</span><span class="fl">2.5</span>))   <span class="co"># down the number line → -3</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div id="26cc71f1" class="cell" data-execution_count="4">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a aria-label="1"></a><span class="im">import</span> math</span>
+<span id="cb9-2"><a aria-label="2"></a><span class="bu">print</span>(math.floor(<span class="op">-</span><span class="fl">2.5</span>))   <span class="co"># down the number line → -3</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <div class="cell fragment" data-execution_count="4">
 <div class="cell-output cell-output-stdout">
@@ -408,23 +429,23 @@ Dr.&nbsp;Tobias Vlćek
 <section id="the-random-toolbox" class="slide level2">
 <h2>The <code>random</code> toolbox</h2>
 <p>The investor wants to see how the shop copes with a <strong>busy day</strong>, but the busy day hasn’t happened yet. So we <em>rehearse</em> it with made-up numbers. The <code>random</code> module deals them:</p>
-<div id="3e313bfe" class="cell" data-execution_count="5">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a></a><span class="im">import</span> random</span>
-<span id="cb11-2"><a></a></span>
-<span id="cb11-3"><a></a><span class="bu">print</span>(random.random())                       <span class="co"># a float in [0.0, 1.0)</span></span>
-<span id="cb11-4"><a></a><span class="bu">print</span>(random.randint(<span class="dv">1</span>, <span class="dv">20</span>))                  <span class="co"># an integer 1–20, ends included</span></span>
-<span id="cb11-5"><a></a><span class="bu">print</span>(random.choice([<span class="st">"latte"</span>, <span class="st">"mocha"</span>, <span class="st">"tea"</span>]))  <span class="co"># one item, picked at random</span></span>
-<span id="cb11-6"><a></a></span>
-<span id="cb11-7"><a></a>queue <span class="op">=</span> [<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">5</span>]</span>
-<span id="cb11-8"><a></a>random.shuffle(queue)                         <span class="co"># reorders the list in place</span></span>
-<span id="cb11-9"><a></a><span class="bu">print</span>(queue)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div id="2444edb1" class="cell" data-execution_count="5">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a aria-label="1"></a><span class="im">import</span> random</span>
+<span id="cb11-2"><a aria-label="2"></a></span>
+<span id="cb11-3"><a aria-label="3"></a><span class="bu">print</span>(random.random())                       <span class="co"># a float in [0.0, 1.0)</span></span>
+<span id="cb11-4"><a aria-label="4"></a><span class="bu">print</span>(random.randint(<span class="dv">1</span>, <span class="dv">20</span>))                  <span class="co"># an integer 1–20, ends included</span></span>
+<span id="cb11-5"><a aria-label="5"></a><span class="bu">print</span>(random.choice([<span class="st">"latte"</span>, <span class="st">"mocha"</span>, <span class="st">"tea"</span>]))  <span class="co"># one item, picked at random</span></span>
+<span id="cb11-6"><a aria-label="6"></a></span>
+<span id="cb11-7"><a aria-label="7"></a>queue <span class="op">=</span> [<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">5</span>]</span>
+<span id="cb11-8"><a aria-label="8"></a>random.shuffle(queue)                         <span class="co"># reorders the list in place</span></span>
+<span id="cb11-9"><a aria-label="9"></a><span class="bu">print</span>(queue)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <div class="cell fragment" data-execution_count="5">
 <div class="cell-output cell-output-stdout">
-<pre><code>0.9252263675891648
-20
-latte
-[4, 2, 3, 5, 1]</code></pre>
+<pre><code>0.8713324762734287
+13
+tea
+[4, 2, 1, 3, 5]</code></pre>
 </div>
 </div>
 <div class="fragment">
@@ -434,16 +455,16 @@ latte
 <section id="run-it-again" class="slide level2">
 <h2>“Run it again”</h2>
 <p>The investor leans over and says: <strong>“Run it again.”</strong> Kevin does, and gets <strong>completely different numbers</strong>:</p>
-<div id="0681324c" class="cell" data-execution_count="6">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a></a><span class="im">import</span> random</span>
-<span id="cb13-2"><a></a></span>
-<span id="cb13-3"><a></a><span class="bu">print</span>([random.randint(<span class="dv">1</span>, <span class="dv">20</span>) <span class="cf">for</span> _ <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">5</span>)])   <span class="co"># one run</span></span>
-<span id="cb13-4"><a></a><span class="bu">print</span>([random.randint(<span class="dv">1</span>, <span class="dv">20</span>) <span class="cf">for</span> _ <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">5</span>)])   <span class="co"># ...and again — different!</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div id="bf83f85f" class="cell" data-execution_count="6">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a aria-label="1"></a><span class="im">import</span> random</span>
+<span id="cb13-2"><a aria-label="2"></a></span>
+<span id="cb13-3"><a aria-label="3"></a><span class="bu">print</span>([random.randint(<span class="dv">1</span>, <span class="dv">20</span>) <span class="cf">for</span> _ <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">5</span>)])   <span class="co"># one run</span></span>
+<span id="cb13-4"><a aria-label="4"></a><span class="bu">print</span>([random.randint(<span class="dv">1</span>, <span class="dv">20</span>) <span class="cf">for</span> _ <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">5</span>)])   <span class="co"># ...and again — different!</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <div class="cell fragment" data-execution_count="6">
 <div class="cell-output cell-output-stdout">
-<pre><code>[4, 9, 13, 8, 17]
-[5, 11, 15, 17, 7]</code></pre>
+<pre><code>[7, 17, 20, 15, 7]
+[2, 9, 9, 17, 6]</code></pre>
 </div>
 </div>
 <div class="fragment">
@@ -453,14 +474,14 @@ latte
 <section id="random.seed-makes-luck-repeatable" class="slide level2">
 <h2><code>random.seed</code> makes luck repeatable</h2>
 <p><code>random.seed(n)</code> fixes the starting point of the number stream. Same seed → <strong>same sequence, every time</strong>:</p>
-<div id="41d44dba" class="cell" data-execution_count="7">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb15"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a></a><span class="im">import</span> random</span>
-<span id="cb15-2"><a></a></span>
-<span id="cb15-3"><a></a>random.seed(<span class="dv">7</span>)</span>
-<span id="cb15-4"><a></a><span class="bu">print</span>([random.randint(<span class="dv">1</span>, <span class="dv">20</span>) <span class="cf">for</span> _ <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">5</span>)])   <span class="co"># → [11, 5, 13, 2, 3]</span></span>
-<span id="cb15-5"><a></a></span>
-<span id="cb15-6"><a></a>random.seed(<span class="dv">7</span>)</span>
-<span id="cb15-7"><a></a><span class="bu">print</span>([random.randint(<span class="dv">1</span>, <span class="dv">20</span>) <span class="cf">for</span> _ <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">5</span>)])   <span class="co"># same seed → same list</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div id="4966050b" class="cell" data-execution_count="7">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb15"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a aria-label="1"></a><span class="im">import</span> random</span>
+<span id="cb15-2"><a aria-label="2"></a></span>
+<span id="cb15-3"><a aria-label="3"></a>random.seed(<span class="dv">7</span>)</span>
+<span id="cb15-4"><a aria-label="4"></a><span class="bu">print</span>([random.randint(<span class="dv">1</span>, <span class="dv">20</span>) <span class="cf">for</span> _ <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">5</span>)])   <span class="co"># → [11, 5, 13, 2, 3]</span></span>
+<span id="cb15-5"><a aria-label="5"></a></span>
+<span id="cb15-6"><a aria-label="6"></a>random.seed(<span class="dv">7</span>)</span>
+<span id="cb15-7"><a aria-label="7"></a><span class="bu">print</span>([random.randint(<span class="dv">1</span>, <span class="dv">20</span>) <span class="cf">for</span> _ <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">5</span>)])   <span class="co"># same seed → same list</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <div class="cell fragment" data-execution_count="7">
 <div class="cell-output cell-output-stdout">
@@ -475,14 +496,14 @@ latte
 <section id="predict-seeded-once-built-twice" class="slide level2">
 <h2>Predict: seeded once, built twice</h2>
 <p>Kevin seeds <strong>once</strong>, then builds two lists the same way, without touching the seed in between. Are <code>first</code> and <code>second</code> equal?</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb17"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a></a><span class="im">import</span> random</span>
-<span id="cb17-2"><a></a></span>
-<span id="cb17-3"><a></a>random.seed(<span class="dv">42</span>)</span>
-<span id="cb17-4"><a></a>first  <span class="op">=</span> [random.randint(<span class="dv">1</span>, <span class="dv">20</span>) <span class="cf">for</span> _ <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">3</span>)]</span>
-<span id="cb17-5"><a></a>second <span class="op">=</span> [random.randint(<span class="dv">1</span>, <span class="dv">20</span>) <span class="cf">for</span> _ <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">3</span>)]</span>
-<span id="cb17-6"><a></a></span>
-<span id="cb17-7"><a></a><span class="bu">print</span>(first)</span>
-<span id="cb17-8"><a></a><span class="bu">print</span>(second)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb17"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a aria-label="1"></a><span class="im">import</span> random</span>
+<span id="cb17-2"><a aria-label="2"></a></span>
+<span id="cb17-3"><a aria-label="3"></a>random.seed(<span class="dv">42</span>)</span>
+<span id="cb17-4"><a aria-label="4"></a>first  <span class="op">=</span> [random.randint(<span class="dv">1</span>, <span class="dv">20</span>) <span class="cf">for</span> _ <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">3</span>)]</span>
+<span id="cb17-5"><a aria-label="5"></a>second <span class="op">=</span> [random.randint(<span class="dv">1</span>, <span class="dv">20</span>) <span class="cf">for</span> _ <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">3</span>)]</span>
+<span id="cb17-6"><a aria-label="6"></a></span>
+<span id="cb17-7"><a aria-label="7"></a><span class="bu">print</span>(first)</span>
+<span id="cb17-8"><a aria-label="8"></a><span class="bu">print</span>(second)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>a) different: the second list continues where the first stopped b) equal: the seed is set, so both come out the same c) an error: the stream is empty after three draws</p>
 <div class="fragment">
 <p><span class="question">Predict first</span>. Commit to an answer before the next slide.</p>
@@ -491,15 +512,15 @@ latte
 <section id="answer-different" class="slide level2">
 <h2>Answer: different</h2>
 <p><strong>a) different</strong> — a seed doesn’t freeze <code>random</code>, it fixes the whole <strong>sequence</strong>. The first list eats the first three numbers of the stream; the second list simply <strong>continues</strong> from number four:</p>
-<div id="25bc2e34" class="cell" data-execution_count="8">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb18"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a></a><span class="im">import</span> random</span>
-<span id="cb18-2"><a></a></span>
-<span id="cb18-3"><a></a>random.seed(<span class="dv">42</span>)</span>
-<span id="cb18-4"><a></a>first  <span class="op">=</span> [random.randint(<span class="dv">1</span>, <span class="dv">20</span>) <span class="cf">for</span> _ <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">3</span>)]</span>
-<span id="cb18-5"><a></a>second <span class="op">=</span> [random.randint(<span class="dv">1</span>, <span class="dv">20</span>) <span class="cf">for</span> _ <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">3</span>)]</span>
-<span id="cb18-6"><a></a></span>
-<span id="cb18-7"><a></a><span class="bu">print</span>(first)    <span class="co"># [4, 1, 9]  — the stream's first three numbers</span></span>
-<span id="cb18-8"><a></a><span class="bu">print</span>(second)   <span class="co"># [8, 8, 5]  — the stream carries on</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div id="f2bde145" class="cell" data-execution_count="8">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb18"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a aria-label="1"></a><span class="im">import</span> random</span>
+<span id="cb18-2"><a aria-label="2"></a></span>
+<span id="cb18-3"><a aria-label="3"></a>random.seed(<span class="dv">42</span>)</span>
+<span id="cb18-4"><a aria-label="4"></a>first  <span class="op">=</span> [random.randint(<span class="dv">1</span>, <span class="dv">20</span>) <span class="cf">for</span> _ <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">3</span>)]</span>
+<span id="cb18-5"><a aria-label="5"></a>second <span class="op">=</span> [random.randint(<span class="dv">1</span>, <span class="dv">20</span>) <span class="cf">for</span> _ <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">3</span>)]</span>
+<span id="cb18-6"><a aria-label="6"></a></span>
+<span id="cb18-7"><a aria-label="7"></a><span class="bu">print</span>(first)    <span class="co"># [4, 1, 9]  — the stream's first three numbers</span></span>
+<span id="cb18-8"><a aria-label="8"></a><span class="bu">print</span>(second)   <span class="co"># [8, 8, 5]  — the stream carries on</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <div class="cell fragment" data-execution_count="8">
 <div class="cell-output cell-output-stdout">
@@ -530,6 +551,7 @@ latte
 <li>Head to the lab notebook: <a href="../tutorials/tut_06_modules.html">Episode 6 — Due Diligence Week</a></li>
 <li>You’ll <code>import math</code> and <code>statistics</code> for investor-grade counts and averages, then use <code>random</code> (with and without a <code>seed</code>) to rehearse a busy day she can reproduce</li>
 <li>It’s the <strong>first lab where AI is allowed</strong>, so try the chatbot, and add your one-line disclosure note</li>
+<li>This week’s homework: the <strong>Mistral account</strong> and the <strong>Zed student plan</strong> from the <a href="../general/ai-tools.html">AI Tools page</a></li>
 <li>It runs entirely in your browser: no setup, just click and code</li>
 </ul>
 <div class="fragment">

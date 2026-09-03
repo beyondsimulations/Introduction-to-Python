@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.9.38">
+<meta name="generator" content="quarto-1.10.18">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -13,10 +13,13 @@
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
 */
-code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
-div.columns{display: flex; gap: min(4vw, 1.5em);}
-div.column{flex: auto; overflow-x: auto;}
+div.columns{display: flex; gap: 1.5em;}
+div.column{flex: auto;}
+@media screen {
+div.columns{gap: min(4vw, 1.5em);}
+div.column{overflow-x: auto;}
+}
 div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
 ul.task-list{list-style: none;}
 ul.task-list li input[type="checkbox"] {
@@ -76,14 +79,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="../site_libs/quarto-html/anchor.min.js"></script>
 <link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-018a56f84f553ab074084cbaa177a14c.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-dark-c366505a46d5b46cf7fae82eb9e8fbfc.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-018a56f84f553ab074084cbaa177a14c.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-07311628652e75f956396d70ae2c81bf.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-dark-fcd1a2993490c2d386cd11edf595946f.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-07311628652e75f956396d70ae2c81bf.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
 <script src="../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../site_libs/bootstrap/bootstrap-2f19b2db3fad15d2f175130959bbc86e.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="../site_libs/bootstrap/bootstrap-dark-8d6508a0f4ab1fa03a98911d51c1ef8f.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="light">
-<link href="../site_libs/bootstrap/bootstrap-2f19b2db3fad15d2f175130959bbc86e.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-6f2612d10d43eecceb942efa6a96e350.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-dark-3e719430d8a2385e43a703e698505b45.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-6f2612d10d43eecceb942efa6a96e350.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -462,6 +465,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#how-to-use-ai" id="toc-how-to-use-ai" class="nav-link" data-scroll-target="#how-to-use-ai">How to use AI</a></li>
   <li><a href="#how-to-use-the-chatbot" id="toc-how-to-use-the-chatbot" class="nav-link" data-scroll-target="#how-to-use-the-chatbot">How to use the Chatbot</a></li>
   <li><a href="#no-setup-needed-today" id="toc-no-setup-needed-today" class="nav-link" data-scroll-target="#no-setup-needed-today">No setup needed today</a></li>
+  <li><a href="#one-account-today-github" id="toc-one-account-today-github" class="nav-link" data-scroll-target="#one-account-today-github">One account, today: GitHub</a></li>
   </ul></li>
   <li><a href="#episode-1-the-founding" id="toc-episode-1-the-founding" class="nav-link" data-scroll-target="#episode-1-the-founding"><span class="flow">Episode 1: The Founding</span></a>
   <ul class="collapse">
@@ -662,8 +666,28 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li>Everything in Part I runs <span class="highlight">in the browser</span>: nothing to install</li>
 <li>The lab notebooks and exercises run on <strong>marimo</strong>: click a link, start coding</li>
 <li>We set up a local environment together in <strong>Session X</strong> (Python via <code>uv</code>, the Zed editor)</li>
-<li>Until then: a laptop and a browser is all you need</li>
+<li>Until then: a laptop, a browser, and <strong>one free account</strong> (next slide) is all you need</li>
 </ul>
+</section>
+<section id="one-account-today-github" class="level2">
+<h2 class="anchored" data-anchor-id="one-account-today-github">One account, today: GitHub</h2>
+<ul>
+<li>Open <a href="https://github.com">github.com</a> → <strong>Sign up</strong>. Phones out for the verification code, this takes <strong>five minutes, right now</strong></li>
+<li>Use an e-mail you’ll still read next year; your <strong>KLU address</strong> works well</li>
+<li>Pick a username you’d be happy to show a future employer</li>
+<li>Already have one? Great, you’re done</li>
+</ul>
+<p>. . .</p>
+<div class="callout callout-style-simple callout-note">
+<div class="callout-body d-flex">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-body-container">
+<p><strong>Why now?</strong> From Session VI you get Zed’s paid editor plan for free as a student, and Zed only accepts GitHub accounts that are <strong>at least 30 days old</strong>. In Session X your project lives on GitHub. Nothing else to install until then.</p>
+</div>
+</div>
+</div>
 </section>
 </section>
 <section id="episode-1-the-founding" class="level1 title">
@@ -690,7 +714,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="printing-output-with-print" class="level2">
 <h2 class="anchored" data-anchor-id="printing-output-with-print">Printing output with <code>print()</code></h2>
 <p><code>print()</code> is a <strong>function</strong>: you hand it something, it shows it on screen.</p>
-<div id="f0f922c7" class="cell" data-output-location="fragment" data-execution_count="1">
+<div id="e512bdf6" class="cell" data-output-location="fragment" data-execution_count="1">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># The line starting with # is a comment — Python ignores it</span></span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Welcome to your food-delivery startup!"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
@@ -705,7 +729,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li>Create one with <code>=</code>: name on the <strong>left</strong>, value on the <strong>right</strong></li>
 <li>You don’t declare a type; Python figures it out from the value</li>
 </ul>
-<div id="efb65a66" class="cell" data-output-location="fragment" data-execution_count="2">
+<div id="a501f6ff" class="cell" data-output-location="fragment" data-execution_count="2">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>company_founded <span class="op">=</span> <span class="dv">2026</span>        <span class="co"># store a whole number under a name</span></span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(company_founded)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
@@ -716,7 +740,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="the-founding-data" class="level2">
 <h2 class="anchored" data-anchor-id="the-founding-data">The founding data</h2>
 <p>Store the facts of the new company, then use them by name:</p>
-<div id="76421cee" class="cell" data-output-location="fragment" data-execution_count="3">
+<div id="c7bc1df9" class="cell" data-output-location="fragment" data-execution_count="3">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>company_founded <span class="op">=</span> <span class="dv">2026</span></span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>first_employee <span class="op">=</span> <span class="st">"Kevin"</span></span>
 <span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>sticker_budget <span class="op">=</span> <span class="dv">300</span>          <span class="co"># what's left after Kevin's spending spree</span></span>
@@ -755,7 +779,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="checking-a-type-with-type" class="level2">
 <h2 class="anchored" data-anchor-id="checking-a-type-with-type">Checking a type with <code>type()</code></h2>
 <p><code>type()</code> tells you the type of any value, and it’s priceless when a bug surprises you:</p>
-<div id="734be975" class="cell" data-output-location="fragment" data-execution_count="4">
+<div id="ea2eb261" class="cell" data-output-location="fragment" data-execution_count="4">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="bu">type</span>(<span class="dv">2026</span>))       <span class="co"># int</span></span>
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="bu">type</span>(<span class="st">"Kevin"</span>))    <span class="co"># str</span></span>
 <span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="bu">type</span>(<span class="fl">9.99</span>))       <span class="co"># float</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
@@ -777,7 +801,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="answer-type9.99" class="level2">
 <h2 class="anchored" data-anchor-id="answer-type9.99">Answer: <code>type("9.99")</code></h2>
 <p><strong>c) <code>str</code></strong> — the quotes make it text, however numeric it looks. Kevin’s “price” can’t be multiplied until it is converted to a number.</p>
-<div id="a18b6a42" class="cell" data-output-location="fragment" data-execution_count="5">
+<div id="2516ff33" class="cell" data-output-location="fragment" data-execution_count="5">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="bu">type</span>(<span class="st">"9.99"</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>&lt;class 'str'&gt;</code></pre>
@@ -797,7 +821,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="kevins-9.99-theory" class="level2">
 <h2 class="anchored" data-anchor-id="kevins-9.99-theory">Kevin’s 9.99 theory</h2>
 <p>Kevin’s grand plan: <strong>sell everything for 9.99</strong>. To see whether that survives contact with arithmetic, we need Python’s operators.</p>
-<div id="90fe9807" class="cell" data-output-location="fragment" data-execution_count="6">
+<div id="3e1205ab" class="cell" data-output-location="fragment" data-execution_count="6">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="co"># margin = price - cost</span></span>
 <span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="fl">9.99</span> <span class="op">-</span> <span class="fl">4.20</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
@@ -807,7 +831,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 <section id="arithmetic-operators" class="level2">
 <h2 class="anchored" data-anchor-id="arithmetic-operators">Arithmetic operators</h2>
-<div id="ea0027d8" class="cell" data-output-location="fragment" data-execution_count="7">
+<div id="f3ac9aec" class="cell" data-output-location="fragment" data-execution_count="7">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="fl">9.99</span> <span class="op">+</span> <span class="fl">1.50</span>)   <span class="co"># addition</span></span>
 <span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="fl">9.99</span> <span class="op">-</span> <span class="fl">4.20</span>)   <span class="co"># subtraction</span></span>
 <span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="fl">9.99</span> <span class="op">*</span> <span class="dv">3</span>)      <span class="co"># multiplication</span></span>
@@ -826,7 +850,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li><code>//</code> <strong>floor division</strong>: how many whole times something fits</li>
 <li><code>%</code> <strong>modulo</strong>: the remainder left over</li>
 </ul>
-<div id="32598edf" class="cell" data-output-location="fragment" data-execution_count="8">
+<div id="ec86fb34" class="cell" data-output-location="fragment" data-execution_count="8">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="co"># The 300 EUR budget, boxes at 7 EUR each</span></span>
 <span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="dv">300</span> <span class="op">//</span> <span class="dv">7</span>)      <span class="co"># whole boxes we can buy</span></span>
 <span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="dv">300</span> <span class="op">%</span> <span class="dv">7</span>)       <span class="co"># EUR left over</span></span>
@@ -841,7 +865,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="precedence-like-on-paper" class="level2">
 <h2 class="anchored" data-anchor-id="precedence-like-on-paper">Precedence: like on paper</h2>
 <p><code>*</code> and <code>/</code> happen <strong>before</strong> <code>+</code> and <code>-</code>. Parentheses override that.</p>
-<div id="b215f9ca" class="cell" data-output-location="fragment" data-execution_count="9">
+<div id="6ae7fd5a" class="cell" data-output-location="fragment" data-execution_count="9">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb18"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="dv">2</span> <span class="op">+</span> <span class="dv">3</span> <span class="op">*</span> <span class="dv">4</span>)     <span class="co"># 14, not 20</span></span>
 <span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>((<span class="dv">2</span> <span class="op">+</span> <span class="dv">3</span>) <span class="op">*</span> <span class="dv">4</span>)   <span class="co"># 20</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
@@ -861,7 +885,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="answer-300---12-25" class="level2">
 <h2 class="anchored" data-anchor-id="answer-300---12-25">Answer: <code>300 - 12 * 25</code></h2>
 <p><strong>a) <code>0</code></strong> — <code>12 * 25 = 300</code> happens first, so the budget is wiped out. Reading left to right would give <code>7200</code>, but Python follows precedence, not reading order.</p>
-<div id="321c06cd" class="cell" data-output-location="fragment" data-execution_count="10">
+<div id="911b3b26" class="cell" data-output-location="fragment" data-execution_count="10">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb21"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="dv">300</span> <span class="op">-</span> <span class="dv">12</span> <span class="op">*</span> <span class="dv">25</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>0</code></pre>
@@ -875,7 +899,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li>Mixing an <code>int</code> and a <code>float</code> gives a <code>float</code></li>
 <li>Money is decimals, so margins are floats</li>
 </ul>
-<div id="efc3afa4" class="cell" data-output-location="fragment" data-execution_count="11">
+<div id="39069d31" class="cell" data-output-location="fragment" data-execution_count="11">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb23"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a>margin <span class="op">=</span> <span class="fl">9.99</span> <span class="op">-</span> <span class="fl">4.20</span></span>
 <span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(margin)</span>
 <span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="bu">type</span>(margin))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
@@ -888,7 +912,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="round-clean-money" class="level2">
 <h2 class="anchored" data-anchor-id="round-clean-money"><code>round()</code>: clean money</h2>
 <p>Division can leave a long tail of decimals. <code>round(value, 2)</code> keeps two. Cents.</p>
-<div id="3d92f4e6" class="cell" data-output-location="fragment" data-execution_count="12">
+<div id="e85b9356" class="cell" data-output-location="fragment" data-execution_count="12">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb25"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Split a 10 EUR order three ways</span></span>
 <span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="dv">10</span> <span class="op">/</span> <span class="dv">3</span>)              <span class="co"># 3.3333333333333335 — ugly</span></span>
 <span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="bu">round</span>(<span class="dv">10</span> <span class="op">/</span> <span class="dv">3</span>, <span class="dv">2</span>))    <span class="co"># 3.33 — a proper amount</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
@@ -911,7 +935,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="the-first-receipt-line" class="level2">
 <h2 class="anchored" data-anchor-id="the-first-receipt-line">The first receipt line</h2>
 <p>A string is <strong>text in quotes</strong>. Single or double quotes both work, just be consistent.</p>
-<div id="1e2c1934" class="cell" data-output-location="fragment" data-execution_count="13">
+<div id="21c47d76" class="cell" data-output-location="fragment" data-execution_count="13">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb27"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a>item <span class="op">=</span> <span class="st">"Miso Ramen"</span></span>
 <span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(item)</span>
 <span id="cb27-3"><a href="#cb27-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">'Kevin shouts "9.99!"'</span>)   <span class="co"># mix quotes to include a quote inside</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
@@ -924,7 +948,7 @@ Kevin shouts "9.99!"</code></pre>
 <section id="concatenation-and-why-it-hurts" class="level2">
 <h2 class="anchored" data-anchor-id="concatenation-and-why-it-hurts">Concatenation, and why it hurts</h2>
 <p>You can glue strings with <code>+</code>, but numbers must be converted first, and it gets clumsy fast:</p>
-<div id="23d6e313" class="cell" data-output-location="fragment" data-execution_count="14">
+<div id="b72dcab6" class="cell" data-output-location="fragment" data-execution_count="14">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb29"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a>qty <span class="op">=</span> <span class="dv">2</span></span>
 <span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a>item <span class="op">=</span> <span class="st">"Miso Ramen"</span></span>
 <span id="cb29-3"><a href="#cb29-3" aria-hidden="true" tabindex="-1"></a>total <span class="op">=</span> <span class="fl">23.00</span></span>
@@ -939,7 +963,7 @@ Kevin shouts "9.99!"</code></pre>
 <section id="f-strings-the-clean-way" class="level2">
 <h2 class="anchored" data-anchor-id="f-strings-the-clean-way">f-strings: the clean way</h2>
 <p>Put an <code>f</code> before the quote and write values in <code>{ }</code>, and Python fills them in:</p>
-<div id="966c32a2" class="cell" data-output-location="fragment" data-execution_count="15">
+<div id="a9b0ab4b" class="cell" data-output-location="fragment" data-execution_count="15">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb31"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a>qty <span class="op">=</span> <span class="dv">2</span></span>
 <span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a>item <span class="op">=</span> <span class="st">"Miso Ramen"</span></span>
 <span id="cb31-3"><a href="#cb31-3" aria-hidden="true" tabindex="-1"></a>total <span class="op">=</span> <span class="fl">23.00</span></span>
@@ -954,7 +978,7 @@ Kevin shouts "9.99!"</code></pre>
 <section id="formatting-money-with-.2f" class="level2">
 <h2 class="anchored" data-anchor-id="formatting-money-with-.2f">Formatting money with <code>:.2f</code></h2>
 <p>Inside the braces, <code>:.2f</code> forces <strong>two decimals</strong>, exactly what a receipt needs:</p>
-<div id="a33c9f2d" class="cell" data-output-location="fragment" data-execution_count="16">
+<div id="50a8e6ca" class="cell" data-output-location="fragment" data-execution_count="16">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb33"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a>total <span class="op">=</span> <span class="fl">23.00</span></span>
 <span id="cb33-2"><a href="#cb33-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"</span><span class="sc">{</span>total<span class="sc">}</span><span class="ss"> EUR"</span>)          <span class="co"># 23.0 EUR — one decimal, looks broken on a receipt</span></span>
 <span id="cb33-3"><a href="#cb33-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"</span><span class="sc">{</span>total<span class="sc">:.2f}</span><span class="ss"> EUR"</span>)      <span class="co"># 23.00 EUR — a proper price</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
@@ -969,7 +993,7 @@ Kevin shouts "9.99!"</code></pre>
 <section id="multi-line-receipts-with-n" class="level2">
 <h2 class="anchored" data-anchor-id="multi-line-receipts-with-n">Multi-line receipts with <code>\n</code></h2>
 <p><code>\n</code> inside a string starts a new line: one string, several lines.</p>
-<div id="9b767514" class="cell" data-output-location="fragment" data-execution_count="17">
+<div id="9facd9b4" class="cell" data-output-location="fragment" data-execution_count="17">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb35"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Falafel Wrap: 6.90 EUR</span><span class="ch">\n</span><span class="ss">Pad Thai: 8.90 EUR"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Falafel Wrap: 6.90 EUR
@@ -989,7 +1013,7 @@ Pad Thai: 8.90 EUR</code></pre>
 <section id="answer-f2-3-vs-2-3" class="level2">
 <h2 class="anchored" data-anchor-id="answer-f2-3-vs-2-3">Answer: <code>f"{2 * 3}"</code> vs <code>"2 * 3"</code></h2>
 <p><strong>b) <code>6</code> and <code>2 * 3</code></strong> — the f-string evaluates what’s in the braces; plain quotes keep the text literal. The <code>f</code> and the <code>{ }</code> are what do the work.</p>
-<div id="9965543d" class="cell" data-output-location="fragment" data-execution_count="18">
+<div id="20a04bed" class="cell" data-output-location="fragment" data-execution_count="18">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb38"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"</span><span class="sc">{</span><span class="dv">2</span> <span class="op">*</span> <span class="dv">3</span><span class="sc">}</span><span class="ss">"</span>)</span>
 <span id="cb38-2"><a href="#cb38-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"2 * 3"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
@@ -1014,6 +1038,7 @@ Pad Thai: 8.90 EUR</code></pre>
 <li>Head to the lab notebook: <a href="../tutorials/tut_01_introduction.html">Episode 1 — The Founding</a></li>
 <li>You’ll name the company, set prices, and put Kevin’s 9.99 theory on trial</li>
 <li>It runs entirely in your browser: no setup, just click and code</li>
+<li>Didn’t finish the <strong>GitHub sign-up</strong> in class? Do it tonight, the 30-day clock is ticking</li>
 </ul>
 <p>. . .</p>
 <div class="callout callout-style-simple callout-important">

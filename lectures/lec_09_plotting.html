@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.9.38">
+<meta name="generator" content="quarto-1.10.18">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -13,10 +13,13 @@
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
 */
-code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
-div.columns{display: flex; gap: min(4vw, 1.5em);}
-div.column{flex: auto; overflow-x: auto;}
+div.columns{display: flex; gap: 1.5em;}
+div.column{flex: auto;}
+@media screen {
+div.columns{gap: min(4vw, 1.5em);}
+div.column{overflow-x: auto;}
+}
 div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
 ul.task-list{list-style: none;}
 ul.task-list li input[type="checkbox"] {
@@ -76,14 +79,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="../site_libs/quarto-html/anchor.min.js"></script>
 <link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-018a56f84f553ab074084cbaa177a14c.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-dark-c366505a46d5b46cf7fae82eb9e8fbfc.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-018a56f84f553ab074084cbaa177a14c.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-07311628652e75f956396d70ae2c81bf.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-dark-fcd1a2993490c2d386cd11edf595946f.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-07311628652e75f956396d70ae2c81bf.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
 <script src="../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../site_libs/bootstrap/bootstrap-2f19b2db3fad15d2f175130959bbc86e.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="../site_libs/bootstrap/bootstrap-dark-8d6508a0f4ab1fa03a98911d51c1ef8f.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="light">
-<link href="../site_libs/bootstrap/bootstrap-2f19b2db3fad15d2f175130959bbc86e.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-6f2612d10d43eecceb942efa6a96e350.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-dark-3e719430d8a2385e43a703e698505b45.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-6f2612d10d43eecceb942efa6a96e350.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -482,7 +485,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#a-distribution-histogram" id="toc-a-distribution-histogram" class="nav-link" data-scroll-target="#a-distribution-histogram">A distribution → histogram</a></li>
   <li><a href="#two-numbers-scatter" id="toc-two-numbers-scatter" class="nav-link" data-scroll-target="#two-numbers-scatter">Two numbers → scatter</a></li>
   <li><a href="#predict-how-many-bars" id="toc-predict-how-many-bars" class="nav-link" data-scroll-target="#predict-how-many-bars">Predict: how many bars?</a></li>
-  <li><a href="#answer-bar-counts-categories-hist-counts-ranges" id="toc-answer-bar-counts-categories-hist-counts-ranges" class="nav-link" data-scroll-target="#answer-bar-counts-categories-hist-counts-ranges">Answer: bar counts categories, hist counts ranges</a></li>
+  <li><a href="#answer-about-23-lumps" id="toc-answer-about-23-lumps" class="nav-link" data-scroll-target="#answer-about-23-lumps">Answer: about 2–3 lumps</a></li>
   </ul></li>
   <li><a href="#your-turn-10-minutes-1" id="toc-your-turn-10-minutes-1" class="nav-link" data-scroll-target="#your-turn-10-minutes-1">⚡ Your turn — 10 minutes</a></li>
   <li><a href="#honest-charts-the-ai-chart-assistant" id="toc-honest-charts-the-ai-chart-assistant" class="nav-link" data-scroll-target="#honest-charts-the-ai-chart-assistant"><span class="flow">Honest charts + the AI chart assistant</span></a>
@@ -597,8 +600,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h1 class="title"><span class="flow">The first chart</span></h1>
 <section id="matplotlib-in-four-lines" class="level2">
 <h2 class="anchored" data-anchor-id="matplotlib-in-four-lines">Matplotlib in four lines</h2>
-<p>The library everyone plots with is <strong>matplotlib</strong>; <code>import matplotlib.pyplot as plt</code> is the nickname. Four lines turn a list of numbers into a picture:</p>
-<div id="9179c60c" class="cell" data-output-location="fragment" data-execution_count="1">
+<p>Everyone plots with <strong>matplotlib</strong>, imported as <code>plt</code>. Four lines turn a list of numbers into a picture:</p>
+<div id="50976f63" class="cell" data-output-location="slide" data-execution_count="1">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>days <span class="op">=</span> [<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">5</span>]</span>
@@ -612,7 +615,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="lec_09_plotting_files/figure-revealjs/cell-2-output-1.png" width="798" height="431" class="figure-img"></p>
+<p><img src="lec_09_plotting_files/figure-html/cell-2-output-1.png" width="575" height="431" class="figure-img"></p>
 </figure>
 </div>
 </div>
@@ -632,7 +635,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="the-parts-of-a-chart" class="level2">
 <h2 class="anchored" data-anchor-id="the-parts-of-a-chart">The parts of a chart</h2>
 <p>Every honest chart names its axes. <code>xlabel</code>, <code>ylabel</code>, <code>title</code>, and (when there’s more than one line) a <code>legend</code>:</p>
-<div id="e990efa9" class="cell" data-output-location="fragment" data-execution_count="2">
+<div id="c75081db" class="cell" data-output-location="slide" data-execution_count="2">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>days <span class="op">=</span> [<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">5</span>]</span>
@@ -648,7 +651,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="lec_09_plotting_files/figure-revealjs/cell-3-output-1.png" width="816" height="449" class="figure-img"></p>
+<p><img src="lec_09_plotting_files/figure-html/cell-3-output-1.png" width="593" height="449" class="figure-img"></p>
 </figure>
 </div>
 </div>
@@ -657,7 +660,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="a-little-styling-and-only-a-little" class="level2">
 <h2 class="anchored" data-anchor-id="a-little-styling-and-only-a-little">A little styling — and only a little</h2>
 <p>Two keywords cover almost everything: <code>color</code> and <code>linestyle</code>. Restraint is the professional move. One clear line beats a rainbow:</p>
-<div id="d5d77890" class="cell" data-output-location="fragment" data-execution_count="3">
+<div id="e29b225a" class="cell" data-output-location="slide" data-execution_count="3">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>days <span class="op">=</span> [<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">5</span>]</span>
@@ -670,7 +673,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="lec_09_plotting_files/figure-revealjs/cell-4-output-1.png" width="798" height="431" class="figure-img"></p>
+<p><img src="lec_09_plotting_files/figure-html/cell-4-output-1.png" width="575" height="431" class="figure-img"></p>
 </figure>
 </div>
 </div>
@@ -688,7 +691,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="answer-one-chart-two-lines" class="level2">
 <h2 class="anchored" data-anchor-id="answer-one-chart-two-lines">Answer: one chart, two lines</h2>
 <p><strong>a) one chart with two lines</strong> — matplotlib keeps drawing on the <strong>current</strong> figure until you start a new one with <code>plt.figure()</code>:</p>
-<div id="0ca0d906" class="cell" data-output-location="fragment" data-execution_count="4">
+<div id="ca01ef19" class="cell" data-output-location="slide" data-execution_count="4">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
 <span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>plt.figure()</span>
@@ -698,7 +701,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="lec_09_plotting_files/figure-revealjs/cell-5-output-1.png" width="802" height="411" class="figure-img"></p>
+<p><img src="lec_09_plotting_files/figure-html/cell-5-output-1.png" width="579" height="411" class="figure-img"></p>
 </figure>
 </div>
 </div>
@@ -751,17 +754,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </tbody>
 </table>
 <p>. . .</p>
-<ul>
-<li><strong>Line</strong> you already own: it’s the <code>plt.plot</code> from block one, time on the x-axis. The other three get a slide each.</li>
-</ul>
-<p>. . .</p>
 <div class="callout callout-style-simple callout-note">
 <div class="callout-body d-flex">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-body-container">
-<p>Notice what’s missing: the <strong>pie chart</strong>. It’s usually the wrong answer: the eye can’t compare slice sizes well. When in doubt, a bar chart is clearer.</p>
+<p><strong>Line</strong> you already own from block one. Missing on purpose: the <strong>pie chart</strong>. The eye can’t compare slice sizes; a bar is clearer.</p>
 </div>
 </div>
 </div>
@@ -769,7 +768,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="categories-bar" class="level2">
 <h2 class="anchored" data-anchor-id="categories-bar">Categories → bar</h2>
 <p><em>“Which dish sells best?”</em> Categories to compare — that’s a <strong>bar</strong>:</p>
-<div id="e0e5444a" class="cell" data-output-location="fragment" data-execution_count="5">
+<div id="31c5b0b7" class="cell" data-output-location="slide" data-execution_count="5">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
 <span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>dishes <span class="op">=</span> [<span class="st">"Pizza"</span>, <span class="st">"Pasta"</span>, <span class="st">"Salad"</span>, <span class="st">"Wrap"</span>]</span>
@@ -782,7 +781,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="lec_09_plotting_files/figure-revealjs/cell-6-output-1.png" width="789" height="431" class="figure-img"></p>
+<p><img src="lec_09_plotting_files/figure-html/cell-6-output-1.png" width="566" height="431" class="figure-img"></p>
 </figure>
 </div>
 </div>
@@ -792,7 +791,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="a-distribution-histogram" class="level2">
 <h2 class="anchored" data-anchor-id="a-distribution-histogram">A distribution → histogram</h2>
 <p><em>“How are our delivery times spread out?”</em> One column of numbers, dropped into buckets — that’s a <strong>histogram</strong>:</p>
-<div id="3acd7331" class="cell" data-output-location="fragment" data-execution_count="6">
+<div id="4307395f" class="cell" data-output-location="slide" data-execution_count="6">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
 <span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>minutes <span class="op">=</span> [<span class="dv">19</span>, <span class="dv">22</span>, <span class="dv">23</span>, <span class="dv">24</span>, <span class="dv">24</span>, <span class="dv">25</span>, <span class="dv">26</span>, <span class="dv">28</span>, <span class="dv">31</span>, <span class="dv">44</span>]</span>
@@ -804,7 +803,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="lec_09_plotting_files/figure-revealjs/cell-7-output-1.png" width="783" height="431" class="figure-img"></p>
+<p><img src="lec_09_plotting_files/figure-html/cell-7-output-1.png" width="562" height="431" class="figure-img"></p>
 </figure>
 </div>
 </div>
@@ -814,7 +813,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="two-numbers-scatter" class="level2">
 <h2 class="anchored" data-anchor-id="two-numbers-scatter">Two numbers → scatter</h2>
 <p><em>“Do bigger orders take longer?”</em> Two numbers per order, one on each axis — that’s a <strong>scatter</strong>:</p>
-<div id="1dd4c624" class="cell" data-output-location="fragment" data-execution_count="7">
+<div id="32d959c8" class="cell" data-output-location="slide" data-execution_count="7">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
 <span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>minutes <span class="op">=</span> [<span class="dv">19</span>, <span class="dv">22</span>, <span class="dv">23</span>, <span class="dv">24</span>, <span class="dv">25</span>, <span class="dv">26</span>, <span class="dv">28</span>, <span class="dv">31</span>, <span class="dv">40</span>, <span class="dv">44</span>]</span>
@@ -828,7 +827,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="lec_09_plotting_files/figure-revealjs/cell-8-output-1.png" width="810" height="429" class="figure-img"></p>
+<p><img src="lec_09_plotting_files/figure-html/cell-8-output-1.png" width="588" height="429" class="figure-img"></p>
 </figure>
 </div>
 </div>
@@ -846,10 +845,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>. . .</p>
 <p><span class="question">Predict first</span>. Commit to an answer before the next slide.</p>
 </section>
-<section id="answer-bar-counts-categories-hist-counts-ranges" class="level2">
-<h2 class="anchored" data-anchor-id="answer-bar-counts-categories-hist-counts-ranges">Answer: bar counts categories, hist counts ranges</h2>
+<section id="answer-about-23-lumps" class="level2">
+<h2 class="anchored" data-anchor-id="answer-about-23-lumps">Answer: about 2–3 lumps</h2>
 <p><strong>c) about 2–3 lumps</strong> — the histogram groups the numbers into <strong>ranges</strong> and counts how many fall in each. <code>8</code> and <code>9</code> land in the same bucket, so that bar is <strong>two tall</strong>:</p>
-<div id="d10ea4a8" class="cell" data-output-location="fragment" data-execution_count="8">
+<div id="446f98c5" class="cell" data-output-location="slide" data-execution_count="8">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
 <span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>values <span class="op">=</span> [<span class="dv">8</span>, <span class="dv">12</span>, <span class="dv">9</span>, <span class="dv">15</span>]</span>
@@ -865,7 +864,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="lec_09_plotting_files/figure-revealjs/cell-9-output-1.png" width="789" height="431" class="figure-img"></p>
+<p><img src="lec_09_plotting_files/figure-html/cell-9-output-1.png" width="566" height="431" class="figure-img"></p>
 </figure>
 </div>
 </div>
@@ -895,8 +894,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h1 class="title"><span class="flow">Honest charts + the AI chart assistant</span></h1>
 <section id="the-same-data-told-two-ways" class="level2">
 <h2 class="anchored" data-anchor-id="the-same-data-told-two-ways">The same data, told two ways</h2>
-<p>Four weeks of revenue: <code>[96, 98, 97, 99]</code>. Barely moving. But <strong>where the y-axis starts</strong> decides whether the room sees a rocket or the truth:</p>
-<div id="04b104e3" class="cell" data-output-location="fragment" data-execution_count="9">
+<p>Four weeks of revenue, <code>[96, 98, 97, 99]</code>, barely moving. <strong>Where the y-axis starts</strong> decides: the left gets you a term sheet, the right gets you trusted. Same numbers, and the room sees a rocket or the truth:</p>
+<div id="74cb6686" class="cell" data-output-location="slide" data-execution_count="9">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
 <span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>weeks <span class="op">=</span> [<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>]</span>
@@ -915,12 +914,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="lec_09_plotting_files/figure-revealjs/cell-10-output-1.png" width="802" height="431" class="figure-img"></p>
+<p><img src="lec_09_plotting_files/figure-html/cell-10-output-1.png" width="579" height="431" class="figure-img"></p>
 </figure>
 </div>
 </div>
 </div>
-<p>Same numbers. The left one gets you a term sheet; the right one gets you trusted.</p>
 </section>
 <section id="the-rule-growth-starts-at-zero" class="level2">
 <h2 class="anchored" data-anchor-id="the-rule-growth-starts-at-zero">The rule: growth starts at zero</h2>
@@ -984,12 +982,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 <section id="before-session-x" class="level1 exercise-slide">
 <h1 class="exercise-slide">Before Session X</h1>
-<p>The season finale leaves the browser for <strong>your own machine</strong>. Four things to do <strong>before</strong> you arrive, budget about <strong>20 minutes</strong>:</p>
+<p>The finale leaves the browser for <strong>your own machine</strong>. Four things <strong>before</strong> you arrive, about <strong>20 minutes</strong>:</p>
 <ul>
-<li><strong>uv</strong>: the Python environment manager this course uses. Follow <a href="../general/uv.html">the uv guide</a>.</li>
-<li><strong>Zed</strong>: the editor you’ll write code in, with <strong>one</strong> AI provider connected. Follow <a href="../general/ai-tools.html">the AI-tools guide</a>.</li>
-<li><strong>The GitHub CLI (<code>gh</code>)</strong>: the small tool that lets your machine talk to GitHub. Follow <a href="../general/git-basics.html">the Git Basics guide</a>.</li>
-<li><strong>A free GitHub account</strong>: sign up at <a href="https://github.com">github.com</a> if you don’t have one.</li>
+<li><strong>uv</strong>: the Python environment manager. <a href="../general/uv.html">uv guide</a></li>
+<li><strong>Zed + Mistral Vibe</strong>: editor and the AI agent inside it, on your Session VI key. <a href="../general/ai-tools.html">AI-tools guide</a></li>
+<li><strong>GitHub CLI (<code>gh</code>)</strong>: your machine’s key to GitHub. <a href="../general/git-basics.html">Git Basics guide</a></li>
+<li><strong>GitHub account</strong> from Session I. None yet? <a href="https://github.com">github.com</a>, tonight</li>
 </ul>
 <p>. . .</p>
 <div class="callout callout-style-simple callout-important">
@@ -998,12 +996,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <i class="callout-icon"></i>
 </div>
 <div class="callout-body-container">
-<p>Do it in advance. <strong>Session X builds on</strong> a working toolchain, it doesn’t wait for one. If the install fights you, bring it to <strong>office hours</strong> before then, don’t burn an evening. And <strong>bring the laptop</strong>.</p>
+<p><strong>Do it in advance.</strong> Session X builds on a working toolchain, it doesn’t wait for one. Install fights you? <strong>Office hours</strong>. And <strong>bring the laptop</strong>.</p>
 </div>
 </div>
 </div>
-<p>. . .</p>
-<p>Session X builds the real toolchain and reveals what your notebooks have been all along.</p>
 </section>
 <section id="to-the-lab" class="level1 title">
 <h1 class="title"><span class="flow">To the Lab</span></h1>

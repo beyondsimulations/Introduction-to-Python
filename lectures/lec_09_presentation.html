@@ -7,8 +7,8 @@
 <script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
 <link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
 <link href="../site_libs/quarto-html/light-border.css" rel="stylesheet">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-de63f62b328812d8e578a4d74e282472.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
-  <meta name="generator" content="quarto-1.9.38">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-bb62276ab45c84d9efd712f51ff97b5a.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
+  <meta name="generator" content="quarto-1.10.18">
 
   <meta name="author" content="Dr.&nbsp;Tobias Vlćek">
   <title>Programming with Python – Lecture IX - Data Visualization</title>
@@ -21,10 +21,13 @@
     /* Default styles provided by pandoc.
     ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
     */
-    code{white-space: pre-wrap;}
     span.smallcaps{font-variant: small-caps;}
-    div.columns{display: flex; gap: min(4vw, 1.5em);}
-    div.column{flex: auto; overflow-x: auto;}
+    div.columns{display: flex; gap: 1.5em;}
+    div.column{flex: auto;}
+    @media screen {
+    div.columns{gap: min(4vw, 1.5em);}
+    div.column{overflow-x: auto;}
+    }
     div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
     ul.task-list{list-style: none;}
     ul.task-list li input[type="checkbox"] {
@@ -203,7 +206,7 @@
 <div class="quarto-title-authors">
 <div class="quarto-title-author">
 <div class="quarto-title-author-name">
-Dr.&nbsp;Tobias Vlćek 
+Dr.&nbsp;Tobias Vlćek
 </div>
         <p class="quarto-title-affiliation">
             Kühne Logistics University Hamburg - Fall 2026
@@ -237,7 +240,7 @@ Dr.&nbsp;Tobias Vlćek
 </section>
 <section id="question-1" class="slide level2">
 <h2>Question 1</h2>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a></a>orders[orders[<span class="st">"zone"</span>] <span class="op">==</span> <span class="st">"Nord"</span>]</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a aria-label="1"></a>orders[orders[<span class="st">"zone"</span>] <span class="op">==</span> <span class="st">"Nord"</span>]</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>returns…</p>
 <p>a) a True/False column b) only the Nord rows c) an error from comparing text</p>
 </section>
@@ -248,7 +251,7 @@ Dr.&nbsp;Tobias Vlćek
 <section id="question-2" class="slide level2">
 <h2>Question 2</h2>
 <p>Kevin’s AI wrote this. <code>orders</code> is a normal DataFrame. What happens?</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a></a>orders.summarize()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a aria-label="1"></a>orders.summarize()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>a) a summary table b) an empty DataFrame c) an <code>AttributeError</code></p>
 </section>
 <section id="answer-2" class="slide level2">
@@ -257,7 +260,7 @@ Dr.&nbsp;Tobias Vlćek
 </section>
 <section id="question-3" class="slide level2">
 <h2>Question 3</h2>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a></a>orders[<span class="st">"total_eur"</span>].describe()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a aria-label="1"></a>orders[<span class="st">"total_eur"</span>].describe()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>shows…</p>
 <p>a) the first five rows of the column, like <code>.head()</code> b) count / mean / std / min / quartiles / max c) the column’s dtype, like <code>.dtypes</code></p>
 </section>
@@ -272,28 +275,20 @@ Dr.&nbsp;Tobias Vlćek
 </section>
 <section id="matplotlib-in-four-lines" class="slide level2">
 <h2>Matplotlib in four lines</h2>
-<p>The library everyone plots with is <strong>matplotlib</strong>; <code>import matplotlib.pyplot as plt</code> is the nickname. Four lines turn a list of numbers into a picture:</p>
-<div id="9179c60c" class="cell" data-execution_count="1">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
-<span id="cb4-2"><a></a></span>
-<span id="cb4-3"><a></a>days <span class="op">=</span> [<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">5</span>]</span>
-<span id="cb4-4"><a></a>revenue <span class="op">=</span> [<span class="dv">120</span>, <span class="dv">90</span>, <span class="dv">140</span>, <span class="dv">160</span>, <span class="dv">130</span>]</span>
-<span id="cb4-5"><a></a></span>
-<span id="cb4-6"><a></a>plt.figure()          <span class="co"># OPEN: a fresh canvas, so this chart</span></span>
-<span id="cb4-7"><a></a>                      <span class="co">#       doesn't draw on the last one</span></span>
-<span id="cb4-8"><a></a>plt.plot(days, revenue)   <span class="co"># x, then y</span></span>
-<span id="cb4-9"><a></a>plt.title(<span class="st">"This week's revenue"</span>)</span>
-<span id="cb4-10"><a></a>plt.gca()             <span class="co"># SHOW: "get current axes" — the chart</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Everyone plots with <strong>matplotlib</strong>, imported as <code>plt</code>. Four lines turn a list of numbers into a picture:</p>
+<div id="50976f63" class="cell" data-execution_count="1">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a aria-label="1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb4-2"><a aria-label="2"></a></span>
+<span id="cb4-3"><a aria-label="3"></a>days <span class="op">=</span> [<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">5</span>]</span>
+<span id="cb4-4"><a aria-label="4"></a>revenue <span class="op">=</span> [<span class="dv">120</span>, <span class="dv">90</span>, <span class="dv">140</span>, <span class="dv">160</span>, <span class="dv">130</span>]</span>
+<span id="cb4-5"><a aria-label="5"></a></span>
+<span id="cb4-6"><a aria-label="6"></a>plt.figure()          <span class="co"># OPEN: a fresh canvas, so this chart</span></span>
+<span id="cb4-7"><a aria-label="7"></a>                      <span class="co">#       doesn't draw on the last one</span></span>
+<span id="cb4-8"><a aria-label="8"></a>plt.plot(days, revenue)   <span class="co"># x, then y</span></span>
+<span id="cb4-9"><a aria-label="9"></a>plt.title(<span class="st">"This week's revenue"</span>)</span>
+<span id="cb4-10"><a aria-label="10"></a>plt.gca()             <span class="co"># SHOW: "get current axes" — the chart</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
-<div class="cell fragment" data-execution_count="1">
-<div class="cell-output cell-output-display">
-<div>
-<figure>
-<p><img data-src="lec_09_plotting_files/figure-revealjs/cell-2-output-1.png" width="798" height="431"></p>
-</figure>
-</div>
-</div>
-</div>
+
 <div class="fragment">
 <div class="callout callout-note callout-style-simple">
 <div class="callout-body">
@@ -307,62 +302,70 @@ Dr.&nbsp;Tobias Vlćek
 </div>
 </div>
 </section>
-<section id="the-parts-of-a-chart" class="slide level2">
+<section id="matplotlib-in-four-lines-output" class="slide level2 output-location-slide"><h2>Matplotlib in four lines</h2><div class="cell output-location-slide" data-execution_count="1">
+<div class="cell-output cell-output-display">
+<div>
+<figure>
+<p><img data-src="lec_09_plotting_files/figure-html/cell-2-output-1.png" width="575" height="431"></p>
+</figure>
+</div>
+</div>
+</div></section><section id="the-parts-of-a-chart" class="slide level2">
 <h2>The parts of a chart</h2>
 <p>Every honest chart names its axes. <code>xlabel</code>, <code>ylabel</code>, <code>title</code>, and (when there’s more than one line) a <code>legend</code>:</p>
-<div id="e990efa9" class="cell" data-execution_count="2">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
-<span id="cb5-2"><a></a></span>
-<span id="cb5-3"><a></a>days <span class="op">=</span> [<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">5</span>]</span>
-<span id="cb5-4"><a></a>revenue <span class="op">=</span> [<span class="dv">120</span>, <span class="dv">90</span>, <span class="dv">140</span>, <span class="dv">160</span>, <span class="dv">130</span>]</span>
-<span id="cb5-5"><a></a></span>
-<span id="cb5-6"><a></a>plt.figure()</span>
-<span id="cb5-7"><a></a>plt.plot(days, revenue, label<span class="op">=</span><span class="st">"Revenue"</span>)   <span class="co"># label feeds the legend</span></span>
-<span id="cb5-8"><a></a>plt.xlabel(<span class="st">"Day"</span>)        <span class="co"># what the x-axis counts</span></span>
-<span id="cb5-9"><a></a>plt.ylabel(<span class="st">"Revenue (€)"</span>)  <span class="co"># what the y-axis measures</span></span>
-<span id="cb5-10"><a></a>plt.title(<span class="st">"This week's revenue"</span>)  <span class="co"># what the picture is about</span></span>
-<span id="cb5-11"><a></a>plt.legend()             <span class="co"># the little key, one entry per label</span></span>
-<span id="cb5-12"><a></a>plt.gca()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div id="c75081db" class="cell" data-execution_count="2">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a aria-label="1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb5-2"><a aria-label="2"></a></span>
+<span id="cb5-3"><a aria-label="3"></a>days <span class="op">=</span> [<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">5</span>]</span>
+<span id="cb5-4"><a aria-label="4"></a>revenue <span class="op">=</span> [<span class="dv">120</span>, <span class="dv">90</span>, <span class="dv">140</span>, <span class="dv">160</span>, <span class="dv">130</span>]</span>
+<span id="cb5-5"><a aria-label="5"></a></span>
+<span id="cb5-6"><a aria-label="6"></a>plt.figure()</span>
+<span id="cb5-7"><a aria-label="7"></a>plt.plot(days, revenue, label<span class="op">=</span><span class="st">"Revenue"</span>)   <span class="co"># label feeds the legend</span></span>
+<span id="cb5-8"><a aria-label="8"></a>plt.xlabel(<span class="st">"Day"</span>)        <span class="co"># what the x-axis counts</span></span>
+<span id="cb5-9"><a aria-label="9"></a>plt.ylabel(<span class="st">"Revenue (€)"</span>)  <span class="co"># what the y-axis measures</span></span>
+<span id="cb5-10"><a aria-label="10"></a>plt.title(<span class="st">"This week's revenue"</span>)  <span class="co"># what the picture is about</span></span>
+<span id="cb5-11"><a aria-label="11"></a>plt.legend()             <span class="co"># the little key, one entry per label</span></span>
+<span id="cb5-12"><a aria-label="12"></a>plt.gca()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
-<div class="cell fragment" data-execution_count="2">
+
+</section>
+<section id="the-parts-of-a-chart-output" class="slide level2 output-location-slide"><h2>The parts of a chart</h2><div class="cell output-location-slide" data-execution_count="2">
 <div class="cell-output cell-output-display">
 <div>
 <figure>
-<p><img data-src="lec_09_plotting_files/figure-revealjs/cell-3-output-1.png" width="816" height="449"></p>
+<p><img data-src="lec_09_plotting_files/figure-html/cell-3-output-1.png" width="593" height="449"></p>
 </figure>
 </div>
 </div>
-</div>
-</section>
-<section id="a-little-styling-and-only-a-little" class="slide level2">
+</div></section><section id="a-little-styling-and-only-a-little" class="slide level2">
 <h2>A little styling — and only a little</h2>
 <p>Two keywords cover almost everything: <code>color</code> and <code>linestyle</code>. Restraint is the professional move. One clear line beats a rainbow:</p>
-<div id="d5d77890" class="cell" data-execution_count="3">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
-<span id="cb6-2"><a></a></span>
-<span id="cb6-3"><a></a>days <span class="op">=</span> [<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">5</span>]</span>
-<span id="cb6-4"><a></a>revenue <span class="op">=</span> [<span class="dv">120</span>, <span class="dv">90</span>, <span class="dv">140</span>, <span class="dv">160</span>, <span class="dv">130</span>]</span>
-<span id="cb6-5"><a></a></span>
-<span id="cb6-6"><a></a>plt.figure()</span>
-<span id="cb6-7"><a></a>plt.plot(days, revenue, color<span class="op">=</span><span class="st">"crimson"</span>, linestyle<span class="op">=</span><span class="st">"--"</span>)</span>
-<span id="cb6-8"><a></a>plt.title(<span class="st">"Styled, not decorated"</span>)</span>
-<span id="cb6-9"><a></a>plt.gca()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div id="e29b225a" class="cell" data-execution_count="3">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a aria-label="1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb6-2"><a aria-label="2"></a></span>
+<span id="cb6-3"><a aria-label="3"></a>days <span class="op">=</span> [<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">5</span>]</span>
+<span id="cb6-4"><a aria-label="4"></a>revenue <span class="op">=</span> [<span class="dv">120</span>, <span class="dv">90</span>, <span class="dv">140</span>, <span class="dv">160</span>, <span class="dv">130</span>]</span>
+<span id="cb6-5"><a aria-label="5"></a></span>
+<span id="cb6-6"><a aria-label="6"></a>plt.figure()</span>
+<span id="cb6-7"><a aria-label="7"></a>plt.plot(days, revenue, color<span class="op">=</span><span class="st">"crimson"</span>, linestyle<span class="op">=</span><span class="st">"--"</span>)</span>
+<span id="cb6-8"><a aria-label="8"></a>plt.title(<span class="st">"Styled, not decorated"</span>)</span>
+<span id="cb6-9"><a aria-label="9"></a>plt.gca()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
-<div class="cell fragment" data-execution_count="3">
+
+</section>
+<section id="a-little-styling-and-only-a-little-output" class="slide level2 output-location-slide"><h2>A little styling — and only a little</h2><div class="cell output-location-slide" data-execution_count="3">
 <div class="cell-output cell-output-display">
 <div>
 <figure>
-<p><img data-src="lec_09_plotting_files/figure-revealjs/cell-4-output-1.png" width="798" height="431"></p>
+<p><img data-src="lec_09_plotting_files/figure-html/cell-4-output-1.png" width="575" height="431"></p>
 </figure>
 </div>
 </div>
-</div>
-</section>
-<section id="predict-one-chart-or-two" class="slide level2">
+</div></section><section id="predict-one-chart-or-two" class="slide level2">
 <h2>Predict: one chart or two?</h2>
 <p>Kevin runs <strong>two</strong> <code>plot</code> calls, back to back, with no <code>plt.figure()</code> between them:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb7"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a></a>plt.plot([<span class="dv">3</span>, <span class="dv">1</span>, <span class="dv">2</span>])</span>
-<span id="cb7-2"><a></a>plt.plot([<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>])</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb7"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a aria-label="1"></a>plt.plot([<span class="dv">3</span>, <span class="dv">1</span>, <span class="dv">2</span>])</span>
+<span id="cb7-2"><a aria-label="2"></a>plt.plot([<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>])</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>a) one chart with two lines b) two separate charts, one per call c) an error: the figure is already in use</p>
 <div class="fragment">
 <p><span class="question">Predict first</span>. Commit to an answer before the next slide.</p>
@@ -371,27 +374,27 @@ Dr.&nbsp;Tobias Vlćek
 <section id="answer-one-chart-two-lines" class="slide level2">
 <h2>Answer: one chart, two lines</h2>
 <p><strong>a) one chart with two lines</strong> — matplotlib keeps drawing on the <strong>current</strong> figure until you start a new one with <code>plt.figure()</code>:</p>
-<div id="0ca0d906" class="cell" data-execution_count="4">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
-<span id="cb8-2"><a></a></span>
-<span id="cb8-3"><a></a>plt.figure()</span>
-<span id="cb8-4"><a></a>plt.plot([<span class="dv">3</span>, <span class="dv">1</span>, <span class="dv">2</span>])</span>
-<span id="cb8-5"><a></a>plt.plot([<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>])   <span class="co"># same canvas — a second line, not a second chart</span></span>
-<span id="cb8-6"><a></a>plt.gca()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div id="ca01ef19" class="cell" data-execution_count="4">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a aria-label="1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb8-2"><a aria-label="2"></a></span>
+<span id="cb8-3"><a aria-label="3"></a>plt.figure()</span>
+<span id="cb8-4"><a aria-label="4"></a>plt.plot([<span class="dv">3</span>, <span class="dv">1</span>, <span class="dv">2</span>])</span>
+<span id="cb8-5"><a aria-label="5"></a>plt.plot([<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>])   <span class="co"># same canvas — a second line, not a second chart</span></span>
+<span id="cb8-6"><a aria-label="6"></a>plt.gca()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
-<div class="cell fragment" data-execution_count="4">
-<div class="cell-output cell-output-display">
-<div>
-<figure>
-<p><img data-src="lec_09_plotting_files/figure-revealjs/cell-5-output-1.png" width="802" height="411"></p>
-</figure>
-</div>
-</div>
-</div>
+
 <div class="fragment">
 <p>That’s exactly why every chart cell <strong>opens</strong> with <code>plt.figure()</code>: it’s how you say “new picture, start clean.”</p>
 </div>
-</section></section>
+</section><section id="answer-one-chart-two-lines-output" class="slide level2 output-location-slide"><h2>Answer: one chart, two lines</h2><div class="cell output-location-slide" data-execution_count="4">
+<div class="cell-output cell-output-display">
+<div>
+<figure>
+<p><img data-src="lec_09_plotting_files/figure-html/cell-5-output-1.png" width="579" height="411"></p>
+</figure>
+</div>
+</div>
+</div></section></section>
 <section id="your-turn-10-minutes" class="title-slide slide level1 exercise-slide center">
 <h1>⚡ Your turn — 10 minutes</h1>
 <p>Open the exercise (scan the QR or type the link):</p>
@@ -440,18 +443,13 @@ Dr.&nbsp;Tobias Vlćek
 </tbody>
 </table>
 <div class="fragment">
-<ul>
-<li><strong>Line</strong> you already own: it’s the <code>plt.plot</code> from block one, time on the x-axis. The other three get a slide each.</li>
-</ul>
-</div>
-<div class="fragment">
 <div class="callout callout-note callout-style-simple">
 <div class="callout-body">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-content">
-<p>Notice what’s missing: the <strong>pie chart</strong>. It’s usually the wrong answer: the eye can’t compare slice sizes well. When in doubt, a bar chart is clearer.</p>
+<p><strong>Line</strong> you already own from block one. Missing on purpose: the <strong>pie chart</strong>. The eye can’t compare slice sizes; a bar is clearer.</p>
 </div>
 </div>
 </div>
@@ -460,120 +458,120 @@ Dr.&nbsp;Tobias Vlćek
 <section id="categories-bar" class="slide level2">
 <h2>Categories → bar</h2>
 <p><em>“Which dish sells best?”</em> Categories to compare — that’s a <strong>bar</strong>:</p>
-<div id="e0e5444a" class="cell" data-execution_count="5">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
-<span id="cb9-2"><a></a></span>
-<span id="cb9-3"><a></a>dishes <span class="op">=</span> [<span class="st">"Pizza"</span>, <span class="st">"Pasta"</span>, <span class="st">"Salad"</span>, <span class="st">"Wrap"</span>]</span>
-<span id="cb9-4"><a></a>sold <span class="op">=</span> [<span class="dv">12</span>, <span class="dv">9</span>, <span class="dv">5</span>, <span class="dv">7</span>]</span>
-<span id="cb9-5"><a></a></span>
-<span id="cb9-6"><a></a>plt.figure()</span>
-<span id="cb9-7"><a></a>plt.bar(dishes, sold)</span>
-<span id="cb9-8"><a></a>plt.title(<span class="st">"Orders per dish"</span>)</span>
-<span id="cb9-9"><a></a>plt.gca()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div id="31c5b0b7" class="cell" data-execution_count="5">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a aria-label="1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb9-2"><a aria-label="2"></a></span>
+<span id="cb9-3"><a aria-label="3"></a>dishes <span class="op">=</span> [<span class="st">"Pizza"</span>, <span class="st">"Pasta"</span>, <span class="st">"Salad"</span>, <span class="st">"Wrap"</span>]</span>
+<span id="cb9-4"><a aria-label="4"></a>sold <span class="op">=</span> [<span class="dv">12</span>, <span class="dv">9</span>, <span class="dv">5</span>, <span class="dv">7</span>]</span>
+<span id="cb9-5"><a aria-label="5"></a></span>
+<span id="cb9-6"><a aria-label="6"></a>plt.figure()</span>
+<span id="cb9-7"><a aria-label="7"></a>plt.bar(dishes, sold)</span>
+<span id="cb9-8"><a aria-label="8"></a>plt.title(<span class="st">"Orders per dish"</span>)</span>
+<span id="cb9-9"><a aria-label="9"></a>plt.gca()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
-<div class="cell fragment" data-execution_count="5">
-<div class="cell-output cell-output-display">
-<div>
-<figure>
-<p><img data-src="lec_09_plotting_files/figure-revealjs/cell-6-output-1.png" width="789" height="431"></p>
-</figure>
-</div>
-</div>
-</div>
+
 <p>The tallest bar answers the question at a glance: Pizza.</p>
 </section>
-<section id="a-distribution-histogram" class="slide level2">
+<section id="categories-bar-output" class="slide level2 output-location-slide"><h2>Categories → bar</h2><div class="cell output-location-slide" data-execution_count="5">
+<div class="cell-output cell-output-display">
+<div>
+<figure>
+<p><img data-src="lec_09_plotting_files/figure-html/cell-6-output-1.png" width="566" height="431"></p>
+</figure>
+</div>
+</div>
+</div></section><section id="a-distribution-histogram" class="slide level2">
 <h2>A distribution → histogram</h2>
 <p><em>“How are our delivery times spread out?”</em> One column of numbers, dropped into buckets — that’s a <strong>histogram</strong>:</p>
-<div id="3acd7331" class="cell" data-execution_count="6">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
-<span id="cb10-2"><a></a></span>
-<span id="cb10-3"><a></a>minutes <span class="op">=</span> [<span class="dv">19</span>, <span class="dv">22</span>, <span class="dv">23</span>, <span class="dv">24</span>, <span class="dv">24</span>, <span class="dv">25</span>, <span class="dv">26</span>, <span class="dv">28</span>, <span class="dv">31</span>, <span class="dv">44</span>]</span>
-<span id="cb10-4"><a></a></span>
-<span id="cb10-5"><a></a>plt.figure()</span>
-<span id="cb10-6"><a></a>plt.hist(minutes, bins<span class="op">=</span><span class="dv">5</span>)</span>
-<span id="cb10-7"><a></a>plt.title(<span class="st">"Delivery times"</span>)</span>
-<span id="cb10-8"><a></a>plt.gca()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div id="4307395f" class="cell" data-execution_count="6">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a aria-label="1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb10-2"><a aria-label="2"></a></span>
+<span id="cb10-3"><a aria-label="3"></a>minutes <span class="op">=</span> [<span class="dv">19</span>, <span class="dv">22</span>, <span class="dv">23</span>, <span class="dv">24</span>, <span class="dv">24</span>, <span class="dv">25</span>, <span class="dv">26</span>, <span class="dv">28</span>, <span class="dv">31</span>, <span class="dv">44</span>]</span>
+<span id="cb10-4"><a aria-label="4"></a></span>
+<span id="cb10-5"><a aria-label="5"></a>plt.figure()</span>
+<span id="cb10-6"><a aria-label="6"></a>plt.hist(minutes, bins<span class="op">=</span><span class="dv">5</span>)</span>
+<span id="cb10-7"><a aria-label="7"></a>plt.title(<span class="st">"Delivery times"</span>)</span>
+<span id="cb10-8"><a aria-label="8"></a>plt.gca()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
-<div class="cell fragment" data-execution_count="6">
-<div class="cell-output cell-output-display">
-<div>
-<figure>
-<p><img data-src="lec_09_plotting_files/figure-revealjs/cell-7-output-1.png" width="783" height="431"></p>
-</figure>
-</div>
-</div>
-</div>
+
 <p>Most deliveries land in the mid-20s, with one lonely slow one far right. A histogram shows <strong>shape</strong>, not individual values.</p>
 </section>
-<section id="two-numbers-scatter" class="slide level2">
-<h2>Two numbers → scatter</h2>
-<p><em>“Do bigger orders take longer?”</em> Two numbers per order, one on each axis — that’s a <strong>scatter</strong>:</p>
-<div id="1dd4c624" class="cell" data-execution_count="7">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
-<span id="cb11-2"><a></a></span>
-<span id="cb11-3"><a></a>minutes <span class="op">=</span> [<span class="dv">19</span>, <span class="dv">22</span>, <span class="dv">23</span>, <span class="dv">24</span>, <span class="dv">25</span>, <span class="dv">26</span>, <span class="dv">28</span>, <span class="dv">31</span>, <span class="dv">40</span>, <span class="dv">44</span>]</span>
-<span id="cb11-4"><a></a>euros   <span class="op">=</span> [<span class="dv">24</span>, <span class="dv">9</span>, <span class="dv">31</span>, <span class="dv">12</span>, <span class="dv">8</span>, <span class="dv">30</span>, <span class="dv">15</span>, <span class="dv">22</span>, <span class="dv">11</span>, <span class="dv">19</span>]</span>
-<span id="cb11-5"><a></a></span>
-<span id="cb11-6"><a></a>plt.figure()</span>
-<span id="cb11-7"><a></a>plt.scatter(minutes, euros)</span>
-<span id="cb11-8"><a></a>plt.xlabel(<span class="st">"Delivery time (min)"</span>)</span>
-<span id="cb11-9"><a></a>plt.ylabel(<span class="st">"Order value (€)"</span>)</span>
-<span id="cb11-10"><a></a>plt.gca()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</div>
-<div class="cell fragment" data-execution_count="7">
+<section id="a-distribution-histogram-output" class="slide level2 output-location-slide"><h2>A distribution → histogram</h2><div class="cell output-location-slide" data-execution_count="6">
 <div class="cell-output cell-output-display">
 <div>
 <figure>
-<p><img data-src="lec_09_plotting_files/figure-revealjs/cell-8-output-1.png" width="810" height="429"></p>
+<p><img data-src="lec_09_plotting_files/figure-html/cell-7-output-1.png" width="562" height="431"></p>
 </figure>
 </div>
 </div>
+</div></section><section id="two-numbers-scatter" class="slide level2">
+<h2>Two numbers → scatter</h2>
+<p><em>“Do bigger orders take longer?”</em> Two numbers per order, one on each axis — that’s a <strong>scatter</strong>:</p>
+<div id="32d959c8" class="cell" data-execution_count="7">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a aria-label="1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb11-2"><a aria-label="2"></a></span>
+<span id="cb11-3"><a aria-label="3"></a>minutes <span class="op">=</span> [<span class="dv">19</span>, <span class="dv">22</span>, <span class="dv">23</span>, <span class="dv">24</span>, <span class="dv">25</span>, <span class="dv">26</span>, <span class="dv">28</span>, <span class="dv">31</span>, <span class="dv">40</span>, <span class="dv">44</span>]</span>
+<span id="cb11-4"><a aria-label="4"></a>euros   <span class="op">=</span> [<span class="dv">24</span>, <span class="dv">9</span>, <span class="dv">31</span>, <span class="dv">12</span>, <span class="dv">8</span>, <span class="dv">30</span>, <span class="dv">15</span>, <span class="dv">22</span>, <span class="dv">11</span>, <span class="dv">19</span>]</span>
+<span id="cb11-5"><a aria-label="5"></a></span>
+<span id="cb11-6"><a aria-label="6"></a>plt.figure()</span>
+<span id="cb11-7"><a aria-label="7"></a>plt.scatter(minutes, euros)</span>
+<span id="cb11-8"><a aria-label="8"></a>plt.xlabel(<span class="st">"Delivery time (min)"</span>)</span>
+<span id="cb11-9"><a aria-label="9"></a>plt.ylabel(<span class="st">"Order value (€)"</span>)</span>
+<span id="cb11-10"><a aria-label="10"></a>plt.gca()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
+
 <p>Just a cloud. No upward drift. Sometimes the honest answer is <strong>“there’s no pattern here.”</strong></p>
 </section>
-<section id="predict-how-many-bars" class="slide level2">
+<section id="two-numbers-scatter-output" class="slide level2 output-location-slide"><h2>Two numbers → scatter</h2><div class="cell output-location-slide" data-execution_count="7">
+<div class="cell-output cell-output-display">
+<div>
+<figure>
+<p><img data-src="lec_09_plotting_files/figure-html/cell-8-output-1.png" width="588" height="429"></p>
+</figure>
+</div>
+</div>
+</div></section><section id="predict-how-many-bars" class="slide level2">
 <h2>Predict: how many bars?</h2>
 <p>The <strong>same four numbers</strong>, two ways. On the left, a bar per number; on the right, a histogram:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb12"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a></a>values <span class="op">=</span> [<span class="dv">8</span>, <span class="dv">12</span>, <span class="dv">9</span>, <span class="dv">15</span>]</span>
-<span id="cb12-2"><a></a>plt.bar(<span class="bu">range</span>(<span class="dv">4</span>), values)   <span class="co"># left</span></span>
-<span id="cb12-3"><a></a>plt.hist(values, bins<span class="op">=</span><span class="dv">3</span>)    <span class="co"># right</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb12"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a aria-label="1"></a>values <span class="op">=</span> [<span class="dv">8</span>, <span class="dv">12</span>, <span class="dv">9</span>, <span class="dv">15</span>]</span>
+<span id="cb12-2"><a aria-label="2"></a>plt.bar(<span class="bu">range</span>(<span class="dv">4</span>), values)   <span class="co"># left</span></span>
+<span id="cb12-3"><a aria-label="3"></a>plt.hist(values, bins<span class="op">=</span><span class="dv">3</span>)    <span class="co"># right</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>The bar chart shows 4 bars. How many bars does the <strong>histogram</strong> show?</p>
 <p>a) 4: one bar per number b) 15: one bar per unit up to the max c) about 2–3 lumps: it counts ranges</p>
 <div class="fragment">
 <p><span class="question">Predict first</span>. Commit to an answer before the next slide.</p>
 </div>
 </section>
-<section id="answer-bar-counts-categories-hist-counts-ranges" class="slide level2">
-<h2>Answer: bar counts categories, hist counts ranges</h2>
+<section id="answer-about-23-lumps" class="slide level2">
+<h2>Answer: about 2–3 lumps</h2>
 <p><strong>c) about 2–3 lumps</strong> — the histogram groups the numbers into <strong>ranges</strong> and counts how many fall in each. <code>8</code> and <code>9</code> land in the same bucket, so that bar is <strong>two tall</strong>:</p>
-<div id="d10ea4a8" class="cell" data-execution_count="8">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
-<span id="cb13-2"><a></a></span>
-<span id="cb13-3"><a></a>values <span class="op">=</span> [<span class="dv">8</span>, <span class="dv">12</span>, <span class="dv">9</span>, <span class="dv">15</span>]</span>
-<span id="cb13-4"><a></a></span>
-<span id="cb13-5"><a></a>plt.figure()</span>
-<span id="cb13-6"><a></a>plt.subplot(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">1</span>)</span>
-<span id="cb13-7"><a></a>plt.bar(<span class="bu">range</span>(<span class="dv">4</span>), values)     <span class="co"># one bar per NUMBER</span></span>
-<span id="cb13-8"><a></a>plt.title(<span class="st">"bar: 4 categories"</span>)</span>
-<span id="cb13-9"><a></a>plt.subplot(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">2</span>)</span>
-<span id="cb13-10"><a></a>plt.hist(values, bins<span class="op">=</span><span class="dv">3</span>)      <span class="co"># counts how many per RANGE</span></span>
-<span id="cb13-11"><a></a>plt.title(<span class="st">"hist: 3 ranges"</span>)</span>
-<span id="cb13-12"><a></a>plt.gca()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div id="446f98c5" class="cell" data-execution_count="8">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a aria-label="1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb13-2"><a aria-label="2"></a></span>
+<span id="cb13-3"><a aria-label="3"></a>values <span class="op">=</span> [<span class="dv">8</span>, <span class="dv">12</span>, <span class="dv">9</span>, <span class="dv">15</span>]</span>
+<span id="cb13-4"><a aria-label="4"></a></span>
+<span id="cb13-5"><a aria-label="5"></a>plt.figure()</span>
+<span id="cb13-6"><a aria-label="6"></a>plt.subplot(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">1</span>)</span>
+<span id="cb13-7"><a aria-label="7"></a>plt.bar(<span class="bu">range</span>(<span class="dv">4</span>), values)     <span class="co"># one bar per NUMBER</span></span>
+<span id="cb13-8"><a aria-label="8"></a>plt.title(<span class="st">"bar: 4 categories"</span>)</span>
+<span id="cb13-9"><a aria-label="9"></a>plt.subplot(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">2</span>)</span>
+<span id="cb13-10"><a aria-label="10"></a>plt.hist(values, bins<span class="op">=</span><span class="dv">3</span>)      <span class="co"># counts how many per RANGE</span></span>
+<span id="cb13-11"><a aria-label="11"></a>plt.title(<span class="st">"hist: 3 ranges"</span>)</span>
+<span id="cb13-12"><a aria-label="12"></a>plt.gca()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
-<div class="cell fragment" data-execution_count="8">
-<div class="cell-output cell-output-display">
-<div>
-<figure>
-<p><img data-src="lec_09_plotting_files/figure-revealjs/cell-9-output-1.png" width="789" height="431"></p>
-</figure>
-</div>
-</div>
-</div>
+
 <div class="fragment">
 <p><strong>Bar counts CATEGORIES; histogram counts RANGES.</strong> Same numbers, different question.</p>
 </div>
-</section></section>
+</section><section id="answer-about-23-lumps-output" class="slide level2 output-location-slide"><h2>Answer: about 2–3 lumps</h2><div class="cell output-location-slide" data-execution_count="8">
+<div class="cell-output cell-output-display">
+<div>
+<figure>
+<p><img data-src="lec_09_plotting_files/figure-html/cell-9-output-1.png" width="566" height="431"></p>
+</figure>
+</div>
+</div>
+</div></section></section>
 <section id="your-turn-10-minutes-1" class="title-slide slide level1 exercise-slide center">
 <h1>⚡ Your turn — 10 minutes</h1>
 <p>Open the exercise (scan the QR or type the link):</p>
@@ -599,36 +597,35 @@ Dr.&nbsp;Tobias Vlćek
 </section>
 <section id="the-same-data-told-two-ways" class="slide level2">
 <h2>The same data, told two ways</h2>
-<p>Four weeks of revenue: <code>[96, 98, 97, 99]</code>. Barely moving. But <strong>where the y-axis starts</strong> decides whether the room sees a rocket or the truth:</p>
-<div id="04b104e3" class="cell" data-execution_count="9">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb14"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
-<span id="cb14-2"><a></a></span>
-<span id="cb14-3"><a></a>weeks <span class="op">=</span> [<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>]</span>
-<span id="cb14-4"><a></a>revenue <span class="op">=</span> [<span class="dv">96</span>, <span class="dv">98</span>, <span class="dv">97</span>, <span class="dv">99</span>]</span>
-<span id="cb14-5"><a></a></span>
-<span id="cb14-6"><a></a>plt.figure()</span>
-<span id="cb14-7"><a></a>plt.subplot(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">1</span>)</span>
-<span id="cb14-8"><a></a>plt.plot(weeks, revenue, marker<span class="op">=</span><span class="st">"o"</span>)</span>
-<span id="cb14-9"><a></a>plt.ylim(<span class="dv">96</span>, <span class="dv">99</span>)             <span class="co"># tight — DRAMA</span></span>
-<span id="cb14-10"><a></a>plt.title(<span class="st">"Rocket (ylim 96–99)"</span>)</span>
-<span id="cb14-11"><a></a>plt.subplot(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">2</span>)</span>
-<span id="cb14-12"><a></a>plt.plot(weeks, revenue, marker<span class="op">=</span><span class="st">"o"</span>)</span>
-<span id="cb14-13"><a></a>plt.ylim(<span class="dv">0</span>, <span class="dv">100</span>)             <span class="co"># from zero — TRUTH</span></span>
-<span id="cb14-14"><a></a>plt.title(<span class="st">"Honest (from 0)"</span>)</span>
-<span id="cb14-15"><a></a>plt.gca()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Four weeks of revenue, <code>[96, 98, 97, 99]</code>, barely moving. <strong>Where the y-axis starts</strong> decides: the left gets you a term sheet, the right gets you trusted. Same numbers, and the room sees a rocket or the truth:</p>
+<div id="74cb6686" class="cell" data-execution_count="9">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb14"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a aria-label="1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb14-2"><a aria-label="2"></a></span>
+<span id="cb14-3"><a aria-label="3"></a>weeks <span class="op">=</span> [<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>]</span>
+<span id="cb14-4"><a aria-label="4"></a>revenue <span class="op">=</span> [<span class="dv">96</span>, <span class="dv">98</span>, <span class="dv">97</span>, <span class="dv">99</span>]</span>
+<span id="cb14-5"><a aria-label="5"></a></span>
+<span id="cb14-6"><a aria-label="6"></a>plt.figure()</span>
+<span id="cb14-7"><a aria-label="7"></a>plt.subplot(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">1</span>)</span>
+<span id="cb14-8"><a aria-label="8"></a>plt.plot(weeks, revenue, marker<span class="op">=</span><span class="st">"o"</span>)</span>
+<span id="cb14-9"><a aria-label="9"></a>plt.ylim(<span class="dv">96</span>, <span class="dv">99</span>)             <span class="co"># tight — DRAMA</span></span>
+<span id="cb14-10"><a aria-label="10"></a>plt.title(<span class="st">"Rocket (ylim 96–99)"</span>)</span>
+<span id="cb14-11"><a aria-label="11"></a>plt.subplot(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">2</span>)</span>
+<span id="cb14-12"><a aria-label="12"></a>plt.plot(weeks, revenue, marker<span class="op">=</span><span class="st">"o"</span>)</span>
+<span id="cb14-13"><a aria-label="13"></a>plt.ylim(<span class="dv">0</span>, <span class="dv">100</span>)             <span class="co"># from zero — TRUTH</span></span>
+<span id="cb14-14"><a aria-label="14"></a>plt.title(<span class="st">"Honest (from 0)"</span>)</span>
+<span id="cb14-15"><a aria-label="15"></a>plt.gca()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
-<div class="cell fragment" data-execution_count="9">
+
+</section>
+<section id="the-same-data-told-two-ways-output" class="slide level2 output-location-slide"><h2>The same data, told two ways</h2><div class="cell output-location-slide" data-execution_count="9">
 <div class="cell-output cell-output-display">
 <div>
 <figure>
-<p><img data-src="lec_09_plotting_files/figure-revealjs/cell-10-output-1.png" width="802" height="431"></p>
+<p><img data-src="lec_09_plotting_files/figure-html/cell-10-output-1.png" width="579" height="431"></p>
 </figure>
 </div>
 </div>
-</div>
-<p>Same numbers. The left one gets you a term sheet; the right one gets you trusted.</p>
-</section>
-<section id="the-rule-growth-starts-at-zero" class="slide level2">
+</div></section><section id="the-rule-growth-starts-at-zero" class="slide level2">
 <h2>The rule: growth starts at zero</h2>
 <ul>
 <li>A <strong>growth claim</strong> on a chart starts the y-axis at <strong>0</strong>. Anything else magnifies a wobble into a cliff.</li>
@@ -693,12 +690,12 @@ Dr.&nbsp;Tobias Vlćek
 
 <section id="before-session-x" class="title-slide slide level1 exercise-slide center">
 <h1>Before Session X</h1>
-<p>The season finale leaves the browser for <strong>your own machine</strong>. Four things to do <strong>before</strong> you arrive, budget about <strong>20 minutes</strong>:</p>
+<p>The finale leaves the browser for <strong>your own machine</strong>. Four things <strong>before</strong> you arrive, about <strong>20 minutes</strong>:</p>
 <ul>
-<li><strong>uv</strong>: the Python environment manager this course uses. Follow <a href="../general/uv.html">the uv guide</a>.</li>
-<li><strong>Zed</strong>: the editor you’ll write code in, with <strong>one</strong> AI provider connected. Follow <a href="../general/ai-tools.html">the AI-tools guide</a>.</li>
-<li><strong>The GitHub CLI (<code>gh</code>)</strong>: the small tool that lets your machine talk to GitHub. Follow <a href="../general/git-basics.html">the Git Basics guide</a>.</li>
-<li><strong>A free GitHub account</strong>: sign up at <a href="https://github.com">github.com</a> if you don’t have one.</li>
+<li><strong>uv</strong>: the Python environment manager. <a href="../general/uv.html">uv guide</a></li>
+<li><strong>Zed + Mistral Vibe</strong>: editor and the AI agent inside it, on your Session VI key. <a href="../general/ai-tools.html">AI-tools guide</a></li>
+<li><strong>GitHub CLI (<code>gh</code>)</strong>: your machine’s key to GitHub. <a href="../general/git-basics.html">Git Basics guide</a></li>
+<li><strong>GitHub account</strong> from Session I. None yet? <a href="https://github.com">github.com</a>, tonight</li>
 </ul>
 <div class="fragment">
 <div class="callout callout-important callout-style-simple">
@@ -707,13 +704,10 @@ Dr.&nbsp;Tobias Vlćek
 <i class="callout-icon"></i>
 </div>
 <div class="callout-content">
-<p>Do it in advance. <strong>Session X builds on</strong> a working toolchain, it doesn’t wait for one. If the install fights you, bring it to <strong>office hours</strong> before then, don’t burn an evening. And <strong>bring the laptop</strong>.</p>
+<p><strong>Do it in advance.</strong> Session X builds on a working toolchain, it doesn’t wait for one. Install fights you? <strong>Office hours</strong>. And <strong>bring the laptop</strong>.</p>
 </div>
 </div>
 </div>
-</div>
-<div class="fragment">
-<p>Session X builds the real toolchain and reveals what your notebooks have been all along.</p>
 </div>
 </section>
 
