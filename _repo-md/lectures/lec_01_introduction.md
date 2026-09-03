@@ -88,7 +88,20 @@ Materials live in the KLU portal and are hosted at [beyondsimulations.github.io/
 - Everything in Part I runs <span class="highlight">in the browser</span>: nothing to install
 - The lab notebooks and exercises run on **marimo**: click a link, start coding
 - We set up a local environment together in **Session X** (Python via `uv`, the Zed editor)
-- Until then: a laptop and a browser is all you need
+- Until then: a laptop, a browser, and **one free account** (next slide) is all you need
+
+## One account, today: GitHub
+
+- Open [github.com](https://github.com) → **Sign up**. Phones out for the verification code, this takes **five minutes, right now**
+- Use an e-mail you'll still read next year; your **KLU address** works well
+- Pick a username you'd be happy to show a future employer
+- Already have one? Great, you're done
+
+. . .
+
+> **Note**
+>
+> **Why now?** From Session VI you get Zed's paid editor plan for free as a student, and Zed only accepts GitHub accounts that are **at least 30 days old**. In Session X your project lives on GitHub. Nothing else to install until then.
 
 # <span class="flow">Episode 1: The Founding</span>
 
@@ -461,6 +474,7 @@ First **predict** what happens, then run it.
 - Head to the lab notebook: [Episode 1 --- The Founding](../tutorials/tut_01_introduction.qmd)
 - You'll name the company, set prices, and put Kevin's 9.99 theory on trial
 - It runs entirely in your browser: no setup, just click and code
+- Didn't finish the **GitHub sign-up** in class? Do it tonight, the 30-day clock is ticking
 
 . . .
 

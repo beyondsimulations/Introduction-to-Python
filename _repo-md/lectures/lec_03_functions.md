@@ -10,9 +10,9 @@ format:
 ---
 
 
-# 📋 Checkpoint 1 --- the quarterly board review
+# 📋 Checkpoint 1
 
-The first **40 minutes** are the checkpoint. It starts **now**.
+**The quarterly board review.** The first **40 minutes** are the checkpoint. It starts **now**.
 
 - **Individual work**: no AI, no neighbors, no chat
 - The **link and QR** are handed out in class. Open it and start
@@ -20,9 +20,9 @@ The first **40 minutes** are the checkpoint. It starts **now**.
 
 <!-- QR handed out live — never in the deck -->
 
-. . .
+## When you're done
 
-**When you're done:** menu → *Download* → *Download Python code* → upload the `.py` to the **"Checkpoint 1"** assignment on Moodle.
+Menu → *Download* → *Download Python code* → upload the `.py` to the **"Checkpoint 1"** assignment on Moodle.
 
 . . .
 

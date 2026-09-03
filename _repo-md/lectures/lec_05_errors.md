@@ -10,9 +10,9 @@ format:
 ---
 
 
-# 📋 Checkpoint 2 --- before the doors open
+# 📋 Checkpoint 2
 
-The first **40 minutes** are the checkpoint. It starts **now**.
+**Before the doors open.** The first **40 minutes** are the checkpoint. It starts **now**.
 
 - **Individual work**: no AI, no neighbors, no chat
 - The **link and QR** are handed out in class. Open it and start
@@ -20,9 +20,9 @@ The first **40 minutes** are the checkpoint. It starts **now**.
 
 <!-- QR handed out live — never in the deck -->
 
-. . .
+## When you're done
 
-**When you're done:** menu → *Download* → *Download Python code* → upload the `.py` to the **"Checkpoint 2"** assignment on Moodle.
+Menu → *Download* → *Download Python code* → upload the `.py` to the **"Checkpoint 2"** assignment on Moodle.
 
 . . .
 

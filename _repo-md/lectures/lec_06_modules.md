@@ -10,9 +10,9 @@ format:
 ---
 
 
-# 📋 Checkpoint 3 --- Sessions I--V
+# 📋 Checkpoint 3
 
-The first **40 minutes** are the checkpoint. It starts **now**, before the investor sits down.
+**Sessions I--V.** The first **40 minutes** are the checkpoint. It starts **now**, before the investor sits down.
 
 - **Individual work**: no AI, no neighbors, no chat
 - The **link and QR** are handed out in class. Open it and start
@@ -21,9 +21,9 @@ The first **40 minutes** are the checkpoint. It starts **now**, before the inves
 
 <!-- QR handed out live — never in the deck -->
 
-. . .
+## When you're done
 
-**When you're done:** menu → *Download* → *Download Python code* → upload the `.py` to the **"Checkpoint 3"** assignment on Moodle. **No retakes**: one sitting.
+Menu → *Download* → *Download Python code* → upload the `.py` to the **"Checkpoint 3"** assignment on Moodle. **No retakes**: one sitting.
 
 . . .
 
@@ -57,11 +57,20 @@ For five sessions you built everything by hand, on purpose. From today, that cha
 
 . . .
 
-Full details on the [AI Tools page](../general/ai-tools.qmd).
+You spent five sessions learning to think without a co-pilot. Now you get one --- and you'll be the pilot.
+
+## Two accounts this week
+
+Both are free, both are on the [AI Tools page](../general/ai-tools.qmd), together about ten minutes:
+
+- **Mistral:** a Le Chat account for questions, plus an API key. The same key later powers the AI agent inside your editor
+- **Zed student plan:** sign in with the GitHub account you made in Session I (it's old enough now) and apply with your KLU e-mail. Verification takes up to 72 hours, so the free year of Zed Pro is ready long before Session X
 
 . . .
 
-You spent five sessions learning to think without a co-pilot. Now you get one --- and you'll be the pilot.
+> **Important**
+>
+> Turn **off** Mistral's training-data toggle before you paste coursework (steps on the AI Tools page). Nothing here needs a credit card.
 
 # <span class="flow">Don't build it, import it</span>
 
@@ -206,10 +215,10 @@ random.shuffle(queue)                         # reorders the list in place
 print(queue)
 ```
 
-    0.8994900232048377
-    14
-    tea
-    [4, 2, 3, 5, 1]
+    0.8349512318076963
+    7
+    latte
+    [5, 1, 3, 2, 4]
 
 . . .
 
@@ -226,8 +235,8 @@ print([random.randint(1, 20) for _ in range(5)])   # one run
 print([random.randint(1, 20) for _ in range(5)])   # ...and again — different!
 ```
 
-    [9, 15, 10, 4, 9]
-    [2, 5, 7, 15, 10]
+    [8, 11, 20, 4, 15]
+    [16, 7, 2, 4, 6]
 
 . . .
 
@@ -314,6 +323,7 @@ First **predict** what happens, then run it.
 - Head to the lab notebook: [Episode 6 --- Due Diligence Week](../tutorials/tut_06_modules.qmd)
 - You'll `import math` and `statistics` for investor-grade counts and averages, then use `random` (with and without a `seed`) to rehearse a busy day she can reproduce
 - It's the **first lab where AI is allowed**, so try the chatbot, and add your one-line disclosure note
+- This week's homework: the **Mistral account** and the **Zed student plan** from the [AI Tools page](../general/ai-tools.qmd)
 - It runs entirely in your browser: no setup, just click and code
 
 . . .

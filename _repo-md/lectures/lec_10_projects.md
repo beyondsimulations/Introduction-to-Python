@@ -10,21 +10,21 @@ format:
 ---
 
 
-# 📋 Checkpoint 5 --- Sessions VIII--IX
+# 📋 Checkpoint 5
 
-The first **40 minutes** are the checkpoint. It starts **now**: the acquirer runs one final audit before signing.
+**Sessions VIII--IX.** The first **40 minutes** are the checkpoint. It starts **now**: the acquirer runs one final audit before signing.
 
 - **Individual work**: no neighbors, no chat
 - **AI tools are allowed**: being able to **VERIFY** the output is the skill being graded
 - The **link and QR** are handed out in class. Open it and start
-- 6 short tasks: pull the right number out of a pandas table, fix a line the AI got wrong, and read a chart honestly
-- It sweeps **Sessions VIII--IX**: pandas filtering and `groupby`, and telling an honest chart from a misleading one
+- 6 short tasks: the right number out of a pandas table, a line the AI got wrong, an honest read of a chart
+- It sweeps **Sessions VIII--IX**: pandas filtering and `groupby`, honest charts vs. misleading ones
 
 <!-- QR handed out live — never in the deck -->
 
-. . .
+## When you're done
 
-**When you're done:** menu → *Download* → *Download Python code* → upload the `.py` to the **"Checkpoint 5"** assignment on Moodle. **No retakes**: one sitting.
+Menu → *Download* → *Download Python code* → upload the `.py` to the **"Checkpoint 5"** assignment on Moodle. **No retakes**: one sitting.
 
 . . .
 
@@ -192,7 +192,7 @@ gh --version
 ```
 
 - Three version numbers? You're set.
-- Zed opens when you launch it? Good.
+- Zed opens, and **Mistral Vibe** shows up in its agent panel? Good.
 
 . . .
 
@@ -219,7 +219,7 @@ cd my-project
 
 ## Open a notebook in Zed
 
-Here's the reveal made concrete. Grab **a lab `.py` you downloaded in Part I**: we'll use `nb_03_lab_functions.py`. Copy it **into your project folder** first (in Finder/Explorer, or drop it onto Zed's file tree; dropping on the editor just opens a buffer, it doesn't move the file). Then open it in Zed: it's just code. Read it.
+Grab **a lab `.py` you downloaded in Part I**: we'll use `nb_03_lab_functions.py`. Copy it **into your project folder** first (in Finder/Explorer), then open it in Zed: it's just code. Read it.
 
 The file needs its tools first. Adding a package to a project is one command:
 
@@ -235,11 +235,15 @@ uv run python nb_03_lab_functions.py
 
 . . .
 
-`uv run` uses the project's own Python and packages. The file that lived in a browser tab all semester now runs on **your machine, from your editor.** That's the whole point of today. *(The Part-II pandas labs also want `uv add pandas` and their data file next to them; stick with a Part-I lab today.)*
+`uv run` uses the project's own Python and packages. The file that lived in a browser tab all semester now runs on **your machine, from your editor.** That's the whole point of today. *(Stick with a Part-I lab; the pandas labs also need `uv add pandas` and their CSV.)*
 
 ## Connect your AI
 
-Part III **encourages** AI. You've earned the co-pilot. Connect one provider in Zed following the [AI-tools guide](../general/ai-tools.qmd) (the free **Mistral** key is the guaranteed path; paste it into Zed's assistant settings).
+Part III **encourages** AI. You've earned the co-pilot, and it's already installed: **Mistral Vibe**, running inside Zed on the key from Session VI (setup in the [AI-tools guide](../general/ai-tools.qmd)). Open the **agent panel**, pick **Mistral Vibe**, and try it on your two-minute-old project:
+
+> *Explain what `main.py` does, then add a docstring. Don't change anything else.*
+
+Read the diff Zed shows you **before** you accept it. That's the whole workflow: you ask, it drafts, you verify.
 
 . . .
 
@@ -279,12 +283,6 @@ git config --global pull.rebase false
 
 . . .
 
-> **Note**
->
-> Full walkthrough (installing `gh`, checking it worked) is on the [Git Basics](../general/git-basics.qmd) page, your at-home reference for all of this.
-
-. . .
-
 > **Important**
 >
 > **Auth fighting you?** Same rule as the toolchain: **flag it**, follow along on the slides, and finish the push at home with the [Git Basics](../general/git-basics.qmd) page, or with us in the supervised sessions. Nobody's project stalls on a login.
@@ -309,12 +307,10 @@ A commit lives **only on your computer** so far. Next we send it to GitHub.
 
 ## Put it on GitHub --- repo owner only
 
-**This slide is for the repo owner** you picked in the pairing block. **Partner: watch**. You'll clone in a minute; **don't create your own GitHub repo.**
+**Repo owner only.** Partner: watch, you clone in a minute; **don't create your own repo.** GitHub doesn't know about the project yet, three steps:
 
-GitHub doesn't know about your project yet. Three steps, done by the owner:
-
-1.  On **github.com**, create a new **empty** repository (no README, keep it empty). *(There's no "publish" button inside Zed; the GitHub-side repo is made on the website.)*
-2.  In Zed: **`git: create remote`**, paste the repo's **HTTPS URL** (`https://github.com/you/project.git`); if it asks for a remote name, use `origin` (terminal: `git remote add origin <HTTPS url>`)
+1.  On **github.com**, create a new **empty** repository (no README). The GitHub side is made on the website, not in Zed
+2.  In Zed: **`git: create remote`**, paste the **HTTPS URL** (`https://github.com/you/project.git`), name it `origin`
 3.  Do the **first push** from the terminal, this exact line, once:
 
 ``` bash

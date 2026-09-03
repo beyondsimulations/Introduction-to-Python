@@ -56,7 +56,7 @@ In the third part, students take on a final project in Python where they apply t
 ## Lectures
 
 **Tooling, Git and Your Project (X)**  
-Bring your own machine with the Session IX pre-work done (uv, Zed, GitHub CLI, and a free GitHub account), learn git and GitHub, form pairs, and choose your project
+Bring your own machine with the Session IX pre-work done (uv, Zed with Mistral Vibe, GitHub CLI), learn git and GitHub, form pairs, and choose your project
 
 **Project Work I (XI)**  
 Progress your pair project under assistance

@@ -76,7 +76,7 @@ a\) the first five rows of the column, like `.head()` b) count / mean / std / mi
 
 ## Matplotlib in four lines
 
-The library everyone plots with is **matplotlib**; `import matplotlib.pyplot as plt` is the nickname. Four lines turn a list of numbers into a picture:
+Everyone plots with **matplotlib**, imported as `plt`. Four lines turn a list of numbers into a picture:
 
 ``` python
 import matplotlib.pyplot as plt
@@ -197,13 +197,9 @@ The wrong chart is its own kind of lie. Start from the **question**, not the cha
 
 . . .
 
-- **Line** you already own: it's the `plt.plot` from block one, time on the x-axis. The other three get a slide each.
-
-. . .
-
 > **Note**
 >
-> Notice what's missing: the **pie chart**. It's usually the wrong answer: the eye can't compare slice sizes well. When in doubt, a bar chart is clearer.
+> **Line** you already own from block one. Missing on purpose: the **pie chart**. The eye can't compare slice sizes; a bar is clearer.
 
 ## Categories → bar
 
@@ -283,7 +279,7 @@ a\) 4: one bar per number b) 15: one bar per unit up to the max c) about 2--3 lu
 
 <span class="question">Predict first</span>. Commit to an answer before the next slide.
 
-## Answer: bar counts categories, hist counts ranges
+## Answer: about 2--3 lumps
 
 **c) about 2--3 lumps** --- the histogram groups the numbers into **ranges** and counts how many fall in each. `8` and `9` land in the same bucket, so that bar is **two tall**:
 
@@ -326,7 +322,7 @@ First **predict** what happens, then run it.
 
 ## The same data, told two ways
 
-Four weeks of revenue: `[96, 98, 97, 99]`. Barely moving. But **where the y-axis starts** decides whether the room sees a rocket or the truth:
+Four weeks of revenue, `[96, 98, 97, 99]`, barely moving. **Where the y-axis starts** decides: the left gets you a term sheet, the right gets you trusted. Same numbers, and the room sees a rocket or the truth:
 
 ``` python
 import matplotlib.pyplot as plt
@@ -347,8 +343,6 @@ plt.gca()
 ```
 
 <img src="lec_09_plotting_files/figure-markdown_strict/cell-10-output-1.png" width="653" height="431" />
-
-Same numbers. The left one gets you a term sheet; the right one gets you trusted.
 
 ## The rule: growth starts at zero
 
@@ -399,22 +393,18 @@ First **predict** what happens, then run it.
 
 # Before Session X
 
-The season finale leaves the browser for **your own machine**. Four things to do **before** you arrive, budget about **20 minutes**:
+The finale leaves the browser for **your own machine**. Four things **before** you arrive, about **20 minutes**:
 
-- **uv**: the Python environment manager this course uses. Follow [the uv guide](../general/uv.qmd).
-- **Zed**: the editor you'll write code in, with **one** AI provider connected. Follow [the AI-tools guide](../general/ai-tools.qmd).
-- **The GitHub CLI (`gh`)**: the small tool that lets your machine talk to GitHub. Follow [the Git Basics guide](../general/git-basics.qmd).
-- **A free GitHub account**: sign up at [github.com](https://github.com) if you don't have one.
+- **uv**: the Python environment manager. [uv guide](../general/uv.qmd)
+- **Zed + Mistral Vibe**: editor and the AI agent inside it, on your Session VI key. [AI-tools guide](../general/ai-tools.qmd)
+- **GitHub CLI (`gh`)**: your machine's key to GitHub. [Git Basics guide](../general/git-basics.qmd)
+- **GitHub account** from Session I. None yet? [github.com](https://github.com), tonight
 
 . . .
 
 > **Important**
 >
-> Do it in advance. **Session X builds on** a working toolchain, it doesn't wait for one. If the install fights you, bring it to **office hours** before then, don't burn an evening. And **bring the laptop**.
-
-. . .
-
-Session X builds the real toolchain and reveals what your notebooks have been all along.
+> **Do it in advance.** Session X builds on a working toolchain, it doesn't wait for one. Install fights you? **Office hours**. And **bring the laptop**.
 
 # <span class="flow">To the Lab</span>
 

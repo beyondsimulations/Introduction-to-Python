@@ -9,9 +9,9 @@ format:
     output-file: lec_08_presentation.html
 ---
 
-# 📋 Checkpoint 4 — Sessions VI–VII {.exercise-slide}
+# 📋 Checkpoint 4 {.exercise-slide}
 
-The first **40 minutes** are the checkpoint. It starts **now**, before the investor opens her data room.
+**Sessions VI–VII.** The first **40 minutes** are the checkpoint. It starts **now**, before the investor opens her data room.
 
 - **Individual work**: no neighbors, no chat
 - **AI tools are allowed**: being able to **VERIFY** the output is the skill being graded
@@ -21,9 +21,9 @@ The first **40 minutes** are the checkpoint. It starts **now**, before the inves
 
 <!-- QR handed out live — never in the deck -->
 
-. . .
+## When you're done
 
-**When you're done:** menu → *Download* → *Download Python code* → upload the `.py` to the **"Checkpoint 4"** assignment on Moodle. **No retakes**: one sitting.
+Menu → *Download* → *Download Python code* → upload the `.py` to the **"Checkpoint 4"** assignment on Moodle. **No retakes**: one sitting.
 
 . . .
 
@@ -49,16 +49,16 @@ The AI sounded certain. The method it called **does not exist.** Today is about 
 
 # [AI joins the team — professionally]{.flow} {.title}
 
-## Prompting that works: context + constraints
+## Prompting: context + constraints
 
-An AI is only as good as what you tell it. Two things turn a vague request into a useful answer:
+Two things turn a vague request into a useful answer:
 
 - **Context** — say what the data *is*: "I have a DataFrame `orders` with columns `zone` (text) and `total_eur` (float)."
 - **Constraints** — say exactly what you want *back*: "Give me the total `total_eur` for zone `Nord`, as a single number."
 
 . . .
 
-> *"I have a pandas DataFrame `orders` with a text column `zone` and a float column `total_eur`. Write one line that returns the total `total_eur` for rows where `zone` is `Nord`."*
+> *"DataFrame `orders`, text column `zone`, float column `total_eur`. Write one line that returns the total `total_eur` where `zone` is `Nord`."*
 
 Vague in, vague out. Specific in, checkable out, and then you **iterate**.
 
@@ -70,9 +70,9 @@ Kevin's mistake wasn't *using* AI. It was **shipping without checking.** Every l
 2. **Run it**: does it actually execute, or does it crash?
 3. **Test it**: try it on a small case where **you already know the answer.**
 
-. . .
+## Step 3 in action
 
-Step 3 in action. Five orders with values you can add in your head, and the AI's suggested line for the Nord average:
+Five orders with values you can add in your head, and the AI's suggested line for the Nord average:
 
 ```{python}
 #| eval: true
@@ -110,7 +110,14 @@ a\) prints a summary table   b) raises an `AttributeError`   c) returns an empty
 
 ## Answer: the method never existed
 
-**b) `AttributeError`** — pandas has no `.summarize()`. The AI invented a plausible-sounding name, and Python answers with a traceback you've read since Episode 5:
+**b) `AttributeError`** — pandas has no `.summarize()`. The AI invented it:
+
+```{python}
+#| eval: true
+#| echo: false
+#| output: false
+%xmode Minimal
+```
 
 ```{python}
 #| eval: true
@@ -118,7 +125,6 @@ a\) prints a summary table   b) raises an `AttributeError`   c) returns an empty
 
 import pandas as pd
 orders = pd.DataFrame({"zone": ["Nord", "Sued"], "total_eur": [12.0, 9.5]})
-
 orders.summarize()                     # the method the AI invented
 ```
 
@@ -187,14 +193,13 @@ The convention everyone uses: `import pandas as pd`.
 
 ## A DataFrame from a dictionary
 
-Keys become **column names**; each list becomes a **column**. One order per row:
+Keys become **column names**; each list becomes a **column**; one order per row, mixed types together:
 
 ```{python}
 #| eval: true
 #| output-location: fragment
 
 import pandas as pd
-
 df = pd.DataFrame({
     "order_id":  [101, 102, 103, 104, 105],
     "zone":      ["Nord", "Sued", "Nord", "Hafen", "Sued"],
@@ -206,30 +211,21 @@ print(df)
 
 . . .
 
-Five orders, four columns, mixed types (text, integers, floats) living happily together.
-
-. . .
-
 :::{.callout-note}
-You won't type the investor's eighty orders by hand. In tonight's lab a real CSV loads in one line, `orders = pd.read_csv("public/orders.csv")`. In the browser notebook that same line fetches the file over the web instead of from disk; pandas doesn't care, your code doesn't change.
+Nobody types eighty orders by hand: tonight's lab loads a real CSV in one line, `orders = pd.read_csv("public/orders.csv")`. In the browser that line fetches over the web instead of from disk; your code doesn't change.
 :::
 
 ## First look: `.head()` and `.info()`
 
-Before analyzing a table, glance at it. `.head()` shows the top rows; `.info()` reports columns, types, and counts:
+Before analyzing a table, glance at it. `.head()` shows the top rows; `.info()` is your first sanity check: right number of rows? Any column a surprising type?
 
 ```{python}
 #| eval: true
 #| output-location: fragment
 
 print(df.head(3))     # first 3 rows
-print()
 df.info()             # columns, dtypes, non-null counts
 ```
-
-. . .
-
-`.info()` is your first sanity check: right number of rows? Any column a surprising type?
 
 ## The numbers at a glance: `.describe()`
 
@@ -337,11 +333,10 @@ First **predict** what happens, then run it.
 
 ## Tonight's episode
 
-- Head to the lab notebook: [Episode 8 — The Data Room](../tutorials/tut_08_pandas.qmd)
-- The investor slides a **USB stick** across the table: every order, two full weeks. It's now `orders.csv`, eighty rows, loaded with one `pd.read_csv` line
+- Head to the lab notebook: [Episode 8 — The Data Room](../tutorials/tut_08_pandas.qmd), in your browser as always
+- The investor slides a **USB stick** across the table: every order of two weeks, now `orders.csv`, eighty rows, one `pd.read_csv` line
 - You'll `.head()`, `.info()` and `.describe()` it, filter with masks, add a column on a safe copy, and answer per-zone questions with `groupby`
 - Kevin has discovered AI; your real job is to **supervise** it and catch the confident nonsense
-- It runs entirely in your browser: no setup, just click and code
 
 . . .
 
@@ -353,7 +348,7 @@ First **predict** what happens, then run it.
 
 ## Three things to remember
 
-1. **AI is a co-pilot you verify.** Give it **context and constraints**, then **read it → run it → test it** on a case you know. An AI that sounds sure is not the same as an API that exists.
+1. **AI is a co-pilot you verify.** Give it **context and constraints**, then **read it → run it → test it** on a case you know.
 2. **A DataFrame is a named, mixed-type table.** `pd.DataFrame` from a dict, `pd.read_csv` from a file; `.head()`, `.info()`, `.describe()` to look before you leap.
 3. **Select, filter, add, group.** `df["col"]`, a boolean mask (`df[df["zone"] == "Nord"]`, case-sensitive!), a new column on a `.copy()`, and `groupby` for per-category answers. pandas won't warn you; you verify.
 

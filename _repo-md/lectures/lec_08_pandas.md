@@ -10,9 +10,9 @@ format:
 ---
 
 
-# 📋 Checkpoint 4 --- Sessions VI--VII
+# 📋 Checkpoint 4
 
-The first **40 minutes** are the checkpoint. It starts **now**, before the investor opens her data room.
+**Sessions VI--VII.** The first **40 minutes** are the checkpoint. It starts **now**, before the investor opens her data room.
 
 - **Individual work**: no neighbors, no chat
 - **AI tools are allowed**: being able to **VERIFY** the output is the skill being graded
@@ -22,9 +22,9 @@ The first **40 minutes** are the checkpoint. It starts **now**, before the inves
 
 <!-- QR handed out live — never in the deck -->
 
-. . .
+## When you're done
 
-**When you're done:** menu → *Download* → *Download Python code* → upload the `.py` to the **"Checkpoint 4"** assignment on Moodle. **No retakes**: one sitting.
+Menu → *Download* → *Download Python code* → upload the `.py` to the **"Checkpoint 4"** assignment on Moodle. **No retakes**: one sitting.
 
 . . .
 
@@ -50,16 +50,16 @@ The AI sounded certain. The method it called **does not exist.** Today is about 
 
 # <span class="flow">AI joins the team --- professionally</span>
 
-## Prompting that works: context + constraints
+## Prompting: context + constraints
 
-An AI is only as good as what you tell it. Two things turn a vague request into a useful answer:
+Two things turn a vague request into a useful answer:
 
 - **Context** --- say what the data *is*: "I have a DataFrame `orders` with columns `zone` (text) and `total_eur` (float)."
 - **Constraints** --- say exactly what you want *back*: "Give me the total `total_eur` for zone `Nord`, as a single number."
 
 . . .
 
-> *"I have a pandas DataFrame `orders` with a text column `zone` and a float column `total_eur`. Write one line that returns the total `total_eur` for rows where `zone` is `Nord`."*
+> *"DataFrame `orders`, text column `zone`, float column `total_eur`. Write one line that returns the total `total_eur` where `zone` is `Nord`."*
 
 Vague in, vague out. Specific in, checkable out, and then you **iterate**.
 
@@ -71,9 +71,9 @@ Kevin's mistake wasn't *using* AI. It was **shipping without checking.** Every l
 2.  **Run it**: does it actually execute, or does it crash?
 3.  **Test it**: try it on a small case where **you already know the answer.**
 
-. . .
+## Step 3 in action
 
-Step 3 in action. Five orders with values you can add in your head, and the AI's suggested line for the Nord average:
+Five orders with values you can add in your head, and the AI's suggested line for the Nord average:
 
 ``` python
 import pandas as pd
@@ -110,31 +110,16 @@ a\) prints a summary table b) raises an `AttributeError` c) returns an empty Dat
 
 ## Answer: the method never existed
 
-**b) `AttributeError`** --- pandas has no `.summarize()`. The AI invented a plausible-sounding name, and Python answers with a traceback you've read since Episode 5:
+**b) `AttributeError`** --- pandas has no `.summarize()`. The AI invented it:
 
 ``` python
 import pandas as pd
 orders = pd.DataFrame({"zone": ["Nord", "Sued"], "total_eur": [12.0, 9.5]})
-
 orders.summarize()                     # the method the AI invented
 ```
 
-<pre><span class="ansi-red-fg">---------------------------------------------------------------------------</span>
-<span class="ansi-red-fg">AttributeError</span>                            Traceback (most recent call last)
-<span class="ansi-green-fg">/var/folders/_5/jkkjxxdd5f1955l380dky7n80000gn/T/ipykernel_66388/1876211805.py</span> in <span class="ansi-cyan-fg">?</span><span class="ansi-blue-fg">()</span>
-<span class="ansi-green-fg">      1</span> <span style="font-weight:bold;color:rgb(0,135,0)">import</span> pandas <span style="font-weight:bold;color:rgb(0,135,0)">as</span> pd
-<span class="ansi-green-fg">      2</span> orders = pd.DataFrame({<span class="ansi-yellow-fg">"zone"</span>: [<span class="ansi-yellow-fg">"Nord"</span>, <span class="ansi-yellow-fg">"Sued"</span>], <span class="ansi-yellow-fg">"total_eur"</span>: [<span class="ansi-green-fg">12.0</span>, <span class="ansi-green-fg">9.5</span>]})
-<span class="ansi-green-fg">      3</span> 
-<span class="ansi-green-fg">----&gt; </span><span class="ansi-green-fg">4</span> orders.summarize()                     <span style="font-style:italic;color:rgb(95,135,135)"># the method the AI invented</span>
-
-<span class="ansi-green-fg">~/development/lectures/Introduction-to-Python/.venv/lib/python3.12/site-packages/pandas/core/generic.py</span> in <span class="ansi-cyan-fg">?</span><span class="ansi-blue-fg">(self, name)</span>
-<span class="ansi-green-fg">   6314</span>             <span style="font-weight:bold;color:rgb(0,135,0)">and</span> name <span style="font-weight:bold;color:rgb(0,135,0)">not</span> <span style="font-weight:bold;color:rgb(0,135,0)">in</span> self._accessors
-<span class="ansi-green-fg">   6315</span>             <span style="font-weight:bold;color:rgb(0,135,0)">and</span> self._info_axis._can_hold_identifiers_and_holds_name(name)
-<span class="ansi-green-fg">   6316</span>         ):
-<span class="ansi-green-fg">   6317</span>             <span style="font-weight:bold;color:rgb(0,135,0)">return</span> self[name]
-<span class="ansi-green-fg">-&gt; </span><span class="ansi-green-fg">6318</span>         <span style="font-weight:bold;color:rgb(0,135,0)">return</span> object.__getattribute__(self, name)
-
-<span class="ansi-red-fg">AttributeError</span>: 'DataFrame' object has no attribute 'summarize'</pre>
+<pre><span class="ansi-red-fg">AttributeError</span><span class="ansi-red-fg">:</span> 'DataFrame' object has no attribute 'summarize'
+</pre>
 
 . . .
 
@@ -208,11 +193,10 @@ The convention everyone uses: `import pandas as pd`.
 
 ## A DataFrame from a dictionary
 
-Keys become **column names**; each list becomes a **column**. One order per row:
+Keys become **column names**; each list becomes a **column**; one order per row, mixed types together:
 
 ``` python
 import pandas as pd
-
 df = pd.DataFrame({
     "order_id":  [101, 102, 103, 104, 105],
     "zone":      ["Nord", "Sued", "Nord", "Hafen", "Sued"],
@@ -231,21 +215,16 @@ print(df)
 
 . . .
 
-Five orders, four columns, mixed types (text, integers, floats) living happily together.
-
-. . .
-
 > **Note**
 >
-> You won't type the investor's eighty orders by hand. In tonight's lab a real CSV loads in one line, `orders = pd.read_csv("public/orders.csv")`. In the browser notebook that same line fetches the file over the web instead of from disk; pandas doesn't care, your code doesn't change.
+> Nobody types eighty orders by hand: tonight's lab loads a real CSV in one line, `orders = pd.read_csv("public/orders.csv")`. In the browser that line fetches over the web instead of from disk; your code doesn't change.
 
 ## First look: `.head()` and `.info()`
 
-Before analyzing a table, glance at it. `.head()` shows the top rows; `.info()` reports columns, types, and counts:
+Before analyzing a table, glance at it. `.head()` shows the top rows; `.info()` is your first sanity check: right number of rows? Any column a surprising type?
 
 ``` python
 print(df.head(3))     # first 3 rows
-print()
 df.info()             # columns, dtypes, non-null counts
 ```
 
@@ -253,7 +232,6 @@ df.info()             # columns, dtypes, non-null counts
     0       101  Nord      2       18.5
     1       102  Sued      1        7.2
     2       103  Nord      3       24.0
-
     <class 'pandas.core.frame.DataFrame'>
     RangeIndex: 5 entries, 0 to 4
     Data columns (total 4 columns):
@@ -265,10 +243,6 @@ df.info()             # columns, dtypes, non-null counts
      3   total_eur  5 non-null      float64
     dtypes: float64(1), int64(2), object(1)
     memory usage: 292.0+ bytes
-
-. . .
-
-`.info()` is your first sanity check: right number of rows? Any column a surprising type?
 
 ## The numbers at a glance: `.describe()`
 
@@ -397,11 +371,10 @@ First **predict** what happens, then run it.
 
 ## Tonight's episode
 
-- Head to the lab notebook: [Episode 8 --- The Data Room](../tutorials/tut_08_pandas.qmd)
-- The investor slides a **USB stick** across the table: every order, two full weeks. It's now `orders.csv`, eighty rows, loaded with one `pd.read_csv` line
+- Head to the lab notebook: [Episode 8 --- The Data Room](../tutorials/tut_08_pandas.qmd), in your browser as always
+- The investor slides a **USB stick** across the table: every order of two weeks, now `orders.csv`, eighty rows, one `pd.read_csv` line
 - You'll `.head()`, `.info()` and `.describe()` it, filter with masks, add a column on a safe copy, and answer per-zone questions with `groupby`
 - Kevin has discovered AI; your real job is to **supervise** it and catch the confident nonsense
-- It runs entirely in your browser: no setup, just click and code
 
 . . .
 
@@ -413,7 +386,7 @@ First **predict** what happens, then run it.
 
 ## Three things to remember
 
-1.  **AI is a co-pilot you verify.** Give it **context and constraints**, then **read it → run it → test it** on a case you know. An AI that sounds sure is not the same as an API that exists.
+1.  **AI is a co-pilot you verify.** Give it **context and constraints**, then **read it → run it → test it** on a case you know.
 2.  **A DataFrame is a named, mixed-type table.** `pd.DataFrame` from a dict, `pd.read_csv` from a file; `.head()`, `.info()`, `.describe()` to look before you leap.
 3.  **Select, filter, add, group.** `df["col"]`, a boolean mask (`df[df["zone"] == "Nord"]`, case-sensitive!), a new column on a `.copy()`, and `groupby` for per-category answers. pandas won't warn you; you verify.
 

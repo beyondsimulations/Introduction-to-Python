@@ -312,6 +312,10 @@ To sum a grid you must say **which way** to collapse it. The `axis` tells NumPy 
        axis=1 collapses ACROSS the columns:
        day0 → 40   ·   day1 → 44   ·   day2 → 60      one number per row (day)
 
+## `axis` in code
+
+The same grid, the same two collapses, one keyword each:
+
 ``` python
 import numpy as np
 
