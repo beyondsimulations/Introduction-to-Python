@@ -475,7 +475,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#predict-which-explosion" id="toc-predict-which-explosion" class="nav-link" data-scroll-target="#predict-which-explosion">Predict: which explosion?</a></li>
   <li><a href="#answer-text-and-numbers-wont-mix" id="toc-answer-text-and-numbers-wont-mix" class="nav-link" data-scroll-target="#answer-text-and-numbers-wont-mix">Answer: text and numbers won’t mix</a></li>
   </ul></li>
-  <li><a href="#your-turn-10-minutes" id="toc-your-turn-10-minutes" class="nav-link" data-scroll-target="#your-turn-10-minutes">⚡ Your turn — 10 minutes</a></li>
+  <li><a href="#your-turn-10-minutes" id="toc-your-turn-10-minutes" class="nav-link" data-scroll-target="#your-turn-10-minutes">Your turn — 10 minutes</a></li>
   <li><a href="#debugging-and-defending" id="toc-debugging-and-defending" class="nav-link" data-scroll-target="#debugging-and-defending"><span class="flow">Debugging and Defending</span></a>
   <ul class="collapse">
   <li><a href="#the-debugging-loop" id="toc-the-debugging-loop" class="nav-link" data-scroll-target="#the-debugging-loop">The debugging loop</a></li>
@@ -486,7 +486,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#predict-what-happens-after-the-except" id="toc-predict-what-happens-after-the-except" class="nav-link" data-scroll-target="#predict-what-happens-after-the-except">Predict: what happens after the <code>except</code>?</a></li>
   <li><a href="#answer-it-carries-on" id="toc-answer-it-carries-on" class="nav-link" data-scroll-target="#answer-it-carries-on">Answer: it carries on</a></li>
   </ul></li>
-  <li><a href="#your-turn-10-minutes-1" id="toc-your-turn-10-minutes-1" class="nav-link" data-scroll-target="#your-turn-10-minutes-1">⚡ Your turn — 10 minutes</a></li>
+  <li><a href="#your-turn-10-minutes-1" id="toc-your-turn-10-minutes-1" class="nav-link" data-scroll-target="#your-turn-10-minutes-1">Your turn — 10 minutes</a></li>
   <li><a href="#to-the-lab" id="toc-to-the-lab" class="nav-link" data-scroll-target="#to-the-lab"><span class="flow">To the Lab</span></a>
   <ul class="collapse">
   <li><a href="#after-the-break-the-lab" id="toc-after-the-break-the-lab" class="nav-link" data-scroll-target="#after-the-break-the-lab">After the break: the lab</a></li>
@@ -558,7 +558,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <i class="callout-icon"></i>
 </div>
 <div class="callout-body-container">
-<p>The green ✅ live checks are <strong>provisional</strong>. The final grading runs on our side. And take a breath: everything in it was rehearsed in the labs.</p>
+<p>The green ✅ live checks are <strong>provisional</strong>. The final grading runs on my side. And take a breath: everything in it was rehearsed in the labs.</p>
 </div>
 </div>
 </div>
@@ -626,7 +626,7 @@ ValueError: could not convert string to float: 'generous'</code></pre>
 <section id="try-except-catch-the-fall" class="level2">
 <h2 class="anchored" data-anchor-id="try-except-catch-the-fall"><code>try</code> / <code>except</code>: catch the fall</h2>
 <p>First, the happy path: text that <strong>looks</strong> like a number converts cleanly; text that doesn’t, explodes. A <strong><code>try</code> / <code>except</code></strong> block runs the risky code and catches the failure instead of stopping the program:</p>
-<div id="ec3029be" class="cell" data-output-location="fragment" data-execution_count="1">
+<div id="5b8b1e92" class="cell" data-output-location="fragment" data-execution_count="1">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="bu">float</span>(<span class="st">"5.50"</span>))          <span class="co"># numeric text converts cleanly → 5.5</span></span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="cf">try</span>:</span>
@@ -675,7 +675,7 @@ ValueError: could not convert string to float: 'generous'</code></pre>
 <section id="answer-text-and-numbers-wont-mix" class="level2">
 <h2 class="anchored" data-anchor-id="answer-text-and-numbers-wont-mix">Answer: text and numbers won’t mix</h2>
 <p><strong>a) raises <code>TypeError</code></strong> — <code>+</code> can glue two strings <em>or</em> add two numbers, but it refuses to mix a string and an <code>int</code>. The fix is to convert first (<code>str(guests)</code>):</p>
-<div id="e4da1ee6" class="cell" data-output-location="fragment" data-execution_count="2">
+<div id="c70fd572" class="cell" data-output-location="fragment" data-execution_count="2">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>guests <span class="op">=</span> <span class="dv">3</span></span>
 <span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="cf">try</span>:</span>
 <span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>    label <span class="op">=</span> <span class="st">"Party of "</span> <span class="op">+</span> guests</span>
@@ -690,7 +690,7 @@ ValueError: could not convert string to float: 'generous'</code></pre>
 </section>
 </section>
 <section id="your-turn-10-minutes" class="level1 exercise-slide">
-<h1 class="exercise-slide">⚡ Your turn — 10 minutes</h1>
+<h1 class="exercise-slide">Your turn — 10 minutes</h1>
 <p>Open the exercise (scan the QR or type the link):</p>
 <p><strong><a href="https://beyondsimulations.github.io/Introduction-to-Python/notebooks/ex_05_a/">beyondsimulations.github.io/Introduction-to-Python/notebooks/ex_05_a/</a></strong></p>
 <p><img src="assets/qr/ex_05_a.png" class="img-fluid" width="280"></p>
@@ -713,7 +713,7 @@ ValueError: could not convert string to float: 'generous'</code></pre>
 <section id="print-the-beginners-flashlight" class="level2">
 <h2 class="anchored" data-anchor-id="print-the-beginners-flashlight"><code>print()</code> — the beginner’s flashlight</h2>
 <p>The simplest debugger is a well-placed <code>print()</code>. When you can’t see what a value <em>is</em>, shine a light on it:</p>
-<div id="6eed7f95" class="cell" data-output-location="fragment" data-execution_count="3">
+<div id="ad68f95a" class="cell" data-output-location="fragment" data-execution_count="3">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> line_total(qty, price):</span>
 <span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">"DEBUG qty ="</span>, qty, <span class="st">"price ="</span>, price)   <span class="co"># the flashlight</span></span>
 <span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> <span class="bu">round</span>(qty <span class="op">*</span> price, <span class="dv">2</span>)</span>
@@ -730,7 +730,7 @@ ValueError: could not convert string to float: 'generous'</code></pre>
 <section id="raise-when-your-code-should-refuse" class="level2">
 <h2 class="anchored" data-anchor-id="raise-when-your-code-should-refuse"><code>raise</code> — when your code should refuse</h2>
 <p>Sometimes <em>your own</em> code should reject bad input on the spot. The inspector’s rule is non-negotiable: <strong>every price ≥ 0</strong>. <code>raise</code> throws an error deliberately:</p>
-<div id="4228930f" class="cell" data-output-location="fragment" data-execution_count="4">
+<div id="bff0e9f9" class="cell" data-output-location="fragment" data-execution_count="4">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> charge(amount):</span>
 <span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> amount <span class="op">&lt;</span> <span class="dv">0</span>:</span>
 <span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>        <span class="cf">raise</span> <span class="pp">ValueError</span>(<span class="st">"price cannot be negative"</span>)</span>
@@ -750,7 +750,7 @@ ValueError: could not convert string to float: 'generous'</code></pre>
 <section id="assert-a-tripwire-for-invariants" class="level2">
 <h2 class="anchored" data-anchor-id="assert-a-tripwire-for-invariants"><code>assert</code> — a tripwire for invariants</h2>
 <p>An <strong><code>assert</code></strong> guards an <em>invariant</em>, a fact that must <strong>always</strong> hold. If it’s true, nothing happens; if it’s false, the program stops right there with an <code>AssertionError</code>:</p>
-<div id="a50a069d" class="cell" data-output-location="fragment" data-execution_count="5">
+<div id="1e8e1c5a" class="cell" data-output-location="fragment" data-execution_count="5">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>subtotal <span class="op">=</span> <span class="fl">9.60</span></span>
 <span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a><span class="cf">assert</span> subtotal <span class="op">&gt;=</span> <span class="dv">0</span>, <span class="st">"subtotal went negative — bug upstream"</span></span>
 <span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"passed the tripwire:"</span>, subtotal)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
@@ -764,7 +764,7 @@ ValueError: could not convert string to float: 'generous'</code></pre>
 <section id="try-then-fall-back" class="level2">
 <h2 class="anchored" data-anchor-id="try-then-fall-back">Try, then fall back</h2>
 <p>A friendly, common pattern: <strong>try</strong> the risky thing; if it fails, <strong>fall back</strong> to a sensible default so the program keeps moving.</p>
-<div id="85609888" class="cell" data-output-location="fragment" data-execution_count="6">
+<div id="21b70659" class="cell" data-output-location="fragment" data-execution_count="6">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> seats(text):</span>
 <span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>    <span class="cf">try</span>:</span>
 <span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="bu">int</span>(text)</span>
@@ -799,7 +799,7 @@ ValueError: could not convert string to float: 'generous'</code></pre>
 <section id="answer-it-carries-on" class="level2">
 <h2 class="anchored" data-anchor-id="answer-it-carries-on">Answer: it carries on</h2>
 <p><strong>c) it runs normally</strong> — that’s the whole point of <code>try</code> / <code>except</code>. It <em>handles</em> the failure; once the <code>except</code> has run, control simply drops to the code after it, as if nothing had gone wrong:</p>
-<div id="3957eedf" class="cell" data-output-location="fragment" data-execution_count="7">
+<div id="63c6491c" class="cell" data-output-location="fragment" data-execution_count="7">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb19"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> to_price(text):</span>
 <span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>    <span class="cf">try</span>:</span>
 <span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="bu">float</span>(text)</span>
@@ -816,7 +816,7 @@ checkout still running</code></pre>
 </section>
 </section>
 <section id="your-turn-10-minutes-1" class="level1 exercise-slide">
-<h1 class="exercise-slide">⚡ Your turn — 10 minutes</h1>
+<h1 class="exercise-slide">Your turn — 10 minutes</h1>
 <p>Open the exercise (scan the QR or type the link):</p>
 <p><strong><a href="https://beyondsimulations.github.io/Introduction-to-Python/notebooks/ex_05_b/">beyondsimulations.github.io/Introduction-to-Python/notebooks/ex_05_b/</a></strong></p>
 <p><img src="assets/qr/ex_05_b.png" class="img-fluid" width="280"></p>

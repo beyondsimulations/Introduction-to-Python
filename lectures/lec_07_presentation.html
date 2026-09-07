@@ -284,7 +284,7 @@ Dr.&nbsp;Tobias Vlćek
 <section id="from-a-list-to-an-array" class="slide level2">
 <h2>From a list to an array</h2>
 <p>A <strong>NumPy array</strong> holds many numbers under one name, like a list, but built for math. You make one from a list, then ask it about itself:</p>
-<div id="9c2df7fe" class="cell" data-execution_count="1">
+<div id="e1bf616d" class="cell" data-execution_count="1">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a aria-label="1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb4-2"><a aria-label="2"></a></span>
 <span id="cb4-3"><a aria-label="3"></a>prices <span class="op">=</span> np.array([<span class="fl">12.0</span>, <span class="fl">9.0</span>, <span class="fl">15.0</span>])</span>
@@ -312,7 +312,7 @@ float64
 <span id="cb6-2"><a aria-label="2"></a>gross <span class="op">=</span> []</span>
 <span id="cb6-3"><a aria-label="3"></a><span class="cf">for</span> p <span class="kw">in</span> [<span class="fl">12.0</span>, <span class="fl">9.0</span>, <span class="fl">15.0</span>]:</span>
 <span id="cb6-4"><a aria-label="4"></a>    gross.append(p <span class="op">*</span> <span class="fl">1.19</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div id="60c2419b" class="cell" data-execution_count="2">
+<div id="c8f7e67b" class="cell" data-execution_count="2">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a aria-label="1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb7-2"><a aria-label="2"></a></span>
 <span id="cb7-3"><a aria-label="3"></a>prices <span class="op">=</span> np.array([<span class="fl">12.0</span>, <span class="fl">9.0</span>, <span class="fl">15.0</span>])</span>
@@ -330,7 +330,7 @@ float64
 <section id="arrays-from-scratch" class="slide level2">
 <h2>Arrays from scratch</h2>
 <p>Two builders make evenly-spaced arrays without typing every number, handy for axes and ranges:</p>
-<div id="5122f9c6" class="cell" data-execution_count="3">
+<div id="43893685" class="cell" data-execution_count="3">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a aria-label="1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb9-2"><a aria-label="2"></a></span>
 <span id="cb9-3"><a aria-label="3"></a><span class="bu">print</span>(np.arange(<span class="dv">0</span>, <span class="dv">10</span>, <span class="dv">2</span>))     <span class="co"># start, stop (excluded), step</span></span>
@@ -358,7 +358,7 @@ float64
 <section id="answer-lists-repeat-arrays-compute" class="slide level2">
 <h2>Answer: lists repeat, arrays compute</h2>
 <p><strong>a) <code>[1, 2, 3, 1, 2, 3]</code></strong> — that’s a plain <strong>list</strong>, and <code>* 2</code> on a list <em>repeats</em> it. Wrap it in an array and the same <code>* 2</code> does the math instead:</p>
-<div id="fb976526" class="cell" data-execution_count="4">
+<div id="7a21ba36" class="cell" data-execution_count="4">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb12"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a aria-label="1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb12-2"><a aria-label="2"></a></span>
 <span id="cb12-3"><a aria-label="3"></a><span class="bu">print</span>([<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>] <span class="op">*</span> <span class="dv">2</span>)              <span class="co"># list → repeated</span></span>
@@ -375,7 +375,7 @@ float64
 </div>
 </section></section>
 <section id="your-turn-10-minutes" class="title-slide slide level1 exercise-slide center">
-<h1>⚡ Your turn — 10 minutes</h1>
+<h1>Your turn — 10 minutes</h1>
 <p>Open the exercise (scan the QR or type the link):</p>
 <p><strong><a href="https://beyondsimulations.github.io/Introduction-to-Python/notebooks/ex_07_a/">beyondsimulations.github.io/Introduction-to-Python/notebooks/ex_07_a/</a></strong></p>
 
@@ -390,7 +390,7 @@ float64
 <section id="a-comparison-makes-a-mask" class="slide level2">
 <h2>A comparison makes a mask</h2>
 <p>Compare an array to a number and you don’t get one <code>True</code>/<code>False</code>. You get a <strong>whole array</strong> of them, one per element. That’s a <strong>mask</strong>, and you can filter with it:</p>
-<div id="9cb8d4af" class="cell" data-execution_count="5">
+<div id="ea91bcd1" class="cell" data-execution_count="5">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb14"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a aria-label="1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb14-2"><a aria-label="2"></a></span>
 <span id="cb14-3"><a aria-label="3"></a>times <span class="op">=</span> np.array([<span class="dv">25</span>, <span class="dv">41</span>, <span class="dv">18</span>, <span class="dv">33</span>])</span>
@@ -410,7 +410,7 @@ float64
 <section id="counting-without-a-loop" class="slide level2">
 <h2>Counting without a loop</h2>
 <p>A mask answers two investor questions at once. <code>.sum()</code> counts the <code>True</code>s (each counts as <code>1</code>); <code>.mean()</code> gives the <strong>share</strong> that are <code>True</code>:</p>
-<div id="1a187d7e" class="cell" data-execution_count="6">
+<div id="d2e97cd1" class="cell" data-execution_count="6">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb16"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a aria-label="1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb16-2"><a aria-label="2"></a></span>
 <span id="cb16-3"><a aria-label="3"></a>times <span class="op">=</span> np.array([<span class="dv">25</span>, <span class="dv">41</span>, <span class="dv">18</span>, <span class="dv">33</span>, <span class="dv">52</span>, <span class="dv">29</span>, <span class="dv">44</span>, <span class="dv">12</span>])</span>
@@ -442,7 +442,7 @@ float64
 <section id="answer-true-counts-as-1" class="slide level2">
 <h2>Answer: True counts as 1</h2>
 <p><strong>b) <code>2</code></strong> — <code>.sum()</code> adds the mask up, and each <code>True</code> is worth <code>1</code>, each <code>False</code> <code>0</code>. Two elements clear the bar, so the count is <code>2</code>:</p>
-<div id="4fa1f257" class="cell" data-execution_count="7">
+<div id="cba786d3" class="cell" data-execution_count="7">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb19"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a aria-label="1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb19-2"><a aria-label="2"></a></span>
 <span id="cb19-3"><a aria-label="3"></a><span class="bu">print</span>(np.array([<span class="dv">1</span>, <span class="dv">5</span>, <span class="dv">3</span>]) <span class="op">&gt;</span> <span class="dv">2</span>)            <span class="co"># [False  True  True]</span></span>
@@ -459,7 +459,7 @@ float64
 </div>
 </section></section>
 <section id="your-turn-10-minutes-1" class="title-slide slide level1 exercise-slide center">
-<h1>⚡ Your turn — 10 minutes</h1>
+<h1>Your turn — 10 minutes</h1>
 <p>Open the exercise (scan the QR or type the link):</p>
 <p><strong><a href="https://beyondsimulations.github.io/Introduction-to-Python/notebooks/ex_07_b/">beyondsimulations.github.io/Introduction-to-Python/notebooks/ex_07_b/</a></strong></p>
 
@@ -474,7 +474,7 @@ float64
 <section id="a-grid-of-numbers" class="slide level2">
 <h2>A grid of numbers</h2>
 <p>Real data isn’t one row. Stack rows and you get a <strong>2D array</strong>: here three <strong>days</strong> (rows) across four <strong>zones</strong> (columns: Nord, Sued, Hafen, Altstadt):</p>
-<div id="71734ce1" class="cell" data-execution_count="8">
+<div id="86afce42" class="cell" data-execution_count="8">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb21"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a aria-label="1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb21-2"><a aria-label="2"></a></span>
 <span id="cb21-3"><a aria-label="3"></a>deliveries <span class="op">=</span> np.array([[ <span class="dv">9</span>, <span class="dv">14</span>, <span class="dv">11</span>,  <span class="dv">6</span>],</span>
@@ -511,7 +511,7 @@ float64
 <section id="axis-in-code" class="slide level2">
 <h2><code>axis</code> in code</h2>
 <p>The same grid, the same two collapses, one keyword each:</p>
-<div id="f4a14bf7" class="cell" data-execution_count="9">
+<div id="b5381512" class="cell" data-execution_count="9">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb24"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb24-1"><a aria-label="1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb24-2"><a aria-label="2"></a></span>
 <span id="cb24-3"><a aria-label="3"></a>deliveries <span class="op">=</span> np.array([[ <span class="dv">9</span>, <span class="dv">14</span>, <span class="dv">11</span>,  <span class="dv">6</span>],</span>
@@ -533,7 +533,7 @@ float64
 <section id="where-does-the-max-sit" class="slide level2">
 <h2>Where does the max sit?</h2>
 <p>The per-zone totals answer “how many?”, but the investor asks “<strong>which</strong> zone?”. <code>argmax</code> tells you <strong>WHERE</strong> the maximum sits, as an index:</p>
-<div id="81b81736" class="cell" data-execution_count="10">
+<div id="e8b34a08" class="cell" data-execution_count="10">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb26"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb26-1"><a aria-label="1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb26-2"><a aria-label="2"></a></span>
 <span id="cb26-3"><a aria-label="3"></a>deliveries <span class="op">=</span> np.array([[ <span class="dv">9</span>, <span class="dv">14</span>, <span class="dv">11</span>,  <span class="dv">6</span>],</span>
@@ -565,7 +565,7 @@ float64
 <section id="answer-collapse-the-days-keep-the-zones" class="slide level2">
 <h2>Answer: collapse the days, keep the zones</h2>
 <p><strong>c) <code>week.sum(axis=0)</code></strong> — four zones means four numbers, so the <strong>days</strong> must disappear: <code>axis=0</code> collapses DOWN the rows, one number per column (zone):</p>
-<div id="d398edf2" class="cell" data-execution_count="11">
+<div id="023f153a" class="cell" data-execution_count="11">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb29"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb29-1"><a aria-label="1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb29-2"><a aria-label="2"></a></span>
 <span id="cb29-3"><a aria-label="3"></a>week <span class="op">=</span> np.array([[ <span class="dv">9</span>, <span class="dv">14</span>, <span class="dv">11</span>,  <span class="dv">6</span>],</span>
@@ -583,7 +583,7 @@ float64
 </div>
 </section></section>
 <section id="your-turn-10-minutes-2" class="title-slide slide level1 exercise-slide center">
-<h1>⚡ Your turn — 10 minutes</h1>
+<h1>Your turn — 10 minutes</h1>
 <p>Open the exercise (scan the QR or type the link):</p>
 <p><strong><a href="https://beyondsimulations.github.io/Introduction-to-Python/notebooks/ex_07_c/">beyondsimulations.github.io/Introduction-to-Python/notebooks/ex_07_c/</a></strong></p>
 
