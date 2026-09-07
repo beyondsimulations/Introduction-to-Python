@@ -218,7 +218,7 @@ Dr.&nbsp;Tobias Vlćek
 <section>
 <section id="checkpoint-4" class="title-slide slide level1 exercise-slide center">
 <h1>📋 Checkpoint 4</h1>
-<p><strong>Sessions VI–VII.</strong> The first <strong>40 minutes</strong> are the checkpoint. It starts <strong>now</strong>, before the investor opens her data room.</p>
+<p><strong>Sessions VI–VII.</strong> The first 40 minutes are the checkpoint. It starts now, before the investor opens her data room.</p>
 <ul>
 <li><strong>Individual work</strong>: no neighbors, no chat</li>
 <li><strong>AI tools are allowed</strong>: being able to <strong>VERIFY</strong> the output is the skill being graded</li>
@@ -226,7 +226,7 @@ Dr.&nbsp;Tobias Vlćek
 <li>~6 short tasks: write code, fix a bug, a seeded draw, answer a multiple choice</li>
 <li>It sweeps <strong>Sessions VI–VII</strong>: modules, <code>random</code> and seeds, NumPy arrays and masks</li>
 </ul>
-<!-- QR handed out live — never in the deck -->
+<!-- QR handed out live, never in the deck -->
 </section>
 <section id="when-youre-done" class="slide level2">
 <h2>When you’re done</h2>
@@ -251,7 +251,7 @@ Dr.&nbsp;Tobias Vlćek
 </section>
 <section id="show-me-the-data" class="slide level2">
 <h2>Show me the data</h2>
-<p>Pens down. The checkpoint is behind you. This morning the rival chain <strong>MunchCorp</strong> put out a press release bragging about their <strong>“data-driven growth.”</strong> The evidence attached: exactly <strong>one pie chart.</strong> The investor slid it across the table and said, <em>“Yours will be better. Show me the data.”</em></p>
+<p>Pens down. The checkpoint is behind you. This morning the rival chain MunchCorp put out a press release bragging about their “data-driven growth.” The evidence attached: exactly <strong>one pie chart.</strong> The investor slid it across the table and said, <em>“Yours will be better. Show me the data.”</em></p>
 <div class="fragment">
 <p>Tobi didn’t wait. He’d pasted the question into a chatbot, proudly turned the laptop around, and hit run:</p>
 <p><code>AttributeError: 'DataFrame' object has no attribute 'overview'</code></p>
@@ -269,8 +269,8 @@ Dr.&nbsp;Tobias Vlćek
 <h2>Prompting: context + constraints</h2>
 <p>Two things turn a vague request into a useful answer:</p>
 <ul>
-<li><strong>Context</strong> — say what the data <em>is</em>: “I have a DataFrame <code>orders</code> with columns <code>zone</code> (text) and <code>total_eur</code> (float).”</li>
-<li><strong>Constraints</strong> — say exactly what you want <em>back</em>: “Give me the total <code>total_eur</code> for zone <code>Nord</code>, as a single number.”</li>
+<li><strong>Context</strong>. Say what the data <em>is</em>: “I have a DataFrame <code>orders</code> with columns <code>zone</code> (text) and <code>total_eur</code> (float).”</li>
+<li><strong>Constraints</strong>. Say exactly what you want <em>back</em>: “Give me the total <code>total_eur</code> for zone <code>Nord</code>, as a single number.”</li>
 </ul>
 <div class="fragment">
 <blockquote>
@@ -291,7 +291,7 @@ Dr.&nbsp;Tobias Vlćek
 <section id="step-3-in-action" class="slide level2">
 <h2>Step 3 in action</h2>
 <p>Five orders with values you can add in your head, and the AI’s suggested line for the Nord average:</p>
-<div id="c935192a" class="cell" data-execution_count="1">
+<div id="70d56d14" class="cell" data-execution_count="1">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a aria-label="1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
 <span id="cb1-2"><a aria-label="2"></a></span>
 <span id="cb1-3"><a aria-label="3"></a>check <span class="op">=</span> pd.DataFrame({</span>
@@ -323,8 +323,8 @@ Dr.&nbsp;Tobias Vlćek
 </section>
 <section id="answer-the-method-never-existed" class="slide level2">
 <h2>Answer: the method never existed</h2>
-<p><strong>b) <code>AttributeError</code></strong> — pandas has no <code>.summarize()</code>. The AI invented it:</p>
-<div id="edee7e66" class="cell" data-execution_count="3">
+<p><strong>b) <code>AttributeError</code></strong>: pandas has no <code>.summarize()</code>. The AI invented it:</p>
+<div id="9b4ee6dd" class="cell" data-execution_count="3">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a aria-label="1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
 <span id="cb4-2"><a aria-label="2"></a>orders <span class="op">=</span> pd.DataFrame({<span class="st">"zone"</span>: [<span class="st">"Nord"</span>, <span class="st">"Sued"</span>], <span class="st">"total_eur"</span>: [<span class="fl">12.0</span>, <span class="fl">9.5</span>]})</span>
 <span id="cb4-3"><a aria-label="3"></a>orders.summarize()                     <span class="co"># the method the AI invented</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
@@ -337,7 +337,7 @@ Dr.&nbsp;Tobias Vlćek
 </div>
 <div class="fragment">
 <p>The real method is <code>.describe()</code>:</p>
-<div id="d23aa4df" class="cell" data-execution_count="4">
+<div id="8c72d889" class="cell" data-execution_count="4">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a aria-label="1"></a><span class="bu">print</span>(orders.describe())               <span class="co"># the method that actually exists</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <div class="cell fragment" data-execution_count="4">
@@ -406,7 +406,7 @@ max    12.000000</code></pre>
 <h2>What pandas adds over NumPy</h2>
 <p>Last session, a NumPy array turned a thousand numbers into one fast object, but every value had to share <strong>one type</strong>, and columns had no names.</p>
 <ul>
-<li>A <strong>DataFrame</strong> is a table: <strong>named columns</strong>, and each column can be a <strong>different type</strong></li>
+<li>A <strong>DataFrame</strong> is a table: named columns, and each column can be a different type</li>
 <li>Text zones next to float euros next to integer counts, all in one object</li>
 <li>It’s the spreadsheet the investor handed you, loaded into Python</li>
 </ul>
@@ -417,7 +417,7 @@ max    12.000000</code></pre>
 <section id="a-dataframe-from-a-dictionary" class="slide level2">
 <h2>A DataFrame from a dictionary</h2>
 <p>Keys become <strong>column names</strong>; each list becomes a <strong>column</strong>; one order per row, mixed types together:</p>
-<div id="31207f6f" class="cell" data-execution_count="5">
+<div id="a1e924aa" class="cell" data-execution_count="5">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a aria-label="1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
 <span id="cb7-2"><a aria-label="2"></a>df <span class="op">=</span> pd.DataFrame({</span>
 <span id="cb7-3"><a aria-label="3"></a>    <span class="st">"order_id"</span>:  [<span class="dv">101</span>, <span class="dv">102</span>, <span class="dv">103</span>, <span class="dv">104</span>, <span class="dv">105</span>],</span>
@@ -453,7 +453,7 @@ max    12.000000</code></pre>
 <section id="first-look-.head-and-.info" class="slide level2">
 <h2>First look: <code>.head()</code> and <code>.info()</code></h2>
 <p>Before analyzing a table, glance at it. <code>.head()</code> shows the top rows; <code>.info()</code> is your first sanity check: right number of rows? Any column a surprising type?</p>
-<div id="c1f08a58" class="cell" data-execution_count="6">
+<div id="fdef56ca" class="cell" data-execution_count="6">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a aria-label="1"></a><span class="bu">print</span>(df.head(<span class="dv">3</span>))     <span class="co"># first 3 rows</span></span>
 <span id="cb9-2"><a aria-label="2"></a>df.info()             <span class="co"># columns, dtypes, non-null counts</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
@@ -480,7 +480,7 @@ memory usage: 292.0+ bytes</code></pre>
 <section id="the-numbers-at-a-glance-.describe" class="slide level2">
 <h2>The numbers at a glance: <code>.describe()</code></h2>
 <p><code>.describe()</code> computes count, mean, min, max and quartiles for every <strong>numeric</strong> column at once:</p>
-<div id="affb84b5" class="cell" data-execution_count="7">
+<div id="c300d1dd" class="cell" data-execution_count="7">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a aria-label="1"></a><span class="bu">print</span>(df.describe())</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <div class="cell fragment" data-execution_count="7">
@@ -503,10 +503,10 @@ max    105.000000  4.00000  31.400000</code></pre>
 <section id="selecting-a-column-filtering-rows" class="slide level2">
 <h2>Selecting a column, filtering rows</h2>
 <p>Pick one column by name; keep rows with a <strong>boolean mask</strong>, exactly the NumPy idea from last session:</p>
-<div id="3629affd" class="cell" data-execution_count="8">
+<div id="849d2305" class="cell" data-execution_count="8">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a aria-label="1"></a><span class="bu">print</span>(df[<span class="st">"zone"</span>])                  <span class="co"># one column (a Series)</span></span>
 <span id="cb13-2"><a aria-label="2"></a><span class="bu">print</span>()</span>
-<span id="cb13-3"><a aria-label="3"></a><span class="bu">print</span>(df[df[<span class="st">"zone"</span>] <span class="op">==</span> <span class="st">"Nord"</span>])    <span class="co"># only the Nord rows — case-sensitive!</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb13-3"><a aria-label="3"></a><span class="bu">print</span>(df[df[<span class="st">"zone"</span>] <span class="op">==</span> <span class="st">"Nord"</span>])    <span class="co"># only the Nord rows, case-sensitive!</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <div class="cell fragment" data-execution_count="8">
 <div class="cell-output cell-output-stdout">
@@ -529,7 +529,7 @@ Name: zone, dtype: object
 <section id="adding-a-column-sorting" class="slide level2">
 <h2>Adding a column, sorting</h2>
 <p>Compute a new column from existing ones, then sort. Work on a <strong>copy</strong> so the original stays intact:</p>
-<div id="7eaf6f7e" class="cell" data-execution_count="9">
+<div id="88c1f081" class="cell" data-execution_count="9">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb15"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a aria-label="1"></a>priced <span class="op">=</span> df.copy()</span>
 <span id="cb15-2"><a aria-label="2"></a>priced[<span class="st">"eur_per_item"</span>] <span class="op">=</span> priced[<span class="st">"total_eur"</span>] <span class="op">/</span> priced[<span class="st">"items"</span>]</span>
 <span id="cb15-3"><a aria-label="3"></a><span class="bu">print</span>(priced.sort_values(<span class="st">"total_eur"</span>, ascending<span class="op">=</span><span class="va">False</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
@@ -559,8 +559,8 @@ Name: zone, dtype: object
 </section>
 <section id="answer-an-empty-table-no-warning" class="slide level2">
 <h2>Answer: an empty table, no warning</h2>
-<p><strong>a) an empty table</strong> — <code>"nord"</code> matches nothing, so the mask is all <code>False</code> and pandas hands back <strong>zero rows</strong>. No error, no complaint:</p>
-<div id="4c1a8feb" class="cell" data-execution_count="10">
+<p><strong>a) an empty table</strong>. <code>"nord"</code> matches nothing, so the mask is all <code>False</code> and pandas hands back <strong>zero rows</strong>. No error, no complaint:</p>
+<div id="35bb2e49" class="cell" data-execution_count="10">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb18"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a aria-label="1"></a><span class="bu">print</span>(df[df[<span class="st">"zone"</span>] <span class="op">==</span> <span class="st">"nord"</span>])          <span class="co"># nothing matches "nord"</span></span>
 <span id="cb18-2"><a aria-label="2"></a><span class="bu">print</span>(<span class="st">"rows:"</span>, <span class="bu">len</span>(df[df[<span class="st">"zone"</span>] <span class="op">==</span> <span class="st">"nord"</span>]))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
@@ -578,7 +578,7 @@ rows: 0</code></pre>
 </section>
 <section id="one-more-tool-groupby" class="slide level2">
 <h2>One more tool: <code>groupby</code></h2>
-<p>The investor’s real question isn’t about one row. It’s <strong>per zone</strong>: which area brings in the most?</p>
+<p>The investor’s real question is <strong>per zone</strong>: which area brings in the most?</p>
 <ul>
 <li><code>groupby</code> splits the table by a category, then computes <strong>once per group</strong></li>
 <li><code>df.groupby("zone")["total_eur"].sum()</code> → one total for each zone</li>
@@ -638,7 +638,7 @@ rows: 0</code></pre>
 <section id="three-things-to-remember" class="slide level2">
 <h2>Three things to remember</h2>
 <ol type="1">
-<li><strong>AI is a co-pilot you verify.</strong> Give it <strong>context and constraints</strong>, then <strong>read it → run it → test it</strong> on a case you know.</li>
+<li><strong>AI is a co-pilot you verify.</strong> Give it context and constraints, then read it → run it → test it on a case you know.</li>
 <li><strong>A DataFrame is a named, mixed-type table.</strong> <code>pd.DataFrame</code> from a dict, <code>pd.read_csv</code> from a file; <code>.head()</code>, <code>.info()</code>, <code>.describe()</code> to look before you leap.</li>
 <li><strong>Select, filter, add, group.</strong> <code>df["col"]</code>, a boolean mask (<code>df[df["zone"] == "Nord"]</code>, case-sensitive!), a new column on a <code>.copy()</code>, and <code>groupby</code> for per-category answers. pandas won’t warn you; you verify.</li>
 </ol>

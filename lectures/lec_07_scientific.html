@@ -456,7 +456,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#episode-7-one-array-to-rule-a-thousand-orders" id="toc-episode-7-one-array-to-rule-a-thousand-orders" class="nav-link active" data-scroll-target="#episode-7-one-array-to-rule-a-thousand-orders"><span class="flow">Episode 7: One Array to Rule a Thousand Orders</span></a>
+  <li><a href="#episode-7-the-numbers-deck" id="toc-episode-7-the-numbers-deck" class="nav-link active" data-scroll-target="#episode-7-the-numbers-deck"><span class="flow">Episode 7: The Numbers Deck</span></a>
   <ul class="collapse">
   <li><a href="#the-numbers-deck-is-due" id="toc-the-numbers-deck-is-due" class="nav-link" data-scroll-target="#the-numbers-deck-is-due">The numbers deck is due</a></li>
   </ul></li>
@@ -547,8 +547,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<section id="episode-7-one-array-to-rule-a-thousand-orders" class="level1 title">
-<h1 class="title"><span class="flow">Episode 7: One Array to Rule a Thousand Orders</span></h1>
+<section id="episode-7-the-numbers-deck" class="level1 title">
+<h1 class="title"><span class="flow">Episode 7: The Numbers Deck</span></h1>
 <section id="the-numbers-deck-is-due" class="level2">
 <h2 class="anchored" data-anchor-id="the-numbers-deck-is-due">The numbers deck is due</h2>
 <p>The investor wants a numbers deck by Friday. A <strong>thousand orders</strong> sit in the system, one row each: minutes, price, zone.</p>
@@ -573,7 +573,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 <section id="answer-1" class="level2">
 <h2 class="anchored" data-anchor-id="answer-1">Answer 1</h2>
-<p><strong>a) <code>ceil(3.2)</code></strong> — <code>from math import ceil</code> binds only the <strong>name</strong> <code>ceil</code>. The module <code>math</code> itself was never imported, so <code>math.ceil</code> has nothing to reach through.</p>
+<p><strong>a) <code>ceil(3.2)</code></strong>: <code>from math import ceil</code> binds only the <strong>name</strong> <code>ceil</code>. The module <code>math</code> itself was never imported, so <code>math.ceil</code> has nothing to reach through.</p>
 </section>
 <section id="question-2" class="level2">
 <h2 class="anchored" data-anchor-id="question-2">Question 2</h2>
@@ -588,7 +588,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 <section id="answer-2" class="level2">
 <h2 class="anchored" data-anchor-id="answer-2">Answer 2</h2>
-<p><strong>c) the same three numbers</strong> — every run starts from seed 42, so the stream replays from the top. That is the entire job of a seed: reproducible randomness. (Two batches <em>inside one run</em> would differ: the stream continues; a fresh run rewinds it.)</p>
+<p><strong>c) the same three numbers</strong>. Every run starts from seed 42, so the stream replays from the top. That is the entire job of a seed: reproducible randomness. (Two batches <em>inside one run</em> would differ: the stream continues; a fresh run rewinds it.)</p>
 </section>
 <section id="question-3" class="level2">
 <h2 class="anchored" data-anchor-id="question-3">Question 3</h2>
@@ -600,7 +600,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 <section id="answer-3" class="level2">
 <h2 class="anchored" data-anchor-id="answer-3">Answer 3</h2>
-<p><strong>b) <code>5</code></strong> — <code>median</code> sorts the values internally before picking the middle one. You never have to sort first; <code>5</code> is the middle of <code>2, 5, 9</code>.</p>
+<p><strong>b) <code>5</code></strong>: <code>median</code> sorts the values internally before picking the middle one. You never have to sort first; <code>5</code> is the middle of <code>2, 5, 9</code>.</p>
 </section>
 </section>
 <section id="a-thousand-orders-at-once" class="level1 title">
@@ -608,7 +608,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="from-a-list-to-an-array" class="level2">
 <h2 class="anchored" data-anchor-id="from-a-list-to-an-array">From a list to an array</h2>
 <p>A <strong>NumPy array</strong> holds many numbers under one name, like a list, but built for math. You make one from a list, then ask it about itself:</p>
-<div id="e1bf616d" class="cell" data-output-location="fragment" data-execution_count="1">
+<div id="be2bb4a7" class="cell" data-output-location="fragment" data-execution_count="1">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>prices <span class="op">=</span> np.array([<span class="fl">12.0</span>, <span class="fl">9.0</span>, <span class="fl">15.0</span>])</span>
@@ -629,11 +629,11 @@ float64
 <section id="one-operation-every-element" class="level2">
 <h2 class="anchored" data-anchor-id="one-operation-every-element">One operation, every element</h2>
 <p>Here’s the bigger boat. The deck needs <strong>gross</strong> prices: 19% VAT on all three. With a list you loop; with an array you just multiply:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co"># the painful way — a loop, item by item</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co"># the painful way: a loop, item by item</span></span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>gross <span class="op">=</span> []</span>
 <span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> p <span class="kw">in</span> [<span class="fl">12.0</span>, <span class="fl">9.0</span>, <span class="fl">15.0</span>]:</span>
 <span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>    gross.append(p <span class="op">*</span> <span class="fl">1.19</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div id="c8f7e67b" class="cell" data-output-location="fragment" data-execution_count="2">
+<div id="6c45c5be" class="cell" data-output-location="fragment" data-execution_count="2">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>prices <span class="op">=</span> np.array([<span class="fl">12.0</span>, <span class="fl">9.0</span>, <span class="fl">15.0</span>])</span>
@@ -648,7 +648,7 @@ float64
 <section id="arrays-from-scratch" class="level2">
 <h2 class="anchored" data-anchor-id="arrays-from-scratch">Arrays from scratch</h2>
 <p>Two builders make evenly-spaced arrays without typing every number, handy for axes and ranges:</p>
-<div id="43893685" class="cell" data-output-location="fragment" data-execution_count="3">
+<div id="6c1eed26" class="cell" data-output-location="fragment" data-execution_count="3">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(np.arange(<span class="dv">0</span>, <span class="dv">10</span>, <span class="dv">2</span>))     <span class="co"># start, stop (excluded), step</span></span>
@@ -659,7 +659,7 @@ float64
 </div>
 </div>
 <p>. . .</p>
-<p><code>arange</code> walks by a <strong>step</strong> and stops <strong>before</strong> the end, just like <code>range</code>. <code>linspace</code> splits a span into a fixed <strong>count</strong> of points, endpoints included.</p>
+<p><code>arange</code> walks by a <strong>step</strong> and stops before the end, just like <code>range</code>. <code>linspace</code> splits a span into a fixed <strong>count</strong> of points, endpoints included.</p>
 </section>
 <section id="predict-times-two" class="level2">
 <h2 class="anchored" data-anchor-id="predict-times-two">Predict: times two</h2>
@@ -671,8 +671,8 @@ float64
 </section>
 <section id="answer-lists-repeat-arrays-compute" class="level2">
 <h2 class="anchored" data-anchor-id="answer-lists-repeat-arrays-compute">Answer: lists repeat, arrays compute</h2>
-<p><strong>a) <code>[1, 2, 3, 1, 2, 3]</code></strong> — that’s a plain <strong>list</strong>, and <code>* 2</code> on a list <em>repeats</em> it. Wrap it in an array and the same <code>* 2</code> does the math instead:</p>
-<div id="7a21ba36" class="cell" data-output-location="fragment" data-execution_count="4">
+<p><strong>a) <code>[1, 2, 3, 1, 2, 3]</code></strong>. That’s a plain <strong>list</strong>, and <code>* 2</code> on a list <em>repeats</em> it. Wrap it in an array and the same <code>* 2</code> does the math instead:</p>
+<div id="3476a585" class="cell" data-output-location="fragment" data-execution_count="4">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>([<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>] <span class="op">*</span> <span class="dv">2</span>)              <span class="co"># list → repeated</span></span>
@@ -698,7 +698,7 @@ float64
 <section id="a-comparison-makes-a-mask" class="level2">
 <h2 class="anchored" data-anchor-id="a-comparison-makes-a-mask">A comparison makes a mask</h2>
 <p>Compare an array to a number and you don’t get one <code>True</code>/<code>False</code>. You get a <strong>whole array</strong> of them, one per element. That’s a <strong>mask</strong>, and you can filter with it:</p>
-<div id="ea91bcd1" class="cell" data-output-location="fragment" data-execution_count="5">
+<div id="7f6cdc70" class="cell" data-output-location="fragment" data-execution_count="5">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>times <span class="op">=</span> np.array([<span class="dv">25</span>, <span class="dv">41</span>, <span class="dv">18</span>, <span class="dv">33</span>])</span>
@@ -715,7 +715,7 @@ float64
 <section id="counting-without-a-loop" class="level2">
 <h2 class="anchored" data-anchor-id="counting-without-a-loop">Counting without a loop</h2>
 <p>A mask answers two investor questions at once. <code>.sum()</code> counts the <code>True</code>s (each counts as <code>1</code>); <code>.mean()</code> gives the <strong>share</strong> that are <code>True</code>:</p>
-<div id="d2e97cd1" class="cell" data-output-location="fragment" data-execution_count="6">
+<div id="58729391" class="cell" data-output-location="fragment" data-execution_count="6">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a>times <span class="op">=</span> np.array([<span class="dv">25</span>, <span class="dv">41</span>, <span class="dv">18</span>, <span class="dv">33</span>, <span class="dv">52</span>, <span class="dv">29</span>, <span class="dv">44</span>, <span class="dv">12</span>])</span>
@@ -742,8 +742,8 @@ float64
 </section>
 <section id="answer-true-counts-as-1" class="level2">
 <h2 class="anchored" data-anchor-id="answer-true-counts-as-1">Answer: True counts as 1</h2>
-<p><strong>b) <code>2</code></strong> — <code>.sum()</code> adds the mask up, and each <code>True</code> is worth <code>1</code>, each <code>False</code> <code>0</code>. Two elements clear the bar, so the count is <code>2</code>:</p>
-<div id="cba786d3" class="cell" data-output-location="fragment" data-execution_count="7">
+<p><strong>b) <code>2</code></strong>: <code>.sum()</code> adds the mask up, and each <code>True</code> is worth <code>1</code>, each <code>False</code> <code>0</code>. Two elements clear the bar, so the count is <code>2</code>:</p>
+<div id="0fe6e079" class="cell" data-output-location="fragment" data-execution_count="7">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb19"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(np.array([<span class="dv">1</span>, <span class="dv">5</span>, <span class="dv">3</span>]) <span class="op">&gt;</span> <span class="dv">2</span>)            <span class="co"># [False  True  True]</span></span>
@@ -768,8 +768,8 @@ float64
 <h1 class="title"><span class="flow">The days-by-zones grid</span></h1>
 <section id="a-grid-of-numbers" class="level2">
 <h2 class="anchored" data-anchor-id="a-grid-of-numbers">A grid of numbers</h2>
-<p>Real data isn’t one row. Stack rows and you get a <strong>2D array</strong>: here three <strong>days</strong> (rows) across four <strong>zones</strong> (columns: Nord, Sued, Hafen, Altstadt):</p>
-<div id="86afce42" class="cell" data-output-location="fragment" data-execution_count="8">
+<p>Real data isn’t one row. Stack rows and you get a <strong>2D array</strong>: here three days (rows) across four zones (columns: Nord, Sued, Hafen, Altstadt):</p>
+<div id="ccfaeb91" class="cell" data-output-location="fragment" data-execution_count="8">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb21"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a>deliveries <span class="op">=</span> np.array([[ <span class="dv">9</span>, <span class="dv">14</span>, <span class="dv">11</span>,  <span class="dv">6</span>],</span>
@@ -803,7 +803,7 @@ float64
 <section id="axis-in-code" class="level2">
 <h2 class="anchored" data-anchor-id="axis-in-code"><code>axis</code> in code</h2>
 <p>The same grid, the same two collapses, one keyword each:</p>
-<div id="b5381512" class="cell" data-output-location="fragment" data-execution_count="9">
+<div id="a38d9dc2" class="cell" data-output-location="fragment" data-execution_count="9">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb24"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a>deliveries <span class="op">=</span> np.array([[ <span class="dv">9</span>, <span class="dv">14</span>, <span class="dv">11</span>,  <span class="dv">6</span>],</span>
@@ -822,7 +822,7 @@ float64
 <section id="where-does-the-max-sit" class="level2">
 <h2 class="anchored" data-anchor-id="where-does-the-max-sit">Where does the max sit?</h2>
 <p>The per-zone totals answer “how many?”, but the investor asks “<strong>which</strong> zone?”. <code>argmax</code> tells you <strong>WHERE</strong> the maximum sits, as an index:</p>
-<div id="e8b34a08" class="cell" data-output-location="fragment" data-execution_count="10">
+<div id="d9e548bf" class="cell" data-output-location="fragment" data-execution_count="10">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb26"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb26-3"><a href="#cb26-3" aria-hidden="true" tabindex="-1"></a>deliveries <span class="op">=</span> np.array([[ <span class="dv">9</span>, <span class="dv">14</span>, <span class="dv">11</span>,  <span class="dv">6</span>],</span>
@@ -849,8 +849,8 @@ float64
 </section>
 <section id="answer-collapse-the-days-keep-the-zones" class="level2">
 <h2 class="anchored" data-anchor-id="answer-collapse-the-days-keep-the-zones">Answer: collapse the days, keep the zones</h2>
-<p><strong>c) <code>week.sum(axis=0)</code></strong> — four zones means four numbers, so the <strong>days</strong> must disappear: <code>axis=0</code> collapses DOWN the rows, one number per column (zone):</p>
-<div id="023f153a" class="cell" data-output-location="fragment" data-execution_count="11">
+<p><strong>c) <code>week.sum(axis=0)</code></strong>. Four zones means four numbers, so the <strong>days</strong> must disappear: <code>axis=0</code> collapses DOWN the rows, one number per column (zone):</p>
+<div id="799d8c22" class="cell" data-output-location="fragment" data-execution_count="11">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb29"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb29-3"><a href="#cb29-3" aria-hidden="true" tabindex="-1"></a>week <span class="op">=</span> np.array([[ <span class="dv">9</span>, <span class="dv">14</span>, <span class="dv">11</span>,  <span class="dv">6</span>],</span>
@@ -877,7 +877,7 @@ float64
 <section id="after-the-break-the-lab" class="level2">
 <h2 class="anchored" data-anchor-id="after-the-break-the-lab">After the break: the lab</h2>
 <ul>
-<li>Head to the lab notebook: <a href="../tutorials/tut_07_scientific.html">Episode 7 — One Array to Rule a Thousand Orders</a></li>
+<li>Head to the lab notebook: <a href="../tutorials/tut_07_scientific.html">Episode 7 — The Numbers Deck</a></li>
 <li>You’ll turn the order log into arrays, add VAT to a whole price column at once, mask out the late deliveries to count and average them, and collapse a days-by-zones grid to find the winning zone</li>
 <li>AI is allowed, so try the chatbot, and keep your one-line disclosure note on the submission</li>
 <li>It runs entirely in your browser: no setup, just click and code</li>
@@ -902,7 +902,7 @@ float64
 <ol type="1">
 <li><strong>One array, one operation.</strong> <code>np.array([...])</code> holds many numbers; arithmetic hits <strong>every element at once</strong>. No loop. Ask it <code>.shape</code>, <code>.dtype</code>, <code>.size</code> to know what you’re holding.</li>
 <li><strong>A comparison makes a mask.</strong> <code>arr &gt; 30</code> is a True/False array: <code>arr[mask]</code> filters, <code>.sum()</code> counts the Trues, <code>.mean()</code> gives their share.</li>
-<li><strong>In 2D, pick an axis.</strong> <code>axis=0</code> collapses <strong>DOWN the rows</strong> (one number per column), <code>axis=1</code> <strong>across the columns</strong> (one per row); <code>argmax</code> tells you <strong>where</strong> the maximum sits.</li>
+<li><strong>In 2D, pick an axis.</strong> <code>axis=0</code> collapses DOWN the rows (one number per column), <code>axis=1</code> across the columns (one per row); <code>argmax</code> tells you where the maximum sits.</li>
 </ol>
 <p>. . .</p>
 <div class="callout callout-style-simple callout-note">
