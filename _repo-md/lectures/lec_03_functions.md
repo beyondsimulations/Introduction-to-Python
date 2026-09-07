@@ -17,12 +17,13 @@ format:
 - **Individual work**: no AI, no neighbors, no chat
 - The **link and QR** are handed out in class. Open it and start
 - ~6 short tasks: write code, trace code, fix a bug, answer a multiple choice
+- It sweeps **Sessions I--II**: variables, types, `round` and f-strings, `if`/`elif`, `for` loops
 
 <!-- QR handed out live — never in the deck -->
 
 ## When you're done
 
-Menu → *Download* → *Download Python code* → upload the `.py` to the **"Checkpoint 1"** assignment on Moodle.
+Menu → *Download* → *Download Python code* → upload the `.py` to the **"Checkpoint 1"** assignment on Moodle, **before the 40 minutes are up**. **No retakes**: one sitting.
 
 . . .
 
@@ -38,7 +39,7 @@ Pens down. The checkpoint is behind you. Now the reason we're all here.
 
 . . .
 
-Kevin has been "reusing" code the only way he knows how: he pasted the same receipt block **14 times**, once per menu item. A ten-cent price change last week cost him a whole afternoon of hunting down copies.
+Tobi has been "reusing" code the only way he knows how: he pasted the same receipt block **14 times**, once per menu item. A ten-cent price change last week cost him a whole afternoon of hunting down copies.
 
 . . .
 
@@ -48,7 +49,7 @@ Today the code learns to **reuse itself**. We meet the **function**, and build a
 
 ## The copy-paste pain
 
-Kevin totals each receipt line by hand, the same shape, over and over:
+Tobi totals each receipt line by hand, the same shape, over and over:
 
 ``` python
 print(round(2 * 4.50, 2))    # 2 wraps
@@ -331,7 +332,7 @@ First **predict** what happens, then run it.
 
 # <span class="flow">To the Lab</span>
 
-## Tonight's episode
+## After the break: the lab
 
 - Head to the lab notebook: [Episode 3 --- The Copy-Paste Soup](../tutorials/tut_03_functions.qmd)
 - You'll write the fee and tip functions, fix a function that forgets to `return`, give a parameter a default, and build the startup's first `Order` class, ending in the **Tip Calculator Championship**
@@ -355,7 +356,7 @@ First **predict** what happens, then run it.
 
 > **Note**
 >
-> **Next time --- Episode 4:** the menu outgrows Kevin's **seventeen loose variables** (`price1`, `price2`, `price_final_FINAL2`), and nobody can find anything. We give the data a **shape**: lists and dictionaries.
+> **Next time --- Episode 4:** the menu outgrows Tobi's **seventeen loose variables** (`price1`, `price2`, `price_final_FINAL2`), and nobody can find anything. We give the data a **shape**: lists and dictionaries.
 
 # <span class="flow">Literature</span>
 

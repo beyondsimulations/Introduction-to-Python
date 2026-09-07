@@ -90,7 +90,7 @@ git commit -m "docs: plan 5 editing brief and term glossary"
 
 **Steps:**
 
-- [ ] **Step 1:** Run the per-file editing protocol on `lectures/lec_01_introduction.qmd` (register `deck`). File notes for the implementer: this deck was factually patched in Plan 1 but its teaching copy was never voice-rewritten; expect denser AI-tell residue than the Plan-2/3/4 decks. Story slides: Episode 1 canon (founding, Kevin, the food-delivery startup) is frozen; jokes may be sharpened.
+- [ ] **Step 1:** Run the per-file editing protocol on `lectures/lec_01_introduction.qmd` (register `deck`). File notes for the implementer: this deck was factually patched in Plan 1 but its teaching copy was never voice-rewritten; expect denser AI-tell residue than the Plan-2/3/4 decks. Story slides: Episode 1 canon (founding, Tobi, the food-delivery startup) is frozen; jokes may be sharpened.
 - [ ] **Step 2:** Render check: `quarto render lectures/lec_01_introduction.qmd` → exit 0.
 - [ ] **Step 3:** Commit `style: lec_01 copy pass`. Present before/after excerpts (3–4 representative slides) to the user in chat and wait for explicit approval. Do not start Tasks 3–7 before approval.
 

@@ -11,7 +11,7 @@ eyeball, too many for a hand-written loop. This week you learn the tool built
 for exactly this: **pandas**. You'll load a whole spreadsheet into one
 *DataFrame*, filter it with boolean masks, combine conditions with `&`, add a
 derived column on a safe copy, and answer per-zone questions with `groupby`.
-Kevin, meanwhile, has discovered AI. Your real job is to **supervise** it and
+Tobi, meanwhile, has discovered AI. Your real job is to **supervise** it and
 catch the confident nonsense.
 
 ## Work on the notebook

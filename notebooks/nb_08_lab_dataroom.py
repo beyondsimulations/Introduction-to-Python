@@ -46,7 +46,7 @@ def _(mo):
     *DataFrame*), and answers questions about it (filter, count, total, group)
     in one honest line each.
 
-    Kevin, meanwhile, has **discovered AI**. He now pastes every question into a
+    Tobi, meanwhile, has **discovered AI**. He now pastes every question into a
     chatbot and ships whatever comes back. Your real job this week isn't writing
     pandas from scratch. It's **supervising**: reading what the data actually
     says and catching the confident nonsense.
@@ -118,7 +118,7 @@ def _(mo, startup_name_input):
     mo.md(
         f"Opening the data room for **{startup_name}**. Eighty orders, two weeks, "
         "one investor watching. Let's read what the data actually says, and keep "
-        "Kevin's chatbot honest."
+        "Tobi's chatbot honest."
     )
     return (startup_name,)
 
@@ -545,9 +545,9 @@ def _(mo):
 def _(mo):
     mo.md(
         r"""
-    ### Exercise 2.3 (core, fix the bug) — Kevin's KeyError
+    ### Exercise 2.3 (core, fix the bug) — Tobi's KeyError
 
-    Kevin asked the AI for "Hafen's revenue" and pasted the answer straight into
+    Tobi asked the AI for "Hafen's revenue" and pasted the answer straight into
     the cell below. It's waiting there as a **comment**. Uncomment his line and
     run it, exactly as it is. The cell goes **red**: `KeyError: 'Zone'`.
 
@@ -557,7 +557,7 @@ def _(mo):
 
     The clue is in the error itself: a `KeyError` names the exact column pandas
     couldn't find. Compare that name, letter by letter, with the columns
-    `orders.head()` printed back in Section 1. Then fix Kevin's line (and delete
+    `orders.head()` printed back in Section 1. Then fix Tobi's line (and delete
     the `None` placeholder underneath it) so it stores Hafen's total revenue, as
     a plain `float`, in `hafen_revenue_ex23`.
     """
@@ -567,9 +567,9 @@ def _(mo):
 
 @app.cell
 def _():
-    # Kevin's line (run it as-is first — watch it go red):
+    # Tobi's line (run it as-is first — watch it go red):
     # hafen_revenue_ex23 = float(orders[orders["Zone"] == "Hafen"]["total_eur"].sum())
-    hafen_revenue_ex23 = None  # YOUR CODE BELOW — delete this line once Kevin's is fixed
+    hafen_revenue_ex23 = None  # YOUR CODE BELOW — delete this line once Tobi's is fixed
     return (hafen_revenue_ex23,)
 
 
@@ -597,7 +597,7 @@ def _(hafen_revenue_ex23, mo, pd, show_result):
                 _msg = "❌ Exercise 2.3: 0.0 means your filter matched **no rows** — no error, just an empty table summed. Case matters — the zone is spelled \"Hafen\" (capital H), the column is \"zone\" (lowercase)."
             elif _v == 354.2:
                 ex23_ok = True
-                _msg = "✅ Exercise 2.3: **354.2 €** from Hafen. You caught Kevin's KeyError — lowercase `zone` — and the red cell went green again."
+                _msg = "✅ Exercise 2.3: **354.2 €** from Hafen. You caught Tobi's KeyError — lowercase `zone` — and the red cell went green again."
             elif _v == 1571.6:
                 ex23_ok = False
                 _msg = "❌ Exercise 2.3: 1571.6 is *every* zone's revenue — you forgot to filter. Keep only `zone == \"Hafen\"` first."

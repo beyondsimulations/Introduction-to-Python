@@ -18,12 +18,12 @@ def _(mo):
 
     Overnight the city posted a decree: **no delivery after 22:00.** Your
     kitchen has to know when it is allowed to send a courier out — and when it
-    must say "sorry, we're closed". Kevin's plan ("we just deliver yesterday's
+    must say "sorry, we're closed". Tobi's plan ("we just deliver yesterday's
     orders the next morning") did not survive first contact with a lawyer.
 
     Today you teach the app to **decide** (`if` / `elif` / `else`), to **repeat**
     work over every order (`for` and `while` loops), and to **tidy up** the menu
-    text Kevin typed in a hurry. It ends in a price war with **MunchCorp**.
+    text Tobi typed in a hurry. It ends in a price war with **MunchCorp**.
     """
     )
     return
@@ -114,7 +114,7 @@ def _():
     elif example_rating >= 3:
         print("Fine — could be faster.")
     else:
-        print("Kevin answers the complaint phone.")
+        print("Tobi answers the complaint phone.")
     return
 
 
@@ -234,9 +234,9 @@ def _(mo):
         r"""
     ## Section 2 — Loops over the day's orders
 
-    Kevin built a "dashboard" that adds up the day's orders by hand. It is
+    Tobi built a "dashboard" that adds up the day's orders by hand. It is
     wrong by lunchtime every day. A **`for` loop** does the same step for every
-    item in a list, without Kevin:
+    item in a list, without Tobi:
 
     ```python
     for price in [4.00, 6.50]:
@@ -359,11 +359,11 @@ def _(mo):
 def _(mo):
     mo.md(
         r"""
-    ### Exercise 2.3 (core, fix the bug) — Kevin miscounts the big orders
+    ### Exercise 2.3 (core, fix the bug) — Tobi miscounts the big orders
 
-    Kevin wants to count the **big orders**, the ones of **at least 10 EUR**,
+    Tobi wants to count the **big orders**, the ones of **at least 10 EUR**,
     across `[12.50, 10.00, 8.90, 15.20]`. His dashboard says **2**, but he
-    counted **3** on his fingers, and this time Kevin is right.
+    counted **3** on his fingers, and this time Tobi is right.
 
     His loop is below. It runs fine. The logic is just slightly off. Fix the
     comparison so `big_orders_ex23` becomes **3**.
@@ -374,7 +374,7 @@ def _(mo):
 
 @app.cell
 def _():
-    # KEVIN'S CODE — "at least 10 EUR" should include an order of exactly 10.00.
+    # TOBI'S CODE — "at least 10 EUR" should include an order of exactly 10.00.
     big_order_prices = [12.50, 10.00, 8.90, 15.20]
     big_orders_ex23 = 0
     for _price in big_order_prices:
@@ -387,7 +387,7 @@ def _():
 def _(big_orders_ex23, mo, show_result):
     if big_orders_ex23 == 3:
         ex23_ok = True
-        _msg = "✅ Exercise 2.3: 3 big orders — the 10.00 EUR order counts too. Kevin's fingers are vindicated."
+        _msg = "✅ Exercise 2.3: 3 big orders — the 10.00 EUR order counts too. Tobi's fingers are vindicated."
     else:
         ex23_ok = False
         _msg = (
@@ -418,7 +418,7 @@ def _(mo):
         r"""
     ## Section 3 — Tidying text with string methods
 
-    Kevin typed the daily special IN ALL CAPS with stray spaces. Strings have
+    Tobi typed the daily special IN ALL CAPS with stray spaces. Strings have
     **methods** that return a cleaned-up copy:
 
     - `.strip()` removes leading/trailing spaces
@@ -520,8 +520,8 @@ def _():
     _stickers = 3
     while _stickers > 0:
         _stickers = _stickers - 1
-        print("Kevin hands out a sticker —", _stickers, "left")
-    print("Out of stickers. Kevin is devastated.")
+        print("Tobi hands out a sticker —", _stickers, "left")
+    print("Out of stickers. Tobi is devastated.")
     return
 
 
@@ -544,7 +544,7 @@ def _(mo, rounds_ex40, show_result):
             _price = round(_price * 0.9, 2)
         _msg = (
             f"✅ Boss exercise: **4 rounds** and the price drops to {_price:.2f} EUR — "
-            "just under MunchCorp's 8.50. Kevin high-fives a lamppost."
+            "just under MunchCorp's 8.50. Tobi high-fives a lamppost."
         )
     else:
         ex40_ok = False
@@ -714,9 +714,9 @@ def _(ex11_ok, ex12_ok, ex22_ok, ex23_ok, ex31_ok, ex40_ok, ex50_ok, mo):
     _checks = [ex11_ok, ex12_ok, ex22_ok, ex23_ok, ex31_ok, ex40_ok, ex50_ok]
     _done = sum(_checks)
     _total = len(_checks)
-    _kevin = "Kevin is genuinely impressed!" if _done == _total else "Kevin remains skeptical."
+    _tobi = "Tobi is genuinely impressed!" if _done == _total else "Tobi remains skeptical."
     mo.callout(
-        mo.md(f"**Core exercises: {_done}/{_total} ✅** — {_kevin}"),
+        mo.md(f"**Core exercises: {_done}/{_total} ✅** — {_tobi}"),
         kind="success" if _done == _total else "neutral",
     )
     return
@@ -733,7 +733,7 @@ def _(mo):
        Reloading this exact tab (Cmd/Ctrl+R) keeps your work, but closing the
        tab and reopening the link starts you fresh. The download is the only
        guaranteed copy.
-    3. Next episode: Kevin has pasted the same receipt code **14 times**, and
+    3. Next episode: Tobi has pasted the same receipt code **14 times**, and
        one small change now takes him an afternoon. Next week we teach him
        **functions**.
     """

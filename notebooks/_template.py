@@ -4,7 +4,7 @@
 # every exercise pre-defines its answer as None; suffix exercise names (_ex1);
 # underscore-prefixed names are cell-private.
 # - exercise letters in ex_XX_<letter>.py map 1:1 to lecture block order (a=block 1)
-# - never a possible infinite loop (freezes the WASM tab); Kevin's bugs always terminate
+# - never a possible infinite loop (freezes the WASM tab); Tobi's bugs always terminate
 # - check literals must survive round(x, 2) exactly; avoid .xx5 boundaries
 import marimo
 
@@ -58,7 +58,7 @@ def _(mo):
 @app.cell(hide_code=True)
 def _(mo, startup_name_input):
     startup_name = startup_name_input.value.strip() or "Nameless Bites GmbH"
-    mo.md(f"Welcome back to **{startup_name}**! Kevin already forgot the name again.")
+    mo.md(f"Welcome back to **{startup_name}**! Tobi already forgot the name again.")
     return (startup_name,)
 
 
@@ -136,9 +136,9 @@ def _(ex1_ok, mo):
     _checks = [ex1_ok]
     _done = sum(_checks)
     _total = len(_checks)
-    _kevin = "Kevin is impressed!" if _done == _total else "Kevin remains skeptical."
+    _tobi = "Tobi is impressed!" if _done == _total else "Tobi remains skeptical."
     mo.callout(
-        mo.md(f"**Core exercises: {_done}/{_total} ✅** — {_kevin}"),
+        mo.md(f"**Core exercises: {_done}/{_total} ✅** — {_tobi}"),
         kind="success" if _done == _total else "neutral",
     )
     return

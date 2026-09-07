@@ -4,7 +4,7 @@ subtitle: Programming with Python · Tutorial 03
 ---
 
 
-Kevin has pasted the same receipt code fourteen times, and a ten-cent price
+Tobi has pasted the same receipt code fourteen times, and a ten-cent price
 change just cost him an afternoon of hunting down copies. In this notebook you
 give him the cure: the **function**, code you write once and call anywhere. You'll
 write functions with parameters and return values, learn why a function can't

@@ -40,7 +40,7 @@ The green ✅ checks inside a checkpoint are provisional: they tell you you're o
 
 ### How do I open and work on a lab notebook?
 
-Each session has a tutorial page (menu *Tutorials*). Click **Open in browser**: the notebook runs in that tab, nothing to install. A notebook is a page of cells; click into a cell and press `Cmd/Ctrl+Enter` (or the ▶ button) to run it, and the output appears below. The check cells under each exercise turn green when your answer is right. Before you leave: top-right notebook menu → *Download* → *Download Python code*.
+The lab is done in class, right after the lecture and a short break; whatever is left, you finish at home. Each session has a tutorial page (menu *Tutorials*). Click **Open in browser**: the notebook runs in that tab, nothing to install. A notebook is a page of cells; click into a cell and press `Cmd/Ctrl+Enter` (or the ▶ button) to run it, and the output appears below. The check cells under each exercise turn green when your answer is right. Before you leave: top-right notebook menu → *Download* → *Download Python code*.
 
 ### What if I miss a checkpoint?
 

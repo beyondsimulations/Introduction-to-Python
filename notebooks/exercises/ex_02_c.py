@@ -29,7 +29,7 @@ def _(mo):
         r"""
     # ⚡ Quick exercise: de-shout the menu (10 min)
 
-    Kevin typed a new menu item IN ALL CAPS, WITH EXCLAMATION MARKS, and
+    Tobi typed a new menu item IN ALL CAPS, WITH EXCLAMATION MARKS, and
     stray spaces. Chain string methods on `raw_item` below to turn it into
     exactly `"Falafel Wrap"` and store the result in `item_exc`.
 
@@ -61,7 +61,7 @@ def _(item_exc, mo, show_result):
         _msg = "🔲 Not attempted yet."
     elif item_exc == "Falafel Wrap":
         _ok = True
-        _msg = "✅ Correct! Kevin's shouting is gone."
+        _msg = "✅ Correct! Tobi's shouting is gone."
     else:
         _ok = False
         _msg = "❌ Not quite — watch the order: strip spaces first, then the !!!, then Title Case."

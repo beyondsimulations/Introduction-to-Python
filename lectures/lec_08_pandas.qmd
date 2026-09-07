@@ -39,7 +39,7 @@ Pens down. The checkpoint is behind you. This morning the rival chain **MunchCor
 
 . . .
 
-Kevin didn't wait. He'd pasted the question into a chatbot, proudly turned the laptop around, and hit run:
+Tobi didn't wait. He'd pasted the question into a chatbot, proudly turned the laptop around, and hit run:
 
 `AttributeError: 'DataFrame' object has no attribute 'overview'`
 
@@ -64,7 +64,7 @@ Vague in, vague out. Specific in, checkable out, and then you **iterate**.
 
 ## The verify workflow
 
-Kevin's mistake wasn't *using* AI. It was **shipping without checking.** Every line an AI hands you gets three passes:
+Tobi's mistake wasn't *using* AI. It was **shipping without checking.** Every line an AI hands you gets three passes:
 
 1. **Read it**: do you understand what each line claims to do?
 2. **Run it**: does it actually execute, or does it crash?
@@ -93,7 +93,7 @@ The Nord orders are 10, 20 and 30. You can average those in your head. Does the 
 
 ## Predict: does `.summarize()` exist?
 
-The AI wrote this for Kevin. `orders` is a tiny two-row frame. What happens on the last line?
+The AI wrote this for Tobi. `orders` is a tiny two-row frame. What happens on the last line?
 
 ```python
 import pandas as pd
@@ -212,7 +212,7 @@ print(df)
 . . .
 
 :::{.callout-note}
-Nobody types eighty orders by hand: tonight's lab loads a real CSV in one line, `orders = pd.read_csv("public/orders.csv")`. In the browser that line fetches over the web instead of from disk; your code doesn't change.
+Nobody types eighty orders by hand: today's lab loads a real CSV in one line, `orders = pd.read_csv("public/orders.csv")`. In the browser that line fetches over the web instead of from disk; your code doesn't change.
 :::
 
 ## First look: `.head()` and `.info()`
@@ -278,7 +278,7 @@ print(priced.sort_values("total_eur", ascending=False))
 
 ## Predict: filtering with the wrong case
 
-Kevin filters for the Nord zone, but types it **lowercase**. The data spells it `"Nord"`. What does this print?
+Tobi filters for the Nord zone, but types it **lowercase**. The data spells it `"Nord"`. What does this print?
 
 ```python
 print(df[df["zone"] == "nord"])
@@ -316,7 +316,7 @@ The investor's real question isn't about one row. It's **per zone**: which area 
 . . .
 
 :::{.callout-note}
-That's the teaser: tonight's lab does the heavy lifting with `groupby`, turning eighty raw orders into the handful of numbers the investor actually asked for.
+That's the teaser: today's lab does the heavy lifting with `groupby`, turning eighty raw orders into the handful of numbers the investor actually asked for.
 :::
 
 # ⚡ Your turn — 10 minutes {.exercise-slide}
@@ -331,17 +331,17 @@ First **predict** what happens, then run it.
 
 # [To the Lab]{.flow} {.title}
 
-## Tonight's episode
+## After the break: the lab
 
 - Head to the lab notebook: [Episode 8 — The Data Room](../tutorials/tut_08_pandas.qmd), in your browser as always
 - The investor slides a **USB stick** across the table: every order of two weeks, now `orders.csv`, eighty rows, one `pd.read_csv` line
 - You'll `.head()` it, ask its `.shape`, filter with masks, add a column on a safe copy, and answer per-zone questions with `groupby`
-- Kevin has discovered AI; your real job is to **supervise** it and catch the confident nonsense
+- Tobi has discovered AI; your real job is to **supervise** it and catch the confident nonsense
 
 . . .
 
 :::{.callout-important}
-**Download your `.py` before you leave.** Closing the tab without downloading loses your work, the same motion you used to hand in the checkpoint this morning.
+**Download your `.py` before you leave.** Closing the tab without downloading loses your work, the same motion you used to hand in the checkpoint at the start of the session.
 :::
 
 # [Wrap-up]{.flow} {.title}

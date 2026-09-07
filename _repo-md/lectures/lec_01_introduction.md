@@ -58,6 +58,13 @@ Materials live in the KLU portal and are hosted at [beyondsimulations.github.io/
 >
 > The weekly lab exercises rehearse exactly this routine. Do them, and the checkpoints will feel familiar.
 
+## How a session works
+
+- **Lecture first:** new concepts, with short exercises on your phone or laptop
+- **Then a break**
+- **Then the lab:** the episode's notebook, in class, in your browser, with help in the room
+- Not finished? Keep the tab open on your laptop and finish at home
+
 ## How to use AI
 
 - We base our assessment on the KLU classification:
@@ -87,8 +94,15 @@ Materials live in the KLU portal and are hosted at [beyondsimulations.github.io/
 
 - Everything in Part I runs <span class="highlight">in the browser</span>: nothing to install
 - The lab notebooks and exercises run on **marimo**: click a link, start coding
-- We set up a local environment together in **Session X** (Python via `uv`, the Zed editor)
+- Before **Session X** you install Python (via `uv`) and the Zed editor on your own laptop, with our guides; Session X then runs on your machine
 - Until then: a laptop, a browser, and **one free account** (next slide) is all you need
+
+## How a notebook works
+
+- A notebook is a page of **cells**; each cell holds a few lines of code
+- **Run a cell**: click into it and press `Cmd/Ctrl+Enter` (or the ▶ button at its edge). The output appears right below it
+- Change a cell and run it again: every cell that depends on it updates by itself
+- **Save your work**: the notebook menu (top right) → *Download* → *Download Python code*. The tab remembers you until you close it; the download is forever
 
 ## One account, today: GitHub
 
@@ -101,7 +115,7 @@ Materials live in the KLU portal and are hosted at [beyondsimulations.github.io/
 
 > **Note**
 >
-> **Why now?** From Session VI you get Zed's paid editor plan for free as a student, and Zed only accepts GitHub accounts that are **at least 30 days old**. In Session X your project lives on GitHub. Nothing else to install until then.
+> **Why now?** From Session VI you get Zed's paid editor plan for free as a student, and Zed only accepts GitHub accounts that are **at least 30 days old**. In Session X your project lives on GitHub. Nothing else to install until Session IX.
 
 # <span class="flow">Episode 1: The Founding</span>
 
@@ -111,7 +125,7 @@ This semester you are founding a campus food-delivery startup. Today it gets a n
 
 . . .
 
-*(Your co-founder Kevin has already spent the marketing budget on stickers.)*
+*(Your co-founder Tobi has already spent the marketing budget on stickers.)*
 
 # <span class="flow">Variables & Types</span>
 
@@ -132,9 +146,11 @@ Today your startup's first program does three small things: record the founding 
 ``` python
 # The line starting with # is a comment — Python ignores it
 print("Welcome to your food-delivery startup!")
+print("Stickers bought:", 300)   # commas print several things, a space between
 ```
 
     Welcome to your food-delivery startup!
+    Stickers bought: 300
 
 ## Variables: named values
 
@@ -155,14 +171,14 @@ Store the facts of the new company, then use them by name:
 
 ``` python
 company_founded = 2026
-first_employee = "Kevin"
-sticker_budget = 300          # what's left after Kevin's spending spree
+first_employee = "Tobi"
+sticker_budget = 300          # what's left after Tobi's spending spree
 
 print(first_employee)
 print(sticker_budget)
 ```
 
-    Kevin
+    Tobi
     300
 
 ## Naming rules
@@ -176,13 +192,13 @@ print(sticker_budget)
 . . .
 
 <span class="question">Question --- we solve this together, out loud</span>: Which of these are valid variable names?  
-`sticker_budget`, `1st_employee`, `firstEmployee`, `company-name`, `_kevin`
+`sticker_budget`, `1st_employee`, `firstEmployee`, `company-name`, `_tobi`
 
 ## Four basic types
 
 Every value has a **type**, which decides what you can do with the value:
 
-- `str` --- text, in quotes: `"Kevin"`, `"Falafel Wrap"`
+- `str` --- text, in quotes: `"Tobi"`, `"Falafel Wrap"`
 - `int` --- whole numbers: `2026`, `300`
 - `float` --- decimal numbers: `9.99`, `0.15`
 - `bool` --- truth values: `True`, `False`
@@ -193,7 +209,7 @@ Every value has a **type**, which decides what you can do with the value:
 
 ``` python
 print(type(2026))       # int
-print(type("Kevin"))    # str
+print(type("Tobi"))    # str
 print(type(9.99))       # float
 ```
 
@@ -203,7 +219,7 @@ print(type(9.99))       # float
 
 ## Predict: quotes around a number
 
-Kevin typed the price **with quotes**. What does this print?
+Tobi typed the price **with quotes**. What does this print?
 
 ``` python
 print(type("9.99"))
@@ -217,7 +233,7 @@ a\) `<class 'float'>` b) `<class 'int'>` c) `<class 'str'>`
 
 ## Answer: `type("9.99")`
 
-**c) `str`** --- the quotes make it text, however numeric it looks. Kevin's "price" can't be multiplied until it is converted to a number.
+**c) `str`** --- the quotes make it text, however numeric it looks. Tobi's "price" can't be multiplied until it is converted to a number.
 
 ``` python
 print(type("9.99"))
@@ -237,9 +253,9 @@ First **predict** what happens, then run it.
 
 # <span class="flow">Numbers & Arithmetic</span>
 
-## Kevin's 9.99 theory
+## Tobi's 9.99 theory
 
-Kevin's grand plan: **sell everything for 9.99**. To see whether that survives contact with arithmetic, we need Python's operators.
+Tobi's grand plan: **sell everything for 9.99**. To see whether that survives contact with arithmetic, we need Python's operators.
 
 ``` python
 # margin = price - cost
@@ -292,7 +308,7 @@ print((2 + 3) * 4)   # 20
 
 ## Predict: the sticker budget
 
-Kevin buys 12 boxes at 25 EUR from the 300 EUR budget. What prints?
+Tobi buys 12 boxes at 25 EUR from the 300 EUR budget. What prints?
 
 ``` python
 print(300 - 12 * 25)
@@ -361,11 +377,11 @@ A string is **text in quotes**. Single or double quotes both work, just be consi
 ``` python
 item = "Miso Ramen"
 print(item)
-print('Kevin shouts "9.99!"')   # mix quotes to include a quote inside
+print('Tobi shouts "9.99!"')   # mix quotes to include a quote inside
 ```
 
     Miso Ramen
-    Kevin shouts "9.99!"
+    Tobi shouts "9.99!"
 
 ## Concatenation, and why it hurts
 
@@ -469,10 +485,11 @@ First **predict** what happens, then run it.
 
 # <span class="flow">To the Lab</span>
 
-## Tonight's episode
+## After the break: the lab
 
+- We do it **together in class** after a short break; whatever's left, you finish at home
 - Head to the lab notebook: [Episode 1 --- The Founding](../tutorials/tut_01_introduction.qmd)
-- You'll name the company, set prices, and put Kevin's 9.99 theory on trial
+- You'll name the company, set prices, and put Tobi's 9.99 theory on trial
 - It runs entirely in your browser: no setup, just click and code
 - Didn't finish the **GitHub sign-up** in class? Do it tonight, the 30-day clock is ticking
 
@@ -494,7 +511,7 @@ First **predict** what happens, then run it.
 
 > **Note**
 >
-> **Next time --- Episode 2:** the city bans delivery after 22:00, and Kevin suggests "we just deliver yesterday's orders." We'll need **conditionals and loops** to survive it.
+> **Next time --- Episode 2:** the city bans delivery after 22:00, and Tobi suggests "we just deliver yesterday's orders." We'll need **conditionals and loops** to survive it.
 
 # <span class="flow">Literature</span>
 

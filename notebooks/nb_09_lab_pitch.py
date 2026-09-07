@@ -55,7 +55,7 @@ def _(mo):
     the question, and refuse to draw a dishonest one. Same eighty orders, same
     `orders` DataFrame, now with a picture attached.
 
-    Kevin, naturally, has already "built the deck". His growth slide looks
+    Tobi, naturally, has already "built the deck". His growth slide looks
     *incredible*. Your job, again, is to **supervise**: some of his charts are
     lies wearing a nice axis, and you're the one who catches them before the
     investor does.
@@ -524,7 +524,7 @@ def _(mo):
         r"""
     ### Exercise 2.3 (core) — does slower mean bigger?
 
-    Kevin has a theory: "big orders take longer, obviously." A **scatter** plot is
+    Tobi has a theory: "big orders take longer, obviously." A **scatter** plot is
     how you check a claim like that. Two numbers per order, one on each axis:
     `plt.scatter(orders["delivery_min"], orders["total_eur"])`. Plot it (ungraded)
     and actually *look*.
@@ -535,7 +535,7 @@ def _(mo):
     honest chart says so. Sometimes the answer is "there's no pattern here", and
     you never describe a trend that isn't on the screen.
 
-    So drop Kevin's theory and report the fact the investor actually asked for:
+    So drop Tobi's theory and report the fact the investor actually asked for:
     the **slowest delivery** in the whole dataset. Store that longest delivery time,
     as a plain `int`, in `slowest_ex23`.
     """
@@ -611,8 +611,8 @@ def _(mo):
     **y-axis that doesn't start at zero**: a flat line gets stretched into a cliff,
     and the eye believes the shape long before it reads the numbers.
 
-    Kevin built the pitch's "growth slide" this way. The given cells below compute
-    the two weekly totals (one honest number each) and Kevin's chart plots them.
+    Tobi built the pitch's "growth slide" this way. The given cells below compute
+    the two weekly totals (one honest number each) and Tobi's chart plots them.
     His chart *runs*; that's exactly why it's dangerous.
     """
     )
@@ -635,13 +635,13 @@ def _(orders):
 
 @app.cell
 def _(plt, week1, week2):
-    # Kevin's "growth slide" — runs fine, technically correct numbers.
+    # Tobi's "growth slide" — runs fine, technically correct numbers.
     plt.figure()  # fresh canvas
     plt.plot([1, 2], [week1, week2], marker="o")
     plt.ylim(782, 789)  # <-- the trick: the axis starts at 782, not 0
     plt.xlabel("Week")
     plt.ylabel("Revenue (€)")
-    plt.title("Kevin's growth slide")
+    plt.title("Tobi's growth slide")
     plt.gca()
     return
 
@@ -652,7 +652,7 @@ def _(mo):
         r"""
     ### Exercise 3.1 (core, fix the chart) — the truth about the trend
 
-    Look at Kevin's chart. Week 2 drops to the floor. It reads like the startup
+    Look at Tobi's chart. Week 2 drops to the floor. It reads like the startup
     is **falling off a cliff**, revenue collapsing week to week. An investor
     seeing that panics. But check the y-axis: it runs from **782 to 789**. The
     *entire* chart is a five-euro sliver, magnified until a rounding-error wobble
@@ -710,7 +710,7 @@ def _(growth_pct_ex31, mo, pd, show_result):
                 _msg = "❌ Exercise 3.1: this should be a single **percent** number — the week-over-week change."
             elif _v == -0.66:
                 ex31_ok = True
-                _msg = "✅ Exercise 3.1: **−0.66 %** — essentially flat. Kevin's cliff was a lie the axis told. Flat is the truth — and a flat startup that *tells* the truth is more fundable than a rocket that lies. 📉➡️"
+                _msg = "✅ Exercise 3.1: **−0.66 %** — essentially flat. Tobi's cliff was a lie the axis told. Flat is the truth — and a flat startup that *tells* the truth is more fundable than a rocket that lies. 📉➡️"
             elif _v == 0.66:
                 ex31_ok = False
                 _msg = "❌ Exercise 3.1: right size, wrong sign — you divided by week 2, or swapped the weeks. Growth is measured from where you started: `(week2 - week1) / week1`."

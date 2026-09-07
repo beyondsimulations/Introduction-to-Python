@@ -17,12 +17,13 @@ format:
 - **Individual work**: no AI, no neighbors, no chat
 - The **link and QR** are handed out in class. Open it and start
 - ~6 short tasks: write code, trace code, fix a bug, answer a multiple choice
+- It sweeps **Sessions III--IV**: functions, scope, classes, lists and dictionaries, comprehensions
 
 <!-- QR handed out live — never in the deck -->
 
 ## When you're done
 
-Menu → *Download* → *Download Python code* → upload the `.py` to the **"Checkpoint 2"** assignment on Moodle.
+Menu → *Download* → *Download Python code* → upload the `.py` to the **"Checkpoint 2"** assignment on Moodle, **before the 40 minutes are up**. **No retakes**: one sitting.
 
 . . .
 
@@ -38,7 +39,7 @@ Pens down. The checkpoint is behind you. Now the reason we're all here.
 
 . . .
 
-At 3 AM, running on his fourth energy drink, Kevin rewrote the **entire checkout** "to make it faster." He went to bed very pleased. This morning two things are true: the till is a minefield of crashes, and the **health inspector** just called to announce a surprise visit.
+At 3 AM, running on his fourth energy drink, Tobi rewrote the **entire checkout** "to make it faster." He went to bed very pleased. This morning two things are true: the till is a minefield of crashes, and the **health inspector** just called to announce a surprise visit.
 
 . . .
 
@@ -46,9 +47,9 @@ So today the code learns to survive things going wrong. We read a **traceback**,
 
 # <span class="flow">Reading the Explosion</span>
 
-## Kevin's 3-AM checkout, live
+## Tobi's 3-AM checkout, live
 
-A customer typed `generous` into the tip box. Kevin's new checkout did this:
+A customer typed `generous` into the tip box. Tobi's new checkout did this:
 
 ``` python
 tip_text = "generous"
@@ -145,7 +146,7 @@ except ValueError:            # only this kind
 
 ## Predict: which explosion?
 
-Kevin builds a table label. `guests` is the number `3`. What does the **last line** do?
+Tobi builds a table label. `guests` is the number `3`. What does the **last line** do?
 
 ``` python
 guests = 3
@@ -172,6 +173,10 @@ except TypeError as e:
 ```
 
     TypeError: can only concatenate str (not "int") to str
+
+. . .
+
+`as e` keeps the error object in a variable, so you can print its message instead of losing it. Any name works; `e` is the habit.
 
 # ⚡ Your turn --- 10 minutes
 
@@ -275,7 +280,7 @@ print(seats("full"))           # nonsense → the safe default, 2
 
 . . .
 
-The caller never has to worry about a crash. Garbage in, sane default out.
+The caller never has to worry about a crash. Garbage in, sane default out. Not every check needs a `try`: `isinstance(x, (int, float))` asks *is this a number?* and returns `True`/`False`, so an `if` can skip bad values before they explode.
 
 ## Predict: what happens after the `except`?
 
@@ -328,10 +333,10 @@ First **predict** what happens, then run it.
 
 # <span class="flow">To the Lab</span>
 
-## Tonight's episode
+## After the break: the lab
 
 - Head to the lab notebook: [Episode 5 --- The 3-AM Checkout](../tutorials/tut_05_errors.qmd)
-- You'll read a traceback, write a price box that won't crash, fix Kevin's 3-AM receipt, make your code **refuse** negative prices with `raise`, and harden the whole checkout against a batch of poisoned orders
+- You'll read a traceback, write a price box that won't crash, fix Tobi's 3-AM receipt, make your code **refuse** negative prices with `raise`, and harden the whole checkout against a batch of poisoned orders
 - It runs entirely in your browser: no setup, just click and code
 
 . . .

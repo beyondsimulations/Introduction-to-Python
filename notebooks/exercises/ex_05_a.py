@@ -29,7 +29,7 @@ def _(mo):
         r"""
     # ⚡ Quick exercise: which error? (10 min)
 
-    The checkout crashed live during the lunch rush. Kevin swears he only
+    The checkout crashed live during the lunch rush. Tobi swears he only
     changed "one tiny thing". Here's the crashing line:
 
     ```python

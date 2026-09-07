@@ -30,7 +30,7 @@ def _(mo):
     # ⚡ Quick exercise: the menu update (10 min)
 
     Winter menu day. Start from a **copy** of `menu` (never edit the
-    original: Kevin still needs it for the archive), call it `menu_exb`,
+    original: Tobi still needs it for the archive), call it `menu_exb`,
     then: raise `"Pad Thai"` to `9.20`, and add a new dish, `"Miso Ramen"`,
     at `11.50`. Do it all in the answer cell below.
     """

@@ -26,7 +26,7 @@
   `.xx5` boundaries (32.775 → 32.77!). Verify every literal in Python first.
 - Hints: Hint 1 = nudge (no code); Hint 2 = skeleton with `___` blanks — never
   the paste-able answer. Full answers live in the solution notebook only.
-- Kevin's bugs: logic/runtime only (never syntax errors), and always terminating
+- Tobi's bugs: logic/runtime only (never syntax errors), and always terminating
   (never a possible infinite loop — it freezes the WASM tab).
 - An erroring answer cell pauses its check cell AND the progress cell (reactive
   dependency). Labs with easy-to-crash exercises (dict lookups, indexing) must
@@ -103,7 +103,8 @@ Regular session skeleton:
 1. Title slide (Fall 2026) → 2. Cold open (1 slide, episode framing, restrained)
 3. 🔥 Warm-up (3 recap questions; see below) → 4. Block 1 (≤20 min)
 5. ⚡ QR exercise a → 6. Block 2 → 7. QR b → [break] → 8. Block 3 → 9. QR c
-10. Lab handoff (tutorial URL) → 11. Wrap-up: 3 takeaways + next-episode teaser.
+10. Lab handoff (tutorial URL) → 11. Wrap-up: 3 takeaways + next-episode teaser
+→ [break] → lab in class (unfinished parts at home).
 CP sessions (III, V, VI, VIII, X): title → 📋 checkpoint slide (procedure) →
 cold open → Block 1 → QR a → Block 2 → QR b → lab handoff → wrap-up.
 No warm-up on CP days (the checkpoint is the warm-up).

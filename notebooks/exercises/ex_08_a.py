@@ -29,7 +29,7 @@ def _(mo):
         r"""
     # ⚡ Quick exercise: verifying AI code (10 min)
 
-    AI wrote this for Kevin. Two things are wrong: one method doesn't
+    AI wrote this for Tobi. Two things are wrong: one method doesn't
     exist, one comparison quietly returns nothing. Fix both, and you've
     done today's most important professional skill: verifying output.
 
@@ -61,12 +61,12 @@ def _(pd):
 def _(mo):
     mo.md(
         r"""
-    `kevin_df` below stands in for the real order data. Kevin's AI draft is shown
+    `tobi_df` below stands in for the real order data. Tobi's AI draft is shown
     as a **comment** underneath it. Read it, spot the two bugs, then
     write correct code of your own to compute `mean_exa`: the average
     `total_eur` for the "Nord" zone.
 
-    (If you paste Kevin's broken lines and run them for real, the cell
+    (If you paste Tobi's broken lines and run them for real, the cell
     turns red. That's expected. A red error pauses everything below it
     until you fix it; that's the workflow, not a crash.)
     """
@@ -77,19 +77,19 @@ def _(mo):
 @app.cell
 def _(pd):
     # Given — do not change this
-    kevin_df = pd.DataFrame(
+    tobi_df = pd.DataFrame(
         {
             "zone": ["Nord", "Nord", "Sued", "Nord", "Hafen"],
             "total_eur": [12.40, 8.90, 15.10, 22.20, 9.60],
         }
     )
-    return (kevin_df,)
+    return (tobi_df,)
 
 
 @app.cell
-def _(kevin_df):
-    # Kevin's AI draft (broken — fix it in your own code below):
-    #   nord = kevin_df[kevin_df["zone"] == "nord"]        # quietly empty… why?
+def _(tobi_df):
+    # Tobi's AI draft (broken — fix it in your own code below):
+    #   nord = tobi_df[tobi_df["zone"] == "nord"]        # quietly empty… why?
     #   mean_exa = nord["total_eur"].summarize()           # AttributeError… why?
     mean_exa = None  # YOUR CODE BELOW
     return (mean_exa,)
@@ -99,7 +99,7 @@ def _(kevin_df):
 def _(mean_exa, mo, pd, show_result):
     # Reactive check — re-runs automatically whenever the cell above changes.
     _expected = 14.5
-    _all_zones_mean = 13.64  # Kevin's "averaged everything" trap
+    _all_zones_mean = 13.64  # Tobi's "averaged everything" trap
     _result = None
     if mean_exa is None:
         _ok = False
@@ -140,7 +140,7 @@ def _(mo):
     mo.accordion(
         {
             "💡 Hint 1 (a nudge)": "String comparison is case-sensitive; and does pandas really have `summarize`? Check the docs — or ask an AI and VERIFY.",
-            "💡 Hint 2 (the structure)": '_nord = kevin_df[kevin_df["zone"] == "___"]\nmean_exa = float(_nord["total_eur"].___())',
+            "💡 Hint 2 (the structure)": '_nord = tobi_df[tobi_df["zone"] == "___"]\nmean_exa = float(_nord["total_eur"].___())',
         }
     )
     return

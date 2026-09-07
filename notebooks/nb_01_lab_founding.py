@@ -18,9 +18,9 @@ def _(mo):
 
     Congratulations: as of today you are the (co-)founder of a campus
     food-delivery startup. It has **no name**, **no menu**, and a co-founder,
-    **Kevin**, who has already spent 300 EUR of the marketing budget on
+    **Tobi**, who has already spent 300 EUR of the marketing budget on
     stickers. Your job today: give the company a name, price a menu, run the
-    first revenue numbers, and find out whether Kevin's "everything costs 9.99"
+    first revenue numbers, and find out whether Tobi's "everything costs 9.99"
     theory survives contact with arithmetic.
     """
     )
@@ -68,7 +68,7 @@ def _(mo):
 @app.cell(hide_code=True)
 def _(mo, startup_name_input):
     startup_name = startup_name_input.value.strip() or "Nameless Bites GmbH"
-    mo.md(f"Welcome to **{startup_name}**! (Kevin already forgot it.)")
+    mo.md(f"Welcome to **{startup_name}**! (Tobi already forgot it.)")
     return (startup_name,)
 
 
@@ -141,7 +141,7 @@ def _(menu_item_ex11, mo, portions_ex11, price_ex11):
         _msg = "❌ Exercise 1.1: `portions_ex11` should be the int `3`."
     else:
         ex11_ok = True
-        _msg = "✅ Exercise 1.1: the menu has its first entry. Kevin orders celebratory stickers."
+        _msg = "✅ Exercise 1.1: the menu has its first entry. Tobi orders celebratory stickers."
     mo.md(_msg)
     return (ex11_ok,)
 
@@ -188,7 +188,7 @@ def _(mo, revenue_ex12, show_result):
         _msg = "🔲 Exercise 1.2: not attempted yet."
     elif revenue_ex12 == 26.70:
         ex12_ok = True
-        _msg = "✅ Exercise 1.2: 26.70 EUR per order. Kevin wants to spend it already."
+        _msg = "✅ Exercise 1.2: 26.70 EUR per order. Tobi wants to spend it already."
     else:
         ex12_ok = False
         _msg = "❌ Exercise 1.2: not 26.70 — multiply price × portions and `round(..., 2)`."
@@ -218,7 +218,7 @@ def _(mo):
 
     Python does `+ - * /` as expected. Two more you'll use constantly:
     `//` is **floor division** (whole part) and `%` is the **remainder**
-    (modulo). Kevin, meanwhile, has a Theory™: *every item should cost exactly
+    (modulo). Tobi, meanwhile, has a Theory™: *every item should cost exactly
     9.99, "for psychological reasons".* Let's put a number on it.
     """
     )
@@ -275,9 +275,9 @@ def _(mo, trace_ex21):
 def _(mo):
     mo.md(
         r"""
-    ### Exercise 2.2 (core) — Kevin's 9.99 theory, costed
+    ### Exercise 2.2 (core) — Tobi's 9.99 theory, costed
 
-    Kevin insists everything sells at **9.99**. Each dish costs you **7.40** to
+    Tobi insists everything sells at **9.99**. Each dish costs you **7.40** to
     make. Compute the **margin** (selling price minus cost) into `margin_ex22`.
     """
     )
@@ -298,7 +298,7 @@ def _(margin_ex22, mo, show_result):
         _msg = "🔲 Exercise 2.2: not attempted yet."
     elif isinstance(margin_ex22, (int, float)) and round(margin_ex22, 2) == 2.59:
         ex22_ok = True
-        _msg = "✅ Exercise 2.2: 2.59 EUR per dish. Kevin calls it 'basically infinite money'."
+        _msg = "✅ Exercise 2.2: 2.59 EUR per dish. Tobi calls it 'basically infinite money'."
     else:
         ex22_ok = False
         _msg = "❌ Exercise 2.2: not 2.59 — compute `9.99 - 7.40`."
@@ -321,9 +321,9 @@ def _(mo):
 def _(mo):
     mo.md(
         r"""
-    ### Exercise 2.3 (core, fix the bug) — Kevin multiplied a string
+    ### Exercise 2.3 (core, fix the bug) — Tobi multiplied a string
 
-    Kevin tried to total three 9.99 items and wrote the line below. It *runs*,
+    Tobi tried to total three 9.99 items and wrote the line below. It *runs*,
     but the result is nonsense (`"9.999.999.99"`) because he multiplied
     **text** by 3 instead of a **number**. Fix the value so `total_ex23`
     becomes the number `29.97`.
@@ -334,7 +334,7 @@ def _(mo):
 
 @app.cell
 def _():
-    # KEVIN'S BUG — fix the right-hand side so this is a number, not text
+    # TOBI'S BUG — fix the right-hand side so this is a number, not text
     total_ex23 = "9.99" * 3
     return (total_ex23,)
 
@@ -346,7 +346,7 @@ def _(mo, show_result, total_ex23):
         _msg = "❌ Exercise 2.3: still text (a `str`). Drop the quotes so it's a number."
     elif isinstance(total_ex23, (int, float)) and round(total_ex23, 2) == 29.97:
         ex23_ok = True
-        _msg = "✅ Exercise 2.3: 29.97 — a real number. Kevin is quietly relieved."
+        _msg = "✅ Exercise 2.3: 29.97 — a real number. Tobi is quietly relieved."
     else:
         ex23_ok = False
         _msg = "❌ Exercise 2.3: not 29.97 — you want `9.99 * 3` as numbers."
@@ -476,7 +476,7 @@ def _(mo, receipt_multi_ex32, show_result):
         _msg = "🔲 Bonus 3.2: not attempted yet."
     elif receipt_multi_ex32 == _expected:
         ex32_ok = True
-        _msg = "✅ Bonus 3.2: pixel-perfect alignment. Kevin is weirdly moved."
+        _msg = "✅ Bonus 3.2: pixel-perfect alignment. Tobi is weirdly moved."
     else:
         ex32_ok = False
         _msg = "❌ Bonus 3.2: not an exact match — check the `\\n` and the `:>8.2f` widths."
@@ -510,7 +510,7 @@ def _(mo):
 
     Write `day_one_summary_ex40`: **one f-string** that mentions your startup
     name and drops in your **earlier results** — `revenue_ex12` (the day-one
-    revenue) and `margin_ex22` (Kevin's margin) — each formatted with two
+    revenue) and `margin_ex22` (Tobi's margin) — each formatted with two
     decimals (`:.2f`). Don't retype the numbers; reuse the variables, and
     marimo pulls in the values you computed above. For example:
 
@@ -654,9 +654,9 @@ def _(ex11_ok, ex12_ok, ex22_ok, ex23_ok, ex31_ok, ex40_ok, ex50_ok, mo):
     _checks = [ex11_ok, ex12_ok, ex22_ok, ex23_ok, ex31_ok, ex40_ok, ex50_ok]
     _done = sum(_checks)
     _total = len(_checks)
-    _kevin = "Kevin is genuinely impressed!" if _done == _total else "Kevin remains skeptical."
+    _tobi = "Tobi is genuinely impressed!" if _done == _total else "Tobi remains skeptical."
     mo.callout(
-        mo.md(f"**Core exercises: {_done}/{_total} ✅** — {_kevin}"),
+        mo.md(f"**Core exercises: {_done}/{_total} ✅** — {_tobi}"),
         kind="success" if _done == _total else "neutral",
     )
     return
@@ -673,7 +673,7 @@ def _(mo):
        Reloading this exact tab (Cmd/Ctrl+R) keeps your work, but closing the
        tab and reopening the link starts you fresh. The download is the only
        guaranteed copy.
-    3. Next episode: the city bans deliveries after 22:00, and Kevin wants to
+    3. Next episode: the city bans deliveries after 22:00, and Tobi wants to
        build a haggling bot. You'll need `if` and loops.
     """
     )

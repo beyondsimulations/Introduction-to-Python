@@ -4,7 +4,7 @@
 # one global name per cell; += counts as a definition; every exercise
 # pre-defines its answer (None, or an empty container); suffix exercise
 # names (_exNN); underscore-prefixed names are cell-private; never a possible
-# infinite loop. Kevin's bugs are logic/runtime only, always terminating.
+# infinite loop. Tobi's bugs are logic/runtime only, always terminating.
 # This is the ERRORS lab: students cause exceptions on purpose, so the marimo
 # "red cell pauses everything below" behavior is taught early as a feature.
 import marimo
@@ -20,7 +20,7 @@ def _(mo):
     **Estimated time: 45–60 min · Core exercises: 7 (+ 1 trace, 2 bonus)**
 
     It's the last lab of Part I, and it opens on a crime scene. At 3 AM, running
-    on his fourth energy drink, Kevin rewrote the entire checkout "to make it
+    on his fourth energy drink, Tobi rewrote the entire checkout "to make it
     faster." He then went to sleep very pleased with himself. This morning, two
     things are true: the checkout is a minefield of crashes, and the **health
     inspector** just called to announce a surprise visit.
@@ -28,7 +28,7 @@ def _(mo):
     So today you learn to work *with* things going wrong. You'll read a
     **traceback** (Python's crash report), catch failures with **try/except**,
     let your own code **refuse** bad input with **raise**, guard invariants with
-    **assert**, and debug Kevin's 3-AM checkout line by line, before the
+    **assert**, and debug Tobi's 3-AM checkout line by line, before the
     inspector finds the bodies.
     """
     )
@@ -152,7 +152,7 @@ def _(mo):
     ### Exercise 1.1 (trace — predict first) — which crash?
 
     This is a **trace** exercise: predict the result first, *then* reveal it.
-    Kevin's menu uses a capital W, but his lookup doesn't:
+    Tobi's menu uses a capital W, but his lookup doesn't:
 
     ```python
     menu = {"Wrap": 6.90}
@@ -286,7 +286,7 @@ def _(mo):
     ## Section 2 — The inspector's rule: fixing bugs and `raise`
 
     The health inspector has one non-negotiable rule for the till: **every order
-    must have a price of at least 0**, no negative prices, ever. (Kevin once
+    must have a price of at least 0**, no negative prices, ever. (Tobi once
     "refunded" a salad by typing `-8.30`, and the books never recovered.)
 
     Sometimes *your own* code should refuse bad input on the spot. The **`raise`**
@@ -302,7 +302,7 @@ def _(mo):
 
     Calling `check_age(-5)` raises `ValueError`, exactly like Python's own
     crashes, but on *your* terms. Read and run the worked example, then face
-    Kevin's checkout.
+    Tobi's checkout.
     """
     )
     return
@@ -329,7 +329,7 @@ def _(mo):
         r"""
     ### Exercise 2.1 (core, fix the bug) — the 3-AM receipt
 
-    Here is Kevin's checkout, exactly as he left it at 3 AM. The order is **two
+    Here is Tobi's checkout, exactly as he left it at 3 AM. The order is **two
     Founders Bowls at 12.50** each, plus **one side salad at 8.30**. The customer
     owes **33.30**. This cell *runs* (no red error), but it's wrong **twice
     over**: the number it stores is too small, and the receipt it prints shows a
@@ -344,7 +344,7 @@ def _(mo):
 
 @app.cell
 def _():
-    # KEVIN'S 3-AM CHECKOUT — it runs, no crash. But every number here is wrong.
+    # TOBI'S 3-AM CHECKOUT — it runs, no crash. But every number here is wrong.
     _old_total = 12.50 + 8.30                  # a leftover from the one-bowl draft
     checkout_total_ex21 = 12.50 * 2 - 8.30     # "subtracted the salad for psychological reasons"
     _summary = f"Receipt total: {_old_total:.2f} EUR"
@@ -586,7 +586,7 @@ def _(mo):
 
     The quantity box is as unreliable as the price box. Write `parse_qty_ex31(text)`
     that returns `int(text)` when it can, but if the text isn't a whole number,
-    catch the **`ValueError`** and return `1` instead. (As Kevin says, *"one wrap
+    catch the **`ValueError`** and return `1` instead. (As Tobi says, *"one wrap
     is always a safe default."*)
     """
     )
@@ -804,7 +804,7 @@ def _(mo):
         r"""
     ### 🔎 Bonus — read the traceback (not required)
 
-    Kevin's checkout module crashed overnight and left this in the log. Read it
+    Tobi's checkout module crashed overnight and left this in the log. Read it
     **bottom to top** and find the line where the error actually happened:
 
     ```
@@ -885,7 +885,7 @@ def _(mo):
 
     Build the boolean `all_valid_ex61`: `True` if **every** price in that list is
     `>= 0`, `False` otherwise. (With that in hand, `assert all_valid_ex61` would
-    be Kevin's guard rail.)
+    be Tobi's guard rail.)
     """
     )
     return
@@ -955,13 +955,13 @@ def _(
     _checks = [ex12_ok, ex21_ok, ex22_ok, ex23_ok, ex31_ok, ex40_ok, ex50_ok]
     _done = sum(_checks)
     _total = len(_checks)
-    _kevin = (
-        "The checkout is inspector-ready — Kevin can sleep (decaf next time)."
+    _tobi = (
+        "The checkout is inspector-ready — Tobi can sleep (decaf next time)."
         if _done == _total
         else "The inspector is at the door and the till is still throwing red."
     )
     mo.callout(
-        mo.md(f"**Core exercises: {_done}/{_total} ✅** — {_kevin}"),
+        mo.md(f"**Core exercises: {_done}/{_total} ✅** — {_tobi}"),
         kind="success" if _done == _total else "neutral",
     )
     return

@@ -16,7 +16,7 @@ def _(mo):
         r"""
     # ⚡ Quick exercise: the sticker budget (10 min)
 
-    Kevin has 300 EUR left and wants to know how much survives after buying
+    Tobi has 300 EUR left and wants to know how much survives after buying
     12 boxes at 25 EUR each. **Predict the result of `300 - 12 * 25` before
     you run the cell below** — does multiplication happen before or after
     subtraction?
@@ -36,7 +36,7 @@ def _():
 def _(mo):
     mo.md(
         r"""
-    Multiplication always happens before subtraction, so Kevin's 12 boxes
+    Multiplication always happens before subtraction, so Tobi's 12 boxes
     (`12 * 25 = 300`) wipe out the whole budget.
 
     Now the real task: sticker **packs** cost `12.25` EUR each. Using `//`
@@ -63,7 +63,7 @@ def _(change_exb, mo, packs_exb):
         _msg = "🔲 Not attempted yet."
     elif packs_exb == 24 and round(change_exb, 2) == 6.0:
         _ok = True
-        _msg = "✅ Correct! 24 packs, 6.00 EUR change — Kevin is already spending it."
+        _msg = "✅ Correct! 24 packs, 6.00 EUR change — Tobi is already spending it."
     else:
         _ok = False
         _msg = "❌ Not quite — check that you used `//` for packs and `%` for change."

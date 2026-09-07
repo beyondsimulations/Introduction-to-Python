@@ -46,7 +46,7 @@ a\) a True/False column b) only the Nord rows c) an error from comparing text
 
 ## Question 2
 
-Kevin's AI wrote this. `orders` is a normal DataFrame. What happens?
+Tobi's AI wrote this. `orders` is a normal DataFrame. What happens?
 
 ``` python
 orders.summarize()
@@ -70,7 +70,7 @@ a\) the first five rows of the column, like `.head()` b) count / mean / std / mi
 
 ## Answer 3
 
-**b) count / mean / std / min / quartiles / max** --- one line, the column's whole statistical fingerprint. That's the real method Kevin's AI was reaching for.
+**b) count / mean / std / min / quartiles / max** --- one line, the column's whole statistical fingerprint. That's the real method Tobi's AI was reaching for.
 
 # <span class="flow">The first chart</span>
 
@@ -97,7 +97,7 @@ plt.gca()             # SHOW: "get current axes" — the chart
 
 > **Note**
 >
-> Two habits for **every** chart cell: **open** with `plt.figure()` (a clean canvas) and **end** with `plt.gca()`. In marimo and scripts there's no `plt.show()`; the figure appears as the cell's **last expression**, and `plt.plot(...)` alone returns line objects, not a picture. Same frame around every chart in tonight's lab.
+> Two habits for **every** chart cell: **open** with `plt.figure()` (a clean canvas) and **end** with `plt.gca()`. In marimo there's no `plt.show()`; the figure appears as the cell's **last expression**, and `plt.plot(...)` alone returns line objects, not a picture. (A plain script run from a terminal does need `plt.show()` at the end; that's Session X.) Same frame around every chart in today's lab.
 
 ## The parts of a chart
 
@@ -140,7 +140,7 @@ plt.gca()
 
 ## Predict: one chart or two?
 
-Kevin runs **two** `plot` calls, back to back, with no `plt.figure()` between them:
+Tobi runs **two** `plot` calls, back to back, with no `plt.figure()` between them:
 
 ``` python
 plt.plot([3, 1, 2])
@@ -393,25 +393,25 @@ First **predict** what happens, then run it.
 
 # Before Session X
 
-The finale leaves the browser for **your own machine**. Four things **before** you arrive, about **20 minutes**:
+The finale leaves the browser for **your own machine**. Four things **before** you arrive, in this order, about **45 minutes**:
 
-- **uv**: the Python environment manager. [uv guide](../general/uv.qmd)
-- **Zed + Mistral Vibe**: editor and the AI agent inside it, on your Session VI key. [AI-tools guide](../general/ai-tools.qmd)
-- **GitHub CLI (`gh`)**: your machine's key to GitHub. [Git Basics guide](../general/git-basics.qmd)
-- **GitHub account** from Session I. None yet? [github.com](https://github.com), tonight
+1.  **GitHub account** from Session I. None yet? [github.com](https://github.com), tonight
+2.  **git + GitHub CLI (`gh`)**: install, log in once. [Git Basics](../general/git-basics.qmd#one-time-setup)
+3.  **uv**: the Python environment manager. [uv guide](../general/uv.qmd)
+4.  **Zed + Mistral Vibe**: editor and the AI agent inside it, on your Session VI key. [AI-tools guide](../general/ai-tools.qmd)
 
 . . .
 
 > **Important**
 >
-> **Do it in advance.** Session X builds on a working toolchain, it doesn't wait for one. Install fights you? **Office hours**. And **bring the laptop**.
+> **Do it in advance**, and **bring the laptop** plus one downloaded lab `.py`. Session X opens with **Checkpoint 5** (Sessions VIII--IX), then builds on a working toolchain. Install fights you? Ask in class or by e-mail.
 
 # <span class="flow">To the Lab</span>
 
-## Tonight's episode
+## After the break: the lab
 
 - Head to the lab notebook: [Episode 9 --- The Pitch Deck](../tutorials/tut_09_plotting.qmd)
-- Same eighty orders, now with pictures: a line for daily revenue, a bar for zones, a histogram for the value spread, a scatter that finds **no** pattern, and Kevin's cliff-edge growth slide, which you'll flatten into the truth
+- Same eighty orders, now with pictures: a line for daily revenue, a bar for zones, a histogram for the value spread, a scatter that finds **no** pattern, and Tobi's cliff-edge growth slide, which you'll flatten into the truth
 - Every chart opens with `plt.figure()` and closes with `plt.gca()`
 - AI is allowed: draft with it, then **verify** the columns and the axis before you believe it
 - It runs entirely in your browser: no setup, just click and code

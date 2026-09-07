@@ -4,12 +4,12 @@ subtitle: Programming with Python · Tutorial 04
 ---
 
 
-The menu outgrew Kevin. Last week he tracked prices in seventeen loose variables
+The menu outgrew Tobi. Last week he tracked prices in seventeen loose variables
 (`price1`, `price2`, and the infamous `price_final_FINAL2`) and nobody could find
 anything. In this notebook the data finally gets a **shape**: you'll queue orders
 in a **list**, map dishes to prices in a **dictionary**, count unique regulars
 with a **set**, reach into **nested** dictionaries, and re-price the whole menu in
-a single **comprehension**. It ends with a courier run across campus --- Kevin's
+a single **comprehension**. It ends with a courier run across campus --- Tobi's
 forgotten Falafel Wrap has to reach the dorms before it achieves sentience.
 
 ## Work on the notebook

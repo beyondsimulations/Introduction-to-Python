@@ -29,7 +29,7 @@ def _(mo):
         r"""
     # ⚡ Quick exercise: happy hour (10 min)
 
-    Kevin's idea: 20% off every price on `menu`, for one hour only. Build
+    Tobi's idea: 20% off every price on `menu`, for one hour only. Build
     `happy_exc` with a **dict comprehension**: same items, each price cut
     by 20% and rounded to 2 decimals.
     """

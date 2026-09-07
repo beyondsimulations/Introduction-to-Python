@@ -76,7 +76,7 @@ One fixed **campus food-delivery startup**. Students "found" it in Notebook 1.1 
 **Tone:** full sitcom in the notebooks; slides stay restrained (story as framing, jokes sparse).
 
 **Recurring cast:**
-- **Kevin, the co-founder** — confident, terrible ideas, worse code. Source of debugging exercises (his 3-AM checkout script), messy data (his Excel exports), and chart crimes (his pitch slides).
+- **Tobi, the co-founder** — confident, terrible ideas, worse code. Source of debugging exercises (his 3-AM checkout script), messy data (his Excel exports), and chart crimes (his pitch slides).
 - **The investor** — appears in Part II demanding numbers, dashboards, "insights by Friday."
 - **The authorities** — German bureaucracy as running gag (health inspector, data-protection office, *Formular 27b/6*).
 - **MunchCorp** — the soulless mega-competitor (price wars, competitive analysis).
@@ -85,15 +85,15 @@ One fixed **campus food-delivery startup**. Students "found" it in Notebook 1.1 
 
 | # | Episode | Topic payload |
 |---|---|---|
-| I | Founding: name the company, first menu; Kevin wants all prices at 9.99 "for psychological reasons" | syntax, variables, types, arithmetic |
+| I | Founding: name the company, first menu; Tobi wants all prices at 9.99 "for psychological reasons" | syntax, variables, types, arithmetic |
 | II | City decrees no delivery after 22:00; discount rules; **Haggling Bot** game (guess-the-number reskin) | conditionals, loops, string methods |
 | III | Copy-paste soup → reusable receipt/tip/discount functions, `Order` class; **Tip Calculator Championship** (whose function survives the weirdest inputs) | functions, scope, classes |
 | IV | Menu becomes a dict, delivery zones nested structures; **A Day as a Courier** text adventure on a dict-based campus map | lists, tuples, sets, dicts, I/O |
-| V | Kevin coded the checkout at 3 AM on energy drinks — debug it; health-inspector audit ("every order MUST have price ≥ 0") | exceptions, try/except, debugging, assertions |
+| V | Tobi coded the checkout at 3 AM on energy drinks — debug it; health-inspector audit ("every order MUST have price ≥ 0") | exceptions, try/except, debugging, assertions |
 | VI | Demand simulation with event cards ("influencer visits", "rain doubles orders"), dice-delivery mini-game; **the government episode**: data-protection office demands all emails/phones/names redacted from a reviews file before publication | modules, random, string methods, `re` |
 | VII | Investor wants delivery-time statistics; zone×hour arrays; **Beat the Average** (optimize a schedule against class stats) | NumPy |
-| VIII | Due diligence: sales data is Kevin's Excel export (duplicates, "12,50 €" as text, three date formats); AI allowed as the new intern whose work must be verified | Pandas, data cleaning, AI craft |
-| IX | The pitch deck; **Chart Crimes** — spot Kevin's manipulated axes, then build the honest dashboard | Matplotlib, data literacy, critiquing AI output |
+| VIII | Due diligence: sales data is Tobi's Excel export (duplicates, "12,50 €" as text, three date formats); AI allowed as the new intern whose work must be verified | Pandas, data cleaning, AI craft |
+| IX | The pitch deck; **Chart Crimes** — spot Tobi's manipulated axes, then build the honest dashboard | Matplotlib, data literacy, critiquing AI output |
 | X–XIII | Exit: the startup "gets acquired"; students spin off their own ideas as the final project | project phase handoff |
 
 Checkpoints get one line of story flavor each ("quarterly board review") — zero extra grading complexity. No KLU-specific locations (no campus cafeteria exists); campus references stay generic.
@@ -109,9 +109,9 @@ Checkpoints get one line of story flavor each ("quarterly board review") — zer
 **Reactive-notebook mechanics (the marimo advantage over the Jupyter-style Management-Science pattern):**
 
 - **Reactive checks, not test cells**: a check cell below each exercise re-runs automatically on any code change and renders ✅/❌ with a message — no "run the test cell" step.
-- **Live progress cell** at the bottom of every notebook ("Core exercises: 6/8 ✅", story-skinned as Kevin's approval) — the same mechanic as the checkpoint score cell, rehearsed weekly from Notebook 1.1.
+- **Live progress cell** at the bottom of every notebook ("Core exercises: 6/8 ✅", story-skinned as Tobi's approval) — the same mechanic as the checkpoint score cell, rehearsed weekly from Notebook 1.1.
 - **Graduated hints** per exercise via `mo.accordion`: Hint 1 (nudge) → Hint 2 (structure). Full solutions published *after* each session as separate read-only WASM notebooks. Built-in help reduces AI temptation in the AI-free phase.
-- **Checkpoint task types rehearsed weekly**: every lab notebook contains all four CP task types — write a function, trace code (predict-before-run via `mo.ui.radio` with reveal), fix a bug (Kevin's code), MCQ. By CP1, only the stakes are new.
+- **Checkpoint task types rehearsed weekly**: every lab notebook contains all four CP task types — write a function, trace code (predict-before-run via `mo.ui.radio` with reveal), fix a bug (Tobi's code), MCQ. By CP1, only the stakes are new.
 - **Wrap-up ritual** (last 5 min of lab): progress-cell check, download-your-`.py` reminder, next-episode teaser — weekly rehearsal of the checkpoint submission motion.
 
 **Authoring rules:**

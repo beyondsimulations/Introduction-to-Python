@@ -14,11 +14,11 @@ format:
 
 ## A decree from the city
 
-Overnight the city banned delivery after **22:00**. Your app can no longer just say yes to every order. Today the code starts **making decisions**, **repeating** work over every order, and **tidying up** Kevin's menu.
+Overnight the city banned delivery after **22:00**. Your app can no longer just say yes to every order. Today the code starts **making decisions**, **repeating** work over every order, and **tidying up** Tobi's menu.
 
 . . .
 
-*(Kevin's fix: "we just deliver yesterday's orders the next morning." A lawyer disagreed.)*
+*(Tobi's fix: "we just deliver yesterday's orders the next morning." A lawyer disagreed.)*
 
 # 🔥 Warm-up
 
@@ -47,7 +47,7 @@ a\) `float` b) `int` c) `str`
 
 ## Answer 2
 
-**c)** --- quotes make it text, no matter how numeric it looks. (Kevin learned this the hard way.)
+**c)** --- quotes make it text, no matter how numeric it looks. (Tobi learned this the hard way.)
 
 ## Question 3
 
@@ -153,9 +153,9 @@ print(tier)
 
     Silver
 
-## Predict: Kevin reorders the ladder
+## Predict: Tobi reorders the ladder
 
-Kevin rewrote the tier ladder "to keep the common case on top". A customer with **25 past orders** walks in. Which tier do they get?
+Tobi rewrote the tier ladder "to keep the common case on top". A customer with **25 past orders** walks in. Which tier do they get?
 
 ``` python
 past_orders = 25
@@ -193,7 +193,7 @@ print(tier)
 
 . . .
 
-(One misplaced `elif` and Kevin demotes every VIP.)
+(One misplaced `elif` and Tobi demotes every VIP.)
 
 ## Predict: exactly at curfew
 
@@ -235,7 +235,7 @@ First **predict** what happens, then run it.
 
 ## The copy-paste pain
 
-Kevin totals the day's orders by hand, one `print` per order:
+Tobi totals the day's orders by hand, one `print` per order:
 
 ``` python
 print("Falafel Wrap")
@@ -285,7 +285,7 @@ print(total)
 
 . . .
 
-After the loop, `total` holds the sum. This is how you replace Kevin's hand-counted dashboard.
+After the loop, `total` holds the sum. This is how you replace Tobi's hand-counted dashboard.
 
 ## `range()`: count without a list
 
@@ -310,7 +310,7 @@ Three passes: `0`, `1`, `2`. (It stops *before* 3 --- a beginner's favorite surp
 - `range(start, stop, step)`: jump by `step` each time
 
 ``` python
-print(list(range(2, 5)))       # delivery windows 2, 3 and 4 o'clock
+print(list(range(2, 5)))       # list() shows the range as a list: 2, 3, 4
 print(list(range(0, 10, 3)))   # every 3rd order gets a flyer: 0, 3, 6, 9
 ```
 
@@ -406,7 +406,7 @@ print(rounds, price)
 
 . . .
 
-Two rounds and you're under 7.00. (The lab's price war against MunchCorp is your boss fight tonight.)
+Two rounds and you're under 7.00. (The lab's price war against MunchCorp is your boss fight after the break.)
 
 ## The loop must move toward its goal
 
@@ -450,18 +450,20 @@ The loop would run forever, but `break` stops it the moment `count` hits 3.
 
 ## Cleaning up text
 
-Kevin typed the daily special IN ALL CAPS with stray spaces. Strings have **methods** that return a cleaned-up **copy**:
+Tobi typed the daily special IN ALL CAPS with stray spaces. Strings have **methods** that return a cleaned-up **copy**:
 
 ``` python
 raw = "  miso ramen  "
 print(raw.strip())          # drop outer spaces
 print(raw.strip().title())  # then Capitalise Each Word
 print("special".upper())    # SHOUT
+print("MOIN".lower())       # whisper
 ```
 
     miso ramen
     Miso Ramen
     SPECIAL
+    moin
 
 . . .
 
@@ -469,7 +471,7 @@ Methods can be **chained** left to right: `raw.strip().title()`.
 
 ## Trimming specific characters
 
-`.strip()` drops spaces; `.rstrip("!")` drops trailing `!`. Chain them to fix Kevin's shouting:
+`.strip()` drops spaces; `.rstrip("!")` drops trailing `!`. Chain them to fix Tobi's shouting:
 
 ``` python
 print("SALE!!!".rstrip("!"))            # SALE
@@ -519,10 +521,10 @@ First **predict** what happens, then run it.
 
 # <span class="flow">To the Lab</span>
 
-## Tonight's episode
+## After the break: the lab
 
 - Head to the lab notebook: [Episode 2 --- The Curfew](../tutorials/tut_02_control.qmd)
-- You'll enforce the 22:00 curfew, total the day's orders in a loop, de-shout Kevin's menu, and fight the **MunchCorp price war** with a `while` loop
+- You'll enforce the 22:00 curfew, total the day's orders in a loop, de-shout Tobi's menu, and fight the **MunchCorp price war** with a `while` loop
 - It runs entirely in your browser: no setup, just click and code
 
 . . .
@@ -543,7 +545,7 @@ First **predict** what happens, then run it.
 
 > **Note**
 >
-> **Next time --- Episode 3:** Kevin has pasted the same receipt code **14 times**, and one small change now takes him an afternoon. We bring in **functions** to the rescue.
+> **Next time --- Episode 3** starts with **Checkpoint 1**: 40 minutes, no AI, everything from Episodes 1--2, so keep this notebook and the last one close. Then: Tobi has pasted the same receipt code **14 times**, and one small change now takes him an afternoon. We bring in **functions** to the rescue.
 
 # <span class="flow">Literature</span>
 

@@ -18,11 +18,11 @@
 - **Commit rule (repo policy, overrides all defaults): NEVER add `Co-Authored-By`, "Generated with Claude Code", or any AI-attribution line to commits or PRs in either repo.**
 - marimo notebooks: cells are `@app.cell` functions; a global may be defined in ONE cell only (`+=`/`*=` count); underscore-prefixed names are cell-private; `@app.cell(hide_code=True)` for md/check/hint cells. After hand-editing, validate with `uv run python helpers/validate_notebooks.py` (Task 1) and open once in `uv run marimo edit <file>` (marimo normalizes on save).
 - Rendering: `quarto render <file>` works (`_environment` pins `QUARTO_PYTHON=.venv/bin/python`). A single-file render DELETES the other files in `_repo-md/` — always run `git checkout -- _repo-md/` afterwards and never commit `_repo-md` changes from single-file renders. A FULL `quarto render` currently fails on the untracked `Management-Science/` dir before reaching course files — pre-existing; do per-file renders.
-- Story canon (spec §4): campus food-delivery startup (student-named, name-agnostic checks), Kevin (inept co-founder, present from Ep. 1), the investor (arrives Part II — cameos only until then), German authorities (health inspector, Formular 27b/6), MunchCorp (competitor). Sitcom tone in notebooks; restrained in slides (≤1 Kevin joke per deck section).
+- Story canon (spec §4): campus food-delivery startup (student-named, name-agnostic checks), Tobi (inept co-founder, present from Ep. 1), the investor (arrives Part II — cameos only until then), German authorities (health inspector, Formular 27b/6), MunchCorp (competitor). Sitcom tone in notebooks; restrained in slides (≤1 Tobi joke per deck section).
 - Hint ladder (Fable #3, fixed pattern): Hint 1 = conceptual nudge, no code. Hint 2 = skeleton with blanks (`fee_exa = round(___ * ___, 2)`) — NEVER the paste-able answer. Full answers only in solution notebooks.
 - Check-cell style (round-2 pattern, copy from `nb_01`): placeholder `= None` → "🔲 not attempted"; correct → ✅ + story beat; wrong → ❌ + concrete pointer; numeric compares guard with `isinstance(x, (int, float)) and round(x, 2) == LITERAL`; append `show_result(value)` to the message; wrap in `mo.callout`.
 - **Float-safety rule for check values:** pick numbers whose arithmetic is exact after `round(_, 2)`. Avoid `.xx5` rounding boundaries (e.g. `34.50 * 0.95 = 32.775` rounds to 32.77 in binary floats — never use such values). Every expected literal in this plan was verified by hand; re-verify in Python before hard-coding a hash or reference test.
-- **No-hang rule:** never ship a cell that can loop forever — an infinite loop freezes the student's WASM tab. Kevin's loop bugs are wrong-count/wrong-condition bugs that still terminate. (Kevin's bugs are also never syntax errors — a syntax error makes the whole `.py` unparsable.)
+- **No-hang rule:** never ship a cell that can loop forever — an infinite loop freezes the student's WASM tab. Tobi's loop bugs are wrong-count/wrong-condition bugs that still terminate. (Tobi's bugs are also never syntax errors — a syntax error makes the whole `.py` unparsable.)
 
 ---
 
@@ -139,7 +139,7 @@ Run it; `nb_01_lab_founding` and the three `ex_01_*` files must print `ok`.
   `.xx5` boundaries (32.775 → 32.77!). Verify every literal in Python first.
 - Hints: Hint 1 = nudge (no code); Hint 2 = skeleton with `___` blanks — never
   the paste-able answer. Full answers live in the solution notebook only.
-- Kevin's bugs: logic/runtime only (never syntax errors), and always terminating
+- Tobi's bugs: logic/runtime only (never syntax errors), and always terminating
   (never a possible infinite loop — it freezes the WASM tab).
 - Trace exercises: `mo.ui.radio` + reveal, labeled "(trace — predict first)",
   ungraded (not counted in the progress cell).
@@ -215,7 +215,7 @@ Add to the existing rules comment block (keep existing lines):
 
 ```python
 # - exercise letters in ex_XX_<letter>.py map 1:1 to lecture block order (a=block 1)
-# - never a possible infinite loop (freezes the WASM tab); Kevin's bugs always terminate
+# - never a possible infinite loop (freezes the WASM tab); Tobi's bugs always terminate
 # - check literals must survive round(x, 2) exactly; avoid .xx5 boundaries
 ```
 
@@ -364,7 +364,7 @@ Session I** (it is the sanctioned helper from the first lab on). **After Session
 You are the course assistant for "Programming with Python" at Kühne Logistics
 University. The students are complete beginners in their first programming course.
 The course runs as a story: each student founds a campus food-delivery startup
-with their chaotic co-founder Kevin; exercises live in that world (the investor,
+with their chaotic co-founder Tobi; exercises live in that world (the investor,
 the German authorities, the competitor MunchCorp). Feel free to play along.
 
 Part I of the course is AI-free by policy, and you are the ONE sanctioned helper.
@@ -427,8 +427,8 @@ git commit -m "docs: hint-only chatbot system prompt for Part I (external instal
 
 | Block | Slides (one idea per slide) | Startup framing |
 |---|---|---|
-| 1 Variables & types | what a program is (instructions, top-to-bottom) · `print()` · variables = named values · naming rules · types: `str`/`int`/`float`/`bool` · `type()` · predict-first: `print(type("9.99"))` → vote → reveal | founding data: `company_founded = 2026`, `first_employee = "Kevin"`, `sticker_budget = 300` |
-| 2 Numbers & arithmetic | `+ - * /` · `//` and `%` · precedence · `round()` · int vs float in money math · predict-first: `print(300 - 12 * 25)` → vote → reveal | Kevin's 9.99-for-everything theory; margin = 9.99 − cost |
+| 1 Variables & types | what a program is (instructions, top-to-bottom) · `print()` · variables = named values · naming rules · types: `str`/`int`/`float`/`bool` · `type()` · predict-first: `print(type("9.99"))` → vote → reveal | founding data: `company_founded = 2026`, `first_employee = "Tobi"`, `sticker_budget = 300` |
+| 2 Numbers & arithmetic | `+ - * /` · `//` and `%` · precedence · `round()` · int vs float in money math · predict-first: `print(300 - 12 * 25)` → vote → reveal | Tobi's 9.99-for-everything theory; margin = 9.99 − cost |
 | 3 Strings & f-strings | quotes · concatenation and why it hurts · f-strings · `{value:.2f}` · `\n` · predict-first: `f"{2 * 3}"` vs `"2 * 3"` → vote → reveal | the first receipt line |
 
 - Keep the mechanics slides verbatim (they were corrected in round-2 — factual content must not drift).
@@ -467,7 +467,7 @@ git commit -m "feat: lec 01 full rewrite — 3 startup-themed blocks with predic
 |---|---|---|---|---|
 | `ex_02_a` | Delivery-fee ladder with `if/elif/else`: total < 15 → 2.90, 15–30 → 1.50, ≥ 30 → 0 | `order_total = 17.80` | `fee_exa` | `round(fee_exa, 2) == 1.50` |
 | `ex_02_b` | First predict (radio) what this prints — shown as a proper 4-line block: `total = 0` / `for p in [3, 5]:` / `    total = total + p` / `print(total)` (print NOT indented) → a) `3` b) `8` c) `3` then `8` → reveal b — then write a `for` loop summing `minutes = [12, 7, 9]` | `minutes = [12, 7, 9]` | `minutes_exb` | `minutes_exb == 28` |
-| `ex_02_c` | De-shout Kevin's menu entry with string methods (`.strip()`, `.rstrip("!")`, `.title()`) | `raw_item = "  FALAFEL WRAP!!!  "` | `item_exc` | `item_exc == "Falafel Wrap"` |
+| `ex_02_c` | De-shout Tobi's menu entry with string methods (`.strip()`, `.rstrip("!")`, `.title()`) | `raw_item = "  FALAFEL WRAP!!!  "` | `item_exc` | `item_exc == "Falafel Wrap"` |
 
 - [ ] **Step 2: Extend `helpers/make_qr.py`**
 
@@ -501,7 +501,7 @@ git commit -m "feat: session II in-lecture exercises (conditionals, loops, strin
 - Modify: `tutorials/tut_02_control.qmd` (full replacement → launcher page, keep filename)
 
 **Acceptance Criteria:**
-- [ ] 7 core + 1 ungraded trace + 2 bonus, per the table below; all four CP task types present (write, trace-radio, fix-Kevin, MCQ-as-code)
+- [ ] 7 core + 1 ungraded trace + 2 bonus, per the table below; all four CP task types present (write, trace-radio, fix-Tobi, MCQ-as-code)
 - [ ] Copies `nb_01` patterns exactly: name re-ask, hidden `show_result`, Hint-2 skeletons, progress cell (7 cores), wrap-up ritual
 - [ ] `tut_02` = two-button launcher (browser + molab) with the persistence explainer, episode intro, dormant Solutions link
 - [ ] `sol_02` solved, checks all ✅, hints removed
@@ -511,7 +511,7 @@ git commit -m "feat: session II in-lecture exercises (conditionals, loops, strin
 
 **Steps:**
 
-- [ ] **Step 1: Write `nb_02_lab_curfew.py`.** Story cold-open: the city decrees no delivery after 22:00; Kevin suggests "we just deliver yesterday's orders". Exercises:
+- [ ] **Step 1: Write `nb_02_lab_curfew.py`.** Story cold-open: the city decrees no delivery after 22:00; Tobi suggests "we just deliver yesterday's orders". Exercises:
 
 | Ex | Type | Task | Check |
 |---|---|---|---|
@@ -519,14 +519,14 @@ git commit -m "feat: session II in-lecture exercises (conditionals, loops, strin
 | 1.2 core | write | Discount ladder (`if/elif/else`): total ≥ 50 → 10%, ≥ 30 → 5%, else 0; apply to `36.00` | `round(final_ex12, 2) == 34.20` |
 | 2.1 core | trace (ungraded) | Radio: what does `for i in range(3): print(i * 2)` print? a) 2 4 6 b) 0 2 4 c) 0 1 2 → reveal b, one-line why | not counted |
 | 2.2 core | write | `for` loop summing the day's orders `[12.50, 8.90, 15.20, 9.99]` | `round(revenue_ex22, 2) == 46.59` |
-| 2.3 core | fix | Kevin counts big orders (≥ 10 EUR) over `[12.50, 10.00, 8.90, 15.20]` but wrote `>` — off-by-boundary | `big_orders_ex23 == 3` |
+| 2.3 core | fix | Tobi counts big orders (≥ 10 EUR) over `[12.50, 10.00, 8.90, 15.20]` but wrote `>` — off-by-boundary | `big_orders_ex23 == 3` |
 | 3.1 core | write | Clean `"  PIZZA CALZONE  "` with `.strip().title()` | `clean_ex31 == "Pizza Calzone"` |
 | boss ex40 core | write | Price war: MunchCorp sells at 8.50; start at 11.90, cut 10% per round (`while`), count the rounds until you undercut them (price path: 11.90 → 10.71 → 9.64 → 8.68 → 7.81) | one answer name only: `rounds_ex40 == 4` (final price echoed via `show_result` by recomputing in the check cell, not graded) |
 | ex50 core | mcq | "Which loop body runs exactly 5 times?" a) `for i in range(1, 5)` b) `for i in range(5)` c) `for i in range(0, 5, 2)` | `answer_ex50 == "b"` |
 | ex60 bonus | write | Comprehension seed: 10%-off menu `[round(p * 0.9, 2) for p in [12.50, 10.00, 8.90, 15.20]]` | `== [11.25, 9.0, 8.01, 13.68]` |
 | ex61 bonus | play (ungraded) | Haggling Bot: `mo.ui.slider` offer vs supplier's secret 7.25/kg — reactive "too low / too high / DEAL"; guess-the-number reskin, pure fun | no check |
 
-Story beats between sections: the 22:00 decree (§1), Kevin's order-counting "dashboard" (§2), the menu Kevin typed IN ALL CAPS (§3), MunchCorp price-war letter (boss). Kevin's ex23 bug must terminate (plain `for` loop, wrong comparison only).
+Story beats between sections: the 22:00 decree (§1), Tobi's order-counting "dashboard" (§2), the menu Tobi typed IN ALL CAPS (§3), MunchCorp price-war letter (boss). Tobi's ex23 bug must terminate (plain `for` loop, wrong comparison only).
 
 - [ ] **Step 2: Author `sol_02_lab_curfew.py`** in the private repo (same motion as Task 2 Step 2).
 
@@ -557,7 +557,7 @@ git add solutions/sol_02_lab_curfew.py && git commit -m "feat: episode 2 solutio
 **Acceptance Criteria:**
 - [ ] Skeleton per conventions doc: title → cold open → 🔥 warm-up (3 questions + answer slides) → Block 1 → QR a → Block 2 → QR b → Block 3 → QR c → lab handoff → wrap-up/teaser
 - [ ] Warm-up questions recap Session I (see Step 1) — question slide then answer slide, vote before reveal
-- [ ] Blocks: (1) comparisons, booleans, `if/elif/else` — curfew + discount ladder; (2) `for`, `range`, iterating lists, one comprehension-seed slide — summing the day's orders; (3) `while`, `break`, loop safety — the price war — plus string methods `.strip()/.title()/.upper()` — de-shouting Kevin's menu. (Block order matches exercise letters: b = for-loop, c = strings; the while-based price war lands right before the lab whose boss is a while loop.)
+- [ ] Blocks: (1) comparisons, booleans, `if/elif/else` — curfew + discount ladder; (2) `for`, `range`, iterating lists, one comprehension-seed slide — summing the day's orders; (3) `while`, `break`, loop safety — the price war — plus string methods `.strip()/.title()/.upper()` — de-shouting Tobi's menu. (Block order matches exercise letters: b = for-loop, c = strings; the while-based price war lands right before the lab whose boss is a while loop.)
 - [ ] ≥1 predict-first micro-question per block; cuts logged; render clean
 
 **Verify:** `quarto render lectures/lec_02_control.qmd` clean; `grep -c 'exercise-slide' lectures/lec_02_control.qmd` ≥ 4 (warm-up + 3 QR).
@@ -594,7 +594,7 @@ a\) `float`   b) `str`   c) `int`
 
 ## Answer 2
 
-**b)** — quotes make it text, no matter how numeric it looks. (Kevin learned this the hard way.)
+**b)** — quotes make it text, no matter how numeric it looks. (Tobi learned this the hard way.)
 
 ## Question 3
 
@@ -686,10 +686,10 @@ TASKS = {
 |---|---|---|
 | t1 write | Founders Bowl: base 8.40 + topping 2.10, three portions, `round(_, 2)` | `total_t1 = 31.50` |
 | t2 trace | `total = 0` · `for price in [4, 7]:` · `    total = total + price` · `    print(total)` — what is printed? a) `11` b) `4 7` c) `4` then `11` d) `7` then `11` | `answer_t2 = "c"` |
-| t3 fix | Kevin counts orders ≥ 10 over `[16.40, 10.00, 9.10, 12.75, 10.00]`, wrote `>` — fix the comparison (values AND expected count deliberately differ from nb_02's ex23, so lab recall can't answer it) | `count_t3 = 4` |
+| t3 fix | Tobi counts orders ≥ 10 over `[16.40, 10.00, 9.10, 12.75, 10.00]`, wrote `>` — fix the comparison (values AND expected count deliberately differ from nb_02's ex23, so lab recall can't answer it) | `count_t3 = 4` |
 | t4 write | Loop-sum the board-day orders `[14.20, 9.90, 22.50, 8.45]` | `revenue_t4 = 55.05` |
 | t5 write | f-string with `:.2f` from given `qty = 2`, `item = "Bao Box"`, `total = 19.80` | `line_t5 = "2x Bao Box: 19.80 EUR"` |
-| t6 mcq | Kevin writes `price = "4.99"`. `type(price)` is: a) float b) str c) int d) Error | `answer_t6 = "b"` |
+| t6 mcq | Tobi writes `price = "4.99"`. `type(price)` is: a) float b) str c) int d) Error | `answer_t6 = "b"` |
 
 Generate hash literals: `uv run python -c "from grader.hashcheck import expected_hash as h; print(h(31.50), h('c'), h(4), h(55.05), h('2x Bao Box: 19.80 EUR'), h('b'))"` — paste into the live-check cells (centralized `hash_answer` helper cell like cp0).
 
@@ -758,7 +758,7 @@ git add checkpoints/cp1 tests/ && git commit -m "feat: CP1 board review — sess
 | File | Task | Check |
 |---|---|---|
 | `ex_03_a` | Write `wrap_price_exa(qty)` → `round(qty * 6.90, 2)` (the wrap costs 6.90) | check cell calls it inside try/except: `wrap_price_exa(3) == 20.70 and wrap_price_exa(1) == 6.90` |
-| `ex_03_b` | Kevin's `Order` class: `total()` returns `self.price` (forgot the quantity) — fix the method | `Order("Pad Thai", 2, 8.90).total()` → `round(_, 2) == 17.80` |
+| `ex_03_b` | Tobi's `Order` class: `total()` returns `self.price` (forgot the quantity) — fix the method | `Order("Pad Thai", 2, 8.90).total()` → `round(_, 2) == 17.80` |
 
 Function/class check cells must guard: if the name is still `None`/undefined or the call raises, show "🔲 not attempted / ❌ still crashing" instead of erroring (wrap the probe calls in `try/except Exception`).
 
@@ -781,18 +781,18 @@ Function/class check cells must guard: if the name is still `None`/undefined or 
 
 **Steps:**
 
-- [ ] **Step 1: Write `nb_03_lab_functions.py`.** Cold-open: Kevin has pasted the same receipt code 14 times; one change now takes an afternoon. Exercises:
+- [ ] **Step 1: Write `nb_03_lab_functions.py`.** Cold-open: Tobi has pasted the same receipt code 14 times; one change now takes an afternoon. Exercises:
 
 | Ex | Type | Task | Check |
 |---|---|---|---|
 | 1.1 core | write | `fee_ex11(total)`: < 15 → 2.90, 15–30 → 1.50, ≥ 30 → 0 | probes `fee_ex11(10.0) == 2.90`, `(20.0) == 1.50`, `(40.0) == 0` |
 | 1.2 core | write | `tip_ex12(total, percent)` → `round(total * percent / 100, 2)` | `tip_ex12(20, 10) == 2.0 and tip_ex12(12.0, 25) == 3.0` |
 | 2.1 core | trace (ungraded) | Radio: `def boost(p): p = p + 1; return p` · `x = 5; boost(x); print(x)` → a) 5 b) 6 c) Error — reveal a (call doesn't change the global) | not counted |
-| 2.2 core | fix | Kevin's `receipt_total_ex22(prices)` PRINTS the sum instead of returning it | `receipt_total_ex22([4.0, 6.0]) == 10.0` |
+| 2.2 core | fix | Tobi's `receipt_total_ex22(prices)` PRINTS the sum instead of returning it | `receipt_total_ex22([4.0, 6.0]) == 10.0` |
 | 2.3 core | write | `greet_ex23(name, greeting="Moin")` → `f"{greeting}, {name}!"` | two probes: default + custom greeting |
 | 3.1 core | write | Class `Order` with `__init__(self, item, qty, price)` + method `total()` | `Order("Wrap", 2, 6.90).total()` → 13.80 |
 | boss ex40 core | write | Day report: three orders (Wrap×2 @ 6.90, Bowl×1 @ 24.90, Fries×5 @ 2.50) — use `Order` + `fee_ex11`: sum of `total()` + fee per order | `round(day_total_ex40, 2) == 58.50` (totals 13.80 + 24.90 + 12.50 = 51.20; fees 2.90 + 1.50 + 2.90 = 7.30) |
-| ex50 core | mcq | Kevin's function prints instead of returns; `result = kevins_fn()` contains: a) the text b) 0 c) None d) Error | `answer_ex50 == "c"` |
+| ex50 core | mcq | Tobi's function prints instead of returns; `result = tobis_fn()` contains: a) the text b) 0 c) None d) Error | `answer_ex50 == "c"` |
 | ex60 bonus | write | Championship: `tip_safe_ex60(total, percent)` returns 0.0 for negative/zero totals, else like `tip_ex12`; check runs a weird-input battery (0, −5, 100000) and crowns the survivor | probes |
 
 All function/class probes in check cells wrapped in try/except (as in Task 9). Story: Championship framed as a class competition slide-callback; investor CAMEO max (Part-II arrival canon).
@@ -875,7 +875,7 @@ Miso Ramen;1
 
 Minimal test notebook cell: `orders_text = (mo.notebook_location() / "public" / "orders_day1.txt")` — try reading it (per marimo docs, `mo.notebook_location()` yields a path/URL usable in both local and WASM contexts; in WASM plain `open()` does NOT fetch URLs). Export + serve + check the browser console. **Verdict A (works):** keep the file, exercise reads it. **Verdict B (doesn't):** delete `public/`, ship the same content as an inline string constant, add to conventions: "Inline string/dict data until Part III; `public/` files revisit with pandas in Session VIII." Record either way.
 
-- [ ] **Step 2: Write `nb_04_lab_menu.py`.** Cold-open: the menu outgrew Kevin's seventeen variables (`price1`, `price2`, … `price_final_FINAL2`). Exercises:
+- [ ] **Step 2: Write `nb_04_lab_menu.py`.** Cold-open: the menu outgrew Tobi's seventeen variables (`price1`, `price2`, … `price_final_FINAL2`). Exercises:
 
 | Ex | Type | Task | Check |
 |---|---|---|---|
@@ -883,10 +883,10 @@ Minimal test notebook cell: `orders_text = (mo.notebook_location() / "public" / 
 | 1.2 core | write | First three of the queue by slicing | `first_three_ex12 == ["Pad Thai", "Founders Bowl", "Pizza Calzone"]` |
 | 2.1 core | write | Build the menu dict | `menu_ex21 == {"Falafel Wrap": 6.90, "Pad Thai": 8.90, "Founders Bowl": 10.40}` |
 | 2.2 core | write | Copy + update: Pad Thai → 9.20, add Miso Ramen 11.50 | full-dict equality (4 items) |
-| 2.3 core | write | Loyal regulars: `len(set(customers))` over `["mo", "lena", "mo", "kevin", "lena"]` | `n_regulars_ex23 == 3` |
+| 2.3 core | write | Loyal regulars: `len(set(customers))` over `["mo", "lena", "mo", "tobi", "lena"]` | `n_regulars_ex23 == 3` |
 | 3.1 core | trace (ungraded) | Radio: nested access `zones["north"]["fee"]` on a shown 2-level dict | reveal |
 | 3.2 core | write | Happy-hour dict comprehension, 20% off the 4-item menu from 2.2, `round(_, 2)` each price | `{"Falafel Wrap": 5.52, "Pad Thai": 7.36, "Founders Bowl": 8.32, "Miso Ramen": 9.20}` |
-| 3.3 core | fix | Kevin's `menu_ex22["padthai"]` KeyError — fix the key | `pad_price_ex33 == 9.20` |
+| 3.3 core | fix | Tobi's `menu_ex22["padthai"]` KeyError — fix the key | `pad_price_ex33 == 9.20` |
 | boss ex40 core | write | Courier run: follow `route = ["north", "north", "east"]` through the campus map dict with a loop, starting at `"gate"` | `destination_ex40 == "dorms"` |
 | ex50 core | mcq | `menu["Sushi"]` when Sushi isn't a key: a) None b) "" c) KeyError d) adds it | `answer_ex50 == "c"` |
 | ex60 bonus | write | Parse the order log (file or inline string per spike): `.splitlines()` + `.split(";")` → total portions | `portions_ex60 == 7` |
@@ -904,7 +904,7 @@ campus_map = {
 }
 ```
 
-Story: Kevin's forgotten wrap must reach the dorms before it achieves sentience.
+Story: Tobi's forgotten wrap must reach the dorms before it achieves sentience.
 
 - [ ] **Step 3–5:** solutions (private), `tut_04` launcher ("Episode 4 — The Menu Grows Up"), validate/export/render/commit both repos (`"feat: episode 4 lab — data structures and the courier run"`). Note: progress cell counts 9 cores here (header must say 9 — the MCQ is core, as in every lab).
 
@@ -1004,7 +1004,7 @@ TASKS = {
 |---|---|---|
 | t1 write fn | `fee_t1(total)`: < 20 → 3.50, 20–40 → 2.00, ≥ 40 → 0 ("the new courier tariff"). Notebook live-check probes DIFFERENT inputs than the hidden suite (e.g. 15/30/45) so grader probes can't be pattern-matched | function |
 | t2 trace | the `boost(p)` scope snippet with new names — printed value of the untouched global: a) 5 b) 6 c) Error | `"a"` |
-| t3 fix class | Kevin's `Order.total()` returns `self.price` — fix to `qty * price` | method |
+| t3 fix class | Tobi's `Order.total()` returns `self.price` — fix to `qty * price` | method |
 | t4 write | Build the board's tasting-menu dict: Falafel Wrap 7.20, Pad Thai 9.80, Miso Ramen 12.30 (fresh values — nb_04's winter menu uses 9.20/11.50, which must NOT appear here) | dict |
 | t5 write | Comprehension: double `[12.5, 8.9, 15.2]` | `[25.0, 17.8, 30.4]` |
 | t6 mcq | `orders = [1, 2, 3]; orders.append([4, 5]); len(orders)` → a) 4 b) 5 c) Error | `"a"` |
@@ -1032,7 +1032,7 @@ Live checks: value tasks hashed as usual; function/class tasks live-check by cal
 | File | Task | Check |
 |---|---|---|
 | `ex_05_a` | Predict: `int("3.5")` → radio a) 3 b) 3.5 c) ValueError d) TypeError → reveal c + one-liner ("int() refuses decimal strings"); then fix the given line to get 3.5 as a number | `qty_exa == 3.5` |
-| `ex_05_b` | Kevin's `float(order_text)` crashes on `order_text = "drei"` — wrap in try/except ValueError, default 0.0 | `price_exb == 0.0` |
+| `ex_05_b` | Tobi's `float(order_text)` crashes on `order_text = "drei"` — wrap in try/except ValueError, default 0.0 | `price_exb == 0.0` |
 
 - [ ] **Step 2: QRs, validate, export, commit** (`"feat: session V in-lecture exercises (exceptions)"`).
 
@@ -1051,19 +1051,19 @@ Live checks: value tasks hashed as usual; function/class tasks live-check by cal
 
 **Steps:**
 
-- [ ] **Step 1: Write `nb_05_lab_checkout.py`.** Cold-open: Kevin rewrote the checkout at 3 AM on four energy drinks; this morning the health inspector announced a visit. Exercises:
+- [ ] **Step 1: Write `nb_05_lab_checkout.py`.** Cold-open: Tobi rewrote the checkout at 3 AM on four energy drinks; this morning the health inspector announced a visit. Exercises:
 
 | Ex | Type | Task | Check |
 |---|---|---|---|
 | 1.1 core | trace (ungraded) | Radio: `menu = {"Wrap": 6.90}; print(menu["wrap"])` → a) 6.90 b) None c) TypeError d) KeyError — reveal d + "read the last traceback line first" | not counted |
 | 1.2 core | write | `safe_price_ex12(text)`: `float(text)`, on ValueError return 0.0 | probes `("4.20") == 4.2` and `("drei") == 0.0` |
-| 2.1 core | fix | Kevin's checkout: `12.50 * 2 - 8.30` should be `+` (he "subtracted the salad, psychologically") plus a wrong variable name in the f-string — two bugs, both terminate | `round(checkout_total_ex21, 2) == 33.30` |
+| 2.1 core | fix | Tobi's checkout: `12.50 * 2 - 8.30` should be `+` (he "subtracted the salad, psychologically") plus a wrong variable name in the f-string — two bugs, both terminate | `round(checkout_total_ex21, 2) == 33.30` |
 | 2.2 core | write | `validate_order_ex22(price)`: raise `ValueError` if `price < 0`, else return True (the inspector's rule: every order MUST have price ≥ 0) | probes: `(9.90) is True`; negative input raises ValueError (checked via try/except in the check cell) |
 | 2.3 core | write | Audit: find the index of the invalid price in `[6.90, 8.90, -1.0, 11.50]` with a loop | `bad_index_ex23 == 2` |
 | 3.1 core | write | `parse_qty_ex31(text)`: `int(text)`, on ValueError return 1 ("one wrap is always a safe default") | probes `("3") == 3`, `("??") == 1` |
 | boss ex40 core | write | Harden the checkout: `robust_total_ex40(orders)` over `[("Wrap", 13.80), ("Ramen", -2.0), ("Bowl", "kaputt"), ("Thai", 8.90)]` — skip negatives and non-numbers, sum the rest | probe → `round(_, 2) == 22.70` |
 | ex50 core | mcq | After the except branch runs, the program: a) crashes b) continues after the try block c) restarts the try | `answer_ex50 == "b"` |
-| ex60 bonus | trace-fix | A full 6-line traceback (as text) from Kevin's code: which line number do you fix? answered as `answer_ex60 = <int>` | int equality |
+| ex60 bonus | trace-fix | A full 6-line traceback (as text) from Tobi's code: which line number do you fix? answered as `answer_ex60 = <int>` | int equality |
 
 All probes wrapped in try/except in check cells. Health-inspector story beats in §2; Formular 27b/6 gets its cameo in the wrap-up teaser (Episode 6 = the government episode, Plan 3).
 
@@ -1081,7 +1081,7 @@ All probes wrapped in try/except in check cells. Health-inspector story beats in
 
 **Acceptance Criteria:**
 - [ ] CP2 slide (same content pattern as Task 11's CP1 slide, "Checkpoint 2" + Moodle label)
-- [ ] Block 1: anatomy of a traceback (read bottom-up) · common exception types (ValueError, TypeError, KeyError, IndexError, ZeroDivisionError) · try/except · except-with-type — all on Kevin's checkout examples
+- [ ] Block 1: anatomy of a traceback (read bottom-up) · common exception types (ValueError, TypeError, KeyError, IndexError, ZeroDivisionError) · try/except · except-with-type — all on Tobi's checkout examples
 - [ ] Block 2: debugging strategy (read → reproduce → isolate → print/assert → fix) · `assert` for invariants (the inspector's price ≥ 0 rule) · `raise` — when your own code should refuse
 - [ ] ≥1 predict-first per block (e.g. "which exception?" vote); cuts logged; render clean; `grep -c 'exercise-slide'` ≥ 3
 
@@ -1151,7 +1151,7 @@ TASKS = {
 |---|---|---|
 | t1 write fn | `safe_price_t1(text)`: float or 0.0 on ValueError (live-check probes different strings than the hidden suite; hidden probes '7.75'/'zwoelf' — FRESH, nb_05 used '4.20'/'drei'/'kaputt') | function |
 | t2 trace | FRESH dict, not nb_05's Wrap trace: `zones = {"Nord": 2.50}` · `print(zones["nord"])` → a) 2.50 b) None c) TypeError d) KeyError | `"d"` |
-| t3 fix | Kevin's short day-total over `[20.80, 15.20, 8.90]` (bug: his loop starts at index 1 — `range(1, len(prices))` — silently dropping the first order → 24.10; must-run rule forbids the crashing `range(len+1)` variant) | `orders_total_t3 = 44.90` |
+| t3 fix | Tobi's short day-total over `[20.80, 15.20, 8.90]` (bug: his loop starts at index 1 — `range(1, len(prices))` — silently dropping the first order → 24.10; must-run rule forbids the crashing `range(len+1)` variant) | `orders_total_t3 = 44.90` |
 | t4 recap | Count deliveries over 30 min in `[12, 31, 45, 18, 22]` (loop + condition, sessions I–II recap) | `late_t4 = 2` |
 | t5 recap | f-string from `item = "Miso Ramen"`, `price = 11.50`: `"Miso Ramen costs 11.50 EUR"` | string |
 | t6 mcq | `try/except ValueError` around code that raises KeyError — what happens? a) except runs b) the KeyError propagates (crash) c) both | `"b"` |

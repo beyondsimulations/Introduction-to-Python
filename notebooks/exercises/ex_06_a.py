@@ -60,7 +60,7 @@ def _(mo):
     mo.md(
         r"""
     The investor breakfast is tomorrow: 200 mini quiches need to go out,
-    and the bakery boxes hold 24 quiches each. How many boxes does Kevin
+    and the bakery boxes hold 24 quiches each. How many boxes does Tobi
     need to order?
 
     Compute it as `boxes_exa` below, using `math`, not guesswork.

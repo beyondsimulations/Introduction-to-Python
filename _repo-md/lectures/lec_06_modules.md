@@ -39,7 +39,7 @@ Pens down. The checkpoint is behind you. Now the reason today matters.
 
 . . .
 
-An hour ago the **investor** walked into the shop unannounced. It's **due-diligence week**: before she signs anything, she wants to see how this place actually runs. Kevin offered her a coffee and a spreadsheet he "mostly trusts."
+An hour ago the **investor** walked into the shop unannounced. It's **due-diligence week**: before she signs anything, she wants to see how this place actually runs. Tobi offered her a coffee and a spreadsheet he "mostly trusts."
 
 . . .
 
@@ -51,7 +51,7 @@ She didn't drink the coffee. She walked to the whiteboard, uncapped a marker, an
 
 For five sessions you built everything by hand, on purpose. From today, that changes.
 
-- **AI is now allowed and taught.** We work *with* it, deliberately, starting in tonight's lab.
+- **AI is now allowed and taught.** We work *with* it, deliberately, starting in today's lab.
 - **The disclosure habit:** every submission that used AI carries a **one-line note** saying what you used it for. Not a confession. A professional reflex.
 - **The course chatbot** (sidebar widget) now gives you **full code** on request, not just hints.
 
@@ -70,7 +70,7 @@ Both are free, both are on the [AI Tools page](../general/ai-tools.qmd), togethe
 
 > **Important**
 >
-> Turn **off** Mistral's training-data toggle before you paste coursework (steps on the AI Tools page). Nothing here needs a credit card.
+> Turn **off** the training-data switches in Mistral's privacy settings before you paste coursework: one for Le Chat, one for the API (details on the AI Tools page). Nothing here needs a credit card.
 
 # <span class="flow">Don't build it, import it</span>
 
@@ -84,7 +84,7 @@ The investor's question has an answer: **you shouldn't build it from scratch.** 
 
 . . .
 
-Kevin has been hand-rolling arithmetic for months. The standard library did most of it before he was born.
+Tobi has been hand-rolling arithmetic for months. The standard library did most of it before he was born.
 
 ## `import math`: stop rounding by hand
 
@@ -215,10 +215,10 @@ random.shuffle(queue)                         # reorders the list in place
 print(queue)
 ```
 
-    0.8349512318076963
-    7
-    latte
-    [5, 1, 3, 2, 4]
+    0.6064611378514329
+    8
+    mocha
+    [3, 4, 1, 2, 5]
 
 . . .
 
@@ -226,17 +226,17 @@ Four tools, four flavors of luck: a raw float, a bounded integer, a pick from a 
 
 ## "Run it again"
 
-The investor leans over and says: **"Run it again."** Kevin does, and gets **completely different numbers**:
+The investor leans over and says: **"Run it again."** Tobi does, and gets **completely different numbers**:
 
 ``` python
 import random
 
-print([random.randint(1, 20) for _ in range(5)])   # one run
+print([random.randint(1, 20) for _ in range(5)])   # _ : a loop name we never use
 print([random.randint(1, 20) for _ in range(5)])   # ...and again — different!
 ```
 
-    [8, 11, 20, 4, 15]
-    [16, 7, 2, 4, 6]
+    [20, 11, 12, 3, 1]
+    [5, 8, 1, 4, 13]
 
 . . .
 
@@ -265,7 +265,7 @@ Both lines print `[11, 5, 13, 2, 3]`. The numbers still *look* random, but now t
 
 ## Predict: seeded once, built twice
 
-Kevin seeds **once**, then builds two lists the same way, without touching the seed in between. Are `first` and `second` equal?
+Tobi seeds **once**, then builds two lists the same way, without touching the seed in between. Are `first` and `second` equal?
 
 ``` python
 import random
@@ -318,11 +318,11 @@ First **predict** what happens, then run it.
 
 # <span class="flow">To the Lab</span>
 
-## Tonight's episode
+## After the break: the lab
 
 - Head to the lab notebook: [Episode 6 --- Due Diligence Week](../tutorials/tut_06_modules.qmd)
-- You'll `import math` and `statistics` for investor-grade counts and averages, then use `random` (with and without a `seed`) to rehearse a busy day she can reproduce
-- It's the **first lab where AI is allowed**, so try the chatbot, and add your one-line disclosure note
+- You'll `import math` and `statistics` for investor-grade counts and averages, then use `random` with a `seed` to rehearse a busy day she can reproduce
+- It's the **first lab where AI is allowed**, so try the chatbot
 - This week's homework: the **Mistral account** and the **Zed student plan** from the [AI Tools page](../general/ai-tools.qmd)
 - It runs entirely in your browser: no setup, just click and code
 
@@ -330,7 +330,7 @@ First **predict** what happens, then run it.
 
 > **Important**
 >
-> **Download your `.py` before you leave.** Closing the tab without downloading loses your work, and downloading is exactly how you handed in the checkpoint this morning.
+> **Download your `.py` before you leave.** Closing the tab without downloading loses your work, and downloading is exactly how you handed in the checkpoint at the start of the session.
 
 # <span class="flow">Wrap-up</span>
 

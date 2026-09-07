@@ -24,7 +24,7 @@ def _(mo):
     metrics deck**: totals, a per-zone breakdown, the busiest day, the strongest
     zone, the kind of sheet you could slide across a table without apologizing.
 
-    Kevin has *also* prepared a deck. It is a **40-tab spreadsheet** with a tab
+    Tobi has *also* prepared a deck. It is a **40-tab spreadsheet** with a tab
     called `FINAL_final_v3` and one formula that references a cell in a workbook
     he can no longer find. It is, gently, disqualified.
 
@@ -82,7 +82,7 @@ def _(mo, startup_name_input):
     startup_name = startup_name_input.value.strip() or "Nameless Bites GmbH"
     mo.md(
         f"Building the metrics deck for **{startup_name}**. One page, real "
-        "numbers. Let's make Kevin's 40 tabs look as silly as they are."
+        "numbers. Let's make Tobi's 40 tabs look as silly as they are."
     )
     return (startup_name,)
 
@@ -562,9 +562,9 @@ def _(mo):
 def _(mo):
     mo.md(
         r"""
-    ### Exercise 2.3 (core, fix the bug) — Kevin's per-zone totals
+    ### Exercise 2.3 (core, fix the bug) — Tobi's per-zone totals
 
-    Kevin's spreadsheet was really a **grid**: seven days down the side, four zones
+    Tobi's spreadsheet was really a **grid**: seven days down the side, four zones
     across the top. As an array it's `week_grid` below — 7 rows, 4 columns.
 
     A 2-D array totals along an **axis**. `axis=0` runs *down the rows* (giving one
@@ -578,13 +578,13 @@ def _(mo):
     small.sum(axis=1)   # array([6, 15])     — one total per row (across the columns)
     ```
 
-    The investor asked for **four zone totals**, one number per zone. Kevin sent
+    The investor asked for **four zone totals**, one number per zone. Tobi sent
     her **seven** numbers. Here's the line he ran:
 
     ```python
-    # Kevin's memo (this is what he ran — do not run it):
-    kevin_totals = week_grid.sum(axis=1)
-    # kevin_totals → [59, 65, 58, 65, 61, 72, 52]   (seven numbers, not four)
+    # Tobi's memo (this is what he ran — do not run it):
+    tobi_totals = week_grid.sum(axis=1)
+    # tobi_totals → [59, 65, 58, 65, 61, 72, 52]   (seven numbers, not four)
     ```
 
     Store the *correct* per-zone totals (four numbers, one per zone) in
@@ -635,7 +635,7 @@ def _(mo, np, show_result, zone_totals_ex23):
             _msg = "❌ Exercise 2.3: this should be four zone totals (numbers). Total the grid along one axis."
         elif _arr.shape == (7,):
             ex23_ok = False
-            _msg = "❌ Exercise 2.3: seven numbers — that's Kevin's bug. You totaled *across the zones* (one number per DAY, `axis=1`). The investor wants one number per ZONE: total *down the days* instead."
+            _msg = "❌ Exercise 2.3: seven numbers — that's Tobi's bug. You totaled *across the zones* (one number per DAY, `axis=1`). The investor wants one number per ZONE: total *down the days* instead."
         elif _arr.shape != (4,):
             ex23_ok = False
             _msg = "❌ Exercise 2.3: expected exactly four zone totals, one per column. Total the grid down its seven days."
@@ -653,7 +653,7 @@ def _(mo, np, show_result, zone_totals_ex23):
 def _(mo):
     mo.accordion(
         {
-            "💡 Hint 1 (a nudge)": "Kevin summed across each row (a per-day total). You want a per-column total instead — the *other* axis. Which axis runs down the rows?",
+            "💡 Hint 1 (a nudge)": "Tobi summed across each row (a per-day total). You want a per-column total instead — the *other* axis. Which axis runs down the rows?",
             "💡 Hint 2 (the structure)": "zone_totals_ex23 = week_grid.sum(axis=___)   — pick the axis that leaves one number per zone (per column), not per day.",
         }
     )
@@ -683,7 +683,7 @@ def _(mo):
     zones = ["Nord", "Sued", "Hafen", "Altstadt"]
     ```
 
-    Same `axis` idea as Kevin's fix: `axis=1` totals **across the zones** (one
+    Same `axis` idea as Tobi's fix: `axis=1` totals **across the zones** (one
     number per day), `axis=0` totals **down the days** (one number per zone).
     Two metrics left on the deck. Let's compute both.
     """
@@ -853,7 +853,7 @@ def _(mo):
 
     This is a **trace** exercise: predict the answer first, *then* reveal it. It's
     ungraded. The point is committing to a prediction. In the lecture, `* 2` on a
-    **plain list** repeated it. Now Kevin wraps the same numbers in `np.array`:
+    **plain list** repeated it. Now Tobi wraps the same numbers in `np.array`:
 
     ```python
     print(np.array([1, 2, 3]) * 2)
@@ -998,7 +998,7 @@ def _(mo):
        and reopening the link starts you fresh. The download is the only
        guaranteed copy.
     3. Next episode: the investor opens a **data room**. Real files, thousands of
-       rows, more than any array wants to hold by hand. Kevin, naturally, lets an
+       rows, more than any array wants to hold by hand. Tobi, naturally, lets an
        AI write his pandas. **Episode 8: the data room.**
     """
     )

@@ -29,7 +29,7 @@ def _(mo):
         r"""
     # ⚡ Quick exercise: vectorized arithmetic (10 min)
 
-    Kevin's 40-tab spreadsheet is on its way out. The investor wants
+    Tobi's 40-tab spreadsheet is on its way out. The investor wants
     metrics, and numpy arrays are the replacement. The key idea: an
     operation on an array applies to *every element at once*. No loop.
 

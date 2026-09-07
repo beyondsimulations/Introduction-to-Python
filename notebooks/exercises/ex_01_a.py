@@ -16,7 +16,7 @@ def _(mo):
         r"""
     # ⚡ Quick exercise: the founding form (10 min)
 
-    Kevin filled in the company register form, as Python variables. One line
+    Tobi filled in the company register form, as Python variables. One line
     has the wrong **value** and two have the wrong **type**. First **predict**
     which, then fix all three.
     """
@@ -26,9 +26,9 @@ def _(mo):
 
 @app.cell
 def _():
-    # FIX KEVIN'S FORM (some values and/or types are wrong)
+    # FIX TOBI'S FORM (some values and/or types are wrong)
     company_type = "UG (haftungsbeschränkt)"
-    first_employee = "kevin "
+    first_employee = "tobi "
     share_capital = "300"
     founded_year = "2026"
     return (company_type, first_employee, founded_year, share_capital)
@@ -37,7 +37,7 @@ def _():
 @app.cell(hide_code=True)
 def _(mo, first_employee, founded_year, share_capital):
     _ok = (
-        first_employee == "Kevin"
+        first_employee == "Tobi"
         and share_capital == 300
         and isinstance(founded_year, int)
     )

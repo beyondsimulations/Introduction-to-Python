@@ -29,7 +29,7 @@ def _(mo):
         r"""
     # ⚡ Quick exercise: fix the Order class (10 min)
 
-    Kevin wrote the startup's first class — an `Order` that's supposed to
+    Tobi wrote the startup's first class — an `Order` that's supposed to
     compute its own total. Except a 2× Pad Thai order charges like a single
     portion. Find the bug in `total()` and fix it.
     """
@@ -46,7 +46,7 @@ def _():
             self.price = price
 
         def total(self):
-            # KEVIN'S BUG — the order total ignores something
+            # TOBI'S BUG — the order total ignores something
             return self.price
 
     return (Order,)

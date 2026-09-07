@@ -14,7 +14,7 @@ format:
 
 ## Seventeen variables and counting
 
-The menu started with two dishes. Kevin tracked them in variables: `price1`, `price2`. Then came `price3`, a `price_final`, and --- after a rough Tuesday --- a `price_final_FINAL2`.
+The menu started with two dishes. Tobi tracked them in variables: `price1`, `price2`. Then came `price3`, a `price_final`, and --- after a rough Tuesday --- a `price_final_FINAL2`.
 
 . . .
 
@@ -75,11 +75,11 @@ class Order:
 print(Order("Wrap", 2, 6.90).total())
 ```
 
-a\) `6.90` b) `13.80` c) `2`
+a\) `6.9` b) `13.8` c) `2`
 
 ## Answer 3
 
-**b) `13.80`** --- `total()` multiplies `qty` by `price`: `2 * 6.90`. The object carries its own data, the method does the arithmetic.
+**b) `13.8`** --- `total()` multiplies `qty` by `price`: `2 * 6.90`, and `print` shows a float without the trailing zero. The object carries its own data, the method does the arithmetic.
 
 # <span class="flow">Lists & Tuples</span>
 
@@ -287,7 +287,7 @@ print(prices["Cola"])
 
 > **Warning**
 >
-> A `KeyError` is not a crash to fear. It's Python telling you the key is spelled wrong or was never added. You'll read exactly this error in tonight's lab.
+> A `KeyError` is not a crash to fear. It's Python telling you the key is spelled wrong or was never added. You'll read exactly this error in today's lab.
 
 ## A safer read with `.get()`
 
@@ -362,11 +362,11 @@ A **set** keeps each value **once**. Feed it duplicates and they collapse. Perfe
 ``` python
 visitors = ["nina", "tom", "nina", "ada", "tom"]
 regulars = set(visitors)
-print(regulars)
+print(regulars)        # order is arbitrary: a set has none
 print(len(regulars))   # how many different people
 ```
 
-    {'nina', 'tom', 'ada'}
+    {'tom', 'ada', 'nina'}
     3
 
 . . .
@@ -530,7 +530,7 @@ for line in orders.splitlines():
 
 > **Note**
 >
-> Reading **real files** from your own machine comes in **Part III**, and **pandas** loads them properly in **Session VIII**. For now, inline data is all you need.
+> Reading **real files** is a job for **pandas**, which loads them in one line from **Session VIII** on. For now, inline data is all you need.
 
 # ⚡ Your turn --- 10 minutes
 
@@ -544,7 +544,7 @@ First **predict** what happens, then run it.
 
 # <span class="flow">To the Lab</span>
 
-## Tonight's episode
+## After the break: the lab
 
 - Head to the lab notebook: [Episode 4 --- The Menu Grows Up](../tutorials/tut_04_dimensions.qmd)
 - You'll rebuild the menu as a dictionary, count the regulars with a set, discount the card with a comprehension, and steer a lost courier through a **nested campus map** to the dorms
@@ -568,7 +568,7 @@ First **predict** what happens, then run it.
 
 > **Note**
 >
-> **Next time --- Episode 5:** Kevin rewrites the checkout at **3 AM** on four energy drinks. What could go wrong? We learn to read tracebacks and catch errors before the customer does.
+> **Next time --- Episode 5:** Tobi rewrites the checkout at **3 AM** on four energy drinks. What could go wrong? We learn to read tracebacks and catch errors before the customer does.
 
 # <span class="flow">Literature</span>
 

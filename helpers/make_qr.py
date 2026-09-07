@@ -20,5 +20,5 @@ EXERCISES = [
 
 OUT.mkdir(parents=True, exist_ok=True)
 for ex in EXERCISES:
-    segno.make(f"{BASE}/{ex}/").save(str(OUT / f"{ex}.png"), scale=8)
+    segno.make(f"{BASE}/{ex}/").save(str(OUT / f"{ex}.png"), scale=8, light=None, dark="#363D45")
     print(f"wrote {OUT / (ex + '.png')}")

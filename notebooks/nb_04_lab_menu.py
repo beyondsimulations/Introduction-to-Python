@@ -18,9 +18,9 @@ def _(mo):
     # Notebook 4.1 — The Menu Grows Up
     **Estimated time: 45–60 min · Core exercises: 9 (+ 1 trace, 2 bonus)**
 
-    The menu has outgrown Kevin. Last week he was tracking prices in seventeen
+    The menu has outgrown Tobi. Last week he was tracking prices in seventeen
     loose variables (`price1`, `price2`, `price_final`, and the notorious
-    `price_final_FINAL2`) and nobody, Kevin included, could remember which was
+    `price_final_FINAL2`) and nobody, Tobi included, could remember which was
     which. When a supplier raised the falafel price, he changed the wrong one and
     the till undercharged all afternoon.
 
@@ -28,7 +28,7 @@ def _(mo):
     sliceable), map dish names to prices in a **dictionary** (look one up
     instantly), count unique regulars with a **set**, reach into **nested**
     dictionaries, and rewrite the whole menu in a single **comprehension**. It
-    ends with a courier run across campus. Kevin's forgotten wrap has to reach
+    ends with a courier run across campus. Tobi's forgotten wrap has to reach
     the dorms before it achieves sentience.
     """
     )
@@ -434,10 +434,10 @@ def _(mo):
     Today's orders came from these customers (some ordered more than once):
 
     ```python
-    customers = ["mo", "lena", "mo", "kevin", "lena"]
+    customers = ["mo", "lena", "mo", "tobi", "lena"]
     ```
 
-    Kevin wants to know how many **different** people that is. Store the count of
+    Tobi wants to know how many **different** people that is. Store the count of
     **unique** customers in `n_regulars_ex23`.
     """
     )
@@ -446,7 +446,7 @@ def _(mo):
 
 @app.cell
 def _():
-    customers = ["mo", "lena", "mo", "kevin", "lena"]
+    customers = ["mo", "lena", "mo", "tobi", "lena"]
     return (customers,)
 
 
@@ -469,7 +469,7 @@ def _(mo, n_regulars_ex23, show_result):
         _preview = show_result(n_regulars_ex23)
     elif n_regulars_ex23 == 3:
         ex23_ok = True
-        _msg = "✅ Exercise 2.3: **3** regulars — mo, lena and kevin. A set drops the repeats, `len` counts what's left."
+        _msg = "✅ Exercise 2.3: **3** regulars — mo, lena and tobi. A set drops the repeats, `len` counts what's left."
         _preview = show_result(n_regulars_ex23)
     elif n_regulars_ex23 == 5:
         ex23_ok = False
@@ -683,7 +683,7 @@ def _(mo):
         r"""
     ### Exercise 3.3 (core, fix the bug) — the price comes back empty
 
-    Kevin wired up the price lookup, and it *looks* fine: no error, no red text.
+    Tobi wired up the price lookup, and it *looks* fine: no error, no red text.
     But every time an order for Pad Thai comes through, the price on the receipt
     **comes back empty** and the customer gets charged nothing.
 
@@ -697,7 +697,7 @@ def _(mo):
 
 @app.cell
 def _(menu_ex22):
-    # KEVIN'S CODE — an order for Pad Thai, and the price keeps coming back empty.
+    # TOBI'S CODE — an order for Pad Thai, and the price keeps coming back empty.
     # (Uses menu_ex22 from Exercise 2.2 — get that one green first.)
     pad_price_ex33 = menu_ex22.get("padthai")
     return (pad_price_ex33,)
@@ -758,7 +758,7 @@ def _(mo):
         r"""
     ## 🛵 Boss exercise (core) — a day as a courier
 
-    Kevin left a Falafel Wrap sitting out, and it must reach the **dorms** before
+    Tobi left a Falafel Wrap sitting out, and it must reach the **dorms** before
     it achieves sentience. The campus is a **nested dictionary**: each place maps
     a direction to the place it leads to.
 
@@ -876,7 +876,7 @@ def _(mo):
         r"""
     ### Quiz (core, MCQ) — a missing key
 
-    The menu has no `"Sushi"`. Kevin runs:
+    The menu has no `"Sushi"`. Tobi runs:
 
     ```python
     menu.get("Sushi", 0)
@@ -1069,9 +1069,9 @@ def _(
     _checks = [ex11_ok, ex12_ok, ex21_ok, ex22_ok, ex23_ok, ex32_ok, ex33_ok, ex40_ok, ex50_ok]
     _done = sum(_checks)
     _total = len(_checks)
-    _kevin = "Kevin can finally find a price!" if _done == _total else "Kevin is still hunting for `price_final_FINAL2`."
+    _tobi = "Tobi can finally find a price!" if _done == _total else "Tobi is still hunting for `price_final_FINAL2`."
     mo.callout(
-        mo.md(f"**Core exercises: {_done}/{_total} ✅** — {_kevin}"),
+        mo.md(f"**Core exercises: {_done}/{_total} ✅** — {_tobi}"),
         kind="success" if _done == _total else "neutral",
     )
     return
@@ -1092,7 +1092,7 @@ def _(mo):
        guaranteed copy.
     3. Next episode: with real data flowing in, things start going *wrong*: a
        customer types "free" into the price box, an order has zero items, the till
-       divides by nobody. Kevin rewrites the checkout at 3 AM. What could possibly
+       divides by nobody. Tobi rewrites the checkout at 3 AM. What could possibly
        go wrong? Next week: **errors** — catching them before they catch you.
     """
     )

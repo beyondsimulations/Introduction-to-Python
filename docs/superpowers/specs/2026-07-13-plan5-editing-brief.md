@@ -31,7 +31,7 @@ The corpus was scanned; most classic AI vocabulary is **already absent** (zero h
 
 - **`deck`** (lectures/lec_01–10): lively but restrained. First-person instructor asides allowed. The bar: something an instructor would say out loud to a room without wincing. Episode/story slides may sharpen jokes and dialogue; canon is frozen (see guardrails).
 - **`reference`** (general/, tutorials/, index.qmd): sober, scannable, zero jokes. The reader may be debugging at 23:00. Short sentences, concrete instructions, no personality injection — clarity IS the voice here. Scrub tells, tighten, stop.
-- **`notebook`** (notebooks/, exercises/, private CP + solutions): dry and precise. Students read this while thinking about code, not about you. Light warmth allowed in wrap-up cells only ("That's the whole checkout flow. Kevin owes you one."). Prompts stay strictly matter-of-fact.
+- **`notebook`** (notebooks/, exercises/, private CP + solutions): dry and precise. Students read this while thinking about code, not about you. Light warmth allowed in wrap-up cells only ("That's the whole checkout flow. Tobi owes you one."). Prompts stay strictly matter-of-fact.
 
 ## US English
 

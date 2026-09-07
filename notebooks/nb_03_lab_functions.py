@@ -17,7 +17,7 @@ def _(mo):
     # Notebook 3.1 — The Copy-Paste Soup
     **Estimated time: 45–60 min · Core exercises: 7 (+ 1 bonus)**
 
-    Kevin has been "reusing" code the only way he knows how: he pasted the same
+    Tobi has been "reusing" code the only way he knows how: he pasted the same
     receipt block **14 times**, once per menu item. Yesterday the wrap price
     changed by ten cents, and fixing it took him a whole afternoon. He had to
     hunt down all fourteen copies, and he *still* missed three of them.
@@ -130,7 +130,7 @@ def _(mo):
     ### Exercise 1.1 (core) — the delivery-fee function
 
     You already built this fee ladder by hand back in Session II. Now make it a
-    **function** Kevin can call from anywhere. Write `fee_ex11(total)` that
+    **function** Tobi can call from anywhere. Write `fee_ex11(total)` that
     returns the delivery fee for an order total:
 
     - total **under 15 EUR** → fee **2.90**
@@ -170,7 +170,7 @@ def _(fee_ex11, mo, show_result):
             _preview = ""
         elif _a == 2.90 and _b == 1.50 and _c == 0:
             ex11_ok = True
-            _msg = "✅ Exercise 1.1: 2.90 / 1.50 / 0 — one function, every price band handled. Kevin never retypes the ladder again."
+            _msg = "✅ Exercise 1.1: 2.90 / 1.50 / 0 — one function, every price band handled. Tobi never retypes the ladder again."
             _preview = show_result(_a)
         else:
             ex11_ok = False
@@ -366,7 +366,7 @@ def _(mo):
         r"""
     ### Exercise 2.2 (core, fix the bug) — the receipt total goes missing
 
-    Kevin wrote `receipt_total_ex22(prices)` to add up a receipt. It runs
+    Tobi wrote `receipt_total_ex22(prices)` to add up a receipt. It runs
     without any error, and the total even appears on screen when he calls it,
     but every order total downstream comes out as **`None`**, and the app can't
     do anything with a `None`.
@@ -380,7 +380,7 @@ def _(mo):
 
 @app.cell
 def _():
-    # KEVIN'S CODE — runs fine, the number even shows up, yet callers keep getting None.
+    # TOBI'S CODE — runs fine, the number even shows up, yet callers keep getting None.
     def receipt_total_ex22(prices):
         _running = 0
         for _p in prices:
@@ -423,7 +423,7 @@ def _(mo, receipt_total_ex22, show_result):
 def _(mo):
     mo.accordion(
         {
-            "💡 Hint 1 (a nudge)": "Look at the last line of the function. Showing a value on screen and handing it back to the caller are two different actions — which one is Kevin doing?",
+            "💡 Hint 1 (a nudge)": "Look at the last line of the function. Showing a value on screen and handing it back to the caller are two different actions — which one is Tobi doing?",
             "💡 Hint 2 (the structure)": "def receipt_total_ex22(prices):\n    _running = 0\n    for _p in prices:\n        _running = _running + _p\n    ___ _running   — the last line decides what callers receive; fill the keyword that hands a value back.",
         }
     )
@@ -720,14 +720,14 @@ def _(mo):
         r"""
     ### Quiz (core, MCQ) — what lands in `result`?
 
-    Kevin wrote a function that **prints** the total instead of **returning** it,
+    Tobi wrote a function that **prints** the total instead of **returning** it,
     then stored the call in a variable:
 
     ```python
-    def kevins_fn():
+    def tobis_fn():
         print(42)
 
-    result = kevins_fn()
+    result = tobis_fn()
     ```
 
     What is stored in `result`? Assign the letter (as text) to `answer_ex50`:
@@ -756,7 +756,7 @@ def _(answer_ex50, mo):
     elif str(answer_ex50).strip().lower() == "c":
         ex50_ok = True
         _msg = (
-            "✅ Quiz: **c**. `kevins_fn` prints but never `return`s, so it hands "
+            "✅ Quiz: **c**. `tobis_fn` prints but never `return`s, so it hands "
             "back `None` — and that `None` is what lands in `result`. Exactly the "
             "bug you fixed in 2.2."
         )
@@ -780,7 +780,7 @@ def _(mo):
     tip functions into a **Championship**: whose survives the weirdest receipts?
     The judges throw a battery of nasty inputs at each one: a **0** order, a
     **negative −5** refund, and a **100000** whale order, then crown the function
-    that never breaks. Winner gets bragging rights and Kevin's parking spot.
+    that never breaks. Winner gets bragging rights and Tobi's parking spot.
 
     Write `tip_safe_ex60(total, percent)`: return **0.0** when `total` is zero or
     negative (no tip on nothing), otherwise the tip exactly like `tip_ex12`.
@@ -827,7 +827,7 @@ def _(mo, show_result, tip_safe_ex60):
             _msg = (
                 "✅ Championship: 0 → 0.0, −5 → 0.0, the 100000 whale → 10000.0, and "
                 "a normal 20 → 2.0. Your function survived every weird receipt — "
-                "**you win Kevin's parking spot.** 🅿️"
+                "**you win Tobi's parking spot.** 🅿️"
             )
             _preview = show_result(_zero)
         else:
@@ -861,9 +861,9 @@ def _(ex11_ok, ex12_ok, ex22_ok, ex23_ok, ex31_ok, ex40_ok, ex50_ok, mo):
     _checks = [ex11_ok, ex12_ok, ex22_ok, ex23_ok, ex31_ok, ex40_ok, ex50_ok]
     _done = sum(_checks)
     _total = len(_checks)
-    _kevin = "Kevin is genuinely impressed!" if _done == _total else "Kevin remains skeptical."
+    _tobi = "Tobi is genuinely impressed!" if _done == _total else "Tobi remains skeptical."
     mo.callout(
-        mo.md(f"**Core exercises: {_done}/{_total} ✅** — {_kevin}"),
+        mo.md(f"**Core exercises: {_done}/{_total} ✅** — {_tobi}"),
         kind="success" if _done == _total else "neutral",
     )
     return
@@ -883,7 +883,7 @@ def _(mo):
        Reloading this exact tab (Cmd/Ctrl+R) keeps your work, but closing the
        tab and reopening the link starts you fresh. The download is the only
        guaranteed copy.
-    3. Next episode: the menu outgrows Kevin's seventeen loose variables
+    3. Next episode: the menu outgrows Tobi's seventeen loose variables
        (`price1`, `price2`, `price_final_FINAL2`) and nobody can find anything.
        Next week we give the data a **shape**: lists and dictionaries.
     """

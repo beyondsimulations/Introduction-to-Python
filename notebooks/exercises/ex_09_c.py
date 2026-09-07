@@ -29,7 +29,7 @@ def _(mo):
         r"""
     # ⚡ Quick exercise: the honest y-axis (10 min)
 
-    Kevin asked an AI to chart this week's growth for the pitch deck. It
+    Tobi asked an AI to chart this week's growth for the pitch deck. It
     ran without errors. Before you believe a chart, check one thing
     first: where does the y-axis START?
 
@@ -55,12 +55,12 @@ def _():
 
 @app.cell
 def _(plt, weekly_exc):
-    # Kevin's AI-generated chart — runs fine, technically correct numbers
+    # Tobi's AI-generated chart — runs fine, technically correct numbers
     plt.figure()  # starts a fresh figure — keeps this chart from drawing on top of the last one
     plt.plot(range(1, 5), weekly_exc)
     plt.ylim(49, 56)
     plt.ylabel("Revenue (k€)")
-    plt.title("Kevin's chart")
+    plt.title("Tobi's chart")
     plt.gca()
     return
 

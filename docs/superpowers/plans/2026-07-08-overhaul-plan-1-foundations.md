@@ -16,7 +16,7 @@
 
 - This repo is a Quarto course website (`quarto render` → `_site/`, deployed to GitHub Pages). `_quarto.yml` drives nav; `helpers/convert_qmd_to_md.py` runs post-render. Python env is uv-managed (`uv sync`, Python 3.12).
 - marimo notebooks are plain `.py` files: cells are functions decorated with `@app.cell`; parameters = dependencies, return tuple = defined names. A global may be defined in ONE cell only (`+=` counts as a definition). Underscore-prefixed names are cell-private. ALWAYS open notebooks with `uv run marimo edit <file>` after hand-editing — marimo validates and normalizes on save.
-- The course storyline: students found a campus food-delivery startup; recurring cast is Kevin (inept co-founder), an investor, German authorities, competitor MunchCorp. Sitcom tone in notebooks, restrained in slides. See spec §4.
+- The course storyline: students found a campus food-delivery startup; recurring cast is Tobi (inept co-founder), an investor, German authorities, competitor MunchCorp. Sitcom tone in notebooks, restrained in slides. See spec §4.
 - Verified constraints you must respect (spec §9): downloaded `.py` files contain code only (never grade `mo.ui` state); WASM code is always readable (checkpoint live-checks use hashes); WASM memory cap is 2 GB (small datasets only).
 
 ---
@@ -163,7 +163,7 @@ def _(mo):
 @app.cell(hide_code=True)
 def _(mo, startup_name_input):
     startup_name = startup_name_input.value.strip() or "Nameless Bites GmbH"
-    mo.md(f"Welcome back to **{startup_name}**! Kevin already forgot the name again.")
+    mo.md(f"Welcome back to **{startup_name}**! Tobi already forgot the name again.")
     return (startup_name,)
 
 
@@ -240,9 +240,9 @@ def _(ex1_ok, mo):
     _checks = [ex1_ok]
     _done = sum(_checks)
     _total = len(_checks)
-    _kevin = "Kevin is impressed!" if _done == _total else "Kevin remains skeptical."
+    _tobi = "Tobi is impressed!" if _done == _total else "Tobi remains skeptical."
     mo.callout(
-        mo.md(f"**Core exercises: {_done}/{_total} ✅** — {_kevin}"),
+        mo.md(f"**Core exercises: {_done}/{_total} ✅** — {_tobi}"),
         kind="success" if _done == _total else "neutral",
     )
     return
@@ -411,9 +411,9 @@ subtitle: "Programming with Python · Tutorial 01"
 ---
 
 Your food-delivery startup exists as of today. It has no name (that's your
-first job), no menu (your second), and a co-founder, Kevin, who has already
+first job), no menu (your second), and a co-founder, Tobi, who has already
 spent 300 EUR on stickers. In this notebook you set up prices, calculate the
-first revenues, and decide whether Kevin's 9.99-for-everything pricing theory
+first revenues, and decide whether Tobi's 9.99-for-everything pricing theory
 survives contact with arithmetic.
 
 ## Work on the notebook
@@ -459,9 +459,9 @@ git commit -m "feat: tut_01 becomes two-button marimo launcher page"
 - Create: `notebooks/nb_01_lab_founding.py` (copy `_template.py`, then build out)
 
 **Acceptance Criteria:**
-- [ ] Sections: 1 Variables (founding: name, prices), 2 Numbers & arithmetic (revenue math, Kevin's 9.99 theory), 3 Strings & f-strings (the first receipt), boss exercise (full day-one summary)
+- [ ] Sections: 1 Variables (founding: name, prices), 2 Numbers & arithmetic (revenue math, Tobi's 9.99 theory), 3 Strings & f-strings (the first receipt), boss exercise (full day-one summary)
 - [ ] ≥6 core exercises + ≥2 bonus; each has placeholder (`= None`), reactive check, 2-tier hint accordion
-- [ ] All four CP task types present: write-code, trace (`mo.ui.radio` predict-then-reveal, ungraded), fix-Kevin's-bug, MCQ
+- [ ] All four CP task types present: write-code, trace (`mo.ui.radio` predict-then-reveal, ungraded), fix-Tobi's-bug, MCQ
 - [ ] Progress cell counts core exercises only; wrap-up ritual cell present
 - [ ] Runs clean in `marimo edit` AND as WASM export
 
@@ -478,14 +478,14 @@ Follow the template patterns exactly. Content requirements (write real exercises
 | 1.1 core | write | Create `menu_item_ex11` (str), `price_ex11` (float 8.90), `portions_ex11` (int 3) | types + values |
 | 1.2 core | write | `revenue_ex12` = price × portions | `== 26.70` (use `round(x, 2)`) |
 | 2.1 core | trace | Radio: what does `print(7 // 2, 7 % 2)` print? | reveal + explanation (ungraded) |
-| 2.2 core | write | Kevin's theory: everything costs 9.99. `margin_ex22` = 9.99 − cost 7.40 | `== 2.59` |
-| 2.3 core | fix | Kevin's bug: `total = "9.99" * 3` — fix to numeric | `total_ex23 == 29.97` |
+| 2.2 core | write | Tobi's theory: everything costs 9.99. `margin_ex22` = 9.99 − cost 7.40 | `== 2.59` |
+| 2.3 core | fix | Tobi's bug: `total = "9.99" * 3` — fix to numeric | `total_ex23 == 29.97` |
 | 3.1 core | write | f-string receipt line `receipt_ex31` = `"3x Pad Thai ...... 26.70 EUR"` via f-string with `:.2f` | string equality |
 | 3.2 bonus | write | Multi-line receipt with `\n` and alignment `:>8` | string equality |
 | boss core | write | `day_one_summary_ex40`: f-string combining name, revenue, margin | contains-checks (name-agnostic: test computed numbers, not the name) |
 | MCQ core | mcq | "Which is a valid variable name?" answered as `answer_ex50 = "b"` | `== "b"` |
 
-Story beats to include as `mo.md` cells between sections: Kevin's sticker budget (cold open, done in Task 4's intro too — repeat one line), the 9.99 "psychological pricing" argument before 2.2, MunchCorp launching "the same app but worse" as boss-exercise motivation.
+Story beats to include as `mo.md` cells between sections: Tobi's sticker budget (cold open, done in Task 4's intro too — repeat one line), the 9.99 "psychological pricing" argument before 2.2, MunchCorp launching "the same app but worse" as boss-exercise motivation.
 
 - [ ] **Step 2: Validate both runtimes**
 
@@ -541,7 +541,7 @@ def _(mo):
         r"""
     # ⚡ Quick exercise: the founding form (5 min)
 
-    Kevin filled in the company register form — as Python variables. Two lines
+    Tobi filled in the company register form — as Python variables. Two lines
     crash and one has the wrong type. **First predict which, then fix them.**
     """
     )
@@ -550,9 +550,9 @@ def _(mo):
 
 @app.cell
 def _():
-    # FIX KEVIN'S FORM BELOW (3 problems — all run, all wrong)
+    # FIX TOBI'S FORM BELOW (3 problems — all run, all wrong)
     company_type = "UG (haftungsbeschränkt)"
-    first_employee = "kevin "       # problem 1: registrar wants exact "Kevin"
+    first_employee = "tobi "       # problem 1: registrar wants exact "Tobi"
     share_capital = "300"           # problem 2: that's text, not money
     founded_year = "2026"           # problem 3: should be a number
     return (company_type, first_employee, founded_year, share_capital)
@@ -561,7 +561,7 @@ def _():
 @app.cell(hide_code=True)
 def _(mo, first_employee, founded_year, share_capital):
     _ok = (
-        first_employee == "Kevin"
+        first_employee == "Tobi"
         and share_capital == 300
         and isinstance(founded_year, int)
     )
@@ -582,7 +582,7 @@ if __name__ == "__main__":
     app.run()
 ```
 
-IMPORTANT authoring rule (applies to ALL fix-the-bug exercises): Kevin's bugs must be **runtime or logic errors, never syntax errors** — a syntax error inside any cell makes the whole `.py` file unparsable and the notebook won't open. Wrong types, wrong values, off-by-one: yes. Missing colons, invalid identifiers: no.
+IMPORTANT authoring rule (applies to ALL fix-the-bug exercises): Tobi's bugs must be **runtime or logic errors, never syntax errors** — a syntax error inside any cell makes the whole `.py` file unparsable and the notebook won't open. Wrong types, wrong values, off-by-one: yes. Missing colons, invalid identifiers: no.
 `ex_01_b.py`: predict `300 - 12 * 25` before running; then compute how many sticker packs (`12.25` each) fit in `300` using `//` and `%` (`packs_exb = 24`, `change_exb = 6.0`). `ex_01_c.py`: build one f-string receipt line with `:.2f` from given `item`, `qty`, `price` (`line_exc == "2x Falafel Wrap: 13.80 EUR"`).
 
 - [ ] **Step 2: Export + run all three; commit**
@@ -604,7 +604,7 @@ git commit -m "feat: session I in-lecture exercises (a/b/c)"
 - Create: `helpers/make_qr.py` (QR generator used by all lecture decks)
 
 **Acceptance Criteria:**
-- [ ] Deck opens with a 1-slide startup framing (restrained tone — one Kevin joke max)
+- [ ] Deck opens with a 1-slide startup framing (restrained tone — one Tobi joke max)
 - [ ] Three exercise-break slides at block boundaries, each: exercise URL + QR image + "10 minutes" note
 - [ ] `grep -i copilot lectures/lec_01_introduction.qmd` → no matches
 - [ ] Deck still renders: `quarto render lectures/lec_01_introduction.qmd`
@@ -648,7 +648,7 @@ Open the exercise (phone the QR or type the link):
 First **predict** what happens — then run it.
 ```
 
-Cold-open slide (1st content slide): "This semester you are founding a food-delivery startup. Today: it gets a name, a menu, and its first revenue calculation. (Your co-founder Kevin has already spent the marketing budget on stickers.)" — then remove/replace any Copilot-referencing slides found (`grep -ni copilot`).
+Cold-open slide (1st content slide): "This semester you are founding a food-delivery startup. Today: it gets a name, a menu, and its first revenue calculation. (Your co-founder Tobi has already spent the marketing budget on stickers.)" — then remove/replace any Copilot-referencing slides found (`grep -ni copilot`).
 
 - [ ] **Step 3: Render, eyeball slides, commit**
 
@@ -954,7 +954,7 @@ def _(mo, price_t1):
     return (t1_ok,)
 ```
 
-Task 2 (trace): show a 4-line loop snippet, options a–d in the prose, answer as `answer_t2 = ""` code assignment, hash-checked the same way. Task 3 (fix): Kevin's `total_t3 = "12.40" * 3` string-multiplication bug to fix to `37.20`. Score cell sums `[t1_ok, t2_ok, t3_ok] * 2` points. Generate the three hash literals with `uv run python -c "from grader.hashcheck import expected_hash; print(expected_hash(12.40), expected_hash('b'), expected_hash(37.20))"` and paste them in.
+Task 2 (trace): show a 4-line loop snippet, options a–d in the prose, answer as `answer_t2 = ""` code assignment, hash-checked the same way. Task 3 (fix): Tobi's `total_t3 = "12.40" * 3` string-multiplication bug to fix to `37.20`. Score cell sums `[t1_ok, t2_ok, t3_ok] * 2` points. Generate the three hash literals with `uv run python -c "from grader.hashcheck import expected_hash; print(expected_hash(12.40), expected_hash('b'), expected_hash(37.20))"` and paste them in.
 
 - [ ] **Step 2: Export, run, grade end-to-end locally; commit**
 

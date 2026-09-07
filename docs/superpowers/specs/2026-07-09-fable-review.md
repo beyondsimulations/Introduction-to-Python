@@ -131,7 +131,7 @@ naming convention Plans 2–4 copy is unambiguous.
 - `ex_01_b`: packs two concepts (precedence prediction + floor/mod computation) into one
   "5 min" sandbox — mildly over the one-concept rule; acceptable, but expect 8–10 min.
 - Investor cameos throughout Session I check messages ("the investor nods…"), though spec
-  casts the investor as a Part-II arrival. Accept as cameo or swap lines to Kevin — just keep
+  casts the investor as a Part-II arrival. Accept as cameo or swap lines to Tobi — just keep
   the canon deliberate.
 
 ### 12. DEFERRAL-OK — Correctly deferred, with two scheduling notes
@@ -151,7 +151,7 @@ naming convention Plans 2–4 copy is unambiguous.
 - **End-to-end coherence:** template → lab → exercises → launcher → QR slides → cp0 → grader
   genuinely hang together; every pattern the plan promised exists and is copied consistently.
 - **Weekly rehearsal loop is real:** all four CP task types are practised in nb_01 (write ×3,
-  radio-trace, fix-Kevin's-bug, MCQ-as-code), the progress cell mirrors the CP score cell, and
+  radio-trace, fix-Tobi's-bug, MCQ-as-code), the progress cell mirrors the CP score cell, and
   the wrap-up ritual mirrors the submission motion. cp0 is a faithful mini (3×2 pts vs 6×2).
 - **Honest persistence story, everywhere:** the spike-corrected reload-keeps/tab-close-loses/
   download-is-the-only-guaranteed-copy wording is consistent across template, nb_01 wrap-up,
@@ -163,7 +163,7 @@ naming convention Plans 2–4 copy is unambiguous.
 - **Difficulty ramp & dosage:** 1.1→boss ramps sensibly for absolute beginners; 45–60 min is
   realistic; `show_result` (esp. fenced-block string echo for receipts) is a genuinely good
   addition; sitcom-in-notebooks / restrained-in-slides split is executed as specced, and the
-  Kevin/authorities/MunchCorp beats land at the right dosage — motivating, not gimmicky.
+  Tobi/authorities/MunchCorp beats land at the right dosage — motivating, not gimmicky.
 - **Syllabus alignment:** Session I content (syntax, variables, types, arithmetic, strings/
   f-strings) matches both syllabus texts and the Episode-I beats (founding, naming, 9.99
   theory) with no scope creep.

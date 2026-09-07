@@ -24,10 +24,10 @@ def _(mo):
     numbers before Friday. Real numbers: how many crates to order, what the
     ratings actually average to, what next week's demand might look like.
 
-    Kevin's proposal is to "go on vibes". The investor's expression does not
+    Tobi's proposal is to "go on vibes". The investor's expression does not
     change. So this week you stop hand-rolling arithmetic and reach for Python's
     **standard library**: code that already ships with Python, written and tested
-    by people who are not Kevin. You'll `import math` and `statistics` for
+    by people who are not Tobi. You'll `import math` and `statistics` for
     professional-grade numbers, then use `random` to *rehearse* next week's
     demand, and learn why a good simulation is one you can run twice and trust.
 
@@ -474,18 +474,18 @@ def _(mo):
         r"""
     ### Exercise 2.2 (core, fix the bug) — the photocopy projection
 
-    Kevin also tried to project seven days. His code runs (no red error), but
+    Tobi also tried to project seven days. His code runs (no red error), but
     every single day comes out **identical**. That's not a projection, that's a
     photocopy, and the investor noticed immediately.
 
-    Here's exactly what Kevin wrote:
+    Here's exactly what Tobi wrote:
 
     ```python
-    kevin_demand = []
+    tobi_demand = []
     for day in range(7):
         random.seed(9)
-        kevin_demand.append(random.randint(8, 30))
-    # kevin_demand → [22, 22, 22, 22, 22, 22, 22]
+        tobi_demand.append(random.randint(8, 30))
+    # tobi_demand → [22, 22, 22, 22, 22, 22, 22]
     ```
 
     Write a corrected version into `fixed_ex22`: a list of seven demand values
@@ -498,7 +498,7 @@ def _(mo):
 
 @app.cell
 def _():
-    # YOUR CODE BELOW — Kevin's seven-day projection, fixed so the days actually vary
+    # YOUR CODE BELOW — Tobi's seven-day projection, fixed so the days actually vary
     fixed_ex22 = None
     return (fixed_ex22,)
 
@@ -538,7 +538,7 @@ def _(fixed_ex22, mo, show_result):
 def _(mo):
     mo.accordion(
         {
-            "💡 Hint 1 (a nudge)": "Seeding resets the generator to a fixed starting point. Kevin resets it on every pass of the loop, so every draw starts from the same place and gives the same number. You want the sequence to *keep going*, not restart.",
+            "💡 Hint 1 (a nudge)": "Seeding resets the generator to a fixed starting point. Tobi resets it on every pass of the loop, so every draw starts from the same place and gives the same number. You want the sequence to *keep going*, not restart.",
             "💡 Hint 2 (the structure)": "random.seed(9)\nfixed_ex22 = [random.randint(8, 30) for _ in range(___)]   — fill how many days, and note where `seed` sits: once, above the draws, not inside them.",
         }
     )
@@ -701,7 +701,7 @@ def _(mo):
     ### Exercise (trace — predict first) — which way does ceil go?
 
     This is a **trace** exercise: predict the answer first, *then* reveal it. It's
-    ungraded. The point is the prediction. Kevin runs:
+    ungraded. The point is the prediction. Tobi runs:
 
     ```python
     import math

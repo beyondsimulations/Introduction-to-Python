@@ -4,12 +4,12 @@ subtitle: Programming with Python · Tutorial 05
 ---
 
 
-At 3 AM, on his fourth energy drink, Kevin rewrote the entire checkout "to make
+At 3 AM, on his fourth energy drink, Tobi rewrote the entire checkout "to make
 it faster." This morning the health inspector called to announce a surprise
 visit, and the till is a minefield of crashes. In this notebook you learn to
 work *with* things going wrong: read a **traceback** (Python's crash report),
 catch failures with **try/except**, let your own code refuse bad input with
-**raise**, guard invariants with **assert**, and debug Kevin's 3-AM checkout line
+**raise**, guard invariants with **assert**, and debug Tobi's 3-AM checkout line
 by line. It's the last lab of Part I. Next session opens with a checkpoint.
 
 ## Work on the notebook

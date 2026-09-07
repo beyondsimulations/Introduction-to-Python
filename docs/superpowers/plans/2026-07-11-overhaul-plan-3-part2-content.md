@@ -19,7 +19,7 @@
 - **Read `docs/authoring-conventions.md` in full before implementing any task.** It is the binding pattern source (notebook rules, check-cell style, hint ladder, deck skeletons, warm-up pattern, QR slides, checkpoint rules, float safety, no-hang rule). This plan only spells out what is NEW or task-specific.
 - marimo notebooks: cells are `@app.cell` functions; a global may be defined in ONE cell only (`+=` counts); `_name` is cell-private; `@app.cell(hide_code=True)` for md/check/hint cells. After editing, validate: `uv run python helpers/validate_notebooks.py notebooks/<file>.py`.
 - Rendering: `quarto render <file>` works (`_environment` pins `QUARTO_PYTHON`). A single-file render DELETES sibling files in `_repo-md/` — always `git checkout -- _repo-md/` afterwards. A FULL `quarto render` fails on the untracked `Management-Science/` dir — do per-file renders only.
-- **Story canon, Part II:** the investor ARRIVES in Episode 6 (until now she only cameo'd). Arc: VI = due-diligence week, VII = "the numbers deck" metrics sprint, VIII = the data room + Kevin's AI incident (he shipped hallucinated `df.summarize()` code) + MunchCorp's "data-driven" press release, IX = building the pitch charts honestly. Kevin stays inept but lovable; German authorities and Formular 27b/6 may cameo. Checks stay name-agnostic (never assert on the startup's name).
+- **Story canon, Part II:** the investor ARRIVES in Episode 6 (until now she only cameo'd). Arc: VI = due-diligence week, VII = "the numbers deck" metrics sprint, VIII = the data room + Tobi's AI incident (he shipped hallucinated `df.summarize()` code) + MunchCorp's "data-driven" press release, IX = building the pitch charts honestly. Tobi stays inept but lovable; German authorities and Formular 27b/6 may cameo. Checks stay name-agnostic (never assert on the startup's name).
 - **AI policy shift:** Part I was AI-free. From Session VI, AI is allowed AND taught (spec §7). CP4/CP5 explicitly allow AI. Consequence for checkpoint design: trace tasks are trivial now (students can just run/ask), so CP4–5 lean on compute/fix/apply tasks where running the code is fine but understanding is still required.
 - **Grader gap (fixed in Task 10):** `grader/runner.py::_coerce` only passes plain Python scalars/lists/dicts to JSON. A NumPy scalar (`np.float64`) currently degrades to `repr()`; NumPy values nested in a list would crash `json.dumps`. Task 10 must land BEFORE CP4 (Task 11) and CP5 (Task 19).
 - **WASM data rule:** Part I shipped all data inline. Part II Sessions VIII–IX use `notebooks/public/orders.csv` via the loader pattern that Task 1's spike validates. Sessions VI–VII stay inline (no files needed). Checkpoints ALWAYS use inline data (they deploy to a different host — no `public/` coupling).
@@ -33,7 +33,7 @@ CP values AND answers must differ from all lecture-demo/exercise/lab values (con
 |---|---|
 | lec_06 demos | ceil(130/48)=3 · median ratings 4.5 · seed(7)×5 randint(1,20)=[11,5,13,2,3] · floor(-2.5)=-3 |
 | ex_06_a / ex_06_b | crates 9 · demand [10,18,18,25,14,20,11] (seed 21) |
-| nb_06 | crates 7 · median 4.3 / mean 4.27 · mean 17 · seed(4) [15,17,11,20,23,12,10] · Kevin fix seed(9) [22,27,19,16,12,13,29] · raffle seed(12) ['Altstadt','Hafen','Hafen','Sued'] · boss mean 14.2 |
+| nb_06 | crates 7 · median 4.3 / mean 4.27 · mean 17 · seed(4) [15,17,11,20,23,12,10] · Tobi fix seed(9) [22,27,19,16,12,13,29] · raffle seed(12) ['Altstadt','Hafen','Hafen','Sued'] · boss mean 14.2 |
 | lec_07 demos | VAT [14.28,10.71,17.85] · late count 4 / mean 42.5 · zone totals [37,46,35,26], argmax 1 'Sued', grand 144 |
 | ex_07_a/b/c | gross [9.52,13.09,16.66] · late 3 / 46.0 · totals [30,34,38], best idx 2 |
 | nb_07 | discount [5.4,8.1,10.8,16.2] · critical count 2 · on-time rate 0.8 · days sum 105 · zone totals [141,109,100,82], best day total 84, best 'Nord' |
@@ -248,7 +248,7 @@ Part-I prompt. **When: after Session V** (Part II starts with Session VI).
 You are the course assistant for "Programming with Python" at Kühne Logistics
 University. The students are beginners in their first programming course, now
 past the halfway mark. The course runs as a story: each student founds a campus
-food-delivery startup with their chaotic co-founder Kevin; exercises live in
+food-delivery startup with their chaotic co-founder Tobi; exercises live in
 that world (the investor — on-site since Episode 6 —, the German authorities,
 the competitor MunchCorp). Feel free to play along.
 
@@ -354,7 +354,7 @@ git commit -m "feat: session VI in-lecture exercises (imports, seeded random)"
 
 - [ ] **Step 1: Lab content — "Episode 6: Due Diligence Week"**
 
-Intro md: the investor is HERE, in the shop, with a clipboard. She wants professional numbers by Friday. Kevin suggests "vibes". Sections and cores (naming per conventions: `<meaning>_exNM`):
+Intro md: the investor is HERE, in the shop, with a clipboard. She wants professional numbers by Friday. Tobi suggests "vibes". Sections and cores (naming per conventions: `<meaning>_exNM`):
 
 *Section 1 — Don't build it, import it:*
 - **1.1** `import math`: 75 delivery bags, a crate holds 12 → `crates_ex11 = math.ceil(75 / 12)` → **7**.
@@ -363,7 +363,7 @@ Intro md: the investor is HERE, in the shop, with a clipboard. She wants profess
 
 *Section 2 — Rehearsing luck (random):*
 - **2.1** seed + simulate: seed **4** once, 7 × `random.randint(8, 30)` → `demand_ex21 == [15, 17, 11, 20, 23, 12, 10]`.
-- **2.2** Kevin's bug (fix-it): Kevin re-seeds INSIDE the loop, so all 7 "random" days are identical. Given buggy code producing `[22, 22, 22, 22, 22, 22, 22]` (seed 9 drawn each iteration), fix = seed once before the loop → `fixed_ex22 == [22, 27, 19, 16, 12, 13, 29]`. Prompt states the SYMPTOM only ("every day looks identical — that's not a projection, that's a photocopy"). Include the red-error-pause teach line in this section's md (dict-free lab, but the loop edit can crash).
+- **2.2** Tobi's bug (fix-it): Tobi re-seeds INSIDE the loop, so all 7 "random" days are identical. Given buggy code producing `[22, 22, 22, 22, 22, 22, 22]` (seed 9 drawn each iteration), fix = seed once before the loop → `fixed_ex22 == [22, 27, 19, 16, 12, 13, 29]`. Prompt states the SYMPTOM only ("every day looks identical — that's not a projection, that's a photocopy"). Include the red-error-pause teach line in this section's md (dict-free lab, but the loop edit can crash).
 - **2.3** `random.choice` raffle: seed **12**, draw 4 flyer-zone picks from `["Nord", "Sued", "Hafen", "Altstadt"]` → `raffle_ex23 == ['Altstadt', 'Hafen', 'Hafen', 'Sued']`.
 
 *Boss (ex40):* the projection memo — seed **2**, simulate 5 days `random.randint(10, 26)`, report `statistics.mean` → `boss_ex40` → **14.2**. (Draws are `[11, 12, 12, 21, 15]`.)
@@ -402,7 +402,7 @@ git add solutions/sol_06_lab_diligence.py && git commit -m "feat: episode 6 solu
 
 **Acceptance Criteria:**
 - [ ] CP-session skeleton per conventions: title → 📋 CP3 slide → cold open → Part-II-rules slide → Block 1 → QR a → Block 2 → QR b → lab handoff → wrap-up → Literature
-- [ ] No warm-up section; ≤1 Kevin joke per section; predict pairs spoiler-free
+- [ ] No warm-up section; ≤1 Tobi joke per section; predict pairs spoiler-free
 - [ ] Cut material logged in the backlog: regex section (side-quest candidate), os/csv modules (Session X preview), creating own module files (Session X — needs a real filesystem), package installing/venvs (Session X, `uv`)
 - [ ] `quarto render lectures/lec_06_modules.qmd` succeeds; `git checkout -- _repo-md/` afterwards
 
@@ -486,14 +486,14 @@ Delivery times `np.array([31, 22, 47, 15, 36, 28, 51, 19, 40])`; deliveries over
 
 **Acceptance Criteria:**
 - [ ] 8 graded cores + trace radio + MCQ = "X/9" progress; values per ledger, ndarray-tolerant checks (Task 7 pattern)
-- [ ] Kevin bug = axis mixup (logic, terminating); red-error-pause teach line present (indexing can crash)
+- [ ] Tobi bug = axis mixup (logic, terminating); red-error-pause teach line present (indexing can crash)
 - [ ] Solutions byte-identical checks; launcher with dormant Solutions link
 
 **Steps:**
 
 - [ ] **Step 1: Lab content — "Episode 7: The Numbers Deck"**
 
-Intro: the investor wants a metrics one-pager. Kevin's 40-tab spreadsheet is disqualified. Data inline (no files yet — that's next episode).
+Intro: the investor wants a metrics one-pager. Tobi's 40-tab spreadsheet is disqualified. Data inline (no files yet — that's next episode).
 
 *Section 1 — arrays:*
 - **1.1** build `np.array` from a Python list of 12 order values (implementer picks values; record in ledger comment) → graded `n_orders_ex11 = int(orders.size)` → **12**.
@@ -502,7 +502,7 @@ Intro: the investor wants a metrics one-pager. Kevin's 40-tab spreadsheet is dis
 
 *Section 2 — masks:*
 - **2.1** delivery times `np.array([24, 39, 55, 17, 31, 46, 20, 60, 35, 42])`, over 50 = "critical" → `critical_count_ex21` → **2**, `critical_mean_ex22` → **57.5** (two separate cores 2.1/2.2).
-- **2.3 Kevin's bug (fix-it):** the 7×4 matrix below; Kevin reports "per-zone totals" computed with `axis=1` — symptom: "the investor asked for 4 zone numbers, Kevin's memo has 7." Fix → `zone_totals_ex23 == [141, 109, 100, 82]`.
+- **2.3 Tobi's bug (fix-it):** the 7×4 matrix below; Tobi reports "per-zone totals" computed with `axis=1` — symptom: "the investor asked for 4 zone numbers, Tobi's memo has 7." Fix → `zone_totals_ex23 == [141, 109, 100, 82]`.
 
 *Section 3 — 2D:*
 - **3.1** matrix `week = np.array([[18, 7, 12, 9], [22, 11, 8, 14], [15, 19, 10, 6], [25, 13, 17, 8], [9, 21, 14, 12], [24, 16, 20, 18], [28, 22, 19, 15]])` (7 days × zones `["Nord", "Sued", "Hafen", "Altstadt"]`), busiest day total via `axis=1` → `best_day_total_ex31 = int(week.sum(axis=1).max())` → **84**.
@@ -545,7 +545,7 @@ a) `math.ceil(3.2)` · b) `ceil(3.2)` · c) both
 **b)** — `from math import ceil` binds only the NAME `ceil`; `math` itself was never imported.
 
 ## Question 2
-Kevin runs a script — `random.seed(42)` then three printed `randint` calls — today
+Tobi runs a script — `random.seed(42)` then three printed `randint` calls — today
 and again tomorrow. Tomorrow's numbers are…
 a) the same three numbers · b) different — random is random · c) an error
 
@@ -570,7 +570,7 @@ a) 2 · b) 5 · c) an error — the list is not sorted
 - **Block 2 — "Asking questions of data":** comparisons make boolean arrays; masks filter (`times[times > 30]`); counting via `.sum()` on a mask; demo on delivery times `[25, 41, 18, 33, 52, 29, 44, 12]` → 4 late, late mean 42.5. **Predict pair:** `(np.array([1, 5, 3]) > 2).sum()` → 2? True? array? → runs: `2`.
 - **⚡ QR b** → ex_07_b → BREAK.
 - **Block 3 — "The two-week matrix":** 2D arrays (days × zones); `axis=0` vs `axis=1` (the classic confusion — draw the collapse direction); demo matrix `[[14, 9, 11, 6], [12, 15, 8, 9], [20, 13, 16, 11]]` → per-zone `[46, 37, 35, 26]`, per-day `[40, 44, 60]`; `argmax` finds WHERE.
-- **⚡ QR c** → ex_07_c → lab handoff (tut_07) → wrap-up (teaser: "Next: the investor opens a data room — and Kevin lets an AI write his pandas") → Literature.
+- **⚡ QR c** → ex_07_c → lab handoff (tut_07) → wrap-up (teaser: "Next: the investor opens a data room — and Tobi lets an AI write his pandas") → Literature.
 
 - [ ] **Step 3: Backlog + render + commit** (`feat: lec 07 rewrite — numpy in three blocks`).
 
@@ -724,7 +724,7 @@ Intro md: "Board review 4 — AI tools ARE allowed today. What's being graded is
 
 - **t1 (write a function, 2 pts):** couriers pack crates; a partial crate still ships as a full crate. Write `crates_t1(items, per_crate)`. Live check: evaluates `crates_t1(29, 12)` and hash-compares (`== 3`). Hidden probes (exprs): `{"cp4_t1_a": "crates_t1(53, 12)", "cp4_t1_b": "crates_t1(48, 12)", "cp4_t1_c": "crates_t1(1, 12)"}` → 5 / **4 (exact-multiple boundary)** / 1.
 - **t2 (numpy compute):** given `waits_t2 = np.array([26, 52, 33, 47, 18, 39, 61, 24, 45, 31])` — orders slower than 38 min are "slow". Store `slow_count_t2` (how many) and `slow_mean_t2` (their mean). → **5** and **48.8**. Prompt: "store plain Python numbers — `int(...)` / `float(...)`" (grader coerces anyway post-Task-10).
-- **t3 (fix a bug):** 7×4 revenue matrix `revenue_t3` (rows = days, columns = zones — the notebook says so) with Kevin's line `zone_totals_t3 = revenue_t3.sum(axis=1).tolist()`. Symptom only: "the investor asked for four zone totals; Kevin's report has seven numbers." Matrix: `[[210, 180, 150, 240], [190, 220, 170, 200], [230, 160, 180, 250], [205, 175, 190, 215], [220, 195, 160, 230], [240, 210, 200, 260], [250, 230, 210, 270]]` → fixed answer `[1545, 1370, 1260, 1665]`.
+- **t3 (fix a bug):** 7×4 revenue matrix `revenue_t3` (rows = days, columns = zones — the notebook says so) with Tobi's line `zone_totals_t3 = revenue_t3.sum(axis=1).tolist()`. Symptom only: "the investor asked for four zone totals; Tobi's report has seven numbers." Matrix: `[[210, 180, 150, 240], [190, 220, 170, 200], [230, 160, 180, 250], [205, 175, 190, 215], [220, 195, 160, 230], [240, 210, 200, 260], [250, 230, 210, 270]]` → fixed answer `[1545, 1370, 1260, 1665]`.
 - **t4 (seeded simulation):** restock draw — seed **23** exactly once, then five draws of `random.randint(2, 9)` into `restock_t4`. → `[6, 3, 2, 6, 8]`.
 - **t5 (MCQ, `answer_t5`):** `prices[prices > 10]` evaluates to… a) an array of True/False b) an array of the values above 10 c) the positions of those values d) how many values are above 10 → **"b"**. Neutral "answer recorded".
 - **t6 (MCQ, `answer_t6`):** after `from statistics import median`, the median of `xs` is computed by… a) `statistics.median(xs)` b) `median(xs)` c) `xs.median()` d) `import median` first → **"b"**. Neutral "answer recorded".
@@ -839,14 +839,14 @@ Paste the output as a comment block at the bottom of `helpers/make_orders_csv.py
 
 **Steps:**
 
-- [ ] **Step 1: `ex_08_a` — Kevin's AI code (block 1)**
+- [ ] **Step 1: `ex_08_a` — Tobi's AI code (block 1)**
 
 Teach cell: "AI wrote this. Two things are wrong — one method doesn't exist, one comparison quietly returns nothing. Fix both." Given (as a commented-out buggy block plus the raw df):
 
 ```python
 _df = pd.DataFrame({"zone": ["Nord", "Nord", "Sued", "Nord", "Hafen"],
                     "total_eur": [12.40, 8.90, 15.10, 22.20, 9.60]})
-# Kevin's AI draft (broken — fix it in your own code below):
+# Tobi's AI draft (broken — fix it in your own code below):
 #   nord = _df[_df["zone"] == "nord"]      # quietly empty… why?
 #   mean_exa = nord["total_eur"].summarize()   # AttributeError… why?
 mean_exa = None  # YOUR CODE BELOW
@@ -874,7 +874,7 @@ Inline df: `items = [1, 2, 1, 3, 1, 2]`, `total_eur = [11.20, 18.40, 6.80, 24.00
 **Acceptance Criteria:**
 - [ ] Loads `orders.csv` via the Task-1 loader cell (copied verbatim from the conventions doc)
 - [ ] 9 graded cores + trace radio + MCQ = "X/10"; every check literal COMPUTED from the committed CSV (show the computation in a `# ledger:` comment at the top of the notebook) and cross-checked against the freshness ledger for collisions
-- [ ] Kevin bug: a `KeyError` from a wrong column name — red-error-pause teach line REQUIRED
+- [ ] Tobi bug: a `KeyError` from a wrong column name — red-error-pause teach line REQUIRED
 - [ ] WASM export of this notebook loads the CSV (manual browser spot-check, same motion as Task 1 Step 3)
 - [ ] Launcher page carries the one-line CDN-flake note from the spike ("if the notebook fails to boot with a network error, reload the page once")
 
@@ -882,7 +882,7 @@ Inline df: `items = [1, 2, 1, 3, 1, 2]`, `total_eur = [11.20, 18.40, 6.80, 24.00
 
 - [ ] **Step 1: Lab content — "Episode 8: The Data Room"**
 
-Intro: MunchCorp went to the press with "data-driven growth". The investor slides a USB stick across the table: "Every order, two weeks. Impress me." Also: Kevin has discovered AI and must be supervised.
+Intro: MunchCorp went to the press with "data-driven growth". The investor slides a USB stick across the table: "Every order, two weeks. Impress me." Also: Tobi has discovered AI and must be supervised.
 
 Cores (values marked ⟨csv⟩ are computed from the committed file by the implementer):
 - **1.1** `rows_ex11 = int(len(orders))` → ⟨csv⟩.
@@ -890,7 +890,7 @@ Cores (values marked ⟨csv⟩ are computed from the committed file by the imple
 - **1.3** `revenue_ex13 = float(orders["total_eur"].sum())` → ⟨csv⟩ (check with `round(_, 2)`).
 - **2.1** filter one zone: `nord_count_ex21 = int(len(orders[orders["zone"] == "Nord"]))` → ⟨csv⟩.
 - **2.2** combined condition (zone == "Sued") & (items >= 2): count → ⟨csv⟩.
-- **2.3 Kevin's bug (fix-it):** Kevin's cell reads `orders["Zone"]` → `KeyError: 'Zone'` — the lab's designated red-error moment; md explains the pause-and-recover behavior. Fix → lowercase column; graded `hafen_revenue_ex23 = float(...)` → ⟨csv⟩.
+- **2.3 Tobi's bug (fix-it):** Tobi's cell reads `orders["Zone"]` → `KeyError: 'Zone'` — the lab's designated red-error moment; md explains the pause-and-recover behavior. Fix → lowercase column; graded `hafen_revenue_ex23 = float(...)` → ⟨csv⟩.
 - **3.1** new column: `orders["eur_per_item"] = orders["total_eur"] / orders["items"]`; graded `max_per_item_ex31 = float(orders["eur_per_item"].max().round(2))` → ⟨csv⟩ (equals the highest unit price, 11.90 — verify from file; if so, note the nice reveal: it's the Miso Ramen).
 - **3.2** groupby: `by_zone_ex32 = orders.groupby("zone")["total_eur"].sum().round(2).to_dict()` → ⟨csv⟩ dict.
 - **Boss (ex40):** the investor's question — "which zone has the highest AVERAGE order value?" `best_avg_zone_ex40 = orders.groupby("zone")["total_eur"].mean().idxmax()` → ⟨csv⟩ string.
@@ -922,11 +922,11 @@ Cores (values marked ⟨csv⟩ are computed from the committed file by the imple
 - [ ] **Step 1: Write the deck**
 
 - **📋 CP4 slide** (copy CP3 slide from lec_06, retitle "Checkpoint 4 — Sessions VI–VII", add one line: "AI tools allowed — being able to VERIFY output is the skill being graded").
-- **Cold open:** MunchCorp's press release brags "data-driven". The investor: "Their data is a pie chart. Yours will be better." Meanwhile Kevin proudly presents code an AI wrote for him. It does not run.
+- **Cold open:** MunchCorp's press release brags "data-driven". The investor: "Their data is a pie chart. Yours will be better." Meanwhile Tobi proudly presents code an AI wrote for him. It does not run.
 - **Block 1 — "AI joins the team — professionally":**
   - Prompting that works: give context (what the data is), give constraints (what exactly you want back), iterate.
   - The verify workflow: **read it → run it → test it on a case you know the answer to.**
-  - Hallucinated APIs: **predict pair** — Kevin's line `orders.summarize()` (question slide, no spoilers) → answer slide runs `df.summarize()` on a tiny frame → `AttributeError`; the real one is `.describe()`. Teach line: "An AI that sounds sure is not the same as an API that exists."
+  - Hallucinated APIs: **predict pair** — Tobi's line `orders.summarize()` (question slide, no spoilers) → answer slide runs `df.summarize()` on a tiny frame → `AttributeError`; the real one is `.describe()`. Teach line: "An AI that sounds sure is not the same as an API that exists."
   - Disclosure: the course rule (one line per submission); why it protects THEM.
   - When NOT to use AI: recall the Part-I muscle — "you could read that traceback yourself since Episode 5."
 - **⚡ QR a** → ex_08_a.
@@ -995,7 +995,7 @@ Intro: pitch meeting Friday. The investor's one instruction: "Charts I can't arg
 - **2.1** zone bar chart: `by_zone = orders.groupby("zone")["total_eur"].sum().round(2)`; graded `by_zone_ex21 = by_zone.to_dict()` → ⟨csv⟩ (same dict as nb_08's 3.2 — deliberate cross-episode repetition, note it in the md: "you computed this in the data room; now it becomes a picture").
 - **2.2** histogram of `total_eur`; graded `over_25_ex22 = int((orders["total_eur"] > 25).sum())` → ⟨csv⟩ (**20** — the top quartile; an earlier review note claimed 13, which is the count above 26 — the committed CSV is authoritative; do NOT use >20, that catches 54% of orders; frame as "the expensive tail, counted").
 - **2.3** scatter `delivery_min` vs `total_eur`; graded `slowest_ex23 = int(orders["delivery_min"].max())` → ⟨csv⟩. The scatter shows NO correlation (independent columns, r ≈ -0.03) — the md must own that as the teaching point ("sometimes the honest answer is: no relationship"), never ask students to describe a pattern that isn't there.
-- **3.1 Kevin's bug (fix-it):** Kevin's "growth chart" of the two weekly totals uses `plt.ylim` to start just under the smaller value — symptom: "week 2 looks 5× week 1; the numbers say otherwise." Fix: axis from 0; graded `growth_pct_ex31 = float(round((week2 - week1) / week1 * 100, 2))` → ⟨csv⟩ (weekly totals = days 1–7 vs 8–14; the true delta is ≈ -0.66% — essentially flat, which makes Kevin's rocket chart an even better lie; the story beat should exploit that).
+- **3.1 Tobi's bug (fix-it):** Tobi's "growth chart" of the two weekly totals uses `plt.ylim` to start just under the smaller value — symptom: "week 2 looks 5× week 1; the numbers say otherwise." Fix: axis from 0; graded `growth_pct_ex31 = float(round((week2 - week1) / week1 * 100, 2))` → ⟨csv⟩ (weekly totals = days 1–7 vs 8–14; the true delta is ≈ -0.66% — essentially flat, which makes Tobi's rocket chart an even better lie; the story beat should exploit that).
 
 Dataset note for implementers (nb_08 + nb_09): the `rating` column is deliberately decorative in the graded cores — it may appear in `.head()`/`.describe()` discussion but nothing grades it.
 - **Boss (ex40):** assemble the pitch dict: `pitch_ex40 = {"revenue": <total>, "best_zone": <argmax zone>, "orders": <row count>}` (all ⟨csv⟩; dict check with rounded values).
@@ -1028,7 +1028,7 @@ Dataset note for implementers (nb_08 + nb_09): the `rating` column is deliberate
 - [ ] **Step 1: Warm-up (recap VIII)**
 
 Q1: `orders[orders["zone"] == "Nord"]` returns… a) True/False per row b) only the Nord rows c) an error → **b** (a) is what the INNER expression returns — nice reveal line).
-Q2: Kevin's AI code calls `orders.summarize()` — what happens? a) a summary table b) `AttributeError` c) an empty DataFrame → **b**.
+Q2: Tobi's AI code calls `orders.summarize()` — what happens? a) a summary table b) `AttributeError` c) an empty DataFrame → **b**.
 Q3: `orders["total_eur"].describe()` shows… a) count/mean/std/min/quartiles/max b) the first five rows c) the column's type only → **a**.
 
 - [ ] **Step 2: Blocks**
@@ -1079,7 +1079,7 @@ orders_df = pd.DataFrame({
 (Unit prices: Bao 7.90, Pad Thai 13.40, Miso 12.10, Falafel 8.30 — internally consistent, all fresh.)
 
 - **t1 (compute):** revenue in the Altstadt zone → `altstadt_t1 = float(...)` → **53.7**. Live hash on `round(_, 2)`.
-- **t2 (fix Kevin's AI line):** given `avg_t2 = orders_df["total_eur"].average()` — symptom: "the cell errors; the AI was very confident." Fix → `.mean()` → **18.13** (raw `18.130000000000003` — round in check AND reference test).
+- **t2 (fix Tobi's AI line):** given `avg_t2 = orders_df["total_eur"].average()` — symptom: "the cell errors; the AI was very confident." Fix → `.mean()` → **18.13** (raw `18.130000000000003` — round in check AND reference test).
 - **t3 (groupby):** `by_zone_t3` as a DICT zone → total → `{"Altstadt": 53.7, "Hafen": 34.7, "Nord": 48.3, "Sued": 44.6}`. NOTE: raw Sued sum is `44.599999999999994` — BOTH the live check and the reference test must round each value to 2 before comparing (live check: build `{k: round(v, 2) for ...}` before hashing a `sorted(...)` canonical string; reference test mirrors exactly). Prompt says "use `.to_dict()`" (grader also coerces a raw Series post-Task-10).
 - **t4 (filter/count):** orders with `total_eur` above 14 → `big_count_t4 = int(...)` → **6**.
 - **t5 (MCQ, `answer_t5`):** "How are order values distributed?" — best chart: a) line b) pie c) histogram d) scatter → **"c"**. Neutral ack.

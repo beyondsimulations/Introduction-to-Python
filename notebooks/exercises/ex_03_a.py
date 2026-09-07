@@ -29,7 +29,7 @@ def _(mo):
         r"""
     # ⚡ Quick exercise: the wrap price function (10 min)
 
-    Every receipt line needs the price of `qty` Falafel Wraps — and Kevin
+    Every receipt line needs the price of `qty` Falafel Wraps — and Tobi
     keeps retyping `6.90 * qty` by hand, typos and all. Time to make it a
     function he can't get wrong.
 
@@ -67,7 +67,7 @@ def _(mo, show_result, wrap_price_exa):
             _preview = ""
         elif _r3 == 20.70 and _r1 == 6.90:
             _ok = True
-            _msg = "✅ Correct! Kevin can stop retyping `6.90 * qty` by hand."
+            _msg = "✅ Correct! Tobi can stop retyping `6.90 * qty` by hand."
             _preview = show_result(_r3)
         else:
             _ok = False
