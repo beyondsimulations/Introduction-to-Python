@@ -495,8 +495,9 @@ def _(mo):
         r"""
     ## 🥊 Boss exercise (core) — the price war
 
-    A letter arrives from **MunchCorp**: they now sell your signature dish at
-    8.50 EUR. You start at 11.90 and decide to cut the price by **10 %
+    The rumor was true. A letter arrives from **MunchCorp**: they now sell a
+    copy of your signature dish at 8.50 EUR. Tobi, in a panic, had just raised
+    yours to 11.90. You start there and cut the price by **10 %
     each round** until you finally **undercut** them (drop *below* 8.50).
 
     A **`while` loop** repeats *as long as* a condition holds. Count how many

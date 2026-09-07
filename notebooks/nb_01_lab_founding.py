@@ -615,9 +615,10 @@ def _(mo):
         r"""
     ### Bonus — the price war
 
-    MunchCorp lists your dish at **8.50**. To undercut them you want to be
-    **10% cheaper**. Compute that price into `price_war_ex60`.
-    (Bonus, not required.)
+    Rumor has it MunchCorp will copy your dish and list it at **8.50**. If it
+    ever comes to a price war, Tobi wants to know one number: **10% below
+    that**. Compute it into `price_war_ex60`. (Bonus, not required. The war
+    itself, if it comes, is another episode.)
     """
     )
     return

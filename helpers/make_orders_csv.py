@@ -12,7 +12,7 @@ from pathlib import Path
 OUT = Path(__file__).resolve().parent.parent / "notebooks" / "public" / "orders.csv"
 ZONES = ["Nord", "Sued", "Hafen", "Altstadt"]
 WEEKDAYS = ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"]
-DISHES = {"Bao Box": 8.40, "Falafel Wrap": 7.60, "Pad Thai": 10.20, "Miso Ramen": 11.90}
+DISHES = {"Bao Box": 7.80, "Falafel Wrap": 6.90, "Pad Thai": 8.90, "Miso Ramen": 11.50}  # menu prices from Episodes 1-4
 
 
 def main() -> None:
@@ -50,10 +50,12 @@ if __name__ == "__main__":
 
 # ledger:
 # rows: 80
-# revenue total: 1571.6
-# mean order: 19.64
-# zone totals: {'Altstadt': 408.4, 'Hafen': 354.2, 'Nord': 378.9, 'Sued': 430.1}
+# revenue total: 1443.3
+# mean order: 18.04
+# zone totals: {'Altstadt': 376.2, 'Hafen': 325.3, 'Nord': 345.9, 'Sued': 395.9}
 # orders per zone: {'Nord': 22, 'Altstadt': 20, 'Hafen': 19, 'Sued': 19}
-# best day (revenue): 3
+# best day (revenue): 3 (146.8)
 # max delivery: 58
-# count total_eur > 20: 43
+# count total_eur > 20: 35
+# count total_eur > 25: 13
+# week1 / week2: 731.1 / 712.2  -> growth -2.59 %

@@ -13,23 +13,22 @@
 # not the art); `orders` is never mutated (derived data uses copies / new names).
 #
 # ledger (all values computed FROM notebooks/public/orders.csv, cross-checked
-# against helpers/make_orders_csv.py; NOTE: (total_eur > 25).sum() is 20, not the
-# 13 an early draft assumed. 13 is the count above 26, there is a value gap
-# between 25.2 and 30.6):
+# against helpers/make_orders_csv.py; NOTE: (total_eur > 25).sum() is 13; no order
+# sits between 23.4 and 26.7, so > 25 and >= 26 agree):
 #   daily = orders.groupby("day")["total_eur"].sum()
-#       daily.idxmax()                                = 3   (peak day, 158.3 €)
-#       daily.idxmin()                                = 6   (trough day, 51.7 €)
+#       daily.idxmax()                                = 3   (peak day, 146.8 €)
+#       daily.idxmin()                                = 6   (trough day, 49.2 €)
 #       len(daily)                                    = 14  (two weeks of days)
 #   orders.groupby("zone")["total_eur"].sum().round(2).to_dict()
-#       = {'Altstadt': 408.4, 'Hafen': 354.2, 'Nord': 378.9, 'Sued': 430.1}
-#   (orders["total_eur"] > 25).sum()                  = 20  (top-quartile tail)
-#   (orders["total_eur"] > 20).sum()                  = 43  (>half, NOT a tail)
+#       = {'Altstadt': 376.2, 'Hafen': 325.3, 'Nord': 345.9, 'Sued': 395.9}
+#   (orders["total_eur"] > 25).sum()                  = 13  (the tail)
+#   (orders["total_eur"] > 20).sum()                  = 35  (nearly half, NOT a tail)
 #   orders["delivery_min"].max()                      = 58
 #   corr(delivery_min, total_eur)                     = -0.03  (no relationship)
-#   week1 = orders[orders["day"] <= 7]["total_eur"].sum()  = 788.4
-#   week2 = orders[orders["day"] >= 8]["total_eur"].sum()  = 783.2
-#       (week2 - week1) / week1 * 100                 = -0.66  (essentially flat)
-#   orders["total_eur"].sum()                         = 1571.6
+#   week1 = orders[orders["day"] <= 7]["total_eur"].sum()  = 731.1
+#   week2 = orders[orders["day"] >= 8]["total_eur"].sum()  = 712.2
+#       (week2 - week1) / week1 * 100                 = -2.59  (a small dip)
+#   orders["total_eur"].sum()                         = 1443.3
 #   groupby zone total .idxmax() (highest TOTAL)      = "Sued"
 #   len(orders)                                       = 80
 import marimo
@@ -215,13 +214,13 @@ def _(best_day_ex11, mo, pd, show_result):
                 _msg = "❌ Exercise 1.1: this should be a whole **number**: the day with the highest revenue, from `int(daily.idxmax())`."
             elif _n == 3:
                 ex11_ok = True
-                _msg = "✅ Exercise 1.1: **day 3**, the peak, at 158.3 €. `.idxmax()` reads the winning *label* off the Series; no squinting at the line."
+                _msg = "✅ Exercise 1.1: **day 3**, the peak, at 146.8 €. `.idxmax()` reads the winning *label* off the Series; no squinting at the line."
             elif _n == 6:
                 ex11_ok = False
-                _msg = "❌ Exercise 1.1: day 6 is the *trough* (the lowest day, 51.7 €), which is `.idxmin()`. You want `.idxmax()` for the peak."
-            elif _n == 158 or round(float(best_day_ex11), 1) == 158.3:
+                _msg = "❌ Exercise 1.1: day 6 is the *trough* (the lowest day, 49.2 €), which is `.idxmin()`. You want `.idxmax()` for the peak."
+            elif _n in (146, 147) or round(float(best_day_ex11), 1) == 146.8:
                 ex11_ok = False
-                _msg = "❌ Exercise 1.1: 158.3 is the euro *amount* on the best day. That's `.max()`. The investor asked *which day*: `.idxmax()` returns the label."
+                _msg = "❌ Exercise 1.1: 146.8 is the euro *amount* on the best day. That's `.max()`. The investor asked *which day*: `.idxmax()` returns the label."
             else:
                 ex11_ok = False
                 _msg = f"❌ Exercise 1.1: expected 3, got {_n}. `daily.idxmax()` returns the day with the biggest total."
@@ -383,7 +382,7 @@ def _(by_zone_ex21, plt):
 
 @app.cell(hide_code=True)
 def _(by_zone_ex21, mo, pd, show_result):
-    _expected = {"Altstadt": 408.4, "Hafen": 354.2, "Nord": 378.9, "Sued": 430.1}
+    _expected = {"Altstadt": 376.2, "Hafen": 325.3, "Nord": 345.9, "Sued": 395.9}
     if by_zone_ex21 is None:
         ex21_ok = False
         _msg = "🔲 Exercise 2.1: not attempted yet."
@@ -446,7 +445,7 @@ def _(mo):
     genuinely expensive ones) and store the count, as a plain `int`, in
     `over_25_ex22`.
 
-    > Why 25 and not 20? More than half the orders already sit above 20 €. Calling
+    > Why 25 and not 20? Nearly half the orders already sit above 20 €. Calling
     > *half your data* a "tail" would misread the histogram. 25 € is where the
     > expensive stuff actually starts.
     """
@@ -488,21 +487,21 @@ def _(mo, over_25_ex22, pd, show_result):
             if _c is None:
                 ex22_ok = False
                 _msg = "❌ Exercise 2.2: this should be a whole **number**, the count of orders above 25 €."
-            elif _c == 20:
+            elif _c == 13:
                 ex22_ok = True
-                _msg = "✅ Exercise 2.2: **20** orders above 25 €: a genuine top-quartile tail, one quarter of the eighty. That's the number the histogram was hinting at."
-            elif _c == 43:
+                _msg = "✅ Exercise 2.2: **13** orders above 25 €: a genuine tail, about one in six of the eighty. That's the number the histogram was hinting at."
+            elif _c == 35:
                 ex22_ok = False
-                _msg = "❌ Exercise 2.2: 43 is the count above *20 €*, more than half the orders. That's not a tail. The threshold is 25 €: `orders[\"total_eur\"] > 25`."
+                _msg = "❌ Exercise 2.2: 35 is the count above *20 €*, nearly half the orders. That's not a tail. The threshold is 25 €: `orders[\"total_eur\"] > 25`."
             elif _c == 80:
                 ex22_ok = False
                 _msg = "❌ Exercise 2.2: 80 is *every* order. You counted the whole column. Count only the ones where `total_eur > 25`."
-            elif _c == 60:
+            elif _c == 67:
                 ex22_ok = False
-                _msg = "❌ Exercise 2.2: 60 is the *cheap* majority (25 € or less). You flipped the comparison. The tail is `> 25`, not `<= 25`."
+                _msg = "❌ Exercise 2.2: 67 is the *cheap* majority (25 € or less). You flipped the comparison. The tail is `> 25`, not `<= 25`."
             else:
                 ex22_ok = False
-                _msg = f"❌ Exercise 2.2: expected 20, got {_c}. Build the mask `orders[\"total_eur\"] > 25`, then `.sum()` counts the `True`s."
+                _msg = f"❌ Exercise 2.2: expected 13, got {_c}. Build the mask `orders[\"total_eur\"] > 25`, then `.sum()` counts the `True`s."
     mo.callout(mo.md(_msg + _preview), kind="success" if ex22_ok else "warn")
     return (ex22_ok,)
 
@@ -638,7 +637,7 @@ def _(plt, week1, week2):
     # Tobi's "growth slide": runs fine, technically correct numbers.
     plt.figure()  # fresh canvas
     plt.plot([1, 2], [week1, week2], marker="o")
-    plt.ylim(782, 789)  # <-- the trick: the axis starts at 782, not 0
+    plt.ylim(710, 735)  # <-- the trick: the axis starts at 710, not 0
     plt.xlabel("Week")
     plt.ylabel("Revenue (€)")
     plt.title("Tobi's growth slide")
@@ -654,8 +653,8 @@ def _(mo):
 
     Look at Tobi's chart. Week 2 drops to the floor. It reads like the startup
     is **falling off a cliff**, revenue collapsing week to week. An investor
-    seeing that panics. But check the y-axis: it runs from **782 to 789**. The
-    *entire* chart is a five-euro sliver, magnified until a rounding-error wobble
+    seeing that panics. But check the y-axis: it runs from **710 to 735**. The
+    *entire* chart is a twenty-five-euro sliver, magnified until a small dip
     looks like a catastrophe.
 
     Two jobs.
@@ -708,18 +707,18 @@ def _(growth_pct_ex31, mo, pd, show_result):
             if _v is None:
                 ex31_ok = False
                 _msg = "❌ Exercise 3.1: this should be a single **percent** number, the week-over-week change."
-            elif _v == -0.66:
+            elif _v == -2.59:
                 ex31_ok = True
-                _msg = "✅ Exercise 3.1: **−0.66 %**, essentially flat. Tobi's cliff was a lie the axis told. Flat is the truth, and a flat startup that *tells* the truth is more fundable than a rocket that lies. 📉➡️"
-            elif _v == 0.66:
+                _msg = "✅ Exercise 3.1: **−2.59 %**, a small dip, essentially flat. Tobi's cliff was a lie the axis told. Flat is the truth, and a flat startup that *tells* the truth is more fundable than a rocket that lies. 📉➡️"
+            elif _v == 2.59:
                 ex31_ok = False
                 _msg = "❌ Exercise 3.1: right size, wrong sign. You divided by week 2, or swapped the weeks. Growth is measured from where you started: `(week2 - week1) / week1`."
-            elif _v in (5.2, -5.2):
+            elif _v in (18.9, -18.9):
                 ex31_ok = False
-                _msg = "❌ Exercise 3.1: 5.2 is the raw *euro* difference between the weeks, not a percent. Divide that gap by week 1 and multiply by 100."
+                _msg = "❌ Exercise 3.1: 18.9 is the raw *euro* difference between the weeks, not a percent. Divide that gap by week 1 and multiply by 100."
             else:
                 ex31_ok = False
-                _msg = f"❌ Exercise 3.1: expected -0.66, got {_v}. Percent growth = `(week2 - week1) / week1 * 100`, rounded to 2."
+                _msg = f"❌ Exercise 3.1: expected -2.59, got {_v}. Percent growth = `(week2 - week1) / week1 * 100`, rounded to 2."
     mo.callout(mo.md(_msg + _preview), kind="success" if ex31_ok else "warn")
     return (ex31_ok,)
 
@@ -816,9 +815,9 @@ def _(mo, pd, pitch_ex40, show_result):
             elif not isinstance(_zone, str):
                 ex40_ok = False
                 _msg = "❌ Boss exercise: `best_zone` should be the zone's **name** (a string). Use `.idxmax()` on the per-zone totals, not `.max()`."
-            elif _rev != 1571.6:
+            elif _rev != 1443.3:
                 ex40_ok = False
-                _msg = f"❌ Boss exercise: `revenue` should be 1571.6 (got {_rev}). Sum `total_eur` across every order and round to 2."
+                _msg = f"❌ Boss exercise: `revenue` should be 1443.3 (got {_rev}). Sum `total_eur` across every order and round to 2."
             elif _zone.strip() != "Sued":
                 ex40_ok = False
                 _msg = "❌ Boss exercise: `best_zone` isn't the top earner. The highest *total* revenue belongs to one zone, and `.idxmax()` on your 2.1 breakdown names it."
@@ -827,7 +826,7 @@ def _(mo, pd, pitch_ex40, show_result):
                 _msg = f"❌ Boss exercise: `orders` should be 80 (got {_cnt}). That's `len(orders)`."
             else:
                 ex40_ok = True
-                _msg = "✅ Boss exercise: **{'revenue': 1571.6, 'best_zone': 'Sued', 'orders': 80}**: three honest numbers, all computed, none typed. That's a slide you can defend. 🏆"
+                _msg = "✅ Boss exercise: **{'revenue': 1443.3, 'best_zone': 'Sued', 'orders': 80}**: three honest numbers, all computed, none typed. That's a slide you can defend. 🏆"
     mo.callout(mo.md(_msg + _preview), kind="success" if ex40_ok else "warn")
     return (ex40_ok,)
 

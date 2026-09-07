@@ -12,7 +12,7 @@ format:
 
 # 📋 Checkpoint 5
 
-**Sessions VIII--IX.** The first 40 minutes are the checkpoint. It starts now: the acquirer runs one final audit before signing.
+**Sessions VIII--IX.** The first 40 minutes are the checkpoint. It starts now: the board runs one final audit before the big news.
 
 - **Individual work**: no neighbors, no chat
 - **AI tools are allowed**: being able to **VERIFY** the output is the skill being graded
@@ -36,7 +36,7 @@ Menu → *Download* → *Download Python code* → upload the `.py` to the **"Ch
 
 ## The deal closes
 
-Pens down. The checkpoint is behind you, and so, it turns out, is the startup. Overnight the rival chain **MunchCorp** stopped competing and made an offer: they're **buying the company.**
+Pens down. The checkpoint is behind you, and so, it turns out, is the startup. Overnight the rival chain **MunchCorp** stopped competing and made an offer: they're **buying the company.** The investor read the term sheet, did the math against her own, and told you to take it: her money would have bought growth, theirs buys the whole shop.
 
 . . .
 

@@ -14,15 +14,15 @@
 # against helpers/make_orders_csv.py):
 #   rows len(orders)                                            = 80
 #   columns orders.shape[1]                                     = 9
-#   revenue orders["total_eur"].sum()                          = 1571.6
+#   revenue orders["total_eur"].sum()                          = 1443.3
 #   Nord count len(orders[zone=="Nord"])                       = 22
 #   Sued & items>=2 count                                      = 15
-#   Hafen revenue orders[zone=="Hafen"]["total_eur"].sum()     = 354.2
-#   max eur_per_item (Miso Ramen unit price)                   = 11.9
-#   groupby zone total_eur .sum() = {'Altstadt': 408.4,
-#       'Hafen': 354.2, 'Nord': 378.9, 'Sued': 430.1}
-#   groupby zone total_eur .mean() = {'Altstadt': 20.42,
-#       'Hafen': 18.64, 'Nord': 17.22, 'Sued': 22.64}  -> idxmax = "Sued"
+#   Hafen revenue orders[zone=="Hafen"]["total_eur"].sum()     = 325.3
+#   max eur_per_item (Miso Ramen unit price)                   = 11.5
+#   groupby zone total_eur .sum() = {'Altstadt': 376.2,
+#       'Hafen': 325.3, 'Nord': 345.9, 'Sued': 395.9}
+#   groupby zone total_eur .mean() = {'Altstadt': 18.81,
+#       'Hafen': 17.12, 'Nord': 15.72, 'Sued': 20.84}  -> idxmax = "Sued"
 #   trace: orders[orders["items"]==3].shape = (27, 9)
 import marimo
 
@@ -329,12 +329,12 @@ def _(mo, pd, revenue_ex13, show_result):
             if _v is None:
                 ex13_ok = False
                 _msg = "❌ Exercise 1.3: this should be a single euro **number**. Total the `total_eur` column with `.sum()`."
-            elif _v == 1571.6:
+            elif _v == 1443.3:
                 ex13_ok = True
-                _msg = "✅ Exercise 1.3: **1571.6 €** over two weeks. `orders[\"total_eur\"].sum()` added all eighty orders in one line, no calculator, no loop."
+                _msg = "✅ Exercise 1.3: **1443.3 €** over two weeks. `orders[\"total_eur\"].sum()` added all eighty orders in one line, no calculator, no loop."
             else:
                 ex13_ok = False
-                _msg = f"❌ Exercise 1.3: expected 1571.6, got {_v}. Total the euro column: `orders[\"total_eur\"].sum()`."
+                _msg = f"❌ Exercise 1.3: expected 1443.3, got {_v}. Total the euro column: `orders[\"total_eur\"].sum()`."
     mo.callout(mo.md(_msg + _preview), kind="success" if ex13_ok else "warn")
     return (ex13_ok,)
 
@@ -595,15 +595,15 @@ def _(hafen_revenue_ex23, mo, pd, show_result):
             elif _v == 0.0:
                 ex23_ok = False
                 _msg = "❌ Exercise 2.3: 0.0 means your filter matched **no rows**: no error, just an empty table summed. Case matters. The zone is spelled \"Hafen\" (capital H), the column is \"zone\" (lowercase)."
-            elif _v == 354.2:
+            elif _v == 325.3:
                 ex23_ok = True
-                _msg = "✅ Exercise 2.3: **354.2 €** from Hafen. You caught Tobi's KeyError (lowercase `zone`) and the red cell went green again."
-            elif _v == 1571.6:
+                _msg = "✅ Exercise 2.3: **325.3 €** from Hafen. You caught Tobi's KeyError (lowercase `zone`) and the red cell went green again."
+            elif _v == 1443.3:
                 ex23_ok = False
-                _msg = "❌ Exercise 2.3: 1571.6 is *every* zone's revenue. You forgot to filter. Keep only `zone == \"Hafen\"` first."
+                _msg = "❌ Exercise 2.3: 1443.3 is *every* zone's revenue. You forgot to filter. Keep only `zone == \"Hafen\"` first."
             else:
                 ex23_ok = False
-                _msg = f"❌ Exercise 2.3: expected 354.2, got {_v}. Filter to `orders[\"zone\"] == \"Hafen\"`, then `[\"total_eur\"].sum()`."
+                _msg = f"❌ Exercise 2.3: expected 325.3, got {_v}. Filter to `orders[\"zone\"] == \"Hafen\"`, then `[\"total_eur\"].sum()`."
     mo.callout(mo.md(_msg + _preview), kind="success" if ex23_ok else "warn")
     return (ex23_ok,)
 
@@ -662,7 +662,8 @@ def _(mo):
         r"""
     ### Exercise 3.1 (core) — the priciest single item
 
-    The menu has four dishes; which one is dearest **per item**? Add a column
+    Four dishes made it into the export (the Founders Bowl was off the menu
+    those two weeks); which one is dearest **per item**? Add a column
     `eur_per_item = total_eur / items` (on a **copy** of `orders`, per the habit
     above), then take its `.max()`. Store that top unit price, rounded to 2
     decimals as a plain `float`, in `max_per_item_ex31`.
@@ -699,15 +700,15 @@ def _(max_per_item_ex31, mo, pd, show_result):
             if _v is None:
                 ex31_ok = False
                 _msg = "❌ Exercise 3.1: this should be a single **number**, the highest `eur_per_item`."
-            elif _v == 11.9:
+            elif _v == 11.5:
                 ex31_ok = True
-                _msg = "✅ Exercise 3.1: **11.90 €** per item: that's the Miso Ramen, the priciest dish on the menu. And you did it on a copy, leaving `orders` untouched. 🍜"
-            elif _v == 35.7:
+                _msg = "✅ Exercise 3.1: **11.50 €** per item: that's the Miso Ramen, the priciest dish on the menu. And you did it on a copy, leaving `orders` untouched. 🍜"
+            elif _v == 34.5:
                 ex31_ok = False
-                _msg = "❌ Exercise 3.1: 35.7 is a whole *order's* total (3 × Miso Ramen), not the per-item price. Divide `total_eur` by `items` first, then take the max."
+                _msg = "❌ Exercise 3.1: 34.5 is a whole *order's* total (3 × Miso Ramen), not the per-item price. Divide `total_eur` by `items` first, then take the max."
             else:
                 ex31_ok = False
-                _msg = f"❌ Exercise 3.1: expected 11.9, got {_v}. Add `eur_per_item = total_eur / items` on a copy, then `.max()`."
+                _msg = f"❌ Exercise 3.1: expected 11.5, got {_v}. Add `eur_per_item = total_eur / items` on a copy, then `.max()`."
     mo.callout(mo.md(_msg + _preview), kind="success" if ex31_ok else "warn")
     return (ex31_ok,)
 
@@ -761,7 +762,7 @@ def _():
 
 @app.cell(hide_code=True)
 def _(by_zone_ex32, mo, pd, show_result):
-    _expected = {"Altstadt": 408.4, "Hafen": 354.2, "Nord": 378.9, "Sued": 430.1}
+    _expected = {"Altstadt": 376.2, "Hafen": 325.3, "Nord": 345.9, "Sued": 395.9}
     if by_zone_ex32 is None:
         ex32_ok = False
         _msg = "🔲 Exercise 3.2: not attempted yet."
@@ -861,7 +862,7 @@ def _(best_avg_zone_ex40, mo, pd, show_result):
         _v = best_avg_zone_ex40.strip()
         if _v == "Sued":
             ex40_ok = True
-            _msg = "✅ Boss exercise: **Sued**, with the highest average order value (about 22.64 €), *and* it happened to top total revenue too. `.mean()` then `.idxmax()` named the winner for you. 🏆"
+            _msg = "✅ Boss exercise: **Sued**, with the highest average order value (about 20.84 €), *and* it happened to top total revenue too. `.mean()` then `.idxmax()` named the winner for you. 🏆"
         elif _v in {"Nord", "Hafen", "Altstadt"}:
             ex40_ok = False
             _msg = "❌ Boss exercise: that zone doesn't have the highest *average*. Group by zone, take `.mean()` of `total_eur`, then `.idxmax()` for the label."

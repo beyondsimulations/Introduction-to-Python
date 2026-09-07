@@ -146,11 +146,11 @@ Today your startup's first program does three small things: record the founding 
 ``` python
 # The line starting with # is a comment. Python ignores it
 print("Welcome to your food-delivery startup!")
-print("Stickers bought:", 300)   # commas print several things, a space between
+print("Stickers bought:", 1200)   # commas print several things, a space between
 ```
 
     Welcome to your food-delivery startup!
-    Stickers bought: 300
+    Stickers bought: 1200
 
 ## Variables: named values
 
@@ -171,7 +171,7 @@ Store the facts of the new company, then use them by name:
 
 ``` python
 company_founded = 2026
-first_employee = "Tobi"
+first_employee = "Tobi"       # co-founder, but he put himself on the payroll first
 sticker_budget = 300          # what's left after Tobi's spending spree
 
 print(first_employee)

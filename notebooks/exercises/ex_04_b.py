@@ -71,7 +71,7 @@ def _(menu, menu_exb, mo, show_result):
         _msg = "❌ Not quite. `menu_exb` looks right, but the ORIGINAL `menu` changed too. You edited it through an alias; make a real copy with `dict(...)` first, then change the copy."
     elif menu_exb == _expected:
         _ok = True
-        _msg = "✅ Correct! The winter menu is live."
+        _msg = "✅ Correct! Draft saved; the lab settles the final prices."
     elif isinstance(menu_exb, dict) and "Miso Ramen" not in menu_exb:
         _ok = False
         _msg = "❌ Not quite. Miso Ramen never made it in."

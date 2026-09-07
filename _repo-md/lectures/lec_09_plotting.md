@@ -316,7 +316,7 @@ First **predict** what happens, then run it.
 
 > **Tip**
 >
-> Take the break after this one: five minutes, then honest charts.
+> A five-minute pause after this one, then honest charts.
 
 # <span class="flow">Honest charts + the AI chart assistant</span>
 

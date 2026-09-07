@@ -21,7 +21,7 @@ def _(mo):
 
     The investor is **here**. Not on a call, not "circling back next quarter". She is
     standing in the shop with a clipboard and a very calm smile, asking to see the
-    numbers before Friday. Real numbers: how many crates to order, what the
+    numbers by the end of the week. Real numbers: how many crates to order, what the
     ratings actually average to, what next week's demand might look like.
 
     Tobi's proposal is to "go on vibes". The investor's expression does not
@@ -552,7 +552,9 @@ def _(mo):
     ### Exercise 2.3 (core) — the flyer raffle
 
     To pick which neighborhoods get flyers, you draw zones at random, **with
-    repetition**, because a popular zone can be picked more than once. The zones:
+    repetition**, because a popular zone can be picked more than once. The shop
+    has grown beyond campus; you now deliver to four city
+    districts:
 
     ```python
     flyer_zones = ["Nord", "Sued", "Hafen", "Altstadt"]
