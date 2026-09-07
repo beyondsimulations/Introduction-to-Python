@@ -27,7 +27,7 @@ def _():
 def _(mo):
     mo.md(
         r"""
-    # ⚡ Quick exercise: seeded randomness (10 min)
+    # Quick exercise: seeded randomness (10 min)
 
     Normally `random` hands you a new sequence every time a cell reruns.
     Sometimes you want the opposite: the *same* sequence, every single

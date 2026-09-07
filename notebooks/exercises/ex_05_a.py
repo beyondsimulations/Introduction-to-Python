@@ -27,7 +27,7 @@ def _():
 def _(mo):
     mo.md(
         r"""
-    # ⚡ Quick exercise: which error? (10 min)
+    # Quick exercise: which error? (10 min)
 
     The checkout crashed live during the lunch rush. Tobi swears he only
     changed "one tiny thing". Here's the crashing line:

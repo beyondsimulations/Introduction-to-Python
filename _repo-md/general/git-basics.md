@@ -172,7 +172,7 @@ If you and your partner both change **the same lines** of the same file, git can
 
 > **Warning**
 >
-> **Do not try to fix a conflict alone in week one.** Bring it to class or e-mail us, we will resolve it together. The one habit that prevents almost all conflicts: **pull before you start working**, so you build on your partner's latest version instead of an old one.
+> **Do not try to fix a conflict alone in week one.** Bring it to class or e-mail me, we will resolve it together. The one habit that prevents almost all conflicts: **pull before you start working**, so you build on your partner's latest version instead of an old one.
 
 ## Troubleshooting
 

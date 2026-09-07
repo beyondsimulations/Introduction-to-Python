@@ -27,7 +27,7 @@ def _():
 def _(mo):
     mo.md(
         r"""
-    # ⚡ Quick exercise: the menu update (10 min)
+    # Quick exercise: the menu update (10 min)
 
     Winter menu day. Start from a **copy** of `menu` (never edit the
     original: Tobi still needs it for the archive), call it `menu_exb`,

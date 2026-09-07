@@ -27,7 +27,7 @@ def _():
 def _(mo):
     mo.md(
         r"""
-    # ⚡ Quick exercise: loop the minutes (10 min)
+    # Quick exercise: loop the minutes (10 min)
 
     First a **trace** (predict, don't run yet): what does this print?
 

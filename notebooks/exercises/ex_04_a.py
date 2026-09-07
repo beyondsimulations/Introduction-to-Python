@@ -27,7 +27,7 @@ def _():
 def _(mo):
     mo.md(
         r"""
-    # ⚡ Quick exercise: the order queue (10 min)
+    # Quick exercise: the order queue (10 min)
 
     The kitchen keeps today's orders in a queue:
 

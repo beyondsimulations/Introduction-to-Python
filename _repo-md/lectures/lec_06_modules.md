@@ -29,7 +29,7 @@ Menu → *Download* → *Download Python code* → upload the `.py` to the **"Ch
 
 > **Note**
 >
-> The green ✅ live checks are **provisional**. The final grading runs on our side. And take a breath: everything in it was rehearsed in the labs.
+> The green ✅ live checks are **provisional**. The final grading runs on my side. And take a breath: everything in it was rehearsed in the labs.
 
 # <span class="flow">Episode 6: Due Diligence Week</span>
 
@@ -187,7 +187,7 @@ print(math.floor(-2.5))   # down the number line → -3
 
 "Down" means *smaller*, and `-3` is smaller than `-2`. Keep the number line in your head, not the distance to zero.
 
-# ⚡ Your turn --- 10 minutes
+# Your turn --- 10 minutes
 
 Open the exercise (scan the QR or type the link):
 
@@ -215,10 +215,10 @@ random.shuffle(queue)                         # reorders the list in place
 print(queue)
 ```
 
-    0.6064611378514329
-    8
+    0.24152857831719932
+    16
     mocha
-    [3, 4, 1, 2, 5]
+    [5, 2, 1, 3, 4]
 
 . . .
 
@@ -235,8 +235,8 @@ print([random.randint(1, 20) for _ in range(5)])   # _ : a loop name we never us
 print([random.randint(1, 20) for _ in range(5)])   # ...and again — different!
 ```
 
-    [20, 11, 12, 3, 1]
-    [5, 8, 1, 4, 13]
+    [20, 5, 20, 7, 2]
+    [8, 4, 9, 11, 10]
 
 . . .
 
@@ -306,7 +306,7 @@ print(second)   # [8, 8, 5]  — the stream carries on
 
 To get the *same* list twice, you re-seed before each run, and that rewinds the stream to the start. One seed, one fixed sequence: that's the entire job of a seed.
 
-# ⚡ Your turn --- 10 minutes
+# Your turn --- 10 minutes
 
 Open the exercise (scan the QR or type the link):
 

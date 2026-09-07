@@ -95,7 +95,7 @@ Materials live in the KLU portal and are hosted at [beyondsimulations.github.io/
 - Everything in Part I runs <span class="highlight">in the browser</span>: nothing to install
 - The lab notebooks and exercises run on **marimo**: click a link, start coding
 - Before **Session X** you install Python (via `uv`) and the Zed editor on your own laptop, with our guides; Session X then runs on your machine
-- Until then: a laptop, a browser, and **one free account** (next slide) is all you need
+- Until then: a laptop, a browser, and **one free account** (coming up) is all you need
 
 ## How a notebook works
 
@@ -241,7 +241,7 @@ print(type("9.99"))
 
     <class 'str'>
 
-# ⚡ Your turn --- 10 minutes
+# Your turn --- 10 minutes
 
 Open the exercise (scan the QR or type the link):
 
@@ -358,7 +358,7 @@ print(round(10 / 3, 2))    # 3.33 — a proper amount
     3.3333333333333335
     3.33
 
-# ⚡ Your turn --- 10 minutes
+# Your turn --- 10 minutes
 
 Open the exercise (scan the QR or type the link):
 
@@ -473,7 +473,7 @@ print("2 * 3")
     6
     2 * 3
 
-# ⚡ Your turn --- 10 minutes
+# Your turn --- 10 minutes
 
 Open the exercise (scan the QR or type the link):
 

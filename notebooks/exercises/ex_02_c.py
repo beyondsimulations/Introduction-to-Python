@@ -27,7 +27,7 @@ def _():
 def _(mo):
     mo.md(
         r"""
-    # ⚡ Quick exercise: de-shout the menu (10 min)
+    # Quick exercise: de-shout the menu (10 min)
 
     Tobi typed a new menu item IN ALL CAPS, WITH EXCLAMATION MARKS, and
     stray spaces. Chain string methods on `raw_item` below to turn it into

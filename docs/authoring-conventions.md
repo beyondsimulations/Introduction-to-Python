@@ -102,7 +102,7 @@ touching any question; `--stats` for the per-question table).
 Regular session skeleton:
 1. Title slide (Fall 2026) → 2. Cold open (1 slide, episode framing, restrained)
 3. 🔥 Warm-up (3 recap questions; see below) → 4. Block 1 (≤20 min)
-5. ⚡ QR exercise a → 6. Block 2 → 7. QR b → [break] → 8. Block 3 → 9. QR c
+5. QR exercise a → 6. Block 2 → 7. QR b → [break] → 8. Block 3 → 9. QR c
 10. Lab handoff (tutorial URL) → 11. Wrap-up: 3 takeaways + next-episode teaser
 → [break] → lab in class (unfinished parts at home).
 CP sessions (III, V, VI, VIII, X): title → 📋 checkpoint slide (procedure) →
@@ -128,7 +128,7 @@ hallucination) must mark that cell `#| error: true` so Quarto captures the
 traceback into the slide — a bare crashing cell aborts the whole render.
 
 ### QR exercise slide (exact form)
-    # ⚡ Your turn — 10 minutes {.exercise-slide}
+    # Your turn — 10 minutes {.exercise-slide}
     …URL + QR image (assets/qr/ex_XX_x.png, width 280) + "First **predict** — then run."
 Add new exercises to `helpers/make_qr.py` EXERCISES and re-run it.
 

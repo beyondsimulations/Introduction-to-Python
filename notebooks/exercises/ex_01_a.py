@@ -14,7 +14,7 @@ def _():
 def _(mo):
     mo.md(
         r"""
-    # ⚡ Quick exercise: the founding form (10 min)
+    # Quick exercise: the founding form (10 min)
 
     Tobi filled in the company register form, as Python variables. One line
     has the wrong **value** and two have the wrong **type**. First **predict**

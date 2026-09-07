@@ -27,7 +27,7 @@ def _():
 def _(mo):
     mo.md(
         r"""
-    # ⚡ Quick exercise: the delivery fee (10 min)
+    # Quick exercise: the delivery fee (10 min)
 
     The city allows delivery again, but the startup now charges a delivery
     fee that depends on the order size:

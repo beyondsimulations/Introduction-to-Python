@@ -27,7 +27,7 @@ def _():
 def _(mo):
     mo.md(
         r"""
-    # ⚡ Quick exercise: happy hour (10 min)
+    # Quick exercise: happy hour (10 min)
 
     Tobi's idea: 20% off every price on `menu`, for one hour only. Build
     `happy_exc` with a **dict comprehension**: same items, each price cut

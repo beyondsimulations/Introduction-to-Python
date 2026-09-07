@@ -172,7 +172,7 @@ plt.gca()
 
 That's exactly why every chart cell **opens** with `plt.figure()`: it's how you say "new picture, start clean."
 
-# ⚡ Your turn --- 10 minutes
+# Your turn --- 10 minutes
 
 Open the exercise (scan the QR or type the link):
 
@@ -304,7 +304,7 @@ plt.gca()
 
 **Bar counts CATEGORIES; histogram counts RANGES.** Same numbers, different question.
 
-# ⚡ Your turn --- 10 minutes
+# Your turn --- 10 minutes
 
 Open the exercise (scan the QR or type the link):
 
@@ -381,7 +381,7 @@ The pilot flies; the co-pilot advises. You still land the plane.
 >
 > Both threads, one rule: **an AI chart runs long before it's true.** You verify the columns *and* the axis, every time.
 
-# ⚡ Your turn --- 10 minutes
+# Your turn --- 10 minutes
 
 Open the exercise (scan the QR or type the link):
 

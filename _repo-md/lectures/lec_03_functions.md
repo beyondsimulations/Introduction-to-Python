@@ -29,7 +29,7 @@ Menu → *Download* → *Download Python code* → upload the `.py` to the **"Ch
 
 > **Note**
 >
-> The green ✅ live checks are **provisional**. The final grading runs on our side. And take a breath: everything in it was rehearsed in the labs.
+> The green ✅ live checks are **provisional**. The final grading runs on my side. And take a breath: everything in it was rehearsed in the labs.
 
 # <span class="flow">Episode 3: The Copy-Paste Soup</span>
 
@@ -186,7 +186,7 @@ print(bill(2, 4.50))
 
 `line_total` and `service_fee` do their jobs; `bill` just orchestrates. That's how small pieces become a program.
 
-# ⚡ Your turn --- 10 minutes
+# Your turn --- 10 minutes
 
 Open the exercise (scan the QR or type the link):
 
@@ -320,7 +320,7 @@ print(trip.fee())             # call the method
 >
 > If the `self` keyword feels odd right now, that's completely normal. Copy the shape from the worked example. The intuition follows the practice.
 
-# ⚡ Your turn --- 10 minutes
+# Your turn --- 10 minutes
 
 Open the exercise (scan the QR or type the link):
 

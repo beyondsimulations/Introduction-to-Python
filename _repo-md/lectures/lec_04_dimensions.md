@@ -229,7 +229,7 @@ print(opening[1])
 >
 > Indexing and slicing work exactly as on lists. You just can't `.append()` to a tuple. Heads up: some tools quietly turn a tuple into a list when they store it. Remember that in **Part II**.
 
-# ⚡ Your turn --- 10 minutes
+# Your turn --- 10 minutes
 
 Open the exercise (scan the QR or type the link):
 
@@ -373,7 +373,7 @@ print(len(regulars))   # how many different people
 
 Five visits, three people. A set answers "how many *different*?" in one step.
 
-# ⚡ Your turn --- 10 minutes
+# Your turn --- 10 minutes
 
 Open the exercise (scan the QR or type the link):
 
@@ -532,7 +532,7 @@ for line in orders.splitlines():
 >
 > Reading **real files** is a job for **pandas**, which loads them in one line from **Session VIII** on. For now, inline data is all you need.
 
-# ⚡ Your turn --- 10 minutes
+# Your turn --- 10 minutes
 
 Open the exercise (scan the QR or type the link):
 

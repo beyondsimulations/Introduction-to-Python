@@ -178,7 +178,7 @@ print(np.array([1, 2, 3]) * 2)    # array → doubled
 
 Lists repeat; arrays compute. That's why we're here.
 
-# ⚡ Your turn --- 10 minutes
+# Your turn --- 10 minutes
 
 Open the exercise (scan the QR or type the link):
 
@@ -263,7 +263,7 @@ print((np.array([1, 5, 3]) > 2).sum())    # Trues add up to 2
 
 Summing a mask counts; averaging a mask shares. Same two tricks the lab asks for.
 
-# ⚡ Your turn --- 10 minutes
+# Your turn --- 10 minutes
 
 Open the exercise (scan the QR or type the link):
 
@@ -388,7 +388,7 @@ print(week.sum(axis=0))
 
 a\) would give **three** numbers (one per day); b) would give **one** number: the grand total, `144`.
 
-# ⚡ Your turn --- 10 minutes
+# Your turn --- 10 minutes
 
 Open the exercise (scan the QR or type the link):
 

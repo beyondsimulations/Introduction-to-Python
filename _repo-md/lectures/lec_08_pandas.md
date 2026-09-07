@@ -30,7 +30,7 @@ Menu → *Download* → *Download Python code* → upload the `.py` to the **"Ch
 
 > **Note**
 >
-> The green ✅ live checks are **provisional**. The final grading runs on our side. And take a breath: everything in it was rehearsed in the labs.
+> The green ✅ live checks are **provisional**. The final grading runs on my side. And take a breath: everything in it was rehearsed in the labs.
 
 # <span class="flow">Episode 8: The Data Room</span>
 
@@ -167,7 +167,7 @@ Sometimes the fastest path is the one you already own. You built a whole muscle 
 >
 > Use AI to draft the unfamiliar and to explain the confusing, not to dodge the thinking you're perfectly able to do. The pilot flies; the co-pilot advises.
 
-# ⚡ Your turn --- 10 minutes
+# Your turn --- 10 minutes
 
 Open the exercise (scan the QR or type the link):
 
@@ -357,7 +357,7 @@ The investor's real question isn't about one row. It's **per zone**: which area 
 >
 > That's the teaser: today's lab does the heavy lifting with `groupby`, turning eighty raw orders into the handful of numbers the investor actually asked for.
 
-# ⚡ Your turn --- 10 minutes
+# Your turn --- 10 minutes
 
 Open the exercise (scan the QR or type the link):
 

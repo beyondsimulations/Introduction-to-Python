@@ -27,7 +27,7 @@ def _():
 def _(mo):
     mo.md(
         r"""
-    # ⚡ Quick exercise: verifying AI code (10 min)
+    # Quick exercise: verifying AI code (10 min)
 
     AI wrote this for Tobi. Two things are wrong: one method doesn't
     exist, one comparison quietly returns nothing. Fix both, and you've

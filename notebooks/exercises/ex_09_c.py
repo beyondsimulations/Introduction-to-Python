@@ -27,7 +27,7 @@ def _():
 def _(mo):
     mo.md(
         r"""
-    # ⚡ Quick exercise: the honest y-axis (10 min)
+    # Quick exercise: the honest y-axis (10 min)
 
     Tobi asked an AI to chart this week's growth for the pitch deck. It
     ran without errors. Before you believe a chart, check one thing

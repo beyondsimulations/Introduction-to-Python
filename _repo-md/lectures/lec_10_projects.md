@@ -30,7 +30,7 @@ Menu → *Download* → *Download Python code* → upload the `.py` to the **"Ch
 
 > **Note**
 >
-> The green ✅ live checks are **provisional**. The final grading runs on our side. The two multiple-choice tasks only say *"recorded"*, not ✅. That's expected, they're scored later. And take a breath: everything in it was rehearsed in the labs.
+> The green ✅ live checks are **provisional**. The final grading runs on my side. The two multiple-choice tasks only say *"recorded"*, not ✅. That's expected, they're scored later. And take a breath: everything in it was rehearsed in the labs.
 
 # <span class="flow">Episode 10: The Exit</span>
 
@@ -93,7 +93,7 @@ Over the next weeks you build **one real project** and present it in the final s
 
 - Project **and** presentation together are worth **40 of the 100** course points
 - Your **commit history counts**: it's the evidence of *how* the work happened, not just the final state. Commit small and often (git block, shortly)
-- **Sessions XI and XII are supervised work sessions**: we're in the room while you build, so bring your questions
+- **Sessions XI and XII are supervised work sessions**: I'm in the room while you build, so bring your questions
 
 . . .
 
@@ -198,7 +198,7 @@ uv --version
 
 > **Important**
 >
-> **Didn't work?** Don't burn the session fighting it. **Flag it**, pair up with your partner's working machine, and **follow along on the slides** for now. We sort it out in class or by e-mail; nobody gets left behind.
+> **Didn't work?** Don't burn the session fighting it. **Flag it**, pair up with your partner's working machine, and **follow along on the slides** for now. I sort it out with you in class or by e-mail; nobody gets left behind.
 
 ## Once per machine
 
@@ -218,7 +218,7 @@ git config --global pull.rebase false
 
 > **Important**
 >
-> **Login fighting you?** Same rule: **flag it**, follow along on the slides, and finish at home with the [Git Basics](../general/git-basics.qmd) page, or with us in the supervised sessions. Nobody's project stalls on a login.
+> **Login fighting you?** Same rule: **flag it**, follow along on the slides, and finish at home with the [Git Basics](../general/git-basics.qmd) page, or with me in the supervised sessions. Nobody's project stalls on a login.
 
 ## Your project starts on GitHub
 
@@ -396,7 +396,7 @@ Two people, one repo. Four habits keep it painless:
 
 ## The road to the finish
 
-- **Sessions XI and XII**: supervised work sessions. We're in the room; you build, we help. Pull before you start, push when you stop.
+- **Sessions XI and XII**: supervised work sessions. I'm in the room; you build, I help. Pull before you start, push when you stop.
 - **Session XIII**: presentations. **10 minutes** each, **5 minutes** of questions. Show the idea, the build, and one thing that broke and how you fixed it.
 
 . . .

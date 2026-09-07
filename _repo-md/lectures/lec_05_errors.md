@@ -29,7 +29,7 @@ Menu → *Download* → *Download Python code* → upload the `.py` to the **"Ch
 
 > **Note**
 >
-> The green ✅ live checks are **provisional**. The final grading runs on our side. And take a breath: everything in it was rehearsed in the labs.
+> The green ✅ live checks are **provisional**. The final grading runs on my side. And take a breath: everything in it was rehearsed in the labs.
 
 # <span class="flow">Episode 5: The 3-AM Checkout</span>
 
@@ -178,7 +178,7 @@ except TypeError as e:
 
 `as e` keeps the error object in a variable, so you can print its message instead of losing it. Any name works; `e` is the habit.
 
-# ⚡ Your turn --- 10 minutes
+# Your turn --- 10 minutes
 
 Open the exercise (scan the QR or type the link):
 
@@ -321,7 +321,7 @@ print("checkout still running")  # ...and we get here
     0.0
     checkout still running
 
-# ⚡ Your turn --- 10 minutes
+# Your turn --- 10 minutes
 
 Open the exercise (scan the QR or type the link):
 

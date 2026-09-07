@@ -221,7 +221,7 @@ print(delivery_hour < 22)
 
     False
 
-# ⚡ Your turn --- 10 minutes
+# Your turn --- 10 minutes
 
 Open the exercise (scan the QR or type the link):
 
@@ -377,7 +377,7 @@ print(total)
 
     30
 
-# ⚡ Your turn --- 10 minutes
+# Your turn --- 10 minutes
 
 Open the exercise (scan the QR or type the link):
 
@@ -509,7 +509,7 @@ print("  MOIN  ".strip().lower())
 
     moin
 
-# ⚡ Your turn --- 10 minutes
+# Your turn --- 10 minutes
 
 Open the exercise (scan the QR or type the link):
 

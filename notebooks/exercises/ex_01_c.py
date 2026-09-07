@@ -27,7 +27,7 @@ def _():
 def _(mo):
     mo.md(
         r"""
-    # ⚡ Quick exercise: the first receipt line (10 min)
+    # Quick exercise: the first receipt line (10 min)
 
     A customer just ordered. Using `qty`, `item`, and `total` below and an
     f-string with `:.2f`, build **one** receipt line that reads exactly

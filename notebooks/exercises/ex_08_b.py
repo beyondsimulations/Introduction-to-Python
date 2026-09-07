@@ -27,7 +27,7 @@ def _():
 def _(mo):
     mo.md(
         r"""
-    # ⚡ Quick exercise: filter + count (pandas) (10 min)
+    # Quick exercise: filter + count (pandas) (10 min)
 
     Filtering a DataFrame with a boolean mask works exactly like NumPy:
     `df[df["col"] >= value]` keeps only the matching rows. Same mask
