@@ -14,7 +14,7 @@ format:
 
 ## A decree from the city
 
-Overnight the city banned delivery after **22:00**. Your app can no longer just say yes to every order. Today the code starts **making decisions**, **repeating** work over every order, and **tidying up** Tobi's menu.
+Overnight the city banned delivery after **22:00**. Your app can no longer just say yes to every order. Today the code starts making decisions, repeating work over every order, and tidying up Tobi's menu.
 
 . . .
 
@@ -35,7 +35,7 @@ a\) `17.8` b) `17.80` c) `Error`
 
 ## Answer 1
 
-**b)** --- `:.2f` always prints two decimals. That's the whole receipt trick.
+**b)**: `:.2f` always prints two decimals. That's the whole receipt trick.
 
 ## Question 2
 
@@ -47,7 +47,7 @@ a\) `float` b) `int` c) `str`
 
 ## Answer 2
 
-**c)** --- quotes make it text, no matter how numeric it looks. (Tobi learned this the hard way.)
+**c)**: quotes make it text, no matter how numeric it looks. (Tobi learned this the hard way.)
 
 ## Question 3
 
@@ -59,7 +59,7 @@ a\) `3.5 1` b) `3 1` c) `3 0.5`
 
 ## Answer 3
 
-**b)** --- `//` floors, `%` gives the remainder. Together: "how many fit, what's left."
+**b)**: `//` floors, `%` gives the remainder. Together: "how many fit, what's left."
 
 # <span class="flow">Making Decisions</span>
 
@@ -113,10 +113,10 @@ An `if` runs its indented block **only** when the condition is `True`:
 ``` python
 delivery_hour = 21
 if delivery_hour < 22:
-    print("Open — send the courier.")
+    print("Open: send the courier.")
 ```
 
-    Open — send the courier.
+    Open: send the courier.
 
 . . .
 
@@ -129,12 +129,12 @@ The **indentation** (4 spaces) is what marks the block. Python is strict about i
 ``` python
 delivery_hour = 23
 if delivery_hour < 22:
-    print("Open — send the courier.")
+    print("Open: send the courier.")
 else:
-    print("Curfew — kitchen closed.")
+    print("Curfew: kitchen closed.")
 ```
 
-    Curfew — kitchen closed.
+    Curfew: kitchen closed.
 
 ## `if` / `elif` / `else`: a ladder
 
@@ -176,7 +176,7 @@ a\) `Gold` b) `Bronze` c) `Silver`
 
 ## Answer: the first true branch wins
 
-**c) `Silver`** --- Python checks branches top to bottom and takes the first `True` one. `25 >= 5` is already `True`, so the `Gold` branch is never even looked at. Order your ladder from strictest to loosest.
+**c) `Silver`**: Python checks branches top to bottom and takes the first `True` one. `25 >= 5` is already `True`, so the `Gold` branch is never even looked at. Order your ladder from strictest to loosest.
 
 ``` python
 past_orders = 25
@@ -212,7 +212,7 @@ a\) `False` b) `True` c) `Error`
 
 ## Answer: `22 < 22`
 
-**a) `False`** --- `<` is **strict**. 22 is not *less than* 22, so at 22:00 sharp the kitchen is already closed. Use `<=` when the boundary should count.
+**a) `False`**: `<` is **strict**. 22 is not *less than* 22, so at 22:00 sharp the kitchen is already closed. Use `<=` when the boundary should count.
 
 ``` python
 delivery_hour = 22
@@ -302,7 +302,7 @@ for i in range(3):
 
 . . .
 
-Three passes: `0`, `1`, `2`. (It stops *before* 3 --- a beginner's favorite surprise.)
+Three passes: `0`, `1`, `2`. (It stops *before* 3, a beginner's favorite surprise.)
 
 ## `range()` with two and three arguments
 
@@ -366,7 +366,7 @@ a\) `10` b) `10` then `30` c) `30`
 
 ## Answer: the unindented `print`
 
-**c) `30`** --- `print` sits outside the loop, so it runs once, after the loop finishes, showing the final total. Indent it and it would print on every pass. Indentation decides what repeats.
+**c) `30`**: `print` sits outside the loop, so it runs once, after the loop finishes, showing the final total. Indent it and it would print on every pass. Indentation decides what repeats.
 
 ``` python
 total = 0
@@ -417,10 +417,10 @@ Every pass must nudge the condition **closer to `False`**: here the price shrink
 If nothing changes, the condition never flips and the loop runs **forever**:
 
 ``` python
-# ⚠️ NEVER run this — it never stops, and freezes the browser tab
+# ⚠️ NEVER run this. It never stops, and freezes the browser tab
 count = 1
 while count > 0:
-    count = count + 1    # count only grows — condition stays True forever
+    count = count + 1    # count only grows, so the condition stays True forever
 ```
 
 . . .
@@ -483,7 +483,7 @@ print("SALE!!!".rstrip("!").title())    # Sale
 
 . . .
 
-The original string is never changed --- each method hands back a **new** one.
+The original string is never changed. Each method hands back a **new** one.
 
 ## Predict: chained methods
 
@@ -501,7 +501,7 @@ a\) `MOIN` b) `moin` c) `moin`
 
 ## Answer: `"  MOIN  ".strip().lower()`
 
-**b) `moin`** --- `.strip()` removes the outer spaces, then `.lower()` lowercases the result. Chained methods run left to right, each acting on the previous one's output.
+**b) `moin`**: `.strip()` removes the outer spaces, then `.lower()` lowercases the result. Chained methods run left to right, each acting on the previous one's output.
 
 ``` python
 print("  MOIN  ".strip().lower())
@@ -545,7 +545,7 @@ First **predict** what happens, then run it.
 
 > **Note**
 >
-> **Next time --- Episode 3** starts with **Checkpoint 1**: 40 minutes, no AI, everything from Episodes 1--2, so keep this notebook and the last one close. Then: Tobi has pasted the same receipt code **14 times**, and one small change now takes him an afternoon. We bring in **functions** to the rescue.
+> **Next time --- Episode 3** starts with Checkpoint 1: 40 minutes, no AI, everything from Episodes 1--2, so keep this notebook and the last one close. Then: Tobi has pasted the same receipt code 14 times, and one small change now takes him an afternoon. We bring in functions to the rescue.
 
 # <span class="flow">Literature</span>
 

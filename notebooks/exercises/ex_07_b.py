@@ -12,7 +12,7 @@ def _():
 
 @app.cell(hide_code=True)
 def _():
-    # Helper — echoes the student's current answer as a "Your result" preview.
+    # Helper: echoes the student's current answer as a "Your result" preview.
     def show_result(value):
         if value is None:
             return ""
@@ -73,32 +73,32 @@ def _(mo):
 
 @app.cell
 def _(np):
-    # Given — do not change this
+    # Given: do not change this
     times_exb = np.array([31, 22, 47, 15, 36, 28, 51, 19, 40])
     return (times_exb,)
 
 
 @app.cell
 def _(times_exb):
-    # YOUR CODE BELOW — replace None
+    # YOUR CODE BELOW: replace None
     late_count_exb = None
     return (late_count_exb,)
 
 
 @app.cell
 def _(times_exb):
-    # YOUR CODE BELOW — replace None
+    # YOUR CODE BELOW: replace None
     late_mean_exb = None
     return (late_mean_exb,)
 
 
 @app.cell(hide_code=True)
 def _(late_count_exb, late_mean_exb, mo, np, show_result):
-    # Reactive check — re-runs automatically whenever the cells above change.
+    # Reactive check. Re-runs automatically whenever the cells above change.
     _expected_count = 3
     _expected_mean = 46.0
     _result = None
-    # Coerce to plain scalars first — a leftover array (or anything else
+    # Coerce to plain scalars first. A leftover array (or anything else
     # non-numeric) must degrade to a message, never crash the check.
     try:
         _count = int(late_count_exb)
@@ -114,18 +114,18 @@ def _(late_count_exb, late_mean_exb, mo, np, show_result):
         if _count is None or _mean is None:
             _ok = False
             if np.ndim(late_count_exb) > 0 or np.ndim(late_mean_exb) > 0:
-                _msg = "❌ One of these is still a whole array — `.sum()` counts the Trues, and `.mean()` reduces the late times to one number."
+                _msg = "❌ One of these is still a whole array. Remember that `.sum()` counts the Trues, and `.mean()` reduces the late times to one number."
             else:
-                _msg = "❌ Not quite — start with the comparison: `times_exb > 38` makes a True/False array first."
+                _msg = "❌ Not quite. Start with the comparison: `times_exb > 38` makes a True/False array first."
         elif _count == _expected_count and _mean == _expected_mean:
             _ok = True
             _msg = "✅ Correct! Three late deliveries, and now the investor has the average too."
         elif _count == _expected_count:
             _ok = False
-            _msg = "❌ The count is right, but the mean isn't — filter `times_exb` with the mask *before* calling `.mean()`."
+            _msg = "❌ The count is right, but the mean isn't. Filter `times_exb` with the mask *before* calling `.mean()`."
         else:
             _ok = False
-            _msg = "❌ Not quite — start with the comparison: `times_exb > 38` makes a True/False array first."
+            _msg = "❌ Not quite. Start with the comparison: `times_exb > 38` makes a True/False array first."
     mo.callout(mo.md(_msg + show_result(_result)), kind="success" if _ok else "warn")
     return
 
@@ -134,7 +134,7 @@ def _(late_count_exb, late_mean_exb, mo, np, show_result):
 def _(mo):
     mo.accordion(
         {
-            "💡 Hint 1 (a nudge)": "Comparison first — `times_exb > 38` makes a True/False array; `.sum()` counts the `True`s, and indexing with that same mask keeps only the matching values.",
+            "💡 Hint 1 (a nudge)": "Comparison first: `times_exb > 38` makes a True/False array; `.sum()` counts the `True`s, and indexing with that same mask keeps only the matching values.",
             "💡 Hint 2 (the structure)": "late_count_exb = int((times_exb > ___).sum())\nlate_mean_exb = float(times_exb[times_exb > ___].___())",
         }
     )

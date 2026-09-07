@@ -18,7 +18,7 @@ def _(mo):
 
     Tobi has 300 EUR left and wants to know how much survives after buying
     12 boxes at 25 EUR each. **Predict the result of `300 - 12 * 25` before
-    you run the cell below** — does multiplication happen before or after
+    you run the cell below**. Does multiplication happen before or after
     subtraction?
     """
     )
@@ -27,7 +27,7 @@ def _(mo):
 
 @app.cell
 def _():
-    # Run this after you've predicted — no editing needed.
+    # Run this after you've predicted. No editing needed.
     print(300 - 12 * 25)
     return
 
@@ -49,7 +49,7 @@ def _(mo):
 
 @app.cell
 def _():
-    # YOUR CODE BELOW — replace None
+    # YOUR CODE BELOW: replace None
     packs_exb = None
     change_exb = None
     return (change_exb, packs_exb)
@@ -57,16 +57,16 @@ def _():
 
 @app.cell(hide_code=True)
 def _(change_exb, mo, packs_exb):
-    # Reactive check — re-runs automatically whenever the cell above changes.
+    # Reactive check. Re-runs automatically whenever the cell above changes.
     if packs_exb is None or change_exb is None:
         _ok = False
         _msg = "🔲 Not attempted yet."
     elif packs_exb == 24 and round(change_exb, 2) == 6.0:
         _ok = True
-        _msg = "✅ Correct! 24 packs, 6.00 EUR change — Tobi is already spending it."
+        _msg = "✅ Correct! 24 packs, 6.00 EUR change. Tobi is already spending it."
     else:
         _ok = False
-        _msg = "❌ Not quite — check that you used `//` for packs and `%` for change."
+        _msg = "❌ Not quite. Check that you used `//` for packs and `%` for change."
     mo.callout(mo.md(_msg), kind="success" if _ok else "warn")
     return
 

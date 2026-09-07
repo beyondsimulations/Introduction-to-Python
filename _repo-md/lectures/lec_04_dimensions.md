@@ -14,7 +14,7 @@ format:
 
 ## Seventeen variables and counting
 
-The menu started with two dishes. Tobi tracked them in variables: `price1`, `price2`. Then came `price3`, a `price_final`, and --- after a rough Tuesday --- a `price_final_FINAL2`.
+The menu started with two dishes. Tobi tracked them in variables: `price1`, `price2`. Then came `price3`, a `price_final`, and, after a rough Tuesday, a `price_final_FINAL2`.
 
 . . .
 
@@ -40,7 +40,7 @@ a\) `Fresh today: Mate` b) `Error` c) `None`
 
 ## Answer 1
 
-**c) `None`** --- `announce` has no `return`, so it hands back `None`. Printing something is not the same as returning it.
+**c) `None`**: `announce` has no `return`, so it hands back `None`. Printing something is not the same as returning it.
 
 ## Question 2
 
@@ -58,7 +58,7 @@ a\) `5` b) `15` c) `Error`
 
 ## Answer 2
 
-**a) `5`** --- the function works on its own copy. We never caught its result, so the global `stock` is untouched. To keep a result, assign it back.
+**a) `5`**. The function works on its own copy. We never caught its result, so the global `stock` is untouched. To keep a result, assign it back.
 
 ## Question 3
 
@@ -79,7 +79,7 @@ a\) `6.9` b) `13.8` c) `2`
 
 ## Answer 3
 
-**b) `13.8`** --- `total()` multiplies `qty` by `price`: `2 * 6.90`, and `print` shows a float without the trailing zero. The object carries its own data, the method does the arithmetic.
+**b) `13.8`**. `total()` multiplies `qty` by `price`: `2 * 6.90`, and `print` shows a float without the trailing zero. The object carries its own data, the method does the arithmetic.
 
 # <span class="flow">Lists & Tuples</span>
 
@@ -139,7 +139,7 @@ A **slice** `list[start:stop]` returns a new list, from `start` up to, but **not
 ``` python
 drinks = ["Mate", "Spezi", "Ayran"]
 print(drinks[0:2])   # items 0 and 1
-print(drinks[-2:])   # the last two — negative start, open end
+print(drinks[-2:])   # the last two: negative start, open end
 ```
 
     ['Mate', 'Spezi']
@@ -166,7 +166,7 @@ a\) `['M', 'L', 'XL']` b) `['M', 'L']` c) `['S', 'M', 'L']`
 
 ## Answer: the `stop` index is excluded
 
-**b) `['M', 'L']`** --- the slice starts at index 1 (`"M"`) and stops before index 3, so index 3 (`"XL"`) is never included. A slice from `1:3` gives you exactly `3 - 1 = 2` items.
+**b) `['M', 'L']`**. The slice starts at index 1 (`"M"`) and stops before index 3, so index 3 (`"XL"`) is never included. A slice from `1:3` gives you exactly `3 - 1 = 2` items.
 
 ``` python
 sizes = ["S", "M", "L", "XL"]
@@ -243,7 +243,7 @@ First **predict** what happens, then run it.
 
 ## Look things up by name
 
-A list finds items by **position**. But "what does a Spezi cost?" is a question about a **name**, not a position. A **dictionary** maps a **key** to a **value**:
+A list finds items by position. But "what does a Spezi cost?" is a question about a name, not a position. A **dictionary** maps a key to a value:
 
 ``` python
 prices = {"Mate": 3.50, "Spezi": 3.20, "Ayran": 2.80}
@@ -287,7 +287,7 @@ print(prices["Cola"])
 
 > **Warning**
 >
-> A `KeyError` is not a crash to fear. It's Python telling you the key is spelled wrong or was never added. You'll read exactly this error in today's lab.
+> A `KeyError` is not a crash to fear. It's Python telling you the key is spelled wrong or was never added. Today's lab has its quieter cousin: a misspelled key and `.get()` handing back `None`.
 
 ## A safer read with `.get()`
 
@@ -308,15 +308,15 @@ Use `[]` when the key **must** be there; use `.get()` when it might not.
 
 ## Updating and adding
 
-Assigning to a key **updates** it if it exists, or **adds** it if it doesn't. Work on a **copy** (`dict()`) when the original must survive:
+Assigning to a key updates it if it exists, or adds it if it doesn't. Work on a **copy** (`dict()`) when the original must survive:
 
 ``` python
 prices = {"Mate": 3.50, "Spezi": 3.20}
-winter = dict(prices)        # a copy — keep the original safe
+winter = dict(prices)        # a copy: keep the original safe
 winter["Spezi"] = 3.40       # update an existing key
 winter["Kombucha"] = 4.20    # add a brand-new key
 print(winter)
-print(prices)                # untouched — the summer menu comes back in April
+print(prices)                # untouched (the summer menu comes back in April)
 ```
 
     {'Mate': 3.5, 'Spezi': 3.4, 'Kombucha': 4.2}
@@ -343,7 +343,7 @@ a\) prints `None` b) prints `""` c) raises `KeyError` d) adds `"Cola"`
 
 ## Answer: reading with `[]` demands the key
 
-**c) raises `KeyError`** --- square-bracket reads never invent a value and never add one. Reach for `.get()` when a key might be missing:
+**c) raises `KeyError`**: square-bracket reads never invent a value and never add one. Reach for `.get()` when a key might be missing:
 
 ``` python
 prices = {"Mate": 3.50, "Spezi": 3.20}
@@ -366,7 +366,7 @@ print(regulars)        # order is arbitrary: a set has none
 print(len(regulars))   # how many different people
 ```
 
-    {'tom', 'ada', 'nina'}
+    {'tom', 'nina', 'ada'}
     3
 
 . . .
@@ -455,8 +455,8 @@ Any expression can go in front of the `for`, including `round()`. Loyalty pricin
 ``` python
 drink_prices = [3.50, 3.20, 2.80]
 
-print([p * 0.9 for p in drink_prices])            # raw floats — ugly
-print([round(p * 0.9, 2) for p in drink_prices])  # rounded — clean
+print([p * 0.9 for p in drink_prices])            # raw floats, ugly
+print([round(p * 0.9, 2) for p in drink_prices])  # rounded, clean
 ```
 
     [3.15, 2.8800000000000003, 2.52]
@@ -499,7 +499,7 @@ a\) `[1, 4, 9, 16]` b) `[2, 4, 6, 8]` c) `[1, 2, 3, 4]`
 
 ## Answer: square each item
 
-**a) `[1, 4, 9, 16]`** --- the expression `n * n` runs once per item, so each number becomes its own square. `2 * n` would double them; the bare `n` would just copy the list.
+**a) `[1, 4, 9, 16]`**. The expression `n * n` runs once per item, so each number becomes its own square. `2 * n` would double them; the bare `n` would just copy the list.
 
 ``` python
 nums = [1, 2, 3, 4]
@@ -530,7 +530,7 @@ for line in orders.splitlines():
 
 > **Note**
 >
-> Reading **real files** is a job for **pandas**, which loads them in one line from **Session VIII** on. For now, inline data is all you need.
+> Reading real files is a job for **pandas**, which loads them in one line from Session VIII on. For now, inline data is all you need.
 
 # Your turn --- 10 minutes
 
@@ -561,7 +561,7 @@ First **predict** what happens, then run it.
 ## Three things to remember
 
 1.  **Lists** hold many values in order: index from `0`, count back with `-1`, slice with a `stop` that's **excluded**
-2.  **Dictionaries** look up a **value by its key**; a missing key raises `KeyError`, so reach for `.get()` when it might not be there; **sets** keep each value once
+2.  **Dictionaries** look up a value by its key; a missing key raises `KeyError`, so reach for `.get()` when it might not be there; **sets** keep each value once
 3.  **Comprehensions** compress a loop into one line: `[expr for x in things]` for lists, `{k: v for ...}` for dicts, `round()` welcome inside
 
 . . .

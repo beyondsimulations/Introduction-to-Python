@@ -12,7 +12,7 @@ format:
 
 # 📋 Checkpoint 5
 
-**Sessions VIII--IX.** The first **40 minutes** are the checkpoint. It starts **now**: the acquirer runs one final audit before signing.
+**Sessions VIII--IX.** The first 40 minutes are the checkpoint. It starts now: the acquirer runs one final audit before signing.
 
 - **Individual work**: no neighbors, no chat
 - **AI tools are allowed**: being able to **VERIFY** the output is the skill being graded
@@ -20,7 +20,7 @@ format:
 - 6 short tasks: the right number out of a pandas table, a line the AI got wrong, an honest read of a chart
 - It sweeps **Sessions VIII--IX**: pandas filtering and `groupby`, honest charts vs. misleading ones
 
-<!-- QR handed out live — never in the deck -->
+<!-- QR handed out live, never in the deck -->
 
 ## When you're done
 
@@ -40,7 +40,7 @@ Pens down. The checkpoint is behind you, and so, it turns out, is the startup. O
 
 . . .
 
-The lawyers will tell you deals close on the numbers. This one closed on **yours.** The clean order data you pulled together in the due diligence (Session VIII) and the honest dashboard you built for the pitch (Session IX) are exactly what convinced the acquirer the books were real.
+The lawyers will tell you deals close on the numbers. This one closed on **yours.** The clean order data you pulled together in the data room (Session VIII) and the honest dashboard you built for the pitch (Session IX) are exactly what convinced the acquirer the books were real.
 
 . . .
 
@@ -52,7 +52,7 @@ Tobi's job today is to hand over the **data room**: every file the company ever 
 
 . . .
 
-> *"It's all here. And it was never anything fancy --- every notebook you downloaded all semester was already a plain `.py` file. Same code, same lines. Open one in a real editor and it just runs."*
+> *"It's all here. And it was never anything fancy. Every notebook you downloaded all semester was already a plain `.py` file. Same code, same lines. Open one in a real editor and it just runs."*
 
 . . .
 
@@ -64,7 +64,7 @@ Every acquisition comes with an exit package. Here's yours: you don't join Munch
 
 . . .
 
-- The tools are the same ones professionals use: **uv**, **Zed**, **git**, **GitHub**
+- The tools are the same ones professionals use: uv, Zed, git, GitHub
 - The work is a real project, built with a partner, over the next weeks
 - Today we set up the machine and the repo; the building starts here
 
@@ -81,7 +81,7 @@ Over the next weeks you build **one real project** and present it in the final s
 - Work in **pairs**: solo is fine if the numbers don't come out even
 - **Deliverable:** a **GitHub repository link**, submitted on Moodle
 - The repo's `README.md` carries a short **AI-disclosure section**: which tools you used, what for, and what you **verified yourself**
-- You **present in Session XIII**: **10 minutes**, plus **5 minutes** for questions
+- You **present in Session XIII**: 10 minutes, plus 5 minutes for questions
 
 . . .
 
@@ -92,7 +92,7 @@ Over the next weeks you build **one real project** and present it in the final s
 ## How it counts
 
 - Project **and** presentation together are worth **40 of the 100** course points
-- Your **commit history counts**: it's the evidence of *how* the work happened, not just the final state. Commit small and often (git block, shortly)
+- Your **commit history counts**: it's the evidence of *how* the work happened, which the final state alone can't show. Commit small and often (git block, shortly)
 - **Sessions XI and XII are supervised work sessions**: I'm in the room while you build, so bring your questions
 
 . . .
@@ -169,7 +169,7 @@ Over the next weeks you build **one real project** and present it in the final s
 
 Right now, in the room:
 
-- **Find your partner** (or decide to go solo if the count is odd). No partner yet? **Come to the front**, we'll match you
+- **Find your partner** (or decide to go solo if the count is odd). No partner yet? **Come to the front**, I'll match you
 - **Pick a direction** from the menu, or bring your own
 - Talk it through: what's the *core* you can definitely finish, what's a *bonus* if time allows?
 
@@ -177,7 +177,7 @@ Right now, in the room:
 
 > **Tip**
 >
-> **A good outcome by the end of this block:** a **one-sentence pitch** ("we're building X that does Y for Z"), a **name** for the project, and a decision on **who owns the shared repo** (the owner creates it in the git block; the partner clones). The sentence keeps you honest about scope; the name goes on the repo in a minute.
+> **A good outcome by the end of this block:** a one-sentence pitch ("we're building X that does Y for Z"), a name for the project, and a decision on who owns the shared repo (the owner creates it in the git block; the partner clones). The sentence keeps you honest about scope; the name goes on the repo in a minute.
 
 # <span class="flow">Your Toolchain</span>
 
@@ -198,7 +198,7 @@ uv --version
 
 > **Important**
 >
-> **Didn't work?** Don't burn the session fighting it. **Flag it**, pair up with your partner's working machine, and **follow along on the slides** for now. I sort it out with you in class or by e-mail; nobody gets left behind.
+> **Didn't work?** Don't burn the session fighting it. Flag it, pair up with your partner's working machine, and follow along on the slides for now. I sort it out with you in class or by e-mail; nobody gets left behind.
 
 ## Once per machine
 
@@ -208,7 +208,7 @@ Before your laptop can talk to GitHub, it has to prove it's allowed to. Signing 
 gh auth login
 ```
 
-Choose **GitHub.com**, **HTTPS**, authenticate in the **browser**, and answer **yes** to *"Authenticate Git with your GitHub credentials?"*. Then, once:
+Choose GitHub.com, **HTTPS**, authenticate in the browser, and answer yes to *"Authenticate Git with your GitHub credentials?"*. Then, once:
 
 ``` bash
 git config --global pull.rebase false
@@ -237,7 +237,7 @@ That's a **repository**: a folder git watches, with its whole history. So far it
 
 ## Bring it down: clone
 
-In Zed's **command palette** (`Cmd/Ctrl+Shift+P`): **`git: clone`**, paste the URL, and pick the folder where you keep course work. Zed opens the new folder as your **workspace**: the file tree on the left shows `README.md` and `.gitignore`.
+In Zed's command palette (`Cmd/Ctrl+Shift+P`): **`git: clone`**, paste the URL, and pick the folder where you keep course work. Zed opens the new folder as your workspace: the file tree on the left shows `README.md` and `.gitignore`.
 
 ``` bash
 git clone https://github.com/you/python-practice.git
@@ -287,7 +287,7 @@ uv run python nb_03_lab_functions.py
 
 ## Connect your AI
 
-Part III **encourages** AI. You've earned the co-pilot, and it's already installed: **Mistral Vibe**, running inside Zed on the key from Session VI (setup in the [AI-tools guide](../general/ai-tools.qmd)). Open the **agent panel**, pick **Mistral Vibe**, and try it on your five-minute-old project:
+Part III **encourages** AI. You've earned the co-pilot, and it's already installed: Mistral Vibe, running inside Zed on the key from Session VI (setup in the [AI-tools guide](../general/ai-tools.qmd)). Open the agent panel, pick Mistral Vibe, and try it on your five-minute-old project:
 
 > *Explain what `main.py` does, then add a docstring. Don't change anything else.*
 
@@ -350,7 +350,7 @@ Reload the repo page on github.com: `main.py` is there. That's the loop you'll r
 Now the one that counts. **Repo owner only**, same recipe as the practice repo, with three extras:
 
 1.  Name it after your **pitch**; **Private**, README, Python `.gitignore`
-2.  **Settings → Collaborators**: invite your **partner** and **us** (our GitHub username is on Moodle), so we can read it for grading
+2.  **Settings → Collaborators**: invite your partner and me (my GitHub username is on Moodle), so I can read it for grading
 3.  Clone it in Zed, `uv init --no-package`, commit, push, exactly as before
 
 . . .
@@ -369,13 +369,13 @@ git clone https://github.com/owner/project.git
 
 . . .
 
-Cloning brings the whole project, its history and the connection to GitHub; the partner pushes and pulls normally from the first moment. Now the **owner** edits `README.md`, commits and pushes, and the **partner** runs **`git: pull`** (`git pull`): the change lands on the second laptop. That's the fifth word.
+Cloning brings the whole project, its history and the connection to GitHub; the partner pushes and pulls normally from the first moment. Now the owner edits `README.md`, commits and pushes, and the partner runs **`git: pull`** (`git pull`): the change lands on the second laptop. That's the fifth word.
 
 . . .
 
 > **Note**
 >
-> **Clock ran out?** This step keeps: inviting and cloning works just as well at the start of **Session XI**, with us in the room.
+> **Clock ran out?** This step keeps: inviting and cloning works just as well at the start of **Session XI**, with me in the room.
 
 ## How we work together
 
@@ -383,7 +383,7 @@ Two people, one repo. Four habits keep it painless:
 
 - **Pull before you start.** `git: pull` first, every session: this alone prevents almost every problem
 - **Commit small and often.** Little snapshots with honest messages beat one giant one
-- **A conflict? Call me.** If git marks a clash, don't fix it alone in week one --- bring it to class
+- **A conflict? Call me.** If git marks a clash, don't fix it alone in week one. Bring it to class
 - **Never force anything.** No `--force`, no "force push", ever
 
 . . .
@@ -397,7 +397,7 @@ Two people, one repo. Four habits keep it painless:
 ## The road to the finish
 
 - **Sessions XI and XII**: supervised work sessions. I'm in the room; you build, I help. Pull before you start, push when you stop.
-- **Session XIII**: presentations. **10 minutes** each, **5 minutes** of questions. Show the idea, the build, and one thing that broke and how you fixed it.
+- **Session XIII**: presentations. 10 minutes each, 5 minutes of questions. Show the idea, the build, and one thing that broke and how you fixed it.
 
 . . .
 

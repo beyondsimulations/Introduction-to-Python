@@ -12,14 +12,14 @@ format:
 
 # 📋 Checkpoint 3
 
-**Sessions I--V.** The first **40 minutes** are the checkpoint. It starts **now**, before the investor sits down.
+**Sessions I--V.** The first 40 minutes are the checkpoint. It starts now, before the investor sits down.
 
 - **Individual work**: no AI, no neighbors, no chat
 - The **link and QR** are handed out in class. Open it and start
 - ~6 short tasks: write code, trace code, fix a bug, answer a multiple choice
 - It sweeps **everything from Sessions I--V**: variables, control flow, functions, data structures, errors
 
-<!-- QR handed out live — never in the deck -->
+<!-- QR handed out live, never in the deck -->
 
 ## When you're done
 
@@ -53,11 +53,11 @@ For five sessions you built everything by hand, on purpose. From today, that cha
 
 - **AI is now allowed and taught.** We work *with* it, deliberately, starting in today's lab.
 - **The disclosure habit:** every submission that used AI carries a **one-line note** saying what you used it for. Not a confession. A professional reflex.
-- **The course chatbot** (sidebar widget) now gives you **full code** on request, not just hints.
+- **The course chatbot** (sidebar widget) now gives you **full code** on request, where it used to stop at hints.
 
 . . .
 
-You spent five sessions learning to think without a co-pilot. Now you get one --- and you'll be the pilot.
+You spent five sessions learning to think without a co-pilot. Now you get one, and you'll be the pilot.
 
 ## Two accounts this week
 
@@ -122,7 +122,7 @@ print(median(ratings))   # the middle value
 
 . . .
 
-One furious review (a **1.0**) drags the mean down to **3.9**. The investor asked for the **typical** rating: `median` sorts the values and hands back the middle one (**4.5**), unmoved by one angry customer.
+One furious review (a 1.0) drags the mean down to 3.9. The investor asked for the **typical** rating: `median` sorts the values and hands back the middle one (4.5), unmoved by one angry customer.
 
 ## Aliases: a shorter name
 
@@ -174,7 +174,7 @@ a\) `-3` b) `-2` c) an error
 
 ## Answer: floor goes down, not toward zero
 
-**a) `-3`** --- `floor` always heads **down** the number line, toward more negative. From `-2.5`, down is `-3`, not the `-2` you'd get by rounding toward zero:
+**a) `-3`**: `floor` always heads **down** the number line, toward more negative. From `-2.5`, down is `-3`, not the `-2` you'd get by rounding toward zero:
 
 ``` python
 import math
@@ -215,10 +215,10 @@ random.shuffle(queue)                         # reorders the list in place
 print(queue)
 ```
 
-    0.24152857831719932
-    16
+    0.9581065475815979
+    19
     mocha
-    [5, 2, 1, 3, 4]
+    [3, 5, 2, 1, 4]
 
 . . .
 
@@ -232,11 +232,11 @@ The investor leans over and says: **"Run it again."** Tobi does, and gets **comp
 import random
 
 print([random.randint(1, 20) for _ in range(5)])   # _ : a loop name we never use
-print([random.randint(1, 20) for _ in range(5)])   # ...and again — different!
+print([random.randint(1, 20) for _ in range(5)])   # ...and again, different!
 ```
 
-    [20, 5, 20, 7, 2]
-    [8, 4, 9, 11, 10]
+    [13, 11, 16, 5, 6]
+    [10, 4, 18, 10, 5]
 
 . . .
 
@@ -286,7 +286,7 @@ a\) different: the second list continues where the first stopped b) equal: the s
 
 ## Answer: different
 
-**a) different** --- a seed doesn't freeze `random`, it fixes the whole **sequence**. The first list eats the first three numbers of the stream; the second list simply **continues** from number four:
+**a) different**. A seed doesn't freeze `random`, it fixes the whole sequence. The first list eats the first three numbers of the stream; the second list simply continues from number four:
 
 ``` python
 import random
@@ -295,8 +295,8 @@ random.seed(42)
 first  = [random.randint(1, 20) for _ in range(3)]
 second = [random.randint(1, 20) for _ in range(3)]
 
-print(first)    # [4, 1, 9]  — the stream's first three numbers
-print(second)   # [8, 8, 5]  — the stream carries on
+print(first)    # [4, 1, 9]: the stream's first three numbers
+print(second)   # [8, 8, 5]: the stream carries on
 ```
 
     [4, 1, 9]
@@ -344,7 +344,7 @@ First **predict** what happens, then run it.
 
 > **Note**
 >
-> **Next episode: one array to rule a thousand orders.** The shop's data has outgrown plain lists, and NumPy turns a thousand numbers into a single, fast object.
+> **Next episode: the numbers deck.** The shop's data has outgrown plain lists, and NumPy turns a thousand numbers into a single, fast object.
 
 # <span class="flow">Literature</span>
 

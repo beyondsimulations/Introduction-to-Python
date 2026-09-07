@@ -14,7 +14,7 @@ format:
 
 ## Charts are arguments
 
-It's **Friday**. The boardroom. The investor slides a pencil out of her jacket and **sharpens it** while you set up, the sound louder than it has any right to be.
+**Friday**, the boardroom. Picture it: the investor slides a pencil out of her jacket and **sharpens it** while you set up, the sound louder than it has any right to be.
 
 . . .
 
@@ -42,7 +42,7 @@ a\) a True/False column b) only the Nord rows c) an error from comparing text
 
 ## Answer 1
 
-**b) only the Nord rows** --- the True/False column is what the **inner** expression `orders["zone"] == "Nord"` makes. Wrapped in `orders[...]`, that mask keeps the rows where it's `True` and drops the rest.
+**b) only the Nord rows**: the True/False column is what the **inner** expression `orders["zone"] == "Nord"` makes. Wrapped in `orders[...]`, that mask keeps the rows where it's `True` and drops the rest.
 
 ## Question 2
 
@@ -56,7 +56,7 @@ a\) a summary table b) an empty DataFrame c) an `AttributeError`
 
 ## Answer 2
 
-**c) `AttributeError`** --- pandas has `.describe()`, not `.summarize()`. The AI invented a plausible name. An AI that **sounds sure** is not the same as an API that **exists**. You verify, every time.
+**c) `AttributeError`**: pandas has `.describe()`, not `.summarize()`. The AI invented a plausible name. An AI that sounds sure is not the same as an API that exists. You verify, every time.
 
 ## Question 3
 
@@ -70,7 +70,7 @@ a\) the first five rows of the column, like `.head()` b) count / mean / std / mi
 
 ## Answer 3
 
-**b) count / mean / std / min / quartiles / max** --- one line, the column's whole statistical fingerprint. That's the real method Tobi's AI was reaching for.
+**b) count / mean / std / min / quartiles / max**. One line, the column's whole statistical fingerprint. That's the real method Tobi's AI was reaching for.
 
 # <span class="flow">The first chart</span>
 
@@ -88,7 +88,7 @@ plt.figure()          # OPEN: a fresh canvas, so this chart
                       #       doesn't draw on the last one
 plt.plot(days, revenue)   # x, then y
 plt.title("This week's revenue")
-plt.gca()             # SHOW: "get current axes" — the chart
+plt.gca()             # SHOW: "get current axes" (the chart)
 ```
 
 <img src="lec_09_plotting_files/figure-markdown_strict/cell-2-output-1.png" width="649" height="431" />
@@ -97,7 +97,7 @@ plt.gca()             # SHOW: "get current axes" — the chart
 
 > **Note**
 >
-> Two habits for **every** chart cell: **open** with `plt.figure()` (a clean canvas) and **end** with `plt.gca()`. In marimo there's no `plt.show()`; the figure appears as the cell's **last expression**, and `plt.plot(...)` alone returns line objects, not a picture. (A plain script run from a terminal does need `plt.show()` at the end; that's Session X.) Same frame around every chart in today's lab.
+> Two habits for every chart cell: open with `plt.figure()` (a clean canvas) and end with `plt.gca()`. In marimo there's no `plt.show()`; the figure appears as the cell's **last expression**, and `plt.plot(...)` alone returns line objects, not a picture. (A plain script run from a terminal does need `plt.show()` at the end; that's Session X.) Same frame around every chart in today's lab.
 
 ## The parts of a chart
 
@@ -155,14 +155,14 @@ a\) one chart with two lines b) two separate charts, one per call c) an error: t
 
 ## Answer: one chart, two lines
 
-**a) one chart with two lines** --- matplotlib keeps drawing on the **current** figure until you start a new one with `plt.figure()`:
+**a) one chart with two lines**, because matplotlib keeps drawing on the **current** figure until you start a new one with `plt.figure()`:
 
 ``` python
 import matplotlib.pyplot as plt
 
 plt.figure()
 plt.plot([3, 1, 2])
-plt.plot([1, 2, 3])   # same canvas — a second line, not a second chart
+plt.plot([1, 2, 3])   # same canvas: a second line, not a second chart
 plt.gca()
 ```
 
@@ -203,7 +203,7 @@ The wrong chart is its own kind of lie. Start from the **question**, not the cha
 
 ## Categories → bar
 
-*"Which dish sells best?"* Categories to compare --- that's a **bar**:
+*"Which dish sells best?"* Categories to compare, so that's a **bar**:
 
 ``` python
 import matplotlib.pyplot as plt
@@ -223,7 +223,7 @@ The tallest bar answers the question at a glance: Pizza.
 
 ## A distribution → histogram
 
-*"How are our delivery times spread out?"* One column of numbers, dropped into buckets --- that's a **histogram**:
+*"How are our delivery times spread out?"* One column of numbers dropped into buckets. That's a **histogram**:
 
 ``` python
 import matplotlib.pyplot as plt
@@ -242,7 +242,7 @@ Most deliveries land in the mid-20s, with one lonely slow one far right. A histo
 
 ## Two numbers → scatter
 
-*"Do bigger orders take longer?"* Two numbers per order, one on each axis --- that's a **scatter**:
+*"Do bigger orders take longer?"* Two numbers per order, one on each axis, which makes it a **scatter**:
 
 ``` python
 import matplotlib.pyplot as plt
@@ -281,7 +281,7 @@ a\) 4: one bar per number b) 15: one bar per unit up to the max c) about 2--3 lu
 
 ## Answer: about 2--3 lumps
 
-**c) about 2--3 lumps** --- the histogram groups the numbers into **ranges** and counts how many fall in each. `8` and `9` land in the same bucket, so that bar is **two tall**:
+**c) about 2--3 lumps**: the histogram groups the numbers into ranges and counts how many fall in each. `8` and `9` land in the same bucket, so that bar is two tall:
 
 ``` python
 import matplotlib.pyplot as plt
@@ -333,11 +333,11 @@ revenue = [96, 98, 97, 99]
 plt.figure()
 plt.subplot(1, 2, 1)
 plt.plot(weeks, revenue, marker="o")
-plt.ylim(96, 99)             # tight — DRAMA
+plt.ylim(96, 99)             # tight: DRAMA
 plt.title("Rocket (ylim 96–99)")
 plt.subplot(1, 2, 2)
 plt.plot(weeks, revenue, marker="o")
-plt.ylim(0, 100)             # from zero — TRUTH
+plt.ylim(0, 100)             # from zero: TRUTH
 plt.title("Honest (from 0)")
 plt.gca()
 ```
@@ -393,7 +393,7 @@ First **predict** what happens, then run it.
 
 # Before Session X
 
-The finale leaves the browser for **your own machine**. Four things **before** you arrive, in this order, about **45 minutes**:
+The finale leaves the browser for **your own machine**. Four things before you arrive, in this order, about 45 minutes:
 
 1.  **GitHub account** from Session I. None yet? [github.com](https://github.com), tonight
 2.  **git + GitHub CLI (`gh`)**: install, log in once. [Git Basics](../general/git-basics.qmd#one-time-setup)
@@ -404,7 +404,7 @@ The finale leaves the browser for **your own machine**. Four things **before** y
 
 > **Important**
 >
-> **Do it in advance**, and **bring the laptop** plus one downloaded lab `.py`. Session X opens with **Checkpoint 5** (Sessions VIII--IX), then builds on a working toolchain. Install fights you? Ask in class or by e-mail.
+> **Do it in advance**, and bring the laptop plus one downloaded lab `.py`. Session X opens with Checkpoint 5 (Sessions VIII--IX), then builds on a working toolchain. Install fights you? Ask in class or by e-mail.
 
 # <span class="flow">To the Lab</span>
 
@@ -441,7 +441,7 @@ The finale leaves the browser for **your own machine**. Four things **before** y
 ## Books to start with
 
 - Wilke, C. (2019). Fundamentals of data visualization: A primer on making informative and compelling figures (First edition). O'Reilly Media. [Link to the free book website](https://clauswilke.com/dataviz/)
-  - The best single book on *why* a chart works: principles, not just code. Highly recommended.
+  - The best single book on *why* a chart works: principles over code. Highly recommended.
 - Downey, A. B. (2024). Think Python: How to think like a computer scientist (Third edition). O'Reilly. [Link to free online version](https://greenteapress.com/wp/think-python-3rd-edition/)
 
 . . .

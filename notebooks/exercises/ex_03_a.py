@@ -12,7 +12,7 @@ def _():
 
 @app.cell(hide_code=True)
 def _():
-    # Helper — echoes the student's current answer as a "Your result" preview.
+    # Helper: echoes the student's current answer as a "Your result" preview.
     def show_result(value):
         if value is None:
             return ""
@@ -29,7 +29,7 @@ def _(mo):
         r"""
     # Quick exercise: the wrap price function (10 min)
 
-    Every receipt line needs the price of `qty` Falafel Wraps — and Tobi
+    Every receipt line needs the price of `qty` Falafel Wraps, and Tobi
     keeps retyping `6.90 * qty` by hand, typos and all. Time to make it a
     function he can't get wrong.
 
@@ -43,7 +43,7 @@ def _(mo):
 @app.cell
 def _():
     def wrap_price_exa(qty):
-        # YOUR CODE BELOW — return the price of qty wraps, rounded to 2 decimals
+        # YOUR CODE BELOW: return the price of qty wraps, rounded to 2 decimals
         return None
 
     return (wrap_price_exa,)
@@ -51,14 +51,14 @@ def _():
 
 @app.cell(hide_code=True)
 def _(mo, show_result, wrap_price_exa):
-    # Reactive check — re-runs automatically whenever the cell above changes.
+    # Reactive check. Re-runs automatically whenever the cell above changes.
     # Wrapped in try/except: a broken function must show a ❌, never crash the check.
     try:
         _r3 = wrap_price_exa(3)
         _r1 = wrap_price_exa(1)
     except Exception:
         _ok = False
-        _msg = "❌ Still crashing — read the error above and fix it before it reaches the check."
+        _msg = "❌ Still crashing. Read the error above and fix it before it reaches the check."
         _preview = ""
     else:
         if _r3 is None:
@@ -71,7 +71,7 @@ def _(mo, show_result, wrap_price_exa):
             _preview = show_result(_r3)
         else:
             _ok = False
-            _msg = "❌ Not quite — check the multiplication and the rounding."
+            _msg = "❌ Not quite. Check the multiplication and the rounding."
             _preview = show_result(_r3)
     mo.callout(mo.md(_msg + _preview), kind="success" if _ok else "warn")
     return

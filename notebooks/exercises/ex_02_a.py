@@ -12,7 +12,7 @@ def _():
 
 @app.cell(hide_code=True)
 def _():
-    # Helper — echoes the student's current answer as a "Your result" preview.
+    # Helper: echoes the student's current answer as a "Your result" preview.
     def show_result(value):
         if value is None:
             return ""
@@ -29,7 +29,7 @@ def _(mo):
         r"""
     # Quick exercise: the delivery fee (10 min)
 
-    The city allows delivery again, but the startup now charges a delivery
+    The curfew stands, and on top of it the startup now charges a delivery
     fee that depends on the order size:
 
     | `order_total` | fee |
@@ -47,30 +47,30 @@ def _(mo):
 
 @app.cell
 def _():
-    # Given — do not change this
+    # Given: do not change this
     order_total = 17.80
     return (order_total,)
 
 
 @app.cell
 def _():
-    # YOUR CODE BELOW — replace None
+    # YOUR CODE BELOW: replace None
     fee_exa = None
     return (fee_exa,)
 
 
 @app.cell(hide_code=True)
 def _(fee_exa, mo, show_result):
-    # Reactive check — re-runs automatically whenever the cell above changes.
+    # Reactive check. Re-runs automatically whenever the cell above changes.
     if fee_exa is None:
         _ok = False
         _msg = "🔲 Not attempted yet."
     elif isinstance(fee_exa, (int, float)) and round(fee_exa, 2) == 1.50:
         _ok = True
-        _msg = "✅ Correct! 17.80 EUR lands in the middle tier — 1.50 EUR fee."
+        _msg = "✅ Correct! 17.80 EUR lands in the middle tier: 1.50 EUR fee."
     else:
         _ok = False
-        _msg = "❌ Not quite — check which branch 17.80 falls into."
+        _msg = "❌ Not quite. Check which branch 17.80 falls into."
     mo.callout(mo.md(_msg + show_result(fee_exa)), kind="success" if _ok else "warn")
     return
 

@@ -42,7 +42,7 @@ def _(mo, first_employee, founded_year, share_capital):
         and isinstance(founded_year, int)
     )
     mo.callout(
-        mo.md("✅ Form accepted!" if _ok else "❌ The registrar rejects the form — keep fixing."),
+        mo.md("✅ Form accepted!" if _ok else "❌ The registrar rejects the form. Keep fixing."),
         kind="success" if _ok else "warn",
     )
     return

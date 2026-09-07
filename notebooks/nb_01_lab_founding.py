@@ -18,8 +18,8 @@ def _(mo):
 
     Congratulations: as of today you are the (co-)founder of a campus
     food-delivery startup. It has **no name**, **no menu**, and a co-founder,
-    **Tobi**, who has already spent 300 EUR of the marketing budget on
-    stickers. Your job today: give the company a name, price a menu, run the
+    **Tobi**, who has already blown most of the marketing budget on
+    stickers (300 EUR is what's left). Your job today: give the company a name, price a menu, run the
     first revenue numbers, and find out whether Tobi's "everything costs 9.99"
     theory survives contact with arithmetic.
     """
@@ -35,7 +35,7 @@ def _():
 
 @app.cell(hide_code=True)
 def _():
-    # Helper — echoes a student's current answer as a "Your result" preview so
+    # Helper: echoes a student's current answer as a "Your result" preview so
     # they SEE their output (e.g. a receipt's alignment), not just ✅/❌. Strings
     # render in a fenced block; everything else inline. See _template.py.
     def show_result(value):
@@ -108,9 +108,9 @@ def _(mo):
 
     Create three variables describing your signature dish:
 
-    - `menu_item_ex11` — its name, as text (any name you like)
-    - `price_ex11` — its price, the float `8.90`
-    - `portions_ex11` — how many a typical order contains, the int `3`
+    - `menu_item_ex11`: its name, as text (any name you like)
+    - `price_ex11`: its price, the float `8.90`
+    - `portions_ex11`: how many a typical order contains, the int `3`
     """
     )
     return
@@ -118,7 +118,7 @@ def _(mo):
 
 @app.cell
 def _():
-    # YOUR CODE BELOW — replace each None
+    # YOUR CODE BELOW: replace each None
     menu_item_ex11 = None
     price_ex11 = None
     portions_ex11 = None
@@ -151,7 +151,7 @@ def _(mo):
     mo.accordion(
         {
             "💡 Hint 1 (a nudge)": "Three separate assignments with `=`. Text goes in quotes; `8.90` and `3` do not.",
-            "💡 Hint 2 (the structure)": "menu_item_ex11 = \"___\"  ·  price_ex11 = ___  ·  portions_ex11 = ___  — text gets quotes, the two numbers don't.",
+            "💡 Hint 2 (the structure)": "menu_item_ex11 = \"___\"  ·  price_ex11 = ___  ·  portions_ex11 = ___  (text gets quotes, the two numbers don't).",
         }
     )
     return
@@ -176,7 +176,7 @@ def _(mo):
 
 @app.cell
 def _():
-    # YOUR CODE BELOW — use price_ex11 and portions_ex11, then round to 2 places
+    # YOUR CODE BELOW: use price_ex11 and portions_ex11, then round to 2 places
     revenue_ex12 = None
     return (revenue_ex12,)
 
@@ -191,7 +191,7 @@ def _(mo, revenue_ex12, show_result):
         _msg = "✅ Exercise 1.2: 26.70 EUR per order. Tobi wants to spend it already."
     else:
         ex12_ok = False
-        _msg = "❌ Exercise 1.2: not 26.70 — multiply price × portions and `round(..., 2)`."
+        _msg = "❌ Exercise 1.2: not 26.70. Multiply price × portions and `round(..., 2)`."
     mo.md(_msg + show_result(revenue_ex12))
     return (ex12_ok,)
 
@@ -255,7 +255,7 @@ def _(mo):
 @app.cell(hide_code=True)
 def _(mo, trace_ex21):
     if trace_ex21.value is None:
-        _msg = "🔲 Pick a prediction above first — commit before you peek!"
+        _msg = "🔲 Pick a prediction above first. Commit before you peek!"
     elif trace_ex21.value == "3 1":
         _msg = (
             "✅ Correct: `7 // 2` is **3** (whole part) and `7 % 2` is **1** "
@@ -264,7 +264,7 @@ def _(mo, trace_ex21):
     else:
         _msg = (
             "❌ Not quite. `7 // 2` keeps the whole part → **3**; `7 % 2` is the "
-            "leftover → **1**. So it prints `3 1`. (This one is ungraded — the "
+            "leftover → **1**. So it prints `3 1`. (This one is ungraded. The "
             "point is the prediction.)"
         )
     mo.callout(mo.md(_msg), kind="info")
@@ -286,7 +286,7 @@ def _(mo):
 
 @app.cell
 def _():
-    # YOUR CODE BELOW — 9.99 minus the 7.40 cost
+    # YOUR CODE BELOW: 9.99 minus the 7.40 cost
     margin_ex22 = None
     return (margin_ex22,)
 
@@ -301,7 +301,7 @@ def _(margin_ex22, mo, show_result):
         _msg = "✅ Exercise 2.2: 2.59 EUR per dish. Tobi calls it 'basically infinite money'."
     else:
         ex22_ok = False
-        _msg = "❌ Exercise 2.2: not 2.59 — compute `9.99 - 7.40`."
+        _msg = "❌ Exercise 2.2: not 2.59. Compute `9.99 - 7.40`."
     mo.md(_msg + show_result(margin_ex22))
     return (ex22_ok,)
 
@@ -334,7 +334,7 @@ def _(mo):
 
 @app.cell
 def _():
-    # TOBI'S BUG — fix the right-hand side so this is a number, not text
+    # TOBI'S BUG: fix the right-hand side so this is a number, not text
     total_ex23 = "9.99" * 3
     return (total_ex23,)
 
@@ -346,10 +346,10 @@ def _(mo, show_result, total_ex23):
         _msg = "❌ Exercise 2.3: still text (a `str`). Drop the quotes so it's a number."
     elif isinstance(total_ex23, (int, float)) and round(total_ex23, 2) == 29.97:
         ex23_ok = True
-        _msg = "✅ Exercise 2.3: 29.97 — a real number. Tobi is quietly relieved."
+        _msg = "✅ Exercise 2.3: 29.97, a real number. Tobi is quietly relieved."
     else:
         ex23_ok = False
-        _msg = "❌ Exercise 2.3: not 29.97 — you want `9.99 * 3` as numbers."
+        _msg = "❌ Exercise 2.3: not 29.97. You want `9.99 * 3` as numbers."
     mo.md(_msg + show_result(total_ex23))
     return (ex23_ok,)
 
@@ -359,7 +359,7 @@ def _(mo):
     mo.accordion(
         {
             "💡 Hint 1 (a nudge)": "The quotes are the problem: `\"9.99\"` is text. What is `9.99` without quotes?",
-            "💡 Hint 2 (the structure)": "total_ex23 = ___ * 3  — the blank is a number, not text in quotes.",
+            "💡 Hint 2 (the structure)": "total_ex23 = ___ * 3  (the blank is a number, not text in quotes).",
         }
     )
     return
@@ -406,7 +406,7 @@ def _():
     receipt_item = "Pad Thai"
     receipt_qty = 3
     receipt_total = 26.70
-    # YOUR CODE BELOW — one f-string, exactly "3x Pad Thai: 26.70 EUR"
+    # YOUR CODE BELOW: one f-string, exactly "3x Pad Thai: 26.70 EUR"
     receipt_ex31 = None
     return receipt_item, receipt_qty, receipt_total, receipt_ex31
 
@@ -423,7 +423,7 @@ def _(mo, receipt_ex31, show_result):
         ex31_ok = False
         _msg = (
             "❌ Exercise 3.1: not an exact match. You need "
-            "`\"3x Pad Thai: 26.70 EUR\"` — mind the `x`, the colon, and `:.2f`."
+            "`\"3x Pad Thai: 26.70 EUR\"`. Mind the `x`, the colon, and `:.2f`."
         )
     mo.md(_msg + show_result(receipt_ex31))
     return (ex31_ok,)
@@ -463,7 +463,7 @@ def _(mo):
 
 @app.cell
 def _():
-    # YOUR CODE BELOW — two lines joined by "\n", prices formatted with :>8.2f
+    # YOUR CODE BELOW: two lines joined by "\n", prices formatted with :>8.2f
     receipt_multi_ex32 = None
     return (receipt_multi_ex32,)
 
@@ -479,7 +479,7 @@ def _(mo, receipt_multi_ex32, show_result):
         _msg = "✅ Bonus 3.2: pixel-perfect alignment. Tobi is weirdly moved."
     else:
         ex32_ok = False
-        _msg = "❌ Bonus 3.2: not an exact match — check the `\\n` and the `:>8.2f` widths."
+        _msg = "❌ Bonus 3.2: not an exact match. Check the `\\n` and the `:>8.2f` widths."
     mo.md(_msg + show_result(receipt_multi_ex32))
     return (ex32_ok,)
 
@@ -509,8 +509,8 @@ def _(mo):
     the table. This is where the whole session comes together.
 
     Write `day_one_summary_ex40`: **one f-string** that mentions your startup
-    name and drops in your **earlier results** — `revenue_ex12` (the day-one
-    revenue) and `margin_ex22` (Tobi's margin) — each formatted with two
+    name and drops in your **earlier results**, `revenue_ex12` (the day-one
+    revenue) and `margin_ex22` (Tobi's margin), each formatted with two
     decimals (`:.2f`). Don't retype the numbers; reuse the variables, and
     marimo pulls in the values you computed above. For example:
 
@@ -532,7 +532,7 @@ def _(mo):
 
 @app.cell
 def _():
-    # YOUR CODE BELOW — one f-string reusing startup_name, revenue_ex12
+    # YOUR CODE BELOW: one f-string reusing startup_name, revenue_ex12
     # and margin_ex22 (solve 1.2 and 2.2 first)
     day_one_summary_ex40 = None
     return (day_one_summary_ex40,)
@@ -560,8 +560,8 @@ def _(day_one_summary_ex40, mo, show_result):
 def _(mo):
     mo.accordion(
         {
-            "💡 Hint 1 (a nudge)": "One f-string. Put `revenue_ex12` and `margin_ex22` in `{}` slots with `:.2f`, and `startup_name` too — no retyped numbers.",
-            "💡 Hint 2 (the structure)": "day_one_summary_ex40 = f\"{startup_name} day one: {___:.2f} EUR revenue, {___:.2f} EUR margin per dish.\"  — the blanks are your variables from 1.2 and 2.2.",
+            "💡 Hint 1 (a nudge)": "One f-string. Put `revenue_ex12` and `margin_ex22` in `{}` slots with `:.2f`, and `startup_name` too. No retyped numbers.",
+            "💡 Hint 2 (the structure)": "day_one_summary_ex40 = f\"{startup_name} day one: {___:.2f} EUR revenue, {___:.2f} EUR margin per dish.\"  (the blanks are your variables from 1.2 and 2.2).",
         }
     )
     return
@@ -586,7 +586,7 @@ def _(mo):
 
 @app.cell
 def _():
-    # YOUR CODE BELOW — replace None with "a", "b", "c", or "d"
+    # YOUR CODE BELOW: replace None with "a", "b", "c", or "d"
     answer_ex50 = None
     return (answer_ex50,)
 
@@ -625,7 +625,7 @@ def _(mo):
 
 @app.cell
 def _():
-    # YOUR CODE BELOW — 10% below 8.50
+    # YOUR CODE BELOW: 10% below 8.50
     price_war_ex60 = None
     return (price_war_ex60,)
 
@@ -640,7 +640,7 @@ def _(mo, price_war_ex60, show_result):
         _msg = "✅ Bonus price war: 7.65 EUR. MunchCorp's growth team notices."
     else:
         ex60_ok = False
-        _msg = "❌ Bonus price war: not 7.65 — take 90% of 8.50."
+        _msg = "❌ Bonus price war: not 7.65. Take 90% of 8.50."
     mo.md(_msg + show_result(price_war_ex60))
     return (ex60_ok,)
 
@@ -650,13 +650,13 @@ def _(mo, price_war_ex60, show_result):
 # ─────────────────────────────────────────────────────────────────────────
 @app.cell(hide_code=True)
 def _(ex11_ok, ex12_ok, ex22_ok, ex23_ok, ex31_ok, ex40_ok, ex50_ok, mo):
-    # Progress cell — core exercises only (the trace and bonuses don't count).
+    # Progress cell: core exercises only (the trace and bonuses don't count).
     _checks = [ex11_ok, ex12_ok, ex22_ok, ex23_ok, ex31_ok, ex40_ok, ex50_ok]
     _done = sum(_checks)
     _total = len(_checks)
     _tobi = "Tobi is genuinely impressed!" if _done == _total else "Tobi remains skeptical."
     mo.callout(
-        mo.md(f"**Core exercises: {_done}/{_total} ✅** — {_tobi}"),
+        mo.md(f"**Core exercises: {_done}/{_total} ✅** · {_tobi}"),
         kind="success" if _done == _total else "neutral",
     )
     return
@@ -668,7 +668,7 @@ def _(mo):
         r"""
     ## Before you leave 📦
 
-    1. Check the progress box above — all seven core exercises green?
+    1. Check the progress box above: all seven core exercises green?
     2. **Download your work**: menu → Download → *Download Python code*.
        Reloading this exact tab (Cmd/Ctrl+R) keeps your work, but closing the
        tab and reopening the link starts you fresh. The download is the only

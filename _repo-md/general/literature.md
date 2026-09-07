@@ -49,7 +49,7 @@ This section provides a curated list of books and resources for learning Python 
 - [Advent of Code](https://adventofcode.com/)
   - A wonderful website with daily challenges during the Christmas time. Highly recommended to playfully improve your skills.
 - [Tiny Python Projects](http://tinypythonprojects.com)
-  - Interesting and fun projects to program in order to improve your programming skills.
+  - Interesting and fun projects to program to improve your programming skills.
 - [Github](https://github.com)
   - The largest provider for git repositories owned by Microsoft. A lot of open source projects are hosted here and you can read the code.
 - [Codewars](https://codewars.com)

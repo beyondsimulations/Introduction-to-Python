@@ -12,7 +12,7 @@ def _():
 
 @app.cell(hide_code=True)
 def _():
-    # Helper — echoes the student's current answer as a "Your result" preview.
+    # Helper: echoes the student's current answer as a "Your result" preview.
     def show_result(value):
         if value is None:
             return ""
@@ -68,23 +68,23 @@ def _(mo):
 
 @app.cell
 def _(np):
-    # Given — do not change this
+    # Given: do not change this
     net_prices_exa = np.array([8.0, 11.0, 14.0])
     return (net_prices_exa,)
 
 
 @app.cell
 def _(net_prices_exa):
-    # YOUR CODE BELOW — replace None
+    # YOUR CODE BELOW: replace None
     gross_exa = None
     return (gross_exa,)
 
 
 @app.cell(hide_code=True)
 def _(gross_exa, mo, show_result):
-    # Reactive check — re-runs automatically whenever the cell above changes.
+    # Reactive check. Re-runs automatically whenever the cell above changes.
     _expected = [9.52, 13.09, 16.66]
-    # Coerce to a plain list of rounded floats first — anything that can't be
+    # Coerce to a plain list of rounded floats first. Anything that can't be
     # must degrade to a message, never crash the check.
     try:
         _values = [round(float(_v), 2) for _v in gross_exa]
@@ -95,13 +95,13 @@ def _(gross_exa, mo, show_result):
         _msg = "🔲 Not attempted yet."
     elif not hasattr(gross_exa, "__len__") or len(gross_exa) != 3:
         _ok = False
-        _msg = "❌ Not quite — do this as one expression on the whole array, not a single number."
+        _msg = "❌ Not quite. Do this as one expression on the whole array, not a single number."
     elif _values == _expected:
         _ok = True
-        _msg = "✅ Correct! One expression, all three prices, VAT included — the deck is ready."
+        _msg = "✅ Correct! One expression, all three prices, VAT included. The deck is ready."
     else:
         _ok = False
-        _msg = "❌ Not quite — check the VAT factor: gross = net × 1.19."
+        _msg = "❌ Not quite. Check the VAT factor: gross = net × 1.19."
     mo.callout(mo.md(_msg + show_result(gross_exa)), kind="success" if _ok else "warn")
     return
 
@@ -110,7 +110,7 @@ def _(gross_exa, mo, show_result):
 def _(mo):
     mo.accordion(
         {
-            "💡 Hint 1 (a nudge)": "No loop, no indexing — multiply the whole array by the VAT factor in one go.",
+            "💡 Hint 1 (a nudge)": "No loop, no indexing: multiply the whole array by the VAT factor in one go.",
             "💡 Hint 2 (the structure)": "gross_exa = net_prices_exa * ___",
         }
     )

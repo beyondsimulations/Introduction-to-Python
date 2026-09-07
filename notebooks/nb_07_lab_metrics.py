@@ -4,7 +4,7 @@
 # one global name per cell; += counts as a definition; every exercise
 # pre-defines its answer (None); suffix exercise names (_exNM); underscore-
 # prefixed names are cell-private; never a possible infinite loop. Data ships
-# inline (public/ files don't load simply in WASM — see docs/authoring-conventions.md;
+# inline (public/ files don't load simply in WASM, see docs/authoring-conventions.md;
 # real files arrive with pandas in Episode 8). numpy checks are crash-proof:
 # every coercion is guarded, so a leftover array / string / scalar degrades to
 # a message instead of raising (see notebooks/exercises/ex_07_b.py).
@@ -46,7 +46,7 @@ def _():
 
 @app.cell(hide_code=True)
 def _():
-    # Helper — echoes a student's current answer as a "Your result" preview so
+    # Helper: echoes a student's current answer as a "Your result" preview so
     # they SEE their output, not just ✅/❌. Strings render in a fenced block;
     # everything else inline. See _template.py.
     def show_result(value):
@@ -103,9 +103,9 @@ def _(mo):
     ```python
     import numpy as np
     prices = np.array([3, 8, 5, 9])
-    prices.size    # 4      — how many elements
-    prices.shape   # (4,)   — its dimensions
-    prices.dtype   # int64  — the type of every element (int32 in the browser)
+    prices.size    # 4: how many elements
+    prices.shape   # (4,): its dimensions
+    prices.dtype   # int64: the type of every element (int32 in the browser)
     ```
 
     Two more moves you'll use constantly:
@@ -123,7 +123,7 @@ def _(mo):
 
 @app.cell
 def _():
-    # Worked example (read + run this) — it also imports numpy as np for everything below
+    # Worked example (read + run this). It also imports numpy as np for everything below
     import numpy as np
     _demo = np.array([3, 8, 5, 9])
     print("array:", _demo)
@@ -145,7 +145,7 @@ def _(mo):
 
     First turn that Python list into a NumPy array called `orders_week` (with
     `np.array(...)`). Then, instead of counting by hand, ask the array how many
-    elements it holds and store that count in `n_orders_ex11` — use
+    elements it holds and store that count in `n_orders_ex11`. Use
     `int(orders_week.size)` so it's a plain whole number.
     """
     )
@@ -160,14 +160,14 @@ def _():
 
 @app.cell
 def _():
-    # YOUR CODE BELOW — turn orders_list into a NumPy array with np.array(...)
+    # YOUR CODE BELOW: turn orders_list into a NumPy array with np.array(...)
     orders_week = None
     return (orders_week,)
 
 
 @app.cell
 def _():
-    # YOUR CODE BELOW — the number of orders, as a plain int: int(orders_week.size)
+    # YOUR CODE BELOW: the number of orders, as a plain int via int(orders_week.size)
     n_orders_ex11 = None
     return (n_orders_ex11,)
 
@@ -187,12 +187,12 @@ def _(mo, n_orders_ex11, np, show_result):
         if _n is None:
             ex11_ok = False
             if np.ndim(n_orders_ex11) > 0:
-                _msg = "❌ Exercise 1.1: that's still a whole array. `.size` is a single number — wrap `int(...)` around `orders_week.size`."
+                _msg = "❌ Exercise 1.1: that's still a whole array. `.size` is a single number. Wrap `int(...)` around `orders_week.size`."
             else:
-                _msg = "❌ Exercise 1.1: this should be a whole **number** — the order count from `int(orders_week.size)`."
+                _msg = "❌ Exercise 1.1: this should be a whole **number**: the order count from `int(orders_week.size)`."
         elif _n == 12:
             ex11_ok = True
-            _msg = "✅ Exercise 1.1: **12** orders. `.size` counts the elements for you — one honest number, no tallying by hand."
+            _msg = "✅ Exercise 1.1: **12** orders. `.size` counts the elements for you, one honest number, no tallying by hand."
         else:
             ex11_ok = False
             _msg = f"❌ Exercise 1.1: expected 12, got {_n}. Was `orders_week` built from the *whole* list? `.size` should report 12."
@@ -205,7 +205,7 @@ def _(mo):
     mo.accordion(
         {
             "💡 Hint 1 (a nudge)": "Two steps in two cells: first `orders_week = np.array(orders_list)`, then ask that array for its `.size` and wrap `int(...)` around it.",
-            "💡 Hint 2 (the structure)": "orders_week = np.array(___)\nn_orders_ex11 = int(orders_week.___)   — put the list in the first blank, and `size` in the second.",
+            "💡 Hint 2 (the structure)": "orders_week = np.array(___)\nn_orders_ex11 = int(orders_week.___)   (put the list in the first blank, and `size` in the second)",
         }
     )
     return
@@ -233,7 +233,7 @@ def _(mo):
 
 @app.cell
 def _(np):
-    # Worked example (read + run this) — one multiply touches every element
+    # Worked example (read + run this): one multiply touches every element
     _demo = np.array([10.0, 20.0, 50.0])
     print("half price:", _demo * 0.5)   # [ 5. 10. 25.]
     return
@@ -247,7 +247,7 @@ def _(np):
 
 @app.cell
 def _():
-    # YOUR CODE BELOW — 10% off every price, in ONE expression (keep 90%)
+    # YOUR CODE BELOW: 10% off every price, in ONE expression (keep 90%)
     sale_ex12 = None
     return (sale_ex12,)
 
@@ -270,10 +270,10 @@ def _(mo, np, sale_ex12, show_result):
             _msg = "❌ Exercise 1.2: this should be an **array of prices**. Multiply the whole `hh_prices` array by `0.9`."
         elif _arr.shape != (4,):
             ex12_ok = False
-            _msg = "❌ Exercise 1.2: expected four sale prices — one per item. Multiply the *whole* `hh_prices` array by `0.9`, no loop, no indexing."
+            _msg = "❌ Exercise 1.2: expected four sale prices, one per item. Multiply the *whole* `hh_prices` array by `0.9`, no loop, no indexing."
         elif np.allclose(np.round(_arr, 2), _expected):
             ex12_ok = True
-            _msg = "✅ Exercise 1.2: 10% off, all four at once — `[5.4, 8.1, 10.8, 16.2]`. That's vectorization: one expression reaches every element."
+            _msg = "✅ Exercise 1.2: 10% off, all four at once: `[5.4, 8.1, 10.8, 16.2]`. That's vectorization: one expression reaches every element."
         else:
             ex12_ok = False
             _msg = "❌ Exercise 1.2: not the 10%-off prices. Happy hour keeps 90% of each: `hh_prices * 0.9`."
@@ -286,7 +286,7 @@ def _(mo):
     mo.accordion(
         {
             "💡 Hint 1 (a nudge)": "You don't touch elements one at a time. Multiply the entire `hh_prices` array by a single number and NumPy applies it everywhere.",
-            "💡 Hint 2 (the structure)": "sale_ex12 = hh_prices * ___   — the blank is the fraction of the price you keep after 10% off.",
+            "💡 Hint 2 (the structure)": "sale_ex12 = hh_prices * ___   (the blank is the fraction of the price you keep after 10% off)",
         }
     )
     return
@@ -311,7 +311,7 @@ def _(mo):
 
 @app.cell
 def _(np):
-    # Worked example (read + run this) — arange stops BEFORE the second number
+    # Worked example (read + run this): arange stops BEFORE the second number
     _demo = np.arange(2, 7)
     print("np.arange(2, 7):", _demo, " sum:", _demo.sum())  # [2 3 4 5 6] sum: 20
     return
@@ -319,14 +319,14 @@ def _(np):
 
 @app.cell
 def _():
-    # YOUR CODE BELOW — the 14 campaign days, 1 through 14, with np.arange
+    # YOUR CODE BELOW: the 14 campaign days, 1 through 14, with np.arange
     days = None
     return (days,)
 
 
 @app.cell
 def _():
-    # YOUR CODE BELOW — the total of all the day numbers, as a plain int
+    # YOUR CODE BELOW: the total of all the day numbers, as a plain int
     days_sum_ex13 = None
     return (days_sum_ex13,)
 
@@ -346,15 +346,15 @@ def _(days_sum_ex13, mo, np, show_result):
         if _s is None:
             ex13_ok = False
             if np.ndim(days_sum_ex13) > 0:
-                _msg = "❌ Exercise 1.3: that's still an array — `.sum()` collapses it to one number. Wrap `int(...)` around `days.sum()`."
+                _msg = "❌ Exercise 1.3: that's still an array. `.sum()` collapses it to one number. Wrap `int(...)` around `days.sum()`."
             else:
-                _msg = "❌ Exercise 1.3: this should be a whole **number** — the total of the day numbers."
+                _msg = "❌ Exercise 1.3: this should be a whole **number**, the total of the day numbers."
         elif _s == 105:
             ex13_ok = True
-            _msg = "✅ Exercise 1.3: **105** — the days 1 through 14 add up. `np.arange(1, 15)` stops before 15, so it lands exactly on 14."
+            _msg = "✅ Exercise 1.3: **105**: the days 1 through 14 add up. `np.arange(1, 15)` stops before 15, so it lands exactly on 14."
         elif _s == 120:
             ex13_ok = False
-            _msg = "❌ Exercise 1.3: 120 means you summed 1 through 15 — `np.arange` stops *before* its second number, so `np.arange(1, 15)` gives 1…14, not 1…15."
+            _msg = "❌ Exercise 1.3: 120 means you summed 1 through 15. `np.arange` stops *before* its second number, so `np.arange(1, 15)` gives 1…14, not 1…15."
         else:
             ex13_ok = False
             _msg = "❌ Exercise 1.3: not the expected total. Build `np.arange(1, 15)` (days 1 through 14) and take its `.sum()`."
@@ -367,7 +367,7 @@ def _(mo):
     mo.accordion(
         {
             "💡 Hint 1 (a nudge)": "`np.arange(1, 15)` builds 1 through 14 (it stops before 15). Store that in `days`, then ask the array for its `.sum()` and wrap `int(...)` around it.",
-            "💡 Hint 2 (the structure)": "days = np.arange(1, ___)\ndays_sum_ex13 = int(days.___())   — the blank stop is one past the last day; the method totals the array.",
+            "💡 Hint 2 (the structure)": "days = np.arange(1, ___)\ndays_sum_ex13 = int(days.___())   (the blank stop is one past the last day; the method totals the array)",
         }
     )
     return
@@ -389,8 +389,8 @@ def _(mo):
     ```python
     speeds = np.array([5, 12, 3, 20])
     speeds > 10            # array([False,  True, False,  True])
-    (speeds > 10).sum()    # 2   — True counts as 1, so .sum() counts the hits
-    speeds[speeds > 10]    # array([12, 20])  — keep only the matching values
+    (speeds > 10).sum()    # 2: True counts as 1, so .sum() counts the hits
+    speeds[speeds > 10]    # array([12, 20]): keep only the matching values
     ```
 
     So `(array > n).sum()` **counts** how many pass, and `array[array > n]`
@@ -408,7 +408,7 @@ def _(mo):
 
 @app.cell
 def _(np):
-    # Worked example (read + run this) — mask, count, filter
+    # Worked example (read + run this): mask, count, filter
     _demo = np.array([5, 12, 3, 20])
     print("mask:", _demo > 10)
     print("count over 10:", (_demo > 10).sum())
@@ -444,7 +444,7 @@ def _(np):
 
 @app.cell
 def _():
-    # YOUR CODE BELOW — how many delivery_times are over 50, as a plain int
+    # YOUR CODE BELOW: how many delivery_times are over 50, as a plain int
     critical_count_ex21 = None
     return (critical_count_ex21,)
 
@@ -464,7 +464,7 @@ def _(critical_count_ex21, mo, np, show_result):
         if _c is None:
             ex21_ok = False
             if np.ndim(critical_count_ex21) > 0:
-                _msg = "❌ Exercise 2.1: that's still a True/False array. `.sum()` turns the mask into one number by counting the Trues — then wrap `int(...)`."
+                _msg = "❌ Exercise 2.1: that's still a True/False array. `.sum()` turns the mask into one number by counting the Trues. Then wrap `int(...)`."
             else:
                 _msg = "❌ Exercise 2.1: this should be a whole **number** of critical deliveries. Start from the mask `delivery_times > 50`."
         elif _c == 2:
@@ -482,7 +482,7 @@ def _(mo):
     mo.accordion(
         {
             "💡 Hint 1 (a nudge)": "First make the mask `delivery_times > 50` (a True/False array), then `.sum()` counts the Trues. Wrap the whole thing in `int(...)`.",
-            "💡 Hint 2 (the structure)": "critical_count_ex21 = int((delivery_times > ___).sum())   — the blank is the threshold in minutes.",
+            "💡 Hint 2 (the structure)": "critical_count_ex21 = int((delivery_times > ___).sum())   (the blank is the threshold in minutes)",
         }
     )
     return
@@ -508,7 +508,7 @@ def _(mo):
 
 @app.cell
 def _():
-    # YOUR CODE BELOW — the share of delivery_times that are 50 or less, as a float
+    # YOUR CODE BELOW: the share of delivery_times that are 50 or less, as a float
     ontime_rate_ex22 = None
     return (ontime_rate_ex22,)
 
@@ -528,18 +528,18 @@ def _(mo, np, ontime_rate_ex22, show_result):
         if _r is None:
             ex22_ok = False
             if np.ndim(ontime_rate_ex22) > 0:
-                _msg = "❌ Exercise 2.2: that's still an array — probably the raw mask. `.mean()` collapses it to one number: the share of Trues."
+                _msg = "❌ Exercise 2.2: that's still an array, probably the raw mask. `.mean()` collapses it to one number: the share of Trues."
             else:
-                _msg = "❌ Exercise 2.2: this should be a single **number** between 0 and 1 — the share of on-time deliveries."
+                _msg = "❌ Exercise 2.2: this should be a single **number** between 0 and 1: the share of on-time deliveries."
         elif _r == 0.8:
             ex22_ok = True
-            _msg = "✅ Exercise 2.2: **0.8** — 80% of deliveries on time. A True/False array's `.mean()` is count ÷ total in one call; exactly the percentage the investor wants on the deck."
+            _msg = "✅ Exercise 2.2: **0.8**, or 80% of deliveries on time. A True/False array's `.mean()` is count ÷ total in one call; exactly the percentage the investor wants on the deck."
         elif _r in (2, 8):
             ex22_ok = False
-            _msg = "❌ Exercise 2.2: that's the **count** — the rate is count ÷ total, and `.mean()` on the mask does that division for you."
+            _msg = "❌ Exercise 2.2: that's the **count**. The rate is count ÷ total, and `.mean()` on the mask does that division for you."
         elif _r == 0.2:
             ex22_ok = False
-            _msg = "❌ Exercise 2.2: 0.2 is the **late** share — that mask catches the over-50 times. On-time is 50 minutes *or less*: `delivery_times <= 50`."
+            _msg = "❌ Exercise 2.2: 0.2 is the **late** share. That mask catches the over-50 times. On-time is 50 minutes *or less*: `delivery_times <= 50`."
         else:
             ex22_ok = False
             _msg = "❌ Exercise 2.2: not the expected rate. Take the mean of the on-time mask: `(delivery_times <= 50).mean()`."
@@ -551,8 +551,8 @@ def _(mo, np, ontime_rate_ex22, show_result):
 def _(mo):
     mo.accordion(
         {
-            "💡 Hint 1 (a nudge)": "Build the on-time mask first (50 or less — mind the `<=`), then take its `.mean()`: with Trues worth 1 and Falses worth 0, the mean IS the share. Wrap `float(...)` around it.",
-            "💡 Hint 2 (the structure)": "ontime_rate_ex22 = float((delivery_times <= ___).___())   — the blank threshold matches 2.1; the method turns the mask into a share.",
+            "💡 Hint 1 (a nudge)": "Build the on-time mask first (50 or less, mind the `<=`), then take its `.mean()`: with Trues worth 1 and Falses worth 0, the mean IS the share. Wrap `float(...)` around it.",
+            "💡 Hint 2 (the structure)": "ontime_rate_ex22 = float((delivery_times <= ___).___())   (the blank threshold matches 2.1; the method turns the mask into a share)",
         }
     )
     return
@@ -565,7 +565,7 @@ def _(mo):
     ### Exercise 2.3 (core, fix the bug) — Tobi's per-zone totals
 
     Tobi's spreadsheet was really a **grid**: seven days down the side, four zones
-    across the top. As an array it's `week_grid` below — 7 rows, 4 columns.
+    across the top. As an array it's `week_grid` below: 7 rows, 4 columns.
 
     A 2-D array totals along an **axis**. `axis=0` runs *down the rows* (giving one
     total per column); `axis=1` runs *across the columns* (giving one total per
@@ -574,15 +574,15 @@ def _(mo):
     ```python
     small = np.array([[1, 2, 3],
                       [4, 5, 6]])
-    small.sum(axis=0)   # array([5, 7, 9])   — one total per column (down the rows)
-    small.sum(axis=1)   # array([6, 15])     — one total per row (across the columns)
+    small.sum(axis=0)   # array([5, 7, 9]): one total per column (down the rows)
+    small.sum(axis=1)   # array([6, 15]): one total per row (across the columns)
     ```
 
     The investor asked for **four zone totals**, one number per zone. Tobi sent
     her **seven** numbers. Here's the line he ran:
 
     ```python
-    # Tobi's memo (this is what he ran — do not run it):
+    # Tobi's memo (this is what he ran, not something to run yourself):
     tobi_totals = week_grid.sum(axis=1)
     # tobi_totals → [59, 65, 58, 65, 61, 72, 52]   (seven numbers, not four)
     ```
@@ -612,7 +612,7 @@ def _(np):
 
 @app.cell
 def _():
-    # YOUR CODE BELOW — the FOUR per-zone totals (one number per zone)
+    # YOUR CODE BELOW: the FOUR per-zone totals (one number per zone)
     zone_totals_ex23 = None
     return (zone_totals_ex23,)
 
@@ -635,13 +635,13 @@ def _(mo, np, show_result, zone_totals_ex23):
             _msg = "❌ Exercise 2.3: this should be four zone totals (numbers). Total the grid along one axis."
         elif _arr.shape == (7,):
             ex23_ok = False
-            _msg = "❌ Exercise 2.3: seven numbers — that's Tobi's bug. You totaled *across the zones* (one number per DAY, `axis=1`). The investor wants one number per ZONE: total *down the days* instead."
+            _msg = "❌ Exercise 2.3: seven numbers. That's Tobi's bug. You totaled *across the zones* (one number per DAY, `axis=1`). The investor wants one number per ZONE: total *down the days* instead."
         elif _arr.shape != (4,):
             ex23_ok = False
             _msg = "❌ Exercise 2.3: expected exactly four zone totals, one per column. Total the grid down its seven days."
         elif np.allclose(np.round(_arr, 2), _expected):
             ex23_ok = True
-            _msg = "✅ Exercise 2.3: `[141, 109, 100, 82]` — four zones, four numbers. Totaling *down the days* (the other axis) is what the investor actually asked for."
+            _msg = "✅ Exercise 2.3: `[141, 109, 100, 82]`: four zones, four numbers. Totaling *down the days* (the other axis) is what the investor actually asked for."
         else:
             ex23_ok = False
             _msg = "❌ Exercise 2.3: four numbers, but not the expected totals. Sum each column of `week_grid` down its seven days."
@@ -653,8 +653,8 @@ def _(mo, np, show_result, zone_totals_ex23):
 def _(mo):
     mo.accordion(
         {
-            "💡 Hint 1 (a nudge)": "Tobi summed across each row (a per-day total). You want a per-column total instead — the *other* axis. Which axis runs down the rows?",
-            "💡 Hint 2 (the structure)": "zone_totals_ex23 = week_grid.sum(axis=___)   — pick the axis that leaves one number per zone (per column), not per day.",
+            "💡 Hint 1 (a nudge)": "Tobi summed across each row (a per-day total). You want a per-column total instead, the *other* axis. Which axis runs down the rows?",
+            "💡 Hint 2 (the structure)": "zone_totals_ex23 = week_grid.sum(axis=___)   (pick the axis that leaves one number per zone, per column, not per day)",
         }
     )
     return
@@ -729,7 +729,7 @@ def _(mo):
 
 @app.cell
 def _():
-    # YOUR CODE BELOW — total each day across zones, then the biggest total (int)
+    # YOUR CODE BELOW: total each day across zones, then the biggest total (int)
     best_day_total_ex31 = None
     return (best_day_total_ex31,)
 
@@ -749,12 +749,12 @@ def _(best_day_total_ex31, mo, np, show_result):
         if _t is None:
             ex31_ok = False
             if np.ndim(best_day_total_ex31) > 0:
-                _msg = "❌ Exercise 3.1: that's still an array — you have all seven day totals. `.max()` picks the single biggest one; then wrap `int(...)`."
+                _msg = "❌ Exercise 3.1: that's still an array. You have all seven day totals. `.max()` picks the single biggest one; then wrap `int(...)`."
             else:
-                _msg = "❌ Exercise 3.1: this should be one whole **number** — the busiest day's total."
+                _msg = "❌ Exercise 3.1: this should be one whole **number**, the busiest day's total."
         elif _t == 84:
             ex31_ok = True
-            _msg = "✅ Exercise 3.1: **84** — the busiest day. You totaled each day across its zones (`axis=1`), then took the max."
+            _msg = "✅ Exercise 3.1: **84**, the busiest day. You totaled each day across its zones (`axis=1`), then took the max."
         elif _t == 141:
             ex31_ok = False
             _msg = "❌ Exercise 3.1: 141 is the biggest *zone* total (totaling down the days, `axis=0`). The busiest DAY totals across the four zones (`axis=1`), then takes the max."
@@ -769,8 +769,8 @@ def _(best_day_total_ex31, mo, np, show_result):
 def _(mo):
     mo.accordion(
         {
-            "💡 Hint 1 (a nudge)": "First get one total per day by summing across the zones (`axis=1`). That's seven numbers — then `.max()` picks the busiest, and `int(...)` makes it plain.",
-            "💡 Hint 2 (the structure)": "best_day_total_ex31 = int(week_sales.sum(axis=___).max())   — the axis totals *across* each day's zones.",
+            "💡 Hint 1 (a nudge)": "First get one total per day by summing across the zones (`axis=1`). That's seven numbers. Then `.max()` picks the busiest, and `int(...)` makes it plain.",
+            "💡 Hint 2 (the structure)": "best_day_total_ex31 = int(week_sales.sum(axis=___).max())   (the axis totals *across* each day's zones)",
         }
     )
     return
@@ -796,7 +796,7 @@ def _(mo):
 
 @app.cell
 def _():
-    # YOUR CODE BELOW — the NAME of the zone with the highest all-week total
+    # YOUR CODE BELOW: the NAME of the zone with the highest all-week total
     best_zone_ex40 = None
     return (best_zone_ex40,)
 
@@ -815,18 +815,18 @@ def _(best_zone_ex40, mo, np, show_result):
             _msg = "✅ Boss exercise: **Nord** wins the week with 141. `argmax` turned the four zone totals into a position, and indexing `zones` turned that position into the name. 🏆"
         elif _v in {"Sued", "Hafen", "Altstadt"}:
             ex40_ok = False
-            _msg = "❌ Boss exercise: that zone isn't the weekly winner. Total down the days (`axis=0`) for the four zone totals, then `argmax` to find the biggest — and index `zones` with it."
+            _msg = "❌ Boss exercise: that zone isn't the weekly winner. Total down the days (`axis=0`) for the four zone totals, then `argmax` to find the biggest, and index `zones` with it."
         else:
             ex40_ok = False
             _msg = "❌ Boss exercise: that isn't one of the four zone names. `zones[...]` should give 'Nord', 'Sued', 'Hafen' or 'Altstadt'."
     elif np.ndim(best_zone_ex40) > 0:
         ex40_ok = False
         _preview = show_result(best_zone_ex40)
-        _msg = "❌ Boss exercise: that's still an array. You want a single zone **name** — index `zones` with the `argmax` position."
+        _msg = "❌ Boss exercise: that's still an array. You want a single zone **name**: index `zones` with the `argmax` position."
     else:
         ex40_ok = False
         _preview = show_result(best_zone_ex40)
-        _msg = "❌ Boss exercise: that looks like a number — probably the `argmax` position. Use it to look up the name: `zones[that_position]`."
+        _msg = "❌ Boss exercise: that looks like a number, probably the `argmax` position. Use it to look up the name: `zones[that_position]`."
     mo.callout(mo.md(_msg + _preview), kind="success" if ex40_ok else "warn")
     return (ex40_ok,)
 
@@ -836,7 +836,7 @@ def _(mo):
     mo.accordion(
         {
             "💡 Hint 1 (a nudge)": "Three moves: total down the days (`axis=0`) for four zone totals, ask `.argmax()` for the position of the biggest, then index `zones` with that position to get the name.",
-            "💡 Hint 2 (the structure)": "best_zone_ex40 = zones[int(week_sales.sum(axis=___).argmax())]   — the axis totals each zone down the seven days.",
+            "💡 Hint 2 (the structure)": "best_zone_ex40 = zones[int(week_sales.sum(axis=___).argmax())]   (the axis totals each zone down the seven days)",
         }
     )
     return
@@ -878,19 +878,19 @@ def _(mo):
 @app.cell(hide_code=True)
 def _(mo, trace_repeat):
     if trace_repeat.value is None:
-        _msg = "🔲 Pick a prediction above first — commit before you peek!"
+        _msg = "🔲 Pick a prediction above first. Commit before you peek!"
     elif trace_repeat.value == "[2 4 6]":
         _msg = (
             "✅ Correct: **`[2 4 6]`**. On a NumPy array, `* 2` *doubles every "
             "element*; on the plain list in the lecture it *repeated* the list. "
-            "Lists repeat; arrays compute — that's exactly why this episode uses "
+            "Lists repeat; arrays compute, which is exactly why this episode uses "
             "arrays. (Arrays print without commas.)"
         )
     else:
         _msg = (
-            "❌ Not quite — it's **`[2 4 6]`**. `* 2` on a NumPy *array* hits every "
+            "❌ Not quite: it's **`[2 4 6]`**. `* 2` on a NumPy *array* hits every "
             "element. Only the plain *list* repeats itself, and arrays print "
-            "without commas. Lists repeat; arrays compute. (Ungraded — the point is "
+            "without commas. Lists repeat; arrays compute. (Ungraded. The point is "
             "the prediction.)"
         )
     mo.callout(mo.md(_msg), kind="info")
@@ -923,7 +923,7 @@ def _(mo):
 
 @app.cell
 def _():
-    # YOUR CODE BELOW — replace "" with "a", "b", "c", or "d"
+    # YOUR CODE BELOW: replace "" with "a", "b", "c", or "d"
     answer_ex50 = ""
     return (answer_ex50,)
 
@@ -937,14 +937,14 @@ def _(answer_ex50, mo):
         ex50_ok = True
         _msg = (
             "✅ Quiz: **d**. `delivery_times > 40` is a True/False mask; `True` "
-            "counts as 1, so `.sum()` counts how many times cleared 40 — a count, "
+            "counts as 1, so `.sum()` counts how many times cleared 40: a count, "
             "not a total or a maximum."
         )
     else:
         ex50_ok = False
         _msg = (
             "❌ Quiz: not quite. `delivery_times > 40` makes a True/False mask, and "
-            "summing Trues (each worth 1) *counts* them — it doesn't total the "
+            "summing Trues (each worth 1) *counts* them. It doesn't total the "
             "times or find the biggest."
         )
     mo.md(_msg)
@@ -967,7 +967,7 @@ def _(
     ex50_ok,
     mo,
 ):
-    # Progress cell — the 8 core exercises plus the quiz (the trace doesn't count).
+    # Progress cell: the 8 core exercises plus the quiz (the trace doesn't count).
     _checks = [ex11_ok, ex12_ok, ex13_ok, ex21_ok, ex22_ok, ex23_ok, ex31_ok, ex40_ok, ex50_ok]
     _done = sum(_checks)
     _total = len(_checks)
@@ -977,7 +977,7 @@ def _(
         else "The investor is still waiting for the full page of metrics."
     )
     mo.callout(
-        mo.md(f"**Core exercises: {_done}/{_total} ✅** — {_investor}"),
+        mo.md(f"**Core exercises: {_done}/{_total} ✅** · {_investor}"),
         kind="success" if _done == _total else "neutral",
     )
     return
@@ -989,7 +989,7 @@ def _(mo):
         r"""
     ## Before you leave 📊
 
-    1. Check the progress box above — all **nine** green? If not, reopen the hints,
+    1. Check the progress box above: all **nine** green? If not, reopen the hints,
        reread the worked examples, and try again. Arrays, masks and axis totals are
        the whole toolkit for turning raw numbers into a metric. You'll reach for
        them any time data shows up.
@@ -997,8 +997,8 @@ def _(mo):
        Reloading this exact tab (Cmd/Ctrl+R) keeps your work, but closing the tab
        and reopening the link starts you fresh. The download is the only
        guaranteed copy.
-    3. Next episode: the investor opens a **data room**. Real files, thousands of
-       rows, more than any array wants to hold by hand. Tobi, naturally, lets an
+    3. Next episode: the investor opens a **data room**. A real file, eighty
+       rows, more than anyone wants to type by hand. Tobi, naturally, lets an
        AI write his pandas. **Episode 8: the data room.**
     """
     )

@@ -12,7 +12,7 @@ def _():
 
 @app.cell(hide_code=True)
 def _():
-    # Helper — echoes the student's current answer as a "Your result" preview.
+    # Helper: echoes the student's current answer as a "Your result" preview.
     def show_result(value):
         if value is None:
             return ""
@@ -41,21 +41,21 @@ def _(mo):
 
 @app.cell
 def _():
-    # Given — do not change this
+    # Given: do not change this
     raw_item = "  FALAFEL WRAP!!!  "
     return (raw_item,)
 
 
 @app.cell
 def _():
-    # YOUR CODE BELOW — replace None
+    # YOUR CODE BELOW: replace None
     item_exc = None
     return (item_exc,)
 
 
 @app.cell(hide_code=True)
 def _(item_exc, mo, show_result):
-    # Reactive check — re-runs automatically whenever the cell above changes.
+    # Reactive check. Re-runs automatically whenever the cell above changes.
     if item_exc is None:
         _ok = False
         _msg = "🔲 Not attempted yet."
@@ -64,7 +64,7 @@ def _(item_exc, mo, show_result):
         _msg = "✅ Correct! Tobi's shouting is gone."
     else:
         _ok = False
-        _msg = "❌ Not quite — watch the order: strip spaces first, then the !!!, then Title Case."
+        _msg = "❌ Not quite. Watch the order: strip spaces first, then the !!!, then Title Case."
     mo.callout(mo.md(_msg + show_result(item_exc)), kind="success" if _ok else "warn")
     return
 

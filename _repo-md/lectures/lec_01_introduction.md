@@ -69,7 +69,7 @@ Materials live in the KLU portal and are hosted at [beyondsimulations.github.io/
 
 - We base our assessment on the KLU classification:
   - <span class="highlight">Level 1: Pause: Use of AI defined by the educator</span>
-- <span class="highlight">Part I (Sessions I--V) is AI-free</span> --- no Claude, ChatGPT, Mistral & Co.
+- <span class="highlight">Part I (Sessions I--V) is AI-free</span>: no Claude, ChatGPT, Mistral & Co.
 - Your sanctioned helper is the **course chatbot** on the learning website
 - It gives **hints**, not solutions, and guides your problem-solving
 - AI tools are introduced (and then allowed) in <span class="highlight">Part II</span>, from Session VI on
@@ -144,7 +144,7 @@ Today your startup's first program does three small things: record the founding 
 `print()` is a **function**: you hand it something, it shows it on screen.
 
 ``` python
-# The line starting with # is a comment — Python ignores it
+# The line starting with # is a comment. Python ignores it
 print("Welcome to your food-delivery startup!")
 print("Stickers bought:", 300)   # commas print several things, a space between
 ```
@@ -191,17 +191,17 @@ print(sticker_budget)
 
 . . .
 
-<span class="question">Question --- we solve this together, out loud</span>: Which of these are valid variable names?  
+<span class="question">Question (we solve this together, out loud)</span>: Which of these are valid variable names?  
 `sticker_budget`, `1st_employee`, `firstEmployee`, `company-name`, `_tobi`
 
 ## Four basic types
 
 Every value has a **type**, which decides what you can do with the value:
 
-- `str` --- text, in quotes: `"Tobi"`, `"Falafel Wrap"`
-- `int` --- whole numbers: `2026`, `300`
-- `float` --- decimal numbers: `9.99`, `0.15`
-- `bool` --- truth values: `True`, `False`
+- `str`: text, in quotes (`"Tobi"`, `"Falafel Wrap"`)
+- `int`: whole numbers (`2026`, `300`)
+- `float`: decimal numbers (`9.99`, `0.15`)
+- `bool`: truth values (`True`, `False`)
 
 ## Checking a type with `type()`
 
@@ -233,7 +233,7 @@ a\) `<class 'float'>` b) `<class 'int'>` c) `<class 'str'>`
 
 ## Answer: `type("9.99")`
 
-**c) `str`** --- the quotes make it text, however numeric it looks. Tobi's "price" can't be multiplied until it is converted to a number.
+**c) `str`**: the quotes make it text, however numeric it looks. Tobi's "price" can't be multiplied until it is converted to a number.
 
 ``` python
 print(type("9.99"))
@@ -259,22 +259,22 @@ Tobi's grand plan: **sell everything for 9.99**. To see whether that survives co
 
 ``` python
 # margin = price - cost
-print(9.99 - 4.20)
+print(9.99 - 7.40)
 ```
 
-    5.79
+    2.59
 
 ## Arithmetic operators
 
 ``` python
 print(9.99 + 1.50)   # addition
-print(9.99 - 4.20)   # subtraction
+print(9.99 - 7.40)   # subtraction
 print(9.99 * 3)      # multiplication
-print(300 / 8)       # division — always gives a float
+print(300 / 8)       # division, always gives a float
 ```
 
     11.49
-    5.79
+    2.59
     29.97
     37.5
 
@@ -287,7 +287,7 @@ print(300 / 8)       # division — always gives a float
 # The 300 EUR budget, boxes at 7 EUR each
 print(300 // 7)      # whole boxes we can buy
 print(300 % 7)       # EUR left over
-print(10 // 2.5)     # 4.0 — floor division on floats floors, but returns a float
+print(10 // 2.5)     # 4.0: floor division on floats floors, but returns a float
 ```
 
     42
@@ -322,7 +322,7 @@ a\) `0` b) `7200` c) `Error`
 
 ## Answer: `300 - 12 * 25`
 
-**a) `0`** --- `12 * 25 = 300` happens first, so the budget is wiped out. Reading left to right would give `7200`, but Python follows precedence, not reading order.
+**a) `0`**: `12 * 25 = 300` happens first, so the budget is wiped out. Reading left to right would give `7200`, but Python follows precedence, not reading order.
 
 ``` python
 print(300 - 12 * 25)
@@ -337,12 +337,12 @@ print(300 - 12 * 25)
 - Money is decimals, so margins are floats
 
 ``` python
-margin = 9.99 - 4.20
+margin = 9.99 - 7.40
 print(margin)
 print(type(margin))
 ```
 
-    5.79
+    2.59
     <class 'float'>
 
 ## `round()`: clean money
@@ -351,8 +351,8 @@ Division can leave a long tail of decimals. `round(value, 2)` keeps two. Cents.
 
 ``` python
 # Split a 10 EUR order three ways
-print(10 / 3)              # 3.3333333333333335 — ugly
-print(round(10 / 3, 2))    # 3.33 — a proper amount
+print(10 / 3)              # 3.3333333333333335, ugly
+print(round(10 / 3, 2))    # 3.33, a proper amount
 ```
 
     3.3333333333333335
@@ -416,7 +416,7 @@ print(f"{qty}x {item}: {total} EUR")
 
 . . .
 
-No `str()`, no `+` --- just the sentence you want.
+No `str()`, no `+`. Just the sentence you want.
 
 ## Formatting money with `:.2f`
 
@@ -424,8 +424,8 @@ Inside the braces, `:.2f` forces **two decimals**, exactly what a receipt needs:
 
 ``` python
 total = 23.00
-print(f"{total} EUR")          # 23.0 EUR — one decimal, looks broken on a receipt
-print(f"{total:.2f} EUR")      # 23.00 EUR — a proper price
+print(f"{total} EUR")          # 23.0 EUR: one decimal, looks broken on a receipt
+print(f"{total:.2f} EUR")      # 23.00 EUR, a proper price
 ```
 
     23.0 EUR
@@ -463,7 +463,7 @@ a\) `6` and `6` b) `6` and `2 * 3` c) `2 * 3` and `2 * 3`
 
 ## Answer: `f"{2 * 3}"` vs `"2 * 3"`
 
-**b) `6` and `2 * 3`** --- the f-string evaluates what's in the braces; plain quotes keep the text literal. The `f` and the `{ }` are what do the work.
+**b) `6` and `2 * 3`**: the f-string evaluates what's in the braces; plain quotes keep the text literal. The `f` and the `{ }` are what do the work.
 
 ``` python
 print(f"{2 * 3}")

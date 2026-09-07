@@ -12,7 +12,7 @@ def _():
 
 @app.cell(hide_code=True)
 def _():
-    # Helper — echoes the student's current answer as a "Your result" preview.
+    # Helper: echoes the student's current answer as a "Your result" preview.
     def show_result(value):
         if value is None:
             return ""
@@ -71,7 +71,7 @@ def _(mo):
 
 @app.cell
 def _(pd):
-    # Given — do not change this
+    # Given: do not change this
     orders_exb = pd.DataFrame(
         {
             "zone": ["Nord", "Sued", "Hafen", "Altstadt", "Nord", "Sued"],
@@ -84,21 +84,21 @@ def _(pd):
 
 @app.cell
 def _(orders_exb):
-    # YOUR CODE BELOW — replace None
+    # YOUR CODE BELOW: replace None
     bulk_count_exb = None
     return (bulk_count_exb,)
 
 
 @app.cell
 def _(orders_exb):
-    # YOUR CODE BELOW — replace None
+    # YOUR CODE BELOW: replace None
     bulk_revenue_exb = None
     return (bulk_revenue_exb,)
 
 
 @app.cell(hide_code=True)
 def _(bulk_count_exb, bulk_revenue_exb, mo, pd, show_result):
-    # Reactive check — re-runs automatically whenever the cells above change.
+    # Reactive check. Re-runs automatically whenever the cells above change.
     _expected_count = 3
     _expected_revenue = 57.0
     _result = None
@@ -110,9 +110,9 @@ def _(bulk_count_exb, bulk_revenue_exb, mo, pd, show_result):
     ):
         _ok = False
         _result = f"bulk_count_exb={bulk_count_exb!r}, bulk_revenue_exb={bulk_revenue_exb!r}"
-        _msg = "❌ One of these is still a whole column/table — `.sum()` needs to run on the mask (for the count) or on the filtered price column (for the revenue)."
+        _msg = "❌ One of these is still a whole column/table. `.sum()` needs to run on the mask (for the count) or on the filtered price column (for the revenue)."
     else:
-        # Coerce to plain scalars first — anything that can't be must
+        # Coerce to plain scalars first. Anything that can't be must
         # degrade to a message, never crash the check.
         try:
             _count = int(bulk_count_exb)
@@ -121,7 +121,7 @@ def _(bulk_count_exb, bulk_revenue_exb, mo, pd, show_result):
             _ok = False
             _count = None
             _revenue = None
-            _msg = "❌ These should be a whole number and a euro amount — check what your expressions actually return."
+            _msg = "❌ These should be a whole number and a euro amount. Check what your expressions actually return."
         else:
             _result = f"bulk_count_exb={bulk_count_exb}, bulk_revenue_exb={bulk_revenue_exb}"
             if _count == _expected_count and _revenue == _expected_revenue:
@@ -129,16 +129,16 @@ def _(bulk_count_exb, bulk_revenue_exb, mo, pd, show_result):
                 _msg = "✅ Correct! Three bulk orders worth 57.00 EUR."
             elif _count == 1 and _revenue == 24.0:
                 _ok = False
-                _msg = "❌ Bulk starts AT two items — which comparison includes the boundary, `>` or `>=`?"
+                _msg = "❌ Bulk starts AT two items. Which comparison includes the boundary, `>` or `>=`?"
             elif _revenue == 84.5:
                 _ok = False
-                _msg = "❌ That's the revenue of every order — filter to bulk orders before summing."
+                _msg = "❌ That's the revenue of every order. Filter to bulk orders before summing."
             elif _count == _expected_count:
                 _ok = False
-                _msg = "❌ The count is right, but the revenue isn't — filter `orders_exb` with the same mask before summing `total_eur`."
+                _msg = "❌ The count is right, but the revenue isn't. Filter `orders_exb` with the same mask before summing `total_eur`."
             else:
                 _ok = False
-                _msg = '❌ Not quite — start with the mask: `orders_exb["items"] >= 2`.'
+                _msg = '❌ Not quite. Start with the mask: `orders_exb["items"] >= 2`.'
     mo.callout(mo.md(_msg + show_result(_result)), kind="success" if _ok else "warn")
     return
 
@@ -147,7 +147,7 @@ def _(bulk_count_exb, bulk_revenue_exb, mo, pd, show_result):
 def _(mo):
     mo.accordion(
         {
-            "💡 Hint 1 (a nudge)": 'Same mask idea as NumPy — build it first (`orders_exb["items"] >= 2`); `.sum()` on the mask counts the `True`s, and indexing with that same mask before `.sum()` on `total_eur` gives the revenue.',
+            "💡 Hint 1 (a nudge)": 'Same mask idea as NumPy: build it first (`orders_exb["items"] >= 2`); `.sum()` on the mask counts the `True`s, and indexing with that same mask before `.sum()` on `total_eur` gives the revenue.',
             "💡 Hint 2 (the structure)": '_bulk = orders_exb[orders_exb["items"] >= ___]\nbulk_count_exb = int((orders_exb["items"] >= ___).sum())\nbulk_revenue_exb = float(_bulk["total_eur"].___())',
         }
     )

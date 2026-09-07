@@ -17,7 +17,7 @@ def _(mo):
     **Estimated time: 45–60 min · Core exercises: 7 (+ 2 bonus)**
 
     Overnight the city posted a decree: **no delivery after 22:00.** Your
-    kitchen has to know when it is allowed to send a courier out — and when it
+    kitchen has to know when it is allowed to send a courier out, and when it
     must say "sorry, we're closed". Tobi's plan ("we just deliver yesterday's
     orders the next morning") did not survive first contact with a lawyer.
 
@@ -37,7 +37,7 @@ def _():
 
 @app.cell(hide_code=True)
 def _():
-    # Helper — echoes a student's current answer as a "Your result" preview so
+    # Helper: echoes a student's current answer as a "Your result" preview so
     # they SEE their output, not just ✅/❌. Strings render in a fenced block;
     # everything else inline. See _template.py.
     def show_result(value):
@@ -91,7 +91,7 @@ def _(mo):
     if hour < 22:
         print("Open!")
     else:
-        print("Curfew — closed.")
+        print("Curfew: closed.")
     ```
 
     Read and run the worked example, then handle the curfew and a discount
@@ -107,12 +107,12 @@ def _():
     example_hour = 20
     example_open = example_hour < 22          # a boolean: True or False
     print("At", example_hour, "o'clock, open?", example_open)
-    # Three branches — Python runs the FIRST one whose condition is True:
+    # Three branches. Python runs the FIRST one whose condition is True:
     example_rating = 4
     if example_rating >= 5:
         print("A glowing review!")
     elif example_rating >= 3:
-        print("Fine — could be faster.")
+        print("Fine, could be faster.")
     else:
         print("Tobi answers the complaint phone.")
     return
@@ -137,7 +137,7 @@ def _(mo):
 @app.cell
 def _():
     order_hour_ex11 = 23
-    # YOUR CODE BELOW — compare order_hour_ex11 against the 22:00 curfew
+    # YOUR CODE BELOW: compare order_hour_ex11 against the 22:00 curfew
     is_open_ex11 = None
     return is_open_ex11, order_hour_ex11
 
@@ -149,10 +149,10 @@ def _(is_open_ex11, mo, show_result):
         _msg = "🔲 Exercise 1.1: not attempted yet."
     elif is_open_ex11 is False:
         ex11_ok = True
-        _msg = "✅ Exercise 1.1: `False` — 23:00 is past curfew, so the kitchen stays shut. The law is the law."
+        _msg = "✅ Exercise 1.1: `False`: 23:00 is past curfew, so the kitchen stays shut. The law is the law."
     elif is_open_ex11 is True:
         ex11_ok = False
-        _msg = "❌ Exercise 1.1: you got `True`, but 23:00 is *after* 22:00 — the kitchen should be closed."
+        _msg = "❌ Exercise 1.1: you got `True`, but 23:00 is *after* 22:00, so the kitchen should be closed."
     else:
         ex11_ok = False
         _msg = "❌ Exercise 1.1: `is_open_ex11` should be a boolean (`True`/`False`) from a comparison."
@@ -164,8 +164,8 @@ def _(is_open_ex11, mo, show_result):
 def _(mo):
     mo.accordion(
         {
-            "💡 Hint 1 (a nudge)": "The kitchen is open when the hour is *below* 22. A comparison like that gives you a `True`/`False` directly — no `if` needed.",
-            "💡 Hint 2 (the structure)": "is_open_ex11 = order_hour_ex11 ___ 22   — fill the blank with the comparison that means 'before'.",
+            "💡 Hint 1 (a nudge)": "The kitchen is open when the hour is *below* 22. A comparison like that gives you a `True`/`False` directly (no `if` needed).",
+            "💡 Hint 2 (the structure)": "is_open_ex11 = order_hour_ex11 ___ 22   (fill the blank with the comparison that means 'before').",
         }
     )
     return
@@ -194,7 +194,7 @@ def _(mo):
 @app.cell
 def _():
     order_total = 36.00
-    # YOUR CODE BELOW — pick the discount with if/elif/else, then round to 2 places
+    # YOUR CODE BELOW: pick the discount with if/elif/else, then round to 2 places
     final_ex12 = None
     return final_ex12, order_total
 
@@ -206,10 +206,10 @@ def _(final_ex12, mo, show_result):
         _msg = "🔲 Exercise 1.2: not attempted yet."
     elif isinstance(final_ex12, (int, float)) and round(final_ex12, 2) == 34.20:
         ex12_ok = True
-        _msg = "✅ Exercise 1.2: 34.20 EUR — 36 is in the ≥ 30 band, so 5 % off. The customer feels seen."
+        _msg = "✅ Exercise 1.2: 34.20 EUR. 36 is in the ≥ 30 band, so 5 % off. The customer feels seen."
     else:
         ex12_ok = False
-        _msg = "❌ Exercise 1.2: not 34.20 — 36.00 sits in the ≥ 30 (but not ≥ 50) band, so take 5 % off."
+        _msg = "❌ Exercise 1.2: not 34.20: 36.00 sits in the ≥ 30 (but not ≥ 50) band, so take 5 % off."
     mo.md(_msg + show_result(final_ex12))
     return (ex12_ok,)
 
@@ -219,7 +219,7 @@ def _(mo):
     mo.accordion(
         {
             "💡 Hint 1 (a nudge)": "Check the biggest threshold first. `elif` only runs when the `if` above it was `False`, so order matters: test ≥ 50 before ≥ 30.",
-            "💡 Hint 2 (the structure)": "if order_total >= 50:\n    final_ex12 = round(order_total * ___, 2)\nelif order_total >= 30:\n    final_ex12 = round(order_total * ___, 2)\nelse:\n    final_ex12 = round(order_total, 2)   — fill the two multipliers (10 % off, 5 % off).",
+            "💡 Hint 2 (the structure)": "if order_total >= 50:\n    final_ex12 = round(order_total * ___, 2)\nelif order_total >= 30:\n    final_ex12 = round(order_total * ___, 2)\nelse:\n    final_ex12 = round(order_total, 2)   (fill the two multipliers, 10 % off and 5 % off).",
         }
     )
     return
@@ -286,7 +286,7 @@ def _(mo):
 @app.cell(hide_code=True)
 def _(mo, trace_ex21):
     if trace_ex21.value is None:
-        _msg = "🔲 Pick a prediction above first — commit before you peek!"
+        _msg = "🔲 Pick a prediction above first. Commit before you peek!"
     elif trace_ex21.value == "0, 2, 4":
         _msg = (
             "✅ Correct: `range(3)` counts **0, 1, 2** (it starts at 0), and "
@@ -294,8 +294,8 @@ def _(mo, trace_ex21):
         )
     else:
         _msg = (
-            "❌ Not quite. `range(3)` starts at **0**, so `i` is 0, 1, 2 — "
-            "doubled, that prints **0, 2, 4**. (Ungraded — the point is the "
+            "❌ Not quite. `range(3)` starts at **0**, so `i` is 0, 1, 2. "
+            "Doubled, that prints **0, 2, 4**. (Ungraded: the point is the "
             "prediction.)"
         )
     mo.callout(mo.md(_msg), kind="info")
@@ -324,7 +324,7 @@ def _():
 
 @app.cell
 def _(day_orders):
-    # YOUR CODE BELOW — start a running total at 0, add each order with a for loop
+    # YOUR CODE BELOW: start a running total at 0, add each order with a for loop
     revenue_ex22 = None
     return (revenue_ex22,)
 
@@ -339,7 +339,7 @@ def _(mo, revenue_ex22, show_result):
         _msg = "✅ Exercise 2.2: 46.59 EUR for the day. The real dashboard finally agrees with reality."
     else:
         ex22_ok = False
-        _msg = "❌ Exercise 2.2: not 46.59 — start a total at 0 and add every number in `day_orders`."
+        _msg = "❌ Exercise 2.2: not 46.59. Start a total at 0 and add every number in `day_orders`."
     mo.md(_msg + show_result(revenue_ex22))
     return (ex22_ok,)
 
@@ -349,7 +349,7 @@ def _(mo):
     mo.accordion(
         {
             "💡 Hint 1 (a nudge)": "Make a variable that starts at 0. Inside the loop, add the current order to it. After the loop, round it.",
-            "💡 Hint 2 (the structure)": "revenue_ex22 = 0\nfor order in day_orders:\n    revenue_ex22 = revenue_ex22 + ___\nrevenue_ex22 = round(revenue_ex22, 2)   — the blank is the loop variable.",
+            "💡 Hint 2 (the structure)": "revenue_ex22 = 0\nfor order in day_orders:\n    revenue_ex22 = revenue_ex22 + ___\nrevenue_ex22 = round(revenue_ex22, 2)   (the blank is the loop variable).",
         }
     )
     return
@@ -365,7 +365,7 @@ def _(mo):
     across `[12.50, 10.00, 8.90, 15.20]`. His dashboard says **2**, but he
     counted **3** on his fingers, and this time Tobi is right.
 
-    His loop is below. It runs fine. The logic is just slightly off. Fix the
+    His loop is below. It runs fine, but the logic is just slightly off. Fix the
     comparison so `big_orders_ex23` becomes **3**.
     """
     )
@@ -374,7 +374,7 @@ def _(mo):
 
 @app.cell
 def _():
-    # TOBI'S CODE — "at least 10 EUR" should include an order of exactly 10.00.
+    # TOBI'S CODE: "at least 10 EUR" should include an order of exactly 10.00.
     big_order_prices = [12.50, 10.00, 8.90, 15.20]
     big_orders_ex23 = 0
     for _price in big_order_prices:
@@ -387,7 +387,7 @@ def _():
 def _(big_orders_ex23, mo, show_result):
     if big_orders_ex23 == 3:
         ex23_ok = True
-        _msg = "✅ Exercise 2.3: 3 big orders — the 10.00 EUR order counts too. Tobi's fingers are vindicated."
+        _msg = "✅ Exercise 2.3: 3 big orders. The 10.00 EUR order counts too. Tobi's fingers are vindicated."
     else:
         ex23_ok = False
         _msg = (
@@ -403,7 +403,7 @@ def _(mo):
     mo.accordion(
         {
             "💡 Hint 1 (a nudge)": "'At least 10' means 10 counts. `> 10` skips a price that is exactly 10. Which comparison includes the boundary?",
-            "💡 Hint 2 (the structure)": "if _price ___ 10:   — swap `>` for the operator that means 'greater than or equal to'.",
+            "💡 Hint 2 (the structure)": "if _price ___ 10:   Swap `>` for the operator that means 'greater than or equal to'.",
         }
     )
     return
@@ -438,7 +438,7 @@ def _(mo):
     ### Exercise 3.1 (core) — fix the daily special
 
     The menu system received `raw_special = "  PIZZA CALZONE  "` (given below).
-    Produce `clean_ex31` that reads exactly `"Pizza Calzone"` — no surrounding
+    Produce `clean_ex31` that reads exactly `"Pizza Calzone"`: no surrounding
     spaces, each word Capitalized.
 
     A misspelled method (`.tittle()`) turns the cell **red**, and a red cell
@@ -452,7 +452,7 @@ def _(mo):
 @app.cell
 def _():
     raw_special = "  PIZZA CALZONE  "
-    # YOUR CODE BELOW — strip the spaces and Title-Case it (chain two methods)
+    # YOUR CODE BELOW: strip the spaces and Title-Case it (chain two methods)
     clean_ex31 = None
     return clean_ex31, raw_special
 
@@ -464,12 +464,12 @@ def _(clean_ex31, mo, show_result):
         _msg = "🔲 Exercise 3.1: not attempted yet."
     elif clean_ex31 == "Pizza Calzone":
         ex31_ok = True
-        _msg = "✅ Exercise 3.1: `Pizza Calzone` — presentable at last. The menu no longer shouts."
+        _msg = "✅ Exercise 3.1: `Pizza Calzone`, presentable at last. The menu no longer shouts."
     else:
         ex31_ok = False
         _msg = (
-            "❌ Exercise 3.1: not an exact match. You want `\"Pizza Calzone\"` — "
-            "strip the spaces, then Title-Case the words."
+            "❌ Exercise 3.1: not an exact match. You want `\"Pizza Calzone\"`. "
+            "Strip the spaces, then Title-Case the words."
         )
     mo.md(_msg + show_result(clean_ex31))
     return (ex31_ok,)
@@ -479,8 +479,8 @@ def _(clean_ex31, mo, show_result):
 def _(mo):
     mo.accordion(
         {
-            "💡 Hint 1 (a nudge)": "Chain two methods: first drop the outer spaces, then fix the capitalization. The order matters — strip first.",
-            "💡 Hint 2 (the structure)": "clean_ex31 = raw_special.___().___()   — one method removes spaces, the other Capitalizes Each Word.",
+            "💡 Hint 1 (a nudge)": "Chain two methods: first drop the outer spaces, then fix the capitalization. The order matters: strip first.",
+            "💡 Hint 2 (the structure)": "clean_ex31 = raw_special.___().___()   (one method removes spaces, the other Capitalizes Each Word).",
         }
     )
     return
@@ -496,7 +496,7 @@ def _(mo):
     ## 🥊 Boss exercise (core) — the price war
 
     A letter arrives from **MunchCorp**: they now sell your signature dish at
-    **8.50 EUR**. You start at **11.90** and decide to cut the price by **10 %
+    8.50 EUR. You start at 11.90 and decide to cut the price by **10 %
     each round** until you finally **undercut** them (drop *below* 8.50).
 
     A **`while` loop** repeats *as long as* a condition holds. Count how many
@@ -515,19 +515,19 @@ def _(mo):
 
 @app.cell
 def _():
-    # Worked example (read + run this) — a while loop that always ends,
+    # Worked example (read + run this): a while loop that always ends,
     # because the number it watches shrinks on every pass:
     _stickers = 3
     while _stickers > 0:
         _stickers = _stickers - 1
-        print("Tobi hands out a sticker —", _stickers, "left")
+        print("Tobi hands out a sticker:", _stickers, "left")
     print("Out of stickers. Tobi is devastated.")
     return
 
 
 @app.cell
 def _():
-    # YOUR CODE BELOW — start at 11.90, count rounds while you're not yet under 8.50
+    # YOUR CODE BELOW: start at 11.90, count rounds while you're not yet under 8.50
     rounds_ex40 = None
     return (rounds_ex40,)
 
@@ -543,18 +543,18 @@ def _(mo, rounds_ex40, show_result):
         for _ in range(rounds_ex40):
             _price = round(_price * 0.9, 2)
         _msg = (
-            f"✅ Boss exercise: **4 rounds** and the price drops to {_price:.2f} EUR — "
+            f"✅ Boss exercise: **4 rounds** and the price drops to {_price:.2f} EUR, "
             "just under MunchCorp's 8.50. Tobi high-fives a lamppost."
         )
     else:
         ex40_ok = False
         if isinstance(rounds_ex40, float):
             _msg = (
-                "❌ Boss exercise: looks like you stored the price — the check "
+                "❌ Boss exercise: looks like you stored the price. The check "
                 "wants the number of rounds (a whole number of cuts)."
             )
         else:
-            _msg = "❌ Boss exercise: not 4 — count each 10 % cut until the price first drops below 8.50."
+            _msg = "❌ Boss exercise: not 4. Count each 10 % cut until the price first drops below 8.50."
     mo.md(_msg + show_result(rounds_ex40))
     return (ex40_ok,)
 
@@ -564,7 +564,7 @@ def _(mo):
     mo.accordion(
         {
             "💡 Hint 1 (a nudge)": "Keep two variables: the current price and a counter. Each pass of the loop cuts the price and adds 1 to the counter. Stop once the price is below 8.50.",
-            "💡 Hint 2 (the structure)": "price = 11.90\nrounds_ex40 = 0\nwhile price >= 8.50:\n    price = round(price * ___, 2)\n    rounds_ex40 = rounds_ex40 + ___   — fill the 10 %-off multiplier and the step.",
+            "💡 Hint 2 (the structure)": "price = 11.90\nrounds_ex40 = 0\nwhile price >= 8.50:\n    price = round(price * ___, 2)\n    rounds_ex40 = rounds_ex40 + ___   (fill the 10 %-off multiplier and the step).",
         }
     )
     return
@@ -592,7 +592,7 @@ def _(mo):
 
 @app.cell
 def _():
-    # YOUR CODE BELOW — replace None with "a", "b", or "c"
+    # YOUR CODE BELOW: replace None with "a", "b", or "c"
     answer_ex50 = None
     return (answer_ex50,)
 
@@ -605,7 +605,7 @@ def _(answer_ex50, mo):
     elif str(answer_ex50).strip().lower() == "a":
         ex50_ok = True
         _msg = (
-            "✅ Quiz: **a**. `range(5)` gives 0, 1, 2, 3, 4 — five passes. "
+            "✅ Quiz: **a**. `range(5)` gives 0, 1, 2, 3, 4: five passes. "
             "`range(1, 5)` gives only four, and `range(0, 5, 2)` steps by 2 → just three."
         )
     else:
@@ -632,7 +632,7 @@ def _(mo):
 
 @app.cell
 def _():
-    # YOUR CODE BELOW — one list, 10 % off each price, rounded to 2 decimals
+    # YOUR CODE BELOW: one list, 10 % off each price, rounded to 2 decimals
     discounted_ex60 = None
     return (discounted_ex60,)
 
@@ -644,10 +644,10 @@ def _(discounted_ex60, mo, show_result):
         _msg = "🔲 Bonus comprehension: not attempted yet."
     elif discounted_ex60 == [11.25, 9.0, 8.01, 13.68]:
         ex60_ok = True
-        _msg = "✅ Bonus comprehension: `[11.25, 9.0, 8.01, 13.68]` — a whole loop in one line. Session IV makes this a habit."
+        _msg = "✅ Bonus comprehension: `[11.25, 9.0, 8.01, 13.68]`, a whole loop in one line. Session IV makes this a habit."
     else:
         ex60_ok = False
-        _msg = "❌ Bonus comprehension: expected `[11.25, 9.0, 8.01, 13.68]` — 10 % off each price, each `round(..., 2)`."
+        _msg = "❌ Bonus comprehension: expected `[11.25, 9.0, 8.01, 13.68]`: 10 % off each price, each `round(..., 2)`."
     mo.md(_msg + show_result(discounted_ex60))
     return (ex60_ok,)
 
@@ -657,7 +657,7 @@ def _(mo):
     mo.accordion(
         {
             "💡 Hint 1 (a nudge)": "A comprehension has the shape `[ do-something-to price   for price in the-list ]`. 'Do something' here is 90 % of the price, rounded.",
-            "💡 Hint 2 (the structure)": "discounted_ex60 = [round(price * ___, 2) for price in [12.50, 10.00, 8.90, 15.20]]   — fill the 10 %-off multiplier.",
+            "💡 Hint 2 (the structure)": "discounted_ex60 = [round(price * ___, 2) for price in [12.50, 10.00, 8.90, 15.20]]   (fill the 10 %-off multiplier).",
         }
     )
     return
@@ -696,10 +696,10 @@ def _(mo, offer_slider_ex61):
         _msg = "🤝 **DEAL at 7.25 EUR/kg!** The supplier shakes your hand. Falafel is secured."
         _kind = "success"
     elif _offer < _secret:
-        _msg = f"📉 {_offer:.2f} EUR/kg is **too low** — the supplier laughs and looks away."
+        _msg = f"📉 {_offer:.2f} EUR/kg is **too low**. The supplier laughs and looks away."
         _kind = "warn"
     else:
-        _msg = f"📈 {_offer:.2f} EUR/kg is **too high** — you'd be leaving money on the table."
+        _msg = f"📈 {_offer:.2f} EUR/kg is **too high** (you'd be leaving money on the table)."
         _kind = "info"
     mo.callout(mo.md(_msg), kind=_kind)
     return
@@ -710,13 +710,13 @@ def _(mo, offer_slider_ex61):
 # ─────────────────────────────────────────────────────────────────────────
 @app.cell(hide_code=True)
 def _(ex11_ok, ex12_ok, ex22_ok, ex23_ok, ex31_ok, ex40_ok, ex50_ok, mo):
-    # Progress cell — core exercises only (the trace and bonuses don't count).
+    # Progress cell: core exercises only (the trace and bonuses don't count).
     _checks = [ex11_ok, ex12_ok, ex22_ok, ex23_ok, ex31_ok, ex40_ok, ex50_ok]
     _done = sum(_checks)
     _total = len(_checks)
     _tobi = "Tobi is genuinely impressed!" if _done == _total else "Tobi remains skeptical."
     mo.callout(
-        mo.md(f"**Core exercises: {_done}/{_total} ✅** — {_tobi}"),
+        mo.md(f"**Core exercises: {_done}/{_total} ✅** · {_tobi}"),
         kind="success" if _done == _total else "neutral",
     )
     return
@@ -728,7 +728,7 @@ def _(mo):
         r"""
     ## Before you leave 📦
 
-    1. Check the progress box above — all seven core exercises green?
+    1. Check the progress box above: all seven core exercises green?
     2. **Download your work**: menu → Download → *Download Python code*.
        Reloading this exact tab (Cmd/Ctrl+R) keeps your work, but closing the
        tab and reopening the link starts you fresh. The download is the only

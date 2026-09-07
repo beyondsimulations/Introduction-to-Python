@@ -5,9 +5,9 @@ subtitle: "Version control for your project, from Zed"
 
 ## Why version control
 
-When you write code over several days, you keep changing files. Without a record, you cannot tell what changed, when, or why, and you cannot go back to a version that worked. **Version control** is a tool that saves snapshots of your project so you always have a history you can return to. In this course we use **git**, the standard tool for this, and **GitHub**, a website that stores a copy of your project online so a partner can see it too.
+When you write code over several days, you keep changing files. Without a record, you cannot tell what changed, when, or why, and you cannot go back to a version that worked. **Version control** is a tool that saves snapshots of your project so you always have a history you can return to. In this course we use git, the standard tool for this, and GitHub, a website that stores a copy of your project online so a partner can see it too.
 
-You do not need to understand how git works inside. You need five simple actions, and you can do all of them from **Zed**, the editor you set up before Session X. Zed has a **git panel** (a side panel that shows your changes) and, like everything in Zed, git actions are available from the **command palette** (`Cmd+Shift+P` on macOS, `Ctrl+Shift+P` on Windows/Linux). This page uses the command-palette names: they always work, whatever the panel looks like. We show the matching **terminal command** next to each action as well, because the words are the same everywhere, and you will see those commands in videos, tutorials, and error messages. Learn the word once and it works in both places.
+You do not need to understand how git works inside. You need five simple actions, and you can do all of them from Zed, the editor you set up before Session X. Zed has a git panel (a side panel that shows your changes) and, like everything in Zed, git actions are available from the **command palette** (`Cmd+Shift+P` on macOS, `Ctrl+Shift+P` on Windows/Linux). This page uses the command-palette names: they always work, whatever the panel looks like. We show the matching terminal command next to each action as well, because the words are the same everywhere, and you will see those commands in videos, tutorials, and error messages. Learn the word once and it works in both places.
 
 ::: callout-note
 **Before Session X**, do only the [one-time setup](#one-time-setup) below: install git and `gh`, log in once. It needs neither uv nor Zed. Everything else on this page is what we do together in Session X.
@@ -88,7 +88,7 @@ git clone https://github.com/name/project.git
 
 ## GitHub setup and authentication
 
-Before any push or pull can reach GitHub, your computer has to prove it is allowed to (this is **authentication**). Signing in to the Zed app itself does **not** do this, it only unlocks Zed's own collaboration and AI features. Git needs its own separate setup, and the reliable way to do it is the **GitHub CLI**, a small terminal tool called `gh`. You do this **once per computer**.
+Before any push or pull can reach GitHub, your computer has to prove it is allowed to (this is **authentication**). Signing in to the Zed app itself does not do this, it only unlocks Zed's own collaboration and AI features. Git needs its own separate setup, and the reliable way to do it is the GitHub CLI, a small terminal tool called `gh`. You do this once per computer.
 
 ::: callout-warning
 Signing in to Zed is not the same as authenticating git. Even fully signed in to Zed, a push will fail until you complete the `gh` steps below. If a push ever asks for a password or reports a permission or authentication error, the fix is to redo these steps, not to sign in to Zed again.
@@ -110,7 +110,7 @@ Signing in to Zed is not the same as authenticating git. Even fully signed in to
    gh auth login
    ```
 
-   Answer the prompts: choose **GitHub.com**, choose **HTTPS** as the protocol, and authenticate through the **browser** (it shows you a short code to type into a GitHub page). When it asks *"Authenticate Git with your GitHub credentials?"*, answer **yes**. This runs `gh auth setup-git` for you, which is the step that lets git push and pull. (If you answered no by mistake, you can run it yourself afterwards:)
+   Answer the prompts: choose GitHub.com, choose HTTPS as the protocol, and authenticate through the browser (it shows you a short code to type into a GitHub page). When it asks *"Authenticate Git with your GitHub credentials?"*, answer **yes**. This runs `gh auth setup-git` for you, which is the step that lets git push and pull. (If you answered no by mistake, you can run it yourself afterwards:)
 
    ```bash
    gh auth setup-git
@@ -140,7 +140,7 @@ Signing in to the Zed app (`client: sign in` in the command palette) is optional
 
 A project in this course begins on the website and comes down to your computer, never the other way round. Four steps:
 
-1. On [github.com](https://github.com), click **New repository**. Give it a name, set it to **Private**, tick **Add a README file**, and choose the **Python** `.gitignore` template (it keeps the `.venv` folder out of git). Click **Create repository**.
+1. On [github.com](https://github.com), click New repository. Give it a name, set it to Private, tick **Add a README file**, and choose the Python `.gitignore` template (it keeps the `.venv` folder out of git). Click Create repository.
 2. Copy the repository's **HTTPS URL** from the green *Code* button (`https://github.com/<you>/<repo>.git`). Use HTTPS, not SSH: the login you set up above only works over HTTPS.
 3. In Zed, run **`git: clone`**, paste the URL, and pick the folder where you keep course work (terminal: `git clone <url>`). Zed opens the new folder; everything below happens **inside** it.
 4. In Zed's built-in terminal (`` Ctrl+` ``, it opens inside your workspace) run `uv init --no-package`. It adds `main.py`, `pyproject.toml` and `.python-version` next to the README. Commit and push, and the project is live on GitHub.
@@ -177,7 +177,7 @@ If you and your partner both change **the same lines** of the same file, git can
 Each entry gives the **symptom** first, then the **fix**.
 
 **Symptom: a push is rejected with `! [rejected]`, "fetch first", or "the remote contains work that you do not have locally".**
-Fix: your partner pushed commits that you do not have yet. This is completely **normal in a pair** and is *not* an authentication problem. Pull first (**`git: pull`** or `git pull`), then push again. If the pull complains about "divergent branches", run the one-time command from the setup section (`git config --global pull.rebase false`), then pull again. If the pull instead reports a **conflict**, see [What a conflict looks like](#what-a-conflict-looks-like). That pull is exactly when one can appear. Never force anything: no `--force`, no "force push".
+Fix: your partner pushed commits that you do not have yet. This is completely normal in a pair and is *not* an authentication problem. Pull first (**`git: pull`** or `git pull`), then push again. If the pull complains about "divergent branches", run the one-time command from the setup section (`git config --global pull.rebase false`), then pull again. If the pull instead reports a conflict, see [What a conflict looks like](#what-a-conflict-looks-like). That pull is exactly when one can appear. Never force anything: no `--force`, no "force push".
 
 **Symptom: you committed, but your partner still does not see your changes.**
 Fix: a commit only saves the snapshot **on your computer**. It reaches GitHub (and your partner) when you push. Run **`git: push`**.

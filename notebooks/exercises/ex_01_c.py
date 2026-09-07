@@ -12,7 +12,7 @@ def _():
 
 @app.cell(hide_code=True)
 def _():
-    # Helper — echoes the student's current answer as a "Your result" preview.
+    # Helper: echoes the student's current answer as a "Your result" preview.
     def show_result(value):
         if value is None:
             return ""
@@ -39,7 +39,7 @@ def _(mo):
 
 @app.cell
 def _():
-    # Given — do not change these
+    # Given: do not change these
     item = "Falafel Wrap"
     qty = 2
     total = 13.80
@@ -48,14 +48,14 @@ def _():
 
 @app.cell
 def _():
-    # YOUR CODE BELOW — replace None
+    # YOUR CODE BELOW: replace None
     line_exc = None
     return (line_exc,)
 
 
 @app.cell(hide_code=True)
 def _(line_exc, mo, show_result):
-    # Reactive check — re-runs automatically whenever the cell above changes.
+    # Reactive check. Re-runs automatically whenever the cell above changes.
     if line_exc is None:
         _ok = False
         _msg = "🔲 Not attempted yet."
@@ -64,7 +64,7 @@ def _(line_exc, mo, show_result):
         _msg = "✅ Correct! The receipt printer purrs."
     else:
         _ok = False
-        _msg = "❌ Not quite — check the format `qty x item: total:.2f EUR`."
+        _msg = "❌ Not quite. Check the format `qty x item: total:.2f EUR`."
     mo.callout(mo.md(_msg + show_result(line_exc)), kind="success" if _ok else "warn")
     return
 

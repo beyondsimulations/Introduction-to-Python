@@ -12,18 +12,18 @@ format:
 
 # 📋 Checkpoint 2
 
-**Before the doors open.** The first **40 minutes** are the checkpoint. It starts **now**.
+**Before the doors open.** The first 40 minutes are the checkpoint. It starts now.
 
 - **Individual work**: no AI, no neighbors, no chat
 - The **link and QR** are handed out in class. Open it and start
 - ~6 short tasks: write code, trace code, fix a bug, answer a multiple choice
 - It sweeps **Sessions III--IV**: functions, scope, classes, lists and dictionaries, comprehensions
 
-<!-- QR handed out live — never in the deck -->
+<!-- QR handed out live, never in the deck -->
 
 ## When you're done
 
-Menu → *Download* → *Download Python code* → upload the `.py` to the **"Checkpoint 2"** assignment on Moodle, **before the 40 minutes are up**. **No retakes**: one sitting.
+Menu → *Download* → *Download Python code* → upload the `.py` to the **"Checkpoint 2"** assignment on Moodle, before the 40 minutes are up. **No retakes**: one sitting.
 
 . . .
 
@@ -43,7 +43,7 @@ At 3 AM, running on his fourth energy drink, Tobi rewrote the **entire checkout*
 
 . . .
 
-So today the code learns to survive things going wrong. We read a **traceback**, catch failures with **try/except**, and let our own code **refuse** bad input.
+So today the code learns to survive things going wrong. We read a **traceback**, catch failures with try/except, and let our own code refuse bad input.
 
 # <span class="flow">Reading the Explosion</span>
 
@@ -86,9 +86,9 @@ Two facts and you know where to go: **line 12**, and it's a **`ValueError`**. Th
 
 A handful of exception types cover almost everything you'll hit. The first three:
 
-- **`ValueError`** --- right *type*, senseless *value*: `int("lots")`
-- **`TypeError`** --- the wrong type entirely: `"Bowl " + 9`
-- **`KeyError`** --- a dictionary key that isn't there: `table_map["C3"]`
+- **`ValueError`**: right *type*, senseless *value*, as in `int("lots")`
+- **`TypeError`**: the wrong type entirely, like `"Bowl " + 9`
+- **`KeyError`**: a dictionary key that isn't there (`table_map["C3"]`)
 
 . . .
 
@@ -98,8 +98,8 @@ Each one is Python refusing to guess. `int("lots")` has no sensible number; `"Bo
 
 The other two you'll meet constantly:
 
-- **`IndexError`** --- a list position past the end: `seats[9]` on a 3-item list
-- **`ZeroDivisionError`** --- dividing by zero: `88.00 / 0` when splitting a bill among no guests
+- **`IndexError`**: a list position past the end, like `seats[9]` on a 3-item list
+- **`ZeroDivisionError`**: dividing by zero, as in `88.00 / 0` when splitting a bill among no guests
 
 . . .
 
@@ -162,7 +162,7 @@ a\) raises `TypeError` b) prints `Party of 3` c) raises `ValueError`
 
 ## Answer: text and numbers won't mix
 
-**a) raises `TypeError`** --- `+` can glue two strings *or* add two numbers, but it refuses to mix a string and an `int`. The fix is to convert first (`str(guests)`):
+**a) raises `TypeError`**: `+` can glue two strings *or* add two numbers, but it refuses to mix a string and an `int`. The fix is to convert first (`str(guests)`):
 
 ``` python
 guests = 3
@@ -250,7 +250,7 @@ An **`assert`** guards an *invariant*, a fact that must **always** hold. If it's
 
 ``` python
 subtotal = 9.60
-assert subtotal >= 0, "subtotal went negative — bug upstream"
+assert subtotal >= 0, "subtotal went negative: bug upstream"
 print("passed the tripwire:", subtotal)
 ```
 
@@ -305,7 +305,7 @@ a\) it never runs: the program already stopped b) the `try` block runs a second 
 
 ## Answer: it carries on
 
-**c) it runs normally** --- that's the whole point of `try` / `except`. It *handles* the failure; once the `except` has run, control simply drops to the code after it, as if nothing had gone wrong:
+**c) it runs normally**. That's the whole point of `try` / `except`. It *handles* the failure; once the `except` has run, control simply drops to the code after it, as if nothing had gone wrong:
 
 ``` python
 def to_price(text):
@@ -314,7 +314,7 @@ def to_price(text):
     except ValueError:
         return 0.0
 
-print(to_price("bad"))           # 0.0 — recovered
+print(to_price("bad"))           # 0.0, recovered
 print("checkout still running")  # ...and we get here
 ```
 
@@ -350,14 +350,14 @@ First **predict** what happens, then run it.
 ## Three things to remember
 
 1.  A **traceback** is a crash report you read **bottom-up**: the last line names *what* broke, the lines above show *where*. That's an address and a reason, not a wall of noise
-2.  **`try` / `except`** catches a failure so the program **recovers** instead of stopping. Catch the **specific** type (`except ValueError`), never a bare `except` that also hides your own typos
-3.  Defend your own code: **`raise`** to refuse bad input (prices ≥ 0), **`assert`** to guard an invariant that must always hold, and **fall back** to a safe default when a conversion fails
+2.  **`try` / `except`** catches a failure so the program recovers instead of stopping. Catch the specific type (`except ValueError`), never a bare `except` that also hides your own typos
+3.  Defend your own code: **`raise`** to refuse bad input (prices ≥ 0), **`assert`** to guard an invariant that must always hold, and fall back to a safe default when a conversion fails
 
 . . .
 
 > **Note**
 >
-> **Next time --- Episode 6** starts with **Checkpoint 3**, which sweeps everything from Episodes 1--5, so keep this notebook and the last four close. Then someone new walks into the shop, uncaps a marker, and writes one question on the whiteboard. **Part II begins.**
+> **Next time --- Episode 6** starts with Checkpoint 3, which sweeps everything from Episodes 1--5, so keep this notebook and the last four close. Then someone new walks into the shop, uncaps a marker, and writes one question on the whiteboard. Part II begins.
 
 # <span class="flow">Literature</span>
 
@@ -375,5 +375,3 @@ First **predict** what happens, then run it.
 . . .
 
 For more, see the [literature list](../general/literature.qmd) of this course.
-</content>
-</invoke>

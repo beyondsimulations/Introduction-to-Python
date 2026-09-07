@@ -12,7 +12,7 @@ def _():
 
 @app.cell(hide_code=True)
 def _():
-    # Helper — echoes the student's current answer as a "Your result" preview.
+    # Helper: echoes the student's current answer as a "Your result" preview.
     def show_result(value):
         if value is None:
             return ""
@@ -71,23 +71,23 @@ def _(mo):
 
 @app.cell
 def _(math):
-    # YOUR CODE BELOW — replace None
+    # YOUR CODE BELOW: replace None
     boxes_exa = None
     return (boxes_exa,)
 
 
 @app.cell(hide_code=True)
 def _(boxes_exa, mo, show_result):
-    # Reactive check — re-runs automatically whenever the cell above changes.
+    # Reactive check. Re-runs automatically whenever the cell above changes.
     if boxes_exa is None:
         _ok = False
         _msg = "🔲 Not attempted yet."
     elif isinstance(boxes_exa, int) and boxes_exa == 9:
         _ok = True
-        _msg = "✅ Correct! Nine boxes — the investor breakfast is covered with quiches to spare."
+        _msg = "✅ Correct! Nine boxes. The investor breakfast is covered with quiches to spare."
     else:
         _ok = False
-        _msg = "❌ Not quite — 200 / 24 isn't a whole number, and you need the next whole box up. Which `math` function rounds up?"
+        _msg = "❌ Not quite. 200 / 24 isn't a whole number, and you need the next whole box up. Which `math` function rounds up?"
     mo.callout(mo.md(_msg + show_result(boxes_exa)), kind="success" if _ok else "warn")
     return
 
@@ -96,7 +96,7 @@ def _(boxes_exa, mo, show_result):
 def _(mo):
     mo.accordion(
         {
-            "💡 Hint 1 (a nudge)": "200 / 24 gives 8.33... — you need the next whole box, and math has a function for exactly that.",
+            "💡 Hint 1 (a nudge)": "200 / 24 gives 8.33... You need the next whole box, and math has a function for exactly that.",
             "💡 Hint 2 (the structure)": "boxes_exa = math.___(200 / 24)",
         }
     )

@@ -12,7 +12,7 @@ def _():
 
 @app.cell(hide_code=True)
 def _():
-    # Helper — echoes the student's current answer as a "Your result" preview.
+    # Helper: echoes the student's current answer as a "Your result" preview.
     def show_result(value):
         if value is None:
             return ""
@@ -76,27 +76,27 @@ def _(mo):
 
 @app.cell
 def _(random):
-    # YOUR CODE BELOW — replace None
+    # YOUR CODE BELOW: replace None
     demand_exb = None
     return (demand_exb,)
 
 
 @app.cell(hide_code=True)
 def _(demand_exb, mo, show_result):
-    # Reactive check — re-runs automatically whenever the cell above changes.
+    # Reactive check. Re-runs automatically whenever the cell above changes.
     _expected = [10, 18, 18, 25, 14, 20, 11]
     if demand_exb is None:
         _ok = False
         _msg = "🔲 Not attempted yet."
     elif demand_exb == _expected:
         _ok = True
-        _msg = "✅ Correct! Same seven numbers, every single run — the investor can finally trust the demo."
+        _msg = "✅ Correct! Same seven numbers, every single run. The investor can finally trust the demo."
     elif isinstance(demand_exb, list) and len(demand_exb) == 7:
         _ok = False
-        _msg = "❌ Right shape, wrong numbers — check three things: seed **21** (not another number), seeded once *before* the loop, and each draw is `random.randint(5, 25)`."
+        _msg = "❌ Right shape, wrong numbers. Check three things: seed **21** (not another number), seeded once *before* the loop, and each draw is `random.randint(5, 25)`."
     else:
         _ok = False
-        _msg = "❌ Not quite — build a list of 7 draws, one `random.randint(5, 25)` call per day."
+        _msg = "❌ Not quite. Build a list of 7 draws, one `random.randint(5, 25)` call per day."
     mo.callout(mo.md(_msg + show_result(demand_exb)), kind="success" if _ok else "warn")
     return
 

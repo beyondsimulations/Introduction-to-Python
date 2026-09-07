@@ -12,7 +12,7 @@ def _():
 
 @app.cell(hide_code=True)
 def _():
-    # Helper — echoes the student's current answer as a "Your result" preview.
+    # Helper: echoes the student's current answer as a "Your result" preview.
     def show_result(value):
         if value is None:
             return ""
@@ -56,17 +56,17 @@ def _(mo):
 @app.cell(hide_code=True)
 def _(mo, trace_exa):
     if trace_exa.value is None:
-        _msg = "🔲 Pick a prediction above first — commit before you peek!"
+        _msg = "🔲 Pick a prediction above first. Commit before you peek!"
     elif trace_exa.value == "b) ValueError":
         _msg = (
-            "✅ Correct: `int()` refuses decimal **strings** — reading the "
+            "✅ Correct: `int()` refuses decimal **strings**, and reading the "
             "last line of the traceback tells you this."
         )
     else:
         _msg = (
-            "❌ Not quite. `int()` refuses decimal **strings** — reading the "
+            "❌ Not quite. `int()` refuses decimal **strings**, and reading the "
             "last line of the traceback tells you this. (This one is "
-            "ungraded — the point is the prediction.)"
+            "ungraded. The point is the prediction.)"
         )
     mo.callout(mo.md(_msg), kind="info")
     return
@@ -85,21 +85,21 @@ def _(mo):
 
 @app.cell
 def _():
-    # Given — do not change this
+    # Given: do not change this
     qty_text = "3.5"
     return (qty_text,)
 
 
 @app.cell
 def _():
-    # YOUR CODE BELOW — replace None
+    # YOUR CODE BELOW: replace None
     qty_exa = None
     return (qty_exa,)
 
 
 @app.cell(hide_code=True)
 def _(mo, qty_exa, show_result):
-    # Reactive check — re-runs automatically whenever the cell above changes.
+    # Reactive check. Re-runs automatically whenever the cell above changes.
     if qty_exa is None:
         _ok = False
         _msg = "🔲 Not attempted yet."
@@ -108,7 +108,7 @@ def _(mo, qty_exa, show_result):
         _msg = "✅ Correct! The quantity now arrives as a proper number."
     else:
         _ok = False
-        _msg = "❌ Not quite — int() can't read decimals from text — which converter can?"
+        _msg = "❌ Not quite. int() can't read decimals from text. Which converter can?"
     mo.callout(mo.md(_msg + show_result(qty_exa)), kind="success" if _ok else "warn")
     return
 

@@ -12,7 +12,7 @@ def _():
 
 @app.cell(hide_code=True)
 def _():
-    # Helper — echoes the student's current answer as a "Your result" preview.
+    # Helper: echoes the student's current answer as a "Your result" preview.
     def show_result(value):
         if value is None:
             return ""
@@ -48,18 +48,18 @@ def _():
 
 @app.cell
 def _():
-    # Given — do not change this. Weekly revenue, in k€, week 1 → week 4.
+    # Given: do not change this. Orders per week, week 1 → week 4.
     weekly_exc = [50, 52, 53, 55]
     return (weekly_exc,)
 
 
 @app.cell
 def _(plt, weekly_exc):
-    # Tobi's AI-generated chart — runs fine, technically correct numbers
-    plt.figure()  # starts a fresh figure — keeps this chart from drawing on top of the last one
+    # Tobi's AI-generated chart: runs fine, technically correct numbers
+    plt.figure()  # starts a fresh figure so this chart doesn't draw on top of the last one
     plt.plot(range(1, 5), weekly_exc)
     plt.ylim(49, 56)
-    plt.ylabel("Revenue (k€)")
+    plt.ylabel("Orders per week")
     plt.title("Tobi's chart")
     plt.gca()
     return
@@ -70,7 +70,7 @@ def _(mo):
     mo.md(
         r"""
     Looks like a rocket, doesn't it? Check the y-axis: it starts at 49,
-    not 0. A few k€ of real growth gets stretched into a near-vertical
+    not 0. A few orders of real growth gets stretched into a near-vertical
     line.
 
     The investor wants the real growth number for the pitch. Compute
@@ -84,45 +84,45 @@ def _(mo):
 
 @app.cell
 def _(weekly_exc):
-    # YOUR CODE BELOW — replace None
+    # YOUR CODE BELOW: replace None
     growth_exc = None
     return (growth_exc,)
 
 
 @app.cell(hide_code=True)
 def _(growth_exc, mo, show_result):
-    # Reactive check — re-runs automatically whenever the cell above changes.
+    # Reactive check. Re-runs automatically whenever the cell above changes.
     _expected = 10.0
     _result = None
     if growth_exc is None:
         _ok = False
         _msg = "🔲 Not attempted yet."
     else:
-        # Coerce to a plain float first — anything that can't be must
+        # Coerce to a plain float first. Anything that can't be must
         # degrade to a message, never crash the check.
         try:
             _v = round(float(growth_exc), 2)
         except (TypeError, ValueError):
             _ok = False
             _v = None
-            _msg = "❌ That's not a number yet — check what your expression returns."
+            _msg = "❌ That's not a number yet. Check what your expression returns."
         else:
             _result = f"growth_exc={growth_exc}"
             if _v == _expected:
                 _ok = True
-                _msg = "✅ Correct! That's the honest number — no costume required."
+                _msg = "✅ Correct! That's the honest number, no costume required."
             elif _v == 0.1:
                 _ok = False
-                _msg = "❌ That's the fraction — percent means ×100."
+                _msg = "❌ That's the fraction. Percent means ×100."
             elif _v == 5.0:
                 _ok = False
-                _msg = "❌ 5 k€ more, yes — but the investor asked for PERCENT of where you started, not the raw difference."
+                _msg = "❌ 5 orders more, yes, but the investor asked for PERCENT of where you started, not the raw difference."
             elif _v == 9.09:
                 _ok = False
-                _msg = "❌ Growth is measured from the START value, not the end — check your denominator."
+                _msg = "❌ Growth is measured from the START value, not the end. Check your denominator."
             else:
                 _ok = False
-                _msg = "❌ Not quite — growth % = (end − start) / start × 100."
+                _msg = "❌ Not quite. Growth % = (end − start) / start × 100."
     mo.callout(mo.md(_msg + show_result(_result)), kind="success" if _ok else "warn")
     return
 
@@ -131,7 +131,7 @@ def _(growth_exc, mo, show_result):
 def _(mo):
     mo.accordion(
         {
-            "💡 Hint 1 (a nudge)": "Percent growth compares the CHANGE to the STARTING value, then multiplies by 100 — not the ending value, and not just the raw difference in k€.",
+            "💡 Hint 1 (a nudge)": "Percent growth compares the CHANGE to the STARTING value, then multiplies by 100. Neither the ending value nor the raw difference in k€ gives you that.",
             "💡 Hint 2 (the structure)": "growth_exc = (___ - ___) / ___ * 100",
         }
     )
@@ -149,7 +149,7 @@ def _(mo):
     how much the slope changes just by telling the truth about the
     baseline.
 
-    This chart isn't graded either — look at it, then move on.
+    This chart isn't graded either. Look at it, then move on.
     """
     )
     return
@@ -158,7 +158,7 @@ def _(mo):
 @app.cell
 def _(plt, weekly_exc):
     plt.figure()
-    # YOUR CODE BELOW — re-plot weekly_exc with plt.ylim(0, 60)
+    # YOUR CODE BELOW: re-plot weekly_exc with plt.ylim(0, 60)
     plt.gca()
     return
 

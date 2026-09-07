@@ -12,7 +12,7 @@ def _():
 
 @app.cell(hide_code=True)
 def _():
-    # Helper — echoes the student's current answer as a "Your result" preview.
+    # Helper: echoes the student's current answer as a "Your result" preview.
     def show_result(value):
         if value is None:
             return ""
@@ -29,10 +29,11 @@ def _(mo):
         r"""
     # Quick exercise: the menu update (10 min)
 
-    Winter menu day. Start from a **copy** of `menu` (never edit the
-    original: Tobi still needs it for the archive), call it `menu_exb`,
-    then: raise `"Pad Thai"` to `9.20`, and add a new dish, `"Miso Ramen"`,
-    at `11.50`. Do it all in the answer cell below.
+    Winter menu day, first draft. Start from a **copy** of `menu` (never edit
+    the original: Tobi still needs it for the archive), call it `menu_exb`,
+    then: try `"Pad Thai"` at `9.20` (Tobi's draft price; the lab settles the
+    real one), and add the missing `"Miso Ramen"` at `11.50`. Do it all in
+    the answer cell below.
     """
     )
     return
@@ -40,21 +41,21 @@ def _(mo):
 
 @app.cell
 def _():
-    # Given — do not change this
+    # Given: do not change this
     menu = {"Falafel Wrap": 6.90, "Pad Thai": 8.90, "Founders Bowl": 10.40}
     return (menu,)
 
 
 @app.cell
 def _(menu):
-    # YOUR CODE BELOW — replace None
+    # YOUR CODE BELOW: replace None
     menu_exb = None
     return (menu_exb,)
 
 
 @app.cell(hide_code=True)
 def _(menu, menu_exb, mo, show_result):
-    # Reactive check — re-runs automatically whenever the cell above changes.
+    # Reactive check. Re-runs automatically whenever the cell above changes.
     _expected = {
         "Falafel Wrap": 6.90,
         "Pad Thai": 9.20,
@@ -67,19 +68,19 @@ def _(menu, menu_exb, mo, show_result):
         _msg = "🔲 Not attempted yet."
     elif menu_exb == _expected and menu != _original:
         _ok = False
-        _msg = "❌ Not quite — `menu_exb` looks right, but the ORIGINAL `menu` changed too. You edited it through an alias; make a real copy with `dict(...)` first, then change the copy."
+        _msg = "❌ Not quite. `menu_exb` looks right, but the ORIGINAL `menu` changed too. You edited it through an alias; make a real copy with `dict(...)` first, then change the copy."
     elif menu_exb == _expected:
         _ok = True
         _msg = "✅ Correct! The winter menu is live."
     elif isinstance(menu_exb, dict) and "Miso Ramen" not in menu_exb:
         _ok = False
-        _msg = "❌ Not quite — the new dish never made it in."
+        _msg = "❌ Not quite. Miso Ramen never made it in."
     elif isinstance(menu_exb, dict) and menu_exb.get("Pad Thai") == 8.90:
         _ok = False
-        _msg = "❌ Not quite — Pad Thai still costs last season's price."
+        _msg = "❌ Not quite. Pad Thai still costs last season's price."
     else:
         _ok = False
-        _msg = "❌ Not quite — check every price and every key against the winter menu."
+        _msg = "❌ Not quite. Check every price and every key against the winter menu."
     mo.callout(mo.md(_msg + show_result(menu_exb)), kind="success" if _ok else "warn")
     return
 

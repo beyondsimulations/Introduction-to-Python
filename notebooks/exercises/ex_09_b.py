@@ -12,7 +12,7 @@ def _():
 
 @app.cell(hide_code=True)
 def _():
-    # Helper — echoes the student's current answer as a "Your result" preview.
+    # Helper: echoes the student's current answer as a "Your result" preview.
     def show_result(value):
         if value is None:
             return ""
@@ -54,7 +54,7 @@ def _(plt):
     # Worked example (read + run this)
     _demo_teams = ["Alpha", "Beta"]
     _demo_scores = [7, 3]
-    plt.figure()  # starts a fresh figure — keeps this chart from drawing on top of the last one
+    plt.figure()  # starts a fresh figure so this chart doesn't draw on top of the last one
     plt.bar(_demo_teams, _demo_scores)
     plt.title("Demo: two teams")
     plt.gca()
@@ -78,14 +78,14 @@ def _(mo):
 
 @app.cell
 def _():
-    # Given — do not change this
+    # Given: do not change this
     zones_exb = ["Nord", "Sued", "Hafen", "Altstadt"]
     return (zones_exb,)
 
 
 @app.cell
 def _():
-    # Given — do not change this
+    # Given: do not change this
     totals_exb = [412.60, 268.40, 305.90, 351.20]
     return (totals_exb,)
 
@@ -93,21 +93,21 @@ def _():
 @app.cell
 def _(plt, totals_exb, zones_exb):
     plt.figure()
-    # YOUR CODE BELOW — plot zones_exb vs totals_exb (labels/title optional, ungraded)
+    # YOUR CODE BELOW: plot zones_exb vs totals_exb (labels/title optional, ungraded)
     plt.gca()
     return
 
 
 @app.cell
 def _(totals_exb, zones_exb):
-    # YOUR CODE BELOW — replace None
+    # YOUR CODE BELOW: replace None
     best_zone_exb = None
     return (best_zone_exb,)
 
 
 @app.cell(hide_code=True)
 def _(best_zone_exb, mo, show_result):
-    # Reactive check — re-runs automatically whenever the cell above changes.
+    # Reactive check. Re-runs automatically whenever the cell above changes.
     _expected = "nord"
     _result = None
     if best_zone_exb is None:
@@ -116,11 +116,11 @@ def _(best_zone_exb, mo, show_result):
     elif isinstance(best_zone_exb, (list, tuple)):
         _ok = False
         _result = f"best_zone_exb={best_zone_exb!r}"
-        _msg = "❌ That's the whole list — the investor wants ONE winner, not all four zones."
+        _msg = "❌ That's the whole list. The investor wants ONE winner, not all four zones."
     elif isinstance(best_zone_exb, (int, float)) and not isinstance(best_zone_exb, bool):
         _ok = False
         _result = f"best_zone_exb={best_zone_exb!r}"
-        _msg = "❌ That's the bar's HEIGHT (a euro amount) — the investor asked WHICH zone, by name."
+        _msg = "❌ That's the bar's HEIGHT (a euro amount). The investor asked WHICH zone, by name."
     else:
         _v = str(best_zone_exb).strip().lower()
         _result = f"best_zone_exb={best_zone_exb!r}"
@@ -129,7 +129,7 @@ def _(best_zone_exb, mo, show_result):
             _msg = "✅ Correct! One glance at the bar chart and the investor knows where to expand."
         else:
             _ok = False
-            _msg = "❌ Not quite — read the tallest bar again and check its label."
+            _msg = "❌ Not quite. Read the tallest bar again and check its label."
     mo.callout(mo.md(_msg + show_result(_result)), kind="success" if _ok else "warn")
     return
 
@@ -138,7 +138,7 @@ def _(best_zone_exb, mo, show_result):
 def _(mo):
     mo.accordion(
         {
-            "💡 Hint 1 (a nudge)": "`plt.bar(zones_exb, totals_exb)` draws the bars — but the check wants the zone's NAME, not its height. Which list method finds the POSITION of the largest number in `totals_exb`? Use that position to look up a name in `zones_exb`.",
+            "💡 Hint 1 (a nudge)": "`plt.bar(zones_exb, totals_exb)` draws the bars, but the check wants the zone's NAME, not its height. Which list method finds the POSITION of the largest number in `totals_exb`? Use that position to look up a name in `zones_exb`.",
             "💡 Hint 2 (the structure)": "_best_index = totals_exb.index(___(totals_exb))\nbest_zone_exb = zones_exb[___]",
         }
     )

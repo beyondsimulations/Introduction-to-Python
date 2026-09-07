@@ -5,7 +5,7 @@
 # pre-defines its answer (None, or an empty container); suffix exercise
 # names (_exNN); underscore-prefixed names are cell-private; never a possible
 # infinite loop. Data ships as inline strings/dicts (public/ files don't load
-# simply in WASM — see docs/authoring-conventions.md → Data in notebooks).
+# simply in WASM, see docs/authoring-conventions.md → Data in notebooks).
 import marimo
 
 app = marimo.App(width="medium")
@@ -43,7 +43,7 @@ def _():
 
 @app.cell(hide_code=True)
 def _():
-    # Helper — echoes a student's current answer as a "Your result" preview so
+    # Helper: echoes a student's current answer as a "Your result" preview so
     # they SEE their output, not just ✅/❌. Strings render in a fenced block;
     # everything else inline. See _template.py.
     def show_result(value):
@@ -118,7 +118,7 @@ def _(mo):
 
 @app.cell
 def _():
-    # Worked example (read + run this) — index, slice, add to the end
+    # Worked example (read + run this): index, slice, add to the end
     _couriers = ["Amir", "Bea", "Cem"]
     print("first:", _couriers[0])          # Amir
     print("last:", _couriers[-1])          # Cem
@@ -153,7 +153,7 @@ def _():
 
 @app.cell
 def _():
-    # YOUR CODE BELOW — the four-order queue plus "Falafel Wrap" at the very end
+    # YOUR CODE BELOW: the four-order queue plus "Falafel Wrap" at the very end
     queue_ex11 = None
     return (queue_ex11,)
 
@@ -174,7 +174,7 @@ def _(mo, queue_ex11, show_result):
         _preview = show_result(queue_ex11)
     elif len(queue_ex11) > 5 and queue_ex11[-1] == "Falafel Wrap":
         ex11_ok = False
-        _msg = "❌ Exercise 1.1: more than 5 orders — `.append()` ran once per re-run of the cell and kept growing the shared `queue`. Use `queue + [\"Falafel Wrap\"]`, which leaves `queue` alone."
+        _msg = "❌ Exercise 1.1: more than 5 orders. `.append()` ran once per re-run of the cell and kept growing the shared `queue`. Use `queue + [\"Falafel Wrap\"]`, which leaves `queue` alone."
         _preview = show_result(queue_ex11)
     else:
         ex11_ok = False
@@ -188,8 +188,8 @@ def _(mo, queue_ex11, show_result):
 def _(mo):
     mo.accordion(
         {
-            "💡 Hint 1 (a nudge)": "You already have `queue`. Adding one item to the end of a list is `a_list + [the_new_item]` — note the new item goes in its own brackets.",
-            "💡 Hint 2 (the structure)": "queue_ex11 = queue + [___]   — put the new order (as a string, in its own list) in the blank.",
+            "💡 Hint 1 (a nudge)": "You already have `queue`. Adding one item to the end of a list is `a_list + [the_new_item]`. Note that the new item goes in its own brackets.",
+            "💡 Hint 2 (the structure)": "queue_ex11 = queue + [___]   (fill the blank with the new order, as a string in its own list)",
         }
     )
     return
@@ -210,7 +210,7 @@ def _(mo):
 
 @app.cell
 def _():
-    # YOUR CODE BELOW — the first three orders of `queue`, by slicing
+    # YOUR CODE BELOW: the first three orders of `queue`, by slicing
     first_three_ex12 = None
     return (first_three_ex12,)
 
@@ -227,7 +227,7 @@ def _(first_three_ex12, mo, show_result):
         _preview = show_result(first_three_ex12)
     else:
         ex12_ok = False
-        _msg = "❌ Exercise 1.2: that's not the first three of `queue`. A slice from the start is `queue[:3]` — it stops *before* index 3."
+        _msg = "❌ Exercise 1.2: that's not the first three of `queue`. A slice from the start is `queue[:3]`. It stops *before* index 3."
         _preview = show_result(first_three_ex12)
     mo.callout(mo.md(_msg + _preview), kind="success" if ex12_ok else "warn")
     return (ex12_ok,)
@@ -238,7 +238,7 @@ def _(mo):
     mo.accordion(
         {
             "💡 Hint 1 (a nudge)": "A slice uses a colon inside the brackets. Leaving the left side empty means 'from the beginning'; the right side is where to stop (that index is *not* included).",
-            "💡 Hint 2 (the structure)": "first_three_ex12 = queue[:___]   — fill the stop index so you get exactly three items.",
+            "💡 Hint 2 (the structure)": "first_three_ex12 = queue[:___]   (fill the stop index so you get exactly three items)",
         }
     )
     return
@@ -280,7 +280,7 @@ def _(mo):
 
 @app.cell
 def _():
-    # Worked example (read + run this) — read, update, add; then unique count
+    # Worked example (read + run this): read, update, add; then unique count
     _prices = {"cola": 2.50, "water": 1.00}
     print("cola costs:", _prices["cola"])       # 2.5
     _prices["water"] = 1.20                      # update
@@ -313,7 +313,7 @@ def _(mo):
 
 @app.cell
 def _():
-    # YOUR CODE BELOW — a dict mapping each dish name (string) to its price
+    # YOUR CODE BELOW: a dict mapping each dish name (string) to its price
     menu_ex21 = {}
     return (menu_ex21,)
 
@@ -327,7 +327,7 @@ def _(menu_ex21, mo, show_result):
         _preview = ""
     elif not isinstance(menu_ex21, dict):
         ex21_ok = False
-        _msg = "❌ Exercise 2.1: `menu_ex21` should be a **dictionary** — curly braces, `\"name\": price` pairs."
+        _msg = "❌ Exercise 2.1: `menu_ex21` should be a **dictionary**: curly braces, `\"name\": price` pairs."
         _preview = show_result(menu_ex21)
     elif menu_ex21 == _expected:
         ex21_ok = True
@@ -335,7 +335,7 @@ def _(menu_ex21, mo, show_result):
         _preview = show_result(menu_ex21)
     else:
         ex21_ok = False
-        _msg = "❌ Exercise 2.1: not quite — check every name and price. Keys are the dish names (as strings), values are the prices: 6.90, 8.90, 10.40."
+        _msg = "❌ Exercise 2.1: not quite. Check every name and price. Keys are the dish names (as strings), values are the prices: 6.90, 8.90, 10.40."
         _preview = show_result(menu_ex21)
     mo.callout(mo.md(_msg + _preview), kind="success" if ex21_ok else "warn")
     return (ex21_ok,)
@@ -346,7 +346,7 @@ def _(mo):
     mo.accordion(
         {
             "💡 Hint 1 (a nudge)": "A dictionary literal is `{key: value, key: value, ...}`. Here the keys are dish names in quotes and the values are the prices.",
-            "💡 Hint 2 (the structure)": "menu_ex21 = {\"Falafel Wrap\": ___, \"Pad Thai\": ___, \"Founders Bowl\": ___}   — fill in the three prices.",
+            "💡 Hint 2 (the structure)": "menu_ex21 = {\"Falafel Wrap\": ___, \"Pad Thai\": ___, \"Founders Bowl\": ___}   (fill in the three prices)",
         }
     )
     return
@@ -372,7 +372,7 @@ def _(mo):
 
 @app.cell
 def _():
-    # YOUR CODE BELOW — copy menu_ex21, raise Founders Bowl to 10.90, add Bao Box 7.80
+    # YOUR CODE BELOW: copy menu_ex21, raise Founders Bowl to 10.90, add Bao Box 7.80
     menu_ex22 = {}
     return (menu_ex22,)
 
@@ -396,19 +396,19 @@ def _(menu_ex21, menu_ex22, mo, show_result):
         _preview = show_result(menu_ex22)
     elif menu_ex22 == _expected and menu_ex21 != _original:
         ex22_ok = False
-        _msg = "❌ Exercise 2.2: `menu_ex22` looks right — but the ORIGINAL menu changed too. You edited `menu_ex21` through an alias; make a real copy with `dict(...)` first, then change the copy."
+        _msg = "❌ Exercise 2.2: `menu_ex22` looks right, but the ORIGINAL menu changed too. You edited `menu_ex21` through an alias; make a real copy with `dict(...)` first, then change the copy."
         _preview = show_result(menu_ex22)
     elif menu_ex22 == _expected:
         ex22_ok = True
-        _msg = "✅ Exercise 2.2: Founders Bowl up to 10.90, Bao Box on the board at 7.80 — four dishes, and the original menu is safe."
+        _msg = "✅ Exercise 2.2: Founders Bowl up to 10.90, Bao Box on the board at 7.80. Four dishes, and the original menu is safe."
         _preview = show_result(menu_ex22)
     elif menu_ex22.get("Founders Bowl") == 10.40:
         ex22_ok = False
-        _msg = "❌ Exercise 2.2: the Founders Bowl is still 10.40 — you need to **update** its value to 10.90 after copying."
+        _msg = "❌ Exercise 2.2: the Founders Bowl is still 10.40, so you need to **update** its value to 10.90 after copying."
         _preview = show_result(menu_ex22)
     else:
         ex22_ok = False
-        _msg = "❌ Exercise 2.2: four dishes expected — Founders Bowl at 10.90 and a new `\"Bao Box\": 7.80`, everything else unchanged."
+        _msg = "❌ Exercise 2.2: four dishes expected: Founders Bowl at 10.90 and a new `\"Bao Box\": 7.80`, everything else unchanged."
         _preview = show_result(menu_ex22)
     mo.callout(mo.md(_msg + _preview), kind="success" if ex22_ok else "warn")
     return (ex22_ok,)
@@ -418,8 +418,8 @@ def _(menu_ex21, menu_ex22, mo, show_result):
 def _(mo):
     mo.accordion(
         {
-            "💡 Hint 1 (a nudge)": "First copy: `dict(menu_ex21)` gives you an independent dictionary. Then assign into it by key — one line to change Pad Thai, one line to add Miso Ramen.",
-            "💡 Hint 2 (the structure)": "menu_ex22 = dict(menu_ex21)\nmenu_ex22[\"Founders Bowl\"] = ___\nmenu_ex22[___] = 7.80   — fill the new price and the new dish name.",
+            "💡 Hint 1 (a nudge)": "First copy: `dict(menu_ex21)` gives you an independent dictionary. Then assign into it by key: one line to change the Founders Bowl, one line to add the Bao Box.",
+            "💡 Hint 2 (the structure)": "menu_ex22 = dict(menu_ex21)\nmenu_ex22[\"Founders Bowl\"] = ___\nmenu_ex22[___] = 7.80   (fill the new price and the new dish name)",
         }
     )
     return
@@ -452,7 +452,7 @@ def _():
 
 @app.cell
 def _():
-    # YOUR CODE BELOW — how many DIFFERENT customers are in `customers`?
+    # YOUR CODE BELOW: how many DIFFERENT customers are in `customers`?
     n_regulars_ex23 = None
     return (n_regulars_ex23,)
 
@@ -465,11 +465,11 @@ def _(mo, n_regulars_ex23, show_result):
         _preview = ""
     elif not isinstance(n_regulars_ex23, int):
         ex23_ok = False
-        _msg = "❌ Exercise 2.3: this should be a whole **number** — a count of people."
+        _msg = "❌ Exercise 2.3: this should be a whole **number**, a count of people."
         _preview = show_result(n_regulars_ex23)
     elif n_regulars_ex23 == 3:
         ex23_ok = True
-        _msg = "✅ Exercise 2.3: **3** regulars — mo, lena and tobi. A set drops the repeats, `len` counts what's left."
+        _msg = "✅ Exercise 2.3: **3** regulars: mo, lena and tobi. A set drops the repeats, `len` counts what's left."
         _preview = show_result(n_regulars_ex23)
     elif n_regulars_ex23 == 5:
         ex23_ok = False
@@ -488,7 +488,7 @@ def _(mo):
     mo.accordion(
         {
             "💡 Hint 1 (a nudge)": "A set has no duplicates. Wrap the list in `set(...)` to collapse repeats, then ask how many are left with `len(...)`.",
-            "💡 Hint 2 (the structure)": "n_regulars_ex23 = len(set(___))   — put the list of customers in the blank.",
+            "💡 Hint 2 (the structure)": "n_regulars_ex23 = len(set(___))   (put the list of customers in the blank)",
         }
     )
     return
@@ -535,7 +535,7 @@ def _(mo):
 
 @app.cell
 def _():
-    # Worked example (read + run this) — nesting + a dict comprehension
+    # Worked example (read + run this): nesting + a dict comprehension
     _hours = {"mon": {"open": 11, "close": 22}, "tue": {"open": 11, "close": 20}}
     print("monday closes at:", _hours["mon"]["close"])   # 22
 
@@ -595,7 +595,7 @@ def _(mo):
 @app.cell(hide_code=True)
 def _(mo, trace_ex31):
     if trace_ex31.value is None:
-        _msg = "🔲 Pick a prediction above first — commit before you peek!"
+        _msg = "🔲 Pick a prediction above first. Commit before you peek!"
     elif trace_ex31.value == "1.50":
         _msg = (
             "✅ Correct: **1.50**. The first `[\"north\"]` hands you the inner dict "
@@ -604,9 +604,9 @@ def _(mo, trace_ex31):
         )
     else:
         _msg = (
-            "❌ Not quite — it's **1.50**. `zones[\"north\"]` alone would give the "
+            "❌ Not quite: it's **1.50**. `zones[\"north\"]` alone would give the "
             "whole inner dict; adding `[\"fee\"]` steps inside it to the fee. "
-            "(Ungraded — the point is the prediction.)"
+            "(Ungraded. The point is the prediction.)"
         )
     mo.callout(mo.md(_msg), kind="info")
     return
@@ -629,7 +629,7 @@ def _(mo):
 
 @app.cell
 def _():
-    # YOUR CODE BELOW — 30% off every price in menu_ex22, rounded to 2 decimals
+    # YOUR CODE BELOW: 30% off every price in menu_ex22, rounded to 2 decimals
     happy_ex32 = None
     return (happy_ex32,)
 
@@ -648,7 +648,7 @@ def _(happy_ex32, mo, show_result):
         _preview = ""
     elif not isinstance(happy_ex32, dict):
         ex32_ok = False
-        _msg = "❌ Exercise 3.2: `happy_ex32` should be a **dictionary** — same keys as the menu, discounted values."
+        _msg = "❌ Exercise 3.2: `happy_ex32` should be a **dictionary** with the same keys as the menu and discounted values."
         _preview = show_result(happy_ex32)
     elif happy_ex32 == _expected:
         ex32_ok = True
@@ -656,7 +656,7 @@ def _(happy_ex32, mo, show_result):
         _preview = show_result(happy_ex32)
     elif set(happy_ex32.keys()) == set(_expected.keys()):
         ex32_ok = False
-        _msg = "❌ Exercise 3.2: right dishes, wrong numbers — 30 % off means `price * 0.7`, and each result must be `round(..., 2)` (otherwise you get long tails like 6.2299999)."
+        _msg = "❌ Exercise 3.2: right dishes, wrong numbers: 30 % off means `price * 0.7`, and each result must be `round(..., 2)` (otherwise you get long tails like 6.2299999)."
         _preview = show_result(happy_ex32)
     else:
         ex32_ok = False
@@ -670,8 +670,8 @@ def _(happy_ex32, mo, show_result):
 def _(mo):
     mo.accordion(
         {
-            "💡 Hint 1 (a nudge)": "A dict comprehension looks like `{key: new_value for key, value in something.items()}`. Here the new value is 80 % of the old price, rounded to 2 decimals.",
-            "💡 Hint 2 (the structure)": "happy_ex32 = {name: round(price * ___, 2) for name, price in menu_ex22.items()}   — fill the multiplier for 30 % off.",
+            "💡 Hint 1 (a nudge)": "A dict comprehension looks like `{key: new_value for key, value in something.items()}`. Here the new value is 70 % of the old price, rounded to 2 decimals.",
+            "💡 Hint 2 (the structure)": "happy_ex32 = {name: round(price * ___, 2) for name, price in menu_ex22.items()}   (fill the multiplier for 30 % off)",
         }
     )
     return
@@ -697,8 +697,8 @@ def _(mo):
 
 @app.cell
 def _(menu_ex22):
-    # TOBI'S CODE — an order for Pad Thai, and the price keeps coming back empty.
-    # (Uses menu_ex22 from Exercise 2.2 — get that one green first.)
+    # TOBI'S CODE: an order for Pad Thai, and the price keeps coming back empty.
+    # (Uses menu_ex22 from Exercise 2.2. Get that one green first.)
     pad_price_ex33 = menu_ex22.get("padthai")
     return (pad_price_ex33,)
 
@@ -713,7 +713,7 @@ def _(menu_ex22, mo, pad_price_ex33, show_result):
         ex33_ok = False
         _msg = (
             "❌ Exercise 3.3: still empty (`None`). `.get(...)` hands back `None` "
-            "when the key isn't found — so the key being looked up doesn't match "
+            "when the key isn't found, so the key being looked up doesn't match "
             "any dish in `menu_ex22`. Compare it, character for character, with how "
             "the dish is written in the menu."
         )
@@ -721,9 +721,9 @@ def _(menu_ex22, mo, pad_price_ex33, show_result):
     elif isinstance(pad_price_ex33, (int, float)) and round(pad_price_ex33, 2) == 8.90:
         ex33_ok = True
         _msg = (
-            "✅ Exercise 3.3: 8.90 — the key now matches the menu exactly. Bonus "
+            "✅ Exercise 3.3: 8.90. The key now matches the menu exactly. Bonus "
             "lesson: `.get(\"padthai\")` returned `None` instead of crashing, but "
-            "square brackets — `menu_ex22[\"padthai\"]` — would have raised a "
+            "square brackets (`menu_ex22[\"padthai\"]`) would have raised a "
             "`KeyError` and taken the whole till down. `.get()` is the gentle lookup."
         )
         _preview = show_result(pad_price_ex33)
@@ -743,7 +743,7 @@ def _(mo):
     mo.accordion(
         {
             "💡 Hint 1 (a nudge)": "Dictionary keys are exact: capitalization and spaces all matter. Look at how Pad Thai is written as a key back in Exercise 2.2, then match it here.",
-            "💡 Hint 2 (the structure)": "pad_price_ex33 = menu_ex22.get(\"___\")   — put the dish's key, spelled exactly as it appears in the menu, in the blank.",
+            "💡 Hint 2 (the structure)": "pad_price_ex33 = menu_ex22.get(\"___\")   (put the dish's key in the blank, spelled exactly as it appears in the menu)",
         }
     )
     return
@@ -773,7 +773,7 @@ def _(mo):
 
 @app.cell
 def _():
-    # Worked example (read + run this) — walking a map with a loop
+    # Worked example (read + run this): walking a map with a loop
     _mini = {
         "start": {"go": "middle"},
         "middle": {"go": "end"},
@@ -823,7 +823,7 @@ def _():
 
 @app.cell
 def _(campus_map, route):
-    # YOUR CODE BELOW — start at "gate", follow each direction in `route`,
+    # YOUR CODE BELOW: start at "gate", follow each direction in `route`,
     # and store the final place in destination_ex40. Reuse `campus_map` and `route`.
     destination_ex40 = None
     return (destination_ex40,)
@@ -843,7 +843,7 @@ def _(destination_ex40, mo, show_result):
     elif destination_ex40 == "mensa":
         ex40_ok = False
         _msg = (
-            "❌ Boss exercise: the mensa is only the *third* stop — you stopped one "
+            "❌ Boss exercise: the mensa is only the *third* stop. You stopped one "
             "step early. All three directions in `route` need to be followed."
         )
     else:
@@ -860,8 +860,8 @@ def _(destination_ex40, mo, show_result):
 def _(mo):
     mo.accordion(
         {
-            "💡 Hint 1 (a nudge)": "Keep a variable for where the wrap currently is, starting at \"gate\". Loop over `route`; on each step, replace that variable with the place the current direction leads to — exactly like the two-stop worked example above.",
-            "💡 Hint 2 (the structure)": "_pos = \"gate\"\nfor _step in route:\n    _pos = ___[___][_step]\ndestination_ex40 = _pos   — fill in what to look up, and what to look it up BY. (Which dict holds the map? And whose exits are you reading each time around the loop?)",
+            "💡 Hint 1 (a nudge)": "Keep a variable for where the wrap currently is, starting at \"gate\". Loop over `route`; on each step, replace that variable with the place the current direction leads to, exactly like the two-stop worked example above.",
+            "💡 Hint 2 (the structure)": "_pos = \"gate\"\nfor _step in route:\n    _pos = ___[___][_step]\ndestination_ex40 = _pos   (fill in what to look up, and what to look it up BY. Which dict holds the map? And whose exits are you reading each time around the loop?)",
         }
     )
     return
@@ -895,7 +895,7 @@ def _(mo):
 
 @app.cell
 def _():
-    # YOUR CODE BELOW — replace "" with "a", "b", "c", or "d"
+    # YOUR CODE BELOW: replace "" with "a", "b", "c", or "d"
     answer_ex50 = ""
     return (answer_ex50,)
 
@@ -957,7 +957,7 @@ def _():
 
 @app.cell
 def _():
-    # YOUR CODE BELOW — total the portions (the number after each semicolon)
+    # YOUR CODE BELOW: total the portions (the number after each semicolon)
     portions_ex60 = None
     return (portions_ex60,)
 
@@ -970,7 +970,7 @@ def _(mo, portions_ex60, show_result):
         _preview = ""
     elif not isinstance(portions_ex60, int):
         ex60_ok = False
-        _msg = "❌ Bonus: the total should be a whole **number**. Each portion count is text like `\"2\"` — turn it into an `int` before adding."
+        _msg = "❌ Bonus: the total should be a whole **number**. Each portion count is text like `\"2\"`, so turn it into an `int` before adding."
         _preview = show_result(portions_ex60)
     elif portions_ex60 == 7:
         ex60_ok = True
@@ -992,8 +992,8 @@ def _(mo, portions_ex60, show_result):
 def _(mo):
     mo.accordion(
         {
-            "💡 Hint 1 (a nudge)": "Start a running total at 0. Loop over `order_log.splitlines()`; for each line, `line.split(\";\")` gives `[dish, count]` — the count is still text, so wrap it in `int(...)` before adding.",
-            "💡 Hint 2 (the structure)": "portions_ex60 = 0\nfor line in order_log.splitlines():\n    _parts = line.split(\";\")\n    portions_ex60 = portions_ex60 + int(_parts[___])   — fill the index of the count.",
+            "💡 Hint 1 (a nudge)": "Start a running total at 0. Loop over `order_log.splitlines()`; for each line, `line.split(\";\")` gives `[dish, count]`. The count is still text, so wrap it in `int(...)` before adding.",
+            "💡 Hint 2 (the structure)": "portions_ex60 = 0\nfor line in order_log.splitlines():\n    _parts = line.split(\";\")\n    portions_ex60 = portions_ex60 + int(_parts[___])   (fill the index of the count)",
         }
     )
     return
@@ -1015,7 +1015,7 @@ def _(mo):
 
 @app.cell
 def _():
-    # YOUR CODE BELOW — the delivery fee for the "dorms" zone (reach into `zones`)
+    # YOUR CODE BELOW: the delivery fee for the "dorms" zone (reach into `zones`)
     dorms_fee_ex61 = None
     return (dorms_fee_ex61,)
 
@@ -1028,7 +1028,7 @@ def _(dorms_fee_ex61, mo, show_result):
         _preview = ""
     elif isinstance(dorms_fee_ex61, (int, float)) and round(dorms_fee_ex61, 2) == 1.20:
         ex61_ok = True
-        _msg = "✅ Bonus: **1.20** — two brackets deep: `zones[\"dorms\"]` gives the inner dict, `[\"fee\"]` pulls out the fee."
+        _msg = "✅ Bonus: **1.20**, two brackets deep: `zones[\"dorms\"]` gives the inner dict, `[\"fee\"]` pulls out the fee."
         _preview = show_result(dorms_fee_ex61)
     else:
         ex61_ok = False
@@ -1042,8 +1042,8 @@ def _(dorms_fee_ex61, mo, show_result):
 def _(mo):
     mo.accordion(
         {
-            "💡 Hint 1 (a nudge)": "It's a nested lookup: first reach the dorms' inner dictionary, then take the `\"fee\"` from it — two sets of brackets.",
-            "💡 Hint 2 (the structure)": "dorms_fee_ex61 = zones[\"dorms\"][___]   — fill the inner key that holds the fee.",
+            "💡 Hint 1 (a nudge)": "It's a nested lookup: first reach the dorms' inner dictionary, then take the `\"fee\"` from it (two sets of brackets).",
+            "💡 Hint 2 (the structure)": "dorms_fee_ex61 = zones[\"dorms\"][___]   (fill the inner key that holds the fee)",
         }
     )
     return
@@ -1065,13 +1065,13 @@ def _(
     ex50_ok,
     mo,
 ):
-    # Progress cell — core exercises only (the trace and the two bonuses don't count).
+    # Progress cell: core exercises only (the trace and the two bonuses don't count).
     _checks = [ex11_ok, ex12_ok, ex21_ok, ex22_ok, ex23_ok, ex32_ok, ex33_ok, ex40_ok, ex50_ok]
     _done = sum(_checks)
     _total = len(_checks)
     _tobi = "Tobi can finally find a price!" if _done == _total else "Tobi is still hunting for `price_final_FINAL2`."
     mo.callout(
-        mo.md(f"**Core exercises: {_done}/{_total} ✅** — {_tobi}"),
+        mo.md(f"**Core exercises: {_done}/{_total} ✅**. {_tobi}"),
         kind="success" if _done == _total else "neutral",
     )
     return
@@ -1083,7 +1083,7 @@ def _(mo):
         r"""
     ## Before you leave 📦
 
-    1. Check the progress box above — all **nine** core exercises green? If not,
+    1. Check the progress box above: all **nine** core exercises green? If not,
        reopen the hints, reread the worked examples, and try again. Lists, dicts
        and sets are the containers you'll reach for in every program from here on.
     2. **Download your work**: menu → Download → *Download Python code*.
@@ -1093,7 +1093,7 @@ def _(mo):
     3. Next episode: with real data flowing in, things start going *wrong*: a
        customer types "free" into the price box, an order has zero items, the till
        divides by nobody. Tobi rewrites the checkout at 3 AM. What could possibly
-       go wrong? Next week: **errors** — catching them before they catch you.
+       go wrong? Next week: **errors**, catching them before they catch you.
     """
     )
     return

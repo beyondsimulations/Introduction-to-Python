@@ -19,7 +19,7 @@ subtitle: A short guide using uv
 
 ## Install `uv`
 
-Everything below happens in a **terminal**, a window where you type commands. On macOS open the **Terminal** app (Spotlight: `Cmd+Space`, type *Terminal*). On Windows open **PowerShell** (Start menu, type *PowerShell*). Choose the instructions for your operating system.
+Everything below happens in a **terminal**, a window where you type commands. On macOS open the Terminal app (Spotlight: `Cmd+Space`, type *Terminal*). On Windows open PowerShell (Start menu, type *PowerShell*). Choose the instructions for your operating system.
 
 ### macOS or Linux (Terminal)
 

@@ -11,7 +11,7 @@ format:
 
 # 📋 Checkpoint 4 {.exercise-slide}
 
-**Sessions VI–VII.** The first **40 minutes** are the checkpoint. It starts **now**, before the investor opens her data room.
+**Sessions VI–VII.** The first 40 minutes are the checkpoint. It starts now, before the investor opens her data room.
 
 - **Individual work**: no neighbors, no chat
 - **AI tools are allowed**: being able to **VERIFY** the output is the skill being graded
@@ -19,7 +19,7 @@ format:
 - ~6 short tasks: write code, fix a bug, a seeded draw, answer a multiple choice
 - It sweeps **Sessions VI–VII**: modules, `random` and seeds, NumPy arrays and masks
 
-<!-- QR handed out live — never in the deck -->
+<!-- QR handed out live, never in the deck -->
 
 ## When you're done
 
@@ -35,7 +35,7 @@ The green ✅ live checks are **provisional**. The final grading runs on my side
 
 ## Show me the data
 
-Pens down. The checkpoint is behind you. This morning the rival chain **MunchCorp** put out a press release bragging about their **"data-driven growth."** The evidence attached: exactly **one pie chart.** The investor slid it across the table and said, *"Yours will be better. Show me the data."*
+Pens down. The checkpoint is behind you. This morning the rival chain MunchCorp put out a press release bragging about their "data-driven growth." The evidence attached: exactly **one pie chart.** The investor slid it across the table and said, *"Yours will be better. Show me the data."*
 
 . . .
 
@@ -53,8 +53,8 @@ The AI sounded certain. The method it called **does not exist.** Today is about 
 
 Two things turn a vague request into a useful answer:
 
-- **Context** — say what the data *is*: "I have a DataFrame `orders` with columns `zone` (text) and `total_eur` (float)."
-- **Constraints** — say exactly what you want *back*: "Give me the total `total_eur` for zone `Nord`, as a single number."
+- **Context**. Say what the data *is*: "I have a DataFrame `orders` with columns `zone` (text) and `total_eur` (float)."
+- **Constraints**. Say exactly what you want *back*: "Give me the total `total_eur` for zone `Nord`, as a single number."
 
 . . .
 
@@ -110,7 +110,7 @@ a\) prints a summary table   b) raises an `AttributeError`   c) returns an empty
 
 ## Answer: the method never existed
 
-**b) `AttributeError`** — pandas has no `.summarize()`. The AI invented it:
+**b) `AttributeError`**: pandas has no `.summarize()`. The AI invented it:
 
 ```{python}
 #| eval: true
@@ -183,7 +183,7 @@ First **predict** what happens, then run it.
 
 Last session, a NumPy array turned a thousand numbers into one fast object, but every value had to share **one type**, and columns had no names.
 
-- A **DataFrame** is a table: **named columns**, and each column can be a **different type**
+- A **DataFrame** is a table: named columns, and each column can be a different type
 - Text zones next to float euros next to integer counts, all in one object
 - It's the spreadsheet the investor handed you, loaded into Python
 
@@ -252,7 +252,7 @@ Pick one column by name; keep rows with a **boolean mask**, exactly the NumPy id
 
 print(df["zone"])                  # one column (a Series)
 print()
-print(df[df["zone"] == "Nord"])    # only the Nord rows — case-sensitive!
+print(df[df["zone"] == "Nord"])    # only the Nord rows, case-sensitive!
 ```
 
 . . .
@@ -292,7 +292,7 @@ a\) an empty table, no error   b) the Nord rows anyway: case is ignored   c) a `
 
 ## Answer: an empty table, no warning
 
-**a) an empty table** — `"nord"` matches nothing, so the mask is all `False` and pandas hands back **zero rows**. No error, no complaint:
+**a) an empty table**. `"nord"` matches nothing, so the mask is all `False` and pandas hands back **zero rows**. No error, no complaint:
 
 ```{python}
 #| eval: true
@@ -308,7 +308,7 @@ This is the dangerous kind of bug: it **runs**, it just returns nothing. **panda
 
 ## One more tool: `groupby`
 
-The investor's real question isn't about one row. It's **per zone**: which area brings in the most?
+The investor's real question is **per zone**: which area brings in the most?
 
 - `groupby` splits the table by a category, then computes **once per group**
 - `df.groupby("zone")["total_eur"].sum()` → one total for each zone
@@ -348,7 +348,7 @@ First **predict** what happens, then run it.
 
 ## Three things to remember
 
-1. **AI is a co-pilot you verify.** Give it **context and constraints**, then **read it → run it → test it** on a case you know.
+1. **AI is a co-pilot you verify.** Give it context and constraints, then read it → run it → test it on a case you know.
 2. **A DataFrame is a named, mixed-type table.** `pd.DataFrame` from a dict, `pd.read_csv` from a file; `.head()`, `.info()`, `.describe()` to look before you leap.
 3. **Select, filter, add, group.** `df["col"]`, a boolean mask (`df[df["zone"] == "Nord"]`, case-sensitive!), a new column on a `.copy()`, and `groupby` for per-category answers. pandas won't warn you; you verify.
 
@@ -362,7 +362,7 @@ First **predict** what happens, then run it.
 
 ## Books to start with
 
-- Downey, A. B. (2024). Think Python: How to think like a computer scientist (Third edition). O’Reilly. [Link to free online version](https://greenteapress.com/wp/think-python-3rd-edition/)
+- Downey, A. B. (2024). Think Python: How to think like a computer scientist (Third edition). O'Reilly. [Link to free online version](https://greenteapress.com/wp/think-python-3rd-edition/)
 - Elter, S. (2021). Schrödinger programmiert Python: Das etwas andere Fachbuch (1. Auflage). Rheinwerk Verlag.
 
 . . .

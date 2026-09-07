@@ -12,7 +12,7 @@ def _():
 
 @app.cell(hide_code=True)
 def _():
-    # Helper — echoes the student's current answer as a "Your result" preview.
+    # Helper: echoes the student's current answer as a "Your result" preview.
     def show_result(value):
         if value is None:
             return ""
@@ -55,18 +55,18 @@ def _(mo):
 @app.cell(hide_code=True)
 def _(mo, trace_exb):
     if trace_exb.value is None:
-        _msg = "🔲 Pick a prediction above first — commit before you peek!"
+        _msg = "🔲 Pick a prediction above first. Commit before you peek!"
     elif trace_exb.value == "c) 8":
         _msg = (
             "✅ Correct: the `print` line runs once, **after** the loop "
-            "finishes, so it prints the final total — `8`. If `print` were "
+            "finishes, so it prints the final total, `8`. If `print` were "
             "indented into the loop, it would print `3` then `8`."
         )
     else:
         _msg = (
             "❌ Not quite. `print` is **not** indented, so it only runs once, "
             "after the loop finishes: it prints the final total, `8`. (This "
-            "one is ungraded — the point is the prediction.)"
+            "one is ungraded. The point is the prediction.)"
         )
     mo.callout(mo.md(_msg), kind="info")
     return
@@ -85,21 +85,21 @@ def _(mo):
 
 @app.cell
 def _():
-    # Given — do not change this
+    # Given: do not change this
     minutes = [12, 7, 9]
     return (minutes,)
 
 
 @app.cell
 def _():
-    # YOUR CODE BELOW — replace None
+    # YOUR CODE BELOW: replace None
     minutes_exb = None
     return (minutes_exb,)
 
 
 @app.cell(hide_code=True)
 def _(minutes_exb, mo, show_result):
-    # Reactive check — re-runs automatically whenever the cell above changes.
+    # Reactive check. Re-runs automatically whenever the cell above changes.
     if minutes_exb is None:
         _ok = False
         _msg = "🔲 Not attempted yet."
@@ -108,7 +108,7 @@ def _(minutes_exb, mo, show_result):
         _msg = "✅ Correct! 12 + 7 + 9 = 28 minutes, all delivered on time."
     else:
         _ok = False
-        _msg = "❌ Not quite — make sure you add every value in `minutes`, not just the last one."
+        _msg = "❌ Not quite. Make sure you add up every value in `minutes` rather than keeping only the last one."
     mo.callout(mo.md(_msg + show_result(minutes_exb)), kind="success" if _ok else "warn")
     return
 

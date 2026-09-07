@@ -10,7 +10,7 @@ format:
 ---
 
 
-# <span class="flow">Episode 7: One Array to Rule a Thousand Orders</span>
+# <span class="flow">Episode 7: The Numbers Deck</span>
 
 ## The numbers deck is due
 
@@ -42,7 +42,7 @@ a\) `ceil(3.2)` b) `math.ceil(3.2)` c) both
 
 ## Answer 1
 
-**a) `ceil(3.2)`** --- `from math import ceil` binds only the **name** `ceil`. The module `math` itself was never imported, so `math.ceil` has nothing to reach through.
+**a) `ceil(3.2)`**: `from math import ceil` binds only the **name** `ceil`. The module `math` itself was never imported, so `math.ceil` has nothing to reach through.
 
 ## Question 2
 
@@ -61,7 +61,7 @@ a\) different: random is random b) an error: seed 42 was already used c) the sam
 
 ## Answer 2
 
-**c) the same three numbers** --- every run starts from seed 42, so the stream replays from the top. That is the entire job of a seed: reproducible randomness. (Two batches *inside one run* would differ: the stream continues; a fresh run rewinds it.)
+**c) the same three numbers**. Every run starts from seed 42, so the stream replays from the top. That is the entire job of a seed: reproducible randomness. (Two batches *inside one run* would differ: the stream continues; a fresh run rewinds it.)
 
 ## Question 3
 
@@ -77,7 +77,7 @@ a\) `2` b) `5` c) an error: the list is not sorted
 
 ## Answer 3
 
-**b) `5`** --- `median` sorts the values internally before picking the middle one. You never have to sort first; `5` is the middle of `2, 5, 9`.
+**b) `5`**: `median` sorts the values internally before picking the middle one. You never have to sort first; `5` is the middle of `2, 5, 9`.
 
 # <span class="flow">A thousand orders at once</span>
 
@@ -109,7 +109,7 @@ print(prices.size)    # how many in total
 Here's the bigger boat. The deck needs **gross** prices: 19% VAT on all three. With a list you loop; with an array you just multiply:
 
 ``` python
-# the painful way — a loop, item by item
+# the painful way: a loop, item by item
 gross = []
 for p in [12.0, 9.0, 15.0]:
     gross.append(p * 1.19)
@@ -144,7 +144,7 @@ print(np.linspace(0, 1, 5))    # start, stop (included), how many
 
 . . .
 
-`arange` walks by a **step** and stops **before** the end, just like `range`. `linspace` splits a span into a fixed **count** of points, endpoints included.
+`arange` walks by a **step** and stops before the end, just like `range`. `linspace` splits a span into a fixed **count** of points, endpoints included.
 
 ## Predict: times two
 
@@ -162,7 +162,7 @@ a\) `[1, 2, 3, 1, 2, 3]` b) `[2, 4, 6]` c) an error
 
 ## Answer: lists repeat, arrays compute
 
-**a) `[1, 2, 3, 1, 2, 3]`** --- that's a plain **list**, and `* 2` on a list *repeats* it. Wrap it in an array and the same `* 2` does the math instead:
+**a) `[1, 2, 3, 1, 2, 3]`**. That's a plain **list**, and `* 2` on a list *repeats* it. Wrap it in an array and the same `* 2` does the math instead:
 
 ``` python
 import numpy as np
@@ -247,7 +247,7 @@ a\) `True` b) `2` c) `[False, True, True]`
 
 ## Answer: True counts as 1
 
-**b) `2`** --- `.sum()` adds the mask up, and each `True` is worth `1`, each `False` `0`. Two elements clear the bar, so the count is `2`:
+**b) `2`**: `.sum()` adds the mask up, and each `True` is worth `1`, each `False` `0`. Two elements clear the bar, so the count is `2`:
 
 ``` python
 import numpy as np
@@ -277,7 +277,7 @@ First **predict** what happens, then run it.
 
 ## A grid of numbers
 
-Real data isn't one row. Stack rows and you get a **2D array**: here three **days** (rows) across four **zones** (columns: Nord, Sued, Hafen, Altstadt):
+Real data isn't one row. Stack rows and you get a **2D array**: here three days (rows) across four zones (columns: Nord, Sued, Hafen, Altstadt):
 
 ``` python
 import numpy as np
@@ -371,7 +371,7 @@ a\) `week.sum(axis=1)` b) `week.sum()` c) `week.sum(axis=0)`
 
 ## Answer: collapse the days, keep the zones
 
-**c) `week.sum(axis=0)`** --- four zones means four numbers, so the **days** must disappear: `axis=0` collapses DOWN the rows, one number per column (zone):
+**c) `week.sum(axis=0)`**. Four zones means four numbers, so the **days** must disappear: `axis=0` collapses DOWN the rows, one number per column (zone):
 
 ``` python
 import numpy as np
@@ -402,7 +402,7 @@ First **predict** what happens, then run it.
 
 ## After the break: the lab
 
-- Head to the lab notebook: [Episode 7 --- One Array to Rule a Thousand Orders](../tutorials/tut_07_scientific.qmd)
+- Head to the lab notebook: [Episode 7 --- The Numbers Deck](../tutorials/tut_07_scientific.qmd)
 - You'll turn the order log into arrays, add VAT to a whole price column at once, mask out the late deliveries to count and average them, and collapse a days-by-zones grid to find the winning zone
 - AI is allowed, so try the chatbot, and keep your one-line disclosure note on the submission
 - It runs entirely in your browser: no setup, just click and code
@@ -419,7 +419,7 @@ First **predict** what happens, then run it.
 
 1.  **One array, one operation.** `np.array([...])` holds many numbers; arithmetic hits **every element at once**. No loop. Ask it `.shape`, `.dtype`, `.size` to know what you're holding.
 2.  **A comparison makes a mask.** `arr > 30` is a True/False array: `arr[mask]` filters, `.sum()` counts the Trues, `.mean()` gives their share.
-3.  **In 2D, pick an axis.** `axis=0` collapses **DOWN the rows** (one number per column), `axis=1` **across the columns** (one per row); `argmax` tells you **where** the maximum sits.
+3.  **In 2D, pick an axis.** `axis=0` collapses DOWN the rows (one number per column), `axis=1` across the columns (one per row); `argmax` tells you where the maximum sits.
 
 . . .
 

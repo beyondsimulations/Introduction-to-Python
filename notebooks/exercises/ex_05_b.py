@@ -12,7 +12,7 @@ def _():
 
 @app.cell(hide_code=True)
 def _():
-    # Helper — echoes the student's current answer as a "Your result" preview.
+    # Helper: echoes the student's current answer as a "Your result" preview.
     def show_result(value):
         if value is None:
             return ""
@@ -51,30 +51,30 @@ def _(mo):
 
 @app.cell
 def _():
-    # Given — do not change this
+    # Given: do not change this
     order_text = "drei"
     return (order_text,)
 
 
 @app.cell
 def _():
-    # YOUR CODE BELOW — replace None
+    # YOUR CODE BELOW: replace None
     price_exb = None
     return (price_exb,)
 
 
 @app.cell(hide_code=True)
 def _(mo, price_exb, show_result):
-    # Reactive check — re-runs automatically whenever the cell above changes.
+    # Reactive check. Re-runs automatically whenever the cell above changes.
     if price_exb is None:
         _ok = False
         _msg = "🔲 Not attempted yet."
     elif isinstance(price_exb, float) and price_exb == 0.0:
         _ok = True
-        _msg = "✅ Correct! The checkout survives — 0.0 flags the order for a human."
+        _msg = "✅ Correct! The checkout survives, and 0.0 flags the order for a human."
     else:
         _ok = False
-        _msg = "❌ Not quite — wrap the float() call in try/except ValueError and fall back to 0.0."
+        _msg = "❌ Not quite. Wrap the float() call in try/except ValueError and fall back to 0.0."
     mo.callout(mo.md(_msg + show_result(price_exb)), kind="success" if _ok else "warn")
     return
 

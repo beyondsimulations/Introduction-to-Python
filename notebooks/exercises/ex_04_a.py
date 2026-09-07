@@ -12,7 +12,7 @@ def _():
 
 @app.cell(hide_code=True)
 def _():
-    # Helper — echoes the student's current answer as a "Your result" preview.
+    # Helper: echoes the student's current answer as a "Your result" preview.
     def show_result(value):
         if value is None:
             return ""
@@ -43,7 +43,7 @@ def _(mo):
 
 @app.cell
 def _():
-    # Given — do not change this
+    # Given: do not change this
     queue = ["Pad Thai", "Founders Bowl", "Pizza Calzone", "Miso Ramen"]
     return (queue,)
 
@@ -61,16 +61,16 @@ def _(mo):
 @app.cell(hide_code=True)
 def _(mo, trace_exa):
     if trace_exa.value is None:
-        _msg = "🔲 Pick a prediction above first — commit before you peek!"
+        _msg = "🔲 Pick a prediction above first. Commit before you peek!"
     elif trace_exa.value == "a) \"Miso Ramen\"":
         _msg = (
             "✅ Correct: a negative index counts from the end, so `-1` is "
-            "the last item — `\"Miso Ramen\"`."
+            "the last item, `\"Miso Ramen\"`."
         )
     else:
         _msg = (
             "❌ Not quite. A negative index counts from the end, so `-1` is "
-            "the last item — `\"Miso Ramen\"`. (This one is ungraded — the "
+            "the last item, `\"Miso Ramen\"`. (This one is ungraded. The "
             "point is the prediction.)"
         )
     mo.callout(mo.md(_msg), kind="info")
@@ -90,14 +90,14 @@ def _(mo):
 
 @app.cell
 def _():
-    # YOUR CODE BELOW — replace None
+    # YOUR CODE BELOW: replace None
     last_two_exa = None
     return (last_two_exa,)
 
 
 @app.cell(hide_code=True)
 def _(last_two_exa, mo, show_result):
-    # Reactive check — re-runs automatically whenever the cell above changes.
+    # Reactive check. Re-runs automatically whenever the cell above changes.
     if last_two_exa is None:
         _ok = False
         _msg = "🔲 Not attempted yet."
@@ -106,7 +106,7 @@ def _(last_two_exa, mo, show_result):
         _msg = "✅ Correct! Those two orders go out next."
     else:
         _ok = False
-        _msg = "❌ Not quite — try a slice from -2 to the end."
+        _msg = "❌ Not quite. Try a slice from -2 to the end."
     mo.callout(mo.md(_msg + show_result(last_two_exa)), kind="success" if _ok else "warn")
     return
 

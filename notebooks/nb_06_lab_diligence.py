@@ -4,7 +4,7 @@
 # one global name per cell; += counts as a definition; every exercise
 # pre-defines its answer (None); suffix exercise names (_exNM); underscore-
 # prefixed names are cell-private; never a possible infinite loop. Data ships
-# inline (public/ files don't load simply in WASM — see docs/authoring-conventions.md).
+# inline (public/ files don't load simply in WASM, see docs/authoring-conventions.md).
 # First Part-II lab: AI tools are now allowed, but the checks still only pass on
 # working code.
 import marimo
@@ -19,7 +19,7 @@ def _(mo):
     # Notebook 6.1 — Due Diligence Week
     **Estimated time: 45–60 min · Core exercises: 7 + 1 quiz (+ 1 trace)**
 
-    The investor is **here**. Not on a call, not "circling back next quarter" —
+    The investor is **here**. Not on a call, not "circling back next quarter". She is
     standing in the shop with a clipboard and a very calm smile, asking to see the
     numbers before Friday. Real numbers: how many crates to order, what the
     ratings actually average to, what next week's demand might look like.
@@ -50,7 +50,7 @@ def _():
 
 @app.cell(hide_code=True)
 def _():
-    # Helper — echoes a student's current answer as a "Your result" preview so
+    # Helper: echoes a student's current answer as a "Your result" preview so
     # they SEE their output, not just ✅/❌. Strings render in a fenced block;
     # everything else inline. See _template.py.
     def show_result(value):
@@ -122,10 +122,10 @@ def _(mo):
 
 @app.cell
 def _():
-    # Worked example (read + run this) — it also imports `math` for the exercises below
+    # Worked example (read + run this): it also imports `math` for the exercises below
     import math
-    print("ceil(10 / 3):", math.ceil(10 / 3))    # 4  — always rounds UP
-    print("floor(10 / 3):", math.floor(10 / 3))  # 3  — always rounds DOWN
+    print("ceil(10 / 3):", math.ceil(10 / 3))    # 4: always rounds UP
+    print("floor(10 / 3):", math.floor(10 / 3))  # 3: always rounds DOWN
     return (math,)
 
 
@@ -146,7 +146,7 @@ def _(mo):
 
 @app.cell
 def _():
-    # YOUR CODE BELOW — whole crates needed for 75 bags, 12 per crate (round UP)
+    # YOUR CODE BELOW: whole crates needed for 75 bags, 12 per crate (round UP)
     crates_ex11 = None
     return (crates_ex11,)
 
@@ -159,15 +159,15 @@ def _(crates_ex11, mo, show_result):
         _preview = ""
     elif not isinstance(crates_ex11, int):
         ex11_ok = False
-        _msg = "❌ Exercise 1.1: this should be a whole **number** of crates. `math.ceil(...)` returns an `int` — did you divide 75 by 12 inside it?"
+        _msg = "❌ Exercise 1.1: this should be a whole **number** of crates. `math.ceil(...)` returns an `int`. Did you divide 75 by 12 inside it?"
         _preview = show_result(crates_ex11)
     elif crates_ex11 == 7:
         ex11_ok = True
-        _msg = "✅ Exercise 1.1: **7** crates. Six would leave you three bags short — `math.ceil` rounds up so you never under-order."
+        _msg = "✅ Exercise 1.1: **7** crates. Six would leave you three bags short. `math.ceil` rounds up so you never under-order."
         _preview = show_result(crates_ex11)
     elif crates_ex11 == 6:
         ex11_ok = False
-        _msg = "❌ Exercise 1.1: 6 crates is 72 bags — three short. `math.ceil` rounds *up* to the next whole crate, unlike plain integer division."
+        _msg = "❌ Exercise 1.1: 6 crates is 72 bags, three short. `math.ceil` rounds *up* to the next whole crate, unlike plain integer division."
         _preview = show_result(crates_ex11)
     else:
         ex11_ok = False
@@ -182,7 +182,7 @@ def _(mo):
     mo.accordion(
         {
             "💡 Hint 1 (a nudge)": "`math` is already imported from the worked example. `math.ceil(...)` takes one number and rounds it up. The number you want to round is the bags divided by the crate size.",
-            "💡 Hint 2 (the structure)": "crates_ex11 = math.ceil(___ / ___)   — put the number of bags and the crate size in the blanks.",
+            "💡 Hint 2 (the structure)": "crates_ex11 = math.ceil(___ / ___)   (put the number of bags and the crate size in the blanks)",
         }
     )
     return
@@ -203,8 +203,8 @@ def _(mo):
 
     Report two numbers using the `statistics` module:
 
-    - `median_ex12` — the **middle** rating (`statistics.median`), and
-    - `mean_ex12` — the **average** rating (`statistics.mean`).
+    - `median_ex12`: the **middle** rating (`statistics.median`), and
+    - `mean_ex12`: the **average** rating (`statistics.mean`).
 
     One thing to notice: this list has an **even** number of ratings, so there's
     no single middle value: the median is the **mean of the two middle** values
@@ -216,7 +216,7 @@ def _(mo):
 
 @app.cell
 def _():
-    # Worked example (read + run this) — it also imports `statistics` for the exercises below
+    # Worked example (read + run this): it also imports `statistics` for the exercises below
     import statistics
     print("median of [2, 4, 6, 8]:", statistics.median([2, 4, 6, 8]))  # 5.0 (mean of 4 and 6)
     print("mean of [2, 4, 6, 8]:", statistics.mean([2, 4, 6, 8]))      # 5.0
@@ -231,14 +231,14 @@ def _():
 
 @app.cell
 def _():
-    # YOUR CODE BELOW — the MIDDLE rating (statistics.median of `ratings`)
+    # YOUR CODE BELOW: the MIDDLE rating (statistics.median of `ratings`)
     median_ex12 = None
     return (median_ex12,)
 
 
 @app.cell
 def _():
-    # YOUR CODE BELOW — the AVERAGE rating (statistics.mean of `ratings`)
+    # YOUR CODE BELOW: the AVERAGE rating (statistics.mean of `ratings`)
     mean_ex12 = None
     return (mean_ex12,)
 
@@ -251,7 +251,7 @@ def _(mean_ex12, median_ex12, mo, show_result):
         _preview = ""
     elif median_ex12 is None or mean_ex12 is None:
         ex12_ok = False
-        _msg = "❌ Exercise 1.2: both numbers are needed — fill in `median_ex12` *and* `mean_ex12`."
+        _msg = "❌ Exercise 1.2: both numbers are needed. Fill in `median_ex12` *and* `mean_ex12`."
         _preview = show_result(median_ex12) + show_result(mean_ex12)
     elif not isinstance(median_ex12, (int, float)) or not isinstance(mean_ex12, (int, float)):
         ex12_ok = False
@@ -259,19 +259,19 @@ def _(mean_ex12, median_ex12, mo, show_result):
         _preview = show_result(median_ex12) + show_result(mean_ex12)
     elif round(median_ex12, 2) == 4.3 and round(mean_ex12, 2) == 4.27:
         ex12_ok = True
-        _msg = "✅ Exercise 1.2: median **4.3**, mean **4.27**. With six ratings the median is the average of the two middle ones — `statistics.median` sorted and split them for you."
+        _msg = "✅ Exercise 1.2: median **4.3**, mean **4.27**. With six ratings the median is the average of the two middle ones, and `statistics.median` sorted and split them for you."
         _preview = show_result(median_ex12) + show_result(mean_ex12)
     elif round(median_ex12, 2) == 4.27 and round(mean_ex12, 2) == 4.3:
         ex12_ok = False
-        _msg = "❌ Exercise 1.2: looks like these two are the wrong way round — which one is the middle value, which one the average?"
+        _msg = "❌ Exercise 1.2: looks like these two are the wrong way round. Which one is the middle value, which one the average?"
         _preview = show_result(median_ex12) + show_result(mean_ex12)
     elif round(median_ex12, 2) != 4.3:
         ex12_ok = False
-        _msg = "❌ Exercise 1.2: the median isn't right yet. It's `statistics.median(ratings)` — the middle of the *sorted* ratings (here, the mean of the two middle values)."
+        _msg = "❌ Exercise 1.2: the median isn't right yet. It's `statistics.median(ratings)`: the middle of the *sorted* ratings (here, the mean of the two middle values)."
         _preview = show_result(median_ex12) + show_result(mean_ex12)
     else:
         ex12_ok = False
-        _msg = "❌ Exercise 1.2: the mean isn't right yet. It's `statistics.mean(ratings)` — the sum of all six ratings divided by six."
+        _msg = "❌ Exercise 1.2: the mean isn't right yet. It's `statistics.mean(ratings)`, the sum of all six ratings divided by six."
         _preview = show_result(median_ex12) + show_result(mean_ex12)
     mo.callout(mo.md(_msg + _preview), kind="success" if ex12_ok else "warn")
     return (ex12_ok,)
@@ -282,7 +282,7 @@ def _(mo):
     mo.accordion(
         {
             "💡 Hint 1 (a nudge)": "`statistics` is imported from the worked example. Both functions take the list itself: `statistics.median(the_list)` and `statistics.mean(the_list)`. You don't need to sort anything by hand.",
-            "💡 Hint 2 (the structure)": "median_ex12 = statistics.median(___)\nmean_ex12 = statistics.mean(___)   — put the ratings list in each blank.",
+            "💡 Hint 2 (the structure)": "median_ex12 = statistics.median(___)\nmean_ex12 = statistics.mean(___)   (put the ratings list in each blank)",
         }
     )
     return
@@ -311,7 +311,7 @@ def _(mo):
 
 @app.cell
 def _():
-    # Worked example (read + run this) — the SAME statistics module, aliased to `stats`
+    # Worked example (read + run this): the SAME statistics module, aliased to `stats`
     import statistics as stats
     print("stats.mean([10, 20, 30]):", stats.mean([10, 20, 30]))  # 20
     return (stats,)
@@ -325,7 +325,7 @@ def _():
 
 @app.cell
 def _():
-    # YOUR CODE BELOW — the average of `daily_orders`, using the alias `stats`
+    # YOUR CODE BELOW: the average of `daily_orders`, using the alias `stats`
     avg_ex13 = None
     return (avg_ex13,)
 
@@ -342,11 +342,11 @@ def _(avg_ex13, mo, show_result):
         _preview = show_result(avg_ex13)
     elif round(avg_ex13, 2) == 17:
         ex13_ok = True
-        _msg = "✅ Exercise 1.3: **17** orders a day on average. `import statistics as stats` and `import statistics` reach the exact same code — the alias is just a nickname."
+        _msg = "✅ Exercise 1.3: **17** orders a day on average. `import statistics as stats` and `import statistics` reach the exact same code. The alias is just a nickname."
         _preview = show_result(avg_ex13)
     else:
         ex13_ok = False
-        _msg = "❌ Exercise 1.3: not the average of the four counts. It's `stats.mean(daily_orders)` — add the four up, divide by four."
+        _msg = "❌ Exercise 1.3: not the average of the four counts. It's `stats.mean(daily_orders)`: add the four up, divide by four."
         _preview = show_result(avg_ex13)
     mo.callout(mo.md(_msg + _preview), kind="success" if ex13_ok else "warn")
     return (ex13_ok,)
@@ -357,7 +357,7 @@ def _(mo):
     mo.accordion(
         {
             "💡 Hint 1 (a nudge)": "The alias `stats` behaves exactly like `statistics`. Call `.mean(...)` on it and hand it the list of daily orders.",
-            "💡 Hint 2 (the structure)": "avg_ex13 = stats.mean(___)   — put the daily_orders list in the blank.",
+            "💡 Hint 2 (the structure)": "avg_ex13 = stats.mean(___)   (put the daily_orders list in the blank)",
         }
     )
     return
@@ -401,11 +401,11 @@ def _(mo):
 
 @app.cell
 def _():
-    # Worked example (read + run this) — it also imports `random` for the exercises below
+    # Worked example (read + run this): it also imports `random` for the exercises below
     import random
     random.seed(0)
     print("three seeded dice rolls:", [random.randint(1, 6) for _ in range(3)])
-    # Run this cell again — same three numbers, because the seed was pinned first.
+    # Run this cell again: same three numbers, because the seed was pinned first.
     return (random,)
 
 
@@ -425,7 +425,7 @@ def _(mo):
 
 @app.cell
 def _():
-    # YOUR CODE BELOW — seed with 4, then 7 × random.randint(8, 30) into a list
+    # YOUR CODE BELOW: seed with 4, then 7 × random.randint(8, 30) into a list
     demand_ex21 = None
     return (demand_ex21,)
 
@@ -447,11 +447,11 @@ def _(demand_ex21, mo, show_result):
         _preview = show_result(demand_ex21)
     elif demand_ex21 == _expected:
         ex21_ok = True
-        _msg = "✅ Exercise 2.1: seven days projected — and because you seeded with 4 first, anyone who runs it gets this exact week. That's a projection you can defend."
+        _msg = "✅ Exercise 2.1: seven days projected, and because you seeded with 4 first, anyone who runs it gets this exact week. That's a projection you can defend."
         _preview = show_result(demand_ex21)
     else:
         ex21_ok = False
-        _msg = "❌ Exercise 2.1: right length, but the numbers don't match what's expected — so the seed isn't set as expected. Call `random.seed(4)` **once**, *before* the seven draws, then use `random.randint(8, 30)`."
+        _msg = "❌ Exercise 2.1: right length, but the numbers don't match what's expected, so the seed isn't set as expected. Call `random.seed(4)` **once**, *before* the seven draws, then use `random.randint(8, 30)`."
         _preview = show_result(demand_ex21)
     mo.callout(mo.md(_msg + _preview), kind="success" if ex21_ok else "warn")
     return (ex21_ok,)
@@ -461,8 +461,8 @@ def _(demand_ex21, mo, show_result):
 def _(mo):
     mo.accordion(
         {
-            "💡 Hint 1 (a nudge)": "Two steps: pin the generator with `random.seed(4)` first, then build a list of seven `random.randint(8, 30)` draws — a list comprehension over `range(7)` is the tidy way.",
-            "💡 Hint 2 (the structure)": "random.seed(4)\ndemand_ex21 = [random.randint(___, ___) for _ in range(___)]   — fill the low bound, high bound, and how many days.",
+            "💡 Hint 1 (a nudge)": "Two steps: pin the generator with `random.seed(4)` first, then build a list of seven `random.randint(8, 30)` draws. A list comprehension over `range(7)` is the tidy way.",
+            "💡 Hint 2 (the structure)": "random.seed(4)\ndemand_ex21 = [random.randint(___, ___) for _ in range(___)]   (fill the low bound, high bound, and how many days)",
         }
     )
     return
@@ -498,7 +498,7 @@ def _(mo):
 
 @app.cell
 def _():
-    # YOUR CODE BELOW — Tobi's seven-day projection, fixed so the days actually vary
+    # YOUR CODE BELOW: Tobi's seven-day projection, fixed so the days actually vary
     fixed_ex22 = None
     return (fixed_ex22,)
 
@@ -520,15 +520,15 @@ def _(fixed_ex22, mo, show_result):
         _preview = show_result(fixed_ex22)
     elif len(set(fixed_ex22)) == 1:
         ex22_ok = False
-        _msg = "❌ Exercise 2.2: still a photocopy — all seven days are identical. Something is resetting the generator to the same starting point before every single draw. Where does that reset belong so it happens only once?"
+        _msg = "❌ Exercise 2.2: still a photocopy: all seven days are identical. Something is resetting the generator to the same starting point before every single draw. Where does that reset belong so it happens only once?"
         _preview = show_result(fixed_ex22)
     elif fixed_ex22 == _expected:
         ex22_ok = True
-        _msg = "✅ Exercise 2.2: seven *different* days — a real projection. Seeding pins where the sequence *starts*; do it once and the numbers flow, do it every step and they freeze."
+        _msg = "✅ Exercise 2.2: seven *different* days, a real projection. Seeding pins where the sequence *starts*; do it once and the numbers flow, do it every step and they freeze."
         _preview = show_result(fixed_ex22)
     else:
         ex22_ok = False
-        _msg = "❌ Exercise 2.2: the days vary now, but they're not the expected sequence. Keep `random.seed(9)` and `random.randint(8, 30)` — check *how many times* the seed is set."
+        _msg = "❌ Exercise 2.2: the days vary now, but they're not the expected sequence. Keep `random.seed(9)` and `random.randint(8, 30)`. Check *how many times* the seed is set."
         _preview = show_result(fixed_ex22)
     mo.callout(mo.md(_msg + _preview), kind="success" if ex22_ok else "warn")
     return (ex22_ok,)
@@ -539,7 +539,7 @@ def _(mo):
     mo.accordion(
         {
             "💡 Hint 1 (a nudge)": "Seeding resets the generator to a fixed starting point. Tobi resets it on every pass of the loop, so every draw starts from the same place and gives the same number. You want the sequence to *keep going*, not restart.",
-            "💡 Hint 2 (the structure)": "random.seed(9)\nfixed_ex22 = [random.randint(8, 30) for _ in range(___)]   — fill how many days, and note where `seed` sits: once, above the draws, not inside them.",
+            "💡 Hint 2 (the structure)": "random.seed(9)\nfixed_ex22 = [random.randint(8, 30) for _ in range(___)]   (fill how many days, and note where `seed` sits: once, above the draws, not inside them)",
         }
     )
     return
@@ -573,7 +573,7 @@ def _():
 
 @app.cell
 def _():
-    # YOUR CODE BELOW — seed with 12, then 4 × random.choice(flyer_zones) into a list
+    # YOUR CODE BELOW: seed with 12, then 4 × random.choice(flyer_zones) into a list
     raffle_ex23 = None
     return (raffle_ex23,)
 
@@ -595,15 +595,15 @@ def _(mo, raffle_ex23, show_result):
         _preview = show_result(raffle_ex23)
     elif raffle_ex23 == _expected:
         ex23_ok = True
-        _msg = "✅ Exercise 2.3: four zones drawn — and Hafen came up twice, which is fine: `random.choice` can pick the same item again. Seeded with 12, so it's reproducible."
+        _msg = "✅ Exercise 2.3: four zones drawn. Hafen came up twice, which is fine: `random.choice` can pick the same item again. Seeded with 12, so it's reproducible."
         _preview = show_result(raffle_ex23)
     elif len(set(raffle_ex23)) == 4 and set(raffle_ex23) == {"Nord", "Sued", "Hafen", "Altstadt"}:
         ex23_ok = False
-        _msg = "❌ Exercise 2.3: that draws without repetition (sample/shuffle) — the raffle can pick the same zone twice; call `random.choice` once per pick."
+        _msg = "❌ Exercise 2.3: that draws without repetition (sample/shuffle), but the raffle can pick the same zone twice; call `random.choice` once per pick."
         _preview = show_result(raffle_ex23)
     else:
         ex23_ok = False
-        _msg = "❌ Exercise 2.3: right length, different draws — so the seed isn't set as expected. `random.seed(12)` **once** before the four `random.choice(flyer_zones)` picks."
+        _msg = "❌ Exercise 2.3: right length, different draws: the seed isn't set as expected. `random.seed(12)` **once** before the four `random.choice(flyer_zones)` picks."
         _preview = show_result(raffle_ex23)
     mo.callout(mo.md(_msg + _preview), kind="success" if ex23_ok else "warn")
     return (ex23_ok,)
@@ -613,8 +613,8 @@ def _(mo, raffle_ex23, show_result):
 def _(mo):
     mo.accordion(
         {
-            "💡 Hint 1 (a nudge)": "Seed once with 12, then build a list of four `random.choice(flyer_zones)` calls — each call returns one zone, and repeats are allowed.",
-            "💡 Hint 2 (the structure)": "random.seed(12)\nraffle_ex23 = [random.choice(___) for _ in range(___)]   — fill the list to draw from and the number of picks.",
+            "💡 Hint 1 (a nudge)": "Seed once with 12, then build a list of four `random.choice(flyer_zones)` calls. Each call returns one zone, and repeats are allowed.",
+            "💡 Hint 2 (the structure)": "random.seed(12)\nraffle_ex23 = [random.choice(___) for _ in range(___)]   (fill the list to draw from and the number of picks)",
         }
     )
     return
@@ -649,7 +649,7 @@ def _(mo):
 
 @app.cell
 def _():
-    # YOUR CODE BELOW — seed 2, simulate 5 × random.randint(10, 26),
+    # YOUR CODE BELOW: seed 2, simulate 5 × random.randint(10, 26),
     # then store their statistics.mean in boss_ex40
     boss_ex40 = None
     return (boss_ex40,)
@@ -662,12 +662,12 @@ def _(boss_ex40, mo, show_result):
         _msg = "🔲 Boss exercise: not attempted yet."
     elif not isinstance(boss_ex40, (int, float)):
         ex40_ok = False
-        _msg = "❌ Boss exercise: the projection should be a single **number** — the average of the five simulated days."
+        _msg = "❌ Boss exercise: the projection should be a single **number**, the average of the five simulated days."
     elif round(boss_ex40, 2) == 14.2:
         ex40_ok = True
         _msg = (
             "✅ Boss exercise: **14.2** orders a day on average. Seeded so it's "
-            "reproducible, averaged so it's honest — a memo the investor can trust. 📈"
+            "reproducible, averaged so it's honest: a memo the investor can trust. 📈"
         )
     else:
         ex40_ok = False
@@ -685,7 +685,7 @@ def _(mo):
     mo.accordion(
         {
             "💡 Hint 1 (a nudge)": "Three moves: seed, simulate, summarize. Build a list of five `random.randint(10, 26)` draws (after seeding once), then feed that whole list to `statistics.mean(...)`.",
-            "💡 Hint 2 (the structure)": "random.seed(2)\n_days = [random.randint(10, 26) for _ in range(5)]\nboss_ex40 = statistics.mean(___)   — put the list of days in the blank.",
+            "💡 Hint 2 (the structure)": "random.seed(2)\n_days = [random.randint(10, 26) for _ in range(5)]\nboss_ex40 = statistics.mean(___)   (put the list of days in the blank)",
         }
     )
     return
@@ -727,7 +727,7 @@ def _(mo):
 @app.cell(hide_code=True)
 def _(mo, trace_floor):
     if trace_floor.value is None:
-        _msg = "🔲 Pick a prediction above first — commit before you peek!"
+        _msg = "🔲 Pick a prediction above first. Commit before you peek!"
     elif trace_floor.value == "-2":
         _msg = (
             "✅ Correct: **-2**. `ceil` goes UP, not away from zero. On the number "
@@ -736,9 +736,9 @@ def _(mo, trace_floor):
         )
     else:
         _msg = (
-            "❌ Not quite — it's **-2**. `ceil` always rounds *up* (toward "
+            "❌ Not quite: it's **-2**. `ceil` always rounds *up* (toward "
             "positive infinity), not away from zero. -2 is above -2.5, so that's where "
-            "it lands. (Ungraded — the point is the prediction.)"
+            "it lands. (Ungraded. The point is the prediction.)"
         )
     mo.callout(mo.md(_msg), kind="info")
     return
@@ -753,7 +753,7 @@ def _(mo):
     You seeded every simulation today. **Why** does seeding a simulation matter?
     Assign the letter (as text) to `answer_ex50`:
 
-    - **a)** it makes the results reproducible — same seed, same sequence
+    - **a)** it makes the results reproducible: same seed, same sequence
     - **b)** it makes the random numbers generate faster
     - **c)** it makes the numbers more evenly spread out
     - **d)** the numpy library refuses to draw without a seed
@@ -764,7 +764,7 @@ def _(mo):
 
 @app.cell
 def _():
-    # YOUR CODE BELOW — replace "" with "a", "b", "c", or "d"
+    # YOUR CODE BELOW: replace "" with "a", "b", "c", or "d"
     answer_ex50 = ""
     return (answer_ex50,)
 
@@ -785,7 +785,7 @@ def _(answer_ex50, mo):
         ex50_ok = False
         _msg = (
             "❌ Quiz: not quite. Seeding doesn't change speed or spread, and numpy "
-            "draws happily without one — think about what let your projection come "
+            "draws happily without one. Think about what let your projection come "
             "out the same way twice in a row."
         )
     mo.md(_msg)
@@ -807,7 +807,7 @@ def _(
     ex50_ok,
     mo,
 ):
-    # Progress cell — the 7 core exercises plus the quiz (the trace doesn't count).
+    # Progress cell: the 7 core exercises plus the quiz (the trace doesn't count).
     _checks = [ex11_ok, ex12_ok, ex13_ok, ex21_ok, ex22_ok, ex23_ok, ex40_ok, ex50_ok]
     _done = sum(_checks)
     _total = len(_checks)
@@ -817,7 +817,7 @@ def _(
         else "The investor is still tapping her pen, waiting for the numbers."
     )
     mo.callout(
-        mo.md(f"**Core exercises: {_done}/{_total} ✅** — {_investor}"),
+        mo.md(f"**Core exercises: {_done}/{_total} ✅**. {_investor}"),
         kind="success" if _done == _total else "neutral",
     )
     return
@@ -829,7 +829,7 @@ def _(mo):
         r"""
     ## Before you leave 📦
 
-    1. Check the progress box above — all **eight** green? If not, reopen the
+    1. Check the progress box above: all **eight** green? If not, reopen the
        hints, reread the worked examples, and try again. `math`, `statistics` and
        `random` are tools you'll reach for constantly, and seeding is the habit
        that turns "some random numbers" into "a result someone can verify".

@@ -12,7 +12,7 @@ def _():
 
 @app.cell(hide_code=True)
 def _():
-    # Helper — echoes the student's current answer as a "Your result" preview.
+    # Helper: echoes the student's current answer as a "Your result" preview.
     def show_result(value):
         if value is None:
             return ""
@@ -39,21 +39,21 @@ def _(mo):
 
 @app.cell
 def _():
-    # Given — do not change this
+    # Given: do not change this
     menu = {"Falafel Wrap": 6.90, "Pad Thai": 8.90, "Founders Bowl": 10.40}
     return (menu,)
 
 
 @app.cell
 def _(menu):
-    # YOUR CODE BELOW — replace None
+    # YOUR CODE BELOW: replace None
     happy_exc = None
     return (happy_exc,)
 
 
 @app.cell(hide_code=True)
 def _(happy_exc, mo, show_result):
-    # Reactive check — re-runs automatically whenever the cell above changes.
+    # Reactive check. Re-runs automatically whenever the cell above changes.
     _expected = {"Falafel Wrap": 5.52, "Pad Thai": 7.12, "Founders Bowl": 8.32}
     try:
         _matches_rounded = (
@@ -75,10 +75,10 @@ def _(happy_exc, mo, show_result):
         _msg = "✅ Correct! Happy hour is on."
     elif _matches_rounded:
         _ok = False
-        _msg = "❌ So close — round each price to 2 decimals."
+        _msg = "❌ So close. Round each price to 2 decimals."
     else:
         _ok = False
-        _msg = "❌ Not quite — check the discount and every key against `menu`."
+        _msg = "❌ Not quite. Check the discount and every key against `menu`."
     mo.callout(mo.md(_msg + show_result(happy_exc)), kind="success" if _ok else "warn")
     return
 

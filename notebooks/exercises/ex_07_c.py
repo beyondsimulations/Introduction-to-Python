@@ -12,7 +12,7 @@ def _():
 
 @app.cell(hide_code=True)
 def _():
-    # Helper — echoes the student's current answer as a "Your result" preview.
+    # Helper: echoes the student's current answer as a "Your result" preview.
     def show_result(value):
         if value is None:
             return ""
@@ -73,32 +73,32 @@ def _(mo):
 
 @app.cell
 def _(np):
-    # Given — do not change this
+    # Given: do not change this
     sales_exc = np.array([[7, 12, 5], [9, 4, 14], [11, 8, 6], [3, 10, 13]])
     return (sales_exc,)
 
 
 @app.cell
 def _(sales_exc):
-    # YOUR CODE BELOW — replace None
+    # YOUR CODE BELOW: replace None
     zone_totals_exc = None
     return (zone_totals_exc,)
 
 
 @app.cell
 def _(sales_exc):
-    # YOUR CODE BELOW — replace None
+    # YOUR CODE BELOW: replace None
     best_zone_exc = None
     return (best_zone_exc,)
 
 
 @app.cell(hide_code=True)
 def _(best_zone_exc, mo, np, show_result, zone_totals_exc):
-    # Reactive check — re-runs automatically whenever the cells above change.
+    # Reactive check. Re-runs automatically whenever the cells above change.
     _expected_totals = [30, 34, 38]
     _expected_best = 2
     _result = None
-    # Coerce to a plain list of ints first — anything that can't be must
+    # Coerce to a plain list of ints first. Anything that can't be must
     # degrade to a message, never crash the check.
     try:
         _totals = [int(_v) for _v in zone_totals_exc]
@@ -109,16 +109,16 @@ def _(best_zone_exc, mo, np, show_result, zone_totals_exc):
         _msg = "🔲 Not attempted yet."
     elif _totals is not None and len(_totals) == 4:
         _ok = False
-        _msg = "❌ Not quite — you summed per DAY, not per zone. Which axis collapses the days?"
+        _msg = "❌ Not quite. You summed per DAY, not per zone. Which axis collapses the days?"
     elif _totals != _expected_totals:
         _ok = False
-        _msg = "❌ The zone totals aren't right yet — check `axis=0` versus `axis=1`."
+        _msg = "❌ The zone totals aren't right yet. Check `axis=0` versus `axis=1`."
     elif isinstance(best_zone_exc, (int, np.integer)) and int(best_zone_exc) == _expected_best:
         _ok = True
         _msg = "✅ Correct! Zone 2 wins, and the totals are ready for the deck."
     else:
         _ok = False
-        _msg = "❌ The totals are right, but the best zone isn't — which index holds the highest total?"
+        _msg = "❌ The totals are right, but the best zone isn't. Which index holds the highest total?"
     if zone_totals_exc is not None and best_zone_exc is not None:
         _result = f"zone_totals_exc={zone_totals_exc}, best_zone_exc={best_zone_exc}"
     mo.callout(mo.md(_msg + show_result(_result)), kind="success" if _ok else "warn")

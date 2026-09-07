@@ -11,18 +11,18 @@ format:
 
 # 📋 Checkpoint 1 {.exercise-slide}
 
-**The quarterly board review.** The first **40 minutes** are the checkpoint. It starts **now**.
+**The quarterly board review.** The first 40 minutes are the checkpoint. It starts now.
 
 - **Individual work**: no AI, no neighbors, no chat
 - The **link and QR** are handed out in class. Open it and start
 - ~6 short tasks: write code, trace code, fix a bug, answer a multiple choice
 - It sweeps **Sessions I–II**: variables, types, `round` and f-strings, `if`/`elif`, `for` loops
 
-<!-- QR handed out live — never in the deck -->
+<!-- QR handed out live, never in the deck -->
 
 ## When you're done
 
-Menu → *Download* → *Download Python code* → upload the `.py` to the **"Checkpoint 1"** assignment on Moodle, **before the 40 minutes are up**. **No retakes**: one sitting.
+Menu → *Download* → *Download Python code* → upload the `.py` to the "Checkpoint 1" assignment on Moodle, **before the 40 minutes are up**. No retakes: one sitting.
 
 . . .
 
@@ -38,11 +38,11 @@ Pens down. The checkpoint is behind you. Now the reason we're all here.
 
 . . .
 
-Tobi has been "reusing" code the only way he knows how: he pasted the same receipt block **14 times**, once per menu item. A ten-cent price change last week cost him a whole afternoon of hunting down copies.
+Tobi has been "reusing" code the only way he knows how: he pasted the same receipt block **14 times**, once per menu item. A ten-cent price change yesterday cost him a whole afternoon of hunting down copies.
 
 . . .
 
-Today the code learns to **reuse itself**. We meet the **function**, and build a first **class**.
+Today the code learns to **reuse itself**. We meet the function, and build a first class.
 
 # [Writing Functions]{.flow} {.title}
 
@@ -136,7 +136,7 @@ a\) `8.50 EUR`   b) `Error`   c) `None`
 
 ## Answer: `print` shows, `return` hands back
 
-**c) `None`** — `label_price` prints its line while running, but with no `return` it hands back `None`. That `None` is what lands in `result`. Printing is not returning.
+**c) `None`**: `label_price` prints its line while running, but with no `return` it hands back `None`. That `None` is what lands in `result`. Printing is not returning.
 
 ```{python}
 #| eval: true
@@ -170,7 +170,7 @@ Defaults let one function cover the common case and the special case.
 
 ## Functions can call functions
 
-A function can use another function you already wrote — reuse builds on reuse:
+A function can use another function you already wrote (reuse builds on reuse):
 
 ```{python}
 #| eval: true
@@ -211,7 +211,7 @@ def bump(n):
     n = n + 10       # changes the function's OWN copy of n
     return n
 
-print(bump(3))       # 13 — the returned value
+print(bump(3))       # 13, the returned value
 ```
 
 . . .
@@ -240,7 +240,7 @@ a\) `3`   b) `13`   c) `Error`
 
 ## Answer: the outside variable is untouched
 
-**a) `3`** — `bump` changes only its own copy `n`. We never stored what it returned, so `stock` out here never moves. The function cannot reach out and rewrite your variables.
+**a) `3`**: `bump` changes only its own copy `n`. We never stored what it returned, so `stock` out here never moves. The function cannot reach out and rewrite your variables.
 
 ```{python}
 #| eval: true
@@ -288,7 +288,7 @@ class Delivery:
         self.distance_km = distance_km
         self.rate_per_km = 1.20         # every delivery carries its rate
 
-    def fee(self):                       # a method — note self
+    def fee(self):                       # a method: note self
         return round(self.distance_km * self.rate_per_km, 2)
 ```
 
@@ -304,7 +304,7 @@ class Delivery:
 #| eval: true
 #| output-location: fragment
 
-trip = Delivery("Nadia", 4)   # build one — __init__ runs
+trip = Delivery("Nadia", 4)   # build one, __init__ runs
 
 print(trip.courier)           # read stored data
 print(trip.fee())             # call the method
@@ -356,19 +356,19 @@ First **predict** what happens, then run it.
 
 1. A **function** is written once with `def`, takes **parameters**, and hands a value back with `return`: `print` shows, `return` gives back (no `return` → `None`)
 2. Names inside a function are **local**: it can't quietly change your variables, which is exactly what makes it safe to reuse
-3. A **class** bundles **data** (on `self`, via `__init__`) with **behavior** (methods). You'll write just one small one today
+3. A **class** bundles data (on `self`, via `__init__`) with behavior (methods). You'll write just one small one today
 
 . . .
 
 ::: {.callout-note}
-**Next time — Episode 4:** the menu outgrows Tobi's **seventeen loose variables** (`price1`, `price2`, `price_final_FINAL2`), and nobody can find anything. We give the data a **shape**: lists and dictionaries.
+**Next time — Episode 4:** the menu outgrows Tobi's seventeen loose variables (`price1`, `price2`, `price_final_FINAL2`), and nobody can find anything. We give the data a shape: lists and dictionaries.
 :::
 
 # [Literature]{.flow} {.title}
 
 ## Books to start with
 
-- Downey, A. B. (2024). Think Python: How to think like a computer scientist (Third edition). O’Reilly. [Link to free online version](https://greenteapress.com/wp/think-python-3rd-edition/)
+- Downey, A. B. (2024). Think Python: How to think like a computer scientist (Third edition). O'Reilly. [Link to free online version](https://greenteapress.com/wp/think-python-3rd-edition/)
 - Elter, S. (2021). Schrödinger programmiert Python: Das etwas andere Fachbuch (1. Auflage). Rheinwerk Verlag.
 
 . . .

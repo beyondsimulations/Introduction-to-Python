@@ -12,7 +12,7 @@ def _():
 
 @app.cell(hide_code=True)
 def _():
-    # Helper — echoes the student's current answer as a "Your result" preview.
+    # Helper: echoes the student's current answer as a "Your result" preview.
     def show_result(value):
         if value is None:
             return ""
@@ -76,7 +76,7 @@ def _(mo):
 
 @app.cell
 def _(pd):
-    # Given — do not change this
+    # Given: do not change this
     tobi_df = pd.DataFrame(
         {
             "zone": ["Nord", "Nord", "Sued", "Nord", "Hafen"],
@@ -88,7 +88,7 @@ def _(pd):
 
 @app.cell
 def _(tobi_df):
-    # Tobi's AI draft (broken — fix it in your own code below):
+    # Tobi's AI draft (broken). Fix it in your own code below:
     #   nord = tobi_df[tobi_df["zone"] == "nord"]        # quietly empty… why?
     #   mean_exa = nord["total_eur"].summarize()           # AttributeError… why?
     mean_exa = None  # YOUR CODE BELOW
@@ -97,7 +97,7 @@ def _(tobi_df):
 
 @app.cell(hide_code=True)
 def _(mean_exa, mo, pd, show_result):
-    # Reactive check — re-runs automatically whenever the cell above changes.
+    # Reactive check. Re-runs automatically whenever the cell above changes.
     _expected = 14.5
     _all_zones_mean = 13.64  # Tobi's "averaged everything" trap
     _result = None
@@ -107,30 +107,30 @@ def _(mean_exa, mo, pd, show_result):
     elif isinstance(mean_exa, (pd.Series, pd.DataFrame)):
         _ok = False
         _result = f"mean_exa={mean_exa!r}"
-        _msg = "❌ `mean_exa` is still a whole column/table — `.mean()` collapses it to one number."
+        _msg = "❌ `mean_exa` is still a whole column/table: `.mean()` collapses it to one number."
     else:
-        # Coerce to a plain float first — anything that can't be must
+        # Coerce to a plain float first. Anything that can't be must
         # degrade to a message, never crash the check.
         try:
             _v = round(float(mean_exa), 2)
         except (TypeError, ValueError):
             _ok = False
             _v = None
-            _msg = "❌ That's not a number yet — check what `.mean()` actually returns."
+            _msg = "❌ That's not a number yet. Check what `.mean()` actually returns."
         else:
             _result = f"mean_exa={mean_exa}"
             if pd.isna(_v):
                 _ok = False
-                _msg = '❌ Your filter came back empty — pandas comparisons are case-sensitive; check the zone spelling ("Nord" vs "nord").'
+                _msg = '❌ Your filter came back empty. pandas comparisons are case-sensitive; check the zone spelling ("Nord" vs "nord").'
             elif _v == _expected:
                 _ok = True
-                _msg = "✅ Correct! 14.5 — and you just did today's most important professional skill: verifying AI output."
+                _msg = "✅ Correct! 14.5, and you just did today's most important professional skill: verifying AI output."
             elif _v == _all_zones_mean:
                 _ok = False
-                _msg = "❌ You averaged every zone, not just Nord — filter first, then take the mean."
+                _msg = "❌ You averaged every zone instead of only Nord. Filter first, then take the mean."
             else:
                 _ok = False
-                _msg = '❌ Not quite — filter to `zone == "Nord"` (case matters!), then call `.mean()`.'
+                _msg = '❌ Not quite. Filter to `zone == "Nord"` (case matters!), then call `.mean()`.'
     mo.callout(mo.md(_msg + show_result(_result)), kind="success" if _ok else "warn")
     return
 
@@ -139,7 +139,7 @@ def _(mean_exa, mo, pd, show_result):
 def _(mo):
     mo.accordion(
         {
-            "💡 Hint 1 (a nudge)": "String comparison is case-sensitive; and does pandas really have `summarize`? Check the docs — or ask an AI and VERIFY.",
+            "💡 Hint 1 (a nudge)": "String comparison is case-sensitive; and does pandas really have `summarize`? Check the docs, or ask an AI and VERIFY.",
             "💡 Hint 2 (the structure)": '_nord = tobi_df[tobi_df["zone"] == "___"]\nmean_exa = float(_nord["total_eur"].___())',
         }
     )
