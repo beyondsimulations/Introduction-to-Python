@@ -223,7 +223,7 @@ Dr.&nbsp;Tobias Vlćek
 <li><strong>Individual work</strong>: no neighbors, no chat</li>
 <li><strong>AI tools are allowed</strong>: being able to <strong>VERIFY</strong> the output is the skill being graded</li>
 <li>The <strong>link and QR</strong> are handed out in class. Open it and start</li>
-<li>~6 short tasks: write code, trace code, fix a bug, answer a multiple choice</li>
+<li>~6 short tasks: write code, fix a bug, a seeded draw, answer a multiple choice</li>
 <li>It sweeps <strong>Sessions VI–VII</strong>: modules, <code>random</code> and seeds, NumPy arrays and masks</li>
 </ul>
 <!-- QR handed out live — never in the deck -->
@@ -253,7 +253,7 @@ Dr.&nbsp;Tobias Vlćek
 <h2>Show me the data</h2>
 <p>Pens down. The checkpoint is behind you. This morning the rival chain <strong>MunchCorp</strong> put out a press release bragging about their <strong>“data-driven growth.”</strong> The evidence attached: exactly <strong>one pie chart.</strong> The investor slid it across the table and said, <em>“Yours will be better. Show me the data.”</em></p>
 <div class="fragment">
-<p>Kevin didn’t wait. He’d pasted the question into a chatbot, proudly turned the laptop around, and hit run:</p>
+<p>Tobi didn’t wait. He’d pasted the question into a chatbot, proudly turned the laptop around, and hit run:</p>
 <p><code>AttributeError: 'DataFrame' object has no attribute 'overview'</code></p>
 </div>
 <div class="fragment">
@@ -281,7 +281,7 @@ Dr.&nbsp;Tobias Vlćek
 </section>
 <section id="the-verify-workflow" class="slide level2">
 <h2>The verify workflow</h2>
-<p>Kevin’s mistake wasn’t <em>using</em> AI. It was <strong>shipping without checking.</strong> Every line an AI hands you gets three passes:</p>
+<p>Tobi’s mistake wasn’t <em>using</em> AI. It was <strong>shipping without checking.</strong> Every line an AI hands you gets three passes:</p>
 <ol type="1">
 <li><strong>Read it</strong>: do you understand what each line claims to do?</li>
 <li><strong>Run it</strong>: does it actually execute, or does it crash?</li>
@@ -291,7 +291,7 @@ Dr.&nbsp;Tobias Vlćek
 <section id="step-3-in-action" class="slide level2">
 <h2>Step 3 in action</h2>
 <p>Five orders with values you can add in your head, and the AI’s suggested line for the Nord average:</p>
-<div id="71820ae0" class="cell" data-execution_count="1">
+<div id="eb4d449a" class="cell" data-execution_count="1">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a aria-label="1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
 <span id="cb1-2"><a aria-label="2"></a></span>
 <span id="cb1-3"><a aria-label="3"></a>check <span class="op">=</span> pd.DataFrame({</span>
@@ -306,12 +306,12 @@ Dr.&nbsp;Tobias Vlćek
 </div>
 </div>
 <div class="fragment">
-<p>The Nord orders are 10, 20 and 30. You can average those in your head. Does the AI’s answer match? Then the line has earned some trust on eight hundred rows. Verification is the job now, not typing.</p>
+<p>The Nord orders are 10, 20 and 30. You can average those in your head. Does the AI’s answer match? Then the line has earned some trust on eighty rows. Verification is the job now, not typing.</p>
 </div>
 </section>
 <section id="predict-does-.summarize-exist" class="slide level2">
 <h2>Predict: does <code>.summarize()</code> exist?</h2>
-<p>The AI wrote this for Kevin. <code>orders</code> is a tiny two-row frame. What happens on the last line?</p>
+<p>The AI wrote this for Tobi. <code>orders</code> is a tiny two-row frame. What happens on the last line?</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a aria-label="1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
 <span id="cb3-2"><a aria-label="2"></a>orders <span class="op">=</span> pd.DataFrame({<span class="st">"zone"</span>: [<span class="st">"Nord"</span>, <span class="st">"Sued"</span>], <span class="st">"total_eur"</span>: [<span class="fl">12.0</span>, <span class="fl">9.5</span>]})</span>
 <span id="cb3-3"><a aria-label="3"></a></span>
@@ -324,7 +324,7 @@ Dr.&nbsp;Tobias Vlćek
 <section id="answer-the-method-never-existed" class="slide level2">
 <h2>Answer: the method never existed</h2>
 <p><strong>b) <code>AttributeError</code></strong> — pandas has no <code>.summarize()</code>. The AI invented it:</p>
-<div id="87d02303" class="cell" data-execution_count="3">
+<div id="d56ba69b" class="cell" data-execution_count="3">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a aria-label="1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
 <span id="cb4-2"><a aria-label="2"></a>orders <span class="op">=</span> pd.DataFrame({<span class="st">"zone"</span>: [<span class="st">"Nord"</span>, <span class="st">"Sued"</span>], <span class="st">"total_eur"</span>: [<span class="fl">12.0</span>, <span class="fl">9.5</span>]})</span>
 <span id="cb4-3"><a aria-label="3"></a>orders.summarize()                     <span class="co"># the method the AI invented</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
@@ -337,7 +337,7 @@ Dr.&nbsp;Tobias Vlćek
 </div>
 <div class="fragment">
 <p>The real method is <code>.describe()</code>:</p>
-<div id="d59ed99b" class="cell" data-execution_count="4">
+<div id="dec46a86" class="cell" data-execution_count="4">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a aria-label="1"></a><span class="bu">print</span>(orders.describe())               <span class="co"># the method that actually exists</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <div class="cell fragment" data-execution_count="4">
@@ -417,7 +417,7 @@ max    12.000000</code></pre>
 <section id="a-dataframe-from-a-dictionary" class="slide level2">
 <h2>A DataFrame from a dictionary</h2>
 <p>Keys become <strong>column names</strong>; each list becomes a <strong>column</strong>; one order per row, mixed types together:</p>
-<div id="8a379b22" class="cell" data-execution_count="5">
+<div id="2df70d10" class="cell" data-execution_count="5">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a aria-label="1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
 <span id="cb7-2"><a aria-label="2"></a>df <span class="op">=</span> pd.DataFrame({</span>
 <span id="cb7-3"><a aria-label="3"></a>    <span class="st">"order_id"</span>:  [<span class="dv">101</span>, <span class="dv">102</span>, <span class="dv">103</span>, <span class="dv">104</span>, <span class="dv">105</span>],</span>
@@ -444,7 +444,7 @@ max    12.000000</code></pre>
 <i class="callout-icon"></i>
 </div>
 <div class="callout-content">
-<p>Nobody types eighty orders by hand: tonight’s lab loads a real CSV in one line, <code>orders = pd.read_csv("public/orders.csv")</code>. In the browser that line fetches over the web instead of from disk; your code doesn’t change.</p>
+<p>Nobody types eighty orders by hand: today’s lab loads a real CSV in one line, <code>orders = pd.read_csv("public/orders.csv")</code>. In the browser that line fetches over the web instead of from disk; your code doesn’t change.</p>
 </div>
 </div>
 </div>
@@ -453,7 +453,7 @@ max    12.000000</code></pre>
 <section id="first-look-.head-and-.info" class="slide level2">
 <h2>First look: <code>.head()</code> and <code>.info()</code></h2>
 <p>Before analyzing a table, glance at it. <code>.head()</code> shows the top rows; <code>.info()</code> is your first sanity check: right number of rows? Any column a surprising type?</p>
-<div id="8d6a87db" class="cell" data-execution_count="6">
+<div id="0f890502" class="cell" data-execution_count="6">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a aria-label="1"></a><span class="bu">print</span>(df.head(<span class="dv">3</span>))     <span class="co"># first 3 rows</span></span>
 <span id="cb9-2"><a aria-label="2"></a>df.info()             <span class="co"># columns, dtypes, non-null counts</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
@@ -480,7 +480,7 @@ memory usage: 292.0+ bytes</code></pre>
 <section id="the-numbers-at-a-glance-.describe" class="slide level2">
 <h2>The numbers at a glance: <code>.describe()</code></h2>
 <p><code>.describe()</code> computes count, mean, min, max and quartiles for every <strong>numeric</strong> column at once:</p>
-<div id="b66a535a" class="cell" data-execution_count="7">
+<div id="a4e8ef94" class="cell" data-execution_count="7">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a aria-label="1"></a><span class="bu">print</span>(df.describe())</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <div class="cell fragment" data-execution_count="7">
@@ -503,7 +503,7 @@ max    105.000000  4.00000  31.400000</code></pre>
 <section id="selecting-a-column-filtering-rows" class="slide level2">
 <h2>Selecting a column, filtering rows</h2>
 <p>Pick one column by name; keep rows with a <strong>boolean mask</strong>, exactly the NumPy idea from last session:</p>
-<div id="5b079be7" class="cell" data-execution_count="8">
+<div id="cc8f6341" class="cell" data-execution_count="8">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a aria-label="1"></a><span class="bu">print</span>(df[<span class="st">"zone"</span>])                  <span class="co"># one column (a Series)</span></span>
 <span id="cb13-2"><a aria-label="2"></a><span class="bu">print</span>()</span>
 <span id="cb13-3"><a aria-label="3"></a><span class="bu">print</span>(df[df[<span class="st">"zone"</span>] <span class="op">==</span> <span class="st">"Nord"</span>])    <span class="co"># only the Nord rows — case-sensitive!</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
@@ -529,7 +529,7 @@ Name: zone, dtype: object
 <section id="adding-a-column-sorting" class="slide level2">
 <h2>Adding a column, sorting</h2>
 <p>Compute a new column from existing ones, then sort. Work on a <strong>copy</strong> so the original stays intact:</p>
-<div id="494e7bee" class="cell" data-execution_count="9">
+<div id="8a8c2319" class="cell" data-execution_count="9">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb15"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a aria-label="1"></a>priced <span class="op">=</span> df.copy()</span>
 <span id="cb15-2"><a aria-label="2"></a>priced[<span class="st">"eur_per_item"</span>] <span class="op">=</span> priced[<span class="st">"total_eur"</span>] <span class="op">/</span> priced[<span class="st">"items"</span>]</span>
 <span id="cb15-3"><a aria-label="3"></a><span class="bu">print</span>(priced.sort_values(<span class="st">"total_eur"</span>, ascending<span class="op">=</span><span class="va">False</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
@@ -550,7 +550,7 @@ Name: zone, dtype: object
 </section>
 <section id="predict-filtering-with-the-wrong-case" class="slide level2">
 <h2>Predict: filtering with the wrong case</h2>
-<p>Kevin filters for the Nord zone, but types it <strong>lowercase</strong>. The data spells it <code>"Nord"</code>. What does this print?</p>
+<p>Tobi filters for the Nord zone, but types it <strong>lowercase</strong>. The data spells it <code>"Nord"</code>. What does this print?</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb17"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a aria-label="1"></a><span class="bu">print</span>(df[df[<span class="st">"zone"</span>] <span class="op">==</span> <span class="st">"nord"</span>])</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>a) an empty table, no error b) the Nord rows anyway: case is ignored c) a <code>KeyError</code> for the missing zone</p>
 <div class="fragment">
@@ -560,7 +560,7 @@ Name: zone, dtype: object
 <section id="answer-an-empty-table-no-warning" class="slide level2">
 <h2>Answer: an empty table, no warning</h2>
 <p><strong>a) an empty table</strong> — <code>"nord"</code> matches nothing, so the mask is all <code>False</code> and pandas hands back <strong>zero rows</strong>. No error, no complaint:</p>
-<div id="ed5950c2" class="cell" data-execution_count="10">
+<div id="aa10f295" class="cell" data-execution_count="10">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb18"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a aria-label="1"></a><span class="bu">print</span>(df[df[<span class="st">"zone"</span>] <span class="op">==</span> <span class="st">"nord"</span>])          <span class="co"># nothing matches "nord"</span></span>
 <span id="cb18-2"><a aria-label="2"></a><span class="bu">print</span>(<span class="st">"rows:"</span>, <span class="bu">len</span>(df[df[<span class="st">"zone"</span>] <span class="op">==</span> <span class="st">"nord"</span>]))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
@@ -590,7 +590,7 @@ rows: 0</code></pre>
 <i class="callout-icon"></i>
 </div>
 <div class="callout-content">
-<p>That’s the teaser: tonight’s lab does the heavy lifting with <code>groupby</code>, turning eighty raw orders into the handful of numbers the investor actually asked for.</p>
+<p>That’s the teaser: today’s lab does the heavy lifting with <code>groupby</code>, turning eighty raw orders into the handful of numbers the investor actually asked for.</p>
 </div>
 </div>
 </div>
@@ -609,13 +609,13 @@ rows: 0</code></pre>
 <h1><span class="flow">To the Lab</span></h1>
 
 </section>
-<section id="tonights-episode" class="slide level2">
-<h2>Tonight’s episode</h2>
+<section id="after-the-break-the-lab" class="slide level2">
+<h2>After the break: the lab</h2>
 <ul>
 <li>Head to the lab notebook: <a href="../tutorials/tut_08_pandas.html">Episode 8 — The Data Room</a>, in your browser as always</li>
 <li>The investor slides a <strong>USB stick</strong> across the table: every order of two weeks, now <code>orders.csv</code>, eighty rows, one <code>pd.read_csv</code> line</li>
-<li>You’ll <code>.head()</code>, <code>.info()</code> and <code>.describe()</code> it, filter with masks, add a column on a safe copy, and answer per-zone questions with <code>groupby</code></li>
-<li>Kevin has discovered AI; your real job is to <strong>supervise</strong> it and catch the confident nonsense</li>
+<li>You’ll <code>.head()</code> it, ask its <code>.shape</code>, filter with masks, add a column on a safe copy, and answer per-zone questions with <code>groupby</code></li>
+<li>Tobi has discovered AI; your real job is to <strong>supervise</strong> it and catch the confident nonsense</li>
 </ul>
 <div class="fragment">
 <div class="callout callout-important callout-style-simple">
@@ -624,7 +624,7 @@ rows: 0</code></pre>
 <i class="callout-icon"></i>
 </div>
 <div class="callout-content">
-<p><strong>Download your <code>.py</code> before you leave.</strong> Closing the tab without downloading loses your work, the same motion you used to hand in the checkpoint this morning.</p>
+<p><strong>Download your <code>.py</code> before you leave.</strong> Closing the tab without downloading loses your work, the same motion you used to hand in the checkpoint at the start of the session.</p>
 </div>
 </div>
 </div>
