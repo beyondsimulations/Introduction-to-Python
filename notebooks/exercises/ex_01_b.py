@@ -35,16 +35,18 @@ def _(mo):
 @app.cell
 def _(run_predict):
     # Runs only after the button above. No editing needed.
+    result = None
     if run_predict.value:
-        print(300 - 12 * 25)
-    return
+        result = 300 - 12 * 25
+        print(result)
+    return (result,)
 
 
 @app.cell(hide_code=True)
-def _(mo, run_predict):
+def _(mo, result, run_predict):
     mo.md(
-        "Multiplication always happens before subtraction, so Tobi's 12 boxes "
-        "(`12 * 25 = 300`) wipe out the whole budget."
+        f"`300 - 12 * 25` gives **{result}**. Multiplication always happens before "
+        "subtraction, so Tobi's 12 boxes (`12 * 25 = 300`) wipe out the whole budget."
         if run_predict.value
         else "*Predict, then press the button.*"
     )
