@@ -106,7 +106,7 @@ a\) prints a summary table b) raises an `AttributeError` c) returns an empty Dat
 
 . . .
 
-<span class="question">Predict first</span>. Commit to an answer before the next slide.
+<span class="question">Predict first</span>. Pick a letter, then I reveal the answer.
 
 ## Answer: the method never existed
 
@@ -324,7 +324,7 @@ a\) an empty table, no error b) the Nord rows anyway: case is ignored c) a `KeyE
 
 . . .
 
-<span class="question">Predict first</span>. Commit to an answer before the next slide.
+<span class="question">Predict first</span>. Pick a letter, then I reveal the answer.
 
 ## Answer: an empty table, no warning
 

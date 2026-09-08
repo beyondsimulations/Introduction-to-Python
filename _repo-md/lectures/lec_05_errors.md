@@ -158,7 +158,7 @@ a\) raises `TypeError` b) prints `Party of 3` c) raises `ValueError`
 
 . . .
 
-<span class="question">Predict first</span>. Commit to an answer before the next slide.
+<span class="question">Predict first</span>. Pick a letter, then I reveal the answer.
 
 ## Answer: text and numbers won't mix
 
@@ -301,7 +301,7 @@ a\) it never runs: the program already stopped b) the `try` block runs a second 
 
 . . .
 
-<span class="question">Predict first</span>. Commit to an answer before the next slide.
+<span class="question">Predict first</span>. Pick a letter, then I reveal the answer.
 
 ## Answer: it carries on
 

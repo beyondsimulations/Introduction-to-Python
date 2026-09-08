@@ -172,7 +172,7 @@ a\) `Gold` b) `Bronze` c) `Silver`
 
 . . .
 
-<span class="question">Predict first</span>. Commit to an answer before the next slide.
+<span class="question">Predict first</span>. Pick a letter, then I reveal the answer.
 
 ## Answer: the first true branch wins
 
@@ -208,7 +208,7 @@ a\) `False` b) `True` c) `Error`
 
 . . .
 
-<span class="question">Predict first</span>. Commit to an answer before the next slide.
+<span class="question">Predict first</span>. Pick a letter, then I reveal the answer.
 
 ## Answer: `22 < 22`
 

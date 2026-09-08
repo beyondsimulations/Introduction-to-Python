@@ -151,7 +151,7 @@ a\) one chart with two lines b) two separate charts, one per call c) an error: t
 
 . . .
 
-<span class="question">Predict first</span>. Commit to an answer before the next slide.
+<span class="question">Predict first</span>. Pick a letter, then I reveal the answer.
 
 ## Answer: one chart, two lines
 
@@ -277,7 +277,7 @@ a\) 4: one bar per number b) 15: one bar per unit up to the max c) about 2--3 lu
 
 . . .
 
-<span class="question">Predict first</span>. Commit to an answer before the next slide.
+<span class="question">Predict first</span>. Pick a letter, then I reveal the answer.
 
 ## Answer: about 2--3 lumps
 

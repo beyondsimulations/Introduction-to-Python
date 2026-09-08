@@ -107,9 +107,9 @@ Materials live in the KLU portal and are hosted at [beyondsimulations.github.io/
 
 ## One account, today: GitHub
 
-- Open [github.com](https://github.com) → **Sign up**. Phones out for the verification code, this takes **five minutes, right now**
+- Open [github.com](https://github.com) → **Sign up**. This takes **five minutesa and we just do it right now in class**
 - Use an e-mail you'll still read next year; your **KLU address** works well
-- Pick a username you'd be happy to show a future employer
+- Pick a username you'd be happy to show a future employer in case you might continue programming in the future
 - Already have one? Great, you're done
 
 . . .
@@ -230,7 +230,7 @@ a\) `<class 'float'>` b) `<class 'int'>` c) `<class 'str'>`
 
 . . .
 
-<span class="question">Predict first</span>. Commit to an answer before the next slide.
+<span class="question">Predict first</span>. Pick a letter, then I reveal the answer.
 
 ## Answer: `type("9.99")`
 

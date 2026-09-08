@@ -158,7 +158,7 @@ a\) `[1, 2, 3, 1, 2, 3]` b) `[2, 4, 6]` c) an error
 
 . . .
 
-<span class="question">Predict first</span>. Commit to an answer before the next slide.
+<span class="question">Predict first</span>. Pick a letter, then I reveal the answer.
 
 ## Answer: lists repeat, arrays compute
 
@@ -243,7 +243,7 @@ a\) `True` b) `2` c) `[False, True, True]`
 
 . . .
 
-<span class="question">Predict first</span>. Commit to an answer before the next slide.
+<span class="question">Predict first</span>. Pick a letter, then I reveal the answer.
 
 ## Answer: True counts as 1
 
@@ -367,7 +367,7 @@ a\) `week.sum(axis=1)` b) `week.sum()` c) `week.sum(axis=0)`
 
 . . .
 
-<span class="question">Predict first</span>. Commit to an answer before the next slide.
+<span class="question">Predict first</span>. Pick a letter, then I reveal the answer.
 
 ## Answer: collapse the days, keep the zones
 

@@ -170,7 +170,7 @@ a\) `-3` b) `-2` c) an error
 
 . . .
 
-<span class="question">Predict first</span>. Commit to an answer before the next slide.
+<span class="question">Predict first</span>. Pick a letter, then I reveal the answer.
 
 ## Answer: floor goes down, not toward zero
 
@@ -215,10 +215,10 @@ random.shuffle(queue)                         # reorders the list in place
 print(queue)
 ```
 
-    0.9581065475815979
-    19
-    mocha
-    [3, 5, 2, 1, 4]
+    0.5886390402644602
+    7
+    tea
+    [5, 3, 2, 1, 4]
 
 . . .
 
@@ -235,8 +235,8 @@ print([random.randint(1, 20) for _ in range(5)])   # _ : a loop name we never us
 print([random.randint(1, 20) for _ in range(5)])   # ...and again, different!
 ```
 
-    [13, 11, 16, 5, 6]
-    [10, 4, 18, 10, 5]
+    [15, 8, 18, 7, 20]
+    [19, 17, 1, 13, 5]
 
 . . .
 
@@ -282,7 +282,7 @@ a\) different: the second list continues where the first stopped b) equal: the s
 
 . . .
 
-<span class="question">Predict first</span>. Commit to an answer before the next slide.
+<span class="question">Predict first</span>. Pick a letter, then I reveal the answer.
 
 ## Answer: different
 

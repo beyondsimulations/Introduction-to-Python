@@ -162,7 +162,7 @@ a\) `['M', 'L', 'XL']` b) `['M', 'L']` c) `['S', 'M', 'L']`
 
 . . .
 
-<span class="question">Predict first</span>. Commit to an answer before the next slide.
+<span class="question">Predict first</span>. Pick a letter, then I reveal the answer.
 
 ## Answer: the `stop` index is excluded
 
@@ -339,7 +339,7 @@ a\) prints `None` b) prints `""` c) raises `KeyError` d) adds `"Cola"`
 
 . . .
 
-<span class="question">Predict first</span>. Commit to an answer before the next slide.
+<span class="question">Predict first</span>. Pick a letter, then I reveal the answer.
 
 ## Answer: reading with `[]` demands the key
 
@@ -495,7 +495,7 @@ a\) `[1, 4, 9, 16]` b) `[2, 4, 6, 8]` c) `[1, 2, 3, 4]`
 
 . . .
 
-<span class="question">Predict first</span>. Commit to an answer before the next slide.
+<span class="question">Predict first</span>. Pick a letter, then I reveal the answer.
 
 ## Answer: square each item
 

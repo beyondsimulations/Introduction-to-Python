@@ -132,7 +132,7 @@ a\) `8.50 EUR` b) `Error` c) `None`
 
 . . .
 
-<span class="question">Predict first</span>. Commit to an answer before the next slide.
+<span class="question">Predict first</span>. Pick a letter, then I reveal the answer.
 
 ## Answer: `print` shows, `return` hands back
 
@@ -234,7 +234,7 @@ a\) `3` b) `13` c) `Error`
 
 . . .
 
-<span class="question">Predict first</span>. Commit to an answer before the next slide.
+<span class="question">Predict first</span>. Pick a letter, then I reveal the answer.
 
 ## Answer: the outside variable is untouched
 
