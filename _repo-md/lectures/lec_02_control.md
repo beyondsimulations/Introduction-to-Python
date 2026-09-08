@@ -519,6 +519,27 @@ Open the exercise (scan the QR or type the link):
 
 First **predict** what happens, then run it.
 
+# 📋 Checkpoint 0: dress rehearsal
+
+**A practice board review.** Fifteen minutes, before the lab, **ungraded**. Same format as the five real checkpoints, so that nothing is new next week when it counts.
+
+- **Individual work**, as in the real thing: no AI, no neighbors, no chat
+- The **link and QR** are handed out in class. Open it and start
+- 3 short tasks: compute a price, trace a line, fix one of Tobi's bugs
+- Fill in your **name and student ID** as code at the top, exactly as you will next week
+
+<!-- QR handed out live, never in the deck -->
+
+## When you're done
+
+Menu → *Download* → *Download Python code* → upload the `.py` to the "Checkpoint 0" assignment on Moodle. Nothing is graded today: the point is that download and upload are muscle memory by Session III.
+
+. . .
+
+> **Note**
+>
+> Next week this exact routine is **Checkpoint 1**: 40 minutes, 12 points, Sessions I--II. Today you get to make every mistake for free.
+
 # <span class="flow">To the Lab</span>
 
 ## After the break: the lab

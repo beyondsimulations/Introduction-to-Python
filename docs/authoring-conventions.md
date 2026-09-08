@@ -105,6 +105,7 @@ Regular session skeleton:
 5. QR exercise a → 6. Block 2 → 7. QR b → [break] → 8. Block 3 → 9. QR c
 10. Lab handoff (tutorial URL) → 11. Wrap-up: 3 takeaways + next-episode teaser
 → [break] → lab in class (unfinished parts at home).
+Session II: 📋 Checkpoint 0 (dress rehearsal, 15 min, ungraded) sits right before the lab handoff.
 CP sessions (III, V, VI, VIII, X): title → 📋 checkpoint slide (procedure) →
 cold open → Block 1 → QR a → Block 2 → QR b → lab handoff → wrap-up.
 No warm-up on CP days (the checkpoint is the warm-up).

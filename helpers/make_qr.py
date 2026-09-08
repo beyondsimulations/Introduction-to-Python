@@ -1,5 +1,10 @@
 # helpers/make_qr.py
-"""Generate QR PNGs for exercise URLs: uv run python helpers/make_qr.py"""
+"""Generate QR PNGs for exercise URLs: uv run python helpers/make_qr.py
+
+Ad hoc (e.g. a checkpoint on the separate host):
+    uv run python helpers/make_qr.py <url> <out.png>
+"""
+import sys
 from pathlib import Path
 
 import segno
@@ -17,6 +22,11 @@ EXERCISES = [
     "ex_08_a", "ex_08_b",
     "ex_09_a", "ex_09_b", "ex_09_c",
 ]  # extend in later plans
+
+if len(sys.argv) == 3:
+    segno.make(sys.argv[1]).save(sys.argv[2], scale=8, light=None, dark="#363D45")
+    print(f"wrote {sys.argv[2]} -> {sys.argv[1]}")
+    raise SystemExit
 
 OUT.mkdir(parents=True, exist_ok=True)
 for ex in EXERCISES:

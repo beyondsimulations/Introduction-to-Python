@@ -69,12 +69,13 @@ Present your pair's work and the learnings you have made
 
 # Checkpoints
 
-Five in-class checkpoints, 12 points each, always the **first 40 minutes** of the session, individual work, uploaded to Moodle before the time is up. No make-ups: the point math absorbs one miss.
+Five in-class checkpoints, 12 points each, always the **first 40 minutes** of the session, individual work, uploaded to Moodle before the time is up. No make-ups: the point math absorbs one miss. Session II has a 15-minute ungraded practice run in the same format.
 
-| Checkpoint | Opens        | Covers            | AI      |
-|------------|--------------|-------------------|---------|
-| 1          | Session III  | Sessions I--II    | no      |
-| 2          | Session V    | Sessions III--IV  | no      |
-| 3          | Session VI   | Sessions I--V     | no      |
-| 4          | Session VIII | Sessions VI--VII  | allowed |
-| 5          | Session X    | Sessions VIII--IX | allowed |
+| Checkpoint             | Opens                      | Covers            | AI      |
+|------------------------|----------------------------|-------------------|---------|
+| 0 (practice, ungraded) | Session II, before the lab | Session I         | no      |
+| 1                      | Session III                | Sessions I--II    | no      |
+| 2                      | Session V                  | Sessions III--IV  | no      |
+| 3                      | Session VI                 | Sessions I--V     | no      |
+| 4                      | Session VIII               | Sessions VI--VII  | allowed |
+| 5                      | Session X                  | Sessions VIII--IX | allowed |

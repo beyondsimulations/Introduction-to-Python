@@ -51,6 +51,7 @@ Materials live in the KLU portal and are hosted at [beyondsimulations.github.io/
 - Solved in the browser, just like our lab notebooks
 - ~6 small tasks each: write code, trace code, fix a bug, MCQs
 - At the end you download your `.py` file and upload it to Moodle
+- **Session II** has an ungraded 15-minute practice run (Checkpoint 0) before the lab
 
 . . .
 
@@ -511,7 +512,7 @@ First **predict** what happens, then run it.
 
 > **Note**
 >
-> **Next time --- Episode 2:** the city bans delivery after 22:00, and Tobi suggests "we just deliver yesterday's orders." We'll need **conditionals and loops** to survive it.
+> **Next time --- Episode 2:** the city bans delivery after 22:00, and Tobi suggests "we just deliver yesterday's orders." We'll need **conditionals and loops** to survive it. Plus a 15-minute practice checkpoint before the lab, ungraded.
 
 # <span class="flow">Literature</span>
 
