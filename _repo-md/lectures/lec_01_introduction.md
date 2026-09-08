@@ -103,11 +103,12 @@ Materials live in the KLU portal and are hosted at [beyondsimulations.github.io/
 - A notebook is a page of **cells**; each cell holds a few lines of code
 - **Run a cell**: click into it and press `Cmd/Ctrl+Enter` (or the ▶ button at its edge). The output appears right below it
 - Change a cell and run it again: every cell that depends on it updates by itself
+- A cell shows the value of its **last line**. An assignment like `x = 5` shows nothing, so the check under each exercise echoes **your result** next to the verdict
 - **Save your work**: the notebook menu (top right) → *Download* → *Download Python code*. The tab remembers you until you close it; the download is forever
 
 ## One account, today: GitHub
 
-- Open [github.com](https://github.com) → **Sign up**. This takes **five minutesa and we just do it right now in class**
+- Open [github.com](https://github.com) → **Sign up**. This takes **five minutes, and we do it right now in class**
 - Use an e-mail you'll still read next year; your **KLU address** works well
 - Pick a username you'd be happy to show a future employer in case you might continue programming in the future
 - Already have one? Great, you're done

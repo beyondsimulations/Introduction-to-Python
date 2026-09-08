@@ -25,10 +25,29 @@ def _(mo):
     return
 
 
+@app.cell(hide_code=True)
+def _(mo):
+    run_predict = mo.ui.run_button(label="I've predicted, run it")
+    run_predict
+    return (run_predict,)
+
+
 @app.cell
-def _():
-    # Run this after you've predicted. No editing needed.
-    print(300 - 12 * 25)
+def _(run_predict):
+    # Runs only after the button above. No editing needed.
+    if run_predict.value:
+        print(300 - 12 * 25)
+    return
+
+
+@app.cell(hide_code=True)
+def _(mo, run_predict):
+    mo.md(
+        "Multiplication always happens before subtraction, so Tobi's 12 boxes "
+        "(`12 * 25 = 300`) wipe out the whole budget."
+        if run_predict.value
+        else "*Predict, then press the button.*"
+    )
     return
 
 
@@ -36,9 +55,6 @@ def _():
 def _(mo):
     mo.md(
         r"""
-    Multiplication always happens before subtraction, so Tobi's 12 boxes
-    (`12 * 25 = 300`) wipe out the whole budget.
-
     Now the real task: sticker **packs** cost `12.25` EUR each. Using `//`
     (floor division) and `%` (remainder), figure out how many packs fit in
     the 300 EUR budget and how much change is left over.
@@ -67,6 +83,8 @@ def _(change_exb, mo, packs_exb):
     else:
         _ok = False
         _msg = "❌ Not quite. Check that you used `//` for packs and `%` for change."
+    if packs_exb is not None or change_exb is not None:
+        _msg += f"\n\n**Your result:** `packs_exb = {packs_exb}`, `change_exb = {change_exb}`"
     mo.callout(mo.md(_msg), kind="success" if _ok else "warn")
     return
 

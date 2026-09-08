@@ -41,10 +41,16 @@ def _(mo, first_employee, founded_year, share_capital):
         and share_capital == 300
         and isinstance(founded_year, int)
     )
-    mo.callout(
-        mo.md("✅ Form accepted!" if _ok else "❌ The registrar rejects the form. Keep fixing."),
-        kind="success" if _ok else "warn",
+    _msg = "✅ Form accepted!" if _ok else "❌ The registrar rejects the form. Keep fixing."
+    _msg += "\n\n**Your form:** " + ", ".join(
+        f"`{_name} = {_value!r}` ({type(_value).__name__})"
+        for _name, _value in [
+            ("first_employee", first_employee),
+            ("share_capital", share_capital),
+            ("founded_year", founded_year),
+        ]
     )
+    mo.callout(mo.md(_msg), kind="success" if _ok else "warn")
     return
 
 
