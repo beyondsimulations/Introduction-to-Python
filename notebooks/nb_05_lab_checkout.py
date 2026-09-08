@@ -330,8 +330,8 @@ def _(mo):
     ### Exercise 2.1 (core, fix the bug) — the 3-AM receipt
 
     Here is Tobi's checkout, exactly as he left it at 3 AM. The order is **two
-    Founders Bowls at 12.50** each, plus **one side salad at 8.30**. The customer
-    owes **33.30**. This cell *runs* (no red error), but it's wrong **twice
+    Founders Bowls at 10.90** each, plus **one side salad at 8.30**. The customer
+    owes **30.10**. This cell *runs* (no red error), but it's wrong **twice
     over**: the number it stores is too small, and the receipt it prints shows a
     *different* too-small number.
 
@@ -345,8 +345,8 @@ def _(mo):
 @app.cell
 def _():
     # TOBI'S 3-AM CHECKOUT: it runs, no crash. But every number here is wrong.
-    _old_total = 12.50 + 8.30                  # a leftover from the one-bowl draft
-    checkout_total_ex21 = 12.50 * 2 - 8.30     # "subtracted the salad for psychological reasons"
+    _old_total = 10.90 + 8.30                  # a leftover from the one-bowl draft
+    checkout_total_ex21 = 10.90 * 2 - 8.30     # "subtracted the salad for psychological reasons"
     _summary = f"Receipt total: {_old_total:.2f} EUR"
     print(_summary)
     return (checkout_total_ex21,)
@@ -358,17 +358,17 @@ def _(checkout_total_ex21, mo, show_result):
         ex21_ok = False
         _msg = "❌ Exercise 2.1: `checkout_total_ex21` should be a **number**, the amount the customer owes."
         _preview = show_result(checkout_total_ex21)
-    elif round(checkout_total_ex21, 2) == 33.30:
+    elif round(checkout_total_ex21, 2) == 30.10:
         ex21_ok = True
-        _msg = "✅ Exercise 2.1: **33.30**, two bowls *plus* the salad. (Did you also point the receipt's f-string at `checkout_total_ex21` instead of the stale `_old_total`? Re-read the printed line to be sure.)"
+        _msg = "✅ Exercise 2.1: **30.10**, two bowls *plus* the salad. (Did you also point the receipt's f-string at `checkout_total_ex21` instead of the stale `_old_total`? Re-read the printed line to be sure.)"
         _preview = show_result(checkout_total_ex21)
-    elif round(checkout_total_ex21, 2) == 16.70:
+    elif round(checkout_total_ex21, 2) == 13.50:
         ex21_ok = False
-        _msg = "❌ Exercise 2.1: 16.70 means the salad got **subtracted**. The customer is buying the salad, not returning it. That `-` should add it in."
+        _msg = "❌ Exercise 2.1: 13.50 means the salad got **subtracted**. The customer is buying the salad, not returning it. That `-` should add it in."
         _preview = show_result(checkout_total_ex21)
     else:
         ex21_ok = False
-        _msg = "❌ Exercise 2.1: not 33.30. Two bowls at 12.50 *plus* one salad at 8.30. Check the operator between them."
+        _msg = "❌ Exercise 2.1: not 30.10. Two bowls at 10.90 *plus* one salad at 8.30. Check the operator between them."
         _preview = show_result(checkout_total_ex21)
     mo.callout(mo.md(_msg + _preview), kind="success" if ex21_ok else "warn")
     return (ex21_ok,)
@@ -379,7 +379,7 @@ def _(mo):
     mo.accordion(
         {
             "💡 Hint 1 (a nudge)": "Two bugs, both logic (nothing crashes). First: the salad is part of the order, so it should be *added*, not subtracted. Second: the receipt's f-string is formatting `_old_total` (a stale leftover) when it should format the real total instead.",
-            "💡 Hint 2 (the structure)": "checkout_total_ex21 = 12.50 * 2 ___ 8.30\n_summary = f\"Receipt total: {___:.2f} EUR\"   (fix the operator, and point the receipt at the real total)",
+            "💡 Hint 2 (the structure)": "checkout_total_ex21 = 10.90 * 2 ___ 8.30\n_summary = f\"Receipt total: {___:.2f} EUR\"   (fix the operator, and point the receipt at the real total)",
         }
     )
     return
