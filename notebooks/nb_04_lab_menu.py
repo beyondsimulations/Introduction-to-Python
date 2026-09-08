@@ -10,7 +10,7 @@ def _(mo):
     mo.md(
         r"""
     # Notebook 4.1 — The Menu Grows Up
-    **Estimated time: 45–60 min · Core exercises: 9 (+ 1 trace, 2 bonus)**
+    **Core exercises: 9 (+ 1 trace, 2 bonus).** Done early? You're free to go. Not done when the session ends? The rest is homework.
 
     The menu has outgrown Tobi. Last week he was tracking prices in seventeen
     loose variables (`price1`, `price2`, `price_final`, and the notorious

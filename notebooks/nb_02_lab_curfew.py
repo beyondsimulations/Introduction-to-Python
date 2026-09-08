@@ -10,7 +10,7 @@ def _(mo):
     mo.md(
         r"""
     # Notebook 2.1 — The Curfew
-    **Estimated time: 45–60 min · Core exercises: 7 (+ 2 bonus)**
+    **Core exercises: 7 (+ 2 bonus).** Done early? You're free to go. Not done when the session ends? The rest is homework.
 
     Overnight the city posted a decree: **no delivery after 22:00.** Your
     kitchen has to know when it is allowed to send a courier out, and when it

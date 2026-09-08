@@ -64,7 +64,7 @@ Materials live in the KLU portal and are hosted at [beyondsimulations.github.io/
 - **Lecture first:** new concepts, with short exercises on your phone or laptop
 - **Then a break**
 - **Then the lab:** the episode's notebook, in class, in your browser, with help in the room
-- Not finished? Keep the tab open on your laptop and finish at home
+- Done early? You're free to go. Not finished when the session ends? Keep the tab open on your laptop and finish at home
 
 ## How to use AI
 

@@ -10,7 +10,7 @@ def _(mo):
     mo.md(
         r"""
     # Notebook 8.1 — The Data Room
-    **Estimated time: 45–60 min · Core exercises: 9 + 1 quiz (+ 1 trace)**
+    **Core exercises: 9 + 1 quiz (+ 1 trace).** Done early? You're free to go. Not done when the session ends? The rest is homework.
 
     MunchCorp went to the press with "data-driven growth". The investor was not
     impressed by a slide; she was impressed by *data*. So she slides a USB stick

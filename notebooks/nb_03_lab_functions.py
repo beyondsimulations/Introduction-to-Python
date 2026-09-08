@@ -10,7 +10,7 @@ def _(mo):
     mo.md(
         r"""
     # Notebook 3.1 — The Copy-Paste Soup
-    **Estimated time: 45–60 min · Core exercises: 7 (+ 1 bonus)**
+    **Core exercises: 7 (+ 1 bonus).** Done early? You're free to go. Not done when the session ends? The rest is homework.
 
     Tobi has been "reusing" code the only way he knows how: he pasted the same
     receipt block **14 times**, once per menu item. Yesterday the wrap price

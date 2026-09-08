@@ -10,7 +10,7 @@ def _(mo):
     mo.md(
         r"""
     # Notebook 7.1 — The Numbers Deck
-    **Estimated time: 45–60 min · Core exercises: 8 + 1 quiz (+ 1 trace)**
+    **Core exercises: 8 + 1 quiz (+ 1 trace).** Done early? You're free to go. Not done when the session ends? The rest is homework.
 
     The investor liked last week's honest numbers. Now she wants a **one-page
     metrics deck**: totals, a per-zone breakdown, the busiest day, the strongest

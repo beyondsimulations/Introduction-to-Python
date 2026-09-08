@@ -10,7 +10,7 @@ def _(mo):
     mo.md(
         r"""
     # Notebook 6.1 — Due Diligence Week
-    **Estimated time: 45–60 min · Core exercises: 7 + 1 quiz (+ 1 trace)**
+    **Core exercises: 7 + 1 quiz (+ 1 trace).** Done early? You're free to go. Not done when the session ends? The rest is homework.
 
     The investor is **here**. Not on a call, not "circling back next quarter". She is
     standing in the shop with a clipboard and a very calm smile, asking to see the

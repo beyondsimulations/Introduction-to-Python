@@ -10,7 +10,7 @@ def _(mo):
     mo.md(
         r"""
     # Notebook 1.1 — The Founding
-    **Estimated time: 45–60 min · Core exercises: 7 (+ 2 bonus)**
+    **Core exercises: 7 (+ 2 bonus).** Done early? You're free to go. Not done when the session ends? The rest is homework.
 
     Congratulations: as of today you are the (co-)founder of a campus
     food-delivery startup. It has **no name**, **no menu**, and a co-founder,

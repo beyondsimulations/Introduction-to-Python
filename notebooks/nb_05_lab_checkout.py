@@ -10,7 +10,7 @@ def _(mo):
     mo.md(
         r"""
     # Notebook 5.1 — The 3-AM Checkout
-    **Estimated time: 45–60 min · Core exercises: 7 (+ 1 trace, 2 bonus)**
+    **Core exercises: 7 (+ 1 trace, 2 bonus).** Done early? You're free to go. Not done when the session ends? The rest is homework.
 
     It's the last lab of Part I, and it opens on a crime scene. At 3 AM, running
     on his fourth energy drink, Tobi rewrote the entire checkout "to make it
