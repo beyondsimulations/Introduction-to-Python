@@ -978,11 +978,11 @@ def _(mo):
 
     1. **GitHub account** from Session I. None yet? Make one tonight.
     2. **git + GitHub CLI (`gh`)**: install and log in once. Follow the one-time
-       setup in [the Git Basics guide](https://beyondsimulations.github.io/Introduction-to-Python/general/git-basics.html#one-time-setup).
+       setup in [the Git Basics guide](https://python.tobiasvlcek.com/general/git-basics.html#one-time-setup).
     3. **uv**: the Python environment manager this course uses. Follow
-       [the uv guide](https://beyondsimulations.github.io/Introduction-to-Python/general/uv.html).
+       [the uv guide](https://python.tobiasvlcek.com/general/uv.html).
     4. **Zed + Mistral Vibe**: the editor you'll write code in, with the AI agent
-       inside it. Follow [the AI-tools guide](https://beyondsimulations.github.io/Introduction-to-Python/general/ai-tools.html).
+       inside it. Follow [the AI-tools guide](https://python.tobiasvlcek.com/general/ai-tools.html).
 
     Do this in advance: Session X *builds on* a working toolchain. It doesn't wait
     for one. Budget about 45 minutes; if an install fights you, ask in class or by

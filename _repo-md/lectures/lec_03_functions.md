@@ -190,7 +190,7 @@ print(bill(2, 4.50))
 
 Open the exercise (scan the QR or type the link):
 
-**[beyondsimulations.github.io/Introduction-to-Python/notebooks/ex_03_a/](https://beyondsimulations.github.io/Introduction-to-Python/notebooks/ex_03_a/)**
+**[python.tobiasvlcek.com/notebooks/ex_03_a/](https://python.tobiasvlcek.com/notebooks/ex_03_a/)**
 
 <img src="assets/qr/ex_03_a.png" width="280" />
 
@@ -324,7 +324,7 @@ print(trip.fee())             # call the method
 
 Open the exercise (scan the QR or type the link):
 
-**[beyondsimulations.github.io/Introduction-to-Python/notebooks/ex_03_b/](https://beyondsimulations.github.io/Introduction-to-Python/notebooks/ex_03_b/)**
+**[python.tobiasvlcek.com/notebooks/ex_03_b/](https://python.tobiasvlcek.com/notebooks/ex_03_b/)**
 
 <img src="assets/qr/ex_03_b.png" width="280" />
 

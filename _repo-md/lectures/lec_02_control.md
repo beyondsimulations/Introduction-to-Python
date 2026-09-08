@@ -225,7 +225,7 @@ print(delivery_hour < 22)
 
 Open the exercise (scan the QR or type the link):
 
-**[beyondsimulations.github.io/Introduction-to-Python/notebooks/ex_02_a/](https://beyondsimulations.github.io/Introduction-to-Python/notebooks/ex_02_a/)**
+**[python.tobiasvlcek.com/notebooks/ex_02_a/](https://python.tobiasvlcek.com/notebooks/ex_02_a/)**
 
 <img src="assets/qr/ex_02_a.png" width="280" />
 
@@ -381,7 +381,7 @@ print(total)
 
 Open the exercise (scan the QR or type the link):
 
-**[beyondsimulations.github.io/Introduction-to-Python/notebooks/ex_02_b/](https://beyondsimulations.github.io/Introduction-to-Python/notebooks/ex_02_b/)**
+**[python.tobiasvlcek.com/notebooks/ex_02_b/](https://python.tobiasvlcek.com/notebooks/ex_02_b/)**
 
 <img src="assets/qr/ex_02_b.png" width="280" />
 
@@ -513,7 +513,7 @@ print("  MOIN  ".strip().lower())
 
 Open the exercise (scan the QR or type the link):
 
-**[beyondsimulations.github.io/Introduction-to-Python/notebooks/ex_02_c/](https://beyondsimulations.github.io/Introduction-to-Python/notebooks/ex_02_c/)**
+**[python.tobiasvlcek.com/notebooks/ex_02_c/](https://python.tobiasvlcek.com/notebooks/ex_02_c/)**
 
 <img src="assets/qr/ex_02_c.png" width="280" />
 

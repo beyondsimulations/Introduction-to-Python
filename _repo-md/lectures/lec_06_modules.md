@@ -191,7 +191,7 @@ print(math.floor(-2.5))   # down the number line → -3
 
 Open the exercise (scan the QR or type the link):
 
-**[beyondsimulations.github.io/Introduction-to-Python/notebooks/ex_06_a/](https://beyondsimulations.github.io/Introduction-to-Python/notebooks/ex_06_a/)**
+**[python.tobiasvlcek.com/notebooks/ex_06_a/](https://python.tobiasvlcek.com/notebooks/ex_06_a/)**
 
 <img src="assets/qr/ex_06_a.png" width="280" />
 
@@ -215,10 +215,10 @@ random.shuffle(queue)                         # reorders the list in place
 print(queue)
 ```
 
-    0.5886390402644602
-    7
+    0.7429976970536041
+    5
     tea
-    [5, 3, 2, 1, 4]
+    [5, 1, 2, 4, 3]
 
 . . .
 
@@ -235,8 +235,8 @@ print([random.randint(1, 20) for _ in range(5)])   # _ : a loop name we never us
 print([random.randint(1, 20) for _ in range(5)])   # ...and again, different!
 ```
 
-    [15, 8, 18, 7, 20]
-    [19, 17, 1, 13, 5]
+    [20, 4, 6, 14, 9]
+    [17, 17, 19, 20, 4]
 
 . . .
 
@@ -310,7 +310,7 @@ To get the *same* list twice, you re-seed before each run, and that rewinds the 
 
 Open the exercise (scan the QR or type the link):
 
-**[beyondsimulations.github.io/Introduction-to-Python/notebooks/ex_06_b/](https://beyondsimulations.github.io/Introduction-to-Python/notebooks/ex_06_b/)**
+**[python.tobiasvlcek.com/notebooks/ex_06_b/](https://python.tobiasvlcek.com/notebooks/ex_06_b/)**
 
 <img src="assets/qr/ex_06_b.png" width="280" />
 

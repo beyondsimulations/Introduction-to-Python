@@ -182,7 +182,7 @@ Lists repeat; arrays compute. That's why we're here.
 
 Open the exercise (scan the QR or type the link):
 
-**[beyondsimulations.github.io/Introduction-to-Python/notebooks/ex_07_a/](https://beyondsimulations.github.io/Introduction-to-Python/notebooks/ex_07_a/)**
+**[python.tobiasvlcek.com/notebooks/ex_07_a/](https://python.tobiasvlcek.com/notebooks/ex_07_a/)**
 
 <img src="assets/qr/ex_07_a.png" width="280" />
 
@@ -267,7 +267,7 @@ Summing a mask counts; averaging a mask shares. Same two tricks the lab asks for
 
 Open the exercise (scan the QR or type the link):
 
-**[beyondsimulations.github.io/Introduction-to-Python/notebooks/ex_07_b/](https://beyondsimulations.github.io/Introduction-to-Python/notebooks/ex_07_b/)**
+**[python.tobiasvlcek.com/notebooks/ex_07_b/](https://python.tobiasvlcek.com/notebooks/ex_07_b/)**
 
 <img src="assets/qr/ex_07_b.png" width="280" />
 
@@ -392,7 +392,7 @@ a\) would give **three** numbers (one per day); b) would give **one** number: th
 
 Open the exercise (scan the QR or type the link):
 
-**[beyondsimulations.github.io/Introduction-to-Python/notebooks/ex_07_c/](https://beyondsimulations.github.io/Introduction-to-Python/notebooks/ex_07_c/)**
+**[python.tobiasvlcek.com/notebooks/ex_07_c/](https://python.tobiasvlcek.com/notebooks/ex_07_c/)**
 
 <img src="assets/qr/ex_07_c.png" width="280" />
 

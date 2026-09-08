@@ -73,7 +73,7 @@ The five checkpoints fall in Parts I and II; the dates are announced at the star
 
 ## Lecture Materials
 
-**Course website and slides**: [https://beyondsimulations.github.io/Introduction-to-Python/](https://beyondsimulations.github.io/Introduction-to-Python/)
+**Course website and slides**: [https://python.tobiasvlcek.com/](https://python.tobiasvlcek.com/)
 
 ## Required Readings
 

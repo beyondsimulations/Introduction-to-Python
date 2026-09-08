@@ -171,7 +171,7 @@ Sometimes the fastest path is the one you already own. You built a whole muscle 
 
 Open the exercise (scan the QR or type the link):
 
-**[beyondsimulations.github.io/Introduction-to-Python/notebooks/ex_08_a/](https://beyondsimulations.github.io/Introduction-to-Python/notebooks/ex_08_a/)**
+**[python.tobiasvlcek.com/notebooks/ex_08_a/](https://python.tobiasvlcek.com/notebooks/ex_08_a/)**
 
 <img src="assets/qr/ex_08_a.png" width="280" />
 
@@ -361,7 +361,7 @@ The investor's real question is **per zone**: which area brings in the most?
 
 Open the exercise (scan the QR or type the link):
 
-**[beyondsimulations.github.io/Introduction-to-Python/notebooks/ex_08_b/](https://beyondsimulations.github.io/Introduction-to-Python/notebooks/ex_08_b/)**
+**[python.tobiasvlcek.com/notebooks/ex_08_b/](https://python.tobiasvlcek.com/notebooks/ex_08_b/)**
 
 <img src="assets/qr/ex_08_b.png" width="280" />
 

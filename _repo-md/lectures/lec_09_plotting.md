@@ -176,7 +176,7 @@ That's exactly why every chart cell **opens** with `plt.figure()`: it's how you 
 
 Open the exercise (scan the QR or type the link):
 
-**[beyondsimulations.github.io/Introduction-to-Python/notebooks/ex_09_a/](https://beyondsimulations.github.io/Introduction-to-Python/notebooks/ex_09_a/)**
+**[python.tobiasvlcek.com/notebooks/ex_09_a/](https://python.tobiasvlcek.com/notebooks/ex_09_a/)**
 
 <img src="assets/qr/ex_09_a.png" width="280" />
 
@@ -308,7 +308,7 @@ plt.gca()
 
 Open the exercise (scan the QR or type the link):
 
-**[beyondsimulations.github.io/Introduction-to-Python/notebooks/ex_09_b/](https://beyondsimulations.github.io/Introduction-to-Python/notebooks/ex_09_b/)**
+**[python.tobiasvlcek.com/notebooks/ex_09_b/](https://python.tobiasvlcek.com/notebooks/ex_09_b/)**
 
 <img src="assets/qr/ex_09_b.png" width="280" />
 
@@ -385,7 +385,7 @@ The pilot flies; the co-pilot advises. You still land the plane.
 
 Open the exercise (scan the QR or type the link):
 
-**[beyondsimulations.github.io/Introduction-to-Python/notebooks/ex_09_c/](https://beyondsimulations.github.io/Introduction-to-Python/notebooks/ex_09_c/)**
+**[python.tobiasvlcek.com/notebooks/ex_09_c/](https://python.tobiasvlcek.com/notebooks/ex_09_c/)**
 
 <img src="assets/qr/ex_09_c.png" width="280" />
 

@@ -34,7 +34,7 @@ format:
 
 . . .
 
-Materials live in the KLU portal and are hosted at [beyondsimulations.github.io/Introduction-to-Python](https://beyondsimulations.github.io/Introduction-to-Python/).
+Materials live in the KLU portal and are hosted at [python.tobiasvlcek.com](https://python.tobiasvlcek.com/).
 
 ## Passing the Course
 
@@ -247,7 +247,7 @@ print(type("9.99"))
 
 Open the exercise (scan the QR or type the link):
 
-**[beyondsimulations.github.io/Introduction-to-Python/notebooks/ex_01_a/](https://beyondsimulations.github.io/Introduction-to-Python/notebooks/ex_01_a/)**
+**[python.tobiasvlcek.com/notebooks/ex_01_a/](https://python.tobiasvlcek.com/notebooks/ex_01_a/)**
 
 <img src="assets/qr/ex_01_a.png" width="280" />
 
@@ -364,7 +364,7 @@ print(round(10 / 3, 2))    # 3.33, a proper amount
 
 Open the exercise (scan the QR or type the link):
 
-**[beyondsimulations.github.io/Introduction-to-Python/notebooks/ex_01_b/](https://beyondsimulations.github.io/Introduction-to-Python/notebooks/ex_01_b/)**
+**[python.tobiasvlcek.com/notebooks/ex_01_b/](https://python.tobiasvlcek.com/notebooks/ex_01_b/)**
 
 <img src="assets/qr/ex_01_b.png" width="280" />
 
@@ -479,7 +479,7 @@ print("2 * 3")
 
 Open the exercise (scan the QR or type the link):
 
-**[beyondsimulations.github.io/Introduction-to-Python/notebooks/ex_01_c/](https://beyondsimulations.github.io/Introduction-to-Python/notebooks/ex_01_c/)**
+**[python.tobiasvlcek.com/notebooks/ex_01_c/](https://python.tobiasvlcek.com/notebooks/ex_01_c/)**
 
 <img src="assets/qr/ex_01_c.png" width="280" />
 

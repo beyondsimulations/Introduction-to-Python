@@ -9,7 +9,7 @@ from pathlib import Path
 
 import segno
 
-BASE = "https://beyondsimulations.github.io/Introduction-to-Python/notebooks"
+BASE = "https://python.tobiasvlcek.com/notebooks"
 OUT = Path(__file__).resolve().parent.parent / "lectures" / "assets" / "qr"
 EXERCISES = [
     "ex_01_a", "ex_01_b", "ex_01_c",

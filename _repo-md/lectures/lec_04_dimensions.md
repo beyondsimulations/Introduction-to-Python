@@ -233,7 +233,7 @@ print(opening[1])
 
 Open the exercise (scan the QR or type the link):
 
-**[beyondsimulations.github.io/Introduction-to-Python/notebooks/ex_04_a/](https://beyondsimulations.github.io/Introduction-to-Python/notebooks/ex_04_a/)**
+**[python.tobiasvlcek.com/notebooks/ex_04_a/](https://python.tobiasvlcek.com/notebooks/ex_04_a/)**
 
 <img src="assets/qr/ex_04_a.png" width="280" />
 
@@ -366,7 +366,7 @@ print(regulars)        # order is arbitrary: a set has none
 print(len(regulars))   # how many different people
 ```
 
-    {'tom', 'nina', 'ada'}
+    {'nina', 'ada', 'tom'}
     3
 
 . . .
@@ -377,7 +377,7 @@ Five visits, three people. A set answers "how many *different*?" in one step.
 
 Open the exercise (scan the QR or type the link):
 
-**[beyondsimulations.github.io/Introduction-to-Python/notebooks/ex_04_b/](https://beyondsimulations.github.io/Introduction-to-Python/notebooks/ex_04_b/)**
+**[python.tobiasvlcek.com/notebooks/ex_04_b/](https://python.tobiasvlcek.com/notebooks/ex_04_b/)**
 
 <img src="assets/qr/ex_04_b.png" width="280" />
 
@@ -536,7 +536,7 @@ for line in orders.splitlines():
 
 Open the exercise (scan the QR or type the link):
 
-**[beyondsimulations.github.io/Introduction-to-Python/notebooks/ex_04_c/](https://beyondsimulations.github.io/Introduction-to-Python/notebooks/ex_04_c/)**
+**[python.tobiasvlcek.com/notebooks/ex_04_c/](https://python.tobiasvlcek.com/notebooks/ex_04_c/)**
 
 <img src="assets/qr/ex_04_c.png" width="280" />
 

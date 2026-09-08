@@ -26,7 +26,7 @@ def _(mo):
 
     > **New this week: AI is allowed.** From this session on you may use an AI
     > assistant; see the course's [AI tools
-    > guide](https://beyondsimulations.github.io/Introduction-to-Python/general/ai-tools.html).
+    > guide](https://python.tobiasvlcek.com/general/ai-tools.html).
     > One thing does not change: the ✅ checks below only go green on code that
     > actually runs. AI can draft a line for you; you still have to make it work,
     > and understand it well enough to fix it when it doesn't.
