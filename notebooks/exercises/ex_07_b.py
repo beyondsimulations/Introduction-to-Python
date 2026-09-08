@@ -40,6 +40,19 @@ def _(mo):
     return
 
 
+@app.cell(hide_code=True)
+def _(mo):
+    mo.callout(
+        mo.md(
+            "💾 **Saving your work:** this notebook runs in your browser. Press "
+            "**Cmd/Ctrl+S** to save, and always save **before** menu → Download → "
+            "*Download Python code*. Without a save first, the download is an empty file."
+        ),
+        kind="info",
+    )
+    return
+
+
 @app.cell
 def _():
     import numpy as np
@@ -94,7 +107,7 @@ def _(times_exb):
 
 @app.cell(hide_code=True)
 def _(late_count_exb, late_mean_exb, mo, np, show_result):
-    # Reactive check. Re-runs automatically whenever the cells above change.
+    # Reactive check. Re-runs when you run the cell above.
     _expected_count = 3
     _expected_mean = 46.0
     _result = None
@@ -106,7 +119,7 @@ def _(late_count_exb, late_mean_exb, mo, np, show_result):
         _mean = None
     if late_count_exb is None or late_mean_exb is None:
         _ok = False
-        _msg = "🔲 Not attempted yet."
+        _msg = "🔲 Not attempted yet. Assign it to `late_count_exb` and `late_mean_exb` (a `print` alone doesn't count) and run the cell."
     else:
         _result = f"late_count_exb={late_count_exb}, late_mean_exb={late_mean_exb}"
         if _count is None or _mean is None:

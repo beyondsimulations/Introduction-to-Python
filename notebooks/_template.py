@@ -24,6 +24,19 @@ def _(mo):
     return
 
 
+@app.cell(hide_code=True)
+def _(mo):
+    mo.callout(
+        mo.md(
+            "💾 **Saving your work:** this notebook runs in your browser. Press "
+            "**Cmd/Ctrl+S** to save, and always save **before** menu → Download → "
+            "*Download Python code*. Without a save first, the download is an empty file."
+        ),
+        kind="info",
+    )
+    return
+
+
 @app.cell
 def _():
     import marimo as mo
@@ -104,10 +117,10 @@ def _():
 
 @app.cell(hide_code=True)
 def _(mo, revenue_ex1, show_result):
-    # Reactive check — re-runs automatically whenever the cell above changes.
+    # Reactive check — Re-runs when you run the cell above.
     if revenue_ex1 is None:
         ex1_ok = False
-        _msg = "🔲 Exercise 1.1: not attempted yet."
+        _msg = "🔲 Exercise 1.1: not attempted yet. Assign it to `revenue_ex1` (a `print` alone doesn't count) and run the cell."
     elif revenue_ex1 == 13.50:  # TODO expected value
         ex1_ok = True
         _msg = "✅ Exercise 1.1: correct! The investor nods approvingly."
@@ -151,7 +164,7 @@ def _(mo):
     ## Before you leave 📦
 
     1. Check the progress box above — all green?
-    2. **Download your work**: menu → Download → Python. Reloading this exact
+    2. **Download your work**: **Cmd/Ctrl+S**, then menu → Download → Python. Reloading this exact
        tab (Cmd/Ctrl+R) keeps your work, but closing the tab and reopening the
        link starts you fresh. The download is the only guaranteed copy.
     3. Next episode: TODO teaser sentence.

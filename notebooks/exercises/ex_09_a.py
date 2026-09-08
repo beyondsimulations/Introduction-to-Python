@@ -44,6 +44,19 @@ def _(mo):
     return
 
 
+@app.cell(hide_code=True)
+def _(mo):
+    mo.callout(
+        mo.md(
+            "💾 **Saving your work:** this notebook runs in your browser. Press "
+            "**Cmd/Ctrl+S** to save, and always save **before** menu → Download → "
+            "*Download Python code*. Without a save first, the download is an empty file."
+        ),
+        kind="info",
+    )
+    return
+
+
 @app.cell
 def _():
     import matplotlib.pyplot as plt
@@ -108,13 +121,13 @@ def _(revenues_exa):
 
 @app.cell(hide_code=True)
 def _(best_day_exa, mo, show_result, total_exa):
-    # Reactive check. Re-runs automatically whenever the cells above change.
+    # Reactive check. Re-runs when you run the cell above.
     _expected_total = 1336.5
     _expected_day = 6
     _result = None
     if total_exa is None or best_day_exa is None:
         _ok = False
-        _msg = "🔲 Not attempted yet."
+        _msg = "🔲 Not attempted yet. Assign it to `total_exa` and `best_day_exa` (a `print` alone doesn't count) and run the cell."
     elif isinstance(total_exa, (list, tuple)) or isinstance(best_day_exa, (list, tuple)):
         _ok = False
         _result = f"total_exa={total_exa!r}, best_day_exa={best_day_exa!r}"

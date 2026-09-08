@@ -30,6 +30,19 @@ def _(mo):
     return
 
 
+@app.cell(hide_code=True)
+def _(mo):
+    mo.callout(
+        mo.md(
+            "💾 **Saving your work:** this notebook runs in your browser. Press "
+            "**Cmd/Ctrl+S** to save, and always save **before** menu → Download → "
+            "*Download Python code*. Without a save first, the download is an empty file."
+        ),
+        kind="info",
+    )
+    return
+
+
 @app.cell
 def _():
     import marimo as mo
@@ -166,7 +179,7 @@ def _():
 def _(mo, n_orders_ex11, np, show_result):
     if n_orders_ex11 is None:
         ex11_ok = False
-        _msg = "🔲 Exercise 1.1: not attempted yet."
+        _msg = "🔲 Exercise 1.1: not attempted yet. Assign it to `n_orders_ex11` (a `print` alone doesn't count) and run the cell."
         _preview = ""
     else:
         _preview = show_result(n_orders_ex11)
@@ -247,7 +260,7 @@ def _(mo, np, sale_ex12, show_result):
     _expected = [5.4, 8.1, 10.8, 16.2]
     if sale_ex12 is None:
         ex12_ok = False
-        _msg = "🔲 Exercise 1.2: not attempted yet."
+        _msg = "🔲 Exercise 1.2: not attempted yet. Assign it to `sale_ex12` (a `print` alone doesn't count) and run the cell."
         _preview = ""
     else:
         _preview = show_result(sale_ex12)
@@ -325,7 +338,7 @@ def _():
 def _(days_sum_ex13, mo, np, show_result):
     if days_sum_ex13 is None:
         ex13_ok = False
-        _msg = "🔲 Exercise 1.3: not attempted yet."
+        _msg = "🔲 Exercise 1.3: not attempted yet. Assign it to `days_sum_ex13` (a `print` alone doesn't count) and run the cell."
         _preview = ""
     else:
         _preview = show_result(days_sum_ex13)
@@ -443,7 +456,7 @@ def _():
 def _(critical_count_ex21, mo, np, show_result):
     if critical_count_ex21 is None:
         ex21_ok = False
-        _msg = "🔲 Exercise 2.1: not attempted yet."
+        _msg = "🔲 Exercise 2.1: not attempted yet. Assign it to `critical_count_ex21` (a `print` alone doesn't count) and run the cell."
         _preview = ""
     else:
         _preview = show_result(critical_count_ex21)
@@ -507,7 +520,7 @@ def _():
 def _(mo, np, ontime_rate_ex22, show_result):
     if ontime_rate_ex22 is None:
         ex22_ok = False
-        _msg = "🔲 Exercise 2.2: not attempted yet."
+        _msg = "🔲 Exercise 2.2: not attempted yet. Assign it to `ontime_rate_ex22` (a `print` alone doesn't count) and run the cell."
         _preview = ""
     else:
         _preview = show_result(ontime_rate_ex22)
@@ -612,7 +625,7 @@ def _(mo, np, show_result, zone_totals_ex23):
     _expected = [141, 109, 100, 82]
     if zone_totals_ex23 is None:
         ex23_ok = False
-        _msg = "🔲 Exercise 2.3: not attempted yet."
+        _msg = "🔲 Exercise 2.3: not attempted yet. Assign it to `zone_totals_ex23` (a `print` alone doesn't count) and run the cell."
         _preview = ""
     else:
         _preview = show_result(zone_totals_ex23)
@@ -728,7 +741,7 @@ def _():
 def _(best_day_total_ex31, mo, np, show_result):
     if best_day_total_ex31 is None:
         ex31_ok = False
-        _msg = "🔲 Exercise 3.1: not attempted yet."
+        _msg = "🔲 Exercise 3.1: not attempted yet. Assign it to `best_day_total_ex31` (a `print` alone doesn't count) and run the cell."
         _preview = ""
     else:
         _preview = show_result(best_day_total_ex31)
@@ -795,7 +808,7 @@ def _():
 def _(best_zone_ex40, mo, np, show_result):
     if best_zone_ex40 is None:
         ex40_ok = False
-        _msg = "🔲 Boss exercise: not attempted yet."
+        _msg = "🔲 Boss exercise: not attempted yet. Assign it to `best_zone_ex40` (a `print` alone doesn't count) and run the cell."
         _preview = ""
     elif isinstance(best_zone_ex40, str):
         _preview = show_result(best_zone_ex40)
@@ -922,7 +935,7 @@ def _():
 def _(answer_ex50, mo):
     if answer_ex50 == "":
         ex50_ok = False
-        _msg = "🔲 Quiz: not attempted yet."
+        _msg = "🔲 Quiz: not attempted yet. Set `answer_ex50` to your letter and run the cell."
     elif str(answer_ex50).strip().lower() == "d":
         ex50_ok = True
         _msg = (
@@ -983,7 +996,7 @@ def _(mo):
        reread the worked examples, and try again. Arrays, masks and axis totals are
        the whole toolkit for turning raw numbers into a metric. You'll reach for
        them any time data shows up.
-    2. **Download your work**: menu → Download → *Download Python code*.
+    2. **Download your work**: **Cmd/Ctrl+S**, then menu → Download → *Download Python code*.
        Reloading this exact tab (Cmd/Ctrl+R) keeps your work, but closing the tab
        and reopening the link starts you fresh. The download is the only
        guaranteed copy.

@@ -37,6 +37,19 @@ def _(mo):
     return
 
 
+@app.cell(hide_code=True)
+def _(mo):
+    mo.callout(
+        mo.md(
+            "💾 **Saving your work:** this notebook runs in your browser. Press "
+            "**Cmd/Ctrl+S** to save, and always save **before** menu → Download → "
+            "*Download Python code*. Without a save first, the download is an empty file."
+        ),
+        kind="info",
+    )
+    return
+
+
 @app.cell
 def _():
     # Given: do not change these
@@ -55,10 +68,10 @@ def _():
 
 @app.cell(hide_code=True)
 def _(line_exc, mo, show_result):
-    # Reactive check. Re-runs automatically whenever the cell above changes.
+    # Reactive check. Re-runs when you run the cell above.
     if line_exc is None:
         _ok = False
-        _msg = "🔲 Not attempted yet."
+        _msg = "🔲 Not attempted yet. Assign it to `line_exc` (a `print` alone doesn't count) and run the cell."
     elif line_exc == "2x Falafel Wrap: 13.80 EUR":
         _ok = True
         _msg = "✅ Correct! The receipt printer purrs."

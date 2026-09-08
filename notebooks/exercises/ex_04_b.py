@@ -39,6 +39,19 @@ def _(mo):
     return
 
 
+@app.cell(hide_code=True)
+def _(mo):
+    mo.callout(
+        mo.md(
+            "💾 **Saving your work:** this notebook runs in your browser. Press "
+            "**Cmd/Ctrl+S** to save, and always save **before** menu → Download → "
+            "*Download Python code*. Without a save first, the download is an empty file."
+        ),
+        kind="info",
+    )
+    return
+
+
 @app.cell
 def _():
     # Given: do not change this
@@ -55,7 +68,7 @@ def _(menu):
 
 @app.cell(hide_code=True)
 def _(menu, menu_exb, mo, show_result):
-    # Reactive check. Re-runs automatically whenever the cell above changes.
+    # Reactive check. Re-runs when you run the cell above.
     _expected = {
         "Falafel Wrap": 6.90,
         "Pad Thai": 9.20,
@@ -65,7 +78,7 @@ def _(menu, menu_exb, mo, show_result):
     _original = {"Falafel Wrap": 6.90, "Pad Thai": 8.90, "Founders Bowl": 10.40}
     if menu_exb is None:
         _ok = False
-        _msg = "🔲 Not attempted yet."
+        _msg = "🔲 Not attempted yet. Assign it to `menu_exb` (a `print` alone doesn't count) and run the cell."
     elif menu_exb == _expected and menu != _original:
         _ok = False
         _msg = "❌ Not quite. `menu_exb` looks right, but the ORIGINAL `menu` changed too. You edited it through an alias; make a real copy with `dict(...)` first, then change the copy."

@@ -45,6 +45,19 @@ def _(mo):
 
 @app.cell(hide_code=True)
 def _(mo):
+    mo.callout(
+        mo.md(
+            "💾 **Saving your work:** this notebook runs in your browser. Press "
+            "**Cmd/Ctrl+S** to save, and always save **before** menu → Download → "
+            "*Download Python code*. Without a save first, the download is an empty file."
+        ),
+        kind="info",
+    )
+    return
+
+
+@app.cell(hide_code=True)
+def _(mo):
     trace_exa = mo.ui.radio(
         options=["a) 3.5", "b) ValueError", "c) 3", "d) TypeError"],
         label="Your prediction:",
@@ -99,10 +112,10 @@ def _():
 
 @app.cell(hide_code=True)
 def _(mo, qty_exa, show_result):
-    # Reactive check. Re-runs automatically whenever the cell above changes.
+    # Reactive check. Re-runs when you run the cell above.
     if qty_exa is None:
         _ok = False
-        _msg = "🔲 Not attempted yet."
+        _msg = "🔲 Not attempted yet. Assign it to `qty_exa` (a `print` alone doesn't count) and run the cell."
     elif isinstance(qty_exa, float) and qty_exa == 3.5:
         _ok = True
         _msg = "✅ Correct! The quantity now arrives as a proper number."

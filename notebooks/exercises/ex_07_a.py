@@ -39,6 +39,19 @@ def _(mo):
     return
 
 
+@app.cell(hide_code=True)
+def _(mo):
+    mo.callout(
+        mo.md(
+            "💾 **Saving your work:** this notebook runs in your browser. Press "
+            "**Cmd/Ctrl+S** to save, and always save **before** menu → Download → "
+            "*Download Python code*. Without a save first, the download is an empty file."
+        ),
+        kind="info",
+    )
+    return
+
+
 @app.cell
 def _():
     import numpy as np
@@ -82,7 +95,7 @@ def _(net_prices_exa):
 
 @app.cell(hide_code=True)
 def _(gross_exa, mo, show_result):
-    # Reactive check. Re-runs automatically whenever the cell above changes.
+    # Reactive check. Re-runs when you run the cell above.
     _expected = [9.52, 13.09, 16.66]
     try:
         _values = [round(float(_v), 2) for _v in gross_exa]
@@ -90,7 +103,7 @@ def _(gross_exa, mo, show_result):
         _values = None
     if gross_exa is None:
         _ok = False
-        _msg = "🔲 Not attempted yet."
+        _msg = "🔲 Not attempted yet. Assign it to `gross_exa` (a `print` alone doesn't count) and run the cell."
     elif not hasattr(gross_exa, "__len__") or len(gross_exa) != 3:
         _ok = False
         _msg = "❌ Not quite. Do this as one expression on the whole array, not a single number."

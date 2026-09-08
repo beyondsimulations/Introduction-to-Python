@@ -39,6 +39,19 @@ def _(mo):
     return
 
 
+@app.cell(hide_code=True)
+def _(mo):
+    mo.callout(
+        mo.md(
+            "💾 **Saving your work:** this notebook runs in your browser. Press "
+            "**Cmd/Ctrl+S** to save, and always save **before** menu → Download → "
+            "*Download Python code*. Without a save first, the download is an empty file."
+        ),
+        kind="info",
+    )
+    return
+
+
 @app.cell
 def _():
     import numpy as np
@@ -94,7 +107,7 @@ def _(sales_exc):
 
 @app.cell(hide_code=True)
 def _(best_zone_exc, mo, np, show_result, zone_totals_exc):
-    # Reactive check. Re-runs automatically whenever the cells above change.
+    # Reactive check. Re-runs when you run the cell above.
     _expected_totals = [30, 34, 38]
     _expected_best = 2
     _result = None
@@ -104,7 +117,7 @@ def _(best_zone_exc, mo, np, show_result, zone_totals_exc):
         _totals = None
     if zone_totals_exc is None or best_zone_exc is None:
         _ok = False
-        _msg = "🔲 Not attempted yet."
+        _msg = "🔲 Not attempted yet. Assign it to `zone_totals_exc` and `best_zone_exc` (a `print` alone doesn't count) and run the cell."
     elif _totals is not None and len(_totals) == 4:
         _ok = False
         _msg = "❌ Not quite. You summed per DAY, not per zone. Which axis collapses the days?"

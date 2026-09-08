@@ -27,6 +27,19 @@ def _(mo):
 
 @app.cell(hide_code=True)
 def _(mo):
+    mo.callout(
+        mo.md(
+            "💾 **Saving your work:** this notebook runs in your browser. Press "
+            "**Cmd/Ctrl+S** to save, and always save **before** menu → Download → "
+            "*Download Python code*. Without a save first, the download is an empty file."
+        ),
+        kind="info",
+    )
+    return
+
+
+@app.cell(hide_code=True)
+def _(mo):
     run_predict = mo.ui.run_button(label="I've predicted, run it")
     run_predict
     return (run_predict,)
@@ -75,10 +88,10 @@ def _():
 
 @app.cell(hide_code=True)
 def _(change_exb, mo, packs_exb):
-    # Reactive check. Re-runs automatically whenever the cell above changes.
+    # Reactive check. Re-runs when you run the cell above.
     if packs_exb is None or change_exb is None:
         _ok = False
-        _msg = "🔲 Not attempted yet."
+        _msg = "🔲 Not attempted yet. Assign it to `packs_exb` and `change_exb` (a `print` alone doesn't count) and run the cell."
     elif packs_exb == 24 and round(change_exb, 2) == 6.0:
         _ok = True
         _msg = "✅ Correct! 24 packs, 6.00 EUR change. Tobi is already spending it."

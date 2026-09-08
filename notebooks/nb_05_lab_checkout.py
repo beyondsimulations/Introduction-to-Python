@@ -28,6 +28,19 @@ def _(mo):
     return
 
 
+@app.cell(hide_code=True)
+def _(mo):
+    mo.callout(
+        mo.md(
+            "💾 **Saving your work:** this notebook runs in your browser. Press "
+            "**Cmd/Ctrl+S** to save, and always save **before** menu → Download → "
+            "*Download Python code*. Without a save first, the download is an empty file."
+        ),
+        kind="info",
+    )
+    return
+
+
 @app.cell
 def _():
     import marimo as mo
@@ -231,7 +244,7 @@ def _(mo, safe_price_ex12, show_result):
     else:
         if _good is None and _bad is None:
             ex12_ok = False
-            _msg = "🔲 Exercise 1.2: not attempted yet (the function still returns None)."
+            _msg = "🔲 Exercise 1.2: not attempted yet (the function still returns None). Use `return`, not `print`, then run the cell."
             _preview = ""
         elif (
             isinstance(_good, float) and round(_good, 2) == 4.20
@@ -421,7 +434,7 @@ def _(mo, validate_order_ex22):
         _raised = "WRONG"
     if _pos is None and _raised is False:
         ex22_ok = False
-        _msg = "🔲 Exercise 2.2: not attempted yet (the function still returns None)."
+        _msg = "🔲 Exercise 2.2: not attempted yet (the function still returns None). Use `return`, not `print`, then run the cell."
     elif _pos == "CRASH":
         ex22_ok = False
         _msg = "❌ Exercise 2.2: a *valid* price (9.90) is crashing. Only negative prices should raise. A price of 9.90 should return `True`."
@@ -489,7 +502,7 @@ def _():
 def _(bad_index_ex23, mo, show_result):
     if bad_index_ex23 is None:
         ex23_ok = False
-        _msg = "🔲 Exercise 2.3: not attempted yet."
+        _msg = "🔲 Exercise 2.3: not attempted yet. Assign it to `bad_index_ex23` (a `print` alone doesn't count) and run the cell."
         _preview = ""
     elif isinstance(bad_index_ex23, float) and bad_index_ex23 == -1.0:
         ex23_ok = False
@@ -604,7 +617,7 @@ def _(mo, parse_qty_ex31, show_result):
     else:
         if _good is None and _bad is None:
             ex31_ok = False
-            _msg = "🔲 Exercise 3.1: not attempted yet (the function still returns None)."
+            _msg = "🔲 Exercise 3.1: not attempted yet (the function still returns None). Use `return`, not `print`, then run the cell."
             _preview = ""
         elif _good == 3 and _bad == 1:
             ex31_ok = True
@@ -695,7 +708,7 @@ def _(mo, orders_ex40, robust_total_ex40, show_result):
     else:
         if _messy is None:
             ex40_ok = False
-            _msg = "🔲 Boss exercise: not attempted yet (the function still returns None)."
+            _msg = "🔲 Boss exercise: not attempted yet (the function still returns None). Use `return`, not `print`, then run the cell."
             _preview = ""
         elif (
             isinstance(_messy, (int, float)) and round(_messy, 2) == 22.70
@@ -767,7 +780,7 @@ def _():
 def _(answer_ex50, mo):
     if answer_ex50 == "":
         ex50_ok = False
-        _msg = "🔲 Quiz: not attempted yet."
+        _msg = "🔲 Quiz: not attempted yet. Set `answer_ex50` to your letter and run the cell."
     elif str(answer_ex50).strip().lower() == "a":
         ex50_ok = True
         _msg = (
@@ -823,7 +836,7 @@ def _():
 def _(answer_ex60, mo, show_result):
     if answer_ex60 is None:
         ex60_ok = False
-        _msg = "🔲 Bonus: not attempted yet."
+        _msg = "🔲 Bonus: not attempted yet. Assign it to `answer_ex60` (a `print` alone doesn't count) and run the cell."
         _preview = ""
     elif not isinstance(answer_ex60, int):
         ex60_ok = False
@@ -895,7 +908,7 @@ def _():
 def _(all_valid_ex61, mo, show_result):
     if all_valid_ex61 is None:
         ex61_ok = False
-        _msg = "🔲 Bonus: not attempted yet."
+        _msg = "🔲 Bonus: not attempted yet. Assign it to `all_valid_ex61` (a `print` alone doesn't count) and run the cell."
         _preview = ""
     elif not isinstance(all_valid_ex61, bool):
         ex61_ok = False
@@ -964,7 +977,7 @@ def _(mo):
        reopen the hints, reread the worked examples, and try again. Reading a
        traceback, catching failures, and refusing bad input are the difference
        between a program that survives real users and one that doesn't.
-    2. **Download your work**: menu → Download → *Download Python code*.
+    2. **Download your work**: **Cmd/Ctrl+S**, then menu → Download → *Download Python code*.
        Reloading this exact tab (Cmd/Ctrl+R) keeps your work, but closing the tab
        and reopening the link starts you fresh. The download is the only
        guaranteed copy.

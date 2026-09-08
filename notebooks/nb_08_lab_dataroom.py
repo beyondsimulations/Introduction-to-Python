@@ -36,6 +36,19 @@ def _(mo):
     return
 
 
+@app.cell(hide_code=True)
+def _(mo):
+    mo.callout(
+        mo.md(
+            "💾 **Saving your work:** this notebook runs in your browser. Press "
+            "**Cmd/Ctrl+S** to save, and always save **before** menu → Download → "
+            "*Download Python code*. Without a save first, the download is an empty file."
+        ),
+        kind="info",
+    )
+    return
+
+
 @app.cell
 def _():
     import marimo as mo
@@ -156,7 +169,7 @@ def _():
 def _(mo, pd, rows_ex11, show_result):
     if rows_ex11 is None:
         ex11_ok = False
-        _msg = "🔲 Exercise 1.1: not attempted yet."
+        _msg = "🔲 Exercise 1.1: not attempted yet. Assign it to `rows_ex11` (a `print` alone doesn't count) and run the cell."
         _preview = ""
     else:
         _preview = show_result(rows_ex11)
@@ -221,7 +234,7 @@ def _():
 def _(mo, n_cols_ex12, pd, show_result):
     if n_cols_ex12 is None:
         ex12_ok = False
-        _msg = "🔲 Exercise 1.2: not attempted yet."
+        _msg = "🔲 Exercise 1.2: not attempted yet. Assign it to `n_cols_ex12` (a `print` alone doesn't count) and run the cell."
         _preview = ""
     else:
         _preview = show_result(n_cols_ex12)
@@ -288,7 +301,7 @@ def _():
 def _(mo, pd, revenue_ex13, show_result):
     if revenue_ex13 is None:
         ex13_ok = False
-        _msg = "🔲 Exercise 1.3: not attempted yet."
+        _msg = "🔲 Exercise 1.3: not attempted yet. Assign it to `revenue_ex13` (a `print` alone doesn't count) and run the cell."
         _preview = ""
     else:
         _preview = show_result(revenue_ex13)
@@ -388,7 +401,7 @@ def _():
 def _(mo, nord_count_ex21, pd, show_result):
     if nord_count_ex21 is None:
         ex21_ok = False
-        _msg = "🔲 Exercise 2.1: not attempted yet."
+        _msg = "🔲 Exercise 2.1: not attempted yet. Assign it to `nord_count_ex21` (a `print` alone doesn't count) and run the cell."
         _preview = ""
     else:
         _preview = show_result(nord_count_ex21)
@@ -476,7 +489,7 @@ def _():
 def _(mo, pd, show_result, sued_bulk_ex22):
     if sued_bulk_ex22 is None:
         ex22_ok = False
-        _msg = "🔲 Exercise 2.2: not attempted yet."
+        _msg = "🔲 Exercise 2.2: not attempted yet. Assign it to `sued_bulk_ex22` (a `print` alone doesn't count) and run the cell."
         _preview = ""
     else:
         _preview = show_result(sued_bulk_ex22)
@@ -551,7 +564,7 @@ def _():
 def _(hafen_revenue_ex23, mo, pd, show_result):
     if hafen_revenue_ex23 is None:
         ex23_ok = False
-        _msg = "🔲 Exercise 2.3: not attempted yet."
+        _msg = "🔲 Exercise 2.3: not attempted yet. Assign it to `hafen_revenue_ex23` (a `print` alone doesn't count) and run the cell."
         _preview = ""
     else:
         _preview = show_result(hafen_revenue_ex23)
@@ -659,7 +672,7 @@ def _():
 def _(max_per_item_ex31, mo, pd, show_result):
     if max_per_item_ex31 is None:
         ex31_ok = False
-        _msg = "🔲 Exercise 3.1: not attempted yet."
+        _msg = "🔲 Exercise 3.1: not attempted yet. Assign it to `max_per_item_ex31` (a `print` alone doesn't count) and run the cell."
         _preview = ""
     else:
         _preview = show_result(max_per_item_ex31)
@@ -739,7 +752,7 @@ def _(by_zone_ex32, mo, pd, show_result):
     _expected = {"Altstadt": 376.2, "Hafen": 325.3, "Nord": 345.9, "Sued": 395.9}
     if by_zone_ex32 is None:
         ex32_ok = False
-        _msg = "🔲 Exercise 3.2: not attempted yet."
+        _msg = "🔲 Exercise 3.2: not attempted yet. Assign it to `by_zone_ex32` (a `print` alone doesn't count) and run the cell."
         _preview = ""
     else:
         _preview = show_result(by_zone_ex32)
@@ -829,7 +842,7 @@ def _():
 def _(best_avg_zone_ex40, mo, pd, show_result):
     if best_avg_zone_ex40 is None:
         ex40_ok = False
-        _msg = "🔲 Boss exercise: not attempted yet."
+        _msg = "🔲 Boss exercise: not attempted yet. Assign it to `best_avg_zone_ex40` (a `print` alone doesn't count) and run the cell."
         _preview = ""
     elif isinstance(best_avg_zone_ex40, str):
         _preview = show_result(best_avg_zone_ex40)
@@ -957,7 +970,7 @@ def _():
 def _(answer_ex50, mo):
     if answer_ex50 == "":
         ex50_ok = False
-        _msg = "🔲 Quiz: not attempted yet."
+        _msg = "🔲 Quiz: not attempted yet. Set `answer_ex50` to your letter and run the cell."
     elif str(answer_ex50).strip().lower() == "a":
         ex50_ok = True
         _msg = (
@@ -1020,7 +1033,7 @@ def _(mo):
        reread the worked examples, and try again. Load, filter, derive a column,
        group: that's the whole pandas loop, and it's the same loop on 80 rows or
        80 million.
-    2. **Download your work**: menu → Download → *Download Python code*.
+    2. **Download your work**: **Cmd/Ctrl+S**, then menu → Download → *Download Python code*.
        Reloading this exact tab (Cmd/Ctrl+R) keeps your work, but closing the tab
        and reopening the link starts you fresh. The download is the only
        guaranteed copy.

@@ -40,6 +40,19 @@ def _(mo):
     return
 
 
+@app.cell(hide_code=True)
+def _(mo):
+    mo.callout(
+        mo.md(
+            "💾 **Saving your work:** this notebook runs in your browser. Press "
+            "**Cmd/Ctrl+S** to save, and always save **before** menu → Download → "
+            "*Download Python code*. Without a save first, the download is an empty file."
+        ),
+        kind="info",
+    )
+    return
+
+
 @app.cell
 def _():
     def wrap_price_exa(qty):
@@ -51,7 +64,7 @@ def _():
 
 @app.cell(hide_code=True)
 def _(mo, show_result, wrap_price_exa):
-    # Reactive check. Re-runs automatically whenever the cell above changes.
+    # Reactive check. Re-runs when you run the cell above.
     # Reactive check.
     try:
         _r3 = wrap_price_exa(3)
@@ -63,7 +76,7 @@ def _(mo, show_result, wrap_price_exa):
     else:
         if _r3 is None:
             _ok = False
-            _msg = "🔲 Not attempted yet (the function still returns None)."
+            _msg = "🔲 Not attempted yet (the function still returns None). Use `return`, not `print`, then run the cell."
             _preview = ""
         elif _r3 == 20.70 and _r1 == 6.90:
             _ok = True

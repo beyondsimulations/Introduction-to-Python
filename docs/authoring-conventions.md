@@ -9,13 +9,20 @@
   `QUARTO_PROJECT_RENDER_ALL`), so single-file renders leave `_repo-md/` alone.
 
 ## Notebooks (see notebooks/_template.py for the skeleton)
+- Every notebook opens with the 💾 save callout right after the title cell, and
+  every download instruction says "Cmd/Ctrl+S, then menu → Download": marimo's
+  WASM edit mode hands out an EMPTY .py until the notebook has been saved once
+  (verified on 0.23.13 and 0.24.0).
 - One global per cell; `+=`/`*=` count as definitions; `_name` is cell-private.
 - Every exercise pre-defines its answer: `fee_ex11 = None  # YOUR CODE BELOW`.
 - Suffix naming: `<meaning>_exNM` (section N, exercise M); boss = `_ex40`,
   MCQ = `answer_ex50`, bonuses = `_ex60`+. Classes keep their natural name
   (`Order`), no suffix.
 - Checks: `isinstance` + `round(x, 2) == LITERAL` for numbers; degrade to
-  "🔲 not attempted" on None; `mo.callout` + `show_result(value)`.
+  "🔲 not attempted" on None, followed by the unstick hint — name the variable
+  to assign (`print` alone doesn't count) and say to run the cell, since a
+  stale or printed-only answer is what students report as "correct but not
+  attempted"; `mo.callout` + `show_result(value)`.
 - Check cells must NEVER crash on a plausible wrong answer (a crash pauses the
   progress cell and hides the ✅). Guard/try-except every coercion: `int()`/
   `float()` may hit an array/Series/string, not a scalar; use `pd.isna(x)` for a

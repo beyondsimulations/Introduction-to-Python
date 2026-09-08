@@ -50,6 +50,19 @@ def _(mo):
     return
 
 
+@app.cell(hide_code=True)
+def _(mo):
+    mo.callout(
+        mo.md(
+            "💾 **Saving your work:** this notebook runs in your browser. Press "
+            "**Cmd/Ctrl+S** to save, and always save **before** menu → Download → "
+            "*Download Python code*. Without a save first, the download is an empty file."
+        ),
+        kind="info",
+    )
+    return
+
+
 @app.cell
 def _():
     import marimo as mo
@@ -164,7 +177,7 @@ def _():
 def _(best_day_ex11, mo, pd, show_result):
     if best_day_ex11 is None:
         ex11_ok = False
-        _msg = "🔲 Exercise 1.1: not attempted yet."
+        _msg = "🔲 Exercise 1.1: not attempted yet. Assign it to `best_day_ex11` (a `print` alone doesn't count) and run the cell."
         _preview = ""
     else:
         _preview = show_result(best_day_ex11)
@@ -248,7 +261,7 @@ def _():
 def _(days_ex12, mo, pd, show_result):
     if days_ex12 is None:
         ex12_ok = False
-        _msg = "🔲 Exercise 1.2: not attempted yet."
+        _msg = "🔲 Exercise 1.2: not attempted yet. Assign it to `days_ex12` (a `print` alone doesn't count) and run the cell."
         _preview = ""
     else:
         _preview = show_result(days_ex12)
@@ -352,7 +365,7 @@ def _(by_zone_ex21, mo, pd, show_result):
     _expected = {"Altstadt": 376.2, "Hafen": 325.3, "Nord": 345.9, "Sued": 395.9}
     if by_zone_ex21 is None:
         ex21_ok = False
-        _msg = "🔲 Exercise 2.1: not attempted yet."
+        _msg = "🔲 Exercise 2.1: not attempted yet. Assign it to `by_zone_ex21` (a `print` alone doesn't count) and run the cell."
         _preview = ""
     else:
         _preview = show_result(by_zone_ex21)
@@ -439,7 +452,7 @@ def _():
 def _(mo, over_25_ex22, pd, show_result):
     if over_25_ex22 is None:
         ex22_ok = False
-        _msg = "🔲 Exercise 2.2: not attempted yet."
+        _msg = "🔲 Exercise 2.2: not attempted yet. Assign it to `over_25_ex22` (a `print` alone doesn't count) and run the cell."
         _preview = ""
     else:
         _preview = show_result(over_25_ex22)
@@ -528,7 +541,7 @@ def _():
 def _(mo, pd, show_result, slowest_ex23):
     if slowest_ex23 is None:
         ex23_ok = False
-        _msg = "🔲 Exercise 2.3: not attempted yet."
+        _msg = "🔲 Exercise 2.3: not attempted yet. Assign it to `slowest_ex23` (a `print` alone doesn't count) and run the cell."
         _preview = ""
     else:
         _preview = show_result(slowest_ex23)
@@ -659,7 +672,7 @@ def _():
 def _(growth_pct_ex31, mo, pd, show_result):
     if growth_pct_ex31 is None:
         ex31_ok = False
-        _msg = "🔲 Exercise 3.1: not attempted yet."
+        _msg = "🔲 Exercise 3.1: not attempted yet. Assign it to `growth_pct_ex31` (a `print` alone doesn't count) and run the cell."
         _preview = ""
     else:
         _preview = show_result(growth_pct_ex31)
@@ -749,7 +762,7 @@ def _():
 def _(mo, pd, pitch_ex40, show_result):
     if pitch_ex40 is None:
         ex40_ok = False
-        _msg = "🔲 Boss exercise: not attempted yet."
+        _msg = "🔲 Boss exercise: not attempted yet. Assign it to `pitch_ex40` (a `print` alone doesn't count) and run the cell."
         _preview = ""
     elif isinstance(pitch_ex40, (pd.Series, pd.DataFrame)):
         ex40_ok = False
@@ -903,7 +916,7 @@ def _():
 def _(answer_ex50, mo):
     if answer_ex50 == "":
         ex50_ok = False
-        _msg = "🔲 Quiz: not attempted yet."
+        _msg = "🔲 Quiz: not attempted yet. Set `answer_ex50` to your letter and run the cell."
     elif str(answer_ex50).strip().lower() == "b":
         ex50_ok = True
         _msg = (
@@ -963,7 +976,7 @@ def _(mo):
     1. Check the progress box above: all **eight** green? If not, reopen the
        hints, reread the worked examples, and try again. Right chart for the
        question, honest axis, numbers you can defend: that's the whole job.
-    2. **Download your work**: menu → Download → *Download Python code*. This one
+    2. **Download your work**: **Cmd/Ctrl+S**, then menu → Download → *Download Python code*. This one
        is more than a backup: it's the **appendix of your pitch**, the file that
        proves every chart came from the real data. Reloading this tab (Cmd/Ctrl+R)
        keeps your work; closing it and reopening the link starts you fresh, so the

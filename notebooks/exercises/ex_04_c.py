@@ -37,6 +37,19 @@ def _(mo):
     return
 
 
+@app.cell(hide_code=True)
+def _(mo):
+    mo.callout(
+        mo.md(
+            "💾 **Saving your work:** this notebook runs in your browser. Press "
+            "**Cmd/Ctrl+S** to save, and always save **before** menu → Download → "
+            "*Download Python code*. Without a save first, the download is an empty file."
+        ),
+        kind="info",
+    )
+    return
+
+
 @app.cell
 def _():
     # Given: do not change this
@@ -53,7 +66,7 @@ def _(menu):
 
 @app.cell(hide_code=True)
 def _(happy_exc, mo, show_result):
-    # Reactive check. Re-runs automatically whenever the cell above changes.
+    # Reactive check. Re-runs when you run the cell above.
     _expected = {"Falafel Wrap": 5.52, "Pad Thai": 7.12, "Founders Bowl": 8.32}
     try:
         _matches_rounded = (
@@ -69,7 +82,7 @@ def _(happy_exc, mo, show_result):
 
     if happy_exc is None:
         _ok = False
-        _msg = "🔲 Not attempted yet."
+        _msg = "🔲 Not attempted yet. Assign it to `happy_exc` (a `print` alone doesn't count) and run the cell."
     elif happy_exc == _expected:
         _ok = True
         _msg = "✅ Correct! Happy hour is on."

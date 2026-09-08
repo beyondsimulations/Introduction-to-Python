@@ -43,6 +43,19 @@ def _(mo):
     return
 
 
+@app.cell(hide_code=True)
+def _(mo):
+    mo.callout(
+        mo.md(
+            "💾 **Saving your work:** this notebook runs in your browser. Press "
+            "**Cmd/Ctrl+S** to save, and always save **before** menu → Download → "
+            "*Download Python code*. Without a save first, the download is an empty file."
+        ),
+        kind="info",
+    )
+    return
+
+
 @app.cell
 def _():
     import matplotlib.pyplot as plt
@@ -107,12 +120,12 @@ def _(totals_exb, zones_exb):
 
 @app.cell(hide_code=True)
 def _(best_zone_exb, mo, show_result):
-    # Reactive check. Re-runs automatically whenever the cell above changes.
+    # Reactive check. Re-runs when you run the cell above.
     _expected = "nord"
     _result = None
     if best_zone_exb is None:
         _ok = False
-        _msg = "🔲 Not attempted yet."
+        _msg = "🔲 Not attempted yet. Assign it to `best_zone_exb` (a `print` alone doesn't count) and run the cell."
     elif isinstance(best_zone_exb, (list, tuple)):
         _ok = False
         _result = f"best_zone_exb={best_zone_exb!r}"

@@ -42,6 +42,19 @@ def _(mo):
     return
 
 
+@app.cell(hide_code=True)
+def _(mo):
+    mo.callout(
+        mo.md(
+            "💾 **Saving your work:** this notebook runs in your browser. Press "
+            "**Cmd/Ctrl+S** to save, and always save **before** menu → Download → "
+            "*Download Python code*. Without a save first, the download is an empty file."
+        ),
+        kind="info",
+    )
+    return
+
+
 @app.cell
 def _():
     import random
@@ -83,11 +96,11 @@ def _(random):
 
 @app.cell(hide_code=True)
 def _(demand_exb, mo, show_result):
-    # Reactive check. Re-runs automatically whenever the cell above changes.
+    # Reactive check. Re-runs when you run the cell above.
     _expected = [10, 18, 18, 25, 14, 20, 11]
     if demand_exb is None:
         _ok = False
-        _msg = "🔲 Not attempted yet."
+        _msg = "🔲 Not attempted yet. Assign it to `demand_exb` (a `print` alone doesn't count) and run the cell."
     elif demand_exb == _expected:
         _ok = True
         _msg = "✅ Correct! Same seven numbers, every single run. The investor can finally trust the demo."

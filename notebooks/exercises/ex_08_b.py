@@ -39,6 +39,19 @@ def _(mo):
     return
 
 
+@app.cell(hide_code=True)
+def _(mo):
+    mo.callout(
+        mo.md(
+            "💾 **Saving your work:** this notebook runs in your browser. Press "
+            "**Cmd/Ctrl+S** to save, and always save **before** menu → Download → "
+            "*Download Python code*. Without a save first, the download is an empty file."
+        ),
+        kind="info",
+    )
+    return
+
+
 @app.cell
 def _():
     import pandas as pd
@@ -98,13 +111,13 @@ def _(orders_exb):
 
 @app.cell(hide_code=True)
 def _(bulk_count_exb, bulk_revenue_exb, mo, pd, show_result):
-    # Reactive check. Re-runs automatically whenever the cells above change.
+    # Reactive check. Re-runs when you run the cell above.
     _expected_count = 3
     _expected_revenue = 57.0
     _result = None
     if bulk_count_exb is None or bulk_revenue_exb is None:
         _ok = False
-        _msg = "🔲 Not attempted yet."
+        _msg = "🔲 Not attempted yet. Assign it to `bulk_count_exb` and `bulk_revenue_exb` (a `print` alone doesn't count) and run the cell."
     elif isinstance(bulk_count_exb, (pd.Series, pd.DataFrame)) or isinstance(
         bulk_revenue_exb, (pd.Series, pd.DataFrame)
     ):

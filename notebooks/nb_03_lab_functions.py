@@ -28,6 +28,19 @@ def _(mo):
     return
 
 
+@app.cell(hide_code=True)
+def _(mo):
+    mo.callout(
+        mo.md(
+            "💾 **Saving your work:** this notebook runs in your browser. Press "
+            "**Cmd/Ctrl+S** to save, and always save **before** menu → Download → "
+            "*Download Python code*. Without a save first, the download is an empty file."
+        ),
+        kind="info",
+    )
+    return
+
+
 @app.cell
 def _():
     import marimo as mo
@@ -159,7 +172,7 @@ def _(fee_ex11, mo, show_result):
     else:
         if _a is None:
             ex11_ok = False
-            _msg = "🔲 Exercise 1.1: not attempted yet (the function still returns None)."
+            _msg = "🔲 Exercise 1.1: not attempted yet (the function still returns None). Use `return`, not `print`, then run the cell."
             _preview = ""
         elif _a == 2.90 and _b == 1.50 and _c == 0:
             ex11_ok = True
@@ -221,7 +234,7 @@ def _(mo, show_result, tip_ex12):
     else:
         if _a is None:
             ex12_ok = False
-            _msg = "🔲 Exercise 1.2: not attempted yet (the function still returns None)."
+            _msg = "🔲 Exercise 1.2: not attempted yet (the function still returns None). Use `return`, not `print`, then run the cell."
             _preview = ""
         elif (
             isinstance(_a, (int, float)) and round(_a, 2) == 2.0
@@ -462,7 +475,7 @@ def _(greet_ex23, mo, show_result):
     else:
         if _default is None:
             ex23_ok = False
-            _msg = "🔲 Exercise 2.3: not attempted yet (the function still returns None)."
+            _msg = "🔲 Exercise 2.3: not attempted yet (the function still returns None). Use `return`, not `print`, then run the cell."
             _preview = ""
         elif _default == "Moin, Ada!" and _custom == "Servus, Ada!":
             ex23_ok = True
@@ -590,7 +603,7 @@ def _(Order, mo, show_result):
     else:
         if _t is None:
             ex31_ok = False
-            _msg = "🔲 Exercise 3.1: not attempted yet (`total()` still returns None)."
+            _msg = "🔲 Exercise 3.1: not attempted yet (`total()` still returns None). Use `return`, not `print`, then run the cell."
             _preview = ""
         elif isinstance(_t, (int, float)) and round(_t, 2) == 13.80 and _line == "2x Wrap: 13.80 EUR":
             ex31_ok = True
@@ -673,7 +686,7 @@ def _(Order, fee_ex11):
 def _(day_total_ex40, mo, show_result):
     if day_total_ex40 is None:
         ex40_ok = False
-        _msg = "🔲 Boss exercise: not attempted yet."
+        _msg = "🔲 Boss exercise: not attempted yet. Assign it to `day_total_ex40` (a `print` alone doesn't count) and run the cell."
     elif isinstance(day_total_ex40, (int, float)) and round(day_total_ex40, 2) == 58.50:
         ex40_ok = True
         _msg = "✅ Boss exercise: **58.50 EUR** billed on the first Friday: item totals plus every delivery fee. The report ships."
@@ -745,7 +758,7 @@ def _():
 def _(answer_ex50, mo):
     if answer_ex50 == "":
         ex50_ok = False
-        _msg = "🔲 Quiz: not attempted yet."
+        _msg = "🔲 Quiz: not attempted yet. Set `answer_ex50` to your letter and run the cell."
     elif str(answer_ex50).strip().lower() == "c":
         ex50_ok = True
         _msg = (
@@ -872,7 +885,7 @@ def _(mo):
        that's normal: functions are the first genuinely hard idea in this course.
        Reopen the hints, reread the worked examples, and try one more time. The
        ones you fought for are the ones that stick.
-    2. **Download your work**: menu → Download → *Download Python code*.
+    2. **Download your work**: **Cmd/Ctrl+S**, then menu → Download → *Download Python code*.
        Reloading this exact tab (Cmd/Ctrl+R) keeps your work, but closing the
        tab and reopening the link starts you fresh. The download is the only
        guaranteed copy.

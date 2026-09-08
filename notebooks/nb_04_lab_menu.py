@@ -29,6 +29,19 @@ def _(mo):
     return
 
 
+@app.cell(hide_code=True)
+def _(mo):
+    mo.callout(
+        mo.md(
+            "💾 **Saving your work:** this notebook runs in your browser. Press "
+            "**Cmd/Ctrl+S** to save, and always save **before** menu → Download → "
+            "*Download Python code*. Without a save first, the download is an empty file."
+        ),
+        kind="info",
+    )
+    return
+
+
 @app.cell
 def _():
     import marimo as mo
@@ -154,7 +167,7 @@ def _():
 def _(mo, queue_ex11, show_result):
     if queue_ex11 is None:
         ex11_ok = False
-        _msg = "🔲 Exercise 1.1: not attempted yet."
+        _msg = "🔲 Exercise 1.1: not attempted yet. Assign it to `queue_ex11` (a `print` alone doesn't count) and run the cell."
         _preview = ""
     elif not isinstance(queue_ex11, list):
         ex11_ok = False
@@ -211,7 +224,7 @@ def _():
 def _(first_three_ex12, mo, show_result):
     if first_three_ex12 is None:
         ex12_ok = False
-        _msg = "🔲 Exercise 1.2: not attempted yet."
+        _msg = "🔲 Exercise 1.2: not attempted yet. Assign it to `first_three_ex12` (a `print` alone doesn't count) and run the cell."
         _preview = ""
     elif first_three_ex12 == ["Pad Thai", "Founders Bowl", "Pizza Calzone"]:
         ex12_ok = True
@@ -315,7 +328,7 @@ def _(menu_ex21, mo, show_result):
     _expected = {"Falafel Wrap": 6.90, "Pad Thai": 8.90, "Founders Bowl": 10.40}
     if not menu_ex21:
         ex21_ok = False
-        _msg = "🔲 Exercise 2.1: not attempted yet (the menu is still empty)."
+        _msg = "🔲 Exercise 2.1: not attempted yet (the menu is still empty). Assign it to `menu_ex21` (a `print` alone doesn't count) and run the cell."
         _preview = ""
     elif not isinstance(menu_ex21, dict):
         ex21_ok = False
@@ -380,7 +393,7 @@ def _(menu_ex21, menu_ex22, mo, show_result):
     _original = {"Falafel Wrap": 6.90, "Pad Thai": 8.90, "Founders Bowl": 10.40}
     if not menu_ex22:
         ex22_ok = False
-        _msg = "🔲 Exercise 2.2: not attempted yet."
+        _msg = "🔲 Exercise 2.2: not attempted yet. Assign it to `menu_ex22` (a `print` alone doesn't count) and run the cell."
         _preview = ""
     elif not isinstance(menu_ex22, dict):
         ex22_ok = False
@@ -453,7 +466,7 @@ def _():
 def _(mo, n_regulars_ex23, show_result):
     if n_regulars_ex23 is None:
         ex23_ok = False
-        _msg = "🔲 Exercise 2.3: not attempted yet."
+        _msg = "🔲 Exercise 2.3: not attempted yet. Assign it to `n_regulars_ex23` (a `print` alone doesn't count) and run the cell."
         _preview = ""
     elif not isinstance(n_regulars_ex23, int):
         ex23_ok = False
@@ -636,7 +649,7 @@ def _(happy_ex32, mo, show_result):
     }
     if happy_ex32 is None:
         ex32_ok = False
-        _msg = "🔲 Exercise 3.2: not attempted yet."
+        _msg = "🔲 Exercise 3.2: not attempted yet. Assign it to `happy_ex32` (a `print` alone doesn't count) and run the cell."
         _preview = ""
     elif not isinstance(happy_ex32, dict):
         ex32_ok = False
@@ -825,7 +838,7 @@ def _(campus_map, route):
 def _(destination_ex40, mo, show_result):
     if destination_ex40 is None:
         ex40_ok = False
-        _msg = "🔲 Boss exercise: not attempted yet."
+        _msg = "🔲 Boss exercise: not attempted yet. Assign it to `destination_ex40` (a `print` alone doesn't count) and run the cell."
     elif destination_ex40 == "dorms":
         ex40_ok = True
         _msg = (
@@ -896,7 +909,7 @@ def _():
 def _(answer_ex50, mo):
     if answer_ex50 == "":
         ex50_ok = False
-        _msg = "🔲 Quiz: not attempted yet."
+        _msg = "🔲 Quiz: not attempted yet. Set `answer_ex50` to your letter and run the cell."
     elif str(answer_ex50).strip().lower() == "d":
         ex50_ok = True
         _msg = (
@@ -958,7 +971,7 @@ def _():
 def _(mo, portions_ex60, show_result):
     if portions_ex60 is None:
         ex60_ok = False
-        _msg = "🔲 Bonus: not attempted yet."
+        _msg = "🔲 Bonus: not attempted yet. Assign it to `portions_ex60` (a `print` alone doesn't count) and run the cell."
         _preview = ""
     elif not isinstance(portions_ex60, int):
         ex60_ok = False
@@ -1016,7 +1029,7 @@ def _():
 def _(dorms_fee_ex61, mo, show_result):
     if dorms_fee_ex61 is None:
         ex61_ok = False
-        _msg = "🔲 Bonus: not attempted yet."
+        _msg = "🔲 Bonus: not attempted yet. Assign it to `dorms_fee_ex61` (a `print` alone doesn't count) and run the cell."
         _preview = ""
     elif isinstance(dorms_fee_ex61, (int, float)) and round(dorms_fee_ex61, 2) == 1.20:
         ex61_ok = True
@@ -1078,7 +1091,7 @@ def _(mo):
     1. Check the progress box above: all **nine** core exercises green? If not,
        reopen the hints, reread the worked examples, and try again. Lists, dicts
        and sets are the containers you'll reach for in every program from here on.
-    2. **Download your work**: menu → Download → *Download Python code*.
+    2. **Download your work**: **Cmd/Ctrl+S**, then menu → Download → *Download Python code*.
        Reloading this exact tab (Cmd/Ctrl+R) keeps your work, but closing the tab
        and reopening the link starts you fresh. The download is the only
        guaranteed copy.

@@ -35,6 +35,19 @@ def _(mo):
     return
 
 
+@app.cell(hide_code=True)
+def _(mo):
+    mo.callout(
+        mo.md(
+            "💾 **Saving your work:** this notebook runs in your browser. Press "
+            "**Cmd/Ctrl+S** to save, and always save **before** menu → Download → "
+            "*Download Python code*. Without a save first, the download is an empty file."
+        ),
+        kind="info",
+    )
+    return
+
+
 @app.cell
 def _():
     import marimo as mo
@@ -146,7 +159,7 @@ def _():
 def _(crates_ex11, mo, show_result):
     if crates_ex11 is None:
         ex11_ok = False
-        _msg = "🔲 Exercise 1.1: not attempted yet."
+        _msg = "🔲 Exercise 1.1: not attempted yet. Assign it to `crates_ex11` (a `print` alone doesn't count) and run the cell."
         _preview = ""
     elif not isinstance(crates_ex11, int):
         ex11_ok = False
@@ -238,7 +251,7 @@ def _():
 def _(mean_ex12, median_ex12, mo, show_result):
     if median_ex12 is None and mean_ex12 is None:
         ex12_ok = False
-        _msg = "🔲 Exercise 1.2: not attempted yet."
+        _msg = "🔲 Exercise 1.2: not attempted yet. Assign your answers to `median_ex12` and `mean_ex12` (a `print` alone doesn't count) and run the cell."
         _preview = ""
     elif median_ex12 is None or mean_ex12 is None:
         ex12_ok = False
@@ -325,7 +338,7 @@ def _():
 def _(avg_ex13, mo, show_result):
     if avg_ex13 is None:
         ex13_ok = False
-        _msg = "🔲 Exercise 1.3: not attempted yet."
+        _msg = "🔲 Exercise 1.3: not attempted yet. Assign it to `avg_ex13` (a `print` alone doesn't count) and run the cell."
         _preview = ""
     elif not isinstance(avg_ex13, (int, float)):
         ex13_ok = False
@@ -426,7 +439,7 @@ def _(demand_ex21, mo, show_result):
     _expected = [15, 17, 11, 20, 23, 12, 10]
     if demand_ex21 is None:
         ex21_ok = False
-        _msg = "🔲 Exercise 2.1: not attempted yet."
+        _msg = "🔲 Exercise 2.1: not attempted yet. Assign it to `demand_ex21` (a `print` alone doesn't count) and run the cell."
         _preview = ""
     elif not isinstance(demand_ex21, list):
         ex21_ok = False
@@ -499,7 +512,7 @@ def _(fixed_ex22, mo, show_result):
     _expected = [22, 27, 19, 16, 12, 13, 29]
     if fixed_ex22 is None:
         ex22_ok = False
-        _msg = "🔲 Exercise 2.2: not attempted yet."
+        _msg = "🔲 Exercise 2.2: not attempted yet. Assign it to `fixed_ex22` (a `print` alone doesn't count) and run the cell."
         _preview = ""
     elif not isinstance(fixed_ex22, list):
         ex22_ok = False
@@ -576,7 +589,7 @@ def _(mo, raffle_ex23, show_result):
     _expected = ["Altstadt", "Hafen", "Hafen", "Sued"]
     if raffle_ex23 is None:
         ex23_ok = False
-        _msg = "🔲 Exercise 2.3: not attempted yet."
+        _msg = "🔲 Exercise 2.3: not attempted yet. Assign it to `raffle_ex23` (a `print` alone doesn't count) and run the cell."
         _preview = ""
     elif not isinstance(raffle_ex23, list):
         ex23_ok = False
@@ -652,7 +665,7 @@ def _():
 def _(boss_ex40, mo, show_result):
     if boss_ex40 is None:
         ex40_ok = False
-        _msg = "🔲 Boss exercise: not attempted yet."
+        _msg = "🔲 Boss exercise: not attempted yet. Assign it to `boss_ex40` (a `print` alone doesn't count) and run the cell."
     elif not isinstance(boss_ex40, (int, float)):
         ex40_ok = False
         _msg = "❌ Boss exercise: the projection should be a single **number**, the average of the five simulated days."
@@ -766,7 +779,7 @@ def _():
 def _(answer_ex50, mo):
     if answer_ex50 == "":
         ex50_ok = False
-        _msg = "🔲 Quiz: not attempted yet."
+        _msg = "🔲 Quiz: not attempted yet. Set `answer_ex50` to your letter and run the cell."
     elif str(answer_ex50).strip().lower() == "a":
         ex50_ok = True
         _msg = (
@@ -826,7 +839,7 @@ def _(mo):
        hints, reread the worked examples, and try again. `math`, `statistics` and
        `random` are tools you'll reach for constantly, and seeding is the habit
        that turns "some random numbers" into "a result someone can verify".
-    2. **Download your work**: menu → Download → *Download Python code*.
+    2. **Download your work**: **Cmd/Ctrl+S**, then menu → Download → *Download Python code*.
        Reloading this exact tab (Cmd/Ctrl+R) keeps your work, but closing the tab
        and reopening the link starts you fresh. The download is the only
        guaranteed copy.

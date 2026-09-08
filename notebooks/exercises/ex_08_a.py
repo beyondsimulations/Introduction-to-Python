@@ -42,6 +42,19 @@ def _(mo):
     return
 
 
+@app.cell(hide_code=True)
+def _(mo):
+    mo.callout(
+        mo.md(
+            "💾 **Saving your work:** this notebook runs in your browser. Press "
+            "**Cmd/Ctrl+S** to save, and always save **before** menu → Download → "
+            "*Download Python code*. Without a save first, the download is an empty file."
+        ),
+        kind="info",
+    )
+    return
+
+
 @app.cell
 def _():
     import pandas as pd
@@ -97,13 +110,13 @@ def _(tobi_df):
 
 @app.cell(hide_code=True)
 def _(mean_exa, mo, pd, show_result):
-    # Reactive check. Re-runs automatically whenever the cell above changes.
+    # Reactive check. Re-runs when you run the cell above.
     _expected = 14.5
     _all_zones_mean = 13.64  # Tobi's "averaged everything" trap
     _result = None
     if mean_exa is None:
         _ok = False
-        _msg = "🔲 Not attempted yet."
+        _msg = "🔲 Not attempted yet. Assign it to `mean_exa` (a `print` alone doesn't count) and run the cell."
     elif isinstance(mean_exa, (pd.Series, pd.DataFrame)):
         _ok = False
         _result = f"mean_exa={mean_exa!r}"

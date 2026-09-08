@@ -23,6 +23,19 @@ def _(mo):
     return
 
 
+@app.cell(hide_code=True)
+def _(mo):
+    mo.callout(
+        mo.md(
+            "💾 **Saving your work:** this notebook runs in your browser. Press "
+            "**Cmd/Ctrl+S** to save, and always save **before** menu → Download → "
+            "*Download Python code*. Without a save first, the download is an empty file."
+        ),
+        kind="info",
+    )
+    return
+
+
 @app.cell
 def _():
     import marimo as mo
@@ -123,7 +136,7 @@ def _():
 def _(menu_item_ex11, mo, portions_ex11, price_ex11):
     if menu_item_ex11 is None or price_ex11 is None or portions_ex11 is None:
         ex11_ok = False
-        _msg = "🔲 Exercise 1.1: not attempted yet."
+        _msg = "🔲 Exercise 1.1: not attempted yet. Assign your answers to `menu_item_ex11`, `price_ex11` and `portions_ex11` (a `print` alone doesn't count) and run the cell."
     elif not isinstance(menu_item_ex11, str):
         ex11_ok = False
         _msg = "❌ Exercise 1.1: `menu_item_ex11` should be text (a `str`)."
@@ -179,7 +192,7 @@ def _():
 def _(mo, revenue_ex12, show_result):
     if revenue_ex12 is None:
         ex12_ok = False
-        _msg = "🔲 Exercise 1.2: not attempted yet."
+        _msg = "🔲 Exercise 1.2: not attempted yet. Assign it to `revenue_ex12` (a `print` alone doesn't count) and run the cell."
     elif revenue_ex12 == 26.70:
         ex12_ok = True
         _msg = "✅ Exercise 1.2: 26.70 EUR per order. Tobi wants to spend it already."
@@ -289,7 +302,7 @@ def _():
 def _(margin_ex22, mo, show_result):
     if margin_ex22 is None:
         ex22_ok = False
-        _msg = "🔲 Exercise 2.2: not attempted yet."
+        _msg = "🔲 Exercise 2.2: not attempted yet. Assign it to `margin_ex22` (a `print` alone doesn't count) and run the cell."
     elif isinstance(margin_ex22, (int, float)) and round(margin_ex22, 2) == 2.59:
         ex22_ok = True
         _msg = "✅ Exercise 2.2: 2.59 EUR per dish. Tobi calls it 'basically infinite money'."
@@ -409,7 +422,7 @@ def _():
 def _(mo, receipt_ex31, show_result):
     if receipt_ex31 is None:
         ex31_ok = False
-        _msg = "🔲 Exercise 3.1: not attempted yet."
+        _msg = "🔲 Exercise 3.1: not attempted yet. Assign it to `receipt_ex31` (a `print` alone doesn't count) and run the cell."
     elif receipt_ex31 == "3x Pad Thai: 26.70 EUR":
         ex31_ok = True
         _msg = "✅ Exercise 3.1: a real receipt line. It even lines up."
@@ -467,7 +480,7 @@ def _(mo, receipt_multi_ex32, show_result):
     _expected = f"Pad Thai {26.70:>8.2f}\nCalamari {4.60:>8.2f}"
     if receipt_multi_ex32 is None:
         ex32_ok = False
-        _msg = "🔲 Bonus 3.2: not attempted yet."
+        _msg = "🔲 Bonus 3.2: not attempted yet. Assign it to `receipt_multi_ex32` (a `print` alone doesn't count) and run the cell."
     elif receipt_multi_ex32 == _expected:
         ex32_ok = True
         _msg = "✅ Bonus 3.2: pixel-perfect alignment. Tobi is weirdly moved."
@@ -536,7 +549,7 @@ def _():
 def _(day_one_summary_ex40, mo, show_result):
     if day_one_summary_ex40 is None:
         ex40_ok = False
-        _msg = "🔲 Boss exercise: not attempted yet."
+        _msg = "🔲 Boss exercise: not attempted yet. Assign it to `day_one_summary_ex40` (a `print` alone doesn't count) and run the cell."
     elif not isinstance(day_one_summary_ex40, str):
         ex40_ok = False
         _msg = "❌ Boss exercise: `day_one_summary_ex40` should be a string (an f-string)."
@@ -589,7 +602,7 @@ def _():
 def _(answer_ex50, mo):
     if answer_ex50 is None:
         ex50_ok = False
-        _msg = "🔲 Quiz: not attempted yet."
+        _msg = "🔲 Quiz: not attempted yet. Set `answer_ex50` to your letter and run the cell."
     elif str(answer_ex50).strip().lower() == "d":
         ex50_ok = True
         _msg = (
@@ -629,7 +642,7 @@ def _():
 def _(mo, price_war_ex60, show_result):
     if price_war_ex60 is None:
         ex60_ok = False
-        _msg = "🔲 Bonus price war: not attempted yet."
+        _msg = "🔲 Bonus price war: not attempted yet. Assign it to `price_war_ex60` (a `print` alone doesn't count) and run the cell."
     elif isinstance(price_war_ex60, (int, float)) and round(price_war_ex60, 2) == 7.65:
         ex60_ok = True
         _msg = "✅ Bonus price war: 7.65 EUR. MunchCorp's growth team notices."
@@ -664,7 +677,7 @@ def _(mo):
     ## Before you leave 📦
 
     1. Check the progress box above: all seven core exercises green?
-    2. **Download your work**: menu → Download → *Download Python code*.
+    2. **Download your work**: **Cmd/Ctrl+S**, then menu → Download → *Download Python code*.
        Reloading this exact tab (Cmd/Ctrl+R) keeps your work, but closing the
        tab and reopening the link starts you fresh. The download is the only
        guaranteed copy.

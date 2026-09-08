@@ -45,6 +45,19 @@ def _(mo):
     return
 
 
+@app.cell(hide_code=True)
+def _(mo):
+    mo.callout(
+        mo.md(
+            "💾 **Saving your work:** this notebook runs in your browser. Press "
+            "**Cmd/Ctrl+S** to save, and always save **before** menu → Download → "
+            "*Download Python code*. Without a save first, the download is an empty file."
+        ),
+        kind="info",
+    )
+    return
+
+
 @app.cell
 def _():
     # Given: do not change this
@@ -61,10 +74,10 @@ def _():
 
 @app.cell(hide_code=True)
 def _(fee_exa, mo, show_result):
-    # Reactive check. Re-runs automatically whenever the cell above changes.
+    # Reactive check. Re-runs when you run the cell above.
     if fee_exa is None:
         _ok = False
-        _msg = "🔲 Not attempted yet."
+        _msg = "🔲 Not attempted yet. Assign it to `fee_exa` (a `print` alone doesn't count) and run the cell."
     elif isinstance(fee_exa, (int, float)) and round(fee_exa, 2) == 1.50:
         _ok = True
         _msg = "✅ Correct! 17.80 EUR lands in the middle tier: 1.50 EUR fee."

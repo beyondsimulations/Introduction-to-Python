@@ -25,6 +25,19 @@ def _(mo):
     return
 
 
+@app.cell(hide_code=True)
+def _(mo):
+    mo.callout(
+        mo.md(
+            "💾 **Saving your work:** this notebook runs in your browser. Press "
+            "**Cmd/Ctrl+S** to save, and always save **before** menu → Download → "
+            "*Download Python code*. Without a save first, the download is an empty file."
+        ),
+        kind="info",
+    )
+    return
+
+
 @app.cell
 def _():
     import marimo as mo
@@ -140,7 +153,7 @@ def _():
 def _(is_open_ex11, mo, show_result):
     if is_open_ex11 is None:
         ex11_ok = False
-        _msg = "🔲 Exercise 1.1: not attempted yet."
+        _msg = "🔲 Exercise 1.1: not attempted yet. Assign it to `is_open_ex11` (a `print` alone doesn't count) and run the cell."
     elif is_open_ex11 is False:
         ex11_ok = True
         _msg = "✅ Exercise 1.1: `False`: 23:00 is past curfew, so the kitchen stays shut. The law is the law."
@@ -197,7 +210,7 @@ def _():
 def _(final_ex12, mo, show_result):
     if final_ex12 is None:
         ex12_ok = False
-        _msg = "🔲 Exercise 1.2: not attempted yet."
+        _msg = "🔲 Exercise 1.2: not attempted yet. Assign it to `final_ex12` (a `print` alone doesn't count) and run the cell."
     elif isinstance(final_ex12, (int, float)) and round(final_ex12, 2) == 34.20:
         ex12_ok = True
         _msg = "✅ Exercise 1.2: 34.20 EUR. 36 is in the ≥ 30 band, so 5 % off. The customer feels seen."
@@ -327,7 +340,7 @@ def _(day_orders):
 def _(mo, revenue_ex22, show_result):
     if revenue_ex22 is None:
         ex22_ok = False
-        _msg = "🔲 Exercise 2.2: not attempted yet."
+        _msg = "🔲 Exercise 2.2: not attempted yet. Assign it to `revenue_ex22` (a `print` alone doesn't count) and run the cell."
     elif isinstance(revenue_ex22, (int, float)) and round(revenue_ex22, 2) == 46.59:
         ex22_ok = True
         _msg = "✅ Exercise 2.2: 46.59 EUR for the day. The real dashboard finally agrees with reality."
@@ -455,7 +468,7 @@ def _():
 def _(clean_ex31, mo, show_result):
     if clean_ex31 is None:
         ex31_ok = False
-        _msg = "🔲 Exercise 3.1: not attempted yet."
+        _msg = "🔲 Exercise 3.1: not attempted yet. Assign it to `clean_ex31` (a `print` alone doesn't count) and run the cell."
     elif clean_ex31 == "Pizza Calzone":
         ex31_ok = True
         _msg = "✅ Exercise 3.1: `Pizza Calzone`, presentable at last. The menu no longer shouts."
@@ -531,7 +544,7 @@ def _():
 def _(mo, rounds_ex40, show_result):
     if rounds_ex40 is None:
         ex40_ok = False
-        _msg = "🔲 Boss exercise: not attempted yet."
+        _msg = "🔲 Boss exercise: not attempted yet. Assign it to `rounds_ex40` (a `print` alone doesn't count) and run the cell."
     elif isinstance(rounds_ex40, int) and rounds_ex40 == 4:
         ex40_ok = True
         _price = 11.90
@@ -596,7 +609,7 @@ def _():
 def _(answer_ex50, mo):
     if answer_ex50 is None:
         ex50_ok = False
-        _msg = "🔲 Quiz: not attempted yet."
+        _msg = "🔲 Quiz: not attempted yet. Set `answer_ex50` to your letter and run the cell."
     elif str(answer_ex50).strip().lower() == "a":
         ex50_ok = True
         _msg = (
@@ -636,7 +649,7 @@ def _():
 def _(discounted_ex60, mo, show_result):
     if discounted_ex60 is None:
         ex60_ok = False
-        _msg = "🔲 Bonus comprehension: not attempted yet."
+        _msg = "🔲 Bonus comprehension: not attempted yet. Assign it to `discounted_ex60` (a `print` alone doesn't count) and run the cell."
     elif discounted_ex60 == [11.25, 9.0, 8.01, 13.68]:
         ex60_ok = True
         _msg = "✅ Bonus comprehension: `[11.25, 9.0, 8.01, 13.68]`, a whole loop in one line. Session IV makes this a habit."
@@ -724,7 +737,7 @@ def _(mo):
     ## Before you leave 📦
 
     1. Check the progress box above: all seven core exercises green?
-    2. **Download your work**: menu → Download → *Download Python code*.
+    2. **Download your work**: **Cmd/Ctrl+S**, then menu → Download → *Download Python code*.
        Reloading this exact tab (Cmd/Ctrl+R) keeps your work, but closing the
        tab and reopening the link starts you fresh. The download is the only
        guaranteed copy.

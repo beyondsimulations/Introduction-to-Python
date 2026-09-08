@@ -44,6 +44,19 @@ def _(mo):
 
 @app.cell(hide_code=True)
 def _(mo):
+    mo.callout(
+        mo.md(
+            "💾 **Saving your work:** this notebook runs in your browser. Press "
+            "**Cmd/Ctrl+S** to save, and always save **before** menu → Download → "
+            "*Download Python code*. Without a save first, the download is an empty file."
+        ),
+        kind="info",
+    )
+    return
+
+
+@app.cell(hide_code=True)
+def _(mo):
     trace_exb = mo.ui.radio(
         options=["a) 3", "b) 3 then 8", "c) 8"],
         label="Your prediction:",
@@ -99,10 +112,10 @@ def _():
 
 @app.cell(hide_code=True)
 def _(minutes_exb, mo, show_result):
-    # Reactive check. Re-runs automatically whenever the cell above changes.
+    # Reactive check. Re-runs when you run the cell above.
     if minutes_exb is None:
         _ok = False
-        _msg = "🔲 Not attempted yet."
+        _msg = "🔲 Not attempted yet. Assign it to `minutes_exb` (a `print` alone doesn't count) and run the cell."
     elif minutes_exb == 28:
         _ok = True
         _msg = "✅ Correct! 12 + 7 + 9 = 28 minutes, all delivered on time."
