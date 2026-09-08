@@ -5,11 +5,15 @@ underscore-prefixed files (templates). Lab notebooks and exercises
 (nb_*.py, exercises/ex_*.py) export editable (--mode edit); solution
 notebooks (solutions/sol_*.py) export read-only (--mode run) so students
 can't edit past the answers. All land in _site/notebooks/ flat, keyed by
-filename stem.
+filename stem. Every export ships the same ~700-file marimo asset bundle, so
+after exporting we keep one copy at _site/notebooks/assets/ and point each
+notebook at it — the browser then caches the bundle across notebooks and the
+site shrinks from ~900 MB to ~30 MB.
 
 Shells out to `uv run marimo` so it works regardless of how Quarto launches
 this post-render script (Quarto's python vs the uv-managed project env).
 """
+import shutil
 import subprocess
 import sys
 from pathlib import Path
@@ -33,6 +37,22 @@ def export(nb: Path, mode: str = "edit") -> bool:
     return True
 
 
+def share_assets() -> None:
+    """Replace the per-notebook assets/ copies with one shared folder."""
+    shared = OUT / "assets"
+    shutil.rmtree(shared, ignore_errors=True)
+    for nb_dir in sorted(p for p in OUT.iterdir() if p.is_dir() and p != shared):
+        assets = nb_dir / "assets"
+        if not assets.is_dir():
+            continue
+        if shared.exists():
+            shutil.rmtree(assets)
+        else:
+            assets.rename(shared)
+        index = nb_dir / "index.html"
+        index.write_text(index.read_text().replace('"./assets/', '"../assets/'))
+
+
 def main() -> int:
     editable = sorted(
         p
@@ -54,7 +74,10 @@ def main() -> int:
     OUT.mkdir(parents=True, exist_ok=True)
     failures = [nb for nb in editable if not export(nb, "edit")]
     failures += [nb for nb in readonly if not export(nb, "run")]
-    return 1 if failures else 0
+    if failures:
+        return 1
+    share_assets()
+    return 0
 
 
 if __name__ == "__main__":
