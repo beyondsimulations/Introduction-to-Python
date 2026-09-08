@@ -362,7 +362,7 @@ a\) `10` b) `10` then `30` c) `30`
 
 . . .
 
-<span class="question">Predict first</span>, then turn the page.
+<span class="question">Predict first</span>. Pick a letter, then I reveal the answer.
 
 ## Answer: the unindented `print`
 
@@ -497,7 +497,7 @@ a\) `MOIN` b) `moin` c) `moin`
 
 . . .
 
-<span class="question">Predict first</span>, then reveal.
+<span class="question">Predict first</span>. Pick a letter, then I reveal the answer.
 
 ## Answer: `"  MOIN  ".strip().lower()`
 

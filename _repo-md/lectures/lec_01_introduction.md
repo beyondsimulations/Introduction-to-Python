@@ -319,7 +319,7 @@ a\) `0` b) `7200` c) `Error`
 
 . . .
 
-<span class="question">Predict first</span>, then turn the page.
+<span class="question">Predict first</span>. Pick a letter, then I reveal the answer.
 
 ## Answer: `300 - 12 * 25`
 
@@ -460,7 +460,7 @@ a\) `6` and `6` b) `6` and `2 * 3` c) `2 * 3` and `2 * 3`
 
 . . .
 
-<span class="question">Predict first</span>, then reveal.
+<span class="question">Predict first</span>. Pick a letter, then I reveal the answer.
 
 ## Answer: `f"{2 * 3}"` vs `"2 * 3"`
 
