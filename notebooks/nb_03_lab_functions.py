@@ -1,10 +1,5 @@
 # notebooks/nb_03_lab_functions.py
 # Episode 3 — The Copy-Paste Soup. Session III lab notebook.
-# Built from notebooks/_template.py (spec §4 rules apply):
-# one global name per cell; += counts as a definition; every exercise
-# pre-defines its answer (None, or a stub returning None); suffix exercise
-# names (_exNN); underscore-prefixed names are cell-private; classes keep
-# their natural name; never a possible infinite loop.
 import marimo
 
 app = marimo.App(width="medium")
@@ -41,9 +36,7 @@ def _():
 
 @app.cell(hide_code=True)
 def _():
-    # Helper: echoes a student's current answer as a "Your result" preview so
-    # they SEE their output, not just ✅/❌. Strings render in a fenced block;
-    # everything else inline. See _template.py.
+    # Shows your current answer under the check.
     def show_result(value):
         if value is None:
             return ""
@@ -154,7 +147,7 @@ def _():
 
 @app.cell(hide_code=True)
 def _(fee_ex11, mo, show_result):
-    # Reactive check: try/except so a broken function shows ❌, never crashes.
+    # Reactive check.
     try:
         _a = fee_ex11(10.0)
         _b = fee_ex11(20.0)

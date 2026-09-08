@@ -1,13 +1,5 @@
 # notebooks/nb_07_lab_metrics.py
 # Episode 7 — The Numbers Deck. Session VII lab notebook.
-# Built from notebooks/nb_06_lab_diligence.py (spec §4 rules apply):
-# one global name per cell; += counts as a definition; every exercise
-# pre-defines its answer (None); suffix exercise names (_exNM); underscore-
-# prefixed names are cell-private; never a possible infinite loop. Data ships
-# inline (public/ files don't load simply in WASM, see docs/authoring-conventions.md;
-# real files arrive with pandas in Episode 8). numpy checks are crash-proof:
-# every coercion is guarded, so a leftover array / string / scalar degrades to
-# a message instead of raising (see notebooks/exercises/ex_07_b.py).
 import marimo
 
 app = marimo.App(width="medium")
@@ -46,9 +38,7 @@ def _():
 
 @app.cell(hide_code=True)
 def _():
-    # Helper: echoes a student's current answer as a "Your result" preview so
-    # they SEE their output, not just ✅/❌. Strings render in a fenced block;
-    # everything else inline. See _template.py.
+    # Shows your current answer under the check.
     def show_result(value):
         if value is None:
             return ""

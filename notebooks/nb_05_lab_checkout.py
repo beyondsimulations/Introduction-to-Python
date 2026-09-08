@@ -1,12 +1,5 @@
 # notebooks/nb_05_lab_checkout.py
 # Episode 5 — The 3-AM Checkout. Session V lab notebook.
-# Built from notebooks/_template.py (spec §4 rules apply):
-# one global name per cell; += counts as a definition; every exercise
-# pre-defines its answer (None, or an empty container); suffix exercise
-# names (_exNN); underscore-prefixed names are cell-private; never a possible
-# infinite loop. Tobi's bugs are logic/runtime only, always terminating.
-# This is the ERRORS lab: students cause exceptions on purpose, so the marimo
-# "red cell pauses everything below" behavior is taught early as a feature.
 import marimo
 
 app = marimo.App(width="medium")
@@ -43,9 +36,7 @@ def _():
 
 @app.cell(hide_code=True)
 def _():
-    # Helper: echoes a student's current answer as a "Your result" preview so
-    # they SEE their output, not just ✅/❌. Strings render in a fenced block;
-    # everything else inline. See _template.py.
+    # Shows your current answer under the check.
     def show_result(value):
         if value is None:
             return ""
@@ -229,7 +220,7 @@ def _():
 
 @app.cell(hide_code=True)
 def _(mo, safe_price_ex12, show_result):
-    # Reactive check: try/except so a broken function shows ❌, never crashes.
+    # Reactive check.
     try:
         _good = safe_price_ex12("4.20")
         _bad = safe_price_ex12("drei")
@@ -415,8 +406,7 @@ def _():
 
 @app.cell(hide_code=True)
 def _(mo, validate_order_ex22):
-    # Reactive check: the valid call and the "does it raise?" probe are both
-    # guarded so a broken function shows ❌ instead of crashing the notebook.
+    # Reactive check.
     _pos = None
     try:
         _pos = validate_order_ex22(9.90)
@@ -695,8 +685,6 @@ def _(orders_ex40):
 
 @app.cell(hide_code=True)
 def _(mo, orders_ex40, robust_total_ex40, show_result):
-    # Two probes: the messy batch (22.70) and a clean list (3.0). The clean probe
-    # stops anyone hardcoding 22.70 from passing.
     try:
         _messy = robust_total_ex40(orders_ex40)
         _clean = robust_total_ex40([("A", 1.0), ("B", 2.0)])

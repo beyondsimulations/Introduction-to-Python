@@ -1,36 +1,5 @@
 # notebooks/nb_09_lab_pitch.py
 # Episode 9 — The Pitch Deck. Session IX lab notebook.
-# Built from notebooks/nb_08_lab_dataroom.py (same-dataset predecessor) and the
-# ex_09_a/b/c chart family (spec §4 rules apply): one global name per cell;
-# += counts as a definition; every exercise pre-defines its answer (None);
-# suffix exercise names (_exNM); underscore-prefixed names are cell-private;
-# never a possible infinite loop. First lab that draws charts: matplotlib runs
-# in the browser (pyodide) exactly like pandas: one import cell, then every
-# chart cell opens with plt.figure() and CLOSES with plt.gca() (marimo shows the
-# last expression; never plt.show(), which does nothing here). Checks are
-# crash-proof: every coercion is guarded and Series/DataFrame answers degrade to
-# a message instead of raising. Charts are UNGRADED (the check reads the number,
-# not the art); `orders` is never mutated (derived data uses copies / new names).
-#
-# ledger (all values computed FROM notebooks/public/orders.csv, cross-checked
-# against helpers/make_orders_csv.py; NOTE: (total_eur > 25).sum() is 13; no order
-# sits between 23.4 and 26.7, so > 25 and >= 26 agree):
-#   daily = orders.groupby("day")["total_eur"].sum()
-#       daily.idxmax()                                = 3   (peak day, 146.8 €)
-#       daily.idxmin()                                = 6   (trough day, 49.2 €)
-#       len(daily)                                    = 14  (two weeks of days)
-#   orders.groupby("zone")["total_eur"].sum().round(2).to_dict()
-#       = {'Altstadt': 376.2, 'Hafen': 325.3, 'Nord': 345.9, 'Sued': 395.9}
-#   (orders["total_eur"] > 25).sum()                  = 13  (the tail)
-#   (orders["total_eur"] > 20).sum()                  = 35  (nearly half, NOT a tail)
-#   orders["delivery_min"].max()                      = 58
-#   corr(delivery_min, total_eur)                     = -0.03  (no relationship)
-#   week1 = orders[orders["day"] <= 7]["total_eur"].sum()  = 731.1
-#   week2 = orders[orders["day"] >= 8]["total_eur"].sum()  = 712.2
-#       (week2 - week1) / week1 * 100                 = -2.59  (a small dip)
-#   orders["total_eur"].sum()                         = 1443.3
-#   groupby zone total .idxmax() (highest TOTAL)      = "Sued"
-#   len(orders)                                       = 80
 import marimo
 
 app = marimo.App(width="medium")
@@ -108,9 +77,7 @@ def _():
 
 @app.cell(hide_code=True)
 def _():
-    # Helper: echoes a student's current answer as a "Your result" preview so
-    # they SEE their output, not just ✅/❌. Strings render in a fenced block;
-    # everything else inline. See _template.py.
+    # Shows your current answer under the check.
     def show_result(value):
         if value is None:
             return ""

@@ -1,29 +1,5 @@
 # notebooks/nb_08_lab_dataroom.py
 # Episode 8 — The Data Room. Session VIII lab notebook.
-# Built from notebooks/nb_07_lab_metrics.py (spec §4 rules apply):
-# one global name per cell; += counts as a definition; every exercise
-# pre-defines its answer (None); suffix exercise names (_exNM); underscore-
-# prefixed names are cell-private; never a possible infinite loop. First lab to
-# load a real file: notebooks/public/orders.csv arrives via the pandas loader
-# (see docs/authoring-conventions.md: pd.read_csv is URL-aware, works locally
-# and in exported WASM, no try/except needed). Checks are crash-proof: every
-# coercion is guarded and Series/DataFrame answers degrade to a message instead
-# of raising (see notebooks/exercises/ex_08_a.py, ex_08_b.py).
-#
-# ledger (all values computed FROM notebooks/public/orders.csv, cross-checked
-# against helpers/make_orders_csv.py):
-#   rows len(orders)                                            = 80
-#   columns orders.shape[1]                                     = 9
-#   revenue orders["total_eur"].sum()                          = 1443.3
-#   Nord count len(orders[zone=="Nord"])                       = 22
-#   Sued & items>=2 count                                      = 15
-#   Hafen revenue orders[zone=="Hafen"]["total_eur"].sum()     = 325.3
-#   max eur_per_item (Miso Ramen unit price)                   = 11.5
-#   groupby zone total_eur .sum() = {'Altstadt': 376.2,
-#       'Hafen': 325.3, 'Nord': 345.9, 'Sued': 395.9}
-#   groupby zone total_eur .mean() = {'Altstadt': 18.81,
-#       'Hafen': 17.12, 'Nord': 15.72, 'Sued': 20.84}  -> idxmax = "Sued"
-#   trace: orders[orders["items"]==3].shape = (27, 9)
 import marimo
 
 app = marimo.App(width="medium")
@@ -81,9 +57,7 @@ def _(mo, pd):
 
 @app.cell(hide_code=True)
 def _():
-    # Helper: echoes a student's current answer as a "Your result" preview so
-    # they SEE their output, not just ✅/❌. Strings render in a fenced block;
-    # everything else inline. See _template.py.
+    # Shows your current answer under the check.
     def show_result(value):
         if value is None:
             return ""

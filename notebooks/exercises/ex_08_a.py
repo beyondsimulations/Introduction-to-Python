@@ -12,7 +12,7 @@ def _():
 
 @app.cell(hide_code=True)
 def _():
-    # Helper: echoes the student's current answer as a "Your result" preview.
+    # Shows your current answer under the check.
     def show_result(value):
         if value is None:
             return ""
@@ -109,8 +109,6 @@ def _(mean_exa, mo, pd, show_result):
         _result = f"mean_exa={mean_exa!r}"
         _msg = "❌ `mean_exa` is still a whole column/table: `.mean()` collapses it to one number."
     else:
-        # Coerce to a plain float first. Anything that can't be must
-        # degrade to a message, never crash the check.
         try:
             _v = round(float(mean_exa), 2)
         except (TypeError, ValueError):

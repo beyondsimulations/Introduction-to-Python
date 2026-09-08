@@ -12,7 +12,7 @@ def _():
 
 @app.cell(hide_code=True)
 def _():
-    # Helper: echoes the student's current answer as a "Your result" preview.
+    # Shows your current answer under the check.
     def show_result(value):
         if value is None:
             return ""
@@ -112,8 +112,6 @@ def _(bulk_count_exb, bulk_revenue_exb, mo, pd, show_result):
         _result = f"bulk_count_exb={bulk_count_exb!r}, bulk_revenue_exb={bulk_revenue_exb!r}"
         _msg = "❌ One of these is still a whole column/table. `.sum()` needs to run on the mask (for the count) or on the filtered price column (for the revenue)."
     else:
-        # Coerce to plain scalars first. Anything that can't be must
-        # degrade to a message, never crash the check.
         try:
             _count = int(bulk_count_exb)
             _revenue = round(float(bulk_revenue_exb), 2)

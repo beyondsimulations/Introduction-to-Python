@@ -12,7 +12,7 @@ def _():
 
 @app.cell(hide_code=True)
 def _():
-    # Helper: echoes the student's current answer as a "Your result" preview.
+    # Shows your current answer under the check.
     def show_result(value):
         if value is None:
             return ""
@@ -98,8 +98,6 @@ def _(late_count_exb, late_mean_exb, mo, np, show_result):
     _expected_count = 3
     _expected_mean = 46.0
     _result = None
-    # Coerce to plain scalars first. A leftover array (or anything else
-    # non-numeric) must degrade to a message, never crash the check.
     try:
         _count = int(late_count_exb)
         _mean = round(float(late_mean_exb), 2)

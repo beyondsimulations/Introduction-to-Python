@@ -12,7 +12,7 @@ def _():
 
 @app.cell(hide_code=True)
 def _():
-    # Helper: echoes the student's current answer as a "Your result" preview.
+    # Shows your current answer under the check.
     def show_result(value):
         if value is None:
             return ""
@@ -98,8 +98,6 @@ def _(growth_exc, mo, show_result):
         _ok = False
         _msg = "🔲 Not attempted yet."
     else:
-        # Coerce to a plain float first. Anything that can't be must
-        # degrade to a message, never crash the check.
         try:
             _v = round(float(growth_exc), 2)
         except (TypeError, ValueError):

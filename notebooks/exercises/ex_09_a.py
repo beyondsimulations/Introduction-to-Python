@@ -12,7 +12,7 @@ def _():
 
 @app.cell(hide_code=True)
 def _():
-    # Helper: echoes the student's current answer as a "Your result" preview.
+    # Shows your current answer under the check.
     def show_result(value):
         if value is None:
             return ""
@@ -120,8 +120,6 @@ def _(best_day_exa, mo, show_result, total_exa):
         _result = f"total_exa={total_exa!r}, best_day_exa={best_day_exa!r}"
         _msg = "❌ One of these is still a whole list. The investor wants two single numbers."
     else:
-        # Coerce to plain numbers first. Anything that can't be must
-        # degrade to a message, never crash the check.
         try:
             _total = round(float(total_exa), 2)
             _day = float(best_day_exa)

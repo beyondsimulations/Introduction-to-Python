@@ -1,12 +1,5 @@
 # notebooks/nb_06_lab_diligence.py
 # Episode 6 — Due Diligence Week. Session VI lab notebook.
-# Built from notebooks/nb_04_lab_menu.py (spec §4 rules apply):
-# one global name per cell; += counts as a definition; every exercise
-# pre-defines its answer (None); suffix exercise names (_exNM); underscore-
-# prefixed names are cell-private; never a possible infinite loop. Data ships
-# inline (public/ files don't load simply in WASM, see docs/authoring-conventions.md).
-# First Part-II lab: AI tools are now allowed, but the checks still only pass on
-# working code.
 import marimo
 
 app = marimo.App(width="medium")
@@ -50,9 +43,7 @@ def _():
 
 @app.cell(hide_code=True)
 def _():
-    # Helper: echoes a student's current answer as a "Your result" preview so
-    # they SEE their output, not just ✅/❌. Strings render in a fenced block;
-    # everything else inline. See _template.py.
+    # Shows your current answer under the check.
     def show_result(value):
         if value is None:
             return ""

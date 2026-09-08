@@ -59,3 +59,40 @@ if __name__ == "__main__":
 # count total_eur > 20: 35
 # count total_eur > 25: 13
 # week1 / week2: 731.1 / 712.2  -> growth -2.59 %
+
+# Lab ledgers (moved out of the notebook headers, which ship with the WASM export):
+# --- from notebooks/nb_08_lab_dataroom.py ---
+# ledger (all values computed FROM notebooks/public/orders.csv, cross-checked
+# against helpers/make_orders_csv.py):
+#   rows len(orders)                                            = 80
+#   columns orders.shape[1]                                     = 9
+#   revenue orders["total_eur"].sum()                          = 1443.3
+#   Nord count len(orders[zone=="Nord"])                       = 22
+#   Sued & items>=2 count                                      = 15
+#   Hafen revenue orders[zone=="Hafen"]["total_eur"].sum()     = 325.3
+#   max eur_per_item (Miso Ramen unit price)                   = 11.5
+#   groupby zone total_eur .sum() = {'Altstadt': 376.2,
+#       'Hafen': 325.3, 'Nord': 345.9, 'Sued': 395.9}
+#   groupby zone total_eur .mean() = {'Altstadt': 18.81,
+#       'Hafen': 17.12, 'Nord': 15.72, 'Sued': 20.84}  -> idxmax = "Sued"
+#   trace: orders[orders["items"]==3].shape = (27, 9)
+# --- from notebooks/nb_09_lab_pitch.py ---
+# ledger (all values computed FROM notebooks/public/orders.csv, cross-checked
+# against helpers/make_orders_csv.py; NOTE: (total_eur > 25).sum() is 13; no order
+# sits between 23.4 and 26.7, so > 25 and >= 26 agree):
+#   daily = orders.groupby("day")["total_eur"].sum()
+#       daily.idxmax()                                = 3   (peak day, 146.8 €)
+#       daily.idxmin()                                = 6   (trough day, 49.2 €)
+#       len(daily)                                    = 14  (two weeks of days)
+#   orders.groupby("zone")["total_eur"].sum().round(2).to_dict()
+#       = {'Altstadt': 376.2, 'Hafen': 325.3, 'Nord': 345.9, 'Sued': 395.9}
+#   (orders["total_eur"] > 25).sum()                  = 13  (the tail)
+#   (orders["total_eur"] > 20).sum()                  = 35  (nearly half, NOT a tail)
+#   orders["delivery_min"].max()                      = 58
+#   corr(delivery_min, total_eur)                     = -0.03  (no relationship)
+#   week1 = orders[orders["day"] <= 7]["total_eur"].sum()  = 731.1
+#   week2 = orders[orders["day"] >= 8]["total_eur"].sum()  = 712.2
+#       (week2 - week1) / week1 * 100                 = -2.59  (a small dip)
+#   orders["total_eur"].sum()                         = 1443.3
+#   groupby zone total .idxmax() (highest TOTAL)      = "Sued"
+#   len(orders)                                       = 80

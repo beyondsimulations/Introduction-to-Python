@@ -12,7 +12,7 @@ def _():
 
 @app.cell(hide_code=True)
 def _():
-    # Helper: echoes the student's current answer as a "Your result" preview.
+    # Shows your current answer under the check.
     def show_result(value):
         if value is None:
             return ""
@@ -98,8 +98,6 @@ def _(best_zone_exc, mo, np, show_result, zone_totals_exc):
     _expected_totals = [30, 34, 38]
     _expected_best = 2
     _result = None
-    # Coerce to a plain list of ints first. Anything that can't be must
-    # degrade to a message, never crash the check.
     try:
         _totals = [int(_v) for _v in zone_totals_exc]
     except (TypeError, ValueError):

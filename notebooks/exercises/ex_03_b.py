@@ -12,7 +12,7 @@ def _():
 
 @app.cell(hide_code=True)
 def _():
-    # Helper: echoes the student's current answer as a "Your result" preview.
+    # Shows your current answer under the check.
     def show_result(value):
         if value is None:
             return ""
@@ -55,7 +55,7 @@ def _():
 @app.cell(hide_code=True)
 def _(Order, mo, show_result):
     # Reactive check. Re-runs automatically whenever the cell above changes.
-    # Wrapped in try/except: a broken method must show a ❌, never crash the check.
+    # Reactive check.
     try:
         _result = Order("Pad Thai", 2, 8.90).total()
     except Exception:

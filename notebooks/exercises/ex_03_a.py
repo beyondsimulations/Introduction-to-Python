@@ -12,7 +12,7 @@ def _():
 
 @app.cell(hide_code=True)
 def _():
-    # Helper: echoes the student's current answer as a "Your result" preview.
+    # Shows your current answer under the check.
     def show_result(value):
         if value is None:
             return ""
@@ -52,7 +52,7 @@ def _():
 @app.cell(hide_code=True)
 def _(mo, show_result, wrap_price_exa):
     # Reactive check. Re-runs automatically whenever the cell above changes.
-    # Wrapped in try/except: a broken function must show a ❌, never crash the check.
+    # Reactive check.
     try:
         _r3 = wrap_price_exa(3)
         _r1 = wrap_price_exa(1)

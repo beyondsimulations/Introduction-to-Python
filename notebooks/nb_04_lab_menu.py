@@ -1,11 +1,5 @@
 # notebooks/nb_04_lab_menu.py
 # Episode 4 — The Menu Grows Up. Session IV lab notebook.
-# Built from notebooks/_template.py (spec §4 rules apply):
-# one global name per cell; += counts as a definition; every exercise
-# pre-defines its answer (None, or an empty container); suffix exercise
-# names (_exNN); underscore-prefixed names are cell-private; never a possible
-# infinite loop. Data ships as inline strings/dicts (public/ files don't load
-# simply in WASM, see docs/authoring-conventions.md → Data in notebooks).
 import marimo
 
 app = marimo.App(width="medium")
@@ -43,9 +37,7 @@ def _():
 
 @app.cell(hide_code=True)
 def _():
-    # Helper: echoes a student's current answer as a "Your result" preview so
-    # they SEE their output, not just ✅/❌. Strings render in a fenced block;
-    # everything else inline. See _template.py.
+    # Shows your current answer under the check.
     def show_result(value):
         if value is None:
             return ""

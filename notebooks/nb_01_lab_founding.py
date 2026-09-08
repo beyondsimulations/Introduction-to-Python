@@ -1,9 +1,5 @@
 # notebooks/nb_01_lab_founding.py
 # Episode 1 — The Founding. Session I lab notebook.
-# Built from notebooks/_template.py (spec §4 rules apply):
-# one global name per cell; += counts as a definition; every exercise
-# pre-defines its answer as None; suffix exercise names (_exNN);
-# underscore-prefixed names are cell-private.
 import marimo
 
 app = marimo.App(width="medium")
@@ -35,9 +31,7 @@ def _():
 
 @app.cell(hide_code=True)
 def _():
-    # Helper: echoes a student's current answer as a "Your result" preview so
-    # they SEE their output (e.g. a receipt's alignment), not just ✅/❌. Strings
-    # render in a fenced block; everything else inline. See _template.py.
+    # Shows your current answer under the check.
     def show_result(value):
         if value is None:
             return ""
