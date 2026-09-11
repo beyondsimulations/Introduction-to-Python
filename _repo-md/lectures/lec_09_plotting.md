@@ -26,7 +26,7 @@ Last week you handed her honest numbers, a table she could trust. She read exact
 
 A number convinces the careful. A **picture** convinces the room. Today: draw the right chart for the question, and refuse to draw a dishonest one.
 
-# 🔥 Warm-up
+# Warm-up
 
 Three questions from Episode 8. Commit. Hands up **before** the reveal.
 
@@ -99,6 +99,41 @@ plt.gca()             # SHOW: "get current axes" (the chart)
 >
 > Two habits for every chart cell: open with `plt.figure()` (a clean canvas) and end with `plt.gca()`. In marimo there's no `plt.show()`; the figure appears as the cell's **last expression**, and `plt.plot(...)` alone returns line objects, not a picture. (A plain script run from a terminal does need `plt.show()` at the end; that's Session X.) Same frame around every chart in today's lab.
 
+## Predict: what's on the x-axis?
+
+Tobi is in a hurry and hands `plot` **one** list, no `days`:
+
+``` python
+plt.plot([3, 5, 4])
+```
+
+What does the x-axis show?
+
+a\) `3, 5, 4`, the values themselves b) `0, 1, 2`, the list positions c) `1, 2, 3`, counted the human way
+
+. . .
+
+<span class="question">Predict first</span>. Pick a letter, then I reveal the answer.
+
+## Answer: the positions, from zero
+
+**b) `0, 1, 2`**: with one list, matplotlib takes it as **y** and invents x as the positions, and Python counts positions from 0:
+
+``` python
+import matplotlib.pyplot as plt
+
+plt.figure()
+plt.plot([3, 5, 4], marker="o")
+plt.xticks([0, 1, 2])   # show only whole positions
+plt.gca()
+```
+
+<img src="lec_09_plotting_files/figure-markdown_strict/cell-3-output-1.png" width="653" height="411" />
+
+. . .
+
+Want days 1--5 on the axis? Pass them: `plt.plot(days, revenue)`, x first.
+
 ## The parts of a chart
 
 Every honest chart names its axes. `xlabel`, `ylabel`, `title`, and (when there's more than one line) a `legend`:
@@ -118,7 +153,17 @@ plt.legend()             # the little key, one entry per label
 plt.gca()
 ```
 
-<img src="lec_09_plotting_files/figure-markdown_strict/cell-3-output-1.png" width="667" height="449" />
+<img src="lec_09_plotting_files/figure-markdown_strict/cell-4-output-1.png" width="667" height="449" />
+
+# Your turn --- 5--10 minutes
+
+Open the exercise (scan the QR or type the link):
+
+**[python.tobiasvlcek.com/notebooks/ex_09_a/](https://python.tobiasvlcek.com/notebooks/ex_09_a/)**
+
+<img src="assets/qr/ex_09_a.png" width="280" />
+
+First **predict** what happens, then run it.
 
 ## A little styling --- and only a little
 
@@ -136,7 +181,7 @@ plt.title("Styled, not decorated")
 plt.gca()
 ```
 
-<img src="lec_09_plotting_files/figure-markdown_strict/cell-4-output-1.png" width="649" height="431" />
+<img src="lec_09_plotting_files/figure-markdown_strict/cell-5-output-1.png" width="649" height="431" />
 
 ## Predict: one chart or two?
 
@@ -166,19 +211,19 @@ plt.plot([1, 2, 3])   # same canvas: a second line, not a second chart
 plt.gca()
 ```
 
-<img src="lec_09_plotting_files/figure-markdown_strict/cell-5-output-1.png" width="653" height="411" />
+<img src="lec_09_plotting_files/figure-markdown_strict/cell-6-output-1.png" width="653" height="411" />
 
 . . .
 
 That's exactly why every chart cell **opens** with `plt.figure()`: it's how you say "new picture, start clean."
 
-# Your turn --- 10 minutes
+# Your turn --- 5--10 minutes
 
 Open the exercise (scan the QR or type the link):
 
-**[python.tobiasvlcek.com/notebooks/ex_09_a/](https://python.tobiasvlcek.com/notebooks/ex_09_a/)**
+**[python.tobiasvlcek.com/notebooks/ex_09_b/](https://python.tobiasvlcek.com/notebooks/ex_09_b/)**
 
-<img src="assets/qr/ex_09_a.png" width="280" />
+<img src="assets/qr/ex_09_b.png" width="280" />
 
 First **predict** what happens, then run it.
 
@@ -217,7 +262,7 @@ plt.title("Orders per dish")
 plt.gca()
 ```
 
-<img src="lec_09_plotting_files/figure-markdown_strict/cell-6-output-1.png" width="641" height="431" />
+<img src="lec_09_plotting_files/figure-markdown_strict/cell-7-output-1.png" width="641" height="431" />
 
 The tallest bar answers the question at a glance: Pizza.
 
@@ -236,7 +281,7 @@ plt.title("Delivery times")
 plt.gca()
 ```
 
-<img src="lec_09_plotting_files/figure-markdown_strict/cell-7-output-1.png" width="635" height="431" />
+<img src="lec_09_plotting_files/figure-markdown_strict/cell-8-output-1.png" width="635" height="431" />
 
 Most deliveries land in the mid-20s, with one lonely slow one far right. A histogram shows **shape**, not individual values.
 
@@ -257,9 +302,46 @@ plt.ylabel("Order value (€)")
 plt.gca()
 ```
 
-<img src="lec_09_plotting_files/figure-markdown_strict/cell-8-output-1.png" width="662" height="429" />
+<img src="lec_09_plotting_files/figure-markdown_strict/cell-9-output-1.png" width="662" height="429" />
 
 Just a cloud. No upward drift. Sometimes the honest answer is **"there's no pattern here."**
+
+## Predict: plot instead of scatter
+
+Tobi types `plot` where he meant `scatter`. Five orders, in the order they came in:
+
+``` python
+minutes = [31, 19, 44, 22, 28]
+euros   = [22, 24, 19, 9, 15]
+plt.plot(minutes, euros)
+```
+
+a\) a zig-zag line hopping between the points in list order b) the same dots as `scatter`, joined into a smooth trend c) an error: `plot` refuses x values that are not sorted ascending
+
+. . .
+
+<span class="question">Predict first</span>. Pick a letter, then I reveal the answer.
+
+## Answer: a zig-zag in list order
+
+**a) a zig-zag**: `plot` connects the points **in the order you gave them**, never mind the x values. Order 1 to order 2 to order 3, back and forth:
+
+``` python
+import matplotlib.pyplot as plt
+
+minutes = [31, 19, 44, 22, 28]
+euros   = [22, 24, 19, 9, 15]
+
+plt.figure()
+plt.plot(minutes, euros, marker="o")   # joined in LIST order
+plt.gca()
+```
+
+<img src="lec_09_plotting_files/figure-markdown_strict/cell-10-output-1.png" width="644" height="411" />
+
+. . .
+
+A line says "these follow each other." Orders don't. Two numbers per order, no order between them: **scatter**.
 
 ## Predict: how many bars?
 
@@ -298,19 +380,19 @@ plt.title("hist: 3 ranges")
 plt.gca()
 ```
 
-<img src="lec_09_plotting_files/figure-markdown_strict/cell-9-output-1.png" width="641" height="431" />
+<img src="lec_09_plotting_files/figure-markdown_strict/cell-11-output-1.png" width="641" height="431" />
 
 . . .
 
 **Bar counts CATEGORIES; histogram counts RANGES.** Same numbers, different question.
 
-# Your turn --- 10 minutes
+# Your turn --- 5--10 minutes
 
 Open the exercise (scan the QR or type the link):
 
-**[python.tobiasvlcek.com/notebooks/ex_09_b/](https://python.tobiasvlcek.com/notebooks/ex_09_b/)**
+**[python.tobiasvlcek.com/notebooks/ex_09_c/](https://python.tobiasvlcek.com/notebooks/ex_09_c/)**
 
-<img src="assets/qr/ex_09_b.png" width="280" />
+<img src="assets/qr/ex_09_c.png" width="280" />
 
 First **predict** what happens, then run it.
 
@@ -342,7 +424,43 @@ plt.title("Honest (from 0)")
 plt.gca()
 ```
 
-<img src="lec_09_plotting_files/figure-markdown_strict/cell-10-output-1.png" width="653" height="431" />
+<img src="lec_09_plotting_files/figure-markdown_strict/cell-12-output-1.png" width="653" height="431" />
+
+## Predict: the AI's one extra line
+
+Revenue `[710, 718, 724, 731]`, up **3 %** over four weeks. Tobi's AI drafts the chart and adds one line:
+
+``` python
+plt.plot([1, 2, 3, 4], [710, 718, 724, 731])
+plt.ylim(700, 735)
+```
+
+What does the room see?
+
+a\) a flat line: 3 % stays 3 % on any axis b) an error: `ylim` has to include zero on a line chart c) a line climbing almost the whole chart height
+
+. . .
+
+<span class="question">Predict first</span>. Pick a letter, then I reveal the answer.
+
+## Answer: a climb across the chart
+
+**c) a climb across the chart**: the axis spans 35 units and the line rises 21 of them, **60 % of the picture** for 3 % of growth:
+
+``` python
+import matplotlib.pyplot as plt
+
+plt.figure()
+plt.plot([1, 2, 3, 4], [710, 718, 724, 731], marker="o")
+plt.ylim(700, 735)   # 3 % of growth, 60 % of the chart
+plt.gca()
+```
+
+<img src="lec_09_plotting_files/figure-markdown_strict/cell-13-output-1.png" width="649" height="416" />
+
+. . .
+
+No error, no warning. The code is fine; the **axis** is the lie.
 
 ## The rule: growth starts at zero
 
@@ -354,6 +472,16 @@ plt.gca()
 > **Tip**
 >
 > She's the type who reads Formular 27b/6 for fun. A stretched axis is the first thing she catches, and the last thing you want to explain.
+
+# Your turn --- 5--10 minutes
+
+Open the exercise (scan the QR or type the link):
+
+**[python.tobiasvlcek.com/notebooks/ex_09_d/](https://python.tobiasvlcek.com/notebooks/ex_09_d/)**
+
+<img src="assets/qr/ex_09_d.png" width="280" />
+
+First **predict** what happens, then run it.
 
 ## AI as your chart assistant
 
@@ -381,13 +509,13 @@ The pilot flies; the co-pilot advises. You still land the plane.
 >
 > Both threads, one rule: **an AI chart runs long before it's true.** You verify the columns *and* the axis, every time.
 
-# Your turn --- 10 minutes
+# Your turn --- 5--10 minutes
 
 Open the exercise (scan the QR or type the link):
 
-**[python.tobiasvlcek.com/notebooks/ex_09_c/](https://python.tobiasvlcek.com/notebooks/ex_09_c/)**
+**[python.tobiasvlcek.com/notebooks/ex_09_e/](https://python.tobiasvlcek.com/notebooks/ex_09_e/)**
 
-<img src="assets/qr/ex_09_c.png" width="280" />
+<img src="assets/qr/ex_09_e.png" width="280" />
 
 First **predict** what happens, then run it.
 

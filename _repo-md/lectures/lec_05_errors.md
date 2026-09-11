@@ -10,7 +10,7 @@ format:
 ---
 
 
-# 📋 Checkpoint 2
+# Checkpoint 2
 
 **Before the doors open.** The first 40 minutes are the checkpoint. It starts now.
 
@@ -29,7 +29,7 @@ Menu → *Download* → *Download Python code* → upload the `.py` to the **"Ch
 
 > **Note**
 >
-> The green ✅ live checks are **provisional**. The final grading runs on my side. And take a breath: everything in it was rehearsed in the labs.
+> The green live checks are **provisional**. The final grading runs on my side. And take a breath: everything in it was rehearsed in the labs.
 
 # <span class="flow">Episode 5: The 3-AM Checkout</span>
 
@@ -53,7 +53,7 @@ A customer typed `generous` into the tip box. Tobi's new checkout did this:
 
 ``` python
 tip_text = "generous"
-tip = float(tip_text)     # 💥
+tip = float(tip_text) # crashes here
 ```
 
 . . .
@@ -94,6 +94,41 @@ A handful of exception types cover almost everything you'll hit. The first three
 
 Each one is Python refusing to guess. `int("lots")` has no sensible number; `"Bowl " + 9` mixes text and a number; `table_map["C3"]` asks for a key that was never added.
 
+## Predict: comma or point?
+
+A regular from Hamburg types the price the German way. What does the last line do?
+
+``` python
+price_text = "5,50"
+price = float(price_text)
+print(price)
+```
+
+a\) prints `5.5` as a float b) raises `ValueError` c) raises `TypeError`
+
+. . .
+
+<span class="question">Predict first</span>. Pick a letter, then I reveal the answer.
+
+## Answer: right type, senseless value
+
+**b) raises `ValueError`**: `float()` got what it expects, a string, so the *type* is fine. But `"5,50"` is not a number Python can read (it only knows the decimal point), so the *value* is refused. `TypeError` would need a non-string, like `float(None)`:
+
+``` python
+price_text = "5,50"
+price = float(price_text)
+print(price)
+```
+
+<pre><span class="ansi-red-fg">---------------------------------------------------------------------------</span>
+<span class="ansi-red-fg">ValueError</span>                                Traceback (most recent call last)
+<span class="ansi-cyan-fg">Cell</span><span class="ansi-cyan-fg"> </span><span class="ansi-green-fg">In[1]</span><span class="ansi-green-fg">, line 2</span>
+<span class="ansi-green-fg">      1</span> price_text = <span class="ansi-yellow-fg">"</span><span class="ansi-yellow-fg">5,50</span><span class="ansi-yellow-fg">"</span>
+<span class="ansi-green-fg">----&gt; </span><span class="ansi-green-fg">2</span> price = <span style="color:rgb(0,135,0)" class="ansi-yellow-bg">float</span><span class="ansi-yellow-bg">(</span><span class="ansi-yellow-bg">price_text</span><span class="ansi-yellow-bg">)</span>
+<span class="ansi-green-fg">      3</span> <span style="color:rgb(0,135,0)">print</span>(price)
+
+<span class="ansi-red-fg">ValueError</span>: could not convert string to float: '5,50'</pre>
+
 ## The big five (2)
 
 The other two you'll meet constantly:
@@ -104,6 +139,16 @@ The other two you'll meet constantly:
 . . .
 
 You don't have to memorize all of Python's exceptions. Recognize these five on sight, and read the last line for the rest.
+
+# Your turn --- 5--10 minutes
+
+Open the exercise (scan the QR or type the link):
+
+**[python.tobiasvlcek.com/notebooks/ex_05_a/](https://python.tobiasvlcek.com/notebooks/ex_05_a/)**
+
+<img src="assets/qr/ex_05_a.png" width="280" />
+
+First **predict** what happens, then run it.
 
 ## `try` / `except`: catch the fall
 
@@ -178,13 +223,13 @@ except TypeError as e:
 
 `as e` keeps the error object in a variable, so you can print its message instead of losing it. Any name works; `e` is the habit.
 
-# Your turn --- 10 minutes
+# Your turn --- 5--10 minutes
 
 Open the exercise (scan the QR or type the link):
 
-**[python.tobiasvlcek.com/notebooks/ex_05_a/](https://python.tobiasvlcek.com/notebooks/ex_05_a/)**
+**[python.tobiasvlcek.com/notebooks/ex_05_b/](https://python.tobiasvlcek.com/notebooks/ex_05_b/)**
 
-<img src="assets/qr/ex_05_a.png" width="280" />
+<img src="assets/qr/ex_05_b.png" width="280" />
 
 First **predict** what happens, then run it.
 
@@ -260,6 +305,41 @@ print("passed the tripwire:", subtotal)
 
 Think of it as a note to yourself, checked automatically: *"if this is ever false, something broke earlier. Stop before it spreads."*
 
+## Predict: does the `print` survive?
+
+The bill is being split, but nobody is at the table. What shows up?
+
+``` python
+guests = 0
+assert guests > 0, "no guests at the table"
+print("splitting the bill among", guests)
+```
+
+a\) `AssertionError`, and the `print` never runs b) prints `splitting the bill among 0` c) the message, then the `print` line as well
+
+. . .
+
+<span class="question">Predict first</span>. Pick a letter, then I reveal the answer.
+
+## Answer: the tripwire stops everything
+
+**a) `AssertionError`, and the `print` never runs**: a failing `assert` raises on the spot, and nothing after it in the program executes. That's the point of a tripwire: stop *before* a wrong number spreads:
+
+``` python
+guests = 0
+assert guests > 0, "no guests at the table"
+print("splitting the bill among", guests)
+```
+
+<pre><span class="ansi-red-fg">---------------------------------------------------------------------------</span>
+<span class="ansi-red-fg">AssertionError</span>                            Traceback (most recent call last)
+<span class="ansi-cyan-fg">Cell</span><span class="ansi-cyan-fg"> </span><span class="ansi-green-fg">In[7]</span><span class="ansi-green-fg">, line 2</span>
+<span class="ansi-green-fg">      1</span> guests = <span class="ansi-green-fg">0</span>
+<span class="ansi-green-fg">----&gt; </span><span class="ansi-green-fg">2</span> <span style="font-weight:bold;color:rgb(0,135,0)">assert</span> guests &gt; <span class="ansi-green-fg">0</span>, <span class="ansi-yellow-fg">"</span><span class="ansi-yellow-fg">no guests at the table</span><span class="ansi-yellow-fg">"</span>
+<span class="ansi-green-fg">      3</span> <span style="color:rgb(0,135,0)">print</span>(<span class="ansi-yellow-fg">"</span><span class="ansi-yellow-fg">splitting the bill among</span><span class="ansi-yellow-fg">"</span>, guests)
+
+<span class="ansi-red-fg">AssertionError</span>: no guests at the table</pre>
+
 ## Try, then fall back
 
 A friendly, common pattern: **try** the risky thing; if it fails, **fall back** to a sensible default so the program keeps moving.
@@ -321,13 +401,13 @@ print("checkout still running")  # ...and we get here
     0.0
     checkout still running
 
-# Your turn --- 10 minutes
+# Your turn --- 5--10 minutes
 
 Open the exercise (scan the QR or type the link):
 
-**[python.tobiasvlcek.com/notebooks/ex_05_b/](https://python.tobiasvlcek.com/notebooks/ex_05_b/)**
+**[python.tobiasvlcek.com/notebooks/ex_05_c/](https://python.tobiasvlcek.com/notebooks/ex_05_c/)**
 
-<img src="assets/qr/ex_05_b.png" width="280" />
+<img src="assets/qr/ex_05_c.png" width="280" />
 
 First **predict** what happens, then run it.
 

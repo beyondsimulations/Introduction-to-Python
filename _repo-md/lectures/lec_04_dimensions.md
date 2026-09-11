@@ -20,7 +20,7 @@ The menu started with two dishes. Tobi tracked them in variables: `price1`, `pri
 
 Seventeen variables for one menu. Add a dish and you touch seventeen lines. Today the data gets **structure**: one name that holds many values, and a way to look things up by name instead of by counting.
 
-# 🔥 Warm-up
+# Warm-up
 
 Three questions from Episode 3. Commit. Hands up **before** the reveal.
 
@@ -175,6 +175,16 @@ print(sizes[1:3])
 
     ['M', 'L']
 
+# Your turn --- 5--10 minutes
+
+Open the exercise (scan the QR or type the link):
+
+**[python.tobiasvlcek.com/notebooks/ex_04_a/](https://python.tobiasvlcek.com/notebooks/ex_04_a/)**
+
+<img src="assets/qr/ex_04_a.png" width="280" />
+
+First **predict** what happens, then run it.
+
 ## Growing a list
 
 Lists are **mutable**: you can change them after creation. `.append()` adds one item to the end; `+` joins two lists into a new one:
@@ -194,6 +204,36 @@ print(combined)
 . . .
 
 `.append()` changes the list in place; `+` builds a fresh one.
+
+## Predict: the second name
+
+Tobi wants a winter copy of the drinks list to experiment on. What does the last line print?
+
+``` python
+summer = ["Mate", "Spezi"]
+winter = summer
+winter.append("Ayran")
+print(summer)
+```
+
+a\) `['Mate', 'Spezi']` b) `['Ayran', 'Mate', 'Spezi']` c) `['Mate', 'Spezi', 'Ayran']`
+
+. . .
+
+<span class="question">Predict first</span>. Pick a letter, then I reveal the answer.
+
+## Answer: two names, one list
+
+**c) `['Mate', 'Spezi', 'Ayran']`**. `winter = summer` does not copy anything: both names point at the **same** list, so `.append()` through one name shows up under the other. A real copy is `list(summer)` or `summer[:]`.
+
+``` python
+summer = ["Mate", "Spezi"]
+winter = summer
+winter.append("Ayran")
+print(summer)
+```
+
+    ['Mate', 'Spezi', 'Ayran']
 
 ## How long is it?
 
@@ -229,13 +269,13 @@ print(opening[1])
 >
 > Indexing and slicing work exactly as on lists. You just can't `.append()` to a tuple. Heads up: some tools quietly turn a tuple into a list when they store it. Remember that in **Part II**.
 
-# Your turn --- 10 minutes
+# Your turn --- 5--10 minutes
 
 Open the exercise (scan the QR or type the link):
 
-**[python.tobiasvlcek.com/notebooks/ex_04_a/](https://python.tobiasvlcek.com/notebooks/ex_04_a/)**
+**[python.tobiasvlcek.com/notebooks/ex_04_b/](https://python.tobiasvlcek.com/notebooks/ex_04_b/)**
 
-<img src="assets/qr/ex_04_a.png" width="280" />
+<img src="assets/qr/ex_04_b.png" width="280" />
 
 First **predict** what happens, then run it.
 
@@ -306,6 +346,34 @@ print(prices.get("Cola", 0))    # missing → your fallback
 
 Use `[]` when the key **must** be there; use `.get()` when it might not.
 
+## Predict: is it on the menu?
+
+`in` asks whether something is in a collection. On a dictionary, what does it look at?
+
+``` python
+prices = {"Mate": 3.50, "Spezi": 3.20}
+print("Spezi" in prices, 3.20 in prices)
+```
+
+a\) `True False` b) `True True` c) `False True`
+
+. . .
+
+<span class="question">Predict first</span>. Pick a letter, then I reveal the answer.
+
+## Answer: `in` checks the keys
+
+**a) `True False`**. Membership on a dictionary looks at the **keys** only. `3.20` is a value, so Python says it is not there. To search the values, ask `3.20 in prices.values()`.
+
+``` python
+prices = {"Mate": 3.50, "Spezi": 3.20}
+print("Spezi" in prices, 3.20 in prices)
+print(3.20 in prices.values())
+```
+
+    True False
+    True
+
 ## Updating and adding
 
 Assigning to a key updates it if it exists, or adds it if it doesn't. Work on a **copy** (`dict()`) when the original must survive:
@@ -366,20 +434,20 @@ print(regulars)        # order is arbitrary: a set has none
 print(len(regulars))   # how many different people
 ```
 
-    {'nina', 'ada', 'tom'}
+    {'tom', 'ada', 'nina'}
     3
 
 . . .
 
 Five visits, three people. A set answers "how many *different*?" in one step.
 
-# Your turn --- 10 minutes
+# Your turn --- 5--10 minutes
 
 Open the exercise (scan the QR or type the link):
 
-**[python.tobiasvlcek.com/notebooks/ex_04_b/](https://python.tobiasvlcek.com/notebooks/ex_04_b/)**
+**[python.tobiasvlcek.com/notebooks/ex_04_c/](https://python.tobiasvlcek.com/notebooks/ex_04_c/)**
 
-<img src="assets/qr/ex_04_b.png" width="280" />
+<img src="assets/qr/ex_04_c.png" width="280" />
 
 First **predict** what happens, then run it.
 
@@ -422,6 +490,16 @@ print(zones["Altstadt"]["eta"])
 . . .
 
 Read it left to right: "in `zones`, take `Hafen`, then its `fee`."
+
+# Your turn --- 5--10 minutes
+
+Open the exercise (scan the QR or type the link):
+
+**[python.tobiasvlcek.com/notebooks/ex_04_d/](https://python.tobiasvlcek.com/notebooks/ex_04_d/)**
+
+<img src="assets/qr/ex_04_d.png" width="280" />
+
+First **predict** what happens, then run it.
 
 ## From a loop to one line
 
@@ -508,6 +586,32 @@ print([n * n for n in nums])
 
     [1, 4, 9, 16]
 
+## Predict: the comprehension with a filter
+
+Some dishes sold nothing today. A comprehension can carry an `if` after the `for`. How long is the result?
+
+``` python
+counts = [2, 0, 3, 0, 1]
+print([c * 2 for c in counts if c > 0])
+```
+
+a\) `[4, 0, 6, 0, 2]` b) `[4, 6, 2]` c) `[2, 3, 1]`
+
+. . .
+
+<span class="question">Predict first</span>. Pick a letter, then I reveal the answer.
+
+## Answer: the `if` drops items
+
+**b) `[4, 6, 2]`**. The `if` is a filter: items that fail it never reach the expression, so the result is **shorter** than the input. `c * 2` still runs on the survivors, which rules out `[2, 3, 1]`.
+
+``` python
+counts = [2, 0, 3, 0, 1]
+print([c * 2 for c in counts if c > 0])
+```
+
+    [4, 6, 2]
+
 ## Getting data into a notebook
 
 Your browser notebook has no files on it. So in Part I, data **ships inside the code**, as lists, dicts, or a multi-line string you can split apart:
@@ -532,13 +636,13 @@ for line in orders.splitlines():
 >
 > Reading real files is a job for **pandas**, which loads them in one line from Session VIII on. For now, inline data is all you need.
 
-# Your turn --- 10 minutes
+# Your turn --- 5--10 minutes
 
 Open the exercise (scan the QR or type the link):
 
-**[python.tobiasvlcek.com/notebooks/ex_04_c/](https://python.tobiasvlcek.com/notebooks/ex_04_c/)**
+**[python.tobiasvlcek.com/notebooks/ex_04_e/](https://python.tobiasvlcek.com/notebooks/ex_04_e/)**
 
-<img src="assets/qr/ex_04_c.png" width="280" />
+<img src="assets/qr/ex_04_e.png" width="280" />
 
 First **predict** what happens, then run it.
 

@@ -20,7 +20,7 @@ Overnight the city banned delivery after **22:00**. Your app can no longer just 
 
 *(Tobi's fix: "we just deliver yesterday's orders the next morning." A lawyer disagreed.)*
 
-# 🔥 Warm-up
+# Warm-up
 
 Three questions from Episode 1. Commit. Hands up **before** the reveal.
 
@@ -105,6 +105,44 @@ print(is_weekday and before_curfew)   # both must be True
 . . .
 
 `and` needs **both** sides true; `or` needs **at least one**; `not` flips it.
+
+## Predict: Tobi's weekend rule
+
+Tobi wants "not a weekday, and still before curfew" to mean *deliver*. It is a Tuesday, 23:00. What prints?
+
+``` python
+is_weekday = True
+before_curfew = False
+print(not is_weekday and before_curfew)
+```
+
+a\) `True` b) `False` c) `Error`
+
+. . .
+
+<span class="question">Predict first</span>. Pick a letter, then I reveal the answer.
+
+## Answer: `not` binds first
+
+**b) `False`**: `not` only flips the value right next to it, so Python reads `(not is_weekday) and before_curfew`, which is `False and False`. To flip the whole pair, put parentheses: `not (is_weekday and before_curfew)`.
+
+``` python
+is_weekday = True
+before_curfew = False
+print(not is_weekday and before_curfew)
+```
+
+    False
+
+# Your turn --- 5--10 minutes
+
+Open the exercise (scan the QR or type the link):
+
+**[python.tobiasvlcek.com/notebooks/ex_02_a/](https://python.tobiasvlcek.com/notebooks/ex_02_a/)**
+
+<img src="assets/qr/ex_02_a.png" width="280" />
+
+First **predict** what happens, then run it.
 
 ## `if`: do something only when
 
@@ -221,13 +259,13 @@ print(delivery_hour < 22)
 
     False
 
-# Your turn --- 10 minutes
+# Your turn --- 5--10 minutes
 
 Open the exercise (scan the QR or type the link):
 
-**[python.tobiasvlcek.com/notebooks/ex_02_a/](https://python.tobiasvlcek.com/notebooks/ex_02_a/)**
+**[python.tobiasvlcek.com/notebooks/ex_02_b/](https://python.tobiasvlcek.com/notebooks/ex_02_b/)**
 
-<img src="assets/qr/ex_02_a.png" width="280" />
+<img src="assets/qr/ex_02_b.png" width="280" />
 
 First **predict** what happens, then run it.
 
@@ -317,6 +355,36 @@ print(list(range(0, 10, 3)))   # every 3rd order gets a flyer: 0, 3, 6, 9
     [2, 3, 4]
     [0, 3, 6, 9]
 
+## Predict: pinging orders 1 to 5
+
+Tobi pings the courier once per order, "for orders 1 to 5". How many pings?
+
+``` python
+pings = 0
+for order in range(1, 5):
+    pings = pings + 1
+print(pings)
+```
+
+a\) `4` b) `5` c) `1`
+
+. . .
+
+<span class="question">Predict first</span>. Pick a letter, then I reveal the answer.
+
+## Answer: `range(1, 5)` stops before 5
+
+**a) `4`**: `range(1, 5)` yields `1, 2, 3, 4`. The stop value is never included, no matter where you start. Order 5 never gets its ping.
+
+``` python
+pings = 0
+for order in range(1, 5):
+    pings = pings + 1
+print(pings)
+```
+
+    4
+
 ## Looping over a string
 
 A string is a sequence too, and a `for` loop walks it character by character:
@@ -377,13 +445,13 @@ print(total)
 
     30
 
-# Your turn --- 10 minutes
+# Your turn --- 5--10 minutes
 
 Open the exercise (scan the QR or type the link):
 
-**[python.tobiasvlcek.com/notebooks/ex_02_b/](https://python.tobiasvlcek.com/notebooks/ex_02_b/)**
+**[python.tobiasvlcek.com/notebooks/ex_02_c/](https://python.tobiasvlcek.com/notebooks/ex_02_c/)**
 
-<img src="assets/qr/ex_02_b.png" width="280" />
+<img src="assets/qr/ex_02_c.png" width="280" />
 
 First **predict** what happens, then run it.
 
@@ -417,7 +485,7 @@ Every pass must nudge the condition **closer to `False`**: here the price shrink
 If nothing changes, the condition never flips and the loop runs **forever**:
 
 ``` python
-# ⚠️ NEVER run this. It never stops, and freezes the browser tab
+# NEVER run this. It never stops, and freezes the browser tab
 count = 1
 while count > 0:
     count = count + 1    # count only grows, so the condition stays True forever
@@ -448,6 +516,16 @@ print(count)
 
 The loop would run forever, but `break` stops it the moment `count` hits 3.
 
+# Your turn --- 5--10 minutes
+
+Open the exercise (scan the QR or type the link):
+
+**[python.tobiasvlcek.com/notebooks/ex_02_d/](https://python.tobiasvlcek.com/notebooks/ex_02_d/)**
+
+<img src="assets/qr/ex_02_d.png" width="280" />
+
+First **predict** what happens, then run it.
+
 ## Cleaning up text
 
 Tobi typed the daily special IN ALL CAPS with stray spaces. Strings have **methods** that return a cleaned-up **copy**:
@@ -468,6 +546,34 @@ print("MOIN".lower())       # whisper
 . . .
 
 Methods can be **chained** left to right: `raw.strip().title()`.
+
+## Predict: did Tobi clean it?
+
+Tobi calls `.strip()` on the special and prints it in brackets. What shows?
+
+``` python
+special = "  miso ramen  "
+special.strip()
+print("[" + special + "]")
+```
+
+a\) `Error` b) `[miso ramen]` c) `[  miso ramen  ]`
+
+. . .
+
+<span class="question">Predict first</span>. Pick a letter, then I reveal the answer.
+
+## Answer: `.strip()` hands back a copy
+
+**c) `[  miso ramen  ]`**: `.strip()` returns a **new** string and leaves `special` untouched; Tobi threw the clean copy away. Keep it by assigning: `special = special.strip()`.
+
+``` python
+special = "  miso ramen  "
+special.strip()
+print("[" + special + "]")
+```
+
+    [  miso ramen  ]
 
 ## Trimming specific characters
 
@@ -509,17 +615,17 @@ print("  MOIN  ".strip().lower())
 
     moin
 
-# Your turn --- 10 minutes
+# Your turn --- 5--10 minutes
 
 Open the exercise (scan the QR or type the link):
 
-**[python.tobiasvlcek.com/notebooks/ex_02_c/](https://python.tobiasvlcek.com/notebooks/ex_02_c/)**
+**[python.tobiasvlcek.com/notebooks/ex_02_e/](https://python.tobiasvlcek.com/notebooks/ex_02_e/)**
 
-<img src="assets/qr/ex_02_c.png" width="280" />
+<img src="assets/qr/ex_02_e.png" width="280" />
 
 First **predict** what happens, then run it.
 
-# 📋 Checkpoint 0: dress rehearsal
+# Checkpoint 0: dress rehearsal
 
 **A practice board review.** Fifteen minutes, before the lab, **ungraded**. Same format as the five real checkpoints, so that nothing is new next week when it counts.
 

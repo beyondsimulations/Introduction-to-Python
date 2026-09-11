@@ -17,6 +17,8 @@ forgotten Falafel Wrap has to reach the dorms before it achieves sentience.
 <a href="../notebooks/nb_04_lab_menu/" class="btn btn-primary">Open in browser</a>
 [![Open in molab](https://marimo.io/molab-shield.svg)](https://molab.marimo.io/github/beyondsimulations/Introduction-to-Python/blob/main/notebooks/nb_04_lab_menu.py)
 
+New here? Read [How the notebook works](../general/notebooks.qmd) first: which cells to edit, how to run them, what the verdicts mean.
+
 **Open in browser (recommended):** runs entirely on your machine, in this tab:
 no account, no installation, and after it loads no internet is needed.
 

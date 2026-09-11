@@ -10,7 +10,7 @@ format:
 ---
 
 
-# 📋 Checkpoint 5
+# Checkpoint 5
 
 **Sessions VIII--IX.** The first 40 minutes are the checkpoint. It starts now: the board runs one final audit before the big news.
 
@@ -30,7 +30,7 @@ Menu → *Download* → *Download Python code* → upload the `.py` to the **"Ch
 
 > **Note**
 >
-> The green ✅ live checks are **provisional**. The final grading runs on my side. The two multiple-choice tasks only say *"recorded"*, not ✅. That's expected, they're scored later. And take a breath: everything in it was rehearsed in the labs.
+> The green live checks are **provisional**. The final grading runs on my side. The two multiple-choice tasks only say *"recorded"*, never correct or wrong. That's expected, they're scored later. And take a breath: everything in it was rehearsed in the labs.
 
 # <span class="flow">Episode 10: The Exit</span>
 

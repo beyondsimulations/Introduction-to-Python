@@ -101,10 +101,11 @@ Materials live in the KLU portal and are hosted at [python.tobiasvlcek.com](http
 ## How a notebook works
 
 - A notebook is a page of **cells**; each cell holds a few lines of code
-- **Run a cell**: click into it and press `Cmd/Ctrl+Enter` (or the ▶ button at its edge). The output appears right below it
-- Change a cell and run it again: every cell that depends on it updates by itself
-- A cell shows the value of its **last line**. An assignment like `x = 5` shows nothing, so the check under each exercise echoes **your result** next to the verdict
-- **Save your work**: the notebook menu (top right) → *Download* → *Download Python code*. The tab remembers you until you close it; the download is forever
+- **Run a cell**: click into it and press `Cmd/Ctrl+Enter` (or the play button at its edge). The output appears right below it
+- Only edit cells that contain `# YOUR CODE BELOW`; the check under each exercise updates by itself
+- A red error pauses everything below it: fix that cell first
+- **Save your work**: `Cmd/Ctrl+S`, then menu (top right) → *Download* → *Download Python code*. The tab remembers you until you close it; the download is forever
+- Full walkthrough: [How the notebook works](../general/notebooks.qmd)
 
 ## One account, today: GitHub
 
@@ -183,6 +184,34 @@ print(sticker_budget)
     Tobi
     300
 
+## Predict: Tobi buys more stickers
+
+Tobi spends another 50 EUR of the budget. What does the last line print?
+
+``` python
+sticker_budget = 300
+sticker_budget = sticker_budget - 50
+print(sticker_budget)
+```
+
+a\) `Error` b) `300` c) `250`
+
+. . .
+
+<span class="question">Predict first</span>. Pick a letter, then I reveal the answer.
+
+## Answer: reassigning a name
+
+**c) `250`**: the right side is computed first (`300 - 50`), then the name is pointed at the new value. A name always shows its *latest* value.
+
+``` python
+sticker_budget = 300
+sticker_budget = sticker_budget - 50
+print(sticker_budget)
+```
+
+    250
+
 ## Naming rules
 
 - Must start with a **letter** or an underscore `_`
@@ -195,6 +224,16 @@ print(sticker_budget)
 
 <span class="question">Question (we solve this together, out loud)</span>: Which of these are valid variable names?  
 `sticker_budget`, `1st_employee`, `firstEmployee`, `company-name`, `_tobi`
+
+# Your turn --- 5--10 minutes
+
+Open the exercise (scan the QR or type the link):
+
+**[python.tobiasvlcek.com/notebooks/ex_01_a/](https://python.tobiasvlcek.com/notebooks/ex_01_a/)**
+
+<img src="assets/qr/ex_01_a.png" width="280" />
+
+First **predict** what happens, then run it.
 
 ## Four basic types
 
@@ -243,13 +282,13 @@ print(type("9.99"))
 
     <class 'str'>
 
-# Your turn --- 10 minutes
+# Your turn --- 5--10 minutes
 
 Open the exercise (scan the QR or type the link):
 
-**[python.tobiasvlcek.com/notebooks/ex_01_a/](https://python.tobiasvlcek.com/notebooks/ex_01_a/)**
+**[python.tobiasvlcek.com/notebooks/ex_01_b/](https://python.tobiasvlcek.com/notebooks/ex_01_b/)**
 
-<img src="assets/qr/ex_01_a.png" width="280" />
+<img src="assets/qr/ex_01_b.png" width="280" />
 
 First **predict** what happens, then run it.
 
@@ -332,6 +371,30 @@ print(300 - 12 * 25)
 
     0
 
+## Predict: splitting a 10 EUR order
+
+Two friends split a 10 EUR order. What prints?
+
+``` python
+print(10 / 2)
+```
+
+a\) `5.0` b) `5` c) `Error`
+
+. . .
+
+<span class="question">Predict first</span>. Pick a letter, then I reveal the answer.
+
+## Answer: `10 / 2`
+
+**a) `5.0`**: `/` always returns a `float`, even when the division comes out even. Want a whole number? That is what `//` is for.
+
+``` python
+print(10 / 2)
+```
+
+    5.0
+
 ## Whole numbers vs decimals
 
 - `int` + `int` stays an `int`; `/` **always** produces a `float`
@@ -360,13 +423,13 @@ print(round(10 / 3, 2))    # 3.33, a proper amount
     3.3333333333333335
     3.33
 
-# Your turn --- 10 minutes
+# Your turn --- 5--10 minutes
 
 Open the exercise (scan the QR or type the link):
 
-**[python.tobiasvlcek.com/notebooks/ex_01_b/](https://python.tobiasvlcek.com/notebooks/ex_01_b/)**
+**[python.tobiasvlcek.com/notebooks/ex_01_c/](https://python.tobiasvlcek.com/notebooks/ex_01_c/)**
 
-<img src="assets/qr/ex_01_b.png" width="280" />
+<img src="assets/qr/ex_01_c.png" width="280" />
 
 First **predict** what happens, then run it.
 
@@ -403,6 +466,30 @@ print(str(qty) + "x " + item + ": " + str(total) + " EUR")
 (`str(...)` turns a value into text, which is clumsy. We're about to see the better way.)
 Forget one `str()` and Python raises a `TypeError`.
 
+## Predict: adding two quantities
+
+Tobi stored two order quantities as text and adds them up. What prints?
+
+``` python
+print("3" + "4")
+```
+
+a\) `Error` b) `34` c) `7`
+
+. . .
+
+<span class="question">Predict first</span>. Pick a letter, then I reveal the answer.
+
+## Answer: `"3" + "4"`
+
+**b) `34`**: with quotes, these are strings, and `+` on strings glues them together. To add numbers, drop the quotes (or convert with `int()`).
+
+``` python
+print("3" + "4")
+```
+
+    34
+
 ## f-strings: the clean way
 
 Put an `f` before the quote and write values in `{ }`, and Python fills them in:
@@ -419,6 +506,16 @@ print(f"{qty}x {item}: {total} EUR")
 . . .
 
 No `str()`, no `+`. Just the sentence you want.
+
+# Your turn --- 5--10 minutes
+
+Open the exercise (scan the QR or type the link):
+
+**[python.tobiasvlcek.com/notebooks/ex_01_d/](https://python.tobiasvlcek.com/notebooks/ex_01_d/)**
+
+<img src="assets/qr/ex_01_d.png" width="280" />
+
+First **predict** what happens, then run it.
 
 ## Formatting money with `:.2f`
 
@@ -475,13 +572,13 @@ print("2 * 3")
     6
     2 * 3
 
-# Your turn --- 10 minutes
+# Your turn --- 5--10 minutes
 
 Open the exercise (scan the QR or type the link):
 
-**[python.tobiasvlcek.com/notebooks/ex_01_c/](https://python.tobiasvlcek.com/notebooks/ex_01_c/)**
+**[python.tobiasvlcek.com/notebooks/ex_01_e/](https://python.tobiasvlcek.com/notebooks/ex_01_e/)**
 
-<img src="assets/qr/ex_01_c.png" width="280" />
+<img src="assets/qr/ex_01_e.png" width="280" />
 
 First **predict** what happens, then run it.
 

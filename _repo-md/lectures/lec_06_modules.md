@@ -10,7 +10,7 @@ format:
 ---
 
 
-# 📋 Checkpoint 3
+# Checkpoint 3
 
 **Sessions I--V.** The first 40 minutes are the checkpoint. It starts now, before the investor sits down.
 
@@ -29,7 +29,7 @@ Menu → *Download* → *Download Python code* → upload the `.py` to the **"Ch
 
 > **Note**
 >
-> The green ✅ live checks are **provisional**. The final grading runs on my side. And take a breath: everything in it was rehearsed in the labs.
+> The green live checks are **provisional**. The final grading runs on my side. And take a breath: everything in it was rehearsed in the labs.
 
 # <span class="flow">Episode 6: Due Diligence Week</span>
 
@@ -124,6 +124,16 @@ print(median(ratings))   # the middle value
 
 One furious review (a 1.0) drags the mean down to 3.9. The investor asked for the **typical** rating: `median` sorts the values and hands back the middle one (4.5), unmoved by one angry customer.
 
+# Your turn --- 5--10 minutes
+
+Open the exercise (scan the QR or type the link):
+
+**[python.tobiasvlcek.com/notebooks/ex_06_a/](https://python.tobiasvlcek.com/notebooks/ex_06_a/)**
+
+<img src="assets/qr/ex_06_a.png" width="280" />
+
+First **predict** what happens, then run it.
+
 ## Aliases: a shorter name
 
 Some module names are long, or you'll type them fifty times. `import ... as` gives a module a **nickname** for the rest of the file:
@@ -139,6 +149,47 @@ print(stats.median([4.5, 4.8, 1.0, 5.0, 4.2]))
 . . .
 
 `stats.median` is the same tool as `statistics.median`, just less to type. You'll meet fixed conventions soon (`import pandas as pd`); using the community's nickname makes your code instantly readable to everyone else.
+
+## Predict: which name did the import create?
+
+Tobi imports **just `pi`** by name, then reaches for it the way he reached for `math.ceil`. The large pizza has a 15 cm radius. What happens?
+
+``` python
+from math import pi
+
+radius = 15
+print(math.pi * radius ** 2)
+```
+
+a\) prints `706.858…` b) an `AttributeError` c) a `NameError`
+
+. . .
+
+<span class="question">Predict first</span>. Pick a letter, then I reveal the answer.
+
+## Answer: `pi` exists, `math` doesn't
+
+**c) a `NameError`**: `from math import pi` puts exactly one name on your desk, `pi`. Nobody ever created a name called `math`, so `math.pi` fails at the first dot:
+
+``` python
+from math import pi
+
+radius = 15
+print(math.pi * radius ** 2)
+```
+
+<pre><span class="ansi-red-fg">NameError</span><span class="ansi-red-fg">:</span> name 'math' is not defined
+</pre>
+
+. . .
+
+Use the name you imported, and it works:
+
+``` python
+print(pi * radius ** 2)   # 706.858…: the imported name, no prefix
+```
+
+    706.8583470577034
 
 ## Looking inside a module
 
@@ -187,13 +238,13 @@ print(math.floor(-2.5))   # down the number line → -3
 
 "Down" means *smaller*, and `-3` is smaller than `-2`. Keep the number line in your head, not the distance to zero.
 
-# Your turn --- 10 minutes
+# Your turn --- 5--10 minutes
 
 Open the exercise (scan the QR or type the link):
 
-**[python.tobiasvlcek.com/notebooks/ex_06_a/](https://python.tobiasvlcek.com/notebooks/ex_06_a/)**
+**[python.tobiasvlcek.com/notebooks/ex_06_b/](https://python.tobiasvlcek.com/notebooks/ex_06_b/)**
 
-<img src="assets/qr/ex_06_a.png" width="280" />
+<img src="assets/qr/ex_06_b.png" width="280" />
 
 First **predict** what happens, then run it.
 
@@ -215,10 +266,10 @@ random.shuffle(queue)                         # reorders the list in place
 print(queue)
 ```
 
-    0.7429976970536041
-    5
-    tea
-    [5, 1, 2, 4, 3]
+    0.611095716897787
+    12
+    mocha
+    [2, 5, 3, 1, 4]
 
 . . .
 
@@ -235,8 +286,8 @@ print([random.randint(1, 20) for _ in range(5)])   # _ : a loop name we never us
 print([random.randint(1, 20) for _ in range(5)])   # ...and again, different!
 ```
 
-    [20, 4, 6, 14, 9]
-    [17, 17, 19, 20, 4]
+    [11, 16, 4, 13, 4]
+    [1, 4, 19, 11, 17]
 
 . . .
 
@@ -262,6 +313,50 @@ print([random.randint(1, 20) for _ in range(5)])   # same seed → same list
 . . .
 
 Both lines print `[11, 5, 13, 2, 3]`. The numbers still *look* random, but now the investor can run it herself and land on the identical result.
+
+## Predict: same seed, same rider?
+
+The busiest day needs an extra rider. Tobi seeds, picks one, then seeds **again with the same number** and picks again. Is it the same rider?
+
+``` python
+import random
+
+riders = ["Ana", "Ben", "Cem", "Dana"]
+
+random.seed(3)
+first = random.choice(riders)
+random.seed(3)
+second = random.choice(riders)
+
+print(first == second)
+```
+
+a\) `False`: `choice` picks freely, the seed only steers `randint` b) `True`: same seed, same stream, same pick c) an error: a seed can only be set once per program
+
+. . .
+
+<span class="question">Predict first</span>. Pick a letter, then I reveal the answer.
+
+## Answer: same rider
+
+**b) `True`**. Every `random` tool draws from the same stream, and re-seeding rewinds it to the start. `choice` is no exception: after `seed(3)` it lands on the same item every time:
+
+``` python
+import random
+
+riders = ["Ana", "Ben", "Cem", "Dana"]
+
+random.seed(3)
+first = random.choice(riders)
+random.seed(3)
+second = random.choice(riders)
+
+print(first == second)
+print(first, second)   # Ben Ben: the seed makes every tool in the box repeatable
+```
+
+    True
+    Ben Ben
 
 ## Predict: seeded once, built twice
 
@@ -306,13 +401,13 @@ print(second)   # [8, 8, 5]: the stream carries on
 
 To get the *same* list twice, you re-seed before each run, and that rewinds the stream to the start. One seed, one fixed sequence: that's the entire job of a seed.
 
-# Your turn --- 10 minutes
+# Your turn --- 5--10 minutes
 
 Open the exercise (scan the QR or type the link):
 
-**[python.tobiasvlcek.com/notebooks/ex_06_b/](https://python.tobiasvlcek.com/notebooks/ex_06_b/)**
+**[python.tobiasvlcek.com/notebooks/ex_06_c/](https://python.tobiasvlcek.com/notebooks/ex_06_c/)**
 
-<img src="assets/qr/ex_06_b.png" width="280" />
+<img src="assets/qr/ex_06_c.png" width="280" />
 
 First **predict** what happens, then run it.
 

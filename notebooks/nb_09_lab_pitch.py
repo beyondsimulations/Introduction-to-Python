@@ -10,7 +10,7 @@ def _(mo):
     mo.md(
         r"""
     # Notebook 9.1 — The Pitch Deck
-    **Core exercises: 7 + 1 quiz (+ 1 trace).** Done early? You're free to go. Not done when the session ends? The rest is homework.
+    **Core exercises: 10 + 1 quiz (+ 1 trace).** Done early? You're free to go. Not done when the session ends? The rest is homework.
 
     The pitch meeting is **Friday**. Last week you turned the data room into
     honest numbers; this week those numbers have to be *seen*. The investor gave
@@ -54,9 +54,24 @@ def _(mo):
 def _(mo):
     mo.callout(
         mo.md(
-            "💾 **Saving your work:** this notebook runs in your browser. Press "
+            "**Saving your work:** this notebook runs in your browser. Press "
             "**Cmd/Ctrl+S** to save, and always save **before** menu → Download → "
             "*Download Python code*. Without a save first, the download is an empty file."
+        ),
+        kind="info",
+    )
+    return
+
+
+@app.cell(hide_code=True)
+def _(mo):
+    mo.callout(
+        mo.md(
+            "**How this notebook works:** run a cell with **Cmd/Ctrl+Enter**. "
+            "Only edit the cells that contain `# YOUR CODE BELOW`; the check under "
+            "each exercise updates by itself. A red error pauses everything below "
+            "it, so fix that cell first. New here? Read "
+            "[How the notebook works](https://python.tobiasvlcek.com/general/notebooks.html)."
         ),
         kind="info",
     )
@@ -177,13 +192,13 @@ def _():
 def _(best_day_ex11, mo, pd, show_result):
     if best_day_ex11 is None:
         ex11_ok = False
-        _msg = "🔲 Exercise 1.1: not attempted yet. Assign it to `best_day_ex11` (a `print` alone doesn't count) and run the cell."
+        _msg = "Not attempted — Exercise 1.1. Assign it to `best_day_ex11` (a `print` alone doesn't count) and run the cell."
         _preview = ""
     else:
         _preview = show_result(best_day_ex11)
         if isinstance(best_day_ex11, (pd.Series, pd.DataFrame)):
             ex11_ok = False
-            _msg = "❌ Exercise 1.1: that's still the whole `daily` table. `.idxmax()` collapses it to one label, the day. Then wrap `int(...)`."
+            _msg = "Wrong — Exercise 1.1: that's still the whole `daily` table. `.idxmax()` collapses it to one label, the day. Then wrap `int(...)`."
         else:
             try:
                 _n = int(best_day_ex11)
@@ -191,19 +206,19 @@ def _(best_day_ex11, mo, pd, show_result):
                 _n = None
             if _n is None:
                 ex11_ok = False
-                _msg = "❌ Exercise 1.1: this should be a whole **number**: the day with the highest revenue, from `int(daily.idxmax())`."
+                _msg = "Wrong — Exercise 1.1: this should be a whole **number**: the day with the highest revenue, from `int(daily.idxmax())`."
             elif _n == 3:
                 ex11_ok = True
-                _msg = "✅ Exercise 1.1: **day 3**, the peak, at 146.8 €. `.idxmax()` reads the winning *label* off the Series; no squinting at the line."
+                _msg = "Correct — Exercise 1.1: **day 3**, the peak, at 146.8 €. `.idxmax()` reads the winning *label* off the Series; no squinting at the line."
             elif _n == 6:
                 ex11_ok = False
-                _msg = "❌ Exercise 1.1: day 6 is the *trough* (the lowest day, 49.2 €), which is `.idxmin()`. You want `.idxmax()` for the peak."
+                _msg = "Wrong — Exercise 1.1: day 6 is the *trough* (the lowest day, 49.2 €), which is `.idxmin()`. You want `.idxmax()` for the peak."
             elif _n in (146, 147) or round(float(best_day_ex11), 1) == 146.8:
                 ex11_ok = False
-                _msg = "❌ Exercise 1.1: 146.8 is the euro *amount* on the best day. That's `.max()`. The investor asked *which day*: `.idxmax()` returns the label."
+                _msg = "Wrong — Exercise 1.1: 146.8 is the euro *amount* on the best day. That's `.max()`. The investor asked *which day*: `.idxmax()` returns the label."
             else:
                 ex11_ok = False
-                _msg = f"❌ Exercise 1.1: expected 3, got {_n}. `daily.idxmax()` returns the day with the biggest total."
+                _msg = f"Wrong — Exercise 1.1: expected 3, got {_n}. `daily.idxmax()` returns the day with the biggest total."
     mo.callout(mo.md(_msg + _preview), kind="success" if ex11_ok else "warn")
     return (ex11_ok,)
 
@@ -212,8 +227,8 @@ def _(best_day_ex11, mo, pd, show_result):
 def _(mo):
     mo.accordion(
         {
-            "💡 Hint 1 (a nudge)": "`plt.plot(daily)` draws the line for your eyes. The check only reads the number. `.max()` gives the biggest VALUE; `.idxmax()` gives its LABEL (the day), which is what the investor asked for.",
-            "💡 Hint 2 (the structure)": "best_day_ex11 = int(daily.___())   (the method that returns the label of the largest entry, not its value)",
+            "Hint 1 (a nudge)": "`plt.plot(daily)` draws the line for your eyes. The check only reads the number. `.max()` gives the biggest VALUE; `.idxmax()` gives its LABEL (the day), which is what the investor asked for.",
+            "Hint 2 (the structure)": "best_day_ex11 = int(daily.___()) (the method that returns the label of the largest entry, not its value)",
         }
     )
     return
@@ -261,13 +276,13 @@ def _():
 def _(days_ex12, mo, pd, show_result):
     if days_ex12 is None:
         ex12_ok = False
-        _msg = "🔲 Exercise 1.2: not attempted yet. Assign it to `days_ex12` (a `print` alone doesn't count) and run the cell."
+        _msg = "Not attempted — Exercise 1.2. Assign it to `days_ex12` (a `print` alone doesn't count) and run the cell."
         _preview = ""
     else:
         _preview = show_result(days_ex12)
         if isinstance(days_ex12, (pd.Series, pd.DataFrame)):
             ex12_ok = False
-            _msg = "❌ Exercise 1.2: that's still the whole `daily` table. You want one number. `len(daily)` counts its entries."
+            _msg = "Wrong — Exercise 1.2: that's still the whole `daily` table. You want one number. `len(daily)` counts its entries."
         else:
             try:
                 _n = int(days_ex12)
@@ -275,16 +290,16 @@ def _(days_ex12, mo, pd, show_result):
                 _n = None
             if _n is None:
                 ex12_ok = False
-                _msg = "❌ Exercise 1.2: this should be a whole **number**, the count of days, from `int(len(daily))`."
+                _msg = "Wrong — Exercise 1.2: this should be a whole **number**, the count of days, from `int(len(daily))`."
             elif _n == 14:
                 ex12_ok = True
-                _msg = "✅ Exercise 1.2: **14** days: two full weeks, one point per day. `len(daily)` counts the entries, and now the axes say so out loud."
+                _msg = "Correct — Exercise 1.2: **14** days: two full weeks, one point per day. `len(daily)` counts the entries, and now the axes say so out loud."
             elif _n == 80:
                 ex12_ok = False
-                _msg = "❌ Exercise 1.2: 80 is the number of *orders* (`len(orders)`). `daily` already grouped those down to one row per day. Count `daily`, not `orders`."
+                _msg = "Wrong — Exercise 1.2: 80 is the number of *orders* (`len(orders)`). `daily` already grouped those down to one row per day. Count `daily`, not `orders`."
             else:
                 ex12_ok = False
-                _msg = f"❌ Exercise 1.2: expected 14, got {_n}. `len(daily)` counts the days in the grouped Series."
+                _msg = f"Wrong — Exercise 1.2: expected 14, got {_n}. `len(daily)` counts the days in the grouped Series."
     mo.callout(mo.md(_msg + _preview), kind="success" if ex12_ok else "warn")
     return (ex12_ok,)
 
@@ -293,8 +308,86 @@ def _(days_ex12, mo, pd, show_result):
 def _(mo):
     mo.accordion(
         {
-            "💡 Hint 1 (a nudge)": "`daily` has one entry per day, so its length IS the number of days. `len(...)` counts entries of a Series exactly like a list. Wrap `int(...)`.",
-            "💡 Hint 2 (the structure)": "days_ex12 = int(len(___))   (the blank is the grouped Series with one row per day)",
+            "Hint 1 (a nudge)": "`daily` has one entry per day, so its length IS the number of days. `len(...)` counts entries of a Series exactly like a list. Wrap `int(...)`.",
+            "Hint 2 (the structure)": "days_ex12 = int(len(___)) (the blank is the grouped Series with one row per day)",
+        }
+    )
+    return
+
+
+@app.cell(hide_code=True)
+def _(mo):
+    mo.md(
+        r"""
+    ### Exercise 1.3 (core) — Tobi's headline
+
+    Tobi has already written the headline for the momentum slide: **"One day
+    brought in a quarter of our revenue."** He read it off the peak of the line.
+    The investor will read it off the *numbers*, so check it before she does.
+
+    Take the peak day you found in 1.1 and compute its **share** of the whole
+    two weeks, as a percent: the peak day's revenue divided by the total of
+    `daily`, times 100. `daily[best_day_ex11]` looks up one day's revenue by its
+    label, and `daily.sum()` is the two-week total. Round to 2 decimals and store
+    it, as a plain `float`, in `peak_share_ex13`. The check tells you whether the
+    headline survives.
+    """
+    )
+    return
+
+
+@app.cell
+def _():
+    # YOUR CODE BELOW: the peak day's share of total revenue in percent (float, 2 decimals)
+    peak_share_ex13 = None
+    return (peak_share_ex13,)
+
+
+@app.cell(hide_code=True)
+def _(best_day_ex11, mo, pd, peak_share_ex13, show_result):
+    if best_day_ex11 is None:
+        ex13_ok = False
+        _msg = "Not attempted — Exercise 1.3: finish 1.1 first. This one reuses `best_day_ex11`, and it is still `None`."
+        _preview = ""
+    elif peak_share_ex13 is None:
+        ex13_ok = False
+        _msg = "Not attempted — Exercise 1.3. Assign it to `peak_share_ex13` (a `print` alone doesn't count) and run the cell."
+        _preview = ""
+    else:
+        _preview = show_result(peak_share_ex13)
+        if isinstance(peak_share_ex13, (pd.Series, pd.DataFrame)):
+            ex13_ok = False
+            _msg = "Wrong — Exercise 1.3: that's a share for *every* day. Look up just the peak day first, `daily[best_day_ex11]`, then divide by `daily.sum()`."
+        else:
+            try:
+                _v = round(float(peak_share_ex13), 2)
+            except (TypeError, ValueError):
+                _v = None
+            if _v is None:
+                ex13_ok = False
+                _msg = "Wrong — Exercise 1.3: this should be a single **percent** number, the peak day's share of the two-week total."
+            elif _v == 10.17:
+                ex13_ok = True
+                _msg = "Correct — Exercise 1.3: **10.17 %**. The peak day was a good day, not a quarter of the business. Headline cut. Tobi sulks; the investor never sees it."
+            elif _v == 0.1:
+                ex13_ok = False
+                _msg = "Wrong — Exercise 1.3: 0.1 is the share as a *fraction*. A percent needs the `* 100` at the end."
+            elif _v == 146.8:
+                ex13_ok = False
+                _msg = "Wrong — Exercise 1.3: 146.8 is the peak day's revenue in euros, not its share. Divide it by `daily.sum()` and multiply by 100."
+            else:
+                ex13_ok = False
+                _msg = f"Wrong — Exercise 1.3: expected 10.17, got {_v}. Share = `daily[best_day_ex11] / daily.sum() * 100`, rounded to 2. (Is 1.1 green? This one builds on it.)"
+    mo.callout(mo.md(_msg + _preview), kind="success" if ex13_ok else "warn")
+    return (ex13_ok,)
+
+
+@app.cell(hide_code=True)
+def _(mo):
+    mo.accordion(
+        {
+            "Hint 1 (a nudge)": "A share is a part divided by the whole. The part is one day's revenue (look it up in `daily` by the day label you already have), the whole is `daily.sum()`. Multiply by 100 for percent, round to 2.",
+            "Hint 2 (the structure)": "peak_share_ex13 = float(round(daily[___] / daily.___() * 100, 2)) (the label from 1.1, then the method that totals the Series)",
         }
     )
     return
@@ -365,19 +458,19 @@ def _(by_zone_ex21, mo, pd, show_result):
     _expected = {"Altstadt": 376.2, "Hafen": 325.3, "Nord": 345.9, "Sued": 395.9}
     if by_zone_ex21 is None:
         ex21_ok = False
-        _msg = "🔲 Exercise 2.1: not attempted yet. Assign it to `by_zone_ex21` (a `print` alone doesn't count) and run the cell."
+        _msg = "Not attempted — Exercise 2.1. Assign it to `by_zone_ex21` (a `print` alone doesn't count) and run the cell."
         _preview = ""
     else:
         _preview = show_result(by_zone_ex21)
         if isinstance(by_zone_ex21, pd.Series):
             ex21_ok = False
-            _msg = "❌ Exercise 2.1: that's a **Series**, not a dict. `.to_dict()` finishes the job. Add it to the end of your groupby."
+            _msg = "Wrong — Exercise 2.1: that's a **Series**, not a dict. `.to_dict()` finishes the job. Add it to the end of your groupby."
         elif isinstance(by_zone_ex21, pd.DataFrame):
             ex21_ok = False
-            _msg = "❌ Exercise 2.1: that's a whole table. Pick the `total_eur` column *before* summing: `.groupby(\"zone\")[\"total_eur\"].sum()`, then `.to_dict()`."
+            _msg = "Wrong — Exercise 2.1: that's a whole table. Pick the `total_eur` column *before* summing: `.groupby(\"zone\")[\"total_eur\"].sum()`, then `.to_dict()`."
         elif not isinstance(by_zone_ex21, dict):
             ex21_ok = False
-            _msg = "❌ Exercise 2.1: this should be a **dict** of zone → euros. Finish the groupby with `.round(2).to_dict()`."
+            _msg = "Wrong — Exercise 2.1: this should be a **dict** of zone → euros. Finish the groupby with `.round(2).to_dict()`."
         else:
             try:
                 _got = {str(_k): round(float(_v), 2) for _k, _v in by_zone_ex21.items()}
@@ -385,16 +478,16 @@ def _(by_zone_ex21, mo, pd, show_result):
                 _got = None
             if _got is None:
                 ex21_ok = False
-                _msg = "❌ Exercise 2.1: the values should be euro numbers. Group by `zone`, sum `total_eur`, then `.round(2).to_dict()`."
+                _msg = "Wrong — Exercise 2.1: the values should be euro numbers. Group by `zone`, sum `total_eur`, then `.round(2).to_dict()`."
             elif _got == _expected:
                 ex21_ok = True
-                _msg = "✅ Exercise 2.1: four zones, four bars. Same numbers you found last week, and now the tallest bar makes the winner obvious at a glance. That's what a chart is *for*."
+                _msg = "Correct — Exercise 2.1: four zones, four bars. Same numbers you found last week, and now the tallest bar makes the winner obvious at a glance. That's what a chart is *for*."
             elif set(_got) != set(_expected):
                 ex21_ok = False
-                _msg = "❌ Exercise 2.1: the zones don't match. You should have exactly the four keys 'Altstadt', 'Hafen', 'Nord', 'Sued'. Group by `zone`."
+                _msg = "Wrong — Exercise 2.1: the zones don't match. You should have exactly the four keys 'Altstadt', 'Hafen', 'Nord', 'Sued'. Group by `zone`."
             else:
                 ex21_ok = False
-                _msg = "❌ Exercise 2.1: right zones, wrong totals. Sum `total_eur` per group: `orders.groupby(\"zone\")[\"total_eur\"].sum().round(2).to_dict()`."
+                _msg = "Wrong — Exercise 2.1: right zones, wrong totals. Sum `total_eur` per group: `orders.groupby(\"zone\")[\"total_eur\"].sum().round(2).to_dict()`."
     mo.callout(mo.md(_msg + _preview), kind="success" if ex21_ok else "warn")
     return (ex21_ok,)
 
@@ -403,8 +496,8 @@ def _(by_zone_ex21, mo, pd, show_result):
 def _(mo):
     mo.accordion(
         {
-            "💡 Hint 1 (a nudge)": "This is the same chain you used in the data room: split the rows by category, total each group, then turn the Series into a clean dict. For the chart, a bar wants a list of labels and a list of heights.",
-            "💡 Hint 2 (the structure)": 'by_zone_ex21 = orders.groupby("___")["total_eur"].sum().round(2).___()   (the group key is the zone column; the final method turns a Series into a dict)',
+            "Hint 1 (a nudge)": "This is the same chain you used in the data room: split the rows by category, total each group, then turn the Series into a clean dict. For the chart, a bar wants a list of labels and a list of heights.",
+            "Hint 2 (the structure)": 'by_zone_ex21 = orders.groupby("___")["total_eur"].sum().round(2).___() (the group key is the zone column; the final method turns a Series into a dict)',
         }
     )
     return
@@ -452,13 +545,13 @@ def _():
 def _(mo, over_25_ex22, pd, show_result):
     if over_25_ex22 is None:
         ex22_ok = False
-        _msg = "🔲 Exercise 2.2: not attempted yet. Assign it to `over_25_ex22` (a `print` alone doesn't count) and run the cell."
+        _msg = "Not attempted — Exercise 2.2. Assign it to `over_25_ex22` (a `print` alone doesn't count) and run the cell."
         _preview = ""
     else:
         _preview = show_result(over_25_ex22)
         if isinstance(over_25_ex22, (pd.Series, pd.DataFrame)):
             ex22_ok = False
-            _msg = "❌ Exercise 2.2: that's the True/False column itself. `.sum()` counts the `True`s. Then wrap `int(...)`."
+            _msg = "Wrong — Exercise 2.2: that's the True/False column itself. `.sum()` counts the `True`s. Then wrap `int(...)`."
         else:
             try:
                 _c = int(over_25_ex22)
@@ -466,22 +559,22 @@ def _(mo, over_25_ex22, pd, show_result):
                 _c = None
             if _c is None:
                 ex22_ok = False
-                _msg = "❌ Exercise 2.2: this should be a whole **number**, the count of orders above 25 €."
+                _msg = "Wrong — Exercise 2.2: this should be a whole **number**, the count of orders above 25 €."
             elif _c == 13:
                 ex22_ok = True
-                _msg = "✅ Exercise 2.2: **13** orders above 25 €: a genuine tail, about one in six of the eighty. That's the number the histogram was hinting at."
+                _msg = "Correct — Exercise 2.2: **13** orders above 25 €: a genuine tail, about one in six of the eighty. That's the number the histogram was hinting at."
             elif _c == 35:
                 ex22_ok = False
-                _msg = "❌ Exercise 2.2: 35 is the count above *20 €*, nearly half the orders. That's not a tail. The threshold is 25 €: `orders[\"total_eur\"] > 25`."
+                _msg = "Wrong — Exercise 2.2: 35 is the count above *20 €*, nearly half the orders. That's not a tail. The threshold is 25 €: `orders[\"total_eur\"] > 25`."
             elif _c == 80:
                 ex22_ok = False
-                _msg = "❌ Exercise 2.2: 80 is *every* order. You counted the whole column. Count only the ones where `total_eur > 25`."
+                _msg = "Wrong — Exercise 2.2: 80 is *every* order. You counted the whole column. Count only the ones where `total_eur > 25`."
             elif _c == 67:
                 ex22_ok = False
-                _msg = "❌ Exercise 2.2: 67 is the *cheap* majority (25 € or less). You flipped the comparison. The tail is `> 25`, not `<= 25`."
+                _msg = "Wrong — Exercise 2.2: 67 is the *cheap* majority (25 € or less). You flipped the comparison. The tail is `> 25`, not `<= 25`."
             else:
                 ex22_ok = False
-                _msg = f"❌ Exercise 2.2: expected 13, got {_c}. Build the mask `orders[\"total_eur\"] > 25`, then `.sum()` counts the `True`s."
+                _msg = f"Wrong — Exercise 2.2: expected 13, got {_c}. Build the mask `orders[\"total_eur\"] > 25`, then `.sum()` counts the `True`s."
     mo.callout(mo.md(_msg + _preview), kind="success" if ex22_ok else "warn")
     return (ex22_ok,)
 
@@ -490,8 +583,8 @@ def _(mo, over_25_ex22, pd, show_result):
 def _(mo):
     mo.accordion(
         {
-            "💡 Hint 1 (a nudge)": 'A comparison on a column gives a `True`/`False` mask, one per row. `.sum()` counts the `True`s (each counts as 1). So `(orders["total_eur"] > 25).sum()` is the count you want; wrap `int(...)`.',
-            "💡 Hint 2 (the structure)": 'over_25_ex22 = int((orders["total_eur"] > ___).sum())   (the blank is the euro threshold that separates the tail)',
+            "Hint 1 (a nudge)": 'A comparison on a column gives a `True`/`False` mask, one per row. `.sum()` counts the `True`s (each counts as 1). So `(orders["total_eur"] > 25).sum()` is the count you want; wrap `int(...)`.',
+            "Hint 2 (the structure)": 'over_25_ex22 = int((orders["total_eur"] > ___).sum()) (the blank is the euro threshold that separates the tail)',
         }
     )
     return
@@ -541,13 +634,13 @@ def _():
 def _(mo, pd, show_result, slowest_ex23):
     if slowest_ex23 is None:
         ex23_ok = False
-        _msg = "🔲 Exercise 2.3: not attempted yet. Assign it to `slowest_ex23` (a `print` alone doesn't count) and run the cell."
+        _msg = "Not attempted — Exercise 2.3. Assign it to `slowest_ex23` (a `print` alone doesn't count) and run the cell."
         _preview = ""
     else:
         _preview = show_result(slowest_ex23)
         if isinstance(slowest_ex23, (pd.Series, pd.DataFrame)):
             ex23_ok = False
-            _msg = "❌ Exercise 2.3: that's still the whole column. `.max()` picks the single longest time. Then wrap `int(...)`."
+            _msg = "Wrong — Exercise 2.3: that's still the whole column. `.max()` picks the single longest time. Then wrap `int(...)`."
         else:
             try:
                 _n = int(slowest_ex23)
@@ -555,13 +648,13 @@ def _(mo, pd, show_result, slowest_ex23):
                 _n = None
             if _n is None:
                 ex23_ok = False
-                _msg = "❌ Exercise 2.3: this should be a whole **number** of minutes: the longest delivery, from `int(orders[\"delivery_min\"].max())`."
+                _msg = "Wrong — Exercise 2.3: this should be a whole **number** of minutes: the longest delivery, from `int(orders[\"delivery_min\"].max())`."
             elif _n == 58:
                 ex23_ok = True
-                _msg = "✅ Exercise 2.3: **58 minutes**, the slowest delivery on record. And the scatter earned its keep: it showed there's *no* link between speed and order size. 'No pattern' is a finding too."
+                _msg = "Correct — Exercise 2.3: **58 minutes**, the slowest delivery on record. And the scatter earned its keep: it showed there's *no* link between speed and order size. 'No pattern' is a finding too."
             else:
                 ex23_ok = False
-                _msg = f"❌ Exercise 2.3: expected 58, got {_n}. Take the biggest value of the delivery column: `int(orders[\"delivery_min\"].max())`."
+                _msg = f"Wrong — Exercise 2.3: expected 58, got {_n}. Take the biggest value of the delivery column: `int(orders[\"delivery_min\"].max())`."
     mo.callout(mo.md(_msg + _preview), kind="success" if ex23_ok else "warn")
     return (ex23_ok,)
 
@@ -570,8 +663,105 @@ def _(mo, pd, show_result, slowest_ex23):
 def _(mo):
     mo.accordion(
         {
-            "💡 Hint 1 (a nudge)": 'The scatter is for your eyes (and it shows no pattern). The graded number is just the biggest delivery time: reach into `orders["delivery_min"]` and ask it for `.max()`. Wrap `int(...)`.',
-            "💡 Hint 2 (the structure)": 'slowest_ex23 = int(orders["___"].max())   (the blank is the delivery-time column)',
+            "Hint 1 (a nudge)": 'The scatter is for your eyes (and it shows no pattern). The graded number is just the biggest delivery time: reach into `orders["delivery_min"]` and ask it for `.max()`. Wrap `int(...)`.',
+            "Hint 2 (the structure)": 'slowest_ex23 = int(orders["___"].max()) (the blank is the delivery-time column)',
+        }
+    )
+    return
+
+
+@app.cell(hide_code=True)
+def _(mo):
+    mo.md(
+        r"""
+    ### Exercise 2.4 (core, fix the chart) — Tobi's "orders per zone"
+
+    Tobi's next slide is a bar chart titled **"Orders per zone"**. It runs, it
+    has labels, it even has the right chart type: four categories, four bars.
+    The investor looks at it for two seconds: *"Your Nord bar says 345. You
+    told me you have eighty orders in total."*
+
+    The rule: a bar's height must be the thing its label promises. The label
+    says **orders**, so each bar must be a **count of rows**, not a sum of
+    euros.
+
+    Fix Tobi's numbers cell below (the chart cell under it redraws by itself) so
+    `per_zone_ex24` holds a plain dict of zone → number of orders. The check
+    reads the dict, and the picture stops lying the moment the dict does.
+    """
+    )
+    return
+
+
+@app.cell
+def _(orders):
+    # YOUR CODE BELOW: fix Tobi's line so the heights are order COUNTS, not euros
+    # TOBI'S CODE (runs fine, lies quietly):
+    per_zone_ex24 = orders.groupby("zone")["total_eur"].sum().to_dict()
+    return (per_zone_ex24,)
+
+
+@app.cell
+def _(per_zone_ex24, plt):
+    # Tobi's slide (do not change this): it draws whatever per_zone_ex24 holds.
+    _bars = dict(per_zone_ex24)
+    plt.figure()  # fresh canvas
+    plt.bar(list(_bars), list(_bars.values()))
+    plt.ylabel("Orders")
+    plt.title("Orders per zone")
+    plt.gca()
+    return
+
+
+@app.cell(hide_code=True)
+def _(mo, pd, per_zone_ex24, show_result):
+    _expected = {"Altstadt": 20, "Hafen": 19, "Nord": 22, "Sued": 19}
+    _tobis = {"Altstadt": 376.2, "Hafen": 325.3, "Nord": 345.9, "Sued": 395.9}
+    if per_zone_ex24 is None:
+        ex24_ok = False
+        _msg = "Not attempted — Exercise 2.4. Assign it to `per_zone_ex24` (a `print` alone doesn't count) and run the cell."
+        _preview = ""
+    else:
+        _preview = show_result(per_zone_ex24)
+        if isinstance(per_zone_ex24, pd.DataFrame):
+            ex24_ok = False
+            _msg = "Wrong — Exercise 2.4: that's a whole table. Pick one column *before* counting: `.groupby(\"zone\")[\"order_id\"].count()`, then `.to_dict()`."
+        elif isinstance(per_zone_ex24, pd.Series):
+            ex24_ok = False
+            _msg = "Wrong — Exercise 2.4: that's a **Series**, not a dict. Keep Tobi's `.to_dict()` at the end."
+        elif not isinstance(per_zone_ex24, dict):
+            ex24_ok = False
+            _msg = "Wrong — Exercise 2.4: this should be a **dict** of zone → number of orders."
+        else:
+            try:
+                _got = {str(_k): round(float(_v), 2) for _k, _v in per_zone_ex24.items()}
+            except (TypeError, ValueError):
+                _got = None
+            if _got is None:
+                ex24_ok = False
+                _msg = "Wrong — Exercise 2.4: the values should be whole numbers, one order count per zone."
+            elif _got == _expected:
+                ex24_ok = True
+                _msg = "Correct — Exercise 2.4: **Altstadt 20, Hafen 19, Nord 22, Sued 19**: eighty orders, four honest bars. Same chart, same title, and now the label tells the truth."
+            elif _got == _tobis:
+                ex24_ok = False
+                _msg = "Wrong — Exercise 2.4: those are still Tobi's euros. `.sum()` of `total_eur` adds up money. The bar promises a *count* of orders: count the rows in each zone instead."
+            elif set(_got) != set(_expected):
+                ex24_ok = False
+                _msg = "Wrong — Exercise 2.4: the zones don't match. You should have exactly the four keys 'Altstadt', 'Hafen', 'Nord', 'Sued'. Keep the `groupby(\"zone\")`."
+            else:
+                ex24_ok = False
+                _msg = "Wrong — Exercise 2.4: right zones, wrong heights. Each value should be how many orders that zone has, and the four must add up to 80. If they look like euros, you're still summing or averaging money."
+    mo.callout(mo.md(_msg + _preview), kind="success" if ex24_ok else "warn")
+    return (ex24_ok,)
+
+
+@app.cell(hide_code=True)
+def _(mo):
+    mo.accordion(
+        {
+            "Hint 1 (a nudge)": "The height of an 'orders' bar is how many ROWS each zone has. Summing `total_eur` adds euros; counting a column (any column, `order_id` reads naturally) counts rows. Same groupby, different column, different method.",
+            "Hint 2 (the structure)": 'per_zone_ex24 = orders.groupby("zone")["___"].count().to_dict() (any column works for counting rows; the id column is the natural pick)',
         }
     )
     return
@@ -672,13 +862,13 @@ def _():
 def _(growth_pct_ex31, mo, pd, show_result):
     if growth_pct_ex31 is None:
         ex31_ok = False
-        _msg = "🔲 Exercise 3.1: not attempted yet. Assign it to `growth_pct_ex31` (a `print` alone doesn't count) and run the cell."
+        _msg = "Not attempted — Exercise 3.1. Assign it to `growth_pct_ex31` (a `print` alone doesn't count) and run the cell."
         _preview = ""
     else:
         _preview = show_result(growth_pct_ex31)
         if isinstance(growth_pct_ex31, (pd.Series, pd.DataFrame)):
             ex31_ok = False
-            _msg = "❌ Exercise 3.1: that's a table/column. You want one number. Compute `(week2 - week1) / week1 * 100`, then `float(...)`."
+            _msg = "Wrong — Exercise 3.1: that's a table/column. You want one number. Compute `(week2 - week1) / week1 * 100`, then `float(...)`."
         else:
             try:
                 _v = round(float(growth_pct_ex31), 2)
@@ -686,19 +876,19 @@ def _(growth_pct_ex31, mo, pd, show_result):
                 _v = None
             if _v is None:
                 ex31_ok = False
-                _msg = "❌ Exercise 3.1: this should be a single **percent** number, the week-over-week change."
+                _msg = "Wrong — Exercise 3.1: this should be a single **percent** number, the week-over-week change."
             elif _v == -2.59:
                 ex31_ok = True
-                _msg = "✅ Exercise 3.1: **−2.59 %**, a small dip, essentially flat. Tobi's cliff was a lie the axis told. Flat is the truth, and a flat startup that *tells* the truth is more fundable than a rocket that lies. 📉➡️"
+                _msg = "Correct — Exercise 3.1: **−2.59 %**, a small dip, essentially flat. Tobi's cliff was a lie the axis told. Flat is the truth, and a flat startup that *tells* the truth is more fundable than a rocket that lies."
             elif _v == 2.59:
                 ex31_ok = False
-                _msg = "❌ Exercise 3.1: right size, wrong sign. You divided by week 2, or swapped the weeks. Growth is measured from where you started: `(week2 - week1) / week1`."
+                _msg = "Wrong — Exercise 3.1: right size, wrong sign. You divided by week 2, or swapped the weeks. Growth is measured from where you started: `(week2 - week1) / week1`."
             elif _v in (18.9, -18.9):
                 ex31_ok = False
-                _msg = "❌ Exercise 3.1: 18.9 is the raw *euro* difference between the weeks, not a percent. Divide that gap by week 1 and multiply by 100."
+                _msg = "Wrong — Exercise 3.1: 18.9 is the raw *euro* difference between the weeks, not a percent. Divide that gap by week 1 and multiply by 100."
             else:
                 ex31_ok = False
-                _msg = f"❌ Exercise 3.1: expected -2.59, got {_v}. Percent growth = `(week2 - week1) / week1 * 100`, rounded to 2."
+                _msg = f"Wrong — Exercise 3.1: expected -2.59, got {_v}. Percent growth = `(week2 - week1) / week1 * 100`, rounded to 2."
     mo.callout(mo.md(_msg + _preview), kind="success" if ex31_ok else "warn")
     return (ex31_ok,)
 
@@ -707,8 +897,110 @@ def _(growth_pct_ex31, mo, pd, show_result):
 def _(mo):
     mo.accordion(
         {
-            "💡 Hint 1 (a nudge)": "Percent growth compares the CHANGE (`week2 - week1`) to the STARTING value (`week1`), then ×100. A tiny negative number is the honest answer here: the weeks are almost equal.",
-            "💡 Hint 2 (the structure)": "growth_pct_ex31 = float(round((week2 - ___) / ___ * 100, 2))   (the change over the starting week)",
+            "Hint 1 (a nudge)": "Percent growth compares the CHANGE (`week2 - week1`) to the STARTING value (`week1`), then ×100. A tiny negative number is the honest answer here: the weeks are almost equal.",
+            "Hint 2 (the structure)": "growth_pct_ex31 = float(round((week2 - ___) / ___ * 100, 2)) (the change over the starting week)",
+        }
+    )
+    return
+
+
+@app.cell
+def _(daily, plt):
+    # Tobi's "momentum slide": the same daily Series, but only days 6 to 8.
+    plt.figure()  # fresh canvas
+    plt.plot([6, 7, 8], [daily[6], daily[7], daily[8]], marker="o")
+    plt.xlabel("Day")
+    plt.ylabel("Revenue (€)")
+    plt.title("Revenue nearly tripled in three days")
+    plt.gca()
+    return
+
+
+@app.cell(hide_code=True)
+def _(mo):
+    mo.md(
+        r"""
+    ### Exercise 3.2 (core) — the cherry-picked window
+
+    Tobi's second trick doesn't touch the axis. His "momentum slide" above plots
+    the same `daily` Series you drew in Section 1, but only **days 6 to 8**:
+    49 €, then 97 €, then 138 €. Title: *"Revenue nearly tripled in three
+    days."* Every number on it is true. The lie is what's *missing*: day 6 was
+    the worst day of the fortnight, and the eleven days he cut off don't climb
+    at all.
+
+    The rule: a trend claim needs the whole window, not the three points that
+    flatter it.
+
+    **First, the honest chart (ungraded):** plot all fourteen days of `daily` in
+    the cell below, with the same labels, and look at where days 6 to 8 sit
+    inside the full line.
+
+    **Then, the honest number (graded):** the investor asks what a *typical* day
+    brings in. That's the **mean** of `daily`. Round to 2 decimals and store it,
+    as a plain `float`, in `typical_day_ex32`. The check says which headline
+    the slide gets.
+    """
+    )
+    return
+
+
+@app.cell
+def _(daily, plt):
+    plt.figure()
+    # YOUR CODE BELOW: plot all of daily with xlabel / ylabel / title (ungraded)
+    plt.gca()
+    return
+
+
+@app.cell
+def _():
+    # YOUR CODE BELOW: the mean daily revenue, rounded to 2 (float)
+    typical_day_ex32 = None
+    return (typical_day_ex32,)
+
+
+@app.cell(hide_code=True)
+def _(mo, pd, show_result, typical_day_ex32):
+    if typical_day_ex32 is None:
+        ex32_ok = False
+        _msg = "Not attempted — Exercise 3.2. Assign it to `typical_day_ex32` (a `print` alone doesn't count) and run the cell."
+        _preview = ""
+    else:
+        _preview = show_result(typical_day_ex32)
+        if isinstance(typical_day_ex32, (pd.Series, pd.DataFrame)):
+            ex32_ok = False
+            _msg = "Wrong — Exercise 3.2: that's still the whole `daily` Series. `.mean()` collapses it to one number. Then wrap `float(...)`."
+        else:
+            try:
+                _v = round(float(typical_day_ex32), 2)
+            except (TypeError, ValueError):
+                _v = None
+            if _v is None:
+                ex32_ok = False
+                _msg = "Wrong — Exercise 3.2: this should be a single euro **number**, the average of the fourteen daily totals."
+            elif _v == 103.09:
+                ex32_ok = True
+                _msg = "Correct — Exercise 3.2: **103.09 €** on a typical day. The slide's headline becomes 'about a hundred euros a day, steady': duller than 'tripled', and, unlike it, it survives a question."
+            elif _v == 1443.3:
+                ex32_ok = False
+                _msg = "Wrong — Exercise 3.2: 1443.3 is the *total* of all fourteen days (`.sum()`). A typical day is the *average*: `.mean()`."
+            elif _v == 18.04:
+                ex32_ok = False
+                _msg = "Wrong — Exercise 3.2: 18.04 is the average per *order* (`orders[\"total_eur\"].mean()`). The investor asked per *day*: average `daily`, the Series with one total per day."
+            else:
+                ex32_ok = False
+                _msg = f"Wrong — Exercise 3.2: expected 103.09, got {_v}. Take `daily.mean()` and round to 2."
+    mo.callout(mo.md(_msg + _preview), kind="success" if ex32_ok else "warn")
+    return (ex32_ok,)
+
+
+@app.cell(hide_code=True)
+def _(mo):
+    mo.accordion(
+        {
+            "Hint 1 (a nudge)": "`daily` already holds one number per day. A typical day is the average of those fourteen numbers, the same method you used on columns last week. Round to 2, wrap `float(...)`.",
+            "Hint 2 (the structure)": "typical_day_ex32 = float(round(daily.___(), 2)) (the method that averages a Series)",
         }
     )
     return
@@ -721,7 +1013,7 @@ def _(mo):
 def _(mo):
     mo.md(
         r"""
-    ## 🏆 Boss exercise (core) — assemble the pitch
+    ## Boss exercise (core) — assemble the pitch
 
     One slide, three numbers, no typos. The investor wants a single **summary
     dict** she can read in five seconds (`pitch_ex40`) with exactly these three
@@ -762,23 +1054,23 @@ def _():
 def _(mo, pd, pitch_ex40, show_result):
     if pitch_ex40 is None:
         ex40_ok = False
-        _msg = "🔲 Boss exercise: not attempted yet. Assign it to `pitch_ex40` (a `print` alone doesn't count) and run the cell."
+        _msg = "Not attempted — Boss exercise. Assign it to `pitch_ex40` (a `print` alone doesn't count) and run the cell."
         _preview = ""
     elif isinstance(pitch_ex40, (pd.Series, pd.DataFrame)):
         ex40_ok = False
         _preview = show_result(str(pitch_ex40))
-        _msg = "❌ Boss exercise: that's a pandas object, not a plain dict. Build `{\"revenue\": ..., \"best_zone\": ..., \"orders\": ...}` yourself from the three results."
+        _msg = "Wrong — Boss exercise: that's a pandas object, not a plain dict. Build `{\"revenue\": ..., \"best_zone\": ..., \"orders\": ...}` yourself from the three results."
     elif not isinstance(pitch_ex40, dict):
         ex40_ok = False
         _preview = show_result(pitch_ex40)
-        _msg = "❌ Boss exercise: this should be a **dict** with keys `\"revenue\"`, `\"best_zone\"`, `\"orders\"`."
+        _msg = "Wrong — Boss exercise: this should be a **dict** with keys `\"revenue\"`, `\"best_zone\"`, `\"orders\"`."
     else:
         _preview = show_result(pitch_ex40)
         _needed = {"revenue", "best_zone", "orders"}
         _missing = _needed - set(pitch_ex40)
         if _missing:
             ex40_ok = False
-            _msg = f"❌ Boss exercise: missing key(s): {', '.join(sorted(_missing))}. The dict needs exactly `revenue`, `best_zone`, `orders`."
+            _msg = f"Wrong — Boss exercise: missing key(s): {', '.join(sorted(_missing))}. The dict needs exactly `revenue`, `best_zone`, `orders`."
         else:
             try:
                 _rev = round(float(pitch_ex40["revenue"]), 2)
@@ -791,22 +1083,22 @@ def _(mo, pd, pitch_ex40, show_result):
                 _cnt = None
             if _rev is None or _cnt is None:
                 ex40_ok = False
-                _msg = "❌ Boss exercise: `revenue` should be a euro number and `orders` a whole count. Check what those two entries hold."
+                _msg = "Wrong — Boss exercise: `revenue` should be a euro number and `orders` a whole count. Check what those two entries hold."
             elif not isinstance(_zone, str):
                 ex40_ok = False
-                _msg = "❌ Boss exercise: `best_zone` should be the zone's **name** (a string). Use `.idxmax()` on the per-zone totals, not `.max()`."
+                _msg = "Wrong — Boss exercise: `best_zone` should be the zone's **name** (a string). Use `.idxmax()` on the per-zone totals, not `.max()`."
             elif _rev != 1443.3:
                 ex40_ok = False
-                _msg = f"❌ Boss exercise: `revenue` should be 1443.3 (got {_rev}). Sum `total_eur` across every order and round to 2."
+                _msg = f"Wrong — Boss exercise: `revenue` should be 1443.3 (got {_rev}). Sum `total_eur` across every order and round to 2."
             elif _zone.strip() != "Sued":
                 ex40_ok = False
-                _msg = "❌ Boss exercise: `best_zone` isn't the top earner. The highest *total* revenue belongs to one zone, and `.idxmax()` on your 2.1 breakdown names it."
+                _msg = "Wrong — Boss exercise: `best_zone` isn't the top earner. The highest *total* revenue belongs to one zone, and `.idxmax()` on your 2.1 breakdown names it."
             elif _cnt != 80:
                 ex40_ok = False
-                _msg = f"❌ Boss exercise: `orders` should be 80 (got {_cnt}). That's `len(orders)`."
+                _msg = f"Wrong — Boss exercise: `orders` should be 80 (got {_cnt}). That's `len(orders)`."
             else:
                 ex40_ok = True
-                _msg = "✅ Boss exercise: **{'revenue': 1443.3, 'best_zone': 'Sued', 'orders': 80}**: three honest numbers, all computed, none typed. That's a slide you can defend. 🏆"
+                _msg = "Correct — Boss exercise: **{'revenue': 1443.3, 'best_zone': 'Sued', 'orders': 80}**: three honest numbers, all computed, none typed. That's a slide you can defend."
     mo.callout(mo.md(_msg + _preview), kind="success" if ex40_ok else "warn")
     return (ex40_ok,)
 
@@ -815,8 +1107,8 @@ def _(mo, pd, pitch_ex40, show_result):
 def _(mo):
     mo.accordion(
         {
-            "💡 Hint 1 (a nudge)": "Compute the three pieces first, then put them in a dict. Revenue is `orders[\"total_eur\"].sum()` (round 2). Best zone is `.idxmax()` on the per-zone totals (the LABEL, not the value). Count is `len(orders)`.",
-            "💡 Hint 2 (the structure)": 'pitch_ex40 = {\n    "revenue": float(round(orders["total_eur"].sum(), 2)),\n    "best_zone": orders.groupby("zone")["total_eur"].sum().___(),\n    "orders": int(len(orders)),\n}   (the blank names the top-total zone)',
+            "Hint 1 (a nudge)": "Compute the three pieces first, then put them in a dict. Revenue is `orders[\"total_eur\"].sum()` (round 2). Best zone is `.idxmax()` on the per-zone totals (the LABEL, not the value). Count is `len(orders)`.",
+            "Hint 2 (the structure)": 'pitch_ex40 = {\n "revenue": float(round(orders["total_eur"].sum(), 2)),\n "best_zone": orders.groupby("zone")["total_eur"].sum().___(),\n "orders": int(len(orders)),\n} (the blank names the top-total zone)',
         }
     )
     return
@@ -865,10 +1157,10 @@ def _(mo):
 @app.cell(hide_code=True)
 def _(mo, trace_gca):
     if trace_gca.value is None:
-        _msg = "🔲 Pick a prediction above first. Commit before you peek!"
+        _msg = "Pick a prediction above first. Commit before you peek!"
     elif trace_gca.value.startswith("B"):
         _msg = (
-            "✅ Correct: **B**. `plt.plot(...)` *returns* a list of the line objects "
+            "Correct: **B**. `plt.plot(...)` *returns* a list of the line objects "
             "it drew, so if that's the last line, marimo shows its repr, "
             "`[<matplotlib.lines.Line2D ...>]`, not a picture. `plt.gca()` "
             '("get current axes") returns the axes object marimo knows how to '
@@ -877,7 +1169,7 @@ def _(mo, trace_gca):
         )
     else:
         _msg = (
-            "❌ Not quite: the answer is **B**. Nothing errors, but the last line "
+            "Not quite: the answer is **B**. Nothing errors, but the last line "
             "matters: `plt.plot(...)` returns a *list of line objects*, so cell A "
             "would show `[<matplotlib.lines.Line2D ...>]`. `plt.gca()` returns the "
             "axes, which marimo renders as the actual chart. (Ungraded. The point "
@@ -916,11 +1208,11 @@ def _():
 def _(answer_ex50, mo):
     if answer_ex50 == "":
         ex50_ok = False
-        _msg = "🔲 Quiz: not attempted yet. Set `answer_ex50` to your letter and run the cell."
+        _msg = "Not attempted — Quiz. Set `answer_ex50` to your letter and run the cell."
     elif str(answer_ex50).strip().lower() == "b":
         ex50_ok = True
         _msg = (
-            "✅ Quiz: **b**. *Distribution* (how one column of numbers spreads out) "
+            "Correct — Quiz: **b**. *Distribution* (how one column of numbers spreads out) "
             "is exactly what a **histogram** shows. A line is for change over time, a "
             "bar is for comparing categories, and a scatter is for two numbers per "
             "row. Right question, right chart."
@@ -928,11 +1220,11 @@ def _(answer_ex50, mo):
     else:
         ex50_ok = False
         _msg = (
-            "❌ Quiz: not quite. A line tracks change over time, a bar compares "
+            "Wrong — Quiz: not quite. A line tracks change over time, a bar compares "
             "categories, a scatter relates two numbers. The spread of a *single* "
             "column of values is a **histogram**, which is what 'distributed' asks for."
         )
-    mo.md(_msg)
+    mo.callout(mo.md(_msg), kind="success" if ex50_ok else "warn")
     return (ex50_ok,)
 
 
@@ -943,16 +1235,19 @@ def _(answer_ex50, mo):
 def _(
     ex11_ok,
     ex12_ok,
+    ex13_ok,
     ex21_ok,
     ex22_ok,
     ex23_ok,
+    ex24_ok,
     ex31_ok,
+    ex32_ok,
     ex40_ok,
     ex50_ok,
     mo,
 ):
-    # Progress cell: the 7 core exercises plus the quiz (the trace doesn't count).
-    _checks = [ex11_ok, ex12_ok, ex21_ok, ex22_ok, ex23_ok, ex31_ok, ex40_ok, ex50_ok]
+    # Progress cell: the 10 core exercises plus the quiz (the trace doesn't count).
+    _checks = [ex11_ok, ex12_ok, ex13_ok, ex21_ok, ex22_ok, ex23_ok, ex24_ok, ex31_ok, ex32_ok, ex40_ok, ex50_ok]
     _done = sum(_checks)
     _total = len(_checks)
     _investor = (
@@ -961,7 +1256,7 @@ def _(
         else "The investor is still flipping through the deck, waiting for a chart she can trust."
     )
     mo.callout(
-        mo.md(f"**Core exercises: {_done}/{_total} ✅** · {_investor}"),
+        mo.md(f"**Core exercises: {_done}/{_total} correct** · {_investor}"),
         kind="success" if _done == _total else "neutral",
     )
     return
@@ -971,9 +1266,9 @@ def _(
 def _(mo):
     mo.md(
         r"""
-    ## Before you leave 📊
+    ## Before you leave
 
-    1. Check the progress box above: all **eight** green? If not, reopen the
+    1. Check the progress box above: all **eleven** green? If not, reopen the
        hints, reread the worked examples, and try again. Right chart for the
        question, honest axis, numbers you can defend: that's the whole job.
     2. **Download your work**: **Cmd/Ctrl+S**, then menu → Download → *Download Python code*. This one
@@ -984,7 +1279,7 @@ def _(mo):
 
     ---
 
-    ### 🧰 Homework before Session X — set up the real toolchain
+    ### Homework before Session X — set up the real toolchain
 
     So far everything has run in the browser. The season finale moves to your own
     machine, and four things need to work **before** you arrive, in this order:
@@ -1003,7 +1298,7 @@ def _(mo):
     downloaded lab `.py` from Part I.
 
     **Season finale next:** it opens with **Checkpoint 5** (Sessions VIII–IX), then
-    git, real files on your own disk, and the project kickoff. See you there. 🎬
+    git, real files on your own disk, and the project kickoff. See you there.
     """
     )
     return

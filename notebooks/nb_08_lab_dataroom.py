@@ -10,7 +10,7 @@ def _(mo):
     mo.md(
         r"""
     # Notebook 8.1 — The Data Room
-    **Core exercises: 9 + 1 quiz (+ 1 trace).** Done early? You're free to go. Not done when the session ends? The rest is homework.
+    **Core exercises: 10 + 1 quiz (+ 1 trace).** Done early? You're free to go. Not done when the session ends? The rest is homework.
 
     MunchCorp went to the press with "data-driven growth". The investor was not
     impressed by a slide; she was impressed by *data*. So she slides a USB stick
@@ -40,9 +40,24 @@ def _(mo):
 def _(mo):
     mo.callout(
         mo.md(
-            "💾 **Saving your work:** this notebook runs in your browser. Press "
+            "**Saving your work:** this notebook runs in your browser. Press "
             "**Cmd/Ctrl+S** to save, and always save **before** menu → Download → "
             "*Download Python code*. Without a save first, the download is an empty file."
+        ),
+        kind="info",
+    )
+    return
+
+
+@app.cell(hide_code=True)
+def _(mo):
+    mo.callout(
+        mo.md(
+            "**How this notebook works:** run a cell with **Cmd/Ctrl+Enter**. "
+            "Only edit the cells that contain `# YOUR CODE BELOW`; the check under "
+            "each exercise updates by itself. A red error pauses everything below "
+            "it, so fix that cell first. New here? Read "
+            "[How the notebook works](https://python.tobiasvlcek.com/general/notebooks.html)."
         ),
         kind="info",
     )
@@ -169,13 +184,13 @@ def _():
 def _(mo, pd, rows_ex11, show_result):
     if rows_ex11 is None:
         ex11_ok = False
-        _msg = "🔲 Exercise 1.1: not attempted yet. Assign it to `rows_ex11` (a `print` alone doesn't count) and run the cell."
+        _msg = "Not attempted — Exercise 1.1. Assign it to `rows_ex11` (a `print` alone doesn't count) and run the cell."
         _preview = ""
     else:
         _preview = show_result(rows_ex11)
         if isinstance(rows_ex11, (pd.Series, pd.DataFrame)):
             ex11_ok = False
-            _msg = "❌ Exercise 1.1: that's still a whole table/column. `len(orders)` collapses it to one number. Wrap `int(...)` around it."
+            _msg = "Wrong — Exercise 1.1: that's still a whole table/column. `len(orders)` collapses it to one number. Wrap `int(...)` around it."
         else:
             try:
                 _n = int(rows_ex11)
@@ -183,16 +198,16 @@ def _(mo, pd, rows_ex11, show_result):
                 _n = None
             if _n is None:
                 ex11_ok = False
-                _msg = "❌ Exercise 1.1: this should be a whole **number**, the row count from `int(len(orders))`."
+                _msg = "Wrong — Exercise 1.1: this should be a whole **number**, the row count from `int(len(orders))`."
             elif _n == 80:
                 ex11_ok = True
-                _msg = "✅ Exercise 1.1: **80** orders. `len(orders)` counts the rows for you: no scrolling, no miscount."
+                _msg = "Correct — Exercise 1.1: **80** orders. `len(orders)` counts the rows for you: no scrolling, no miscount."
             elif _n == 9:
                 ex11_ok = False
-                _msg = "❌ Exercise 1.1: 9 is the number of *columns*, not rows. `len(orders)` counts rows; columns come next in 1.2."
+                _msg = "Wrong — Exercise 1.1: 9 is the number of *columns*, not rows. `len(orders)` counts rows; columns come next in 1.2."
             else:
                 ex11_ok = False
-                _msg = f"❌ Exercise 1.1: expected 80, got {_n}. `int(len(orders))` counts every row in the file."
+                _msg = f"Wrong — Exercise 1.1: expected 80, got {_n}. `int(len(orders))` counts every row in the file."
     mo.callout(mo.md(_msg + _preview), kind="success" if ex11_ok else "warn")
     return (ex11_ok,)
 
@@ -201,8 +216,8 @@ def _(mo, pd, rows_ex11, show_result):
 def _(mo):
     mo.accordion(
         {
-            "💡 Hint 1 (a nudge)": "`len(...)` counts the rows of a DataFrame, exactly like it counts a list. Wrap `int(...)` around it so it's a plain whole number.",
-            "💡 Hint 2 (the structure)": "rows_ex11 = int(len(___))   (the blank is the DataFrame the file was loaded into)",
+            "Hint 1 (a nudge)": "`len(...)` counts the rows of a DataFrame, exactly like it counts a list. Wrap `int(...)` around it so it's a plain whole number.",
+            "Hint 2 (the structure)": "rows_ex11 = int(len(___)) (the blank is the DataFrame the file was loaded into)",
         }
     )
     return
@@ -234,16 +249,16 @@ def _():
 def _(mo, n_cols_ex12, pd, show_result):
     if n_cols_ex12 is None:
         ex12_ok = False
-        _msg = "🔲 Exercise 1.2: not attempted yet. Assign it to `n_cols_ex12` (a `print` alone doesn't count) and run the cell."
+        _msg = "Not attempted — Exercise 1.2. Assign it to `n_cols_ex12` (a `print` alone doesn't count) and run the cell."
         _preview = ""
     else:
         _preview = show_result(n_cols_ex12)
         if isinstance(n_cols_ex12, (pd.Series, pd.DataFrame)):
             ex12_ok = False
-            _msg = "❌ Exercise 1.2: that's still a table/column. You want one number: `orders.shape[1]`."
+            _msg = "Wrong — Exercise 1.2: that's still a table/column. You want one number: `orders.shape[1]`."
         elif isinstance(n_cols_ex12, tuple):
             ex12_ok = False
-            _msg = "❌ Exercise 1.2: that's the whole `(rows, columns)` pair. Pick the second item with `[1]`, then `int(...)`."
+            _msg = "Wrong — Exercise 1.2: that's the whole `(rows, columns)` pair. Pick the second item with `[1]`, then `int(...)`."
         else:
             try:
                 _n = int(n_cols_ex12)
@@ -251,16 +266,16 @@ def _(mo, n_cols_ex12, pd, show_result):
                 _n = None
             if _n is None:
                 ex12_ok = False
-                _msg = "❌ Exercise 1.2: this should be a whole **number**: the column count from `int(orders.shape[1])`."
+                _msg = "Wrong — Exercise 1.2: this should be a whole **number**: the column count from `int(orders.shape[1])`."
             elif _n == 9:
                 ex12_ok = True
-                _msg = "✅ Exercise 1.2: **9** columns. `orders.shape` is `(80, 9)`; `[1]` picks the width. Nine facts per order to slice."
+                _msg = "Correct — Exercise 1.2: **9** columns. `orders.shape` is `(80, 9)`; `[1]` picks the width. Nine facts per order to slice."
             elif _n == 80:
                 ex12_ok = False
-                _msg = "❌ Exercise 1.2: 80 is the *row* count, which is `shape[0]`. The number of columns is `shape[1]`."
+                _msg = "Wrong — Exercise 1.2: 80 is the *row* count, which is `shape[0]`. The number of columns is `shape[1]`."
             else:
                 ex12_ok = False
-                _msg = f"❌ Exercise 1.2: expected 9, got {_n}. Take the second item of `orders.shape`: `int(orders.shape[1])`."
+                _msg = f"Wrong — Exercise 1.2: expected 9, got {_n}. Take the second item of `orders.shape`: `int(orders.shape[1])`."
     mo.callout(mo.md(_msg + _preview), kind="success" if ex12_ok else "warn")
     return (ex12_ok,)
 
@@ -269,8 +284,8 @@ def _(mo, n_cols_ex12, pd, show_result):
 def _(mo):
     mo.accordion(
         {
-            "💡 Hint 1 (a nudge)": "`orders.shape` gives `(rows, columns)`. Index it with `[1]` to grab the column count (positions start at 0, so `[0]` is rows and `[1]` is columns).",
-            "💡 Hint 2 (the structure)": "n_cols_ex12 = int(orders.shape[___])   (the blank picks the columns half of the `(rows, columns)` pair)",
+            "Hint 1 (a nudge)": "`orders.shape` gives `(rows, columns)`. Index it with `[1]` to grab the column count (positions start at 0, so `[0]` is rows and `[1]` is columns).",
+            "Hint 2 (the structure)": "n_cols_ex12 = int(orders.shape[___]) (the blank picks the columns half of the `(rows, columns)` pair)",
         }
     )
     return
@@ -301,13 +316,13 @@ def _():
 def _(mo, pd, revenue_ex13, show_result):
     if revenue_ex13 is None:
         ex13_ok = False
-        _msg = "🔲 Exercise 1.3: not attempted yet. Assign it to `revenue_ex13` (a `print` alone doesn't count) and run the cell."
+        _msg = "Not attempted — Exercise 1.3. Assign it to `revenue_ex13` (a `print` alone doesn't count) and run the cell."
         _preview = ""
     else:
         _preview = show_result(revenue_ex13)
         if isinstance(revenue_ex13, (pd.Series, pd.DataFrame)):
             ex13_ok = False
-            _msg = "❌ Exercise 1.3: that's still the whole column. `.sum()` collapses it to one number. Then wrap `float(...)`."
+            _msg = "Wrong — Exercise 1.3: that's still the whole column. `.sum()` collapses it to one number. Then wrap `float(...)`."
         else:
             try:
                 _v = round(float(revenue_ex13), 2)
@@ -315,13 +330,13 @@ def _(mo, pd, revenue_ex13, show_result):
                 _v = None
             if _v is None:
                 ex13_ok = False
-                _msg = "❌ Exercise 1.3: this should be a single euro **number**. Total the `total_eur` column with `.sum()`."
+                _msg = "Wrong — Exercise 1.3: this should be a single euro **number**. Total the `total_eur` column with `.sum()`."
             elif _v == 1443.3:
                 ex13_ok = True
-                _msg = "✅ Exercise 1.3: **1443.3 €** over two weeks. `orders[\"total_eur\"].sum()` added all eighty orders in one line, no calculator, no loop."
+                _msg = "Correct — Exercise 1.3: **1443.3 €** over two weeks. `orders[\"total_eur\"].sum()` added all eighty orders in one line, no calculator, no loop."
             else:
                 ex13_ok = False
-                _msg = f"❌ Exercise 1.3: expected 1443.3, got {_v}. Total the euro column: `orders[\"total_eur\"].sum()`."
+                _msg = f"Wrong — Exercise 1.3: expected 1443.3, got {_v}. Total the euro column: `orders[\"total_eur\"].sum()`."
     mo.callout(mo.md(_msg + _preview), kind="success" if ex13_ok else "warn")
     return (ex13_ok,)
 
@@ -330,8 +345,8 @@ def _(mo, pd, revenue_ex13, show_result):
 def _(mo):
     mo.accordion(
         {
-            "💡 Hint 1 (a nudge)": 'Reach into one column by name in square brackets, `orders["total_eur"]`, then ask it to `.sum()`. Wrap `float(...)` around the result.',
-            "💡 Hint 2 (the structure)": 'revenue_ex13 = float(orders["___"].sum())   (the blank is the name of the euros column)',
+            "Hint 1 (a nudge)": 'Reach into one column by name in square brackets, `orders["total_eur"]`, then ask it to `.sum()`. Wrap `float(...)` around the result.',
+            "Hint 2 (the structure)": 'revenue_ex13 = float(orders["___"].sum()) (the blank is the name of the euros column)',
         }
     )
     return
@@ -401,13 +416,13 @@ def _():
 def _(mo, nord_count_ex21, pd, show_result):
     if nord_count_ex21 is None:
         ex21_ok = False
-        _msg = "🔲 Exercise 2.1: not attempted yet. Assign it to `nord_count_ex21` (a `print` alone doesn't count) and run the cell."
+        _msg = "Not attempted — Exercise 2.1. Assign it to `nord_count_ex21` (a `print` alone doesn't count) and run the cell."
         _preview = ""
     else:
         _preview = show_result(nord_count_ex21)
         if isinstance(nord_count_ex21, (pd.Series, pd.DataFrame)):
             ex21_ok = False
-            _msg = "❌ Exercise 2.1: that's the filtered rows themselves. Wrap `len(...)` around the filter to count them, then `int(...)`."
+            _msg = "Wrong — Exercise 2.1: that's the filtered rows themselves. Wrap `len(...)` around the filter to count them, then `int(...)`."
         else:
             try:
                 _c = int(nord_count_ex21)
@@ -415,19 +430,19 @@ def _(mo, nord_count_ex21, pd, show_result):
                 _c = None
             if _c is None:
                 ex21_ok = False
-                _msg = "❌ Exercise 2.1: this should be a whole **number** of Nord orders. Count the filtered rows with `len(...)`."
+                _msg = "Wrong — Exercise 2.1: this should be a whole **number** of Nord orders. Count the filtered rows with `len(...)`."
             elif _c == 22:
                 ex21_ok = True
-                _msg = "✅ Exercise 2.1: **22** orders from Nord. The mask `orders[\"zone\"] == \"Nord\"` kept only Nord's rows; `len(...)` counted them."
+                _msg = "Correct — Exercise 2.1: **22** orders from Nord. The mask `orders[\"zone\"] == \"Nord\"` kept only Nord's rows; `len(...)` counted them."
             elif _c == 80:
                 ex21_ok = False
-                _msg = "❌ Exercise 2.1: 80 is *every* order. You counted the whole table. Filter to `zone == \"Nord\"` first, then count."
+                _msg = "Wrong — Exercise 2.1: 80 is *every* order. You counted the whole table. Filter to `zone == \"Nord\"` first, then count."
             elif _c == 0:
                 ex21_ok = False
-                _msg = "❌ Exercise 2.1: zero rows: pandas is case-sensitive, so check the spelling (\"Nord\", capital N)."
+                _msg = "Wrong — Exercise 2.1: zero rows: pandas is case-sensitive, so check the spelling (\"Nord\", capital N)."
             else:
                 ex21_ok = False
-                _msg = f"❌ Exercise 2.1: expected 22, got {_c}. Filter with `orders[orders[\"zone\"] == \"Nord\"]`, then `len(...)`."
+                _msg = f"Wrong — Exercise 2.1: expected 22, got {_c}. Filter with `orders[orders[\"zone\"] == \"Nord\"]`, then `len(...)`."
     mo.callout(mo.md(_msg + _preview), kind="success" if ex21_ok else "warn")
     return (ex21_ok,)
 
@@ -436,8 +451,8 @@ def _(mo, nord_count_ex21, pd, show_result):
 def _(mo):
     mo.accordion(
         {
-            "💡 Hint 1 (a nudge)": 'Build the mask `orders["zone"] == "Nord"`, use it to filter `orders`, then `len(...)` counts the rows that survived. Wrap `int(...)`.',
-            "💡 Hint 2 (the structure)": 'nord_count_ex21 = int(len(orders[orders["zone"] == "___"]))   (the blank is the zone name, spelled exactly)',
+            "Hint 1 (a nudge)": 'Build the mask `orders["zone"] == "Nord"`, use it to filter `orders`, then `len(...)` counts the rows that survived. Wrap `int(...)`.',
+            "Hint 2 (the structure)": 'nord_count_ex21 = int(len(orders[orders["zone"] == "___"])) (the blank is the zone name, spelled exactly)',
         }
     )
     return
@@ -489,13 +504,13 @@ def _():
 def _(mo, pd, show_result, sued_bulk_ex22):
     if sued_bulk_ex22 is None:
         ex22_ok = False
-        _msg = "🔲 Exercise 2.2: not attempted yet. Assign it to `sued_bulk_ex22` (a `print` alone doesn't count) and run the cell."
+        _msg = "Not attempted — Exercise 2.2. Assign it to `sued_bulk_ex22` (a `print` alone doesn't count) and run the cell."
         _preview = ""
     else:
         _preview = show_result(sued_bulk_ex22)
         if isinstance(sued_bulk_ex22, (pd.Series, pd.DataFrame)):
             ex22_ok = False
-            _msg = "❌ Exercise 2.2: that's the filtered rows themselves. Wrap `len(...)` around the two-condition filter, then `int(...)`."
+            _msg = "Wrong — Exercise 2.2: that's the filtered rows themselves. Wrap `len(...)` around the two-condition filter, then `int(...)`."
         else:
             try:
                 _c = int(sued_bulk_ex22)
@@ -503,16 +518,16 @@ def _(mo, pd, show_result, sued_bulk_ex22):
                 _c = None
             if _c is None:
                 ex22_ok = False
-                _msg = "❌ Exercise 2.2: this should be a whole **number**: count the rows that pass *both* conditions."
+                _msg = "Wrong — Exercise 2.2: this should be a whole **number**: count the rows that pass *both* conditions."
             elif _c == 15:
                 ex22_ok = True
-                _msg = "✅ Exercise 2.2: **15** Sued orders with 2+ items. `(zone == \"Sued\") & (items >= 2)`: two masks, each parenthesized, joined with `&`."
+                _msg = "Correct — Exercise 2.2: **15** Sued orders with 2+ items. `(zone == \"Sued\") & (items >= 2)`: two masks, each parenthesized, joined with `&`."
             elif _c == 19:
                 ex22_ok = False
-                _msg = "❌ Exercise 2.2: 19 is *all* Sued orders. You dropped the items condition. Add `& (orders[\"items\"] >= 2)`."
+                _msg = "Wrong — Exercise 2.2: 19 is *all* Sued orders. You dropped the items condition. Add `& (orders[\"items\"] >= 2)`."
             else:
                 ex22_ok = False
-                _msg = f"❌ Exercise 2.2: expected 15, got {_c}. Join both masks with `&`, each in its own parentheses, then `len(...)`."
+                _msg = f"Wrong — Exercise 2.2: expected 15, got {_c}. Join both masks with `&`, each in its own parentheses, then `len(...)`."
     mo.callout(mo.md(_msg + _preview), kind="success" if ex22_ok else "warn")
     return (ex22_ok,)
 
@@ -521,8 +536,8 @@ def _(mo, pd, show_result, sued_bulk_ex22):
 def _(mo):
     mo.accordion(
         {
-            "💡 Hint 1 (a nudge)": 'Two masks joined by `&`. Wrap EACH mask in its own parentheses: `(orders["zone"] == "Sued") & (orders["items"] >= 2)`. Then filter, `len(...)`, `int(...)`.',
-            "💡 Hint 2 (the structure)": 'sued_bulk_ex22 = int(len(orders[(orders["zone"] == "___") & (orders["items"] >= ___)]))   (zone name in the first blank, the minimum item count in the second)',
+            "Hint 1 (a nudge)": 'Two masks joined by `&`. Wrap EACH mask in its own parentheses: `(orders["zone"] == "Sued") & (orders["items"] >= 2)`. Then filter, `len(...)`, `int(...)`.',
+            "Hint 2 (the structure)": 'sued_bulk_ex22 = int(len(orders[(orders["zone"] == "___") & (orders["items"] >= ___)])) (zone name in the first blank, the minimum item count in the second)',
         }
     )
     return
@@ -564,13 +579,13 @@ def _():
 def _(hafen_revenue_ex23, mo, pd, show_result):
     if hafen_revenue_ex23 is None:
         ex23_ok = False
-        _msg = "🔲 Exercise 2.3: not attempted yet. Assign it to `hafen_revenue_ex23` (a `print` alone doesn't count) and run the cell."
+        _msg = "Not attempted — Exercise 2.3. Assign it to `hafen_revenue_ex23` (a `print` alone doesn't count) and run the cell."
         _preview = ""
     else:
         _preview = show_result(hafen_revenue_ex23)
         if isinstance(hafen_revenue_ex23, (pd.Series, pd.DataFrame)):
             ex23_ok = False
-            _msg = "❌ Exercise 2.3: that's still a column/table. `.sum()` collapses it to one number. Then wrap `float(...)`."
+            _msg = "Wrong — Exercise 2.3: that's still a column/table. `.sum()` collapses it to one number. Then wrap `float(...)`."
         else:
             try:
                 _v = round(float(hafen_revenue_ex23), 2)
@@ -578,19 +593,19 @@ def _(hafen_revenue_ex23, mo, pd, show_result):
                 _v = None
             if _v is None:
                 ex23_ok = False
-                _msg = "❌ Exercise 2.3: this should be a single euro **number**, Hafen's total. Filter, take `total_eur`, `.sum()`."
+                _msg = "Wrong — Exercise 2.3: this should be a single euro **number**, Hafen's total. Filter, take `total_eur`, `.sum()`."
             elif _v == 0.0:
                 ex23_ok = False
-                _msg = "❌ Exercise 2.3: 0.0 means your filter matched **no rows**: no error, just an empty table summed. Case matters. The zone is spelled \"Hafen\" (capital H), the column is \"zone\" (lowercase)."
+                _msg = "Wrong — Exercise 2.3: 0.0 means your filter matched **no rows**: no error, just an empty table summed. Case matters. The zone is spelled \"Hafen\" (capital H), the column is \"zone\" (lowercase)."
             elif _v == 325.3:
                 ex23_ok = True
-                _msg = "✅ Exercise 2.3: **325.3 €** from Hafen. You caught Tobi's KeyError (lowercase `zone`) and the red cell went green again."
+                _msg = "Correct — Exercise 2.3: **325.3 €** from Hafen. You caught Tobi's KeyError (lowercase `zone`) and the red cell went green again."
             elif _v == 1443.3:
                 ex23_ok = False
-                _msg = "❌ Exercise 2.3: 1443.3 is *every* zone's revenue. You forgot to filter. Keep only `zone == \"Hafen\"` first."
+                _msg = "Wrong — Exercise 2.3: 1443.3 is *every* zone's revenue. You forgot to filter. Keep only `zone == \"Hafen\"` first."
             else:
                 ex23_ok = False
-                _msg = f"❌ Exercise 2.3: expected 325.3, got {_v}. Filter to `orders[\"zone\"] == \"Hafen\"`, then `[\"total_eur\"].sum()`."
+                _msg = f"Wrong — Exercise 2.3: expected 325.3, got {_v}. Filter to `orders[\"zone\"] == \"Hafen\"`, then `[\"total_eur\"].sum()`."
     mo.callout(mo.md(_msg + _preview), kind="success" if ex23_ok else "warn")
     return (ex23_ok,)
 
@@ -599,8 +614,8 @@ def _(hafen_revenue_ex23, mo, pd, show_result):
 def _(mo):
     mo.accordion(
         {
-            "💡 Hint 1 (a nudge)": "Read the KeyError's last line: which column name does pandas say it can't find? Compare it letter by letter with what `orders.head()` shows.",
-            "💡 Hint 2 (the structure)": 'hafen_revenue_ex23 = float(orders[orders["zone"] == "___"]["total_eur"].sum())   (lowercase column name in the mask, the zone name in the blank)',
+            "Hint 1 (a nudge)": "Read the KeyError's last line: which column name does pandas say it can't find? Compare it letter by letter with what `orders.head()` shows.",
+            "Hint 2 (the structure)": 'hafen_revenue_ex23 = float(orders[orders["zone"] == "___"]["total_eur"].sum()) (lowercase column name in the mask, the zone name in the blank)',
         }
     )
     return
@@ -672,13 +687,13 @@ def _():
 def _(max_per_item_ex31, mo, pd, show_result):
     if max_per_item_ex31 is None:
         ex31_ok = False
-        _msg = "🔲 Exercise 3.1: not attempted yet. Assign it to `max_per_item_ex31` (a `print` alone doesn't count) and run the cell."
+        _msg = "Not attempted — Exercise 3.1. Assign it to `max_per_item_ex31` (a `print` alone doesn't count) and run the cell."
         _preview = ""
     else:
         _preview = show_result(max_per_item_ex31)
         if isinstance(max_per_item_ex31, (pd.Series, pd.DataFrame)):
             ex31_ok = False
-            _msg = "❌ Exercise 3.1: that's still a whole column. `.max()` picks the single biggest value. Then wrap `float(...)`."
+            _msg = "Wrong — Exercise 3.1: that's still a whole column. `.max()` picks the single biggest value. Then wrap `float(...)`."
         else:
             try:
                 _v = round(float(max_per_item_ex31), 2)
@@ -686,16 +701,16 @@ def _(max_per_item_ex31, mo, pd, show_result):
                 _v = None
             if _v is None:
                 ex31_ok = False
-                _msg = "❌ Exercise 3.1: this should be a single **number**, the highest `eur_per_item`."
+                _msg = "Wrong — Exercise 3.1: this should be a single **number**, the highest `eur_per_item`."
             elif _v == 11.5:
                 ex31_ok = True
-                _msg = "✅ Exercise 3.1: **11.50 €** per item: that's the Miso Ramen, the priciest dish on the menu. And you did it on a copy, leaving `orders` untouched. 🍜"
+                _msg = "Correct — Exercise 3.1: **11.50 €** per item: that's the Miso Ramen, the priciest dish on the menu. And you did it on a copy, leaving `orders` untouched."
             elif _v == 34.5:
                 ex31_ok = False
-                _msg = "❌ Exercise 3.1: 34.5 is a whole *order's* total (3 × Miso Ramen), not the per-item price. Divide `total_eur` by `items` first, then take the max."
+                _msg = "Wrong — Exercise 3.1: 34.5 is a whole *order's* total (3 × Miso Ramen), not the per-item price. Divide `total_eur` by `items` first, then take the max."
             else:
                 ex31_ok = False
-                _msg = f"❌ Exercise 3.1: expected 11.5, got {_v}. Add `eur_per_item = total_eur / items` on a copy, then `.max()`."
+                _msg = f"Wrong — Exercise 3.1: expected 11.5, got {_v}. Add `eur_per_item = total_eur / items` on a copy, then `.max()`."
     mo.callout(mo.md(_msg + _preview), kind="success" if ex31_ok else "warn")
     return (ex31_ok,)
 
@@ -704,8 +719,8 @@ def _(max_per_item_ex31, mo, pd, show_result):
 def _(mo):
     mo.accordion(
         {
-            "💡 Hint 1 (a nudge)": "Copy first (`_priced = orders.copy()`), add the column by dividing two columns (`_priced[\"total_eur\"] / _priced[\"items\"]`), then ask that new column for its `.max()`.",
-            "💡 Hint 2 (the structure)": '_priced = orders.copy()\n_priced["eur_per_item"] = _priced["total_eur"] / _priced["items"]\nmax_per_item_ex31 = float(round(_priced["eur_per_item"].___(), 2))   (the method that finds the biggest value)',
+            "Hint 1 (a nudge)": "Copy first (`_priced = orders.copy()`), add the column by dividing two columns (`_priced[\"total_eur\"] / _priced[\"items\"]`), then ask that new column for its `.max()`.",
+            "Hint 2 (the structure)": '_priced = orders.copy()\n_priced["eur_per_item"] = _priced["total_eur"] / _priced["items"]\nmax_per_item_ex31 = float(round(_priced["eur_per_item"].___(), 2)) (the method that finds the biggest value)',
         }
     )
     return
@@ -752,19 +767,19 @@ def _(by_zone_ex32, mo, pd, show_result):
     _expected = {"Altstadt": 376.2, "Hafen": 325.3, "Nord": 345.9, "Sued": 395.9}
     if by_zone_ex32 is None:
         ex32_ok = False
-        _msg = "🔲 Exercise 3.2: not attempted yet. Assign it to `by_zone_ex32` (a `print` alone doesn't count) and run the cell."
+        _msg = "Not attempted — Exercise 3.2. Assign it to `by_zone_ex32` (a `print` alone doesn't count) and run the cell."
         _preview = ""
     else:
         _preview = show_result(by_zone_ex32)
         if isinstance(by_zone_ex32, pd.Series):
             ex32_ok = False
-            _msg = "❌ Exercise 3.2: that's a **Series**, not a dict. `.to_dict()` finishes the job. Add it to the end of your groupby."
+            _msg = "Wrong — Exercise 3.2: that's a **Series**, not a dict. `.to_dict()` finishes the job. Add it to the end of your groupby."
         elif isinstance(by_zone_ex32, pd.DataFrame):
             ex32_ok = False
-            _msg = "❌ Exercise 3.2: that's a whole table. Pick the `total_eur` column *before* summing: `.groupby(\"zone\")[\"total_eur\"].sum()`, then `.to_dict()`."
+            _msg = "Wrong — Exercise 3.2: that's a whole table. Pick the `total_eur` column *before* summing: `.groupby(\"zone\")[\"total_eur\"].sum()`, then `.to_dict()`."
         elif not isinstance(by_zone_ex32, dict):
             ex32_ok = False
-            _msg = "❌ Exercise 3.2: this should be a **dict** of zone → euros. Finish the groupby with `.round(2).to_dict()`."
+            _msg = "Wrong — Exercise 3.2: this should be a **dict** of zone → euros. Finish the groupby with `.round(2).to_dict()`."
         else:
             try:
                 _got = {str(_k): round(float(_v), 2) for _k, _v in by_zone_ex32.items()}
@@ -772,16 +787,16 @@ def _(by_zone_ex32, mo, pd, show_result):
                 _got = None
             if _got is None:
                 ex32_ok = False
-                _msg = "❌ Exercise 3.2: the values should be euro numbers. Group by `zone`, sum `total_eur`, then `.round(2).to_dict()`."
+                _msg = "Wrong — Exercise 3.2: the values should be euro numbers. Group by `zone`, sum `total_eur`, then `.round(2).to_dict()`."
             elif _got == _expected:
                 ex32_ok = True
-                _msg = "✅ Exercise 3.2: four zones, four totals, one line. That's the `groupby` idea: split by a category, compute once per group. No loop in sight."
+                _msg = "Correct — Exercise 3.2: four zones, four totals, one line. That's the `groupby` idea: split by a category, compute once per group. No loop in sight."
             elif set(_got) != set(_expected):
                 ex32_ok = False
-                _msg = "❌ Exercise 3.2: the zones don't match. You should have exactly the four keys 'Altstadt', 'Hafen', 'Nord', 'Sued'. Group by `zone`."
+                _msg = "Wrong — Exercise 3.2: the zones don't match. You should have exactly the four keys 'Altstadt', 'Hafen', 'Nord', 'Sued'. Group by `zone`."
             else:
                 ex32_ok = False
-                _msg = "❌ Exercise 3.2: right zones, wrong totals. Sum `total_eur` per group: `orders.groupby(\"zone\")[\"total_eur\"].sum().round(2).to_dict()`."
+                _msg = "Wrong — Exercise 3.2: right zones, wrong totals. Sum `total_eur` per group: `orders.groupby(\"zone\")[\"total_eur\"].sum().round(2).to_dict()`."
     mo.callout(mo.md(_msg + _preview), kind="success" if ex32_ok else "warn")
     return (ex32_ok,)
 
@@ -790,8 +805,85 @@ def _(by_zone_ex32, mo, pd, show_result):
 def _(mo):
     mo.accordion(
         {
-            "💡 Hint 1 (a nudge)": 'Three links in a chain: `.groupby("zone")` splits the rows, `["total_eur"].sum()` totals each group, and `.round(2).to_dict()` turns the Series into a clean dict.',
-            "💡 Hint 2 (the structure)": 'by_zone_ex32 = orders.groupby("___")["total_eur"].sum().round(2).___()   (the blank group key is the zone column; the final method turns a Series into a dict)',
+            "Hint 1 (a nudge)": 'Three links in a chain: `.groupby("zone")` splits the rows, `["total_eur"].sum()` totals each group, and `.round(2).to_dict()` turns the Series into a clean dict.',
+            "Hint 2 (the structure)": 'by_zone_ex32 = orders.groupby("___")["total_eur"].sum().round(2).___() (the blank group key is the zone column; the final method turns a Series into a dict)',
+        }
+    )
+    return
+
+
+@app.cell(hide_code=True)
+def _(mo):
+    mo.md(
+        r"""
+    ### Exercise 3.3 (core) — the one-zone worry
+
+    The investor reads your 3.2 breakdown and frowns at the biggest number. Her
+    rule: **if a single zone brings in more than 30 % of the revenue, this is a
+    "one-zone company"** and she wants a diversification plan before another
+    cent. Under 30 %, the spread is healthy and the driver map stands.
+
+    No new pandas needed: everything is already in `by_zone_ex32`. The biggest
+    value in that dict is the top zone's euros, and its four values add up to
+    the whole two weeks. Compute the top zone's **share in percent**, rounded
+    to 2 decimals as a plain `float`, and store it in `top_share_ex33`.
+    """
+    )
+    return
+
+
+@app.cell
+def _():
+    # YOUR CODE BELOW: top zone's euros / all zones' euros * 100, from by_zone_ex32 (round 2)
+    top_share_ex33 = None
+    return (top_share_ex33,)
+
+
+@app.cell(hide_code=True)
+def _(by_zone_ex32, mo, pd, show_result, top_share_ex33):
+    if by_zone_ex32 is None:
+        ex33_ok = False
+        _msg = "Not attempted — Exercise 3.3: finish 3.2 first. This one reads `by_zone_ex32`, which is still `None`."
+        _preview = ""
+    elif top_share_ex33 is None:
+        ex33_ok = False
+        _msg = "Not attempted — Exercise 3.3. Assign it to `top_share_ex33` (a `print` alone doesn't count) and run the cell."
+        _preview = ""
+    else:
+        _preview = show_result(top_share_ex33)
+        if isinstance(top_share_ex33, (pd.Series, pd.DataFrame)):
+            ex33_ok = False
+            _msg = "Wrong — Exercise 3.3: that's a whole column/table. The share is one number: `max(...)` over `sum(...)` of the dict's values, times 100."
+        else:
+            try:
+                _v = round(float(top_share_ex33), 2)
+            except (TypeError, ValueError):
+                _v = None
+            if _v is None or pd.isna(_v):
+                ex33_ok = False
+                _msg = "Wrong — Exercise 3.3: this should be a single **percentage**. Divide the biggest value of `by_zone_ex32` by the sum of all its values, times 100."
+            elif _v == 27.43:
+                ex33_ok = True
+                _msg = "Correct — Exercise 3.3: **27.43 %**. The top zone carries barely more than a quarter of the revenue, under the 30 % line. The investor drops the one-zone worry, and the driver map stands."
+            elif _v == 0.27:
+                ex33_ok = False
+                _msg = "Wrong — Exercise 3.3: 0.27 is the share as a fraction. The investor thinks in percent: multiply by 100."
+            elif _v == 395.9:
+                ex33_ok = False
+                _msg = "Wrong — Exercise 3.3: 395.9 is the top zone's euros, not its share. Divide by the sum of all four zones' values, then times 100."
+            else:
+                ex33_ok = False
+                _msg = f"Wrong — Exercise 3.3: expected 27.43, got {_v}. `max(by_zone_ex32.values())` over `sum(by_zone_ex32.values())`, times 100, rounded to 2. If 3.2 isn't green yet, fix that first."
+    mo.callout(mo.md(_msg + _preview), kind="success" if ex33_ok else "warn")
+    return (ex33_ok,)
+
+
+@app.cell(hide_code=True)
+def _(mo):
+    mo.accordion(
+        {
+            "Hint 1 (a nudge)": "No filtering, no groupby: read the dict from 3.2. `max(...)` of its values is the top zone's euros, `sum(...)` of its values is the whole revenue. Divide, multiply by 100, `round(..., 2)`, wrap `float(...)`.",
+            "Hint 2 (the structure)": "top_share_ex33 = float(round(max(by_zone_ex32.___()) / sum(by_zone_ex32.___()) * 100, 2)) (both blanks are the dict method that hands back just the numbers, not the zone names)",
         }
     )
     return
@@ -804,7 +896,7 @@ def _(mo):
 def _(mo):
     mo.md(
         r"""
-    ## 🏆 Boss exercise (core) — the investor's real question
+    ## Boss exercise (core) — the investor's real question
 
     The totals in 3.2 crown one winner. But the investor asks a trickier
     question: **which zone has the highest AVERAGE order value?** A total
@@ -842,28 +934,28 @@ def _():
 def _(best_avg_zone_ex40, mo, pd, show_result):
     if best_avg_zone_ex40 is None:
         ex40_ok = False
-        _msg = "🔲 Boss exercise: not attempted yet. Assign it to `best_avg_zone_ex40` (a `print` alone doesn't count) and run the cell."
+        _msg = "Not attempted — Boss exercise. Assign it to `best_avg_zone_ex40` (a `print` alone doesn't count) and run the cell."
         _preview = ""
     elif isinstance(best_avg_zone_ex40, str):
         _preview = show_result(best_avg_zone_ex40)
         _v = best_avg_zone_ex40.strip()
         if _v == "Sued":
             ex40_ok = True
-            _msg = "✅ Boss exercise: **Sued**, with the highest average order value (about 20.84 €), *and* it happened to top total revenue too. `.mean()` then `.idxmax()` named the winner for you. 🏆"
+            _msg = "Correct — Boss exercise: **Sued**, with the highest average order value (about 20.84 €), *and* it happened to top total revenue too. `.mean()` then `.idxmax()` named the winner for you."
         elif _v in {"Nord", "Hafen", "Altstadt"}:
             ex40_ok = False
-            _msg = "❌ Boss exercise: that zone doesn't have the highest *average*. Group by zone, take `.mean()` of `total_eur`, then `.idxmax()` for the label."
+            _msg = "Wrong — Boss exercise: that zone doesn't have the highest *average*. Group by zone, take `.mean()` of `total_eur`, then `.idxmax()` for the label."
         else:
             ex40_ok = False
-            _msg = "❌ Boss exercise: that isn't one of the four zone names. `.idxmax()` should return 'Nord', 'Sued', 'Hafen' or 'Altstadt'."
+            _msg = "Wrong — Boss exercise: that isn't one of the four zone names. `.idxmax()` should return 'Nord', 'Sued', 'Hafen' or 'Altstadt'."
     elif isinstance(best_avg_zone_ex40, (pd.Series, pd.DataFrame)):
         ex40_ok = False
         _preview = show_result(str(best_avg_zone_ex40))
-        _msg = "❌ Boss exercise: that's the whole per-zone table. `.idxmax()` turns it into the single winning *label*, the zone name."
+        _msg = "Wrong — Boss exercise: that's the whole per-zone table. `.idxmax()` turns it into the single winning *label*, the zone name."
     else:
         ex40_ok = False
         _preview = show_result(best_avg_zone_ex40)
-        _msg = "❌ Boss exercise: expected a zone **name** (a string). `.idxmax()` on the mean-per-zone Series returns that name."
+        _msg = "Wrong — Boss exercise: expected a zone **name** (a string). `.idxmax()` on the mean-per-zone Series returns that name."
     mo.callout(mo.md(_msg + _preview), kind="success" if ex40_ok else "warn")
     return (ex40_ok,)
 
@@ -872,8 +964,8 @@ def _(best_avg_zone_ex40, mo, pd, show_result):
 def _(mo):
     mo.accordion(
         {
-            "💡 Hint 1 (a nudge)": "Same chain as 3.2 but with `.mean()`, and finish with `.idxmax()`: `max()` gives the biggest *value*, `idxmax()` gives its *label* (the zone name), which is what you want.",
-            "💡 Hint 2 (the structure)": 'best_avg_zone_ex40 = orders.groupby("zone")["total_eur"].___().idxmax()   (the blank is the averaging method, not sum)',
+            "Hint 1 (a nudge)": "Same chain as 3.2 but with `.mean()`, and finish with `.idxmax()`: `max()` gives the biggest *value*, `idxmax()` gives its *label* (the zone name), which is what you want.",
+            "Hint 2 (the structure)": 'best_avg_zone_ex40 = orders.groupby("zone")["total_eur"].___().idxmax() (the blank is the averaging method, not sum)',
         }
     )
     return
@@ -920,10 +1012,10 @@ def _(mo):
 @app.cell(hide_code=True)
 def _(mo, trace_mask):
     if trace_mask.value is None:
-        _msg = "🔲 Pick a prediction above first. Commit before you peek!"
+        _msg = "Pick a prediction above first. Commit before you peek!"
     elif trace_mask.value.startswith("B"):
         _msg = (
-            "✅ Correct: **B**. `orders[\"items\"] == 3` compares every row and hands "
+            "Correct: **B**. `orders[\"items\"] == 3` compares every row and hands "
             "back a `True`/`False` **column**, the mask. Expression **A** *feeds* "
             "that mask back into `orders[...]` to keep the matching rows, then "
             "`.shape` reports the result's size: `(27, 9)`, 27 orders of exactly "
@@ -931,7 +1023,7 @@ def _(mo, trace_mask):
         )
     else:
         _msg = (
-            "❌ Not quite: the mask is **B**. `orders[\"items\"] == 3` is the "
+            "Not quite: the mask is **B**. `orders[\"items\"] == 3` is the "
             "`True`/`False` column (one per row). **A** takes that column, filters "
             "`orders` with it, and `.shape` reports the filtered table's "
             "`(rows, columns)`: `(27, 9)`, not a column of booleans. (Ungraded. "
@@ -970,11 +1062,11 @@ def _():
 def _(answer_ex50, mo):
     if answer_ex50 == "":
         ex50_ok = False
-        _msg = "🔲 Quiz: not attempted yet. Set `answer_ex50` to your letter and run the cell."
+        _msg = "Not attempted — Quiz. Set `answer_ex50` to your letter and run the cell."
     elif str(answer_ex50).strip().lower() == "a":
         ex50_ok = True
         _msg = (
-            "✅ Quiz: **a**. `.describe()` gives a summary table (count, mean, std, "
+            "Correct — Quiz: **a**. `.describe()` gives a summary table (count, mean, std, "
             "min, the 25/50/75% quartiles and max) for every numeric column. One "
             "call, the whole shape of the data. (The first five rows are `.head()`; "
             "the column types are `.dtypes`.)"
@@ -982,11 +1074,11 @@ def _(answer_ex50, mo):
     else:
         ex50_ok = False
         _msg = (
-            "❌ Quiz: not quite. `.head()` shows the first rows and `.dtypes` shows "
+            "Wrong — Quiz: not quite. `.head()` shows the first rows and `.dtypes` shows "
             "the types. `.describe()` returns the numeric **summary**: count, mean, "
             "std, min, quartiles and max per column."
         )
-    mo.md(_msg)
+    mo.callout(mo.md(_msg), kind="success" if ex50_ok else "warn")
     return (ex50_ok,)
 
 
@@ -1003,12 +1095,13 @@ def _(
     ex23_ok,
     ex31_ok,
     ex32_ok,
+    ex33_ok,
     ex40_ok,
     ex50_ok,
     mo,
 ):
-    # Progress cell: the 9 core exercises plus the quiz (the trace doesn't count).
-    _checks = [ex11_ok, ex12_ok, ex13_ok, ex21_ok, ex22_ok, ex23_ok, ex31_ok, ex32_ok, ex40_ok, ex50_ok]
+    # Progress cell: the 10 core exercises plus the quiz (the trace doesn't count).
+    _checks = [ex11_ok, ex12_ok, ex13_ok, ex21_ok, ex22_ok, ex23_ok, ex31_ok, ex32_ok, ex33_ok, ex40_ok, ex50_ok]
     _done = sum(_checks)
     _total = len(_checks)
     _investor = (
@@ -1017,7 +1110,7 @@ def _(
         else "The investor is still reading the data room, waiting for the full answer."
     )
     mo.callout(
-        mo.md(f"**Core exercises: {_done}/{_total} ✅** · {_investor}"),
+        mo.md(f"**Core exercises: {_done}/{_total} correct** · {_investor}"),
         kind="success" if _done == _total else "neutral",
     )
     return
@@ -1027,9 +1120,9 @@ def _(
 def _(mo):
     mo.md(
         r"""
-    ## Before you leave 📊
+    ## Before you leave
 
-    1. Check the progress box above: all **ten** green? If not, reopen the hints,
+    1. Check the progress box above: all **eleven** green? If not, reopen the hints,
        reread the worked examples, and try again. Load, filter, derive a column,
        group: that's the whole pandas loop, and it's the same loop on 80 rows or
        80 million.

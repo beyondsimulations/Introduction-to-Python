@@ -10,7 +10,7 @@ format:
 ---
 
 
-# 📋 Checkpoint 1
+# Checkpoint 1
 
 **The quarterly board review.** The first 40 minutes are the checkpoint. It starts now.
 
@@ -29,7 +29,7 @@ Menu → *Download* → *Download Python code* → upload the `.py` to the "Chec
 
 > **Note**
 >
-> The green ✅ live checks are **provisional**. The final grading runs on my side. And take a breath: everything in it was rehearsed in the labs.
+> The green live checks are **provisional**. The final grading runs on my side. And take a breath: everything in it was rehearsed in the labs.
 
 # <span class="flow">Episode 3: The Copy-Paste Soup</span>
 
@@ -100,6 +100,38 @@ print(line_total(3, 3.20))       # 3 and 3.20 are ARGUMENTS
 
 Same function, different arguments, different result. No retyping.
 
+## Predict: which number is the bill?
+
+Tobi wants a **40 % tip on a 10 EUR bill**... no wait, a **10 % tip on 40 EUR**. He types it in a hurry. What prints?
+
+``` python
+def with_tip(bill, percent):
+    return round(bill * (1 + percent / 100), 2)
+
+print(with_tip(10, 40))
+```
+
+a\) `44.0` b) `14.0` c) `Error`
+
+. . .
+
+<span class="question">Predict first</span>. Pick a letter, then I reveal the answer.
+
+## Answer: position decides, not intent
+
+**b) `14.0`**: arguments land on parameters **by position**. `10` becomes `bill`, `40` becomes `percent`: a 40 % tip on 10 EUR. Python cannot read what Tobi meant, only where he put it.
+
+``` python
+def with_tip(bill, percent):
+    return round(bill * (1 + percent / 100), 2)
+
+print(with_tip(10, 40))   # bill=10, percent=40
+print(with_tip(40, 10))   # bill=40, percent=10
+```
+
+    14.0
+    44.0
+
 ## `return`: hand the value back
 
 `return` sends a value **back to whoever called** the function, so you can store it and use it later:
@@ -149,6 +181,16 @@ print(result)                # ...but the value handed back is None
     8.50 EUR
     None
 
+# Your turn --- 5--10 minutes
+
+Open the exercise (scan the QR or type the link):
+
+**[python.tobiasvlcek.com/notebooks/ex_03_a/](https://python.tobiasvlcek.com/notebooks/ex_03_a/)**
+
+<img src="assets/qr/ex_03_a.png" width="280" />
+
+First **predict** what happens, then run it.
+
 ## Default arguments
 
 A parameter can carry a **default**, used when the caller leaves it out:
@@ -186,13 +228,13 @@ print(bill(2, 4.50))
 
 `line_total` and `service_fee` do their jobs; `bill` just orchestrates. That's how small pieces become a program.
 
-# Your turn --- 10 minutes
+# Your turn --- 5--10 minutes
 
 Open the exercise (scan the QR or type the link):
 
-**[python.tobiasvlcek.com/notebooks/ex_03_a/](https://python.tobiasvlcek.com/notebooks/ex_03_a/)**
+**[python.tobiasvlcek.com/notebooks/ex_03_b/](https://python.tobiasvlcek.com/notebooks/ex_03_b/)**
 
-<img src="assets/qr/ex_03_a.png" width="280" />
+<img src="assets/qr/ex_03_b.png" width="280" />
 
 First **predict** what happens, then run it.
 
@@ -308,6 +350,38 @@ print(trip.fee())             # call the method
 
 `trip` is one `Delivery` object. `trip.fee()` computes from *its own* stored distance: data and behavior, traveling together.
 
+## Predict: does the second delivery overwrite the first?
+
+Two deliveries get built from the same class, one after the other. What does the **last line** print?
+
+``` python
+trip = Delivery("Nadia", 4)
+second = Delivery("Omar", 10)
+
+print(trip.fee())
+```
+
+a\) `12.0` b) `Error` c) `4.8`
+
+. . .
+
+<span class="question">Predict first</span>. Pick a letter, then I reveal the answer.
+
+## Answer: every object carries its own data
+
+**c) `4.8`**: `__init__` ran twice and stored the data on **two different objects**. `self` inside `trip.fee()` is `trip`, so it reads Nadia's 4 km, not Omar's 10. Instances do not share attributes.
+
+``` python
+trip = Delivery("Nadia", 4)
+second = Delivery("Omar", 10)
+
+print(trip.fee())      # self is trip: 4 km
+print(second.fee())    # self is second: 10 km
+```
+
+    4.8
+    12.0
+
 ## One honest slide about classes
 
 - Today you write **one small class** with an `__init__` and **one method**. That's it
@@ -320,13 +394,13 @@ print(trip.fee())             # call the method
 >
 > If the `self` keyword feels odd right now, that's completely normal. Copy the shape from the worked example. The intuition follows the practice.
 
-# Your turn --- 10 minutes
+# Your turn --- 5--10 minutes
 
 Open the exercise (scan the QR or type the link):
 
-**[python.tobiasvlcek.com/notebooks/ex_03_b/](https://python.tobiasvlcek.com/notebooks/ex_03_b/)**
+**[python.tobiasvlcek.com/notebooks/ex_03_c/](https://python.tobiasvlcek.com/notebooks/ex_03_c/)**
 
-<img src="assets/qr/ex_03_b.png" width="280" />
+<img src="assets/qr/ex_03_c.png" width="280" />
 
 First **predict** what happens, then run it.
 

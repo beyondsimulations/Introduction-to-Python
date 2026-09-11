@@ -10,7 +10,7 @@ def _(mo):
     mo.md(
         r"""
     # Notebook 3.1 — The Copy-Paste Soup
-    **Core exercises: 7 (+ 1 bonus).** Done early? You're free to go. Not done when the session ends? The rest is homework.
+    **Core exercises: 10 (+ 1 bonus).** Done early? You're free to go. Not done when the session ends? The rest is homework.
 
     Tobi has been "reusing" code the only way he knows how: he pasted the same
     receipt block **14 times**, once per menu item. Yesterday the wrap price
@@ -32,9 +32,24 @@ def _(mo):
 def _(mo):
     mo.callout(
         mo.md(
-            "💾 **Saving your work:** this notebook runs in your browser. Press "
+            "**Saving your work:** this notebook runs in your browser. Press "
             "**Cmd/Ctrl+S** to save, and always save **before** menu → Download → "
             "*Download Python code*. Without a save first, the download is an empty file."
+        ),
+        kind="info",
+    )
+    return
+
+
+@app.cell(hide_code=True)
+def _(mo):
+    mo.callout(
+        mo.md(
+            "**How this notebook works:** run a cell with **Cmd/Ctrl+Enter**. "
+            "Only edit the cells that contain `# YOUR CODE BELOW`; the check under "
+            "each exercise updates by itself. A red error pauses everything below "
+            "it, so fix that cell first. New here? Read "
+            "[How the notebook works](https://python.tobiasvlcek.com/general/notebooks.html)."
         ),
         kind="info",
     )
@@ -167,20 +182,20 @@ def _(fee_ex11, mo, show_result):
         _c = fee_ex11(40.0)
     except Exception:
         ex11_ok = False
-        _msg = "❌ Exercise 1.1: it's crashing. Read the error above and fix it before the check can run."
+        _msg = "Wrong — Exercise 1.1: it's crashing. Read the error above and fix it before the check can run."
         _preview = ""
     else:
         if _a is None:
             ex11_ok = False
-            _msg = "🔲 Exercise 1.1: not attempted yet (the function still returns None). Use `return`, not `print`, then run the cell."
+            _msg = "Not attempted — Exercise 1.1: not attempted yet (the function still returns None). Use `return`, not `print`, then run the cell."
             _preview = ""
         elif _a == 2.90 and _b == 1.50 and _c == 0:
             ex11_ok = True
-            _msg = "✅ Exercise 1.1: 2.90 / 1.50 / 0. One function, every price band handled. Tobi never retypes the ladder again."
+            _msg = "Correct — Exercise 1.1: 2.90 / 1.50 / 0. One function, every price band handled. Tobi never retypes the ladder again."
             _preview = show_result(_a)
         else:
             ex11_ok = False
-            _msg = "❌ Exercise 1.1: the bands are off: 10 → 2.90, 20 → 1.50, 40 → 0. Check the boundaries at 15 and 30."
+            _msg = "Wrong — Exercise 1.1: the bands are off: 10 → 2.90, 20 → 1.50, 40 → 0. Check the boundaries at 15 and 30."
             _preview = show_result(_a)
     mo.callout(mo.md(_msg + _preview), kind="success" if ex11_ok else "warn")
     return (ex11_ok,)
@@ -190,8 +205,8 @@ def _(fee_ex11, mo, show_result):
 def _(mo):
     mo.accordion(
         {
-            "💡 Hint 1 (a nudge)": "Inside the function, use `if` / `elif` / `else` to pick the band, and `return` the fee for that band. Check the smallest band first, or test the boundaries carefully.",
-            "💡 Hint 2 (the structure)": "def fee_ex11(total):\n    if total < 15:\n        return ___\n    elif total < 30:\n        return ___\n    else:\n        return ___   (fill the three fees).",
+            "Hint 1 (a nudge)": "Inside the function, use `if` / `elif` / `else` to pick the band, and `return` the fee for that band. Check the smallest band first, or test the boundaries carefully.",
+            "Hint 2 (the structure)": "def fee_ex11(total):\n if total < 15:\n return ___\n elif total < 30:\n return ___\n else:\n return ___ (fill the three fees).",
         }
     )
     return
@@ -229,23 +244,23 @@ def _(mo, show_result, tip_ex12):
         _b = tip_ex12(12.0, 25)
     except Exception:
         ex12_ok = False
-        _msg = "❌ Exercise 1.2: it's crashing. Read the error above and fix it before the check can run."
+        _msg = "Wrong — Exercise 1.2: it's crashing. Read the error above and fix it before the check can run."
         _preview = ""
     else:
         if _a is None:
             ex12_ok = False
-            _msg = "🔲 Exercise 1.2: not attempted yet (the function still returns None). Use `return`, not `print`, then run the cell."
+            _msg = "Not attempted — Exercise 1.2: not attempted yet (the function still returns None). Use `return`, not `print`, then run the cell."
             _preview = ""
         elif (
             isinstance(_a, (int, float)) and round(_a, 2) == 2.0
             and isinstance(_b, (int, float)) and round(_b, 2) == 3.0
         ):
             ex12_ok = True
-            _msg = "✅ Exercise 1.2: 10 % of 20 is 2.00, 25 % of 12 is 3.00. The tip line writes itself now."
+            _msg = "Correct — Exercise 1.2: 10 % of 20 is 2.00, 25 % of 12 is 3.00. The tip line writes itself now."
             _preview = show_result(_a)
         else:
             ex12_ok = False
-            _msg = "❌ Exercise 1.2: not 2.00 for `(20, 10)`. A percentage of a total is `total * percent / 100`, then round to 2 places."
+            _msg = "Wrong — Exercise 1.2: not 2.00 for `(20, 10)`. A percentage of a total is `total * percent / 100`, then round to 2 places."
             _preview = show_result(_a)
     mo.callout(mo.md(_msg + _preview), kind="success" if ex12_ok else "warn")
     return (ex12_ok,)
@@ -255,8 +270,87 @@ def _(mo, show_result, tip_ex12):
 def _(mo):
     mo.accordion(
         {
-            "💡 Hint 1 (a nudge)": "A percentage is 'per hundred': `percent / 100` of `total`. Multiply, then wrap the whole thing in `round(..., 2)`.",
-            "💡 Hint 2 (the structure)": "def tip_ex12(total, percent):\n    return round(total * ___ / ___, 2)   (fill in the percent and the 100).",
+            "Hint 1 (a nudge)": "A percentage is 'per hundred': `percent / 100` of `total`. Multiply, then wrap the whole thing in `round(..., 2)`.",
+            "Hint 2 (the structure)": "def tip_ex12(total, percent):\n return round(total * ___ / ___, 2) (fill in the percent and the 100).",
+        }
+    )
+    return
+
+
+@app.cell(hide_code=True)
+def _(mo):
+    mo.md(
+        r"""
+    ### Exercise 1.3 (core) — the board lunch: how many grill rounds?
+
+    The investor calls at 09:40: "I'm bringing the whole board on Thursday.
+    Twelve wraps, 12:30 sharp." Tobi's grill fits **4 wraps per round**, each
+    round takes six minutes, and the grill is free from 12:00. Can he say yes?
+    That depends on how many rounds twelve wraps take, and Tobi keeps guessing.
+
+    Write `batches_ex13(wraps, per_batch)` that returns the number of grill
+    rounds needed. Whole rounds only, and a half-full grill still counts as a
+    full round: `batches_ex13(12, 4)` is `3`, and `batches_ex13(13, 4)` is `4`
+    (the thirteenth wrap needs a round of its own).
+    """
+    )
+    return
+
+
+@app.cell
+def _():
+    def batches_ex13(wraps, per_batch):
+        # YOUR CODE BELOW: return the number of grill rounds (round up!)
+        return None
+
+    return (batches_ex13,)
+
+
+@app.cell(hide_code=True)
+def _(batches_ex13, mo, show_result):
+    try:
+        _a = batches_ex13(12, 4)
+        _b = batches_ex13(13, 4)
+        _c = batches_ex13(4, 4)
+    except Exception:
+        ex13_ok = False
+        _msg = "Wrong — Exercise 1.3: it's crashing. Read the error above and fix it before the check can run."
+        _preview = ""
+    else:
+        if _a is None:
+            ex13_ok = False
+            _msg = "Not attempted — Exercise 1.3: not attempted yet (the function still returns None). Use `return`, not `print`, then run the cell."
+            _preview = ""
+        elif (
+            isinstance(_a, (int, float)) and _a == 3
+            and isinstance(_b, (int, float)) and _b == 4
+            and isinstance(_c, (int, float)) and _c == 1
+        ):
+            ex13_ok = True
+            _msg = (
+                "Correct — Exercise 1.3: 3 rounds for the board (4 once a thirteenth wrap "
+                "sneaks in). Three rounds at six minutes is 18 minutes: grill free at "
+                "12:00, board at 12:30. Tobi says yes to the investor."
+            )
+            _preview = show_result(_a)
+        elif isinstance(_a, (int, float)) and _a == 3 and isinstance(_b, (int, float)) and _b == 3:
+            ex13_ok = False
+            _msg = "Wrong — Exercise 1.3: 12 → 3 is right, but 13 → 3 leaves one wrap raw. A partly filled grill still needs its own round: when the division leaves a remainder, add one more."
+            _preview = show_result(_b)
+        else:
+            ex13_ok = False
+            _msg = "Wrong — Exercise 1.3: not 3 / 4 / 1 for `(12, 4)`, `(13, 4)`, `(4, 4)`. Count whole rounds with `//`, then check `%` for leftovers."
+            _preview = show_result(_a)
+    mo.callout(mo.md(_msg + _preview), kind="success" if ex13_ok else "warn")
+    return (ex13_ok,)
+
+
+@app.cell(hide_code=True)
+def _(mo):
+    mo.accordion(
+        {
+            "Hint 1 (a nudge)": "Whole rounds first: how many times does `per_batch` fit into `wraps` completely? Then ask whether anything is left over; if so, that leftover needs one extra round.",
+            "Hint 2 (the structure)": "def batches_ex13(wraps, per_batch):\n rounds = wraps ___ per_batch\n if wraps ___ per_batch != 0:\n rounds = rounds + 1\n return rounds (fill the two operators: whole-number division and remainder).",
         }
     )
     return
@@ -349,16 +443,16 @@ def _(mo):
 @app.cell(hide_code=True)
 def _(mo, trace_ex21):
     if trace_ex21.value is None:
-        _msg = "🔲 Pick a prediction above first. Commit before you peek!"
+        _msg = "Pick a prediction above first. Commit before you peek!"
     elif trace_ex21.value == "5":
         _msg = (
-            "✅ Correct: it prints **5**. `boost` changes its **own copy** `p`, "
+            "Correct: it prints **5**. `boost` changes its **own copy** `p`, "
             "not `x`. And we never stored what `boost` returned, so the global "
             "`x` never moves."
         )
     else:
         _msg = (
-            "❌ Not quite: it prints **5**. Inside `boost`, `p = p + 1` changes "
+            "Not quite: it prints **5**. Inside `boost`, `p = p + 1` changes "
             "only the function's private copy; `x` out here is untouched. "
             "(Ungraded. The point is the prediction.)"
         )
@@ -386,6 +480,7 @@ def _(mo):
 
 @app.cell
 def _():
+    # YOUR CODE BELOW
     # TOBI'S CODE: runs fine, the number even shows up, yet callers keep getting None.
     def receipt_total_ex22(prices):
         _running = 0
@@ -402,24 +497,24 @@ def _(mo, receipt_total_ex22, show_result):
         _r = receipt_total_ex22([4.0, 6.0])
     except Exception:
         ex22_ok = False
-        _msg = "❌ Exercise 2.2: it's crashing now. Read the error above and fix it before the check can run."
+        _msg = "Wrong — Exercise 2.2: it's crashing now. Read the error above and fix it before the check can run."
         _preview = ""
     else:
         if _r is None:
             ex22_ok = False
             _msg = (
-                "❌ Exercise 2.2: the number appears on screen, but the function "
+                "Wrong — Exercise 2.2: the number appears on screen, but the function "
                 "hands back `None`. The caller needs to **receive** the total, not "
                 "just see it printed."
             )
             _preview = ""
         elif isinstance(_r, (int, float)) and round(_r, 2) == 10.0:
             ex22_ok = True
-            _msg = "✅ Exercise 2.2: 10.0 comes straight back to the caller. The receipt total is usable everywhere at last."
+            _msg = "Correct — Exercise 2.2: 10.0 comes straight back to the caller. The receipt total is usable everywhere at last."
             _preview = show_result(_r)
         else:
             ex22_ok = False
-            _msg = "❌ Exercise 2.2: not 10.0 for `[4.0, 6.0]`. Check what the function adds up and hands back."
+            _msg = "Wrong — Exercise 2.2: not 10.0 for `[4.0, 6.0]`. Check what the function adds up and hands back."
             _preview = show_result(_r)
     mo.callout(mo.md(_msg + _preview), kind="success" if ex22_ok else "warn")
     return (ex22_ok,)
@@ -429,8 +524,8 @@ def _(mo, receipt_total_ex22, show_result):
 def _(mo):
     mo.accordion(
         {
-            "💡 Hint 1 (a nudge)": "Look at the last line of the function. Showing a value on screen and handing it back to the caller are two different actions. Which one is Tobi doing?",
-            "💡 Hint 2 (the structure)": "def receipt_total_ex22(prices):\n    _running = 0\n    for _p in prices:\n        _running = _running + _p\n    ___ _running   (the last line decides what callers receive; fill the keyword that hands a value back).",
+            "Hint 1 (a nudge)": "Look at the last line of the function. Showing a value on screen and handing it back to the caller are two different actions. Which one is Tobi doing?",
+            "Hint 2 (the structure)": "def receipt_total_ex22(prices):\n _running = 0\n for _p in prices:\n _running = _running + _p\n ___ _running (the last line decides what callers receive; fill the keyword that hands a value back).",
         }
     )
     return
@@ -470,21 +565,21 @@ def _(greet_ex23, mo, show_result):
         _custom = greet_ex23("Ada", "Servus")
     except Exception:
         ex23_ok = False
-        _msg = "❌ Exercise 2.3: it's crashing. Read the error above and fix it before the check can run."
+        _msg = "Wrong — Exercise 2.3: it's crashing. Read the error above and fix it before the check can run."
         _preview = ""
     else:
         if _default is None:
             ex23_ok = False
-            _msg = "🔲 Exercise 2.3: not attempted yet (the function still returns None). Use `return`, not `print`, then run the cell."
+            _msg = "Not attempted — Exercise 2.3: not attempted yet (the function still returns None). Use `return`, not `print`, then run the cell."
             _preview = ""
         elif _default == "Moin, Ada!" and _custom == "Servus, Ada!":
             ex23_ok = True
-            _msg = "✅ Exercise 2.3: `Moin, Ada!` by default, `Servus, Ada!` when overridden. One function, both greetings."
+            _msg = "Correct — Exercise 2.3: `Moin, Ada!` by default, `Servus, Ada!` when overridden. One function, both greetings."
             _preview = show_result(_default)
         else:
             ex23_ok = False
             _msg = (
-                "❌ Exercise 2.3: not an exact match. `greet_ex23(\"Ada\")` should read "
+                "Wrong — Exercise 2.3: not an exact match. `greet_ex23(\"Ada\")` should read "
                 "`\"Moin, Ada!\"`. Mind the comma, the space, and the `!`."
             )
             _preview = show_result(_default)
@@ -496,8 +591,86 @@ def _(greet_ex23, mo, show_result):
 def _(mo):
     mo.accordion(
         {
-            "💡 Hint 1 (a nudge)": "The parameter default is already written for you in the signature. Inside, build the line from `greeting` and `name`. An f-string keeps the comma, space and `!` exactly right.",
-            "💡 Hint 2 (the structure)": "def greet_ex23(name, greeting=\"Moin\"):\n    return f\"{___}, {___}!\"   (fill the two blanks with the parameter names, greeting first).",
+            "Hint 1 (a nudge)": "The parameter default is already written for you in the signature. Inside, build the line from `greeting` and `name`. An f-string keeps the comma, space and `!` exactly right.",
+            "Hint 2 (the structure)": "def greet_ex23(name, greeting=\"Moin\"):\n return f\"{___}, {___}!\" (fill the two blanks with the parameter names, greeting first).",
+        }
+    )
+    return
+
+
+@app.cell(hide_code=True)
+def _(mo):
+    mo.md(
+        r"""
+    ### Exercise 2.4 (core, fix the bug) — the staff discount that never changes
+
+    The rule: every receipt gets a discount. It defaults to **10 %**, and the
+    caller may pass a different percent (staff get 25 %). Tobi wrote
+    `discounted_ex24(total, percent=10)` and the default works. But Amir's
+    staff lunch, a 20 EUR order with 25 passed in, comes out **exactly like
+    every customer's receipt**. Passing a different percent changes nothing.
+
+    His function is below. Make the passed percent count, without breaking the
+    default.
+    """
+    )
+    return
+
+
+@app.cell
+def _():
+    # YOUR CODE BELOW
+    # TOBI'S CODE: the default works, but a passed percent changes nothing.
+    def discounted_ex24(total, percent=10):
+        percent = 10  # Tobi: "setting the default, just to be safe"
+        return round(total - total * percent / 100, 2)
+
+    return (discounted_ex24,)
+
+
+@app.cell(hide_code=True)
+def _(discounted_ex24, mo, show_result):
+    try:
+        _d = discounted_ex24(20)
+        _s = discounted_ex24(20, 25)
+    except Exception:
+        ex24_ok = False
+        _msg = "Wrong — Exercise 2.4: it's crashing now. Read the error above and fix it before the check can run."
+        _preview = ""
+    else:
+        if _d is None:
+            ex24_ok = False
+            _msg = "Wrong — Exercise 2.4: the function now hands back `None`. Use `return`, not `print`, then run the cell."
+            _preview = ""
+        elif (
+            isinstance(_d, (int, float)) and round(_d, 2) == 18.0
+            and isinstance(_s, (int, float)) and round(_s, 2) == 15.0
+        ):
+            ex24_ok = True
+            _msg = (
+                "Correct — Exercise 2.4: 18.00 for a customer, 15.00 for Amir's staff lunch. "
+                "The default lives in the signature; the body uses whatever `percent` "
+                "arrives. Amir gets his 25 % back, and lunch."
+            )
+            _preview = show_result(_s)
+        elif isinstance(_d, (int, float)) and round(_d, 2) == 18.0 and isinstance(_s, (int, float)) and round(_s, 2) == 18.0:
+            ex24_ok = False
+            _msg = "Wrong — Exercise 2.4: the default still works, but a passed 25 still comes out as 18.00. Something in the body overrides what the caller handed in."
+            _preview = show_result(_s)
+        else:
+            ex24_ok = False
+            _msg = "Wrong — Exercise 2.4: not 18.00 / 15.00 for `(20)` / `(20, 25)`. The discount is `percent` percent of the total, taken off the total, rounded to 2 decimals."
+            _preview = show_result(_d)
+    mo.callout(mo.md(_msg + _preview), kind="success" if ex24_ok else "warn")
+    return (ex24_ok,)
+
+
+@app.cell(hide_code=True)
+def _(mo):
+    mo.accordion(
+        {
+            "Hint 1 (a nudge)": "Where does the default 10 already live? Read the first line of the function. Now read the second line: what happens to a 25 the caller passed in?",
+            "Hint 2 (the structure)": "def discounted_ex24(total, percent=10):\n return round(total - total * ___ / 100, 2) (one line in the body; fill the blank with the parameter that already carries the default).",
         }
     )
     return
@@ -598,32 +771,32 @@ def _(Order, mo, show_result):
         _line = _o.receipt_line()
     except Exception:
         ex31_ok = False
-        _msg = "❌ Exercise 3.1: it's crashing. Read the error above and fix it before the check can run."
+        _msg = "Wrong — Exercise 3.1: it's crashing. Read the error above and fix it before the check can run."
         _preview = ""
     else:
         if _t is None:
             ex31_ok = False
-            _msg = "🔲 Exercise 3.1: not attempted yet (`total()` still returns None). Use `return`, not `print`, then run the cell."
+            _msg = "Not attempted — Exercise 3.1: not attempted yet (`total()` still returns None). Use `return`, not `print`, then run the cell."
             _preview = ""
         elif isinstance(_t, (int, float)) and round(_t, 2) == 13.80 and _line == "2x Wrap: 13.80 EUR":
             ex31_ok = True
-            _msg = "✅ Exercise 3.1: 13.80, and the receipt line writes itself. Data and behavior, bundled."
+            _msg = "Correct — Exercise 3.1: 13.80, and the receipt line writes itself. Data and behavior, bundled."
             _preview = show_result(_line)
         elif isinstance(_t, (int, float)) and round(_t, 2) == 13.80 and _line is None:
             ex31_ok = False
-            _msg = "❌ Exercise 3.1: `total()` is right. Now `receipt_line()`, which still returns `None`. Build the f-string from `self.qty`, `self.item` and `self.total()`."
+            _msg = "Wrong — Exercise 3.1: `total()` is right. Now `receipt_line()`, which still returns `None`. Build the f-string from `self.qty`, `self.item` and `self.total()`."
             _preview = show_result(_t)
         elif isinstance(_t, (int, float)) and round(_t, 2) == 13.80:
             ex31_ok = False
-            _msg = "❌ Exercise 3.1: `total()` is right, but `receipt_line()` should read exactly `2x Wrap: 13.80 EUR`. Check the `x`, the colon, `:.2f` and `EUR`."
+            _msg = "Wrong — Exercise 3.1: `total()` is right, but `receipt_line()` should read exactly `2x Wrap: 13.80 EUR`. Check the `x`, the colon, `:.2f` and `EUR`."
             _preview = show_result(_line)
         elif isinstance(_t, (int, float)) and round(_t, 2) == 6.90:
             ex31_ok = False
-            _msg = "❌ Exercise 3.1: that's the price of **one** portion. `total()` needs the quantity too. What should `self.qty` multiply?"
+            _msg = "Wrong — Exercise 3.1: that's the price of **one** portion. `total()` needs the quantity too. What should `self.qty` multiply?"
             _preview = show_result(_t)
         else:
             ex31_ok = False
-            _msg = "❌ Exercise 3.1: not 13.80 for a 2× order at 6.90: `total()` returns `self.qty * self.price`, rounded to 2 decimals."
+            _msg = "Wrong — Exercise 3.1: not 13.80 for a 2× order at 6.90: `total()` returns `self.qty * self.price`, rounded to 2 decimals."
             _preview = show_result(_t)
     mo.callout(mo.md(_msg + _preview), kind="success" if ex31_ok else "warn")
     return (ex31_ok,)
@@ -633,8 +806,97 @@ def _(Order, mo, show_result):
 def _(mo):
     mo.accordion(
         {
-            "💡 Hint 1 (a nudge)": "Inside `total()`, reach the stored data through `self`: the quantity is `self.qty`, the unit price is `self.price`. Multiply them and round. `receipt_line()` is the Episode 1 f-string, with `self.total()` in the money slot.",
-            "💡 Hint 2 (the structure)": "    def total(self):\n        return round(self.___ * self.___, 2)\n\n    def receipt_line(self):\n        return f\"{self.___}x {self.___}: {self.total():.2f} EUR\"   (fill in the attribute names).",
+            "Hint 1 (a nudge)": "Inside `total()`, reach the stored data through `self`: the quantity is `self.qty`, the unit price is `self.price`. Multiply them and round. `receipt_line()` is the Episode 1 f-string, with `self.total()` in the money slot.",
+            "Hint 2 (the structure)": " def total(self):\n return round(self.___ * self.___, 2)\n\n def receipt_line(self):\n return f\"{self.___}x {self.___}: {self.total():.2f} EUR\" (fill in the attribute names).",
+        }
+    )
+    return
+
+
+@app.cell(hide_code=True)
+def _(mo):
+    mo.md(
+        r"""
+    ### Exercise 3.2 (core) — the `Courier` class: who takes the board's order?
+
+    The board's office is **7.5 km** away and the delivery promise is **25
+    minutes** door to door. Two couriers are in: Amir on the e-bike at
+    **20 km/h**, Tobi on his old bike at **15 km/h**. Who can make it? Don't
+    guess: give the couriers a class.
+
+    This time you write `Courier` from scratch:
+
+    - `__init__(self, name, speed_kmh)` stores both values on the object.
+    - `minutes_for(self, km)` returns how many minutes this courier needs for
+      `km` kilometres: `km / speed_kmh * 60`, rounded to 1 decimal.
+
+    `Courier("Amir", 20).minutes_for(7.5)` should give `22.5`.
+    """
+    )
+    return
+
+
+@app.cell
+def _():
+    class Courier:
+        def __init__(self, name, speed_kmh):
+            # YOUR CODE BELOW: store name and speed_kmh on self
+            pass
+
+        def minutes_for(self, km):
+            # YOUR CODE BELOW: km / speed * 60, rounded to 1 decimal, speed via self
+            return None
+
+    return (Courier,)
+
+
+@app.cell(hide_code=True)
+def _(Courier, mo, show_result):
+    try:
+        _amir = Courier("Amir", 20).minutes_for(7.5)
+        _tobi = Courier("Tobi", 15).minutes_for(7.5)
+    except AttributeError:
+        ex32_ok = False
+        _msg = "Wrong — Exercise 3.2: the courier has no stored data yet. `__init__` must put `speed_kmh` on `self` before `minutes_for` can read it."
+        _preview = ""
+    except Exception:
+        ex32_ok = False
+        _msg = "Wrong — Exercise 3.2: it's crashing. Read the error above and fix it before the check can run."
+        _preview = ""
+    else:
+        if _amir is None:
+            ex32_ok = False
+            _msg = "Not attempted — Exercise 3.2: not attempted yet (`minutes_for()` still returns None). Use `return`, not `print`, then run the cell."
+            _preview = ""
+        elif (
+            isinstance(_amir, (int, float)) and round(_amir, 2) == 22.5
+            and isinstance(_tobi, (int, float)) and round(_tobi, 2) == 30.0
+        ):
+            ex32_ok = True
+            _msg = (
+                "Correct — Exercise 3.2: Amir needs 22.5 minutes, Tobi 30.0. The promise is "
+                "25: Amir takes the board's order, Tobi stays on the grill. Nobody "
+                "tells the investor who almost rode."
+            )
+            _preview = show_result(_amir)
+        elif isinstance(_amir, (int, float)) and _amir == _tobi:
+            ex32_ok = False
+            _msg = "Wrong — Exercise 3.2: both couriers come out the same, so the method isn't reading *this* courier's speed. `minutes_for` must use `self.speed_kmh`, the value `__init__` stored."
+            _preview = show_result(_amir)
+        else:
+            ex32_ok = False
+            _msg = "Wrong — Exercise 3.2: not 22.5 for Amir (7.5 km at 20 km/h). Hours are `km / speed`; minutes are that times 60, rounded to 1 decimal."
+            _preview = show_result(_amir)
+    mo.callout(mo.md(_msg + _preview), kind="success" if ex32_ok else "warn")
+    return (ex32_ok,)
+
+
+@app.cell(hide_code=True)
+def _(mo):
+    mo.accordion(
+        {
+            "Hint 1 (a nudge)": "`__init__` is where data goes onto the object: one `self.something = something` per parameter. Then `minutes_for` reads the speed back through `self`, never through the bare parameter name.",
+            "Hint 2 (the structure)": " def __init__(self, name, speed_kmh):\n self.name = ___\n self.speed_kmh = ___\n\n def minutes_for(self, km):\n return round(km / self.___ * 60, 1) (fill the two stores and the attribute the method reads).",
         }
     )
     return
@@ -647,7 +909,7 @@ def _(mo):
 def _(mo):
     mo.md(
         r"""
-    ## 🧾 Boss exercise (core) — the first Friday report
+    ## Boss exercise (core) — the first Friday report
 
     It's the first Friday, and the report has to go out. Three orders came in:
 
@@ -686,23 +948,23 @@ def _(Order, fee_ex11):
 def _(day_total_ex40, mo, show_result):
     if day_total_ex40 is None:
         ex40_ok = False
-        _msg = "🔲 Boss exercise: not attempted yet. Assign it to `day_total_ex40` (a `print` alone doesn't count) and run the cell."
+        _msg = "Not attempted — Boss exercise. Assign it to `day_total_ex40` (a `print` alone doesn't count) and run the cell."
     elif isinstance(day_total_ex40, (int, float)) and round(day_total_ex40, 2) == 58.50:
         ex40_ok = True
-        _msg = "✅ Boss exercise: **58.50 EUR** billed on the first Friday: item totals plus every delivery fee. The report ships."
+        _msg = "Correct — Boss exercise: **58.50 EUR** billed on the first Friday: item totals plus every delivery fee. The report ships."
     elif isinstance(day_total_ex40, (int, float)) and round(day_total_ex40, 2) == 51.20:
         ex40_ok = False
         _msg = (
-            "❌ Boss exercise: 51.20 is the sum of the item totals. You forgot "
+            "Wrong — Boss exercise: 51.20 is the sum of the item totals. You forgot "
             "the **delivery fees**. Add each order's `fee_ex11(total())` too."
         )
     else:
         ex40_ok = False
         _msg = (
-            "❌ Boss exercise: not 58.50. Build each order, and for every one add "
+            "Wrong — Boss exercise: not 58.50. Build each order, and for every one add "
             "its `total()` and its `fee_ex11(total())`."
         )
-    mo.md(_msg + show_result(day_total_ex40))
+    mo.callout(mo.md(_msg + show_result(day_total_ex40)), kind="success" if ex40_ok else "warn")
     return (ex40_ok,)
 
 
@@ -710,8 +972,8 @@ def _(day_total_ex40, mo, show_result):
 def _(mo):
     mo.accordion(
         {
-            "💡 Hint 1 (a nudge)": "Make the three orders. Start a grand total at 0. For each order, work out its `total()` once, then add that total AND `fee_ex11` of that total to the running sum.",
-            "💡 Hint 2 (the structure)": "orders = [Order(\"Wrap\", 2, 6.90), Order(\"Bowl\", 1, 24.90), Order(\"Fries\", 5, 2.50)]\nday_total_ex40 = 0\nfor order in orders:\n    _t = order.___()\n    day_total_ex40 = day_total_ex40 + _t + fee_ex11(___)\nday_total_ex40 = round(day_total_ex40, 2)   (fill the method call and the fee's argument).",
+            "Hint 1 (a nudge)": "Make the three orders. Start a grand total at 0. For each order, work out its `total()` once, then add that total AND `fee_ex11` of that total to the running sum.",
+            "Hint 2 (the structure)": "orders = [Order(\"Wrap\", 2, 6.90), Order(\"Bowl\", 1, 24.90), Order(\"Fries\", 5, 2.50)]\nday_total_ex40 = 0\nfor order in orders:\n _t = order.___()\n day_total_ex40 = day_total_ex40 + _t + fee_ex11(___)\nday_total_ex40 = round(day_total_ex40, 2) (fill the method call and the fee's argument).",
         }
     )
     return
@@ -758,21 +1020,21 @@ def _():
 def _(answer_ex50, mo):
     if answer_ex50 == "":
         ex50_ok = False
-        _msg = "🔲 Quiz: not attempted yet. Set `answer_ex50` to your letter and run the cell."
+        _msg = "Not attempted — Quiz. Set `answer_ex50` to your letter and run the cell."
     elif str(answer_ex50).strip().lower() == "c":
         ex50_ok = True
         _msg = (
-            "✅ Quiz: **c**. `tobis_fn` prints but never `return`s, so it hands "
+            "Correct — Quiz: **c**. `tobis_fn` prints but never `return`s, so it hands "
             "back `None`, and that `None` is what lands in `result`. Exactly the "
             "bug you fixed in 2.2."
         )
     else:
         ex50_ok = False
         _msg = (
-            "❌ Quiz: not quite. `print` shows a value but hands nothing back. What "
+            "Wrong — Quiz: not quite. `print` shows a value but hands nothing back. What "
             "does a function with no `return` give to its caller?"
         )
-    mo.md(_msg)
+    mo.callout(mo.md(_msg), kind="success" if ex50_ok else "warn")
     return (ex50_ok,)
 
 
@@ -780,7 +1042,7 @@ def _(answer_ex50, mo):
 def _(mo):
     mo.md(
         r"""
-    ### 🏆 Bonus — the Tip Calculator Championship (not required)
+    ### Bonus — the Tip Calculator Championship (not required)
 
     Your `tip_ex12` works on tidy inputs, but the whole class is entering their
     tip functions into a **Championship**: whose survives the weirdest receipts?
@@ -813,16 +1075,16 @@ def _(mo, show_result, tip_safe_ex60):
         _normal = tip_safe_ex60(20, 10)
     except Exception:
         ex60_ok = False
-        _msg = "❌ Championship: a weird receipt knocked it out: the function crashed. Guard the total before you do the math."
+        _msg = "Wrong — Championship: a weird receipt knocked it out: the function crashed. Guard the total before you do the math."
         _preview = ""
     else:
         if _zero is None and _normal is None:
             ex60_ok = False
-            _msg = "🔲 Championship: not entered yet (the function still returns None)."
+            _msg = "Not attempted — Championship: not entered yet (the function still returns None)."
             _preview = ""
         elif _zero is None or _neg is None:
             ex60_ok = False
-            _msg = "❌ Championship: a zero or negative total comes back as `None`. That branch has no `return`. Every path through the function needs one."
+            _msg = "Wrong — Championship: a zero or negative total comes back as `None`. That branch has no `return`. Every path through the function needs one."
             _preview = ""
         elif (
             _zero == 0.0 and _neg == 0.0
@@ -831,15 +1093,15 @@ def _(mo, show_result, tip_safe_ex60):
         ):
             ex60_ok = True
             _msg = (
-                "✅ Championship: 0 → 0.0, −5 → 0.0, the 100000 whale → 10000.0, and "
+                "Correct — Championship: 0 → 0.0, −5 → 0.0, the 100000 whale → 10000.0, and "
                 "a normal 20 → 2.0. Your function survived every weird receipt: "
-                "**you win Tobi's parking spot.** 🅿️"
+                "**you win Tobi's parking spot.**"
             )
             _preview = show_result(_zero)
         else:
             ex60_ok = False
             _msg = (
-                "❌ Championship: it didn't survive the battery. A 0 or negative "
+                "Wrong — Championship: it didn't survive the battery. A 0 or negative "
                 "total must give **0.0**; a normal total tips just like `tip_ex12`."
             )
             _preview = show_result(_zero)
@@ -851,8 +1113,8 @@ def _(mo, show_result, tip_safe_ex60):
 def _(mo):
     mo.accordion(
         {
-            "💡 Hint 1 (a nudge)": "Guard first: if the total is zero or negative, `return 0.0` right away. Otherwise fall through to the normal tip calculation from 1.2.",
-            "💡 Hint 2 (the structure)": "def tip_safe_ex60(total, percent):\n    if total ___ 0:\n        return 0.0\n    return round(total * percent / 100, 2)   (fill the comparison that catches zero AND negatives).",
+            "Hint 1 (a nudge)": "Guard first: if the total is zero or negative, `return 0.0` right away. Otherwise fall through to the normal tip calculation from 1.2.",
+            "Hint 2 (the structure)": "def tip_safe_ex60(total, percent):\n if total ___ 0:\n return 0.0\n return round(total * percent / 100, 2) (fill the comparison that catches zero AND negatives).",
         }
     )
     return
@@ -862,14 +1124,14 @@ def _(mo):
 # PROGRESS + WRAP-UP
 # ─────────────────────────────────────────────────────────────────────────
 @app.cell(hide_code=True)
-def _(ex11_ok, ex12_ok, ex22_ok, ex23_ok, ex31_ok, ex40_ok, ex50_ok, mo):
+def _(ex11_ok, ex12_ok, ex13_ok, ex22_ok, ex23_ok, ex24_ok, ex31_ok, ex32_ok, ex40_ok, ex50_ok, mo):
     # Progress cell: core exercises only (the trace and the bonus don't count).
-    _checks = [ex11_ok, ex12_ok, ex22_ok, ex23_ok, ex31_ok, ex40_ok, ex50_ok]
+    _checks = [ex11_ok, ex12_ok, ex13_ok, ex22_ok, ex23_ok, ex24_ok, ex31_ok, ex32_ok, ex40_ok, ex50_ok]
     _done = sum(_checks)
     _total = len(_checks)
     _tobi = "Tobi is genuinely impressed!" if _done == _total else "Tobi remains skeptical."
     mo.callout(
-        mo.md(f"**Core exercises: {_done}/{_total} ✅** · {_tobi}"),
+        mo.md(f"**Core exercises: {_done}/{_total} correct** · {_tobi}"),
         kind="success" if _done == _total else "neutral",
     )
     return
@@ -879,9 +1141,9 @@ def _(ex11_ok, ex12_ok, ex22_ok, ex23_ok, ex31_ok, ex40_ok, ex50_ok, mo):
 def _(mo):
     mo.md(
         r"""
-    ## Before you leave 📦
+    ## Before you leave
 
-    1. Check the progress box above: all seven core exercises green? If not,
+    1. Check the progress box above: all ten core exercises green? If not,
        that's normal: functions are the first genuinely hard idea in this course.
        Reopen the hints, reread the worked examples, and try one more time. The
        ones you fought for are the ones that stick.

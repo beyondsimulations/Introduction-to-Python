@@ -26,7 +26,7 @@ Tobi's plan is a **40-tab spreadsheet**, one tab per zone, copied by hand. He lo
 
 Today we get the bigger boat: **NumPy**, one object that holds a thousand numbers and does arithmetic on all of them at once.
 
-# 🔥 Warm-up
+# Warm-up
 
 Three questions from Episode 6. Commit. Hands up **before** the reveal.
 
@@ -128,6 +128,16 @@ print(prices * 1.19)   # every element, one expression
 
 One operation lands on **all** elements at once: `[14.28 10.71 17.85]`. No loop, no `.append`, and on a thousand orders it's also far faster.
 
+# Your turn --- 5--10 minutes
+
+Open the exercise (scan the QR or type the link):
+
+**[python.tobiasvlcek.com/notebooks/ex_07_a/](https://python.tobiasvlcek.com/notebooks/ex_07_a/)**
+
+<img src="assets/qr/ex_07_a.png" width="280" />
+
+First **predict** what happens, then run it.
+
 ## Arrays from scratch
 
 Two builders make evenly-spaced arrays without typing every number, handy for axes and ranges:
@@ -178,13 +188,45 @@ print(np.array([1, 2, 3]) * 2)    # array → doubled
 
 Lists repeat; arrays compute. That's why we're here.
 
-# Your turn --- 10 minutes
+## Predict: plus
+
+Tobi adds this week's zone counts to last week's. What does this print?
+
+``` python
+print([1, 2, 3] + [10, 20, 30])
+```
+
+a\) `[11, 22, 33]`, added pairwise b) an error: lists don't add c) `[1, 2, 3, 10, 20, 30]`
+
+. . .
+
+<span class="question">Predict first</span>. Pick a letter, then I reveal the answer.
+
+## Answer: lists glue, arrays add
+
+**c) `[1, 2, 3, 10, 20, 30]`**. On lists, `+` **glues** them end to end, exactly like `* 2` repeated. On arrays, `+` adds element by element, first with first, second with second:
+
+``` python
+import numpy as np
+
+print([1, 2, 3] + [10, 20, 30])                        # list → glued
+print(np.array([1, 2, 3]) + np.array([10, 20, 30]))    # array → added
+```
+
+    [1, 2, 3, 10, 20, 30]
+    [11 22 33]
+
+. . .
+
+Every operator follows the same rule: lists do list things, arrays do math.
+
+# Your turn --- 5--10 minutes
 
 Open the exercise (scan the QR or type the link):
 
-**[python.tobiasvlcek.com/notebooks/ex_07_a/](https://python.tobiasvlcek.com/notebooks/ex_07_a/)**
+**[python.tobiasvlcek.com/notebooks/ex_07_b/](https://python.tobiasvlcek.com/notebooks/ex_07_b/)**
 
-<img src="assets/qr/ex_07_a.png" width="280" />
+<img src="assets/qr/ex_07_b.png" width="280" />
 
 First **predict** what happens, then run it.
 
@@ -263,13 +305,54 @@ print((np.array([1, 5, 3]) > 2).sum())    # Trues add up to 2
 
 Summing a mask counts; averaging a mask shares. Same two tricks the lab asks for.
 
-# Your turn --- 10 minutes
+## Predict: two conditions
+
+The investor wants deliveries that took **more than 20 and less than 40** minutes. Tobi writes what he'd write for two numbers:
+
+``` python
+times = np.array([25, 41, 18, 33])
+print(times > 20 and times < 40)
+```
+
+a\) an error: ambiguous truth value b) `[ True False False  True]` c) `True`, both sides hold somewhere
+
+. . .
+
+<span class="question">Predict first</span>. Pick a letter, then I reveal the answer.
+
+## Answer: `and` wants one truth, a mask has four
+
+**a) an error**. `and` asks the left side "are you true?", and a four-element mask has no single answer. Between two masks use `&`, and wrap each side in parentheses (`&` binds tighter than `>`):
+
+``` python
+import numpy as np
+
+times = np.array([25, 41, 18, 33])
+print(times > 20 and times < 40)
+```
+
+<pre><span class="ansi-red-fg">---------------------------------------------------------------------------</span>
+<span class="ansi-red-fg">ValueError</span>                                Traceback (most recent call last)
+<span class="ansi-cyan-fg">Cell</span><span class="ansi-cyan-fg"> </span><span class="ansi-green-fg">In[9]</span><span class="ansi-green-fg">, line 4</span>
+<span class="ansi-green-fg">      1</span> <span style="font-weight:bold;color:rgb(0,135,0)">import</span><span style="color:rgb(188,188,188)"> </span><span class="ansi-blue-fg ansi-bold">numpy</span><span style="color:rgb(188,188,188)"> </span><span style="font-weight:bold;color:rgb(0,135,0)">as</span><span style="color:rgb(188,188,188)"> </span><span class="ansi-blue-fg ansi-bold">np</span>
+<span class="ansi-green-fg">      3</span> times = np.array([<span class="ansi-green-fg">25</span>, <span class="ansi-green-fg">41</span>, <span class="ansi-green-fg">18</span>, <span class="ansi-green-fg">33</span>])
+<span class="ansi-green-fg">----&gt; </span><span class="ansi-green-fg">4</span> <span style="color:rgb(0,135,0)">print</span>(<span class="ansi-yellow-bg">times</span><span class="ansi-yellow-bg"> </span><span class="ansi-yellow-bg">&gt;</span><span class="ansi-yellow-bg"> </span><span class="ansi-green-fg ansi-yellow-bg">20</span><span class="ansi-yellow-bg"> </span><span style="font-weight:bold;color:rgb(175,0,255)" class="ansi-yellow-bg">and</span><span class="ansi-yellow-bg"> </span><span class="ansi-yellow-bg">times</span><span class="ansi-yellow-bg"> </span><span class="ansi-yellow-bg">&lt;</span><span class="ansi-yellow-bg"> </span><span class="ansi-green-fg ansi-yellow-bg">40</span>)
+
+<span class="ansi-red-fg">ValueError</span>: The truth value of an array with more than one element is ambiguous. Use a.any() or a.all()</pre>
+
+``` python
+print((times > 20) & (times < 40))    # element by element: & combines masks
+```
+
+    [ True False False  True]
+
+# Your turn --- 5--10 minutes
 
 Open the exercise (scan the QR or type the link):
 
-**[python.tobiasvlcek.com/notebooks/ex_07_b/](https://python.tobiasvlcek.com/notebooks/ex_07_b/)**
+**[python.tobiasvlcek.com/notebooks/ex_07_c/](https://python.tobiasvlcek.com/notebooks/ex_07_c/)**
 
-<img src="assets/qr/ex_07_b.png" width="280" />
+<img src="assets/qr/ex_07_c.png" width="280" />
 
 First **predict** what happens, then run it.
 
@@ -295,6 +378,48 @@ print(deliveries[0, 2])      # row 0, column 2
 . . .
 
 `.shape` is now `(3, 4)`: three days, four zones. One index picks the **row**, a second the **column**: `deliveries[0, 2]` is day 0, zone 2 (Hafen).
+
+## Predict: the shape
+
+Tobi builds a grid with two more days. What does `.shape` say?
+
+``` python
+grid = np.array([[ 9, 14, 11,  6],
+                 [15, 12,  8,  9],
+                 [13, 20, 16, 11],
+                 [10, 17, 12,  8],
+                 [ 7, 11,  9,  5]])
+print(grid.shape)
+```
+
+a\) `(20,)` b) `(5, 4)` c) `(4, 5)`
+
+. . .
+
+<span class="question">Predict first</span>. Pick a letter, then I reveal the answer.
+
+## Answer: rows first, then columns
+
+**b) `(5, 4)`**. `.shape` is always `(rows, columns)`: five inner lists make five rows, each with four numbers. `(20,)` would be one flat row of twenty; `20` is `.size`, the total count:
+
+``` python
+import numpy as np
+
+grid = np.array([[ 9, 14, 11,  6],
+                 [15, 12,  8,  9],
+                 [13, 20, 16, 11],
+                 [10, 17, 12,  8],
+                 [ 7, 11,  9,  5]])
+print(grid.shape)   # (rows, columns)
+print(grid.size)    # rows × columns
+```
+
+    (5, 4)
+    20
+
+. . .
+
+Same order as indexing: `grid[row, column]`. Rows first, every time.
 
 ## Which way to collapse?
 
@@ -332,6 +457,16 @@ print(deliveries.sum(axis=1))   # ACROSS the columns → per day
 . . .
 
 **`axis=0` collapses DOWN the rows, one number per column (zone):** `[37 46 35 26]`. `axis=1` collapses across, one per day: `[40 44 60]`.
+
+# Your turn --- 5--10 minutes
+
+Open the exercise (scan the QR or type the link):
+
+**[python.tobiasvlcek.com/notebooks/ex_07_d/](https://python.tobiasvlcek.com/notebooks/ex_07_d/)**
+
+<img src="assets/qr/ex_07_d.png" width="280" />
+
+First **predict** what happens, then run it.
 
 ## Where does the max sit?
 
@@ -388,13 +523,13 @@ print(week.sum(axis=0))
 
 a\) would give **three** numbers (one per day); b) would give **one** number: the grand total, `144`.
 
-# Your turn --- 10 minutes
+# Your turn --- 5--10 minutes
 
 Open the exercise (scan the QR or type the link):
 
-**[python.tobiasvlcek.com/notebooks/ex_07_c/](https://python.tobiasvlcek.com/notebooks/ex_07_c/)**
+**[python.tobiasvlcek.com/notebooks/ex_07_e/](https://python.tobiasvlcek.com/notebooks/ex_07_e/)**
 
-<img src="assets/qr/ex_07_c.png" width="280" />
+<img src="assets/qr/ex_07_e.png" width="280" />
 
 First **predict** what happens, then run it.
 
