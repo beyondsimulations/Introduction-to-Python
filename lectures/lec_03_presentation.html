@@ -102,7 +102,7 @@
     code span.vs { color: #032f62; } /* VerbatimString */
     code span.wa { color: #ff5555; } /* Warning */
   </style>
-  <link rel="stylesheet" href="../site_libs/revealjs/dist/theme/quarto-b3fb67c8ce85a4edef7a6e8f618ee52f.css">
+  <link rel="stylesheet" href="../site_libs/revealjs/dist/theme/quarto-5aa1f75db54c0302bb16afb07830b38d.css">
   <link href="../site_libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
   <link href="../site_libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
   <link href="../site_libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
@@ -217,7 +217,7 @@ Dr.&nbsp;Tobias Vlćek
 </section>
 <section>
 <section id="checkpoint-1" class="title-slide slide level1 exercise-slide center">
-<h1>📋 Checkpoint 1</h1>
+<h1>Checkpoint 1</h1>
 <p><strong>The quarterly board review.</strong> The first 40 minutes are the checkpoint. It starts now.</p>
 <ul>
 <li><strong>Individual work</strong>: no AI, no neighbors, no chat</li>
@@ -237,7 +237,7 @@ Dr.&nbsp;Tobias Vlćek
 <i class="callout-icon"></i>
 </div>
 <div class="callout-content">
-<p>The green ✅ live checks are <strong>provisional</strong>. The final grading runs on my side. And take a breath: everything in it was rehearsed in the labs.</p>
+<p>The green live checks are <strong>provisional</strong>. The final grading runs on my side. And take a breath: everything in it was rehearsed in the labs.</p>
 </div>
 </div>
 </div>
@@ -266,7 +266,7 @@ Dr.&nbsp;Tobias Vlćek
 <section id="the-copy-paste-pain" class="slide level2">
 <h2>The copy-paste pain</h2>
 <p>Tobi totals each receipt line by hand, the same shape, over and over:</p>
-<div id="f684c814" class="cell" data-execution_count="1">
+<div id="028b2318" class="cell" data-execution_count="1">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a aria-label="1"></a><span class="bu">print</span>(<span class="bu">round</span>(<span class="dv">2</span> <span class="op">*</span> <span class="fl">4.50</span>, <span class="dv">2</span>))    <span class="co"># 2 wraps</span></span>
 <span id="cb1-2"><a aria-label="2"></a><span class="bu">print</span>(<span class="bu">round</span>(<span class="dv">1</span> <span class="op">*</span> <span class="fl">12.00</span>, <span class="dv">2</span>))   <span class="co"># 1 bowl</span></span>
 <span id="cb1-3"><a aria-label="3"></a><span class="bu">print</span>(<span class="bu">round</span>(<span class="dv">5</span> <span class="op">*</span> <span class="fl">3.20</span>, <span class="dv">2</span>))    <span class="co"># 5 fries</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
@@ -285,7 +285,7 @@ Dr.&nbsp;Tobias Vlćek
 <section id="def-name-the-calculation-once" class="slide level2">
 <h2><code>def</code>: name the calculation once</h2>
 <p>Write the calculation <strong>once</strong>, give it a name, and call it whenever you need it:</p>
-<div id="5162f299" class="cell" data-execution_count="2">
+<div id="4788872a" class="cell" data-execution_count="2">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a aria-label="1"></a><span class="kw">def</span> line_total(qty, price):     <span class="co"># def NAME(inputs):</span></span>
 <span id="cb3-2"><a aria-label="2"></a>    <span class="cf">return</span> <span class="bu">round</span>(qty <span class="op">*</span> price, <span class="dv">2</span>)  <span class="co"># indented body, hands a value back</span></span>
 <span id="cb3-3"><a aria-label="3"></a></span>
@@ -306,7 +306,7 @@ Dr.&nbsp;Tobias Vlćek
 <li><strong>Parameters</strong> are the names in the definition, the function’s inputs: <code>qty</code>, <code>price</code></li>
 <li><strong>Arguments</strong> are the actual values you pass when you <strong>call</strong> it: <code>2</code>, <code>4.50</code></li>
 </ul>
-<div id="2d647f9b" class="cell" data-execution_count="3">
+<div id="86851812" class="cell" data-execution_count="3">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a aria-label="1"></a><span class="kw">def</span> line_total(qty, price):      <span class="co"># qty and price are PARAMETERS</span></span>
 <span id="cb5-2"><a aria-label="2"></a>    <span class="cf">return</span> <span class="bu">round</span>(qty <span class="op">*</span> price, <span class="dv">2</span>)</span>
 <span id="cb5-3"><a aria-label="3"></a></span>
@@ -321,18 +321,47 @@ Dr.&nbsp;Tobias Vlćek
 <p>Same function, different arguments, different result. No retyping.</p>
 </div>
 </section>
+<section id="predict-which-number-is-the-bill" class="slide level2">
+<h2>Predict: which number is the bill?</h2>
+<p>Tobi wants a <strong>40 % tip on a 10 EUR bill</strong>… no wait, a <strong>10 % tip on 40 EUR</strong>. He types it in a hurry. What prints?</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb7"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a aria-label="1"></a><span class="kw">def</span> with_tip(bill, percent):</span>
+<span id="cb7-2"><a aria-label="2"></a>    <span class="cf">return</span> <span class="bu">round</span>(bill <span class="op">*</span> (<span class="dv">1</span> <span class="op">+</span> percent <span class="op">/</span> <span class="dv">100</span>), <span class="dv">2</span>)</span>
+<span id="cb7-3"><a aria-label="3"></a></span>
+<span id="cb7-4"><a aria-label="4"></a><span class="bu">print</span>(with_tip(<span class="dv">10</span>, <span class="dv">40</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>a) <code>44.0</code> b) <code>14.0</code> c) <code>Error</code></p>
+<div class="fragment">
+<p><span class="question">Predict first</span>. Pick a letter, then I reveal the answer.</p>
+</div>
+</section>
+<section id="answer-position-decides-not-intent" class="slide level2">
+<h2>Answer: position decides, not intent</h2>
+<p><strong>b) <code>14.0</code></strong>: arguments land on parameters <strong>by position</strong>. <code>10</code> becomes <code>bill</code>, <code>40</code> becomes <code>percent</code>: a 40 % tip on 10 EUR. Python cannot read what Tobi meant, only where he put it.</p>
+<div id="253af4b0" class="cell" data-execution_count="4">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a aria-label="1"></a><span class="kw">def</span> with_tip(bill, percent):</span>
+<span id="cb8-2"><a aria-label="2"></a>    <span class="cf">return</span> <span class="bu">round</span>(bill <span class="op">*</span> (<span class="dv">1</span> <span class="op">+</span> percent <span class="op">/</span> <span class="dv">100</span>), <span class="dv">2</span>)</span>
+<span id="cb8-3"><a aria-label="3"></a></span>
+<span id="cb8-4"><a aria-label="4"></a><span class="bu">print</span>(with_tip(<span class="dv">10</span>, <span class="dv">40</span>))   <span class="co"># bill=10, percent=40</span></span>
+<span id="cb8-5"><a aria-label="5"></a><span class="bu">print</span>(with_tip(<span class="dv">40</span>, <span class="dv">10</span>))   <span class="co"># bill=40, percent=10</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<div class="cell fragment" data-execution_count="4">
+<div class="cell-output cell-output-stdout">
+<pre><code>14.0
+44.0</code></pre>
+</div>
+</div>
+</section>
 <section id="return-hand-the-value-back" class="slide level2">
 <h2><code>return</code>: hand the value back</h2>
 <p><code>return</code> sends a value <strong>back to whoever called</strong> the function, so you can store it and use it later:</p>
-<div id="d9cdcac6" class="cell" data-execution_count="4">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a aria-label="1"></a><span class="kw">def</span> line_total(qty, price):</span>
-<span id="cb7-2"><a aria-label="2"></a>    <span class="cf">return</span> <span class="bu">round</span>(qty <span class="op">*</span> price, <span class="dv">2</span>)</span>
-<span id="cb7-3"><a aria-label="3"></a></span>
-<span id="cb7-4"><a aria-label="4"></a>subtotal <span class="op">=</span> line_total(<span class="dv">3</span>, <span class="fl">3.20</span>)   <span class="co"># catch what came back</span></span>
-<span id="cb7-5"><a aria-label="5"></a><span class="bu">print</span>(subtotal)</span>
-<span id="cb7-6"><a aria-label="6"></a><span class="bu">print</span>(subtotal <span class="op">+</span> <span class="fl">1.50</span>)           <span class="co"># ...and keep using it</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div id="f61802bd" class="cell" data-execution_count="5">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a aria-label="1"></a><span class="kw">def</span> line_total(qty, price):</span>
+<span id="cb10-2"><a aria-label="2"></a>    <span class="cf">return</span> <span class="bu">round</span>(qty <span class="op">*</span> price, <span class="dv">2</span>)</span>
+<span id="cb10-3"><a aria-label="3"></a></span>
+<span id="cb10-4"><a aria-label="4"></a>subtotal <span class="op">=</span> line_total(<span class="dv">3</span>, <span class="fl">3.20</span>)   <span class="co"># catch what came back</span></span>
+<span id="cb10-5"><a aria-label="5"></a><span class="bu">print</span>(subtotal)</span>
+<span id="cb10-6"><a aria-label="6"></a><span class="bu">print</span>(subtotal <span class="op">+</span> <span class="fl">1.50</span>)           <span class="co"># ...and keep using it</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
-<div class="cell fragment" data-execution_count="4">
+<div class="cell fragment" data-execution_count="5">
 <div class="cell-output cell-output-stdout">
 <pre><code>9.6
 11.1</code></pre>
@@ -342,11 +371,11 @@ Dr.&nbsp;Tobias Vlćek
 <section id="predict-print-or-return" class="slide level2">
 <h2>Predict: print or return?</h2>
 <p><code>label_price</code> <strong>prints</strong> but has no <code>return</code>. What does the <strong>last line</strong> show?</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb9"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a aria-label="1"></a><span class="kw">def</span> label_price(price):</span>
-<span id="cb9-2"><a aria-label="2"></a>    <span class="bu">print</span>(<span class="ss">f"</span><span class="sc">{</span>price<span class="sc">:.2f}</span><span class="ss"> EUR"</span>)</span>
-<span id="cb9-3"><a aria-label="3"></a></span>
-<span id="cb9-4"><a aria-label="4"></a>result <span class="op">=</span> label_price(<span class="fl">8.50</span>)</span>
-<span id="cb9-5"><a aria-label="5"></a><span class="bu">print</span>(result)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb12"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a aria-label="1"></a><span class="kw">def</span> label_price(price):</span>
+<span id="cb12-2"><a aria-label="2"></a>    <span class="bu">print</span>(<span class="ss">f"</span><span class="sc">{</span>price<span class="sc">:.2f}</span><span class="ss"> EUR"</span>)</span>
+<span id="cb12-3"><a aria-label="3"></a></span>
+<span id="cb12-4"><a aria-label="4"></a>result <span class="op">=</span> label_price(<span class="fl">8.50</span>)</span>
+<span id="cb12-5"><a aria-label="5"></a><span class="bu">print</span>(result)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>a) <code>8.50 EUR</code> b) <code>Error</code> c) <code>None</code></p>
 <div class="fragment">
 <p><span class="question">Predict first</span>. Pick a letter, then I reveal the answer.</p>
@@ -355,31 +384,39 @@ Dr.&nbsp;Tobias Vlćek
 <section id="answer-print-shows-return-hands-back" class="slide level2">
 <h2>Answer: <code>print</code> shows, <code>return</code> hands back</h2>
 <p><strong>c) <code>None</code></strong>: <code>label_price</code> prints its line while running, but with no <code>return</code> it hands back <code>None</code>. That <code>None</code> is what lands in <code>result</code>. Printing is not returning.</p>
-<div id="fec3c1d5" class="cell" data-execution_count="5">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a aria-label="1"></a><span class="kw">def</span> label_price(price):</span>
-<span id="cb10-2"><a aria-label="2"></a>    <span class="bu">print</span>(<span class="ss">f"</span><span class="sc">{</span>price<span class="sc">:.2f}</span><span class="ss"> EUR"</span>)</span>
-<span id="cb10-3"><a aria-label="3"></a></span>
-<span id="cb10-4"><a aria-label="4"></a>result <span class="op">=</span> label_price(<span class="fl">8.50</span>)   <span class="co"># prints while running...</span></span>
-<span id="cb10-5"><a aria-label="5"></a><span class="bu">print</span>(result)                <span class="co"># ...but the value handed back is None</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div id="5ccbb84b" class="cell" data-execution_count="6">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a aria-label="1"></a><span class="kw">def</span> label_price(price):</span>
+<span id="cb13-2"><a aria-label="2"></a>    <span class="bu">print</span>(<span class="ss">f"</span><span class="sc">{</span>price<span class="sc">:.2f}</span><span class="ss"> EUR"</span>)</span>
+<span id="cb13-3"><a aria-label="3"></a></span>
+<span id="cb13-4"><a aria-label="4"></a>result <span class="op">=</span> label_price(<span class="fl">8.50</span>)   <span class="co"># prints while running...</span></span>
+<span id="cb13-5"><a aria-label="5"></a><span class="bu">print</span>(result)                <span class="co"># ...but the value handed back is None</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
-<div class="cell fragment" data-execution_count="5">
+<div class="cell fragment" data-execution_count="6">
 <div class="cell-output cell-output-stdout">
 <pre><code>8.50 EUR
 None</code></pre>
 </div>
 </div>
+</section></section>
+<section>
+<section id="your-turn-510-minutes" class="title-slide slide level1 exercise-slide center">
+<h1>Your turn — 5–10 minutes</h1>
+<p>Open the exercise (scan the QR or type the link):</p>
+<p><strong><a href="https://python.tobiasvlcek.com/notebooks/ex_03_a/">python.tobiasvlcek.com/notebooks/ex_03_a/</a></strong></p>
+
+<img data-src="assets/qr/ex_03_a.png" width="280" class="r-stretch"><p>First <strong>predict</strong> what happens, then run it.</p>
 </section>
 <section id="default-arguments" class="slide level2">
 <h2>Default arguments</h2>
 <p>A parameter can carry a <strong>default</strong>, used when the caller leaves it out:</p>
-<div id="c6d9d3ca" class="cell" data-execution_count="6">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb12"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a aria-label="1"></a><span class="kw">def</span> service_fee(total, rate<span class="op">=</span><span class="fl">0.05</span>):   <span class="co"># rate defaults to 5 %</span></span>
-<span id="cb12-2"><a aria-label="2"></a>    <span class="cf">return</span> <span class="bu">round</span>(total <span class="op">*</span> rate, <span class="dv">2</span>)</span>
-<span id="cb12-3"><a aria-label="3"></a></span>
-<span id="cb12-4"><a aria-label="4"></a><span class="bu">print</span>(service_fee(<span class="dv">80</span>))         <span class="co"># default rate → 4.0</span></span>
-<span id="cb12-5"><a aria-label="5"></a><span class="bu">print</span>(service_fee(<span class="dv">80</span>, <span class="fl">0.10</span>))   <span class="co"># override it → 8.0</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div id="62705d95" class="cell" data-execution_count="7">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb15"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a aria-label="1"></a><span class="kw">def</span> service_fee(total, rate<span class="op">=</span><span class="fl">0.05</span>):   <span class="co"># rate defaults to 5 %</span></span>
+<span id="cb15-2"><a aria-label="2"></a>    <span class="cf">return</span> <span class="bu">round</span>(total <span class="op">*</span> rate, <span class="dv">2</span>)</span>
+<span id="cb15-3"><a aria-label="3"></a></span>
+<span id="cb15-4"><a aria-label="4"></a><span class="bu">print</span>(service_fee(<span class="dv">80</span>))         <span class="co"># default rate → 4.0</span></span>
+<span id="cb15-5"><a aria-label="5"></a><span class="bu">print</span>(service_fee(<span class="dv">80</span>, <span class="fl">0.10</span>))   <span class="co"># override it → 8.0</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
-<div class="cell fragment" data-execution_count="6">
+<div class="cell fragment" data-execution_count="7">
 <div class="cell-output cell-output-stdout">
 <pre><code>4.0
 8.0</code></pre>
@@ -392,14 +429,14 @@ None</code></pre>
 <section id="functions-can-call-functions" class="slide level2">
 <h2>Functions can call functions</h2>
 <p>A function can use another function you already wrote (reuse builds on reuse):</p>
-<div id="63573299" class="cell" data-execution_count="7">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb14"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a aria-label="1"></a><span class="kw">def</span> bill(qty, price):</span>
-<span id="cb14-2"><a aria-label="2"></a>    items <span class="op">=</span> line_total(qty, price)        <span class="co"># reuse line_total</span></span>
-<span id="cb14-3"><a aria-label="3"></a>    <span class="cf">return</span> <span class="bu">round</span>(items <span class="op">+</span> service_fee(items), <span class="dv">2</span>)  <span class="co"># ...and service_fee</span></span>
-<span id="cb14-4"><a aria-label="4"></a></span>
-<span id="cb14-5"><a aria-label="5"></a><span class="bu">print</span>(bill(<span class="dv">2</span>, <span class="fl">4.50</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div id="dc30b4f4" class="cell" data-execution_count="8">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb17"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a aria-label="1"></a><span class="kw">def</span> bill(qty, price):</span>
+<span id="cb17-2"><a aria-label="2"></a>    items <span class="op">=</span> line_total(qty, price)        <span class="co"># reuse line_total</span></span>
+<span id="cb17-3"><a aria-label="3"></a>    <span class="cf">return</span> <span class="bu">round</span>(items <span class="op">+</span> service_fee(items), <span class="dv">2</span>)  <span class="co"># ...and service_fee</span></span>
+<span id="cb17-4"><a aria-label="4"></a></span>
+<span id="cb17-5"><a aria-label="5"></a><span class="bu">print</span>(bill(<span class="dv">2</span>, <span class="fl">4.50</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
-<div class="cell fragment" data-execution_count="7">
+<div class="cell fragment" data-execution_count="8">
 <div class="cell-output cell-output-stdout">
 <pre><code>9.45</code></pre>
 </div>
@@ -408,12 +445,12 @@ None</code></pre>
 <p><code>line_total</code> and <code>service_fee</code> do their jobs; <code>bill</code> just orchestrates. That’s how small pieces become a program.</p>
 </div>
 </section></section>
-<section id="your-turn-10-minutes" class="title-slide slide level1 exercise-slide center">
-<h1>Your turn — 10 minutes</h1>
+<section id="your-turn-510-minutes-1" class="title-slide slide level1 exercise-slide center">
+<h1>Your turn — 5–10 minutes</h1>
 <p>Open the exercise (scan the QR or type the link):</p>
-<p><strong><a href="https://python.tobiasvlcek.com/notebooks/ex_03_a/">python.tobiasvlcek.com/notebooks/ex_03_a/</a></strong></p>
+<p><strong><a href="https://python.tobiasvlcek.com/notebooks/ex_03_b/">python.tobiasvlcek.com/notebooks/ex_03_b/</a></strong></p>
 
-<img data-src="assets/qr/ex_03_a.png" width="280" class="r-stretch"><p>First <strong>predict</strong> what happens, then run it.</p>
+<img data-src="assets/qr/ex_03_b.png" width="280" class="r-stretch"><p>First <strong>predict</strong> what happens, then run it.</p>
 </section>
 
 <section>
@@ -424,14 +461,14 @@ None</code></pre>
 <section id="local-names-stay-local" class="slide level2">
 <h2>Local names stay local</h2>
 <p>A parameter is the function’s <strong>own private copy</strong>. What happens inside stays inside:</p>
-<div id="06312cc8" class="cell" data-execution_count="8">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb16"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a aria-label="1"></a><span class="kw">def</span> bump(n):</span>
-<span id="cb16-2"><a aria-label="2"></a>    n <span class="op">=</span> n <span class="op">+</span> <span class="dv">10</span>       <span class="co"># changes the function's OWN copy of n</span></span>
-<span id="cb16-3"><a aria-label="3"></a>    <span class="cf">return</span> n</span>
-<span id="cb16-4"><a aria-label="4"></a></span>
-<span id="cb16-5"><a aria-label="5"></a><span class="bu">print</span>(bump(<span class="dv">3</span>))       <span class="co"># 13, the returned value</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div id="039811e1" class="cell" data-execution_count="9">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb19"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a aria-label="1"></a><span class="kw">def</span> bump(n):</span>
+<span id="cb19-2"><a aria-label="2"></a>    n <span class="op">=</span> n <span class="op">+</span> <span class="dv">10</span>       <span class="co"># changes the function's OWN copy of n</span></span>
+<span id="cb19-3"><a aria-label="3"></a>    <span class="cf">return</span> n</span>
+<span id="cb19-4"><a aria-label="4"></a></span>
+<span id="cb19-5"><a aria-label="5"></a><span class="bu">print</span>(bump(<span class="dv">3</span>))       <span class="co"># 13, the returned value</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
-<div class="cell fragment" data-execution_count="8">
+<div class="cell fragment" data-execution_count="9">
 <div class="cell-output cell-output-stdout">
 <pre><code>13</code></pre>
 </div>
@@ -443,13 +480,13 @@ None</code></pre>
 <section id="predict-does-the-global-move" class="slide level2">
 <h2>Predict: does the global move?</h2>
 <p><code>bump</code> adds ten to its parameter. We call it, then print <code>stock</code>. What does the <strong>last line</strong> print?</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb18"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a aria-label="1"></a><span class="kw">def</span> bump(n):</span>
-<span id="cb18-2"><a aria-label="2"></a>    n <span class="op">=</span> n <span class="op">+</span> <span class="dv">10</span></span>
-<span id="cb18-3"><a aria-label="3"></a>    <span class="cf">return</span> n</span>
-<span id="cb18-4"><a aria-label="4"></a></span>
-<span id="cb18-5"><a aria-label="5"></a>stock <span class="op">=</span> <span class="dv">3</span></span>
-<span id="cb18-6"><a aria-label="6"></a>bump(stock)</span>
-<span id="cb18-7"><a aria-label="7"></a><span class="bu">print</span>(stock)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb21"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a aria-label="1"></a><span class="kw">def</span> bump(n):</span>
+<span id="cb21-2"><a aria-label="2"></a>    n <span class="op">=</span> n <span class="op">+</span> <span class="dv">10</span></span>
+<span id="cb21-3"><a aria-label="3"></a>    <span class="cf">return</span> n</span>
+<span id="cb21-4"><a aria-label="4"></a></span>
+<span id="cb21-5"><a aria-label="5"></a>stock <span class="op">=</span> <span class="dv">3</span></span>
+<span id="cb21-6"><a aria-label="6"></a>bump(stock)</span>
+<span id="cb21-7"><a aria-label="7"></a><span class="bu">print</span>(stock)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>a) <code>3</code> b) <code>13</code> c) <code>Error</code></p>
 <div class="fragment">
 <p><span class="question">Predict first</span>. Pick a letter, then I reveal the answer.</p>
@@ -458,16 +495,16 @@ None</code></pre>
 <section id="answer-the-outside-variable-is-untouched" class="slide level2">
 <h2>Answer: the outside variable is untouched</h2>
 <p><strong>a) <code>3</code></strong>: <code>bump</code> changes only its own copy <code>n</code>. We never stored what it returned, so <code>stock</code> out here never moves. The function cannot reach out and rewrite your variables.</p>
-<div id="c8943f08" class="cell" data-execution_count="9">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb19"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a aria-label="1"></a><span class="kw">def</span> bump(n):</span>
-<span id="cb19-2"><a aria-label="2"></a>    n <span class="op">=</span> n <span class="op">+</span> <span class="dv">10</span></span>
-<span id="cb19-3"><a aria-label="3"></a>    <span class="cf">return</span> n</span>
-<span id="cb19-4"><a aria-label="4"></a></span>
-<span id="cb19-5"><a aria-label="5"></a>stock <span class="op">=</span> <span class="dv">3</span></span>
-<span id="cb19-6"><a aria-label="6"></a>bump(stock)      <span class="co"># the return value is thrown away</span></span>
-<span id="cb19-7"><a aria-label="7"></a><span class="bu">print</span>(stock)     <span class="co"># still 3</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div id="d7730f02" class="cell" data-execution_count="10">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb22"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a aria-label="1"></a><span class="kw">def</span> bump(n):</span>
+<span id="cb22-2"><a aria-label="2"></a>    n <span class="op">=</span> n <span class="op">+</span> <span class="dv">10</span></span>
+<span id="cb22-3"><a aria-label="3"></a>    <span class="cf">return</span> n</span>
+<span id="cb22-4"><a aria-label="4"></a></span>
+<span id="cb22-5"><a aria-label="5"></a>stock <span class="op">=</span> <span class="dv">3</span></span>
+<span id="cb22-6"><a aria-label="6"></a>bump(stock)      <span class="co"># the return value is thrown away</span></span>
+<span id="cb22-7"><a aria-label="7"></a><span class="bu">print</span>(stock)     <span class="co"># still 3</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
-<div class="cell fragment" data-execution_count="9">
+<div class="cell fragment" data-execution_count="10">
 <div class="cell-output cell-output-stdout">
 <pre><code>3</code></pre>
 </div>
@@ -497,17 +534,17 @@ None</code></pre>
 </section>
 <section id="class-__init__-and-self" class="slide level2">
 <h2><code>class</code>, <code>__init__</code>, and <code>self</code></h2>
-<div id="3b51cf3d" class="cell" data-execution_count="10">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb21"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a aria-label="1"></a><span class="kw">class</span> Delivery:</span>
-<span id="cb21-2"><a aria-label="2"></a>    <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>, courier, distance_km):  <span class="co"># runs when you build one</span></span>
-<span id="cb21-3"><a aria-label="3"></a>        <span class="va">self</span>.courier <span class="op">=</span> courier          <span class="co"># store data ON the object</span></span>
-<span id="cb21-4"><a aria-label="4"></a>        <span class="va">self</span>.distance_km <span class="op">=</span> distance_km</span>
-<span id="cb21-5"><a aria-label="5"></a>        <span class="va">self</span>.rate_per_km <span class="op">=</span> <span class="fl">1.20</span>         <span class="co"># every delivery carries its rate</span></span>
-<span id="cb21-6"><a aria-label="6"></a></span>
-<span id="cb21-7"><a aria-label="7"></a>    <span class="kw">def</span> fee(<span class="va">self</span>):                       <span class="co"># a method: note self</span></span>
-<span id="cb21-8"><a aria-label="8"></a>        <span class="cf">return</span> <span class="bu">round</span>(<span class="va">self</span>.distance_km <span class="op">*</span> <span class="va">self</span>.rate_per_km, <span class="dv">2</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div id="28b59cc9" class="cell" data-execution_count="11">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb24"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb24-1"><a aria-label="1"></a><span class="kw">class</span> Delivery:</span>
+<span id="cb24-2"><a aria-label="2"></a>    <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>, courier, distance_km):  <span class="co"># runs when you build one</span></span>
+<span id="cb24-3"><a aria-label="3"></a>        <span class="va">self</span>.courier <span class="op">=</span> courier          <span class="co"># store data ON the object</span></span>
+<span id="cb24-4"><a aria-label="4"></a>        <span class="va">self</span>.distance_km <span class="op">=</span> distance_km</span>
+<span id="cb24-5"><a aria-label="5"></a>        <span class="va">self</span>.rate_per_km <span class="op">=</span> <span class="fl">1.20</span>         <span class="co"># every delivery carries its rate</span></span>
+<span id="cb24-6"><a aria-label="6"></a></span>
+<span id="cb24-7"><a aria-label="7"></a>    <span class="kw">def</span> fee(<span class="va">self</span>):                       <span class="co"># a method: note self</span></span>
+<span id="cb24-8"><a aria-label="8"></a>        <span class="cf">return</span> <span class="bu">round</span>(<span class="va">self</span>.distance_km <span class="op">*</span> <span class="va">self</span>.rate_per_km, <span class="dv">2</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
-<div class="cell fragment" data-execution_count="10">
+<div class="cell fragment" data-execution_count="11">
 
 </div>
 <div class="fragment">
@@ -517,13 +554,13 @@ None</code></pre>
 <section id="build-one-call-its-method" class="slide level2">
 <h2>Build one, call its method</h2>
 <p><strong>Instantiate</strong> the class to make an object, then use its data and its methods:</p>
-<div id="260564a8" class="cell" data-execution_count="11">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb22"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a aria-label="1"></a>trip <span class="op">=</span> Delivery(<span class="st">"Nadia"</span>, <span class="dv">4</span>)   <span class="co"># build one, __init__ runs</span></span>
-<span id="cb22-2"><a aria-label="2"></a></span>
-<span id="cb22-3"><a aria-label="3"></a><span class="bu">print</span>(trip.courier)           <span class="co"># read stored data</span></span>
-<span id="cb22-4"><a aria-label="4"></a><span class="bu">print</span>(trip.fee())             <span class="co"># call the method</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div id="c23eac9e" class="cell" data-execution_count="12">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb25"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb25-1"><a aria-label="1"></a>trip <span class="op">=</span> Delivery(<span class="st">"Nadia"</span>, <span class="dv">4</span>)   <span class="co"># build one, __init__ runs</span></span>
+<span id="cb25-2"><a aria-label="2"></a></span>
+<span id="cb25-3"><a aria-label="3"></a><span class="bu">print</span>(trip.courier)           <span class="co"># read stored data</span></span>
+<span id="cb25-4"><a aria-label="4"></a><span class="bu">print</span>(trip.fee())             <span class="co"># call the method</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
-<div class="cell fragment" data-execution_count="11">
+<div class="cell fragment" data-execution_count="12">
 <div class="cell-output cell-output-stdout">
 <pre><code>Nadia
 4.8</code></pre>
@@ -531,6 +568,35 @@ None</code></pre>
 </div>
 <div class="fragment">
 <p><code>trip</code> is one <code>Delivery</code> object. <code>trip.fee()</code> computes from <em>its own</em> stored distance: data and behavior, traveling together.</p>
+</div>
+</section>
+<section id="predict-does-the-second-delivery-overwrite-the-first" class="slide level2">
+<h2>Predict: does the second delivery overwrite the first?</h2>
+<p>Two deliveries get built from the same class, one after the other. What does the <strong>last line</strong> print?</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb27"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb27-1"><a aria-label="1"></a>trip <span class="op">=</span> Delivery(<span class="st">"Nadia"</span>, <span class="dv">4</span>)</span>
+<span id="cb27-2"><a aria-label="2"></a>second <span class="op">=</span> Delivery(<span class="st">"Omar"</span>, <span class="dv">10</span>)</span>
+<span id="cb27-3"><a aria-label="3"></a></span>
+<span id="cb27-4"><a aria-label="4"></a><span class="bu">print</span>(trip.fee())</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>a) <code>12.0</code> b) <code>Error</code> c) <code>4.8</code></p>
+<div class="fragment">
+<p><span class="question">Predict first</span>. Pick a letter, then I reveal the answer.</p>
+</div>
+</section>
+<section id="answer-every-object-carries-its-own-data" class="slide level2">
+<h2>Answer: every object carries its own data</h2>
+<p><strong>c) <code>4.8</code></strong>: <code>__init__</code> ran twice and stored the data on <strong>two different objects</strong>. <code>self</code> inside <code>trip.fee()</code> is <code>trip</code>, so it reads Nadia’s 4 km, not Omar’s 10. Instances do not share attributes.</p>
+<div id="7a23f2a9" class="cell" data-execution_count="13">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb28"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb28-1"><a aria-label="1"></a>trip <span class="op">=</span> Delivery(<span class="st">"Nadia"</span>, <span class="dv">4</span>)</span>
+<span id="cb28-2"><a aria-label="2"></a>second <span class="op">=</span> Delivery(<span class="st">"Omar"</span>, <span class="dv">10</span>)</span>
+<span id="cb28-3"><a aria-label="3"></a></span>
+<span id="cb28-4"><a aria-label="4"></a><span class="bu">print</span>(trip.fee())      <span class="co"># self is trip: 4 km</span></span>
+<span id="cb28-5"><a aria-label="5"></a><span class="bu">print</span>(second.fee())    <span class="co"># self is second: 10 km</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<div class="cell fragment" data-execution_count="13">
+<div class="cell-output cell-output-stdout">
+<pre><code>4.8
+12.0</code></pre>
+</div>
 </div>
 </section>
 <section id="one-honest-slide-about-classes" class="slide level2">
@@ -553,12 +619,12 @@ None</code></pre>
 </div>
 </div>
 </section></section>
-<section id="your-turn-10-minutes-1" class="title-slide slide level1 exercise-slide center">
-<h1>Your turn — 10 minutes</h1>
+<section id="your-turn-510-minutes-2" class="title-slide slide level1 exercise-slide center">
+<h1>Your turn — 5–10 minutes</h1>
 <p>Open the exercise (scan the QR or type the link):</p>
-<p><strong><a href="https://python.tobiasvlcek.com/notebooks/ex_03_b/">python.tobiasvlcek.com/notebooks/ex_03_b/</a></strong></p>
+<p><strong><a href="https://python.tobiasvlcek.com/notebooks/ex_03_c/">python.tobiasvlcek.com/notebooks/ex_03_c/</a></strong></p>
 
-<img data-src="assets/qr/ex_03_b.png" width="280" class="r-stretch"><p>First <strong>predict</strong> what happens, then run it.</p>
+<img data-src="assets/qr/ex_03_c.png" width="280" class="r-stretch"><p>First <strong>predict</strong> what happens, then run it.</p>
 </section>
 
 <section>

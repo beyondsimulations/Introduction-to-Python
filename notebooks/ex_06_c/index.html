@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" href="./favicon.ico" />
+    <!-- Preload is necessary because we show these images when we disconnect from the server,
+    but at that point we cannot load these images from the server -->
+    <link rel="preload" href="../assets/gradient-yHQUC_QB.png" as="image" />
+    <link rel="preload" href="../assets/noise-60BoTA8O.png" as="image" />
+    <!-- Preload the fonts -->
+    <link rel="preload" href="../assets/Lora-VariableFont_wght-CZceb_kH.woff2" as="font" type="font/woff2" crossorigin="anonymous" />
+    <link rel="preload" href="../assets/PTSans-Regular-Bam3NpBI.woff2" as="font" type="font/woff2" crossorigin="anonymous" />
+    <link rel="preload" href="../assets/PTSans-Bold-C_DwAp7Z.woff2" as="font" type="font/woff2" crossorigin="anonymous" />
+    <link rel="preload" href="../assets/FiraMono-Regular-CEsLFVD9.woff2" as="font" type="font/woff2" crossorigin="anonymous" />
+    <link rel="preload" href="../assets/FiraMono-Medium-D5MAsWEG.woff2" as="font" type="font/woff2" crossorigin="anonymous" />
+    <link rel="preload" href="../assets/FiraMono-Bold-C6PDArdf.woff2" as="font" type="font/woff2" crossorigin="anonymous" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#000000" />
+    <meta name="description" content="a marimo app" />
+    <link rel="apple-touch-icon" href="./apple-touch-icon.png" />
+    <link rel="manifest" href="./manifest.json" />
+
+    <script data-marimo="true">
+      function __resizeIframe(obj) {
+        const scrollbarHeight = 20; // Max between windows, mac, and linux
+
+        function setHeight() {
+          // Guard against race condition where iframe isn't ready
+          if (!obj.contentWindow?.document?.documentElement) {
+            return;
+          }
+          const element = obj.contentWindow.document.documentElement;
+          // If there is no vertical scrollbar, we don't need to resize the iframe
+          if (element.scrollHeight === element.clientHeight) {
+            return;
+          }
+
+          // Create a new height that includes the scrollbar height if it's visible
+          const hasHorizontalScrollbar = element.scrollWidth > element.clientWidth;
+          const newHeight = element.scrollHeight + (hasHorizontalScrollbar ? scrollbarHeight : 0);
+
+          // Only update the height if it's different from the current height
+          if (obj.style.height !== `${newHeight}px`) {
+            obj.style.height = `${newHeight}px`;
+          }
+        }
+
+        // Resize the iframe to the height of the content and bottom scrollbar height
+        setHeight();
+
+        // Resize the iframe when the content changes
+        const resizeObserver = new ResizeObserver((_entries) => {
+          setHeight();
+        });
+        // Only observe if iframe content is ready
+        if (obj.contentWindow?.document?.body) {
+          resizeObserver.observe(obj.contentWindow.document.body);
+        }
+      }
+    </script>
+    <marimo-filename hidden>notebook.py</marimo-filename>
+    <!-- TODO(Trevor): Legacy, required by VS Code plugin. Remove when plugin is updated (see marimo/server/_templates/template.py) -->
+    <marimo-version data-version="{{ version }}" hidden></marimo-version>
+    <marimo-user-config data-config="{{ user_config }}" hidden></marimo-user-config>
+    <marimo-server-token data-token="{{ server_token }}" hidden></marimo-server-token>
+    <!-- /TODO -->
+    <title>ex 06 c</title>
+    <script type="module" crossorigin src="../assets/index-iAj2M3os.js"></script>
+    <link rel="modulepreload" crossorigin href="../assets/preload-helper-y72bE5iF.js">
+    <link rel="modulepreload" crossorigin href="../assets/chunk-LvLJmgfZ.js">
+    <link rel="modulepreload" crossorigin href="../assets/react-Bj1aDYRI.js">
+    <link rel="modulepreload" crossorigin href="../assets/compiler-runtime-B3qBwwSJ.js">
+    <link rel="modulepreload" crossorigin href="../assets/jsx-runtime-PbYoItBR.js">
+    <link rel="modulepreload" crossorigin href="../assets/useEventListener-BakX-tnw.js">
+    <link rel="modulepreload" crossorigin href="../assets/defaultLocale-CuYNS33t.js">
+    <link rel="modulepreload" crossorigin href="../assets/precisionRound-CCOoIlcP.js">
+    <link rel="modulepreload" crossorigin href="../assets/defaultLocale-CGfP-Ye3.js">
+    <link rel="modulepreload" crossorigin href="../assets/vega-loader.browser-BJ9oKrvH.js">
+    <link rel="modulepreload" crossorigin href="../assets/utils-BIlJBJIu.js">
+    <link rel="modulepreload" crossorigin href="../assets/clsx-BtEcuwwV.js">
+    <link rel="modulepreload" crossorigin href="../assets/cn-X2M2usMq.js">
+    <link rel="modulepreload" crossorigin href="../assets/badge-CFAaMy0O.js">
+    <link rel="modulepreload" crossorigin href="../assets/button-BF7GSjhW.js">
+    <link rel="modulepreload" crossorigin href="../assets/react-dom-CSu739Rf.js">
+    <link rel="modulepreload" crossorigin href="../assets/fullscreen-BXI8V5i6.js">
+    <link rel="modulepreload" crossorigin href="../assets/menu-items-CQMqwayA.js">
+    <link rel="modulepreload" crossorigin href="../assets/dist-DCqDlsgq.js">
+    <link rel="modulepreload" crossorigin href="../assets/createLucideIcon-BTp1tQDO.js">
+    <link rel="modulepreload" crossorigin href="../assets/check-DQmqoJgr.js">
+    <link rel="modulepreload" crossorigin href="../assets/x-9vLEgLY6.js">
+    <link rel="modulepreload" crossorigin href="../assets/select-Cjly7tmx.js">
+    <link rel="modulepreload" crossorigin href="../assets/tooltip-CgQpRVyN.js">
+    <link rel="modulepreload" crossorigin href="../assets/use-toast-BH8bU9Xf.js">
+    <link rel="modulepreload" crossorigin href="../assets/useEvent-D91BmmQi.js">
+    <link rel="modulepreload" crossorigin href="../assets/invariant-C2E8KCbD.js">
+    <link rel="modulepreload" crossorigin href="../assets/isObject-DvLSfCY5.js">
+    <link rel="modulepreload" crossorigin href="../assets/_baseFor-DKD1r8uL.js">
+    <link rel="modulepreload" crossorigin href="../assets/merge-_9WLTEyt.js">
+    <link rel="modulepreload" crossorigin href="../assets/zod-H_cgTO0M.js">
+    <link rel="modulepreload" crossorigin href="../assets/utils-Dev6I_Kv.js">
+    <link rel="modulepreload" crossorigin href="../assets/Deferred-CfyqLOPG.js">
+    <link rel="modulepreload" crossorigin href="../assets/uuid-BukULOeS.js">
+    <link rel="modulepreload" crossorigin href="../assets/DeferredRequestRegistry-EP9ZArpv.js">
+    <link rel="modulepreload" crossorigin href="../assets/constants-B9JJ72XE.js">
+    <link rel="modulepreload" crossorigin href="../assets/session-B6_8umQX.js">
+    <link rel="modulepreload" crossorigin href="../assets/config-BE150fVL.js">
+    <link rel="modulepreload" crossorigin href="../assets/requests-KshNNAOp.js">
+    <link rel="modulepreload" crossorigin href="../assets/useLifecycle-Baf35rp4.js">
+    <link rel="modulepreload" crossorigin href="../assets/useNonce-0SWz6w4W.js">
+    <link rel="modulepreload" crossorigin href="../assets/useTheme-CWoNQwFz.js">
+    <link rel="modulepreload" crossorigin href="../assets/arrays-DWxvyYxP.js">
+    <link rel="modulepreload" crossorigin href="../assets/strings-DvZlHYnD.js">
+    <link rel="modulepreload" crossorigin href="../assets/once-CXj_gH7S.js">
+    <link rel="modulepreload" crossorigin href="../assets/capabilities-CjNGDxxx.js">
+    <link rel="modulepreload" crossorigin href="../assets/createReducer-3wF4dU7I.js">
+    <link rel="modulepreload" crossorigin href="../assets/paths-kNeJ8nbe.js">
+    <link rel="modulepreload" crossorigin href="../assets/dist-Dez1I5M9.js">
+    <link rel="modulepreload" crossorigin href="../assets/dist-B0WqBUnf.js">
+    <link rel="modulepreload" crossorigin href="../assets/dist-CwfKvuyQ.js">
+    <link rel="modulepreload" crossorigin href="../assets/dist-D-o1OXc9.js">
+    <link rel="modulepreload" crossorigin href="../assets/dist-BZhJ1bTM.js">
+    <link rel="modulepreload" crossorigin href="../assets/dist-Bj9Iedc0.js">
+    <link rel="modulepreload" crossorigin href="../assets/dist-DHMtQYxT.js">
+    <link rel="modulepreload" crossorigin href="../assets/dist-DnIl7RU-.js">
+    <link rel="modulepreload" crossorigin href="../assets/dist-CfGDksO-.js">
+    <link rel="modulepreload" crossorigin href="../assets/stex-C6JeW1YI.js">
+    <link rel="modulepreload" crossorigin href="../assets/toDate-DCE7d2fN.js">
+    <link rel="modulepreload" crossorigin href="../assets/purify.es-DdxMtdqK.js">
+    <link rel="modulepreload" crossorigin href="../assets/cjs-DXo9vDEJ.js">
+    <link rel="modulepreload" crossorigin href="../assets/isSymbol-BT6B8Bon.js">
+    <link rel="modulepreload" crossorigin href="../assets/now-CsYTPAhW.js">
+    <link rel="modulepreload" crossorigin href="../assets/debounce-OiXznToA.js">
+    <link rel="modulepreload" crossorigin href="../assets/database-zap-DIlSqcdp.js">
+    <link rel="modulepreload" crossorigin href="../assets/main-DmhaVp6Y.js">
+    <link rel="modulepreload" crossorigin href="../assets/cells-DQ5n6Zef.js">
+    <link rel="modulepreload" crossorigin href="../assets/ErrorBoundary-Bo313Z9X.js">
+    <link rel="modulepreload" crossorigin href="../assets/kbd-BCXa3Ocm.js">
+    <link rel="modulepreload" crossorigin href="../assets/useInstallPackage-DEHK-C20.js">
+    <link rel="modulepreload" crossorigin href="../assets/alert-dialog-CC0gG4Av.js">
+    <link rel="modulepreload" crossorigin href="../assets/dialog-Dr_Y1zNi.js">
+    <link rel="modulepreload" crossorigin href="../assets/useDebounce-BlBSYv0n.js">
+    <link rel="modulepreload" crossorigin href="../assets/numbers-BKZTJMZ6.js">
+    <link rel="modulepreload" crossorigin href="../assets/SSRProvider-DrpctNAg.js">
+    <link rel="modulepreload" crossorigin href="../assets/context-DE_5rdOV.js">
+    <link rel="modulepreload" crossorigin href="../assets/useNumberFormatter-DCM-63YT.js">
+    <link rel="modulepreload" crossorigin href="../assets/usePress-mjvipKvz.js">
+    <link rel="modulepreload" crossorigin href="../assets/input-b2KTOk0X.js">
+    <link rel="modulepreload" crossorigin href="../assets/ImperativeModal-MQnbMIO2.js">
+    <link rel="modulepreload" crossorigin href="../assets/cell-link-LArpBcY-.js">
+    <link rel="modulepreload" crossorigin href="../assets/multi-map-9ogswH46.js">
+    <link rel="modulepreload" crossorigin href="../assets/alert-Bjh7v4lb.js">
+    <link rel="modulepreload" crossorigin href="../assets/chevron-right-C7RH0Nc7.js">
+    <link rel="modulepreload" crossorigin href="../assets/dropdown-menu-DfGLyCbP.js">
+    <link rel="modulepreload" crossorigin href="../assets/links-DK7te6sJ.js">
+    <link rel="modulepreload" crossorigin href="../assets/useRunCells-bcK6jTD2.js">
+    <link rel="modulepreload" crossorigin href="../assets/copy-CyasABTK.js">
+    <link rel="modulepreload" crossorigin href="../assets/copy-IBNGDypD.js">
+    <link rel="modulepreload" crossorigin href="../assets/copy-icon-BCIGtBo0.js">
+    <link rel="modulepreload" crossorigin href="../assets/RenderHTML-BLBwT24G.js">
+    <link rel="modulepreload" crossorigin href="../assets/datasource-BT-L2LDD.js">
+    <link rel="modulepreload" crossorigin href="../assets/state-VxOqftwq.js">
+    <link rel="modulepreload" crossorigin href="../assets/package-BoMcg6sy.js">
+    <link rel="modulepreload" crossorigin href="../assets/sparkles-DctOjjEz.js">
+    <link rel="modulepreload" crossorigin href="../assets/MarimoErrorOutput-DcImOp4r.js">
+    <link rel="modulepreload" crossorigin href="../assets/eye-off-DI0EQXw0.js">
+    <link rel="modulepreload" crossorigin href="../assets/refresh-cw-DcEasnos.js">
+    <link rel="modulepreload" crossorigin href="../assets/tree-actions-CjikjOBA.js">
+    <link rel="modulepreload" crossorigin href="../assets/spinner-DTBVbtl-.js">
+    <link rel="modulepreload" crossorigin href="../assets/html-to-image-CmK-WSPG.js">
+    <link rel="modulepreload" crossorigin href="../assets/focus-Dol5ybck.js">
+    <link rel="modulepreload" crossorigin href="../assets/useAsyncData-CT1LpOBD.js">
+    <link rel="modulepreload" crossorigin href="../assets/LazyAnyLanguageCodeMirror-CUQODgGJ.js">
+    <link rel="modulepreload" crossorigin href="../assets/micromark-factory-space-P--XWZhg.js">
+    <link rel="modulepreload" crossorigin href="../assets/chunk-5FQGJX7Z-C6VN0dQj.js">
+    <link rel="modulepreload" crossorigin href="../assets/markdown-renderer-f3mfGw8u.js">
+    <link rel="modulepreload" crossorigin href="../assets/command-CsbsBLBw.js">
+    <link rel="modulepreload" crossorigin href="../assets/field-CA9HCE2Y.js">
+    <link rel="modulepreload" crossorigin href="../assets/popover-DMNO6Poc.js">
+    <link rel="modulepreload" crossorigin href="../assets/errors-48KFPvCp.js">
+    <link rel="modulepreload" crossorigin href="../assets/download-rKGlekSQ.js">
+    <link rel="modulepreload" crossorigin href="../assets/table-Fk_msRcD.js">
+    <link rel="modulepreload" crossorigin href="../assets/useIframeCapabilities-DuGyzPVb.js">
+    <link rel="modulepreload" crossorigin href="../assets/error-banner-C4DZksWV.js">
+    <link rel="modulepreload" crossorigin href="../assets/formats-Dkhsq416.js">
+    <link rel="modulepreload" crossorigin href="../assets/en-US-DZwIjHwu.js">
+    <link rel="modulepreload" crossorigin href="../assets/isValid-Cgon0fXK.js">
+    <link rel="modulepreload" crossorigin href="../assets/dates-CnrjjcMO.js">
+    <link rel="modulepreload" crossorigin href="../assets/extends-2LbFKIQQ.js">
+    <link rel="modulepreload" crossorigin href="../assets/emotion-is-prop-valid.esm-DiQGBfwj.js">
+    <link rel="modulepreload" crossorigin href="../assets/useDateFormatter-CANi6nSX.js">
+    <link rel="modulepreload" crossorigin href="../assets/react-icons.esm-C2u-_EAQ.js">
+    <link rel="modulepreload" crossorigin href="../assets/RSPContexts-CXueMbRb.js">
+    <link rel="modulepreload" crossorigin href="../assets/table-DxdydCSG.js">
+    <link rel="modulepreload" crossorigin href="../assets/ellipsis-D0iYysLh.js">
+    <link rel="modulepreload" crossorigin href="../assets/external-link-BktyywYg.js">
+    <link rel="modulepreload" crossorigin href="../assets/message-circle-D_YIPPZo.js">
+    <link rel="modulepreload" crossorigin href="../assets/plus-CExKUszm.js">
+    <link rel="modulepreload" crossorigin href="../assets/trash-2-CjPoUZCP.js">
+    <link rel="modulepreload" crossorigin href="../assets/react-resizable-panels.browser.esm-CgWOEYeG.js">
+    <link rel="modulepreload" crossorigin href="../assets/JsonOutput-DTeVFctC.js">
+    <link rel="modulepreload" crossorigin href="../assets/chart-no-axes-column-DVEV2j1H.js">
+    <link rel="modulepreload" crossorigin href="../assets/square-function-CPbVtjKW.js">
+    <link rel="modulepreload" crossorigin href="../assets/spec-BzxoPflZ.js">
+    <link rel="modulepreload" crossorigin href="../assets/column-preview-VcOeHtkt.js">
+    <link rel="modulepreload" crossorigin href="../assets/icons-D3YFXNmD.js">
+    <link rel="modulepreload" crossorigin href="../assets/radio-group-D7RG9Px_.js">
+    <link rel="modulepreload" crossorigin href="../assets/floating-outline-CPTvLHMl.js">
+    <link rel="modulepreload" crossorigin href="../assets/objectWithoutPropertiesLoose-Msf1n32r.js">
+    <link rel="modulepreload" crossorigin href="../assets/esm-DSv-aO_T.js">
+    <link rel="modulepreload" crossorigin href="../assets/readonly-python-code-DHJTIc4H.js">
+    <link rel="modulepreload" crossorigin href="../assets/file-headphone-CUN2DC78.js">
+    <link rel="modulepreload" crossorigin href="../assets/file-BvoBtS_V.js">
+    <link rel="modulepreload" crossorigin href="../assets/image-jhXeQEgs.js">
+    <link rel="modulepreload" crossorigin href="../assets/file-icons-DBMviz_K.js">
+    <link rel="modulepreload" crossorigin href="../assets/switch-DHhZkGEv.js">
+    <link rel="modulepreload" crossorigin href="../assets/events-BRbNg7Li.js">
+    <link rel="modulepreload" crossorigin href="../assets/globals-BDWM3c_z.js">
+    <link rel="modulepreload" crossorigin href="../assets/share-vrPro738.js">
+    <link rel="modulepreload" crossorigin href="../assets/blob-dGUJ3Bw8.js">
+    <link rel="modulepreload" crossorigin href="../assets/memoize-Tp7rARFe.js">
+    <link rel="modulepreload" crossorigin href="../assets/get-C-qh_et5.js">
+    <link rel="modulepreload" crossorigin href="../assets/_baseSet-CsW0tABf.js">
+    <link rel="modulepreload" crossorigin href="../assets/state-D7fu7IC3.js">
+    <link rel="modulepreload" crossorigin href="../assets/label-CFvCMYuj.js">
+    <link rel="modulepreload" crossorigin href="../assets/textarea-DD5BwHTh.js">
+    <link rel="modulepreload" crossorigin href="../assets/refresh-ccw-CUkO1Vlo.js">
+    <link rel="modulepreload" crossorigin href="../assets/form-B9I9mpZy.js">
+    <link rel="modulepreload" crossorigin href="../assets/renderShortcut-CKbqJyj4.js">
+    <link rel="modulepreload" crossorigin href="../assets/useBoolean-48bgGoSa.js">
+    <link rel="modulepreload" crossorigin href="../assets/useDeepCompareMemoize-zUHU--0D.js">
+    <link rel="modulepreload" crossorigin href="../assets/types-xF5uWODg.js">
+    <link rel="modulepreload" crossorigin href="../assets/semaphore-FlZezxaf.js">
+    <link rel="modulepreload" crossorigin href="../assets/fileToBase64-Doh9J-g6.js">
+    <link rel="modulepreload" crossorigin href="../assets/pathUtils-ANiMIEDI.js">
+    <link rel="modulepreload" crossorigin href="../assets/prop-types-D_pYuT11.js">
+    <link rel="modulepreload" crossorigin href="../assets/es-Cy7KBUrF.js">
+    <link rel="modulepreload" crossorigin href="../assets/_hasPath-hMc_3QZy.js">
+    <link rel="modulepreload" crossorigin href="../assets/hasIn-CSsM95b1.js">
+    <link rel="modulepreload" crossorigin href="../assets/flatten-Bd5tsfm_.js">
+    <link rel="modulepreload" crossorigin href="../assets/pick-D1xb4gl6.js">
+    <link rel="modulepreload" crossorigin href="../assets/code-xml-tqeFGeKJ.js">
+    <link rel="modulepreload" crossorigin href="../assets/house-DkdBWh44.js">
+    <link rel="modulepreload" crossorigin href="../assets/square-DPWHdF_-.js">
+    <link rel="modulepreload" crossorigin href="../assets/triangle-alert-CV7pqa1o.js">
+    <link rel="modulepreload" crossorigin href="../assets/bundle.esm-BULc9l6b.js">
+    <link rel="stylesheet" crossorigin href="../assets/cells-BVzo2MHf.css">
+    <link rel="stylesheet" crossorigin href="../assets/markdown-renderer-DdDKmWlR.css">
+    <link rel="stylesheet" crossorigin href="../assets/JsonOutput-BQtz7-np.css">
+    <link rel="stylesheet" crossorigin href="../assets/index-CaelsqOA.css">
+  <marimo-wasm hidden=""></marimo-wasm>
+    <script>
+        if (window.location.protocol === 'file:') {
+            alert('Warning: This file must be served by an HTTP server to function correctly.');
+        }
+    </script>
+    
+    <style>
+        #save-button {
+            display: none !important;
+        }
+        #filename-input {
+            display: none !important;
+        }
+    </style>
+    
+<script data-marimo="true">
+    Object.defineProperty(window, "__MARIMO_EXPORT_CONTEXT__", {
+        value: Object.freeze({
+            trusted: true,
+            notebookCode: "# notebooks/exercises/ex_06_c.py\n\nimport marimo\n\n__generated_with = \"0.23.13\"\napp = marimo.App(width=\"medium\")\n\n\n@app.cell\ndef _():\n    import marimo as mo\n\n    return (mo,)\n\n\n@app.function(hide_code=True)\n# Shows your current answer under the check.\ndef show_result(value):\n    if value is None:\n        return \"\"\n    if isinstance(value, str):\n        return f\"\\n\\n**Your result:**\\n\\n```\\n{value}\\n```\"\n    return f\"\\n\\n**Your result:** `{value}`\"\n\n\n@app.cell(hide_code=True)\ndef _(mo):\n    mo.md(r\"\"\"\n    # Quick exercise: seeded randomness (5\u201310 min)\n\n    Normally `random` hands you a new sequence every time a cell reruns.\n    Sometimes you want the opposite: the *same* sequence, every single\n    time, so a demo or a test is reproducible. `random.seed(n)` fixes the\n    starting point of the sequence. Anyone who seeds with the same number\n    sees the same \"random\" results.\n\n    **Predict** first: will the dice rolls below change when the cell\n    reruns? Then run it (twice, if you can).\n    \"\"\")\n    return\n\n\n@app.cell(hide_code=True)\ndef _(mo):\n    mo.callout(\n        mo.md(\n            \"**Saving your work:** this notebook runs in your browser. Press\"\n            \"**Cmd/Ctrl+S** to save, and always save **before** menu \u2192 Download \u2192 \"\n            \"*Download Python code*. Without a save first, the download is an empty file.\"\n        ),\n        kind=\"info\",\n    )\n    return\n\n\n@app.cell\ndef _():\n    import random\n\n    return (random,)\n\n\n@app.cell\ndef _(random):\n    # Worked example (read + run this)\n    random.seed(7)\n    _rolls_demo = [random.randint(1, 6), random.randint(1, 6), random.randint(1, 6)]\n    print(f\"Three dice rolls after seed(7): {_rolls_demo}\")\n    return\n\n\n@app.cell(hide_code=True)\ndef _(mo):\n    mo.md(r\"\"\"\n    The investor wants the demand projection to be *reproducible*: the\n    same numbers every time she clicks run, no matter how often the\n    notebook re-executes.\n\n    Seed the random generator with `21` (do it exactly once), then\n    simulate demand for the next 7 days: for each day, draw an order count\n    with `random.randint(5, 25)` and collect the seven draws into a list\n    called `demand_exc`.\n    \"\"\")\n    return\n\n\n@app.cell\ndef _():\n    # YOUR CODE BELOW: replace None\n    demand_exc = None\n    return (demand_exc,)\n\n\n@app.cell(hide_code=True)\ndef _(demand_exc, mo):\n    # Reactive check. Re-runs when you run the cell above.\n    _expected = [10, 18, 18, 25, 14, 20, 11]\n    if demand_exc is None:\n        _ok = False\n        _msg = \"Not attempted \u2014 assign it to `demand_exc` (a `print` alone doesn't count) and run the cell.\"\n    elif demand_exc == _expected:\n        _ok = True\n        _msg = \"Correct \u2014 Same seven numbers, every single run. The investor can finally trust the demo.\"\n    elif isinstance(demand_exc, list) and len(demand_exc) == 7:\n        _ok = False\n        _msg = \"Wrong \u2014 Right shape, wrong numbers. Check three things: seed **21** (not another number), seeded once *before* the loop, and each draw is `random.randint(5, 25)`.\"\n    else:\n        _ok = False\n        _msg = \"Wrong \u2014 Build a list of 7 draws, one `random.randint(5, 25)` call per day.\"\n    mo.callout(mo.md(_msg + show_result(demand_exc)), kind=\"success\" if _ok else \"warn\")\n    return\n\n\n@app.cell(hide_code=True)\ndef _(mo):\n    mo.accordion(\n        {\n            \"Hint 1 (a nudge)\": \"Seed first, then draw; the seed makes every following draw predictable.\",\n            \"Hint 2 (the structure)\": \"random.___(21)\\ndemand_exc = []\\nfor _day in range(7):\\n demand_exc.append(random.____(5, 25))\",\n        }\n    )\n    return\n\n\n@app.cell(hide_code=True)\ndef _(mo):\n    mo.md(r\"\"\"\n    **Done? Then:** one more roll of the dice. On the busiest day one zone\n    gets an extra rider, and the investor wants that pick reproducible too.\n    Seed with `21` **again**, then pick one zone from\n    `[\"Nord\", \"Sued\", \"West\"]` with `random.choice` and store it as `zone_exc`.\n    \"\"\")\n    return\n\n\n@app.cell\ndef _():\n    # YOUR CODE BELOW: replace None\n    zone_exc = None\n    return (zone_exc,)\n\n\n@app.cell(hide_code=True)\ndef _(mo, zone_exc):\n    # Reactive check. Re-runs when you run the cell above.\n    if zone_exc is None:\n        _ok = False\n        _msg = \"Not attempted \u2014 assign it to `zone_exc` (a `print` alone doesn't count) and run the cell.\"\n    elif zone_exc == \"Nord\":\n        _ok = True\n        _msg = \"Correct \u2014 Nord, every single run. Re-seeding rewinds the stream, so the pick is as reproducible as the demand list.\"\n    elif zone_exc in (\"Sued\", \"West\"):\n        _ok = False\n        _msg = \"Wrong \u2014 a valid zone, but not the one seed 21 deals first. Without a fresh `random.seed(21)` right before the pick, the stream carries on from wherever the demand draws left it.\"\n    else:\n        _ok = False\n        _msg = \"Wrong \u2014 `random.choice` takes the list of three zones and hands back one of them, as a string.\"\n    mo.callout(mo.md(_msg + show_result(zone_exc)), kind=\"success\" if _ok else \"warn\")\n    return\n\n\n@app.cell(hide_code=True)\ndef _(mo):\n    mo.accordion(\n        {\n            \"Hint 1 (a nudge)\": \"The seed rewinds the stream. Seed first, in the same cell, then make the pick.\",\n            \"Hint 2 (the structure)\": \"random.____(21)\\nzone_exc = random.______([\\\"Nord\\\", \\\"Sued\\\", \\\"West\\\"])\",\n        }\n    )\n    return\n\n\n@app.cell(hide_code=True)\ndef _(mo):\n    mo.md(\"\"\"\n    *Nothing to save. This was a sandbox.*\n    \"\"\")\n    return\n\n\nif __name__ == \"__main__\":\n    app.run()\n",
+        }),
+        writable: false,
+        configurable: false,
+    });
+</script>
+<marimo-code hidden="">%23%20notebooks%2Fexercises%2Fex_06_c.py%0A%0Aimport%20marimo%0A%0A__generated_with%20%3D%20%220.23.13%22%0Aapp%20%3D%20marimo.App(width%3D%22medium%22)%0A%0A%0A%40app.cell%0Adef%20_()%3A%0A%20%20%20%20import%20marimo%20as%20mo%0A%0A%20%20%20%20return%20(mo%2C)%0A%0A%0A%40app.function(hide_code%3DTrue)%0A%23%20Shows%20your%20current%20answer%20under%20the%20check.%0Adef%20show_result(value)%3A%0A%20%20%20%20if%20value%20is%20None%3A%0A%20%20%20%20%20%20%20%20return%20%22%22%0A%20%20%20%20if%20isinstance(value%2C%20str)%3A%0A%20%20%20%20%20%20%20%20return%20f%22%5Cn%5Cn**Your%20result%3A**%5Cn%5Cn%60%60%60%5Cn%7Bvalue%7D%5Cn%60%60%60%22%0A%20%20%20%20return%20f%22%5Cn%5Cn**Your%20result%3A**%20%60%7Bvalue%7D%60%22%0A%0A%0A%40app.cell(hide_code%3DTrue)%0Adef%20_(mo)%3A%0A%20%20%20%20mo.md(r%22%22%22%0A%20%20%20%20%23%20Quick%20exercise%3A%20seeded%20randomness%20(5%E2%80%9310%20min)%0A%0A%20%20%20%20Normally%20%60random%60%20hands%20you%20a%20new%20sequence%20every%20time%20a%20cell%20reruns.%0A%20%20%20%20Sometimes%20you%20want%20the%20opposite%3A%20the%20*same*%20sequence%2C%20every%20single%0A%20%20%20%20time%2C%20so%20a%20demo%20or%20a%20test%20is%20reproducible.%20%60random.seed(n)%60%20fixes%20the%0A%20%20%20%20starting%20point%20of%20the%20sequence.%20Anyone%20who%20seeds%20with%20the%20same%20number%0A%20%20%20%20sees%20the%20same%20%22random%22%20results.%0A%0A%20%20%20%20**Predict**%20first%3A%20will%20the%20dice%20rolls%20below%20change%20when%20the%20cell%0A%20%20%20%20reruns%3F%20Then%20run%20it%20(twice%2C%20if%20you%20can).%0A%20%20%20%20%22%22%22)%0A%20%20%20%20return%0A%0A%0A%40app.cell(hide_code%3DTrue)%0Adef%20_(mo)%3A%0A%20%20%20%20mo.callout(%0A%20%20%20%20%20%20%20%20mo.md(%0A%20%20%20%20%20%20%20%20%20%20%20%20%22**Saving%20your%20work%3A**%20this%20notebook%20runs%20in%20your%20browser.%20Press%22%0A%20%20%20%20%20%20%20%20%20%20%20%20%22**Cmd%2FCtrl%2BS**%20to%20save%2C%20and%20always%20save%20**before**%20menu%20%E2%86%92%20Download%20%E2%86%92%20%22%0A%20%20%20%20%20%20%20%20%20%20%20%20%22*Download%20Python%20code*.%20Without%20a%20save%20first%2C%20the%20download%20is%20an%20empty%20file.%22%0A%20%20%20%20%20%20%20%20)%2C%0A%20%20%20%20%20%20%20%20kind%3D%22info%22%2C%0A%20%20%20%20)%0A%20%20%20%20return%0A%0A%0A%40app.cell%0Adef%20_()%3A%0A%20%20%20%20import%20random%0A%0A%20%20%20%20return%20(random%2C)%0A%0A%0A%40app.cell%0Adef%20_(random)%3A%0A%20%20%20%20%23%20Worked%20example%20(read%20%2B%20run%20this)%0A%20%20%20%20random.seed(7)%0A%20%20%20%20_rolls_demo%20%3D%20%5Brandom.randint(1%2C%206)%2C%20random.randint(1%2C%206)%2C%20random.randint(1%2C%206)%5D%0A%20%20%20%20print(f%22Three%20dice%20rolls%20after%20seed(7)%3A%20%7B_rolls_demo%7D%22)%0A%20%20%20%20return%0A%0A%0A%40app.cell(hide_code%3DTrue)%0Adef%20_(mo)%3A%0A%20%20%20%20mo.md(r%22%22%22%0A%20%20%20%20The%20investor%20wants%20the%20demand%20projection%20to%20be%20*reproducible*%3A%20the%0A%20%20%20%20same%20numbers%20every%20time%20she%20clicks%20run%2C%20no%20matter%20how%20often%20the%0A%20%20%20%20notebook%20re-executes.%0A%0A%20%20%20%20Seed%20the%20random%20generator%20with%20%6021%60%20(do%20it%20exactly%20once)%2C%20then%0A%20%20%20%20simulate%20demand%20for%20the%20next%207%20days%3A%20for%20each%20day%2C%20draw%20an%20order%20count%0A%20%20%20%20with%20%60random.randint(5%2C%2025)%60%20and%20collect%20the%20seven%20draws%20into%20a%20list%0A%20%20%20%20called%20%60demand_exc%60.%0A%20%20%20%20%22%22%22)%0A%20%20%20%20return%0A%0A%0A%40app.cell%0Adef%20_()%3A%0A%20%20%20%20%23%20YOUR%20CODE%20BELOW%3A%20replace%20None%0A%20%20%20%20demand_exc%20%3D%20None%0A%20%20%20%20return%20(demand_exc%2C)%0A%0A%0A%40app.cell(hide_code%3DTrue)%0Adef%20_(demand_exc%2C%20mo)%3A%0A%20%20%20%20%23%20Reactive%20check.%20Re-runs%20when%20you%20run%20the%20cell%20above.%0A%20%20%20%20_expected%20%3D%20%5B10%2C%2018%2C%2018%2C%2025%2C%2014%2C%2020%2C%2011%5D%0A%20%20%20%20if%20demand_exc%20is%20None%3A%0A%20%20%20%20%20%20%20%20_ok%20%3D%20False%0A%20%20%20%20%20%20%20%20_msg%20%3D%20%22Not%20attempted%20%E2%80%94%20assign%20it%20to%20%60demand_exc%60%20(a%20%60print%60%20alone%20doesn't%20count)%20and%20run%20the%20cell.%22%0A%20%20%20%20elif%20demand_exc%20%3D%3D%20_expected%3A%0A%20%20%20%20%20%20%20%20_ok%20%3D%20True%0A%20%20%20%20%20%20%20%20_msg%20%3D%20%22Correct%20%E2%80%94%20Same%20seven%20numbers%2C%20every%20single%20run.%20The%20investor%20can%20finally%20trust%20the%20demo.%22%0A%20%20%20%20elif%20isinstance(demand_exc%2C%20list)%20and%20len(demand_exc)%20%3D%3D%207%3A%0A%20%20%20%20%20%20%20%20_ok%20%3D%20False%0A%20%20%20%20%20%20%20%20_msg%20%3D%20%22Wrong%20%E2%80%94%20Right%20shape%2C%20wrong%20numbers.%20Check%20three%20things%3A%20seed%20**21**%20(not%20another%20number)%2C%20seeded%20once%20*before*%20the%20loop%2C%20and%20each%20draw%20is%20%60random.randint(5%2C%2025)%60.%22%0A%20%20%20%20else%3A%0A%20%20%20%20%20%20%20%20_ok%20%3D%20False%0A%20%20%20%20%20%20%20%20_msg%20%3D%20%22Wrong%20%E2%80%94%20Build%20a%20list%20of%207%20draws%2C%20one%20%60random.randint(5%2C%2025)%60%20call%20per%20day.%22%0A%20%20%20%20mo.callout(mo.md(_msg%20%2B%20show_result(demand_exc))%2C%20kind%3D%22success%22%20if%20_ok%20else%20%22warn%22)%0A%20%20%20%20return%0A%0A%0A%40app.cell(hide_code%3DTrue)%0Adef%20_(mo)%3A%0A%20%20%20%20mo.accordion(%0A%20%20%20%20%20%20%20%20%7B%0A%20%20%20%20%20%20%20%20%20%20%20%20%22Hint%201%20(a%20nudge)%22%3A%20%22Seed%20first%2C%20then%20draw%3B%20the%20seed%20makes%20every%20following%20draw%20predictable.%22%2C%0A%20%20%20%20%20%20%20%20%20%20%20%20%22Hint%202%20(the%20structure)%22%3A%20%22random.___(21)%5Cndemand_exc%20%3D%20%5B%5D%5Cnfor%20_day%20in%20range(7)%3A%5Cn%20demand_exc.append(random.____(5%2C%2025))%22%2C%0A%20%20%20%20%20%20%20%20%7D%0A%20%20%20%20)%0A%20%20%20%20return%0A%0A%0A%40app.cell(hide_code%3DTrue)%0Adef%20_(mo)%3A%0A%20%20%20%20mo.md(r%22%22%22%0A%20%20%20%20**Done%3F%20Then%3A**%20one%20more%20roll%20of%20the%20dice.%20On%20the%20busiest%20day%20one%20zone%0A%20%20%20%20gets%20an%20extra%20rider%2C%20and%20the%20investor%20wants%20that%20pick%20reproducible%20too.%0A%20%20%20%20Seed%20with%20%6021%60%20**again**%2C%20then%20pick%20one%20zone%20from%0A%20%20%20%20%60%5B%22Nord%22%2C%20%22Sued%22%2C%20%22West%22%5D%60%20with%20%60random.choice%60%20and%20store%20it%20as%20%60zone_exc%60.%0A%20%20%20%20%22%22%22)%0A%20%20%20%20return%0A%0A%0A%40app.cell%0Adef%20_()%3A%0A%20%20%20%20%23%20YOUR%20CODE%20BELOW%3A%20replace%20None%0A%20%20%20%20zone_exc%20%3D%20None%0A%20%20%20%20return%20(zone_exc%2C)%0A%0A%0A%40app.cell(hide_code%3DTrue)%0Adef%20_(mo%2C%20zone_exc)%3A%0A%20%20%20%20%23%20Reactive%20check.%20Re-runs%20when%20you%20run%20the%20cell%20above.%0A%20%20%20%20if%20zone_exc%20is%20None%3A%0A%20%20%20%20%20%20%20%20_ok%20%3D%20False%0A%20%20%20%20%20%20%20%20_msg%20%3D%20%22Not%20attempted%20%E2%80%94%20assign%20it%20to%20%60zone_exc%60%20(a%20%60print%60%20alone%20doesn't%20count)%20and%20run%20the%20cell.%22%0A%20%20%20%20elif%20zone_exc%20%3D%3D%20%22Nord%22%3A%0A%20%20%20%20%20%20%20%20_ok%20%3D%20True%0A%20%20%20%20%20%20%20%20_msg%20%3D%20%22Correct%20%E2%80%94%20Nord%2C%20every%20single%20run.%20Re-seeding%20rewinds%20the%20stream%2C%20so%20the%20pick%20is%20as%20reproducible%20as%20the%20demand%20list.%22%0A%20%20%20%20elif%20zone_exc%20in%20(%22Sued%22%2C%20%22West%22)%3A%0A%20%20%20%20%20%20%20%20_ok%20%3D%20False%0A%20%20%20%20%20%20%20%20_msg%20%3D%20%22Wrong%20%E2%80%94%20a%20valid%20zone%2C%20but%20not%20the%20one%20seed%2021%20deals%20first.%20Without%20a%20fresh%20%60random.seed(21)%60%20right%20before%20the%20pick%2C%20the%20stream%20carries%20on%20from%20wherever%20the%20demand%20draws%20left%20it.%22%0A%20%20%20%20else%3A%0A%20%20%20%20%20%20%20%20_ok%20%3D%20False%0A%20%20%20%20%20%20%20%20_msg%20%3D%20%22Wrong%20%E2%80%94%20%60random.choice%60%20takes%20the%20list%20of%20three%20zones%20and%20hands%20back%20one%20of%20them%2C%20as%20a%20string.%22%0A%20%20%20%20mo.callout(mo.md(_msg%20%2B%20show_result(zone_exc))%2C%20kind%3D%22success%22%20if%20_ok%20else%20%22warn%22)%0A%20%20%20%20return%0A%0A%0A%40app.cell(hide_code%3DTrue)%0Adef%20_(mo)%3A%0A%20%20%20%20mo.accordion(%0A%20%20%20%20%20%20%20%20%7B%0A%20%20%20%20%20%20%20%20%20%20%20%20%22Hint%201%20(a%20nudge)%22%3A%20%22The%20seed%20rewinds%20the%20stream.%20Seed%20first%2C%20in%20the%20same%20cell%2C%20then%20make%20the%20pick.%22%2C%0A%20%20%20%20%20%20%20%20%20%20%20%20%22Hint%202%20(the%20structure)%22%3A%20%22random.____(21)%5Cnzone_exc%20%3D%20random.______(%5B%5C%22Nord%5C%22%2C%20%5C%22Sued%5C%22%2C%20%5C%22West%5C%22%5D)%22%2C%0A%20%20%20%20%20%20%20%20%7D%0A%20%20%20%20)%0A%20%20%20%20return%0A%0A%0A%40app.cell(hide_code%3DTrue)%0Adef%20_(mo)%3A%0A%20%20%20%20mo.md(%22%22%22%0A%20%20%20%20*Nothing%20to%20save.%20This%20was%20a%20sandbox.*%0A%20%20%20%20%22%22%22)%0A%20%20%20%20return%0A%0A%0Aif%20__name__%20%3D%3D%20%22__main__%22%3A%0A%20%20%20%20app.run()%0A</marimo-code></head>
+  <body>
+    <div id="root"></div>
+    <!-- This is a portal for the data editor to render in -->
+    <div id="portal" data-testid="glide-portal" style="position: fixed; left: 0; top: 0; z-index: 9999"></div>
+    <script data-marimo="true">
+      Object.defineProperty(window, "__MARIMO_MOUNT_CONFIG__", {
+        value: Object.freeze({
+            "filename": "notebook.py",
+            "cwd": "",
+            "lspWorkspace": null,
+            "mode": "edit",
+            "version": "0.23.13",
+            "serverToken": "unused",
+            "config": {"ai": {"custom_providers": {}, "enabled": true, "models": {"custom_models": [], "displayed_models": []}}, "completion": {"activate_on_typing": true, "auto_close_pairs": true, "copilot": false, "signature_hint_on_typing": false}, "diagnostics": {"sql_linter": true}, "display": {"cell_output": "below", "code_editor_font_size": 14, "dataframes": "rich", "default_table_max_columns": 50, "default_table_page_size": 10, "default_width": "medium", "reference_highlighting": true, "theme": "light"}, "formatting": {"line_length": 79}, "keymap": {"overrides": {}, "preset": "default"}, "language_servers": {"pylsp": {"enable_flake8": false, "enable_mypy": true, "enable_pydocstyle": false, "enable_pyflakes": false, "enable_pylint": false, "enable_ruff": true, "enabled": false}}, "mcp": {"mcpServers": {}, "presets": []}, "package_management": {"manager": "uv"}, "runtime": {"auto_instantiate": false, "auto_reload": "off", "default_csv_encoding": "utf-8", "default_sql_output": "auto", "on_cell_change": "autorun", "output_max_bytes": 8000000, "reactive_tests": true, "show_tracebacks": false, "std_stream_max_bytes": 1000000, "watcher_on_save": "lazy"}, "save": {"autosave": "off", "autosave_delay": 1000, "format_on_save": false}, "server": {"browser": "default", "follow_symlink": false}, "snippets": {"custom_paths": [], "include_default_snippets": true}},
+            "configOverrides": {},
+            "appConfig": {"sql_output": "auto", "width": "medium"},
+            "view": {"showAppCode": false},
+            "notebook": null,
+            "session": null,
+            "runtimeConfig": null,
+        }),
+        writable: false,
+        configurable: false,
+      });
+    </script>
+  </body>
+</html>
