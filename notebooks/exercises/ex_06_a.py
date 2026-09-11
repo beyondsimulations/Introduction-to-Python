@@ -27,15 +27,14 @@ def _():
 def _(mo):
     mo.md(
         r"""
-    # Quick exercise: import a tool instead of building it (10 min)
+    # Quick exercise: import by name (5–10 min)
 
-    Need a whole-number result that always rounds *up*, never down? Don't
-    write your own rounding logic. The standard library already has it:
-    `math.ceil` always rounds up to the next whole number, exactly what
-    you need whenever a fraction of a box, crate, or shipment still counts
-    as a whole one.
+    `import statistics` puts the whole toolbox on the desk, and every tool
+    needs the `statistics.` prefix. `from statistics import mean, median`
+    pulls just those two tools out of the box: you call them by their bare
+    names, `median(...)`, no prefix at all.
 
-    300 / 48 is 6.25. **Predict** what the cell below prints, then run it.
+    **Predict** what the cell below prints, then run it.
     """
     )
     return
@@ -45,7 +44,7 @@ def _(mo):
 def _(mo):
     mo.callout(
         mo.md(
-            "💾 **Saving your work:** this notebook runs in your browser. Press "
+            "**Saving your work:** this notebook runs in your browser. Press "
             "**Cmd/Ctrl+S** to save, and always save **before** menu → Download → "
             "*Download Python code*. Without a save first, the download is an empty file."
         ),
@@ -56,52 +55,63 @@ def _(mo):
 
 @app.cell
 def _():
-    import math
-    return (math,)
+    from statistics import mean, median
+    return mean, median
 
 
 @app.cell
-def _(math):
+def _(mean, median):
     # Worked example (read + run this)
-    _crates_demo = math.ceil(300 / 48)
-    print(f"300 avocados in crates of 48 -> {_crates_demo} crates")
+    _ratings_demo = [4.5, 4.8, 1.0, 5.0, 4.2]
+    print(f"mean:   {mean(_ratings_demo)}")
+    print(f"median: {median(_ratings_demo)}")
     return
+
+
+@app.cell
+def _():
+    # Delivery times in minutes, last night's shift. One went badly.
+    times_exa = [12, 14, 11, 13, 58, 12]
+    return (times_exa,)
 
 
 @app.cell(hide_code=True)
 def _(mo):
     mo.md(
         r"""
-    The investor breakfast is tomorrow: 200 mini quiches need to go out,
-    and the bakery boxes hold 24 quiches each. How many boxes does Tobi
-    need to order?
+    The investor points at the 58 and asks for the **typical** delivery
+    time, the middle value that one disaster can't drag around.
 
-    Compute it as `boxes_exa` below, using `math`, not guesswork.
+    Compute it as `typical_exa` from `times_exa`, using the imported name
+    directly (no `statistics.` prefix).
     """
     )
     return
 
 
 @app.cell
-def _(math):
+def _(median, times_exa):
     # YOUR CODE BELOW: replace None
-    boxes_exa = None
-    return (boxes_exa,)
+    typical_exa = None
+    return (typical_exa,)
 
 
 @app.cell(hide_code=True)
-def _(boxes_exa, mo, show_result):
+def _(mo, show_result, typical_exa):
     # Reactive check. Re-runs when you run the cell above.
-    if boxes_exa is None:
+    if typical_exa is None:
         _ok = False
-        _msg = "🔲 Not attempted yet. Assign it to `boxes_exa` (a `print` alone doesn't count) and run the cell."
-    elif isinstance(boxes_exa, int) and boxes_exa == 9:
+        _msg = "Not attempted — assign it to `typical_exa` (a `print` alone doesn't count) and run the cell."
+    elif isinstance(typical_exa, (int, float)) and round(typical_exa, 2) == 12.5:
         _ok = True
-        _msg = "✅ Correct! Nine boxes. The investor breakfast is covered with quiches to spare."
+        _msg = "Correct — 12.5 minutes. Six values, so the median averages the two in the middle, and the 58 never gets a say."
+    elif isinstance(typical_exa, (int, float)) and round(typical_exa, 2) == 20.0:
+        _ok = False
+        _msg = "Wrong — that's the mean, and the 58 dragged it up to 20. The investor asked for the middle value."
     else:
         _ok = False
-        _msg = "❌ Not quite. 200 / 24 isn't a whole number, and you need the next whole box up. Which `math` function rounds up?"
-    mo.callout(mo.md(_msg + show_result(boxes_exa)), kind="success" if _ok else "warn")
+        _msg = "Wrong — sort the six times in your head: the typical one sits between the third and the fourth. Which imported name finds it?"
+    mo.callout(mo.md(_msg + show_result(typical_exa)), kind="success" if _ok else "warn")
     return
 
 
@@ -109,8 +119,58 @@ def _(boxes_exa, mo, show_result):
 def _(mo):
     mo.accordion(
         {
-            "💡 Hint 1 (a nudge)": "200 / 24 gives 8.33... You need the next whole box, and math has a function for exactly that.",
-            "💡 Hint 2 (the structure)": "boxes_exa = math.___(200 / 24)",
+            "Hint 1 (a nudge)": "The tool you need was imported by name in the cell above the worked example, so it works without any prefix.",
+            "Hint 2 (the structure)": "typical_exa = ______(times_exa)",
+        }
+    )
+    return
+
+
+@app.cell(hide_code=True)
+def _(mo):
+    mo.md(
+        r"""
+    **Done? Then:** the investor wants a number for the damage: how many
+    minutes does the one bad delivery drag the *average* above the typical
+    time? Compute `drag_exa` as the mean minus the median of `times_exa`,
+    both imported by name.
+    """
+    )
+    return
+
+
+@app.cell
+def _(mean, median, times_exa):
+    # YOUR CODE BELOW: replace None
+    drag_exa = None
+    return (drag_exa,)
+
+
+@app.cell(hide_code=True)
+def _(drag_exa, mo, show_result):
+    # Reactive check. Re-runs when you run the cell above.
+    if drag_exa is None:
+        _ok = False
+        _msg = "Not attempted — assign it to `drag_exa` (a `print` alone doesn't count) and run the cell."
+    elif isinstance(drag_exa, (int, float)) and round(drag_exa, 2) == 7.5:
+        _ok = True
+        _msg = "Correct — 7.5 minutes of drag from a single delivery. That's the number the investor writes down."
+    elif isinstance(drag_exa, (int, float)) and round(drag_exa, 2) == -7.5:
+        _ok = False
+        _msg = "Wrong — right size, wrong sign. The mean sits *above* the median here, so subtract the median from the mean."
+    else:
+        _ok = False
+        _msg = "Wrong — two calls, one subtraction: `mean(...)` of the times minus `median(...)` of the times."
+    mo.callout(mo.md(_msg + show_result(drag_exa)), kind="success" if _ok else "warn")
+    return
+
+
+@app.cell(hide_code=True)
+def _(mo):
+    mo.accordion(
+        {
+            "Hint 1 (a nudge)": "Both tools are already on the desk. Call each one on `times_exa`, then subtract.",
+            "Hint 2 (the structure)": "drag_exa = ____(times_exa) - ______(times_exa)",
         }
     )
     return

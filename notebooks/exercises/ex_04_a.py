@@ -27,15 +27,16 @@ def _():
 def _(mo):
     mo.md(
         r"""
-    # Quick exercise: the order queue (10 min)
+    # Quick exercise: the courier route (5–10 min)
 
-    The kitchen keeps today's orders in a queue:
+    Tobi planned tonight's route as a list of stops, in order:
 
     ```python
-    queue = ["Pad Thai", "Founders Bowl", "Pizza Calzone", "Miso Ramen"]
+    route = ["Mensa", "Library", "Dorm A", "Gym", "Dorm B"]
     ```
 
-    First a **trace** (predict, don't run yet): what is `queue[-1]`?
+    The courier has already delivered the first **two** stops. Store the
+    stops still to come in `remaining_exa`, as one **slice** of `route`.
     """
     )
     return
@@ -45,7 +46,7 @@ def _(mo):
 def _(mo):
     mo.callout(
         mo.md(
-            "💾 **Saving your work:** this notebook runs in your browser. Press "
+            "**Saving your work:** this notebook runs in your browser. Press "
             "**Cmd/Ctrl+S** to save, and always save **before** menu → Download → "
             "*Download Python code*. Without a save first, the download is an empty file."
         ),
@@ -57,36 +58,39 @@ def _(mo):
 @app.cell
 def _():
     # Given: do not change this
-    queue = ["Pad Thai", "Founders Bowl", "Pizza Calzone", "Miso Ramen"]
-    return (queue,)
+    route = ["Mensa", "Library", "Dorm A", "Gym", "Dorm B"]
+    return (route,)
+
+
+@app.cell
+def _(route):
+    # YOUR CODE BELOW: replace None
+    remaining_exa = None
+    return (remaining_exa,)
 
 
 @app.cell(hide_code=True)
-def _(mo):
-    trace_exa = mo.ui.radio(
-        options=["a) \"Miso Ramen\"", "b) \"Pad Thai\"", "c) Error"],
-        label="Your prediction:",
-    )
-    trace_exa
-    return (trace_exa,)
-
-
-@app.cell(hide_code=True)
-def _(mo, trace_exa):
-    if trace_exa.value is None:
-        _msg = "🔲 Pick a prediction above first. Commit before you peek!"
-    elif trace_exa.value == "a) \"Miso Ramen\"":
-        _msg = (
-            "✅ Correct: a negative index counts from the end, so `-1` is "
-            "the last item, `\"Miso Ramen\"`."
-        )
+def _(mo, remaining_exa, show_result):
+    # Reactive check. Re-runs when you run the cell above.
+    if remaining_exa is None:
+        _ok = False
+        _msg = "Not attempted — assign it to `remaining_exa` (a `print` alone doesn't count) and run the cell."
+    elif remaining_exa == ["Dorm A", "Gym", "Dorm B"]:
+        _ok = True
+        _msg = "Correct — three stops to go, starting at index 2."
+    elif remaining_exa == ["Library", "Dorm A", "Gym", "Dorm B"]:
+        _ok = False
+        _msg = "Wrong — the Library was stop number two, and it's done. Python counts from 0: the third stop lives at index 2."
+    elif remaining_exa == ["Dorm A", "Gym"]:
+        _ok = False
+        _msg = "Wrong — the `stop` index is excluded, so the last stop fell off. Leave the right side of the slice empty to run to the end."
+    elif isinstance(remaining_exa, str):
+        _ok = False
+        _msg = "Wrong — that's a single stop, not a list. A slice needs a colon: `route[start:stop]`."
     else:
-        _msg = (
-            "❌ Not quite. A negative index counts from the end, so `-1` is "
-            "the last item, `\"Miso Ramen\"`. (This one is ungraded. The "
-            "point is the prediction.)"
-        )
-    mo.callout(mo.md(_msg), kind="info")
+        _ok = False
+        _msg = "Wrong — the slice should start at index 2 and run to the end of `route`."
+    mo.callout(mo.md(_msg + show_result(remaining_exa)), kind="success" if _ok else "warn")
     return
 
 
@@ -94,33 +98,41 @@ def _(mo, trace_exa):
 def _(mo):
     mo.md(
         r"""
-    Now write a slice: capture the last two orders in `queue` into
-    `last_two_exa`.
+    **Done? Then:** the Mensa and the last dorm are the two hubs where the
+    courier picks up and hands over the bag. Store only the stops **between**
+    them, first and last dropped, in `middle_exa`. One slice, no `len()`:
+    count the end from the end.
     """
     )
     return
 
 
 @app.cell
-def _():
+def _(route):
     # YOUR CODE BELOW: replace None
-    last_two_exa = None
-    return (last_two_exa,)
+    middle_exa = None
+    return (middle_exa,)
 
 
 @app.cell(hide_code=True)
-def _(last_two_exa, mo, show_result):
+def _(middle_exa, mo, show_result):
     # Reactive check. Re-runs when you run the cell above.
-    if last_two_exa is None:
+    if middle_exa is None:
         _ok = False
-        _msg = "🔲 Not attempted yet. Assign it to `last_two_exa` (a `print` alone doesn't count) and run the cell."
-    elif last_two_exa == ["Pizza Calzone", "Miso Ramen"]:
+        _msg = "Not attempted — assign it to `middle_exa` (a `print` alone doesn't count) and run the cell."
+    elif middle_exa == ["Library", "Dorm A", "Gym"]:
         _ok = True
-        _msg = "✅ Correct! Those two orders go out next."
+        _msg = "Correct — `route[1:-1]`: start after the first, stop before the last."
+    elif middle_exa == ["Library", "Dorm A", "Gym", "Dorm B"]:
+        _ok = False
+        _msg = "Wrong — the last dorm is still in. A negative `stop` of `-1` stops right before the final item."
+    elif middle_exa == ["Library", "Dorm A"]:
+        _ok = False
+        _msg = "Wrong — one stop too few. The `stop` index is excluded, so `-1` already drops the last item; `-2` drops two."
     else:
         _ok = False
-        _msg = "❌ Not quite. Try a slice from -2 to the end."
-    mo.callout(mo.md(_msg + show_result(last_two_exa)), kind="success" if _ok else "warn")
+        _msg = "Wrong — start at index 1 and stop at `-1`."
+    mo.callout(mo.md(_msg + show_result(middle_exa)), kind="success" if _ok else "warn")
     return
 
 

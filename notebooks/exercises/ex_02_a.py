@@ -27,19 +27,14 @@ def _():
 def _(mo):
     mo.md(
         r"""
-    # Quick exercise: the delivery fee (10 min)
+    # Quick exercise: is the kitchen open? (5–10 min)
 
-    The curfew stands, and on top of it the startup now charges a delivery
-    fee that depends on the order size:
+    The city's curfew starts at **22:00**. The kitchen opens at **11:00**.
+    An order comes in at `delivery_hour` below.
 
-    | `order_total` | fee |
-    |---|---|
-    | `order_total < 15` | 2.90 |
-    | `order_total >= 15 and order_total < 30` | 1.50 |
-    | `order_total >= 30` | 0 |
-
-    Using an `if`/`elif`/`else` ladder, store the correct fee in `fee_exa`,
-    based on `order_total` below.
+    Write **one comparison expression** (no `if` yet, that comes next) that is
+    `True` when the kitchen is open and `False` otherwise, and store it in
+    `open_exa`. Predict the value before you run it.
     """
     )
     return
@@ -49,7 +44,7 @@ def _(mo):
 def _(mo):
     mo.callout(
         mo.md(
-            "💾 **Saving your work:** this notebook runs in your browser. Press "
+            "**Saving your work:** this notebook runs in your browser. Press "
             "**Cmd/Ctrl+S** to save, and always save **before** menu → Download → "
             "*Download Python code*. Without a save first, the download is an empty file."
         ),
@@ -61,30 +56,79 @@ def _(mo):
 @app.cell
 def _():
     # Given: do not change this
-    order_total = 17.80
-    return (order_total,)
+    delivery_hour = 22
+    return (delivery_hour,)
 
 
 @app.cell
 def _():
     # YOUR CODE BELOW: replace None
-    fee_exa = None
-    return (fee_exa,)
+    open_exa = None
+    return (open_exa,)
 
 
 @app.cell(hide_code=True)
-def _(fee_exa, mo, show_result):
+def _(mo, open_exa, show_result):
     # Reactive check. Re-runs when you run the cell above.
-    if fee_exa is None:
+    if open_exa is None:
         _ok = False
-        _msg = "🔲 Not attempted yet. Assign it to `fee_exa` (a `print` alone doesn't count) and run the cell."
-    elif isinstance(fee_exa, (int, float)) and round(fee_exa, 2) == 1.50:
+        _msg = "Not attempted — assign it to `open_exa` (a `print` alone doesn't count) and run the cell."
+    elif open_exa is False:
         _ok = True
-        _msg = "✅ Correct! 17.80 EUR lands in the middle tier: 1.50 EUR fee."
+        _msg = "Correct — `False`. 22:00 sharp is already curfew: `<` is strict, and `22 < 22` is not true."
+    elif open_exa is True:
+        _ok = False
+        _msg = "Wrong — at 22:00 sharp the kitchen is closed. Did you write `<=` where the curfew needs `<`?"
     else:
         _ok = False
-        _msg = "❌ Not quite. Check which branch 17.80 falls into."
-    mo.callout(mo.md(_msg + show_result(fee_exa)), kind="success" if _ok else "warn")
+        _msg = "Wrong — the answer must be a boolean (`True` or `False`): the result of a comparison, not a number."
+    mo.callout(mo.md(_msg + show_result(open_exa)), kind="success" if _ok else "warn")
+    return
+
+
+@app.cell(hide_code=True)
+def _(mo):
+    mo.md(
+        r"""
+    **Done? Then:** the lawyer found a loophole: pharmacy runs are allowed at
+    any hour. Reuse `delivery_hour` and the flag `is_pharmacy` below, and store
+    in `allowed_exa` whether this run may go out: open hours, **or** a pharmacy
+    run.
+    """
+    )
+    return
+
+
+@app.cell
+def _():
+    # Given: do not change this
+    is_pharmacy = True
+    return (is_pharmacy,)
+
+
+@app.cell
+def _():
+    # YOUR CODE BELOW: replace None
+    allowed_exa = None
+    return (allowed_exa,)
+
+
+@app.cell(hide_code=True)
+def _(allowed_exa, mo, show_result):
+    # Reactive check. Re-runs when you run the cell above.
+    if allowed_exa is None:
+        _ok = False
+        _msg = "Not attempted — assign it to `allowed_exa` (a `print` alone doesn't count) and run the cell."
+    elif allowed_exa is True:
+        _ok = True
+        _msg = "Correct — `True`. The kitchen is closed, but `or` needs only one side: the pharmacy flag carries it."
+    elif allowed_exa is False:
+        _ok = False
+        _msg = "Wrong — a pharmacy run at 22:00 is allowed. `and` needs both sides; `or` is happy with one."
+    else:
+        _ok = False
+        _msg = "Wrong — the answer must be a boolean (`True` or `False`), built with `or`."
+    mo.callout(mo.md(_msg + show_result(allowed_exa)), kind="success" if _ok else "warn")
     return
 
 

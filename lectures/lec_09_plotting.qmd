@@ -25,7 +25,7 @@ Last week you handed her honest numbers, a table she could trust. She read exact
 
 A number convinces the careful. A **picture** convinces the room. Today: draw the right chart for the question, and refuse to draw a dishonest one.
 
-# 🔥 Warm-up {.exercise-slide}
+# Warm-up {.exercise-slide}
 
 Three questions from Episode 8. Commit. Hands up **before** the reveal.
 
@@ -98,6 +98,41 @@ plt.gca()             # SHOW: "get current axes" (the chart)
 Two habits for every chart cell: open with `plt.figure()` (a clean canvas) and end with `plt.gca()`. In marimo there's no `plt.show()`; the figure appears as the cell's **last expression**, and `plt.plot(...)` alone returns line objects, not a picture. (A plain script run from a terminal does need `plt.show()` at the end; that's Session X.) Same frame around every chart in today's lab.
 :::
 
+## Predict: what's on the x-axis?
+
+Tobi is in a hurry and hands `plot` **one** list, no `days`:
+
+```python
+plt.plot([3, 5, 4])
+```
+
+What does the x-axis show?
+
+a\) `3, 5, 4`, the values themselves   b) `0, 1, 2`, the list positions   c) `1, 2, 3`, counted the human way
+
+. . .
+
+[Predict first]{.question}. Pick a letter, then I reveal the answer.
+
+## Answer: the positions, from zero
+
+**b) `0, 1, 2`**: with one list, matplotlib takes it as **y** and invents x as the positions, and Python counts positions from 0:
+
+```{python}
+#| eval: true
+#| output-location: slide
+import matplotlib.pyplot as plt
+
+plt.figure()
+plt.plot([3, 5, 4], marker="o")
+plt.xticks([0, 1, 2])   # show only whole positions
+plt.gca()
+```
+
+. . .
+
+Want days 1–5 on the axis? Pass them: `plt.plot(days, revenue)`, x first.
+
 ## The parts of a chart
 
 Every honest chart names its axes. `xlabel`, `ylabel`, `title`, and (when there's more than one line) a `legend`:
@@ -118,6 +153,16 @@ plt.title("This week's revenue")  # what the picture is about
 plt.legend()             # the little key, one entry per label
 plt.gca()
 ```
+
+# Your turn — 5–10 minutes {.exercise-slide}
+
+Open the exercise (scan the QR or type the link):
+
+**[python.tobiasvlcek.com/notebooks/ex_09_a/](https://python.tobiasvlcek.com/notebooks/ex_09_a/)**
+
+![](assets/qr/ex_09_a.png){width=280}
+
+First **predict** what happens, then run it.
 
 ## A little styling — and only a little
 
@@ -171,13 +216,13 @@ plt.gca()
 
 That's exactly why every chart cell **opens** with `plt.figure()`: it's how you say "new picture, start clean."
 
-# Your turn — 10 minutes {.exercise-slide}
+# Your turn — 5–10 minutes {.exercise-slide}
 
 Open the exercise (scan the QR or type the link):
 
-**[python.tobiasvlcek.com/notebooks/ex_09_a/](https://python.tobiasvlcek.com/notebooks/ex_09_a/)**
+**[python.tobiasvlcek.com/notebooks/ex_09_b/](https://python.tobiasvlcek.com/notebooks/ex_09_b/)**
 
-![](assets/qr/ex_09_a.png){width=280}
+![](assets/qr/ex_09_b.png){width=280}
 
 First **predict** what happens, then run it.
 
@@ -260,6 +305,43 @@ plt.gca()
 
 Just a cloud. No upward drift. Sometimes the honest answer is **"there's no pattern here."**
 
+## Predict: plot instead of scatter
+
+Tobi types `plot` where he meant `scatter`. Five orders, in the order they came in:
+
+```python
+minutes = [31, 19, 44, 22, 28]
+euros   = [22, 24, 19, 9, 15]
+plt.plot(minutes, euros)
+```
+
+a\) a zig-zag line hopping between the points in list order   b) the same dots as `scatter`, joined into a smooth trend   c) an error: `plot` refuses x values that are not sorted ascending
+
+. . .
+
+[Predict first]{.question}. Pick a letter, then I reveal the answer.
+
+## Answer: a zig-zag in list order
+
+**a) a zig-zag**: `plot` connects the points **in the order you gave them**, never mind the x values. Order 1 to order 2 to order 3, back and forth:
+
+```{python}
+#| eval: true
+#| output-location: slide
+import matplotlib.pyplot as plt
+
+minutes = [31, 19, 44, 22, 28]
+euros   = [22, 24, 19, 9, 15]
+
+plt.figure()
+plt.plot(minutes, euros, marker="o")   # joined in LIST order
+plt.gca()
+```
+
+. . .
+
+A line says "these follow each other." Orders don't. Two numbers per order, no order between them: **scatter**.
+
 ## Predict: how many bars?
 
 The **same four numbers**, two ways. On the left, a bar per number; on the right, a histogram:
@@ -303,13 +385,13 @@ plt.gca()
 
 **Bar counts CATEGORIES; histogram counts RANGES.** Same numbers, different question.
 
-# Your turn — 10 minutes {.exercise-slide}
+# Your turn — 5–10 minutes {.exercise-slide}
 
 Open the exercise (scan the QR or type the link):
 
-**[python.tobiasvlcek.com/notebooks/ex_09_b/](https://python.tobiasvlcek.com/notebooks/ex_09_b/)**
+**[python.tobiasvlcek.com/notebooks/ex_09_c/](https://python.tobiasvlcek.com/notebooks/ex_09_c/)**
 
-![](assets/qr/ex_09_b.png){width=280}
+![](assets/qr/ex_09_c.png){width=280}
 
 First **predict** what happens, then run it.
 
@@ -343,6 +425,42 @@ plt.title("Honest (from 0)")
 plt.gca()
 ```
 
+## Predict: the AI's one extra line
+
+Revenue `[710, 718, 724, 731]`, up **3 %** over four weeks. Tobi's AI drafts the chart and adds one line:
+
+```python
+plt.plot([1, 2, 3, 4], [710, 718, 724, 731])
+plt.ylim(700, 735)
+```
+
+What does the room see?
+
+a\) a flat line: 3 % stays 3 % on any axis   b) an error: `ylim` has to include zero on a line chart   c) a line climbing almost the whole chart height
+
+. . .
+
+[Predict first]{.question}. Pick a letter, then I reveal the answer.
+
+## Answer: a climb across the chart
+
+**c) a climb across the chart**: the axis spans 35 units and the line rises 21 of them, **60 % of the picture** for 3 % of growth:
+
+```{python}
+#| eval: true
+#| output-location: slide
+import matplotlib.pyplot as plt
+
+plt.figure()
+plt.plot([1, 2, 3, 4], [710, 718, 724, 731], marker="o")
+plt.ylim(700, 735)   # 3 % of growth, 60 % of the chart
+plt.gca()
+```
+
+. . .
+
+No error, no warning. The code is fine; the **axis** is the lie.
+
 ## The rule: growth starts at zero
 
 - A **growth claim** on a chart starts the y-axis at **0**. Anything else magnifies a wobble into a cliff.
@@ -353,6 +471,16 @@ plt.gca()
 ::: {.callout-tip}
 She's the type who reads Formular 27b/6 for fun. A stretched axis is the first thing she catches, and the last thing you want to explain.
 :::
+
+# Your turn — 5–10 minutes {.exercise-slide}
+
+Open the exercise (scan the QR or type the link):
+
+**[python.tobiasvlcek.com/notebooks/ex_09_d/](https://python.tobiasvlcek.com/notebooks/ex_09_d/)**
+
+![](assets/qr/ex_09_d.png){width=280}
+
+First **predict** what happens, then run it.
 
 ## AI as your chart assistant
 
@@ -380,13 +508,13 @@ The pilot flies; the co-pilot advises. You still land the plane.
 Both threads, one rule: **an AI chart runs long before it's true.** You verify the columns *and* the axis, every time.
 :::
 
-# Your turn — 10 minutes {.exercise-slide}
+# Your turn — 5–10 minutes {.exercise-slide}
 
 Open the exercise (scan the QR or type the link):
 
-**[python.tobiasvlcek.com/notebooks/ex_09_c/](https://python.tobiasvlcek.com/notebooks/ex_09_c/)**
+**[python.tobiasvlcek.com/notebooks/ex_09_e/](https://python.tobiasvlcek.com/notebooks/ex_09_e/)**
 
-![](assets/qr/ex_09_c.png){width=280}
+![](assets/qr/ex_09_e.png){width=280}
 
 First **predict** what happens, then run it.
 

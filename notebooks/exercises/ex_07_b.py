@@ -27,12 +27,11 @@ def _():
 def _(mo):
     mo.md(
         r"""
-    # Quick exercise: boolean masks (10 min)
+    # Quick exercise: vectorized arithmetic (5–10 min)
 
-    Comparing an array to a number doesn't give one `True`/`False`. It
-    gives a whole array of them, one per element. That array of booleans
-    is a **mask**, and it's the tool for filtering and counting without a
-    loop.
+    Tobi's 40-tab spreadsheet is on its way out. The investor wants
+    metrics, and numpy arrays are the replacement. The key idea: an
+    operation on an array applies to *every element at once*. No loop.
 
     **Predict** first: what does the cell below print, then run it.
     """
@@ -44,7 +43,7 @@ def _(mo):
 def _(mo):
     mo.callout(
         mo.md(
-            "💾 **Saving your work:** this notebook runs in your browser. Press "
+            "**Saving your work:** this notebook runs in your browser. Press "
             "**Cmd/Ctrl+S** to save, and always save **before** menu → Download → "
             "*Download Python code*. Without a save first, the download is an empty file."
         ),
@@ -62,10 +61,8 @@ def _():
 @app.cell
 def _(np):
     # Worked example (read + run this)
-    _demo = np.array([1, 5, 3])
-    print(_demo > 2)
-    print((_demo > 2).sum())
-    print(f"and the values themselves: {_demo[_demo > 2]}")
+    _prices_demo = np.array([2.0, 4.0]) * 3
+    print(f"tripled -> {_prices_demo}")
     return
 
 
@@ -73,12 +70,10 @@ def _(np):
 def _(mo):
     mo.md(
         r"""
-    Tonight's delivery run is in `times_exb` below, in minutes. Anything
-    over 38 minutes counts as "late," and the investor wants two numbers:
-    how many deliveries were late, and what those late ones averaged.
+    The investor's numbers deck needs gross prices. Three net menu prices
+    need 19% VAT added: all three, in **one expression**, no loop.
 
-    Compute `late_count_exb` (how many deliveries were late) and
-    `late_mean_exb` (the average of just the late ones).
+    Compute it as `gross_exb` below.
     """
     )
     return
@@ -87,57 +82,38 @@ def _(mo):
 @app.cell
 def _(np):
     # Given: do not change this
-    times_exb = np.array([31, 22, 47, 15, 36, 28, 51, 19, 40])
-    return (times_exb,)
+    net_prices_exb = np.array([8.0, 11.0, 14.0])
+    return (net_prices_exb,)
 
 
 @app.cell
-def _(times_exb):
+def _(net_prices_exb):
     # YOUR CODE BELOW: replace None
-    late_count_exb = None
-    return (late_count_exb,)
-
-
-@app.cell
-def _(times_exb):
-    # YOUR CODE BELOW: replace None
-    late_mean_exb = None
-    return (late_mean_exb,)
+    gross_exb = None
+    return (gross_exb,)
 
 
 @app.cell(hide_code=True)
-def _(late_count_exb, late_mean_exb, mo, np, show_result):
+def _(gross_exb, mo, show_result):
     # Reactive check. Re-runs when you run the cell above.
-    _expected_count = 3
-    _expected_mean = 46.0
-    _result = None
+    _expected = [9.52, 13.09, 16.66]
     try:
-        _count = int(late_count_exb)
-        _mean = round(float(late_mean_exb), 2)
+        _values = [round(float(_v), 2) for _v in gross_exb]
     except (TypeError, ValueError):
-        _count = None
-        _mean = None
-    if late_count_exb is None or late_mean_exb is None:
+        _values = None
+    if gross_exb is None:
         _ok = False
-        _msg = "🔲 Not attempted yet. Assign it to `late_count_exb` and `late_mean_exb` (a `print` alone doesn't count) and run the cell."
+        _msg = "Not attempted — Assign it to `gross_exb` (a `print` alone doesn't count) and run the cell."
+    elif not hasattr(gross_exb, "__len__") or len(gross_exb) != 3:
+        _ok = False
+        _msg = "Wrong — Do this as one expression on the whole array, not a single number."
+    elif _values == _expected:
+        _ok = True
+        _msg = "Correct — One expression, all three prices, VAT included. The deck is ready."
     else:
-        _result = f"late_count_exb={late_count_exb}, late_mean_exb={late_mean_exb}"
-        if _count is None or _mean is None:
-            _ok = False
-            if np.ndim(late_count_exb) > 0 or np.ndim(late_mean_exb) > 0:
-                _msg = "❌ One of these is still a whole array. Remember that `.sum()` counts the Trues, and `.mean()` reduces the late times to one number."
-            else:
-                _msg = "❌ Not quite. Start with the comparison: `times_exb > 38` makes a True/False array first."
-        elif _count == _expected_count and _mean == _expected_mean:
-            _ok = True
-            _msg = "✅ Correct! Three late deliveries, and now the investor has the average too."
-        elif _count == _expected_count:
-            _ok = False
-            _msg = "❌ The count is right, but the mean isn't. Filter `times_exb` with the mask *before* calling `.mean()`."
-        else:
-            _ok = False
-            _msg = "❌ Not quite. Start with the comparison: `times_exb > 38` makes a True/False array first."
-    mo.callout(mo.md(_msg + show_result(_result)), kind="success" if _ok else "warn")
+        _ok = False
+        _msg = "Wrong — Check the VAT factor: gross = net × 1.19."
+    mo.callout(mo.md(_msg + show_result(gross_exb)), kind="success" if _ok else "warn")
     return
 
 
@@ -145,8 +121,63 @@ def _(late_count_exb, late_mean_exb, mo, np, show_result):
 def _(mo):
     mo.accordion(
         {
-            "💡 Hint 1 (a nudge)": "Comparison first: `times_exb > 38` makes a True/False array; `.sum()` counts the `True`s, and indexing with that same mask keeps only the matching values.",
-            "💡 Hint 2 (the structure)": "late_count_exb = int((times_exb > ___).sum())\nlate_mean_exb = float(times_exb[times_exb > ___].___())",
+            "Hint 1 (a nudge)": "No loop, no indexing: multiply the whole array by the VAT factor in one go.",
+            "Hint 2 (the structure)": "gross_exb = net_prices_exb * ___",
+        }
+    )
+    return
+
+
+@app.cell(hide_code=True)
+def _(mo):
+    mo.md(
+        r"""
+    **Done? Then:** the deck also gets a **price ladder**: five evenly spaced price points from 5.0 to 15.0 EUR, both ends included. Build it as `ladder_exb` without typing a single number of it.
+    """
+    )
+    return
+
+
+@app.cell
+def _(np):
+    # YOUR CODE BELOW: replace None
+    ladder_exb = None
+    return (ladder_exb,)
+
+
+@app.cell(hide_code=True)
+def _(ladder_exb, mo, np, show_result):
+    # Reactive check. Re-runs when you run the cell above.
+    _expected = [5.0, 7.5, 10.0, 12.5, 15.0]
+    try:
+        _values = [round(float(_v), 2) for _v in ladder_exb]
+    except (TypeError, ValueError):
+        _values = None
+    if ladder_exb is None:
+        _ok = False
+        _msg = "Not attempted — assign it to `ladder_exb` (a `print` alone doesn't count) and run the cell."
+    elif np.ndim(ladder_exb) == 0 or _values is None:
+        _ok = False
+        _msg = "Wrong — the ladder is a whole array of five prices, not one number."
+    elif _values == _expected:
+        _ok = True
+        _msg = "Correct — five rungs, both ends included, and nobody typed 12.5 by hand."
+    elif len(_values) == 4:
+        _ok = False
+        _msg = "Wrong — four rungs. The builder that walks by a step stops *before* the end; you want the one that includes it."
+    else:
+        _ok = False
+        _msg = "Wrong — check start, stop, and count: 5.0 and 15.0 must both be on the ladder, with three rungs between."
+    mo.callout(mo.md(_msg + show_result(ladder_exb)), kind="success" if _ok else "warn")
+    return
+
+
+@app.cell(hide_code=True)
+def _(mo):
+    mo.accordion(
+        {
+            "Hint 1 (a nudge)": "Two builders make evenly spaced arrays: one walks by a step and stops before the end, the other splits a span into a fixed count of points, endpoints included. You want the second.",
+            "Hint 2 (the structure)": "ladder_exb = np.linspace(___, ___, ___)",
         }
     )
     return

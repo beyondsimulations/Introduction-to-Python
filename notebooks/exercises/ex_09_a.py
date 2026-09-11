@@ -27,18 +27,17 @@ def _():
 def _(mo):
     mo.md(
         r"""
-    # Quick exercise: your first chart (10 min)
+    # Quick exercise: label the chart (5–10 min)
 
-    Episode 9: the investor's one instruction was "charts I can't argue
-    with." A table of seven numbers doesn't argue anything. A line does.
+    Episode 9: Tobi's first pitch-deck slide is a line with no labels.
+    The investor looks at it for two seconds: "What is on the y-axis?
+    Orders? Euros? Your mood?" Every honest chart names its axes.
 
-    `plt.plot(x, y)` draws the line; `plt.xlabel`, `plt.ylabel`, and
-    `plt.title` label it. One marimo rule that trips everyone up once:
-    the LAST expression in a cell is what displays, so chart cells end
-    with `plt.gca()` ("get current axes"), never `plt.show()`.
+    `plt.xlabel`, `plt.ylabel`, and `plt.title` do that job. Chart cells
+    open with `plt.figure()` and end with `plt.gca()`, never `plt.show()`.
 
-    **Predict** first: look at the numbers in the demo below: which way
-    does the line slope, up or down?
+    **Predict** first: in the demo below, which line of code puts the
+    word "Week" under the chart?
     """
     )
     return
@@ -48,7 +47,7 @@ def _(mo):
 def _(mo):
     mo.callout(
         mo.md(
-            "💾 **Saving your work:** this notebook runs in your browser. Press "
+            "**Saving your work:** this notebook runs in your browser. Press "
             "**Cmd/Ctrl+S** to save, and always save **before** menu → Download → "
             "*Download Python code*. Without a save first, the download is an empty file."
         ),
@@ -66,10 +65,12 @@ def _():
 @app.cell
 def _(plt):
     # Worked example (read + run this)
-    _demo_signups = [80, 55, 20]
+    _demo_signups = [20, 55, 80]
     plt.figure()  # starts a fresh figure so this chart doesn't draw on top of the last one
-    plt.plot(_demo_signups)
-    plt.title("Demo: three weeks of signups")
+    plt.plot([1, 2, 3], _demo_signups)
+    plt.xlabel("Week")  # what the x-axis counts
+    plt.ylabel("Signups")  # what the y-axis measures
+    plt.title("Demo: signups per week (peak 80)")  # what the picture is about
     plt.gca()
     return
 
@@ -78,13 +79,12 @@ def _(plt):
 def _(mo):
     mo.md(
         r"""
-    `revenues_exa` below is one real week (Monday → Sunday). Plot it the
-    same way as the demo, then read the chart to answer two questions
-    for the investor: the week's **total** revenue, and **which day**
-    (1 = Monday … 7 = Sunday) brought in the most.
+    `orders_exa` below is this week's order count, Monday to Friday.
+    Plot it, label both axes, and give it a title that carries the one
+    number the investor will ask for: the **average orders per day**.
 
-    The chart itself isn't graded. The check below reads your numbers,
-    not your art.
+    The chart itself isn't graded. The check below reads `avg_exa`, the
+    number in your title, not your art.
     """
     )
     return
@@ -93,74 +93,61 @@ def _(mo):
 @app.cell
 def _():
     # Given: do not change this
-    revenues_exa = [142.50, 168.20, 155.90, 201.40, 189.60, 246.80, 232.10]
-    return (revenues_exa,)
+    orders_exa = [31, 28, 35, 40, 38]
+    return (orders_exa,)
 
 
 @app.cell
-def _(plt, revenues_exa):
+def _(orders_exa):
+    # YOUR CODE BELOW: replace None
+    avg_exa = None
+    return (avg_exa,)
+
+
+@app.cell
+def _(avg_exa, orders_exa, plt):
     plt.figure()
-    # YOUR CODE BELOW: plot revenues_exa (labels/title optional, ungraded)
+    # YOUR CODE BELOW: plot orders_exa, label both axes, put avg_exa in the title (ungraded)
     plt.gca()
     return
 
 
-@app.cell
-def _(revenues_exa):
-    # YOUR CODE BELOW: replace None
-    total_exa = None
-    return (total_exa,)
-
-
-@app.cell
-def _(revenues_exa):
-    # YOUR CODE BELOW: replace None
-    best_day_exa = None
-    return (best_day_exa,)
-
-
 @app.cell(hide_code=True)
-def _(best_day_exa, mo, show_result, total_exa):
+def _(avg_exa, mo, show_result):
     # Reactive check. Re-runs when you run the cell above.
-    _expected_total = 1336.5
-    _expected_day = 6
+    _expected = 34.4
     _result = None
-    if total_exa is None or best_day_exa is None:
+    if avg_exa is None:
         _ok = False
-        _msg = "🔲 Not attempted yet. Assign it to `total_exa` and `best_day_exa` (a `print` alone doesn't count) and run the cell."
-    elif isinstance(total_exa, (list, tuple)) or isinstance(best_day_exa, (list, tuple)):
+        _msg = "Not attempted — Assign it to `avg_exa` (a `print` alone doesn't count) and run the cell."
+    elif isinstance(avg_exa, (list, tuple)):
         _ok = False
-        _result = f"total_exa={total_exa!r}, best_day_exa={best_day_exa!r}"
-        _msg = "❌ One of these is still a whole list. The investor wants two single numbers."
+        _result = f"avg_exa={avg_exa!r}"
+        _msg = "Wrong — That's still the whole list. The title needs ONE number."
     else:
         try:
-            _total = round(float(total_exa), 2)
-            _day = float(best_day_exa)
+            _v = round(float(avg_exa), 2)
         except (TypeError, ValueError):
             _ok = False
-            _total = None
-            _day = None
-            _msg = "❌ These should both be plain numbers. Check what your expressions actually return."
+            _v = None
+            _msg = "Wrong — That's not a number yet. Check what your expression returns."
         else:
-            _result = f"total_exa={total_exa}, best_day_exa={best_day_exa}"
-            if _total == _expected_total and _day == _expected_day:
+            _result = f"avg_exa={avg_exa}"
+            if _v == _expected:
                 _ok = True
-                _msg = "✅ Correct! A solid week, and you know exactly which day carried it."
-            elif _day == 5:
+                _msg = "Correct — Exercise 9.a: the title now says what the picture is about, number included."
+            elif _v == 172.0:
                 _ok = False
-                _msg = "❌ `best_day_exa` is off by one: Python counts positions from 0, but days count from 1. What do you need to add?"
-            elif _day == 246.8:
+                _msg = "Wrong — That's the week's TOTAL. Average means total divided by the number of days."
+            elif _v == 34.0:
                 _ok = False
-                _msg = "❌ `best_day_exa` looks like a revenue number, not a day, so that's the VALUE. The investor asked WHICH day."
-            elif _total == _expected_total:
+                _msg = "Wrong — So close: `//` throws away the decimals. Use `/` for the average."
+            elif _v == 40.0:
                 _ok = False
-                _msg = "❌ Your total is right, but `best_day_exa` isn't. Find the POSITION of the biggest number, not the number itself."
-            elif _day == _expected_day:
-                _ok = False
-                _msg = "❌ `best_day_exa` is right, but your total isn't. Check your sum over all seven days."
+                _msg = "Wrong — That's the best day, not the average day."
             else:
                 _ok = False
-                _msg = "❌ Not quite. `total_exa` is a sum over the week, `best_day_exa` is a position from 1 to 7."
+                _msg = "Wrong — Average = sum of the orders / number of days."
     mo.callout(mo.md(_msg + show_result(_result)), kind="success" if _ok else "warn")
     return
 
@@ -169,8 +156,91 @@ def _(best_day_exa, mo, show_result, total_exa):
 def _(mo):
     mo.accordion(
         {
-            "💡 Hint 1 (a nudge)": "`plt.plot(range(1, 8), revenues_exa)` draws the line for your eyes, but the check only reads `total_exa` and `best_day_exa`. For the total, add up the week. For the day, find the POSITION of the biggest number, then remember days start at 1, Python starts at 0.",
-            "💡 Hint 2 (the structure)": "total_exa = float(sum(___))\nbest_day_exa = revenues_exa.index(max(revenues_exa)) + ___",
+            "Hint 1 (a nudge)": "`plt.plot(range(1, 6), orders_exa)` draws the line, `plt.xlabel(...)` and `plt.ylabel(...)` name the axes. For the title, `f\"Orders per day (avg {avg_exa})\"` works once `avg_exa` is a number: total of the list divided by how many days it holds.",
+            "Hint 2 (the structure)": "avg_exa = sum(___) / len(___)",
+        }
+    )
+    return
+
+
+@app.cell(hide_code=True)
+def _(mo):
+    mo.md(
+        r"""
+    **Done? Then:** the investor wants last week on the same chart, for
+    comparison. `last_week_exa` is below. Plot both lines with a
+    `label=` each and call `plt.legend()`, then count on how many days
+    THIS week beat last week: `days_ahead_exa`.
+    """
+    )
+    return
+
+
+@app.cell
+def _():
+    # Given: do not change this
+    last_week_exa = [29, 31, 33, 36, 39]
+    return (last_week_exa,)
+
+
+@app.cell
+def _(last_week_exa, orders_exa, plt):
+    plt.figure()
+    # YOUR CODE BELOW: two lines with label=, then plt.legend() (ungraded)
+    plt.gca()
+    return
+
+
+@app.cell
+def _(last_week_exa, orders_exa):
+    # YOUR CODE BELOW: replace None
+    days_ahead_exa = None
+    return (days_ahead_exa,)
+
+
+@app.cell(hide_code=True)
+def _(days_ahead_exa, mo, show_result):
+    # Reactive check. Re-runs when you run the cell above.
+    _expected = 3
+    _result = None
+    if days_ahead_exa is None:
+        _ok = False
+        _msg = "Not attempted — Assign it to `days_ahead_exa` (a `print` alone doesn't count) and run the cell."
+    elif isinstance(days_ahead_exa, (list, tuple)):
+        _ok = False
+        _result = f"days_ahead_exa={days_ahead_exa!r}"
+        _msg = "Wrong — That's a list of days. The investor wants a COUNT: how many days."
+    else:
+        try:
+            _v = round(float(days_ahead_exa), 2)
+        except (TypeError, ValueError):
+            _ok = False
+            _v = None
+            _msg = "Wrong — That's not a number yet. Check what your expression returns."
+        else:
+            _result = f"days_ahead_exa={days_ahead_exa}"
+            if _v == _expected:
+                _ok = True
+                _msg = "Correct — Exercise 9.a stretch: three of five days ahead. The legend tells the room which line is which."
+            elif _v == 2.0:
+                _ok = False
+                _msg = "Wrong — You counted the days this week fell BEHIND. Flip the comparison."
+            elif _v == 5.0:
+                _ok = False
+                _msg = "Wrong — That's every day. Only the days where this week's number is BIGGER count."
+            else:
+                _ok = False
+                _msg = "Wrong — Walk both lists side by side and count the days where this week > last week."
+    mo.callout(mo.md(_msg + show_result(_result)), kind="success" if _ok else "warn")
+    return
+
+
+@app.cell(hide_code=True)
+def _(mo):
+    mo.accordion(
+        {
+            "Hint 1 (a nudge)": "`zip(orders_exa, last_week_exa)` hands you one pair per day. Compare the two numbers in each pair and count the pairs where this week wins. For the chart, `plt.plot(..., label=\"This week\")` and `plt.plot(..., label=\"Last week\")`, then `plt.legend()`.",
+            "Hint 2 (the structure)": "days_ahead_exa = sum(1 for _this, _last in zip(orders_exa, last_week_exa) if ___)",
         }
     )
     return

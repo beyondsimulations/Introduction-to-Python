@@ -27,11 +27,14 @@ def _():
 def _(mo):
     mo.md(
         r"""
-    # Quick exercise: fix the Order class (10 min)
+    # Quick exercise: the wrap price function (5–10 min)
 
-    Tobi wrote the startup's first class, an `Order` that's supposed to
-    compute its own total. Except a 2× Pad Thai order charges like a single
-    portion. Find the bug in `total()` and fix it.
+    Every receipt line needs the price of `qty` Falafel Wraps, and Tobi
+    keeps retyping `6.90 * qty` by hand, typos and all. Time to make it a
+    function he can't get wrong.
+
+    Write `wrap_price_exb(qty)` that returns the price of `qty` wraps,
+    rounded to 2 decimals (each wrap costs 6.90 EUR).
     """
     )
     return
@@ -41,7 +44,7 @@ def _(mo):
 def _(mo):
     mo.callout(
         mo.md(
-            "💾 **Saving your work:** this notebook runs in your browser. Press "
+            "**Saving your work:** this notebook runs in your browser. Press "
             "**Cmd/Ctrl+S** to save, and always save **before** menu → Download → "
             "*Download Python code*. Without a save first, the download is an empty file."
         ),
@@ -52,42 +55,100 @@ def _(mo):
 
 @app.cell
 def _():
-    class Order:
-        def __init__(self, item, qty, price):
-            self.item = item
-            self.qty = qty
-            self.price = price
+    def wrap_price_exb(qty):
+        # YOUR CODE BELOW: return the price of qty wraps, rounded to 2 decimals
+        return None
 
-        def total(self):
-            # TOBI'S BUG: the order total ignores something
-            return self.price
-
-    return (Order,)
+    return (wrap_price_exb,)
 
 
 @app.cell(hide_code=True)
-def _(Order, mo, show_result):
+def _(mo, show_result, wrap_price_exb):
     # Reactive check. Re-runs when you run the cell above.
     # Reactive check.
     try:
-        _result = Order("Pad Thai", 2, 8.90).total()
+        _r3 = wrap_price_exb(3)
+        _r1 = wrap_price_exb(1)
     except Exception:
         _ok = False
-        _msg = "❌ Still crashing. Read the error above and fix it before it reaches the check."
+        _msg = "Wrong — Still crashing. Read the error above and fix it before it reaches the check."
         _preview = ""
     else:
-        if isinstance(_result, (int, float)) and round(_result, 2) == 17.80:
-            _ok = True
-            _msg = "✅ Correct! The total now accounts for every portion in the order."
-            _preview = show_result(_result)
-        elif isinstance(_result, (int, float)) and round(_result, 2) == 8.90:
+        if _r3 is None:
             _ok = False
-            _msg = "❌ Still charging for one portion: `total()` isn't using `qty` yet."
-            _preview = show_result(_result)
+            _msg = "Not attempted — The function still returns None. Use `return`, not `print`, then run the cell."
+            _preview = ""
+        elif _r3 == 20.70 and _r1 == 6.90:
+            _ok = True
+            _msg = "Correct — Tobi can stop retyping `6.90 * qty` by hand."
+            _preview = show_result(_r3)
         else:
             _ok = False
-            _msg = "❌ Not quite. Check what `total()` multiplies together."
-            _preview = show_result(_result)
+            _msg = "Wrong — Check the multiplication and the rounding."
+            _preview = show_result(_r3)
+    mo.callout(mo.md(_msg + _preview), kind="success" if _ok else "warn")
+    return
+
+
+@app.cell(hide_code=True)
+def _(mo):
+    mo.md(
+        r"""
+    **Done? Then:** the platform adds a **service fee** on top, 5 % unless
+    a partner deal says otherwise. Write `wrap_bill_exb(qty, rate=0.05)`
+    that reuses `wrap_price_exb` and returns the wraps plus the fee,
+    rounded to 2 decimals. Calling it with just `qty` must use the 5 %.
+    """
+    )
+    return
+
+
+@app.cell
+def _(wrap_price_exb):
+    def wrap_bill_exb(qty, rate=0.05):
+        # YOUR CODE BELOW: wrap price plus the fee, rounded to 2 decimals
+        return None
+
+    return (wrap_bill_exb,)
+
+
+@app.cell(hide_code=True)
+def _(mo, show_result, wrap_bill_exb, wrap_price_exb):
+    # Reactive check. Re-runs when you run the cell above.
+    try:
+        _base = wrap_price_exb(2)
+        _default = wrap_bill_exb(2)
+        _deal = wrap_bill_exb(2, 0.10)
+    except Exception:
+        _ok = False
+        _msg = "Wrong — Still crashing. Read the error above and fix it before it reaches the check."
+        _preview = ""
+    else:
+        if _base is None:
+            _ok = False
+            _msg = "Not attempted — Finish `wrap_price_exb` above first; the bill builds on it."
+            _preview = ""
+        elif _default is None:
+            _ok = False
+            _msg = "Not attempted — `wrap_bill_exb` still returns None. Use `return`, not `print`, then run the cell."
+            _preview = ""
+        elif (
+            isinstance(_default, (int, float))
+            and isinstance(_deal, (int, float))
+            and round(_default, 2) == 14.49
+            and round(_deal, 2) == 15.18
+        ):
+            _ok = True
+            _msg = "Correct — 13.80 EUR of wraps, 5 % on top by default, 10 % when the deal says so."
+            _preview = show_result(_default)
+        elif isinstance(_default, (int, float)) and round(_default, 2) == 14.49:
+            _ok = False
+            _msg = "Wrong — The default works, but the override does not: multiply by `rate`, not by 0.05."
+            _preview = show_result(_deal)
+        else:
+            _ok = False
+            _msg = "Wrong — Check the sum: `wrap_price_exb(qty)` plus that price times `rate`, then round."
+            _preview = show_result(_default)
     mo.callout(mo.md(_msg + _preview), kind="success" if _ok else "warn")
     return
 

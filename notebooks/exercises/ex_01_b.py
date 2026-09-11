@@ -14,12 +14,11 @@ def _():
 def _(mo):
     mo.md(
         r"""
-    # Quick exercise: the sticker budget (10 min)
+    # Quick exercise: the founding form (5–10 min)
 
-    Tobi has 300 EUR left and wants to know how much survives after buying
-    12 boxes at 25 EUR each. **Predict the result of `300 - 12 * 25` before
-    you run the cell below**. Does multiplication happen before or after
-    subtraction?
+    Tobi filled in the company register form, as Python variables. One line
+    has the wrong **value** and two have the wrong **type**. First **predict**
+    which, then fix all three.
     """
     )
     return
@@ -29,7 +28,7 @@ def _(mo):
 def _(mo):
     mo.callout(
         mo.md(
-            "💾 **Saving your work:** this notebook runs in your browser. Press "
+            "**Saving your work:** this notebook runs in your browser. Press "
             "**Cmd/Ctrl+S** to save, and always save **before** menu → Download → "
             "*Download Python code*. Without a save first, the download is an empty file."
         ),
@@ -38,31 +37,34 @@ def _(mo):
     return
 
 
-@app.cell(hide_code=True)
-def _(mo):
-    run_predict = mo.ui.run_button(label="I've predicted, run it")
-    run_predict
-    return (run_predict,)
-
-
 @app.cell
-def _(run_predict):
-    # Runs only after the button above. No editing needed.
-    result = None
-    if run_predict.value:
-        result = 300 - 12 * 25
-        print(result)
-    return (result,)
+def _():
+    # YOUR CODE BELOW
+    # FIX TOBI'S FORM (some values and/or types are wrong)
+    company_type = "UG (haftungsbeschränkt)"
+    first_employee = "tobi "
+    share_capital = "300"
+    founded_year = "2026"
+    return (company_type, first_employee, founded_year, share_capital)
 
 
 @app.cell(hide_code=True)
-def _(mo, result, run_predict):
-    mo.md(
-        f"`300 - 12 * 25` gives **{result}**. Multiplication always happens before "
-        "subtraction, so Tobi's 12 boxes (`12 * 25 = 300`) wipe out the whole budget."
-        if run_predict.value
-        else "*Predict, then press the button.*"
+def _(mo, first_employee, founded_year, share_capital):
+    _ok = (
+        first_employee == "Tobi"
+        and share_capital == 300
+        and isinstance(founded_year, int)
     )
+    _msg = "Correct — Form accepted!" if _ok else "Wrong — The registrar rejects the form. Keep fixing."
+    _msg += "\n\n**Your form:** " + ", ".join(
+        f"`{_name} = {_value!r}` ({type(_value).__name__})"
+        for _name, _value in [
+            ("first_employee", first_employee),
+            ("share_capital", share_capital),
+            ("founded_year", founded_year),
+        ]
+    )
+    mo.callout(mo.md(_msg), kind="success" if _ok else "warn")
     return
 
 
@@ -70,9 +72,10 @@ def _(mo, result, run_predict):
 def _(mo):
     mo.md(
         r"""
-    Now the real task: sticker **packs** cost `12.25` EUR each. Using `//`
-    (floor division) and `%` (remainder), figure out how many packs fit in
-    the 300 EUR budget and how much change is left over.
+    **Done? Then:** the registrar's software checks types, not looks. Store
+    in `year_type_exb` the type of `founded_year`, using `type()` on the
+    variable rather than typing the word. Predict first: `<class 'int'>` or
+    `<class 'str'>`?
     """
     )
     return
@@ -81,25 +84,27 @@ def _(mo):
 @app.cell
 def _():
     # YOUR CODE BELOW: replace None
-    packs_exb = None
-    change_exb = None
-    return (change_exb, packs_exb)
+    year_type_exb = None
+    return (year_type_exb,)
 
 
 @app.cell(hide_code=True)
-def _(change_exb, mo, packs_exb):
+def _(mo, year_type_exb):
     # Reactive check. Re-runs when you run the cell above.
-    if packs_exb is None or change_exb is None:
+    if year_type_exb is None:
         _ok = False
-        _msg = "🔲 Not attempted yet. Assign it to `packs_exb` and `change_exb` (a `print` alone doesn't count) and run the cell."
-    elif packs_exb == 24 and round(change_exb, 2) == 6.0:
+        _msg = "Not attempted — assign it to `year_type_exb` (a `print` alone doesn't count) and run the cell."
+    elif year_type_exb is int:
         _ok = True
-        _msg = "✅ Correct! 24 packs, 6.00 EUR change. Tobi is already spending it."
+        _msg = "Correct — `2026` without quotes is an `int`, and `type()` says so."
+    elif year_type_exb is str:
+        _ok = False
+        _msg = "Wrong — your `founded_year` is still text. Fix the form above (drop the quotes); this check re-runs by itself."
     else:
         _ok = False
-        _msg = "❌ Not quite. Check that you used `//` for packs and `%` for change."
-    if packs_exb is not None or change_exb is not None:
-        _msg += f"\n\n**Your result:** `packs_exb = {packs_exb}`, `change_exb = {change_exb}`"
+        _msg = "Wrong — expected the result of `type(founded_year)`, not a word in quotes."
+    if year_type_exb is not None:
+        _msg += f"\n\n**Your result:** `{year_type_exb!r}`"
     mo.callout(mo.md(_msg), kind="success" if _ok else "warn")
     return
 

@@ -9,7 +9,7 @@ format:
     output-file: lec_05_presentation.html
 ---
 
-# 📋 Checkpoint 2 {.exercise-slide}
+# Checkpoint 2 {.exercise-slide}
 
 **Before the doors open.** The first 40 minutes are the checkpoint. It starts now.
 
@@ -27,7 +27,7 @@ Menu → *Download* → *Download Python code* → upload the `.py` to the **"Ch
 . . .
 
 :::{.callout-note}
-The green ✅ live checks are **provisional**. The final grading runs on my side. And take a breath: everything in it was rehearsed in the labs.
+The green live checks are **provisional**. The final grading runs on my side. And take a breath: everything in it was rehearsed in the labs.
 :::
 
 # [Episode 5: The 3-AM Checkout]{.flow} {.title}
@@ -52,7 +52,7 @@ A customer typed `generous` into the tip box. Tobi's new checkout did this:
 
 ```python
 tip_text = "generous"
-tip = float(tip_text)     # 💥
+tip = float(tip_text) # crashes here
 ```
 
 . . .
@@ -95,6 +95,36 @@ A handful of exception types cover almost everything you'll hit. The first three
 
 Each one is Python refusing to guess. `int("lots")` has no sensible number; `"Bowl " + 9` mixes text and a number; `table_map["C3"]` asks for a key that was never added.
 
+## Predict: comma or point?
+
+A regular from Hamburg types the price the German way. What does the last line do?
+
+```python
+price_text = "5,50"
+price = float(price_text)
+print(price)
+```
+
+a\) prints `5.5` as a float   b) raises `ValueError`   c) raises `TypeError`
+
+. . .
+
+[Predict first]{.question}. Pick a letter, then I reveal the answer.
+
+## Answer: right type, senseless value
+
+**b) raises `ValueError`**: `float()` got what it expects, a string, so the *type* is fine. But `"5,50"` is not a number Python can read (it only knows the decimal point), so the *value* is refused. `TypeError` would need a non-string, like `float(None)`:
+
+```{python}
+#| eval: true
+#| error: true
+#| output-location: fragment
+
+price_text = "5,50"
+price = float(price_text)
+print(price)
+```
+
 ## The big five (2)
 
 The other two you'll meet constantly:
@@ -105,6 +135,16 @@ The other two you'll meet constantly:
 . . .
 
 You don't have to memorize all of Python's exceptions. Recognize these five on sight, and read the last line for the rest.
+
+# Your turn — 5–10 minutes {.exercise-slide}
+
+Open the exercise (scan the QR or type the link):
+
+**[python.tobiasvlcek.com/notebooks/ex_05_a/](https://python.tobiasvlcek.com/notebooks/ex_05_a/)**
+
+![](assets/qr/ex_05_a.png){width=280}
+
+First **predict** what happens, then run it.
 
 ## `try` / `except`: catch the fall
 
@@ -180,13 +220,13 @@ except TypeError as e:
 
 `as e` keeps the error object in a variable, so you can print its message instead of losing it. Any name works; `e` is the habit.
 
-# Your turn — 10 minutes {.exercise-slide}
+# Your turn — 5–10 minutes {.exercise-slide}
 
 Open the exercise (scan the QR or type the link):
 
-**[python.tobiasvlcek.com/notebooks/ex_05_a/](https://python.tobiasvlcek.com/notebooks/ex_05_a/)**
+**[python.tobiasvlcek.com/notebooks/ex_05_b/](https://python.tobiasvlcek.com/notebooks/ex_05_b/)**
 
-![](assets/qr/ex_05_a.png){width=280}
+![](assets/qr/ex_05_b.png){width=280}
 
 First **predict** what happens, then run it.
 
@@ -264,6 +304,36 @@ print("passed the tripwire:", subtotal)
 
 Think of it as a note to yourself, checked automatically: *"if this is ever false, something broke earlier. Stop before it spreads."*
 
+## Predict: does the `print` survive?
+
+The bill is being split, but nobody is at the table. What shows up?
+
+```python
+guests = 0
+assert guests > 0, "no guests at the table"
+print("splitting the bill among", guests)
+```
+
+a\) `AssertionError`, and the `print` never runs   b) prints `splitting the bill among 0`   c) the message, then the `print` line as well
+
+. . .
+
+[Predict first]{.question}. Pick a letter, then I reveal the answer.
+
+## Answer: the tripwire stops everything
+
+**a) `AssertionError`, and the `print` never runs**: a failing `assert` raises on the spot, and nothing after it in the program executes. That's the point of a tripwire: stop *before* a wrong number spreads:
+
+```{python}
+#| eval: true
+#| error: true
+#| output-location: fragment
+
+guests = 0
+assert guests > 0, "no guests at the table"
+print("splitting the bill among", guests)
+```
+
 ## Try, then fall back
 
 A friendly, common pattern: **try** the risky thing; if it fails, **fall back** to a sensible default so the program keeps moving.
@@ -325,13 +395,13 @@ print(to_price("bad"))           # 0.0, recovered
 print("checkout still running")  # ...and we get here
 ```
 
-# Your turn — 10 minutes {.exercise-slide}
+# Your turn — 5–10 minutes {.exercise-slide}
 
 Open the exercise (scan the QR or type the link):
 
-**[python.tobiasvlcek.com/notebooks/ex_05_b/](https://python.tobiasvlcek.com/notebooks/ex_05_b/)**
+**[python.tobiasvlcek.com/notebooks/ex_05_c/](https://python.tobiasvlcek.com/notebooks/ex_05_c/)**
 
-![](assets/qr/ex_05_b.png){width=280}
+![](assets/qr/ex_05_c.png){width=280}
 
 First **predict** what happens, then run it.
 

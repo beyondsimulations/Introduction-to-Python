@@ -11,27 +11,15 @@ def _():
 
 
 @app.cell(hide_code=True)
-def _():
-    # Shows your current answer under the check.
-    def show_result(value):
-        if value is None:
-            return ""
-        if isinstance(value, str):
-            return f"\n\n**Your result:**\n\n```\n{value}\n```"
-        return f"\n\n**Your result:** `{value}`"
-
-    return (show_result,)
-
-
-@app.cell(hide_code=True)
 def _(mo):
     mo.md(
         r"""
-    # Quick exercise: the first receipt line (10 min)
+    # Quick exercise: the sticker budget (5–10 min)
 
-    A customer just ordered. Using `qty`, `item`, and `total` below and an
-    f-string with `:.2f`, build **one** receipt line that reads exactly
-    `"2x Falafel Wrap: 13.80 EUR"`.
+    Tobi has 300 EUR left and wants to know how much survives after buying
+    12 boxes at 25 EUR each. **Predict the result of `300 - 12 * 25` before
+    you run the cell below**. Does multiplication happen before or after
+    subtraction?
     """
     )
     return
@@ -41,7 +29,7 @@ def _(mo):
 def _(mo):
     mo.callout(
         mo.md(
-            "💾 **Saving your work:** this notebook runs in your browser. Press "
+            "**Saving your work:** this notebook runs in your browser. Press "
             "**Cmd/Ctrl+S** to save, and always save **before** menu → Download → "
             "*Download Python code*. Without a save first, the download is an empty file."
         ),
@@ -50,35 +38,109 @@ def _(mo):
     return
 
 
+@app.cell(hide_code=True)
+def _(mo):
+    run_predict = mo.ui.run_button(label="I've predicted, run it")
+    run_predict
+    return (run_predict,)
+
+
 @app.cell
-def _():
-    # Given: do not change these
-    item = "Falafel Wrap"
-    qty = 2
-    total = 13.80
-    return (item, qty, total)
+def _(run_predict):
+    # Runs only after the button above. No editing needed.
+    result = None
+    if run_predict.value:
+        result = 300 - 12 * 25
+        print(result)
+    return (result,)
+
+
+@app.cell(hide_code=True)
+def _(mo, result, run_predict):
+    mo.md(
+        f"`300 - 12 * 25` gives **{result}**. Multiplication always happens before "
+        "subtraction, so Tobi's 12 boxes (`12 * 25 = 300`) wipe out the whole budget."
+        if run_predict.value
+        else "*Predict, then press the button.*"
+    )
+    return
+
+
+@app.cell(hide_code=True)
+def _(mo):
+    mo.md(
+        r"""
+    Now the real task: sticker **packs** cost `12.25` EUR each. Using `//`
+    (floor division) and `%` (remainder), figure out how many packs fit in
+    the 300 EUR budget and how much change is left over.
+    """
+    )
+    return
 
 
 @app.cell
 def _():
     # YOUR CODE BELOW: replace None
-    line_exc = None
-    return (line_exc,)
+    packs_exc = None
+    change_exc = None
+    return (change_exc, packs_exc)
 
 
 @app.cell(hide_code=True)
-def _(line_exc, mo, show_result):
+def _(change_exc, mo, packs_exc):
     # Reactive check. Re-runs when you run the cell above.
-    if line_exc is None:
+    if packs_exc is None or change_exc is None:
         _ok = False
-        _msg = "🔲 Not attempted yet. Assign it to `line_exc` (a `print` alone doesn't count) and run the cell."
-    elif line_exc == "2x Falafel Wrap: 13.80 EUR":
+        _msg = "Not attempted — assign it to `packs_exc` and `change_exc` (a `print` alone doesn't count) and run the cell."
+    elif packs_exc == 24 and round(change_exc, 2) == 6.0:
         _ok = True
-        _msg = "✅ Correct! The receipt printer purrs."
+        _msg = "Correct — 24 packs, 6.00 EUR change. Tobi is already spending it."
     else:
         _ok = False
-        _msg = "❌ Not quite. Check the format `qty x item: total:.2f EUR`."
-    mo.callout(mo.md(_msg + show_result(line_exc)), kind="success" if _ok else "warn")
+        _msg = "Wrong — check that you used `//` for packs and `%` for change."
+    if packs_exc is not None or change_exc is not None:
+        _msg += f"\n\n**Your result:** `packs_exc = {packs_exc}`, `change_exc = {change_exc}`"
+    mo.callout(mo.md(_msg), kind="success" if _ok else "warn")
+    return
+
+
+@app.cell(hide_code=True)
+def _(mo):
+    mo.md(
+        r"""
+    **Done? Then:** a pack holds 40 stickers, so Tobi divides `12.25 / 40`
+    and proudly reports `0.30625` EUR per sticker. Prices have two decimals.
+    Store the price per sticker in `per_sticker_exc`, rounded to cents.
+    """
+    )
+    return
+
+
+@app.cell
+def _():
+    # YOUR CODE BELOW: replace None
+    per_sticker_exc = None
+    return (per_sticker_exc,)
+
+
+@app.cell(hide_code=True)
+def _(mo, per_sticker_exc):
+    # Reactive check. Re-runs when you run the cell above.
+    if per_sticker_exc is None:
+        _ok = False
+        _msg = "Not attempted — assign it to `per_sticker_exc` (a `print` alone doesn't count) and run the cell."
+    elif isinstance(per_sticker_exc, (int, float)) and per_sticker_exc == 0.31:
+        _ok = True
+        _msg = "Correct — 0.31 EUR per sticker. `round(value, 2)` turns a long tail into a price."
+    elif isinstance(per_sticker_exc, (int, float)) and round(per_sticker_exc, 2) == 0.31:
+        _ok = False
+        _msg = "Wrong — right amount, wrong shape: `0.30625` is not a price. Wrap the division in `round(..., 2)`."
+    else:
+        _ok = False
+        _msg = "Wrong — expected `12.25 / 40` rounded to two decimals."
+    if per_sticker_exc is not None:
+        _msg += f"\n\n**Your result:** `per_sticker_exc = {per_sticker_exc}`"
+    mo.callout(mo.md(_msg), kind="success" if _ok else "warn")
     return
 
 

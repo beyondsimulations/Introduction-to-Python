@@ -27,14 +27,17 @@ def _():
 def _(mo):
     mo.md(
         r"""
-    # Quick exercise: the honest y-axis (10 min)
+    # Quick exercise: the right chart for categories (5–10 min)
 
-    Tobi asked an AI to chart this week's growth for the pitch deck. It
-    ran without errors. Before you believe a chart, check one thing
-    first: where does the y-axis START?
+    Line charts show change over TIME. Zones aren't a timeline: they're
+    categories to compare, and `plt.bar(labels, heights)` is the chart
+    for that job.
 
-    **Predict** first: look at the y-axis numbers below before you look
-    at the slope.
+    Same marimo rule as last time: the LAST expression in a cell
+    displays, so chart cells end with `plt.gca()`.
+
+    **Predict** first: look at the two demo numbers below: which bar
+    will be taller?
     """
     )
     return
@@ -44,7 +47,7 @@ def _(mo):
 def _(mo):
     mo.callout(
         mo.md(
-            "💾 **Saving your work:** this notebook runs in your browser. Press "
+            "**Saving your work:** this notebook runs in your browser. Press "
             "**Cmd/Ctrl+S** to save, and always save **before** menu → Download → "
             "*Download Python code*. Without a save first, the download is an empty file."
         ),
@@ -60,20 +63,13 @@ def _():
 
 
 @app.cell
-def _():
-    # Given: do not change this. Orders per week, week 1 → week 4.
-    weekly_exc = [50, 52, 53, 55]
-    return (weekly_exc,)
-
-
-@app.cell
-def _(plt, weekly_exc):
-    # Tobi's AI-generated chart: runs fine, technically correct numbers
+def _(plt):
+    # Worked example (read + run this)
+    _demo_teams = ["Alpha", "Beta"]
+    _demo_scores = [7, 3]
     plt.figure()  # starts a fresh figure so this chart doesn't draw on top of the last one
-    plt.plot(range(1, 5), weekly_exc)
-    plt.ylim(49, 56)
-    plt.ylabel("Orders per week")
-    plt.title("Tobi's chart")
+    plt.bar(_demo_teams, _demo_scores)
+    plt.title("Demo: two teams")
     plt.gca()
     return
 
@@ -82,58 +78,71 @@ def _(plt, weekly_exc):
 def _(mo):
     mo.md(
         r"""
-    Looks like a rocket, doesn't it? Check the y-axis: it starts at 49,
-    not 0. A few orders of real growth gets stretched into a near-vertical
-    line.
+    `zones_exc` and `totals_exc` below are tonight's revenue by delivery
+    zone. Plot a bar chart, then tell the investor which ZONE brought in
+    the most, as a name, not a number.
 
-    The investor wants the real growth number for the pitch. Compute
-    the growth from week 1 to week 4 as a **percent**: `growth_exc`.
-    Percent growth compares the CHANGE to where you STARTED, then
-    multiplies by 100.
+    The chart itself isn't graded. The check below reads
+    `best_zone_exc`, not your bars.
     """
     )
     return
 
 
 @app.cell
-def _(weekly_exc):
+def _():
+    # Given: do not change this
+    zones_exc = ["Nord", "Sued", "Hafen", "Altstadt"]
+    return (zones_exc,)
+
+
+@app.cell
+def _():
+    # Given: do not change this
+    totals_exc = [412.60, 268.40, 305.90, 351.20]
+    return (totals_exc,)
+
+
+@app.cell
+def _(plt, totals_exc, zones_exc):
+    plt.figure()
+    # YOUR CODE BELOW: plot zones_exc vs totals_exc (labels/title optional, ungraded)
+    plt.gca()
+    return
+
+
+@app.cell
+def _(totals_exc, zones_exc):
     # YOUR CODE BELOW: replace None
-    growth_exc = None
-    return (growth_exc,)
+    best_zone_exc = None
+    return (best_zone_exc,)
 
 
 @app.cell(hide_code=True)
-def _(growth_exc, mo, show_result):
+def _(best_zone_exc, mo, show_result):
     # Reactive check. Re-runs when you run the cell above.
-    _expected = 10.0
+    _expected = "nord"
     _result = None
-    if growth_exc is None:
+    if best_zone_exc is None:
         _ok = False
-        _msg = "🔲 Not attempted yet. Assign it to `growth_exc` (a `print` alone doesn't count) and run the cell."
+        _msg = "Not attempted — Assign it to `best_zone_exc` (a `print` alone doesn't count) and run the cell."
+    elif isinstance(best_zone_exc, (list, tuple)):
+        _ok = False
+        _result = f"best_zone_exc={best_zone_exc!r}"
+        _msg = "Wrong — That's the whole list. The investor wants ONE winner, not all four zones."
+    elif isinstance(best_zone_exc, (int, float)) and not isinstance(best_zone_exc, bool):
+        _ok = False
+        _result = f"best_zone_exc={best_zone_exc!r}"
+        _msg = "Wrong — That's the bar's HEIGHT (a euro amount). The investor asked WHICH zone, by name."
     else:
-        try:
-            _v = round(float(growth_exc), 2)
-        except (TypeError, ValueError):
-            _ok = False
-            _v = None
-            _msg = "❌ That's not a number yet. Check what your expression returns."
+        _v = str(best_zone_exc).strip().lower()
+        _result = f"best_zone_exc={best_zone_exc!r}"
+        if _v == _expected:
+            _ok = True
+            _msg = "Correct — One glance at the bar chart and the investor knows where to expand."
         else:
-            _result = f"growth_exc={growth_exc}"
-            if _v == _expected:
-                _ok = True
-                _msg = "✅ Correct! That's the honest number, no costume required."
-            elif _v == 0.1:
-                _ok = False
-                _msg = "❌ That's the fraction. Percent means ×100."
-            elif _v == 5.0:
-                _ok = False
-                _msg = "❌ 5 orders more, yes, but the investor asked for PERCENT of where you started, not the raw difference."
-            elif _v == 9.09:
-                _ok = False
-                _msg = "❌ Growth is measured from the START value, not the end. Check your denominator."
-            else:
-                _ok = False
-                _msg = "❌ Not quite. Growth % = (end − start) / start × 100."
+            _ok = False
+            _msg = "Wrong — Read the tallest bar again and check its label."
     mo.callout(mo.md(_msg + show_result(_result)), kind="success" if _ok else "warn")
     return
 
@@ -142,8 +151,8 @@ def _(growth_exc, mo, show_result):
 def _(mo):
     mo.accordion(
         {
-            "💡 Hint 1 (a nudge)": "Percent growth compares the CHANGE to the STARTING value, then multiplies by 100. Neither the ending value nor the raw difference in k€ gives you that.",
-            "💡 Hint 2 (the structure)": "growth_exc = (___ - ___) / ___ * 100",
+            "Hint 1 (a nudge)": "`plt.bar(zones_exc, totals_exc)` draws the bars, but the check wants the zone's NAME, not its height. Which list method finds the POSITION of the largest number in `totals_exc`? Use that position to look up a name in `zones_exc`.",
+            "Hint 2 (the structure)": "_best_index = totals_exc.index(___(totals_exc))\nbest_zone_exc = zones_exc[___]",
         }
     )
     return
@@ -153,32 +162,73 @@ def _(mo):
 def _(mo):
     mo.md(
         r"""
-    ### Now fix the chart
-
-    Re-plot the same `weekly_exc` data, but this time let the y-axis
-    start at 0 (`plt.ylim(0, 60)`). Same numbers, honest axis. Watch
-    how much the slope changes just by telling the truth about the
-    baseline.
-
-    This chart isn't graded either. Look at it, then move on.
+    **Done? Then:** the investor wants the bars in order, tallest first,
+    so the ranking reads left to right. Re-plot the bars sorted by
+    height, then tell her which zone comes SECOND: `second_zone_exc`.
     """
     )
     return
 
 
 @app.cell
-def _(plt, weekly_exc):
+def _(plt, totals_exc, zones_exc):
     plt.figure()
-    # YOUR CODE BELOW: re-plot weekly_exc with plt.ylim(0, 60)
+    # YOUR CODE BELOW: bar chart sorted by height, tallest first (ungraded)
     plt.gca()
+    return
+
+
+@app.cell
+def _(totals_exc, zones_exc):
+    # YOUR CODE BELOW: replace None
+    second_zone_exc = None
+    return (second_zone_exc,)
+
+
+@app.cell(hide_code=True)
+def _(mo, second_zone_exc, show_result):
+    # Reactive check. Re-runs when you run the cell above.
+    _expected = "altstadt"
+    _result = None
+    if second_zone_exc is None:
+        _ok = False
+        _msg = "Not attempted — Assign it to `second_zone_exc` (a `print` alone doesn't count) and run the cell."
+    elif isinstance(second_zone_exc, (list, tuple)):
+        _ok = False
+        _result = f"second_zone_exc={second_zone_exc!r}"
+        _msg = "Wrong — That's a whole list (or a pair). The investor wants ONE zone name."
+    elif isinstance(second_zone_exc, (int, float)) and not isinstance(second_zone_exc, bool):
+        _ok = False
+        _result = f"second_zone_exc={second_zone_exc!r}"
+        _msg = "Wrong — That's a bar's HEIGHT. She asked for the zone's NAME."
+    else:
+        _v = str(second_zone_exc).strip().lower()
+        _result = f"second_zone_exc={second_zone_exc!r}"
+        if _v == _expected:
+            _ok = True
+            _msg = "Correct — Exercise 9.c stretch: Nord, then Altstadt. Sorted bars make the ranking readable at a glance."
+        elif _v == "sued":
+            _ok = False
+            _msg = "Wrong — That's the SMALLEST zone: you sorted ascending. Tallest first means `reverse=True`."
+        elif _v == "hafen":
+            _ok = False
+            _msg = "Wrong — That's the second entry of the ORIGINAL list order. Sort by height first, then take position 1."
+        else:
+            _ok = False
+            _msg = "Wrong — Pair each total with its zone, sort the pairs by total (largest first), read the second pair's name."
+    mo.callout(mo.md(_msg + show_result(_result)), kind="success" if _ok else "warn")
     return
 
 
 @app.cell(hide_code=True)
 def _(mo):
-    mo.md("10% growth is good news. It doesn't need a costume.")
+    mo.accordion(
+        {
+            "Hint 1 (a nudge)": "`zip(totals_exc, zones_exc)` makes (total, zone) pairs; `sorted(...)` orders pairs by their first item. Which keyword flips the order so the largest comes first? The second pair holds your zone. For the chart, unzip the sorted pairs back into two lists.",
+            "Hint 2 (the structure)": "_ranked = sorted(zip(totals_exc, zones_exc), reverse=___)\nsecond_zone_exc = _ranked[___][1]",
+        }
+    )
     return
-
 
 @app.cell(hide_code=True)
 def _(mo):

@@ -27,11 +27,12 @@ def _():
 def _(mo):
     mo.md(
         r"""
-    # Quick exercise: filter + count (pandas) (10 min)
+    # Quick exercise: one column, some rows, one number (5–10 min)
 
-    Filtering a DataFrame with a boolean mask works exactly like NumPy:
-    `df[df["col"] >= value]` keeps only the matching rows. Same mask
-    idea as NumPy, pandas speaks it too.
+    The investor's questions all have the same shape: pick a **column**,
+    keep some **rows**, collapse to **one number**. `df["col"]` selects a
+    column, `df[df["col"] == value]` keeps the matching rows, and `.sum()`
+    or `.mean()` turns what is left into a single number.
 
     **Predict** first: what does the cell below print, then run it.
     """
@@ -43,7 +44,7 @@ def _(mo):
 def _(mo):
     mo.callout(
         mo.md(
-            "💾 **Saving your work:** this notebook runs in your browser. Press "
+            "**Saving your work:** this notebook runs in your browser. Press "
             "**Cmd/Ctrl+S** to save, and always save **before** menu → Download → "
             "*Download Python code*. Without a save first, the download is an empty file."
         ),
@@ -61,9 +62,10 @@ def _():
 @app.cell
 def _(pd):
     # Worked example (read + run this)
-    _demo = pd.DataFrame({"size": [1, 4, 2], "price": [3.0, 9.0, 5.0]})
-    print(_demo[_demo["size"] >= 2])
-    print(_demo[_demo["size"] >= 2]["price"].sum())
+    _demo = pd.DataFrame({"team": ["Ost", "West", "Ost"], "score": [10, 6, 20]})
+    print(_demo["score"])
+    print(_demo[_demo["team"] == "Ost"])
+    print(_demo[_demo["team"] == "Ost"]["score"].sum())
     return
 
 
@@ -71,12 +73,11 @@ def _(pd):
 def _(mo):
     mo.md(
         r"""
-    `orders_exb` below is tonight's order list. A "bulk" order is **2
-    items or more**. The investor wants two numbers: how many orders
-    were bulk, and how much revenue those bulk orders brought in.
+    `orders_exb` below is tonight's order list. The investor taps the
+    harbor on the map: *"What did Hafen bring in?"*
 
-    Compute `bulk_count_exb` (how many orders were bulk) and
-    `bulk_revenue_exb` (the total `total_eur` of just the bulk ones).
+    Compute `hafen_revenue_exb`: the total `total_eur` of the orders whose
+    `zone` is `"Hafen"`. One number, not a table.
     """
     )
     return
@@ -87,9 +88,9 @@ def _(pd):
     # Given: do not change this
     orders_exb = pd.DataFrame(
         {
-            "zone": ["Nord", "Sued", "Hafen", "Altstadt", "Nord", "Sued"],
-            "items": [1, 2, 1, 3, 1, 2],
-            "total_eur": [11.20, 18.40, 6.80, 24.00, 9.50, 14.60],
+            "zone": ["Hafen", "Nord", "Sued", "Hafen", "Nord", "Hafen", "Sued", "Sued"],
+            "items": [1, 2, 1, 3, 2, 1, 4, 2],
+            "total_eur": [8.90, 17.40, 6.50, 26.10, 15.80, 9.70, 31.20, 13.30],
         }
     )
     return (orders_exb,)
@@ -97,59 +98,49 @@ def _(pd):
 
 @app.cell
 def _(orders_exb):
-    # YOUR CODE BELOW: replace None
-    bulk_count_exb = None
-    return (bulk_count_exb,)
-
-
-@app.cell
-def _(orders_exb):
-    # YOUR CODE BELOW: replace None
-    bulk_revenue_exb = None
-    return (bulk_revenue_exb,)
+    hafen_revenue_exb = None  # YOUR CODE BELOW
+    return (hafen_revenue_exb,)
 
 
 @app.cell(hide_code=True)
-def _(bulk_count_exb, bulk_revenue_exb, mo, pd, show_result):
+def _(hafen_revenue_exb, mo, pd, show_result):
     # Reactive check. Re-runs when you run the cell above.
-    _expected_count = 3
-    _expected_revenue = 57.0
+    _expected = 44.7
     _result = None
-    if bulk_count_exb is None or bulk_revenue_exb is None:
+    if hafen_revenue_exb is None:
         _ok = False
-        _msg = "🔲 Not attempted yet. Assign it to `bulk_count_exb` and `bulk_revenue_exb` (a `print` alone doesn't count) and run the cell."
-    elif isinstance(bulk_count_exb, (pd.Series, pd.DataFrame)) or isinstance(
-        bulk_revenue_exb, (pd.Series, pd.DataFrame)
-    ):
+        _msg = "Not attempted — Assign the number to `hafen_revenue_exb` (a `print` alone doesn't count) and run the cell."
+    elif isinstance(hafen_revenue_exb, (pd.Series, pd.DataFrame)):
         _ok = False
-        _result = f"bulk_count_exb={bulk_count_exb!r}, bulk_revenue_exb={bulk_revenue_exb!r}"
-        _msg = "❌ One of these is still a whole column/table. `.sum()` needs to run on the mask (for the count) or on the filtered price column (for the revenue)."
+        _result = f"hafen_revenue_exb={hafen_revenue_exb!r}"
+        _msg = "Wrong — `hafen_revenue_exb` is still a column/table. Select `total_eur` from the filtered rows and call `.sum()` to get one number."
     else:
         try:
-            _count = int(bulk_count_exb)
-            _revenue = round(float(bulk_revenue_exb), 2)
+            _v = round(float(hafen_revenue_exb), 2)
         except (TypeError, ValueError):
             _ok = False
-            _count = None
-            _revenue = None
-            _msg = "❌ These should be a whole number and a euro amount. Check what your expressions actually return."
+            _v = None
+            _msg = "Wrong — That's not a number. Check what your last expression returns."
         else:
-            _result = f"bulk_count_exb={bulk_count_exb}, bulk_revenue_exb={bulk_revenue_exb}"
-            if _count == _expected_count and _revenue == _expected_revenue:
+            _result = f"hafen_revenue_exb={hafen_revenue_exb}"
+            if _v == _expected:
                 _ok = True
-                _msg = "✅ Correct! Three bulk orders worth 57.00 EUR."
-            elif _count == 1 and _revenue == 24.0:
+                _msg = "Correct — 44.70 EUR from three harbor orders. Column, rows, one number: that is the whole move."
+            elif _v == 128.9:
                 _ok = False
-                _msg = "❌ Bulk starts AT two items. Which comparison includes the boundary, `>` or `>=`?"
-            elif _revenue == 84.5:
+                _msg = "Wrong — That's every zone. Keep only the Hafen rows before summing."
+            elif _v == 0.0:
                 _ok = False
-                _msg = "❌ That's the revenue of every order. Filter to bulk orders before summing."
-            elif _count == _expected_count:
+                _msg = 'Wrong — Your filter matched nothing, so the sum is 0. pandas compares case-sensitively: the data spells it "Hafen".'
+            elif _v == 3.0:
                 _ok = False
-                _msg = "❌ The count is right, but the revenue isn't. Filter `orders_exb` with the same mask before summing `total_eur`."
+                _msg = "Wrong — That's how many Hafen orders there are, not what they brought in. Sum `total_eur`, don't count rows."
+            elif _v == 5.0:
+                _ok = False
+                _msg = "Wrong — That's the number of items, not euros. Sum the `total_eur` column."
             else:
                 _ok = False
-                _msg = '❌ Not quite. Start with the mask: `orders_exb["items"] >= 2`.'
+                _msg = 'Wrong — Filter to `zone == "Hafen"`, select `total_eur`, then `.sum()`.'
     mo.callout(mo.md(_msg + show_result(_result)), kind="success" if _ok else "warn")
     return
 
@@ -158,8 +149,80 @@ def _(bulk_count_exb, bulk_revenue_exb, mo, pd, show_result):
 def _(mo):
     mo.accordion(
         {
-            "💡 Hint 1 (a nudge)": 'Same mask idea as NumPy: build it first (`orders_exb["items"] >= 2`); `.sum()` on the mask counts the `True`s, and indexing with that same mask before `.sum()` on `total_eur` gives the revenue.',
-            "💡 Hint 2 (the structure)": '_bulk = orders_exb[orders_exb["items"] >= ___]\nbulk_count_exb = int((orders_exb["items"] >= ___).sum())\nbulk_revenue_exb = float(_bulk["total_eur"].___())',
+            "Hint 1 (a nudge)": "Same order as the worked example: filter the rows with a mask, pick the `total_eur` column of what is left, then `.sum()`.",
+            "Hint 2 (the structure)": '_hafen = orders_exb[orders_exb["zone"] == "___"]\nhafen_revenue_exb = float(_hafen["___"].sum())',
+        }
+    )
+    return
+
+
+@app.cell(hide_code=True)
+def _(mo):
+    mo.md(
+        r"""
+    **Done? Then:** next question from the investor: *"How many Sued orders
+    had more than one item?"* Tobi's AI wrote the line below, and it
+    printed a column of `True`/`False` instead of a number:
+
+    ```python
+    sued_multi_exb = orders_exb[orders_exb["zone"] == "Sued"]["items"] > 1
+    ```
+
+    Fix it: `sued_multi_exb` should be the **count** as one whole number.
+    """
+    )
+    return
+
+
+@app.cell
+def _(orders_exb):
+    sued_multi_exb = None  # YOUR CODE BELOW
+    return (sued_multi_exb,)
+
+
+@app.cell(hide_code=True)
+def _(mo, pd, show_result, sued_multi_exb):
+    # Reactive check. Re-runs when you run the cell above.
+    _expected = 2
+    _result = None
+    if sued_multi_exb is None:
+        _ok = False
+        _msg = "Not attempted — Assign the count to `sued_multi_exb` (a `print` alone doesn't count) and run the cell."
+    elif isinstance(sued_multi_exb, (pd.Series, pd.DataFrame)):
+        _ok = False
+        _result = f"sued_multi_exb={sued_multi_exb!r}"
+        _msg = "Wrong — That's Tobi's output: a mask, one boolean per row. `.sum()` on the mask counts the `True`s."
+    else:
+        try:
+            _v = int(sued_multi_exb)
+        except (TypeError, ValueError):
+            _ok = False
+            _v = None
+            _msg = "Wrong — That's not a whole number. Count the `True`s in the mask with `.sum()`."
+        else:
+            _result = f"sued_multi_exb={sued_multi_exb}"
+            if _v == _expected:
+                _ok = True
+                _msg = "Correct — Two Sued orders had more than one item. The comparison builds the mask; `.sum()` counts it."
+            elif _v == 5:
+                _ok = False
+                _msg = "Wrong — That counts every zone. Keep the Sued filter from Tobi's line."
+            elif _v == 3:
+                _ok = False
+                _msg = "Wrong — That's every Sued order. \"More than one\" is `> 1`, not `>= 1`."
+            else:
+                _ok = False
+                _msg = 'Wrong — Filter to `zone == "Sued"`, compare `items > 1`, then `.sum()` the mask.'
+    mo.callout(mo.md(_msg + show_result(_result)), kind="success" if _ok else "warn")
+    return
+
+
+@app.cell(hide_code=True)
+def _(mo):
+    mo.accordion(
+        {
+            "Hint 1 (a nudge)": "Tobi's line is one step short. A mask summed counts its `True`s; wrap the result in `int()` so it is a plain number.",
+            "Hint 2 (the structure)": '_sued = orders_exb[orders_exb["zone"] == "___"]\nsued_multi_exb = int((_sued["items"] > ___).___())',
         }
     )
     return

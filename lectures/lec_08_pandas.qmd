@@ -9,7 +9,7 @@ format:
     output-file: lec_08_presentation.html
 ---
 
-# 📋 Checkpoint 4 {.exercise-slide}
+# Checkpoint 4 {.exercise-slide}
 
 **Sessions VI–VII.** The first 40 minutes are the checkpoint. It starts now, before the investor opens her data room.
 
@@ -28,7 +28,7 @@ Menu → *Download* → *Download Python code* → upload the `.py` to the **"Ch
 . . .
 
 :::{.callout-note}
-The green ✅ live checks are **provisional**. The final grading runs on my side. And take a breath: everything in it was rehearsed in the labs.
+The green live checks are **provisional**. The final grading runs on my side. And take a breath: everything in it was rehearsed in the labs.
 :::
 
 # [Episode 8: The Data Room]{.flow} {.title}
@@ -90,6 +90,36 @@ print(check[check["zone"] == "Nord"]["total_eur"].mean())
 . . .
 
 The Nord orders are 10, 20 and 30. You can average those in your head. Does the AI's answer match? Then the line has earned some trust on eighty rows. Verification is the job now, not typing.
+
+## Predict: it ran, so it's right?
+
+Tobi asks the AI for the **Nord average** on the same five orders. It hands back one line and calls it done. What does this print?
+
+```python
+print(check["total_eur"].mean())
+```
+
+a\) `20.0`   b) an `AttributeError`   c) `14.5`
+
+. . .
+
+[Predict first]{.question}. Pick a letter, then I reveal the answer.
+
+## Answer: it ran, and it's wrong
+
+**c) `14.5`**: the line averages **all five** orders. Nobody filtered for Nord, and pandas has no way to know that was the question:
+
+```{python}
+#| eval: true
+#| output-location: fragment
+
+print(check["total_eur"].mean())                             # every zone
+print(check[check["zone"] == "Nord"]["total_eur"].mean())    # Nord only
+```
+
+. . .
+
+No traceback, a plausible number, and still the wrong answer. **"It runs" is step 2. Step 3 is where the investor's number gets checked.**
 
 ## Predict: does `.summarize()` exist?
 
@@ -167,7 +197,7 @@ Sometimes the fastest path is the one you already own. You built a whole muscle 
 Use AI to draft the unfamiliar and to explain the confusing, not to dodge the thinking you're perfectly able to do. The pilot flies; the co-pilot advises.
 :::
 
-# Your turn — 10 minutes {.exercise-slide}
+# Your turn — 5–10 minutes {.exercise-slide}
 
 Open the exercise (scan the QR or type the link):
 
@@ -259,6 +289,44 @@ print(df[df["zone"] == "Nord"])    # only the Nord rows, case-sensitive!
 
 `df["zone"] == "Nord"` builds a column of `True`/`False`; indexing with it keeps the `True` rows. `.loc` exists for label-based selection, but a plain mask covers today.
 
+## Predict: what does a comparison return?
+
+Tobi wants the orders over 20 EUR. He compares the column and prints the result:
+
+```python
+big = df["total_eur"] > 20
+print(big)
+```
+
+a\) a column of `True`/`False`, one per row   b) only the rows whose total is over 20   c) a single `True`, since some order is over 20
+
+. . .
+
+[Predict first]{.question}. Pick a letter, then I reveal the answer.
+
+## Answer: a mask, not a table
+
+**a) a column of `True`/`False`**. The comparison alone is the **mask**, a Series with one boolean per row. The rows only appear once you index with it:
+
+```{python}
+#| eval: true
+#| output-location: fragment
+
+big = df["total_eur"] > 20
+print(big)              # the mask: a Series of booleans
+print(df[big])          # the rows: build the mask, then apply it
+```
+
+# Your turn — 5–10 minutes {.exercise-slide}
+
+Open the exercise (scan the QR or type the link):
+
+**[python.tobiasvlcek.com/notebooks/ex_08_b/](https://python.tobiasvlcek.com/notebooks/ex_08_b/)**
+
+![](assets/qr/ex_08_b.png){width=280}
+
+First **predict** what happens, then run it.
+
 ## Adding a column, sorting
 
 Compute a new column from existing ones, then sort. Work on a **copy** so the original stays intact:
@@ -319,13 +387,13 @@ The investor's real question is **per zone**: which area brings in the most?
 That's the teaser: today's lab does the heavy lifting with `groupby`, turning eighty raw orders into the handful of numbers the investor actually asked for.
 :::
 
-# Your turn — 10 minutes {.exercise-slide}
+# Your turn — 5–10 minutes {.exercise-slide}
 
 Open the exercise (scan the QR or type the link):
 
-**[python.tobiasvlcek.com/notebooks/ex_08_b/](https://python.tobiasvlcek.com/notebooks/ex_08_b/)**
+**[python.tobiasvlcek.com/notebooks/ex_08_c/](https://python.tobiasvlcek.com/notebooks/ex_08_c/)**
 
-![](assets/qr/ex_08_b.png){width=280}
+![](assets/qr/ex_08_c.png){width=280}
 
 First **predict** what happens, then run it.
 

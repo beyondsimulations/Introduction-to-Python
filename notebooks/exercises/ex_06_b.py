@@ -27,16 +27,15 @@ def _():
 def _(mo):
     mo.md(
         r"""
-    # Quick exercise: seeded randomness (10 min)
+    # Quick exercise: import a tool instead of building it (5–10 min)
 
-    Normally `random` hands you a new sequence every time a cell reruns.
-    Sometimes you want the opposite: the *same* sequence, every single
-    time, so a demo or a test is reproducible. `random.seed(n)` fixes the
-    starting point of the sequence. Anyone who seeds with the same number
-    sees the same "random" results.
+    Need a whole-number result that always rounds *up*, never down? Don't
+    write your own rounding logic. The standard library already has it:
+    `math.ceil` always rounds up to the next whole number, exactly what
+    you need whenever a fraction of a box, crate, or shipment still counts
+    as a whole one.
 
-    **Predict** first: will the dice rolls below change when the cell
-    reruns? Then run it (twice, if you can).
+    300 / 48 is 6.25. **Predict** what the cell below prints, then run it.
     """
     )
     return
@@ -46,7 +45,7 @@ def _(mo):
 def _(mo):
     mo.callout(
         mo.md(
-            "💾 **Saving your work:** this notebook runs in your browser. Press "
+            "**Saving your work:** this notebook runs in your browser. Press "
             "**Cmd/Ctrl+S** to save, and always save **before** menu → Download → "
             "*Download Python code*. Without a save first, the download is an empty file."
         ),
@@ -57,16 +56,15 @@ def _(mo):
 
 @app.cell
 def _():
-    import random
-    return (random,)
+    import math
+    return (math,)
 
 
 @app.cell
-def _(random):
+def _(math):
     # Worked example (read + run this)
-    random.seed(7)
-    _rolls_demo = [random.randint(1, 6), random.randint(1, 6), random.randint(1, 6)]
-    print(f"Three dice rolls after seed(7): {_rolls_demo}")
+    _crates_demo = math.ceil(300 / 48)
+    print(f"300 avocados in crates of 48 -> {_crates_demo} crates")
     return
 
 
@@ -74,43 +72,36 @@ def _(random):
 def _(mo):
     mo.md(
         r"""
-    The investor wants the demand projection to be *reproducible*: the
-    same numbers every time she clicks run, no matter how often the
-    notebook re-executes.
+    The investor breakfast is tomorrow: 200 mini quiches need to go out,
+    and the bakery boxes hold 24 quiches each. How many boxes does Tobi
+    need to order?
 
-    Seed the random generator with `21` (do it exactly once), then
-    simulate demand for the next 7 days: for each day, draw an order count
-    with `random.randint(5, 25)` and collect the seven draws into a list
-    called `demand_exb`.
+    Compute it as `boxes_exb` below, using `math`, not guesswork.
     """
     )
     return
 
 
 @app.cell
-def _(random):
+def _(math):
     # YOUR CODE BELOW: replace None
-    demand_exb = None
-    return (demand_exb,)
+    boxes_exb = None
+    return (boxes_exb,)
 
 
 @app.cell(hide_code=True)
-def _(demand_exb, mo, show_result):
+def _(boxes_exb, mo, show_result):
     # Reactive check. Re-runs when you run the cell above.
-    _expected = [10, 18, 18, 25, 14, 20, 11]
-    if demand_exb is None:
+    if boxes_exb is None:
         _ok = False
-        _msg = "🔲 Not attempted yet. Assign it to `demand_exb` (a `print` alone doesn't count) and run the cell."
-    elif demand_exb == _expected:
+        _msg = "Not attempted — assign it to `boxes_exb` (a `print` alone doesn't count) and run the cell."
+    elif isinstance(boxes_exb, int) and boxes_exb == 9:
         _ok = True
-        _msg = "✅ Correct! Same seven numbers, every single run. The investor can finally trust the demo."
-    elif isinstance(demand_exb, list) and len(demand_exb) == 7:
-        _ok = False
-        _msg = "❌ Right shape, wrong numbers. Check three things: seed **21** (not another number), seeded once *before* the loop, and each draw is `random.randint(5, 25)`."
+        _msg = "Correct — Nine boxes. The investor breakfast is covered with quiches to spare."
     else:
         _ok = False
-        _msg = "❌ Not quite. Build a list of 7 draws, one `random.randint(5, 25)` call per day."
-    mo.callout(mo.md(_msg + show_result(demand_exb)), kind="success" if _ok else "warn")
+        _msg = "Wrong — 200 / 24 isn't a whole number, and you need the next whole box up. Which `math` function rounds up?"
+    mo.callout(mo.md(_msg + show_result(boxes_exb)), kind="success" if _ok else "warn")
     return
 
 
@@ -118,8 +109,59 @@ def _(demand_exb, mo, show_result):
 def _(mo):
     mo.accordion(
         {
-            "💡 Hint 1 (a nudge)": "Seed first, then draw; the seed makes every following draw predictable.",
-            "💡 Hint 2 (the structure)": "random.___(21)\ndemand_exb = []\nfor _day in range(7):\n    demand_exb.append(random.____(5, 25))",
+            "Hint 1 (a nudge)": "200 / 24 gives 8.33... You need the next whole box, and math has a function for exactly that.",
+            "Hint 2 (the structure)": "boxes_exb = math.___(200 / 24)",
+        }
+    )
+    return
+
+
+@app.cell(hide_code=True)
+def _(mo):
+    mo.md(
+        r"""
+    **Done? Then:** the investor caps the box budget at **10.00 EUR**, and
+    a box costs **1.35 EUR**. How many boxes can Tobi actually afford? This
+    time a fraction of a box is *not* a box you can buy.
+
+    Compute it as `affordable_exb`, again with `math`.
+    """
+    )
+    return
+
+
+@app.cell
+def _(math):
+    # YOUR CODE BELOW: replace None
+    affordable_exb = None
+    return (affordable_exb,)
+
+
+@app.cell(hide_code=True)
+def _(affordable_exb, mo, show_result):
+    # Reactive check. Re-runs when you run the cell above.
+    if affordable_exb is None:
+        _ok = False
+        _msg = "Not attempted — assign it to `affordable_exb` (a `print` alone doesn't count) and run the cell."
+    elif isinstance(affordable_exb, int) and affordable_exb == 7:
+        _ok = True
+        _msg = "Correct — seven boxes, two short of the nine Tobi needs. The investor now has a budget conversation to start."
+    elif isinstance(affordable_exb, int) and affordable_exb == 8:
+        _ok = False
+        _msg = "Wrong — eight boxes cost 10.80 EUR, over the cap. Rounding up was right for *needed* boxes; for *affordable* ones you round down."
+    else:
+        _ok = False
+        _msg = "Wrong — 10 / 1.35 is 7.4 boxes, and the last 0.4 of a box isn't for sale. Which `math` function rounds down?"
+    mo.callout(mo.md(_msg + show_result(affordable_exb)), kind="success" if _ok else "warn")
+    return
+
+
+@app.cell(hide_code=True)
+def _(mo):
+    mo.accordion(
+        {
+            "Hint 1 (a nudge)": "`ceil` rounds up; its partner in `math` rounds down. Same shape of call, opposite direction.",
+            "Hint 2 (the structure)": "affordable_exb = math.___(10 / 1.35)",
         }
     )
     return

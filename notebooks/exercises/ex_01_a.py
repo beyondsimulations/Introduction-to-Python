@@ -11,14 +11,26 @@ def _():
 
 
 @app.cell(hide_code=True)
+def _():
+    # Shows your current answer under the check.
+    def show_result(value):
+        if value is None:
+            return ""
+        if isinstance(value, str):
+            return f"\n\n**Your result:**\n\n```\n{value}\n```"
+        return f"\n\n**Your result:** `{value}`"
+
+    return (show_result,)
+
+
+@app.cell(hide_code=True)
 def _(mo):
     mo.md(
         r"""
-    # Quick exercise: the founding form (10 min)
+    # Quick exercise: the company register (5–10 min)
 
-    Tobi filled in the company register form, as Python variables. One line
-    has the wrong **value** and two have the wrong **type**. First **predict**
-    which, then fix all three.
+    Tobi filled in the company register in a hurry and typed the name twice.
+    First **predict** what `print(company)` shows below, then run the cell.
     """
     )
     return
@@ -28,7 +40,7 @@ def _(mo):
 def _(mo):
     mo.callout(
         mo.md(
-            "💾 **Saving your work:** this notebook runs in your browser. Press "
+            "**Saving your work:** this notebook runs in your browser. Press "
             "**Cmd/Ctrl+S** to save, and always save **before** menu → Download → "
             "*Download Python code*. Without a save first, the download is an empty file."
         ),
@@ -39,31 +51,87 @@ def _(mo):
 
 @app.cell
 def _():
-    # FIX TOBI'S FORM (some values and/or types are wrong)
-    company_type = "UG (haftungsbeschränkt)"
-    first_employee = "tobi "
-    share_capital = "300"
-    founded_year = "2026"
-    return (company_type, first_employee, founded_year, share_capital)
+    # Given: Tobi's register entry. Do not change it
+    company = "Wrap Speed"
+    Company = "Wrapid Delivery"
+    print(company)
+    return (Company, company)
 
 
 @app.cell(hide_code=True)
-def _(mo, first_employee, founded_year, share_capital):
-    _ok = (
-        first_employee == "Tobi"
-        and share_capital == 300
-        and isinstance(founded_year, int)
+def _(mo):
+    mo.md(
+        r"""
+    The registrar wants the name Tobi typed **second**. Store it in
+    `company_exa` by using the right variable, not by retyping the text.
+    """
     )
-    _msg = "✅ Form accepted!" if _ok else "❌ The registrar rejects the form. Keep fixing."
-    _msg += "\n\n**Your form:** " + ", ".join(
-        f"`{_name} = {_value!r}` ({type(_value).__name__})"
-        for _name, _value in [
-            ("first_employee", first_employee),
-            ("share_capital", share_capital),
-            ("founded_year", founded_year),
-        ]
+    return
+
+
+@app.cell
+def _():
+    # YOUR CODE BELOW: replace None
+    company_exa = None
+    return (company_exa,)
+
+
+@app.cell(hide_code=True)
+def _(company_exa, mo, show_result):
+    # Reactive check. Re-runs when you run the cell above.
+    if company_exa is None:
+        _ok = False
+        _msg = "Not attempted — assign it to `company_exa` (a `print` alone doesn't count) and run the cell."
+    elif company_exa == "Wrapid Delivery":
+        _ok = True
+        _msg = "Correct — `Company` and `company` are two different names. Capital letters count."
+    elif company_exa == "Wrap Speed":
+        _ok = False
+        _msg = "Wrong — that is the lowercase `company`. Python is case-sensitive: look for the name with a capital C."
+    else:
+        _ok = False
+        _msg = "Wrong — the registrar expects exactly the second name. Use the variable that holds it."
+    mo.callout(mo.md(_msg + show_result(company_exa)), kind="success" if _ok else "warn")
+    return
+
+
+@app.cell(hide_code=True)
+def _(mo):
+    mo.md(
+        r"""
+    **Done? Then:** the register also wants the sticker budget. Tobi had
+    `300` EUR, then spent `50` more on stickers. In the cell below, first set
+    `budget_exa = 300`, then on a **second line** update it from its old
+    value (`budget_exa = budget_exa - 50`). Predict first: does the check see
+    `300` or `250`?
+    """
     )
-    mo.callout(mo.md(_msg), kind="success" if _ok else "warn")
+    return
+
+
+@app.cell
+def _():
+    # YOUR CODE BELOW: replace None
+    budget_exa = None
+    return (budget_exa,)
+
+
+@app.cell(hide_code=True)
+def _(budget_exa, mo, show_result):
+    # Reactive check. Re-runs when you run the cell above.
+    if budget_exa is None:
+        _ok = False
+        _msg = "Not attempted — assign it to `budget_exa` (a `print` alone doesn't count) and run the cell."
+    elif isinstance(budget_exa, (int, float)) and round(budget_exa, 2) == 250:
+        _ok = True
+        _msg = "Correct — a name points to its **latest** value. The second line overwrote the first."
+    elif isinstance(budget_exa, (int, float)) and round(budget_exa, 2) == 300:
+        _ok = False
+        _msg = "Wrong — the check sees the last value the name pointed to. Add the second line that subtracts the 50 EUR."
+    else:
+        _ok = False
+        _msg = "Wrong — expected a number: 300 first, then 50 less on the next line."
+    mo.callout(mo.md(_msg + show_result(budget_exa)), kind="success" if _ok else "warn")
     return
 
 

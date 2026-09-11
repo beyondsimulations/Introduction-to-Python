@@ -27,16 +27,19 @@ def _():
 def _(mo):
     mo.md(
         r"""
-    # Quick exercise: loop the minutes (10 min)
+    # Quick exercise: the delivery fee (5–10 min)
 
-    First a **trace** (predict, don't run yet): what does this print?
+    The curfew stands, and on top of it the startup now charges a delivery
+    fee that depends on the order size:
 
-    ```python
-    total = 0
-    for p in [3, 5]:
-        total = total + p
-    print(total)
-    ```
+    | `order_total` | fee |
+    |---|---|
+    | `order_total < 15` | 2.90 |
+    | `order_total >= 15 and order_total < 30` | 1.50 |
+    | `order_total >= 30` | 0 |
+
+    Using an `if`/`elif`/`else` ladder, store the correct fee in `fee_exb`,
+    based on `order_total` below.
     """
     )
     return
@@ -46,7 +49,7 @@ def _(mo):
 def _(mo):
     mo.callout(
         mo.md(
-            "💾 **Saving your work:** this notebook runs in your browser. Press "
+            "**Saving your work:** this notebook runs in your browser. Press "
             "**Cmd/Ctrl+S** to save, and always save **before** menu → Download → "
             "*Download Python code*. Without a save first, the download is an empty file."
         ),
@@ -55,33 +58,33 @@ def _(mo):
     return
 
 
-@app.cell(hide_code=True)
-def _(mo):
-    trace_exb = mo.ui.radio(
-        options=["a) 3", "b) 3 then 8", "c) 8"],
-        label="Your prediction:",
-    )
-    trace_exb
-    return (trace_exb,)
+@app.cell
+def _():
+    # Given: do not change this
+    order_total = 17.80
+    return (order_total,)
+
+
+@app.cell
+def _():
+    # YOUR CODE BELOW: replace None
+    fee_exb = None
+    return (fee_exb,)
 
 
 @app.cell(hide_code=True)
-def _(mo, trace_exb):
-    if trace_exb.value is None:
-        _msg = "🔲 Pick a prediction above first. Commit before you peek!"
-    elif trace_exb.value == "c) 8":
-        _msg = (
-            "✅ Correct: the `print` line runs once, **after** the loop "
-            "finishes, so it prints the final total, `8`. If `print` were "
-            "indented into the loop, it would print `3` then `8`."
-        )
+def _(fee_exb, mo, show_result):
+    # Reactive check. Re-runs when you run the cell above.
+    if fee_exb is None:
+        _ok = False
+        _msg = "Not attempted — assign it to `fee_exb` (a `print` alone doesn't count) and run the cell."
+    elif isinstance(fee_exb, (int, float)) and round(fee_exb, 2) == 1.50:
+        _ok = True
+        _msg = "Correct — 17.80 EUR lands in the middle tier: 1.50 EUR fee."
     else:
-        _msg = (
-            "❌ Not quite. `print` is **not** indented, so it only runs once, "
-            "after the loop finishes: it prints the final total, `8`. (This "
-            "one is ungraded. The point is the prediction.)"
-        )
-    mo.callout(mo.md(_msg), kind="info")
+        _ok = False
+        _msg = "Wrong — check which branch 17.80 falls into."
+    mo.callout(mo.md(_msg + show_result(fee_exb)), kind="success" if _ok else "warn")
     return
 
 
@@ -89,8 +92,9 @@ def _(mo, trace_exb):
 def _(mo):
     mo.md(
         r"""
-    Now write one yourself: the curfew means every delivery minute counts.
-    Sum today's three runs in `minutes` with a `for` loop into `minutes_exb`.
+    **Done? Then:** Gold customers never pay a delivery fee, whatever the
+    total. Reuse `order_total` and the flag `is_gold` below, and store the
+    fee in `fee2_exb`. The ladder still applies to everyone else.
     """
     )
     return
@@ -99,32 +103,34 @@ def _(mo):
 @app.cell
 def _():
     # Given: do not change this
-    minutes = [12, 7, 9]
-    return (minutes,)
+    is_gold = True
+    return (is_gold,)
 
 
 @app.cell
 def _():
     # YOUR CODE BELOW: replace None
-    minutes_exb = None
-    return (minutes_exb,)
+    fee2_exb = None
+    return (fee2_exb,)
 
 
 @app.cell(hide_code=True)
-def _(minutes_exb, mo, show_result):
+def _(fee2_exb, mo, show_result):
     # Reactive check. Re-runs when you run the cell above.
-    if minutes_exb is None:
+    if fee2_exb is None:
         _ok = False
-        _msg = "🔲 Not attempted yet. Assign it to `minutes_exb` (a `print` alone doesn't count) and run the cell."
-    elif minutes_exb == 28:
+        _msg = "Not attempted — assign it to `fee2_exb` (a `print` alone doesn't count) and run the cell."
+    elif isinstance(fee2_exb, (int, float)) and round(fee2_exb, 2) == 0:
         _ok = True
-        _msg = "✅ Correct! 12 + 7 + 9 = 28 minutes, all delivered on time."
+        _msg = "Correct — 0 EUR. Gold status beats the ladder, so test `is_gold` first."
+    elif isinstance(fee2_exb, (int, float)) and round(fee2_exb, 2) == 1.50:
+        _ok = False
+        _msg = "Wrong — that is the plain ladder. `is_gold` is `True`, so the fee must be 0 no matter the total."
     else:
         _ok = False
-        _msg = "❌ Not quite. Make sure you add up every value in `minutes` rather than keeping only the last one."
-    mo.callout(mo.md(_msg + show_result(minutes_exb)), kind="success" if _ok else "warn")
+        _msg = "Wrong — check `is_gold` before the ladder: a Gold customer pays 0."
+    mo.callout(mo.md(_msg + show_result(fee2_exb)), kind="success" if _ok else "warn")
     return
-
 
 @app.cell(hide_code=True)
 def _(mo):
