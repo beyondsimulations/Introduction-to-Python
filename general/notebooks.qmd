@@ -1,0 +1,78 @@
+---
+title: "How the notebook works"
+subtitle: "Read this once before your first lab"
+---
+
+Every lab and every in-lecture exercise is a **marimo notebook** that runs in your browser tab. Nothing to install. This page explains what you see, what to click, and what to leave alone.
+
+## Three kinds of cell
+
+A notebook is a page of cells, top to bottom. The sections mirror the lecture blocks. You will meet three kinds of cell:
+
+::: {.nb-mock}
+::: {.nb-cell .nb-read}
+**Exercise 1.2 (core) — first revenue**
+
+Multiply the price by the portions and store the result in `revenue_ex12`.
+:::
+::: {.nb-cell .nb-code}
+```python
+# YOUR CODE BELOW: replace None
+revenue_ex12 = None
+```
+:::
+::: {.nb-cell .nb-check}
+Not attempted — Exercise 1.2. Assign your answer to `revenue_ex12` (a `print` alone doesn't count) and run the cell.
+:::
+:::
+
+1. **Read cells** hold the story, the instructions, and worked examples. Their code is hidden. You never edit them.
+2. **Your-code cells** contain the line `# YOUR CODE BELOW`. These are the **only** cells you edit. Replace every `None` with your answer, and finish any function or class body marked this way. In "fix Tobi's code" exercises the marker sits above Tobi's code: edit that cell in place.
+3. **Check cells** sit right under a your-code cell. They run by themselves and show a verdict. You never edit them and never need to run them.
+
+## Running a cell
+
+Click into a your-code cell and press **Cmd/Ctrl+Enter** (or the play button at the cell's right edge). The output appears below the cell.
+
+A cell shows the value of its **last line**. An assignment such as `revenue_ex12 = 26.70` shows nothing by itself. That is normal: the check cell echoes **Your result** next to the verdict, so you still see what you computed.
+
+## What updates by itself
+
+marimo is *reactive*: when you run a cell, every cell that depends on it re-runs. Change an answer, run the cell, and the check below updates. You never need a "run all".
+
+## The three verdicts
+
+| Verdict | Colour | Meaning |
+|---|---|---|
+| Not attempted | grey | the variable is still `None`. A `print` alone does not count: assign the value to the named variable and run the cell |
+| Wrong | red | the check ran and disagrees. It tells you what it expected |
+| Correct | green | done, move on |
+
+The **progress cell** at the bottom of a lab counts your core exercises. Bonus exercises and prediction quizzes are not counted.
+
+## A red error pauses everything below
+
+If a your-code cell raises an error, the traceback appears in red under it, and every cell that depends on it pauses, including its check and the progress cell. Nothing is lost. Read the **last line** of the traceback, fix the cell, run it again, and the checks come back.
+
+## Hints
+
+Every exercise has two collapsed hints under the check. Open **Hint 1** first (a nudge, no code), then **Hint 2** (the structure, with blanks). Solutions appear on the tutorial page after the session.
+
+## Saving versus downloading
+
+- **The tab remembers you.** Reloading the page (Cmd/Ctrl+R) keeps your work. Closing the tab and opening the course link again later starts from a clean notebook.
+- **Cmd/Ctrl+S** saves inside the tab.
+- **Menu (top right) → Download → Download Python code** gives you the `.py` file. This is the only copy that survives, and it is exactly how you hand in a checkpoint. **Save first**: without a save, the downloaded file is empty.
+- A downloaded `.py` is for backup and submission. You cannot upload it back into the browser editor.
+
+## Buttons you can ignore
+
+The editor shows more than you need. Leave these alone:
+
+- the icons in the **left sidebar** (files, variables, dependency graph, packages, settings);
+- the small buttons that appear when you **hover a cell**: add cell above or below, move, hide code, and **delete**. Deleting a check cell breaks the progress count;
+- the **app view** toggle at the bottom left. If all the code disappears, click it again to come back to the editor.
+
+## Done for today
+
+Save, download, close the tab. Done early? You are free to go. Not done when the session ends? The rest is homework: keep the tab open on your laptop.

@@ -28,9 +28,24 @@ def _(mo):
 def _(mo):
     mo.callout(
         mo.md(
-            "💾 **Saving your work:** this notebook runs in your browser. Press "
+            "**Saving your work:** this notebook runs in your browser. Press "
             "**Cmd/Ctrl+S** to save, and always save **before** menu → Download → "
             "*Download Python code*. Without a save first, the download is an empty file."
+        ),
+        kind="info",
+    )
+    return
+
+
+@app.cell(hide_code=True)
+def _(mo):
+    mo.callout(
+        mo.md(
+            "**How this notebook works:** run a cell with **Cmd/Ctrl+Enter**. "
+            "Only edit the cells that contain `# YOUR CODE BELOW`; the check under "
+            "each exercise updates by itself. A red error pauses everything below "
+            "it, so fix that cell first. New here? Read "
+            "[How the notebook works](https://python.tobiasvlcek.com/general/notebooks.html)."
         ),
         kind="info",
     )
@@ -46,7 +61,7 @@ def _():
 @app.cell(hide_code=True)
 def _():
     # Helper — renders a student's current answer as a "Your result" preview so
-    # they SEE their output (e.g. a receipt's alignment), not just ✅/❌. Strings
+    # they SEE their output (e.g. a receipt's alignment), not just /. Strings
     # render in a fenced block (multi-line formatting shows); everything else
     # inline. Append `show_result(answer)` to any check cell's message.
     def show_result(value):
@@ -120,14 +135,14 @@ def _(mo, revenue_ex1, show_result):
     # Reactive check — Re-runs when you run the cell above.
     if revenue_ex1 is None:
         ex1_ok = False
-        _msg = "🔲 Exercise 1.1: not attempted yet. Assign it to `revenue_ex1` (a `print` alone doesn't count) and run the cell."
+        _msg = "Not attempted — Exercise 1.1. Assign it to `revenue_ex1` (a `print` alone doesn't count) and run the cell."
     elif revenue_ex1 == 13.50:  # TODO expected value
         ex1_ok = True
-        _msg = "✅ Exercise 1.1: correct! The investor nods approvingly."
+        _msg = "Correct — Exercise 1.1: correct! The investor nods approvingly."
     else:
         ex1_ok = False
-        _msg = "❌ Exercise 1.1: not quite — check your multiplication."
-    # show_result echoes the student's current answer below the ✅/❌ message.
+        _msg = "Wrong — Exercise 1.1: not quite — check your multiplication."
+    # show_result echoes the student's current answer below the /Wrong — message.
     mo.md(_msg + show_result(revenue_ex1))
     return (ex1_ok,)
 
@@ -136,8 +151,8 @@ def _(mo, revenue_ex1, show_result):
 def _(mo):
     mo.accordion(
         {
-            "💡 Hint 1 (a nudge)": "TODO: conceptual nudge, no code.",
-            "💡 Hint 2 (the structure)": "TODO: code skeleton with blanks, e.g. `revenue_ex1 = round(___ * ___, 2)` — NEVER the full pasteable answer (that lives in the post-session solution notebook).",
+            "Hint 1 (a nudge)": "TODO: conceptual nudge, no code.",
+            "Hint 2 (the structure)": "TODO: code skeleton with blanks, e.g. `revenue_ex1 = round(___ * ___, 2)` — NEVER the full pasteable answer (that lives in the post-session solution notebook).",
         }
     )
     return
@@ -151,7 +166,7 @@ def _(ex1_ok, mo):
     _total = len(_checks)
     _tobi = "Tobi is impressed!" if _done == _total else "Tobi remains skeptical."
     mo.callout(
-        mo.md(f"**Core exercises: {_done}/{_total} ✅** — {_tobi}"),
+        mo.md(f"**Core exercises: {_done}/{_total} correct** — {_tobi}"),
         kind="success" if _done == _total else "neutral",
     )
     return
@@ -161,7 +176,7 @@ def _(ex1_ok, mo):
 def _(mo):
     mo.md(
         r"""
-    ## Before you leave 📦
+    ## Before you leave
 
     1. Check the progress box above — all green?
     2. **Download your work**: **Cmd/Ctrl+S**, then menu → Download → Python. Reloading this exact

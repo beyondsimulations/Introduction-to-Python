@@ -9,22 +9,31 @@
   `QUARTO_PROJECT_RENDER_ALL`), so single-file renders leave `_repo-md/` alone.
 
 ## Notebooks (see notebooks/_template.py for the skeleton)
-- Every notebook opens with the 💾 save callout right after the title cell, and
+- Every notebook opens with the save callout right after the title cell, and
   every download instruction says "Cmd/Ctrl+S, then menu → Download": marimo's
   WASM edit mode hands out an EMPTY .py until the notebook has been saved once
   (verified on 0.23.13 and 0.24.0).
 - One global per cell; `+=`/`*=` count as definitions; `_name` is cell-private.
+- No emojis anywhere (Tobi, 2026-09-09): verdicts are plain text, "Correct —
+  Exercise N.M:", "Wrong — Exercise N.M:", "Not attempted — Exercise N.M."; hint
+  accordions are "Hint 1 (a nudge)" / "Hint 2 (the structure)"; slide titles
+  "Warm-up" / "Checkpoint N".
+- Every cell a student edits contains a line starting with `# YOUR CODE BELOW`
+  (bug-fix cells too: put it above the `TOBI'S CODE` comment). The page
+  `general/notebooks.qmd` tells students to look for exactly this line.
+- Every lab has the "How this notebook works" callout right after the save
+  callout (see `_template.py`); in-lecture exercises do not.
 - Every exercise pre-defines its answer: `fee_ex11 = None  # YOUR CODE BELOW`.
 - Suffix naming: `<meaning>_exNM` (section N, exercise M); boss = `_ex40`,
   MCQ = `answer_ex50`, bonuses = `_ex60`+. Classes keep their natural name
   (`Order`), no suffix.
 - Checks: `isinstance` + `round(x, 2) == LITERAL` for numbers; degrade to
-  "🔲 not attempted" on None, followed by the unstick hint — name the variable
+  "Not attempted" on None, followed by the unstick hint — name the variable
   to assign (`print` alone doesn't count) and say to run the cell, since a
   stale or printed-only answer is what students report as "correct but not
   attempted"; `mo.callout` + `show_result(value)`.
 - Check cells must NEVER crash on a plausible wrong answer (a crash pauses the
-  progress cell and hides the ✅). Guard/try-except every coercion: `int()`/
+  progress cell and hides the green verdict). Guard/try-except every coercion: `int()`/
   `float()` may hit an array/Series/string, not a scalar; use `pd.isna(x)` for a
   NaN from an empty filter (`nan != nan`, so `== LITERAL` silently fails); use
   `np.ndim(x)` to catch a still-an-array branch. Simulate the wrong paths in
@@ -108,12 +117,12 @@ touching any question; `--stats` for the per-question table).
 ## Lecture decks (revealjs)
 Regular session skeleton:
 1. Title slide (Fall 2026) → 2. Cold open (1 slide, episode framing, restrained)
-3. 🔥 Warm-up (3 recap questions; see below) → 4. Block 1 (≤20 min)
+3. Warm-up (3 recap questions; see below) → 4. Block 1 (≤20 min)
 5. QR exercise a → 6. Block 2 → 7. QR b → [break] → 8. Block 3 → 9. QR c
 10. Lab handoff (tutorial URL) → 11. Wrap-up: 3 takeaways + next-episode teaser
 → [break] → lab in class (unfinished parts at home).
-Session II: 📋 Checkpoint 0 (dress rehearsal, 15 min, ungraded) sits right before the lab handoff.
-CP sessions (III, V, VI, VIII, X): title → 📋 checkpoint slide (procedure) →
+Session II: Checkpoint 0 (dress rehearsal, 15 min, ungraded) sits right before the lab handoff.
+CP sessions (III, V, VI, VIII, X): title → checkpoint slide (procedure) →
 cold open → Block 1 → QR a → Block 2 → QR b → lab handoff → wrap-up.
 No warm-up on CP days (the checkpoint is the warm-up).
 Exception — Session X follows the Plan-4 kickoff shape instead (CP5 opener →
@@ -122,7 +131,7 @@ handoff by design, and no tut_10/nb_10 — see
 docs/superpowers/specs/2026-07-12-part3-plan4-design.md).
 
 ### Warm-up pattern (oral + vote)
-One `# 🔥 Warm-up {.exercise-slide}` section, then per question a `##` slide
+One `# Warm-up {.exercise-slide}` section, then per question a `##` slide
 (question + options a–c) and a `##` answer slide (answer + one-line why).
 Everyone commits by hand vote BEFORE the reveal — predict-first, zero infra.
 Warm-up answer slides are prose-only (no live execution) — deliberate: oral
@@ -136,7 +145,7 @@ hallucination) must mark that cell `#| error: true` so Quarto captures the
 traceback into the slide — a bare crashing cell aborts the whole render.
 
 ### QR exercise slide (exact form)
-    # Your turn — 10 minutes {.exercise-slide}
+    # Your turn — 5–10 minutes {.exercise-slide}
     …URL + QR image (assets/qr/ex_XX_x.png, width 280) + "First **predict** — then run."
 Add new exercises to `helpers/make_qr.py` EXERCISES and re-run it.
 
@@ -166,7 +175,7 @@ Add new exercises to `helpers/make_qr.py` EXERCISES and re-run it.
   "wrong comparison"). Grading is value-only — a stated answer is a free answer.
 - Live checks and reference tests must apply IDENTICAL comparison leniency (the
   hash helper normalizes strip+lower — reference tests mirror it).
-- MCQ/trace answers get a neutral "recorded" acknowledgment, never a live ✅/❌
+- MCQ/trace answers get a neutral "recorded" acknowledgment, never a live correct/wrong verdict
   (a 4-letter space is enumerable).
 - Hash literals are per-task salted (`expected_hash(answer, task="cpN.tM")`) so
   equal answers never share a literal.
