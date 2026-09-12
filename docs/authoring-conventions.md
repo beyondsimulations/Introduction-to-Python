@@ -193,6 +193,8 @@ Add new exercises to `helpers/make_qr.py` EXERCISES and re-run it.
 - WASM spot-check harness: serve exports with a THREADED local server
   (`ThreadingHTTPServer`) — a single-threaded `python -m http.server` deadlocks
   pyodide-http's synchronous `fetch`, so pandas labs that load `public/*.csv`
-  hang forever. Pandas-heavy labs also may not auto-run every cell on cold boot;
-  a one-time "Run all" (Cmd/Ctrl+Shift+R) drives them (see the dress-rehearsal
-  spec for the deployed-host follow-up).
+  hang forever. Two export facts (2026-09-12, verified in headless Chromium):
+  marimo 0.23's exporter embeds `auto_instantiate: false`, so `export_marimo.py`
+  flips it in every index.html or cells sit idle until "Run all"; and with the
+  shared asset bundle `mo.notebook_location()` resolves to `_site/notebooks/`, so
+  the script copies `notebooks/public/` there or pandas labs read the 404 page.

@@ -50,7 +50,16 @@ def share_assets() -> None:
         else:
             assets.rename(shared)
         index = nb_dir / "index.html"
-        index.write_text(index.read_text().replace('"./assets/', '"../assets/'))
+        html = index.read_text().replace('"./assets/', '"../assets/')
+        # marimo's exporter embeds its default runtime config, where auto_instantiate
+        # is off (0.23): cells then sit idle until Run all. Flip it so the notebook runs
+        # on load (verified in headless Chromium, 2026-09-12).
+        html = html.replace('auto_instantiate": false', 'auto_instantiate": true')
+        index.write_text(html)
+    # With the shared bundle, mo.notebook_location() resolves to _site/notebooks/,
+    # so data files must live there too (spot-check 2026-09-12: pandas labs fetched
+    # /notebooks/public/orders.csv, got the 404 page, and parsed it as a table).
+    shutil.copytree(NOTEBOOKS / "public", OUT / "public", dirs_exist_ok=True)
 
 
 def main() -> int:
