@@ -4,7 +4,7 @@
     "href": "tutorials/tut_09_plotting.html",
     "title": "Episode 9: The Pitch Deck",
     "section": "",
-    "text": "The pitch meeting is Friday, and the investor gave one instruction: “Bring me charts I can’t argue with.” Last week you turned the data room into honest numbers; this week those numbers have to be seen. Same eighty orders, same orders DataFrame, now with a picture attached. You’ll draw a line for revenue over time, pick the right chart for categories, distributions and relationships, and (the real skill) refuse to draw a dishonest one. Tobi has already “built the deck”, and his growth slide is a lie wearing a nice axis. Your job is to supervise: catch the chart you can argue with before the investor does.",
+    "text": "The pitch meeting is Friday, and the investor gave one instruction: “Bring me charts I can’t argue with.” Last week you turned the data room into numbers she could trust; this week those numbers have to be seen. Same eighty orders, same orders DataFrame, now with a picture attached. You’ll draw a line for revenue over time, pick the right chart for categories, distributions and relationships, and (the real skill) refuse to draw a misleading one. Tobi has already “built the deck”, and his growth slide is a lie wearing a nice axis. Your job is to supervise: catch the chart you can argue with before the investor does.",
     "crumbs": [
       "09 Plotting",
       "Tutorial"
@@ -26,7 +26,7 @@
     "href": "tutorials/tut_07_scientific.html",
     "title": "Episode 7: The Numbers Deck",
     "section": "",
-    "text": "The investor liked last week’s honest numbers. Now she wants a one-page metrics deck: totals, a per-zone breakdown, the busiest day, the strongest zone. Tobi’s counter-proposal, a 40-tab spreadsheet with a formula pointing at a workbook he can’t find, is gently disqualified. So this week you learn the tool that turns a pile of orders into metrics without a single hand-written loop: NumPy. You’ll build arrays, multiply a whole price list in one expression, use boolean masks to count and filter, and total a 2-D grid by row or by column with axis.",
+    "text": "The investor liked last week’s numbers. Now she wants a one-page metrics deck: totals, a per-zone breakdown, the busiest day, the strongest zone. Tobi’s counter-proposal, a 40-tab spreadsheet with a formula pointing at a workbook he can’t find, is gently disqualified. So this week you learn the tool that turns a pile of orders into metrics without a single hand-written loop: NumPy. You’ll build arrays, multiply a whole price list in one expression, use boolean masks to count and filter, and total a 2-D grid by row or by column with axis.",
     "crumbs": [
       "07 Scientific Computing",
       "Tutorial"
@@ -114,7 +114,7 @@
     "href": "lectures/lec_09_presentation.html#charts-are-arguments",
     "title": "Lecture IX - Data Visualization",
     "section": "Charts are arguments",
-    "text": "Charts are arguments\nFriday, the boardroom. Picture it: the investor slides a pencil out of her jacket and sharpens it while you set up, the sound louder than it has any right to be.\n\nLast week you handed her honest numbers, a table she could trust. She read exactly one row, looked up, and said the thing this whole session is about:\n\n“Tables are homework. Charts are arguments.”\n\n\n\nA number convinces the careful. A picture convinces the room. Today: draw the right chart for the question, and refuse to draw a dishonest one."
+    "text": "Charts are arguments\nFriday, the boardroom. Picture it: the investor slides a pencil out of her jacket and sharpens it while you set up, the sound louder than it has any right to be.\n\nLast week you handed her a table she could trust. She read exactly one row, looked up, and said the thing this whole session is about:\n\n“Tables are homework. Charts are arguments.”\n\n\n\nA number convinces the careful. A picture convinces the room. Today: draw the right chart for the question, and refuse to draw a misleading one."
   },
   {
     "objectID": "lectures/lec_09_presentation.html#question-1",
@@ -198,7 +198,7 @@
     "href": "lectures/lec_09_presentation.html#the-parts-of-a-chart",
     "title": "Lecture IX - Data Visualization",
     "section": "The parts of a chart",
-    "text": "The parts of a chart\nEvery honest chart names its axes. xlabel, ylabel, title, and (when there’s more than one line) a legend:\n\nimport matplotlib.pyplot as plt\n\ndays = [1, 2, 3, 4, 5]\nrevenue = [120, 90, 140, 160, 130]\n\nplt.figure()\nplt.plot(days, revenue, label=\"Revenue\")   # label feeds the legend\nplt.xlabel(\"Day\")        # what the x-axis counts\nplt.ylabel(\"Revenue (€)\")  # what the y-axis measures\nplt.title(\"This week's revenue\")  # what the picture is about\nplt.legend()             # the little key, one entry per label\nplt.gca()"
+    "text": "The parts of a chart\nEvery chart names its axes. xlabel, ylabel, title, and (when there’s more than one line) a legend:\n\nimport matplotlib.pyplot as plt\n\ndays = [1, 2, 3, 4, 5]\nrevenue = [120, 90, 140, 160, 130]\n\nplt.figure()\nplt.plot(days, revenue, label=\"Revenue\")   # label feeds the legend\nplt.xlabel(\"Day\")        # what the x-axis counts\nplt.ylabel(\"Revenue (€)\")  # what the y-axis measures\nplt.title(\"This week's revenue\")  # what the picture is about\nplt.legend()             # the little key, one entry per label\nplt.gca()"
   },
   {
     "objectID": "lectures/lec_09_presentation.html#the-parts-of-a-chart-output",
@@ -282,7 +282,7 @@
     "href": "lectures/lec_09_presentation.html#two-numbers-scatter",
     "title": "Lecture IX - Data Visualization",
     "section": "Two numbers → scatter",
-    "text": "Two numbers → scatter\n“Do bigger orders take longer?” Two numbers per order, one on each axis, which makes it a scatter:\n\nimport matplotlib.pyplot as plt\n\nminutes = [19, 22, 23, 24, 25, 26, 28, 31, 40, 44]\neuros   = [24, 9, 31, 12, 8, 30, 15, 22, 11, 19]\n\nplt.figure()\nplt.scatter(minutes, euros)\nplt.xlabel(\"Delivery time (min)\")\nplt.ylabel(\"Order value (€)\")\nplt.gca()\n\n\nJust a cloud. No upward drift. Sometimes the honest answer is “there’s no pattern here.”"
+    "text": "Two numbers → scatter\n“Do bigger orders take longer?” Two numbers per order, one on each axis, which makes it a scatter:\n\nimport matplotlib.pyplot as plt\n\nminutes = [19, 22, 23, 24, 25, 26, 28, 31, 40, 44]\neuros   = [24, 9, 31, 12, 8, 30, 15, 22, 11, 19]\n\nplt.figure()\nplt.scatter(minutes, euros)\nplt.xlabel(\"Delivery time (min)\")\nplt.ylabel(\"Order value (€)\")\nplt.gca()\n\n\nJust a cloud. No upward drift. Sometimes the answer is “there’s no pattern here.”"
   },
   {
     "objectID": "lectures/lec_09_presentation.html#two-numbers-scatter-output",
@@ -338,7 +338,7 @@
     "href": "lectures/lec_09_presentation.html#the-same-data-told-two-ways",
     "title": "Lecture IX - Data Visualization",
     "section": "The same data, told two ways",
-    "text": "The same data, told two ways\nFour weeks of revenue, [96, 98, 97, 99], barely moving. Where the y-axis starts decides: the left gets you a term sheet, the right gets you trusted. Same numbers, and the room sees a rocket or the truth:\n\nimport matplotlib.pyplot as plt\n\nweeks = [1, 2, 3, 4]\nrevenue = [96, 98, 97, 99]\n\nplt.figure()\nplt.subplot(1, 2, 1)\nplt.plot(weeks, revenue, marker=\"o\")\nplt.ylim(96, 99)             # tight: DRAMA\nplt.title(\"Rocket (ylim 96-99)\")\nplt.subplot(1, 2, 2)\nplt.plot(weeks, revenue, marker=\"o\")\nplt.ylim(0, 100)             # from zero: TRUTH\nplt.title(\"Honest (from 0)\")\nplt.gca()"
+    "text": "The same data, told two ways\nFour weeks of revenue, [96, 98, 97, 99], barely moving. Where the y-axis starts decides: the left gets you a term sheet, the right gets you trusted. Same numbers, and the room sees a rocket or the truth:\n\nimport matplotlib.pyplot as plt\n\nweeks = [1, 2, 3, 4]\nrevenue = [96, 98, 97, 99]\n\nplt.figure()\nplt.subplot(1, 2, 1)\nplt.plot(weeks, revenue, marker=\"o\")\nplt.ylim(96, 99)             # tight: DRAMA\nplt.title(\"Rocket (ylim 96-99)\")\nplt.subplot(1, 2, 2)\nplt.plot(weeks, revenue, marker=\"o\")\nplt.ylim(0, 100)             # from zero\nplt.title(\"From 0\")\nplt.gca()"
   },
   {
     "objectID": "lectures/lec_09_presentation.html#the-same-data-told-two-ways-output",
@@ -380,7 +380,7 @@
     "href": "lectures/lec_09_presentation.html#ai-as-your-chart-assistant",
     "title": "Lecture IX - Data Visualization",
     "section": "AI as your chart assistant",
-    "text": "AI as your chart assistant\nAI is genuinely good at plotting code, if you drive it like a co-pilot:\n\nDescribe the data and the question: “I have orders with columns zone (text) and total_eur (float). Bar chart of total revenue per zone.”\nLet it draft the plot code.\nVerify three things before you believe the picture:\n\nDo the columns it used actually exist?\nDoes the y-axis start where you claim?\nDoes the chart type fit the question?\n\n\n\nThe pilot flies; the co-pilot advises. You still land the plane."
+    "text": "AI as your chart assistant\nAI is good at plotting code, if you check the result:\n\nDescribe the data and the question: “I have orders with columns zone (text) and total_eur (float). Bar chart of total revenue per zone.”\nLet it draft the plot code.\nVerify three things before you believe the picture:\n\nDo the columns it used actually exist?\nDoes the y-axis start where you claim?\nDoes the chart type fit the question?\n\n\n\nAI drafts. You decide what goes on the slide."
   },
   {
     "objectID": "lectures/lec_09_presentation.html#two-ways-ai-charts-lie",
@@ -401,7 +401,7 @@
     "href": "lectures/lec_09_presentation.html#three-things-to-remember",
     "title": "Lecture IX - Data Visualization",
     "section": "Three things to remember",
-    "text": "Three things to remember\n\nEvery chart, one frame. Open with plt.figure(), close with plt.gca(); label the axes and title it. A chart nobody can read argues nothing.\nMatch the chart to the question. Categories → bar, distribution → histogram, two numbers → scatter, time → line. The wrong chart is a lie; and “no pattern” is a real finding.\nHonest axis, verified code. Growth charts start at 0, and every AI-drafted plot gets checked: do the columns exist, does the axis start where you claim?\n\n\n\n\n\n\n\n\nSeason finale next: git, real files, and the project kickoff. We leave the browser for your own machine: the toolchain you install this week is the price of admission."
+    "text": "Three things to remember\n\nEvery chart, one frame. Open with plt.figure(), close with plt.gca(); label the axes and title it. A chart nobody can read argues nothing.\nMatch the chart to the question. Categories → bar, distribution → histogram, two numbers → scatter, time → line. The wrong chart is a lie; and “no pattern” is a real finding.\nAxis from zero, verified code. Growth charts start at 0, and every AI-drafted plot gets checked: do the columns exist, does the axis start where you claim?\n\n\n\n\n\n\n\n\nSeason finale next: git, real files, and the project kickoff. We leave the browser for your own machine, so install the toolchain this week. Session X needs it from the first minute."
   },
   {
     "objectID": "lectures/lec_09_presentation.html#books-to-start-with",
@@ -415,7 +415,7 @@
     "href": "lectures/lec_09_plotting.html",
     "title": "Lecture IX - Data Visualization",
     "section": "",
-    "text": "Friday, the boardroom. Picture it: the investor slides a pencil out of her jacket and sharpens it while you set up, the sound louder than it has any right to be.\n. . .\nLast week you handed her honest numbers, a table she could trust. She read exactly one row, looked up, and said the thing this whole session is about:\n\n“Tables are homework. Charts are arguments.”\n\n. . .\nA number convinces the careful. A picture convinces the room. Today: draw the right chart for the question, and refuse to draw a dishonest one.",
+    "text": "Friday, the boardroom. Picture it: the investor slides a pencil out of her jacket and sharpens it while you set up, the sound louder than it has any right to be.\n. . .\nLast week you handed her a table she could trust. She read exactly one row, looked up, and said the thing this whole session is about:\n\n“Tables are homework. Charts are arguments.”\n\n. . .\nA number convinces the careful. A picture convinces the room. Today: draw the right chart for the question, and refuse to draw a misleading one.",
     "crumbs": [
       "09 Plotting",
       "Lecture"
@@ -426,7 +426,7 @@
     "href": "lectures/lec_09_plotting.html#charts-are-arguments",
     "title": "Lecture IX - Data Visualization",
     "section": "",
-    "text": "Friday, the boardroom. Picture it: the investor slides a pencil out of her jacket and sharpens it while you set up, the sound louder than it has any right to be.\n. . .\nLast week you handed her honest numbers, a table she could trust. She read exactly one row, looked up, and said the thing this whole session is about:\n\n“Tables are homework. Charts are arguments.”\n\n. . .\nA number convinces the careful. A picture convinces the room. Today: draw the right chart for the question, and refuse to draw a dishonest one.",
+    "text": "Friday, the boardroom. Picture it: the investor slides a pencil out of her jacket and sharpens it while you set up, the sound louder than it has any right to be.\n. . .\nLast week you handed her a table she could trust. She read exactly one row, looked up, and said the thing this whole session is about:\n\n“Tables are homework. Charts are arguments.”\n\n. . .\nA number convinces the careful. A picture convinces the room. Today: draw the right chart for the question, and refuse to draw a misleading one.",
     "crumbs": [
       "09 Plotting",
       "Lecture"
@@ -536,7 +536,7 @@
     "href": "lectures/lec_09_plotting.html#the-parts-of-a-chart",
     "title": "Lecture IX - Data Visualization",
     "section": "The parts of a chart",
-    "text": "The parts of a chart\nEvery honest chart names its axes. xlabel, ylabel, title, and (when there’s more than one line) a legend:\n\nimport matplotlib.pyplot as plt\n\ndays = [1, 2, 3, 4, 5]\nrevenue = [120, 90, 140, 160, 130]\n\nplt.figure()\nplt.plot(days, revenue, label=\"Revenue\")   # label feeds the legend\nplt.xlabel(\"Day\")        # what the x-axis counts\nplt.ylabel(\"Revenue (€)\")  # what the y-axis measures\nplt.title(\"This week's revenue\")  # what the picture is about\nplt.legend()             # the little key, one entry per label\nplt.gca()",
+    "text": "The parts of a chart\nEvery chart names its axes. xlabel, ylabel, title, and (when there’s more than one line) a legend:\n\nimport matplotlib.pyplot as plt\n\ndays = [1, 2, 3, 4, 5]\nrevenue = [120, 90, 140, 160, 130]\n\nplt.figure()\nplt.plot(days, revenue, label=\"Revenue\")   # label feeds the legend\nplt.xlabel(\"Day\")        # what the x-axis counts\nplt.ylabel(\"Revenue (€)\")  # what the y-axis measures\nplt.title(\"This week's revenue\")  # what the picture is about\nplt.legend()             # the little key, one entry per label\nplt.gca()",
     "crumbs": [
       "09 Plotting",
       "Lecture"
@@ -613,7 +613,7 @@
     "href": "lectures/lec_09_plotting.html#two-numbers-scatter",
     "title": "Lecture IX - Data Visualization",
     "section": "Two numbers → scatter",
-    "text": "Two numbers → scatter\n“Do bigger orders take longer?” Two numbers per order, one on each axis, which makes it a scatter:\n\nimport matplotlib.pyplot as plt\n\nminutes = [19, 22, 23, 24, 25, 26, 28, 31, 40, 44]\neuros   = [24, 9, 31, 12, 8, 30, 15, 22, 11, 19]\n\nplt.figure()\nplt.scatter(minutes, euros)\nplt.xlabel(\"Delivery time (min)\")\nplt.ylabel(\"Order value (€)\")\nplt.gca()\n\n\n\n\n\n\n\n\nJust a cloud. No upward drift. Sometimes the honest answer is “there’s no pattern here.”",
+    "text": "Two numbers → scatter\n“Do bigger orders take longer?” Two numbers per order, one on each axis, which makes it a scatter:\n\nimport matplotlib.pyplot as plt\n\nminutes = [19, 22, 23, 24, 25, 26, 28, 31, 40, 44]\neuros   = [24, 9, 31, 12, 8, 30, 15, 22, 11, 19]\n\nplt.figure()\nplt.scatter(minutes, euros)\nplt.xlabel(\"Delivery time (min)\")\nplt.ylabel(\"Order value (€)\")\nplt.gca()\n\n\n\n\n\n\n\n\nJust a cloud. No upward drift. Sometimes the answer is “there’s no pattern here.”",
     "crumbs": [
       "09 Plotting",
       "Lecture"
@@ -668,7 +668,7 @@
     "href": "lectures/lec_09_plotting.html#the-same-data-told-two-ways",
     "title": "Lecture IX - Data Visualization",
     "section": "The same data, told two ways",
-    "text": "The same data, told two ways\nFour weeks of revenue, [96, 98, 97, 99], barely moving. Where the y-axis starts decides: the left gets you a term sheet, the right gets you trusted. Same numbers, and the room sees a rocket or the truth:\n\nimport matplotlib.pyplot as plt\n\nweeks = [1, 2, 3, 4]\nrevenue = [96, 98, 97, 99]\n\nplt.figure()\nplt.subplot(1, 2, 1)\nplt.plot(weeks, revenue, marker=\"o\")\nplt.ylim(96, 99)             # tight: DRAMA\nplt.title(\"Rocket (ylim 96-99)\")\nplt.subplot(1, 2, 2)\nplt.plot(weeks, revenue, marker=\"o\")\nplt.ylim(0, 100)             # from zero: TRUTH\nplt.title(\"Honest (from 0)\")\nplt.gca()",
+    "text": "The same data, told two ways\nFour weeks of revenue, [96, 98, 97, 99], barely moving. Where the y-axis starts decides: the left gets you a term sheet, the right gets you trusted. Same numbers, and the room sees a rocket or the truth:\n\nimport matplotlib.pyplot as plt\n\nweeks = [1, 2, 3, 4]\nrevenue = [96, 98, 97, 99]\n\nplt.figure()\nplt.subplot(1, 2, 1)\nplt.plot(weeks, revenue, marker=\"o\")\nplt.ylim(96, 99)             # tight: DRAMA\nplt.title(\"Rocket (ylim 96-99)\")\nplt.subplot(1, 2, 2)\nplt.plot(weeks, revenue, marker=\"o\")\nplt.ylim(0, 100)             # from zero\nplt.title(\"From 0\")\nplt.gca()",
     "crumbs": [
       "09 Plotting",
       "Lecture"
@@ -712,7 +712,7 @@
     "href": "lectures/lec_09_plotting.html#ai-as-your-chart-assistant",
     "title": "Lecture IX - Data Visualization",
     "section": "AI as your chart assistant",
-    "text": "AI as your chart assistant\nAI is genuinely good at plotting code, if you drive it like a co-pilot:\n\nDescribe the data and the question: “I have orders with columns zone (text) and total_eur (float). Bar chart of total revenue per zone.”\nLet it draft the plot code.\nVerify three things before you believe the picture:\n\nDo the columns it used actually exist?\nDoes the y-axis start where you claim?\nDoes the chart type fit the question?\n\n\n. . .\nThe pilot flies; the co-pilot advises. You still land the plane.",
+    "text": "AI as your chart assistant\nAI is good at plotting code, if you check the result:\n\nDescribe the data and the question: “I have orders with columns zone (text) and total_eur (float). Bar chart of total revenue per zone.”\nLet it draft the plot code.\nVerify three things before you believe the picture:\n\nDo the columns it used actually exist?\nDoes the y-axis start where you claim?\nDoes the chart type fit the question?\n\n\n. . .\nAI drafts. You decide what goes on the slide.",
     "crumbs": [
       "09 Plotting",
       "Lecture"
@@ -745,7 +745,7 @@
     "href": "lectures/lec_09_plotting.html#three-things-to-remember",
     "title": "Lecture IX - Data Visualization",
     "section": "Three things to remember",
-    "text": "Three things to remember\n\nEvery chart, one frame. Open with plt.figure(), close with plt.gca(); label the axes and title it. A chart nobody can read argues nothing.\nMatch the chart to the question. Categories → bar, distribution → histogram, two numbers → scatter, time → line. The wrong chart is a lie; and “no pattern” is a real finding.\nHonest axis, verified code. Growth charts start at 0, and every AI-drafted plot gets checked: do the columns exist, does the axis start where you claim?\n\n. . .\n\n\n\n\n\n\nSeason finale next: git, real files, and the project kickoff. We leave the browser for your own machine: the toolchain you install this week is the price of admission.",
+    "text": "Three things to remember\n\nEvery chart, one frame. Open with plt.figure(), close with plt.gca(); label the axes and title it. A chart nobody can read argues nothing.\nMatch the chart to the question. Categories → bar, distribution → histogram, two numbers → scatter, time → line. The wrong chart is a lie; and “no pattern” is a real finding.\nAxis from zero, verified code. Growth charts start at 0, and every AI-drafted plot gets checked: do the columns exist, does the axis start where you claim?\n\n. . .\n\n\n\n\n\n\nSeason finale next: git, real files, and the project kickoff. We leave the browser for your own machine, so install the toolchain this week. Session X needs it from the first minute.",
     "crumbs": [
       "09 Plotting",
       "Lecture"
@@ -1343,21 +1343,21 @@
     "href": "lectures/lec_05_presentation.html#after-the-checkpoint",
     "title": "Lecture V - Errors and Debugging",
     "section": "After the checkpoint",
-    "text": "After the checkpoint\nPens down. The checkpoint is behind you. Now the reason we’re all here.\n\nAt 3 AM, running on his fourth energy drink, Tobi rewrote the entire checkout “to make it faster.” He went to bed very pleased. This morning two things are true: the till is a minefield of crashes, and the health inspector just called to announce a surprise visit.\n\n\nSo today the code learns to survive things going wrong. We read a traceback, catch failures with try/except, and let our own code refuse bad input."
+    "text": "After the checkpoint\nPens down. The checkpoint is over. On to Episode 5.\n\nAt 3 AM, running on his fourth energy drink, Tobi rewrote the entire checkout “to make it faster.” He went to bed very pleased. This morning two things are true: the till is a minefield of crashes, and the health inspector just called to announce a surprise visit.\n\n\nSo today the code learns to survive things going wrong. We read a traceback, catch failures with try/except, and let our own code refuse bad input."
   },
   {
     "objectID": "lectures/lec_05_presentation.html#tobis-3-am-checkout-live",
     "href": "lectures/lec_05_presentation.html#tobis-3-am-checkout-live",
     "title": "Lecture V - Errors and Debugging",
     "section": "Tobi’s 3-AM checkout, live",
-    "text": "Tobi’s 3-AM checkout, live\nA customer typed generous into the tip box. Tobi’s new checkout did this:\ntip_text = \"generous\"\ntip = float(tip_text) # crashes here\n\nPython stopped and printed a traceback, a crash report. It looks scary, but it is the most useful thing on your screen:\nTraceback (most recent call last):\n  File \"checkout.py\", line 12, in &lt;module&gt;\n    tip = float(tip_text)\nValueError: could not convert string to float: 'generous'"
+    "text": "Tobi’s 3-AM checkout, live\nA customer typed generous into the tip box. Tobi’s new checkout did this:\ntip_text = \"generous\"\ntip = float(tip_text) # crashes here\n\nPython stopped and printed a traceback, a crash report. It tells you what went wrong and where:\nTraceback (most recent call last):\n  File \"checkout.py\", line 12, in &lt;module&gt;\n    tip = float(tip_text)\nValueError: could not convert string to float: 'generous'"
   },
   {
     "objectID": "lectures/lec_05_presentation.html#read-the-traceback-bottom-up",
     "href": "lectures/lec_05_presentation.html#read-the-traceback-bottom-up",
     "title": "Lecture V - Errors and Debugging",
     "section": "Read the traceback bottom-up",
-    "text": "Read the traceback bottom-up\nYou read a traceback from the bottom up:\n\nthe last line names what went wrong (ValueError) and gives a hint\nthe lines above show where: the file, the line number, the guilty code\n\n      File \"checkout.py\", line 12, in &lt;module&gt;   ← WHERE it happened\n        tip = float(tip_text)                    ← the exact line\n    ValueError: could not convert ...            ← WHAT went wrong (read me first)\n\nTwo facts and you know where to go: line 12, and it’s a ValueError. The scary wall of text is really just an address and a reason."
+    "text": "Read the traceback bottom-up\nYou read a traceback from the bottom up:\n\nthe last line names what went wrong (ValueError) and gives a hint\nthe lines above show where: the file, the line number, the guilty code\n\n      File \"checkout.py\", line 12, in &lt;module&gt;   ← WHERE it happened\n        tip = float(tip_text)                    ← the exact line\n    ValueError: could not convert ...            ← WHAT went wrong (read me first)\n\nTwo facts and you know where to go: line 12, and it’s a ValueError. The rest of the traceback is context around those two facts."
   },
   {
     "objectID": "lectures/lec_05_presentation.html#the-big-five-1",
@@ -1490,7 +1490,7 @@
     "href": "lectures/lec_05_presentation.html#three-things-to-remember",
     "title": "Lecture V - Errors and Debugging",
     "section": "Three things to remember",
-    "text": "Three things to remember\n\nA traceback is a crash report you read bottom-up: the last line names what broke, the lines above show where. That’s an address and a reason, not a wall of noise\ntry / except catches a failure so the program recovers instead of stopping. Catch the specific type (except ValueError), never a bare except that also hides your own typos\nDefend your own code: raise to refuse bad input (prices ≥ 0), assert to guard an invariant that must always hold, and fall back to a safe default when a conversion fails\n\n\n\n\n\n\n\n\nNext time, Episode 6 starts with Checkpoint 3, which sweeps everything from Episodes 1-5, so keep this notebook and the last four close. Then someone new walks into the shop, uncaps a marker, and writes one question on the whiteboard. Part II begins."
+    "text": "Three things to remember\n\nA traceback is a crash report you read bottom-up: the last line names what broke, the lines above show where\ntry / except catches a failure so the program recovers instead of stopping. Catch the specific type (except ValueError), never a bare except that also hides your own typos\nDefend your own code: raise to refuse bad input (prices ≥ 0), assert to guard an invariant that must always hold, and fall back to a safe default when a conversion fails\n\n\n\n\n\n\n\n\nNext time, Episode 6 starts with Checkpoint 3, which sweeps everything from Episodes 1-5, so keep this notebook and the last four close. Then someone new walks into the shop, uncaps a marker, and writes one question on the whiteboard. Part II begins."
   },
   {
     "objectID": "lectures/lec_05_presentation.html#books-to-start-with",
@@ -1526,7 +1526,7 @@
     "href": "lectures/lec_05_errors.html#after-the-checkpoint",
     "title": "Lecture V - Errors and Debugging",
     "section": "After the checkpoint",
-    "text": "After the checkpoint\nPens down. The checkpoint is behind you. Now the reason we’re all here.\n. . .\nAt 3 AM, running on his fourth energy drink, Tobi rewrote the entire checkout “to make it faster.” He went to bed very pleased. This morning two things are true: the till is a minefield of crashes, and the health inspector just called to announce a surprise visit.\n. . .\nSo today the code learns to survive things going wrong. We read a traceback, catch failures with try/except, and let our own code refuse bad input.",
+    "text": "After the checkpoint\nPens down. The checkpoint is over. On to Episode 5.\n. . .\nAt 3 AM, running on his fourth energy drink, Tobi rewrote the entire checkout “to make it faster.” He went to bed very pleased. This morning two things are true: the till is a minefield of crashes, and the health inspector just called to announce a surprise visit.\n. . .\nSo today the code learns to survive things going wrong. We read a traceback, catch failures with try/except, and let our own code refuse bad input.",
     "crumbs": [
       "05 Errors",
       "Lecture"
@@ -1537,7 +1537,7 @@
     "href": "lectures/lec_05_errors.html#tobis-3-am-checkout-live",
     "title": "Lecture V - Errors and Debugging",
     "section": "Tobi’s 3-AM checkout, live",
-    "text": "Tobi’s 3-AM checkout, live\nA customer typed generous into the tip box. Tobi’s new checkout did this:\ntip_text = \"generous\"\ntip = float(tip_text) # crashes here\n. . .\nPython stopped and printed a traceback, a crash report. It looks scary, but it is the most useful thing on your screen:\nTraceback (most recent call last):\n  File \"checkout.py\", line 12, in &lt;module&gt;\n    tip = float(tip_text)\nValueError: could not convert string to float: 'generous'",
+    "text": "Tobi’s 3-AM checkout, live\nA customer typed generous into the tip box. Tobi’s new checkout did this:\ntip_text = \"generous\"\ntip = float(tip_text) # crashes here\n. . .\nPython stopped and printed a traceback, a crash report. It tells you what went wrong and where:\nTraceback (most recent call last):\n  File \"checkout.py\", line 12, in &lt;module&gt;\n    tip = float(tip_text)\nValueError: could not convert string to float: 'generous'",
     "crumbs": [
       "05 Errors",
       "Lecture"
@@ -1548,7 +1548,7 @@
     "href": "lectures/lec_05_errors.html#read-the-traceback-bottom-up",
     "title": "Lecture V - Errors and Debugging",
     "section": "Read the traceback bottom-up",
-    "text": "Read the traceback bottom-up\nYou read a traceback from the bottom up:\n\nthe last line names what went wrong (ValueError) and gives a hint\nthe lines above show where: the file, the line number, the guilty code\n\n      File \"checkout.py\", line 12, in &lt;module&gt;   ← WHERE it happened\n        tip = float(tip_text)                    ← the exact line\n    ValueError: could not convert ...            ← WHAT went wrong (read me first)\n. . .\nTwo facts and you know where to go: line 12, and it’s a ValueError. The scary wall of text is really just an address and a reason.",
+    "text": "Read the traceback bottom-up\nYou read a traceback from the bottom up:\n\nthe last line names what went wrong (ValueError) and gives a hint\nthe lines above show where: the file, the line number, the guilty code\n\n      File \"checkout.py\", line 12, in &lt;module&gt;   ← WHERE it happened\n        tip = float(tip_text)                    ← the exact line\n    ValueError: could not convert ...            ← WHAT went wrong (read me first)\n. . .\nTwo facts and you know where to go: line 12, and it’s a ValueError. The rest of the traceback is context around those two facts.",
     "crumbs": [
       "05 Errors",
       "Lecture"
@@ -1757,7 +1757,7 @@
     "href": "lectures/lec_05_errors.html#three-things-to-remember",
     "title": "Lecture V - Errors and Debugging",
     "section": "Three things to remember",
-    "text": "Three things to remember\n\nA traceback is a crash report you read bottom-up: the last line names what broke, the lines above show where. That’s an address and a reason, not a wall of noise\ntry / except catches a failure so the program recovers instead of stopping. Catch the specific type (except ValueError), never a bare except that also hides your own typos\nDefend your own code: raise to refuse bad input (prices ≥ 0), assert to guard an invariant that must always hold, and fall back to a safe default when a conversion fails\n\n. . .\n\n\n\n\n\n\nNext time, Episode 6 starts with Checkpoint 3, which sweeps everything from Episodes 1-5, so keep this notebook and the last four close. Then someone new walks into the shop, uncaps a marker, and writes one question on the whiteboard. Part II begins.",
+    "text": "Three things to remember\n\nA traceback is a crash report you read bottom-up: the last line names what broke, the lines above show where\ntry / except catches a failure so the program recovers instead of stopping. Catch the specific type (except ValueError), never a bare except that also hides your own typos\nDefend your own code: raise to refuse bad input (prices ≥ 0), assert to guard an invariant that must always hold, and fall back to a safe default when a conversion fails\n\n. . .\n\n\n\n\n\n\nNext time, Episode 6 starts with Checkpoint 3, which sweeps everything from Episodes 1-5, so keep this notebook and the last four close. Then someone new walks into the shop, uncaps a marker, and writes one question on the whiteboard. Part II begins.",
     "crumbs": [
       "05 Errors",
       "Lecture"
@@ -1779,14 +1779,14 @@
     "href": "lectures/lec_03_presentation.html#when-youre-done",
     "title": "Lecture III - Building Reusable Functions",
     "section": "When you’re done",
-    "text": "When you’re done\nMenu → Download → Download Python code → upload the .py to the “Checkpoint 1” assignment on Moodle, before the 40 minutes are up. No retakes: one sitting.\n\n\n\n\n\n\n\nThe green live checks are provisional. The final grading runs on my side. And take a breath: everything in it was rehearsed in the labs."
+    "text": "When you’re done\nMenu → Download → Download Python code → upload the .py to the “Checkpoint 1” assignment on Moodle, before the 40 minutes are up. No retakes: one sitting.\n\n\n\n\n\n\n\nThe green live checks are provisional. The final grading runs on my side. Everything in it was rehearsed in the labs."
   },
   {
     "objectID": "lectures/lec_03_presentation.html#after-the-board-review",
     "href": "lectures/lec_03_presentation.html#after-the-board-review",
     "title": "Lecture III - Building Reusable Functions",
     "section": "After the board review",
-    "text": "After the board review\nPens down. The checkpoint is behind you. Now the reason we’re all here.\n\nTobi has been “reusing” code the only way he knows how: he pasted the same receipt block 14 times, once per menu item. A ten-cent price change yesterday cost him a whole afternoon of hunting down copies.\n\n\nToday the code learns to reuse itself. We meet the function, and build a first class."
+    "text": "After the board review\nPens down. The checkpoint is over. On to Episode 3.\n\nTobi has been “reusing” code the only way he knows how: he pasted the same receipt block 14 times, once per menu item. A ten-cent price change yesterday cost him a whole afternoon of hunting down copies.\n\n\nToday the code learns to reuse itself. We meet the function, and build a first class."
   },
   {
     "objectID": "lectures/lec_03_presentation.html#the-copy-paste-pain",
@@ -1922,11 +1922,11 @@
     "text": "Answer: every object carries its own data\nc) 4.8: __init__ ran twice and stored the data on two different objects. self inside trip.fee() is trip, so it reads Nadia’s 4 km, not Omar’s 10. Instances do not share attributes.\n\ntrip = Delivery(\"Nadia\", 4)\nsecond = Delivery(\"Omar\", 10)\n\nprint(trip.fee())      # self is trip: 4 km\nprint(second.fee())    # self is second: 10 km\n\n\n\n4.8\n12.0"
   },
   {
-    "objectID": "lectures/lec_03_presentation.html#one-honest-slide-about-classes",
-    "href": "lectures/lec_03_presentation.html#one-honest-slide-about-classes",
+    "objectID": "lectures/lec_03_presentation.html#how-far-we-go-with-classes",
+    "href": "lectures/lec_03_presentation.html#how-far-we-go-with-classes",
     "title": "Lecture III - Building Reusable Functions",
-    "section": "One honest slide about classes",
-    "text": "One honest slide about classes\n\nToday you write one small class with an __init__ and one method. That’s it\nClasses get tricky fast (inheritance, self confusion), and that is not this course\nWe use them only to bundle data with behavior, nothing deeper\n\n\n\n\n\n\n\n\nIf the self keyword feels odd right now, that’s completely normal. Copy the shape from the worked example. The intuition follows the practice."
+    "section": "How far we go with classes",
+    "text": "How far we go with classes\n\nToday you write one small class with an __init__ and one method. That’s it\nClasses get tricky fast (inheritance, self confusion), and that is not this course\nWe use them only to bundle data with behavior, nothing deeper\n\n\n\n\n\n\n\n\nIf the self keyword feels odd right now, copy the shape from the worked example. It gets clearer after you have written a few."
   },
   {
     "objectID": "lectures/lec_03_presentation.html#after-the-break-the-lab",
@@ -1954,7 +1954,7 @@
     "href": "lectures/lec_03_functions.html",
     "title": "Lecture III - Building Reusable Functions",
     "section": "",
-    "text": "The quarterly board review. The first 40 minutes are the checkpoint. It starts now.\n\nIndividual work: no AI, no neighbors, no chat\nThe link and QR are handed out in class. Open it and start\n~6 short tasks: write code, trace code, fix a bug, answer a multiple choice\nIt sweeps Sessions I-II: variables, types, round and f-strings, if/elif, for loops\n\n\n\n\nMenu → Download → Download Python code → upload the .py to the “Checkpoint 1” assignment on Moodle, before the 40 minutes are up. No retakes: one sitting.\n. . .\n\n\n\n\n\n\nThe green live checks are provisional. The final grading runs on my side. And take a breath: everything in it was rehearsed in the labs.",
+    "text": "The quarterly board review. The first 40 minutes are the checkpoint. It starts now.\n\nIndividual work: no AI, no neighbors, no chat\nThe link and QR are handed out in class. Open it and start\n~6 short tasks: write code, trace code, fix a bug, answer a multiple choice\nIt sweeps Sessions I-II: variables, types, round and f-strings, if/elif, for loops\n\n\n\n\nMenu → Download → Download Python code → upload the .py to the “Checkpoint 1” assignment on Moodle, before the 40 minutes are up. No retakes: one sitting.\n. . .\n\n\n\n\n\n\nThe green live checks are provisional. The final grading runs on my side. Everything in it was rehearsed in the labs.",
     "crumbs": [
       "03 Functions",
       "Lecture"
@@ -1965,7 +1965,7 @@
     "href": "lectures/lec_03_functions.html#when-youre-done",
     "title": "Lecture III - Building Reusable Functions",
     "section": "",
-    "text": "Menu → Download → Download Python code → upload the .py to the “Checkpoint 1” assignment on Moodle, before the 40 minutes are up. No retakes: one sitting.\n. . .\n\n\n\n\n\n\nThe green live checks are provisional. The final grading runs on my side. And take a breath: everything in it was rehearsed in the labs.",
+    "text": "Menu → Download → Download Python code → upload the .py to the “Checkpoint 1” assignment on Moodle, before the 40 minutes are up. No retakes: one sitting.\n. . .\n\n\n\n\n\n\nThe green live checks are provisional. The final grading runs on my side. Everything in it was rehearsed in the labs.",
     "crumbs": [
       "03 Functions",
       "Lecture"
@@ -1976,7 +1976,7 @@
     "href": "lectures/lec_03_functions.html#after-the-board-review",
     "title": "Lecture III - Building Reusable Functions",
     "section": "After the board review",
-    "text": "After the board review\nPens down. The checkpoint is behind you. Now the reason we’re all here.\n. . .\nTobi has been “reusing” code the only way he knows how: he pasted the same receipt block 14 times, once per menu item. A ten-cent price change yesterday cost him a whole afternoon of hunting down copies.\n. . .\nToday the code learns to reuse itself. We meet the function, and build a first class.",
+    "text": "After the board review\nPens down. The checkpoint is over. On to Episode 3.\n. . .\nTobi has been “reusing” code the only way he knows how: he pasted the same receipt block 14 times, once per menu item. A ten-cent price change yesterday cost him a whole afternoon of hunting down copies.\n. . .\nToday the code learns to reuse itself. We meet the function, and build a first class.",
     "crumbs": [
       "03 Functions",
       "Lecture"
@@ -2192,11 +2192,11 @@
     ]
   },
   {
-    "objectID": "lectures/lec_03_functions.html#one-honest-slide-about-classes",
-    "href": "lectures/lec_03_functions.html#one-honest-slide-about-classes",
+    "objectID": "lectures/lec_03_functions.html#how-far-we-go-with-classes",
+    "href": "lectures/lec_03_functions.html#how-far-we-go-with-classes",
     "title": "Lecture III - Building Reusable Functions",
-    "section": "One honest slide about classes",
-    "text": "One honest slide about classes\n\nToday you write one small class with an __init__ and one method. That’s it\nClasses get tricky fast (inheritance, self confusion), and that is not this course\nWe use them only to bundle data with behavior, nothing deeper\n\n. . .\n\n\n\n\n\n\nIf the self keyword feels odd right now, that’s completely normal. Copy the shape from the worked example. The intuition follows the practice.",
+    "section": "How far we go with classes",
+    "text": "How far we go with classes\n\nToday you write one small class with an __init__ and one method. That’s it\nClasses get tricky fast (inheritance, self confusion), and that is not this course\nWe use them only to bundle data with behavior, nothing deeper\n\n. . .\n\n\n\n\n\n\nIf the self keyword feels odd right now, copy the shape from the worked example. It gets clearer after you have written a few.",
     "crumbs": [
       "03 Functions",
       "Lecture"
@@ -2373,7 +2373,7 @@
     "href": "lectures/lec_01_presentation.html#checking-a-type-with-type",
     "title": "Lecture I - Introduction",
     "section": "Checking a type with type()",
-    "text": "Checking a type with type()\ntype() tells you the type of any value, and it’s priceless when a bug surprises you:\n\nprint(type(2026))       # int\nprint(type(\"Tobi\"))    # str\nprint(type(9.99))       # float\n\n\n\n&lt;class 'int'&gt;\n&lt;class 'str'&gt;\n&lt;class 'float'&gt;"
+    "text": "Checking a type with type()\ntype() tells you the type of any value, and it is the first thing to check when a value does not behave as expected:\n\nprint(type(2026))       # int\nprint(type(\"Tobi\"))    # str\nprint(type(9.99))       # float\n\n\n\n&lt;class 'int'&gt;\n&lt;class 'str'&gt;\n&lt;class 'float'&gt;"
   },
   {
     "objectID": "lectures/lec_01_presentation.html#predict-quotes-around-a-number",
@@ -2768,7 +2768,7 @@
     "href": "lectures/lec_01_introduction.html#checking-a-type-with-type",
     "title": "Lecture I - Introduction",
     "section": "Checking a type with type()",
-    "text": "Checking a type with type()\ntype() tells you the type of any value, and it’s priceless when a bug surprises you:\n\nprint(type(2026))       # int\nprint(type(\"Tobi\"))    # str\nprint(type(9.99))       # float\n\n&lt;class 'int'&gt;\n&lt;class 'str'&gt;\n&lt;class 'float'&gt;",
+    "text": "Checking a type with type()\ntype() tells you the type of any value, and it is the first thing to check when a value does not behave as expected:\n\nprint(type(2026))       # int\nprint(type(\"Tobi\"))    # str\nprint(type(9.99))       # float\n\n&lt;class 'int'&gt;\n&lt;class 'str'&gt;\n&lt;class 'float'&gt;",
     "crumbs": [
       "01 Introduction ",
       "Lecture"
@@ -4141,7 +4141,7 @@
     "href": "lectures/lec_02_control.html#when-youre-done",
     "title": "Lecture II - Control Structures for Your Code",
     "section": "When you’re done",
-    "text": "When you’re done\nMenu → Download → Download Python code → upload the .py to the “Checkpoint 0” assignment on Moodle. Nothing is graded today: the point is that download and upload are muscle memory by Session III.\n. . .\n\n\n\n\n\n\nNext week this exact routine is Checkpoint 1: 40 minutes, 12 points, Sessions I-II. Today you get to make every mistake for free.",
+    "text": "When you’re done\nMenu → Download → Download Python code → upload the .py to the “Checkpoint 0” assignment on Moodle. Nothing is graded today. The point is that you have done the download and the upload once before it counts.\n. . .\n\n\n\n\n\n\nNext week this exact routine is Checkpoint 1: 40 minutes, 12 points, Sessions I-II. If something goes wrong today, it costs nothing.",
     "crumbs": [
       "02 Control Flow",
       "Lecture"
@@ -4458,7 +4458,7 @@
     "href": "lectures/lec_02_presentation.html#when-youre-done",
     "title": "Lecture II - Control Structures for Your Code",
     "section": "When you’re done",
-    "text": "When you’re done\nMenu → Download → Download Python code → upload the .py to the “Checkpoint 0” assignment on Moodle. Nothing is graded today: the point is that download and upload are muscle memory by Session III.\n\n\n\n\n\n\n\nNext week this exact routine is Checkpoint 1: 40 minutes, 12 points, Sessions I-II. Today you get to make every mistake for free."
+    "text": "When you’re done\nMenu → Download → Download Python code → upload the .py to the “Checkpoint 0” assignment on Moodle. Nothing is graded today. The point is that you have done the download and the upload once before it counts.\n\n\n\n\n\n\n\nNext week this exact routine is Checkpoint 1: 40 minutes, 12 points, Sessions I-II. If something goes wrong today, it costs nothing."
   },
   {
     "objectID": "lectures/lec_02_presentation.html#after-the-break-the-lab",
@@ -4673,7 +4673,7 @@
     "href": "lectures/lec_04_dimensions.html#how-long-is-it",
     "title": "Lecture IV - Handling Data in more than one Dimension",
     "section": "How long is it?",
-    "text": "How long is it?\nlen() tells you how many items a list holds, the honest replacement for counting variables by hand:\n\ndrinks = [\"Mate\", \"Spezi\", \"Ayran\"]\nprint(len(drinks))\n\n3\n\n\n. . .\nlen() also works on strings (letters) and, soon, on dictionaries (keys).",
+    "text": "How long is it?\nlen() tells you how many items a list holds:\n\ndrinks = [\"Mate\", \"Spezi\", \"Ayran\"]\nprint(len(drinks))\n\n3\n\n\n. . .\nlen() also works on strings (letters) and, soon, on dictionaries (keys).",
     "crumbs": [
       "04 Dimensions",
       "Lecture"
@@ -4717,7 +4717,7 @@
     "href": "lectures/lec_04_dimensions.html#the-key-that-isnt-there",
     "title": "Lecture IV - Handling Data in more than one Dimension",
     "section": "The key that isn’t there",
-    "text": "The key that isn’t there\nAsk for a key that doesn’t exist and Python raises a KeyError. It stops rather than guess:\nprices = {\"Mate\": 3.50, \"Spezi\": 3.20}\nprint(prices[\"Cola\"])\n# KeyError: 'Cola'\n. . .\n\n\n\n\n\n\nA KeyError is not a crash to fear. It’s Python telling you the key is spelled wrong or was never added. Today’s lab has its quieter cousin: a misspelled key and .get() handing back None.",
+    "text": "The key that isn’t there\nAsk for a key that doesn’t exist and Python raises a KeyError. It stops rather than guess:\nprices = {\"Mate\": 3.50, \"Spezi\": 3.20}\nprint(prices[\"Cola\"])\n# KeyError: 'Cola'\n. . .\n\n\n\n\n\n\nA KeyError means the key is spelled wrong or was never added. Today’s lab has its quieter cousin: a misspelled key and .get() handing back None.",
     "crumbs": [
       "04 Dimensions",
       "Lecture"
@@ -5060,7 +5060,7 @@
     "href": "lectures/lec_04_presentation.html#how-long-is-it",
     "title": "Lecture IV - Handling Data in more than one Dimension",
     "section": "How long is it?",
-    "text": "How long is it?\nlen() tells you how many items a list holds, the honest replacement for counting variables by hand:\n\ndrinks = [\"Mate\", \"Spezi\", \"Ayran\"]\nprint(len(drinks))\n\n\n\n3\n\n\n\nlen() also works on strings (letters) and, soon, on dictionaries (keys)."
+    "text": "How long is it?\nlen() tells you how many items a list holds:\n\ndrinks = [\"Mate\", \"Spezi\", \"Ayran\"]\nprint(len(drinks))\n\n\n\n3\n\n\n\nlen() also works on strings (letters) and, soon, on dictionaries (keys)."
   },
   {
     "objectID": "lectures/lec_04_presentation.html#tuples-fixed-length-records",
@@ -5088,7 +5088,7 @@
     "href": "lectures/lec_04_presentation.html#the-key-that-isnt-there",
     "title": "Lecture IV - Handling Data in more than one Dimension",
     "section": "The key that isn’t there",
-    "text": "The key that isn’t there\nAsk for a key that doesn’t exist and Python raises a KeyError. It stops rather than guess:\nprices = {\"Mate\": 3.50, \"Spezi\": 3.20}\nprint(prices[\"Cola\"])\n# KeyError: 'Cola'\n\n\n\n\n\n\n\nA KeyError is not a crash to fear. It’s Python telling you the key is spelled wrong or was never added. Today’s lab has its quieter cousin: a misspelled key and .get() handing back None."
+    "text": "The key that isn’t there\nAsk for a key that doesn’t exist and Python raises a KeyError. It stops rather than guess:\nprices = {\"Mate\": 3.50, \"Spezi\": 3.20}\nprint(prices[\"Cola\"])\n# KeyError: 'Cola'\n\n\n\n\n\n\n\nA KeyError means the key is spelled wrong or was never added. Today’s lab has its quieter cousin: a misspelled key and .get() handing back None."
   },
   {
     "objectID": "lectures/lec_04_presentation.html#a-safer-read-with-.get",
@@ -5235,7 +5235,7 @@
     "href": "lectures/lec_06_modules.html",
     "title": "Lecture VI - Modules and the Standard Library",
     "section": "",
-    "text": "Sessions I-V. The first 40 minutes are the checkpoint. It starts now, before the investor sits down.\n\nIndividual work: no AI, no neighbors, no chat\nThe link and QR are handed out in class. Open it and start\n~6 short tasks: write code, trace code, fix a bug, answer a multiple choice\nIt sweeps everything from Sessions I-V: variables, control flow, functions, data structures, errors\n\n\n\n\nMenu → Download → Download Python code → upload the .py to the “Checkpoint 3” assignment on Moodle. No retakes: one sitting.\n. . .\n\n\n\n\n\n\nThe green live checks are provisional. The final grading runs on my side. And take a breath: everything in it was rehearsed in the labs.",
+    "text": "Sessions I-V. The first 40 minutes are the checkpoint. It starts now, before the investor sits down.\n\nIndividual work: no AI, no neighbors, no chat\nThe link and QR are handed out in class. Open it and start\n~6 short tasks: write code, trace code, fix a bug, answer a multiple choice\nIt sweeps everything from Sessions I-V: variables, control flow, functions, data structures, errors\n\n\n\n\nMenu → Download → Download Python code → upload the .py to the “Checkpoint 3” assignment on Moodle. No retakes: one sitting.\n. . .\n\n\n\n\n\n\nThe green live checks are provisional. The final grading runs on my side. Everything in it was rehearsed in the labs.",
     "crumbs": [
       "06 Modules",
       "Lecture"
@@ -5246,7 +5246,7 @@
     "href": "lectures/lec_06_modules.html#when-youre-done",
     "title": "Lecture VI - Modules and the Standard Library",
     "section": "",
-    "text": "Menu → Download → Download Python code → upload the .py to the “Checkpoint 3” assignment on Moodle. No retakes: one sitting.\n. . .\n\n\n\n\n\n\nThe green live checks are provisional. The final grading runs on my side. And take a breath: everything in it was rehearsed in the labs.",
+    "text": "Menu → Download → Download Python code → upload the .py to the “Checkpoint 3” assignment on Moodle. No retakes: one sitting.\n. . .\n\n\n\n\n\n\nThe green live checks are provisional. The final grading runs on my side. Everything in it was rehearsed in the labs.",
     "crumbs": [
       "06 Modules",
       "Lecture"
@@ -5257,7 +5257,7 @@
     "href": "lectures/lec_06_modules.html#the-investor-walks-in",
     "title": "Lecture VI - Modules and the Standard Library",
     "section": "The investor walks in",
-    "text": "The investor walks in\nPens down. The checkpoint is behind you. Now the reason today matters.\n. . .\nAn hour ago the investor walked into the shop unannounced. It’s due-diligence week: before she signs anything, she wants to see how this place actually runs. Tobi offered her a coffee and a spreadsheet he “mostly trusts.”\n. . .\nShe didn’t drink the coffee. She walked to the whiteboard, uncapped a marker, and wrote one question:\n\n“Why is everything built from scratch?”",
+    "text": "The investor walks in\nPens down. The checkpoint is over. On to Episode 6.\n. . .\nAn hour ago the investor walked into the shop unannounced. It’s due-diligence week: before she signs anything, she wants to see how this place actually runs. Tobi offered her a coffee and a spreadsheet he “mostly trusts.”\n. . .\nShe didn’t drink the coffee. She walked to the whiteboard, uncapped a marker, and wrote one question:\n\n“Why is everything built from scratch?”",
     "crumbs": [
       "06 Modules",
       "Lecture"
@@ -5268,7 +5268,7 @@
     "href": "lectures/lec_06_modules.html#part-ii-the-rules-change",
     "title": "Lecture VI - Modules and the Standard Library",
     "section": "Part II: the rules change",
-    "text": "Part II: the rules change\nFor five sessions you built everything by hand, on purpose. From today, that changes.\n\nAI is now allowed and taught. We work with it, deliberately, starting in today’s lab.\nThe disclosure habit: every submission that used AI carries a one-line note saying what you used it for. Not a confession. A professional reflex.\nThe course chatbot (sidebar widget) now gives you full code on request, where it used to stop at hints.\n\n. . .\nYou spent five sessions learning to think without a co-pilot. Now you get one, and you’ll be the pilot.",
+    "text": "Part II: the rules change\nFor five sessions you built everything by hand, on purpose. From today, that changes.\n\nAI is now allowed and taught. We work with it, deliberately, starting in today’s lab.\nThe disclosure habit: every submission that used AI carries a one-line note saying what you used it for. That is standard practice, not an admission of anything.\nThe course chatbot (sidebar widget) now gives you full code on request, where it used to stop at hints.\n\n. . .\nFor five sessions you worked without AI. From today you may use it, and you stay responsible for every line you hand in.",
     "crumbs": [
       "06 Modules",
       "Lecture"
@@ -5389,7 +5389,7 @@
     "href": "lectures/lec_06_modules.html#the-random-toolbox",
     "title": "Lecture VI - Modules and the Standard Library",
     "section": "The random toolbox",
-    "text": "The random toolbox\nThe investor wants to see how the shop copes with a busy day, but the busy day hasn’t happened yet. So we rehearse it with made-up numbers. The random module deals them:\n\nimport random\n\nprint(random.random())                       # a float in [0.0, 1.0)\nprint(random.randint(1, 20))                  # an integer 1-20, ends included\nprint(random.choice([\"latte\", \"mocha\", \"tea\"]))  # one item, picked at random\n\nqueue = [1, 2, 3, 4, 5]\nrandom.shuffle(queue)                         # reorders the list in place\nprint(queue)\n\n0.7413790658964772\n6\nlatte\n[3, 4, 1, 5, 2]\n\n\n. . .\nFour tools, four flavors of luck: a raw float, a bounded integer, a pick from a list, and a reshuffle.",
+    "text": "The random toolbox\nThe investor wants to see how the shop copes with a busy day, but the busy day hasn’t happened yet. So we rehearse it with made-up numbers. The random module deals them:\n\nimport random\n\nprint(random.random())                       # a float in [0.0, 1.0)\nprint(random.randint(1, 20))                  # an integer 1-20, ends included\nprint(random.choice([\"latte\", \"mocha\", \"tea\"]))  # one item, picked at random\n\nqueue = [1, 2, 3, 4, 5]\nrandom.shuffle(queue)                         # reorders the list in place\nprint(queue)\n\n0.20061841012709336\n6\nlatte\n[2, 1, 4, 3, 5]\n\n\n. . .\nFour tools, four flavors of luck: a raw float, a bounded integer, a pick from a list, and a reshuffle.",
     "crumbs": [
       "06 Modules",
       "Lecture"
@@ -5400,7 +5400,7 @@
     "href": "lectures/lec_06_modules.html#run-it-again",
     "title": "Lecture VI - Modules and the Standard Library",
     "section": "“Run it again”",
-    "text": "“Run it again”\nThe investor leans over and says: “Run it again.” Tobi does, and gets completely different numbers:\n\nimport random\n\nprint([random.randint(1, 20) for _ in range(5)])   # _ : a loop name we never use\nprint([random.randint(1, 20) for _ in range(5)])   # ...and again, different!\n\n[14, 13, 15, 13, 9]\n[18, 9, 10, 1, 16]\n\n\n. . .\nTwo runs, two answers. That’s exactly what random is supposed to do, but it’s useless for due diligence. A projection nobody can reproduce is a projection nobody can trust.",
+    "text": "“Run it again”\nThe investor leans over and says: “Run it again.” Tobi does, and gets completely different numbers:\n\nimport random\n\nprint([random.randint(1, 20) for _ in range(5)])   # _ : a loop name we never use\nprint([random.randint(1, 20) for _ in range(5)])   # ...and again, different!\n\n[18, 19, 20, 6, 6]\n[16, 17, 1, 19, 17]\n\n\n. . .\nTwo runs, two answers. That’s exactly what random is supposed to do, but it’s useless for due diligence. A projection nobody can reproduce is a projection nobody can trust.",
     "crumbs": [
       "06 Modules",
       "Lecture"
@@ -5499,21 +5499,21 @@
     "href": "lectures/lec_06_presentation.html#when-youre-done",
     "title": "Lecture VI - Modules and the Standard Library",
     "section": "When you’re done",
-    "text": "When you’re done\nMenu → Download → Download Python code → upload the .py to the “Checkpoint 3” assignment on Moodle. No retakes: one sitting.\n\n\n\n\n\n\n\nThe green live checks are provisional. The final grading runs on my side. And take a breath: everything in it was rehearsed in the labs."
+    "text": "When you’re done\nMenu → Download → Download Python code → upload the .py to the “Checkpoint 3” assignment on Moodle. No retakes: one sitting.\n\n\n\n\n\n\n\nThe green live checks are provisional. The final grading runs on my side. Everything in it was rehearsed in the labs."
   },
   {
     "objectID": "lectures/lec_06_presentation.html#the-investor-walks-in",
     "href": "lectures/lec_06_presentation.html#the-investor-walks-in",
     "title": "Lecture VI - Modules and the Standard Library",
     "section": "The investor walks in",
-    "text": "The investor walks in\nPens down. The checkpoint is behind you. Now the reason today matters.\n\nAn hour ago the investor walked into the shop unannounced. It’s due-diligence week: before she signs anything, she wants to see how this place actually runs. Tobi offered her a coffee and a spreadsheet he “mostly trusts.”\n\n\nShe didn’t drink the coffee. She walked to the whiteboard, uncapped a marker, and wrote one question:\n\n“Why is everything built from scratch?”"
+    "text": "The investor walks in\nPens down. The checkpoint is over. On to Episode 6.\n\nAn hour ago the investor walked into the shop unannounced. It’s due-diligence week: before she signs anything, she wants to see how this place actually runs. Tobi offered her a coffee and a spreadsheet he “mostly trusts.”\n\n\nShe didn’t drink the coffee. She walked to the whiteboard, uncapped a marker, and wrote one question:\n\n“Why is everything built from scratch?”"
   },
   {
     "objectID": "lectures/lec_06_presentation.html#part-ii-the-rules-change",
     "href": "lectures/lec_06_presentation.html#part-ii-the-rules-change",
     "title": "Lecture VI - Modules and the Standard Library",
     "section": "Part II: the rules change",
-    "text": "Part II: the rules change\nFor five sessions you built everything by hand, on purpose. From today, that changes.\n\nAI is now allowed and taught. We work with it, deliberately, starting in today’s lab.\nThe disclosure habit: every submission that used AI carries a one-line note saying what you used it for. Not a confession. A professional reflex.\nThe course chatbot (sidebar widget) now gives you full code on request, where it used to stop at hints.\n\n\nYou spent five sessions learning to think without a co-pilot. Now you get one, and you’ll be the pilot."
+    "text": "Part II: the rules change\nFor five sessions you built everything by hand, on purpose. From today, that changes.\n\nAI is now allowed and taught. We work with it, deliberately, starting in today’s lab.\nThe disclosure habit: every submission that used AI carries a one-line note saying what you used it for. That is standard practice, not an admission of anything.\nThe course chatbot (sidebar widget) now gives you full code on request, where it used to stop at hints.\n\n\nFor five sessions you worked without AI. From today you may use it, and you stay responsible for every line you hand in."
   },
   {
     "objectID": "lectures/lec_06_presentation.html#two-accounts-this-week",
@@ -5590,14 +5590,14 @@
     "href": "lectures/lec_06_presentation.html#the-random-toolbox",
     "title": "Lecture VI - Modules and the Standard Library",
     "section": "The random toolbox",
-    "text": "The random toolbox\nThe investor wants to see how the shop copes with a busy day, but the busy day hasn’t happened yet. So we rehearse it with made-up numbers. The random module deals them:\n\nimport random\n\nprint(random.random())                       # a float in [0.0, 1.0)\nprint(random.randint(1, 20))                  # an integer 1-20, ends included\nprint(random.choice([\"latte\", \"mocha\", \"tea\"]))  # one item, picked at random\n\nqueue = [1, 2, 3, 4, 5]\nrandom.shuffle(queue)                         # reorders the list in place\nprint(queue)\n\n\n\n0.7413790658964772\n6\nlatte\n[3, 4, 1, 5, 2]\n\n\n\nFour tools, four flavors of luck: a raw float, a bounded integer, a pick from a list, and a reshuffle."
+    "text": "The random toolbox\nThe investor wants to see how the shop copes with a busy day, but the busy day hasn’t happened yet. So we rehearse it with made-up numbers. The random module deals them:\n\nimport random\n\nprint(random.random())                       # a float in [0.0, 1.0)\nprint(random.randint(1, 20))                  # an integer 1-20, ends included\nprint(random.choice([\"latte\", \"mocha\", \"tea\"]))  # one item, picked at random\n\nqueue = [1, 2, 3, 4, 5]\nrandom.shuffle(queue)                         # reorders the list in place\nprint(queue)\n\n\n\n0.20061841012709336\n6\nlatte\n[2, 1, 4, 3, 5]\n\n\n\nFour tools, four flavors of luck: a raw float, a bounded integer, a pick from a list, and a reshuffle."
   },
   {
     "objectID": "lectures/lec_06_presentation.html#run-it-again",
     "href": "lectures/lec_06_presentation.html#run-it-again",
     "title": "Lecture VI - Modules and the Standard Library",
     "section": "“Run it again”",
-    "text": "“Run it again”\nThe investor leans over and says: “Run it again.” Tobi does, and gets completely different numbers:\n\nimport random\n\nprint([random.randint(1, 20) for _ in range(5)])   # _ : a loop name we never use\nprint([random.randint(1, 20) for _ in range(5)])   # ...and again, different!\n\n\n\n[14, 13, 15, 13, 9]\n[18, 9, 10, 1, 16]\n\n\n\nTwo runs, two answers. That’s exactly what random is supposed to do, but it’s useless for due diligence. A projection nobody can reproduce is a projection nobody can trust."
+    "text": "“Run it again”\nThe investor leans over and says: “Run it again.” Tobi does, and gets completely different numbers:\n\nimport random\n\nprint([random.randint(1, 20) for _ in range(5)])   # _ : a loop name we never use\nprint([random.randint(1, 20) for _ in range(5)])   # ...and again, different!\n\n\n\n[18, 19, 20, 6, 6]\n[16, 17, 1, 19, 17]\n\n\n\nTwo runs, two answers. That’s exactly what random is supposed to do, but it’s useless for due diligence. A projection nobody can reproduce is a projection nobody can trust."
   },
   {
     "objectID": "lectures/lec_06_presentation.html#random.seed-makes-luck-repeatable",
@@ -5660,7 +5660,7 @@
     "href": "lectures/lec_08_pandas.html",
     "title": "Lecture VIII - Pandas and AI Craft",
     "section": "",
-    "text": "Sessions VI-VII. The first 40 minutes are the checkpoint. It starts now, before the investor opens her data room.\n\nIndividual work: no neighbors, no chat\nAI tools are allowed: being able to VERIFY the output is the skill being graded\nThe link and QR are handed out in class. Open it and start\n~6 short tasks: write code, fix a bug, a seeded draw, answer a multiple choice\nIt sweeps Sessions VI-VII: modules, random and seeds, NumPy arrays and masks\n\n\n\n\nMenu → Download → Download Python code → upload the .py to the “Checkpoint 4” assignment on Moodle. No retakes: one sitting.\n. . .\n\n\n\n\n\n\nThe green live checks are provisional. The final grading runs on my side. And take a breath: everything in it was rehearsed in the labs.",
+    "text": "Sessions VI-VII. The first 40 minutes are the checkpoint. It starts now, before the investor opens her data room.\n\nIndividual work: no neighbors, no chat\nAI tools are allowed: being able to VERIFY the output is the skill being graded\nThe link and QR are handed out in class. Open it and start\n~6 short tasks: write code, fix a bug, a seeded draw, answer a multiple choice\nIt sweeps Sessions VI-VII: modules, random and seeds, NumPy arrays and masks\n\n\n\n\nMenu → Download → Download Python code → upload the .py to the “Checkpoint 4” assignment on Moodle. No retakes: one sitting.\n. . .\n\n\n\n\n\n\nThe green live checks are provisional. The final grading runs on my side. Everything in it was rehearsed in the labs.",
     "crumbs": [
       "08 Pandas and AI",
       "Lecture"
@@ -5671,7 +5671,7 @@
     "href": "lectures/lec_08_pandas.html#when-youre-done",
     "title": "Lecture VIII - Pandas and AI Craft",
     "section": "",
-    "text": "Menu → Download → Download Python code → upload the .py to the “Checkpoint 4” assignment on Moodle. No retakes: one sitting.\n. . .\n\n\n\n\n\n\nThe green live checks are provisional. The final grading runs on my side. And take a breath: everything in it was rehearsed in the labs.",
+    "text": "Menu → Download → Download Python code → upload the .py to the “Checkpoint 4” assignment on Moodle. No retakes: one sitting.\n. . .\n\n\n\n\n\n\nThe green live checks are provisional. The final grading runs on my side. Everything in it was rehearsed in the labs.",
     "crumbs": [
       "08 Pandas and AI",
       "Lecture"
@@ -5770,7 +5770,7 @@
     "href": "lectures/lec_08_pandas.html#disclosure-one-line-every-time",
     "title": "Lecture VIII - Pandas and AI Craft",
     "section": "Disclosure: one line, every time",
-    "text": "Disclosure: one line, every time\nFrom Session VI the course rule stands: every submission that used AI carries a one-line note saying what you used it for.\n\n“Used the chatbot to draft the groupby line; I checked the totals by hand.”\nNot a confession. A professional reflex.\n\n. . .\nIt protects you: it separates the work you understand from the work you pasted, so when a reviewer (or the investor) asks “how does this line work?”, you’re never caught claiming something you can’t explain.",
+    "text": "Disclosure: one line, every time\nFrom Session VI the course rule stands: every submission that used AI carries a one-line note saying what you used it for.\n\n“Used the chatbot to draft the groupby line; I checked the totals by hand.”\nStandard practice, not an admission of anything.\n\n. . .\nIt protects you: it separates the work you understand from the work you pasted, so when a reviewer (or the investor) asks “how does this line work?”, you’re never caught claiming something you can’t explain.",
     "crumbs": [
       "08 Pandas and AI",
       "Lecture"
@@ -5781,7 +5781,7 @@
     "href": "lectures/lec_08_pandas.html#when-not-to-reach-for-ai",
     "title": "Lecture VIII - Pandas and AI Craft",
     "section": "When NOT to reach for AI",
-    "text": "When NOT to reach for AI\nSometimes the fastest path is the one you already own. You built a whole muscle in Part I:\n\nA red traceback? You’ve read those since Episode 5. The last line names the error and points at the file, often faster than describing it to a chatbot.\nA one-line filter you’ve written ten times? Just write it.\n\n. . .\n\n\n\n\n\n\nUse AI to draft the unfamiliar and to explain the confusing, not to dodge the thinking you’re perfectly able to do. The pilot flies; the co-pilot advises.",
+    "text": "When NOT to reach for AI\nSometimes the fastest path is the one you already own. You built a whole muscle in Part I:\n\nA red traceback? You’ve read those since Episode 5. The last line names the error and points at the file, often faster than describing it to a chatbot.\nA one-line filter you’ve written ten times? Just write it.\n\n. . .\n\n\n\n\n\n\nUse AI to draft the unfamiliar and to explain the confusing, not to skip thinking you can do yourself.",
     "crumbs": [
       "08 Pandas and AI",
       "Lecture"
@@ -5924,7 +5924,7 @@
     "href": "lectures/lec_08_pandas.html#three-things-to-remember",
     "title": "Lecture VIII - Pandas and AI Craft",
     "section": "Three things to remember",
-    "text": "Three things to remember\n\nAI is a co-pilot you verify. Give it context and constraints, then read it → run it → test it on a case you know.\nA DataFrame is a named, mixed-type table. pd.DataFrame from a dict, pd.read_csv from a file; .head(), .info(), .describe() to look before you leap.\nSelect, filter, add, group. df[\"col\"], a boolean mask (df[df[\"zone\"] == \"Nord\"], case-sensitive!), a new column on a .copy(), and groupby for per-category answers. pandas won’t warn you; you verify.\n\n. . .\n\n\n\n\n\n\nNext episode: charts the investor can’t argue with. Numbers convince the careful; a good plot convinces the room. We turn the data room into pictures.",
+    "text": "Three things to remember\n\nAI drafts, you verify. Give it context and constraints, then read it → run it → test it on a case you know.\nA DataFrame is a named, mixed-type table. pd.DataFrame from a dict, pd.read_csv from a file; .head(), .info(), .describe() to look before you leap.\nSelect, filter, add, group. df[\"col\"], a boolean mask (df[df[\"zone\"] == \"Nord\"], case-sensitive!), a new column on a .copy(), and groupby for per-category answers. pandas won’t warn you; you verify.\n\n. . .\n\n\n\n\n\n\nNext episode: charts the investor can’t argue with. Numbers convince the careful; a good plot convinces the room. We turn the data room into pictures.",
     "crumbs": [
       "08 Pandas and AI",
       "Lecture"
@@ -5946,7 +5946,7 @@
     "href": "lectures/lec_08_presentation.html#when-youre-done",
     "title": "Lecture VIII - Pandas and AI Craft",
     "section": "When you’re done",
-    "text": "When you’re done\nMenu → Download → Download Python code → upload the .py to the “Checkpoint 4” assignment on Moodle. No retakes: one sitting.\n\n\n\n\n\n\n\nThe green live checks are provisional. The final grading runs on my side. And take a breath: everything in it was rehearsed in the labs."
+    "text": "When you’re done\nMenu → Download → Download Python code → upload the .py to the “Checkpoint 4” assignment on Moodle. No retakes: one sitting.\n\n\n\n\n\n\n\nThe green live checks are provisional. The final grading runs on my side. Everything in it was rehearsed in the labs."
   },
   {
     "objectID": "lectures/lec_08_presentation.html#show-me-the-data",
@@ -6009,14 +6009,14 @@
     "href": "lectures/lec_08_presentation.html#disclosure-one-line-every-time",
     "title": "Lecture VIII - Pandas and AI Craft",
     "section": "Disclosure: one line, every time",
-    "text": "Disclosure: one line, every time\nFrom Session VI the course rule stands: every submission that used AI carries a one-line note saying what you used it for.\n\n“Used the chatbot to draft the groupby line; I checked the totals by hand.”\nNot a confession. A professional reflex.\n\n\nIt protects you: it separates the work you understand from the work you pasted, so when a reviewer (or the investor) asks “how does this line work?”, you’re never caught claiming something you can’t explain."
+    "text": "Disclosure: one line, every time\nFrom Session VI the course rule stands: every submission that used AI carries a one-line note saying what you used it for.\n\n“Used the chatbot to draft the groupby line; I checked the totals by hand.”\nStandard practice, not an admission of anything.\n\n\nIt protects you: it separates the work you understand from the work you pasted, so when a reviewer (or the investor) asks “how does this line work?”, you’re never caught claiming something you can’t explain."
   },
   {
     "objectID": "lectures/lec_08_presentation.html#when-not-to-reach-for-ai",
     "href": "lectures/lec_08_presentation.html#when-not-to-reach-for-ai",
     "title": "Lecture VIII - Pandas and AI Craft",
     "section": "When NOT to reach for AI",
-    "text": "When NOT to reach for AI\nSometimes the fastest path is the one you already own. You built a whole muscle in Part I:\n\nA red traceback? You’ve read those since Episode 5. The last line names the error and points at the file, often faster than describing it to a chatbot.\nA one-line filter you’ve written ten times? Just write it.\n\n\n\n\n\n\n\n\nUse AI to draft the unfamiliar and to explain the confusing, not to dodge the thinking you’re perfectly able to do. The pilot flies; the co-pilot advises."
+    "text": "When NOT to reach for AI\nSometimes the fastest path is the one you already own. You built a whole muscle in Part I:\n\nA red traceback? You’ve read those since Episode 5. The last line names the error and points at the file, often faster than describing it to a chatbot.\nA one-line filter you’ve written ten times? Just write it.\n\n\n\n\n\n\n\n\nUse AI to draft the unfamiliar and to explain the confusing, not to skip thinking you can do yourself."
   },
   {
     "objectID": "lectures/lec_08_presentation.html#what-pandas-adds-over-numpy",
@@ -6107,7 +6107,7 @@
     "href": "lectures/lec_08_presentation.html#three-things-to-remember",
     "title": "Lecture VIII - Pandas and AI Craft",
     "section": "Three things to remember",
-    "text": "Three things to remember\n\nAI is a co-pilot you verify. Give it context and constraints, then read it → run it → test it on a case you know.\nA DataFrame is a named, mixed-type table. pd.DataFrame from a dict, pd.read_csv from a file; .head(), .info(), .describe() to look before you leap.\nSelect, filter, add, group. df[\"col\"], a boolean mask (df[df[\"zone\"] == \"Nord\"], case-sensitive!), a new column on a .copy(), and groupby for per-category answers. pandas won’t warn you; you verify.\n\n\n\n\n\n\n\n\nNext episode: charts the investor can’t argue with. Numbers convince the careful; a good plot convinces the room. We turn the data room into pictures."
+    "text": "Three things to remember\n\nAI drafts, you verify. Give it context and constraints, then read it → run it → test it on a case you know.\nA DataFrame is a named, mixed-type table. pd.DataFrame from a dict, pd.read_csv from a file; .head(), .info(), .describe() to look before you leap.\nSelect, filter, add, group. df[\"col\"], a boolean mask (df[df[\"zone\"] == \"Nord\"], case-sensitive!), a new column on a .copy(), and groupby for per-category answers. pandas won’t warn you; you verify.\n\n\n\n\n\n\n\n\nNext episode: charts the investor can’t argue with. Numbers convince the careful; a good plot convinces the room. We turn the data room into pictures."
   },
   {
     "objectID": "lectures/lec_08_presentation.html#books-to-start-with",
@@ -6121,7 +6121,7 @@
     "href": "lectures/lec_10_projects.html",
     "title": "Lecture X - Tooling, Git and Your Project",
     "section": "",
-    "text": "Sessions VIII-IX. The first 40 minutes are the checkpoint. It starts now: the board runs one final audit before the big news.\n\nIndividual work: no neighbors, no chat\nAI tools are allowed: being able to VERIFY the output is the skill being graded\nThe link and QR are handed out in class. Open it and start\n6 short tasks: the right number out of a pandas table, a line the AI got wrong, an honest read of a chart\nIt sweeps Sessions VIII-IX: pandas filtering and groupby, honest charts vs. misleading ones\n\n\n\n\nMenu → Download → Download Python code → upload the .py to the “Checkpoint 5” assignment on Moodle. No retakes: one sitting.\n. . .\n\n\n\n\n\n\nThe green live checks are provisional. The final grading runs on my side. The two multiple-choice tasks only say “recorded”, never correct or wrong. That’s expected, they’re scored later. And take a breath: everything in it was rehearsed in the labs.",
+    "text": "Sessions VIII-IX. The first 40 minutes are the checkpoint. It starts now: the board runs one final audit before the big news.\n\nIndividual work: no neighbors, no chat\nAI tools are allowed: being able to VERIFY the output is the skill being graded\nThe link and QR are handed out in class. Open it and start\n6 short tasks: the right number out of a pandas table, a line the AI got wrong, a correct read of a chart\nIt sweeps Sessions VIII-IX: pandas filtering and groupby, fair charts vs. misleading ones\n\n\n\n\nMenu → Download → Download Python code → upload the .py to the “Checkpoint 5” assignment on Moodle. No retakes: one sitting.\n. . .\n\n\n\n\n\n\nThe green live checks are provisional. The final grading runs on my side. The two multiple-choice tasks only say “recorded”, never correct or wrong. That’s expected, they’re scored later. Everything in it was rehearsed in the labs.",
     "crumbs": [
       "10 Projects",
       "Lecture"
@@ -6132,7 +6132,7 @@
     "href": "lectures/lec_10_projects.html#when-youre-done",
     "title": "Lecture X - Tooling, Git and Your Project",
     "section": "",
-    "text": "Menu → Download → Download Python code → upload the .py to the “Checkpoint 5” assignment on Moodle. No retakes: one sitting.\n. . .\n\n\n\n\n\n\nThe green live checks are provisional. The final grading runs on my side. The two multiple-choice tasks only say “recorded”, never correct or wrong. That’s expected, they’re scored later. And take a breath: everything in it was rehearsed in the labs.",
+    "text": "Menu → Download → Download Python code → upload the .py to the “Checkpoint 5” assignment on Moodle. No retakes: one sitting.\n. . .\n\n\n\n\n\n\nThe green live checks are provisional. The final grading runs on my side. The two multiple-choice tasks only say “recorded”, never correct or wrong. That’s expected, they’re scored later. Everything in it was rehearsed in the labs.",
     "crumbs": [
       "10 Projects",
       "Lecture"
@@ -6143,7 +6143,7 @@
     "href": "lectures/lec_10_projects.html#the-deal-closes",
     "title": "Lecture X - Tooling, Git and Your Project",
     "section": "The deal closes",
-    "text": "The deal closes\nPens down. The checkpoint is behind you, and so, it turns out, is the startup. Overnight the rival chain MunchCorp stopped competing and made an offer: they’re buying the company. The investor read the term sheet, did the math against her own, and told you to take it: her money would have bought growth, theirs buys the whole shop.\n. . .\nThe lawyers will tell you deals close on the numbers. This one closed on yours. The clean order data you pulled together in the data room (Session VIII) and the honest dashboard you built for the pitch (Session IX) are exactly what convinced the acquirer the books were real.\n. . .\nNo cliff-edge growth chart with a chopped axis. Just data that survived a second look. That’s why they signed.",
+    "text": "The deal closes\nPens down. The checkpoint is behind you, and so, it turns out, is the startup. Overnight the rival chain MunchCorp stopped competing and made an offer: they’re buying the company. The investor read the term sheet, did the math against her own, and told you to take it: her money would have bought growth, theirs buys the whole shop.\n. . .\nThe lawyers will tell you deals close on the numbers. This one closed on yours. The clean order data you pulled together in the data room (Session VIII) and the dashboard you built for the pitch (Session IX) are exactly what convinced the acquirer the books were real.\n. . .\nNo cliff-edge growth chart with a chopped axis. Just data that survived a second look. That’s why they signed.",
     "crumbs": [
       "10 Projects",
       "Lecture"
@@ -6187,7 +6187,7 @@
     "href": "lectures/lec_10_projects.html#how-it-counts",
     "title": "Lecture X - Tooling, Git and Your Project",
     "section": "How it counts",
-    "text": "How it counts\n\nProject and presentation together are worth 40 of the 100 course points\nYour commit history counts: it’s the evidence of how the work happened, which the final state alone can’t show. Commit small and often (git block, shortly)\nSessions XI and XII are supervised work sessions: I’m in the room while you build, so bring your questions\n\n. . .\n\n\n\n\n\n\nThe project does not have to be flawless. Show that you scoped it honestly, built it in the open, and can explain your own code. That’s the whole bar.",
+    "text": "How it counts\n\nProject and presentation together are worth 40 of the 100 course points\nYour commit history counts: it’s the evidence of how the work happened, which the final state alone can’t show. Commit small and often (git block, shortly)\nSessions XI and XII are supervised work sessions: I’m in the room while you build, so bring your questions\n\n. . .\n\n\n\n\n\n\nThe project does not have to be flawless. Show that you scoped it realistically, built it in the open, and can explain your own code. That’s the whole bar.",
     "crumbs": [
       "10 Projects",
       "Lecture"
@@ -6319,7 +6319,7 @@
     "href": "lectures/lec_10_projects.html#connect-your-ai",
     "title": "Lecture X - Tooling, Git and Your Project",
     "section": "Connect your AI",
-    "text": "Connect your AI\nPart III encourages AI. You’ve earned the co-pilot, and it’s already installed: Mistral Vibe, running inside Zed on the key from Session VI (setup in the AI-tools guide). Open the agent panel, pick Mistral Vibe, and try it on your five-minute-old project:\n\nExplain what main.py does, then add a docstring. Don’t change anything else.\n\nRead the diff Zed shows you before you accept it. That’s the whole workflow: you ask, it drafts, you verify.\n. . .\n\n\n\n\n\n\nThe disclosure rule still stands, now in writing: your repo’s README.md says which tools you used, what for, and what you checked yourself. AI drafts; you verify, same reflex as the checkpoint you just sat.",
+    "text": "Connect your AI\nPart III encourages AI, and it is already installed: Mistral Vibe, running inside Zed on the key from Session VI (setup in the AI-tools guide). Open the agent panel, pick Mistral Vibe, and try it on your five-minute-old project:\n\nExplain what main.py does, then add a docstring. Don’t change anything else.\n\nRead the diff Zed shows you before you accept it. That’s the whole workflow: you ask, it drafts, you verify.\n. . .\n\n\n\n\n\n\nThe disclosure rule still stands, now in writing: your repo’s README.md says which tools you used, what for, and what you checked yourself. AI drafts; you verify, same reflex as the checkpoint you just sat.",
     "crumbs": [
       "10 Projects",
       "Lecture"
@@ -6385,7 +6385,7 @@
     "href": "lectures/lec_10_projects.html#how-we-work-together",
     "title": "Lecture X - Tooling, Git and Your Project",
     "section": "How we work together",
-    "text": "How we work together\nTwo people, one repo. Four habits keep it painless:\n\nPull before you start. git: pull first, every session: this alone prevents almost every problem\nCommit small and often. Little snapshots with honest messages beat one giant one\nA conflict? Call me. If git marks a clash, don’t fix it alone in week one. Bring it to class\nNever force anything. No --force, no “force push”, ever\n\n. . .\n\n\n\n\n\n\nEverything today (the actions, the terminal equivalents, the setup, and a cheatsheet table) lives on the Git Basics page. When today’s follow-along is a fading memory, that’s the page you reopen.",
+    "text": "How we work together\nTwo people, one repo. Four habits keep it painless:\n\nPull before you start. git: pull first, every session: this alone prevents almost every problem\nCommit small and often. Little snapshots with clear messages beat one giant one\nA conflict? Call me. If git marks a clash, don’t fix it alone in week one. Bring it to class\nNever force anything. No --force, no “force push”, ever\n\n. . .\n\n\n\n\n\n\nEverything today (the actions, the terminal equivalents, the setup, and a cheatsheet table) lives on the Git Basics page. When today’s follow-along is a fading memory, that’s the page you reopen.",
     "crumbs": [
       "10 Projects",
       "Lecture"
@@ -6407,7 +6407,7 @@
     "href": "lectures/lec_10_projects.html#keep-programming",
     "title": "Lecture X - Tooling, Git and Your Project",
     "section": "Keep programming",
-    "text": "Keep programming\nThe skill fades if it sits idle. A few honest ways to keep it alive:\n\nUse Python in your thesis: data cleaning, analysis, plots you can defend\nFind a way to apply it at work: the repetitive task nobody wants to do by hand\nAdvent of Code: free, ad-free programming puzzles, one a day from December 1st. A genuinely fun way to keep the muscle warm.",
+    "text": "Keep programming\nThe skill fades if it sits idle. A few ways to keep it alive:\n\nUse Python in your thesis: data cleaning, analysis, plots you can defend\nFind a way to apply it at work: the repetitive task nobody wants to do by hand\nAdvent of Code: free, ad-free programming puzzles, one a day from December 1st. A genuinely fun way to keep the muscle warm.",
     "crumbs": [
       "10 Projects",
       "Lecture"
@@ -6418,7 +6418,7 @@
     "href": "lectures/lec_10_projects.html#thank-you",
     "title": "Lecture X - Tooling, Git and Your Project",
     "section": "Thank you",
-    "text": "Thank you\n\nWe covered the basics of Python: from a first print to a real project on your own machine\nYou debugged, you verified AI, you shipped honest data\nI hope you enjoyed it, and I hope it’s useful long after the grade\nIf you have questions or feedback, please tell me\n\n. . .\nAll the best for your studies and your career. Now go build the thing.",
+    "text": "Thank you\n\nWe covered the basics of Python: from a first print to a real project on your own machine\nYou debugged, you verified AI, you shipped real numbers\nI hope you enjoyed it, and I hope it’s useful long after the grade\nIf you have questions or feedback, please tell me\n\n. . .\nAll the best for your studies and your career. Now go build the thing.",
     "crumbs": [
       "10 Projects",
       "Lecture"
@@ -6440,14 +6440,14 @@
     "href": "lectures/lec_10_presentation.html#when-youre-done",
     "title": "Lecture X - Tooling, Git and Your Project",
     "section": "When you’re done",
-    "text": "When you’re done\nMenu → Download → Download Python code → upload the .py to the “Checkpoint 5” assignment on Moodle. No retakes: one sitting.\n\n\n\n\n\n\n\nThe green live checks are provisional. The final grading runs on my side. The two multiple-choice tasks only say “recorded”, never correct or wrong. That’s expected, they’re scored later. And take a breath: everything in it was rehearsed in the labs."
+    "text": "When you’re done\nMenu → Download → Download Python code → upload the .py to the “Checkpoint 5” assignment on Moodle. No retakes: one sitting.\n\n\n\n\n\n\n\nThe green live checks are provisional. The final grading runs on my side. The two multiple-choice tasks only say “recorded”, never correct or wrong. That’s expected, they’re scored later. Everything in it was rehearsed in the labs."
   },
   {
     "objectID": "lectures/lec_10_presentation.html#the-deal-closes",
     "href": "lectures/lec_10_presentation.html#the-deal-closes",
     "title": "Lecture X - Tooling, Git and Your Project",
     "section": "The deal closes",
-    "text": "The deal closes\nPens down. The checkpoint is behind you, and so, it turns out, is the startup. Overnight the rival chain MunchCorp stopped competing and made an offer: they’re buying the company. The investor read the term sheet, did the math against her own, and told you to take it: her money would have bought growth, theirs buys the whole shop.\n\nThe lawyers will tell you deals close on the numbers. This one closed on yours. The clean order data you pulled together in the data room (Session VIII) and the honest dashboard you built for the pitch (Session IX) are exactly what convinced the acquirer the books were real.\n\n\nNo cliff-edge growth chart with a chopped axis. Just data that survived a second look. That’s why they signed."
+    "text": "The deal closes\nPens down. The checkpoint is behind you, and so, it turns out, is the startup. Overnight the rival chain MunchCorp stopped competing and made an offer: they’re buying the company. The investor read the term sheet, did the math against her own, and told you to take it: her money would have bought growth, theirs buys the whole shop.\n\nThe lawyers will tell you deals close on the numbers. This one closed on yours. The clean order data you pulled together in the data room (Session VIII) and the dashboard you built for the pitch (Session IX) are exactly what convinced the acquirer the books were real.\n\n\nNo cliff-edge growth chart with a chopped axis. Just data that survived a second look. That’s why they signed."
   },
   {
     "objectID": "lectures/lec_10_presentation.html#the-handover-note",
@@ -6475,7 +6475,7 @@
     "href": "lectures/lec_10_presentation.html#how-it-counts",
     "title": "Lecture X - Tooling, Git and Your Project",
     "section": "How it counts",
-    "text": "How it counts\n\nProject and presentation together are worth 40 of the 100 course points\nYour commit history counts: it’s the evidence of how the work happened, which the final state alone can’t show. Commit small and often (git block, shortly)\nSessions XI and XII are supervised work sessions: I’m in the room while you build, so bring your questions\n\n\n\n\n\n\n\n\nThe project does not have to be flawless. Show that you scoped it honestly, built it in the open, and can explain your own code. That’s the whole bar."
+    "text": "How it counts\n\nProject and presentation together are worth 40 of the 100 course points\nYour commit history counts: it’s the evidence of how the work happened, which the final state alone can’t show. Commit small and often (git block, shortly)\nSessions XI and XII are supervised work sessions: I’m in the room while you build, so bring your questions\n\n\n\n\n\n\n\n\nThe project does not have to be flawless. Show that you scoped it realistically, built it in the open, and can explain your own code. That’s the whole bar."
   },
   {
     "objectID": "lectures/lec_10_presentation.html#idea-1-2",
@@ -6559,7 +6559,7 @@
     "href": "lectures/lec_10_presentation.html#connect-your-ai",
     "title": "Lecture X - Tooling, Git and Your Project",
     "section": "Connect your AI",
-    "text": "Connect your AI\nPart III encourages AI. You’ve earned the co-pilot, and it’s already installed: Mistral Vibe, running inside Zed on the key from Session VI (setup in the AI-tools guide). Open the agent panel, pick Mistral Vibe, and try it on your five-minute-old project:\n\nExplain what main.py does, then add a docstring. Don’t change anything else.\n\nRead the diff Zed shows you before you accept it. That’s the whole workflow: you ask, it drafts, you verify.\n\n\n\n\n\n\n\nThe disclosure rule still stands, now in writing: your repo’s README.md says which tools you used, what for, and what you checked yourself. AI drafts; you verify, same reflex as the checkpoint you just sat."
+    "text": "Connect your AI\nPart III encourages AI, and it is already installed: Mistral Vibe, running inside Zed on the key from Session VI (setup in the AI-tools guide). Open the agent panel, pick Mistral Vibe, and try it on your five-minute-old project:\n\nExplain what main.py does, then add a docstring. Don’t change anything else.\n\nRead the diff Zed shows you before you accept it. That’s the whole workflow: you ask, it drafts, you verify.\n\n\n\n\n\n\n\nThe disclosure rule still stands, now in writing: your repo’s README.md says which tools you used, what for, and what you checked yourself. AI drafts; you verify, same reflex as the checkpoint you just sat."
   },
   {
     "objectID": "lectures/lec_10_presentation.html#the-five-words",
@@ -6601,7 +6601,7 @@
     "href": "lectures/lec_10_presentation.html#how-we-work-together",
     "title": "Lecture X - Tooling, Git and Your Project",
     "section": "How we work together",
-    "text": "How we work together\nTwo people, one repo. Four habits keep it painless:\n\nPull before you start. git: pull first, every session: this alone prevents almost every problem\nCommit small and often. Little snapshots with honest messages beat one giant one\nA conflict? Call me. If git marks a clash, don’t fix it alone in week one. Bring it to class\nNever force anything. No --force, no “force push”, ever\n\n\n\n\n\n\n\n\nEverything today (the actions, the terminal equivalents, the setup, and a cheatsheet table) lives on the Git Basics page. When today’s follow-along is a fading memory, that’s the page you reopen."
+    "text": "How we work together\nTwo people, one repo. Four habits keep it painless:\n\nPull before you start. git: pull first, every session: this alone prevents almost every problem\nCommit small and often. Little snapshots with clear messages beat one giant one\nA conflict? Call me. If git marks a clash, don’t fix it alone in week one. Bring it to class\nNever force anything. No --force, no “force push”, ever\n\n\n\n\n\n\n\n\nEverything today (the actions, the terminal equivalents, the setup, and a cheatsheet table) lives on the Git Basics page. When today’s follow-along is a fading memory, that’s the page you reopen."
   },
   {
     "objectID": "lectures/lec_10_presentation.html#the-road-to-the-finish",
@@ -6615,14 +6615,14 @@
     "href": "lectures/lec_10_presentation.html#keep-programming",
     "title": "Lecture X - Tooling, Git and Your Project",
     "section": "Keep programming",
-    "text": "Keep programming\nThe skill fades if it sits idle. A few honest ways to keep it alive:\n\nUse Python in your thesis: data cleaning, analysis, plots you can defend\nFind a way to apply it at work: the repetitive task nobody wants to do by hand\nAdvent of Code: free, ad-free programming puzzles, one a day from December 1st. A genuinely fun way to keep the muscle warm."
+    "text": "Keep programming\nThe skill fades if it sits idle. A few ways to keep it alive:\n\nUse Python in your thesis: data cleaning, analysis, plots you can defend\nFind a way to apply it at work: the repetitive task nobody wants to do by hand\nAdvent of Code: free, ad-free programming puzzles, one a day from December 1st. A genuinely fun way to keep the muscle warm."
   },
   {
     "objectID": "lectures/lec_10_presentation.html#thank-you",
     "href": "lectures/lec_10_presentation.html#thank-you",
     "title": "Lecture X - Tooling, Git and Your Project",
     "section": "Thank you",
-    "text": "Thank you\n\nWe covered the basics of Python: from a first print to a real project on your own machine\nYou debugged, you verified AI, you shipped honest data\nI hope you enjoyed it, and I hope it’s useful long after the grade\nIf you have questions or feedback, please tell me\n\n\nAll the best for your studies and your career. Now go build the thing."
+    "text": "Thank you\n\nWe covered the basics of Python: from a first print to a real project on your own machine\nYou debugged, you verified AI, you shipped real numbers\nI hope you enjoyed it, and I hope it’s useful long after the grade\nIf you have questions or feedback, please tell me\n\n\nAll the best for your studies and your career. Now go build the thing."
   },
   {
     "objectID": "lectures/lec_10_presentation.html#books-to-start-with",
