@@ -30,7 +30,7 @@ Menu → *Download* → *Download Python code* → upload the `.py` to the **"Ch
 
 > **Note**
 >
-> The green live checks are **provisional**. The final grading runs on my side. And take a breath: everything in it was rehearsed in the labs.
+> The green live checks are **provisional**. The final grading runs on my side. Everything in it was rehearsed in the labs.
 
 # <span class="flow">Episode 8: The Data Room</span>
 
@@ -178,7 +178,7 @@ print(orders.describe())               # the method that actually exists
 From Session VI the course rule stands: every submission that used AI carries a **one-line note** saying what you used it for.
 
 - *"Used the chatbot to draft the `groupby` line; I checked the totals by hand."*
-- Not a confession. A professional reflex.
+- Standard practice, not an admission of anything.
 
 . . .
 
@@ -195,7 +195,7 @@ Sometimes the fastest path is the one you already own. You built a whole muscle 
 
 > **Tip**
 >
-> Use AI to draft the unfamiliar and to explain the confusing, not to dodge the thinking you're perfectly able to do. The pilot flies; the co-pilot advises.
+> Use AI to draft the unfamiliar and to explain the confusing, not to skip thinking you can do yourself.
 
 # Your turn: 5-10 minutes
 
@@ -461,7 +461,7 @@ First **predict** what happens, then run it.
 
 ## Three things to remember
 
-1.  **AI is a co-pilot you verify.** Give it context and constraints, then read it → run it → test it on a case you know.
+1.  **AI drafts, you verify.** Give it context and constraints, then read it → run it → test it on a case you know.
 2.  **A DataFrame is a named, mixed-type table.** `pd.DataFrame` from a dict, `pd.read_csv` from a file; `.head()`, `.info()`, `.describe()` to look before you leap.
 3.  **Select, filter, add, group.** `df["col"]`, a boolean mask (`df[df["zone"] == "Nord"]`, case-sensitive!), a new column on a `.copy()`, and `groupby` for per-category answers. pandas won't warn you; you verify.
 

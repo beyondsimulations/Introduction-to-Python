@@ -13,14 +13,14 @@ def _(mo):
     **Core exercises: 10 + 1 quiz (+ 1 trace).** Done early? You're free to go. Not done when the session ends? The rest is homework.
 
     The pitch meeting is **Friday**. Last week you turned the data room into
-    honest numbers; this week those numbers have to be *seen*. The investor gave
+    numbers she could trust; this week those numbers have to be *seen*. The investor gave
     exactly one instruction, and she meant it as a warning:
 
     > **"Bring me charts I can't argue with."**
 
     A chart you *can* argue with is worse than no chart: it's the thing that
     sinks a pitch. So this week is two skills at once: draw the right chart for
-    the question, and refuse to draw a dishonest one. Same eighty orders, same
+    the question, and refuse to draw a misleading one. Same eighty orders, same
     `orders` DataFrame, now with a picture attached.
 
     Tobi, naturally, has already "built the deck". His growth slide looks
@@ -241,7 +241,7 @@ def _(mo):
 
     A line with no labels is a Rorschach test: the investor shouldn't have to
     guess what the axes mean. Go back to your chart above (or copy it into the
-    cell below) and give it the three parts every honest chart carries:
+    cell below) and give it the three parts every chart carries:
 
     - `plt.xlabel("Day")`: what the horizontal axis counts,
     - `plt.ylabel("Revenue (€)")`: what the vertical axis measures,
@@ -603,7 +603,7 @@ def _(mo):
     You'll see… nothing. No upward drift, no line, just a cloud. Delivery time and
     order value have essentially **no relationship** (the correlation is about
     −0.03, which is a fancy way of saying *zero*). That's a real finding, and the
-    honest chart says so. Sometimes the answer is "there's no pattern here", and
+    chart says so. Sometimes the answer is "there's no pattern here", and
     you never describe a trend that isn't on the screen.
 
     So drop Tobi's theory and report the fact the investor actually asked for:
@@ -741,7 +741,7 @@ def _(mo, pd, per_zone_ex24, show_result):
                 _msg = "Wrong (Exercise 2.4): the values should be whole numbers, one order count per zone."
             elif _got == _expected:
                 ex24_ok = True
-                _msg = "Correct (Exercise 2.4): **Altstadt 20, Hafen 19, Nord 22, Sued 19**: eighty orders, four honest bars. Same chart, same title, and now the label tells the truth."
+                _msg = "Correct (Exercise 2.4): **Altstadt 20, Hafen 19, Nord 22, Sued 19**: eighty orders, four bars. Same chart, same title, and now the label tells the truth."
             elif _got == _tobis:
                 ex24_ok = False
                 _msg = "Wrong (Exercise 2.4): those are still Tobi's euros. `.sum()` of `total_eur` adds up money. The bar promises a *count* of orders: count the rows in each zone instead."
@@ -767,20 +767,20 @@ def _(mo):
 
 
 # ─────────────────────────────────────────────────────────────────────────
-# SECTION 3: Honest charts
+# SECTION 3: The axis
 # ─────────────────────────────────────────────────────────────────────────
 @app.cell(hide_code=True)
 def _(mo):
     mo.md(
         r"""
-    ## Section 3: Honest charts
+    ## Section 3: The axis
 
     A chart can be technically correct and still lie. The classic trick is the
     **y-axis that doesn't start at zero**: a flat line gets stretched into a cliff,
     and the eye believes the shape long before it reads the numbers.
 
     Tobi built the pitch's "growth slide" this way. The given cells below compute
-    the two weekly totals (one honest number each) and Tobi's chart plots them.
+    the two weekly totals (one number each) and Tobi's chart plots them.
     His chart *runs*; that's exactly why it's dangerous.
     """
     )
@@ -828,12 +828,12 @@ def _(mo):
 
     Two jobs.
 
-    **First, the honest chart (ungraded):** re-plot the same `week1` and `week2`,
+    **First, the chart (ungraded):** re-plot the same `week1` and `week2`,
     but let the y-axis start at 0: `plt.ylim(0, 900)`. Watch the cliff flatten
     into what it really is: a nearly flat line, two points at almost the same
     height.
 
-    **Then, the honest number (graded):** compute the real week-over-week change as
+    **Then, the number (graded):** compute the real week-over-week change as
     a **percent**. Percent growth compares the *change* to where you *started*:
     `(week2 − week1) / week1 × 100`. Round to 2 decimals and store it, as a plain
     `float`, in `growth_pct_ex31`.
@@ -845,7 +845,7 @@ def _(mo):
 @app.cell
 def _(plt, week1, week2):
     plt.figure()
-    # YOUR CODE BELOW: re-plot [week1, week2] with an honest axis: plt.ylim(0, 900)
+    # YOUR CODE BELOW: re-plot [week1, week2] with the axis from 0: plt.ylim(0, 900)
     plt.gca()
     return
 
@@ -878,7 +878,7 @@ def _(growth_pct_ex31, mo, pd, show_result):
                 _msg = "Wrong (Exercise 3.1): this should be a single **percent** number, the week-over-week change."
             elif _v == -2.59:
                 ex31_ok = True
-                _msg = "Correct (Exercise 3.1): **−2.59 %**, a small dip, essentially flat. Tobi's cliff was a lie the axis told. The honest slide says flat, which Tobi can defend and the rocket can't."
+                _msg = "Correct (Exercise 3.1): **−2.59 %**, a small dip, essentially flat. The cliff came from the axis range, not from the data. The slide says flat, and flat is what Tobi can defend."
             elif _v == 2.59:
                 ex31_ok = False
                 _msg = "Wrong (Exercise 3.1): right size, wrong sign. You divided by week 2, or swapped the weeks. Growth is measured from where you started: `(week2 - week1) / week1`."
@@ -896,7 +896,7 @@ def _(growth_pct_ex31, mo, pd, show_result):
 def _(mo):
     mo.accordion(
         {
-            "Hint 1 (a nudge)": "Percent growth compares the CHANGE (`week2 - week1`) to the STARTING value (`week1`), then ×100. A tiny negative number is the honest answer here: the weeks are almost equal.",
+            "Hint 1 (a nudge)": "Percent growth compares the CHANGE (`week2 - week1`) to the STARTING value (`week1`), then ×100. A tiny negative number is the right answer here: the weeks are almost equal.",
             "Hint 2 (the structure)": "growth_pct_ex31 = float(round((week2 - ___) / ___ * 100, 2)) (the change over the starting week)",
         }
     )
@@ -931,11 +931,11 @@ def _(mo):
     The rule: a trend claim needs the whole window, not the three points that
     flatter it.
 
-    **First, the honest chart (ungraded):** plot all fourteen days of `daily` in
+    **First, the chart (ungraded):** plot all fourteen days of `daily` in
     the cell below, with the same labels, and look at where days 6 to 8 sit
     inside the full line.
 
-    **Then, the honest number (graded):** the investor asks what a *typical* day
+    **Then, the number (graded):** the investor asks what a *typical* day
     brings in. That's the **mean** of `daily`. Round to 2 decimals and store it,
     as a plain `float`, in `typical_day_ex32`. The check says which headline
     the slide gets.
@@ -1269,7 +1269,7 @@ def _(mo):
 
     1. Check the progress box above: all **eleven** green? If not, reopen the
        hints, reread the worked examples, and try again. Right chart for the
-       question, honest axis, numbers you can defend: that's the whole job.
+       question, axis from zero, numbers you can defend: that's the whole job.
     2. **Download your work**: **Cmd/Ctrl+S**, then menu → Download → *Download Python code*. This one
        is more than a backup: it's the **appendix of your pitch**, the file that
        proves every chart came from the real data. Reloading this tab (Cmd/Ctrl+R)

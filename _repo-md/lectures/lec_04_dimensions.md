@@ -237,7 +237,7 @@ print(summer)
 
 ## How long is it?
 
-`len()` tells you how many items a list holds, the honest replacement for counting variables by hand:
+`len()` tells you how many items a list holds:
 
 ``` python
 drinks = ["Mate", "Spezi", "Ayran"]
@@ -327,7 +327,7 @@ print(prices["Cola"])
 
 > **Warning**
 >
-> A `KeyError` is not a crash to fear. It's Python telling you the key is spelled wrong or was never added. Today's lab has its quieter cousin: a misspelled key and `.get()` handing back `None`.
+> A `KeyError` means the key is spelled wrong or was never added. Today's lab has its quieter cousin: a misspelled key and `.get()` handing back `None`.
 
 ## A safer read with `.get()`
 
@@ -434,7 +434,7 @@ print(regulars)        # order is arbitrary: a set has none
 print(len(regulars))   # how many different people
 ```
 
-    {'nina', 'tom', 'ada'}
+    {'ada', 'tom', 'nina'}
     3
 
 . . .

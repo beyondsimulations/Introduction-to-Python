@@ -638,13 +638,13 @@ First **predict** what happens, then run it.
 
 ## When you're done
 
-Menu → *Download* → *Download Python code* → upload the `.py` to the "Checkpoint 0" assignment on Moodle. Nothing is graded today: the point is that download and upload are muscle memory by Session III.
+Menu → *Download* → *Download Python code* → upload the `.py` to the "Checkpoint 0" assignment on Moodle. Nothing is graded today. The point is that you have done the download and the upload once before it counts.
 
 . . .
 
 > **Note**
 >
-> Next week this exact routine is **Checkpoint 1**: 40 minutes, 12 points, Sessions I-II. Today you get to make every mistake for free.
+> Next week this exact routine is **Checkpoint 1**: 40 minutes, 12 points, Sessions I-II. If something goes wrong today, it costs nothing.
 
 # <span class="flow">To the Lab</span>
 

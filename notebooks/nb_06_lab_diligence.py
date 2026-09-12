@@ -21,8 +21,8 @@ def _(mo):
     change. So this week you stop hand-rolling arithmetic and reach for Python's
     **standard library**: code that already ships with Python, written and tested
     by people who are not Tobi. You'll `import math` and `statistics` for
-    professional-grade numbers, then use `random` to *rehearse* next week's
-    demand, and learn why a good simulation is one you can run twice and trust.
+    the arithmetic, then use `random` to *rehearse* next week's
+    demand, and learn why a simulation should give the same result when run twice.
 
     > **New this week: AI is allowed.** From this session on you may use an AI
     > assistant; see the course's [AI tools
@@ -210,7 +210,7 @@ def _(mo):
 def _(mo):
     mo.md(
         r"""
-    ### Exercise 1.2 (core): the honest average
+    ### Exercise 1.2 (core): the average with `statistics`
 
     The investor read the reviews and wants the ratings summarized properly.
     Here are the six ratings:
@@ -1097,9 +1097,7 @@ def _(mo):
     ## Before you leave
 
     1. Check the progress box above: all **eleven** green? If not, reopen the
-       hints, reread the worked examples, and try again. `math`, `statistics` and
-       `random` are tools you'll reach for constantly, and seeding is the habit
-       that turns "some random numbers" into "a result someone can verify".
+       hints, reread the worked examples, and try again.
     2. **Download your work**: **Cmd/Ctrl+S**, then menu → Download → *Download Python code*.
        Reloading this exact tab (Cmd/Ctrl+R) keeps your work, but closing the tab
        and reopening the link starts you fresh. The download is the only

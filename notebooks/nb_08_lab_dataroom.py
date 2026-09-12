@@ -20,7 +20,7 @@ def _(mo):
     them. Too many to eyeball, too many for a hand-written loop. This is what
     **pandas** is for: it loads a whole spreadsheet into one object (a
     *DataFrame*), and answers questions about it (filter, count, total, group)
-    in one honest line each.
+    in one line each.
 
     Tobi, meanwhile, has **discovered AI**. He now pastes every question into a
     chatbot and ships whatever comes back. Your real job this week isn't writing
@@ -119,7 +119,7 @@ def _(mo, startup_name_input):
     mo.md(
         f"Opening the data room for **{startup_name}**. Eighty orders, two weeks, "
         "one investor watching. Let's read what the data actually says, and keep "
-        "Tobi's chatbot honest."
+        "Tobi's chatbot in check."
     )
     return (startup_name,)
 
@@ -1129,7 +1129,7 @@ def _(mo):
        Reloading this exact tab (Cmd/Ctrl+R) keeps your work, but closing the tab
        and reopening the link starts you fresh. The download is the only
        guaranteed copy.
-    3. Next episode: the numbers are honest. Now they need to be *seen*. You'll
+    3. Next episode: the numbers are right. Now they need to be *seen*. You'll
        turn these totals and breakdowns into **charts the investor can't argue
        with**. **Episode 9: the pitch.**
     """

@@ -27,7 +27,7 @@ def _():
 def _(mo):
     mo.md(
         r"""
-    # Quick exercise: the honest y-axis (5-10 min)
+    # Quick exercise: the y-axis from zero (5-10 min)
 
     Tobi asked an AI to chart this week's growth for the pitch deck. It
     ran without errors. Before you believe a chart, check one thing
@@ -121,7 +121,7 @@ def _(growth_exe, mo, show_result):
             _result = f"growth_exe={growth_exe}"
             if _v == _expected:
                 _ok = True
-                _msg = "Correct: That's the honest growth number."
+                _msg = "Correct: that's the real growth number."
             elif _v == 0.1:
                 _ok = False
                 _msg = "Wrong: That's the fraction. Percent means ×100."
@@ -225,10 +225,10 @@ def _(mo, picture_exe, show_result):
                 _msg = "Wrong: That's the fraction. Percent means ×100."
             elif _v == 10.0:
                 _ok = False
-                _msg = "Wrong: That's the honest growth from the core task. This one asks what the AXIS made it look like."
+                _msg = "Wrong: That's the growth from the core task. This one asks what the AXIS made it look like."
             elif _v == 8.33:
                 _ok = False
-                _msg = "Wrong: That's the share on the honest axis (0 to 60). Tobi's axis was the narrow one."
+                _msg = "Wrong: That's the share on the full axis (0 to 60). Tobi's axis was the narrow one."
             else:
                 _ok = False
                 _msg = "Wrong: Picture % = (last − first) / (axis top − axis bottom) × 100, with Tobi's axis."

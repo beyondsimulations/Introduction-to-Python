@@ -31,7 +31,7 @@ def _(mo):
 
     Episode 9: Tobi's first pitch-deck slide is a line with no labels.
     The investor looks at it for two seconds: "What is on the y-axis?
-    Orders? Euros? Your mood?" Every honest chart names its axes.
+    Orders? Euros? Your mood?" Every chart names its axes.
 
     `plt.xlabel`, `plt.ylabel`, and `plt.title` do that job. Chart cells
     open with `plt.figure()` and end with `plt.gca()`, never `plt.show()`.

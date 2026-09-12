@@ -17,8 +17,8 @@ format:
 - **Individual work**: no neighbors, no chat
 - **AI tools are allowed**: being able to **VERIFY** the output is the skill being graded
 - The **link and QR** are handed out in class. Open it and start
-- 6 short tasks: the right number out of a pandas table, a line the AI got wrong, an honest read of a chart
-- It sweeps **Sessions VIII-IX**: pandas filtering and `groupby`, honest charts vs. misleading ones
+- 6 short tasks: the right number out of a pandas table, a line the AI got wrong, a correct read of a chart
+- It sweeps **Sessions VIII-IX**: pandas filtering and `groupby`, fair charts vs. misleading ones
 
 <!-- QR handed out live, never in the deck -->
 
@@ -30,7 +30,7 @@ Menu → *Download* → *Download Python code* → upload the `.py` to the **"Ch
 
 > **Note**
 >
-> The green live checks are **provisional**. The final grading runs on my side. The two multiple-choice tasks only say *"recorded"*, never correct or wrong. That's expected, they're scored later. And take a breath: everything in it was rehearsed in the labs.
+> The green live checks are **provisional**. The final grading runs on my side. The two multiple-choice tasks only say *"recorded"*, never correct or wrong. That's expected, they're scored later. Everything in it was rehearsed in the labs.
 
 # <span class="flow">Episode 10: The Exit</span>
 
@@ -40,7 +40,7 @@ Pens down. The checkpoint is behind you, and so, it turns out, is the startup. O
 
 . . .
 
-The lawyers will tell you deals close on the numbers. This one closed on **yours.** The clean order data you pulled together in the data room (Session VIII) and the honest dashboard you built for the pitch (Session IX) are exactly what convinced the acquirer the books were real.
+The lawyers will tell you deals close on the numbers. This one closed on **yours.** The clean order data you pulled together in the data room (Session VIII) and the dashboard you built for the pitch (Session IX) are exactly what convinced the acquirer the books were real.
 
 . . .
 
@@ -99,7 +99,7 @@ Over the next weeks you build **one real project** and present it in the final s
 
 > **Note**
 >
-> The project does not have to be flawless. Show that you scoped it honestly, built it in the open, and can explain your own code. That's the whole bar.
+> The project does not have to be flawless. Show that you scoped it realistically, built it in the open, and can explain your own code. That's the whole bar.
 
 ## Idea 1 & 2
 
@@ -287,7 +287,7 @@ uv run python nb_03_lab_functions.py
 
 ## Connect your AI
 
-Part III **encourages** AI. You've earned the co-pilot, and it's already installed: Mistral Vibe, running inside Zed on the key from Session VI (setup in the [AI-tools guide](../general/ai-tools.qmd)). Open the agent panel, pick Mistral Vibe, and try it on your five-minute-old project:
+Part III **encourages** AI, and it is already installed: Mistral Vibe, running inside Zed on the key from Session VI (setup in the [AI-tools guide](../general/ai-tools.qmd)). Open the agent panel, pick Mistral Vibe, and try it on your five-minute-old project:
 
 > *Explain what `main.py` does, then add a docstring. Don't change anything else.*
 
@@ -382,7 +382,7 @@ Cloning brings the whole project, its history and the connection to GitHub; the 
 Two people, one repo. Four habits keep it painless:
 
 - **Pull before you start.** `git: pull` first, every session: this alone prevents almost every problem
-- **Commit small and often.** Little snapshots with honest messages beat one giant one
+- **Commit small and often.** Little snapshots with clear messages beat one giant one
 - **A conflict? Call me.** If git marks a clash, don't fix it alone in week one. Bring it to class
 - **Never force anything.** No `--force`, no "force push", ever
 
@@ -407,7 +407,7 @@ Two people, one repo. Four habits keep it painless:
 
 ## Keep programming
 
-The skill fades if it sits idle. A few honest ways to keep it alive:
+The skill fades if it sits idle. A few ways to keep it alive:
 
 - Use Python in your **thesis**: data cleaning, analysis, plots you can defend
 - Find a way to **apply it at work**: the repetitive task nobody wants to do by hand
@@ -416,7 +416,7 @@ The skill fades if it sits idle. A few honest ways to keep it alive:
 ## Thank you
 
 - We covered the basics of Python: from a first `print` to a real project on your own machine
-- You debugged, you verified AI, you shipped honest data
+- You debugged, you verified AI, you shipped real numbers
 - I hope you enjoyed it, and I hope it's useful long after the grade
 - If you have questions or feedback, [please tell me](mailto:vlcek@beyondsimulations.com)
 

@@ -129,7 +129,7 @@ def _(mo):
     - **`TypeError`**: the wrong type entirely (`"5" + 5`)
     - **`IndexError`**: a list position past the end
 
-    You don't have to let a crash win. A **`try` / `except`** block runs risky
+    A **`try` / `except`** block runs risky
     code and catches the failure instead of stopping the program:
 
     ```python
@@ -1241,9 +1241,7 @@ def _(mo):
     ## Before you leave
 
     1. Check the progress box above: all **ten** core exercises green? If not,
-       reopen the hints, reread the worked examples, and try again. Reading a
-       traceback, catching failures, and refusing bad input are the difference
-       between a program that survives real users and one that doesn't.
+       reopen the hints, reread the worked examples, and try again.
     2. **Download your work**: **Cmd/Ctrl+S**, then menu → Download → *Download Python code*.
        Reloading this exact tab (Cmd/Ctrl+R) keeps your work, but closing the tab
        and reopening the link starts you fresh. The download is the only

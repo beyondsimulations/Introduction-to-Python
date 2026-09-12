@@ -17,7 +17,7 @@ def _(mo):
     changed by ten cents, and fixing it took him a whole afternoon. He had to
     hunt down all fourteen copies, and he *still* missed three of them.
 
-    Today you give him the thing that ends copy-paste soup forever: the
+    Today you give him the
     **function**, a named block of code you write once and call anywhere. You'll
     write functions with **parameters** and **return values**, learn why a
     function can't quietly reach out and change your variables (**scope**), give a
@@ -1144,8 +1144,7 @@ def _(mo):
 
     1. Check the progress box above: all ten core exercises green? If not,
        that's normal: functions are the first genuinely hard idea in this course.
-       Reopen the hints, reread the worked examples, and try one more time. The
-       ones you fought for are the ones that stick.
+       Reopen the hints, reread the worked examples, and try one more time.
     2. **Download your work**: **Cmd/Ctrl+S**, then menu → Download → *Download Python code*.
        Reloading this exact tab (Cmd/Ctrl+R) keeps your work, but closing the
        tab and reopening the link starts you fresh. The download is the only

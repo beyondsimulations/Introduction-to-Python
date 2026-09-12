@@ -35,7 +35,7 @@ Menu → *Download* → *Download Python code* → upload the `.py` to the **"Ch
 
 ## After the checkpoint
 
-Pens down. The checkpoint is behind you. Now the reason we're all here.
+Pens down. The checkpoint is over. On to Episode 5.
 
 . . .
 
@@ -58,7 +58,7 @@ tip = float(tip_text) # crashes here
 
 . . .
 
-Python stopped and printed a **traceback**, a crash report. It looks scary, but it is the most useful thing on your screen:
+Python stopped and printed a **traceback**, a crash report. It tells you what went wrong and where:
 
     Traceback (most recent call last):
       File "checkout.py", line 12, in <module>
@@ -80,7 +80,7 @@ You read a traceback from the **bottom up**:
 
 . . .
 
-Two facts and you know where to go: **line 12**, and it's a **`ValueError`**. The scary wall of text is really just an address and a reason.
+Two facts and you know where to go: **line 12**, and it's a **`ValueError`**. The rest of the traceback is context around those two facts.
 
 ## The big five (1)
 
@@ -429,7 +429,7 @@ First **predict** what happens, then run it.
 
 ## Three things to remember
 
-1.  A **traceback** is a crash report you read **bottom-up**: the last line names *what* broke, the lines above show *where*. That's an address and a reason, not a wall of noise
+1.  A **traceback** is a crash report you read **bottom-up**: the last line names *what* broke, the lines above show *where*
 2.  **`try` / `except`** catches a failure so the program recovers instead of stopping. Catch the specific type (`except ValueError`), never a bare `except` that also hides your own typos
 3.  Defend your own code: **`raise`** to refuse bad input (prices ≥ 0), **`assert`** to guard an invariant that must always hold, and fall back to a safe default when a conversion fails
 

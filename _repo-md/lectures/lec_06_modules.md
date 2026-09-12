@@ -29,13 +29,13 @@ Menu → *Download* → *Download Python code* → upload the `.py` to the **"Ch
 
 > **Note**
 >
-> The green live checks are **provisional**. The final grading runs on my side. And take a breath: everything in it was rehearsed in the labs.
+> The green live checks are **provisional**. The final grading runs on my side. Everything in it was rehearsed in the labs.
 
 # <span class="flow">Episode 6: Due Diligence Week</span>
 
 ## The investor walks in
 
-Pens down. The checkpoint is behind you. Now the reason today matters.
+Pens down. The checkpoint is over. On to Episode 6.
 
 . . .
 
@@ -52,12 +52,12 @@ She didn't drink the coffee. She walked to the whiteboard, uncapped a marker, an
 For five sessions you built everything by hand, on purpose. From today, that changes.
 
 - **AI is now allowed and taught.** We work *with* it, deliberately, starting in today's lab.
-- **The disclosure habit:** every submission that used AI carries a **one-line note** saying what you used it for. Not a confession. A professional reflex.
+- **The disclosure habit:** every submission that used AI carries a **one-line note** saying what you used it for. That is standard practice, not an admission of anything.
 - **The course chatbot** (sidebar widget) now gives you **full code** on request, where it used to stop at hints.
 
 . . .
 
-You spent five sessions learning to think without a co-pilot. Now you get one, and you'll be the pilot.
+For five sessions you worked without AI. From today you may use it, and you stay responsible for every line you hand in.
 
 ## Two accounts this week
 
@@ -266,10 +266,10 @@ random.shuffle(queue)                         # reorders the list in place
 print(queue)
 ```
 
-    0.6241441969041941
-    5
+    0.8502436256929014
+    1
     mocha
-    [5, 3, 1, 4, 2]
+    [3, 2, 4, 1, 5]
 
 . . .
 
@@ -286,8 +286,8 @@ print([random.randint(1, 20) for _ in range(5)])   # _ : a loop name we never us
 print([random.randint(1, 20) for _ in range(5)])   # ...and again, different!
 ```
 
-    [7, 17, 9, 16, 15]
-    [17, 7, 14, 11, 7]
+    [3, 17, 5, 1, 4]
+    [6, 5, 9, 19, 8]
 
 . . .
 

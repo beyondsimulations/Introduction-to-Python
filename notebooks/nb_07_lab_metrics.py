@@ -12,7 +12,7 @@ def _(mo):
     # Notebook 7.1: The Numbers Deck
     **Core exercises: 10 + 1 quiz (+ 1 trace).** Done early? You're free to go. Not done when the session ends? The rest is homework.
 
-    The investor liked last week's honest numbers. Now she wants a **one-page
+    The investor liked last week's numbers. Now she wants a **one-page
     metrics deck**: totals, a per-zone breakdown, the busiest day, the strongest
     zone, the kind of sheet you could slide across a table without apologizing.
 
@@ -24,7 +24,7 @@ def _(mo):
     without a single hand-written loop: **NumPy**. A NumPy *array* is like a list
     that does math: multiply the whole thing at once, compare it to a number to
     get a filter, stack it into a grid and total it by row or by column. That's
-    the entire deck, computed in a few honest lines.
+    the entire deck, computed in a few lines.
     """
     )
     return
@@ -1156,9 +1156,8 @@ def _(mo):
     ## Before you leave
 
     1. Check the progress box above: all **eleven** green? If not, reopen the hints,
-       reread the worked examples, and try again. Arrays, masks and axis totals are
-       the whole toolkit for turning raw numbers into a metric. You'll reach for
-       them any time data shows up.
+       reread the worked examples, and try again. Arrays, masks and axis totals
+       come back in the pandas sessions.
     2. **Download your work**: **Cmd/Ctrl+S**, then menu → Download → *Download Python code*.
        Reloading this exact tab (Cmd/Ctrl+R) keeps your work, but closing the tab
        and reopening the link starts you fresh. The download is the only

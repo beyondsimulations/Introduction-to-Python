@@ -18,13 +18,13 @@ format:
 
 . . .
 
-Last week you handed her honest numbers, a table she could trust. She read exactly one row, looked up, and said the thing this whole session is about:
+Last week you handed her a table she could trust. She read exactly one row, looked up, and said the thing this whole session is about:
 
 > **"Tables are homework. Charts are arguments."**
 
 . . .
 
-A number convinces the careful. A **picture** convinces the room. Today: draw the right chart for the question, and refuse to draw a dishonest one.
+A number convinces the careful. A **picture** convinces the room. Today: draw the right chart for the question, and refuse to draw a misleading one.
 
 # Warm-up
 
@@ -136,7 +136,7 @@ Want days 1-5 on the axis? Pass them: `plt.plot(days, revenue)`, x first.
 
 ## The parts of a chart
 
-Every honest chart names its axes. `xlabel`, `ylabel`, `title`, and (when there's more than one line) a `legend`:
+Every chart names its axes. `xlabel`, `ylabel`, `title`, and (when there's more than one line) a `legend`:
 
 ``` python
 import matplotlib.pyplot as plt
@@ -304,7 +304,7 @@ plt.gca()
 
 <img src="lec_09_plotting_files/figure-markdown_strict/cell-9-output-1.png" width="662" height="429" />
 
-Just a cloud. No upward drift. Sometimes the honest answer is **"there's no pattern here."**
+Just a cloud. No upward drift. Sometimes the answer is **"there's no pattern here."**
 
 ## Predict: plot instead of scatter
 
@@ -398,9 +398,9 @@ First **predict** what happens, then run it.
 
 > **Tip**
 >
-> A five-minute pause after this one, then honest charts.
+> A five-minute pause after this one, then the axis and the AI chart assistant.
 
-# <span class="flow">Honest charts + the AI chart assistant</span>
+# <span class="flow">The axis and the AI chart assistant</span>
 
 ## The same data, told two ways
 
@@ -419,8 +419,8 @@ plt.ylim(96, 99)             # tight: DRAMA
 plt.title("Rocket (ylim 96-99)")
 plt.subplot(1, 2, 2)
 plt.plot(weeks, revenue, marker="o")
-plt.ylim(0, 100)             # from zero: TRUTH
-plt.title("Honest (from 0)")
+plt.ylim(0, 100)             # from zero
+plt.title("From 0")
 plt.gca()
 ```
 
@@ -485,7 +485,7 @@ First **predict** what happens, then run it.
 
 ## AI as your chart assistant
 
-AI is genuinely good at plotting code, if you drive it like a co-pilot:
+AI is good at plotting code, if you check the result:
 
 1.  **Describe** the data and the question: *"I have `orders` with columns `zone` (text) and `total_eur` (float). Bar chart of total revenue per zone."*
 2.  Let it **draft** the plot code.
@@ -496,7 +496,7 @@ AI is genuinely good at plotting code, if you drive it like a co-pilot:
 
 . . .
 
-The pilot flies; the co-pilot advises. You still land the plane.
+AI drafts. You decide what goes on the slide.
 
 ## Two ways AI charts lie
 
@@ -556,13 +556,13 @@ The finale leaves the browser for **your own machine**. Four things before you a
 
 1.  **Every chart, one frame.** Open with `plt.figure()`, close with `plt.gca()`; label the axes and title it. A chart nobody can read argues nothing.
 2.  **Match the chart to the question.** Categories → bar, distribution → histogram, two numbers → scatter, time → line. The wrong chart is a lie; and "no pattern" is a real finding.
-3.  **Honest axis, verified code.** Growth charts start at **0**, and every AI-drafted plot gets checked: do the columns exist, does the axis start where you claim?
+3.  **Axis from zero, verified code.** Growth charts start at **0**, and every AI-drafted plot gets checked: do the columns exist, does the axis start where you claim?
 
 . . .
 
 > **Note**
 >
-> **Season finale next: git, real files, and the project kickoff.** We leave the browser for your own machine: the toolchain you install this week is the price of admission.
+> **Season finale next: git, real files, and the project kickoff.** We leave the browser for your own machine, so install the toolchain this week. Session X needs it from the first minute.
 
 # <span class="flow">Literature</span>
 

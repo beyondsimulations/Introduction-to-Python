@@ -128,7 +128,7 @@ def _(floor_exd, mo, show_result):
             _result = f"floor_exd={floor_exd}"
             if _v == _expected:
                 _ok = True
-                _msg = "Correct: Exercise 9.d: from zero, the rocket is a gentle slope. That's the honest 4 %."
+                _msg = "Correct: Exercise 9.d: from zero, the rocket is a gentle slope. That's the real 4 %."
             elif _v == 1170.0:
                 _ok = False
                 _msg = "Wrong: That's Tobi's floor, the one that makes the cliff. A growth claim starts at zero."

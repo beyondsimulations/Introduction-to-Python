@@ -689,7 +689,7 @@ def _(mo):
 
     Word arrives that **MunchCorp**, the soulless mega-competitor, just
     launched "the same app but worse". Time to put your day-one numbers on
-    the table. This is where the whole session comes together.
+    the table.
 
     Write `day_one_summary_ex40`: **one f-string** that mentions your startup
     name and drops in your **earlier results**, `revenue_ex12` (the day-one

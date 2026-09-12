@@ -29,13 +29,13 @@ Menu → *Download* → *Download Python code* → upload the `.py` to the "Chec
 
 > **Note**
 >
-> The green live checks are **provisional**. The final grading runs on my side. And take a breath: everything in it was rehearsed in the labs.
+> The green live checks are **provisional**. The final grading runs on my side. Everything in it was rehearsed in the labs.
 
 # <span class="flow">Episode 3: The Copy-Paste Soup</span>
 
 ## After the board review
 
-Pens down. The checkpoint is behind you. Now the reason we're all here.
+Pens down. The checkpoint is over. On to Episode 3.
 
 . . .
 
@@ -382,7 +382,7 @@ print(second.fee())    # self is second: 10 km
     4.8
     12.0
 
-## One honest slide about classes
+## How far we go with classes
 
 - Today you write **one small class** with an `__init__` and **one method**. That's it
 - Classes get tricky fast (inheritance, `self` confusion), and that is **not this course**
@@ -392,7 +392,7 @@ print(second.fee())    # self is second: 10 km
 
 > **Tip**
 >
-> If the `self` keyword feels odd right now, that's completely normal. Copy the shape from the worked example. The intuition follows the practice.
+> If the `self` keyword feels odd right now, copy the shape from the worked example. It gets clearer after you have written a few.
 
 # Your turn: 5-10 minutes
 

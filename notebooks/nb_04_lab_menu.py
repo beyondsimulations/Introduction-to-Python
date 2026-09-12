@@ -1239,7 +1239,7 @@ def _(mo):
 
     1. Check the progress box above: all **eleven** core exercises green? If not,
        reopen the hints, reread the worked examples, and try again. Lists, dicts
-       and sets are the containers you'll reach for in every program from here on.
+       and sets come back in every later session.
     2. **Download your work**: **Cmd/Ctrl+S**, then menu → Download → *Download Python code*.
        Reloading this exact tab (Cmd/Ctrl+R) keeps your work, but closing the tab
        and reopening the link starts you fresh. The download is the only
