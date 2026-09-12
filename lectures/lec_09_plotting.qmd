@@ -131,7 +131,7 @@ plt.gca()
 
 . . .
 
-Want days 1–5 on the axis? Pass them: `plt.plot(days, revenue)`, x first.
+Want days 1-5 on the axis? Pass them: `plt.plot(days, revenue)`, x first.
 
 ## The parts of a chart
 
@@ -154,7 +154,7 @@ plt.legend()             # the little key, one entry per label
 plt.gca()
 ```
 
-# Your turn — 5–10 minutes {.exercise-slide}
+# Your turn: 5-10 minutes {.exercise-slide}
 
 Open the exercise (scan the QR or type the link):
 
@@ -164,7 +164,7 @@ Open the exercise (scan the QR or type the link):
 
 First **predict** what happens, then run it.
 
-## A little styling — and only a little
+## A little styling: and only a little
 
 Two keywords cover almost everything: `color` and `linestyle`. Restraint is the professional move. One clear line beats a rainbow:
 
@@ -216,7 +216,7 @@ plt.gca()
 
 That's exactly why every chart cell **opens** with `plt.figure()`: it's how you say "new picture, start clean."
 
-# Your turn — 5–10 minutes {.exercise-slide}
+# Your turn: 5-10 minutes {.exercise-slide}
 
 Open the exercise (scan the QR or type the link):
 
@@ -340,7 +340,7 @@ plt.gca()
 
 . . .
 
-A line says "these follow each other." Orders don't. Two numbers per order, no order between them: **scatter**.
+A line says the points follow each other, and orders don't. Two numbers per order with no sequence between them is a job for **scatter**.
 
 ## Predict: how many bars?
 
@@ -354,15 +354,15 @@ plt.hist(values, bins=3)    # right
 
 The bar chart shows 4 bars. How many bars does the **histogram** show?
 
-a\) 4: one bar per number   b) 15: one bar per unit up to the max   c) about 2–3 lumps: it counts ranges
+a\) 4: one bar per number   b) 15: one bar per unit up to the max   c) about 2-3 lumps: it counts ranges
 
 . . .
 
 [Predict first]{.question}. Pick a letter, then I reveal the answer.
 
-## Answer: about 2–3 lumps
+## Answer: about 2-3 lumps
 
-**c) about 2–3 lumps**: the histogram groups the numbers into ranges and counts how many fall in each. `8` and `9` land in the same bucket, so that bar is two tall:
+**c) about 2-3 lumps**: the histogram groups the numbers into ranges and counts how many fall in each. `8` and `9` land in the same bucket, so that bar is two tall:
 
 ```{python}
 #| eval: true
@@ -385,7 +385,7 @@ plt.gca()
 
 **Bar counts CATEGORIES; histogram counts RANGES.** Same numbers, different question.
 
-# Your turn — 5–10 minutes {.exercise-slide}
+# Your turn: 5-10 minutes {.exercise-slide}
 
 Open the exercise (scan the QR or type the link):
 
@@ -417,7 +417,7 @@ plt.figure()
 plt.subplot(1, 2, 1)
 plt.plot(weeks, revenue, marker="o")
 plt.ylim(96, 99)             # tight: DRAMA
-plt.title("Rocket (ylim 96–99)")
+plt.title("Rocket (ylim 96-99)")
 plt.subplot(1, 2, 2)
 plt.plot(weeks, revenue, marker="o")
 plt.ylim(0, 100)             # from zero: TRUTH
@@ -459,7 +459,7 @@ plt.gca()
 
 . . .
 
-No error, no warning. The code is fine; the **axis** is the lie.
+Python raises no error and no warning here. The code is fine; the axis is what misleads.
 
 ## The rule: growth starts at zero
 
@@ -472,7 +472,7 @@ No error, no warning. The code is fine; the **axis** is the lie.
 She's the type who reads Formular 27b/6 for fun. A stretched axis is the first thing she catches, and the last thing you want to explain.
 :::
 
-# Your turn — 5–10 minutes {.exercise-slide}
+# Your turn: 5-10 minutes {.exercise-slide}
 
 Open the exercise (scan the QR or type the link):
 
@@ -508,7 +508,7 @@ The pilot flies; the co-pilot advises. You still land the plane.
 Both threads, one rule: **an AI chart runs long before it's true.** You verify the columns *and* the axis, every time.
 :::
 
-# Your turn — 5–10 minutes {.exercise-slide}
+# Your turn: 5-10 minutes {.exercise-slide}
 
 Open the exercise (scan the QR or type the link):
 
@@ -530,14 +530,14 @@ The finale leaves the browser for **your own machine**. Four things before you a
 . . .
 
 :::{.callout-important}
-**Do it in advance**, and bring the laptop plus one downloaded lab `.py`. Session X opens with Checkpoint 5 (Sessions VIII–IX), then builds on a working toolchain. Install fights you? Ask in class or by e-mail.
+**Do it in advance**, and bring the laptop plus one downloaded lab `.py`. Session X opens with Checkpoint 5 (Sessions VIII-IX), then builds on a working toolchain. Install fights you? Ask in class or by e-mail.
 :::
 
 # [To the Lab]{.flow} {.title}
 
 ## After the break: the lab
 
-- Head to the lab notebook: [Episode 9 — The Pitch Deck](../tutorials/tut_09_plotting.qmd)
+- Head to the lab notebook: [Episode 9: The Pitch Deck](../tutorials/tut_09_plotting.qmd)
 - Same eighty orders, now with pictures: a line for daily revenue, a bar for zones, a histogram for the value spread, a scatter that finds **no** pattern, and Tobi's cliff-edge growth slide, which you'll flatten into the truth
 - Every chart opens with `plt.figure()` and closes with `plt.gca()`
 - AI is allowed: draft with it, then **verify** the columns and the axis before you believe it

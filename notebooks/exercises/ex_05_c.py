@@ -27,7 +27,7 @@ def _():
 def _(mo):
     mo.md(
         r"""
-    # Quick exercise: the crash-proof price (5–10 min)
+    # Quick exercise: the crash-proof price (5-10 min)
 
     A customer typed `"drei"` into the price field instead of a number, and
     the checkout went straight to a traceback in front of the whole queue.
@@ -53,7 +53,7 @@ def _(mo):
 def _(mo):
     mo.callout(
         mo.md(
-            "**Saving your work:** this notebook runs in your browser. Press"
+            "**Saving your work:** this notebook runs in your browser. Press "
             "**Cmd/Ctrl+S** to save, and always save **before** menu → Download → "
             "*Download Python code*. Without a save first, the download is an empty file."
         ),
@@ -81,13 +81,13 @@ def _(mo, price_exc, show_result):
     # Reactive check. Re-runs when you run the cell above.
     if price_exc is None:
         _ok = False
-        _msg = "Not attempted — assign it to `price_exc` (a `print` alone doesn't count) and run the cell."
+        _msg = "Not attempted: assign it to `price_exc` (a `print` alone doesn't count) and run the cell."
     elif isinstance(price_exc, float) and price_exc == 0.0:
         _ok = True
-        _msg = "Correct — the checkout survives, and 0.0 flags the order for a human."
+        _msg = "Correct: the checkout survives, and 0.0 flags the order for a human."
     else:
         _ok = False
-        _msg = "Wrong — wrap the `float()` call in `try`/`except ValueError` and fall back to `0.0`."
+        _msg = "Wrong: wrap the `float()` call in `try`/`except ValueError` and fall back to `0.0`."
     mo.callout(mo.md(_msg + show_result(price_exc)), kind="success" if _ok else "warn")
     return
 
@@ -132,19 +132,19 @@ def _(hidden_exc, mo, show_result):
     # Reactive check. Re-runs when you run the cell above.
     if hidden_exc is None:
         _ok = False
-        _msg = "Not attempted — assign the name to `hidden_exc` as text (a `print` alone doesn't count) and run the cell."
+        _msg = "Not attempted: assign the name to `hidden_exc` as text (a `print` alone doesn't count) and run the cell."
     elif not isinstance(hidden_exc, str):
         _ok = False
-        _msg = "Wrong — the answer is the exception's name as **text**, in quotes."
+        _msg = "Wrong: the answer is the exception's name as **text**, in quotes."
     elif hidden_exc.strip().lower().replace(" ", "") == "nameerror":
         _ok = True
-        _msg = "Correct — `order_txt` is a typo of `order_text`, a `NameError`. The bare `except:` hid it, and every price silently became 0.0. Catch the specific type."
+        _msg = "Correct: `order_txt` is a typo of `order_text`, a `NameError`. The bare `except:` hid it, and every price silently became 0.0. Catch the specific type."
     elif hidden_exc.strip().lower().replace(" ", "") == "valueerror":
         _ok = False
-        _msg = "Wrong — that's the one Tobi *meant* to catch. Change `except:` to `except ValueError:` and read the traceback that appears."
+        _msg = "Wrong: that's the one Tobi *meant* to catch. Change `except:` to `except ValueError:` and read the traceback that appears."
     else:
         _ok = False
-        _msg = "Wrong — narrow the `except` to `ValueError` and read the last line of the traceback that shows up."
+        _msg = "Wrong: narrow the `except` to `ValueError` and read the last line of the traceback that shows up."
     mo.callout(mo.md(_msg + show_result(hidden_exc)), kind="success" if _ok else "warn")
     return
 

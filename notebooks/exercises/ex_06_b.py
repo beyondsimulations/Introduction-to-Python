@@ -27,13 +27,12 @@ def _():
 def _(mo):
     mo.md(
         r"""
-    # Quick exercise: import a tool instead of building it (5–10 min)
+    # Quick exercise: import a tool instead of building it (5-10 min)
 
-    Need a whole-number result that always rounds *up*, never down? Don't
-    write your own rounding logic. The standard library already has it:
-    `math.ceil` always rounds up to the next whole number, exactly what
-    you need whenever a fraction of a box, crate, or shipment still counts
-    as a whole one.
+    Need a whole-number result that rounds *up*? Don't write your own
+    rounding logic. The standard library already has it: `math.ceil` rounds
+    up to the next whole number, which is what you need whenever a fraction
+    of a crate still counts as a whole one.
 
     300 / 48 is 6.25. **Predict** what the cell below prints, then run it.
     """
@@ -76,7 +75,7 @@ def _(mo):
     and the bakery boxes hold 24 quiches each. How many boxes does Tobi
     need to order?
 
-    Compute it as `boxes_exb` below, using `math`, not guesswork.
+    Compute it as `boxes_exb` below, using `math`.
     """
     )
     return
@@ -94,13 +93,13 @@ def _(boxes_exb, mo, show_result):
     # Reactive check. Re-runs when you run the cell above.
     if boxes_exb is None:
         _ok = False
-        _msg = "Not attempted — assign it to `boxes_exb` (a `print` alone doesn't count) and run the cell."
+        _msg = "Not attempted: assign it to `boxes_exb` (a `print` alone doesn't count) and run the cell."
     elif isinstance(boxes_exb, int) and boxes_exb == 9:
         _ok = True
-        _msg = "Correct — Nine boxes. The investor breakfast is covered with quiches to spare."
+        _msg = "Correct: Nine boxes. The investor breakfast is covered with quiches to spare."
     else:
         _ok = False
-        _msg = "Wrong — 200 / 24 isn't a whole number, and you need the next whole box up. Which `math` function rounds up?"
+        _msg = "Wrong: 200 / 24 isn't a whole number, and you need the next whole box up. Which `math` function rounds up?"
     mo.callout(mo.md(_msg + show_result(boxes_exb)), kind="success" if _ok else "warn")
     return
 
@@ -142,16 +141,16 @@ def _(affordable_exb, mo, show_result):
     # Reactive check. Re-runs when you run the cell above.
     if affordable_exb is None:
         _ok = False
-        _msg = "Not attempted — assign it to `affordable_exb` (a `print` alone doesn't count) and run the cell."
+        _msg = "Not attempted: assign it to `affordable_exb` (a `print` alone doesn't count) and run the cell."
     elif isinstance(affordable_exb, int) and affordable_exb == 7:
         _ok = True
-        _msg = "Correct — seven boxes, two short of the nine Tobi needs. The investor now has a budget conversation to start."
+        _msg = "Correct: seven boxes, two short of the nine Tobi needs. The investor now has a budget conversation to start."
     elif isinstance(affordable_exb, int) and affordable_exb == 8:
         _ok = False
-        _msg = "Wrong — eight boxes cost 10.80 EUR, over the cap. Rounding up was right for *needed* boxes; for *affordable* ones you round down."
+        _msg = "Wrong: eight boxes cost 10.80 EUR, over the cap. Rounding up was right for *needed* boxes; for *affordable* ones you round down."
     else:
         _ok = False
-        _msg = "Wrong — 10 / 1.35 is 7.4 boxes, and the last 0.4 of a box isn't for sale. Which `math` function rounds down?"
+        _msg = "Wrong: 10 / 1.35 is 7.4 boxes, and the last 0.4 of a box isn't for sale. Which `math` function rounds down?"
     mo.callout(mo.md(_msg + show_result(affordable_exb)), kind="success" if _ok else "warn")
     return
 

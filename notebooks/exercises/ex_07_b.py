@@ -27,11 +27,11 @@ def _():
 def _(mo):
     mo.md(
         r"""
-    # Quick exercise: vectorized arithmetic (5–10 min)
+    # Quick exercise: vectorized arithmetic (5-10 min)
 
     Tobi's 40-tab spreadsheet is on its way out. The investor wants
-    metrics, and numpy arrays are the replacement. The key idea: an
-    operation on an array applies to *every element at once*. No loop.
+    metrics, and numpy arrays are the replacement. The idea: an
+    operation on an array applies to *every element at once*, without a loop.
 
     **Predict** first: what does the cell below print, then run it.
     """
@@ -71,7 +71,7 @@ def _(mo):
     mo.md(
         r"""
     The investor's numbers deck needs gross prices. Three net menu prices
-    need 19% VAT added: all three, in **one expression**, no loop.
+    need 19% VAT added: all three in **one expression** rather than a loop.
 
     Compute it as `gross_exb` below.
     """
@@ -103,16 +103,16 @@ def _(gross_exb, mo, show_result):
         _values = None
     if gross_exb is None:
         _ok = False
-        _msg = "Not attempted — Assign it to `gross_exb` (a `print` alone doesn't count) and run the cell."
+        _msg = "Not attempted: Assign it to `gross_exb` (a `print` alone doesn't count) and run the cell."
     elif not hasattr(gross_exb, "__len__") or len(gross_exb) != 3:
         _ok = False
-        _msg = "Wrong — Do this as one expression on the whole array, not a single number."
+        _msg = "Wrong: Do this as one expression on the whole array, not a single number."
     elif _values == _expected:
         _ok = True
-        _msg = "Correct — One expression, all three prices, VAT included. The deck is ready."
+        _msg = "Correct: One expression added VAT to all three prices. The deck is ready."
     else:
         _ok = False
-        _msg = "Wrong — Check the VAT factor: gross = net × 1.19."
+        _msg = "Wrong: Check the VAT factor: gross = net × 1.19."
     mo.callout(mo.md(_msg + show_result(gross_exb)), kind="success" if _ok else "warn")
     return
 
@@ -121,7 +121,7 @@ def _(gross_exb, mo, show_result):
 def _(mo):
     mo.accordion(
         {
-            "Hint 1 (a nudge)": "No loop, no indexing: multiply the whole array by the VAT factor in one go.",
+            "Hint 1 (a nudge)": "Multiply the whole array by the VAT factor in one go, with no loop or indexing.",
             "Hint 2 (the structure)": "gross_exb = net_prices_exb * ___",
         }
     )
@@ -155,19 +155,19 @@ def _(ladder_exb, mo, np, show_result):
         _values = None
     if ladder_exb is None:
         _ok = False
-        _msg = "Not attempted — assign it to `ladder_exb` (a `print` alone doesn't count) and run the cell."
+        _msg = "Not attempted: assign it to `ladder_exb` (a `print` alone doesn't count) and run the cell."
     elif np.ndim(ladder_exb) == 0 or _values is None:
         _ok = False
-        _msg = "Wrong — the ladder is a whole array of five prices, not one number."
+        _msg = "Wrong: the ladder is a whole array of five prices, not one number."
     elif _values == _expected:
         _ok = True
-        _msg = "Correct — five rungs, both ends included, and nobody typed 12.5 by hand."
+        _msg = "Correct: five rungs, both ends included, and nobody typed 12.5 by hand."
     elif len(_values) == 4:
         _ok = False
-        _msg = "Wrong — four rungs. The builder that walks by a step stops *before* the end; you want the one that includes it."
+        _msg = "Wrong: four rungs. The builder that walks by a step stops *before* the end; you want the one that includes it."
     else:
         _ok = False
-        _msg = "Wrong — check start, stop, and count: 5.0 and 15.0 must both be on the ladder, with three rungs between."
+        _msg = "Wrong: check start, stop, and count: 5.0 and 15.0 must both be on the ladder, with three rungs between."
     mo.callout(mo.md(_msg + show_result(ladder_exb)), kind="success" if _ok else "warn")
     return
 

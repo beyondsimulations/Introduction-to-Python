@@ -175,7 +175,7 @@ print(sizes[1:3])
 
     ['M', 'L']
 
-# Your turn --- 5--10 minutes
+# Your turn: 5-10 minutes
 
 Open the exercise (scan the QR or type the link):
 
@@ -269,7 +269,7 @@ print(opening[1])
 >
 > Indexing and slicing work exactly as on lists. You just can't `.append()` to a tuple. Heads up: some tools quietly turn a tuple into a list when they store it. Remember that in **Part II**.
 
-# Your turn --- 5--10 minutes
+# Your turn: 5-10 minutes
 
 Open the exercise (scan the QR or type the link):
 
@@ -434,14 +434,14 @@ print(regulars)        # order is arbitrary: a set has none
 print(len(regulars))   # how many different people
 ```
 
-    {'tom', 'ada', 'nina'}
+    {'nina', 'tom', 'ada'}
     3
 
 . . .
 
 Five visits, three people. A set answers "how many *different*?" in one step.
 
-# Your turn --- 5--10 minutes
+# Your turn: 5-10 minutes
 
 Open the exercise (scan the QR or type the link):
 
@@ -491,7 +491,7 @@ print(zones["Altstadt"]["eta"])
 
 Read it left to right: "in `zones`, take `Hafen`, then its `fee`."
 
-# Your turn --- 5--10 minutes
+# Your turn: 5-10 minutes
 
 Open the exercise (scan the QR or type the link):
 
@@ -636,7 +636,7 @@ for line in orders.splitlines():
 >
 > Reading real files is a job for **pandas**, which loads them in one line from Session VIII on. For now, inline data is all you need.
 
-# Your turn --- 5--10 minutes
+# Your turn: 5-10 minutes
 
 Open the exercise (scan the QR or type the link):
 
@@ -650,7 +650,7 @@ First **predict** what happens, then run it.
 
 ## After the break: the lab
 
-- Head to the lab notebook: [Episode 4 --- The Menu Grows Up](../tutorials/tut_04_dimensions.qmd)
+- Head to the lab notebook: [Episode 4: The Menu Grows Up](../tutorials/tut_04_dimensions.qmd)
 - You'll rebuild the menu as a dictionary, count the regulars with a set, discount the card with a comprehension, and steer a lost courier through a **nested campus map** to the dorms
 - It runs entirely in your browser: no setup, just click and code
 
@@ -672,7 +672,7 @@ First **predict** what happens, then run it.
 
 > **Note**
 >
-> **Next time --- Episode 5:** Tobi rewrites the checkout at **3 AM** on four energy drinks. What could go wrong? We learn to read tracebacks and catch errors before the customer does.
+> **Next time, Episode 5:** Tobi rewrites the checkout at **3 AM** on four energy drinks. What could go wrong? We learn to read tracebacks and catch errors before the customer does.
 
 # <span class="flow">Literature</span>
 

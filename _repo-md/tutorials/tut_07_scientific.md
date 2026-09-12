@@ -1,5 +1,5 @@
 ---
-title: Episode 7 — The Numbers Deck
+title: 'Episode 7: The Numbers Deck'
 subtitle: Programming with Python · Tutorial 07
 ---
 

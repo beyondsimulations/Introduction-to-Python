@@ -27,7 +27,7 @@ def _():
 def _(mo):
     mo.md(
         r"""
-    # Quick exercise: the campus map (5–10 min)
+    # Quick exercise: the campus map (5-10 min)
 
     Tobi split the campus into two delivery zones. Each zone is its own
     dictionary inside `zones`:
@@ -53,7 +53,7 @@ def _(mo):
 def _(mo):
     mo.callout(
         mo.md(
-            "**Saving your work:** this notebook runs in your browser. Press"
+            "**Saving your work:** this notebook runs in your browser. Press "
             "**Cmd/Ctrl+S** to save, and always save **before** menu → Download → "
             "*Download Python code*. Without a save first, the download is an empty file."
         ),
@@ -84,22 +84,22 @@ def _(mo, show_result, south_fee_exd):
     # Reactive check. Re-runs when you run the cell above.
     if south_fee_exd is None:
         _ok = False
-        _msg = "Not attempted — assign it to `south_fee_exd` (a `print` alone doesn't count) and run the cell."
+        _msg = "Not attempted: assign it to `south_fee_exd` (a `print` alone doesn't count) and run the cell."
     elif isinstance(south_fee_exd, (int, float)) and round(south_fee_exd, 2) == 2.50:
         _ok = True
-        _msg = "Correct — `zones[\"South\"][\"fee\"]`: outer key first, then the inner one."
+        _msg = "Correct: `zones[\"South\"][\"fee\"]`: outer key first, then the inner one."
     elif isinstance(south_fee_exd, (int, float)) and round(south_fee_exd, 2) == 1.50:
         _ok = False
-        _msg = "Wrong — that's the North fee. The order goes South."
+        _msg = "Wrong: that's the North fee. The order goes South."
     elif isinstance(south_fee_exd, (int, float)) and round(south_fee_exd, 2) == 20:
         _ok = False
-        _msg = "Wrong — 20 is the South `eta`, in minutes. You want the `fee`."
+        _msg = "Wrong: 20 is the South `eta`, in minutes. You want the `fee`."
     elif isinstance(south_fee_exd, dict):
         _ok = False
-        _msg = "Wrong — that's the whole South zone. Add a second `[...]` to reach into it."
+        _msg = "Wrong: that's the whole South zone. Add a second `[...]` to reach into it."
     else:
         _ok = False
-        _msg = "Wrong — read it left to right: in `zones`, take `\"South\"`, then its `\"fee\"`."
+        _msg = "Wrong: read it left to right: in `zones`, take `\"South\"`, then its `\"fee\"`."
     mo.callout(mo.md(_msg + show_result(south_fee_exd)), kind="success" if _ok else "warn")
     return
 
@@ -128,22 +128,22 @@ def _(last_north_exd, mo, show_result):
     # Reactive check. Re-runs when you run the cell above.
     if last_north_exd is None:
         _ok = False
-        _msg = "Not attempted — assign it to `last_north_exd` (a `print` alone doesn't count) and run the cell."
+        _msg = "Not attempted: assign it to `last_north_exd` (a `print` alone doesn't count) and run the cell."
     elif last_north_exd == "Dorm B":
         _ok = True
-        _msg = "Correct — `zones[\"North\"][\"dorms\"][-1]`: dict, dict, then list."
+        _msg = "Correct: `zones[\"North\"][\"dorms\"][-1]`: dict, dict, then list."
     elif last_north_exd == "Dorm A":
         _ok = False
-        _msg = "Wrong — that's the first dorm on the list. `-1` counts from the end."
+        _msg = "Wrong: that's the first dorm on the list. `-1` counts from the end."
     elif last_north_exd == "Dorm C":
         _ok = False
-        _msg = "Wrong — Dorm C is in the South zone. Start from `\"North\"`."
+        _msg = "Wrong: Dorm C is in the South zone. Start from `\"North\"`."
     elif isinstance(last_north_exd, list):
         _ok = False
-        _msg = "Wrong — that's the whole dorm list. Add one more `[...]` with an index to pick the last one."
+        _msg = "Wrong: that's the whole dorm list. Add one more `[...]` with an index to pick the last one."
     else:
         _ok = False
-        _msg = "Wrong — expected the name of one dorm, as a string."
+        _msg = "Wrong: expected the name of one dorm, as a string."
     mo.callout(mo.md(_msg + show_result(last_north_exd)), kind="success" if _ok else "warn")
     return
 

@@ -27,7 +27,7 @@ def _():
 def _(mo):
     mo.md(
         r"""
-    # Quick exercise: happy hour (5–10 min)
+    # Quick exercise: happy hour (5-10 min)
 
     Tobi's idea: 20% off every price on `menu`, for one hour only. Build
     `happy_exe` with a **dict comprehension**: same items, each price cut
@@ -41,7 +41,7 @@ def _(mo):
 def _(mo):
     mo.callout(
         mo.md(
-            "**Saving your work:** this notebook runs in your browser. Press"
+            "**Saving your work:** this notebook runs in your browser. Press "
             "**Cmd/Ctrl+S** to save, and always save **before** menu → Download → "
             "*Download Python code*. Without a save first, the download is an empty file."
         ),
@@ -82,16 +82,16 @@ def _(happy_exe, mo, show_result):
 
     if happy_exe is None:
         _ok = False
-        _msg = "Not attempted — assign it to `happy_exe` (a `print` alone doesn't count) and run the cell."
+        _msg = "Not attempted: assign it to `happy_exe` (a `print` alone doesn't count) and run the cell."
     elif happy_exe == _expected:
         _ok = True
-        _msg = "Correct — happy hour is on."
+        _msg = "Correct: happy hour is on."
     elif _matches_rounded:
         _ok = False
-        _msg = "Wrong — so close. Round each price to 2 decimals."
+        _msg = "Wrong: so close. Round each price to 2 decimals."
     else:
         _ok = False
-        _msg = "Wrong — check the discount and every key against `menu`."
+        _msg = "Wrong: check the discount and every key against `menu`."
     mo.callout(mo.md(_msg + show_result(happy_exe)), kind="success" if _ok else "warn")
     return
 
@@ -134,22 +134,22 @@ def _(cheap_exe, mo, show_result):
 
     if cheap_exe is None:
         _ok = False
-        _msg = "Not attempted — assign it to `cheap_exe` (a `print` alone doesn't count) and run the cell."
+        _msg = "Not attempted: assign it to `cheap_exe` (a `print` alone doesn't count) and run the cell."
     elif cheap_exe == _expected:
         _ok = True
-        _msg = "Correct — the Founders Bowl sits this one out."
+        _msg = "Correct: the Founders Bowl sits this one out."
     elif _matches_rounded:
         _ok = False
-        _msg = "Wrong — right dishes, unrounded prices. Round each one to 2 decimals."
+        _msg = "Wrong: right dishes, unrounded prices. Round each one to 2 decimals."
     elif isinstance(cheap_exe, dict) and "Founders Bowl" in cheap_exe:
         _ok = False
-        _msg = "Wrong — the Founders Bowl costs 10.40 and slipped in. The `if` goes after the `for` part: `... for name, price in menu.items() if price < 10`."
+        _msg = "Wrong: the Founders Bowl costs 10.40 and slipped in. The `if` goes after the `for` part: `... for name, price in menu.items() if price < 10`."
     elif isinstance(cheap_exe, dict) and len(cheap_exe) < 2:
         _ok = False
-        _msg = "Wrong — too few dishes survived. Both the Falafel Wrap and the Pad Thai are under 10 EUR; filter on the regular price, not the discounted one."
+        _msg = "Wrong: too few dishes survived. Both the Falafel Wrap and the Pad Thai are under 10 EUR; filter on the regular price, not the discounted one."
     else:
         _ok = False
-        _msg = "Wrong — expected the two dishes under 10 EUR at 20% off."
+        _msg = "Wrong: expected the two dishes under 10 EUR at 20% off."
     mo.callout(mo.md(_msg + show_result(cheap_exe)), kind="success" if _ok else "warn")
     return
 

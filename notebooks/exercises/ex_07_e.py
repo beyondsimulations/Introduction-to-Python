@@ -27,7 +27,7 @@ def _():
 def _(mo):
     mo.md(
         r"""
-    # Quick exercise: 2D arrays and axis (5–10 min)
+    # Quick exercise: 2D arrays and axis (5-10 min)
 
     A 2D array has rows and columns, and `.sum()` needs to know which one
     to collapse: `axis=0` collapses DOWN the rows (one number per column).
@@ -43,7 +43,7 @@ def _(mo):
 def _(mo):
     mo.callout(
         mo.md(
-            "**Saving your work:** this notebook runs in your browser. Press"
+            "**Saving your work:** this notebook runs in your browser. Press "
             "**Cmd/Ctrl+S** to save, and always save **before** menu → Download → "
             "*Download Python code*. Without a save first, the download is an empty file."
         ),
@@ -117,19 +117,19 @@ def _(best_zone_exe, mo, np, show_result, zone_totals_exe):
         _totals = None
     if zone_totals_exe is None or best_zone_exe is None:
         _ok = False
-        _msg = "Not attempted — Assign it to `zone_totals_exe` and `best_zone_exe` (a `print` alone doesn't count) and run the cell."
+        _msg = "Not attempted: Assign it to `zone_totals_exe` and `best_zone_exe` (a `print` alone doesn't count) and run the cell."
     elif _totals is not None and len(_totals) == 4:
         _ok = False
-        _msg = "Wrong — You summed per DAY, not per zone. Which axis collapses the days?"
+        _msg = "Wrong: You summed per DAY, not per zone. Which axis collapses the days?"
     elif _totals != _expected_totals:
         _ok = False
-        _msg = "Wrong — The zone totals aren't right yet. Check `axis=0` versus `axis=1`."
+        _msg = "Wrong: The zone totals aren't right yet. Check `axis=0` versus `axis=1`."
     elif isinstance(best_zone_exe, (int, np.integer)) and int(best_zone_exe) == _expected_best:
         _ok = True
-        _msg = "Correct — Zone 2 wins, and the totals are ready for the deck."
+        _msg = "Correct: Zone 2 wins, and the totals are ready for the deck."
     else:
         _ok = False
-        _msg = "Wrong — The totals are right, but the best zone isn't. Which index holds the highest total?"
+        _msg = "Wrong: The totals are right, but the best zone isn't. Which index holds the highest total?"
     if zone_totals_exe is not None and best_zone_exe is not None:
         _result = f"zone_totals_exe={zone_totals_exe}, best_zone_exe={best_zone_exe}"
     mo.callout(mo.md(_msg + show_result(_result)), kind="success" if _ok else "warn")
@@ -174,22 +174,22 @@ def _(best_day_exe, mo, np, show_result):
         _day = None
     if best_day_exe is None:
         _ok = False
-        _msg = "Not attempted — assign it to `best_day_exe` (a `print` alone doesn't count) and run the cell."
+        _msg = "Not attempted: assign it to `best_day_exe` (a `print` alone doesn't count) and run the cell."
     elif _day is None:
         _ok = False
         if np.ndim(best_day_exe) > 0:
-            _msg = "Wrong — that's still a whole array. `argmax` reduces the per-day totals to one index."
+            _msg = "Wrong: that's still a whole array. `argmax` reduces the per-day totals to one index."
         else:
-            _msg = "Wrong — the answer is an index, one whole number."
+            _msg = "Wrong: the answer is an index, one whole number."
     elif _day == _expected:
         _ok = True
-        _msg = "Correct — day 1 wins with 27 sales. Other axis, same argmax."
+        _msg = "Correct: day 1 wins with 27 sales. Other axis, same argmax."
     elif _day == 2:
         _ok = False
-        _msg = "Wrong — that's the best *zone* again. Per-day totals need the days to stay, so the zones must disappear: check the axis."
+        _msg = "Wrong: that's the best *zone* again. Per-day totals need the days to stay, so the zones must disappear: check the axis."
     else:
         _ok = False
-        _msg = "Wrong — sum across the columns first (one number per day), then ask where the maximum sits."
+        _msg = "Wrong: sum across the columns first (one number per day), then ask where the maximum sits."
     mo.callout(mo.md(_msg + show_result(best_day_exe)), kind="success" if _ok else "warn")
     return
 

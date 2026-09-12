@@ -1,5 +1,5 @@
 # notebooks/nb_05_lab_checkout.py
-# Episode 5 — The 3-AM Checkout. Session V lab notebook.
+# Episode 5: The 3-AM Checkout. Session V lab notebook.
 import marimo
 
 app = marimo.App(width="medium")
@@ -9,7 +9,7 @@ app = marimo.App(width="medium")
 def _(mo):
     mo.md(
         r"""
-    # Notebook 5.1 — The 3-AM Checkout
+    # Notebook 5.1: The 3-AM Checkout
     **Core exercises: 10 (+ 1 trace, 2 bonus).** Done early? You're free to go. Not done when the session ends? The rest is homework.
 
     It's the last lab of Part I, and it opens on a crime scene. At 3 AM, running
@@ -102,13 +102,13 @@ def _(mo, startup_name_input):
 
 
 # ─────────────────────────────────────────────────────────────────────────
-# SECTION 1 — Tracebacks and try/except
+# SECTION 1: Tracebacks and try/except
 # ─────────────────────────────────────────────────────────────────────────
 @app.cell(hide_code=True)
 def _(mo):
     mo.md(
         r"""
-    ## Section 1 — Reading the crash: tracebacks and `try` / `except`
+    ## Section 1: Reading the crash: tracebacks and `try` / `except`
 
     When Python hits something it can't do, it stops and prints a **traceback**,
     a crash report. It looks scary, but it's read from the **bottom up**: the
@@ -167,7 +167,7 @@ def _():
 def _(mo):
     mo.md(
         r"""
-    ### Exercise 1.1 (trace — predict first) — which crash?
+    ### Exercise 1.1 (trace, predict first): which crash?
 
     This is a **trace** exercise: predict the result first, *then* reveal it.
     Tobi's menu uses a capital W, but his lookup doesn't:
@@ -225,7 +225,7 @@ def _(mo, trace_ex11):
 def _(mo):
     mo.md(
         r"""
-    ### Exercise 1.2 (core) — the price box that won't crash
+    ### Exercise 1.2 (core): the price box that won't crash
 
     Customers type prices into a box, and some of them type `"drei"` instead of
     `3`. Right now that crashes the whole checkout. Write `safe_price_ex12(text)`
@@ -253,31 +253,31 @@ def _(mo, safe_price_ex12, show_result):
         _bad = safe_price_ex12("drei")
     except Exception:
         ex12_ok = False
-        _msg = "Wrong — Exercise 1.2: it's crashing. A bad value should be *caught*, not passed on. Read the error above and wrap the conversion in `try` / `except ValueError`."
+        _msg = "Wrong (Exercise 1.2): it's crashing. A bad value should be *caught*, not passed on. Read the error above and wrap the conversion in `try` / `except ValueError`."
         _preview = ""
     else:
         if _good is None and _bad is None:
             ex12_ok = False
-            _msg = "Not attempted — Exercise 1.2: not attempted yet (the function still returns None). Use `return`, not `print`, then run the cell."
+            _msg = "Not attempted (Exercise 1.2): (the function still returns None). Use `return`, not `print`, then run the cell."
             _preview = ""
         elif (
             isinstance(_good, float) and round(_good, 2) == 4.20
             and isinstance(_bad, float) and _bad == 0.0
         ):
             ex12_ok = True
-            _msg = "Correct — Exercise 1.2: `\"4.20\"` → 4.2, `\"drei\"` → 0.0. The checkout survives a customer who can't type. That's `try` / `except` earning its keep."
+            _msg = "Correct (Exercise 1.2): `\"4.20\"` → 4.2, `\"drei\"` → 0.0. The checkout survives a customer who can't type."
             _preview = show_result(_good)
         elif _bad == 0.0 and not isinstance(_bad, float):
             ex12_ok = False
-            _msg = "Wrong — Exercise 1.2: `\"drei\"` came back as the integer `0`. Return the float `0.0` in the `except`, so the checkout stays in floats."
+            _msg = "Wrong (Exercise 1.2): `\"drei\"` came back as the integer `0`. Return the float `0.0` in the `except`, so the checkout stays in floats."
             _preview = show_result(_bad)
         elif _bad != 0.0:
             ex12_ok = False
-            _msg = "Wrong — Exercise 1.2: `\"drei\"` should come back as `0.0`, not crash or return something else. Catch `ValueError` in the `except` and return `0.0` there."
+            _msg = "Wrong (Exercise 1.2): `\"drei\"` should come back as `0.0`, not crash or return something else. Catch `ValueError` in the `except` and return `0.0` there."
             _preview = show_result(_bad)
         else:
             ex12_ok = False
-            _msg = "Wrong — Exercise 1.2: a real number like `\"4.20\"` should convert to the float `4.2`. Return `float(text)` in the `try`, `0.0` in the `except`."
+            _msg = "Wrong (Exercise 1.2): a real number like `\"4.20\"` should convert to the float `4.2`. Return `float(text)` in the `try`, `0.0` in the `except`."
             _preview = show_result(_good)
     mo.callout(mo.md(_msg + _preview), kind="success" if ex12_ok else "warn")
     return (ex12_ok,)
@@ -298,7 +298,7 @@ def _(mo):
 def _(mo):
     mo.md(
         r"""
-    ### Exercise 1.3 (core) — the zone that isn't on the map
+    ### Exercise 1.3 (core): the zone that isn't on the map
 
     The inspector phones in a lunch order (a test, obviously) and asks for
     delivery to **"Ost"**. Tobi's delivery-zone map has no "Ost":
@@ -342,27 +342,27 @@ def _(delivery_fee_ex13, mo, show_result):
         _unknown = delivery_fee_ex13(_zones, "Ost")
     except Exception:
         ex13_ok = False
-        _msg = "Wrong — Exercise 1.3: it's crashing. The missing zone raises a `KeyError`, and it should be *caught*, not passed on. Wrap the lookup in `try` / `except KeyError`."
+        _msg = "Wrong (Exercise 1.3): it's crashing. The missing zone raises a `KeyError`, and it should be *caught*, not passed on. Wrap the lookup in `try` / `except KeyError`."
         _preview = ""
     else:
         if _known is None and _unknown is None:
             ex13_ok = False
-            _msg = "Not attempted — Exercise 1.3: not attempted yet (the function still returns None). Use `return`, not `print`, then run the cell."
+            _msg = "Not attempted (Exercise 1.3): (the function still returns None). Use `return`, not `print`, then run the cell."
             _preview = ""
         elif (
             isinstance(_known, (int, float)) and round(_known, 2) == 3.90
             and isinstance(_unknown, (int, float)) and round(_unknown, 2) == 4.50
         ):
             ex13_ok = True
-            _msg = "Correct — Exercise 1.3: `\"Sued\"` → 3.90, `\"Ost\"` → 4.50. The inspector's lunch leaves the shop with a 4.50 out-of-zone sticker on the bag, and the till is still standing. Catching the *specific* error is the whole trick."
+            _msg = "Correct (Exercise 1.3): `\"Sued\"` → 3.90, `\"Ost\"` → 4.50. The inspector's lunch leaves the shop with a 4.50 out-of-zone sticker on the bag, and the till is still standing. Notice that the `except` names the *specific* error type."
             _preview = show_result(_unknown)
         elif not (isinstance(_unknown, (int, float)) and round(_unknown, 2) == 4.50):
             ex13_ok = False
-            _msg = "Wrong — Exercise 1.3: an unknown zone like `\"Ost\"` should come back as `4.50`, not crash or return something else. Return `4.50` inside the `except KeyError`."
+            _msg = "Wrong (Exercise 1.3): an unknown zone like `\"Ost\"` should come back as `4.50`, not crash or return something else. Return `4.50` inside the `except KeyError`."
             _preview = show_result(_unknown)
         else:
             ex13_ok = False
-            _msg = "Wrong — Exercise 1.3: a zone that *is* on the map, like `\"Sued\"`, should return its own fee (3.90). Return `zones[zone]` in the `try`, and only fall back in the `except`."
+            _msg = "Wrong (Exercise 1.3): a zone that *is* on the map, like `\"Sued\"`, should return its own fee (3.90). Return `zones[zone]` in the `try`, and only fall back in the `except`."
             _preview = show_result(_known)
     mo.callout(mo.md(_msg + _preview), kind="success" if ex13_ok else "warn")
     return (ex13_ok,)
@@ -380,13 +380,13 @@ def _(mo):
 
 
 # ─────────────────────────────────────────────────────────────────────────
-# SECTION 2 — Fixing the checkout, and raising your own errors
+# SECTION 2: Fixing the checkout, and raising your own errors
 # ─────────────────────────────────────────────────────────────────────────
 @app.cell(hide_code=True)
 def _(mo):
     mo.md(
         r"""
-    ## Section 2 — The inspector's rule: fixing bugs and `raise`
+    ## Section 2: The inspector's rule: fixing bugs and `raise`
 
     The health inspector has one non-negotiable rule for the till: **every order
     must have a price of at least 0**, no negative prices, ever. (Tobi once
@@ -430,7 +430,7 @@ def _():
 def _(mo):
     mo.md(
         r"""
-    ### Exercise 2.1 (core, fix the bug) — the 3-AM receipt
+    ### Exercise 2.1 (core, fix the bug): the 3-AM receipt
 
     Here is Tobi's checkout, exactly as he left it at 3 AM. The order is **two
     Founders Bowls at 10.90** each, plus **one side salad at 8.30**. The customer
@@ -460,19 +460,19 @@ def _():
 def _(checkout_total_ex21, mo, show_result):
     if not isinstance(checkout_total_ex21, (int, float)):
         ex21_ok = False
-        _msg = "Wrong — Exercise 2.1: `checkout_total_ex21` should be a **number**, the amount the customer owes."
+        _msg = "Wrong (Exercise 2.1): `checkout_total_ex21` should be a **number**, the amount the customer owes."
         _preview = show_result(checkout_total_ex21)
     elif round(checkout_total_ex21, 2) == 30.10:
         ex21_ok = True
-        _msg = "Correct — Exercise 2.1: **30.10**, two bowls *plus* the salad. (Did you also point the receipt's f-string at `checkout_total_ex21` instead of the stale `_old_total`? Re-read the printed line to be sure.)"
+        _msg = "Correct (Exercise 2.1): **30.10**, two bowls *plus* the salad. (Did you also point the receipt's f-string at `checkout_total_ex21` instead of the stale `_old_total`? Re-read the printed line to be sure.)"
         _preview = show_result(checkout_total_ex21)
     elif round(checkout_total_ex21, 2) == 13.50:
         ex21_ok = False
-        _msg = "Wrong — Exercise 2.1: 13.50 means the salad got **subtracted**. The customer is buying the salad, not returning it. That `-` should add it in."
+        _msg = "Wrong (Exercise 2.1): 13.50 means the salad got **subtracted**. The customer is buying the salad, not returning it. That `-` should add it in."
         _preview = show_result(checkout_total_ex21)
     else:
         ex21_ok = False
-        _msg = "Wrong — Exercise 2.1: not 30.10. Two bowls at 10.90 *plus* one salad at 8.30. Check the operator between them."
+        _msg = "Wrong (Exercise 2.1): not 30.10. Two bowls at 10.90 *plus* one salad at 8.30. Check the operator between them."
         _preview = show_result(checkout_total_ex21)
     mo.callout(mo.md(_msg + _preview), kind="success" if ex21_ok else "warn")
     return (ex21_ok,)
@@ -493,7 +493,7 @@ def _(mo):
 def _(mo):
     mo.md(
         r"""
-    ### Exercise 2.2 (core) — enforce the inspector's rule
+    ### Exercise 2.2 (core): enforce the inspector's rule
 
     Make the rule official. Write `validate_order_ex22(price)` that:
 
@@ -534,22 +534,22 @@ def _(mo, validate_order_ex22):
         _raised = "WRONG"
     if _pos is None and _raised is False:
         ex22_ok = False
-        _msg = "Not attempted — Exercise 2.2: not attempted yet (the function still returns None). Use `return`, not `print`, then run the cell."
+        _msg = "Not attempted (Exercise 2.2): (the function still returns None). Use `return`, not `print`, then run the cell."
     elif _pos == "CRASH":
         ex22_ok = False
-        _msg = "Wrong — Exercise 2.2: a *valid* price (9.90) is crashing. Only negative prices should raise. A price of 9.90 should return `True`."
+        _msg = "Wrong (Exercise 2.2): a *valid* price (9.90) is crashing. Only negative prices should raise. A price of 9.90 should return `True`."
     elif _pos is not True:
         ex22_ok = False
-        _msg = "Wrong — Exercise 2.2: a valid price like 9.90 should return `True` (not None or anything else). Raise only when `price < 0`."
+        _msg = "Wrong (Exercise 2.2): a valid price like 9.90 should return `True` (not None or anything else). Raise only when `price < 0`."
     elif _raised == "WRONG":
         ex22_ok = False
-        _msg = "Wrong — Exercise 2.2: a negative price *did* raise, but not a `ValueError`. Use `raise ValueError(...)` specifically so callers can catch the right type."
+        _msg = "Wrong (Exercise 2.2): a negative price *did* raise, but not a `ValueError`. Use `raise ValueError(...)` specifically so callers can catch the right type."
     elif _raised is False:
         ex22_ok = False
-        _msg = "Wrong — Exercise 2.2: a negative price slipped through without raising. Add `if price < 0: raise ValueError(...)` so the bad value is refused."
+        _msg = "Wrong (Exercise 2.2): a negative price slipped through without raising. Add `if price < 0: raise ValueError(...)` so the bad value is refused."
     else:
         ex22_ok = True
-        _msg = "Correct — Exercise 2.2: 9.90 returns `True`, and −1.0 raises `ValueError`. Your code now refuses what the inspector forbids before it can hit the books."
+        _msg = "Correct (Exercise 2.2): 9.90 returns `True`, and −1.0 raises `ValueError`. Your code now refuses what the inspector forbids before it can hit the books."
     mo.callout(mo.md(_msg), kind="success" if ex22_ok else "warn")
     return (ex22_ok,)
 
@@ -569,7 +569,7 @@ def _(mo):
 def _(mo):
     mo.md(
         r"""
-    ### Exercise 2.3 (core) — the audit
+    ### Exercise 2.3 (core): the audit
 
     The inspector runs an audit. Here are the prices on today's board:
 
@@ -602,27 +602,27 @@ def _():
 def _(bad_index_ex23, mo, show_result):
     if bad_index_ex23 is None:
         ex23_ok = False
-        _msg = "Not attempted — Exercise 2.3. Assign it to `bad_index_ex23` (a `print` alone doesn't count) and run the cell."
+        _msg = "Not attempted (Exercise 2.3). Assign it to `bad_index_ex23` (a `print` alone doesn't count) and run the cell."
         _preview = ""
     elif isinstance(bad_index_ex23, float) and bad_index_ex23 == -1.0:
         ex23_ok = False
-        _msg = "Wrong — Exercise 2.3: `-1.0` is the *price*, but the check wants its POSITION in the list, not the value. You want the index it sits at, counting from 0."
+        _msg = "Wrong (Exercise 2.3): `-1.0` is the *price*, but the check wants its POSITION in the list, not the value. You want the index it sits at, counting from 0."
         _preview = show_result(bad_index_ex23)
     elif not isinstance(bad_index_ex23, int):
         ex23_ok = False
-        _msg = "Wrong — Exercise 2.3: this should be a whole **number** (a position in the list)."
+        _msg = "Wrong (Exercise 2.3): this should be a whole **number** (a position in the list)."
         _preview = show_result(bad_index_ex23)
     elif bad_index_ex23 == 2:
         ex23_ok = True
-        _msg = "Correct — Exercise 2.3: index **2**, the `-1.0` sitting third in line. Counting from 0, that's position 2. The inspector will not be pleased."
+        _msg = "Correct (Exercise 2.3): index **2**, the `-1.0` sitting third in line. Counting from 0, that's position 2. The inspector will not be pleased."
         _preview = show_result(bad_index_ex23)
     elif bad_index_ex23 == 3:
         ex23_ok = False
-        _msg = "Wrong — Exercise 2.3: position 3 is `-1.0`? Count again from **0**: 6.90 is at 0, 8.90 at 1, then the bad one. Indices start at zero."
+        _msg = "Wrong (Exercise 2.3): position 3 is `-1.0`? Count again from **0**: 6.90 is at 0, 8.90 at 1, then the bad one. Indices start at zero."
         _preview = show_result(bad_index_ex23)
     else:
         ex23_ok = False
-        _msg = "Wrong — Exercise 2.3: not the right position. Loop with the index, and stop at the first price that is below 0 (it's the `-1.0`)."
+        _msg = "Wrong (Exercise 2.3): not the right position. Loop with the index, and stop at the first price that is below 0 (it's the `-1.0`)."
         _preview = show_result(bad_index_ex23)
     mo.callout(mo.md(_msg + _preview), kind="success" if ex23_ok else "warn")
     return (ex23_ok,)
@@ -643,7 +643,7 @@ def _(mo):
 def _(mo):
     mo.md(
         r"""
-    ### Exercise 2.4 (core) — the refund line
+    ### Exercise 2.4 (core): the refund line
 
     The inspector's second rule: **a refund can never exceed what the customer
     paid.** (Tobi once "refunded" 20.00 on a 12.40 ramen because the customer
@@ -687,27 +687,27 @@ def _(mo, refund_ex24, show_result):
         _raised = "WRONG"
     if _left is None and _raised is False:
         ex24_ok = False
-        _msg = "Not attempted — Exercise 2.4: not attempted yet (the function still returns None). Use `return`, not `print`, then run the cell."
+        _msg = "Not attempted (Exercise 2.4): (the function still returns None). Use `return`, not `print`, then run the cell."
         _preview = ""
     elif isinstance(_left, str) and _left == "CRASH":
         ex24_ok = False
-        _msg = "Wrong — Exercise 2.4: a *valid* refund (3.00 on 12.40) is crashing. Only a refund larger than the price should raise; this one should return 9.40."
+        _msg = "Wrong (Exercise 2.4): a *valid* refund (3.00 on 12.40) is crashing. Only a refund larger than the price should raise; this one should return 9.40."
         _preview = ""
     elif not (isinstance(_left, (int, float)) and round(_left, 2) == 9.40):
         ex24_ok = False
-        _msg = "Wrong — Exercise 2.4: a refund of 3.00 on 12.40 should return `9.40` (what the customer still pays), not None or anything else. Return `round(paid - back, 2)` after the check."
+        _msg = "Wrong (Exercise 2.4): a refund of 3.00 on 12.40 should return `9.40` (what the customer still pays), not None or anything else. Return `round(paid - back, 2)` after the check."
         _preview = show_result(_left)
     elif _raised == "WRONG":
         ex24_ok = False
-        _msg = "Wrong — Exercise 2.4: the oversized refund *did* raise, but not a `ValueError`. Use `raise ValueError(...)` specifically so the till can catch the right type."
+        _msg = "Wrong (Exercise 2.4): the oversized refund *did* raise, but not a `ValueError`. Use `raise ValueError(...)` specifically so the till can catch the right type."
         _preview = ""
     elif _raised is False:
         ex24_ok = False
-        _msg = "Wrong — Exercise 2.4: a 20.00 refund on a 12.40 ramen slipped through without raising. Add `if back > paid: raise ValueError(...)` before the subtraction."
+        _msg = "Wrong (Exercise 2.4): a 20.00 refund on a 12.40 ramen slipped through without raising. Add `if back > paid: raise ValueError(...)` before the subtraction."
         _preview = ""
     else:
         ex24_ok = True
-        _msg = "Correct — Exercise 2.4: the sad customer gets 3.00 back and pays **9.40**; the 20.00 refund is refused with a `ValueError` before it reaches the till. Tobi's face when it raised was worth the whole exercise."
+        _msg = "Correct (Exercise 2.4): the sad customer gets 3.00 back and pays **9.40**; the 20.00 refund is refused with a `ValueError` before it reaches the till. Tobi's face when it raised was worth the whole exercise."
         _preview = show_result(_left)
     mo.callout(mo.md(_msg + _preview), kind="success" if ex24_ok else "warn")
     return (ex24_ok,)
@@ -725,13 +725,13 @@ def _(mo):
 
 
 # ─────────────────────────────────────────────────────────────────────────
-# SECTION 3 — Safe defaults when parsing fails
+# SECTION 3: Safe defaults when parsing fails
 # ─────────────────────────────────────────────────────────────────────────
 @app.cell(hide_code=True)
 def _(mo):
     mo.md(
         r"""
-    ## Section 3 — A safe default when things fail
+    ## Section 3: A safe default when things fail
 
     Catching an error doesn't have to mean giving up. A common, friendly pattern
     is: **try the risky thing; if it fails, fall back to a sensible default** so
@@ -770,7 +770,7 @@ def _():
 def _(mo):
     mo.md(
         r"""
-    ### Exercise 3.1 (core) — how many wraps?
+    ### Exercise 3.1 (core): how many wraps?
 
     The quantity box is as unreliable as the price box. Write `parse_qty_ex31(text)`
     that returns `int(text)` when it can, but if the text isn't a whole number,
@@ -797,24 +797,24 @@ def _(mo, parse_qty_ex31, show_result):
         _bad = parse_qty_ex31("??")
     except Exception:
         ex31_ok = False
-        _msg = "Wrong — Exercise 3.1: it's crashing. A bad quantity should be *caught* and replaced with 1. Wrap the conversion in `try` / `except ValueError`."
+        _msg = "Wrong (Exercise 3.1): it's crashing. A bad quantity should be *caught* and replaced with 1. Wrap the conversion in `try` / `except ValueError`."
         _preview = ""
     else:
         if _good is None and _bad is None:
             ex31_ok = False
-            _msg = "Not attempted — Exercise 3.1: not attempted yet (the function still returns None). Use `return`, not `print`, then run the cell."
+            _msg = "Not attempted (Exercise 3.1): (the function still returns None). Use `return`, not `print`, then run the cell."
             _preview = ""
         elif _good == 3 and _bad == 1:
             ex31_ok = True
-            _msg = "Correct — Exercise 3.1: `\"3\"` → 3, `\"??\"` → 1. Garbage in, one wrap out. The checkout never stalls on a typo again."
+            _msg = "Correct (Exercise 3.1): `\"3\"` → 3, `\"??\"` → 1. Garbage in, one wrap out."
             _preview = show_result(_good)
         elif _bad != 1:
             ex31_ok = False
-            _msg = "Wrong — Exercise 3.1: `\"??\"` should fall back to `1`, not crash or return something else. Return `1` inside the `except ValueError`."
+            _msg = "Wrong (Exercise 3.1): `\"??\"` should fall back to `1`, not crash or return something else. Return `1` inside the `except ValueError`."
             _preview = show_result(_bad)
         else:
             ex31_ok = False
-            _msg = "Wrong — Exercise 3.1: a real quantity like `\"3\"` should convert to the int `3`. Return `int(text)` in the `try`, `1` in the `except`."
+            _msg = "Wrong (Exercise 3.1): a real quantity like `\"3\"` should convert to the int `3`. Return `int(text)` in the `try`, `1` in the `except`."
             _preview = show_result(_good)
     mo.callout(mo.md(_msg + _preview), kind="success" if ex31_ok else "warn")
     return (ex31_ok,)
@@ -835,7 +835,7 @@ def _(mo):
 def _(mo):
     mo.md(
         r"""
-    ### Exercise 3.2 (core, fix the bug) — the end-of-day takings
+    ### Exercise 3.2 (core, fix the bug): the end-of-day takings
 
     Last one before the boss. Tobi's 3-AM version of the end-of-day count reads
     the receipt slips (`"12.50"`, `"8.90"`, ...) and adds them up. One slip is
@@ -875,23 +875,23 @@ def _(receipts_ex):
 def _(mo, show_result, takings_ex32):
     if takings_ex32 is None:
         ex32_ok = False
-        _msg = "Not attempted — Exercise 3.2. Assign it to `takings_ex32` (a `print` alone doesn't count) and run the cell."
+        _msg = "Not attempted (Exercise 3.2). Assign it to `takings_ex32` (a `print` alone doesn't count) and run the cell."
         _preview = ""
     elif not isinstance(takings_ex32, (int, float)):
         ex32_ok = False
-        _msg = "Wrong — Exercise 3.2: `takings_ex32` should be a **number**, the day's total in EUR."
+        _msg = "Wrong (Exercise 3.2): `takings_ex32` should be a **number**, the day's total in EUR."
         _preview = show_result(takings_ex32)
     elif round(takings_ex32, 2) == 27.80:
         ex32_ok = True
-        _msg = "Correct — Exercise 3.2: **27.80**, all three readable slips, the smudged one skipped. Tobi's `except` was *resetting* the total every time it caught something. Catching an error is fine; what you do in the `except` still has to make sense."
+        _msg = "Correct (Exercise 3.2): **27.80**, all three readable slips, the smudged one skipped. Tobi's `except` was *resetting* the total every time it caught something. Catching an error is fine; what you do in the `except` still has to make sense."
         _preview = show_result(takings_ex32)
     elif round(takings_ex32, 2) == 6.40:
         ex32_ok = False
-        _msg = "Wrong — Exercise 3.2: 6.40 is just the *last* slip. Everything before the smudged one was thrown away. Look at what the `except` branch does to the running total when it catches the `ValueError`."
+        _msg = "Wrong (Exercise 3.2): 6.40 is just the *last* slip. Everything before the smudged one was thrown away. Look at what the `except` branch does to the running total when it catches the `ValueError`."
         _preview = show_result(takings_ex32)
     else:
         ex32_ok = False
-        _msg = "Wrong — Exercise 3.2: not 27.80. Every readable slip (12.50, 8.90, 6.40) should be added; the `\"kaputt\"` slip should be skipped *without* touching the total."
+        _msg = "Wrong (Exercise 3.2): not 27.80. Every readable slip (12.50, 8.90, 6.40) should be added; the `\"kaputt\"` slip should be skipped *without* touching the total."
         _preview = show_result(takings_ex32)
     mo.callout(mo.md(_msg + _preview), kind="success" if ex32_ok else "warn")
     return (ex32_ok,)
@@ -909,13 +909,13 @@ def _(mo):
 
 
 # ─────────────────────────────────────────────────────────────────────────
-# BOSS EXERCISE — harden the whole checkout
+# BOSS EXERCISE: harden the whole checkout
 # ─────────────────────────────────────────────────────────────────────────
 @app.cell(hide_code=True)
 def _(mo):
     mo.md(
         r"""
-    ## Boss exercise (core) — harden the checkout
+    ## Boss exercise (core): harden the checkout
 
     The inspector wants the total to survive **anything** the day throws at it.
     Here is a batch of orders, and it's a mess:
@@ -965,35 +965,35 @@ def _(mo, orders_ex40, robust_total_ex40, show_result):
         _clean = robust_total_ex40([("A", 1.0), ("B", 2.0)])
     except Exception:
         ex40_ok = False
-        _msg = "Wrong — Boss exercise: it's crashing on the messy batch: the `\"kaputt\"` string is getting used as a number. Skip non-numbers *before* you add them (an `isinstance` check, or a `try` / `except`)."
+        _msg = "Wrong (Boss exercise): it's crashing on the messy batch: the `\"kaputt\"` string is getting used as a number. Skip non-numbers *before* you add them (an `isinstance` check, or a `try` / `except`)."
         _preview = ""
     else:
         if _messy is None:
             ex40_ok = False
-            _msg = "Not attempted — Boss exercise: not attempted yet (the function still returns None). Use `return`, not `print`, then run the cell."
+            _msg = "Not attempted (Boss exercise): (the function still returns None). Use `return`, not `print`, then run the cell."
             _preview = ""
         elif (
             isinstance(_messy, (int, float)) and round(_messy, 2) == 22.70
             and isinstance(_clean, (int, float)) and round(_clean, 2) == 3.0
         ):
             ex40_ok = True
-            _msg = "Correct — Boss exercise: **22.70**. Only the Wrap (13.80) and the Thai (8.90) counted; the negative and the `\"kaputt\"` were skipped. And a clean list still totals correctly, so you didn't hardcode the answer. The checkout is inspector-proof."
+            _msg = "Correct (Boss exercise): **22.70**. Only the Wrap (13.80) and the Thai (8.90) counted; the negative and the `\"kaputt\"` were skipped. And a clean list still totals correctly, so you didn't hardcode the answer. The checkout is inspector-proof."
             _preview = show_result(_messy)
         elif isinstance(_messy, (int, float)) and round(_messy, 2) == 20.70:
             ex40_ok = False
-            _msg = "Wrong — Boss exercise: 20.70 means the `-2.0` slipped through: you skipped the `\"kaputt\"` string but still added the negative. Skip a price when it's **negative** *or* not a number."
+            _msg = "Wrong (Boss exercise): 20.70 means the `-2.0` slipped through: you skipped the `\"kaputt\"` string but still added the negative. Skip a price when it's **negative** *or* not a number."
             _preview = show_result(_messy)
         elif isinstance(_messy, (int, float)) and round(_messy, 2) == 13.80:
             ex40_ok = False
-            _msg = "Wrong — Boss exercise: 13.80 is only the Wrap. The Thai (8.90) is a perfectly good order and should be counted too. Skip *only* the negative and the non-number."
+            _msg = "Wrong (Boss exercise): 13.80 is only the Wrap. The Thai (8.90) is a perfectly good order and should be counted too. Skip *only* the negative and the non-number."
             _preview = show_result(_messy)
         elif isinstance(_messy, (int, float)) and round(_messy, 2) == 22.70:
             ex40_ok = False
-            _msg = "Wrong — Boss exercise: 22.70 for the messy list, but a clean list of `1.0` and `2.0` doesn't come out as 3.0. Either the number is hardcoded, or the function ignores its argument. Compute the total from the list it is given."
+            _msg = "Wrong (Boss exercise): 22.70 for the messy list, but a clean list of `1.0` and `2.0` doesn't come out as 3.0. Either the number is hardcoded, or the function ignores its argument. Compute the total from the list it is given."
             _preview = show_result(_clean)
         else:
             ex40_ok = False
-            _msg = "Wrong — Boss exercise: not 22.70. Add up only the prices that are numbers *and* ≥ 0, so the Wrap (13.80) and the Thai (8.90), then `round(..., 2)`."
+            _msg = "Wrong (Boss exercise): not 22.70. Add up only the prices that are numbers *and* ≥ 0, so the Wrap (13.80) and the Thai (8.90), then `round(..., 2)`."
             _preview = show_result(_messy)
     mo.callout(mo.md(_msg + _preview), kind="success" if ex40_ok else "warn")
     return (ex40_ok,)
@@ -1017,7 +1017,7 @@ def _(mo):
 def _(mo):
     mo.md(
         r"""
-    ### Quiz (core, MCQ) — the wrong `except`
+    ### Quiz (core, MCQ): the wrong `except`
 
     A `try` block runs `int("drei")`, which raises a `ValueError`. The only
     handler is `except TypeError:`. What does the program do? Assign the letter
@@ -1042,18 +1042,18 @@ def _():
 def _(answer_ex50, mo):
     if answer_ex50 == "":
         ex50_ok = False
-        _msg = "Not attempted — Quiz. Set `answer_ex50` to your letter and run the cell."
+        _msg = "Not attempted (Quiz). Set `answer_ex50` to your letter and run the cell."
     elif str(answer_ex50).strip().lower() == "a":
         ex50_ok = True
         _msg = (
-            "Correct — Quiz: **a**. An `except` only catches the type it names. A "
+            "Correct (Quiz): **a**. An `except` only catches the type it names. A "
             "`ValueError` walks straight past `except TypeError:` and crashes the "
             "program, which is why you catch the *specific* error you expect."
         )
     else:
         ex50_ok = False
         _msg = (
-            "Wrong — Quiz: not quite. Read the `except` line again: which error type "
+            "Wrong (Quiz): not quite. Read the `except` line again: which error type "
             "does it name, and is that the type being raised?"
         )
     mo.callout(mo.md(_msg), kind="success" if ex50_ok else "warn")
@@ -1064,7 +1064,7 @@ def _(answer_ex50, mo):
 def _(mo):
     mo.md(
         r"""
-    ### Bonus — read the traceback (not required)
+    ### Bonus: read the traceback (not required)
 
     Tobi's checkout module crashed overnight and left this in the log. Read it
     **bottom to top** and find the line where the error actually happened:
@@ -1098,27 +1098,27 @@ def _():
 def _(answer_ex60, mo, show_result):
     if answer_ex60 is None:
         ex60_ok = False
-        _msg = "Not attempted — Bonus. Assign it to `answer_ex60` (a `print` alone doesn't count) and run the cell."
+        _msg = "Not attempted (Bonus). Assign it to `answer_ex60` (a `print` alone doesn't count) and run the cell."
         _preview = ""
     elif not isinstance(answer_ex60, int):
         ex60_ok = False
-        _msg = "Wrong — Bonus: the answer is a **line number**, a whole number like `18`, not text."
+        _msg = "Wrong (Bonus): the answer is a **line number**, a whole number like `18`, not text."
         _preview = show_result(answer_ex60)
     elif answer_ex60 == 18:
         ex60_ok = True
-        _msg = "Correct — Bonus: **line 18**: the *last* frame before the error message, inside `surcharge`, where `rate` is used but never defined. The bottom frame is always where the crash truly happened; the frames above just show how you got there."
+        _msg = "Correct (Bonus): **line 18**: the *last* frame before the error message, inside `surcharge`, where `rate` is used but never defined. The bottom frame is always where the crash truly happened; the frames above just show how you got there."
         _preview = show_result(answer_ex60)
     elif answer_ex60 == 47:
         ex60_ok = False
-        _msg = "Wrong — Bonus: line 47 is where the *chain started* (the top frame), not where it broke. Read to the **bottom**: the last frame, line 18, is where `rate` is actually used."
+        _msg = "Wrong (Bonus): line 47 is where the *chain started* (the top frame), not where it broke. Read to the **bottom**: the last frame, line 18, is where `rate` is actually used."
         _preview = show_result(answer_ex60)
     elif answer_ex60 == 31:
         ex60_ok = False
-        _msg = "Wrong — Bonus: line 31 is a middle frame. It *called* the broken function but isn't itself the problem. The error is raised one frame deeper, at line 18."
+        _msg = "Wrong (Bonus): line 31 is a middle frame. It *called* the broken function but isn't itself the problem. The error is raised one frame deeper, at line 18."
         _preview = show_result(answer_ex60)
     else:
         ex60_ok = False
-        _msg = "Wrong — Bonus: look at the **last frame** listed (just above the `NameError`). Its line number is where `rate` is used without being defined."
+        _msg = "Wrong (Bonus): look at the **last frame** listed (just above the `NameError`). Its line number is where `rate` is used without being defined."
         _preview = show_result(answer_ex60)
     mo.callout(mo.md(_msg + _preview), kind="success" if ex60_ok else "warn")
     return
@@ -1128,7 +1128,7 @@ def _(answer_ex60, mo, show_result):
 def _(mo):
     mo.md(
         r"""
-    ### Bonus — assert the invariant (not required)
+    ### Bonus: assert the invariant (not required)
 
     Experienced programmers plant **`assert`** statements to guard an
     *invariant*, a fact that should always be true. If it isn't, the program
@@ -1170,19 +1170,19 @@ def _():
 def _(all_valid_ex61, mo, show_result):
     if all_valid_ex61 is None:
         ex61_ok = False
-        _msg = "Not attempted — Bonus. Assign it to `all_valid_ex61` (a `print` alone doesn't count) and run the cell."
+        _msg = "Not attempted (Bonus). Assign it to `all_valid_ex61` (a `print` alone doesn't count) and run the cell."
         _preview = ""
     elif not isinstance(all_valid_ex61, bool):
         ex61_ok = False
-        _msg = "Wrong — Bonus: this should be a **boolean**, `True` or `False`. `all(...)` gives you exactly that."
+        _msg = "Wrong (Bonus): this should be a **boolean**, `True` or `False`. `all(...)` gives you exactly that."
         _preview = show_result(all_valid_ex61)
     elif all_valid_ex61 is True:
         ex61_ok = True
-        _msg = "Correct — Bonus: **True**: every price on the inspected board is ≥ 0. `all(p >= 0 for p in prices)` checks the whole list at once and returns a single boolean you could hand straight to `assert`."
+        _msg = "Correct (Bonus): **True**: every price on the inspected board is ≥ 0. `all(p >= 0 for p in prices)` checks the whole list at once and returns a single boolean you could hand straight to `assert`."
         _preview = show_result(all_valid_ex61)
     else:
         ex61_ok = False
-        _msg = "Wrong — Bonus: every price in `inspected_prices_ex` really is ≥ 0, so this should be `True`. Use `all(p >= 0 for p in inspected_prices_ex)`."
+        _msg = "Wrong (Bonus): every price in `inspected_prices_ex` really is ≥ 0, so this should be `True`. Use `all(p >= 0 for p in inspected_prices_ex)`."
         _preview = show_result(all_valid_ex61)
     mo.callout(mo.md(_msg + _preview), kind="success" if ex61_ok else "warn")
     return
@@ -1251,7 +1251,7 @@ def _(mo):
     3. That's a wrap on **Part I**: you can now store data, shape it, loop over
        it, wrap it in functions, and keep it standing when things go wrong. Next
        session opens with **Checkpoint 3**, which sweeps everything from Episodes
-       1–5, so keep this notebook (and the last four) close.
+       1-5, so keep this notebook (and the last four) close.
     4. And the teaser: the inspector leaves satisfied. Next week someone new
        walks into the shop, uncaps a marker, and writes one question on the
        whiteboard. **Part II begins.**

@@ -128,7 +128,7 @@ print(prices * 1.19)   # every element, one expression
 
 One operation lands on **all** elements at once: `[14.28 10.71 17.85]`. No loop, no `.append`, and on a thousand orders it's also far faster.
 
-# Your turn --- 5--10 minutes
+# Your turn: 5-10 minutes
 
 Open the exercise (scan the QR or type the link):
 
@@ -220,7 +220,7 @@ print(np.array([1, 2, 3]) + np.array([10, 20, 30]))    # array → added
 
 Every operator follows the same rule: lists do list things, arrays do math.
 
-# Your turn --- 5--10 minutes
+# Your turn: 5-10 minutes
 
 Open the exercise (scan the QR or type the link):
 
@@ -346,7 +346,7 @@ print((times > 20) & (times < 40))    # element by element: & combines masks
 
     [ True False False  True]
 
-# Your turn --- 5--10 minutes
+# Your turn: 5-10 minutes
 
 Open the exercise (scan the QR or type the link):
 
@@ -419,7 +419,7 @@ print(grid.size)    # rows × columns
 
 . . .
 
-Same order as indexing: `grid[row, column]`. Rows first, every time.
+Same order as indexing: `grid[row, column]`, rows first.
 
 ## Which way to collapse?
 
@@ -458,7 +458,7 @@ print(deliveries.sum(axis=1))   # ACROSS the columns → per day
 
 **`axis=0` collapses DOWN the rows, one number per column (zone):** `[37 46 35 26]`. `axis=1` collapses across, one per day: `[40 44 60]`.
 
-# Your turn --- 5--10 minutes
+# Your turn: 5-10 minutes
 
 Open the exercise (scan the QR or type the link):
 
@@ -523,7 +523,7 @@ print(week.sum(axis=0))
 
 a\) would give **three** numbers (one per day); b) would give **one** number: the grand total, `144`.
 
-# Your turn --- 5--10 minutes
+# Your turn: 5-10 minutes
 
 Open the exercise (scan the QR or type the link):
 
@@ -537,7 +537,7 @@ First **predict** what happens, then run it.
 
 ## After the break: the lab
 
-- Head to the lab notebook: [Episode 7 --- The Numbers Deck](../tutorials/tut_07_scientific.qmd)
+- Head to the lab notebook: [Episode 7: The Numbers Deck](../tutorials/tut_07_scientific.qmd)
 - You'll turn the order log into arrays, add VAT to a whole price column at once, mask out the late deliveries to count and average them, and collapse a days-by-zones grid to find the winning zone
 - AI is allowed, so try the chatbot, and keep your one-line disclosure note on the submission
 - It runs entirely in your browser: no setup, just click and code
@@ -560,7 +560,7 @@ First **predict** what happens, then run it.
 
 > **Note**
 >
-> **Next episode** starts with **Checkpoint 4**: 40 minutes, AI allowed, everything from Episodes 6--7. Then the investor opens a data room, and Tobi lets an AI write his pandas: the arrays get column names, and eighty orders become a table you can query.
+> **Next episode** starts with **Checkpoint 4**: 40 minutes, AI allowed, everything from Episodes 6-7. Then the investor opens a data room, and Tobi lets an AI write his pandas: the arrays get column names, and eighty orders become a table you can query.
 
 # <span class="flow">Literature</span>
 

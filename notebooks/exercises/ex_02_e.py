@@ -27,7 +27,7 @@ def _():
 def _(mo):
     mo.md(
         r"""
-    # Quick exercise: de-shout the menu (5–10 min)
+    # Quick exercise: de-shout the menu (5-10 min)
 
     Tobi typed a new menu item IN ALL CAPS, WITH EXCLAMATION MARKS, and
     stray spaces. Chain string methods on `raw_item` below to turn it into
@@ -43,7 +43,7 @@ def _(mo):
 def _(mo):
     mo.callout(
         mo.md(
-            "**Saving your work:** this notebook runs in your browser. Press"
+            "**Saving your work:** this notebook runs in your browser. Press "
             "**Cmd/Ctrl+S** to save, and always save **before** menu → Download → "
             "*Download Python code*. Without a save first, the download is an empty file."
         ),
@@ -71,13 +71,13 @@ def _(item_exe, mo, show_result):
     # Reactive check. Re-runs when you run the cell above.
     if item_exe is None:
         _ok = False
-        _msg = "Not attempted — assign it to `item_exe` (a `print` alone doesn't count) and run the cell."
+        _msg = "Not attempted: assign it to `item_exe` (a `print` alone doesn't count) and run the cell."
     elif item_exe == "Falafel Wrap":
         _ok = True
-        _msg = "Correct — Tobi's shouting is gone."
+        _msg = "Correct: Tobi's shouting is gone."
     else:
         _ok = False
-        _msg = "Wrong — watch the order: strip spaces first, then the !!!, then Title Case."
+        _msg = "Wrong: watch the order: strip spaces first, then the !!!, then Title Case."
     mo.callout(mo.md(_msg + show_result(item_exe)), kind="success" if _ok else "warn")
     return
 
@@ -118,16 +118,16 @@ def _(mo, show_result, special_exe):
     # Reactive check. Re-runs when you run the cell above.
     if special_exe is None:
         _ok = False
-        _msg = "Not attempted — assign it to `special_exe` (a `print` alone doesn't count) and run the cell."
+        _msg = "Not attempted: assign it to `special_exe` (a `print` alone doesn't count) and run the cell."
     elif special_exe == "Miso Ramen":
         _ok = True
-        _msg = "Correct — `.rstrip(\"!\")` only sees the **end** of the string, and in Tobi's order the end was still spaces. Strip the spaces first."
+        _msg = "Correct: `.rstrip(\"!\")` only sees the **end** of the string, and in Tobi's order the end was still spaces. Strip the spaces first."
     elif special_exe == "Miso Ramen!!":
         _ok = False
-        _msg = "Wrong — that is still Tobi's order. When `.rstrip(\"!\")` runs, the string still ends in spaces, so there is no `!` at the end to remove."
+        _msg = "Wrong: that is still Tobi's order. When `.rstrip(\"!\")` runs, the string still ends in spaces, so there is no `!` at the end to remove."
     else:
         _ok = False
-        _msg = "Wrong — aim for exactly `Miso Ramen`: outer spaces first, then the `!!`, then Title Case."
+        _msg = "Wrong: aim for exactly `Miso Ramen`: outer spaces first, then the `!!`, then Title Case."
     mo.callout(mo.md(_msg + show_result(special_exe)), kind="success" if _ok else "warn")
     return
 

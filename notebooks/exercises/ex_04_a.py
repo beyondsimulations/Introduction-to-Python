@@ -27,7 +27,7 @@ def _():
 def _(mo):
     mo.md(
         r"""
-    # Quick exercise: the courier route (5–10 min)
+    # Quick exercise: the courier route (5-10 min)
 
     Tobi planned tonight's route as a list of stops, in order:
 
@@ -74,22 +74,22 @@ def _(mo, remaining_exa, show_result):
     # Reactive check. Re-runs when you run the cell above.
     if remaining_exa is None:
         _ok = False
-        _msg = "Not attempted — assign it to `remaining_exa` (a `print` alone doesn't count) and run the cell."
+        _msg = "Not attempted: assign it to `remaining_exa` (a `print` alone doesn't count) and run the cell."
     elif remaining_exa == ["Dorm A", "Gym", "Dorm B"]:
         _ok = True
-        _msg = "Correct — three stops to go, starting at index 2."
+        _msg = "Correct: three stops to go, starting at index 2."
     elif remaining_exa == ["Library", "Dorm A", "Gym", "Dorm B"]:
         _ok = False
-        _msg = "Wrong — the Library was stop number two, and it's done. Python counts from 0: the third stop lives at index 2."
+        _msg = "Wrong: the Library was stop number two, and it's done. Python counts from 0: the third stop lives at index 2."
     elif remaining_exa == ["Dorm A", "Gym"]:
         _ok = False
-        _msg = "Wrong — the `stop` index is excluded, so the last stop fell off. Leave the right side of the slice empty to run to the end."
+        _msg = "Wrong: the `stop` index is excluded, so the last stop fell off. Leave the right side of the slice empty to run to the end."
     elif isinstance(remaining_exa, str):
         _ok = False
-        _msg = "Wrong — that's a single stop, not a list. A slice needs a colon: `route[start:stop]`."
+        _msg = "Wrong: that's a single stop, not a list. A slice needs a colon: `route[start:stop]`."
     else:
         _ok = False
-        _msg = "Wrong — the slice should start at index 2 and run to the end of `route`."
+        _msg = "Wrong: the slice should start at index 2 and run to the end of `route`."
     mo.callout(mo.md(_msg + show_result(remaining_exa)), kind="success" if _ok else "warn")
     return
 
@@ -119,19 +119,19 @@ def _(middle_exa, mo, show_result):
     # Reactive check. Re-runs when you run the cell above.
     if middle_exa is None:
         _ok = False
-        _msg = "Not attempted — assign it to `middle_exa` (a `print` alone doesn't count) and run the cell."
+        _msg = "Not attempted: assign it to `middle_exa` (a `print` alone doesn't count) and run the cell."
     elif middle_exa == ["Library", "Dorm A", "Gym"]:
         _ok = True
-        _msg = "Correct — `route[1:-1]`: start after the first, stop before the last."
+        _msg = "Correct: `route[1:-1]`: start after the first, stop before the last."
     elif middle_exa == ["Library", "Dorm A", "Gym", "Dorm B"]:
         _ok = False
-        _msg = "Wrong — the last dorm is still in. A negative `stop` of `-1` stops right before the final item."
+        _msg = "Wrong: the last dorm is still in. A negative `stop` of `-1` stops right before the final item."
     elif middle_exa == ["Library", "Dorm A"]:
         _ok = False
-        _msg = "Wrong — one stop too few. The `stop` index is excluded, so `-1` already drops the last item; `-2` drops two."
+        _msg = "Wrong: one stop too few. The `stop` index is excluded, so `-1` already drops the last item; `-2` drops two."
     else:
         _ok = False
-        _msg = "Wrong — start at index 1 and stop at `-1`."
+        _msg = "Wrong: start at index 1 and stop at `-1`."
     mo.callout(mo.md(_msg + show_result(middle_exa)), kind="success" if _ok else "warn")
     return
 

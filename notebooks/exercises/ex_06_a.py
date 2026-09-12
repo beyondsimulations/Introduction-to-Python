@@ -27,12 +27,12 @@ def _():
 def _(mo):
     mo.md(
         r"""
-    # Quick exercise: import by name (5–10 min)
+    # Quick exercise: import by name (5-10 min)
 
     `import statistics` puts the whole toolbox on the desk, and every tool
     needs the `statistics.` prefix. `from statistics import mean, median`
-    pulls just those two tools out of the box: you call them by their bare
-    names, `median(...)`, no prefix at all.
+    pulls just those two tools out of the box, and you call them by their bare
+    names: `median(...)` instead of `statistics.median(...)`.
 
     **Predict** what the cell below prints, then run it.
     """
@@ -101,16 +101,16 @@ def _(mo, show_result, typical_exa):
     # Reactive check. Re-runs when you run the cell above.
     if typical_exa is None:
         _ok = False
-        _msg = "Not attempted — assign it to `typical_exa` (a `print` alone doesn't count) and run the cell."
+        _msg = "Not attempted: assign it to `typical_exa` (a `print` alone doesn't count) and run the cell."
     elif isinstance(typical_exa, (int, float)) and round(typical_exa, 2) == 12.5:
         _ok = True
-        _msg = "Correct — 12.5 minutes. Six values, so the median averages the two in the middle, and the 58 never gets a say."
+        _msg = "Correct: 12.5 minutes. Six values, so the median averages the two in the middle, and the 58 never gets a say."
     elif isinstance(typical_exa, (int, float)) and round(typical_exa, 2) == 20.0:
         _ok = False
-        _msg = "Wrong — that's the mean, and the 58 dragged it up to 20. The investor asked for the middle value."
+        _msg = "Wrong: that's the mean, and the 58 dragged it up to 20. The investor asked for the middle value."
     else:
         _ok = False
-        _msg = "Wrong — sort the six times in your head: the typical one sits between the third and the fourth. Which imported name finds it?"
+        _msg = "Wrong: sort the six times in your head: the typical one sits between the third and the fourth. Which imported name finds it?"
     mo.callout(mo.md(_msg + show_result(typical_exa)), kind="success" if _ok else "warn")
     return
 
@@ -151,16 +151,16 @@ def _(drag_exa, mo, show_result):
     # Reactive check. Re-runs when you run the cell above.
     if drag_exa is None:
         _ok = False
-        _msg = "Not attempted — assign it to `drag_exa` (a `print` alone doesn't count) and run the cell."
+        _msg = "Not attempted: assign it to `drag_exa` (a `print` alone doesn't count) and run the cell."
     elif isinstance(drag_exa, (int, float)) and round(drag_exa, 2) == 7.5:
         _ok = True
-        _msg = "Correct — 7.5 minutes of drag from a single delivery. That's the number the investor writes down."
+        _msg = "Correct: 7.5 minutes of drag from a single delivery. That's the number the investor writes down."
     elif isinstance(drag_exa, (int, float)) and round(drag_exa, 2) == -7.5:
         _ok = False
-        _msg = "Wrong — right size, wrong sign. The mean sits *above* the median here, so subtract the median from the mean."
+        _msg = "Wrong: right size, wrong sign. The mean sits *above* the median here, so subtract the median from the mean."
     else:
         _ok = False
-        _msg = "Wrong — two calls, one subtraction: `mean(...)` of the times minus `median(...)` of the times."
+        _msg = "Wrong: two calls, one subtraction: `mean(...)` of the times minus `median(...)` of the times."
     mo.callout(mo.md(_msg + show_result(drag_exa)), kind="success" if _ok else "warn")
     return
 

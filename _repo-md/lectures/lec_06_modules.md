@@ -12,12 +12,12 @@ format:
 
 # Checkpoint 3
 
-**Sessions I--V.** The first 40 minutes are the checkpoint. It starts now, before the investor sits down.
+**Sessions I-V.** The first 40 minutes are the checkpoint. It starts now, before the investor sits down.
 
 - **Individual work**: no AI, no neighbors, no chat
 - The **link and QR** are handed out in class. Open it and start
 - ~6 short tasks: write code, trace code, fix a bug, answer a multiple choice
-- It sweeps **everything from Sessions I--V**: variables, control flow, functions, data structures, errors
+- It sweeps **everything from Sessions I-V**: variables, control flow, functions, data structures, errors
 
 <!-- QR handed out live, never in the deck -->
 
@@ -124,7 +124,7 @@ print(median(ratings))   # the middle value
 
 One furious review (a 1.0) drags the mean down to 3.9. The investor asked for the **typical** rating: `median` sorts the values and hands back the middle one (4.5), unmoved by one angry customer.
 
-# Your turn --- 5--10 minutes
+# Your turn: 5-10 minutes
 
 Open the exercise (scan the QR or type the link):
 
@@ -238,7 +238,7 @@ print(math.floor(-2.5))   # down the number line → -3
 
 "Down" means *smaller*, and `-3` is smaller than `-2`. Keep the number line in your head, not the distance to zero.
 
-# Your turn --- 5--10 minutes
+# Your turn: 5-10 minutes
 
 Open the exercise (scan the QR or type the link):
 
@@ -258,7 +258,7 @@ The investor wants to see how the shop copes with a **busy day**, but the busy d
 import random
 
 print(random.random())                       # a float in [0.0, 1.0)
-print(random.randint(1, 20))                  # an integer 1–20, ends included
+print(random.randint(1, 20))                  # an integer 1-20, ends included
 print(random.choice(["latte", "mocha", "tea"]))  # one item, picked at random
 
 queue = [1, 2, 3, 4, 5]
@@ -266,10 +266,10 @@ random.shuffle(queue)                         # reorders the list in place
 print(queue)
 ```
 
-    0.611095716897787
-    12
+    0.6241441969041941
+    5
     mocha
-    [2, 5, 3, 1, 4]
+    [5, 3, 1, 4, 2]
 
 . . .
 
@@ -286,8 +286,8 @@ print([random.randint(1, 20) for _ in range(5)])   # _ : a loop name we never us
 print([random.randint(1, 20) for _ in range(5)])   # ...and again, different!
 ```
 
-    [11, 16, 4, 13, 4]
-    [1, 4, 19, 11, 17]
+    [7, 17, 9, 16, 15]
+    [17, 7, 14, 11, 7]
 
 . . .
 
@@ -401,7 +401,7 @@ print(second)   # [8, 8, 5]: the stream carries on
 
 To get the *same* list twice, you re-seed before each run, and that rewinds the stream to the start. One seed, one fixed sequence: that's the entire job of a seed.
 
-# Your turn --- 5--10 minutes
+# Your turn: 5-10 minutes
 
 Open the exercise (scan the QR or type the link):
 
@@ -415,7 +415,7 @@ First **predict** what happens, then run it.
 
 ## After the break: the lab
 
-- Head to the lab notebook: [Episode 6 --- Due Diligence Week](../tutorials/tut_06_modules.qmd)
+- Head to the lab notebook: [Episode 6: Due Diligence Week](../tutorials/tut_06_modules.qmd)
 - You'll `import math` and `statistics` for investor-grade counts and averages, then use `random` with a `seed` to rehearse a busy day she can reproduce
 - It's the **first lab where AI is allowed**, so try the chatbot
 - This week's homework: the **Mistral account** and the **Zed student plan** from the [AI Tools page](../general/ai-tools.qmd)

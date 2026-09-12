@@ -27,7 +27,7 @@ def _():
 def _(mo):
     mo.md(
         r"""
-    # Quick exercise: the delivery fee (5–10 min)
+    # Quick exercise: the delivery fee (5-10 min)
 
     The curfew stands, and on top of it the startup now charges a delivery
     fee that depends on the order size:
@@ -77,13 +77,13 @@ def _(fee_exb, mo, show_result):
     # Reactive check. Re-runs when you run the cell above.
     if fee_exb is None:
         _ok = False
-        _msg = "Not attempted — assign it to `fee_exb` (a `print` alone doesn't count) and run the cell."
+        _msg = "Not attempted: assign it to `fee_exb` (a `print` alone doesn't count) and run the cell."
     elif isinstance(fee_exb, (int, float)) and round(fee_exb, 2) == 1.50:
         _ok = True
-        _msg = "Correct — 17.80 EUR lands in the middle tier: 1.50 EUR fee."
+        _msg = "Correct: 17.80 EUR lands in the middle tier: 1.50 EUR fee."
     else:
         _ok = False
-        _msg = "Wrong — check which branch 17.80 falls into."
+        _msg = "Wrong: check which branch 17.80 falls into."
     mo.callout(mo.md(_msg + show_result(fee_exb)), kind="success" if _ok else "warn")
     return
 
@@ -119,16 +119,16 @@ def _(fee2_exb, mo, show_result):
     # Reactive check. Re-runs when you run the cell above.
     if fee2_exb is None:
         _ok = False
-        _msg = "Not attempted — assign it to `fee2_exb` (a `print` alone doesn't count) and run the cell."
+        _msg = "Not attempted: assign it to `fee2_exb` (a `print` alone doesn't count) and run the cell."
     elif isinstance(fee2_exb, (int, float)) and round(fee2_exb, 2) == 0:
         _ok = True
-        _msg = "Correct — 0 EUR. Gold status beats the ladder, so test `is_gold` first."
+        _msg = "Correct: 0 EUR. Gold status beats the ladder, so test `is_gold` first."
     elif isinstance(fee2_exb, (int, float)) and round(fee2_exb, 2) == 1.50:
         _ok = False
-        _msg = "Wrong — that is the plain ladder. `is_gold` is `True`, so the fee must be 0 no matter the total."
+        _msg = "Wrong: that is the plain ladder. `is_gold` is `True`, so the fee must be 0 no matter the total."
     else:
         _ok = False
-        _msg = "Wrong — check `is_gold` before the ladder: a Gold customer pays 0."
+        _msg = "Wrong: check `is_gold` before the ladder: a Gold customer pays 0."
     mo.callout(mo.md(_msg + show_result(fee2_exb)), kind="success" if _ok else "warn")
     return
 

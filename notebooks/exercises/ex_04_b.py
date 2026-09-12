@@ -27,7 +27,7 @@ def _():
 def _(mo):
     mo.md(
         r"""
-    # Quick exercise: the order queue (5–10 min)
+    # Quick exercise: the order queue (5-10 min)
 
     The kitchen keeps today's orders in a queue:
 
@@ -77,12 +77,12 @@ def _(mo, trace_exb):
         _msg = "Pick a prediction above first. Commit before you peek!"
     elif trace_exb.value == "a) \"Miso Ramen\"":
         _msg = (
-            "Correct — a negative index counts from the end, so `-1` is"
+            "Correct: a negative index counts from the end, so `-1` is "
             "the last item, `\"Miso Ramen\"`."
         )
     else:
         _msg = (
-            "Wrong — a negative index counts from the end, so `-1` is"
+            "Wrong: a negative index counts from the end, so `-1` is "
             "the last item, `\"Miso Ramen\"`. (This one is ungraded. The "
             "point is the prediction.)"
         )
@@ -113,13 +113,13 @@ def _(last_two_exb, mo, show_result):
     # Reactive check. Re-runs when you run the cell above.
     if last_two_exb is None:
         _ok = False
-        _msg = "Not attempted — assign it to `last_two_exb` (a `print` alone doesn't count) and run the cell."
+        _msg = "Not attempted: assign it to `last_two_exb` (a `print` alone doesn't count) and run the cell."
     elif last_two_exb == ["Pizza Calzone", "Miso Ramen"]:
         _ok = True
-        _msg = "Correct — those two orders go out next."
+        _msg = "Correct: those two orders go out next."
     else:
         _ok = False
-        _msg = "Wrong — try a slice from -2 to the end."
+        _msg = "Wrong: try a slice from -2 to the end."
     mo.callout(mo.md(_msg + show_result(last_two_exb)), kind="success" if _ok else "warn")
     return
 
@@ -151,22 +151,22 @@ def _(mo, queue, queue_exb, show_result):
     _original = ["Pad Thai", "Founders Bowl", "Pizza Calzone", "Miso Ramen"]
     if queue_exb is None:
         _ok = False
-        _msg = "Not attempted — assign it to `queue_exb` (a `print` alone doesn't count) and run the cell."
+        _msg = "Not attempted: assign it to `queue_exb` (a `print` alone doesn't count) and run the cell."
     elif queue != _original:
         _ok = False
-        _msg = "Wrong — the ORIGINAL `queue` changed too. `.append()` edits in place; build a new list with `queue[1:] + [...]` instead."
+        _msg = "Wrong: the ORIGINAL `queue` changed too. `.append()` edits in place; build a new list with `queue[1:] + [...]` instead."
     elif queue_exb == _expected:
         _ok = True
-        _msg = "Correct — `queue[1:] + [\"Green Curry\"]`: a fresh list, the original untouched."
+        _msg = "Correct: `queue[1:] + [\"Green Curry\"]`: a fresh list, and the original is untouched."
     elif queue_exb == ["Pad Thai", "Founders Bowl", "Pizza Calzone", "Miso Ramen", "Green Curry"]:
         _ok = False
-        _msg = "Wrong — the Pad Thai is still in front. Slice from index 1 to drop the first order."
+        _msg = "Wrong: the Pad Thai is still in front. Slice from index 1 to drop the first order."
     elif isinstance(queue_exb, list) and "Green Curry" not in queue_exb:
         _ok = False
-        _msg = "Wrong — the Green Curry never joined. Add `+ [\"Green Curry\"]` at the end."
+        _msg = "Wrong: the Green Curry never joined. Add `+ [\"Green Curry\"]` at the end."
     else:
         _ok = False
-        _msg = "Wrong — expected the three remaining orders followed by the Green Curry."
+        _msg = "Wrong: expected the three remaining orders followed by the Green Curry."
     mo.callout(mo.md(_msg + show_result(queue_exb)), kind="success" if _ok else "warn")
     return
 

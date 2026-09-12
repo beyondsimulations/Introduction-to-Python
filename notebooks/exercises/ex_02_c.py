@@ -27,7 +27,7 @@ def _():
 def _(mo):
     mo.md(
         r"""
-    # Quick exercise: loop the minutes (5–10 min)
+    # Quick exercise: loop the minutes (5-10 min)
 
     First a **trace** (predict, don't run yet): what does this print?
 
@@ -71,13 +71,13 @@ def _(mo, trace_exc):
         _msg = "Pick a prediction above first. Commit before you peek!"
     elif trace_exc.value == "c) 8":
         _msg = (
-            "Correct — the `print` line runs once, **after** the loop"
+            "Correct: the `print` line runs once, **after** the loop "
             "finishes, so it prints the final total, `8`. If `print` were "
             "indented into the loop, it would print `3` then `8`."
         )
     else:
         _msg = (
-            "Wrong — `print` is **not** indented, so it only runs once,"
+            "Wrong: `print` is **not** indented, so it only runs once, "
             "after the loop finishes: it prints the final total, `8`. (This "
             "one is ungraded. The point is the prediction.)"
         )
@@ -115,13 +115,13 @@ def _(minutes_exc, mo, show_result):
     # Reactive check. Re-runs when you run the cell above.
     if minutes_exc is None:
         _ok = False
-        _msg = "Not attempted — assign it to `minutes_exc` (a `print` alone doesn't count) and run the cell."
+        _msg = "Not attempted: assign it to `minutes_exc` (a `print` alone doesn't count) and run the cell."
     elif minutes_exc == 28:
         _ok = True
-        _msg = "Correct — 12 + 7 + 9 = 28 minutes, all delivered on time."
+        _msg = "Correct: 12 + 7 + 9 = 28 minutes, all delivered on time."
     else:
         _ok = False
-        _msg = "Wrong — make sure you add up every value in `minutes` rather than keeping only the last one."
+        _msg = "Wrong: make sure you add up every value in `minutes` rather than keeping only the last one."
     mo.callout(mo.md(_msg + show_result(minutes_exc)), kind="success" if _ok else "warn")
     return
 
@@ -150,13 +150,13 @@ def _(late_exc, mo, show_result):
     # Reactive check. Re-runs when you run the cell above.
     if late_exc is None:
         _ok = False
-        _msg = "Not attempted — assign it to `late_exc` (a `print` alone doesn't count) and run the cell."
+        _msg = "Not attempted: assign it to `late_exc` (a `print` alone doesn't count) and run the cell."
     elif isinstance(late_exc, (int, float)) and round(late_exc, 2) == 2:
         _ok = True
-        _msg = "Correct — 2 late runs (12 and 9 minutes). The 7-minute run was fine."
+        _msg = "Correct: 2 late runs (12 and 9 minutes). The 7-minute run was fine."
     else:
         _ok = False
-        _msg = "Wrong — start a counter at 0 and add 1 only when the run is **longer than** 8 (strictly)."
+        _msg = "Wrong: start a counter at 0 and add 1 only when the run is **longer than** 8 (strictly)."
     mo.callout(mo.md(_msg + show_result(late_exc)), kind="success" if _ok else "warn")
     return
 

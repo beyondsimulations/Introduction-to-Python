@@ -27,7 +27,7 @@ def _():
 def _(mo):
     mo.md(
         r"""
-    # Quick exercise: the honest y-axis (5–10 min)
+    # Quick exercise: the honest y-axis (5-10 min)
 
     Tobi asked an AI to chart this week's growth for the pitch deck. It
     ran without errors. Before you believe a chart, check one thing
@@ -44,7 +44,7 @@ def _(mo):
 def _(mo):
     mo.callout(
         mo.md(
-            "**Saving your work:** this notebook runs in your browser. Press"
+            "**Saving your work:** this notebook runs in your browser. Press "
             "**Cmd/Ctrl+S** to save, and always save **before** menu → Download → "
             "*Download Python code*. Without a save first, the download is an empty file."
         ),
@@ -109,31 +109,31 @@ def _(growth_exe, mo, show_result):
     _result = None
     if growth_exe is None:
         _ok = False
-        _msg = "Not attempted — Assign it to `growth_exe` (a `print` alone doesn't count) and run the cell."
+        _msg = "Not attempted: Assign it to `growth_exe` (a `print` alone doesn't count) and run the cell."
     else:
         try:
             _v = round(float(growth_exe), 2)
         except (TypeError, ValueError):
             _ok = False
             _v = None
-            _msg = "Wrong — That's not a number yet. Check what your expression returns."
+            _msg = "Wrong: That's not a number yet. Check what your expression returns."
         else:
             _result = f"growth_exe={growth_exe}"
             if _v == _expected:
                 _ok = True
-                _msg = "Correct — That's the honest number, no costume required."
+                _msg = "Correct: That's the honest growth number."
             elif _v == 0.1:
                 _ok = False
-                _msg = "Wrong — That's the fraction. Percent means ×100."
+                _msg = "Wrong: That's the fraction. Percent means ×100."
             elif _v == 5.0:
                 _ok = False
-                _msg = "Wrong — 5 orders more, yes, but the investor asked for PERCENT of where you started, not the raw difference."
+                _msg = "Wrong: 5 orders more, yes, but the investor asked for PERCENT of where you started, not the raw difference."
             elif _v == 9.09:
                 _ok = False
-                _msg = "Wrong — Growth is measured from the START value, not the end. Check your denominator."
+                _msg = "Wrong: Growth is measured from the START value, not the end. Check your denominator."
             else:
                 _ok = False
-                _msg = "Wrong — Growth % = (end − start) / start × 100."
+                _msg = "Wrong: Growth % = (end − start) / start × 100."
     mo.callout(mo.md(_msg + show_result(_result)), kind="success" if _ok else "warn")
     return
 
@@ -156,9 +156,8 @@ def _(mo):
     ### Now fix the chart
 
     Re-plot the same `weekly_exe` data, but this time let the y-axis
-    start at 0 (`plt.ylim(0, 60)`). Same numbers, honest axis. Watch
-    how much the slope changes just by telling the truth about the
-    baseline.
+    start at 0 (`plt.ylim(0, 60)`). The numbers are the same, and the
+    slope changes a lot once the axis starts at 0.
 
     This chart isn't graded either. Look at it, then move on.
     """
@@ -208,31 +207,31 @@ def _(mo, picture_exe, show_result):
     _result = None
     if picture_exe is None:
         _ok = False
-        _msg = "Not attempted — Assign it to `picture_exe` (a `print` alone doesn't count) and run the cell."
+        _msg = "Not attempted: Assign it to `picture_exe` (a `print` alone doesn't count) and run the cell."
     else:
         try:
             _v = round(float(picture_exe), 2)
         except (TypeError, ValueError):
             _ok = False
             _v = None
-            _msg = "Wrong — That's not a number yet. Check what your expression returns."
+            _msg = "Wrong: That's not a number yet. Check what your expression returns."
         else:
             _result = f"picture_exe={picture_exe}"
             if _v == _expected:
                 _ok = True
-                _msg = "Correct — Exercise 9.e stretch: the picture claimed 71 %, the numbers say 10 %. That gap is what the investor catches."
+                _msg = "Correct: Exercise 9.e stretch: the picture claimed 71 %, the numbers say 10 %. That gap is what the investor catches."
             elif _v == 0.71:
                 _ok = False
-                _msg = "Wrong — That's the fraction. Percent means ×100."
+                _msg = "Wrong: That's the fraction. Percent means ×100."
             elif _v == 10.0:
                 _ok = False
-                _msg = "Wrong — That's the honest growth from the core task. This one asks what the AXIS made it look like."
+                _msg = "Wrong: That's the honest growth from the core task. This one asks what the AXIS made it look like."
             elif _v == 8.33:
                 _ok = False
-                _msg = "Wrong — That's the share on the honest axis (0 to 60). Tobi's axis was the narrow one."
+                _msg = "Wrong: That's the share on the honest axis (0 to 60). Tobi's axis was the narrow one."
             else:
                 _ok = False
-                _msg = "Wrong — Picture % = (last − first) / (axis top − axis bottom) × 100, with Tobi's axis."
+                _msg = "Wrong: Picture % = (last − first) / (axis top − axis bottom) × 100, with Tobi's axis."
     mo.callout(mo.md(_msg + show_result(_result)), kind="success" if _ok else "warn")
     return
 

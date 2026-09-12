@@ -1,5 +1,5 @@
 # notebooks/nb_01_lab_founding.py
-# Episode 1 — The Founding. Session I lab notebook.
+# Episode 1: The Founding. Session I lab notebook.
 import marimo
 
 app = marimo.App(width="medium")
@@ -9,7 +9,7 @@ app = marimo.App(width="medium")
 def _(mo):
     mo.md(
         r"""
-    # Notebook 1.1 — The Founding
+    # Notebook 1.1: The Founding
     **Core exercises: 10 (+ 2 bonus).** Done early? You're free to go. Not done when the session ends? The rest is homework.
 
     Congratulations: as of today you are the (co-)founder of a campus
@@ -94,13 +94,13 @@ def _(mo, startup_name_input):
 
 
 # ─────────────────────────────────────────────────────────────────────────
-# SECTION 1 — Variables & types
+# SECTION 1: Variables & types
 # ─────────────────────────────────────────────────────────────────────────
 @app.cell(hide_code=True)
 def _(mo):
     mo.md(
         r"""
-    ## Section 1 — Variables & types
+    ## Section 1: Variables & types
 
     A **variable** is a labeled box you put a value in. The value has a
     **type**: text is a `str` (`"Pad Thai"`), whole numbers are `int` (`3`),
@@ -125,7 +125,7 @@ def _():
 def _(mo):
     mo.md(
         r"""
-    ### Exercise 1.1 (core) — put the first menu item on the books
+    ### Exercise 1.1 (core): put the first menu item on the books
 
     Create three variables describing your signature dish:
 
@@ -150,19 +150,19 @@ def _():
 def _(menu_item_ex11, mo, portions_ex11, price_ex11):
     if menu_item_ex11 is None or price_ex11 is None or portions_ex11 is None:
         ex11_ok = False
-        _msg = "Not attempted — Exercise 1.1. Assign your answers to `menu_item_ex11`, `price_ex11` and `portions_ex11` (a `print` alone doesn't count) and run the cell."
+        _msg = "Not attempted (Exercise 1.1). Assign your answers to `menu_item_ex11`, `price_ex11` and `portions_ex11` (a `print` alone doesn't count) and run the cell."
     elif not isinstance(menu_item_ex11, str):
         ex11_ok = False
-        _msg = "Wrong — Exercise 1.1: `menu_item_ex11` should be text (a `str`)."
+        _msg = "Wrong (Exercise 1.1): `menu_item_ex11` should be text (a `str`)."
     elif not (isinstance(price_ex11, float) and price_ex11 == 8.90):
         ex11_ok = False
-        _msg = "Wrong — Exercise 1.1: `price_ex11` should be the float `8.90`."
+        _msg = "Wrong (Exercise 1.1): `price_ex11` should be the float `8.90`."
     elif not (isinstance(portions_ex11, int) and portions_ex11 == 3):
         ex11_ok = False
-        _msg = "Wrong — Exercise 1.1: `portions_ex11` should be the int `3`."
+        _msg = "Wrong (Exercise 1.1): `portions_ex11` should be the int `3`."
     else:
         ex11_ok = True
-        _msg = "Correct — Exercise 1.1: the menu has its first entry. Tobi orders celebratory stickers."
+        _msg = "Correct (Exercise 1.1): the menu has its first entry. Tobi orders celebratory stickers."
     mo.callout(mo.md(_msg), kind="success" if ex11_ok else "warn")
     return (ex11_ok,)
 
@@ -182,7 +182,7 @@ def _(mo):
 def _(mo):
     mo.md(
         r"""
-    ### Exercise 1.2 (core) — the first revenue
+    ### Exercise 1.2 (core): the first revenue
 
     One order of your dish is `portions_ex11` portions at `price_ex11` each.
     Compute the revenue of a single order into `revenue_ex12`.
@@ -206,13 +206,13 @@ def _():
 def _(mo, revenue_ex12, show_result):
     if revenue_ex12 is None:
         ex12_ok = False
-        _msg = "Not attempted — Exercise 1.2. Assign it to `revenue_ex12` (a `print` alone doesn't count) and run the cell."
+        _msg = "Not attempted (Exercise 1.2). Assign it to `revenue_ex12` (a `print` alone doesn't count) and run the cell."
     elif revenue_ex12 == 26.70:
         ex12_ok = True
-        _msg = "Correct — Exercise 1.2: 26.70 EUR per order. Tobi wants to spend it already."
+        _msg = "Correct (Exercise 1.2): 26.70 EUR per order. Tobi wants to spend it already."
     else:
         ex12_ok = False
-        _msg = "Wrong — Exercise 1.2: not 26.70. Multiply price × portions and `round(..., 2)`."
+        _msg = "Wrong (Exercise 1.2): not 26.70. Multiply price × portions and `round(..., 2)`."
     mo.callout(mo.md(_msg + show_result(revenue_ex12)), kind="success" if ex12_ok else "warn")
     return (ex12_ok,)
 
@@ -232,12 +232,12 @@ def _(mo):
 def _(mo):
     mo.md(
         r"""
-    ### Exercise 1.3 (core) — what's left of the marketing budget
+    ### Exercise 1.3 (core): what's left of the marketing budget
 
     Tobi has **300 EUR** left and two purchases lined up: a used delivery bike
     for **249.00** and the domain name for **12.90** a year. Compute what
-    remains afterwards into `budget_left_ex13`, rounded to 2 places. Tobi's
-    real question: does a **40 EUR** sticker reorder still fit?
+    remains afterwards into `budget_left_ex13`, rounded to 2 places. Tobi wants
+    to know whether a **40 EUR** sticker reorder still fits.
     """
     )
     return
@@ -254,13 +254,13 @@ def _():
 def _(budget_left_ex13, mo, show_result):
     if budget_left_ex13 is None:
         ex13_ok = False
-        _msg = "Not attempted — Exercise 1.3. Assign it to `budget_left_ex13` (a `print` alone doesn't count) and run the cell."
+        _msg = "Not attempted (Exercise 1.3). Assign it to `budget_left_ex13` (a `print` alone doesn't count) and run the cell."
     elif isinstance(budget_left_ex13, (int, float)) and round(budget_left_ex13, 2) == 38.10:
         ex13_ok = True
-        _msg = "Correct — Exercise 1.3: 38.10 EUR left. Bike and domain are in; the 40 EUR sticker reorder is not. Tobi takes it personally."
+        _msg = "Correct (Exercise 1.3): 38.10 EUR left, so the 40 EUR sticker reorder doesn't fit. Tobi takes it personally."
     else:
         ex13_ok = False
-        _msg = "Wrong — Exercise 1.3: not 38.10. Subtract both purchases from 300 and `round(..., 2)`."
+        _msg = "Wrong (Exercise 1.3): not 38.10. Subtract both purchases from 300 and `round(..., 2)`."
     mo.callout(mo.md(_msg + show_result(budget_left_ex13)), kind="success" if ex13_ok else "warn")
     return (ex13_ok,)
 
@@ -277,13 +277,13 @@ def _(mo):
 
 
 # ─────────────────────────────────────────────────────────────────────────
-# SECTION 2 — Numbers & arithmetic
+# SECTION 2: Numbers & arithmetic
 # ─────────────────────────────────────────────────────────────────────────
 @app.cell(hide_code=True)
 def _(mo):
     mo.md(
         r"""
-    ## Section 2 — Numbers & arithmetic
+    ## Section 2: Numbers & arithmetic
 
     Python does `+ - * /` as expected. Two more you'll use constantly:
     `//` is **floor division** (whole part) and `%` is the **remainder**
@@ -298,7 +298,7 @@ def _(mo):
 def _(mo):
     mo.md(
         r"""
-    ### Exercise 2.1 (trace — predict first) — what does this print?
+    ### Exercise 2.1 (trace, predict first): what does this print?
 
     This is a **trace** exercise: predict the output first, *then* reveal the
     answer. What does this line print?
@@ -344,7 +344,7 @@ def _(mo, trace_ex21):
 def _(mo):
     mo.md(
         r"""
-    ### Exercise 2.2 (core) — Tobi's 9.99 theory, costed
+    ### Exercise 2.2 (core): Tobi's 9.99 theory, costed
 
     Tobi insists everything sells at **9.99**. Each dish costs you **7.40** to
     make. Compute the **margin** (selling price minus cost) into `margin_ex22`.
@@ -364,13 +364,13 @@ def _():
 def _(margin_ex22, mo, show_result):
     if margin_ex22 is None:
         ex22_ok = False
-        _msg = "Not attempted — Exercise 2.2. Assign it to `margin_ex22` (a `print` alone doesn't count) and run the cell."
+        _msg = "Not attempted (Exercise 2.2). Assign it to `margin_ex22` (a `print` alone doesn't count) and run the cell."
     elif isinstance(margin_ex22, (int, float)) and round(margin_ex22, 2) == 2.59:
         ex22_ok = True
-        _msg = "Correct — Exercise 2.2: 2.59 EUR per dish. Tobi calls it 'basically infinite money'."
+        _msg = "Correct (Exercise 2.2): 2.59 EUR per dish. Tobi calls it 'basically infinite money'."
     else:
         ex22_ok = False
-        _msg = "Wrong — Exercise 2.2: not 2.59. Compute `9.99 - 7.40`."
+        _msg = "Wrong (Exercise 2.2): not 2.59. Compute `9.99 - 7.40`."
     mo.callout(mo.md(_msg + show_result(margin_ex22)), kind="success" if ex22_ok else "warn")
     return (ex22_ok,)
 
@@ -390,7 +390,7 @@ def _(mo):
 def _(mo):
     mo.md(
         r"""
-    ### Exercise 2.3 (core, fix the bug) — Tobi multiplied a string
+    ### Exercise 2.3 (core, fix the bug): Tobi multiplied a string
 
     Tobi tried to total three 9.99 items and wrote the line below. It *runs*,
     but the result is nonsense (`"9.999.999.99"`) because he multiplied
@@ -413,13 +413,13 @@ def _():
 def _(mo, show_result, total_ex23):
     if isinstance(total_ex23, str):
         ex23_ok = False
-        _msg = "Wrong — Exercise 2.3: still text (a `str`). Drop the quotes so it's a number."
+        _msg = "Wrong (Exercise 2.3): still text (a `str`). Drop the quotes so it's a number."
     elif isinstance(total_ex23, (int, float)) and round(total_ex23, 2) == 29.97:
         ex23_ok = True
-        _msg = "Correct — Exercise 2.3: 29.97, a real number. Tobi is quietly relieved."
+        _msg = "Correct (Exercise 2.3): 29.97, a real number. Tobi is quietly relieved."
     else:
         ex23_ok = False
-        _msg = "Wrong — Exercise 2.3: not 29.97. You want `9.99 * 3` as numbers."
+        _msg = "Wrong (Exercise 2.3): not 29.97. You want `9.99 * 3` as numbers."
     mo.callout(mo.md(_msg + show_result(total_ex23)), kind="success" if ex23_ok else "warn")
     return (ex23_ok,)
 
@@ -439,10 +439,10 @@ def _(mo):
 def _(mo):
     mo.md(
         r"""
-    ### Exercise 2.4 (core, fix the bug) — Tobi packs the bags
+    ### Exercise 2.4 (core, fix the bug): Tobi packs the bags
 
     Rule: a delivery bag holds **4 portions**. Tonight's run is **27
-    portions**, and Tobi wrote the line below to count the **loose portions**,
+    portions**, and Tobi wrote the line below to count the loose portions,
     the ones left over once every full bag is packed. It runs, but the rider
     says the number is nonsense: more loose portions than fit in a whole bag.
     Fix the line so `loose_ex24` is the leftover.
@@ -463,13 +463,13 @@ def _():
 def _(loose_ex24, mo, show_result):
     if loose_ex24 is None:
         ex24_ok = False
-        _msg = "Not attempted — Exercise 2.4. Assign it to `loose_ex24` (a `print` alone doesn't count) and run the cell."
+        _msg = "Not attempted (Exercise 2.4). Assign it to `loose_ex24` (a `print` alone doesn't count) and run the cell."
     elif isinstance(loose_ex24, (int, float)) and round(loose_ex24, 2) == 3:
         ex24_ok = True
-        _msg = "Correct — Exercise 2.4: 3 loose portions. Six full bags, and the rider's backpack takes the rest."
+        _msg = "Correct (Exercise 2.4): 3 loose portions. Six full bags, and the rider's backpack takes the rest."
     else:
         ex24_ok = False
-        _msg = "Wrong — Exercise 2.4: that's not the leftover. `//` gives the full bags; which operator gives the remainder?"
+        _msg = "Wrong (Exercise 2.4): that's not the leftover. `//` gives the full bags; which operator gives the remainder?"
     mo.callout(mo.md(_msg + show_result(loose_ex24)), kind="success" if ex24_ok else "warn")
     return (ex24_ok,)
 
@@ -486,13 +486,13 @@ def _(mo):
 
 
 # ─────────────────────────────────────────────────────────────────────────
-# SECTION 3 — Strings & f-strings
+# SECTION 3: Strings & f-strings
 # ─────────────────────────────────────────────────────────────────────────
 @app.cell(hide_code=True)
 def _(mo):
     mo.md(
         r"""
-    ## Section 3 — Strings & f-strings
+    ## Section 3: Strings & f-strings
 
     An **f-string** builds text with values dropped into `{}` slots:
     `f"{name}: {price:.2f} EUR"`. The `:.2f` formats a number with exactly two
@@ -506,7 +506,7 @@ def _(mo):
 def _(mo):
     mo.md(
         r"""
-    ### Exercise 3.1 (core) — the first receipt line
+    ### Exercise 3.1 (core): the first receipt line
 
     Using an f-string, build `receipt_ex31` so it reads **exactly**:
 
@@ -535,14 +535,14 @@ def _():
 def _(mo, receipt_ex31, show_result):
     if receipt_ex31 is None:
         ex31_ok = False
-        _msg = "Not attempted — Exercise 3.1. Assign it to `receipt_ex31` (a `print` alone doesn't count) and run the cell."
+        _msg = "Not attempted (Exercise 3.1). Assign it to `receipt_ex31` (a `print` alone doesn't count) and run the cell."
     elif receipt_ex31 == "3x Pad Thai: 26.70 EUR":
         ex31_ok = True
-        _msg = "Correct — Exercise 3.1: a real receipt line. It even lines up."
+        _msg = "Correct (Exercise 3.1): a real receipt line. It even lines up."
     else:
         ex31_ok = False
         _msg = (
-            "Wrong — Exercise 3.1: not an exact match. You need "
+            "Wrong (Exercise 3.1): not an exact match. You need "
             "`\"3x Pad Thai: 26.70 EUR\"`. Mind the `x`, the colon, and `:.2f`."
         )
     mo.callout(mo.md(_msg + show_result(receipt_ex31)), kind="success" if ex31_ok else "warn")
@@ -564,7 +564,7 @@ def _(mo):
 def _(mo):
     mo.md(
         r"""
-    ### Exercise 3.2 (core) — the launch notification
+    ### Exercise 3.2 (core): the launch notification
 
     MunchCorp lists its curry at **8.50**. Tobi's counter-move: a launch code
     that takes **15%** off your **9.99** Green Curry. Build the push
@@ -597,14 +597,14 @@ def _():
 def _(mo, push_ex32, show_result):
     if push_ex32 is None:
         ex32_ok = False
-        _msg = "Not attempted — Exercise 3.2. Assign it to `push_ex32` (a `print` alone doesn't count) and run the cell."
+        _msg = "Not attempted (Exercise 3.2). Assign it to `push_ex32` (a `print` alone doesn't count) and run the cell."
     elif push_ex32 == "Green Curry: 9.99 EUR, today 8.49 EUR":
         ex32_ok = True
-        _msg = "Correct — Exercise 3.2: 8.49, one cent under MunchCorp. Tobi calls it strategy."
+        _msg = "Correct (Exercise 3.2): 8.49, one cent under MunchCorp. Tobi calls it strategy."
     else:
         ex32_ok = False
         _msg = (
-            "Wrong — Exercise 3.2: not an exact match. You need "
+            "Wrong (Exercise 3.2): not an exact match. You need "
             "`\"Green Curry: 9.99 EUR, today 8.49 EUR\"`: two `:.2f` slots, the "
             "second one holding price × (1 − 0.15). Mind the colon and the comma."
         )
@@ -627,7 +627,7 @@ def _(mo):
 def _(mo):
     mo.md(
         r"""
-    ### Exercise 3.3 (bonus) — a two-line receipt, right-aligned
+    ### Exercise 3.3 (bonus): a two-line receipt, right-aligned
 
     Real receipts line the prices up. Build `receipt_multi_ex33` as **two
     lines** joined by a newline `\n`, each price right-aligned in a width-8
@@ -656,13 +656,13 @@ def _(mo, receipt_multi_ex33, show_result):
     _expected = f"Pad Thai {26.70:>8.2f}\nCalamari {4.60:>8.2f}"
     if receipt_multi_ex33 is None:
         ex33_ok = False
-        _msg = "Not attempted — Bonus 3.3. Assign it to `receipt_multi_ex33` (a `print` alone doesn't count) and run the cell."
+        _msg = "Not attempted: Bonus 3.3. Assign it to `receipt_multi_ex33` (a `print` alone doesn't count) and run the cell."
     elif receipt_multi_ex33 == _expected:
         ex33_ok = True
-        _msg = "Correct — Bonus 3.3: pixel-perfect alignment. Tobi is weirdly moved."
+        _msg = "Correct: Bonus 3.3: pixel-perfect alignment. Tobi is weirdly moved."
     else:
         ex33_ok = False
-        _msg = "Wrong — Bonus 3.3: not an exact match. Check the `\\n` and the `:>8.2f` widths."
+        _msg = "Wrong: Bonus 3.3: not an exact match. Check the `\\n` and the `:>8.2f` widths."
     mo.callout(mo.md(_msg + show_result(receipt_multi_ex33)), kind="success" if ex33_ok else "warn")
     return (ex33_ok,)
 
@@ -679,13 +679,13 @@ def _(mo):
 
 
 # ─────────────────────────────────────────────────────────────────────────
-# BOSS EXERCISE — resolve the episode
+# BOSS EXERCISE: resolve the episode
 # ─────────────────────────────────────────────────────────────────────────
 @app.cell(hide_code=True)
 def _(mo):
     mo.md(
         r"""
-    ## Boss exercise (core) — the day-one summary
+    ## Boss exercise (core): the day-one summary
 
     Word arrives that **MunchCorp**, the soulless mega-competitor, just
     launched "the same app but worse". Time to put your day-one numbers on
@@ -725,16 +725,16 @@ def _():
 def _(day_one_summary_ex40, mo, show_result):
     if day_one_summary_ex40 is None:
         ex40_ok = False
-        _msg = "Not attempted — Boss exercise. Assign it to `day_one_summary_ex40` (a `print` alone doesn't count) and run the cell."
+        _msg = "Not attempted (Boss exercise). Assign it to `day_one_summary_ex40` (a `print` alone doesn't count) and run the cell."
     elif not isinstance(day_one_summary_ex40, str):
         ex40_ok = False
-        _msg = "Wrong — Boss exercise: `day_one_summary_ex40` should be a string (an f-string)."
+        _msg = "Wrong (Boss exercise): `day_one_summary_ex40` should be a string (an f-string)."
     elif "26.70" in day_one_summary_ex40 and "2.59" in day_one_summary_ex40:
         ex40_ok = True
-        _msg = "Correct — Boss exercise: numbers on the table. MunchCorp's growth team goes very quiet."
+        _msg = "Correct (Boss exercise): numbers on the table. MunchCorp's growth team goes very quiet."
     else:
         ex40_ok = False
-        _msg = "Wrong — Boss exercise: the text must contain both `26.70` and `2.59` (use `:.2f`)."
+        _msg = "Wrong (Boss exercise): the text must contain both `26.70` and `2.59` (use `:.2f`)."
     mo.callout(mo.md(_msg + show_result(day_one_summary_ex40)), kind="success" if ex40_ok else "warn")
     return (ex40_ok,)
 
@@ -743,7 +743,7 @@ def _(day_one_summary_ex40, mo, show_result):
 def _(mo):
     mo.accordion(
         {
-            "Hint 1 (a nudge)": "One f-string. Put `revenue_ex12` and `margin_ex22` in `{}` slots with `:.2f`, and `startup_name` too. No retyped numbers.",
+            "Hint 1 (a nudge)": "One f-string. Put `revenue_ex12` and `margin_ex22` in `{}` slots with `:.2f`, and `startup_name` too, instead of retyping the numbers.",
             "Hint 2 (the structure)": "day_one_summary_ex40 = f\"{startup_name} day one: {___:.2f} EUR revenue, {___:.2f} EUR margin per dish.\" (the blanks are your variables from 1.2 and 2.2).",
         }
     )
@@ -754,7 +754,7 @@ def _(mo):
 def _(mo):
     mo.md(
         r"""
-    ### Quiz (core, MCQ) — which is a valid variable name?
+    ### Quiz (core, MCQ): which is a valid variable name?
 
     Answer by assigning the letter (as text) to `answer_ex50`:
 
@@ -778,16 +778,16 @@ def _():
 def _(answer_ex50, mo):
     if answer_ex50 is None:
         ex50_ok = False
-        _msg = "Not attempted — Quiz. Set `answer_ex50` to your letter and run the cell."
+        _msg = "Not attempted (Quiz). Set `answer_ex50` to your letter and run the cell."
     elif str(answer_ex50).strip().lower() == "d":
         ex50_ok = True
         _msg = (
-            "Correct — Quiz: **d**. `2nd_price` can't start with a digit, `class` is a "
+            "Correct (Quiz): **d**. `2nd_price` can't start with a digit, `class` is a "
             "reserved word, and `my-price` has a minus sign. `menu_item` is fine."
         )
     else:
         ex50_ok = False
-        _msg = "Wrong — Quiz: not quite. Which name starts with a letter, has no `-`, and isn't a Python keyword?"
+        _msg = "Wrong (Quiz): not quite. Which name starts with a letter, has no `-`, and isn't a Python keyword?"
     mo.callout(mo.md(_msg), kind="success" if ex50_ok else "warn")
     return (ex50_ok,)
 
@@ -796,7 +796,7 @@ def _(answer_ex50, mo):
 def _(mo):
     mo.md(
         r"""
-    ### Bonus — the price war
+    ### Bonus: the price war
 
     Rumor has it MunchCorp will copy your dish and list it at **8.50**. If it
     ever comes to a price war, Tobi wants to know one number: **10% below
@@ -818,13 +818,13 @@ def _():
 def _(mo, price_war_ex60, show_result):
     if price_war_ex60 is None:
         ex60_ok = False
-        _msg = "Not attempted — Bonus price war. Assign it to `price_war_ex60` (a `print` alone doesn't count) and run the cell."
+        _msg = "Not attempted: Bonus price war. Assign it to `price_war_ex60` (a `print` alone doesn't count) and run the cell."
     elif isinstance(price_war_ex60, (int, float)) and round(price_war_ex60, 2) == 7.65:
         ex60_ok = True
-        _msg = "Correct — Bonus price war: 7.65 EUR. MunchCorp's growth team notices."
+        _msg = "Correct: Bonus price war: 7.65 EUR. MunchCorp's growth team notices."
     else:
         ex60_ok = False
-        _msg = "Wrong — Bonus price war: not 7.65. Take 90% of 8.50."
+        _msg = "Wrong: Bonus price war: not 7.65. Take 90% of 8.50."
     mo.callout(mo.md(_msg + show_result(price_war_ex60)), kind="success" if ex60_ok else "warn")
     return (ex60_ok,)
 

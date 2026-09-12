@@ -27,7 +27,7 @@ def _():
 def _(mo):
     mo.md(
         r"""
-    # Quick exercise: which error? (5–10 min)
+    # Quick exercise: which error? (5-10 min)
 
     The checkout crashed live during the lunch rush. Tobi swears he only
     changed "one tiny thing". Here's the crashing line:
@@ -72,12 +72,12 @@ def _(mo, trace_exb):
         _msg = "Pick a prediction above first. Commit before you peek!"
     elif trace_exb.value == "b) ValueError":
         _msg = (
-            "Correct: `int()` refuses decimal **strings**, and reading the"
+            "Correct: `int()` refuses decimal **strings**, and reading the "
             "last line of the traceback tells you this."
         )
     else:
         _msg = (
-            "Wrong — `int()` refuses decimal **strings**, and reading the"
+            "Wrong: `int()` refuses decimal **strings**, and reading the "
             "last line of the traceback tells you this. (This one is "
             "ungraded. The point is the prediction.)"
         )
@@ -115,13 +115,13 @@ def _(mo, qty_exb, show_result):
     # Reactive check. Re-runs when you run the cell above.
     if qty_exb is None:
         _ok = False
-        _msg = "Not attempted — assign it to `qty_exb` (a `print` alone doesn't count) and run the cell."
+        _msg = "Not attempted: assign it to `qty_exb` (a `print` alone doesn't count) and run the cell."
     elif isinstance(qty_exb, float) and qty_exb == 3.5:
         _ok = True
-        _msg = "Correct — the quantity now arrives as a proper number."
+        _msg = "Correct: the quantity now arrives as a proper number."
     else:
         _ok = False
-        _msg = "Wrong — `int()` can't read decimals from text. Which converter can?"
+        _msg = "Wrong: `int()` can't read decimals from text. Which converter can?"
     mo.callout(mo.md(_msg + show_result(qty_exb)), kind="success" if _ok else "warn")
     return
 
@@ -157,16 +157,16 @@ def _(bowls_exb, mo, show_result):
     # Reactive check. Re-runs when you run the cell above.
     if bowls_exb is None:
         _ok = False
-        _msg = "Not attempted — assign it to `bowls_exb` (a `print` alone doesn't count) and run the cell."
+        _msg = "Not attempted: assign it to `bowls_exb` (a `print` alone doesn't count) and run the cell."
     elif isinstance(bowls_exb, int) and not isinstance(bowls_exb, bool) and bowls_exb == 3:
         _ok = True
-        _msg = "Correct — `float()` reads the text, `int()` drops the half: 3 whole bowls."
+        _msg = "Correct: `float()` reads the text, `int()` drops the half: 3 whole bowls."
     elif isinstance(bowls_exb, float) and bowls_exb == 3.5:
         _ok = False
-        _msg = "Wrong — 3.5 is still half a bowl. Hand the float to `int()` as a second step."
+        _msg = "Wrong: 3.5 is still half a bowl. Hand the float to `int()` as a second step."
     else:
         _ok = False
-        _msg = "Wrong — expected the whole number of bowls in `\"3.5\"`, as an `int`."
+        _msg = "Wrong: expected the whole number of bowls in `\"3.5\"`, as an `int`."
     mo.callout(mo.md(_msg + show_result(bowls_exb)), kind="success" if _ok else "warn")
     return
 

@@ -27,7 +27,7 @@ def _():
 def _(mo):
     mo.md(
         r"""
-    # Quick exercise: read the crash report (5–10 min)
+    # Quick exercise: read the crash report (5-10 min)
 
     The health inspector is in the doorway and the till just died. All you
     have is the traceback Tobi left on the screen at 3 AM:
@@ -71,16 +71,16 @@ def _(error_exa, mo, show_result):
     # Reactive check. Re-runs when you run the cell above.
     if error_exa is None:
         _ok = False
-        _msg = "Not attempted — assign the name to `error_exa` as text (a `print` alone doesn't count) and run the cell."
+        _msg = "Not attempted: assign the name to `error_exa` as text (a `print` alone doesn't count) and run the cell."
     elif not isinstance(error_exa, str):
         _ok = False
-        _msg = "Wrong — the answer is the name as **text**, in quotes."
+        _msg = "Wrong: the answer is the name as **text**, in quotes."
     elif error_exa.strip().lower().replace(" ", "") == "keyerror":
         _ok = True
-        _msg = "Correct — the last line names it: `table_map` has no key `'C3'`."
+        _msg = "Correct: the last line names it: `table_map` has no key `'C3'`."
     else:
         _ok = False
-        _msg = "Wrong — read the **last** line of the traceback. The word before the colon is the type."
+        _msg = "Wrong: read the **last** line of the traceback. The word before the colon is the type."
     mo.callout(mo.md(_msg + show_result(error_exa)), kind="success" if _ok else "warn")
     return
 
@@ -120,16 +120,16 @@ def _(line_exa, mo, show_result):
     # Reactive check. Re-runs when you run the cell above.
     if line_exa is None:
         _ok = False
-        _msg = "Not attempted — assign the line number to `line_exa` (a `print` alone doesn't count) and run the cell."
+        _msg = "Not attempted: assign the line number to `line_exa` (a `print` alone doesn't count) and run the cell."
     elif isinstance(line_exa, (int, float)) and not isinstance(line_exa, bool) and line_exa == 6:
         _ok = True
-        _msg = "Correct — the lowest `File` line is where it exploded: line 6, inside `split_bill`. Line 14 only made the call."
+        _msg = "Correct: the lowest `File` line is where it exploded: line 6, inside `split_bill`. Line 14 only made the call."
     elif isinstance(line_exa, (int, float)) and line_exa == 14:
         _ok = False
-        _msg = "Wrong — line 14 is the *caller*. Keep reading down: the last `File` line is the one that ran when it broke."
+        _msg = "Wrong: line 14 is the *caller*. Keep reading down: the last `File` line is the one that ran when it broke."
     else:
         _ok = False
-        _msg = "Wrong — the answer is a plain number taken from one of the two `File ... line N` lines."
+        _msg = "Wrong: the answer is a plain number taken from one of the two `File ... line N` lines."
     mo.callout(mo.md(_msg + show_result(line_exa)), kind="success" if _ok else "warn")
     return
 

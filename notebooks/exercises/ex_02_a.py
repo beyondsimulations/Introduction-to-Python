@@ -27,7 +27,7 @@ def _():
 def _(mo):
     mo.md(
         r"""
-    # Quick exercise: is the kitchen open? (5–10 min)
+    # Quick exercise: is the kitchen open? (5-10 min)
 
     The city's curfew starts at **22:00**. The kitchen opens at **11:00**.
     An order comes in at `delivery_hour` below.
@@ -72,16 +72,16 @@ def _(mo, open_exa, show_result):
     # Reactive check. Re-runs when you run the cell above.
     if open_exa is None:
         _ok = False
-        _msg = "Not attempted — assign it to `open_exa` (a `print` alone doesn't count) and run the cell."
+        _msg = "Not attempted: assign it to `open_exa` (a `print` alone doesn't count) and run the cell."
     elif open_exa is False:
         _ok = True
-        _msg = "Correct — `False`. 22:00 sharp is already curfew: `<` is strict, and `22 < 22` is not true."
+        _msg = "Correct: `False`. 22:00 sharp is already curfew: `<` is strict, and `22 < 22` is not true."
     elif open_exa is True:
         _ok = False
-        _msg = "Wrong — at 22:00 sharp the kitchen is closed. Did you write `<=` where the curfew needs `<`?"
+        _msg = "Wrong: at 22:00 sharp the kitchen is closed. Did you write `<=` where the curfew needs `<`?"
     else:
         _ok = False
-        _msg = "Wrong — the answer must be a boolean (`True` or `False`): the result of a comparison, not a number."
+        _msg = "Wrong: the answer must be a boolean (`True` or `False`): the result of a comparison, not a number."
     mo.callout(mo.md(_msg + show_result(open_exa)), kind="success" if _ok else "warn")
     return
 
@@ -118,16 +118,16 @@ def _(allowed_exa, mo, show_result):
     # Reactive check. Re-runs when you run the cell above.
     if allowed_exa is None:
         _ok = False
-        _msg = "Not attempted — assign it to `allowed_exa` (a `print` alone doesn't count) and run the cell."
+        _msg = "Not attempted: assign it to `allowed_exa` (a `print` alone doesn't count) and run the cell."
     elif allowed_exa is True:
         _ok = True
-        _msg = "Correct — `True`. The kitchen is closed, but `or` needs only one side: the pharmacy flag carries it."
+        _msg = "Correct: `True`. The kitchen is closed, but `or` needs only one side: the pharmacy flag carries it."
     elif allowed_exa is False:
         _ok = False
-        _msg = "Wrong — a pharmacy run at 22:00 is allowed. `and` needs both sides; `or` is happy with one."
+        _msg = "Wrong: a pharmacy run at 22:00 is allowed. `and` needs both sides; `or` is happy with one."
     else:
         _ok = False
-        _msg = "Wrong — the answer must be a boolean (`True` or `False`), built with `or`."
+        _msg = "Wrong: the answer must be a boolean (`True` or `False`), built with `or`."
     mo.callout(mo.md(_msg + show_result(allowed_exa)), kind="success" if _ok else "warn")
     return
 

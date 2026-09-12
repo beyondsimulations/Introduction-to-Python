@@ -27,7 +27,7 @@ def _():
 def _(mo):
     mo.md(
         r"""
-    # Quick exercise: the menu update (5–10 min)
+    # Quick exercise: the menu update (5-10 min)
 
     Winter menu day, first draft. Start from a **copy** of `menu` (never edit
     the original: Tobi still needs it for the archive), call it `menu_exc`,
@@ -78,22 +78,22 @@ def _(menu, menu_exc, mo, show_result):
     _original = {"Falafel Wrap": 6.90, "Pad Thai": 8.90, "Founders Bowl": 10.40}
     if menu_exc is None:
         _ok = False
-        _msg = "Not attempted — assign it to `menu_exc` (a `print` alone doesn't count) and run the cell."
+        _msg = "Not attempted: assign it to `menu_exc` (a `print` alone doesn't count) and run the cell."
     elif menu_exc == _expected and menu != _original:
         _ok = False
-        _msg = "Wrong — `menu_exc` looks right, but the ORIGINAL `menu` changed too. You edited it through an alias; make a real copy with `dict(...)` first, then change the copy."
+        _msg = "Wrong: `menu_exc` looks right, but the ORIGINAL `menu` changed too. You edited it through an alias; make a real copy with `dict(...)` first, then change the copy."
     elif menu_exc == _expected:
         _ok = True
-        _msg = "Correct — draft saved; the lab settles the final prices."
+        _msg = "Correct: draft saved; the lab settles the final prices."
     elif isinstance(menu_exc, dict) and "Miso Ramen" not in menu_exc:
         _ok = False
-        _msg = "Wrong — miso Ramen never made it in."
+        _msg = "Wrong: Miso Ramen never made it in."
     elif isinstance(menu_exc, dict) and menu_exc.get("Pad Thai") == 8.90:
         _ok = False
-        _msg = "Wrong — pad Thai still costs last season's price."
+        _msg = "Wrong: Pad Thai still costs last season's price."
     else:
         _ok = False
-        _msg = "Wrong — check every price and every key against the winter menu."
+        _msg = "Wrong: check every price and every key against the winter menu."
     mo.callout(mo.md(_msg + show_result(menu_exc)), kind="success" if _ok else "warn")
     return
 
@@ -130,22 +130,22 @@ def _(distinct_exc, mo, show_result):
     # Reactive check. Re-runs when you run the cell above.
     if distinct_exc is None:
         _ok = False
-        _msg = "Not attempted — assign it to `distinct_exc` (a `print` alone doesn't count) and run the cell."
+        _msg = "Not attempted: assign it to `distinct_exc` (a `print` alone doesn't count) and run the cell."
     elif isinstance(distinct_exc, bool):
         _ok = False
-        _msg = "Wrong — that's a True/False, not a count. Wrap the set in `len()`."
+        _msg = "Wrong: that's a True/False, not a count. Wrap the set in `len()`."
     elif isinstance(distinct_exc, int) and distinct_exc == 3:
         _ok = True
-        _msg = "Correct — five orders, three dishes: `len(set(orders))`."
+        _msg = "Correct: five orders, three dishes: `len(set(orders))`."
     elif isinstance(distinct_exc, int) and distinct_exc == 5:
         _ok = False
-        _msg = "Wrong — that's the number of orders, not of different dishes. Turn the list into a `set()` first."
+        _msg = "Wrong: that's the number of orders, not of different dishes. Turn the list into a `set()` first."
     elif isinstance(distinct_exc, (set, list)):
         _ok = False
-        _msg = "Wrong — that's the collection itself, not its size. Wrap it in `len()`."
+        _msg = "Wrong: that's the collection itself, not its size. Wrap it in `len()`."
     else:
         _ok = False
-        _msg = "Wrong — expected a whole number: `len()` of the set of orders."
+        _msg = "Wrong: expected a whole number: `len()` of the set of orders."
     mo.callout(mo.md(_msg + show_result(distinct_exc)), kind="success" if _ok else "warn")
     return
 

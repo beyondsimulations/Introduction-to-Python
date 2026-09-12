@@ -134,7 +134,7 @@ print(not is_weekday and before_curfew)
 
     False
 
-# Your turn --- 5--10 minutes
+# Your turn: 5-10 minutes
 
 Open the exercise (scan the QR or type the link):
 
@@ -259,7 +259,7 @@ print(delivery_hour < 22)
 
     False
 
-# Your turn --- 5--10 minutes
+# Your turn: 5-10 minutes
 
 Open the exercise (scan the QR or type the link):
 
@@ -445,7 +445,7 @@ print(total)
 
     30
 
-# Your turn --- 5--10 minutes
+# Your turn: 5-10 minutes
 
 Open the exercise (scan the QR or type the link):
 
@@ -516,7 +516,7 @@ print(count)
 
 The loop would run forever, but `break` stops it the moment `count` hits 3.
 
-# Your turn --- 5--10 minutes
+# Your turn: 5-10 minutes
 
 Open the exercise (scan the QR or type the link):
 
@@ -599,7 +599,7 @@ What does this print?
 print("  MOIN  ".strip().lower())
 ```
 
-a\) `MOIN` b) `moin` c) `moin`
+a\) `MOIN` b) `moin` c) `Error`
 
 . . .
 
@@ -607,7 +607,7 @@ a\) `MOIN` b) `moin` c) `moin`
 
 ## Answer: `"  MOIN  ".strip().lower()`
 
-**b) `moin`**: `.strip()` removes the outer spaces, then `.lower()` lowercases the result. Chained methods run left to right, each acting on the previous one's output.
+**b) `moin`**: `.strip()` hands back a new string, so `.lower()` has something to work on. Chained methods run left to right, each acting on the previous one's output.
 
 ``` python
 print("  MOIN  ".strip().lower())
@@ -615,7 +615,7 @@ print("  MOIN  ".strip().lower())
 
     moin
 
-# Your turn --- 5--10 minutes
+# Your turn: 5-10 minutes
 
 Open the exercise (scan the QR or type the link):
 
@@ -644,13 +644,13 @@ Menu → *Download* → *Download Python code* → upload the `.py` to the "Chec
 
 > **Note**
 >
-> Next week this exact routine is **Checkpoint 1**: 40 minutes, 12 points, Sessions I--II. Today you get to make every mistake for free.
+> Next week this exact routine is **Checkpoint 1**: 40 minutes, 12 points, Sessions I-II. Today you get to make every mistake for free.
 
 # <span class="flow">To the Lab</span>
 
 ## After the break: the lab
 
-- Head to the lab notebook: [Episode 2 --- The Curfew](../tutorials/tut_02_control.qmd)
+- Head to the lab notebook: [Episode 2: The Curfew](../tutorials/tut_02_control.qmd)
 - You'll enforce the 22:00 curfew, total the day's orders in a loop, de-shout Tobi's menu, and fight the **MunchCorp price war** with a `while` loop
 - It runs entirely in your browser: no setup, just click and code
 
@@ -672,7 +672,7 @@ Menu → *Download* → *Download Python code* → upload the `.py` to the "Chec
 
 > **Note**
 >
-> **Next time --- Episode 3** starts with Checkpoint 1: 40 minutes, no AI, everything from Episodes 1--2, so keep this notebook and the last one close. Then: Tobi has pasted the same receipt code 14 times, and one small change now takes him an afternoon. We bring in functions to the rescue.
+> **Next time, Episode 3** starts with Checkpoint 1: 40 minutes, no AI, everything from Episodes 1-2, so keep this notebook and the last one close. Then: Tobi has pasted the same receipt code 14 times, and one small change now takes him an afternoon. We bring in functions.
 
 # <span class="flow">Literature</span>
 

@@ -1,5 +1,5 @@
 ---
-title: Episode 2 — The Curfew
+title: 'Episode 2: The Curfew'
 subtitle: Programming with Python · Tutorial 02
 ---
 

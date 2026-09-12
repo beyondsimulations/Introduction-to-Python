@@ -14,7 +14,7 @@ def _():
 def _(mo):
     mo.md(
         r"""
-    # Quick exercise: the founding form (5–10 min)
+    # Quick exercise: the founding form (5-10 min)
 
     Tobi filled in the company register form, as Python variables. One line
     has the wrong **value** and two have the wrong **type**. First **predict**
@@ -55,7 +55,7 @@ def _(mo, first_employee, founded_year, share_capital):
         and share_capital == 300
         and isinstance(founded_year, int)
     )
-    _msg = "Correct — Form accepted!" if _ok else "Wrong — The registrar rejects the form. Keep fixing."
+    _msg = "Correct: Form accepted!" if _ok else "Wrong: The registrar rejects the form. Keep fixing."
     _msg += "\n\n**Your form:** " + ", ".join(
         f"`{_name} = {_value!r}` ({type(_value).__name__})"
         for _name, _value in [
@@ -72,7 +72,7 @@ def _(mo, first_employee, founded_year, share_capital):
 def _(mo):
     mo.md(
         r"""
-    **Done? Then:** the registrar's software checks types, not looks. Store
+    **Done? Then:** the registrar's software checks the type of each value. Store
     in `year_type_exb` the type of `founded_year`, using `type()` on the
     variable rather than typing the word. Predict first: `<class 'int'>` or
     `<class 'str'>`?
@@ -93,16 +93,16 @@ def _(mo, year_type_exb):
     # Reactive check. Re-runs when you run the cell above.
     if year_type_exb is None:
         _ok = False
-        _msg = "Not attempted — assign it to `year_type_exb` (a `print` alone doesn't count) and run the cell."
+        _msg = "Not attempted: assign it to `year_type_exb` (a `print` alone doesn't count) and run the cell."
     elif year_type_exb is int:
         _ok = True
-        _msg = "Correct — `2026` without quotes is an `int`, and `type()` says so."
+        _msg = "Correct: `2026` without quotes is an `int`, and `type()` says so."
     elif year_type_exb is str:
         _ok = False
-        _msg = "Wrong — your `founded_year` is still text. Fix the form above (drop the quotes); this check re-runs by itself."
+        _msg = "Wrong: your `founded_year` is still text. Fix the form above (drop the quotes); this check re-runs by itself."
     else:
         _ok = False
-        _msg = "Wrong — expected the result of `type(founded_year)`, not a word in quotes."
+        _msg = "Wrong: expected the result of `type(founded_year)`, not a word in quotes."
     if year_type_exb is not None:
         _msg += f"\n\n**Your result:** `{year_type_exb!r}`"
     mo.callout(mo.md(_msg), kind="success" if _ok else "warn")

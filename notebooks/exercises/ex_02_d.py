@@ -27,7 +27,7 @@ def _():
 def _(mo):
     mo.md(
         r"""
-    # Quick exercise: the courier's battery (5–10 min)
+    # Quick exercise: the courier's battery (5-10 min)
 
     The courier's phone starts the curfew shift at **100 %** and loses
     **18 %** per delivery. Deliveries continue **as long as** the battery is at
@@ -46,7 +46,7 @@ def _(mo):
 def _(mo):
     mo.callout(
         mo.md(
-            "**Saving your work:** this notebook runs in your browser. Press"
+            "**Saving your work:** this notebook runs in your browser. Press "
             "**Cmd/Ctrl+S** to save, and always save **before** menu → Download → "
             "*Download Python code*. Without a save first, the download is an empty file."
         ),
@@ -74,16 +74,16 @@ def _(mo, runs_exd, show_result):
     # Reactive check. Re-runs when you run the cell above.
     if runs_exd is None:
         _ok = False
-        _msg = "Not attempted — assign it to `runs_exd` (a `print` alone doesn't count) and run the cell."
+        _msg = "Not attempted: assign it to `runs_exd` (a `print` alone doesn't count) and run the cell."
     elif isinstance(runs_exd, (int, float)) and round(runs_exd, 2) == 5:
         _ok = True
-        _msg = "Correct — 5 deliveries: 100, 82, 64, 46, 28, then 10, and the loop stops. The battery shrinks every pass, so it always ends."
+        _msg = "Correct: 5 deliveries: 100, 82, 64, 46, 28, then 10, and the loop stops. The battery shrinks every pass, so it always ends."
     elif isinstance(runs_exd, (int, float)) and round(runs_exd, 2) == 4:
         _ok = False
-        _msg = "Wrong — one short. At 28 % the courier is still allowed out (28 is at least 20); the fifth run brings it to 10."
+        _msg = "Wrong: one short. At 28 % the courier is still allowed out (28 is at least 20); the fifth run brings it to 10."
     else:
         _ok = False
-        _msg = "Wrong — loop while the battery is **at least** 20, subtract 18 and add one run per pass."
+        _msg = "Wrong: loop while the battery is **at least** 20, subtract 18 and add one run per pass."
     mo.callout(mo.md(_msg + show_result(runs_exd)), kind="success" if _ok else "warn")
     return
 
@@ -126,16 +126,16 @@ def _(charge_exd, mo, show_result):
     # Reactive check. Re-runs when you run the cell above.
     if charge_exd is None:
         _ok = False
-        _msg = "Not attempted — assign it to `charge_exd` (a `print` alone doesn't count) and run the cell."
+        _msg = "Not attempted: assign it to `charge_exd` (a `print` alone doesn't count) and run the cell."
     elif isinstance(charge_exd, (int, float)) and round(charge_exd, 2) == 6:
         _ok = True
-        _msg = "Correct — 6 minutes: 10, 17, 24, 31, 38, 45, 52. Tobi's counter sat **outside** the loop, so it ran once, after the `break`."
+        _msg = "Correct: 6 minutes: 10, 17, 24, 31, 38, 45, 52. Tobi's counter sat **outside** the loop, so it ran once, after the `break`."
     elif isinstance(charge_exd, (int, float)) and round(charge_exd, 2) == 1:
         _ok = False
-        _msg = "Wrong — that is Tobi's answer. Look at the indentation of `minutes = minutes + 1`: is it inside the loop?"
+        _msg = "Wrong: that is Tobi's answer. Look at the indentation of `minutes = minutes + 1`: is it inside the loop?"
     else:
         _ok = False
-        _msg = "Wrong — add one minute on every pass through the loop, and `break` as soon as the level is 50 or more."
+        _msg = "Wrong: add one minute on every pass through the loop, and `break` as soon as the level is 50 or more."
     mo.callout(mo.md(_msg + show_result(charge_exd)), kind="success" if _ok else "warn")
     return
 

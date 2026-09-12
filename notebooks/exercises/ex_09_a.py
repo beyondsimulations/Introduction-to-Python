@@ -27,7 +27,7 @@ def _():
 def _(mo):
     mo.md(
         r"""
-    # Quick exercise: label the chart (5–10 min)
+    # Quick exercise: label the chart (5-10 min)
 
     Episode 9: Tobi's first pitch-deck slide is a line with no labels.
     The investor looks at it for two seconds: "What is on the y-axis?
@@ -119,35 +119,35 @@ def _(avg_exa, mo, show_result):
     _result = None
     if avg_exa is None:
         _ok = False
-        _msg = "Not attempted — Assign it to `avg_exa` (a `print` alone doesn't count) and run the cell."
+        _msg = "Not attempted: Assign it to `avg_exa` (a `print` alone doesn't count) and run the cell."
     elif isinstance(avg_exa, (list, tuple)):
         _ok = False
         _result = f"avg_exa={avg_exa!r}"
-        _msg = "Wrong — That's still the whole list. The title needs ONE number."
+        _msg = "Wrong: That's still the whole list. The title needs ONE number."
     else:
         try:
             _v = round(float(avg_exa), 2)
         except (TypeError, ValueError):
             _ok = False
             _v = None
-            _msg = "Wrong — That's not a number yet. Check what your expression returns."
+            _msg = "Wrong: That's not a number yet. Check what your expression returns."
         else:
             _result = f"avg_exa={avg_exa}"
             if _v == _expected:
                 _ok = True
-                _msg = "Correct — Exercise 9.a: the title now says what the picture is about, number included."
+                _msg = "Correct: Exercise 9.a: the title now says what the picture is about, number included."
             elif _v == 172.0:
                 _ok = False
-                _msg = "Wrong — That's the week's TOTAL. Average means total divided by the number of days."
+                _msg = "Wrong: That's the week's TOTAL. Average means total divided by the number of days."
             elif _v == 34.0:
                 _ok = False
-                _msg = "Wrong — So close: `//` throws away the decimals. Use `/` for the average."
+                _msg = "Wrong: So close: `//` throws away the decimals. Use `/` for the average."
             elif _v == 40.0:
                 _ok = False
-                _msg = "Wrong — That's the best day, not the average day."
+                _msg = "Wrong: That's the best day, not the average day."
             else:
                 _ok = False
-                _msg = "Wrong — Average = sum of the orders / number of days."
+                _msg = "Wrong: Average = sum of the orders / number of days."
     mo.callout(mo.md(_msg + show_result(_result)), kind="success" if _ok else "warn")
     return
 
@@ -205,32 +205,32 @@ def _(days_ahead_exa, mo, show_result):
     _result = None
     if days_ahead_exa is None:
         _ok = False
-        _msg = "Not attempted — Assign it to `days_ahead_exa` (a `print` alone doesn't count) and run the cell."
+        _msg = "Not attempted: Assign it to `days_ahead_exa` (a `print` alone doesn't count) and run the cell."
     elif isinstance(days_ahead_exa, (list, tuple)):
         _ok = False
         _result = f"days_ahead_exa={days_ahead_exa!r}"
-        _msg = "Wrong — That's a list of days. The investor wants a COUNT: how many days."
+        _msg = "Wrong: That's a list of days. The investor wants a COUNT: how many days."
     else:
         try:
             _v = round(float(days_ahead_exa), 2)
         except (TypeError, ValueError):
             _ok = False
             _v = None
-            _msg = "Wrong — That's not a number yet. Check what your expression returns."
+            _msg = "Wrong: That's not a number yet. Check what your expression returns."
         else:
             _result = f"days_ahead_exa={days_ahead_exa}"
             if _v == _expected:
                 _ok = True
-                _msg = "Correct — Exercise 9.a stretch: three of five days ahead. The legend tells the room which line is which."
+                _msg = "Correct: Exercise 9.a stretch: three of five days ahead. The legend tells the room which line is which."
             elif _v == 2.0:
                 _ok = False
-                _msg = "Wrong — You counted the days this week fell BEHIND. Flip the comparison."
+                _msg = "Wrong: You counted the days this week fell BEHIND. Flip the comparison."
             elif _v == 5.0:
                 _ok = False
-                _msg = "Wrong — That's every day. Only the days where this week's number is BIGGER count."
+                _msg = "Wrong: That's every day. Only the days where this week's number is BIGGER count."
             else:
                 _ok = False
-                _msg = "Wrong — Walk both lists side by side and count the days where this week > last week."
+                _msg = "Wrong: Walk both lists side by side and count the days where this week > last week."
     mo.callout(mo.md(_msg + show_result(_result)), kind="success" if _ok else "warn")
     return
 

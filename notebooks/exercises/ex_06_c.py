@@ -27,7 +27,7 @@ def _():
 def _(mo):
     mo.md(
         r"""
-    # Quick exercise: seeded randomness (5–10 min)
+    # Quick exercise: seeded randomness (5-10 min)
 
     Normally `random` hands you a new sequence every time a cell reruns.
     Sometimes you want the opposite: the *same* sequence, every single
@@ -46,7 +46,7 @@ def _(mo):
 def _(mo):
     mo.callout(
         mo.md(
-            "**Saving your work:** this notebook runs in your browser. Press"
+            "**Saving your work:** this notebook runs in your browser. Press "
             "**Cmd/Ctrl+S** to save, and always save **before** menu → Download → "
             "*Download Python code*. Without a save first, the download is an empty file."
         ),
@@ -100,16 +100,16 @@ def _(demand_exc, mo, show_result):
     _expected = [10, 18, 18, 25, 14, 20, 11]
     if demand_exc is None:
         _ok = False
-        _msg = "Not attempted — assign it to `demand_exc` (a `print` alone doesn't count) and run the cell."
+        _msg = "Not attempted: assign it to `demand_exc` (a `print` alone doesn't count) and run the cell."
     elif demand_exc == _expected:
         _ok = True
-        _msg = "Correct — Same seven numbers, every single run. The investor can finally trust the demo."
+        _msg = "Correct: Same seven numbers, every single run. The investor can finally trust the demo."
     elif isinstance(demand_exc, list) and len(demand_exc) == 7:
         _ok = False
-        _msg = "Wrong — Right shape, wrong numbers. Check three things: seed **21** (not another number), seeded once *before* the loop, and each draw is `random.randint(5, 25)`."
+        _msg = "Wrong: Right shape, wrong numbers. Check three things: seed **21** (not another number), seeded once *before* the loop, and each draw is `random.randint(5, 25)`."
     else:
         _ok = False
-        _msg = "Wrong — Build a list of 7 draws, one `random.randint(5, 25)` call per day."
+        _msg = "Wrong: Build a list of 7 draws, one `random.randint(5, 25)` call per day."
     mo.callout(mo.md(_msg + show_result(demand_exc)), kind="success" if _ok else "warn")
     return
 
@@ -150,16 +150,16 @@ def _(mo, show_result, zone_exc):
     # Reactive check. Re-runs when you run the cell above.
     if zone_exc is None:
         _ok = False
-        _msg = "Not attempted — assign it to `zone_exc` (a `print` alone doesn't count) and run the cell."
+        _msg = "Not attempted: assign it to `zone_exc` (a `print` alone doesn't count) and run the cell."
     elif zone_exc == "Nord":
         _ok = True
-        _msg = "Correct — Nord, every single run. Re-seeding rewinds the stream, so the pick is as reproducible as the demand list."
+        _msg = "Correct: Nord, every single run. Re-seeding rewinds the stream, so the pick is as reproducible as the demand list."
     elif zone_exc in ("Sued", "West"):
         _ok = False
-        _msg = "Wrong — a valid zone, but not the one seed 21 deals first. Without a fresh `random.seed(21)` right before the pick, the stream carries on from wherever the demand draws left it."
+        _msg = "Wrong: a valid zone, but not the one seed 21 deals first. Without a fresh `random.seed(21)` right before the pick, the stream carries on from wherever the demand draws left it."
     else:
         _ok = False
-        _msg = "Wrong — `random.choice` takes the list of three zones and hands back one of them, as a string."
+        _msg = "Wrong: `random.choice` takes the list of three zones and hands back one of them, as a string."
     mo.callout(mo.md(_msg + show_result(zone_exc)), kind="success" if _ok else "warn")
     return
 

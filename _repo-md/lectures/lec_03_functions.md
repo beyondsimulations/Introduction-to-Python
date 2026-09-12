@@ -17,7 +17,7 @@ format:
 - **Individual work**: no AI, no neighbors, no chat
 - The **link and QR** are handed out in class. Open it and start
 - ~6 short tasks: write code, trace code, fix a bug, answer a multiple choice
-- It sweeps **Sessions I--II**: variables, types, `round` and f-strings, `if`/`elif`, `for` loops
+- It sweeps **Sessions I-II**: variables, types, `round` and f-strings, `if`/`elif`, `for` loops
 
 <!-- QR handed out live, never in the deck -->
 
@@ -181,7 +181,7 @@ print(result)                # ...but the value handed back is None
     8.50 EUR
     None
 
-# Your turn --- 5--10 minutes
+# Your turn: 5-10 minutes
 
 Open the exercise (scan the QR or type the link):
 
@@ -228,7 +228,7 @@ print(bill(2, 4.50))
 
 `line_total` and `service_fee` do their jobs; `bill` just orchestrates. That's how small pieces become a program.
 
-# Your turn --- 5--10 minutes
+# Your turn: 5-10 minutes
 
 Open the exercise (scan the QR or type the link):
 
@@ -394,7 +394,7 @@ print(second.fee())    # self is second: 10 km
 >
 > If the `self` keyword feels odd right now, that's completely normal. Copy the shape from the worked example. The intuition follows the practice.
 
-# Your turn --- 5--10 minutes
+# Your turn: 5-10 minutes
 
 Open the exercise (scan the QR or type the link):
 
@@ -408,7 +408,7 @@ First **predict** what happens, then run it.
 
 ## After the break: the lab
 
-- Head to the lab notebook: [Episode 3 --- The Copy-Paste Soup](../tutorials/tut_03_functions.qmd)
+- Head to the lab notebook: [Episode 3: The Copy-Paste Soup](../tutorials/tut_03_functions.qmd)
 - You'll write the fee and tip functions, fix a function that forgets to `return`, give a parameter a default, and build the startup's first `Order` class, ending in the **Tip Calculator Championship**
 - It runs entirely in your browser: no setup, just click and code
 
@@ -430,7 +430,7 @@ First **predict** what happens, then run it.
 
 > **Note**
 >
-> **Next time --- Episode 4:** the menu outgrows Tobi's seventeen loose variables (`price1`, `price2`, `price_final_FINAL2`), and nobody can find anything. We give the data a shape: lists and dictionaries.
+> **Next time, Episode 4:** the menu outgrows Tobi's seventeen loose variables (`price1`, `price2`, `price_final_FINAL2`), and nobody can find anything. We give the data a shape: lists and dictionaries.
 
 # <span class="flow">Literature</span>
 

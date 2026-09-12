@@ -70,7 +70,7 @@ Materials live in the KLU portal and are hosted at [python.tobiasvlcek.com](http
 
 - We base our assessment on the KLU classification:
   - <span class="highlight">Level 1: Pause: Use of AI defined by the educator</span>
-- <span class="highlight">Part I (Sessions I--V) is AI-free</span>: no Claude, ChatGPT, Mistral & Co.
+- <span class="highlight">Part I (Sessions I-V) is AI-free</span>: no Claude, ChatGPT, Mistral & Co.
 - Your sanctioned helper is the **course chatbot** on the learning website
 - It gives **hints**, not solutions, and guides your problem-solving
 - AI tools are introduced (and then allowed) in <span class="highlight">Part II</span>, from Session VI on
@@ -224,7 +224,7 @@ print(sticker_budget)
 <span class="question">Question (we solve this together, out loud)</span>: Which of these are valid variable names?  
 `sticker_budget`, `1st_employee`, `firstEmployee`, `company-name`, `_tobi`
 
-# Your turn --- 5--10 minutes
+# Your turn: 5-10 minutes
 
 Open the exercise (scan the QR or type the link):
 
@@ -281,7 +281,7 @@ print(type("9.99"))
 
     <class 'str'>
 
-# Your turn --- 5--10 minutes
+# Your turn: 5-10 minutes
 
 Open the exercise (scan the QR or type the link):
 
@@ -386,7 +386,7 @@ a\) `5.0` b) `5` c) `Error`
 
 ## Answer: `10 / 2`
 
-**a) `5.0`**: `/` always returns a `float`, even when the division comes out even. Want a whole number? That is what `//` is for.
+**a) `5.0`**: `/` always returns a `float`, even when the division comes out even. For a whole number, use `//`.
 
 ``` python
 print(10 / 2)
@@ -422,7 +422,7 @@ print(round(10 / 3, 2))    # 3.33, a proper amount
     3.3333333333333335
     3.33
 
-# Your turn --- 5--10 minutes
+# Your turn: 5-10 minutes
 
 Open the exercise (scan the QR or type the link):
 
@@ -506,7 +506,7 @@ print(f"{qty}x {item}: {total} EUR")
 
 No `str()`, no `+`. Just the sentence you want.
 
-# Your turn --- 5--10 minutes
+# Your turn: 5-10 minutes
 
 Open the exercise (scan the QR or type the link):
 
@@ -571,7 +571,7 @@ print("2 * 3")
     6
     2 * 3
 
-# Your turn --- 5--10 minutes
+# Your turn: 5-10 minutes
 
 Open the exercise (scan the QR or type the link):
 
@@ -586,7 +586,7 @@ First **predict** what happens, then run it.
 ## After the break: the lab
 
 - We do it **together in class** after a short break; whatever's left, you finish at home
-- Head to the lab notebook: [Episode 1 --- The Founding](../tutorials/tut_01_introduction.qmd)
+- Head to the lab notebook: [Episode 1: The Founding](../tutorials/tut_01_introduction.qmd)
 - You'll name the company, set prices, and put Tobi's 9.99 theory on trial
 - It runs entirely in your browser: no setup, just click and code
 - Didn't finish the **GitHub sign-up** in class? Do it tonight, the 30-day clock is ticking
@@ -609,7 +609,7 @@ First **predict** what happens, then run it.
 
 > **Note**
 >
-> **Next time --- Episode 2:** the city bans delivery after 22:00, and Tobi suggests "we just deliver yesterday's orders." We'll need **conditionals and loops** to survive it. Plus a 15-minute practice checkpoint before the lab, ungraded.
+> **Next time, Episode 2:** the city bans delivery after 22:00, and Tobi suggests "we just deliver yesterday's orders." We'll need **conditionals and loops** to survive it. Plus an ungraded 15-minute practice checkpoint before the lab.
 
 # <span class="flow">Literature</span>
 

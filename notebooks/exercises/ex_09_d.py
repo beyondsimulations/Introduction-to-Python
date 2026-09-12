@@ -27,7 +27,7 @@ def _():
 def _(mo):
     mo.md(
         r"""
-    # Quick exercise: fix the axis (5–10 min)
+    # Quick exercise: fix the axis (5-10 min)
 
     Episode 9: Tobi's AI drafted the signups slide for the pitch deck.
     It runs, the line climbs like a rocket, and the investor reads the
@@ -45,7 +45,7 @@ def _(mo):
 def _(mo):
     mo.callout(
         mo.md(
-            "**Saving your work:** this notebook runs in your browser. Press"
+            "**Saving your work:** this notebook runs in your browser. Press "
             "**Cmd/Ctrl+S** to save, and always save **before** menu → Download → "
             "*Download Python code*. Without a save first, the download is an empty file."
         ),
@@ -116,31 +116,31 @@ def _(floor_exd, mo, show_result):
     _result = None
     if floor_exd is None:
         _ok = False
-        _msg = "Not attempted — Assign it to `floor_exd` (a `print` alone doesn't count) and run the cell."
+        _msg = "Not attempted: Assign it to `floor_exd` (a `print` alone doesn't count) and run the cell."
     else:
         try:
             _v = round(float(floor_exd), 2)
         except (TypeError, ValueError):
             _ok = False
             _v = None
-            _msg = "Wrong — That's not a number yet. `floor_exd` is where the y-axis starts."
+            _msg = "Wrong: That's not a number yet. `floor_exd` is where the y-axis starts."
         else:
             _result = f"floor_exd={floor_exd}"
             if _v == _expected:
                 _ok = True
-                _msg = "Correct — Exercise 9.d: from zero, the rocket is a gentle slope. That's the honest 4 %."
+                _msg = "Correct: Exercise 9.d: from zero, the rocket is a gentle slope. That's the honest 4 %."
             elif _v == 1170.0:
                 _ok = False
-                _msg = "Wrong — That's Tobi's floor, the one that makes the cliff. A growth claim starts at zero."
+                _msg = "Wrong: That's Tobi's floor, the one that makes the cliff. A growth claim starts at zero."
             elif _v == 1180.0:
                 _ok = False
-                _msg = "Wrong — Starting at the smallest value is the same trick with a different number. The rule says zero."
+                _msg = "Wrong: Starting at the smallest value is the same trick with a different number. The rule says zero."
             elif _v > 0:
                 _ok = False
-                _msg = "Wrong — Lower, but still not the baseline. Where does a growth chart start, by the rule on the slide?"
+                _msg = "Wrong: Lower, but still not the baseline. Where does a growth chart start, by the rule on the slide?"
             else:
                 _ok = False
-                _msg = "Wrong — Below zero hides nothing and shows nothing. The rule names one number."
+                _msg = "Wrong: Below zero only adds empty space under the line. The rule names one number."
     mo.callout(mo.md(_msg + show_result(_result)), kind="success" if _ok else "warn")
     return
 
@@ -183,28 +183,28 @@ def _(mo, show_result, top_exd):
     _result = None
     if top_exd is None:
         _ok = False
-        _msg = "Not attempted — Assign it to `top_exd` (a `print` alone doesn't count) and run the cell."
+        _msg = "Not attempted: Assign it to `top_exd` (a `print` alone doesn't count) and run the cell."
     else:
         try:
             _v = round(float(top_exd), 2)
         except (TypeError, ValueError):
             _ok = False
             _v = None
-            _msg = "Wrong — That's not a number yet. Check what your expression returns."
+            _msg = "Wrong: That's not a number yet. Check what your expression returns."
         else:
             _result = f"top_exd={top_exd}"
             if _v == _expected:
                 _ok = True
-                _msg = "Correct — Exercise 9.d stretch: 1230 rounds up to 1300, and the top of the axis is a rule, not a guess."
+                _msg = "Correct: Exercise 9.d stretch: 1230 rounds up to 1300, so the top of the axis now comes from a rule instead of a guess."
             elif _v == 1230.0:
                 _ok = False
-                _msg = "Wrong — That's the biggest value itself. The line would touch the ceiling. Round UP to the next hundred."
+                _msg = "Wrong: That's the biggest value itself. The line would touch the ceiling. Round UP to the next hundred."
             elif _v == 1200.0:
                 _ok = False
-                _msg = "Wrong — `//` rounds DOWN, so 1230 became 1200 and the line runs off the chart. Add one more hundred."
+                _msg = "Wrong: `//` rounds DOWN, so 1230 became 1200 and the line runs off the chart. Add one more hundred."
             else:
                 _ok = False
-                _msg = "Wrong — Take the biggest value, divide by 100 with `//`, add 1, multiply by 100 again."
+                _msg = "Wrong: Take the biggest value, divide by 100 with `//`, add 1, multiply by 100 again."
     mo.callout(mo.md(_msg + show_result(_result)), kind="success" if _ok else "warn")
     return
 

@@ -1,5 +1,5 @@
 # notebooks/nb_04_lab_menu.py
-# Episode 4 — The Menu Grows Up. Session IV lab notebook.
+# Episode 4: The Menu Grows Up. Session IV lab notebook.
 import marimo
 
 app = marimo.App(width="medium")
@@ -9,7 +9,7 @@ app = marimo.App(width="medium")
 def _(mo):
     mo.md(
         r"""
-    # Notebook 4.1 — The Menu Grows Up
+    # Notebook 4.1: The Menu Grows Up
     **Core exercises: 11 (+ 1 trace, 2 bonus).** Done early? You're free to go. Not done when the session ends? The rest is homework.
 
     The menu has outgrown Tobi. Last week he was tracking prices in seventeen
@@ -103,13 +103,13 @@ def _(mo, startup_name_input):
 
 
 # ─────────────────────────────────────────────────────────────────────────
-# SECTION 1 — Lists: ordered, indexed, sliceable
+# SECTION 1: Lists: ordered, indexed, sliceable
 # ─────────────────────────────────────────────────────────────────────────
 @app.cell(hide_code=True)
 def _(mo):
     mo.md(
         r"""
-    ## Section 1 — Line them up: lists
+    ## Section 1: Line them up: lists
 
     A **list** holds many values in **order**. You write it with square brackets,
     reach any item by its **index** (counting from `0`), and take a **slice** with
@@ -150,7 +150,7 @@ def _():
 def _(mo):
     mo.md(
         r"""
-    ### Exercise 1.1 (core) — join the queue
+    ### Exercise 1.1 (core): join the queue
 
     Four orders are already waiting in the kitchen queue (given below). A late
     order for a **Falafel Wrap** just came in. It goes to the **end** of the
@@ -181,23 +181,23 @@ def _():
 def _(mo, queue_ex11, show_result):
     if queue_ex11 is None:
         ex11_ok = False
-        _msg = "Not attempted — Exercise 1.1. Assign it to `queue_ex11` (a `print` alone doesn't count) and run the cell."
+        _msg = "Not attempted (Exercise 1.1). Assign it to `queue_ex11` (a `print` alone doesn't count) and run the cell."
         _preview = ""
     elif not isinstance(queue_ex11, list):
         ex11_ok = False
-        _msg = "Wrong — Exercise 1.1: `queue_ex11` should be a **list** (square brackets). Add the wrap to the existing queue, don't replace it."
+        _msg = "Wrong (Exercise 1.1): `queue_ex11` should be a **list** (square brackets). Add the wrap to the existing queue, don't replace it."
         _preview = show_result(queue_ex11)
     elif len(queue_ex11) == 5 and queue_ex11[-1] == "Falafel Wrap":
         ex11_ok = True
-        _msg = "Correct — Exercise 1.1: five orders, and the Falafel Wrap is last in line. Lists keep their order, so 'last' really means last."
+        _msg = "Correct (Exercise 1.1): five orders, and the Falafel Wrap is last in line. Lists keep their order, so 'last' really means last."
         _preview = show_result(queue_ex11)
     elif len(queue_ex11) > 5 and queue_ex11[-1] == "Falafel Wrap":
         ex11_ok = False
-        _msg = "Wrong — Exercise 1.1: more than 5 orders. `.append()` ran once per re-run of the cell and kept growing the shared `queue`. Use `queue + [\"Falafel Wrap\"]`, which leaves `queue` alone."
+        _msg = "Wrong (Exercise 1.1): more than 5 orders. `.append()` ran once per re-run of the cell and kept growing the shared `queue`. Use `queue + [\"Falafel Wrap\"]`, which leaves `queue` alone."
         _preview = show_result(queue_ex11)
     else:
         ex11_ok = False
-        _msg = "Wrong — Exercise 1.1: the queue should have **5** orders with `\"Falafel Wrap\"` at the **end**. Keep the original four, then add the wrap."
+        _msg = "Wrong (Exercise 1.1): the queue should have **5** orders with `\"Falafel Wrap\"` at the **end**. Keep the original four, then add the wrap."
         _preview = show_result(queue_ex11)
     mo.callout(mo.md(_msg + _preview), kind="success" if ex11_ok else "warn")
     return (ex11_ok,)
@@ -218,7 +218,7 @@ def _(mo):
 def _(mo):
     mo.md(
         r"""
-    ### Exercise 1.2 (core) — first up
+    ### Exercise 1.2 (core): first up
 
     The kitchen can only start the **first three** orders in `queue`. Take them
     with a **slice** and store the result in `first_three_ex12`.
@@ -238,15 +238,15 @@ def _():
 def _(first_three_ex12, mo, show_result):
     if first_three_ex12 is None:
         ex12_ok = False
-        _msg = "Not attempted — Exercise 1.2. Assign it to `first_three_ex12` (a `print` alone doesn't count) and run the cell."
+        _msg = "Not attempted (Exercise 1.2). Assign it to `first_three_ex12` (a `print` alone doesn't count) and run the cell."
         _preview = ""
     elif first_three_ex12 == ["Pad Thai", "Founders Bowl", "Pizza Calzone"]:
         ex12_ok = True
-        _msg = "Correct — Exercise 1.2: the first three orders, in order. A slice `[:3]` takes from the start up to (but not including) index 3."
+        _msg = "Correct (Exercise 1.2): the first three orders, in order. A slice `[:3]` takes from the start up to (but not including) index 3."
         _preview = show_result(first_three_ex12)
     else:
         ex12_ok = False
-        _msg = "Wrong — Exercise 1.2: that's not the first three of `queue`. A slice from the start is `queue[:3]`. It stops *before* index 3."
+        _msg = "Wrong (Exercise 1.2): that's not the first three of `queue`. A slice from the start is `queue[:3]`. It stops *before* index 3."
         _preview = show_result(first_three_ex12)
     mo.callout(mo.md(_msg + _preview), kind="success" if ex12_ok else "warn")
     return (ex12_ok,)
@@ -267,7 +267,7 @@ def _(mo):
 def _(mo):
     mo.md(
         r"""
-    ### Exercise 1.3 (core) — the courier rota
+    ### Exercise 1.3 (core): the courier rota
 
     Each courier's weekly shift is a **tuple**: `(name, hours)`. A tuple works
     like a list you can read but not change, so `shift[1]` gives the hours and
@@ -298,23 +298,23 @@ def _():
 def _(hours_ex13, mo, show_result):
     if hours_ex13 is None:
         ex13_ok = False
-        _msg = "Not attempted — Exercise 1.3. Assign it to `hours_ex13` (a `print` alone doesn't count) and run the cell."
+        _msg = "Not attempted (Exercise 1.3). Assign it to `hours_ex13` (a `print` alone doesn't count) and run the cell."
         _preview = ""
     elif isinstance(hours_ex13, bool) or not isinstance(hours_ex13, (int, float)):
         ex13_ok = False
-        _msg = "Wrong — Exercise 1.3: `hours_ex13` should be a single **number**, the hours of all shifts added together."
+        _msg = "Wrong (Exercise 1.3): `hours_ex13` should be a single **number**, the hours of all shifts added together."
         _preview = show_result(hours_ex13)
     elif hours_ex13 == 13:
         ex13_ok = True
-        _msg = "Correct — Exercise 1.3: **13** hours (4 + 6 + 3), past the 12-hour line. Tobi posts the job ad for a fourth courier. Index 1 of each tuple is where the hours live."
+        _msg = "Correct (Exercise 1.3): **13** hours (4 + 6 + 3), past the 12-hour line, so Tobi posts the job ad for a fourth courier. The hours live at index 1 of each tuple."
         _preview = show_result(hours_ex13)
     elif hours_ex13 == 3:
         ex13_ok = False
-        _msg = "Wrong — Exercise 1.3: 3 is the number of *shifts*. Reach into each tuple for its hours (`shift[1]`) and add those up."
+        _msg = "Wrong (Exercise 1.3): 3 is the number of *shifts*. Reach into each tuple for its hours (`shift[1]`) and add those up."
         _preview = show_result(hours_ex13)
     else:
         ex13_ok = False
-        _msg = "Wrong — Exercise 1.3: not the total hours. Loop over `rota`; each item is a `(name, hours)` tuple, and the hours sit at index 1."
+        _msg = "Wrong (Exercise 1.3): not the total hours. Loop over `rota`; each item is a `(name, hours)` tuple, and the hours sit at index 1."
         _preview = show_result(hours_ex13)
     mo.callout(mo.md(_msg + _preview), kind="success" if ex13_ok else "warn")
     return (ex13_ok,)
@@ -332,13 +332,13 @@ def _(mo):
 
 
 # ─────────────────────────────────────────────────────────────────────────
-# SECTION 2 — Dictionaries and sets
+# SECTION 2: Dictionaries and sets
 # ─────────────────────────────────────────────────────────────────────────
 @app.cell(hide_code=True)
 def _(mo):
     mo.md(
         r"""
-    ## Section 2 — Look it up: dictionaries and sets
+    ## Section 2: Look it up: dictionaries and sets
 
     A **dictionary** maps a **key** to a **value**. Instead of counting positions,
     you look a value up by its key, instantly:
@@ -383,7 +383,7 @@ def _():
 def _(mo):
     mo.md(
         r"""
-    ### Exercise 2.1 (core) — the menu, from scratch
+    ### Exercise 2.1 (core): the menu, from scratch
 
     Build the opening menu as a dictionary in `menu_ex21`, mapping each dish name
     to its price:
@@ -410,19 +410,19 @@ def _(menu_ex21, mo, show_result):
     _expected = {"Falafel Wrap": 6.90, "Pad Thai": 8.90, "Founders Bowl": 10.40}
     if not menu_ex21:
         ex21_ok = False
-        _msg = "Not attempted — Exercise 2.1: not attempted yet (the menu is still empty). Assign it to `menu_ex21` (a `print` alone doesn't count) and run the cell."
+        _msg = "Not attempted (Exercise 2.1). The menu is still empty. Assign it to `menu_ex21` (a `print` alone doesn't count) and run the cell."
         _preview = ""
     elif not isinstance(menu_ex21, dict):
         ex21_ok = False
-        _msg = "Wrong — Exercise 2.1: `menu_ex21` should be a **dictionary**: curly braces, `\"name\": price` pairs."
+        _msg = "Wrong (Exercise 2.1): `menu_ex21` should be a **dictionary**: curly braces, `\"name\": price` pairs."
         _preview = show_result(menu_ex21)
     elif menu_ex21 == _expected:
         ex21_ok = True
-        _msg = "Correct — Exercise 2.1: three dishes, three prices, each reachable by name. No more `price1`, `price2`, `price_final_FINAL2`."
+        _msg = "Correct (Exercise 2.1): three dishes, three prices, each reachable by name. No more `price1`, `price2`, `price_final_FINAL2`."
         _preview = show_result(menu_ex21)
     else:
         ex21_ok = False
-        _msg = "Wrong — Exercise 2.1: not quite. Check every name and price. Keys are the dish names (as strings), values are the prices: 6.90, 8.90, 10.40."
+        _msg = "Wrong (Exercise 2.1): not quite. Check every name and price. Keys are the dish names (as strings), values are the prices: 6.90, 8.90, 10.40."
         _preview = show_result(menu_ex21)
     mo.callout(mo.md(_msg + _preview), kind="success" if ex21_ok else "warn")
     return (ex21_ok,)
@@ -443,7 +443,7 @@ def _(mo):
 def _(mo):
     mo.md(
         r"""
-    ### Exercise 2.2 (core) — the winter menu
+    ### Exercise 2.2 (core): the winter menu
 
     Winter changes the menu. Starting from `menu_ex21`, make `menu_ex22` that:
 
@@ -475,27 +475,27 @@ def _(menu_ex21, menu_ex22, mo, show_result):
     _original = {"Falafel Wrap": 6.90, "Pad Thai": 8.90, "Founders Bowl": 10.40}
     if not menu_ex22:
         ex22_ok = False
-        _msg = "Not attempted — Exercise 2.2. Assign it to `menu_ex22` (a `print` alone doesn't count) and run the cell."
+        _msg = "Not attempted (Exercise 2.2). Assign it to `menu_ex22` (a `print` alone doesn't count) and run the cell."
         _preview = ""
     elif not isinstance(menu_ex22, dict):
         ex22_ok = False
-        _msg = "Wrong — Exercise 2.2: `menu_ex22` should be a **dictionary**. Copy the old one, then adjust the copy."
+        _msg = "Wrong (Exercise 2.2): `menu_ex22` should be a **dictionary**. Copy the old one, then adjust the copy."
         _preview = show_result(menu_ex22)
     elif menu_ex22 == _expected and menu_ex21 != _original:
         ex22_ok = False
-        _msg = "Wrong — Exercise 2.2: `menu_ex22` looks right, but the ORIGINAL menu changed too. You edited `menu_ex21` through an alias; make a real copy with `dict(...)` first, then change the copy."
+        _msg = "Wrong (Exercise 2.2): `menu_ex22` looks right, but the ORIGINAL menu changed too. You edited `menu_ex21` through an alias; make a real copy with `dict(...)` first, then change the copy."
         _preview = show_result(menu_ex22)
     elif menu_ex22 == _expected:
         ex22_ok = True
-        _msg = "Correct — Exercise 2.2: Founders Bowl up to 10.90, Bao Box on the board at 7.80. Four dishes, and the original menu is safe."
+        _msg = "Correct (Exercise 2.2): Founders Bowl up to 10.90, Bao Box on the board at 7.80. Four dishes, and the original menu is safe."
         _preview = show_result(menu_ex22)
     elif menu_ex22.get("Founders Bowl") == 10.40:
         ex22_ok = False
-        _msg = "Wrong — Exercise 2.2: the Founders Bowl is still 10.40, so you need to **update** its value to 10.90 after copying."
+        _msg = "Wrong (Exercise 2.2): the Founders Bowl is still 10.40, so you need to **update** its value to 10.90 after copying."
         _preview = show_result(menu_ex22)
     else:
         ex22_ok = False
-        _msg = "Wrong — Exercise 2.2: four dishes expected: Founders Bowl at 10.90 and a new `\"Bao Box\": 7.80`, everything else unchanged."
+        _msg = "Wrong (Exercise 2.2): four dishes expected: Founders Bowl at 10.90 and a new `\"Bao Box\": 7.80`, everything else unchanged."
         _preview = show_result(menu_ex22)
     mo.callout(mo.md(_msg + _preview), kind="success" if ex22_ok else "warn")
     return (ex22_ok,)
@@ -516,7 +516,7 @@ def _(mo):
 def _(mo):
     mo.md(
         r"""
-    ### Exercise 2.3 (core) — how many regulars?
+    ### Exercise 2.3 (core): how many regulars?
 
     Today's orders came from these customers (some ordered more than once):
 
@@ -548,23 +548,23 @@ def _():
 def _(mo, n_regulars_ex23, show_result):
     if n_regulars_ex23 is None:
         ex23_ok = False
-        _msg = "Not attempted — Exercise 2.3. Assign it to `n_regulars_ex23` (a `print` alone doesn't count) and run the cell."
+        _msg = "Not attempted (Exercise 2.3). Assign it to `n_regulars_ex23` (a `print` alone doesn't count) and run the cell."
         _preview = ""
     elif not isinstance(n_regulars_ex23, int):
         ex23_ok = False
-        _msg = "Wrong — Exercise 2.3: this should be a whole **number**, a count of people."
+        _msg = "Wrong (Exercise 2.3): this should be a whole **number**, a count of people."
         _preview = show_result(n_regulars_ex23)
     elif n_regulars_ex23 == 3:
         ex23_ok = True
-        _msg = "Correct — Exercise 2.3: **3** regulars: mo, lena and tobi. A set drops the repeats, `len` counts what's left."
+        _msg = "Correct (Exercise 2.3): **3** regulars: mo, lena and tobi. A set drops the repeats, `len` counts what's left."
         _preview = show_result(n_regulars_ex23)
     elif n_regulars_ex23 == 5:
         ex23_ok = False
-        _msg = "Wrong — Exercise 2.3: 5 is the number of *orders*, counting mo and lena twice. Turn the list into a **set** first to drop duplicates, then count."
+        _msg = "Wrong (Exercise 2.3): 5 is the number of *orders*, counting mo and lena twice. Turn the list into a **set** first to drop duplicates, then count."
         _preview = show_result(n_regulars_ex23)
     else:
         ex23_ok = False
-        _msg = "Wrong — Exercise 2.3: not the count of unique customers. `set(customers)` removes duplicates; `len(...)` counts the remaining ones."
+        _msg = "Wrong (Exercise 2.3): not the count of unique customers. `set(customers)` removes duplicates; `len(...)` counts the remaining ones."
         _preview = show_result(n_regulars_ex23)
     mo.callout(mo.md(_msg + _preview), kind="success" if ex23_ok else "warn")
     return (ex23_ok,)
@@ -582,13 +582,13 @@ def _(mo):
 
 
 # ─────────────────────────────────────────────────────────────────────────
-# SECTION 3 — Nesting, comprehensions, and a lookup bug
+# SECTION 3: Nesting, comprehensions, and a lookup bug
 # ─────────────────────────────────────────────────────────────────────────
 @app.cell(hide_code=True)
 def _(mo):
     mo.md(
         r"""
-    ## Section 3 — Deeper: nesting, comprehensions, and `.get()`
+    ## Section 3: Deeper: nesting, comprehensions, and `.get()`
 
     Values in a dictionary can themselves be dictionaries. That's **nesting**.
     You reach inside with a second set of brackets:
@@ -646,7 +646,7 @@ def _():
 def _(mo):
     mo.md(
         r"""
-    ### Exercise 3.1 (trace — predict first) — reaching into a nest
+    ### Exercise 3.1 (trace, predict first): reaching into a nest
 
     This is a **trace** exercise: predict the answer first, *then* reveal it. The
     delivery zones are stored as a nested dictionary:
@@ -703,7 +703,7 @@ def _(mo, trace_ex31):
 def _(mo):
     mo.md(
         r"""
-    ### Exercise 3.2 (core) — happy hour
+    ### Exercise 3.2 (core): happy hour
 
     Happy hour knocks **30 % off** every dish. Build `happy_ex32`: a new
     dictionary from `menu_ex22` (the winter menu) where every price is **70 % of
@@ -731,23 +731,23 @@ def _(happy_ex32, mo, show_result):
     }
     if happy_ex32 is None:
         ex32_ok = False
-        _msg = "Not attempted — Exercise 3.2. Assign it to `happy_ex32` (a `print` alone doesn't count) and run the cell."
+        _msg = "Not attempted (Exercise 3.2). Assign it to `happy_ex32` (a `print` alone doesn't count) and run the cell."
         _preview = ""
     elif not isinstance(happy_ex32, dict):
         ex32_ok = False
-        _msg = "Wrong — Exercise 3.2: `happy_ex32` should be a **dictionary** with the same keys as the menu and discounted values."
+        _msg = "Wrong (Exercise 3.2): `happy_ex32` should be a **dictionary** with the same keys as the menu and discounted values."
         _preview = show_result(happy_ex32)
     elif happy_ex32 == _expected:
         ex32_ok = True
-        _msg = "Correct — Exercise 3.2: the whole menu re-priced in one line. Comprehensions turn 'do this to every item' into a single expression."
+        _msg = "Correct (Exercise 3.2): the whole menu re-priced in one line. Comprehensions turn 'do this to every item' into a single expression."
         _preview = show_result(happy_ex32)
     elif set(happy_ex32.keys()) == set(_expected.keys()):
         ex32_ok = False
-        _msg = "Wrong — Exercise 3.2: right dishes, wrong numbers: 30 % off means `price * 0.7`, and each result must be `round(..., 2)` (otherwise you get long tails like 6.2299999)."
+        _msg = "Wrong (Exercise 3.2): right dishes, wrong numbers: 30 % off means `price * 0.7`, and each result must be `round(..., 2)` (otherwise you get long tails like 6.2299999)."
         _preview = show_result(happy_ex32)
     else:
         ex32_ok = False
-        _msg = "Wrong — Exercise 3.2: build it from `menu_ex22` so every dish is there, each at 70 % of its price, rounded to 2 decimals."
+        _msg = "Wrong (Exercise 3.2): build it from `menu_ex22` so every dish is there, each at 70 % of its price, rounded to 2 decimals."
         _preview = show_result(happy_ex32)
     mo.callout(mo.md(_msg + _preview), kind="success" if ex32_ok else "warn")
     return (ex32_ok,)
@@ -768,7 +768,7 @@ def _(mo):
 def _(mo):
     mo.md(
         r"""
-    ### Exercise 3.3 (core, fix the bug) — the price comes back empty
+    ### Exercise 3.3 (core, fix the bug): the price comes back empty
 
     Tobi wired up the price lookup, and it *looks* fine: no error, no red text.
     But every time an order for Pad Thai comes through, the price on the receipt
@@ -795,12 +795,12 @@ def _(menu_ex22):
 def _(menu_ex22, mo, pad_price_ex33, show_result):
     if pad_price_ex33 is None and not menu_ex22:
         ex33_ok = False
-        _msg = "Not attempted — Exercise 3.3: `menu_ex22` is still empty, so there is nothing to look up yet. Get Exercise 2.2 green first."
+        _msg = "Not attempted (Exercise 3.3): `menu_ex22` is still empty, so there is nothing to look up yet. Get Exercise 2.2 green first."
         _preview = ""
     elif pad_price_ex33 is None:
         ex33_ok = False
         _msg = (
-            "Wrong — Exercise 3.3: still empty (`None`). `.get(...)` hands back `None` "
+            "Wrong (Exercise 3.3): still empty (`None`). `.get(...)` hands back `None` "
             "when the key isn't found, so the key being looked up doesn't match "
             "any dish in `menu_ex22`. Compare it, character for character, with how "
             "the dish is written in the menu."
@@ -809,7 +809,7 @@ def _(menu_ex22, mo, pad_price_ex33, show_result):
     elif isinstance(pad_price_ex33, (int, float)) and round(pad_price_ex33, 2) == 8.90:
         ex33_ok = True
         _msg = (
-            "Correct — Exercise 3.3: 8.90. The key now matches the menu exactly. Bonus "
+            "Correct (Exercise 3.3): 8.90. The key now matches the menu exactly. Bonus "
             "lesson: `.get(\"padthai\")` returned `None` instead of crashing, but "
             "square brackets (`menu_ex22[\"padthai\"]`) would have raised a "
             "`KeyError` and taken the whole till down. `.get()` is the gentle lookup."
@@ -818,7 +818,7 @@ def _(menu_ex22, mo, pad_price_ex33, show_result):
     else:
         ex33_ok = False
         _msg = (
-            "Wrong — Exercise 3.3: that's not Pad Thai's winter price. Look up the exact "
+            "Wrong (Exercise 3.3): that's not Pad Thai's winter price. Look up the exact "
             "key from your `menu_ex22`."
         )
         _preview = show_result(pad_price_ex33)
@@ -841,7 +841,7 @@ def _(mo):
 def _(mo):
     mo.md(
         r"""
-    ### Exercise 3.4 (core, fix the bug) — rush hour, same ETA everywhere
+    ### Exercise 3.4 (core, fix the bug): rush hour, same ETA everywhere
 
     Rush hour adds **10 minutes** to every zone's delivery time. Tobi built the
     rush-hour ETAs from `zones` with a dict comprehension. It runs, no red text,
@@ -868,23 +868,23 @@ def _(mo, rush_ex34, show_result):
     _expected = {"north": 30, "east": 35, "dorms": 25}
     if rush_ex34 is None:
         ex34_ok = False
-        _msg = "Not attempted — Exercise 3.4. Assign it to `rush_ex34` (a `print` alone doesn't count) and run the cell."
+        _msg = "Not attempted (Exercise 3.4). Assign it to `rush_ex34` (a `print` alone doesn't count) and run the cell."
         _preview = ""
     elif not isinstance(rush_ex34, dict):
         ex34_ok = False
-        _msg = "Wrong — Exercise 3.4: `rush_ex34` should stay a **dictionary**, one zone name mapped to one number of minutes."
+        _msg = "Wrong (Exercise 3.4): `rush_ex34` should stay a **dictionary**, one zone name mapped to one number of minutes."
         _preview = show_result(rush_ex34)
     elif rush_ex34 == _expected:
         ex34_ok = True
-        _msg = "Correct — Exercise 3.4: north 30, east 35, dorms 25. The comprehension now reads `info`, the inner dict of the zone the loop is on, instead of one fixed zone. East's couriers get their extra time."
+        _msg = "Correct (Exercise 3.4): north 30, east 35, dorms 25. The comprehension now reads `info`, the inner dict of the zone the loop is on, instead of one fixed zone. East's couriers get their extra time."
         _preview = show_result(rush_ex34)
     elif len(rush_ex34) > 1 and len(set(str(_v) for _v in rush_ex34.values())) == 1:
         ex34_ok = False
-        _msg = "Wrong — Exercise 3.4: still one number for every zone. Inside the comprehension, the zone that changes each round is `zone`, and its inner dict is `info`. Which one does the right side look up?"
+        _msg = "Wrong (Exercise 3.4): still one number for every zone. Inside the comprehension, the zone that changes each round is `zone`, and its inner dict is `info`. Which one does the right side look up?"
         _preview = show_result(rush_ex34)
     else:
         ex34_ok = False
-        _msg = "Wrong — Exercise 3.4: not the rush-hour ETAs. Every zone keeps its own `\"minutes\"`, plus 10, and no zone is added or dropped."
+        _msg = "Wrong (Exercise 3.4): not the rush-hour ETAs. Every zone keeps its own `\"minutes\"`, plus 10, and no zone is added or dropped."
         _preview = show_result(rush_ex34)
     mo.callout(mo.md(_msg + _preview), kind="success" if ex34_ok else "warn")
     return (ex34_ok,)
@@ -902,13 +902,13 @@ def _(mo):
 
 
 # ─────────────────────────────────────────────────────────────────────────
-# BOSS EXERCISE — a day as a courier
+# BOSS EXERCISE: a day as a courier
 # ─────────────────────────────────────────────────────────────────────────
 @app.cell(hide_code=True)
 def _(mo):
     mo.md(
         r"""
-    ## Boss exercise (core) — a day as a courier
+    ## Boss exercise (core): a day as a courier
 
     Tobi left a Falafel Wrap sitting out, and it must reach the **dorms** before
     it achieves sentience. The campus is a **nested dictionary**: each place maps
@@ -985,23 +985,23 @@ def _(campus_map, route):
 def _(destination_ex40, mo, show_result):
     if destination_ex40 is None:
         ex40_ok = False
-        _msg = "Not attempted — Boss exercise. Assign it to `destination_ex40` (a `print` alone doesn't count) and run the cell."
+        _msg = "Not attempted (Boss exercise). Assign it to `destination_ex40` (a `print` alone doesn't count) and run the cell."
     elif destination_ex40 == "dorms":
         ex40_ok = True
         _msg = (
-            "Correct — Boss exercise: **the dorms!** gate → library → mensa → dorms, one "
+            "Correct (Boss exercise): **the dorms!** gate → library → mensa → dorms, one "
             "direction at a time. The wrap is delivered and sentience is averted."
         )
     elif destination_ex40 == "mensa":
         ex40_ok = False
         _msg = (
-            "Wrong — Boss exercise: the mensa is only the *third* stop. You stopped one "
+            "Wrong (Boss exercise): the mensa is only the *third* stop. You stopped one "
             "step early. All three directions in `route` need to be followed."
         )
     else:
         ex40_ok = False
         _msg = (
-            "Wrong — Boss exercise: not the dorms. Start at `\"gate\"`, and for each "
+            "Wrong (Boss exercise): not the dorms. Start at `\"gate\"`, and for each "
             "direction in `route` update your position to `campus_map[position][direction]`."
         )
     mo.callout(mo.md(_msg + show_result(destination_ex40)), kind="success" if ex40_ok else "warn")
@@ -1026,7 +1026,7 @@ def _(mo):
 def _(mo):
     mo.md(
         r"""
-    ### Quiz (core, MCQ) — a missing key
+    ### Quiz (core, MCQ): a missing key
 
     The menu has no `"Sushi"`. Tobi runs:
 
@@ -1056,18 +1056,18 @@ def _():
 def _(answer_ex50, mo):
     if answer_ex50 == "":
         ex50_ok = False
-        _msg = "Not attempted — Quiz. Set `answer_ex50` to your letter and run the cell."
+        _msg = "Not attempted (Quiz). Set `answer_ex50` to your letter and run the cell."
     elif str(answer_ex50).strip().lower() == "d":
         ex50_ok = True
         _msg = (
-            "Correct — Quiz: **d**. `.get()` never raises and never adds: with a second "
+            "Correct (Quiz): **d**. `.get()` never raises and never adds: with a second "
             "argument it hands back that fallback instead of `None`. The menu is "
             "untouched."
         )
     else:
         ex50_ok = False
         _msg = (
-            "Wrong — Quiz: not quite. Square brackets demand the key exist. What did "
+            "Wrong (Quiz): not quite. Square brackets demand the key exist. What did "
             "`menu_ex22[\"padthai\"]` threaten to do in 3.3, before `.get()` softened it?"
         )
     mo.callout(mo.md(_msg), kind="success" if ex50_ok else "warn")
@@ -1078,7 +1078,7 @@ def _(answer_ex50, mo):
 def _(mo):
     mo.md(
         r"""
-    ### Bonus — count the day's portions (not required)
+    ### Bonus: count the day's portions (not required)
 
     The day's orders arrived as one text log. Each line is a dish, a semicolon,
     and how many portions:
@@ -1118,23 +1118,23 @@ def _():
 def _(mo, portions_ex60, show_result):
     if portions_ex60 is None:
         ex60_ok = False
-        _msg = "Not attempted — Bonus. Assign it to `portions_ex60` (a `print` alone doesn't count) and run the cell."
+        _msg = "Not attempted (Bonus). Assign it to `portions_ex60` (a `print` alone doesn't count) and run the cell."
         _preview = ""
     elif not isinstance(portions_ex60, int):
         ex60_ok = False
-        _msg = "Wrong — Bonus: the total should be a whole **number**. Each portion count is text like `\"2\"`, so turn it into an `int` before adding."
+        _msg = "Wrong (Bonus): the total should be a whole **number**. Each portion count is text like `\"2\"`, so turn it into an `int` before adding."
         _preview = show_result(portions_ex60)
     elif portions_ex60 == 7:
         ex60_ok = True
-        _msg = "Correct — Bonus: **7** portions (2 + 1 + 3 + 1). `.splitlines()` gives you the lines, `.split(\";\")` splits each into dish and count."
+        _msg = "Correct (Bonus): **7** portions (2 + 1 + 3 + 1). `.splitlines()` gives you the lines, `.split(\";\")` splits each into dish and count."
         _preview = show_result(portions_ex60)
     elif portions_ex60 == 4:
         ex60_ok = False
-        _msg = "Wrong — Bonus: 4 is the number of *lines*, not the number of *portions*. Add up the number after each semicolon, not the count of orders."
+        _msg = "Wrong (Bonus): 4 is the number of *lines*, not the number of *portions*. Add up the number after each semicolon, not the count of orders."
         _preview = show_result(portions_ex60)
     else:
         ex60_ok = False
-        _msg = "Wrong — Bonus: not 7. Split each line on `\";\"`, take the second piece, turn it into an `int`, and sum them all."
+        _msg = "Wrong (Bonus): not 7. Split each line on `\";\"`, take the second piece, turn it into an `int`, and sum them all."
         _preview = show_result(portions_ex60)
     mo.callout(mo.md(_msg + _preview), kind="success" if ex60_ok else "warn")
     return
@@ -1155,7 +1155,7 @@ def _(mo):
 def _(mo):
     mo.md(
         r"""
-    ### Bonus — the dorm delivery fee (not required)
+    ### Bonus: the dorm delivery fee (not required)
 
     Delivery fees live in the nested `zones` dictionary from Section 3. A wrap is
     going to the **dorms**. Look up the fee for the `"dorms"` zone and store it in
@@ -1176,15 +1176,15 @@ def _():
 def _(dorms_fee_ex61, mo, show_result):
     if dorms_fee_ex61 is None:
         ex61_ok = False
-        _msg = "Not attempted — Bonus. Assign it to `dorms_fee_ex61` (a `print` alone doesn't count) and run the cell."
+        _msg = "Not attempted (Bonus). Assign it to `dorms_fee_ex61` (a `print` alone doesn't count) and run the cell."
         _preview = ""
     elif isinstance(dorms_fee_ex61, (int, float)) and round(dorms_fee_ex61, 2) == 1.20:
         ex61_ok = True
-        _msg = "Correct — Bonus: **1.20**, two brackets deep: `zones[\"dorms\"]` gives the inner dict, `[\"fee\"]` pulls out the fee."
+        _msg = "Correct (Bonus): **1.20**, two brackets deep: `zones[\"dorms\"]` gives the inner dict, `[\"fee\"]` pulls out the fee."
         _preview = show_result(dorms_fee_ex61)
     else:
         ex61_ok = False
-        _msg = "Wrong — Bonus: not the dorm fee. Reach the inner dict with `zones[\"dorms\"]`, then take its `\"fee\"`."
+        _msg = "Wrong (Bonus): not the dorm fee. Reach the inner dict with `zones[\"dorms\"]`, then take its `\"fee\"`."
         _preview = show_result(dorms_fee_ex61)
     mo.callout(mo.md(_msg + _preview), kind="success" if ex61_ok else "warn")
     return

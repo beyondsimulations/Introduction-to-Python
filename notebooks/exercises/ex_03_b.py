@@ -27,11 +27,11 @@ def _():
 def _(mo):
     mo.md(
         r"""
-    # Quick exercise: the wrap price function (5–10 min)
+    # Quick exercise: the wrap price function (5-10 min)
 
     Every receipt line needs the price of `qty` Falafel Wraps, and Tobi
-    keeps retyping `6.90 * qty` by hand, typos and all. Time to make it a
-    function he can't get wrong.
+    keeps retyping `6.90 * qty` by hand, typos and all. Put it in a
+    function so he only types it once.
 
     Write `wrap_price_exb(qty)` that returns the price of `qty` wraps,
     rounded to 2 decimals (each wrap costs 6.90 EUR).
@@ -71,20 +71,20 @@ def _(mo, show_result, wrap_price_exb):
         _r1 = wrap_price_exb(1)
     except Exception:
         _ok = False
-        _msg = "Wrong — Still crashing. Read the error above and fix it before it reaches the check."
+        _msg = "Wrong: Still crashing. Read the error above and fix it before it reaches the check."
         _preview = ""
     else:
         if _r3 is None:
             _ok = False
-            _msg = "Not attempted — The function still returns None. Use `return`, not `print`, then run the cell."
+            _msg = "Not attempted: The function still returns None. Use `return`, not `print`, then run the cell."
             _preview = ""
         elif _r3 == 20.70 and _r1 == 6.90:
             _ok = True
-            _msg = "Correct — Tobi can stop retyping `6.90 * qty` by hand."
+            _msg = "Correct: Tobi can stop retyping `6.90 * qty` by hand."
             _preview = show_result(_r3)
         else:
             _ok = False
-            _msg = "Wrong — Check the multiplication and the rounding."
+            _msg = "Wrong: Check the multiplication and the rounding."
             _preview = show_result(_r3)
     mo.callout(mo.md(_msg + _preview), kind="success" if _ok else "warn")
     return
@@ -121,16 +121,16 @@ def _(mo, show_result, wrap_bill_exb, wrap_price_exb):
         _deal = wrap_bill_exb(2, 0.10)
     except Exception:
         _ok = False
-        _msg = "Wrong — Still crashing. Read the error above and fix it before it reaches the check."
+        _msg = "Wrong: Still crashing. Read the error above and fix it before it reaches the check."
         _preview = ""
     else:
         if _base is None:
             _ok = False
-            _msg = "Not attempted — Finish `wrap_price_exb` above first; the bill builds on it."
+            _msg = "Not attempted: Finish `wrap_price_exb` above first; the bill builds on it."
             _preview = ""
         elif _default is None:
             _ok = False
-            _msg = "Not attempted — `wrap_bill_exb` still returns None. Use `return`, not `print`, then run the cell."
+            _msg = "Not attempted: `wrap_bill_exb` still returns None. Use `return`, not `print`, then run the cell."
             _preview = ""
         elif (
             isinstance(_default, (int, float))
@@ -139,15 +139,15 @@ def _(mo, show_result, wrap_bill_exb, wrap_price_exb):
             and round(_deal, 2) == 15.18
         ):
             _ok = True
-            _msg = "Correct — 13.80 EUR of wraps, 5 % on top by default, 10 % when the deal says so."
+            _msg = "Correct: 13.80 EUR of wraps, 5 % on top by default, 10 % when the deal says so."
             _preview = show_result(_default)
         elif isinstance(_default, (int, float)) and round(_default, 2) == 14.49:
             _ok = False
-            _msg = "Wrong — The default works, but the override does not: multiply by `rate`, not by 0.05."
+            _msg = "Wrong: The default works, but the override does not: multiply by `rate`, not by 0.05."
             _preview = show_result(_deal)
         else:
             _ok = False
-            _msg = "Wrong — Check the sum: `wrap_price_exb(qty)` plus that price times `rate`, then round."
+            _msg = "Wrong: Check the sum: `wrap_price_exb(qty)` plus that price times `rate`, then round."
             _preview = show_result(_default)
     mo.callout(mo.md(_msg + _preview), kind="success" if _ok else "warn")
     return

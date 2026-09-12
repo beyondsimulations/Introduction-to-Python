@@ -27,11 +27,11 @@ def _():
 def _(mo):
     mo.md(
         r"""
-    # Quick exercise: one receipt line, written once (5–10 min)
+    # Quick exercise: one receipt line, written once (5-10 min)
 
     Fourteen pasted copies of `round(qty * price, 2)`, one per menu item,
-    and yesterday's ten-cent price change took Tobi an afternoon. Time
-    for one function that does the job for every item.
+    and yesterday's ten-cent price change took Tobi an afternoon. He needs
+    one function that does the job for every item.
 
     Write `line_total_exa(qty, price)` that returns `qty * price`,
     rounded to 2 decimals.
@@ -70,12 +70,12 @@ def _(line_total_exa, mo, show_result):
         _fries = line_total_exa(5, 3.20)
     except Exception:
         _ok = False
-        _msg = "Wrong — Still crashing. Read the error above and fix it before it reaches the check."
+        _msg = "Wrong: Still crashing. Read the error above and fix it before it reaches the check."
         _preview = ""
     else:
         if _wraps is None:
             _ok = False
-            _msg = "Not attempted — The function still returns None. Use `return`, not `print`, then run the cell."
+            _msg = "Not attempted: The function still returns None. Use `return`, not `print`, then run the cell."
             _preview = ""
         elif (
             isinstance(_wraps, (int, float))
@@ -84,11 +84,11 @@ def _(line_total_exa, mo, show_result):
             and round(_fries, 2) == 16.00
         ):
             _ok = True
-            _msg = "Correct — 2 wraps at 4.50 make 9.00, 5 fries at 3.20 make 16.00. Fourteen copies retired."
+            _msg = "Correct: 2 wraps at 4.50 make 9.00, 5 fries at 3.20 make 16.00. Fourteen copies retired."
             _preview = show_result(_wraps)
         else:
             _ok = False
-            _msg = "Wrong — Multiply `qty` by `price`, round to 2 decimals, and `return` that."
+            _msg = "Wrong: Multiply `qty` by `price`, round to 2 decimals, and `return` that."
             _preview = show_result(_wraps)
     mo.callout(mo.md(_msg + _preview), kind="success" if _ok else "warn")
     return
@@ -124,20 +124,20 @@ def _(line_label_exa, mo, show_result):
         _label = line_label_exa(2, "Wrap", 4.50)
     except Exception:
         _ok = False
-        _msg = "Wrong — Still crashing. Read the error above and fix it before it reaches the check."
+        _msg = "Wrong: Still crashing. Read the error above and fix it before it reaches the check."
         _preview = ""
     else:
         if _label is None:
             _ok = False
-            _msg = "Not attempted — The caller still gets None: the line is printed, not returned. Swap `print(...)` for `return ...`, then run the cell."
+            _msg = "Not attempted: The caller still gets None: the line is printed, not returned. Swap `print(...)` for `return ...`, then run the cell."
             _preview = ""
         elif _label == "2 x Wrap: 9.00 EUR":
             _ok = True
-            _msg = "Correct — Printing shows, returning hands back. Now the receipt can store the line."
+            _msg = "Correct: Printing shows, returning hands back. Now the receipt can store the line."
             _preview = show_result(_label)
         else:
             _ok = False
-            _msg = "Wrong — Keep the exact text `2 x Wrap: 9.00 EUR`, two decimals included."
+            _msg = "Wrong: Keep the exact text `2 x Wrap: 9.00 EUR`, two decimals included."
             _preview = show_result(_label)
     mo.callout(mo.md(_msg + _preview), kind="success" if _ok else "warn")
     return

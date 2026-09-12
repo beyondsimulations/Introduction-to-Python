@@ -1,5 +1,5 @@
 # notebooks/nb_07_lab_metrics.py
-# Episode 7 — The Numbers Deck. Session VII lab notebook.
+# Episode 7: The Numbers Deck. Session VII lab notebook.
 import marimo
 
 app = marimo.App(width="medium")
@@ -9,7 +9,7 @@ app = marimo.App(width="medium")
 def _(mo):
     mo.md(
         r"""
-    # Notebook 7.1 — The Numbers Deck
+    # Notebook 7.1: The Numbers Deck
     **Core exercises: 10 + 1 quiz (+ 1 trace).** Done early? You're free to go. Not done when the session ends? The rest is homework.
 
     The investor liked last week's honest numbers. Now she wants a **one-page
@@ -105,13 +105,13 @@ def _(mo, startup_name_input):
 
 
 # ─────────────────────────────────────────────────────────────────────────
-# SECTION 1 — Arrays: a list that does math
+# SECTION 1: Arrays: a list that does math
 # ─────────────────────────────────────────────────────────────────────────
 @app.cell(hide_code=True)
 def _(mo):
     mo.md(
         r"""
-    ## Section 1 — Arrays: a list that does math
+    ## Section 1: Arrays: a list that does math
 
     A **NumPy array** looks like a list, but it's built for numbers. You make one
     from a list with `np.array([...])`, and it comes with handy facts about
@@ -152,7 +152,7 @@ def _():
 def _(mo):
     mo.md(
         r"""
-    ### Exercise 1.1 (core) — how many orders?
+    ### Exercise 1.1 (core): how many orders?
 
     Here are the individual order values (in euros) from one busy week:
 
@@ -193,7 +193,7 @@ def _():
 def _(mo, n_orders_ex11, np, show_result):
     if n_orders_ex11 is None:
         ex11_ok = False
-        _msg = "Not attempted — Exercise 1.1. Assign it to `n_orders_ex11` (a `print` alone doesn't count) and run the cell."
+        _msg = "Not attempted (Exercise 1.1). Assign it to `n_orders_ex11` (a `print` alone doesn't count) and run the cell."
         _preview = ""
     else:
         _preview = show_result(n_orders_ex11)
@@ -204,15 +204,15 @@ def _(mo, n_orders_ex11, np, show_result):
         if _n is None:
             ex11_ok = False
             if np.ndim(n_orders_ex11) > 0:
-                _msg = "Wrong — Exercise 1.1: that's still a whole array. `.size` is a single number. Wrap `int(...)` around `orders_week.size`."
+                _msg = "Wrong (Exercise 1.1): that's still a whole array. `.size` is a single number. Wrap `int(...)` around `orders_week.size`."
             else:
-                _msg = "Wrong — Exercise 1.1: this should be a whole **number**: the order count from `int(orders_week.size)`."
+                _msg = "Wrong (Exercise 1.1): this should be a whole **number**: the order count from `int(orders_week.size)`."
         elif _n == 12:
             ex11_ok = True
-            _msg = "Correct — Exercise 1.1: **12** orders. `.size` counts the elements for you, one honest number, no tallying by hand."
+            _msg = "Correct (Exercise 1.1): **12** orders. `.size` counts the elements for you, so nobody tallies by hand."
         else:
             ex11_ok = False
-            _msg = f"Wrong — Exercise 1.1: expected 12, got {_n}. Was `orders_week` built from the *whole* list? `.size` should report 12."
+            _msg = f"Wrong (Exercise 1.1): expected 12, got {_n}. Was `orders_week` built from the *whole* list? `.size` should report 12."
     mo.callout(mo.md(_msg + _preview), kind="success" if ex11_ok else "warn")
     return (ex11_ok,)
 
@@ -232,7 +232,7 @@ def _(mo):
 def _(mo):
     mo.md(
         r"""
-    ### Exercise 1.2 (core) — happy hour, all at once
+    ### Exercise 1.2 (core): happy hour, all at once
 
     Happy hour knocks **10% off** every price. Here are four menu prices:
 
@@ -274,7 +274,7 @@ def _(mo, np, sale_ex12, show_result):
     _expected = [5.4, 8.1, 10.8, 16.2]
     if sale_ex12 is None:
         ex12_ok = False
-        _msg = "Not attempted — Exercise 1.2. Assign it to `sale_ex12` (a `print` alone doesn't count) and run the cell."
+        _msg = "Not attempted (Exercise 1.2). Assign it to `sale_ex12` (a `print` alone doesn't count) and run the cell."
         _preview = ""
     else:
         _preview = show_result(sale_ex12)
@@ -284,16 +284,16 @@ def _(mo, np, sale_ex12, show_result):
             _arr = None
         if _arr is None:
             ex12_ok = False
-            _msg = "Wrong — Exercise 1.2: this should be an **array of prices**. Multiply the whole `hh_prices` array by `0.9`."
+            _msg = "Wrong (Exercise 1.2): this should be an **array of prices**. Multiply the whole `hh_prices` array by `0.9`."
         elif _arr.shape != (4,):
             ex12_ok = False
-            _msg = "Wrong — Exercise 1.2: expected four sale prices, one per item. Multiply the *whole* `hh_prices` array by `0.9`, no loop, no indexing."
+            _msg = "Wrong (Exercise 1.2): expected four sale prices, one per item. Multiply the *whole* `hh_prices` array by `0.9`, without a loop or indexing."
         elif np.allclose(np.round(_arr, 2), _expected):
             ex12_ok = True
-            _msg = "Correct — Exercise 1.2: 10% off, all four at once: `[5.4, 8.1, 10.8, 16.2]`. That's vectorization: one expression reaches every element."
+            _msg = "Correct (Exercise 1.2): 10% off, all four at once: `[5.4, 8.1, 10.8, 16.2]`. That's vectorization: one expression reaches every element."
         else:
             ex12_ok = False
-            _msg = "Wrong — Exercise 1.2: not the 10%-off prices. Happy hour keeps 90% of each: `hh_prices * 0.9`."
+            _msg = "Wrong (Exercise 1.2): not the 10%-off prices. Happy hour keeps 90% of each: `hh_prices * 0.9`."
     mo.callout(mo.md(_msg + _preview), kind="success" if ex12_ok else "warn")
     return (ex12_ok,)
 
@@ -313,7 +313,7 @@ def _(mo):
 def _(mo):
     mo.md(
         r"""
-    ### Exercise 1.3 (core) — the campaign calendar
+    ### Exercise 1.3 (core): the campaign calendar
 
     The flyer campaign runs for **14 days**, numbered 1 through 14. Build those day
     numbers with `np.arange`. Remember it stops *before* the second number, so
@@ -352,7 +352,7 @@ def _():
 def _(days_sum_ex13, mo, np, show_result):
     if days_sum_ex13 is None:
         ex13_ok = False
-        _msg = "Not attempted — Exercise 1.3. Assign it to `days_sum_ex13` (a `print` alone doesn't count) and run the cell."
+        _msg = "Not attempted (Exercise 1.3). Assign it to `days_sum_ex13` (a `print` alone doesn't count) and run the cell."
         _preview = ""
     else:
         _preview = show_result(days_sum_ex13)
@@ -363,18 +363,18 @@ def _(days_sum_ex13, mo, np, show_result):
         if _s is None:
             ex13_ok = False
             if np.ndim(days_sum_ex13) > 0:
-                _msg = "Wrong — Exercise 1.3: that's still an array. `.sum()` collapses it to one number. Wrap `int(...)` around `days.sum()`."
+                _msg = "Wrong (Exercise 1.3): that's still an array. `.sum()` collapses it to one number. Wrap `int(...)` around `days.sum()`."
             else:
-                _msg = "Wrong — Exercise 1.3: this should be a whole **number**, the total of the day numbers."
+                _msg = "Wrong (Exercise 1.3): this should be a whole **number**, the total of the day numbers."
         elif _s == 105:
             ex13_ok = True
-            _msg = "Correct — Exercise 1.3: **105**: the days 1 through 14 add up. `np.arange(1, 15)` stops before 15, so it lands exactly on 14."
+            _msg = "Correct (Exercise 1.3): **105**: the days 1 through 14 add up. `np.arange(1, 15)` stops before 15, so it lands exactly on 14."
         elif _s == 120:
             ex13_ok = False
-            _msg = "Wrong — Exercise 1.3: 120 means you summed 1 through 15. `np.arange` stops *before* its second number, so `np.arange(1, 15)` gives 1…14, not 1…15."
+            _msg = "Wrong (Exercise 1.3): 120 means you summed 1 through 15. `np.arange` stops *before* its second number, so `np.arange(1, 15)` gives 1…14, not 1…15."
         else:
             ex13_ok = False
-            _msg = "Wrong — Exercise 1.3: not the expected total. Build `np.arange(1, 15)` (days 1 through 14) and take its `.sum()`."
+            _msg = "Wrong (Exercise 1.3): not the expected total. Build `np.arange(1, 15)` (days 1 through 14) and take its `.sum()`."
     mo.callout(mo.md(_msg + _preview), kind="success" if ex13_ok else "warn")
     return (ex13_ok,)
 
@@ -391,13 +391,13 @@ def _(mo):
 
 
 # ─────────────────────────────────────────────────────────────────────────
-# SECTION 2 — Masks: counting and filtering without a loop
+# SECTION 2: Masks: counting and filtering without a loop
 # ─────────────────────────────────────────────────────────────────────────
 @app.cell(hide_code=True)
 def _(mo):
     mo.md(
         r"""
-    ## Section 2 — Masks: counting and filtering without a loop
+    ## Section 2: Masks: counting and filtering without a loop
 
     Compare an array to a number and you don't get one `True`/`False`. You get a
     whole array of them, one per element. That boolean array is a **mask**, and
@@ -437,7 +437,7 @@ def _(np):
 def _(mo):
     mo.md(
         r"""
-    ### Exercise 2.1 (core) — count the critical runs
+    ### Exercise 2.1 (core): count the critical runs
 
     Here are ten delivery times, in minutes:
 
@@ -470,7 +470,7 @@ def _():
 def _(critical_count_ex21, mo, np, show_result):
     if critical_count_ex21 is None:
         ex21_ok = False
-        _msg = "Not attempted — Exercise 2.1. Assign it to `critical_count_ex21` (a `print` alone doesn't count) and run the cell."
+        _msg = "Not attempted (Exercise 2.1). Assign it to `critical_count_ex21` (a `print` alone doesn't count) and run the cell."
         _preview = ""
     else:
         _preview = show_result(critical_count_ex21)
@@ -481,15 +481,15 @@ def _(critical_count_ex21, mo, np, show_result):
         if _c is None:
             ex21_ok = False
             if np.ndim(critical_count_ex21) > 0:
-                _msg = "Wrong — Exercise 2.1: that's still a True/False array. `.sum()` turns the mask into one number by counting the Trues. Then wrap `int(...)`."
+                _msg = "Wrong (Exercise 2.1): that's still a True/False array. `.sum()` turns the mask into one number by counting the Trues. Then wrap `int(...)`."
             else:
-                _msg = "Wrong — Exercise 2.1: this should be a whole **number** of critical deliveries. Start from the mask `delivery_times > 50`."
+                _msg = "Wrong (Exercise 2.1): this should be a whole **number** of critical deliveries. Start from the mask `delivery_times > 50`."
         elif _c == 2:
             ex21_ok = True
-            _msg = "Correct — Exercise 2.1: **2** critical runs (the 55 and the 60). `(delivery_times > 50).sum()` counted them without a loop."
+            _msg = "Correct (Exercise 2.1): **2** critical runs (the 55 and the 60). `(delivery_times > 50).sum()` counted them without a loop."
         else:
             ex21_ok = False
-            _msg = f"Wrong — Exercise 2.1: expected 2, got {_c}. Count where the times exceed 50: `(delivery_times > 50).sum()`."
+            _msg = f"Wrong (Exercise 2.1): expected 2, got {_c}. Count where the times exceed 50: `(delivery_times > 50).sum()`."
     mo.callout(mo.md(_msg + _preview), kind="success" if ex21_ok else "warn")
     return (ex21_ok,)
 
@@ -509,7 +509,7 @@ def _(mo):
 def _(mo):
     mo.md(
         r"""
-    ### Exercise 2.2 (core) — the on-time rate
+    ### Exercise 2.2 (core): the on-time rate
 
     One more trick hides in the mask: take its **`.mean()`**. `True` counts as 1
     and `False` as 0, so a True/False array's `.mean()` is the **share of Trues**:
@@ -534,7 +534,7 @@ def _():
 def _(mo, np, ontime_rate_ex22, show_result):
     if ontime_rate_ex22 is None:
         ex22_ok = False
-        _msg = "Not attempted — Exercise 2.2. Assign it to `ontime_rate_ex22` (a `print` alone doesn't count) and run the cell."
+        _msg = "Not attempted (Exercise 2.2). Assign it to `ontime_rate_ex22` (a `print` alone doesn't count) and run the cell."
         _preview = ""
     else:
         _preview = show_result(ontime_rate_ex22)
@@ -545,21 +545,21 @@ def _(mo, np, ontime_rate_ex22, show_result):
         if _r is None:
             ex22_ok = False
             if np.ndim(ontime_rate_ex22) > 0:
-                _msg = "Wrong — Exercise 2.2: that's still an array, probably the raw mask. `.mean()` collapses it to one number: the share of Trues."
+                _msg = "Wrong (Exercise 2.2): that's still an array, probably the raw mask. `.mean()` collapses it to one number: the share of Trues."
             else:
-                _msg = "Wrong — Exercise 2.2: this should be a single **number** between 0 and 1: the share of on-time deliveries."
+                _msg = "Wrong (Exercise 2.2): this should be a single **number** between 0 and 1: the share of on-time deliveries."
         elif _r == 0.8:
             ex22_ok = True
-            _msg = "Correct — Exercise 2.2: **0.8**, or 80% of deliveries on time. A True/False array's `.mean()` is count ÷ total in one call; exactly the percentage the investor wants on the deck."
+            _msg = "Correct (Exercise 2.2): **0.8**, or 80% of deliveries on time. A True/False array's `.mean()` is count ÷ total in one call, which is the percentage the investor wants on the deck."
         elif _r in (2, 8):
             ex22_ok = False
-            _msg = "Wrong — Exercise 2.2: that's the **count**. The rate is count ÷ total, and `.mean()` on the mask does that division for you."
+            _msg = "Wrong (Exercise 2.2): that's the **count**. The rate is count ÷ total, and `.mean()` on the mask does that division for you."
         elif _r == 0.2:
             ex22_ok = False
-            _msg = "Wrong — Exercise 2.2: 0.2 is the **late** share. That mask catches the over-50 times. On-time is 50 minutes *or less*: `delivery_times <= 50`."
+            _msg = "Wrong (Exercise 2.2): 0.2 is the **late** share. That mask catches the over-50 times. On-time is 50 minutes *or less*: `delivery_times <= 50`."
         else:
             ex22_ok = False
-            _msg = "Wrong — Exercise 2.2: not the expected rate. Take the mean of the on-time mask: `(delivery_times <= 50).mean()`."
+            _msg = "Wrong (Exercise 2.2): not the expected rate. Take the mean of the on-time mask: `(delivery_times <= 50).mean()`."
     mo.callout(mo.md(_msg + _preview), kind="success" if ex22_ok else "warn")
     return (ex22_ok,)
 
@@ -579,7 +579,7 @@ def _(mo):
 def _(mo):
     mo.md(
         r"""
-    ### Exercise 2.3 (core, fix the bug) — Tobi's per-zone totals
+    ### Exercise 2.3 (core, fix the bug): Tobi's per-zone totals
 
     Tobi's spreadsheet was really a **grid**: seven days down the side, four zones
     across the top. As an array it's `week_grid` below: 7 rows, 4 columns.
@@ -639,7 +639,7 @@ def _(mo, np, show_result, zone_totals_ex23):
     _expected = [141, 109, 100, 82]
     if zone_totals_ex23 is None:
         ex23_ok = False
-        _msg = "Not attempted — Exercise 2.3. Assign it to `zone_totals_ex23` (a `print` alone doesn't count) and run the cell."
+        _msg = "Not attempted (Exercise 2.3). Assign it to `zone_totals_ex23` (a `print` alone doesn't count) and run the cell."
         _preview = ""
     else:
         _preview = show_result(zone_totals_ex23)
@@ -649,19 +649,19 @@ def _(mo, np, show_result, zone_totals_ex23):
             _arr = None
         if _arr is None:
             ex23_ok = False
-            _msg = "Wrong — Exercise 2.3: this should be four zone totals (numbers). Total the grid along one axis."
+            _msg = "Wrong (Exercise 2.3): this should be four zone totals (numbers). Total the grid along one axis."
         elif _arr.shape == (7,):
             ex23_ok = False
-            _msg = "Wrong — Exercise 2.3: seven numbers. That's Tobi's bug. You totaled *across the zones* (one number per DAY, `axis=1`). The investor wants one number per ZONE: total *down the days* instead."
+            _msg = "Wrong (Exercise 2.3): seven numbers. That's Tobi's bug. You totaled *across the zones* (one number per DAY, `axis=1`). The investor wants one number per ZONE: total *down the days* instead."
         elif _arr.shape != (4,):
             ex23_ok = False
-            _msg = "Wrong — Exercise 2.3: expected exactly four zone totals, one per column. Total the grid down its seven days."
+            _msg = "Wrong (Exercise 2.3): expected exactly four zone totals, one per column. Total the grid down its seven days."
         elif np.allclose(np.round(_arr, 2), _expected):
             ex23_ok = True
-            _msg = "Correct — Exercise 2.3: `[141, 109, 100, 82]`: four zones, four numbers. Totaling *down the days* (the other axis) is what the investor actually asked for."
+            _msg = "Correct (Exercise 2.3): `[141, 109, 100, 82]`: four zones, four numbers. Totaling *down the days* (the other axis) is what the investor actually asked for."
         else:
             ex23_ok = False
-            _msg = "Wrong — Exercise 2.3: four numbers, but not the expected totals. Sum each column of `week_grid` down its seven days."
+            _msg = "Wrong (Exercise 2.3): four numbers, but not the expected totals. Sum each column of `week_grid` down its seven days."
     mo.callout(mo.md(_msg + _preview), kind="success" if ex23_ok else "warn")
     return (ex23_ok,)
 
@@ -681,7 +681,7 @@ def _(mo):
 def _(mo):
     mo.md(
         r"""
-    ### Exercise 2.4 (core, fix the bug) — Tobi's risk box
+    ### Exercise 2.4 (core, fix the bug): Tobi's risk box
 
     Under the critical count, the deck gets a **risk box**: the **average length,
     in minutes, of a critical run** (the runs over 50 minutes from Exercise 2.1).
@@ -708,7 +708,7 @@ def _(delivery_times):
 def _(critical_mean_ex24, mo, np, show_result):
     if critical_mean_ex24 is None:
         ex24_ok = False
-        _msg = "Not attempted — Exercise 2.4. Assign it to `critical_mean_ex24` (a `print` alone doesn't count) and run the cell."
+        _msg = "Not attempted (Exercise 2.4). Assign it to `critical_mean_ex24` (a `print` alone doesn't count) and run the cell."
         _preview = ""
     else:
         _preview = show_result(critical_mean_ex24)
@@ -719,21 +719,21 @@ def _(critical_mean_ex24, mo, np, show_result):
         if _m is None:
             ex24_ok = False
             if np.ndim(critical_mean_ex24) > 0:
-                _msg = "Wrong — Exercise 2.4: that's still an array. You kept the critical runs but never averaged them: `.mean()` collapses them to one number, then wrap `float(...)`."
+                _msg = "Wrong (Exercise 2.4): that's still an array. You kept the critical runs but never averaged them: `.mean()` collapses them to one number, then wrap `float(...)`."
             else:
-                _msg = "Wrong — Exercise 2.4: this should be a single **number** of minutes, the average critical run."
+                _msg = "Wrong (Exercise 2.4): this should be a single **number** of minutes, the average critical run."
         elif _m == 57.5:
             ex24_ok = True
-            _msg = "Correct — Exercise 2.4: **57.5** minutes, nearly an hour per critical run. The mask's `.mean()` was the *share* of critical runs; `delivery_times[mask]` keeps the actual minutes, and *their* mean is what the risk box needed. It goes on the deck in red, and the investor thanks you for not hiding it."
+            _msg = "Correct (Exercise 2.4): **57.5** minutes, nearly an hour per critical run. The mask's `.mean()` was the *share* of critical runs; `delivery_times[mask]` keeps the actual minutes, and *their* mean is what the risk box needed. It goes on the deck in red, and the investor thanks you for not hiding it."
         elif _m == 0.2:
             ex24_ok = False
-            _msg = "Wrong — Exercise 2.4: still 0.2, still Tobi's line. A True/False mask's `.mean()` is the *share* of Trues (Exercise 2.2), not minutes. Keep the matching **times** first, the way the worked example filters, then average those."
+            _msg = "Wrong (Exercise 2.4): still 0.2, still Tobi's line. A True/False mask's `.mean()` is the *share* of Trues (Exercise 2.2), not minutes. Keep the matching **times** first, the way the worked example filters, then average those."
         elif _m == 11.5:
             ex24_ok = False
-            _msg = "Wrong — Exercise 2.4: 11.5 spreads the critical minutes over all ten runs. Only the critical runs belong in the average; `.mean()` on the *filtered* array divides by the right count."
+            _msg = "Wrong (Exercise 2.4): 11.5 spreads the critical minutes over all ten runs. Only the critical runs belong in the average; `.mean()` on the *filtered* array divides by the right count."
         else:
             ex24_ok = False
-            _msg = f"Wrong — Exercise 2.4: expected 57.5, got {_m}. Filter first, then average: `delivery_times[delivery_times > 50].mean()`."
+            _msg = f"Wrong (Exercise 2.4): expected 57.5, got {_m}. Filter first, then average: `delivery_times[delivery_times > 50].mean()`."
     mo.callout(mo.md(_msg + _preview), kind="success" if ex24_ok else "warn")
     return (ex24_ok,)
 
@@ -750,13 +750,13 @@ def _(mo):
 
 
 # ─────────────────────────────────────────────────────────────────────────
-# SECTION 3 — Two dimensions: the deck comes together
+# SECTION 3: Two dimensions: the deck comes together
 # ─────────────────────────────────────────────────────────────────────────
 @app.cell(hide_code=True)
 def _(mo):
     mo.md(
         r"""
-    ## Section 3 — Two dimensions: the deck comes together
+    ## Section 3: Two dimensions: the deck comes together
 
     Here's the real week as a grid (`week_sales`, 7 days down, 4 zones across),
     and the zone names in `zones`, left to right:
@@ -774,7 +774,7 @@ def _(mo):
 
     Same `axis` idea as Tobi's fix: `axis=1` totals **across the zones** (one
     number per day), `axis=0` totals **down the days** (one number per zone).
-    Three metrics left on the deck. Let's compute them.
+    Three metrics are left on the deck.
     """
     )
     return
@@ -806,7 +806,7 @@ def _():
 def _(mo):
     mo.md(
         r"""
-    ### Exercise 3.1 (core) — the busiest day
+    ### Exercise 3.1 (core): the busiest day
 
     "Which day was busiest?" is really: total each day across its four zones
     (`axis=1`), then take the biggest of those seven day-totals (`.max()`). Store
@@ -827,7 +827,7 @@ def _():
 def _(best_day_total_ex31, mo, np, show_result):
     if best_day_total_ex31 is None:
         ex31_ok = False
-        _msg = "Not attempted — Exercise 3.1. Assign it to `best_day_total_ex31` (a `print` alone doesn't count) and run the cell."
+        _msg = "Not attempted (Exercise 3.1). Assign it to `best_day_total_ex31` (a `print` alone doesn't count) and run the cell."
         _preview = ""
     else:
         _preview = show_result(best_day_total_ex31)
@@ -838,18 +838,18 @@ def _(best_day_total_ex31, mo, np, show_result):
         if _t is None:
             ex31_ok = False
             if np.ndim(best_day_total_ex31) > 0:
-                _msg = "Wrong — Exercise 3.1: that's still an array. You have all seven day totals. `.max()` picks the single biggest one; then wrap `int(...)`."
+                _msg = "Wrong (Exercise 3.1): that's still an array. You have all seven day totals. `.max()` picks the single biggest one; then wrap `int(...)`."
             else:
-                _msg = "Wrong — Exercise 3.1: this should be one whole **number**, the busiest day's total."
+                _msg = "Wrong (Exercise 3.1): this should be one whole **number**, the busiest day's total."
         elif _t == 84:
             ex31_ok = True
-            _msg = "Correct — Exercise 3.1: **84**, the busiest day. You totaled each day across its zones (`axis=1`), then took the max."
+            _msg = "Correct (Exercise 3.1): **84**, the busiest day. You totaled each day across its zones (`axis=1`), then took the max."
         elif _t == 141:
             ex31_ok = False
-            _msg = "Wrong — Exercise 3.1: 141 is the biggest *zone* total (totaling down the days, `axis=0`). The busiest DAY totals across the four zones (`axis=1`), then takes the max."
+            _msg = "Wrong (Exercise 3.1): 141 is the biggest *zone* total (totaling down the days, `axis=0`). The busiest DAY totals across the four zones (`axis=1`), then takes the max."
         else:
             ex31_ok = False
-            _msg = f"Wrong — Exercise 3.1: expected 84, got {_t}. Total each day across its zones, then take the max: `week_sales.sum(axis=1).max()`."
+            _msg = f"Wrong (Exercise 3.1): expected 84, got {_t}. Total each day across its zones, then take the max: `week_sales.sum(axis=1).max()`."
     mo.callout(mo.md(_msg + _preview), kind="success" if ex31_ok else "warn")
     return (ex31_ok,)
 
@@ -869,7 +869,7 @@ def _(mo):
 def _(mo):
     mo.md(
         r"""
-    ### Exercise 3.2 (core) — a business or a weekend stand?
+    ### Exercise 3.2 (core): a business or a weekend stand?
 
     The investor has a rule about the busiest day: if **one day carries more
     than a quarter of the whole week's orders**, the company is "a weekend stand
@@ -895,11 +895,11 @@ def _():
 def _(best_day_total_ex31, mo, np, peak_share_ex32, show_result):
     if best_day_total_ex31 is None:
         ex32_ok = False
-        _msg = "Not attempted — Exercise 3.2: finish 3.1 first. This one divides `best_day_total_ex31`, which is still `None`."
+        _msg = "Not attempted (Exercise 3.2): finish 3.1 first. This one divides `best_day_total_ex31`, which is still `None`."
         _preview = ""
     elif peak_share_ex32 is None:
         ex32_ok = False
-        _msg = "Not attempted — Exercise 3.2. Assign it to `peak_share_ex32` (a `print` alone doesn't count) and run the cell."
+        _msg = "Not attempted (Exercise 3.2). Assign it to `peak_share_ex32` (a `print` alone doesn't count) and run the cell."
         _preview = ""
     else:
         _preview = show_result(peak_share_ex32)
@@ -910,21 +910,21 @@ def _(best_day_total_ex31, mo, np, peak_share_ex32, show_result):
         if _s is None:
             ex32_ok = False
             if np.ndim(peak_share_ex32) > 0:
-                _msg = "Wrong — Exercise 3.2: that's an array of shares, one per day: you divided by the seven day totals. The week's grand total is `week_sales.sum()` with no `axis`, a single number."
+                _msg = "Wrong (Exercise 3.2): that's an array of shares, one per day: you divided by the seven day totals. The week's grand total is `week_sales.sum()` with no `axis`, a single number."
             else:
-                _msg = "Wrong — Exercise 3.2: this should be a single **number** between 0 and 1, the busiest day's share of the week."
+                _msg = "Wrong (Exercise 3.2): this should be a single **number** between 0 and 1, the busiest day's share of the week."
         elif _s == 0.19:
             ex32_ok = True
-            _msg = "Correct — Exercise 3.2: **0.19**. The busiest day carried 19% of the week, under the quarter line. \"A business, not a weekend stand,\" says the investor, and the weekday campaign stays off the table. Tobi had already drafted a flyer."
+            _msg = "Correct (Exercise 3.2): **0.19**. The busiest day carried 19% of the week, under the quarter line. \"A business, not a weekend stand,\" says the investor, and the weekday campaign stays off the table. Tobi had already drafted a flyer."
         elif _s == 0.6:
             ex32_ok = False
-            _msg = "Wrong — Exercise 3.2: 0.6 is the busiest day divided by the biggest *zone* total. The share is over the week's **grand total**: `week_sales.sum()` with no axis, all 28 numbers in one."
+            _msg = "Wrong (Exercise 3.2): 0.6 is the busiest day divided by the biggest *zone* total. The share is over the week's **grand total**: `week_sales.sum()` with no axis, all 28 numbers in one."
         elif _s > 1:
             ex32_ok = False
-            _msg = "Wrong — Exercise 3.2: a share can't exceed 1. Divide the busiest-day total from 3.1 by the week's grand total, `week_sales.sum()`."
+            _msg = "Wrong (Exercise 3.2): a share can't exceed 1. Divide the busiest-day total from 3.1 by the week's grand total, `week_sales.sum()`."
         else:
             ex32_ok = False
-            _msg = f"Wrong — Exercise 3.2: expected 0.19, got {_s}. Divide `best_day_total_ex31` by `week_sales.sum()`."
+            _msg = f"Wrong (Exercise 3.2): expected 0.19, got {_s}. Divide `best_day_total_ex31` by `week_sales.sum()`."
     mo.callout(mo.md(_msg + _preview), kind="success" if ex32_ok else "warn")
     return (ex32_ok,)
 
@@ -944,12 +944,12 @@ def _(mo):
 def _(mo):
     mo.md(
         r"""
-    ## Boss exercise (core) — which zone wins the week?
+    ## Boss exercise (core): which zone wins the week?
 
     The headline metric: **which zone sold the most all week?** You already fixed
     this computation in Exercise 2.3: total down the days (`axis=0`) to get the
     four zone totals. Now go one step further: find *which* zone is biggest with
-    **`.argmax()`** (it gives the *position* of the largest value, `0`–`3`), and
+    **`.argmax()`** (it gives the *position* of the largest value, `0`-`3`), and
     use that position to look up the name in `zones`.
 
     Store the winning zone's **name** (a string like `"Hafen"`) in `best_zone_ex40`.
@@ -969,28 +969,28 @@ def _():
 def _(best_zone_ex40, mo, np, show_result):
     if best_zone_ex40 is None:
         ex40_ok = False
-        _msg = "Not attempted — Boss exercise. Assign it to `best_zone_ex40` (a `print` alone doesn't count) and run the cell."
+        _msg = "Not attempted (Boss exercise). Assign it to `best_zone_ex40` (a `print` alone doesn't count) and run the cell."
         _preview = ""
     elif isinstance(best_zone_ex40, str):
         _preview = show_result(best_zone_ex40)
         _v = best_zone_ex40.strip()
         if _v == "Nord":
             ex40_ok = True
-            _msg = "Correct — Boss exercise: **Nord** wins the week with 141. `argmax` turned the four zone totals into a position, and indexing `zones` turned that position into the name."
+            _msg = "Correct (Boss exercise): **Nord** wins the week with 141. `argmax` turned the four zone totals into a position, and indexing `zones` turned that position into the name."
         elif _v in {"Sued", "Hafen", "Altstadt"}:
             ex40_ok = False
-            _msg = "Wrong — Boss exercise: that zone isn't the weekly winner. Total down the days (`axis=0`) for the four zone totals, then `argmax` to find the biggest, and index `zones` with it."
+            _msg = "Wrong (Boss exercise): that zone isn't the weekly winner. Total down the days (`axis=0`) for the four zone totals, then `argmax` to find the biggest, and index `zones` with it."
         else:
             ex40_ok = False
-            _msg = "Wrong — Boss exercise: that isn't one of the four zone names. `zones[...]` should give 'Nord', 'Sued', 'Hafen' or 'Altstadt'."
+            _msg = "Wrong (Boss exercise): that isn't one of the four zone names. `zones[...]` should give 'Nord', 'Sued', 'Hafen' or 'Altstadt'."
     elif np.ndim(best_zone_ex40) > 0:
         ex40_ok = False
         _preview = show_result(best_zone_ex40)
-        _msg = "Wrong — Boss exercise: that's still an array. You want a single zone **name**: index `zones` with the `argmax` position."
+        _msg = "Wrong (Boss exercise): that's still an array. You want a single zone **name**: index `zones` with the `argmax` position."
     else:
         ex40_ok = False
         _preview = show_result(best_zone_ex40)
-        _msg = "Wrong — Boss exercise: that looks like a number, probably the `argmax` position. Use it to look up the name: `zones[that_position]`."
+        _msg = "Wrong (Boss exercise): that looks like a number, probably the `argmax` position. Use it to look up the name: `zones[that_position]`."
     mo.callout(mo.md(_msg + _preview), kind="success" if ex40_ok else "warn")
     return (ex40_ok,)
 
@@ -1013,7 +1013,7 @@ def _(mo):
 def _(mo):
     mo.md(
         r"""
-    ### Exercise (trace — predict first) — an array is not a list
+    ### Exercise (trace, predict first): an array is not a list
 
     This is a **trace** exercise: predict the answer first, *then* reveal it. It's
     ungraded. The point is committing to a prediction. In the lecture, `* 2` on a
@@ -1065,7 +1065,7 @@ def _(mo, trace_repeat):
 def _(mo):
     mo.md(
         r"""
-    ### Quiz (core, MCQ) — reading a mask
+    ### Quiz (core, MCQ): reading a mask
 
     You used masks all through Section 2. Given the delivery times, what does this
     expression compute?
@@ -1096,18 +1096,18 @@ def _():
 def _(answer_ex50, mo):
     if answer_ex50 == "":
         ex50_ok = False
-        _msg = "Not attempted — Quiz. Set `answer_ex50` to your letter and run the cell."
+        _msg = "Not attempted (Quiz). Set `answer_ex50` to your letter and run the cell."
     elif str(answer_ex50).strip().lower() == "d":
         ex50_ok = True
         _msg = (
-            "Correct — Quiz: **d**. `delivery_times > 40` is a True/False mask; `True` "
+            "Correct (Quiz): **d**. `delivery_times > 40` is a True/False mask; `True` "
             "counts as 1, so `.sum()` counts how many times cleared 40: a count, "
             "not a total or a maximum."
         )
     else:
         ex50_ok = False
         _msg = (
-            "Wrong — Quiz: not quite. `delivery_times > 40` makes a True/False mask, and "
+            "Wrong (Quiz): not quite. `delivery_times > 40` makes a True/False mask, and "
             "summing Trues (each worth 1) *counts* them. It doesn't total the "
             "times or find the biggest."
         )

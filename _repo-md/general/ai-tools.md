@@ -10,9 +10,9 @@ subtitle: How and when to use AI in this course
 
 The course runs a phased AI policy, and the rules are different in each part.
 
-- **Part I (Sessions I--V): no AI.** You learn to read, write and debug Python yourself. The only assistant you may use is the **course chatbot** (the widget in the sidebar), and in Part I it deliberately explains and hints rather than handing you finished code.
-- **Part II (Sessions VI--IX): AI is allowed and taught.** From Session VI we work *with* AI on purpose. Checkpoints 4 and 5 explicitly allow AI.
-- **Part III (Sessions X--XIII): AI is encouraged**, with disclosure. Use what makes you productive on your project.
+- **Part I (Sessions I-V): no AI.** You learn to read, write and debug Python yourself. The only assistant you may use is the **course chatbot** (the widget in the sidebar), and in Part I it deliberately explains and hints rather than handing you finished code.
+- **Part II (Sessions VI-IX): AI is allowed and taught.** From Session VI we work *with* AI on purpose. Checkpoints 4 and 5 explicitly allow AI.
+- **Part III (Sessions X-XIII): AI is encouraged**, with disclosure. Use what makes you productive on your project.
 
 > **Important**
 >

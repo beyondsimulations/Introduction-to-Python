@@ -27,10 +27,10 @@ def _():
 def _(mo):
     mo.md(
         r"""
-    # Quick exercise: your first chart (5–10 min)
+    # Quick exercise: your first chart (5-10 min)
 
     Episode 9: the investor's one instruction was "charts I can't argue
-    with." A table of seven numbers doesn't argue anything. A line does.
+    with." A table of seven numbers doesn't argue anything, but a line does.
 
     `plt.plot(x, y)` draws the line; `plt.xlabel`, `plt.ylabel`, and
     `plt.title` label it. One marimo rule that trips everyone up once:
@@ -127,11 +127,11 @@ def _(best_day_exb, mo, show_result, total_exb):
     _result = None
     if total_exb is None or best_day_exb is None:
         _ok = False
-        _msg = "Not attempted — Assign it to `total_exb` and `best_day_exb` (a `print` alone doesn't count) and run the cell."
+        _msg = "Not attempted: Assign it to `total_exb` and `best_day_exb` (a `print` alone doesn't count) and run the cell."
     elif isinstance(total_exb, (list, tuple)) or isinstance(best_day_exb, (list, tuple)):
         _ok = False
         _result = f"total_exb={total_exb!r}, best_day_exb={best_day_exb!r}"
-        _msg = "Wrong — One of these is still a whole list. The investor wants two single numbers."
+        _msg = "Wrong: One of these is still a whole list. The investor wants two single numbers."
     else:
         try:
             _total = round(float(total_exb), 2)
@@ -140,27 +140,27 @@ def _(best_day_exb, mo, show_result, total_exb):
             _ok = False
             _total = None
             _day = None
-            _msg = "Wrong — These should both be plain numbers. Check what your expressions actually return."
+            _msg = "Wrong: These should both be plain numbers. Check what your expressions actually return."
         else:
             _result = f"total_exb={total_exb}, best_day_exb={best_day_exb}"
             if _total == _expected_total and _day == _expected_day:
                 _ok = True
-                _msg = "Correct — A solid week, and you know exactly which day carried it."
+                _msg = "Correct: A solid week, and you know exactly which day carried it."
             elif _day == 5:
                 _ok = False
-                _msg = "Wrong — `best_day_exb` is off by one: Python counts positions from 0, but days count from 1. What do you need to add?"
+                _msg = "Wrong: `best_day_exb` is off by one: Python counts positions from 0, but days count from 1. What do you need to add?"
             elif _day == 246.8:
                 _ok = False
-                _msg = "Wrong — `best_day_exb` looks like a revenue number, not a day, so that's the VALUE. The investor asked WHICH day."
+                _msg = "Wrong: `best_day_exb` looks like a revenue number, not a day, so that's the VALUE. The investor asked WHICH day."
             elif _total == _expected_total:
                 _ok = False
-                _msg = "Wrong — Your total is right, but `best_day_exb` isn't. Find the POSITION of the biggest number, not the number itself."
+                _msg = "Wrong: Your total is right, but `best_day_exb` isn't. Find the POSITION of the biggest number, not the number itself."
             elif _day == _expected_day:
                 _ok = False
-                _msg = "Wrong — `best_day_exb` is right, but your total isn't. Check your sum over all seven days."
+                _msg = "Wrong: `best_day_exb` is right, but your total isn't. Check your sum over all seven days."
             else:
                 _ok = False
-                _msg = "Wrong — `total_exb` is a sum over the week, `best_day_exb` is a position from 1 to 7."
+                _msg = "Wrong: `total_exb` is a sum over the week, `best_day_exb` is a position from 1 to 7."
     mo.callout(mo.md(_msg + show_result(_result)), kind="success" if _ok else "warn")
     return
 
@@ -203,35 +203,35 @@ def _(mo, show_result, weekend_share_exb):
     _result = None
     if weekend_share_exb is None:
         _ok = False
-        _msg = "Not attempted — Assign it to `weekend_share_exb` (a `print` alone doesn't count) and run the cell."
+        _msg = "Not attempted: Assign it to `weekend_share_exb` (a `print` alone doesn't count) and run the cell."
     elif isinstance(weekend_share_exb, (list, tuple)):
         _ok = False
         _result = f"weekend_share_exb={weekend_share_exb!r}"
-        _msg = "Wrong — That's still a list. The investor wants ONE percentage."
+        _msg = "Wrong: That's still a list. The investor wants ONE percentage."
     else:
         try:
             _v = round(float(weekend_share_exb), 2)
         except (TypeError, ValueError):
             _ok = False
             _v = None
-            _msg = "Wrong — That's not a number yet. Check what your expression returns."
+            _msg = "Wrong: That's not a number yet. Check what your expression returns."
         else:
             _result = f"weekend_share_exb={weekend_share_exb}"
             if _v == _expected:
                 _ok = True
-                _msg = "Correct — Exercise 9.b stretch: over a third of the week in two days. That's a finding, not a footnote."
+                _msg = "Correct: Exercise 9.b stretch: over a third of the week's revenue came in on two days, which belongs on the slide."
             elif _v == 0.36:
                 _ok = False
-                _msg = "Wrong — That's the fraction. Percent means ×100."
+                _msg = "Wrong: That's the fraction. Percent means ×100."
             elif _v == 478.9:
                 _ok = False
-                _msg = "Wrong — That's the weekend's revenue in euros. A SHARE compares it to the whole week."
+                _msg = "Wrong: That's the weekend's revenue in euros. A SHARE compares it to the whole week."
             elif _v == 17.37:
                 _ok = False
-                _msg = "Wrong — That's Sunday alone. The weekend is Saturday AND Sunday, the last two positions."
+                _msg = "Wrong: That's Sunday alone. The weekend is Saturday AND Sunday, the last two positions."
             else:
                 _ok = False
-                _msg = "Wrong — Share % = (Saturday + Sunday) / whole week × 100."
+                _msg = "Wrong: Share % = (Saturday + Sunday) / whole week × 100."
     mo.callout(mo.md(_msg + show_result(_result)), kind="success" if _ok else "warn")
     return
 

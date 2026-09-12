@@ -27,7 +27,7 @@ def _():
 def _(mo):
     mo.md(
         r"""
-    # Quick exercise: the right chart for categories (5–10 min)
+    # Quick exercise: the right chart for categories (5-10 min)
 
     Line charts show change over TIME. Zones aren't a timeline: they're
     categories to compare, and `plt.bar(labels, heights)` is the chart
@@ -125,24 +125,24 @@ def _(best_zone_exc, mo, show_result):
     _result = None
     if best_zone_exc is None:
         _ok = False
-        _msg = "Not attempted — Assign it to `best_zone_exc` (a `print` alone doesn't count) and run the cell."
+        _msg = "Not attempted: Assign it to `best_zone_exc` (a `print` alone doesn't count) and run the cell."
     elif isinstance(best_zone_exc, (list, tuple)):
         _ok = False
         _result = f"best_zone_exc={best_zone_exc!r}"
-        _msg = "Wrong — That's the whole list. The investor wants ONE winner, not all four zones."
+        _msg = "Wrong: That's the whole list. The investor wants ONE winner, not all four zones."
     elif isinstance(best_zone_exc, (int, float)) and not isinstance(best_zone_exc, bool):
         _ok = False
         _result = f"best_zone_exc={best_zone_exc!r}"
-        _msg = "Wrong — That's the bar's HEIGHT (a euro amount). The investor asked WHICH zone, by name."
+        _msg = "Wrong: That's the bar's HEIGHT (a euro amount). The investor asked WHICH zone, by name."
     else:
         _v = str(best_zone_exc).strip().lower()
         _result = f"best_zone_exc={best_zone_exc!r}"
         if _v == _expected:
             _ok = True
-            _msg = "Correct — One glance at the bar chart and the investor knows where to expand."
+            _msg = "Correct: One glance at the bar chart and the investor knows where to expand."
         else:
             _ok = False
-            _msg = "Wrong — Read the tallest bar again and check its label."
+            _msg = "Wrong: Read the tallest bar again and check its label."
     mo.callout(mo.md(_msg + show_result(_result)), kind="success" if _ok else "warn")
     return
 
@@ -192,30 +192,30 @@ def _(mo, second_zone_exc, show_result):
     _result = None
     if second_zone_exc is None:
         _ok = False
-        _msg = "Not attempted — Assign it to `second_zone_exc` (a `print` alone doesn't count) and run the cell."
+        _msg = "Not attempted: Assign it to `second_zone_exc` (a `print` alone doesn't count) and run the cell."
     elif isinstance(second_zone_exc, (list, tuple)):
         _ok = False
         _result = f"second_zone_exc={second_zone_exc!r}"
-        _msg = "Wrong — That's a whole list (or a pair). The investor wants ONE zone name."
+        _msg = "Wrong: That's a whole list (or a pair). The investor wants ONE zone name."
     elif isinstance(second_zone_exc, (int, float)) and not isinstance(second_zone_exc, bool):
         _ok = False
         _result = f"second_zone_exc={second_zone_exc!r}"
-        _msg = "Wrong — That's a bar's HEIGHT. She asked for the zone's NAME."
+        _msg = "Wrong: That's a bar's HEIGHT. She asked for the zone's NAME."
     else:
         _v = str(second_zone_exc).strip().lower()
         _result = f"second_zone_exc={second_zone_exc!r}"
         if _v == _expected:
             _ok = True
-            _msg = "Correct — Exercise 9.c stretch: Nord, then Altstadt. Sorted bars make the ranking readable at a glance."
+            _msg = "Correct: Exercise 9.c stretch: Nord, then Altstadt. Sorted bars make the ranking readable at a glance."
         elif _v == "sued":
             _ok = False
-            _msg = "Wrong — That's the SMALLEST zone: you sorted ascending. Tallest first means `reverse=True`."
+            _msg = "Wrong: That's the SMALLEST zone: you sorted ascending. Tallest first means `reverse=True`."
         elif _v == "hafen":
             _ok = False
-            _msg = "Wrong — That's the second entry of the ORIGINAL list order. Sort by height first, then take position 1."
+            _msg = "Wrong: That's the second entry of the ORIGINAL list order. Sort by height first, then take position 1."
         else:
             _ok = False
-            _msg = "Wrong — Pair each total with its zone, sort the pairs by total (largest first), read the second pair's name."
+            _msg = "Wrong: Pair each total with its zone, sort the pairs by total (largest first), read the second pair's name."
     mo.callout(mo.md(_msg + show_result(_result)), kind="success" if _ok else "warn")
     return
 

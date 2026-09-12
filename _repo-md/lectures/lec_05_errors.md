@@ -17,7 +17,7 @@ format:
 - **Individual work**: no AI, no neighbors, no chat
 - The **link and QR** are handed out in class. Open it and start
 - ~6 short tasks: write code, trace code, fix a bug, answer a multiple choice
-- It sweeps **Sessions III--IV**: functions, scope, classes, lists and dictionaries, comprehensions
+- It sweeps **Sessions III-IV**: functions, scope, classes, lists and dictionaries, comprehensions
 
 <!-- QR handed out live, never in the deck -->
 
@@ -29,7 +29,7 @@ Menu → *Download* → *Download Python code* → upload the `.py` to the **"Ch
 
 > **Note**
 >
-> The green live checks are **provisional**. The final grading runs on my side. And take a breath: everything in it was rehearsed in the labs.
+> The green live checks are **provisional**. The final grading runs on my side. Everything in it was rehearsed in the labs.
 
 # <span class="flow">Episode 5: The 3-AM Checkout</span>
 
@@ -140,7 +140,7 @@ The other two you'll meet constantly:
 
 You don't have to memorize all of Python's exceptions. Recognize these five on sight, and read the last line for the rest.
 
-# Your turn --- 5--10 minutes
+# Your turn: 5-10 minutes
 
 Open the exercise (scan the QR or type the link):
 
@@ -223,7 +223,7 @@ except TypeError as e:
 
 `as e` keeps the error object in a variable, so you can print its message instead of losing it. Any name works; `e` is the habit.
 
-# Your turn --- 5--10 minutes
+# Your turn: 5-10 minutes
 
 Open the exercise (scan the QR or type the link):
 
@@ -248,7 +248,7 @@ When something is wrong, you don't guess randomly. You follow a loop:
 
 The inspector debugs the same way: find the broken thing, make it repeat, corner it, fix it. Panic is not a step.
 
-## `print()` --- the beginner's flashlight
+## `print()`: the beginner's flashlight
 
 The simplest debugger is a well-placed `print()`. When you can't see what a value *is*, shine a light on it:
 
@@ -267,7 +267,7 @@ print(line_total(3, 5.50))
 
 Real debuggers with breakpoints exist and are wonderful, but a `print()` in the right spot solves most beginner bugs in seconds. Remove it once you've seen enough.
 
-## `raise` --- when your code should refuse
+## `raise`: when your code should refuse
 
 Sometimes *your own* code should reject bad input on the spot. The inspector's rule is non-negotiable: **every price ≥ 0**. `raise` throws an error deliberately:
 
@@ -289,7 +289,7 @@ except ValueError as e:
 
 A bad value stops *here*, at the door, instead of poisoning the books three screens later.
 
-## `assert` --- a tripwire for invariants
+## `assert`: a tripwire for invariants
 
 An **`assert`** guards an *invariant*, a fact that must **always** hold. If it's true, nothing happens; if it's false, the program stops right there with an `AssertionError`:
 
@@ -401,7 +401,7 @@ print("checkout still running")  # ...and we get here
     0.0
     checkout still running
 
-# Your turn --- 5--10 minutes
+# Your turn: 5-10 minutes
 
 Open the exercise (scan the QR or type the link):
 
@@ -415,7 +415,7 @@ First **predict** what happens, then run it.
 
 ## After the break: the lab
 
-- Head to the lab notebook: [Episode 5 --- The 3-AM Checkout](../tutorials/tut_05_errors.qmd)
+- Head to the lab notebook: [Episode 5: The 3-AM Checkout](../tutorials/tut_05_errors.qmd)
 - You'll read a traceback, write a price box that won't crash, fix Tobi's 3-AM receipt, make your code **refuse** negative prices with `raise`, and harden the whole checkout against a batch of poisoned orders
 - It runs entirely in your browser: no setup, just click and code
 
@@ -437,7 +437,7 @@ First **predict** what happens, then run it.
 
 > **Note**
 >
-> **Next time --- Episode 6** starts with Checkpoint 3, which sweeps everything from Episodes 1--5, so keep this notebook and the last four close. Then someone new walks into the shop, uncaps a marker, and writes one question on the whiteboard. Part II begins.
+> **Next time, Episode 6** starts with Checkpoint 3, which sweeps everything from Episodes 1-5, so keep this notebook and the last four close. Then someone new walks into the shop, uncaps a marker, and writes one question on the whiteboard. Part II begins.
 
 # <span class="flow">Literature</span>
 

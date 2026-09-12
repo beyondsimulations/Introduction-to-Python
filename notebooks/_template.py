@@ -1,5 +1,5 @@
 # notebooks/_template.py
-# TEMPLATE — copy to nb_XX_lab_<topic>.py and replace TODO-marked content.
+# TEMPLATE: copy to nb_XX_lab_<topic>.py and replace TODO-marked content.
 # Rules (spec §4): one global name per cell; += counts as a definition;
 # every exercise pre-defines its answer as None; suffix exercise names (_ex1);
 # underscore-prefixed names are cell-private.
@@ -15,10 +15,10 @@ app = marimo.App(width="medium")
 def _(mo):
     mo.md(
         r"""
-    # Notebook X.Y — TODO Title
+    # Notebook X.Y: TODO Title
     **Estimated time: TODO min · Core exercises: TODO**
 
-    TODO: Story cold-open. 2–4 sentences, sitcom tone.
+    TODO: Story cold-open. 2-4 sentences, sitcom tone.
     """
     )
     return
@@ -59,7 +59,7 @@ def _():
 
 @app.cell(hide_code=True)
 def _():
-    # Helper — renders a student's current answer as a "Your result" preview so
+    # Helper: renders a student's current answer as a "Your result" preview so
     # they SEE their output (e.g. a receipt's alignment), not just /. Strings
     # render in a fenced block (multi-line formatting shows); everything else
     # inline. Append `show_result(answer)` to any check cell's message.
@@ -93,9 +93,9 @@ def _(mo, startup_name_input):
 def _(mo):
     mo.md(
         r"""
-    ## Section 1 — TODO concept name
+    ## Section 1: TODO concept name
 
-    TODO: teach the concept in 3–6 sentences, then show a worked example below.
+    TODO: teach the concept in 3-6 sentences, then show a worked example below.
     """
     )
     return
@@ -114,7 +114,7 @@ def _():
 def _(mo):
     mo.md(
         r"""
-    ### Exercise 1.1 (core) — TODO one-line task
+    ### Exercise 1.1 (core): TODO one-line task
 
     TODO: task description referencing the story.
     """
@@ -124,24 +124,24 @@ def _(mo):
 
 @app.cell
 def _():
-    # YOUR CODE BELOW — replace None
+    # YOUR CODE BELOW: replace None
     revenue_ex1 = None
     return (revenue_ex1,)
 
 
 @app.cell(hide_code=True)
 def _(mo, revenue_ex1, show_result):
-    # Reactive check — Re-runs when you run the cell above.
+    # Reactive check: Re-runs when you run the cell above.
     if revenue_ex1 is None:
         ex1_ok = False
-        _msg = "Not attempted — Exercise 1.1. Assign it to `revenue_ex1` (a `print` alone doesn't count) and run the cell."
+        _msg = "Not attempted (Exercise 1.1). Assign it to `revenue_ex1` (a `print` alone doesn't count) and run the cell."
     elif revenue_ex1 == 13.50:  # TODO expected value
         ex1_ok = True
-        _msg = "Correct — Exercise 1.1: correct! The investor nods approvingly."
+        _msg = "Correct (Exercise 1.1): correct! The investor nods approvingly."
     else:
         ex1_ok = False
-        _msg = "Wrong — Exercise 1.1: not quite — check your multiplication."
-    # show_result echoes the student's current answer below the /Wrong — message.
+        _msg = "Wrong (Exercise 1.1): not quite. Check your multiplication."
+    # show_result echoes the student's current answer below the /Wrong: message.
     mo.md(_msg + show_result(revenue_ex1))
     return (ex1_ok,)
 
@@ -151,7 +151,7 @@ def _(mo):
     mo.accordion(
         {
             "Hint 1 (a nudge)": "TODO: conceptual nudge, no code.",
-            "Hint 2 (the structure)": "TODO: code skeleton with blanks, e.g. `revenue_ex1 = round(___ * ___, 2)` — NEVER the full pasteable answer (that lives in the post-session solution notebook).",
+            "Hint 2 (the structure)": "TODO: code skeleton with blanks, e.g. `revenue_ex1 = round(___ * ___, 2)`. NEVER the full pasteable answer (that lives in the post-session solution notebook).",
         }
     )
     return
@@ -159,13 +159,13 @@ def _(mo):
 
 @app.cell(hide_code=True)
 def _(ex1_ok, mo):
-    # Progress cell — extend the list as exercises are added.
+    # Progress cell: extend the list as exercises are added.
     _checks = [ex1_ok]
     _done = sum(_checks)
     _total = len(_checks)
     _tobi = "Tobi is impressed!" if _done == _total else "Tobi remains skeptical."
     mo.callout(
-        mo.md(f"**Core exercises: {_done}/{_total} correct** — {_tobi}"),
+        mo.md(f"**Core exercises: {_done}/{_total} correct.** {_tobi}"),
         kind="success" if _done == _total else "neutral",
     )
     return
@@ -177,7 +177,7 @@ def _(mo):
         r"""
     ## Before you leave
 
-    1. Check the progress box above — all green?
+    1. Check the progress box above. All green?
     2. **Download your work**: **Cmd/Ctrl+S**, then menu → Download → Python. Reloading this exact
        tab (Cmd/Ctrl+R) keeps your work, but closing the tab and reopening the
        link starts you fresh. The download is the only guaranteed copy.

@@ -27,7 +27,7 @@ def _():
 def _(mo):
     mo.md(
         r"""
-    # Quick exercise: the first receipt line (5–10 min)
+    # Quick exercise: the first receipt line (5-10 min)
 
     A customer just ordered. Using `qty`, `item`, and `total` below and an
     f-string with `:.2f`, build **one** receipt line that reads exactly
@@ -41,7 +41,7 @@ def _(mo):
 def _(mo):
     mo.callout(
         mo.md(
-            "**Saving your work:** this notebook runs in your browser. Press"
+            "**Saving your work:** this notebook runs in your browser. Press "
             "**Cmd/Ctrl+S** to save, and always save **before** menu → Download → "
             "*Download Python code*. Without a save first, the download is an empty file."
         ),
@@ -71,13 +71,13 @@ def _(line_exe, mo, show_result):
     # Reactive check. Re-runs when you run the cell above.
     if line_exe is None:
         _ok = False
-        _msg = "Not attempted — assign it to `line_exe` (a `print` alone doesn't count) and run the cell."
+        _msg = "Not attempted: assign it to `line_exe` (a `print` alone doesn't count) and run the cell."
     elif line_exe == "2x Falafel Wrap: 13.80 EUR":
         _ok = True
-        _msg = "Correct — the receipt printer purrs."
+        _msg = "Correct: the receipt printer purrs."
     else:
         _ok = False
-        _msg = "Wrong — check the format `qty x item: total:.2f EUR`."
+        _msg = "Wrong: check the format `qty x item: total:.2f EUR`."
     mo.callout(mo.md(_msg + show_result(line_exe)), kind="success" if _ok else "warn")
     return
 
@@ -106,16 +106,16 @@ def _(mo, receipt_exe, show_result):
     # Reactive check. Re-runs when you run the cell above.
     if receipt_exe is None:
         _ok = False
-        _msg = "Not attempted — assign it to `receipt_exe` (a `print` alone doesn't count) and run the cell."
+        _msg = "Not attempted: assign it to `receipt_exe` (a `print` alone doesn't count) and run the cell."
     elif receipt_exe == "2x Falafel Wrap: 13.80 EUR\n1x Miso Ramen: 11.50 EUR":
         _ok = True
-        _msg = "Correct — one string, two lines. `\\n` is where the printer tears."
+        _msg = "Correct: one string, two lines. `\\n` is where the printer tears."
     elif isinstance(receipt_exe, str) and "\n" not in receipt_exe:
         _ok = False
-        _msg = "Wrong — the two lines ended up on one. Put `\\n` between them inside the string."
+        _msg = "Wrong: the two lines ended up on one. Put `\\n` between them inside the string."
     else:
         _ok = False
-        _msg = "Wrong — check both lines: `qty x item: total EUR`, two decimals each, `\\n` in between."
+        _msg = "Wrong: check both lines: `qty x item: total EUR`, two decimals each, `\\n` in between."
     mo.callout(mo.md(_msg + show_result(receipt_exe)), kind="success" if _ok else "warn")
     return
 

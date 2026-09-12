@@ -14,7 +14,7 @@ def _():
 def _(mo):
     mo.md(
         r"""
-    # Quick exercise: the sticker budget (5–10 min)
+    # Quick exercise: the sticker budget (5-10 min)
 
     Tobi has 300 EUR left and wants to know how much survives after buying
     12 boxes at 25 EUR each. **Predict the result of `300 - 12 * 25` before
@@ -91,13 +91,13 @@ def _(change_exc, mo, packs_exc):
     # Reactive check. Re-runs when you run the cell above.
     if packs_exc is None or change_exc is None:
         _ok = False
-        _msg = "Not attempted — assign it to `packs_exc` and `change_exc` (a `print` alone doesn't count) and run the cell."
+        _msg = "Not attempted: assign it to `packs_exc` and `change_exc` (a `print` alone doesn't count) and run the cell."
     elif packs_exc == 24 and round(change_exc, 2) == 6.0:
         _ok = True
-        _msg = "Correct — 24 packs, 6.00 EUR change. Tobi is already spending it."
+        _msg = "Correct: 24 packs, 6.00 EUR change. Tobi is already spending it."
     else:
         _ok = False
-        _msg = "Wrong — check that you used `//` for packs and `%` for change."
+        _msg = "Wrong: check that you used `//` for packs and `%` for change."
     if packs_exc is not None or change_exc is not None:
         _msg += f"\n\n**Your result:** `packs_exc = {packs_exc}`, `change_exc = {change_exc}`"
     mo.callout(mo.md(_msg), kind="success" if _ok else "warn")
@@ -128,16 +128,16 @@ def _(mo, per_sticker_exc):
     # Reactive check. Re-runs when you run the cell above.
     if per_sticker_exc is None:
         _ok = False
-        _msg = "Not attempted — assign it to `per_sticker_exc` (a `print` alone doesn't count) and run the cell."
+        _msg = "Not attempted: assign it to `per_sticker_exc` (a `print` alone doesn't count) and run the cell."
     elif isinstance(per_sticker_exc, (int, float)) and per_sticker_exc == 0.31:
         _ok = True
-        _msg = "Correct — 0.31 EUR per sticker. `round(value, 2)` turns a long tail into a price."
+        _msg = "Correct: 0.31 EUR per sticker. `round(value, 2)` turns a long tail into a price."
     elif isinstance(per_sticker_exc, (int, float)) and round(per_sticker_exc, 2) == 0.31:
         _ok = False
-        _msg = "Wrong — right amount, wrong shape: `0.30625` is not a price. Wrap the division in `round(..., 2)`."
+        _msg = "Wrong: the amount is right, but `0.30625` has too many decimals for a price. Wrap the division in `round(..., 2)`."
     else:
         _ok = False
-        _msg = "Wrong — expected `12.25 / 40` rounded to two decimals."
+        _msg = "Wrong: expected `12.25 / 40` rounded to two decimals."
     if per_sticker_exc is not None:
         _msg += f"\n\n**Your result:** `per_sticker_exc = {per_sticker_exc}`"
     mo.callout(mo.md(_msg), kind="success" if _ok else "warn")

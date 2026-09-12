@@ -27,7 +27,7 @@ def _():
 def _(mo):
     mo.md(
         r"""
-    # Quick exercise: boolean masks (5–10 min)
+    # Quick exercise: boolean masks (5-10 min)
 
     Comparing an array to a number doesn't give one `True`/`False`. It
     gives a whole array of them, one per element. That array of booleans
@@ -119,24 +119,24 @@ def _(late_count_exc, late_mean_exc, mo, np, show_result):
         _mean = None
     if late_count_exc is None or late_mean_exc is None:
         _ok = False
-        _msg = "Not attempted — Assign it to `late_count_exc` and `late_mean_exc` (a `print` alone doesn't count) and run the cell."
+        _msg = "Not attempted: Assign it to `late_count_exc` and `late_mean_exc` (a `print` alone doesn't count) and run the cell."
     else:
         _result = f"late_count_exc={late_count_exc}, late_mean_exc={late_mean_exc}"
         if _count is None or _mean is None:
             _ok = False
             if np.ndim(late_count_exc) > 0 or np.ndim(late_mean_exc) > 0:
-                _msg = "Wrong — One of these is still a whole array. Remember that `.sum()` counts the Trues, and `.mean()` reduces the late times to one number."
+                _msg = "Wrong: One of these is still a whole array. Remember that `.sum()` counts the Trues, and `.mean()` reduces the late times to one number."
             else:
-                _msg = "Wrong — Start with the comparison: `times_exc > 38` makes a True/False array first."
+                _msg = "Wrong: Start with the comparison: `times_exc > 38` makes a True/False array first."
         elif _count == _expected_count and _mean == _expected_mean:
             _ok = True
-            _msg = "Correct — Three late deliveries, and now the investor has the average too."
+            _msg = "Correct: Three late deliveries, and now the investor has the average too."
         elif _count == _expected_count:
             _ok = False
-            _msg = "Wrong — The count is right, but the mean isn't. Filter `times_exc` with the mask *before* calling `.mean()`."
+            _msg = "Wrong: The count is right, but the mean isn't. Filter `times_exc` with the mask *before* calling `.mean()`."
         else:
             _ok = False
-            _msg = "Wrong — Start with the comparison: `times_exc > 38` makes a True/False array first."
+            _msg = "Wrong: Start with the comparison: `times_exc > 38` makes a True/False array first."
     mo.callout(mo.md(_msg + show_result(_result)), kind="success" if _ok else "warn")
     return
 
@@ -179,25 +179,25 @@ def _(late_share_exc, mo, np, show_result):
         _share = None
     if late_share_exc is None:
         _ok = False
-        _msg = "Not attempted — assign it to `late_share_exc` (a `print` alone doesn't count) and run the cell."
+        _msg = "Not attempted: assign it to `late_share_exc` (a `print` alone doesn't count) and run the cell."
     elif _share is None:
         _ok = False
         if np.ndim(late_share_exc) > 0:
-            _msg = "Wrong — that's still a whole array. `.mean()` on the mask reduces it to one number."
+            _msg = "Wrong: that's still a whole array. `.mean()` on the mask reduces it to one number."
         else:
-            _msg = "Wrong — the share must be a number. Start from the mask `times_exc > 38`."
+            _msg = "Wrong: the share must be a number. Start from the mask `times_exc > 38`."
     elif _share == _expected:
         _ok = True
-        _msg = "Correct — a third of the run was late. Averaging a mask gives the share of Trues."
+        _msg = "Correct: a third of the run was late. Averaging a mask gives the share of Trues."
     elif _share == 46.0:
         _ok = False
-        _msg = "Wrong — that's the average *time* of the late ones. The share comes from the mask itself, not from the filtered times."
+        _msg = "Wrong: that's the average *time* of the late ones. The share comes from the mask itself, not from the filtered times."
     elif _share == 3.0:
         _ok = False
-        _msg = "Wrong — that's the count. `.sum()` counts the Trues; `.mean()` gives their share."
+        _msg = "Wrong: that's the count. `.sum()` counts the Trues; `.mean()` gives their share."
     else:
         _ok = False
-        _msg = "Wrong — expected a fraction between 0 and 1: late deliveries divided by all deliveries."
+        _msg = "Wrong: expected a fraction between 0 and 1: late deliveries divided by all deliveries."
     mo.callout(mo.md(_msg + show_result(late_share_exc)), kind="success" if _ok else "warn")
     return
 

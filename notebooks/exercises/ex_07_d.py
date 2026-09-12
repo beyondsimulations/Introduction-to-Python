@@ -27,7 +27,7 @@ def _():
 def _(mo):
     mo.md(
         r"""
-    # Quick exercise: collapsing a grid (5–10 min)
+    # Quick exercise: collapsing a grid (5-10 min)
 
     A 2D array has rows and columns, and `.sum()` needs to know which
     one disappears: `axis=0` collapses DOWN the rows (one number per
@@ -43,7 +43,7 @@ def _(mo):
 def _(mo):
     mo.callout(
         mo.md(
-            "**Saving your work:** this notebook runs in your browser. Press"
+            "**Saving your work:** this notebook runs in your browser. Press "
             "**Cmd/Ctrl+S** to save, and always save **before** menu → Download → "
             "*Download Python code*. Without a save first, the download is an empty file."
         ),
@@ -104,19 +104,19 @@ def _(day_totals_exd, mo, np, show_result):
         _totals = None
     if day_totals_exd is None:
         _ok = False
-        _msg = "Not attempted — assign it to `day_totals_exd` (a `print` alone doesn't count) and run the cell."
+        _msg = "Not attempted: assign it to `day_totals_exd` (a `print` alone doesn't count) and run the cell."
     elif np.ndim(day_totals_exd) == 0 or _totals is None:
         _ok = False
-        _msg = "Wrong — one number came out: that's the grand total. Give `.sum()` an axis so one direction survives."
+        _msg = "Wrong: one number came out: that's the grand total. Give `.sum()` an axis so one direction survives."
     elif len(_totals) == 4:
         _ok = False
-        _msg = "Wrong — four numbers is one per *zone*: you collapsed the days. The zones must disappear instead, so pick the other axis."
+        _msg = "Wrong: four numbers is one per *zone*: you collapsed the days. The zones must disappear instead, so pick the other axis."
     elif _totals == _expected:
         _ok = True
-        _msg = "Correct — three days, three totals, and the by-hand column is gone."
+        _msg = "Correct: three days, three totals, and the by-hand column is gone."
     else:
         _ok = False
-        _msg = "Wrong — three numbers, but not the day totals. Sum `runs_exd` itself, across the columns."
+        _msg = "Wrong: three numbers, but not the day totals. Sum `runs_exd` itself, across the columns."
     mo.callout(mo.md(_msg + show_result(day_totals_exd)), kind="success" if _ok else "warn")
     return
 
@@ -159,22 +159,22 @@ def _(mo, np, show_result, zone_means_exd):
         _means = None
     if zone_means_exd is None:
         _ok = False
-        _msg = "Not attempted — assign it to `zone_means_exd` (a `print` alone doesn't count) and run the cell."
+        _msg = "Not attempted: assign it to `zone_means_exd` (a `print` alone doesn't count) and run the cell."
     elif np.ndim(zone_means_exd) == 0 or _means is None:
         _ok = False
-        _msg = "Wrong — one number came out: that's the average over the whole grid. Give `.mean()` an axis."
+        _msg = "Wrong: one number came out: that's the average over the whole grid. Give `.mean()` an axis."
     elif len(_means) == 3:
         _ok = False
-        _msg = "Wrong — three numbers is one per *day*. Per zone, the days must disappear: collapse DOWN the rows."
+        _msg = "Wrong: three numbers is one per *day*. Per zone, the days must disappear: collapse DOWN the rows."
     elif _means == _expected:
         _ok = True
-        _msg = "Correct — four zones, four averages. Same axis rule, any method: sum, mean, max."
+        _msg = "Correct: four zones, four averages. Same axis rule, any method: sum, mean, max."
     elif _means == [34.0, 27.0, 28.0, 19.0]:
         _ok = False
-        _msg = "Wrong — those are the zone *totals*. The investor asked for the average per zone."
+        _msg = "Wrong: those are the zone *totals*. The investor asked for the average per zone."
     else:
         _ok = False
-        _msg = "Wrong — four numbers, but not the zone averages. Take the mean of `runs_exd` down the rows."
+        _msg = "Wrong: four numbers, but not the zone averages. Take the mean of `runs_exd` down the rows."
     mo.callout(mo.md(_msg + show_result(zone_means_exd)), kind="success" if _ok else "warn")
     return
 
