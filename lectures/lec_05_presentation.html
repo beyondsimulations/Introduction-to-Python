@@ -102,7 +102,7 @@
     code span.vs { color: #032f62; } /* VerbatimString */
     code span.wa { color: #ff5555; } /* Warning */
   </style>
-  <link rel="stylesheet" href="../site_libs/revealjs/dist/theme/quarto-b3fb67c8ce85a4edef7a6e8f618ee52f.css">
+  <link rel="stylesheet" href="../site_libs/revealjs/dist/theme/quarto-a0928013bf9f86968d08d7737471626b.css">
   <link href="../site_libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
   <link href="../site_libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
   <link href="../site_libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
@@ -223,7 +223,7 @@ Dr.&nbsp;Tobias Vlćek
 <li><strong>Individual work</strong>: no AI, no neighbors, no chat</li>
 <li>The <strong>link and QR</strong> are handed out in class. Open it and start</li>
 <li>~6 short tasks: write code, trace code, fix a bug, answer a multiple choice</li>
-<li>It sweeps <strong>Sessions III–IV</strong>: functions, scope, classes, lists and dictionaries, comprehensions</li>
+<li>It sweeps <strong>Sessions III-IV</strong>: functions, scope, classes, lists and dictionaries, comprehensions</li>
 </ul>
 <!-- QR handed out live, never in the deck -->
 </section>
@@ -237,7 +237,7 @@ Dr.&nbsp;Tobias Vlćek
 <i class="callout-icon"></i>
 </div>
 <div class="callout-content">
-<p>The green live checks are <strong>provisional</strong>. The final grading runs on my side. And take a breath: everything in it was rehearsed in the labs.</p>
+<p>The green live checks are <strong>provisional</strong>. The final grading runs on my side. Everything in it was rehearsed in the labs.</p>
 </div>
 </div>
 </div>
@@ -316,7 +316,7 @@ ValueError: could not convert string to float: 'generous'</code></pre>
 <section id="answer-right-type-senseless-value" class="slide level2">
 <h2>Answer: right type, senseless value</h2>
 <p><strong>b) raises <code>ValueError</code></strong>: <code>float()</code> got what it expects, a string, so the <em>type</em> is fine. But <code>"5,50"</code> is not a number Python can read (it only knows the decimal point), so the <em>value</em> is refused. <code>TypeError</code> would need a non-string, like <code>float(None)</code>:</p>
-<div id="f0af8954" class="cell" data-execution_count="1">
+<div id="175a4bb8" class="cell" data-execution_count="1">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a aria-label="1"></a>price_text <span class="op">=</span> <span class="st">"5,50"</span></span>
 <span id="cb5-2"><a aria-label="2"></a>price <span class="op">=</span> <span class="bu">float</span>(price_text)</span>
 <span id="cb5-3"><a aria-label="3"></a><span class="bu">print</span>(price)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
@@ -348,8 +348,8 @@ ValueError: could not convert string to float: 'generous'</code></pre>
 </div>
 </section></section>
 <section>
-<section id="your-turn-510-minutes" class="title-slide slide level1 exercise-slide center">
-<h1>Your turn — 5–10 minutes</h1>
+<section id="your-turn-5-10-minutes" class="title-slide slide level1 exercise-slide center">
+<h1>Your turn: 5-10 minutes</h1>
 <p>Open the exercise (scan the QR or type the link):</p>
 <p><strong><a href="https://python.tobiasvlcek.com/notebooks/ex_05_a/">python.tobiasvlcek.com/notebooks/ex_05_a/</a></strong></p>
 
@@ -358,7 +358,7 @@ ValueError: could not convert string to float: 'generous'</code></pre>
 <section id="try-except-catch-the-fall" class="slide level2">
 <h2><code>try</code> / <code>except</code>: catch the fall</h2>
 <p>First, the happy path: text that <strong>looks</strong> like a number converts cleanly; text that doesn’t, explodes. A <strong><code>try</code> / <code>except</code></strong> block runs the risky code and catches the failure instead of stopping the program:</p>
-<div id="e713166c" class="cell" data-execution_count="2">
+<div id="6e6b80ad" class="cell" data-execution_count="2">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a aria-label="1"></a><span class="bu">print</span>(<span class="bu">float</span>(<span class="st">"5.50"</span>))          <span class="co"># numeric text converts cleanly → 5.5</span></span>
 <span id="cb6-2"><a aria-label="2"></a></span>
 <span id="cb6-3"><a aria-label="3"></a><span class="cf">try</span>:</span>
@@ -412,7 +412,7 @@ ValueError: could not convert string to float: 'generous'</code></pre>
 <section id="answer-text-and-numbers-wont-mix" class="slide level2">
 <h2>Answer: text and numbers won’t mix</h2>
 <p><strong>a) raises <code>TypeError</code></strong>: <code>+</code> can glue two strings <em>or</em> add two numbers, but it refuses to mix a string and an <code>int</code>. The fix is to convert first (<code>str(guests)</code>):</p>
-<div id="8334efee" class="cell" data-execution_count="3">
+<div id="1ddf7e35" class="cell" data-execution_count="3">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a aria-label="1"></a>guests <span class="op">=</span> <span class="dv">3</span></span>
 <span id="cb10-2"><a aria-label="2"></a><span class="cf">try</span>:</span>
 <span id="cb10-3"><a aria-label="3"></a>    label <span class="op">=</span> <span class="st">"Party of "</span> <span class="op">+</span> guests</span>
@@ -428,8 +428,8 @@ ValueError: could not convert string to float: 'generous'</code></pre>
 <p><code>as e</code> keeps the error object in a variable, so you can print its message instead of losing it. Any name works; <code>e</code> is the habit.</p>
 </div>
 </section></section>
-<section id="your-turn-510-minutes-1" class="title-slide slide level1 exercise-slide center">
-<h1>Your turn — 5–10 minutes</h1>
+<section id="your-turn-5-10-minutes-1" class="title-slide slide level1 exercise-slide center">
+<h1>Your turn: 5-10 minutes</h1>
 <p>Open the exercise (scan the QR or type the link):</p>
 <p><strong><a href="https://python.tobiasvlcek.com/notebooks/ex_05_b/">python.tobiasvlcek.com/notebooks/ex_05_b/</a></strong></p>
 
@@ -455,9 +455,9 @@ ValueError: could not convert string to float: 'generous'</code></pre>
 </div>
 </section>
 <section id="print-the-beginners-flashlight" class="slide level2">
-<h2><code>print()</code> — the beginner’s flashlight</h2>
+<h2><code>print()</code>: the beginner’s flashlight</h2>
 <p>The simplest debugger is a well-placed <code>print()</code>. When you can’t see what a value <em>is</em>, shine a light on it:</p>
-<div id="0249670e" class="cell" data-execution_count="4">
+<div id="e6b6733c" class="cell" data-execution_count="4">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb12"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a aria-label="1"></a><span class="kw">def</span> line_total(qty, price):</span>
 <span id="cb12-2"><a aria-label="2"></a>    <span class="bu">print</span>(<span class="st">"DEBUG qty ="</span>, qty, <span class="st">"price ="</span>, price)   <span class="co"># the flashlight</span></span>
 <span id="cb12-3"><a aria-label="3"></a>    <span class="cf">return</span> <span class="bu">round</span>(qty <span class="op">*</span> price, <span class="dv">2</span>)</span>
@@ -475,9 +475,9 @@ ValueError: could not convert string to float: 'generous'</code></pre>
 </div>
 </section>
 <section id="raise-when-your-code-should-refuse" class="slide level2">
-<h2><code>raise</code> — when your code should refuse</h2>
+<h2><code>raise</code>: when your code should refuse</h2>
 <p>Sometimes <em>your own</em> code should reject bad input on the spot. The inspector’s rule is non-negotiable: <strong>every price ≥ 0</strong>. <code>raise</code> throws an error deliberately:</p>
-<div id="963fd9de" class="cell" data-execution_count="5">
+<div id="6196d37e" class="cell" data-execution_count="5">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb14"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a aria-label="1"></a><span class="kw">def</span> charge(amount):</span>
 <span id="cb14-2"><a aria-label="2"></a>    <span class="cf">if</span> amount <span class="op">&lt;</span> <span class="dv">0</span>:</span>
 <span id="cb14-3"><a aria-label="3"></a>        <span class="cf">raise</span> <span class="pp">ValueError</span>(<span class="st">"price cannot be negative"</span>)</span>
@@ -498,9 +498,9 @@ ValueError: could not convert string to float: 'generous'</code></pre>
 </div>
 </section>
 <section id="assert-a-tripwire-for-invariants" class="slide level2">
-<h2><code>assert</code> — a tripwire for invariants</h2>
+<h2><code>assert</code>: a tripwire for invariants</h2>
 <p>An <strong><code>assert</code></strong> guards an <em>invariant</em>, a fact that must <strong>always</strong> hold. If it’s true, nothing happens; if it’s false, the program stops right there with an <code>AssertionError</code>:</p>
-<div id="22027665" class="cell" data-execution_count="6">
+<div id="d9a25d1c" class="cell" data-execution_count="6">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb16"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a aria-label="1"></a>subtotal <span class="op">=</span> <span class="fl">9.60</span></span>
 <span id="cb16-2"><a aria-label="2"></a><span class="cf">assert</span> subtotal <span class="op">&gt;=</span> <span class="dv">0</span>, <span class="st">"subtotal went negative: bug upstream"</span></span>
 <span id="cb16-3"><a aria-label="3"></a><span class="bu">print</span>(<span class="st">"passed the tripwire:"</span>, subtotal)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
@@ -528,7 +528,7 @@ ValueError: could not convert string to float: 'generous'</code></pre>
 <section id="answer-the-tripwire-stops-everything" class="slide level2">
 <h2>Answer: the tripwire stops everything</h2>
 <p><strong>a) <code>AssertionError</code>, and the <code>print</code> never runs</strong>: a failing <code>assert</code> raises on the spot, and nothing after it in the program executes. That’s the point of a tripwire: stop <em>before</em> a wrong number spreads:</p>
-<div id="75f4daf4" class="cell" data-execution_count="7">
+<div id="a2752b01" class="cell" data-execution_count="7">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb19"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a aria-label="1"></a>guests <span class="op">=</span> <span class="dv">0</span></span>
 <span id="cb19-2"><a aria-label="2"></a><span class="cf">assert</span> guests <span class="op">&gt;</span> <span class="dv">0</span>, <span class="st">"no guests at the table"</span></span>
 <span id="cb19-3"><a aria-label="3"></a><span class="bu">print</span>(<span class="st">"splitting the bill among"</span>, guests)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
@@ -551,7 +551,7 @@ ValueError: could not convert string to float: 'generous'</code></pre>
 <section id="try-then-fall-back" class="slide level2">
 <h2>Try, then fall back</h2>
 <p>A friendly, common pattern: <strong>try</strong> the risky thing; if it fails, <strong>fall back</strong> to a sensible default so the program keeps moving.</p>
-<div id="ee50f748" class="cell" data-execution_count="8">
+<div id="d7fe7eb2" class="cell" data-execution_count="8">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb20"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a aria-label="1"></a><span class="kw">def</span> seats(text):</span>
 <span id="cb20-2"><a aria-label="2"></a>    <span class="cf">try</span>:</span>
 <span id="cb20-3"><a aria-label="3"></a>        <span class="cf">return</span> <span class="bu">int</span>(text)</span>
@@ -590,7 +590,7 @@ ValueError: could not convert string to float: 'generous'</code></pre>
 <section id="answer-it-carries-on" class="slide level2">
 <h2>Answer: it carries on</h2>
 <p><strong>c) it runs normally</strong>. That’s the whole point of <code>try</code> / <code>except</code>. It <em>handles</em> the failure; once the <code>except</code> has run, control simply drops to the code after it, as if nothing had gone wrong:</p>
-<div id="f5316595" class="cell" data-execution_count="9">
+<div id="62dbb5ae" class="cell" data-execution_count="9">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb23"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a aria-label="1"></a><span class="kw">def</span> to_price(text):</span>
 <span id="cb23-2"><a aria-label="2"></a>    <span class="cf">try</span>:</span>
 <span id="cb23-3"><a aria-label="3"></a>        <span class="cf">return</span> <span class="bu">float</span>(text)</span>
@@ -607,8 +607,8 @@ checkout still running</code></pre>
 </div>
 </div>
 </section></section>
-<section id="your-turn-510-minutes-2" class="title-slide slide level1 exercise-slide center">
-<h1>Your turn — 5–10 minutes</h1>
+<section id="your-turn-5-10-minutes-2" class="title-slide slide level1 exercise-slide center">
+<h1>Your turn: 5-10 minutes</h1>
 <p>Open the exercise (scan the QR or type the link):</p>
 <p><strong><a href="https://python.tobiasvlcek.com/notebooks/ex_05_c/">python.tobiasvlcek.com/notebooks/ex_05_c/</a></strong></p>
 
@@ -623,7 +623,7 @@ checkout still running</code></pre>
 <section id="after-the-break-the-lab" class="slide level2">
 <h2>After the break: the lab</h2>
 <ul>
-<li>Head to the lab notebook: <a href="../tutorials/tut_05_errors.html">Episode 5 — The 3-AM Checkout</a></li>
+<li>Head to the lab notebook: <a href="../tutorials/tut_05_errors.html">Episode 5: The 3-AM Checkout</a></li>
 <li>You’ll read a traceback, write a price box that won’t crash, fix Tobi’s 3-AM receipt, make your code <strong>refuse</strong> negative prices with <code>raise</code>, and harden the whole checkout against a batch of poisoned orders</li>
 <li>It runs entirely in your browser: no setup, just click and code</li>
 </ul>
@@ -659,7 +659,7 @@ checkout still running</code></pre>
 <i class="callout-icon"></i>
 </div>
 <div class="callout-content">
-<p><strong>Next time — Episode 6</strong> starts with Checkpoint 3, which sweeps everything from Episodes 1–5, so keep this notebook and the last four close. Then someone new walks into the shop, uncaps a marker, and writes one question on the whiteboard. Part II begins.</p>
+<p><strong>Next time, Episode 6</strong> starts with Checkpoint 3, which sweeps everything from Episodes 1-5, so keep this notebook and the last four close. Then someone new walks into the shop, uncaps a marker, and writes one question on the whiteboard. Part II begins.</p>
 </div>
 </div>
 </div>
