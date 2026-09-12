@@ -105,7 +105,6 @@ Materials live in the KLU portal and are hosted at [python.tobiasvlcek.com](http
 - Only edit cells that contain `# YOUR CODE BELOW`; the check under each exercise updates by itself
 - A red error pauses everything below it: fix that cell first
 - **Save your work**: `Cmd/Ctrl+S`, then menu (top right) → *Download* → *Download Python code*. The tab remembers you until you close it; the download is forever
-- Full walkthrough: [How the notebook works](../general/notebooks.qmd)
 
 ## One account, today: GitHub
 

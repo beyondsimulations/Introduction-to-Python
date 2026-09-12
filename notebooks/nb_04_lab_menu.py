@@ -49,8 +49,7 @@ def _(mo):
             "**How this notebook works:** run a cell with **Cmd/Ctrl+Enter**. "
             "Only edit the cells that contain `# YOUR CODE BELOW`; the check under "
             "each exercise updates by itself. A red error pauses everything below "
-            "it, so fix that cell first. New here? Read "
-            "[How the notebook works](https://python.tobiasvlcek.com/general/notebooks.html)."
+            "it, so fix that cell first."
         ),
         kind="info",
     )

@@ -18,8 +18,6 @@ the deck", and his growth slide is a lie wearing a nice axis. Your job is to
 <a href="../notebooks/nb_09_lab_pitch/" class="btn btn-primary">Open in browser</a>
 [![Open in molab](https://marimo.io/molab-shield.svg)](https://molab.marimo.io/github/beyondsimulations/Introduction-to-Python/blob/main/notebooks/nb_09_lab_pitch.py)
 
-New here? Read [How the notebook works](../general/notebooks.qmd) first: which cells to edit, how to run them, what the verdicts mean.
-
 **Open in browser (recommended):** runs entirely on your machine, in this tab:
 no account, no installation, and after it loads no internet is needed.
 

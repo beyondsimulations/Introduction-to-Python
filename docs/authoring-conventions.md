@@ -19,8 +19,8 @@
   accordions are "Hint 1 (a nudge)" / "Hint 2 (the structure)"; slide titles
   "Warm-up" / "Checkpoint N".
 - Every cell a student edits contains a line starting with `# YOUR CODE BELOW`
-  (bug-fix cells too: put it above the `TOBI'S CODE` comment). The page
-  `general/notebooks.qmd` tells students to look for exactly this line.
+  (bug-fix cells too: put it above the `TOBI'S CODE` comment); the Session I
+  slide and the lab read-me cell tell students to look for exactly this line.
 - Every lab has the "How this notebook works" callout right after the save
   callout (see `_template.py`); in-lecture exercises do not.
 - Every exercise pre-defines its answer: `fee_ex11 = None  # YOUR CODE BELOW`.
