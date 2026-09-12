@@ -149,14 +149,16 @@ $presentation-title-slide-text-align: left;
 }
 
 // Exercise-break slide ("Your turn"), from Introduction-to-Python.
-.exercise-slide {
+// Scoped to .reveal: on the HTML page the class lands on the whole
+// section.level1 and would tint every paragraph under the heading.
+.reveal .exercise-slide {
     background-color: $brand-codeline !important;
 }
 
 // Light type on the accent, not amber-on-teal: the old pairing (#F6B265 on
 // #537E8F) was 2.42:1 across 69 slides — the least readable thing on the site.
 // This is Study-Business-Basics' treatment, which reaches 4.36:1.
-.loud-slide {
+.reveal .loud-slide {
     background-color: $lec-loud-bg !important;
     color: $brand-lighter !important;
     font-weight: bold !important;
@@ -243,10 +245,14 @@ $presentation-title-slide-text-align: left;
 // Reveal implements it by setting an inline height at runtime. Excluding it
 // here keeps that explicit rather than relying on inline-style precedence.
 // (Grundlagen-OR uses r-stretch in 12 deck files, Introduction-to-Python in 10.)
+//
+// The cap must be in stage pixels, not vh: vh tracks the browser window while
+// the slide stage is a fixed 700px box that Reveal transform-scales, so a vh
+// cap makes image size (and overflow) depend on the viewer's window. And no
+// width/height:auto: that discards Quarto's logical size attributes and shows
+// retina 2x PNGs at double size and half sharpness.
 .reveal .slides img:not(.r-stretch) {
-    max-height: 60vh;
-    width: auto;
-    height: auto;
+    max-height: 420px; // 60% of the 700px stage
 }
 
 // ── Document pages: columns and figures ───────────────────────────────────
