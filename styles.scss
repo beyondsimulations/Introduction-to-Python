@@ -158,10 +158,27 @@ $presentation-title-slide-text-align: left;
 // Light type on the accent, not amber-on-teal: the old pairing (#F6B265 on
 // #537E8F) was 2.42:1 across 69 slides — the least readable thing on the site.
 // This is Study-Business-Basics' treatment, which reaches 4.36:1.
+//
+// Every accent colour in the palette is tuned against the PALE ground and goes
+// invisible on this one: `strong`/`em` are $lec-emphasis, which IS this
+// background, and the link colour lands near 1.6:1. So on the accent, weight
+// carries the emphasis and hue never does.
+//
+// Bold is scoped rather than blanket: the fleet's 90 `.loud-slide`s are all
+// one-line `::: {.r-fit-text}` statements and stay bold, while a slide that
+// carries real prose (Introduction-to-Python's checkpoint procedure) gets a
+// readable body weight instead of a wall of bold.
 .reveal .loud-slide {
     background-color: $lec-loud-bg !important;
     color: $brand-lighter !important;
-    font-weight: bold !important;
+
+    h1, h2, h3, strong, b, em, i, a {
+        color: $brand-lighter !important;
+    }
+
+    h1, h2, h3, strong, b, .r-fit-text {
+        font-weight: bold !important;
+    }
 }
 
 // ── Animated section headings ─────────────────────────────────────────────

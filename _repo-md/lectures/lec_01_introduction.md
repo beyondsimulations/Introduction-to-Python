@@ -226,7 +226,9 @@ print(sticker_budget)
 
 # Your turn: 5-10 minutes
 
-Open the exercise (scan the QR or type the link):
+## Open the exercise
+
+Scan the QR or type the link:
 
 **[python.tobiasvlcek.com/notebooks/ex_01_a/](https://python.tobiasvlcek.com/notebooks/ex_01_a/)**
 
@@ -283,7 +285,9 @@ print(type("9.99"))
 
 # Your turn: 5-10 minutes
 
-Open the exercise (scan the QR or type the link):
+## Open the exercise
+
+Scan the QR or type the link:
 
 **[python.tobiasvlcek.com/notebooks/ex_01_b/](https://python.tobiasvlcek.com/notebooks/ex_01_b/)**
 
@@ -424,7 +428,9 @@ print(round(10 / 3, 2))    # 3.33, a proper amount
 
 # Your turn: 5-10 minutes
 
-Open the exercise (scan the QR or type the link):
+## Open the exercise
+
+Scan the QR or type the link:
 
 **[python.tobiasvlcek.com/notebooks/ex_01_c/](https://python.tobiasvlcek.com/notebooks/ex_01_c/)**
 
@@ -508,7 +514,9 @@ No `str()`, no `+`. Just the sentence you want.
 
 # Your turn: 5-10 minutes
 
-Open the exercise (scan the QR or type the link):
+## Open the exercise
+
+Scan the QR or type the link:
 
 **[python.tobiasvlcek.com/notebooks/ex_01_d/](https://python.tobiasvlcek.com/notebooks/ex_01_d/)**
 
@@ -573,7 +581,9 @@ print("2 * 3")
 
 # Your turn: 5-10 minutes
 
-Open the exercise (scan the QR or type the link):
+## Open the exercise
+
+Scan the QR or type the link:
 
 **[python.tobiasvlcek.com/notebooks/ex_01_e/](https://python.tobiasvlcek.com/notebooks/ex_01_e/)**
 

@@ -22,9 +22,9 @@ Seventeen variables for one menu. Add a dish and you touch seventeen lines. Toda
 
 # Warm-up
 
-Three questions from Episode 3. Commit. Hands up **before** the reveal.
-
 ## Question 1
+
+Three questions from Episode 3. Commit. Hands up **before** the reveal.
 
 ``` python
 def announce(item):
@@ -177,7 +177,9 @@ print(sizes[1:3])
 
 # Your turn: 5-10 minutes
 
-Open the exercise (scan the QR or type the link):
+## Open the exercise
+
+Scan the QR or type the link:
 
 **[python.tobiasvlcek.com/notebooks/ex_04_a/](https://python.tobiasvlcek.com/notebooks/ex_04_a/)**
 
@@ -271,7 +273,9 @@ print(opening[1])
 
 # Your turn: 5-10 minutes
 
-Open the exercise (scan the QR or type the link):
+## Open the exercise
+
+Scan the QR or type the link:
 
 **[python.tobiasvlcek.com/notebooks/ex_04_b/](https://python.tobiasvlcek.com/notebooks/ex_04_b/)**
 
@@ -434,7 +438,7 @@ print(regulars)        # order is arbitrary: a set has none
 print(len(regulars))   # how many different people
 ```
 
-    {'ada', 'tom', 'nina'}
+    {'tom', 'nina', 'ada'}
     3
 
 . . .
@@ -443,7 +447,9 @@ Five visits, three people. A set answers "how many *different*?" in one step.
 
 # Your turn: 5-10 minutes
 
-Open the exercise (scan the QR or type the link):
+## Open the exercise
+
+Scan the QR or type the link:
 
 **[python.tobiasvlcek.com/notebooks/ex_04_c/](https://python.tobiasvlcek.com/notebooks/ex_04_c/)**
 
@@ -493,7 +499,9 @@ Read it left to right: "in `zones`, take `Hafen`, then its `fee`."
 
 # Your turn: 5-10 minutes
 
-Open the exercise (scan the QR or type the link):
+## Open the exercise
+
+Scan the QR or type the link:
 
 **[python.tobiasvlcek.com/notebooks/ex_04_d/](https://python.tobiasvlcek.com/notebooks/ex_04_d/)**
 
@@ -638,7 +646,9 @@ for line in orders.splitlines():
 
 # Your turn: 5-10 minutes
 
-Open the exercise (scan the QR or type the link):
+## Open the exercise
+
+Scan the QR or type the link:
 
 **[python.tobiasvlcek.com/notebooks/ex_04_e/](https://python.tobiasvlcek.com/notebooks/ex_04_e/)**
 

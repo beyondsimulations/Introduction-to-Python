@@ -126,7 +126,9 @@ One furious review (a 1.0) drags the mean down to 3.9. The investor asked for th
 
 # Your turn: 5-10 minutes
 
-Open the exercise (scan the QR or type the link):
+## Open the exercise
+
+Scan the QR or type the link:
 
 **[python.tobiasvlcek.com/notebooks/ex_06_a/](https://python.tobiasvlcek.com/notebooks/ex_06_a/)**
 
@@ -240,7 +242,9 @@ print(math.floor(-2.5))   # down the number line → -3
 
 # Your turn: 5-10 minutes
 
-Open the exercise (scan the QR or type the link):
+## Open the exercise
+
+Scan the QR or type the link:
 
 **[python.tobiasvlcek.com/notebooks/ex_06_b/](https://python.tobiasvlcek.com/notebooks/ex_06_b/)**
 
@@ -266,10 +270,10 @@ random.shuffle(queue)                         # reorders the list in place
 print(queue)
 ```
 
-    0.8502436256929014
-    1
-    mocha
-    [3, 2, 4, 1, 5]
+    0.38952657796489865
+    14
+    latte
+    [3, 4, 1, 5, 2]
 
 . . .
 
@@ -286,8 +290,8 @@ print([random.randint(1, 20) for _ in range(5)])   # _ : a loop name we never us
 print([random.randint(1, 20) for _ in range(5)])   # ...and again, different!
 ```
 
-    [3, 17, 5, 1, 4]
-    [6, 5, 9, 19, 8]
+    [6, 5, 20, 3, 5]
+    [13, 7, 14, 5, 3]
 
 . . .
 
@@ -403,7 +407,9 @@ To get the *same* list twice, you re-seed before each run, and that rewinds the 
 
 # Your turn: 5-10 minutes
 
-Open the exercise (scan the QR or type the link):
+## Open the exercise
+
+Scan the QR or type the link:
 
 **[python.tobiasvlcek.com/notebooks/ex_06_c/](https://python.tobiasvlcek.com/notebooks/ex_06_c/)**
 

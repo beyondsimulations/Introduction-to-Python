@@ -183,7 +183,9 @@ print(result)                # ...but the value handed back is None
 
 # Your turn: 5-10 minutes
 
-Open the exercise (scan the QR or type the link):
+## Open the exercise
+
+Scan the QR or type the link:
 
 **[python.tobiasvlcek.com/notebooks/ex_03_a/](https://python.tobiasvlcek.com/notebooks/ex_03_a/)**
 
@@ -230,7 +232,9 @@ print(bill(2, 4.50))
 
 # Your turn: 5-10 minutes
 
-Open the exercise (scan the QR or type the link):
+## Open the exercise
+
+Scan the QR or type the link:
 
 **[python.tobiasvlcek.com/notebooks/ex_03_b/](https://python.tobiasvlcek.com/notebooks/ex_03_b/)**
 
@@ -396,7 +400,9 @@ print(second.fee())    # self is second: 10 km
 
 # Your turn: 5-10 minutes
 
-Open the exercise (scan the QR or type the link):
+## Open the exercise
+
+Scan the QR or type the link:
 
 **[python.tobiasvlcek.com/notebooks/ex_03_c/](https://python.tobiasvlcek.com/notebooks/ex_03_c/)**
 

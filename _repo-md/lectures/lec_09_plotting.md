@@ -28,9 +28,9 @@ A number convinces the careful. A **picture** convinces the room. Today: draw th
 
 # Warm-up
 
-Three questions from Episode 8. Commit. Hands up **before** the reveal.
-
 ## Question 1
+
+Three questions from Episode 8. Commit. Hands up **before** the reveal.
 
 ``` python
 orders[orders["zone"] == "Nord"]
@@ -157,7 +157,9 @@ plt.gca()
 
 # Your turn: 5-10 minutes
 
-Open the exercise (scan the QR or type the link):
+## Open the exercise
+
+Scan the QR or type the link:
 
 **[python.tobiasvlcek.com/notebooks/ex_09_a/](https://python.tobiasvlcek.com/notebooks/ex_09_a/)**
 
@@ -219,7 +221,9 @@ That's exactly why every chart cell **opens** with `plt.figure()`: it's how you 
 
 # Your turn: 5-10 minutes
 
-Open the exercise (scan the QR or type the link):
+## Open the exercise
+
+Scan the QR or type the link:
 
 **[python.tobiasvlcek.com/notebooks/ex_09_b/](https://python.tobiasvlcek.com/notebooks/ex_09_b/)**
 
@@ -388,7 +392,9 @@ plt.gca()
 
 # Your turn: 5-10 minutes
 
-Open the exercise (scan the QR or type the link):
+## Open the exercise
+
+Scan the QR or type the link:
 
 **[python.tobiasvlcek.com/notebooks/ex_09_c/](https://python.tobiasvlcek.com/notebooks/ex_09_c/)**
 
@@ -475,7 +481,9 @@ Python raises no error and no warning here. The code is fine; the axis is what m
 
 # Your turn: 5-10 minutes
 
-Open the exercise (scan the QR or type the link):
+## Open the exercise
+
+Scan the QR or type the link:
 
 **[python.tobiasvlcek.com/notebooks/ex_09_d/](https://python.tobiasvlcek.com/notebooks/ex_09_d/)**
 
@@ -511,7 +519,9 @@ AI drafts. You decide what goes on the slide.
 
 # Your turn: 5-10 minutes
 
-Open the exercise (scan the QR or type the link):
+## Open the exercise
+
+Scan the QR or type the link:
 
 **[python.tobiasvlcek.com/notebooks/ex_09_e/](https://python.tobiasvlcek.com/notebooks/ex_09_e/)**
 

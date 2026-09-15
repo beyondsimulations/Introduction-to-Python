@@ -22,9 +22,9 @@ Overnight the city banned delivery after **22:00**. Your app can no longer just 
 
 # Warm-up
 
-Three questions from Episode 1. Commit. Hands up **before** the reveal.
-
 ## Question 1
+
+Three questions from Episode 1. Commit. Hands up **before** the reveal.
 
 ``` python
 price = 8.90
@@ -136,7 +136,9 @@ print(not is_weekday and before_curfew)
 
 # Your turn: 5-10 minutes
 
-Open the exercise (scan the QR or type the link):
+## Open the exercise
+
+Scan the QR or type the link:
 
 **[python.tobiasvlcek.com/notebooks/ex_02_a/](https://python.tobiasvlcek.com/notebooks/ex_02_a/)**
 
@@ -261,7 +263,9 @@ print(delivery_hour < 22)
 
 # Your turn: 5-10 minutes
 
-Open the exercise (scan the QR or type the link):
+## Open the exercise
+
+Scan the QR or type the link:
 
 **[python.tobiasvlcek.com/notebooks/ex_02_b/](https://python.tobiasvlcek.com/notebooks/ex_02_b/)**
 
@@ -447,7 +451,9 @@ print(total)
 
 # Your turn: 5-10 minutes
 
-Open the exercise (scan the QR or type the link):
+## Open the exercise
+
+Scan the QR or type the link:
 
 **[python.tobiasvlcek.com/notebooks/ex_02_c/](https://python.tobiasvlcek.com/notebooks/ex_02_c/)**
 
@@ -474,7 +480,7 @@ print(rounds, price)
 
 . . .
 
-Two rounds and you're under 7.00. (The lab's price war against MunchCorp is your boss fight after the break.)
+Two rounds and you're under 7.00. (The lab's price war against MunchCorp is waiting after the break.)
 
 ## The loop must move toward its goal
 
@@ -518,7 +524,9 @@ The loop would run forever, but `break` stops it the moment `count` hits 3.
 
 # Your turn: 5-10 minutes
 
-Open the exercise (scan the QR or type the link):
+## Open the exercise
+
+Scan the QR or type the link:
 
 **[python.tobiasvlcek.com/notebooks/ex_02_d/](https://python.tobiasvlcek.com/notebooks/ex_02_d/)**
 
@@ -617,7 +625,9 @@ print("  MOIN  ".strip().lower())
 
 # Your turn: 5-10 minutes
 
-Open the exercise (scan the QR or type the link):
+## Open the exercise
+
+Scan the QR or type the link:
 
 **[python.tobiasvlcek.com/notebooks/ex_02_e/](https://python.tobiasvlcek.com/notebooks/ex_02_e/)**
 

@@ -142,7 +142,9 @@ You don't have to memorize all of Python's exceptions. Recognize these five on s
 
 # Your turn: 5-10 minutes
 
-Open the exercise (scan the QR or type the link):
+## Open the exercise
+
+Scan the QR or type the link:
 
 **[python.tobiasvlcek.com/notebooks/ex_05_a/](https://python.tobiasvlcek.com/notebooks/ex_05_a/)**
 
@@ -225,7 +227,9 @@ except TypeError as e:
 
 # Your turn: 5-10 minutes
 
-Open the exercise (scan the QR or type the link):
+## Open the exercise
+
+Scan the QR or type the link:
 
 **[python.tobiasvlcek.com/notebooks/ex_05_b/](https://python.tobiasvlcek.com/notebooks/ex_05_b/)**
 
@@ -403,7 +407,9 @@ print("checkout still running")  # ...and we get here
 
 # Your turn: 5-10 minutes
 
-Open the exercise (scan the QR or type the link):
+## Open the exercise
+
+Scan the QR or type the link:
 
 **[python.tobiasvlcek.com/notebooks/ex_05_c/](https://python.tobiasvlcek.com/notebooks/ex_05_c/)**
 

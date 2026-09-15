@@ -28,9 +28,9 @@ Today we get the bigger boat: **NumPy**, one object that holds a thousand number
 
 # Warm-up
 
-Three questions from Episode 6. Commit. Hands up **before** the reveal.
-
 ## Question 1
+
+Three questions from Episode 6. Commit. Hands up **before** the reveal.
 
 ``` python
 from math import ceil
@@ -130,7 +130,9 @@ One operation lands on **all** elements at once: `[14.28 10.71 17.85]`. No loop,
 
 # Your turn: 5-10 minutes
 
-Open the exercise (scan the QR or type the link):
+## Open the exercise
+
+Scan the QR or type the link:
 
 **[python.tobiasvlcek.com/notebooks/ex_07_a/](https://python.tobiasvlcek.com/notebooks/ex_07_a/)**
 
@@ -222,7 +224,9 @@ Every operator follows the same rule: lists do list things, arrays do math.
 
 # Your turn: 5-10 minutes
 
-Open the exercise (scan the QR or type the link):
+## Open the exercise
+
+Scan the QR or type the link:
 
 **[python.tobiasvlcek.com/notebooks/ex_07_b/](https://python.tobiasvlcek.com/notebooks/ex_07_b/)**
 
@@ -348,7 +352,9 @@ print((times > 20) & (times < 40))    # element by element: & combines masks
 
 # Your turn: 5-10 minutes
 
-Open the exercise (scan the QR or type the link):
+## Open the exercise
+
+Scan the QR or type the link:
 
 **[python.tobiasvlcek.com/notebooks/ex_07_c/](https://python.tobiasvlcek.com/notebooks/ex_07_c/)**
 
@@ -460,7 +466,9 @@ print(deliveries.sum(axis=1))   # ACROSS the columns → per day
 
 # Your turn: 5-10 minutes
 
-Open the exercise (scan the QR or type the link):
+## Open the exercise
+
+Scan the QR or type the link:
 
 **[python.tobiasvlcek.com/notebooks/ex_07_d/](https://python.tobiasvlcek.com/notebooks/ex_07_d/)**
 
@@ -525,7 +533,9 @@ a\) would give **three** numbers (one per day); b) would give **one** number: th
 
 # Your turn: 5-10 minutes
 
-Open the exercise (scan the QR or type the link):
+## Open the exercise
+
+Scan the QR or type the link:
 
 **[python.tobiasvlcek.com/notebooks/ex_07_e/](https://python.tobiasvlcek.com/notebooks/ex_07_e/)**
 

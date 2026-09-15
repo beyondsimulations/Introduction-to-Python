@@ -199,7 +199,9 @@ Sometimes the fastest path is the one you already own. You built a whole muscle 
 
 # Your turn: 5-10 minutes
 
-Open the exercise (scan the QR or type the link):
+## Open the exercise
+
+Scan the QR or type the link:
 
 **[python.tobiasvlcek.com/notebooks/ex_08_a/](https://python.tobiasvlcek.com/notebooks/ex_08_a/)**
 
@@ -358,7 +360,9 @@ print(df[big])          # the rows: build the mask, then apply it
 
 # Your turn: 5-10 minutes
 
-Open the exercise (scan the QR or type the link):
+## Open the exercise
+
+Scan the QR or type the link:
 
 **[python.tobiasvlcek.com/notebooks/ex_08_b/](https://python.tobiasvlcek.com/notebooks/ex_08_b/)**
 
@@ -434,7 +438,9 @@ The investor's real question is **per zone**: which area brings in the most?
 
 # Your turn: 5-10 minutes
 
-Open the exercise (scan the QR or type the link):
+## Open the exercise
+
+Scan the QR or type the link:
 
 **[python.tobiasvlcek.com/notebooks/ex_08_c/](https://python.tobiasvlcek.com/notebooks/ex_08_c/)**
 
