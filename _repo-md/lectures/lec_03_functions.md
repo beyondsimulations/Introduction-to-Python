@@ -15,11 +15,13 @@ format:
 **The quarterly board review.** The first 40 minutes are the checkpoint. It starts now.
 
 - **Individual work**: no AI, no neighbors, no chat
-- The **link and QR** are handed out in class. Open it and start
+- The **link is on Moodle**. Open it and start
 - ~6 short tasks: write code, trace code, fix a bug, answer a multiple choice
 - It sweeps **Sessions I-II**: variables, types, `round` and f-strings, `if`/`elif`, `for` loops
 
-<!-- QR handed out live, never in the deck -->
+<!-- Link goes out via the hidden Moodle URL resource (shown at the start),
+     QR from the desktop as backup. Never put the URL in this file: the decks
+     publish to the public course site. -->
 
 ## When you're done
 

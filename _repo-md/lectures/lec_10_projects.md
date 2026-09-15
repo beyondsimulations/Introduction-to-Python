@@ -16,11 +16,13 @@ format:
 
 - **Individual work**: no neighbors, no chat
 - **AI tools are allowed**: being able to **VERIFY** the output is the skill being graded
-- The **link and QR** are handed out in class. Open it and start
+- The **link is on Moodle**. Open it and start
 - 6 short tasks: the right number out of a pandas table, a line the AI got wrong, a correct read of a chart
 - It sweeps **Sessions VIII-IX**: pandas filtering and `groupby`, fair charts vs. misleading ones
 
-<!-- QR handed out live, never in the deck -->
+<!-- Link goes out via the hidden Moodle URL resource (shown at the start),
+     QR from the desktop as backup. Never put the URL in this file: the decks
+     publish to the public course site. -->
 
 ## When you're done
 

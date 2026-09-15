@@ -15,11 +15,13 @@ format:
 **Sessions I-V.** The first 40 minutes are the checkpoint. It starts now, before the investor sits down.
 
 - **Individual work**: no AI, no neighbors, no chat
-- The **link and QR** are handed out in class. Open it and start
+- The **link is on Moodle**. Open it and start
 - ~6 short tasks: write code, trace code, fix a bug, answer a multiple choice
 - It sweeps **everything from Sessions I-V**: variables, control flow, functions, data structures, errors
 
-<!-- QR handed out live, never in the deck -->
+<!-- Link goes out via the hidden Moodle URL resource (shown at the start),
+     QR from the desktop as backup. Never put the URL in this file: the decks
+     publish to the public course site. -->
 
 ## When you're done
 
@@ -270,10 +272,10 @@ random.shuffle(queue)                         # reorders the list in place
 print(queue)
 ```
 
-    0.38952657796489865
-    14
-    latte
-    [3, 4, 1, 5, 2]
+    0.39630124936176336
+    7
+    tea
+    [3, 1, 4, 2, 5]
 
 . . .
 
@@ -290,8 +292,8 @@ print([random.randint(1, 20) for _ in range(5)])   # _ : a loop name we never us
 print([random.randint(1, 20) for _ in range(5)])   # ...and again, different!
 ```
 
-    [6, 5, 20, 3, 5]
-    [13, 7, 14, 5, 3]
+    [17, 19, 7, 10, 17]
+    [2, 18, 10, 4, 19]
 
 . . .
 

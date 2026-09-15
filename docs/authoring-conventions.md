@@ -137,6 +137,10 @@ Session II: Checkpoint 0 (dress rehearsal, 15 min, ungraded) sits right before t
 CP sessions (III, V, VI, VIII, X): title → checkpoint slide (procedure) →
 cold open → Block 1 → QR a → Block 2 → QR b → lab handoff → wrap-up.
 No warm-up on CP days (the checkpoint is the warm-up).
+The checkpoint URL NEVER goes in a deck: these files publish to the public course
+site, and the checkpoint host is unlisted. Students get it from a hidden Moodle URL
+resource revealed at the start, with a QR on screen as backup, so the slide says
+only "The **link is on Moodle**". See the checkpoints repo's `docs/runbook.md`.
 Exception, Session X follows the Plan-4 kickoff shape instead (CP5 opener →
 episode → project kickoff → toolchain → git → send-off; no QR exercises or lab
 handoff by design, and no tut_10/nb_10, see
