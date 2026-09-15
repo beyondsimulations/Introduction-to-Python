@@ -3,6 +3,18 @@ import os
 import shutil
 from pathlib import Path
 
+def copy_notebooks(output_dir):
+    """Mirror the marimo notebook sources into _repo-md as fenced markdown."""
+    sources = sorted(Path("notebooks").glob("*.py")) + sorted(
+        Path("notebooks/exercises").glob("*.py")
+    )
+    for source in sources:
+        target = output_dir / source.parent / f"{source.stem}.py.md"
+        target.parent.mkdir(parents=True, exist_ok=True)
+        target.write_text(f"```python\n{source.read_text()}```\n")
+        print(f"Copied: {source}")
+
+
 def move_md_files():
     """Find all .md files in _site and move them to _repo-md maintaining structure."""
 
@@ -27,6 +39,8 @@ def move_md_files():
 
     # Create output directory
     output_dir.mkdir(exist_ok=True)
+
+    copy_notebooks(output_dir)
 
     # Find and move all .md files
     md_files = list(site_dir.rglob("*.md"))
