@@ -102,7 +102,7 @@
     code span.vs { color: #032f62; } /* VerbatimString */
     code span.wa { color: #ff5555; } /* Warning */
   </style>
-  <link rel="stylesheet" href="../site_libs/revealjs/dist/theme/quarto-a0928013bf9f86968d08d7737471626b.css">
+  <link rel="stylesheet" href="../site_libs/revealjs/dist/theme/quarto-28fd5b8bef08e1f73ec6ab55d56c135e.css">
   <link href="../site_libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
   <link href="../site_libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
   <link href="../site_libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
@@ -234,12 +234,13 @@ Dr.&nbsp;Tobias Vlćek
 </div>
 </section></section>
 <section>
-<section id="warm-up" class="title-slide slide level1 exercise-slide center">
+<section id="warm-up" class="title-slide slide level1 loud-slide center">
 <h1>Warm-up</h1>
-<p>Three questions from Episode 6. Commit. Hands up <strong>before</strong> the reveal.</p>
+
 </section>
 <section id="question-1" class="slide level2">
 <h2>Question 1</h2>
+<p>Three questions from Episode 6. Commit. Hands up <strong>before</strong> the reveal.</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a aria-label="1"></a><span class="im">from</span> math <span class="im">import</span> ceil</span>
 <span id="cb1-2"><a aria-label="2"></a></span>
 <span id="cb1-3"><a aria-label="3"></a><span class="co"># which line works?</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
@@ -284,7 +285,7 @@ Dr.&nbsp;Tobias Vlćek
 <section id="from-a-list-to-an-array" class="slide level2">
 <h2>From a list to an array</h2>
 <p>A <strong>NumPy array</strong> holds many numbers under one name, like a list, but built for math. You make one from a list, then ask it about itself:</p>
-<div id="f258c87c" class="cell" data-execution_count="1">
+<div id="34de1846" class="cell" data-execution_count="1">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a aria-label="1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb4-2"><a aria-label="2"></a></span>
 <span id="cb4-3"><a aria-label="3"></a>prices <span class="op">=</span> np.array([<span class="fl">12.0</span>, <span class="fl">9.0</span>, <span class="fl">15.0</span>])</span>
@@ -312,7 +313,7 @@ float64
 <span id="cb6-2"><a aria-label="2"></a>gross <span class="op">=</span> []</span>
 <span id="cb6-3"><a aria-label="3"></a><span class="cf">for</span> p <span class="kw">in</span> [<span class="fl">12.0</span>, <span class="fl">9.0</span>, <span class="fl">15.0</span>]:</span>
 <span id="cb6-4"><a aria-label="4"></a>    gross.append(p <span class="op">*</span> <span class="fl">1.19</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div id="f7582d31" class="cell" data-execution_count="2">
+<div id="c22969b2" class="cell" data-execution_count="2">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a aria-label="1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb7-2"><a aria-label="2"></a></span>
 <span id="cb7-3"><a aria-label="3"></a>prices <span class="op">=</span> np.array([<span class="fl">12.0</span>, <span class="fl">9.0</span>, <span class="fl">15.0</span>])</span>
@@ -328,9 +329,13 @@ float64
 </div>
 </section></section>
 <section>
-<section id="your-turn-5-10-minutes" class="title-slide slide level1 exercise-slide center">
+<section id="your-turn-5-10-minutes" class="title-slide slide level1 loud-slide center">
 <h1>Your turn: 5-10 minutes</h1>
-<p>Open the exercise (scan the QR or type the link):</p>
+
+</section>
+<section id="open-the-exercise" class="slide level2">
+<h2>Open the exercise</h2>
+<p>Scan the QR or type the link:</p>
 <p><strong><a href="https://python.tobiasvlcek.com/notebooks/ex_07_a/">python.tobiasvlcek.com/notebooks/ex_07_a/</a></strong></p>
 
 <img data-src="assets/qr/ex_07_a.png" width="280" class="r-stretch"><p>First <strong>predict</strong> what happens, then run it.</p>
@@ -338,7 +343,7 @@ float64
 <section id="arrays-from-scratch" class="slide level2">
 <h2>Arrays from scratch</h2>
 <p>Two builders make evenly-spaced arrays without typing every number, handy for axes and ranges:</p>
-<div id="0f9425a7" class="cell" data-execution_count="3">
+<div id="db6d57fe" class="cell" data-execution_count="3">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a aria-label="1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb9-2"><a aria-label="2"></a></span>
 <span id="cb9-3"><a aria-label="3"></a><span class="bu">print</span>(np.arange(<span class="dv">0</span>, <span class="dv">10</span>, <span class="dv">2</span>))     <span class="co"># start, stop (excluded), step</span></span>
@@ -366,7 +371,7 @@ float64
 <section id="answer-lists-repeat-arrays-compute" class="slide level2">
 <h2>Answer: lists repeat, arrays compute</h2>
 <p><strong>a) <code>[1, 2, 3, 1, 2, 3]</code></strong>. That’s a plain <strong>list</strong>, and <code>* 2</code> on a list <em>repeats</em> it. Wrap it in an array and the same <code>* 2</code> does the math instead:</p>
-<div id="85b5a70a" class="cell" data-execution_count="4">
+<div id="a1ba47e9" class="cell" data-execution_count="4">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb12"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a aria-label="1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb12-2"><a aria-label="2"></a></span>
 <span id="cb12-3"><a aria-label="3"></a><span class="bu">print</span>([<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>] <span class="op">*</span> <span class="dv">2</span>)              <span class="co"># list → repeated</span></span>
@@ -394,7 +399,7 @@ float64
 <section id="answer-lists-glue-arrays-add" class="slide level2">
 <h2>Answer: lists glue, arrays add</h2>
 <p><strong>c) <code>[1, 2, 3, 10, 20, 30]</code></strong>. On lists, <code>+</code> <strong>glues</strong> them end to end, exactly like <code>* 2</code> repeated. On arrays, <code>+</code> adds element by element, first with first, second with second:</p>
-<div id="3d995411" class="cell" data-execution_count="5">
+<div id="d1f0ec0d" class="cell" data-execution_count="5">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb15"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a aria-label="1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb15-2"><a aria-label="2"></a></span>
 <span id="cb15-3"><a aria-label="3"></a><span class="bu">print</span>([<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>] <span class="op">+</span> [<span class="dv">10</span>, <span class="dv">20</span>, <span class="dv">30</span>])                        <span class="co"># list → glued</span></span>
@@ -410,14 +415,18 @@ float64
 <p>Every operator follows the same rule: lists do list things, arrays do math.</p>
 </div>
 </section></section>
-<section id="your-turn-5-10-minutes-1" class="title-slide slide level1 exercise-slide center">
+<section>
+<section id="your-turn-5-10-minutes-1" class="title-slide slide level1 loud-slide center">
 <h1>Your turn: 5-10 minutes</h1>
-<p>Open the exercise (scan the QR or type the link):</p>
+
+</section>
+<section id="open-the-exercise-1" class="slide level2">
+<h2>Open the exercise</h2>
+<p>Scan the QR or type the link:</p>
 <p><strong><a href="https://python.tobiasvlcek.com/notebooks/ex_07_b/">python.tobiasvlcek.com/notebooks/ex_07_b/</a></strong></p>
 
 <img data-src="assets/qr/ex_07_b.png" width="280" class="r-stretch"><p>First <strong>predict</strong> what happens, then run it.</p>
-</section>
-
+</section></section>
 <section>
 <section id="asking-questions-of-data" class="title-slide slide level1 title center">
 <h1><span class="flow">Asking questions of data</span></h1>
@@ -426,7 +435,7 @@ float64
 <section id="a-comparison-makes-a-mask" class="slide level2">
 <h2>A comparison makes a mask</h2>
 <p>Compare an array to a number and you don’t get one <code>True</code>/<code>False</code>. You get a <strong>whole array</strong> of them, one per element. That’s a <strong>mask</strong>, and you can filter with it:</p>
-<div id="4d90d5da" class="cell" data-execution_count="6">
+<div id="f7bedeed" class="cell" data-execution_count="6">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb17"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a aria-label="1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb17-2"><a aria-label="2"></a></span>
 <span id="cb17-3"><a aria-label="3"></a>times <span class="op">=</span> np.array([<span class="dv">25</span>, <span class="dv">41</span>, <span class="dv">18</span>, <span class="dv">33</span>])</span>
@@ -446,7 +455,7 @@ float64
 <section id="counting-without-a-loop" class="slide level2">
 <h2>Counting without a loop</h2>
 <p>A mask answers two investor questions at once. <code>.sum()</code> counts the <code>True</code>s (each counts as <code>1</code>); <code>.mean()</code> gives the <strong>share</strong> that are <code>True</code>:</p>
-<div id="f98e74cb" class="cell" data-execution_count="7">
+<div id="ef7e4a5c" class="cell" data-execution_count="7">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb19"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a aria-label="1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb19-2"><a aria-label="2"></a></span>
 <span id="cb19-3"><a aria-label="3"></a>times <span class="op">=</span> np.array([<span class="dv">25</span>, <span class="dv">41</span>, <span class="dv">18</span>, <span class="dv">33</span>, <span class="dv">52</span>, <span class="dv">29</span>, <span class="dv">44</span>, <span class="dv">12</span>])</span>
@@ -478,7 +487,7 @@ float64
 <section id="answer-true-counts-as-1" class="slide level2">
 <h2>Answer: True counts as 1</h2>
 <p><strong>b) <code>2</code></strong>: <code>.sum()</code> adds the mask up, and each <code>True</code> is worth <code>1</code>, each <code>False</code> <code>0</code>. Two elements clear the bar, so the count is <code>2</code>:</p>
-<div id="c837f322" class="cell" data-execution_count="8">
+<div id="b96b10cb" class="cell" data-execution_count="8">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb22"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a aria-label="1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb22-2"><a aria-label="2"></a></span>
 <span id="cb22-3"><a aria-label="3"></a><span class="bu">print</span>(np.array([<span class="dv">1</span>, <span class="dv">5</span>, <span class="dv">3</span>]) <span class="op">&gt;</span> <span class="dv">2</span>)            <span class="co"># [False  True  True]</span></span>
@@ -507,7 +516,7 @@ float64
 <section id="answer-and-wants-one-truth-a-mask-has-four" class="slide level2">
 <h2>Answer: <code>and</code> wants one truth, a mask has four</h2>
 <p><strong>a) an error</strong>. <code>and</code> asks the left side “are you true?”, and a four-element mask has no single answer. Between two masks use <code>&amp;</code>, and wrap each side in parentheses (<code>&amp;</code> binds tighter than <code>&gt;</code>):</p>
-<div id="457ba121" class="cell" data-execution_count="9">
+<div id="7f34cfe1" class="cell" data-execution_count="9">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb25"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb25-1"><a aria-label="1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb25-2"><a aria-label="2"></a></span>
 <span id="cb25-3"><a aria-label="3"></a>times <span class="op">=</span> np.array([<span class="dv">25</span>, <span class="dv">41</span>, <span class="dv">18</span>, <span class="dv">33</span>])</span>
@@ -527,7 +536,7 @@ float64
 </div>
 </div>
 </div>
-<div id="15670b82" class="cell" data-execution_count="10">
+<div id="16b4bf58" class="cell" data-execution_count="10">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb26"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb26-1"><a aria-label="1"></a><span class="bu">print</span>((times <span class="op">&gt;</span> <span class="dv">20</span>) <span class="op">&amp;</span> (times <span class="op">&lt;</span> <span class="dv">40</span>))    <span class="co"># element by element: &amp; combines masks</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <div class="cell fragment" data-execution_count="10">
@@ -536,14 +545,18 @@ float64
 </div>
 </div>
 </section></section>
-<section id="your-turn-5-10-minutes-2" class="title-slide slide level1 exercise-slide center">
+<section>
+<section id="your-turn-5-10-minutes-2" class="title-slide slide level1 loud-slide center">
 <h1>Your turn: 5-10 minutes</h1>
-<p>Open the exercise (scan the QR or type the link):</p>
+
+</section>
+<section id="open-the-exercise-2" class="slide level2">
+<h2>Open the exercise</h2>
+<p>Scan the QR or type the link:</p>
 <p><strong><a href="https://python.tobiasvlcek.com/notebooks/ex_07_c/">python.tobiasvlcek.com/notebooks/ex_07_c/</a></strong></p>
 
 <img data-src="assets/qr/ex_07_c.png" width="280" class="r-stretch"><p>First <strong>predict</strong> what happens, then run it.</p>
-</section>
-
+</section></section>
 <section>
 <section id="the-days-by-zones-grid" class="title-slide slide level1 title center">
 <h1><span class="flow">The days-by-zones grid</span></h1>
@@ -552,7 +565,7 @@ float64
 <section id="a-grid-of-numbers" class="slide level2">
 <h2>A grid of numbers</h2>
 <p>Real data isn’t one row. Stack rows and you get a <strong>2D array</strong>: here three days (rows) across four zones (columns: Nord, Sued, Hafen, Altstadt):</p>
-<div id="53ae748b" class="cell" data-execution_count="11">
+<div id="7974374f" class="cell" data-execution_count="11">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb28"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb28-1"><a aria-label="1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb28-2"><a aria-label="2"></a></span>
 <span id="cb28-3"><a aria-label="3"></a>deliveries <span class="op">=</span> np.array([[ <span class="dv">9</span>, <span class="dv">14</span>, <span class="dv">11</span>,  <span class="dv">6</span>],</span>
@@ -588,7 +601,7 @@ float64
 <section id="answer-rows-first-then-columns" class="slide level2">
 <h2>Answer: rows first, then columns</h2>
 <p><strong>b) <code>(5, 4)</code></strong>. <code>.shape</code> is always <code>(rows, columns)</code>: five inner lists make five rows, each with four numbers. <code>(20,)</code> would be one flat row of twenty; <code>20</code> is <code>.size</code>, the total count:</p>
-<div id="dae81b27" class="cell" data-execution_count="12">
+<div id="c8806e86" class="cell" data-execution_count="12">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb31"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb31-1"><a aria-label="1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb31-2"><a aria-label="2"></a></span>
 <span id="cb31-3"><a aria-label="3"></a>grid <span class="op">=</span> np.array([[ <span class="dv">9</span>, <span class="dv">14</span>, <span class="dv">11</span>,  <span class="dv">6</span>],</span>
@@ -627,7 +640,7 @@ float64
 <section id="axis-in-code" class="slide level2">
 <h2><code>axis</code> in code</h2>
 <p>The same grid, the same two collapses, one keyword each:</p>
-<div id="024b264a" class="cell" data-execution_count="13">
+<div id="31756228" class="cell" data-execution_count="13">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb34"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb34-1"><a aria-label="1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb34-2"><a aria-label="2"></a></span>
 <span id="cb34-3"><a aria-label="3"></a>deliveries <span class="op">=</span> np.array([[ <span class="dv">9</span>, <span class="dv">14</span>, <span class="dv">11</span>,  <span class="dv">6</span>],</span>
@@ -647,9 +660,13 @@ float64
 </div>
 </section></section>
 <section>
-<section id="your-turn-5-10-minutes-3" class="title-slide slide level1 exercise-slide center">
+<section id="your-turn-5-10-minutes-3" class="title-slide slide level1 loud-slide center">
 <h1>Your turn: 5-10 minutes</h1>
-<p>Open the exercise (scan the QR or type the link):</p>
+
+</section>
+<section id="open-the-exercise-3" class="slide level2">
+<h2>Open the exercise</h2>
+<p>Scan the QR or type the link:</p>
 <p><strong><a href="https://python.tobiasvlcek.com/notebooks/ex_07_d/">python.tobiasvlcek.com/notebooks/ex_07_d/</a></strong></p>
 
 <img data-src="assets/qr/ex_07_d.png" width="280" class="r-stretch"><p>First <strong>predict</strong> what happens, then run it.</p>
@@ -657,7 +674,7 @@ float64
 <section id="where-does-the-max-sit" class="slide level2">
 <h2>Where does the max sit?</h2>
 <p>The per-zone totals answer “how many?”, but the investor asks “<strong>which</strong> zone?”. <code>argmax</code> tells you <strong>WHERE</strong> the maximum sits, as an index:</p>
-<div id="643587f2" class="cell" data-execution_count="14">
+<div id="56a5ff13" class="cell" data-execution_count="14">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb36"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb36-1"><a aria-label="1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb36-2"><a aria-label="2"></a></span>
 <span id="cb36-3"><a aria-label="3"></a>deliveries <span class="op">=</span> np.array([[ <span class="dv">9</span>, <span class="dv">14</span>, <span class="dv">11</span>,  <span class="dv">6</span>],</span>
@@ -689,7 +706,7 @@ float64
 <section id="answer-collapse-the-days-keep-the-zones" class="slide level2">
 <h2>Answer: collapse the days, keep the zones</h2>
 <p><strong>c) <code>week.sum(axis=0)</code></strong>. Four zones means four numbers, so the <strong>days</strong> must disappear: <code>axis=0</code> collapses DOWN the rows, one number per column (zone):</p>
-<div id="9e9cab2e" class="cell" data-execution_count="15">
+<div id="418754ae" class="cell" data-execution_count="15">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb39"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb39-1"><a aria-label="1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb39-2"><a aria-label="2"></a></span>
 <span id="cb39-3"><a aria-label="3"></a>week <span class="op">=</span> np.array([[ <span class="dv">9</span>, <span class="dv">14</span>, <span class="dv">11</span>,  <span class="dv">6</span>],</span>
@@ -706,14 +723,18 @@ float64
 <p>a) would give <strong>three</strong> numbers (one per day); b) would give <strong>one</strong> number: the grand total, <code>144</code>.</p>
 </div>
 </section></section>
-<section id="your-turn-5-10-minutes-4" class="title-slide slide level1 exercise-slide center">
+<section>
+<section id="your-turn-5-10-minutes-4" class="title-slide slide level1 loud-slide center">
 <h1>Your turn: 5-10 minutes</h1>
-<p>Open the exercise (scan the QR or type the link):</p>
+
+</section>
+<section id="open-the-exercise-4" class="slide level2">
+<h2>Open the exercise</h2>
+<p>Scan the QR or type the link:</p>
 <p><strong><a href="https://python.tobiasvlcek.com/notebooks/ex_07_e/">python.tobiasvlcek.com/notebooks/ex_07_e/</a></strong></p>
 
 <img data-src="assets/qr/ex_07_e.png" width="280" class="r-stretch"><p>First <strong>predict</strong> what happens, then run it.</p>
-</section>
-
+</section></section>
 <section>
 <section id="to-the-lab" class="title-slide slide level1 title center">
 <h1><span class="flow">To the Lab</span></h1>
