@@ -548,11 +548,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p><strong>Sessions I-V.</strong> The first 40 minutes are the checkpoint. It starts now, before the investor sits down.</p>
 <ul>
 <li><strong>Individual work</strong>: no AI, no neighbors, no chat</li>
-<li>The <strong>link and QR</strong> are handed out in class. Open it and start</li>
+<li>The <strong>link is on Moodle</strong>. Open it and start</li>
 <li>~6 short tasks: write code, trace code, fix a bug, answer a multiple choice</li>
 <li>It sweeps <strong>everything from Sessions I-V</strong>: variables, control flow, functions, data structures, errors</li>
 </ul>
-<!-- QR handed out live, never in the deck -->
+<!-- Link goes out via the hidden Moodle URL resource (shown at the start),
+     QR from the desktop as backup. Never put the URL in this file: the decks
+     publish to the public course site. -->
 <section id="when-youre-done" class="level2">
 <h2 class="anchored" data-anchor-id="when-youre-done">When you’re done</h2>
 <p>Menu → <em>Download</em> → <em>Download Python code</em> → upload the <code>.py</code> to the <strong>“Checkpoint 3”</strong> assignment on Moodle. <strong>No retakes</strong>: one sitting.</p>
@@ -629,7 +631,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="import-math-stop-rounding-by-hand" class="level2">
 <h2 class="anchored" data-anchor-id="import-math-stop-rounding-by-hand"><code>import math</code>: stop rounding by hand</h2>
 <p>130 pastries need to ship. They go in crates of 48. How many crates? You need to round <strong>up</strong>: a half-full crate still ships as a whole one.</p>
-<div id="2652e9df" class="cell" data-output-location="fragment" data-execution_count="1">
+<div id="272f3ece" class="cell" data-output-location="fragment" data-execution_count="1">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> math</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>pastries <span class="op">=</span> <span class="dv">130</span></span>
@@ -646,7 +648,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="from-statistics-import-..." class="level2">
 <h2 class="anchored" data-anchor-id="from-statistics-import-..."><code>from statistics import ...</code></h2>
 <p>Sometimes you only want a couple of tools, not the whole box. Import them <strong>by name</strong> and use them directly, no <code>statistics.</code> prefix:</p>
-<div id="ed2b8fdc" class="cell" data-output-location="fragment" data-execution_count="2">
+<div id="4fe605a9" class="cell" data-output-location="fragment" data-execution_count="2">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> statistics <span class="im">import</span> mean, median</span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>ratings <span class="op">=</span> [<span class="fl">4.5</span>, <span class="fl">4.8</span>, <span class="fl">1.0</span>, <span class="fl">5.0</span>, <span class="fl">4.2</span>]</span>
@@ -673,7 +675,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="aliases-a-shorter-name" class="level2">
 <h2 class="anchored" data-anchor-id="aliases-a-shorter-name">Aliases: a shorter name</h2>
 <p>Some module names are long, or you’ll type them fifty times. <code>import ... as</code> gives a module a <strong>nickname</strong> for the rest of the file:</p>
-<div id="ef43a498" class="cell" data-output-location="fragment" data-execution_count="3">
+<div id="36f6042f" class="cell" data-output-location="fragment" data-execution_count="3">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> statistics <span class="im">as</span> stats</span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(stats.median([<span class="fl">4.5</span>, <span class="fl">4.8</span>, <span class="fl">1.0</span>, <span class="fl">5.0</span>, <span class="fl">4.2</span>]))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
@@ -698,7 +700,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="answer-pi-exists-math-doesnt" class="level2">
 <h2 class="anchored" data-anchor-id="answer-pi-exists-math-doesnt">Answer: <code>pi</code> exists, <code>math</code> doesn’t</h2>
 <p><strong>c) a <code>NameError</code></strong>: <code>from math import pi</code> puts exactly one name on your desk, <code>pi</code>. Nobody ever created a name called <code>math</code>, so <code>math.pi</code> fails at the first dot:</p>
-<div id="34ad36eb" class="cell" data-output-location="fragment" data-execution_count="5">
+<div id="16225c8c" class="cell" data-output-location="fragment" data-execution_count="5">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> math <span class="im">import</span> pi</span>
 <span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>radius <span class="op">=</span> <span class="dv">15</span></span>
@@ -712,7 +714,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 <p>. . .</p>
 <p>Use the name you imported, and it works:</p>
-<div id="cb12161c" class="cell" data-output-location="fragment" data-execution_count="6">
+<div id="c4f8c0d4" class="cell" data-output-location="fragment" data-execution_count="6">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(pi <span class="op">*</span> radius <span class="op">**</span> <span class="dv">2</span>)   <span class="co"># 706.858…: the imported name, no prefix</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>706.8583470577034</code></pre>
@@ -750,7 +752,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="answer-floor-goes-down-not-toward-zero" class="level2">
 <h2 class="anchored" data-anchor-id="answer-floor-goes-down-not-toward-zero">Answer: floor goes down, not toward zero</h2>
 <p><strong>a) <code>-3</code></strong>: <code>floor</code> always heads <strong>down</strong> the number line, toward more negative. From <code>-2.5</code>, down is <code>-3</code>, not the <code>-2</code> you’d get by rounding toward zero:</p>
-<div id="9cbc0162" class="cell" data-output-location="fragment" data-execution_count="7">
+<div id="836415f3" class="cell" data-output-location="fragment" data-execution_count="7">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> math</span>
 <span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(math.floor(<span class="op">-</span><span class="fl">2.5</span>))   <span class="co"># down the number line → -3</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
@@ -776,7 +778,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="the-random-toolbox" class="level2">
 <h2 class="anchored" data-anchor-id="the-random-toolbox">The <code>random</code> toolbox</h2>
 <p>The investor wants to see how the shop copes with a <strong>busy day</strong>, but the busy day hasn’t happened yet. So we <em>rehearse</em> it with made-up numbers. The <code>random</code> module deals them:</p>
-<div id="4c943cca" class="cell" data-output-location="fragment" data-execution_count="8">
+<div id="9230d862" class="cell" data-output-location="fragment" data-execution_count="8">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> random</span>
 <span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(random.random())                       <span class="co"># a float in [0.0, 1.0)</span></span>
@@ -787,10 +789,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb15-8"><a href="#cb15-8" aria-hidden="true" tabindex="-1"></a>random.shuffle(queue)                         <span class="co"># reorders the list in place</span></span>
 <span id="cb15-9"><a href="#cb15-9" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(queue)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>0.13924721981455945
-2
-latte
-[2, 4, 5, 1, 3]</code></pre>
+<pre><code>0.6780447051994066
+8
+mocha
+[2, 3, 5, 4, 1]</code></pre>
 </div>
 </div>
 <p>. . .</p>
@@ -799,14 +801,14 @@ latte
 <section id="run-it-again" class="level2">
 <h2 class="anchored" data-anchor-id="run-it-again">“Run it again”</h2>
 <p>The investor leans over and says: <strong>“Run it again.”</strong> Tobi does, and gets <strong>completely different numbers</strong>:</p>
-<div id="095489eb" class="cell" data-output-location="fragment" data-execution_count="9">
+<div id="9dce6c7a" class="cell" data-output-location="fragment" data-execution_count="9">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb17"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> random</span>
 <span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>([random.randint(<span class="dv">1</span>, <span class="dv">20</span>) <span class="cf">for</span> _ <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">5</span>)])   <span class="co"># _ : a loop name we never use</span></span>
 <span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>([random.randint(<span class="dv">1</span>, <span class="dv">20</span>) <span class="cf">for</span> _ <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">5</span>)])   <span class="co"># ...and again, different!</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[12, 13, 5, 20, 4]
-[6, 19, 4, 13, 19]</code></pre>
+<pre><code>[17, 2, 13, 8, 14]
+[3, 13, 10, 11, 12]</code></pre>
 </div>
 </div>
 <p>. . .</p>
@@ -815,7 +817,7 @@ latte
 <section id="random.seed-makes-luck-repeatable" class="level2">
 <h2 class="anchored" data-anchor-id="random.seed-makes-luck-repeatable"><code>random.seed</code> makes luck repeatable</h2>
 <p><code>random.seed(n)</code> fixes the starting point of the number stream. Same seed → <strong>same sequence, every time</strong>:</p>
-<div id="2a1f2269" class="cell" data-output-location="fragment" data-execution_count="10">
+<div id="30e47099" class="cell" data-output-location="fragment" data-execution_count="10">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb19"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> random</span>
 <span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a>random.seed(<span class="dv">7</span>)</span>
@@ -851,7 +853,7 @@ latte
 <section id="answer-same-rider" class="level2">
 <h2 class="anchored" data-anchor-id="answer-same-rider">Answer: same rider</h2>
 <p><strong>b) <code>True</code></strong>. Every <code>random</code> tool draws from the same stream, and re-seeding rewinds it to the start. <code>choice</code> is no exception: after <code>seed(3)</code> it lands on the same item every time:</p>
-<div id="b37c8ee9" class="cell" data-output-location="fragment" data-execution_count="11">
+<div id="1feb9d10" class="cell" data-output-location="fragment" data-execution_count="11">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb22"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> random</span>
 <span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a>riders <span class="op">=</span> [<span class="st">"Ana"</span>, <span class="st">"Ben"</span>, <span class="st">"Cem"</span>, <span class="st">"Dana"</span>]</span>
@@ -887,7 +889,7 @@ Ben Ben</code></pre>
 <section id="answer-different" class="level2">
 <h2 class="anchored" data-anchor-id="answer-different">Answer: different</h2>
 <p><strong>a) different</strong>. A seed doesn’t freeze <code>random</code>, it fixes the whole sequence. The first list eats the first three numbers of the stream; the second list simply continues from number four:</p>
-<div id="469de20a" class="cell" data-output-location="fragment" data-execution_count="12">
+<div id="e9654dca" class="cell" data-output-location="fragment" data-execution_count="12">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb25"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> random</span>
 <span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a>random.seed(<span class="dv">42</span>)</span>
