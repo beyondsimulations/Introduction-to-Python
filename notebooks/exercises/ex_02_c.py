@@ -105,7 +105,7 @@ def _():
 
 @app.cell
 def _():
-    # YOUR CODE BELOW: replace None
+    # YOUR CODE BELOW: the total of minutes
     minutes_exc = None
     return (minutes_exc,)
 
@@ -140,7 +140,7 @@ def _(mo):
 
 @app.cell
 def _():
-    # YOUR CODE BELOW: replace None
+    # YOUR CODE BELOW: how many runs in minutes took longer than 8
     late_exc = None
     return (late_exc,)
 

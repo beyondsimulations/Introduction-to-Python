@@ -23,10 +23,20 @@
 - Every cell a student edits contains a line starting with `# YOUR CODE BELOW`
   (bug-fix cells too: put it above the `TOBI'S CODE` comment); the Session I
   slide and the lab read-me cell tell students to look for exactly this line.
+- That line names the TARGET, never the METHOD: what the value has to be, plus
+  any constraint the task imposes ("ONE comparison expression, no `if`", "as a
+  NEW list", "in ONE expression", "no `len()`"), and nothing about which tool
+  gets you there. The method lives in the prompt and in the two hint
+  accordions; naming it inline collapses the ladder.
+  Never `# YOUR CODE BELOW: replace None` on its own: the marimo prompt is a
+  separate cell that scrolls away while the student works in the code cell, so
+  the comment has to restate the task, not point at the placeholder.
+  Bug-fix cells are the exception: the `TOBI'S CODE` line right below already
+  states the target, so the marker stays bare.
 - Every lab has the "How this notebook works" callout right after the save
   callout (see `_template.py`); in-lecture exercises do not.
 - Every exercise pre-defines its answer: `fee_ex11 = None  # YOUR CODE BELOW`.
-- Suffix naming: `<meaning>_exNM` (section N, exercise M); boss = `_ex40`,
+- Suffix naming: `<meaning>_exNM` (section N, exercise M); putting it together = `_ex40`,
   MCQ = `answer_ex50`, bonuses = `_ex60`+. Classes keep their natural name
   (`Order`), no suffix.
 - Checks: `isinstance` + `round(x, 2) == LITERAL` for numbers; degrade to
@@ -132,8 +142,23 @@ episode → project kickoff → toolchain → git → send-off; no QR exercises 
 handoff by design, and no tut_10/nb_10, see
 docs/superpowers/specs/2026-07-12-part3-plan4-design.md).
 
+### Break slides: two backgrounds, two meanings
+`.loud-slide` (brand teal) means "you are about to do something": every
+checkpoint and every `# Your turn` / `# Warm-up` slide. `.title` /
+`.exercise-slide` (peach) means "a new section starts". Never reuse one for
+the other, the whole point is that a checkpoint cannot be mistaken for a
+section break from the back row.
+A `.loud-slide` carries its heading and NOTHING else, with one exception:
+checkpoint slides keep the procedure (rules, task count, what it sweeps),
+because students read it while the clock runs. Everything else that used to
+sit under a break heading moves to the `##` slide right after it.
+On the teal ground all accents (`strong`, `em`, links) render light, weight
+carries the emphasis instead of hue, see the `.reveal .loud-slide` block in
+`styles.scss`.
+
 ### Warm-up pattern (oral + vote)
-One `# Warm-up {.exercise-slide}` section, then per question a `##` slide
+One `# Warm-up {.loud-slide}` section (heading only, the "Three questions
+from Episode N" line lives on the `## Question 1` slide), then per question a `##` slide
 (question + options a-c) and a `##` answer slide (answer + one-line why).
 Everyone commits by hand vote BEFORE the reveal, predict-first, zero infra.
 Warm-up answer slides are prose-only (no live execution), deliberate: oral
@@ -147,8 +172,13 @@ hallucination) must mark that cell `#| error: true` so Quarto captures the
 traceback into the slide, a bare crashing cell aborts the whole render.
 
 ### QR exercise slide (exact form)
-    # Your turn: 5-10 minutes {.exercise-slide}
+    # Your turn: 5-10 minutes {.loud-slide}
+
+    ## Open the exercise
+    Scan the QR or type the link:
     …URL + QR image (assets/qr/ex_XX_x.png, width 280) + "First **predict** what happens, then run it."
+The `#` slide is the heading alone; the link, QR and predict line go on the
+`##` slide after it.
 Add new exercises to `helpers/make_qr.py` EXERCISES and re-run it.
 
 ## Solution notebooks (Fable #4)

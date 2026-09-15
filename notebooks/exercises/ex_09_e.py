@@ -97,7 +97,7 @@ def _(mo):
 
 @app.cell
 def _(weekly_exe):
-    # YOUR CODE BELOW: replace None
+    # YOUR CODE BELOW: growth from week 1 to week 4 of weekly_exe, as a PERCENT
     growth_exe = None
     return (growth_exe,)
 
@@ -195,7 +195,7 @@ def _(mo):
 
 @app.cell
 def _(weekly_exe):
-    # YOUR CODE BELOW: replace None
+    # YOUR CODE BELOW: the rise as a percent of Tobi's 49-to-56 axis: what the PICTURE claimed
     picture_exe = None
     return (picture_exe,)
 

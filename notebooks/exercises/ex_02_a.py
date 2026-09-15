@@ -62,7 +62,7 @@ def _():
 
 @app.cell
 def _():
-    # YOUR CODE BELOW: replace None
+    # YOUR CODE BELOW: ONE comparison expression (no if) that is True before the 22:00 curfew
     open_exa = None
     return (open_exa,)
 
@@ -108,7 +108,7 @@ def _():
 
 @app.cell
 def _():
-    # YOUR CODE BELOW: replace None
+    # YOUR CODE BELOW: whether this run may go out: open hours, or a pharmacy run. One boolean
     allowed_exa = None
     return (allowed_exa,)
 

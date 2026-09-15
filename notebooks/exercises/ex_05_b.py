@@ -105,7 +105,7 @@ def _():
 
 @app.cell
 def _():
-    # YOUR CODE BELOW: replace None
+    # YOUR CODE BELOW: qty_text as a proper number, without a crash
     qty_exb = None
     return (qty_exb,)
 
@@ -147,7 +147,7 @@ def _(mo):
 
 @app.cell
 def _():
-    # YOUR CODE BELOW: replace None
+    # YOUR CODE BELOW: the whole bowls in qty_text, as an int, dropping the half
     bowls_exb = None
     return (bowls_exb,)
 

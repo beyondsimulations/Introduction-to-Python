@@ -67,7 +67,7 @@ def _():
 
 @app.cell
 def _():
-    # YOUR CODE BELOW: replace None
+    # YOUR CODE BELOW: the fee that order_total earns
     fee_exb = None
     return (fee_exb,)
 
@@ -109,7 +109,7 @@ def _():
 
 @app.cell
 def _():
-    # YOUR CODE BELOW: replace None
+    # YOUR CODE BELOW: the fee for order_total, but 0 for a Gold customer (test is_gold first)
     fee2_exb = None
     return (fee2_exb,)
 

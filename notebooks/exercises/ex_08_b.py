@@ -98,7 +98,7 @@ def _(pd):
 
 @app.cell
 def _(orders_exb):
-    hafen_revenue_exb = None  # YOUR CODE BELOW
+    hafen_revenue_exb = None  # YOUR CODE BELOW: the total total_eur of the Hafen rows, as one number
     return (hafen_revenue_exb,)
 
 
@@ -176,7 +176,7 @@ def _(mo):
 
 @app.cell
 def _(orders_exb):
-    sued_multi_exb = None  # YOUR CODE BELOW
+    sued_multi_exb = None  # YOUR CODE BELOW: how many Sued orders have more than one item, as a whole number
     return (sued_multi_exb,)
 
 

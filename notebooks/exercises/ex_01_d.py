@@ -62,7 +62,7 @@ def _():
 
 @app.cell
 def _():
-    # YOUR CODE BELOW: replace None
+    # YOUR CODE BELOW: the board line reading exactly 3x Pad Thai, built from qty and item
     board_exd = None
     return (board_exd,)
 
@@ -101,7 +101,7 @@ def _(mo):
 
 @app.cell
 def _():
-    # YOUR CODE BELOW: replace None
+    # YOUR CODE BELOW: the board line reading 3x Pad Thai = 25.5 EUR, the total worked out in the line itself
     kitchen_exd = None
     return (kitchen_exd,)
 

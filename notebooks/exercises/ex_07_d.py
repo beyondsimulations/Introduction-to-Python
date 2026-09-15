@@ -89,7 +89,7 @@ def _(np):
 
 @app.cell
 def _(runs_exd):
-    # YOUR CODE BELOW: replace None
+    # YOUR CODE BELOW: one total per day from runs_exd
     day_totals_exd = None
     return (day_totals_exd,)
 
@@ -144,7 +144,7 @@ def _(mo):
 
 @app.cell
 def _(runs_exd):
-    # YOUR CODE BELOW: replace None
+    # YOUR CODE BELOW: one average per zone from runs_exd
     zone_means_exd = None
     return (zone_means_exd,)
 

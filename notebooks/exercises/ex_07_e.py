@@ -93,14 +93,14 @@ def _(np):
 
 @app.cell
 def _(sales_exe):
-    # YOUR CODE BELOW: replace None
+    # YOUR CODE BELOW: one total per zone from sales_exe
     zone_totals_exe = None
     return (zone_totals_exe,)
 
 
 @app.cell
 def _(sales_exe):
-    # YOUR CODE BELOW: replace None
+    # YOUR CODE BELOW: the INDEX of the best zone, as an int
     best_zone_exe = None
     return (best_zone_exe,)
 
@@ -159,7 +159,7 @@ def _(mo):
 
 @app.cell
 def _(sales_exe):
-    # YOUR CODE BELOW: replace None
+    # YOUR CODE BELOW: the INDEX of the best day, per-day totals this time
     best_day_exe = None
     return (best_day_exe,)
 

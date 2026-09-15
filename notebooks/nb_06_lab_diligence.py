@@ -882,13 +882,13 @@ def _(mo):
 
 
 # ─────────────────────────────────────────────────────────────────────────
-# BOSS EXERCISE: the projection memo
+# PUTTING IT TOGETHER: the projection memo
 # ─────────────────────────────────────────────────────────────────────────
 @app.cell(hide_code=True)
 def _(mo):
     mo.md(
         r"""
-    ## Boss exercise (core): the projection memo
+    ## Putting it together (core): the projection memo
 
     Time to write the line the investor actually asked for: *"On an average day
     next week, how many orders should we expect?"* You'll answer it by combining
@@ -920,20 +920,20 @@ def _():
 def _(boss_ex40, mo, show_result):
     if boss_ex40 is None:
         ex40_ok = False
-        _msg = "Not attempted (Boss exercise). Assign it to `boss_ex40` (a `print` alone doesn't count) and run the cell."
+        _msg = "Not attempted (Putting it together). Assign it to `boss_ex40` (a `print` alone doesn't count) and run the cell."
     elif not isinstance(boss_ex40, (int, float)):
         ex40_ok = False
-        _msg = "Wrong (Boss exercise): the projection should be a single **number**, the average of the five simulated days."
+        _msg = "Wrong (Putting it together): the projection should be a single **number**, the average of the five simulated days."
     elif round(boss_ex40, 2) == 14.2:
         ex40_ok = True
         _msg = (
-            "Correct (Boss exercise): **14.2** orders a day on average. The seed makes it "
+            "Correct (Putting it together): **14.2** orders a day on average. The seed makes it "
             "reproducible, so the investor can rerun the memo and get the same number."
         )
     else:
         ex40_ok = False
         _msg = (
-            "Wrong (Boss exercise): not the expected projection. Seed with 2 **once**, "
+            "Wrong (Putting it together): not the expected projection. Seed with 2 **once**, "
             "draw five `random.randint(10, 26)` values, then take `statistics.mean` "
             "of that list."
         )

@@ -61,7 +61,7 @@ def _():
 
 @app.cell
 def _(menu):
-    # YOUR CODE BELOW: replace None
+    # YOUR CODE BELOW: a copy of menu with the winter prices and Miso Ramen at 11.50 (copy first, then edit)
     menu_exc = None
     return (menu_exc,)
 
@@ -120,7 +120,7 @@ def _():
 
 @app.cell
 def _(orders):
-    # YOUR CODE BELOW: replace None
+    # YOUR CODE BELOW: how many DIFFERENT dishes are in orders, as a whole number
     distinct_exc = None
     return (distinct_exc,)
 

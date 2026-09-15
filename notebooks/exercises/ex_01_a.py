@@ -71,7 +71,7 @@ def _(mo):
 
 @app.cell
 def _():
-    # YOUR CODE BELOW: replace None
+    # YOUR CODE BELOW: the registrar's second name, taken from the right variable (not retyped)
     company_exa = None
     return (company_exa,)
 
@@ -111,7 +111,7 @@ def _(mo):
 
 @app.cell
 def _():
-    # YOUR CODE BELOW: replace None
+    # YOUR CODE BELOW: 300 on one line, then a second line that takes the 50 EUR off it
     budget_exa = None
     return (budget_exa,)
 

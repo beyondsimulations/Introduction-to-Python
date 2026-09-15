@@ -124,7 +124,8 @@ def _(mo):
 
 @app.cell
 def _():
-    # YOUR CODE BELOW: replace None
+    # YOUR CODE BELOW: TODO name the TARGET here (what the value must be, plus
+    # any constraint), never the method: that belongs in the prompt and hints
     revenue_ex1 = None
     return (revenue_ex1,)
 

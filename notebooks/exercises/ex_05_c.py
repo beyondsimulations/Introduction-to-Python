@@ -71,7 +71,7 @@ def _():
 
 @app.cell
 def _():
-    # YOUR CODE BELOW: replace None
+    # YOUR CODE BELOW: a price from order_text that survives non-numeric text, falling back to 0.0 (no hardcoding)
     price_exc = None
     return (price_exc,)
 
@@ -122,7 +122,7 @@ def _():
 
 @app.cell
 def _():
-    # YOUR CODE BELOW: replace None
+    # YOUR CODE BELOW: the name of the exception the bare except: is swallowing, as text
     hidden_exc = None
     return (hidden_exc,)
 

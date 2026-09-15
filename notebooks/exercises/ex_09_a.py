@@ -99,7 +99,7 @@ def _():
 
 @app.cell
 def _(orders_exa):
-    # YOUR CODE BELOW: replace None
+    # YOUR CODE BELOW: the average of orders_exa, the number your title has to carry
     avg_exa = None
     return (avg_exa,)
 
@@ -193,7 +193,7 @@ def _(last_week_exa, orders_exa, plt):
 
 @app.cell
 def _(last_week_exa, orders_exa):
-    # YOUR CODE BELOW: replace None
+    # YOUR CODE BELOW: how many days this week beat last_week_exa, as a count
     days_ahead_exa = None
     return (days_ahead_exa,)
 

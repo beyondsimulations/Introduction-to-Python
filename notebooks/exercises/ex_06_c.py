@@ -89,7 +89,7 @@ def _(mo):
 
 @app.cell
 def _(random):
-    # YOUR CODE BELOW: replace None
+    # YOUR CODE BELOW: 7 daily order counts from 5 to 25, seeded with 21 so the list is reproducible
     demand_exc = None
     return (demand_exc,)
 
@@ -140,7 +140,7 @@ def _(mo):
 
 @app.cell
 def _(random):
-    # YOUR CODE BELOW: replace None
+    # YOUR CODE BELOW: one of the three zones, seeded with 21 again so the pick is reproducible
     zone_exc = None
     return (zone_exc,)
 

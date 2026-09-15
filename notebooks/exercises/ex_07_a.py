@@ -89,7 +89,7 @@ def _(np):
 
 @app.cell
 def _(prices_exa):
-    # YOUR CODE BELOW: replace None
+    # YOUR CODE BELOW: prices_exa minus the 3.50 courier cost, in ONE expression, no loop
     margin_exa = None
     return (margin_exa,)
 
@@ -151,7 +151,7 @@ def _(np):
 
 @app.cell
 def _(counts_exa, prices_exa):
-    # YOUR CODE BELOW: replace None
+    # YOUR CODE BELOW: revenue per dish: prices_exa paired with counts_exa
     revenue_exa = None
     return (revenue_exa,)
 

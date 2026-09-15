@@ -97,14 +97,14 @@ def _(pd):
 
 @app.cell
 def _(orders_exc):
-    # YOUR CODE BELOW: replace None
+    # YOUR CODE BELOW: how many orders have 2 items or more, as an int
     bulk_count_exc = None
     return (bulk_count_exc,)
 
 
 @app.cell
 def _(orders_exc):
-    # YOUR CODE BELOW: replace None
+    # YOUR CODE BELOW: the total total_eur of just those bulk orders
     bulk_revenue_exc = None
     return (bulk_revenue_exc,)
 
@@ -180,7 +180,7 @@ def _(mo):
 
 @app.cell
 def _(orders_exc):
-    best_per_item_exc = None  # YOUR CODE BELOW
+    best_per_item_exc = None  # YOUR CODE BELOW: the highest per_item among the bulk orders, as one number
     return (best_per_item_exc,)
 
 

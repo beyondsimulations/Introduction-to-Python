@@ -103,7 +103,7 @@ def _(mo):
 
 @app.cell
 def _():
-    # YOUR CODE BELOW: replace None
+    # YOUR CODE BELOW: the last two orders of queue
     last_two_exb = None
     return (last_two_exb,)
 
@@ -139,7 +139,7 @@ def _(mo):
 
 @app.cell
 def _(queue):
-    # YOUR CODE BELOW: replace None
+    # YOUR CODE BELOW: queue minus its first order plus Green Curry, as a NEW list (leave queue untouched)
     queue_exb = None
     return (queue_exb,)
 

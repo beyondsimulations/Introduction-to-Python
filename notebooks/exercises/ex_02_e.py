@@ -61,7 +61,7 @@ def _():
 
 @app.cell
 def _():
-    # YOUR CODE BELOW: replace None
+    # YOUR CODE BELOW: raw_item cleaned up to exactly Falafel Wrap
     item_exe = None
     return (item_exe,)
 
@@ -108,7 +108,7 @@ def _():
 
 @app.cell
 def _():
-    # YOUR CODE BELOW: replace None
+    # YOUR CODE BELOW: raw_special cleaned to exactly Miso Ramen: fix the order of Tobi's methods
     special_exe = None
     return (special_exe,)
 

@@ -889,13 +889,13 @@ def _(mo):
 
 
 # ─────────────────────────────────────────────────────────────────────────
-# BOSS EXERCISE
+# PUTTING IT TOGETHER
 # ─────────────────────────────────────────────────────────────────────────
 @app.cell(hide_code=True)
 def _(mo):
     mo.md(
         r"""
-    ## Boss exercise (core): the investor's real question
+    ## Putting it together (core): the investor's real question
 
     The totals in 3.2 crown one winner. But the investor asks a trickier
     question: **which zone has the highest AVERAGE order value?** A total
@@ -933,28 +933,28 @@ def _():
 def _(best_avg_zone_ex40, mo, pd, show_result):
     if best_avg_zone_ex40 is None:
         ex40_ok = False
-        _msg = "Not attempted (Boss exercise). Assign it to `best_avg_zone_ex40` (a `print` alone doesn't count) and run the cell."
+        _msg = "Not attempted (Putting it together). Assign it to `best_avg_zone_ex40` (a `print` alone doesn't count) and run the cell."
         _preview = ""
     elif isinstance(best_avg_zone_ex40, str):
         _preview = show_result(best_avg_zone_ex40)
         _v = best_avg_zone_ex40.strip()
         if _v == "Sued":
             ex40_ok = True
-            _msg = "Correct (Boss exercise): **Sued**, with the highest average order value (about 20.84 €), *and* it happened to top total revenue too. `.mean()` then `.idxmax()` named the winner for you."
+            _msg = "Correct (Putting it together): **Sued**, with the highest average order value (about 20.84 €), *and* it happened to top total revenue too. `.mean()` then `.idxmax()` named the winner for you."
         elif _v in {"Nord", "Hafen", "Altstadt"}:
             ex40_ok = False
-            _msg = "Wrong (Boss exercise): that zone doesn't have the highest *average*. Group by zone, take `.mean()` of `total_eur`, then `.idxmax()` for the label."
+            _msg = "Wrong (Putting it together): that zone doesn't have the highest *average*. Group by zone, take `.mean()` of `total_eur`, then `.idxmax()` for the label."
         else:
             ex40_ok = False
-            _msg = "Wrong (Boss exercise): that isn't one of the four zone names. `.idxmax()` should return 'Nord', 'Sued', 'Hafen' or 'Altstadt'."
+            _msg = "Wrong (Putting it together): that isn't one of the four zone names. `.idxmax()` should return 'Nord', 'Sued', 'Hafen' or 'Altstadt'."
     elif isinstance(best_avg_zone_ex40, (pd.Series, pd.DataFrame)):
         ex40_ok = False
         _preview = show_result(str(best_avg_zone_ex40))
-        _msg = "Wrong (Boss exercise): that's the whole per-zone table. `.idxmax()` turns it into the single winning *label*, the zone name."
+        _msg = "Wrong (Putting it together): that's the whole per-zone table. `.idxmax()` turns it into the single winning *label*, the zone name."
     else:
         ex40_ok = False
         _preview = show_result(best_avg_zone_ex40)
-        _msg = "Wrong (Boss exercise): expected a zone **name** (a string). `.idxmax()` on the mean-per-zone Series returns that name."
+        _msg = "Wrong (Putting it together): expected a zone **name** (a string). `.idxmax()` on the mean-per-zone Series returns that name."
     mo.callout(mo.md(_msg + _preview), kind="success" if ex40_ok else "warn")
     return (ex40_ok,)
 

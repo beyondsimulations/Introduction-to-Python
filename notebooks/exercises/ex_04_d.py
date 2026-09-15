@@ -74,7 +74,7 @@ def _():
 
 @app.cell
 def _(zones):
-    # YOUR CODE BELOW: replace None
+    # YOUR CODE BELOW: the South zone's fee, via two keys into zones
     south_fee_exd = None
     return (south_fee_exd,)
 
@@ -118,7 +118,7 @@ def _(mo):
 
 @app.cell
 def _(zones):
-    # YOUR CODE BELOW: replace None
+    # YOUR CODE BELOW: the name of the last dorm in the North zone
     last_north_exd = None
     return (last_north_exd,)
 

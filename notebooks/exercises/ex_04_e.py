@@ -59,7 +59,7 @@ def _():
 
 @app.cell
 def _(menu):
-    # YOUR CODE BELOW: replace None
+    # YOUR CODE BELOW: menu with every price 20 % off, rounded to 2 decimals
     happy_exe = None
     return (happy_exe,)
 
@@ -111,7 +111,7 @@ def _(mo):
 
 @app.cell
 def _(menu):
-    # YOUR CODE BELOW: replace None
+    # YOUR CODE BELOW: the same again, but only dishes under 10 EUR on the regular menu
     cheap_exe = None
     return (cheap_exe,)
 

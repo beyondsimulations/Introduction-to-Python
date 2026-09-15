@@ -104,7 +104,7 @@ def _(tobi_df):
     # Tobi's AI draft (broken). Fix it in your own code below:
     #   nord = tobi_df[tobi_df["zone"] == "nord"]        # quietly empty… why?
     #   mean_exa = nord["total_eur"].summarize()           # AttributeError… why?
-    mean_exa = None  # YOUR CODE BELOW
+    mean_exa = None  # YOUR CODE BELOW: the mean total_eur of the Nord rows, as a float
     return (mean_exa,)
 
 
@@ -173,7 +173,7 @@ def _(mo):
 
 @app.cell
 def _(mean_exa, tobi_df):
-    big_nord_exa = None  # YOUR CODE BELOW
+    big_nord_exa = None  # YOUR CODE BELOW: how many Nord orders are above mean_exa, as a whole number
     return (big_nord_exa,)
 
 

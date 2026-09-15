@@ -1006,13 +1006,13 @@ def _(mo):
 
 
 # ─────────────────────────────────────────────────────────────────────────
-# BOSS EXERCISE
+# PUTTING IT TOGETHER
 # ─────────────────────────────────────────────────────────────────────────
 @app.cell(hide_code=True)
 def _(mo):
     mo.md(
         r"""
-    ## Boss exercise (core): assemble the pitch
+    ## Putting it together (core): assemble the pitch
 
     One slide, three numbers, no typos. The investor wants a single **summary
     dict** she can read in five seconds (`pitch_ex40`) with exactly these three
@@ -1053,23 +1053,23 @@ def _():
 def _(mo, pd, pitch_ex40, show_result):
     if pitch_ex40 is None:
         ex40_ok = False
-        _msg = "Not attempted (Boss exercise). Assign it to `pitch_ex40` (a `print` alone doesn't count) and run the cell."
+        _msg = "Not attempted (Putting it together). Assign it to `pitch_ex40` (a `print` alone doesn't count) and run the cell."
         _preview = ""
     elif isinstance(pitch_ex40, (pd.Series, pd.DataFrame)):
         ex40_ok = False
         _preview = show_result(str(pitch_ex40))
-        _msg = "Wrong (Boss exercise): that's a pandas object, not a plain dict. Build `{\"revenue\": ..., \"best_zone\": ..., \"orders\": ...}` yourself from the three results."
+        _msg = "Wrong (Putting it together): that's a pandas object, not a plain dict. Build `{\"revenue\": ..., \"best_zone\": ..., \"orders\": ...}` yourself from the three results."
     elif not isinstance(pitch_ex40, dict):
         ex40_ok = False
         _preview = show_result(pitch_ex40)
-        _msg = "Wrong (Boss exercise): this should be a **dict** with keys `\"revenue\"`, `\"best_zone\"`, `\"orders\"`."
+        _msg = "Wrong (Putting it together): this should be a **dict** with keys `\"revenue\"`, `\"best_zone\"`, `\"orders\"`."
     else:
         _preview = show_result(pitch_ex40)
         _needed = {"revenue", "best_zone", "orders"}
         _missing = _needed - set(pitch_ex40)
         if _missing:
             ex40_ok = False
-            _msg = f"Wrong (Boss exercise): missing key(s): {', '.join(sorted(_missing))}. The dict needs exactly `revenue`, `best_zone`, `orders`."
+            _msg = f"Wrong (Putting it together): missing key(s): {', '.join(sorted(_missing))}. The dict needs exactly `revenue`, `best_zone`, `orders`."
         else:
             try:
                 _rev = round(float(pitch_ex40["revenue"]), 2)
@@ -1082,22 +1082,22 @@ def _(mo, pd, pitch_ex40, show_result):
                 _cnt = None
             if _rev is None or _cnt is None:
                 ex40_ok = False
-                _msg = "Wrong (Boss exercise): `revenue` should be a euro number and `orders` a whole count. Check what those two entries hold."
+                _msg = "Wrong (Putting it together): `revenue` should be a euro number and `orders` a whole count. Check what those two entries hold."
             elif not isinstance(_zone, str):
                 ex40_ok = False
-                _msg = "Wrong (Boss exercise): `best_zone` should be the zone's **name** (a string). Use `.idxmax()` on the per-zone totals, not `.max()`."
+                _msg = "Wrong (Putting it together): `best_zone` should be the zone's **name** (a string). Use `.idxmax()` on the per-zone totals, not `.max()`."
             elif _rev != 1443.3:
                 ex40_ok = False
-                _msg = f"Wrong (Boss exercise): `revenue` should be 1443.3 (got {_rev}). Sum `total_eur` across every order and round to 2."
+                _msg = f"Wrong (Putting it together): `revenue` should be 1443.3 (got {_rev}). Sum `total_eur` across every order and round to 2."
             elif _zone.strip() != "Sued":
                 ex40_ok = False
-                _msg = "Wrong (Boss exercise): `best_zone` isn't the top earner. The highest *total* revenue belongs to one zone, and `.idxmax()` on your 2.1 breakdown names it."
+                _msg = "Wrong (Putting it together): `best_zone` isn't the top earner. The highest *total* revenue belongs to one zone, and `.idxmax()` on your 2.1 breakdown names it."
             elif _cnt != 80:
                 ex40_ok = False
-                _msg = f"Wrong (Boss exercise): `orders` should be 80 (got {_cnt}). That's `len(orders)`."
+                _msg = f"Wrong (Putting it together): `orders` should be 80 (got {_cnt}). That's `len(orders)`."
             else:
                 ex40_ok = True
-                _msg = "Correct (Boss exercise): **{'revenue': 1443.3, 'best_zone': 'Sued', 'orders': 80}**: three computed numbers, none typed in by hand. That's a slide Tobi can defend."
+                _msg = "Correct (Putting it together): **{'revenue': 1443.3, 'best_zone': 'Sued', 'orders': 80}**: three computed numbers, none typed in by hand. That's a slide Tobi can defend."
     mo.callout(mo.md(_msg + _preview), kind="success" if ex40_ok else "warn")
     return (ex40_ok,)
 

@@ -93,14 +93,14 @@ def _(np):
 
 @app.cell
 def _(times_exc):
-    # YOUR CODE BELOW: replace None
+    # YOUR CODE BELOW: how many of times_exc are over 38, as an int
     late_count_exc = None
     return (late_count_exc,)
 
 
 @app.cell
 def _(times_exc):
-    # YOUR CODE BELOW: replace None
+    # YOUR CODE BELOW: the mean of just the late times, as a float
     late_mean_exc = None
     return (late_mean_exc,)
 
@@ -164,7 +164,7 @@ def _(mo):
 
 @app.cell
 def _(times_exc):
-    # YOUR CODE BELOW: replace None
+    # YOUR CODE BELOW: the share of the run that was late, as one number between 0 and 1
     late_share_exc = None
     return (late_share_exc,)
 

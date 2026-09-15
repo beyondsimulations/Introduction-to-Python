@@ -902,13 +902,13 @@ def _(mo):
 
 
 # ─────────────────────────────────────────────────────────────────────────
-# BOSS EXERCISE: a day as a courier
+# PUTTING IT TOGETHER: a day as a courier
 # ─────────────────────────────────────────────────────────────────────────
 @app.cell(hide_code=True)
 def _(mo):
     mo.md(
         r"""
-    ## Boss exercise (core): a day as a courier
+    ## Putting it together (core): a day as a courier
 
     Tobi left a Falafel Wrap sitting out, and it must reach the **dorms** before
     it achieves sentience. The campus is a **nested dictionary**: each place maps
@@ -985,23 +985,23 @@ def _(campus_map, route):
 def _(destination_ex40, mo, show_result):
     if destination_ex40 is None:
         ex40_ok = False
-        _msg = "Not attempted (Boss exercise). Assign it to `destination_ex40` (a `print` alone doesn't count) and run the cell."
+        _msg = "Not attempted (Putting it together). Assign it to `destination_ex40` (a `print` alone doesn't count) and run the cell."
     elif destination_ex40 == "dorms":
         ex40_ok = True
         _msg = (
-            "Correct (Boss exercise): **the dorms!** gate → library → mensa → dorms, one "
+            "Correct (Putting it together): **the dorms!** gate → library → mensa → dorms, one "
             "direction at a time. The wrap is delivered and sentience is averted."
         )
     elif destination_ex40 == "mensa":
         ex40_ok = False
         _msg = (
-            "Wrong (Boss exercise): the mensa is only the *third* stop. You stopped one "
+            "Wrong (Putting it together): the mensa is only the *third* stop. You stopped one "
             "step early. All three directions in `route` need to be followed."
         )
     else:
         ex40_ok = False
         _msg = (
-            "Wrong (Boss exercise): not the dorms. Start at `\"gate\"`, and for each "
+            "Wrong (Putting it together): not the dorms. Start at `\"gate\"`, and for each "
             "direction in `route` update your position to `campus_map[position][direction]`."
         )
     mo.callout(mo.md(_msg + show_result(destination_ex40)), kind="success" if ex40_ok else "warn")

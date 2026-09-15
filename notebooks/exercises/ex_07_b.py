@@ -88,7 +88,7 @@ def _(np):
 
 @app.cell
 def _(net_prices_exb):
-    # YOUR CODE BELOW: replace None
+    # YOUR CODE BELOW: net_prices_exb with 19% VAT added, in ONE expression
     gross_exb = None
     return (gross_exb,)
 
@@ -140,7 +140,7 @@ def _(mo):
 
 @app.cell
 def _(np):
-    # YOUR CODE BELOW: replace None
+    # YOUR CODE BELOW: five evenly spaced prices from 5.0 to 15.0, both ends included
     ladder_exb = None
     return (ladder_exb,)
 

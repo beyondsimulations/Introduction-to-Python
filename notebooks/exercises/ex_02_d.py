@@ -64,7 +64,7 @@ def _():
 
 @app.cell
 def _():
-    # YOUR CODE BELOW: replace None
+    # YOUR CODE BELOW: runs the courier gets: 20 % battery needed to go out, 18 % gone per run (shrink a _battery copy, leave battery alone)
     runs_exd = None
     return (runs_exd,)
 
@@ -116,7 +116,7 @@ def _(mo):
 
 @app.cell
 def _():
-    # YOUR CODE BELOW: replace None
+    # YOUR CODE BELOW: minutes to charge 10 up to 50 at 7 per minute, keeping the while True plus break shape
     charge_exd = None
     return (charge_exd,)
 

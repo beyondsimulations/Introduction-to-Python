@@ -109,7 +109,7 @@ def _(mo):
 
 @app.cell
 def _():
-    # YOUR CODE BELOW
+    # YOUR CODE BELOW: make line_label_exa hand the text back to the caller, not just print it
     def line_label_exa(qty, item, price):
         # TOBI'S BUG: the caller gets nothing back
         print(f"{qty} x {item}: {qty * price:.2f} EUR")

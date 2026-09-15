@@ -83,7 +83,7 @@ def _(mo):
 
 @app.cell
 def _(math):
-    # YOUR CODE BELOW: replace None
+    # YOUR CODE BELOW: boxes of 24 that 200 quiches need
     boxes_exb = None
     return (boxes_exb,)
 
@@ -131,7 +131,7 @@ def _(mo):
 
 @app.cell
 def _(math):
-    # YOUR CODE BELOW: replace None
+    # YOUR CODE BELOW: boxes at 1.35 EUR that fit inside the 10.00 EUR cap
     affordable_exb = None
     return (affordable_exb,)
 

@@ -837,7 +837,7 @@ def _(mo):
         r"""
     ### Exercise 3.2 (core, fix the bug): the end-of-day takings
 
-    Last one before the boss. Tobi's 3-AM version of the end-of-day count reads
+    Last one before the final exercise. Tobi's 3-AM version of the end-of-day count reads
     the receipt slips (`"12.50"`, `"8.90"`, ...) and adds them up. One slip is
     smudged and reads `"kaputt"`. The rule: **every readable slip counts, an
     unreadable slip is skipped.** The cell below *runs* (no red error, the
@@ -909,13 +909,13 @@ def _(mo):
 
 
 # ─────────────────────────────────────────────────────────────────────────
-# BOSS EXERCISE: harden the whole checkout
+# PUTTING IT TOGETHER: harden the whole checkout
 # ─────────────────────────────────────────────────────────────────────────
 @app.cell(hide_code=True)
 def _(mo):
     mo.md(
         r"""
-    ## Boss exercise (core): harden the checkout
+    ## Putting it together (core): harden the checkout
 
     The inspector wants the total to survive **anything** the day throws at it.
     Here is a batch of orders, and it's a mess:
@@ -965,35 +965,35 @@ def _(mo, orders_ex40, robust_total_ex40, show_result):
         _clean = robust_total_ex40([("A", 1.0), ("B", 2.0)])
     except Exception:
         ex40_ok = False
-        _msg = "Wrong (Boss exercise): it's crashing on the messy batch: the `\"kaputt\"` string is getting used as a number. Skip non-numbers *before* you add them (an `isinstance` check, or a `try` / `except`)."
+        _msg = "Wrong (Putting it together): it's crashing on the messy batch: the `\"kaputt\"` string is getting used as a number. Skip non-numbers *before* you add them (an `isinstance` check, or a `try` / `except`)."
         _preview = ""
     else:
         if _messy is None:
             ex40_ok = False
-            _msg = "Not attempted (Boss exercise): (the function still returns None). Use `return`, not `print`, then run the cell."
+            _msg = "Not attempted (Putting it together): (the function still returns None). Use `return`, not `print`, then run the cell."
             _preview = ""
         elif (
             isinstance(_messy, (int, float)) and round(_messy, 2) == 22.70
             and isinstance(_clean, (int, float)) and round(_clean, 2) == 3.0
         ):
             ex40_ok = True
-            _msg = "Correct (Boss exercise): **22.70**. Only the Wrap (13.80) and the Thai (8.90) counted; the negative and the `\"kaputt\"` were skipped. And a clean list still totals correctly, so you didn't hardcode the answer. The checkout is inspector-proof."
+            _msg = "Correct (Putting it together): **22.70**. Only the Wrap (13.80) and the Thai (8.90) counted; the negative and the `\"kaputt\"` were skipped. And a clean list still totals correctly, so you didn't hardcode the answer. The checkout is inspector-proof."
             _preview = show_result(_messy)
         elif isinstance(_messy, (int, float)) and round(_messy, 2) == 20.70:
             ex40_ok = False
-            _msg = "Wrong (Boss exercise): 20.70 means the `-2.0` slipped through: you skipped the `\"kaputt\"` string but still added the negative. Skip a price when it's **negative** *or* not a number."
+            _msg = "Wrong (Putting it together): 20.70 means the `-2.0` slipped through: you skipped the `\"kaputt\"` string but still added the negative. Skip a price when it's **negative** *or* not a number."
             _preview = show_result(_messy)
         elif isinstance(_messy, (int, float)) and round(_messy, 2) == 13.80:
             ex40_ok = False
-            _msg = "Wrong (Boss exercise): 13.80 is only the Wrap. The Thai (8.90) is a perfectly good order and should be counted too. Skip *only* the negative and the non-number."
+            _msg = "Wrong (Putting it together): 13.80 is only the Wrap. The Thai (8.90) is a perfectly good order and should be counted too. Skip *only* the negative and the non-number."
             _preview = show_result(_messy)
         elif isinstance(_messy, (int, float)) and round(_messy, 2) == 22.70:
             ex40_ok = False
-            _msg = "Wrong (Boss exercise): 22.70 for the messy list, but a clean list of `1.0` and `2.0` doesn't come out as 3.0. Either the number is hardcoded, or the function ignores its argument. Compute the total from the list it is given."
+            _msg = "Wrong (Putting it together): 22.70 for the messy list, but a clean list of `1.0` and `2.0` doesn't come out as 3.0. Either the number is hardcoded, or the function ignores its argument. Compute the total from the list it is given."
             _preview = show_result(_clean)
         else:
             ex40_ok = False
-            _msg = "Wrong (Boss exercise): not 22.70. Add up only the prices that are numbers *and* ≥ 0, so the Wrap (13.80) and the Thai (8.90), then `round(..., 2)`."
+            _msg = "Wrong (Putting it together): not 22.70. Add up only the prices that are numbers *and* ≥ 0, so the Wrap (13.80) and the Thai (8.90), then `round(..., 2)`."
             _preview = show_result(_messy)
     mo.callout(mo.md(_msg + _preview), kind="success" if ex40_ok else "warn")
     return (ex40_ok,)

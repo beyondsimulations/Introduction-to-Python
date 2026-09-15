@@ -61,7 +61,7 @@ def _():
 
 @app.cell
 def _():
-    # YOUR CODE BELOW: replace None
+    # YOUR CODE BELOW: the receipt line reading exactly 2x Falafel Wrap: 13.80 EUR, two decimals
     line_exe = None
     return (line_exe,)
 
@@ -96,7 +96,7 @@ def _(mo):
 
 @app.cell
 def _():
-    # YOUR CODE BELOW: replace None
+    # YOUR CODE BELOW: one string: line_exe, then 1x Miso Ramen: 11.50 EUR, joined by a newline
     receipt_exe = None
     return (receipt_exe,)
 

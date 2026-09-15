@@ -679,13 +679,13 @@ def _(mo):
 
 
 # ─────────────────────────────────────────────────────────────────────────
-# BOSS EXERCISE: resolve the episode
+# PUTTING IT TOGETHER: resolve the episode
 # ─────────────────────────────────────────────────────────────────────────
 @app.cell(hide_code=True)
 def _(mo):
     mo.md(
         r"""
-    ## Boss exercise (core): the day-one summary
+    ## Putting it together (core): the day-one summary
 
     Word arrives that **MunchCorp**, the soulless mega-competitor, just
     launched "the same app but worse". Time to put your day-one numbers on
@@ -725,16 +725,16 @@ def _():
 def _(day_one_summary_ex40, mo, show_result):
     if day_one_summary_ex40 is None:
         ex40_ok = False
-        _msg = "Not attempted (Boss exercise). Assign it to `day_one_summary_ex40` (a `print` alone doesn't count) and run the cell."
+        _msg = "Not attempted (Putting it together). Assign it to `day_one_summary_ex40` (a `print` alone doesn't count) and run the cell."
     elif not isinstance(day_one_summary_ex40, str):
         ex40_ok = False
-        _msg = "Wrong (Boss exercise): `day_one_summary_ex40` should be a string (an f-string)."
+        _msg = "Wrong (Putting it together): `day_one_summary_ex40` should be a string (an f-string)."
     elif "26.70" in day_one_summary_ex40 and "2.59" in day_one_summary_ex40:
         ex40_ok = True
-        _msg = "Correct (Boss exercise): numbers on the table. MunchCorp's growth team goes very quiet."
+        _msg = "Correct (Putting it together): numbers on the table. MunchCorp's growth team goes very quiet."
     else:
         ex40_ok = False
-        _msg = "Wrong (Boss exercise): the text must contain both `26.70` and `2.59` (use `:.2f`)."
+        _msg = "Wrong (Putting it together): the text must contain both `26.70` and `2.59` (use `:.2f`)."
     mo.callout(mo.md(_msg + show_result(day_one_summary_ex40)), kind="success" if ex40_ok else "warn")
     return (ex40_ok,)
 

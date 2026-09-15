@@ -91,7 +91,7 @@ def _(mo):
 
 @app.cell
 def _(median, times_exa):
-    # YOUR CODE BELOW: replace None
+    # YOUR CODE BELOW: the middle delivery time in times_exa, with no statistics. prefix
     typical_exa = None
     return (typical_exa,)
 
@@ -141,7 +141,7 @@ def _(mo):
 
 @app.cell
 def _(mean, median, times_exa):
-    # YOUR CODE BELOW: replace None
+    # YOUR CODE BELOW: the mean of times_exa minus its median
     drag_exa = None
     return (drag_exa,)
 

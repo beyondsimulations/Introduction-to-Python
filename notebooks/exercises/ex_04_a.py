@@ -64,7 +64,7 @@ def _():
 
 @app.cell
 def _(route):
-    # YOUR CODE BELOW: replace None
+    # YOUR CODE BELOW: the stops still to come, the first two already delivered
     remaining_exa = None
     return (remaining_exa,)
 
@@ -109,7 +109,7 @@ def _(mo):
 
 @app.cell
 def _(route):
-    # YOUR CODE BELOW: replace None
+    # YOUR CODE BELOW: route without its first and last stop, and without len()
     middle_exa = None
     return (middle_exa,)
 

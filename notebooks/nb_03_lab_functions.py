@@ -902,13 +902,13 @@ def _(mo):
 
 
 # ─────────────────────────────────────────────────────────────────────────
-# BOSS EXERCISE: the first Friday report
+# PUTTING IT TOGETHER: the first Friday report
 # ─────────────────────────────────────────────────────────────────────────
 @app.cell(hide_code=True)
 def _(mo):
     mo.md(
         r"""
-    ## Boss exercise (core): the first Friday report
+    ## Putting it together (core): the first Friday report
 
     It's the first Friday, and the report has to go out. Three orders came in:
 
@@ -947,20 +947,20 @@ def _(Order, fee_ex11):
 def _(day_total_ex40, mo, show_result):
     if day_total_ex40 is None:
         ex40_ok = False
-        _msg = "Not attempted (Boss exercise). Assign it to `day_total_ex40` (a `print` alone doesn't count) and run the cell."
+        _msg = "Not attempted (Putting it together). Assign it to `day_total_ex40` (a `print` alone doesn't count) and run the cell."
     elif isinstance(day_total_ex40, (int, float)) and round(day_total_ex40, 2) == 58.50:
         ex40_ok = True
-        _msg = "Correct (Boss exercise): **58.50 EUR** billed on the first Friday: item totals plus every delivery fee. The report ships."
+        _msg = "Correct (Putting it together): **58.50 EUR** billed on the first Friday: item totals plus every delivery fee. The report ships."
     elif isinstance(day_total_ex40, (int, float)) and round(day_total_ex40, 2) == 51.20:
         ex40_ok = False
         _msg = (
-            "Wrong (Boss exercise): 51.20 is the sum of the item totals. You forgot "
+            "Wrong (Putting it together): 51.20 is the sum of the item totals. You forgot "
             "the **delivery fees**. Add each order's `fee_ex11(total())` too."
         )
     else:
         ex40_ok = False
         _msg = (
-            "Wrong (Boss exercise): not 58.50. Build each order, and for every one add "
+            "Wrong (Putting it together): not 58.50. Build each order, and for every one add "
             "its `total()` and its `fee_ex11(total())`."
         )
     mo.callout(mo.md(_msg + show_result(day_total_ex40)), kind="success" if ex40_ok else "warn")

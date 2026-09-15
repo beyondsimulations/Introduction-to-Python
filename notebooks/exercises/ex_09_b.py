@@ -107,14 +107,14 @@ def _(plt, revenues_exb):
 
 @app.cell
 def _(revenues_exb):
-    # YOUR CODE BELOW: replace None
+    # YOUR CODE BELOW: the week's total revenue from revenues_exb, as a plain number
     total_exb = None
     return (total_exb,)
 
 
 @app.cell
 def _(revenues_exb):
-    # YOUR CODE BELOW: replace None
+    # YOUR CODE BELOW: which day brought in the most, 1 = Monday through 7 = Sunday
     best_day_exb = None
     return (best_day_exb,)
 
@@ -191,7 +191,7 @@ def _(mo):
 
 @app.cell
 def _(revenues_exb):
-    # YOUR CODE BELOW: replace None
+    # YOUR CODE BELOW: Saturday plus Sunday as a PERCENT of the week's revenue
     weekend_share_exb = None
     return (weekend_share_exb,)
 

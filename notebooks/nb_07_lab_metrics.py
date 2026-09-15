@@ -944,7 +944,7 @@ def _(mo):
 def _(mo):
     mo.md(
         r"""
-    ## Boss exercise (core): which zone wins the week?
+    ## Putting it together (core): which zone wins the week?
 
     The headline metric: **which zone sold the most all week?** You already fixed
     this computation in Exercise 2.3: total down the days (`axis=0`) to get the
@@ -969,28 +969,28 @@ def _():
 def _(best_zone_ex40, mo, np, show_result):
     if best_zone_ex40 is None:
         ex40_ok = False
-        _msg = "Not attempted (Boss exercise). Assign it to `best_zone_ex40` (a `print` alone doesn't count) and run the cell."
+        _msg = "Not attempted (Putting it together). Assign it to `best_zone_ex40` (a `print` alone doesn't count) and run the cell."
         _preview = ""
     elif isinstance(best_zone_ex40, str):
         _preview = show_result(best_zone_ex40)
         _v = best_zone_ex40.strip()
         if _v == "Nord":
             ex40_ok = True
-            _msg = "Correct (Boss exercise): **Nord** wins the week with 141. `argmax` turned the four zone totals into a position, and indexing `zones` turned that position into the name."
+            _msg = "Correct (Putting it together): **Nord** wins the week with 141. `argmax` turned the four zone totals into a position, and indexing `zones` turned that position into the name."
         elif _v in {"Sued", "Hafen", "Altstadt"}:
             ex40_ok = False
-            _msg = "Wrong (Boss exercise): that zone isn't the weekly winner. Total down the days (`axis=0`) for the four zone totals, then `argmax` to find the biggest, and index `zones` with it."
+            _msg = "Wrong (Putting it together): that zone isn't the weekly winner. Total down the days (`axis=0`) for the four zone totals, then `argmax` to find the biggest, and index `zones` with it."
         else:
             ex40_ok = False
-            _msg = "Wrong (Boss exercise): that isn't one of the four zone names. `zones[...]` should give 'Nord', 'Sued', 'Hafen' or 'Altstadt'."
+            _msg = "Wrong (Putting it together): that isn't one of the four zone names. `zones[...]` should give 'Nord', 'Sued', 'Hafen' or 'Altstadt'."
     elif np.ndim(best_zone_ex40) > 0:
         ex40_ok = False
         _preview = show_result(best_zone_ex40)
-        _msg = "Wrong (Boss exercise): that's still an array. You want a single zone **name**: index `zones` with the `argmax` position."
+        _msg = "Wrong (Putting it together): that's still an array. You want a single zone **name**: index `zones` with the `argmax` position."
     else:
         ex40_ok = False
         _preview = show_result(best_zone_ex40)
-        _msg = "Wrong (Boss exercise): that looks like a number, probably the `argmax` position. Use it to look up the name: `zones[that_position]`."
+        _msg = "Wrong (Putting it together): that looks like a number, probably the `argmax` position. Use it to look up the name: `zones[that_position]`."
     mo.callout(mo.md(_msg + _preview), kind="success" if ex40_ok else "warn")
     return (ex40_ok,)
 

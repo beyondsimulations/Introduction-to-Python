@@ -702,13 +702,13 @@ def _(mo):
 
 
 # ─────────────────────────────────────────────────────────────────────────
-# BOSS EXERCISE: the price war (a while loop)
+# PUTTING IT TOGETHER: the price war (a while loop)
 # ─────────────────────────────────────────────────────────────────────────
 @app.cell(hide_code=True)
 def _(mo):
     mo.md(
         r"""
-    ## Boss exercise (core): the price war
+    ## Putting it together (core): the price war
 
     The rumor was true. A letter arrives from **MunchCorp**: they now sell a
     copy of your signature dish at 8.50 EUR. Tobi, in a panic, had just raised
@@ -752,25 +752,25 @@ def _():
 def _(mo, rounds_ex40, show_result):
     if rounds_ex40 is None:
         ex40_ok = False
-        _msg = "Not attempted (Boss exercise). Assign it to `rounds_ex40` (a `print` alone doesn't count) and run the cell."
+        _msg = "Not attempted (Putting it together). Assign it to `rounds_ex40` (a `print` alone doesn't count) and run the cell."
     elif isinstance(rounds_ex40, int) and rounds_ex40 == 4:
         ex40_ok = True
         _price = 11.90
         for _ in range(rounds_ex40):
             _price = round(_price * 0.9, 2)
         _msg = (
-            f"Correct (Boss exercise): **4 rounds** and the price drops to {_price:.2f} EUR, "
+            f"Correct (Putting it together): **4 rounds** and the price drops to {_price:.2f} EUR, "
             "just under MunchCorp's 8.50. Tobi high-fives a lamppost."
         )
     else:
         ex40_ok = False
         if isinstance(rounds_ex40, float):
             _msg = (
-                "Wrong (Boss exercise): looks like you stored the price. The check "
+                "Wrong (Putting it together): looks like you stored the price. The check "
                 "wants the number of rounds (a whole number of cuts)."
             )
         else:
-            _msg = "Wrong (Boss exercise): not 4. Count each 10 % cut until the price first drops below 8.50."
+            _msg = "Wrong (Putting it together): not 4. Count each 10 % cut until the price first drops below 8.50."
     mo.callout(mo.md(_msg + show_result(rounds_ex40)), kind="success" if ex40_ok else "warn")
     return (ex40_ok,)
 

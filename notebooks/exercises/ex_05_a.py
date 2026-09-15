@@ -61,7 +61,7 @@ def _(mo):
 
 @app.cell
 def _():
-    # YOUR CODE BELOW: replace None
+    # YOUR CODE BELOW: the exception type's name as text, read off the last line of the traceback
     error_exa = None
     return (error_exa,)
 
@@ -110,7 +110,7 @@ def _(mo):
 
 @app.cell
 def _():
-    # YOUR CODE BELOW: replace None
+    # YOUR CODE BELOW: the line number where the division actually exploded, as a plain number
     line_exa = None
     return (line_exa,)
 

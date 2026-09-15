@@ -52,7 +52,7 @@ def _(mo):
 
 @app.cell
 def _():
-    # YOUR CODE BELOW
+    # YOUR CODE BELOW: fix total() so it charges for every portion
     class Order:
         def __init__(self, item, qty, price):
             self.item = item

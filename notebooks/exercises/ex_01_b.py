@@ -39,7 +39,7 @@ def _(mo):
 
 @app.cell
 def _():
-    # YOUR CODE BELOW
+    # YOUR CODE BELOW: fix the one wrong value and the two wrong types
     # FIX TOBI'S FORM (some values and/or types are wrong)
     company_type = "UG (haftungsbeschränkt)"
     first_employee = "tobi "
@@ -83,7 +83,7 @@ def _(mo):
 
 @app.cell
 def _():
-    # YOUR CODE BELOW: replace None
+    # YOUR CODE BELOW: the type of founded_year, worked out from the variable rather than typed as text
     year_type_exb = None
     return (year_type_exb,)
 

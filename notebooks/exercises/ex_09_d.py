@@ -96,7 +96,7 @@ def _(mo):
 
 @app.cell
 def _():
-    # YOUR CODE BELOW: replace None
+    # YOUR CODE BELOW: where a growth chart's y-axis has to start
     floor_exd = None
     return (floor_exd,)
 
@@ -171,7 +171,7 @@ def _(mo):
 
 @app.cell
 def _(signups_exd):
-    # YOUR CODE BELOW: replace None
+    # YOUR CODE BELOW: the biggest value in signups_exd, rounded UP to the next full hundred
     top_exd = None
     return (top_exd,)
 

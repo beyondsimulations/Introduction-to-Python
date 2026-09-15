@@ -80,7 +80,7 @@ def _(mo):
 
 @app.cell
 def _():
-    # YOUR CODE BELOW: replace None
+    # YOUR CODE BELOW: how many 12.25 packs fit the 300 EUR budget, and the change left over
     packs_exc = None
     change_exc = None
     return (change_exc, packs_exc)
@@ -118,7 +118,7 @@ def _(mo):
 
 @app.cell
 def _():
-    # YOUR CODE BELOW: replace None
+    # YOUR CODE BELOW: 12.25 / 40, rounded to 2 decimals
     per_sticker_exc = None
     return (per_sticker_exc,)
 

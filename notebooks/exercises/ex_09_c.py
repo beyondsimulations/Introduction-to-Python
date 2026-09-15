@@ -113,7 +113,7 @@ def _(plt, totals_exc, zones_exc):
 
 @app.cell
 def _(totals_exc, zones_exc):
-    # YOUR CODE BELOW: replace None
+    # YOUR CODE BELOW: the NAME of the zone with the highest total
     best_zone_exc = None
     return (best_zone_exc,)
 
@@ -180,7 +180,7 @@ def _(plt, totals_exc, zones_exc):
 
 @app.cell
 def _(totals_exc, zones_exc):
-    # YOUR CODE BELOW: replace None
+    # YOUR CODE BELOW: the NAME of the second-highest zone, once the bars are sorted
     second_zone_exc = None
     return (second_zone_exc,)
 
