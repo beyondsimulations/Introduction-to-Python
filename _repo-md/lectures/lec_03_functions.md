@@ -37,7 +37,7 @@ Menu → *Download* → *Download Python code* → upload the `.py` to the "Chec
 
 ## After the board review
 
-Pens down. The checkpoint is over. On to Episode 3.
+On to Episode 3.
 
 . . .
 
