@@ -635,7 +635,7 @@ Scan the QR or type the link:
 
 First **predict** what happens, then run it.
 
-# Checkpoint 0: dress rehearsal
+# Checkpoint 0
 
 **A practice board review.** Fifteen minutes, before the lab, **ungraded**. Same format as the five real checkpoints, so that nothing is new next week when it counts.
 
