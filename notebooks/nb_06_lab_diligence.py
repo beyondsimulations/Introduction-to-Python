@@ -2,7 +2,7 @@
 # Episode 6: Due Diligence Week. Session VI lab notebook.
 import marimo
 
-app = marimo.App(width="medium")
+app = marimo.App(width="medium", app_title="nb_06_lab_diligence")
 
 
 @app.cell(hide_code=True)

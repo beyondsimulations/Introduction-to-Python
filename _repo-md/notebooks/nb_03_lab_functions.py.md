@@ -3,7 +3,7 @@
 # Episode 3: The Copy-Paste Soup. Session III lab notebook.
 import marimo
 
-app = marimo.App(width="medium")
+app = marimo.App(width="medium", app_title="nb_03_lab_functions")
 
 
 @app.cell(hide_code=True)
@@ -23,7 +23,8 @@ def _(mo):
     write functions with **parameters** and **return values**, learn why a
     function can't quietly reach out and change your variables (**scope**), give a
     parameter a **default**, and bundle data with behavior in a first **class**.
-    It ends in the **Tip Calculator Championship**.
+    A bonus at the end asks what your tip function does with a comped meal
+    and a refund.
     """
     )
     return
@@ -1042,13 +1043,12 @@ def _(answer_ex50, mo):
 def _(mo):
     mo.md(
         r"""
-    ### Bonus: the Tip Calculator Championship (not required)
+    ### Bonus: the receipts nobody tested (not required)
 
-    Your `tip_ex12` works on tidy inputs, but the whole class is entering their
-    tip functions into a **Championship**: whose survives the weirdest receipts?
-    The judges throw a battery of nasty inputs at each one: a **0** order, a
-    **negative −5** refund, and a **100000** whale order, then crown the function
-    that never breaks. Winner gets bragging rights and Tobi's parking spot.
+    Your `tip_ex12` is fine on tidy numbers. Then Friday happened: a comped
+    meal rang up as **0**, a refund went through as **-5**, and a catering
+    order came in at **100000**. A tip on a refund is not a thing, and right
+    now `tip_ex12` has no opinion about any of it.
 
     Write `tip_safe_ex60(total, percent)`: return **0.0** when `total` is zero or
     negative (no tip on nothing), otherwise the tip exactly like `tip_ex12`.
@@ -1071,38 +1071,51 @@ def _(mo, show_result, tip_safe_ex60):
     try:
         _zero = tip_safe_ex60(0, 10)
         _neg = tip_safe_ex60(-5, 10)
-        _whale = tip_safe_ex60(100000, 10)
+        _catering = tip_safe_ex60(100000, 10)
         _normal = tip_safe_ex60(20, 10)
+        _rounded = tip_safe_ex60(12.34, 7)
     except Exception:
         ex60_ok = False
-        _msg = "Wrong (Championship): a weird receipt knocked it out: the function crashed. Guard the total before you do the math."
+        _msg = "Wrong (Bonus): one of those receipts crashed the function. Guard the total before you do the math."
         _preview = ""
     else:
         if _zero is None and _normal is None:
             ex60_ok = False
-            _msg = "Not attempted (Championship): not entered yet (the function still returns None)."
+            _msg = "Not attempted (Bonus): (the function still returns None). Use `return`, not `print`, then run the cell."
             _preview = ""
         elif _zero is None or _neg is None:
             ex60_ok = False
-            _msg = "Wrong (Championship): a zero or negative total comes back as `None`. That branch has no `return`. Every path through the function needs one."
+            _msg = "Wrong (Bonus): a zero or negative total comes back as `None`. That branch has no `return`. Every path through the function needs one."
             _preview = ""
         elif (
             _zero == 0.0 and _neg == 0.0
-            and isinstance(_whale, (int, float)) and round(_whale, 2) == 10000.0
+            and isinstance(_catering, (int, float)) and round(_catering, 2) == 10000.0
             and isinstance(_normal, (int, float)) and round(_normal, 2) == 2.0
+            and isinstance(_rounded, (int, float)) and _rounded == 0.86
         ):
             ex60_ok = True
             _msg = (
-                "Correct (Championship): 0 → 0.0, −5 → 0.0, the 100000 whale → 10000.0, and "
-                "a normal 20 → 2.0. Your function survived every weird receipt: "
-                "**you win Tobi's parking spot.**"
+                "Correct (Bonus): 0 → 0.0, -5 → 0.0, the 100000 catering order → 10000.0, "
+                "and a 7 % tip on 12.34 → 0.86. Every receipt handled, including the ones "
+                "nobody thought to test."
             )
             _preview = show_result(_zero)
+        elif (
+            _zero == 0.0 and _neg == 0.0
+            and isinstance(_rounded, (int, float)) and round(_rounded, 2) == 0.86
+        ):
+            ex60_ok = False
+            _msg = (
+                "Wrong (Bonus): the guard works, but the tip isn't rounded. A 7 % tip on "
+                "12.34 comes back as 0.8638, and a receipt has two decimals. Wrap the "
+                "calculation in `round(..., 2)`, exactly like `tip_ex12`."
+            )
+            _preview = show_result(_rounded)
         else:
             ex60_ok = False
             _msg = (
-                "Wrong (Championship): it didn't survive the battery. A 0 or negative "
-                "total must give **0.0**; a normal total tips just like `tip_ex12`."
+                "Wrong (Bonus): not there yet. A 0 or negative total must give **0.0**; "
+                "a normal total tips just like `tip_ex12`."
             )
             _preview = show_result(_zero)
     mo.callout(mo.md(_msg + _preview), kind="success" if ex60_ok else "warn")

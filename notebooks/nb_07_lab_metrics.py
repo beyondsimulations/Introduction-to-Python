@@ -2,7 +2,7 @@
 # Episode 7: The Numbers Deck. Session VII lab notebook.
 import marimo
 
-app = marimo.App(width="medium")
+app = marimo.App(width="medium", app_title="nb_07_lab_metrics")
 
 
 @app.cell(hide_code=True)

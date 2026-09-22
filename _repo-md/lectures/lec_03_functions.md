@@ -417,7 +417,7 @@ First **predict** what happens, then run it.
 ## After the break: the lab
 
 - Head to the lab notebook: [Episode 3: The Copy-Paste Soup](../tutorials/tut_03_functions.qmd)
-- You'll write the fee and tip functions, fix a function that forgets to `return`, give a parameter a default, and build the startup's first `Order` class, ending in the **Tip Calculator Championship**
+- You'll write the fee and tip functions, fix a function that forgets to `return`, give a parameter a default, and build the startup's first `Order` class
 - It runs entirely in your browser: no setup, just click and code
 
 . . .

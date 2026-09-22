@@ -41,6 +41,19 @@ def run(nb: Path) -> bool:
     return True
 
 
+def check_title(nb: Path) -> bool:
+    """app_title names the student's download: marimo's WASM export hardcodes
+    notebook.py as the filename, so without it every notebook downloads under
+    the same name. It must match the file stem."""
+    if f'app_title="{nb.stem}"' in nb.read_text():
+        return True
+    print(
+        f'FAIL {nb.relative_to(ROOT)}: marimo.App needs app_title="{nb.stem}"',
+        file=sys.stderr,
+    )
+    return False
+
+
 def main() -> int:
     patterns = sys.argv[1:] or PATTERNS
     sources = sorted(
@@ -54,7 +67,7 @@ def main() -> int:
         return 1
     # Unix-only; must run in the main thread
     signal.signal(signal.SIGALRM, _on_alarm)
-    results = [run(nb) for nb in sources]  # full list first — no short-circuit, validate everything
+    results = [all([check_title(nb), run(nb)]) for nb in sources]  # full list first — no short-circuit, validate everything
     return 0 if all(results) else 1
 
 

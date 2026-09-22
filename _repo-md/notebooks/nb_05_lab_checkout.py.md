@@ -3,7 +3,7 @@
 # Episode 5: The 3-AM Checkout. Session V lab notebook.
 import marimo
 
-app = marimo.App(width="medium")
+app = marimo.App(width="medium", app_title="nb_05_lab_checkout")
 
 
 @app.cell(hide_code=True)

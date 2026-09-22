@@ -3,7 +3,7 @@
 # Episode 2: The Curfew. Session II lab notebook.
 import marimo
 
-app = marimo.App(width="medium")
+app = marimo.App(width="medium", app_title="nb_02_lab_curfew")
 
 
 @app.cell(hide_code=True)

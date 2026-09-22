@@ -119,9 +119,11 @@ touching any question; `--stats` for the per-question table).
 
 ## In-lecture exercises (ex_XX_<letter>.py)
 - **Letter = slide order** (Fable #10): `ex_XX_a` belongs to lecture block 1,
-  `_b` to block 2, `_c` to block 3. CP sessions have 2 blocks → letters a-b only.
+  `_b` to block 2, and so on. Regular sessions run 5 blocks (letters a-e),
+  CP sessions 3 (letters a-c); Session X has none.
 - One concept, one screen, 5-10 min, one exercise + one reactive check,
-  closing cell: "*Nothing to save. This was a sandbox.*"
+  closing cell: "*Nothing to hand in. This was a sandbox.*" (the save callout
+  at the top still applies: it says how to keep a copy if you want one)
 - From `ex_06` onward in-lecture exercises carry hint accordions (Hint 1 = nudge,
   Hint 2 = `___` skeleton), matching the lab hint ladder, the `ex_01`-`ex_05`
   family predates this and stays hint-free.
@@ -130,12 +132,12 @@ touching any question; `--stats` for the per-question table).
 Regular session skeleton:
 1. Title slide (Fall 2026) → 2. Cold open (1 slide, episode framing, restrained)
 3. Warm-up (3 recap questions; see below) → 4. Block 1 (≤20 min)
-5. QR exercise a → 6. Block 2 → 7. QR b → [break] → 8. Block 3 → 9. QR c
+5. QR exercise a → 6. Block 2 → 7. QR b → [break] → 8. Blocks 3-5 → 9. QR c-e
 10. Lab handoff (tutorial URL) → 11. Wrap-up: 3 takeaways + next-episode teaser
 → [break] → lab in class (unfinished parts at home).
 Session II: Checkpoint 0 (dress rehearsal, 15 min, ungraded) sits right before the lab handoff.
 CP sessions (III, V, VI, VIII, X): title → checkpoint slide (procedure) →
-cold open → Block 1 → QR a → Block 2 → QR b → lab handoff → wrap-up.
+cold open → Block 1 → QR a → Block 2 → QR b → Block 3 → QR c → lab handoff → wrap-up.
 No warm-up on CP days (the checkpoint is the warm-up).
 The checkpoint URL NEVER goes in a deck: these files publish to the public course
 site, and the checkpoint host is unlisted. Students get it from a hidden Moodle URL

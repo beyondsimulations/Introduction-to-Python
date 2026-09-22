@@ -1,7 +1,7 @@
 # notebooks/exercises/ex_03_b.py
 import marimo
 
-app = marimo.App(width="medium")
+app = marimo.App(width="medium", app_title="ex_03_b")
 
 
 @app.cell
@@ -65,7 +65,6 @@ def _():
 @app.cell(hide_code=True)
 def _(mo, show_result, wrap_price_exb):
     # Reactive check. Re-runs when you run the cell above.
-    # Reactive check.
     try:
         _r3 = wrap_price_exb(3)
         _r1 = wrap_price_exb(1)
@@ -155,7 +154,7 @@ def _(mo, show_result, wrap_bill_exb, wrap_price_exb):
 
 @app.cell(hide_code=True)
 def _(mo):
-    mo.md("*Nothing to save. This was a sandbox.*")
+    mo.md("*Nothing to hand in. This was a sandbox.*")
     return
 
 

@@ -2,7 +2,7 @@
 # Episode 9: The Pitch Deck. Session IX lab notebook.
 import marimo
 
-app = marimo.App(width="medium")
+app = marimo.App(width="medium", app_title="nb_09_lab_pitch")
 
 
 @app.cell(hide_code=True)

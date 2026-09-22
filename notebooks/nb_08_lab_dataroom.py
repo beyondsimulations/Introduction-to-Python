@@ -2,7 +2,7 @@
 # Episode 8: The Data Room. Session VIII lab notebook.
 import marimo
 
-app = marimo.App(width="medium")
+app = marimo.App(width="medium", app_title="nb_08_lab_dataroom")
 
 
 @app.cell(hide_code=True)

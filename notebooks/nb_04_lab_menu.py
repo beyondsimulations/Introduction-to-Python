@@ -2,7 +2,7 @@
 # Episode 4: The Menu Grows Up. Session IV lab notebook.
 import marimo
 
-app = marimo.App(width="medium")
+app = marimo.App(width="medium", app_title="nb_04_lab_menu")
 
 
 @app.cell(hide_code=True)

@@ -2,7 +2,7 @@
 # Episode 1: The Founding. Session I lab notebook.
 import marimo
 
-app = marimo.App(width="medium")
+app = marimo.App(width="medium", app_title="nb_01_lab_founding")
 
 
 @app.cell(hide_code=True)

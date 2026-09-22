@@ -8,7 +8,7 @@
 # - check literals must survive round(x, 2) exactly; avoid .xx5 boundaries
 import marimo
 
-app = marimo.App(width="medium")
+app = marimo.App(width="medium", app_title="_template")
 
 
 @app.cell(hide_code=True)

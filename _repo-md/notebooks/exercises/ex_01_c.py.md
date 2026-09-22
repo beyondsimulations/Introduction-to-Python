@@ -2,7 +2,7 @@
 # notebooks/exercises/ex_01_c.py
 import marimo
 
-app = marimo.App(width="medium")
+app = marimo.App(width="medium", app_title="ex_01_c")
 
 
 @app.cell
@@ -147,7 +147,7 @@ def _(mo, per_sticker_exc):
 
 @app.cell(hide_code=True)
 def _(mo):
-    mo.md("*Nothing to save. This was a sandbox.*")
+    mo.md("*Nothing to hand in. This was a sandbox.*")
     return
 
 

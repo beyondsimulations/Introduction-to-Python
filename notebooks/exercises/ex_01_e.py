@@ -1,7 +1,7 @@
 # notebooks/exercises/ex_01_e.py
 import marimo
 
-app = marimo.App(width="medium")
+app = marimo.App(width="medium", app_title="ex_01_e")
 
 
 @app.cell
@@ -122,7 +122,7 @@ def _(mo, receipt_exe, show_result):
 
 @app.cell(hide_code=True)
 def _(mo):
-    mo.md("*Nothing to save. This was a sandbox.*")
+    mo.md("*Nothing to hand in. This was a sandbox.*")
     return
 
 

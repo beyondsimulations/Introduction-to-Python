@@ -2,7 +2,7 @@
 # notebooks/exercises/ex_03_c.py
 import marimo
 
-app = marimo.App(width="medium")
+app = marimo.App(width="medium", app_title="ex_03_c")
 
 
 @app.cell
@@ -70,7 +70,6 @@ def _():
 @app.cell(hide_code=True)
 def _(Order, mo, show_result):
     # Reactive check. Re-runs when you run the cell above.
-    # Reactive check.
     try:
         _result = Order("Pad Thai", 2, 8.90).total()
     except Exception:
@@ -155,7 +154,7 @@ def _(Order, cheaper_exc, mo, show_result):
 
 @app.cell(hide_code=True)
 def _(mo):
-    mo.md("*Nothing to save. This was a sandbox.*")
+    mo.md("*Nothing to hand in. This was a sandbox.*")
     return
 
 
