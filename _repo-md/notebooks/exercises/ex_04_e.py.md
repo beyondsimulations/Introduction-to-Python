@@ -29,10 +29,6 @@ def _(mo):
     mo.md(
         r"""
     # Quick exercise: happy hour (5-10 min)
-
-    Tobi's idea: 20% off every price on `menu`, for one hour only. Build
-    `happy_exe` with a **dict comprehension**: same items, each price cut
-    by 20% and rounded to 2 decimals.
     """
     )
     return
@@ -47,6 +43,18 @@ def _(mo):
             "*Download Python code*. Without a save first, the download is an empty file."
         ),
         kind="info",
+    )
+    return
+
+
+@app.cell(hide_code=True)
+def _(mo):
+    mo.md(
+        r"""
+    Tobi's idea: 20% off every price on `menu`, for one hour only. Build
+    `happy_exe` with a **dict comprehension**: same items, each price cut
+    by 20% and rounded to 2 decimals.
+    """
     )
     return
 

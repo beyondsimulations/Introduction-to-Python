@@ -28,10 +28,6 @@ def _(mo):
     mo.md(
         r"""
     # Quick exercise: the first receipt line (5-10 min)
-
-    A customer just ordered. Using `qty`, `item`, and `total` below and an
-    f-string with `:.2f`, build **one** receipt line that reads exactly
-    `"2x Falafel Wrap: 13.80 EUR"`.
     """
     )
     return
@@ -46,6 +42,18 @@ def _(mo):
             "*Download Python code*. Without a save first, the download is an empty file."
         ),
         kind="info",
+    )
+    return
+
+
+@app.cell(hide_code=True)
+def _(mo):
+    mo.md(
+        r"""
+    A customer just ordered. Using `qty`, `item`, and `total` below and an
+    f-string with `:.2f`, build **one** receipt line that reads exactly
+    `"2x Falafel Wrap: 13.80 EUR"`.
+    """
     )
     return
 

@@ -10,20 +10,6 @@ def _(mo):
     mo.md(
         r"""
     # Notebook 3.1: The Copy-Paste Soup
-    **Core exercises: 10 (+ 1 bonus).** Done early? You're free to go. Not done when the session ends? The rest is homework.
-
-    Tobi has been "reusing" code the only way he knows how: he pasted the same
-    receipt block **14 times**, once per menu item. Yesterday the wrap price
-    changed by ten cents, and fixing it took him a whole afternoon. He had to
-    hunt down all fourteen copies, and he *still* missed three of them.
-
-    Today you give him the
-    **function**, a named block of code you write once and call anywhere. You'll
-    write functions with **parameters** and **return values**, learn why a
-    function can't quietly reach out and change your variables (**scope**), give a
-    parameter a **default**, and bundle data with behavior in a first **class**.
-    A bonus at the end asks what your tip function does with a comped meal
-    and a refund.
     """
     )
     return
@@ -52,6 +38,29 @@ def _(mo):
             "it, so fix that cell first."
         ),
         kind="info",
+    )
+    return
+
+
+@app.cell(hide_code=True)
+def _(mo):
+    mo.md(
+        r"""
+    **Core exercises: 10 (+ 1 bonus).** Done early? You're free to go. Not done when the session ends? The rest is homework.
+
+    Tobi has been "reusing" code the only way he knows how: he pasted the same
+    receipt block **14 times**, once per menu item. Yesterday the wrap price
+    changed by ten cents, and fixing it took him a whole afternoon. He had to
+    hunt down all fourteen copies, and he *still* missed three of them.
+
+    Today you give him the
+    **function**, a named block of code you write once and call anywhere. You'll
+    write functions with **parameters** and **return values**, learn why a
+    function can't quietly reach out and change your variables (**scope**), give a
+    parameter a **default**, and bundle data with behavior in a first **class**.
+    A bonus at the end asks what your tip function does with a comped meal
+    and a refund.
+    """
     )
     return
 

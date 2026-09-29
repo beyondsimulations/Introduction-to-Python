@@ -11,26 +11,6 @@ def _(mo):
     mo.md(
         r"""
     # Notebook 6.1: Due Diligence Week
-    **Core exercises: 10 + 1 quiz (+ 1 trace).** Done early? You're free to go. Not done when the session ends? The rest is homework.
-
-    The investor is **here**. Not on a call, not "circling back next quarter". She is
-    standing in the shop with a clipboard and a very calm smile, asking to see the
-    numbers by the end of the week. Real numbers: how many crates to order, what the
-    ratings actually average to, what next week's demand might look like.
-
-    Tobi's proposal is to "go on vibes". The investor's expression does not
-    change. So this week you stop hand-rolling arithmetic and reach for Python's
-    **standard library**: code that already ships with Python, written and tested
-    by people who are not Tobi. You'll `import math` and `statistics` for
-    the arithmetic, then use `random` to *rehearse* next week's
-    demand, and learn why a simulation should give the same result when run twice.
-
-    > **New this week: AI is allowed.** From this session on you may use an AI
-    > assistant; see the course's [AI tools
-    > guide](https://python.tobiasvlcek.com/general/ai-tools.html).
-    > One thing does not change: the checks below only go green on code that
-    > actually runs. AI can draft a line for you; you still have to make it work,
-    > and understand it well enough to fix it when it doesn't.
     """
     )
     return
@@ -59,6 +39,35 @@ def _(mo):
             "it, so fix that cell first."
         ),
         kind="info",
+    )
+    return
+
+
+@app.cell(hide_code=True)
+def _(mo):
+    mo.md(
+        r"""
+    **Core exercises: 10 + 1 quiz (+ 1 trace).** Done early? You're free to go. Not done when the session ends? The rest is homework.
+
+    The investor is **here**. Not on a call, not "circling back next quarter". She is
+    standing in the shop with a clipboard and a very calm smile, asking to see the
+    numbers by the end of the week. Real numbers: how many crates to order, what the
+    ratings actually average to, what next week's demand might look like.
+
+    Tobi's proposal is to "go on vibes". The investor's expression does not
+    change. So this week you stop hand-rolling arithmetic and reach for Python's
+    **standard library**: code that already ships with Python, written and tested
+    by people who are not Tobi. You'll `import math` and `statistics` for
+    the arithmetic, then use `random` to *rehearse* next week's
+    demand, and learn why a simulation should give the same result when run twice.
+
+    > **New this week: AI is allowed.** From this session on you may use an AI
+    > assistant; see the course's [AI tools
+    > guide](https://python.tobiasvlcek.com/general/ai-tools.html).
+    > One thing does not change: the checks below only go green on code that
+    > actually runs. AI can draft a line for you; you still have to make it work,
+    > and understand it well enough to fix it when it doesn't.
+    """
     )
     return
 

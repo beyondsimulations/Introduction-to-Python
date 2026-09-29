@@ -28,13 +28,6 @@ def _(mo):
     mo.md(
         r"""
     # Quick exercise: the y-axis from zero (5-10 min)
-
-    Tobi asked an AI to chart this week's growth for the pitch deck. It
-    ran without errors. Before you believe a chart, check one thing
-    first: where does the y-axis START?
-
-    **Predict** first: look at the y-axis numbers below before you look
-    at the slope.
     """
     )
     return
@@ -49,6 +42,21 @@ def _(mo):
             "*Download Python code*. Without a save first, the download is an empty file."
         ),
         kind="info",
+    )
+    return
+
+
+@app.cell(hide_code=True)
+def _(mo):
+    mo.md(
+        r"""
+    Tobi asked an AI to chart this week's growth for the pitch deck. It
+    ran without errors. Before you believe a chart, check one thing
+    first: where does the y-axis START?
+
+    **Predict** first: look at the y-axis numbers below before you look
+    at the slope.
+    """
     )
     return
 

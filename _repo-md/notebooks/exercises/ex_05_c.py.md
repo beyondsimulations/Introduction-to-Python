@@ -29,7 +29,28 @@ def _(mo):
     mo.md(
         r"""
     # Quick exercise: the crash-proof price (5-10 min)
+    """
+    )
+    return
 
+
+@app.cell(hide_code=True)
+def _(mo):
+    mo.callout(
+        mo.md(
+            "**Saving your work:** this notebook runs in your browser. Press "
+            "**Cmd/Ctrl+S** to save, and always save **before** menu → Download → "
+            "*Download Python code*. Without a save first, the download is an empty file."
+        ),
+        kind="info",
+    )
+    return
+
+
+@app.cell(hide_code=True)
+def _(mo):
+    mo.md(
+        r"""
     A customer typed `"drei"` into the price field instead of a number, and
     the checkout went straight to a traceback in front of the whole queue.
     The crashing line:
@@ -46,19 +67,6 @@ def _(mo):
     Careful: hardcoding `price_exc = 0.0` defeats the point. Your code must
     still work when the text *is* a number.
     """
-    )
-    return
-
-
-@app.cell(hide_code=True)
-def _(mo):
-    mo.callout(
-        mo.md(
-            "**Saving your work:** this notebook runs in your browser. Press "
-            "**Cmd/Ctrl+S** to save, and always save **before** menu → Download → "
-            "*Download Python code*. Without a save first, the download is an empty file."
-        ),
-        kind="info",
     )
     return
 

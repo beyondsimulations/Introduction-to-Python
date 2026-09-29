@@ -110,11 +110,9 @@ a\) prints `5.5` as a float b) raises `ValueError` c) raises `TypeError`
 
 . . .
 
-<span class="question">Predict first</span>. Pick a letter, then I reveal the answer.
+<span class="question">Predict</span>. Pick a letter, then I reveal the answer.
 
 ## Answer: right type, senseless value
-
-**b) raises `ValueError`**: `float()` got what it expects, a string, so the *type* is fine. But `"5,50"` is not a number Python can read (it only knows the decimal point), so the *value* is refused. `TypeError` would need a non-string, like `float(None)`:
 
 ``` python
 price_text = "5,50"
@@ -130,6 +128,10 @@ print(price)
 <span class="ansi-green-fg">      3</span> <span style="color:rgb(0,135,0)">print</span>(price)
 
 <span class="ansi-red-fg">ValueError</span>: could not convert string to float: '5,50'</pre>
+
+. . .
+
+**b) raises `ValueError`**: `float()` got what it expects, a string, so the *type* is fine. But `"5,50"` is not a number Python can read (it only knows the decimal point), so the *value* is refused. `TypeError` would need a non-string, like `float(None)`.
 
 ## The big five (2)
 
@@ -152,7 +154,7 @@ Scan the QR or type the link:
 
 <img src="assets/qr/ex_05_a.png" width="280" />
 
-First **predict** what happens, then run it.
+**Any questions?** Let me know!
 
 ## `try` / `except`: catch the fall
 
@@ -207,11 +209,9 @@ a\) raises `TypeError` b) prints `Party of 3` c) raises `ValueError`
 
 . . .
 
-<span class="question">Predict first</span>. Pick a letter, then I reveal the answer.
+<span class="question">Predict</span>. Pick a letter, then I reveal the answer.
 
 ## Answer: text and numbers won't mix
-
-**a) raises `TypeError`**: `+` can glue two strings *or* add two numbers, but it refuses to mix a string and an `int`. The fix is to convert first (`str(guests)`):
 
 ``` python
 guests = 3
@@ -222,6 +222,10 @@ except TypeError as e:
 ```
 
     TypeError: can only concatenate str (not "int") to str
+
+. . .
+
+**a) raises `TypeError`**: `+` can glue two strings *or* add two numbers, but it refuses to mix a string and an `int`. The fix is to convert first (`str(guests)`).
 
 . . .
 
@@ -237,7 +241,7 @@ Scan the QR or type the link:
 
 <img src="assets/qr/ex_05_b.png" width="280" />
 
-First **predict** what happens, then run it.
+**Any questions?** Let me know!
 
 # <span class="flow">Debugging and Defending</span>
 
@@ -325,11 +329,9 @@ a\) `AssertionError`, and the `print` never runs b) prints `splitting the bill a
 
 . . .
 
-<span class="question">Predict first</span>. Pick a letter, then I reveal the answer.
+<span class="question">Predict</span>. Pick a letter, then I reveal the answer.
 
 ## Answer: the tripwire stops everything
-
-**a) `AssertionError`, and the `print` never runs**: a failing `assert` raises on the spot, and nothing after it in the program executes. That's the point of a tripwire: stop *before* a wrong number spreads:
 
 ``` python
 guests = 0
@@ -345,6 +347,10 @@ print("splitting the bill among", guests)
 <span class="ansi-green-fg">      3</span> <span style="color:rgb(0,135,0)">print</span>(<span class="ansi-yellow-fg">"</span><span class="ansi-yellow-fg">splitting the bill among</span><span class="ansi-yellow-fg">"</span>, guests)
 
 <span class="ansi-red-fg">AssertionError</span>: no guests at the table</pre>
+
+. . .
+
+**a) `AssertionError`, and the `print` never runs**: a failing `assert` raises on the spot, and nothing after it in the program executes. That's the point of a tripwire: stop *before* a wrong number spreads.
 
 ## Try, then fall back
 
@@ -387,11 +393,9 @@ a\) it never runs: the program already stopped b) the `try` block runs a second 
 
 . . .
 
-<span class="question">Predict first</span>. Pick a letter, then I reveal the answer.
+<span class="question">Predict</span>. Pick a letter, then I reveal the answer.
 
 ## Answer: it carries on
-
-**c) it runs normally**. That's the whole point of `try` / `except`. It *handles* the failure; once the `except` has run, control simply drops to the code after it, as if nothing had gone wrong:
 
 ``` python
 def to_price(text):
@@ -407,6 +411,10 @@ print("checkout still running")  # ...and we get here
     0.0
     checkout still running
 
+. . .
+
+**c) it runs normally**. That's the whole point of `try` / `except`. It *handles* the failure; once the `except` has run, control simply drops to the code after it, as if nothing had gone wrong.
+
 # Your turn: 5-10 minutes
 
 ## Open the exercise
@@ -417,7 +425,7 @@ Scan the QR or type the link:
 
 <img src="assets/qr/ex_05_c.png" width="280" />
 
-First **predict** what happens, then run it.
+**Any questions?** Let me know!
 
 # <span class="flow">To the Lab</span>
 

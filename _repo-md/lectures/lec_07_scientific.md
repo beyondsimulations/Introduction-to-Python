@@ -42,6 +42,20 @@ a\) `ceil(3.2)` b) `math.ceil(3.2)` c) both
 
 ## Answer 1
 
+``` python
+from math import ceil
+
+print(ceil(3.2))
+print(math.ceil(3.2))
+```
+
+    4
+
+<pre><span class="ansi-red-fg">NameError</span><span class="ansi-red-fg">:</span> name 'math' is not defined
+</pre>
+
+. . .
+
 **a) `ceil(3.2)`**: `from math import ceil` binds only the **name** `ceil`. The module `math` itself was never imported, so `math.ceil` has nothing to reach through.
 
 ## Question 2
@@ -61,6 +75,20 @@ a\) different: random is random b) an error: seed 42 was already used c) the sam
 
 ## Answer 2
 
+``` python
+import random
+
+random.seed(42)   # today
+print(random.randint(1, 20), random.randint(1, 20), random.randint(1, 20))
+random.seed(42)   # tomorrow: a fresh run starts from the seed again
+print(random.randint(1, 20), random.randint(1, 20), random.randint(1, 20))
+```
+
+    4 1 9
+    4 1 9
+
+. . .
+
 **c) the same three numbers**. Every run starts from seed 42, so the stream replays from the top. That is the entire job of a seed: reproducible randomness. (Two batches *inside one run* would differ: the stream continues; a fresh run rewinds it.)
 
 ## Question 3
@@ -76,6 +104,16 @@ returns...
 a\) `2` b) `5` c) an error: the list is not sorted
 
 ## Answer 3
+
+``` python
+import statistics
+
+statistics.median([9, 2, 5])
+```
+
+    5
+
+. . .
 
 **b) `5`**: `median` sorts the values internally before picking the middle one. You never have to sort first; `5` is the middle of `2, 5, 9`.
 
@@ -138,7 +176,7 @@ Scan the QR or type the link:
 
 <img src="assets/qr/ex_07_a.png" width="280" />
 
-First **predict** what happens, then run it.
+**Any questions?** Let me know!
 
 ## Arrays from scratch
 
@@ -170,11 +208,9 @@ a\) `[1, 2, 3, 1, 2, 3]` b) `[2, 4, 6]` c) an error
 
 . . .
 
-<span class="question">Predict first</span>. Pick a letter, then I reveal the answer.
+<span class="question">Predict</span>. Pick a letter, then I reveal the answer.
 
 ## Answer: lists repeat, arrays compute
-
-**a) `[1, 2, 3, 1, 2, 3]`**. That's a plain **list**, and `* 2` on a list *repeats* it. Wrap it in an array and the same `* 2` does the math instead:
 
 ``` python
 import numpy as np
@@ -185,6 +221,10 @@ print(np.array([1, 2, 3]) * 2)    # array → doubled
 
     [1, 2, 3, 1, 2, 3]
     [2 4 6]
+
+. . .
+
+**a) `[1, 2, 3, 1, 2, 3]`**. That's a plain **list**, and `* 2` on a list *repeats* it. Wrap it in an array and the same `* 2` does the math instead.
 
 . . .
 
@@ -202,11 +242,9 @@ a\) `[11, 22, 33]`, added pairwise b) an error: lists don't add c) `[1, 2, 3, 10
 
 . . .
 
-<span class="question">Predict first</span>. Pick a letter, then I reveal the answer.
+<span class="question">Predict</span>. Pick a letter, then I reveal the answer.
 
 ## Answer: lists glue, arrays add
-
-**c) `[1, 2, 3, 10, 20, 30]`**. On lists, `+` **glues** them end to end, exactly like `* 2` repeated. On arrays, `+` adds element by element, first with first, second with second:
 
 ``` python
 import numpy as np
@@ -217,6 +255,10 @@ print(np.array([1, 2, 3]) + np.array([10, 20, 30]))    # array → added
 
     [1, 2, 3, 10, 20, 30]
     [11 22 33]
+
+. . .
+
+**c) `[1, 2, 3, 10, 20, 30]`**. On lists, `+` **glues** them end to end, exactly like `* 2` repeated. On arrays, `+` adds element by element, first with first, second with second.
 
 . . .
 
@@ -232,7 +274,7 @@ Scan the QR or type the link:
 
 <img src="assets/qr/ex_07_b.png" width="280" />
 
-First **predict** what happens, then run it.
+**Any questions?** Let me know!
 
 # <span class="flow">Asking questions of data</span>
 
@@ -289,11 +331,9 @@ a\) `True` b) `2` c) `[False, True, True]`
 
 . . .
 
-<span class="question">Predict first</span>. Pick a letter, then I reveal the answer.
+<span class="question">Predict</span>. Pick a letter, then I reveal the answer.
 
 ## Answer: True counts as 1
-
-**b) `2`**: `.sum()` adds the mask up, and each `True` is worth `1`, each `False` `0`. Two elements clear the bar, so the count is `2`:
 
 ``` python
 import numpy as np
@@ -304,6 +344,10 @@ print((np.array([1, 5, 3]) > 2).sum())    # Trues add up to 2
 
     [False  True  True]
     2
+
+. . .
+
+**b) `2`**: `.sum()` adds the mask up, and each `True` is worth `1`, each `False` `0`. Two elements clear the bar, so the count is `2`.
 
 . . .
 
@@ -322,11 +366,9 @@ a\) an error: ambiguous truth value b) `[ True False False  True]` c) `True`, bo
 
 . . .
 
-<span class="question">Predict first</span>. Pick a letter, then I reveal the answer.
+<span class="question">Predict</span>. Pick a letter, then I reveal the answer.
 
 ## Answer: `and` wants one truth, a mask has four
-
-**a) an error**. `and` asks the left side "are you true?", and a four-element mask has no single answer. Between two masks use `&`, and wrap each side in parentheses (`&` binds tighter than `>`):
 
 ``` python
 import numpy as np
@@ -335,14 +377,12 @@ times = np.array([25, 41, 18, 33])
 print(times > 20 and times < 40)
 ```
 
-<pre><span class="ansi-red-fg">---------------------------------------------------------------------------</span>
-<span class="ansi-red-fg">ValueError</span>                                Traceback (most recent call last)
-<span class="ansi-cyan-fg">Cell</span><span class="ansi-cyan-fg"> </span><span class="ansi-green-fg">In[9]</span><span class="ansi-green-fg">, line 4</span>
-<span class="ansi-green-fg">      1</span> <span style="font-weight:bold;color:rgb(0,135,0)">import</span><span style="color:rgb(188,188,188)"> </span><span class="ansi-blue-fg ansi-bold">numpy</span><span style="color:rgb(188,188,188)"> </span><span style="font-weight:bold;color:rgb(0,135,0)">as</span><span style="color:rgb(188,188,188)"> </span><span class="ansi-blue-fg ansi-bold">np</span>
-<span class="ansi-green-fg">      3</span> times = np.array([<span class="ansi-green-fg">25</span>, <span class="ansi-green-fg">41</span>, <span class="ansi-green-fg">18</span>, <span class="ansi-green-fg">33</span>])
-<span class="ansi-green-fg">----&gt; </span><span class="ansi-green-fg">4</span> <span style="color:rgb(0,135,0)">print</span>(<span class="ansi-yellow-bg">times</span><span class="ansi-yellow-bg"> </span><span class="ansi-yellow-bg">&gt;</span><span class="ansi-yellow-bg"> </span><span class="ansi-green-fg ansi-yellow-bg">20</span><span class="ansi-yellow-bg"> </span><span style="font-weight:bold;color:rgb(175,0,255)" class="ansi-yellow-bg">and</span><span class="ansi-yellow-bg"> </span><span class="ansi-yellow-bg">times</span><span class="ansi-yellow-bg"> </span><span class="ansi-yellow-bg">&lt;</span><span class="ansi-yellow-bg"> </span><span class="ansi-green-fg ansi-yellow-bg">40</span>)
+<pre><span class="ansi-red-fg">ValueError</span><span class="ansi-red-fg">:</span> The truth value of an array with more than one element is ambiguous. Use a.any() or a.all()
+</pre>
 
-<span class="ansi-red-fg">ValueError</span>: The truth value of an array with more than one element is ambiguous. Use a.any() or a.all()</pre>
+. . .
+
+**a) an error**. `and` asks the left side "are you true?", and a four-element mask has no single answer. Between two masks use `&`, and wrap each side in parentheses (`&` binds tighter than `>`):
 
 ``` python
 print((times > 20) & (times < 40))    # element by element: & combines masks
@@ -360,7 +400,7 @@ Scan the QR or type the link:
 
 <img src="assets/qr/ex_07_c.png" width="280" />
 
-First **predict** what happens, then run it.
+**Any questions?** Let me know!
 
 # <span class="flow">The days-by-zones grid</span>
 
@@ -402,11 +442,9 @@ a\) `(20,)` b) `(5, 4)` c) `(4, 5)`
 
 . . .
 
-<span class="question">Predict first</span>. Pick a letter, then I reveal the answer.
+<span class="question">Predict</span>. Pick a letter, then I reveal the answer.
 
 ## Answer: rows first, then columns
-
-**b) `(5, 4)`**. `.shape` is always `(rows, columns)`: five inner lists make five rows, each with four numbers. `(20,)` would be one flat row of twenty; `20` is `.size`, the total count:
 
 ``` python
 import numpy as np
@@ -422,6 +460,10 @@ print(grid.size)    # rows × columns
 
     (5, 4)
     20
+
+. . .
+
+**b) `(5, 4)`**. `.shape` is always `(rows, columns)`: five inner lists make five rows, each with four numbers. `(20,)` would be one flat row of twenty; `20` is `.size`, the total count.
 
 . . .
 
@@ -474,7 +516,7 @@ Scan the QR or type the link:
 
 <img src="assets/qr/ex_07_d.png" width="280" />
 
-First **predict** what happens, then run it.
+**Any questions?** Let me know!
 
 ## Where does the max sit?
 
@@ -510,11 +552,9 @@ a\) `week.sum(axis=1)` b) `week.sum()` c) `week.sum(axis=0)`
 
 . . .
 
-<span class="question">Predict first</span>. Pick a letter, then I reveal the answer.
+<span class="question">Predict</span>. Pick a letter, then I reveal the answer.
 
 ## Answer: collapse the days, keep the zones
-
-**c) `week.sum(axis=0)`**. Four zones means four numbers, so the **days** must disappear: `axis=0` collapses DOWN the rows, one number per column (zone):
 
 ``` python
 import numpy as np
@@ -526,6 +566,10 @@ print(week.sum(axis=0))
 ```
 
     [37 46 35 26]
+
+. . .
+
+**c) `week.sum(axis=0)`**. Four zones means four numbers, so the **days** must disappear: `axis=0` collapses DOWN the rows, one number per column (zone).
 
 . . .
 
@@ -541,7 +585,7 @@ Scan the QR or type the link:
 
 <img src="assets/qr/ex_07_e.png" width="280" />
 
-First **predict** what happens, then run it.
+**Any questions?** Let me know!
 
 # <span class="flow">To the Lab</span>
 

@@ -28,12 +28,6 @@ def _(mo):
     mo.md(
         r"""
     # Quick exercise: the menu update (5-10 min)
-
-    Winter menu day, first draft. Start from a **copy** of `menu` (never edit
-    the original: Tobi still needs it for the archive), call it `menu_exc`,
-    then: try `"Pad Thai"` at `9.20` (Tobi's draft price; the lab settles the
-    real one), and add the missing `"Miso Ramen"` at `11.50`. Do it all in
-    the answer cell below.
     """
     )
     return
@@ -48,6 +42,20 @@ def _(mo):
             "*Download Python code*. Without a save first, the download is an empty file."
         ),
         kind="info",
+    )
+    return
+
+
+@app.cell(hide_code=True)
+def _(mo):
+    mo.md(
+        r"""
+    Winter menu day, first draft. Start from a **copy** of `menu` (never edit
+    the original: Tobi still needs it for the archive), call it `menu_exc`,
+    then: try `"Pad Thai"` at `9.20` (Tobi's draft price; the lab settles the
+    real one), and add the missing `"Miso Ramen"` at `11.50`. Do it all in
+    the answer cell below.
+    """
     )
     return
 

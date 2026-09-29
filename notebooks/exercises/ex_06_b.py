@@ -28,13 +28,6 @@ def _(mo):
     mo.md(
         r"""
     # Quick exercise: import a tool instead of building it (5-10 min)
-
-    Need a whole-number result that rounds *up*? Don't write your own
-    rounding logic. The standard library already has it: `math.ceil` rounds
-    up to the next whole number, which is what you need whenever a fraction
-    of a crate still counts as a whole one.
-
-    300 / 48 is 6.25. **Predict** what the cell below prints, then run it.
     """
     )
     return
@@ -49,6 +42,21 @@ def _(mo):
             "*Download Python code*. Without a save first, the download is an empty file."
         ),
         kind="info",
+    )
+    return
+
+
+@app.cell(hide_code=True)
+def _(mo):
+    mo.md(
+        r"""
+    Need a whole-number result that rounds *up*? Don't write your own
+    rounding logic. The standard library already has it: `math.ceil` rounds
+    up to the next whole number, which is what you need whenever a fraction
+    of a crate still counts as a whole one.
+
+    300 / 48 is 6.25. **Predict** what the cell below prints, then run it.
+    """
     )
     return
 

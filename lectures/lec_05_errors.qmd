@@ -111,11 +111,9 @@ a\) prints `5.5` as a float   b) raises `ValueError`   c) raises `TypeError`
 
 . . .
 
-[Predict first]{.question}. Pick a letter, then I reveal the answer.
+[Predict]{.question}. Pick a letter, then I reveal the answer.
 
 ## Answer: right type, senseless value
-
-**b) raises `ValueError`**: `float()` got what it expects, a string, so the *type* is fine. But `"5,50"` is not a number Python can read (it only knows the decimal point), so the *value* is refused. `TypeError` would need a non-string, like `float(None)`:
 
 ```{python}
 #| eval: true
@@ -126,6 +124,10 @@ price_text = "5,50"
 price = float(price_text)
 print(price)
 ```
+
+. . .
+
+**b) raises `ValueError`**: `float()` got what it expects, a string, so the *type* is fine. But `"5,50"` is not a number Python can read (it only knows the decimal point), so the *value* is refused. `TypeError` would need a non-string, like `float(None)`.
 
 ## The big five (2)
 
@@ -148,7 +150,7 @@ Scan the QR or type the link:
 
 ![](assets/qr/ex_05_a.png){width=280}
 
-First **predict** what happens, then run it.
+**Any questions?** Let me know!
 
 ## `try` / `except`: catch the fall
 
@@ -203,11 +205,9 @@ a\) raises `TypeError`   b) prints `Party of 3`   c) raises `ValueError`
 
 . . .
 
-[Predict first]{.question}. Pick a letter, then I reveal the answer.
+[Predict]{.question}. Pick a letter, then I reveal the answer.
 
 ## Answer: text and numbers won't mix
-
-**a) raises `TypeError`**: `+` can glue two strings *or* add two numbers, but it refuses to mix a string and an `int`. The fix is to convert first (`str(guests)`):
 
 ```{python}
 #| eval: true
@@ -219,6 +219,10 @@ try:
 except TypeError as e:
     print("TypeError:", e)
 ```
+
+. . .
+
+**a) raises `TypeError`**: `+` can glue two strings *or* add two numbers, but it refuses to mix a string and an `int`. The fix is to convert first (`str(guests)`).
 
 . . .
 
@@ -234,7 +238,7 @@ Scan the QR or type the link:
 
 ![](assets/qr/ex_05_b.png){width=280}
 
-First **predict** what happens, then run it.
+**Any questions?** Let me know!
 
 # [Debugging and Defending]{.flow} {.title}
 
@@ -324,11 +328,9 @@ a\) `AssertionError`, and the `print` never runs   b) prints `splitting the bill
 
 . . .
 
-[Predict first]{.question}. Pick a letter, then I reveal the answer.
+[Predict]{.question}. Pick a letter, then I reveal the answer.
 
 ## Answer: the tripwire stops everything
-
-**a) `AssertionError`, and the `print` never runs**: a failing `assert` raises on the spot, and nothing after it in the program executes. That's the point of a tripwire: stop *before* a wrong number spreads:
 
 ```{python}
 #| eval: true
@@ -339,6 +341,10 @@ guests = 0
 assert guests > 0, "no guests at the table"
 print("splitting the bill among", guests)
 ```
+
+. . .
+
+**a) `AssertionError`, and the `print` never runs**: a failing `assert` raises on the spot, and nothing after it in the program executes. That's the point of a tripwire: stop *before* a wrong number spreads.
 
 ## Try, then fall back
 
@@ -381,11 +387,9 @@ a\) it never runs: the program already stopped   b) the `try` block runs a secon
 
 . . .
 
-[Predict first]{.question}. Pick a letter, then I reveal the answer.
+[Predict]{.question}. Pick a letter, then I reveal the answer.
 
 ## Answer: it carries on
-
-**c) it runs normally**. That's the whole point of `try` / `except`. It *handles* the failure; once the `except` has run, control simply drops to the code after it, as if nothing had gone wrong:
 
 ```{python}
 #| eval: true
@@ -401,6 +405,10 @@ print(to_price("bad"))           # 0.0, recovered
 print("checkout still running")  # ...and we get here
 ```
 
+. . .
+
+**c) it runs normally**. That's the whole point of `try` / `except`. It *handles* the failure; once the `except` has run, control simply drops to the code after it, as if nothing had gone wrong.
+
 # Your turn: 5-10 minutes {.loud-slide}
 
 ## Open the exercise
@@ -411,7 +419,7 @@ Scan the QR or type the link:
 
 ![](assets/qr/ex_05_c.png){width=280}
 
-First **predict** what happens, then run it.
+**Any questions?** Let me know!
 
 # [To the Lab]{.flow} {.title}
 

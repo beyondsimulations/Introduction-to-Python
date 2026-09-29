@@ -28,11 +28,6 @@ def _(mo):
     mo.md(
         r"""
     # Quick exercise: one operation, every element (5-10 min)
-
-    Tobi's 40-tab spreadsheet is on its way out. In numpy, an operation
-    on an array lands on *every element at once*, without a loop or `.append`.
-
-    **Predict** first: what does the cell below print, then run it.
     """
     )
     return
@@ -47,6 +42,19 @@ def _(mo):
             "*Download Python code*. Without a save first, the download is an empty file."
         ),
         kind="info",
+    )
+    return
+
+
+@app.cell(hide_code=True)
+def _(mo):
+    mo.md(
+        r"""
+    Tobi's 40-tab spreadsheet is on its way out. In numpy, an operation
+    on an array lands on *every element at once*, without a loop or `.append`.
+
+    **Predict** first: what does the cell below print, then run it.
+    """
     )
     return
 

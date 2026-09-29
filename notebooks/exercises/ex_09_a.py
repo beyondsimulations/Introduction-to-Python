@@ -28,16 +28,6 @@ def _(mo):
     mo.md(
         r"""
     # Quick exercise: label the chart (5-10 min)
-
-    Episode 9: Tobi's first pitch-deck slide is a line with no labels.
-    The investor looks at it for two seconds: "What is on the y-axis?
-    Orders? Euros? Your mood?" Every chart names its axes.
-
-    `plt.xlabel`, `plt.ylabel`, and `plt.title` do that job. Chart cells
-    open with `plt.figure()` and end with `plt.gca()`, never `plt.show()`.
-
-    **Predict** first: in the demo below, which line of code puts the
-    word "Week" under the chart?
     """
     )
     return
@@ -52,6 +42,24 @@ def _(mo):
             "*Download Python code*. Without a save first, the download is an empty file."
         ),
         kind="info",
+    )
+    return
+
+
+@app.cell(hide_code=True)
+def _(mo):
+    mo.md(
+        r"""
+    Episode 9: Tobi's first pitch-deck slide is a line with no labels.
+    The investor looks at it for two seconds: "What is on the y-axis?
+    Orders? Euros? Your mood?" Every chart names its axes.
+
+    `plt.xlabel`, `plt.ylabel`, and `plt.title` do that job. Chart cells
+    open with `plt.figure()` and end with `plt.gca()`, never `plt.show()`.
+
+    **Predict** first: in the demo below, which line of code puts the
+    word "Week" under the chart?
+    """
     )
     return
 

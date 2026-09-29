@@ -28,13 +28,6 @@ def _(mo):
     mo.md(
         r"""
     # Quick exercise: boolean masks (5-10 min)
-
-    Comparing an array to a number doesn't give one `True`/`False`. It
-    gives a whole array of them, one per element. That array of booleans
-    is a **mask**, and it's the tool for filtering and counting without a
-    loop.
-
-    **Predict** first: what does the cell below print, then run it.
     """
     )
     return
@@ -49,6 +42,21 @@ def _(mo):
             "*Download Python code*. Without a save first, the download is an empty file."
         ),
         kind="info",
+    )
+    return
+
+
+@app.cell(hide_code=True)
+def _(mo):
+    mo.md(
+        r"""
+    Comparing an array to a number doesn't give one `True`/`False`. It
+    gives a whole array of them, one per element. That array of booleans
+    is a **mask**, and it's the tool for filtering and counting without a
+    loop.
+
+    **Predict** first: what does the cell below print, then run it.
+    """
     )
     return
 

@@ -10,16 +10,6 @@ def _(mo):
     mo.md(
         r"""
     # Notebook 2.1: The Curfew
-    **Core exercises: 10 (+ 2 bonus).** Done early? You're free to go. Not done when the session ends? The rest is homework.
-
-    Overnight the city posted a decree: **no delivery after 22:00.** Your
-    kitchen has to know when it is allowed to send a courier out, and when it
-    must say "sorry, we're closed". Tobi's plan ("we just deliver yesterday's
-    orders the next morning") did not survive first contact with a lawyer.
-
-    Today you teach the app to **decide** (`if` / `elif` / `else`), to **repeat**
-    work over every order (`for` and `while` loops), and to **tidy up** the menu
-    text Tobi typed in a hurry. It ends in a price war with **MunchCorp**.
     """
     )
     return
@@ -48,6 +38,25 @@ def _(mo):
             "it, so fix that cell first."
         ),
         kind="info",
+    )
+    return
+
+
+@app.cell(hide_code=True)
+def _(mo):
+    mo.md(
+        r"""
+    **Core exercises: 10 (+ 2 bonus).** Done early? You're free to go. Not done when the session ends? The rest is homework.
+
+    Overnight the city posted a decree: **no delivery after 22:00.** Your
+    kitchen has to know when it is allowed to send a courier out, and when it
+    must say "sorry, we're closed". Tobi's plan ("we just deliver yesterday's
+    orders the next morning") did not survive first contact with a lawyer.
+
+    Today you teach the app to **decide** (`if` / `elif` / `else`), to **repeat**
+    work over every order (`for` and `while` loops), and to **tidy up** the menu
+    text Tobi typed in a hurry. It ends in a price war with **MunchCorp**.
+    """
     )
     return
 

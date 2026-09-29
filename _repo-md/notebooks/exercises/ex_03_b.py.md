@@ -29,13 +29,6 @@ def _(mo):
     mo.md(
         r"""
     # Quick exercise: the wrap price function (5-10 min)
-
-    Every receipt line needs the price of `qty` Falafel Wraps, and Tobi
-    keeps retyping `6.90 * qty` by hand, typos and all. Put it in a
-    function so he only types it once.
-
-    Write `wrap_price_exb(qty)` that returns the price of `qty` wraps,
-    rounded to 2 decimals (each wrap costs 6.90 EUR).
     """
     )
     return
@@ -50,6 +43,21 @@ def _(mo):
             "*Download Python code*. Without a save first, the download is an empty file."
         ),
         kind="info",
+    )
+    return
+
+
+@app.cell(hide_code=True)
+def _(mo):
+    mo.md(
+        r"""
+    Every receipt line needs the price of `qty` Falafel Wraps, and Tobi
+    keeps retyping `6.90 * qty` by hand, typos and all. Put it in a
+    function so he only types it once.
+
+    Write `wrap_price_exb(qty)` that returns the price of `qty` wraps,
+    rounded to 2 decimals (each wrap costs 6.90 EUR).
+    """
     )
     return
 

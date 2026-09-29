@@ -41,6 +41,26 @@ a\) `ceil(3.2)`   b) `math.ceil(3.2)`   c) both
 
 ## Answer 1
 
+```{python}
+#| eval: true
+#| echo: false
+#| output: false
+%xmode Minimal
+```
+
+```{python}
+#| eval: true
+#| error: true
+#| output-location: fragment
+
+from math import ceil
+
+print(ceil(3.2))
+print(math.ceil(3.2))
+```
+
+. . .
+
 **a) `ceil(3.2)`**: `from math import ceil` binds only the **name** `ceil`. The module `math` itself was never imported, so `math.ceil` has nothing to reach through.
 
 ## Question 2
@@ -60,6 +80,20 @@ a\) different: random is random   b) an error: seed 42 was already used   c) the
 
 ## Answer 2
 
+```{python}
+#| eval: true
+#| output-location: fragment
+
+import random
+
+random.seed(42)   # today
+print(random.randint(1, 20), random.randint(1, 20), random.randint(1, 20))
+random.seed(42)   # tomorrow: a fresh run starts from the seed again
+print(random.randint(1, 20), random.randint(1, 20), random.randint(1, 20))
+```
+
+. . .
+
 **c) the same three numbers**. Every run starts from seed 42, so the stream replays from the top. That is the entire job of a seed: reproducible randomness. (Two batches *inside one run* would differ: the stream continues; a fresh run rewinds it.)
 
 ## Question 3
@@ -75,6 +109,17 @@ returns…
 a\) `2`   b) `5`   c) an error: the list is not sorted
 
 ## Answer 3
+
+```{python}
+#| eval: true
+#| output-location: fragment
+
+import statistics
+
+statistics.median([9, 2, 5])
+```
+
+. . .
 
 **b) `5`**: `median` sorts the values internally before picking the middle one. You never have to sort first; `5` is the middle of `2, 5, 9`.
 
@@ -134,7 +179,7 @@ Scan the QR or type the link:
 
 ![](assets/qr/ex_07_a.png){width=280}
 
-First **predict** what happens, then run it.
+**Any questions?** Let me know!
 
 ## Arrays from scratch
 
@@ -165,11 +210,9 @@ a\) `[1, 2, 3, 1, 2, 3]`   b) `[2, 4, 6]`   c) an error
 
 . . .
 
-[Predict first]{.question}. Pick a letter, then I reveal the answer.
+[Predict]{.question}. Pick a letter, then I reveal the answer.
 
 ## Answer: lists repeat, arrays compute
-
-**a) `[1, 2, 3, 1, 2, 3]`**. That's a plain **list**, and `* 2` on a list *repeats* it. Wrap it in an array and the same `* 2` does the math instead:
 
 ```{python}
 #| eval: true
@@ -179,6 +222,10 @@ import numpy as np
 print([1, 2, 3] * 2)              # list → repeated
 print(np.array([1, 2, 3]) * 2)    # array → doubled
 ```
+
+. . .
+
+**a) `[1, 2, 3, 1, 2, 3]`**. That's a plain **list**, and `* 2` on a list *repeats* it. Wrap it in an array and the same `* 2` does the math instead.
 
 . . .
 
@@ -196,11 +243,9 @@ a\) `[11, 22, 33]`, added pairwise   b) an error: lists don't add   c) `[1, 2, 3
 
 . . .
 
-[Predict first]{.question}. Pick a letter, then I reveal the answer.
+[Predict]{.question}. Pick a letter, then I reveal the answer.
 
 ## Answer: lists glue, arrays add
-
-**c) `[1, 2, 3, 10, 20, 30]`**. On lists, `+` **glues** them end to end, exactly like `* 2` repeated. On arrays, `+` adds element by element, first with first, second with second:
 
 ```{python}
 #| eval: true
@@ -210,6 +255,10 @@ import numpy as np
 print([1, 2, 3] + [10, 20, 30])                        # list → glued
 print(np.array([1, 2, 3]) + np.array([10, 20, 30]))    # array → added
 ```
+
+. . .
+
+**c) `[1, 2, 3, 10, 20, 30]`**. On lists, `+` **glues** them end to end, exactly like `* 2` repeated. On arrays, `+` adds element by element, first with first, second with second.
 
 . . .
 
@@ -225,7 +274,7 @@ Scan the QR or type the link:
 
 ![](assets/qr/ex_07_b.png){width=280}
 
-First **predict** what happens, then run it.
+**Any questions?** Let me know!
 
 # [Asking questions of data]{.flow} {.title}
 
@@ -279,11 +328,9 @@ a\) `True`   b) `2`   c) `[False, True, True]`
 
 . . .
 
-[Predict first]{.question}. Pick a letter, then I reveal the answer.
+[Predict]{.question}. Pick a letter, then I reveal the answer.
 
 ## Answer: True counts as 1
-
-**b) `2`**: `.sum()` adds the mask up, and each `True` is worth `1`, each `False` `0`. Two elements clear the bar, so the count is `2`:
 
 ```{python}
 #| eval: true
@@ -293,6 +340,10 @@ import numpy as np
 print(np.array([1, 5, 3]) > 2)            # [False  True  True]
 print((np.array([1, 5, 3]) > 2).sum())    # Trues add up to 2
 ```
+
+. . .
+
+**b) `2`**: `.sum()` adds the mask up, and each `True` is worth `1`, each `False` `0`. Two elements clear the bar, so the count is `2`.
 
 . . .
 
@@ -311,11 +362,9 @@ a\) an error: ambiguous truth value   b) `[ True False False  True]`   c) `True`
 
 . . .
 
-[Predict first]{.question}. Pick a letter, then I reveal the answer.
+[Predict]{.question}. Pick a letter, then I reveal the answer.
 
 ## Answer: `and` wants one truth, a mask has four
-
-**a) an error**. `and` asks the left side "are you true?", and a four-element mask has no single answer. Between two masks use `&`, and wrap each side in parentheses (`&` binds tighter than `>`):
 
 ```{python}
 #| eval: true
@@ -326,6 +375,10 @@ import numpy as np
 times = np.array([25, 41, 18, 33])
 print(times > 20 and times < 40)
 ```
+
+. . .
+
+**a) an error**. `and` asks the left side "are you true?", and a four-element mask has no single answer. Between two masks use `&`, and wrap each side in parentheses (`&` binds tighter than `>`):
 
 ```{python}
 #| eval: true
@@ -343,7 +396,7 @@ Scan the QR or type the link:
 
 ![](assets/qr/ex_07_c.png){width=280}
 
-First **predict** what happens, then run it.
+**Any questions?** Let me know!
 
 # [The days-by-zones grid]{.flow} {.title}
 
@@ -384,11 +437,9 @@ a\) `(20,)`   b) `(5, 4)`   c) `(4, 5)`
 
 . . .
 
-[Predict first]{.question}. Pick a letter, then I reveal the answer.
+[Predict]{.question}. Pick a letter, then I reveal the answer.
 
 ## Answer: rows first, then columns
-
-**b) `(5, 4)`**. `.shape` is always `(rows, columns)`: five inner lists make five rows, each with four numbers. `(20,)` would be one flat row of twenty; `20` is `.size`, the total count:
 
 ```{python}
 #| eval: true
@@ -403,6 +454,10 @@ grid = np.array([[ 9, 14, 11,  6],
 print(grid.shape)   # (rows, columns)
 print(grid.size)    # rows × columns
 ```
+
+. . .
+
+**b) `(5, 4)`**. `.shape` is always `(rows, columns)`: five inner lists make five rows, each with four numbers. `(20,)` would be one flat row of twenty; `20` is `.size`, the total count.
 
 . . .
 
@@ -456,7 +511,7 @@ Scan the QR or type the link:
 
 ![](assets/qr/ex_07_d.png){width=280}
 
-First **predict** what happens, then run it.
+**Any questions?** Let me know!
 
 ## Where does the max sit?
 
@@ -492,11 +547,9 @@ a\) `week.sum(axis=1)`   b) `week.sum()`   c) `week.sum(axis=0)`
 
 . . .
 
-[Predict first]{.question}. Pick a letter, then I reveal the answer.
+[Predict]{.question}. Pick a letter, then I reveal the answer.
 
 ## Answer: collapse the days, keep the zones
-
-**c) `week.sum(axis=0)`**. Four zones means four numbers, so the **days** must disappear: `axis=0` collapses DOWN the rows, one number per column (zone):
 
 ```{python}
 #| eval: true
@@ -508,6 +561,10 @@ week = np.array([[ 9, 14, 11,  6],
                  [13, 20, 16, 11]])
 print(week.sum(axis=0))
 ```
+
+. . .
+
+**c) `week.sum(axis=0)`**. Four zones means four numbers, so the **days** must disappear: `axis=0` collapses DOWN the rows, one number per column (zone).
 
 . . .
 
@@ -523,7 +580,7 @@ Scan the QR or type the link:
 
 ![](assets/qr/ex_07_e.png){width=280}
 
-First **predict** what happens, then run it.
+**Any questions?** Let me know!
 
 # [To the Lab]{.flow} {.title}
 

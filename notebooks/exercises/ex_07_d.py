@@ -28,12 +28,6 @@ def _(mo):
     mo.md(
         r"""
     # Quick exercise: collapsing a grid (5-10 min)
-
-    A 2D array has rows and columns, and `.sum()` needs to know which
-    one disappears: `axis=0` collapses DOWN the rows (one number per
-    column), `axis=1` collapses ACROSS the columns (one number per row).
-
-    **Predict** first: what does the cell below print, then run it.
     """
     )
     return
@@ -48,6 +42,20 @@ def _(mo):
             "*Download Python code*. Without a save first, the download is an empty file."
         ),
         kind="info",
+    )
+    return
+
+
+@app.cell(hide_code=True)
+def _(mo):
+    mo.md(
+        r"""
+    A 2D array has rows and columns, and `.sum()` needs to know which
+    one disappears: `axis=0` collapses DOWN the rows (one number per
+    column), `axis=1` collapses ACROSS the columns (one number per row).
+
+    **Predict** first: what does the cell below print, then run it.
+    """
     )
     return
 

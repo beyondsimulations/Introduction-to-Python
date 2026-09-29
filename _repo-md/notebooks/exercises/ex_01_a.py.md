@@ -29,9 +29,6 @@ def _(mo):
     mo.md(
         r"""
     # Quick exercise: the company register (5-10 min)
-
-    Tobi filled in the company register in a hurry and typed the name twice.
-    First **predict** what `print(company)` shows below, then run the cell.
     """
     )
     return
@@ -46,6 +43,17 @@ def _(mo):
             "*Download Python code*. Without a save first, the download is an empty file."
         ),
         kind="info",
+    )
+    return
+
+
+@app.cell(hide_code=True)
+def _(mo):
+    mo.md(
+        r"""
+    Tobi filled in the company register in a hurry and typed the name twice.
+    First **predict** what `print(company)` shows below, then run the cell.
+    """
     )
     return
 

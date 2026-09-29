@@ -29,15 +29,6 @@ def _(mo):
     mo.md(
         r"""
     # Quick exercise: the courier's battery (5-10 min)
-
-    The courier's phone starts the curfew shift at **100 %** and loses
-    **18 %** per delivery. Deliveries continue **as long as** the battery is at
-    least 20 %; below that the app refuses to send the next one.
-
-    With a `while` loop, count how many deliveries the courier makes and store
-    the count in `runs_exd`. Predict the number first. Start from
-    `battery` below, and use a cell-private name like `_battery` for the
-    shrinking copy so the given value stays untouched.
     """
     )
     return
@@ -52,6 +43,23 @@ def _(mo):
             "*Download Python code*. Without a save first, the download is an empty file."
         ),
         kind="info",
+    )
+    return
+
+
+@app.cell(hide_code=True)
+def _(mo):
+    mo.md(
+        r"""
+    The courier's phone starts the curfew shift at **100 %** and loses
+    **18 %** per delivery. Deliveries continue **as long as** the battery is at
+    least 20 %; below that the app refuses to send the next one.
+
+    With a `while` loop, count how many deliveries the courier makes and store
+    the count in `runs_exd`. Predict the number first. Start from
+    `battery` below, and use a cell-private name like `_battery` for the
+    shrinking copy so the given value stays untouched.
+    """
     )
     return
 

@@ -41,6 +41,29 @@ a\) a True/False column   b) only the Nord rows   c) an error from comparing tex
 
 ## Answer 1
 
+```{python}
+#| eval: true
+#| echo: false
+#| output: false
+%xmode Minimal
+import pandas as pd
+orders = pd.DataFrame({
+    "order_id":  [101, 102, 103, 104, 105],
+    "zone":      ["Nord", "Sued", "Nord", "Hafen", "Sued"],
+    "items":     [2, 1, 3, 1, 4],
+    "total_eur": [18.50, 7.20, 24.00, 6.80, 31.40],
+})
+```
+
+```{python}
+#| eval: true
+#| output-location: fragment
+
+orders[orders["zone"] == "Nord"]
+```
+
+. . .
+
 **b) only the Nord rows**: the True/False column is what the **inner** expression `orders["zone"] == "Nord"` makes. Wrapped in `orders[...]`, that mask keeps the rows where it's `True` and drops the rest.
 
 ## Question 2
@@ -55,6 +78,16 @@ a\) a summary table   b) an empty DataFrame   c) an `AttributeError`
 
 ## Answer 2
 
+```{python}
+#| eval: true
+#| error: true
+#| output-location: fragment
+
+orders.summarize()
+```
+
+. . .
+
 **c) `AttributeError`**: pandas has `.describe()`, not `.summarize()`. The AI invented a plausible name. An AI that sounds sure is not the same as an API that exists. You verify, every time.
 
 ## Question 3
@@ -68,6 +101,15 @@ shows…
 a\) the first five rows of the column, like `.head()`   b) count / mean / std / min / quartiles / max   c) the column's dtype, like `.dtypes`
 
 ## Answer 3
+
+```{python}
+#| eval: true
+#| output-location: fragment
+
+orders["total_eur"].describe()
+```
+
+. . .
 
 **b) count / mean / std / min / quartiles / max**. One line, the column's whole statistical fingerprint. That's the real method Tobi's AI was reaching for.
 
@@ -112,11 +154,9 @@ a\) `3, 5, 4`, the values themselves   b) `0, 1, 2`, the list positions   c) `1,
 
 . . .
 
-[Predict first]{.question}. Pick a letter, then I reveal the answer.
+[Predict]{.question}. Pick a letter, then I reveal the answer.
 
 ## Answer: the positions, from zero
-
-**b) `0, 1, 2`**: with one list, matplotlib takes it as **y** and invents x as the positions, and Python counts positions from 0:
 
 ```{python}
 #| eval: true
@@ -128,6 +168,10 @@ plt.plot([3, 5, 4], marker="o")
 plt.xticks([0, 1, 2])   # show only whole positions
 plt.gca()
 ```
+
+. . .
+
+**b) `0, 1, 2`**: with one list, matplotlib takes it as **y** and invents x as the positions, and Python counts positions from 0.
 
 . . .
 
@@ -164,7 +208,7 @@ Scan the QR or type the link:
 
 ![](assets/qr/ex_09_a.png){width=280}
 
-First **predict** what happens, then run it.
+**Any questions?** Let me know!
 
 ## A little styling: and only a little
 
@@ -197,11 +241,9 @@ a\) one chart with two lines   b) two separate charts, one per call   c) an erro
 
 . . .
 
-[Predict first]{.question}. Pick a letter, then I reveal the answer.
+[Predict]{.question}. Pick a letter, then I reveal the answer.
 
 ## Answer: one chart, two lines
-
-**a) one chart with two lines**, because matplotlib keeps drawing on the **current** figure until you start a new one with `plt.figure()`:
 
 ```{python}
 #| eval: true
@@ -213,6 +255,10 @@ plt.plot([3, 1, 2])
 plt.plot([1, 2, 3])   # same canvas: a second line, not a second chart
 plt.gca()
 ```
+
+. . .
+
+**a) one chart with two lines**, because matplotlib keeps drawing on the **current** figure until you start a new one with `plt.figure()`.
 
 . . .
 
@@ -228,7 +274,7 @@ Scan the QR or type the link:
 
 ![](assets/qr/ex_09_b.png){width=280}
 
-First **predict** what happens, then run it.
+**Any questions?** Let me know!
 
 # [The right chart for the question]{.flow} {.title}
 
@@ -323,11 +369,9 @@ a\) a zig-zag line hopping between the points in list order   b) the same dots a
 
 . . .
 
-[Predict first]{.question}. Pick a letter, then I reveal the answer.
+[Predict]{.question}. Pick a letter, then I reveal the answer.
 
 ## Answer: a zig-zag in list order
-
-**a) a zig-zag**: `plot` connects the points **in the order you gave them**, never mind the x values. Order 1 to order 2 to order 3, back and forth:
 
 ```{python}
 #| eval: true
@@ -341,6 +385,10 @@ plt.figure()
 plt.plot(minutes, euros, marker="o")   # joined in LIST order
 plt.gca()
 ```
+
+. . .
+
+**a) a zig-zag**: `plot` connects the points **in the order you gave them**, never mind the x values. Order 1 to order 2 to order 3, back and forth.
 
 . . .
 
@@ -362,11 +410,9 @@ a\) 4: one bar per number   b) 15: one bar per unit up to the max   c) about 2-3
 
 . . .
 
-[Predict first]{.question}. Pick a letter, then I reveal the answer.
+[Predict]{.question}. Pick a letter, then I reveal the answer.
 
 ## Answer: about 2-3 lumps
-
-**c) about 2-3 lumps**: the histogram groups the numbers into ranges and counts how many fall in each. `8` and `9` land in the same bucket, so that bar is two tall:
 
 ```{python}
 #| eval: true
@@ -387,6 +433,10 @@ plt.gca()
 
 . . .
 
+**c) about 2-3 lumps**: the histogram groups the numbers into ranges and counts how many fall in each. `8` and `9` land in the same bucket, so that bar is two tall.
+
+. . .
+
 **Bar counts CATEGORIES; histogram counts RANGES.** Same numbers, different question.
 
 # Your turn: 5-10 minutes {.loud-slide}
@@ -399,7 +449,7 @@ Scan the QR or type the link:
 
 ![](assets/qr/ex_09_c.png){width=280}
 
-First **predict** what happens, then run it.
+**Any questions?** Let me know!
 
 ::: {.callout-tip}
 A five-minute pause after this one, then the axis and the AI chart assistant.
@@ -446,11 +496,9 @@ a\) a flat line: 3 % stays 3 % on any axis   b) an error: `ylim` has to include 
 
 . . .
 
-[Predict first]{.question}. Pick a letter, then I reveal the answer.
+[Predict]{.question}. Pick a letter, then I reveal the answer.
 
 ## Answer: a climb across the chart
-
-**c) a climb across the chart**: the axis spans 35 units and the line rises 21 of them, **60 % of the picture** for 3 % of growth:
 
 ```{python}
 #| eval: true
@@ -462,6 +510,10 @@ plt.plot([1, 2, 3, 4], [710, 718, 724, 731], marker="o")
 plt.ylim(700, 735)   # 3 % of growth, 60 % of the chart
 plt.gca()
 ```
+
+. . .
+
+**c) a climb across the chart**: the axis spans 35 units and the line rises 21 of them, **60 % of the picture** for 3 % of growth.
 
 . . .
 
@@ -488,7 +540,7 @@ Scan the QR or type the link:
 
 ![](assets/qr/ex_09_d.png){width=280}
 
-First **predict** what happens, then run it.
+**Any questions?** Let me know!
 
 ## AI as your chart assistant
 
@@ -526,7 +578,7 @@ Scan the QR or type the link:
 
 ![](assets/qr/ex_09_e.png){width=280}
 
-First **predict** what happens, then run it.
+**Any questions?** Let me know!
 
 # Before Session X {.exercise-slide}
 

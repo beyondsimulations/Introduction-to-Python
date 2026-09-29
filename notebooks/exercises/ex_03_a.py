@@ -28,13 +28,6 @@ def _(mo):
     mo.md(
         r"""
     # Quick exercise: one receipt line, written once (5-10 min)
-
-    Fourteen pasted copies of `round(qty * price, 2)`, one per menu item,
-    and yesterday's ten-cent price change took Tobi an afternoon. He needs
-    one function that does the job for every item.
-
-    Write `line_total_exa(qty, price)` that returns `qty * price`,
-    rounded to 2 decimals.
     """
     )
     return
@@ -49,6 +42,21 @@ def _(mo):
             "*Download Python code*. Without a save first, the download is an empty file."
         ),
         kind="info",
+    )
+    return
+
+
+@app.cell(hide_code=True)
+def _(mo):
+    mo.md(
+        r"""
+    Fourteen pasted copies of `round(qty * price, 2)`, one per menu item,
+    and yesterday's ten-cent price change took Tobi an afternoon. He needs
+    one function that does the job for every item.
+
+    Write `line_total_exa(qty, price)` that returns `qty * price`,
+    rounded to 2 decimals.
+    """
     )
     return
 

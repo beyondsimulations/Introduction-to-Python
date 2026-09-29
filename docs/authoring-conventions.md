@@ -9,7 +9,8 @@
   `QUARTO_PROJECT_RENDER_ALL`), so single-file renders leave `_repo-md/` alone.
 
 ## Notebooks (see notebooks/_template.py for the skeleton)
-- Every notebook opens with the save callout right after the title cell, and
+- Every notebook opens with a title cell holding ONLY the `#` heading, then
+  the save callout (never below task or story text), and
   every download instruction says "Cmd/Ctrl+S, then menu → Download": marimo's
   WASM edit mode hands out an EMPTY .py until the notebook has been saved once
   (verified on 0.23.13 and 0.24.0).
@@ -167,9 +168,12 @@ One `# Warm-up {.loud-slide}` section (heading only, the "Three questions
 from Episode N" line lives on the `## Question 1` slide), then per question a `##` slide
 (question + options a-c) and a `##` answer slide (answer + one-line why).
 Everyone commits by hand vote BEFORE the reveal, predict-first, zero infra.
-Warm-up answer slides are prose-only (no live execution), deliberate: oral
-pace, three questions in ~10 min. In-block predict pairs DO re-run the code
-executable on the answer slide. Never annotate a question slide's code with
+Every answer slide, warm-up and in-block predict alike, re-runs the
+question's code FIRST (`#| eval: true`, `#| output-location: fragment`;
+`slide` for plots) and puts the answer + why BELOW it, behind a `. . .`
+pause so it appears after the output. Setup the question
+only implies (a DataFrame, `%xmode Minimal`) goes in a hidden cell
+(`#| echo: false`, `#| output: false`) above. Never annotate a question slide's code with
 spoiler comments, the misconception must survive until the reveal.
 Layout nicety (optional): short symbol lists may pair two items per bullet
 joined by a middle dot ("`<` less than · `>` greater than").
@@ -182,7 +186,7 @@ traceback into the slide, a bare crashing cell aborts the whole render.
 
     ## Open the exercise
     Scan the QR or type the link:
-    …URL + QR image (assets/qr/ex_XX_x.png, width 280) + "First **predict** what happens, then run it."
+    …URL + QR image (assets/qr/ex_XX_x.png, width 280) + "**Any questions?** Let me know!"
 The `#` slide is the heading alone; the link, QR and predict line go on the
 `##` slide after it.
 Add new exercises to `helpers/make_qr.py` EXERCISES and re-run it.

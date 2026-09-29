@@ -15,10 +15,6 @@ def _(mo):
     mo.md(
         r"""
     # Quick exercise: the founding form (5-10 min)
-
-    Tobi filled in the company register form, as Python variables. One line
-    has the wrong **value** and two have the wrong **type**. First **predict**
-    which, then fix all three.
     """
     )
     return
@@ -33,6 +29,18 @@ def _(mo):
             "*Download Python code*. Without a save first, the download is an empty file."
         ),
         kind="info",
+    )
+    return
+
+
+@app.cell(hide_code=True)
+def _(mo):
+    mo.md(
+        r"""
+    Tobi filled in the company register form, as Python variables. One line
+    has the wrong **value** and two have the wrong **type**. First **predict**
+    which, then fix all three.
+    """
     )
     return
 

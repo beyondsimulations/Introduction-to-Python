@@ -28,15 +28,6 @@ def _(mo):
     mo.md(
         r"""
     # Quick exercise: the courier route (5-10 min)
-
-    Tobi planned tonight's route as a list of stops, in order:
-
-    ```python
-    route = ["Mensa", "Library", "Dorm A", "Gym", "Dorm B"]
-    ```
-
-    The courier has already delivered the first **two** stops. Store the
-    stops still to come in `remaining_exa`, as one **slice** of `route`.
     """
     )
     return
@@ -51,6 +42,23 @@ def _(mo):
             "*Download Python code*. Without a save first, the download is an empty file."
         ),
         kind="info",
+    )
+    return
+
+
+@app.cell(hide_code=True)
+def _(mo):
+    mo.md(
+        r"""
+    Tobi planned tonight's route as a list of stops, in order:
+
+    ```python
+    route = ["Mensa", "Library", "Dorm A", "Gym", "Dorm B"]
+    ```
+
+    The courier has already delivered the first **two** stops. Store the
+    stops still to come in `remaining_exa`, as one **slice** of `route`.
+    """
     )
     return
 
@@ -100,8 +108,7 @@ def _(mo):
         r"""
     **Done? Then:** the Mensa and the last dorm are the two hubs where the
     courier picks up and hands over the bag. Store only the stops **between**
-    them, first and last dropped, in `middle_exa`. One slice, no `len()`:
-    count the end from the end.
+    them, first and last dropped, in `middle_exa`. Try it with one slice.
     """
     )
     return

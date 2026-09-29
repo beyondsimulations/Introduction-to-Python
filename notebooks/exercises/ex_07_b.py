@@ -28,12 +28,6 @@ def _(mo):
     mo.md(
         r"""
     # Quick exercise: vectorized arithmetic (5-10 min)
-
-    Tobi's 40-tab spreadsheet is on its way out. The investor wants
-    metrics, and numpy arrays are the replacement. The idea: an
-    operation on an array applies to *every element at once*, without a loop.
-
-    **Predict** first: what does the cell below print, then run it.
     """
     )
     return
@@ -48,6 +42,20 @@ def _(mo):
             "*Download Python code*. Without a save first, the download is an empty file."
         ),
         kind="info",
+    )
+    return
+
+
+@app.cell(hide_code=True)
+def _(mo):
+    mo.md(
+        r"""
+    Tobi's 40-tab spreadsheet is on its way out. The investor wants
+    metrics, and numpy arrays are the replacement. The idea: an
+    operation on an array applies to *every element at once*, without a loop.
+
+    **Predict** first: what does the cell below print, then run it.
+    """
     )
     return
 

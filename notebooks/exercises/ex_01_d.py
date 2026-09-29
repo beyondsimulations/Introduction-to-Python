@@ -28,11 +28,6 @@ def _(mo):
     mo.md(
         r"""
     # Quick exercise: the kitchen board (5-10 min)
-
-    The kitchen wants each order on its board as one short line. Using `qty`
-    and `item` below and an **f-string**, build `board_exd` so it reads
-    exactly `"3x Pad Thai"`. Predict first: what happens if you forget the
-    `f` before the quote?
     """
     )
     return
@@ -47,6 +42,19 @@ def _(mo):
             "*Download Python code*. Without a save first, the download is an empty file."
         ),
         kind="info",
+    )
+    return
+
+
+@app.cell(hide_code=True)
+def _(mo):
+    mo.md(
+        r"""
+    The kitchen wants each order on its board as one short line. Using `qty`
+    and `item` below and an **f-string**, build `board_exd` so it reads
+    exactly `"3x Pad Thai"`. Predict first: what happens if you forget the
+    `f` before the quote?
+    """
     )
     return
 

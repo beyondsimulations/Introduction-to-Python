@@ -29,10 +29,6 @@ def _(mo):
     mo.md(
         r"""
     # Quick exercise: fix the Order class (5-10 min)
-
-    Tobi wrote the startup's first class, an `Order` that's supposed to
-    compute its own total. Except a 2× Pad Thai order charges like a single
-    portion. Find the bug in `total()` and fix it.
     """
     )
     return
@@ -47,6 +43,18 @@ def _(mo):
             "*Download Python code*. Without a save first, the download is an empty file."
         ),
         kind="info",
+    )
+    return
+
+
+@app.cell(hide_code=True)
+def _(mo):
+    mo.md(
+        r"""
+    Tobi wrote the startup's first class, an `Order` that's supposed to
+    compute its own total. Except a 2× Pad Thai order charges like a single
+    portion. Find the bug in `total()` and fix it.
+    """
     )
     return
 

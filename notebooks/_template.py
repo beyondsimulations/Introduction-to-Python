@@ -16,9 +16,6 @@ def _(mo):
     mo.md(
         r"""
     # Notebook X.Y: TODO Title
-    **Estimated time: TODO min · Core exercises: TODO**
-
-    TODO: Story cold-open. 2-4 sentences, sitcom tone.
     """
     )
     return
@@ -47,6 +44,18 @@ def _(mo):
             "it, so fix that cell first."
         ),
         kind="info",
+    )
+    return
+
+
+@app.cell(hide_code=True)
+def _(mo):
+    mo.md(
+        r"""
+    **Estimated time: TODO min · Core exercises: TODO**
+
+    TODO: Story cold-open. 2-4 sentences, sitcom tone.
+    """
     )
     return
 

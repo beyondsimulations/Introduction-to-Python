@@ -28,16 +28,6 @@ def _(mo):
     mo.md(
         r"""
     # Quick exercise: which error? (5-10 min)
-
-    The checkout crashed live during the lunch rush. Tobi swears he only
-    changed "one tiny thing". Here's the crashing line:
-
-    ```python
-    qty_text = "3.5"
-    qty = int(qty_text)
-    ```
-
-    First a **trace** (predict, don't run yet): what does `int("3.5")` do?
     """
     )
     return
@@ -52,6 +42,24 @@ def _(mo):
             "*Download Python code*. Without a save first, the download is an empty file."
         ),
         kind="info",
+    )
+    return
+
+
+@app.cell(hide_code=True)
+def _(mo):
+    mo.md(
+        r"""
+    The checkout crashed live during the lunch rush. Tobi swears he only
+    changed "one tiny thing". Here's the crashing line:
+
+    ```python
+    qty_text = "3.5"
+    qty = int(qty_text)
+    ```
+
+    First a **trace** (predict, don't run yet): what does `int("3.5")` do?
+    """
     )
     return
 

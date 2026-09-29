@@ -35,6 +35,15 @@ a\) `17.8` b) `17.80` c) `Error`
 
 ## Answer 1
 
+``` python
+price = 8.90
+print(f"{price * 2:.2f}")
+```
+
+    17.80
+
+. . .
+
 **b)**: `:.2f` always prints two decimals. That's the whole receipt trick.
 
 ## Question 2
@@ -47,6 +56,14 @@ a\) `float` b) `int` c) `str`
 
 ## Answer 2
 
+``` python
+print(type("9.99"))
+```
+
+    <class 'str'>
+
+. . .
+
 **c)**: quotes make it text, no matter how numeric it looks. (Tobi learned this the hard way.)
 
 ## Question 3
@@ -58,6 +75,14 @@ print(7 // 2, 7 % 2)
 a\) `3.5 1` b) `3 1` c) `3 0.5`
 
 ## Answer 3
+
+``` python
+print(7 // 2, 7 % 2)
+```
+
+    3 1
+
+. . .
 
 **b)**: `//` floors, `%` gives the remainder. Together: "how many fit, what's left."
 
@@ -120,11 +145,9 @@ a\) `True` b) `False` c) `Error`
 
 . . .
 
-<span class="question">Predict first</span>. Pick a letter, then I reveal the answer.
+<span class="question">Predict</span>. Pick a letter, then I reveal the answer.
 
 ## Answer: `not` binds first
-
-**b) `False`**: `not` only flips the value right next to it, so Python reads `(not is_weekday) and before_curfew`, which is `False and False`. To flip the whole pair, put parentheses: `not (is_weekday and before_curfew)`.
 
 ``` python
 is_weekday = True
@@ -133,6 +156,10 @@ print(not is_weekday and before_curfew)
 ```
 
     False
+
+. . .
+
+**b) `False`**: `not` only flips the value right next to it, so Python reads `(not is_weekday) and before_curfew`, which is `False and False`. To flip the whole pair, put parentheses: `not (is_weekday and before_curfew)`.
 
 # Your turn: 5-10 minutes
 
@@ -144,7 +171,7 @@ Scan the QR or type the link:
 
 <img src="assets/qr/ex_02_a.png" width="280" />
 
-First **predict** what happens, then run it.
+**Any questions?** Let me know!
 
 ## `if`: do something only when
 
@@ -212,11 +239,9 @@ a\) `Gold` b) `Bronze` c) `Silver`
 
 . . .
 
-<span class="question">Predict first</span>. Pick a letter, then I reveal the answer.
+<span class="question">Predict</span>. Pick a letter, then I reveal the answer.
 
 ## Answer: the first true branch wins
-
-**c) `Silver`**: Python checks branches top to bottom and takes the first `True` one. `25 >= 5` is already `True`, so the `Gold` branch is never even looked at. Order your ladder from strictest to loosest.
 
 ``` python
 past_orders = 25
@@ -230,6 +255,10 @@ print(tier)
 ```
 
     Silver
+
+. . .
+
+**c) `Silver`**: Python checks branches top to bottom and takes the first `True` one. `25 >= 5` is already `True`, so the `Gold` branch is never even looked at. Order your ladder from strictest to loosest.
 
 . . .
 
@@ -248,11 +277,9 @@ a\) `False` b) `True` c) `Error`
 
 . . .
 
-<span class="question">Predict first</span>. Pick a letter, then I reveal the answer.
+<span class="question">Predict</span>. Pick a letter, then I reveal the answer.
 
 ## Answer: `22 < 22`
-
-**a) `False`**: `<` is **strict**. 22 is not *less than* 22, so at 22:00 sharp the kitchen is already closed. Use `<=` when the boundary should count.
 
 ``` python
 delivery_hour = 22
@@ -260,6 +287,10 @@ print(delivery_hour < 22)
 ```
 
     False
+
+. . .
+
+**a) `False`**: `<` is **strict**. 22 is not *less than* 22, so at 22:00 sharp the kitchen is already closed. Use `<=` when the boundary should count.
 
 # Your turn: 5-10 minutes
 
@@ -271,7 +302,7 @@ Scan the QR or type the link:
 
 <img src="assets/qr/ex_02_b.png" width="280" />
 
-First **predict** what happens, then run it.
+**Any questions?** Let me know!
 
 # <span class="flow">Doing Things Many Times</span>
 
@@ -374,11 +405,9 @@ a\) `4` b) `5` c) `1`
 
 . . .
 
-<span class="question">Predict first</span>. Pick a letter, then I reveal the answer.
+<span class="question">Predict</span>. Pick a letter, then I reveal the answer.
 
 ## Answer: `range(1, 5)` stops before 5
-
-**a) `4`**: `range(1, 5)` yields `1, 2, 3, 4`. The stop value is never included, no matter where you start. Order 5 never gets its ping.
 
 ``` python
 pings = 0
@@ -388,6 +417,10 @@ print(pings)
 ```
 
     4
+
+. . .
+
+**a) `4`**: `range(1, 5)` yields `1, 2, 3, 4`. The stop value is never included, no matter where you start. Order 5 never gets its ping.
 
 ## Looping over a string
 
@@ -434,11 +467,9 @@ a\) `10` b) `10` then `30` c) `30`
 
 . . .
 
-<span class="question">Predict first</span>. Pick a letter, then I reveal the answer.
+<span class="question">Predict</span>. Pick a letter, then I reveal the answer.
 
 ## Answer: the unindented `print`
-
-**c) `30`**: `print` sits outside the loop, so it runs once, after the loop finishes, showing the final total. Indent it and it would print on every pass. Indentation decides what repeats.
 
 ``` python
 total = 0
@@ -448,6 +479,10 @@ print(total)
 ```
 
     30
+
+. . .
+
+**c) `30`**: `print` sits outside the loop, so it runs once, after the loop finishes, showing the final total. Indent it and it would print on every pass. Indentation decides what repeats.
 
 # Your turn: 5-10 minutes
 
@@ -459,7 +494,7 @@ Scan the QR or type the link:
 
 <img src="assets/qr/ex_02_c.png" width="280" />
 
-First **predict** what happens, then run it.
+**Any questions?** Let me know!
 
 # <span class="flow">Repeat Until, and Clean Text</span>
 
@@ -532,7 +567,7 @@ Scan the QR or type the link:
 
 <img src="assets/qr/ex_02_d.png" width="280" />
 
-First **predict** what happens, then run it.
+**Any questions?** Let me know!
 
 ## Cleaning up text
 
@@ -569,11 +604,9 @@ a\) `Error` b) `[miso ramen]` c) `[  miso ramen  ]`
 
 . . .
 
-<span class="question">Predict first</span>. Pick a letter, then I reveal the answer.
+<span class="question">Predict</span>. Pick a letter, then I reveal the answer.
 
 ## Answer: `.strip()` hands back a copy
-
-**c) `[  miso ramen  ]`**: `.strip()` returns a **new** string and leaves `special` untouched; Tobi threw the clean copy away. Keep it by assigning: `special = special.strip()`.
 
 ``` python
 special = "  miso ramen  "
@@ -582,6 +615,10 @@ print("[" + special + "]")
 ```
 
     [  miso ramen  ]
+
+. . .
+
+**c) `[  miso ramen  ]`**: `.strip()` returns a **new** string and leaves `special` untouched; Tobi threw the clean copy away. Keep it by assigning: `special = special.strip()`.
 
 ## Trimming specific characters
 
@@ -611,17 +648,19 @@ a\) `MOIN` b) `moin` c) `Error`
 
 . . .
 
-<span class="question">Predict first</span>. Pick a letter, then I reveal the answer.
+<span class="question">Predict</span>. Pick a letter, then I reveal the answer.
 
 ## Answer: `"  MOIN  ".strip().lower()`
-
-**b) `moin`**: `.strip()` hands back a new string, so `.lower()` has something to work on. Chained methods run left to right, each acting on the previous one's output.
 
 ``` python
 print("  MOIN  ".strip().lower())
 ```
 
     moin
+
+. . .
+
+**b) `moin`**: `.strip()` hands back a new string, so `.lower()` has something to work on. Chained methods run left to right, each acting on the previous one's output.
 
 # Your turn: 5-10 minutes
 
@@ -633,7 +672,7 @@ Scan the QR or type the link:
 
 <img src="assets/qr/ex_02_e.png" width="280" />
 
-First **predict** what happens, then run it.
+**Any questions?** Let me know!
 
 # Checkpoint 0
 

@@ -29,15 +29,6 @@ def _(mo):
     mo.md(
         r"""
     # Quick exercise: verifying AI code (5-10 min)
-
-    AI wrote this for Tobi. Two things are wrong: one method doesn't
-    exist, one comparison quietly returns nothing. Fix both, and you've
-    done today's most important professional skill: verifying output.
-
-    Filtering a DataFrame works just like the NumPy masks from last
-    session: `df[df["col"] == value]` keeps the matching rows.
-
-    **Predict** first: what does the cell below print, then run it.
     """
     )
     return
@@ -52,6 +43,23 @@ def _(mo):
             "*Download Python code*. Without a save first, the download is an empty file."
         ),
         kind="info",
+    )
+    return
+
+
+@app.cell(hide_code=True)
+def _(mo):
+    mo.md(
+        r"""
+    AI wrote this for Tobi. Two things are wrong: one method doesn't
+    exist, one comparison quietly returns nothing. Fix both, and you've
+    done today's most important professional skill: verifying output.
+
+    Filtering a DataFrame works just like the NumPy masks from last
+    session: `df[df["col"] == value]` keeps the matching rows.
+
+    **Predict** first: what does the cell below print, then run it.
+    """
     )
     return
 

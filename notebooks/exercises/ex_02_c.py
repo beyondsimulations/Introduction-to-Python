@@ -28,15 +28,6 @@ def _(mo):
     mo.md(
         r"""
     # Quick exercise: loop the minutes (5-10 min)
-
-    First a **trace** (predict, don't run yet): what does this print?
-
-    ```python
-    total = 0
-    for p in [3, 5]:
-        total = total + p
-    print(total)
-    ```
     """
     )
     return
@@ -51,6 +42,23 @@ def _(mo):
             "*Download Python code*. Without a save first, the download is an empty file."
         ),
         kind="info",
+    )
+    return
+
+
+@app.cell(hide_code=True)
+def _(mo):
+    mo.md(
+        r"""
+    First a **trace** (predict, don't run yet): what does this print?
+
+    ```python
+    total = 0
+    for p in [3, 5]:
+        total = total + p
+    print(total)
+    ```
+    """
     )
     return
 

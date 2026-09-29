@@ -17,7 +17,7 @@ Spec: `docs/superpowers/specs/2026-09-09-session-length-and-notebook-onboarding-
 - Tobi's bugs: logic/runtime only, always terminating.
 - MC / predict questions: options a–c, correct answer position varied, option lengths within 1.8x, no spoiler comments on question slides; `uv run python helpers/check_quiz_balance.py` must pass.
 - A predict answer slide re-runs the code (`{python}` cell with `#| eval: true` / `#| output-location: fragment`); if the reveal crashes on purpose, add `#| error: true`.
-- QR slide exact form (copy from an existing one in the same deck): `# Your turn — 5–10 minutes {.exercise-slide}` + URL line + `![](assets/qr/ex_XX_x.png){width=280}` + "First **predict** what happens, then run it."
+- QR slide exact form (copy from an existing one in the same deck): `# Your turn — 5–10 minutes {.exercise-slide}` + URL line + `![](assets/qr/ex_XX_x.png){width=280}` + "**Any questions?** Let me know!"
 - Exercise notebook title: `# Quick exercise: <name> (5–10 min)`.
 - Do not touch `_repo-md/`, `_site/`, `helpers/make_qr.py`, or QR PNGs (coordinator does those).
 
@@ -45,7 +45,7 @@ The misconception column is a default; a worker may replace it with a better one
 - [ ] **Step 2: Add the stretch part to every existing exercise notebook.** After the core check cell insert: a markdown cell `**Done? Then:** <second task>` (reuses the core variables; a real step up: a second rule, an edge case, or a bug in Tobi's version), a your-code cell with the new answer pre-defined as `None` and `# YOUR CODE BELOW`, and its own check cell (same verdict style). Keep the closing "*Nothing to save. This was a sandbox.*" cell last.
 - [ ] **Step 3: Create the new exercise notebook(s)** for the mid-block stop, same shape (title, save callout, core task + check, stretch + check, closing cell), on the concept of the slides just before the stop. Copy the save-callout cell verbatim from a sibling.
 - [ ] **Step 4: Insert the QR slide(s)** at the placement, exact form, pointing at the new letter.
-- [ ] **Step 5: Add one predict pair per block** (`## Predict: …` question slide with code block + `a\) … b) … c) …` + `. . .` + `[Predict first]{.question}. Pick a letter, then I reveal the answer.`; `## Answer: …` slide with the bold letter, one-line why, executable cell). Place it at the slide where that misconception lives.
+- [ ] **Step 5: Add one predict pair per block** (`## Predict: …` question slide with code block + `a\) … b) … c) …` + `. . .` + `[Predict]{.question}. Pick a letter, then I reveal the answer.`; `## Answer: …` slide with the bold letter, one-line why, executable cell). Place it at the slide where that misconception lives.
 - [ ] **Step 6: Verify**
   - `uv run python helpers/validate_notebooks.py` → all ok.
   - `uv run python helpers/check_quiz_balance.py` → exit 0 (fix option lengths/positions if not).

@@ -29,15 +29,6 @@ def _(mo):
     mo.md(
         r"""
     # Quick exercise: seeded randomness (5-10 min)
-
-    Normally `random` hands you a new sequence every time a cell reruns.
-    Sometimes you want the opposite: the *same* sequence, every single
-    time, so a demo or a test is reproducible. `random.seed(n)` fixes the
-    starting point of the sequence. Anyone who seeds with the same number
-    sees the same "random" results.
-
-    **Predict** first: will the dice rolls below change when the cell
-    reruns? Then run it (twice, if you can).
     """
     )
     return
@@ -52,6 +43,23 @@ def _(mo):
             "*Download Python code*. Without a save first, the download is an empty file."
         ),
         kind="info",
+    )
+    return
+
+
+@app.cell(hide_code=True)
+def _(mo):
+    mo.md(
+        r"""
+    Normally `random` hands you a new sequence every time a cell reruns.
+    Sometimes you want the opposite: the *same* sequence, every single
+    time, so a demo or a test is reproducible. `random.seed(n)` fixes the
+    starting point of the sequence. Anyone who seeds with the same number
+    sees the same "random" results.
+
+    **Predict** first: will the dice rolls below change when the cell
+    reruns? Then run it (twice, if you can).
+    """
     )
     return
 

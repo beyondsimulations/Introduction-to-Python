@@ -29,16 +29,6 @@ def _(mo):
     mo.md(
         r"""
     # Quick exercise: the right chart for categories (5-10 min)
-
-    Line charts show change over TIME. Zones aren't a timeline: they're
-    categories to compare, and `plt.bar(labels, heights)` is the chart
-    for that job.
-
-    Same marimo rule as last time: the LAST expression in a cell
-    displays, so chart cells end with `plt.gca()`.
-
-    **Predict** first: look at the two demo numbers below: which bar
-    will be taller?
     """
     )
     return
@@ -53,6 +43,24 @@ def _(mo):
             "*Download Python code*. Without a save first, the download is an empty file."
         ),
         kind="info",
+    )
+    return
+
+
+@app.cell(hide_code=True)
+def _(mo):
+    mo.md(
+        r"""
+    Line charts show change over TIME. Zones aren't a timeline: they're
+    categories to compare, and `plt.bar(labels, heights)` is the chart
+    for that job.
+
+    Same marimo rule as last time: the LAST expression in a cell
+    displays, so chart cells end with `plt.gca()`.
+
+    **Predict** first: look at the two demo numbers below: which bar
+    will be taller?
+    """
     )
     return
 

@@ -16,11 +16,6 @@ def _(mo):
     mo.md(
         r"""
     # Quick exercise: the sticker budget (5-10 min)
-
-    Tobi has 300 EUR left and wants to know how much survives after buying
-    12 boxes at 25 EUR each. **Predict the result of `300 - 12 * 25` before
-    you run the cell below**. Does multiplication happen before or after
-    subtraction?
     """
     )
     return
@@ -35,6 +30,19 @@ def _(mo):
             "*Download Python code*. Without a save first, the download is an empty file."
         ),
         kind="info",
+    )
+    return
+
+
+@app.cell(hide_code=True)
+def _(mo):
+    mo.md(
+        r"""
+    Tobi has 300 EUR left and wants to know how much survives after buying
+    12 boxes at 25 EUR each. **Predict the result of `300 - 12 * 25` before
+    you run the cell below**. Does multiplication happen before or after
+    subtraction?
+    """
     )
     return
 

@@ -136,7 +136,7 @@ Scan the QR or type the link:
 
 <img src="assets/qr/ex_06_a.png" width="280" />
 
-First **predict** what happens, then run it.
+**Any questions?** Let me know!
 
 ## Aliases: a shorter name
 
@@ -169,11 +169,9 @@ a\) prints `706.858…` b) an `AttributeError` c) a `NameError`
 
 . . .
 
-<span class="question">Predict first</span>. Pick a letter, then I reveal the answer.
+<span class="question">Predict</span>. Pick a letter, then I reveal the answer.
 
 ## Answer: `pi` exists, `math` doesn't
-
-**c) a `NameError`**: `from math import pi` puts exactly one name on your desk, `pi`. Nobody ever created a name called `math`, so `math.pi` fails at the first dot:
 
 ``` python
 from math import pi
@@ -184,6 +182,10 @@ print(math.pi * radius ** 2)
 
 <pre><span class="ansi-red-fg">NameError</span><span class="ansi-red-fg">:</span> name 'math' is not defined
 </pre>
+
+. . .
+
+**c) a `NameError`**: `from math import pi` puts exactly one name on your desk, `pi`. Nobody ever created a name called `math`, so `math.pi` fails at the first dot.
 
 . . .
 
@@ -225,11 +227,9 @@ a\) `-3` b) `-2` c) an error
 
 . . .
 
-<span class="question">Predict first</span>. Pick a letter, then I reveal the answer.
+<span class="question">Predict</span>. Pick a letter, then I reveal the answer.
 
 ## Answer: floor goes down, not toward zero
-
-**a) `-3`**: `floor` always heads **down** the number line, toward more negative. From `-2.5`, down is `-3`, not the `-2` you'd get by rounding toward zero:
 
 ``` python
 import math
@@ -237,6 +237,10 @@ print(math.floor(-2.5))   # down the number line → -3
 ```
 
     -3
+
+. . .
+
+**a) `-3`**: `floor` always heads **down** the number line, toward more negative. From `-2.5`, down is `-3`, not the `-2` you'd get by rounding toward zero.
 
 . . .
 
@@ -252,7 +256,7 @@ Scan the QR or type the link:
 
 <img src="assets/qr/ex_06_b.png" width="280" />
 
-First **predict** what happens, then run it.
+**Any questions?** Let me know!
 
 # <span class="flow">Rehearsing luck</span>
 
@@ -272,10 +276,10 @@ random.shuffle(queue)                         # reorders the list in place
 print(queue)
 ```
 
-    0.39630124936176336
-    7
+    0.41717922252519357
+    3
     tea
-    [3, 1, 4, 2, 5]
+    [3, 1, 2, 5, 4]
 
 . . .
 
@@ -292,8 +296,8 @@ print([random.randint(1, 20) for _ in range(5)])   # _ : a loop name we never us
 print([random.randint(1, 20) for _ in range(5)])   # ...and again, different!
 ```
 
-    [17, 19, 7, 10, 17]
-    [2, 18, 10, 4, 19]
+    [8, 6, 16, 4, 16]
+    [9, 9, 10, 11, 5]
 
 . . .
 
@@ -341,11 +345,9 @@ a\) `False`: `choice` picks freely, the seed only steers `randint` b) `True`: sa
 
 . . .
 
-<span class="question">Predict first</span>. Pick a letter, then I reveal the answer.
+<span class="question">Predict</span>. Pick a letter, then I reveal the answer.
 
 ## Answer: same rider
-
-**b) `True`**. Every `random` tool draws from the same stream, and re-seeding rewinds it to the start. `choice` is no exception: after `seed(3)` it lands on the same item every time:
 
 ``` python
 import random
@@ -363,6 +365,10 @@ print(first, second)   # Ben Ben: the seed makes every tool in the box repeatabl
 
     True
     Ben Ben
+
+. . .
+
+**b) `True`**. Every `random` tool draws from the same stream, and re-seeding rewinds it to the start. `choice` is no exception: after `seed(3)` it lands on the same item every time.
 
 ## Predict: seeded once, built twice
 
@@ -383,11 +389,9 @@ a\) different: the second list continues where the first stopped b) equal: the s
 
 . . .
 
-<span class="question">Predict first</span>. Pick a letter, then I reveal the answer.
+<span class="question">Predict</span>. Pick a letter, then I reveal the answer.
 
 ## Answer: different
-
-**a) different**. A seed doesn't freeze `random`, it fixes the whole sequence. The first list eats the first three numbers of the stream; the second list simply continues from number four:
 
 ``` python
 import random
@@ -405,6 +409,10 @@ print(second)   # [8, 8, 5]: the stream carries on
 
 . . .
 
+**a) different**. A seed doesn't freeze `random`, it fixes the whole sequence. The first list eats the first three numbers of the stream; the second list simply continues from number four.
+
+. . .
+
 To get the *same* list twice, you re-seed before each run, and that rewinds the stream to the start. One seed, one fixed sequence: that's the entire job of a seed.
 
 # Your turn: 5-10 minutes
@@ -417,7 +425,7 @@ Scan the QR or type the link:
 
 <img src="assets/qr/ex_06_c.png" width="280" />
 
-First **predict** what happens, then run it.
+**Any questions?** Let me know!
 
 # <span class="flow">To the Lab</span>
 

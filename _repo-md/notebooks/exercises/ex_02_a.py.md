@@ -29,13 +29,6 @@ def _(mo):
     mo.md(
         r"""
     # Quick exercise: is the kitchen open? (5-10 min)
-
-    The city's curfew starts at **22:00**. The kitchen opens at **11:00**.
-    An order comes in at `delivery_hour` below.
-
-    Write **one comparison expression** (no `if` yet, that comes next) that is
-    `True` when the kitchen is open and `False` otherwise, and store it in
-    `open_exa`. Predict the value before you run it.
     """
     )
     return
@@ -50,6 +43,21 @@ def _(mo):
             "*Download Python code*. Without a save first, the download is an empty file."
         ),
         kind="info",
+    )
+    return
+
+
+@app.cell(hide_code=True)
+def _(mo):
+    mo.md(
+        r"""
+    The city's curfew starts at **22:00**. The kitchen opens at **11:00**.
+    An order comes in at `delivery_hour` below.
+
+    Write **one comparison expression** (no `if` yet, that comes next) that is
+    `True` when the kitchen is open and `False` otherwise, and store it in
+    `open_exa`. Predict the value before you run it.
+    """
     )
     return
 

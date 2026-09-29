@@ -11,20 +11,6 @@ def _(mo):
     mo.md(
         r"""
     # Notebook 4.1: The Menu Grows Up
-    **Core exercises: 11 (+ 1 trace, 2 bonus).** Done early? You're free to go. Not done when the session ends? The rest is homework.
-
-    The menu has outgrown Tobi. Last week he was tracking prices in seventeen
-    loose variables (`price1`, `price2`, `price_final`, and the notorious
-    `price_final_FINAL2`) and nobody, Tobi included, could remember which was
-    which. When a supplier raised the falafel price, he changed the wrong one and
-    the till undercharged all afternoon.
-
-    Today the data gets a **shape**. You'll line orders up in a **list** (ordered,
-    sliceable), map dish names to prices in a **dictionary** (look one up
-    instantly), count unique regulars with a **set**, reach into **nested**
-    dictionaries, and rewrite the whole menu in a single **comprehension**. It
-    ends with a courier run across campus. Tobi's forgotten wrap has to reach
-    the dorms before it achieves sentience.
     """
     )
     return
@@ -53,6 +39,29 @@ def _(mo):
             "it, so fix that cell first."
         ),
         kind="info",
+    )
+    return
+
+
+@app.cell(hide_code=True)
+def _(mo):
+    mo.md(
+        r"""
+    **Core exercises: 11 (+ 1 trace, 2 bonus).** Done early? You're free to go. Not done when the session ends? The rest is homework.
+
+    The menu has outgrown Tobi. Last week he was tracking prices in seventeen
+    loose variables (`price1`, `price2`, `price_final`, and the notorious
+    `price_final_FINAL2`) and nobody, Tobi included, could remember which was
+    which. When a supplier raised the falafel price, he changed the wrong one and
+    the till undercharged all afternoon.
+
+    Today the data gets a **shape**. You'll line orders up in a **list** (ordered,
+    sliceable), map dish names to prices in a **dictionary** (look one up
+    instantly), count unique regulars with a **set**, reach into **nested**
+    dictionaries, and rewrite the whole menu in a single **comprehension**. It
+    ends with a courier run across campus. Tobi's forgotten wrap has to reach
+    the dorms before it achieves sentience.
+    """
     )
     return
 
@@ -1081,22 +1090,15 @@ def _(mo):
         r"""
     ### Bonus: count the day's portions (not required)
 
-    The day's orders arrived as one text log. Each line is a dish, a semicolon,
-    and how many portions:
+    The day's orders arrived as a log of `(dish, portions)` pairs:
 
-    ```
-    Falafel Wrap;2
-    Pad Thai;1
-    Founders Bowl;3
-    Miso Ramen;1
+    ```python
+    order_log = [("Falafel Wrap", 2), ("Pad Thai", 1),
+                 ("Founders Bowl", 3), ("Miso Ramen", 1)]
     ```
 
-    It's given below as the string `order_log`. Add up **all the portions** across
-    every line and store the total in `portions_ex60`.
-
-    *(Why a string and not a file? In the browser, notebooks can't just `open()` a
-    file, so day-to-day data rides along as text like this. You'll load real
-    files later in the course, with pandas.)*
+    It's given below as `order_log`. Add up **all the portions** across every
+    order and store the total in `portions_ex60`.
     """
     )
     return
@@ -1104,13 +1106,14 @@ def _(mo):
 
 @app.cell
 def _():
-    order_log = "Falafel Wrap;2\nPad Thai;1\nFounders Bowl;3\nMiso Ramen;1"
+    order_log = [("Falafel Wrap", 2), ("Pad Thai", 1),
+                 ("Founders Bowl", 3), ("Miso Ramen", 1)]
     return (order_log,)
 
 
 @app.cell
 def _():
-    # YOUR CODE BELOW: total the portions (the number after each semicolon)
+    # YOUR CODE BELOW: total the portions (the number in each pair)
     portions_ex60 = None
     return (portions_ex60,)
 
@@ -1123,19 +1126,19 @@ def _(mo, portions_ex60, show_result):
         _preview = ""
     elif not isinstance(portions_ex60, int):
         ex60_ok = False
-        _msg = "Wrong (Bonus): the total should be a whole **number**. Each portion count is text like `\"2\"`, so turn it into an `int` before adding."
+        _msg = "Wrong (Bonus): the total should be a whole **number**, not a list or a text."
         _preview = show_result(portions_ex60)
     elif portions_ex60 == 7:
         ex60_ok = True
-        _msg = "Correct (Bonus): **7** portions (2 + 1 + 3 + 1). `.splitlines()` gives you the lines, `.split(\";\")` splits each into dish and count."
+        _msg = "Correct (Bonus): **7** portions (2 + 1 + 3 + 1). Two names in the `for` unpack each pair into dish and count."
         _preview = show_result(portions_ex60)
     elif portions_ex60 == 4:
         ex60_ok = False
-        _msg = "Wrong (Bonus): 4 is the number of *lines*, not the number of *portions*. Add up the number after each semicolon, not the count of orders."
+        _msg = "Wrong (Bonus): 4 is the number of *orders*, not the number of *portions*. Add up the number in each pair, not the pairs themselves."
         _preview = show_result(portions_ex60)
     else:
         ex60_ok = False
-        _msg = "Wrong (Bonus): not 7. Split each line on `\";\"`, take the second piece, turn it into an `int`, and sum them all."
+        _msg = "Wrong (Bonus): not 7. Take the count out of every pair and add them all up."
         _preview = show_result(portions_ex60)
     mo.callout(mo.md(_msg + _preview), kind="success" if ex60_ok else "warn")
     return
@@ -1145,8 +1148,8 @@ def _(mo, portions_ex60, show_result):
 def _(mo):
     mo.accordion(
         {
-            "Hint 1 (a nudge)": "Start a running total at 0. Loop over `order_log.splitlines()`; for each line, `line.split(\";\")` gives `[dish, count]`. The count is still text, so wrap it in `int(...)` before adding.",
-            "Hint 2 (the structure)": "portions_ex60 = 0\nfor line in order_log.splitlines():\n _parts = line.split(\";\")\n portions_ex60 = portions_ex60 + int(_parts[___]) (fill the index of the count)",
+            "Hint 1 (a nudge)": "Start a running total at 0. Give the `for` two names, one for the dish and one for the count, and add each count to the total.",
+            "Hint 2 (the structure)": "portions_ex60 = 0\nfor _dish, _count in order_log:\n portions_ex60 = portions_ex60 + ___ (fill the name that holds the count)",
         }
     )
     return

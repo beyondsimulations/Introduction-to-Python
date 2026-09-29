@@ -10,14 +10,6 @@ def _(mo):
     mo.md(
         r"""
     # Notebook 1.1: The Founding
-    **Core exercises: 10 (+ 2 bonus).** Done early? You're free to go. Not done when the session ends? The rest is homework.
-
-    Congratulations: as of today you are the (co-)founder of a campus
-    food-delivery startup. It has **no name**, **no menu**, and a co-founder,
-    **Tobi**, who has already blown most of the marketing budget on
-    stickers (300 EUR is what's left). Your job today: give the company a name, price a menu, run the
-    first revenue numbers, and find out whether Tobi's "everything costs 9.99"
-    theory survives contact with arithmetic.
     """
     )
     return
@@ -46,6 +38,23 @@ def _(mo):
             "it, so fix that cell first."
         ),
         kind="info",
+    )
+    return
+
+
+@app.cell(hide_code=True)
+def _(mo):
+    mo.md(
+        r"""
+    **Core exercises: 10 (+ 2 bonus).** Done early? You're free to go. Not done when the session ends? The rest is homework.
+
+    Congratulations: as of today you are the (co-)founder of a campus
+    food-delivery startup. It has **no name**, **no menu**, and a co-founder,
+    **Tobi**, who has already blown most of the marketing budget on
+    stickers (300 EUR is what's left). Your job today: give the company a name, price a menu, run the
+    first revenue numbers, and find out whether Tobi's "everything costs 9.99"
+    theory survives contact with arithmetic.
+    """
     )
     return
 

@@ -29,14 +29,6 @@ def _(mo):
     mo.md(
         r"""
     # Quick exercise: the order queue (5-10 min)
-
-    The kitchen keeps today's orders in a queue:
-
-    ```python
-    queue = ["Pad Thai", "Founders Bowl", "Pizza Calzone", "Miso Ramen"]
-    ```
-
-    First a **trace** (predict, don't run yet): what is `queue[-1]`?
     """
     )
     return
@@ -51,6 +43,22 @@ def _(mo):
             "*Download Python code*. Without a save first, the download is an empty file."
         ),
         kind="info",
+    )
+    return
+
+
+@app.cell(hide_code=True)
+def _(mo):
+    mo.md(
+        r"""
+    The kitchen keeps today's orders in a queue:
+
+    ```python
+    queue = ["Pad Thai", "Founders Bowl", "Pizza Calzone", "Miso Ramen"]
+    ```
+
+    First a **trace** (predict, don't run yet): what is `queue[-1]`?
+    """
     )
     return
 

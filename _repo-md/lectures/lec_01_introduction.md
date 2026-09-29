@@ -197,11 +197,9 @@ a\) `Error` b) `300` c) `250`
 
 . . .
 
-<span class="question">Predict first</span>. Pick a letter, then I reveal the answer.
+<span class="question">Predict</span>. Pick a letter, then I reveal the answer.
 
 ## Answer: reassigning a name
-
-**c) `250`**: the right side is computed first (`300 - 50`), then the name is pointed at the new value. A name always shows its *latest* value.
 
 ``` python
 sticker_budget = 300
@@ -210,6 +208,10 @@ print(sticker_budget)
 ```
 
     250
+
+. . .
+
+**c) `250`**: the right side is computed first (`300 - 50`), then the name is pointed at the new value. A name always shows its *latest* value.
 
 ## Naming rules
 
@@ -234,7 +236,7 @@ Scan the QR or type the link:
 
 <img src="assets/qr/ex_01_a.png" width="280" />
 
-First **predict** what happens, then run it.
+**Any questions?** Let me know!
 
 ## Four basic types
 
@@ -271,17 +273,19 @@ a\) `<class 'float'>` b) `<class 'int'>` c) `<class 'str'>`
 
 . . .
 
-<span class="question">Predict first</span>. Pick a letter, then I reveal the answer.
+<span class="question">Predict</span>. Pick a letter, then I reveal the answer.
 
 ## Answer: `type("9.99")`
-
-**c) `str`**: the quotes make it text, however numeric it looks. Tobi's "price" can't be multiplied until it is converted to a number.
 
 ``` python
 print(type("9.99"))
 ```
 
     <class 'str'>
+
+. . .
+
+**c) `str`**: the quotes make it text, however numeric it looks. Tobi's "price" can't be multiplied until it is converted to a number.
 
 # Your turn: 5-10 minutes
 
@@ -293,7 +297,7 @@ Scan the QR or type the link:
 
 <img src="assets/qr/ex_01_b.png" width="280" />
 
-First **predict** what happens, then run it.
+**Any questions?** Let me know!
 
 # <span class="flow">Numbers & Arithmetic</span>
 
@@ -362,17 +366,19 @@ a\) `0` b) `7200` c) `Error`
 
 . . .
 
-<span class="question">Predict first</span>. Pick a letter, then I reveal the answer.
+<span class="question">Predict</span>. Pick a letter, then I reveal the answer.
 
 ## Answer: `300 - 12 * 25`
-
-**a) `0`**: `12 * 25 = 300` happens first, so the budget is wiped out. Reading left to right would give `7200`, but Python follows precedence, not reading order.
 
 ``` python
 print(300 - 12 * 25)
 ```
 
     0
+
+. . .
+
+**a) `0`**: `12 * 25 = 300` happens first, so the budget is wiped out. Reading left to right would give `7200`, but Python follows precedence, not reading order.
 
 ## Predict: splitting a 10 EUR order
 
@@ -386,17 +392,19 @@ a\) `5.0` b) `5` c) `Error`
 
 . . .
 
-<span class="question">Predict first</span>. Pick a letter, then I reveal the answer.
+<span class="question">Predict</span>. Pick a letter, then I reveal the answer.
 
 ## Answer: `10 / 2`
-
-**a) `5.0`**: `/` always returns a `float`, even when the division comes out even. For a whole number, use `//`.
 
 ``` python
 print(10 / 2)
 ```
 
     5.0
+
+. . .
+
+**a) `5.0`**: `/` always returns a `float`, even when the division comes out even. For a whole number, use `//`.
 
 ## Whole numbers vs decimals
 
@@ -436,7 +444,7 @@ Scan the QR or type the link:
 
 <img src="assets/qr/ex_01_c.png" width="280" />
 
-First **predict** what happens, then run it.
+**Any questions?** Let me know!
 
 # <span class="flow">Strings & f-strings</span>
 
@@ -483,17 +491,19 @@ a\) `Error` b) `34` c) `7`
 
 . . .
 
-<span class="question">Predict first</span>. Pick a letter, then I reveal the answer.
+<span class="question">Predict</span>. Pick a letter, then I reveal the answer.
 
 ## Answer: `"3" + "4"`
-
-**b) `34`**: with quotes, these are strings, and `+` on strings glues them together. To add numbers, drop the quotes (or convert with `int()`).
 
 ``` python
 print("3" + "4")
 ```
 
     34
+
+. . .
+
+**b) `34`**: with quotes, these are strings, and `+` on strings glues them together. To add numbers, drop the quotes (or convert with `int()`).
 
 ## f-strings: the clean way
 
@@ -522,7 +532,7 @@ Scan the QR or type the link:
 
 <img src="assets/qr/ex_01_d.png" width="280" />
 
-First **predict** what happens, then run it.
+**Any questions?** Let me know!
 
 ## Formatting money with `:.2f`
 
@@ -565,11 +575,9 @@ a\) `6` and `6` b) `6` and `2 * 3` c) `2 * 3` and `2 * 3`
 
 . . .
 
-<span class="question">Predict first</span>. Pick a letter, then I reveal the answer.
+<span class="question">Predict</span>. Pick a letter, then I reveal the answer.
 
 ## Answer: `f"{2 * 3}"` vs `"2 * 3"`
-
-**b) `6` and `2 * 3`**: the f-string evaluates what's in the braces; plain quotes keep the text literal. The `f` and the `{ }` are what do the work.
 
 ``` python
 print(f"{2 * 3}")
@@ -578,6 +586,10 @@ print("2 * 3")
 
     6
     2 * 3
+
+. . .
+
+**b) `6` and `2 * 3`**: the f-string evaluates what's in the braces; plain quotes keep the text literal. The `f` and the `{ }` are what do the work.
 
 # Your turn: 5-10 minutes
 
@@ -589,7 +601,7 @@ Scan the QR or type the link:
 
 <img src="assets/qr/ex_01_e.png" width="280" />
 
-First **predict** what happens, then run it.
+**Any questions?** Let me know!
 
 # <span class="flow">To the Lab</span>
 

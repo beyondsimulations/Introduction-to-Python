@@ -117,11 +117,9 @@ a\) `44.0`   b) `14.0`   c) `Error`
 
 . . .
 
-[Predict first]{.question}. Pick a letter, then I reveal the answer.
+[Predict]{.question}. Pick a letter, then I reveal the answer.
 
 ## Answer: position decides, not intent
-
-**b) `14.0`**: arguments land on parameters **by position**. `10` becomes `bill`, `40` becomes `percent`: a 40 % tip on 10 EUR. Python cannot read what Tobi meant, only where he put it.
 
 ```{python}
 #| eval: true
@@ -133,6 +131,10 @@ def with_tip(bill, percent):
 print(with_tip(10, 40))   # bill=10, percent=40
 print(with_tip(40, 10))   # bill=40, percent=10
 ```
+
+. . .
+
+**b) `14.0`**: arguments land on parameters **by position**. `10` becomes `bill`, `40` becomes `percent`: a 40 % tip on 10 EUR. Python cannot read what Tobi meant, only where he put it.
 
 ## `return`: hand the value back
 
@@ -166,11 +168,9 @@ a\) `8.50 EUR`   b) `Error`   c) `None`
 
 . . .
 
-[Predict first]{.question}. Pick a letter, then I reveal the answer.
+[Predict]{.question}. Pick a letter, then I reveal the answer.
 
 ## Answer: `print` shows, `return` hands back
-
-**c) `None`**: `label_price` prints its line while running, but with no `return` it hands back `None`. That `None` is what lands in `result`. Printing is not returning.
 
 ```{python}
 #| eval: true
@@ -183,6 +183,10 @@ result = label_price(8.50)   # prints while running...
 print(result)                # ...but the value handed back is None
 ```
 
+. . .
+
+**c) `None`**: `label_price` prints its line while running, but with no `return` it hands back `None`. That `None` is what lands in `result`. Printing is not returning.
+
 # Your turn: 5-10 minutes {.loud-slide}
 
 ## Open the exercise
@@ -193,7 +197,7 @@ Scan the QR or type the link:
 
 ![](assets/qr/ex_03_a.png){width=280}
 
-First **predict** what happens, then run it.
+**Any questions?** Let me know!
 
 ## Default arguments
 
@@ -243,7 +247,7 @@ Scan the QR or type the link:
 
 ![](assets/qr/ex_03_b.png){width=280}
 
-First **predict** what happens, then run it.
+**Any questions?** Let me know!
 
 # [Scope, then a First Class]{.flow} {.title}
 
@@ -284,11 +288,9 @@ a\) `3`   b) `13`   c) `Error`
 
 . . .
 
-[Predict first]{.question}. Pick a letter, then I reveal the answer.
+[Predict]{.question}. Pick a letter, then I reveal the answer.
 
 ## Answer: the outside variable is untouched
-
-**a) `3`**: `bump` changes only its own copy `n`. We never stored what it returned, so `stock` out here never moves. The function cannot reach out and rewrite your variables.
 
 ```{python}
 #| eval: true
@@ -302,6 +304,10 @@ stock = 3
 bump(stock)      # the return value is thrown away
 print(stock)     # still 3
 ```
+
+. . .
+
+**a) `3`**: `bump` changes only its own copy `n`. We never stored what it returned, so `stock` out here never moves. The function cannot reach out and rewrite your variables.
 
 ## Why that's a feature, not a limit
 
@@ -377,11 +383,9 @@ a\) `12.0`   b) `Error`   c) `4.8`
 
 . . .
 
-[Predict first]{.question}. Pick a letter, then I reveal the answer.
+[Predict]{.question}. Pick a letter, then I reveal the answer.
 
 ## Answer: every object carries its own data
-
-**c) `4.8`**: `__init__` ran twice and stored the data on **two different objects**. `self` inside `trip.fee()` is `trip`, so it reads Nadia's 4 km, not Omar's 10. Instances do not share attributes.
 
 ```{python}
 #| eval: true
@@ -393,6 +397,10 @@ second = Delivery("Omar", 10)
 print(trip.fee())      # self is trip: 4 km
 print(second.fee())    # self is second: 10 km
 ```
+
+. . .
+
+**c) `4.8`**: `__init__` ran twice and stored the data on **two different objects**. `self` inside `trip.fee()` is `trip`, so it reads Nadia's 4 km, not Omar's 10. Instances do not share attributes.
 
 ## How far we go with classes
 
@@ -416,7 +424,7 @@ Scan the QR or type the link:
 
 ![](assets/qr/ex_03_c.png){width=280}
 
-First **predict** what happens, then run it.
+**Any questions?** Let me know!
 
 # [To the Lab]{.flow} {.title}
 

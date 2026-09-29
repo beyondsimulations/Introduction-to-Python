@@ -11,21 +11,6 @@ def _(mo):
     mo.md(
         r"""
     # Notebook 7.1: The Numbers Deck
-    **Core exercises: 10 + 1 quiz (+ 1 trace).** Done early? You're free to go. Not done when the session ends? The rest is homework.
-
-    The investor liked last week's numbers. Now she wants a **one-page
-    metrics deck**: totals, a per-zone breakdown, the busiest day, the strongest
-    zone, the kind of sheet you could slide across a table without apologizing.
-
-    Tobi has *also* prepared a deck. It is a **40-tab spreadsheet** with a tab
-    called `FINAL_final_v3` and one formula that references a cell in a workbook
-    he can no longer find. It is, gently, disqualified.
-
-    So this week you learn the tool that turns a pile of orders into metrics
-    without a single hand-written loop: **NumPy**. A NumPy *array* is like a list
-    that does math: multiply the whole thing at once, compare it to a number to
-    get a filter, stack it into a grid and total it by row or by column. That's
-    the entire deck, computed in a few lines.
     """
     )
     return
@@ -54,6 +39,30 @@ def _(mo):
             "it, so fix that cell first."
         ),
         kind="info",
+    )
+    return
+
+
+@app.cell(hide_code=True)
+def _(mo):
+    mo.md(
+        r"""
+    **Core exercises: 10 + 1 quiz (+ 1 trace).** Done early? You're free to go. Not done when the session ends? The rest is homework.
+
+    The investor liked last week's numbers. Now she wants a **one-page
+    metrics deck**: totals, a per-zone breakdown, the busiest day, the strongest
+    zone, the kind of sheet you could slide across a table without apologizing.
+
+    Tobi has *also* prepared a deck. It is a **40-tab spreadsheet** with a tab
+    called `FINAL_final_v3` and one formula that references a cell in a workbook
+    he can no longer find. It is, gently, disqualified.
+
+    So this week you learn the tool that turns a pile of orders into metrics
+    without a single hand-written loop: **NumPy**. A NumPy *array* is like a list
+    that does math: multiply the whole thing at once, compare it to a number to
+    get a filter, stack it into a grid and total it by row or by column. That's
+    the entire deck, computed in a few lines.
+    """
     )
     return
 

@@ -29,14 +29,6 @@ def _(mo):
     mo.md(
         r"""
     # Quick exercise: fix the axis (5-10 min)
-
-    Episode 9: Tobi's AI drafted the signups slide for the pitch deck.
-    It runs, the line climbs like a rocket, and the investor reads the
-    axis before she reads the line. The rule: a growth claim starts at
-    zero.
-
-    **Predict** first: look at the y-axis numbers below. Where does
-    Tobi's axis start, and how far is that from 0?
     """
     )
     return
@@ -51,6 +43,22 @@ def _(mo):
             "*Download Python code*. Without a save first, the download is an empty file."
         ),
         kind="info",
+    )
+    return
+
+
+@app.cell(hide_code=True)
+def _(mo):
+    mo.md(
+        r"""
+    Episode 9: Tobi's AI drafted the signups slide for the pitch deck.
+    It runs, the line climbs like a rocket, and the investor reads the
+    axis before she reads the line. The rule: a growth claim starts at
+    zero.
+
+    **Predict** first: look at the y-axis numbers below. Where does
+    Tobi's axis start, and how far is that from 0?
+    """
     )
     return
 

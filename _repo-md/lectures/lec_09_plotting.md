@@ -10,6 +10,11 @@ format:
 ---
 
 
+<script src="https://cdn.jsdelivr.net/npm/requirejs@2.3.6/require.min.js" integrity="sha384-c9c+LnTbwQ3aujuU7ULEPVvgLs+Fn6fJUvIGTsuu1ZcCf11fiEubah0ttpca4ntM sha384-6V1/AdqZRWk1KAlWbKBlGhN7VG4iE/yAZcO6NZPMF8od0vukrvr0tg4qY6NSrItx" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js" integrity="sha384-ZvpUoO/+PpLXR1lu4jmpXWu80pZlYUAfxl5NsBMWOEPSjUn/6Z/hRTt8+pR6L4N2" crossorigin="anonymous" data-relocate-top="true"></script>
+<script type="application/javascript">define('jquery', [],function() {return window.jQuery;})</script>
+
+
 # <span class="flow">Episode 9: The Pitch Deck</span>
 
 ## Charts are arguments
@@ -42,6 +47,34 @@ a\) a True/False column b) only the Nord rows c) an error from comparing text
 
 ## Answer 1
 
+``` python
+orders[orders["zone"] == "Nord"]
+```
+
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+
+|     | order_id | zone | items | total_eur |
+|-----|----------|------|-------|-----------|
+| 0   | 101      | Nord | 2     | 18.5      |
+| 2   | 103      | Nord | 3     | 24.0      |
+
+</div>
+
+. . .
+
 **b) only the Nord rows**: the True/False column is what the **inner** expression `orders["zone"] == "Nord"` makes. Wrapped in `orders[...]`, that mask keeps the rows where it's `True` and drops the rest.
 
 ## Question 2
@@ -56,6 +89,15 @@ a\) a summary table b) an empty DataFrame c) an `AttributeError`
 
 ## Answer 2
 
+``` python
+orders.summarize()
+```
+
+<pre><span class="ansi-red-fg">AttributeError</span><span class="ansi-red-fg">:</span> 'DataFrame' object has no attribute 'summarize'
+</pre>
+
+. . .
+
 **c) `AttributeError`**: pandas has `.describe()`, not `.summarize()`. The AI invented a plausible name. An AI that sounds sure is not the same as an API that exists. You verify, every time.
 
 ## Question 3
@@ -69,6 +111,22 @@ shows...
 a\) the first five rows of the column, like `.head()` b) count / mean / std / min / quartiles / max c) the column's dtype, like `.dtypes`
 
 ## Answer 3
+
+``` python
+orders["total_eur"].describe()
+```
+
+    count     5.000000
+    mean     17.580000
+    std      10.688873
+    min       6.800000
+    25%       7.200000
+    50%      18.500000
+    75%      24.000000
+    max      31.400000
+    Name: total_eur, dtype: float64
+
+. . .
 
 **b) count / mean / std / min / quartiles / max**. One line, the column's whole statistical fingerprint. That's the real method Tobi's AI was reaching for.
 
@@ -91,7 +149,7 @@ plt.title("This week's revenue")
 plt.gca()             # SHOW: "get current axes" (the chart)
 ```
 
-<img src="lec_09_plotting_files/figure-markdown_strict/cell-2-output-1.png" width="649" height="431" />
+<img src="lec_09_plotting_files/figure-markdown_strict/cell-6-output-1.png" width="649" height="431" />
 
 . . .
 
@@ -113,11 +171,9 @@ a\) `3, 5, 4`, the values themselves b) `0, 1, 2`, the list positions c) `1, 2, 
 
 . . .
 
-<span class="question">Predict first</span>. Pick a letter, then I reveal the answer.
+<span class="question">Predict</span>. Pick a letter, then I reveal the answer.
 
 ## Answer: the positions, from zero
-
-**b) `0, 1, 2`**: with one list, matplotlib takes it as **y** and invents x as the positions, and Python counts positions from 0:
 
 ``` python
 import matplotlib.pyplot as plt
@@ -128,7 +184,11 @@ plt.xticks([0, 1, 2])   # show only whole positions
 plt.gca()
 ```
 
-<img src="lec_09_plotting_files/figure-markdown_strict/cell-3-output-1.png" width="653" height="411" />
+<img src="lec_09_plotting_files/figure-markdown_strict/cell-7-output-1.png" width="653" height="411" />
+
+. . .
+
+**b) `0, 1, 2`**: with one list, matplotlib takes it as **y** and invents x as the positions, and Python counts positions from 0.
 
 . . .
 
@@ -153,7 +213,7 @@ plt.legend()             # the little key, one entry per label
 plt.gca()
 ```
 
-<img src="lec_09_plotting_files/figure-markdown_strict/cell-4-output-1.png" width="667" height="449" />
+<img src="lec_09_plotting_files/figure-markdown_strict/cell-8-output-1.png" width="667" height="449" />
 
 # Your turn: 5-10 minutes
 
@@ -165,7 +225,7 @@ Scan the QR or type the link:
 
 <img src="assets/qr/ex_09_a.png" width="280" />
 
-First **predict** what happens, then run it.
+**Any questions?** Let me know!
 
 ## A little styling: and only a little
 
@@ -183,7 +243,7 @@ plt.title("Styled, not decorated")
 plt.gca()
 ```
 
-<img src="lec_09_plotting_files/figure-markdown_strict/cell-5-output-1.png" width="649" height="431" />
+<img src="lec_09_plotting_files/figure-markdown_strict/cell-9-output-1.png" width="649" height="431" />
 
 ## Predict: one chart or two?
 
@@ -198,11 +258,9 @@ a\) one chart with two lines b) two separate charts, one per call c) an error: t
 
 . . .
 
-<span class="question">Predict first</span>. Pick a letter, then I reveal the answer.
+<span class="question">Predict</span>. Pick a letter, then I reveal the answer.
 
 ## Answer: one chart, two lines
-
-**a) one chart with two lines**, because matplotlib keeps drawing on the **current** figure until you start a new one with `plt.figure()`:
 
 ``` python
 import matplotlib.pyplot as plt
@@ -213,7 +271,11 @@ plt.plot([1, 2, 3])   # same canvas: a second line, not a second chart
 plt.gca()
 ```
 
-<img src="lec_09_plotting_files/figure-markdown_strict/cell-6-output-1.png" width="653" height="411" />
+<img src="lec_09_plotting_files/figure-markdown_strict/cell-10-output-1.png" width="653" height="411" />
+
+. . .
+
+**a) one chart with two lines**, because matplotlib keeps drawing on the **current** figure until you start a new one with `plt.figure()`.
 
 . . .
 
@@ -229,7 +291,7 @@ Scan the QR or type the link:
 
 <img src="assets/qr/ex_09_b.png" width="280" />
 
-First **predict** what happens, then run it.
+**Any questions?** Let me know!
 
 # <span class="flow">The right chart for the question</span>
 
@@ -266,7 +328,7 @@ plt.title("Orders per dish")
 plt.gca()
 ```
 
-<img src="lec_09_plotting_files/figure-markdown_strict/cell-7-output-1.png" width="641" height="431" />
+<img src="lec_09_plotting_files/figure-markdown_strict/cell-11-output-1.png" width="641" height="431" />
 
 The tallest bar answers the question at a glance: Pizza.
 
@@ -285,7 +347,7 @@ plt.title("Delivery times")
 plt.gca()
 ```
 
-<img src="lec_09_plotting_files/figure-markdown_strict/cell-8-output-1.png" width="635" height="431" />
+<img src="lec_09_plotting_files/figure-markdown_strict/cell-12-output-1.png" width="635" height="431" />
 
 Most deliveries land in the mid-20s, with one lonely slow one far right. A histogram shows **shape**, not individual values.
 
@@ -306,7 +368,7 @@ plt.ylabel("Order value (€)")
 plt.gca()
 ```
 
-<img src="lec_09_plotting_files/figure-markdown_strict/cell-9-output-1.png" width="662" height="429" />
+<img src="lec_09_plotting_files/figure-markdown_strict/cell-13-output-1.png" width="662" height="429" />
 
 Just a cloud. No upward drift. Sometimes the answer is **"there's no pattern here."**
 
@@ -324,11 +386,9 @@ a\) a zig-zag line hopping between the points in list order b) the same dots as 
 
 . . .
 
-<span class="question">Predict first</span>. Pick a letter, then I reveal the answer.
+<span class="question">Predict</span>. Pick a letter, then I reveal the answer.
 
 ## Answer: a zig-zag in list order
-
-**a) a zig-zag**: `plot` connects the points **in the order you gave them**, never mind the x values. Order 1 to order 2 to order 3, back and forth:
 
 ``` python
 import matplotlib.pyplot as plt
@@ -341,7 +401,11 @@ plt.plot(minutes, euros, marker="o")   # joined in LIST order
 plt.gca()
 ```
 
-<img src="lec_09_plotting_files/figure-markdown_strict/cell-10-output-1.png" width="644" height="411" />
+<img src="lec_09_plotting_files/figure-markdown_strict/cell-14-output-1.png" width="644" height="411" />
+
+. . .
+
+**a) a zig-zag**: `plot` connects the points **in the order you gave them**, never mind the x values. Order 1 to order 2 to order 3, back and forth.
 
 . . .
 
@@ -363,11 +427,9 @@ a\) 4: one bar per number b) 15: one bar per unit up to the max c) about 2-3 lum
 
 . . .
 
-<span class="question">Predict first</span>. Pick a letter, then I reveal the answer.
+<span class="question">Predict</span>. Pick a letter, then I reveal the answer.
 
 ## Answer: about 2-3 lumps
-
-**c) about 2-3 lumps**: the histogram groups the numbers into ranges and counts how many fall in each. `8` and `9` land in the same bucket, so that bar is two tall:
 
 ``` python
 import matplotlib.pyplot as plt
@@ -384,7 +446,11 @@ plt.title("hist: 3 ranges")
 plt.gca()
 ```
 
-<img src="lec_09_plotting_files/figure-markdown_strict/cell-11-output-1.png" width="641" height="431" />
+<img src="lec_09_plotting_files/figure-markdown_strict/cell-15-output-1.png" width="641" height="431" />
+
+. . .
+
+**c) about 2-3 lumps**: the histogram groups the numbers into ranges and counts how many fall in each. `8` and `9` land in the same bucket, so that bar is two tall.
 
 . . .
 
@@ -400,7 +466,7 @@ Scan the QR or type the link:
 
 <img src="assets/qr/ex_09_c.png" width="280" />
 
-First **predict** what happens, then run it.
+**Any questions?** Let me know!
 
 > **Tip**
 >
@@ -430,7 +496,7 @@ plt.title("From 0")
 plt.gca()
 ```
 
-<img src="lec_09_plotting_files/figure-markdown_strict/cell-12-output-1.png" width="653" height="431" />
+<img src="lec_09_plotting_files/figure-markdown_strict/cell-16-output-1.png" width="653" height="431" />
 
 ## Predict: the AI's one extra line
 
@@ -447,11 +513,9 @@ a\) a flat line: 3 % stays 3 % on any axis b) an error: `ylim` has to include ze
 
 . . .
 
-<span class="question">Predict first</span>. Pick a letter, then I reveal the answer.
+<span class="question">Predict</span>. Pick a letter, then I reveal the answer.
 
 ## Answer: a climb across the chart
-
-**c) a climb across the chart**: the axis spans 35 units and the line rises 21 of them, **60 % of the picture** for 3 % of growth:
 
 ``` python
 import matplotlib.pyplot as plt
@@ -462,7 +526,11 @@ plt.ylim(700, 735)   # 3 % of growth, 60 % of the chart
 plt.gca()
 ```
 
-<img src="lec_09_plotting_files/figure-markdown_strict/cell-13-output-1.png" width="649" height="416" />
+<img src="lec_09_plotting_files/figure-markdown_strict/cell-17-output-1.png" width="649" height="416" />
+
+. . .
+
+**c) a climb across the chart**: the axis spans 35 units and the line rises 21 of them, **60 % of the picture** for 3 % of growth.
 
 . . .
 
@@ -489,7 +557,7 @@ Scan the QR or type the link:
 
 <img src="assets/qr/ex_09_d.png" width="280" />
 
-First **predict** what happens, then run it.
+**Any questions?** Let me know!
 
 ## AI as your chart assistant
 
@@ -527,7 +595,7 @@ Scan the QR or type the link:
 
 <img src="assets/qr/ex_09_e.png" width="280" />
 
-First **predict** what happens, then run it.
+**Any questions?** Let me know!
 
 # Before Session X
 

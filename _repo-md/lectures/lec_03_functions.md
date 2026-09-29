@@ -117,11 +117,9 @@ a\) `44.0` b) `14.0` c) `Error`
 
 . . .
 
-<span class="question">Predict first</span>. Pick a letter, then I reveal the answer.
+<span class="question">Predict</span>. Pick a letter, then I reveal the answer.
 
 ## Answer: position decides, not intent
-
-**b) `14.0`**: arguments land on parameters **by position**. `10` becomes `bill`, `40` becomes `percent`: a 40 % tip on 10 EUR. Python cannot read what Tobi meant, only where he put it.
 
 ``` python
 def with_tip(bill, percent):
@@ -133,6 +131,10 @@ print(with_tip(40, 10))   # bill=40, percent=10
 
     14.0
     44.0
+
+. . .
+
+**b) `14.0`**: arguments land on parameters **by position**. `10` becomes `bill`, `40` becomes `percent`: a 40 % tip on 10 EUR. Python cannot read what Tobi meant, only where he put it.
 
 ## `return`: hand the value back
 
@@ -166,11 +168,9 @@ a\) `8.50 EUR` b) `Error` c) `None`
 
 . . .
 
-<span class="question">Predict first</span>. Pick a letter, then I reveal the answer.
+<span class="question">Predict</span>. Pick a letter, then I reveal the answer.
 
 ## Answer: `print` shows, `return` hands back
-
-**c) `None`**: `label_price` prints its line while running, but with no `return` it hands back `None`. That `None` is what lands in `result`. Printing is not returning.
 
 ``` python
 def label_price(price):
@@ -183,6 +183,10 @@ print(result)                # ...but the value handed back is None
     8.50 EUR
     None
 
+. . .
+
+**c) `None`**: `label_price` prints its line while running, but with no `return` it hands back `None`. That `None` is what lands in `result`. Printing is not returning.
+
 # Your turn: 5-10 minutes
 
 ## Open the exercise
@@ -193,7 +197,7 @@ Scan the QR or type the link:
 
 <img src="assets/qr/ex_03_a.png" width="280" />
 
-First **predict** what happens, then run it.
+**Any questions?** Let me know!
 
 ## Default arguments
 
@@ -242,7 +246,7 @@ Scan the QR or type the link:
 
 <img src="assets/qr/ex_03_b.png" width="280" />
 
-First **predict** what happens, then run it.
+**Any questions?** Let me know!
 
 # <span class="flow">Scope, then a First Class</span>
 
@@ -282,11 +286,9 @@ a\) `3` b) `13` c) `Error`
 
 . . .
 
-<span class="question">Predict first</span>. Pick a letter, then I reveal the answer.
+<span class="question">Predict</span>. Pick a letter, then I reveal the answer.
 
 ## Answer: the outside variable is untouched
-
-**a) `3`**: `bump` changes only its own copy `n`. We never stored what it returned, so `stock` out here never moves. The function cannot reach out and rewrite your variables.
 
 ``` python
 def bump(n):
@@ -299,6 +301,10 @@ print(stock)     # still 3
 ```
 
     3
+
+. . .
+
+**a) `3`**: `bump` changes only its own copy `n`. We never stored what it returned, so `stock` out here never moves. The function cannot reach out and rewrite your variables.
 
 ## Why that's a feature, not a limit
 
@@ -371,11 +377,9 @@ a\) `12.0` b) `Error` c) `4.8`
 
 . . .
 
-<span class="question">Predict first</span>. Pick a letter, then I reveal the answer.
+<span class="question">Predict</span>. Pick a letter, then I reveal the answer.
 
 ## Answer: every object carries its own data
-
-**c) `4.8`**: `__init__` ran twice and stored the data on **two different objects**. `self` inside `trip.fee()` is `trip`, so it reads Nadia's 4 km, not Omar's 10. Instances do not share attributes.
 
 ``` python
 trip = Delivery("Nadia", 4)
@@ -387,6 +391,10 @@ print(second.fee())    # self is second: 10 km
 
     4.8
     12.0
+
+. . .
+
+**c) `4.8`**: `__init__` ran twice and stored the data on **two different objects**. `self` inside `trip.fee()` is `trip`, so it reads Nadia's 4 km, not Omar's 10. Instances do not share attributes.
 
 ## How far we go with classes
 
@@ -410,7 +418,7 @@ Scan the QR or type the link:
 
 <img src="assets/qr/ex_03_c.png" width="280" />
 
-First **predict** what happens, then run it.
+**Any questions?** Let me know!
 
 # <span class="flow">To the Lab</span>
 

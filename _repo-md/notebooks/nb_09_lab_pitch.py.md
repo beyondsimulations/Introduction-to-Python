@@ -11,6 +11,42 @@ def _(mo):
     mo.md(
         r"""
     # Notebook 9.1: The Pitch Deck
+    """
+    )
+    return
+
+
+@app.cell(hide_code=True)
+def _(mo):
+    mo.callout(
+        mo.md(
+            "**Saving your work:** this notebook runs in your browser. Press "
+            "**Cmd/Ctrl+S** to save, and always save **before** menu → Download → "
+            "*Download Python code*. Without a save first, the download is an empty file."
+        ),
+        kind="info",
+    )
+    return
+
+
+@app.cell(hide_code=True)
+def _(mo):
+    mo.callout(
+        mo.md(
+            "**How this notebook works:** run a cell with **Cmd/Ctrl+Enter**. "
+            "Only edit the cells that contain `# YOUR CODE BELOW`; the check under "
+            "each exercise updates by itself. A red error pauses everything below "
+            "it, so fix that cell first."
+        ),
+        kind="info",
+    )
+    return
+
+
+@app.cell(hide_code=True)
+def _(mo):
+    mo.md(
+        r"""
     **Core exercises: 10 + 1 quiz (+ 1 trace).** Done early? You're free to go. Not done when the session ends? The rest is homework.
 
     The pitch meeting is **Friday**. Last week you turned the data room into
@@ -47,33 +83,6 @@ def _(mo):
     > including the progress box. Nothing is lost. Fix the red cell and it all
     > comes back.
     """
-    )
-    return
-
-
-@app.cell(hide_code=True)
-def _(mo):
-    mo.callout(
-        mo.md(
-            "**Saving your work:** this notebook runs in your browser. Press "
-            "**Cmd/Ctrl+S** to save, and always save **before** menu → Download → "
-            "*Download Python code*. Without a save first, the download is an empty file."
-        ),
-        kind="info",
-    )
-    return
-
-
-@app.cell(hide_code=True)
-def _(mo):
-    mo.callout(
-        mo.md(
-            "**How this notebook works:** run a cell with **Cmd/Ctrl+Enter**. "
-            "Only edit the cells that contain `# YOUR CODE BELOW`; the check under "
-            "each exercise updates by itself. A red error pauses everything below "
-            "it, so fix that cell first."
-        ),
-        kind="info",
     )
     return
 

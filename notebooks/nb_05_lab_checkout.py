@@ -10,19 +10,6 @@ def _(mo):
     mo.md(
         r"""
     # Notebook 5.1: The 3-AM Checkout
-    **Core exercises: 10 (+ 1 trace, 2 bonus).** Done early? You're free to go. Not done when the session ends? The rest is homework.
-
-    It's the last lab of Part I, and it opens on a crime scene. At 3 AM, running
-    on his fourth energy drink, Tobi rewrote the entire checkout "to make it
-    faster." He then went to sleep very pleased with himself. This morning, two
-    things are true: the checkout is a minefield of crashes, and the **health
-    inspector** just called to announce a surprise visit.
-
-    So today you learn to work *with* things going wrong. You'll read a
-    **traceback** (Python's crash report), catch failures with **try/except**,
-    let your own code **refuse** bad input with **raise**, guard invariants with
-    **assert**, and debug Tobi's 3-AM checkout line by line, before the
-    inspector finds the bodies.
     """
     )
     return
@@ -51,6 +38,28 @@ def _(mo):
             "it, so fix that cell first."
         ),
         kind="info",
+    )
+    return
+
+
+@app.cell(hide_code=True)
+def _(mo):
+    mo.md(
+        r"""
+    **Core exercises: 10 (+ 1 trace, 2 bonus).** Done early? You're free to go. Not done when the session ends? The rest is homework.
+
+    It's the last lab of Part I, and it opens on a crime scene. At 3 AM, running
+    on his fourth energy drink, Tobi rewrote the entire checkout "to make it
+    faster." He then went to sleep very pleased with himself. This morning, two
+    things are true: the checkout is a minefield of crashes, and the **health
+    inspector** just called to announce a surprise visit.
+
+    So today you learn to work *with* things going wrong. You'll read a
+    **traceback** (Python's crash report), catch failures with **try/except**,
+    let your own code **refuse** bad input with **raise**, guard invariants with
+    **assert**, and debug Tobi's 3-AM checkout line by line, before the
+    inspector finds the bodies.
+    """
     )
     return
 

@@ -29,7 +29,28 @@ def _(mo):
     mo.md(
         r"""
     # Quick exercise: the campus map (5-10 min)
+    """
+    )
+    return
 
+
+@app.cell(hide_code=True)
+def _(mo):
+    mo.callout(
+        mo.md(
+            "**Saving your work:** this notebook runs in your browser. Press "
+            "**Cmd/Ctrl+S** to save, and always save **before** menu → Download → "
+            "*Download Python code*. Without a save first, the download is an empty file."
+        ),
+        kind="info",
+    )
+    return
+
+
+@app.cell(hide_code=True)
+def _(mo):
+    mo.md(
+        r"""
     Tobi split the campus into two delivery zones. Each zone is its own
     dictionary inside `zones`:
 
@@ -46,19 +67,6 @@ def _(mo):
     Heads up: a misspelled key turns the answer cell red, and a red cell
     pauses the check below it. Fix the key and the check comes back.
     """
-    )
-    return
-
-
-@app.cell(hide_code=True)
-def _(mo):
-    mo.callout(
-        mo.md(
-            "**Saving your work:** this notebook runs in your browser. Press "
-            "**Cmd/Ctrl+S** to save, and always save **before** menu → Download → "
-            "*Download Python code*. Without a save first, the download is an empty file."
-        ),
-        kind="info",
     )
     return
 

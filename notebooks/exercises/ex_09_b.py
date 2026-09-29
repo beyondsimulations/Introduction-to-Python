@@ -28,17 +28,6 @@ def _(mo):
     mo.md(
         r"""
     # Quick exercise: your first chart (5-10 min)
-
-    Episode 9: the investor's one instruction was "charts I can't argue
-    with." A table of seven numbers doesn't argue anything, but a line does.
-
-    `plt.plot(x, y)` draws the line; `plt.xlabel`, `plt.ylabel`, and
-    `plt.title` label it. One marimo rule that trips everyone up once:
-    the LAST expression in a cell is what displays, so chart cells end
-    with `plt.gca()` ("get current axes"), never `plt.show()`.
-
-    **Predict** first: look at the numbers in the demo below: which way
-    does the line slope, up or down?
     """
     )
     return
@@ -53,6 +42,25 @@ def _(mo):
             "*Download Python code*. Without a save first, the download is an empty file."
         ),
         kind="info",
+    )
+    return
+
+
+@app.cell(hide_code=True)
+def _(mo):
+    mo.md(
+        r"""
+    Episode 9: the investor's one instruction was "charts I can't argue
+    with." A table of seven numbers doesn't argue anything, but a line does.
+
+    `plt.plot(x, y)` draws the line; `plt.xlabel`, `plt.ylabel`, and
+    `plt.title` label it. One marimo rule that trips everyone up once:
+    the LAST expression in a cell is what displays, so chart cells end
+    with `plt.gca()` ("get current axes"), never `plt.show()`.
+
+    **Predict** first: look at the numbers in the demo below: which way
+    does the line slope, up or down?
+    """
     )
     return
 

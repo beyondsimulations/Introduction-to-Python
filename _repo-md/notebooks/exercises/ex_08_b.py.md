@@ -29,13 +29,6 @@ def _(mo):
     mo.md(
         r"""
     # Quick exercise: one column, some rows, one number (5-10 min)
-
-    The investor's questions all have the same shape: pick a column,
-    keep some rows, collapse to one number. `df["col"]` selects a
-    column, `df[df["col"] == value]` keeps the matching rows, and `.sum()`
-    or `.mean()` turns what is left into a single number.
-
-    **Predict** first: what does the cell below print, then run it.
     """
     )
     return
@@ -50,6 +43,21 @@ def _(mo):
             "*Download Python code*. Without a save first, the download is an empty file."
         ),
         kind="info",
+    )
+    return
+
+
+@app.cell(hide_code=True)
+def _(mo):
+    mo.md(
+        r"""
+    The investor's questions all have the same shape: pick a column,
+    keep some rows, collapse to one number. `df["col"]` selects a
+    column, `df[df["col"] == value]` keeps the matching rows, and `.sum()`
+    or `.mean()` turns what is left into a single number.
+
+    **Predict** first: what does the cell below print, then run it.
+    """
     )
     return
 

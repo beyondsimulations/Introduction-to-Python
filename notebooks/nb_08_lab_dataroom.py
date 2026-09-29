@@ -10,27 +10,6 @@ def _(mo):
     mo.md(
         r"""
     # Notebook 8.1: The Data Room
-    **Core exercises: 10 + 1 quiz (+ 1 trace).** Done early? You're free to go. Not done when the session ends? The rest is homework.
-
-    MunchCorp went to the press with "data-driven growth". The investor was not
-    impressed by a slide; she was impressed by *data*. So she slides a USB stick
-    across the table: **every order, two full weeks.** "Impress me."
-
-    That stick is now a file: `public/orders.csv`, one row per order, eighty of
-    them. Too many to eyeball, too many for a hand-written loop. This is what
-    **pandas** is for: it loads a whole spreadsheet into one object (a
-    *DataFrame*), and answers questions about it (filter, count, total, group)
-    in one line each.
-
-    Tobi, meanwhile, has **discovered AI**. He now pastes every question into a
-    chatbot and ships whatever comes back. Your real job this week isn't writing
-    pandas from scratch. It's **supervising**: reading what the data actually
-    says and catching the confident nonsense.
-
-    > **If the notebook fails to boot with a network error** (or the very first
-    > cell complains that pandas can't be imported), **reload the page once**
-    > (Cmd/Ctrl + R). The first load fetches pandas over the network and can
-    > flake; a reload almost always fixes it.
     """
     )
     return
@@ -59,6 +38,36 @@ def _(mo):
             "it, so fix that cell first."
         ),
         kind="info",
+    )
+    return
+
+
+@app.cell(hide_code=True)
+def _(mo):
+    mo.md(
+        r"""
+    **Core exercises: 10 + 1 quiz (+ 1 trace).** Done early? You're free to go. Not done when the session ends? The rest is homework.
+
+    MunchCorp went to the press with "data-driven growth". The investor was not
+    impressed by a slide; she was impressed by *data*. So she slides a USB stick
+    across the table: **every order, two full weeks.** "Impress me."
+
+    That stick is now a file: `public/orders.csv`, one row per order, eighty of
+    them. Too many to eyeball, too many for a hand-written loop. This is what
+    **pandas** is for: it loads a whole spreadsheet into one object (a
+    *DataFrame*), and answers questions about it (filter, count, total, group)
+    in one line each.
+
+    Tobi, meanwhile, has **discovered AI**. He now pastes every question into a
+    chatbot and ships whatever comes back. Your real job this week isn't writing
+    pandas from scratch. It's **supervising**: reading what the data actually
+    says and catching the confident nonsense.
+
+    > **If the notebook fails to boot with a network error** (or the very first
+    > cell complains that pandas can't be imported), **reload the page once**
+    > (Cmd/Ctrl + R). The first load fetches pandas over the network and can
+    > flake; a reload almost always fixes it.
+    """
     )
     return
 

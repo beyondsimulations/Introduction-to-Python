@@ -28,12 +28,6 @@ def _(mo):
     mo.md(
         r"""
     # Quick exercise: de-shout the menu (5-10 min)
-
-    Tobi typed a new menu item IN ALL CAPS, WITH EXCLAMATION MARKS, and
-    stray spaces. Chain string methods on `raw_item` below to turn it into
-    exactly `"Falafel Wrap"` and store the result in `item_exe`.
-
-    Useful methods: `.strip()`, `.rstrip("!")`, `.title()`.
     """
     )
     return
@@ -48,6 +42,20 @@ def _(mo):
             "*Download Python code*. Without a save first, the download is an empty file."
         ),
         kind="info",
+    )
+    return
+
+
+@app.cell(hide_code=True)
+def _(mo):
+    mo.md(
+        r"""
+    Tobi typed a new menu item IN ALL CAPS, WITH EXCLAMATION MARKS, and
+    stray spaces. Chain string methods on `raw_item` below to turn it into
+    exactly `"Falafel Wrap"` and store the result in `item_exe`.
+
+    Useful methods: `.strip()`, `.rstrip("!")`, `.title()`.
+    """
     )
     return
 

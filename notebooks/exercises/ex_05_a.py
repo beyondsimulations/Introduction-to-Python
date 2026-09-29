@@ -28,19 +28,6 @@ def _(mo):
     mo.md(
         r"""
     # Quick exercise: read the crash report (5-10 min)
-
-    The health inspector is in the doorway and the till just died. All you
-    have is the traceback Tobi left on the screen at 3 AM:
-
-    ```
-    Traceback (most recent call last):
-      File "checkout.py", line 8, in <module>
-        seat = table_map["C3"]
-    KeyError: 'C3'
-    ```
-
-    Read it **bottom-up**. Which exception type crashed the till? Assign its
-    name as text to `error_exa`, spelled the way Python prints it.
     """
     )
     return
@@ -55,6 +42,27 @@ def _(mo):
             "*Download Python code*. Without a save first, the download is an empty file."
         ),
         kind="info",
+    )
+    return
+
+
+@app.cell(hide_code=True)
+def _(mo):
+    mo.md(
+        r"""
+    The health inspector is in the doorway and the till just died. All you
+    have is the traceback Tobi left on the screen at 3 AM:
+
+    ```
+    Traceback (most recent call last):
+      File "checkout.py", line 8, in <module>
+        seat = table_map["C3"]
+    KeyError: 'C3'
+    ```
+
+    Read it **bottom-up**. Which exception type crashed the till? Assign its
+    name as text to `error_exa`, spelled the way Python prints it.
+    """
     )
     return
 

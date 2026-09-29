@@ -29,13 +29,6 @@ def _(mo):
     mo.md(
         r"""
     # Quick exercise: import by name (5-10 min)
-
-    `import statistics` puts the whole toolbox on the desk, and every tool
-    needs the `statistics.` prefix. `from statistics import mean, median`
-    pulls just those two tools out of the box, and you call them by their bare
-    names: `median(...)` instead of `statistics.median(...)`.
-
-    **Predict** what the cell below prints, then run it.
     """
     )
     return
@@ -50,6 +43,21 @@ def _(mo):
             "*Download Python code*. Without a save first, the download is an empty file."
         ),
         kind="info",
+    )
+    return
+
+
+@app.cell(hide_code=True)
+def _(mo):
+    mo.md(
+        r"""
+    `import statistics` puts the whole toolbox on the desk, and every tool
+    needs the `statistics.` prefix. `from statistics import mean, median`
+    pulls just those two tools out of the box, and you call them by their bare
+    names: `median(...)` instead of `statistics.median(...)`.
+
+    **Predict** what the cell below prints, then run it.
+    """
     )
     return
 

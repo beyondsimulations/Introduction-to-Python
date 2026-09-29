@@ -24,7 +24,7 @@ Seventeen variables for one menu. Add a dish and you touch seventeen lines. Toda
 
 ## Question 1
 
-Three questions from Episode 3. Commit. Hands up **before** the reveal.
+Three questions from Episode 3.
 
 ``` python
 def announce(item):
@@ -39,6 +39,19 @@ The **second** `print` shows what?
 a\) `Fresh today: Mate` b) `Error` c) `None`
 
 ## Answer 1
+
+``` python
+def announce(item):
+    print(f"Fresh today: {item}")
+
+result = announce("Mate")
+print(result)
+```
+
+    Fresh today: Mate
+    None
+
+. . .
 
 **c) `None`**: `announce` has no `return`, so it hands back `None`. Printing something is not the same as returning it.
 
@@ -58,7 +71,21 @@ a\) `5` b) `15` c) `Error`
 
 ## Answer 2
 
-**a) `5`**. The function works on its own copy. We never caught its result, so the global `stock` is untouched. To keep a result, assign it back.
+``` python
+def restock(n):
+    n = n + 10
+    return n
+
+stock = 5
+restock(stock)
+print(stock)
+```
+
+    5
+
+. . .
+
+**a) `5`**. `n = n + 10` points the function's own name `n` at a new number, so the global `stock` never moves. We never caught the result. To keep a result, assign it back.
 
 ## Question 3
 
@@ -78,6 +105,23 @@ print(Order("Wrap", 2, 6.90).total())
 a\) `6.9` b) `13.8` c) `2`
 
 ## Answer 3
+
+``` python
+class Order:
+    def __init__(self, item, qty, price):
+        self.item = item
+        self.qty = qty
+        self.price = price
+
+    def total(self):
+        return self.qty * self.price
+
+print(Order("Wrap", 2, 6.90).total())
+```
+
+    13.8
+
+. . .
 
 **b) `13.8`**. `total()` multiplies `qty` by `price`: `2 * 6.90`, and `print` shows a float without the trailing zero. The object carries its own data, the method does the arithmetic.
 
@@ -113,7 +157,7 @@ print(drinks[2])   # the third item
 
 . . .
 
-The first item is `drinks[0]`, not `drinks[1]`. Off-by-one is the classic beginner stumble.
+The first item is `drinks[0]`, not `drinks[1]`. Off-by-one is a classic mistake of students.
 
 ## Counting from the end
 
@@ -130,7 +174,7 @@ print(drinks[-2])   # second to last
 
 . . .
 
-`-1` is always the last item. Handy for "the most recent order".
+`-1` is always the last item. Useful for getting "the most recent order".
 
 ## Slicing: a range of items
 
@@ -162,11 +206,9 @@ a\) `['M', 'L', 'XL']` b) `['M', 'L']` c) `['S', 'M', 'L']`
 
 . . .
 
-<span class="question">Predict first</span>. Pick a letter, then I reveal the answer.
+<span class="question">Predict</span>. Pick a letter, then I reveal the answer.
 
 ## Answer: the `stop` index is excluded
-
-**b) `['M', 'L']`**. The slice starts at index 1 (`"M"`) and stops before index 3, so index 3 (`"XL"`) is never included. A slice from `1:3` gives you exactly `3 - 1 = 2` items.
 
 ``` python
 sizes = ["S", "M", "L", "XL"]
@@ -174,6 +216,10 @@ print(sizes[1:3])
 ```
 
     ['M', 'L']
+
+. . .
+
+**b) `['M', 'L']`**. The slice starts at index 1 (`"M"`) and stops before index 3, so index 3 (`"XL"`) is never included. A slice from `1:3` gives you exactly `3 - 1 = 2` items.
 
 # Your turn: 5-10 minutes
 
@@ -185,7 +231,7 @@ Scan the QR or type the link:
 
 <img src="assets/qr/ex_04_a.png" width="280" />
 
-First **predict** what happens, then run it.
+**Any questions?** Let me know!
 
 ## Growing a list
 
@@ -205,7 +251,7 @@ print(combined)
 
 . . .
 
-`.append()` changes the list in place; `+` builds a fresh one.
+`.append()` changes the list itself, and every name pointing at it sees that; `+` builds a fresh one. `=` never changes a list: it only points a name at one.
 
 ## Predict: the second name
 
@@ -222,11 +268,9 @@ a\) `['Mate', 'Spezi']` b) `['Ayran', 'Mate', 'Spezi']` c) `['Mate', 'Spezi', 'A
 
 . . .
 
-<span class="question">Predict first</span>. Pick a letter, then I reveal the answer.
+<span class="question">Predict</span>. Pick a letter, then I reveal the answer.
 
 ## Answer: two names, one list
-
-**c) `['Mate', 'Spezi', 'Ayran']`**. `winter = summer` does not copy anything: both names point at the **same** list, so `.append()` through one name shows up under the other. A real copy is `list(summer)` or `summer[:]`.
 
 ``` python
 summer = ["Mate", "Spezi"]
@@ -236,6 +280,10 @@ print(summer)
 ```
 
     ['Mate', 'Spezi', 'Ayran']
+
+. . .
+
+**c) `['Mate', 'Spezi', 'Ayran']`**. `winter = summer` does not copy anything: both names point at the **same** list, so `.append()` through one name shows up under the other. A real copy is `list(summer)` or `summer[:]` (a slice with both ends open, so all of it).
 
 ## How long is it?
 
@@ -260,10 +308,14 @@ A **tuple** looks like a list but uses `()` and **cannot be changed**, perfect f
 opening = (9, 0)   # 9:00 sharp
 print(opening[0])
 print(opening[1])
+
+hour, minute = opening   # unpack: one name per slot
+print(hour, minute)
 ```
 
     9
     0
+    9 0
 
 . . .
 
@@ -281,7 +333,7 @@ Scan the QR or type the link:
 
 <img src="assets/qr/ex_04_b.png" width="280" />
 
-First **predict** what happens, then run it.
+**Any questions?** Let me know!
 
 # <span class="flow">Dictionaries & Sets</span>
 
@@ -331,7 +383,7 @@ print(prices["Cola"])
 
 > **Warning**
 >
-> A `KeyError` means the key is spelled wrong or was never added. Today's lab has its quieter cousin: a misspelled key and `.get()` handing back `None`.
+> A `KeyError` means the key is spelled wrong or was never added. However, there is a smarter way to ask for a key.
 
 ## A safer read with `.get()`
 
@@ -363,11 +415,9 @@ a\) `True False` b) `True True` c) `False True`
 
 . . .
 
-<span class="question">Predict first</span>. Pick a letter, then I reveal the answer.
+<span class="question">Predict</span>. Pick a letter, then I reveal the answer.
 
 ## Answer: `in` checks the keys
-
-**a) `True False`**. Membership on a dictionary looks at the **keys** only. `3.20` is a value, so Python says it is not there. To search the values, ask `3.20 in prices.values()`.
 
 ``` python
 prices = {"Mate": 3.50, "Spezi": 3.20}
@@ -377,6 +427,10 @@ print(3.20 in prices.values())
 
     True False
     True
+
+. . .
+
+**a) `True False`**. Membership on a dictionary looks at the **keys** only. `3.20` is a value, so Python says it is not there. To search the values, ask `3.20 in prices.values()`.
 
 ## Updating and adding
 
@@ -396,7 +450,7 @@ print(prices)                # untouched (the summer menu comes back in April)
 
 . . .
 
-One syntax, two jobs. Python decides by whether the key is already present. And the copy means next April needs no un-editing.
+One syntax, two jobs. Python decides by whether the key is already present.
 
 ## Predict: the missing drink
 
@@ -411,21 +465,21 @@ a\) prints `None` b) prints `""` c) raises `KeyError` d) adds `"Cola"`
 
 . . .
 
-<span class="question">Predict first</span>. Pick a letter, then I reveal the answer.
+<span class="question">Predict</span>. Pick a letter, then I reveal the answer.
 
-## Answer: reading with `[]` demands the key
-
-**c) raises `KeyError`**: square-bracket reads never invent a value and never add one. Reach for `.get()` when a key might be missing:
+## Answer: reading with `[]`
 
 ``` python
 prices = {"Mate": 3.50, "Spezi": 3.20}
-try:
-    print(prices["Cola"])
-except KeyError as missing:
-    print("KeyError:", missing)
+print(prices["Cola"])
 ```
 
-    KeyError: 'Cola'
+<pre><span class="ansi-red-fg">KeyError</span><span class="ansi-red-fg">:</span> 'Cola'
+</pre>
+
+. . .
+
+**c) raises `KeyError`**: square-bracket reads never invent a value and never add one. Reach for `.get()` when a key might be missing.
 
 ## Sets: only the unique ones
 
@@ -438,12 +492,23 @@ print(regulars)        # order is arbitrary: a set has none
 print(len(regulars))   # how many different people
 ```
 
-    {'tom', 'nina', 'ada'}
+    {'nina', 'tom', 'ada'}
     3
 
 . . .
 
-Five visits, three people. A set answers "how many *different*?" in one step.
+Five visits, three people. A set answers "how many *different*?".
+
+. . .
+
+Can be created from a list, or with curly braces:
+
+``` python
+regulars = {"nina", "tom", "ada"}
+print(regulars)
+```
+
+    {'nina', 'tom', 'ada'}
 
 # Your turn: 5-10 minutes
 
@@ -455,7 +520,7 @@ Scan the QR or type the link:
 
 <img src="assets/qr/ex_04_c.png" width="280" />
 
-First **predict** what happens, then run it.
+**Any questions?** Let me know!
 
 # <span class="flow">Nesting, Comprehensions & Data</span>
 
@@ -507,7 +572,7 @@ Scan the QR or type the link:
 
 <img src="assets/qr/ex_04_d.png" width="280" />
 
-First **predict** what happens, then run it.
+**Any questions?** Let me know!
 
 ## From a loop to one line
 
@@ -550,9 +615,27 @@ print([round(p * 0.9, 2) for p in drink_prices])  # rounded, clean
 
 . . .
 
-The raw version leaks a `2.88000...3` float. Wrapping each price in `round(_, 2)` is the same receipt trick you use for money.
+The raw version leaks a `2.88000...3` float. Wrapping each price in `round(_, 2)` is the same thing we already used for money.
 
-## Comprehensions build dictionaries too
+## Looping over a dictionary
+
+`.items()` hands you the menu as `(key, value)` pairs. Give the `for` two names and each pair is unpacked into them, like `hour, minute = opening`:
+
+``` python
+prices = {"Mate": 3.50, "Spezi": 3.20, "Ayran": 2.80}
+for name, price in prices.items():
+    print(name, price)
+```
+
+    Mate 3.5
+    Spezi 3.2
+    Ayran 2.8
+
+. . .
+
+One name per slot, left to right. Two names, two slots.
+
+## Comprehensions build dictionaries
 
 Swap the brackets for braces and give a `key: value`. Now you rebuild a whole menu in one line:
 
@@ -566,7 +649,7 @@ print(loyalty)
 
 . . .
 
-`.items()` hands you each `key, value` pair to work with. The whole discounted menu, no loop body in sight.
+The same `name, price` loop, now inside braces. The whole discounted menu, no loop body in sight.
 
 ## Predict: the comprehension
 
@@ -581,11 +664,9 @@ a\) `[1, 4, 9, 16]` b) `[2, 4, 6, 8]` c) `[1, 2, 3, 4]`
 
 . . .
 
-<span class="question">Predict first</span>. Pick a letter, then I reveal the answer.
+<span class="question">Predict</span>. Pick a letter, then I reveal the answer.
 
 ## Answer: square each item
-
-**a) `[1, 4, 9, 16]`**. The expression `n * n` runs once per item, so each number becomes its own square. `2 * n` would double them; the bare `n` would just copy the list.
 
 ``` python
 nums = [1, 2, 3, 4]
@@ -594,7 +675,11 @@ print([n * n for n in nums])
 
     [1, 4, 9, 16]
 
-## Predict: the comprehension with a filter
+. . .
+
+**a) `[1, 4, 9, 16]`**. The expression `n * n` runs once per item, so each number becomes its own square. `2 * n` would double them; the bare `n` would just copy the list.
+
+## Predict: comprehension with filter
 
 Some dishes sold nothing today. A comprehension can carry an `if` after the `for`. How long is the result?
 
@@ -607,11 +692,9 @@ a\) `[4, 0, 6, 0, 2]` b) `[4, 6, 2]` c) `[2, 3, 1]`
 
 . . .
 
-<span class="question">Predict first</span>. Pick a letter, then I reveal the answer.
+<span class="question">Predict</span>. Pick a letter, then I reveal the answer.
 
 ## Answer: the `if` drops items
-
-**b) `[4, 6, 2]`**. The `if` is a filter: items that fail it never reach the expression, so the result is **shorter** than the input. `c * 2` still runs on the survivors, which rules out `[2, 3, 1]`.
 
 ``` python
 counts = [2, 0, 3, 0, 1]
@@ -620,29 +703,9 @@ print([c * 2 for c in counts if c > 0])
 
     [4, 6, 2]
 
-## Getting data into a notebook
-
-Your browser notebook has no files on it. So in Part I, data **ships inside the code**, as lists, dicts, or a multi-line string you can split apart:
-
-``` python
-orders = """Mate;2
-Spezi;1
-Ayran;3"""
-
-for line in orders.splitlines():
-    name, qty = line.split(";")
-    print(name, qty)
-```
-
-    Mate 2
-    Spezi 1
-    Ayran 3
-
 . . .
 
-> **Note**
->
-> Reading real files is a job for **pandas**, which loads them in one line from Session VIII on. For now, inline data is all you need.
+**b) `[4, 6, 2]`**. The `if` is a filter: items that fail it never reach the expression, so the result is **shorter** than the input. `c * 2` still runs on the survivors, which rules out `[2, 3, 1]`.
 
 # Your turn: 5-10 minutes
 
@@ -654,7 +717,7 @@ Scan the QR or type the link:
 
 <img src="assets/qr/ex_04_e.png" width="280" />
 
-First **predict** what happens, then run it.
+**Any questions?** Let me know!
 
 # <span class="flow">To the Lab</span>
 

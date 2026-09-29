@@ -28,18 +28,6 @@ def _(mo):
     mo.md(
         r"""
     # Quick exercise: the delivery fee (5-10 min)
-
-    The curfew stands, and on top of it the startup now charges a delivery
-    fee that depends on the order size:
-
-    | `order_total` | fee |
-    |---|---|
-    | `order_total < 15` | 2.90 |
-    | `order_total >= 15 and order_total < 30` | 1.50 |
-    | `order_total >= 30` | 0 |
-
-    Using an `if`/`elif`/`else` ladder, store the correct fee in `fee_exb`,
-    based on `order_total` below.
     """
     )
     return
@@ -54,6 +42,26 @@ def _(mo):
             "*Download Python code*. Without a save first, the download is an empty file."
         ),
         kind="info",
+    )
+    return
+
+
+@app.cell(hide_code=True)
+def _(mo):
+    mo.md(
+        r"""
+    The curfew stands, and on top of it the startup now charges a delivery
+    fee that depends on the order size:
+
+    | `order_total` | fee |
+    |---|---|
+    | `order_total < 15` | 2.90 |
+    | `order_total >= 15 and order_total < 30` | 1.50 |
+    | `order_total >= 30` | 0 |
+
+    Using an `if`/`elif`/`else` ladder, store the correct fee in `fee_exb`,
+    based on `order_total` below.
+    """
     )
     return
 

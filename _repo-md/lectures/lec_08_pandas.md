@@ -105,11 +105,9 @@ a\) `20.0` b) an `AttributeError` c) `14.5`
 
 . . .
 
-<span class="question">Predict first</span>. Pick a letter, then I reveal the answer.
+<span class="question">Predict</span>. Pick a letter, then I reveal the answer.
 
 ## Answer: it ran, and it's wrong
-
-**c) `14.5`**: the line averages **all five** orders. Nobody filtered for Nord, and pandas has no way to know that was the question:
 
 ``` python
 print(check["total_eur"].mean())                             # every zone
@@ -118,6 +116,10 @@ print(check[check["zone"] == "Nord"]["total_eur"].mean())    # Nord only
 
     14.5
     20.0
+
+. . .
+
+**c) `14.5`**: the line averages **all five** orders. Nobody filtered for Nord, and pandas has no way to know that was the question.
 
 . . .
 
@@ -138,11 +140,9 @@ a\) prints a summary table b) raises an `AttributeError` c) returns an empty Dat
 
 . . .
 
-<span class="question">Predict first</span>. Pick a letter, then I reveal the answer.
+<span class="question">Predict</span>. Pick a letter, then I reveal the answer.
 
 ## Answer: the method never existed
-
-**b) `AttributeError`**: pandas has no `.summarize()`. The AI invented it:
 
 ``` python
 import pandas as pd
@@ -152,6 +152,10 @@ orders.summarize()                     # the method the AI invented
 
 <pre><span class="ansi-red-fg">AttributeError</span><span class="ansi-red-fg">:</span> 'DataFrame' object has no attribute 'summarize'
 </pre>
+
+. . .
+
+**b) `AttributeError`**: pandas has no `.summarize()`. The AI invented it.
 
 . . .
 
@@ -209,7 +213,7 @@ Scan the QR or type the link:
 
 <img src="assets/qr/ex_08_a.png" width="280" />
 
-First **predict** what happens, then run it.
+**Any questions?** Let me know!
 
 # <span class="flow">The DataFrame</span>
 
@@ -338,11 +342,9 @@ a\) a column of `True`/`False`, one per row b) only the rows whose total is over
 
 . . .
 
-<span class="question">Predict first</span>. Pick a letter, then I reveal the answer.
+<span class="question">Predict</span>. Pick a letter, then I reveal the answer.
 
 ## Answer: a mask, not a table
-
-**a) a column of `True`/`False`**. The comparison alone is the **mask**, a Series with one boolean per row. The rows only appear once you index with it:
 
 ``` python
 big = df["total_eur"] > 20
@@ -360,6 +362,10 @@ print(df[big])          # the rows: build the mask, then apply it
     2       103  Nord      3       24.0
     4       105  Sued      4       31.4
 
+. . .
+
+**a) a column of `True`/`False`**. The comparison alone is the **mask**, a Series with one boolean per row. The rows only appear once you index with it.
+
 # Your turn: 5-10 minutes
 
 ## Open the exercise
@@ -370,7 +376,7 @@ Scan the QR or type the link:
 
 <img src="assets/qr/ex_08_b.png" width="280" />
 
-First **predict** what happens, then run it.
+**Any questions?** Let me know!
 
 ## Adding a column, sorting
 
@@ -405,11 +411,9 @@ a\) an empty table, no error b) the Nord rows anyway: case is ignored c) a `KeyE
 
 . . .
 
-<span class="question">Predict first</span>. Pick a letter, then I reveal the answer.
+<span class="question">Predict</span>. Pick a letter, then I reveal the answer.
 
 ## Answer: an empty table, no warning
-
-**a) an empty table**. `"nord"` matches nothing, so the mask is all `False` and pandas hands back **zero rows**. No error, no complaint:
 
 ``` python
 print(df[df["zone"] == "nord"])          # nothing matches "nord"
@@ -420,6 +424,10 @@ print("rows:", len(df[df["zone"] == "nord"]))
     Columns: [order_id, zone, items, total_eur]
     Index: []
     rows: 0
+
+. . .
+
+**a) an empty table**. `"nord"` matches nothing, so the mask is all `False` and pandas hands back **zero rows**. No error, no complaint.
 
 . . .
 
@@ -448,7 +456,7 @@ Scan the QR or type the link:
 
 <img src="assets/qr/ex_08_c.png" width="280" />
 
-First **predict** what happens, then run it.
+**Any questions?** Let me know!
 
 # <span class="flow">To the Lab</span>
 
