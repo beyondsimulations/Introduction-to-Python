@@ -631,7 +631,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="import-math-stop-rounding-by-hand" class="level2">
 <h2 class="anchored" data-anchor-id="import-math-stop-rounding-by-hand"><code>import math</code>: stop rounding by hand</h2>
 <p>130 pastries need to ship. They go in crates of 48. How many crates? You need to round <strong>up</strong>: a half-full crate still ships as a whole one.</p>
-<div id="272f3ece" class="cell" data-output-location="fragment" data-execution_count="1">
+<div id="2123c783" class="cell" data-output-location="fragment" data-execution_count="1">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> math</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>pastries <span class="op">=</span> <span class="dv">130</span></span>
@@ -648,7 +648,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="from-statistics-import-..." class="level2">
 <h2 class="anchored" data-anchor-id="from-statistics-import-..."><code>from statistics import ...</code></h2>
 <p>Sometimes you only want a couple of tools, not the whole box. Import them <strong>by name</strong> and use them directly, no <code>statistics.</code> prefix:</p>
-<div id="4fe605a9" class="cell" data-output-location="fragment" data-execution_count="2">
+<div id="554dfd56" class="cell" data-output-location="fragment" data-execution_count="2">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> statistics <span class="im">import</span> mean, median</span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>ratings <span class="op">=</span> [<span class="fl">4.5</span>, <span class="fl">4.8</span>, <span class="fl">1.0</span>, <span class="fl">5.0</span>, <span class="fl">4.2</span>]</span>
@@ -670,12 +670,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>Scan the QR or type the link:</p>
 <p><strong><a href="https://python.tobiasvlcek.com/notebooks/ex_06_a/">python.tobiasvlcek.com/notebooks/ex_06_a/</a></strong></p>
 <p><img src="assets/qr/ex_06_a.png" class="img-fluid" width="280"></p>
-<p>First <strong>predict</strong> what happens, then run it.</p>
+<p><strong>Any questions?</strong> Let me know!</p>
 </section>
 <section id="aliases-a-shorter-name" class="level2">
 <h2 class="anchored" data-anchor-id="aliases-a-shorter-name">Aliases: a shorter name</h2>
 <p>Some module names are long, or you’ll type them fifty times. <code>import ... as</code> gives a module a <strong>nickname</strong> for the rest of the file:</p>
-<div id="36f6042f" class="cell" data-output-location="fragment" data-execution_count="3">
+<div id="adcd283a" class="cell" data-output-location="fragment" data-execution_count="3">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> statistics <span class="im">as</span> stats</span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(stats.median([<span class="fl">4.5</span>, <span class="fl">4.8</span>, <span class="fl">1.0</span>, <span class="fl">5.0</span>, <span class="fl">4.2</span>]))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
@@ -695,12 +695,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(math.pi <span class="op">*</span> radius <span class="op">**</span> <span class="dv">2</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>a) prints <code>706.858…</code> b) an <code>AttributeError</code> c) a <code>NameError</code></p>
 <p>. . .</p>
-<p><span class="question">Predict first</span>. Pick a letter, then I reveal the answer.</p>
+<p><span class="question">Predict</span>. Pick a letter, then I reveal the answer.</p>
 </section>
 <section id="answer-pi-exists-math-doesnt" class="level2">
 <h2 class="anchored" data-anchor-id="answer-pi-exists-math-doesnt">Answer: <code>pi</code> exists, <code>math</code> doesn’t</h2>
-<p><strong>c) a <code>NameError</code></strong>: <code>from math import pi</code> puts exactly one name on your desk, <code>pi</code>. Nobody ever created a name called <code>math</code>, so <code>math.pi</code> fails at the first dot:</p>
-<div id="16225c8c" class="cell" data-output-location="fragment" data-execution_count="5">
+<div id="0d1adb54" class="cell" data-output-location="fragment" data-execution_count="5">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> math <span class="im">import</span> pi</span>
 <span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>radius <span class="op">=</span> <span class="dv">15</span></span>
@@ -713,8 +712,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 <p>. . .</p>
+<p><strong>c) a <code>NameError</code></strong>: <code>from math import pi</code> puts exactly one name on your desk, <code>pi</code>. Nobody ever created a name called <code>math</code>, so <code>math.pi</code> fails at the first dot.</p>
+<p>. . .</p>
 <p>Use the name you imported, and it works:</p>
-<div id="c4f8c0d4" class="cell" data-output-location="fragment" data-execution_count="6">
+<div id="05792973" class="cell" data-output-location="fragment" data-execution_count="6">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(pi <span class="op">*</span> radius <span class="op">**</span> <span class="dv">2</span>)   <span class="co"># 706.858…: the imported name, no prefix</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>706.8583470577034</code></pre>
@@ -747,18 +748,19 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(math.floor(<span class="op">-</span><span class="fl">2.5</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>a) <code>-3</code> b) <code>-2</code> c) an error</p>
 <p>. . .</p>
-<p><span class="question">Predict first</span>. Pick a letter, then I reveal the answer.</p>
+<p><span class="question">Predict</span>. Pick a letter, then I reveal the answer.</p>
 </section>
 <section id="answer-floor-goes-down-not-toward-zero" class="level2">
 <h2 class="anchored" data-anchor-id="answer-floor-goes-down-not-toward-zero">Answer: floor goes down, not toward zero</h2>
-<p><strong>a) <code>-3</code></strong>: <code>floor</code> always heads <strong>down</strong> the number line, toward more negative. From <code>-2.5</code>, down is <code>-3</code>, not the <code>-2</code> you’d get by rounding toward zero:</p>
-<div id="836415f3" class="cell" data-output-location="fragment" data-execution_count="7">
+<div id="27d35191" class="cell" data-output-location="fragment" data-execution_count="7">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> math</span>
 <span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(math.floor(<span class="op">-</span><span class="fl">2.5</span>))   <span class="co"># down the number line → -3</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>-3</code></pre>
 </div>
 </div>
+<p>. . .</p>
+<p><strong>a) <code>-3</code></strong>: <code>floor</code> always heads <strong>down</strong> the number line, toward more negative. From <code>-2.5</code>, down is <code>-3</code>, not the <code>-2</code> you’d get by rounding toward zero.</p>
 <p>. . .</p>
 <p>“Down” means <em>smaller</em>, and <code>-3</code> is smaller than <code>-2</code>. Keep the number line in your head, not the distance to zero.</p>
 </section>
@@ -770,7 +772,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>Scan the QR or type the link:</p>
 <p><strong><a href="https://python.tobiasvlcek.com/notebooks/ex_06_b/">python.tobiasvlcek.com/notebooks/ex_06_b/</a></strong></p>
 <p><img src="assets/qr/ex_06_b.png" class="img-fluid" width="280"></p>
-<p>First <strong>predict</strong> what happens, then run it.</p>
+<p><strong>Any questions?</strong> Let me know!</p>
 </section>
 </section>
 <section id="rehearsing-luck" class="level1 title">
@@ -778,7 +780,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="the-random-toolbox" class="level2">
 <h2 class="anchored" data-anchor-id="the-random-toolbox">The <code>random</code> toolbox</h2>
 <p>The investor wants to see how the shop copes with a <strong>busy day</strong>, but the busy day hasn’t happened yet. So we <em>rehearse</em> it with made-up numbers. The <code>random</code> module deals them:</p>
-<div id="9230d862" class="cell" data-output-location="fragment" data-execution_count="8">
+<div id="4e6cc54f" class="cell" data-output-location="fragment" data-execution_count="8">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> random</span>
 <span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(random.random())                       <span class="co"># a float in [0.0, 1.0)</span></span>
@@ -789,10 +791,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb15-8"><a href="#cb15-8" aria-hidden="true" tabindex="-1"></a>random.shuffle(queue)                         <span class="co"># reorders the list in place</span></span>
 <span id="cb15-9"><a href="#cb15-9" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(queue)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>0.6780447051994066
-8
-mocha
-[2, 3, 5, 4, 1]</code></pre>
+<pre><code>0.21829174445478627
+9
+latte
+[2, 4, 3, 1, 5]</code></pre>
 </div>
 </div>
 <p>. . .</p>
@@ -801,14 +803,14 @@ mocha
 <section id="run-it-again" class="level2">
 <h2 class="anchored" data-anchor-id="run-it-again">“Run it again”</h2>
 <p>The investor leans over and says: <strong>“Run it again.”</strong> Tobi does, and gets <strong>completely different numbers</strong>:</p>
-<div id="9dce6c7a" class="cell" data-output-location="fragment" data-execution_count="9">
+<div id="5eb591e1" class="cell" data-output-location="fragment" data-execution_count="9">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb17"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> random</span>
 <span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>([random.randint(<span class="dv">1</span>, <span class="dv">20</span>) <span class="cf">for</span> _ <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">5</span>)])   <span class="co"># _ : a loop name we never use</span></span>
 <span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>([random.randint(<span class="dv">1</span>, <span class="dv">20</span>) <span class="cf">for</span> _ <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">5</span>)])   <span class="co"># ...and again, different!</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[17, 2, 13, 8, 14]
-[3, 13, 10, 11, 12]</code></pre>
+<pre><code>[18, 14, 15, 14, 2]
+[7, 7, 2, 6, 9]</code></pre>
 </div>
 </div>
 <p>. . .</p>
@@ -817,7 +819,7 @@ mocha
 <section id="random.seed-makes-luck-repeatable" class="level2">
 <h2 class="anchored" data-anchor-id="random.seed-makes-luck-repeatable"><code>random.seed</code> makes luck repeatable</h2>
 <p><code>random.seed(n)</code> fixes the starting point of the number stream. Same seed → <strong>same sequence, every time</strong>:</p>
-<div id="30e47099" class="cell" data-output-location="fragment" data-execution_count="10">
+<div id="9cab31b0" class="cell" data-output-location="fragment" data-execution_count="10">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb19"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> random</span>
 <span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a>random.seed(<span class="dv">7</span>)</span>
@@ -848,12 +850,11 @@ mocha
 <span id="cb21-10"><a href="#cb21-10" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(first <span class="op">==</span> second)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>a) <code>False</code>: <code>choice</code> picks freely, the seed only steers <code>randint</code> b) <code>True</code>: same seed, same stream, same pick c) an error: a seed can only be set once per program</p>
 <p>. . .</p>
-<p><span class="question">Predict first</span>. Pick a letter, then I reveal the answer.</p>
+<p><span class="question">Predict</span>. Pick a letter, then I reveal the answer.</p>
 </section>
 <section id="answer-same-rider" class="level2">
 <h2 class="anchored" data-anchor-id="answer-same-rider">Answer: same rider</h2>
-<p><strong>b) <code>True</code></strong>. Every <code>random</code> tool draws from the same stream, and re-seeding rewinds it to the start. <code>choice</code> is no exception: after <code>seed(3)</code> it lands on the same item every time:</p>
-<div id="1feb9d10" class="cell" data-output-location="fragment" data-execution_count="11">
+<div id="eb7fb1fd" class="cell" data-output-location="fragment" data-execution_count="11">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb22"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> random</span>
 <span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a>riders <span class="op">=</span> [<span class="st">"Ana"</span>, <span class="st">"Ben"</span>, <span class="st">"Cem"</span>, <span class="st">"Dana"</span>]</span>
@@ -870,6 +871,8 @@ mocha
 Ben Ben</code></pre>
 </div>
 </div>
+<p>. . .</p>
+<p><strong>b) <code>True</code></strong>. Every <code>random</code> tool draws from the same stream, and re-seeding rewinds it to the start. <code>choice</code> is no exception: after <code>seed(3)</code> it lands on the same item every time.</p>
 </section>
 <section id="predict-seeded-once-built-twice" class="level2">
 <h2 class="anchored" data-anchor-id="predict-seeded-once-built-twice">Predict: seeded once, built twice</h2>
@@ -884,12 +887,11 @@ Ben Ben</code></pre>
 <span id="cb24-8"><a href="#cb24-8" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(second)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>a) different: the second list continues where the first stopped b) equal: the seed is set, so both come out the same c) an error: the stream is empty after three draws</p>
 <p>. . .</p>
-<p><span class="question">Predict first</span>. Pick a letter, then I reveal the answer.</p>
+<p><span class="question">Predict</span>. Pick a letter, then I reveal the answer.</p>
 </section>
 <section id="answer-different" class="level2">
 <h2 class="anchored" data-anchor-id="answer-different">Answer: different</h2>
-<p><strong>a) different</strong>. A seed doesn’t freeze <code>random</code>, it fixes the whole sequence. The first list eats the first three numbers of the stream; the second list simply continues from number four:</p>
-<div id="e9654dca" class="cell" data-output-location="fragment" data-execution_count="12">
+<div id="beea8c25" class="cell" data-output-location="fragment" data-execution_count="12">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb25"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> random</span>
 <span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a>random.seed(<span class="dv">42</span>)</span>
@@ -904,6 +906,8 @@ Ben Ben</code></pre>
 </div>
 </div>
 <p>. . .</p>
+<p><strong>a) different</strong>. A seed doesn’t freeze <code>random</code>, it fixes the whole sequence. The first list eats the first three numbers of the stream; the second list simply continues from number four.</p>
+<p>. . .</p>
 <p>To get the <em>same</em> list twice, you re-seed before each run, and that rewinds the stream to the start. One seed, one fixed sequence: that’s the entire job of a seed.</p>
 </section>
 </section>
@@ -914,7 +918,7 @@ Ben Ben</code></pre>
 <p>Scan the QR or type the link:</p>
 <p><strong><a href="https://python.tobiasvlcek.com/notebooks/ex_06_c/">python.tobiasvlcek.com/notebooks/ex_06_c/</a></strong></p>
 <p><img src="assets/qr/ex_06_c.png" class="img-fluid" width="280"></p>
-<p>First <strong>predict</strong> what happens, then run it.</p>
+<p><strong>Any questions?</strong> Let me know!</p>
 </section>
 </section>
 <section id="to-the-lab" class="level1 title">

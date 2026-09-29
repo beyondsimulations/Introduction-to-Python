@@ -493,7 +493,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#answer-in-checks-the-keys" id="toc-answer-in-checks-the-keys" class="nav-link" data-scroll-target="#answer-in-checks-the-keys">Answer: <code>in</code> checks the keys</a></li>
   <li><a href="#updating-and-adding" id="toc-updating-and-adding" class="nav-link" data-scroll-target="#updating-and-adding">Updating and adding</a></li>
   <li><a href="#predict-the-missing-drink" id="toc-predict-the-missing-drink" class="nav-link" data-scroll-target="#predict-the-missing-drink">Predict: the missing drink</a></li>
-  <li><a href="#answer-reading-with-demands-the-key" id="toc-answer-reading-with-demands-the-key" class="nav-link" data-scroll-target="#answer-reading-with-demands-the-key">Answer: reading with <code>[]</code> demands the key</a></li>
+  <li><a href="#answer-reading-with" id="toc-answer-reading-with" class="nav-link" data-scroll-target="#answer-reading-with">Answer: reading with <code>[]</code></a></li>
   <li><a href="#sets-only-the-unique-ones" id="toc-sets-only-the-unique-ones" class="nav-link" data-scroll-target="#sets-only-the-unique-ones">Sets: only the unique ones</a></li>
   </ul></li>
   <li><a href="#your-turn-5-10-minutes-2" id="toc-your-turn-5-10-minutes-2" class="nav-link" data-scroll-target="#your-turn-5-10-minutes-2">Your turn: 5-10 minutes</a>
@@ -510,12 +510,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#open-the-exercise-3" id="toc-open-the-exercise-3" class="nav-link" data-scroll-target="#open-the-exercise-3">Open the exercise</a></li>
   <li><a href="#from-a-loop-to-one-line" id="toc-from-a-loop-to-one-line" class="nav-link" data-scroll-target="#from-a-loop-to-one-line">From a loop to one line</a></li>
   <li><a href="#round-inside-a-comprehension" id="toc-round-inside-a-comprehension" class="nav-link" data-scroll-target="#round-inside-a-comprehension"><code>round</code> inside a comprehension</a></li>
-  <li><a href="#comprehensions-build-dictionaries-too" id="toc-comprehensions-build-dictionaries-too" class="nav-link" data-scroll-target="#comprehensions-build-dictionaries-too">Comprehensions build dictionaries too</a></li>
+  <li><a href="#looping-over-a-dictionary" id="toc-looping-over-a-dictionary" class="nav-link" data-scroll-target="#looping-over-a-dictionary">Looping over a dictionary</a></li>
+  <li><a href="#comprehensions-build-dictionaries" id="toc-comprehensions-build-dictionaries" class="nav-link" data-scroll-target="#comprehensions-build-dictionaries">Comprehensions build dictionaries</a></li>
   <li><a href="#predict-the-comprehension" id="toc-predict-the-comprehension" class="nav-link" data-scroll-target="#predict-the-comprehension">Predict: the comprehension</a></li>
   <li><a href="#answer-square-each-item" id="toc-answer-square-each-item" class="nav-link" data-scroll-target="#answer-square-each-item">Answer: square each item</a></li>
-  <li><a href="#predict-the-comprehension-with-a-filter" id="toc-predict-the-comprehension-with-a-filter" class="nav-link" data-scroll-target="#predict-the-comprehension-with-a-filter">Predict: the comprehension with a filter</a></li>
+  <li><a href="#predict-comprehension-with-filter" id="toc-predict-comprehension-with-filter" class="nav-link" data-scroll-target="#predict-comprehension-with-filter">Predict: comprehension with filter</a></li>
   <li><a href="#answer-the-if-drops-items" id="toc-answer-the-if-drops-items" class="nav-link" data-scroll-target="#answer-the-if-drops-items">Answer: the <code>if</code> drops items</a></li>
-  <li><a href="#getting-data-into-a-notebook" id="toc-getting-data-into-a-notebook" class="nav-link" data-scroll-target="#getting-data-into-a-notebook">Getting data into a notebook</a></li>
   </ul></li>
   <li><a href="#your-turn-5-10-minutes-4" id="toc-your-turn-5-10-minutes-4" class="nav-link" data-scroll-target="#your-turn-5-10-minutes-4">Your turn: 5-10 minutes</a>
   <ul class="collapse">
@@ -585,7 +585,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h1 class="loud-slide">Warm-up</h1>
 <section id="question-1" class="level2">
 <h2 class="anchored" data-anchor-id="question-1">Question 1</h2>
-<p>Three questions from Episode 3. Commit. Hands up <strong>before</strong> the reveal.</p>
+<p>Three questions from Episode 3.</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> announce(item):</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f"Fresh today: </span><span class="sc">{</span>item<span class="sc">}</span><span class="ss">"</span>)</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -596,39 +596,80 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 <section id="answer-1" class="level2">
 <h2 class="anchored" data-anchor-id="answer-1">Answer 1</h2>
+<div id="b146664b" class="cell" data-output-location="fragment" data-execution_count="1">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> announce(item):</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f"Fresh today: </span><span class="sc">{</span>item<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>result <span class="op">=</span> announce(<span class="st">"Mate"</span>)</span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(result)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Fresh today: Mate
+None</code></pre>
+</div>
+</div>
+<p>. . .</p>
 <p><strong>c) <code>None</code></strong>: <code>announce</code> has no <code>return</code>, so it hands back <code>None</code>. Printing something is not the same as returning it.</p>
 </section>
 <section id="question-2" class="level2">
 <h2 class="anchored" data-anchor-id="question-2">Question 2</h2>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> restock(n):</span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>    n <span class="op">=</span> n <span class="op">+</span> <span class="dv">10</span></span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> n</span>
-<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>stock <span class="op">=</span> <span class="dv">5</span></span>
-<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>restock(stock)</span>
-<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(stock)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> restock(n):</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>    n <span class="op">=</span> n <span class="op">+</span> <span class="dv">10</span></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> n</span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>stock <span class="op">=</span> <span class="dv">5</span></span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>restock(stock)</span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(stock)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>a) <code>5</code> b) <code>15</code> c) <code>Error</code></p>
 </section>
 <section id="answer-2" class="level2">
 <h2 class="anchored" data-anchor-id="answer-2">Answer 2</h2>
-<p><strong>a) <code>5</code></strong>. The function works on its own copy. We never caught its result, so the global <code>stock</code> is untouched. To keep a result, assign it back.</p>
+<div id="8ce149ca" class="cell" data-output-location="fragment" data-execution_count="2">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> restock(n):</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>    n <span class="op">=</span> n <span class="op">+</span> <span class="dv">10</span></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> n</span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>stock <span class="op">=</span> <span class="dv">5</span></span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>restock(stock)</span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(stock)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>5</code></pre>
+</div>
+</div>
+<p>. . .</p>
+<p><strong>a) <code>5</code></strong>. <code>n = n + 10</code> points the function’s own name <code>n</code> at a new number, so the global <code>stock</code> never moves. We never caught the result. To keep a result, assign it back.</p>
 </section>
 <section id="question-3" class="level2">
 <h2 class="anchored" data-anchor-id="question-3">Question 3</h2>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> Order:</span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>, item, qty, price):</span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.item <span class="op">=</span> item</span>
-<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.qty <span class="op">=</span> qty</span>
-<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.price <span class="op">=</span> price</span>
-<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> total(<span class="va">self</span>):</span>
-<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="va">self</span>.qty <span class="op">*</span> <span class="va">self</span>.price</span>
-<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(Order(<span class="st">"Wrap"</span>, <span class="dv">2</span>, <span class="fl">6.90</span>).total())</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> Order:</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>, item, qty, price):</span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.item <span class="op">=</span> item</span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.qty <span class="op">=</span> qty</span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.price <span class="op">=</span> price</span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> total(<span class="va">self</span>):</span>
+<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="va">self</span>.qty <span class="op">*</span> <span class="va">self</span>.price</span>
+<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(Order(<span class="st">"Wrap"</span>, <span class="dv">2</span>, <span class="fl">6.90</span>).total())</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>a) <code>6.9</code> b) <code>13.8</code> c) <code>2</code></p>
 </section>
 <section id="answer-3" class="level2">
 <h2 class="anchored" data-anchor-id="answer-3">Answer 3</h2>
+<div id="4aa843c7" class="cell" data-output-location="fragment" data-execution_count="3">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> Order:</span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>, item, qty, price):</span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.item <span class="op">=</span> item</span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.qty <span class="op">=</span> qty</span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.price <span class="op">=</span> price</span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> total(<span class="va">self</span>):</span>
+<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="va">self</span>.qty <span class="op">*</span> <span class="va">self</span>.price</span>
+<span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-10"><a href="#cb8-10" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(Order(<span class="st">"Wrap"</span>, <span class="dv">2</span>, <span class="fl">6.90</span>).total())</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>13.8</code></pre>
+</div>
+</div>
+<p>. . .</p>
 <p><strong>b) <code>13.8</code></strong>. <code>total()</code> multiplies <code>qty</code> by <code>price</code>: <code>2 * 6.90</code>, and <code>print</code> shows a float without the trailing zero. The object carries its own data, the method does the arithmetic.</p>
 </section>
 </section>
@@ -637,9 +678,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="one-name-for-many-values" class="level2">
 <h2 class="anchored" data-anchor-id="one-name-for-many-values">One name for many values</h2>
 <p>A <strong>list</strong> holds many values under one name, in order. That’s the cure for seventeen variables:</p>
-<div id="e5438a71" class="cell" data-output-location="fragment" data-execution_count="1">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>drinks <span class="op">=</span> [<span class="st">"Mate"</span>, <span class="st">"Spezi"</span>, <span class="st">"Ayran"</span>]</span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(drinks)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div id="56c33ba7" class="cell" data-output-location="fragment" data-execution_count="4">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>drinks <span class="op">=</span> [<span class="st">"Mate"</span>, <span class="st">"Spezi"</span>, <span class="st">"Ayran"</span>]</span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(drinks)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>['Mate', 'Spezi', 'Ayran']</code></pre>
 </div>
@@ -650,40 +691,40 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="reaching-in-by-position" class="level2">
 <h2 class="anchored" data-anchor-id="reaching-in-by-position">Reaching in by position</h2>
 <p>Each item has an <strong>index</strong>. Python counts from <strong>0</strong>:</p>
-<div id="4f2e79ee" class="cell" data-output-location="fragment" data-execution_count="2">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>drinks <span class="op">=</span> [<span class="st">"Mate"</span>, <span class="st">"Spezi"</span>, <span class="st">"Ayran"</span>]</span>
-<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(drinks[<span class="dv">0</span>])   <span class="co"># the first item</span></span>
-<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(drinks[<span class="dv">2</span>])   <span class="co"># the third item</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div id="445abab8" class="cell" data-output-location="fragment" data-execution_count="5">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>drinks <span class="op">=</span> [<span class="st">"Mate"</span>, <span class="st">"Spezi"</span>, <span class="st">"Ayran"</span>]</span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(drinks[<span class="dv">0</span>])   <span class="co"># the first item</span></span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(drinks[<span class="dv">2</span>])   <span class="co"># the third item</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Mate
 Ayran</code></pre>
 </div>
 </div>
 <p>. . .</p>
-<p>The first item is <code>drinks[0]</code>, not <code>drinks[1]</code>. Off-by-one is the classic beginner stumble.</p>
+<p>The first item is <code>drinks[0]</code>, not <code>drinks[1]</code>. Off-by-one is a classic mistake of students.</p>
 </section>
 <section id="counting-from-the-end" class="level2">
 <h2 class="anchored" data-anchor-id="counting-from-the-end">Counting from the end</h2>
 <p>A <strong>negative</strong> index counts backwards from the end, no need to know the length:</p>
-<div id="fb66d138" class="cell" data-output-location="fragment" data-execution_count="3">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>drinks <span class="op">=</span> [<span class="st">"Mate"</span>, <span class="st">"Spezi"</span>, <span class="st">"Ayran"</span>]</span>
-<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(drinks[<span class="op">-</span><span class="dv">1</span>])   <span class="co"># last item</span></span>
-<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(drinks[<span class="op">-</span><span class="dv">2</span>])   <span class="co"># second to last</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div id="947c1c0c" class="cell" data-output-location="fragment" data-execution_count="6">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>drinks <span class="op">=</span> [<span class="st">"Mate"</span>, <span class="st">"Spezi"</span>, <span class="st">"Ayran"</span>]</span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(drinks[<span class="op">-</span><span class="dv">1</span>])   <span class="co"># last item</span></span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(drinks[<span class="op">-</span><span class="dv">2</span>])   <span class="co"># second to last</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Ayran
 Spezi</code></pre>
 </div>
 </div>
 <p>. . .</p>
-<p><code>-1</code> is always the last item. Handy for “the most recent order”.</p>
+<p><code>-1</code> is always the last item. Useful for getting “the most recent order”.</p>
 </section>
 <section id="slicing-a-range-of-items" class="level2">
 <h2 class="anchored" data-anchor-id="slicing-a-range-of-items">Slicing: a range of items</h2>
 <p>A <strong>slice</strong> <code>list[start:stop]</code> returns a new list, from <code>start</code> up to, but <strong>not including</strong>, <code>stop</code>:</p>
-<div id="4358c597" class="cell" data-output-location="fragment" data-execution_count="4">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>drinks <span class="op">=</span> [<span class="st">"Mate"</span>, <span class="st">"Spezi"</span>, <span class="st">"Ayran"</span>]</span>
-<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(drinks[<span class="dv">0</span>:<span class="dv">2</span>])   <span class="co"># items 0 and 1</span></span>
-<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(drinks[<span class="op">-</span><span class="dv">2</span>:])   <span class="co"># the last two: negative start, open end</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div id="70af5ebe" class="cell" data-output-location="fragment" data-execution_count="7">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>drinks <span class="op">=</span> [<span class="st">"Mate"</span>, <span class="st">"Spezi"</span>, <span class="st">"Ayran"</span>]</span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(drinks[<span class="dv">0</span>:<span class="dv">2</span>])   <span class="co"># items 0 and 1</span></span>
+<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(drinks[<span class="op">-</span><span class="dv">2</span>:])   <span class="co"># the last two: negative start, open end</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>['Mate', 'Spezi']
 ['Spezi', 'Ayran']</code></pre>
@@ -695,22 +736,23 @@ Spezi</code></pre>
 <section id="predict-where-does-the-slice-stop" class="level2">
 <h2 class="anchored" data-anchor-id="predict-where-does-the-slice-stop">Predict: where does the slice stop?</h2>
 <p>A courier carries four cup sizes. What does this print?</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>sizes <span class="op">=</span> [<span class="st">"S"</span>, <span class="st">"M"</span>, <span class="st">"L"</span>, <span class="st">"XL"</span>]</span>
-<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(sizes[<span class="dv">1</span>:<span class="dv">3</span>])</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb18"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>sizes <span class="op">=</span> [<span class="st">"S"</span>, <span class="st">"M"</span>, <span class="st">"L"</span>, <span class="st">"XL"</span>]</span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(sizes[<span class="dv">1</span>:<span class="dv">3</span>])</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>a) <code>['M', 'L', 'XL']</code> b) <code>['M', 'L']</code> c) <code>['S', 'M', 'L']</code></p>
 <p>. . .</p>
-<p><span class="question">Predict first</span>. Pick a letter, then I reveal the answer.</p>
+<p><span class="question">Predict</span>. Pick a letter, then I reveal the answer.</p>
 </section>
 <section id="answer-the-stop-index-is-excluded" class="level2">
 <h2 class="anchored" data-anchor-id="answer-the-stop-index-is-excluded">Answer: the <code>stop</code> index is excluded</h2>
-<p><strong>b) <code>['M', 'L']</code></strong>. The slice starts at index 1 (<code>"M"</code>) and stops before index 3, so index 3 (<code>"XL"</code>) is never included. A slice from <code>1:3</code> gives you exactly <code>3 - 1 = 2</code> items.</p>
-<div id="18b229b3" class="cell" data-output-location="fragment" data-execution_count="5">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>sizes <span class="op">=</span> [<span class="st">"S"</span>, <span class="st">"M"</span>, <span class="st">"L"</span>, <span class="st">"XL"</span>]</span>
-<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(sizes[<span class="dv">1</span>:<span class="dv">3</span>])</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div id="c9263b5c" class="cell" data-output-location="fragment" data-execution_count="8">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb19"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>sizes <span class="op">=</span> [<span class="st">"S"</span>, <span class="st">"M"</span>, <span class="st">"L"</span>, <span class="st">"XL"</span>]</span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(sizes[<span class="dv">1</span>:<span class="dv">3</span>])</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>['M', 'L']</code></pre>
 </div>
 </div>
+<p>. . .</p>
+<p><strong>b) <code>['M', 'L']</code></strong>. The slice starts at index 1 (<code>"M"</code>) and stops before index 3, so index 3 (<code>"XL"</code>) is never included. A slice from <code>1:3</code> gives you exactly <code>3 - 1 = 2</code> items.</p>
 </section>
 </section>
 <section id="your-turn-5-10-minutes" class="level1 loud-slide">
@@ -720,56 +762,57 @@ Spezi</code></pre>
 <p>Scan the QR or type the link:</p>
 <p><strong><a href="https://python.tobiasvlcek.com/notebooks/ex_04_a/">python.tobiasvlcek.com/notebooks/ex_04_a/</a></strong></p>
 <p><img src="assets/qr/ex_04_a.png" class="img-fluid" width="280"></p>
-<p>First <strong>predict</strong> what happens, then run it.</p>
+<p><strong>Any questions?</strong> Let me know!</p>
 </section>
 <section id="growing-a-list" class="level2">
 <h2 class="anchored" data-anchor-id="growing-a-list">Growing a list</h2>
 <p>Lists are <strong>mutable</strong>: you can change them after creation. <code>.append()</code> adds one item to the end; <code>+</code> joins two lists into a new one:</p>
-<div id="22c52282" class="cell" data-output-location="fragment" data-execution_count="6">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>drinks <span class="op">=</span> [<span class="st">"Mate"</span>, <span class="st">"Spezi"</span>]</span>
-<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>drinks.append(<span class="st">"Ayran"</span>)</span>
-<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(drinks)</span>
-<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a>combined <span class="op">=</span> [<span class="st">"Mate"</span>] <span class="op">+</span> [<span class="st">"Kombucha"</span>]</span>
-<span id="cb15-6"><a href="#cb15-6" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(combined)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div id="b25d1e6a" class="cell" data-output-location="fragment" data-execution_count="9">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb21"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>drinks <span class="op">=</span> [<span class="st">"Mate"</span>, <span class="st">"Spezi"</span>]</span>
+<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>drinks.append(<span class="st">"Ayran"</span>)</span>
+<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(drinks)</span>
+<span id="cb21-4"><a href="#cb21-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-5"><a href="#cb21-5" aria-hidden="true" tabindex="-1"></a>combined <span class="op">=</span> [<span class="st">"Mate"</span>] <span class="op">+</span> [<span class="st">"Kombucha"</span>]</span>
+<span id="cb21-6"><a href="#cb21-6" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(combined)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>['Mate', 'Spezi', 'Ayran']
 ['Mate', 'Kombucha']</code></pre>
 </div>
 </div>
 <p>. . .</p>
-<p><code>.append()</code> changes the list in place; <code>+</code> builds a fresh one.</p>
+<p><code>.append()</code> changes the list itself, and every name pointing at it sees that; <code>+</code> builds a fresh one. <code>=</code> never changes a list: it only points a name at one.</p>
 </section>
 <section id="predict-the-second-name" class="level2">
 <h2 class="anchored" data-anchor-id="predict-the-second-name">Predict: the second name</h2>
 <p>Tobi wants a winter copy of the drinks list to experiment on. What does the last line print?</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb17"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>summer <span class="op">=</span> [<span class="st">"Mate"</span>, <span class="st">"Spezi"</span>]</span>
-<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>winter <span class="op">=</span> summer</span>
-<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a>winter.append(<span class="st">"Ayran"</span>)</span>
-<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(summer)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb23"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a>summer <span class="op">=</span> [<span class="st">"Mate"</span>, <span class="st">"Spezi"</span>]</span>
+<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a>winter <span class="op">=</span> summer</span>
+<span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a>winter.append(<span class="st">"Ayran"</span>)</span>
+<span id="cb23-4"><a href="#cb23-4" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(summer)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>a) <code>['Mate', 'Spezi']</code> b) <code>['Ayran', 'Mate', 'Spezi']</code> c) <code>['Mate', 'Spezi', 'Ayran']</code></p>
 <p>. . .</p>
-<p><span class="question">Predict first</span>. Pick a letter, then I reveal the answer.</p>
+<p><span class="question">Predict</span>. Pick a letter, then I reveal the answer.</p>
 </section>
 <section id="answer-two-names-one-list" class="level2">
 <h2 class="anchored" data-anchor-id="answer-two-names-one-list">Answer: two names, one list</h2>
-<p><strong>c) <code>['Mate', 'Spezi', 'Ayran']</code></strong>. <code>winter = summer</code> does not copy anything: both names point at the <strong>same</strong> list, so <code>.append()</code> through one name shows up under the other. A real copy is <code>list(summer)</code> or <code>summer[:]</code>.</p>
-<div id="847ae1f3" class="cell" data-output-location="fragment" data-execution_count="7">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb18"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>summer <span class="op">=</span> [<span class="st">"Mate"</span>, <span class="st">"Spezi"</span>]</span>
-<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>winter <span class="op">=</span> summer</span>
-<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a>winter.append(<span class="st">"Ayran"</span>)</span>
-<span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(summer)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div id="6c752780" class="cell" data-output-location="fragment" data-execution_count="10">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb24"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a>summer <span class="op">=</span> [<span class="st">"Mate"</span>, <span class="st">"Spezi"</span>]</span>
+<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a>winter <span class="op">=</span> summer</span>
+<span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a>winter.append(<span class="st">"Ayran"</span>)</span>
+<span id="cb24-4"><a href="#cb24-4" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(summer)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>['Mate', 'Spezi', 'Ayran']</code></pre>
 </div>
 </div>
+<p>. . .</p>
+<p><strong>c) <code>['Mate', 'Spezi', 'Ayran']</code></strong>. <code>winter = summer</code> does not copy anything: both names point at the <strong>same</strong> list, so <code>.append()</code> through one name shows up under the other. A real copy is <code>list(summer)</code> or <code>summer[:]</code> (a slice with both ends open, so all of it).</p>
 </section>
 <section id="how-long-is-it" class="level2">
 <h2 class="anchored" data-anchor-id="how-long-is-it">How long is it?</h2>
 <p><code>len()</code> tells you how many items a list holds:</p>
-<div id="41d99e2d" class="cell" data-output-location="fragment" data-execution_count="8">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb20"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>drinks <span class="op">=</span> [<span class="st">"Mate"</span>, <span class="st">"Spezi"</span>, <span class="st">"Ayran"</span>]</span>
-<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="bu">len</span>(drinks))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div id="59148660" class="cell" data-output-location="fragment" data-execution_count="11">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb26"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a>drinks <span class="op">=</span> [<span class="st">"Mate"</span>, <span class="st">"Spezi"</span>, <span class="st">"Ayran"</span>]</span>
+<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="bu">len</span>(drinks))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>3</code></pre>
 </div>
@@ -780,13 +823,17 @@ Spezi</code></pre>
 <section id="tuples-fixed-length-records" class="level2">
 <h2 class="anchored" data-anchor-id="tuples-fixed-length-records">Tuples: fixed-length records</h2>
 <p>A <strong>tuple</strong> looks like a list but uses <code>()</code> and <strong>cannot be changed</strong>, perfect for a record whose shape never varies, like opening hours <code>(hour, minute)</code>:</p>
-<div id="bfffe804" class="cell" data-output-location="fragment" data-execution_count="9">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb22"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>opening <span class="op">=</span> (<span class="dv">9</span>, <span class="dv">0</span>)   <span class="co"># 9:00 sharp</span></span>
-<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(opening[<span class="dv">0</span>])</span>
-<span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(opening[<span class="dv">1</span>])</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div id="b64a77cb" class="cell" data-output-location="fragment" data-execution_count="12">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb28"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a>opening <span class="op">=</span> (<span class="dv">9</span>, <span class="dv">0</span>)   <span class="co"># 9:00 sharp</span></span>
+<span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(opening[<span class="dv">0</span>])</span>
+<span id="cb28-3"><a href="#cb28-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(opening[<span class="dv">1</span>])</span>
+<span id="cb28-4"><a href="#cb28-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb28-5"><a href="#cb28-5" aria-hidden="true" tabindex="-1"></a>hour, minute <span class="op">=</span> opening   <span class="co"># unpack: one name per slot</span></span>
+<span id="cb28-6"><a href="#cb28-6" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(hour, minute)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>9
-0</code></pre>
+0
+9 0</code></pre>
 </div>
 </div>
 <p>. . .</p>
@@ -809,7 +856,7 @@ Spezi</code></pre>
 <p>Scan the QR or type the link:</p>
 <p><strong><a href="https://python.tobiasvlcek.com/notebooks/ex_04_b/">python.tobiasvlcek.com/notebooks/ex_04_b/</a></strong></p>
 <p><img src="assets/qr/ex_04_b.png" class="img-fluid" width="280"></p>
-<p>First <strong>predict</strong> what happens, then run it.</p>
+<p><strong>Any questions?</strong> Let me know!</p>
 </section>
 </section>
 <section id="dictionaries-sets" class="level1 title">
@@ -817,9 +864,9 @@ Spezi</code></pre>
 <section id="look-things-up-by-name" class="level2">
 <h2 class="anchored" data-anchor-id="look-things-up-by-name">Look things up by name</h2>
 <p>A list finds items by position. But “what does a Spezi cost?” is a question about a name, not a position. A <strong>dictionary</strong> maps a key to a value:</p>
-<div id="076206e5" class="cell" data-output-location="fragment" data-execution_count="10">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb24"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a>prices <span class="op">=</span> {<span class="st">"Mate"</span>: <span class="fl">3.50</span>, <span class="st">"Spezi"</span>: <span class="fl">3.20</span>, <span class="st">"Ayran"</span>: <span class="fl">2.80</span>}</span>
-<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(prices[<span class="st">"Spezi"</span>])</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div id="ba25c1c9" class="cell" data-output-location="fragment" data-execution_count="13">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb30"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a>prices <span class="op">=</span> {<span class="st">"Mate"</span>: <span class="fl">3.50</span>, <span class="st">"Spezi"</span>: <span class="fl">3.20</span>, <span class="st">"Ayran"</span>: <span class="fl">2.80</span>}</span>
+<span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(prices[<span class="st">"Spezi"</span>])</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>3.2</code></pre>
 </div>
@@ -830,10 +877,10 @@ Spezi</code></pre>
 <section id="building-a-dictionary" class="level2">
 <h2 class="anchored" data-anchor-id="building-a-dictionary">Building a dictionary</h2>
 <p>Keys are usually strings; values can be anything. Read a value with <code>dict[key]</code>:</p>
-<div id="4197a189" class="cell" data-output-location="fragment" data-execution_count="11">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb26"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a>prices <span class="op">=</span> {<span class="st">"Mate"</span>: <span class="fl">3.50</span>, <span class="st">"Spezi"</span>: <span class="fl">3.20</span>, <span class="st">"Ayran"</span>: <span class="fl">2.80</span>}</span>
-<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(prices[<span class="st">"Mate"</span>])</span>
-<span id="cb26-3"><a href="#cb26-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(prices[<span class="st">"Ayran"</span>])</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div id="137a7c32" class="cell" data-output-location="fragment" data-execution_count="14">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb32"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a>prices <span class="op">=</span> {<span class="st">"Mate"</span>: <span class="fl">3.50</span>, <span class="st">"Spezi"</span>: <span class="fl">3.20</span>, <span class="st">"Ayran"</span>: <span class="fl">2.80</span>}</span>
+<span id="cb32-2"><a href="#cb32-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(prices[<span class="st">"Mate"</span>])</span>
+<span id="cb32-3"><a href="#cb32-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(prices[<span class="st">"Ayran"</span>])</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>3.5
 2.8</code></pre>
@@ -845,9 +892,9 @@ Spezi</code></pre>
 <section id="the-key-that-isnt-there" class="level2">
 <h2 class="anchored" data-anchor-id="the-key-that-isnt-there">The key that isn’t there</h2>
 <p>Ask for a key that doesn’t exist and Python raises a <strong><code>KeyError</code></strong>. It stops rather than guess:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb28"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a>prices <span class="op">=</span> {<span class="st">"Mate"</span>: <span class="fl">3.50</span>, <span class="st">"Spezi"</span>: <span class="fl">3.20</span>}</span>
-<span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(prices[<span class="st">"Cola"</span>])</span>
-<span id="cb28-3"><a href="#cb28-3" aria-hidden="true" tabindex="-1"></a><span class="co"># KeyError: 'Cola'</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb34"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a>prices <span class="op">=</span> {<span class="st">"Mate"</span>: <span class="fl">3.50</span>, <span class="st">"Spezi"</span>: <span class="fl">3.20</span>}</span>
+<span id="cb34-2"><a href="#cb34-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(prices[<span class="st">"Cola"</span>])</span>
+<span id="cb34-3"><a href="#cb34-3" aria-hidden="true" tabindex="-1"></a><span class="co"># KeyError: 'Cola'</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>. . .</p>
 <div class="callout callout-style-simple callout-warning">
 <div class="callout-body d-flex">
@@ -855,7 +902,7 @@ Spezi</code></pre>
 <i class="callout-icon"></i>
 </div>
 <div class="callout-body-container">
-<p>A <code>KeyError</code> means the key is spelled wrong or was never added. Today’s lab has its quieter cousin: a misspelled key and <code>.get()</code> handing back <code>None</code>.</p>
+<p>A <code>KeyError</code> means the key is spelled wrong or was never added. However, there is a smarter way to ask for a key.</p>
 </div>
 </div>
 </div>
@@ -863,10 +910,10 @@ Spezi</code></pre>
 <section id="a-safer-read-with-.get" class="level2">
 <h2 class="anchored" data-anchor-id="a-safer-read-with-.get">A safer read with <code>.get()</code></h2>
 <p><code>.get()</code> returns <code>None</code> for a missing key instead of raising, and you can supply a fallback:</p>
-<div id="be45e380" class="cell" data-output-location="fragment" data-execution_count="12">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb29"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a>prices <span class="op">=</span> {<span class="st">"Mate"</span>: <span class="fl">3.50</span>, <span class="st">"Spezi"</span>: <span class="fl">3.20</span>}</span>
-<span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(prices.get(<span class="st">"Cola"</span>))       <span class="co"># missing → None</span></span>
-<span id="cb29-3"><a href="#cb29-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(prices.get(<span class="st">"Cola"</span>, <span class="dv">0</span>))    <span class="co"># missing → your fallback</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div id="cdedbef4" class="cell" data-output-location="fragment" data-execution_count="15">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb35"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a>prices <span class="op">=</span> {<span class="st">"Mate"</span>: <span class="fl">3.50</span>, <span class="st">"Spezi"</span>: <span class="fl">3.20</span>}</span>
+<span id="cb35-2"><a href="#cb35-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(prices.get(<span class="st">"Cola"</span>))       <span class="co"># missing → None</span></span>
+<span id="cb35-3"><a href="#cb35-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(prices.get(<span class="st">"Cola"</span>, <span class="dv">0</span>))    <span class="co"># missing → your fallback</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>None
 0</code></pre>
@@ -878,81 +925,92 @@ Spezi</code></pre>
 <section id="predict-is-it-on-the-menu" class="level2">
 <h2 class="anchored" data-anchor-id="predict-is-it-on-the-menu">Predict: is it on the menu?</h2>
 <p><code>in</code> asks whether something is in a collection. On a dictionary, what does it look at?</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb31"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a>prices <span class="op">=</span> {<span class="st">"Mate"</span>: <span class="fl">3.50</span>, <span class="st">"Spezi"</span>: <span class="fl">3.20</span>}</span>
-<span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Spezi"</span> <span class="kw">in</span> prices, <span class="fl">3.20</span> <span class="kw">in</span> prices)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb37"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a>prices <span class="op">=</span> {<span class="st">"Mate"</span>: <span class="fl">3.50</span>, <span class="st">"Spezi"</span>: <span class="fl">3.20</span>}</span>
+<span id="cb37-2"><a href="#cb37-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Spezi"</span> <span class="kw">in</span> prices, <span class="fl">3.20</span> <span class="kw">in</span> prices)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>a) <code>True False</code> b) <code>True True</code> c) <code>False True</code></p>
 <p>. . .</p>
-<p><span class="question">Predict first</span>. Pick a letter, then I reveal the answer.</p>
+<p><span class="question">Predict</span>. Pick a letter, then I reveal the answer.</p>
 </section>
 <section id="answer-in-checks-the-keys" class="level2">
 <h2 class="anchored" data-anchor-id="answer-in-checks-the-keys">Answer: <code>in</code> checks the keys</h2>
-<p><strong>a) <code>True False</code></strong>. Membership on a dictionary looks at the <strong>keys</strong> only. <code>3.20</code> is a value, so Python says it is not there. To search the values, ask <code>3.20 in prices.values()</code>.</p>
-<div id="a123a2f3" class="cell" data-output-location="fragment" data-execution_count="13">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb32"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a>prices <span class="op">=</span> {<span class="st">"Mate"</span>: <span class="fl">3.50</span>, <span class="st">"Spezi"</span>: <span class="fl">3.20</span>}</span>
-<span id="cb32-2"><a href="#cb32-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Spezi"</span> <span class="kw">in</span> prices, <span class="fl">3.20</span> <span class="kw">in</span> prices)</span>
-<span id="cb32-3"><a href="#cb32-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="fl">3.20</span> <span class="kw">in</span> prices.values())</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div id="26909285" class="cell" data-output-location="fragment" data-execution_count="16">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb38"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a>prices <span class="op">=</span> {<span class="st">"Mate"</span>: <span class="fl">3.50</span>, <span class="st">"Spezi"</span>: <span class="fl">3.20</span>}</span>
+<span id="cb38-2"><a href="#cb38-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Spezi"</span> <span class="kw">in</span> prices, <span class="fl">3.20</span> <span class="kw">in</span> prices)</span>
+<span id="cb38-3"><a href="#cb38-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="fl">3.20</span> <span class="kw">in</span> prices.values())</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>True False
 True</code></pre>
 </div>
 </div>
+<p>. . .</p>
+<p><strong>a) <code>True False</code></strong>. Membership on a dictionary looks at the <strong>keys</strong> only. <code>3.20</code> is a value, so Python says it is not there. To search the values, ask <code>3.20 in prices.values()</code>.</p>
 </section>
 <section id="updating-and-adding" class="level2">
 <h2 class="anchored" data-anchor-id="updating-and-adding">Updating and adding</h2>
 <p>Assigning to a key updates it if it exists, or adds it if it doesn’t. Work on a <strong>copy</strong> (<code>dict()</code>) when the original must survive:</p>
-<div id="9156986a" class="cell" data-output-location="fragment" data-execution_count="14">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb34"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a>prices <span class="op">=</span> {<span class="st">"Mate"</span>: <span class="fl">3.50</span>, <span class="st">"Spezi"</span>: <span class="fl">3.20</span>}</span>
-<span id="cb34-2"><a href="#cb34-2" aria-hidden="true" tabindex="-1"></a>winter <span class="op">=</span> <span class="bu">dict</span>(prices)        <span class="co"># a copy: keep the original safe</span></span>
-<span id="cb34-3"><a href="#cb34-3" aria-hidden="true" tabindex="-1"></a>winter[<span class="st">"Spezi"</span>] <span class="op">=</span> <span class="fl">3.40</span>       <span class="co"># update an existing key</span></span>
-<span id="cb34-4"><a href="#cb34-4" aria-hidden="true" tabindex="-1"></a>winter[<span class="st">"Kombucha"</span>] <span class="op">=</span> <span class="fl">4.20</span>    <span class="co"># add a brand-new key</span></span>
-<span id="cb34-5"><a href="#cb34-5" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(winter)</span>
-<span id="cb34-6"><a href="#cb34-6" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(prices)                <span class="co"># untouched (the summer menu comes back in April)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div id="3b528237" class="cell" data-output-location="fragment" data-execution_count="17">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb40"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a>prices <span class="op">=</span> {<span class="st">"Mate"</span>: <span class="fl">3.50</span>, <span class="st">"Spezi"</span>: <span class="fl">3.20</span>}</span>
+<span id="cb40-2"><a href="#cb40-2" aria-hidden="true" tabindex="-1"></a>winter <span class="op">=</span> <span class="bu">dict</span>(prices)        <span class="co"># a copy: keep the original safe</span></span>
+<span id="cb40-3"><a href="#cb40-3" aria-hidden="true" tabindex="-1"></a>winter[<span class="st">"Spezi"</span>] <span class="op">=</span> <span class="fl">3.40</span>       <span class="co"># update an existing key</span></span>
+<span id="cb40-4"><a href="#cb40-4" aria-hidden="true" tabindex="-1"></a>winter[<span class="st">"Kombucha"</span>] <span class="op">=</span> <span class="fl">4.20</span>    <span class="co"># add a brand-new key</span></span>
+<span id="cb40-5"><a href="#cb40-5" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(winter)</span>
+<span id="cb40-6"><a href="#cb40-6" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(prices)                <span class="co"># untouched (the summer menu comes back in April)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>{'Mate': 3.5, 'Spezi': 3.4, 'Kombucha': 4.2}
 {'Mate': 3.5, 'Spezi': 3.2}</code></pre>
 </div>
 </div>
 <p>. . .</p>
-<p>One syntax, two jobs. Python decides by whether the key is already present. And the copy means next April needs no un-editing.</p>
+<p>One syntax, two jobs. Python decides by whether the key is already present.</p>
 </section>
 <section id="predict-the-missing-drink" class="level2">
 <h2 class="anchored" data-anchor-id="predict-the-missing-drink">Predict: the missing drink</h2>
 <p>A customer orders a Cola. It’s not on the menu. What does this line do?</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb36"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a>prices <span class="op">=</span> {<span class="st">"Mate"</span>: <span class="fl">3.50</span>, <span class="st">"Spezi"</span>: <span class="fl">3.20</span>}</span>
-<span id="cb36-2"><a href="#cb36-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(prices[<span class="st">"Cola"</span>])</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb42"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true" tabindex="-1"></a>prices <span class="op">=</span> {<span class="st">"Mate"</span>: <span class="fl">3.50</span>, <span class="st">"Spezi"</span>: <span class="fl">3.20</span>}</span>
+<span id="cb42-2"><a href="#cb42-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(prices[<span class="st">"Cola"</span>])</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>a) prints <code>None</code> b) prints <code>""</code> c) raises <code>KeyError</code> d) adds <code>"Cola"</code></p>
 <p>. . .</p>
-<p><span class="question">Predict first</span>. Pick a letter, then I reveal the answer.</p>
+<p><span class="question">Predict</span>. Pick a letter, then I reveal the answer.</p>
 </section>
-<section id="answer-reading-with-demands-the-key" class="level2">
-<h2 class="anchored" data-anchor-id="answer-reading-with-demands-the-key">Answer: reading with <code>[]</code> demands the key</h2>
-<p><strong>c) raises <code>KeyError</code></strong>: square-bracket reads never invent a value and never add one. Reach for <code>.get()</code> when a key might be missing:</p>
-<div id="43e55e57" class="cell" data-output-location="fragment" data-execution_count="15">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb37"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a>prices <span class="op">=</span> {<span class="st">"Mate"</span>: <span class="fl">3.50</span>, <span class="st">"Spezi"</span>: <span class="fl">3.20</span>}</span>
-<span id="cb37-2"><a href="#cb37-2" aria-hidden="true" tabindex="-1"></a><span class="cf">try</span>:</span>
-<span id="cb37-3"><a href="#cb37-3" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(prices[<span class="st">"Cola"</span>])</span>
-<span id="cb37-4"><a href="#cb37-4" aria-hidden="true" tabindex="-1"></a><span class="cf">except</span> <span class="pp">KeyError</span> <span class="im">as</span> missing:</span>
-<span id="cb37-5"><a href="#cb37-5" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">"KeyError:"</span>, missing)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>KeyError: 'Cola'</code></pre>
+<section id="answer-reading-with" class="level2">
+<h2 class="anchored" data-anchor-id="answer-reading-with">Answer: reading with <code>[]</code></h2>
+<div id="c14cbb25" class="cell" data-output-location="fragment" data-execution_count="19">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb43"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a>prices <span class="op">=</span> {<span class="st">"Mate"</span>: <span class="fl">3.50</span>, <span class="st">"Spezi"</span>: <span class="fl">3.20</span>}</span>
+<span id="cb43-2"><a href="#cb43-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(prices[<span class="st">"Cola"</span>])</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-error">
+<div class="ansi-escaped-output">
+<pre><span class="ansi-red-fg">KeyError</span><span class="ansi-red-fg">:</span> 'Cola'
+</pre>
 </div>
 </div>
+</div>
+<p>. . .</p>
+<p><strong>c) raises <code>KeyError</code></strong>: square-bracket reads never invent a value and never add one. Reach for <code>.get()</code> when a key might be missing.</p>
 </section>
 <section id="sets-only-the-unique-ones" class="level2">
 <h2 class="anchored" data-anchor-id="sets-only-the-unique-ones">Sets: only the unique ones</h2>
 <p>A <strong>set</strong> keeps each value <strong>once</strong>. Feed it duplicates and they collapse. Perfect for counting <em>distinct</em> things, like today’s regulars:</p>
-<div id="55ee0d1d" class="cell" data-output-location="fragment" data-execution_count="16">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb39"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a>visitors <span class="op">=</span> [<span class="st">"nina"</span>, <span class="st">"tom"</span>, <span class="st">"nina"</span>, <span class="st">"ada"</span>, <span class="st">"tom"</span>]</span>
-<span id="cb39-2"><a href="#cb39-2" aria-hidden="true" tabindex="-1"></a>regulars <span class="op">=</span> <span class="bu">set</span>(visitors)</span>
-<span id="cb39-3"><a href="#cb39-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(regulars)        <span class="co"># order is arbitrary: a set has none</span></span>
-<span id="cb39-4"><a href="#cb39-4" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="bu">len</span>(regulars))   <span class="co"># how many different people</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div id="ee317a8a" class="cell" data-output-location="fragment" data-execution_count="20">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb44"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true" tabindex="-1"></a>visitors <span class="op">=</span> [<span class="st">"nina"</span>, <span class="st">"tom"</span>, <span class="st">"nina"</span>, <span class="st">"ada"</span>, <span class="st">"tom"</span>]</span>
+<span id="cb44-2"><a href="#cb44-2" aria-hidden="true" tabindex="-1"></a>regulars <span class="op">=</span> <span class="bu">set</span>(visitors)</span>
+<span id="cb44-3"><a href="#cb44-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(regulars)        <span class="co"># order is arbitrary: a set has none</span></span>
+<span id="cb44-4"><a href="#cb44-4" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="bu">len</span>(regulars))   <span class="co"># how many different people</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>{'ada', 'tom', 'nina'}
+<pre><code>{'nina', 'tom', 'ada'}
 3</code></pre>
 </div>
 </div>
 <p>. . .</p>
-<p>Five visits, three people. A set answers “how many <em>different</em>?” in one step.</p>
+<p>Five visits, three people. A set answers “how many <em>different</em>?”.</p>
+<p>. . .</p>
+<p>Can be created from a list, or with curly braces:</p>
+<div id="ff1fb686" class="cell" data-output-location="fragment" data-execution_count="21">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb46"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb46-1"><a href="#cb46-1" aria-hidden="true" tabindex="-1"></a>regulars <span class="op">=</span> {<span class="st">"nina"</span>, <span class="st">"tom"</span>, <span class="st">"ada"</span>}</span>
+<span id="cb46-2"><a href="#cb46-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(regulars)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>{'nina', 'tom', 'ada'}</code></pre>
+</div>
+</div>
 </section>
 </section>
 <section id="your-turn-5-10-minutes-2" class="level1 loud-slide">
@@ -962,7 +1020,7 @@ True</code></pre>
 <p>Scan the QR or type the link:</p>
 <p><strong><a href="https://python.tobiasvlcek.com/notebooks/ex_04_c/">python.tobiasvlcek.com/notebooks/ex_04_c/</a></strong></p>
 <p><img src="assets/qr/ex_04_c.png" class="img-fluid" width="280"></p>
-<p>First <strong>predict</strong> what happens, then run it.</p>
+<p><strong>Any questions?</strong> Let me know!</p>
 </section>
 </section>
 <section id="nesting-comprehensions-data" class="level1 title">
@@ -970,12 +1028,12 @@ True</code></pre>
 <section id="a-dictionary-inside-a-dictionary" class="level2">
 <h2 class="anchored" data-anchor-id="a-dictionary-inside-a-dictionary">A dictionary inside a dictionary</h2>
 <p>Values can themselves be dictionaries. Each delivery <strong>zone</strong> carries its own fee and estimated time:</p>
-<div id="8678ab94" class="cell" data-output-location="fragment" data-execution_count="17">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb41"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a>zones <span class="op">=</span> {</span>
-<span id="cb41-2"><a href="#cb41-2" aria-hidden="true" tabindex="-1"></a>    <span class="st">"Altstadt"</span>: {<span class="st">"fee"</span>: <span class="fl">1.50</span>, <span class="st">"eta"</span>: <span class="dv">12</span>},</span>
-<span id="cb41-3"><a href="#cb41-3" aria-hidden="true" tabindex="-1"></a>    <span class="st">"Hafen"</span>: {<span class="st">"fee"</span>: <span class="fl">2.50</span>, <span class="st">"eta"</span>: <span class="dv">20</span>},</span>
-<span id="cb41-4"><a href="#cb41-4" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb41-5"><a href="#cb41-5" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(zones[<span class="st">"Hafen"</span>])</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div id="9918f1ba" class="cell" data-output-location="fragment" data-execution_count="22">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb48"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb48-1"><a href="#cb48-1" aria-hidden="true" tabindex="-1"></a>zones <span class="op">=</span> {</span>
+<span id="cb48-2"><a href="#cb48-2" aria-hidden="true" tabindex="-1"></a>    <span class="st">"Altstadt"</span>: {<span class="st">"fee"</span>: <span class="fl">1.50</span>, <span class="st">"eta"</span>: <span class="dv">12</span>},</span>
+<span id="cb48-3"><a href="#cb48-3" aria-hidden="true" tabindex="-1"></a>    <span class="st">"Hafen"</span>: {<span class="st">"fee"</span>: <span class="fl">2.50</span>, <span class="st">"eta"</span>: <span class="dv">20</span>},</span>
+<span id="cb48-4"><a href="#cb48-4" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb48-5"><a href="#cb48-5" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(zones[<span class="st">"Hafen"</span>])</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>{'fee': 2.5, 'eta': 20}</code></pre>
 </div>
@@ -986,13 +1044,13 @@ True</code></pre>
 <section id="reading-nested-values" class="level2">
 <h2 class="anchored" data-anchor-id="reading-nested-values">Reading nested values</h2>
 <p>To reach an inner value, use <strong>two</strong> keys in a row, outer first, then inner:</p>
-<div id="f9331733" class="cell" data-output-location="fragment" data-execution_count="18">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb43"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a>zones <span class="op">=</span> {</span>
-<span id="cb43-2"><a href="#cb43-2" aria-hidden="true" tabindex="-1"></a>    <span class="st">"Altstadt"</span>: {<span class="st">"fee"</span>: <span class="fl">1.50</span>, <span class="st">"eta"</span>: <span class="dv">12</span>},</span>
-<span id="cb43-3"><a href="#cb43-3" aria-hidden="true" tabindex="-1"></a>    <span class="st">"Hafen"</span>: {<span class="st">"fee"</span>: <span class="fl">2.50</span>, <span class="st">"eta"</span>: <span class="dv">20</span>},</span>
-<span id="cb43-4"><a href="#cb43-4" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb43-5"><a href="#cb43-5" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(zones[<span class="st">"Hafen"</span>][<span class="st">"fee"</span>])</span>
-<span id="cb43-6"><a href="#cb43-6" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(zones[<span class="st">"Altstadt"</span>][<span class="st">"eta"</span>])</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div id="69497f52" class="cell" data-output-location="fragment" data-execution_count="23">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb50"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb50-1"><a href="#cb50-1" aria-hidden="true" tabindex="-1"></a>zones <span class="op">=</span> {</span>
+<span id="cb50-2"><a href="#cb50-2" aria-hidden="true" tabindex="-1"></a>    <span class="st">"Altstadt"</span>: {<span class="st">"fee"</span>: <span class="fl">1.50</span>, <span class="st">"eta"</span>: <span class="dv">12</span>},</span>
+<span id="cb50-3"><a href="#cb50-3" aria-hidden="true" tabindex="-1"></a>    <span class="st">"Hafen"</span>: {<span class="st">"fee"</span>: <span class="fl">2.50</span>, <span class="st">"eta"</span>: <span class="dv">20</span>},</span>
+<span id="cb50-4"><a href="#cb50-4" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb50-5"><a href="#cb50-5" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(zones[<span class="st">"Hafen"</span>][<span class="st">"fee"</span>])</span>
+<span id="cb50-6"><a href="#cb50-6" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(zones[<span class="st">"Altstadt"</span>][<span class="st">"eta"</span>])</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>2.5
 12</code></pre>
@@ -1009,23 +1067,23 @@ True</code></pre>
 <p>Scan the QR or type the link:</p>
 <p><strong><a href="https://python.tobiasvlcek.com/notebooks/ex_04_d/">python.tobiasvlcek.com/notebooks/ex_04_d/</a></strong></p>
 <p><img src="assets/qr/ex_04_d.png" class="img-fluid" width="280"></p>
-<p>First <strong>predict</strong> what happens, then run it.</p>
+<p><strong>Any questions?</strong> Let me know!</p>
 </section>
 <section id="from-a-loop-to-one-line" class="level2">
 <h2 class="anchored" data-anchor-id="from-a-loop-to-one-line">From a loop to one line</h2>
 <p>You already know the loop that builds a list. A <strong>list comprehension</strong> is that same loop, written on one line:</p>
-<div id="1bb68771" class="cell" data-output-location="fragment" data-execution_count="19">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb45"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb45-1"><a href="#cb45-1" aria-hidden="true" tabindex="-1"></a>counts <span class="op">=</span> [<span class="dv">2</span>, <span class="dv">1</span>, <span class="dv">3</span>]</span>
-<span id="cb45-2"><a href="#cb45-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb45-3"><a href="#cb45-3" aria-hidden="true" tabindex="-1"></a><span class="co"># the loop you know</span></span>
-<span id="cb45-4"><a href="#cb45-4" aria-hidden="true" tabindex="-1"></a>doubled <span class="op">=</span> []</span>
-<span id="cb45-5"><a href="#cb45-5" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> c <span class="kw">in</span> counts:</span>
-<span id="cb45-6"><a href="#cb45-6" aria-hidden="true" tabindex="-1"></a>    doubled.append(c <span class="op">*</span> <span class="dv">2</span>)</span>
-<span id="cb45-7"><a href="#cb45-7" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(doubled)</span>
-<span id="cb45-8"><a href="#cb45-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb45-9"><a href="#cb45-9" aria-hidden="true" tabindex="-1"></a><span class="co"># the one-liner</span></span>
-<span id="cb45-10"><a href="#cb45-10" aria-hidden="true" tabindex="-1"></a>doubled <span class="op">=</span> [c <span class="op">*</span> <span class="dv">2</span> <span class="cf">for</span> c <span class="kw">in</span> counts]</span>
-<span id="cb45-11"><a href="#cb45-11" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(doubled)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div id="ada3f502" class="cell" data-output-location="fragment" data-execution_count="24">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb52"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb52-1"><a href="#cb52-1" aria-hidden="true" tabindex="-1"></a>counts <span class="op">=</span> [<span class="dv">2</span>, <span class="dv">1</span>, <span class="dv">3</span>]</span>
+<span id="cb52-2"><a href="#cb52-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb52-3"><a href="#cb52-3" aria-hidden="true" tabindex="-1"></a><span class="co"># the loop you know</span></span>
+<span id="cb52-4"><a href="#cb52-4" aria-hidden="true" tabindex="-1"></a>doubled <span class="op">=</span> []</span>
+<span id="cb52-5"><a href="#cb52-5" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> c <span class="kw">in</span> counts:</span>
+<span id="cb52-6"><a href="#cb52-6" aria-hidden="true" tabindex="-1"></a>    doubled.append(c <span class="op">*</span> <span class="dv">2</span>)</span>
+<span id="cb52-7"><a href="#cb52-7" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(doubled)</span>
+<span id="cb52-8"><a href="#cb52-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb52-9"><a href="#cb52-9" aria-hidden="true" tabindex="-1"></a><span class="co"># the one-liner</span></span>
+<span id="cb52-10"><a href="#cb52-10" aria-hidden="true" tabindex="-1"></a>doubled <span class="op">=</span> [c <span class="op">*</span> <span class="dv">2</span> <span class="cf">for</span> c <span class="kw">in</span> counts]</span>
+<span id="cb52-11"><a href="#cb52-11" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(doubled)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[4, 2, 6]
 [4, 2, 6]</code></pre>
@@ -1037,101 +1095,90 @@ True</code></pre>
 <section id="round-inside-a-comprehension" class="level2">
 <h2 class="anchored" data-anchor-id="round-inside-a-comprehension"><code>round</code> inside a comprehension</h2>
 <p>Any expression can go in front of the <code>for</code>, including <code>round()</code>. Loyalty pricing: 10% off, cleaned to two decimals:</p>
-<div id="c88759d0" class="cell" data-output-location="fragment" data-execution_count="20">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb47"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb47-1"><a href="#cb47-1" aria-hidden="true" tabindex="-1"></a>drink_prices <span class="op">=</span> [<span class="fl">3.50</span>, <span class="fl">3.20</span>, <span class="fl">2.80</span>]</span>
-<span id="cb47-2"><a href="#cb47-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb47-3"><a href="#cb47-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>([p <span class="op">*</span> <span class="fl">0.9</span> <span class="cf">for</span> p <span class="kw">in</span> drink_prices])            <span class="co"># raw floats, ugly</span></span>
-<span id="cb47-4"><a href="#cb47-4" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>([<span class="bu">round</span>(p <span class="op">*</span> <span class="fl">0.9</span>, <span class="dv">2</span>) <span class="cf">for</span> p <span class="kw">in</span> drink_prices])  <span class="co"># rounded, clean</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div id="d98f8556" class="cell" data-output-location="fragment" data-execution_count="25">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb54"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb54-1"><a href="#cb54-1" aria-hidden="true" tabindex="-1"></a>drink_prices <span class="op">=</span> [<span class="fl">3.50</span>, <span class="fl">3.20</span>, <span class="fl">2.80</span>]</span>
+<span id="cb54-2"><a href="#cb54-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb54-3"><a href="#cb54-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>([p <span class="op">*</span> <span class="fl">0.9</span> <span class="cf">for</span> p <span class="kw">in</span> drink_prices])            <span class="co"># raw floats, ugly</span></span>
+<span id="cb54-4"><a href="#cb54-4" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>([<span class="bu">round</span>(p <span class="op">*</span> <span class="fl">0.9</span>, <span class="dv">2</span>) <span class="cf">for</span> p <span class="kw">in</span> drink_prices])  <span class="co"># rounded, clean</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[3.15, 2.8800000000000003, 2.52]
 [3.15, 2.88, 2.52]</code></pre>
 </div>
 </div>
 <p>. . .</p>
-<p>The raw version leaks a <code>2.88000...3</code> float. Wrapping each price in <code>round(_, 2)</code> is the same receipt trick you use for money.</p>
+<p>The raw version leaks a <code>2.88000...3</code> float. Wrapping each price in <code>round(_, 2)</code> is the same thing we already used for money.</p>
 </section>
-<section id="comprehensions-build-dictionaries-too" class="level2">
-<h2 class="anchored" data-anchor-id="comprehensions-build-dictionaries-too">Comprehensions build dictionaries too</h2>
+<section id="looping-over-a-dictionary" class="level2">
+<h2 class="anchored" data-anchor-id="looping-over-a-dictionary">Looping over a dictionary</h2>
+<p><code>.items()</code> hands you the menu as <code>(key, value)</code> pairs. Give the <code>for</code> two names and each pair is unpacked into them, like <code>hour, minute = opening</code>:</p>
+<div id="392aad53" class="cell" data-output-location="fragment" data-execution_count="26">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb56"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb56-1"><a href="#cb56-1" aria-hidden="true" tabindex="-1"></a>prices <span class="op">=</span> {<span class="st">"Mate"</span>: <span class="fl">3.50</span>, <span class="st">"Spezi"</span>: <span class="fl">3.20</span>, <span class="st">"Ayran"</span>: <span class="fl">2.80</span>}</span>
+<span id="cb56-2"><a href="#cb56-2" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> name, price <span class="kw">in</span> prices.items():</span>
+<span id="cb56-3"><a href="#cb56-3" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(name, price)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Mate 3.5
+Spezi 3.2
+Ayran 2.8</code></pre>
+</div>
+</div>
+<p>. . .</p>
+<p>One name per slot, left to right. Two names, two slots.</p>
+</section>
+<section id="comprehensions-build-dictionaries" class="level2">
+<h2 class="anchored" data-anchor-id="comprehensions-build-dictionaries">Comprehensions build dictionaries</h2>
 <p>Swap the brackets for braces and give a <code>key: value</code>. Now you rebuild a whole menu in one line:</p>
-<div id="bea6d2d2" class="cell" data-output-location="fragment" data-execution_count="21">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb49"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb49-1"><a href="#cb49-1" aria-hidden="true" tabindex="-1"></a>prices <span class="op">=</span> {<span class="st">"Mate"</span>: <span class="fl">3.50</span>, <span class="st">"Spezi"</span>: <span class="fl">3.20</span>, <span class="st">"Ayran"</span>: <span class="fl">2.80</span>}</span>
-<span id="cb49-2"><a href="#cb49-2" aria-hidden="true" tabindex="-1"></a>loyalty <span class="op">=</span> {name: <span class="bu">round</span>(price <span class="op">*</span> <span class="fl">0.9</span>, <span class="dv">2</span>) <span class="cf">for</span> name, price <span class="kw">in</span> prices.items()}</span>
-<span id="cb49-3"><a href="#cb49-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(loyalty)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div id="d6bc2427" class="cell" data-output-location="fragment" data-execution_count="27">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb58"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb58-1"><a href="#cb58-1" aria-hidden="true" tabindex="-1"></a>prices <span class="op">=</span> {<span class="st">"Mate"</span>: <span class="fl">3.50</span>, <span class="st">"Spezi"</span>: <span class="fl">3.20</span>, <span class="st">"Ayran"</span>: <span class="fl">2.80</span>}</span>
+<span id="cb58-2"><a href="#cb58-2" aria-hidden="true" tabindex="-1"></a>loyalty <span class="op">=</span> {name: <span class="bu">round</span>(price <span class="op">*</span> <span class="fl">0.9</span>, <span class="dv">2</span>) <span class="cf">for</span> name, price <span class="kw">in</span> prices.items()}</span>
+<span id="cb58-3"><a href="#cb58-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(loyalty)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>{'Mate': 3.15, 'Spezi': 2.88, 'Ayran': 2.52}</code></pre>
 </div>
 </div>
 <p>. . .</p>
-<p><code>.items()</code> hands you each <code>key, value</code> pair to work with. The whole discounted menu, no loop body in sight.</p>
+<p>The same <code>name, price</code> loop, now inside braces. The whole discounted menu, no loop body in sight.</p>
 </section>
 <section id="predict-the-comprehension" class="level2">
 <h2 class="anchored" data-anchor-id="predict-the-comprehension">Predict: the comprehension</h2>
 <p>What does this build?</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb51"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb51-1"><a href="#cb51-1" aria-hidden="true" tabindex="-1"></a>nums <span class="op">=</span> [<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>]</span>
-<span id="cb51-2"><a href="#cb51-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>([n <span class="op">*</span> n <span class="cf">for</span> n <span class="kw">in</span> nums])</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb60"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb60-1"><a href="#cb60-1" aria-hidden="true" tabindex="-1"></a>nums <span class="op">=</span> [<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>]</span>
+<span id="cb60-2"><a href="#cb60-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>([n <span class="op">*</span> n <span class="cf">for</span> n <span class="kw">in</span> nums])</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>a) <code>[1, 4, 9, 16]</code> b) <code>[2, 4, 6, 8]</code> c) <code>[1, 2, 3, 4]</code></p>
 <p>. . .</p>
-<p><span class="question">Predict first</span>. Pick a letter, then I reveal the answer.</p>
+<p><span class="question">Predict</span>. Pick a letter, then I reveal the answer.</p>
 </section>
 <section id="answer-square-each-item" class="level2">
 <h2 class="anchored" data-anchor-id="answer-square-each-item">Answer: square each item</h2>
-<p><strong>a) <code>[1, 4, 9, 16]</code></strong>. The expression <code>n * n</code> runs once per item, so each number becomes its own square. <code>2 * n</code> would double them; the bare <code>n</code> would just copy the list.</p>
-<div id="2d00e0eb" class="cell" data-output-location="fragment" data-execution_count="22">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb52"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb52-1"><a href="#cb52-1" aria-hidden="true" tabindex="-1"></a>nums <span class="op">=</span> [<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>]</span>
-<span id="cb52-2"><a href="#cb52-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>([n <span class="op">*</span> n <span class="cf">for</span> n <span class="kw">in</span> nums])</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div id="d6b44d61" class="cell" data-output-location="fragment" data-execution_count="28">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb61"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb61-1"><a href="#cb61-1" aria-hidden="true" tabindex="-1"></a>nums <span class="op">=</span> [<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>]</span>
+<span id="cb61-2"><a href="#cb61-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>([n <span class="op">*</span> n <span class="cf">for</span> n <span class="kw">in</span> nums])</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1, 4, 9, 16]</code></pre>
 </div>
 </div>
+<p>. . .</p>
+<p><strong>a) <code>[1, 4, 9, 16]</code></strong>. The expression <code>n * n</code> runs once per item, so each number becomes its own square. <code>2 * n</code> would double them; the bare <code>n</code> would just copy the list.</p>
 </section>
-<section id="predict-the-comprehension-with-a-filter" class="level2">
-<h2 class="anchored" data-anchor-id="predict-the-comprehension-with-a-filter">Predict: the comprehension with a filter</h2>
+<section id="predict-comprehension-with-filter" class="level2">
+<h2 class="anchored" data-anchor-id="predict-comprehension-with-filter">Predict: comprehension with filter</h2>
 <p>Some dishes sold nothing today. A comprehension can carry an <code>if</code> after the <code>for</code>. How long is the result?</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb54"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb54-1"><a href="#cb54-1" aria-hidden="true" tabindex="-1"></a>counts <span class="op">=</span> [<span class="dv">2</span>, <span class="dv">0</span>, <span class="dv">3</span>, <span class="dv">0</span>, <span class="dv">1</span>]</span>
-<span id="cb54-2"><a href="#cb54-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>([c <span class="op">*</span> <span class="dv">2</span> <span class="cf">for</span> c <span class="kw">in</span> counts <span class="cf">if</span> c <span class="op">&gt;</span> <span class="dv">0</span>])</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb63"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb63-1"><a href="#cb63-1" aria-hidden="true" tabindex="-1"></a>counts <span class="op">=</span> [<span class="dv">2</span>, <span class="dv">0</span>, <span class="dv">3</span>, <span class="dv">0</span>, <span class="dv">1</span>]</span>
+<span id="cb63-2"><a href="#cb63-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>([c <span class="op">*</span> <span class="dv">2</span> <span class="cf">for</span> c <span class="kw">in</span> counts <span class="cf">if</span> c <span class="op">&gt;</span> <span class="dv">0</span>])</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>a) <code>[4, 0, 6, 0, 2]</code> b) <code>[4, 6, 2]</code> c) <code>[2, 3, 1]</code></p>
 <p>. . .</p>
-<p><span class="question">Predict first</span>. Pick a letter, then I reveal the answer.</p>
+<p><span class="question">Predict</span>. Pick a letter, then I reveal the answer.</p>
 </section>
 <section id="answer-the-if-drops-items" class="level2">
 <h2 class="anchored" data-anchor-id="answer-the-if-drops-items">Answer: the <code>if</code> drops items</h2>
-<p><strong>b) <code>[4, 6, 2]</code></strong>. The <code>if</code> is a filter: items that fail it never reach the expression, so the result is <strong>shorter</strong> than the input. <code>c * 2</code> still runs on the survivors, which rules out <code>[2, 3, 1]</code>.</p>
-<div id="bcdb52f7" class="cell" data-output-location="fragment" data-execution_count="23">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb55"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb55-1"><a href="#cb55-1" aria-hidden="true" tabindex="-1"></a>counts <span class="op">=</span> [<span class="dv">2</span>, <span class="dv">0</span>, <span class="dv">3</span>, <span class="dv">0</span>, <span class="dv">1</span>]</span>
-<span id="cb55-2"><a href="#cb55-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>([c <span class="op">*</span> <span class="dv">2</span> <span class="cf">for</span> c <span class="kw">in</span> counts <span class="cf">if</span> c <span class="op">&gt;</span> <span class="dv">0</span>])</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div id="55752de5" class="cell" data-output-location="fragment" data-execution_count="29">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb64"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb64-1"><a href="#cb64-1" aria-hidden="true" tabindex="-1"></a>counts <span class="op">=</span> [<span class="dv">2</span>, <span class="dv">0</span>, <span class="dv">3</span>, <span class="dv">0</span>, <span class="dv">1</span>]</span>
+<span id="cb64-2"><a href="#cb64-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>([c <span class="op">*</span> <span class="dv">2</span> <span class="cf">for</span> c <span class="kw">in</span> counts <span class="cf">if</span> c <span class="op">&gt;</span> <span class="dv">0</span>])</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[4, 6, 2]</code></pre>
 </div>
 </div>
-</section>
-<section id="getting-data-into-a-notebook" class="level2">
-<h2 class="anchored" data-anchor-id="getting-data-into-a-notebook">Getting data into a notebook</h2>
-<p>Your browser notebook has no files on it. So in Part I, data <strong>ships inside the code</strong>, as lists, dicts, or a multi-line string you can split apart:</p>
-<div id="d4caccfb" class="cell" data-output-location="fragment" data-execution_count="24">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb57"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb57-1"><a href="#cb57-1" aria-hidden="true" tabindex="-1"></a>orders <span class="op">=</span> <span class="st">"""Mate;2</span></span>
-<span id="cb57-2"><a href="#cb57-2" aria-hidden="true" tabindex="-1"></a><span class="st">Spezi;1</span></span>
-<span id="cb57-3"><a href="#cb57-3" aria-hidden="true" tabindex="-1"></a><span class="st">Ayran;3"""</span></span>
-<span id="cb57-4"><a href="#cb57-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb57-5"><a href="#cb57-5" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> line <span class="kw">in</span> orders.splitlines():</span>
-<span id="cb57-6"><a href="#cb57-6" aria-hidden="true" tabindex="-1"></a>    name, qty <span class="op">=</span> line.split(<span class="st">";"</span>)</span>
-<span id="cb57-7"><a href="#cb57-7" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(name, qty)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>Mate 2
-Spezi 1
-Ayran 3</code></pre>
-</div>
-</div>
 <p>. . .</p>
-<div class="callout callout-style-simple callout-note">
-<div class="callout-body d-flex">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-body-container">
-<p>Reading real files is a job for <strong>pandas</strong>, which loads them in one line from Session VIII on. For now, inline data is all you need.</p>
-</div>
-</div>
-</div>
+<p><strong>b) <code>[4, 6, 2]</code></strong>. The <code>if</code> is a filter: items that fail it never reach the expression, so the result is <strong>shorter</strong> than the input. <code>c * 2</code> still runs on the survivors, which rules out <code>[2, 3, 1]</code>.</p>
 </section>
 </section>
 <section id="your-turn-5-10-minutes-4" class="level1 loud-slide">
@@ -1141,7 +1188,7 @@ Ayran 3</code></pre>
 <p>Scan the QR or type the link:</p>
 <p><strong><a href="https://python.tobiasvlcek.com/notebooks/ex_04_e/">python.tobiasvlcek.com/notebooks/ex_04_e/</a></strong></p>
 <p><img src="assets/qr/ex_04_e.png" class="img-fluid" width="280"></p>
-<p>First <strong>predict</strong> what happens, then run it.</p>
+<p><strong>Any questions?</strong> Let me know!</p>
 </section>
 </section>
 <section id="to-the-lab" class="level1 title">
