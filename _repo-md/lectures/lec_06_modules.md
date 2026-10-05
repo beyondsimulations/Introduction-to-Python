@@ -63,12 +63,12 @@ For five sessions you worked without AI. From today you may use it, and you stay
 
 ## What is an LLM?
 
-The tools you get this week all run on the same machine. What it is, and why that matters from here on:
+Le Chat and the chatbot bubble run on the same machine:
 
 - A **Large Language Model** is an <span class="highlight">advanced pattern-recognition system</span>. It has read enormous amounts of text: books, websites, and code
 - What it actually does: <span class="highlight">predict the next piece of text</span>, like the word suggestions on your phone keyboard, but vastly more capable
 - <span class="highlight">Not like a search engine</span>: it does not look anything up, it generates from the patterns it learned
-- It does not "think" or "understand" the way you do
+- It does not "think" or "understand" the way you do, and it has no feelings to hurt
 
 ## The model sees tokens, not words
 
@@ -98,7 +98,7 @@ The tools you get this week all run on the same machine. What it is, and why tha
 
 > **Tip**
 >
-> This is why the chatbot page says "ask as specific as possible". Your question fills the window; the model can only use what is in it.
+> This is why Session I told you: ask the chatbot as specific as possible. Your question fills the window; the model can only use what is in it.
 
 ## Two accounts this week
 
@@ -315,10 +315,10 @@ random.shuffle(queue)                         # reorders the list in place
 print(queue)
 ```
 
-    0.6002473050029529
-    17
-    mocha
-    [5, 4, 1, 2, 3]
+    0.048973961548129386
+    18
+    tea
+    [5, 3, 1, 4, 2]
 
 . . .
 
@@ -335,8 +335,8 @@ print([random.randint(1, 20) for _ in range(5)])   # _ : a loop name we never us
 print([random.randint(1, 20) for _ in range(5)])   # ...and again, different!
 ```
 
-    [7, 8, 10, 18, 5]
-    [12, 19, 6, 10, 13]
+    [7, 19, 14, 8, 8]
+    [18, 14, 9, 3, 2]
 
 . . .
 

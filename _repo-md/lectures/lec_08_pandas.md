@@ -195,7 +195,7 @@ Session VI gave you the machine, so here is why it fails in exactly this way.
 
 - **Pre-training**: predict the next token over massive text, where the <span class="highlight">weights</span> inside get adjusted; applying them afterwards is cheap
 - **Fine-tuning**: curated examples teach it to follow instructions
-- **RLHF**: humans rank answers, and it learns to prefer the ranked-higher ones
+- **RLHF** (reinforcement learning from human feedback): humans rank answers; it learns to prefer the ranked-higher ones
 - Its knowledge has an end date, the <span class="highlight">knowledge cutoff</span>: after it, it guesses fluently instead. And it inherits the <span class="highlight">biases</span> of the text it read
 
 . . .

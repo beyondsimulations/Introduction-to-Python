@@ -310,7 +310,7 @@ Read the diff Zed shows you **before** you accept it. That's the whole workflow:
 
 . . .
 
-Every failure mode from Session VI applies at every step, and a loop gives it many steps to compound in. The diff you just read is the guardrail.
+Every failure mode from Sessions VI and VIII applies at every step, and a loop gives them many steps to compound in. The diff you just read is the guardrail.
 
 # <span class="flow">Git</span>
 
@@ -425,15 +425,11 @@ Two people, one repo. Four habits keep it painless:
 - And a learning study: students coding with AI scored **50%** on a mastery quiz vs **67%** without, worst gap on **debugging**
 - The same study family found the fix: guarded use, hints instead of finished solutions, erased the harm. Part I was exactly that
 
-. . .
-
 ## What stays valuable
 
 - The verification boundary: usable delegation ends where your ability to **check** ends. Growing that boundary outward is your career
 - <span class="highlight">Comprehension debt</span>: code that works today but nobody understands tomorrow. The interest comes due when a reviewer asks "why does this work?"
 - Your edge, deliberately kept: **explain every line before you accept it**, and code without AI sometimes
-
-. . .
 
 ## Discussion: your future with AI
 
