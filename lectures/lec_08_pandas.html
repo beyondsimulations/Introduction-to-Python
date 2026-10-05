@@ -465,6 +465,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#answer-it-ran-and-its-wrong" id="toc-answer-it-ran-and-its-wrong" class="nav-link" data-scroll-target="#answer-it-ran-and-its-wrong">Answer: it ran, and it’s wrong</a></li>
   <li><a href="#predict-does-.summarize-exist" id="toc-predict-does-.summarize-exist" class="nav-link" data-scroll-target="#predict-does-.summarize-exist">Predict: does <code>.summarize()</code> exist?</a></li>
   <li><a href="#answer-the-method-never-existed" id="toc-answer-the-method-never-existed" class="nav-link" data-scroll-target="#answer-the-method-never-existed">Answer: the method never existed</a></li>
+  <li><a href="#why-did-it-invent-a-method" id="toc-why-did-it-invent-a-method" class="nav-link" data-scroll-target="#why-did-it-invent-a-method">Why did it invent a method?</a></li>
+  <li><a href="#how-it-was-trained-in-one-slide" id="toc-how-it-was-trained-in-one-slide" class="nav-link" data-scroll-target="#how-it-was-trained-in-one-slide">How it was trained, in one slide</a></li>
   <li><a href="#disclosure-one-line-every-time" id="toc-disclosure-one-line-every-time" class="nav-link" data-scroll-target="#disclosure-one-line-every-time">Disclosure: one line, every time</a></li>
   <li><a href="#when-not-to-reach-for-ai" id="toc-when-not-to-reach-for-ai" class="nav-link" data-scroll-target="#when-not-to-reach-for-ai">When NOT to reach for AI</a></li>
   </ul></li>
@@ -613,7 +615,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="step-3-in-action" class="level2">
 <h2 class="anchored" data-anchor-id="step-3-in-action">Step 3 in action</h2>
 <p>Five orders with values you can add in your head, and the AI’s suggested line for the Nord average:</p>
-<div id="27b18e62" class="cell" data-output-location="fragment" data-execution_count="1">
+<div id="53baa68b" class="cell" data-output-location="fragment" data-execution_count="1">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>check <span class="op">=</span> pd.DataFrame({</span>
@@ -638,7 +640,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 <section id="answer-it-ran-and-its-wrong" class="level2">
 <h2 class="anchored" data-anchor-id="answer-it-ran-and-its-wrong">Answer: it ran, and it’s wrong</h2>
-<div id="996ffdfd" class="cell" data-output-location="fragment" data-execution_count="2">
+<div id="d789ae24" class="cell" data-output-location="fragment" data-execution_count="2">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(check[<span class="st">"total_eur"</span>].mean())                             <span class="co"># every zone</span></span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(check[check[<span class="st">"zone"</span>] <span class="op">==</span> <span class="st">"Nord"</span>][<span class="st">"total_eur"</span>].mean())    <span class="co"># Nord only</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
@@ -664,7 +666,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 <section id="answer-the-method-never-existed" class="level2">
 <h2 class="anchored" data-anchor-id="answer-the-method-never-existed">Answer: the method never existed</h2>
-<div id="34c730c3" class="cell" data-output-location="fragment" data-execution_count="4">
+<div id="476e1824" class="cell" data-output-location="fragment" data-execution_count="4">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>orders <span class="op">=</span> pd.DataFrame({<span class="st">"zone"</span>: [<span class="st">"Nord"</span>, <span class="st">"Sued"</span>], <span class="st">"total_eur"</span>: [<span class="fl">12.0</span>, <span class="fl">9.5</span>]})</span>
 <span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>orders.summarize()                     <span class="co"># the method the AI invented</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
@@ -679,7 +681,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p><strong>b) <code>AttributeError</code></strong>: pandas has no <code>.summarize()</code>. The AI invented it.</p>
 <p>. . .</p>
 <p>The real method is <code>.describe()</code>:</p>
-<div id="11ea2208" class="cell" data-output-location="fragment" data-execution_count="5">
+<div id="11937595" class="cell" data-output-location="fragment" data-execution_count="5">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(orders.describe())               <span class="co"># the method that actually exists</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>       total_eur
@@ -695,6 +697,28 @@ max    12.000000</code></pre>
 </div>
 <p>. . .</p>
 <p><strong>An AI that sounds sure is not the same as an API that exists.</strong></p>
+</section>
+<section id="why-did-it-invent-a-method" class="level2">
+<h2 class="anchored" data-anchor-id="why-did-it-invent-a-method">Why did it invent a method?</h2>
+<p>Session VI gave you the machine, so here is why it fails in exactly this way.</p>
+<ul>
+<li>Training rewards a <span class="highlight">plausible</span> continuation and never checks a <span class="highlight">true</span> one: nothing in the loop verifies facts</li>
+<li>And it always writes <em>some</em> next token, confident or not: a choice gets picked, printed, and it all looks equally smooth</li>
+<li><code>.summarize</code> is a <em>plausible</em> pandas name: short, lowercase, shaped like <code>.describe()</code>. Plausible is exactly what the machine optimizes for</li>
+</ul>
+<p>. . .</p>
+<p><strong>Fluent and wrong is not a bug to patch. It is how the machine works.</strong></p>
+</section>
+<section id="how-it-was-trained-in-one-slide" class="level2">
+<h2 class="anchored" data-anchor-id="how-it-was-trained-in-one-slide">How it was trained, in one slide</h2>
+<ul>
+<li><strong>Pre-training</strong>: predict the next token over massive text, where the <span class="highlight">weights</span> inside get adjusted; applying them afterwards is cheap</li>
+<li><strong>Fine-tuning</strong>: curated examples teach it to follow instructions</li>
+<li><strong>RLHF</strong> (reinforcement learning from human feedback): humans rank answers; it learns to prefer the ranked-higher ones</li>
+<li>Its knowledge has an end date, the <span class="highlight">knowledge cutoff</span>: after it, it guesses fluently instead. And it inherits the <span class="highlight">biases</span> of the text it read</li>
+</ul>
+<p>. . .</p>
+<p>Every stage rewards <em>sounding</em> right; none of them checks pandas. That is your job, and step 3 of the verify workflow is how.</p>
 </section>
 <section id="disclosure-one-line-every-time" class="level2">
 <h2 class="anchored" data-anchor-id="disclosure-one-line-every-time">Disclosure: one line, every time</h2>
@@ -752,7 +776,7 @@ max    12.000000</code></pre>
 <section id="a-dataframe-from-a-dictionary" class="level2">
 <h2 class="anchored" data-anchor-id="a-dataframe-from-a-dictionary">A DataFrame from a dictionary</h2>
 <p>Keys become <strong>column names</strong>; each list becomes a <strong>column</strong>; one order per row, mixed types together:</p>
-<div id="01412f7c" class="cell" data-output-location="fragment" data-execution_count="6">
+<div id="f93d396c" class="cell" data-output-location="fragment" data-execution_count="6">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
 <span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> pd.DataFrame({</span>
 <span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>    <span class="st">"order_id"</span>:  [<span class="dv">101</span>, <span class="dv">102</span>, <span class="dv">103</span>, <span class="dv">104</span>, <span class="dv">105</span>],</span>
@@ -785,7 +809,7 @@ max    12.000000</code></pre>
 <section id="first-look-.head-and-.info" class="level2">
 <h2 class="anchored" data-anchor-id="first-look-.head-and-.info">First look: <code>.head()</code> and <code>.info()</code></h2>
 <p>Before analyzing a table, glance at it. <code>.head()</code> shows the top rows; <code>.info()</code> is your first sanity check: right number of rows? Any column a surprising type?</p>
-<div id="67e0b95e" class="cell" data-output-location="fragment" data-execution_count="7">
+<div id="f2bca713" class="cell" data-output-location="fragment" data-execution_count="7">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(df.head(<span class="dv">3</span>))     <span class="co"># first 3 rows</span></span>
 <span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>df.info()             <span class="co"># columns, dtypes, non-null counts</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
@@ -810,7 +834,7 @@ memory usage: 292.0+ bytes</code></pre>
 <section id="the-numbers-at-a-glance-.describe" class="level2">
 <h2 class="anchored" data-anchor-id="the-numbers-at-a-glance-.describe">The numbers at a glance: <code>.describe()</code></h2>
 <p><code>.describe()</code> computes count, mean, min, max and quartiles for every <strong>numeric</strong> column at once:</p>
-<div id="28a3a947" class="cell" data-output-location="fragment" data-execution_count="8">
+<div id="e0320e9b" class="cell" data-output-location="fragment" data-execution_count="8">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(df.describe())</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>         order_id    items  total_eur
@@ -830,7 +854,7 @@ max    105.000000  4.00000  31.400000</code></pre>
 <section id="selecting-a-column-filtering-rows" class="level2">
 <h2 class="anchored" data-anchor-id="selecting-a-column-filtering-rows">Selecting a column, filtering rows</h2>
 <p>Pick one column by name; keep rows with a <strong>boolean mask</strong>, exactly the NumPy idea from last session:</p>
-<div id="6840fe13" class="cell" data-output-location="fragment" data-execution_count="9">
+<div id="8be93fcb" class="cell" data-output-location="fragment" data-execution_count="9">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(df[<span class="st">"zone"</span>])                  <span class="co"># one column (a Series)</span></span>
 <span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>()</span>
 <span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(df[df[<span class="st">"zone"</span>] <span class="op">==</span> <span class="st">"Nord"</span>])    <span class="co"># only the Nord rows, case-sensitive!</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
@@ -861,7 +885,7 @@ Name: zone, dtype: object
 </section>
 <section id="answer-a-mask-not-a-table" class="level2">
 <h2 class="anchored" data-anchor-id="answer-a-mask-not-a-table">Answer: a mask, not a table</h2>
-<div id="6050fc16" class="cell" data-output-location="fragment" data-execution_count="10">
+<div id="3baae85a" class="cell" data-output-location="fragment" data-execution_count="10">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb19"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>big <span class="op">=</span> df[<span class="st">"total_eur"</span>] <span class="op">&gt;</span> <span class="dv">20</span></span>
 <span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(big)              <span class="co"># the mask: a Series of booleans</span></span>
 <span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(df[big])          <span class="co"># the rows: build the mask, then apply it</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
@@ -893,7 +917,7 @@ Name: total_eur, dtype: bool
 <section id="adding-a-column-sorting" class="level2">
 <h2 class="anchored" data-anchor-id="adding-a-column-sorting">Adding a column, sorting</h2>
 <p>Compute a new column from existing ones, then sort. Work on a <strong>copy</strong> so the original stays intact:</p>
-<div id="aea4ab67" class="cell" data-output-location="fragment" data-execution_count="11">
+<div id="149cc392" class="cell" data-output-location="fragment" data-execution_count="11">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb21"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>priced <span class="op">=</span> df.copy()</span>
 <span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>priced[<span class="st">"eur_per_item"</span>] <span class="op">=</span> priced[<span class="st">"total_eur"</span>] <span class="op">/</span> priced[<span class="st">"items"</span>]</span>
 <span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(priced.sort_values(<span class="st">"total_eur"</span>, ascending<span class="op">=</span><span class="va">False</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
@@ -919,7 +943,7 @@ Name: total_eur, dtype: bool
 </section>
 <section id="answer-an-empty-table-no-warning" class="level2">
 <h2 class="anchored" data-anchor-id="answer-an-empty-table-no-warning">Answer: an empty table, no warning</h2>
-<div id="91b8f056" class="cell" data-output-location="fragment" data-execution_count="12">
+<div id="3fb079df" class="cell" data-output-location="fragment" data-execution_count="12">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb24"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(df[df[<span class="st">"zone"</span>] <span class="op">==</span> <span class="st">"nord"</span>])          <span class="co"># nothing matches "nord"</span></span>
 <span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"rows:"</span>, <span class="bu">len</span>(df[df[<span class="st">"zone"</span>] <span class="op">==</span> <span class="st">"nord"</span>]))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">

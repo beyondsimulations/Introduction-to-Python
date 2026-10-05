@@ -301,6 +301,57 @@ Dr.&nbsp;Tobias Vlćek
 <p>For five sessions you worked without AI. From today you may use it, and you stay responsible for every line you hand in.</p>
 </div>
 </section>
+<section id="what-is-an-llm" class="slide level2">
+<h2>What is an LLM?</h2>
+<p>Le Chat and the chatbot bubble run on the same machine:</p>
+<ul>
+<li>A <strong>Large Language Model</strong> is an <span class="highlight">advanced pattern-recognition system</span>. It has read enormous amounts of text: books, websites, and code</li>
+<li>What it actually does: <span class="highlight">predict the next piece of text</span>, like the word suggestions on your phone keyboard, but vastly more capable</li>
+<li><span class="highlight">Not like a search engine</span>: it does not look anything up, it generates from the patterns it learned</li>
+<li>It does not “think” or “understand” the way you do, and it has no feelings to hurt</li>
+</ul>
+</section>
+<section id="the-model-sees-tokens-not-words" class="slide level2">
+<h2>The model sees tokens, not words</h2>
+<ul>
+<li>Text is broken into <span class="highlight">tokens</span>, chunks of text mapped to numbers</li>
+<li>Common words are one token; rarer words split into pieces: “un-”, “break”, “-able”</li>
+<li>The Mistral models we use know about <strong>131,000</strong> tokens</li>
+<li>That is also why famous models fail at “count the r’s in <em>strawberry</em>”: they see a token like <code>straw</code> plus a token like <code>berry</code>, never the letters</li>
+</ul>
+</section>
+<section id="it-guesses-the-next-token" class="slide level2">
+<h2>It guesses the next token</h2>
+<p><span class="question">Question:</span> “The students opened their ___”</p>
+<div class="fragment">
+<ul>
+<li>Books? Laptops? Presents? Eyes?</li>
+<li>Every answer is plausible. None is “the” answer</li>
+<li>The model faces exactly this choice at every token it writes: it picks a <span class="highlight">likely</span> next token, not <em>the</em> next token</li>
+<li>So the same question twice can get two different answers. We return to that idea today in <em>Rehearsing luck</em>, when the shop’s numbers get a seed</li>
+</ul>
+</div>
+</section>
+<section id="the-context-window" class="slide level2">
+<h2>The context window</h2>
+<ul>
+<li>Everything the model knows about you sits in the <span class="highlight">context window</span>: the text it can hold at once, its short-term memory</li>
+<li>Larger window: it remembers more of the conversation. Smaller: it forgets earlier turns</li>
+<li><span class="highlight">Nothing outside the window exists for the model</span>: not your screen, not your intent</li>
+</ul>
+<div class="fragment">
+<div class="callout callout-tip callout-style-simple">
+<div class="callout-body">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-content">
+<p>This is why Session I told you: ask the chatbot as specific as possible. Your question fills the window; the model can only use what is in it.</p>
+</div>
+</div>
+</div>
+</div>
+</section>
 <section id="two-accounts-this-week" class="slide level2">
 <h2>Two accounts this week</h2>
 <p>Both are free, both are on the <a href="../general/ai-tools.html">AI Tools page</a>, together about ten minutes:</p>
@@ -341,7 +392,7 @@ Dr.&nbsp;Tobias Vlćek
 <section id="import-math-stop-rounding-by-hand" class="slide level2">
 <h2><code>import math</code>: stop rounding by hand</h2>
 <p>130 pastries need to ship. They go in crates of 48. How many crates? You need to round <strong>up</strong>: a half-full crate still ships as a whole one.</p>
-<div id="2123c783" class="cell" data-execution_count="1">
+<div id="04d6c901" class="cell" data-execution_count="1">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a aria-label="1"></a><span class="im">import</span> math</span>
 <span id="cb1-2"><a aria-label="2"></a></span>
 <span id="cb1-3"><a aria-label="3"></a>pastries <span class="op">=</span> <span class="dv">130</span></span>
@@ -361,7 +412,7 @@ Dr.&nbsp;Tobias Vlćek
 <section id="from-statistics-import-..." class="slide level2">
 <h2><code>from statistics import ...</code></h2>
 <p>Sometimes you only want a couple of tools, not the whole box. Import them <strong>by name</strong> and use them directly, no <code>statistics.</code> prefix:</p>
-<div id="554dfd56" class="cell" data-execution_count="2">
+<div id="ee03ee8c" class="cell" data-execution_count="2">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a aria-label="1"></a><span class="im">from</span> statistics <span class="im">import</span> mean, median</span>
 <span id="cb3-2"><a aria-label="2"></a></span>
 <span id="cb3-3"><a aria-label="3"></a>ratings <span class="op">=</span> [<span class="fl">4.5</span>, <span class="fl">4.8</span>, <span class="fl">1.0</span>, <span class="fl">5.0</span>, <span class="fl">4.2</span>]</span>
@@ -393,7 +444,7 @@ Dr.&nbsp;Tobias Vlćek
 <section id="aliases-a-shorter-name" class="slide level2">
 <h2>Aliases: a shorter name</h2>
 <p>Some module names are long, or you’ll type them fifty times. <code>import ... as</code> gives a module a <strong>nickname</strong> for the rest of the file:</p>
-<div id="adcd283a" class="cell" data-execution_count="3">
+<div id="e40cb21b" class="cell" data-execution_count="3">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a aria-label="1"></a><span class="im">import</span> statistics <span class="im">as</span> stats</span>
 <span id="cb5-2"><a aria-label="2"></a></span>
 <span id="cb5-3"><a aria-label="3"></a><span class="bu">print</span>(stats.median([<span class="fl">4.5</span>, <span class="fl">4.8</span>, <span class="fl">1.0</span>, <span class="fl">5.0</span>, <span class="fl">4.2</span>]))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
@@ -421,7 +472,7 @@ Dr.&nbsp;Tobias Vlćek
 </section>
 <section id="answer-pi-exists-math-doesnt" class="slide level2">
 <h2>Answer: <code>pi</code> exists, <code>math</code> doesn’t</h2>
-<div id="0d1adb54" class="cell" data-execution_count="5">
+<div id="ec992f34" class="cell" data-execution_count="5">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a aria-label="1"></a><span class="im">from</span> math <span class="im">import</span> pi</span>
 <span id="cb8-2"><a aria-label="2"></a></span>
 <span id="cb8-3"><a aria-label="3"></a>radius <span class="op">=</span> <span class="dv">15</span></span>
@@ -440,7 +491,7 @@ Dr.&nbsp;Tobias Vlćek
 </div>
 <div class="fragment">
 <p>Use the name you imported, and it works:</p>
-<div id="05792973" class="cell" data-execution_count="6">
+<div id="6bb1721d" class="cell" data-execution_count="6">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a aria-label="1"></a><span class="bu">print</span>(pi <span class="op">*</span> radius <span class="op">**</span> <span class="dv">2</span>)   <span class="co"># 706.858…: the imported name, no prefix</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <div class="cell fragment" data-execution_count="6">
@@ -482,7 +533,7 @@ Dr.&nbsp;Tobias Vlćek
 </section>
 <section id="answer-floor-goes-down-not-toward-zero" class="slide level2">
 <h2>Answer: floor goes down, not toward zero</h2>
-<div id="27d35191" class="cell" data-execution_count="7">
+<div id="dc831bc6" class="cell" data-execution_count="7">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a aria-label="1"></a><span class="im">import</span> math</span>
 <span id="cb13-2"><a aria-label="2"></a><span class="bu">print</span>(math.floor(<span class="op">-</span><span class="fl">2.5</span>))   <span class="co"># down the number line → -3</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
@@ -518,7 +569,7 @@ Dr.&nbsp;Tobias Vlćek
 <section id="the-random-toolbox" class="slide level2">
 <h2>The <code>random</code> toolbox</h2>
 <p>The investor wants to see how the shop copes with a <strong>busy day</strong>, but the busy day hasn’t happened yet. So we <em>rehearse</em> it with made-up numbers. The <code>random</code> module deals them:</p>
-<div id="4e6cc54f" class="cell" data-execution_count="8">
+<div id="9b706904" class="cell" data-execution_count="8">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb15"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a aria-label="1"></a><span class="im">import</span> random</span>
 <span id="cb15-2"><a aria-label="2"></a></span>
 <span id="cb15-3"><a aria-label="3"></a><span class="bu">print</span>(random.random())                       <span class="co"># a float in [0.0, 1.0)</span></span>
@@ -531,10 +582,10 @@ Dr.&nbsp;Tobias Vlćek
 </div>
 <div class="cell fragment" data-execution_count="8">
 <div class="cell-output cell-output-stdout">
-<pre><code>0.21829174445478627
-9
+<pre><code>0.9161129565852588
+10
 latte
-[2, 4, 3, 1, 5]</code></pre>
+[3, 4, 5, 2, 1]</code></pre>
 </div>
 </div>
 <div class="fragment">
@@ -544,7 +595,7 @@ latte
 <section id="run-it-again" class="slide level2">
 <h2>“Run it again”</h2>
 <p>The investor leans over and says: <strong>“Run it again.”</strong> Tobi does, and gets <strong>completely different numbers</strong>:</p>
-<div id="5eb591e1" class="cell" data-execution_count="9">
+<div id="b47e4b75" class="cell" data-execution_count="9">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb17"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a aria-label="1"></a><span class="im">import</span> random</span>
 <span id="cb17-2"><a aria-label="2"></a></span>
 <span id="cb17-3"><a aria-label="3"></a><span class="bu">print</span>([random.randint(<span class="dv">1</span>, <span class="dv">20</span>) <span class="cf">for</span> _ <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">5</span>)])   <span class="co"># _ : a loop name we never use</span></span>
@@ -552,8 +603,8 @@ latte
 </div>
 <div class="cell fragment" data-execution_count="9">
 <div class="cell-output cell-output-stdout">
-<pre><code>[18, 14, 15, 14, 2]
-[7, 7, 2, 6, 9]</code></pre>
+<pre><code>[10, 19, 3, 8, 7]
+[14, 12, 15, 16, 7]</code></pre>
 </div>
 </div>
 <div class="fragment">
@@ -563,7 +614,7 @@ latte
 <section id="random.seed-makes-luck-repeatable" class="slide level2">
 <h2><code>random.seed</code> makes luck repeatable</h2>
 <p><code>random.seed(n)</code> fixes the starting point of the number stream. Same seed → <strong>same sequence, every time</strong>:</p>
-<div id="9cab31b0" class="cell" data-execution_count="10">
+<div id="3d98a3f6" class="cell" data-execution_count="10">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb19"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a aria-label="1"></a><span class="im">import</span> random</span>
 <span id="cb19-2"><a aria-label="2"></a></span>
 <span id="cb19-3"><a aria-label="3"></a>random.seed(<span class="dv">7</span>)</span>
@@ -602,7 +653,7 @@ latte
 </section>
 <section id="answer-same-rider" class="slide level2">
 <h2>Answer: same rider</h2>
-<div id="eb7fb1fd" class="cell" data-execution_count="11">
+<div id="60e3f58f" class="cell" data-execution_count="11">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb22"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a aria-label="1"></a><span class="im">import</span> random</span>
 <span id="cb22-2"><a aria-label="2"></a></span>
 <span id="cb22-3"><a aria-label="3"></a>riders <span class="op">=</span> [<span class="st">"Ana"</span>, <span class="st">"Ben"</span>, <span class="st">"Cem"</span>, <span class="st">"Dana"</span>]</span>
@@ -643,7 +694,7 @@ Ben Ben</code></pre>
 </section>
 <section id="answer-different" class="slide level2">
 <h2>Answer: different</h2>
-<div id="beea8c25" class="cell" data-execution_count="12">
+<div id="030d642a" class="cell" data-execution_count="12">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb25"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb25-1"><a aria-label="1"></a><span class="im">import</span> random</span>
 <span id="cb25-2"><a aria-label="2"></a></span>
 <span id="cb25-3"><a aria-label="3"></a>random.seed(<span class="dv">42</span>)</span>
