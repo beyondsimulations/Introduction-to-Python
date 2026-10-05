@@ -179,6 +179,29 @@ print(orders.describe())               # the method that actually exists
 
 **An AI that sounds sure is not the same as an API that exists.**
 
+## Why did it invent a method?
+
+Session VI gave you the machine, so here is why it fails in exactly this way.
+
+- Training rewards a <span class="highlight">plausible</span> continuation and never checks a <span class="highlight">true</span> one: nothing in the loop verifies facts
+- And it always writes *some* next token, confident or not: a choice gets picked, printed, and it all looks equally smooth
+- `.summarize` is a *plausible* pandas name: short, lowercase, shaped like `.describe()`. Plausible is exactly what the machine optimizes for
+
+. . .
+
+**Fluent and wrong is not a bug to patch. It is how the machine works.**
+
+## How it was trained, in one slide
+
+- **Pre-training**: predict the next token over massive text, where the <span class="highlight">weights</span> inside get adjusted; applying them afterwards is cheap
+- **Fine-tuning**: curated examples teach it to follow instructions
+- **RLHF**: humans rank answers, and it learns to prefer the ranked-higher ones
+- Its knowledge has an end date, the <span class="highlight">knowledge cutoff</span>: after it, it guesses fluently instead. And it inherits the <span class="highlight">biases</span> of the text it read
+
+. . .
+
+Every stage rewards *sounding* right; none of them checks pandas. That is your job, and step 3 of the verify workflow is how.
+
 ## Disclosure: one line, every time
 
 From Session VI the course rule stands: every submission that used AI carries a **one-line note** saying what you used it for.

@@ -86,6 +86,7 @@ Materials live in the KLU portal and are hosted at [python.tobiasvlcek.com](http
 - Just click the <span class="highlight">chatbot bubble</span> on the website
 - The chat will open and you can **ask your questions**
 - It is programmed by us and uses <span class="highlight">Mistral AI</span> as backend
+- What a *language model* is and how it works: that is Session VI's story, when AI switches on
 - Ask your question as specific as possible
 - This ensures enough **context for the model**
 - We can see aggregated logs, but cannot identify you

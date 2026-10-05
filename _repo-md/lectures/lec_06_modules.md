@@ -61,6 +61,45 @@ For five sessions you built everything by hand, on purpose. From today, that cha
 
 For five sessions you worked without AI. From today you may use it, and you stay responsible for every line you hand in.
 
+## What is an LLM?
+
+The tools you get this week all run on the same machine. What it is, and why that matters from here on:
+
+- A **Large Language Model** is an <span class="highlight">advanced pattern-recognition system</span>. It has read enormous amounts of text: books, websites, and code
+- What it actually does: <span class="highlight">predict the next piece of text</span>, like the word suggestions on your phone keyboard, but vastly more capable
+- <span class="highlight">Not like a search engine</span>: it does not look anything up, it generates from the patterns it learned
+- It does not "think" or "understand" the way you do
+
+## The model sees tokens, not words
+
+- Text is broken into <span class="highlight">tokens</span>, chunks of text mapped to numbers
+- Common words are one token; rarer words split into pieces: "un-", "break", "-able"
+- The Mistral models we use know about **131,000** tokens
+- That is also why famous models fail at "count the r's in *strawberry*": they see a token like `straw` plus a token like `berry`, never the letters
+
+## It guesses the next token
+
+<span class="question">Question:</span> "The students opened their \_\_\_"
+
+. . .
+
+- Books? Laptops? Presents? Eyes?
+- Every answer is plausible. None is "the" answer
+- The model faces exactly this choice at every token it writes: it picks a <span class="highlight">likely</span> next token, not *the* next token
+- So the same question twice can get two different answers. We return to that idea today in *Rehearsing luck*, when the shop's numbers get a seed
+
+## The context window
+
+- Everything the model knows about you sits in the <span class="highlight">context window</span>: the text it can hold at once, its short-term memory
+- Larger window: it remembers more of the conversation. Smaller: it forgets earlier turns
+- <span class="highlight">Nothing outside the window exists for the model</span>: not your screen, not your intent
+
+. . .
+
+> **Tip**
+>
+> This is why the chatbot page says "ask as specific as possible". Your question fills the window; the model can only use what is in it.
+
 ## Two accounts this week
 
 Both are free, both are on the [AI Tools page](../general/ai-tools.qmd), together about ten minutes:
@@ -276,10 +315,10 @@ random.shuffle(queue)                         # reorders the list in place
 print(queue)
 ```
 
-    0.41717922252519357
-    3
-    tea
-    [3, 1, 2, 5, 4]
+    0.6002473050029529
+    17
+    mocha
+    [5, 4, 1, 2, 3]
 
 . . .
 
@@ -296,8 +335,8 @@ print([random.randint(1, 20) for _ in range(5)])   # _ : a loop name we never us
 print([random.randint(1, 20) for _ in range(5)])   # ...and again, different!
 ```
 
-    [8, 6, 16, 4, 16]
-    [9, 9, 10, 11, 5]
+    [7, 8, 10, 18, 5]
+    [12, 19, 6, 10, 13]
 
 . . .
 

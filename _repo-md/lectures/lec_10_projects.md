@@ -301,6 +301,17 @@ Read the diff Zed shows you **before** you accept it. That's the whole workflow:
 >
 > The disclosure rule still stands, now in writing: your repo's `README.md` says **which tools you used, what for, and what you checked yourself.** AI drafts; **you verify**, same reflex as the checkpoint you just sat.
 
+## Inside the panel: a model in a loop
+
+- Mistral Vibe is an <span class="highlight">agent</span>: the language model you met in Session VI, wired into a loop with tools
+- The model **proposes** an action: read a file, edit a line, run a command
+- The tool **runs** it, the result **feeds back**, and it proposes again, until the goal is met
+- No magic, and no memory between sessions
+
+. . .
+
+Every failure mode from Session VI applies at every step, and a loop gives it many steps to compound in. The diff you just read is the guardrail.
+
 # <span class="flow">Git</span>
 
 ## The five words
@@ -406,6 +417,33 @@ Two people, one repo. Four habits keep it painless:
 > **Tip**
 >
 > Between now and then, the repo tells your story. Commit as you go. A steady history is worth more than a heroic final night.
+
+## AI and your first job
+
+- Large experiments with thousands of developers: **+26%** tasks completed with AI, and <span class="highlight">juniors gained the most</span>
+- But experienced developers on their own codebases went **19% slower** while *feeling* 20% faster
+- And a learning study: students coding with AI scored **50%** on a mastery quiz vs **67%** without, worst gap on **debugging**
+- The same study family found the fix: guarded use, hints instead of finished solutions, erased the harm. Part I was exactly that
+
+. . .
+
+## What stays valuable
+
+- The verification boundary: usable delegation ends where your ability to **check** ends. Growing that boundary outward is your career
+- <span class="highlight">Comprehension debt</span>: code that works today but nobody understands tomorrow. The interest comes due when a reviewer asks "why does this work?"
+- Your edge, deliberately kept: **explain every line before you accept it**, and code without AI sometimes
+
+. . .
+
+## Discussion: your future with AI
+
+> **Note**
+>
+> Three questions, five minutes, show of hands:
+>
+> - Which task from the past weeks would you **never** delegate to an AI?
+> - What will an entry-level logistics analyst do in 2030, when AI drafts the first version of everything?
+> - If AI writes most junior code, where do the senior people come from?
 
 ## Keep programming
 
