@@ -1,0 +1,106 @@
+---
+title: "Lecture XII - Project Work II"
+subtitle: "Programming with Python"
+author: "Dr. Tobias Vlćek"
+institute: "Kühne Logistics University Hamburg - Fall 2026"
+format:
+  revealjs:
+    footer: " {{< meta title >}} | {{< meta author >}} | [Home](lec_12_projects.qmd)"
+    output-file: lec_12_presentation.html
+---
+
+# [Episode 12: Ship It]{.flow} {.title}
+
+## Launch week
+
+One week to Demo Day. The first demos happen **today**, the rest in Session XIII, and the order comes out of a hat. The hat is Python.
+
+. . .
+
+Before anyone presents: twenty minutes on making your agent stop repeating the same mistakes.
+
+# [Teach Your Agent]{.flow} {.title}
+
+## The friction you know
+
+- Two weeks in, you have corrected your agent on the same things again and again: naming style, the library you prefer, "keep functions short", "we filter with `.loc` here"
+- Every session starts from zero: the agent remembers [nothing]{.highlight} between sessions (Session X, the loop)
+- Explaining the same thing five times is work you should not be doing
+
+## Package the rules once
+
+- Put your project rules in **one markdown file** in the repo: `AGENTS.md`
+- What goes in: what the project is, the stack, naming and style conventions, "any AI use lands in the README disclosure"
+- Agents that support rules files read it at every session start, automatically
+- If yours does not: same file, pasted into the first prompt of a session. Worst case, `AGENTS.md` is your clipboard file
+
+## Skills: instructions on demand
+
+- A **skill** is the next step up: a folder with a `SKILL.md`, holding a name, a description, and instructions
+- Rules apply [always]{.highlight}. A skill loads only when the task matches its description, so context stays lean until the moment it is needed
+- Example: a `verify` skill for your project: read the diff, run it, test it on a case where you know the answer, report what you checked
+
+## Anatomy, briefly
+
+```markdown
+---
+name: verify
+description: Check changed code the way this project requires. Use after any code change.
+---
+
+- Read the diff line by line before running anything
+- Run the code on a case where you know the correct answer
+- Report what you checked and what the result was
+```
+
+. . .
+
+Plain markdown you own, versioned with the project like any other file.
+
+## Write your own
+
+- Any workflow you have explained to the agent [twice]{.highlight} deserves a skill
+- Keep it short: a page of instructions, not an essay
+- Prune it when the workflow changes: a stale skill misleads
+- Downloading one? Vet it by [reading it]{.highlight}, not by its star count
+
+## What not to hand over
+
+- The parts you must be able to **defend at the demo**: design choices, the statistics, why this approach
+- A file can carry conventions. It cannot carry your judgment, and the demo questions come to you, not to it
+
+# [Definition of Done]{.flow} {.title}
+
+## Before you call it finished
+
+- The repo runs from a fresh clone: `uv sync`, then the notebook or script, no hidden steps
+- The README says what it does, how to run it, and carries the **AI disclosure section**
+- The commit history tells the story: small steps, messages that mean something
+- `git status` is clean: nothing uncommitted, nothing important ignored
+
+. . .
+
+:::{.callout-tip}
+Run the fresh-clone test **today**, not on the morning of your demo. It always finds something.
+:::
+
+# [First Demos]{.flow} {.title}
+
+## Today's batch
+
+- Format: **10 minutes** presenting, **5 minutes** of questions, per pair
+- Order: drawn at random with the `random` module from Session VI
+- Show the thing running, the commit history, and one thing that broke
+- Everyone else: watch for the recipe. You present in Session XIII
+
+# [Wrap-up]{.flow} {.title}
+
+## Three things to remember
+
+- Rules in `AGENTS.md` for the [always]{.highlight} stuff, skills for the on-demand stuff, both plain markdown you own
+- The fresh-clone test is the cheapest bug you will ever catch
+- A demo is the thing running, the history, and the honest disclosure
+
+. . .
+
+Next week: **Demo Day**. The investor is in the audience.
