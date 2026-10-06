@@ -39,6 +39,7 @@ Before anyone presents: twenty minutes on making your agent stop repeating the s
 - A **skill** is the next step up: a folder with a `SKILL.md`, holding a name, a description, and instructions
 - Rules apply <span class="highlight">always</span>. A skill loads only when the task matches its description, so context stays lean until the moment it is needed
 - Example: a `verify` skill for your project: read the diff, run it, test it on a case where you know the answer, report what you checked
+- In your stack: `.vibe/skills/verify/SKILL.md` in the repo. Vibe loads it in the terminal and inside Zed's agent panel, same engine either way
 
 ## Anatomy, briefly
 
@@ -55,7 +56,7 @@ description: Check changed code the way this project requires. Use after any cod
 
 . . .
 
-Plain markdown you own, versioned with the project like any other file.
+Plain markdown you own, at `.vibe/skills/verify/SKILL.md`, versioned with the project like any other file.
 
 ## Write your own
 
