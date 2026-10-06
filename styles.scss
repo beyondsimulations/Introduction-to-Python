@@ -272,6 +272,32 @@ $presentation-title-slide-text-align: left;
     max-height: 420px; // 60% of the 700px stage
 }
 
+// A computed figure (figure-revealjs/ output, not a hand-placed image) inside
+// ::: {.columns} fills its column. SVG output otherwise keeps its intrinsic
+// point size (a 4 in figure is ~300 px wide), so tick labels end up unreadably
+// small next to the column's text. Same 420 px cap.
+.reveal .columns .column img.quarto-figure:is([src*="figure-revealjs/"], [data-src*="figure-revealjs/"]) {
+    width: 100%;
+    height: auto;
+    max-height: 420px;
+    object-fit: contain;
+}
+
+// Quarto marks the slide holding the bibliography (`::: {#refs}`) as
+// `.smaller .scrollable` on its own, so the references render at 0.7em next to
+// full-size slides. Undo the size only there; other `{.smaller}` slides are left
+// alone. Headings need their own reset: Quarto scales them by 1/0.7.
+.reveal .slides section.smaller:has(#refs) {
+    font-size: 1em;
+
+    h2 {
+        font-size: var(--r-heading2-size);
+    }
+    h3 {
+        font-size: var(--r-heading3-size);
+    }
+}
+
 // ── Document pages: columns and figures ───────────────────────────────────
 // Scoped to #quarto-document-content, which does not exist in RevealJS, so the
 // slide rule above is untouched.
@@ -304,15 +330,6 @@ $presentation-title-slide-text-align: left;
     }
 }
 
-// Document blockquotes: Quarto colours blockquote text with the secondary brand
-// colour (sand), which lands near 1.4:1 on the light ground and is unreadable
-// (the emphasis inside inherits it, since only `.reveal em` carries a colour).
-// Body colour; the left border and italic still mark it as a quote. Doc only;
-// `.reveal blockquote` is more specific and keeps its own colour.
-blockquote {
-    color: var(--bs-body-color);
-}
-
 // ── Responsive video embed ────────────────────────────────────────────────
 // 16:9 iframe wrapper. Inert unless a lecture uses .video-wrapper.
 .video-wrapper {
@@ -326,6 +343,40 @@ blockquote {
         width: 100%;
         height: 100%;
         border: 0;
+    }
+}
+
+// Table captions: Bootstrap colours them with the secondary brand colour
+// (sand), which reads as a warning and fails contrast on the light ground.
+// Keep them in the body colour, slightly smaller, like figure captions.
+caption,
+.table > caption {
+    color: var(--bs-body-color);
+    font-size: 0.9em;
+}
+
+// Document blockquotes: Quarto colours blockquote text with the secondary brand
+// colour (sand) too, which lands near 1.4:1 on the light ground and is unreadable
+// (the emphasis inside inherits it, since only `.reveal em` carries a colour).
+// Same fix as captions: body colour; the left border and italic still mark it as
+// a quote. Doc only; `.reveal blockquote` is more specific and keeps its own colour.
+blockquote {
+    color: var(--bs-body-color);
+}
+
+// Document pages without a TOC (quizzes, exams with `toc: false`) get Quarto's
+// `fullcontent` grid, which drops the right margin column and centres the body,
+// so the text jumps right compared with every page that has a TOC. Give those
+// pages the same grid as TOC pages; the margin column simply stays empty.
+// Values copied from Quarto's `body.floating .page-columns` per breakpoint.
+@media (min-width: 992px) {
+    body.floating.fullcontent .page-columns {
+        grid-template-columns: [screen-start] 1.5em [screen-start-inset] 5fr [page-start] minmax(25px, 50px) [page-start-inset] minmax(50px, 150px) [body-start-outset] minmax(25px, 50px) [body-start] 1.5em [body-content-start] minmax(500px, calc(800px - 3em)) [body-content-end] 1.5em [body-end] minmax(25px, 50px) [body-end-outset] minmax(50px, 150px) [page-end-inset] minmax(25px, 50px) [page-end] 5fr [screen-end-inset] 1.5em [screen-end];
+    }
+}
+@media (max-width: 991.98px) and (min-width: 768px) {
+    body.floating.fullcontent .page-columns {
+        grid-template-columns: [screen-start] 1.5em [screen-start-inset] 5fr [page-start page-start-inset body-start-outset body-start] 1.5em [body-content-start] minmax(500px, calc(750px - 3em)) [body-content-end] 1.5em [body-end] 50px [body-end-outset] minmax(75px, 150px) [page-end-inset] 25px [page-end] 5fr [screen-end-inset] 1.5em [screen-end];
     }
 }
 
