@@ -121,7 +121,7 @@ touching any question; `--stats` for the per-question table).
 ## In-lecture exercises (ex_XX_<letter>.py)
 - **Letter = slide order** (Fable #10): `ex_XX_a` belongs to lecture block 1,
   `_b` to block 2, and so on. Regular sessions run 5 blocks (letters a-e),
-  CP sessions 3 (letters a-c); Session X has none.
+  CP sessions 3 (letters a-c); Sessions X-XIII have none.
 - One concept, one screen, 5-10 min, one exercise + one reactive check,
   closing cell: "*Nothing to hand in. This was a sandbox.*" (the save callout
   at the top still applies: it says how to keep a copy if you want one)
@@ -148,6 +148,12 @@ Exception, Session X follows the Plan-4 kickoff shape instead (CP5 opener →
 episode → project kickoff → toolchain → git → send-off; no QR exercises or lab
 handoff by design, and no tut_10/nb_10, see
 docs/superpowers/specs/2026-07-12-part3-plan4-design.md).
+Sessions XI-XIII follow lean work-session shapes: no warm-up, no QR exercises,
+no checkpoint, no lab handoff. XI and XII each carry one short content flow
+plus a work menu/checklist and wrap-up; XIII is presentations plus the moved
+send-off (future block, keep-programming, thank-you, literature). Presentation
+logistics live only in lec_10's Demo Day flow: 10+5 format, first demos in XII,
+rest in XIII, order drawn at random with the Session VI random module.
 
 ### Break slides: two backgrounds, two meanings
 `.loud-slide` (brand teal) means "you are about to do something": every
