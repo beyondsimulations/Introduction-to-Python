@@ -50,7 +50,7 @@ def _(mo):
 def _(mo):
     mo.md(
         r"""
-    The health inspector is in the doorway and the till just died. All you
+    The health inspector is in the doorway and the register just died. All you
     have is the traceback Tobi left on the screen at 3 AM:
 
     ```
@@ -60,7 +60,7 @@ def _(mo):
     KeyError: 'C3'
     ```
 
-    Read it **bottom-up**. Which exception type crashed the till? Assign its
+    Read it **bottom-up**. Which exception type crashed the register? Assign its
     name as text to `error_exa`, spelled the way Python prints it.
     """
     )

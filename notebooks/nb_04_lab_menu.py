@@ -52,7 +52,7 @@ def _(mo):
     loose variables (`price1`, `price2`, `price_final`, and the notorious
     `price_final_FINAL2`) and nobody, Tobi included, could remember which was
     which. When a supplier raised the falafel price, he changed the wrong one and
-    the till undercharged all afternoon.
+    the register undercharged all afternoon.
 
     Today the data gets a **shape**. You'll line orders up in a **list** (ordered,
     sliceable), map dish names to prices in a **dictionary** (look one up
@@ -821,7 +821,7 @@ def _(menu_ex22, mo, pad_price_ex33, show_result):
             "Correct (Exercise 3.3): 8.90. The key now matches the menu exactly. Bonus "
             "lesson: `.get(\"padthai\")` returned `None` instead of crashing, but "
             "square brackets (`menu_ex22[\"padthai\"]`) would have raised a "
-            "`KeyError` and taken the whole till down. `.get()` is the gentle lookup."
+            "`KeyError` and taken the whole register down. `.get()` is the gentle lookup."
         )
         _preview = show_result(pad_price_ex33)
     else:
@@ -1248,7 +1248,7 @@ def _(mo):
        and reopening the link starts you fresh. The download is the only
        guaranteed copy.
     3. Next episode: with real data flowing in, things start going *wrong*: a
-       customer types "free" into the price box, an order has zero items, the till
+       customer types "free" into the price box, an order has zero items, the register
        divides by nobody. Tobi rewrites the checkout at 3 AM. What could possibly
        go wrong? Next week: **errors**, catching them before they catch you.
     """

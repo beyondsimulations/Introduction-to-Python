@@ -316,7 +316,7 @@ def _(mo):
     zones_ex = {"Nord": 2.50, "Sued": 3.90, "West": 3.20}
     ```
 
-    The 3-AM till does `zones["Ost"]`, raises a **`KeyError`**, and the
+    The 3-AM register does `zones["Ost"]`, raises a **`KeyError`**, and the
     inspector watches it die. House rule: an unknown zone gets the flat
     **out-of-zone fee of 4.50**. Write `delivery_fee_ex13(zones, zone)` that
     returns `zones[zone]` when the zone is on the map, and catches the
@@ -363,7 +363,7 @@ def _(delivery_fee_ex13, mo, show_result):
             and isinstance(_unknown, (int, float)) and round(_unknown, 2) == 4.50
         ):
             ex13_ok = True
-            _msg = "Correct (Exercise 1.3): `\"Sued\"` → 3.90, `\"Ost\"` → 4.50. The inspector's lunch leaves the shop with a 4.50 out-of-zone sticker on the bag, and the till is still standing. Notice that the `except` names the *specific* error type."
+            _msg = "Correct (Exercise 1.3): `\"Sued\"` → 3.90, `\"Ost\"` → 4.50. The inspector's lunch leaves the shop with a 4.50 out-of-zone sticker on the bag, and the register is still standing. Notice that the `except` names the *specific* error type."
             _preview = show_result(_unknown)
         elif not (isinstance(_unknown, (int, float)) and round(_unknown, 2) == 4.50):
             ex13_ok = False
@@ -397,7 +397,7 @@ def _(mo):
         r"""
     ## Section 2: The inspector's rule: fixing bugs and `raise`
 
-    The health inspector has one non-negotiable rule for the till: **every order
+    The health inspector has one non-negotiable rule for the register: **every order
     must have a price of at least 0**, no negative prices, ever. (Tobi once
     "refunded" a salad by typing `-8.30`, and the books never recovered.)
 
@@ -662,7 +662,7 @@ def _(mo):
     - otherwise **returns** what the customer still pays: `paid - back`, rounded
       to 2 decimals.
 
-    The number decides what leaves the till: a refund of 3.00 on a 12.40 ramen
+    The number decides what leaves the register: a refund of 3.00 on a 12.40 ramen
     should leave the customer paying 9.40, and a 20.00 refund on the same ramen
     should be refused before Tobi can approve it.
     """
@@ -708,7 +708,7 @@ def _(mo, refund_ex24, show_result):
         _preview = show_result(_left)
     elif _raised == "WRONG":
         ex24_ok = False
-        _msg = "Wrong (Exercise 2.4): the oversized refund *did* raise, but not a `ValueError`. Use `raise ValueError(...)` specifically so the till can catch the right type."
+        _msg = "Wrong (Exercise 2.4): the oversized refund *did* raise, but not a `ValueError`. Use `raise ValueError(...)` specifically so the register can catch the right type."
         _preview = ""
     elif _raised is False:
         ex24_ok = False
@@ -716,7 +716,7 @@ def _(mo, refund_ex24, show_result):
         _preview = ""
     else:
         ex24_ok = True
-        _msg = "Correct (Exercise 2.4): the sad customer gets 3.00 back and pays **9.40**; the 20.00 refund is refused with a `ValueError` before it reaches the till. Tobi's face when it raised was worth the whole exercise."
+        _msg = "Correct (Exercise 2.4): the sad customer gets 3.00 back and pays **9.40**; the 20.00 refund is refused with a `ValueError` before it reaches the register. Tobi's face when it raised was worth the whole exercise."
         _preview = show_result(_left)
     mo.callout(mo.md(_msg + _preview), kind="success" if ex24_ok else "warn")
     return (ex24_ok,)
@@ -755,7 +755,7 @@ def _(mo):
     ```
 
     `to_int("42")` → `42`; `to_int("oops")` → `0`. The caller never has to worry
-    about a crash. Read and run the worked example, then build one for the till.
+    about a crash. Read and run the worked example, then build one for the register.
     """
     )
     return
@@ -1234,7 +1234,7 @@ def _(
     _tobi = (
         "The checkout is inspector-ready. Tobi can sleep (decaf next time)."
         if _done == _total
-        else "The inspector is at the door and the till is still throwing red."
+        else "The inspector is at the door and the register is still throwing red."
     )
     mo.callout(
         mo.md(f"**Core exercises: {_done}/{_total} correct**. {_tobi}"),

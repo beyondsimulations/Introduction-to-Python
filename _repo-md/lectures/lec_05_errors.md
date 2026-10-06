@@ -12,7 +12,7 @@ format:
 
 # Checkpoint 2
 
-**Before the doors open.** The first 40 minutes are the checkpoint. It starts now.
+The first 40 minutes are the checkpoint. It starts now.
 
 - **Individual work**: no AI, no neighbors, no chat
 - The **link is on Moodle**. Open it and start
@@ -37,11 +37,11 @@ Menu → *Download* → *Download Python code* → upload the `.py` to the **"Ch
 
 ## After the checkpoint
 
-Pens down. The checkpoint is over. On to Episode 5.
+On to Episode 5.
 
 . . .
 
-At 3 AM, running on his fourth energy drink, Tobi rewrote the **entire checkout** "to make it faster." He went to bed very pleased. This morning two things are true: the till is a minefield of crashes, and the **health inspector** just called to announce a surprise visit.
+At 3 AM, running on his fourth energy drink, Tobi rewrote the **entire checkout** "to make it faster." He went to bed very pleased. This morning two things are true: the register is a minefield of crashes, and the **health inspector** just called to announce a surprise visit.
 
 . . .
 
