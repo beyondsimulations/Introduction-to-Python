@@ -304,6 +304,15 @@ $presentation-title-slide-text-align: left;
     }
 }
 
+// Document blockquotes: Quarto colours blockquote text with the secondary brand
+// colour (sand), which lands near 1.4:1 on the light ground and is unreadable
+// (the emphasis inside inherits it, since only `.reveal em` carries a colour).
+// Body colour; the left border and italic still mark it as a quote. Doc only;
+// `.reveal blockquote` is more specific and keeps its own colour.
+blockquote {
+    color: var(--bs-body-color);
+}
+
 // ── Responsive video embed ────────────────────────────────────────────────
 // 16:9 iframe wrapper. Inert unless a lecture uses .video-wrapper.
 .video-wrapper {
