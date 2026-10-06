@@ -48,7 +48,7 @@
     "href": "tutorials/tut_05_errors.html",
     "title": "Episode 5: The 3-AM Checkout",
     "section": "",
-    "text": "At 3 AM, on his fourth energy drink, Tobi rewrote the entire checkout “to make it faster.” This morning the health inspector called to announce a surprise visit, and the till is a minefield of crashes. In this notebook you learn to work with things going wrong: read a traceback (Python’s crash report), catch failures with try/except, let your own code refuse bad input with raise, guard invariants with assert, and debug Tobi’s 3-AM checkout line by line. It’s the last lab of Part I. Next session opens with a checkpoint.",
+    "text": "At 3 AM, on his fourth energy drink, Tobi rewrote the entire checkout “to make it faster.” This morning the health inspector called to announce a surprise visit, and the register is a minefield of crashes. In this notebook you learn to work with things going wrong: read a traceback (Python’s crash report), catch failures with try/except, let your own code refuse bad input with raise, guard invariants with assert, and debug Tobi’s 3-AM checkout line by line. It’s the last lab of Part I. Next session opens with a checkpoint.",
     "crumbs": [
       "05 Errors",
       "Tutorial"
@@ -5720,7 +5720,7 @@
     "href": "lectures/lec_05_errors.html",
     "title": "Lecture V - Errors and Debugging",
     "section": "",
-    "text": "Before the doors open. The first 40 minutes are the checkpoint. It starts now.\n\nIndividual work: no AI, no neighbors, no chat\nThe link is on Moodle. Open it and start\n~6 short tasks: write code, trace code, fix a bug, answer a multiple choice\nIt sweeps Sessions III-IV: functions, scope, classes, lists and dictionaries, comprehensions\n\n\n\n\nMenu → Download → Download Python code → upload the .py to the “Checkpoint 2” assignment on Moodle, before the 40 minutes are up. No retakes: one sitting.\n. . .\n\n\n\n\n\n\nThe green live checks are provisional. The final grading runs on my side. Everything in it was rehearsed in the labs.",
+    "text": "The first 40 minutes are the checkpoint. It starts now.\n\nIndividual work: no AI, no neighbors, no chat\nThe link is on Moodle. Open it and start\n~6 short tasks: write code, trace code, fix a bug, answer a multiple choice\nIt sweeps Sessions III-IV: functions, scope, classes, lists and dictionaries, comprehensions\n\n\n\n\nMenu → Download → Download Python code → upload the .py to the “Checkpoint 2” assignment on Moodle, before the 40 minutes are up. No retakes: one sitting.\n. . .\n\n\n\n\n\n\nThe green live checks are provisional. The final grading runs on my side. Everything in it was rehearsed in the labs.",
     "crumbs": [
       "05 Errors",
       "Lecture"
@@ -5742,7 +5742,7 @@
     "href": "lectures/lec_05_errors.html#after-the-checkpoint",
     "title": "Lecture V - Errors and Debugging",
     "section": "After the checkpoint",
-    "text": "After the checkpoint\nPens down. The checkpoint is over. On to Episode 5.\n. . .\nAt 3 AM, running on his fourth energy drink, Tobi rewrote the entire checkout “to make it faster.” He went to bed very pleased. This morning two things are true: the till is a minefield of crashes, and the health inspector just called to announce a surprise visit.\n. . .\nSo today the code learns to survive things going wrong. We read a traceback, catch failures with try/except, and let our own code refuse bad input.",
+    "text": "After the checkpoint\nOn to Episode 5.\n. . .\nAt 3 AM, running on his fourth energy drink, Tobi rewrote the entire checkout “to make it faster.” He went to bed very pleased. This morning two things are true: the register is a minefield of crashes, and the health inspector just called to announce a surprise visit.\n. . .\nSo today the code learns to survive things going wrong. We read a traceback, catch failures with try/except, and let our own code refuse bad input.",
     "crumbs": [
       "05 Errors",
       "Lecture"
@@ -5885,18 +5885,18 @@
     "href": "lectures/lec_05_errors.html#the-debugging-loop",
     "title": "Lecture V - Errors and Debugging",
     "section": "The debugging loop",
-    "text": "The debugging loop\nWhen something is wrong, you don’t guess randomly. You follow a loop:\n\nRead the traceback: it hands you the what and the where\nReproduce the crash: make it happen on demand\nIsolate: narrow down to the smallest failing piece\nFix: change one thing, then run again\n\n. . .\nThe inspector debugs the same way: find the broken thing, make it repeat, corner it, fix it. Panic is not a step.",
+    "text": "The debugging loop\nWhen something is wrong, you don’t guess randomly. You follow a loop:\n\nRead the traceback: it hands you the what and the where\nReproduce the crash: make it happen on demand\nIsolate: narrow down to the smallest failing piece\nFix: change one thing, then run again\n\n. . .\nFind the broken thing, make it repeat, corner it, fix it. Panic is not a step.",
     "crumbs": [
       "05 Errors",
       "Lecture"
     ]
   },
   {
-    "objectID": "lectures/lec_05_errors.html#print-the-beginners-flashlight",
-    "href": "lectures/lec_05_errors.html#print-the-beginners-flashlight",
+    "objectID": "lectures/lec_05_errors.html#print-the-beginners-help",
+    "href": "lectures/lec_05_errors.html#print-the-beginners-help",
     "title": "Lecture V - Errors and Debugging",
-    "section": "print(): the beginner’s flashlight",
-    "text": "print(): the beginner’s flashlight\nThe simplest debugger is a well-placed print(). When you can’t see what a value is, shine a light on it:\n\ndef line_total(qty, price):\n    print(\"DEBUG qty =\", qty, \"price =\", price)   # the flashlight\n    return round(qty * price, 2)\n\nprint(line_total(3, 5.50))\n\nDEBUG qty = 3 price = 5.5\n16.5\n\n\n. . .\nReal debuggers with breakpoints exist and are wonderful, but a print() in the right spot solves most beginner bugs in seconds. Remove it once you’ve seen enough.",
+    "section": "print(): the beginner’s help",
+    "text": "print(): the beginner’s help\nThe simplest debugger is a well-placed print(). When you can’t see what a value is, shine a light on it:\n\ndef line_total(qty, price):\n    print(\"DEBUG qty =\", qty, \"price =\", price)   # the help\n    return round(qty * price, 2)\n\nprint(line_total(3, 5.50))\n\nDEBUG qty = 3 price = 5.5\n16.5\n\n\n. . .\nReal debuggers with breakpoints exist and are wonderful, but a print() in the right spot solves most beginner bugs in seconds. Remove it once you’ve seen enough.",
     "crumbs": [
       "05 Errors",
       "Lecture"
@@ -5907,7 +5907,7 @@
     "href": "lectures/lec_05_errors.html#raise-when-your-code-should-refuse",
     "title": "Lecture V - Errors and Debugging",
     "section": "raise: when your code should refuse",
-    "text": "raise: when your code should refuse\nSometimes your own code should reject bad input on the spot. The inspector’s rule is non-negotiable: every price ≥ 0. raise throws an error deliberately:\n\ndef charge(amount):\n    if amount &lt; 0:\n        raise ValueError(\"price cannot be negative\")\n    return amount\n\ntry:\n    charge(-4.50)                  # your code refuses it...\nexcept ValueError as e:\n    print(\"refused:\", e)           # ...on your terms\n\nrefused: price cannot be negative\n\n\n. . .\nA bad value stops here, at the door, instead of poisoning the books three screens later.",
+    "text": "raise: when your code should refuse\nSometimes your own code should reject bad input on the spot. The inspector’s rule is non-negotiable: every price ≥ 0. raise throws an error deliberately:\n\ndef charge(amount):\n    if amount &lt; 0:\n        raise ValueError(\"price cannot be negative\")\n    return amount\n\ntry:\n    charge(-4.50)                  # your code refuses it...\nexcept ValueError as e:\n    print(\"refused:\", e)           # ...on your terms\n\nrefused: price cannot be negative\n\n\n. . .\nA bad value stops here, instead of poisoning the program three screens later.",
     "crumbs": [
       "05 Errors",
       "Lecture"
@@ -6035,7 +6035,7 @@
     "href": "lectures/lec_05_presentation.html#after-the-checkpoint",
     "title": "Lecture V - Errors and Debugging",
     "section": "After the checkpoint",
-    "text": "After the checkpoint\nPens down. The checkpoint is over. On to Episode 5.\n\nAt 3 AM, running on his fourth energy drink, Tobi rewrote the entire checkout “to make it faster.” He went to bed very pleased. This morning two things are true: the till is a minefield of crashes, and the health inspector just called to announce a surprise visit.\n\n\nSo today the code learns to survive things going wrong. We read a traceback, catch failures with try/except, and let our own code refuse bad input."
+    "text": "After the checkpoint\nOn to Episode 5.\n\nAt 3 AM, running on his fourth energy drink, Tobi rewrote the entire checkout “to make it faster.” He went to bed very pleased. This morning two things are true: the register is a minefield of crashes, and the health inspector just called to announce a surprise visit.\n\n\nSo today the code learns to survive things going wrong. We read a traceback, catch failures with try/except, and let our own code refuse bad input."
   },
   {
     "objectID": "lectures/lec_05_presentation.html#tobis-3-am-checkout-live",
@@ -6126,21 +6126,21 @@
     "href": "lectures/lec_05_presentation.html#the-debugging-loop",
     "title": "Lecture V - Errors and Debugging",
     "section": "The debugging loop",
-    "text": "The debugging loop\nWhen something is wrong, you don’t guess randomly. You follow a loop:\n\nRead the traceback: it hands you the what and the where\nReproduce the crash: make it happen on demand\nIsolate: narrow down to the smallest failing piece\nFix: change one thing, then run again\n\n\nThe inspector debugs the same way: find the broken thing, make it repeat, corner it, fix it. Panic is not a step."
+    "text": "The debugging loop\nWhen something is wrong, you don’t guess randomly. You follow a loop:\n\nRead the traceback: it hands you the what and the where\nReproduce the crash: make it happen on demand\nIsolate: narrow down to the smallest failing piece\nFix: change one thing, then run again\n\n\nFind the broken thing, make it repeat, corner it, fix it. Panic is not a step."
   },
   {
-    "objectID": "lectures/lec_05_presentation.html#print-the-beginners-flashlight",
-    "href": "lectures/lec_05_presentation.html#print-the-beginners-flashlight",
+    "objectID": "lectures/lec_05_presentation.html#print-the-beginners-help",
+    "href": "lectures/lec_05_presentation.html#print-the-beginners-help",
     "title": "Lecture V - Errors and Debugging",
-    "section": "print(): the beginner’s flashlight",
-    "text": "print(): the beginner’s flashlight\nThe simplest debugger is a well-placed print(). When you can’t see what a value is, shine a light on it:\n\ndef line_total(qty, price):\n    print(\"DEBUG qty =\", qty, \"price =\", price)   # the flashlight\n    return round(qty * price, 2)\n\nprint(line_total(3, 5.50))\n\n\n\nDEBUG qty = 3 price = 5.5\n16.5\n\n\n\nReal debuggers with breakpoints exist and are wonderful, but a print() in the right spot solves most beginner bugs in seconds. Remove it once you’ve seen enough."
+    "section": "print(): the beginner’s help",
+    "text": "print(): the beginner’s help\nThe simplest debugger is a well-placed print(). When you can’t see what a value is, shine a light on it:\n\ndef line_total(qty, price):\n    print(\"DEBUG qty =\", qty, \"price =\", price)   # the help\n    return round(qty * price, 2)\n\nprint(line_total(3, 5.50))\n\n\n\nDEBUG qty = 3 price = 5.5\n16.5\n\n\n\nReal debuggers with breakpoints exist and are wonderful, but a print() in the right spot solves most beginner bugs in seconds. Remove it once you’ve seen enough."
   },
   {
     "objectID": "lectures/lec_05_presentation.html#raise-when-your-code-should-refuse",
     "href": "lectures/lec_05_presentation.html#raise-when-your-code-should-refuse",
     "title": "Lecture V - Errors and Debugging",
     "section": "raise: when your code should refuse",
-    "text": "raise: when your code should refuse\nSometimes your own code should reject bad input on the spot. The inspector’s rule is non-negotiable: every price ≥ 0. raise throws an error deliberately:\n\ndef charge(amount):\n    if amount &lt; 0:\n        raise ValueError(\"price cannot be negative\")\n    return amount\n\ntry:\n    charge(-4.50)                  # your code refuses it...\nexcept ValueError as e:\n    print(\"refused:\", e)           # ...on your terms\n\n\n\nrefused: price cannot be negative\n\n\n\nA bad value stops here, at the door, instead of poisoning the books three screens later."
+    "text": "raise: when your code should refuse\nSometimes your own code should reject bad input on the spot. The inspector’s rule is non-negotiable: every price ≥ 0. raise throws an error deliberately:\n\ndef charge(amount):\n    if amount &lt; 0:\n        raise ValueError(\"price cannot be negative\")\n    return amount\n\ntry:\n    charge(-4.50)                  # your code refuses it...\nexcept ValueError as e:\n    print(\"refused:\", e)           # ...on your terms\n\n\n\nrefused: price cannot be negative\n\n\n\nA bad value stops here, instead of poisoning the program three screens later."
   },
   {
     "objectID": "lectures/lec_05_presentation.html#assert-a-tripwire-for-invariants",
