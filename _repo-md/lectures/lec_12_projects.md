@@ -14,7 +14,7 @@ format:
 
 ## Launch week
 
-One week to Demo Day. The first demos happen **today**, the rest in Session XIII, and the order comes out of a hat. The hat is Python.
+Demo season opens **today**: the first pairs present here, the rest in Session XIII. The order comes out of a hat. The hat is Python.
 
 . . .
 
@@ -40,6 +40,7 @@ Before anyone presents: twenty minutes on making your agent stop repeating the s
 - Rules apply <span class="highlight">always</span>. A skill loads only when the task matches its description, so context stays lean until the moment it is needed
 - Example: a `verify` skill for your project: read the diff, run it, test it on a case where you know the answer, report what you checked
 - In your stack: `.vibe/skills/verify/SKILL.md` in the repo. Vibe loads it in the terminal and inside Zed's agent panel, same engine either way
+- Vibe follows an open spec, so skills you write here stay portable to other agents that adopt it
 
 ## Anatomy, briefly
 

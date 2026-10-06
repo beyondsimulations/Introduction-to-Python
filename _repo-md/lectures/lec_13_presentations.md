@@ -14,7 +14,7 @@ format:
 
 ## The investor is in the room
 
-Five weeks ago she stood at a whiteboard and asked why everything here was built from scratch. Today the answer is on your screens: built by you, with the standard library, pandas, plots, git, and an agent you learned to supervise.
+Back in Session VI she stood at a whiteboard and asked why everything here was built from scratch. Today the answer is on your screens: built by you, with the standard library, pandas, plots, git, and an agent you learned to supervise.
 
 . . .
 
@@ -58,7 +58,7 @@ Same rules as last week: **10 minutes** presenting, **5 minutes** of questions, 
 - Find a way to **apply it at work**: the repetitive task nobody wants to do by hand
 - **[Advent of Code](https://adventofcode.com/)**: free, ad-free programming puzzles, one a day from **December 1st**. A genuinely fun way to keep the muscle warm.
 
-# <span class="flow">Thank You</span>
+# <span class="flow">Thank you</span>
 
 - We covered the basics of Python: from a first `print` to a real project on your own machine
 - You debugged, you verified AI, you shipped real numbers
