@@ -78,12 +78,12 @@ Let's get you kitted out.
 
 ## The brief
 
-Over the next weeks you build **one real project** and present it in the final session.
+Over the next weeks you build **one real project** and present it in the final sessions.
 
 - Work in **pairs**: solo is fine if the numbers don't come out even
 - **Deliverable:** a **GitHub repository link**, submitted on Moodle
 - The repo's `README.md` carries a short **AI-disclosure section**: which tools you used, what for, and what you **verified yourself**
-- You **present in Session XIII**: 10 minutes, plus 5 minutes for questions
+- Demos run across **Sessions XII and XIII**: 10 minutes, plus 5 minutes for questions
 
 . . .
 
@@ -356,7 +356,7 @@ git push
 
 . . .
 
-Reload the repo page on github.com: `main.py` is there. That's the loop you'll repeat all project long: **edit → commit → push**. Pull is the other direction; you'll see it in a minute.
+Reload the repo page on github.com: `main.py` is there. That's the commit cycle you'll repeat all project long: **edit → commit → push**. Pull is the other direction; you'll see it in a minute.
 
 ## The real project repo: owner only
 

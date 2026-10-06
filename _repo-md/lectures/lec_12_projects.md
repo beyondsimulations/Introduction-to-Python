@@ -18,7 +18,7 @@ Demo season opens **today**: the first pairs present here, the rest in Session X
 
 . . .
 
-Before anyone presents: twenty minutes on making your agent stop repeating the same mistakes.
+Before anyone presents: ten minutes on making your agent stop repeating the same mistakes.
 
 # <span class="flow">Teach Your Agent</span>
 
@@ -101,7 +101,7 @@ Plain markdown you own, at `.vibe/skills/verify/SKILL.md`, versioned with the pr
 
 - Rules in `AGENTS.md` for the <span class="highlight">always</span> stuff, skills for the on-demand stuff, both plain markdown you own
 - The fresh-clone test is the cheapest bug you will ever catch
-- A demo is the thing running, the history, and the honest disclosure
+- A demo is the thing running, the history, and the disclosure
 
 . . .
 

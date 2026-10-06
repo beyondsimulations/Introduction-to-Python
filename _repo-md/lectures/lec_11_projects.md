@@ -38,7 +38,7 @@ Until then, the shop rule stands: pull before you start, push when you stop, and
 
 - Session VI: the model picks a <span class="highlight">likely</span> next token, never *the* next token
 - A watermark is that choice, steered on purpose: green wins a little more often than chance
-- Same sampling, one hidden thumb on the scale
+- Same next-token choice, one hidden thumb on the scale
 
 ## Who can actually detect it
 

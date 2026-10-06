@@ -50,15 +50,17 @@ Same rules as last week: **10 minutes** presenting, **5 minutes** of questions, 
 > - What will an entry-level logistics analyst do in 2030, when AI drafts the first version of everything?
 > - If AI writes most junior code, where do the senior people come from?
 
-# <span class="flow">Keep Programming</span>
+# <span class="flow">Send-off</span>
 
-## The skill fades if it sits idle
+## Keep programming
+
+The skill fades if it sits idle. A few ways to keep it alive:
 
 - Use Python in your **thesis**: data cleaning, analysis, plots you can defend
 - Find a way to **apply it at work**: the repetitive task nobody wants to do by hand
 - **[Advent of Code](https://adventofcode.com/)**: free, ad-free programming puzzles, one a day from **December 1st**. A genuinely fun way to keep the muscle warm.
 
-# <span class="flow">Thank you</span>
+## Thank you
 
 - We covered the basics of Python: from a first `print` to a real project on your own machine
 - You debugged, you verified AI, you shipped real numbers

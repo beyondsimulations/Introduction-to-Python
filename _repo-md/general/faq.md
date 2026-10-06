@@ -52,7 +52,7 @@ On each tutorial page, as a read-only solutions notebook, published after the se
 
 ### How does the final project work?
 
-Pairs are formed in Session X, in class (solo if the numbers don't come out even). Each pair works in one private GitHub repository, submits its link on Moodle before the presentation session, and presents in Session XIII: 10 minutes plus 5 minutes of questions. Details and the exact date are on Moodle and in the Session X deck.
+Pairs are formed in Session X, in class (solo if the numbers don't come out even). Each pair works in one private GitHub repository, submits its link on Moodle before the presentation session, and presents in the final sessions: the first demos happen in Session XII, the rest in Session XIII, 10 minutes plus 5 minutes of questions. Details and the exact date are on Moodle and in the Session X deck.
 
 ### When can I ask questions?
 
