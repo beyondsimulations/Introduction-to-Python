@@ -256,15 +256,15 @@ When something is wrong, you don't guess randomly. You follow a loop:
 
 . . .
 
-The inspector debugs the same way: find the broken thing, make it repeat, corner it, fix it. Panic is not a step.
+Find the broken thing, make it repeat, corner it, fix it. Panic is not a step.
 
-## `print()`: the beginner's flashlight
+## `print()`: the beginner's help
 
 The simplest debugger is a well-placed `print()`. When you can't see what a value *is*, shine a light on it:
 
 ``` python
 def line_total(qty, price):
-    print("DEBUG qty =", qty, "price =", price)   # the flashlight
+    print("DEBUG qty =", qty, "price =", price)   # the help
     return round(qty * price, 2)
 
 print(line_total(3, 5.50))
@@ -297,7 +297,7 @@ except ValueError as e:
 
 . . .
 
-A bad value stops *here*, at the door, instead of poisoning the books three screens later.
+A bad value stops *here*, instead of poisoning the program three screens later.
 
 ## `assert`: a tripwire for invariants
 
