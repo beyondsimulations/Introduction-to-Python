@@ -582,21 +582,6 @@ Scan the QR or type the link:
 
 **Any questions?** Let me know!
 
-# [To the Lab]{.flow} {.title}
-
-## After the break: the lab
-
-- Head to the lab notebook: [Episode 7: The Numbers Deck](../tutorials/tut_07_scientific.qmd)
-- You'll turn the order log into arrays, add VAT to a whole price column at once, mask out the late deliveries to count and average them, and collapse a days-by-zones grid to find the winning zone
-- AI is allowed, so try the chatbot, and keep your one-line disclosure note on the submission
-- It runs entirely in your browser: no setup, just click and code
-
-. . .
-
-:::{.callout-important}
-**Download your `.py` before you leave.** Closing the tab without downloading loses your work.
-:::
-
 # [Wrap-up]{.flow} {.title}
 
 ## Three things to remember
@@ -609,6 +594,84 @@ Scan the QR or type the link:
 
 ::: {.callout-note}
 **Next episode** starts with **Checkpoint 4**: 40 minutes, AI allowed, everything from Episodes 6-7. Then the investor opens a data room, and Tobi lets an AI write his pandas: the arrays get column names, and eighty orders become a table you can query.
+:::
+
+# [Leaving the Browser]{.flow} {.title}
+
+## From a browser tab to your machine
+
+For seven sessions everything ran in a browser tab. From Session VIII the labs run on **your own laptop**, with three free tools:
+
+- **uv** installs Python and runs your scripts
+- **Zed** is the editor you write code in
+- **Mistral Vibe** is the AI agent inside Zed
+
+. . .
+
+We install all three **now, together**. Today's lab starts for you once your setup passes the check.
+
+## Step 1: uv and your course folder
+
+Follow the [uv guide](../general/uv.qmd) down to *Run the starter script*. It installs uv and Python, and creates the folder every lab from Session VIII lives in:
+
+```bash
+uv init --no-package python-labs
+cd python-labs
+```
+
+Then add the two packages those labs need:
+
+```bash
+uv add pandas matplotlib
+```
+
+## Step 2: Zed and Mistral Vibe
+
+Follow *AI inside Zed* on the [AI Tools page](../general/ai-tools.qmd):
+
+1. Install **Zed** from [zed.dev](https://zed.dev) and open it once
+2. In a terminal: `uv tool install mistral-vibe`, then run `vibe` and sign in with your Mistral account from last session
+3. In Zed's command palette (`Cmd/Ctrl+Shift+P`): **`zed: acp registry`**, then install **Mistral Vibe**
+4. **File → Open Folder** and pick `python-labs`
+
+. . .
+
+:::{.callout-tip}
+**`vibe` not found?** Run `uv tool update-shell`, then close and reopen the terminal.
+:::
+
+## The check before the lab
+
+In Zed, with `python-labs` open, open the terminal (`` Ctrl+` ``) and run:
+
+```bash
+uv run python -c "import pandas, matplotlib; print('ready')"
+```
+
+- The terminal prints `ready`
+- In the agent panel (the sparkle icon, bottom right), **Mistral Vibe** answers: *What does `main.py` do?*
+
+Show me both, then open the lab.
+
+. . .
+
+:::{.callout-important}
+**Stuck?** Raise your hand early. If your laptop cannot run Zed at all, tell me: you pair with a neighbour in Sessions VIII and IX.
+:::
+
+# [To the Lab]{.flow} {.title}
+
+## After the check: the lab
+
+- Head to the lab notebook: [Episode 7: The Numbers Deck](../tutorials/tut_07_scientific.qmd)
+- You'll count and average the critical deliveries with masks, fix two of Tobi's numbers, and find the winning zone in the days-by-zones grid
+- AI is allowed, so try the chatbot, and keep your one-line disclosure note on the submission
+- It still runs in your browser; unfinished parts are homework before **Checkpoint 4**
+
+. . .
+
+:::{.callout-important}
+**Download your `.py` before you leave.** Closing the tab without downloading loses your work. **Next session, bring this laptop:** from Episode 8 the labs run in Zed.
 :::
 
 # [Literature]{.flow} {.title}

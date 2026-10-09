@@ -160,6 +160,10 @@ Exception, Session X follows the Plan-4 kickoff shape instead (CP5 opener →
 episode → project kickoff → toolchain → git → send-off; no QR exercises or lab
 handoff by design, and no tut_10/nb_10, see
 docs/superpowers/specs/2026-07-12-part3-plan4-design.md).
+Exception, Session VII (from the 2026 run): the wrap-up comes right after the
+last QR exercise, then the `Leaving the Browser` section (install uv, Zed and
+Mistral Vibe in class, the 30-second check), and only then the lab handoff,
+because students show a working setup before they start the lab.
 Sessions XI-XIII follow lean work-session shapes: no warm-up, no QR exercises,
 no checkpoint, no lab handoff. XI and XII each carry one short content flow
 plus a work menu/checklist and wrap-up; XIII is presentations plus the moved

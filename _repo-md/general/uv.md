@@ -94,11 +94,11 @@ Expected output starts with:
 Pick a folder where you keep course work. **If you do not have one, make sure to create one!** In the terminal, move into that folder (`cd` followed by its path, or drag the folder onto the terminal window) and run:
 
 ``` bash
-uv init --no-package my-first-project
-cd my-first-project
+uv init --no-package python-labs
+cd python-labs
 ```
 
-The first line creates a new folder named `my-first-project` (you can name it anything). The second line moves you into that folder. In Session X you will instead run `uv init --no-package` *inside* a folder cloned from GitHub; same command, no name.
+The first line creates a new folder named `python-labs`. Keep that name: from Session VIII the labs live in this folder. The second line moves you into that folder. In Session X you will instead run `uv init --no-package` *inside* a folder cloned from GitHub; same command, no name.
 
 `uv init --no-package` creates:
 - `main.py` (starter script)
@@ -125,7 +125,7 @@ uv run python main.py
 
 You should see something like:
 
-    Hello from my-first-project!
+    Hello from python-labs!
 
 (If you want, you can open `main.py` and change the message, then re-run.)
 
@@ -133,7 +133,7 @@ You should see something like:
 
 ``` python
 def main():
-    print("Hello from my-first-project!")
+    print("Hello from python-labs!")
 
 
 if __name__ == "__main__":
@@ -177,18 +177,18 @@ Inside your project folder, create a `.zed/` directory and add a file called `ta
 >
 > You can also bind the task to a keyboard shortcut. Open **Zed → Settings → Key Bindings** and add an entry for `"task: spawn"` to make it even faster.
 
-## Adding packages (later in the course)
+## Adding packages
 
-If/when you need a package (example: `pandas`):
+The labs from Session VIII need two packages. Inside `python-labs`, run:
 
 ``` bash
-uv add pandas
+uv add pandas matplotlib
 ```
 
-If you added the wrong one:
+If you added the wrong one (example: `numpi`, a typo):
 
 ``` bash
-uv remove pandas
+uv remove numpi
 ```
 
 If your `pyproject.toml` changed (e.g. you pulled code from someone else):

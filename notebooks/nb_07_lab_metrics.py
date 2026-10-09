@@ -44,9 +44,22 @@ def _(mo):
 
 @app.cell(hide_code=True)
 def _(mo):
+    mo.callout(
+        mo.md(
+            "**First the install.** Before you start this lab, finish the Zed "
+            "install from the lecture and show your lecturer that it works. Then "
+            "come back to this tab."
+        ),
+        kind="warn",
+    )
+    return
+
+
+@app.cell(hide_code=True)
+def _(mo):
     mo.md(
         r"""
-    **Core exercises: 10 + 1 quiz (+ 1 trace).** Done early? You're free to go. Not done when the session ends? The rest is homework.
+    **Core exercises: 8 + 1 quiz (+ 1 trace, + 3 bonus).** Done early? You're free to go. Not done when the session ends? The rest is homework, and the next session opens with Checkpoint 4, so finish it before then.
 
     The investor liked last week's numbers. Now she wants a **one-page
     metrics deck**: totals, a per-zone breakdown, the busiest day, the strongest
@@ -61,6 +74,20 @@ def _(mo):
     that does math: multiply the whole thing at once, compare it to a number to
     get a filter, stack it into a grid and total it by row or by column. That's
     the entire deck, computed in a few lines.
+
+    > **As in the last lab: no hint boxes.** An exercise says what the result
+    > has to be. Which tool gets you there is yours to work out, with the worked
+    > examples, the lecture slides and your AI assistant.
+
+    > **The marimo rule again:** AI answers usually start with
+    > `import numpy as np`. The first worked example below imports numpy
+    > already, and a name can only be defined in **one** cell, so delete that
+    > line from the answer.
+
+    > **New this week: plain Python numbers.** NumPy hands back its own number
+    > types (`np.int64`, `np.float64`). The checks in this lab want plain Python
+    > numbers, an `int` or a `float`, and so do the checkpoints. Convert a
+    > result before you store it.
     """
     )
     return
@@ -83,6 +110,42 @@ def _():
         return f"\n\n**Your result:** `{value}`"
 
     return (show_result,)
+
+
+@app.cell(hide_code=True)
+def _(np):
+    # Tells the checks what kind of answer they are looking at.
+    def kind_of(value):
+        if value is None:
+            return "none"
+        if isinstance(value, np.generic):
+            return "numpy"
+        if isinstance(value, bool):
+            return "bool"
+        if isinstance(value, int):
+            return "int"
+        if isinstance(value, float):
+            return "float"
+        if isinstance(value, str):
+            return "str"
+        if isinstance(value, (list, tuple, np.ndarray)):
+            return "array"
+        return "other"
+
+    return (kind_of,)
+
+
+@app.cell(hide_code=True)
+def _():
+    # The verdict for a NumPy number where a plain Python number is expected.
+    def numpy_note(label, name, value):
+        return (
+            f"Wrong ({label}): `{name}` is a NumPy number (`{type(value).__name__}`), "
+            "not a plain Python number. The checks here and the checkpoints want "
+            "plain numbers, so convert it before you store it."
+        )
+
+    return (numpy_note,)
 
 
 @app.cell(hide_code=True)
@@ -114,32 +177,33 @@ def _(mo, startup_name_input):
 
 
 # ─────────────────────────────────────────────────────────────────────────
-# SECTION 1: Arrays: a list that does math
+# SECTION 1: Asking questions of an array
 # ─────────────────────────────────────────────────────────────────────────
 @app.cell(hide_code=True)
 def _(mo):
     mo.md(
         r"""
-    ## Section 1: Arrays: a list that does math
+    ## Section 1: Asking questions of an array
 
-    A **NumPy array** looks like a list, but it's built for numbers. You make one
-    from a list with `np.array([...])`, and it comes with handy facts about
-    itself:
+    A **NumPy array** looks like a list, but it does math on all its numbers at
+    once. Compare an array to a number and you get a whole array of
+    `True`/`False`, one per element. That array is a **mask**, and it is how you
+    count and filter without a loop:
 
     ```python
     import numpy as np
-    prices = np.array([3, 8, 5, 9])
-    prices.size    # 4: how many elements
-    prices.shape   # (4,): its dimensions
-    prices.dtype   # int64: the type of every element (int32 in the browser)
+    speeds = np.array([5, 12, 3, 20])
+    speeds * 2                     # array([10, 24,  6, 40]): every element at once
+    speeds > 10                    # array([False,  True, False,  True]): the mask
+    (speeds > 10).sum()            # 2: True counts as 1, so .sum() counts the hits
+    (speeds > 10).mean()           # 0.5: the share of hits
+    speeds[speeds > 10]            # array([12, 20]): keep only the matching values
+    (speeds > 4) & (speeds < 15)   # two conditions: & between two masks, each in parentheses
     ```
 
-    Two more moves you'll use constantly:
-
-    - **Vectorized math**: `prices * 2` multiplies *every* element at once, no
-      loop. That's the whole point of an array.
-    - **`np.arange(start, stop)`**: builds an array of whole numbers from `start`
-      up to *but not including* `stop`, like `range`, but an array you can total.
+    > One marimo habit for this lab: array math and indexing are easy to get
+    > slightly wrong, and a **red error pauses everything below it**, including
+    > the progress box. Nothing is lost; fix the red cell and it all comes back.
 
     Read and run the worked example, then answer for real.
     """
@@ -151,9 +215,10 @@ def _(mo):
 def _():
     # Worked example (read + run this). It also imports numpy as np for everything below
     import numpy as np
-    _demo = np.array([3, 8, 5, 9])
-    print("array:", _demo)
-    print(".size:", _demo.size, " .shape:", _demo.shape, " .dtype:", _demo.dtype)
+    _demo = np.array([5, 12, 3, 20])
+    print("mask:", _demo > 10)
+    print("count over 10:", (_demo > 10).sum())
+    print("the values over 10:", _demo[_demo > 10])
     return (np,)
 
 
@@ -161,302 +226,23 @@ def _():
 def _(mo):
     mo.md(
         r"""
-    ### Exercise 1.1 (core): how many orders?
+    ### Exercise 1.1 (core): the critical deliveries
 
-    Here are the individual order values (in euros) from one busy week:
-
-    ```python
-    orders_list = [8.5, 11.0, 14.5, 7.5, 22.5, 16.0, 19.5, 13.5, 25.0, 10.5, 27.0, 21.5]
-    ```
-
-    First turn that Python list into a NumPy array called `orders_week` (with
-    `np.array(...)`). Then, instead of counting by hand, ask the array how many
-    elements it holds and store that count in `n_orders_ex11`. Use
-    `int(orders_week.size)` so it's a plain whole number.
-    """
-    )
-    return
-
-
-@app.cell
-def _():
-    orders_list = [8.5, 11.0, 14.5, 7.5, 22.5, 16.0, 19.5, 13.5, 25.0, 10.5, 27.0, 21.5]
-    return (orders_list,)
-
-
-@app.cell
-def _():
-    # YOUR CODE BELOW: turn orders_list into a NumPy array with np.array(...)
-    orders_week = None
-    return (orders_week,)
-
-
-@app.cell
-def _():
-    # YOUR CODE BELOW: the number of orders, as a plain int via int(orders_week.size)
-    n_orders_ex11 = None
-    return (n_orders_ex11,)
-
-
-@app.cell(hide_code=True)
-def _(mo, n_orders_ex11, np, show_result):
-    if n_orders_ex11 is None:
-        ex11_ok = False
-        _msg = "Not attempted (Exercise 1.1). Assign it to `n_orders_ex11` (a `print` alone doesn't count) and run the cell."
-        _preview = ""
-    else:
-        _preview = show_result(n_orders_ex11)
-        try:
-            _n = int(n_orders_ex11)
-        except (TypeError, ValueError):
-            _n = None
-        if _n is None:
-            ex11_ok = False
-            if np.ndim(n_orders_ex11) > 0:
-                _msg = "Wrong (Exercise 1.1): that's still a whole array. `.size` is a single number. Wrap `int(...)` around `orders_week.size`."
-            else:
-                _msg = "Wrong (Exercise 1.1): this should be a whole **number**: the order count from `int(orders_week.size)`."
-        elif _n == 12:
-            ex11_ok = True
-            _msg = "Correct (Exercise 1.1): **12** orders. `.size` counts the elements for you, so nobody tallies by hand."
-        else:
-            ex11_ok = False
-            _msg = f"Wrong (Exercise 1.1): expected 12, got {_n}. Was `orders_week` built from the *whole* list? `.size` should report 12."
-    mo.callout(mo.md(_msg + _preview), kind="success" if ex11_ok else "warn")
-    return (ex11_ok,)
-
-
-@app.cell(hide_code=True)
-def _(mo):
-    mo.accordion(
-        {
-            "Hint 1 (a nudge)": "Two steps in two cells: first `orders_week = np.array(orders_list)`, then ask that array for its `.size` and wrap `int(...)` around it.",
-            "Hint 2 (the structure)": "orders_week = np.array(___)\nn_orders_ex11 = int(orders_week.___) (put the list in the first blank, and `size` in the second)",
-        }
-    )
-    return
-
-
-@app.cell(hide_code=True)
-def _(mo):
-    mo.md(
-        r"""
-    ### Exercise 1.2 (core): happy hour, all at once
-
-    Happy hour knocks **10% off** every price. Here are four menu prices:
-
-    ```python
-    hh_prices = np.array([6.0, 9.0, 12.0, 18.0])
-    ```
-
-    Taking 10% off means keeping 90%, so multiply by `0.9`. Do it to the **whole
-    array in one expression** (no loop, no indexing) and store the result in
-    `sale_ex12`.
-    """
-    )
-    return
-
-
-@app.cell
-def _(np):
-    # Worked example (read + run this): one multiply touches every element
-    _demo = np.array([10.0, 20.0, 50.0])
-    print("half price:", _demo * 0.5)   # [ 5. 10. 25.]
-    return
-
-
-@app.cell
-def _(np):
-    hh_prices = np.array([6.0, 9.0, 12.0, 18.0])
-    return (hh_prices,)
-
-
-@app.cell
-def _():
-    # YOUR CODE BELOW: 10% off every price, in ONE expression (keep 90%)
-    sale_ex12 = None
-    return (sale_ex12,)
-
-
-@app.cell(hide_code=True)
-def _(mo, np, sale_ex12, show_result):
-    _expected = [5.4, 8.1, 10.8, 16.2]
-    if sale_ex12 is None:
-        ex12_ok = False
-        _msg = "Not attempted (Exercise 1.2). Assign it to `sale_ex12` (a `print` alone doesn't count) and run the cell."
-        _preview = ""
-    else:
-        _preview = show_result(sale_ex12)
-        try:
-            _arr = np.asarray(sale_ex12, dtype=float)
-        except (TypeError, ValueError):
-            _arr = None
-        if _arr is None:
-            ex12_ok = False
-            _msg = "Wrong (Exercise 1.2): this should be an **array of prices**. Multiply the whole `hh_prices` array by `0.9`."
-        elif _arr.shape != (4,):
-            ex12_ok = False
-            _msg = "Wrong (Exercise 1.2): expected four sale prices, one per item. Multiply the *whole* `hh_prices` array by `0.9`, without a loop or indexing."
-        elif np.allclose(np.round(_arr, 2), _expected):
-            ex12_ok = True
-            _msg = "Correct (Exercise 1.2): 10% off, all four at once: `[5.4, 8.1, 10.8, 16.2]`. That's vectorization: one expression reaches every element."
-        else:
-            ex12_ok = False
-            _msg = "Wrong (Exercise 1.2): not the 10%-off prices. Happy hour keeps 90% of each: `hh_prices * 0.9`."
-    mo.callout(mo.md(_msg + _preview), kind="success" if ex12_ok else "warn")
-    return (ex12_ok,)
-
-
-@app.cell(hide_code=True)
-def _(mo):
-    mo.accordion(
-        {
-            "Hint 1 (a nudge)": "You don't touch elements one at a time. Multiply the entire `hh_prices` array by a single number and NumPy applies it everywhere.",
-            "Hint 2 (the structure)": "sale_ex12 = hh_prices * ___ (the blank is the fraction of the price you keep after 10% off)",
-        }
-    )
-    return
-
-
-@app.cell(hide_code=True)
-def _(mo):
-    mo.md(
-        r"""
-    ### Exercise 1.3 (core): the campaign calendar
-
-    The flyer campaign runs for **14 days**, numbered 1 through 14. Build those day
-    numbers with `np.arange`. Remember it stops *before* the second number, so
-    reaching 14 means going up to **15**. Then total them (the array's `.sum()`)
-    and store that total, as a plain `int`, in `days_sum_ex13`.
-
-    First build the array `days = np.arange(1, 15)`, then compute the sum.
-    """
-    )
-    return
-
-
-@app.cell
-def _(np):
-    # Worked example (read + run this): arange stops BEFORE the second number
-    _demo = np.arange(2, 7)
-    print("np.arange(2, 7):", _demo, " sum:", _demo.sum())  # [2 3 4 5 6] sum: 20
-    return
-
-
-@app.cell
-def _():
-    # YOUR CODE BELOW: the 14 campaign days, 1 through 14, with np.arange
-    days = None
-    return (days,)
-
-
-@app.cell
-def _():
-    # YOUR CODE BELOW: the total of all the day numbers, as a plain int
-    days_sum_ex13 = None
-    return (days_sum_ex13,)
-
-
-@app.cell(hide_code=True)
-def _(days_sum_ex13, mo, np, show_result):
-    if days_sum_ex13 is None:
-        ex13_ok = False
-        _msg = "Not attempted (Exercise 1.3). Assign it to `days_sum_ex13` (a `print` alone doesn't count) and run the cell."
-        _preview = ""
-    else:
-        _preview = show_result(days_sum_ex13)
-        try:
-            _s = int(days_sum_ex13)
-        except (TypeError, ValueError):
-            _s = None
-        if _s is None:
-            ex13_ok = False
-            if np.ndim(days_sum_ex13) > 0:
-                _msg = "Wrong (Exercise 1.3): that's still an array. `.sum()` collapses it to one number. Wrap `int(...)` around `days.sum()`."
-            else:
-                _msg = "Wrong (Exercise 1.3): this should be a whole **number**, the total of the day numbers."
-        elif _s == 105:
-            ex13_ok = True
-            _msg = "Correct (Exercise 1.3): **105**: the days 1 through 14 add up. `np.arange(1, 15)` stops before 15, so it lands exactly on 14."
-        elif _s == 120:
-            ex13_ok = False
-            _msg = "Wrong (Exercise 1.3): 120 means you summed 1 through 15. `np.arange` stops *before* its second number, so `np.arange(1, 15)` gives 1…14, not 1…15."
-        else:
-            ex13_ok = False
-            _msg = "Wrong (Exercise 1.3): not the expected total. Build `np.arange(1, 15)` (days 1 through 14) and take its `.sum()`."
-    mo.callout(mo.md(_msg + _preview), kind="success" if ex13_ok else "warn")
-    return (ex13_ok,)
-
-
-@app.cell(hide_code=True)
-def _(mo):
-    mo.accordion(
-        {
-            "Hint 1 (a nudge)": "`np.arange(1, 15)` builds 1 through 14 (it stops before 15). Store that in `days`, then ask the array for its `.sum()` and wrap `int(...)` around it.",
-            "Hint 2 (the structure)": "days = np.arange(1, ___)\ndays_sum_ex13 = int(days.___()) (the blank stop is one past the last day; the method totals the array)",
-        }
-    )
-    return
-
-
-# ─────────────────────────────────────────────────────────────────────────
-# SECTION 2: Masks: counting and filtering without a loop
-# ─────────────────────────────────────────────────────────────────────────
-@app.cell(hide_code=True)
-def _(mo):
-    mo.md(
-        r"""
-    ## Section 2: Masks: counting and filtering without a loop
-
-    Compare an array to a number and you don't get one `True`/`False`. You get a
-    whole array of them, one per element. That boolean array is a **mask**, and
-    it's how you count and filter without writing a loop:
-
-    ```python
-    speeds = np.array([5, 12, 3, 20])
-    speeds > 10            # array([False,  True, False,  True])
-    (speeds > 10).sum()    # 2: True counts as 1, so .sum() counts the hits
-    speeds[speeds > 10]    # array([12, 20]): keep only the matching values
-    ```
-
-    So `(array > n).sum()` **counts** how many pass, and `array[array > n]`
-    **keeps** the ones that do, ready for `.mean()` or `.sum()`.
-
-    > One marimo habit for this section: array math and indexing are easy to get
-    > slightly wrong, and a **red error pauses everything below it**, including
-    > the progress box. Nothing is lost; fix the red cell and it all comes back.
-
-    Read and run the worked example, then answer for real.
-    """
-    )
-    return
-
-
-@app.cell
-def _(np):
-    # Worked example (read + run this): mask, count, filter
-    _demo = np.array([5, 12, 3, 20])
-    print("mask:", _demo > 10)
-    print("count over 10:", (_demo > 10).sum())
-    print("the values over 10:", _demo[_demo > 10])
-    return
-
-
-@app.cell(hide_code=True)
-def _(mo):
-    mo.md(
-        r"""
-    ### Exercise 2.1 (core): count the critical runs
-
-    Here are ten delivery times, in minutes:
+    The first box on the deck is a risk. Here are ten delivery times, in
+    minutes:
 
     ```python
     delivery_times = np.array([24, 39, 55, 17, 31, 46, 20, 60, 35, 42])
     ```
 
-    Anything **over 50 minutes** is "critical" and goes on the deck as a risk.
-    Count how many deliveries were critical and store that whole number in
-    `critical_count_ex21` (use `int(...)` so it's a plain count).
+    A delivery that takes **more than 50 minutes** is "critical". Store two
+    numbers:
+
+    - `critical_count_ex11`: how many deliveries were critical,
+    - `critical_mean_ex11`: the average length, in minutes, of just the
+      critical ones.
+
+    Both as plain Python numbers: the count an `int`, the average a `float`.
     """
     )
     return
@@ -471,62 +257,82 @@ def _(np):
 @app.cell
 def _():
     # YOUR CODE BELOW: how many delivery_times are over 50, as a plain int
-    critical_count_ex21 = None
-    return (critical_count_ex21,)
+    critical_count_ex11 = None
+    return (critical_count_ex11,)
+
+
+@app.cell
+def _():
+    # YOUR CODE BELOW: the average of only the delivery_times over 50, as a plain float
+    critical_mean_ex11 = None
+    return (critical_mean_ex11,)
 
 
 @app.cell(hide_code=True)
-def _(critical_count_ex21, mo, np, show_result):
-    if critical_count_ex21 is None:
-        ex21_ok = False
-        _msg = "Not attempted (Exercise 2.1). Assign it to `critical_count_ex21` (a `print` alone doesn't count) and run the cell."
-        _preview = ""
+def _(critical_count_ex11, critical_mean_ex11, kind_of, mo, numpy_note, show_result):
+    _kc, _km = kind_of(critical_count_ex11), kind_of(critical_mean_ex11)
+    _preview = show_result(critical_count_ex11) + show_result(critical_mean_ex11)
+    if _kc == "none" and _km == "none":
+        ex11_ok = False
+        _msg = "Not attempted (Exercise 1.1). Assign your answers to `critical_count_ex11` and `critical_mean_ex11` (a `print` alone doesn't count) and run the cells."
+    elif _kc == "none" or _km == "none":
+        ex11_ok = False
+        _msg = "Wrong (Exercise 1.1): both numbers are needed. Fill in `critical_count_ex11` *and* `critical_mean_ex11`."
+    elif _kc == "numpy":
+        ex11_ok = False
+        _msg = numpy_note("Exercise 1.1", "critical_count_ex11", critical_count_ex11)
+    elif _km == "numpy":
+        ex11_ok = False
+        _msg = numpy_note("Exercise 1.1", "critical_mean_ex11", critical_mean_ex11)
+    elif _kc == "array" or _km == "array":
+        ex11_ok = False
+        _msg = "Wrong (Exercise 1.1): one of your answers is still a whole array. The deck needs **one number** each: a count and an average."
+    elif _kc != "int" or _km not in ("int", "float"):
+        ex11_ok = False
+        _msg = "Wrong (Exercise 1.1): the count has to be a plain `int` and the average a plain `float`."
+    elif critical_count_ex11 == 2 and round(critical_mean_ex11, 2) == 57.5:
+        ex11_ok = True
+        _msg = "Correct (Exercise 1.1): **2** critical deliveries, averaging **57.5** minutes. The mask picked them out, and no loop was needed."
+    elif round(critical_mean_ex11, 2) == 0.2:
+        ex11_ok = False
+        _msg = "Wrong (Exercise 1.1): an average of 0.2 minutes? Do the couriers teleport? 0.2 is the **share** of critical deliveries. The deck wants their average **length**, in minutes."
+    elif round(critical_mean_ex11, 2) == 36.9:
+        ex11_ok = False
+        _msg = "Wrong (Exercise 1.1): 36.9 is the average of **all ten** deliveries. The box asks about the critical ones only."
+    elif critical_count_ex11 == 8:
+        ex11_ok = False
+        _msg = "Wrong (Exercise 1.1): 8 is the number of deliveries that were **not** critical."
+    elif critical_count_ex11 != 2:
+        ex11_ok = False
+        _msg = "Wrong (Exercise 1.1): not the number of critical deliveries. Critical means more than 50 minutes."
     else:
-        _preview = show_result(critical_count_ex21)
-        try:
-            _c = int(critical_count_ex21)
-        except (TypeError, ValueError):
-            _c = None
-        if _c is None:
-            ex21_ok = False
-            if np.ndim(critical_count_ex21) > 0:
-                _msg = "Wrong (Exercise 2.1): that's still a True/False array. `.sum()` turns the mask into one number by counting the Trues. Then wrap `int(...)`."
-            else:
-                _msg = "Wrong (Exercise 2.1): this should be a whole **number** of critical deliveries. Start from the mask `delivery_times > 50`."
-        elif _c == 2:
-            ex21_ok = True
-            _msg = "Correct (Exercise 2.1): **2** critical runs (the 55 and the 60). `(delivery_times > 50).sum()` counted them without a loop."
-        else:
-            ex21_ok = False
-            _msg = f"Wrong (Exercise 2.1): expected 2, got {_c}. Count where the times exceed 50: `(delivery_times > 50).sum()`."
-    mo.callout(mo.md(_msg + _preview), kind="success" if ex21_ok else "warn")
-    return (ex21_ok,)
-
-
-@app.cell(hide_code=True)
-def _(mo):
-    mo.accordion(
-        {
-            "Hint 1 (a nudge)": "First make the mask `delivery_times > 50` (a True/False array), then `.sum()` counts the Trues. Wrap the whole thing in `int(...)`.",
-            "Hint 2 (the structure)": "critical_count_ex21 = int((delivery_times > ___).sum()) (the blank is the threshold in minutes)",
-        }
-    )
-    return
+        ex11_ok = False
+        _msg = "Wrong (Exercise 1.1): the count is right, the average is not. It is the average of just the deliveries over 50 minutes."
+    mo.callout(mo.md(_msg + _preview), kind="success" if ex11_ok else "warn")
+    return (ex11_ok,)
 
 
 @app.cell(hide_code=True)
 def _(mo):
     mo.md(
         r"""
-    ### Exercise 2.2 (core): the on-time rate
+    ### Exercise 1.2 (core): the risk report
 
-    One more trick hides in the mask: take its **`.mean()`**. `True` counts as 1
-    and `False` as 0, so a True/False array's `.mean()` is the **share of Trues**:
-    count ÷ total in one call. The investor loves percentages.
+    The investor wants this box for every courier and every limit, so turn it
+    into a function. Write `risk_report_ex12(times, limit)`. `times` is an array
+    of delivery times, `limit` a number of minutes. It returns a **dict** with
+    exactly these keys:
 
-    A delivery is **on time** when it takes **50 minutes or less**. Using the same
-    `delivery_times`, compute the share of deliveries that were on time and store
-    it in `ontime_rate_ex22` as a plain `float` (a number between 0 and 1).
+    - `"count"`: how many deliveries took longer than `limit` (a plain `int`),
+    - `"share"`: that count as a share of all deliveries, between 0 and 1 (a
+      plain `float`),
+    - `"mean"`: the average of just those deliveries (a plain `float`).
+
+    For the ten deliveries above and a limit of 50, the report is
+    `{"count": 2, "share": 0.2, "mean": 57.5}`.
+
+    **One rule for a perfect week:** when no delivery is over the limit, the
+    report says `"mean": 0.0`.
     """
     )
     return
@@ -534,172 +340,118 @@ def _(mo):
 
 @app.cell
 def _():
-    # YOUR CODE BELOW: the share of delivery_times that are 50 or less, as a float
-    ontime_rate_ex22 = None
-    return (ontime_rate_ex22,)
+    def risk_report_ex12(times, limit):
+        # YOUR CODE BELOW: return the dict with the keys "count", "share" and "mean"
+        # for the deliveries over `limit`, all as plain Python numbers
+        return None
+
+    return (risk_report_ex12,)
 
 
 @app.cell(hide_code=True)
-def _(mo, np, ontime_rate_ex22, show_result):
-    if ontime_rate_ex22 is None:
-        ex22_ok = False
-        _msg = "Not attempted (Exercise 2.2). Assign it to `ontime_rate_ex22` (a `print` alone doesn't count) and run the cell."
-        _preview = ""
+def _(kind_of, mo, np, numpy_note, risk_report_ex12):
+    # Reactive check.
+    import warnings as _warnings
+
+    _cases = [
+        (np.array([24, 39, 55, 17, 31, 46, 20, 60, 35, 42]), 50, (2, 0.2, 57.5)),
+        (np.array([12, 44, 31, 28, 36, 19, 52, 30]), 30, (4, 0.5, 40.75)),
+        (np.array([18, 22, 25, 30, 14]), 30, (0, 0.0, 0.0)),
+    ]
+    _keys = ("count", "share", "mean")
+    try:
+        with _warnings.catch_warnings():
+            _warnings.simplefilter("ignore")
+            _got = [risk_report_ex12(_c[0].copy(), _c[1]) for _c in _cases]
+        _err = ""
+    except Exception as _e:
+        _got = None
+        _err = f"{type(_e).__name__}: {_e}"
+    _preview = ""
+    if _got is None:
+        ex12_ok = False
+        _msg = f"Wrong (Exercise 1.2): calling `risk_report_ex12(delivery_times, 50)` raises an error (`{_err}`)."
+    elif all(_v is None for _v in _got):
+        ex12_ok = False
+        _msg = "Not attempted (Exercise 1.2): the function still returns `None`. Use `return`, not `print`, then run the cell."
     else:
-        _preview = show_result(ontime_rate_ex22)
-        try:
-            _r = round(float(ontime_rate_ex22), 2)
-        except (TypeError, ValueError):
-            _r = None
-        if _r is None:
-            ex22_ok = False
-            if np.ndim(ontime_rate_ex22) > 0:
-                _msg = "Wrong (Exercise 2.2): that's still an array, probably the raw mask. `.mean()` collapses it to one number: the share of Trues."
+        _preview = f"\n\n**Your result:** `risk_report_ex12(delivery_times, 50)` gives `{_got[0]}`"
+        if not all(isinstance(_v, dict) for _v in _got):
+            ex12_ok = False
+            _msg = "Wrong (Exercise 1.2): the report has to be a **dict**, like `{\"count\": ..., \"share\": ..., \"mean\": ...}`."
+        elif not all(_k in _v for _v in _got for _k in _keys):
+            ex12_ok = False
+            _missing = ", ".join(f'`"{_k}"`' for _k in _keys if _k not in _got[0])
+            _msg = f"Wrong (Exercise 1.2): the report is missing a key: {_missing or 'check the spelling of all three'}. The keys are `\"count\"`, `\"share\"` and `\"mean\"`, spelled exactly like that."
+        else:
+            _kinds = [[kind_of(_v[_k]) for _k in _keys] for _v in _got]
+            _flat = [_x for _row in _kinds for _x in _row]
+            if "numpy" in _flat:
+                ex12_ok = False
+                _bad = next(_k for _row in _kinds for _k, _x in zip(_keys, _row) if _x == "numpy")
+                _msg = numpy_note("Exercise 1.2", f'"{_bad}"', next(_v[_bad] for _v in _got if kind_of(_v[_bad]) == "numpy"))
+            elif "array" in _flat:
+                ex12_ok = False
+                _msg = "Wrong (Exercise 1.2): one of the three values is still a whole array. Each key holds **one number**."
+            elif "none" in _flat:
+                ex12_ok = False
+                _msg = "Wrong (Exercise 1.2): one of the three values is `None`. Every key needs a number, also in a perfect week: the rule says `\"mean\": 0.0` there."
+            elif not all(_x in ("int", "float") for _x in _flat):
+                ex12_ok = False
+                _msg = "Wrong (Exercise 1.2): all three values have to be numbers."
+            elif any(_v[_k] != _v[_k] for _v in _got for _k in _keys):
+                ex12_ok = False
+                _msg = "Wrong (Exercise 1.2): for a week with **no** delivery over the limit, your report contains `nan` (\"not a number\"). NumPy cannot average an empty selection. The rule for a perfect week says `\"mean\": 0.0`."
+            elif not all(_row[0] == "int" for _row in _kinds):
+                ex12_ok = False
+                _msg = "Wrong (Exercise 1.2): `\"count\"` has to be a plain `int`, a whole number of deliveries."
             else:
-                _msg = "Wrong (Exercise 2.2): this should be a single **number** between 0 and 1: the share of on-time deliveries."
-        elif _r == 0.8:
-            ex22_ok = True
-            _msg = "Correct (Exercise 2.2): **0.8**, or 80% of deliveries on time. A True/False array's `.mean()` is count ÷ total in one call, which is the percentage the investor wants on the deck."
-        elif _r in (2, 8):
-            ex22_ok = False
-            _msg = "Wrong (Exercise 2.2): that's the **count**. The rate is count ÷ total, and `.mean()` on the mask does that division for you."
-        elif _r == 0.2:
-            ex22_ok = False
-            _msg = "Wrong (Exercise 2.2): 0.2 is the **late** share. That mask catches the over-50 times. On-time is 50 minutes *or less*: `delivery_times <= 50`."
-        else:
-            ex22_ok = False
-            _msg = "Wrong (Exercise 2.2): not the expected rate. Take the mean of the on-time mask: `(delivery_times <= 50).mean()`."
-    mo.callout(mo.md(_msg + _preview), kind="success" if ex22_ok else "warn")
-    return (ex22_ok,)
-
-
-@app.cell(hide_code=True)
-def _(mo):
-    mo.accordion(
-        {
-            "Hint 1 (a nudge)": "Build the on-time mask first (50 or less, mind the `<=`), then take its `.mean()`: with Trues worth 1 and Falses worth 0, the mean IS the share. Wrap `float(...)` around it.",
-            "Hint 2 (the structure)": "ontime_rate_ex22 = float((delivery_times <= ___).___()) (the blank threshold matches 2.1; the method turns the mask into a share)",
-        }
-    )
-    return
-
-
-@app.cell(hide_code=True)
-def _(mo):
-    mo.md(
-        r"""
-    ### Exercise 2.3 (core, fix the bug): Tobi's per-zone totals
-
-    Tobi's spreadsheet was really a **grid**: seven days down the side, four zones
-    across the top. As an array it's `week_grid` below: 7 rows, 4 columns.
-
-    A 2-D array totals along an **axis**. `axis=0` runs *down the rows* (giving one
-    total per column); `axis=1` runs *across the columns* (giving one total per
-    row):
-
-    ```python
-    small = np.array([[1, 2, 3],
-                      [4, 5, 6]])
-    small.sum(axis=0)   # array([5, 7, 9]): one total per column (down the rows)
-    small.sum(axis=1)   # array([6, 15]): one total per row (across the columns)
-    ```
-
-    The investor asked for **four zone totals**, one number per zone. Tobi sent
-    her **seven** numbers. Here's the line he ran:
-
-    ```python
-    # Tobi's memo (this is what he ran, not something to run yourself):
-    tobi_totals = week_grid.sum(axis=1)
-    # tobi_totals → [59, 65, 58, 65, 61, 72, 52]   (seven numbers, not four)
-    ```
-
-    Store the *correct* per-zone totals (four numbers, one per zone) in
-    `zone_totals_ex23`.
-    """
-    )
-    return
-
-
-@app.cell
-def _(np):
-    week_grid = np.array(
-        [
-            [20, 12, 18, 9],
-            [25, 15, 14, 11],
-            [18, 20, 12, 8],
-            [22, 14, 16, 13],
-            [19, 18, 10, 14],
-            [21, 16, 20, 15],
-            [16, 14, 10, 12],
-        ]
-    )
-    return (week_grid,)
-
-
-@app.cell
-def _():
-    # YOUR CODE BELOW: the FOUR per-zone totals (one number per zone)
-    zone_totals_ex23 = None
-    return (zone_totals_ex23,)
-
-
-@app.cell(hide_code=True)
-def _(mo, np, show_result, zone_totals_ex23):
-    _expected = [141, 109, 100, 82]
-    if zone_totals_ex23 is None:
-        ex23_ok = False
-        _msg = "Not attempted (Exercise 2.3). Assign it to `zone_totals_ex23` (a `print` alone doesn't count) and run the cell."
-        _preview = ""
-    else:
-        _preview = show_result(zone_totals_ex23)
-        try:
-            _arr = np.asarray(zone_totals_ex23, dtype=float)
-        except (TypeError, ValueError):
-            _arr = None
-        if _arr is None:
-            ex23_ok = False
-            _msg = "Wrong (Exercise 2.3): this should be four zone totals (numbers). Total the grid along one axis."
-        elif _arr.shape == (7,):
-            ex23_ok = False
-            _msg = "Wrong (Exercise 2.3): seven numbers. That's Tobi's bug. You totaled *across the zones* (one number per DAY, `axis=1`). The investor wants one number per ZONE: total *down the days* instead."
-        elif _arr.shape != (4,):
-            ex23_ok = False
-            _msg = "Wrong (Exercise 2.3): expected exactly four zone totals, one per column. Total the grid down its seven days."
-        elif np.allclose(np.round(_arr, 2), _expected):
-            ex23_ok = True
-            _msg = "Correct (Exercise 2.3): `[141, 109, 100, 82]`: four zones, four numbers. Totaling *down the days* (the other axis) is what the investor actually asked for."
-        else:
-            ex23_ok = False
-            _msg = "Wrong (Exercise 2.3): four numbers, but not the expected totals. Sum each column of `week_grid` down its seven days."
-    mo.callout(mo.md(_msg + _preview), kind="success" if ex23_ok else "warn")
-    return (ex23_ok,)
-
-
-@app.cell(hide_code=True)
-def _(mo):
-    mo.accordion(
-        {
-            "Hint 1 (a nudge)": "Tobi summed across each row (a per-day total). You want a per-column total instead, the *other* axis. Which axis runs down the rows?",
-            "Hint 2 (the structure)": "zone_totals_ex23 = week_grid.sum(axis=___) (pick the axis that leaves one number per zone, per column, not per day)",
-        }
-    )
-    return
+                _r = [(_v["count"], round(float(_v["share"]), 2), round(float(_v["mean"]), 2)) for _v in _got]
+                _want = [_c[2] for _c in _cases]
+                if _r == _want:
+                    ex12_ok = True
+                    _msg = "Correct (Exercise 1.2): 2 critical deliveries out of ten, a share of 0.2, averaging 57.5 minutes, and a perfect week reports a mean of 0.0 instead of `nan`. One function for every courier and every limit."
+                elif _r[1][0] == 5 or _r[2][0] == 1:
+                    ex12_ok = False
+                    _msg = "Wrong (Exercise 1.2): a delivery of exactly 30 minutes is not **over** a limit of 30, but your report counts it."
+                elif _r[0][1:] == (57.5, 0.2):
+                    ex12_ok = False
+                    _msg = "Wrong (Exercise 1.2): `\"share\"` and `\"mean\"` are the wrong way round."
+                elif _r[0][1] == 20.0:
+                    ex12_ok = False
+                    _msg = "Wrong (Exercise 1.2): the share should be a number between 0 and 1. 2 of 10 deliveries is 0.2."
+                elif _r[0][2] == 36.9:
+                    ex12_ok = False
+                    _msg = "Wrong (Exercise 1.2): 36.9 is the average of **all** deliveries. `\"mean\"` is the average of just the ones over the limit."
+                elif [_x[0] for _x in _r] != [_x[0] for _x in _want]:
+                    ex12_ok = False
+                    _msg = "Wrong (Exercise 1.2): `\"count\"` is not right. For the ten deliveries and a limit of 50 it is 2."
+                elif [_x[1] for _x in _r] != [_x[1] for _x in _want]:
+                    ex12_ok = False
+                    _msg = "Wrong (Exercise 1.2): `\"count\"` is right, `\"share\"` is not. It is the count divided by the number of all deliveries: 0.2 for the ten above."
+                elif _r[2][2] != 0.0:
+                    ex12_ok = False
+                    _msg = "Wrong (Exercise 1.2): right for the ten deliveries, but not for a perfect week. With no delivery over the limit, the rule says `\"mean\": 0.0`."
+                else:
+                    ex12_ok = False
+                    _msg = "Wrong (Exercise 1.2): `\"count\"` and `\"share\"` are right, `\"mean\"` is not. It is 57.5 for the ten deliveries and a limit of 50."
+    mo.callout(mo.md(_msg + _preview), kind="success" if ex12_ok else "warn")
+    return (ex12_ok,)
 
 
 @app.cell(hide_code=True)
 def _(mo):
     mo.md(
         r"""
-    ### Exercise 2.4 (core, fix the bug): Tobi's risk box
+    ### Exercise 1.3 (core, fix the bug): the middle band
 
-    Under the critical count, the deck gets a **risk box**: the **average length,
-    in minutes, of a critical run** (the runs over 50 minutes from Exercise 2.1).
-    Tobi volunteered the line below. It runs without errors and reports that a
-    critical run averages **0.2 minutes**. The investor asks whether the couriers
-    teleport.
+    The investor has a middle band of deliveries she calls "slow but
+    acceptable": **more than 30 minutes, and at most 50**. Tobi counted it.
+    His cell runs, no red error, and says the middle band holds **all ten**
+    deliveries, the 17-minute one and the 60-minute one included.
 
-    Fix the line in place so `critical_mean_ex24` holds the average length of a
-    critical run, as a plain `float`.
+    Fix Tobi's line **in place** so `band_count_ex13` holds the number of
+    deliveries in the middle band.
     """
     )
     return
@@ -708,67 +460,54 @@ def _(mo):
 @app.cell
 def _(delivery_times):
     # YOUR CODE BELOW
-    # TOBI'S CODE: the average length of a critical run, but it says 0.2 minutes.
-    critical_mean_ex24 = float((delivery_times > 50).mean())
-    return (critical_mean_ex24,)
+    # TOBI'S CODE: the deliveries in the middle band, but it counts all ten.
+    band_count_ex13 = int(((delivery_times > 30) | (delivery_times <= 50)).sum())
+    return (band_count_ex13,)
 
 
 @app.cell(hide_code=True)
-def _(critical_mean_ex24, mo, np, show_result):
-    if critical_mean_ex24 is None:
-        ex24_ok = False
-        _msg = "Not attempted (Exercise 2.4). Assign it to `critical_mean_ex24` (a `print` alone doesn't count) and run the cell."
-        _preview = ""
+def _(band_count_ex13, kind_of, mo, numpy_note, show_result):
+    _k = kind_of(band_count_ex13)
+    _preview = show_result(band_count_ex13)
+    if _k == "none":
+        ex13_ok = False
+        _msg = "Not attempted (Exercise 1.3). Assign it to `band_count_ex13` (a `print` alone doesn't count) and run the cell."
+    elif _k == "numpy":
+        ex13_ok = False
+        _msg = numpy_note("Exercise 1.3", "band_count_ex13", band_count_ex13)
+    elif _k != "int":
+        ex13_ok = False
+        _msg = "Wrong (Exercise 1.3): the answer is a count of deliveries, so one plain `int`."
+    elif band_count_ex13 == 5:
+        ex13_ok = True
+        _msg = "Correct (Exercise 1.3): **5** deliveries are in the middle band. Tobi asked for deliveries that are over 30 **or** at most 50, and every delivery is one or the other. The band needs both conditions at once."
+    elif band_count_ex13 == 10:
+        ex13_ok = False
+        _msg = "Wrong (Exercise 1.3): still all ten. Say Tobi's condition out loud for the 17-minute delivery: is it over 30? Is it at most 50? Which of those two answers lets it in?"
+    elif band_count_ex13 == 7:
+        ex13_ok = False
+        _msg = "Wrong (Exercise 1.3): 7 is every delivery over 30 minutes, the two critical ones included. The band also has an upper end."
+    elif band_count_ex13 == 8:
+        ex13_ok = False
+        _msg = "Wrong (Exercise 1.3): 8 is every delivery of at most 50 minutes, the fast ones included. The band also has a lower end."
     else:
-        _preview = show_result(critical_mean_ex24)
-        try:
-            _m = round(float(critical_mean_ex24), 2)
-        except (TypeError, ValueError):
-            _m = None
-        if _m is None:
-            ex24_ok = False
-            if np.ndim(critical_mean_ex24) > 0:
-                _msg = "Wrong (Exercise 2.4): that's still an array. You kept the critical runs but never averaged them: `.mean()` collapses them to one number, then wrap `float(...)`."
-            else:
-                _msg = "Wrong (Exercise 2.4): this should be a single **number** of minutes, the average critical run."
-        elif _m == 57.5:
-            ex24_ok = True
-            _msg = "Correct (Exercise 2.4): **57.5** minutes, nearly an hour per critical run. The mask's `.mean()` was the *share* of critical runs; `delivery_times[mask]` keeps the actual minutes, and *their* mean is what the risk box needed. It goes on the deck in red, and the investor thanks you for not hiding it."
-        elif _m == 0.2:
-            ex24_ok = False
-            _msg = "Wrong (Exercise 2.4): still 0.2, still Tobi's line. A True/False mask's `.mean()` is the *share* of Trues (Exercise 2.2), not minutes. Keep the matching **times** first, the way the worked example filters, then average those."
-        elif _m == 11.5:
-            ex24_ok = False
-            _msg = "Wrong (Exercise 2.4): 11.5 spreads the critical minutes over all ten runs. Only the critical runs belong in the average; `.mean()` on the *filtered* array divides by the right count."
-        else:
-            ex24_ok = False
-            _msg = f"Wrong (Exercise 2.4): expected 57.5, got {_m}. Filter first, then average: `delivery_times[delivery_times > 50].mean()`."
-    mo.callout(mo.md(_msg + _preview), kind="success" if ex24_ok else "warn")
-    return (ex24_ok,)
-
-
-@app.cell(hide_code=True)
-def _(mo):
-    mo.accordion(
-        {
-            "Hint 1 (a nudge)": "The mask `delivery_times > 50` is True/False, so its mean is a share, not minutes. Section 2's worked example shows how to *keep* the matching values; average those instead.",
-            "Hint 2 (the structure)": "critical_mean_ex24 = float(delivery_times[delivery_times > ___].___()) (the blank threshold is the critical cut-off; the method averages the kept times)",
-        }
-    )
-    return
+        ex13_ok = False
+        _msg = "Wrong (Exercise 1.3): not the middle band. A delivery belongs to it when it took more than 30 minutes and at most 50."
+    mo.callout(mo.md(_msg + _preview), kind="success" if ex13_ok else "warn")
+    return (ex13_ok,)
 
 
 # ─────────────────────────────────────────────────────────────────────────
-# SECTION 3: Two dimensions: the deck comes together
+# SECTION 2: The week as a grid
 # ─────────────────────────────────────────────────────────────────────────
 @app.cell(hide_code=True)
 def _(mo):
     mo.md(
         r"""
-    ## Section 3: Two dimensions: the deck comes together
+    ## Section 2: The week as a grid
 
-    Here's the real week as a grid (`week_sales`, 7 days down, 4 zones across),
-    and the zone names in `zones`, left to right:
+    Here is the real week as a grid: `week_sales`, **7 days down, 4 zones
+    across**, with the zone names in `zones`, left to right:
 
     ```python
     week_sales = np.array([[18,  7, 12,  9],
@@ -781,11 +520,31 @@ def _(mo):
     zones = ["Nord", "Sued", "Hafen", "Altstadt"]
     ```
 
-    Same `axis` idea as Tobi's fix: `axis=1` totals **across the zones** (one
-    number per day), `axis=0` totals **down the days** (one number per zone).
-    Three metrics are left on the deck.
+    To total a grid you say which way to collapse it. `axis=0` collapses **down
+    the rows** and leaves one number per column. `axis=1` collapses **across the
+    columns** and leaves one number per row:
+
+    ```python
+    small = np.array([[1, 2, 3],
+                      [4, 5, 6]])
+    small.sum(axis=0)            # array([5, 7, 9]): one total per column
+    small.sum(axis=1)            # array([ 6, 15]): one total per row
+    small.sum()                  # 21: without an axis, everything collapses
+    small.sum(axis=0).argmax()   # 2: the POSITION of the largest total
+    ```
+
+    Read and run the worked example, then answer for real.
     """
     )
+    return
+
+
+@app.cell
+def _(np):
+    # Worked example (read + run this): the two ways to collapse a grid
+    _small = np.array([[1, 2, 3], [4, 5, 6]])
+    print("per column (axis=0):", _small.sum(axis=0))
+    print("per row (axis=1):   ", _small.sum(axis=1))
     return
 
 
@@ -815,11 +574,70 @@ def _():
 def _(mo):
     mo.md(
         r"""
-    ### Exercise 3.1 (core): the busiest day
+    ### Exercise 2.1 (core, fix the bug): seven numbers, not four
 
-    "Which day was busiest?" is really: total each day across its four zones
-    (`axis=1`), then take the biggest of those seven day-totals (`.max()`). Store
-    that single busiest-day total, as a plain `int`, in `best_day_total_ex31`.
+    The investor asked for the **orders per zone**: four numbers, one for each
+    zone. Tobi sent her **seven**. His cell runs without an error.
+
+    Fix Tobi's line **in place** so `zone_totals_ex21` holds the four zone
+    totals.
+    """
+    )
+    return
+
+
+@app.cell
+def _(week_sales):
+    # YOUR CODE BELOW
+    # TOBI'S CODE: the orders per zone, but it has seven numbers and there are four zones.
+    zone_totals_ex21 = week_sales.sum(axis=1)
+    return (zone_totals_ex21,)
+
+
+@app.cell(hide_code=True)
+def _(mo, np, zone_totals_ex21):
+    try:
+        _arr = None if zone_totals_ex21 is None else np.asarray(zone_totals_ex21, dtype=float)
+    except Exception:
+        _arr = "bad"
+    _preview = "" if zone_totals_ex21 is None else f"\n\n**Your result:** `{zone_totals_ex21}`"
+    if _arr is None:
+        ex21_ok = False
+        _msg = "Not attempted (Exercise 2.1). Assign it to `zone_totals_ex21` (a `print` alone doesn't count) and run the cell."
+    elif isinstance(_arr, str):
+        ex21_ok = False
+        _msg = "Wrong (Exercise 2.1): `zone_totals_ex21` should hold four numbers, one per zone."
+    elif _arr.shape == (4,) and _arr.tolist() == [141, 109, 100, 82]:
+        ex21_ok = True
+        _msg = "Correct (Exercise 2.1): **four** totals, Nord 141, Sued 109, Hafen 100, Altstadt 82. Tobi collapsed the grid the other way and got one total per day."
+    elif _arr.shape == (7,):
+        ex21_ok = False
+        _msg = "Wrong (Exercise 2.1): still seven numbers, one per **day**. The zones run across the grid, so the days are what has to disappear."
+    elif _arr.shape == ():
+        ex21_ok = False
+        _msg = "Wrong (Exercise 2.1): that is a single number. The investor wants four, one per zone."
+    elif _arr.shape == (4,):
+        ex21_ok = False
+        _msg = "Wrong (Exercise 2.1): four numbers, but not the zone totals. Each one is the sum of a whole column of `week_sales`."
+    else:
+        ex21_ok = False
+        _msg = "Wrong (Exercise 2.1): `zone_totals_ex21` should hold four numbers, one per zone."
+    mo.callout(mo.md(_msg + _preview), kind="success" if ex21_ok else "warn")
+    return (ex21_ok,)
+
+
+@app.cell(hide_code=True)
+def _(mo):
+    mo.md(
+        r"""
+    ### Exercise 2.2 (core): each zone's share
+
+    Totals are hard to compare at a glance, so the deck shows each zone's
+    **share of the week's orders, in percent**. Store the four percentages in
+    `zone_shares_ex22`, in zone order, rounded to 1 decimal. Together they come
+    to about 100.
+
+    You already have the four zone totals from 2.1.
     """
     )
     return
@@ -827,67 +645,123 @@ def _(mo):
 
 @app.cell
 def _():
-    # YOUR CODE BELOW: total each day across zones, then the biggest total (int)
-    best_day_total_ex31 = None
-    return (best_day_total_ex31,)
+    # YOUR CODE BELOW: each zone's share of all orders of the week, in percent, rounded to 1 decimal
+    zone_shares_ex22 = None
+    return (zone_shares_ex22,)
 
 
 @app.cell(hide_code=True)
-def _(best_day_total_ex31, mo, np, show_result):
-    if best_day_total_ex31 is None:
-        ex31_ok = False
-        _msg = "Not attempted (Exercise 3.1). Assign it to `best_day_total_ex31` (a `print` alone doesn't count) and run the cell."
-        _preview = ""
+def _(mo, np, zone_shares_ex22):
+    try:
+        _arr = None if zone_shares_ex22 is None else np.asarray(zone_shares_ex22, dtype=float)
+    except Exception:
+        _arr = "bad"
+    _preview = "" if zone_shares_ex22 is None else f"\n\n**Your result:** `{zone_shares_ex22}`"
+    _want = np.array([32.6, 25.2, 23.1, 19.0])
+    if _arr is None:
+        ex22_ok = False
+        _msg = "Not attempted (Exercise 2.2). Assign it to `zone_shares_ex22` (a `print` alone doesn't count) and run the cell."
+    elif isinstance(_arr, str) or _arr.shape != (4,):
+        ex22_ok = False
+        _msg = "Wrong (Exercise 2.2): `zone_shares_ex22` should hold four percentages, one per zone, in zone order."
+    elif np.allclose(np.round(_arr, 1), _want, atol=0.01):
+        ex22_ok = True
+        _msg = "Correct (Exercise 2.2): Nord **32.6 %**, Sued 25.2 %, Hafen 23.1 %, Altstadt 19.0 %. One division on the whole array, and nobody wrote a loop."
+    elif np.allclose(np.round(_arr * 100, 1), _want, atol=0.01):
+        ex22_ok = False
+        _msg = "Wrong (Exercise 2.2): these are shares between 0 and 1. The deck shows them **in percent**: Nord should read 32.6."
+    elif np.allclose(_arr, [141, 109, 100, 82]):
+        ex22_ok = False
+        _msg = "Wrong (Exercise 2.2): these are the totals again. A share compares each total with the orders of the whole week."
     else:
-        _preview = show_result(best_day_total_ex31)
-        try:
-            _t = int(best_day_total_ex31)
-        except (TypeError, ValueError):
-            _t = None
-        if _t is None:
-            ex31_ok = False
-            if np.ndim(best_day_total_ex31) > 0:
-                _msg = "Wrong (Exercise 3.1): that's still an array. You have all seven day totals. `.max()` picks the single biggest one; then wrap `int(...)`."
-            else:
-                _msg = "Wrong (Exercise 3.1): this should be one whole **number**, the busiest day's total."
-        elif _t == 84:
-            ex31_ok = True
-            _msg = "Correct (Exercise 3.1): **84**, the busiest day. You totaled each day across its zones (`axis=1`), then took the max."
-        elif _t == 141:
-            ex31_ok = False
-            _msg = "Wrong (Exercise 3.1): 141 is the biggest *zone* total (totaling down the days, `axis=0`). The busiest DAY totals across the four zones (`axis=1`), then takes the max."
-        else:
-            ex31_ok = False
-            _msg = f"Wrong (Exercise 3.1): expected 84, got {_t}. Total each day across its zones, then take the max: `week_sales.sum(axis=1).max()`."
-    mo.callout(mo.md(_msg + _preview), kind="success" if ex31_ok else "warn")
-    return (ex31_ok,)
-
-
-@app.cell(hide_code=True)
-def _(mo):
-    mo.accordion(
-        {
-            "Hint 1 (a nudge)": "First get one total per day by summing across the zones (`axis=1`). That's seven numbers. Then `.max()` picks the busiest, and `int(...)` makes it plain.",
-            "Hint 2 (the structure)": "best_day_total_ex31 = int(week_sales.sum(axis=___).max()) (the axis totals *across* each day's zones)",
-        }
-    )
-    return
+        ex22_ok = False
+        _msg = "Wrong (Exercise 2.2): not the four shares. Each one is a zone's total divided by all orders of the week, in percent. Together they come to about 100."
+    mo.callout(mo.md(_msg + _preview), kind="success" if ex22_ok else "warn")
+    return (ex22_ok,)
 
 
 @app.cell(hide_code=True)
 def _(mo):
     mo.md(
         r"""
-    ### Exercise 3.2 (core): a business or a weekend stand?
+    ### Exercise 2.3 (core): which zone wins?
+
+    The headline of the deck is one name: the zone with the most orders. Next
+    month the grid will hold other numbers, and maybe other zones, so write a
+    function. `best_zone_ex23(grid, names)` gets a grid like `week_sales` (days
+    down, zones across) and the list of zone names. It returns the **name** of
+    the zone with the highest total.
+
+    For this week, `best_zone_ex23(week_sales, zones)` is `"Nord"`.
+    """
+    )
+    return
+
+
+@app.cell
+def _():
+    def best_zone_ex23(grid, names):
+        # YOUR CODE BELOW: return the name of the zone (column) with the highest total
+        return None
+
+    return (best_zone_ex23,)
+
+
+@app.cell(hide_code=True)
+def _(best_zone_ex23, mo, np):
+    # Reactive check.
+    _cases = [
+        (
+            np.array([[18, 7, 12, 9], [22, 11, 8, 14], [15, 19, 10, 6], [25, 13, 17, 8], [9, 21, 14, 12], [24, 16, 20, 18], [28, 22, 19, 15]]),
+            ["Nord", "Sued", "Hafen", "Altstadt"],
+            "Nord",
+        ),
+        (np.array([[9, 9, 20, 3], [2, 8, 12, 4], [1, 6, 9, 2]]), ["Nord", "Sued", "Hafen", "Altstadt"], "Hafen"),
+        (np.array([[4, 2, 9], [3, 1, 8]]), ["Campus", "City", "Port"], "Port"),
+    ]
+    try:
+        _got = [best_zone_ex23(_c[0].copy(), list(_c[1])) for _c in _cases]
+        _err = ""
+    except Exception as _e:
+        _got = None
+        _err = f"{type(_e).__name__}: {_e}"
+    _preview = ""
+    if _got is None:
+        ex23_ok = False
+        _msg = f"Wrong (Exercise 2.3): calling `best_zone_ex23(week_sales, zones)` raises an error (`{_err}`). If it is an `IndexError`: a position that counts days cannot be looked up in a list of zones."
+    elif all(_v is None for _v in _got):
+        ex23_ok = False
+        _msg = "Not attempted (Exercise 2.3): the function still returns `None`. Use `return`, not `print`, then run the cell."
+    else:
+        _preview = f"\n\n**Your result:** `best_zone_ex23(week_sales, zones)` gives `{_got[0]!r}`"
+        if not all(isinstance(_v, str) for _v in _got):
+            ex23_ok = False
+            _msg = "Wrong (Exercise 2.3): the function has to return the zone's **name**, a string like `\"Nord\"`. A position or a total is only half the way there."
+        elif _got == [_c[2] for _c in _cases]:
+            ex23_ok = True
+            _msg = "Correct (Exercise 2.3): **Nord** wins this week, and the function finds Hafen and Port in two other grids. The position of the largest total, looked up in the names: a headline that updates itself."
+        elif _got[0] == "Nord":
+            ex23_ok = False
+            _msg = "Wrong (Exercise 2.3): right for this week, wrong for another grid. In a grid where Hafen has the most orders, your function still answers something else. Is the winner typed in by hand, or is the grid collapsed the wrong way?"
+        else:
+            ex23_ok = False
+            _msg = "Wrong (Exercise 2.3): for this week the answer is `\"Nord\"`, the zone whose column adds up to the most."
+    mo.callout(mo.md(_msg + _preview), kind="success" if ex23_ok else "warn")
+    return (ex23_ok,)
+
+
+@app.cell(hide_code=True)
+def _(mo):
+    mo.md(
+        r"""
+    ### Exercise 2.4 (core): a business or a weekend stand?
 
     The investor has a rule about the busiest day: if **one day carries more
-    than a quarter of the whole week's orders**, the company is "a weekend stand
-    with a logo" and she wants a weekday campaign before she signs anything.
+    than a quarter of the week's orders**, the company is "a weekend stand with
+    a logo", and she wants a weekday campaign before she signs anything.
 
-    Take the busiest-day total from Exercise 3.1 and divide it by the week's
-    **grand total**: `week_sales.sum()` with no `axis` collapses the whole grid
-    (every day, every zone) to one number. Store that share in `peak_share_ex32`
-    as a plain `float` between 0 and 1.
+    Store the busiest day's share of the whole week's orders in
+    `peak_share_ex24`, as a plain `float` between 0 and 1.
     """
     )
     return
@@ -895,73 +769,65 @@ def _(mo):
 
 @app.cell
 def _():
-    # YOUR CODE BELOW: the busiest-day total (3.1) divided by the week's grand total, as a float
-    peak_share_ex32 = None
-    return (peak_share_ex32,)
+    # YOUR CODE BELOW: the busiest day's orders divided by all orders of the week, as a plain float
+    peak_share_ex24 = None
+    return (peak_share_ex24,)
 
 
 @app.cell(hide_code=True)
-def _(best_day_total_ex31, mo, np, peak_share_ex32, show_result):
-    if best_day_total_ex31 is None:
-        ex32_ok = False
-        _msg = "Not attempted (Exercise 3.2): finish 3.1 first. This one divides `best_day_total_ex31`, which is still `None`."
-        _preview = ""
-    elif peak_share_ex32 is None:
-        ex32_ok = False
-        _msg = "Not attempted (Exercise 3.2). Assign it to `peak_share_ex32` (a `print` alone doesn't count) and run the cell."
-        _preview = ""
+def _(kind_of, mo, numpy_note, peak_share_ex24, show_result):
+    _k = kind_of(peak_share_ex24)
+    _preview = show_result(peak_share_ex24)
+    if _k == "none":
+        ex24_ok = False
+        _msg = "Not attempted (Exercise 2.4). Assign it to `peak_share_ex24` (a `print` alone doesn't count) and run the cell."
+    elif _k == "numpy":
+        ex24_ok = False
+        _msg = numpy_note("Exercise 2.4", "peak_share_ex24", peak_share_ex24)
+    elif _k == "array":
+        ex24_ok = False
+        _msg = "Wrong (Exercise 2.4): that is still a whole array. The rule needs **one number**: the busiest day's share."
+    elif _k not in ("int", "float"):
+        ex24_ok = False
+        _msg = "Wrong (Exercise 2.4): the share has to be one plain `float` between 0 and 1."
+    elif round(peak_share_ex24, 2) == 0.19:
+        ex24_ok = True
+        _msg = "Correct (Exercise 2.4): the busiest day carries **0.19** of the week, about a fifth and under her quarter. A business, then. The investor does not smile, but she turns the page."
+    elif peak_share_ex24 == 84:
+        ex24_ok = False
+        _msg = "Wrong (Exercise 2.4): 84 is the busiest day's number of orders. The rule compares it with the orders of the whole week."
+    elif round(peak_share_ex24, 2) == 19.44:
+        ex24_ok = False
+        _msg = "Wrong (Exercise 2.4): that is the share in percent. Store it as a number between 0 and 1."
+    elif round(peak_share_ex24, 2) == 0.33:
+        ex24_ok = False
+        _msg = "Wrong (Exercise 2.4): 0.33 is the strongest **zone's** share. Her rule is about the busiest **day**."
     else:
-        _preview = show_result(peak_share_ex32)
-        try:
-            _s = round(float(peak_share_ex32), 2)
-        except (TypeError, ValueError):
-            _s = None
-        if _s is None:
-            ex32_ok = False
-            if np.ndim(peak_share_ex32) > 0:
-                _msg = "Wrong (Exercise 3.2): that's an array of shares, one per day: you divided by the seven day totals. The week's grand total is `week_sales.sum()` with no `axis`, a single number."
-            else:
-                _msg = "Wrong (Exercise 3.2): this should be a single **number** between 0 and 1, the busiest day's share of the week."
-        elif _s == 0.19:
-            ex32_ok = True
-            _msg = "Correct (Exercise 3.2): **0.19**. The busiest day carried 19% of the week, under the quarter line. \"A business, not a weekend stand,\" says the investor, and the weekday campaign stays off the table. Tobi had already drafted a flyer."
-        elif _s == 0.6:
-            ex32_ok = False
-            _msg = "Wrong (Exercise 3.2): 0.6 is the busiest day divided by the biggest *zone* total. The share is over the week's **grand total**: `week_sales.sum()` with no axis, all 28 numbers in one."
-        elif _s > 1:
-            ex32_ok = False
-            _msg = "Wrong (Exercise 3.2): a share can't exceed 1. Divide the busiest-day total from 3.1 by the week's grand total, `week_sales.sum()`."
-        else:
-            ex32_ok = False
-            _msg = f"Wrong (Exercise 3.2): expected 0.19, got {_s}. Divide `best_day_total_ex31` by `week_sales.sum()`."
-    mo.callout(mo.md(_msg + _preview), kind="success" if ex32_ok else "warn")
-    return (ex32_ok,)
+        ex24_ok = False
+        _msg = "Wrong (Exercise 2.4): not the busiest day's share. Total each day, take the largest of the seven, and compare it with all orders of the week."
+    mo.callout(mo.md(_msg + _preview), kind="success" if ex24_ok else "warn")
+    return (ex24_ok,)
 
 
-@app.cell(hide_code=True)
-def _(mo):
-    mo.accordion(
-        {
-            "Hint 1 (a nudge)": "Two numbers: the busiest-day total you already have from 3.1, and the whole week's total, which is `.sum()` on the grid with no `axis` at all. Divide the first by the second and wrap `float(...)`.",
-            "Hint 2 (the structure)": "peak_share_ex32 = float(best_day_total_ex31 / week_sales.___()) (the blank method totals the whole grid, no axis)",
-        }
-    )
-    return
-
-
+# ─────────────────────────────────────────────────────────────────────────
+# PUTTING IT TOGETHER: the strong days
+# ─────────────────────────────────────────────────────────────────────────
 @app.cell(hide_code=True)
 def _(mo):
     mo.md(
         r"""
-    ## Putting it together (core): which zone wins the week?
+    ## Putting it together (core): the strong days
 
-    The headline metric: **which zone sold the most all week?** You already fixed
-    this computation in Exercise 2.3: total down the days (`axis=0`) to get the
-    four zone totals. Now go one step further: find *which* zone is biggest with
-    **`.argmax()`** (it gives the *position* of the largest value, `0`-`3`), and
-    use that position to look up the name in `zones`.
+    The busiest day is a single number. The investor asks the wider
+    question: "How much of your week hangs on your **strong days**?" A strong
+    day is a day with **more orders than the average day**.
 
-    Store the winning zone's **name** (a string like `"Hafen"`) in `best_zone_ex40`.
+    Three steps, each in its own cell, each building on the one before:
+
+    1. `day_totals_ex40`: the orders of each of the seven days, as an array.
+    2. `strong_days_ex40`: **how many** days are strong (a plain `int`).
+    3. `strong_share_ex40`: the share of the week's orders that fell on the
+       strong days (a plain `float` between 0 and 1).
     """
     )
     return
@@ -969,50 +835,99 @@ def _(mo):
 
 @app.cell
 def _():
-    # YOUR CODE BELOW: the NAME of the zone with the highest all-week total
-    best_zone_ex40 = None
-    return (best_zone_ex40,)
+    # YOUR CODE BELOW: the orders of each of the seven days, as an array
+    day_totals_ex40 = None
+    return (day_totals_ex40,)
+
+
+@app.cell
+def _():
+    # YOUR CODE BELOW: how many days have more orders than the average day (a plain int)
+    strong_days_ex40 = None
+    return (strong_days_ex40,)
+
+
+@app.cell
+def _():
+    # YOUR CODE BELOW: the strong days' orders as a share of all orders of the week (a plain float)
+    strong_share_ex40 = None
+    return (strong_share_ex40,)
 
 
 @app.cell(hide_code=True)
-def _(best_zone_ex40, mo, np, show_result):
-    if best_zone_ex40 is None:
+def _(day_totals_ex40, kind_of, mo, np, numpy_note, strong_days_ex40, strong_share_ex40):
+    # Reactive check.
+    _days = np.array([46, 55, 50, 63, 56, 78, 84])
+    try:
+        _arr = None if day_totals_ex40 is None else np.asarray(day_totals_ex40, dtype=float)
+    except Exception:
+        _arr = "bad"
+    _k2, _k3 = kind_of(strong_days_ex40), kind_of(strong_share_ex40)
+    _preview = ""
+    if _arr is None:
         ex40_ok = False
-        _msg = "Not attempted (Putting it together). Assign it to `best_zone_ex40` (a `print` alone doesn't count) and run the cell."
-        _preview = ""
-    elif isinstance(best_zone_ex40, str):
-        _preview = show_result(best_zone_ex40)
-        _v = best_zone_ex40.strip()
-        if _v == "Nord":
-            ex40_ok = True
-            _msg = "Correct (Putting it together): **Nord** wins the week with 141. `argmax` turned the four zone totals into a position, and indexing `zones` turned that position into the name."
-        elif _v in {"Sued", "Hafen", "Altstadt"}:
-            ex40_ok = False
-            _msg = "Wrong (Putting it together): that zone isn't the weekly winner. Total down the days (`axis=0`) for the four zone totals, then `argmax` to find the biggest, and index `zones` with it."
+        _msg = "Not attempted (Putting it together). Start with step 1: assign the seven day totals to `day_totals_ex40` and run the cell."
+    elif isinstance(_arr, str):
+        ex40_ok = False
+        _msg = "Wrong (Putting it together, step 1): `day_totals_ex40` should hold seven numbers, one per day."
+    elif _arr.shape != (7,) or _arr.tolist() != _days.tolist():
+        ex40_ok = False
+        _preview = f"\n\n**Your result:** `{day_totals_ex40}`"
+        if _arr.shape == (4,):
+            _msg = "Wrong (Putting it together, step 1): four numbers, one per **zone**. A day is a row of the grid, so the zones are what has to disappear."
+        elif _arr.shape == (7,):
+            _msg = "Wrong (Putting it together, step 1): seven numbers, but not the day totals. The first day has 18 + 7 + 12 + 9 = 46 orders."
         else:
-            ex40_ok = False
-            _msg = "Wrong (Putting it together): that isn't one of the four zone names. `zones[...]` should give 'Nord', 'Sued', 'Hafen' or 'Altstadt'."
-    elif np.ndim(best_zone_ex40) > 0:
+            _msg = "Wrong (Putting it together, step 1): `day_totals_ex40` should hold seven numbers, one per day."
+    elif _k2 == "none":
         ex40_ok = False
-        _preview = show_result(best_zone_ex40)
-        _msg = "Wrong (Putting it together): that's still an array. You want a single zone **name**: index `zones` with the `argmax` position."
+        _msg = "Step 1 is right: seven day totals, from 46 up to 84. Now step 2: assign `strong_days_ex40`."
+    elif _k2 == "numpy":
+        ex40_ok = False
+        _msg = numpy_note("Putting it together, step 2", "strong_days_ex40", strong_days_ex40)
+    elif _k2 != "int":
+        ex40_ok = False
+        _msg = "Wrong (Putting it together, step 2): `strong_days_ex40` is a count of days, so one plain `int`."
+        _preview = f"\n\n**Your result:** `{strong_days_ex40}`"
+    elif strong_days_ex40 != 3:
+        ex40_ok = False
+        _preview = f"\n\n**Your result:** `{strong_days_ex40}`"
+        if strong_days_ex40 == 4:
+            _msg = "Wrong (Putting it together, step 2): 4 is the number of days **below** the average day. She asked for the strong ones."
+        else:
+            _msg = "Wrong (Putting it together, step 2): not the number of strong days. The average day has about 61.7 orders. How many of the seven days have more?"
+    elif _k3 == "none":
+        ex40_ok = False
+        _msg = "Steps 1 and 2 are right: 3 of the 7 days are strong. Now step 3: assign `strong_share_ex40`."
+    elif _k3 == "numpy":
+        ex40_ok = False
+        _msg = numpy_note("Putting it together, step 3", "strong_share_ex40", strong_share_ex40)
+    elif _k3 not in ("int", "float"):
+        ex40_ok = False
+        _msg = "Wrong (Putting it together, step 3): the share has to be one plain `float` between 0 and 1."
+        _preview = f"\n\n**Your result:** `{strong_share_ex40}`"
+    elif round(strong_share_ex40, 2) == 0.52:
+        ex40_ok = True
+        _msg = (
+            "Correct (Putting it together): **3** of the 7 days are strong, and they carry "
+            "**0.52** of the week's orders, a little more than half. The investor writes in "
+            "the margin: \"three days pay for the other four.\" You built the mask from "
+            "numbers you had computed yourself."
+        )
+        _preview = f"\n\n**Your result:** `{strong_days_ex40}` strong days, share `{strong_share_ex40}`"
     else:
         ex40_ok = False
-        _preview = show_result(best_zone_ex40)
-        _msg = "Wrong (Putting it together): that looks like a number, probably the `argmax` position. Use it to look up the name: `zones[that_position]`."
+        _preview = f"\n\n**Your result:** `{strong_share_ex40}`"
+        if round(strong_share_ex40, 2) == 0.43:
+            _msg = "Wrong (Putting it together, step 3): 0.43 is the share of the **days** that are strong (3 of 7). She asked what share of the **orders** fell on those days."
+        elif strong_share_ex40 == 225:
+            _msg = "Wrong (Putting it together, step 3): 225 is the number of orders on the strong days. A share compares it with all orders of the week."
+        elif round(strong_share_ex40, 2) == 52.08:
+            _msg = "Wrong (Putting it together, step 3): that is the share in percent. Store it as a number between 0 and 1."
+        else:
+            _msg = "Wrong (Putting it together, step 3): not the strong days' share. Add up the orders of the three strong days and compare them with all orders of the week."
     mo.callout(mo.md(_msg + _preview), kind="success" if ex40_ok else "warn")
     return (ex40_ok,)
-
-
-@app.cell(hide_code=True)
-def _(mo):
-    mo.accordion(
-        {
-            "Hint 1 (a nudge)": "Three moves: total down the days (`axis=0`) for four zone totals, ask `.argmax()` for the position of the biggest, then index `zones` with that position to get the name.",
-            "Hint 2 (the structure)": "best_zone_ex40 = zones[int(week_sales.sum(axis=___).argmax())] (the axis totals each zone down the seven days)",
-        }
-    )
-    return
 
 
 # ─────────────────────────────────────────────────────────────────────────
@@ -1076,7 +991,7 @@ def _(mo):
         r"""
     ### Quiz (core, MCQ): reading a mask
 
-    You used masks all through Section 2. Given the delivery times, what does this
+    You used masks all through Section 1. Given the delivery times, what does this
     expression compute?
 
     ```python
@@ -1125,6 +1040,162 @@ def _(answer_ex50, mo):
 
 
 # ─────────────────────────────────────────────────────────────────────────
+# BONUS (not required)
+# ─────────────────────────────────────────────────────────────────────────
+@app.cell(hide_code=True)
+def _(mo):
+    mo.md(
+        r"""
+    ### Bonus: most orders is not most money (not required)
+
+    Nord wins on orders. But an order in Altstadt is worth more than an order in
+    Nord. The average order value per zone, in euros, in zone order:
+
+    ```python
+    avg_value = np.array([11.5, 14.0, 16.5, 19.0])
+    ```
+
+    Store the **name** of the zone with the highest revenue of the week in
+    `top_revenue_zone_ex60`.
+    """
+    )
+    return
+
+
+@app.cell
+def _(np):
+    avg_value = np.array([11.5, 14.0, 16.5, 19.0])
+    return (avg_value,)
+
+
+@app.cell
+def _():
+    # YOUR CODE BELOW: the name of the zone with the highest revenue (orders times average order value)
+    top_revenue_zone_ex60 = None
+    return (top_revenue_zone_ex60,)
+
+
+@app.cell(hide_code=True)
+def _(mo, show_result, top_revenue_zone_ex60):
+    if top_revenue_zone_ex60 is None:
+        _ok = False
+        _msg = "Not attempted (Bonus). Assign it to `top_revenue_zone_ex60` (a `print` alone doesn't count) and run the cell."
+    elif not isinstance(top_revenue_zone_ex60, str):
+        _ok = False
+        _msg = "Wrong (Bonus): the answer is a zone **name**, a string."
+    elif top_revenue_zone_ex60 == "Hafen":
+        _ok = True
+        _msg = "Correct (Bonus): **Hafen** earns the most, 1,650 EUR, ahead of Nord with 1,621.50, although Nord has 41 more orders. The headline depends on what you count."
+    elif top_revenue_zone_ex60 == "Nord":
+        _ok = False
+        _msg = "Wrong (Bonus): Nord has the most **orders**. Revenue is orders times what an order is worth, and that differs by zone."
+    elif top_revenue_zone_ex60 == "Altstadt":
+        _ok = False
+        _msg = "Wrong (Bonus): Altstadt has the most valuable **single** order. Revenue also depends on how many orders a zone has."
+    else:
+        _ok = False
+        _msg = "Wrong (Bonus): not the zone with the highest revenue. Multiply each zone's orders by its average order value, then find the largest."
+    mo.callout(mo.md(_msg + show_result(top_revenue_zone_ex60)), kind="success" if _ok else "warn")
+    return
+
+
+@app.cell(hide_code=True)
+def _(mo):
+    mo.md(
+        r"""
+    ### Bonus: the discount ladder (not required)
+
+    Tobi wants to test five discounts on the 12.00 EUR bowl: evenly spaced from
+    **0 % to 20 %**, both ends included. Store the five resulting prices, from
+    full price down, as an array in `ladder_ex61`.
+    """
+    )
+    return
+
+
+@app.cell
+def _():
+    # YOUR CODE BELOW: the 12.00 EUR price after five evenly spaced discounts from 0 % to 20 %, as an array
+    ladder_ex61 = None
+    return (ladder_ex61,)
+
+
+@app.cell(hide_code=True)
+def _(ladder_ex61, mo, np):
+    try:
+        _arr = None if ladder_ex61 is None else np.asarray(ladder_ex61, dtype=float)
+    except Exception:
+        _arr = "bad"
+    _preview = "" if ladder_ex61 is None else f"\n\n**Your result:** `{ladder_ex61}`"
+    if _arr is None:
+        _ok = False
+        _msg = "Not attempted (Bonus). Assign it to `ladder_ex61` (a `print` alone doesn't count) and run the cell."
+    elif isinstance(_arr, str) or _arr.shape != (5,):
+        _ok = False
+        _msg = "Wrong (Bonus): `ladder_ex61` should hold five prices."
+    elif np.allclose(_arr, [12.0, 11.4, 10.8, 10.2, 9.6]):
+        _ok = True
+        _msg = "Correct (Bonus): 12.00, 11.40, 10.80, 10.20 and 9.60 EUR. Five evenly spaced discounts, applied to the price in one expression."
+    elif np.allclose(_arr, [0.0, 0.05, 0.1, 0.15, 0.2]) or np.allclose(_arr, [0, 5, 10, 15, 20]):
+        _ok = False
+        _msg = "Wrong (Bonus): these are the five discounts. Tobi wants the five **prices** that result from them."
+    elif np.allclose(_arr, [0.0, 0.6, 1.2, 1.8, 2.4]):
+        _ok = False
+        _msg = "Wrong (Bonus): these are the euros taken **off**. Store what the customer still pays."
+    else:
+        _ok = False
+        _msg = "Wrong (Bonus): not the ladder. The first price is the full 12.00 EUR, the last one is 20 % off, and the steps in between are equal."
+    mo.callout(mo.md(_msg + _preview), kind="success" if _ok else "warn")
+    return
+
+
+@app.cell(hide_code=True)
+def _(mo):
+    mo.md(
+        r"""
+    ### Bonus: the steady cells (not required)
+
+    Every number in `week_sales` is one zone on one day. The investor calls such
+    a cell "steady" when it has **at least 10 and at most 20 orders**. Store how
+    many cells are steady in `steady_cells_ex62` (a plain `int`).
+    """
+    )
+    return
+
+
+@app.cell
+def _():
+    # YOUR CODE BELOW: how many cells of week_sales hold at least 10 and at most 20 orders (a plain int)
+    steady_cells_ex62 = None
+    return (steady_cells_ex62,)
+
+
+@app.cell(hide_code=True)
+def _(kind_of, mo, numpy_note, show_result, steady_cells_ex62):
+    _k = kind_of(steady_cells_ex62)
+    if _k == "none":
+        _ok = False
+        _msg = "Not attempted (Bonus). Assign it to `steady_cells_ex62` (a `print` alone doesn't count) and run the cell."
+    elif _k == "numpy":
+        _ok = False
+        _msg = numpy_note("Bonus", "steady_cells_ex62", steady_cells_ex62)
+    elif _k != "int":
+        _ok = False
+        _msg = "Wrong (Bonus): the answer is a count of cells, so one plain `int`."
+    elif steady_cells_ex62 == 16:
+        _ok = True
+        _msg = "Correct (Bonus): **16** of the 28 cells are steady. A mask works on a whole grid exactly as it does on one row."
+    elif steady_cells_ex62 == 14:
+        _ok = False
+        _msg = "Wrong (Bonus): 14 leaves out the cells with exactly 10 or exactly 20 orders. \"At least\" and \"at most\" include both ends."
+    else:
+        _ok = False
+        _msg = "Wrong (Bonus): not the number of steady cells. A cell is steady when it holds at least 10 and at most 20 orders."
+    mo.callout(mo.md(_msg + show_result(steady_cells_ex62)), kind="success" if _ok else "warn")
+    return
+
+
+# ─────────────────────────────────────────────────────────────────────────
 # PROGRESS + WRAP-UP
 # ─────────────────────────────────────────────────────────────────────────
 @app.cell(hide_code=True)
@@ -1136,14 +1207,12 @@ def _(
     ex22_ok,
     ex23_ok,
     ex24_ok,
-    ex31_ok,
-    ex32_ok,
     ex40_ok,
     ex50_ok,
     mo,
 ):
-    # Progress cell: the 10 core exercises plus the quiz (the trace doesn't count).
-    _checks = [ex11_ok, ex12_ok, ex13_ok, ex21_ok, ex22_ok, ex23_ok, ex24_ok, ex31_ok, ex32_ok, ex40_ok, ex50_ok]
+    # Progress cell: the 8 core exercises plus the quiz (the trace and the bonuses don't count).
+    _checks = [ex11_ok, ex12_ok, ex13_ok, ex21_ok, ex22_ok, ex23_ok, ex24_ok, ex40_ok, ex50_ok]
     _done = sum(_checks)
     _total = len(_checks)
     _investor = (
@@ -1164,16 +1233,19 @@ def _(mo):
         r"""
     ## Before you leave
 
-    1. Check the progress box above: all **eleven** green? If not, reopen the hints,
-       reread the worked examples, and try again. Arrays, masks and axis totals
-       come back in the pandas sessions.
-    2. **Download your work**: **Cmd/Ctrl+S**, then menu → Download → *Download Python code*.
+    1. Check the progress box above: all **nine** green? If not, reread the
+       worked examples, ask your AI assistant to explain the part that is
+       stuck, and try again.
+    2. Not finished? Finish at home **before the next session**. It opens with
+       Checkpoint 4, which covers Episodes 6 and 7.
+    3. **Download your work**: **Cmd/Ctrl+S**, then menu → Download → *Download Python code*.
        Reloading this exact tab (Cmd/Ctrl+R) keeps your work, but closing the tab
        and reopening the link starts you fresh. The download is the only
        guaranteed copy.
-    3. Next episode: the investor opens a **data room**. A real file, eighty
+    4. Next episode: the investor opens a **data room**. A real file, eighty
        rows, more than anyone wants to type by hand. Tobi, naturally, lets an
-       AI write his pandas. **Episode 8: the data room.**
+       AI write his pandas. From then on the labs run in Zed, in the
+       `python-labs` folder you made today. **Episode 8: the data room.**
     """
     )
     return

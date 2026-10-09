@@ -63,7 +63,7 @@ For five sessions you worked without AI. From today you may use it, and you stay
 
 ## What is an LLM?
 
-Le Chat and the chatbot bubble run on the same machine:
+Mistral's Vibe and the chatbot bubble run on the same machine:
 
 - A **Large Language Model** is an <span class="highlight">advanced pattern-recognition system</span>. It has read enormous amounts of text: books, websites, and code
 - What it actually does: <span class="highlight">predict the next piece of text</span>, like the word suggestions on your phone keyboard, but vastly more capable
@@ -91,6 +91,7 @@ Le Chat and the chatbot bubble run on the same machine:
 ## The context window
 
 - Everything the model knows about you sits in the <span class="highlight">context window</span>: the text it can hold at once, its short-term memory
+- How much is that? A page of prose is about 500 tokens. Mistral's newest model, **Mistral Large 4** (October 2026), holds up to **1 million**: about 2,000 pages
 - Larger window: it remembers more of the conversation. Smaller: it forgets earlier turns
 - <span class="highlight">Nothing outside the window exists for the model</span>: not your screen, not your intent
 
@@ -104,14 +105,14 @@ Le Chat and the chatbot bubble run on the same machine:
 
 Both are free, both are on the [AI Tools page](../general/ai-tools.qmd), together about ten minutes:
 
-- **Mistral:** a Le Chat account for questions, plus an API key. The same key later powers the AI agent inside your editor
+- **Mistral:** a free account for **Vibe**, Mistral's assistant (older guides call it Le Chat). The same account later powers the AI agent inside your editor
 - **Zed student plan:** sign in with the GitHub account you made in Session I (it's old enough now) and apply with your KLU e-mail. Verification takes up to 72 hours, so the free year of Zed Pro is ready before we install Zed in class in Session VII
 
 . . .
 
 > **Important**
 >
-> Turn **off** the training-data switches in Mistral's privacy settings before you paste coursework: one for Le Chat, one for the API (details on the AI Tools page). Nothing here needs a credit card.
+> Turn **off** the training-data switches in Mistral's privacy settings before you paste coursework: one for Vibe, one for the API (details on the AI Tools page). Nothing here needs a credit card.
 
 # <span class="flow">Don't build it, import it</span>
 
@@ -315,10 +316,10 @@ random.shuffle(queue)                         # reorders the list in place
 print(queue)
 ```
 
-    0.5881880897568816
-    10
-    tea
-    [1, 4, 3, 2, 5]
+    0.6683125130402102
+    19
+    mocha
+    [3, 2, 4, 5, 1]
 
 . . .
 
@@ -335,8 +336,8 @@ print([random.randint(1, 20) for _ in range(5)])   # _ : a loop name we never us
 print([random.randint(1, 20) for _ in range(5)])   # ...and again, different!
 ```
 
-    [6, 6, 14, 16, 6]
-    [18, 19, 8, 10, 13]
+    [10, 9, 6, 6, 18]
+    [8, 17, 12, 19, 5]
 
 . . .
 

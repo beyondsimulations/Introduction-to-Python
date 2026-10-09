@@ -151,6 +151,18 @@ Tobi's week via the 1.1 function, 4.0 a 200-week stress test in three chained
 cells. Verified: 60 wrong-answer variants without a check crash, and the
 solution boots 9/9 green in headless Chromium (WASM).
 
+A3c. **Lab 07 as built (2026-10-09):** 8 coded core tasks + quiz + trace + 3
+bonuses, masks first because Checkpoint 4 leans on them. 1.1 count and mean
+of the critical deliveries (the shape of CP4 task 2), 1.2
+`risk_report_ex12` (dict, 3 probes, one with no delivery over the limit:
+`nan` has to become 0.0), 1.3 fix the bug (`|` where `&` belongs), 2.1 fix
+the bug (wrong `axis`, the shape of CP4 task 3), 2.2 zone shares in percent,
+2.3 `best_zone_ex23` (3 grids), 2.4 the busiest day's share, 4.0 the strong
+days in three chained cells. The checks reject NumPy number types and ask
+for plain `int`/`float`, as the checkpoint does. The first callout tells
+students to finish and show the Zed install before starting. Verified: 68
+wrong-answer variants without a check crash.
+
 A4. **Checkpoint 4 alignment.** `lec_08:33` tells students everything in
 CP4 was rehearsed in the labs. CP4 (`checkpoints/cp4/reference_tests.py`)
 needs:
@@ -165,6 +177,12 @@ needs:
 
 Since lab 07 is squeezed by the install, its CP4 core comes first in the
 lab, and the bonus tier last.
+
+Checked on 2026-10-09 against the labs as built: t1 by lab 06 1.1, t2 by
+lab 07 1.1 and 1.2, t3 by lab 07 2.1, t4 by lab 06 2.1 and 2.2, t5 (what
+`prices[prices > 10]` returns) by the filter in lab 07 1.1 and the
+Section 1 recap, t6 (calling a name imported by name) by lab 06 1.2. The
+checkpoint's numbers differ from every lab and QR exercise value.
 
 ## Workstream B: the tooling switch in VII
 
@@ -191,6 +209,11 @@ B2. **Session VII install block** (after the lecture, before lab 07):
 - Known traps to cover on the slide or the page: Zed needs DirectX 11 on
   Windows; `vibe-acp` not on PATH on Windows; wifi load with 40 parallel
   downloads (test the room if possible).
+
+Built on 2026-10-09: `lec_07` ends wrap-up, then `Leaving the Browser`
+(four slides: the three tools, uv and the `python-labs` folder, Zed and
+Vibe, the check), then the lab handoff. `lec_10` still carries its own
+toolchain slides until its rewrite.
 
 B3. **Session VIII:** one agent slide at the lab handoff: open the panel,
 ask, read the diff before accepting. This moves from the first half of

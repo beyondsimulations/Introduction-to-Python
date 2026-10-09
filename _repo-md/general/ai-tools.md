@@ -4,7 +4,7 @@ subtitle: How and when to use AI in this course
 ---
 
 
-<!-- Facts on this page re-verified against the live web on 2026-07-11; Zed student plan and Mistral Vibe sections on 2026-09-03. -->
+<!-- Facts on this page re-verified against the live web on 2026-07-11; Zed student plan and Mistral Vibe sections on 2026-09-03. Mistral naming (Le Chat is now Vibe, La Plateforme is now Studio), the free plan, the sign-in/key route and both opt-out paths re-read from Mistral's pricing, docs and help pages on 2026-10-09. Free sign-up (no phone number asked), both opt-out switches, the `vibe` browser sign-in and the install from Zed's agent registry clicked through with a fresh free account by Tobias the same day. -->
 
 ## The course policy
 
@@ -23,35 +23,36 @@ The rest of this page shows you how to get a working, **zero-cost** AI setup. It
 | When | What | Why then |
 |------------------------|------------------------|------------------------|
 | **Session I** | Free [GitHub](https://github.com) account | Zed's student plan only accepts GitHub accounts **older than 30 days**, and your project lives on GitHub from Session X |
-| **Session VI** | Mistral account + API key, Zed student plan application | AI becomes allowed; the GitHub account is old enough now |
-| **Before Session X** | Install uv, Zed, Mistral Vibe and the GitHub CLI | Session X builds on a working toolchain |
+| **Session VI** | Free Mistral account with the training opt-out, Zed student plan application | AI becomes allowed; the GitHub account is old enough now |
+| **Session VII (in class)** | Install uv, Zed and Mistral Vibe | From Session VIII the labs run on your own machine |
+| **Before Session X** | Install git and the GitHub CLI | Session X puts your project on GitHub |
 
-*Menu paths and program terms on this page are current as of September 2026.*
+*Menu paths and program terms on this page are current as of October 2026.*
 
 ## The guaranteed free setup: Mistral
 
 This path costs nothing and needs no credit card. Do this one first.
 
-### 1. Create a free Le Chat account
+### 1. Create a free Mistral account
 
-Go to [chat.mistral.ai](https://chat.mistral.ai) and sign up. **Le Chat** is Mistral's chat assistant (the equivalent of ChatGPT or Claude in your browser). The free tier is enough for asking questions, explaining errors and drafting code.
+Go to [chat.mistral.ai](https://chat.mistral.ai) and sign up. You land in **Vibe**, Mistral's assistant (the equivalent of ChatGPT or Claude in your browser). It used to be called *Le Chat*, so older guides and videos still use that name. The free plan is enough for asking questions, explaining errors and drafting code. It limits how many messages and coding sessions you get.
 
-### 2. Get a free La Plateforme API key
+The same account later signs you in to the AI agent *inside your editor* (see the Zed section below). You don't need a separate API key for that.
 
-If you later want AI *inside your editor* (see the Zed section below), you need an API key.
-
-1.  Go to [console.mistral.ai](https://console.mistral.ai) and sign in with the same account.
-2.  Choose the free **"Experiment"** tier when prompted.
-3.  Open the **API Keys** page and create a new key.
-4.  Copy the key somewhere safe. Mistral Vibe, the AI agent in your editor, asks for it later. **The key is shown only once**, right when you create it, and cannot be displayed again. If you miss it, you have to generate a new one.
+### 2. Turn off training on your data
 
 > **Warning**
 >
-> **Free-tier data is used for training by default.** On the free tiers, both your Le Chat conversations and your API inputs and outputs may be used to improve Mistral's models unless you opt out. In your Mistral account settings (the Admin Console at [admin.mistral.ai](https://admin.mistral.ai)), find the **privacy** section and turn off the use of your data for training; there may be one switch for Le Chat and a separate one for the API, so check both. Do this before you paste real coursework into either.
+> **On the free plan your data is used for training by default.** Your Vibe conversations, and anything sent through the API, may be used to improve Mistral's models unless you opt out. There are **two separate switches** in the Admin panel at [admin.mistral.ai](https://admin.mistral.ai):
+>
+> 1.  Under **Manage**, select **Vibe**. In its **Privacy** section, turn off *Allow your interactions to be used to train our models*.
+> 2.  Open the **Privacy** menu in the left navigation bar. Under **Anonymous improvement data**, turn that switch off as well. It covers the API, the route programs use to talk to Mistral's models.
+>
+> Do both before you paste real coursework anywhere.
 
 ## The Zed student plan (Session VI)
 
-Zed is the editor we use from Session X on. If you are an enrolled student, Zed gives you its paid plan for free, and you apply for it in **Session VI**, well before you need it:
+Zed is the editor we use from Session VIII on, and we install it together in class in Session VII. If you are an enrolled student, Zed gives you its paid plan for free, and you apply for it in **Session VI**, well before you need it:
 
 1.  Go to [dashboard.zed.dev/education/apply](https://dashboard.zed.dev/education/apply) and **sign in with GitHub**. Zed requires the GitHub account to be **at least 30 days old**, which is why you created it in Session I.
 2.  Submit your **KLU e-mail address** for verification. This can take up to 72 hours.
@@ -63,9 +64,9 @@ Zed is the editor we use from Session X on. If you are an enrolled student, Zed 
 
 If your KLU address isn't recognized by the verification system, or your GitHub account is still too young, **ask me**. Both can be resolved.
 
-## AI inside Zed: Mistral Vibe (before Session X)
+## AI inside Zed: Mistral Vibe (Session VII, in class)
 
-The AI you program with in Part III is **[Mistral Vibe](https://github.com/mistralai/mistral-vibe)**, Mistral's coding agent. It runs inside Zed's agent panel and uses the API key from Session VI. **Nothing in this section is needed before Session IX.** Do it as part of the Session IX pre-work, after the [git and gh setup](git-basics.qmd#one-time-setup) and [installing uv](uv.qmd):
+The AI you program with from Session VIII is **[Mistral Vibe](https://docs.mistral.ai/vibe/code/overview)**, Mistral's coding agent (Mistral's own pages call this mode *Vibe Code*). It runs inside Zed's agent panel on your free Mistral account from Session VI. **We do this together in class in Session VII**, after [installing uv](uv.qmd). You don't need to do it earlier:
 
 1.  **Install Zed** from [zed.dev](https://zed.dev) (macOS, Windows, Linux), run the installer, and open it once to confirm it launches.
 
@@ -75,26 +76,17 @@ The AI you program with in Part III is **[Mistral Vibe](https://github.com/mistr
     uv tool install mistral-vibe
     ```
 
-3.  **Give it your key.** Run `vibe` once in the terminal; it asks for the API key and saves it for future runs. Type `exit` to leave.
+    If the terminal then says `vibe` is not found, run `uv tool update-shell`, then close and reopen the terminal.
 
-4.  **Tell Zed about it.** In Zed, open the command palette (`Cmd/Ctrl+Shift+P`), run **`zed: open settings`**, and add this inside the outer braces. The file already has entries, so put a comma after the last existing one before you paste; JSON insists on it, and a missing comma is the classic first-timer error here:
+3.  **Sign in.** Run `vibe` once in the terminal. The setup asks you to sign in with your Mistral account in the browser; use the account from Session VI. It saves the sign-in for future runs. Type `exit` to leave. If the sign-in does not work, create a key under **Code › Vibe CLI** at [chat.mistral.ai/code/extensions](https://chat.mistral.ai/code/extensions), copy it right away, and paste it when the setup asks. That key works on the free plan too.
 
-    ``` json
-    "agent_servers": {
-      "Mistral Vibe": {
-        "type": "custom",
-        "command": "vibe-acp",
-        "args": [],
-        "env": {}
-      }
-    }
-    ```
+4.  **Add it to Zed.** In Zed, open the command palette (`Cmd/Ctrl+Shift+P`) and run **`zed: acp registry`**. Find **Mistral Vibe** in the list and install it.
 
-5.  **Try it.** Open the agent panel (the sparkle icon at the bottom right, or **`agent: new thread`** in the command palette), pick Mistral Vibe from the agent dropdown, and ask it something about an open file. If it answers, you're ready for Session X.
+5.  **Try it.** Open the agent panel (the sparkle icon at the bottom right, or **`agent: new thread`** in the command palette), pick Mistral Vibe from the agent dropdown, and ask it something about an open file. If it answers, you're ready for Session VIII.
 
 > **Warning**
 >
-> **Already paying for ChatGPT or Claude?** You may use those in Zed's own agent under their own rules, but the course teaches and supports one path: Mistral Vibe. One trap to know: a **Claude Pro/Max subscription does not work** in Zed's built-in Anthropic provider, which bills separate API credits. Use the free Mistral key.
+> **Already paying for ChatGPT or Claude?** You may use those in Zed's own agent under their own rules, but the course teaches and supports one path: Mistral Vibe. One trap to know: a **Claude Pro/Max subscription does not work** in Zed's built-in Anthropic provider, which bills separate API credits. Use the free Mistral account.
 
 ## The course chatbot
 
@@ -105,7 +97,7 @@ The chat widget in the sidebar stays available in Part II as well. The differenc
 You now have:
 
 1.  A GitHub account from Session I, old enough for the Zed student plan.
-2.  A free Le Chat account for questions and explanations.
-3.  A free La Plateforme API key (with the training opt-out done) that powers Mistral Vibe in Zed.
-4.  A Zed student plan application on its way, and Vibe installed before Session X.
+2.  A free Mistral account for questions and explanations in Vibe, with both training switches turned off.
+3.  A Zed student plan application on its way.
+4.  From Session VII: Zed, with Mistral Vibe in its agent panel.
 5.  The one habit that applies everywhere: a one-line AI-disclosure note on every submission that used AI.
