@@ -5,53 +5,69 @@ subtitle: "Programming with Python · Tutorial 08"
 
 The investor wasn't impressed by a slide. She was impressed by *data*. So she
 slides a USB stick across the table: **every order, two full weeks.** "Impress
-me." That stick is now a real file, `orders.csv`, with eighty rows: too many to
-eyeball, too many for a hand-written loop. This week you learn the tool built
-for exactly this: **pandas**. You'll load a whole spreadsheet into one
-*DataFrame*, filter it with boolean masks, combine conditions with `&`, add a
-derived column on a safe copy, and answer per-zone questions with `groupby`.
-Tobi, meanwhile, has discovered AI. Your real job is to **supervise** it and
-catch the confident nonsense.
+me." That stick is now a real file, `orders_messy.csv`. Tobi exported it from
+the ordering system and nobody has looked at it since. It has too many rows to
+eyeball and too many for a hand-written loop, so this week you use the tool
+built for exactly this: **pandas**. You'll load the file into one *DataFrame*,
+filter it with boolean masks, add a derived column on a safe copy, and answer
+per-zone questions with `groupby`. Tobi, meanwhile, has discovered AI. Your
+real job is to **supervise** it and catch the confident nonsense.
 
-## Work on the notebook
+## Run the lab on your laptop
 
-[Open in browser](../notebooks/nb_08_lab_dataroom/){.btn .btn-primary}
-[![Open in molab](https://marimo.io/molab-shield.svg)](https://molab.marimo.io/github/beyondsimulations/Introduction-to-Python/blob/main/notebooks/nb_08_lab_dataroom.py)
+From this episode the lab is a Python script that runs on your own machine, in
+the `python-labs` folder you created in Session VII.
 
-**Open in browser (recommended):** runs entirely on your machine, in this tab:
-no account, no installation, and after it loads no internet is needed.
+1. Download both files and move them into your `python-labs` folder:
 
-::: {.callout-note}
-## If the notebook won't boot
+   [Lab script](../labs/lab_08_dataroom.py){.btn .btn-primary download="lab_08_dataroom.py"}
+   [Orders data](../labs/orders_messy.csv){.btn .btn-primary download="orders_messy.csv"}
 
-This lab loads pandas, which is fetched over the network the first time. If the
-notebook fails to boot with a network error, **reload the page once**
-(Cmd/Ctrl + R). That almost always fixes it.
+2. In Zed, open the `python-labs` folder, then the terminal (`` Ctrl+` ``).
+3. Run `uv run python lab_08_dataroom.py`.
+
+::: {.callout-note collapse="true"}
+## No Zed on your laptop, or only an iPad?
+
+Use a **GitHub codespace**: a Linux computer that runs in a browser tab.
+
+1. Sign in at [github.com/codespaces](https://github.com/codespaces) and start
+   the **Blank** template. If you set one up in Session VII, open it again and
+   go to step 3.
+2. In its terminal, follow the [uv guide](../general/uv.qmd) (the macOS or
+   Linux lines) down to `uv add pandas matplotlib`.
+3. Go into the folder with `cd python-labs` and download both files:
+
+   ```bash
+   curl -O https://python.tobiasvlcek.com/labs/lab_08_dataroom.py
+   curl -O https://python.tobiasvlcek.com/labs/orders_messy.csv
+   ```
+
+4. Run `uv run python lab_08_dataroom.py`.
+
+A codespace has no Zed, so keep the chatbot open in a second tab for AI help.
 :::
+
+The first run prints three tables and then stops with
+`AssertionError: Task 1: not attempted yet.` That is the lab working: the
+script checks every task and stops at the first one you have not solved yet.
+Solve it, save, and run again.
 
 ::: {.callout-important}
-## How your work is saved (read this once)
+## Look at your numbers
 
-Your progress lives **in this browser tab**. If you **reload** the page
-(Cmd/Ctrl + R) your work is still there. But if you **close the tab and open
-the link again later, you start from a clean notebook**. There is no
-cross-device sync in the browser, and clearing browser data or private mode
-also wipes it.
-
-So: **download your `.py` before you leave** (menu → Download → *Download Python
-code*). That download is the *only* guaranteed copy. Handing in files works
-exactly like this in the checkpoints, so you get to practice the motion every
-week. Note: a downloaded `.py` is for submission and backup. You can't upload
-it back into the browser editor.
+Each task gives you a symptom ("Hafen is missing orders"), and you find the
+cause. The checks only test the form of your answers, so a wrong number can
+pass all of them. And **one problem in the export is not mentioned anywhere**:
+no task names it and no check catches it.
 :::
 
-**Open in molab:** marimo's free cloud (account required). Your copy saves to
-your account and reopens on **any device**. Choose this if you know you'll
-switch computers or want to be certain nothing is lost. Optional: nothing
-graded ever requires it.
+When every check passes, the script prints a block that starts with
+`SHOW THIS IN CLASS`. Show it to your lecturer, and you are free to go.
 
-<!-- PUBLISH AFTER SESSION VIII (see docs/authoring-conventions.md → Solution notebooks):
+<!-- PUBLISH AFTER SESSION VIII (see docs/authoring-conventions.md, "Script labs"):
+copy sol_08_lab_dataroom.py from the private repo into labs/, then un-comment.
 ## Solutions
 
-[Solutions notebook (read-only)](../notebooks/sol_08_lab_dataroom/){.btn}
+[Solution script](../labs/sol_08_lab_dataroom.py){.btn download="sol_08_lab_dataroom.py"}
 -->

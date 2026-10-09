@@ -262,3 +262,63 @@ Add new exercises to `helpers/make_qr.py` EXERCISES and re-run it.
   flips it in every index.html or cells sit idle until "Run all"; and with the
   shared asset bundle `mo.notebook_location()` resolves to `_site/notebooks/`, so
   the script copies `notebooks/public/` there or pandas labs read the 404 page.
+
+## Script labs (Session VIII+)
+From Session VIII the labs are plain `.py` scripts that students run locally
+(`uv run python lab_XX_<topic>.py` in Zed's terminal, inside `python-labs`).
+Reference: `labs/lab_08_dataroom.py`.
+- Location: `labs/lab_XX_<topic>.py` plus its data files. `_quarto.yml` lists
+  `labs/` under `project.resources`, so EVERYTHING in `labs/` is published.
+  Nothing secret goes there, and no solution script before its session.
+- Shape: a header comment (story, "HOW TO RUN THIS LAB" in three steps, "HOW
+  THE LAB WORKS"), then `# %%` cells: one given load cell, one cell per task,
+  one last cell that prints the block `SHOW THIS IN CLASS`.
+- Data: a CSV next to the script, read by its bare file name. Never by URL:
+  the course host answers `Python-urllib` with 403. The load cell first
+  asserts that the file exists and says where to put it.
+- A task: a comment block (brief first, then the target names with their
+  constraints), `# YOUR CODE BELOW`, the targets pre-set to `None`, then
+  `# Checks (do not change)` with the `assert` lines and one
+  `print("Task N passed: ...")`.
+- Prompts name the symptom and the target, never the cause or the method
+  ("Hafen is missing orders", not "strip the whitespace").
+- Checks test form and consistency only: type, size, plausible range, and
+  whether the student's own answers agree with each other. NEVER an expected
+  value (the agent would hard-code it) and never a cleaning method (students
+  read the asserts). First assert of a task: `is not None`, message
+  `Task N: not attempted yet.` Guard the type before comparing, so a wrong
+  type gives a message and not a pandas error. Every message starts with
+  `Task N:` and says what is wrong with the answer.
+- Tobi's code is static and runs: it stores its wrong number in a `tobi_*`
+  name and prints it; the student writes the right number into a name of
+  their own. A check may compare the two.
+- One unannounced problem per script lab, in the DATA (lab 08: a test order).
+  No task names it and no check catches it; it is findable with tools from
+  the lecture (`.describe()` shows it). Never plant an error in the task text.
+  The handoff slide and the tutorial page say that one problem is not
+  mentioned anywhere; the script itself does not, so the student knows more
+  than the agent. The lecturer catches it at the desk: the header of the
+  solution script lists what each wrong number means.
+- Output is ASCII only (Windows consoles), tables print at
+  `pd.set_option("display.width", 120)`, and charts go through
+  `plt.savefig("<name>.png")` then `plt.close()`, never `plt.show()`.
+- The script's last lines say that the checks only test form. Never print
+  "all correct".
+- Tutorial page: two download BUTTONS with a `download` attribute
+  (`[Lab script](../labs/lab_XX.py){.btn .btn-primary download="lab_XX.py"}`),
+  then the three run steps. Not `code-links` and not a plain link: Chromium
+  opens a `.py` link as text in the tab (verified 2026-10-09).
+- Fallback for students without Zed (locked laptop, only an iPad): a GitHub
+  codespace from the Blank template. The tutorial page carries the steps in
+  a collapsed callout, with `curl -O` lines for that lab's files. No starter
+  repo and no browser version of the lab.
+- Solutions: `solutions/sol_XX_lab_<topic>.py` in the private repo, the lab
+  script with every task filled in and a header that explains what was wrong
+  with the data. Publish AFTER the session: copy it into `labs/` and
+  un-comment the Solutions block on the tutorial page.
+- Gates before a session: the solution script exits 0 in a fresh student-style
+  project (`uv init --no-package`, `uv add pandas matplotlib`, newest pandas)
+  and under the repo env; the unsolved script stops at
+  `Task 1: not attempted yet.`; a set of wrong-answer variants each stops at
+  its intended message; the script is ASCII only; the download buttons
+  download in a real browser.

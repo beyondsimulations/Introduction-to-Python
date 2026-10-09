@@ -274,7 +274,7 @@ print(df)
 . . .
 
 :::{.callout-note}
-Nobody types eighty orders by hand: today's lab loads a real CSV in one line, `orders = pd.read_csv("public/orders.csv")`. In the browser that line fetches over the web instead of from disk; your code doesn't change.
+Nobody types eighty orders by hand: today's lab loads a real CSV in one line, `orders = pd.read_csv("orders_messy.csv")`. The file sits in the same folder as your script, so its name is all the path you need.
 :::
 
 ## First look: `.head()` and `.info()`
@@ -441,16 +441,29 @@ Scan the QR or type the link:
 
 ## After the break: the lab
 
-- Head to the lab notebook: [Episode 8: The Data Room](../tutorials/tut_08_pandas.qmd), in your browser as always
-- The investor slides a **USB stick** across the table: every order of two weeks, now `orders.csv`, eighty rows, one `pd.read_csv` line
-- You'll `.head()` it, ask its `.shape`, filter with masks, add a column on a safe copy, and answer per-zone questions with `groupby`
-- Tobi has discovered AI; your real job is to **supervise** it and catch the confident nonsense
+- The lab is a **script** now: download `lab_08_dataroom.py` and `orders_messy.csv` from [Episode 8: The Data Room](../tutorials/tut_08_pandas.qmd) and move them into `python-labs`
+- In Zed's terminal: `uv run python lab_08_dataroom.py`. It checks every task and stops at the first one you haven't solved
+- The USB stick holds Tobi's raw export. Each task gives you a symptom ("Hafen is missing orders"); you find the cause
+- **One problem in the file is not mentioned anywhere**, and no check catches it
 
 . . .
 
 :::{.callout-important}
-**Download your `.py` before you leave.** Closing the tab without downloading loses your work, the same motion you used to hand in the checkpoint at the start of the session.
+**Show me the last block before you leave.** When every check passes, the script prints `SHOW THIS IN CLASS`, and I compare your numbers with mine.
 :::
+
+## Your agent, in Zed
+
+Open the agent panel (the sparkle icon, bottom right), pick **Mistral Vibe**, and ask for **one task at a time**:
+
+> *In `lab_08_dataroom.py`, fill in `revenue_by_zone` in Task 4: a dict, zone name to euros, from the DataFrame `clean`. Change nothing else.*
+
+1. **Read it**: Zed shows the changes as a *diff*, old lines red, new lines green. Read it **before** you accept
+2. **Run it**, then **test it** on a case where you know the answer
+
+. . .
+
+How an agent works inside: Session X. Today it is a tool that you supervise.
 
 # [Wrap-up]{.flow} {.title}
 

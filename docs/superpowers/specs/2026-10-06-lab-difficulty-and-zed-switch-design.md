@@ -69,8 +69,9 @@ Weekly on Tuesdays, with **20 Oct off**:
 5. **Session VII: install first, strict exit ticket.** After the lecture,
    everyone installs uv, Zed and Mistral Vibe in class; nobody leaves
    before the check passes. Then lab 07. Exception: if you confirm a
-   laptop cannot run it (hardware, locked down), the student leaves with
-   a named partner and pairs on the partner's laptop in VIII-IX.
+   laptop cannot run it (hardware, locked down, only an iPad), the
+   student sets up a GitHub codespace instead and shows `ready` in its
+   terminal (decision 19; pairing was the first plan).
 6. **Data is a downloaded CSV next to the script**, read with a relative
    path (`pd.read_csv("orders_messy.csv")`). Background: the course host
    answers pandas' default user agent with 403 (Cloudflare blocks
@@ -79,7 +80,11 @@ Weekly on Tuesdays, with **20 Oct off**:
 7. **Downloads** use the foundations mechanism: a `code-links` entry in
    the front matter of each tutorial page, plus `project.resources` in
    `_quarto.yml`. Never `format-links`: Quarto silently drops formats it
-   doesn't know.
+   doesn't know. **As built (2026-10-09):** `tut_08` uses two download
+   buttons in the page body with a `download` attribute, not `code-links`.
+   Chromium opens a `.py` link as text in the tab (served as
+   `text/x-python` or `text/plain`), and a `code-links` entry cannot carry
+   the attribute. With the attribute both files download.
 8. **Self-checks check shape and plausibility only, never the expected
    value.** A literal in an `assert` hands the agent the answer to
    hard-code.
@@ -92,7 +97,8 @@ Weekly on Tuesdays, with **20 Oct off**:
 11. **The in-lecture QR exercises in VIII-IX stay in the browser.**
     Concepts are browser work; labs are local work.
 12. **nb_08 and nb_09 are retired**: moved out of `notebooks/`, no longer
-    exported. Pairing is the fallback, not a browser version.
+    exported. A GitHub codespace is the fallback (decision 19), not a
+    browser version and no longer pairing.
 13. **Vibe setup:** Mistral Vibe is installed from Zed's agent registry
     (`zed: acp registry`), not by editing `settings.json`. Tobias confirmed
     on 2026-10-09 that this works with a free account, and
@@ -108,6 +114,32 @@ Weekly on Tuesdays, with **20 Oct off**:
 17. **No hint accordions in labs 06-07** (owner, 2026-10-08). The notebook
     keeps its usual structure; worked examples, slides and the AI assistant
     replace the hints. Recorded in `docs/authoring-conventions.md`.
+
+18. **One unannounced problem per script lab** (owner, 2026-10-09). It
+    sits in the data, never in the task text: only Tobi and his export may
+    be wrong, the lab's own instructions never are. No task names it and
+    no check catches it, but tools from the lecture show it. Lab 08: a
+    test order (id 9999, dish `TEST`, 99 euros, 0 minutes) that makes
+    Nord the top zone instead of Sued. The handoff slide and the tutorial
+    page say that one problem is not mentioned anywhere; the script does
+    not, so the student knows something the agent does not. It is caught
+    at the desk, against the key in the solution script's header. A wrong
+    premise in a brief is held back for lab 09.
+
+19. **Fallback without Zed: a GitHub codespace** (owner, 2026-10-09).
+    The student starts GitHub's **Blank** template at
+    `github.com/codespaces`, follows the uv guide's macOS/Linux lines in
+    its terminal (`uv init --no-package python-labs`,
+    `uv add pandas matplotlib`), downloads the two lab files with
+    `curl -O` from the course site (it answers curl with 200, unlike
+    `Python-urllib`) and runs the same `uv run python` command. No
+    starter repo: the manual steps are the ones everybody does in VII.
+    Tobias tested it on an iPad on 2026-10-09. A codespace has no Zed and
+    no agent panel, so these students use the chatbot tab; `vibe` in the
+    codespace terminal is not verified. Free accounts get 120 core hours
+    a month. The steps live in a collapsed callout on `tut_08` and in the
+    "Stuck?" callout of the `lec_07` check slide; `tut_09` gets the same
+    callout.
 
 ## Time targets
 
@@ -278,6 +310,21 @@ then 6-7 brief-style tasks:
 
 Show in class: the per-zone revenue and the cleaned row count.
 
+C4b. **Lab 08 as built (2026-10-09):** `orders_messy.csv` has 86 rows: the
+80 orders, 5 exact duplicates, 6 rows spelled `"Hafen "`, 25 orders
+without a rating and the test order of decision 18. Seven tasks: 1 first
+look (`raw_rows`, `unrated_rows`), 2 `clean` and `order_count`, 3 Tobi's
+Hafen number (`hafen_revenue`, `clean` repaired to four zones), 4
+`revenue_by_zone` and `top_share`, 5 critical deliveries on a copy
+(`timed`, `critical_count`, `critical_share_by_zone`), 6 Tobi's rating
+(`avg_rating`; his `fillna(0)` average of 2.76 lies below the lowest
+rating given), 7 `zone_report` and a one-sentence `recommendation`. Key:
+80 orders, Altstadt 376.2, Hafen 325.3, Nord 345.9, Sued 395.9, top share
+27.43, 12 critical, rating 4.01; with the test order left in: 81 orders,
+Nord 444.9, top share 28.85. Verified: the solution exits 0 on pandas
+2.3.2 and 3.0.6, and 70 variants (wrong answers, unsolved stages, other
+correct routes) each end at the intended message or pass.
+
 C5. **Lab 09 (long).** From the messy CSV to the pitch:
 - Clean the data, then save a daily-revenue line chart, a per-zone bar
   chart and a histogram as PNGs.
@@ -292,11 +339,12 @@ Show in class: the PNGs and the summary.
 
 C6. **Tutorial pages `tut_08`/`tut_09`.**
 - Replace the molab/WASM buttons, the save/download warning and the
-  boot callouts with `code-links` for the script and the CSV.
+  boot callouts with download buttons for the script and the CSV
+  (decision 7, as built).
 - Add the run steps inline, in three lines (no separate how-to page).
 
 C7. **Solutions** (private repo). `sol_08`/`sol_09` become scripts,
-published after the session as downloads via `code-links`, not as a
+published after the session as a download button on the tutorial page, not as a
 run-mode WASM export. They cannot go under `notebooks/solutions/`
 (`helpers/validate_notebooks.py:15` treats that as marimo). Gate: every
 solution script runs end to end with all asserts passing under
@@ -373,9 +421,9 @@ browser sign-in with a fresh free account the same day:
 - **27 Oct (VII):** decision 13 verified; `ai-tools.qmd` + `uv.qmd`
   fixed (B5, B2); `lec_07` install block; lab 07 reworked + `sol_07`;
   CP4 alignment (A4) checked.
-- **3 Nov (VIII):** `labs/lab_08` + CSV + `sol_08`; `tut_08` code-links;
-  `_quarto.yml` resources; `lec_08` agent slide and `lec_08` ripples;
-  the conventions section (C2); nb_08 retired.
+- **3 Nov (VIII):** `labs/lab_08` + CSV + `sol_08`; `tut_08` download
+  buttons; `_quarto.yml` resources; `lec_08` agent slide and `lec_08`
+  ripples; the conventions section (C2); nb_08 retired. Built 2026-10-09.
 - **10 Nov (IX):** `labs/lab_09` + `sol_09`; `tut_09`; `lec_09` slide;
   nb_09 retired.
 - **17 Nov (X):** `lec_10` cold open and toolchain rewrite; the rest of
