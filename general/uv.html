@@ -516,7 +516,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#create-the-task-file" id="toc-create-the-task-file" class="nav-link" data-scroll-target="#create-the-task-file">Create the task file</a></li>
   <li><a href="#run-the-task" id="toc-run-the-task" class="nav-link" data-scroll-target="#run-the-task">Run the task</a></li>
   </ul></li>
-  <li><a href="#adding-packages-later-in-the-course" id="toc-adding-packages-later-in-the-course" class="nav-link" data-scroll-target="#adding-packages-later-in-the-course">Adding packages (later in the course)</a></li>
+  <li><a href="#adding-packages" id="toc-adding-packages" class="nav-link" data-scroll-target="#adding-packages">Adding packages</a></li>
   <li><a href="#updating-uv" id="toc-updating-uv" class="nav-link" data-scroll-target="#updating-uv">Updating <code>uv</code></a></li>
   <li><a href="#best-practices-for-this-course" id="toc-best-practices-for-this-course" class="nav-link" data-scroll-target="#best-practices-for-this-course">Best practices for this course</a></li>
   <li><a href="#recap" id="toc-recap" class="nav-link" data-scroll-target="#recap">Recap</a></li>
@@ -613,9 +613,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="create-your-first-project" class="level2">
 <h2 class="anchored" data-anchor-id="create-your-first-project">Create your first project</h2>
 <p>Pick a folder where you keep course work. <strong>If you do not have one, make sure to create one!</strong> In the terminal, move into that folder (<code>cd</code> followed by its path, or drag the folder onto the terminal window) and run:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb9"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="ex">uv</span> init <span class="at">--no-package</span> my-first-project</span>
-<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> my-first-project</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p>The first line creates a new folder named <code>my-first-project</code> (you can name it anything). The second line moves you into that folder. In Session X you will instead run <code>uv init --no-package</code> <em>inside</em> a folder cloned from GitHub; same command, no name.</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb9"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="ex">uv</span> init <span class="at">--no-package</span> python-labs</span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> python-labs</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>The first line creates a new folder named <code>python-labs</code>. Keep that name: from Session VIII the labs live in this folder. The second line moves you into that folder. In Session X you will instead run <code>uv init --no-package</code> <em>inside</em> a folder cloned from GitHub; same command, no name.</p>
 <p><code>uv init --no-package</code> creates: - <code>main.py</code> (starter script) - <code>pyproject.toml</code> (project + dependencies config) - <code>.python-version</code> (records the Python version we chose) - <code>.gitignore</code> and <code>README.md</code> (only when the folder is new; a folder cloned from GitHub already has both) - (A <code>.venv</code> folder will appear later once packages are added or synced.)</p>
 <div class="callout callout-style-simple callout-note">
 <div class="callout-body d-flex">
@@ -635,12 +635,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>Inside the project folder:</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb10"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="ex">uv</span> run python main.py</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>You should see something like:</p>
-<pre><code>Hello from my-first-project!</code></pre>
+<pre><code>Hello from python-labs!</code></pre>
 <p>(If you want, you can open <code>main.py</code> and change the message, then re-run.)</p>
 <section id="what-does-that-code-mean" class="level3">
 <h3 class="anchored" data-anchor-id="what-does-that-code-mean">What does that code mean?</h3>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> main():</span>
-<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">"Hello from my-first-project!"</span>)</span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">"Hello from python-labs!"</span>)</span>
 <span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> <span class="va">__name__</span> <span class="op">==</span> <span class="st">"__main__"</span>:</span>
@@ -688,12 +688,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </section>
 </section>
-<section id="adding-packages-later-in-the-course" class="level2">
-<h2 class="anchored" data-anchor-id="adding-packages-later-in-the-course">Adding packages (later in the course)</h2>
-<p>If/when you need a package (example: <code>pandas</code>):</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb14"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="ex">uv</span> add pandas</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p>If you added the wrong one:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb15"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="ex">uv</span> remove pandas</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<section id="adding-packages" class="level2">
+<h2 class="anchored" data-anchor-id="adding-packages">Adding packages</h2>
+<p>The labs from Session VIII need two packages. Inside <code>python-labs</code>, run:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb14"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="ex">uv</span> add pandas matplotlib</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>If you added the wrong one (example: <code>numpi</code>, a typo):</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb15"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="ex">uv</span> remove numpi</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>If your <code>pyproject.toml</code> changed (e.g.&nbsp;you pulled code from someone else):</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb16"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="ex">uv</span> sync</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="callout callout-style-simple callout-tip">
