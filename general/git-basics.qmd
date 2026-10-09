@@ -7,10 +7,10 @@ subtitle: "Version control for your project, from Zed"
 
 When you write code over several days, you keep changing files. Without a record, you cannot tell what changed, when, or why, and you cannot go back to a version that worked. **Version control** is a tool that saves snapshots of your project so you always have a history you can return to. In this course we use git, the standard tool for this, and GitHub, a website that stores a copy of your project online so a partner can see it too.
 
-You do not need to understand how git works inside. You need five simple actions, and you can do all of them from Zed, the editor you set up before Session X. Zed has a git panel (a side panel that shows your changes) and, like everything in Zed, git actions are available from the **command palette** (`Cmd+Shift+P` on macOS, `Ctrl+Shift+P` on Windows/Linux). This page uses the command-palette names: they always work, whatever the panel looks like. We show the matching terminal command next to each action as well, because the words are the same everywhere, and you will see those commands in videos, tutorials, and error messages. Learn the word once and it works in both places.
+You do not need to understand how git works inside. You need five simple actions, and you can do all of them from Zed, the editor you have used since Session VII. Zed has a git panel (a side panel that shows your changes) and, like everything in Zed, git actions are available from the **command palette** (`Cmd+Shift+P` on macOS, `Ctrl+Shift+P` on Windows/Linux). This page uses the command-palette names: they always work, whatever the panel looks like. We show the matching terminal command next to each action as well, because the words are the same everywhere, and you will see those commands in videos, tutorials, and error messages. Learn the word once and it works in both places.
 
 ::: callout-note
-**Before Session X**, do only the [one-time setup](#one-time-setup) below: install git and `gh`, log in once. It needs neither uv nor Zed. Everything else on this page is what we do together in Session X.
+**Before Session X**, do only the [one-time setup](#one-time-setup) below: install git and `gh`, log in once. Everything else on this page is what we do together in Session X.
 :::
 
 ## The five operations
@@ -132,6 +132,15 @@ Signing in to Zed is not the same as authenticating git. Even fully signed in to
 
    This tells git to simply combine your partner's work with yours when you pull. You only set this once. Without it, git may refuse a pull with a confusing message about "divergent branches".
 
+6. **Tell git who you are.** Every commit carries a name and an e-mail address:
+
+   ```bash
+   git config --global user.name "Your Name"
+   git config --global user.email "you@example.com"
+   ```
+
+   Use the e-mail address of your GitHub account, so that GitHub links your commits to you. Without these two lines, git either refuses to commit (*"Please tell me who you are"*) or makes up an address from your computer's name.
+
 ::: callout-note
 Signing in to the Zed app (`client: sign in` in the command palette) is optional and only for Zed's collaboration and AI features. It has nothing to do with git push, so do not treat it as part of git setup.
 :::
@@ -216,7 +225,7 @@ Fix: never rewrite history that others may already have. Two safe options:
 You can now:
 
 1. Explain what a repository, a commit, push, pull, and clone are.
-2. Set up your machine once: GitHub authentication with `gh auth login`, plus the one-time pull setting.
+2. Set up your machine once: GitHub authentication with `gh auth login`, the one-time pull setting, and your name and e-mail for commits.
 3. Start a project GitHub-first: create it on the website, clone it, `uv init --no-package` inside, commit, push.
 4. Work in a pair: pull before you start, commit as you go, push when you stop.
 5. Recognize a conflict and know the course rule: bring it to class instead of fixing it alone.

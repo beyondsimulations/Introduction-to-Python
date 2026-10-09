@@ -1,5 +1,5 @@
 ---
-title: "Lecture X - Tooling, Git and Your Project"
+title: "Lecture X - Git and Your Project"
 subtitle: "Programming with Python"
 author: "Dr. Tobias Vlćek"
 institute: "Kühne Logistics University Hamburg - Fall 2026"
@@ -41,23 +41,26 @@ Pens down. The checkpoint is behind you, and so, it turns out, is the startup. O
 
 . . .
 
-The lawyers will tell you deals close on the numbers. This one closed on **yours.** The clean order data you pulled together in the data room (Session VIII) and the dashboard you built for the pitch (Session IX) are exactly what convinced the acquirer the books were real.
+The lawyers will tell you deals close on the numbers. This one closed on **yours.** The clean order data you pulled together in the data room (Session VIII) and the pitch deck you built from it (Session IX) are exactly what convinced the acquirer the books were real.
 
 . . .
 
 No cliff-edge growth chart with a chopped axis. Just data that survived a second look. **That's why they signed.**
 
-## The handover note
+## The handover
 
-Tobi's job today is to hand over the **data room**: every file the company ever built. He tapes a note to the folder:
-
-. . .
-
-> *"It's all here. And it was never anything fancy. Every notebook you downloaded all semester was already a plain `.py` file. Same code, same lines. Open one in a real editor and it just runs."*
+Tobi's job today is to hand over the **data room**: the folder with every file the company ever built. You know that folder. It's `python-labs`, two labs later.
 
 . . .
 
-That's the whole reveal, and most of you already suspected it. Those downloads stop being **backups** today and become the **real thing**: on your own machine, in a real editor, under your control.
+MunchCorp's lawyer opens it and asks two questions:
+
+- `growth.png`: is this the chart the investor **saw**, or has it changed since?
+- `orders_messy.csv`: **who** changed it after Tobi's export, and **what**?
+
+. . .
+
+Nobody can say. A folder shows what is in it **now**, and nothing about how it got there. Today you give a folder a **history**, with a tool called [git]{.highlight}.
 
 ## Your exit package
 
@@ -65,9 +68,9 @@ Every acquisition comes with an exit package. Here's yours: you don't join Munch
 
 . . .
 
-- The tools are the same ones professionals use: uv, Zed, git, GitHub
+- The tools are the ones professionals use: uv and Zed have been on your laptop since Session VII, **git and GitHub** join them today
 - The work is a real project, built with a partner, over the next weeks
-- Today we set up the machine and the repo; the building starts here
+- Today we set up the repo; the building starts here
 
 . . .
 
@@ -166,6 +169,13 @@ The project does not have to be flawless. Show that you scoped it realistically,
 
 # [Form your pair, pick your direction]{.flow} {.title}
 
+## One rule before you pair up
+
+You build your project with the agent, and the agent lives in Zed. So **every pair needs a laptop that runs Zed.**
+
+- Zed doesn't run on an iPad, so **two iPads can't form a pair**
+- Only an iPad? Pair with someone who has a laptop
+
 ## Take ~25 minutes
 
 Right now, in the room:
@@ -180,20 +190,20 @@ Right now, in the room:
 **A good outcome by the end of this block:** a one-sentence pitch ("we're building X that does Y for Z"), a name for the project, and a decision on who owns the shared repo (the owner creates it in the git block; the partner clones). The sentence keeps you honest about scope; the name goes on the repo in a minute.
 :::
 
-# [Your Toolchain]{.flow} {.title}
+# [Your First Repo]{.flow} {.title}
 
-## Check your install
+## Check your homework
 
-Before we build anything, the installs from the Session IX homework need to work. In a terminal:
+git and `gh` were the homework from Session IX. Before we build anything, they need to work. In Zed's terminal (`` Ctrl+` ``):
 
 ```bash
 git --version
 gh --version
-uv --version
+gh auth status
 ```
 
-- Three version numbers? You're set.
-- Zed opens, and **Mistral Vibe** shows up in its agent panel? Good.
+- Two version numbers, and the last command says **Logged in to github.com**? You're set.
+- No login yet? The next slide is yours.
 
 . . .
 
@@ -203,23 +213,32 @@ uv --version
 
 ## Once per machine
 
-Before your laptop can talk to GitHub, it has to prove it's allowed to. Signing in to **Zed does not do this**; git needs its own login, and the `gh` tool handles it. Once per computer, in a terminal:
+Before your laptop can talk to GitHub, it has to prove it's allowed to. Signing in to **Zed does not do this**; git needs its own login, and the `gh` tool handles it. If `gh auth status` showed no login, do it now, once per computer:
 
 ```bash
 gh auth login
 ```
 
-Choose GitHub.com, **HTTPS**, authenticate in the browser, and answer yes to *"Authenticate Git with your GitHub credentials?"*. Then, once:
-
-```bash
-git config --global pull.rebase false
-```
+Choose GitHub.com, **HTTPS**, authenticate in the browser, and answer yes to *"Authenticate Git with your GitHub credentials?"*.
 
 . . .
 
 :::{.callout-important}
 **Login fighting you?** Same rule: **flag it**, follow along on the slides, and finish at home with the [Git Basics](../general/git-basics.qmd) page, or with me in the supervised sessions. Nobody's project stalls on a login.
 :::
+
+## Tell git who you are
+
+Everyone, logged in or not: three settings, once per computer. Running them twice does no harm.
+
+```bash
+git config --global user.name "Your Name"
+git config --global user.email "you@example.com"
+git config --global pull.rebase false
+```
+
+- **Name and e-mail** are how git answers the lawyer's *who?* Use the e-mail of your GitHub account, so GitHub knows it's you
+- **The third line** is for pair work later: git then simply combines your partner's changes with yours
 
 ## Your project starts on GitHub
 
@@ -238,7 +257,7 @@ That's a **repository**: a folder git watches, with its whole history. So far it
 
 ## Bring it down: clone
 
-In Zed's command palette (`Cmd/Ctrl+Shift+P`): **`git: clone`**, paste the URL, and pick the folder where you keep course work. Zed opens the new folder as your workspace: the file tree on the left shows `README.md` and `.gitignore`.
+In Zed's command palette (`Cmd/Ctrl+Shift+P`): **`git: clone`**, paste the URL, and pick the folder that `python-labs` sits in, so the repo lands **next to** `python-labs` and not inside it. Zed opens the new folder as your workspace: the file tree on the left shows `README.md` and `.gitignore`.
 
 ```bash
 git clone https://github.com/you/python-practice.git
@@ -256,48 +275,29 @@ Open Zed's built-in terminal (`` Ctrl+` ``); it starts inside your workspace. Th
 
 ```bash
 uv init --no-package
+uv run python main.py
 ```
 
-`uv init` adds `main.py`, `pyproject.toml` and `.python-version` next to the `README.md` and `.gitignore` that GitHub made.
+`uv init` adds `main.py`, `pyproject.toml` and `.python-version` next to the `README.md` and `.gitignore` that GitHub made. The second line runs `main.py` the way you run a lab, and prints `Hello from python-practice!`
 
 . . .
 
 :::{.callout-note}
-**`--no-package`** keeps it a flat folder of scripts, the shape you know from the labs; without it, uv builds an installable package layout you don't need yet. And no `git init`: the folder came from GitHub, it **is** a git repository already.
+**`--no-package`** keeps it a flat folder of scripts, like `python-labs`, which the same command made in Session VII; without it, uv builds an installable package layout you don't need yet. And no `git init`: the folder came from GitHub, it **is** a git repository already.
 :::
 
-## Open a notebook in Zed
+## Same agent, new folder
 
-Grab **a lab `.py` you downloaded in Part I**: we'll use `nb_03_lab_functions.py`. Copy it **into your project folder**, then open it in Zed: it's just code. Read it.
-
-The file needs its tools first; adding a package is one command:
-
-```bash
-uv add marimo
-```
-
-Now run it, no browser required:
-
-```bash
-uv run python nb_03_lab_functions.py
-```
-
-. . .
-
-`uv run` uses the project's own Python and packages. The file that lived in a browser tab all semester now runs on **your machine, from your editor.** That's the whole point of today. *(Part-I labs only today; the pandas labs need more packages and their CSV.)*
-
-## Connect your AI
-
-Part III **encourages** AI, and it is already installed: Mistral Vibe, running inside Zed on the key from Session VI (setup in the [AI-tools guide](../general/ai-tools.qmd)). Open the agent panel, pick Mistral Vibe, and try it on your five-minute-old project:
+Part III **encourages** AI, and your agent is already here: Mistral Vibe works in whatever folder Zed has open. Open the agent panel and ask:
 
 > *Explain what `main.py` does, then add a docstring. Don't change anything else.*
 
-Read the diff Zed shows you **before** you accept it. That's the whole workflow: you ask, it drafts, you verify.
+This time, **watch the panel while it works:** what does Vibe do before it shows you a change? Then read the diff before you accept it, as always.
 
 . . .
 
 :::{.callout-important}
-The disclosure rule still stands, now in writing: your repo's `README.md` says **which tools you used, what for, and what you checked yourself.** AI drafts; **you verify**, same reflex as the checkpoint you just sat.
+The disclosure rule still stands, now in writing: your repo's `README.md` says **which tools you used, what for, and what you checked yourself.**
 :::
 
 ## Inside the panel: a model in a loop
@@ -329,7 +329,7 @@ Two of them you've already done: the repo exists, and you cloned it. The other t
 
 ## Your first commit
 
-Your folder has new files worth saving: `main.py`, `pyproject.toml`, `.python-version`, the lab. In Zed's **command palette**:
+Your folder has new files worth saving: `main.py` with its docstring, `pyproject.toml`, `.python-version`, and `uv.lock`, the exact package versions, so every laptop installs the same ones. In Zed's **command palette**:
 
 - **`git: stage all`**: mark everything as part of the snapshot
 - **`git: commit`** (`Cmd/Ctrl+Enter`): type a message, save it
@@ -357,6 +357,20 @@ git push
 
 Reload the repo page on github.com: `main.py` is there. That's the commit cycle you'll repeat all project long: **edit → commit → push**. Pull is the other direction; you'll see it in a minute.
 
+## Your history
+
+Two commits in, the folder has a history. Read it:
+
+```bash
+git log --oneline
+```
+
+One line per commit, newest first: a short ID and the message. Yours sits on top of GitHub's `Initial commit`. On github.com, **Commits** (top right of the file list) shows the same list with author and time; click a commit to see what it changed.
+
+. . .
+
+That answers the lawyer for every file in the repo: **who** changed it, **when**, and **what it looked like before**. It's also the list I read when I grade your project. `Set up the project` tells me something; `stuff` doesn't.
+
 ## The real project repo: owner only
 
 Now the one that counts. **Repo owner only**, same recipe as the practice repo, with three extras:
@@ -381,7 +395,17 @@ git clone https://github.com/owner/project.git
 
 . . .
 
-Cloning brings the whole project, its history and the connection to GitHub; the partner pushes and pulls normally from the first moment. Now the owner edits `README.md`, commits and pushes, and the partner runs **`git: pull`** (`git pull`): the change lands on the second laptop. That's the fifth word.
+Cloning brings the whole project, its history and the connection to GitHub; the partner pushes and pulls normally from the first moment.
+
+## The fifth word: pull
+
+1. The **owner** writes your one-sentence pitch into `README.md`, with a heading `## AI disclosure` below it, then commits and pushes
+2. The **partner** runs **`git: pull`** (`git pull`): the pitch lands on the second laptop
+3. **Swap:** the partner adds a line under the heading, commits and pushes, and the owner pulls
+
+. . .
+
+Both of you have now pushed and pulled in the real repo. On github.com, **Commits** shows both names.
 
 . . .
 
@@ -440,5 +464,5 @@ Your machine, your repo, your demo: it must run from the clone on the room's pro
 ## The reference pages
 
 ::: {.callout-note}
-Setting up the toolchain? The [Installing Python](../general/uv.qmd), [AI Tools](../general/ai-tools.qmd) and [Git Basics](../general/git-basics.qmd) pages are the reference versions of everything we did live today.
+The [Git Basics](../general/git-basics.qmd) page is the reference version of everything we did live today. The setup from Session VII lives on [Installing Python](../general/uv.qmd) and [AI Tools](../general/ai-tools.qmd).
 :::

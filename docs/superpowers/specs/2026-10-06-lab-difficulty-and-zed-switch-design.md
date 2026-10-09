@@ -144,6 +144,11 @@ Weekly on Tuesdays, with **20 Oct off**:
     a month. The steps live in a collapsed callout on `tut_08` and in the
     "Stuck?" callout of the `lec_07` check slide; `tut_09` gets the same
     callout.
+20. **A pair needs a laptop that runs Zed** (owner, 2026-10-09). Pairs
+    form in Session X. Two iPads cannot form a pair: a codespace has no
+    agent panel (decision 19), and the project is built with the agent.
+    Said on its own slide before the pair block in `lec_10` and in the
+    pairs answer of `general/faq.qmd`.
 
 ## Time targets
 
@@ -260,6 +265,38 @@ B4. **git + `gh` stays homework before Session X.** The `lec_09` slide
 git/`gh` check and the repo's own `uv init`. It drops the uv/Zed/Vibe
 check and the "open a lab in Zed" moment. The freed time goes to git
 and the project kickoff.
+
+Built on 2026-10-09 (`lec_10`, retitled "Git and Your Project"; section
+"Your Toolchain" is now "Your First Repo"):
+
+- Cold open: "The handover note" became "The handover". MunchCorp's
+  lawyer asks of `python-labs` what a folder cannot answer (has
+  `growth.png` changed since the investor saw it, who changed
+  `orders_messy.csv` and what). That sets up git as the tool that gives a
+  folder a history. No unannounced lab item is named.
+- "Check your homework" runs `git --version`, `gh --version` and
+  `gh auth status`. "Once per machine" is the catch-up for a missing
+  login. New slide "Tell git who you are": `user.name`, `user.email` and
+  `pull.rebase false` for everyone. The name and e-mail were missing from
+  the course before; without them a first commit fails or carries a
+  made-up address. `general/git-basics.qmd` has it as step 6 of the
+  one-time setup.
+- Clone goes next to `python-labs`, not into it: inside, uv 0.12.19
+  registers the repo as a workspace member of `python-labs` (tested).
+- "Open a notebook in Zed" is gone. `uv run python main.py` is the
+  "it runs" proof on the `uv init` slide.
+- "Connect your AI" became "Same agent, new folder": the same prompt,
+  with the task to watch what Vibe does before the diff. "A model in a
+  loop" is unchanged.
+- New slide "Your history" (`git log --oneline`, Commits on github.com).
+  "Your partner joins" keeps the clone; new slide "The fifth word: pull"
+  holds the round trip: the owner pushes the pitch and an
+  `## AI disclosure` heading into `README.md`, the partner pulls, then
+  they swap.
+- Rehearsed against a local bare repo as a stand-in for GitHub: clone,
+  `uv init`, commit, push, second clone, pull in both directions.
+- Not verified: that Zed's agent panel lists Vibe's steps visibly; the
+  flow on Windows; github.com's "Commits" link position.
 
 B5. **`general/ai-tools.qmd`:**
 - Schedule table: "Session VII (in class): uv, Zed, Mistral Vibe" and
@@ -458,4 +495,6 @@ browser sign-in with a fresh free account the same day:
 - **10 Nov (IX):** `labs/lab_09` + `sol_09`; `tut_09`; `lec_09` slide;
   nb_09 retired. Built 2026-10-09.
 - **17 Nov (X):** `lec_10` cold open and toolchain rewrite; the rest of
-  the ripple sweep, `CLAUDE.md`, the foundations pointer.
+  the ripple sweep, `CLAUDE.md`, the foundations pointer. Built
+  2026-10-09; the sweep also fixed `lec_01:100,121`, the folder name in
+  `general/uv.qmd:114` and added the Session VII install to the syllabus.
