@@ -104,6 +104,9 @@ Weekly on Tuesdays, with **20 Oct off**:
 16. **The AI throughline is unchanged.** VIII keeps the hallucination beat;
     the agent arrives there as a tool, with one line saying "how it
     works: Session X". X keeps the "model in a loop" explanation.
+17. **No hint accordions in labs 06-07** (owner, 2026-10-08). The notebook
+    keeps its usual structure; worked examples, slides and the AI assistant
+    replace the hints. Recorded in `docs/authoring-conventions.md`.
 
 ## Time targets
 
@@ -137,6 +140,15 @@ down from 11):
 
 A3. **A stretch tier per lab**: 2-3 ungraded "Bonus (not required)"
 tasks, given as a short brief instead of steps.
+
+A3b. **Lab 06 as built (2026-10-08):** 8 coded core tasks + quiz + trace + 3
+bonuses. 1.1 `crates_needed_ex11` (4 probes), 1.2 `rating_report_ex12` (dict,
+import by name), 1.3 fix the bug (mean vs median), 2.1 `simulate_days_ex21`
+(3 probes), 2.2 fix the bug (seed in the loop), 2.3 `weekend_order_ex23` (shuffle a
+tuple roster; property check, any seeded method passes), 2.4 crates for
+Tobi's week via the 1.1 function, 4.0 a 200-week stress test in three chained
+cells. Verified: 60 wrong-answer variants without a check crash, and the
+solution boots 9/9 green in headless Chromium (WASM).
 
 A4. **Checkpoint 4 alignment.** `lec_08:33` tells students everything in
 CP4 was rehearsed in the labs. CP4 (`checkpoints/cp4/reference_tests.py`)

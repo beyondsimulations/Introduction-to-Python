@@ -55,6 +55,18 @@
   `.xx5` boundaries (32.775 → 32.77!). Verify every literal in Python first.
 - Hints: Hint 1 = nudge (no code); Hint 2 = skeleton with `___` blanks, never
   the paste-able answer. Full answers live in the solution notebook only.
+- Part II browser labs (`nb_06`, `nb_07`; Tobi, 2026-10-08): NO hint accordions,
+  and the prompt names the target and its constraints the way the marker line
+  does. The method lives in the section recap, the worked example and the
+  lecture; the AI assistant replaces the hint ladder. Wrong verdicts describe
+  what is wrong with the RESULT (the symptom), never the code that fixes it.
+  Tasks are fewer and bigger: functions probed with several inputs, chains that
+  reuse earlier answers, and an ungraded bonus tier (`_ex60`+). Seeded
+  expectations are computed inside the check with a private
+  `random.Random(seed)`, so the check never touches the global generator and no
+  literal can drift. Students may write their own imports there, so the intro
+  carries the "a name is defined in ONE cell" teach line (a second `import
+  random` turns both cells red).
 - Tobi's bugs: logic/runtime only (never syntax errors), and always terminating
   (never a possible infinite loop, it freezes the WASM tab).
 - An erroring answer cell pauses its check cell AND the progress cell (reactive
