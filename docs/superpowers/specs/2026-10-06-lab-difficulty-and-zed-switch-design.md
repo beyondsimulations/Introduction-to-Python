@@ -93,10 +93,11 @@ Weekly on Tuesdays, with **20 Oct off**:
     Concepts are browser work; labs are local work.
 12. **nb_08 and nb_09 are retired**: moved out of `notebooks/`, no longer
     exported. Pairing is the fallback, not a browser version.
-13. **Vibe setup:** switch `general/ai-tools.qmd` to Zed's agent registry
-    entry for Mistral Vibe if it works with the free key (verify first).
-    Otherwise keep the `settings.json` block and add the Windows PATH fix
-    (`uv tool update-shell`, then restart Zed).
+13. **Vibe setup:** Mistral Vibe is installed from Zed's agent registry
+    (`zed: acp registry`), not by editing `settings.json`. Tobias confirmed
+    on 2026-10-09 that this works with a free account, and
+    `general/ai-tools.qmd` now says so. The page also carries the Windows
+    PATH fix (`uv tool update-shell`, then reopen the terminal).
 14. **The "leaving the browser" reveal moves to VII/VIII.** lec_10's cold
     open refocuses on the deal closing and the project handover.
 15. **No fallback plan for lab 08**: the script lab will be ready by
@@ -168,7 +169,7 @@ lab, and the bonus tier last.
 ## Workstream B: the tooling switch in VII
 
 B1. **Announce in VI (13 Oct):** bring a laptop you can install software
-on, plus charger, to VII on 27 Oct; create the Mistral key in VI as
+on, plus charger, to VII on 27 Oct; create the free Mistral account in VI as
 already planned (`ai-tools.qmd` schedule).
 
 B2. **Session VII install block** (after the lecture, before lab 07):
@@ -306,14 +307,41 @@ story.
   (that change belongs in the foundations repo).
 - Run `helpers/check_quiz_balance.py` after any MC changes.
 
-## To verify
+## Mistral changes found on 2026-10-09
 
-- Zed's agent registry entry for Mistral Vibe with the free key, on macOS
-  and Windows (decision 13).
-- Mistral free tier: phone verification at sign-up, and rate limits under
-  an agent loop.
-- `uv run python` from Zed's terminal on Windows inside `python-labs`
-  (the venv is picked up without activation).
+Read from Mistral's pricing, docs and help pages. Tobias clicked through the
+free sign-up (no phone number asked), both opt-out switches and the `vibe`
+browser sign-in with a fresh free account the same day:
+
+- **Le Chat is now Vibe** (modes: Vibe Chat, Vibe Work, Vibe Code); the API
+  console is "Mistral Studio". `chat.mistral.ai` and logins are unchanged.
+- **A free plan still exists.** It includes Vibe, "Vibe for code" in the
+  terminal and Studio access, with "limited messages" and "limited coding
+  sessions". The limits are not published. Students can get Pro for
+  $5.99/month.
+- **Sign-in replaces the API key.** `vibe` now signs in with the Mistral
+  account in the browser by default. A key is the fallback, created under
+  Code > Vibe CLI on `chat.mistral.ai`. The package (`mistral-vibe`) and the
+  commands (`vibe`, `vibe-acp`) are unchanged.
+- **Vibe is in the ACP agent registry**, which supports decision 13.
+- **Mistral Large 4** (public preview, 6 Oct 2026) has a 1M-token context
+  window; `lec_06` cites it.
+- Done on 2026-10-09: `general/ai-tools.qmd` (names, sign-in, both opt-out
+  paths, Session VII timing, Windows PATH line) and the three `lec_06`
+  mentions. Still saying "key from Session VI": `lec_09:590`, `lec_10:291`.
+
+## Checks closed on 2026-10-09 (owner)
+
+- Mistral Vibe installs from Zed's agent registry with a free account
+  (decision 13).
+- `uv run python` works from Zed's terminal on Windows inside a uv
+  project folder.
+- The free plan's "limited coding sessions" are accepted as sufficient
+  for labs 08-09. If they run out, the fallback is Zed's own agent on the
+  student plan's credits.
+- The course folder: `general/uv.qmd` now creates `python-labs` as the
+  first project (it was `my-first-project`) and adds pandas and matplotlib
+  there, so the folder from B2 is the one students make in Session VII.
 
 ## Deadlines
 

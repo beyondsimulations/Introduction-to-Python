@@ -105,7 +105,7 @@ Le Chat and the chatbot bubble run on the same machine:
 Both are free, both are on the [AI Tools page](../general/ai-tools.qmd), together about ten minutes:
 
 - **Mistral:** a Le Chat account for questions, plus an API key. The same key later powers the AI agent inside your editor
-- **Zed student plan:** sign in with the GitHub account you made in Session I (it's old enough now) and apply with your KLU e-mail. Verification takes up to 72 hours, so the free year of Zed Pro is ready long before Session X
+- **Zed student plan:** sign in with the GitHub account you made in Session I (it's old enough now) and apply with your KLU e-mail. Verification takes up to 72 hours, so the free year of Zed Pro is ready before we install Zed in class in Session VII
 
 . . .
 
@@ -315,10 +315,10 @@ random.shuffle(queue)                         # reorders the list in place
 print(queue)
 ```
 
-    0.048973961548129386
-    18
+    0.5881880897568816
+    10
     tea
-    [5, 3, 1, 4, 2]
+    [1, 4, 3, 2, 5]
 
 . . .
 
@@ -335,8 +335,8 @@ print([random.randint(1, 20) for _ in range(5)])   # _ : a loop name we never us
 print([random.randint(1, 20) for _ in range(5)])   # ...and again, different!
 ```
 
-    [7, 19, 14, 8, 8]
-    [18, 14, 9, 3, 2]
+    [6, 6, 14, 16, 6]
+    [18, 19, 8, 10, 13]
 
 . . .
 
@@ -472,8 +472,7 @@ Scan the QR or type the link:
 
 - Head to the lab notebook: [Episode 6: Due Diligence Week](../tutorials/tut_06_modules.qmd)
 - You'll `import math` and `statistics` for investor-grade counts and averages, then use `random` with a `seed` to rehearse a busy day she can reproduce
-- It's the **first lab where AI is allowed**, so try the chatbot
-- This week's homework: the **Mistral account** and the **Zed student plan** from the [AI Tools page](../general/ai-tools.qmd)
+- It's the **first lab where AI is allowed**, and the first without hint boxes: ask the AI to explain
 - It runs entirely in your browser: no setup, just click and code
 
 . . .
@@ -481,6 +480,11 @@ Scan the QR or type the link:
 > **Important**
 >
 > **Download your `.py` before you leave.** Closing the tab without downloading loses your work, and downloading is exactly how you handed in the checkpoint at the start of the session.
+
+## Before the next session
+
+- The **Mistral account** and the **Zed student plan** from the [AI Tools page](../general/ai-tools.qmd): together about ten minutes
+- **We install Zed in class next session.** Bring a laptop you can install software on, and its charger
 
 # <span class="flow">Wrap-up</span>
 
