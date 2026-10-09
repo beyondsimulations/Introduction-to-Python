@@ -266,7 +266,7 @@ Add new exercises to `helpers/make_qr.py` EXERCISES and re-run it.
 ## Script labs (Session VIII+)
 From Session VIII the labs are plain `.py` scripts that students run locally
 (`uv run python lab_XX_<topic>.py` in Zed's terminal, inside `python-labs`).
-Reference: `labs/lab_08_dataroom.py`.
+Reference: `labs/lab_08_dataroom.py`; for chart tasks `labs/lab_09_pitch.py`.
 - Location: `labs/lab_XX_<topic>.py` plus its data files. `_quarto.yml` lists
   `labs/` under `project.resources`, so EVERYTHING in `labs/` is published.
   Nothing secret goes there, and no solution script before its session.
@@ -299,6 +299,23 @@ Reference: `labs/lab_08_dataroom.py`.
   mentioned anywhere; the script itself does not, so the student knows more
   than the agent. The lecturer catches it at the desk: the header of the
   solution script lists what each wrong number means.
+- Lab 09 adds a second unannounced item, a wrong premise: a claim of Tobi's,
+  QUOTED in a brief ("Slow deliveries cost us stars"), that the data does not
+  support. The lab's own voice never asserts it, and the target only asks for
+  "what the picture shows". Its data problem sits in Tobi's static code: his
+  slides read the raw `orders`, not `clean`.
+- Chart tasks (reference: lab 09). The load cell sets `matplotlib.use("Agg")`,
+  so no window opens and `plt.show()` only warns. The student stores the chart
+  before closing it (`daily_chart = plt.gca()`, then `plt.savefig("daily.png")`,
+  then `plt.close()`); the first chart task gives these three lines, later
+  tasks do not repeat them. The checks read the stored Axes, which still works
+  after `plt.close()` and for pyplot, pandas `.plot` and `plt.subplots`
+  (helpers `check_chart` and `drawn` in the load cell): title, both axis
+  labels, file written in this run, no canvas left open, and that what is
+  drawn agrees with the student's own `clean` and numbers. No brief names the
+  kind of chart; the failing check does ("should show exactly one line"). The
+  last cell glues the charts into one `pitch_deck.png`, so the desk check is
+  one picture and one printed block.
 - Output is ASCII only (Windows consoles), tables print at
   `pd.set_option("display.width", 120)`, and charts go through
   `plt.savefig("<name>.png")` then `plt.close()`, never `plt.show()`.

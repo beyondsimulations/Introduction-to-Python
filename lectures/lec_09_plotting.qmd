@@ -137,7 +137,7 @@ plt.gca()             # SHOW: "get current axes" (the chart)
 . . .
 
 ::: {.callout-note}
-Two habits for every chart cell: open with `plt.figure()` (a clean canvas) and end with `plt.gca()`. In marimo there's no `plt.show()`; the figure appears as the cell's **last expression**, and `plt.plot(...)` alone returns line objects, not a picture. (A plain script run from a terminal does need `plt.show()` at the end; that's Session X.) Same frame around every chart in today's lab.
+Two habits for every chart cell: open with `plt.figure()` (a clean canvas) and end with `plt.gca()`. In marimo there's no `plt.show()`; the figure appears as the cell's **last expression**, and `plt.plot(...)` alone returns line objects, not a picture. Today's lab is a script and has no cell that could show a chart, so there a chart ends in a picture file. More on that before the break.
 :::
 
 ## Predict: what's on the x-axis?
@@ -582,47 +582,61 @@ Scan the QR or type the link:
 
 # Before Session X {.exercise-slide}
 
-The finale leaves the browser for **your own machine**. Four things before you arrive, in this order, about 45 minutes:
+uv, Zed and Mistral Vibe have been on your laptop since Session VII. The finale adds **git**. Two things before you arrive, about 15 minutes:
 
 1. **GitHub account** from Session I. None yet? [github.com](https://github.com), tonight
 2. **git + GitHub CLI (`gh`)**: install, log in once. [Git Basics](../general/git-basics.qmd#one-time-setup)
-3. **uv**: the Python environment manager. [uv guide](../general/uv.qmd)
-4. **Zed + Mistral Vibe**: editor and the AI agent inside it, on your Session VI key. [AI-tools guide](../general/ai-tools.qmd)
 
 . . .
 
 :::{.callout-important}
-**Do it in advance**, and bring the laptop plus one downloaded lab `.py`. Session X opens with Checkpoint 5 (Sessions VIII-IX), then builds on a working toolchain. Install fights you? Ask in class or by e-mail.
+**Do it in advance**, and bring the laptop. Session X opens with Checkpoint 5 (Sessions VIII-IX), then builds on git from the first minute. Install fights you? Ask in class or by e-mail.
 :::
 
 # [To the Lab]{.flow} {.title}
 
+## A chart in a script
+
+The lab is a script, and a script has no cell that could show a chart. So every chart goes into a **picture file**:
+
+```python
+plt.figure()                 # OPEN: a fresh canvas, as before
+plt.plot(days, revenue)
+plt.title("This week's revenue")
+daily_chart = plt.gca()      # KEEP: the chart, for the lab's checks
+plt.savefig("daily.png")     # SAVE: the picture, into python-labs
+plt.close()                  # CLOSE: the canvas
+```
+
+. . .
+
+Forget `plt.close()` and the next chart draws on top of this one: one canvas, two charts. To look at the picture, click `daily.png` in Zed's project panel, the file list on the left.
+
 ## After the break: the lab
 
-- Head to the lab notebook: [Episode 9: The Pitch Deck](../tutorials/tut_09_plotting.qmd)
-- Same eighty orders, now with pictures: a line for daily revenue, a bar for zones, a histogram for the value spread, a scatter that finds **no** pattern, and Tobi's cliff-edge growth slide, which you'll flatten into the truth
-- Every chart opens with `plt.figure()` and closes with `plt.gca()`
-- AI is allowed: draft with it, then **verify** the columns and the axis before you believe it
-- It runs entirely in your browser: no setup, just click and code
+- Download `lab_09_pitch.py` from [Episode 9: The Pitch Deck](../tutorials/tut_09_plotting.qmd) into `python-labs`. `orders_messy.csv` is still there
+- Six questions, six charts. No task names the kind of chart: **you pick it**. At the end the script puts all six into `pitch_deck.png`
+- Tobi's deck is in the script too. **Two things in it are wrong without any task saying so**: one in his numbers, one in what he claims
+- AI is allowed: draft with it, then **look at the picture** before you believe it
 
 . . .
 
 :::{.callout-important}
-**Download your `.py` before you leave.** It's the appendix of your pitch: the file that proves every chart came from the real data.
+**Show me `pitch_deck.png` and the last block before you leave.** Then two minutes of practice for Checkpoint 5, which is still handed in from the browser: open `ex_09_e`, **Cmd/Ctrl+S**, menu → Download → *Download Python code*, and find the file.
 :::
 
 # [Wrap-up]{.flow} {.title}
 
 ## Three things to remember
 
-1. **Every chart, one frame.** Open with `plt.figure()`, close with `plt.gca()`; label the axes and title it. A chart nobody can read argues nothing.
+1. **Every chart, one frame.** Open with `plt.figure()`, close with `plt.gca()` (in a script: `savefig`, then `close`); label the axes and title it. A chart nobody can read argues nothing.
 2. **Match the chart to the question.** Categories → bar, distribution → histogram, two numbers → scatter, time → line. The wrong chart is a lie; and "no pattern" is a real finding.
 3. **Axis from zero, verified code.** Growth charts start at **0**, and every AI-drafted plot gets checked: do the columns exist, does the axis start where you claim?
 
 . . .
 
 ::: {.callout-note}
-**Season finale next: git, real files, and the project kickoff.** We leave the browser for your own machine, so install the toolchain this week. Session X needs it from the first minute.
+**Season finale next: git and the project kickoff.** Install git and `gh` this week. Session X needs them from the first minute.
 :::
 
 # [Literature]{.flow} {.title}

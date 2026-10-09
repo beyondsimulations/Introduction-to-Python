@@ -5,53 +5,81 @@ subtitle: "Programming with Python · Tutorial 09"
 
 The pitch meeting is Friday, and the investor gave one instruction: **"Bring me
 charts I can't argue with."** Last week you turned the data room into numbers
-she could trust; this week those numbers have to be *seen*. Same eighty orders, same
-`orders` DataFrame, now with a picture attached. You'll draw a line for revenue
-over time, pick the right chart for categories, distributions and relationships,
-and (the real skill) refuse to draw a misleading one. Tobi has already "built
-the deck", and his growth slide is a lie wearing a nice axis. Your job is to
-**supervise**: catch the chart you can argue with before the investor does.
+she could trust; this week those numbers have to be *seen*. Same file,
+`orders_messy.csv`, now with pictures: you pick the chart that fits each
+question, save it as a picture file, and end the lab with a deck of six. Tobi has
+already "built the deck": two slides and one argument for a new rider. Your
+job is to **supervise**: catch the chart she can argue with before she does.
 
-## Work on the notebook
+## Run the lab on your laptop
 
-[Open in browser](../notebooks/nb_09_lab_pitch/){.btn .btn-primary}
-[![Open in molab](https://marimo.io/molab-shield.svg)](https://molab.marimo.io/github/beyondsimulations/Introduction-to-Python/blob/main/notebooks/nb_09_lab_pitch.py)
+The lab is a Python script again. It runs in the `python-labs` folder, next to
+last week's files.
 
-**Open in browser (recommended):** runs entirely on your machine, in this tab:
-no account, no installation, and after it loads no internet is needed.
+1. Download the script and move it into your `python-labs` folder.
+   `orders_messy.csv` is still there from last week; if not, download it again:
 
-::: {.callout-note}
-## If the notebook won't boot
+   [Lab script](../labs/lab_09_pitch.py){.btn .btn-primary download="lab_09_pitch.py"}
+   [Orders data](../labs/orders_messy.csv){.btn .btn-primary download="orders_messy.csv"}
 
-This lab loads pandas **and** matplotlib, both fetched over the network the first
-time. If the notebook fails to boot with a network error, or the first cell that
-imports one of them complains it can't be imported, **reload the page once**
-(Cmd/Ctrl + R). That almost always fixes it.
+2. In Zed, open the `python-labs` folder, then the terminal (`` Ctrl+` ``).
+3. Run `uv run python lab_09_pitch.py`.
+
+::: {.callout-note collapse="true"}
+## No Zed on your laptop, or only an iPad?
+
+Use a **GitHub codespace**: a Linux computer that runs in a browser tab.
+
+1. Sign in at [github.com/codespaces](https://github.com/codespaces) and open
+   last week's codespace again. If you have none, start the **Blank** template
+   and follow the [uv guide](../general/uv.qmd) (the macOS or Linux lines) in
+   its terminal, down to `uv add pandas matplotlib`.
+2. Go into the folder with `cd python-labs` and download the script. The
+   second line is only needed in a new codespace:
+
+   ```bash
+   curl -O https://python.tobiasvlcek.com/labs/lab_09_pitch.py
+   curl -O https://python.tobiasvlcek.com/labs/orders_messy.csv
+   ```
+
+3. Run `uv run python lab_09_pitch.py`.
+
+To look at a chart, click its PNG file in the file list on the left. A
+codespace has no Zed, so keep the chatbot open in a second tab for AI help.
 :::
+
+The first run stops with `AssertionError: Task 1: not attempted yet.`, as it
+did last week: the script checks every task and stops at the first one you
+have not solved yet. The very first run can take a little longer, because
+matplotlib sets up its fonts once.
+
+A script has no cell that could show a chart, so every chart goes into a
+picture file in `python-labs`. Task 2 in the script shows the three lines
+that end every chart. To look at a picture, click its file in Zed's project
+panel, the file list on the left.
 
 ::: {.callout-important}
-## How your work is saved (read this once)
+## Look at your charts
 
-Your progress lives **in this browser tab**. If you **reload** the page
-(Cmd/Ctrl + R) your work is still there. But if you **close the tab and open
-the link again later, you start from a clean notebook**. There is no
-cross-device sync in the browser, and clearing browser data or private mode
-also wipes it.
-
-So: **download your `.py` before you leave** (menu → Download → *Download Python
-code*). That download is the *only* guaranteed copy. Handing in files works
-exactly like this in the checkpoints, so you get to practice the motion every
-week. Note: a downloaded `.py` is for submission and backup. You can't upload
-it back into the browser editor.
+The checks only test the form of a chart: that it has a title, that its bars
+add up to your own numbers. They cannot see whether the chart tells the truth.
+And **two things in Tobi's deck are wrong without any task saying so**: one is
+in his numbers, one is in what he claims. No check catches either of them.
 :::
 
-**Open in molab:** marimo's free cloud (account required). Your copy saves to
-your account and reopens on **any device**. Choose this if you know you'll
-switch computers or want to be certain nothing is lost. Optional: nothing
-graded ever requires it.
+When every check passes, the script puts your six charts side by side into
+`pitch_deck.png` and prints a block that starts with `SHOW THIS IN CLASS`.
+Show both to your lecturer.
 
-<!-- PUBLISH AFTER SESSION IX (see docs/authoring-conventions.md → Solution notebooks):
+Checkpoint 5 next week is still handed in from the browser, and the script
+labs no longer practise that. So take two minutes before you go: open today's
+last exercise, [ex_09_e](https://python.tobiasvlcek.com/notebooks/ex_09_e/),
+press **Cmd/Ctrl+S**, then menu → Download → **Download Python code**, and find
+the file in your Downloads folder.
+
+<!-- PUBLISH AFTER SESSION IX (see docs/authoring-conventions.md, "Script labs"):
+copy sol_09_lab_pitch.py from the private repo into labs/, then un-comment.
 ## Solutions
 
-[Solutions notebook (read-only)](../notebooks/sol_09_lab_pitch/){.btn}
+[Solution script](../labs/sol_09_lab_pitch.py){.btn download="sol_09_lab_pitch.py"}
 -->

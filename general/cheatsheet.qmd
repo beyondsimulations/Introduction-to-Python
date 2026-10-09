@@ -420,7 +420,7 @@ print(df.groupby("zone")["total_eur"].mean().round(2).to_dict())   # {'Hafen': 6
 
 ### The frame around every chart
 
-Open with `plt.figure()` (a fresh canvas, so lines do not pile onto the last chart) and end the cell with `plt.gca()` (marimo shows the last expression). A script run from the terminal uses `plt.show()` instead.
+Open with `plt.figure()` (a fresh canvas, so lines do not pile onto the last chart) and end the cell with `plt.gca()` (marimo shows the last expression). A script has no cell that could show the chart: there you end with `plt.savefig("name.png")`, which writes the picture into a file, and then `plt.close()`.
 
 ```python
 import matplotlib.pyplot as plt

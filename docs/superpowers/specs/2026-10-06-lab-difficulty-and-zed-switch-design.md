@@ -124,7 +124,11 @@ Weekly on Tuesdays, with **20 Oct off**:
     page say that one problem is not mentioned anywhere; the script does
     not, so the student knows something the agent does not. It is caught
     at the desk, against the key in the solution script's header. A wrong
-    premise in a brief is held back for lab 09.
+    premise in a brief is held back for lab 09. Lab 09 as built has both:
+    Tobi's two slides read the raw `orders` (the data problem, in his
+    static code), and his claim "Slow deliveries cost us stars" is quoted
+    in the Task 7 brief although the data does not support it (the wrong
+    premise). The lab's own voice asserts neither.
 
 19. **Fallback without Zed: a GitHub codespace** (owner, 2026-10-09).
     The student starts GitHub's **Blank** template at
@@ -337,6 +341,33 @@ C5. **Lab 09 (long).** From the messy CSV to the pitch:
 
 Show in class: the PNGs and the summary.
 
+C5b. **Lab 09 as built (2026-10-09):** `labs/lab_09_pitch.py`, same
+`orders_messy.csv`. Nine tasks: 1 clean again (`clean`, `order_count`; no
+problem named), 2 revenue per day (`daily.png`, `best_day`; gives the three
+closing lines `plt.gca()`, `plt.savefig`, `plt.close()`), 3 revenue per
+zone, highest first (`zones.png`, `top_zone`), 4 spread of the order values
+(`values.png`, `big_orders` above 25 euros), 5 Tobi's growth slide with a
+y-axis from 780 to 855 (`growth.png`, `week1`, `week2`, `growth_pct`),
+6 Tobi's momentum slide of days 6 to 8 (`momentum.png`, `typical_day`),
+7 Tobi's rider argument (`stars.png`, `stars_title`), 8 the summary
+(`pitch` dict, `headline`), 9 optional own question (`own.png`). No brief
+names the kind of chart. The checks read each chart through the stored
+`plt.gca()` (title, labels, file written in this run, canvas closed, drawn
+values agree with `clean`), and the last cell glues the six charts into
+`pitch_deck.png`. Two departures from C5: a scatter task was added, and
+Tobi's axis trick now shows a rocket (raw 784.4 to 849.7), not a cliff.
+Key: 80 orders, best day 3, Sued, 13 big orders, weeks 731.1 and 712.2,
+growth -2.59, typical day 103.09. Tobi's raw weeks kept: 784.4 and 849.7,
+growth +8.32. Test order left in: 81 orders, best day 8, Nord, 14 big
+orders, growth +10.96, typical day 110.16. Verified: the solution exits 0
+on pandas 2.3.2 and 3.0.6 (matplotlib 3.11.2), and 135 variants (wrong
+answers, unsolved stages, other correct routes, the hidden items left in)
+each end at the intended message or pass. `lec_09` got the slide "A chart
+in a script", the lab handoff with the two-minute download drill on
+`ex_09_e`, and the "Before Session X" slide cut to the GitHub account plus
+git and `gh`; `general/cheatsheet.qmd` no longer sends scripts to
+`plt.show()`.
+
 C6. **Tutorial pages `tut_08`/`tut_09`.**
 - Replace the molab/WASM buttons, the save/download warning and the
   boot callouts with download buttons for the script and the CSV
@@ -425,6 +456,6 @@ browser sign-in with a fresh free account the same day:
   buttons; `_quarto.yml` resources; `lec_08` agent slide and `lec_08`
   ripples; the conventions section (C2); nb_08 retired. Built 2026-10-09.
 - **10 Nov (IX):** `labs/lab_09` + `sol_09`; `tut_09`; `lec_09` slide;
-  nb_09 retired.
+  nb_09 retired. Built 2026-10-09.
 - **17 Nov (X):** `lec_10` cold open and toolchain rewrite; the rest of
   the ripple sweep, `CLAUDE.md`, the foundations pointer.
