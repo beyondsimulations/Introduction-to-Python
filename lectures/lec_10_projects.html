@@ -8,7 +8,7 @@
 
 <meta name="author" content="Dr.&nbsp;Tobias Vlćek">
 
-<title>Lecture X - Tooling, Git and Your Project – Programming with Python</title>
+<title>Lecture X - Git and Your Project – Programming with Python</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -503,10 +503,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <ul class="collapse">
   <li><a href="#when-youre-done" id="toc-when-youre-done" class="nav-link" data-scroll-target="#when-youre-done">When you’re done</a></li>
   </ul></li>
-  <li><a href="#episode-10-the-exit" id="toc-episode-10-the-exit" class="nav-link" data-scroll-target="#episode-10-the-exit"><span class="flow">Episode 10: The Exit</span></a>
+  <li><a href="#ep-10-the-exit" id="toc-ep-10-the-exit" class="nav-link" data-scroll-target="#ep-10-the-exit"><span class="flow">EP 10: The Exit</span></a>
   <ul class="collapse">
   <li><a href="#the-deal-closes" id="toc-the-deal-closes" class="nav-link" data-scroll-target="#the-deal-closes">The deal closes</a></li>
-  <li><a href="#the-handover-note" id="toc-the-handover-note" class="nav-link" data-scroll-target="#the-handover-note">The handover note</a></li>
+  <li><a href="#the-handover" id="toc-the-handover" class="nav-link" data-scroll-target="#the-handover">The handover</a></li>
   <li><a href="#your-exit-package" id="toc-your-exit-package" class="nav-link" data-scroll-target="#your-exit-package">Your exit package</a></li>
   </ul></li>
   <li><a href="#the-project" id="toc-the-project" class="nav-link" data-scroll-target="#the-project"><span class="flow">The Project</span></a>
@@ -518,19 +518,20 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#idea-5-6" id="toc-idea-5-6" class="nav-link" data-scroll-target="#idea-5-6">Idea 5 &amp; 6</a></li>
   <li><a href="#idea-7-8" id="toc-idea-7-8" class="nav-link" data-scroll-target="#idea-7-8">Idea 7 &amp; 8</a></li>
   </ul></li>
-  <li><a href="#form-your-pair-pick-your-direction" id="toc-form-your-pair-pick-your-direction" class="nav-link" data-scroll-target="#form-your-pair-pick-your-direction"><span class="flow">Form your pair, pick your direction</span></a>
+  <li><a href="#form-your-pair" id="toc-form-your-pair" class="nav-link" data-scroll-target="#form-your-pair"><span class="flow">Form your pair</span></a>
   <ul class="collapse">
+  <li><a href="#one-rule-before-you-pair-up" id="toc-one-rule-before-you-pair-up" class="nav-link" data-scroll-target="#one-rule-before-you-pair-up">One rule before you pair up</a></li>
   <li><a href="#take-25-minutes" id="toc-take-25-minutes" class="nav-link" data-scroll-target="#take-25-minutes">Take ~25 minutes</a></li>
   </ul></li>
-  <li><a href="#your-toolchain" id="toc-your-toolchain" class="nav-link" data-scroll-target="#your-toolchain"><span class="flow">Your Toolchain</span></a>
+  <li><a href="#your-first-repo" id="toc-your-first-repo" class="nav-link" data-scroll-target="#your-first-repo"><span class="flow">Your First Repo</span></a>
   <ul class="collapse">
-  <li><a href="#check-your-install" id="toc-check-your-install" class="nav-link" data-scroll-target="#check-your-install">Check your install</a></li>
+  <li><a href="#check-your-homework" id="toc-check-your-homework" class="nav-link" data-scroll-target="#check-your-homework">Check your homework</a></li>
   <li><a href="#once-per-machine" id="toc-once-per-machine" class="nav-link" data-scroll-target="#once-per-machine">Once per machine</a></li>
+  <li><a href="#tell-git-who-you-are" id="toc-tell-git-who-you-are" class="nav-link" data-scroll-target="#tell-git-who-you-are">Tell git who you are</a></li>
   <li><a href="#your-project-starts-on-github" id="toc-your-project-starts-on-github" class="nav-link" data-scroll-target="#your-project-starts-on-github">Your project starts on GitHub</a></li>
   <li><a href="#bring-it-down-clone" id="toc-bring-it-down-clone" class="nav-link" data-scroll-target="#bring-it-down-clone">Bring it down: clone</a></li>
   <li><a href="#make-it-a-python-project-uv-init" id="toc-make-it-a-python-project-uv-init" class="nav-link" data-scroll-target="#make-it-a-python-project-uv-init">Make it a Python project: <code>uv init</code></a></li>
-  <li><a href="#open-a-notebook-in-zed" id="toc-open-a-notebook-in-zed" class="nav-link" data-scroll-target="#open-a-notebook-in-zed">Open a notebook in Zed</a></li>
-  <li><a href="#connect-your-ai" id="toc-connect-your-ai" class="nav-link" data-scroll-target="#connect-your-ai">Connect your AI</a></li>
+  <li><a href="#same-agent-new-folder" id="toc-same-agent-new-folder" class="nav-link" data-scroll-target="#same-agent-new-folder">Same agent, new folder</a></li>
   <li><a href="#inside-the-panel-a-model-in-a-loop" id="toc-inside-the-panel-a-model-in-a-loop" class="nav-link" data-scroll-target="#inside-the-panel-a-model-in-a-loop">Inside the panel: a model in a loop</a></li>
   </ul></li>
   <li><a href="#git" id="toc-git" class="nav-link" data-scroll-target="#git"><span class="flow">Git</span></a>
@@ -538,8 +539,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#the-five-words" id="toc-the-five-words" class="nav-link" data-scroll-target="#the-five-words">The five words</a></li>
   <li><a href="#your-first-commit" id="toc-your-first-commit" class="nav-link" data-scroll-target="#your-first-commit">Your first commit</a></li>
   <li><a href="#push" id="toc-push" class="nav-link" data-scroll-target="#push">Push</a></li>
+  <li><a href="#your-history" id="toc-your-history" class="nav-link" data-scroll-target="#your-history">Your history</a></li>
   <li><a href="#the-real-project-repo-owner-only" id="toc-the-real-project-repo-owner-only" class="nav-link" data-scroll-target="#the-real-project-repo-owner-only">The real project repo: owner only</a></li>
   <li><a href="#your-partner-joins" id="toc-your-partner-joins" class="nav-link" data-scroll-target="#your-partner-joins">Your partner joins</a></li>
+  <li><a href="#the-fifth-word-pull" id="toc-the-fifth-word-pull" class="nav-link" data-scroll-target="#the-fifth-word-pull">The fifth word: pull</a></li>
   <li><a href="#how-we-work-together" id="toc-how-we-work-together" class="nav-link" data-scroll-target="#how-we-work-together">How we work together</a></li>
   </ul></li>
   <li><a href="#send-off" id="toc-send-off" class="nav-link" data-scroll-target="#send-off"><span class="flow">Send-off</span></a>
@@ -560,7 +563,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../lectures/lec_10_projects.html">10 Projects</a></li><li class="breadcrumb-item"><a href="../lectures/lec_10_projects.html">Lecture</a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title">Lecture X - Tooling, Git and Your Project</h1>
+<h1 class="title">Lecture X - Git and Your Project</h1>
 <p class="subtitle lead">Programming with Python</p>
 </div>
 
@@ -595,8 +598,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h1 class="loud-slide">Checkpoint 5</h1>
 <p><strong>Sessions VIII-IX.</strong> The first 40 minutes are the checkpoint. It starts now: the board runs one final audit before the big news.</p>
 <ul>
-<li><strong>Individual work</strong>: no neighbors, no chat</li>
-<li><strong>AI tools are allowed</strong>: being able to <strong>VERIFY</strong> the output is the skill being graded</li>
+<li><strong>Individual work</strong>: no neighbors, no messaging</li>
+<li><strong>Any AI tool is allowed</strong>: being able to <strong>VERIFY</strong> its output is the skill being graded</li>
 <li>The <strong>link is on Moodle</strong>. Open it and start</li>
 <li>6 short tasks: the right number out of a pandas table, a line the AI got wrong, a correct read of a chart</li>
 <li>It sweeps <strong>Sessions VIII-IX</strong>: pandas filtering and <code>groupby</code>, fair charts vs.&nbsp;misleading ones</li>
@@ -606,7 +609,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
      publish to the public course site. -->
 <section id="when-youre-done" class="level2">
 <h2 class="anchored" data-anchor-id="when-youre-done">When you’re done</h2>
-<p>Menu → <em>Download</em> → <em>Download Python code</em> → upload the <code>.py</code> to the <strong>“Checkpoint 5”</strong> assignment on Moodle. <strong>No retakes</strong>: one sitting.</p>
+<p><strong>Cmd/Ctrl+S</strong>, then menu → <em>Download</em> → <em>Download Python code</em> → upload the <code>.py</code> to the <strong>“Checkpoint 5”</strong> assignment on Moodle, before the 40 minutes are up. <strong>No retakes</strong>: one sitting.</p>
 <p>. . .</p>
 <div class="callout callout-style-simple callout-note">
 <div class="callout-body d-flex">
@@ -614,40 +617,42 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <i class="callout-icon"></i>
 </div>
 <div class="callout-body-container">
-<p>The green live checks are <strong>provisional</strong>. The final grading runs on my side. The two multiple-choice tasks only say <em>“recorded”</em>, never correct or wrong. That’s expected, they’re scored later. Everything in it was rehearsed in the labs.</p>
+<p>The live checks under the tasks are <strong>provisional</strong>. The final grading runs on my side. The two multiple-choice tasks only say <em>“recorded”</em>, never correct or wrong. That’s expected, they’re scored later. Everything in it was rehearsed in the labs.</p>
 </div>
 </div>
 </div>
 </section>
 </section>
-<section id="episode-10-the-exit" class="level1 title">
-<h1 class="title"><span class="flow">Episode 10: The Exit</span></h1>
+<section id="ep-10-the-exit" class="level1 title">
+<h1 class="title"><span class="flow">EP 10: The Exit</span></h1>
 <section id="the-deal-closes" class="level2">
 <h2 class="anchored" data-anchor-id="the-deal-closes">The deal closes</h2>
 <p>Pens down. The checkpoint is behind you, and so, it turns out, is the startup. Overnight the rival chain <strong>MunchCorp</strong> stopped competing and made an offer: they’re <strong>buying the company.</strong> The investor read the term sheet, did the math against her own, and told you to take it: her money would have bought growth, theirs buys the whole shop.</p>
 <p>. . .</p>
-<p>The lawyers will tell you deals close on the numbers. This one closed on <strong>yours.</strong> The clean order data you pulled together in the data room (Session VIII) and the dashboard you built for the pitch (Session IX) are exactly what convinced the acquirer the books were real.</p>
+<p>The lawyers will tell you deals close on the numbers. This one closed on <strong>yours.</strong> The clean order data you pulled together in the data room (Session VIII) and the pitch deck you built from it (Session IX) are exactly what convinced the acquirer the books were real.</p>
 <p>. . .</p>
 <p>No cliff-edge growth chart with a chopped axis. Just data that survived a second look. <strong>That’s why they signed.</strong></p>
 </section>
-<section id="the-handover-note" class="level2">
-<h2 class="anchored" data-anchor-id="the-handover-note">The handover note</h2>
-<p>Tobi’s job today is to hand over the <strong>data room</strong>: every file the company ever built. He tapes a note to the folder:</p>
+<section id="the-handover" class="level2">
+<h2 class="anchored" data-anchor-id="the-handover">The handover</h2>
+<p>Tobi’s job today is to hand over the <strong>data room</strong>: the folder with every file the company ever built. You know that folder. It’s <code>python-labs</code>, two labs later.</p>
 <p>. . .</p>
-<blockquote class="blockquote">
-<p><em>“It’s all here. And it was never anything fancy. Every notebook you downloaded all semester was already a plain <code>.py</code> file. Same code, same lines. Open one in a real editor and it just runs.”</em></p>
-</blockquote>
+<p>MunchCorp’s lawyer opens it and asks two questions:</p>
+<ul>
+<li><code>growth.png</code>: is this the chart the investor <strong>saw</strong>, or has it changed since?</li>
+<li><code>orders_messy.csv</code>: <strong>who</strong> changed it after Tobi’s export, and <strong>what</strong>?</li>
+</ul>
 <p>. . .</p>
-<p>That’s the whole reveal, and most of you already suspected it. Those downloads stop being <strong>backups</strong> today and become the <strong>real thing</strong>: on your own machine, in a real editor, under your control.</p>
+<p>Nobody can say. A folder shows what is in it <strong>now</strong>, and nothing about how it got there. Today you give a folder a <strong>history</strong>, with a tool called <span class="highlight">git</span>.</p>
 </section>
 <section id="your-exit-package" class="level2">
 <h2 class="anchored" data-anchor-id="your-exit-package">Your exit package</h2>
 <p>Every acquisition comes with an exit package. Here’s yours: you don’t join MunchCorp. You <strong>spin off your own idea</strong> and build it.</p>
 <p>. . .</p>
 <ul>
-<li>The tools are the same ones professionals use: uv, Zed, git, GitHub</li>
+<li>The tools are the ones professionals use: uv and Zed have been on your laptop since Session VII, <strong>git and GitHub</strong> join them today</li>
 <li>The work is a real project, built with a partner, over the next weeks</li>
-<li>Today we set up the machine and the repo; the building starts here</li>
+<li>Today we set up the repo; the building starts here</li>
 </ul>
 <p>. . .</p>
 <p>Let’s get you kitted out.</p>
@@ -660,9 +665,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>Over the next weeks you build <strong>one real project</strong> and present it in the final sessions.</p>
 <ul>
 <li>Work in <strong>pairs</strong>: solo is fine if the numbers don’t come out even</li>
-<li><strong>Deliverable:</strong> a <strong>GitHub repository link</strong>, submitted on Moodle</li>
-<li>The repo’s <code>README.md</code> carries a short <strong>AI-disclosure section</strong>: which tools you used, what for, and what you <strong>verified yourself</strong></li>
 <li>Demos run across <strong>Sessions XII and XIII</strong>: 10 minutes, plus 5 minutes for questions</li>
+<li><strong>Deliverable:</strong> a <strong>GitHub repository link</strong>, handed in on Moodle <strong>before your own demo</strong></li>
+<li>The repo’s <code>README.md</code> carries a short <strong>AI-disclosure section</strong>: which tools you used, what for, and what you <strong>verified yourself</strong></li>
 </ul>
 <p>. . .</p>
 <div class="callout callout-style-simple callout-tip">
@@ -679,7 +684,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="how-it-counts" class="level2">
 <h2 class="anchored" data-anchor-id="how-it-counts">How it counts</h2>
 <ul>
-<li>Project <strong>and</strong> presentation together are worth <strong>40 of the 100</strong> course points</li>
+<li>Project <strong>and</strong> presentation together are worth <strong>40 of the 100</strong> course points, judged on scope, work and presentation. Both partners get the same points</li>
 <li>Your <strong>commit history counts</strong>: it’s the evidence of <em>how</em> the work happened, which the final state alone can’t show. Commit small and often (git block, shortly)</li>
 <li><strong>Sessions XI and XII are supervised work sessions</strong>: I’m in the room while you build, so bring your questions</li>
 </ul>
@@ -690,7 +695,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <i class="callout-icon"></i>
 </div>
 <div class="callout-body-container">
-<p>The project does not have to be flawless. Show that you scoped it realistically, built it in the open, and can explain your own code. That’s the whole bar.</p>
+<p>The project does not have to be flawless, and an unfinished one can be presented too. Show that you scoped it realistically, built it in the open, and can explain your own code. That’s the whole bar.</p>
 </div>
 </div>
 </div>
@@ -751,8 +756,16 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </ul>
 </section>
 </section>
-<section id="form-your-pair-pick-your-direction" class="level1 title">
-<h1 class="title"><span class="flow">Form your pair, pick your direction</span></h1>
+<section id="form-your-pair" class="level1 title">
+<h1 class="title"><span class="flow">Form your pair</span></h1>
+<section id="one-rule-before-you-pair-up" class="level2">
+<h2 class="anchored" data-anchor-id="one-rule-before-you-pair-up">One rule before you pair up</h2>
+<p>You build your project with the agent, and the agent lives in Zed. So <strong>every pair needs a laptop that runs Zed.</strong></p>
+<ul>
+<li>Zed doesn’t run on an iPad, so <strong>two iPads can’t form a pair</strong></li>
+<li>Only an iPad? Pair with someone who has a laptop. You can still work on the project: in a GitHub codespace, or on that laptop</li>
+</ul>
+</section>
 <section id="take-25-minutes" class="level2">
 <h2 class="anchored" data-anchor-id="take-25-minutes">Take ~25 minutes</h2>
 <p>Right now, in the room:</p>
@@ -768,23 +781,23 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <i class="callout-icon"></i>
 </div>
 <div class="callout-body-container">
-<p><strong>A good outcome by the end of this block:</strong> a one-sentence pitch (“we’re building X that does Y for Z”), a name for the project, and a decision on who owns the shared repo (the owner creates it in the git block; the partner clones). The sentence keeps you honest about scope; the name goes on the repo in a minute.</p>
+<p><strong>A good outcome by the end of this block:</strong> a one-sentence pitch (“we’re building X that does Y for Z”), a name for the project, and a decision on who owns the shared repo (the owner creates it in the git block, so pick whoever did the git homework; the partner clones). The sentence keeps you honest about scope; the name goes on the repo in a minute.</p>
 </div>
 </div>
 </div>
 </section>
 </section>
-<section id="your-toolchain" class="level1 title">
-<h1 class="title"><span class="flow">Your Toolchain</span></h1>
-<section id="check-your-install" class="level2">
-<h2 class="anchored" data-anchor-id="check-your-install">Check your install</h2>
-<p>Before we build anything, the installs from the Session IX homework need to work. In a terminal:</p>
+<section id="your-first-repo" class="level1 title">
+<h1 class="title"><span class="flow">Your First Repo</span></h1>
+<section id="check-your-homework" class="level2">
+<h2 class="anchored" data-anchor-id="check-your-homework">Check your homework</h2>
+<p>git and <code>gh</code> were the homework from Session IX. Before we build anything, they need to work. In Zed’s terminal (<code>Ctrl+`</code>):</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> <span class="at">--version</span></span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="ex">gh</span> <span class="at">--version</span></span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="ex">uv</span> <span class="at">--version</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="ex">gh</span> auth status</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <ul>
-<li>Three version numbers? You’re set.</li>
-<li>Zed opens, and <strong>Mistral Vibe</strong> shows up in its agent panel? Good.</li>
+<li>Two version numbers, and the last command says <strong>Logged in to github.com</strong>? You’re set.</li>
+<li>No login yet? The next slide is yours.</li>
 </ul>
 <p>. . .</p>
 <div class="callout callout-style-simple callout-important">
@@ -800,10 +813,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 <section id="once-per-machine" class="level2">
 <h2 class="anchored" data-anchor-id="once-per-machine">Once per machine</h2>
-<p>Before your laptop can talk to GitHub, it has to prove it’s allowed to. Signing in to <strong>Zed does not do this</strong>; git needs its own login, and the <code>gh</code> tool handles it. Once per computer, in a terminal:</p>
+<p>Before your laptop can talk to GitHub, it has to prove it’s allowed to. Signing in to <strong>Zed does not do this</strong>; git needs its own login, and the <code>gh</code> tool handles it. If <code>gh auth status</code> showed no login, do it now, once per computer:</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="ex">gh</span> auth login</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p>Choose GitHub.com, <strong>HTTPS</strong>, authenticate in the browser, and answer yes to <em>“Authenticate Git with your GitHub credentials?”</em>. Then, once:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> config <span class="at">--global</span> pull.rebase false</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Choose GitHub.com, <strong>HTTPS</strong>, authenticate in the browser, and answer yes to <em>“Authenticate Git with your GitHub credentials?”</em>.</p>
 <p>. . .</p>
 <div class="callout callout-style-simple callout-important">
 <div class="callout-body d-flex">
@@ -815,6 +827,17 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 </div>
+</section>
+<section id="tell-git-who-you-are" class="level2">
+<h2 class="anchored" data-anchor-id="tell-git-who-you-are">Tell git who you are</h2>
+<p>Everyone, logged in or not: three settings, once per computer. Running them twice does no harm.</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> config <span class="at">--global</span> user.name <span class="st">"Your Name"</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> config <span class="at">--global</span> user.email <span class="st">"you@example.com"</span></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> config <span class="at">--global</span> pull.rebase false</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<ul>
+<li><strong>Name and e-mail</strong> are how git answers the lawyer’s <em>who?</em> Use the e-mail of your GitHub account, so GitHub knows it’s you</li>
+<li><strong>The third line</strong> is for pair work later: git then simply combines your partner’s changes with yours</li>
+</ul>
 </section>
 <section id="your-project-starts-on-github" class="level2">
 <h2 class="anchored" data-anchor-id="your-project-starts-on-github">Your project starts on GitHub</h2>
@@ -831,7 +854,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 <section id="bring-it-down-clone" class="level2">
 <h2 class="anchored" data-anchor-id="bring-it-down-clone">Bring it down: clone</h2>
-<p>In Zed’s command palette (<code>Cmd/Ctrl+Shift+P</code>): <strong><code>git: clone</code></strong>, paste the URL, and pick the folder where you keep course work. Zed opens the new folder as your workspace: the file tree on the left shows <code>README.md</code> and <code>.gitignore</code>.</p>
+<p>In Zed’s command palette (<code>Cmd/Ctrl+Shift+P</code>): <strong><code>git: clone</code></strong>, paste the URL, and pick the folder that <code>python-labs</code> sits in, so the repo lands <strong>next to</strong> <code>python-labs</code> and not inside it. Zed opens the new folder as your workspace: the file tree on the left shows <code>README.md</code> and <code>.gitignore</code>.</p>
+<p>The same in the terminal. Use one way, not both:</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> clone https://github.com/you/python-practice.git</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>. . .</p>
 <div class="callout callout-style-simple callout-note">
@@ -848,8 +872,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="make-it-a-python-project-uv-init" class="level2">
 <h2 class="anchored" data-anchor-id="make-it-a-python-project-uv-init">Make it a Python project: <code>uv init</code></h2>
 <p>Open Zed’s built-in terminal (<code>Ctrl+`</code>); it starts inside your workspace. Then:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="ex">uv</span> init <span class="at">--no-package</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p><code>uv init</code> adds <code>main.py</code>, <code>pyproject.toml</code> and <code>.python-version</code> next to the <code>README.md</code> and <code>.gitignore</code> that GitHub made.</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="ex">uv</span> init <span class="at">--no-package</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="ex">uv</span> run python main.py</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p><code>uv init</code> adds <code>main.py</code>, <code>pyproject.toml</code> and <code>.python-version</code> next to the <code>README.md</code> and <code>.gitignore</code> that GitHub made. The second line runs <code>main.py</code> the way you run a lab, and prints <code>Hello from python-practice!</code></p>
 <p>. . .</p>
 <div class="callout callout-style-simple callout-note">
 <div class="callout-body d-flex">
@@ -857,28 +882,18 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <i class="callout-icon"></i>
 </div>
 <div class="callout-body-container">
-<p><strong><code>--no-package</code></strong> keeps it a flat folder of scripts, the shape you know from the labs; without it, uv builds an installable package layout you don’t need yet. And no <code>git init</code>: the folder came from GitHub, it <strong>is</strong> a git repository already.</p>
+<p><strong><code>--no-package</code></strong> keeps it a flat folder of scripts, like <code>python-labs</code>, which the same command made in Session VII; without it, uv builds an installable package layout you don’t need yet. And no <code>git init</code>: the folder came from GitHub, it <strong>is</strong> a git repository already.</p>
 </div>
 </div>
 </div>
 </section>
-<section id="open-a-notebook-in-zed" class="level2">
-<h2 class="anchored" data-anchor-id="open-a-notebook-in-zed">Open a notebook in Zed</h2>
-<p>Grab <strong>a lab <code>.py</code> you downloaded in Part I</strong>: we’ll use <code>nb_03_lab_functions.py</code>. Copy it <strong>into your project folder</strong>, then open it in Zed: it’s just code. Read it.</p>
-<p>The file needs its tools first; adding a package is one command:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb6"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="ex">uv</span> add marimo</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p>Now run it, no browser required:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb7"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="ex">uv</span> run python nb_03_lab_functions.py</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p>. . .</p>
-<p><code>uv run</code> uses the project’s own Python and packages. The file that lived in a browser tab all semester now runs on <strong>your machine, from your editor.</strong> That’s the whole point of today. <em>(Part-I labs only today; the pandas labs need more packages and their CSV.)</em></p>
-</section>
-<section id="connect-your-ai" class="level2">
-<h2 class="anchored" data-anchor-id="connect-your-ai">Connect your AI</h2>
-<p>Part III <strong>encourages</strong> AI, and it is already installed: Mistral Vibe, running inside Zed on the key from Session VI (setup in the <a href="../general/ai-tools.html">AI-tools guide</a>). Open the agent panel, pick Mistral Vibe, and try it on your five-minute-old project:</p>
+<section id="same-agent-new-folder" class="level2">
+<h2 class="anchored" data-anchor-id="same-agent-new-folder">Same agent, new folder</h2>
+<p>Part III <strong>encourages</strong> AI, and your agent is already here: Mistral Vibe works in whatever folder Zed has open. Open the agent panel and ask:</p>
 <blockquote class="blockquote">
-<p><em>Explain what <code>main.py</code> does, then add a docstring. Don’t change anything else.</em></p>
+<p><em>Explain what <code>main.py</code> does, then add a one-line comment at the top that says so. Don’t change anything else.</em></p>
 </blockquote>
-<p>Read the diff Zed shows you <strong>before</strong> you accept it. That’s the whole workflow: you ask, it drafts, you verify.</p>
+<p>This time, <strong>watch the panel while it works:</strong> what does Vibe do before it shows you a change? Then read the diff before you accept it, as always.</p>
 <p>. . .</p>
 <div class="callout callout-style-simple callout-important">
 <div class="callout-body d-flex">
@@ -886,7 +901,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <i class="callout-icon"></i>
 </div>
 <div class="callout-body-container">
-<p>The disclosure rule still stands, now in writing: your repo’s <code>README.md</code> says <strong>which tools you used, what for, and what you checked yourself.</strong> AI drafts; <strong>you verify</strong>, same reflex as the checkpoint you just sat.</p>
+<p>The disclosure rule applies from today: your repo’s <code>README.md</code> says <strong>which tools you used, what for, and what you checked yourself.</strong></p>
 </div>
 </div>
 </div>
@@ -920,31 +935,40 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 <section id="your-first-commit" class="level2">
 <h2 class="anchored" data-anchor-id="your-first-commit">Your first commit</h2>
-<p>Your folder has new files worth saving: <code>main.py</code>, <code>pyproject.toml</code>, <code>.python-version</code>, the lab. In Zed’s <strong>command palette</strong>:</p>
+<p>Your folder has new files worth saving: <code>main.py</code> with its new comment, <code>pyproject.toml</code>, <code>.python-version</code>, and <code>uv.lock</code>, the exact package versions, so every laptop installs the same ones. In Zed’s <strong>command palette</strong>:</p>
 <ul>
 <li><strong><code>git: stage all</code></strong>: mark everything as part of the snapshot</li>
 <li><strong><code>git: commit</code></strong> (<code>Cmd/Ctrl+Enter</code>): type a message, save it</li>
 </ul>
 <p>. . .</p>
 <p>The same thing in the terminal, the words you’ll see everywhere:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb8"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> add .</span>
-<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> commit <span class="at">-m</span> <span class="st">"Set up the project"</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb6"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> add .</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> commit <span class="at">-m</span> <span class="st">"Set up the project"</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>A commit lives <strong>only on your computer</strong> so far. Next we send it to GitHub.</p>
 </section>
 <section id="push" class="level2">
 <h2 class="anchored" data-anchor-id="push">Push</h2>
 <p>Because the folder came from GitHub, git already knows where “up” is. In Zed: <strong><code>git: push</code></strong>. In the terminal:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb9"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> push</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb7"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> push</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>. . .</p>
 <p>Reload the repo page on github.com: <code>main.py</code> is there. That’s the commit cycle you’ll repeat all project long: <strong>edit → commit → push</strong>. Pull is the other direction; you’ll see it in a minute.</p>
 </section>
+<section id="your-history" class="level2">
+<h2 class="anchored" data-anchor-id="your-history">Your history</h2>
+<p>Two commits in, the folder has a history. Read it:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb8"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> log <span class="at">--oneline</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>One line per commit, newest first: a short ID and the message. Yours sits on top of GitHub’s <code>Initial commit</code>. On github.com, <strong>Commits</strong> (top right of the file list) shows the same list with author and time; click a commit to see what it changed.</p>
+<p>. . .</p>
+<p>That answers the lawyer for every file in the repo: <strong>who</strong> changed it, <strong>when</strong>, and <strong>what it looked like before</strong>. It’s also the list I read when I grade your project. <code>Set up the project</code> tells me something; <code>stuff</code> doesn’t.</p>
+</section>
 <section id="the-real-project-repo-owner-only" class="level2">
 <h2 class="anchored" data-anchor-id="the-real-project-repo-owner-only">The real project repo: owner only</h2>
-<p>Now the one that counts. <strong>Repo owner only</strong>, same recipe as the practice repo, with three extras:</p>
+<p>Now the one that counts. <strong>Repo owner only</strong>, same recipe as the practice repo, with four extras:</p>
 <ol type="1">
 <li>Name it after your <strong>pitch</strong>; <strong>Private</strong>, README, Python <code>.gitignore</code></li>
 <li><strong>Settings → Collaborators</strong>: invite your partner and me (my GitHub username is on Moodle), so I can read it for grading</li>
 <li>Clone it in Zed, <code>uv init --no-package</code>, commit, push, exactly as before</li>
+<li>Needs pandas or matplotlib? <code>uv add pandas matplotlib</code> in this folder: every project has its own packages</li>
 </ol>
 <p>. . .</p>
 <p>Partner: <strong>don’t create a second project repo.</strong> Yours arrives by invitation in a moment.</p>
@@ -955,9 +979,20 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <ul>
 <li>In Zed: <strong><code>git: clone</code></strong>, paste the project’s <strong>HTTPS URL</strong></li>
 </ul>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb10"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> clone https://github.com/owner/project.git</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Or in the terminal:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb9"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> clone https://github.com/owner/project.git</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>. . .</p>
-<p>Cloning brings the whole project, its history and the connection to GitHub; the partner pushes and pulls normally from the first moment. Now the owner edits <code>README.md</code>, commits and pushes, and the partner runs <strong><code>git: pull</code></strong> (<code>git pull</code>): the change lands on the second laptop. That’s the fifth word.</p>
+<p>Cloning brings the whole project, its history and the connection to GitHub; the partner pushes and pulls normally from the first moment.</p>
+</section>
+<section id="the-fifth-word-pull" class="level2">
+<h2 class="anchored" data-anchor-id="the-fifth-word-pull">The fifth word: pull</h2>
+<ol type="1">
+<li>The <strong>owner</strong> writes your one-sentence pitch into <code>README.md</code>, with a heading <code>## AI disclosure</code> below it, then commits and pushes</li>
+<li>The <strong>partner</strong> runs <strong><code>git: pull</code></strong> (<code>git pull --no-edit</code>): the pitch lands on the second laptop</li>
+<li><strong>Swap:</strong> the partner adds a line under the heading, commits and pushes, and the owner pulls</li>
+</ol>
+<p>. . .</p>
+<p>Both of you have now pushed and pulled in the real repo. On github.com, <strong>Commits</strong> shows both names.</p>
 <p>. . .</p>
 <div class="callout callout-style-simple callout-note">
 <div class="callout-body d-flex">
@@ -1043,7 +1078,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <i class="callout-icon"></i>
 </div>
 <div class="callout-body-container">
-<p>Setting up the toolchain? The <a href="../general/uv.html">Installing Python</a>, <a href="../general/ai-tools.html">AI Tools</a> and <a href="../general/git-basics.html">Git Basics</a> pages are the reference versions of everything we did live today.</p>
+<p>The <a href="../general/git-basics.html">Git Basics</a> page is the reference version of everything we did live today. The setup from Session VII lives on <a href="../general/uv.html">Installing Python</a> and <a href="../general/ai-tools.html">AI Tools</a>.</p>
 </div>
 </div>
 </div>

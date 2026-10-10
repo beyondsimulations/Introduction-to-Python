@@ -499,7 +499,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#episode-12-ship-it" id="toc-episode-12-ship-it" class="nav-link active" data-scroll-target="#episode-12-ship-it"><span class="flow">Episode 12: Ship It</span></a>
+  <li><a href="#ep-12-ship-it" id="toc-ep-12-ship-it" class="nav-link active" data-scroll-target="#ep-12-ship-it"><span class="flow">EP 12: Ship It</span></a>
   <ul class="collapse">
   <li><a href="#launch-week" id="toc-launch-week" class="nav-link" data-scroll-target="#launch-week">Launch week</a></li>
   </ul></li>
@@ -563,8 +563,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<section id="episode-12-ship-it" class="level1 title">
-<h1 class="title"><span class="flow">Episode 12: Ship It</span></h1>
+<section id="ep-12-ship-it" class="level1 title">
+<h1 class="title"><span class="flow">EP 12: Ship It</span></h1>
 <section id="launch-week" class="level2">
 <h2 class="anchored" data-anchor-id="launch-week">Launch week</h2>
 <p>Demo season opens <strong>today</strong>: the first pairs present here, the rest in Session XIII. The order comes out of a hat. The hat is Python.</p>
@@ -577,7 +577,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="the-friction-you-know" class="level2">
 <h2 class="anchored" data-anchor-id="the-friction-you-know">The friction you know</h2>
 <ul>
-<li>Two weeks in, you have corrected your agent on the same things again and again: naming style, the library you prefer, “keep functions short”, “we filter with <code>.loc</code> here”</li>
+<li>Two weeks in, you have corrected your agent on the same things again and again: naming style, the library you prefer, “keep functions short”, “round money to two decimals”</li>
 <li>Every session starts from zero: the agent remembers <span class="highlight">nothing</span> between sessions (Session X, the loop)</li>
 <li>Explaining the same thing five times is work you should not be doing</li>
 </ul>
@@ -586,7 +586,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h2 class="anchored" data-anchor-id="package-the-rules-once">Package the rules once</h2>
 <ul>
 <li>Put your project rules in <strong>one markdown file</strong> in the repo: <code>AGENTS.md</code></li>
-<li>What goes in: what the project is, the stack, naming and style conventions, “any AI use lands in the README disclosure”</li>
+<li>What goes in: what the project is, the tools it uses, naming and style conventions, “any AI use lands in the README disclosure”</li>
 <li>Mistral Vibe reads it at every session start, automatically: write the rules once, stop repeating them</li>
 </ul>
 </section>
@@ -597,7 +597,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li>Rules apply <span class="highlight">always</span>. A skill loads only when the task matches its description, so context stays lean until the moment it is needed</li>
 <li>Example: a <code>verify</code> skill for your project: read the diff, run it, test it on a case where you know the answer, report what you checked</li>
 <li>In your stack: <code>.vibe/skills/verify/SKILL.md</code> in the repo. Vibe loads it in the terminal and inside Zed’s agent panel, same engine either way</li>
-<li>Vibe follows an open spec, so skills you write here stay portable to other agents that adopt it</li>
+<li>Vibe follows an open format, so skills you write here also work in other agents that adopt it</li>
 </ul>
 </section>
 <section id="anatomy-briefly" class="level2">
@@ -619,7 +619,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li>Any workflow you have explained to the agent <span class="highlight">twice</span> deserves a skill</li>
 <li>Keep it short: a page of instructions, not an essay</li>
 <li>Prune it when the workflow changes: a stale skill misleads</li>
-<li>Downloading one? Vet it by <span class="highlight">reading it</span>, not by its star count</li>
+<li>Downloading one? Vet it by <span class="highlight">reading it</span>, not by how popular it is</li>
 </ul>
 </section>
 <section id="what-not-to-hand-over" class="level2">
@@ -635,10 +635,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="before-you-call-it-finished" class="level2">
 <h2 class="anchored" data-anchor-id="before-you-call-it-finished">Before you call it finished</h2>
 <ul>
-<li>The repo runs from a fresh clone: <code>uv sync</code>, then the notebook or script, no hidden steps</li>
+<li>The repo runs from a fresh clone (cloned once more into an empty folder): <code>uv sync</code>, then your script</li>
 <li>The README says what it does, how to run it, and carries the <strong>AI disclosure section</strong></li>
 <li>The commit history tells the story: small steps, messages that mean something</li>
 <li><code>git status</code> is clean: nothing uncommitted, nothing important ignored</li>
+<li>I am invited, and the link is on Moodle before your demo</li>
 </ul>
 <p>. . .</p>
 <div class="callout callout-style-simple callout-tip">

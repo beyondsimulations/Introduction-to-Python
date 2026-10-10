@@ -511,11 +511,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <ul class="collapse">
   <li><a href="#what-does-that-code-mean" id="toc-what-does-that-code-mean" class="nav-link" data-scroll-target="#what-does-that-code-mean">What does that code mean?</a></li>
   </ul></li>
-  <li><a href="#run-scripts-directly-in-zed" id="toc-run-scripts-directly-in-zed" class="nav-link" data-scroll-target="#run-scripts-directly-in-zed">Run scripts directly in Zed</a>
-  <ul class="collapse">
-  <li><a href="#create-the-task-file" id="toc-create-the-task-file" class="nav-link" data-scroll-target="#create-the-task-file">Create the task file</a></li>
-  <li><a href="#run-the-task" id="toc-run-the-task" class="nav-link" data-scroll-target="#run-the-task">Run the task</a></li>
-  </ul></li>
   <li><a href="#adding-packages" id="toc-adding-packages" class="nav-link" data-scroll-target="#adding-packages">Adding packages</a></li>
   <li><a href="#updating-uv" id="toc-updating-uv" class="nav-link" data-scroll-target="#updating-uv">Updating <code>uv</code></a></li>
   <li><a href="#best-practices-for-this-course" id="toc-best-practices-for-this-course" class="nav-link" data-scroll-target="#best-practices-for-this-course">Best practices for this course</a></li>
@@ -548,7 +543,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <section id="why-we-use-uv-for-this-course" class="level2">
 <h2 class="anchored" data-anchor-id="why-we-use-uv-for-this-course">Why we use <code>uv</code> for this course</h2>
-<p><code>uv</code> is a new (and very fast) Python tool written in Rust. It: - Installs Python for you (no manual downloads). - Creates isolated <em>virtual environments</em> (safe sandboxes per project). - Installs and updates packages quickly.</p>
+<p><code>uv</code> is a new (and very fast) Python tool written in Rust. It:</p>
+<ul>
+<li>Installs Python for you (no manual downloads).</li>
+<li>Creates isolated <em>virtual environments</em> (safe sandboxes per project).</li>
+<li>Installs and updates packages quickly.</li>
+</ul>
 <div class="callout callout-style-simple callout-note">
 <div class="callout-body d-flex">
 <div class="callout-icon-container">
@@ -562,7 +562,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 <section id="install-uv" class="level2">
 <h2 class="anchored" data-anchor-id="install-uv">Install <code>uv</code></h2>
-<p>Everything below happens in a <strong>terminal</strong>, a window where you type commands. On macOS open the Terminal app (Spotlight: <code>Cmd+Space</code>, type <em>Terminal</em>). On Windows open PowerShell (Start menu, type <em>PowerShell</em>). Choose the instructions for your operating system.</p>
+<p>Everything below happens in a <strong>terminal</strong>, a window where you type commands. On macOS open the Terminal app (Spotlight: <code>Cmd+Space</code>, type <em>Terminal</em>). On Windows open PowerShell (Start menu, type <em>PowerShell</em>, pick the entry called <em>Windows PowerShell</em>). To run a command, type or paste its line and press Enter. Choose the instructions for your operating system.</p>
 <section id="macos-or-linux-terminal" class="level3">
 <h3 class="anchored" data-anchor-id="macos-or-linux-terminal">macOS or Linux (Terminal)</h3>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="ex">curl</span> <span class="at">-LsSf</span> https://astral.sh/uv/install.sh <span class="kw">|</span> <span class="fu">sh</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
@@ -577,6 +577,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>If you see a script execution warning, you can alternatively first run:</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="sourceCode powershell code-with-copy"><code class="sourceCode powershell"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">Set-ExecutionPolicy</span> <span class="op">-</span>ExecutionPolicy Bypass <span class="op">-</span>Scope <span class="cf">Process</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>Then re-run the install line.</p>
+<p>After installation: <strong>close and reopen</strong> PowerShell, so that it finds the new <code>uv</code> command.</p>
 </section>
 <section id="verify-installation" class="level3">
 <h3 class="anchored" data-anchor-id="verify-installation">Verify installation</h3>
@@ -612,18 +613,25 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 <section id="create-your-first-project" class="level2">
 <h2 class="anchored" data-anchor-id="create-your-first-project">Create your first project</h2>
-<p>Pick a folder where you keep course work. <strong>If you do not have one, make sure to create one!</strong> In the terminal, move into that folder (<code>cd</code> followed by its path, or drag the folder onto the terminal window) and run:</p>
+<p>Pick a folder where you keep course work. <strong>If you do not have one, make sure to create one!</strong> In the terminal, move into that folder: type <code>cd</code> and a space, drag the folder from Finder or Explorer onto the terminal window (that pastes the folder’s location), and press Enter. Then run these two lines, each one <strong>once</strong>:</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb9"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="ex">uv</span> init <span class="at">--no-package</span> python-labs</span>
 <span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> python-labs</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>The first line creates a new folder named <code>python-labs</code>. Keep that name: from Session VIII the labs live in this folder. The second line moves you into that folder. In Session X you will instead run <code>uv init --no-package</code> <em>inside</em> a folder cloned from GitHub; same command, no name.</p>
-<p><code>uv init --no-package</code> creates: - <code>main.py</code> (starter script) - <code>pyproject.toml</code> (project + dependencies config) - <code>.python-version</code> (records the Python version we chose) - <code>.gitignore</code> and <code>README.md</code> (only when the folder is new; a folder cloned from GitHub already has both) - (A <code>.venv</code> folder will appear later once packages are added or synced.)</p>
+<p><code>uv init --no-package</code> creates:</p>
+<ul>
+<li><code>main.py</code> (starter script)</li>
+<li><code>pyproject.toml</code> (project + dependencies config)</li>
+<li><code>.python-version</code> (records the Python version we chose)</li>
+<li><code>README.md</code>, and <code>.gitignore</code> if git is on your machine (only when the folder is new; a folder cloned from GitHub already has both)</li>
+<li>(A <code>.venv</code> folder will appear later once packages are added or synced.)</li>
+</ul>
 <div class="callout callout-style-simple callout-note">
 <div class="callout-body d-flex">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-body-container">
-<p><strong>Why <code>--no-package</code>?</strong> Without it, recent versions of uv build an installable <em>package</em> layout (<code>src/my_first_project/</code>) with no <code>main.py</code>. For scripts, which is all this course needs, the flat layout is simpler.</p>
+<p><strong>Why <code>--no-package</code>?</strong> Without it, recent versions of uv build an installable <em>package</em> layout (<code>src/python_labs/</code>) with no <code>main.py</code>. For scripts, which is all this course needs, the flat layout is simpler.</p>
 </div>
 </div>
 </div>
@@ -653,45 +661,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>Don’t worry about this yet, we’ll gradually build up to it.</p>
 </section>
 </section>
-<section id="run-scripts-directly-in-zed" class="level2">
-<h2 class="anchored" data-anchor-id="run-scripts-directly-in-zed">Run scripts directly in Zed</h2>
-<p>This section needs <strong>Zed</strong>, which you install with the <a href="../general/ai-tools.html">AI-tools guide</a>; come back to it afterwards. Instead of switching to the terminal every time, you can set up a <strong>task</strong> in Zed to run the currently open Python file with a single shortcut.</p>
-<section id="create-the-task-file" class="level3">
-<h3 class="anchored" data-anchor-id="create-the-task-file">Create the task file</h3>
-<p>Inside your project folder, create a <code>.zed/</code> directory and add a file called <code>tasks.json</code> inside it:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb13"><pre class="sourceCode json code-with-copy"><code class="sourceCode json"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="ot">[</span></span>
-<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">{</span></span>
-<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>    <span class="dt">"label"</span><span class="fu">:</span> <span class="st">"Run current Python file"</span><span class="fu">,</span></span>
-<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a>    <span class="dt">"command"</span><span class="fu">:</span> <span class="st">"uv run python $ZED_FILE"</span><span class="fu">,</span></span>
-<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a>    <span class="dt">"use_new_terminal"</span><span class="fu">:</span> <span class="kw">false</span></span>
-<span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">}</span></span>
-<span id="cb13-7"><a href="#cb13-7" aria-hidden="true" tabindex="-1"></a><span class="ot">]</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p><code>$ZED_FILE</code> is a variable Zed fills in automatically with the path of the file you have open.</p>
-</section>
-<section id="run-the-task" class="level3">
-<h3 class="anchored" data-anchor-id="run-the-task">Run the task</h3>
-<ol type="1">
-<li>Open any <code>.py</code> file in your project.</li>
-<li>Open the task picker with <code>Cmd+Shift+P</code> (macOS) / <code>Ctrl+Shift+P</code> (Windows/Linux).</li>
-<li>Type <strong>task</strong> and choose <strong>task: spawn</strong>.</li>
-<li>Select <strong>Run current Python file</strong>. Zed will execute <code>uv run python &lt;your-file&gt;</code> in the built-in terminal.</li>
-</ol>
-<div class="callout callout-style-simple callout-tip">
-<div class="callout-body d-flex">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-body-container">
-<p>You can also bind the task to a keyboard shortcut. Open <strong>Zed → Settings → Key Bindings</strong> and add an entry for <code>"task: spawn"</code> to make it even faster.</p>
-</div>
-</div>
-</div>
-</section>
-</section>
 <section id="adding-packages" class="level2">
 <h2 class="anchored" data-anchor-id="adding-packages">Adding packages</h2>
 <p>The labs from Session VIII need two packages. Inside <code>python-labs</code>, run:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb14"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="ex">uv</span> add pandas matplotlib</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb13"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="ex">uv</span> add pandas matplotlib</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Check that both arrived. This line prints <code>ready</code>:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb14"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="ex">uv</span> run python <span class="at">-c</span> <span class="st">"import pandas, matplotlib; print('ready')"</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>If you added the wrong one (example: <code>numpi</code>, a typo):</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb15"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="ex">uv</span> remove numpi</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>If your <code>pyproject.toml</code> changed (e.g.&nbsp;you pulled code from someone else):</p>
@@ -727,8 +702,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 <section id="recap" class="level2">
 <h2 class="anchored" data-anchor-id="recap">Recap</h2>
-<p>You can now: 1. Install <code>uv</code>. 2. Create a project. 3. Run a script. 4. Add/remove/sync packages.</p>
-<p>Now, you’re set to continue the course.</p>
+<p>You can now:</p>
+<ol type="1">
+<li>Install <code>uv</code>.</li>
+<li>Create a project.</li>
+<li>Run a script.</li>
+<li>Add/remove/sync packages.</li>
+</ol>
+<p>Next come Zed and Mistral Vibe: <a href="../general/ai-tools.html#ai-inside-zed-mistral-vibe-session-vii-in-class">AI inside Zed</a>.</p>
 
 
 </section>

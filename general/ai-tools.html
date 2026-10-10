@@ -540,7 +540,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>The course runs a phased AI policy, and the rules are different in each part.</p>
 <ul>
 <li><strong>Part I (Sessions I-V): no AI.</strong> You learn to read, write and debug Python yourself. The only assistant you may use is the <strong>course chatbot</strong> (the widget in the sidebar), and in Part I it deliberately explains and hints rather than handing you finished code.</li>
-<li><strong>Part II (Sessions VI-IX): AI is allowed and taught.</strong> From Session VI we work <em>with</em> AI on purpose. Checkpoints 4 and 5 explicitly allow AI.</li>
+<li><strong>Part II (Sessions VI-IX): AI is allowed and taught.</strong> From Session VI we work <em>with</em> AI on purpose. Checkpoints 4 and 5 explicitly allow AI. One exception: Checkpoint 3, which opens Session VI, is still AI-free.</li>
 <li><strong>Part III (Sessions X-XIII): AI is encouraged</strong>, with disclosure. Use what makes you productive on your project.</li>
 </ul>
 <div class="callout callout-style-simple callout-important">
@@ -549,7 +549,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <i class="callout-icon"></i>
 </div>
 <div class="callout-body-container">
-<p><strong>The disclosure rule.</strong> Every submission that used AI says so. In Part II that is a one-line note on the submission saying what the AI was used for (Part I is AI-free, so there is nothing to disclose). For example: <em>“Used AI to explain a <code>KeyError</code> and to draft the docstring for <code>load_data()</code>.”</em> In Part III it lives in a short section of your project repo’s <code>README</code>: which tools you used, what for, and what you verified yourself. This is not about catching anyone out. Being able to say clearly what a tool did for you is part of using it well.</p>
+<p><strong>The disclosure rule.</strong> It applies to your project in Part III: a short section of your project repo’s <code>README</code> says which tools you used, what for, and what you verified yourself. For example: <em>“Used Mistral Vibe to explain a <code>KeyError</code> and to draft the chart code. Checked the totals against the CSV by hand.”</em> Labs and checkpoints need no note. This is not about catching anyone out. Being able to say clearly what a tool did for you is part of using it well.</p>
 </div>
 </div>
 </div>
@@ -571,7 +571,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <tr class="even">
 <td><strong>Session VI</strong></td>
 <td>Free Mistral account with the training opt-out, Zed student plan application</td>
-<td>AI becomes allowed; the GitHub account is old enough now</td>
+<td>AI becomes allowed after Checkpoint 3; the GitHub account is old enough now</td>
 </tr>
 <tr class="odd">
 <td><strong>Session VII (in class)</strong></td>
@@ -619,8 +619,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>Zed is the editor we use from Session VIII on, and we install it together in class in Session VII. If you are an enrolled student, Zed gives you its paid plan for free, and you apply for it in <strong>Session VI</strong>, well before you need it:</p>
 <ol type="1">
 <li>Go to <a href="https://dashboard.zed.dev/education/apply">dashboard.zed.dev/education/apply</a> and <strong>sign in with GitHub</strong>. Zed requires the GitHub account to be <strong>at least 30 days old</strong>, which is why you created it in Session I.</li>
-<li>Submit your <strong>KLU e-mail address</strong> for verification. This can take up to 72 hours.</li>
-<li>Once verified you get <strong>12 months of Zed Pro</strong>: unlimited edit predictions and <strong>$10/month in AI token credits</strong>. Details at <a href="https://zed.dev/education">zed.dev/education</a>.</li>
+<li>Submit your <strong>KLU e-mail address</strong>. Zed checks the address against a public list of universities; you have to be enrolled and at least 18.</li>
+<li>Once verified you get <strong>12 months of Zed Pro</strong>: unlimited edit predictions and <strong>$10/month in AI token credits</strong>. The plan belongs to your GitHub account, so you use it by signing in to Zed with that account. Details at <a href="https://zed.dev/education">zed.dev/education</a>.</li>
 </ol>
 <div class="callout callout-style-simple callout-note">
 <div class="callout-body d-flex">
@@ -636,7 +636,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 <section id="ai-inside-zed-mistral-vibe-session-vii-in-class" class="level2">
 <h2 class="anchored" data-anchor-id="ai-inside-zed-mistral-vibe-session-vii-in-class">AI inside Zed: Mistral Vibe (Session VII, in class)</h2>
-<p>The AI you program with from Session VIII is <strong><a href="https://docs.mistral.ai/vibe/code/overview">Mistral Vibe</a></strong>, Mistral’s coding agent (Mistral’s own pages call this mode <em>Vibe Code</em>). It runs inside Zed’s agent panel on your free Mistral account from Session VI. <strong>We do this together in class in Session VII</strong>, after <a href="../general/uv.html">installing uv</a>. You don’t need to do it earlier:</p>
+<p>The AI you program with from Session VIII is <strong><a href="https://docs.mistral.ai/vibe/code/overview">Mistral Vibe</a></strong>, Mistral’s coding agent (Mistral’s own pages call this mode <em>Vibe Code</em>). It runs inside Zed’s agent panel on your free Mistral account from Session VI. <strong>We do this together in class in Session VII</strong>, after <a href="../general/uv.html">installing uv</a>. You don’t need to do it earlier. Missed that session? Do the six steps at home before Session VIII; the last one is the check from class.</p>
 <ol type="1">
 <li><p><strong>Install Zed</strong> from <a href="https://zed.dev">zed.dev</a> (macOS, Windows, Linux), run the installer, and open it once to confirm it launches.</p></li>
 <li><p><strong>Install Vibe</strong> in a terminal. uv is already on your machine, so one command works on every system:</p>
@@ -644,7 +644,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>If the terminal then says <code>vibe</code> is not found, run <code>uv tool update-shell</code>, then close and reopen the terminal.</p></li>
 <li><p><strong>Sign in.</strong> Run <code>vibe</code> once in the terminal. The setup asks you to sign in with your Mistral account in the browser; use the account from Session VI. It saves the sign-in for future runs. Type <code>exit</code> to leave. If the sign-in does not work, create a key under <strong>Code › Vibe CLI</strong> at <a href="https://chat.mistral.ai/code/extensions">chat.mistral.ai/code/extensions</a>, copy it right away, and paste it when the setup asks. That key works on the free plan too.</p></li>
 <li><p><strong>Add it to Zed.</strong> In Zed, open the command palette (<code>Cmd/Ctrl+Shift+P</code>) and run <strong><code>zed: acp registry</code></strong>. Find <strong>Mistral Vibe</strong> in the list and install it.</p></li>
-<li><p><strong>Try it.</strong> Open the agent panel (the sparkle icon at the bottom right, or <strong><code>agent: new thread</code></strong> in the command palette), pick Mistral Vibe from the agent dropdown, and ask it something about an open file. If it answers, you’re ready for Session VIII.</p></li>
+<li><p><strong>Open your course folder.</strong> In Zed choose <strong>File → Open Folder</strong> and pick <code>python-labs</code>, the folder from the <a href="../general/uv.html">uv guide</a>.</p></li>
+<li><p><strong>Check both tools.</strong> Open Zed’s terminal (<code>Ctrl+`</code>, or <strong><code>terminal panel: toggle</code></strong> in the command palette) and run:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="ex">uv</span> run python <span class="at">-c</span> <span class="st">"import pandas, matplotlib; print('ready')"</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>It prints <code>ready</code>. Then open the agent panel (the sparkle icon at the bottom right, or <strong><code>agent: new thread</code></strong> in the command palette), pick Mistral Vibe from the agent dropdown, and ask: <em>What does <code>main.py</code> do?</em> If the terminal prints <code>ready</code> and Vibe answers, you’re set for Session VIII.</p></li>
 </ol>
 <div class="callout callout-style-simple callout-warning">
 <div class="callout-body d-flex">
@@ -669,7 +672,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li>A free Mistral account for questions and explanations in Vibe, with both training switches turned off.</li>
 <li>A Zed student plan application on its way.</li>
 <li>From Session VII: Zed, with Mistral Vibe in its agent panel.</li>
-<li>The one habit that applies everywhere: a one-line AI-disclosure note on every submission that used AI.</li>
+<li>The disclosure rule: your project README says which AI tools you used, what for, and what you verified yourself.</li>
 </ol>
 
 

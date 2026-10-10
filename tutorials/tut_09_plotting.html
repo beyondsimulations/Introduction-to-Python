@@ -26,6 +26,41 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 </style>
 
 
@@ -463,7 +498,7 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#work-on-the-notebook" id="toc-work-on-the-notebook" class="nav-link active" data-scroll-target="#work-on-the-notebook">Work on the notebook</a></li>
+  <li><a href="#run-the-lab-on-your-laptop" id="toc-run-the-lab-on-your-laptop" class="nav-link active" data-scroll-target="#run-the-lab-on-your-laptop">Run the lab on your laptop</a></li>
   </ul>
 <div class="toc-actions"><ul><li><a href="https://github.com/beyondsimulations/Introduction-to-Python/blob/main/tutorials/tut_09_plotting.qmd" class="toc-action"><i class="bi bi-github"></i>View source</a></li><li><a href="https://github.com/beyondsimulations/Introduction-to-Python/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div><div class="quarto-alternate-formats"><h2>Other Formats</h2><ul><li><a href="tut_09_plotting.pdf"><i class="bi bi-file-pdf"></i>PDF</a></li></ul></div></nav>
     </div>
@@ -490,43 +525,63 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<p>The pitch meeting is Friday, and the investor gave one instruction: <strong>“Bring me charts I can’t argue with.”</strong> Last week you turned the data room into numbers she could trust; this week those numbers have to be <em>seen</em>. Same eighty orders, same <code>orders</code> DataFrame, now with a picture attached. You’ll draw a line for revenue over time, pick the right chart for categories, distributions and relationships, and (the real skill) refuse to draw a misleading one. Tobi has already “built the deck”, and his growth slide is a lie wearing a nice axis. Your job is to <strong>supervise</strong>: catch the chart you can argue with before the investor does.</p>
-<section id="work-on-the-notebook" class="level2">
-<h2 class="anchored" data-anchor-id="work-on-the-notebook">Work on the notebook</h2>
-<p><a href="../notebooks/nb_09_lab_pitch/" class="btn btn-primary">Open in browser</a> <a href="https://molab.marimo.io/github/beyondsimulations/Introduction-to-Python/blob/main/notebooks/nb_09_lab_pitch.py"><img src="https://marimo.io/molab-shield.svg" class="img-fluid" alt="Open in molab"></a></p>
-<p><strong>Open in browser (recommended):</strong> runs entirely on your machine, in this tab: no account, no installation, and after it loads no internet is needed.</p>
+<p>The pitch meeting is Friday, and the investor gave one instruction: <strong>“Bring me charts I can’t argue with.”</strong> Last week you turned the data room into numbers she could trust; this week those numbers have to be <em>seen</em>. Same file, <code>orders_messy.csv</code>, now with pictures: you pick the chart that fits each question, save it as a picture file, and end the lab with a deck of six. Tobi has already “built the deck”: two slides and one argument for a new rider. Your job is to <strong>supervise</strong>: catch the chart she can argue with before she does.</p>
+<section id="run-the-lab-on-your-laptop" class="level2">
+<h2 class="anchored" data-anchor-id="run-the-lab-on-your-laptop">Run the lab on your laptop</h2>
+<p>The lab is a Python script again. It runs in the <code>python-labs</code> folder, next to last week’s files.</p>
+<ol type="1">
+<li><p>Download the script and move it into your <code>python-labs</code> folder. <code>orders_messy.csv</code> is still there from last week; if not, download it again:</p>
+<p><a href="../labs/lab_09_pitch.py" class="btn btn-primary" download="lab_09_pitch.py">Lab script</a> <a href="../labs/orders_messy.csv" class="btn btn-primary" download="orders_messy.csv">Orders data</a></p></li>
+<li><p>In Zed, open the <code>python-labs</code> folder, then the terminal (<code>Ctrl+`</code>).</p></li>
+<li><p>Run <code>uv run python lab_09_pitch.py</code>.</p></li>
+</ol>
 <div class="callout callout-style-simple callout-note callout-titled">
-<div class="callout-header d-flex align-content-center">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-1-contents" aria-controls="callout-1" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Note</span>If the notebook won’t boot
+<span class="screen-reader-only">Note</span>No Zed on your laptop, or only an iPad?
 </div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
+<div id="callout-1" class="callout-1-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<p>This lab loads pandas <strong>and</strong> matplotlib, both fetched over the network the first time. If the notebook fails to boot with a network error, or the first cell that imports one of them complains it can’t be imported, <strong>reload the page once</strong> (Cmd/Ctrl + R). That almost always fixes it.</p>
+<p>Use a <strong>GitHub codespace</strong>: a Linux computer that runs in a browser tab.</p>
+<ol type="1">
+<li><p>Sign in at <a href="https://github.com/codespaces">github.com/codespaces</a> and open last week’s codespace again. If you have none, start the <strong>Blank</strong> template and follow the <a href="../general/uv.html">uv guide</a> (the macOS or Linux lines) in its terminal, down to <code>uv add pandas matplotlib</code>.</p></li>
+<li><p>Go into the folder with <code>cd python-labs</code> and download the script. The second line is only needed in a new codespace:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="ex">curl</span> <span class="at">-O</span> https://python.tobiasvlcek.com/labs/lab_09_pitch.py</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="ex">curl</span> <span class="at">-O</span> https://python.tobiasvlcek.com/labs/orders_messy.csv</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div></li>
+<li><p>Run <code>uv run python lab_09_pitch.py</code>.</p></li>
+</ol>
+<p>To look at a chart, click its PNG file in the file list on the left. A codespace has no Zed, so keep the chatbot open in a second tab for AI help.</p>
 </div>
 </div>
+</div>
+<p>The first run stops with <code>AssertionError: Task 1: not attempted yet.</code>, as it did last week: the script checks every task and stops at the first one you have not solved yet. The very first run can take a little longer, because matplotlib sets up its fonts once.</p>
+<p>If the run ends in <code>ModuleNotFoundError</code> instead, the terminal is not inside <code>python-labs</code>, or the packages are missing. In that folder, run <code>uv add pandas matplotlib</code> once.</p>
+<p>A script has no cell that could show a chart, so every chart goes into a picture file in <code>python-labs</code>. Task 2 in the script shows the three lines that end every chart. To look at a picture, click its file in Zed’s project panel, the file list on the left.</p>
 <div class="callout callout-style-simple callout-important callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Important</span>How your work is saved (read this once)
+<span class="screen-reader-only">Important</span>Look at your charts
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>Your progress lives <strong>in this browser tab</strong>. If you <strong>reload</strong> the page (Cmd/Ctrl + R) your work is still there. But if you <strong>close the tab and open the link again later, you start from a clean notebook</strong>. There is no cross-device sync in the browser, and clearing browser data or private mode also wipes it.</p>
-<p>So: <strong>download your <code>.py</code> before you leave</strong> (menu → Download → <em>Download Python code</em>). That download is the <em>only</em> guaranteed copy. Handing in files works exactly like this in the checkpoints, so you get to practice the motion every week. Note: a downloaded <code>.py</code> is for submission and backup. You can’t upload it back into the browser editor.</p>
+<p>The checks only test the form of a chart: that it has a title, that its bars add up to your own numbers. They cannot see whether the chart tells the truth. And <strong>two things in Tobi’s deck are wrong without any task saying so</strong>: one is in his numbers, one is in what he claims. No check catches either of them.</p>
 </div>
 </div>
-<p><strong>Open in molab:</strong> marimo’s free cloud (account required). Your copy saves to your account and reopens on <strong>any device</strong>. Choose this if you know you’ll switch computers or want to be certain nothing is lost. Optional: nothing graded ever requires it.</p>
-<!-- PUBLISH AFTER SESSION IX (see docs/authoring-conventions.md → Solution notebooks):
+<p>When every check passes, the script puts your six charts side by side into <code>pitch_deck.png</code> and prints a block that starts with <code>SHOW THIS IN CLASS</code>. Show both to your lecturer. As in lab 08, that is feedback, not a condition for leaving, and a lab you finish at home does not have to be shown later.</p>
+<p>Checkpoint 5 next week is still handed in from the browser, and the script labs no longer practise that. So take two minutes before you go: open today’s last exercise, <a href="https://python.tobiasvlcek.com/notebooks/ex_09_e/">ex_09_e</a>, press <strong>Cmd/Ctrl+S</strong>, then menu → Download → <strong>Download Python code</strong>, and find the file in your Downloads folder.</p>
+<!-- PUBLISH AFTER SESSION IX (see docs/authoring-conventions.md, "Script labs"):
+copy sol_09_lab_pitch.py from the private repo into labs/, then un-comment.
 ## Solutions
 
-[Solutions notebook (read-only)](../notebooks/sol_09_lab_pitch/){.btn}
+[Solution script](../labs/sol_09_lab_pitch.py){.btn download="sol_09_lab_pitch.py"}
 -->
 
 

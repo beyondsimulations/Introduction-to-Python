@@ -893,7 +893,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h2 class="anchored" data-anchor-id="session-viii-pandas-working-with-ai">Session VIII: pandas &amp; Working with AI</h2>
 <section id="the-dataframe" class="level3">
 <h3 class="anchored" data-anchor-id="the-dataframe">The DataFrame</h3>
-<p>A table with named columns of mixed types. <code>pd.DataFrame</code> from a dict, <code>pd.read_csv("file.csv")</code> from a file (one line, also in the browser). Look before you leap: <code>.head()</code>, <code>.shape</code>, <code>.info()</code>, <code>.describe()</code>.</p>
+<p>A table with named columns of mixed types. <code>pd.DataFrame</code> from a dict, <code>pd.read_csv("file.csv")</code> from a file (one line; the file sits in the folder of your script). Look before you leap: <code>.head()</code>, <code>.shape</code>, <code>.info()</code>, <code>.describe()</code>.</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb23"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
 <span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> pd.DataFrame({</span>
@@ -931,7 +931,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <ul>
 <li><strong>Prompt with context and constraints</strong>: name the DataFrame, its columns and their types, and say exactly what you want back (“one line that returns the total <code>total_eur</code> for zone <code>Nord</code>”).</li>
 <li><strong>Verify: read it, run it, test it</strong> on a tiny case whose answer you already know. An AI that sounds sure is not an API that exists (<code>.summarize()</code> does not; <code>.describe()</code> does).</li>
-<li><strong>Disclose in one line</strong> on every submission that used AI, e.g.&nbsp;“Used the chatbot to draft the <code>groupby</code> line; I checked the totals by hand.”</li>
+<li><strong>Disclose in your project README</strong> what the AI did, one line per use, e.g.&nbsp;“Used the chatbot to draft the <code>groupby</code> line; I checked the totals by hand.”</li>
 </ul>
 </section>
 </section>
@@ -939,7 +939,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h2 class="anchored" data-anchor-id="session-ix-plotting-with-matplotlib">Session IX: Plotting with matplotlib</h2>
 <section id="the-frame-around-every-chart" class="level3">
 <h3 class="anchored" data-anchor-id="the-frame-around-every-chart">The frame around every chart</h3>
-<p>Open with <code>plt.figure()</code> (a fresh canvas, so lines do not pile onto the last chart) and end the cell with <code>plt.gca()</code> (marimo shows the last expression). A script run from the terminal uses <code>plt.show()</code> instead.</p>
+<p>Open with <code>plt.figure()</code> (a fresh canvas, so lines do not pile onto the last chart) and end the cell with <code>plt.gca()</code> (marimo shows the last expression). A script has no cell that could show the chart: there you end with <code>plt.savefig("name.png")</code>, which writes the picture into a file, and then <code>plt.close()</code>.</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb26"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
 <span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb26-3"><a href="#cb26-3" aria-hidden="true" tabindex="-1"></a>days <span class="op">=</span> [<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">5</span>]</span>
@@ -1002,7 +1002,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li>Catch specific exceptions, <code>raise</code> on bad input, read tracebacks bottom-up</li>
 <li>Don’t build it, import it; <code>random.seed(n)</code> before anything that must be reproducible</li>
 <li>Prefer one vectorised expression or one <code>groupby</code> over a loop; every chart gets <code>plt.figure()</code>, labels, a title, <code>plt.gca()</code>, and a y-axis from 0 for growth</li>
-<li>Test AI output on a tiny case you can check by hand and add the one-line disclosure</li>
+<li>Test AI output on a tiny case you can check by hand, and in your project note the use in the README</li>
 </ol>
 </section>
 <section id="recap" class="level2">
