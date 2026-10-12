@@ -84,9 +84,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <link href="../site_libs/quarto-html/quarto-syntax-highlighting-07311628652e75f956396d70ae2c81bf.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
 <script src="../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../site_libs/bootstrap/bootstrap-422582f6235fe8cc4e0fb4e9b79e9bcb.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="../site_libs/bootstrap/bootstrap-dark-1793e1ccb381a8b1a833ecabf7aeced6.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="light">
-<link href="../site_libs/bootstrap/bootstrap-422582f6235fe8cc4e0fb4e9b79e9bcb.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-d5407ca14600b690e3963be9f1b8c151.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-dark-bab584308b85d495651bb1f255ad6ca5.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-d5407ca14600b690e3963be9f1b8c151.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -473,6 +473,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
+  <a href="../general/project-ideas.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Project Ideas</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
   <a href="../general/ai-tools.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">AI Tools</span></a>
   </div>
@@ -612,7 +618,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="when-youre-done" class="level2">
 <h2 class="anchored" data-anchor-id="when-youre-done">When you’re done</h2>
 <p><strong>Cmd/Ctrl+S</strong>, then menu → <em>Download</em> → <em>Download Python code</em> → upload the <code>.py</code> to the “Checkpoint 1” assignment on Moodle, <strong>before the 40 minutes are up</strong>. No retakes: one sitting.</p>
-<p>. . .</p>
 <div class="callout callout-style-simple callout-note">
 <div class="callout-body d-flex">
 <div class="callout-icon-container">
@@ -630,9 +635,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="after-the-board-review" class="level2">
 <h2 class="anchored" data-anchor-id="after-the-board-review">After the board review</h2>
 <p>On to Episode 3.</p>
-<p>. . .</p>
 <p>Tobi has been “reusing” code the only way he knows how: he pasted the same receipt block <strong>14 times</strong>, once per menu item. A ten-cent price change yesterday cost him a whole afternoon of hunting down copies.</p>
-<p>. . .</p>
 <p>Today the code learns to <strong>reuse itself</strong>. We meet the function, and build a first class.</p>
 </section>
 </section>
@@ -641,7 +644,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="the-copy-paste-pain" class="level2">
 <h2 class="anchored" data-anchor-id="the-copy-paste-pain">The copy-paste pain</h2>
 <p>Tobi totals each receipt line by hand, the same shape, over and over:</p>
-<div id="cc474162" class="cell" data-output-location="fragment" data-execution_count="1">
+<div id="31427762" class="cell" data-output-location="fragment" data-execution_count="1">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="bu">round</span>(<span class="dv">2</span> <span class="op">*</span> <span class="fl">4.50</span>, <span class="dv">2</span>))    <span class="co"># 2 wraps</span></span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="bu">round</span>(<span class="dv">1</span> <span class="op">*</span> <span class="fl">12.00</span>, <span class="dv">2</span>))   <span class="co"># 1 bowl</span></span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="bu">round</span>(<span class="dv">5</span> <span class="op">*</span> <span class="fl">3.20</span>, <span class="dv">2</span>))    <span class="co"># 5 fries</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
@@ -651,13 +654,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 16.0</code></pre>
 </div>
 </div>
-<p>. . .</p>
 <p>Same calculation, retyped every time. Change the rule once and you must fix it everywhere. There is a better way.</p>
 </section>
 <section id="def-name-the-calculation-once" class="level2">
 <h2 class="anchored" data-anchor-id="def-name-the-calculation-once"><code>def</code>: name the calculation once</h2>
 <p>Write the calculation <strong>once</strong>, give it a name, and call it whenever you need it:</p>
-<div id="e6fa7eae" class="cell" data-output-location="fragment" data-execution_count="2">
+<div id="8400b98a" class="cell" data-output-location="fragment" data-execution_count="2">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> line_total(qty, price):     <span class="co"># def NAME(inputs):</span></span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> <span class="bu">round</span>(qty <span class="op">*</span> price, <span class="dv">2</span>)  <span class="co"># indented body, hands a value back</span></span>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -666,7 +668,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <pre><code>9.0</code></pre>
 </div>
 </div>
-<p>. . .</p>
 <p><code>def</code> starts the definition · the name is <code>line_total</code> · the block is <strong>indented</strong> · <code>return</code> hands the answer back.</p>
 </section>
 <section id="parameters-vs-arguments" class="level2">
@@ -675,7 +676,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li><strong>Parameters</strong> are the names in the definition, the function’s inputs: <code>qty</code>, <code>price</code></li>
 <li><strong>Arguments</strong> are the actual values you pass when you <strong>call</strong> it: <code>2</code>, <code>4.50</code></li>
 </ul>
-<div id="fc7f2605" class="cell" data-output-location="fragment" data-execution_count="3">
+<div id="2ea5743e" class="cell" data-output-location="fragment" data-execution_count="3">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> line_total(qty, price):      <span class="co"># qty and price are PARAMETERS</span></span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> <span class="bu">round</span>(qty <span class="op">*</span> price, <span class="dv">2</span>)</span>
 <span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -684,7 +685,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <pre><code>9.6</code></pre>
 </div>
 </div>
-<p>. . .</p>
 <p>Same function, different arguments, different result. No retyping.</p>
 </section>
 <section id="predict-which-number-is-the-bill" class="level2">
@@ -695,12 +695,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(with_tip(<span class="dv">10</span>, <span class="dv">40</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>a) <code>44.0</code> b) <code>14.0</code> c) <code>Error</code></p>
-<p>. . .</p>
 <p><span class="question">Predict</span>. Pick a letter, then I reveal the answer.</p>
 </section>
 <section id="answer-position-decides-not-intent" class="level2">
 <h2 class="anchored" data-anchor-id="answer-position-decides-not-intent">Answer: position decides, not intent</h2>
-<div id="543e2b47" class="cell" data-output-location="fragment" data-execution_count="4">
+<div id="4602feba" class="cell" data-output-location="fragment" data-execution_count="4">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> with_tip(bill, percent):</span>
 <span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> <span class="bu">round</span>(bill <span class="op">*</span> (<span class="dv">1</span> <span class="op">+</span> percent <span class="op">/</span> <span class="dv">100</span>), <span class="dv">2</span>)</span>
 <span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -711,13 +710,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 44.0</code></pre>
 </div>
 </div>
-<p>. . .</p>
 <p><strong>b) <code>14.0</code></strong>: arguments land on parameters <strong>by position</strong>. <code>10</code> becomes <code>bill</code>, <code>40</code> becomes <code>percent</code>: a 40 % tip on 10 EUR. Python cannot read what Tobi meant, only where he put it.</p>
 </section>
 <section id="return-hand-the-value-back" class="level2">
 <h2 class="anchored" data-anchor-id="return-hand-the-value-back"><code>return</code>: hand the value back</h2>
 <p><code>return</code> sends a value <strong>back to whoever called</strong> the function, so you can store it and use it later:</p>
-<div id="1c0fc0b1" class="cell" data-output-location="fragment" data-execution_count="5">
+<div id="8a311224" class="cell" data-output-location="fragment" data-execution_count="5">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> line_total(qty, price):</span>
 <span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> <span class="bu">round</span>(qty <span class="op">*</span> price, <span class="dv">2</span>)</span>
 <span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -739,12 +737,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a>result <span class="op">=</span> label_price(<span class="fl">8.50</span>)</span>
 <span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(result)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>a) <code>8.50 EUR</code> b) <code>Error</code> c) <code>None</code></p>
-<p>. . .</p>
 <p><span class="question">Predict</span>. Pick a letter, then I reveal the answer.</p>
 </section>
 <section id="answer-print-shows-return-gives" class="level2">
 <h2 class="anchored" data-anchor-id="answer-print-shows-return-gives">Answer: <code>print</code> shows, <code>return</code> gives</h2>
-<div id="fafe13a6" class="cell" data-output-location="fragment" data-execution_count="6">
+<div id="4420d036" class="cell" data-output-location="fragment" data-execution_count="6">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> label_price(price):</span>
 <span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f"</span><span class="sc">{</span>price<span class="sc">:.2f}</span><span class="ss"> EUR"</span>)</span>
 <span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -755,7 +752,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 None</code></pre>
 </div>
 </div>
-<p>. . .</p>
 <p><strong>c) <code>None</code></strong>: <code>label_price</code> prints its line while running, but with no <code>return</code> it hands back <code>None</code>. That <code>None</code> is what lands in <code>result</code>. Printing is not returning.</p>
 </section>
 </section>
@@ -765,13 +761,13 @@ None</code></pre>
 <h2 class="anchored" data-anchor-id="open-the-exercise">Open the exercise</h2>
 <p>Scan the QR or type the link:</p>
 <p><strong><a href="https://python.tobiasvlcek.com/notebooks/ex_03_a/">python.tobiasvlcek.com/notebooks/ex_03_a/</a></strong></p>
-<p><img src="assets/qr/ex_03_a.png" class="img-fluid" width="280"></p>
+<p><img src="assets/qr/ex_03_a.png" class="img-fluid" alt="QR code linking to the online notebook for exercise 3a, the same address as the link above." width="280"></p>
 <p><strong>Any questions?</strong> Let me know!</p>
 </section>
 <section id="default-arguments" class="level2">
 <h2 class="anchored" data-anchor-id="default-arguments">Default arguments</h2>
 <p>A parameter can carry a <strong>default</strong>, used when the caller leaves it out:</p>
-<div id="9ff6db81" class="cell" data-output-location="fragment" data-execution_count="7">
+<div id="58c908dc" class="cell" data-output-location="fragment" data-execution_count="7">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> service_fee(total, rate<span class="op">=</span><span class="fl">0.05</span>):   <span class="co"># rate defaults to 5 %</span></span>
 <span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> <span class="bu">round</span>(total <span class="op">*</span> rate, <span class="dv">2</span>)</span>
 <span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -782,13 +778,12 @@ None</code></pre>
 8.0</code></pre>
 </div>
 </div>
-<p>. . .</p>
 <p>Defaults let one function cover the common case and the special case.</p>
 </section>
 <section id="functions-can-call-functions" class="level2">
 <h2 class="anchored" data-anchor-id="functions-can-call-functions">Functions can call functions</h2>
 <p>A function can use another function you already wrote (reuse builds on reuse):</p>
-<div id="521e9015" class="cell" data-output-location="fragment" data-execution_count="8">
+<div id="28c2349e" class="cell" data-output-location="fragment" data-execution_count="8">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb17"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> bill(qty, price):</span>
 <span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>    items <span class="op">=</span> line_total(qty, price)        <span class="co"># reuse line_total</span></span>
 <span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> <span class="bu">round</span>(items <span class="op">+</span> service_fee(items), <span class="dv">2</span>)  <span class="co"># ...and service_fee</span></span>
@@ -798,7 +793,6 @@ None</code></pre>
 <pre><code>9.45</code></pre>
 </div>
 </div>
-<p>. . .</p>
 <p><code>line_total</code> and <code>service_fee</code> do their jobs; <code>bill</code> just orchestrates. That’s how small pieces become a program.</p>
 </section>
 </section>
@@ -808,7 +802,7 @@ None</code></pre>
 <h2 class="anchored" data-anchor-id="open-the-exercise-1">Open the exercise</h2>
 <p>Scan the QR or type the link:</p>
 <p><strong><a href="https://python.tobiasvlcek.com/notebooks/ex_03_b/">python.tobiasvlcek.com/notebooks/ex_03_b/</a></strong></p>
-<p><img src="assets/qr/ex_03_b.png" class="img-fluid" width="280"></p>
+<p><img src="assets/qr/ex_03_b.png" class="img-fluid" alt="QR code linking to the online notebook for exercise 3b, the same address as the link above." width="280"></p>
 <p><strong>Any questions?</strong> Let me know!</p>
 </section>
 </section>
@@ -817,7 +811,7 @@ None</code></pre>
 <section id="local-names-stay-local" class="level2">
 <h2 class="anchored" data-anchor-id="local-names-stay-local">Local names stay local</h2>
 <p>A parameter is the function’s <strong>own name</strong> for the value it was handed. Giving that name a new value inside changes nothing outside:</p>
-<div id="5318bd0e" class="cell" data-output-location="fragment" data-execution_count="9">
+<div id="f674a090" class="cell" data-output-location="fragment" data-execution_count="9">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb19"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> bump(n):</span>
 <span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>    n <span class="op">=</span> n <span class="op">+</span> <span class="dv">10</span>       <span class="co"># changes the function's OWN copy of n</span></span>
 <span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> n</span>
@@ -827,7 +821,6 @@ None</code></pre>
 <pre><code>13</code></pre>
 </div>
 </div>
-<p>. . .</p>
 <p>Names created inside a function live in its <strong>scope</strong>. They vanish when the function ends.</p>
 </section>
 <section id="predict-does-stock-move" class="level2">
@@ -841,12 +834,11 @@ None</code></pre>
 <span id="cb21-6"><a href="#cb21-6" aria-hidden="true" tabindex="-1"></a>bump(stock)</span>
 <span id="cb21-7"><a href="#cb21-7" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(stock)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>a) <code>3</code> b) <code>13</code> c) <code>Error</code></p>
-<p>. . .</p>
 <p><span class="question">Predict</span>. Pick a letter, then I reveal the answer.</p>
 </section>
 <section id="answer-outside-stays-untouched" class="level2">
 <h2 class="anchored" data-anchor-id="answer-outside-stays-untouched">Answer: outside stays untouched</h2>
-<div id="77ae77c0" class="cell" data-output-location="fragment" data-execution_count="10">
+<div id="2b4dfcb6" class="cell" data-output-location="fragment" data-execution_count="10">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb22"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> bump(n):</span>
 <span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a>    n <span class="op">=</span> n <span class="op">+</span> <span class="dv">10</span></span>
 <span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> n</span>
@@ -858,7 +850,6 @@ None</code></pre>
 <pre><code>3</code></pre>
 </div>
 </div>
-<p>. . .</p>
 <p><strong>a) <code>3</code></strong>: <code>bump</code> changes only its own copy <code>n</code>. We never stored what it returned, so <code>stock</code> out here never moves. The function cannot reach out and rewrite your variables.</p>
 </section>
 <section id="why-thats-a-feature-not-a-limit" class="level2">
@@ -868,7 +859,6 @@ None</code></pre>
 <li>You can call it a hundred times and trust your data stays put</li>
 <li>To use a result, you <strong>catch the return</strong> (<code>stock = bump(stock)</code>). Deliberate, visible</li>
 </ul>
-<p>. . .</p>
 <p>Isolation is what makes functions <strong>safe to reuse</strong>. That is the whole point of this episode.</p>
 </section>
 <section id="a-class-bundles-data-with-behavior" class="level2">
@@ -878,12 +868,11 @@ None</code></pre>
 <li><strong>data</strong>: the facts about one thing (a courier’s name, their distance)</li>
 <li><strong>behavior</strong>: what you can compute from it (their fee)</li>
 </ul>
-<p>. . .</p>
 <p>A <strong>method</strong> is just a function that lives inside a class and can read the object’s own data.</p>
 </section>
 <section id="class-__init__-and-self" class="level2">
 <h2 class="anchored" data-anchor-id="class-__init__-and-self"><code>class</code>, <code>__init__</code>, and <code>self</code></h2>
-<div id="7706cfc8" class="cell" data-output-location="fragment" data-execution_count="11">
+<div id="7772d565" class="cell" data-output-location="fragment" data-execution_count="11">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb24"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> Delivery:</span>
 <span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>, courier, distance_km):  <span class="co"># runs when you build one</span></span>
 <span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.courier <span class="op">=</span> courier          <span class="co"># store data ON the object</span></span>
@@ -893,13 +882,12 @@ None</code></pre>
 <span id="cb24-7"><a href="#cb24-7" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> fee(<span class="va">self</span>):                       <span class="co"># a method: note self</span></span>
 <span id="cb24-8"><a href="#cb24-8" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="bu">round</span>(<span class="va">self</span>.distance_km <span class="op">*</span> <span class="va">self</span>.rate_per_km, <span class="dv">2</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
-<p>. . .</p>
 <p><code>__init__</code> sets up a new object · <code>self</code> is <em>this</em> object · attributes are stored on <code>self</code> and read back through <code>self</code>. <code>fee()</code> multiplies <strong>two</strong> stored attributes.</p>
 </section>
 <section id="build-one-call-its-method" class="level2">
 <h2 class="anchored" data-anchor-id="build-one-call-its-method">Build one, call its method</h2>
 <p><strong>Instantiate</strong> the class to make an object, then use its data and its methods:</p>
-<div id="eb01afb2" class="cell" data-output-location="fragment" data-execution_count="12">
+<div id="61f31a24" class="cell" data-output-location="fragment" data-execution_count="12">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb25"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a>trip <span class="op">=</span> Delivery(<span class="st">"Nadia"</span>, <span class="dv">4</span>)   <span class="co"># build one, __init__ runs</span></span>
 <span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(trip.courier)           <span class="co"># read stored data</span></span>
@@ -909,7 +897,6 @@ None</code></pre>
 4.8</code></pre>
 </div>
 </div>
-<p>. . .</p>
 <p><code>trip</code> is one <code>Delivery</code> object. <code>trip.fee()</code> computes from <em>its own</em> stored distance: data and behavior, traveling together.</p>
 </section>
 <section id="predict-does-the-second-overwrite" class="level2">
@@ -920,12 +907,11 @@ None</code></pre>
 <span id="cb27-3"><a href="#cb27-3" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb27-4"><a href="#cb27-4" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(trip.fee())</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>a) <code>12.0</code> b) <code>Error</code> c) <code>4.8</code></p>
-<p>. . .</p>
 <p><span class="question">Predict</span>. Pick a letter, then I reveal the answer.</p>
 </section>
 <section id="answer-each-object-its-own-data" class="level2">
 <h2 class="anchored" data-anchor-id="answer-each-object-its-own-data">Answer: each object, its own data</h2>
-<div id="11860909" class="cell" data-output-location="fragment" data-execution_count="13">
+<div id="0cbb3841" class="cell" data-output-location="fragment" data-execution_count="13">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb28"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a>trip <span class="op">=</span> Delivery(<span class="st">"Nadia"</span>, <span class="dv">4</span>)</span>
 <span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a>second <span class="op">=</span> Delivery(<span class="st">"Omar"</span>, <span class="dv">10</span>)</span>
 <span id="cb28-3"><a href="#cb28-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -936,7 +922,6 @@ None</code></pre>
 12.0</code></pre>
 </div>
 </div>
-<p>. . .</p>
 <p><strong>c) <code>4.8</code></strong>: <code>__init__</code> ran twice and stored the data on <strong>two different objects</strong>. <code>self</code> inside <code>trip.fee()</code> is <code>trip</code>, so it reads Nadia’s 4 km, not Omar’s 10. Two objects of one class do not share their data.</p>
 </section>
 <section id="how-far-we-go-with-classes" class="level2">
@@ -946,7 +931,6 @@ None</code></pre>
 <li>Classes get tricky fast (inheritance, <code>self</code> confusion), and that is <strong>not this course</strong></li>
 <li>We use them only to <em>bundle</em> data with behavior, nothing deeper</li>
 </ul>
-<p>. . .</p>
 <div class="callout callout-style-simple callout-tip">
 <div class="callout-body d-flex">
 <div class="callout-icon-container">
@@ -965,7 +949,7 @@ None</code></pre>
 <h2 class="anchored" data-anchor-id="open-the-exercise-2">Open the exercise</h2>
 <p>Scan the QR or type the link:</p>
 <p><strong><a href="https://python.tobiasvlcek.com/notebooks/ex_03_c/">python.tobiasvlcek.com/notebooks/ex_03_c/</a></strong></p>
-<p><img src="assets/qr/ex_03_c.png" class="img-fluid" width="280"></p>
+<p><img src="assets/qr/ex_03_c.png" class="img-fluid" alt="QR code linking to the online notebook for exercise 3c, the same address as the link above." width="280"></p>
 <p><strong>Any questions?</strong> Let me know!</p>
 </section>
 </section>
@@ -978,7 +962,6 @@ None</code></pre>
 <li>You’ll write the fee and tip functions, fix a function that forgets to <code>return</code>, give a parameter a default, and build the startup’s first <code>Order</code> class</li>
 <li>It runs entirely in your browser: no setup, just click and code</li>
 </ul>
-<p>. . .</p>
 <div class="callout callout-style-simple callout-important">
 <div class="callout-body d-flex">
 <div class="callout-icon-container">
@@ -1000,7 +983,6 @@ None</code></pre>
 <li>Names inside a function are <strong>local</strong>: it can’t quietly change your variables, which is exactly what makes it safe to reuse</li>
 <li>A <strong>class</strong> bundles data (on <code>self</code>, via <code>__init__</code>) with behavior (methods). You’ll write just one small one today</li>
 </ol>
-<p>. . .</p>
 <div class="callout callout-style-simple callout-note">
 <div class="callout-body d-flex">
 <div class="callout-icon-container">
@@ -1021,7 +1003,6 @@ None</code></pre>
 <li>Downey, A. B. (2024). Think Python: How to think like a computer scientist (Third edition). O’Reilly. <a href="https://greenteapress.com/wp/think-python-3rd-edition/">Link to free online version</a></li>
 <li>Elter, S. (2021). Schrödinger programmiert Python: Das etwas andere Fachbuch (1. Auflage). Rheinwerk Verlag.</li>
 </ul>
-<p>. . .</p>
 <div class="callout callout-style-simple callout-note">
 <div class="callout-body d-flex">
 <div class="callout-icon-container">
@@ -1032,7 +1013,6 @@ None</code></pre>
 </div>
 </div>
 </div>
-<p>. . .</p>
 <p>For more, see the <a href="../general/literature.html">literature list</a> of this course.</p>
 
 
@@ -1447,25 +1427,25 @@ None</code></pre>
       <ul class="footer-items list-unstyled">
     <li class="nav-item compact">
     <a class="nav-link" href="https://github.com/beyondsimulations/Introduction-to-Python">
-      <i class="bi bi-github" role="img">
+      <i class="bi bi-github" role="img" aria-label="GitHub repository">
 </i> 
     </a>
   </li>  
     <li class="nav-item compact">
     <a class="nav-link" href="https://linkedin.com/in/tobiasvlcek">
-      <i class="bi bi-linkedin" role="img">
+      <i class="bi bi-linkedin" role="img" aria-label="LinkedIn">
 </i> 
     </a>
   </li>  
     <li class="nav-item compact">
     <a class="nav-link" href="mailto:vlcek@beyondsimulations.com">
-      <i class="bi bi-envelope" role="img">
+      <i class="bi bi-envelope" role="img" aria-label="Email">
 </i> 
     </a>
   </li>  
     <li class="nav-item compact">
     <a class="nav-link" href="https://tobiasvlcek.com/lectures/">
-      <i class="bi bi-skip-backward" role="img">
+      <i class="bi bi-skip-backward" role="img" aria-label="All lectures">
 </i> 
     </a>
   </li>  
@@ -1482,7 +1462,7 @@ None</code></pre>
 </ul>
     </div>   
     <div class="nav-footer-center">
-<p>Programming with Python, Tobias Vlćek<br>CC BY-NC-SA 4.0</p>
+<p>Programming with Python, Dr.&nbsp;Tobias Vlćek<br>CC BY-NC-SA 4.0</p>
 <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/beyondsimulations/Introduction-to-Python/blob/main/lectures/lec_03_functions.qmd" class="toc-action"><i class="bi bi-github"></i>View source</a></li><li><a href="https://github.com/beyondsimulations/Introduction-to-Python/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div>
     <div class="nav-footer-right">
       &nbsp;
