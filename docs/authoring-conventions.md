@@ -5,8 +5,6 @@
 - Private repo (`../Introduction-to-Python-checkpoints`): checkpoint notebooks,
   reference tests, ALL solution notebooks (`solutions/sol_XX_*.py`).
 - Commit rule: never add AI-attribution lines (Co-Authored-By etc.) in either repo.
-- The convert script only rebuilds `_repo-md/` on a full render (guarded by
-  `QUARTO_PROJECT_RENDER_ALL`), so single-file renders leave `_repo-md/` alone.
 
 ## Notebooks (see notebooks/_template.py for the skeleton)
 - Every notebook opens with a title cell holding ONLY the `#` heading, then
@@ -168,10 +166,20 @@ Sessions XI-XIII follow lean work-session shapes: no warm-up, no QR exercises,
 no checkpoint, no lab handoff. XI and XII each carry one short content flow
 plus a work menu/checklist and wrap-up; XIII is presentations plus the moved
 send-off (future block, keep-programming, thank-you, literature). Presentation
-logistics live only in lec_10's Demo Day flow: 10+5 format, first demos in XII,
-rest in XIII, order drawn at random with the Session VI random module.
+logistics live only in lec_10's Demo Day flow: groups of three, 7+3 format, all
+demos in XIII (owner decision 2026-10-10), order drawn at random with the
+Session VI random module.
 
 ### Break slides: two backgrounds, two meanings
+Every slide heading sits on one line (cross-course standard since
+2026-10-10, checked by the overflow gate; only the deck's title slide may
+wrap). A section title holds about 21 characters, a slide title about 35;
+the width decides, so run the gate. The fix is the wording, never smaller
+type. Exercise sections are titled `# Your turn` (no duration), and the
+story section is `# [EP N: Name]`, with five names shortened so they fit
+(EP 3: Copy-Paste Soup, EP 4: Menu Grows Up, EP 5: 3-AM Checkout, EP 6: Due
+Diligence, EP 7: Numbers Deck). Tutorial pages and labs keep the long names.
+
 `.loud-slide` (brand teal) means "you are about to do something": every
 checkpoint and every `# Your turn` / `# Warm-up` slide. `.title` /
 `.exercise-slide` (peach) means "a new section starts". Never reuse one for
@@ -204,7 +212,7 @@ hallucination) must mark that cell `#| error: true` so Quarto captures the
 traceback into the slide, a bare crashing cell aborts the whole render.
 
 ### QR exercise slide (exact form)
-    # Your turn: 5-10 minutes {.loud-slide}
+    # Your turn {.loud-slide}
 
     ## Open the exercise
     Scan the QR or type the link:
@@ -214,6 +222,9 @@ The `#` slide is the heading alone; the link, QR and predict line go on the
 Add new exercises to `helpers/make_qr.py` EXERCISES and re-run it.
 
 ## Solution notebooks (Fable #4)
+- NOT published (owner decision 2026-10-10): solutions stay in the private
+  repo and students ask the lecturer. The "Publish AFTER the session" steps
+  below and in "Script labs" are on hold; the FAQ says so.
 - Authored in the PRIVATE repo as `solutions/sol_XX_lab_<topic>.py`: the lab
   notebook with answers filled in, checks green, header "Solutions: Episode XX",
   hint accordions removed, wrap-up replaced by "compare, don't memorize" note.
@@ -262,6 +273,13 @@ Add new exercises to `helpers/make_qr.py` EXERCISES and re-run it.
   flips it in every index.html or cells sit idle until "Run all"; and with the
   shared asset bundle `mo.notebook_location()` resolves to `_site/notebooks/`, so
   the script copies `notebooks/public/` there or pandas labs read the 404 page.
+  Two more (2026-10-11, Chromium and WebKit): the exporter embeds `autosave: off`,
+  so a download without Cmd/Ctrl+S was 0 bytes, and marimo boots from the embedded
+  `<marimo-code>` without reading a save back, so a reload reset the notebook.
+  `export_marimo.py` switches autosave on and injects `KEEP_ON_RELOAD` (the tab's
+  last save comes back on load; a new tab starts clean). Gate after a marimo
+  upgrade: `uv run python helpers/check_reload.py _site/notebooks/<name>`. The
+  checkpoints repo injects the same script in `deploy_checkpoint.sh`.
 
 ## Script labs (Session VIII+)
 From Session VIII the labs are plain `.py` scripts that students run locally

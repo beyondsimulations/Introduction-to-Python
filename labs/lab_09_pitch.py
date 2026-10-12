@@ -13,6 +13,8 @@
 #   3. Type:  uv run python lab_09_pitch.py
 #
 # HOW THE LAB WORKS
+#   - The lab is not graded. The checks are there so you know where you
+#     stand.
 #   - As in Lab 08: work from top to bottom and write your code under the
 #     lines that say YOUR CODE BELOW. Every task ends in a few checks (the
 #     assert lines). The script stops at the first check that fails and
@@ -29,7 +31,8 @@
 #     wrote, and look at the picture it made.
 #   - When every check passes, the script puts your six charts side by
 #     side into pitch_deck.png and prints a block that starts with SHOW
-#     THIS IN CLASS. Show both to your lecturer before you leave.
+#     THIS IN CLASS. Show both to your lecturer for feedback. You may
+#     leave either way.
 
 # %% Load the data (given, do not change)
 import numbers
@@ -49,6 +52,7 @@ assert Path("orders_messy.csv").exists(), (
 )
 orders = pd.read_csv("orders_messy.csv")
 pd.set_option("display.width", 120)  # print all columns side by side
+pd.set_option("display.max_columns", None)  # and never hide one behind "..."
 run_started = time.time()
 
 
@@ -99,7 +103,7 @@ def drawn(chart):
 
 
 # %% Task 1: clean again
-# The cell above has read orders_messy.csv into orders. Tobi has not touched
+# The lines above have read orders_messy.csv into orders. Tobi has not touched
 # the file since last week, so everything that was wrong with it still is.
 #
 #   clean        a DataFrame with every order in it exactly once and with
@@ -343,16 +347,22 @@ typical_day = None
 assert momentum_chart is not None, "Task 6: not attempted yet."
 check_chart(6, momentum_chart, "momentum.png")
 day_count = clean["day"].nunique()
-sizes = [len(heights) for kind, heights in drawn(momentum_chart)]
+shown = [heights for kind, heights in drawn(momentum_chart) if kind != "bars"]
+for group in momentum_chart.containers:  # every set of bars counts on its own
+    bars = [bar.get_height() for bar in group if hasattr(bar, "get_height")]
+    if bars:
+        shown.append(np.array(bars, dtype=float))
+sizes = [len(heights) for heights in shown]
 assert day_count in sizes and 3 in sizes, (
     f"Task 6: momentum.png should show all {day_count} days and, drawn once more, "
-    f"Tobi's 3 days. Yours draws {' and '.join(str(size) for size in sizes)} points."
+    f"Tobi's 3 days. Yours draws {' and '.join(str(size) for size in sizes[:4]) or 'no'}"
+    f"{' and more' if len(sizes) > 4 else ''} points."
 )
 assert momentum_chart.get_legend() is not None, (
     "Task 6: the chart has no legend, so nobody can tell Tobi's days from the rest."
 )
 assert typical_day is not None, "Task 6: typical_day is still None."
-all_days = next(heights for kind, heights in drawn(momentum_chart) if len(heights) == day_count)
+all_days = next(heights for heights in shown if len(heights) == day_count)
 assert is_number(typical_day) and abs(typical_day - all_days.mean()) < 0.01, (
     f"Task 6: typical_day is not the average of the {day_count} days on your chart."
 )
@@ -433,7 +443,7 @@ assert pitch["typical_day"] == typical_day, (
     "Task 8: the typical_day in pitch is not your typical_day from Task 6."
 )
 assert isinstance(headline, str) and len(headline.split()) >= 8, (
-    "Task 8: headline should be a full sentence, as a string."
+    "Task 8: headline should be a full sentence of at least 8 words, as a string."
 )
 print("Task 8 passed:", pitch)
 
@@ -459,7 +469,7 @@ else:
     )
     check_chart(9, own_chart, "own.png")
     assert isinstance(own_answer, str) and len(own_answer.split()) >= 5, (
-        "Task 9: own_answer should be a full sentence, as a string."
+        "Task 9: own_answer should be a full sentence of at least 5 words, as a string."
     )
     print("Task 9 passed:", own_question, "|", own_answer)
 

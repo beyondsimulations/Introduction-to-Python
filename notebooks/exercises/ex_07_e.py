@@ -4,7 +4,7 @@ import marimo
 app = marimo.App(width="medium", app_title="ex_07_e")
 
 
-@app.cell
+@app.cell(hide_code=True)
 def _():
     import marimo as mo
     return (mo,)
@@ -149,7 +149,7 @@ def _(mo):
     mo.accordion(
         {
             "Hint 1 (a nudge)": "axis=0 collapses down the rows into one number per column (zone); once you have the per-zone totals, argmax finds the index of the biggest one.",
-            "Hint 2 (the structure)": "zone_totals_exe = sales_exe.sum(axis=___)\nbest_zone_exe = int(sales_exe.sum(axis=___).___())",
+            "Hint 2 (the structure)": "```python\nzone_totals_exe = sales_exe.sum(axis=___)\nbest_zone_exe = int(sales_exe.sum(axis=___).___())\n```",
         }
     )
     return
@@ -207,7 +207,7 @@ def _(mo):
     mo.accordion(
         {
             "Hint 1 (a nudge)": "One number per day means the zones (columns) must disappear: that is the other axis. Then argmax on those totals gives the day's index.",
-            "Hint 2 (the structure)": "best_day_exe = int(sales_exe.sum(axis=___).___())",
+            "Hint 2 (the structure)": "`best_day_exe = int(sales_exe.sum(axis=___).___())`",
         }
     )
     return

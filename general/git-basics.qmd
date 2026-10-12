@@ -60,23 +60,25 @@ Because every project in this course is cloned from GitHub, git already knows wh
 git push
 ```
 
-**When you need it:** whenever you stop working, so your partner (and a safe online backup) has your latest commits.
+**When you need it:** whenever you stop working, so your partners (and a safe online backup) have your latest commits.
 
 ### Pull
 
-**Pull** brings commits *down* from GitHub into your computer, so you get whatever your partner pushed.
+**Pull** brings commits *down* from GitHub into your computer, so you get whatever your partners pushed.
 
 In Zed you run **`git: pull`** from the command palette. The terminal equivalent is:
 
 ```bash
-git pull
+git pull --no-edit
 ```
+
+When you and a partner have both committed, a pull has to merge the two histories, and the merge needs a message. `--no-edit` lets git write that message itself. Without it, git opens a text editor inside the terminal and waits (see [Troubleshooting](#troubleshooting)).
 
 **When you need it:** every time *before* you start working. This is the single most important habit when you share a repo. Pull first, and you almost never run into trouble.
 
 ### Clone
 
-**Clone** makes a full copy of a repository from GitHub onto your computer, including all its history. This is how every project in this course arrives on your computer: the one you created on GitHub yourself, and your partner's.
+**Clone** makes a full copy of a repository from GitHub onto your computer, including all its history. This is how every project in this course arrives on your computer: the one you created on GitHub yourself, and a partner's.
 
 In Zed, open the command palette and run **`git: clone`**, paste the repository's web address (its HTTPS URL, which looks like `https://github.com/name/project.git`, copied from the green *Code* button on GitHub), and pick the folder where you keep course work. Zed then opens the cloned folder as your workspace. The terminal equivalent is:
 
@@ -84,7 +86,7 @@ In Zed, open the command palette and run **`git: clone`**, paste the repository'
 git clone https://github.com/name/project.git
 ```
 
-**When you need it:** once, when you join a project someone else created. After cloning you have the repo locally and can commit, push, and pull like normal.
+**When you need it:** once per project, when you bring your own new repo down or join a partner's. After cloning you have the repo locally and can commit, push, and pull like normal.
 
 ## GitHub setup and authentication
 
@@ -100,9 +102,9 @@ Signing in to Zed is not the same as authenticating git. Even fully signed in to
    - macOS: if git is missing, that command offers to install it. Accept.
    - Windows: `winget install Git.Git` (or the installer from [git-scm.com](https://git-scm.com)).
 
-   Then re-run `git --version` to confirm you see a version number.
+   Then **close and reopen the terminal** (an open one does not see new programs) and re-run `git --version` to confirm you see a version number.
 
-2. **Install `gh`** if you do not have it. Download the installer for your system from [cli.github.com](https://cli.github.com) (macOS: the `.pkg`; Windows: the `.msi`, or `winget install GitHub.cli`). Installing `gh` does **not** install git itself. That was step 1.
+2. **Install `gh`**, the GitHub CLI. Windows: the `.msi` from [cli.github.com](https://cli.github.com), or `winget install GitHub.cli`. macOS: the file ending in `macOS_universal.pkg` from the [latest release](https://github.com/cli/cli/releases/latest), or `brew install gh` if you use Homebrew. Close and reopen the terminal, then check with `gh --version`. Installing `gh` does **not** install git itself. That was step 1.
 
 3. **Log in.** Run this in a terminal:
 
@@ -110,7 +112,7 @@ Signing in to Zed is not the same as authenticating git. Even fully signed in to
    gh auth login
    ```
 
-   Answer the prompts: choose GitHub.com, choose HTTPS as the protocol, and authenticate through the browser (it shows you a short code to type into a GitHub page). When it asks *"Authenticate Git with your GitHub credentials?"*, answer **yes**. This runs `gh auth setup-git` for you, which is the step that lets git push and pull. (If you answered no by mistake, you can run it yourself afterwards:)
+   Answer the prompts (arrow keys to choose, Enter to confirm): choose GitHub.com, choose HTTPS as the protocol, and authenticate through the browser (it shows you a short code to type into a GitHub page). When it asks *"Authenticate Git with your GitHub credentials?"*, answer **yes**. This runs `gh auth setup-git` for you, which is the step that lets git push and pull. (If you answered no by mistake, you can run it yourself afterwards:)
 
    ```bash
    gh auth setup-git
@@ -130,7 +132,7 @@ Signing in to Zed is not the same as authenticating git. Even fully signed in to
    git config --global pull.rebase false
    ```
 
-   This tells git to simply combine your partner's work with yours when you pull. You only set this once. Without it, git may refuse a pull with a confusing message about "divergent branches".
+   This tells git to simply combine your partners' work with yours when you pull. You only set this once. Without it, git may refuse a pull with a confusing message about "divergent branches".
 
 6. **Tell git who you are.** Every commit carries a name and an e-mail address:
 
@@ -139,7 +141,7 @@ Signing in to Zed is not the same as authenticating git. Even fully signed in to
    git config --global user.email "you@example.com"
    ```
 
-   Use the e-mail address of your GitHub account, so that GitHub links your commits to you. Without these two lines, git either refuses to commit (*"Please tell me who you are"*) or makes up an address from your computer's name.
+   Neither line prints anything when it works. Use the e-mail address of your GitHub account, so that GitHub links your commits to you. Without these two lines, git either refuses to commit (*"Please tell me who you are"*) or makes up an address from your computer's name.
 
 ::: callout-note
 Signing in to the Zed app (`client: sign in` in the command palette) is optional and only for Zed's collaboration and AI features. It has nothing to do with git push, so do not treat it as part of git setup.
@@ -151,34 +153,34 @@ A project in this course begins on the website and comes down to your computer, 
 
 1. On [github.com](https://github.com), click New repository. Give it a name, set it to Private, tick **Add a README file**, and choose the Python `.gitignore` template (it keeps the `.venv` folder out of git). Click Create repository.
 2. Copy the repository's **HTTPS URL** from the green *Code* button (`https://github.com/<you>/<repo>.git`). Use HTTPS, not SSH: the login you set up above only works over HTTPS.
-3. In Zed, run **`git: clone`**, paste the URL, and pick the folder where you keep course work (terminal: `git clone <url>`). Zed opens the new folder; everything below happens **inside** it.
-4. In Zed's built-in terminal (`` Ctrl+` ``, it opens inside your workspace) run `uv init --no-package`. It adds `main.py`, `pyproject.toml` and `.python-version` next to the README. Commit and push, and the project is live on GitHub.
+3. In Zed, run **`git: clone`**, paste the URL, and pick the folder that `python-labs` sits in, so the project lands **next to** `python-labs` (terminal: `git clone <url>`). A repo inside `python-labs` gets tangled up with the labs. Zed opens the new folder; everything below happens **inside** it.
+4. In Zed's built-in terminal (`` Ctrl+` ``, it opens inside your workspace) run `uv init --no-package`. It adds `main.py`, `pyproject.toml` and `.python-version` next to the README. Every project has its own packages: if your code imports pandas, run `uv add pandas` here. Commit and push, and the project is live on GitHub.
 
-## Working as a pair
+## Working as a group
 
-In this course you work in pairs, and you share one GitHub repository. There are two clear roles.
+In this course you work in groups of three, and you share one GitHub repository. There are two clear roles.
 
-**The repo owner** creates the project and invites the partner:
+**The repo owner** creates the project and invites the partners:
 
 1. Create the project on GitHub, clone it, run `uv init --no-package` inside, commit and push (the four steps above).
-2. On GitHub, open the repository's **Settings → Collaborators** and invite your partner by their GitHub username. This gives them permission to push. Invite the course team as well (our GitHub username is on Moodle), so we can read the private repo for grading.
+2. On GitHub, open the repository's **Settings → Collaborators** and invite your partners by their GitHub usernames. This gives them permission to push. Invite me as well (my GitHub username is on Moodle), so I can read the private repo for grading.
 
-**The partner** joins the existing project by cloning it:
+**Each partner** joins the existing project by cloning it:
 
 1. Accept the invitation (GitHub sends it by email or shows it on the site).
 2. In Zed, run **`git: clone`** with the repository's HTTPS URL (terminal: `git clone <url>`).
 
-From then on **both of you** follow the same two habits every session:
+From then on **all of you** follow the same two habits every session:
 
-- **Pull before you start.** Run **`git: pull`** so you have your partner's latest work.
-- **Push when you stop.** Commit, then **`git: push`**, so your partner gets your work.
+- **Pull before you start.** Run **`git: pull`** so you have your partners' latest work.
+- **Push when you stop.** Commit, then **`git: push`**, so your partners get your work.
 
 ### What a conflict looks like
 
-If you and your partner both change **the same lines** of the same file, git cannot decide which version wins. This is a **conflict**. Git marks the spot inside the file with strange-looking lines (`<<<<<<<`, `=======`, `>>>>>>>`) showing both versions.
+If you and a partner both change **the same lines** of the same file, git cannot decide which version wins. This is a **conflict**. Git marks the spot inside the file with strange-looking lines (`<<<<<<<`, `=======`, `>>>>>>>`) showing both versions.
 
 ::: callout-warning
-**Do not try to fix a conflict alone in week one.** Bring it to class or e-mail me, we will resolve it together. The one habit that prevents almost all conflicts: **pull before you start working**, so you build on your partner's latest version instead of an old one.
+**Do not try to fix a conflict alone in week one.** Bring it to class or e-mail me, we will resolve it together. The one habit that prevents almost all conflicts: **pull before you start working**, so you build on your partners' latest version instead of an old one.
 :::
 
 ## Troubleshooting
@@ -186,10 +188,13 @@ If you and your partner both change **the same lines** of the same file, git can
 Each entry gives the **symptom** first, then the **fix**.
 
 **Symptom: a push is rejected with `! [rejected]`, "fetch first", or "the remote contains work that you do not have locally".**
-Fix: your partner pushed commits that you do not have yet. This is completely normal in a pair and is *not* an authentication problem. Pull first (**`git: pull`** or `git pull`), then push again. If the pull complains about "divergent branches", run the one-time command from the setup section (`git config --global pull.rebase false`), then pull again. If the pull instead reports a conflict, see [What a conflict looks like](#what-a-conflict-looks-like). That pull is exactly when one can appear. Never force anything: no `--force`, no "force push".
+Fix: a partner pushed commits that you do not have yet. This is completely normal in a group and is *not* an authentication problem. Pull first (**`git: pull`** or `git pull --no-edit`), then push again. If the pull complains about "divergent branches", run the one-time command from the setup section (`git config --global pull.rebase false`), then pull again. If the pull instead reports a conflict, see [What a conflict looks like](#what-a-conflict-looks-like). That pull is exactly when one can appear. Never force anything: no `--force`, no "force push".
 
-**Symptom: you committed, but your partner still does not see your changes.**
-Fix: a commit only saves the snapshot **on your computer**. It reaches GitHub (and your partner) when you push. Run **`git: push`**.
+**Symptom: after a pull, the terminal fills with a text that starts with `Merge branch` and no longer takes commands.**
+Fix: git has opened its text editor, Vim, and waits for a message about the merge. The suggested message is fine: type `:wq` and press Enter. Next time pull with `git pull --no-edit`, and the editor stays closed.
+
+**Symptom: you committed, but your partners still do not see your changes.**
+Fix: a commit only saves the snapshot **on your computer**. It reaches GitHub (and your partners) when you push. Run **`git: push`**.
 
 **Symptom: a push asks for a username/password, or reports a permission or authentication error.**
 Fix: your machine's git login is not set up (or expired). Redo the GitHub setup above: run `gh auth login` again and answer **yes** to "Authenticate Git with your GitHub credentials?". Do **not** sign in to the Zed app to fix this, that is a different thing.
@@ -216,8 +221,8 @@ Fix: never rewrite history that others may already have. Two safe options:
 | Create repo | Makes a folder that git tracks | New repository on github.com, then `git: clone` | `git clone <url>` | Start of a new project (GitHub first, then clone) |
 | Stage + commit | Saves a labeled snapshot | `git: stage all`, then `git: commit` | `git add .` then `git commit -m "msg"` | Every time you finish a piece of work |
 | Push | Sends commits up to GitHub | `git: push` | `git push` | When you stop working |
-| Pull | Brings partner's commits down | `git: pull` | `git pull` | **Before** you start working |
-| Clone | Copies a repo from GitHub | `git: clone` | `git clone <url>` | Once per project: your own, or your partner's |
+| Pull | Brings partners' commits down | `git: pull` | `git pull --no-edit` | **Before** you start working |
+| Clone | Copies a repo from GitHub | `git: clone` | `git clone <url>` | Once per project: your own, or a partner's |
 | Status / history | Shows changes and past commits | git panel shows changes | `git status` / `git log --oneline` | Any time, to see where you are |
 
 ## Recap
@@ -227,5 +232,5 @@ You can now:
 1. Explain what a repository, a commit, push, pull, and clone are.
 2. Set up your machine once: GitHub authentication with `gh auth login`, the one-time pull setting, and your name and e-mail for commits.
 3. Start a project GitHub-first: create it on the website, clone it, `uv init --no-package` inside, commit, push.
-4. Work in a pair: pull before you start, commit as you go, push when you stop.
+4. Work in a group: pull before you start, commit as you go, push when you stop.
 5. Recognize a conflict and know the course rule: bring it to class instead of fixing it alone.

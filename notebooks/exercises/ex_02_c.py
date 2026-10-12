@@ -4,7 +4,7 @@ import marimo
 app = marimo.App(width="medium", app_title="ex_02_c")
 
 
-@app.cell
+@app.cell(hide_code=True)
 def _():
     import marimo as mo
     return (mo,)
@@ -87,7 +87,7 @@ def _(mo, trace_exc):
         _msg = (
             "Wrong: `print` is **not** indented, so it only runs once, "
             "after the loop finishes: it prints the final total, `8`. (This "
-            "one is ungraded. The point is the prediction.)"
+            "one does not count. The point is the prediction.)"
         )
     mo.callout(mo.md(_msg), kind="info")
     return

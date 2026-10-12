@@ -16,7 +16,8 @@ real job is to **supervise** it and catch the confident nonsense.
 ## Run the lab on your laptop
 
 From this episode the lab is a Python script that runs on your own machine, in
-the `python-labs` folder you created in Session VII.
+the `python-labs` folder you created in Session VII. Missed that session? The
+[Tutorial 07 page](tut_07_scientific.qmd) says how to catch up.
 
 1. Download both files and move them into your `python-labs` folder:
 
@@ -50,8 +51,13 @@ A codespace has no Zed, so keep the chatbot open in a second tab for AI help.
 
 The first run prints three tables and then stops with
 `AssertionError: Task 1: not attempted yet.` That is the lab working: the
-script checks every task and stops at the first one you have not solved yet.
+script checks every task and stops at the first one whose answer is missing or
+has the wrong form.
 Solve it, save, and run again.
+
+If the run ends in `ModuleNotFoundError: No module named 'pandas'` instead, the
+terminal is not inside `python-labs`, or the packages are missing. In that folder,
+run `uv add pandas matplotlib` once.
 
 ::: {.callout-important}
 ## Look at your numbers
@@ -63,7 +69,10 @@ no task names it and no check catches it.
 :::
 
 When every check passes, the script prints a block that starts with
-`SHOW THIS IN CLASS`. Show it to your lecturer, and you are free to go.
+`SHOW THIS IN CLASS`. Show it to your lecturer, who compares your numbers with
+the right ones. That is feedback, not a condition for leaving: if a number
+differs, you hear which one, and whether you fix it is up to you. Not finished
+when the session ends? Finish at home. You do not need to show the block later.
 
 <!-- PUBLISH AFTER SESSION VIII (see docs/authoring-conventions.md, "Script labs"):
 copy sol_08_lab_dataroom.py from the private repo into labs/, then un-comment.

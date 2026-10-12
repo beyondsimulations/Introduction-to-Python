@@ -4,7 +4,7 @@ import marimo
 app = marimo.App(width="medium", app_title="ex_07_b")
 
 
-@app.cell
+@app.cell(hide_code=True)
 def _():
     import marimo as mo
     return (mo,)
@@ -130,7 +130,7 @@ def _(mo):
     mo.accordion(
         {
             "Hint 1 (a nudge)": "Multiply the whole array by the VAT factor in one go, with no loop or indexing.",
-            "Hint 2 (the structure)": "gross_exb = net_prices_exb * ___",
+            "Hint 2 (the structure)": "`gross_exb = net_prices_exb * ___`",
         }
     )
     return
@@ -185,7 +185,7 @@ def _(mo):
     mo.accordion(
         {
             "Hint 1 (a nudge)": "Two builders make evenly spaced arrays: one walks by a step and stops before the end, the other splits a span into a fixed count of points, endpoints included. You want the second.",
-            "Hint 2 (the structure)": "ladder_exb = np.linspace(___, ___, ___)",
+            "Hint 2 (the structure)": "`ladder_exb = np.linspace(___, ___, ___)`",
         }
     )
     return

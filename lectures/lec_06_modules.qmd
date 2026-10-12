@@ -13,7 +13,8 @@ format:
 
 **Sessions I-V.** The first 40 minutes are the checkpoint. It starts now, before the investor sits down.
 
-- **Individual work**: no AI, no neighbors, no chat
+- **Individual work**: no AI, no neighbors, no messaging
+- Slides, the cheatsheet and your own notebooks **may be open**
 - The **link is on Moodle**. Open it and start
 - ~6 short tasks: write code, trace code, fix a bug, answer a multiple choice
 - It sweeps **everything from Sessions I-V**: variables, control flow, functions, data structures, errors
@@ -24,15 +25,15 @@ format:
 
 ## When you're done
 
-Menu → *Download* → *Download Python code* → upload the `.py` to the **"Checkpoint 3"** assignment on Moodle. **No retakes**: one sitting.
+**Cmd/Ctrl+S**, then menu → *Download* → *Download Python code* → upload the `.py` to the **"Checkpoint 3"** assignment on Moodle, before the 40 minutes are up. **No retakes**: one sitting.
 
 . . .
 
 :::{.callout-note}
-The green live checks are **provisional**. The final grading runs on my side. Everything in it was rehearsed in the labs.
+The live checks under the tasks are **provisional**. The final grading runs on my side. Everything in it was rehearsed in the labs.
 :::
 
-# [Episode 6: Due Diligence Week]{.flow} {.title}
+# [EP 6: Due Diligence]{.flow} {.title}
 
 ## The investor walks in
 
@@ -53,7 +54,7 @@ She didn't drink the coffee. She walked to the whiteboard, uncapped a marker, an
 For five sessions you built everything by hand, on purpose. From today, that changes.
 
 - **AI is now allowed and taught.** We work *with* it, deliberately, starting in today's lab.
-- **The disclosure habit:** every submission that used AI carries a **one-line note** saying what you used it for. That is standard practice, not an admission of anything.
+- **Disclosure comes with the project:** in Part III you list which AI tools you used and what for. Labs and checkpoints need no note.
 - **The course chatbot** (sidebar widget) now gives you **full code** on request, where it used to stop at hints.
 
 . . .
@@ -62,10 +63,10 @@ For five sessions you worked without AI. From today you may use it, and you stay
 
 ## What is an LLM?
 
-Mistral's Vibe and the chatbot bubble run on the same machine:
+The course chatbot and every AI tool you will use run on one:
 
 - A **Large Language Model** is an [advanced pattern-recognition system]{.highlight}. It has read enormous amounts of text: books, websites, and code
-- What it actually does: [predict the next piece of text]{.highlight}, like the word suggestions on your phone keyboard, but vastly more capable
+- What it actually does: [predict the next piece of text]{.highlight}, like the word suggestions on your phone keyboard, but far more capable
 - [Not like a search engine]{.highlight}: it does not look anything up, it generates from the patterns it learned
 - It does not "think" or "understand" the way you do, and it has no feelings to hurt
 
@@ -73,7 +74,7 @@ Mistral's Vibe and the chatbot bubble run on the same machine:
 
 - Text is broken into [tokens]{.highlight}, chunks of text mapped to numbers
 - Common words are one token; rarer words split into pieces: "un-", "break", "-able"
-- The Mistral models we use know about **131,000** tokens
+- The Mistral models we use have a vocabulary of about **131,000** different tokens
 - That is also why famous models fail at "count the r's in *strawberry*": they see a token like `straw` plus a token like `berry`, never the letters
 
 ## It guesses the next token
@@ -87,10 +88,13 @@ Mistral's Vibe and the chatbot bubble run on the same machine:
 - The model faces exactly this choice at every token it writes: it picks a [likely]{.highlight} next token, not *the* next token
 - So the same question twice can get two different answers. We return to that idea today in *Rehearsing luck*, when the shop's numbers get a seed
 
-## The context window
+## The context window (1)
 
 - Everything the model knows about you sits in the [context window]{.highlight}: the text it can hold at once, its short-term memory
-- How much is that? A page of prose is about 500 tokens. Mistral's newest model, **Mistral Large 4** (October 2026), holds up to **1 million**: about 2,000 pages
+- How much is that? A page of prose is about 500 tokens. Mistral's newest model, **Mistral Large 4** (October 2026), holds up to **1 million** tokens at once: about 2,000 pages
+
+## The context window (2)
+
 - Larger window: it remembers more of the conversation. Smaller: it forgets earlier turns
 - [Nothing outside the window exists for the model]{.highlight}: not your screen, not your intent
 
@@ -105,12 +109,12 @@ This is why Session I told you: ask the chatbot as specific as possible. Your qu
 Both are free, both are on the [AI Tools page](../general/ai-tools.qmd), together about ten minutes:
 
 - **Mistral:** a free account for **Vibe**, Mistral's assistant (older guides call it Le Chat). The same account later powers the AI agent inside your editor
-- **Zed student plan:** sign in with the GitHub account you made in Session I (it's old enough now) and apply with your KLU e-mail. Verification takes up to 72 hours, so the free year of Zed Pro is ready before we install Zed in class in Session VII
+- **Zed student plan:** sign in with the GitHub account you made in Session I (it's old enough now) and apply with your KLU e-mail for a free year of Zed Pro. A bonus: the course works without it
 
 . . .
 
 :::{.callout-important}
-Turn **off** the training-data switches in Mistral's privacy settings before you paste coursework: one for Vibe, one for the API (details on the AI Tools page). Nothing here needs a credit card.
+Turn **off** both training-data switches in Mistral's privacy settings before you paste coursework (the AI Tools page shows where). Nothing here needs a credit card.
 :::
 
 # [Don't build it, import it]{.flow} {.title}
@@ -166,7 +170,7 @@ print(median(ratings))   # the middle value
 
 One furious review (a 1.0) drags the mean down to 3.9. The investor asked for the **typical** rating: `median` sorts the values and hands back the middle one (4.5), unmoved by one angry customer.
 
-# Your turn: 5-10 minutes {.loud-slide}
+# Your turn {.loud-slide}
 
 ## Open the exercise
 
@@ -174,7 +178,7 @@ Scan the QR or type the link:
 
 **[python.tobiasvlcek.com/notebooks/ex_06_a/](https://python.tobiasvlcek.com/notebooks/ex_06_a/)**
 
-![](assets/qr/ex_06_a.png){width=280}
+![](assets/qr/ex_06_a.png){width=280 fig-alt="QR code linking to the online notebook for exercise 6a, the same address as the link above."}
 
 **Any questions?** Let me know!
 
@@ -195,7 +199,7 @@ print(stats.median([4.5, 4.8, 1.0, 5.0, 4.2]))
 
 `stats.median` is the same tool as `statistics.median`, just less to type. You'll meet fixed conventions soon (`import pandas as pd`); using the community's nickname makes your code instantly readable to everyone else.
 
-## Predict: which name did the import create?
+## Predict: which name now exists?
 
 Tobi imports **just `pi`** by name, then reaches for it the way he reached for `math.ceil`. The large pizza has a 15 cm radius. What happens?
 
@@ -206,7 +210,7 @@ radius = 15
 print(math.pi * radius ** 2)
 ```
 
-a\) prints `706.858…`   b) an `AttributeError`   c) a `NameError`
+a\) prints `706.858…`   b) a `TypeError`   c) a `NameError`
 
 . . .
 
@@ -280,7 +284,7 @@ a\) `-3`   b) `-2`   c) an error
 
 [Predict]{.question}. Pick a letter, then I reveal the answer.
 
-## Answer: floor goes down, not toward zero
+## Answer: floor always goes down
 
 ```{python}
 #| eval: true
@@ -298,7 +302,7 @@ print(math.floor(-2.5))   # down the number line → -3
 
 "Down" means *smaller*, and `-3` is smaller than `-2`. Keep the number line in your head, not the distance to zero.
 
-# Your turn: 5-10 minutes {.loud-slide}
+# Your turn {.loud-slide}
 
 ## Open the exercise
 
@@ -306,13 +310,13 @@ Scan the QR or type the link:
 
 **[python.tobiasvlcek.com/notebooks/ex_06_b/](https://python.tobiasvlcek.com/notebooks/ex_06_b/)**
 
-![](assets/qr/ex_06_b.png){width=280}
+![](assets/qr/ex_06_b.png){width=280 fig-alt="QR code linking to the online notebook for exercise 6b, the same address as the link above."}
 
 **Any questions?** Let me know!
 
 # [Rehearsing luck]{.flow} {.title}
 
-## The `random` toolbox
+## The `random` toolbox (1)
 
 The investor wants to see how the shop copes with a **busy day**, but the busy day hasn't happened yet. So we *rehearse* it with made-up numbers. The `random` module deals them:
 
@@ -325,6 +329,15 @@ import random
 print(random.random())                       # a float in [0.0, 1.0)
 print(random.randint(1, 20))                  # an integer 1-20, ends included
 print(random.choice(["latte", "mocha", "tea"]))  # one item, picked at random
+```
+
+## The `random` toolbox (2)
+
+```{python}
+#| eval: true
+#| output-location: fragment
+
+import random
 
 queue = [1, 2, 3, 4, 5]
 random.shuffle(queue)                         # reorders the list in place
@@ -374,9 +387,11 @@ print([random.randint(1, 20) for _ in range(5)])   # same seed → same list
 
 Both lines print `[11, 5, 13, 2, 3]`. The numbers still *look* random, but now the investor can run it herself and land on the identical result.
 
-## Predict: same seed, same rider?
+## Seed, pick, seed again
 
 The busiest day needs an extra rider. Tobi seeds, picks one, then seeds **again with the same number** and picks again. Is it the same rider?
+
+## Predict: same seed, same rider?
 
 ```python
 import random
@@ -463,9 +478,9 @@ print(second)   # [8, 8, 5]: the stream carries on
 
 . . .
 
-To get the *same* list twice, you re-seed before each run, and that rewinds the stream to the start. One seed, one fixed sequence: that's the entire job of a seed.
+To get the *same* list twice, re-seed before each run: it rewinds the stream. One seed, one fixed sequence: that's a seed's entire job.
 
-# Your turn: 5-10 minutes {.loud-slide}
+# Your turn {.loud-slide}
 
 ## Open the exercise
 
@@ -473,7 +488,7 @@ Scan the QR or type the link:
 
 **[python.tobiasvlcek.com/notebooks/ex_06_c/](https://python.tobiasvlcek.com/notebooks/ex_06_c/)**
 
-![](assets/qr/ex_06_c.png){width=280}
+![](assets/qr/ex_06_c.png){width=280 fig-alt="QR code linking to the online notebook for exercise 6c, the same address as the link above."}
 
 **Any questions?** Let me know!
 
@@ -521,7 +536,7 @@ Scan the QR or type the link:
 . . .
 
 ::: {.callout-note}
-New this session: the [AI Tools page](../general/ai-tools.qmd): how and when to use AI in Part II, and the one-line disclosure habit that goes on every submission from here on.
+New this session: the [AI Tools page](../general/ai-tools.qmd): how and when to use AI in Part II, and the disclosure section your project README needs in Part III.
 :::
 
 . . .

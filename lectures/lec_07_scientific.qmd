@@ -9,7 +9,7 @@ format:
     output-file: lec_07_presentation.html
 ---
 
-# [Episode 7: The Numbers Deck]{.flow} {.title}
+# [EP 7: Numbers Deck]{.flow} {.title}
 
 ## The numbers deck is due
 
@@ -123,7 +123,7 @@ statistics.median([9, 2, 5])
 
 **b) `5`**: `median` sorts the values internally before picking the middle one. You never have to sort first; `5` is the middle of `2, 5, 9`.
 
-# [A thousand orders at once]{.flow} {.title}
+# [A thousand at once]{.flow} {.title}
 
 ## From a list to an array
 
@@ -143,7 +143,7 @@ print(prices.size)    # how many in total
 
 . . .
 
-`np.array([...])` wraps a list; `import numpy as np` is the nickname everyone uses. `.shape` is `(3,)`, `.dtype` is `float64`, `.size` is `3`. One `dtype` for the **whole** array: every element shares the same type; that's part of what makes it fast.
+`np.array([...])` wraps a list; `np` is the nickname everyone uses. `.shape` is `(3,)`, `.dtype` is `float64`, `.size` is `3`. One `dtype` for the **whole** array: all elements share one type, part of what makes it fast.
 
 ## One operation, every element
 
@@ -169,7 +169,7 @@ print(prices * 1.19)   # every element, one expression
 
 One operation lands on **all** elements at once: `[14.28 10.71 17.85]`. No loop, no `.append`, and on a thousand orders it's also far faster.
 
-# Your turn: 5-10 minutes {.loud-slide}
+# Your turn {.loud-slide}
 
 ## Open the exercise
 
@@ -177,7 +177,7 @@ Scan the QR or type the link:
 
 **[python.tobiasvlcek.com/notebooks/ex_07_a/](https://python.tobiasvlcek.com/notebooks/ex_07_a/)**
 
-![](assets/qr/ex_07_a.png){width=280}
+![](assets/qr/ex_07_a.png){width=280 fig-alt="QR code linking to the online notebook for exercise 7a, the same address as the link above."}
 
 **Any questions?** Let me know!
 
@@ -212,7 +212,7 @@ a\) `[1, 2, 3, 1, 2, 3]`   b) `[2, 4, 6]`   c) an error
 
 [Predict]{.question}. Pick a letter, then I reveal the answer.
 
-## Answer: lists repeat, arrays compute
+## Answer: repeat versus compute
 
 ```{python}
 #| eval: true
@@ -264,7 +264,7 @@ print(np.array([1, 2, 3]) + np.array([10, 20, 30]))    # array → added
 
 Every operator follows the same rule: lists do list things, arrays do math.
 
-# Your turn: 5-10 minutes {.loud-slide}
+# Your turn {.loud-slide}
 
 ## Open the exercise
 
@@ -272,11 +272,11 @@ Scan the QR or type the link:
 
 **[python.tobiasvlcek.com/notebooks/ex_07_b/](https://python.tobiasvlcek.com/notebooks/ex_07_b/)**
 
-![](assets/qr/ex_07_b.png){width=280}
+![](assets/qr/ex_07_b.png){width=280 fig-alt="QR code linking to the online notebook for exercise 7b, the same address as the link above."}
 
 **Any questions?** Let me know!
 
-# [Asking questions of data]{.flow} {.title}
+# [Ask the data]{.flow} {.title}
 
 ## A comparison makes a mask
 
@@ -314,7 +314,7 @@ print(float(late.mean()))           # the SHARE that were late
 
 . . .
 
-`4` deliveries over 30 minutes, averaging `42.5`, and `late.mean()` says **half** the run was late, one line each, straight into the deck.
+`4` deliveries over 30 minutes, averaging `42.5`, and `late.mean()` says **half** the run was late, one line each, straight into the deck. `int(...)` and `float(...)` turn NumPy's numbers into plain Python numbers.
 
 ## Predict: counting the Trues
 
@@ -364,7 +364,7 @@ a\) an error: ambiguous truth value   b) `[ True False False  True]`   c) `True`
 
 [Predict]{.question}. Pick a letter, then I reveal the answer.
 
-## Answer: `and` wants one truth, a mask has four
+## Answer: one `and`, four truths
 
 ```{python}
 #| eval: true
@@ -386,7 +386,7 @@ print(times > 20 and times < 40)
 print((times > 20) & (times < 40))    # element by element: & combines masks
 ```
 
-# Your turn: 5-10 minutes {.loud-slide}
+# Your turn {.loud-slide}
 
 ## Open the exercise
 
@@ -394,7 +394,7 @@ Scan the QR or type the link:
 
 **[python.tobiasvlcek.com/notebooks/ex_07_c/](https://python.tobiasvlcek.com/notebooks/ex_07_c/)**
 
-![](assets/qr/ex_07_c.png){width=280}
+![](assets/qr/ex_07_c.png){width=280 fig-alt="QR code linking to the online notebook for exercise 7c, the same address as the link above."}
 
 **Any questions?** Let me know!
 
@@ -501,7 +501,7 @@ print(deliveries.sum(axis=1))   # ACROSS the columns → per day
 
 **`axis=0` collapses DOWN the rows, one number per column (zone):** `[37 46 35 26]`. `axis=1` collapses across, one per day: `[40 44 60]`.
 
-# Your turn: 5-10 minutes {.loud-slide}
+# Your turn {.loud-slide}
 
 ## Open the exercise
 
@@ -509,7 +509,7 @@ Scan the QR or type the link:
 
 **[python.tobiasvlcek.com/notebooks/ex_07_d/](https://python.tobiasvlcek.com/notebooks/ex_07_d/)**
 
-![](assets/qr/ex_07_d.png){width=280}
+![](assets/qr/ex_07_d.png){width=280 fig-alt="QR code linking to the online notebook for exercise 7d, the same address as the link above."}
 
 **Any questions?** Let me know!
 
@@ -533,7 +533,7 @@ print(int(zone_totals.argmax()))        # index of the biggest
 
 `max` would give the value `46`; `argmax` gives its **position**, `1`. The busiest zone is **Sued**, sitting at index 1, not at the front. Position, not value: that's the whole point of `argmax`.
 
-## Predict: which call collapses which way?
+## Predict: which axis is which?
 
 The investor wants **four** numbers, one per zone. Which call?
 
@@ -549,7 +549,7 @@ a\) `week.sum(axis=1)`   b) `week.sum()`   c) `week.sum(axis=0)`
 
 [Predict]{.question}. Pick a letter, then I reveal the answer.
 
-## Answer: collapse the days, keep the zones
+## Answer: days collapse, zones stay
 
 ```{python}
 #| eval: true
@@ -570,7 +570,7 @@ print(week.sum(axis=0))
 
 a\) would give **three** numbers (one per day); b) would give **one** number: the grand total, `144`.
 
-# Your turn: 5-10 minutes {.loud-slide}
+# Your turn {.loud-slide}
 
 ## Open the exercise
 
@@ -578,7 +578,7 @@ Scan the QR or type the link:
 
 **[python.tobiasvlcek.com/notebooks/ex_07_e/](https://python.tobiasvlcek.com/notebooks/ex_07_e/)**
 
-![](assets/qr/ex_07_e.png){width=280}
+![](assets/qr/ex_07_e.png){width=280 fig-alt="QR code linking to the online notebook for exercise 7e, the same address as the link above."}
 
 **Any questions?** Let me know!
 
@@ -590,7 +590,7 @@ Scan the QR or type the link:
 2. **A comparison makes a mask.** `arr > 30` is a True/False array: `arr[mask]` filters, `.sum()` counts the Trues, `.mean()` gives their share.
 3. **In 2D, pick an axis.** `axis=0` collapses DOWN the rows (one number per column), `axis=1` across the columns (one per row); `argmax` tells you where the maximum sits.
 
-. . .
+## Next episode
 
 ::: {.callout-note}
 **Next episode** starts with **Checkpoint 4**: 40 minutes, AI allowed, everything from Episodes 6-7. Then the investor opens a data room, and Tobi lets an AI write his pandas: the arrays get column names, and eighty orders become a table you can query.
@@ -612,27 +612,27 @@ We install all three **now, together**. Today's lab starts for you once your set
 
 ## Step 1: uv and your course folder
 
-Follow the [uv guide](../general/uv.qmd) down to *Run the starter script*. It installs uv and Python, and creates the folder every lab from Session VIII lives in:
+Follow the [uv guide](../general/uv.qmd) from the top through *Adding packages*, one command at a time. It does three things:
 
-```bash
-uv init --no-package python-labs
-cd python-labs
-```
+- installs **uv** and **Python**
+- creates the folder `python-labs`, where every lab from Session VIII lives
+- adds the two packages those labs need: pandas and matplotlib
 
-Then add the two packages those labs need:
+. . .
 
-```bash
-uv add pandas matplotlib
-```
+:::{.callout-important}
+**Type each command once.** A second `uv init` builds a second `python-labs` inside the first, and uv then refuses to work in either.
+:::
 
 ## Step 2: Zed and Mistral Vibe
 
-Follow *AI inside Zed* on the [AI Tools page](../general/ai-tools.qmd):
+Follow *AI inside Zed* on the [AI Tools page](../general/ai-tools.qmd), steps 1 to 5:
 
 1. Install **Zed** from [zed.dev](https://zed.dev) and open it once
-2. In a terminal: `uv tool install mistral-vibe`, then run `vibe` and sign in with your Mistral account from last session
-3. In Zed's command palette (`Cmd/Ctrl+Shift+P`): **`zed: acp registry`**, then install **Mistral Vibe**
-4. **File → Open Folder** and pick `python-labs`
+2. In a terminal: `uv tool install mistral-vibe`
+3. Run `vibe` and sign in with your Mistral account from last session
+4. In Zed's command palette (`Cmd/Ctrl+Shift+P`): **`zed: acp registry`**, then install **Mistral Vibe**
+5. **File → Open Folder** and pick `python-labs`
 
 . . .
 
@@ -642,14 +642,14 @@ Follow *AI inside Zed* on the [AI Tools page](../general/ai-tools.qmd):
 
 ## The check before the lab
 
-In Zed, with `python-labs` open, open the terminal (`` Ctrl+` ``) and run:
+In Zed, with `python-labs` open, open the terminal (`` Ctrl+` ``, or **`terminal panel: toggle`** in the command palette) and run:
 
 ```bash
 uv run python -c "import pandas, matplotlib; print('ready')"
 ```
 
 - The terminal prints `ready`
-- In the agent panel (the sparkle icon, bottom right), **Mistral Vibe** answers: *What does `main.py` do?*
+- In the agent panel (the sparkle icon, bottom right), pick **Mistral Vibe** and ask: *What does `main.py` do?* It answers
 
 Show me both, then open the lab.
 
@@ -665,7 +665,7 @@ Show me both, then open the lab.
 
 - Head to the lab notebook: [Episode 7: The Numbers Deck](../tutorials/tut_07_scientific.qmd)
 - You'll count and average the critical deliveries with masks, fix two of Tobi's numbers, and find the winning zone in the days-by-zones grid
-- AI is allowed, so try the chatbot, and keep your one-line disclosure note on the submission
+- AI is allowed, so try the course chatbot or your Mistral account
 - It still runs in your browser; unfinished parts are homework before **Checkpoint 4**
 
 . . .

@@ -34,8 +34,10 @@ def _(mo):
         mo.md(
             "**How this notebook works:** run a cell with **Cmd/Ctrl+Enter**. "
             "Only edit the cells that contain `# YOUR CODE BELOW`; the check under "
-            "each exercise updates by itself. A red error pauses everything below "
-            "it, so fix that cell first."
+            "each exercise updates by itself. A red error pauses every cell that "
+            "depends on it, so fix that cell first. A name can be set in only one "
+            "cell: if two cells both set `total`, both turn red, so use a new name "
+            "in the second one."
         ),
         kind="info",
     )
@@ -61,7 +63,7 @@ def _(mo):
     return
 
 
-@app.cell
+@app.cell(hide_code=True)
 def _():
     import marimo as mo
     return (mo,)
@@ -154,11 +156,11 @@ def _(mo):
         r"""
     ### Exercise 1.1 (core): is the kitchen open?
 
-    An order arrives at **23:00** (`order_hour_ex11 = 23`, given below). The
+    An order arrives at **22:00** sharp (`order_hour_ex11 = 22`, given below). The
     kitchen is open **only before 22:00**. Compute the boolean `is_open_ex11`
     that says whether this order may still be delivered.
 
-    (At 23:00 the answer should come out `False`.)
+    (At 22:00 the answer should come out `False`.)
     """
     )
     return
@@ -166,7 +168,7 @@ def _(mo):
 
 @app.cell
 def _():
-    order_hour_ex11 = 23
+    order_hour_ex11 = 22
     # YOUR CODE BELOW: compare order_hour_ex11 against the 22:00 curfew
     is_open_ex11 = None
     return is_open_ex11, order_hour_ex11
@@ -179,10 +181,10 @@ def _(is_open_ex11, mo, show_result):
         _msg = "Not attempted (Exercise 1.1). Assign it to `is_open_ex11` (a `print` alone doesn't count) and run the cell."
     elif is_open_ex11 is False:
         ex11_ok = True
-        _msg = "Correct (Exercise 1.1): `False`: 23:00 is past curfew, so the kitchen stays shut. The law is the law."
+        _msg = "Correct (Exercise 1.1): `False`: 22:00 is not *before* 22:00, so the kitchen stays shut. The law is the law."
     elif is_open_ex11 is True:
         ex11_ok = False
-        _msg = "Wrong (Exercise 1.1): you got `True`, but 23:00 is *after* 22:00, so the kitchen should be closed."
+        _msg = "Wrong (Exercise 1.1): you got `True`, but the kitchen is open only *before* 22:00, and 22:00 is not before 22:00."
     else:
         ex11_ok = False
         _msg = "Wrong (Exercise 1.1): `is_open_ex11` should be a boolean (`True`/`False`) from a comparison."
@@ -195,7 +197,7 @@ def _(mo):
     mo.accordion(
         {
             "Hint 1 (a nudge)": "The kitchen is open when the hour is *below* 22. A comparison like that gives you a `True`/`False` directly (no `if` needed).",
-            "Hint 2 (the structure)": "is_open_ex11 = order_hour_ex11 ___ 22 (fill the blank with the comparison that means 'before').",
+            "Hint 2 (the structure)": "`is_open_ex11 = order_hour_ex11 ___ 22`\n\nFill the blank with the comparison that means 'before'.",
         }
     )
     return
@@ -249,7 +251,7 @@ def _(mo):
     mo.accordion(
         {
             "Hint 1 (a nudge)": "Check the biggest threshold first. `elif` only runs when the `if` above it was `False`, so order matters: test ≥ 50 before ≥ 30.",
-            "Hint 2 (the structure)": "if order_total >= 50:\n final_ex12 = round(order_total * ___, 2)\nelif order_total >= 30:\n final_ex12 = round(order_total * ___, 2)\nelse:\n final_ex12 = round(order_total, 2) (fill the two multipliers, 10 % off and 5 % off).",
+            "Hint 2 (the structure)": "```python\nif order_total >= 50:\n    final_ex12 = round(order_total * ___, 2)\nelif order_total >= 30:\n    final_ex12 = round(order_total * ___, 2)\nelse:\n    final_ex12 = round(order_total, 2)\n```\n\nFill the two multipliers, 10 % off and 5 % off.",
         }
     )
     return
@@ -312,7 +314,7 @@ def _(mo):
     mo.accordion(
         {
             "Hint 1 (a nudge)": "Two questions, one answer: is the hour below 22? Is the distance at most 5? `and` is `True` only when both are.",
-            "Hint 2 (the structure)": "dispatch_ex13 = order_hour_ex13 ___ 22 and ride_km_ex13 ___ 5 (fill the two comparisons: 'before' and 'at most').",
+            "Hint 2 (the structure)": "`dispatch_ex13 = order_hour_ex13 ___ 22 and ride_km_ex13 ___ 5`\n\nFill the two comparisons: 'before' and 'at most'.",
         }
     )
     return
@@ -442,7 +444,7 @@ def _(mo):
     mo.accordion(
         {
             "Hint 1 (a nudge)": "Make a variable that starts at 0. Inside the loop, add the current order to it. After the loop, round it.",
-            "Hint 2 (the structure)": "revenue_ex22 = 0\nfor order in day_orders:\n revenue_ex22 = revenue_ex22 + ___\nrevenue_ex22 = round(revenue_ex22, 2) (the blank is the loop variable).",
+            "Hint 2 (the structure)": "```python\nrevenue_ex22 = 0\nfor order in day_orders:\n    revenue_ex22 = revenue_ex22 + ___\nrevenue_ex22 = round(revenue_ex22, 2)\n```\n\nThe blank is the loop variable.",
         }
     )
     return
@@ -497,7 +499,7 @@ def _(mo):
     mo.accordion(
         {
             "Hint 1 (a nudge)": "'At least 10' means 10 counts. `> 10` skips a price that is exactly 10. Which comparison includes the boundary?",
-            "Hint 2 (the structure)": "if _price ___ 10: Swap `>` for the operator that means 'greater than or equal to'.",
+            "Hint 2 (the structure)": "`if _price ___ 10:`\n\nSwap `>` for the operator that means 'greater than or equal to'.",
         }
     )
     return
@@ -565,7 +567,7 @@ def _(mo):
     mo.accordion(
         {
             "Hint 1 (a nudge)": "Same accumulator as Exercise 2.2, but inside the loop sits the ladder from Exercise 1.2. Add the discount (not the price) to the running total. The 'otherwise' band adds nothing.",
-            "Hint 2 (the structure)": "coupons_ex24 = 0\nfor cart in day_carts:\n if cart >= 50:\n  coupons_ex24 = coupons_ex24 + cart * ___\n elif cart >= 30:\n  coupons_ex24 = coupons_ex24 + cart * ___\ncoupons_ex24 = round(coupons_ex24, 2) (fill the two discount rates).",
+            "Hint 2 (the structure)": "```python\ncoupons_ex24 = 0\nfor cart in day_carts:\n    if cart >= 50:\n        coupons_ex24 = coupons_ex24 + cart * ___\n    elif cart >= 30:\n        coupons_ex24 = coupons_ex24 + cart * ___\ncoupons_ex24 = round(coupons_ex24, 2)\n```\n\nFill the two discount rates.",
         }
     )
     return
@@ -604,7 +606,7 @@ def _(mo):
     spaces, each word Capitalized.
 
     A misspelled method (`.tittle()`) turns the cell **red**, and a red cell
-    pauses everything below it, including the progress box. Nothing is lost;
+    pauses every cell that depends on it, including the progress box. Nothing is lost;
     fix the typo and it all comes back.
     """
     )
@@ -642,7 +644,7 @@ def _(mo):
     mo.accordion(
         {
             "Hint 1 (a nudge)": "Chain two methods: first drop the outer spaces, then fix the capitalization. The order matters: strip first.",
-            "Hint 2 (the structure)": "clean_ex31 = raw_special.___().___() (one method removes spaces, the other Capitalizes Each Word).",
+            "Hint 2 (the structure)": "`clean_ex31 = raw_special.___().___()`\n\nOne method removes spaces, the other Capitalizes Each Word.",
         }
     )
     return
@@ -704,7 +706,7 @@ def _(mo):
     mo.accordion(
         {
             "Hint 1 (a nudge)": "`.strip()` and `.title()` do not change the string they are called on; they hand back a cleaned copy. Tobi never stores that copy, so the label is built from the original.",
-            "Hint 2 (the structure)": "_special = _special.___().___() (assign the cleaned copy back to the name before building the label; the two blanks are the methods Tobi already calls).",
+            "Hint 2 (the structure)": "`_special = _special.___().___()`\n\nAssign the cleaned copy back to the name before building the label; the two blanks are the methods Tobi already calls.",
         }
     )
     return
@@ -727,12 +729,12 @@ def _(mo):
     A **`while` loop** repeats *as long as* a condition holds. Count how many
     rounds of cuts it takes, and store that in `rounds_ex40`.
 
-    ::: {.callout-warning}
-    A `while` loop only stops if each pass moves it **toward** the goal. Here the
-    price shrinks by 10 % every round, so it is guaranteed to fall below 8.50.
-    The loop always ends. A `while` whose condition can never become `False`
-    would freeze this browser tab, so always check that something changes inside.
-    :::
+    > **Careful:** a `while` loop only stops if each pass moves it **toward** the
+    > goal. Here the price shrinks by 10 % every round, so it is guaranteed to
+    > fall below 8.50. A `while` whose condition can never become `False` would
+    > freeze this browser tab, and a frozen tab can only be closed. So check that
+    > something changes inside the loop, and save and download your work first
+    > (Cmd/Ctrl+S, then menu → Download → *Download Python code*).
     """
     )
     return
@@ -789,7 +791,7 @@ def _(mo):
     mo.accordion(
         {
             "Hint 1 (a nudge)": "Keep two variables: the current price and a counter. Each pass of the loop cuts the price and adds 1 to the counter. Stop once the price is below 8.50.",
-            "Hint 2 (the structure)": "price = 11.90\nrounds_ex40 = 0\nwhile price >= 8.50:\n price = round(price * ___, 2)\n rounds_ex40 = rounds_ex40 + ___ (fill the 10 %-off multiplier and the step).",
+            "Hint 2 (the structure)": "```python\nprice = 11.90\nrounds_ex40 = 0\nwhile price >= 8.50:\n    price = round(price * ___, 2)\n    rounds_ex40 = rounds_ex40 + ___\n```\n\nFill the 10 %-off multiplier and the step.",
         }
     )
     return
@@ -882,7 +884,7 @@ def _(mo):
     mo.accordion(
         {
             "Hint 1 (a nudge)": "A comprehension has the shape `[ do-something-to price for price in the-list ]`. 'Do something' here is 90 % of the price, rounded.",
-            "Hint 2 (the structure)": "discounted_ex60 = [round(price * ___, 2) for price in [12.50, 10.00, 8.90, 15.20]] (fill the 10 %-off multiplier).",
+            "Hint 2 (the structure)": "`discounted_ex60 = [round(price * ___, 2) for price in [12.50, 10.00, 8.90, 15.20]]`\n\nFill the 10 %-off multiplier.",
         }
     )
     return
@@ -892,7 +894,7 @@ def _(mo):
 def _(mo):
     mo.md(
         r"""
-    ### Bonus: the Haggling Bot (just for fun, ungraded)
+    ### Bonus: the Haggling Bot (just for fun)
 
     A falafel supplier will sell you chickpeas, but won't name a price. The
     supplier has a number in mind, and you have to find the exact price they'll

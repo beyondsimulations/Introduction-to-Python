@@ -4,7 +4,7 @@ import marimo
 app = marimo.App(width="medium", app_title="ex_03_b")
 
 
-@app.cell
+@app.cell(hide_code=True)
 def _():
     import marimo as mo
     return (mo,)
@@ -76,9 +76,9 @@ def _(mo, show_result, wrap_price_exb):
     try:
         _r3 = wrap_price_exb(3)
         _r1 = wrap_price_exb(1)
-    except Exception:
+    except Exception as _err:
         _ok = False
-        _msg = "Wrong: Still crashing. Read the error above and fix it before it reaches the check."
+        _msg = f"Wrong: your code stops with `{type(_err).__name__}: {_err}` when the check calls it."
         _preview = ""
     else:
         if _r3 is None:
@@ -126,9 +126,9 @@ def _(mo, show_result, wrap_bill_exb, wrap_price_exb):
         _base = wrap_price_exb(2)
         _default = wrap_bill_exb(2)
         _deal = wrap_bill_exb(2, 0.10)
-    except Exception:
+    except Exception as _err:
         _ok = False
-        _msg = "Wrong: Still crashing. Read the error above and fix it before it reaches the check."
+        _msg = f"Wrong: your code stops with `{type(_err).__name__}: {_err}` when the check calls it."
         _preview = ""
     else:
         if _base is None:

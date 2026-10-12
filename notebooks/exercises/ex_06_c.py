@@ -4,7 +4,7 @@ import marimo
 app = marimo.App(width="medium", app_title="ex_06_c")
 
 
-@app.cell
+@app.cell(hide_code=True)
 def _():
     import marimo as mo
     return (mo,)
@@ -127,7 +127,7 @@ def _(mo):
     mo.accordion(
         {
             "Hint 1 (a nudge)": "Seed first, then draw; the seed makes every following draw predictable.",
-            "Hint 2 (the structure)": "random.___(21)\ndemand_exc = []\nfor _day in range(7):\n demand_exc.append(random.____(5, 25))",
+            "Hint 2 (the structure)": "```python\nrandom.___(21)\ndemand_exc = []\nfor _day in range(7):\n    demand_exc.append(random.____(5, 25))\n```",
         }
     )
     return
@@ -177,7 +177,7 @@ def _(mo):
     mo.accordion(
         {
             "Hint 1 (a nudge)": "The seed rewinds the stream. Seed first, in the same cell, then make the pick.",
-            "Hint 2 (the structure)": "random.____(21)\nzone_exc = random.______([\"Nord\", \"Sued\", \"West\"])",
+            "Hint 2 (the structure)": "```python\nrandom.____(21)\nzone_exc = random.______([\"Nord\", \"Sued\", \"West\"])\n```",
         }
     )
     return

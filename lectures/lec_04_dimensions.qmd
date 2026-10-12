@@ -9,7 +9,7 @@ format:
     output-file: lec_04_presentation.html
 ---
 
-# [Episode 4: The Menu Grows Up]{.flow} {.title}
+# [EP 4: Menu Grows Up]{.flow} {.title}
 
 ## Seventeen variables and counting
 
@@ -224,7 +224,7 @@ print(sizes[1:3])
 
 **b) `['M', 'L']`**. The slice starts at index 1 (`"M"`) and stops before index 3, so index 3 (`"XL"`) is never included. A slice from `1:3` gives you exactly `3 - 1 = 2` items.
 
-# Your turn: 5-10 minutes {.loud-slide}
+# Your turn {.loud-slide}
 
 ## Open the exercise
 
@@ -232,7 +232,7 @@ Scan the QR or type the link:
 
 **[python.tobiasvlcek.com/notebooks/ex_04_a/](https://python.tobiasvlcek.com/notebooks/ex_04_a/)**
 
-![](assets/qr/ex_04_a.png){width=280}
+![](assets/qr/ex_04_a.png){width=280 fig-alt="QR code linking to the online notebook for exercise 4a, the same address as the link above."}
 
 **Any questions?** Let me know!
 
@@ -305,6 +305,23 @@ print(len(drinks))
 
 `len()` also works on strings (letters) and, soon, on dictionaries (keys).
 
+## Looping over positions
+
+A loop over the list hands you each item. Sometimes you need to know **where** an item sits. Then loop over the positions instead:
+
+```{python}
+#| eval: true
+#| output-location: fragment
+
+drinks = ["Mate", "Spezi", "Ayran"]
+for i in range(len(drinks)):
+    print(i, drinks[i])
+```
+
+. . .
+
+`range(len(drinks))` counts `0, 1, 2`: one number per position, and `drinks[i]` is the item that sits there.
+
 ## Tuples: fixed-length records
 
 A **tuple** looks like a list but uses `()` and **cannot be changed**, perfect for a record whose shape never varies, like opening hours `(hour, minute)`:
@@ -324,10 +341,10 @@ print(hour, minute)
 . . .
 
 :::{.callout-note}
-Indexing and slicing work exactly as on lists. You just can't `.append()` to a tuple. Heads up: some tools quietly turn a tuple into a list when they store it. Remember that in **Part II**.
+Indexing and slicing work exactly as on lists. You just can't `.append()` to a tuple.
 :::
 
-# Your turn: 5-10 minutes {.loud-slide}
+# Your turn {.loud-slide}
 
 ## Open the exercise
 
@@ -335,7 +352,7 @@ Scan the QR or type the link:
 
 **[python.tobiasvlcek.com/notebooks/ex_04_b/](https://python.tobiasvlcek.com/notebooks/ex_04_b/)**
 
-![](assets/qr/ex_04_b.png){width=280}
+![](assets/qr/ex_04_b.png){width=280 fig-alt="QR code linking to the online notebook for exercise 4b, the same address as the link above."}
 
 **Any questions?** Let me know!
 
@@ -359,7 +376,7 @@ Curly braces `{}`, each pair written `key: value`. No more remembering that Spez
 
 ## Building a dictionary
 
-Keys are usually strings; values can be anything. Read a value with `dict[key]`:
+Keys are usually strings; values can be anything. Read a value with square brackets and its key:
 
 ```{python}
 #| eval: true
@@ -409,7 +426,7 @@ Use `[]` when the key **must** be there; use `.get()` when it might not.
 
 ## Predict: is it on the menu?
 
-`in` asks whether something is in a collection. On a dictionary, what does it look at?
+`in` asks whether a value is in a list: `"Mate" in drinks` is `True`. On a dictionary, what does it look at?
 
 ```python
 prices = {"Mate": 3.50, "Spezi": 3.20}
@@ -525,7 +542,7 @@ regulars = {"nina", "tom", "ada"}
 print(regulars)
 ```
 
-# Your turn: 5-10 minutes {.loud-slide}
+# Your turn {.loud-slide}
 
 ## Open the exercise
 
@@ -533,11 +550,11 @@ Scan the QR or type the link:
 
 **[python.tobiasvlcek.com/notebooks/ex_04_c/](https://python.tobiasvlcek.com/notebooks/ex_04_c/)**
 
-![](assets/qr/ex_04_c.png){width=280}
+![](assets/qr/ex_04_c.png){width=280 fig-alt="QR code linking to the online notebook for exercise 4c, the same address as the link above."}
 
 **Any questions?** Let me know!
 
-# [Nesting, Comprehensions & Data]{.flow} {.title}
+# [Nested Data]{.flow} {.title}
 
 ## A dictionary inside a dictionary
 
@@ -578,7 +595,7 @@ print(zones["Altstadt"]["eta"])
 
 Read it left to right: "in `zones`, take `Hafen`, then its `fee`."
 
-# Your turn: 5-10 minutes {.loud-slide}
+# Your turn {.loud-slide}
 
 ## Open the exercise
 
@@ -586,7 +603,7 @@ Scan the QR or type the link:
 
 **[python.tobiasvlcek.com/notebooks/ex_04_d/](https://python.tobiasvlcek.com/notebooks/ex_04_d/)**
 
-![](assets/qr/ex_04_d.png){width=280}
+![](assets/qr/ex_04_d.png){width=280 fig-alt="QR code linking to the online notebook for exercise 4d, the same address as the link above."}
 
 **Any questions?** Let me know!
 
@@ -725,7 +742,7 @@ print([c * 2 for c in counts if c > 0])
 
 **b) `[4, 6, 2]`**. The `if` is a filter: items that fail it never reach the expression, so the result is **shorter** than the input. `c * 2` still runs on the survivors, which rules out `[2, 3, 1]`.
 
-# Your turn: 5-10 minutes {.loud-slide}
+# Your turn {.loud-slide}
 
 ## Open the exercise
 
@@ -733,7 +750,7 @@ Scan the QR or type the link:
 
 **[python.tobiasvlcek.com/notebooks/ex_04_e/](https://python.tobiasvlcek.com/notebooks/ex_04_e/)**
 
-![](assets/qr/ex_04_e.png){width=280}
+![](assets/qr/ex_04_e.png){width=280 fig-alt="QR code linking to the online notebook for exercise 4e, the same address as the link above."}
 
 **Any questions?** Let me know!
 
@@ -757,12 +774,12 @@ Scan the QR or type the link:
 
 1. **Lists** hold many values in order: index from `0`, count back with `-1`, slice with a `stop` that's **excluded**
 2. **Dictionaries** look up a value by its key; a missing key raises `KeyError`, so reach for `.get()` when it might not be there; **sets** keep each value once
-3. **Comprehensions** compress a loop into one line: `[expr for x in things]` for lists, `{k: v for ...}` for dicts, `round()` welcome inside
+3. **Comprehensions** fit a loop in one line: `[expr for x in things]` for lists, `{k: v for ...}` for dicts, `round()` welcome inside
 
 . . .
 
 ::: {.callout-note}
-**Next time, Episode 5:** Tobi rewrites the checkout at **3 AM** on four energy drinks. What could go wrong? We learn to read tracebacks and catch errors before the customer does.
+**Next time, Episode 5** starts with **Checkpoint 2**: 40 minutes, no AI, everything from Sessions III-IV. Then Tobi rewrites the checkout at **3 AM** on four energy drinks. What could go wrong? We learn to read tracebacks and catch errors before the customer does.
 :::
 
 # [Literature]{.flow} {.title}

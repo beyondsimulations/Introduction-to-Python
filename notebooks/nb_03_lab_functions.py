@@ -34,8 +34,10 @@ def _(mo):
         mo.md(
             "**How this notebook works:** run a cell with **Cmd/Ctrl+Enter**. "
             "Only edit the cells that contain `# YOUR CODE BELOW`; the check under "
-            "each exercise updates by itself. A red error pauses everything below "
-            "it, so fix that cell first."
+            "each exercise updates by itself. A red error pauses every cell that "
+            "depends on it, so fix that cell first. A name can be set in only one "
+            "cell: if two cells both set `total`, both turn red, so use a new name "
+            "in the second one."
         ),
         kind="info",
     )
@@ -65,7 +67,7 @@ def _(mo):
     return
 
 
-@app.cell
+@app.cell(hide_code=True)
 def _():
     import marimo as mo
     return (mo,)
@@ -189,15 +191,20 @@ def _(fee_ex11, mo, show_result):
         _a = fee_ex11(10.0)
         _b = fee_ex11(20.0)
         _c = fee_ex11(40.0)
-    except Exception:
+        _edges = (fee_ex11(15.0), fee_ex11(30.0))
+    except Exception as _err:
         ex11_ok = False
-        _msg = "Wrong (Exercise 1.1): it's crashing. Read the error above and fix it before the check can run."
+        _msg = f"Wrong (Exercise 1.1): your code stops with `{type(_err).__name__}: {_err}` when the check calls it."
         _preview = ""
     else:
         if _a is None:
             ex11_ok = False
-            _msg = "Not attempted (Exercise 1.1): (the function still returns None). Use `return`, not `print`, then run the cell."
+            _msg = "Not attempted (Exercise 1.1): (the function still returns None). Replace the given `return None` with your code, and hand the result back with `return`, not `print`."
             _preview = ""
+        elif _a == 2.90 and _b == 1.50 and _c == 0 and _edges != (1.50, 0):
+            ex11_ok = False
+            _msg = "Wrong (Exercise 1.1): 10, 20 and 40 come out right, but the edges do not: an order of exactly 15 costs 1.50, and one of exactly 30 costs 0."
+            _preview = show_result(_edges)
         elif _a == 2.90 and _b == 1.50 and _c == 0:
             ex11_ok = True
             _msg = "Correct (Exercise 1.1): 2.90 / 1.50 / 0. One function covers every price band, and Tobi never retypes the ladder again."
@@ -215,7 +222,7 @@ def _(mo):
     mo.accordion(
         {
             "Hint 1 (a nudge)": "Inside the function, use `if` / `elif` / `else` to pick the band, and `return` the fee for that band. Check the smallest band first, or test the boundaries carefully.",
-            "Hint 2 (the structure)": "def fee_ex11(total):\n if total < 15:\n return ___\n elif total < 30:\n return ___\n else:\n return ___ (fill the three fees).",
+            "Hint 2 (the structure)": "```python\ndef fee_ex11(total):\n    if total < 15:\n        return ___\n    elif total < 30:\n        return ___\n    else:\n        return ___\n```\n\nFill the three fees.",
         }
     )
     return
@@ -251,14 +258,14 @@ def _(mo, show_result, tip_ex12):
     try:
         _a = tip_ex12(20, 10)
         _b = tip_ex12(12.0, 25)
-    except Exception:
+    except Exception as _err:
         ex12_ok = False
-        _msg = "Wrong (Exercise 1.2): it's crashing. Read the error above and fix it before the check can run."
+        _msg = f"Wrong (Exercise 1.2): your code stops with `{type(_err).__name__}: {_err}` when the check calls it."
         _preview = ""
     else:
         if _a is None:
             ex12_ok = False
-            _msg = "Not attempted (Exercise 1.2): (the function still returns None). Use `return`, not `print`, then run the cell."
+            _msg = "Not attempted (Exercise 1.2): (the function still returns None). Replace the given `return None` with your code, and hand the result back with `return`, not `print`."
             _preview = ""
         elif (
             isinstance(_a, (int, float)) and round(_a, 2) == 2.0
@@ -280,7 +287,7 @@ def _(mo):
     mo.accordion(
         {
             "Hint 1 (a nudge)": "A percentage is 'per hundred': `percent / 100` of `total`. Multiply, then wrap the whole thing in `round(..., 2)`.",
-            "Hint 2 (the structure)": "def tip_ex12(total, percent):\n return round(total * ___ / ___, 2) (fill in the percent and the 100).",
+            "Hint 2 (the structure)": "```python\ndef tip_ex12(total, percent):\n    return round(total * ___ / ___, 2)\n```\n\nFill in the percent and the 100.",
         }
     )
     return
@@ -321,14 +328,14 @@ def _(batches_ex13, mo, show_result):
         _a = batches_ex13(12, 4)
         _b = batches_ex13(13, 4)
         _c = batches_ex13(4, 4)
-    except Exception:
+    except Exception as _err:
         ex13_ok = False
-        _msg = "Wrong (Exercise 1.3): it's crashing. Read the error above and fix it before the check can run."
+        _msg = f"Wrong (Exercise 1.3): your code stops with `{type(_err).__name__}: {_err}` when the check calls it."
         _preview = ""
     else:
         if _a is None:
             ex13_ok = False
-            _msg = "Not attempted (Exercise 1.3): (the function still returns None). Use `return`, not `print`, then run the cell."
+            _msg = "Not attempted (Exercise 1.3): (the function still returns None). Replace the given `return None` with your code, and hand the result back with `return`, not `print`."
             _preview = ""
         elif (
             isinstance(_a, (int, float)) and _a == 3
@@ -359,7 +366,7 @@ def _(mo):
     mo.accordion(
         {
             "Hint 1 (a nudge)": "Whole rounds first: how many times does `per_batch` fit into `wraps` completely? Then ask whether anything is left over; if so, that leftover needs one extra round.",
-            "Hint 2 (the structure)": "def batches_ex13(wraps, per_batch):\n rounds = wraps ___ per_batch\n if wraps ___ per_batch != 0:\n rounds = rounds + 1\n return rounds (fill the two operators: whole-number division and remainder).",
+            "Hint 2 (the structure)": "```python\ndef batches_ex13(wraps, per_batch):\n    rounds = wraps ___ per_batch\n    if wraps ___ per_batch != 0:\n        rounds = rounds + 1\n    return rounds\n```\n\nFill the two operators: whole-number division and remainder.",
         }
     )
     return
@@ -504,9 +511,9 @@ def _():
 def _(mo, receipt_total_ex22, show_result):
     try:
         _r = receipt_total_ex22([4.0, 6.0])
-    except Exception:
+    except Exception as _err:
         ex22_ok = False
-        _msg = "Wrong (Exercise 2.2): it's crashing now. Read the error above and fix it before the check can run."
+        _msg = f"Wrong (Exercise 2.2): your code stops with `{type(_err).__name__}: {_err}` when the check calls it."
         _preview = ""
     else:
         if _r is None:
@@ -534,7 +541,7 @@ def _(mo):
     mo.accordion(
         {
             "Hint 1 (a nudge)": "Look at the last line of the function. Showing a value on screen and handing it back to the caller are two different actions. Which one is Tobi doing?",
-            "Hint 2 (the structure)": "def receipt_total_ex22(prices):\n _running = 0\n for _p in prices:\n _running = _running + _p\n ___ _running (the last line decides what callers receive; fill the keyword that hands a value back).",
+            "Hint 2 (the structure)": "```python\ndef receipt_total_ex22(prices):\n    _running = 0\n    for _p in prices:\n        _running = _running + _p\n    ___ _running\n```\n\nThe last line decides what callers receive; fill the keyword that hands a value back.",
         }
     )
     return
@@ -572,14 +579,14 @@ def _(greet_ex23, mo, show_result):
     try:
         _default = greet_ex23("Ada")
         _custom = greet_ex23("Ada", "Servus")
-    except Exception:
+    except Exception as _err:
         ex23_ok = False
-        _msg = "Wrong (Exercise 2.3): it's crashing. Read the error above and fix it before the check can run."
+        _msg = f"Wrong (Exercise 2.3): your code stops with `{type(_err).__name__}: {_err}` when the check calls it."
         _preview = ""
     else:
         if _default is None:
             ex23_ok = False
-            _msg = "Not attempted (Exercise 2.3): (the function still returns None). Use `return`, not `print`, then run the cell."
+            _msg = "Not attempted (Exercise 2.3): (the function still returns None). Replace the given `return None` with your code, and hand the result back with `return`, not `print`."
             _preview = ""
         elif _default == "Moin, Ada!" and _custom == "Servus, Ada!":
             ex23_ok = True
@@ -601,7 +608,7 @@ def _(mo):
     mo.accordion(
         {
             "Hint 1 (a nudge)": "The parameter default is already written for you in the signature. Inside, build the line from `greeting` and `name`. An f-string keeps the comma, space and `!` exactly right.",
-            "Hint 2 (the structure)": "def greet_ex23(name, greeting=\"Moin\"):\n return f\"{___}, {___}!\" (fill the two blanks with the parameter names, greeting first).",
+            "Hint 2 (the structure)": "```python\ndef greet_ex23(name, greeting=\"Moin\"):\n    return f\"{___}, {___}!\"\n```\n\nFill the two blanks with the parameter names, greeting first.",
         }
     )
     return
@@ -642,9 +649,9 @@ def _(discounted_ex24, mo, show_result):
     try:
         _d = discounted_ex24(20)
         _s = discounted_ex24(20, 25)
-    except Exception:
+    except Exception as _err:
         ex24_ok = False
-        _msg = "Wrong (Exercise 2.4): it's crashing now. Read the error above and fix it before the check can run."
+        _msg = f"Wrong (Exercise 2.4): your code stops with `{type(_err).__name__}: {_err}` when the check calls it."
         _preview = ""
     else:
         if _d is None:
@@ -679,7 +686,7 @@ def _(mo):
     mo.accordion(
         {
             "Hint 1 (a nudge)": "Where does the default 10 already live? Read the first line of the function. Now read the second line: what happens to a 25 the caller passed in?",
-            "Hint 2 (the structure)": "def discounted_ex24(total, percent=10):\n return round(total - total * ___ / 100, 2) (one line in the body; fill the blank with the parameter that already carries the default).",
+            "Hint 2 (the structure)": "```python\ndef discounted_ex24(total, percent=10):\n    return round(total - total * ___ / 100, 2)\n```\n\nOne line in the body; fill the blank with the parameter that already carries the default.",
         }
     )
     return
@@ -778,14 +785,14 @@ def _(Order, mo, show_result):
         _o = Order("Wrap", 2, 6.90)
         _t = _o.total()
         _line = _o.receipt_line()
-    except Exception:
+    except Exception as _err:
         ex31_ok = False
-        _msg = "Wrong (Exercise 3.1): it's crashing. Read the error above and fix it before the check can run."
+        _msg = f"Wrong (Exercise 3.1): your code stops with `{type(_err).__name__}: {_err}` when the check calls it."
         _preview = ""
     else:
         if _t is None:
             ex31_ok = False
-            _msg = "Not attempted (Exercise 3.1): (`total()` still returns None). Use `return`, not `print`, then run the cell."
+            _msg = "Not attempted (Exercise 3.1): (`total()` still returns None). Replace the given `return None` with your code, and hand the result back with `return`, not `print`."
             _preview = ""
         elif isinstance(_t, (int, float)) and round(_t, 2) == 13.80 and _line == "2x Wrap: 13.80 EUR":
             ex31_ok = True
@@ -816,7 +823,7 @@ def _(mo):
     mo.accordion(
         {
             "Hint 1 (a nudge)": "Inside `total()`, reach the stored data through `self`: the quantity is `self.qty`, the unit price is `self.price`. Multiply them and round. `receipt_line()` is the Episode 1 f-string, with `self.total()` in the money slot.",
-            "Hint 2 (the structure)": " def total(self):\n return round(self.___ * self.___, 2)\n\n def receipt_line(self):\n return f\"{self.___}x {self.___}: {self.total():.2f} EUR\" (fill in the attribute names).",
+            "Hint 2 (the structure)": "```python\n    def total(self):\n        return round(self.___ * self.___, 2)\n\n    def receipt_line(self):\n        return f\"{self.___}x {self.___}: {self.total():.2f} EUR\"\n```\n\nFill in the attribute names.",
         }
     )
     return
@@ -850,7 +857,7 @@ def _():
     class Courier:
         def __init__(self, name, speed_kmh):
             # YOUR CODE BELOW: store name and speed_kmh on self
-            pass
+            pass  # a placeholder that does nothing: replace it
 
         def minutes_for(self, km):
             # YOUR CODE BELOW: km / speed * 60, rounded to 1 decimal, speed via self
@@ -868,14 +875,14 @@ def _(Courier, mo, show_result):
         ex32_ok = False
         _msg = "Wrong (Exercise 3.2): the courier has no stored data yet. `__init__` must put `speed_kmh` on `self` before `minutes_for` can read it."
         _preview = ""
-    except Exception:
+    except Exception as _err:
         ex32_ok = False
-        _msg = "Wrong (Exercise 3.2): it's crashing. Read the error above and fix it before the check can run."
+        _msg = f"Wrong (Exercise 3.2): your code stops with `{type(_err).__name__}: {_err}` when the check calls it."
         _preview = ""
     else:
         if _amir is None:
             ex32_ok = False
-            _msg = "Not attempted (Exercise 3.2): (`minutes_for()` still returns None). Use `return`, not `print`, then run the cell."
+            _msg = "Not attempted (Exercise 3.2): (`minutes_for()` still returns None). Replace the given `return None` with your code, and hand the result back with `return`, not `print`."
             _preview = ""
         elif (
             isinstance(_amir, (int, float)) and round(_amir, 2) == 22.5
@@ -905,7 +912,7 @@ def _(mo):
     mo.accordion(
         {
             "Hint 1 (a nudge)": "`__init__` is where data goes onto the object: one `self.something = something` per parameter. Then `minutes_for` reads the speed back through `self`, never through the bare parameter name.",
-            "Hint 2 (the structure)": " def __init__(self, name, speed_kmh):\n self.name = ___\n self.speed_kmh = ___\n\n def minutes_for(self, km):\n return round(km / self.___ * 60, 1) (fill the two stores and the attribute the method reads).",
+            "Hint 2 (the structure)": "```python\n    def __init__(self, name, speed_kmh):\n        self.name = ___\n        self.speed_kmh = ___\n\n    def minutes_for(self, km):\n        return round(km / self.___ * 60, 1)\n```\n\nFill the two stores and the attribute the method reads.",
         }
     )
     return
@@ -938,7 +945,7 @@ def _(mo):
     rewrite them. (That's the whole point of this episode.)
 
     *Finish 1.1 first:* while `fee_ex11` still returns `None`, this cell goes
-    **red**, and a red cell pauses everything below it, including the progress
+    **red**, and a red cell pauses every cell that depends on it, including the progress
     box. Nothing is lost; fix the red cell and it all comes back.
     """
     )
@@ -982,7 +989,7 @@ def _(mo):
     mo.accordion(
         {
             "Hint 1 (a nudge)": "Make the three orders. Start a grand total at 0. For each order, work out its `total()` once, then add that total AND `fee_ex11` of that total to the running sum.",
-            "Hint 2 (the structure)": "orders = [Order(\"Wrap\", 2, 6.90), Order(\"Bowl\", 1, 24.90), Order(\"Fries\", 5, 2.50)]\nday_total_ex40 = 0\nfor order in orders:\n _t = order.___()\n day_total_ex40 = day_total_ex40 + _t + fee_ex11(___)\nday_total_ex40 = round(day_total_ex40, 2) (fill the method call and the fee's argument).",
+            "Hint 2 (the structure)": "```python\norders = [Order(\"Wrap\", 2, 6.90), Order(\"Bowl\", 1, 24.90), Order(\"Fries\", 5, 2.50)]\nday_total_ex40 = 0\nfor order in orders:\n    _t = order.___()\n    day_total_ex40 = day_total_ex40 + _t + fee_ex11(___)\nday_total_ex40 = round(day_total_ex40, 2)\n```\n\nFill the method call and the fee's argument.",
         }
     )
     return
@@ -1089,7 +1096,7 @@ def _(mo, show_result, tip_safe_ex60):
     else:
         if _zero is None and _normal is None:
             ex60_ok = False
-            _msg = "Not attempted (Bonus): (the function still returns None). Use `return`, not `print`, then run the cell."
+            _msg = "Not attempted (Bonus): (the function still returns None). Replace the given `return None` with your code, and hand the result back with `return`, not `print`."
             _preview = ""
         elif _zero is None or _neg is None:
             ex60_ok = False
@@ -1135,7 +1142,7 @@ def _(mo):
     mo.accordion(
         {
             "Hint 1 (a nudge)": "Guard first: if the total is zero or negative, `return 0.0` right away. Otherwise fall through to the normal tip calculation from 1.2.",
-            "Hint 2 (the structure)": "def tip_safe_ex60(total, percent):\n if total ___ 0:\n return 0.0\n return round(total * percent / 100, 2) (fill the comparison that catches zero AND negatives).",
+            "Hint 2 (the structure)": "```python\ndef tip_safe_ex60(total, percent):\n    if total ___ 0:\n        return 0.0\n    return round(total * percent / 100, 2)\n```\n\nFill the comparison that catches zero AND negatives.",
         }
     )
     return

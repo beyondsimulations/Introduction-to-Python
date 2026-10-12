@@ -4,7 +4,7 @@ import marimo
 app = marimo.App(width="medium", app_title="ex_06_b")
 
 
-@app.cell
+@app.cell(hide_code=True)
 def _():
     import marimo as mo
     return (mo,)
@@ -117,7 +117,7 @@ def _(mo):
     mo.accordion(
         {
             "Hint 1 (a nudge)": "200 / 24 gives 8.33... You need the next whole box, and math has a function for exactly that.",
-            "Hint 2 (the structure)": "boxes_exb = math.___(200 / 24)",
+            "Hint 2 (the structure)": "`boxes_exb = math.___(200 / 24)`",
         }
     )
     return
@@ -168,7 +168,7 @@ def _(mo):
     mo.accordion(
         {
             "Hint 1 (a nudge)": "`ceil` rounds up; its partner in `math` rounds down. Same shape of call, opposite direction.",
-            "Hint 2 (the structure)": "affordable_exb = math.___(10 / 1.35)",
+            "Hint 2 (the structure)": "`affordable_exb = math.___(10 / 1.35)`",
         }
     )
     return

@@ -9,7 +9,7 @@ format:
     output-file: lec_02_presentation.html
 ---
 
-# [Episode 2: The Curfew]{.flow} {.title}
+# [EP 2: The Curfew]{.flow} {.title}
 
 ## A decree from the city
 
@@ -165,7 +165,7 @@ print(not is_weekday and before_curfew)
 
 **b) `False`**: `not` only flips the value right next to it, so Python reads `(not is_weekday) and before_curfew`, which is `False and False`. To flip the whole pair, put parentheses: `not (is_weekday and before_curfew)`.
 
-# Your turn: 5-10 minutes {.loud-slide}
+# Your turn {.loud-slide}
 
 ## Open the exercise
 
@@ -173,7 +173,7 @@ Scan the QR or type the link:
 
 **[python.tobiasvlcek.com/notebooks/ex_02_a/](https://python.tobiasvlcek.com/notebooks/ex_02_a/)**
 
-![](assets/qr/ex_02_a.png){width=280}
+![](assets/qr/ex_02_a.png){width=280 fig-alt="QR code linking to the online notebook for exercise 2a, the same address as the link above."}
 
 **Any questions?** Let me know!
 
@@ -301,7 +301,7 @@ print(delivery_hour < 22)
 
 **a) `False`**: `<` is **strict**. 22 is not *less than* 22, so at 22:00 sharp the kitchen is already closed. Use `<=` when the boundary should count.
 
-# Your turn: 5-10 minutes {.loud-slide}
+# Your turn {.loud-slide}
 
 ## Open the exercise
 
@@ -309,11 +309,11 @@ Scan the QR or type the link:
 
 **[python.tobiasvlcek.com/notebooks/ex_02_b/](https://python.tobiasvlcek.com/notebooks/ex_02_b/)**
 
-![](assets/qr/ex_02_b.png){width=280}
+![](assets/qr/ex_02_b.png){width=280 fig-alt="QR code linking to the online notebook for exercise 2b, the same address as the link above."}
 
 **Any questions?** Let me know!
 
-# [Doing Things Many Times]{.flow} {.title}
+# [Doing It Many Times]{.flow} {.title}
 
 ## The copy-paste pain
 
@@ -334,7 +334,7 @@ Three lines for three items. A hundred orders? A hundred lines. There is a bette
 
 ## `for`: one step for every item
 
-A **`for` loop** runs its block once for each item in a list:
+A **list** holds several values in square brackets. A **`for` loop** runs its block once for each item in it:
 
 ```{python}
 #| eval: true
@@ -384,7 +384,7 @@ for i in range(3):
 
 Three passes: `0`, `1`, `2`. (It stops *before* 3, a beginner's favorite surprise.)
 
-## `range()` with two and three arguments
+## `range()` with a start and a step
 
 - `range(start, stop)`: begin at `start`, stop before `stop`
 - `range(start, stop, step)`: jump by `step` each time
@@ -493,7 +493,7 @@ print(total)
 
 **c) `30`**: `print` sits outside the loop, so it runs once, after the loop finishes, showing the final total. Indent it and it would print on every pass. Indentation decides what repeats.
 
-# Your turn: 5-10 minutes {.loud-slide}
+# Your turn {.loud-slide}
 
 ## Open the exercise
 
@@ -501,11 +501,11 @@ Scan the QR or type the link:
 
 **[python.tobiasvlcek.com/notebooks/ex_02_c/](https://python.tobiasvlcek.com/notebooks/ex_02_c/)**
 
-![](assets/qr/ex_02_c.png){width=280}
+![](assets/qr/ex_02_c.png){width=280 fig-alt="QR code linking to the online notebook for exercise 2c, the same address as the link above."}
 
 **Any questions?** Let me know!
 
-# [Repeat Until, and Clean Text]{.flow} {.title}
+# [While, and Clean Text]{.flow} {.title}
 
 ## `while`: repeat as long as
 
@@ -545,7 +545,7 @@ while count > 0:
 . . .
 
 :::{.callout-warning}
-An endless `while` will freeze your marimo tab. Always check that **something inside the loop changes** the condition.
+An endless `while` will freeze your marimo tab, and a frozen tab can only be closed. Check that **something inside the loop changes** the condition, and save and download before you experiment.
 :::
 
 ## `break`: an early exit
@@ -568,7 +568,7 @@ print(count)
 
 The loop would run forever, but `break` stops it the moment `count` hits 3.
 
-# Your turn: 5-10 minutes {.loud-slide}
+# Your turn {.loud-slide}
 
 ## Open the exercise
 
@@ -576,7 +576,7 @@ Scan the QR or type the link:
 
 **[python.tobiasvlcek.com/notebooks/ex_02_d/](https://python.tobiasvlcek.com/notebooks/ex_02_d/)**
 
-![](assets/qr/ex_02_d.png){width=280}
+![](assets/qr/ex_02_d.png){width=280 fig-alt="QR code linking to the online notebook for exercise 2d, the same address as the link above."}
 
 **Any questions?** Let me know!
 
@@ -673,7 +673,7 @@ print("  MOIN  ".strip().lower())
 
 **b) `moin`**: `.strip()` hands back a new string, so `.lower()` has something to work on. Chained methods run left to right, each acting on the previous one's output.
 
-# Your turn: 5-10 minutes {.loud-slide}
+# Your turn {.loud-slide}
 
 ## Open the exercise
 
@@ -681,7 +681,7 @@ Scan the QR or type the link:
 
 **[python.tobiasvlcek.com/notebooks/ex_02_e/](https://python.tobiasvlcek.com/notebooks/ex_02_e/)**
 
-![](assets/qr/ex_02_e.png){width=280}
+![](assets/qr/ex_02_e.png){width=280 fig-alt="QR code linking to the online notebook for exercise 2e, the same address as the link above."}
 
 **Any questions?** Let me know!
 
@@ -689,7 +689,8 @@ Scan the QR or type the link:
 
 **A practice board review.** Fifteen minutes, before the lab, **ungraded**. Same format as the five real checkpoints, so that nothing is new next week when it counts.
 
-- **Individual work**, as in the real thing: no AI, no neighbors, no chat
+- **Individual work**: no AI, no neighbors, no messaging
+- Slides, the cheatsheet and your own notebooks **may be open**
 - The **link is on Moodle**. Open it and start
 - 3 short tasks: compute a price, trace a line, fix one of Tobi's bugs
 - Fill in your **name and student ID** as code at the top, exactly as you will next week
@@ -700,7 +701,7 @@ Scan the QR or type the link:
 
 ## When you're done
 
-Menu → *Download* → *Download Python code* → upload the `.py` to the "Checkpoint 0" assignment on Moodle. Nothing is graded today. The point is that you have done the download and the upload once before it counts.
+**Cmd/Ctrl+S**, then menu → *Download* → *Download Python code* → upload the `.py` to the "Checkpoint 0" assignment on Moodle. Nothing is graded today. The point is that you have done the download and the upload once before it counts.
 
 . . .
 

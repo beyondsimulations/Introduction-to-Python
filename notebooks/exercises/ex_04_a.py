@@ -4,7 +4,7 @@ import marimo
 app = marimo.App(width="medium", app_title="ex_04_a")
 
 
-@app.cell
+@app.cell(hide_code=True)
 def _():
     import marimo as mo
     return (mo,)
@@ -116,7 +116,7 @@ def _(mo):
 
 @app.cell
 def _(route):
-    # YOUR CODE BELOW: route without its first and last stop, and without len()
+    # YOUR CODE BELOW: route without its first and last stop
     middle_exa = None
     return (middle_exa,)
 

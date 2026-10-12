@@ -40,8 +40,10 @@ def _(mo):
         mo.md(
             "**How this notebook works:** run a cell with **Cmd/Ctrl+Enter**. "
             "Only edit the cells that contain `# YOUR CODE BELOW`; the check under "
-            "each exercise updates by itself. A red error pauses everything below "
-            "it, so fix that cell first."
+            "each exercise updates by itself. A red error pauses every cell that "
+            "depends on it, so fix that cell first. A name can be set in only one "
+            "cell: if two cells both set `total`, both turn red, so use a new name "
+            "in the second one."
         ),
         kind="info",
     )
@@ -60,7 +62,7 @@ def _(mo):
     return
 
 
-@app.cell
+@app.cell(hide_code=True)
 def _():
     import marimo as mo
     return (mo,)

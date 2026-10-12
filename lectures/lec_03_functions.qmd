@@ -13,7 +13,8 @@ format:
 
 **The quarterly board review.** The first 40 minutes are the checkpoint. It starts now.
 
-- **Individual work**: no AI, no neighbors, no chat
+- **Individual work**: no AI, no neighbors, no messaging
+- Slides, the cheatsheet and your own notebooks **may be open**
 - The **link is on Moodle**. Open it and start
 - ~6 short tasks: write code, trace code, fix a bug, answer a multiple choice
 - It sweeps **Sessions I-II**: variables, types, `round` and f-strings, `if`/`elif`, `for` loops
@@ -24,15 +25,15 @@ format:
 
 ## When you're done
 
-Menu → *Download* → *Download Python code* → upload the `.py` to the "Checkpoint 1" assignment on Moodle, **before the 40 minutes are up**. No retakes: one sitting.
+**Cmd/Ctrl+S**, then menu → *Download* → *Download Python code* → upload the `.py` to the "Checkpoint 1" assignment on Moodle, **before the 40 minutes are up**. No retakes: one sitting.
 
 . . .
 
 :::{.callout-note}
-The green live checks are **provisional**. The final grading runs on my side. Everything in it was rehearsed in the labs.
+The live checks under the tasks are **provisional**. The final grading runs on my side. Everything in it was rehearsed in the labs.
 :::
 
-# [Episode 3: The Copy-Paste Soup]{.flow} {.title}
+# [EP 3: Copy-Paste Soup]{.flow} {.title}
 
 ## After the board review
 
@@ -170,7 +171,7 @@ a\) `8.50 EUR`   b) `Error`   c) `None`
 
 [Predict]{.question}. Pick a letter, then I reveal the answer.
 
-## Answer: `print` shows, `return` hands back
+## Answer: `print` shows, `return` gives
 
 ```{python}
 #| eval: true
@@ -187,7 +188,7 @@ print(result)                # ...but the value handed back is None
 
 **c) `None`**: `label_price` prints its line while running, but with no `return` it hands back `None`. That `None` is what lands in `result`. Printing is not returning.
 
-# Your turn: 5-10 minutes {.loud-slide}
+# Your turn {.loud-slide}
 
 ## Open the exercise
 
@@ -195,7 +196,7 @@ Scan the QR or type the link:
 
 **[python.tobiasvlcek.com/notebooks/ex_03_a/](https://python.tobiasvlcek.com/notebooks/ex_03_a/)**
 
-![](assets/qr/ex_03_a.png){width=280}
+![](assets/qr/ex_03_a.png){width=280 fig-alt="QR code linking to the online notebook for exercise 3a, the same address as the link above."}
 
 **Any questions?** Let me know!
 
@@ -237,7 +238,7 @@ print(bill(2, 4.50))
 
 `line_total` and `service_fee` do their jobs; `bill` just orchestrates. That's how small pieces become a program.
 
-# Your turn: 5-10 minutes {.loud-slide}
+# Your turn {.loud-slide}
 
 ## Open the exercise
 
@@ -245,15 +246,15 @@ Scan the QR or type the link:
 
 **[python.tobiasvlcek.com/notebooks/ex_03_b/](https://python.tobiasvlcek.com/notebooks/ex_03_b/)**
 
-![](assets/qr/ex_03_b.png){width=280}
+![](assets/qr/ex_03_b.png){width=280 fig-alt="QR code linking to the online notebook for exercise 3b, the same address as the link above."}
 
 **Any questions?** Let me know!
 
-# [Scope, then a First Class]{.flow} {.title}
+# [Scope and Classes]{.flow} {.title}
 
 ## Local names stay local
 
-A parameter is the function's **own private copy**. What happens inside stays inside:
+A parameter is the function's **own name** for the value it was handed. Giving that name a new value inside changes nothing outside:
 
 ```{python}
 #| eval: true
@@ -270,7 +271,7 @@ print(bump(3))       # 13, the returned value
 
 Names created inside a function live in its **scope**. They vanish when the function ends.
 
-## Predict: does the global move?
+## Predict: does `stock` move?
 
 `bump` adds ten to its parameter. We call it, then print `stock`. What does the **last line** print?
 
@@ -290,7 +291,7 @@ a\) `3`   b) `13`   c) `Error`
 
 [Predict]{.question}. Pick a letter, then I reveal the answer.
 
-## Answer: the outside variable is untouched
+## Answer: outside stays untouched
 
 ```{python}
 #| eval: true
@@ -368,7 +369,7 @@ print(trip.fee())             # call the method
 
 `trip` is one `Delivery` object. `trip.fee()` computes from *its own* stored distance: data and behavior, traveling together.
 
-## Predict: does the second delivery overwrite the first?
+## Predict: does the second overwrite?
 
 Two deliveries get built from the same class, one after the other. What does the **last line** print?
 
@@ -385,7 +386,7 @@ a\) `12.0`   b) `Error`   c) `4.8`
 
 [Predict]{.question}. Pick a letter, then I reveal the answer.
 
-## Answer: every object carries its own data
+## Answer: each object, its own data
 
 ```{python}
 #| eval: true
@@ -400,11 +401,11 @@ print(second.fee())    # self is second: 10 km
 
 . . .
 
-**c) `4.8`**: `__init__` ran twice and stored the data on **two different objects**. `self` inside `trip.fee()` is `trip`, so it reads Nadia's 4 km, not Omar's 10. Instances do not share attributes.
+**c) `4.8`**: `__init__` ran twice and stored the data on **two different objects**. `self` inside `trip.fee()` is `trip`, so it reads Nadia's 4 km, not Omar's 10. Two objects of one class do not share their data.
 
 ## How far we go with classes
 
-- Today you write **one small class** with an `__init__` and **one method**. That's it
+- In the lab you add two methods to a class, then write **one small class** yourself: an `__init__` and one method. That's it
 - Classes get tricky fast (inheritance, `self` confusion), and that is **not this course**
 - We use them only to *bundle* data with behavior, nothing deeper
 
@@ -414,7 +415,7 @@ print(second.fee())    # self is second: 10 km
 If the `self` keyword feels odd right now, copy the shape from the worked example. It gets clearer after you have written a few.
 :::
 
-# Your turn: 5-10 minutes {.loud-slide}
+# Your turn {.loud-slide}
 
 ## Open the exercise
 
@@ -422,7 +423,7 @@ Scan the QR or type the link:
 
 **[python.tobiasvlcek.com/notebooks/ex_03_c/](https://python.tobiasvlcek.com/notebooks/ex_03_c/)**
 
-![](assets/qr/ex_03_c.png){width=280}
+![](assets/qr/ex_03_c.png){width=280 fig-alt="QR code linking to the online notebook for exercise 3c, the same address as the link above."}
 
 **Any questions?** Let me know!
 

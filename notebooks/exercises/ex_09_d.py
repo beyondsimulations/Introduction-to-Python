@@ -4,7 +4,7 @@ import marimo
 app = marimo.App(width="medium", app_title="ex_09_d")
 
 
-@app.cell
+@app.cell(hide_code=True)
 def _():
     import marimo as mo
     return (mo,)
@@ -158,7 +158,7 @@ def _(mo):
     mo.accordion(
         {
             "Hint 1 (a nudge)": "The slide said it in four words: growth starts at zero. `floor_exd` is that number. Then `plt.plot(range(1, 5), signups_exd)` and `plt.ylim(floor_exd, 1300)` in the chart cell.",
-            "Hint 2 (the structure)": "floor_exd = ___\n\n# chart cell:\nplt.plot(range(1, 5), signups_exd, marker=\"o\")\nplt.ylim(floor_exd, ___)",
+            "Hint 2 (the structure)": "```python\nfloor_exd = ___\n\n# chart cell:\nplt.plot(range(1, 5), signups_exd, marker=\"o\")\nplt.ylim(floor_exd, ___)\n```",
         }
     )
     return
@@ -222,7 +222,7 @@ def _(mo):
     mo.accordion(
         {
             "Hint 1 (a nudge)": "`max(signups_exd)` is 1230. `1230 // 100` counts the full hundreds in it (12). One more hundred than that, times 100, is the next full hundred above.",
-            "Hint 2 (the structure)": "top_exd = (max(___) // 100 + ___) * 100",
+            "Hint 2 (the structure)": "`top_exd = (max(___) // 100 + ___) * 100`",
         }
     )
     return

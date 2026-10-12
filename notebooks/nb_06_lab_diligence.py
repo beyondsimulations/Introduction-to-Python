@@ -34,8 +34,10 @@ def _(mo):
         mo.md(
             "**How this notebook works:** run a cell with **Cmd/Ctrl+Enter**. "
             "Only edit the cells that contain `# YOUR CODE BELOW`; the check under "
-            "each exercise updates by itself. A red error pauses everything below "
-            "it, so fix that cell first."
+            "each exercise updates by itself. A red error pauses every cell that "
+            "depends on it, so fix that cell first. A name can be set in only one "
+            "cell: if two cells both set `total`, both turn red, so use a new name "
+            "in the second one."
         ),
         kind="info",
     )
@@ -61,7 +63,9 @@ def _(mo):
     demand, and learn why a simulation should give the same result when run twice.
 
     > **New this week: AI is allowed.** From this session on you may use an AI
-    > assistant; see the course's [AI tools
+    > assistant. Today that can be the **course chatbot** on the course site,
+    > which now gives full code on request. Your own Mistral account follows
+    > this week; see the course's [AI tools
     > guide](https://python.tobiasvlcek.com/general/ai-tools.html).
     > One thing does not change: the checks below only go green on code that
     > actually runs. AI can draft a line for you; you still have to make it work,
@@ -69,20 +73,21 @@ def _(mo):
 
     > **Also new: no hint boxes.** From this lab on, an exercise only says what
     > the result has to be. Which tool gets you there is yours to work out, with
-    > the worked examples, the lecture slides and your AI assistant. Ask the AI
-    > to explain, then write the line yourself.
+    > the worked examples, the lecture slides and your AI assistant. A good
+    > habit: ask the AI to explain first, then write the line yourself.
 
-    > **One marimo rule your AI doesn't know:** AI answers usually start with
-    > `import random` or `import math`. The worked examples below import those
-    > modules already, and in marimo a name can only be defined in **one**
-    > cell. With a second import both cells turn red until one of the two is
-    > gone, so delete the extra import line.
+    > **One marimo rule your AI doesn't know:** in marimo a name can only be
+    > set in **one** cell, and an `import` sets a name too. AI answers usually start with `import random` or
+    > `import math`, which the worked examples below import already. With a
+    > second import both cells turn red until one of the two is gone, so delete
+    > the extra import line. The same goes for your own names: a `total` that
+    > two cells set turns both red, so give the second one another name.
     """
     )
     return
 
 
-@app.cell
+@app.cell(hide_code=True)
 def _():
     import marimo as mo
     return (mo,)
@@ -275,7 +280,7 @@ def _(mo):
     **The constraint:** import the tools you need **by name**, at the top of
     your cell, and call them without any `statistics.` prefix.
 
-    Remember the marimo rule from the top: a name can only be defined in **one**
+    Remember the marimo rule from the top: a name can only be set in **one**
     cell. Import here once, and every cell below can use the same names.
     """
     )
@@ -468,7 +473,7 @@ def _(mo):
     saw.
 
     One marimo habit for this section: editing a loop is easy to get slightly
-    wrong, and a **red error pauses everything below it**, including the progress
+    wrong, and a **red error pauses every cell that depends on it**, including the progress
     box. Nothing is lost; fix the red cell and everything comes back.
 
     Read and run the worked example, then simulate.
@@ -679,7 +684,7 @@ def _(weekend_order_ex23, mo):
     _preview = ""
     if _err:
         ex23_ok = False
-        _msg = f"Wrong (Exercise 2.3): calling `weekend_order_ex23(8)` raises an error (`{_err}`). If it complains about a tuple, remember why the riders are stored in one."
+        _msg = f"Wrong (Exercise 2.3): calling `weekend_order_ex23(8)` raises an error (`{_err}`). If it complains about a tuple: a tuple cannot be reordered, so the shuffled order has to be a new list."
     elif _first is None:
         ex23_ok = False
         _msg = "Not attempted (Exercise 2.3): the function returns `None`. Use `return`, then run the cell. If you *are* returning something and still see this: one of the `random` tools changes a list in place and hands back `None`, so returning its result returns nothing."
@@ -960,7 +965,7 @@ def _(mo):
     - **a)** it makes the results reproducible: same seed, same sequence
     - **b)** it makes the random numbers generate faster
     - **c)** it makes the numbers more evenly spread out
-    - **d)** the numpy library refuses to draw without a seed
+    - **d)** the `random` module refuses to draw without a seed
     """
     )
     return
@@ -988,7 +993,7 @@ def _(answer_ex50, mo):
     else:
         ex50_ok = False
         _msg = (
-            "Wrong (Quiz): not quite. Seeding doesn't change speed or spread, and numpy "
+            "Wrong (Quiz): not quite. Seeding doesn't change speed or spread, and `random` "
             "draws happily without one. Think about what let your projection come "
             "out the same way twice in a row."
         )

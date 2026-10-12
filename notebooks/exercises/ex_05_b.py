@@ -4,7 +4,7 @@ import marimo
 app = marimo.App(width="medium", app_title="ex_05_b")
 
 
-@app.cell
+@app.cell(hide_code=True)
 def _():
     import marimo as mo
     return (mo,)
@@ -86,8 +86,8 @@ def _(mo, trace_exb):
     else:
         _msg = (
             "Wrong: `int()` refuses decimal **strings**, and reading the "
-            "last line of the traceback tells you this. (This one is "
-            "ungraded. The point is the prediction.)"
+            "last line of the traceback tells you this. (This one does "
+            "not count. The point is the prediction.)"
         )
     mo.callout(mo.md(_msg), kind="info")
     return

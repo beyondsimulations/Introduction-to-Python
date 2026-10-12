@@ -4,7 +4,7 @@ import marimo
 app = marimo.App(width="medium", app_title="ex_09_c")
 
 
-@app.cell
+@app.cell(hide_code=True)
 def _():
     import marimo as mo
     return (mo,)
@@ -160,7 +160,7 @@ def _(mo):
     mo.accordion(
         {
             "Hint 1 (a nudge)": "`plt.bar(zones_exc, totals_exc)` draws the bars, but the check wants the zone's NAME, not its height. Which list method finds the POSITION of the largest number in `totals_exc`? Use that position to look up a name in `zones_exc`.",
-            "Hint 2 (the structure)": "_best_index = totals_exc.index(___(totals_exc))\nbest_zone_exc = zones_exc[___]",
+            "Hint 2 (the structure)": "```python\n_best_index = totals_exc.index(___(totals_exc))\nbest_zone_exc = zones_exc[___]\n```",
         }
     )
     return
@@ -233,7 +233,7 @@ def _(mo):
     mo.accordion(
         {
             "Hint 1 (a nudge)": "`zip(totals_exc, zones_exc)` makes (total, zone) pairs; `sorted(...)` orders pairs by their first item. Which keyword flips the order so the largest comes first? The second pair holds your zone. For the chart, unzip the sorted pairs back into two lists.",
-            "Hint 2 (the structure)": "_ranked = sorted(zip(totals_exc, zones_exc), reverse=___)\nsecond_zone_exc = _ranked[___][1]",
+            "Hint 2 (the structure)": "```python\n_ranked = sorted(zip(totals_exc, zones_exc), reverse=___)\nsecond_zone_exc = _ranked[___][1]\n```",
         }
     )
     return

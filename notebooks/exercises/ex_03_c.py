@@ -4,7 +4,7 @@ import marimo
 app = marimo.App(width="medium", app_title="ex_03_c")
 
 
-@app.cell
+@app.cell(hide_code=True)
 def _():
     import marimo as mo
     return (mo,)
@@ -79,9 +79,9 @@ def _(Order, mo, show_result):
     # Reactive check. Re-runs when you run the cell above.
     try:
         _result = Order("Pad Thai", 2, 8.90).total()
-    except Exception:
+    except Exception as _err:
         _ok = False
-        _msg = "Wrong: Still crashing. Read the error above and fix it before it reaches the check."
+        _msg = f"Wrong: your code stops with `{type(_err).__name__}: {_err}` when the check calls it."
         _preview = ""
     else:
         if isinstance(_result, (int, float)) and round(_result, 2) == 17.80:
@@ -130,9 +130,9 @@ def _(Order, cheaper_exc, mo, show_result):
         _fries = Order("Fries", 3, 3.20)
         _one = cheaper_exc(_pad, _fries)
         _two = cheaper_exc(_fries, _pad)
-    except Exception:
+    except Exception as _err:
         _ok = False
-        _msg = "Wrong: Still crashing. Read the error above and fix it before it reaches the check."
+        _msg = f"Wrong: your code stops with `{type(_err).__name__}: {_err}` when the check calls it."
         _preview = ""
     else:
         if _one is None:

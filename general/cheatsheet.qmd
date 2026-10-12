@@ -49,7 +49,6 @@ print(f"Pad Thai {26.70:>8.2f}")            # Pad Thai    26.70
 print("Wrap: 6.90 EUR\nPad Thai: 8.90 EUR")  # two lines
 print(f"{2 * 3}")                           # 6  - braces evaluate, plain quotes stay literal
 print(str(qty) + "x " + item)               # 2x Miso Ramen  - + needs text on both sides
-print(int("123") + 1, float("5.50") * 2)    # 124 11.0
 ```
 
 ## Session II: Control Structures
@@ -145,7 +144,7 @@ print(result)                         # None
 
 ### Scope
 
-A parameter is the function's own private copy; a function cannot quietly change your variables. To keep a result, assign the return value back.
+A parameter is the function's own name for the value it was handed. Giving it a new value inside does not change your variable outside. To keep a result, assign the return value back.
 
 ```python
 def bump(n):
@@ -188,21 +187,29 @@ drinks = ["Mate", "Spezi", "Ayran"]
 print(drinks[0], drinks[-1])          # Mate Ayran
 print(drinks[0:2])                    # ['Mate', 'Spezi']  - stop is excluded
 print(drinks[-2:])                    # ['Spezi', 'Ayran'] - open end: to the finish
-drinks.append("Kombucha")             # in place
+print(drinks + ["Cola"])              # ['Mate', 'Spezi', 'Ayran', 'Cola']  - a NEW list
+print("Mate" in drinks)               # True
+copy = list(drinks)                   # a real copy: changing it leaves drinks alone
+drinks.append("Kombucha")             # in place: drinks itself grows
 print(len(drinks))                    # 4
+for i in range(len(drinks)):          # positions 0, 1, 2, 3
+    print(i, drinks[i])               # 0 Mate ... 3 Kombucha
 opening = (9, 0)                      # tuple: (hour, minute)
-print(opening[0])                     # 9
+hour, minute = opening                # unpack both at once
+print(hour)                           # 9
 ```
 
 ### Dictionaries
 
-Map a key to a value. Reading a missing key with `[]` raises `KeyError`; `.get()` returns `None` or your fallback instead. Assigning to a key updates it or adds it. Dictionaries keep insertion order.
+Map a key to a value. Reading a missing key with `[]` raises `KeyError`; `.get()` returns `None` or your fallback instead. Assigning to a key updates it or adds it. `in` checks the keys.
 
 ```python
 prices = {"Mate": 3.50, "Spezi": 3.20}
 print(prices["Spezi"])                # 3.2
 print(prices.get("Cola"))             # None
 print(prices.get("Cola", 0))          # 0
+print("Mate" in prices)               # True  - in looks at the keys
+print(round(sum(prices.values()), 2)) # 6.7   - .values() hands you the values
 winter = dict(prices)                 # a copy keeps the original safe
 winter["Spezi"] = 3.40                # update
 winter["Kombucha"] = 4.20             # add
@@ -226,6 +233,7 @@ A loop that builds a list (or dict) in one line: `[expr for x in things]`, `{k: 
 ```python
 counts = [2, 1, 3]
 print([c * 2 for c in counts])        # [4, 2, 6]
+print([c for c in counts if c > 1])   # [2, 3]  - an if at the end filters
 print([round(p * 0.9, 2) for p in [3.50, 3.20, 2.80]])   # [3.15, 2.88, 2.52]
 prices = {"Mate": 3.50, "Spezi": 3.20}
 print({k: round(v * 0.9, 2) for k, v in prices.items()})   # {'Mate': 3.15, 'Spezi': 2.88}
@@ -245,7 +253,7 @@ Read a traceback bottom-up: the last line names *what* went wrong, the lines abo
 
 ### `try` / `except`, then fall back
 
-Catch the specific type; a bare `except:` also hides your own typos. `as e` keeps the error message. After the `except`, the program carries on.
+Catch the specific type; a bare `except:` also hides your own typos. `as e` keeps the error message. After the `except`, the program carries on. A block may not be empty: `pass` is the statement that does nothing. `float("5.50")` and `int("6")` turn text into a number, and raise `ValueError` when the text is not one.
 
 ```python
 try:
@@ -414,7 +422,7 @@ print(df.groupby("zone")["total_eur"].mean().round(2).to_dict())   # {'Hafen': 6
 
 - **Prompt with context and constraints**: name the DataFrame, its columns and their types, and say exactly what you want back ("one line that returns the total `total_eur` for zone `Nord`").
 - **Verify: read it, run it, test it** on a tiny case whose answer you already know. An AI that sounds sure is not an API that exists (`.summarize()` does not; `.describe()` does).
-- **Disclose in one line** on every submission that used AI, e.g. "Used the chatbot to draft the `groupby` line; I checked the totals by hand."
+- **Disclose in your project README** what the AI did, one line per use, e.g. "Used the chatbot to draft the `groupby` line; I checked the totals by hand."
 
 ## Session IX: Plotting with matplotlib
 
@@ -460,7 +468,7 @@ A growth claim starts the y-axis at 0: `plt.ylim(0, 100)`. A tight `plt.ylim(96,
 4. Catch specific exceptions, `raise` on bad input, read tracebacks bottom-up
 5. Don't build it, import it; `random.seed(n)` before anything that must be reproducible
 6. Prefer one vectorised expression or one `groupby` over a loop; every chart gets `plt.figure()`, labels, a title, `plt.gca()`, and a y-axis from 0 for growth
-7. Test AI output on a tiny case you can check by hand and add the one-line disclosure
+7. Test AI output on a tiny case you can check by hand, and in your project note the use in the README
 
 ## Recap
 

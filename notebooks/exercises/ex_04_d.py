@@ -4,7 +4,7 @@ import marimo
 app = marimo.App(width="medium", app_title="ex_04_d")
 
 
-@app.cell
+@app.cell(hide_code=True)
 def _():
     import marimo as mo
     return (mo,)

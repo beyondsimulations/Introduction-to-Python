@@ -6,6 +6,7 @@ subtitle: "A short guide using uv"
 ## Why we use `uv` for this course
 
 `uv` is a new (and very fast) Python tool written in Rust. It:
+
 - Installs Python for you (no manual downloads).
 - Creates isolated *virtual environments* (safe sandboxes per project).
 - Installs and updates packages quickly.
@@ -18,7 +19,7 @@ WHY it matters: You avoid random breakage when different projects need different
 
 ## Install `uv`
 
-Everything below happens in a **terminal**, a window where you type commands. On macOS open the Terminal app (Spotlight: `Cmd+Space`, type *Terminal*). On Windows open PowerShell (Start menu, type *PowerShell*). Choose the instructions for your operating system.
+Everything below happens in a **terminal**, a window where you type commands. On macOS open the Terminal app (Spotlight: `Cmd+Space`, type *Terminal*). On Windows open PowerShell (Start menu, type *PowerShell*, pick the entry called *Windows PowerShell*). To run a command, type or paste its line and press Enter. Choose the instructions for your operating system.
 
 ### macOS or Linux (Terminal)
 
@@ -49,6 +50,8 @@ Set-ExecutionPolicy -ExecutionPolicy Bypass -Scope Process
 ```
 
 Then re-run the install line.
+
+After installation: **close and reopen** PowerShell, so that it finds the new `uv` command.
 
 ### Verify installation
 
@@ -94,7 +97,7 @@ Python 3.12.
 
 ## Create your first project
 
-Pick a folder where you keep course work. **If you do not have one, make sure to create one!** In the terminal, move into that folder (`cd` followed by its path, or drag the folder onto the terminal window) and run:
+Pick a folder where you keep course work. **If you do not have one, make sure to create one!** In the terminal, move into that folder: type `cd` and a space, drag the folder from Finder or Explorer onto the terminal window (that pastes the folder's location), and press Enter. Then run these two lines, each one **once**:
 
 ```bash
 uv init --no-package python-labs
@@ -104,10 +107,11 @@ cd python-labs
 The first line creates a new folder named `python-labs`. Keep that name: from Session VIII the labs live in this folder. The second line moves you into that folder. In Session X you will instead run `uv init --no-package` *inside* a folder cloned from GitHub; same command, no name.
 
 `uv init --no-package` creates:
+
 - `main.py` (starter script)
 - `pyproject.toml` (project + dependencies config)
 - `.python-version` (records the Python version we chose)
-- `.gitignore` and `README.md` (only when the folder is new; a folder cloned from GitHub already has both)
+- `README.md`, and `.gitignore` if git is on your machine (only when the folder is new; a folder cloned from GitHub already has both)
 - (A `.venv` folder will appear later once packages are added or synced.)
 
 ::: callout-note
@@ -151,43 +155,18 @@ if __name__ == "__main__":
 
 Don't worry about this yet, we'll gradually build up to it.
 
-## Run scripts directly in Zed
-
-This section needs **Zed**, which you install with the [AI-tools guide](ai-tools.qmd); come back to it afterwards. Instead of switching to the terminal every time, you can set up a **task** in Zed to run the currently open Python file with a single shortcut.
-
-### Create the task file
-
-Inside your project folder, create a `.zed/` directory and add a file called `tasks.json` inside it:
-
-```json
-[
-  {
-    "label": "Run current Python file",
-    "command": "uv run python $ZED_FILE",
-    "use_new_terminal": false
-  }
-]
-```
-
-`$ZED_FILE` is a variable Zed fills in automatically with the path of the file you have open.
-
-### Run the task
-
-1. Open any `.py` file in your project.
-2. Open the task picker with `Cmd+Shift+P` (macOS) / `Ctrl+Shift+P` (Windows/Linux).
-3. Type **task** and choose **task: spawn**.
-4. Select **Run current Python file**. Zed will execute `uv run python <your-file>` in the built-in terminal.
-
-::: callout-tip
-You can also bind the task to a keyboard shortcut. Open **Zed → Settings → Key Bindings** and add an entry for `"task: spawn"` to make it even faster.
-:::
-
 ## Adding packages
 
 The labs from Session VIII need two packages. Inside `python-labs`, run:
 
 ```bash
 uv add pandas matplotlib
+```
+
+Check that both arrived. This line prints `ready`:
+
+```bash
+uv run python -c "import pandas, matplotlib; print('ready')"
 ```
 
 If you added the wrong one (example: `numpi`, a typo):
@@ -234,9 +213,10 @@ uv --help
 ## Recap
 
 You can now:
+
 1. Install `uv`.
 2. Create a project.
 3. Run a script.
 4. Add/remove/sync packages.
 
-Now, you're set to continue the course.
+Next come Zed and Mistral Vibe: [AI inside Zed](ai-tools.qmd#ai-inside-zed-mistral-vibe-session-vii-in-class).

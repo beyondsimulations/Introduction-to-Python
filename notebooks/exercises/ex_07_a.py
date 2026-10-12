@@ -4,7 +4,7 @@ import marimo
 app = marimo.App(width="medium", app_title="ex_07_a")
 
 
-@app.cell
+@app.cell(hide_code=True)
 def _():
     import marimo as mo
     return (mo,)
@@ -134,7 +134,7 @@ def _(mo):
     mo.accordion(
         {
             "Hint 1 (a nudge)": "Subtract the courier cost from the whole array in one go, exactly like the worked example, with no loop or indexing.",
-            "Hint 2 (the structure)": "margin_exa = prices_exa - ___",
+            "Hint 2 (the structure)": "`margin_exa = prices_exa - ___`",
         }
     )
     return
@@ -196,7 +196,7 @@ def _(mo):
     mo.accordion(
         {
             "Hint 1 (a nudge)": "Two arrays of the same length combine element by element: the first price meets the first count, and so on. One operator between the two names does it.",
-            "Hint 2 (the structure)": "revenue_exa = prices_exa ___ counts_exa",
+            "Hint 2 (the structure)": "`revenue_exa = prices_exa ___ counts_exa`",
         }
     )
     return

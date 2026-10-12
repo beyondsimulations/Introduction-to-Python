@@ -4,7 +4,7 @@ import marimo
 app = marimo.App(width="medium", app_title="ex_07_d")
 
 
-@app.cell
+@app.cell(hide_code=True)
 def _():
     import marimo as mo
     return (mo,)
@@ -134,7 +134,7 @@ def _(mo):
     mo.accordion(
         {
             "Hint 1 (a nudge)": "One number per day means the days stay and the zones (columns) disappear. Which axis collapses ACROSS the columns?",
-            "Hint 2 (the structure)": "day_totals_exd = runs_exd.sum(axis=___)",
+            "Hint 2 (the structure)": "`day_totals_exd = runs_exd.sum(axis=___)`",
         }
     )
     return
@@ -192,7 +192,7 @@ def _(mo):
     mo.accordion(
         {
             "Hint 1 (a nudge)": "Per zone means the zones stay and the days (rows) disappear, so it is the axis you did not use before. And an average is a mean, not a sum.",
-            "Hint 2 (the structure)": "zone_means_exd = runs_exd.___(axis=___)",
+            "Hint 2 (the structure)": "`zone_means_exd = runs_exd.___(axis=___)`",
         }
     )
     return

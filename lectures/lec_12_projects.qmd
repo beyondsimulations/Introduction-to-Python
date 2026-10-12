@@ -9,28 +9,28 @@ format:
     output-file: lec_12_presentation.html
 ---
 
-# [Episode 12: Ship It]{.flow} {.title}
+# [EP 12: Ship It]{.flow} {.title}
 
-## Launch week
+## One week to launch
 
-Demo season opens **today**: the first pairs present here, the rest in Session XIII. The order comes out of a hat. The hat is Python.
+Demo Day is **next week**: every group presents in Session XIII. The order comes out of a hat. The hat is Python.
 
 . . .
 
-Before anyone presents: ten minutes on making your agent stop repeating the same mistakes.
+Before you build: ten minutes on making your agent stop repeating the same mistakes.
 
 # [Teach Your Agent]{.flow} {.title}
 
 ## The friction you know
 
-- Two weeks in, you have corrected your agent on the same things again and again: naming style, the library you prefer, "keep functions short", "we filter with `.loc` here"
+- Two weeks in, you have corrected your agent on the same things again and again: naming style, the library you prefer, "keep functions short", "round money to two decimals"
 - Every session starts from zero: the agent remembers [nothing]{.highlight} between sessions (Session X, the loop)
 - Explaining the same thing five times is work you should not be doing
 
 ## Package the rules once
 
 - Put your project rules in **one markdown file** in the repo: `AGENTS.md`
-- What goes in: what the project is, the stack, naming and style conventions, "any AI use lands in the README disclosure"
+- What goes in: what the project is, the tools it uses, naming and style conventions, "any AI use lands in the README disclosure"
 - Mistral Vibe reads it at every session start, automatically: write the rules once, stop repeating them
 
 ## Skills: instructions on demand
@@ -38,8 +38,8 @@ Before anyone presents: ten minutes on making your agent stop repeating the same
 - A **skill** is the next step up: a folder with a `SKILL.md`, holding a name, a description, and instructions
 - Rules apply [always]{.highlight}. A skill loads only when the task matches its description, so context stays lean until the moment it is needed
 - Example: a `verify` skill for your project: read the diff, run it, test it on a case where you know the answer, report what you checked
-- In your stack: `.vibe/skills/verify/SKILL.md` in the repo. Vibe loads it in the terminal and inside Zed's agent panel, same engine either way
-- Vibe follows an open spec, so skills you write here stay portable to other agents that adopt it
+- In your stack: `.vibe/skills/verify/SKILL.md` in the repo. Vibe loads it in the terminal and inside Zed's agent panel, same engine
+- Vibe follows an open format, so skills you write here also work in other agents that adopt it
 
 ## Anatomy, briefly
 
@@ -63,7 +63,7 @@ Plain markdown you own, at `.vibe/skills/verify/SKILL.md`, versioned with the pr
 - Any workflow you have explained to the agent [twice]{.highlight} deserves a skill
 - Keep it short: a page of instructions, not an essay
 - Prune it when the workflow changes: a stale skill misleads
-- Downloading one? Vet it by [reading it]{.highlight}, not by its star count
+- Downloading one? Vet it by [reading it]{.highlight}, not by how popular it is
 
 ## What not to hand over
 
@@ -74,25 +74,30 @@ Plain markdown you own, at `.vibe/skills/verify/SKILL.md`, versioned with the pr
 
 ## Before you call it finished
 
-- The repo runs from a fresh clone: `uv sync`, then the notebook or script, no hidden steps
+- The repo runs from a fresh clone (cloned once more into an empty folder): `uv sync`, then your script
 - The README says what it does, how to run it, and carries the **AI disclosure section**
 - The commit history tells the story: small steps, messages that mean something
-- `git status` is clean: nothing uncommitted, nothing important ignored
+- `git status` is clean: all committed, nothing important ignored
+- I am invited, and the link is on Moodle before your demo
 
 . . .
 
 :::{.callout-tip}
-Run the fresh-clone test **today**, not on the morning of your demo. It always finds something.
+Run the fresh-clone test **today**, not on demo morning. It always finds something.
 :::
 
-# [First Demos]{.flow} {.title}
+# [Demo Day Is Next]{.flow} {.title}
 
-## Today's batch
+## Next week's format
 
-- Format: **10 minutes** presenting, **5 minutes** of questions, per pair
+- **7 minutes** presenting, **3 minutes** of questions, per group
 - Order: drawn at random with the `random` module from Session VI
 - Show the thing running, the commit history, and one thing that broke
-- Everyone else: watch for the recipe. You present in Session XIII
+- Everyone in the group has to be there
+
+. . .
+
+The rest of today is the last supervised work session: I am in the room for blockers and "is this scope still realistic?"
 
 # [Wrap-up]{.flow} {.title}
 

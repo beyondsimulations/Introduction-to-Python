@@ -1,9 +1,8 @@
 project:
   type: website
   resources:
-    - labs/
+    - /labs/
   post-render:
-    - helpers/convert_qmd_to_md.py
     - helpers/export_marimo.py
   render:
     - index.qmd
@@ -108,6 +107,8 @@ website:
         href: general/uv.qmd
       - text: "Git Basics"
         href: general/git-basics.qmd
+      - text: "Project Ideas"
+        href: general/project-ideas.qmd
       - text: "AI Tools"
         href: general/ai-tools.qmd
       - text: "FAQs"
@@ -115,20 +116,26 @@ website:
       - text: "Literature"
         href: general/literature.qmd
   page-footer:
-    center: "Programming with Python, Tobias Vlćek</br>CC BY-NC-SA 4.0"
+    center: "Programming with Python, Dr. Tobias Vlćek</br>CC BY-NC-SA 4.0"
     left:
       - icon: github
         href: https://github.com/beyondsimulations/Introduction-to-Python
+        aria-label: GitHub repository
       - icon: linkedin
         href: https://linkedin.com/in/tobiasvlcek
+        aria-label: LinkedIn
       - icon: envelope
         href: mailto:vlcek@beyondsimulations.com
+        aria-label: Email
       - icon: skip-backward
         href: https://tobiasvlcek.com/lectures/
+        aria-label: All lectures
       - icon: shield-check
         href: general/privacy.qmd
-      - icon: file-text
+        aria-label: Privacy policy
+      - icon: info-circle
         href: general/imprint.qmd
+        aria-label: Imprint
 format:
   html:
     theme:
@@ -161,9 +168,13 @@ format:
           });
         </script>
 
-  hugo-md: default
 
   typst:
+    template-partials:
+      - helpers/typst-show.typ
+    logo:
+      path: images/course-logo.svg
+      alt: "Programming with Python"
     papersize: a4
 
 format-links:
@@ -176,3 +187,7 @@ execute:
   freeze: auto
 
 brand: _brand.yml
+
+filters:
+  - helpers/typst-classes.lua
+  - helpers/page-pauses.lua

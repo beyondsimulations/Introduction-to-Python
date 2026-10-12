@@ -4,7 +4,7 @@ import marimo
 app = marimo.App(width="medium", app_title="ex_09_a")
 
 
-@app.cell
+@app.cell(hide_code=True)
 def _():
     import marimo as mo
     return (mo,)
@@ -165,7 +165,7 @@ def _(mo):
     mo.accordion(
         {
             "Hint 1 (a nudge)": "`plt.plot(range(1, 6), orders_exa)` draws the line, `plt.xlabel(...)` and `plt.ylabel(...)` name the axes. For the title, `f\"Orders per day (avg {avg_exa})\"` works once `avg_exa` is a number: total of the list divided by how many days it holds.",
-            "Hint 2 (the structure)": "avg_exa = sum(___) / len(___)",
+            "Hint 2 (the structure)": "`avg_exa = sum(___) / len(___)`",
         }
     )
     return
@@ -248,7 +248,7 @@ def _(mo):
     mo.accordion(
         {
             "Hint 1 (a nudge)": "`zip(orders_exa, last_week_exa)` hands you one pair per day. Compare the two numbers in each pair and count the pairs where this week wins. For the chart, `plt.plot(..., label=\"This week\")` and `plt.plot(..., label=\"Last week\")`, then `plt.legend()`.",
-            "Hint 2 (the structure)": "days_ahead_exa = sum(1 for _this, _last in zip(orders_exa, last_week_exa) if ___)",
+            "Hint 2 (the structure)": "`days_ahead_exa = sum(1 for _this, _last in zip(orders_exa, last_week_exa) if ___)`",
         }
     )
     return

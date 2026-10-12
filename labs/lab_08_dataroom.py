@@ -11,6 +11,8 @@
 #   3. Type:  uv run python lab_08_dataroom.py
 #
 # HOW THE LAB WORKS
+#   - The lab is not graded. The checks are there so you know where you
+#     stand.
 #   - Work from top to bottom. Every task ends in a few checks (the assert
 #     lines). The script stops at the first check that fails and says what
 #     is wrong, so your first run ends with "Task 1: not attempted yet."
@@ -23,7 +25,8 @@
 #   - You may use Mistral Vibe. Ask it for one task at a time, read what it
 #     wrote, and test it on a case where you know the answer.
 #   - When every check passes, the script prints a block that starts with
-#     SHOW THIS IN CLASS. Show it to your lecturer before you leave.
+#     SHOW THIS IN CLASS. Show it to your lecturer, who tells you whether
+#     your numbers are right. You may leave either way.
 
 # %% Load the data (given, do not change)
 import numbers
@@ -37,6 +40,7 @@ assert Path("orders_messy.csv").exists(), (
 )
 orders = pd.read_csv("orders_messy.csv")
 pd.set_option("display.width", 120)  # print all columns side by side
+pd.set_option("display.max_columns", None)  # and never hide one behind "..."
 
 
 def is_number(value):
@@ -52,6 +56,9 @@ print(orders.head())
 orders.info()
 print(orders.describe().round(2))
 
+# In the middle output, "Non-Null Count" is the number of rows that have a
+# value in that column.
+#
 # Two things you can read from that output:
 #   raw_rows      how many rows the file has
 #   unrated_rows  how many of those rows have no rating
@@ -293,7 +300,7 @@ assert zone_report["critical_share"].between(0, 100).all(), (
     "Task 7: every critical_share should be between 0 and 100."
 )
 assert isinstance(recommendation, str) and len(recommendation.split()) >= 8, (
-    "Task 7: recommendation should be a full sentence, as a string."
+    "Task 7: recommendation should be a full sentence of at least 8 words, as a string."
 )
 assert any(zone in recommendation for zone in revenue_by_zone), (
     "Task 7: recommendation should name the zone that gets the rider."

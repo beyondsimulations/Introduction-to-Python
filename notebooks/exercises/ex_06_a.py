@@ -4,7 +4,7 @@ import marimo
 app = marimo.App(width="medium", app_title="ex_06_a")
 
 
-@app.cell
+@app.cell(hide_code=True)
 def _():
     import marimo as mo
     return (mo,)
@@ -128,7 +128,7 @@ def _(mo):
     mo.accordion(
         {
             "Hint 1 (a nudge)": "The tool you need was imported by name in the cell above the worked example, so it works without any prefix.",
-            "Hint 2 (the structure)": "typical_exa = ______(times_exa)",
+            "Hint 2 (the structure)": "`typical_exa = ______(times_exa)`",
         }
     )
     return
@@ -178,7 +178,7 @@ def _(mo):
     mo.accordion(
         {
             "Hint 1 (a nudge)": "Both tools are already on the desk. Call each one on `times_exa`, then subtract.",
-            "Hint 2 (the structure)": "drag_exa = ____(times_exa) - ______(times_exa)",
+            "Hint 2 (the structure)": "`drag_exa = ____(times_exa) - ______(times_exa)`",
         }
     )
     return

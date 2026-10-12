@@ -4,7 +4,7 @@ import marimo
 app = marimo.App(width="medium", app_title="ex_08_c")
 
 
-@app.cell
+@app.cell(hide_code=True)
 def _():
     import marimo as mo
     return (mo,)
@@ -27,7 +27,7 @@ def _():
 def _(mo):
     mo.md(
         r"""
-    # Quick exercise: filter + count (pandas) (5-10 min)
+    # Quick exercise: verifying AI code (5-10 min)
     """
     )
     return
@@ -50,9 +50,12 @@ def _(mo):
 def _(mo):
     mo.md(
         r"""
-    Filtering a DataFrame with a boolean mask works exactly like NumPy:
-    `df[df["col"] >= value]` keeps only the matching rows. Same mask
-    idea as NumPy, pandas speaks it too.
+    AI wrote this for Tobi. Two things are wrong: one method doesn't
+    exist, one comparison quietly returns nothing. Fix both, and you've
+    done today's most important professional skill: verifying output.
+
+    Filtering a DataFrame works just like the NumPy masks from last
+    session: `df[df["col"] == value]` keeps the matching rows.
 
     **Predict** first: what does the cell below print, then run it.
     """
@@ -69,9 +72,9 @@ def _():
 @app.cell
 def _(pd):
     # Worked example (read + run this)
-    _demo = pd.DataFrame({"size": [1, 4, 2], "price": [3.0, 9.0, 5.0]})
-    print(_demo[_demo["size"] >= 2])
-    print(_demo[_demo["size"] >= 2]["price"].sum())
+    _demo = pd.DataFrame({"team": ["Ost", "Ost", "West"], "score": [10, 6, 20]})
+    print(_demo[_demo["team"] == "Ost"])
+    print(_demo[_demo["team"] == "Ost"]["score"].mean())
     return
 
 
@@ -79,12 +82,14 @@ def _(pd):
 def _(mo):
     mo.md(
         r"""
-    `orders_exc` below is tonight's order list. A "bulk" order is **2
-    items or more**. The investor wants two numbers: how many orders
-    were bulk, and how much revenue those bulk orders brought in.
+    `tobi_df` below stands in for the real order data. Tobi's AI draft is shown
+    as a **comment** underneath it. Read it, spot the two bugs, then
+    write correct code of your own to compute `mean_exc`: the average
+    `total_eur` for the "Nord" zone.
 
-    Compute `bulk_count_exc` (how many orders were bulk) and
-    `bulk_revenue_exc` (the total `total_eur` of just the bulk ones).
+    (If you paste Tobi's broken lines and run them for real, the cell
+    turns red. That's expected. A red error pauses every cell that depends on it
+    until you fix it; that's the workflow, not a crash.)
     """
     )
     return
@@ -93,71 +98,58 @@ def _(mo):
 @app.cell
 def _(pd):
     # Given: do not change this
-    orders_exc = pd.DataFrame(
+    tobi_df = pd.DataFrame(
         {
-            "zone": ["Nord", "Sued", "Hafen", "Altstadt", "Nord", "Sued"],
-            "items": [1, 2, 1, 3, 1, 2],
-            "total_eur": [11.20, 18.40, 6.80, 24.00, 9.50, 14.60],
+            "zone": ["Nord", "Nord", "Sued", "Nord", "Hafen"],
+            "total_eur": [12.40, 8.90, 15.10, 22.20, 9.60],
         }
     )
-    return (orders_exc,)
+    return (tobi_df,)
 
 
 @app.cell
-def _(orders_exc):
-    # YOUR CODE BELOW: how many orders have 2 items or more, as an int
-    bulk_count_exc = None
-    return (bulk_count_exc,)
-
-
-@app.cell
-def _(orders_exc):
-    # YOUR CODE BELOW: the total total_eur of just those bulk orders
-    bulk_revenue_exc = None
-    return (bulk_revenue_exc,)
+def _(tobi_df):
+    # Tobi's AI draft (broken). Fix it in your own code below:
+    #   nord = tobi_df[tobi_df["zone"] == "nord"]        # quietly empty… why?
+    #   mean_exc = nord["total_eur"].summarize()           # AttributeError… why?
+    mean_exc = None  # YOUR CODE BELOW: the mean total_eur of the Nord rows, as a float
+    return (mean_exc,)
 
 
 @app.cell(hide_code=True)
-def _(bulk_count_exc, bulk_revenue_exc, mo, pd, show_result):
+def _(mean_exc, mo, pd, show_result):
     # Reactive check. Re-runs when you run the cell above.
-    _expected_count = 3
-    _expected_revenue = 57.0
+    _expected = 14.5
+    _all_zones_mean = 13.64  # Tobi's "averaged everything" trap
     _result = None
-    if bulk_count_exc is None or bulk_revenue_exc is None:
+    if mean_exc is None:
         _ok = False
-        _msg = "Not attempted: Assign it to `bulk_count_exc` and `bulk_revenue_exc` (a `print` alone doesn't count) and run the cell."
-    elif isinstance(bulk_count_exc, (pd.Series, pd.DataFrame)) or isinstance(
-        bulk_revenue_exc, (pd.Series, pd.DataFrame)
-    ):
+        _msg = "Not attempted: Assign it to `mean_exc` (a `print` alone doesn't count) and run the cell."
+    elif isinstance(mean_exc, (pd.Series, pd.DataFrame)):
         _ok = False
-        _result = f"bulk_count_exc={bulk_count_exc!r}, bulk_revenue_exc={bulk_revenue_exc!r}"
-        _msg = "Wrong: One of these is still a whole column/table. `.sum()` needs to run on the mask (for the count) or on the filtered price column (for the revenue)."
+        _result = f"mean_exc={mean_exc!r}"
+        _msg = "Wrong: `mean_exc` is still a whole column/table: `.mean()` collapses it to one number."
     else:
         try:
-            _count = int(bulk_count_exc)
-            _revenue = round(float(bulk_revenue_exc), 2)
+            _v = round(float(mean_exc), 2)
         except (TypeError, ValueError):
             _ok = False
-            _count = None
-            _revenue = None
-            _msg = "Wrong: These should be a whole number and a euro amount. Check what your expressions actually return."
+            _v = None
+            _msg = "Wrong: That's not a number yet. Check what `.mean()` actually returns."
         else:
-            _result = f"bulk_count_exc={bulk_count_exc}, bulk_revenue_exc={bulk_revenue_exc}"
-            if _count == _expected_count and _revenue == _expected_revenue:
+            _result = f"mean_exc={mean_exc}"
+            if pd.isna(_v):
+                _ok = False
+                _msg = 'Wrong: Your filter came back empty. pandas comparisons are case-sensitive; check the zone spelling ("Nord" vs "nord").'
+            elif _v == _expected:
                 _ok = True
-                _msg = "Correct: Three bulk orders worth 57.00 EUR."
-            elif _count == 1 and _revenue == 24.0:
+                _msg = "Correct: 14.5, and you just did today's most important professional skill: verifying AI output."
+            elif _v == _all_zones_mean:
                 _ok = False
-                _msg = "Wrong: Bulk starts AT two items. Which comparison includes the boundary, `>` or `>=`?"
-            elif _revenue == 84.5:
-                _ok = False
-                _msg = "Wrong: That's the revenue of every order. Filter to bulk orders before summing."
-            elif _count == _expected_count:
-                _ok = False
-                _msg = "Wrong: The count is right, but the revenue isn't. Filter `orders_exc` with the same mask before summing `total_eur`."
+                _msg = "Wrong: You averaged every zone instead of only Nord. Filter first, then take the mean."
             else:
                 _ok = False
-                _msg = 'Not quite. Start with the mask: `orders_exc["items"] >= 2`.'
+                _msg = 'Not quite. Filter to `zone == "Nord"` (case matters!), then call `.mean()`.'
     mo.callout(mo.md(_msg + show_result(_result)), kind="success" if _ok else "warn")
     return
 
@@ -166,8 +158,8 @@ def _(bulk_count_exc, bulk_revenue_exc, mo, pd, show_result):
 def _(mo):
     mo.accordion(
         {
-            "Hint 1 (a nudge)": 'Same mask idea as NumPy: build it first (`orders_exc["items"] >= 2`); `.sum()` on the mask counts the `True`s, and indexing with that same mask before `.sum()` on `total_eur` gives the revenue.',
-            "Hint 2 (the structure)": '_bulk = orders_exc[orders_exc["items"] >= ___]\nbulk_count_exc = int((orders_exc["items"] >= ___).sum())\nbulk_revenue_exc = float(_bulk["total_eur"].___())',
+            "Hint 1 (a nudge)": "String comparison is case-sensitive; and does pandas really have `summarize`? Check the docs, or ask an AI and VERIFY.",
+            "Hint 2 (the structure)": "```python\n_nord = tobi_df[tobi_df[\"zone\"] == \"___\"]\nmean_exc = float(_nord[\"total_eur\"].___())\n```",
         }
     )
     return
@@ -177,60 +169,52 @@ def _(mo):
 def _(mo):
     mo.md(
         r"""
-    **Done? Then:** the investor wants to know whether bulk orders are also
-    the *lucrative* ones. Add a column `per_item` (`total_eur` divided by
-    `items`) on a **copy** of `orders_exc`, then compute `best_per_item_exc`:
-    the highest `per_item` among the **bulk** orders, as one number.
+    **Done? Then:** the investor squints at the average and asks: *"and how
+    many Nord orders are actually ABOVE that?"* Tobi's AI answered with
+    `tobi_df[tobi_df["total_eur"] > mean_exc]` and counted the rows. That
+    number is too high. Find out why, then compute `big_nord_exc`: how many
+    **Nord** orders have a `total_eur` above `mean_exc`.
     """
     )
     return
 
 
 @app.cell
-def _(orders_exc):
-    best_per_item_exc = None  # YOUR CODE BELOW: the highest per_item among the bulk orders, as one number
-    return (best_per_item_exc,)
+def _(mean_exc, tobi_df):
+    big_nord_exc = None  # YOUR CODE BELOW: how many Nord orders are above mean_exc, as a whole number
+    return (big_nord_exc,)
 
 
 @app.cell(hide_code=True)
-def _(best_per_item_exc, mo, pd, show_result):
+def _(big_nord_exc, mo, pd, show_result):
     # Reactive check. Re-runs when you run the cell above.
-    _expected = 9.2
+    _expected = 1
     _result = None
-    if best_per_item_exc is None:
+    if big_nord_exc is None:
         _ok = False
-        _msg = "Not attempted: Assign the number to `best_per_item_exc` (a `print` alone doesn't count) and run the cell."
-    elif isinstance(best_per_item_exc, (pd.Series, pd.DataFrame)):
+        _msg = "Not attempted: Assign the count to `big_nord_exc` (a `print` alone doesn't count) and run the cell. It needs `mean_exc` from the core task first."
+    elif isinstance(big_nord_exc, (pd.Series, pd.DataFrame)):
         _ok = False
-        _result = f"best_per_item_exc={best_per_item_exc!r}"
-        _msg = "Wrong: `best_per_item_exc` is still a column/table: `.max()` collapses the filtered `per_item` column to one number."
+        _result = f"big_nord_exc={big_nord_exc!r}"
+        _msg = "Wrong: `big_nord_exc` is still a column/table. A count is one whole number: `len(...)` of the filtered rows, or `.sum()` on the mask."
     else:
         try:
-            _v = round(float(best_per_item_exc), 2)
+            _v = int(big_nord_exc)
         except (TypeError, ValueError):
             _ok = False
             _v = None
-            _msg = "Wrong: That's not a number. Check what your last expression returns."
+            _msg = "Wrong: That's not a whole number. Count the rows that survive both filters."
         else:
-            _result = f"best_per_item_exc={best_per_item_exc}"
-            if pd.isna(_v):
-                _ok = False
-                _msg = "Wrong: Your filter came back empty, so `.max()` is NaN. Check the column name and the `>= 2` rule."
-            elif _v == _expected:
+            _result = f"big_nord_exc={big_nord_exc}"
+            if _v == _expected:
                 _ok = True
-                _msg = "Correct: 9.20 EUR per item, the Sued order with two items. Bulk and lucrative are not the same thing."
-            elif _v == 11.2:
+                _msg = "Correct: One Nord order (22.20) beats the Nord average. Tobi's AI never filtered by zone, so the Sued order sneaked in."
+            elif _v == 2:
                 _ok = False
-                _msg = "Wrong: That's a single-item order. Filter to bulk (`items >= 2`) before taking the max."
-            elif _v == 24.0:
-                _ok = False
-                _msg = "Wrong: That's the biggest `total_eur`, not the biggest per item. Divide by `items` first."
-            elif _v == 8.0:
-                _ok = False
-                _msg = "Wrong: Bulk starts AT two items: `>=`, not `>`."
+                _msg = "Wrong: That's Tobi's number. One of those two orders is from Sued: filter to Nord BEFORE comparing to the average."
             else:
                 _ok = False
-                _msg = "Wrong: Copy, add `per_item`, filter to `items >= 2`, then `.max()` on the new column."
+                _msg = 'Wrong: Filter to `zone == "Nord"` first, then keep the rows with `total_eur` above `mean_exc`, then count.'
     mo.callout(mo.md(_msg + show_result(_result)), kind="success" if _ok else "warn")
     return
 
@@ -239,8 +223,8 @@ def _(best_per_item_exc, mo, pd, show_result):
 def _(mo):
     mo.accordion(
         {
-            "Hint 1 (a nudge)": "Three moves from the slides: `.copy()`, a new column from two others, then the same bulk mask as the core task. `.max()` on the filtered new column gives the one number.",
-            "Hint 2 (the structure)": '_work = orders_exc.copy()\n_work["per_item"] = _work["total_eur"] / _work["___"]\n_bulk = _work[_work["items"] >= ___]\nbest_per_item_exc = float(_bulk["per_item"].___())',
+            "Hint 1 (a nudge)": "Two filters in a row: first the zone, then the price. Tobi's AI skipped the first one. A filtered frame can be filtered again.",
+            "Hint 2 (the structure)": "```python\n_nord = tobi_df[tobi_df[\"zone\"] == \"___\"]\n_big = _nord[_nord[\"total_eur\"] > ___]\nbig_nord_exc = len(___)\n```",
         }
     )
     return

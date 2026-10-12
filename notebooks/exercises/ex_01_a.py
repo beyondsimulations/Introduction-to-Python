@@ -4,7 +4,7 @@ import marimo
 app = marimo.App(width="medium", app_title="ex_01_a")
 
 
-@app.cell
+@app.cell(hide_code=True)
 def _():
     import marimo as mo
     return (mo,)
@@ -51,7 +51,8 @@ def _(mo):
     mo.md(
         r"""
     Tobi filled in the company register in a hurry and typed the name twice.
-    First **predict** what `print(company)` shows below, then run the cell.
+    The cell below prints one of the two. Before you look at its output:
+    which one do you expect, and why?
     """
     )
     return
@@ -71,7 +72,9 @@ def _(mo):
     mo.md(
         r"""
     The registrar wants the name Tobi typed **second**. Store it in
-    `company_exa` by using the right variable, not by retyping the text.
+    `company_exa` by using the right variable, not by retyping the text. In
+    the cell below, replace `None` (Python's word for "nothing yet") with
+    your answer.
     """
     )
     return
@@ -79,7 +82,7 @@ def _(mo):
 
 @app.cell
 def _():
-    # YOUR CODE BELOW: the registrar's second name, taken from the right variable (not retyped)
+    # YOUR CODE BELOW: replace None with the registrar's second name, taken from the right variable (not retyped)
     company_exa = None
     return (company_exa,)
 

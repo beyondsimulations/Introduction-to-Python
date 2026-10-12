@@ -4,7 +4,7 @@ import marimo
 app = marimo.App(width="medium", app_title="ex_07_c")
 
 
-@app.cell
+@app.cell(hide_code=True)
 def _():
     import marimo as mo
     return (mo,)
@@ -154,7 +154,7 @@ def _(mo):
     mo.accordion(
         {
             "Hint 1 (a nudge)": "Comparison first: `times_exc > 38` makes a True/False array; `.sum()` counts the `True`s, and indexing with that same mask keeps only the matching values.",
-            "Hint 2 (the structure)": "late_count_exc = int((times_exc > ___).sum())\nlate_mean_exc = float(times_exc[times_exc > ___].___())",
+            "Hint 2 (the structure)": "```python\nlate_count_exc = int((times_exc > ___).sum())\nlate_mean_exc = float(times_exc[times_exc > ___].___())\n```",
         }
     )
     return
@@ -164,7 +164,7 @@ def _(mo):
 def _(mo):
     mo.md(
         r"""
-    **Done? Then:** the investor doesn't want a count, he wants a **share**: what fraction of tonight's run was late? Compute `late_share_exc` as one number between 0 and 1. No division by hand: a mask has a `.mean()`.
+    **Done? Then:** the investor doesn't want a count, she wants a **share**: what fraction of tonight's run was late? Compute `late_share_exc` as one number between 0 and 1. No division by hand: a mask has a `.mean()`.
     """
     )
     return
@@ -215,7 +215,7 @@ def _(mo):
     mo.accordion(
         {
             "Hint 1 (a nudge)": "Each True counts as 1 and each False as 0, so the mean of a mask is the share of Trues. Call it on the mask, not on the filtered times.",
-            "Hint 2 (the structure)": "late_share_exc = float((times_exc > ___).___())",
+            "Hint 2 (the structure)": "`late_share_exc = float((times_exc > ___).___())`",
         }
     )
     return

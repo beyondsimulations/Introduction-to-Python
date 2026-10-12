@@ -34,8 +34,10 @@ def _(mo):
         mo.md(
             "**How this notebook works:** run a cell with **Cmd/Ctrl+Enter**. "
             "Only edit the cells that contain `# YOUR CODE BELOW`; the check under "
-            "each exercise updates by itself. A red error pauses everything below "
-            "it, so fix that cell first."
+            "each exercise updates by itself. A red error pauses every cell that "
+            "depends on it, so fix that cell first. A name can be set in only one "
+            "cell: if two cells both set `total`, both turn red, so use a new name "
+            "in the second one."
         ),
         kind="info",
     )
@@ -64,7 +66,7 @@ def _(mo):
     return
 
 
-@app.cell
+@app.cell(hide_code=True)
 def _():
     import marimo as mo
     return (mo,)
@@ -148,8 +150,8 @@ def _(mo):
         n = 0                # ...and we land here instead of crashing
     ```
 
-    **One marimo habit, important today.** In this lab you will cause errors
-    **on purpose**. When a cell goes **red**, every cell below it pauses,
+    **One marimo habit, important today.** In this lab your code will run into
+    errors. When a cell goes **red**, every cell that depends on it pauses,
     including the progress box at the end. Nothing is lost. Read the error, fix
     the red cell, and everything below springs back to life. **That loop (crash,
     read, fix, recover) is what debugging *is*.**
@@ -260,14 +262,18 @@ def _(mo, safe_price_ex12, show_result):
     try:
         _good = safe_price_ex12("4.20")
         _bad = safe_price_ex12("drei")
-    except Exception:
+    except Exception as _err:
         ex12_ok = False
-        _msg = "Wrong (Exercise 1.2): it's crashing. A bad value should be *caught*, not passed on. Read the error above and wrap the conversion in `try` / `except ValueError`."
+        _msg = f"Wrong (Exercise 1.2): your code stops with `{type(_err).__name__}: {_err}` when the check calls it." + (
+            " A bad value should be *caught*, not passed on: wrap the conversion in `try` / `except ValueError`."
+            if isinstance(_err, ValueError)
+            else " That is not the bad-price error this exercise is about, so fix it first."
+        )
         _preview = ""
     else:
         if _good is None and _bad is None:
             ex12_ok = False
-            _msg = "Not attempted (Exercise 1.2): (the function still returns None). Use `return`, not `print`, then run the cell."
+            _msg = "Not attempted (Exercise 1.2): (the function still returns None). Replace the given `return None` with your code, and hand the result back with `return`, not `print`."
             _preview = ""
         elif (
             isinstance(_good, float) and round(_good, 2) == 4.20
@@ -297,7 +303,7 @@ def _(mo):
     mo.accordion(
         {
             "Hint 1 (a nudge)": "Put the risky line, `float(text)`, inside a `try`. If it works, `return` the number. Add `except ValueError:` underneath and `return 0.0` there for the case where the text isn't a number.",
-            "Hint 2 (the structure)": "def safe_price_ex12(text):\n try:\n return float(___)\n except ValueError:\n return ___ (fill the conversion and the safe fallback)",
+            "Hint 2 (the structure)": "```python\ndef safe_price_ex12(text):\n    try:\n        return float(___)\n    except ValueError:\n        return ___\n```\n\nFill the conversion and the safe fallback.",
         }
     )
     return
@@ -349,14 +355,18 @@ def _(delivery_fee_ex13, mo, show_result):
     try:
         _known = delivery_fee_ex13(_zones, "Sued")
         _unknown = delivery_fee_ex13(_zones, "Ost")
-    except Exception:
+    except Exception as _err:
         ex13_ok = False
-        _msg = "Wrong (Exercise 1.3): it's crashing. The missing zone raises a `KeyError`, and it should be *caught*, not passed on. Wrap the lookup in `try` / `except KeyError`."
+        _msg = f"Wrong (Exercise 1.3): your code stops with `{type(_err).__name__}: {_err}` when the check calls it." + (
+            " The missing zone raises a `KeyError`, and it should be *caught*, not passed on. Wrap the lookup in `try` / `except KeyError`."
+            if isinstance(_err, KeyError)
+            else " That is not the missing-zone error this exercise is about, so fix it first."
+        )
         _preview = ""
     else:
         if _known is None and _unknown is None:
             ex13_ok = False
-            _msg = "Not attempted (Exercise 1.3): (the function still returns None). Use `return`, not `print`, then run the cell."
+            _msg = "Not attempted (Exercise 1.3): (the function still returns None). Replace the given `return None` with your code, and hand the result back with `return`, not `print`."
             _preview = ""
         elif (
             isinstance(_known, (int, float)) and round(_known, 2) == 3.90
@@ -382,7 +392,7 @@ def _(mo):
     mo.accordion(
         {
             "Hint 1 (a nudge)": "Same shape as `safe_price_ex12`, but the risky line is a dictionary lookup and the error type is `KeyError`. Try `zones[zone]` and `return` it; in the `except KeyError:` branch, `return` the flat fee.",
-            "Hint 2 (the structure)": "def delivery_fee_ex13(zones, zone):\n try:\n return zones[___]\n except ___:\n return ___ (fill the key, the error type, and the out-of-zone fee)",
+            "Hint 2 (the structure)": "```python\ndef delivery_fee_ex13(zones, zone):\n    try:\n        return zones[___]\n    except ___:\n        return ___\n```\n\nFill the key, the error type, and the out-of-zone fee.",
         }
     )
     return
@@ -492,7 +502,7 @@ def _(mo):
     mo.accordion(
         {
             "Hint 1 (a nudge)": "Two bugs, both logic (nothing crashes). First: the salad is part of the order, so it should be *added*, not subtracted. Second: the receipt's f-string is formatting `_old_total` (a stale leftover) when it should format the real total instead.",
-            "Hint 2 (the structure)": "checkout_total_ex21 = 10.90 * 2 ___ 8.30\n_summary = f\"Receipt total: {___:.2f} EUR\" (fix the operator, and point the receipt at the real total)",
+            "Hint 2 (the structure)": "```python\ncheckout_total_ex21 = 10.90 * 2 ___ 8.30\n_summary = f\"Receipt total: {___:.2f} EUR\"\n```\n\nFix the operator, and point the receipt at the real total.",
         }
     )
     return
@@ -543,7 +553,7 @@ def _(mo, validate_order_ex22):
         _raised = "WRONG"
     if _pos is None and _raised is False:
         ex22_ok = False
-        _msg = "Not attempted (Exercise 2.2): (the function still returns None). Use `return`, not `print`, then run the cell."
+        _msg = "Not attempted (Exercise 2.2): (the function still returns None). Replace the given `return None` with your code, and hand the result back with `return`, not `print`."
     elif _pos == "CRASH":
         ex22_ok = False
         _msg = "Wrong (Exercise 2.2): a *valid* price (9.90) is crashing. Only negative prices should raise. A price of 9.90 should return `True`."
@@ -568,7 +578,7 @@ def _(mo):
     mo.accordion(
         {
             "Hint 1 (a nudge)": "Check the forbidden case first with an `if`. If `price < 0`, `raise ValueError(\"...\")` with a short message. If the code gets past that `if`, the price is fine: `return True`.",
-            "Hint 2 (the structure)": "def validate_order_ex22(price):\n if price < 0:\n raise ___(\"price cannot be negative\")\n return ___ (fill the error type and the value for a valid price)",
+            "Hint 2 (the structure)": "```python\ndef validate_order_ex22(price):\n    if price < 0:\n        raise ___(\"price cannot be negative\")\n    return ___\n```\n\nFill the error type and the value for a valid price.",
         }
     )
     return
@@ -642,7 +652,7 @@ def _(mo):
     mo.accordion(
         {
             "Hint 1 (a nudge)": "You need the position, so loop over the indices. `for i in range(len(audit_prices_ex)):` gives you 0, 1, 2, 3; inside, check whether `audit_prices_ex[i]` is below 0 and remember that `i`.",
-            "Hint 2 (the structure)": "for i in range(len(audit_prices_ex)):\n if audit_prices_ex[i] < ___:\n bad_index_ex23 = ___ (fill the threshold and what to store)",
+            "Hint 2 (the structure)": "```python\nfor i in range(len(audit_prices_ex)):\n    if audit_prices_ex[i] < ___:\n        bad_index_ex23 = ___\n```\n\nFill the threshold and what to store.",
         }
     )
     return
@@ -696,7 +706,7 @@ def _(mo, refund_ex24, show_result):
         _raised = "WRONG"
     if _left is None and _raised is False:
         ex24_ok = False
-        _msg = "Not attempted (Exercise 2.4): (the function still returns None). Use `return`, not `print`, then run the cell."
+        _msg = "Not attempted (Exercise 2.4): (the function still returns None). Replace the given `return None` with your code, and hand the result back with `return`, not `print`."
         _preview = ""
     elif isinstance(_left, str) and _left == "CRASH":
         ex24_ok = False
@@ -727,7 +737,7 @@ def _(mo):
     mo.accordion(
         {
             "Hint 1 (a nudge)": "Same rhythm as `validate_order_ex22`: check the forbidden case first with an `if` and `raise ValueError(\"...\")` there. If the code gets past the `if`, the refund is allowed, so subtract it from the price, round to 2 decimals, and `return` that.",
-            "Hint 2 (the structure)": "def refund_ex24(paid, back):\n if back ___ paid:\n raise ___(\"refund exceeds the price\")\n return round(paid ___ back, 2) (fill the comparison, the error type, and the operator)",
+            "Hint 2 (the structure)": "```python\ndef refund_ex24(paid, back):\n    if back ___ paid:\n        raise ___(\"refund exceeds the price\")\n    return round(paid ___ back, 2)\n```\n\nFill the comparison, the error type, and the operator.",
         }
     )
     return
@@ -804,14 +814,18 @@ def _(mo, parse_qty_ex31, show_result):
     try:
         _good = parse_qty_ex31("3")
         _bad = parse_qty_ex31("??")
-    except Exception:
+    except Exception as _err:
         ex31_ok = False
-        _msg = "Wrong (Exercise 3.1): it's crashing. A bad quantity should be *caught* and replaced with 1. Wrap the conversion in `try` / `except ValueError`."
+        _msg = f"Wrong (Exercise 3.1): your code stops with `{type(_err).__name__}: {_err}` when the check calls it." + (
+            " A bad quantity should be *caught* and replaced with 1. Wrap the conversion in `try` / `except ValueError`."
+            if isinstance(_err, ValueError)
+            else " That is not the bad-quantity error this exercise is about, so fix it first."
+        )
         _preview = ""
     else:
         if _good is None and _bad is None:
             ex31_ok = False
-            _msg = "Not attempted (Exercise 3.1): (the function still returns None). Use `return`, not `print`, then run the cell."
+            _msg = "Not attempted (Exercise 3.1): (the function still returns None). Replace the given `return None` with your code, and hand the result back with `return`, not `print`."
             _preview = ""
         elif _good == 3 and _bad == 1:
             ex31_ok = True
@@ -834,7 +848,7 @@ def _(mo):
     mo.accordion(
         {
             "Hint 1 (a nudge)": "Same shape as `safe_price_ex12`, but with `int` and a fallback of `1`. Try `int(text)` and `return` it; on `except ValueError`, `return 1`.",
-            "Hint 2 (the structure)": "def parse_qty_ex31(text):\n try:\n return int(___)\n except ValueError:\n return ___ (fill the conversion and the safe default quantity)",
+            "Hint 2 (the structure)": "```python\ndef parse_qty_ex31(text):\n    try:\n        return int(___)\n    except ValueError:\n        return ___\n```\n\nFill the conversion and the safe default quantity.",
         }
     )
     return
@@ -855,6 +869,9 @@ def _(mo):
 
     Fix it so `takings_ex32` holds the true total of the readable slips. If you
     can't see it, add a `print` inside the loop and watch the total move.
+
+    One thing you need for the fix: a block may not be empty. The statement
+    that does nothing is `pass`.
     """
     )
     return
@@ -911,7 +928,7 @@ def _(mo):
     mo.accordion(
         {
             "Hint 1 (a nudge)": "The `try` / `except` is doing its job: the smudged slip no longer crashes the loop. The bug is what happens *inside* the `except`. Skipping a slip means leaving the running total exactly as it was. Add `print(takings_ex32)` inside the loop and watch where it drops.",
-            "Hint 2 (the structure)": "for _slip in receipts_ex:\n try:\n takings_ex32 = takings_ex32 + float(_slip)\n except ValueError:\n ___ (replace the reset with something that leaves the total alone, e.g. `pass`)",
+            "Hint 2 (the structure)": "```python\nfor _slip in receipts_ex:\n    try:\n        takings_ex32 = takings_ex32 + float(_slip)\n    except ValueError:\n        ___\n```\n\nReplace the reset with something that leaves the total alone, e.g. `pass`.",
         }
     )
     return
@@ -972,14 +989,18 @@ def _(mo, orders_ex40, robust_total_ex40, show_result):
     try:
         _messy = robust_total_ex40(orders_ex40)
         _clean = robust_total_ex40([("A", 1.0), ("B", 2.0)])
-    except Exception:
+    except Exception as _err:
         ex40_ok = False
-        _msg = "Wrong (Putting it together): it's crashing on the messy batch: the `\"kaputt\"` string is getting used as a number. Skip non-numbers *before* you add them (an `isinstance` check, or a `try` / `except`)."
+        _msg = f"Wrong (Putting it together): your code stops with `{type(_err).__name__}: {_err}` when the check calls it." + (
+            " In the messy batch the `\"kaputt\"` string is getting used as a number. Skip non-numbers *before* you compare or add them (an `isinstance` check, or a `try` / `except` that catches this error type)."
+            if isinstance(_err, (TypeError, ValueError))
+            else " Fix that first; the messy batch comes after."
+        )
         _preview = ""
     else:
         if _messy is None:
             ex40_ok = False
-            _msg = "Not attempted (Putting it together): (the function still returns None). Use `return`, not `print`, then run the cell."
+            _msg = "Not attempted (Putting it together): (the function still returns None). Replace the given `return None` with your code, and hand the result back with `return`, not `print`."
             _preview = ""
         elif (
             isinstance(_messy, (int, float)) and round(_messy, 2) == 22.70
@@ -1013,7 +1034,7 @@ def _(mo):
     mo.accordion(
         {
             "Hint 1 (a nudge)": "Start a running total at 0 and loop over the orders. Each one is a `(name, price)` pair, so unpack it with `for name, price in orders:`. Before adding a price, make sure it's a number and not negative; if it fails either test, just skip it (don't add). Return the total rounded to 2 decimals.",
-            "Hint 2 (the structure)": "def robust_total_ex40(orders):\n _total = 0\n for _name, _price in orders:\n if isinstance(_price, (int, float)) and _price ___ 0:\n _total += _price\n return round(_total, ___) (fill the comparison, which keeps non-negatives, and the rounding)",
+            "Hint 2 (the structure)": "```python\ndef robust_total_ex40(orders):\n    _total = 0\n    for _name, _price in orders:\n        if isinstance(_price, (int, float)) and _price ___ 0:\n            _total = _total + _price\n    return round(_total, ___)\n```\n\nFill the comparison, which keeps non-negatives, and the rounding.",
         }
     )
     return
@@ -1115,19 +1136,19 @@ def _(answer_ex60, mo, show_result):
         _preview = show_result(answer_ex60)
     elif answer_ex60 == 18:
         ex60_ok = True
-        _msg = "Correct (Bonus): **line 18**: the *last* frame before the error message, inside `surcharge`, where `rate` is used but never defined. The bottom frame is always where the crash truly happened; the frames above just show how you got there."
+        _msg = "Correct (Bonus): **line 18**: the *last* `File` line before the error message, inside `surcharge`, where `rate` is used but never defined. The bottom `File` line is always where the crash truly happened; the ones above just show how you got there."
         _preview = show_result(answer_ex60)
     elif answer_ex60 == 47:
         ex60_ok = False
-        _msg = "Wrong (Bonus): line 47 is where the *chain started* (the top frame), not where it broke. Read to the **bottom**: the last frame, line 18, is where `rate` is actually used."
+        _msg = "Wrong (Bonus): line 47 is where the *chain started* (the top `File` line), not where it broke. Read to the **bottom**: the last `File` line, line 18, is where `rate` is actually used."
         _preview = show_result(answer_ex60)
     elif answer_ex60 == 31:
         ex60_ok = False
-        _msg = "Wrong (Bonus): line 31 is a middle frame. It *called* the broken function but isn't itself the problem. The error is raised one frame deeper, at line 18."
+        _msg = "Wrong (Bonus): line 31 is a `File` line in the middle. It *called* the broken function but isn't itself the problem. The error is raised one call deeper, at line 18."
         _preview = show_result(answer_ex60)
     else:
         ex60_ok = False
-        _msg = "Wrong (Bonus): look at the **last frame** listed (just above the `NameError`). Its line number is where `rate` is used without being defined."
+        _msg = "Wrong (Bonus): look at the **last `File` line** listed (just above the `NameError`). Its line number is where `rate` is used without being defined."
         _preview = show_result(answer_ex60)
     mo.callout(mo.md(_msg + _preview), kind="success" if ex60_ok else "warn")
     return
@@ -1202,7 +1223,7 @@ def _(mo):
     mo.accordion(
         {
             "Hint 1 (a nudge)": "`all(...)` takes a sequence of True/False tests and returns `True` only if *every* one is True. Build one test per price, `p >= 0`, across the whole list.",
-            "Hint 2 (the structure)": "all_valid_ex61 = all(p >= ___ for p in ___) (fill the threshold and the list to check)",
+            "Hint 2 (the structure)": "`all_valid_ex61 = all(p >= ___ for p in ___)`\n\nFill the threshold and the list to check.",
         }
     )
     return
@@ -1257,8 +1278,9 @@ def _(mo):
        guaranteed copy.
     3. That's a wrap on **Part I**: you can now store data, shape it, loop over
        it, wrap it in functions, and keep it standing when things go wrong. Next
-       session opens with **Checkpoint 3**, which sweeps everything from Episodes
-       1-5, so keep this notebook (and the last four) close.
+       session opens with **Checkpoint 3**: 40 minutes, still no AI, everything
+       from Sessions I-V. Slides, the cheatsheet and your own notebooks may be
+       open. AI comes in after it, in the same session.
     4. And the teaser: the inspector leaves satisfied. Next week someone new
        walks into the shop, uncaps a marker, and writes one question on the
        whiteboard. **Part II begins.**

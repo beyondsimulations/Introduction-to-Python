@@ -4,7 +4,7 @@ import marimo
 app = marimo.App(width="medium", app_title="ex_09_b")
 
 
-@app.cell
+@app.cell(hide_code=True)
 def _():
     import marimo as mo
     return (mo,)
@@ -178,7 +178,7 @@ def _(mo):
     mo.accordion(
         {
             "Hint 1 (a nudge)": "`plt.plot(range(1, 8), revenues_exb)` draws the line for your eyes, but the check only reads `total_exb` and `best_day_exb`. For the total, add up the week. For the day, find the POSITION of the biggest number, then remember days start at 1, Python starts at 0.",
-            "Hint 2 (the structure)": "total_exb = float(sum(___))\nbest_day_exb = revenues_exb.index(max(revenues_exb)) + ___",
+            "Hint 2 (the structure)": "```python\ntotal_exb = float(sum(___))\nbest_day_exb = revenues_exb.index(max(revenues_exb)) + ___\n```",
         }
     )
     return
@@ -249,7 +249,7 @@ def _(mo):
     mo.accordion(
         {
             "Hint 1 (a nudge)": "Saturday and Sunday are the last two entries of `revenues_exb`. A slice from position 5 grabs both. Divide their sum by the week's sum, then ×100.",
-            "Hint 2 (the structure)": "weekend_share_exb = sum(revenues_exb[___:]) / sum(___) * 100",
+            "Hint 2 (the structure)": "`weekend_share_exb = sum(revenues_exb[___:]) / sum(___) * 100`",
         }
     )
     return

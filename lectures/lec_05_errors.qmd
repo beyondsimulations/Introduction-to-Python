@@ -13,7 +13,8 @@ format:
 
 The first 40 minutes are the checkpoint. It starts now.
 
-- **Individual work**: no AI, no neighbors, no chat
+- **Individual work**: no AI, no neighbors, no messaging
+- Slides, the cheatsheet and your own notebooks **may be open**
 - The **link is on Moodle**. Open it and start
 - ~6 short tasks: write code, trace code, fix a bug, answer a multiple choice
 - It sweeps **Sessions III-IV**: functions, scope, classes, lists and dictionaries, comprehensions
@@ -24,15 +25,15 @@ The first 40 minutes are the checkpoint. It starts now.
 
 ## When you're done
 
-Menu → *Download* → *Download Python code* → upload the `.py` to the **"Checkpoint 2"** assignment on Moodle, before the 40 minutes are up. **No retakes**: one sitting.
+**Cmd/Ctrl+S**, then menu → *Download* → *Download Python code* → upload the `.py` to the **"Checkpoint 2"** assignment on Moodle, before the 40 minutes are up. **No retakes**: one sitting.
 
 . . .
 
 :::{.callout-note}
-The green live checks are **provisional**. The final grading runs on my side. Everything in it was rehearsed in the labs.
+The live checks under the tasks are **provisional**. The final grading runs on my side. Everything in it comes from Sessions III-IV.
 :::
 
-# [Episode 5: The 3-AM Checkout]{.flow} {.title}
+# [EP 5: 3-AM Checkout]{.flow} {.title}
 
 ## After the checkpoint
 
@@ -50,7 +51,7 @@ So today the code learns to survive things going wrong. We read a **traceback**,
 
 ## Tobi's 3-AM checkout, live
 
-A customer typed `generous` into the tip box. Tobi's new checkout did this:
+`float(...)` turns text into a number: `float("4.50")` is `4.5`. Then a customer typed `generous` into the tip box:
 
 ```python
 tip_text = "generous"
@@ -87,7 +88,7 @@ Two facts and you know where to go: **line 12**, and it's a **`ValueError`**. Th
 
 ## The big five (1)
 
-A handful of exception types cover almost everything you'll hit. The first three:
+Python calls an error an **exception**, and a handful of exception types cover almost everything you'll hit. The first three:
 
 - **`ValueError`**: right *type*, senseless *value*, as in `int("lots")`
 - **`TypeError`**: the wrong type entirely, like `"Bowl " + 9`
@@ -99,7 +100,7 @@ Each one is Python refusing to guess. `int("lots")` has no sensible number; `"Bo
 
 ## Predict: comma or point?
 
-A regular from Hamburg types the price the German way. What does the last line do?
+A regular from Hamburg types the price the German way. What happens when this runs?
 
 ```python
 price_text = "5,50"
@@ -140,7 +141,7 @@ The other two you'll meet constantly:
 
 You don't have to memorize all of Python's exceptions. Recognize these five on sight, and read the last line for the rest.
 
-# Your turn: 5-10 minutes {.loud-slide}
+# Your turn {.loud-slide}
 
 ## Open the exercise
 
@@ -148,7 +149,7 @@ Scan the QR or type the link:
 
 **[python.tobiasvlcek.com/notebooks/ex_05_a/](https://python.tobiasvlcek.com/notebooks/ex_05_a/)**
 
-![](assets/qr/ex_05_a.png){width=280}
+![](assets/qr/ex_05_a.png){width=280 fig-alt="QR code linking to the online notebook for exercise 5a, the same address as the link above."}
 
 **Any questions?** Let me know!
 
@@ -193,7 +194,7 @@ A **bare** `except:` catches *everything*, including your own typos (a misspelle
 
 ## Predict: which explosion?
 
-Tobi builds a table label. `guests` is the number `3`. What does the **last line** do?
+Tobi builds a table label. `guests` is the number `3`. What happens when this runs?
 
 ```python
 guests = 3
@@ -207,7 +208,7 @@ a\) raises `TypeError`   b) prints `Party of 3`   c) raises `ValueError`
 
 [Predict]{.question}. Pick a letter, then I reveal the answer.
 
-## Answer: text and numbers won't mix
+## Answer: text plus number fails
 
 ```{python}
 #| eval: true
@@ -228,7 +229,7 @@ except TypeError as e:
 
 `as e` keeps the error object in a variable, so you can print its message instead of losing it. Any name works; `e` is the habit.
 
-# Your turn: 5-10 minutes {.loud-slide}
+# Your turn {.loud-slide}
 
 ## Open the exercise
 
@@ -236,11 +237,11 @@ Scan the QR or type the link:
 
 **[python.tobiasvlcek.com/notebooks/ex_05_b/](https://python.tobiasvlcek.com/notebooks/ex_05_b/)**
 
-![](assets/qr/ex_05_b.png){width=280}
+![](assets/qr/ex_05_b.png){width=280 fig-alt="QR code linking to the online notebook for exercise 5b, the same address as the link above."}
 
 **Any questions?** Let me know!
 
-# [Debugging and Defending]{.flow} {.title}
+# [Debug and Defend]{.flow} {.title}
 
 ## The debugging loop
 
@@ -330,7 +331,7 @@ a\) `AssertionError`, and the `print` never runs   b) prints `splitting the bill
 
 [Predict]{.question}. Pick a letter, then I reveal the answer.
 
-## Answer: the tripwire stops everything
+## Answer: the tripwire stops it all
 
 ```{python}
 #| eval: true
@@ -366,9 +367,9 @@ print(seats("full"))           # nonsense → the safe default, 2
 
 . . .
 
-The caller never has to worry about a crash. Garbage in, sane default out. Not every check needs a `try`: `isinstance(x, (int, float))` asks *is this a number?* and returns `True`/`False`, so an `if` can skip bad values before they explode.
+The caller never sees a crash. Garbage in, sane default out. Not every check needs a `try`: `isinstance(x, (int, float))` answers *is this a number?* with `True`/`False`, so an `if` skips bad values first.
 
-## Predict: what happens after the `except`?
+## Predict: after the `except`?
 
 `to_price` catches a bad value and returns `0.0`. After that, does the program reach the **next line**?
 
@@ -409,7 +410,7 @@ print("checkout still running")  # ...and we get here
 
 **c) it runs normally**. That's the whole point of `try` / `except`. It *handles* the failure; once the `except` has run, control simply drops to the code after it, as if nothing had gone wrong.
 
-# Your turn: 5-10 minutes {.loud-slide}
+# Your turn {.loud-slide}
 
 ## Open the exercise
 
@@ -417,7 +418,7 @@ Scan the QR or type the link:
 
 **[python.tobiasvlcek.com/notebooks/ex_05_c/](https://python.tobiasvlcek.com/notebooks/ex_05_c/)**
 
-![](assets/qr/ex_05_c.png){width=280}
+![](assets/qr/ex_05_c.png){width=280 fig-alt="QR code linking to the online notebook for exercise 5c, the same address as the link above."}
 
 **Any questions?** Let me know!
 
@@ -441,12 +442,12 @@ Scan the QR or type the link:
 
 1. A **traceback** is a crash report you read **bottom-up**: the last line names *what* broke, the lines above show *where*
 2. **`try` / `except`** catches a failure so the program recovers instead of stopping. Catch the specific type (`except ValueError`), never a bare `except` that also hides your own typos
-3. Defend your own code: **`raise`** to refuse bad input (prices ≥ 0), **`assert`** to guard an invariant that must always hold, and fall back to a safe default when a conversion fails
+3. Defend your own code: **`raise`** to refuse bad input (prices ≥ 0), **`assert`** to guard invariants, and a safe default if a conversion fails
 
 . . .
 
 ::: {.callout-note}
-**Next time, Episode 6** starts with Checkpoint 3, which sweeps everything from Episodes 1-5, so keep this notebook and the last four close. Then someone new walks into the shop, uncaps a marker, and writes one question on the whiteboard. Part II begins.
+**Next time, Episode 6** starts with **Checkpoint 3**: 40 minutes, **still no AI**, everything from Sessions I-V. Slides, the cheatsheet and your own notebooks may be open. Then someone new walks into the shop, uncaps a marker, and writes one question on the whiteboard. Part II begins.
 :::
 
 # [Literature]{.flow} {.title}

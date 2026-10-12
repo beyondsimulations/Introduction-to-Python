@@ -20,7 +20,7 @@ In Part I the checkpoints are **AI-free**; in Part II you may use AI (see the AI
 
 ### The final project
 
-In the last part of the course you build a project of your own choosing, in **groups of up to 2**, and present it in the final session. A list of business-related problems to choose from is provided, but I encourage you to come up with your own idea.
+In the last part of the course you build a project of your own choosing, in **groups of up to 3**, and present it in the final session. A list of business-related problems to choose from is provided, but I encourage you to come up with your own idea.
 
 ## Working with AI
 

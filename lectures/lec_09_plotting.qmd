@@ -9,7 +9,7 @@ format:
     output-file: lec_09_presentation.html
 ---
 
-# [Episode 9: The Pitch Deck]{.flow} {.title}
+# [EP 9: The Pitch Deck]{.flow} {.title}
 
 ## Charts are arguments
 
@@ -122,6 +122,7 @@ Everyone plots with **matplotlib**, imported as `plt`. Four lines turn a list of
 ```{python}
 #| eval: true
 #| output-location: slide
+#| fig-alt: "Line chart of this week's revenue over days 1 to 5: 120, down to 90, up to 140 and 160, back to 130. Four lines of code give a complete picture, though the axes carry no labels yet."
 import matplotlib.pyplot as plt
 
 days = [1, 2, 3, 4, 5]
@@ -137,7 +138,7 @@ plt.gca()             # SHOW: "get current axes" (the chart)
 . . .
 
 ::: {.callout-note}
-Two habits for every chart cell: open with `plt.figure()` (a clean canvas) and end with `plt.gca()`. In marimo there's no `plt.show()`; the figure appears as the cell's **last expression**, and `plt.plot(...)` alone returns line objects, not a picture. Today's lab is a script and has no cell that could show a chart, so there a chart ends in a picture file. More on that before the break.
+Two habits for every chart cell: open with `plt.figure()` (a clean canvas) and end with `plt.gca()`. In marimo there's no `plt.show()`; the figure appears as the cell's **last expression**, and `plt.plot(...)` alone returns line objects, not a picture. Today's lab is a script without cells, so there a chart ends in a picture file. More on that before the break.
 :::
 
 ## Predict: what's on the x-axis?
@@ -161,6 +162,7 @@ a\) `3, 5, 4`, the values themselves   b) `0, 1, 2`, the list positions   c) `1,
 ```{python}
 #| eval: true
 #| output-location: slide
+#| fig-alt: "Line with three markers at heights 3, 5 and 4. The x-axis reads 0, 1, 2: matplotlib used the list positions, counted from zero, not the values."
 import matplotlib.pyplot as plt
 
 plt.figure()
@@ -184,6 +186,7 @@ Every chart names its axes. `xlabel`, `ylabel`, `title`, and (when there's more 
 ```{python}
 #| eval: true
 #| output-location: slide
+#| fig-alt: "The revenue line over days 1 to 5 with every part named: x-axis Day, y-axis Revenue (€), the title This week's revenue, and a legend with the single entry Revenue."
 import matplotlib.pyplot as plt
 
 days = [1, 2, 3, 4, 5]
@@ -198,7 +201,7 @@ plt.legend()             # the little key, one entry per label
 plt.gca()
 ```
 
-# Your turn: 5-10 minutes {.loud-slide}
+# Your turn {.loud-slide}
 
 ## Open the exercise
 
@@ -206,7 +209,7 @@ Scan the QR or type the link:
 
 **[python.tobiasvlcek.com/notebooks/ex_09_a/](https://python.tobiasvlcek.com/notebooks/ex_09_a/)**
 
-![](assets/qr/ex_09_a.png){width=280}
+![](assets/qr/ex_09_a.png){width=280 fig-alt="QR code linking to the online notebook for exercise 9a, the same address as the link above."}
 
 **Any questions?** Let me know!
 
@@ -217,6 +220,7 @@ Two keywords cover almost everything: `color` and `linestyle`. Restraint is the 
 ```{python}
 #| eval: true
 #| output-location: slide
+#| fig-alt: "The week's revenue over days 1 to 5 drawn as one dashed crimson line, titled Styled, not decorated. A single color and one line style are all the styling the chart gets."
 import matplotlib.pyplot as plt
 
 days = [1, 2, 3, 4, 5]
@@ -248,6 +252,7 @@ a\) one chart with two lines   b) two separate charts, one per call   c) an erro
 ```{python}
 #| eval: true
 #| output-location: slide
+#| fig-alt: "One chart with two lines that cross: a blue one through 3, 1, 2 and an orange one rising 1, 2, 3. Both plot calls drew on the same figure."
 import matplotlib.pyplot as plt
 
 plt.figure()
@@ -264,7 +269,7 @@ plt.gca()
 
 That's exactly why every chart cell **opens** with `plt.figure()`: it's how you say "new picture, start clean."
 
-# Your turn: 5-10 minutes {.loud-slide}
+# Your turn {.loud-slide}
 
 ## Open the exercise
 
@@ -272,11 +277,11 @@ Scan the QR or type the link:
 
 **[python.tobiasvlcek.com/notebooks/ex_09_b/](https://python.tobiasvlcek.com/notebooks/ex_09_b/)**
 
-![](assets/qr/ex_09_b.png){width=280}
+![](assets/qr/ex_09_b.png){width=280 fig-alt="QR code linking to the online notebook for exercise 9b, the same address as the link above."}
 
 **Any questions?** Let me know!
 
-# [The right chart for the question]{.flow} {.title}
+# [The right chart]{.flow} {.title}
 
 ## Match the chart to the question
 
@@ -302,6 +307,7 @@ The wrong chart is its own kind of lie. Start from the **question**, not the cha
 ```{python}
 #| eval: true
 #| output-location: slide
+#| fig-alt: "Bar chart of orders per dish: Pizza 12, Pasta 9, Salad 5, Wrap 7. The Pizza bar is the tallest, so the best seller is visible at a glance."
 import matplotlib.pyplot as plt
 
 dishes = ["Pizza", "Pasta", "Salad", "Wrap"]
@@ -322,6 +328,7 @@ The tallest bar answers the question at a glance: Pizza.
 ```{python}
 #| eval: true
 #| output-location: slide
+#| fig-alt: "Histogram of ten delivery times in five buckets between 19 and 44 minutes, with counts 3, 5, 1, 0 and 1. Most deliveries pile up in the 20s; one slow delivery sits alone on the far right."
 import matplotlib.pyplot as plt
 
 minutes = [19, 22, 23, 24, 24, 25, 26, 28, 31, 44]
@@ -341,6 +348,7 @@ Most deliveries land in the mid-20s, with one lonely slow one far right. A histo
 ```{python}
 #| eval: true
 #| output-location: slide
+#| fig-alt: "Scatter plot of ten orders: delivery time from 19 to 44 minutes on the x-axis, order value from 8 to 31 euros on the y-axis. The dots form a shapeless cloud with no upward drift, so there is no pattern."
 import matplotlib.pyplot as plt
 
 minutes = [19, 22, 23, 24, 25, 26, 28, 31, 40, 44]
@@ -376,6 +384,7 @@ a\) a zig-zag line hopping between the points in list order   b) the same dots a
 ```{python}
 #| eval: true
 #| output-location: slide
+#| fig-alt: "Five orders joined by a line in list order: it runs left from 31 to 19 minutes, right across to 44, back to 22, then to 28. A zig-zag that suggests a sequence the orders do not have."
 import matplotlib.pyplot as plt
 
 minutes = [31, 19, 44, 22, 28]
@@ -417,6 +426,7 @@ a\) 4: one bar per number   b) 15: one bar per unit up to the max   c) about 2-3
 ```{python}
 #| eval: true
 #| output-location: slide
+#| fig-alt: "Two panels from the same four numbers. Left, a bar chart with four separate bars of heights 8, 12, 9 and 15. Right, a histogram with three ranges between 8 and 15 holding 2, 1 and 1 values: it counts values per range, and 8 and 9 share the first."
 import matplotlib.pyplot as plt
 
 values = [8, 12, 9, 15]
@@ -433,13 +443,13 @@ plt.gca()
 
 . . .
 
-**c) about 2-3 lumps**: the histogram groups the numbers into ranges and counts how many fall in each. `8` and `9` land in the same bucket, so that bar is two tall.
+**c) about 2-3 lumps**: the histogram counts how many numbers fall in each range. `8` and `9` land in the same bucket, so that bar is two tall.
 
 . . .
 
 **Bar counts CATEGORIES; histogram counts RANGES.** Same numbers, different question.
 
-# Your turn: 5-10 minutes {.loud-slide}
+# Your turn {.loud-slide}
 
 ## Open the exercise
 
@@ -447,7 +457,7 @@ Scan the QR or type the link:
 
 **[python.tobiasvlcek.com/notebooks/ex_09_c/](https://python.tobiasvlcek.com/notebooks/ex_09_c/)**
 
-![](assets/qr/ex_09_c.png){width=280}
+![](assets/qr/ex_09_c.png){width=280 fig-alt="QR code linking to the online notebook for exercise 9c, the same address as the link above."}
 
 **Any questions?** Let me know!
 
@@ -455,15 +465,16 @@ Scan the QR or type the link:
 A five-minute pause after this one, then the axis and the AI chart assistant.
 :::
 
-# [The axis and the AI chart assistant]{.flow} {.title}
+# [The honest axis]{.flow} {.title}
 
 ## The same data, told two ways
 
-Four weeks of revenue, `[96, 98, 97, 99]`, barely moving. **Where the y-axis starts** decides: the left gets you a term sheet, the right gets you trusted. Same numbers, and the room sees a rocket or the truth:
+Four weeks of revenue, `[96, 98, 97, 99]`, barely moving. **Where the y-axis starts** decides: left gets you a term sheet, right gets you trusted. Same numbers, and the room sees a rocket or the truth:
 
 ```{python}
 #| eval: true
 #| output-location: slide
+#| fig-alt: "The same four weeks of revenue (96, 98, 97, 99) in two panels. Left, with the y-axis cut to 96-99, the line zig-zags from the bottom edge to the top edge like a rocket. Right, with the y-axis from 0 to 100, it is an almost flat line near the top."
 import matplotlib.pyplot as plt
 
 weeks = [1, 2, 3, 4]
@@ -503,6 +514,7 @@ a\) a flat line: 3 % stays 3 % on any axis   b) an error: `ylim` has to include 
 ```{python}
 #| eval: true
 #| output-location: slide
+#| fig-alt: "Line through 710, 718, 724 and 731 on a y-axis that runs only from 700 to 735. The line climbs 60 percent of the chart height, so 3 percent of growth looks like a steep rise."
 import matplotlib.pyplot as plt
 
 plt.figure()
@@ -530,7 +542,7 @@ Python raises no error and no warning here. The code is fine; the axis is what m
 She's the type who reads Formular 27b/6 for fun. A stretched axis is the first thing she catches, and the last thing you want to explain.
 :::
 
-# Your turn: 5-10 minutes {.loud-slide}
+# Your turn {.loud-slide}
 
 ## Open the exercise
 
@@ -538,7 +550,7 @@ Scan the QR or type the link:
 
 **[python.tobiasvlcek.com/notebooks/ex_09_d/](https://python.tobiasvlcek.com/notebooks/ex_09_d/)**
 
-![](assets/qr/ex_09_d.png){width=280}
+![](assets/qr/ex_09_d.png){width=280 fig-alt="QR code linking to the online notebook for exercise 9d, the same address as the link above."}
 
 **Any questions?** Let me know!
 
@@ -546,7 +558,7 @@ Scan the QR or type the link:
 
 AI is good at plotting code, if you check the result:
 
-1. **Describe** the data and the question: *"I have `orders` with columns `zone` (text) and `total_eur` (float). Bar chart of total revenue per zone."*
+1. **Describe** data and question: *"I have `orders` with columns `zone` (text) and `total_eur` (float). Bar chart of total revenue per zone."*
 2. Let it **draft** the plot code.
 3. **Verify** three things before you believe the picture:
    - Do the **columns** it used actually exist?
@@ -568,7 +580,7 @@ AI drafts. You decide what goes on the slide.
 Both threads, one rule: **an AI chart runs long before it's true.** You verify the columns *and* the axis, every time.
 :::
 
-# Your turn: 5-10 minutes {.loud-slide}
+# Your turn {.loud-slide}
 
 ## Open the exercise
 
@@ -576,7 +588,7 @@ Scan the QR or type the link:
 
 **[python.tobiasvlcek.com/notebooks/ex_09_e/](https://python.tobiasvlcek.com/notebooks/ex_09_e/)**
 
-![](assets/qr/ex_09_e.png){width=280}
+![](assets/qr/ex_09_e.png){width=280 fig-alt="QR code linking to the online notebook for exercise 9e, the same address as the link above."}
 
 **Any questions?** Let me know!
 
@@ -615,14 +627,14 @@ Forget `plt.close()` and the next chart draws on top of this one: one canvas, tw
 ## After the break: the lab
 
 - Download `lab_09_pitch.py` from [Episode 9: The Pitch Deck](../tutorials/tut_09_plotting.qmd) into `python-labs`. `orders_messy.csv` is still there
-- Six questions, six charts. No task names the kind of chart: **you pick it**. At the end the script puts all six into `pitch_deck.png`
+- Nine tasks, six with a chart. No task names the kind of chart: **you pick it**. At the end the script puts all six into `pitch_deck.png`
 - Tobi's deck is in the script too. **Two things in it are wrong without any task saying so**: one in his numbers, one in what he claims
-- AI is allowed: draft with it, then **look at the picture** before you believe it
+- No slide covers table to chart: **ask your agent**, **look at the picture**
 
 . . .
 
 :::{.callout-important}
-**Show me `pitch_deck.png` and the last block before you leave.** Then two minutes of practice for Checkpoint 5, which is still handed in from the browser: open `ex_09_e`, **Cmd/Ctrl+S**, menu → Download → *Download Python code*, and find the file.
+**Show me `pitch_deck.png` and the last block before you leave**, for feedback as last week. Then two minutes of practice for Checkpoint 5, which is still handed in from the browser: open `ex_09_e`, **Cmd/Ctrl+S**, menu → Download → *Download Python code*, find the file.
 :::
 
 # [Wrap-up]{.flow} {.title}
@@ -631,12 +643,12 @@ Forget `plt.close()` and the next chart draws on top of this one: one canvas, tw
 
 1. **Every chart, one frame.** Open with `plt.figure()`, close with `plt.gca()` (in a script: `savefig`, then `close`); label the axes and title it. A chart nobody can read argues nothing.
 2. **Match the chart to the question.** Categories → bar, distribution → histogram, two numbers → scatter, time → line. The wrong chart is a lie; and "no pattern" is a real finding.
-3. **Axis from zero, verified code.** Growth charts start at **0**, and every AI-drafted plot gets checked: do the columns exist, does the axis start where you claim?
+3. **Axis from zero, verified code.** Growth charts start at **0**; check every AI-drafted plot: columns exist, axis starts as claimed?
 
 . . .
 
 ::: {.callout-note}
-**Season finale next: git and the project kickoff.** Install git and `gh` this week. Session X needs them from the first minute.
+**Season finale next: git and the project kickoff.** Install git and `gh` this week. Session X needs them right after the checkpoint.
 :::
 
 # [Literature]{.flow} {.title}

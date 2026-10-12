@@ -4,7 +4,7 @@ import marimo
 app = marimo.App(width="medium", app_title="ex_09_e")
 
 
-@app.cell
+@app.cell(hide_code=True)
 def _():
     import marimo as mo
     return (mo,)
@@ -150,8 +150,8 @@ def _(growth_exe, mo, show_result):
 def _(mo):
     mo.accordion(
         {
-            "Hint 1 (a nudge)": "Percent growth compares the CHANGE to the STARTING value, then multiplies by 100. Neither the ending value nor the raw difference in k€ gives you that.",
-            "Hint 2 (the structure)": "growth_exe = (___ - ___) / ___ * 100",
+            "Hint 1 (a nudge)": "Percent growth compares the CHANGE to the STARTING value, then multiplies by 100. Neither the ending value nor the raw difference in orders gives you that.",
+            "Hint 2 (the structure)": "`growth_exe = (___ - ___) / ___ * 100`",
         }
     )
     return
@@ -249,7 +249,7 @@ def _(mo):
     mo.accordion(
         {
             "Hint 1 (a nudge)": "Two spans: the rise (last week minus first week) and Tobi's axis (56 minus 49). Divide the first by the second, then ×100.",
-            "Hint 2 (the structure)": "picture_exe = (weekly_exe[-1] - weekly_exe[0]) / (___ - ___) * 100",
+            "Hint 2 (the structure)": "`picture_exe = (weekly_exe[-1] - weekly_exe[0]) / (___ - ___) * 100`",
         }
     )
     return

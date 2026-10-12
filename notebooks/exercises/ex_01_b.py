@@ -4,7 +4,7 @@ import marimo
 app = marimo.App(width="medium", app_title="ex_01_b")
 
 
-@app.cell
+@app.cell(hide_code=True)
 def _():
     import marimo as mo
     return (mo,)
@@ -63,7 +63,23 @@ def _(mo, first_employee, founded_year, share_capital):
         and share_capital == 300
         and isinstance(founded_year, int)
     )
-    _msg = "Correct: Form accepted!" if _ok else "Wrong: The registrar rejects the form. Keep fixing."
+    _off = [
+        _name
+        for _name, _good in [
+            ("first_employee", first_employee == "Tobi"),
+            ("share_capital", share_capital == 300),
+            ("founded_year", isinstance(founded_year, int)),
+        ]
+        if not _good
+    ]
+    if _ok:
+        _msg = "Correct: Form accepted!"
+    elif len(_off) == 3:
+        _msg = "Wrong: The registrar rejects the form. Keep fixing."
+    else:
+        _msg = "Wrong: The registrar still rejects " + " and ".join(f"`{_name}`" for _name in _off) + "."
+        if isinstance(first_employee, str) and first_employee != "Tobi" and first_employee.strip() == "Tobi":
+            _msg += " Look at the spaces inside the quotes."
     _msg += "\n\n**Your form:** " + ", ".join(
         f"`{_name} = {_value!r}` ({type(_value).__name__})"
         for _name, _value in [

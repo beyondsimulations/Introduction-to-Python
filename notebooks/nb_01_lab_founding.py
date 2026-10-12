@@ -34,8 +34,10 @@ def _(mo):
         mo.md(
             "**How this notebook works:** run a cell with **Cmd/Ctrl+Enter**. "
             "Only edit the cells that contain `# YOUR CODE BELOW`; the check under "
-            "each exercise updates by itself. A red error pauses everything below "
-            "it, so fix that cell first."
+            "each exercise updates by itself. A red error pauses every cell that "
+            "depends on it, so fix that cell first. A name can be set in only one "
+            "cell: if two cells both set `total`, both turn red, so use a new name "
+            "in the second one."
         ),
         kind="info",
     )
@@ -59,7 +61,7 @@ def _(mo):
     return
 
 
-@app.cell
+@app.cell(hide_code=True)
 def _():
     import marimo as mo
     return (mo,)
@@ -181,7 +183,7 @@ def _(mo):
     mo.accordion(
         {
             "Hint 1 (a nudge)": "Three separate assignments with `=`. Text goes in quotes; `8.90` and `3` do not.",
-            "Hint 2 (the structure)": "menu_item_ex11 = \"___\" · price_ex11 = ___ · portions_ex11 = ___ (text gets quotes, the two numbers don't).",
+            "Hint 2 (the structure)": "```python\nmenu_item_ex11 = \"___\"\nprice_ex11 = ___\nportions_ex11 = ___\n```\n\nText gets quotes, the two numbers don't.",
         }
     )
     return
@@ -231,7 +233,7 @@ def _(mo):
     mo.accordion(
         {
             "Hint 1 (a nudge)": "Multiply the two variables from 1.1, then round the whole thing to 2 decimal places.",
-            "Hint 2 (the structure)": "revenue_ex12 = round(___ * ___, 2)",
+            "Hint 2 (the structure)": "`revenue_ex12 = round(___ * ___, 2)`",
         }
     )
     return
@@ -279,7 +281,7 @@ def _(mo):
     mo.accordion(
         {
             "Hint 1 (a nudge)": "Start from 300 and take both purchases away. Floats are fuzzy, so round the result to 2 places.",
-            "Hint 2 (the structure)": "budget_left_ex13 = round(300 - ___ - ___, 2)",
+            "Hint 2 (the structure)": "`budget_left_ex13 = round(300 - ___ - ___, 2)`",
         }
     )
     return
@@ -342,7 +344,7 @@ def _(mo, trace_ex21):
     else:
         _msg = (
             "Not quite. `7 // 2` keeps the whole part → **3**; `7 % 2` is the "
-            "leftover → **1**. So it prints `3 1`. (This one is ungraded. The "
+            "leftover → **1**. So it prints `3 1`. (This one does not count. The "
             "point is the prediction.)"
         )
     mo.callout(mo.md(_msg), kind="info")
@@ -389,7 +391,7 @@ def _(mo):
     mo.accordion(
         {
             "Hint 1 (a nudge)": "Margin = price − cost. Both numbers are given in the task.",
-            "Hint 2 (the structure)": "margin_ex22 = ___ - ___",
+            "Hint 2 (the structure)": "`margin_ex22 = ___ - ___`",
         }
     )
     return
@@ -438,7 +440,7 @@ def _(mo):
     mo.accordion(
         {
             "Hint 1 (a nudge)": "The quotes are the problem: `\"9.99\"` is text. What is `9.99` without quotes?",
-            "Hint 2 (the structure)": "total_ex23 = ___ * 3 (the blank is a number, not text in quotes).",
+            "Hint 2 (the structure)": "`total_ex23 = ___ * 3`\n\nThe blank is a number, not text in quotes.",
         }
     )
     return
@@ -488,7 +490,7 @@ def _(mo):
     mo.accordion(
         {
             "Hint 1 (a nudge)": "`//` counts full bags. The section intro names one more operator, the one that keeps what doesn't fill a bag.",
-            "Hint 2 (the structure)": "loose_ex24 = 27 ___ 4 (the blank is a single operator from the section intro).",
+            "Hint 2 (the structure)": "`loose_ex24 = 27 ___ 4`\n\nThe blank is a single operator from the section intro.",
         }
     )
     return
@@ -563,7 +565,7 @@ def _(mo):
     mo.accordion(
         {
             "Hint 1 (a nudge)": "Start the string with `f\"`. Drop the qty, item and total into `{}` slots.",
-            "Hint 2 (the structure)": "receipt_ex31 = f\"{___}x {___}: {___:.2f} EUR\"",
+            "Hint 2 (the structure)": "`receipt_ex31 = f\"{___}x {___}: {___:.2f} EUR\"`",
         }
     )
     return
@@ -626,7 +628,7 @@ def _(mo):
     mo.accordion(
         {
             "Hint 1 (a nudge)": "Two number slots, both `:.2f`. The second holds the discounted price: the price times what remains after 15% off.",
-            "Hint 2 (the structure)": "push_ex32 = f\"{___}: {___:.2f} EUR, today {___ * (1 - ___):.2f} EUR\"",
+            "Hint 2 (the structure)": "`push_ex32 = f\"{___}: {___:.2f} EUR, today {___ * (1 - ___):.2f} EUR\"`",
         }
     )
     return
@@ -681,7 +683,7 @@ def _(mo):
     mo.accordion(
         {
             "Hint 1 (a nudge)": "Two f-string pieces joined by `\\n`. Each price uses `{value:>8.2f}`.",
-            "Hint 2 (the structure)": "receipt_multi_ex33 = f\"Pad Thai {___:>8.2f}\\nCalamari {___:>8.2f}\"",
+            "Hint 2 (the structure)": "`receipt_multi_ex33 = f\"Pad Thai {___:>8.2f}\\nCalamari {___:>8.2f}\"`",
         }
     )
     return
@@ -710,11 +712,11 @@ def _(mo):
     SnackRocket day one: 26.70 EUR revenue, 2.59 EUR margin per dish.
     ```
 
-    The grader only checks the numbers, so your wording (and name) can be
+    The check only looks at the numbers, so your wording (and name) can be
     anything.
 
     *Solve 1.2 and 2.2 first; this line uses those results.* While either is
-    still `None`, this cell goes **red**, and a red cell pauses everything below
+    still `None`, this cell goes **red**, and a red cell pauses every cell that depends on
     it, including the progress box. Nothing is lost; fix the red cell and it all
     comes back.
     """
@@ -753,7 +755,7 @@ def _(mo):
     mo.accordion(
         {
             "Hint 1 (a nudge)": "One f-string. Put `revenue_ex12` and `margin_ex22` in `{}` slots with `:.2f`, and `startup_name` too, instead of retyping the numbers.",
-            "Hint 2 (the structure)": "day_one_summary_ex40 = f\"{startup_name} day one: {___:.2f} EUR revenue, {___:.2f} EUR margin per dish.\" (the blanks are your variables from 1.2 and 2.2).",
+            "Hint 2 (the structure)": "`day_one_summary_ex40 = f\"{startup_name} day one: {___:.2f} EUR revenue, {___:.2f} EUR margin per dish.\"`\n\nThe blanks are your variables from 1.2 and 2.2.",
         }
     )
     return

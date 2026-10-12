@@ -34,8 +34,10 @@ def _(mo):
         mo.md(
             "**How this notebook works:** run a cell with **Cmd/Ctrl+Enter**. "
             "Only edit the cells that contain `# YOUR CODE BELOW`; the check under "
-            "each exercise updates by itself. A red error pauses everything below "
-            "it, so fix that cell first."
+            "each exercise updates by itself. A red error pauses every cell that "
+            "depends on it, so fix that cell first. A name can be set in only one "
+            "cell: if two cells both set `total`, both turn red, so use a new name "
+            "in the second one."
         ),
         kind="info",
     )
@@ -48,7 +50,8 @@ def _(mo):
         mo.md(
             "**First the install.** Before you start this lab, finish the Zed "
             "install from the lecture and show your lecturer that it works. Then "
-            "come back to this tab."
+            "come back to this tab. Not in class today? The Tutorial 07 page says "
+            "how to catch up at home."
         ),
         kind="warn",
     )
@@ -81,7 +84,7 @@ def _(mo):
 
     > **The marimo rule again:** AI answers usually start with
     > `import numpy as np`. The first worked example below imports numpy
-    > already, and a name can only be defined in **one** cell, so delete that
+    > already, and a name can only be set in **one** cell, so delete that
     > line from the answer.
 
     > **New this week: plain Python numbers.** NumPy hands back its own number
@@ -93,7 +96,7 @@ def _(mo):
     return
 
 
-@app.cell
+@app.cell(hide_code=True)
 def _():
     import marimo as mo
     return (mo,)
@@ -202,7 +205,7 @@ def _(mo):
     ```
 
     > One marimo habit for this lab: array math and indexing are easy to get
-    > slightly wrong, and a **red error pauses everything below it**, including
+    > slightly wrong, and a **red error pauses every cell that depends on it**, including
     > the progress box. Nothing is lost; fix the red cell and it all comes back.
 
     Read and run the worked example, then answer for real.
@@ -448,7 +451,8 @@ def _(mo):
     The investor has a middle band of deliveries she calls "slow but
     acceptable": **more than 30 minutes, and at most 50**. Tobi counted it.
     His cell runs, no red error, and says the middle band holds **all ten**
-    deliveries, the 17-minute one and the 60-minute one included.
+    deliveries, the 17-minute one and the 60-minute one included. (The `|` in
+    his line is the mask form of `or`, just as `&` is the mask form of `and`.)
 
     Fix Tobi's line **in place** so `band_count_ex13` holds the number of
     deliveries in the middle band.
@@ -634,8 +638,7 @@ def _(mo):
 
     Totals are hard to compare at a glance, so the deck shows each zone's
     **share of the week's orders, in percent**. Store the four percentages in
-    `zone_shares_ex22`, in zone order, rounded to 1 decimal. Together they come
-    to about 100.
+    `zone_shares_ex22`, in zone order. Together they come to 100.
 
     You already have the four zone totals from 2.1.
     """
@@ -645,7 +648,7 @@ def _(mo):
 
 @app.cell
 def _():
-    # YOUR CODE BELOW: each zone's share of all orders of the week, in percent, rounded to 1 decimal
+    # YOUR CODE BELOW: each zone's share of all orders of the week, in percent
     zone_shares_ex22 = None
     return (zone_shares_ex22,)
 
@@ -675,7 +678,7 @@ def _(mo, np, zone_shares_ex22):
         _msg = "Wrong (Exercise 2.2): these are the totals again. A share compares each total with the orders of the whole week."
     else:
         ex22_ok = False
-        _msg = "Wrong (Exercise 2.2): not the four shares. Each one is a zone's total divided by all orders of the week, in percent. Together they come to about 100."
+        _msg = "Wrong (Exercise 2.2): not the four shares. Each one is a zone's total divided by all orders of the week, in percent. Together they come to 100."
     mo.callout(mo.md(_msg + _preview), kind="success" if ex22_ok else "warn")
     return (ex22_ok,)
 
@@ -1242,8 +1245,8 @@ def _(mo):
        Reloading this exact tab (Cmd/Ctrl+R) keeps your work, but closing the tab
        and reopening the link starts you fresh. The download is the only
        guaranteed copy.
-    4. Next episode: the investor opens a **data room**. A real file, eighty
-       rows, more than anyone wants to type by hand. Tobi, naturally, lets an
+    4. Next episode: the investor opens a **data room**. A real file, with
+       more rows than anyone wants to type by hand. Tobi, naturally, lets an
        AI write his pandas. From then on the labs run in Zed, in the
        `python-labs` folder you made today. **Episode 8: the data room.**
     """

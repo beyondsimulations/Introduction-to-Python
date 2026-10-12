@@ -4,7 +4,7 @@ import marimo
 app = marimo.App(width="medium", app_title="ex_08_a")
 
 
-@app.cell
+@app.cell(hide_code=True)
 def _():
     import marimo as mo
     return (mo,)
@@ -27,7 +27,7 @@ def _():
 def _(mo):
     mo.md(
         r"""
-    # Quick exercise: verifying AI code (5-10 min)
+    # Quick exercise: one column, some rows, one number (5-10 min)
     """
     )
     return
@@ -50,12 +50,10 @@ def _(mo):
 def _(mo):
     mo.md(
         r"""
-    AI wrote this for Tobi. Two things are wrong: one method doesn't
-    exist, one comparison quietly returns nothing. Fix both, and you've
-    done today's most important professional skill: verifying output.
-
-    Filtering a DataFrame works just like the NumPy masks from last
-    session: `df[df["col"] == value]` keeps the matching rows.
+    The investor's questions all have the same shape: pick a column,
+    keep some rows, collapse to one number. `df["col"]` selects a
+    column, `df[df["col"] == value]` keeps the matching rows, and `.sum()`
+    or `.mean()` turns what is left into a single number.
 
     **Predict** first: what does the cell below print, then run it.
     """
@@ -72,9 +70,10 @@ def _():
 @app.cell
 def _(pd):
     # Worked example (read + run this)
-    _demo = pd.DataFrame({"team": ["Ost", "Ost", "West"], "score": [10, 6, 20]})
+    _demo = pd.DataFrame({"team": ["Ost", "West", "Ost"], "score": [10, 6, 20]})
+    print(_demo["score"])
     print(_demo[_demo["team"] == "Ost"])
-    print(_demo[_demo["team"] == "Ost"]["score"].mean())
+    print(_demo[_demo["team"] == "Ost"]["score"].sum())
     return
 
 
@@ -82,14 +81,11 @@ def _(pd):
 def _(mo):
     mo.md(
         r"""
-    `tobi_df` below stands in for the real order data. Tobi's AI draft is shown
-    as a **comment** underneath it. Read it, spot the two bugs, then
-    write correct code of your own to compute `mean_exa`: the average
-    `total_eur` for the "Nord" zone.
+    `orders_exa` below is tonight's order list. The investor taps the
+    harbor on the map: *"What did Hafen bring in?"*
 
-    (If you paste Tobi's broken lines and run them for real, the cell
-    turns red. That's expected. A red error pauses everything below it
-    until you fix it; that's the workflow, not a crash.)
+    Compute `hafen_revenue_exa`: the total `total_eur` of the orders whose
+    `zone` is `"Hafen"`. The answer is a single number, not a table.
     """
     )
     return
@@ -98,58 +94,61 @@ def _(mo):
 @app.cell
 def _(pd):
     # Given: do not change this
-    tobi_df = pd.DataFrame(
+    orders_exa = pd.DataFrame(
         {
-            "zone": ["Nord", "Nord", "Sued", "Nord", "Hafen"],
-            "total_eur": [12.40, 8.90, 15.10, 22.20, 9.60],
+            "zone": ["Hafen", "Nord", "Sued", "Hafen", "Nord", "Hafen", "Sued", "Sued"],
+            "items": [1, 2, 1, 3, 2, 1, 4, 2],
+            "total_eur": [8.90, 17.40, 6.50, 26.10, 15.80, 9.70, 31.20, 13.30],
         }
     )
-    return (tobi_df,)
+    return (orders_exa,)
 
 
 @app.cell
-def _(tobi_df):
-    # Tobi's AI draft (broken). Fix it in your own code below:
-    #   nord = tobi_df[tobi_df["zone"] == "nord"]        # quietly empty… why?
-    #   mean_exa = nord["total_eur"].summarize()           # AttributeError… why?
-    mean_exa = None  # YOUR CODE BELOW: the mean total_eur of the Nord rows, as a float
-    return (mean_exa,)
+def _(orders_exa):
+    hafen_revenue_exa = None  # YOUR CODE BELOW: the total total_eur of the Hafen rows, as one number
+    return (hafen_revenue_exa,)
 
 
 @app.cell(hide_code=True)
-def _(mean_exa, mo, pd, show_result):
+def _(hafen_revenue_exa, mo, pd, show_result):
     # Reactive check. Re-runs when you run the cell above.
-    _expected = 14.5
-    _all_zones_mean = 13.64  # Tobi's "averaged everything" trap
+    _expected = 44.7
     _result = None
-    if mean_exa is None:
+    if hafen_revenue_exa is None:
         _ok = False
-        _msg = "Not attempted: Assign it to `mean_exa` (a `print` alone doesn't count) and run the cell."
-    elif isinstance(mean_exa, (pd.Series, pd.DataFrame)):
+        _msg = "Not attempted: Assign the number to `hafen_revenue_exa` (a `print` alone doesn't count) and run the cell."
+    elif isinstance(hafen_revenue_exa, (pd.Series, pd.DataFrame)):
         _ok = False
-        _result = f"mean_exa={mean_exa!r}"
-        _msg = "Wrong: `mean_exa` is still a whole column/table: `.mean()` collapses it to one number."
+        _result = f"hafen_revenue_exa={hafen_revenue_exa!r}"
+        _msg = "Wrong: `hafen_revenue_exa` is still a column/table. Select `total_eur` from the filtered rows and call `.sum()` to get one number."
     else:
         try:
-            _v = round(float(mean_exa), 2)
+            _v = round(float(hafen_revenue_exa), 2)
         except (TypeError, ValueError):
             _ok = False
             _v = None
-            _msg = "Wrong: That's not a number yet. Check what `.mean()` actually returns."
+            _msg = "Wrong: That's not a number. Check what your last expression returns."
         else:
-            _result = f"mean_exa={mean_exa}"
-            if pd.isna(_v):
-                _ok = False
-                _msg = 'Wrong: Your filter came back empty. pandas comparisons are case-sensitive; check the zone spelling ("Nord" vs "nord").'
-            elif _v == _expected:
+            _result = f"hafen_revenue_exa={hafen_revenue_exa}"
+            if _v == _expected:
                 _ok = True
-                _msg = "Correct: 14.5, and you just did today's most important professional skill: verifying AI output."
-            elif _v == _all_zones_mean:
+                _msg = "Correct: 44.70 EUR from three harbor orders. Filter the rows, pick the column, `.sum()`."
+            elif _v == 128.9:
                 _ok = False
-                _msg = "Wrong: You averaged every zone instead of only Nord. Filter first, then take the mean."
+                _msg = "Wrong: That's every zone. Keep only the Hafen rows before summing."
+            elif _v == 0.0:
+                _ok = False
+                _msg = 'Wrong: Your filter matched nothing, so the sum is 0. pandas compares case-sensitively: the data spells it "Hafen".'
+            elif _v == 3.0:
+                _ok = False
+                _msg = "Wrong: That's how many Hafen orders there are, not what they brought in. Sum `total_eur`, don't count rows."
+            elif _v == 5.0:
+                _ok = False
+                _msg = "Wrong: That's the number of items, not euros. Sum the `total_eur` column."
             else:
                 _ok = False
-                _msg = 'Not quite. Filter to `zone == "Nord"` (case matters!), then call `.mean()`.'
+                _msg = 'Wrong: Filter to `zone == "Hafen"`, select `total_eur`, then `.sum()`.'
     mo.callout(mo.md(_msg + show_result(_result)), kind="success" if _ok else "warn")
     return
 
@@ -158,8 +157,8 @@ def _(mean_exa, mo, pd, show_result):
 def _(mo):
     mo.accordion(
         {
-            "Hint 1 (a nudge)": "String comparison is case-sensitive; and does pandas really have `summarize`? Check the docs, or ask an AI and VERIFY.",
-            "Hint 2 (the structure)": '_nord = tobi_df[tobi_df["zone"] == "___"]\nmean_exa = float(_nord["total_eur"].___())',
+            "Hint 1 (a nudge)": "Same order as the worked example: filter the rows with a mask, pick the `total_eur` column of what is left, then `.sum()`.",
+            "Hint 2 (the structure)": "```python\n_hafen = orders_exa[orders_exa[\"zone\"] == \"___\"]\nhafen_revenue_exa = float(_hafen[\"___\"].sum())\n```",
         }
     )
     return
@@ -169,52 +168,59 @@ def _(mo):
 def _(mo):
     mo.md(
         r"""
-    **Done? Then:** the investor squints at the average and asks: *"and how
-    many Nord orders are actually ABOVE that?"* Tobi's AI answered with
-    `tobi_df[tobi_df["total_eur"] > mean_exa]` and counted the rows. That
-    number is too high. Find out why, then compute `big_nord_exa`: how many
-    **Nord** orders have a `total_eur` above `mean_exa`.
+    **Done? Then:** next question from the investor: *"How many Sued orders
+    had more than one item?"* Tobi's AI wrote the line below, and it
+    printed a column of `True`/`False` instead of a number:
+
+    ```python
+    sued_multi_exa = orders_exa[orders_exa["zone"] == "Sued"]["items"] > 1
+    ```
+
+    Fix it: `sued_multi_exa` should be the **count** as one whole number.
     """
     )
     return
 
 
 @app.cell
-def _(mean_exa, tobi_df):
-    big_nord_exa = None  # YOUR CODE BELOW: how many Nord orders are above mean_exa, as a whole number
-    return (big_nord_exa,)
+def _(orders_exa):
+    sued_multi_exa = None  # YOUR CODE BELOW: how many Sued orders have more than one item, as a whole number
+    return (sued_multi_exa,)
 
 
 @app.cell(hide_code=True)
-def _(big_nord_exa, mo, pd, show_result):
+def _(mo, pd, show_result, sued_multi_exa):
     # Reactive check. Re-runs when you run the cell above.
-    _expected = 1
+    _expected = 2
     _result = None
-    if big_nord_exa is None:
+    if sued_multi_exa is None:
         _ok = False
-        _msg = "Not attempted: Assign the count to `big_nord_exa` (a `print` alone doesn't count) and run the cell. It needs `mean_exa` from the core task first."
-    elif isinstance(big_nord_exa, (pd.Series, pd.DataFrame)):
+        _msg = "Not attempted: Assign the count to `sued_multi_exa` (a `print` alone doesn't count) and run the cell."
+    elif isinstance(sued_multi_exa, (pd.Series, pd.DataFrame)):
         _ok = False
-        _result = f"big_nord_exa={big_nord_exa!r}"
-        _msg = "Wrong: `big_nord_exa` is still a column/table. A count is one whole number: `len(...)` of the filtered rows, or `.sum()` on the mask."
+        _result = f"sued_multi_exa={sued_multi_exa!r}"
+        _msg = "Wrong: That's Tobi's output: a mask, one boolean per row. `.sum()` on the mask counts the `True`s."
     else:
         try:
-            _v = int(big_nord_exa)
+            _v = int(sued_multi_exa)
         except (TypeError, ValueError):
             _ok = False
             _v = None
-            _msg = "Wrong: That's not a whole number. Count the rows that survive both filters."
+            _msg = "Wrong: That's not a whole number. Count the `True`s in the mask with `.sum()`."
         else:
-            _result = f"big_nord_exa={big_nord_exa}"
+            _result = f"sued_multi_exa={sued_multi_exa}"
             if _v == _expected:
                 _ok = True
-                _msg = "Correct: One Nord order (22.20) beats the Nord average. Tobi's AI never filtered by zone, so the Sued order sneaked in."
-            elif _v == 2:
+                _msg = "Correct: Two Sued orders had more than one item. The comparison builds the mask; `.sum()` counts it."
+            elif _v == 5:
                 _ok = False
-                _msg = "Wrong: That's Tobi's number. One of those two orders is from Sued: filter to Nord BEFORE comparing to the average."
+                _msg = "Wrong: That counts every zone. Keep the Sued filter from Tobi's line."
+            elif _v == 3:
+                _ok = False
+                _msg = "Wrong: That's every Sued order. \"More than one\" is `> 1`, not `>= 1`."
             else:
                 _ok = False
-                _msg = 'Wrong: Filter to `zone == "Nord"` first, then keep the rows with `total_eur` above `mean_exa`, then count.'
+                _msg = 'Wrong: Filter to `zone == "Sued"`, compare `items > 1`, then `.sum()` the mask.'
     mo.callout(mo.md(_msg + show_result(_result)), kind="success" if _ok else "warn")
     return
 
@@ -223,8 +229,8 @@ def _(big_nord_exa, mo, pd, show_result):
 def _(mo):
     mo.accordion(
         {
-            "Hint 1 (a nudge)": "Two filters in a row: first the zone, then the price. Tobi's AI skipped the first one. A filtered frame can be filtered again.",
-            "Hint 2 (the structure)": '_nord = tobi_df[tobi_df["zone"] == "___"]\n_big = _nord[_nord["total_eur"] > ___]\nbig_nord_exa = len(___)',
+            "Hint 1 (a nudge)": "Tobi's line is one step short. A mask summed counts its `True`s; wrap the result in `int()` so it is a plain number.",
+            "Hint 2 (the structure)": "```python\n_sued = orders_exa[orders_exa[\"zone\"] == \"___\"]\nsued_multi_exa = int((_sued[\"items\"] > ___).___())\n```",
         }
     )
     return

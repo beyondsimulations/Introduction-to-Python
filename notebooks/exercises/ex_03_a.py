@@ -4,7 +4,7 @@ import marimo
 app = marimo.App(width="medium", app_title="ex_03_a")
 
 
-@app.cell
+@app.cell(hide_code=True)
 def _():
     import marimo as mo
     return (mo,)
@@ -76,9 +76,9 @@ def _(line_total_exa, mo, show_result):
     try:
         _wraps = line_total_exa(2, 4.50)
         _fries = line_total_exa(5, 3.20)
-    except Exception:
+    except Exception as _err:
         _ok = False
-        _msg = "Wrong: Still crashing. Read the error above and fix it before it reaches the check."
+        _msg = f"Wrong: your code stops with `{type(_err).__name__}: {_err}` when the check calls it."
         _preview = ""
     else:
         if _wraps is None:
@@ -130,9 +130,9 @@ def _(line_label_exa, mo, show_result):
     # Reactive check. Re-runs when you run the cell above.
     try:
         _label = line_label_exa(2, "Wrap", 4.50)
-    except Exception:
+    except Exception as _err:
         _ok = False
-        _msg = "Wrong: Still crashing. Read the error above and fix it before it reaches the check."
+        _msg = f"Wrong: your code stops with `{type(_err).__name__}: {_err}` when the check calls it."
         _preview = ""
     else:
         if _label is None:

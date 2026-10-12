@@ -4,7 +4,7 @@ import marimo
 app = marimo.App(width="medium", app_title="ex_04_b")
 
 
-@app.cell
+@app.cell(hide_code=True)
 def _():
     import marimo as mo
     return (mo,)
@@ -91,7 +91,7 @@ def _(mo, trace_exb):
     else:
         _msg = (
             "Wrong: a negative index counts from the end, so `-1` is "
-            "the last item, `\"Miso Ramen\"`. (This one is ungraded. The "
+            "the last item, `\"Miso Ramen\"`. (This one does not count. The "
             "point is the prediction.)"
         )
     mo.callout(mo.md(_msg), kind="info")
@@ -162,7 +162,7 @@ def _(mo, queue, queue_exb, show_result):
         _msg = "Not attempted: assign it to `queue_exb` (a `print` alone doesn't count) and run the cell."
     elif queue != _original:
         _ok = False
-        _msg = "Wrong: the ORIGINAL `queue` changed too. `.append()` edits in place; build a new list with `queue[1:] + [...]` instead."
+        _msg = "Wrong: the ORIGINAL `queue` changed too. `.append()` edits in place; build a new list with `queue[1:] + [...]` instead. Then run the given `queue = [...]` cell again to restore the original, and run your cell."
     elif queue_exb == _expected:
         _ok = True
         _msg = "Correct: `queue[1:] + [\"Green Curry\"]`: a fresh list, and the original is untouched."

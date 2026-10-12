@@ -9,12 +9,12 @@ subtitle: "How and when to use AI in this course"
 
 The course runs a phased AI policy, and the rules are different in each part.
 
-- **Part I (Sessions I-V): no AI.** You learn to read, write and debug Python yourself. The only assistant you may use is the **course chatbot** (the widget in the sidebar), and in Part I it deliberately explains and hints rather than handing you finished code.
-- **Part II (Sessions VI-IX): AI is allowed and taught.** From Session VI we work *with* AI on purpose. Checkpoints 4 and 5 explicitly allow AI.
+- **Part I (Sessions I-V): no AI.** You learn to read, write and debug Python yourself. The only assistant you may use is the **course chatbot** (on the course website), and in Part I it deliberately explains and hints rather than handing you finished code.
+- **Part II (Sessions VI-IX): AI is allowed and taught.** From Session VI we work *with* AI on purpose. Checkpoints 4 and 5 explicitly allow AI. One exception: Checkpoint 3, which opens Session VI, is still AI-free.
 - **Part III (Sessions X-XIII): AI is encouraged**, with disclosure. Use what makes you productive on your project.
 
 ::: callout-important
-**The disclosure rule.** Every submission that used AI says so. In Part II that is a one-line note on the submission saying what the AI was used for (Part I is AI-free, so there is nothing to disclose). For example: *"Used AI to explain a `KeyError` and to draft the docstring for `load_data()`."* In Part III it lives in a short section of your project repo's `README`: which tools you used, what for, and what you verified yourself. This is not about catching anyone out. Being able to say clearly what a tool did for you is part of using it well.
+**The disclosure rule.** It applies to your project in Part III: a short section of your project repo's `README` says which tools you used, what for, and what you verified yourself. For example: *"Used Mistral Vibe to explain a `KeyError` and to draft the chart code. Checked the totals against the CSV by hand."* Labs and checkpoints need no note. This is not about catching anyone out. Being able to say clearly what a tool did for you is part of using it well.
 :::
 
 The rest of this page shows you how to get a working, **zero-cost** AI setup. It costs nothing and needs no credit card. Everything happens on a schedule:
@@ -22,7 +22,7 @@ The rest of this page shows you how to get a working, **zero-cost** AI setup. It
 | When | What | Why then |
 |---|---|---|
 | **Session I** | Free [GitHub](https://github.com) account | Zed's student plan only accepts GitHub accounts **older than 30 days**, and your project lives on GitHub from Session X |
-| **Session VI** | Free Mistral account with the training opt-out, Zed student plan application | AI becomes allowed; the GitHub account is old enough now |
+| **Session VI** | Free Mistral account with the training opt-out, Zed student plan application | AI becomes allowed after Checkpoint 3; the GitHub account is old enough now |
 | **Session VII (in class)** | Install uv, Zed and Mistral Vibe | From Session VIII the labs run on your own machine |
 | **Before Session X** | Install git and the GitHub CLI | Session X puts your project on GitHub |
 
@@ -54,8 +54,8 @@ Do both before you paste real coursework anywhere.
 Zed is the editor we use from Session VIII on, and we install it together in class in Session VII. If you are an enrolled student, Zed gives you its paid plan for free, and you apply for it in **Session VI**, well before you need it:
 
 1. Go to [dashboard.zed.dev/education/apply](https://dashboard.zed.dev/education/apply) and **sign in with GitHub**. Zed requires the GitHub account to be **at least 30 days old**, which is why you created it in Session I.
-2. Submit your **KLU e-mail address** for verification. This can take up to 72 hours.
-3. Once verified you get **12 months of Zed Pro**: unlimited edit predictions and **$10/month in AI token credits**. Details at [zed.dev/education](https://zed.dev/education).
+2. Submit your **KLU e-mail address**. Zed checks the address against a public list of universities; you have to be enrolled and at least 18.
+3. Once verified you get **12 months of Zed Pro**: unlimited edit predictions and **$10/month in AI token credits**. The plan belongs to your GitHub account, so you use it by signing in to Zed with that account. Details at [zed.dev/education](https://zed.dev/education).
 
 ::: callout-note
 **The 12 months expire.** After 12 months the Student plan automatically downgrades to the free plan. It is a great head start, not a permanent free ride, so don't build a habit that depends on the credits lasting forever. This is exactly why the Mistral path above matters: it stays free, and nothing in the course depends on the plan.
@@ -65,7 +65,7 @@ If your KLU address isn't recognized by the verification system, or your GitHub 
 
 ## AI inside Zed: Mistral Vibe (Session VII, in class)
 
-The AI you program with from Session VIII is **[Mistral Vibe](https://docs.mistral.ai/vibe/code/overview)**, Mistral's coding agent (Mistral's own pages call this mode *Vibe Code*). It runs inside Zed's agent panel on your free Mistral account from Session VI. **We do this together in class in Session VII**, after [installing uv](uv.qmd). You don't need to do it earlier:
+The AI you program with from Session VIII is **[Mistral Vibe](https://docs.mistral.ai/vibe/code/overview)**, Mistral's coding agent (Mistral's own pages call this mode *Vibe Code*). It runs inside Zed's agent panel on your free Mistral account from Session VI. **We do this together in class in Session VII**, after [installing uv](uv.qmd). You don't need to do it earlier. Missed that session? Do the six steps at home before Session VIII; the last one is the check from class.
 
 1. **Install Zed** from [zed.dev](https://zed.dev) (macOS, Windows, Linux), run the installer, and open it once to confirm it launches.
 2. **Install Vibe** in a terminal. uv is already on your machine, so one command works on every system:
@@ -79,7 +79,15 @@ The AI you program with from Session VIII is **[Mistral Vibe](https://docs.mistr
 3. **Sign in.** Run `vibe` once in the terminal. The setup asks you to sign in with your Mistral account in the browser; use the account from Session VI. It saves the sign-in for future runs. Type `exit` to leave. If the sign-in does not work, create a key under **Code › Vibe CLI** at [chat.mistral.ai/code/extensions](https://chat.mistral.ai/code/extensions), copy it right away, and paste it when the setup asks. That key works on the free plan too.
 4. **Add it to Zed.** In Zed, open the command palette (`Cmd/Ctrl+Shift+P`) and run **`zed: acp registry`**. Find **Mistral Vibe** in the list and install it.
 
-5. **Try it.** Open the agent panel (the sparkle icon at the bottom right, or **`agent: new thread`** in the command palette), pick Mistral Vibe from the agent dropdown, and ask it something about an open file. If it answers, you're ready for Session VIII.
+5. **Open your course folder.** In Zed choose **File → Open Folder** and pick `python-labs`, the folder from the [uv guide](uv.qmd).
+
+6. **Check both tools.** Open Zed's terminal (`` Ctrl+` ``, or **`terminal panel: toggle`** in the command palette) and run:
+
+   ```bash
+   uv run python -c "import pandas, matplotlib; print('ready')"
+   ```
+
+   It prints `ready`. Then open the agent panel (the sparkle icon at the bottom right, or **`agent: new thread`** in the command palette), pick Mistral Vibe from the agent dropdown, and ask: *What does `main.py` do?* If the terminal prints `ready` and Vibe answers, you're set for Session VIII.
 
 ::: callout-warning
 **Already paying for ChatGPT or Claude?** You may use those in Zed's own agent under their own rules, but the course teaches and supports one path: Mistral Vibe. One trap to know: a **Claude Pro/Max subscription does not work** in Zed's built-in Anthropic provider, which bills separate API credits. Use the free Mistral account.
@@ -97,4 +105,4 @@ You now have:
 2. A free Mistral account for questions and explanations in Vibe, with both training switches turned off.
 3. A Zed student plan application on its way.
 4. From Session VII: Zed, with Mistral Vibe in its agent panel.
-5. The one habit that applies everywhere: a one-line AI-disclosure note on every submission that used AI.
+5. The disclosure rule: your project README says which AI tools you used, what for, and what you verified yourself.

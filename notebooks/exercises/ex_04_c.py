@@ -4,7 +4,7 @@ import marimo
 app = marimo.App(width="medium", app_title="ex_04_c")
 
 
-@app.cell
+@app.cell(hide_code=True)
 def _():
     import marimo as mo
     return (mo,)
@@ -87,9 +87,12 @@ def _(menu, menu_exc, mo, show_result):
     if menu_exc is None:
         _ok = False
         _msg = "Not attempted: assign it to `menu_exc` (a `print` alone doesn't count) and run the cell."
+    elif menu_exc == _expected and menu_exc is menu:
+        _ok = False
+        _msg = "Wrong: `menu_exc` looks right, but the ORIGINAL `menu` changed too. `menu_exc` and `menu` are two names for one dictionary; make a real copy with `dict(...)` first, then change the copy."
     elif menu_exc == _expected and menu != _original:
         _ok = False
-        _msg = "Wrong: `menu_exc` looks right, but the ORIGINAL `menu` changed too. You edited it through an alias; make a real copy with `dict(...)` first, then change the copy."
+        _msg = "Wrong: your copy is right, but `menu` still carries the changes from an earlier attempt. Run the given `menu = {...}` cell again to restore it, then run your cell."
     elif menu_exc == _expected:
         _ok = True
         _msg = "Correct: draft saved; the lab settles the final prices."

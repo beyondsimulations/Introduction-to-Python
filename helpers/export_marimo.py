@@ -1,6 +1,6 @@
 """Export marimo notebooks to WASM HTML under _site/notebooks/.
 
-Runs as a Quarto post-render step (after convert_qmd_to_md.py). Skips
+Runs as a Quarto post-render step. Skips
 underscore-prefixed files (templates). Lab notebooks and exercises
 (nb_*.py, exercises/ex_*.py) export editable (--mode edit); solution
 notebooks (solutions/sol_*.py) export read-only (--mode run) so students
@@ -21,6 +21,39 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parent.parent
 NOTEBOOKS = ROOT / "notebooks"
 OUT = ROOT / "_site" / "notebooks"
+
+# marimo boots an exported notebook from the embedded <marimo-code> and never reads
+# back what a save wrote (URL hash and localStorage), so a reload reset the notebook.
+# This keeps the tab's last save and hands it back on load (and to a download made
+# before the next save): a reload keeps the work, a new tab starts clean.
+# deploy_checkpoint.sh in the checkpoints repo injects the same script, and a test
+# there fails when the two differ. Gate: helpers/check_reload.py.
+# ponytail: reads marimo's one per-origin save slot; two tabs saving in the same
+# millisecond could cross. Add a notebook marker check if that ever shows.
+KEEP_ON_RELOAD = r"""<script>
+(() => {
+  const key = "saved:" + location.pathname;
+  const saved = sessionStorage.getItem(key);
+  addEventListener("hashchange", () => {
+    const code = JSON.parse(localStorage.getItem("marimo:file"));
+    if (code) sessionStorage.setItem(key, code);
+  });
+  if (!saved) return;
+  // A save writes a bare `app = marimo.App()`: put the notebook's own line back, so
+  // the page width and the download's file name survive the reload.
+  const el = document.querySelector("marimo-code");
+  const app = /^app = marimo\.App\(.*\)$/m;
+  const own = decodeURIComponent(el.textContent).match(app);
+  el.textContent = encodeURIComponent(own ? saved.replace(app, () => own[0]) : saved);
+  // "Download Python code" reads marimo's saved file, which is empty until the first
+  // save on this page: straight after a reload it would hand out 0 bytes.
+  const createUrl = URL.createObjectURL;
+  URL.createObjectURL = (blob) => {
+    const empty = blob instanceof Blob && blob.size === 0 && blob.type === "text/plain";
+    return createUrl.call(URL, empty ? new Blob([saved], { type: blob.type }) : blob);
+  };
+})();
+</script>"""
 
 
 def export(nb: Path, mode: str = "edit") -> bool:
@@ -55,6 +88,13 @@ def share_assets() -> None:
         # is off (0.23): cells then sit idle until Run all. Flip it so the notebook runs
         # on load (verified in headless Chromium, 2026-09-12).
         html = html.replace('auto_instantiate": false', 'auto_instantiate": true')
+        # Autosave is off in that config too: without Cmd/Ctrl+S nothing was saved and
+        # "Download Python code" handed out an empty file. Save one second after typing
+        # stops (verified in Chromium and WebKit, 2026-10-11).
+        html = html.replace('autosave": "off"', 'autosave": "after_delay"')
+        html = html.replace("</marimo-code>", "</marimo-code>\n" + KEEP_ON_RELOAD, 1)
+        if 'autosave": "after_delay"' not in html or KEEP_ON_RELOAD not in html:
+            sys.exit(f"{index}: autosave flag or <marimo-code> not found; marimo may have changed its export")
         index.write_text(html)
     # With the shared bundle, mo.notebook_location() resolves to _site/notebooks/,
     # so data files must live there too (spot-check 2026-09-12: pandas labs fetched

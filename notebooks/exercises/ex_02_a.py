@@ -4,7 +4,7 @@ import marimo
 app = marimo.App(width="medium", app_title="ex_02_a")
 
 
-@app.cell
+@app.cell(hide_code=True)
 def _():
     import marimo as mo
     return (mo,)
@@ -50,12 +50,12 @@ def _(mo):
 def _(mo):
     mo.md(
         r"""
-    The city's curfew starts at **22:00**. The kitchen opens at **11:00**.
-    An order comes in at `delivery_hour` below.
+    The city's curfew starts at **22:00**. An order comes in at
+    `delivery_hour` below.
 
     Write **one comparison expression** (no `if` yet, that comes next) that is
-    `True` when the kitchen is open and `False` otherwise, and store it in
-    `open_exa`. Predict the value before you run it.
+    `True` while the curfew has not started and `False` otherwise, and store
+    it in `open_exa`. Predict the value before you run it.
     """
     )
     return

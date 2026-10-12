@@ -253,8 +253,8 @@ B2. **Session VII install block** (after the lecture, before lab 07):
 
 Built on 2026-10-09: `lec_07` ends wrap-up, then `Leaving the Browser`
 (four slides: the three tools, uv and the `python-labs` folder, Zed and
-Vibe, the check), then the lab handoff. `lec_10` still carries its own
-toolchain slides until its rewrite.
+Vibe, the check), then the lab handoff. `lec_10` dropped its own
+toolchain slides in its rewrite (see B4).
 
 B3. **Session VIII:** one agent slide at the lab handoff: open the panel,
 ask, read the diff before accepting. This moves from the first half of
@@ -467,7 +467,8 @@ browser sign-in with a fresh free account the same day:
   window; `lec_06` cites it.
 - Done on 2026-10-09: `general/ai-tools.qmd` (names, sign-in, both opt-out
   paths, Session VII timing, Windows PATH line) and the three `lec_06`
-  mentions. Still saying "key from Session VI": `lec_09:590`, `lec_10:291`.
+  mentions. The two "key from Session VI" lines (`lec_09`, `lec_10`)
+  went with the rewrites of those slides.
 
 ## Checks closed on 2026-10-09 (owner)
 
@@ -498,3 +499,31 @@ browser sign-in with a fresh free account the same day:
   the ripple sweep, `CLAUDE.md`, the foundations pointer. Built
   2026-10-09; the sweep also fixed `lec_01:100,121`, the folder name in
   `general/uv.qmd:114` and added the Session VII install to the syllabus.
+
+## After the student walk-through (2026-10-09)
+
+Two simulated in-class students walked the whole course. The findings and the
+fix log are in the private repo (`docs/2026-10-09-student-walkthrough.md`),
+because they describe checkpoint tasks. Owner decisions that change this spec:
+
+- **Disclosure** applies to the project README only. The one-line note for
+  Part II submissions is gone from `lec_06`, `lec_07`, `lec_08`, the AI Tools
+  page and the cheatsheet.
+- **`lec_08` is reordered:** the DataFrame block comes before the AI block.
+  The exercises follow the new order (`ex_08_a` and `ex_08_b` are the
+  DataFrame ones, `ex_08_c` the AI one). The QR images are unchanged, since
+  each encodes its exercise address.
+- **`groupby` and the table-to-chart step** stay with the agent; the
+  `groupby` slide and the lab 09 handoff say so.
+- **`general/uv.qmd`** lost "Run scripts directly in Zed" and ends in the
+  `ready` check; the AI Tools page has six steps that end in the class check.
+  `lec_07` Step 1 no longer repeats the guide's commands (typed twice, they
+  nest `python-labs` in itself and break uv).
+- **Lab 07, Exercise 2.2** no longer asks for rounding.
+- **Script labs:** `display.max_columns` is set, the header says the lab is
+  not graded, lab 09 Task 6 counts each set of bars on its own (two bar
+  series are a valid answer).
+- **Checkpoint rules:** slides, cheatsheet and own notebooks may be open; no
+  people, no messaging; no AI in Checkpoints 1 to 3 (course chatbot
+  included); any AI tool in 4 and 5.
+
