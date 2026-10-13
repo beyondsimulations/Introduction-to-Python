@@ -102,7 +102,7 @@
     code span.vs { color: #032f62; } /* VerbatimString */
     code span.wa { color: #ff5555; } /* Warning */
   </style>
-  <link rel="stylesheet" href="../site_libs/revealjs/dist/theme/quarto-5d644e9b5db0a451b7d01f560e1f0bab.css">
+  <link rel="stylesheet" href="../site_libs/revealjs/dist/theme/quarto-80f0e3568d9715d52c6d0d32ce112840.css">
   <link href="../site_libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
   <link href="../site_libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
   <link href="../site_libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
@@ -279,7 +279,7 @@ Dr.&nbsp;Tobias Vlćek
 </section>
 <section id="the-investor-walks-in" class="slide level2">
 <h2>The investor walks in</h2>
-<p>Pens down. The checkpoint is over. On to Episode 6.</p>
+<p>On to Episode 6.</p>
 <div class="fragment">
 <p>An hour ago the <strong>investor</strong> walked into the shop unannounced. It’s <strong>due-diligence week</strong>: before she signs anything, she wants to see how this place actually runs. Tobi offered her a coffee and a spreadsheet he “mostly trusts.”</p>
 </div>
@@ -343,7 +343,9 @@ Dr.&nbsp;Tobias Vlćek
 <section id="the-context-window-2" class="slide level2">
 <h2>The context window (2)</h2>
 <ul>
-<li>Larger window: it remembers more of the conversation. Smaller: it forgets earlier turns</li>
+<li>Larger window: it remembers more of the conversation.</li>
+<li>Smaller: it forgets earlier turns</li>
+<li>Even with a huge window, it <span class="highlight">overlooks details</span>: the longer the chat, the more often a buried detail gets missed</li>
 <li><span class="highlight">Nothing outside the window exists for the model</span>: not your screen, not your intent</li>
 </ul>
 <div class="fragment">
@@ -364,7 +366,7 @@ Dr.&nbsp;Tobias Vlćek
 <p>Both are free, both are on the <a href="../general/ai-tools.html">AI Tools page</a>, together about ten minutes:</p>
 <ul>
 <li><strong>Mistral:</strong> a free account for <strong>Vibe</strong>, Mistral’s assistant (older guides call it Le Chat). The same account later powers the AI agent inside your editor</li>
-<li><strong>Zed student plan:</strong> sign in with the GitHub account you made in Session I (it’s old enough now) and apply with your KLU e-mail for a free year of Zed Pro. A bonus: the course works without it</li>
+<li><strong>Zed student plan:</strong> sign in with the GitHub account you made in Session I (it’s old enough now) and apply with your KLU e-mail for a free year of Zed Pro</li>
 </ul>
 <div class="fragment">
 <div class="callout callout-important callout-style-simple">
@@ -393,13 +395,13 @@ Dr.&nbsp;Tobias Vlćek
 <li>You <code>import</code> a module, then reach for the tools inside it with a dot: <code>math.ceil(...)</code></li>
 </ul>
 <div class="fragment">
-<p>Tobi has been hand-rolling arithmetic for months. The standard library did most of it before he was born.</p>
+<p>Tobi has been hand-rolling arithmetic for months…</p>
 </div>
 </section>
 <section id="import-math-stop-rounding-by-hand" class="slide level2">
 <h2><code>import math</code>: stop rounding by hand</h2>
 <p>130 pastries need to ship. They go in crates of 48. How many crates? You need to round <strong>up</strong>: a half-full crate still ships as a whole one.</p>
-<div id="f4a57a19" class="cell" data-execution_count="1">
+<div id="10bae89c" class="cell" data-execution_count="1">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a aria-label="1"></a><span class="im">import</span> math</span>
 <span id="cb1-2"><a aria-label="2"></a></span>
 <span id="cb1-3"><a aria-label="3"></a>pastries <span class="op">=</span> <span class="dv">130</span></span>
@@ -419,7 +421,7 @@ Dr.&nbsp;Tobias Vlćek
 <section id="from-statistics-import-..." class="slide level2">
 <h2><code>from statistics import ...</code></h2>
 <p>Sometimes you only want a couple of tools, not the whole box. Import them <strong>by name</strong> and use them directly, no <code>statistics.</code> prefix:</p>
-<div id="d82c8608" class="cell" data-execution_count="2">
+<div id="19a47a0d" class="cell" data-execution_count="2">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a aria-label="1"></a><span class="im">from</span> statistics <span class="im">import</span> mean, median</span>
 <span id="cb3-2"><a aria-label="2"></a></span>
 <span id="cb3-3"><a aria-label="3"></a>ratings <span class="op">=</span> [<span class="fl">4.5</span>, <span class="fl">4.8</span>, <span class="fl">1.0</span>, <span class="fl">5.0</span>, <span class="fl">4.2</span>]</span>
@@ -451,7 +453,7 @@ Dr.&nbsp;Tobias Vlćek
 <section id="aliases-a-shorter-name" class="slide level2">
 <h2>Aliases: a shorter name</h2>
 <p>Some module names are long, or you’ll type them fifty times. <code>import ... as</code> gives a module a <strong>nickname</strong> for the rest of the file:</p>
-<div id="cfb86fe4" class="cell" data-execution_count="3">
+<div id="ebcccdc0" class="cell" data-execution_count="3">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a aria-label="1"></a><span class="im">import</span> statistics <span class="im">as</span> stats</span>
 <span id="cb5-2"><a aria-label="2"></a></span>
 <span id="cb5-3"><a aria-label="3"></a><span class="bu">print</span>(stats.median([<span class="fl">4.5</span>, <span class="fl">4.8</span>, <span class="fl">1.0</span>, <span class="fl">5.0</span>, <span class="fl">4.2</span>]))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
@@ -479,7 +481,7 @@ Dr.&nbsp;Tobias Vlćek
 </section>
 <section id="answer-pi-exists-math-doesnt" class="slide level2">
 <h2>Answer: <code>pi</code> exists, <code>math</code> doesn’t</h2>
-<div id="98b6d4bc" class="cell" data-execution_count="5">
+<div id="5230b197" class="cell" data-execution_count="5">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a aria-label="1"></a><span class="im">from</span> math <span class="im">import</span> pi</span>
 <span id="cb8-2"><a aria-label="2"></a></span>
 <span id="cb8-3"><a aria-label="3"></a>radius <span class="op">=</span> <span class="dv">15</span></span>
@@ -498,7 +500,7 @@ Dr.&nbsp;Tobias Vlćek
 </div>
 <div class="fragment">
 <p>Use the name you imported, and it works:</p>
-<div id="5a98fb4f" class="cell" data-execution_count="6">
+<div id="b78aa7ad" class="cell" data-execution_count="6">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a aria-label="1"></a><span class="bu">print</span>(pi <span class="op">*</span> radius <span class="op">**</span> <span class="dv">2</span>)   <span class="co"># 706.858…: the imported name, no prefix</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <div class="cell fragment" data-execution_count="6">
@@ -540,7 +542,7 @@ Dr.&nbsp;Tobias Vlćek
 </section>
 <section id="answer-floor-always-goes-down" class="slide level2">
 <h2>Answer: floor always goes down</h2>
-<div id="389590db" class="cell" data-execution_count="7">
+<div id="229c1e32" class="cell" data-execution_count="7">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a aria-label="1"></a><span class="im">import</span> math</span>
 <span id="cb13-2"><a aria-label="2"></a><span class="bu">print</span>(math.floor(<span class="op">-</span><span class="fl">2.5</span>))   <span class="co"># down the number line → -3</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
@@ -576,7 +578,7 @@ Dr.&nbsp;Tobias Vlćek
 <section id="the-random-toolbox-1" class="slide level2">
 <h2>The <code>random</code> toolbox (1)</h2>
 <p>The investor wants to see how the shop copes with a <strong>busy day</strong>, but the busy day hasn’t happened yet. So we <em>rehearse</em> it with made-up numbers. The <code>random</code> module deals them:</p>
-<div id="835e8b3b" class="cell" data-execution_count="8">
+<div id="54e996c5" class="cell" data-execution_count="8">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb15"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a aria-label="1"></a><span class="im">import</span> random</span>
 <span id="cb15-2"><a aria-label="2"></a></span>
 <span id="cb15-3"><a aria-label="3"></a><span class="bu">print</span>(random.random())                       <span class="co"># a float in [0.0, 1.0)</span></span>
@@ -585,15 +587,15 @@ Dr.&nbsp;Tobias Vlćek
 </div>
 <div class="cell fragment" data-execution_count="8">
 <div class="cell-output cell-output-stdout">
-<pre><code>0.7250954739980731
-11
-mocha</code></pre>
+<pre><code>0.9634912516953094
+6
+tea</code></pre>
 </div>
 </div>
 </section>
 <section id="the-random-toolbox-2" class="slide level2">
 <h2>The <code>random</code> toolbox (2)</h2>
-<div id="d9b7f4da" class="cell" data-execution_count="9">
+<div id="49fd4a6d" class="cell" data-execution_count="9">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb17"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a aria-label="1"></a><span class="im">import</span> random</span>
 <span id="cb17-2"><a aria-label="2"></a></span>
 <span id="cb17-3"><a aria-label="3"></a>queue <span class="op">=</span> [<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">5</span>]</span>
@@ -602,7 +604,7 @@ mocha</code></pre>
 </div>
 <div class="cell fragment" data-execution_count="9">
 <div class="cell-output cell-output-stdout">
-<pre><code>[3, 5, 4, 2, 1]</code></pre>
+<pre><code>[4, 5, 2, 1, 3]</code></pre>
 </div>
 </div>
 <div class="fragment">
@@ -612,7 +614,7 @@ mocha</code></pre>
 <section id="run-it-again" class="slide level2">
 <h2>“Run it again”</h2>
 <p>The investor leans over and says: <strong>“Run it again.”</strong> Tobi does, and gets <strong>completely different numbers</strong>:</p>
-<div id="20682b9d" class="cell" data-execution_count="10">
+<div id="16ebf3e6" class="cell" data-execution_count="10">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb19"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a aria-label="1"></a><span class="im">import</span> random</span>
 <span id="cb19-2"><a aria-label="2"></a></span>
 <span id="cb19-3"><a aria-label="3"></a><span class="bu">print</span>([random.randint(<span class="dv">1</span>, <span class="dv">20</span>) <span class="cf">for</span> _ <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">5</span>)])   <span class="co"># _ : a loop name we never use</span></span>
@@ -620,8 +622,8 @@ mocha</code></pre>
 </div>
 <div class="cell fragment" data-execution_count="10">
 <div class="cell-output cell-output-stdout">
-<pre><code>[4, 20, 13, 8, 5]
-[19, 15, 4, 16, 16]</code></pre>
+<pre><code>[14, 9, 4, 8, 9]
+[3, 19, 5, 20, 8]</code></pre>
 </div>
 </div>
 <div class="fragment">
@@ -631,7 +633,7 @@ mocha</code></pre>
 <section id="random.seed-makes-luck-repeatable" class="slide level2">
 <h2><code>random.seed</code> makes luck repeatable</h2>
 <p><code>random.seed(n)</code> fixes the starting point of the number stream. Same seed → <strong>same sequence, every time</strong>:</p>
-<div id="8b9d4d7c" class="cell" data-execution_count="11">
+<div id="89f97ef5" class="cell" data-execution_count="11">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb21"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a aria-label="1"></a><span class="im">import</span> random</span>
 <span id="cb21-2"><a aria-label="2"></a></span>
 <span id="cb21-3"><a aria-label="3"></a>random.seed(<span class="dv">7</span>)</span>
@@ -666,14 +668,15 @@ mocha</code></pre>
 <span id="cb23-8"><a aria-label="8"></a>second <span class="op">=</span> random.choice(riders)</span>
 <span id="cb23-9"><a aria-label="9"></a></span>
 <span id="cb23-10"><a aria-label="10"></a><span class="bu">print</span>(first <span class="op">==</span> second)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p>a) <code>False</code>: <code>choice</code> picks freely, the seed only steers <code>randint</code> b) <code>True</code>: same seed, same stream, same pick c) an error: a seed can only be set once per program</p>
-<div class="fragment">
-<p><span class="question">Predict</span>. Pick a letter, then I reveal the answer.</p>
-</div>
+<p>a) <code>False</code>: <code>choice</code> picks freely, the seed only steers <code>randint</code></p>
+<ol start="2" type="a">
+<li><p><code>True</code>: same seed, same stream, same pick</p></li>
+<li><p>an error: a seed can only be set once per program</p></li>
+</ol>
 </section>
 <section id="answer-same-rider" class="slide level2">
 <h2>Answer: same rider</h2>
-<div id="4c4d1b82" class="cell" data-execution_count="12">
+<div id="e1aeedbd" class="cell" data-execution_count="12">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb24"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb24-1"><a aria-label="1"></a><span class="im">import</span> random</span>
 <span id="cb24-2"><a aria-label="2"></a></span>
 <span id="cb24-3"><a aria-label="3"></a>riders <span class="op">=</span> [<span class="st">"Ana"</span>, <span class="st">"Ben"</span>, <span class="st">"Cem"</span>, <span class="st">"Dana"</span>]</span>
@@ -707,14 +710,15 @@ Ben Ben</code></pre>
 <span id="cb26-6"><a aria-label="6"></a></span>
 <span id="cb26-7"><a aria-label="7"></a><span class="bu">print</span>(first)</span>
 <span id="cb26-8"><a aria-label="8"></a><span class="bu">print</span>(second)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p>a) different: the second list continues where the first stopped b) equal: the seed is set, so both come out the same c) an error: the stream is empty after three draws</p>
-<div class="fragment">
-<p><span class="question">Predict</span>. Pick a letter, then I reveal the answer.</p>
-</div>
+<p>a) different: the second list continues where the first stopped</p>
+<ol start="2" type="a">
+<li><p>equal: the seed is set, so both come out the same</p></li>
+<li><p>an error: the stream is empty after three draws</p></li>
+</ol>
 </section>
 <section id="answer-different" class="slide level2">
 <h2>Answer: different</h2>
-<div id="2a27ab10" class="cell" data-execution_count="13">
+<div id="20f8e3e1" class="cell" data-execution_count="13">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb27"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb27-1"><a aria-label="1"></a><span class="im">import</span> random</span>
 <span id="cb27-2"><a aria-label="2"></a></span>
 <span id="cb27-3"><a aria-label="3"></a>random.seed(<span class="dv">42</span>)</span>

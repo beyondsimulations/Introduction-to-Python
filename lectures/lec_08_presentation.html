@@ -102,7 +102,7 @@
     code span.vs { color: #032f62; } /* VerbatimString */
     code span.wa { color: #ff5555; } /* Warning */
   </style>
-  <link rel="stylesheet" href="../site_libs/revealjs/dist/theme/quarto-5d644e9b5db0a451b7d01f560e1f0bab.css">
+  <link rel="stylesheet" href="../site_libs/revealjs/dist/theme/quarto-80f0e3568d9715d52c6d0d32ce112840.css">
   <link href="../site_libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
   <link href="../site_libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
   <link href="../site_libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
@@ -279,7 +279,7 @@ Dr.&nbsp;Tobias Vlćek
 </section>
 <section id="show-me-the-data" class="slide level2">
 <h2>Show me the data</h2>
-<p>Pens down. The checkpoint is behind you. This morning rival chain MunchCorp bragged in a press release about their “data-driven growth.” The evidence attached: exactly <strong>one pie chart.</strong> The investor slid it across the table: <em>“Yours will be better. Show me the data.”</em></p>
+<p>This morning rival chain MunchCorp bragged in a press release about their “data-driven growth.” The evidence attached: exactly <strong>one pie chart.</strong> The investor slid it across the table: <em>“Yours will be better. Show me the data.”</em></p>
 <div class="fragment">
 <p>Tobi didn’t wait. He’d pasted the question into a chatbot, proudly turned the laptop around, and hit run:</p>
 <p><code>AttributeError: 'DataFrame' object has no attribute 'overview'</code></p>
@@ -308,7 +308,7 @@ Dr.&nbsp;Tobias Vlćek
 <section id="a-dataframe-from-a-dictionary" class="slide level2">
 <h2>A DataFrame from a dictionary</h2>
 <p>Keys become <strong>column names</strong>; each list becomes a <strong>column</strong>; one order per row, mixed types together:</p>
-<div id="32fa808c" class="cell" data-execution_count="1">
+<div id="711b3372" class="cell" data-execution_count="1">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a aria-label="1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
 <span id="cb1-2"><a aria-label="2"></a>df <span class="op">=</span> pd.DataFrame({</span>
 <span id="cb1-3"><a aria-label="3"></a>    <span class="st">"order_id"</span>:  [<span class="dv">101</span>, <span class="dv">102</span>, <span class="dv">103</span>, <span class="dv">104</span>, <span class="dv">105</span>],</span>
@@ -345,7 +345,7 @@ Dr.&nbsp;Tobias Vlćek
 <section id="first-look-.head-and-.info" class="slide level2">
 <h2>First look: <code>.head()</code> and <code>.info()</code></h2>
 <p>Glance at a table first. <code>.head()</code> shows the top rows; <code>.info()</code> is your first sanity check: right number of rows? Any surprising type?</p>
-<div id="a277a0f0" class="cell" data-execution_count="2">
+<div id="5a89f9fa" class="cell" data-execution_count="2">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a aria-label="1"></a><span class="bu">print</span>(df.head(<span class="dv">3</span>))     <span class="co"># first 3 rows</span></span>
 <span id="cb3-2"><a aria-label="2"></a>df.info()             <span class="co"># columns, dtypes, non-null counts</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
@@ -372,7 +372,7 @@ memory usage: 292.0+ bytes</code></pre>
 <section id="numbers-at-a-glance-.describe" class="slide level2">
 <h2>Numbers at a glance: <code>.describe()</code></h2>
 <p><code>.describe()</code> computes count, mean, min, max and quartiles for every <strong>numeric</strong> column at once:</p>
-<div id="de072293" class="cell" data-execution_count="3">
+<div id="ed88a3af" class="cell" data-execution_count="3">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a aria-label="1"></a><span class="bu">print</span>(df.describe())</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <div class="cell fragment" data-execution_count="3">
@@ -395,7 +395,7 @@ max    105.000000  4.00000  31.400000</code></pre>
 <section id="selecting-a-column" class="slide level2">
 <h2>Selecting a column</h2>
 <p>Pick one column by name:</p>
-<div id="72343d83" class="cell" data-execution_count="4">
+<div id="c61e1ad1" class="cell" data-execution_count="4">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a aria-label="1"></a><span class="bu">print</span>(df[<span class="st">"zone"</span>])                  <span class="co"># one column (a Series)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <div class="cell fragment" data-execution_count="4">
@@ -412,7 +412,7 @@ Name: zone, dtype: object</code></pre>
 <section id="filtering-rows" class="slide level2">
 <h2>Filtering rows</h2>
 <p>Keep rows with a <strong>boolean mask</strong>, exactly the NumPy idea from last session:</p>
-<div id="05dda9f8" class="cell" data-execution_count="5">
+<div id="b9edc4e4" class="cell" data-execution_count="5">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a aria-label="1"></a><span class="bu">print</span>(df[df[<span class="st">"zone"</span>] <span class="op">==</span> <span class="st">"Nord"</span>])    <span class="co"># only the Nord rows, case-sensitive!</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <div class="cell fragment" data-execution_count="5">
@@ -438,7 +438,7 @@ Name: zone, dtype: object</code></pre>
 </section>
 <section id="answer-a-mask-not-a-table" class="slide level2">
 <h2>Answer: a mask, not a table</h2>
-<div id="b36ab439" class="cell" data-execution_count="6">
+<div id="ad3c7c5a" class="cell" data-execution_count="6">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb12"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a aria-label="1"></a>big <span class="op">=</span> df[<span class="st">"total_eur"</span>] <span class="op">&gt;</span> <span class="dv">20</span></span>
 <span id="cb12-2"><a aria-label="2"></a><span class="bu">print</span>(big)              <span class="co"># the mask: a Series of booleans</span></span>
 <span id="cb12-3"><a aria-label="3"></a><span class="bu">print</span>(df[big])          <span class="co"># the rows: build the mask, then apply it</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
@@ -475,7 +475,7 @@ Name: total_eur, dtype: bool
 <section id="adding-a-column-sorting" class="slide level2">
 <h2>Adding a column, sorting</h2>
 <p>Compute a new column from existing ones, then sort. Work on a <strong>copy</strong> so the original stays intact:</p>
-<div id="78c16879" class="cell" data-execution_count="7">
+<div id="52156b16" class="cell" data-execution_count="7">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb14"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a aria-label="1"></a>priced <span class="op">=</span> df.copy()</span>
 <span id="cb14-2"><a aria-label="2"></a>priced[<span class="st">"eur_per_item"</span>] <span class="op">=</span> priced[<span class="st">"total_eur"</span>] <span class="op">/</span> priced[<span class="st">"items"</span>]</span>
 <span id="cb14-3"><a aria-label="3"></a><span class="bu">print</span>(priced.sort_values(<span class="st">"total_eur"</span>, ascending<span class="op">=</span><span class="va">False</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
@@ -505,7 +505,7 @@ Name: total_eur, dtype: bool
 </section>
 <section id="answer-an-empty-table-no-warning" class="slide level2">
 <h2>Answer: an empty table, no warning</h2>
-<div id="8f1ce706" class="cell" data-execution_count="8">
+<div id="11422cc6" class="cell" data-execution_count="8">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb17"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a aria-label="1"></a><span class="bu">print</span>(df[df[<span class="st">"zone"</span>] <span class="op">==</span> <span class="st">"nord"</span>])          <span class="co"># nothing matches "nord"</span></span>
 <span id="cb17-2"><a aria-label="2"></a><span class="bu">print</span>(<span class="st">"rows:"</span>, <span class="bu">len</span>(df[df[<span class="st">"zone"</span>] <span class="op">==</span> <span class="st">"nord"</span>]))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
@@ -587,7 +587,7 @@ rows: 0</code></pre>
 <section id="step-3-in-action" class="slide level2">
 <h2>Step 3 in action</h2>
 <p>Five orders with values you can add in your head, and the AI’s suggested line for the Nord average:</p>
-<div id="cf921c12" class="cell" data-execution_count="9">
+<div id="5a4f89e6" class="cell" data-execution_count="9">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb19"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a aria-label="1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
 <span id="cb19-2"><a aria-label="2"></a></span>
 <span id="cb19-3"><a aria-label="3"></a>check <span class="op">=</span> pd.DataFrame({</span>
@@ -616,7 +616,7 @@ rows: 0</code></pre>
 </section>
 <section id="answer-it-ran-and-its-wrong" class="slide level2">
 <h2>Answer: it ran, and it’s wrong</h2>
-<div id="88c988b2" class="cell" data-execution_count="10">
+<div id="19f2362a" class="cell" data-execution_count="10">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb22"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a aria-label="1"></a><span class="bu">print</span>(check[<span class="st">"total_eur"</span>].mean())                             <span class="co"># every zone</span></span>
 <span id="cb22-2"><a aria-label="2"></a><span class="bu">print</span>(check[check[<span class="st">"zone"</span>] <span class="op">==</span> <span class="st">"Nord"</span>][<span class="st">"total_eur"</span>].mean())    <span class="co"># Nord only</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
@@ -647,7 +647,7 @@ rows: 0</code></pre>
 </section>
 <section id="answer-the-method-never-existed" class="slide level2">
 <h2>Answer: the method never existed</h2>
-<div id="7ace682a" class="cell" data-execution_count="12">
+<div id="1b7e62b9" class="cell" data-execution_count="12">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb25"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb25-1"><a aria-label="1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
 <span id="cb25-2"><a aria-label="2"></a>orders <span class="op">=</span> pd.DataFrame({<span class="st">"zone"</span>: [<span class="st">"Nord"</span>, <span class="st">"Sued"</span>], <span class="st">"total_eur"</span>: [<span class="fl">12.0</span>, <span class="fl">9.5</span>]})</span>
 <span id="cb25-3"><a aria-label="3"></a>orders.summarize()                     <span class="co"># the method the AI invented</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
@@ -666,7 +666,7 @@ rows: 0</code></pre>
 </section>
 <section id="the-real-method-is-.describe" class="slide level2">
 <h2>The real method is <code>.describe()</code></h2>
-<div id="0d925b82" class="cell" data-execution_count="13">
+<div id="3dac8a19" class="cell" data-execution_count="13">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb26"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb26-1"><a aria-label="1"></a><span class="bu">print</span>(orders.describe())               <span class="co"># the method that actually exists</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <div class="cell fragment" data-execution_count="13">
