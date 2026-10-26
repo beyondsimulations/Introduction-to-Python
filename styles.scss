@@ -87,6 +87,7 @@ $lec-ansi: (
 ) !default;
 $lec-ansi-grey: $pi-light-ansi-bright-black !default;   // Julia's de-emphasised grey
 $lec-ansi-on-colour: $pi-light-ground !default;          // text on an ANSI background
+$lec-line-number: $pi-light-line-number !default;        // code-line-numbers; Quarto ignores the theme's LineNumbers
 // $lec-highlight is oxblood, the single red accent — the same colour as the
 // logo mark and the links (set in _brand.yml). It replaced #B3403F so every
 // red on the page is one identical red against the otherwise-teal system.
@@ -753,6 +754,11 @@ blockquote.blockquote {
 // an inline colour on it (a green on the yellow error marker: 1.1:1).
 .ansi-escaped-output [class*="-bg"][style*="color"] {
     color: $lec-ansi-on-colour !important;
+}
+
+// Line numbers (code-line-numbers) are link anchors; without this they take the link colour.
+pre.numberSource code > span > a:first-child::before {
+    color: $lec-line-number;
 }
 
 // Light/dark toggle: a moon in light mode and a sun in dark mode (the mode a
