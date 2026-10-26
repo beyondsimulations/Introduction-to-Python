@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.10.18">
+<meta name="generator" content="quarto-1.10.19">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -62,7 +62,26 @@ div.sourceCode
 @media screen {
 pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
-</style>
+/* CSS for citations */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+}
+.hanging-indent div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}</style>
 
 
 <script src="../site_libs/quarto-nav/quarto-nav.js"></script>
@@ -79,14 +98,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="../site_libs/quarto-html/anchor.min.js"></script>
 <link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-07311628652e75f956396d70ae2c81bf.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-dark-fcd1a2993490c2d386cd11edf595946f.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-07311628652e75f956396d70ae2c81bf.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-c83e01c5de7e11edcf7e0477bd36081a.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-dark-504ec941dad02d76af6a821403169689.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-c83e01c5de7e11edcf7e0477bd36081a.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
 <script src="../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../site_libs/bootstrap/bootstrap-6844bb52cee3e7fbfe81acb65d973808.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="../site_libs/bootstrap/bootstrap-dark-09117f53c5d8b16f9a1422bc490e73fb.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="light">
-<link href="../site_libs/bootstrap/bootstrap-6844bb52cee3e7fbfe81acb65d973808.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-5989edc7dfa2dae907796b0bc5d2d3f9.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-dark-1e2f07e646957ccbb5e174b671ee60cd.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="../site_libs/bootstrap/bootstrap-5989edc7dfa2dae907796b0bc5d2d3f9.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -125,7 +144,178 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 </head>
 
-<body class="nav-sidebar floating quarto-light">
+<body class="nav-sidebar floating quarto-light"><script id="quarto-html-before-body" type="application/javascript">
+    const toggleBodyColorMode = (bsSheetEl) => {
+      const mode = bsSheetEl.getAttribute("data-mode");
+      const bodyEl = window.document.querySelector("body");
+      if (mode === "dark") {
+        bodyEl.classList.add("quarto-dark");
+        bodyEl.classList.remove("quarto-light");
+      } else {
+        bodyEl.classList.add("quarto-light");
+        bodyEl.classList.remove("quarto-dark");
+      }
+    }
+    const toggleBodyColorPrimary = () => {
+      const bsSheetEl = window.document.querySelector("link#quarto-bootstrap:not([rel=disabled-stylesheet])");
+      if (bsSheetEl) {
+        toggleBodyColorMode(bsSheetEl);
+      }
+    }
+    const setColorSchemeToggle = (alternate) => {
+      const toggles = window.document.querySelectorAll('.quarto-color-scheme-toggle');
+      for (let i=0; i < toggles.length; i++) {
+        const toggle = toggles[i];
+        if (toggle) {
+          if (alternate) {
+            toggle.classList.add("alternate");
+          } else {
+            toggle.classList.remove("alternate");
+          }
+        }
+      }
+    };
+    const toggleColorMode = (alternate) => {
+      // Switch the stylesheets
+      const primaryStylesheets = window.document.querySelectorAll('link.quarto-color-scheme:not(.quarto-color-alternate)');
+      const alternateStylesheets = window.document.querySelectorAll('link.quarto-color-scheme.quarto-color-alternate');
+      manageTransitions('#quarto-margin-sidebar .nav-link', false);
+      if (alternate) {
+        // note: dark is layered on light, we don't disable primary!
+        enableStylesheet(alternateStylesheets);
+        for (const sheetNode of alternateStylesheets) {
+          if (sheetNode.id === "quarto-bootstrap") {
+            toggleBodyColorMode(sheetNode);
+          }
+        }
+      } else {
+        disableStylesheet(alternateStylesheets);
+        enableStylesheet(primaryStylesheets)
+        toggleBodyColorPrimary();
+      }
+      manageTransitions('#quarto-margin-sidebar .nav-link', true);
+      // Switch the toggles
+      setColorSchemeToggle(alternate)
+      // Hack to workaround the fact that safari doesn't
+      // properly recolor the scrollbar when toggling (#1455)
+      if (navigator.userAgent.indexOf('Safari') > 0 && navigator.userAgent.indexOf('Chrome') == -1) {
+        manageTransitions("body", false);
+        window.scrollTo(0, 1);
+        setTimeout(() => {
+          window.scrollTo(0, 0);
+          manageTransitions("body", true);
+        }, 40);
+      }
+    }
+    const disableStylesheet = (stylesheets) => {
+      for (let i=0; i < stylesheets.length; i++) {
+        const stylesheet = stylesheets[i];
+        stylesheet.rel = 'disabled-stylesheet';
+      }
+    }
+    const enableStylesheet = (stylesheets) => {
+      for (let i=0; i < stylesheets.length; i++) {
+        const stylesheet = stylesheets[i];
+        if(stylesheet.rel !== 'stylesheet') { // for Chrome, which will still FOUC without this check
+          stylesheet.rel = 'stylesheet';
+        }
+      }
+    }
+    const manageTransitions = (selector, allowTransitions) => {
+      const els = window.document.querySelectorAll(selector);
+      for (let i=0; i < els.length; i++) {
+        const el = els[i];
+        if (allowTransitions) {
+          el.classList.remove('notransition');
+        } else {
+          el.classList.add('notransition');
+        }
+      }
+    }
+    const isFileUrl = () => {
+      return window.location.protocol === 'file:';
+    }
+    const hasAlternateSentinel = () => {
+      let styleSentinel = getColorSchemeSentinel();
+      if (styleSentinel !== null) {
+        return styleSentinel === "alternate";
+      } else {
+        return false;
+      }
+    }
+    const setStyleSentinel = (alternate) => {
+      const value = alternate ? "alternate" : "default";
+      if (!isFileUrl()) {
+        window.localStorage.setItem("quarto-color-scheme", value);
+      } else {
+        localAlternateSentinel = value;
+      }
+    }
+    const getColorSchemeSentinel = () => {
+      if (!isFileUrl()) {
+        const storageValue = window.localStorage.getItem("quarto-color-scheme");
+        return storageValue != null ? storageValue : localAlternateSentinel;
+      } else {
+        return localAlternateSentinel;
+      }
+    }
+    const toggleGiscusIfUsed = (isAlternate, darkModeDefault) => {
+      const baseTheme = document.querySelector('#giscus-base-theme')?.value ?? 'light';
+      const alternateTheme = document.querySelector('#giscus-alt-theme')?.value ?? 'dark';
+      let newTheme = '';
+      if(authorPrefersDark) {
+        newTheme = isAlternate ? baseTheme : alternateTheme;
+      } else {
+        newTheme = isAlternate ? alternateTheme : baseTheme;
+      }
+      const changeGiscusTheme = () => {
+        // From: https://github.com/giscus/giscus/issues/336
+        const sendMessage = (message) => {
+          const iframe = document.querySelector('iframe.giscus-frame');
+          if (!iframe) return;
+          iframe.contentWindow.postMessage({ giscus: message }, 'https://giscus.app');
+        }
+        sendMessage({
+          setConfig: {
+            theme: newTheme
+          }
+        });
+      }
+      const isGiscussLoaded = window.document.querySelector('iframe.giscus-frame') !== null;
+      if (isGiscussLoaded) {
+        changeGiscusTheme();
+      }
+    };
+    const authorPrefersDark = false;
+    const queryPrefersDark = window.matchMedia('(prefers-color-scheme: dark)');
+    const darkModeDefault = queryPrefersDark.matches;
+      document.querySelector('link#quarto-text-highlighting-styles.quarto-color-scheme-extra').rel = 'disabled-stylesheet';
+      document.querySelector('link#quarto-bootstrap.quarto-color-scheme-extra').rel = 'disabled-stylesheet';
+    let localAlternateSentinel = darkModeDefault ? 'alternate' : 'default';
+    // Dark / light mode switch
+    window.quartoToggleColorScheme = () => {
+      // Read the current dark / light value
+      let toAlternate = !hasAlternateSentinel();
+      toggleColorMode(toAlternate);
+      setStyleSentinel(toAlternate);
+      toggleGiscusIfUsed(toAlternate, darkModeDefault);
+      window.dispatchEvent(new Event('resize'));
+    };
+    queryPrefersDark.addEventListener("change", e => {
+      if(window.localStorage.getItem("quarto-color-scheme") !== null)
+        return;
+      const alternate = e.matches
+      toggleColorMode(alternate);
+      localAlternateSentinel = e.matches ? 'alternate' : 'default'; // this is used alongside local storage!
+      toggleGiscusIfUsed(alternate, darkModeDefault);
+    });
+    // Switch to dark mode if need be
+    if (hasAlternateSentinel()) {
+      toggleColorMode(true);
+    } else {
+      toggleColorMode(false);
+    }
+  </script>
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
@@ -149,9 +339,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
     <div class="pt-lg-2 mt-2 text-left sidebar-header">
       <a href="../index.html" class="sidebar-logo-link">
-      <img src="../images/course-logo.svg" alt="Programming with Python" class="sidebar-logo light-content py-0 d-lg-inline d-none">
-      <img src="../images/course-logo.svg" alt="Programming with Python" class="sidebar-logo dark-content py-0 d-lg-inline d-none">
+      <img src="../images/course-logo.svg" alt="" class="sidebar-logo light-content py-0 d-lg-inline d-none">
+      <img src="../images/course-logo-dark.svg" alt="" class="sidebar-logo dark-content py-0 d-lg-inline d-none">
       </a>
+      <div class="sidebar-tools-main">
+  <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
+</div>
       </div>
         <div class="mt-2 flex-shrink-0 align-items-center">
         <div class="sidebar-search">
@@ -594,6 +787,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
+
 <header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../lectures/lec_07_scientific.html">07 Scientific Computing</a></li><li class="breadcrumb-item"><a href="../lectures/lec_07_scientific.html">Lecture</a></li></ol></nav>
 <div class="quarto-title">
 <h1 class="title">Lecture VII - NumPy for Scientific Computing</h1>
@@ -647,11 +841,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> math <span class="im">import</span> ceil</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="co"># which line works?</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p>a) <code>ceil(3.2)</code> b) <code>math.ceil(3.2)</code> c) both</p>
+<p>a) <code>ceil(3.2)</code><br>
+b) <code>math.ceil(3.2)</code><br>
+c) both</p>
 </section>
 <section id="answer-1" class="level2">
 <h2 class="anchored" data-anchor-id="answer-1">Answer 1</h2>
-<div id="88bc9969" class="cell" data-output-location="fragment" data-execution_count="2">
+<div id="503f874d" class="cell" data-output-location="fragment" data-execution_count="2">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> math <span class="im">import</span> ceil</span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(ceil(<span class="fl">3.2</span>))</span>
@@ -677,11 +873,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(random.randint(<span class="dv">1</span>, <span class="dv">20</span>))</span>
 <span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(random.randint(<span class="dv">1</span>, <span class="dv">20</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>Tobi runs this exact script today and again tomorrow. Tomorrow’s numbers are…</p>
-<p>a) different: random is random b) an error: seed 42 was already used c) the same three numbers</p>
+<p>a) different: random is random<br>
+b) an error: seed 42 was already used<br>
+c) the same three numbers</p>
 </section>
 <section id="answer-2" class="level2">
 <h2 class="anchored" data-anchor-id="answer-2">Answer 2</h2>
-<div id="0db31f35" class="cell" data-output-location="fragment" data-execution_count="3">
+<div id="3693d0c6" class="cell" data-output-location="fragment" data-execution_count="3">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> random</span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>random.seed(<span class="dv">42</span>)   <span class="co"># today</span></span>
@@ -701,11 +899,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>statistics.median([<span class="dv">9</span>, <span class="dv">2</span>, <span class="dv">5</span>])</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>returns…</p>
-<p>a) <code>2</code> b) <code>5</code> c) an error: the list is not sorted</p>
+<p>a) <code>2</code><br>
+b) <code>5</code><br>
+c) an error: the list is not sorted</p>
 </section>
 <section id="answer-3" class="level2">
 <h2 class="anchored" data-anchor-id="answer-3">Answer 3</h2>
-<div id="fb889a2b" class="cell" data-output-location="fragment" data-execution_count="4">
+<div id="789b5842" class="cell" data-output-location="fragment" data-execution_count="4">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> statistics</span>
 <span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>statistics.median([<span class="dv">9</span>, <span class="dv">2</span>, <span class="dv">5</span>])</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
@@ -721,7 +921,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="from-a-list-to-an-array" class="level2">
 <h2 class="anchored" data-anchor-id="from-a-list-to-an-array">From a list to an array</h2>
 <p>A <strong>NumPy array</strong> holds many numbers under one name, like a list, but built for math. You make one from a list, then ask it about itself:</p>
-<div id="618c7022" class="cell" data-output-location="fragment" data-execution_count="5">
+<div id="8f422257" class="cell" data-output-location="fragment" data-execution_count="5">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>prices <span class="op">=</span> np.array([<span class="fl">12.0</span>, <span class="fl">9.0</span>, <span class="fl">15.0</span>])</span>
@@ -745,7 +945,7 @@ float64
 <span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>gross <span class="op">=</span> []</span>
 <span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> p <span class="kw">in</span> [<span class="fl">12.0</span>, <span class="fl">9.0</span>, <span class="fl">15.0</span>]:</span>
 <span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a>    gross.append(p <span class="op">*</span> <span class="fl">1.19</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div id="383bb681" class="cell" data-output-location="fragment" data-execution_count="6">
+<div id="5a52a757" class="cell" data-output-location="fragment" data-execution_count="6">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>prices <span class="op">=</span> np.array([<span class="fl">12.0</span>, <span class="fl">9.0</span>, <span class="fl">15.0</span>])</span>
@@ -769,7 +969,7 @@ float64
 <section id="arrays-from-scratch" class="level2">
 <h2 class="anchored" data-anchor-id="arrays-from-scratch">Arrays from scratch</h2>
 <p>Two builders make evenly-spaced arrays without typing every number, handy for axes and ranges:</p>
-<div id="07f099f0" class="cell" data-output-location="fragment" data-execution_count="7">
+<div id="774c68ed" class="cell" data-output-location="fragment" data-execution_count="7">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(np.arange(<span class="dv">0</span>, <span class="dv">10</span>, <span class="dv">2</span>))     <span class="co"># start, stop (excluded), step</span></span>
@@ -785,12 +985,13 @@ float64
 <h2 class="anchored" data-anchor-id="predict-times-two">Predict: times two</h2>
 <p>Tobi multiplies a row of counts by two. What does this print?</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb17"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>([<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>] <span class="op">*</span> <span class="dv">2</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p>a) <code>[1, 2, 3, 1, 2, 3]</code> b) <code>[2, 4, 6]</code> c) an error</p>
-<p><span class="question">Predict</span>. Pick a letter, then I reveal the answer.</p>
+<p>a) <code>[1, 2, 3, 1, 2, 3]</code><br>
+b) <code>[2, 4, 6]</code><br>
+c) an error</p>
 </section>
 <section id="answer-repeat-versus-compute" class="level2">
 <h2 class="anchored" data-anchor-id="answer-repeat-versus-compute">Answer: repeat versus compute</h2>
-<div id="e58f1529" class="cell" data-output-location="fragment" data-execution_count="8">
+<div id="9fa8dd2e" class="cell" data-output-location="fragment" data-execution_count="8">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb18"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>([<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>] <span class="op">*</span> <span class="dv">2</span>)              <span class="co"># list → repeated</span></span>
@@ -807,12 +1008,13 @@ float64
 <h2 class="anchored" data-anchor-id="predict-plus">Predict: plus</h2>
 <p>Tobi adds this week’s zone counts to last week’s. What does this print?</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb20"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>([<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>] <span class="op">+</span> [<span class="dv">10</span>, <span class="dv">20</span>, <span class="dv">30</span>])</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p>a) <code>[11, 22, 33]</code>, added pairwise b) an error: lists don’t add c) <code>[1, 2, 3, 10, 20, 30]</code></p>
-<p><span class="question">Predict</span>. Pick a letter, then I reveal the answer.</p>
+<p>a) <code>[11, 22, 33]</code>, added pairwise<br>
+b) an error: lists don’t add<br>
+c) <code>[1, 2, 3, 10, 20, 30]</code></p>
 </section>
 <section id="answer-lists-glue-arrays-add" class="level2">
 <h2 class="anchored" data-anchor-id="answer-lists-glue-arrays-add">Answer: lists glue, arrays add</h2>
-<div id="51830feb" class="cell" data-output-location="fragment" data-execution_count="9">
+<div id="0d077d0f" class="cell" data-output-location="fragment" data-execution_count="9">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb21"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>([<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>] <span class="op">+</span> [<span class="dv">10</span>, <span class="dv">20</span>, <span class="dv">30</span>])                        <span class="co"># list → glued</span></span>
@@ -841,7 +1043,7 @@ float64
 <section id="a-comparison-makes-a-mask" class="level2">
 <h2 class="anchored" data-anchor-id="a-comparison-makes-a-mask">A comparison makes a mask</h2>
 <p>Compare an array to a number and you don’t get one <code>True</code>/<code>False</code>. You get a <strong>whole array</strong> of them, one per element. That’s a <strong>mask</strong>, and you can filter with it:</p>
-<div id="db10880a" class="cell" data-output-location="fragment" data-execution_count="10">
+<div id="9fab2116" class="cell" data-output-location="fragment" data-execution_count="10">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb23"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a>times <span class="op">=</span> np.array([<span class="dv">25</span>, <span class="dv">41</span>, <span class="dv">18</span>, <span class="dv">33</span>])</span>
@@ -857,7 +1059,7 @@ float64
 <section id="counting-without-a-loop" class="level2">
 <h2 class="anchored" data-anchor-id="counting-without-a-loop">Counting without a loop</h2>
 <p>A mask answers two investor questions at once. <code>.sum()</code> counts the <code>True</code>s (each counts as <code>1</code>); <code>.mean()</code> gives the <strong>share</strong> that are <code>True</code>:</p>
-<div id="2564bc51" class="cell" data-output-location="fragment" data-execution_count="11">
+<div id="5ae7d6de" class="cell" data-output-location="fragment" data-execution_count="11">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb25"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a>times <span class="op">=</span> np.array([<span class="dv">25</span>, <span class="dv">41</span>, <span class="dv">18</span>, <span class="dv">33</span>, <span class="dv">52</span>, <span class="dv">29</span>, <span class="dv">44</span>, <span class="dv">12</span>])</span>
@@ -877,12 +1079,13 @@ float64
 <h2 class="anchored" data-anchor-id="predict-counting-the-trues">Predict: counting the Trues</h2>
 <p>What does calling <code>.sum()</code> on the mask give?</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb27"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>((np.array([<span class="dv">1</span>, <span class="dv">5</span>, <span class="dv">3</span>]) <span class="op">&gt;</span> <span class="dv">2</span>).<span class="bu">sum</span>())</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p>a) <code>True</code> b) <code>2</code> c) <code>[False, True, True]</code></p>
-<p><span class="question">Predict</span>. Pick a letter, then I reveal the answer.</p>
+<p>a) <code>True</code><br>
+b) <code>2</code><br>
+c) <code>[False, True, True]</code></p>
 </section>
 <section id="answer-true-counts-as-1" class="level2">
 <h2 class="anchored" data-anchor-id="answer-true-counts-as-1">Answer: True counts as 1</h2>
-<div id="03abadf2" class="cell" data-output-location="fragment" data-execution_count="12">
+<div id="a1b6d6b3" class="cell" data-output-location="fragment" data-execution_count="12">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb28"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb28-3"><a href="#cb28-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(np.array([<span class="dv">1</span>, <span class="dv">5</span>, <span class="dv">3</span>]) <span class="op">&gt;</span> <span class="dv">2</span>)            <span class="co"># [False  True  True]</span></span>
@@ -900,12 +1103,13 @@ float64
 <p>The investor wants deliveries that took <strong>more than 20 and less than 40</strong> minutes. Tobi writes what he’d write for two numbers:</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb30"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a>times <span class="op">=</span> np.array([<span class="dv">25</span>, <span class="dv">41</span>, <span class="dv">18</span>, <span class="dv">33</span>])</span>
 <span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(times <span class="op">&gt;</span> <span class="dv">20</span> <span class="kw">and</span> times <span class="op">&lt;</span> <span class="dv">40</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p>a) an error: ambiguous truth value b) <code>[ True False False  True]</code> c) <code>True</code>, both sides hold somewhere</p>
-<p><span class="question">Predict</span>. Pick a letter, then I reveal the answer.</p>
+<p>a) an error: ambiguous truth value<br>
+b) <code>[ True False False  True]</code><br>
+c) <code>True</code>, both sides hold somewhere</p>
 </section>
 <section id="answer-one-and-four-truths" class="level2">
 <h2 class="anchored" data-anchor-id="answer-one-and-four-truths">Answer: one <code>and</code>, four truths</h2>
-<div id="30e492aa" class="cell" data-output-location="fragment" data-execution_count="13">
+<div id="eb8fbf1d" class="cell" data-output-location="fragment" data-execution_count="13">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb31"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb31-3"><a href="#cb31-3" aria-hidden="true" tabindex="-1"></a>times <span class="op">=</span> np.array([<span class="dv">25</span>, <span class="dv">41</span>, <span class="dv">18</span>, <span class="dv">33</span>])</span>
@@ -918,7 +1122,7 @@ float64
 </div>
 </div>
 <p><strong>a) an error</strong>. <code>and</code> asks the left side “are you true?”, and a four-element mask has no single answer. Between two masks use <code>&amp;</code>, and wrap each side in parentheses (<code>&amp;</code> binds tighter than <code>&gt;</code>):</p>
-<div id="4bf0e693" class="cell" data-output-location="fragment" data-execution_count="14">
+<div id="babc859a" class="cell" data-output-location="fragment" data-execution_count="14">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb32"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>((times <span class="op">&gt;</span> <span class="dv">20</span>) <span class="op">&amp;</span> (times <span class="op">&lt;</span> <span class="dv">40</span>))    <span class="co"># element by element: &amp; combines masks</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[ True False False  True]</code></pre>
@@ -941,7 +1145,7 @@ float64
 <section id="a-grid-of-numbers" class="level2">
 <h2 class="anchored" data-anchor-id="a-grid-of-numbers">A grid of numbers</h2>
 <p>Real data isn’t one row. Stack rows and you get a <strong>2D array</strong>: here three days (rows) across four zones (columns: Nord, Sued, Hafen, Altstadt):</p>
-<div id="3e655099" class="cell" data-output-location="fragment" data-execution_count="15">
+<div id="d124518b" class="cell" data-output-location="fragment" data-execution_count="15">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb34"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb34-2"><a href="#cb34-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb34-3"><a href="#cb34-3" aria-hidden="true" tabindex="-1"></a>deliveries <span class="op">=</span> np.array([[ <span class="dv">9</span>, <span class="dv">14</span>, <span class="dv">11</span>,  <span class="dv">6</span>],</span>
@@ -965,12 +1169,13 @@ float64
 <span id="cb36-4"><a href="#cb36-4" aria-hidden="true" tabindex="-1"></a>                 [<span class="dv">10</span>, <span class="dv">17</span>, <span class="dv">12</span>,  <span class="dv">8</span>],</span>
 <span id="cb36-5"><a href="#cb36-5" aria-hidden="true" tabindex="-1"></a>                 [ <span class="dv">7</span>, <span class="dv">11</span>,  <span class="dv">9</span>,  <span class="dv">5</span>]])</span>
 <span id="cb36-6"><a href="#cb36-6" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(grid.shape)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p>a) <code>(20,)</code> b) <code>(5, 4)</code> c) <code>(4, 5)</code></p>
-<p><span class="question">Predict</span>. Pick a letter, then I reveal the answer.</p>
+<p>a) <code>(20,)</code><br>
+b) <code>(5, 4)</code><br>
+c) <code>(4, 5)</code></p>
 </section>
 <section id="answer-rows-first-then-columns" class="level2">
 <h2 class="anchored" data-anchor-id="answer-rows-first-then-columns">Answer: rows first, then columns</h2>
-<div id="ea0253ac" class="cell" data-output-location="fragment" data-execution_count="16">
+<div id="0518b234" class="cell" data-output-location="fragment" data-execution_count="16">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb37"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb37-2"><a href="#cb37-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb37-3"><a href="#cb37-3" aria-hidden="true" tabindex="-1"></a>grid <span class="op">=</span> np.array([[ <span class="dv">9</span>, <span class="dv">14</span>, <span class="dv">11</span>,  <span class="dv">6</span>],</span>
@@ -1006,7 +1211,7 @@ float64
 <section id="axis-in-code" class="level2">
 <h2 class="anchored" data-anchor-id="axis-in-code"><code>axis</code> in code</h2>
 <p>The same grid, the same two collapses, one keyword each:</p>
-<div id="840ed7ca" class="cell" data-output-location="fragment" data-execution_count="17">
+<div id="1deef82b" class="cell" data-output-location="fragment" data-execution_count="17">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb40"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb40-2"><a href="#cb40-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb40-3"><a href="#cb40-3" aria-hidden="true" tabindex="-1"></a>deliveries <span class="op">=</span> np.array([[ <span class="dv">9</span>, <span class="dv">14</span>, <span class="dv">11</span>,  <span class="dv">6</span>],</span>
@@ -1034,7 +1239,7 @@ float64
 <section id="where-does-the-max-sit" class="level2">
 <h2 class="anchored" data-anchor-id="where-does-the-max-sit">Where does the max sit?</h2>
 <p>The per-zone totals answer “how many?”, but the investor asks “<strong>which</strong> zone?”. <code>argmax</code> tells you <strong>WHERE</strong> the maximum sits, as an index:</p>
-<div id="338a8115" class="cell" data-output-location="fragment" data-execution_count="18">
+<div id="eae9211f" class="cell" data-output-location="fragment" data-execution_count="18">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb42"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb42-2"><a href="#cb42-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb42-3"><a href="#cb42-3" aria-hidden="true" tabindex="-1"></a>deliveries <span class="op">=</span> np.array([[ <span class="dv">9</span>, <span class="dv">14</span>, <span class="dv">11</span>,  <span class="dv">6</span>],</span>
@@ -1054,12 +1259,13 @@ float64
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb44"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true" tabindex="-1"></a>week <span class="op">=</span> np.array([[ <span class="dv">9</span>, <span class="dv">14</span>, <span class="dv">11</span>,  <span class="dv">6</span>],</span>
 <span id="cb44-2"><a href="#cb44-2" aria-hidden="true" tabindex="-1"></a>                 [<span class="dv">15</span>, <span class="dv">12</span>,  <span class="dv">8</span>,  <span class="dv">9</span>],</span>
 <span id="cb44-3"><a href="#cb44-3" aria-hidden="true" tabindex="-1"></a>                 [<span class="dv">13</span>, <span class="dv">20</span>, <span class="dv">16</span>, <span class="dv">11</span>]])</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p>a) <code>week.sum(axis=1)</code> b) <code>week.sum()</code> c) <code>week.sum(axis=0)</code></p>
-<p><span class="question">Predict</span>. Pick a letter, then I reveal the answer.</p>
+<p>a) <code>week.sum(axis=1)</code><br>
+b) <code>week.sum()</code><br>
+c) <code>week.sum(axis=0)</code></p>
 </section>
 <section id="answer-days-collapse-zones-stay" class="level2">
 <h2 class="anchored" data-anchor-id="answer-days-collapse-zones-stay">Answer: days collapse, zones stay</h2>
-<div id="263da597" class="cell" data-output-location="fragment" data-execution_count="19">
+<div id="3c0d10e4" class="cell" data-output-location="fragment" data-execution_count="19">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb45"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb45-1"><a href="#cb45-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb45-2"><a href="#cb45-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb45-3"><a href="#cb45-3" aria-hidden="true" tabindex="-1"></a>week <span class="op">=</span> np.array([[ <span class="dv">9</span>, <span class="dv">14</span>, <span class="dv">11</span>,  <span class="dv">6</span>],</span>
@@ -1207,10 +1413,14 @@ float64
 <h1 class="title"><span class="flow">Literature</span></h1>
 <section id="books-to-start-with" class="level2">
 <h2 class="anchored" data-anchor-id="books-to-start-with">Books to start with</h2>
-<ul>
-<li>Downey, A. B. (2024). Think Python: How to think like a computer scientist (Third edition). O’Reilly. <a href="https://greenteapress.com/wp/think-python-3rd-edition/">Link to free online version</a></li>
-<li>Elter, S. (2021). Schrödinger programmiert Python: Das etwas andere Fachbuch (1. Auflage). Rheinwerk Verlag.</li>
-</ul>
+<div id="refs" class="references csl-bib-body hanging-indent" role="list">
+<div id="ref-downeyThinkPythonHow2024" class="csl-entry" role="listitem">
+Downey, Allen B. 2024. <em>Think <span>Python</span>: How to Think Like a Computer Scientist</em>. Third edition. O’Reilly. <a href="https://greenteapress.com/wp/think-python-3rd-edition/">https://greenteapress.com/wp/think-python-3rd-edition/</a>.
+</div>
+<div id="ref-elterSchroedingerProgrammiertPython2021" class="csl-entry" role="listitem">
+Elter, Stephan. 2021. <em><span>Schrödinger programmiert Python: das etwas andere Fachbuch</span></em>. 1. Auflage. <span>Rheinwerk Computing</span>. Rheinwerk Verlag.
+</div>
+</div>
 <div class="callout callout-style-simple callout-note">
 <div class="callout-body d-flex">
 <div class="callout-icon-container">
@@ -1230,6 +1440,19 @@ float64
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
   window.document.addEventListener("DOMContentLoaded", function (event) {
+    // Ensure there is a toggle, if there isn't float one in the top right
+    if (window.document.querySelector('.quarto-color-scheme-toggle') === null) {
+      const a = window.document.createElement('a');
+      a.classList.add('top-right');
+      a.classList.add('quarto-color-scheme-toggle');
+      a.href = "";
+      a.onclick = function() { try { window.quartoToggleColorScheme(); } catch {} return false; };
+      const i = window.document.createElement("i");
+      i.classList.add('bi');
+      a.appendChild(i);
+      window.document.body.appendChild(a);
+    }
+    setColorSchemeToggle(hasAlternateSentinel())
     const icon = "";
     const anchorJS = new window.AnchorJS();
     anchorJS.options = {

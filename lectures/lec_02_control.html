@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.10.18">
+<meta name="generator" content="quarto-1.10.19">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -62,7 +62,26 @@ div.sourceCode
 @media screen {
 pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
-</style>
+/* CSS for citations */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+}
+.hanging-indent div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}</style>
 
 
 <script src="../site_libs/quarto-nav/quarto-nav.js"></script>
@@ -79,14 +98,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="../site_libs/quarto-html/anchor.min.js"></script>
 <link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-07311628652e75f956396d70ae2c81bf.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-dark-fcd1a2993490c2d386cd11edf595946f.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-07311628652e75f956396d70ae2c81bf.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-c83e01c5de7e11edcf7e0477bd36081a.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-dark-504ec941dad02d76af6a821403169689.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-c83e01c5de7e11edcf7e0477bd36081a.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
 <script src="../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../site_libs/bootstrap/bootstrap-6844bb52cee3e7fbfe81acb65d973808.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="../site_libs/bootstrap/bootstrap-dark-09117f53c5d8b16f9a1422bc490e73fb.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="light">
-<link href="../site_libs/bootstrap/bootstrap-6844bb52cee3e7fbfe81acb65d973808.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-5989edc7dfa2dae907796b0bc5d2d3f9.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-dark-1e2f07e646957ccbb5e174b671ee60cd.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="../site_libs/bootstrap/bootstrap-5989edc7dfa2dae907796b0bc5d2d3f9.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -125,7 +144,178 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 </head>
 
-<body class="nav-sidebar floating quarto-light">
+<body class="nav-sidebar floating quarto-light"><script id="quarto-html-before-body" type="application/javascript">
+    const toggleBodyColorMode = (bsSheetEl) => {
+      const mode = bsSheetEl.getAttribute("data-mode");
+      const bodyEl = window.document.querySelector("body");
+      if (mode === "dark") {
+        bodyEl.classList.add("quarto-dark");
+        bodyEl.classList.remove("quarto-light");
+      } else {
+        bodyEl.classList.add("quarto-light");
+        bodyEl.classList.remove("quarto-dark");
+      }
+    }
+    const toggleBodyColorPrimary = () => {
+      const bsSheetEl = window.document.querySelector("link#quarto-bootstrap:not([rel=disabled-stylesheet])");
+      if (bsSheetEl) {
+        toggleBodyColorMode(bsSheetEl);
+      }
+    }
+    const setColorSchemeToggle = (alternate) => {
+      const toggles = window.document.querySelectorAll('.quarto-color-scheme-toggle');
+      for (let i=0; i < toggles.length; i++) {
+        const toggle = toggles[i];
+        if (toggle) {
+          if (alternate) {
+            toggle.classList.add("alternate");
+          } else {
+            toggle.classList.remove("alternate");
+          }
+        }
+      }
+    };
+    const toggleColorMode = (alternate) => {
+      // Switch the stylesheets
+      const primaryStylesheets = window.document.querySelectorAll('link.quarto-color-scheme:not(.quarto-color-alternate)');
+      const alternateStylesheets = window.document.querySelectorAll('link.quarto-color-scheme.quarto-color-alternate');
+      manageTransitions('#quarto-margin-sidebar .nav-link', false);
+      if (alternate) {
+        // note: dark is layered on light, we don't disable primary!
+        enableStylesheet(alternateStylesheets);
+        for (const sheetNode of alternateStylesheets) {
+          if (sheetNode.id === "quarto-bootstrap") {
+            toggleBodyColorMode(sheetNode);
+          }
+        }
+      } else {
+        disableStylesheet(alternateStylesheets);
+        enableStylesheet(primaryStylesheets)
+        toggleBodyColorPrimary();
+      }
+      manageTransitions('#quarto-margin-sidebar .nav-link', true);
+      // Switch the toggles
+      setColorSchemeToggle(alternate)
+      // Hack to workaround the fact that safari doesn't
+      // properly recolor the scrollbar when toggling (#1455)
+      if (navigator.userAgent.indexOf('Safari') > 0 && navigator.userAgent.indexOf('Chrome') == -1) {
+        manageTransitions("body", false);
+        window.scrollTo(0, 1);
+        setTimeout(() => {
+          window.scrollTo(0, 0);
+          manageTransitions("body", true);
+        }, 40);
+      }
+    }
+    const disableStylesheet = (stylesheets) => {
+      for (let i=0; i < stylesheets.length; i++) {
+        const stylesheet = stylesheets[i];
+        stylesheet.rel = 'disabled-stylesheet';
+      }
+    }
+    const enableStylesheet = (stylesheets) => {
+      for (let i=0; i < stylesheets.length; i++) {
+        const stylesheet = stylesheets[i];
+        if(stylesheet.rel !== 'stylesheet') { // for Chrome, which will still FOUC without this check
+          stylesheet.rel = 'stylesheet';
+        }
+      }
+    }
+    const manageTransitions = (selector, allowTransitions) => {
+      const els = window.document.querySelectorAll(selector);
+      for (let i=0; i < els.length; i++) {
+        const el = els[i];
+        if (allowTransitions) {
+          el.classList.remove('notransition');
+        } else {
+          el.classList.add('notransition');
+        }
+      }
+    }
+    const isFileUrl = () => {
+      return window.location.protocol === 'file:';
+    }
+    const hasAlternateSentinel = () => {
+      let styleSentinel = getColorSchemeSentinel();
+      if (styleSentinel !== null) {
+        return styleSentinel === "alternate";
+      } else {
+        return false;
+      }
+    }
+    const setStyleSentinel = (alternate) => {
+      const value = alternate ? "alternate" : "default";
+      if (!isFileUrl()) {
+        window.localStorage.setItem("quarto-color-scheme", value);
+      } else {
+        localAlternateSentinel = value;
+      }
+    }
+    const getColorSchemeSentinel = () => {
+      if (!isFileUrl()) {
+        const storageValue = window.localStorage.getItem("quarto-color-scheme");
+        return storageValue != null ? storageValue : localAlternateSentinel;
+      } else {
+        return localAlternateSentinel;
+      }
+    }
+    const toggleGiscusIfUsed = (isAlternate, darkModeDefault) => {
+      const baseTheme = document.querySelector('#giscus-base-theme')?.value ?? 'light';
+      const alternateTheme = document.querySelector('#giscus-alt-theme')?.value ?? 'dark';
+      let newTheme = '';
+      if(authorPrefersDark) {
+        newTheme = isAlternate ? baseTheme : alternateTheme;
+      } else {
+        newTheme = isAlternate ? alternateTheme : baseTheme;
+      }
+      const changeGiscusTheme = () => {
+        // From: https://github.com/giscus/giscus/issues/336
+        const sendMessage = (message) => {
+          const iframe = document.querySelector('iframe.giscus-frame');
+          if (!iframe) return;
+          iframe.contentWindow.postMessage({ giscus: message }, 'https://giscus.app');
+        }
+        sendMessage({
+          setConfig: {
+            theme: newTheme
+          }
+        });
+      }
+      const isGiscussLoaded = window.document.querySelector('iframe.giscus-frame') !== null;
+      if (isGiscussLoaded) {
+        changeGiscusTheme();
+      }
+    };
+    const authorPrefersDark = false;
+    const queryPrefersDark = window.matchMedia('(prefers-color-scheme: dark)');
+    const darkModeDefault = queryPrefersDark.matches;
+      document.querySelector('link#quarto-text-highlighting-styles.quarto-color-scheme-extra').rel = 'disabled-stylesheet';
+      document.querySelector('link#quarto-bootstrap.quarto-color-scheme-extra').rel = 'disabled-stylesheet';
+    let localAlternateSentinel = darkModeDefault ? 'alternate' : 'default';
+    // Dark / light mode switch
+    window.quartoToggleColorScheme = () => {
+      // Read the current dark / light value
+      let toAlternate = !hasAlternateSentinel();
+      toggleColorMode(toAlternate);
+      setStyleSentinel(toAlternate);
+      toggleGiscusIfUsed(toAlternate, darkModeDefault);
+      window.dispatchEvent(new Event('resize'));
+    };
+    queryPrefersDark.addEventListener("change", e => {
+      if(window.localStorage.getItem("quarto-color-scheme") !== null)
+        return;
+      const alternate = e.matches
+      toggleColorMode(alternate);
+      localAlternateSentinel = e.matches ? 'alternate' : 'default'; // this is used alongside local storage!
+      toggleGiscusIfUsed(alternate, darkModeDefault);
+    });
+    // Switch to dark mode if need be
+    if (hasAlternateSentinel()) {
+      toggleColorMode(true);
+    } else {
+      toggleColorMode(false);
+    }
+  </script>
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
@@ -149,9 +339,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
     <div class="pt-lg-2 mt-2 text-left sidebar-header">
       <a href="../index.html" class="sidebar-logo-link">
-      <img src="../images/course-logo.svg" alt="Programming with Python" class="sidebar-logo light-content py-0 d-lg-inline d-none">
-      <img src="../images/course-logo.svg" alt="Programming with Python" class="sidebar-logo dark-content py-0 d-lg-inline d-none">
+      <img src="../images/course-logo.svg" alt="" class="sidebar-logo light-content py-0 d-lg-inline d-none">
+      <img src="../images/course-logo-dark.svg" alt="" class="sidebar-logo dark-content py-0 d-lg-inline d-none">
       </a>
+      <div class="sidebar-tools-main">
+  <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
+</div>
       </div>
         <div class="mt-2 flex-shrink-0 align-items-center">
         <div class="sidebar-search">
@@ -601,6 +794,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
+
 <header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../lectures/lec_02_control.html">02 Control Flow</a></li><li class="breadcrumb-item"><a href="../lectures/lec_02_control.html">Lecture</a></li></ol></nav>
 <div class="quarto-title">
 <h1 class="title">Lecture II - Control Structures for Your Code</h1>
@@ -649,11 +843,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>Three questions from Episode 1. Commit. Hands up <strong>before</strong> the reveal.</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>price <span class="op">=</span> <span class="fl">8.90</span></span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"</span><span class="sc">{</span>price <span class="op">*</span> <span class="dv">2</span><span class="sc">:.2f}</span><span class="ss">"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p>a) <code>17.8</code> b) <code>17.80</code> c) <code>Error</code></p>
+<p>a) <code>17.8</code><br>
+b) <code>17.80</code><br>
+c) <code>Error</code></p>
 </section>
 <section id="answer-1" class="level2">
 <h2 class="anchored" data-anchor-id="answer-1">Answer 1</h2>
-<div id="c442de14" class="cell" data-output-location="fragment" data-execution_count="1">
+<div id="ed02a71f" class="cell" data-output-location="fragment" data-execution_count="1">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>price <span class="op">=</span> <span class="fl">8.90</span></span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"</span><span class="sc">{</span>price <span class="op">*</span> <span class="dv">2</span><span class="sc">:.2f}</span><span class="ss">"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
@@ -665,11 +861,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="question-2" class="level2">
 <h2 class="anchored" data-anchor-id="question-2">Question 2</h2>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="bu">type</span>(<span class="st">"9.99"</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p>a) <code>float</code> b) <code>int</code> c) <code>str</code></p>
+<p>a) <code>float</code><br>
+b) <code>int</code><br>
+c) <code>str</code></p>
 </section>
 <section id="answer-2" class="level2">
 <h2 class="anchored" data-anchor-id="answer-2">Answer 2</h2>
-<div id="ddee9981" class="cell" data-output-location="fragment" data-execution_count="2">
+<div id="9d8f0aef" class="cell" data-output-location="fragment" data-execution_count="2">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="bu">type</span>(<span class="st">"9.99"</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>&lt;class 'str'&gt;</code></pre>
@@ -680,11 +878,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="question-3" class="level2">
 <h2 class="anchored" data-anchor-id="question-3">Question 3</h2>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="dv">7</span> <span class="op">//</span> <span class="dv">2</span>, <span class="dv">7</span> <span class="op">%</span> <span class="dv">2</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p>a) <code>3.5 1</code> b) <code>3 1</code> c) <code>3 0.5</code></p>
+<p>a) <code>3.5 1</code><br>
+b) <code>3 1</code><br>
+c) <code>3 0.5</code></p>
 </section>
 <section id="answer-3" class="level2">
 <h2 class="anchored" data-anchor-id="answer-3">Answer 3</h2>
-<div id="1c02e0ca" class="cell" data-output-location="fragment" data-execution_count="3">
+<div id="147dd7f8" class="cell" data-output-location="fragment" data-execution_count="3">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="dv">7</span> <span class="op">//</span> <span class="dv">2</span>, <span class="dv">7</span> <span class="op">%</span> <span class="dv">2</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>3 1</code></pre>
@@ -698,7 +898,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="asking-a-yesno-question" class="level2">
 <h2 class="anchored" data-anchor-id="asking-a-yesno-question">Asking a yes/no question</h2>
 <p>A <strong>comparison</strong> asks a question and answers with a <strong>boolean</strong>: <code>True</code> or <code>False</code>, the <code>bool</code> type you met last week:</p>
-<div id="68b357c5" class="cell" data-output-location="fragment" data-execution_count="4">
+<div id="dc6cd943" class="cell" data-output-location="fragment" data-execution_count="4">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>delivery_hour <span class="op">=</span> <span class="dv">21</span></span>
 <span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(delivery_hour <span class="op">&lt;</span> <span class="dv">22</span>)    <span class="co"># before curfew?</span></span>
 <span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(delivery_hour <span class="op">==</span> <span class="dv">22</span>)   <span class="co"># exactly at curfew?</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
@@ -730,7 +930,7 @@ False</code></pre>
 <section id="combining-conditions" class="level2">
 <h2 class="anchored" data-anchor-id="combining-conditions">Combining conditions</h2>
 <p><code>and</code>, <code>or</code>, <code>not</code> glue booleans together:</p>
-<div id="80103b13" class="cell" data-output-location="fragment" data-execution_count="5">
+<div id="b19a47e0" class="cell" data-output-location="fragment" data-execution_count="5">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>is_weekday <span class="op">=</span> <span class="va">True</span></span>
 <span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>before_curfew <span class="op">=</span> <span class="dv">21</span> <span class="op">&lt;</span> <span class="dv">22</span></span>
 <span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(is_weekday <span class="kw">and</span> before_curfew)   <span class="co"># both must be True</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
@@ -746,12 +946,13 @@ False</code></pre>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>is_weekday <span class="op">=</span> <span class="va">True</span></span>
 <span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>before_curfew <span class="op">=</span> <span class="va">False</span></span>
 <span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="kw">not</span> is_weekday <span class="kw">and</span> before_curfew)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p>a) <code>True</code> b) <code>False</code> c) <code>Error</code></p>
-<p><span class="question">Predict</span>. Pick a letter, then I reveal the answer.</p>
+<p>a) <code>True</code><br>
+b) <code>False</code><br>
+c) <code>Error</code></p>
 </section>
 <section id="answer-not-binds-first" class="level2">
 <h2 class="anchored" data-anchor-id="answer-not-binds-first">Answer: <code>not</code> binds first</h2>
-<div id="14ab2b12" class="cell" data-output-location="fragment" data-execution_count="6">
+<div id="7337bf1c" class="cell" data-output-location="fragment" data-execution_count="6">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>is_weekday <span class="op">=</span> <span class="va">True</span></span>
 <span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>before_curfew <span class="op">=</span> <span class="va">False</span></span>
 <span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="kw">not</span> is_weekday <span class="kw">and</span> before_curfew)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
@@ -774,7 +975,7 @@ False</code></pre>
 <section id="if-do-something-only-when" class="level2">
 <h2 class="anchored" data-anchor-id="if-do-something-only-when"><code>if</code>: do something only when</h2>
 <p>An <code>if</code> runs its indented block <strong>only</strong> when the condition is <code>True</code>:</p>
-<div id="94ca64ef" class="cell" data-output-location="fragment" data-execution_count="7">
+<div id="ca3b85bd" class="cell" data-output-location="fragment" data-execution_count="7">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb17"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>delivery_hour <span class="op">=</span> <span class="dv">21</span></span>
 <span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> delivery_hour <span class="op">&lt;</span> <span class="dv">22</span>:</span>
 <span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">"Open: send the courier."</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
@@ -787,7 +988,7 @@ False</code></pre>
 <section id="if-else-two-paths" class="level2">
 <h2 class="anchored" data-anchor-id="if-else-two-paths"><code>if</code> / <code>else</code>: two paths</h2>
 <p><code>else</code> catches every case the <code>if</code> missed:</p>
-<div id="93bd9a99" class="cell" data-output-location="fragment" data-execution_count="8">
+<div id="f73754ec" class="cell" data-output-location="fragment" data-execution_count="8">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb19"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>delivery_hour <span class="op">=</span> <span class="dv">23</span></span>
 <span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> delivery_hour <span class="op">&lt;</span> <span class="dv">22</span>:</span>
 <span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">"Open: send the courier."</span>)</span>
@@ -801,7 +1002,7 @@ False</code></pre>
 <section id="if-elif-else-a-ladder" class="level2">
 <h2 class="anchored" data-anchor-id="if-elif-else-a-ladder"><code>if</code> / <code>elif</code> / <code>else</code>: a ladder</h2>
 <p>More than two cases? Stack <code>elif</code> branches. Reward loyal customers by tier:</p>
-<div id="03d4a04c" class="cell" data-output-location="fragment" data-execution_count="9">
+<div id="85b81130" class="cell" data-output-location="fragment" data-execution_count="9">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb21"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>past_orders <span class="op">=</span> <span class="dv">8</span></span>
 <span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> past_orders <span class="op">&gt;=</span> <span class="dv">20</span>:</span>
 <span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a>    tier <span class="op">=</span> <span class="st">"Gold"</span></span>
@@ -826,12 +1027,13 @@ False</code></pre>
 <span id="cb23-6"><a href="#cb23-6" aria-hidden="true" tabindex="-1"></a><span class="cf">else</span>:</span>
 <span id="cb23-7"><a href="#cb23-7" aria-hidden="true" tabindex="-1"></a>    tier <span class="op">=</span> <span class="st">"Bronze"</span></span>
 <span id="cb23-8"><a href="#cb23-8" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(tier)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p>a) <code>Gold</code> b) <code>Bronze</code> c) <code>Silver</code></p>
-<p><span class="question">Predict</span>. Pick a letter, then I reveal the answer.</p>
+<p>a) <code>Gold</code><br>
+b) <code>Bronze</code><br>
+c) <code>Silver</code></p>
 </section>
 <section id="answer-the-first-true-branch-wins" class="level2">
 <h2 class="anchored" data-anchor-id="answer-the-first-true-branch-wins">Answer: the first true branch wins</h2>
-<div id="fad8c0fc" class="cell" data-output-location="fragment" data-execution_count="10">
+<div id="bec43320" class="cell" data-output-location="fragment" data-execution_count="10">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb24"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a>past_orders <span class="op">=</span> <span class="dv">25</span></span>
 <span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> past_orders <span class="op">&gt;=</span> <span class="dv">5</span>:</span>
 <span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a>    tier <span class="op">=</span> <span class="st">"Silver"</span></span>
@@ -852,12 +1054,13 @@ False</code></pre>
 <p>The curfew is 22:00. An order comes in at <strong>exactly</strong> 22:00. What prints?</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb26"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a>delivery_hour <span class="op">=</span> <span class="dv">22</span></span>
 <span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(delivery_hour <span class="op">&lt;</span> <span class="dv">22</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p>a) <code>False</code> b) <code>True</code> c) <code>Error</code></p>
-<p><span class="question">Predict</span>. Pick a letter, then I reveal the answer.</p>
+<p>a) <code>False</code><br>
+b) <code>True</code><br>
+c) <code>Error</code></p>
 </section>
 <section id="answer-22-22" class="level2">
 <h2 class="anchored" data-anchor-id="answer-22-22">Answer: <code>22 &lt; 22</code></h2>
-<div id="021ca370" class="cell" data-output-location="fragment" data-execution_count="11">
+<div id="901a577c" class="cell" data-output-location="fragment" data-execution_count="11">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb27"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a>delivery_hour <span class="op">=</span> <span class="dv">22</span></span>
 <span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(delivery_hour <span class="op">&lt;</span> <span class="dv">22</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
@@ -882,7 +1085,7 @@ False</code></pre>
 <section id="the-copy-paste-pain" class="level2">
 <h2 class="anchored" data-anchor-id="the-copy-paste-pain">The copy-paste pain</h2>
 <p>Tobi totals the day’s orders by hand, one <code>print</code> per order:</p>
-<div id="5e44f741" class="cell" data-output-location="fragment" data-execution_count="12">
+<div id="64c38375" class="cell" data-output-location="fragment" data-execution_count="12">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb29"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Falafel Wrap"</span>)</span>
 <span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Pad Thai"</span>)</span>
 <span id="cb29-3"><a href="#cb29-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Miso Ramen"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
@@ -897,7 +1100,7 @@ Miso Ramen</code></pre>
 <section id="for-one-step-for-every-item" class="level2">
 <h2 class="anchored" data-anchor-id="for-one-step-for-every-item"><code>for</code>: one step for every item</h2>
 <p>A <strong>list</strong> holds several values in square brackets. A <strong><code>for</code> loop</strong> runs its block once for each item in it:</p>
-<div id="35fc8d69" class="cell" data-output-location="fragment" data-execution_count="13">
+<div id="0fd566e6" class="cell" data-output-location="fragment" data-execution_count="13">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb31"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a>menu <span class="op">=</span> [<span class="st">"Falafel Wrap"</span>, <span class="st">"Pad Thai"</span>, <span class="st">"Miso Ramen"</span>]</span>
 <span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> item <span class="kw">in</span> menu:</span>
 <span id="cb31-3"><a href="#cb31-3" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(item)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
@@ -912,7 +1115,7 @@ Miso Ramen</code></pre>
 <section id="the-accumulator-pattern" class="level2">
 <h2 class="anchored" data-anchor-id="the-accumulator-pattern">The accumulator pattern</h2>
 <p>Start a total at 0, then <strong>add each item</strong> as the loop visits it:</p>
-<div id="77f3a682" class="cell" data-output-location="fragment" data-execution_count="14">
+<div id="489d3755" class="cell" data-output-location="fragment" data-execution_count="14">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb33"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a>prices <span class="op">=</span> [<span class="fl">5.00</span>, <span class="fl">3.50</span>, <span class="fl">6.50</span>]</span>
 <span id="cb33-2"><a href="#cb33-2" aria-hidden="true" tabindex="-1"></a>total <span class="op">=</span> <span class="dv">0</span></span>
 <span id="cb33-3"><a href="#cb33-3" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> price <span class="kw">in</span> prices:</span>
@@ -927,7 +1130,7 @@ Miso Ramen</code></pre>
 <section id="range-count-without-a-list" class="level2">
 <h2 class="anchored" data-anchor-id="range-count-without-a-list"><code>range()</code>: count without a list</h2>
 <p><code>range(n)</code> counts from <code>0</code> up to, but <strong>not including</strong>, <code>n</code>:</p>
-<div id="1c3595c1" class="cell" data-output-location="fragment" data-execution_count="15">
+<div id="8d6dd77a" class="cell" data-output-location="fragment" data-execution_count="15">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb35"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">3</span>):</span>
 <span id="cb35-2"><a href="#cb35-2" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(i)      <span class="co"># ping the courier's phone 3 times</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
@@ -944,7 +1147,7 @@ Miso Ramen</code></pre>
 <li><code>range(start, stop)</code>: begin at <code>start</code>, stop before <code>stop</code></li>
 <li><code>range(start, stop, step)</code>: jump by <code>step</code> each time</li>
 </ul>
-<div id="27f63e23" class="cell" data-output-location="fragment" data-execution_count="16">
+<div id="2b0da40f" class="cell" data-output-location="fragment" data-execution_count="16">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb37"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="bu">list</span>(<span class="bu">range</span>(<span class="dv">2</span>, <span class="dv">5</span>)))       <span class="co"># list() shows the range as a list: 2, 3, 4</span></span>
 <span id="cb37-2"><a href="#cb37-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="bu">list</span>(<span class="bu">range</span>(<span class="dv">0</span>, <span class="dv">10</span>, <span class="dv">3</span>)))   <span class="co"># every 3rd order gets a flyer: 0, 3, 6, 9</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
@@ -960,12 +1163,13 @@ Miso Ramen</code></pre>
 <span id="cb39-2"><a href="#cb39-2" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> order <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">1</span>, <span class="dv">5</span>):</span>
 <span id="cb39-3"><a href="#cb39-3" aria-hidden="true" tabindex="-1"></a>    pings <span class="op">=</span> pings <span class="op">+</span> <span class="dv">1</span></span>
 <span id="cb39-4"><a href="#cb39-4" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(pings)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p>a) <code>4</code> b) <code>5</code> c) <code>1</code></p>
-<p><span class="question">Predict</span>. Pick a letter, then I reveal the answer.</p>
+<p>a) <code>4</code><br>
+b) <code>5</code><br>
+c) <code>1</code></p>
 </section>
 <section id="answer-range1-5-stops-before-5" class="level2">
 <h2 class="anchored" data-anchor-id="answer-range1-5-stops-before-5">Answer: <code>range(1, 5)</code> stops before 5</h2>
-<div id="5b80ac9d" class="cell" data-output-location="fragment" data-execution_count="17">
+<div id="95ebeb1d" class="cell" data-output-location="fragment" data-execution_count="17">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb40"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a>pings <span class="op">=</span> <span class="dv">0</span></span>
 <span id="cb40-2"><a href="#cb40-2" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> order <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">1</span>, <span class="dv">5</span>):</span>
 <span id="cb40-3"><a href="#cb40-3" aria-hidden="true" tabindex="-1"></a>    pings <span class="op">=</span> pings <span class="op">+</span> <span class="dv">1</span></span>
@@ -979,7 +1183,7 @@ Miso Ramen</code></pre>
 <section id="looping-over-a-string" class="level2">
 <h2 class="anchored" data-anchor-id="looping-over-a-string">Looping over a string</h2>
 <p>A string is a sequence too, and a <code>for</code> loop walks it character by character:</p>
-<div id="27163468" class="cell" data-output-location="fragment" data-execution_count="18">
+<div id="63cd6b0f" class="cell" data-output-location="fragment" data-execution_count="18">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb42"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> letter <span class="kw">in</span> <span class="st">"Pad"</span>:</span>
 <span id="cb42-2"><a href="#cb42-2" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(letter)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
@@ -992,7 +1196,7 @@ d</code></pre>
 <section id="a-loop-in-one-line-a-preview" class="level2">
 <h2 class="anchored" data-anchor-id="a-loop-in-one-line-a-preview">A loop in one line (a preview)</h2>
 <p>A <strong>list comprehension</strong> is a <code>for</code> loop compressed into one line that builds a list:</p>
-<div id="a42a3aec" class="cell" data-output-location="fragment" data-execution_count="19">
+<div id="473f981a" class="cell" data-output-location="fragment" data-execution_count="19">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb44"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true" tabindex="-1"></a>doubled <span class="op">=</span> [n <span class="op">*</span> <span class="dv">2</span> <span class="cf">for</span> n <span class="kw">in</span> [<span class="dv">4</span>, <span class="dv">5</span>, <span class="dv">6</span>]]</span>
 <span id="cb44-2"><a href="#cb44-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(doubled)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
@@ -1017,12 +1221,13 @@ d</code></pre>
 <span id="cb46-2"><a href="#cb46-2" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> n <span class="kw">in</span> [<span class="dv">10</span>, <span class="dv">20</span>]:</span>
 <span id="cb46-3"><a href="#cb46-3" aria-hidden="true" tabindex="-1"></a>    total <span class="op">=</span> total <span class="op">+</span> n</span>
 <span id="cb46-4"><a href="#cb46-4" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(total)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p>a) <code>10</code> b) <code>10</code> then <code>30</code> c) <code>30</code></p>
-<p><span class="question">Predict</span>. Pick a letter, then I reveal the answer.</p>
+<p>a) <code>10</code><br>
+b) <code>10</code> then <code>30</code><br>
+c) <code>30</code></p>
 </section>
 <section id="answer-the-unindented-print" class="level2">
 <h2 class="anchored" data-anchor-id="answer-the-unindented-print">Answer: the unindented <code>print</code></h2>
-<div id="79c81d8c" class="cell" data-output-location="fragment" data-execution_count="20">
+<div id="b4a85d3e" class="cell" data-output-location="fragment" data-execution_count="20">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb47"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb47-1"><a href="#cb47-1" aria-hidden="true" tabindex="-1"></a>total <span class="op">=</span> <span class="dv">0</span></span>
 <span id="cb47-2"><a href="#cb47-2" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> n <span class="kw">in</span> [<span class="dv">10</span>, <span class="dv">20</span>]:</span>
 <span id="cb47-3"><a href="#cb47-3" aria-hidden="true" tabindex="-1"></a>    total <span class="op">=</span> total <span class="op">+</span> n</span>
@@ -1049,7 +1254,7 @@ d</code></pre>
 <section id="while-repeat-as-long-as" class="level2">
 <h2 class="anchored" data-anchor-id="while-repeat-as-long-as"><code>while</code>: repeat as long as</h2>
 <p>A <strong><code>while</code> loop</strong> repeats <strong>as long as</strong> its condition stays <code>True</code>. Suppose MunchCorp undercuts you. Cut your price each round until you drop below their price:</p>
-<div id="926758fe" class="cell" data-output-location="fragment" data-execution_count="21">
+<div id="16ed2371" class="cell" data-output-location="fragment" data-execution_count="21">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb49"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb49-1"><a href="#cb49-1" aria-hidden="true" tabindex="-1"></a>price <span class="op">=</span> <span class="fl">10.00</span></span>
 <span id="cb49-2"><a href="#cb49-2" aria-hidden="true" tabindex="-1"></a>rounds <span class="op">=</span> <span class="dv">0</span></span>
 <span id="cb49-3"><a href="#cb49-3" aria-hidden="true" tabindex="-1"></a><span class="cf">while</span> price <span class="op">&gt;=</span> <span class="fl">7.00</span>:</span>
@@ -1084,7 +1289,7 @@ d</code></pre>
 <section id="break-an-early-exit" class="level2">
 <h2 class="anchored" data-anchor-id="break-an-early-exit"><code>break</code>: an early exit</h2>
 <p><code>break</code> jumps out of a loop immediately, handy with <code>while True</code>:</p>
-<div id="d4f8860a" class="cell" data-output-location="fragment" data-execution_count="22">
+<div id="162f1968" class="cell" data-output-location="fragment" data-execution_count="22">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb52"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb52-1"><a href="#cb52-1" aria-hidden="true" tabindex="-1"></a>count <span class="op">=</span> <span class="dv">0</span></span>
 <span id="cb52-2"><a href="#cb52-2" aria-hidden="true" tabindex="-1"></a><span class="cf">while</span> <span class="va">True</span>:</span>
 <span id="cb52-3"><a href="#cb52-3" aria-hidden="true" tabindex="-1"></a>    count <span class="op">=</span> count <span class="op">+</span> <span class="dv">1</span></span>
@@ -1110,7 +1315,7 @@ d</code></pre>
 <section id="cleaning-up-text" class="level2">
 <h2 class="anchored" data-anchor-id="cleaning-up-text">Cleaning up text</h2>
 <p>Tobi typed the daily special IN ALL CAPS with stray spaces. Strings have <strong>methods</strong> that return a cleaned-up <strong>copy</strong>:</p>
-<div id="5f11162d" class="cell" data-output-location="fragment" data-execution_count="23">
+<div id="21f4bac4" class="cell" data-output-location="fragment" data-execution_count="23">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb54"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb54-1"><a href="#cb54-1" aria-hidden="true" tabindex="-1"></a>raw <span class="op">=</span> <span class="st">"  miso ramen  "</span></span>
 <span id="cb54-2"><a href="#cb54-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(raw.strip())          <span class="co"># drop outer spaces</span></span>
 <span id="cb54-3"><a href="#cb54-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(raw.strip().title())  <span class="co"># then Capitalise Each Word</span></span>
@@ -1131,12 +1336,13 @@ moin</code></pre>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb56"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb56-1"><a href="#cb56-1" aria-hidden="true" tabindex="-1"></a>special <span class="op">=</span> <span class="st">"  miso ramen  "</span></span>
 <span id="cb56-2"><a href="#cb56-2" aria-hidden="true" tabindex="-1"></a>special.strip()</span>
 <span id="cb56-3"><a href="#cb56-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"["</span> <span class="op">+</span> special <span class="op">+</span> <span class="st">"]"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p>a) <code>Error</code> b) <code>[miso ramen]</code> c) <code>[  miso ramen  ]</code></p>
-<p><span class="question">Predict</span>. Pick a letter, then I reveal the answer.</p>
+<p>a) <code>Error</code><br>
+b) <code>[miso ramen]</code><br>
+c) <code>[  miso ramen  ]</code></p>
 </section>
 <section id="answer-.strip-hands-back-a-copy" class="level2">
 <h2 class="anchored" data-anchor-id="answer-.strip-hands-back-a-copy">Answer: <code>.strip()</code> hands back a copy</h2>
-<div id="2c516856" class="cell" data-output-location="fragment" data-execution_count="24">
+<div id="9b38755c" class="cell" data-output-location="fragment" data-execution_count="24">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb57"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb57-1"><a href="#cb57-1" aria-hidden="true" tabindex="-1"></a>special <span class="op">=</span> <span class="st">"  miso ramen  "</span></span>
 <span id="cb57-2"><a href="#cb57-2" aria-hidden="true" tabindex="-1"></a>special.strip()</span>
 <span id="cb57-3"><a href="#cb57-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"["</span> <span class="op">+</span> special <span class="op">+</span> <span class="st">"]"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
@@ -1149,7 +1355,7 @@ moin</code></pre>
 <section id="trimming-specific-characters" class="level2">
 <h2 class="anchored" data-anchor-id="trimming-specific-characters">Trimming specific characters</h2>
 <p><code>.strip()</code> drops spaces; <code>.rstrip("!")</code> drops trailing <code>!</code>. Chain them to fix Tobi’s shouting:</p>
-<div id="622c7414" class="cell" data-output-location="fragment" data-execution_count="25">
+<div id="cea0740b" class="cell" data-output-location="fragment" data-execution_count="25">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb59"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb59-1"><a href="#cb59-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"SALE!!!"</span>.rstrip(<span class="st">"!"</span>))            <span class="co"># SALE</span></span>
 <span id="cb59-2"><a href="#cb59-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"SALE!!!"</span>.rstrip(<span class="st">"!"</span>).title())    <span class="co"># Sale</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
@@ -1163,12 +1369,13 @@ Sale</code></pre>
 <h2 class="anchored" data-anchor-id="predict-chained-methods">Predict: chained methods</h2>
 <p>What does this print?</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb61"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb61-1"><a href="#cb61-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"  MOIN  "</span>.strip().lower())</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p>a) <code>MOIN</code> b) <code>moin</code> c) <code>Error</code></p>
-<p><span class="question">Predict</span>. Pick a letter, then I reveal the answer.</p>
+<p>a) <code>MOIN</code><br>
+b) <code>moin</code><br>
+c) <code>Error</code></p>
 </section>
 <section id="answer-moin-.strip.lower" class="level2">
 <h2 class="anchored" data-anchor-id="answer-moin-.strip.lower">Answer: <code>"  MOIN  ".strip().lower()</code></h2>
-<div id="ac151965" class="cell" data-output-location="fragment" data-execution_count="26">
+<div id="317bd998" class="cell" data-output-location="fragment" data-execution_count="26">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb62"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb62-1"><a href="#cb62-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"  MOIN  "</span>.strip().lower())</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>moin</code></pre>
@@ -1261,10 +1468,14 @@ Sale</code></pre>
 <h1 class="title"><span class="flow">Literature</span></h1>
 <section id="books-to-start-with" class="level2">
 <h2 class="anchored" data-anchor-id="books-to-start-with">Books to start with</h2>
-<ul>
-<li>Downey, A. B. (2024). Think Python: How to think like a computer scientist (Third edition). O’Reilly. <a href="https://greenteapress.com/wp/think-python-3rd-edition/">Link to free online version</a></li>
-<li>Elter, S. (2021). Schrödinger programmiert Python: Das etwas andere Fachbuch (1. Auflage). Rheinwerk Verlag.</li>
-</ul>
+<div id="refs" class="references csl-bib-body hanging-indent" role="list">
+<div id="ref-downeyThinkPythonHow2024" class="csl-entry" role="listitem">
+Downey, Allen B. 2024. <em>Think <span>Python</span>: How to Think Like a Computer Scientist</em>. Third edition. O’Reilly. <a href="https://greenteapress.com/wp/think-python-3rd-edition/">https://greenteapress.com/wp/think-python-3rd-edition/</a>.
+</div>
+<div id="ref-elterSchroedingerProgrammiertPython2021" class="csl-entry" role="listitem">
+Elter, Stephan. 2021. <em><span>Schrödinger programmiert Python: das etwas andere Fachbuch</span></em>. 1. Auflage. <span>Rheinwerk Computing</span>. Rheinwerk Verlag.
+</div>
+</div>
 <div class="callout callout-style-simple callout-note">
 <div class="callout-body d-flex">
 <div class="callout-icon-container">
@@ -1284,6 +1495,19 @@ Sale</code></pre>
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
   window.document.addEventListener("DOMContentLoaded", function (event) {
+    // Ensure there is a toggle, if there isn't float one in the top right
+    if (window.document.querySelector('.quarto-color-scheme-toggle') === null) {
+      const a = window.document.createElement('a');
+      a.classList.add('top-right');
+      a.classList.add('quarto-color-scheme-toggle');
+      a.href = "";
+      a.onclick = function() { try { window.quartoToggleColorScheme(); } catch {} return false; };
+      const i = window.document.createElement("i");
+      i.classList.add('bi');
+      a.appendChild(i);
+      window.document.body.appendChild(a);
+    }
+    setColorSchemeToggle(hasAlternateSentinel())
     const icon = "";
     const anchorJS = new window.AnchorJS();
     anchorJS.options = {

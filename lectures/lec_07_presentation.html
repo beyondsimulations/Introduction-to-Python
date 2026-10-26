@@ -7,8 +7,8 @@
 <script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
 <link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
 <link href="../site_libs/quarto-html/light-border.css" rel="stylesheet">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-bb62276ab45c84d9efd712f51ff97b5a.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
-  <meta name="generator" content="quarto-1.10.18">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-ef81ec0aa04ec788d96d47c07689f2e4.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
+  <meta name="generator" content="quarto-1.10.19">
 
   <meta name="author" content="Dr.&nbsp;Tobias Vlćek">
   <title>Programming with Python – Lecture VII - NumPy for Scientific Computing</title>
@@ -66,43 +66,62 @@
       }
     pre.numberSource { margin-left: 3em;  padding-left: 4px; }
     div.sourceCode
-      { color: #24292e;  }
+      { color: #484e54;  }
     @media screen {
     pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
     }
-    code span { color: #24292e; } /* Normal */
-    code span.al { color: #ff5555; font-weight: bold; } /* Alert */
-    code span.an { color: #6a737d; } /* Annotation */
-    code span.at { color: #d73a49; } /* Attribute */
-    code span.bn { color: #005cc5; } /* BaseN */
-    code span.bu { color: #d73a49; } /* BuiltIn */
-    code span.cf { color: #d73a49; } /* ControlFlow */
-    code span.ch { color: #032f62; } /* Char */
-    code span.cn { color: #005cc5; } /* Constant */
-    code span.co { color: #6a737d; } /* Comment */
-    code span.cv { color: #6a737d; } /* CommentVar */
-    code span.do { color: #6a737d; } /* Documentation */
-    code span.dt { color: #d73a49; } /* DataType */
-    code span.dv { color: #005cc5; } /* DecVal */
-    code span.er { color: #ff5555; text-decoration: underline; } /* Error */
-    code span.ex { color: #d73a49; font-weight: bold; } /* Extension */
-    code span.fl { color: #005cc5; } /* Float */
-    code span.fu { color: #6f42c1; } /* Function */
-    code span.im { color: #032f62; } /* Import */
-    code span.in { color: #6a737d; } /* Information */
-    code span.kw { color: #d73a49; } /* Keyword */
-    code span.op { color: #24292e; } /* Operator */
-    code span.ot { color: #6f42c1; } /* Other */
-    code span.pp { color: #d73a49; } /* Preprocessor */
-    code span.re { color: #6a737d; } /* RegionMarker */
-    code span.sc { color: #005cc5; } /* SpecialChar */
-    code span.ss { color: #032f62; } /* SpecialString */
-    code span.st { color: #032f62; } /* String */
-    code span.va { color: #e36209; } /* Variable */
-    code span.vs { color: #032f62; } /* VerbatimString */
-    code span.wa { color: #ff5555; } /* Warning */
-  </style>
-  <link rel="stylesheet" href="../site_libs/revealjs/dist/theme/quarto-3ebedfd5943667d95ee0f4b930f59a08.css">
+    code span { color: #484e54; } /* Normal */
+    code span.al { color: #9c1a20; } /* Alert */
+    code span.an { color: #21272e; font-style: italic; } /* Annotation */
+    code span.at { color: #b03557; } /* Attribute */
+    code span.bn { color: #a54c02; } /* BaseN */
+    code span.bu { color: #785503; } /* BuiltIn */
+    code span.cf { color: #1868a0; } /* ControlFlow */
+    code span.ch { color: #157171; } /* Char */
+    code span.cn { color: #a54c02; } /* Constant */
+    code span.co { color: #21272e; font-style: italic; } /* Comment */
+    code span.cv { color: #21272e; font-style: italic; } /* CommentVar */
+    code span.do { color: #21272e; font-style: italic; } /* Documentation */
+    code span.dt { color: #1868a0; } /* DataType */
+    code span.dv { color: #a54c02; } /* DecVal */
+    code span.er { color: #9c1a20; } /* Error */
+    code span.ex { color: #1868a0; } /* Extension */
+    code span.fl { color: #a54c02; } /* Float */
+    code span.fu { color: #785503; } /* Function */
+    code span.im { color: #1868a0; } /* Import */
+    code span.in { color: #21272e; font-style: italic; } /* Information */
+    code span.kw { color: #1868a0; } /* Keyword */
+    code span.op { color: #484e54; } /* Operator */
+    code span.ot { color: #484e54; } /* Other */
+    code span.pp { color: #b03557; } /* Preprocessor */
+    code span.re { color: #21272e; font-style: italic; } /* RegionMarker */
+    code span.sc { color: #a54c02; } /* SpecialChar */
+    code span.ss { color: #157171; } /* SpecialString */
+    code span.st { color: #157171; } /* String */
+    code span.va { color: #a54c02; } /* Variable */
+    code span.vs { color: #157171; } /* VerbatimString */
+    code span.wa { color: #a54c02; } /* Warning */
+    /* CSS for citations */
+    div.csl-bib-body { }
+    div.csl-entry {
+      clear: both;
+    }
+    .hanging-indent div.csl-entry {
+      margin-left:2em;
+      text-indent:-2em;
+    }
+    div.csl-left-margin {
+      min-width:2em;
+      float:left;
+    }
+    div.csl-right-inline {
+      margin-left:2em;
+      padding-left:1em;
+    }
+    div.csl-indent {
+      margin-left: 2em;
+    }  </style>
+  <link rel="stylesheet" href="../site_libs/revealjs/dist/theme/quarto-dde09005afcf5ed51cd5f615fcea3502.css">
   <link href="../site_libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
   <link href="../site_libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
   <link href="../site_libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
@@ -270,11 +289,13 @@ Dr.&nbsp;Tobias Vlćek
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a aria-label="1"></a><span class="im">from</span> math <span class="im">import</span> ceil</span>
 <span id="cb1-2"><a aria-label="2"></a></span>
 <span id="cb1-3"><a aria-label="3"></a><span class="co"># which line works?</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p>a) <code>ceil(3.2)</code> b) <code>math.ceil(3.2)</code> c) both</p>
+<p>a) <code>ceil(3.2)</code><br>
+b) <code>math.ceil(3.2)</code><br>
+c) both</p>
 </section>
 <section id="answer-1" class="slide level2">
 <h2>Answer 1</h2>
-<div id="88bc9969" class="cell" data-execution_count="2">
+<div id="503f874d" class="cell" data-execution_count="2">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a aria-label="1"></a><span class="im">from</span> math <span class="im">import</span> ceil</span>
 <span id="cb2-2"><a aria-label="2"></a></span>
 <span id="cb2-3"><a aria-label="3"></a><span class="bu">print</span>(ceil(<span class="fl">3.2</span>))</span>
@@ -304,11 +325,13 @@ Dr.&nbsp;Tobias Vlćek
 <span id="cb4-5"><a aria-label="5"></a><span class="bu">print</span>(random.randint(<span class="dv">1</span>, <span class="dv">20</span>))</span>
 <span id="cb4-6"><a aria-label="6"></a><span class="bu">print</span>(random.randint(<span class="dv">1</span>, <span class="dv">20</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>Tobi runs this exact script today and again tomorrow. Tomorrow’s numbers are…</p>
-<p>a) different: random is random b) an error: seed 42 was already used c) the same three numbers</p>
+<p>a) different: random is random<br>
+b) an error: seed 42 was already used<br>
+c) the same three numbers</p>
 </section>
 <section id="answer-2" class="slide level2">
 <h2>Answer 2</h2>
-<div id="0db31f35" class="cell" data-execution_count="3">
+<div id="3693d0c6" class="cell" data-execution_count="3">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a aria-label="1"></a><span class="im">import</span> random</span>
 <span id="cb5-2"><a aria-label="2"></a></span>
 <span id="cb5-3"><a aria-label="3"></a>random.seed(<span class="dv">42</span>)   <span class="co"># today</span></span>
@@ -332,11 +355,13 @@ Dr.&nbsp;Tobias Vlćek
 <span id="cb7-2"><a aria-label="2"></a></span>
 <span id="cb7-3"><a aria-label="3"></a>statistics.median([<span class="dv">9</span>, <span class="dv">2</span>, <span class="dv">5</span>])</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>returns…</p>
-<p>a) <code>2</code> b) <code>5</code> c) an error: the list is not sorted</p>
+<p>a) <code>2</code><br>
+b) <code>5</code><br>
+c) an error: the list is not sorted</p>
 </section>
 <section id="answer-3" class="slide level2">
 <h2>Answer 3</h2>
-<div id="fb889a2b" class="cell" data-execution_count="4">
+<div id="789b5842" class="cell" data-execution_count="4">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a aria-label="1"></a><span class="im">import</span> statistics</span>
 <span id="cb8-2"><a aria-label="2"></a></span>
 <span id="cb8-3"><a aria-label="3"></a>statistics.median([<span class="dv">9</span>, <span class="dv">2</span>, <span class="dv">5</span>])</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
@@ -358,7 +383,7 @@ Dr.&nbsp;Tobias Vlćek
 <section id="from-a-list-to-an-array" class="slide level2">
 <h2>From a list to an array</h2>
 <p>A <strong>NumPy array</strong> holds many numbers under one name, like a list, but built for math. You make one from a list, then ask it about itself:</p>
-<div id="618c7022" class="cell" data-execution_count="5">
+<div id="8f422257" class="cell" data-execution_count="5">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a aria-label="1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb10-2"><a aria-label="2"></a></span>
 <span id="cb10-3"><a aria-label="3"></a>prices <span class="op">=</span> np.array([<span class="fl">12.0</span>, <span class="fl">9.0</span>, <span class="fl">15.0</span>])</span>
@@ -386,7 +411,7 @@ float64
 <span id="cb12-2"><a aria-label="2"></a>gross <span class="op">=</span> []</span>
 <span id="cb12-3"><a aria-label="3"></a><span class="cf">for</span> p <span class="kw">in</span> [<span class="fl">12.0</span>, <span class="fl">9.0</span>, <span class="fl">15.0</span>]:</span>
 <span id="cb12-4"><a aria-label="4"></a>    gross.append(p <span class="op">*</span> <span class="fl">1.19</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div id="383bb681" class="cell" data-execution_count="6">
+<div id="5a52a757" class="cell" data-execution_count="6">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a aria-label="1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb13-2"><a aria-label="2"></a></span>
 <span id="cb13-3"><a aria-label="3"></a>prices <span class="op">=</span> np.array([<span class="fl">12.0</span>, <span class="fl">9.0</span>, <span class="fl">15.0</span>])</span>
@@ -416,7 +441,7 @@ float64
 <section id="arrays-from-scratch" class="slide level2">
 <h2>Arrays from scratch</h2>
 <p>Two builders make evenly-spaced arrays without typing every number, handy for axes and ranges:</p>
-<div id="07f099f0" class="cell" data-execution_count="7">
+<div id="774c68ed" class="cell" data-execution_count="7">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb15"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a aria-label="1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb15-2"><a aria-label="2"></a></span>
 <span id="cb15-3"><a aria-label="3"></a><span class="bu">print</span>(np.arange(<span class="dv">0</span>, <span class="dv">10</span>, <span class="dv">2</span>))     <span class="co"># start, stop (excluded), step</span></span>
@@ -436,14 +461,13 @@ float64
 <h2>Predict: times two</h2>
 <p>Tobi multiplies a row of counts by two. What does this print?</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb17"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a aria-label="1"></a><span class="bu">print</span>([<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>] <span class="op">*</span> <span class="dv">2</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p>a) <code>[1, 2, 3, 1, 2, 3]</code> b) <code>[2, 4, 6]</code> c) an error</p>
-<div class="fragment">
-<p><span class="question">Predict</span>. Pick a letter, then I reveal the answer.</p>
-</div>
+<p>a) <code>[1, 2, 3, 1, 2, 3]</code><br>
+b) <code>[2, 4, 6]</code><br>
+c) an error</p>
 </section>
 <section id="answer-repeat-versus-compute" class="slide level2">
 <h2>Answer: repeat versus compute</h2>
-<div id="e58f1529" class="cell" data-execution_count="8">
+<div id="9fa8dd2e" class="cell" data-execution_count="8">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb18"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a aria-label="1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb18-2"><a aria-label="2"></a></span>
 <span id="cb18-3"><a aria-label="3"></a><span class="bu">print</span>([<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>] <span class="op">*</span> <span class="dv">2</span>)              <span class="co"># list → repeated</span></span>
@@ -466,14 +490,13 @@ float64
 <h2>Predict: plus</h2>
 <p>Tobi adds this week’s zone counts to last week’s. What does this print?</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb20"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a aria-label="1"></a><span class="bu">print</span>([<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>] <span class="op">+</span> [<span class="dv">10</span>, <span class="dv">20</span>, <span class="dv">30</span>])</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p>a) <code>[11, 22, 33]</code>, added pairwise b) an error: lists don’t add c) <code>[1, 2, 3, 10, 20, 30]</code></p>
-<div class="fragment">
-<p><span class="question">Predict</span>. Pick a letter, then I reveal the answer.</p>
-</div>
+<p>a) <code>[11, 22, 33]</code>, added pairwise<br>
+b) an error: lists don’t add<br>
+c) <code>[1, 2, 3, 10, 20, 30]</code></p>
 </section>
 <section id="answer-lists-glue-arrays-add" class="slide level2">
 <h2>Answer: lists glue, arrays add</h2>
-<div id="51830feb" class="cell" data-execution_count="9">
+<div id="0d077d0f" class="cell" data-execution_count="9">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb21"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a aria-label="1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb21-2"><a aria-label="2"></a></span>
 <span id="cb21-3"><a aria-label="3"></a><span class="bu">print</span>([<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>] <span class="op">+</span> [<span class="dv">10</span>, <span class="dv">20</span>, <span class="dv">30</span>])                        <span class="co"># list → glued</span></span>
@@ -512,7 +535,7 @@ float64
 <section id="a-comparison-makes-a-mask" class="slide level2">
 <h2>A comparison makes a mask</h2>
 <p>Compare an array to a number and you don’t get one <code>True</code>/<code>False</code>. You get a <strong>whole array</strong> of them, one per element. That’s a <strong>mask</strong>, and you can filter with it:</p>
-<div id="db10880a" class="cell" data-execution_count="10">
+<div id="9fab2116" class="cell" data-execution_count="10">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb23"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a aria-label="1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb23-2"><a aria-label="2"></a></span>
 <span id="cb23-3"><a aria-label="3"></a>times <span class="op">=</span> np.array([<span class="dv">25</span>, <span class="dv">41</span>, <span class="dv">18</span>, <span class="dv">33</span>])</span>
@@ -532,7 +555,7 @@ float64
 <section id="counting-without-a-loop" class="slide level2">
 <h2>Counting without a loop</h2>
 <p>A mask answers two investor questions at once. <code>.sum()</code> counts the <code>True</code>s (each counts as <code>1</code>); <code>.mean()</code> gives the <strong>share</strong> that are <code>True</code>:</p>
-<div id="2564bc51" class="cell" data-execution_count="11">
+<div id="5ae7d6de" class="cell" data-execution_count="11">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb25"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb25-1"><a aria-label="1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb25-2"><a aria-label="2"></a></span>
 <span id="cb25-3"><a aria-label="3"></a>times <span class="op">=</span> np.array([<span class="dv">25</span>, <span class="dv">41</span>, <span class="dv">18</span>, <span class="dv">33</span>, <span class="dv">52</span>, <span class="dv">29</span>, <span class="dv">44</span>, <span class="dv">12</span>])</span>
@@ -556,14 +579,13 @@ float64
 <h2>Predict: counting the Trues</h2>
 <p>What does calling <code>.sum()</code> on the mask give?</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb27"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb27-1"><a aria-label="1"></a><span class="bu">print</span>((np.array([<span class="dv">1</span>, <span class="dv">5</span>, <span class="dv">3</span>]) <span class="op">&gt;</span> <span class="dv">2</span>).<span class="bu">sum</span>())</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p>a) <code>True</code> b) <code>2</code> c) <code>[False, True, True]</code></p>
-<div class="fragment">
-<p><span class="question">Predict</span>. Pick a letter, then I reveal the answer.</p>
-</div>
+<p>a) <code>True</code><br>
+b) <code>2</code><br>
+c) <code>[False, True, True]</code></p>
 </section>
 <section id="answer-true-counts-as-1" class="slide level2">
 <h2>Answer: True counts as 1</h2>
-<div id="03abadf2" class="cell" data-execution_count="12">
+<div id="a1b6d6b3" class="cell" data-execution_count="12">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb28"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb28-1"><a aria-label="1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb28-2"><a aria-label="2"></a></span>
 <span id="cb28-3"><a aria-label="3"></a><span class="bu">print</span>(np.array([<span class="dv">1</span>, <span class="dv">5</span>, <span class="dv">3</span>]) <span class="op">&gt;</span> <span class="dv">2</span>)            <span class="co"># [False  True  True]</span></span>
@@ -587,14 +609,13 @@ float64
 <p>The investor wants deliveries that took <strong>more than 20 and less than 40</strong> minutes. Tobi writes what he’d write for two numbers:</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb30"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb30-1"><a aria-label="1"></a>times <span class="op">=</span> np.array([<span class="dv">25</span>, <span class="dv">41</span>, <span class="dv">18</span>, <span class="dv">33</span>])</span>
 <span id="cb30-2"><a aria-label="2"></a><span class="bu">print</span>(times <span class="op">&gt;</span> <span class="dv">20</span> <span class="kw">and</span> times <span class="op">&lt;</span> <span class="dv">40</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p>a) an error: ambiguous truth value b) <code>[ True False False  True]</code> c) <code>True</code>, both sides hold somewhere</p>
-<div class="fragment">
-<p><span class="question">Predict</span>. Pick a letter, then I reveal the answer.</p>
-</div>
+<p>a) an error: ambiguous truth value<br>
+b) <code>[ True False False  True]</code><br>
+c) <code>True</code>, both sides hold somewhere</p>
 </section>
 <section id="answer-one-and-four-truths" class="slide level2">
 <h2>Answer: one <code>and</code>, four truths</h2>
-<div id="30e492aa" class="cell" data-execution_count="13">
+<div id="eb8fbf1d" class="cell" data-execution_count="13">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb31"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb31-1"><a aria-label="1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb31-2"><a aria-label="2"></a></span>
 <span id="cb31-3"><a aria-label="3"></a>times <span class="op">=</span> np.array([<span class="dv">25</span>, <span class="dv">41</span>, <span class="dv">18</span>, <span class="dv">33</span>])</span>
@@ -610,7 +631,7 @@ float64
 </div>
 <div class="fragment">
 <p><strong>a) an error</strong>. <code>and</code> asks the left side “are you true?”, and a four-element mask has no single answer. Between two masks use <code>&amp;</code>, and wrap each side in parentheses (<code>&amp;</code> binds tighter than <code>&gt;</code>):</p>
-<div id="4bf0e693" class="cell" data-execution_count="14">
+<div id="babc859a" class="cell" data-execution_count="14">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb32"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb32-1"><a aria-label="1"></a><span class="bu">print</span>((times <span class="op">&gt;</span> <span class="dv">20</span>) <span class="op">&amp;</span> (times <span class="op">&lt;</span> <span class="dv">40</span>))    <span class="co"># element by element: &amp; combines masks</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <div class="cell fragment" data-execution_count="14">
@@ -640,7 +661,7 @@ float64
 <section id="a-grid-of-numbers" class="slide level2">
 <h2>A grid of numbers</h2>
 <p>Real data isn’t one row. Stack rows and you get a <strong>2D array</strong>: here three days (rows) across four zones (columns: Nord, Sued, Hafen, Altstadt):</p>
-<div id="3e655099" class="cell" data-execution_count="15">
+<div id="d124518b" class="cell" data-execution_count="15">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb34"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb34-1"><a aria-label="1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb34-2"><a aria-label="2"></a></span>
 <span id="cb34-3"><a aria-label="3"></a>deliveries <span class="op">=</span> np.array([[ <span class="dv">9</span>, <span class="dv">14</span>, <span class="dv">11</span>,  <span class="dv">6</span>],</span>
@@ -668,14 +689,13 @@ float64
 <span id="cb36-4"><a aria-label="4"></a>                 [<span class="dv">10</span>, <span class="dv">17</span>, <span class="dv">12</span>,  <span class="dv">8</span>],</span>
 <span id="cb36-5"><a aria-label="5"></a>                 [ <span class="dv">7</span>, <span class="dv">11</span>,  <span class="dv">9</span>,  <span class="dv">5</span>]])</span>
 <span id="cb36-6"><a aria-label="6"></a><span class="bu">print</span>(grid.shape)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p>a) <code>(20,)</code> b) <code>(5, 4)</code> c) <code>(4, 5)</code></p>
-<div class="fragment">
-<p><span class="question">Predict</span>. Pick a letter, then I reveal the answer.</p>
-</div>
+<p>a) <code>(20,)</code><br>
+b) <code>(5, 4)</code><br>
+c) <code>(4, 5)</code></p>
 </section>
 <section id="answer-rows-first-then-columns" class="slide level2">
 <h2>Answer: rows first, then columns</h2>
-<div id="ea0253ac" class="cell" data-execution_count="16">
+<div id="0518b234" class="cell" data-execution_count="16">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb37"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb37-1"><a aria-label="1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb37-2"><a aria-label="2"></a></span>
 <span id="cb37-3"><a aria-label="3"></a>grid <span class="op">=</span> np.array([[ <span class="dv">9</span>, <span class="dv">14</span>, <span class="dv">11</span>,  <span class="dv">6</span>],</span>
@@ -717,7 +737,7 @@ float64
 <section id="axis-in-code" class="slide level2">
 <h2><code>axis</code> in code</h2>
 <p>The same grid, the same two collapses, one keyword each:</p>
-<div id="840ed7ca" class="cell" data-execution_count="17">
+<div id="1deef82b" class="cell" data-execution_count="17">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb40"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb40-1"><a aria-label="1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb40-2"><a aria-label="2"></a></span>
 <span id="cb40-3"><a aria-label="3"></a>deliveries <span class="op">=</span> np.array([[ <span class="dv">9</span>, <span class="dv">14</span>, <span class="dv">11</span>,  <span class="dv">6</span>],</span>
@@ -751,7 +771,7 @@ float64
 <section id="where-does-the-max-sit" class="slide level2">
 <h2>Where does the max sit?</h2>
 <p>The per-zone totals answer “how many?”, but the investor asks “<strong>which</strong> zone?”. <code>argmax</code> tells you <strong>WHERE</strong> the maximum sits, as an index:</p>
-<div id="338a8115" class="cell" data-execution_count="18">
+<div id="eae9211f" class="cell" data-execution_count="18">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb42"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb42-1"><a aria-label="1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb42-2"><a aria-label="2"></a></span>
 <span id="cb42-3"><a aria-label="3"></a>deliveries <span class="op">=</span> np.array([[ <span class="dv">9</span>, <span class="dv">14</span>, <span class="dv">11</span>,  <span class="dv">6</span>],</span>
@@ -775,14 +795,13 @@ float64
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb44"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb44-1"><a aria-label="1"></a>week <span class="op">=</span> np.array([[ <span class="dv">9</span>, <span class="dv">14</span>, <span class="dv">11</span>,  <span class="dv">6</span>],</span>
 <span id="cb44-2"><a aria-label="2"></a>                 [<span class="dv">15</span>, <span class="dv">12</span>,  <span class="dv">8</span>,  <span class="dv">9</span>],</span>
 <span id="cb44-3"><a aria-label="3"></a>                 [<span class="dv">13</span>, <span class="dv">20</span>, <span class="dv">16</span>, <span class="dv">11</span>]])</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p>a) <code>week.sum(axis=1)</code> b) <code>week.sum()</code> c) <code>week.sum(axis=0)</code></p>
-<div class="fragment">
-<p><span class="question">Predict</span>. Pick a letter, then I reveal the answer.</p>
-</div>
+<p>a) <code>week.sum(axis=1)</code><br>
+b) <code>week.sum()</code><br>
+c) <code>week.sum(axis=0)</code></p>
 </section>
 <section id="answer-days-collapse-zones-stay" class="slide level2">
 <h2>Answer: days collapse, zones stay</h2>
-<div id="263da597" class="cell" data-execution_count="19">
+<div id="3c0d10e4" class="cell" data-execution_count="19">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb45"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb45-1"><a aria-label="1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb45-2"><a aria-label="2"></a></span>
 <span id="cb45-3"><a aria-label="3"></a>week <span class="op">=</span> np.array([[ <span class="dv">9</span>, <span class="dv">14</span>, <span class="dv">11</span>,  <span class="dv">6</span>],</span>
@@ -954,12 +973,16 @@ float64
 <h1><span class="flow">Literature</span></h1>
 
 </section>
-<section id="books-to-start-with" class="slide level2">
+<section id="books-to-start-with" class="slide level2 smaller scrollable">
 <h2>Books to start with</h2>
-<ul>
-<li>Downey, A. B. (2024). Think Python: How to think like a computer scientist (Third edition). O’Reilly. <a href="https://greenteapress.com/wp/think-python-3rd-edition/">Link to free online version</a></li>
-<li>Elter, S. (2021). Schrödinger programmiert Python: Das etwas andere Fachbuch (1. Auflage). Rheinwerk Verlag.</li>
-</ul>
+<div id="refs" class="references csl-bib-body hanging-indent" role="list">
+<div id="ref-downeyThinkPythonHow2024" class="csl-entry" role="listitem">
+Downey, Allen B. 2024. <em>Think <span>Python</span>: How to Think Like a Computer Scientist</em>. Third edition. O’Reilly. <a href="https://greenteapress.com/wp/think-python-3rd-edition/">https://greenteapress.com/wp/think-python-3rd-edition/</a>.
+</div>
+<div id="ref-elterSchroedingerProgrammiertPython2021" class="csl-entry" role="listitem">
+Elter, Stephan. 2021. <em><span>Schrödinger programmiert Python: das etwas andere Fachbuch</span></em>. 1. Auflage. <span>Rheinwerk Computing</span>. Rheinwerk Verlag.
+</div>
+</div>
 <div class="fragment">
 <div class="callout callout-note callout-style-simple">
 <div class="callout-body">

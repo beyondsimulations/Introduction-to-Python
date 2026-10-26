@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.10.18">
+<meta name="generator" content="quarto-1.10.19">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -62,7 +62,26 @@ div.sourceCode
 @media screen {
 pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
-</style>
+/* CSS for citations */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+}
+.hanging-indent div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}</style>
 
 
 <script src="../site_libs/quarto-nav/quarto-nav.js"></script>
@@ -79,14 +98,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="../site_libs/quarto-html/anchor.min.js"></script>
 <link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-07311628652e75f956396d70ae2c81bf.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-dark-fcd1a2993490c2d386cd11edf595946f.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-07311628652e75f956396d70ae2c81bf.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-c83e01c5de7e11edcf7e0477bd36081a.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-dark-504ec941dad02d76af6a821403169689.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-c83e01c5de7e11edcf7e0477bd36081a.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
 <script src="../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../site_libs/bootstrap/bootstrap-6844bb52cee3e7fbfe81acb65d973808.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="../site_libs/bootstrap/bootstrap-dark-09117f53c5d8b16f9a1422bc490e73fb.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="light">
-<link href="../site_libs/bootstrap/bootstrap-6844bb52cee3e7fbfe81acb65d973808.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-5989edc7dfa2dae907796b0bc5d2d3f9.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-dark-1e2f07e646957ccbb5e174b671ee60cd.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="../site_libs/bootstrap/bootstrap-5989edc7dfa2dae907796b0bc5d2d3f9.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -125,7 +144,178 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 </head>
 
-<body class="nav-sidebar floating quarto-light">
+<body class="nav-sidebar floating quarto-light"><script id="quarto-html-before-body" type="application/javascript">
+    const toggleBodyColorMode = (bsSheetEl) => {
+      const mode = bsSheetEl.getAttribute("data-mode");
+      const bodyEl = window.document.querySelector("body");
+      if (mode === "dark") {
+        bodyEl.classList.add("quarto-dark");
+        bodyEl.classList.remove("quarto-light");
+      } else {
+        bodyEl.classList.add("quarto-light");
+        bodyEl.classList.remove("quarto-dark");
+      }
+    }
+    const toggleBodyColorPrimary = () => {
+      const bsSheetEl = window.document.querySelector("link#quarto-bootstrap:not([rel=disabled-stylesheet])");
+      if (bsSheetEl) {
+        toggleBodyColorMode(bsSheetEl);
+      }
+    }
+    const setColorSchemeToggle = (alternate) => {
+      const toggles = window.document.querySelectorAll('.quarto-color-scheme-toggle');
+      for (let i=0; i < toggles.length; i++) {
+        const toggle = toggles[i];
+        if (toggle) {
+          if (alternate) {
+            toggle.classList.add("alternate");
+          } else {
+            toggle.classList.remove("alternate");
+          }
+        }
+      }
+    };
+    const toggleColorMode = (alternate) => {
+      // Switch the stylesheets
+      const primaryStylesheets = window.document.querySelectorAll('link.quarto-color-scheme:not(.quarto-color-alternate)');
+      const alternateStylesheets = window.document.querySelectorAll('link.quarto-color-scheme.quarto-color-alternate');
+      manageTransitions('#quarto-margin-sidebar .nav-link', false);
+      if (alternate) {
+        // note: dark is layered on light, we don't disable primary!
+        enableStylesheet(alternateStylesheets);
+        for (const sheetNode of alternateStylesheets) {
+          if (sheetNode.id === "quarto-bootstrap") {
+            toggleBodyColorMode(sheetNode);
+          }
+        }
+      } else {
+        disableStylesheet(alternateStylesheets);
+        enableStylesheet(primaryStylesheets)
+        toggleBodyColorPrimary();
+      }
+      manageTransitions('#quarto-margin-sidebar .nav-link', true);
+      // Switch the toggles
+      setColorSchemeToggle(alternate)
+      // Hack to workaround the fact that safari doesn't
+      // properly recolor the scrollbar when toggling (#1455)
+      if (navigator.userAgent.indexOf('Safari') > 0 && navigator.userAgent.indexOf('Chrome') == -1) {
+        manageTransitions("body", false);
+        window.scrollTo(0, 1);
+        setTimeout(() => {
+          window.scrollTo(0, 0);
+          manageTransitions("body", true);
+        }, 40);
+      }
+    }
+    const disableStylesheet = (stylesheets) => {
+      for (let i=0; i < stylesheets.length; i++) {
+        const stylesheet = stylesheets[i];
+        stylesheet.rel = 'disabled-stylesheet';
+      }
+    }
+    const enableStylesheet = (stylesheets) => {
+      for (let i=0; i < stylesheets.length; i++) {
+        const stylesheet = stylesheets[i];
+        if(stylesheet.rel !== 'stylesheet') { // for Chrome, which will still FOUC without this check
+          stylesheet.rel = 'stylesheet';
+        }
+      }
+    }
+    const manageTransitions = (selector, allowTransitions) => {
+      const els = window.document.querySelectorAll(selector);
+      for (let i=0; i < els.length; i++) {
+        const el = els[i];
+        if (allowTransitions) {
+          el.classList.remove('notransition');
+        } else {
+          el.classList.add('notransition');
+        }
+      }
+    }
+    const isFileUrl = () => {
+      return window.location.protocol === 'file:';
+    }
+    const hasAlternateSentinel = () => {
+      let styleSentinel = getColorSchemeSentinel();
+      if (styleSentinel !== null) {
+        return styleSentinel === "alternate";
+      } else {
+        return false;
+      }
+    }
+    const setStyleSentinel = (alternate) => {
+      const value = alternate ? "alternate" : "default";
+      if (!isFileUrl()) {
+        window.localStorage.setItem("quarto-color-scheme", value);
+      } else {
+        localAlternateSentinel = value;
+      }
+    }
+    const getColorSchemeSentinel = () => {
+      if (!isFileUrl()) {
+        const storageValue = window.localStorage.getItem("quarto-color-scheme");
+        return storageValue != null ? storageValue : localAlternateSentinel;
+      } else {
+        return localAlternateSentinel;
+      }
+    }
+    const toggleGiscusIfUsed = (isAlternate, darkModeDefault) => {
+      const baseTheme = document.querySelector('#giscus-base-theme')?.value ?? 'light';
+      const alternateTheme = document.querySelector('#giscus-alt-theme')?.value ?? 'dark';
+      let newTheme = '';
+      if(authorPrefersDark) {
+        newTheme = isAlternate ? baseTheme : alternateTheme;
+      } else {
+        newTheme = isAlternate ? alternateTheme : baseTheme;
+      }
+      const changeGiscusTheme = () => {
+        // From: https://github.com/giscus/giscus/issues/336
+        const sendMessage = (message) => {
+          const iframe = document.querySelector('iframe.giscus-frame');
+          if (!iframe) return;
+          iframe.contentWindow.postMessage({ giscus: message }, 'https://giscus.app');
+        }
+        sendMessage({
+          setConfig: {
+            theme: newTheme
+          }
+        });
+      }
+      const isGiscussLoaded = window.document.querySelector('iframe.giscus-frame') !== null;
+      if (isGiscussLoaded) {
+        changeGiscusTheme();
+      }
+    };
+    const authorPrefersDark = false;
+    const queryPrefersDark = window.matchMedia('(prefers-color-scheme: dark)');
+    const darkModeDefault = queryPrefersDark.matches;
+      document.querySelector('link#quarto-text-highlighting-styles.quarto-color-scheme-extra').rel = 'disabled-stylesheet';
+      document.querySelector('link#quarto-bootstrap.quarto-color-scheme-extra').rel = 'disabled-stylesheet';
+    let localAlternateSentinel = darkModeDefault ? 'alternate' : 'default';
+    // Dark / light mode switch
+    window.quartoToggleColorScheme = () => {
+      // Read the current dark / light value
+      let toAlternate = !hasAlternateSentinel();
+      toggleColorMode(toAlternate);
+      setStyleSentinel(toAlternate);
+      toggleGiscusIfUsed(toAlternate, darkModeDefault);
+      window.dispatchEvent(new Event('resize'));
+    };
+    queryPrefersDark.addEventListener("change", e => {
+      if(window.localStorage.getItem("quarto-color-scheme") !== null)
+        return;
+      const alternate = e.matches
+      toggleColorMode(alternate);
+      localAlternateSentinel = e.matches ? 'alternate' : 'default'; // this is used alongside local storage!
+      toggleGiscusIfUsed(alternate, darkModeDefault);
+    });
+    // Switch to dark mode if need be
+    if (hasAlternateSentinel()) {
+      toggleColorMode(true);
+    } else {
+      toggleColorMode(false);
+    }
+  </script>
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
@@ -149,9 +339,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
     <div class="pt-lg-2 mt-2 text-left sidebar-header">
       <a href="../index.html" class="sidebar-logo-link">
-      <img src="../images/course-logo.svg" alt="Programming with Python" class="sidebar-logo light-content py-0 d-lg-inline d-none">
-      <img src="../images/course-logo.svg" alt="Programming with Python" class="sidebar-logo dark-content py-0 d-lg-inline d-none">
+      <img src="../images/course-logo.svg" alt="" class="sidebar-logo light-content py-0 d-lg-inline d-none">
+      <img src="../images/course-logo-dark.svg" alt="" class="sidebar-logo dark-content py-0 d-lg-inline d-none">
       </a>
+      <div class="sidebar-tools-main">
+  <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
+</div>
       </div>
         <div class="mt-2 flex-shrink-0 align-items-center">
         <div class="sidebar-search">
@@ -597,6 +790,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
+
 <header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../lectures/lec_04_dimensions.html">04 Dimensions</a></li><li class="breadcrumb-item"><a href="../lectures/lec_04_dimensions.html">Lecture</a></li></ol></nav>
 <div class="quarto-title">
 <h1 class="title">Lecture IV - Handling Data in more than one Dimension</h1>
@@ -649,11 +843,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>result <span class="op">=</span> announce(<span class="st">"Mate"</span>)</span>
 <span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(result)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>The <strong>second</strong> <code>print</code> shows what?</p>
-<p>a) <code>Fresh today: Mate</code> b) <code>Error</code> c) <code>None</code></p>
+<p>a) <code>Fresh today: Mate</code><br>
+b) <code>Error</code><br>
+c) <code>None</code></p>
 </section>
 <section id="answer-1" class="level2">
 <h2 class="anchored" data-anchor-id="answer-1">Answer 1</h2>
-<div id="74a0e501" class="cell" data-output-location="fragment" data-execution_count="1">
+<div id="f1b4978a" class="cell" data-output-location="fragment" data-execution_count="1">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> announce(item):</span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f"Fresh today: </span><span class="sc">{</span>item<span class="sc">}</span><span class="ss">"</span>)</span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -675,11 +871,13 @@ None</code></pre>
 <span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>stock <span class="op">=</span> <span class="dv">5</span></span>
 <span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>restock(stock)</span>
 <span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(stock)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p>a) <code>5</code> b) <code>15</code> c) <code>Error</code></p>
+<p>a) <code>5</code><br>
+b) <code>15</code><br>
+c) <code>Error</code></p>
 </section>
 <section id="answer-2" class="level2">
 <h2 class="anchored" data-anchor-id="answer-2">Answer 2</h2>
-<div id="fd666f8e" class="cell" data-output-location="fragment" data-execution_count="2">
+<div id="3f631e0a" class="cell" data-output-location="fragment" data-execution_count="2">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> restock(n):</span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>    n <span class="op">=</span> n <span class="op">+</span> <span class="dv">10</span></span>
 <span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> n</span>
@@ -705,11 +903,13 @@ None</code></pre>
 <span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="va">self</span>.qty <span class="op">*</span> <span class="va">self</span>.price</span>
 <span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(Order(<span class="st">"Wrap"</span>, <span class="dv">2</span>, <span class="fl">6.90</span>).total())</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p>a) <code>6.9</code> b) <code>13.8</code> c) <code>2</code></p>
+<p>a) <code>6.9</code><br>
+b) <code>13.8</code><br>
+c) <code>2</code></p>
 </section>
 <section id="answer-3" class="level2">
 <h2 class="anchored" data-anchor-id="answer-3">Answer 3</h2>
-<div id="039f53e7" class="cell" data-output-location="fragment" data-execution_count="3">
+<div id="5c66c05e" class="cell" data-output-location="fragment" data-execution_count="3">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> Order:</span>
 <span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>, item, qty, price):</span>
 <span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.item <span class="op">=</span> item</span>
@@ -732,7 +932,7 @@ None</code></pre>
 <section id="one-name-for-many-values" class="level2">
 <h2 class="anchored" data-anchor-id="one-name-for-many-values">One name for many values</h2>
 <p>A <strong>list</strong> holds many values under one name, in order. That’s the cure for seventeen variables:</p>
-<div id="424dede6" class="cell" data-output-location="fragment" data-execution_count="4">
+<div id="b45c9614" class="cell" data-output-location="fragment" data-execution_count="4">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>drinks <span class="op">=</span> [<span class="st">"Mate"</span>, <span class="st">"Spezi"</span>, <span class="st">"Ayran"</span>]</span>
 <span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(drinks)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
@@ -744,7 +944,7 @@ None</code></pre>
 <section id="reaching-in-by-position" class="level2">
 <h2 class="anchored" data-anchor-id="reaching-in-by-position">Reaching in by position</h2>
 <p>Each item has an <strong>index</strong>. Python counts from <strong>0</strong>:</p>
-<div id="615d8e28" class="cell" data-output-location="fragment" data-execution_count="5">
+<div id="5a19bc61" class="cell" data-output-location="fragment" data-execution_count="5">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>drinks <span class="op">=</span> [<span class="st">"Mate"</span>, <span class="st">"Spezi"</span>, <span class="st">"Ayran"</span>]</span>
 <span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(drinks[<span class="dv">0</span>])   <span class="co"># the first item</span></span>
 <span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(drinks[<span class="dv">2</span>])   <span class="co"># the third item</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
@@ -758,7 +958,7 @@ Ayran</code></pre>
 <section id="counting-from-the-end" class="level2">
 <h2 class="anchored" data-anchor-id="counting-from-the-end">Counting from the end</h2>
 <p>A <strong>negative</strong> index counts backwards from the end, no need to know the length:</p>
-<div id="2170c110" class="cell" data-output-location="fragment" data-execution_count="6">
+<div id="c3133dfc" class="cell" data-output-location="fragment" data-execution_count="6">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>drinks <span class="op">=</span> [<span class="st">"Mate"</span>, <span class="st">"Spezi"</span>, <span class="st">"Ayran"</span>]</span>
 <span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(drinks[<span class="op">-</span><span class="dv">1</span>])   <span class="co"># last item</span></span>
 <span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(drinks[<span class="op">-</span><span class="dv">2</span>])   <span class="co"># second to last</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
@@ -772,7 +972,7 @@ Spezi</code></pre>
 <section id="slicing-a-range-of-items" class="level2">
 <h2 class="anchored" data-anchor-id="slicing-a-range-of-items">Slicing: a range of items</h2>
 <p>A <strong>slice</strong> <code>list[start:stop]</code> returns a new list, from <code>start</code> up to, but <strong>not including</strong>, <code>stop</code>:</p>
-<div id="23a9204c" class="cell" data-output-location="fragment" data-execution_count="7">
+<div id="9e7251f4" class="cell" data-output-location="fragment" data-execution_count="7">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>drinks <span class="op">=</span> [<span class="st">"Mate"</span>, <span class="st">"Spezi"</span>, <span class="st">"Ayran"</span>]</span>
 <span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(drinks[<span class="dv">0</span>:<span class="dv">2</span>])   <span class="co"># items 0 and 1</span></span>
 <span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(drinks[<span class="op">-</span><span class="dv">2</span>:])   <span class="co"># the last two: negative start, open end</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
@@ -788,12 +988,13 @@ Spezi</code></pre>
 <p>A courier carries four cup sizes. What does this print?</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb18"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>sizes <span class="op">=</span> [<span class="st">"S"</span>, <span class="st">"M"</span>, <span class="st">"L"</span>, <span class="st">"XL"</span>]</span>
 <span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(sizes[<span class="dv">1</span>:<span class="dv">3</span>])</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p>a) <code>['M', 'L', 'XL']</code> b) <code>['M', 'L']</code> c) <code>['S', 'M', 'L']</code></p>
-<p><span class="question">Predict</span>. Pick a letter, then I reveal the answer.</p>
+<p>a) <code>['M', 'L', 'XL']</code><br>
+b) <code>['M', 'L']</code><br>
+c) <code>['S', 'M', 'L']</code></p>
 </section>
 <section id="answer-the-stop-index-is-excluded" class="level2">
 <h2 class="anchored" data-anchor-id="answer-the-stop-index-is-excluded">Answer: the <code>stop</code> index is excluded</h2>
-<div id="8e41eae2" class="cell" data-output-location="fragment" data-execution_count="8">
+<div id="09014b3e" class="cell" data-output-location="fragment" data-execution_count="8">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb19"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>sizes <span class="op">=</span> [<span class="st">"S"</span>, <span class="st">"M"</span>, <span class="st">"L"</span>, <span class="st">"XL"</span>]</span>
 <span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(sizes[<span class="dv">1</span>:<span class="dv">3</span>])</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
@@ -815,7 +1016,7 @@ Spezi</code></pre>
 <section id="growing-a-list" class="level2">
 <h2 class="anchored" data-anchor-id="growing-a-list">Growing a list</h2>
 <p>Lists are <strong>mutable</strong>: you can change them after creation. <code>.append()</code> adds one item to the end; <code>+</code> joins two lists into a new one:</p>
-<div id="61446b58" class="cell" data-output-location="fragment" data-execution_count="9">
+<div id="7c8d94db" class="cell" data-output-location="fragment" data-execution_count="9">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb21"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>drinks <span class="op">=</span> [<span class="st">"Mate"</span>, <span class="st">"Spezi"</span>]</span>
 <span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>drinks.append(<span class="st">"Ayran"</span>)</span>
 <span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(drinks)</span>
@@ -836,12 +1037,13 @@ Spezi</code></pre>
 <span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a>winter <span class="op">=</span> summer</span>
 <span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a>winter.append(<span class="st">"Ayran"</span>)</span>
 <span id="cb23-4"><a href="#cb23-4" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(summer)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p>a) <code>['Mate', 'Spezi']</code> b) <code>['Ayran', 'Mate', 'Spezi']</code> c) <code>['Mate', 'Spezi', 'Ayran']</code></p>
-<p><span class="question">Predict</span>. Pick a letter, then I reveal the answer.</p>
+<p>a) <code>['Mate', 'Spezi']</code><br>
+b) <code>['Ayran', 'Mate', 'Spezi']</code><br>
+c) <code>['Mate', 'Spezi', 'Ayran']</code></p>
 </section>
 <section id="answer-two-names-one-list" class="level2">
 <h2 class="anchored" data-anchor-id="answer-two-names-one-list">Answer: two names, one list</h2>
-<div id="122839ae" class="cell" data-output-location="fragment" data-execution_count="10">
+<div id="6e9d7407" class="cell" data-output-location="fragment" data-execution_count="10">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb24"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a>summer <span class="op">=</span> [<span class="st">"Mate"</span>, <span class="st">"Spezi"</span>]</span>
 <span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a>winter <span class="op">=</span> summer</span>
 <span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a>winter.append(<span class="st">"Ayran"</span>)</span>
@@ -855,7 +1057,7 @@ Spezi</code></pre>
 <section id="how-long-is-it" class="level2">
 <h2 class="anchored" data-anchor-id="how-long-is-it">How long is it?</h2>
 <p><code>len()</code> tells you how many items a list holds:</p>
-<div id="60d2b86b" class="cell" data-output-location="fragment" data-execution_count="11">
+<div id="da5f2819" class="cell" data-output-location="fragment" data-execution_count="11">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb26"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a>drinks <span class="op">=</span> [<span class="st">"Mate"</span>, <span class="st">"Spezi"</span>, <span class="st">"Ayran"</span>]</span>
 <span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="bu">len</span>(drinks))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
@@ -867,7 +1069,7 @@ Spezi</code></pre>
 <section id="looping-over-positions" class="level2">
 <h2 class="anchored" data-anchor-id="looping-over-positions">Looping over positions</h2>
 <p>A loop over the list hands you each item. Sometimes you need to know <strong>where</strong> an item sits. Then loop over the positions instead:</p>
-<div id="9100e2b6" class="cell" data-output-location="fragment" data-execution_count="12">
+<div id="2d8b5469" class="cell" data-output-location="fragment" data-execution_count="12">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb28"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a>drinks <span class="op">=</span> [<span class="st">"Mate"</span>, <span class="st">"Spezi"</span>, <span class="st">"Ayran"</span>]</span>
 <span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="bu">len</span>(drinks)):</span>
 <span id="cb28-3"><a href="#cb28-3" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(i, drinks[i])</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
@@ -882,7 +1084,7 @@ Spezi</code></pre>
 <section id="tuples-fixed-length-records" class="level2">
 <h2 class="anchored" data-anchor-id="tuples-fixed-length-records">Tuples: fixed-length records</h2>
 <p>A <strong>tuple</strong> looks like a list but uses <code>()</code> and <strong>cannot be changed</strong>, perfect for a record whose shape never varies, like opening hours <code>(hour, minute)</code>:</p>
-<div id="a20a9e35" class="cell" data-output-location="fragment" data-execution_count="13">
+<div id="f7ecec29" class="cell" data-output-location="fragment" data-execution_count="13">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb30"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a>opening <span class="op">=</span> (<span class="dv">9</span>, <span class="dv">0</span>)   <span class="co"># 9:00 sharp</span></span>
 <span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(opening[<span class="dv">0</span>])</span>
 <span id="cb30-3"><a href="#cb30-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(opening[<span class="dv">1</span>])</span>
@@ -922,7 +1124,7 @@ Spezi</code></pre>
 <section id="look-things-up-by-name" class="level2">
 <h2 class="anchored" data-anchor-id="look-things-up-by-name">Look things up by name</h2>
 <p>A list finds items by position. But “what does a Spezi cost?” is a question about a name, not a position. A <strong>dictionary</strong> maps a key to a value:</p>
-<div id="7464aa37" class="cell" data-output-location="fragment" data-execution_count="14">
+<div id="b02dc1bd" class="cell" data-output-location="fragment" data-execution_count="14">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb32"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a>prices <span class="op">=</span> {<span class="st">"Mate"</span>: <span class="fl">3.50</span>, <span class="st">"Spezi"</span>: <span class="fl">3.20</span>, <span class="st">"Ayran"</span>: <span class="fl">2.80</span>}</span>
 <span id="cb32-2"><a href="#cb32-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(prices[<span class="st">"Spezi"</span>])</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
@@ -934,7 +1136,7 @@ Spezi</code></pre>
 <section id="building-a-dictionary" class="level2">
 <h2 class="anchored" data-anchor-id="building-a-dictionary">Building a dictionary</h2>
 <p>Keys are usually strings; values can be anything. Read a value with square brackets and its key:</p>
-<div id="6efb2af6" class="cell" data-output-location="fragment" data-execution_count="15">
+<div id="23e31a36" class="cell" data-output-location="fragment" data-execution_count="15">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb34"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a>prices <span class="op">=</span> {<span class="st">"Mate"</span>: <span class="fl">3.50</span>, <span class="st">"Spezi"</span>: <span class="fl">3.20</span>, <span class="st">"Ayran"</span>: <span class="fl">2.80</span>}</span>
 <span id="cb34-2"><a href="#cb34-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(prices[<span class="st">"Mate"</span>])</span>
 <span id="cb34-3"><a href="#cb34-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(prices[<span class="st">"Ayran"</span>])</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
@@ -965,7 +1167,7 @@ Spezi</code></pre>
 <section id="a-safer-read-with-.get" class="level2">
 <h2 class="anchored" data-anchor-id="a-safer-read-with-.get">A safer read with <code>.get()</code></h2>
 <p><code>.get()</code> returns <code>None</code> for a missing key instead of raising, and you can supply a fallback:</p>
-<div id="66c70300" class="cell" data-output-location="fragment" data-execution_count="16">
+<div id="051e7e37" class="cell" data-output-location="fragment" data-execution_count="16">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb37"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a>prices <span class="op">=</span> {<span class="st">"Mate"</span>: <span class="fl">3.50</span>, <span class="st">"Spezi"</span>: <span class="fl">3.20</span>}</span>
 <span id="cb37-2"><a href="#cb37-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(prices.get(<span class="st">"Cola"</span>))       <span class="co"># missing → None</span></span>
 <span id="cb37-3"><a href="#cb37-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(prices.get(<span class="st">"Cola"</span>, <span class="dv">0</span>))    <span class="co"># missing → your fallback</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
@@ -981,12 +1183,13 @@ Spezi</code></pre>
 <p><code>in</code> asks whether a value is in a list: <code>"Mate" in drinks</code> is <code>True</code>. On a dictionary, what does it look at?</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb39"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a>prices <span class="op">=</span> {<span class="st">"Mate"</span>: <span class="fl">3.50</span>, <span class="st">"Spezi"</span>: <span class="fl">3.20</span>}</span>
 <span id="cb39-2"><a href="#cb39-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Spezi"</span> <span class="kw">in</span> prices, <span class="fl">3.20</span> <span class="kw">in</span> prices)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p>a) <code>True False</code> b) <code>True True</code> c) <code>False True</code></p>
-<p><span class="question">Predict</span>. Pick a letter, then I reveal the answer.</p>
+<p>a) <code>True False</code><br>
+b) <code>True True</code><br>
+c) <code>False True</code></p>
 </section>
 <section id="answer-in-checks-the-keys" class="level2">
 <h2 class="anchored" data-anchor-id="answer-in-checks-the-keys">Answer: <code>in</code> checks the keys</h2>
-<div id="ab888f50" class="cell" data-output-location="fragment" data-execution_count="17">
+<div id="e915f3d7" class="cell" data-output-location="fragment" data-execution_count="17">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb40"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a>prices <span class="op">=</span> {<span class="st">"Mate"</span>: <span class="fl">3.50</span>, <span class="st">"Spezi"</span>: <span class="fl">3.20</span>}</span>
 <span id="cb40-2"><a href="#cb40-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Spezi"</span> <span class="kw">in</span> prices, <span class="fl">3.20</span> <span class="kw">in</span> prices)</span>
 <span id="cb40-3"><a href="#cb40-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="fl">3.20</span> <span class="kw">in</span> prices.values())</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
@@ -1000,7 +1203,7 @@ True</code></pre>
 <section id="updating-and-adding" class="level2">
 <h2 class="anchored" data-anchor-id="updating-and-adding">Updating and adding</h2>
 <p>Assigning to a key updates it if it exists, or adds it if it doesn’t. Work on a <strong>copy</strong> (<code>dict()</code>) when the original must survive:</p>
-<div id="84af7200" class="cell" data-output-location="fragment" data-execution_count="18">
+<div id="9d18269e" class="cell" data-output-location="fragment" data-execution_count="18">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb42"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true" tabindex="-1"></a>prices <span class="op">=</span> {<span class="st">"Mate"</span>: <span class="fl">3.50</span>, <span class="st">"Spezi"</span>: <span class="fl">3.20</span>}</span>
 <span id="cb42-2"><a href="#cb42-2" aria-hidden="true" tabindex="-1"></a>winter <span class="op">=</span> <span class="bu">dict</span>(prices)        <span class="co"># a copy: keep the original safe</span></span>
 <span id="cb42-3"><a href="#cb42-3" aria-hidden="true" tabindex="-1"></a>winter[<span class="st">"Spezi"</span>] <span class="op">=</span> <span class="fl">3.40</span>       <span class="co"># update an existing key</span></span>
@@ -1019,12 +1222,14 @@ True</code></pre>
 <p>A customer orders a Cola. It’s not on the menu. What does this line do?</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb44"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true" tabindex="-1"></a>prices <span class="op">=</span> {<span class="st">"Mate"</span>: <span class="fl">3.50</span>, <span class="st">"Spezi"</span>: <span class="fl">3.20</span>}</span>
 <span id="cb44-2"><a href="#cb44-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(prices[<span class="st">"Cola"</span>])</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p>a) prints <code>None</code> b) prints <code>""</code> c) raises <code>KeyError</code> d) adds <code>"Cola"</code></p>
-<p><span class="question">Predict</span>. Pick a letter, then I reveal the answer.</p>
+<p>a) prints <code>None</code><br>
+b) prints <code>""</code><br>
+c) raises <code>KeyError</code><br>
+d) adds <code>"Cola"</code></p>
 </section>
 <section id="answer-reading-with" class="level2">
 <h2 class="anchored" data-anchor-id="answer-reading-with">Answer: reading with <code>[]</code></h2>
-<div id="f4b80d94" class="cell" data-output-location="fragment" data-execution_count="20">
+<div id="53751b9a" class="cell" data-output-location="fragment" data-execution_count="20">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb45"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb45-1"><a href="#cb45-1" aria-hidden="true" tabindex="-1"></a>prices <span class="op">=</span> {<span class="st">"Mate"</span>: <span class="fl">3.50</span>, <span class="st">"Spezi"</span>: <span class="fl">3.20</span>}</span>
 <span id="cb45-2"><a href="#cb45-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(prices[<span class="st">"Cola"</span>])</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-error">
@@ -1039,7 +1244,7 @@ True</code></pre>
 <section id="sets-only-the-unique-ones" class="level2">
 <h2 class="anchored" data-anchor-id="sets-only-the-unique-ones">Sets: only the unique ones</h2>
 <p>A <strong>set</strong> keeps each value <strong>once</strong>. Feed it duplicates and they collapse. Perfect for counting <em>distinct</em> things, like today’s regulars:</p>
-<div id="c242918e" class="cell" data-output-location="fragment" data-execution_count="21">
+<div id="1640e585" class="cell" data-output-location="fragment" data-execution_count="21">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb46"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb46-1"><a href="#cb46-1" aria-hidden="true" tabindex="-1"></a>visitors <span class="op">=</span> [<span class="st">"nina"</span>, <span class="st">"tom"</span>, <span class="st">"nina"</span>, <span class="st">"ada"</span>, <span class="st">"tom"</span>]</span>
 <span id="cb46-2"><a href="#cb46-2" aria-hidden="true" tabindex="-1"></a>regulars <span class="op">=</span> <span class="bu">set</span>(visitors)</span>
 <span id="cb46-3"><a href="#cb46-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(regulars)        <span class="co"># order is arbitrary: a set has none</span></span>
@@ -1051,7 +1256,7 @@ True</code></pre>
 </div>
 <p>Five visits, three people. A set answers “how many <em>different</em>?”.</p>
 <p>Can be created from a list, or with curly braces:</p>
-<div id="b3b87d9c" class="cell" data-output-location="fragment" data-execution_count="22">
+<div id="f4b6a36a" class="cell" data-output-location="fragment" data-execution_count="22">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb48"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb48-1"><a href="#cb48-1" aria-hidden="true" tabindex="-1"></a>regulars <span class="op">=</span> {<span class="st">"nina"</span>, <span class="st">"tom"</span>, <span class="st">"ada"</span>}</span>
 <span id="cb48-2"><a href="#cb48-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(regulars)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
@@ -1075,7 +1280,7 @@ True</code></pre>
 <section id="a-dictionary-inside-a-dictionary" class="level2">
 <h2 class="anchored" data-anchor-id="a-dictionary-inside-a-dictionary">A dictionary inside a dictionary</h2>
 <p>Values can themselves be dictionaries. Each delivery <strong>zone</strong> carries its own fee and estimated time:</p>
-<div id="7f1a1bcb" class="cell" data-output-location="fragment" data-execution_count="23">
+<div id="6634ce12" class="cell" data-output-location="fragment" data-execution_count="23">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb50"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb50-1"><a href="#cb50-1" aria-hidden="true" tabindex="-1"></a>zones <span class="op">=</span> {</span>
 <span id="cb50-2"><a href="#cb50-2" aria-hidden="true" tabindex="-1"></a>    <span class="st">"Altstadt"</span>: {<span class="st">"fee"</span>: <span class="fl">1.50</span>, <span class="st">"eta"</span>: <span class="dv">12</span>},</span>
 <span id="cb50-3"><a href="#cb50-3" aria-hidden="true" tabindex="-1"></a>    <span class="st">"Hafen"</span>: {<span class="st">"fee"</span>: <span class="fl">2.50</span>, <span class="st">"eta"</span>: <span class="dv">20</span>},</span>
@@ -1090,7 +1295,7 @@ True</code></pre>
 <section id="reading-nested-values" class="level2">
 <h2 class="anchored" data-anchor-id="reading-nested-values">Reading nested values</h2>
 <p>To reach an inner value, use <strong>two</strong> keys in a row, outer first, then inner:</p>
-<div id="48af4cbd" class="cell" data-output-location="fragment" data-execution_count="24">
+<div id="655a6772" class="cell" data-output-location="fragment" data-execution_count="24">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb52"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb52-1"><a href="#cb52-1" aria-hidden="true" tabindex="-1"></a>zones <span class="op">=</span> {</span>
 <span id="cb52-2"><a href="#cb52-2" aria-hidden="true" tabindex="-1"></a>    <span class="st">"Altstadt"</span>: {<span class="st">"fee"</span>: <span class="fl">1.50</span>, <span class="st">"eta"</span>: <span class="dv">12</span>},</span>
 <span id="cb52-3"><a href="#cb52-3" aria-hidden="true" tabindex="-1"></a>    <span class="st">"Hafen"</span>: {<span class="st">"fee"</span>: <span class="fl">2.50</span>, <span class="st">"eta"</span>: <span class="dv">20</span>},</span>
@@ -1117,7 +1322,7 @@ True</code></pre>
 <section id="from-a-loop-to-one-line" class="level2">
 <h2 class="anchored" data-anchor-id="from-a-loop-to-one-line">From a loop to one line</h2>
 <p>You already know the loop that builds a list. A <strong>list comprehension</strong> is that same loop, written on one line:</p>
-<div id="b170da16" class="cell" data-output-location="fragment" data-execution_count="25">
+<div id="8a586e92" class="cell" data-output-location="fragment" data-execution_count="25">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb54"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb54-1"><a href="#cb54-1" aria-hidden="true" tabindex="-1"></a>counts <span class="op">=</span> [<span class="dv">2</span>, <span class="dv">1</span>, <span class="dv">3</span>]</span>
 <span id="cb54-2"><a href="#cb54-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb54-3"><a href="#cb54-3" aria-hidden="true" tabindex="-1"></a><span class="co"># the loop you know</span></span>
@@ -1139,7 +1344,7 @@ True</code></pre>
 <section id="round-inside-a-comprehension" class="level2">
 <h2 class="anchored" data-anchor-id="round-inside-a-comprehension"><code>round</code> inside a comprehension</h2>
 <p>Any expression can go in front of the <code>for</code>, including <code>round()</code>. Loyalty pricing: 10% off, cleaned to two decimals:</p>
-<div id="edb450cc" class="cell" data-output-location="fragment" data-execution_count="26">
+<div id="b5935f6b" class="cell" data-output-location="fragment" data-execution_count="26">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb56"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb56-1"><a href="#cb56-1" aria-hidden="true" tabindex="-1"></a>drink_prices <span class="op">=</span> [<span class="fl">3.50</span>, <span class="fl">3.20</span>, <span class="fl">2.80</span>]</span>
 <span id="cb56-2"><a href="#cb56-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb56-3"><a href="#cb56-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>([p <span class="op">*</span> <span class="fl">0.9</span> <span class="cf">for</span> p <span class="kw">in</span> drink_prices])            <span class="co"># raw floats, ugly</span></span>
@@ -1154,7 +1359,7 @@ True</code></pre>
 <section id="looping-over-a-dictionary" class="level2">
 <h2 class="anchored" data-anchor-id="looping-over-a-dictionary">Looping over a dictionary</h2>
 <p><code>.items()</code> hands you the menu as <code>(key, value)</code> pairs. Give the <code>for</code> two names and each pair is unpacked into them, like <code>hour, minute = opening</code>:</p>
-<div id="f0ec4a66" class="cell" data-output-location="fragment" data-execution_count="27">
+<div id="3405ffbd" class="cell" data-output-location="fragment" data-execution_count="27">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb58"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb58-1"><a href="#cb58-1" aria-hidden="true" tabindex="-1"></a>prices <span class="op">=</span> {<span class="st">"Mate"</span>: <span class="fl">3.50</span>, <span class="st">"Spezi"</span>: <span class="fl">3.20</span>, <span class="st">"Ayran"</span>: <span class="fl">2.80</span>}</span>
 <span id="cb58-2"><a href="#cb58-2" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> name, price <span class="kw">in</span> prices.items():</span>
 <span id="cb58-3"><a href="#cb58-3" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(name, price)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
@@ -1169,7 +1374,7 @@ Ayran 2.8</code></pre>
 <section id="comprehensions-build-dictionaries" class="level2">
 <h2 class="anchored" data-anchor-id="comprehensions-build-dictionaries">Comprehensions build dictionaries</h2>
 <p>Swap the brackets for braces and give a <code>key: value</code>. Now you rebuild a whole menu in one line:</p>
-<div id="02bd223f" class="cell" data-output-location="fragment" data-execution_count="28">
+<div id="03b235f7" class="cell" data-output-location="fragment" data-execution_count="28">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb60"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb60-1"><a href="#cb60-1" aria-hidden="true" tabindex="-1"></a>prices <span class="op">=</span> {<span class="st">"Mate"</span>: <span class="fl">3.50</span>, <span class="st">"Spezi"</span>: <span class="fl">3.20</span>, <span class="st">"Ayran"</span>: <span class="fl">2.80</span>}</span>
 <span id="cb60-2"><a href="#cb60-2" aria-hidden="true" tabindex="-1"></a>loyalty <span class="op">=</span> {name: <span class="bu">round</span>(price <span class="op">*</span> <span class="fl">0.9</span>, <span class="dv">2</span>) <span class="cf">for</span> name, price <span class="kw">in</span> prices.items()}</span>
 <span id="cb60-3"><a href="#cb60-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(loyalty)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
@@ -1184,12 +1389,13 @@ Ayran 2.8</code></pre>
 <p>What does this build?</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb62"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb62-1"><a href="#cb62-1" aria-hidden="true" tabindex="-1"></a>nums <span class="op">=</span> [<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>]</span>
 <span id="cb62-2"><a href="#cb62-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>([n <span class="op">*</span> n <span class="cf">for</span> n <span class="kw">in</span> nums])</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p>a) <code>[1, 4, 9, 16]</code> b) <code>[2, 4, 6, 8]</code> c) <code>[1, 2, 3, 4]</code></p>
-<p><span class="question">Predict</span>. Pick a letter, then I reveal the answer.</p>
+<p>a) <code>[1, 4, 9, 16]</code><br>
+b) <code>[2, 4, 6, 8]</code><br>
+c) <code>[1, 2, 3, 4]</code></p>
 </section>
 <section id="answer-square-each-item" class="level2">
 <h2 class="anchored" data-anchor-id="answer-square-each-item">Answer: square each item</h2>
-<div id="b8760a28" class="cell" data-output-location="fragment" data-execution_count="29">
+<div id="e6df51e5" class="cell" data-output-location="fragment" data-execution_count="29">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb63"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb63-1"><a href="#cb63-1" aria-hidden="true" tabindex="-1"></a>nums <span class="op">=</span> [<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>]</span>
 <span id="cb63-2"><a href="#cb63-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>([n <span class="op">*</span> n <span class="cf">for</span> n <span class="kw">in</span> nums])</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
@@ -1203,12 +1409,13 @@ Ayran 2.8</code></pre>
 <p>Some dishes sold nothing today. A comprehension can carry an <code>if</code> after the <code>for</code>. How long is the result?</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb65"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb65-1"><a href="#cb65-1" aria-hidden="true" tabindex="-1"></a>counts <span class="op">=</span> [<span class="dv">2</span>, <span class="dv">0</span>, <span class="dv">3</span>, <span class="dv">0</span>, <span class="dv">1</span>]</span>
 <span id="cb65-2"><a href="#cb65-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>([c <span class="op">*</span> <span class="dv">2</span> <span class="cf">for</span> c <span class="kw">in</span> counts <span class="cf">if</span> c <span class="op">&gt;</span> <span class="dv">0</span>])</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p>a) <code>[4, 0, 6, 0, 2]</code> b) <code>[4, 6, 2]</code> c) <code>[2, 3, 1]</code></p>
-<p><span class="question">Predict</span>. Pick a letter, then I reveal the answer.</p>
+<p>a) <code>[4, 0, 6, 0, 2]</code><br>
+b) <code>[4, 6, 2]</code><br>
+c) <code>[2, 3, 1]</code></p>
 </section>
 <section id="answer-the-if-drops-items" class="level2">
 <h2 class="anchored" data-anchor-id="answer-the-if-drops-items">Answer: the <code>if</code> drops items</h2>
-<div id="96995f97" class="cell" data-output-location="fragment" data-execution_count="30">
+<div id="ace9ac0d" class="cell" data-output-location="fragment" data-execution_count="30">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb66"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb66-1"><a href="#cb66-1" aria-hidden="true" tabindex="-1"></a>counts <span class="op">=</span> [<span class="dv">2</span>, <span class="dv">0</span>, <span class="dv">3</span>, <span class="dv">0</span>, <span class="dv">1</span>]</span>
 <span id="cb66-2"><a href="#cb66-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>([c <span class="op">*</span> <span class="dv">2</span> <span class="cf">for</span> c <span class="kw">in</span> counts <span class="cf">if</span> c <span class="op">&gt;</span> <span class="dv">0</span>])</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
@@ -1274,10 +1481,14 @@ Ayran 2.8</code></pre>
 <h1 class="title"><span class="flow">Literature</span></h1>
 <section id="books-to-start-with" class="level2">
 <h2 class="anchored" data-anchor-id="books-to-start-with">Books to start with</h2>
-<ul>
-<li>Downey, A. B. (2024). Think Python: How to think like a computer scientist (Third edition). O’Reilly. <a href="https://greenteapress.com/wp/think-python-3rd-edition/">Link to free online version</a></li>
-<li>Elter, S. (2021). Schrödinger programmiert Python: Das etwas andere Fachbuch (1. Auflage). Rheinwerk Verlag.</li>
-</ul>
+<div id="refs" class="references csl-bib-body hanging-indent" role="list">
+<div id="ref-downeyThinkPythonHow2024" class="csl-entry" role="listitem">
+Downey, Allen B. 2024. <em>Think <span>Python</span>: How to Think Like a Computer Scientist</em>. Third edition. O’Reilly. <a href="https://greenteapress.com/wp/think-python-3rd-edition/">https://greenteapress.com/wp/think-python-3rd-edition/</a>.
+</div>
+<div id="ref-elterSchroedingerProgrammiertPython2021" class="csl-entry" role="listitem">
+Elter, Stephan. 2021. <em><span>Schrödinger programmiert Python: das etwas andere Fachbuch</span></em>. 1. Auflage. <span>Rheinwerk Computing</span>. Rheinwerk Verlag.
+</div>
+</div>
 <div class="callout callout-style-simple callout-note">
 <div class="callout-body d-flex">
 <div class="callout-icon-container">
@@ -1297,6 +1508,19 @@ Ayran 2.8</code></pre>
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
   window.document.addEventListener("DOMContentLoaded", function (event) {
+    // Ensure there is a toggle, if there isn't float one in the top right
+    if (window.document.querySelector('.quarto-color-scheme-toggle') === null) {
+      const a = window.document.createElement('a');
+      a.classList.add('top-right');
+      a.classList.add('quarto-color-scheme-toggle');
+      a.href = "";
+      a.onclick = function() { try { window.quartoToggleColorScheme(); } catch {} return false; };
+      const i = window.document.createElement("i");
+      i.classList.add('bi');
+      a.appendChild(i);
+      window.document.body.appendChild(a);
+    }
+    setColorSchemeToggle(hasAlternateSentinel())
     const icon = "";
     const anchorJS = new window.AnchorJS();
     anchorJS.options = {

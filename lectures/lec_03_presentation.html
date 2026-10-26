@@ -7,8 +7,8 @@
 <script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
 <link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
 <link href="../site_libs/quarto-html/light-border.css" rel="stylesheet">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-bb62276ab45c84d9efd712f51ff97b5a.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
-  <meta name="generator" content="quarto-1.10.18">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-ef81ec0aa04ec788d96d47c07689f2e4.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
+  <meta name="generator" content="quarto-1.10.19">
 
   <meta name="author" content="Dr.&nbsp;Tobias Vlćek">
   <title>Programming with Python – Lecture III - Building Reusable Functions</title>
@@ -66,43 +66,62 @@
       }
     pre.numberSource { margin-left: 3em;  padding-left: 4px; }
     div.sourceCode
-      { color: #24292e;  }
+      { color: #484e54;  }
     @media screen {
     pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
     }
-    code span { color: #24292e; } /* Normal */
-    code span.al { color: #ff5555; font-weight: bold; } /* Alert */
-    code span.an { color: #6a737d; } /* Annotation */
-    code span.at { color: #d73a49; } /* Attribute */
-    code span.bn { color: #005cc5; } /* BaseN */
-    code span.bu { color: #d73a49; } /* BuiltIn */
-    code span.cf { color: #d73a49; } /* ControlFlow */
-    code span.ch { color: #032f62; } /* Char */
-    code span.cn { color: #005cc5; } /* Constant */
-    code span.co { color: #6a737d; } /* Comment */
-    code span.cv { color: #6a737d; } /* CommentVar */
-    code span.do { color: #6a737d; } /* Documentation */
-    code span.dt { color: #d73a49; } /* DataType */
-    code span.dv { color: #005cc5; } /* DecVal */
-    code span.er { color: #ff5555; text-decoration: underline; } /* Error */
-    code span.ex { color: #d73a49; font-weight: bold; } /* Extension */
-    code span.fl { color: #005cc5; } /* Float */
-    code span.fu { color: #6f42c1; } /* Function */
-    code span.im { color: #032f62; } /* Import */
-    code span.in { color: #6a737d; } /* Information */
-    code span.kw { color: #d73a49; } /* Keyword */
-    code span.op { color: #24292e; } /* Operator */
-    code span.ot { color: #6f42c1; } /* Other */
-    code span.pp { color: #d73a49; } /* Preprocessor */
-    code span.re { color: #6a737d; } /* RegionMarker */
-    code span.sc { color: #005cc5; } /* SpecialChar */
-    code span.ss { color: #032f62; } /* SpecialString */
-    code span.st { color: #032f62; } /* String */
-    code span.va { color: #e36209; } /* Variable */
-    code span.vs { color: #032f62; } /* VerbatimString */
-    code span.wa { color: #ff5555; } /* Warning */
-  </style>
-  <link rel="stylesheet" href="../site_libs/revealjs/dist/theme/quarto-3ebedfd5943667d95ee0f4b930f59a08.css">
+    code span { color: #484e54; } /* Normal */
+    code span.al { color: #9c1a20; } /* Alert */
+    code span.an { color: #21272e; font-style: italic; } /* Annotation */
+    code span.at { color: #b03557; } /* Attribute */
+    code span.bn { color: #a54c02; } /* BaseN */
+    code span.bu { color: #785503; } /* BuiltIn */
+    code span.cf { color: #1868a0; } /* ControlFlow */
+    code span.ch { color: #157171; } /* Char */
+    code span.cn { color: #a54c02; } /* Constant */
+    code span.co { color: #21272e; font-style: italic; } /* Comment */
+    code span.cv { color: #21272e; font-style: italic; } /* CommentVar */
+    code span.do { color: #21272e; font-style: italic; } /* Documentation */
+    code span.dt { color: #1868a0; } /* DataType */
+    code span.dv { color: #a54c02; } /* DecVal */
+    code span.er { color: #9c1a20; } /* Error */
+    code span.ex { color: #1868a0; } /* Extension */
+    code span.fl { color: #a54c02; } /* Float */
+    code span.fu { color: #785503; } /* Function */
+    code span.im { color: #1868a0; } /* Import */
+    code span.in { color: #21272e; font-style: italic; } /* Information */
+    code span.kw { color: #1868a0; } /* Keyword */
+    code span.op { color: #484e54; } /* Operator */
+    code span.ot { color: #484e54; } /* Other */
+    code span.pp { color: #b03557; } /* Preprocessor */
+    code span.re { color: #21272e; font-style: italic; } /* RegionMarker */
+    code span.sc { color: #a54c02; } /* SpecialChar */
+    code span.ss { color: #157171; } /* SpecialString */
+    code span.st { color: #157171; } /* String */
+    code span.va { color: #a54c02; } /* Variable */
+    code span.vs { color: #157171; } /* VerbatimString */
+    code span.wa { color: #a54c02; } /* Warning */
+    /* CSS for citations */
+    div.csl-bib-body { }
+    div.csl-entry {
+      clear: both;
+    }
+    .hanging-indent div.csl-entry {
+      margin-left:2em;
+      text-indent:-2em;
+    }
+    div.csl-left-margin {
+      min-width:2em;
+      float:left;
+    }
+    div.csl-right-inline {
+      margin-left:2em;
+      padding-left:1em;
+    }
+    div.csl-indent {
+      margin-left: 2em;
+    }  </style>
+  <link rel="stylesheet" href="../site_libs/revealjs/dist/theme/quarto-dde09005afcf5ed51cd5f615fcea3502.css">
   <link href="../site_libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
   <link href="../site_libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
   <link href="../site_libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
@@ -295,7 +314,7 @@ Dr.&nbsp;Tobias Vlćek
 <section id="the-copy-paste-pain" class="slide level2">
 <h2>The copy-paste pain</h2>
 <p>Tobi totals each receipt line by hand, the same shape, over and over:</p>
-<div id="31427762" class="cell" data-execution_count="1">
+<div id="7d982c53" class="cell" data-execution_count="1">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a aria-label="1"></a><span class="bu">print</span>(<span class="bu">round</span>(<span class="dv">2</span> <span class="op">*</span> <span class="fl">4.50</span>, <span class="dv">2</span>))    <span class="co"># 2 wraps</span></span>
 <span id="cb1-2"><a aria-label="2"></a><span class="bu">print</span>(<span class="bu">round</span>(<span class="dv">1</span> <span class="op">*</span> <span class="fl">12.00</span>, <span class="dv">2</span>))   <span class="co"># 1 bowl</span></span>
 <span id="cb1-3"><a aria-label="3"></a><span class="bu">print</span>(<span class="bu">round</span>(<span class="dv">5</span> <span class="op">*</span> <span class="fl">3.20</span>, <span class="dv">2</span>))    <span class="co"># 5 fries</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
@@ -314,7 +333,7 @@ Dr.&nbsp;Tobias Vlćek
 <section id="def-name-the-calculation-once" class="slide level2">
 <h2><code>def</code>: name the calculation once</h2>
 <p>Write the calculation <strong>once</strong>, give it a name, and call it whenever you need it:</p>
-<div id="8400b98a" class="cell" data-execution_count="2">
+<div id="29f65229" class="cell" data-execution_count="2">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a aria-label="1"></a><span class="kw">def</span> line_total(qty, price):     <span class="co"># def NAME(inputs):</span></span>
 <span id="cb3-2"><a aria-label="2"></a>    <span class="cf">return</span> <span class="bu">round</span>(qty <span class="op">*</span> price, <span class="dv">2</span>)  <span class="co"># indented body, hands a value back</span></span>
 <span id="cb3-3"><a aria-label="3"></a></span>
@@ -335,7 +354,7 @@ Dr.&nbsp;Tobias Vlćek
 <li><strong>Parameters</strong> are the names in the definition, the function’s inputs: <code>qty</code>, <code>price</code></li>
 <li><strong>Arguments</strong> are the actual values you pass when you <strong>call</strong> it: <code>2</code>, <code>4.50</code></li>
 </ul>
-<div id="2ea5743e" class="cell" data-execution_count="3">
+<div id="778d57b0" class="cell" data-execution_count="3">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a aria-label="1"></a><span class="kw">def</span> line_total(qty, price):      <span class="co"># qty and price are PARAMETERS</span></span>
 <span id="cb5-2"><a aria-label="2"></a>    <span class="cf">return</span> <span class="bu">round</span>(qty <span class="op">*</span> price, <span class="dv">2</span>)</span>
 <span id="cb5-3"><a aria-label="3"></a></span>
@@ -357,14 +376,13 @@ Dr.&nbsp;Tobias Vlćek
 <span id="cb7-2"><a aria-label="2"></a>    <span class="cf">return</span> <span class="bu">round</span>(bill <span class="op">*</span> (<span class="dv">1</span> <span class="op">+</span> percent <span class="op">/</span> <span class="dv">100</span>), <span class="dv">2</span>)</span>
 <span id="cb7-3"><a aria-label="3"></a></span>
 <span id="cb7-4"><a aria-label="4"></a><span class="bu">print</span>(with_tip(<span class="dv">10</span>, <span class="dv">40</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p>a) <code>44.0</code> b) <code>14.0</code> c) <code>Error</code></p>
-<div class="fragment">
-<p><span class="question">Predict</span>. Pick a letter, then I reveal the answer.</p>
-</div>
+<p>a) <code>44.0</code><br>
+b) <code>14.0</code><br>
+c) <code>Error</code></p>
 </section>
 <section id="answer-position-decides-not-intent" class="slide level2">
 <h2>Answer: position decides, not intent</h2>
-<div id="4602feba" class="cell" data-execution_count="4">
+<div id="14c1897b" class="cell" data-execution_count="4">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a aria-label="1"></a><span class="kw">def</span> with_tip(bill, percent):</span>
 <span id="cb8-2"><a aria-label="2"></a>    <span class="cf">return</span> <span class="bu">round</span>(bill <span class="op">*</span> (<span class="dv">1</span> <span class="op">+</span> percent <span class="op">/</span> <span class="dv">100</span>), <span class="dv">2</span>)</span>
 <span id="cb8-3"><a aria-label="3"></a></span>
@@ -384,7 +402,7 @@ Dr.&nbsp;Tobias Vlćek
 <section id="return-hand-the-value-back" class="slide level2">
 <h2><code>return</code>: hand the value back</h2>
 <p><code>return</code> sends a value <strong>back to whoever called</strong> the function, so you can store it and use it later:</p>
-<div id="8a311224" class="cell" data-execution_count="5">
+<div id="4b564e06" class="cell" data-execution_count="5">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a aria-label="1"></a><span class="kw">def</span> line_total(qty, price):</span>
 <span id="cb10-2"><a aria-label="2"></a>    <span class="cf">return</span> <span class="bu">round</span>(qty <span class="op">*</span> price, <span class="dv">2</span>)</span>
 <span id="cb10-3"><a aria-label="3"></a></span>
@@ -407,14 +425,13 @@ Dr.&nbsp;Tobias Vlćek
 <span id="cb12-3"><a aria-label="3"></a></span>
 <span id="cb12-4"><a aria-label="4"></a>result <span class="op">=</span> label_price(<span class="fl">8.50</span>)</span>
 <span id="cb12-5"><a aria-label="5"></a><span class="bu">print</span>(result)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p>a) <code>8.50 EUR</code> b) <code>Error</code> c) <code>None</code></p>
-<div class="fragment">
-<p><span class="question">Predict</span>. Pick a letter, then I reveal the answer.</p>
-</div>
+<p>a) <code>8.50 EUR</code><br>
+b) <code>Error</code><br>
+c) <code>None</code></p>
 </section>
 <section id="answer-print-shows-return-gives" class="slide level2">
 <h2>Answer: <code>print</code> shows, <code>return</code> gives</h2>
-<div id="4420d036" class="cell" data-execution_count="6">
+<div id="c4f7ba31" class="cell" data-execution_count="6">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a aria-label="1"></a><span class="kw">def</span> label_price(price):</span>
 <span id="cb13-2"><a aria-label="2"></a>    <span class="bu">print</span>(<span class="ss">f"</span><span class="sc">{</span>price<span class="sc">:.2f}</span><span class="ss"> EUR"</span>)</span>
 <span id="cb13-3"><a aria-label="3"></a></span>
@@ -446,7 +463,7 @@ None</code></pre>
 <section id="default-arguments" class="slide level2">
 <h2>Default arguments</h2>
 <p>A parameter can carry a <strong>default</strong>, used when the caller leaves it out:</p>
-<div id="58c908dc" class="cell" data-execution_count="7">
+<div id="f92d6921" class="cell" data-execution_count="7">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb15"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a aria-label="1"></a><span class="kw">def</span> service_fee(total, rate<span class="op">=</span><span class="fl">0.05</span>):   <span class="co"># rate defaults to 5 %</span></span>
 <span id="cb15-2"><a aria-label="2"></a>    <span class="cf">return</span> <span class="bu">round</span>(total <span class="op">*</span> rate, <span class="dv">2</span>)</span>
 <span id="cb15-3"><a aria-label="3"></a></span>
@@ -466,7 +483,7 @@ None</code></pre>
 <section id="functions-can-call-functions" class="slide level2">
 <h2>Functions can call functions</h2>
 <p>A function can use another function you already wrote (reuse builds on reuse):</p>
-<div id="28c2349e" class="cell" data-execution_count="8">
+<div id="beb02dbf" class="cell" data-execution_count="8">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb17"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a aria-label="1"></a><span class="kw">def</span> bill(qty, price):</span>
 <span id="cb17-2"><a aria-label="2"></a>    items <span class="op">=</span> line_total(qty, price)        <span class="co"># reuse line_total</span></span>
 <span id="cb17-3"><a aria-label="3"></a>    <span class="cf">return</span> <span class="bu">round</span>(items <span class="op">+</span> service_fee(items), <span class="dv">2</span>)  <span class="co"># ...and service_fee</span></span>
@@ -502,7 +519,7 @@ None</code></pre>
 <section id="local-names-stay-local" class="slide level2">
 <h2>Local names stay local</h2>
 <p>A parameter is the function’s <strong>own name</strong> for the value it was handed. Giving that name a new value inside changes nothing outside:</p>
-<div id="f674a090" class="cell" data-execution_count="9">
+<div id="aea193ee" class="cell" data-execution_count="9">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb19"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a aria-label="1"></a><span class="kw">def</span> bump(n):</span>
 <span id="cb19-2"><a aria-label="2"></a>    n <span class="op">=</span> n <span class="op">+</span> <span class="dv">10</span>       <span class="co"># changes the function's OWN copy of n</span></span>
 <span id="cb19-3"><a aria-label="3"></a>    <span class="cf">return</span> n</span>
@@ -528,14 +545,13 @@ None</code></pre>
 <span id="cb21-5"><a aria-label="5"></a>stock <span class="op">=</span> <span class="dv">3</span></span>
 <span id="cb21-6"><a aria-label="6"></a>bump(stock)</span>
 <span id="cb21-7"><a aria-label="7"></a><span class="bu">print</span>(stock)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p>a) <code>3</code> b) <code>13</code> c) <code>Error</code></p>
-<div class="fragment">
-<p><span class="question">Predict</span>. Pick a letter, then I reveal the answer.</p>
-</div>
+<p>a) <code>3</code><br>
+b) <code>13</code><br>
+c) <code>Error</code></p>
 </section>
 <section id="answer-outside-stays-untouched" class="slide level2">
 <h2>Answer: outside stays untouched</h2>
-<div id="2b4dfcb6" class="cell" data-execution_count="10">
+<div id="bca80eee" class="cell" data-execution_count="10">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb22"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a aria-label="1"></a><span class="kw">def</span> bump(n):</span>
 <span id="cb22-2"><a aria-label="2"></a>    n <span class="op">=</span> n <span class="op">+</span> <span class="dv">10</span></span>
 <span id="cb22-3"><a aria-label="3"></a>    <span class="cf">return</span> n</span>
@@ -577,7 +593,7 @@ None</code></pre>
 </section>
 <section id="class-__init__-and-self" class="slide level2">
 <h2><code>class</code>, <code>__init__</code>, and <code>self</code></h2>
-<div id="7772d565" class="cell" data-execution_count="11">
+<div id="e5ce81fc" class="cell" data-execution_count="11">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb24"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb24-1"><a aria-label="1"></a><span class="kw">class</span> Delivery:</span>
 <span id="cb24-2"><a aria-label="2"></a>    <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>, courier, distance_km):  <span class="co"># runs when you build one</span></span>
 <span id="cb24-3"><a aria-label="3"></a>        <span class="va">self</span>.courier <span class="op">=</span> courier          <span class="co"># store data ON the object</span></span>
@@ -597,7 +613,7 @@ None</code></pre>
 <section id="build-one-call-its-method" class="slide level2">
 <h2>Build one, call its method</h2>
 <p><strong>Instantiate</strong> the class to make an object, then use its data and its methods:</p>
-<div id="61f31a24" class="cell" data-execution_count="12">
+<div id="d3f45edb" class="cell" data-execution_count="12">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb25"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb25-1"><a aria-label="1"></a>trip <span class="op">=</span> Delivery(<span class="st">"Nadia"</span>, <span class="dv">4</span>)   <span class="co"># build one, __init__ runs</span></span>
 <span id="cb25-2"><a aria-label="2"></a></span>
 <span id="cb25-3"><a aria-label="3"></a><span class="bu">print</span>(trip.courier)           <span class="co"># read stored data</span></span>
@@ -620,14 +636,13 @@ None</code></pre>
 <span id="cb27-2"><a aria-label="2"></a>second <span class="op">=</span> Delivery(<span class="st">"Omar"</span>, <span class="dv">10</span>)</span>
 <span id="cb27-3"><a aria-label="3"></a></span>
 <span id="cb27-4"><a aria-label="4"></a><span class="bu">print</span>(trip.fee())</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p>a) <code>12.0</code> b) <code>Error</code> c) <code>4.8</code></p>
-<div class="fragment">
-<p><span class="question">Predict</span>. Pick a letter, then I reveal the answer.</p>
-</div>
+<p>a) <code>12.0</code><br>
+b) <code>Error</code><br>
+c) <code>4.8</code></p>
 </section>
 <section id="answer-each-object-its-own-data" class="slide level2">
 <h2>Answer: each object, its own data</h2>
-<div id="0cbb3841" class="cell" data-execution_count="13">
+<div id="fe0b4b65" class="cell" data-execution_count="13">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb28"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb28-1"><a aria-label="1"></a>trip <span class="op">=</span> Delivery(<span class="st">"Nadia"</span>, <span class="dv">4</span>)</span>
 <span id="cb28-2"><a aria-label="2"></a>second <span class="op">=</span> Delivery(<span class="st">"Omar"</span>, <span class="dv">10</span>)</span>
 <span id="cb28-3"><a aria-label="3"></a></span>
@@ -731,12 +746,16 @@ None</code></pre>
 <h1><span class="flow">Literature</span></h1>
 
 </section>
-<section id="books-to-start-with" class="slide level2">
+<section id="books-to-start-with" class="slide level2 smaller scrollable">
 <h2>Books to start with</h2>
-<ul>
-<li>Downey, A. B. (2024). Think Python: How to think like a computer scientist (Third edition). O’Reilly. <a href="https://greenteapress.com/wp/think-python-3rd-edition/">Link to free online version</a></li>
-<li>Elter, S. (2021). Schrödinger programmiert Python: Das etwas andere Fachbuch (1. Auflage). Rheinwerk Verlag.</li>
-</ul>
+<div id="refs" class="references csl-bib-body hanging-indent" role="list">
+<div id="ref-downeyThinkPythonHow2024" class="csl-entry" role="listitem">
+Downey, Allen B. 2024. <em>Think <span>Python</span>: How to Think Like a Computer Scientist</em>. Third edition. O’Reilly. <a href="https://greenteapress.com/wp/think-python-3rd-edition/">https://greenteapress.com/wp/think-python-3rd-edition/</a>.
+</div>
+<div id="ref-elterSchroedingerProgrammiertPython2021" class="csl-entry" role="listitem">
+Elter, Stephan. 2021. <em><span>Schrödinger programmiert Python: das etwas andere Fachbuch</span></em>. 1. Auflage. <span>Rheinwerk Computing</span>. Rheinwerk Verlag.
+</div>
+</div>
 <div class="fragment">
 <div class="callout callout-note callout-style-simple">
 <div class="callout-body">

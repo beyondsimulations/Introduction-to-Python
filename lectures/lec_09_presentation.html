@@ -7,8 +7,8 @@
 <script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
 <link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
 <link href="../site_libs/quarto-html/light-border.css" rel="stylesheet">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-bb62276ab45c84d9efd712f51ff97b5a.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
-  <meta name="generator" content="quarto-1.10.18">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-ef81ec0aa04ec788d96d47c07689f2e4.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
+  <meta name="generator" content="quarto-1.10.19">
 
   <meta name="author" content="Dr.&nbsp;Tobias Vlćek">
   <title>Programming with Python – Lecture IX - Data Visualization</title>
@@ -66,43 +66,62 @@
       }
     pre.numberSource { margin-left: 3em;  padding-left: 4px; }
     div.sourceCode
-      { color: #24292e;  }
+      { color: #484e54;  }
     @media screen {
     pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
     }
-    code span { color: #24292e; } /* Normal */
-    code span.al { color: #ff5555; font-weight: bold; } /* Alert */
-    code span.an { color: #6a737d; } /* Annotation */
-    code span.at { color: #d73a49; } /* Attribute */
-    code span.bn { color: #005cc5; } /* BaseN */
-    code span.bu { color: #d73a49; } /* BuiltIn */
-    code span.cf { color: #d73a49; } /* ControlFlow */
-    code span.ch { color: #032f62; } /* Char */
-    code span.cn { color: #005cc5; } /* Constant */
-    code span.co { color: #6a737d; } /* Comment */
-    code span.cv { color: #6a737d; } /* CommentVar */
-    code span.do { color: #6a737d; } /* Documentation */
-    code span.dt { color: #d73a49; } /* DataType */
-    code span.dv { color: #005cc5; } /* DecVal */
-    code span.er { color: #ff5555; text-decoration: underline; } /* Error */
-    code span.ex { color: #d73a49; font-weight: bold; } /* Extension */
-    code span.fl { color: #005cc5; } /* Float */
-    code span.fu { color: #6f42c1; } /* Function */
-    code span.im { color: #032f62; } /* Import */
-    code span.in { color: #6a737d; } /* Information */
-    code span.kw { color: #d73a49; } /* Keyword */
-    code span.op { color: #24292e; } /* Operator */
-    code span.ot { color: #6f42c1; } /* Other */
-    code span.pp { color: #d73a49; } /* Preprocessor */
-    code span.re { color: #6a737d; } /* RegionMarker */
-    code span.sc { color: #005cc5; } /* SpecialChar */
-    code span.ss { color: #032f62; } /* SpecialString */
-    code span.st { color: #032f62; } /* String */
-    code span.va { color: #e36209; } /* Variable */
-    code span.vs { color: #032f62; } /* VerbatimString */
-    code span.wa { color: #ff5555; } /* Warning */
-  </style>
-  <link rel="stylesheet" href="../site_libs/revealjs/dist/theme/quarto-3ebedfd5943667d95ee0f4b930f59a08.css">
+    code span { color: #484e54; } /* Normal */
+    code span.al { color: #9c1a20; } /* Alert */
+    code span.an { color: #21272e; font-style: italic; } /* Annotation */
+    code span.at { color: #b03557; } /* Attribute */
+    code span.bn { color: #a54c02; } /* BaseN */
+    code span.bu { color: #785503; } /* BuiltIn */
+    code span.cf { color: #1868a0; } /* ControlFlow */
+    code span.ch { color: #157171; } /* Char */
+    code span.cn { color: #a54c02; } /* Constant */
+    code span.co { color: #21272e; font-style: italic; } /* Comment */
+    code span.cv { color: #21272e; font-style: italic; } /* CommentVar */
+    code span.do { color: #21272e; font-style: italic; } /* Documentation */
+    code span.dt { color: #1868a0; } /* DataType */
+    code span.dv { color: #a54c02; } /* DecVal */
+    code span.er { color: #9c1a20; } /* Error */
+    code span.ex { color: #1868a0; } /* Extension */
+    code span.fl { color: #a54c02; } /* Float */
+    code span.fu { color: #785503; } /* Function */
+    code span.im { color: #1868a0; } /* Import */
+    code span.in { color: #21272e; font-style: italic; } /* Information */
+    code span.kw { color: #1868a0; } /* Keyword */
+    code span.op { color: #484e54; } /* Operator */
+    code span.ot { color: #484e54; } /* Other */
+    code span.pp { color: #b03557; } /* Preprocessor */
+    code span.re { color: #21272e; font-style: italic; } /* RegionMarker */
+    code span.sc { color: #a54c02; } /* SpecialChar */
+    code span.ss { color: #157171; } /* SpecialString */
+    code span.st { color: #157171; } /* String */
+    code span.va { color: #a54c02; } /* Variable */
+    code span.vs { color: #157171; } /* VerbatimString */
+    code span.wa { color: #a54c02; } /* Warning */
+    /* CSS for citations */
+    div.csl-bib-body { }
+    div.csl-entry {
+      clear: both;
+    }
+    .hanging-indent div.csl-entry {
+      margin-left:2em;
+      text-indent:-2em;
+    }
+    div.csl-left-margin {
+      min-width:2em;
+      float:left;
+    }
+    div.csl-right-inline {
+      margin-left:2em;
+      padding-left:1em;
+    }
+    div.csl-indent {
+      margin-left: 2em;
+    }  </style>
+  <link rel="stylesheet" href="../site_libs/revealjs/dist/theme/quarto-dde09005afcf5ed51cd5f615fcea3502.css">
   <link href="../site_libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
   <link href="../site_libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
   <link href="../site_libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
@@ -259,7 +278,16 @@ Dr.&nbsp;Tobias Vlćek
 </blockquote>
 </div>
 <div class="fragment">
-<p>A number convinces the careful. A <strong>picture</strong> convinces the room. Today: draw the right chart for the question, and refuse to draw a misleading one.</p>
+<p>Your agent draws any chart in five seconds, so drawing is no longer the hard part. Today: <strong>which</strong> chart to draw, <strong>what</strong> it should say, and in <strong>which order</strong> you show the charts.</p>
+</div>
+</section>
+<section id="one-download-first" class="slide level2">
+<h2>One download first</h2>
+<p><strong>On a Mac?</strong> Open a terminal now and type:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a aria-label="1"></a><span class="fu">git</span> <span class="at">--version</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>A window offers to install the <em>command line developer tools</em>? Click <strong>Install</strong> and let it run while we talk. It’s a big download, and you need git before today’s lab.</p>
+<div class="fragment">
+<p>On Windows, or a version number came back? Nothing to do yet.</p>
 </div>
 </section></section>
 <section>
@@ -270,14 +298,16 @@ Dr.&nbsp;Tobias Vlćek
 <section id="question-1" class="slide level2">
 <h2>Question 1</h2>
 <p>Three questions from Episode 8. Commit. Hands up <strong>before</strong> the reveal.</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a aria-label="1"></a>orders[orders[<span class="st">"zone"</span>] <span class="op">==</span> <span class="st">"Nord"</span>]</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a aria-label="1"></a>orders[orders[<span class="st">"zone"</span>] <span class="op">==</span> <span class="st">"Nord"</span>]</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>returns…</p>
-<p>a) a True/False column b) only the Nord rows c) an error from comparing text</p>
+<p>a) a True/False column<br>
+b) only the Nord rows<br>
+c) an error from comparing text</p>
 </section>
 <section id="answer-1" class="slide level2">
 <h2>Answer 1</h2>
-<div id="b4df2e49" class="cell" data-execution_count="2">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a aria-label="1"></a>orders[orders[<span class="st">"zone"</span>] <span class="op">==</span> <span class="st">"Nord"</span>]</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div id="cfb3dd07" class="cell" data-execution_count="2">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a aria-label="1"></a>orders[orders[<span class="st">"zone"</span>] <span class="op">==</span> <span class="st">"Nord"</span>]</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <div class="cell fragment" data-execution_count="2">
 <div class="cell-output cell-output-display" data-execution_count="2">
@@ -333,37 +363,42 @@ Dr.&nbsp;Tobias Vlćek
 </section>
 <section id="question-2" class="slide level2">
 <h2>Question 2</h2>
-<p>Tobi’s AI wrote this. <code>orders</code> is a normal DataFrame. What happens?</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a aria-label="1"></a>orders.summarize()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p>a) a summary table b) an empty DataFrame c) an <code>AttributeError</code></p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a aria-label="1"></a>orders.groupby(<span class="st">"zone"</span>)[<span class="st">"total_eur"</span>].<span class="bu">sum</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>returns…</p>
+<p>a) one row per order, with its zone<br>
+b) one total for all orders<br>
+c) one total per zone</p>
 </section>
 <section id="answer-2" class="slide level2">
 <h2>Answer 2</h2>
-<div id="5869c861" class="cell" data-execution_count="3">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a aria-label="1"></a>orders.summarize()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div id="f2ed0146" class="cell" data-execution_count="3">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a aria-label="1"></a>orders.groupby(<span class="st">"zone"</span>)[<span class="st">"total_eur"</span>].<span class="bu">sum</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <div class="cell fragment" data-execution_count="3">
-<div class="cell-output cell-output-error">
-<div class="ansi-escaped-output">
-<pre><span class="ansi-red-fg">AttributeError</span><span class="ansi-red-fg">:</span> 'DataFrame' object has no attribute 'summarize'
-</pre>
-</div>
+<div class="cell-output cell-output-display" data-execution_count="3">
+<pre><code>zone
+Hafen     6.8
+Nord     42.5
+Sued     38.6
+Name: total_eur, dtype: float64</code></pre>
 </div>
 </div>
 <div class="fragment">
-<p><strong>c) <code>AttributeError</code></strong>: pandas has <code>.describe()</code>, not <code>.summarize()</code>. The AI invented a plausible name. An AI that sounds sure is not the same as an API that exists. You verify, every time.</p>
+<p><strong>c) one total per zone</strong>: <code>groupby</code> splits the orders by zone, <code>.sum()</code> adds up each group. Today this table sits behind every bar chart: the bars have to match it.</p>
 </div>
 </section>
 <section id="question-3" class="slide level2">
 <h2>Question 3</h2>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a aria-label="1"></a>orders[<span class="st">"total_eur"</span>].describe()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb7"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a aria-label="1"></a>orders[<span class="st">"total_eur"</span>].describe()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>shows…</p>
-<p>a) the first five rows of the column, like <code>.head()</code> b) count / mean / std / min / quartiles / max c) the column’s dtype, like <code>.dtypes</code></p>
+<p>a) the first five rows of the column, like <code>.head()</code><br>
+b) count / mean / std / min / quartiles / max<br>
+c) the column’s dtype, like <code>.dtypes</code></p>
 </section>
 <section id="answer-3" class="slide level2">
 <h2>Answer 3</h2>
-<div id="abe21a08" class="cell" data-execution_count="4">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a aria-label="1"></a>orders[<span class="st">"total_eur"</span>].describe()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div id="5a7ac462" class="cell" data-execution_count="4">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a aria-label="1"></a>orders[<span class="st">"total_eur"</span>].describe()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <div class="cell fragment" data-execution_count="4">
 <div class="cell-output cell-output-display" data-execution_count="4">
@@ -379,114 +414,118 @@ Name: total_eur, dtype: float64</code></pre>
 </div>
 </div>
 <div class="fragment">
-<p><strong>b) count / mean / std / min / quartiles / max</strong>. One line, the column’s whole statistical fingerprint. That’s the real method Tobi’s AI was reaching for.</p>
+<p><strong>b) count / mean / std / min / quartiles / max</strong>. One line, the column’s whole statistical fingerprint.</p>
 </div>
 </section></section>
 <section>
-<section id="the-first-chart" class="title-slide slide level1 title center">
-<h1><span class="flow">The first chart</span></h1>
+<section id="ugly-bad-wrong" class="title-slide slide level1 title center">
+<h1><span class="flow">Ugly, bad, wrong</span></h1>
 
 </section>
-<section id="matplotlib-in-four-lines" class="slide level2">
-<h2>Matplotlib in four lines</h2>
-<p>Everyone plots with <strong>matplotlib</strong>, imported as <code>plt</code>. Four lines turn a list of numbers into a picture:</p>
-<div id="2f2c503b" class="cell" data-execution_count="5">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a aria-label="1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
-<span id="cb8-2"><a aria-label="2"></a></span>
-<span id="cb8-3"><a aria-label="3"></a>days <span class="op">=</span> [<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">5</span>]</span>
-<span id="cb8-4"><a aria-label="4"></a>revenue <span class="op">=</span> [<span class="dv">120</span>, <span class="dv">90</span>, <span class="dv">140</span>, <span class="dv">160</span>, <span class="dv">130</span>]</span>
-<span id="cb8-5"><a aria-label="5"></a></span>
-<span id="cb8-6"><a aria-label="6"></a>plt.figure()          <span class="co"># OPEN: a fresh canvas, so this chart</span></span>
-<span id="cb8-7"><a aria-label="7"></a>                      <span class="co">#       doesn't draw on the last one</span></span>
-<span id="cb8-8"><a aria-label="8"></a>plt.plot(days, revenue)   <span class="co"># x, then y</span></span>
-<span id="cb8-9"><a aria-label="9"></a>plt.title(<span class="st">"This week's revenue"</span>)</span>
-<span id="cb8-10"><a aria-label="10"></a>plt.gca()             <span class="co"># SHOW: "get current axes" (the chart)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</div>
-
-<div class="fragment">
-<div class="callout callout-note callout-style-simple">
-<div class="callout-body">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-content">
-<p>Two habits for every chart cell: open with <code>plt.figure()</code> (a clean canvas) and end with <code>plt.gca()</code>. In marimo there’s no <code>plt.show()</code>; the figure appears as the cell’s <strong>last expression</strong>, and <code>plt.plot(...)</code> alone returns line objects, not a picture. Today’s lab is a script without cells, so there a chart ends in a picture file. More on that before the break.</p>
-</div>
-</div>
-</div>
-</div>
-</section>
-<section id="matplotlib-in-four-lines-output" class="slide level2 output-location-slide"><h2>Matplotlib in four lines</h2><div class="cell output-location-slide" data-execution_count="5">
-<div class="cell-output cell-output-display">
-<div>
-<figure>
-<p><img data-src="lec_09_plotting_files/figure-revealjs/cell-6-output-1.png" alt="Line chart of this week's revenue over days 1 to 5: 120, down to 90, up to 140 and 160, back to 130. Four lines of code give a complete picture, though the axes carry no labels yet." width="798" height="431"></p>
-</figure>
-</div>
-</div>
-</div></section><section id="predict-whats-on-the-x-axis" class="slide level2">
-<h2>Predict: what’s on the x-axis?</h2>
-<p>Tobi is in a hurry and hands <code>plot</code> <strong>one</strong> list, no <code>days</code>:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb9"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a aria-label="1"></a>plt.plot([<span class="dv">3</span>, <span class="dv">5</span>, <span class="dv">4</span>])</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p>What does the x-axis show?</p>
-<p>a) <code>3, 5, 4</code>, the values themselves b) <code>0, 1, 2</code>, the list positions c) <code>1, 2, 3</code>, counted the human way</p>
-<div class="fragment">
-<p><span class="question">Predict</span>. Pick a letter, then I reveal the answer.</p>
-</div>
-</section>
-<section id="answer-the-positions-from-zero" class="slide level2">
-<h2>Answer: the positions, from zero</h2>
-<div id="48569273" class="cell" data-execution_count="6">
+<section id="your-agent-draws-you-judge" class="slide level2">
+<h2>Your agent draws, you judge</h2>
+<p>Ask your agent for <em>a bar chart of revenue per dish</em>:</p>
+<div id="77d857df" class="cell columns column-output-location" data-execution_count="6">
+<div class="column">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a aria-label="1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
 <span id="cb10-2"><a aria-label="2"></a></span>
-<span id="cb10-3"><a aria-label="3"></a>plt.figure()</span>
-<span id="cb10-4"><a aria-label="4"></a>plt.plot([<span class="dv">3</span>, <span class="dv">5</span>, <span class="dv">4</span>], marker<span class="op">=</span><span class="st">"o"</span>)</span>
-<span id="cb10-5"><a aria-label="5"></a>plt.xticks([<span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">2</span>])   <span class="co"># show only whole positions</span></span>
-<span id="cb10-6"><a aria-label="6"></a>plt.gca()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb10-3"><a aria-label="3"></a>dishes <span class="op">=</span> [<span class="st">"Pad Thai"</span>, <span class="st">"Miso Ramen"</span>,</span>
+<span id="cb10-4"><a aria-label="4"></a>          <span class="st">"Bao Box"</span>, <span class="st">"Falafel Wrap"</span>]</span>
+<span id="cb10-5"><a aria-label="5"></a>revenue <span class="op">=</span> [<span class="dv">420</span>, <span class="dv">450</span>, <span class="dv">330</span>, <span class="dv">300</span>]</span>
+<span id="cb10-6"><a aria-label="6"></a></span>
+<span id="cb10-7"><a aria-label="7"></a>plt.figure()      <span class="co"># a fresh canvas</span></span>
+<span id="cb10-8"><a aria-label="8"></a>plt.bar(dishes, revenue)</span>
+<span id="cb10-9"><a aria-label="9"></a>plt.ylabel(<span class="st">"Revenue (EUR)"</span>)</span>
+<span id="cb10-10"><a aria-label="10"></a>plt.title(<span class="st">"Revenue per dish"</span>)</span>
+<span id="cb10-11"><a aria-label="11"></a>plt.gca()         <span class="co"># show it</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div><div class="column">
+<div class="cell-output cell-output-display">
+<div>
+<figure>
+<p><img data-src="lec_09_plotting_files/figure-revealjs/cell-7-output-1.png" alt="Bar chart of revenue per dish: Pad Thai 420, Miso Ramen 450, Bao Box 330, Falafel Wrap 300 euros, drawn in the default blue with the y-axis labelled Revenue (EUR)." width="538" height="385"></p>
+</figure>
 </div>
-
-<div class="fragment">
-<p><strong>b) <code>0, 1, 2</code></strong>: with one list, matplotlib takes it as <strong>y</strong> and invents x as the positions, and Python counts positions from 0.</p>
 </div>
+</div></div>
 <div class="fragment">
-<p>Want days 1-5 on the axis? Pass them: <code>plt.plot(days, revenue)</code>, x first.</p>
+<p>Read the code, don’t memorize it. Your job: <strong>judge</strong> the picture. Here, the names already collide.</p>
 </div>
 </section>
-<section id="answer-the-positions-from-zero-output" class="slide level2 output-location-slide"><h2>Answer: the positions, from zero</h2><div class="cell output-location-slide" data-execution_count="6">
+<section id="ugly-bad-wrong-1" class="slide level2">
+<h2>Ugly, bad, wrong</h2>
+<p>Problem charts get one of three verdicts <span class="citation" data-cites="wilkeFundamentalsDataVisualization2019">(<a href="#/books-to-start-with" role="doc-biblioref" onclick="">Wilke 2019</a>, ch.&nbsp;1)</span>:</p>
+<ul>
+<li><strong>Ugly</strong>: clear and correct, but unpleasant to look at</li>
+<li><strong>Bad</strong>: the numbers are right, but the picture is unclear, confusing, overloaded or deceiving</li>
+<li><strong>Wrong</strong>: the numbers in the picture are not the data</li>
+</ul>
+<div class="fragment">
+<p>Fix <strong>wrong</strong> first, then <strong>bad</strong>. <strong>Ugly</strong> comes last: a correct, clear chart in default colors already does its job.</p>
+</div>
+</section>
+<section id="predict-which-chart-is-wrong" class="slide level2">
+<h2>Predict: which chart is wrong?</h2>
+<p>Three drafts from Tobi’s agent. Exactly one is <strong>wrong</strong>:</p>
+<div id="d2b3ec7d" class="cell" data-execution_count="7">
 <div class="cell-output cell-output-display">
 <div>
 <figure>
-<p><img data-src="lec_09_plotting_files/figure-revealjs/cell-7-output-1.png" alt="Line with three markers at heights 3, 5 and 4. The x-axis reads 0, 1, 2: matplotlib used the list positions, counted from zero, not the values." width="802" height="411"></p>
+<p><img data-src="lec_09_plotting_files/figure-revealjs/cell-8-output-1.png" alt="Three charts of the same four dishes. Chart 1: bars labelled with shares of revenue of 32, 35, 25 and 23 percent. Chart 2: bars in magenta, green, yellow and cyan with thick black outlines and a heavy black grid. Chart 3: a pie with four slices of similar size and no numbers." width="1192" height="245"></p>
 </figure>
 </div>
 </div>
-</div></section><section id="the-parts-of-a-chart" class="slide level2">
-<h2>The parts of a chart</h2>
-<p>Every chart names its axes. <code>xlabel</code>, <code>ylabel</code>, <code>title</code>, and (when there’s more than one line) a <code>legend</code>:</p>
-<div id="2f04223c" class="cell" data-execution_count="7">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a aria-label="1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
-<span id="cb11-2"><a aria-label="2"></a></span>
-<span id="cb11-3"><a aria-label="3"></a>days <span class="op">=</span> [<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">5</span>]</span>
-<span id="cb11-4"><a aria-label="4"></a>revenue <span class="op">=</span> [<span class="dv">120</span>, <span class="dv">90</span>, <span class="dv">140</span>, <span class="dv">160</span>, <span class="dv">130</span>]</span>
-<span id="cb11-5"><a aria-label="5"></a></span>
-<span id="cb11-6"><a aria-label="6"></a>plt.figure()</span>
-<span id="cb11-7"><a aria-label="7"></a>plt.plot(days, revenue, label<span class="op">=</span><span class="st">"Revenue"</span>)   <span class="co"># label feeds the legend</span></span>
-<span id="cb11-8"><a aria-label="8"></a>plt.xlabel(<span class="st">"Day"</span>)        <span class="co"># what the x-axis counts</span></span>
-<span id="cb11-9"><a aria-label="9"></a>plt.ylabel(<span class="st">"Revenue (€)"</span>)  <span class="co"># what the y-axis measures</span></span>
-<span id="cb11-10"><a aria-label="10"></a>plt.title(<span class="st">"This week's revenue"</span>)  <span class="co"># what the picture is about</span></span>
-<span id="cb11-11"><a aria-label="11"></a>plt.legend()             <span class="co"># the little key, one entry per label</span></span>
-<span id="cb11-12"><a aria-label="12"></a>plt.gca()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
-
-</section><section id="the-parts-of-a-chart-output" class="slide level2 output-location-slide"><h2>The parts of a chart</h2><div class="cell output-location-slide" data-execution_count="7">
+<p>a) chart 1<br>
+b) chart 2<br>
+c) chart 3</p>
+</section>
+<section id="answer-chart-1-adds-up-to-115" class="slide level2">
+<h2>Answer: chart 1 adds up to 115 %</h2>
+<div id="bb2ecb23" class="cell" data-execution_count="8">
 <div class="cell-output cell-output-display">
 <div>
 <figure>
-<p><img data-src="lec_09_plotting_files/figure-revealjs/cell-8-output-1.png" alt="The revenue line over days 1 to 5 with every part named: x-axis Day, y-axis Revenue (€), the title This week's revenue, and a legend with the single entry Revenue." width="816" height="449"></p>
+<p><img data-src="lec_09_plotting_files/figure-revealjs/cell-9-output-1.png" alt="Two bar charts of revenue shares per dish. Left, Tobi's agent: 32, 35, 25 and 23 percent, which add up to 115 percent. Right, the shares computed from the revenue: 28, 30, 22 and 20 percent, which add up to 100 percent." width="1025" height="303"></p>
 </figure>
 </div>
 </div>
-</div></section></section>
+</div>
+<div class="fragment">
+<p><strong>a) chart 1</strong>: shares of one whole add up to 100 %, and these add up to 115 %. That’s <strong>wrong</strong>. Chart 2 is <strong>ugly</strong>: loud, but you can read every number. Chart 3 is <strong>bad</strong> for this question: correct, but nobody can tell which slice is biggest.</p>
+</div>
+</section>
+<section id="the-title-is-a-claim" class="slide level2">
+<h2>The title is a claim</h2>
+<p>A title <strong>states the point</strong> <span class="citation" data-cites="wilkeFundamentalsDataVisualization2019">(<a href="#/books-to-start-with" role="doc-biblioref" onclick="">Wilke 2019</a>, ch.&nbsp;22)</span>:</p>
+<table class="caption-top">
+<thead>
+<tr class="header">
+<th>Describes the chart</th>
+<th>States the point</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Revenue per dish</td>
+<td>Miso Ramen sells best: 450 euros</td>
+</tr>
+<tr class="even">
+<td>Delivery times</td>
+<td>Most deliveries take 20-30 minutes</td>
+</tr>
+<tr class="odd">
+<td>Order value vs.&nbsp;delivery time</td>
+<td>Big orders don’t take longer</td>
+</tr>
+</tbody>
+</table>
+<div class="fragment">
+<ul>
+<li>Write the claim <strong>before</strong> you draw. If you can’t, the chart has no point yet.</li>
+<li>Every axis names what it measures, <strong>with the unit</strong>: <em>Revenue (EUR)</em>.</li>
+</ul>
+</div>
+</section></section>
 <section>
 <section id="your-turn" class="title-slide slide level1 loud-slide center">
 <h1>Your turn</h1>
@@ -498,67 +537,186 @@ Name: total_eur, dtype: float64</code></pre>
 <p><strong><a href="https://python.tobiasvlcek.com/notebooks/ex_09_a/">python.tobiasvlcek.com/notebooks/ex_09_a/</a></strong></p>
 
 <img data-src="assets/qr/ex_09_a.png" alt="QR code linking to the online notebook for exercise 9a, the same address as the link above." width="280" class="r-stretch"><p><strong>Any questions?</strong> Let me know!</p>
-</section>
-<section id="a-little-styling-and-only-a-little" class="slide level2">
-<h2>A little styling: and only a little</h2>
-<p>Two keywords cover almost everything: <code>color</code> and <code>linestyle</code>. Restraint is the professional move. One clear line beats a rainbow:</p>
-<div id="722b0b1f" class="cell" data-execution_count="8">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb12"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a aria-label="1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
-<span id="cb12-2"><a aria-label="2"></a></span>
-<span id="cb12-3"><a aria-label="3"></a>days <span class="op">=</span> [<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">5</span>]</span>
-<span id="cb12-4"><a aria-label="4"></a>revenue <span class="op">=</span> [<span class="dv">120</span>, <span class="dv">90</span>, <span class="dv">140</span>, <span class="dv">160</span>, <span class="dv">130</span>]</span>
-<span id="cb12-5"><a aria-label="5"></a></span>
-<span id="cb12-6"><a aria-label="6"></a>plt.figure()</span>
-<span id="cb12-7"><a aria-label="7"></a>plt.plot(days, revenue, color<span class="op">=</span><span class="st">"crimson"</span>, linestyle<span class="op">=</span><span class="st">"--"</span>)</span>
-<span id="cb12-8"><a aria-label="8"></a>plt.title(<span class="st">"Styled, not decorated"</span>)</span>
-<span id="cb12-9"><a aria-label="9"></a>plt.gca()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</div>
+</section></section>
+<section>
+<section id="question-first" class="title-slide slide level1 title center">
+<h1><span class="flow">Question first</span></h1>
 
 </section>
-<section id="a-little-styling-and-only-a-little-output" class="slide level2 output-location-slide"><h2>A little styling: and only a little</h2><div class="cell output-location-slide" data-execution_count="8">
+<section id="munchcorps-one-pie" class="slide level2">
+<h2>MunchCorp’s one pie</h2>
+<p>The one chart in MunchCorp’s press release from Episode 8:</p>
+<div id="369f7907" class="cell" data-execution_count="9">
 <div class="cell-output cell-output-display">
 <div>
 <figure>
-<p><img data-src="lec_09_plotting_files/figure-revealjs/cell-9-output-1.png" alt="The week's revenue over days 1 to 5 drawn as one dashed crimson line, titled Styled, not decorated. A single color and one line style are all the styling the chart gets." width="798" height="431"></p>
+<p><img data-src="lec_09_plotting_files/figure-revealjs/cell-10-output-1.png" alt="MunchCorp's pie chart of revenue per zone: four slices for Nord, Altstadt, Hafen and Sued, all close to a quarter of the circle, with no numbers on them." width="382" height="267"></p>
 </figure>
 </div>
 </div>
-</div></section><section id="predict-one-chart-or-two" class="slide level2">
-<h2>Predict: one chart or two?</h2>
-<p>Tobi runs <strong>two</strong> <code>plot</code> calls, back to back, with no <code>plt.figure()</code> between them:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb13"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a aria-label="1"></a>plt.plot([<span class="dv">3</span>, <span class="dv">1</span>, <span class="dv">2</span>])</span>
-<span id="cb13-2"><a aria-label="2"></a>plt.plot([<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>])</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p>a) one chart with two lines b) two separate charts, one per call c) an error: the figure is already in use</p>
-<div class="fragment">
-<p><span class="question">Predict</span>. Pick a letter, then I reveal the answer.</p>
 </div>
+<p>Which zone brings MunchCorp the most?</p>
+<p>a) Nord, top left<br>
+b) Hafen, bottom right<br>
+c) Altstadt, bottom left</p>
 </section>
-<section id="answer-one-chart-two-lines" class="slide level2">
-<h2>Answer: one chart, two lines</h2>
-<div id="3b2f2310" class="cell" data-execution_count="9">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb14"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a aria-label="1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
-<span id="cb14-2"><a aria-label="2"></a></span>
-<span id="cb14-3"><a aria-label="3"></a>plt.figure()</span>
-<span id="cb14-4"><a aria-label="4"></a>plt.plot([<span class="dv">3</span>, <span class="dv">1</span>, <span class="dv">2</span>])</span>
-<span id="cb14-5"><a aria-label="5"></a>plt.plot([<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>])   <span class="co"># same canvas: a second line, not a second chart</span></span>
-<span id="cb14-6"><a aria-label="6"></a>plt.gca()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</div>
-
-<div class="fragment">
-<p><strong>a) one chart with two lines</strong>, because matplotlib keeps drawing on the <strong>current</strong> figure until you start a new one with <code>plt.figure()</code>.</p>
-</div>
-<div class="fragment">
-<p>That’s exactly why every chart cell <strong>opens</strong> with <code>plt.figure()</code>: it’s how you say “new picture, start clean.”</p>
-</div>
-</section><section id="answer-one-chart-two-lines-output" class="slide level2 output-location-slide"><h2>Answer: one chart, two lines</h2><div class="cell output-location-slide" data-execution_count="9">
+<section id="answer-altstadt-by-1.4-points" class="slide level2">
+<h2>Answer: Altstadt, by 1.4 points</h2>
+<div id="dfbb9047" class="cell" data-execution_count="10">
 <div class="cell-output cell-output-display">
 <div>
 <figure>
-<p><img data-src="lec_09_plotting_files/figure-revealjs/cell-10-output-1.png" alt="One chart with two lines that cross: a blue one through 3, 1, 2 and an orange one rising 1, 2, 3. Both plot calls drew on the same figure." width="802" height="411"></p>
+<p><img data-src="lec_09_plotting_files/figure-revealjs/cell-11-output-1.png" alt="The same MunchCorp data twice. Left, the pie with four slices of nearly equal size. Right, sorted bars: Altstadt 26.4, Nord 25.0, Sued 24.4 and Hafen 24.2 percent, so the order is clear at a glance." width="934" height="303"></p>
 </figure>
 </div>
 </div>
-</div></section></section>
+</div>
+<div class="fragment">
+<p><strong>c) Altstadt</strong>: 26.4 % against Nord’s 25.0 %. The eye compares <strong>lengths</strong> well and <strong>areas</strong> badly. The sorted bars answer in a second; the pie starts an argument.</p>
+</div>
+</section>
+<section id="match-the-chart-to-the-question" class="slide level2">
+<h2>Match the chart to the question</h2>
+<table class="caption-top">
+<thead>
+<tr class="header">
+<th>The question</th>
+<th>The basic chart</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>How much</strong> per category?</td>
+<td>bar, sorted</td>
+</tr>
+<tr class="even">
+<td>How are values <strong>spread</strong>?</td>
+<td>histogram</td>
+</tr>
+<tr class="odd">
+<td>What <strong>share</strong> of the whole?</td>
+<td>pie, for halves and quarters</td>
+</tr>
+<tr class="even">
+<td>Do <strong>two numbers</strong> move together?</td>
+<td>scatter</td>
+</tr>
+<tr class="odd">
+<td>How does it change over <strong>time</strong>?</td>
+<td>line</td>
+</tr>
+<tr class="even">
+<td><strong>Where</strong>, and <strong>how sure</strong>?</td>
+<td>map, error bars</td>
+</tr>
+</tbody>
+</table>
+<div class="fragment">
+<p>A quick tour of each family <span class="citation" data-cites="wilkeFundamentalsDataVisualization2019">(<a href="#/books-to-start-with" role="doc-biblioref" onclick="">Wilke 2019</a>, ch.&nbsp;5)</span>:</p>
+</div>
+</section>
+<section id="amounts-how-much" class="slide level2 nostretch">
+<h2>Amounts: how much?</h2>
+<div id="b72d2d0f" class="cell" data-execution_count="11">
+<div class="cell-output cell-output-display">
+<div>
+<figure>
+<p><img data-src="lec_09_plotting_files/figure-revealjs/cell-12-output-1.png" alt="Six small chart icons for amounts. Bar: four sorted bars. Horizontal bar: eight sorted bars lying down. Dot plot: six dots on a zoomed axis. Grouped bars: pairs of teal and sand bars. Stacked bars: seven bars split into three colored parts. Heatmap: a grid of squares, darker where the amount is larger." width="1030" height="458"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>Bars start at 0, a dot may zoom: the next block says why.</p>
+</section>
+<section id="distributions-how-spread-out" class="slide level2 nostretch">
+<h2>Distributions: how spread out?</h2>
+<div id="5794cd29" class="cell" data-execution_count="12">
+<div class="cell-output cell-output-display">
+<div>
+<figure>
+<p><img data-src="lec_09_plotting_files/figure-revealjs/cell-13-output-1.png" alt="Six small chart icons for distributions of delivery times. Histogram: bars that pile up on the left with a long tail. Density: the same shape as a smooth filled curve. Box plot: four boxes with a dark red median line. Violin: four mirrored shapes, one with two bulges. Strip chart: four columns of dots, one in dark red. Ridgeline: four smooth curves stacked above each other." width="1050" height="458"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>Also in the directory: cumulative densities, q-q and sina plots.</p>
+</section>
+<section id="proportions-what-share" class="slide level2 nostretch">
+<h2>Proportions: what share?</h2>
+<div id="cc8ef78c" class="cell" data-execution_count="13">
+<div class="cell-output cell-output-display">
+<div>
+<figure>
+<p><img data-src="lec_09_plotting_files/figure-revealjs/cell-14-output-1.png" alt="Six small chart icons for shares. Pie: a half and two quarters. Donut: the same as a ring. Side-by-side bars: four bars of nearly equal height. 100 percent stacked bars: four columns of equal height split into four colors. Stacked area: three colored bands, the bottom one growing. Mosaic plot: one rectangle split into columns by zone, each column split into colored blocks by dish." width="1051" height="458"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>Also in the directory: treemaps, parallel sets, nested pies.</p>
+</section>
+<section id="relationships-two-numbers" class="slide level2 nostretch">
+<h2>Relationships: two numbers</h2>
+<div id="ef22731b" class="cell" data-execution_count="14">
+<div class="cell-output cell-output-display">
+<div>
+<figure>
+<p><img data-src="lec_09_plotting_files/figure-revealjs/cell-15-output-1.png" alt="Six small chart icons for relationships. Scatter: a cloud of dots rising to the right. Bubble: four dots of different sizes. Slope graph: four lines from a left column to a right column, one dark red line falling steeply. Hex bins: a rising band of hexagons, darkest in the middle. Correlogram: a five by five grid of squares in teal and red shades. Connected scatter: dots joined in time order from week 1 to week 8, moving down to the right and then turning back, with an arrow on the last step." width="1051" height="458"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>A shapeless cloud is a finding too: it goes in the title like any claim.</p>
+</section>
+<section id="time-series-change-over-time" class="slide level2 nostretch">
+<h2>Time series: change over time</h2>
+<div id="67a7e1d2" class="cell" data-execution_count="15">
+<div class="cell-output cell-output-display">
+<div>
+<figure>
+<p><img data-src="lec_09_plotting_files/figure-revealjs/cell-16-output-1.png" alt="Four small chart icons for time series. Line: a rising line with a weekly ripple. Area: the same shape filled down to zero. Smoothed trend: faint dots with a dark red average line through them. Small multiples: four tiny line charts in a grid, one of them dark red and rising faster." width="1051" height="458"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>Many lines? One accent, the rest grey. More after the break.</p>
+</section>
+<section id="maps-and-uncertainty" class="slide level2 nostretch">
+<h2>Maps and uncertainty</h2>
+<div id="1797d02d" class="cell" data-execution_count="16">
+<div class="cell-output cell-output-display">
+<div>
+<figure>
+<p><img data-src="lec_09_plotting_files/figure-revealjs/cell-17-output-1.png" alt="Six small chart icons. Dot map: clusters of dots inside a pale city outline with a river, one cluster dark red. Choropleth: five irregular regions shaded from light to dark teal. Cartogram heatmap: four equal squares in shades of teal. Error bars: four dots, each with a vertical bar for how sure the value is. Graded error bars: the same with a thick inner and a thin outer bar. Confidence band: dots with a fitted line inside a pale band." width="1073" height="458"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>Also in the directory: cartograms, eyes plots, quantile dots.</p>
+</section>
+<section id="predict-how-many-bars" class="slide level2">
+<h2>Predict: how many bars?</h2>
+<p>The <strong>same four numbers</strong>, two ways. On the left, a bar per number; on the right, a histogram:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb11"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a aria-label="1"></a>values <span class="op">=</span> [<span class="dv">8</span>, <span class="dv">12</span>, <span class="dv">9</span>, <span class="dv">15</span>]</span>
+<span id="cb11-2"><a aria-label="2"></a>plt.bar(<span class="bu">range</span>(<span class="dv">4</span>), values)   <span class="co"># left</span></span>
+<span id="cb11-3"><a aria-label="3"></a>plt.hist(values, bins<span class="op">=</span><span class="dv">3</span>)    <span class="co"># right</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>The bar chart shows 4 bars. How many bars does the <strong>histogram</strong> show?</p>
+<p>a) 4: one bar per number<br>
+b) 15: one bar per unit up to the max<br>
+c) 3: one bar per range</p>
+</section>
+<section id="answer-three-ranges-three-bars" class="slide level2 nostretch">
+<h2>Answer: three ranges, three bars</h2>
+<div id="4aa5307a" class="cell" data-execution_count="17">
+<div class="cell-output cell-output-display">
+<div>
+<figure>
+<p><img data-src="lec_09_plotting_files/figure-revealjs/cell-18-output-1.png" alt="Two panels from the same four numbers. Left, a bar chart with four bars of heights 8, 12, 9 and 15. Right, a histogram with three separate bars for three ranges between 8 and 15, of heights 2, 1 and 1: 8 and 9 share the first range." width="936" height="284"></p>
+</figure>
+</div>
+</div>
+</div>
+<p><strong>c) 3</strong>: <code>8</code> and <code>9</code> share the first range, so that bar is 2 tall. A bar chart shows one bar per category, as tall as its value. A histogram shows one bar per range, as tall as the number of values in it.</p>
+</section></section>
 <section>
 <section id="your-turn-1" class="title-slide slide level1 loud-slide center">
 <h1>Your turn</h1>
@@ -572,215 +730,84 @@ Name: total_eur, dtype: float64</code></pre>
 <img data-src="assets/qr/ex_09_b.png" alt="QR code linking to the online notebook for exercise 9b, the same address as the link above." width="280" class="r-stretch"><p><strong>Any questions?</strong> Let me know!</p>
 </section></section>
 <section>
-<section id="the-right-chart" class="title-slide slide level1 title center">
-<h1><span class="flow">The right chart</span></h1>
+<section id="proportional-ink" class="title-slide slide level1 title center">
+<h1><span class="flow">Proportional ink</span></h1>
 
 </section>
-<section id="match-the-chart-to-the-question" class="slide level2">
-<h2>Match the chart to the question</h2>
-<p>The wrong chart is its own kind of lie. Start from the <strong>question</strong>, not the chart:</p>
-<table class="caption-top">
-<thead>
-<tr class="header">
-<th>The question</th>
-<th>The chart</th>
-<th>The call</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>Compare <strong>categories</strong>?</td>
-<td>bar</td>
-<td><code>plt.bar(labels, heights)</code></td>
-</tr>
-<tr class="even">
-<td>See a <strong>distribution</strong>?</td>
-<td>histogram</td>
-<td><code>plt.hist(values)</code></td>
-</tr>
-<tr class="odd">
-<td><strong>Two numbers</strong> per order?</td>
-<td>scatter</td>
-<td><code>plt.scatter(x, y)</code></td>
-</tr>
-<tr class="even">
-<td>Change over <strong>time</strong>?</td>
-<td>line</td>
-<td><code>plt.plot(x, y)</code></td>
-</tr>
-</tbody>
-</table>
+<section id="predict-how-many-times-more" class="slide level2">
+<h2>Predict: how many times more?</h2>
+<div id="16052e1d" class="cell" data-execution_count="18">
+<div class="cell-output cell-output-display">
+<div>
+<figure>
+<p><img data-src="lec_09_plotting_files/figure-revealjs/cell-19-output-1.png" alt="Bar chart of revenue per dish with the y-axis running from 270 to 460 euros: Pad Thai 420, Miso Ramen 450, Bao Box 330, Falafel Wrap 300. The Miso Ramen bar looks about six times as tall as the Falafel Wrap bar." width="687" height="275"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>Miso Ramen vs.&nbsp;Falafel Wrap: how many times as much?</p>
+<p>a) about 1.5 times<br>
+b) about 3 times<br>
+c) about 6 times</p>
+</section>
+<section id="answer-1.5-times-drawn-as-6" class="slide level2">
+<h2>Answer: 1.5 times, drawn as 6</h2>
+<div id="21bce659" class="cell" data-execution_count="19">
+<div class="cell-output cell-output-display">
+<div>
+<figure>
+<p><img data-src="lec_09_plotting_files/figure-revealjs/cell-20-output-1.png" alt="The dish revenue twice. Left, Tobi's agent with the y-axis from 270: the Miso Ramen bar is six times as tall as the Falafel Wrap bar. Right, the same bars from 0: Miso Ramen 450 against Falafel Wrap 300, one and a half times as tall." width="1025" height="303"></p>
+</figure>
+</div>
+</div>
+</div>
 <div class="fragment">
-<div class="callout callout-note callout-style-simple">
+<p><strong>a) about 1.5 times</strong>: 450 against 300. Cut at 270, the bars keep 180 and 30 of their length, so the picture says <strong>6 times</strong>. That’s <strong>bad</strong>: the numbers are right, the picture misleads. The rule behind it is <strong>proportional ink</strong>: the ink for a value has to grow with the value <span class="citation" data-cites="wilkeFundamentalsDataVisualization2019">(<a href="#/books-to-start-with" role="doc-biblioref" onclick="">Wilke 2019</a>, ch.&nbsp;17)</span>.</p>
+</div>
+</section>
+<section id="predict-the-ais-one-extra-line" class="slide level2">
+<h2>Predict: the AI’s one extra line</h2>
+<p>Revenue <code>[710, 718, 724, 731]</code>, up <strong>3 %</strong> over four weeks. Tobi’s AI drafts the chart and adds one line:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb12"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a aria-label="1"></a>plt.plot([<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>], [<span class="dv">710</span>, <span class="dv">718</span>, <span class="dv">724</span>, <span class="dv">731</span>])</span>
+<span id="cb12-2"><a aria-label="2"></a>plt.ylim(<span class="dv">700</span>, <span class="dv">735</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>What does the room see?</p>
+<p>a) a flat line: 3 % stays 3 % on any axis<br>
+b) an error: <code>ylim</code> has to include zero on a line chart<br>
+c) a line rising across most of the chart</p>
+</section>
+<section id="answer-a-climb-across-the-chart" class="slide level2 nostretch">
+<h2>Answer: a climb across the chart</h2>
+<div id="d6850267" class="cell" data-execution_count="20">
+<div class="cell-output cell-output-display">
+<div>
+<figure>
+<p><img data-src="lec_09_plotting_files/figure-revealjs/cell-21-output-1.png" alt="Line through 710, 718, 724 and 731 on a y-axis that runs only from 700 to 735. The line climbs 60 percent of the chart height, so 3 percent of growth looks like a steep rise." width="662" height="285"></p>
+</figure>
+</div>
+</div>
+</div>
+<p><strong>c) a line rising across most of the chart</strong>: the axis spans 35 units and the line rises 21 of them, <strong>60 % of the picture</strong> for 3 % of growth. Python raises no error.</p>
+</section>
+<section id="bars-from-zero-dots-may-zoom" class="slide level2">
+<h2>Bars from zero, dots may zoom</h2>
+<ul>
+<li>A <strong>bar</strong> shows its number by its <strong>length</strong>: cut the axis and the comparison breaks. <strong>Bars always start at 0.</strong></li>
+<li>A <strong>dot</strong> shows its number by <strong>position</strong> only, so a dot plot may zoom <span class="citation" data-cites="wilkeFundamentalsDataVisualization2019">(<a href="#/books-to-start-with" role="doc-biblioref" onclick="">Wilke 2019</a>, ch.&nbsp;17)</span>.</li>
+<li>A <strong>line</strong> sits in between: zooming blows a small change up. Plot the change from 0, or put its size in the title: “+3&nbsp;% in four weeks”.</li>
+</ul>
+<div class="fragment">
+<div class="callout callout-tip callout-style-simple">
 <div class="callout-body">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-content">
-<p><strong>Line</strong> you already own from block one. Missing on purpose: the <strong>pie chart</strong>. The eye can’t compare slice sizes; a bar is clearer.</p>
+<p>The investor reads the axis before the line, and then the title, to see if the two agree.</p>
 </div>
 </div>
 </div>
 </div>
-</section>
-<section id="categories-bar" class="slide level2">
-<h2>Categories → bar</h2>
-<p><em>“Which dish sells best?”</em> Categories to compare, so that’s a <strong>bar</strong>:</p>
-<div id="5f4f2e9c" class="cell" data-execution_count="10">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb15"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a aria-label="1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
-<span id="cb15-2"><a aria-label="2"></a></span>
-<span id="cb15-3"><a aria-label="3"></a>dishes <span class="op">=</span> [<span class="st">"Pizza"</span>, <span class="st">"Pasta"</span>, <span class="st">"Salad"</span>, <span class="st">"Wrap"</span>]</span>
-<span id="cb15-4"><a aria-label="4"></a>sold <span class="op">=</span> [<span class="dv">12</span>, <span class="dv">9</span>, <span class="dv">5</span>, <span class="dv">7</span>]</span>
-<span id="cb15-5"><a aria-label="5"></a></span>
-<span id="cb15-6"><a aria-label="6"></a>plt.figure()</span>
-<span id="cb15-7"><a aria-label="7"></a>plt.bar(dishes, sold)</span>
-<span id="cb15-8"><a aria-label="8"></a>plt.title(<span class="st">"Orders per dish"</span>)</span>
-<span id="cb15-9"><a aria-label="9"></a>plt.gca()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</div>
-
-<p>The tallest bar answers the question at a glance: Pizza.</p>
-</section>
-<section id="categories-bar-output" class="slide level2 output-location-slide"><h2>Categories → bar</h2><div class="cell output-location-slide" data-execution_count="10">
-<div class="cell-output cell-output-display">
-<div>
-<figure>
-<p><img data-src="lec_09_plotting_files/figure-revealjs/cell-11-output-1.png" alt="Bar chart of orders per dish: Pizza 12, Pasta 9, Salad 5, Wrap 7. The Pizza bar is the tallest, so the best seller is visible at a glance." width="789" height="431"></p>
-</figure>
-</div>
-</div>
-</div></section><section id="a-distribution-histogram" class="slide level2">
-<h2>A distribution → histogram</h2>
-<p><em>“How are our delivery times spread out?”</em> One column of numbers dropped into buckets. That’s a <strong>histogram</strong>:</p>
-<div id="d6d630fb" class="cell" data-execution_count="11">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb16"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a aria-label="1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
-<span id="cb16-2"><a aria-label="2"></a></span>
-<span id="cb16-3"><a aria-label="3"></a>minutes <span class="op">=</span> [<span class="dv">19</span>, <span class="dv">22</span>, <span class="dv">23</span>, <span class="dv">24</span>, <span class="dv">24</span>, <span class="dv">25</span>, <span class="dv">26</span>, <span class="dv">28</span>, <span class="dv">31</span>, <span class="dv">44</span>]</span>
-<span id="cb16-4"><a aria-label="4"></a></span>
-<span id="cb16-5"><a aria-label="5"></a>plt.figure()</span>
-<span id="cb16-6"><a aria-label="6"></a>plt.hist(minutes, bins<span class="op">=</span><span class="dv">5</span>)</span>
-<span id="cb16-7"><a aria-label="7"></a>plt.title(<span class="st">"Delivery times"</span>)</span>
-<span id="cb16-8"><a aria-label="8"></a>plt.gca()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</div>
-
-<p>Most deliveries land in the mid-20s, with one lonely slow one far right. A histogram shows <strong>shape</strong>, not individual values.</p>
-</section>
-<section id="a-distribution-histogram-output" class="slide level2 output-location-slide"><h2>A distribution → histogram</h2><div class="cell output-location-slide" data-execution_count="11">
-<div class="cell-output cell-output-display">
-<div>
-<figure>
-<p><img data-src="lec_09_plotting_files/figure-revealjs/cell-12-output-1.png" alt="Histogram of ten delivery times in five buckets between 19 and 44 minutes, with counts 3, 5, 1, 0 and 1. Most deliveries pile up in the 20s; one slow delivery sits alone on the far right." width="783" height="431"></p>
-</figure>
-</div>
-</div>
-</div></section><section id="two-numbers-scatter" class="slide level2">
-<h2>Two numbers → scatter</h2>
-<p><em>“Do bigger orders take longer?”</em> Two numbers per order, one on each axis, which makes it a <strong>scatter</strong>:</p>
-<div id="df69e9b9" class="cell" data-execution_count="12">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb17"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a aria-label="1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
-<span id="cb17-2"><a aria-label="2"></a></span>
-<span id="cb17-3"><a aria-label="3"></a>minutes <span class="op">=</span> [<span class="dv">19</span>, <span class="dv">22</span>, <span class="dv">23</span>, <span class="dv">24</span>, <span class="dv">25</span>, <span class="dv">26</span>, <span class="dv">28</span>, <span class="dv">31</span>, <span class="dv">40</span>, <span class="dv">44</span>]</span>
-<span id="cb17-4"><a aria-label="4"></a>euros   <span class="op">=</span> [<span class="dv">24</span>, <span class="dv">9</span>, <span class="dv">31</span>, <span class="dv">12</span>, <span class="dv">8</span>, <span class="dv">30</span>, <span class="dv">15</span>, <span class="dv">22</span>, <span class="dv">11</span>, <span class="dv">19</span>]</span>
-<span id="cb17-5"><a aria-label="5"></a></span>
-<span id="cb17-6"><a aria-label="6"></a>plt.figure()</span>
-<span id="cb17-7"><a aria-label="7"></a>plt.scatter(minutes, euros)</span>
-<span id="cb17-8"><a aria-label="8"></a>plt.xlabel(<span class="st">"Delivery time (min)"</span>)</span>
-<span id="cb17-9"><a aria-label="9"></a>plt.ylabel(<span class="st">"Order value (€)"</span>)</span>
-<span id="cb17-10"><a aria-label="10"></a>plt.gca()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</div>
-
-<p>Just a cloud. No upward drift. Sometimes the answer is <strong>“there’s no pattern here.”</strong></p>
-</section>
-<section id="two-numbers-scatter-output" class="slide level2 output-location-slide"><h2>Two numbers → scatter</h2><div class="cell output-location-slide" data-execution_count="12">
-<div class="cell-output cell-output-display">
-<div>
-<figure>
-<p><img data-src="lec_09_plotting_files/figure-revealjs/cell-13-output-1.png" alt="Scatter plot of ten orders: delivery time from 19 to 44 minutes on the x-axis, order value from 8 to 31 euros on the y-axis. The dots form a shapeless cloud with no upward drift, so there is no pattern." width="810" height="429"></p>
-</figure>
-</div>
-</div>
-</div></section><section id="predict-plot-instead-of-scatter" class="slide level2">
-<h2>Predict: plot instead of scatter</h2>
-<p>Tobi types <code>plot</code> where he meant <code>scatter</code>. Five orders, in the order they came in:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb18"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a aria-label="1"></a>minutes <span class="op">=</span> [<span class="dv">31</span>, <span class="dv">19</span>, <span class="dv">44</span>, <span class="dv">22</span>, <span class="dv">28</span>]</span>
-<span id="cb18-2"><a aria-label="2"></a>euros   <span class="op">=</span> [<span class="dv">22</span>, <span class="dv">24</span>, <span class="dv">19</span>, <span class="dv">9</span>, <span class="dv">15</span>]</span>
-<span id="cb18-3"><a aria-label="3"></a>plt.plot(minutes, euros)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p>a) a zig-zag line hopping between the points in list order b) the same dots as <code>scatter</code>, joined into a smooth trend c) an error: <code>plot</code> refuses x values that are not sorted ascending</p>
-<div class="fragment">
-<p><span class="question">Predict</span>. Pick a letter, then I reveal the answer.</p>
-</div>
-</section>
-<section id="answer-a-zig-zag-in-list-order" class="slide level2">
-<h2>Answer: a zig-zag in list order</h2>
-<div id="1f836009" class="cell" data-execution_count="13">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb19"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a aria-label="1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
-<span id="cb19-2"><a aria-label="2"></a></span>
-<span id="cb19-3"><a aria-label="3"></a>minutes <span class="op">=</span> [<span class="dv">31</span>, <span class="dv">19</span>, <span class="dv">44</span>, <span class="dv">22</span>, <span class="dv">28</span>]</span>
-<span id="cb19-4"><a aria-label="4"></a>euros   <span class="op">=</span> [<span class="dv">22</span>, <span class="dv">24</span>, <span class="dv">19</span>, <span class="dv">9</span>, <span class="dv">15</span>]</span>
-<span id="cb19-5"><a aria-label="5"></a></span>
-<span id="cb19-6"><a aria-label="6"></a>plt.figure()</span>
-<span id="cb19-7"><a aria-label="7"></a>plt.plot(minutes, euros, marker<span class="op">=</span><span class="st">"o"</span>)   <span class="co"># joined in LIST order</span></span>
-<span id="cb19-8"><a aria-label="8"></a>plt.gca()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</div>
-
-<div class="fragment">
-<p><strong>a) a zig-zag</strong>: <code>plot</code> connects the points <strong>in the order you gave them</strong>, never mind the x values. Order 1 to order 2 to order 3, back and forth.</p>
-</div>
-<div class="fragment">
-<p>A line says the points follow each other, and orders don’t. Two numbers per order with no sequence between them is a job for <strong>scatter</strong>.</p>
-</div>
-</section>
-<section id="answer-a-zig-zag-in-list-order-output" class="slide level2 output-location-slide"><h2>Answer: a zig-zag in list order</h2><div class="cell output-location-slide" data-execution_count="13">
-<div class="cell-output cell-output-display">
-<div>
-<figure>
-<p><img data-src="lec_09_plotting_files/figure-revealjs/cell-14-output-1.png" alt="Five orders joined by a line in list order: it runs left from 31 to 19 minutes, right across to 44, back to 22, then to 28. A zig-zag that suggests a sequence the orders do not have." width="791" height="411"></p>
-</figure>
-</div>
-</div>
-</div></section><section id="predict-how-many-bars" class="slide level2">
-<h2>Predict: how many bars?</h2>
-<p>The <strong>same four numbers</strong>, two ways. On the left, a bar per number; on the right, a histogram:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb20"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a aria-label="1"></a>values <span class="op">=</span> [<span class="dv">8</span>, <span class="dv">12</span>, <span class="dv">9</span>, <span class="dv">15</span>]</span>
-<span id="cb20-2"><a aria-label="2"></a>plt.bar(<span class="bu">range</span>(<span class="dv">4</span>), values)   <span class="co"># left</span></span>
-<span id="cb20-3"><a aria-label="3"></a>plt.hist(values, bins<span class="op">=</span><span class="dv">3</span>)    <span class="co"># right</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p>The bar chart shows 4 bars. How many bars does the <strong>histogram</strong> show?</p>
-<p>a) 4: one bar per number b) 15: one bar per unit up to the max c) about 2-3 lumps: it counts ranges</p>
-<div class="fragment">
-<p><span class="question">Predict</span>. Pick a letter, then I reveal the answer.</p>
-</div>
-</section>
-<section id="answer-about-2-3-lumps" class="slide level2">
-<h2>Answer: about 2-3 lumps</h2>
-<div id="e6ba5a85" class="cell" data-execution_count="14">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb21"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a aria-label="1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
-<span id="cb21-2"><a aria-label="2"></a></span>
-<span id="cb21-3"><a aria-label="3"></a>values <span class="op">=</span> [<span class="dv">8</span>, <span class="dv">12</span>, <span class="dv">9</span>, <span class="dv">15</span>]</span>
-<span id="cb21-4"><a aria-label="4"></a></span>
-<span id="cb21-5"><a aria-label="5"></a>plt.figure()</span>
-<span id="cb21-6"><a aria-label="6"></a>plt.subplot(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">1</span>)</span>
-<span id="cb21-7"><a aria-label="7"></a>plt.bar(<span class="bu">range</span>(<span class="dv">4</span>), values)     <span class="co"># one bar per NUMBER</span></span>
-<span id="cb21-8"><a aria-label="8"></a>plt.title(<span class="st">"bar: 4 categories"</span>)</span>
-<span id="cb21-9"><a aria-label="9"></a>plt.subplot(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">2</span>)</span>
-<span id="cb21-10"><a aria-label="10"></a>plt.hist(values, bins<span class="op">=</span><span class="dv">3</span>)      <span class="co"># counts how many per RANGE</span></span>
-<span id="cb21-11"><a aria-label="11"></a>plt.title(<span class="st">"hist: 3 ranges"</span>)</span>
-<span id="cb21-12"><a aria-label="12"></a>plt.gca()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</div>
-
-<div class="fragment">
-<p><strong>c) about 2-3 lumps</strong>: the histogram counts how many numbers fall in each range. <code>8</code> and <code>9</code> land in the same bucket, so that bar is two tall.</p>
-</div>
-<div class="fragment">
-<p><strong>Bar counts CATEGORIES; histogram counts RANGES.</strong> Same numbers, different question.</p>
-</div>
-</section><section id="answer-about-2-3-lumps-output" class="slide level2 output-location-slide"><h2>Answer: about 2-3 lumps</h2><div class="cell output-location-slide" data-execution_count="14">
-<div class="cell-output cell-output-display">
-<div>
-<figure>
-<p><img data-src="lec_09_plotting_files/figure-revealjs/cell-15-output-1.png" alt="Two panels from the same four numbers. Left, a bar chart with four separate bars of heights 8, 12, 9 and 15. Right, a histogram with three ranges between 8 and 15 holding 2, 1 and 1 values: it counts values per range, and 8 and 9 share the first." width="789" height="431"></p>
-</figure>
-</div>
-</div>
-</div></section></section>
+</section></section>
 <section>
 <section id="your-turn-2" class="title-slide slide level1 loud-slide center">
 <h1>Your turn</h1>
@@ -798,101 +825,213 @@ Name: total_eur, dtype: float64</code></pre>
 <i class="callout-icon"></i>
 </div>
 <div class="callout-content">
-<p>A five-minute pause after this one, then the axis and the AI chart assistant.</p>
+<p>A five-minute pause after this one, then three charts, made over step by step.</p>
 </div>
 </div>
 </div>
 </section></section>
 <section>
-<section id="the-honest-axis" class="title-slide slide level1 title center">
-<h1><span class="flow">The honest axis</span></h1>
+<section id="make-one-point" class="title-slide slide level1 title center">
+<h1><span class="flow">Make one point</span></h1>
 
 </section>
-<section id="the-same-data-told-two-ways" class="slide level2">
-<h2>The same data, told two ways</h2>
-<p>Four weeks of revenue, <code>[96, 98, 97, 99]</code>, barely moving. <strong>Where the y-axis starts</strong> decides: left gets you a term sheet, right gets you trusted. Same numbers, and the room sees a rocket or the truth:</p>
-<div id="04f8ac8e" class="cell" data-execution_count="15">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb22"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a aria-label="1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
-<span id="cb22-2"><a aria-label="2"></a></span>
-<span id="cb22-3"><a aria-label="3"></a>weeks <span class="op">=</span> [<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>]</span>
-<span id="cb22-4"><a aria-label="4"></a>revenue <span class="op">=</span> [<span class="dv">96</span>, <span class="dv">98</span>, <span class="dv">97</span>, <span class="dv">99</span>]</span>
-<span id="cb22-5"><a aria-label="5"></a></span>
-<span id="cb22-6"><a aria-label="6"></a>plt.figure()</span>
-<span id="cb22-7"><a aria-label="7"></a>plt.subplot(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">1</span>)</span>
-<span id="cb22-8"><a aria-label="8"></a>plt.plot(weeks, revenue, marker<span class="op">=</span><span class="st">"o"</span>)</span>
-<span id="cb22-9"><a aria-label="9"></a>plt.ylim(<span class="dv">96</span>, <span class="dv">99</span>)             <span class="co"># tight: DRAMA</span></span>
-<span id="cb22-10"><a aria-label="10"></a>plt.title(<span class="st">"Rocket (ylim 96-99)"</span>)</span>
-<span id="cb22-11"><a aria-label="11"></a>plt.subplot(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">2</span>)</span>
-<span id="cb22-12"><a aria-label="12"></a>plt.plot(weeks, revenue, marker<span class="op">=</span><span class="st">"o"</span>)</span>
-<span id="cb22-13"><a aria-label="13"></a>plt.ylim(<span class="dv">0</span>, <span class="dv">100</span>)             <span class="co"># from zero</span></span>
-<span id="cb22-14"><a aria-label="14"></a>plt.title(<span class="st">"From 0"</span>)</span>
-<span id="cb22-15"><a aria-label="15"></a>plt.gca()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</div>
-
-</section>
-<section id="the-same-data-told-two-ways-output" class="slide level2 output-location-slide"><h2>The same data, told two ways</h2><div class="cell output-location-slide" data-execution_count="15">
+<section id="makeover-1-who-is-fastest" class="slide level2">
+<h2>Makeover 1: who is fastest?</h2>
+<p><em>“Are you faster than the rivals?”</em> First: who was fastest in <strong>week 1</strong>?</p>
+<div id="da1373b3" class="cell" data-execution_count="21">
 <div class="cell-output cell-output-display">
 <div>
 <figure>
-<p><img data-src="lec_09_plotting_files/figure-revealjs/cell-16-output-1.png" alt="The same four weeks of revenue (96, 98, 97, 99) in two panels. Left, with the y-axis cut to 96-99, the line zig-zags from the bottom edge to the top edge like a rocket. Right, with the y-axis from 0 to 100, it is an almost flat line near the top." width="802" height="431"></p>
+<p><img data-src="lec_09_plotting_files/figure-revealjs/cell-22-output-1.png" alt="Default line chart of delivery time per week for eight weeks: four lines in blue, orange, green and red with dots, and a legend in alphabetical order, Kiezküche, MunchCorp, Pronto, Us. The lines cross each other several times." width="823" height="278"></p>
 </figure>
 </div>
 </div>
-</div></section><section id="predict-the-ais-one-extra-line" class="slide level2">
-<h2>Predict: the AI’s one extra line</h2>
-<p>Revenue <code>[710, 718, 724, 731]</code>, up <strong>3 %</strong> over four weeks. Tobi’s AI drafts the chart and adds one line:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb23"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a aria-label="1"></a>plt.plot([<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>], [<span class="dv">710</span>, <span class="dv">718</span>, <span class="dv">724</span>, <span class="dv">731</span>])</span>
-<span id="cb23-2"><a aria-label="2"></a>plt.ylim(<span class="dv">700</span>, <span class="dv">735</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p>What does the room see?</p>
-<p>a) a flat line: 3 % stays 3 % on any axis b) an error: <code>ylim</code> has to include zero on a line chart c) a line climbing almost the whole chart height</p>
+</div>
+<p>a) MunchCorp<br>
+b) Kiezküche<br>
+c) Pronto</p>
+</section>
+<section id="answer-kiezküche-the-slow-way" class="slide level2">
+<h2>Answer: Kiezküche, the slow way</h2>
+<p><strong>b) Kiezküche</strong>: 30 minutes in week 1. An easy number, found the slow way: you matched four colors to a legend sorted from A to Z. And her real question, whether <em>we</em> got faster, is buried even deeper.</p>
 <div class="fragment">
-<p><span class="question">Predict</span>. Pick a letter, then I reveal the answer.</p>
+<p>The data is fine. The chart is <strong>bad</strong>: the point is in there, buried. Four changes dig it out, one at a time, and none of them touches the numbers.</p>
 </div>
 </section>
-<section id="answer-a-climb-across-the-chart" class="slide level2">
-<h2>Answer: a climb across the chart</h2>
-<div id="f0ee01c4" class="cell" data-execution_count="16">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb24"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb24-1"><a aria-label="1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
-<span id="cb24-2"><a aria-label="2"></a></span>
-<span id="cb24-3"><a aria-label="3"></a>plt.figure()</span>
-<span id="cb24-4"><a aria-label="4"></a>plt.plot([<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>], [<span class="dv">710</span>, <span class="dv">718</span>, <span class="dv">724</span>, <span class="dv">731</span>], marker<span class="op">=</span><span class="st">"o"</span>)</span>
-<span id="cb24-5"><a aria-label="5"></a>plt.ylim(<span class="dv">700</span>, <span class="dv">735</span>)   <span class="co"># 3 % of growth, 60 % of the chart</span></span>
-<span id="cb24-6"><a aria-label="6"></a>plt.gca()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</div>
-
-<div class="fragment">
-<p><strong>c) a climb across the chart</strong>: the axis spans 35 units and the line rises 21 of them, <strong>60 % of the picture</strong> for 3 % of growth.</p>
-</div>
-<div class="fragment">
-<p>Python raises no error and no warning here. The code is fine; the axis is what misleads.</p>
-</div>
-</section>
-<section id="answer-a-climb-across-the-chart-output" class="slide level2 output-location-slide"><h2>Answer: a climb across the chart</h2><div class="cell output-location-slide" data-execution_count="16">
+<section id="lines-step-1-one-accent-color" class="slide level2">
+<h2>Lines, step 1: one accent color</h2>
+<div id="b8da5f3b" class="cell" data-execution_count="22">
 <div class="cell-output cell-output-display">
 <div>
 <figure>
-<p><img data-src="lec_09_plotting_files/figure-revealjs/cell-17-output-1.png" alt="Line through 710, 718, 724 and 731 on a y-axis that runs only from 700 to 735. The line climbs 60 percent of the chart height, so 3 percent of growth looks like a steep rise." width="798" height="416"></p>
+<p><img data-src="lec_09_plotting_files/figure-revealjs/cell-23-output-1.png" alt="The same chart, with our line in dark red and thicker, and the three rival lines in light grey. The legend is still there." width="898" height="381"></p>
 </figure>
 </div>
 </div>
-</div></section><section id="the-rule-growth-starts-at-zero" class="slide level2">
-<h2>The rule: growth starts at zero</h2>
-<ul>
-<li>A <strong>growth claim</strong> on a chart starts the y-axis at <strong>0</strong>. Anything else magnifies a wobble into a cliff.</li>
-<li>The investor <strong>will</strong> check: she reads the axis before she reads the line.</li>
-</ul>
-<div class="fragment">
-<div class="callout callout-tip callout-style-simple">
-<div class="callout-body">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
 </div>
-<div class="callout-content">
-<p>She’s the type who reads Formular 27b/6 for fun. A stretched axis is the first thing she catches, and the last thing you want to explain.</p>
+<p>Take the color out of everything <strong>except</strong> the point <span class="citation" data-cites="wilkeFundamentalsDataVisualization2019">(<a href="#/books-to-start-with" role="doc-biblioref" onclick="">Wilke 2019</a>, ch.&nbsp;4)</span>. One <code>color=</code> per line, and the eye knows where to go.</p>
+</section>
+<section id="lines-step-2-labels-no-legend" class="slide level2">
+<h2>Lines, step 2: labels, no legend</h2>
+<div id="e6ad7965" class="cell" data-execution_count="23">
+<div class="cell-output cell-output-display">
+<div>
+<figure>
+<p><img data-src="lec_09_plotting_files/figure-revealjs/cell-24-output-1.png" alt="The same chart without a legend: each line now carries its name at its right end, Us in dark red at 29 minutes, the rivals in grey at 32, 35 and 37 minutes." width="898" height="381"></p>
+</figure>
 </div>
 </div>
 </div>
+<p>Names at the lines replace the legend, and they work for the 8&nbsp;% of men who can’t tell red from green <span class="citation" data-cites="wilkeFundamentalsDataVisualization2019">(<a href="#/books-to-start-with" role="doc-biblioref" onclick="">Wilke 2019</a>, ch.&nbsp;19)</span>.</p>
+</section>
+<section id="lines-step-3-the-title-says-it" class="slide level2 nostretch">
+<h2>Lines, step 3: the title says it</h2>
+<div id="320dc85a" class="cell" data-execution_count="24">
+<div class="cell-output cell-output-display">
+<div>
+<figure>
+<p><img data-src="lec_09_plotting_files/figure-revealjs/cell-25-output-1.png" alt="The chart in the house style: the title reads From slowest to fastest in eight weeks. Our dark red line falls from 41 to 29 minutes, the grey rival lines stay between 30 and 38, every line carries its name, and the frame and tick marks are gone." width="1051" height="322"></p>
+</figure>
 </div>
+</div>
+</div>
+<p>The title states the claim; frame and tick marks are gone. Same numbers, and every change was a <strong>decision</strong>.</p>
+</section>
+<section id="lines-step-4-add-the-context" class="slide level2 nostretch">
+<h2>Lines, step 4: add the context</h2>
+<div id="30d2efe6" class="cell" data-execution_count="25">
+<div class="cell-output cell-output-display">
+<div>
+<figure>
+<p><img data-src="lec_09_plotting_files/figure-revealjs/cell-26-output-1.png" alt="The same chart with context: the three grey rival lines are replaced by one dashed line labelled fastest rival, at 30 to 32 minutes, and a note with an arrow marks new routes from week 3, where our dark red line starts to fall. Our line drops below the dashed line in week 6." width="1051" height="322"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>The rivals only matter as a yardstick: one dashed line for the fastest rival replaces three, and one note marks week 3. Now the chart tells a story.</p>
+</section>
+<section id="lines-step-5-one-too-many" class="slide level2 nostretch">
+<h2>Lines, step 5: one too many</h2>
+<div id="685624ea" class="cell" data-execution_count="26">
+<div class="cell-output cell-output-display">
+<div>
+<figure>
+<p><img data-src="lec_09_plotting_files/figure-revealjs/cell-27-output-1.png" alt="The step-4 chart buried under extras: a dark grid every minute, a full black frame, a boxed legend, and the number of minutes printed next to every point of our line. The point is still there but hard to find." width="1051" height="322"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>Every number, line and box here is true, and none of them helps: the point drowns. Balance data and context <span class="citation" data-cites="wilkeFundamentalsDataVisualization2019">(<a href="#/books-to-start-with" role="doc-biblioref" onclick="">Wilke 2019</a>, ch.&nbsp;23)</span>: stop at step 4.</p>
+</section>
+<section id="makeover-2-what-misleads" class="slide level2 nostretch">
+<h2>Makeover 2: what misleads?</h2>
+<div id="f7b32765" class="cell" data-execution_count="27">
+<div class="cell-output cell-output-display">
+<div>
+<figure>
+<p><img data-src="lec_09_plotting_files/figure-revealjs/cell-28-output-1.png" alt="Tobi's agent's bar chart of late deliveries in eight districts in alphabetical order: every bar a different rainbow color, a legend that repeats the district names, names tilted at 45 degrees, and a y-axis that starts at 5 percent. Harburg's bar is by far the tallest." width="823" height="322"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>Which problem makes the investor <strong>believe</strong> something false?</p>
+<p>a) the loud colors<br>
+b) the axis from 5 %<br>
+c) the tilted names</p>
+</section>
+<section id="bars-step-1-from-zero" class="slide level2 nostretch">
+<h2>Bars, step 1: from zero</h2>
+<div id="e77e3765" class="cell" data-execution_count="28">
+<div class="cell-output cell-output-display">
+<div>
+<figure>
+<p><img data-src="lec_09_plotting_files/figure-revealjs/cell-29-output-1.png" alt="The same rainbow bar chart with the y-axis from 0. Harburg's bar at 26 percent is now about three times as tall as Eppendorf's at 9 percent." width="823" height="359"></p>
+</figure>
+</div>
+</div>
+</div>
+<p><strong>b) the axis</strong>. Cut at 5 %, Harburg looked five times as late as Eppendorf; from 0 it is three times. The colors and the tilt only make the chart harder to read. Fix what misleads first.</p>
+</section>
+<section id="bars-step-2-sorted-lying-down" class="slide level2 nostretch">
+<h2>Bars, step 2: sorted, lying down</h2>
+<div id="46d840c1" class="cell" data-execution_count="29">
+<div class="cell-output cell-output-display">
+<div>
+<figure>
+<p><img data-src="lec_09_plotting_files/figure-revealjs/cell-30-output-1.png" alt="Horizontal bars in one color, sorted from Harburg at the top with 26 percent down to Eppendorf with 9 percent. The names read without tilting and the legend is gone." width="880" height="337"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>Sorted, the ranking reads from top to bottom. Lying down, the names need no tilt. The colors meant nothing, so one color is enough, and the legend goes with them.</p>
+</section>
+<section id="bars-step-3-one-point" class="slide level2 nostretch">
+<h2>Bars, step 3: one point</h2>
+<div id="8b415a6e" class="cell" data-execution_count="30">
+<div class="cell-output cell-output-display">
+<div>
+<figure>
+<p><img data-src="lec_09_plotting_files/figure-revealjs/cell-31-output-1.png" alt="The finished chart: horizontal grey bars sorted by size, Harburg's bar on top in dark red, each bar with its percentage written at its end, no x-axis, and the title Harburg: one in four deliveries is late." width="1047" height="302"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>One accent for the point, the numbers on the bars instead of an axis, the claim on top. Step 1 fixed what misleads, step 2 what confuses, step 3 makes the point.</p>
+</section>
+<section id="makeover-3-who-is-late" class="slide level2 nostretch">
+<h2>Makeover 3: who is late?</h2>
+<div id="b2db8cbd" class="cell" data-execution_count="31">
+<div class="cell-output cell-output-display">
+<div>
+<figure>
+<p><img data-src="lec_09_plotting_files/figure-revealjs/cell-32-output-1.png" alt="Four overlapping histograms of delivery times in the default blue, orange, green and red, half transparent, with a legend for Nord, Altstadt, Hafen and Sued. The colors mix where the bars overlap, and a green tail reaches beyond 60 minutes." width="798" height="285"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>We promise <strong>35 minutes</strong>. Which zone breaks it most often?</p>
+<p>a) Altstadt, orange<br>
+b) Hafen, green<br>
+c) Nord, blue</p>
+</section>
+<section id="spread-step-1-one-panel-each" class="slide level2 nostretch">
+<h2>Spread, step 1: one panel each</h2>
+<div id="aa990e5c" class="cell" data-execution_count="32">
+<div class="cell-output cell-output-display">
+<div>
+<figure>
+<p><img data-src="lec_09_plotting_files/figure-revealjs/cell-33-output-1.png" alt="The same delivery times as four small histograms stacked above each other on one shared minutes axis. Nord and Sued sit around 28 minutes, Altstadt has two humps at about 26 and 39 minutes, and Hafen's bars spread far to the right." width="842" height="340"></p>
+</figure>
+</div>
+</div>
+</div>
+<p><strong>b) Hafen</strong>: three of four deliveries take longer than 35 minutes. One panel per zone shows it, and shows what the overlap hid: Altstadt has two humps, a fast group and a slow one.</p>
+</section>
+<section id="spread-step-2-boxes-and-dots" class="slide level2 nostretch">
+<h2>Spread, step 2: boxes and dots</h2>
+<div id="8048e615" class="cell" data-execution_count="33">
+<div class="cell-output cell-output-display">
+<div>
+<figure>
+<p><img data-src="lec_09_plotting_files/figure-revealjs/cell-34-output-1.png" alt="One chart with a box plot per zone, sorted from the most punctual zone, Sued, to Hafen, and every single delivery as a dot next to its box. Hafen's box sits highest, and Altstadt's dots form two clusters." width="823" height="293"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>One chart instead of four: a box per zone for median and spread, every delivery as a dot beside it, from the most punctual zone to the least.</p>
+</section>
+<section id="spread-step-3-draw-the-promise" class="slide level2 nostretch">
+<h2>Spread, step 3: draw the promise</h2>
+<div id="eabe30b2" class="cell" data-execution_count="34">
+<div class="cell-output cell-output-display">
+<div>
+<figure>
+<p><img data-src="lec_09_plotting_files/figure-revealjs/cell-35-output-1.png" alt="The finished chart: dots for every delivery per zone, grey for Sued, Nord and Altstadt and dark red for Hafen, a thin box over each zone, and a dashed line at 35 minutes labelled our promise. Most of Hafen's dots lie above the line. The title reads Hafen misses the 35-minute promise three times in four." width="1051" height="331"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>A reference line turns the chart into a test: every dot above it is a broken promise. The share on top and the title give the number.</p>
 </section></section>
 <section>
 <section id="your-turn-3" class="title-slide slide level1 loud-slide center">
@@ -905,29 +1044,99 @@ Name: total_eur, dtype: float64</code></pre>
 <p><strong><a href="https://python.tobiasvlcek.com/notebooks/ex_09_d/">python.tobiasvlcek.com/notebooks/ex_09_d/</a></strong></p>
 
 <img data-src="assets/qr/ex_09_d.png" alt="QR code linking to the online notebook for exercise 9d, the same address as the link above." width="280" class="r-stretch"><p><strong>Any questions?</strong> Let me know!</p>
+</section></section>
+<section>
+<section id="charts-to-a-story" class="title-slide slide level1 title center">
+<h1><span class="flow">Charts to a story</span></h1>
+
+</section>
+<section id="a-deck-is-a-story" class="slide level2">
+<h2>A deck is a story</h2>
+<p>A story is facts <em>in a specific order</em> that create a reaction <span class="citation" data-cites="wilkeFundamentalsDataVisualization2019">(<a href="#/books-to-start-with" role="doc-biblioref" onclick="">Wilke 2019</a>, ch.&nbsp;29)</span>. A pitch in four steps:</p>
+<ol type="1">
+<li><strong>Opening</strong>: where we stand</li>
+<li><strong>Challenge</strong>: the problem</li>
+<li><strong>Action</strong>: what we did about it</li>
+<li><strong>Resolution</strong>: the result, and what we ask for</li>
+</ol>
+<div class="fragment">
+<p>Each step is one slide with one point, <strong>a figure for the generals</strong>: the room gets it in seconds.</p>
+</div>
+</section>
+<section id="predict-tobis-four-slides" class="slide level2 nostretch">
+<h2>Predict: Tobi’s four slides</h2>
+<div id="5e5f8b66" class="cell" data-execution_count="35">
+<div class="cell-output cell-output-display">
+<div>
+<figure>
+<p><img data-src="lec_09_plotting_files/figure-revealjs/cell-36-output-1.png" alt="Four small slides with claim titles, each a different kind of chart. A: Repeat customers 18 percent to 35 percent, two dark red bars for week 1 and week 8. B: Orders up from 180 to 284 a week, a dark red area rising over eight weeks. C: From slowest to fastest, 41 to 29 minutes, our dark red line falling below three grey rival lines. D: Week 1, slowest in town, 41 minutes, a dot plot with our dot in dark red furthest right." width="1051" height="283"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>Opening, challenge, action, resolution: in which order?</p>
+<p>a) B, D, C, A<br>
+b) A, B, D, C<br>
+c) B, C, D, A</p>
+</section>
+<section id="answer-b-d-c-a" class="slide level2 nostretch">
+<h2>Answer: B, D, C, A</h2>
+<div id="c4b54c5e" class="cell" data-execution_count="36">
+<div class="cell-output cell-output-display">
+<div>
+<figure>
+<p><img data-src="lec_09_plotting_files/figure-revealjs/cell-37-output-1.png" alt="The same four slides in story order: B, a rising dark red area of orders; D, the dot plot with us slowest; C, our line falling below the rivals; A, two bars for repeat customers rising from 18 to 35 percent." width="1051" height="206"></p>
+</figure>
+</div>
+</div>
+</div>
+<div class="fragment">
+<p><strong>a) B, D, C, A</strong>: a growing business (B), the slowest in town (D), new routes and a line that falls below every rival (C), customers who come back (A). <em>Then the ask: one more rider keeps it that way.</em></p>
+</div>
+<div class="fragment">
+<p>Option b) leads with the result, an arc that works too, in a newspaper. In a pitch, the problem first makes the result count.</p>
+</div>
+</section>
+<section id="two-rules-for-the-whole-deck" class="slide level2">
+<h2>Two rules for the whole deck</h2>
+<ul>
+<li><strong>Build up.</strong> Show our line alone before you add the rivals. A complex chart lands once the room has seen its simple version.</li>
+<li><strong>Keep colors fixed.</strong> Our line is dark red on every slide. Paint us blue on slide 3 and the room reads someone else’s line as yours.</li>
+</ul>
+<div class="fragment">
+<div class="callout callout-note callout-style-simple">
+<div class="callout-body">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-content">
+<p>Consistent, not repetitive: same colors and same fonts across the deck, but each slide a different kind of chart, so the room notices that something new is coming.</p>
+</div>
+</div>
+</div>
+</div>
 </section>
 <section id="ai-as-your-chart-assistant" class="slide level2">
 <h2>AI as your chart assistant</h2>
-<p>AI is good at plotting code, if you check the result:</p>
 <ol type="1">
-<li><strong>Describe</strong> data and question: <em>“I have <code>orders</code> with columns <code>zone</code> (text) and <code>total_eur</code> (float). Bar chart of total revenue per zone.”</em></li>
-<li>Let it <strong>draft</strong> the plot code.</li>
-<li><strong>Verify</strong> three things before you believe the picture:
+<li><strong>Describe</strong> data and point: <em>“Revenue per zone from <code>orders</code> (<code>zone</code>, <code>total_eur</code>), sorted bars, top zone dark red, rest grey, a title that names the leader.”</em></li>
+<li>Let it <strong>draft</strong>.</li>
+<li><strong>Verify</strong> before you believe the picture:
 <ul>
-<li>Do the <strong>columns</strong> it used actually exist?</li>
-<li>Does the <strong>y-axis</strong> start where you claim?</li>
-<li>Does the <strong>chart type</strong> fit the question?</li>
+<li>the <strong>columns</strong> exist · the bars match your own <code>groupby</code></li>
+<li><strong>bars</strong> from 0 · the <strong>chart type</strong> fits · the <strong>title</strong> says no more than the picture</li>
 </ul></li>
 </ol>
 <div class="fragment">
 <p>AI drafts. You decide what goes on the slide.</p>
 </div>
 </section>
-<section id="two-ways-ai-charts-lie" class="slide level2">
-<h2>Two ways AI charts lie</h2>
+<section id="three-ways-ai-charts-mislead" class="slide level2">
+<h2>Three ways AI charts mislead</h2>
 <ul>
-<li><strong>Invented column names.</strong> The AI writes <code>orders["revenue"]</code>, but your column is <code>total_eur</code>: a <code>KeyError</code>, exactly the confident-nonsense you caught in Episode 8. Read the code before you run it.</li>
-<li><strong>Silently “dramatic” defaults.</strong> Ask for a growth chart and some assistants hand back a <strong>tight y-axis</strong> that flatters the trend: no warning, no comment. The chart runs; that’s what makes it dangerous.</li>
+<li><strong>Invented column names.</strong> It writes <code>orders["revenue"]</code>, but your column is <code>total_eur</code>: the same confident nonsense you caught in Episode 8.</li>
+<li><strong>Defaults nobody chose.</strong> Bars in alphabetical order, one color per category, a legend, an axis cut to fit the data. Each one is a decision the agent made silently.</li>
+<li><strong>Your words as the title.</strong> Ask for a chart “showing that sales are growing” and that’s the title you get, whatever the line does.</li>
 </ul>
 <div class="fragment">
 <div class="callout callout-important callout-style-simple">
@@ -936,82 +1145,46 @@ Name: total_eur, dtype: float64</code></pre>
 <i class="callout-icon"></i>
 </div>
 <div class="callout-content">
-<p>Both threads, one rule: <strong>an AI chart runs long before it’s true.</strong> You verify the columns <em>and</em> the axis, every time.</p>
+<p>For all three: check the numbers, the axis and the title before a chart goes on a slide.</p>
 </div>
 </div>
 </div>
 </div>
-</section></section>
-<section>
-<section id="your-turn-4" class="title-slide slide level1 loud-slide center">
-<h1>Your turn</h1>
-
 </section>
-<section id="open-the-exercise-4" class="slide level2">
-<h2>Open the exercise</h2>
-<p>Scan the QR or type the link:</p>
-<p><strong><a href="https://python.tobiasvlcek.com/notebooks/ex_09_e/">python.tobiasvlcek.com/notebooks/ex_09_e/</a></strong></p>
-
-<img data-src="assets/qr/ex_09_e.png" alt="QR code linking to the online notebook for exercise 9e, the same address as the link above." width="280" class="r-stretch"><p><strong>Any questions?</strong> Let me know!</p>
-</section></section>
-<section id="before-session-x" class="title-slide slide level1 exercise-slide center">
-<h1>Before Session X</h1>
-<p>uv, Zed and Mistral Vibe have been on your laptop since Session VII. The finale adds <strong>git</strong>. Two things before you arrive, about 15 minutes:</p>
-<ol type="1">
-<li><strong>GitHub account</strong> from Session I. None yet? <a href="https://github.com">github.com</a>, tonight</li>
-<li><strong>git + GitHub CLI (<code>gh</code>)</strong>: install, log in once. <a href="../general/git-basics.html#one-time-setup">Git Basics</a></li>
-</ol>
+<section id="beyond-matplotlib" class="slide level2">
+<h2>Beyond matplotlib</h2>
+<table class="caption-top">
+<thead>
+<tr class="header">
+<th>Library</th>
+<th>What it adds</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>seaborn</td>
+<td>box, violin and histogram per group, in one line</td>
+</tr>
+<tr class="even">
+<td>plotly</td>
+<td>charts you can hover over and zoom into</td>
+</tr>
+<tr class="odd">
+<td>folium</td>
+<td>street maps in the browser</td>
+</tr>
+<tr class="even">
+<td>streamlit</td>
+<td>a script becomes a web page with sliders</td>
+</tr>
+<tr class="odd">
+<td>networkx</td>
+<td>networks of nodes and links</td>
+</tr>
+</tbody>
+</table>
 <div class="fragment">
-<div class="callout callout-important callout-style-simple">
-<div class="callout-body">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-content">
-<p><strong>Do it in advance</strong>, and bring the laptop. Session X opens with Checkpoint 5 (Sessions VIII-IX), then builds on git from the first minute. Install fights you? Ask in class or by e-mail.</p>
-</div>
-</div>
-</div>
-</div>
-</section>
-
-<section>
-<section id="to-the-lab" class="title-slide slide level1 title center">
-<h1><span class="flow">To the Lab</span></h1>
-
-</section>
-<section id="a-chart-in-a-script" class="slide level2">
-<h2>A chart in a script</h2>
-<p>The lab is a script, and a script has no cell that could show a chart. So every chart goes into a <strong>picture file</strong>:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb25"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb25-1"><a aria-label="1"></a>plt.figure()                 <span class="co"># OPEN: a fresh canvas, as before</span></span>
-<span id="cb25-2"><a aria-label="2"></a>plt.plot(days, revenue)</span>
-<span id="cb25-3"><a aria-label="3"></a>plt.title(<span class="st">"This week's revenue"</span>)</span>
-<span id="cb25-4"><a aria-label="4"></a>daily_chart <span class="op">=</span> plt.gca()      <span class="co"># KEEP: the chart, for the lab's checks</span></span>
-<span id="cb25-5"><a aria-label="5"></a>plt.savefig(<span class="st">"daily.png"</span>)     <span class="co"># SAVE: the picture, into python-labs</span></span>
-<span id="cb25-6"><a aria-label="6"></a>plt.close()                  <span class="co"># CLOSE: the canvas</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="fragment">
-<p>Forget <code>plt.close()</code> and the next chart draws on top of this one: one canvas, two charts. To look at the picture, click <code>daily.png</code> in Zed’s project panel, the file list on the left.</p>
-</div>
-</section>
-<section id="after-the-break-the-lab" class="slide level2">
-<h2>After the break: the lab</h2>
-<ul>
-<li>Download <code>lab_09_pitch.py</code> from <a href="../tutorials/tut_09_plotting.html">Episode 9: The Pitch Deck</a> into <code>python-labs</code>. <code>orders_messy.csv</code> is still there</li>
-<li>Nine tasks, six with a chart. No task names the kind of chart: <strong>you pick it</strong>. At the end the script puts all six into <code>pitch_deck.png</code></li>
-<li>Tobi’s deck is in the script too. <strong>Two things in it are wrong without any task saying so</strong>: one in his numbers, one in what he claims</li>
-<li>No slide covers table to chart: <strong>ask your agent</strong>, <strong>look at the picture</strong></li>
-</ul>
-<div class="fragment">
-<div class="callout callout-important callout-style-simple">
-<div class="callout-body">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-content">
-<p><strong>Show me <code>pitch_deck.png</code> and the last block before you leave</strong>, for feedback as last week. Then two minutes of practice for Checkpoint 5, which is still handed in from the browser: open <code>ex_09_e</code>, <strong>Cmd/Ctrl+S</strong>, menu → Download → <em>Download Python code</em>, find the file.</p>
-</div>
-</div>
-</div>
+<p>Next week’s project ideas use all five. Your agent writes the code; the checks from today stay the same.</p>
 </div>
 </section></section>
 <section>
@@ -1022,9 +1195,9 @@ Name: total_eur, dtype: float64</code></pre>
 <section id="three-things-to-remember" class="slide level2">
 <h2>Three things to remember</h2>
 <ol type="1">
-<li><strong>Every chart, one frame.</strong> Open with <code>plt.figure()</code>, close with <code>plt.gca()</code> (in a script: <code>savefig</code>, then <code>close</code>); label the axes and title it. A chart nobody can read argues nothing.</li>
-<li><strong>Match the chart to the question.</strong> Categories → bar, distribution → histogram, two numbers → scatter, time → line. The wrong chart is a lie; and “no pattern” is a real finding.</li>
-<li><strong>Axis from zero, verified code.</strong> Growth charts start at <strong>0</strong>; check every AI-drafted plot: columns exist, axis starts as claimed?</li>
+<li><strong>Judge every chart.</strong> Wrong first (shares that add up to 115 %), then bad (the pie), ugly last. Bars start at 0; a zoomed line needs a title with the real size.</li>
+<li><strong>The question picks the chart, the title states the claim.</strong> Amounts → bar, spread → histogram, two numbers → scatter, time → line.</li>
+<li><strong>One point per chart, one story per deck.</strong> One accent color, names on the lines, and the slides in an order that ends in your ask.</li>
 </ol>
 <div class="fragment">
 <div class="callout callout-note callout-style-simple">
@@ -1033,7 +1206,118 @@ Name: total_eur, dtype: float64</code></pre>
 <i class="callout-icon"></i>
 </div>
 <div class="callout-content">
-<p><strong>Season finale next: git and the project kickoff.</strong> Install git and <code>gh</code> this week. Session X needs them right after the checkpoint.</p>
+<p><strong>Season finale next: git and the project kickoff.</strong> Your laptop gets git now, before the lab.</p>
+</div>
+</div>
+</div>
+</div>
+</section></section>
+<section>
+<section id="git-before-the-lab" class="title-slide slide level1 title center">
+<h1><span class="flow">Git before the lab</span></h1>
+
+</section>
+<section id="why-git-why-today" class="slide level2">
+<h2>Why git, why today</h2>
+<p>Next session opens with Checkpoint 5, and then your project moves to <strong>GitHub</strong>. An installer that fights you then eats the project kickoff.</p>
+<div class="fragment">
+<p>So we set up git <strong>now, together</strong>. Once your setup passes the check, open the lab; I come round and look at every laptop before you leave.</p>
+</div>
+</section>
+<section id="step-1-git-and-gh" class="slide level2">
+<h2>Step 1: git and gh</h2>
+<p>In Zed’s terminal (<code>Ctrl+`</code>), steps 1 and 2 of the <a href="../general/git-basics.html#one-time-setup">one-time setup</a> on the Git Basics page:</p>
+<ul>
+<li><strong>git</strong>: on a Mac <code>git --version</code>, on Windows <code>winget install Git.Git</code></li>
+<li><strong>gh</strong>, the GitHub CLI: on Windows <code>winget install GitHub.cli</code>, on a Mac the installer linked on the page</li>
+<li>Then <strong>quit and reopen Zed</strong>: its terminal only finds new programs after a restart</li>
+</ul>
+<div class="fragment">
+<div class="callout callout-tip callout-style-simple">
+<div class="callout-body">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-content">
+<p><code>git --version</code> and <code>gh --version</code> both print a version number? Step 1 is done.</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="step-2-log-in-say-who-you-are" class="slide level2">
+<h2>Step 2: log in, say who you are</h2>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb13"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb13-1"><a aria-label="1"></a><span class="ex">gh</span> auth login</span>
+<span id="cb13-2"><a aria-label="2"></a><span class="ex">gh</span> auth setup-git</span>
+<span id="cb13-3"><a aria-label="3"></a><span class="fu">git</span> config <span class="at">--global</span> user.name <span class="st">"Your Name"</span></span>
+<span id="cb13-4"><a aria-label="4"></a><span class="fu">git</span> config <span class="at">--global</span> user.email <span class="st">"you@example.com"</span></span>
+<span id="cb13-5"><a aria-label="5"></a><span class="fu">git</span> config <span class="at">--global</span> pull.rebase false</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<ul>
+<li><strong>Login</strong>: GitHub.com, <strong>HTTPS</strong>, <strong>Yes</strong> to <em>Authenticate Git</em>, browser, one-time code</li>
+<li><strong><code>setup-git</code></strong> lets git use that login; it prints nothing</li>
+<li><strong>E-mail</strong>: the one of your <strong>GitHub account</strong>, it goes on every commit</li>
+<li><strong><code>pull.rebase false</code></strong>: a pull combines your partners’ work with yours</li>
+</ul>
+</section>
+<section id="the-check-before-the-lab" class="slide level2">
+<h2>The check before the lab</h2>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb14"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb14-1"><a aria-label="1"></a><span class="fu">git</span> <span class="at">--version</span></span>
+<span id="cb14-2"><a aria-label="2"></a><span class="ex">gh</span> auth status</span>
+<span id="cb14-3"><a aria-label="3"></a><span class="fu">git</span> config <span class="at">--global</span> user.email</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<ul>
+<li>a version number</li>
+<li><strong>Logged in to github.com account</strong> with your username, and <strong>Git operations protocol: https</strong></li>
+<li>the e-mail of your GitHub account</li>
+</ul>
+<p>Open the lab as soon as all three print. I come round and check.</p>
+<div class="fragment">
+<div class="callout callout-important callout-style-simple">
+<div class="callout-body">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-content">
+<p><strong>Stuck?</strong> Raise your hand early. Keep your phone at hand: GitHub may ask for a two-factor code, and a password you forgot since Session I is reset in two minutes. Only an iPad? Your GitHub codespace has git and gh built in: run the check in its terminal.</p>
+</div>
+</div>
+</div>
+</div>
+</section></section>
+<section>
+<section id="to-the-lab" class="title-slide slide level1 title center">
+<h1><span class="flow">To the Lab</span></h1>
+
+</section>
+<section id="a-chart-in-a-script" class="slide level2">
+<h2>A chart in a script</h2>
+<p>The lab is a script, and a script has no cell that could show a chart. So every chart goes into a <strong>picture file</strong>:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb15"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a aria-label="1"></a>plt.figure()                 <span class="co"># OPEN: a fresh canvas, as before</span></span>
+<span id="cb15-2"><a aria-label="2"></a>plt.plot(days, revenue)</span>
+<span id="cb15-3"><a aria-label="3"></a>plt.xlabel(<span class="st">"Day"</span>)</span>
+<span id="cb15-4"><a aria-label="4"></a>plt.ylabel(<span class="st">"Revenue (EUR)"</span>)</span>
+<span id="cb15-5"><a aria-label="5"></a>plt.title(<span class="st">"Day 4 brings the most revenue"</span>)</span>
+<span id="cb15-6"><a aria-label="6"></a>daily_chart <span class="op">=</span> plt.gca()      <span class="co"># KEEP: the chart, for the lab's checks</span></span>
+<span id="cb15-7"><a aria-label="7"></a>plt.savefig(<span class="st">"daily.png"</span>)     <span class="co"># SAVE: the picture, into python-labs</span></span>
+<span id="cb15-8"><a aria-label="8"></a>plt.close()                  <span class="co"># CLOSE: the canvas</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="fragment">
+<p><code>plt.close()</code> puts the finished canvas away; the lab checks that none is left open. To look at the picture, click <code>daily.png</code> in Zed’s project panel, the file list on the left.</p>
+</div>
+</section>
+<section id="after-the-check-the-lab" class="slide level2">
+<h2>After the check: the lab</h2>
+<ul>
+<li><code>lab_09_pitch.py</code> from <a href="../tutorials/tut_09_plotting.html">Episode 9: The Pitch Deck</a> into <code>python-labs</code></li>
+<li>Six charts, and <strong>you pick</strong> each kind. The investor gets <strong>four</strong> of them: you choose which, and in which order</li>
+<li><strong>Two things in Tobi’s deck are wrong, and no task says so</strong>: one in his numbers, one in his claims</li>
+</ul>
+<div class="fragment">
+<div class="callout callout-important callout-style-simple">
+<div class="callout-body">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-content">
+<p><strong>Show me <code>pitch_deck.png</code> and the last block</strong> for feedback. Then practise the Checkpoint 5 hand-in once: open <code>ex_09_d</code>, <strong>Cmd/Ctrl+S</strong>, menu → Download → <em>Download Python code</em>.</p>
 </div>
 </div>
 </div>
@@ -1044,15 +1328,17 @@ Name: total_eur, dtype: float64</code></pre>
 <h1><span class="flow">Literature</span></h1>
 
 </section>
-<section id="books-to-start-with" class="slide level2">
+<section id="books-to-start-with" class="slide level2 smaller scrollable">
 <h2>Books to start with</h2>
-<ul>
-<li>Wilke, C. (2019). Fundamentals of data visualization: A primer on making informative and compelling figures (First edition). O’Reilly Media. <a href="https://clauswilke.com/dataviz/">Link to the free book website</a>
-<ul>
-<li>The best single book on <em>why</em> a chart works: principles over code. Highly recommended.</li>
-</ul></li>
-<li>Downey, A. B. (2024). Think Python: How to think like a computer scientist (Third edition). O’Reilly. <a href="https://greenteapress.com/wp/think-python-3rd-edition/">Link to free online version</a></li>
-</ul>
+<div id="refs" class="references csl-bib-body hanging-indent" role="list">
+<div id="ref-downeyThinkPythonHow2024" class="csl-entry" role="listitem">
+Downey, Allen B. 2024. <em>Think <span>Python</span>: How to Think Like a Computer Scientist</em>. Third edition. O’Reilly. <a href="https://greenteapress.com/wp/think-python-3rd-edition/">https://greenteapress.com/wp/think-python-3rd-edition/</a>.
+</div>
+<div id="ref-wilkeFundamentalsDataVisualization2019" class="csl-entry" role="listitem">
+Wilke, C. 2019. <em>Fundamentals of Data Visualization: A Primer on Making Informative and Compelling Figures</em>. First edition. O’Reilly Media. <a href="https://clauswilke.com/dataviz/">https://clauswilke.com/dataviz/</a>.
+</div>
+</div>
+<p>Both are free online. For this session, start with chapters 1, 17 and 29 of <span class="citation" data-cites="wilkeFundamentalsDataVisualization2019">Wilke (<a href="#/books-to-start-with" role="doc-biblioref" onclick="">2019</a>)</span>.</p>
 <div class="fragment">
 <div class="callout callout-note callout-style-simple">
 <div class="callout-body">
@@ -1060,7 +1346,7 @@ Name: total_eur, dtype: float64</code></pre>
 <i class="callout-icon"></i>
 </div>
 <div class="callout-content">
-<p>Building charts with AI this session? Revisit the <a href="../general/ai-tools.html">AI Tools page</a>: describe-then-verify is the whole workflow. Matplotlib’s own <a href="https://matplotlib.org/stable/tutorials/pyplot.html">pyplot tutorial</a> is a friendly next step.</p>
+<p>Building charts with AI? Revisit the <a href="../general/ai-tools.html">AI Tools page</a>: describe-then-verify is the whole workflow. Matplotlib’s own <a href="https://matplotlib.org/stable/tutorials/pyplot.html">pyplot tutorial</a> is a friendly next step.</p>
 </div>
 </div>
 </div>
