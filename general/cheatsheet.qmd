@@ -449,16 +449,29 @@ plt.gca()
 
 | The question | The chart | The call |
 |---|---|---|
-| Compare categories? | bar | `plt.bar(labels, heights)` |
-| See a distribution? | histogram | `plt.hist(values, bins=5)` |
-| Two numbers per order? | scatter | `plt.scatter(x, y)` |
-| Change over time? | line | `plt.plot(x, y)` |
+| Compare amounts across categories? | bar, sorted | `plt.bar(labels, heights)` |
+| How are values spread? | histogram | `plt.hist(values, bins=5)` |
+| Do two numbers move together? | scatter | `plt.scatter(x, y)` |
+| How does it change over time? | line | `plt.plot(x, y)` |
+| Parts of one whole? | pie, if few parts | `plt.pie(sizes)` |
 
-No pie charts: the eye cannot compare slice sizes. A bar counts categories; a histogram counts ranges. Same `plt.figure()` ... `plt.gca()` frame around each.
+A pie shows a half or a quarter well; to compare the parts, use bars. A bar counts categories; a histogram counts ranges. Same `plt.figure()` ... `plt.gca()` frame around each. Each question has a whole family of charts (box plot, violin, heatmap, slope graph, error bars and more): the gallery slides in Lecture IX and the directory of chart types in @wilkeFundamentalsDataVisualization2019 [ch. 5].
 
-### The honest axis
+### Ugly, bad, wrong
 
-A growth claim starts the y-axis at 0: `plt.ylim(0, 100)`. A tight `plt.ylim(96, 99)` turns a wobble into a rocket. Before you believe an AI-drafted chart, check three things: do the columns it used exist, does the y-axis start where you claim, does the chart type fit the question?
+Three verdicts [@wilkeFundamentalsDataVisualization2019, ch. 1]: **wrong** means the numbers in the picture are not the data, **bad** means unclear, confusing or deceiving, **ugly** means only unpleasant to look at. Fix them in that order.
+
+### Proportional ink
+
+A bar shows its number by its length, so **bars start at 0**: a cut axis makes 1.5 times look like 6. A dot shows its number by position only, so a dot plot may zoom. A line sits in between: zooming blows a small change up, so plot the change itself from 0 or put its real size in the title ("+3 % in four weeks").
+
+### One point per chart, one story per deck
+
+- The title is a claim: "Miso Ramen sells best: 450 euros", not "Revenue per dish". Axis labels carry the unit.
+- One accent color for the point, grey for the rest: `color="lightgrey"`. Names at the line ends instead of a legend: `plt.text(x, y, "name")`.
+- Order the slides as a story: opening, challenge, action, resolution. Keep each thing in the same color on every slide.
+
+Before you believe an AI-drafted chart: do its columns exist and match your own numbers, do the bars start at 0, does the chart type fit the question, does the title say what the picture shows?
 
 ## Best practices
 
@@ -467,7 +480,7 @@ A growth claim starts the y-axis at 0: `plt.ylim(0, 100)`. A tight `plt.ylim(96,
 3. Write a calculation once as a function and catch its return value; work on a copy (`dict(d)`, `df.copy()`) when the original must survive
 4. Catch specific exceptions, `raise` on bad input, read tracebacks bottom-up
 5. Don't build it, import it; `random.seed(n)` before anything that must be reproducible
-6. Prefer one vectorised expression or one `groupby` over a loop; every chart gets `plt.figure()`, labels, a title, `plt.gca()`, and a y-axis from 0 for growth
+6. Prefer one vectorised expression or one `groupby` over a loop; every chart gets `plt.figure()`, labels with units, a title that states the point, `plt.gca()`, and bars from 0
 7. Test AI output on a tiny case you can check by hand, and in your project note the use in the README
 
 ## Recap
@@ -482,4 +495,4 @@ You can now look up:
 6. `import`, `math`, `statistics` and seeded `random` (VI)
 7. NumPy arrays, masks and `axis` (VII)
 8. pandas selection, filtering, `groupby` and the AI verify workflow (VIII)
-9. The four matplotlib charts and the honest axis (IX)
+9. Picking the chart, proportional ink and telling a story with charts (IX)

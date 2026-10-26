@@ -108,7 +108,7 @@
 
 ## MC questions: no answer-revealing cues (fleet directive 2026-07-20)
 Applies to every MC format in this repo: lecture warm-up/predict option rows
-(`a\) …   b) …   c) …` + `**x)` reveal), lab MCQ cells (`- **a)** …` +
+(one option per line, `a\) …\` / `b\) …\` / `c\) …`, + `**x)` reveal), lab MCQ cells (`- **a)** …` +
 `== "x"` check), and `mo.ui.radio` traces. Checker:
 `uv run python helpers/check_quiz_balance.py` (exit 1 gates; run it after
 touching any question; `--stats` for the per-question table).
@@ -162,6 +162,15 @@ Exception, Session VII (from the 2026 run): the wrap-up comes right after the
 last QR exercise, then the `Leaving the Browser` section (install uv, Zed and
 Mistral Vibe in class, the 30-second check), and only then the lab handoff,
 because students show a working setup before they start the lab.
+Exception, Session IX (owner decision 2026-10-26): same shape as VII. After
+the wrap-up comes `Git before the lab` (install git and gh, `gh auth login`,
+`gh auth setup-git`, name, e-mail, `pull.rebase false`), then the check
+(`git --version`, `gh auth status`, `git config --global user.email`), shown
+to the lecturer; it is the one thing students must show before they leave.
+Mac users start `git --version` on a slide right after the cold open, so the
+developer-tools download runs during the lecture. Session X then only
+re-checks `gh auth status`. Session IX runs four QR exercises (a-d); `ex_09_e`
+stays published as optional practice, linked from the tutorial page.
 Sessions XI-XIII follow lean work-session shapes: no warm-up, no QR exercises,
 no checkpoint, no lab handoff. XI and XII each carry one short content flow
 plus a work menu/checklist and wrap-up; XIII is presentations plus the moved
@@ -169,6 +178,18 @@ send-off (future block, keep-programming, thank-you, literature). Presentation
 logistics live only in lec_10's Demo Day flow: groups of three, 7+3 format, all
 demos in XIII (owner decision 2026-10-10), order drawn at random with the
 Session VI random module.
+
+### Charts in lec_09 (house style)
+Drafts that stand for Tobi's or the agent's output keep matplotlib's defaults,
+so the difference stays visible. Every chart we design ourselves is drawn
+inside `with plt.rc_context(HOUSE):` (setup cell after the warm-up: course
+palette, Reddit Sans from `~/Library/Fonts`, DejaVu Sans as fallback) and ends
+with `plt.show()` inside the block, so tick labels pick up the style. Size the
+figure to the slide: about 11.2 in wide, `layout="tight"` or
+`fig.tight_layout()` (default margins are cropped away and shrink the
+picture), and put `{.nostretch}` on the slide, or Quarto's auto-stretch scales
+the image down to fit the text below it. Gallery panels are icons: no axis
+numbers, the chart's name and its purpose (`name(ax, kind, note)`).
 
 ### Break slides: two backgrounds, two meanings
 Every slide heading sits on one line (cross-course standard since
@@ -193,11 +214,22 @@ On the teal ground all accents (`strong`, `em`, links) render light, weight
 carries the emphasis instead of hue, see the `.reveal .loud-slide` block in
 `styles.scss`.
 
+### Citations
+Quarto's citation engine only (fleet rule, lecture-foundations
+`standard/README.md`, "Citations"): `[@key, ch. N]` in the text, the
+Literature slide holds `::: {#refs}` plus `nocite:` for recommended books.
+The course `.bib` is a Zotero export; a missing entry goes to Tobias, never a
+hand-made stub.
+
 ### Warm-up pattern (oral + vote)
 One `# Warm-up {.loud-slide}` section (heading only, the "Three questions
 from Episode N" line lives on the `## Question 1` slide), then per question a `##` slide
 (question + options a-c) and a `##` answer slide (answer + one-line why).
 Everyone commits by hand vote BEFORE the reveal, predict-first, zero infra.
+Options stand one per line (owner decision 2026-10-26): `a\) …` lines that end
+in a `\` hard break, the last one without; keep an inline row only where the
+overflow gate says the slide does not fit otherwise. The question slide ends
+with the options: no "Pick a letter" prompt line, I say that out loud.
 Every answer slide, warm-up and in-block predict alike, re-runs the
 question's code FIRST (`#| eval: true`, `#| output-location: fragment`;
 `slide` for plots) and puts the answer + why BELOW it, behind a `. . .`
@@ -331,9 +363,14 @@ Reference: `labs/lab_08_dataroom.py`; for chart tasks `labs/lab_09_pitch.py`.
   (helpers `check_chart` and `drawn` in the load cell): title, both axis
   labels, file written in this run, no canvas left open, and that what is
   drawn agrees with the student's own `clean` and numbers. No brief names the
-  kind of chart; the failing check does ("should show exactly one line"). The
-  last cell glues the charts into one `pitch_deck.png`, so the desk check is
-  one picture and one printed block.
+  kind of chart; the failing check does ("should show exactly one line").
+  Lecture IX teaches judgment over syntax (Wilke: ugly/bad/wrong, proportional
+  ink, one accent color, title as claim, story order), so lab 09 checks two
+  design decisions as form: the top zone's bar is the only one in its own
+  color (Task 3), and `deck_order` picks four of the six pictures in story
+  order (Task 8). The last cell glues those four into one `pitch_deck.png`,
+  so the desk check is one picture and one printed block, and the desk
+  question is "why this order?".
 - Output is ASCII only (Windows consoles), tables print at
   `pd.set_option("display.width", 120)`, and charts go through
   `plt.savefig("<name>.png")` then `plt.close()`, never `plt.show()`.

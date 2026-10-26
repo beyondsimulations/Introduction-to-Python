@@ -23,16 +23,17 @@
 #     into a picture file. Task 2 shows how.
 #   - No task names the kind of chart. Pick the kind that fits the
 #     question: line, bar, histogram or scatter.
-#   - Every chart needs a title and a label on both axes.
+#   - Every chart needs a label on both axes and a title that says what
+#     the picture shows.
 #   - The checks test the form of a chart, for example that it has a title
 #     or that its bars add up to your own numbers. They cannot see whether
 #     a chart tells the truth.
 #   - You may use Mistral Vibe. Ask it for one task at a time, read what it
 #     wrote, and look at the picture it made.
-#   - When every check passes, the script puts your six charts side by
-#     side into pitch_deck.png and prints a block that starts with SHOW
-#     THIS IN CLASS. Show both to your lecturer for feedback. You may
-#     leave either way.
+#   - When every check passes, the script puts the four charts you pick
+#     for the investor into pitch_deck.png and prints a block that starts
+#     with SHOW THIS IN CLASS. Show both to your lecturer for feedback.
+#     You may leave either way.
 
 # %% Load the data (given, do not change)
 import numbers
@@ -180,9 +181,12 @@ print("Task 2 passed: daily.png, best day", best_day)
 # %% Task 3: the zones
 # Last week's table becomes a picture: which zone brings in the most
 # revenue? The investor should see the answer without reading a number, so
-# the zone with the highest revenue stands on the left.
+# the zone with the highest revenue stands on the left, and it is the only
+# bar that stands out.
 #
-#   zones.png    the revenue of each zone, from clean, highest first
+#   zones.png    the revenue of each zone, from clean, highest first. The
+#                top zone's bar has a color of its own, all other bars
+#                share one quieter color
 #   zones_chart  the chart
 #   top_zone     the name of the zone with the highest revenue
 # YOUR CODE BELOW
@@ -192,21 +196,30 @@ top_zone = None
 # Checks (do not change)
 assert zones_chart is not None, "Task 3: not attempted yet."
 check_chart(3, zones_chart, "zones.png")
-zone_bars = [heights for kind, heights in drawn(zones_chart) if kind == "bars"]
-assert zone_bars and len(zone_bars[0]) == clean["zone"].nunique(), (
+zone_patches = sorted(zones_chart.patches, key=lambda bar: bar.get_x())  # left to right
+zone_bars = np.array([bar.get_height() for bar in zone_patches], dtype=float)
+assert len(zone_bars) == clean["zone"].nunique(), (
     f"Task 3: zones.png should show one bar per zone, {clean['zone'].nunique()} bars in all."
 )
-assert zone_bars[0].max() > 1, (
+assert zone_bars.max() > 1, (
     "Task 3: the bars lie on their side. Let them stand, with the zones on the x-axis."
 )
-assert abs(zone_bars[0].sum() - clean["total_eur"].sum()) < 0.05, (
+assert abs(zone_bars.sum() - clean["total_eur"].sum()) < 0.05, (
     "Task 3: the bars do not add up to the revenue of all orders in clean."
 )
-assert list(zone_bars[0]) == sorted(zone_bars[0], reverse=True), (
+assert list(zone_bars) == sorted(zone_bars, reverse=True), (
     "Task 3: the bars are not sorted with the highest first."
 )
+bar_colors = [tuple(round(float(part), 3) for part in bar.get_facecolor()) for bar in zone_patches]
+assert len(set(bar_colors)) > 1, (
+    "Task 3: every bar in zones.png has the same color, so none of them stands out."
+)
+assert len(set(bar_colors[1:])) == 1 and bar_colors[0] not in bar_colors[1:], (
+    "Task 3: in zones.png only the first bar, the top zone, should stand out. "
+    "Every other bar should share one color."
+)
 assert top_zone is not None, "Task 3: top_zone is still None."
-first_bar = zones_chart.patches[0]
+first_bar = zone_patches[0]
 first_middle = first_bar.get_x() + first_bar.get_width() / 2
 under_first = [
     label.get_text()
@@ -270,15 +283,15 @@ plt.savefig("tobi_growth.png")
 plt.close()
 print("Tobi's two weeks:", tobi_week1, "and", tobi_week2)
 
-# The investor reads the axis before she reads the line: "Why does your
-# chart start at 780 euros?"
+# The investor reads the axis before she reads the line: "Two weeks are
+# two amounts, not a trend. And taking off by how much?"
 #
 # Draw the slide that she cannot argue with:
 #   week1, week2  the revenue of days 1 to 7 and of days 8 to 14, in euros,
 #                 rounded to 2 decimals
 #   growth_pct    the change from week 1 to week 2, in percent of week 1,
 #                 rounded to 2 decimals
-#   growth.png    the two weeks, on a y-axis that starts at 0
+#   growth.png    the two weeks as two amounts, on a y-axis that starts at 0
 #   growth_chart  the chart
 # YOUR CODE BELOW
 week1 = None
@@ -335,7 +348,7 @@ print("Tobi's three days:", tobi_revenue)
 #
 #   momentum.png    the revenue of all fourteen days and, on the same chart
 #                   in a second color, the three days from Tobi's slide.
-#                   A legend says which is which
+#                   A legend or a name at each line says which is which
 #   momentum_chart  the chart
 #   typical_day     the revenue of an average day, in euros, rounded to
 #                   2 decimals
@@ -358,8 +371,8 @@ assert day_count in sizes and 3 in sizes, (
     f"Tobi's 3 days. Yours draws {' and '.join(str(size) for size in sizes[:4]) or 'no'}"
     f"{' and more' if len(sizes) > 4 else ''} points."
 )
-assert momentum_chart.get_legend() is not None, (
-    "Task 6: the chart has no legend, so nobody can tell Tobi's days from the rest."
+assert momentum_chart.get_legend() is not None or len(momentum_chart.texts) >= 2, (
+    "Task 6: the chart has no legend and no names, so nobody can tell Tobi's days from the rest."
 )
 assert typical_day is not None, "Task 6: typical_day is still None."
 all_days = next(heights for heights in shown if len(heights) == day_count)
@@ -403,10 +416,14 @@ assert stars_chart.get_title() == stars_title, (
 )
 print("Task 7 passed: stars.png,", repr(stars_title))
 
-# %% Task 8: the pitch summary
-# One page goes with the deck: the numbers behind the charts, and one
-# sentence for the investor.
+# %% Task 8: the pitch
+# The investor gives you four slides, not six. Pick the four charts that
+# tell her one story and put them in the order you would show them. One
+# page with the numbers behind the charts goes with the deck.
 #
+#   deck_order  a list of four of your six picture files (daily.png,
+#               zones.png, values.png, growth.png, momentum.png,
+#               stars.png), in the order you show them
 #   pitch     a dict with exactly these keys. Take every value from the
 #             tasks above, do not type a number in by hand:
 #               "orders"       how many orders
@@ -416,13 +433,24 @@ print("Task 7 passed: stars.png,", repr(stars_title))
 #               "growth_pct"   the change from week 1 to week 2 in percent
 #               "typical_day"  the revenue of an average day
 #   headline  one sentence, as a string: what the investor should take
-#             away from your six charts
+#             away from your four slides
 # YOUR CODE BELOW
+deck_order = None
 pitch = None
 headline = None
 
 # Checks (do not change)
-assert pitch is not None and headline is not None, "Task 8: not attempted yet."
+assert deck_order is not None and pitch is not None and headline is not None, (
+    "Task 8: not attempted yet."
+)
+chart_files = ["daily.png", "zones.png", "values.png", "growth.png", "momentum.png", "stars.png"]
+assert isinstance(deck_order, list) and len(deck_order) == 4, (
+    "Task 8: deck_order should be a list of four picture file names."
+)
+assert all(name in chart_files for name in deck_order), (
+    f"Task 8: deck_order may only name your six pictures: {', '.join(chart_files)}."
+)
+assert len(set(deck_order)) == 4, "Task 8: deck_order names the same picture twice."
 assert isinstance(pitch, dict), f"Task 8: pitch should be a dict, not a {type(pitch).__name__}."
 assert set(pitch) == {"orders", "revenue", "top_zone", "growth_pct", "typical_day"}, (
     "Task 8: pitch should have exactly the keys orders, revenue, top_zone, "
@@ -445,7 +473,7 @@ assert pitch["typical_day"] == typical_day, (
 assert isinstance(headline, str) and len(headline.split()) >= 8, (
     "Task 8: headline should be a full sentence of at least 8 words, as a string."
 )
-print("Task 8 passed:", pitch)
+print("Task 8 passed:", " -> ".join(deck_order), "|", pitch)
 
 # %% Task 9 (optional): your own question
 # Done early? Ask the data one question that no task has asked, and answer
@@ -474,10 +502,10 @@ else:
     print("Task 9 passed:", own_question, "|", own_answer)
 
 # %% Show this in class (given, do not change)
-deck_files = ["daily.png", "zones.png", "values.png", "growth.png", "momentum.png", "stars.png"]
-deck, slides = plt.subplots(2, 3, figsize=(15, 7.5))
-for slide, file_name in zip(slides.flat, deck_files):
+deck, slides = plt.subplots(2, 2, figsize=(12, 9))
+for number, (slide, file_name) in enumerate(zip(slides.flat, deck_order), start=1):
     slide.imshow(plt.imread(file_name))
+    slide.set_title(f"Slide {number}: {file_name}")
     slide.axis("off")
 deck.tight_layout()
 deck.savefig("pitch_deck.png", dpi=120)
@@ -496,11 +524,13 @@ print("Growth:               ", growth_pct, "percent")
 print("Typical day:          ", typical_day)
 print("Title of stars.png:   ", stars_title)
 print()
+print("Deck order:", " -> ".join(deck_order))
 print("Pitch:", pitch)
 print("Headline:", headline)
 if own_question is not None:
     print("Own question:", own_question, "|", own_answer)
 print("=" * 60)
-print("Every check passed. Your six charts are side by side in pitch_deck.png.")
+print("Every check passed. Your four slides are in pitch_deck.png, in your order.")
 print("The checks only test the form of your charts and numbers.")
-print("Before you show the deck: would the investor believe each chart?")
+print("Before you show the deck: would the investor believe each chart,")
+print("and do the four slides tell her one story?")

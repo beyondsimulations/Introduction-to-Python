@@ -16,8 +16,11 @@ audited here (fleet rollout of the quiz-craft skill):
 This repo has three MC formats (ported/adapted from the Information-Systems-
 Big-Data quizkit checker):
 
-  A. Lecture decks (lectures/lec_*.qmd): inline option lines
-       a\\) `17.8`   b) `17.80`   c) `Error`
+  A. Lecture decks (lectures/lec_*.qmd): one option per line, each but the
+     last ending in a hard break (an inline row on one line still parses)
+       a\\) `17.8`\\
+       b\\) `17.80`\\
+       c\\) `Error`
      with the correct letter on a following reveal line starting `**b)`.
   B. Lab MCQ cells (notebooks/nb_*.py): markdown options `- **a)** text`,
      correct letter taken from the check cell comparison `== "b"`.
@@ -142,18 +145,25 @@ def parse_lectures(repo: Path) -> list[Question]:
         for i, line in enumerate(lines):
             if not LECTURE_OPTION_LINE_RE.match(line):
                 continue
-            # Split the inline option row on 2+ spaces before a letter marker.
+            # Inline row (`a\) x   b) y   c) z`, split on 2+ spaces before a
+            # letter marker) or one option per line, each but the last ending
+            # in a `\` hard break.
             parts = re.split(r"\s{2,}(?=[a-d]\\?\))", line.strip())
+            last = i
+            if len(parts) == 1:
+                while last + 1 < len(lines) and re.match(r"^[b-d]\\?\)\s", lines[last + 1]):
+                    last += 1
+                    parts.append(lines[last].strip())
             opts = []
             for part in parts:
-                m = re.match(r"^([a-d])\\?\)\s*(.*)$", part)
+                m = re.match(r"^([a-d])\\?\)\s*(.*?)\\?$", part)
                 if m:
                     opts.append((m.group(1), m.group(2).strip()))
             if len(opts) < 2:
                 continue
-            # Correct letter: next reveal line `**b)` after the option row.
+            # Correct letter: next reveal line `**b)` after the options.
             correct_letter = None
-            for j in range(i + 1, min(i + 40, len(lines))):
+            for j in range(last + 1, min(last + 40, len(lines))):
                 rm = LECTURE_REVEAL_RE.match(lines[j])
                 if rm:
                     correct_letter = rm.group(1)

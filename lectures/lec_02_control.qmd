@@ -3,6 +3,8 @@ title: "Lecture II - Control Structures for Your Code"
 subtitle: "Programming with Python"
 author: "Dr. Tobias Vlćek"
 institute: "Kühne Logistics University Hamburg - Fall 2026"
+nocite: |
+  @downeyThinkPythonHow2024, @elterSchroedingerProgrammiertPython2021
 format:
   revealjs:
     footer: " {{< meta title >}} | {{< meta author >}} | [Home](lec_02_control.qmd)"
@@ -30,7 +32,9 @@ price = 8.90
 print(f"{price * 2:.2f}")
 ```
 
-a\) `17.8`   b) `17.80`   c) `Error`
+a\) `17.8`\
+b\) `17.80`\
+c\) `Error`
 
 ## Answer 1
 
@@ -52,7 +56,9 @@ print(f"{price * 2:.2f}")
 print(type("9.99"))
 ```
 
-a\) `float`   b) `int`   c) `str`
+a\) `float`\
+b\) `int`\
+c\) `str`
 
 ## Answer 2
 
@@ -73,7 +79,9 @@ print(type("9.99"))
 print(7 // 2, 7 % 2)
 ```
 
-a\) `3.5 1`   b) `3 1`   c) `3 0.5`
+a\) `3.5 1`\
+b\) `3 1`\
+c\) `3 0.5`
 
 ## Answer 3
 
@@ -144,11 +152,10 @@ before_curfew = False
 print(not is_weekday and before_curfew)
 ```
 
-a\) `True`   b) `False`   c) `Error`
+a\) `True`\
+b\) `False`\
+c\) `Error`
 
-. . .
-
-[Predict]{.question}. Pick a letter, then I reveal the answer.
 
 ## Answer: `not` binds first
 
@@ -242,11 +249,10 @@ else:
 print(tier)
 ```
 
-a\) `Gold`   b) `Bronze`   c) `Silver`
+a\) `Gold`\
+b\) `Bronze`\
+c\) `Silver`
 
-. . .
-
-[Predict]{.question}. Pick a letter, then I reveal the answer.
 
 ## Answer: the first true branch wins
 
@@ -281,11 +287,10 @@ delivery_hour = 22
 print(delivery_hour < 22)
 ```
 
-a\) `False`   b) `True`   c) `Error`
+a\) `False`\
+b\) `True`\
+c\) `Error`
 
-. . .
-
-[Predict]{.question}. Pick a letter, then I reveal the answer.
 
 ## Answer: `22 < 22`
 
@@ -408,11 +413,10 @@ for order in range(1, 5):
 print(pings)
 ```
 
-a\) `4`   b) `5`   c) `1`
+a\) `4`\
+b\) `5`\
+c\) `1`
 
-. . .
-
-[Predict]{.question}. Pick a letter, then I reveal the answer.
 
 ## Answer: `range(1, 5)` stops before 5
 
@@ -471,11 +475,10 @@ for n in [10, 20]:
 print(total)
 ```
 
-a\) `10`   b) `10` then `30`   c) `30`
+a\) `10`\
+b\) `10` then `30`\
+c\) `30`
 
-. . .
-
-[Predict]{.question}. Pick a letter, then I reveal the answer.
 
 ## Answer: the unindented `print`
 
@@ -609,11 +612,10 @@ special.strip()
 print("[" + special + "]")
 ```
 
-a\) `Error`   b) `[miso ramen]`   c) `[  miso ramen  ]`
+a\) `Error`\
+b\) `[miso ramen]`\
+c\) `[  miso ramen  ]`
 
-. . .
-
-[Predict]{.question}. Pick a letter, then I reveal the answer.
 
 ## Answer: `.strip()` hands back a copy
 
@@ -654,11 +656,10 @@ What does this print?
 print("  MOIN  ".strip().lower())
 ```
 
-a\) `MOIN`   b) `moin`   c) `Error`
+a\) `MOIN`\
+b\) `moin`\
+c\) `Error`
 
-. . .
-
-[Predict]{.question}. Pick a letter, then I reveal the answer.
 
 ## Answer: `"  MOIN  ".strip().lower()`
 
@@ -741,8 +742,10 @@ Next week this exact routine is **Checkpoint 1**: 40 minutes, 12 points, Session
 
 ## Books to start with
 
-- Downey, A. B. (2024). Think Python: How to think like a computer scientist (Third edition). O'Reilly. [Link to free online version](https://greenteapress.com/wp/think-python-3rd-edition/)
-- Elter, S. (2021). Schrödinger programmiert Python: Das etwas andere Fachbuch (1. Auflage). Rheinwerk Verlag.
+::: {#refs}
+:::
+
+[Think Python](https://greenteapress.com/wp/think-python-3rd-edition/) is free online.
 
 . . .
 

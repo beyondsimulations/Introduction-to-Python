@@ -3,6 +3,8 @@ title: "Lecture VII - NumPy for Scientific Computing"
 subtitle: "Programming with Python"
 author: "Dr. Tobias Vlćek"
 institute: "Kühne Logistics University Hamburg - Fall 2026"
+nocite: |
+  @downeyThinkPythonHow2024, @elterSchroedingerProgrammiertPython2021
 format:
   revealjs:
     footer: " {{< meta title >}} | {{< meta author >}} | [Home](lec_07_scientific.qmd)"
@@ -37,7 +39,9 @@ from math import ceil
 # which line works?
 ```
 
-a\) `ceil(3.2)`   b) `math.ceil(3.2)`   c) both
+a\) `ceil(3.2)`\
+b\) `math.ceil(3.2)`\
+c\) both
 
 ## Answer 1
 
@@ -76,7 +80,9 @@ print(random.randint(1, 20))
 
 Tobi runs this exact script today and again tomorrow. Tomorrow's numbers are…
 
-a\) different: random is random   b) an error: seed 42 was already used   c) the same three numbers
+a\) different: random is random\
+b\) an error: seed 42 was already used\
+c\) the same three numbers
 
 ## Answer 2
 
@@ -106,7 +112,9 @@ statistics.median([9, 2, 5])
 
 returns…
 
-a\) `2`   b) `5`   c) an error: the list is not sorted
+a\) `2`\
+b\) `5`\
+c\) an error: the list is not sorted
 
 ## Answer 3
 
@@ -206,11 +214,10 @@ Tobi multiplies a row of counts by two. What does this print?
 print([1, 2, 3] * 2)
 ```
 
-a\) `[1, 2, 3, 1, 2, 3]`   b) `[2, 4, 6]`   c) an error
+a\) `[1, 2, 3, 1, 2, 3]`\
+b\) `[2, 4, 6]`\
+c\) an error
 
-. . .
-
-[Predict]{.question}. Pick a letter, then I reveal the answer.
 
 ## Answer: repeat versus compute
 
@@ -239,11 +246,10 @@ Tobi adds this week's zone counts to last week's. What does this print?
 print([1, 2, 3] + [10, 20, 30])
 ```
 
-a\) `[11, 22, 33]`, added pairwise   b) an error: lists don't add   c) `[1, 2, 3, 10, 20, 30]`
+a\) `[11, 22, 33]`, added pairwise\
+b\) an error: lists don't add\
+c\) `[1, 2, 3, 10, 20, 30]`
 
-. . .
-
-[Predict]{.question}. Pick a letter, then I reveal the answer.
 
 ## Answer: lists glue, arrays add
 
@@ -324,11 +330,10 @@ What does calling `.sum()` on the mask give?
 print((np.array([1, 5, 3]) > 2).sum())
 ```
 
-a\) `True`   b) `2`   c) `[False, True, True]`
+a\) `True`\
+b\) `2`\
+c\) `[False, True, True]`
 
-. . .
-
-[Predict]{.question}. Pick a letter, then I reveal the answer.
 
 ## Answer: True counts as 1
 
@@ -358,11 +363,10 @@ times = np.array([25, 41, 18, 33])
 print(times > 20 and times < 40)
 ```
 
-a\) an error: ambiguous truth value   b) `[ True False False  True]`   c) `True`, both sides hold somewhere
+a\) an error: ambiguous truth value\
+b\) `[ True False False  True]`\
+c\) `True`, both sides hold somewhere
 
-. . .
-
-[Predict]{.question}. Pick a letter, then I reveal the answer.
 
 ## Answer: one `and`, four truths
 
@@ -433,11 +437,10 @@ grid = np.array([[ 9, 14, 11,  6],
 print(grid.shape)
 ```
 
-a\) `(20,)`   b) `(5, 4)`   c) `(4, 5)`
+a\) `(20,)`\
+b\) `(5, 4)`\
+c\) `(4, 5)`
 
-. . .
-
-[Predict]{.question}. Pick a letter, then I reveal the answer.
 
 ## Answer: rows first, then columns
 
@@ -543,11 +546,10 @@ week = np.array([[ 9, 14, 11,  6],
                  [13, 20, 16, 11]])
 ```
 
-a\) `week.sum(axis=1)`   b) `week.sum()`   c) `week.sum(axis=0)`
+a\) `week.sum(axis=1)`\
+b\) `week.sum()`\
+c\) `week.sum(axis=0)`
 
-. . .
-
-[Predict]{.question}. Pick a letter, then I reveal the answer.
 
 ## Answer: days collapse, zones stay
 
@@ -678,8 +680,10 @@ Show me both, then open the lab.
 
 ## Books to start with
 
-- Downey, A. B. (2024). Think Python: How to think like a computer scientist (Third edition). O'Reilly. [Link to free online version](https://greenteapress.com/wp/think-python-3rd-edition/)
-- Elter, S. (2021). Schrödinger programmiert Python: Das etwas andere Fachbuch (1. Auflage). Rheinwerk Verlag.
+::: {#refs}
+:::
+
+[Think Python](https://greenteapress.com/wp/think-python-3rd-edition/) is free online.
 
 . . .
 

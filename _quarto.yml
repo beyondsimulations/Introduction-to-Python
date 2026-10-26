@@ -3,6 +3,7 @@ project:
   resources:
     - /labs/
   post-render:
+    - ../lecture-foundations/scripts/split_refs_post.py
     - helpers/export_marimo.py
   render:
     - index.qmd
@@ -10,6 +11,8 @@ project:
     - general/*.qmd
     - lectures/*.qmd
     - tutorials/*.qmd
+
+bibliography: references.bib
 
 website:
   favicon: images/favicon.svg

@@ -3,6 +3,8 @@ title: "Lecture IX - Data Visualization"
 subtitle: "Programming with Python"
 author: "Dr. Tobias Vlćek"
 institute: "Kühne Logistics University Hamburg - Fall 2026"
+nocite: |
+  @downeyThinkPythonHow2024
 format:
   revealjs:
     footer: " {{< meta title >}} | {{< meta author >}} | [Home](lec_09_plotting.qmd)"
@@ -23,7 +25,21 @@ Last week you handed her a table she could trust. She read exactly one row, look
 
 . . .
 
-A number convinces the careful. A **picture** convinces the room. Today: draw the right chart for the question, and refuse to draw a misleading one.
+Your agent draws any chart in five seconds, so drawing is no longer the hard part. Today: **which** chart to draw, **what** it should say, and in **which order** you show the charts.
+
+## One download first
+
+**On a Mac?** Open a terminal now and type:
+
+```bash
+git --version
+```
+
+A window offers to install the *command line developer tools*? Click **Install** and let it run while we talk. It's a big download, and you need git before today's lab.
+
+. . .
+
+On Windows, or a version number came back? Nothing to do yet.
 
 # Warm-up {.loud-slide}
 
@@ -37,7 +53,9 @@ orders[orders["zone"] == "Nord"]
 
 returns…
 
-a\) a True/False column   b) only the Nord rows   c) an error from comparing text
+a\) a True/False column\
+b\) only the Nord rows\
+c\) an error from comparing text
 
 ## Answer 1
 
@@ -68,27 +86,28 @@ orders[orders["zone"] == "Nord"]
 
 ## Question 2
 
-Tobi's AI wrote this. `orders` is a normal DataFrame. What happens?
-
 ```python
-orders.summarize()
+orders.groupby("zone")["total_eur"].sum()
 ```
 
-a\) a summary table   b) an empty DataFrame   c) an `AttributeError`
+returns…
+
+a\) one row per order, with its zone\
+b\) one total for all orders\
+c\) one total per zone
 
 ## Answer 2
 
 ```{python}
 #| eval: true
-#| error: true
 #| output-location: fragment
 
-orders.summarize()
+orders.groupby("zone")["total_eur"].sum()
 ```
 
 . . .
 
-**c) `AttributeError`**: pandas has `.describe()`, not `.summarize()`. The AI invented a plausible name. An AI that sounds sure is not the same as an API that exists. You verify, every time.
+**c) one total per zone**: `groupby` splits the orders by zone, `.sum()` adds up each group. Today this table sits behind every bar chart: the bars have to match it.
 
 ## Question 3
 
@@ -98,7 +117,9 @@ orders["total_eur"].describe()
 
 shows…
 
-a\) the first five rows of the column, like `.head()`   b) count / mean / std / min / quartiles / max   c) the column's dtype, like `.dtypes`
+a\) the first five rows of the column, like `.head()`\
+b\) count / mean / std / min / quartiles / max\
+c\) the column's dtype, like `.dtypes`
 
 ## Answer 3
 
@@ -111,95 +132,196 @@ orders["total_eur"].describe()
 
 . . .
 
-**b) count / mean / std / min / quartiles / max**. One line, the column's whole statistical fingerprint. That's the real method Tobi's AI was reaching for.
+**b) count / mean / std / min / quartiles / max**. One line, the column's whole statistical fingerprint.
 
-# [The first chart]{.flow} {.title}
-
-## Matplotlib in four lines
-
-Everyone plots with **matplotlib**, imported as `plt`. Four lines turn a list of numbers into a picture:
+# [Ugly, bad, wrong]{.flow} {.title}
 
 ```{python}
 #| eval: true
-#| output-location: slide
-#| fig-alt: "Line chart of this week's revenue over days 1 to 5: 120, down to 90, up to 140 and 160, back to 130. Four lines of code give a complete picture, though the axes carry no labels yet."
+#| echo: false
+#| output: false
+from pathlib import Path
+
+import matplotlib.pyplot as plt
+import numpy as np
+from matplotlib import font_manager
+from matplotlib.colors import LinearSegmentedColormap
+from scipy.stats import gaussian_kde
+
+plt.rcParams.update({"font.size": 15, "figure.figsize": (6, 4.2)})
+ACCENT = "#9E2B2B"   # the one thing the chart is about
+QUIET = "#959CA3"    # everything else
+QUIET_TEXT = "#6B7480"
+
+dishes = ["Pad Thai", "Miso Ramen", "Bao Box", "Falafel Wrap"]
+revenue = [420, 450, 330, 300]
+
+weeks = [1, 2, 3, 4, 5, 6, 7, 8]
+services = {
+    "Kiezküche": [30, 31, 33, 32, 31, 32, 34, 35],
+    "MunchCorp": [33, 34, 32, 33, 34, 33, 32, 32],
+    "Pronto":    [36, 37, 35, 36, 38, 37, 36, 37],
+    "Us":        [41, 41, 40, 36, 33, 31, 30, 29],
+}
+
+# House style for the charts we design ourselves. Tobi's and the agent's
+# drafts keep matplotlib's defaults, so the difference stays visible.
+for _font in Path.home().glob("Library/Fonts/*.ttf"):
+    if _font.name.startswith(("RedditSans", "Gelasio")):
+        font_manager.fontManager.addfont(str(_font))
+_installed = {font.name for font in font_manager.fontManager.ttflist}
+TEAL, SAND, ROSE, SLATE = "#537E8F", "#F6B265", "#DB6B6B", "#3D5369"
+MIST, SAND_LINE = "#A7C7C6", "#B07A30"  # a fourth category; sand dark enough for lines
+INK, BG = "#363D45", "#FFFDFC"
+HOUSE = {
+    "font.family": "Reddit Sans" if "Reddit Sans" in _installed else "DejaVu Sans",
+    "font.size": 15, "text.color": INK,
+    "figure.facecolor": BG, "savefig.facecolor": BG, "axes.facecolor": BG,
+    "axes.spines.top": False, "axes.spines.right": False, "axes.spines.left": False,
+    "axes.edgecolor": "#9AA1A8", "axes.labelcolor": QUIET_TEXT, "axes.labelsize": 14,
+    "xtick.color": QUIET_TEXT, "ytick.color": QUIET_TEXT, "xtick.labelsize": 14,
+    "ytick.labelsize": 14, "xtick.major.size": 0, "ytick.major.size": 0,
+    "axes.grid": True, "axes.grid.axis": "y", "grid.color": "#E8E4E0", "grid.linewidth": 1.0,
+    "axes.axisbelow": True, "axes.titlelocation": "left", "axes.titlesize": 19,
+    "axes.titleweight": "semibold", "axes.titlepad": 26,
+    "legend.frameon": False, "legend.fontsize": 13,
+    "axes.prop_cycle": plt.cycler(color=[TEAL, SAND, SLATE, MIST]),
+}
+SHADES = LinearSegmentedColormap.from_list("shades", [BG, TEAL])
+zones = ["Nord", "Altstadt", "Hafen", "Sued"]
+rng = np.random.default_rng(9)
+
+
+def name(ax, kind, note):
+    """A gallery panel: no axis numbers, the chart's name, and what it is for underneath."""
+    ax.set_xticks([])
+    ax.set_yticks([])
+    ax.set_title(kind)
+    ax.text(0, 1.03, note, transform=ax.transAxes, color=QUIET_TEXT, fontsize=14, va="bottom")
+
+
+def bare(ax):
+    """No grid and no frame: for heatmaps, pies and maps."""
+    ax.grid(False)
+    for spine in ax.spines.values():
+        spine.set_visible(False)
+```
+
+## Your agent draws, you judge
+
+Ask your agent for *a bar chart of revenue per dish*:
+
+```{python}
+#| eval: true
+#| output-location: column
+#| fig-alt: "Bar chart of revenue per dish: Pad Thai 420, Miso Ramen 450, Bao Box 330, Falafel Wrap 300 euros, drawn in the default blue with the y-axis labelled Revenue (EUR)."
 import matplotlib.pyplot as plt
 
-days = [1, 2, 3, 4, 5]
-revenue = [120, 90, 140, 160, 130]
+dishes = ["Pad Thai", "Miso Ramen",
+          "Bao Box", "Falafel Wrap"]
+revenue = [420, 450, 330, 300]
 
-plt.figure()          # OPEN: a fresh canvas, so this chart
-                      #       doesn't draw on the last one
-plt.plot(days, revenue)   # x, then y
-plt.title("This week's revenue")
-plt.gca()             # SHOW: "get current axes" (the chart)
+plt.figure()      # a fresh canvas
+plt.bar(dishes, revenue)
+plt.ylabel("Revenue (EUR)")
+plt.title("Revenue per dish")
+plt.gca()         # show it
 ```
 
 . . .
 
-::: {.callout-note}
-Two habits for every chart cell: open with `plt.figure()` (a clean canvas) and end with `plt.gca()`. In marimo there's no `plt.show()`; the figure appears as the cell's **last expression**, and `plt.plot(...)` alone returns line objects, not a picture. Today's lab is a script without cells, so there a chart ends in a picture file. More on that before the break.
-:::
+Read the code, don't memorize it. Your job: **judge** the picture. Here, the names already collide.
 
-## Predict: what's on the x-axis?
+## Ugly, bad, wrong
 
-Tobi is in a hurry and hands `plot` **one** list, no `days`:
+Problem charts get one of three verdicts [@wilkeFundamentalsDataVisualization2019, ch. 1]:
 
-```python
-plt.plot([3, 5, 4])
-```
-
-What does the x-axis show?
-
-a\) `3, 5, 4`, the values themselves   b) `0, 1, 2`, the list positions   c) `1, 2, 3`, counted the human way
+- **Ugly**: clear and correct, but unpleasant to look at
+- **Bad**: the numbers are right, but the picture is unclear, confusing, overloaded or deceiving
+- **Wrong**: the numbers in the picture are not the data
 
 . . .
 
-[Predict]{.question}. Pick a letter, then I reveal the answer.
+Fix **wrong** first, then **bad**. **Ugly** comes last: a correct, clear chart in default colors already does its job.
 
-## Answer: the positions, from zero
+## Predict: which chart is wrong?
+
+Three drafts from Tobi's agent. Exactly one is **wrong**:
 
 ```{python}
 #| eval: true
-#| output-location: slide
-#| fig-alt: "Line with three markers at heights 3, 5 and 4. The x-axis reads 0, 1, 2: matplotlib used the list positions, counted from zero, not the values."
-import matplotlib.pyplot as plt
+#| echo: false
+#| fig-alt: "Three charts of the same four dishes. Chart 1: bars labelled with shares of revenue of 32, 35, 25 and 23 percent. Chart 2: bars in magenta, green, yellow and cyan with thick black outlines and a heavy black grid. Chart 3: a pie with four slices of similar size and no numbers."
+plt.figure(figsize=(13, 2.8))
+plt.subplot(1, 3, 1)
+_shares = [32, 35, 25, 23]
+_bars = plt.bar(dishes, _shares)
+plt.bar_label(_bars, labels=[f"{s} %" for s in _shares])
+plt.ylim(0, 42)
+plt.ylabel("Revenue share (%)")
+plt.xticks(rotation=20)
+plt.title("Chart 1")
+plt.subplot(1, 3, 2)
+plt.bar(dishes, revenue, color=["#ff00ff", "#00ff00", "#ffff00", "#00ffff"],
+        edgecolor="black", linewidth=3)
+plt.grid(True, color="black", linewidth=1.5)
+plt.xticks(rotation=20)
+plt.title("Chart 2")
+plt.subplot(1, 3, 3)
+plt.pie(revenue, labels=dishes)
+plt.title("Chart 3")
+plt.tight_layout()
+plt.gca()
+```
 
-plt.figure()
-plt.plot([3, 5, 4], marker="o")
-plt.xticks([0, 1, 2])   # show only whole positions
+a\) chart 1\
+b\) chart 2\
+c\) chart 3
+
+
+## Answer: chart 1 adds up to 115 %
+
+```{python}
+#| eval: true
+#| echo: false
+#| fig-alt: "Two bar charts of revenue shares per dish. Left, Tobi's agent: 32, 35, 25 and 23 percent, which add up to 115 percent. Right, the shares computed from the revenue: 28, 30, 22 and 20 percent, which add up to 100 percent."
+plt.figure(figsize=(11, 3.4))
+plt.subplot(1, 2, 1)
+_bars = plt.bar(dishes, [32, 35, 25, 23])
+plt.bar_label(_bars, labels=["32 %", "35 %", "25 %", "23 %"])
+plt.ylim(0, 42)
+plt.ylabel("Share of revenue (%)")
+plt.xticks(rotation=15)
+plt.title("Tobi's agent: 115 % in all")
+plt.subplot(1, 2, 2)
+_bars = plt.bar(dishes, [28, 30, 22, 20])
+plt.bar_label(_bars, labels=["28 %", "30 %", "22 %", "20 %"])
+plt.ylim(0, 42)
+plt.xticks(rotation=15)
+plt.ylabel("Revenue share (%)")
+plt.title("From the revenue: 100 %")
+plt.tight_layout()
 plt.gca()
 ```
 
 . . .
 
-**b) `0, 1, 2`**: with one list, matplotlib takes it as **y** and invents x as the positions, and Python counts positions from 0.
+**a) chart 1**: shares of one whole add up to 100 %, and these add up to 115 %. That's **wrong**. Chart 2 is **ugly**: loud, but you can read every number. Chart 3 is **bad** for this question: correct, but nobody can tell which slice is biggest.
+
+## The title is a claim
+
+A title **states the point** [@wilkeFundamentalsDataVisualization2019, ch. 22]:
+
+| Describes the chart | States the point |
+|---|---|
+| Revenue per dish | Miso Ramen sells best: 450 euros |
+| Delivery times | Most deliveries take 20-30 minutes |
+| Order value vs. delivery time | Big orders don't take longer |
 
 . . .
 
-Want days 1-5 on the axis? Pass them: `plt.plot(days, revenue)`, x first.
-
-## The parts of a chart
-
-Every chart names its axes. `xlabel`, `ylabel`, `title`, and (when there's more than one line) a `legend`:
-
-```{python}
-#| eval: true
-#| output-location: slide
-#| fig-alt: "The revenue line over days 1 to 5 with every part named: x-axis Day, y-axis Revenue (€), the title This week's revenue, and a legend with the single entry Revenue."
-import matplotlib.pyplot as plt
-
-days = [1, 2, 3, 4, 5]
-revenue = [120, 90, 140, 160, 130]
-
-plt.figure()
-plt.plot(days, revenue, label="Revenue")   # label feeds the legend
-plt.xlabel("Day")        # what the x-axis counts
-plt.ylabel("Revenue (€)")  # what the y-axis measures
-plt.title("This week's revenue")  # what the picture is about
-plt.legend()             # the little key, one entry per label
-plt.gca()
-```
+- Write the claim **before** you draw. If you can't, the chart has no point yet.
+- Every axis names what it measures, **with the unit**: *Revenue (EUR)*.
 
 # Your turn {.loud-slide}
 
@@ -213,195 +335,393 @@ Scan the QR or type the link:
 
 **Any questions?** Let me know!
 
-## A little styling: and only a little
+# [Question first]{.flow} {.title}
 
-Two keywords cover almost everything: `color` and `linestyle`. Restraint is the professional move. One clear line beats a rainbow:
+## MunchCorp's one pie
 
-```{python}
-#| eval: true
-#| output-location: slide
-#| fig-alt: "The week's revenue over days 1 to 5 drawn as one dashed crimson line, titled Styled, not decorated. A single color and one line style are all the styling the chart gets."
-import matplotlib.pyplot as plt
-
-days = [1, 2, 3, 4, 5]
-revenue = [120, 90, 140, 160, 130]
-
-plt.figure()
-plt.plot(days, revenue, color="crimson", linestyle="--")
-plt.title("Styled, not decorated")
-plt.gca()
-```
-
-## Predict: one chart or two?
-
-Tobi runs **two** `plot` calls, back to back, with no `plt.figure()` between them:
-
-```python
-plt.plot([3, 1, 2])
-plt.plot([1, 2, 3])
-```
-
-a\) one chart with two lines   b) two separate charts, one per call   c) an error: the figure is already in use
-
-. . .
-
-[Predict]{.question}. Pick a letter, then I reveal the answer.
-
-## Answer: one chart, two lines
+The one chart in MunchCorp's press release from Episode 8:
 
 ```{python}
 #| eval: true
-#| output-location: slide
-#| fig-alt: "One chart with two lines that cross: a blue one through 3, 1, 2 and an orange one rising 1, 2, 3. Both plot calls drew on the same figure."
-import matplotlib.pyplot as plt
+#| echo: false
+#| fig-alt: "MunchCorp's pie chart of revenue per zone: four slices for Nord, Altstadt, Hafen and Sued, all close to a quarter of the circle, with no numbers on them."
+munch_zones = ["Nord", "Altstadt", "Hafen", "Sued"]
+munch_share = [25.0, 26.4, 24.2, 24.4]
 
-plt.figure()
-plt.plot([3, 1, 2])
-plt.plot([1, 2, 3])   # same canvas: a second line, not a second chart
+plt.figure(figsize=(6, 3.0))
+plt.pie(munch_share, labels=munch_zones, startangle=90)
+plt.title("MunchCorp: revenue per zone")
+plt.gca()
+```
+
+Which zone brings MunchCorp the most?
+
+a\) Nord, top left\
+b\) Hafen, bottom right\
+c\) Altstadt, bottom left
+
+
+## Answer: Altstadt, by 1.4 points
+
+```{python}
+#| eval: true
+#| echo: false
+#| fig-alt: "The same MunchCorp data twice. Left, the pie with four slices of nearly equal size. Right, sorted bars: Altstadt 26.4, Nord 25.0, Sued 24.4 and Hafen 24.2 percent, so the order is clear at a glance."
+plt.figure(figsize=(11, 3.4))
+plt.subplot(1, 2, 1)
+plt.pie(munch_share, labels=munch_zones, startangle=90)
+plt.title("Pie")
+plt.subplot(1, 2, 2)
+_pairs = sorted(zip(munch_share, munch_zones), reverse=True)
+_bars = plt.bar([zone for share, zone in _pairs], [share for share, zone in _pairs])
+plt.bar_label(_bars, fmt="%.1f %%", fontsize=12)
+plt.ylabel("Share of revenue (%)")
+plt.title("Sorted bars")
+plt.tight_layout()
 plt.gca()
 ```
 
 . . .
 
-**a) one chart with two lines**, because matplotlib keeps drawing on the **current** figure until you start a new one with `plt.figure()`.
-
-. . .
-
-That's exactly why every chart cell **opens** with `plt.figure()`: it's how you say "new picture, start clean."
-
-# Your turn {.loud-slide}
-
-## Open the exercise
-
-Scan the QR or type the link:
-
-**[python.tobiasvlcek.com/notebooks/ex_09_b/](https://python.tobiasvlcek.com/notebooks/ex_09_b/)**
-
-![](assets/qr/ex_09_b.png){width=280 fig-alt="QR code linking to the online notebook for exercise 9b, the same address as the link above."}
-
-**Any questions?** Let me know!
-
-# [The right chart]{.flow} {.title}
+**c) Altstadt**: 26.4 % against Nord's 25.0 %. The eye compares **lengths** well and **areas** badly. The sorted bars answer in a second; the pie starts an argument.
 
 ## Match the chart to the question
 
-The wrong chart is its own kind of lie. Start from the **question**, not the chart:
-
-| The question | The chart | The call |
-|---|---|---|
-| Compare **categories**? | bar | `plt.bar(labels, heights)` |
-| See a **distribution**? | histogram | `plt.hist(values)` |
-| **Two numbers** per order? | scatter | `plt.scatter(x, y)` |
-| Change over **time**? | line | `plt.plot(x, y)` |
-
-. . .
-
-::: {.callout-note}
-**Line** you already own from block one. Missing on purpose: the **pie chart**. The eye can't compare slice sizes; a bar is clearer.
-:::
-
-## Categories → bar
-
-*"Which dish sells best?"* Categories to compare, so that's a **bar**:
-
-```{python}
-#| eval: true
-#| output-location: slide
-#| fig-alt: "Bar chart of orders per dish: Pizza 12, Pasta 9, Salad 5, Wrap 7. The Pizza bar is the tallest, so the best seller is visible at a glance."
-import matplotlib.pyplot as plt
-
-dishes = ["Pizza", "Pasta", "Salad", "Wrap"]
-sold = [12, 9, 5, 7]
-
-plt.figure()
-plt.bar(dishes, sold)
-plt.title("Orders per dish")
-plt.gca()
-```
-
-The tallest bar answers the question at a glance: Pizza.
-
-## A distribution → histogram
-
-*"How are our delivery times spread out?"* One column of numbers dropped into buckets. That's a **histogram**:
-
-```{python}
-#| eval: true
-#| output-location: slide
-#| fig-alt: "Histogram of ten delivery times in five buckets between 19 and 44 minutes, with counts 3, 5, 1, 0 and 1. Most deliveries pile up in the 20s; one slow delivery sits alone on the far right."
-import matplotlib.pyplot as plt
-
-minutes = [19, 22, 23, 24, 24, 25, 26, 28, 31, 44]
-
-plt.figure()
-plt.hist(minutes, bins=5)
-plt.title("Delivery times")
-plt.gca()
-```
-
-Most deliveries land in the mid-20s, with one lonely slow one far right. A histogram shows **shape**, not individual values.
-
-## Two numbers → scatter
-
-*"Do bigger orders take longer?"* Two numbers per order, one on each axis, which makes it a **scatter**:
-
-```{python}
-#| eval: true
-#| output-location: slide
-#| fig-alt: "Scatter plot of ten orders: delivery time from 19 to 44 minutes on the x-axis, order value from 8 to 31 euros on the y-axis. The dots form a shapeless cloud with no upward drift, so there is no pattern."
-import matplotlib.pyplot as plt
-
-minutes = [19, 22, 23, 24, 25, 26, 28, 31, 40, 44]
-euros   = [24, 9, 31, 12, 8, 30, 15, 22, 11, 19]
-
-plt.figure()
-plt.scatter(minutes, euros)
-plt.xlabel("Delivery time (min)")
-plt.ylabel("Order value (€)")
-plt.gca()
-```
-
-Just a cloud. No upward drift. Sometimes the answer is **"there's no pattern here."**
-
-## Predict: plot instead of scatter
-
-Tobi types `plot` where he meant `scatter`. Five orders, in the order they came in:
-
-```python
-minutes = [31, 19, 44, 22, 28]
-euros   = [22, 24, 19, 9, 15]
-plt.plot(minutes, euros)
-```
-
-a\) a zig-zag line hopping between the points in list order   b) the same dots as `scatter`, joined into a smooth trend   c) an error: `plot` refuses x values that are not sorted ascending
+| The question | The basic chart |
+|---|---|
+| **How much** per category? | bar, sorted |
+| How are values **spread**? | histogram |
+| What **share** of the whole? | pie, for halves and quarters |
+| Do **two numbers** move together? | scatter |
+| How does it change over **time**? | line |
+| **Where**, and **how sure**? | map, error bars |
 
 . . .
 
-[Predict]{.question}. Pick a letter, then I reveal the answer.
+Each question has a family of charts [@wilkeFundamentalsDataVisualization2019, ch. 5]. A quick tour, to look up later:
 
-## Answer: a zig-zag in list order
+## Amounts: how much? {.nostretch}
 
 ```{python}
 #| eval: true
-#| output-location: slide
-#| fig-alt: "Five orders joined by a line in list order: it runs left from 31 to 19 minutes, right across to 44, back to 22, then to 28. A zig-zag that suggests a sequence the orders do not have."
-import matplotlib.pyplot as plt
-
-minutes = [31, 19, 44, 22, 28]
-euros   = [22, 24, 19, 9, 15]
-
-plt.figure()
-plt.plot(minutes, euros, marker="o")   # joined in LIST order
-plt.gca()
+#| echo: false
+#| fig-alt: "Six small chart icons for amounts. Bar: four sorted bars. Horizontal bar: eight sorted bars lying down. Dot plot: six dots on a zoomed axis. Grouped bars: pairs of teal and sand bars. Stacked bars: seven bars split into three colored parts. Heatmap: a grid of squares, darker where the amount is larger."
+with plt.rc_context(HOUSE):
+    fig, ax = plt.subplots(2, 3, figsize=(11.2, 5.0))
+    a = ax[0, 0]
+    a.bar(range(4), [412, 388, 301, 276], color=TEAL, width=0.7)
+    name(a, "Bar", "a few categories, sorted")
+    a = ax[0, 1]
+    a.barh(range(8), [61, 88, 96, 120, 151, 163, 198, 212], color=TEAL, height=0.7)
+    a.grid(axis="y", visible=False)
+    a.grid(axis="x", visible=True)
+    name(a, "Horizontal bar", "long names, many categories")
+    a = ax[0, 2]
+    a.hlines(range(6), 27, 35.5, color="#E8E4E0", linewidth=1.2)
+    a.scatter([27.9, 28.5, 29.8, 30.4, 31.2, 34.6], range(6), s=90, color=TEAL, zorder=3)
+    a.set_xlim(27, 35.5)
+    a.set_ylim(-0.7, 5.7)
+    a.grid(axis="y", visible=False)
+    a.grid(axis="x", visible=True)
+    name(a, "Dot plot", "position only: may zoom")
+    a = ax[1, 0]
+    _x = np.arange(4)
+    a.bar(_x - 0.2, [62, 85, 41, 55], 0.4, color=TEAL)
+    a.bar(_x + 0.2, [78, 70, 66, 49], 0.4, color=SAND)
+    name(a, "Grouped bars", "two categories side by side")
+    a = ax[1, 1]
+    _app = np.array([30, 28, 33, 36, 52, 58, 41])
+    _phone = np.array([12, 10, 11, 12, 15, 18, 14])
+    a.bar(range(7), _app, color=TEAL)
+    a.bar(range(7), _phone, bottom=_app, color=SAND)
+    a.bar(range(7), [8, 7, 9, 8, 11, 12, 10], bottom=_app + _phone, color=SLATE)
+    name(a, "Stacked bars", "totals, and the parts inside")
+    a = ax[1, 2]
+    a.imshow([[9, 8, 10, 11, 17, 19, 12], [11, 9, 12, 12, 20, 22, 15],
+              [5, 6, 6, 7, 12, 14, 8], [7, 6, 8, 8, 13, 15, 10]], cmap=SHADES, aspect="auto", vmin=0)
+    bare(a)
+    name(a, "Heatmap", "two categories, amount as color")
+    fig.tight_layout(h_pad=2.2, w_pad=2.6)
+    plt.show()
 ```
 
-. . .
+Bars start at 0, a dot may sit on a zoomed axis: the next block says why.
 
-**a) a zig-zag**: `plot` connects the points **in the order you gave them**, never mind the x values. Order 1 to order 2 to order 3, back and forth.
+## Distributions: how spread out? {.nostretch}
 
-. . .
+```{python}
+#| eval: true
+#| echo: false
+#| fig-alt: "Six small chart icons for distributions of delivery times. Histogram: bars that pile up on the left with a long tail. Density: the same shape as a smooth filled curve. Box plot: four boxes with a dark red median line. Violin: four mirrored shapes, one with two bulges. Strip chart: four columns of dots, one in dark red. Ridgeline: four smooth curves stacked above each other."
+_spread = {
+    "Nord": rng.normal(31, 4, 70),
+    "Altstadt": np.concatenate([rng.normal(26, 3, 40), rng.normal(41, 4, 30)]),
+    "Hafen": 22 + rng.gamma(4, 4.5, 70),
+    "Sued": rng.normal(29, 3, 70),
+}
+_all = np.concatenate(list(_spread.values()))
+_xs = np.linspace(10, 75, 300)
+with plt.rc_context(HOUSE):
+    fig, ax = plt.subplots(2, 3, figsize=(11.2, 5.0))
+    a = ax[0, 0]
+    a.hist(_all, bins=16, color=TEAL, edgecolor=BG, linewidth=1.2)
+    name(a, "Histogram", "how many per range")
+    a = ax[0, 1]
+    _k = gaussian_kde(_all)(_xs)
+    a.fill_between(_xs, _k, color=TEAL, alpha=0.3, linewidth=0)
+    a.plot(_xs, _k, color=TEAL, linewidth=2.5)
+    name(a, "Density", "the same shape, smoothed")
+    a = ax[0, 2]
+    _box = a.boxplot([_spread[z] for z in zones], widths=0.55, patch_artist=True,
+                     medianprops=dict(color=INK, linewidth=3),
+                     whiskerprops=dict(color=QUIET_TEXT), capprops=dict(color=QUIET_TEXT),
+                     flierprops=dict(markeredgecolor=QUIET_TEXT, markersize=4))
+    for _b in _box["boxes"]:
+        _b.set(facecolor=BG, edgecolor=QUIET_TEXT)
+    name(a, "Box plot", "median and spread per group")
+    a = ax[1, 0]
+    _v = a.violinplot([_spread[z] for z in zones], showmedians=True)
+    for _body in _v["bodies"]:
+        _body.set(facecolor=TEAL, edgecolor="none", alpha=0.5)
+    for _part in ("cbars", "cmins", "cmaxes"):
+        _v[_part].set(color=QUIET_TEXT, linewidth=1)
+    _v["cmedians"].set(color=INK, linewidth=3)
+    name(a, "Violin", "the full shape per group")
+    a = ax[1, 1]
+    for _i, _z in enumerate(zones):
+        a.scatter(_i + rng.uniform(-0.18, 0.18, len(_spread[_z])), _spread[_z], s=14,
+                  alpha=0.6, color=ACCENT if _z == "Hafen" else TEAL, edgecolor="none")
+    name(a, "Strip chart", "every value, one dot")
+    a = ax[1, 2]
+    a.grid(False)
+    _peak = max(gaussian_kde(_spread[_z])(_xs).max() for _z in zones)
+    for _i, _z in enumerate(reversed(zones)):
+        _d = gaussian_kde(_spread[_z])(_xs) / _peak * 1.3  # one scale for all groups
+        a.fill_between(_xs, _i, _i + _d, color=ACCENT if _z == "Hafen" else TEAL,
+                       alpha=0.85, edgecolor=BG, linewidth=1.5, zorder=10 - _i)
+    name(a, "Ridgeline", "many groups, stacked")
+    fig.tight_layout(h_pad=2.2, w_pad=2.6)
+    plt.show()
+```
 
-A line says the points follow each other, and orders don't. Two numbers per order with no sequence between them is a job for **scatter**.
+Also in the directory: cumulative densities, q-q and sina plots.
+
+## Proportions: what share? {.nostretch}
+
+```{python}
+#| eval: true
+#| echo: false
+#| fig-alt: "Six small chart icons for shares. Pie: a half and two quarters. Donut: the same as a ring. Side-by-side bars: four bars of nearly equal height. 100 percent stacked bars: four columns of equal height split into four colors. Stacked area: three colored bands, the bottom one growing. Mosaic plot: one rectangle split into columns by zone, each column split into colored blocks by dish."
+_mix = np.array([[30, 25, 25, 20], [20, 40, 20, 20], [35, 20, 30, 15], [25, 25, 15, 35]])
+_dish_colors = [TEAL, SAND, SLATE, MIST]
+with plt.rc_context(HOUSE):
+    fig, ax = plt.subplots(2, 3, figsize=(11.2, 5.0))
+    a = ax[0, 0]
+    a.pie([50, 25, 25], startangle=90, counterclock=False, colors=[TEAL, SAND, SLATE],
+          wedgeprops=dict(edgecolor=BG, linewidth=2))
+    name(a, "Pie", "a half, a quarter: few parts")
+    a = ax[0, 1]
+    a.pie([50, 25, 25], startangle=90, counterclock=False, colors=[TEAL, SAND, SLATE],
+          wedgeprops=dict(width=0.4, edgecolor=BG, linewidth=2))
+    name(a, "Donut", "a pie with room for the total")
+    a = ax[0, 2]
+    a.bar(range(4), [27, 24, 26, 23], color=TEAL, width=0.7)
+    name(a, "Side-by-side bars", "compare the parts")
+    a = ax[1, 0]
+    _bottom = np.zeros(4)
+    for _k in range(4):
+        a.bar(range(4), _mix[:, _k], bottom=_bottom, color=_dish_colors[_k], edgecolor=BG,
+              linewidth=1, width=0.7)
+        _bottom += _mix[:, _k]
+    name(a, "100 % stacked bars", "the mix inside each group")
+    a = ax[1, 1]
+    a.stackplot(np.arange(1, 9), [40, 44, 49, 53, 58, 62, 66, 70],
+                [40, 37, 33, 30, 26, 22, 19, 15], [20, 19, 18, 17, 16, 16, 15, 15],
+                colors=[TEAL, SAND, SLATE], edgecolor=BG, linewidth=1)
+    a.set_xlim(1, 8)
+    a.set_ylim(0, 100)
+    name(a, "Stacked area", "shares that change over time")
+    a = ax[1, 2]
+    _rev = np.array([410, 350, 300, 280])
+    _left = 0.0
+    for _r, _row in zip(_rev, _mix):
+        _width = _r / _rev.sum()
+        _low = 0.0
+        for _k, _share in enumerate(_row / 100):
+            a.add_patch(plt.Rectangle((_left, _low), _width, _share, facecolor=_dish_colors[_k],
+                                      edgecolor=BG, linewidth=2))
+            _low += _share
+        _left += _width
+    bare(a)
+    name(a, "Mosaic plot", "two splits: zones, then dishes")
+    fig.tight_layout(h_pad=2.2, w_pad=2.6)
+    plt.show()
+```
+
+Also in the directory: treemaps, parallel sets, nested pies.
+
+## Relationships: two numbers {.nostretch}
+
+```{python}
+#| eval: true
+#| echo: false
+#| fig-alt: "Six small chart icons for relationships. Scatter: a cloud of dots rising to the right. Bubble: four dots of different sizes. Slope graph: four lines from a left column to a right column, one dark red line falling steeply. Hex bins: a rising band of hexagons, darkest in the middle. Correlogram: a five by five grid of squares in teal and red shades. Connected scatter: dots joined in time order from week 1 to week 8, moving down to the right and then turning back, with an arrow on the last step."
+_n = 140
+_count = rng.integers(1, 7, _n)
+_value = 6 + 6.5 * _count + rng.normal(0, 4, _n)
+_km = rng.gamma(2.2, 1.2, 3000)
+_minutes = 14 + 4.5 * _km + rng.normal(0, 4, 3000)
+with plt.rc_context(HOUSE):
+    fig, ax = plt.subplots(2, 3, figsize=(11.2, 5.0))
+    a = ax[0, 0]
+    a.scatter(_count + rng.uniform(-0.15, 0.15, _n), _value, s=16, alpha=0.55, color=TEAL,
+              edgecolor="none")
+    name(a, "Scatter", "two numbers per order")
+    a = ax[0, 1]
+    a.scatter([31, 34, 44, 30], [220, 260, 120, 190], s=[580, 680, 290, 490], color=TEAL,
+              alpha=0.4, edgecolor=TEAL)
+    a.set_xlim(26, 49)
+    a.set_ylim(70, 320)
+    name(a, "Bubble", "a third number as size")
+    a = ax[0, 2]
+    for _b, _a, _hot in zip([33, 37, 46, 31], [30, 32, 33, 29], [False, False, True, False]):
+        a.plot([0, 1], [_b, _a], color=ACCENT if _hot else QUIET, linewidth=3 if _hot else 2,
+               marker="o", markersize=7)
+    a.set_xlim(-0.2, 1.2)
+    a.grid(False)
+    name(a, "Slope graph", "before and after, paired")
+    a = ax[1, 0]
+    a.hexbin(_km, _minutes, gridsize=22, cmap=SHADES, mincnt=1, linewidths=0.3, edgecolors=BG)
+    a.grid(False)
+    name(a, "Hex bins", "too many dots: count them")
+    a = ax[1, 1]
+    _corr = np.array([[1, 0.9, 0.1, 0.2, 0.4], [0.9, 1, 0.1, 0.2, 0.5], [0.1, 0.1, 1, 0.8, -0.3],
+                      [0.2, 0.2, 0.8, 1, -0.4], [0.4, 0.5, -0.3, -0.4, 1]])
+    a.imshow(_corr, cmap=LinearSegmentedColormap.from_list("div", [SAND_LINE, BG, TEAL]),
+             vmin=-1, vmax=1)
+    bare(a)
+    name(a, "Correlogram", "many pairs at once")
+    a = ax[1, 2]
+    _cx = [180, 212, 236, 252, 247, 231, 214, 226]
+    _cy = [41, 38, 34, 31, 29, 30, 33, 35]
+    a.plot(_cx, _cy, color=TEAL, linewidth=2.5, marker="o", markersize=6)
+    a.annotate("", xy=(_cx[-1], _cy[-1]), xytext=(_cx[-2], _cy[-2]),
+               arrowprops=dict(arrowstyle="-|>", color=TEAL, linewidth=2.5))
+    a.text(_cx[0] - 4, _cy[0], "1", ha="right", va="center", fontsize=14, color=QUIET_TEXT)
+    a.text(_cx[-1] + 4, _cy[-1], "8", ha="left", va="center", fontsize=14, color=QUIET_TEXT)
+    name(a, "Connected scatter", "two numbers through time")
+    fig.tight_layout(h_pad=2.2, w_pad=2.6)
+    plt.show()
+```
+
+A shapeless cloud is a finding too: it goes in the title like any claim.
+
+## Time series: change over time {.nostretch}
+
+```{python}
+#| eval: true
+#| echo: false
+#| fig-alt: "Four small chart icons for time series. Line: a rising line with a weekly ripple. Area: the same shape filled down to zero. Smoothed trend: faint dots with a dark red average line through them. Small multiples: four tiny line charts in a grid, one of them dark red and rising faster."
+_day = np.arange(1, 57)
+_daily = 25 + 0.25 * _day + 6 * np.sin(_day * 2 * np.pi / 7) + rng.normal(0, 3, 56)
+with plt.rc_context(HOUSE):
+    fig, ax = plt.subplots(2, 2, figsize=(11.2, 5.0))
+    a = ax[0, 0]
+    a.plot(_day, _daily, color=TEAL, linewidth=2)
+    a.set_ylim(0, 55)
+    name(a, "Line", "one value over time")
+    a = ax[0, 1]
+    a.fill_between(_day, _daily, color=TEAL, alpha=0.3, linewidth=0)
+    a.plot(_day, _daily, color=TEAL, linewidth=1.5)
+    a.set_ylim(0, 55)
+    name(a, "Area", "an amount over time, from 0")
+    a = ax[1, 0]
+    a.scatter(_day, _daily, s=14, color=QUIET, edgecolor="none")
+    a.plot(_day[3:-3], np.convolve(_daily, np.ones(7) / 7, mode="valid"), color=ACCENT, linewidth=3)
+    a.set_ylim(0, 55)
+    name(a, "Smoothed trend", "an average through the noise")
+    a = ax[1, 1]
+    bare(a)
+    name(a, "Small multiples", "the same chart once per group")
+    for _i, _z in enumerate(zones):
+        _sub = a.inset_axes([(_i % 2) * 0.53, 0.55 - (_i // 2) * 0.55, 0.45, 0.4])
+        _sub.plot(_day, 8 + (0.45 if _z == "Hafen" else 0.12) * _day + rng.normal(0, 1.5, 56),
+                  color=ACCENT if _z == "Hafen" else TEAL, linewidth=1.5)
+        _sub.set_ylim(0, 40)
+        _sub.set_xticks([])
+        _sub.set_yticks([])
+        _sub.grid(False)
+        for _spine in ("top", "right", "left"):
+            _sub.spines[_spine].set_visible(False)
+    fig.tight_layout(h_pad=2.2, w_pad=3.0)
+    plt.show()
+```
+
+Many lines? One accent, the rest grey. More after the break.
+
+## Maps and uncertainty {.nostretch}
+
+```{python}
+#| eval: true
+#| echo: false
+#| fig-alt: "Six small chart icons. Dot map: clusters of dots inside a pale city outline with a river, one cluster dark red. Choropleth: five irregular regions shaded from light to dark teal. Cartogram heatmap: four equal squares in shades of teal. Error bars: four dots, each with a vertical bar for how sure the value is. Graded error bars: the same with a thick inner and a thin outer bar. Confidence band: dots with a fitted line inside a pale band."
+_centres = [(10.00, 53.60), (10.00, 53.55), (9.94, 53.54), (9.99, 53.47)]
+with plt.rc_context(HOUSE):
+    fig, ax = plt.subplots(2, 3, figsize=(11.2, 5.0))
+    a = ax[0, 0]
+    a.fill([9.86, 10.13, 10.14, 10.05, 9.87], [53.64, 53.65, 53.44, 53.42, 53.47], color="#F1EEEA", zorder=0)
+    a.plot([9.86, 9.95, 10.02, 10.14], [53.535, 53.53, 53.51, 53.50], color=MIST, linewidth=4, zorder=1)
+    for (_lon, _lat), _z in zip(_centres, zones):
+        a.scatter(_lon + rng.normal(0, 0.012, 60), _lat + rng.normal(0, 0.008, 60), s=9, zorder=2,
+                  alpha=0.6, color=ACCENT if _z == "Hafen" else TEAL, edgecolor="none")
+    a.set_aspect(1 / np.cos(np.radians(53.55)))
+    bare(a)
+    name(a, "Dot map", "where, as dots on a map")
+    a = ax[0, 1]
+    _regions = [([0, 2, 2.2, 0.3], [0, 0, 1.4, 1.2], 0.3), ([2, 4, 3.8, 2.2], [0, 0.2, 1.6, 1.4], 0.9),
+                ([0.3, 2.2, 1.8, 0.1], [1.2, 1.4, 3, 2.6], 0.55), ([2.2, 3.8, 4, 1.8], [1.4, 1.6, 3.1, 3], 0.15),
+                ([0.1, 1.8, 4, 1.2], [2.6, 3, 3.1, 3.9], 0.7)]
+    for _xs_, _ys_, _v in _regions:
+        a.fill(_xs_, _ys_, color=SHADES(0.2 + 0.8 * _v), edgecolor=BG, linewidth=2)
+    a.set_aspect(1)
+    bare(a)
+    name(a, "Choropleth", "regions colored by a number")
+    a = ax[0, 2]
+    for (_c, _r), _minutes in zip([(1, 2), (1, 1), (0, 1), (1, 0)], [31, 34, 44, 30]):
+        a.add_patch(plt.Rectangle((_c, _r), 0.94, 0.94, facecolor=SHADES((_minutes - 22) / 24),
+                                  edgecolor=BG))
+    a.set_xlim(-0.1, 2.1)
+    a.set_ylim(-0.1, 3)
+    a.set_aspect(1)
+    bare(a)
+    name(a, "Cartogram heatmap", "one square per region")
+    a = ax[1, 0]
+    a.errorbar(range(4), [31, 34, 44, 30], yerr=[1.2, 2.6, 3.8, 1.0], fmt="o", color=TEAL,
+               ecolor=QUIET_TEXT, capsize=5, markersize=9, elinewidth=1.8)
+    a.set_xlim(-0.6, 3.6)
+    name(a, "Error bars", "a value, and how sure")
+    a = ax[1, 1]
+    for _i, (_m, _e) in enumerate(zip([31, 34, 44, 30], [1.2, 2.6, 3.8, 1.0])):
+        a.plot([_i, _i], [_m - 2 * _e, _m + 2 * _e], color=QUIET, linewidth=2)
+        a.plot([_i, _i], [_m - _e, _m + _e], color=TEAL, linewidth=6, solid_capstyle="butt")
+        a.scatter(_i, _m, s=60, color=INK, zorder=3)
+    a.set_xlim(-0.6, 3.6)
+    name(a, "Graded error bars", "two levels of sureness")
+    a = ax[1, 2]
+    _x = np.linspace(1, 10, 40)
+    _y = 20 + 2.2 * _x + rng.normal(0, 2.5, 40)
+    _fit = np.polyfit(_x, _y, 1)
+    _line = np.polyval(_fit, _x)
+    _half = 1.2 + 0.08 * (_x - _x.mean()) ** 2
+    a.fill_between(_x, _line - _half, _line + _half, color=TEAL, alpha=0.18, linewidth=0)
+    a.scatter(_x, _y, s=12, color=QUIET, edgecolor="none")
+    a.plot(_x, _line, color=TEAL, linewidth=2.5)
+    name(a, "Confidence band", "a fitted line, and how sure")
+    fig.tight_layout(h_pad=2.2, w_pad=2.6)
+    plt.show()
+```
+
+Also in the directory: cartograms, eyes plots, quantile dots.
 
 ## Predict: how many bars?
 
@@ -415,39 +735,134 @@ plt.hist(values, bins=3)    # right
 
 The bar chart shows 4 bars. How many bars does the **histogram** show?
 
-a\) 4: one bar per number   b) 15: one bar per unit up to the max   c) about 2-3 lumps: it counts ranges
+a\) 4: one bar per number\
+b\) 15: one bar per unit up to the max\
+c\) 3: one bar per range
 
-. . .
 
-[Predict]{.question}. Pick a letter, then I reveal the answer.
-
-## Answer: about 2-3 lumps
+## Answer: three ranges, three bars {.nostretch}
 
 ```{python}
 #| eval: true
-#| output-location: slide
-#| fig-alt: "Two panels from the same four numbers. Left, a bar chart with four separate bars of heights 8, 12, 9 and 15. Right, a histogram with three ranges between 8 and 15 holding 2, 1 and 1 values: it counts values per range, and 8 and 9 share the first."
-import matplotlib.pyplot as plt
-
+#| echo: false
+#| fig-alt: "Two panels from the same four numbers. Left, a bar chart with four bars of heights 8, 12, 9 and 15. Right, a histogram with three separate bars for three ranges between 8 and 15, of heights 2, 1 and 1: 8 and 9 share the first range."
 values = [8, 12, 9, 15]
-
-plt.figure()
+plt.figure(figsize=(10, 3.2))
 plt.subplot(1, 2, 1)
-plt.bar(range(4), values)     # one bar per NUMBER
-plt.title("bar: 4 categories")
+plt.bar(range(4), values)
+plt.title("bar: one bar per number")
 plt.subplot(1, 2, 2)
-plt.hist(values, bins=3)      # counts how many per RANGE
-plt.title("hist: 3 ranges")
+plt.hist(values, bins=3, edgecolor="white", linewidth=2)
+plt.yticks([0, 1, 2])
+plt.title("hist: one bar per range")
+plt.tight_layout()
+plt.gca()
+```
+
+**c) 3**: `8` and `9` share the first range, so that bar is 2 tall. A bar chart shows one bar per category, as tall as its value. A histogram shows one bar per range, as tall as the number of values in it.
+
+# Your turn {.loud-slide}
+
+## Open the exercise
+
+Scan the QR or type the link:
+
+**[python.tobiasvlcek.com/notebooks/ex_09_b/](https://python.tobiasvlcek.com/notebooks/ex_09_b/)**
+
+![](assets/qr/ex_09_b.png){width=280 fig-alt="QR code linking to the online notebook for exercise 9b, the same address as the link above."}
+
+**Any questions?** Let me know!
+
+# [Proportional ink]{.flow} {.title}
+
+## Predict: how many times more?
+
+```{python}
+#| eval: true
+#| echo: false
+#| fig-alt: "Bar chart of revenue per dish with the y-axis running from 270 to 460 euros: Pad Thai 420, Miso Ramen 450, Bao Box 330, Falafel Wrap 300. The Miso Ramen bar looks about six times as tall as the Falafel Wrap bar."
+plt.figure(figsize=(8, 2.7))
+plt.bar(dishes, revenue)
+plt.ylim(270, 460)
+plt.ylabel("Revenue (EUR)")
+plt.title("Tobi's agent picked the axis this time")
+plt.gca()
+```
+
+Miso Ramen vs. Falafel Wrap: how many times as much?
+
+a\) about 1.5 times\
+b\) about 3 times\
+c\) about 6 times
+
+
+## Answer: 1.5 times, drawn as 6
+
+```{python}
+#| eval: true
+#| echo: false
+#| fig-alt: "The dish revenue twice. Left, Tobi's agent with the y-axis from 270: the Miso Ramen bar is six times as tall as the Falafel Wrap bar. Right, the same bars from 0: Miso Ramen 450 against Falafel Wrap 300, one and a half times as tall."
+plt.figure(figsize=(11, 3.4))
+plt.subplot(1, 2, 1)
+plt.bar(dishes, revenue)
+plt.ylim(270, 460)
+plt.ylabel("Revenue (EUR)")
+plt.xticks(rotation=15)
+plt.title("Tobi's agent: from 270")
+plt.subplot(1, 2, 2)
+plt.bar(dishes, revenue)
+plt.xticks(rotation=15)
+plt.title("From 0")
+plt.tight_layout()
 plt.gca()
 ```
 
 . . .
 
-**c) about 2-3 lumps**: the histogram counts how many numbers fall in each range. `8` and `9` land in the same bucket, so that bar is two tall.
+**a) about 1.5 times**: 450 against 300. Cut at 270, the bars keep 180 and 30 of their length, so the picture says **6 times**. That's **bad**: the numbers are right, the picture misleads. The rule behind it is **proportional ink**: the ink for a value has to grow with the value [@wilkeFundamentalsDataVisualization2019, ch. 17].
+
+## Predict: the AI's one extra line
+
+Revenue `[710, 718, 724, 731]`, up **3 %** over four weeks. Tobi's AI drafts the chart and adds one line:
+
+```python
+plt.plot([1, 2, 3, 4], [710, 718, 724, 731])
+plt.ylim(700, 735)
+```
+
+What does the room see?
+
+a\) a flat line: 3 % stays 3 % on any axis\
+b\) an error: `ylim` has to include zero on a line chart\
+c\) a line rising across most of the chart
+
+
+## Answer: a climb across the chart {.nostretch}
+
+```{python}
+#| eval: true
+#| echo: false
+#| fig-alt: "Line through 710, 718, 724 and 731 on a y-axis that runs only from 700 to 735. The line climbs 60 percent of the chart height, so 3 percent of growth looks like a steep rise."
+plt.figure(figsize=(8, 3.2))
+plt.plot([1, 2, 3, 4], [710, 718, 724, 731], marker="o")
+plt.ylim(700, 735)
+plt.xticks([1, 2, 3, 4])
+plt.gca()
+```
+
+**c) a line rising across most of the chart**: the axis spans 35 units and the line rises 21 of them, **60 % of the picture** for 3 % of growth. Python raises no error.
+
+## Bars from zero, dots may zoom
+
+- A **bar** shows its number by its **length**: cut the axis and the comparison breaks. **Bars always start at 0.**
+- A **dot** shows its number by **position** only, so a dot plot may zoom [@wilkeFundamentalsDataVisualization2019, ch. 17].
+- A **line** sits in between: zooming blows a small change up. Plot the change from 0, or put its size in the title: "+3&nbsp;% in four weeks".
 
 . . .
 
-**Bar counts CATEGORIES; histogram counts RANGES.** Same numbers, different question.
+::: {.callout-tip}
+The investor reads the axis before the line, and then the title, to see if the two agree.
+:::
 
 # Your turn {.loud-slide}
 
@@ -462,85 +877,341 @@ Scan the QR or type the link:
 **Any questions?** Let me know!
 
 ::: {.callout-tip}
-A five-minute pause after this one, then the axis and the AI chart assistant.
+A five-minute pause after this one, then three charts, made over step by step.
 :::
 
-# [The honest axis]{.flow} {.title}
+# [Make one point]{.flow} {.title}
 
-## The same data, told two ways
+## Makeover 1: who is fastest?
 
-Four weeks of revenue, `[96, 98, 97, 99]`, barely moving. **Where the y-axis starts** decides: left gets you a term sheet, right gets you trusted. Same numbers, and the room sees a rocket or the truth:
+*"Are you faster than the rivals?"* First: who was fastest in **week 1**?
 
 ```{python}
 #| eval: true
-#| output-location: slide
-#| fig-alt: "The same four weeks of revenue (96, 98, 97, 99) in two panels. Left, with the y-axis cut to 96-99, the line zig-zags from the bottom edge to the top edge like a rocket. Right, with the y-axis from 0 to 100, it is an almost flat line near the top."
-import matplotlib.pyplot as plt
-
-weeks = [1, 2, 3, 4]
-revenue = [96, 98, 97, 99]
-
-plt.figure()
-plt.subplot(1, 2, 1)
-plt.plot(weeks, revenue, marker="o")
-plt.ylim(96, 99)             # tight: DRAMA
-plt.title("Rocket (ylim 96-99)")
-plt.subplot(1, 2, 2)
-plt.plot(weeks, revenue, marker="o")
-plt.ylim(0, 100)             # from zero
-plt.title("From 0")
+#| echo: false
+#| fig-alt: "Default line chart of delivery time per week for eight weeks: four lines in blue, orange, green and red with dots, and a legend in alphabetical order, Kiezküche, MunchCorp, Pronto, Us. The lines cross each other several times."
+plt.figure(figsize=(10, 2.4))
+for _name, _minutes in services.items():
+    plt.plot(weeks, _minutes, marker="o", label=_name)
+plt.legend()
+plt.xlabel("Week")
+plt.ylabel("Delivery time (min)")
+plt.title("Delivery time per week")
 plt.gca()
 ```
 
-## Predict: the AI's one extra line
+a\) MunchCorp\
+b\) Kiezküche\
+c\) Pronto
 
-Revenue `[710, 718, 724, 731]`, up **3 %** over four weeks. Tobi's AI drafts the chart and adds one line:
 
-```python
-plt.plot([1, 2, 3, 4], [710, 718, 724, 731])
-plt.ylim(700, 735)
-```
+## Answer: Kiezküche, the slow way
 
-What does the room see?
-
-a\) a flat line: 3 % stays 3 % on any axis   b) an error: `ylim` has to include zero on a line chart   c) a line climbing almost the whole chart height
+**b) Kiezküche**: 30 minutes in week 1. An easy number, found the slow way: you matched four colors to a legend sorted from A to Z. And her real question, whether *we* got faster, is buried even deeper.
 
 . . .
 
-[Predict]{.question}. Pick a letter, then I reveal the answer.
+The data is fine. The chart is **bad**: the point is in there, buried. Four changes dig it out, one at a time, and none of them touches the numbers.
 
-## Answer: a climb across the chart
+## Lines, step 1: one accent color
 
 ```{python}
 #| eval: true
-#| output-location: slide
-#| fig-alt: "Line through 710, 718, 724 and 731 on a y-axis that runs only from 700 to 735. The line climbs 60 percent of the chart height, so 3 percent of growth looks like a steep rise."
-import matplotlib.pyplot as plt
-
-plt.figure()
-plt.plot([1, 2, 3, 4], [710, 718, 724, 731], marker="o")
-plt.ylim(700, 735)   # 3 % of growth, 60 % of the chart
+#| echo: false
+#| fig-alt: "The same chart, with our line in dark red and thicker, and the three rival lines in light grey. The legend is still there."
+plt.figure(figsize=(11, 3.8))
+for _name, _minutes in services.items():
+    _ours = _name == "Us"
+    plt.plot(weeks, _minutes, label=_name,
+             color=ACCENT if _ours else QUIET, linewidth=3 if _ours else 2)
+plt.legend()
+plt.xlabel("Week")
+plt.ylabel("Delivery time (min)")
+plt.title("Delivery time per week")
 plt.gca()
 ```
 
-. . .
+Take the color out of everything **except** the point [@wilkeFundamentalsDataVisualization2019, ch. 4]. One `color=` per line, and the eye knows where to go.
 
-**c) a climb across the chart**: the axis spans 35 units and the line rises 21 of them, **60 % of the picture** for 3 % of growth.
+## Lines, step 2: labels, no legend
 
-. . .
+```{python}
+#| eval: true
+#| echo: false
+#| fig-alt: "The same chart without a legend: each line now carries its name at its right end, Us in dark red at 29 minutes, the rivals in grey at 32, 35 and 37 minutes."
+plt.figure(figsize=(11, 3.8))
+for _name, _minutes in services.items():
+    _ours = _name == "Us"
+    plt.plot(weeks, _minutes, color=ACCENT if _ours else QUIET,
+             linewidth=3 if _ours else 2)
+    plt.text(8.15, _minutes[-1], _name, va="center",
+             color=ACCENT if _ours else QUIET_TEXT,
+             fontweight="bold" if _ours else "normal")
+plt.xlim(0.7, 9.8)
+plt.xticks(weeks)
+plt.xlabel("Week")
+plt.ylabel("Delivery time (min)")
+plt.title("Delivery time per week")
+plt.gca()
+```
 
-Python raises no error and no warning here. The code is fine; the axis is what misleads.
+Names at the lines replace the legend, and they work for the 8&nbsp;% of men who can't tell red from green [@wilkeFundamentalsDataVisualization2019, ch. 19].
 
-## The rule: growth starts at zero
+## Lines, step 3: the title says it {.nostretch}
 
-- A **growth claim** on a chart starts the y-axis at **0**. Anything else magnifies a wobble into a cliff.
-- The investor **will** check: she reads the axis before she reads the line.
+```{python}
+#| eval: true
+#| echo: false
+#| fig-alt: "The chart in the house style: the title reads From slowest to fastest in eight weeks. Our dark red line falls from 41 to 29 minutes, the grey rival lines stay between 30 and 38, every line carries its name, and the frame and tick marks are gone."
+def delivery_chart(ax, rivals=True):
+    """Steps 3 to 5 share this chart."""
+    for _name, _minutes in services.items():
+        _ours = _name == "Us"
+        if not _ours and not rivals:
+            continue
+        ax.plot(weeks, _minutes, color=ACCENT if _ours else QUIET,
+                linewidth=3.2 if _ours else 1.8, solid_capstyle="round", zorder=5 if _ours else 2)
+        ax.text(8.2, _minutes[-1] + {"Pronto": 0.8, "Kiezküche": -0.5}.get(_name, 0), _name,
+                va="center", fontsize=15,
+                color=ACCENT if _ours else QUIET_TEXT, fontweight="bold" if _ours else "normal")
+    ax.set_xlim(0.8, 9.6)
+    ax.set_ylim(24, 47)
+    ax.set_xticks(weeks)
+    ax.set_xlabel("Week")
+    ax.set_ylabel("Delivery time (min)")
+    ax.set_title("From slowest to fastest: 41 to 29 minutes", fontsize=20, pad=14)
 
-. . .
 
-::: {.callout-tip}
-She's the type who reads Formular 27b/6 for fun. A stretched axis is the first thing she catches, and the last thing you want to explain.
-:::
+with plt.rc_context(HOUSE):
+    fig, ax = plt.subplots(figsize=(11.2, 3.6), layout="tight")
+    delivery_chart(ax)
+    plt.show()
+```
+
+The title states the claim; frame and tick marks are gone. Same numbers, and every change was a **decision**.
+
+## Lines, step 4: add the context {.nostretch}
+
+```{python}
+#| eval: true
+#| echo: false
+#| fig-alt: "The same chart with context: the three grey rival lines are replaced by one dashed line labelled fastest rival, at 30 to 32 minutes, and a note with an arrow marks new routes from week 3, where our dark red line starts to fall. Our line drops below the dashed line in week 6."
+_fastest_rival = np.min([services[n] for n in services if n != "Us"], axis=0)
+with plt.rc_context(HOUSE):
+    fig, ax = plt.subplots(figsize=(11.2, 3.6), layout="tight")
+    delivery_chart(ax, rivals=False)
+    ax.plot(weeks, _fastest_rival, color=QUIET_TEXT, linewidth=1.5, linestyle=(0, (4, 3)))
+    ax.text(8.2, _fastest_rival[-1] + 0.8, "fastest rival", va="center", fontsize=15, color=QUIET_TEXT)
+    ax.annotate("new routes from week 3", xy=(3, 40), xytext=(3.7, 44), fontsize=15,
+                color=QUIET_TEXT, arrowprops=dict(arrowstyle="-|>", color=QUIET_TEXT, shrinkB=5))
+    plt.show()
+```
+
+The rivals only matter as a yardstick: one dashed line for the fastest rival replaces three, and one note marks week 3. Now the chart tells a story.
+
+## Lines, step 5: one too many {.nostretch}
+
+```{python}
+#| eval: true
+#| echo: false
+#| fig-alt: "The step-4 chart buried under extras: a dark grid every minute, a full black frame, a boxed legend, and the number of minutes printed next to every point of our line. The point is still there but hard to find."
+with plt.rc_context(HOUSE):
+    fig, ax = plt.subplots(figsize=(11.2, 3.6), layout="tight")
+    delivery_chart(ax, rivals=False)
+    ax.plot(weeks, _fastest_rival, color=QUIET_TEXT, linewidth=1.5, linestyle=(0, (4, 3)),
+            label="fastest rival")
+    ax.lines[0].set_label("us")
+    ax.annotate("new routes from week 3", xy=(3, 40), xytext=(3.7, 44), fontsize=15,
+                color=QUIET_TEXT, arrowprops=dict(arrowstyle="-|>", color=QUIET_TEXT, shrinkB=5))
+    for _w, _m in zip(weeks, services["Us"]):
+        ax.text(_w, _m + 0.9, f"{_m} min", ha="center", fontsize=12, color=INK)
+    ax.set_yticks(range(24, 48))
+    ax.grid(True, axis="both", color="#5B6570", linewidth=0.8)
+    for _spine in ax.spines.values():
+        _spine.set_visible(True)
+        _spine.set_color(INK)
+    ax.legend(frameon=True, loc="lower left", fontsize=13)
+    plt.show()
+```
+
+Every number, line and box here is true, and none of them helps: the point drowns. Balance data and context [@wilkeFundamentalsDataVisualization2019, ch. 23]: stop at step 4.
+
+## Makeover 2: what misleads? {.nostretch}
+
+```{python}
+#| eval: true
+#| echo: false
+#| fig-alt: "Tobi's agent's bar chart of late deliveries in eight districts in alphabetical order: every bar a different rainbow color, a legend that repeats the district names, names tilted at 45 degrees, and a y-axis that starts at 5 percent. Harburg's bar is by far the tallest."
+districts = ["Altona", "Barmbek", "Eimsbüttel", "Eppendorf", "HafenCity", "Harburg",
+             "St. Pauli", "Wandsbek"]
+late = [11, 10, 13, 9, 14, 26, 16, 12]
+plt.figure(figsize=(10, 2.4))
+for _d, _v, _c in zip(districts, late, plt.cm.rainbow(np.linspace(0, 1, 8))):
+    plt.bar(_d, _v, color=_c, label=_d)
+plt.ylim(5, 28)
+plt.xticks(rotation=45, ha="right")
+plt.ylabel("Late (%)")
+plt.legend(fontsize=9, ncols=2)
+plt.title("Tobi's agent: late deliveries by district")
+plt.gca()
+```
+
+Which problem makes the investor **believe** something false?
+
+a\) the loud colors\
+b\) the axis from 5 %\
+c\) the tilted names
+
+
+## Bars, step 1: from zero {.nostretch}
+
+```{python}
+#| eval: true
+#| echo: false
+#| fig-alt: "The same rainbow bar chart with the y-axis from 0. Harburg's bar at 26 percent is now about three times as tall as Eppendorf's at 9 percent."
+plt.figure(figsize=(10, 2.9))
+for _d, _v, _c in zip(districts, late, plt.cm.rainbow(np.linspace(0, 1, 8))):
+    plt.bar(_d, _v, color=_c, label=_d)
+plt.xticks(rotation=45, ha="right")
+plt.ylabel("Late (%)")
+plt.legend(fontsize=9, ncols=2)
+plt.title("Late deliveries by district")
+plt.gca()
+```
+
+**b) the axis**. Cut at 5 %, Harburg looked five times as late as Eppendorf; from 0 it is three times. The colors and the tilt only make the chart harder to read. Fix what misleads first.
+
+## Bars, step 2: sorted, lying down {.nostretch}
+
+```{python}
+#| eval: true
+#| echo: false
+#| fig-alt: "Horizontal bars in one color, sorted from Harburg at the top with 26 percent down to Eppendorf with 9 percent. The names read without tilting and the legend is gone."
+_order = sorted(range(8), key=lambda i: late[i])
+plt.figure(figsize=(10, 3.2))
+plt.barh([districts[i] for i in _order], [late[i] for i in _order])
+plt.xlabel("Late (%)")
+plt.title("Late deliveries by district")
+plt.gca()
+```
+
+Sorted, the ranking reads from top to bottom. Lying down, the names need no tilt. The colors meant nothing, so one color is enough, and the legend goes with them.
+
+## Bars, step 3: one point {.nostretch}
+
+```{python}
+#| eval: true
+#| echo: false
+#| fig-alt: "The finished chart: horizontal grey bars sorted by size, Harburg's bar on top in dark red, each bar with its percentage written at its end, no x-axis, and the title Harburg: one in four deliveries is late."
+with plt.rc_context(HOUSE):
+    fig, ax = plt.subplots(figsize=(11.2, 3.4), layout="tight")
+    _bars = ax.barh([districts[i] for i in _order], [late[i] for i in _order], height=0.7,
+                    color=[ACCENT if districts[i] == "Harburg" else QUIET for i in _order])
+    ax.bar_label(_bars, labels=[f"{late[i]} %" for i in _order], padding=6, fontsize=14,
+                 color=QUIET_TEXT)
+    ax.grid(False)
+    ax.spines["bottom"].set_visible(False)
+    ax.set_xticks([])
+    ax.set_title("Harburg: one in four deliveries is late", fontsize=20, pad=14)
+    plt.show()
+```
+
+One accent for the point, the numbers on the bars instead of an axis, the claim on top. Step 1 fixed what misleads, step 2 what confuses, step 3 makes the point.
+
+## Makeover 3: who is late? {.nostretch}
+
+```{python}
+#| eval: true
+#| echo: false
+#| fig-alt: "Four overlapping histograms of delivery times in the default blue, orange, green and red, half transparent, with a legend for Nord, Altstadt, Hafen and Sued. The colors mix where the bars overlap, and a green tail reaches beyond 60 minutes."
+_rng3 = np.random.default_rng(21)
+times = {
+    "Nord": _rng3.normal(29, 4, 120),
+    "Altstadt": np.concatenate([_rng3.normal(26, 3, 70), _rng3.normal(39, 4, 50)]),
+    "Hafen": 24 + _rng3.gamma(3.2, 5.2, 120),
+    "Sued": _rng3.normal(28, 3.5, 120),
+}
+plt.figure(figsize=(10, 2.5))
+for _z, _v in times.items():
+    plt.hist(_v, bins=20, alpha=0.5, label=_z)
+plt.legend()
+plt.xlabel("Delivery time (min)")
+plt.title("Tobi's agent: delivery times")
+plt.gca()
+```
+
+We promise **35 minutes**. Which zone breaks it most often?
+
+a\) Altstadt, orange\
+b\) Hafen, green\
+c\) Nord, blue
+
+
+## Spread, step 1: one panel each {.nostretch}
+
+```{python}
+#| eval: true
+#| echo: false
+#| fig-alt: "The same delivery times as four small histograms stacked above each other on one shared minutes axis. Nord and Sued sit around 28 minutes, Altstadt has two humps at about 26 and 39 minutes, and Hafen's bars spread far to the right."
+fig, ax = plt.subplots(4, 1, figsize=(10, 3.6), sharex=True)
+for _a, (_z, _v) in zip(ax, times.items()):
+    _a.hist(_v, bins=np.arange(14, 72, 2))
+    _a.set_yticks([])
+    _a.text(1.0, 0.5, _z, transform=_a.transAxes, va="center")
+ax[-1].set_xlabel("Delivery time (min)")
+plt.gca()
+```
+
+**b) Hafen**: three of four deliveries take longer than 35 minutes. One panel per zone shows it, and shows what the overlap hid: Altstadt has two humps, a fast group and a slow one.
+
+## Spread, step 2: boxes and dots {.nostretch}
+
+```{python}
+#| eval: true
+#| echo: false
+#| fig-alt: "One chart with a box plot per zone, sorted from the most punctual zone, Sued, to Hafen, and every single delivery as a dot next to its box. Hafen's box sits highest, and Altstadt's dots form two clusters."
+_sorted = sorted(times, key=lambda z: (times[z] > 35).mean())  # most punctual first
+plt.figure(figsize=(10, 3.3))
+plt.boxplot([times[z] for z in _sorted], tick_labels=_sorted, widths=0.4)
+for _i, _z in enumerate(_sorted, start=1):
+    plt.scatter(_i + 0.35 + _rng3.uniform(-0.08, 0.08, len(times[_z])), times[_z], s=6, alpha=0.4,
+                color="grey")
+plt.ylabel("Delivery time (min)")
+plt.gca()
+```
+
+One chart instead of four: a box per zone for median and spread, every delivery as a dot beside it, from the most punctual zone to the least.
+
+## Spread, step 3: draw the promise {.nostretch}
+
+```{python}
+#| eval: true
+#| echo: false
+#| fig-alt: "The finished chart: dots for every delivery per zone, grey for Sued, Nord and Altstadt and dark red for Hafen, a thin box over each zone, and a dashed line at 35 minutes labelled our promise. Most of Hafen's dots lie above the line. The title reads Hafen misses the 35-minute promise three times in four."
+with plt.rc_context(HOUSE):
+    fig, ax = plt.subplots(figsize=(11.2, 3.7), layout="tight")
+    for _i, _z in enumerate(_sorted, start=1):
+        _hot = _z == "Hafen"
+        ax.scatter(_i + _rng3.uniform(-0.2, 0.2, len(times[_z])), times[_z], s=18,
+                   alpha=0.6, color=ACCENT if _hot else QUIET, edgecolor="none", zorder=2)
+        _share = round((times[_z] > 35).mean() * 100)
+        ax.text(_i, 74, f"{_share} % late", ha="center", fontsize=15,
+                color=ACCENT if _hot else QUIET_TEXT, fontweight="bold" if _hot else "normal")
+    ax.boxplot([times[z] for z in _sorted], widths=0.55, showfliers=False, showcaps=False,
+               medianprops=dict(color=INK, linewidth=2.5), boxprops=dict(color=INK, linewidth=1),
+               whiskerprops=dict(color=INK, linewidth=1), zorder=3)
+    ax.set_xticks(range(1, 5), _sorted)
+    ax.axhline(35, color=INK, linewidth=1.2, linestyle=(0, (4, 3)), zorder=1)
+    ax.text(4.42, 36.5, "our promise:\n35 min", fontsize=13, color=INK, va="bottom")
+    ax.set_xlim(0.4, 5.0)
+    ax.set_ylim(15, 80)
+    ax.set_yticks([20, 35, 50, 65])
+    ax.set_ylabel("Delivery time (min)")
+    ax.set_title("Hafen misses the 35-minute promise three times in four", fontsize=20, pad=14)
+    plt.show()
+```
+
+A reference line turns the chart into a test: every dot above it is a broken promise. The share on top and the title give the number.
 
 # Your turn {.loud-slide}
 
@@ -554,55 +1225,216 @@ Scan the QR or type the link:
 
 **Any questions?** Let me know!
 
+# [Charts to a story]{.flow} {.title}
+
+## A deck is a story
+
+A story is facts *in a specific order* that create a reaction [@wilkeFundamentalsDataVisualization2019, ch. 29]. A pitch in four steps:
+
+1. **Opening**: where we stand
+2. **Challenge**: the problem
+3. **Action**: what we did about it
+4. **Resolution**: the result, and what we ask for
+
+. . .
+
+Each step is one slide with one point, **a figure for the generals**: the room gets it in seconds.
+
+## Predict: Tobi's four slides {.nostretch}
+
+```{python}
+#| eval: true
+#| echo: false
+#| fig-alt: "Four small slides with claim titles, each a different kind of chart. A: Repeat customers 18 percent to 35 percent, two dark red bars for week 1 and week 8. B: Orders up from 180 to 284 a week, a dark red area rising over eight weeks. C: From slowest to fastest, 41 to 29 minutes, our dark red line falling below three grey rival lines. D: Week 1, slowest in town, 41 minutes, a dot plot with our dot in dark red furthest right."
+_orders = [180, 205, 220, 238, 251, 262, 270, 284]
+_first = sorted(services, key=lambda name: services[name][0])
+
+
+def story(ax, key):
+    """Tobi's four slides, drawn once for the predict and once for the answer."""
+    if key == "A":
+        ax.bar(["week 1", "week 8"], [18, 35], color=ACCENT, width=0.55)
+        ax.set_ylim(0, 40)
+    elif key == "B":
+        ax.fill_between(weeks, _orders, color=ACCENT, alpha=0.25, linewidth=0)
+        ax.plot(weeks, _orders, color=ACCENT, linewidth=2.5)
+        ax.set_ylim(0, 300)
+        ax.set_xticks([])
+    elif key == "C":
+        for _name, _minutes in services.items():
+            _ours = _name == "Us"
+            ax.plot(weeks, _minutes, color=ACCENT if _ours else QUIET, linewidth=3 if _ours else 1.8)
+        ax.set_xticks([])
+    else:
+        ax.hlines(range(4), 28, 43, color="#E8E4E0", linewidth=1)
+        ax.scatter([services[n][0] for n in _first], range(4), s=80, zorder=3,
+                   color=[ACCENT if n == "Us" else QUIET for n in _first])
+        ax.set_yticks(range(4), _first)
+        ax.set_xticks([30, 35, 40])
+        ax.grid(False)
+
+
+_titles = {"A": "A  Repeat customers: 18 % to 35 %", "B": "B  Orders up from 180 to 284 a week",
+           "C": "C  From slowest to fastest: 41 to 29 min", "D": "D  Week 1: slowest in town, 41 minutes"}
+with plt.rc_context(HOUSE):
+    fig, ax = plt.subplots(2, 2, figsize=(11.2, 3.2))
+    for _a, _key in zip(ax.flat, "ABCD"):
+        story(_a, _key)
+        _a.set_title(_titles[_key], pad=6, fontsize=15)
+    fig.tight_layout()
+    plt.show()
+```
+
+Opening, challenge, action, resolution: in which order?
+
+a\) B, D, C, A\
+b\) A, B, D, C\
+c\) B, C, D, A
+
+
+## Answer: B, D, C, A {.nostretch}
+
+```{python}
+#| eval: true
+#| echo: false
+#| fig-alt: "The same four slides in story order: B, a rising dark red area of orders; D, the dot plot with us slowest; C, our line falling below the rivals; A, two bars for repeat customers rising from 18 to 35 percent."
+with plt.rc_context(HOUSE):
+    fig, ax = plt.subplots(1, 4, figsize=(11.2, 2.4))
+    for _a, _key, _role in zip(ax, "BDCA", ["1 Opening", "2 Challenge", "3 Action", "4 Resolution"]):
+        story(_a, _key)
+        _a.set_title(f"{_role} ({_key})", pad=6, fontsize=15)
+    fig.tight_layout()
+    plt.show()
+```
+
+. . .
+
+**a) B, D, C, A**: a growing business (B), the slowest in town (D), new routes and a line that falls below every rival (C), customers who come back (A). *Then the ask: one more rider keeps it that way.*
+
+. . .
+
+Option b) leads with the result, an arc that works too, in a newspaper. In a pitch, the problem first makes the result count.
+
+## Two rules for the whole deck
+
+- **Build up.** Show our line alone before you add the rivals. A complex chart lands once the room has seen its simple version.
+- **Keep colors fixed.** Our line is dark red on every slide. Paint us blue on slide 3 and the room reads someone else's line as yours.
+
+. . .
+
+::: {.callout-note}
+Consistent, not repetitive: same colors and same fonts across the deck, but each slide a different kind of chart, so the room notices that something new is coming.
+:::
+
 ## AI as your chart assistant
 
-AI is good at plotting code, if you check the result:
-
-1. **Describe** data and question: *"I have `orders` with columns `zone` (text) and `total_eur` (float). Bar chart of total revenue per zone."*
-2. Let it **draft** the plot code.
-3. **Verify** three things before you believe the picture:
-   - Do the **columns** it used actually exist?
-   - Does the **y-axis** start where you claim?
-   - Does the **chart type** fit the question?
+1. **Describe** data and point: *"Revenue per zone from `orders` (`zone`, `total_eur`), sorted bars, top zone dark red, rest grey, a title that names the leader."*
+2. Let it **draft**.
+3. **Verify** before you believe the picture:
+   - the **columns** exist · the bars match your own `groupby`
+   - **bars** from 0 · the **chart type** fits · the **title** says no more than the picture
 
 . . .
 
 AI drafts. You decide what goes on the slide.
 
-## Two ways AI charts lie
+## Three ways AI charts mislead
 
-- **Invented column names.** The AI writes `orders["revenue"]`, but your column is `total_eur`: a `KeyError`, exactly the confident-nonsense you caught in Episode 8. Read the code before you run it.
-- **Silently "dramatic" defaults.** Ask for a growth chart and some assistants hand back a **tight y-axis** that flatters the trend: no warning, no comment. The chart runs; that's what makes it dangerous.
+- **Invented column names.** It writes `orders["revenue"]`, but your column is `total_eur`: the same confident nonsense you caught in Episode 8.
+- **Defaults nobody chose.** Bars in alphabetical order, one color per category, a legend, an axis cut to fit the data. Each one is a decision the agent made silently.
+- **Your words as the title.** Ask for a chart "showing that sales are growing" and that's the title you get, whatever the line does.
 
 . . .
 
 ::: {.callout-important}
-Both threads, one rule: **an AI chart runs long before it's true.** You verify the columns *and* the axis, every time.
+For all three: check the numbers, the axis and the title before a chart goes on a slide.
 :::
 
-# Your turn {.loud-slide}
+## Beyond matplotlib
 
-## Open the exercise
+| Library | What it adds |
+|---|---|
+| seaborn | box, violin and histogram per group, in one line |
+| plotly | charts you can hover over and zoom into |
+| folium | street maps in the browser |
+| streamlit | a script becomes a web page with sliders |
+| networkx | networks of nodes and links |
 
-Scan the QR or type the link:
+. . .
 
-**[python.tobiasvlcek.com/notebooks/ex_09_e/](https://python.tobiasvlcek.com/notebooks/ex_09_e/)**
+Next week's project ideas use all five. Your agent writes the code; the checks from today stay the same.
 
-![](assets/qr/ex_09_e.png){width=280 fig-alt="QR code linking to the online notebook for exercise 9e, the same address as the link above."}
+# [Wrap-up]{.flow} {.title}
 
-**Any questions?** Let me know!
+## Three things to remember
 
-# Before Session X {.exercise-slide}
+1. **Judge every chart.** Wrong first (shares that add up to 115 %), then bad (the pie), ugly last. Bars start at 0; a zoomed line needs a title with the real size.
+2. **The question picks the chart, the title states the claim.** Amounts → bar, spread → histogram, two numbers → scatter, time → line.
+3. **One point per chart, one story per deck.** One accent color, names on the lines, and the slides in an order that ends in your ask.
 
-uv, Zed and Mistral Vibe have been on your laptop since Session VII. The finale adds **git**. Two things before you arrive, about 15 minutes:
+. . .
 
-1. **GitHub account** from Session I. None yet? [github.com](https://github.com), tonight
-2. **git + GitHub CLI (`gh`)**: install, log in once. [Git Basics](../general/git-basics.qmd#one-time-setup)
+::: {.callout-note}
+**Season finale next: git and the project kickoff.** Your laptop gets git now, before the lab.
+:::
+
+# [Git before the lab]{.flow} {.title}
+
+## Why git, why today
+
+Next session opens with Checkpoint 5, and then your project moves to **GitHub**. An installer that fights you then eats the project kickoff.
+
+. . .
+
+So we set up git **now, together**. Once your setup passes the check, open the lab; I come round and look at every laptop before you leave.
+
+## Step 1: git and gh
+
+In Zed's terminal (`` Ctrl+` ``), steps 1 and 2 of the [one-time setup](../general/git-basics.qmd#one-time-setup) on the Git Basics page:
+
+- **git**: on a Mac `git --version`, on Windows `winget install Git.Git`
+- **gh**, the GitHub CLI: on Windows `winget install GitHub.cli`, on a Mac the installer linked on the page
+- Then **quit and reopen Zed**: its terminal only finds new programs after a restart
+
+. . .
+
+:::{.callout-tip}
+`git --version` and `gh --version` both print a version number? Step 1 is done.
+:::
+
+## Step 2: log in, say who you are
+
+```bash
+gh auth login
+gh auth setup-git
+git config --global user.name "Your Name"
+git config --global user.email "you@example.com"
+git config --global pull.rebase false
+```
+
+- **Login**: GitHub.com, **HTTPS**, **Yes** to *Authenticate Git*, browser, one-time code
+- **`setup-git`** lets git use that login; it prints nothing
+- **E-mail**: the one of your **GitHub account**, it goes on every commit
+- **`pull.rebase false`**: a pull combines your partners' work with yours
+
+## The check before the lab
+
+```bash
+git --version
+gh auth status
+git config --global user.email
+```
+
+- a version number
+- **Logged in to github.com account** with your username, and **Git operations protocol: https**
+- the e-mail of your GitHub account
+
+Open the lab as soon as all three print. I come round and check.
 
 . . .
 
 :::{.callout-important}
-**Do it in advance**, and bring the laptop. Session X opens with Checkpoint 5 (Sessions VIII-IX), then builds on git from the first minute. Install fights you? Ask in class or by e-mail.
+**Stuck?** Raise your hand early. Keep your phone at hand: GitHub may ask for a two-factor code, and a password you forgot since Session I is reset in two minutes. Only an iPad? Your GitHub codespace has git and gh built in: run the check in its terminal.
 :::
 
 # [To the Lab]{.flow} {.title}
@@ -614,7 +1446,9 @@ The lab is a script, and a script has no cell that could show a chart. So every 
 ```python
 plt.figure()                 # OPEN: a fresh canvas, as before
 plt.plot(days, revenue)
-plt.title("This week's revenue")
+plt.xlabel("Day")
+plt.ylabel("Revenue (EUR)")
+plt.title("Day 4 brings the most revenue")
 daily_chart = plt.gca()      # KEEP: the chart, for the lab's checks
 plt.savefig("daily.png")     # SAVE: the picture, into python-labs
 plt.close()                  # CLOSE: the canvas
@@ -622,47 +1456,33 @@ plt.close()                  # CLOSE: the canvas
 
 . . .
 
-Forget `plt.close()` and the next chart draws on top of this one: one canvas, two charts. To look at the picture, click `daily.png` in Zed's project panel, the file list on the left.
+`plt.close()` puts the finished canvas away; the lab checks that none is left open. To look at the picture, click `daily.png` in Zed's project panel, the file list on the left.
 
-## After the break: the lab
+## After the check: the lab
 
-- Download `lab_09_pitch.py` from [Episode 9: The Pitch Deck](../tutorials/tut_09_plotting.qmd) into `python-labs`. `orders_messy.csv` is still there
-- Nine tasks, six with a chart. No task names the kind of chart: **you pick it**. At the end the script puts all six into `pitch_deck.png`
-- Tobi's deck is in the script too. **Two things in it are wrong without any task saying so**: one in his numbers, one in what he claims
-- No slide covers table to chart: **ask your agent**, **look at the picture**
+- `lab_09_pitch.py` from [Episode 9: The Pitch Deck](../tutorials/tut_09_plotting.qmd) into `python-labs`
+- Six charts, and **you pick** each kind. The investor gets **four** of them: you choose which, and in which order
+- **Two things in Tobi's deck are wrong, and no task says so**: one in his numbers, one in his claims
 
 . . .
 
 :::{.callout-important}
-**Show me `pitch_deck.png` and the last block before you leave**, for feedback as last week. Then two minutes of practice for Checkpoint 5, which is still handed in from the browser: open `ex_09_e`, **Cmd/Ctrl+S**, menu → Download → *Download Python code*, find the file.
-:::
-
-# [Wrap-up]{.flow} {.title}
-
-## Three things to remember
-
-1. **Every chart, one frame.** Open with `plt.figure()`, close with `plt.gca()` (in a script: `savefig`, then `close`); label the axes and title it. A chart nobody can read argues nothing.
-2. **Match the chart to the question.** Categories → bar, distribution → histogram, two numbers → scatter, time → line. The wrong chart is a lie; and "no pattern" is a real finding.
-3. **Axis from zero, verified code.** Growth charts start at **0**; check every AI-drafted plot: columns exist, axis starts as claimed?
-
-. . .
-
-::: {.callout-note}
-**Season finale next: git and the project kickoff.** Install git and `gh` this week. Session X needs them right after the checkpoint.
+**Show me `pitch_deck.png` and the last block** for feedback. Then practise the Checkpoint 5 hand-in once: open `ex_09_d`, **Cmd/Ctrl+S**, menu → Download → *Download Python code*.
 :::
 
 # [Literature]{.flow} {.title}
 
 ## Books to start with
 
-- Wilke, C. (2019). Fundamentals of data visualization: A primer on making informative and compelling figures (First edition). O'Reilly Media. [Link to the free book website](https://clauswilke.com/dataviz/)
-    - The best single book on *why* a chart works: principles over code. Highly recommended.
-- Downey, A. B. (2024). Think Python: How to think like a computer scientist (Third edition). O'Reilly. [Link to free online version](https://greenteapress.com/wp/think-python-3rd-edition/)
+::: {#refs}
+:::
+
+Both are free online: [the data visualization book](https://clauswilke.com/dataviz/) (start with chapters 1, 17 and 29) and [Think Python](https://greenteapress.com/wp/think-python-3rd-edition/).
 
 . . .
 
 ::: {.callout-note}
-Building charts with AI this session? Revisit the [AI Tools page](../general/ai-tools.qmd): describe-then-verify is the whole workflow. Matplotlib's own [pyplot tutorial](https://matplotlib.org/stable/tutorials/pyplot.html) is a friendly next step.
+Building charts with AI? Revisit the [AI Tools page](../general/ai-tools.qmd): describe-then-verify is the whole workflow. Matplotlib's own [pyplot tutorial](https://matplotlib.org/stable/tutorials/pyplot.html) is a friendly next step.
 :::
 
 . . .

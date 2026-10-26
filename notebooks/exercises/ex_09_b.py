@@ -27,7 +27,7 @@ def _():
 def _(mo):
     mo.md(
         r"""
-    # Quick exercise: your first chart (5-10 min)
+    # Quick exercise: the question picks the chart (5-10 min)
     """
     )
     return
@@ -50,16 +50,16 @@ def _(mo):
 def _(mo):
     mo.md(
         r"""
-    Episode 9: the investor's one instruction was "charts I can't argue
-    with." A table of seven numbers doesn't argue anything, but a line does.
+    Episode 9: MunchCorp sent a new press release, again with one pie:
+    their revenue per zone this month, in thousand euros. The investor
+    squints at it: "Which zone is their biggest? And which comes
+    second?" Four slices of nearly the same size, and nobody in the room
+    agrees.
 
-    `plt.plot(x, y)` draws the line; `plt.xlabel`, `plt.ylabel`, and
-    `plt.title` label it. One marimo rule that trips everyone up once:
-    the LAST expression in a cell is what displays, so chart cells end
-    with `plt.gca()` ("get current axes"), never `plt.show()`.
+    To **compare** amounts, use bars, sorted tallest first: the eye
+    compares lengths well and angles badly.
 
-    **Predict** first: look at the numbers in the demo below: which way
-    does the line slope, up or down?
+    **Predict** first: in the pie below, which zone comes second?
     """
     )
     return
@@ -72,12 +72,25 @@ def _():
 
 
 @app.cell
-def _(plt):
-    # Worked example (read + run this)
-    _demo_signups = [80, 55, 20]
+def _():
+    # Given: do not change this
+    zones_exb = ["Nord", "Altstadt", "Hafen", "Sued"]
+    return (zones_exb,)
+
+
+@app.cell
+def _():
+    # Given: do not change this
+    munch_exb = [131, 118, 124, 127]
+    return (munch_exb,)
+
+
+@app.cell
+def _(munch_exb, plt, zones_exb):
+    # MunchCorp's chart (given)
     plt.figure()  # starts a fresh figure so this chart doesn't draw on top of the last one
-    plt.plot(_demo_signups)
-    plt.title("Demo: three weeks of signups")
+    plt.pie(munch_exb, labels=zones_exb)
+    plt.title("MunchCorp: revenue per zone")
     plt.gca()
     return
 
@@ -86,13 +99,91 @@ def _(plt):
 def _(mo):
     mo.md(
         r"""
-    `revenues_exb` below is one real week (Monday → Sunday). Plot it the
-    same way as the demo, then read the chart to answer two questions
-    for the investor: the week's **total** revenue, and **which day**
-    (1 = Monday … 7 = Sunday) brought in the most.
+    Draw the same numbers as bars, **tallest first**, so the ranking
+    reads left to right. Then tell the investor which zone comes
+    **second**, as a name.
 
-    The chart itself isn't graded. The check below reads your numbers,
-    not your art.
+    The chart itself isn't graded. The check below reads
+    `second_exb`, not your bars.
+    """
+    )
+    return
+
+
+@app.cell
+def _(munch_exb, plt, zones_exb):
+    plt.figure()
+    # YOUR CODE BELOW: bars of munch_exb per zone, tallest first (ungraded)
+    plt.gca()
+    return
+
+
+@app.cell
+def _(munch_exb, zones_exb):
+    # YOUR CODE BELOW: the NAME of the zone with the second-highest revenue
+    second_exb = None
+    return (second_exb,)
+
+
+@app.cell(hide_code=True)
+def _(mo, second_exb, show_result):
+    # Reactive check. Re-runs when you run the cell above.
+    _result = None
+    if second_exb is None:
+        _ok = False
+        _msg = "Not attempted: Assign it to `second_exb` (a `print` alone doesn't count) and run the cell."
+    elif isinstance(second_exb, (list, tuple)):
+        _ok = False
+        _result = f"second_exb={second_exb!r}"
+        _msg = "Wrong: That's a whole list (or a pair). The investor wants ONE zone name."
+    elif isinstance(second_exb, (int, float)) and not isinstance(second_exb, bool):
+        _ok = False
+        _result = f"second_exb={second_exb!r}"
+        _msg = "Wrong: That's a bar's HEIGHT. She asked for the zone's NAME."
+    else:
+        _v = str(second_exb).strip().lower()
+        _result = f"second_exb={second_exb!r}"
+        if _v == "sued":
+            _ok = True
+            _msg = "Correct: Exercise 9.b: Nord, then Sued. Sorted bars settle in a second what the pie left open."
+        elif _v == "nord":
+            _ok = False
+            _msg = "Wrong: Nord is the biggest. Sort tallest first and read the SECOND bar."
+        elif _v == "altstadt":
+            _ok = False
+            _msg = "Wrong: Altstadt is the second entry of the ORIGINAL list, and the smallest zone. Sort by revenue first."
+        elif _v == "hafen":
+            _ok = False
+            _msg = "Wrong: Hafen comes third, three thousand euros behind Sued. Sorted smallest first? Tallest first is the other direction."
+        else:
+            _ok = False
+            _msg = "Wrong: Pick one of the four zone names in `zones_exb`."
+    mo.callout(mo.md(_msg + show_result(_result)), kind="success" if _ok else "warn")
+    return
+
+
+@app.cell(hide_code=True)
+def _(mo):
+    mo.accordion(
+        {
+            "Hint 1 (a nudge)": "`zip(munch_exb, zones_exb)` makes (revenue, zone) pairs, and `sorted(...)` orders pairs by their first item. Which keyword puts the largest first? The second pair holds your zone. For the chart, take the sorted pairs apart into names and heights again.",
+            "Hint 2 (the structure)": "```python\n_ranked = sorted(zip(munch_exb, zones_exb), reverse=___)\nsecond_exb = _ranked[___][1]\n```",
+        }
+    )
+    return
+
+
+@app.cell(hide_code=True)
+def _(mo):
+    mo.md(
+        r"""
+    **Done? Then:** the investor has three more questions. For each one,
+    which chart answers it: `"bar"`, `"histogram"`, `"scatter"` or
+    `"line"`? Fill in the dict `charts_exb` with one chart per key:
+
+    - `"spread"`: How are our order values spread, many small ones and a few big ones?
+    - `"together"`: Do orders with more items take longer to deliver?
+    - `"time"`: How did revenue develop over the last eight weeks?
     """
     )
     return
@@ -100,75 +191,45 @@ def _(mo):
 
 @app.cell
 def _():
-    # Given: do not change this
-    revenues_exb = [142.50, 168.20, 155.90, 201.40, 189.60, 246.80, 232.10]
-    return (revenues_exb,)
-
-
-@app.cell
-def _(plt, revenues_exb):
-    plt.figure()
-    # YOUR CODE BELOW: plot revenues_exb (labels/title optional, ungraded)
-    plt.gca()
-    return
-
-
-@app.cell
-def _(revenues_exb):
-    # YOUR CODE BELOW: the week's total revenue from revenues_exb, as a plain number
-    total_exb = None
-    return (total_exb,)
-
-
-@app.cell
-def _(revenues_exb):
-    # YOUR CODE BELOW: which day brought in the most, 1 = Monday through 7 = Sunday
-    best_day_exb = None
-    return (best_day_exb,)
+    # YOUR CODE BELOW: a dict with the keys "spread", "together" and "time", one chart name each
+    charts_exb = None
+    return (charts_exb,)
 
 
 @app.cell(hide_code=True)
-def _(best_day_exb, mo, show_result, total_exb):
+def _(charts_exb, mo, show_result):
     # Reactive check. Re-runs when you run the cell above.
-    _expected_total = 1336.5
-    _expected_day = 6
+    _expected = {"spread": "hist", "together": "scatter", "time": "line"}
+    _why = {
+        "spread": "`spread`: a spread is counted per range of values, which is not a category or a moment in time.",
+        "together": "`together`: two numbers per order, one on each axis, and no line joining orders that have no order.",
+        "time": "`time`: eight weeks in a row is change over time, so the points follow each other.",
+    }
     _result = None
-    if total_exb is None or best_day_exb is None:
+    if charts_exb is None:
         _ok = False
-        _msg = "Not attempted: Assign it to `total_exb` and `best_day_exb` (a `print` alone doesn't count) and run the cell."
-    elif isinstance(total_exb, (list, tuple)) or isinstance(best_day_exb, (list, tuple)):
+        _msg = "Not attempted: Assign it to `charts_exb` (a `print` alone doesn't count) and run the cell."
+    elif not isinstance(charts_exb, dict):
         _ok = False
-        _result = f"total_exb={total_exb!r}, best_day_exb={best_day_exb!r}"
-        _msg = "Wrong: One of these is still a whole list. The investor wants two single numbers."
+        _result = f"charts_exb={charts_exb!r}"
+        _msg = "Wrong: `charts_exb` should be a dict, like `{\"spread\": \"...\", \"together\": \"...\", \"time\": \"...\"}`."
+    elif set(charts_exb) != set(_expected):
+        _ok = False
+        _result = f"charts_exb={charts_exb!r}"
+        _msg = "Wrong: The dict needs exactly the keys `\"spread\"`, `\"together\"` and `\"time\"`."
     else:
-        try:
-            _total = round(float(total_exb), 2)
-            _day = float(best_day_exb)
-        except (TypeError, ValueError):
-            _ok = False
-            _total = None
-            _day = None
-            _msg = "Wrong: These should both be plain numbers. Check what your expressions actually return."
+        _result = f"charts_exb={charts_exb!r}"
+        _off = [
+            _key
+            for _key, _chart in _expected.items()
+            if _chart not in str(charts_exb[_key]).strip().lower()
+        ]
+        if not _off:
+            _ok = True
+            _msg = "Correct: Exercise 9.b stretch: histogram, scatter, line. Name the question first, and the chart follows."
         else:
-            _result = f"total_exb={total_exb}, best_day_exb={best_day_exb}"
-            if _total == _expected_total and _day == _expected_day:
-                _ok = True
-                _msg = "Correct: A solid week, and you know exactly which day carried it."
-            elif _day == 5:
-                _ok = False
-                _msg = "Wrong: `best_day_exb` is off by one: Python counts positions from 0, but days count from 1. What do you need to add?"
-            elif _day == 246.8:
-                _ok = False
-                _msg = "Wrong: `best_day_exb` looks like a revenue number, not a day, so that's the VALUE. The investor asked WHICH day."
-            elif _total == _expected_total:
-                _ok = False
-                _msg = "Wrong: Your total is right, but `best_day_exb` isn't. Find the POSITION of the biggest number, not the number itself."
-            elif _day == _expected_day:
-                _ok = False
-                _msg = "Wrong: `best_day_exb` is right, but your total isn't. Check your sum over all seven days."
-            else:
-                _ok = False
-                _msg = "Wrong: `total_exb` is a sum over the week, `best_day_exb` is a position from 1 to 7."
+            _ok = False
+            _msg = "Wrong: " + _why[_off[0]]
     mo.callout(mo.md(_msg + show_result(_result)), kind="success" if _ok else "warn")
     return
 
@@ -177,82 +238,12 @@ def _(best_day_exb, mo, show_result, total_exb):
 def _(mo):
     mo.accordion(
         {
-            "Hint 1 (a nudge)": "`plt.plot(range(1, 8), revenues_exb)` draws the line for your eyes, but the check only reads `total_exb` and `best_day_exb`. For the total, add up the week. For the day, find the POSITION of the biggest number, then remember days start at 1, Python starts at 0.",
-            "Hint 2 (the structure)": "```python\ntotal_exb = float(sum(___))\nbest_day_exb = revenues_exb.index(max(revenues_exb)) + ___\n```",
+            "Hint 1 (a nudge)": "Ask what each question compares: categories (bar), how often values fall into each range (histogram), two numbers per order (scatter), or one value over time (line).",
+            "Hint 2 (the structure)": "```python\ncharts_exb = {\"spread\": \"___\", \"together\": \"___\", \"time\": \"___\"}\n```",
         }
     )
     return
 
-
-@app.cell(hide_code=True)
-def _(mo):
-    mo.md(
-        r"""
-    **Done? Then:** the investor points at the right end of your line:
-    "The weekend carries you. How much of the week is that?" Compute the
-    weekend's share of the week's revenue (Saturday + Sunday) as a
-    **percent**: `weekend_share_exb`.
-    """
-    )
-    return
-
-
-@app.cell
-def _(revenues_exb):
-    # YOUR CODE BELOW: Saturday plus Sunday as a PERCENT of the week's revenue
-    weekend_share_exb = None
-    return (weekend_share_exb,)
-
-
-@app.cell(hide_code=True)
-def _(mo, show_result, weekend_share_exb):
-    # Reactive check. Re-runs when you run the cell above.
-    _expected = 35.83
-    _result = None
-    if weekend_share_exb is None:
-        _ok = False
-        _msg = "Not attempted: Assign it to `weekend_share_exb` (a `print` alone doesn't count) and run the cell."
-    elif isinstance(weekend_share_exb, (list, tuple)):
-        _ok = False
-        _result = f"weekend_share_exb={weekend_share_exb!r}"
-        _msg = "Wrong: That's still a list. The investor wants ONE percentage."
-    else:
-        try:
-            _v = round(float(weekend_share_exb), 2)
-        except (TypeError, ValueError):
-            _ok = False
-            _v = None
-            _msg = "Wrong: That's not a number yet. Check what your expression returns."
-        else:
-            _result = f"weekend_share_exb={weekend_share_exb}"
-            if _v == _expected:
-                _ok = True
-                _msg = "Correct: Exercise 9.b stretch: over a third of the week's revenue came in on two days, which belongs on the slide."
-            elif _v == 0.36:
-                _ok = False
-                _msg = "Wrong: That's the fraction. Percent means ×100."
-            elif _v == 478.9:
-                _ok = False
-                _msg = "Wrong: That's the weekend's revenue in euros. A SHARE compares it to the whole week."
-            elif _v == 17.37:
-                _ok = False
-                _msg = "Wrong: That's Sunday alone. The weekend is Saturday AND Sunday, the last two positions."
-            else:
-                _ok = False
-                _msg = "Wrong: Share % = (Saturday + Sunday) / whole week × 100."
-    mo.callout(mo.md(_msg + show_result(_result)), kind="success" if _ok else "warn")
-    return
-
-
-@app.cell(hide_code=True)
-def _(mo):
-    mo.accordion(
-        {
-            "Hint 1 (a nudge)": "Saturday and Sunday are the last two entries of `revenues_exb`. A slice from position 5 grabs both. Divide their sum by the week's sum, then ×100.",
-            "Hint 2 (the structure)": "`weekend_share_exb = sum(revenues_exb[___:]) / sum(___) * 100`",
-        }
-    )
-    return
 
 @app.cell(hide_code=True)
 def _(mo):

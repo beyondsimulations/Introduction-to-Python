@@ -3,6 +3,8 @@ title: "Lecture V - Errors and Debugging"
 subtitle: "Programming with Python"
 author: "Dr. Tobias Vlćek"
 institute: "Kühne Logistics University Hamburg - Fall 2026"
+nocite: |
+  @downeyThinkPythonHow2024, @elterSchroedingerProgrammiertPython2021
 format:
   revealjs:
     footer: " {{< meta title >}} | {{< meta author >}} | [Home](lec_05_errors.qmd)"
@@ -108,11 +110,10 @@ price = float(price_text)
 print(price)
 ```
 
-a\) prints `5.5` as a float   b) raises `ValueError`   c) raises `TypeError`
+a\) prints `5.5` as a float\
+b\) raises `ValueError`\
+c\) raises `TypeError`
 
-. . .
-
-[Predict]{.question}. Pick a letter, then I reveal the answer.
 
 ## Answer: right type, senseless value
 
@@ -202,11 +203,10 @@ label = "Party of " + guests
 print(label)
 ```
 
-a\) raises `TypeError`   b) prints `Party of 3`   c) raises `ValueError`
+a\) raises `TypeError`\
+b\) prints `Party of 3`\
+c\) raises `ValueError`
 
-. . .
-
-[Predict]{.question}. Pick a letter, then I reveal the answer.
 
 ## Answer: text plus number fails
 
@@ -325,11 +325,10 @@ assert guests > 0, "no guests at the table"
 print("splitting the bill among", guests)
 ```
 
-a\) `AssertionError`, and the `print` never runs   b) prints `splitting the bill among 0`   c) the message, then the `print` line as well
+a\) `AssertionError`, and the `print` never runs\
+b\) prints `splitting the bill among 0`\
+c\) the message, then the `print` line as well
 
-. . .
-
-[Predict]{.question}. Pick a letter, then I reveal the answer.
 
 ## Answer: the tripwire stops it all
 
@@ -384,11 +383,10 @@ print(to_price("bad"))
 print("checkout still running")
 ```
 
-a\) it never runs: the program already stopped   b) the `try` block runs a second time   c) it runs normally: the program carried on
+a\) it never runs: the program already stopped\
+b\) the `try` block runs a second time\
+c\) it runs normally: the program carried on
 
-. . .
-
-[Predict]{.question}. Pick a letter, then I reveal the answer.
 
 ## Answer: it carries on
 
@@ -454,8 +452,10 @@ Scan the QR or type the link:
 
 ## Books to start with
 
-- Downey, A. B. (2024). Think Python: How to think like a computer scientist (Third edition). O'Reilly. [Link to free online version](https://greenteapress.com/wp/think-python-3rd-edition/)
-- Elter, S. (2021). Schrödinger programmiert Python: Das etwas andere Fachbuch (1. Auflage). Rheinwerk Verlag.
+::: {#refs}
+:::
+
+[Think Python](https://greenteapress.com/wp/think-python-3rd-edition/) is free online.
 
 . . .
 

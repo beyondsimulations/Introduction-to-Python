@@ -3,6 +3,8 @@ title: "Lecture VIII - Pandas and AI Craft"
 subtitle: "Programming with Python"
 author: "Dr. Tobias Vlćek"
 institute: "Kühne Logistics University Hamburg - Fall 2026"
+nocite: |
+  @downeyThinkPythonHow2024, @elterSchroedingerProgrammiertPython2021
 format:
   revealjs:
     footer: " {{< meta title >}} | {{< meta author >}} | [Home](lec_08_pandas.qmd)"
@@ -149,11 +151,10 @@ big = df["total_eur"] > 20
 print(big)
 ```
 
-a\) a column of `True`/`False`, one per row   b) only the rows whose total is over 20   c) a single `True`, since some order is over 20
+a\) a column of `True`/`False`, one per row\
+b\) only the rows whose total is over 20\
+c\) a single `True`, since some order is over 20
 
-. . .
-
-[Predict]{.question}. Pick a letter, then I reveal the answer.
 
 ## Answer: a mask, not a table
 
@@ -207,11 +208,10 @@ Tobi filters for the Nord zone, but types it **lowercase**. The data spells it `
 print(df[df["zone"] == "nord"])
 ```
 
-a\) an empty table, no error   b) the Nord rows anyway: case is ignored   c) a `KeyError` for the missing zone
+a\) an empty table, no error\
+b\) the Nord rows anyway: case is ignored\
+c\) a `KeyError` for the missing zone
 
-. . .
-
-[Predict]{.question}. Pick a letter, then I reveal the answer.
 
 ## Answer: an empty table, no warning
 
@@ -308,11 +308,10 @@ Tobi asks the AI for the **Nord average** on the same five orders. It hands back
 print(check["total_eur"].mean())
 ```
 
-a\) `20.0`   b) an `AttributeError`   c) `14.5`
+a\) `20.0`\
+b\) an `AttributeError`\
+c\) `14.5`
 
-. . .
-
-[Predict]{.question}. Pick a letter, then I reveal the answer.
 
 ## Answer: it ran, and it's wrong
 
@@ -343,11 +342,10 @@ orders = pd.DataFrame({"zone": ["Nord", "Sued"], "total_eur": [12.0, 9.5]})
 orders.summarize()
 ```
 
-a\) prints a summary table   b) raises an `AttributeError`   c) returns an empty DataFrame
+a\) prints a summary table\
+b\) raises an `AttributeError`\
+c\) returns an empty DataFrame
 
-. . .
-
-[Predict]{.question}. Pick a letter, then I reveal the answer.
 
 ## Answer: the method never existed
 
@@ -490,8 +488,10 @@ How it works inside: Session X. Today it is a tool you supervise.
 
 ## Books to start with
 
-- Downey, A. B. (2024). Think Python: How to think like a computer scientist (Third edition). O'Reilly. [Link to free online version](https://greenteapress.com/wp/think-python-3rd-edition/)
-- Elter, S. (2021). Schrödinger programmiert Python: Das etwas andere Fachbuch (1. Auflage). Rheinwerk Verlag.
+::: {#refs}
+:::
+
+[Think Python](https://greenteapress.com/wp/think-python-3rd-edition/) is free online.
 
 . . .
 

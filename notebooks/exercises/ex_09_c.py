@@ -27,7 +27,7 @@ def _():
 def _(mo):
     mo.md(
         r"""
-    # Quick exercise: the right chart for categories (5-10 min)
+    # Quick exercise: proportional ink (5-10 min)
     """
     )
     return
@@ -50,15 +50,14 @@ def _(mo):
 def _(mo):
     mo.md(
         r"""
-    Line charts show change over TIME. Zones aren't a timeline: they're
-    categories to compare, and `plt.bar(labels, heights)` is the chart
-    for that job.
+    Episode 9: Tobi's slide for the rider meeting shows each rider's
+    deliveries this month. His agent picked the y-axis, and Ben's bar
+    towers over Deniz's. A bar shows its number by its **length**, so a
+    bar on an axis that starts at 75 has lost its first 75. Bars start
+    at 0.
 
-    Same marimo rule as last time: the LAST expression in a cell
-    displays, so chart cells end with `plt.gca()`.
-
-    **Predict** first: look at the two demo numbers below: which bar
-    will be taller?
+    **Predict** first: in the demo below, how many times as tall is the
+    right bar as the left one, and how many times as big is its number?
     """
     )
     return
@@ -73,11 +72,38 @@ def _():
 @app.cell
 def _(plt):
     # Worked example (read + run this)
-    _demo_teams = ["Alpha", "Beta"]
-    _demo_scores = [7, 3]
+    _demo_labels = ["Before", "After"]
+    _demo_values = [50, 60]
     plt.figure()  # starts a fresh figure so this chart doesn't draw on top of the last one
-    plt.bar(_demo_teams, _demo_scores)
-    plt.title("Demo: two teams")
+    plt.bar(_demo_labels, _demo_values)
+    plt.ylim(45, 62)  # the axis starts at 45, so the bars show only 5 and 15
+    plt.title("Demo: 60 is 1.2 times 50, the bars say 3 times")
+    plt.gca()
+    return
+
+
+@app.cell
+def _():
+    # Given: do not change this
+    riders_exc = ["Aylin", "Ben", "Chiara", "Deniz"]
+    return (riders_exc,)
+
+
+@app.cell
+def _():
+    # Given: do not change this
+    deliveries_exc = [96, 120, 104, 80]
+    return (deliveries_exc,)
+
+
+@app.cell
+def _(deliveries_exc, plt, riders_exc):
+    # Tobi's slide (given)
+    plt.figure()
+    plt.bar(riders_exc, deliveries_exc)
+    plt.ylim(75, 125)
+    plt.ylabel("Deliveries this month")
+    plt.title("Ben carries the team")
     plt.gca()
     return
 
@@ -86,71 +112,67 @@ def _(plt):
 def _(mo):
     mo.md(
         r"""
-    `zones_exc` and `totals_exc` below are tonight's revenue by delivery
-    zone. Plot a bar chart, then tell the investor which ZONE brought in
-    the most, as a name, not a number.
+    The investor asks: "How many times as many deliveries as Deniz did
+    Ben **really** make?" Answer with the numbers, not the bar lengths:
+    `real_exc`. Then redraw Tobi's slide with the bars from 0.
 
-    The chart itself isn't graded. The check below reads
-    `best_zone_exc`, not your bars.
+    The chart itself isn't graded. The check below reads `real_exc`.
     """
     )
     return
 
 
 @app.cell
-def _():
-    # Given: do not change this
-    zones_exc = ["Nord", "Sued", "Hafen", "Altstadt"]
-    return (zones_exc,)
+def _(deliveries_exc, riders_exc):
+    # YOUR CODE BELOW: how many times as many deliveries as Deniz Ben made
+    real_exc = None
+    return (real_exc,)
 
 
 @app.cell
-def _():
-    # Given: do not change this
-    totals_exc = [412.60, 268.40, 305.90, 351.20]
-    return (totals_exc,)
-
-
-@app.cell
-def _(plt, totals_exc, zones_exc):
+def _(deliveries_exc, plt, riders_exc):
     plt.figure()
-    # YOUR CODE BELOW: plot zones_exc vs totals_exc (labels/title optional, ungraded)
+    # YOUR CODE BELOW: the same bars, starting at 0, with a title that states the point (ungraded)
     plt.gca()
     return
 
 
-@app.cell
-def _(totals_exc, zones_exc):
-    # YOUR CODE BELOW: the NAME of the zone with the highest total
-    best_zone_exc = None
-    return (best_zone_exc,)
-
-
 @app.cell(hide_code=True)
-def _(best_zone_exc, mo, show_result):
+def _(mo, real_exc, show_result):
     # Reactive check. Re-runs when you run the cell above.
-    _expected = "nord"
+    _expected = 1.5
     _result = None
-    if best_zone_exc is None:
+    if real_exc is None:
         _ok = False
-        _msg = "Not attempted: Assign it to `best_zone_exc` (a `print` alone doesn't count) and run the cell."
-    elif isinstance(best_zone_exc, (list, tuple)):
+        _msg = "Not attempted: Assign it to `real_exc` (a `print` alone doesn't count) and run the cell."
+    elif isinstance(real_exc, (list, tuple)):
         _ok = False
-        _result = f"best_zone_exc={best_zone_exc!r}"
-        _msg = "Wrong: That's the whole list. The investor wants ONE winner, not all four zones."
-    elif isinstance(best_zone_exc, (int, float)) and not isinstance(best_zone_exc, bool):
-        _ok = False
-        _result = f"best_zone_exc={best_zone_exc!r}"
-        _msg = "Wrong: That's the bar's HEIGHT (a euro amount). The investor asked WHICH zone, by name."
+        _result = f"real_exc={real_exc!r}"
+        _msg = "Wrong: That's a list. The investor wants ONE number: how many times as many."
     else:
-        _v = str(best_zone_exc).strip().lower()
-        _result = f"best_zone_exc={best_zone_exc!r}"
-        if _v == _expected:
-            _ok = True
-            _msg = "Correct: One glance at the bar chart and the investor knows where to expand."
-        else:
+        try:
+            _v = round(float(real_exc), 2)
+        except (TypeError, ValueError):
             _ok = False
-            _msg = "Wrong: Read the tallest bar again and check its label."
+            _v = None
+            _msg = "Wrong: That's not a number yet. Check what your expression returns."
+        else:
+            _result = f"real_exc={real_exc}"
+            if _v == _expected:
+                _ok = True
+                _msg = "Correct: Exercise 9.c: 120 against 80, one and a half times. Ben is ahead, but he doesn't carry the team."
+            elif _v == 9.0:
+                _ok = False
+                _msg = "Wrong: That's what Tobi's picture claims, because both bars start at 75. Use the delivery numbers themselves."
+            elif _v == 40.0:
+                _ok = False
+                _msg = "Wrong: That's how many MORE deliveries Ben made. 'How many times as many' is a ratio."
+            elif _v == 0.67:
+                _ok = False
+                _msg = "Wrong: Flipped: that's Deniz compared with Ben. Ben's number goes on top."
+            else:
+                _ok = False
+                _msg = "Wrong: Divide Ben's deliveries by Deniz's."
     mo.callout(mo.md(_msg + show_result(_result)), kind="success" if _ok else "warn")
     return
 
@@ -159,8 +181,8 @@ def _(best_zone_exc, mo, show_result):
 def _(mo):
     mo.accordion(
         {
-            "Hint 1 (a nudge)": "`plt.bar(zones_exc, totals_exc)` draws the bars, but the check wants the zone's NAME, not its height. Which list method finds the POSITION of the largest number in `totals_exc`? Use that position to look up a name in `zones_exc`.",
-            "Hint 2 (the structure)": "```python\n_best_index = totals_exc.index(___(totals_exc))\nbest_zone_exc = zones_exc[___]\n```",
+            "Hint 1 (a nudge)": "Ben sits at position 1 in both lists, Deniz at position 3. 'How many times as many' divides one number by the other. For the chart, leave out whatever moved the axis away from 0.",
+            "Hint 2 (the structure)": "```python\nreal_exc = deliveries_exc[___] / deliveries_exc[___]\n```",
         }
     )
     return
@@ -170,60 +192,57 @@ def _(mo):
 def _(mo):
     mo.md(
         r"""
-    **Done? Then:** the investor wants the bars in order, tallest first,
-    so the ranking reads left to right. Re-plot the bars sorted by
-    height, then tell her which zone comes SECOND: `second_zone_exc`.
+    **Done? Then:** put a number on the lie. In Tobi's chart, how many
+    times as **tall** is Ben's bar as Deniz's? Every bar there starts at
+    75, so only the part above 75 is visible: `picture_exc`.
     """
     )
     return
 
 
 @app.cell
-def _(plt, totals_exc, zones_exc):
-    plt.figure()
-    # YOUR CODE BELOW: bar chart sorted by height, tallest first (ungraded)
-    plt.gca()
-    return
-
-
-@app.cell
-def _(totals_exc, zones_exc):
-    # YOUR CODE BELOW: the NAME of the second-highest zone, once the bars are sorted
-    second_zone_exc = None
-    return (second_zone_exc,)
+def _(deliveries_exc):
+    # YOUR CODE BELOW: how many times as tall Ben's bar is as Deniz's in Tobi's chart
+    picture_exc = None
+    return (picture_exc,)
 
 
 @app.cell(hide_code=True)
-def _(mo, second_zone_exc, show_result):
+def _(mo, picture_exc, show_result):
     # Reactive check. Re-runs when you run the cell above.
-    _expected = "altstadt"
+    _expected = 9.0
     _result = None
-    if second_zone_exc is None:
+    if picture_exc is None:
         _ok = False
-        _msg = "Not attempted: Assign it to `second_zone_exc` (a `print` alone doesn't count) and run the cell."
-    elif isinstance(second_zone_exc, (list, tuple)):
+        _msg = "Not attempted: Assign it to `picture_exc` (a `print` alone doesn't count) and run the cell."
+    elif isinstance(picture_exc, (list, tuple)):
         _ok = False
-        _result = f"second_zone_exc={second_zone_exc!r}"
-        _msg = "Wrong: That's a whole list (or a pair). The investor wants ONE zone name."
-    elif isinstance(second_zone_exc, (int, float)) and not isinstance(second_zone_exc, bool):
-        _ok = False
-        _result = f"second_zone_exc={second_zone_exc!r}"
-        _msg = "Wrong: That's a bar's HEIGHT. She asked for the zone's NAME."
+        _result = f"picture_exc={picture_exc!r}"
+        _msg = "Wrong: That's a list. The answer is ONE number."
     else:
-        _v = str(second_zone_exc).strip().lower()
-        _result = f"second_zone_exc={second_zone_exc!r}"
-        if _v == _expected:
-            _ok = True
-            _msg = "Correct: Exercise 9.c stretch: Nord, then Altstadt. Sorted bars make the ranking readable at a glance."
-        elif _v == "sued":
+        try:
+            _v = round(float(picture_exc), 2)
+        except (TypeError, ValueError):
             _ok = False
-            _msg = "Wrong: That's the SMALLEST zone: you sorted ascending. Tallest first means `reverse=True`."
-        elif _v == "hafen":
-            _ok = False
-            _msg = "Wrong: That's the second entry of the ORIGINAL list order. Sort by height first, then take position 1."
+            _v = None
+            _msg = "Wrong: That's not a number yet. Check what your expression returns."
         else:
-            _ok = False
-            _msg = "Wrong: Pair each total with its zone, sort the pairs by total (largest first), read the second pair's name."
+            _result = f"picture_exc={picture_exc}"
+            if _v == _expected:
+                _ok = True
+                _msg = "Correct: Exercise 9.c stretch: 45 against 5. The picture says 9 times, the data says 1.5. That gap is what 'bars start at 0' prevents."
+            elif _v == 1.5:
+                _ok = False
+                _msg = "Wrong: That's the real ratio. In Tobi's picture each bar starts at 75: measure from there."
+            elif _v == 24.0:
+                _ok = False
+                _msg = "Wrong: Close: you took 75 away from Deniz's bar only. Both bars start at 75."
+            elif _v == 0.56:
+                _ok = False
+                _msg = "Wrong: Close: you took 75 away from Ben's bar only. Both bars start at 75."
+            else:
+                _ok = False
+                _msg = "Wrong: The visible part of a bar is its number minus 75. Compare Ben's visible part with Deniz's."
     mo.callout(mo.md(_msg + show_result(_result)), kind="success" if _ok else "warn")
     return
 
@@ -232,11 +251,12 @@ def _(mo, second_zone_exc, show_result):
 def _(mo):
     mo.accordion(
         {
-            "Hint 1 (a nudge)": "`zip(totals_exc, zones_exc)` makes (total, zone) pairs; `sorted(...)` orders pairs by their first item. Which keyword flips the order so the largest comes first? The second pair holds your zone. For the chart, unzip the sorted pairs back into two lists.",
-            "Hint 2 (the structure)": "```python\n_ranked = sorted(zip(totals_exc, zones_exc), reverse=___)\nsecond_zone_exc = _ranked[___][1]\n```",
+            "Hint 1 (a nudge)": "Ben's bar shows 120 minus 75, Deniz's shows 80 minus 75. Divide one visible part by the other.",
+            "Hint 2 (the structure)": "```python\npicture_exc = (deliveries_exc[1] - ___) / (deliveries_exc[3] - ___)\n```",
         }
     )
     return
+
 
 @app.cell(hide_code=True)
 def _(mo):

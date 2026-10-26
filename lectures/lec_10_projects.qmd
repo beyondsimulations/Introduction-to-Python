@@ -167,58 +167,26 @@ Right now, in the room:
 . . .
 
 :::{.callout-tip}
-**A good outcome by the end of this block:** a one-sentence pitch ("we're building X that does Y for Z"), a name for the project, and a decision on who owns the shared repo (the owner creates it in the git block, so pick whoever did the git homework; the partners clone). The sentence keeps you honest about scope; the name goes on the repo in a minute.
+**A good outcome by the end of this block:** a one-sentence pitch ("we're building X that does Y for Z"), a name for the project, and a decision on who owns the shared repo (the owner creates it in the git block; the partners clone). The sentence keeps you honest about scope; the name goes on the repo in a minute.
 :::
 
 # [Your First Repo]{.flow} {.title}
 
-## Check your homework
+## Your setup from Session IX
 
-git and `gh` were the homework from Session IX. Before we build anything, they need to work. In Zed's terminal (`` Ctrl+` ``):
+Your laptop passed the git check last week. One look before we build, in Zed's terminal (`` Ctrl+` ``):
 
 ```bash
-git --version
-gh --version
 gh auth status
 ```
 
-- Two version numbers, and the last command says **Logged in to github.com**? You're set.
-- No login yet? The next slide is yours.
+**Logged in to github.com**? You're set.
 
 . . .
 
 :::{.callout-important}
-**Didn't work?** Don't burn the session fighting it. Tell me, sit with a partner whose machine works, and follow along on the slides for now. I sort it out with you in class or by e-mail; nobody gets left behind.
+**Missed Session IX, or the login has gone?** Don't burn the session fighting it. Sit with a partner whose laptop works and follow along on the slides. The [one-time setup](../general/git-basics.qmd#one-time-setup) takes ten minutes, at the break or with me in Session XI. Nobody's project stalls on a login.
 :::
-
-## Once per machine
-
-Before your laptop can talk to GitHub, it has to prove it's allowed to. Signing in to **Zed does not do this**; git needs its own login, and the `gh` tool handles it. If `gh auth status` showed no login, do it now, once per computer:
-
-```bash
-gh auth login
-```
-
-Choose GitHub.com, **HTTPS**, authenticate in the browser, and answer yes to *"Authenticate Git with your GitHub credentials?"*.
-
-. . .
-
-:::{.callout-important}
-**Login fighting you?** Same rule: **tell me**, follow along on the slides, and finish at home with the [Git Basics](../general/git-basics.qmd) page, or with me in the supervised sessions. Nobody's project stalls on a login.
-:::
-
-## Tell git who you are
-
-Everyone, logged in or not: three settings, once per computer. Running them twice does no harm.
-
-```bash
-git config --global user.name "Your Name"
-git config --global user.email "you@example.com"
-git config --global pull.rebase false
-```
-
-- **Name and e-mail** are how git answers the lawyer's *who?* Use the e-mail of your GitHub account, so GitHub knows it's you
-- **The third line** is for group work later: git then simply combines your partners' changes with yours
 
 ## Your project starts on GitHub
 

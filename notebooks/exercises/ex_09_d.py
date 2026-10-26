@@ -27,7 +27,7 @@ def _():
 def _(mo):
     mo.md(
         r"""
-    # Quick exercise: fix the axis (5-10 min)
+    # Quick exercise: make one point (5-10 min)
     """
     )
     return
@@ -50,13 +50,17 @@ def _(mo):
 def _(mo):
     mo.md(
         r"""
-    Episode 9: Tobi's AI drafted the signups slide for the pitch deck.
-    It runs, the line climbs like a rocket, and the investor reads the
-    axis before she reads the line. The rule: a growth claim starts at
-    zero.
+    Episode 9: the new rider goes to the zone that **grew the most**.
+    Tobi's agent drew six weeks of orders per zone: four colors, a
+    legend, and the title *Orders per week*. The answer is in there,
+    but the investor has to hunt for it.
 
-    **Predict** first: look at the y-axis numbers below. Where does
-    Tobi's axis start, and how far is that from 0?
+    One accent color for the point and grey for the rest, the names at
+    the line ends instead of a legend, and a title that states the
+    point: then the chart answers before anyone asks.
+
+    **Predict** first: in the demo below, which line do you look at
+    first, and why?
     """
     )
     return
@@ -69,20 +73,42 @@ def _():
 
 
 @app.cell
-def _():
-    # Given: do not change this. Signups per week, week 1 → week 4.
-    signups_exd = [1180, 1195, 1210, 1230]
-    return (signups_exd,)
+def _(plt):
+    # Worked example (read + run this)
+    _demo_weeks = [1, 2, 3, 4]
+    plt.figure()  # starts a fresh figure so this chart doesn't draw on top of the last one
+    plt.plot(_demo_weeks, [10, 11, 10, 12], color="lightgrey")  # the rest: quiet
+    plt.plot(_demo_weeks, [9, 13, 18, 24], color="darkred", linewidth=3)  # the point
+    plt.text(4.1, 12, "Team A", color="grey")  # a name at the line end, no legend
+    plt.text(4.1, 24, "Team B", color="darkred")
+    plt.xlim(0.8, 4.8)  # room on the right for the names
+    plt.title("Demo: Team B grew from 9 to 24")
+    plt.gca()
+    return
 
 
 @app.cell
-def _(plt, signups_exd):
-    # Tobi's AI-generated chart: runs fine, the numbers are real
-    plt.figure()  # starts a fresh figure so this chart doesn't draw on top of the last one
-    plt.plot(range(1, 5), signups_exd, marker="o")
-    plt.ylim(1170, 1240)
-    plt.ylabel("Signups per week")
-    plt.title("Tobi's slide")
+def _():
+    # Given: do not change this
+    weekly_exd = {
+        "Nord": [40, 42, 41, 43, 42, 44],
+        "Altstadt": [55, 53, 54, 52, 53, 51],
+        "Hafen": [30, 34, 39, 45, 50, 57],
+        "Sued": [38, 37, 39, 38, 40, 39],
+    }
+    return (weekly_exd,)
+
+
+@app.cell
+def _(plt, weekly_exd):
+    # Tobi's slide (given)
+    plt.figure()
+    for _zone, _orders in weekly_exd.items():
+        plt.plot([1, 2, 3, 4, 5, 6], _orders, marker="o", label=_zone)
+    plt.legend()
+    plt.xlabel("Week")
+    plt.ylabel("Orders")
+    plt.title("Orders per week")
     plt.gca()
     return
 
@@ -91,64 +117,62 @@ def _(plt, signups_exd):
 def _(mo):
     mo.md(
         r"""
-    The axis starts at 1170. Fix it: set `floor_exd` to where a growth
-    chart's y-axis must start, then re-plot `signups_exd` with
-    `plt.ylim(floor_exd, 1300)`.
+    Which zone grew the most from week 1 to week 6, in percent of its
+    week 1? Put its name in `zone_exd`. Then redraw Tobi's slide so it
+    makes that one point: your zone stands out, the others step back,
+    every line carries its name, and the title says what happened.
 
-    The chart isn't graded. The check reads `floor_exd`, the number you
-    chose for the bottom of the axis.
+    The chart itself isn't graded. The check below reads `zone_exd`.
     """
     )
     return
 
 
 @app.cell
-def _():
-    # YOUR CODE BELOW: where a growth chart's y-axis has to start
-    floor_exd = None
-    return (floor_exd,)
+def _(weekly_exd):
+    # YOUR CODE BELOW: the NAME of the zone that grew the most from week 1 to week 6
+    zone_exd = None
+    return (zone_exd,)
 
 
 @app.cell
-def _(floor_exd, plt, signups_exd):
+def _(plt, weekly_exd, zone_exd):
     plt.figure()
-    # YOUR CODE BELOW: re-plot signups_exd with plt.ylim(floor_exd, 1300) (ungraded)
+    # YOUR CODE BELOW: one accent line, grey for the rest, names at the line ends, a claim as title (ungraded)
     plt.gca()
     return
 
 
 @app.cell(hide_code=True)
-def _(floor_exd, mo, show_result):
+def _(mo, show_result, zone_exd):
     # Reactive check. Re-runs when you run the cell above.
-    _expected = 0.0
     _result = None
-    if floor_exd is None:
+    if zone_exd is None:
         _ok = False
-        _msg = "Not attempted: Assign it to `floor_exd` (a `print` alone doesn't count) and run the cell."
+        _msg = "Not attempted: Assign it to `zone_exd` (a `print` alone doesn't count) and run the cell."
+    elif isinstance(zone_exd, (list, tuple, dict)):
+        _ok = False
+        _result = f"zone_exd={zone_exd!r}"
+        _msg = "Wrong: That's a whole collection. The rider goes to ONE zone: give its name."
+    elif isinstance(zone_exd, (int, float)) and not isinstance(zone_exd, bool):
+        _ok = False
+        _result = f"zone_exd={zone_exd!r}"
+        _msg = "Wrong: That's a number. The investor asked WHICH zone, by name."
     else:
-        try:
-            _v = round(float(floor_exd), 2)
-        except (TypeError, ValueError):
+        _v = str(zone_exd).strip().lower()
+        _result = f"zone_exd={zone_exd!r}"
+        if _v == "hafen":
+            _ok = True
+            _msg = "Correct: Exercise 9.d: Hafen, from 30 to 57 orders a week. One red line, three grey ones, and the rider's zone is obvious."
+        elif _v == "altstadt":
             _ok = False
-            _v = None
-            _msg = "Wrong: That's not a number yet. `floor_exd` is where the y-axis starts."
+            _msg = "Wrong: Altstadt has the most orders, but it shrank from 55 to 51. The rider goes where orders GREW."
+        elif _v in ("nord", "sued"):
+            _ok = False
+            _msg = "Wrong: That zone barely moved. Compare week 6 with week 1 for every zone."
         else:
-            _result = f"floor_exd={floor_exd}"
-            if _v == _expected:
-                _ok = True
-                _msg = "Correct: Exercise 9.d: from zero, the rocket is a gentle slope. That's the real 4 %."
-            elif _v == 1170.0:
-                _ok = False
-                _msg = "Wrong: That's Tobi's floor, the one that makes the cliff. A growth claim starts at zero."
-            elif _v == 1180.0:
-                _ok = False
-                _msg = "Wrong: Starting at the smallest value is the same trick with a different number. The rule says zero."
-            elif _v > 0:
-                _ok = False
-                _msg = "Wrong: Lower, but still not the baseline. Where does a growth chart start, by the rule on the slide?"
-            else:
-                _ok = False
-                _msg = "Wrong: Below zero only adds empty space under the line. The rule names one number."
+            _ok = False
+            _msg = "Wrong: Pick one of the four zone names in `weekly_exd`."
     mo.callout(mo.md(_msg + show_result(_result)), kind="success" if _ok else "warn")
     return
 
@@ -157,8 +181,8 @@ def _(floor_exd, mo, show_result):
 def _(mo):
     mo.accordion(
         {
-            "Hint 1 (a nudge)": "The slide said it in four words: growth starts at zero. `floor_exd` is that number. Then `plt.plot(range(1, 5), signups_exd)` and `plt.ylim(floor_exd, 1300)` in the chart cell.",
-            "Hint 2 (the structure)": "```python\nfloor_exd = ___\n\n# chart cell:\nplt.plot(range(1, 5), signups_exd, marker=\"o\")\nplt.ylim(floor_exd, ___)\n```",
+            "Hint 1 (a nudge)": "For each zone, compare its last week with its first: `weekly_exd[\"Nord\"][-1]` against `weekly_exd[\"Nord\"][0]`. A loop over `weekly_exd.items()` keeps the zone whose ratio is the largest. For the chart: `color=\"lightgrey\"` for the quiet lines, `plt.text(x, y, name)` for the names.",
+            "Hint 2 (the structure)": "```python\n_best, _best_ratio = None, 0\nfor _zone, _orders in weekly_exd.items():\n    _ratio = _orders[___] / _orders[___]\n    if _ratio > _best_ratio:\n        _best, _best_ratio = _zone, _ratio\nzone_exd = ___\n```",
         }
     )
     return
@@ -168,51 +192,60 @@ def _(mo):
 def _(mo):
     mo.md(
         r"""
-    **Done? Then:** the 1300 at the top was a guess. The investor's
-    rule for the top of the axis: the biggest value, rounded UP to the
-    next full hundred. Compute it from `signups_exd` as `top_exd`, then
-    swap the 1300 in your chart for it.
+    **Done? Then:** a claim needs its proof. By how many **percent** did
+    your zone grow from week 1 to week 6? That number goes into the
+    title: `growth_exd`.
     """
     )
     return
 
 
 @app.cell
-def _(signups_exd):
-    # YOUR CODE BELOW: the biggest value in signups_exd, rounded UP to the next full hundred
-    top_exd = None
-    return (top_exd,)
+def _(weekly_exd, zone_exd):
+    # YOUR CODE BELOW: the growth of zone_exd from week 1 to week 6, in percent of week 1
+    growth_exd = None
+    return (growth_exd,)
 
 
 @app.cell(hide_code=True)
-def _(mo, show_result, top_exd):
+def _(growth_exd, mo, show_result):
     # Reactive check. Re-runs when you run the cell above.
-    _expected = 1300.0
+    _expected = 90.0
     _result = None
-    if top_exd is None:
+    if growth_exd is None:
         _ok = False
-        _msg = "Not attempted: Assign it to `top_exd` (a `print` alone doesn't count) and run the cell."
+        _msg = "Not attempted: Assign it to `growth_exd` (a `print` alone doesn't count) and run the cell."
+    elif isinstance(growth_exd, (list, tuple)):
+        _ok = False
+        _result = f"growth_exd={growth_exd!r}"
+        _msg = "Wrong: That's a list. The title needs ONE number."
     else:
         try:
-            _v = round(float(top_exd), 2)
+            _v = round(float(growth_exd), 2)
         except (TypeError, ValueError):
             _ok = False
             _v = None
             _msg = "Wrong: That's not a number yet. Check what your expression returns."
         else:
-            _result = f"top_exd={top_exd}"
+            _result = f"growth_exd={growth_exd}"
             if _v == _expected:
                 _ok = True
-                _msg = "Correct: Exercise 9.d stretch: 1230 rounds up to 1300, so the top of the axis now comes from a rule instead of a guess."
-            elif _v == 1230.0:
+                _msg = "Correct: Exercise 9.d stretch: +90 % in six weeks. 'Hafen grew 90 % in six weeks' is a title the investor can check."
+            elif _v == 27.0:
                 _ok = False
-                _msg = "Wrong: That's the biggest value itself. The line would touch the ceiling. Round UP to the next hundred."
-            elif _v == 1200.0:
+                _msg = "Wrong: That's the growth in ORDERS. The title wants it in percent of week 1."
+            elif _v == 0.9:
                 _ok = False
-                _msg = "Wrong: `//` rounds DOWN, so 1230 became 1200 and the line runs off the chart. Add one more hundred."
+                _msg = "Wrong: That's the growth as a fraction. Times 100 makes it percent."
+            elif _v == 47.37:
+                _ok = False
+                _msg = "Wrong: That's the growth in percent of week 6. Growth is measured from where you started: week 1."
+            elif _v == 190.0:
+                _ok = False
+                _msg = "Wrong: That's week 6 in percent of week 1. Growth is only the part ABOVE 100 %."
             else:
                 _ok = False
-                _msg = "Wrong: Take the biggest value, divide by 100 with `//`, add 1, multiply by 100 again."
+                _msg = "Wrong: Growth in percent is the change from week 1 to week 6, divided by week 1, times 100."
     mo.callout(mo.md(_msg + show_result(_result)), kind="success" if _ok else "warn")
     return
 
@@ -221,8 +254,8 @@ def _(mo, show_result, top_exd):
 def _(mo):
     mo.accordion(
         {
-            "Hint 1 (a nudge)": "`max(signups_exd)` is 1230. `1230 // 100` counts the full hundreds in it (12). One more hundred than that, times 100, is the next full hundred above.",
-            "Hint 2 (the structure)": "`top_exd = (max(___) // 100 + ___) * 100`",
+            "Hint 1 (a nudge)": "Take your zone's list from `weekly_exd`. The change is last week minus first week; divide it by the first week and multiply by 100.",
+            "Hint 2 (the structure)": "```python\n_orders = weekly_exd[zone_exd]\ngrowth_exd = (_orders[___] - _orders[___]) / _orders[___] * 100\n```",
         }
     )
     return
