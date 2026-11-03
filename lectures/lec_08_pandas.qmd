@@ -1,5 +1,5 @@
 ---
-title: "Lecture VIII - Pandas and AI Craft"
+title: "Lecture VIII - Pandas and gAI"
 subtitle: "Programming with Python"
 author: "Dr. Tobias Vlćek"
 institute: "Kühne Logistics University Hamburg - Fall 2026"
@@ -13,12 +13,12 @@ format:
 
 # Checkpoint 4 {.loud-slide}
 
-**Sessions VI-VII.** The first 40 minutes are the checkpoint. It starts now, before the investor opens her data room.
+**Sessions VI-VII.** The first 40 minutes are the checkpoint. It starts now.
 
 - **Individual work**: no neighbors, no messaging
-- **Any AI tool is allowed**: the graded skill is to **VERIFY** its output
+- **Any gAI tool is allowed**: the graded skill is to **VERIFY** its output
 - The **link is on Moodle**. Open it and start
-- 12 short tasks: Tobi's chatbot wrote the cells. You keep the right ones, fix the wrong ones, break one and write one
+- 12 short tasks: Tobi's chatbot wrote the cells. You keep the right ones, fix the wrong ones.
 - It sweeps **Sessions VI-VII**: modules, `random` and seeds, NumPy arrays and masks
 
 <!-- Link goes out via the hidden Moodle URL resource (shown at the start),
@@ -27,7 +27,7 @@ format:
 
 ## When you're done
 
-**Cmd/Ctrl+S**, then menu → *Download* → *Download Python code* → upload the `.py` to the **"Checkpoint 4"** assignment on Moodle, before the 40 minutes are up. **No retakes**: one sitting.
+**Cmd/Ctrl+S**, then menu → *Download* → *Download Python code* → upload the `.py` to the **"Checkpoint 4"** assignment on Moodle, before the 40 minutes are up. **No retakes**: one session.
 
 . . .
 
@@ -49,7 +49,7 @@ Tobi didn't wait. He'd pasted the question into a chatbot, proudly turned the la
 
 . . .
 
-The AI sounded certain. The method it called **does not exist.** Today starts with the tool that answers the investor for real, **pandas**, and then comes back to that difference.
+The gAI sounded certain, but the method it called **does not exist.** Today starts with the tool that answers the investor for real, **pandas**, and then comes back to that difference.
 
 # [The DataFrame]{.flow} {.title}
 
@@ -114,7 +114,7 @@ print(df.describe())
 
 . . .
 
-One call, the whole numeric summary: this is the `.overview()` Tobi's chatbot wished existed, under its real name.
+One call, the whole summary: this is the `.overview()` Tobi's chatbot wished existed.
 
 ## Selecting a column
 
@@ -225,11 +225,11 @@ print("rows:", len(df[df["zone"] == "nord"]))
 
 . . .
 
-**a) an empty table**. `"nord"` matches nothing, so the mask is all `False` and pandas hands back **zero rows**. No error, no complaint.
+**a) an empty table**. `"nord"` matches nothing, so the mask is all `False` and pandas hands back **zero rows**. No error...
 
 . . .
 
-This is the dangerous kind of bug: it **runs**, it just returns nothing. **pandas won't warn you; YOU verify**, which is exactly why you test filters on a case whose answer you know.
+This is the dangerous kind of bug: it **runs**, it just returns nothing. **pandas won't warn you**, which is exactly why we try to test filters on a case whose answer we know.
 
 ## One more tool: `groupby`
 
@@ -256,7 +256,7 @@ Scan the QR or type the link:
 
 **Any questions?** Let me know!
 
-# [AI joins the team]{.flow} {.title}
+# [gAI joins the team]{.flow} {.title}
 
 ## Prompting: context + constraints
 
@@ -273,7 +273,7 @@ Vague in, vague out. Specific in, checkable out, then you **iterate**.
 
 ## The verify workflow
 
-Tobi's mistake wasn't *using* AI. It was **shipping without checking.** Every line an AI hands you gets three passes:
+Tobi's mistake wasn't *using* gAI. It was **shipping without checking.** Every line an gAI hands you should get three passes if it is critical:
 
 1. **Read it**: do you understand what each line claims to do?
 2. **Run it**: does it actually execute, or does it crash?
@@ -281,7 +281,7 @@ Tobi's mistake wasn't *using* AI. It was **shipping without checking.** Every li
 
 ## Step 3 in action
 
-Five orders with values you can add in your head, and the AI's suggested line for the Nord average:
+Five orders with values you can add in your head, and the gAI's suggested line for the Nord average:
 
 ```{python}
 #| eval: true
@@ -298,11 +298,11 @@ print(check[check["zone"] == "Nord"]["total_eur"].mean())
 
 . . .
 
-The Nord orders are 10, 20 and 30. You can average those in your head. Does the AI's answer match? Then the line has earned some trust on the real file. Verification is the job now, not typing.
+The Nord orders are 10, 20 and 30. You can average those in your head. Does the gAI's answer match? Then the line has earned trust on the real file. With gAI, verification is often the job now, not typing the code yourself.
 
 ## Predict: it ran, so it's right?
 
-Tobi asks the AI for the **Nord average** on the same five orders. It hands back one line and calls it done. What does this print?
+Tobi asks the gAI for the **Nord average** on the same five orders. It hands back one line and calls it done. What does this print?
 
 ```python
 print(check["total_eur"].mean())
@@ -329,11 +329,11 @@ print(check[check["zone"] == "Nord"]["total_eur"].mean())    # Nord only
 
 . . .
 
-No traceback, a plausible number, and still wrong. "It runs" only clears step 2; step 3 is where the investor's number gets tested.
+No traceback, a plausible number, and still wrong. "Code runs" only clears step 2. Step 3 is where the actual number get tested.
 
 ## Predict: does `.summarize()` exist?
 
-The AI wrote this for Tobi. `orders` is a tiny two-row frame. What happens on the last line?
+The gAI wrote this for Tobi. `orders` is a tiny two-row frame. What happens on the last line?
 
 ```python
 import pandas as pd
@@ -363,12 +363,12 @@ c\) returns an empty DataFrame
 
 import pandas as pd
 orders = pd.DataFrame({"zone": ["Nord", "Sued"], "total_eur": [12.0, 9.5]})
-orders.summarize()                     # the method the AI invented
+orders.summarize()                     # the method the gAI invented
 ```
 
 . . .
 
-**b) `AttributeError`**: pandas has no `.summarize()`. The AI invented it.
+**b) `AttributeError`**: pandas has no `.summarize()`. The gAI invented it.
 
 ## The real method is `.describe()`
 
@@ -381,45 +381,41 @@ print(orders.describe())               # the method that actually exists
 
 . . .
 
-**An AI that sounds sure is not the same as an API that exists.**
+**A gAI that sounds sure is not the same as a function or method that exists.**
 
 ## Why did it invent a method?
 
-Session VI gave you the machine, so here is why it fails in exactly this way.
+Session VI gave you the basics, so here is why it sometimes fails.
 
 - Training rewards a [plausible]{.highlight} continuation and never checks a [true]{.highlight} one: nothing in the loop verifies facts
 - And it always writes *some* next token, confident or not: a choice gets picked, printed, and it all looks equally smooth
-- `.summarize` is a *plausible* pandas name: short, lowercase, shaped like `.describe()`. Plausible is what the machine optimizes for
+- `.summarize` is a *plausible* pandas name: short, lowercase, shaped like `.describe()`.
 
 . . .
 
-**Fluent and wrong is not a bug to patch. It is how the machine works.**
+**Fluent and wrong is difficult to fix. It is how gAI works due to its stochastic nature.**
 
-## How it was trained, in one slide
+## How it was trained
 
-- **Pre-training**: predict the next token over massive text, where the [weights]{.highlight} inside get adjusted; applying them afterwards is cheap
+- **Pre-training**: predict the next token over massive text, where the [weights]{.highlight} inside get adjusted. Applying them afterwards (called *inference*) is much cheaper
 - **Fine-tuning**: curated examples teach it to follow instructions
-- **RLHF** (reinforcement learning from human feedback): humans rank answers; it learns to prefer the ranked-higher ones
-- Its knowledge has an end date, the [knowledge cutoff]{.highlight}: after it, it guesses fluently instead. And it inherits the [biases]{.highlight} of the text it read
+- **RLHF** (reinforcement learning from human feedback): humans rank answers and it learns to prefer the ranked-higher ones
+- Its knowledge has an end date, the [knowledge cutoff]{.highlight}: after it, it guesses fluently or uses web search. And it inherits the [biases]{.highlight} of the text it read!
 
 . . .
 
-Every stage rewards *sounding* right; none of them checks pandas. That is your job, and step 3 of the verify workflow is how.
+Every stage rewards *sounding* right. Verifacation is your job (at least for now), and step 3 of the verify workflow is how.
 
 ## Disclosure: say what the AI did
 
-In your project (Part III) you list each AI use in one line. Labs and checkpoints need no note, but the habit is worth starting today:
-
-- *"Used the chatbot to draft the `groupby` line; I checked the totals by hand."*
-- Standard practice, not an admission of anything.
-
+In your project (Part III) you will have to list each AI use in one line. Labs and checkpoints need no note. This is a good habit to get into for your own work.
 . . .
 
-It protects **you**: it separates the work you understand from the work you pasted, so when a reviewer (or the investor) asks "how does this line work?", you're never caught claiming something you can't explain.
+Although it sounds strange, it protects **you**: it separates the work you understand from the work you pasted, so when a reviewer (or the investor or a different professor) asks "how does this work?", you're never caught claiming something you can't explain.
 
 ## When NOT to reach for AI
 
-Sometimes the fastest path is the one you already own. You built a whole muscle in Part I:
+Sometimes the fastest path is a different one:
 
 - A red traceback? **You've read those since Episode 5.** The last line names the error and points at the file, often faster than describing it to a chatbot.
 - A one-line filter you've written ten times? Just write it.
@@ -427,7 +423,7 @@ Sometimes the fastest path is the one you already own. You built a whole muscle 
 . . .
 
 :::{.callout-tip}
-Use AI to draft the unfamiliar and to explain the confusing, not to skip thinking you can do yourself.
+Use gAI to draft the unfamiliar and to explain the confusing, not to skip thinking you can do yourself (at least while you are in university).
 :::
 
 # Your turn {.loud-slide}
@@ -454,7 +450,7 @@ Scan the QR or type the link:
 . . .
 
 :::{.callout-important}
-**Show me the last block before you leave**, for feedback: the script prints `SHOW THIS IN CLASS`, and I compare your numbers with mine. Not done? Finish at home.
+**Show me the last block before you leave**, for feedback: the script prints `SHOW THIS IN CLASS`, and I compare your numbers with mine.
 :::
 
 ## Your agent, in Zed
@@ -468,7 +464,7 @@ Open the agent panel (the sparkle icon, bottom right), pick **Mistral Vibe**, an
 
 . . .
 
-How it works inside: Session X. Today it is a tool you supervise.
+More on how gAI works and how you can use it even better in Session X. Today it is a tool you supervise.
 
 # [Wrap-up]{.flow} {.title}
 
@@ -481,7 +477,7 @@ How it works inside: Session X. Today it is a tool you supervise.
 . . .
 
 ::: {.callout-note}
-**Next episode: charts the investor can't argue with.** Numbers convince the careful; a good plot convinces the room. We turn the data room into pictures.
+**Next episode: charts the investor can't argue with.** Numbers convince the careful and a good plot convinces the room. We turn the data room into pictures.
 :::
 
 # [Literature]{.flow} {.title}
