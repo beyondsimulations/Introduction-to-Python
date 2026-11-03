@@ -5,6 +5,9 @@
 - Private repo (`../Introduction-to-Python-checkpoints`): checkpoint notebooks,
   reference tests, ALL solution notebooks (`solutions/sol_XX_*.py`).
 - Commit rule: never add AI-attribution lines (Co-Authored-By etc.) in either repo.
+- Voice (Tobi, 2026-11-03): student-facing text speaks as "I" ("show it to me",
+  "I check every judgment"). There is one lecturer and these are his materials,
+  so never "your lecturer" or "the lecturer".
 
 ## Notebooks (see notebooks/_template.py for the skeleton)
 - Every notebook opens with a title cell holding ONLY the `#` heading, then
@@ -166,7 +169,7 @@ Exception, Session IX (owner decision 2026-10-26): same shape as VII. After
 the wrap-up comes `Git before the lab` (install git and gh, `gh auth login`,
 `gh auth setup-git`, name, e-mail, `pull.rebase false`), then the check
 (`git --version`, `gh auth status`, `git config --global user.email`), shown
-to the lecturer; it is the one thing students must show before they leave.
+to Tobias; it is the one thing students must show before they leave.
 Mac users start `git --version` on a slide right after the cold open, so the
 developer-tools download runs during the lecture. Session X then only
 re-checks `gh auth status`. Session IX runs four QR exercises (a-d); `ex_09_e`
@@ -255,7 +258,7 @@ Add new exercises to `helpers/make_qr.py` EXERCISES and re-run it.
 
 ## Solution notebooks (Fable #4)
 - NOT published (owner decision 2026-10-10): solutions stay in the private
-  repo and students ask the lecturer. The "Publish AFTER the session" steps
+  repo and students ask Tobias. The "Publish AFTER the session" steps
   below and in "Script labs" are on hold; the FAQ says so.
 - Authored in the PRIVATE repo as `solutions/sol_XX_lab_<topic>.py`: the lab
   notebook with answers filled in, checks green, header "Solutions: Episode XX",
@@ -287,10 +290,15 @@ Add new exercises to `helpers/make_qr.py` EXERCISES and re-run it.
 - Hash literals are per-task salted (`expected_hash(answer, task="cpN.tM")`) so
   equal answers never share a literal.
 - expr keys are task-prefixed and unique (enforced by `load_tasks`).
-- CP5 (the Part-II finale) is deliberately all names-based, no `exprs` probe
-  task, a confidence landing before the project phase; from the AI-allowed era
-  (Session VI+), AI-computed graded VALUES are sanctioned at CP4/CP5 by policy
-  (understanding is still required via fix/apply tasks, not trace tasks).
+- From the AI-allowed era (Session VI+), AI-computed graded VALUES are
+  sanctioned at CP4/CP5 by policy (understanding is still required via
+  fix/apply tasks, not trace tasks).
+- CP5 (the Part-II finale) is 3 longer tasks on one messy inline export: clean
+  it (4 pts, `exprs` read off the student's `clean_t1`), answer the question
+  (3 pts, recomputed from the student's OWN `clean_t1`, so a cleaning mistake
+  costs once), one chart (5 pts from an LLM judge, five yes/no criteria from
+  Lecture IX, every verdict confirmed by Tobi; students are told both). The
+  judge rubric lives in the checkpoints repo's `.claude/skills/cp5-chart-judge`.
 - CP4/CP5 (AI allowed) have NO live verdicts and no score box, only a neutral
   "Recorded: <value>" line: with AI allowed, a green tick does the checking the
   checkpoint grades. CP4 is 12 × 1 pt of "chatbot cells" (rule + a cell that
@@ -353,7 +361,7 @@ Reference: `labs/lab_08_dataroom.py`; for chart tasks `labs/lab_09_pitch.py`.
   the lecture (`.describe()` shows it). Never plant an error in the task text.
   The handoff slide and the tutorial page say that one problem is not
   mentioned anywhere; the script itself does not, so the student knows more
-  than the agent. The lecturer catches it at the desk: the header of the
+  than the agent. Tobias catches it at the desk: the header of the
   solution script lists what each wrong number means.
 - Lab 09 adds a second unannounced item, a wrong premise: a claim of Tobi's,
   QUOTED in a brief ("Slow deliveries cost us stars"), that the data does not
