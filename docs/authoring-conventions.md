@@ -291,6 +291,12 @@ Add new exercises to `helpers/make_qr.py` EXERCISES and re-run it.
   task, a confidence landing before the project phase; from the AI-allowed era
   (Session VI+), AI-computed graded VALUES are sanctioned at CP4/CP5 by policy
   (understanding is still required via fix/apply tasks, not trace tasks).
+- CP4/CP5 (AI allowed) have NO live verdicts and no score box, only a neutral
+  "Recorded: <value>" line: with AI allowed, a green tick does the checking the
+  checkpoint grades. CP4 is 12 × 1 pt of "chatbot cells" (rule + a cell that
+  runs): keep it or fix it, with no symptom given, and one cell is already right
+  so fixing whatever the AI flags costs a point. Prompt examples are ones the
+  chatbot's cell passes; the referee probes the inputs the example skips.
 
 ## Part II additions (Plan 3)
 - Plotting artifacts are UNGRADED: the graded names are the NUMBERS behind a
