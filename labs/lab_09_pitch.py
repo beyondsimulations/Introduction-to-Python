@@ -32,7 +32,7 @@
 #     wrote, and look at the picture it made.
 #   - When every check passes, the script puts the four charts you pick
 #     for the investor into pitch_deck.png and prints a block that starts
-#     with SHOW THIS IN CLASS. Show both to your lecturer for feedback.
+#     with SHOW THIS IN CLASS. Show both to me for feedback.
 #     You may leave either way.
 
 # %% Load the data (given, do not change)

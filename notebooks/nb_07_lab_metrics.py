@@ -49,7 +49,7 @@ def _(mo):
     mo.callout(
         mo.md(
             "**First the install.** Before you start this lab, finish the Zed "
-            "install from the lecture and show your lecturer that it works. Then "
+            "install from the lecture and show me that it works. Then "
             "come back to this tab. Not in class today? The Tutorial 07 page says "
             "how to catch up at home."
         ),
