@@ -25,8 +25,8 @@
 #   - You may use Mistral Vibe. Ask it for one task at a time, read what it
 #     wrote, and test it on a case where you know the answer.
 #   - When every check passes, the script prints a block that starts with
-#     SHOW THIS IN CLASS. Show it to your lecturer, who tells you whether
-#     your numbers are right. You may leave either way.
+#     SHOW THIS IN CLASS. Show it to me, and I tell you whether your
+#     numbers are right. You may leave either way.
 
 # %% Load the data (given, do not change)
 import numbers

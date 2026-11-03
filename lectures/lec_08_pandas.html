@@ -8,7 +8,7 @@
 
 <meta name="author" content="Dr.&nbsp;Tobias Vlćek">
 
-<title>Lecture VIII - Pandas and AI Craft – Programming with Python</title>
+<title>Lecture VIII - Pandas and gAI – Programming with Python</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -103,9 +103,9 @@ div.csl-indent {
 <link href="../site_libs/quarto-html/quarto-syntax-highlighting-c83e01c5de7e11edcf7e0477bd36081a.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
 <script src="../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../site_libs/bootstrap/bootstrap-5d1739361d21bdb11b6db35d6d04917b.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="../site_libs/bootstrap/bootstrap-dark-a7d37ff971c179462f38bdfb8d8becd7.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
-<link href="../site_libs/bootstrap/bootstrap-5d1739361d21bdb11b6db35d6d04917b.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-33afcac9b466781733633e344eaec20d.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-dark-19655cc58ad75effbbd94a8a7c89173c.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="../site_libs/bootstrap/bootstrap-33afcac9b466781733633e344eaec20d.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -730,7 +730,7 @@ div.csl-indent {
   <ul class="collapse">
   <li><a href="#open-the-exercise-1" id="toc-open-the-exercise-1" class="nav-link" data-scroll-target="#open-the-exercise-1">Open the exercise</a></li>
   </ul></li>
-  <li><a href="#ai-joins-the-team" id="toc-ai-joins-the-team" class="nav-link" data-scroll-target="#ai-joins-the-team"><span class="flow">AI joins the team</span></a>
+  <li><a href="#gai-joins-the-team" id="toc-gai-joins-the-team" class="nav-link" data-scroll-target="#gai-joins-the-team"><span class="flow">gAI joins the team</span></a>
   <ul class="collapse">
   <li><a href="#prompting-context-constraints" id="toc-prompting-context-constraints" class="nav-link" data-scroll-target="#prompting-context-constraints">Prompting: context + constraints</a></li>
   <li><a href="#the-verify-workflow" id="toc-the-verify-workflow" class="nav-link" data-scroll-target="#the-verify-workflow">The verify workflow</a></li>
@@ -741,7 +741,7 @@ div.csl-indent {
   <li><a href="#answer-the-method-never-existed" id="toc-answer-the-method-never-existed" class="nav-link" data-scroll-target="#answer-the-method-never-existed">Answer: the method never existed</a></li>
   <li><a href="#the-real-method-is-.describe" id="toc-the-real-method-is-.describe" class="nav-link" data-scroll-target="#the-real-method-is-.describe">The real method is <code>.describe()</code></a></li>
   <li><a href="#why-did-it-invent-a-method" id="toc-why-did-it-invent-a-method" class="nav-link" data-scroll-target="#why-did-it-invent-a-method">Why did it invent a method?</a></li>
-  <li><a href="#how-it-was-trained-in-one-slide" id="toc-how-it-was-trained-in-one-slide" class="nav-link" data-scroll-target="#how-it-was-trained-in-one-slide">How it was trained, in one slide</a></li>
+  <li><a href="#how-it-was-trained" id="toc-how-it-was-trained" class="nav-link" data-scroll-target="#how-it-was-trained">How it was trained</a></li>
   <li><a href="#disclosure-say-what-the-ai-did" id="toc-disclosure-say-what-the-ai-did" class="nav-link" data-scroll-target="#disclosure-say-what-the-ai-did">Disclosure: say what the AI did</a></li>
   <li><a href="#when-not-to-reach-for-ai" id="toc-when-not-to-reach-for-ai" class="nav-link" data-scroll-target="#when-not-to-reach-for-ai">When NOT to reach for AI</a></li>
   </ul></li>
@@ -771,7 +771,7 @@ div.csl-indent {
 
 <header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../lectures/lec_08_pandas.html">08 Pandas and AI</a></li><li class="breadcrumb-item"><a href="../lectures/lec_08_pandas.html">Lecture</a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title">Lecture VIII - Pandas and AI Craft</h1>
+<h1 class="title">Lecture VIII - Pandas and gAI</h1>
 <p class="subtitle lead">Programming with Python</p>
 </div>
 
@@ -804,12 +804,12 @@ div.csl-indent {
 
 <section id="checkpoint-4" class="level1 loud-slide">
 <h1 class="loud-slide">Checkpoint 4</h1>
-<p><strong>Sessions VI-VII.</strong> The first 40 minutes are the checkpoint. It starts now, before the investor opens her data room.</p>
+<p><strong>Sessions VI-VII.</strong> The first 40 minutes are the checkpoint. It starts now.</p>
 <ul>
 <li><strong>Individual work</strong>: no neighbors, no messaging</li>
-<li><strong>Any AI tool is allowed</strong>: the graded skill is to <strong>VERIFY</strong> its output</li>
+<li><strong>Any gAI tool is allowed</strong>: the graded skill is to <strong>VERIFY</strong> its output</li>
 <li>The <strong>link is on Moodle</strong>. Open it and start</li>
-<li>~6 short tasks: write code, fix a bug, a seeded draw, answer a multiple choice</li>
+<li>12 short tasks: Tobi’s chatbot wrote the cells. You keep the right ones, fix the wrong ones.</li>
 <li>It sweeps <strong>Sessions VI-VII</strong>: modules, <code>random</code> and seeds, NumPy arrays and masks</li>
 </ul>
 <!-- Link goes out via the hidden Moodle URL resource (shown at the start),
@@ -817,14 +817,14 @@ div.csl-indent {
      publish to the public course site. -->
 <section id="when-youre-done" class="level2">
 <h2 class="anchored" data-anchor-id="when-youre-done">When you’re done</h2>
-<p><strong>Cmd/Ctrl+S</strong>, then menu → <em>Download</em> → <em>Download Python code</em> → upload the <code>.py</code> to the <strong>“Checkpoint 4”</strong> assignment on Moodle, before the 40 minutes are up. <strong>No retakes</strong>: one sitting.</p>
+<p><strong>Cmd/Ctrl+S</strong>, then menu → <em>Download</em> → <em>Download Python code</em> → upload the <code>.py</code> to the <strong>“Checkpoint 4”</strong> assignment on Moodle, before the 40 minutes are up. <strong>No retakes</strong>: one session.</p>
 <div class="callout callout-style-simple callout-note">
 <div class="callout-body d-flex">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-body-container">
-<p>The live checks under the tasks are <strong>provisional</strong>. The final grading runs on my side. Everything in it was rehearsed in the labs.</p>
+<p><strong>No live checks this time.</strong> Nothing in the notebook tells you whether you’re right: checking is the job. The grading runs on my side. Everything in it was rehearsed in the labs.</p>
 </div>
 </div>
 </div>
@@ -837,7 +837,7 @@ div.csl-indent {
 <p>This morning rival chain MunchCorp bragged in a press release about their “data-driven growth.” The evidence attached: exactly <strong>one pie chart.</strong> The investor slid it across the table: <em>“Yours will be better. Show me the data.”</em></p>
 <p>Tobi didn’t wait. He’d pasted the question into a chatbot, proudly turned the laptop around, and hit run:</p>
 <p><code>AttributeError: 'DataFrame' object has no attribute 'overview'</code></p>
-<p>The AI sounded certain. The method it called <strong>does not exist.</strong> Today starts with the tool that answers the investor for real, <strong>pandas</strong>, and then comes back to that difference.</p>
+<p>The gAI sounded certain, but the method it called <strong>does not exist.</strong> Today starts with the tool that answers the investor for real, <strong>pandas</strong>, and then comes back to that difference.</p>
 </section>
 </section>
 <section id="the-dataframe" class="level1 title">
@@ -855,7 +855,7 @@ div.csl-indent {
 <section id="a-dataframe-from-a-dictionary" class="level2">
 <h2 class="anchored" data-anchor-id="a-dataframe-from-a-dictionary">A DataFrame from a dictionary</h2>
 <p>Keys become <strong>column names</strong>; each list becomes a <strong>column</strong>; one order per row, mixed types together:</p>
-<div id="ceb05055" class="cell" data-output-location="fragment" data-execution_count="1">
+<div id="e289d497" class="cell" data-output-location="fragment" data-execution_count="1">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> pd.DataFrame({</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>    <span class="st">"order_id"</span>:  [<span class="dv">101</span>, <span class="dv">102</span>, <span class="dv">103</span>, <span class="dv">104</span>, <span class="dv">105</span>],</span>
@@ -890,7 +890,7 @@ div.csl-indent {
 <section id="first-look-.head-and-.info" class="level2">
 <h2 class="anchored" data-anchor-id="first-look-.head-and-.info">First look: <code>.head()</code> and <code>.info()</code></h2>
 <p>Glance at a table first. <code>.head()</code> shows the top rows; <code>.info()</code> is your first sanity check: right number of rows? Any surprising type?</p>
-<div id="68c4ff82" class="cell" data-output-location="fragment" data-execution_count="2">
+<div id="5f9b0fc9" class="cell" data-output-location="fragment" data-execution_count="2">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(df.head(<span class="dv">3</span>))     <span class="co"># first 3 rows</span></span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>df.info()             <span class="co"># columns, dtypes, non-null counts</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
@@ -915,7 +915,7 @@ memory usage: 292.0+ bytes</code></pre>
 <section id="numbers-at-a-glance-.describe" class="level2">
 <h2 class="anchored" data-anchor-id="numbers-at-a-glance-.describe">Numbers at a glance: <code>.describe()</code></h2>
 <p><code>.describe()</code> computes count, mean, min, max and quartiles for every <strong>numeric</strong> column at once:</p>
-<div id="9c99433b" class="cell" data-output-location="fragment" data-execution_count="3">
+<div id="6c665bab" class="cell" data-output-location="fragment" data-execution_count="3">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(df.describe())</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>         order_id    items  total_eur
@@ -929,12 +929,12 @@ min    101.000000  1.00000   6.800000
 max    105.000000  4.00000  31.400000</code></pre>
 </div>
 </div>
-<p>One call, the whole numeric summary: this is the <code>.overview()</code> Tobi’s chatbot wished existed, under its real name.</p>
+<p>One call, the whole summary: this is the <code>.overview()</code> Tobi’s chatbot wished existed.</p>
 </section>
 <section id="selecting-a-column" class="level2">
 <h2 class="anchored" data-anchor-id="selecting-a-column">Selecting a column</h2>
 <p>Pick one column by name:</p>
-<div id="2f22a710" class="cell" data-output-location="fragment" data-execution_count="4">
+<div id="8c7378f2" class="cell" data-output-location="fragment" data-execution_count="4">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(df[<span class="st">"zone"</span>])                  <span class="co"># one column (a Series)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>0     Nord
@@ -949,7 +949,7 @@ Name: zone, dtype: object</code></pre>
 <section id="filtering-rows" class="level2">
 <h2 class="anchored" data-anchor-id="filtering-rows">Filtering rows</h2>
 <p>Keep rows with a <strong>boolean mask</strong>, exactly the NumPy idea from last session:</p>
-<div id="31ebdb4f" class="cell" data-output-location="fragment" data-execution_count="5">
+<div id="37f2beff" class="cell" data-output-location="fragment" data-execution_count="5">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(df[df[<span class="st">"zone"</span>] <span class="op">==</span> <span class="st">"Nord"</span>])    <span class="co"># only the Nord rows, case-sensitive!</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>   order_id  zone  items  total_eur
@@ -970,7 +970,7 @@ c) a single <code>True</code>, since some order is over 20</p>
 </section>
 <section id="answer-a-mask-not-a-table" class="level2">
 <h2 class="anchored" data-anchor-id="answer-a-mask-not-a-table">Answer: a mask, not a table</h2>
-<div id="c27c5628" class="cell" data-output-location="fragment" data-execution_count="6">
+<div id="1a1da40c" class="cell" data-output-location="fragment" data-execution_count="6">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>big <span class="op">=</span> df[<span class="st">"total_eur"</span>] <span class="op">&gt;</span> <span class="dv">20</span></span>
 <span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(big)              <span class="co"># the mask: a Series of booleans</span></span>
 <span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(df[big])          <span class="co"># the rows: build the mask, then apply it</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
@@ -1001,7 +1001,7 @@ Name: total_eur, dtype: bool
 <section id="adding-a-column-sorting" class="level2">
 <h2 class="anchored" data-anchor-id="adding-a-column-sorting">Adding a column, sorting</h2>
 <p>Compute a new column from existing ones, then sort. Work on a <strong>copy</strong> so the original stays intact:</p>
-<div id="ad611907" class="cell" data-output-location="fragment" data-execution_count="7">
+<div id="760a114b" class="cell" data-output-location="fragment" data-execution_count="7">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>priced <span class="op">=</span> df.copy()</span>
 <span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>priced[<span class="st">"eur_per_item"</span>] <span class="op">=</span> priced[<span class="st">"total_eur"</span>] <span class="op">/</span> priced[<span class="st">"items"</span>]</span>
 <span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(priced.sort_values(<span class="st">"total_eur"</span>, ascending<span class="op">=</span><span class="va">False</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
@@ -1026,7 +1026,7 @@ c) a <code>KeyError</code> for the missing zone</p>
 </section>
 <section id="answer-an-empty-table-no-warning" class="level2">
 <h2 class="anchored" data-anchor-id="answer-an-empty-table-no-warning">Answer: an empty table, no warning</h2>
-<div id="41589312" class="cell" data-output-location="fragment" data-execution_count="8">
+<div id="ceb4a3ab" class="cell" data-output-location="fragment" data-execution_count="8">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb17"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(df[df[<span class="st">"zone"</span>] <span class="op">==</span> <span class="st">"nord"</span>])          <span class="co"># nothing matches "nord"</span></span>
 <span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"rows:"</span>, <span class="bu">len</span>(df[df[<span class="st">"zone"</span>] <span class="op">==</span> <span class="st">"nord"</span>]))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
@@ -1036,8 +1036,8 @@ Index: []
 rows: 0</code></pre>
 </div>
 </div>
-<p><strong>a) an empty table</strong>. <code>"nord"</code> matches nothing, so the mask is all <code>False</code> and pandas hands back <strong>zero rows</strong>. No error, no complaint.</p>
-<p>This is the dangerous kind of bug: it <strong>runs</strong>, it just returns nothing. <strong>pandas won’t warn you; YOU verify</strong>, which is exactly why you test filters on a case whose answer you know.</p>
+<p><strong>a) an empty table</strong>. <code>"nord"</code> matches nothing, so the mask is all <code>False</code> and pandas hands back <strong>zero rows</strong>. No error…</p>
+<p>This is the dangerous kind of bug: it <strong>runs</strong>, it just returns nothing. <strong>pandas won’t warn you</strong>, which is exactly why we try to test filters on a case whose answer we know.</p>
 </section>
 <section id="one-more-tool-groupby" class="level2">
 <h2 class="anchored" data-anchor-id="one-more-tool-groupby">One more tool: <code>groupby</code></h2>
@@ -1068,8 +1068,8 @@ rows: 0</code></pre>
 <p><strong>Any questions?</strong> Let me know!</p>
 </section>
 </section>
-<section id="ai-joins-the-team" class="level1 title">
-<h1 class="title"><span class="flow">AI joins the team</span></h1>
+<section id="gai-joins-the-team" class="level1 title">
+<h1 class="title"><span class="flow">gAI joins the team</span></h1>
 <section id="prompting-context-constraints" class="level2">
 <h2 class="anchored" data-anchor-id="prompting-context-constraints">Prompting: context + constraints</h2>
 <p>Two things turn a vague request into a useful answer:</p>
@@ -1084,7 +1084,7 @@ rows: 0</code></pre>
 </section>
 <section id="the-verify-workflow" class="level2">
 <h2 class="anchored" data-anchor-id="the-verify-workflow">The verify workflow</h2>
-<p>Tobi’s mistake wasn’t <em>using</em> AI. It was <strong>shipping without checking.</strong> Every line an AI hands you gets three passes:</p>
+<p>Tobi’s mistake wasn’t <em>using</em> gAI. It was <strong>shipping without checking.</strong> Every line an gAI hands you should get three passes if it is critical:</p>
 <ol type="1">
 <li><strong>Read it</strong>: do you understand what each line claims to do?</li>
 <li><strong>Run it</strong>: does it actually execute, or does it crash?</li>
@@ -1093,8 +1093,8 @@ rows: 0</code></pre>
 </section>
 <section id="step-3-in-action" class="level2">
 <h2 class="anchored" data-anchor-id="step-3-in-action">Step 3 in action</h2>
-<p>Five orders with values you can add in your head, and the AI’s suggested line for the Nord average:</p>
-<div id="f3337a2f" class="cell" data-output-location="fragment" data-execution_count="9">
+<p>Five orders with values you can add in your head, and the gAI’s suggested line for the Nord average:</p>
+<div id="beaa2a25" class="cell" data-output-location="fragment" data-execution_count="9">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb19"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
 <span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a>check <span class="op">=</span> pd.DataFrame({</span>
@@ -1106,11 +1106,11 @@ rows: 0</code></pre>
 <pre><code>20.0</code></pre>
 </div>
 </div>
-<p>The Nord orders are 10, 20 and 30. You can average those in your head. Does the AI’s answer match? Then the line has earned some trust on the real file. Verification is the job now, not typing.</p>
+<p>The Nord orders are 10, 20 and 30. You can average those in your head. Does the gAI’s answer match? Then the line has earned trust on the real file. With gAI, verification is often the job now, not typing the code yourself.</p>
 </section>
 <section id="predict-it-ran-so-its-right" class="level2">
 <h2 class="anchored" data-anchor-id="predict-it-ran-so-its-right">Predict: it ran, so it’s right?</h2>
-<p>Tobi asks the AI for the <strong>Nord average</strong> on the same five orders. It hands back one line and calls it done. What does this print?</p>
+<p>Tobi asks the gAI for the <strong>Nord average</strong> on the same five orders. It hands back one line and calls it done. What does this print?</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb21"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(check[<span class="st">"total_eur"</span>].mean())</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>a) <code>20.0</code><br>
 b) an <code>AttributeError</code><br>
@@ -1118,7 +1118,7 @@ c) <code>14.5</code></p>
 </section>
 <section id="answer-it-ran-and-its-wrong" class="level2">
 <h2 class="anchored" data-anchor-id="answer-it-ran-and-its-wrong">Answer: it ran, and it’s wrong</h2>
-<div id="b66419b9" class="cell" data-output-location="fragment" data-execution_count="10">
+<div id="30ae6dfb" class="cell" data-output-location="fragment" data-execution_count="10">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb22"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(check[<span class="st">"total_eur"</span>].mean())                             <span class="co"># every zone</span></span>
 <span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(check[check[<span class="st">"zone"</span>] <span class="op">==</span> <span class="st">"Nord"</span>][<span class="st">"total_eur"</span>].mean())    <span class="co"># Nord only</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
@@ -1127,11 +1127,11 @@ c) <code>14.5</code></p>
 </div>
 </div>
 <p><strong>c) <code>14.5</code></strong>: the line averages <strong>all five</strong> orders. Nobody filtered for Nord, and pandas has no way to know that was the question.</p>
-<p>No traceback, a plausible number, and still wrong. “It runs” only clears step 2; step 3 is where the investor’s number gets tested.</p>
+<p>No traceback, a plausible number, and still wrong. “Code runs” only clears step 2. Step 3 is where the actual number get tested.</p>
 </section>
 <section id="predict-does-.summarize-exist" class="level2">
 <h2 class="anchored" data-anchor-id="predict-does-.summarize-exist">Predict: does <code>.summarize()</code> exist?</h2>
-<p>The AI wrote this for Tobi. <code>orders</code> is a tiny two-row frame. What happens on the last line?</p>
+<p>The gAI wrote this for Tobi. <code>orders</code> is a tiny two-row frame. What happens on the last line?</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb24"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
 <span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a>orders <span class="op">=</span> pd.DataFrame({<span class="st">"zone"</span>: [<span class="st">"Nord"</span>, <span class="st">"Sued"</span>], <span class="st">"total_eur"</span>: [<span class="fl">12.0</span>, <span class="fl">9.5</span>]})</span>
 <span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -1142,10 +1142,10 @@ c) returns an empty DataFrame</p>
 </section>
 <section id="answer-the-method-never-existed" class="level2">
 <h2 class="anchored" data-anchor-id="answer-the-method-never-existed">Answer: the method never existed</h2>
-<div id="2069dcdb" class="cell" data-output-location="fragment" data-execution_count="12">
+<div id="8df11090" class="cell" data-output-location="fragment" data-execution_count="12">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb25"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
 <span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a>orders <span class="op">=</span> pd.DataFrame({<span class="st">"zone"</span>: [<span class="st">"Nord"</span>, <span class="st">"Sued"</span>], <span class="st">"total_eur"</span>: [<span class="fl">12.0</span>, <span class="fl">9.5</span>]})</span>
-<span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a>orders.summarize()                     <span class="co"># the method the AI invented</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a>orders.summarize()                     <span class="co"># the method the gAI invented</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-error">
 <div class="ansi-escaped-output">
 <pre><span class="ansi-red-fg">AttributeError</span><span class="ansi-red-fg">:</span> 'DataFrame' object has no attribute 'summarize'
@@ -1153,11 +1153,11 @@ c) returns an empty DataFrame</p>
 </div>
 </div>
 </div>
-<p><strong>b) <code>AttributeError</code></strong>: pandas has no <code>.summarize()</code>. The AI invented it.</p>
+<p><strong>b) <code>AttributeError</code></strong>: pandas has no <code>.summarize()</code>. The gAI invented it.</p>
 </section>
 <section id="the-real-method-is-.describe" class="level2">
 <h2 class="anchored" data-anchor-id="the-real-method-is-.describe">The real method is <code>.describe()</code></h2>
-<div id="4f36693c" class="cell" data-output-location="fragment" data-execution_count="13">
+<div id="9d70e592" class="cell" data-output-location="fragment" data-execution_count="13">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb26"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(orders.describe())               <span class="co"># the method that actually exists</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>       total_eur
@@ -1171,40 +1171,36 @@ min     9.500000
 max    12.000000</code></pre>
 </div>
 </div>
-<p><strong>An AI that sounds sure is not the same as an API that exists.</strong></p>
+<p><strong>A gAI that sounds sure is not the same as a function or method that exists.</strong></p>
 </section>
 <section id="why-did-it-invent-a-method" class="level2">
 <h2 class="anchored" data-anchor-id="why-did-it-invent-a-method">Why did it invent a method?</h2>
-<p>Session VI gave you the machine, so here is why it fails in exactly this way.</p>
+<p>Session VI gave you the basics, so here is why it sometimes fails.</p>
 <ul>
 <li>Training rewards a <span class="highlight">plausible</span> continuation and never checks a <span class="highlight">true</span> one: nothing in the loop verifies facts</li>
 <li>And it always writes <em>some</em> next token, confident or not: a choice gets picked, printed, and it all looks equally smooth</li>
-<li><code>.summarize</code> is a <em>plausible</em> pandas name: short, lowercase, shaped like <code>.describe()</code>. Plausible is what the machine optimizes for</li>
+<li><code>.summarize</code> is a <em>plausible</em> pandas name: short, lowercase, shaped like <code>.describe()</code>.</li>
 </ul>
-<p><strong>Fluent and wrong is not a bug to patch. It is how the machine works.</strong></p>
+<p><strong>Fluent and wrong is difficult to fix. It is how gAI works due to its stochastic nature.</strong></p>
 </section>
-<section id="how-it-was-trained-in-one-slide" class="level2">
-<h2 class="anchored" data-anchor-id="how-it-was-trained-in-one-slide">How it was trained, in one slide</h2>
+<section id="how-it-was-trained" class="level2">
+<h2 class="anchored" data-anchor-id="how-it-was-trained">How it was trained</h2>
 <ul>
-<li><strong>Pre-training</strong>: predict the next token over massive text, where the <span class="highlight">weights</span> inside get adjusted; applying them afterwards is cheap</li>
+<li><strong>Pre-training</strong>: predict the next token over massive text, where the <span class="highlight">weights</span> inside get adjusted. Applying them afterwards (called <em>inference</em>) is much cheaper</li>
 <li><strong>Fine-tuning</strong>: curated examples teach it to follow instructions</li>
-<li><strong>RLHF</strong> (reinforcement learning from human feedback): humans rank answers; it learns to prefer the ranked-higher ones</li>
-<li>Its knowledge has an end date, the <span class="highlight">knowledge cutoff</span>: after it, it guesses fluently instead. And it inherits the <span class="highlight">biases</span> of the text it read</li>
+<li><strong>RLHF</strong> (reinforcement learning from human feedback): humans rank answers and it learns to prefer the ranked-higher ones</li>
+<li>Its knowledge has an end date, the <span class="highlight">knowledge cutoff</span>: after it, it guesses fluently or uses web search. And it inherits the <span class="highlight">biases</span> of the text it read!</li>
 </ul>
-<p>Every stage rewards <em>sounding</em> right; none of them checks pandas. That is your job, and step 3 of the verify workflow is how.</p>
+<p>Every stage rewards <em>sounding</em> right. Verifacation is your job (at least for now), and step 3 of the verify workflow is how.</p>
 </section>
 <section id="disclosure-say-what-the-ai-did" class="level2">
 <h2 class="anchored" data-anchor-id="disclosure-say-what-the-ai-did">Disclosure: say what the AI did</h2>
-<p>In your project (Part III) you list each AI use in one line. Labs and checkpoints need no note, but the habit is worth starting today:</p>
-<ul>
-<li><em>“Used the chatbot to draft the <code>groupby</code> line; I checked the totals by hand.”</em></li>
-<li>Standard practice, not an admission of anything.</li>
-</ul>
-<p>It protects <strong>you</strong>: it separates the work you understand from the work you pasted, so when a reviewer (or the investor) asks “how does this line work?”, you’re never caught claiming something you can’t explain.</p>
+<p>In your project (Part III) you will have to list each AI use in one line. Labs and checkpoints need no note. This is a good habit to get into for your own work. . . .</p>
+<p>Although it sounds strange, it protects <strong>you</strong>: it separates the work you understand from the work you pasted, so when a reviewer (or the investor or a different professor) asks “how does this work?”, you’re never caught claiming something you can’t explain.</p>
 </section>
 <section id="when-not-to-reach-for-ai" class="level2">
 <h2 class="anchored" data-anchor-id="when-not-to-reach-for-ai">When NOT to reach for AI</h2>
-<p>Sometimes the fastest path is the one you already own. You built a whole muscle in Part I:</p>
+<p>Sometimes the fastest path is a different one:</p>
 <ul>
 <li>A red traceback? <strong>You’ve read those since Episode 5.</strong> The last line names the error and points at the file, often faster than describing it to a chatbot.</li>
 <li>A one-line filter you’ve written ten times? Just write it.</li>
@@ -1215,7 +1211,7 @@ max    12.000000</code></pre>
 <i class="callout-icon"></i>
 </div>
 <div class="callout-body-container">
-<p>Use AI to draft the unfamiliar and to explain the confusing, not to skip thinking you can do yourself.</p>
+<p>Use gAI to draft the unfamiliar and to explain the confusing, not to skip thinking you can do yourself (at least while you are in university).</p>
 </div>
 </div>
 </div>
@@ -1247,7 +1243,7 @@ max    12.000000</code></pre>
 <i class="callout-icon"></i>
 </div>
 <div class="callout-body-container">
-<p><strong>Show me the last block before you leave</strong>, for feedback: the script prints <code>SHOW THIS IN CLASS</code>, and I compare your numbers with mine. Not done? Finish at home.</p>
+<p><strong>Show me the last block before you leave</strong>, for feedback: the script prints <code>SHOW THIS IN CLASS</code>, and I compare your numbers with mine.</p>
 </div>
 </div>
 </div>
@@ -1262,7 +1258,7 @@ max    12.000000</code></pre>
 <li><strong>Read it</strong>: Zed shows the changes as a <em>diff</em>, old lines red, new lines green. Read it <strong>before</strong> you accept</li>
 <li><strong>Run it</strong>, then <strong>test it</strong> on a case where you know the answer</li>
 </ol>
-<p>How it works inside: Session X. Today it is a tool you supervise.</p>
+<p>More on how gAI works and how you can use it even better in Session X. Today it is a tool you supervise.</p>
 </section>
 </section>
 <section id="wrap-up" class="level1 title">
@@ -1280,7 +1276,7 @@ max    12.000000</code></pre>
 <i class="callout-icon"></i>
 </div>
 <div class="callout-body-container">
-<p><strong>Next episode: charts the investor can’t argue with.</strong> Numbers convince the careful; a good plot convinces the room. We turn the data room into pictures.</p>
+<p><strong>Next episode: charts the investor can’t argue with.</strong> Numbers convince the careful and a good plot convinces the room. We turn the data room into pictures.</p>
 </div>
 </div>
 </div>
