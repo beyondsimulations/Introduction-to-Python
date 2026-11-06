@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.10.19">
+<meta name="generator" content="quarto-1.11.9">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -94,18 +94,19 @@ div.csl-indent {
 <link href="../images/favicon.svg" rel="icon" type="image/svg+xml">
 <script src="../site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../site_libs/quarto-html/scrollable-regions/scrollable-regions.js" type="module"></script>
 <script src="../site_libs/quarto-html/popper.min.js"></script>
 <script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="../site_libs/quarto-html/anchor.min.js"></script>
 <link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-c83e01c5de7e11edcf7e0477bd36081a.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-dark-504ec941dad02d76af6a821403169689.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-c83e01c5de7e11edcf7e0477bd36081a.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-e2de147d528138c296ff9f20f1f21e5c.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-dark-ebca81d6cd46886c967c051147233ece.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-e2de147d528138c296ff9f20f1f21e5c.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
 <script src="../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../site_libs/bootstrap/bootstrap-33afcac9b466781733633e344eaec20d.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="../site_libs/bootstrap/bootstrap-dark-19655cc58ad75effbbd94a8a7c89173c.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
-<link href="../site_libs/bootstrap/bootstrap-33afcac9b466781733633e344eaec20d.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-b0e7b33b0f8e217eaefec44ccda09999.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-dark-9516358d865f0f0345055ddbb5bd495c.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="../site_libs/bootstrap/bootstrap-b0e7b33b0f8e217eaefec44ccda09999.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -147,7 +148,7 @@ div.csl-indent {
 
 </head>
 
-<body class="nav-sidebar floating quarto-light"><script id="quarto-html-before-body" type="application/javascript">
+<body class="nav-sidebar floating quarto-light"><a id="quarto-skip-link" class="visually-hidden-focusable" href="#quarto-document-content">Skip to main content</a><script id="quarto-html-before-body" type="application/javascript">
     const toggleBodyColorMode = (bsSheetEl) => {
       const mode = bsSheetEl.getAttribute("data-mode");
       const bodyEl = window.document.querySelector("body");
@@ -170,6 +171,7 @@ div.csl-indent {
       for (let i=0; i < toggles.length; i++) {
         const toggle = toggles[i];
         if (toggle) {
+          toggle.setAttribute("aria-checked", alternate ? "true" : "false");
           if (alternate) {
             toggle.classList.add("alternate");
           } else {
@@ -199,13 +201,19 @@ div.csl-indent {
       manageTransitions('#quarto-margin-sidebar .nav-link', true);
       // Switch the toggles
       setColorSchemeToggle(alternate)
-      // Hack to workaround the fact that safari doesn't
-      // properly recolor the scrollbar when toggling (#1455)
+    }
+    // Hack to workaround the fact that safari doesn't
+    // properly recolor the scrollbar when toggling (#1455).
+    // Not run on load: stylesheets are set before first paint there, and
+    // scrolling would undo the scroll to a URL fragment (#14973).
+    // The one pixel nudge keeps the reader where they were.
+    const refreshSafariScrollbar = () => {
       if (navigator.userAgent.indexOf('Safari') > 0 && navigator.userAgent.indexOf('Chrome') == -1) {
         manageTransitions("body", false);
-        window.scrollTo(0, 1);
+        const scrollY = window.scrollY;
+        window.scrollTo(0, scrollY > 0 ? scrollY - 1 : 1);
         setTimeout(() => {
-          window.scrollTo(0, 0);
+          window.scrollTo(0, scrollY);
           manageTransitions("body", true);
         }, 40);
       }
@@ -300,6 +308,7 @@ div.csl-indent {
       // Read the current dark / light value
       let toAlternate = !hasAlternateSentinel();
       toggleColorMode(toAlternate);
+      refreshSafariScrollbar();
       setStyleSentinel(toAlternate);
       toggleGiscusIfUsed(toAlternate, darkModeDefault);
       window.dispatchEvent(new Event('resize'));
@@ -309,6 +318,7 @@ div.csl-indent {
         return;
       const alternate = e.matches
       toggleColorMode(alternate);
+      refreshSafariScrollbar();
       localAlternateSentinel = e.matches ? 'alternate' : 'default'; // this is used alongside local storage!
       toggleGiscusIfUsed(alternate, darkModeDefault);
     });
@@ -322,13 +332,13 @@ div.csl-indent {
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
-  <nav class="quarto-secondary-nav">
+  <nav class="quarto-secondary-nav" aria-label="Toolbar">
     <div class="container-fluid d-flex">
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../lectures/lec_09_plotting.html">09 Plotting</a></li><li class="breadcrumb-item"><a href="../lectures/lec_09_plotting.html">Lecture</a></li></ol></nav>
-        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        <nav class="quarto-page-breadcrumbs" aria-label="Breadcrumbs"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../lectures/lec_09_plotting.html">09 Plotting</a></li><li class="breadcrumb-item"><a href="../lectures/lec_09_plotting.html">Lecture</a></li></ol></nav>
+        <a class="flex-grow-1" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
         <i class="bi bi-search"></i>
@@ -339,14 +349,14 @@ div.csl-indent {
 <!-- content -->
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
 <!-- sidebar -->
-  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto" aria-label="Site">
     <div class="pt-lg-2 mt-2 text-left sidebar-header">
       <a href="../index.html" class="sidebar-logo-link">
       <img src="../images/course-logo.svg" alt="" class="sidebar-logo light-content py-0 d-lg-inline d-none">
       <img src="../images/course-logo-dark.svg" alt="" class="sidebar-logo dark-content py-0 d-lg-inline d-none">
       </a>
       <div class="sidebar-tools-main">
-  <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
+  <button type="button" role="switch" aria-checked="false" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode" aria-label="Toggle dark mode"><i class="bi"></i></button>
 </div>
       </div>
         <div class="mt-2 flex-shrink-0 align-items-center">
@@ -373,13 +383,10 @@ div.csl-indent {
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="false">
- <span class="menu-text">01 Introduction</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="false" aria-label="Toggle section">
-            <i class="bi bi-chevron-right ms-2"></i>
-          </a> 
+            <button type="button" class="sidebar-item-text sidebar-item-toggle sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-controls="quarto-sidebar-section-1" aria-expanded="false">
+ <span class="menu-text" id="quarto-sidebar-section-1-label">01 Introduction</span><i class="bi bi-chevron-right" aria-hidden="true"></i></button>
       </div>
-      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 ">  
+      <ul id="quarto-sidebar-section-1" aria-labelledby="quarto-sidebar-section-1-label" class="collapse list-unstyled sidebar-section depth1 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../lectures/lec_01_introduction.html" class="sidebar-item-text sidebar-link">
@@ -396,13 +403,10 @@ div.csl-indent {
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="false">
- <span class="menu-text">02 Control Flow</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="false" aria-label="Toggle section">
-            <i class="bi bi-chevron-right ms-2"></i>
-          </a> 
+            <button type="button" class="sidebar-item-text sidebar-item-toggle sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-controls="quarto-sidebar-section-2" aria-expanded="false">
+ <span class="menu-text" id="quarto-sidebar-section-2-label">02 Control Flow</span><i class="bi bi-chevron-right" aria-hidden="true"></i></button>
       </div>
-      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 ">  
+      <ul id="quarto-sidebar-section-2" aria-labelledby="quarto-sidebar-section-2-label" class="collapse list-unstyled sidebar-section depth1 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../lectures/lec_02_control.html" class="sidebar-item-text sidebar-link">
@@ -419,13 +423,10 @@ div.csl-indent {
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="false">
- <span class="menu-text">03 Functions</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="false" aria-label="Toggle section">
-            <i class="bi bi-chevron-right ms-2"></i>
-          </a> 
+            <button type="button" class="sidebar-item-text sidebar-item-toggle sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-controls="quarto-sidebar-section-3" aria-expanded="false">
+ <span class="menu-text" id="quarto-sidebar-section-3-label">03 Functions</span><i class="bi bi-chevron-right" aria-hidden="true"></i></button>
       </div>
-      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 ">  
+      <ul id="quarto-sidebar-section-3" aria-labelledby="quarto-sidebar-section-3-label" class="collapse list-unstyled sidebar-section depth1 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../lectures/lec_03_functions.html" class="sidebar-item-text sidebar-link">
@@ -442,13 +443,10 @@ div.csl-indent {
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="false">
- <span class="menu-text">04 Dimensions</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="false" aria-label="Toggle section">
-            <i class="bi bi-chevron-right ms-2"></i>
-          </a> 
+            <button type="button" class="sidebar-item-text sidebar-item-toggle sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-controls="quarto-sidebar-section-4" aria-expanded="false">
+ <span class="menu-text" id="quarto-sidebar-section-4-label">04 Dimensions</span><i class="bi bi-chevron-right" aria-hidden="true"></i></button>
       </div>
-      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 ">  
+      <ul id="quarto-sidebar-section-4" aria-labelledby="quarto-sidebar-section-4-label" class="collapse list-unstyled sidebar-section depth1 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../lectures/lec_04_dimensions.html" class="sidebar-item-text sidebar-link">
@@ -465,13 +463,10 @@ div.csl-indent {
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="false">
- <span class="menu-text">05 Errors</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="false" aria-label="Toggle section">
-            <i class="bi bi-chevron-right ms-2"></i>
-          </a> 
+            <button type="button" class="sidebar-item-text sidebar-item-toggle sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" aria-controls="quarto-sidebar-section-5" aria-expanded="false">
+ <span class="menu-text" id="quarto-sidebar-section-5-label">05 Errors</span><i class="bi bi-chevron-right" aria-hidden="true"></i></button>
       </div>
-      <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth1 ">  
+      <ul id="quarto-sidebar-section-5" aria-labelledby="quarto-sidebar-section-5-label" class="collapse list-unstyled sidebar-section depth1 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../lectures/lec_05_errors.html" class="sidebar-item-text sidebar-link">
@@ -488,13 +483,10 @@ div.csl-indent {
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" role="navigation" aria-expanded="false">
- <span class="menu-text">06 Modules</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" role="navigation" aria-expanded="false" aria-label="Toggle section">
-            <i class="bi bi-chevron-right ms-2"></i>
-          </a> 
+            <button type="button" class="sidebar-item-text sidebar-item-toggle sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" aria-controls="quarto-sidebar-section-6" aria-expanded="false">
+ <span class="menu-text" id="quarto-sidebar-section-6-label">06 Modules</span><i class="bi bi-chevron-right" aria-hidden="true"></i></button>
       </div>
-      <ul id="quarto-sidebar-section-6" class="collapse list-unstyled sidebar-section depth1 ">  
+      <ul id="quarto-sidebar-section-6" aria-labelledby="quarto-sidebar-section-6-label" class="collapse list-unstyled sidebar-section depth1 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../lectures/lec_06_modules.html" class="sidebar-item-text sidebar-link">
@@ -511,13 +503,10 @@ div.csl-indent {
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-7" role="navigation" aria-expanded="false">
- <span class="menu-text">07 Scientific Computing</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-7" role="navigation" aria-expanded="false" aria-label="Toggle section">
-            <i class="bi bi-chevron-right ms-2"></i>
-          </a> 
+            <button type="button" class="sidebar-item-text sidebar-item-toggle sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-7" aria-controls="quarto-sidebar-section-7" aria-expanded="false">
+ <span class="menu-text" id="quarto-sidebar-section-7-label">07 Scientific Computing</span><i class="bi bi-chevron-right" aria-hidden="true"></i></button>
       </div>
-      <ul id="quarto-sidebar-section-7" class="collapse list-unstyled sidebar-section depth1 ">  
+      <ul id="quarto-sidebar-section-7" aria-labelledby="quarto-sidebar-section-7-label" class="collapse list-unstyled sidebar-section depth1 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../lectures/lec_07_scientific.html" class="sidebar-item-text sidebar-link">
@@ -534,13 +523,10 @@ div.csl-indent {
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-8" role="navigation" aria-expanded="false">
- <span class="menu-text">08 Pandas and AI</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-8" role="navigation" aria-expanded="false" aria-label="Toggle section">
-            <i class="bi bi-chevron-right ms-2"></i>
-          </a> 
+            <button type="button" class="sidebar-item-text sidebar-item-toggle sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-8" aria-controls="quarto-sidebar-section-8" aria-expanded="false">
+ <span class="menu-text" id="quarto-sidebar-section-8-label">08 Pandas and AI</span><i class="bi bi-chevron-right" aria-hidden="true"></i></button>
       </div>
-      <ul id="quarto-sidebar-section-8" class="collapse list-unstyled sidebar-section depth1 ">  
+      <ul id="quarto-sidebar-section-8" aria-labelledby="quarto-sidebar-section-8-label" class="collapse list-unstyled sidebar-section depth1 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../lectures/lec_08_pandas.html" class="sidebar-item-text sidebar-link">
@@ -557,13 +543,10 @@ div.csl-indent {
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-9" role="navigation" aria-expanded="true">
- <span class="menu-text">09 Plotting</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-9" role="navigation" aria-expanded="true" aria-label="Toggle section">
-            <i class="bi bi-chevron-right ms-2"></i>
-          </a> 
+            <button type="button" class="sidebar-item-text sidebar-item-toggle sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-9" aria-controls="quarto-sidebar-section-9" aria-expanded="true">
+ <span class="menu-text" id="quarto-sidebar-section-9-label">09 Plotting</span><i class="bi bi-chevron-right" aria-hidden="true"></i></button>
       </div>
-      <ul id="quarto-sidebar-section-9" class="collapse list-unstyled sidebar-section depth1 show">  
+      <ul id="quarto-sidebar-section-9" aria-labelledby="quarto-sidebar-section-9-label" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../lectures/lec_09_plotting.html" class="sidebar-item-text sidebar-link active">
@@ -580,13 +563,10 @@ div.csl-indent {
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-10" role="navigation" aria-expanded="false">
- <span class="menu-text">10 Projects</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-10" role="navigation" aria-expanded="false" aria-label="Toggle section">
-            <i class="bi bi-chevron-right ms-2"></i>
-          </a> 
+            <button type="button" class="sidebar-item-text sidebar-item-toggle sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-10" aria-controls="quarto-sidebar-section-10" aria-expanded="false">
+ <span class="menu-text" id="quarto-sidebar-section-10-label">10 Projects</span><i class="bi bi-chevron-right" aria-hidden="true"></i></button>
       </div>
-      <ul id="quarto-sidebar-section-10" class="collapse list-unstyled sidebar-section depth1 ">  
+      <ul id="quarto-sidebar-section-10" aria-labelledby="quarto-sidebar-section-10-label" class="collapse list-unstyled sidebar-section depth1 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../lectures/lec_10_projects.html" class="sidebar-item-text sidebar-link">
@@ -597,13 +577,10 @@ div.csl-indent {
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-11" role="navigation" aria-expanded="false">
- <span class="menu-text">11 Project Work I</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-11" role="navigation" aria-expanded="false" aria-label="Toggle section">
-            <i class="bi bi-chevron-right ms-2"></i>
-          </a> 
+            <button type="button" class="sidebar-item-text sidebar-item-toggle sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-11" aria-controls="quarto-sidebar-section-11" aria-expanded="false">
+ <span class="menu-text" id="quarto-sidebar-section-11-label">11 Project Work I</span><i class="bi bi-chevron-right" aria-hidden="true"></i></button>
       </div>
-      <ul id="quarto-sidebar-section-11" class="collapse list-unstyled sidebar-section depth1 ">  
+      <ul id="quarto-sidebar-section-11" aria-labelledby="quarto-sidebar-section-11-label" class="collapse list-unstyled sidebar-section depth1 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../lectures/lec_11_projects.html" class="sidebar-item-text sidebar-link">
@@ -614,13 +591,10 @@ div.csl-indent {
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-12" role="navigation" aria-expanded="false">
- <span class="menu-text">12 Project Work II</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-12" role="navigation" aria-expanded="false" aria-label="Toggle section">
-            <i class="bi bi-chevron-right ms-2"></i>
-          </a> 
+            <button type="button" class="sidebar-item-text sidebar-item-toggle sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-12" aria-controls="quarto-sidebar-section-12" aria-expanded="false">
+ <span class="menu-text" id="quarto-sidebar-section-12-label">12 Project Work II</span><i class="bi bi-chevron-right" aria-hidden="true"></i></button>
       </div>
-      <ul id="quarto-sidebar-section-12" class="collapse list-unstyled sidebar-section depth1 ">  
+      <ul id="quarto-sidebar-section-12" aria-labelledby="quarto-sidebar-section-12-label" class="collapse list-unstyled sidebar-section depth1 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../lectures/lec_12_projects.html" class="sidebar-item-text sidebar-link">
@@ -631,13 +605,10 @@ div.csl-indent {
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-13" role="navigation" aria-expanded="false">
- <span class="menu-text">13 Presentations</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-13" role="navigation" aria-expanded="false" aria-label="Toggle section">
-            <i class="bi bi-chevron-right ms-2"></i>
-          </a> 
+            <button type="button" class="sidebar-item-text sidebar-item-toggle sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-13" aria-controls="quarto-sidebar-section-13" aria-expanded="false">
+ <span class="menu-text" id="quarto-sidebar-section-13-label">13 Presentations</span><i class="bi bi-chevron-right" aria-hidden="true"></i></button>
       </div>
-      <ul id="quarto-sidebar-section-13" class="collapse list-unstyled sidebar-section depth1 ">  
+      <ul id="quarto-sidebar-section-13" aria-labelledby="quarto-sidebar-section-13-label" class="collapse list-unstyled sidebar-section depth1 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../lectures/lec_13_presentations.html" class="sidebar-item-text sidebar-link">
@@ -697,7 +668,7 @@ div.csl-indent {
 <div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        <nav id="TOC" role="doc-toc" class="toc-active">
+        <nav id="TOC" role="doc-toc" aria-labelledby="toc-title" class="toc-active">
     <h2 id="toc-title">On this page</h2>
    
   <ul>
@@ -813,10 +784,10 @@ div.csl-indent {
 <div class="toc-actions"><ul><li><a href="https://github.com/beyondsimulations/Introduction-to-Python/blob/main/lectures/lec_09_plotting.qmd" class="toc-action"><i class="bi bi-github"></i>View source</a></li><li><a href="https://github.com/beyondsimulations/Introduction-to-Python/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div><div class="quarto-alternate-formats"><h2>Other Formats</h2><ul><li><a href="lec_09_plotting.pdf"><i class="bi bi-file-pdf"></i>PDF</a></li><li><a href="lec_09_presentation.html"><i class="bi bi-file-slides"></i>RevealJS</a></li></ul></div></nav>
     </div>
 <!-- main -->
-<main class="content" id="quarto-document-content">
+<main class="content" id="quarto-document-content" tabindex="-1">
 
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../lectures/lec_09_plotting.html">09 Plotting</a></li><li class="breadcrumb-item"><a href="../lectures/lec_09_plotting.html">Lecture</a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="Breadcrumbs"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../lectures/lec_09_plotting.html">09 Plotting</a></li><li class="breadcrumb-item"><a href="../lectures/lec_09_plotting.html">Lecture</a></li></ol></nav>
 <div class="quarto-title">
 <h1 class="title">Lecture IX - Data Visualization</h1>
 <p class="subtitle lead">Programming with Python</p>
@@ -881,7 +852,7 @@ c) an error from comparing text</p>
 </section>
 <section id="answer-1" class="level2">
 <h2 class="anchored" data-anchor-id="answer-1">Answer 1</h2>
-<div id="2298c820" class="cell" data-output-location="fragment" data-execution_count="2">
+<div id="5291c314" class="cell" data-output-location="fragment" data-execution_count="2">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>orders[orders[<span class="st">"zone"</span>] <span class="op">==</span> <span class="st">"Nord"</span>]</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="2">
 <div>
@@ -930,7 +901,7 @@ c) one total per zone</p>
 </section>
 <section id="answer-2" class="level2">
 <h2 class="anchored" data-anchor-id="answer-2">Answer 2</h2>
-<div id="c7bf0159" class="cell" data-output-location="fragment" data-execution_count="3">
+<div id="3b3159a4" class="cell" data-output-location="fragment" data-execution_count="3">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>orders.groupby(<span class="st">"zone"</span>)[<span class="st">"total_eur"</span>].<span class="bu">sum</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="3">
 <pre><code>zone
@@ -952,7 +923,7 @@ c) the column’s dtype, like <code>.dtypes</code></p>
 </section>
 <section id="answer-3" class="level2">
 <h2 class="anchored" data-anchor-id="answer-3">Answer 3</h2>
-<div id="842cea9b" class="cell" data-output-location="fragment" data-execution_count="4">
+<div id="8a7bb9cd" class="cell" data-output-location="fragment" data-execution_count="4">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>orders[<span class="st">"total_eur"</span>].describe()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="4">
 <pre><code>count     5.000000
@@ -974,7 +945,7 @@ Name: total_eur, dtype: float64</code></pre>
 <section id="your-agent-draws-you-judge" class="level2">
 <h2 class="anchored" data-anchor-id="your-agent-draws-you-judge">Your agent draws, you judge</h2>
 <p>Ask your agent for <em>a bar chart of revenue per dish</em>:</p>
-<div id="c9d8fc07" class="cell" data-output-location="column" data-execution_count="6">
+<div id="6aa7725c" class="cell" data-output-location="column" data-execution_count="6">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
 <span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>dishes <span class="op">=</span> [<span class="st">"Pad Thai"</span>, <span class="st">"Miso Ramen"</span>,</span>
@@ -989,7 +960,7 @@ Name: total_eur, dtype: float64</code></pre>
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="lec_09_plotting_files/figure-html/cell-7-output-1.png" alt="Bar chart of revenue per dish: Pad Thai 420, Miso Ramen 450, Bao Box 330, Falafel Wrap 300 euros, drawn in the default blue with the y-axis labelled Revenue (EUR)." width="538" height="385" class="figure-img"></p>
+<p><img src="lec_09_plotting_files/figure-revealjs/cell-7-output-1.png" alt="Bar chart of revenue per dish: Pad Thai 420, Miso Ramen 450, Bao Box 330, Falafel Wrap 300 euros, drawn in the default blue with the y-axis labelled Revenue (EUR)." width="538" height="385" class="figure-img"></p>
 </figure>
 </div>
 </div>
@@ -1009,11 +980,11 @@ Name: total_eur, dtype: float64</code></pre>
 <section id="predict-which-chart-is-wrong" class="level2">
 <h2 class="anchored" data-anchor-id="predict-which-chart-is-wrong">Predict: which chart is wrong?</h2>
 <p>Three drafts from Tobi’s agent. Exactly one is <strong>wrong</strong>:</p>
-<div id="44c5a81e" class="cell" data-execution_count="7">
+<div id="00ec5d84" class="cell" data-execution_count="7">
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="lec_09_plotting_files/figure-html/cell-8-output-1.png" alt="Three charts of the same four dishes. Chart 1: bars labelled with shares of revenue of 32, 35, 25 and 23 percent. Chart 2: bars in magenta, green, yellow and cyan with thick black outlines and a heavy black grid. Chart 3: a pie with four slices of similar size and no numbers." width="1192" height="245" class="figure-img"></p>
+<p><img src="lec_09_plotting_files/figure-revealjs/cell-8-output-1.png" alt="Three charts of the same four dishes. Chart 1: bars labelled with shares of revenue of 32, 35, 25 and 23 percent. Chart 2: bars in magenta, green, yellow and cyan with thick black outlines and a heavy black grid. Chart 3: a pie with four slices of similar size and no numbers." width="1192" height="245" class="figure-img"></p>
 </figure>
 </div>
 </div>
@@ -1024,11 +995,11 @@ c) chart 3</p>
 </section>
 <section id="answer-chart-1-adds-up-to-115" class="level2">
 <h2 class="anchored" data-anchor-id="answer-chart-1-adds-up-to-115">Answer: chart 1 adds up to 115 %</h2>
-<div id="6251c02b" class="cell" data-execution_count="8">
+<div id="d12be286" class="cell" data-execution_count="8">
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="lec_09_plotting_files/figure-html/cell-9-output-1.png" alt="Two bar charts of revenue shares per dish. Left, Tobi's agent: 32, 35, 25 and 23 percent, which add up to 115 percent. Right, the shares computed from the revenue: 28, 30, 22 and 20 percent, which add up to 100 percent." width="1025" height="303" class="figure-img"></p>
+<p><img src="lec_09_plotting_files/figure-revealjs/cell-9-output-1.png" alt="Two bar charts of revenue shares per dish. Left, Tobi's agent: 32, 35, 25 and 23 percent, which add up to 115 percent. Right, the shares computed from the revenue: 28, 30, 22 and 20 percent, which add up to 100 percent." width="1033" height="305" class="figure-img"></p>
 </figure>
 </div>
 </div>
@@ -1081,11 +1052,11 @@ c) chart 3</p>
 <section id="munchcorps-one-pie" class="level2">
 <h2 class="anchored" data-anchor-id="munchcorps-one-pie">MunchCorp’s one pie</h2>
 <p>The one chart in MunchCorp’s press release from Episode 8:</p>
-<div id="08d2556d" class="cell" data-execution_count="9">
+<div id="826d0c9e" class="cell" data-execution_count="9">
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="lec_09_plotting_files/figure-html/cell-10-output-1.png" alt="MunchCorp's pie chart of revenue per zone: four slices for Nord, Altstadt, Hafen and Sued, all close to a quarter of the circle, with no numbers on them." width="382" height="267" class="figure-img"></p>
+<p><img src="lec_09_plotting_files/figure-revealjs/cell-10-output-1.png" alt="MunchCorp's pie chart of revenue per zone: four slices for Nord, Altstadt, Hafen and Sued, all close to a quarter of the circle, with no numbers on them." width="382" height="267" class="figure-img"></p>
 </figure>
 </div>
 </div>
@@ -1097,11 +1068,11 @@ c) Altstadt, bottom left</p>
 </section>
 <section id="answer-altstadt-by-1.4-points" class="level2">
 <h2 class="anchored" data-anchor-id="answer-altstadt-by-1.4-points">Answer: Altstadt, by 1.4 points</h2>
-<div id="f32e0920" class="cell" data-execution_count="10">
+<div id="9f264097" class="cell" data-execution_count="10">
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="lec_09_plotting_files/figure-html/cell-11-output-1.png" alt="The same MunchCorp data twice. Left, the pie with four slices of nearly equal size. Right, sorted bars: Altstadt 26.4, Nord 25.0, Sued 24.4 and Hafen 24.2 percent, so the order is clear at a glance." width="934" height="303" class="figure-img"></p>
+<p><img src="lec_09_plotting_files/figure-revealjs/cell-11-output-1.png" alt="The same MunchCorp data twice. Left, the pie with four slices of nearly equal size. Right, sorted bars: Altstadt 26.4, Nord 25.0, Sued 24.4 and Hafen 24.2 percent, so the order is clear at a glance." width="931" height="304" class="figure-img"></p>
 </figure>
 </div>
 </div>
@@ -1148,11 +1119,11 @@ c) Altstadt, bottom left</p>
 </section>
 <section id="amounts-how-much" class="level2 nostretch">
 <h2 class="nostretch anchored" data-anchor-id="amounts-how-much">Amounts: how much?</h2>
-<div id="2ec8b84f" class="cell" data-execution_count="11">
+<div id="249ee4be" class="cell" data-execution_count="11">
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="lec_09_plotting_files/figure-html/cell-12-output-1.png" alt="Six small chart icons for amounts. Bar: four sorted bars. Horizontal bar: eight sorted bars lying down. Dot plot: six dots on a zoomed axis. Grouped bars: pairs of teal and sand bars. Stacked bars: seven bars split into three colored parts. Heatmap: a grid of squares, darker where the amount is larger." width="1030" height="458" class="figure-img"></p>
+<p><img src="lec_09_plotting_files/figure-revealjs/cell-12-output-1.png" alt="Six small chart icons for amounts. Bar: four sorted bars. Horizontal bar: eight sorted bars lying down. Dot plot: six dots on a zoomed axis. Grouped bars: pairs of teal and sand bars. Stacked bars: seven bars split into three colored parts. Heatmap: a grid of squares, darker where the amount is larger." width="1030" height="458" class="figure-img"></p>
 </figure>
 </div>
 </div>
@@ -1161,11 +1132,11 @@ c) Altstadt, bottom left</p>
 </section>
 <section id="distributions-how-spread-out" class="level2 nostretch">
 <h2 class="nostretch anchored" data-anchor-id="distributions-how-spread-out">Distributions: how spread out?</h2>
-<div id="b880ee8f" class="cell" data-execution_count="12">
+<div id="1fe1e58c" class="cell" data-execution_count="12">
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="lec_09_plotting_files/figure-html/cell-13-output-1.png" alt="Six small chart icons for distributions of delivery times. Histogram: bars that pile up on the left with a long tail. Density: the same shape as a smooth filled curve. Box plot: four boxes with a dark red median line. Violin: four mirrored shapes, one with two bulges. Strip chart: four columns of dots, one in dark red. Ridgeline: four smooth curves stacked above each other." width="1050" height="458" class="figure-img"></p>
+<p><img src="lec_09_plotting_files/figure-revealjs/cell-13-output-1.png" alt="Six small chart icons for distributions of delivery times. Histogram: bars that pile up on the left with a long tail. Density: the same shape as a smooth filled curve. Box plot: four boxes with a dark red median line. Violin: four mirrored shapes, one with two bulges. Strip chart: four columns of dots, one in dark red. Ridgeline: four smooth curves stacked above each other." width="1050" height="458" class="figure-img"></p>
 </figure>
 </div>
 </div>
@@ -1174,11 +1145,11 @@ c) Altstadt, bottom left</p>
 </section>
 <section id="proportions-what-share" class="level2 nostretch">
 <h2 class="nostretch anchored" data-anchor-id="proportions-what-share">Proportions: what share?</h2>
-<div id="b80a64ca" class="cell" data-execution_count="13">
+<div id="8826e921" class="cell" data-execution_count="13">
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="lec_09_plotting_files/figure-html/cell-14-output-1.png" alt="Six small chart icons for shares. Pie: a half and two quarters. Donut: the same as a ring. Side-by-side bars: four bars of nearly equal height. 100 percent stacked bars: four columns of equal height split into four colors. Stacked area: three colored bands, the bottom one growing. Mosaic plot: one rectangle split into columns by zone, each column split into colored blocks by dish." width="1051" height="458" class="figure-img"></p>
+<p><img src="lec_09_plotting_files/figure-revealjs/cell-14-output-1.png" alt="Six small chart icons for shares. Pie: a half and two quarters. Donut: the same as a ring. Side-by-side bars: four bars of nearly equal height. 100 percent stacked bars: four columns of equal height split into four colors. Stacked area: three colored bands, the bottom one growing. Mosaic plot: one rectangle split into columns by zone, each column split into colored blocks by dish." width="1051" height="458" class="figure-img"></p>
 </figure>
 </div>
 </div>
@@ -1187,11 +1158,11 @@ c) Altstadt, bottom left</p>
 </section>
 <section id="relationships-two-numbers" class="level2 nostretch">
 <h2 class="nostretch anchored" data-anchor-id="relationships-two-numbers">Relationships: two numbers</h2>
-<div id="8f9c736b" class="cell" data-execution_count="14">
+<div id="bc96f94d" class="cell" data-execution_count="14">
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="lec_09_plotting_files/figure-html/cell-15-output-1.png" alt="Six small chart icons for relationships. Scatter: a cloud of dots rising to the right. Bubble: four dots of different sizes. Slope graph: four lines from a left column to a right column, one dark red line falling steeply. Hex bins: a rising band of hexagons, darkest in the middle. Correlogram: a five by five grid of squares in teal and red shades. Connected scatter: dots joined in time order from week 1 to week 8, moving down to the right and then turning back, with an arrow on the last step." width="1051" height="458" class="figure-img"></p>
+<p><img src="lec_09_plotting_files/figure-revealjs/cell-15-output-1.png" alt="Six small chart icons for relationships. Scatter: a cloud of dots rising to the right. Bubble: four dots of different sizes. Slope graph: four lines from a left column to a right column, one dark red line falling steeply. Hex bins: a rising band of hexagons, darkest in the middle. Correlogram: a five by five grid of squares in teal and red shades. Connected scatter: dots joined in time order from week 1 to week 8, moving down to the right and then turning back, with an arrow on the last step." width="1051" height="458" class="figure-img"></p>
 </figure>
 </div>
 </div>
@@ -1200,11 +1171,11 @@ c) Altstadt, bottom left</p>
 </section>
 <section id="time-series-change-over-time" class="level2 nostretch">
 <h2 class="nostretch anchored" data-anchor-id="time-series-change-over-time">Time series: change over time</h2>
-<div id="64721273" class="cell" data-execution_count="15">
+<div id="77fa2730" class="cell" data-execution_count="15">
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="lec_09_plotting_files/figure-html/cell-16-output-1.png" alt="Four small chart icons for time series. Line: a rising line with a weekly ripple. Area: the same shape filled down to zero. Smoothed trend: faint dots with a dark red average line through them. Small multiples: four tiny line charts in a grid, one of them dark red and rising faster." width="1051" height="458" class="figure-img"></p>
+<p><img src="lec_09_plotting_files/figure-revealjs/cell-16-output-1.png" alt="Four small chart icons for time series. Line: a rising line with a weekly ripple. Area: the same shape filled down to zero. Smoothed trend: faint dots with a dark red average line through them. Small multiples: four tiny line charts in a grid, one of them dark red and rising faster." width="1051" height="458" class="figure-img"></p>
 </figure>
 </div>
 </div>
@@ -1213,11 +1184,11 @@ c) Altstadt, bottom left</p>
 </section>
 <section id="maps-and-uncertainty" class="level2 nostretch">
 <h2 class="nostretch anchored" data-anchor-id="maps-and-uncertainty">Maps and uncertainty</h2>
-<div id="55c67425" class="cell" data-execution_count="16">
+<div id="bf023765" class="cell" data-execution_count="16">
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="lec_09_plotting_files/figure-html/cell-17-output-1.png" alt="Six small chart icons. Dot map: clusters of dots inside a pale city outline with a river, one cluster dark red. Choropleth: five irregular regions shaded from light to dark teal. Cartogram heatmap: four equal squares in shades of teal. Error bars: four dots, each with a vertical bar for how sure the value is. Graded error bars: the same with a thick inner and a thin outer bar. Confidence band: dots with a fitted line inside a pale band." width="1073" height="458" class="figure-img"></p>
+<p><img src="lec_09_plotting_files/figure-revealjs/cell-17-output-1.png" alt="Six small chart icons. Dot map: clusters of dots inside a pale city outline with a river, one cluster dark red. Choropleth: five irregular regions shaded from light to dark teal. Cartogram heatmap: four equal squares in shades of teal. Error bars: four dots, each with a vertical bar for how sure the value is. Graded error bars: the same with a thick inner and a thin outer bar. Confidence band: dots with a fitted line inside a pale band." width="1073" height="458" class="figure-img"></p>
 </figure>
 </div>
 </div>
@@ -1237,11 +1208,11 @@ c) 3: one bar per range</p>
 </section>
 <section id="answer-three-ranges-three-bars" class="level2 nostretch">
 <h2 class="nostretch anchored" data-anchor-id="answer-three-ranges-three-bars">Answer: three ranges, three bars</h2>
-<div id="3b39c228" class="cell" data-execution_count="17">
+<div id="4afca1b9" class="cell" data-execution_count="17">
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="lec_09_plotting_files/figure-html/cell-18-output-1.png" alt="Two panels from the same four numbers. Left, a bar chart with four bars of heights 8, 12, 9 and 15. Right, a histogram with three separate bars for three ranges between 8 and 15, of heights 2, 1 and 1: 8 and 9 share the first range." width="936" height="284" class="figure-img"></p>
+<p><img src="lec_09_plotting_files/figure-revealjs/cell-18-output-1.png" alt="Two panels from the same four numbers. Left, a bar chart with four bars of heights 8, 12, 9 and 15. Right, a histogram with three separate bars for three ranges between 8 and 15, of heights 2, 1 and 1: 8 and 9 share the first range." width="1051" height="285" class="figure-img"></p>
 </figure>
 </div>
 </div>
@@ -1263,11 +1234,11 @@ c) 3: one bar per range</p>
 <h1 class="title"><span class="flow">Proportional ink</span></h1>
 <section id="predict-how-many-times-more" class="level2">
 <h2 class="anchored" data-anchor-id="predict-how-many-times-more">Predict: how many times more?</h2>
-<div id="7dfe3fa3" class="cell" data-execution_count="18">
+<div id="f0b39c40" class="cell" data-execution_count="18">
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="lec_09_plotting_files/figure-html/cell-19-output-1.png" alt="Bar chart of revenue per dish with the y-axis running from 270 to 460 euros: Pad Thai 420, Miso Ramen 450, Bao Box 330, Falafel Wrap 300. The Miso Ramen bar looks about six times as tall as the Falafel Wrap bar." width="687" height="275" class="figure-img"></p>
+<p><img src="lec_09_plotting_files/figure-revealjs/cell-19-output-1.png" alt="Bar chart of revenue per dish with the y-axis running from 270 to 460 euros: Pad Thai 420, Miso Ramen 450, Bao Box 330, Falafel Wrap 300. The Miso Ramen bar looks about six times as tall as the Falafel Wrap bar." width="687" height="275" class="figure-img"></p>
 </figure>
 </div>
 </div>
@@ -1279,11 +1250,11 @@ c) about 6 times</p>
 </section>
 <section id="answer-1.5-times-drawn-as-6" class="level2">
 <h2 class="anchored" data-anchor-id="answer-1.5-times-drawn-as-6">Answer: 1.5 times, drawn as 6</h2>
-<div id="3284077c" class="cell" data-execution_count="19">
+<div id="4135e5a0" class="cell" data-execution_count="19">
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="lec_09_plotting_files/figure-html/cell-20-output-1.png" alt="The dish revenue twice. Left, Tobi's agent with the y-axis from 270: the Miso Ramen bar is six times as tall as the Falafel Wrap bar. Right, the same bars from 0: Miso Ramen 450 against Falafel Wrap 300, one and a half times as tall." width="1025" height="303" class="figure-img"></p>
+<p><img src="lec_09_plotting_files/figure-revealjs/cell-20-output-1.png" alt="The dish revenue twice. Left, Tobi's agent with the y-axis from 270: the Miso Ramen bar is six times as tall as the Falafel Wrap bar. Right, the same bars from 0: Miso Ramen 450 against Falafel Wrap 300, one and a half times as tall." width="1033" height="305" class="figure-img"></p>
 </figure>
 </div>
 </div>
@@ -1302,11 +1273,11 @@ c) a line rising across most of the chart</p>
 </section>
 <section id="answer-a-climb-across-the-chart" class="level2 nostretch">
 <h2 class="nostretch anchored" data-anchor-id="answer-a-climb-across-the-chart">Answer: a climb across the chart</h2>
-<div id="f2ec119a" class="cell" data-execution_count="20">
+<div id="2119c6f3" class="cell" data-execution_count="20">
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="lec_09_plotting_files/figure-html/cell-21-output-1.png" alt="Line through 710, 718, 724 and 731 on a y-axis that runs only from 700 to 735. The line climbs 60 percent of the chart height, so 3 percent of growth looks like a steep rise." width="662" height="285" class="figure-img"></p>
+<p><img src="lec_09_plotting_files/figure-revealjs/cell-21-output-1.png" alt="Line through 710, 718, 724 and 731 on a y-axis that runs only from 700 to 735. The line climbs 60 percent of the chart height, so 3 percent of growth looks like a steep rise." width="662" height="285" class="figure-img"></p>
 </figure>
 </div>
 </div>
@@ -1357,11 +1328,11 @@ c) a line rising across most of the chart</p>
 <section id="makeover-1-who-is-fastest" class="level2">
 <h2 class="anchored" data-anchor-id="makeover-1-who-is-fastest">Makeover 1: who is fastest?</h2>
 <p><em>“Are you faster than the rivals?”</em> First: who was fastest in <strong>week 1</strong>?</p>
-<div id="15d985f8" class="cell" data-execution_count="21">
+<div id="36784c71" class="cell" data-execution_count="21">
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="lec_09_plotting_files/figure-html/cell-22-output-1.png" alt="Default line chart of delivery time per week for eight weeks: four lines in blue, orange, green and red with dots, and a legend in alphabetical order, Kiezküche, MunchCorp, Pronto, Us. The lines cross each other several times." width="823" height="278" class="figure-img"></p>
+<p><img src="lec_09_plotting_files/figure-revealjs/cell-22-output-1.png" alt="Default line chart of delivery time per week for eight weeks: four lines in blue, orange, green and red with dots, and a legend in alphabetical order, Kiezküche, MunchCorp, Pronto, Us. The lines cross each other several times." width="823" height="278" class="figure-img"></p>
 </figure>
 </div>
 </div>
@@ -1377,11 +1348,11 @@ c) Pronto</p>
 </section>
 <section id="lines-step-1-one-accent-color" class="level2">
 <h2 class="anchored" data-anchor-id="lines-step-1-one-accent-color">Lines, step 1: one accent color</h2>
-<div id="8d4f5250" class="cell" data-execution_count="22">
+<div id="49e48fa8" class="cell" data-execution_count="22">
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="lec_09_plotting_files/figure-html/cell-23-output-1.png" alt="The same chart, with our line in dark red and thicker, and the three rival lines in light grey. The legend is still there." width="898" height="381" class="figure-img"></p>
+<p><img src="lec_09_plotting_files/figure-revealjs/cell-23-output-1.png" alt="The same chart, with our line in dark red and thicker, and the three rival lines in light grey. The legend is still there." width="898" height="381" class="figure-img"></p>
 </figure>
 </div>
 </div>
@@ -1390,11 +1361,11 @@ c) Pronto</p>
 </section>
 <section id="lines-step-2-labels-no-legend" class="level2">
 <h2 class="anchored" data-anchor-id="lines-step-2-labels-no-legend">Lines, step 2: labels, no legend</h2>
-<div id="05afdf64" class="cell" data-execution_count="23">
+<div id="6e68b065" class="cell" data-execution_count="23">
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="lec_09_plotting_files/figure-html/cell-24-output-1.png" alt="The same chart without a legend: each line now carries its name at its right end, Us in dark red at 29 minutes, the rivals in grey at 32, 35 and 37 minutes." width="898" height="381" class="figure-img"></p>
+<p><img src="lec_09_plotting_files/figure-revealjs/cell-24-output-1.png" alt="The same chart without a legend: each line now carries its name at its right end, Us in dark red at 29 minutes, the rivals in grey at 32, 35 and 37 minutes." width="898" height="381" class="figure-img"></p>
 </figure>
 </div>
 </div>
@@ -1403,11 +1374,11 @@ c) Pronto</p>
 </section>
 <section id="lines-step-3-the-title-says-it" class="level2 nostretch">
 <h2 class="nostretch anchored" data-anchor-id="lines-step-3-the-title-says-it">Lines, step 3: the title says it</h2>
-<div id="226cb3bf" class="cell" data-execution_count="24">
+<div id="9c2c0f73" class="cell" data-execution_count="24">
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="lec_09_plotting_files/figure-html/cell-25-output-1.png" alt="The chart in the house style: the title reads From slowest to fastest in eight weeks. Our dark red line falls from 41 to 29 minutes, the grey rival lines stay between 30 and 38, every line carries its name, and the frame and tick marks are gone." width="1051" height="322" class="figure-img"></p>
+<p><img src="lec_09_plotting_files/figure-revealjs/cell-25-output-1.png" alt="The chart in the house style: the title reads From slowest to fastest in eight weeks. Our dark red line falls from 41 to 29 minutes, the grey rival lines stay between 30 and 38, every line carries its name, and the frame and tick marks are gone." width="1051" height="322" class="figure-img"></p>
 </figure>
 </div>
 </div>
@@ -1416,11 +1387,11 @@ c) Pronto</p>
 </section>
 <section id="lines-step-4-add-the-context" class="level2 nostretch">
 <h2 class="nostretch anchored" data-anchor-id="lines-step-4-add-the-context">Lines, step 4: add the context</h2>
-<div id="c887bbdc" class="cell" data-execution_count="25">
+<div id="93f31c0a" class="cell" data-execution_count="25">
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="lec_09_plotting_files/figure-html/cell-26-output-1.png" alt="The same chart with context: the three grey rival lines are replaced by one dashed line labelled fastest rival, at 30 to 32 minutes, and a note with an arrow marks new routes from week 3, where our dark red line starts to fall. Our line drops below the dashed line in week 6." width="1051" height="322" class="figure-img"></p>
+<p><img src="lec_09_plotting_files/figure-revealjs/cell-26-output-1.png" alt="The same chart with context: the three grey rival lines are replaced by one dashed line labelled fastest rival, at 30 to 32 minutes, and a note with an arrow marks new routes from week 3, where our dark red line starts to fall. Our line drops below the dashed line in week 6." width="1051" height="322" class="figure-img"></p>
 </figure>
 </div>
 </div>
@@ -1429,11 +1400,11 @@ c) Pronto</p>
 </section>
 <section id="lines-step-5-one-too-many" class="level2 nostretch">
 <h2 class="nostretch anchored" data-anchor-id="lines-step-5-one-too-many">Lines, step 5: one too many</h2>
-<div id="c7e83ded" class="cell" data-execution_count="26">
+<div id="12ef2a2e" class="cell" data-execution_count="26">
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="lec_09_plotting_files/figure-html/cell-27-output-1.png" alt="The step-4 chart buried under extras: a dark grid every minute, a full black frame, a boxed legend, and the number of minutes printed next to every point of our line. The point is still there but hard to find." width="1051" height="322" class="figure-img"></p>
+<p><img src="lec_09_plotting_files/figure-revealjs/cell-27-output-1.png" alt="The step-4 chart buried under extras: a dark grid every minute, a full black frame, a boxed legend, and the number of minutes printed next to every point of our line. The point is still there but hard to find." width="1051" height="322" class="figure-img"></p>
 </figure>
 </div>
 </div>
@@ -1442,11 +1413,11 @@ c) Pronto</p>
 </section>
 <section id="makeover-2-what-misleads" class="level2 nostretch">
 <h2 class="nostretch anchored" data-anchor-id="makeover-2-what-misleads">Makeover 2: what misleads?</h2>
-<div id="601a5ed9" class="cell" data-execution_count="27">
+<div id="b6f9b439" class="cell" data-execution_count="27">
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="lec_09_plotting_files/figure-html/cell-28-output-1.png" alt="Tobi's agent's bar chart of late deliveries in eight districts in alphabetical order: every bar a different rainbow color, a legend that repeats the district names, names tilted at 45 degrees, and a y-axis that starts at 5 percent. Harburg's bar is by far the tallest." width="823" height="322" class="figure-img"></p>
+<p><img src="lec_09_plotting_files/figure-revealjs/cell-28-output-1.png" alt="Tobi's agent's bar chart of late deliveries in eight districts in alphabetical order: every bar a different rainbow color, a legend that repeats the district names, names tilted at 45 degrees, and a y-axis that starts at 5 percent. Harburg's bar is by far the tallest." width="823" height="322" class="figure-img"></p>
 </figure>
 </div>
 </div>
@@ -1458,11 +1429,11 @@ c) the tilted names</p>
 </section>
 <section id="bars-step-1-from-zero" class="level2 nostretch">
 <h2 class="nostretch anchored" data-anchor-id="bars-step-1-from-zero">Bars, step 1: from zero</h2>
-<div id="ae465649" class="cell" data-execution_count="28">
+<div id="b6fc4276" class="cell" data-execution_count="28">
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="lec_09_plotting_files/figure-html/cell-29-output-1.png" alt="The same rainbow bar chart with the y-axis from 0. Harburg's bar at 26 percent is now about three times as tall as Eppendorf's at 9 percent." width="823" height="359" class="figure-img"></p>
+<p><img src="lec_09_plotting_files/figure-revealjs/cell-29-output-1.png" alt="The same rainbow bar chart with the y-axis from 0. Harburg's bar at 26 percent is now about three times as tall as Eppendorf's at 9 percent." width="823" height="359" class="figure-img"></p>
 </figure>
 </div>
 </div>
@@ -1471,11 +1442,11 @@ c) the tilted names</p>
 </section>
 <section id="bars-step-2-sorted-lying-down" class="level2 nostretch">
 <h2 class="nostretch anchored" data-anchor-id="bars-step-2-sorted-lying-down">Bars, step 2: sorted, lying down</h2>
-<div id="ede352e4" class="cell" data-execution_count="29">
+<div id="3d4af8a0" class="cell" data-execution_count="29">
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="lec_09_plotting_files/figure-html/cell-30-output-1.png" alt="Horizontal bars in one color, sorted from Harburg at the top with 26 percent down to Eppendorf with 9 percent. The names read without tilting and the legend is gone." width="880" height="337" class="figure-img"></p>
+<p><img src="lec_09_plotting_files/figure-revealjs/cell-30-output-1.png" alt="Horizontal bars in one color, sorted from Harburg at the top with 26 percent down to Eppendorf with 9 percent. The names read without tilting and the legend is gone." width="880" height="337" class="figure-img"></p>
 </figure>
 </div>
 </div>
@@ -1484,11 +1455,11 @@ c) the tilted names</p>
 </section>
 <section id="bars-step-3-one-point" class="level2 nostretch">
 <h2 class="nostretch anchored" data-anchor-id="bars-step-3-one-point">Bars, step 3: one point</h2>
-<div id="3a86b3e4" class="cell" data-execution_count="30">
+<div id="9eff6abd" class="cell" data-execution_count="30">
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="lec_09_plotting_files/figure-html/cell-31-output-1.png" alt="The finished chart: horizontal grey bars sorted by size, Harburg's bar on top in dark red, each bar with its percentage written at its end, no x-axis, and the title Harburg: one in four deliveries is late." width="1047" height="302" class="figure-img"></p>
+<p><img src="lec_09_plotting_files/figure-revealjs/cell-31-output-1.png" alt="The finished chart: horizontal grey bars sorted by size, Harburg's bar on top in dark red, each bar with its percentage written at its end, no x-axis, and the title Harburg: one in four deliveries is late." width="1047" height="302" class="figure-img"></p>
 </figure>
 </div>
 </div>
@@ -1497,11 +1468,11 @@ c) the tilted names</p>
 </section>
 <section id="makeover-3-who-is-late" class="level2 nostretch">
 <h2 class="nostretch anchored" data-anchor-id="makeover-3-who-is-late">Makeover 3: who is late?</h2>
-<div id="734aec02" class="cell" data-execution_count="31">
+<div id="5cf95d35" class="cell" data-execution_count="31">
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="lec_09_plotting_files/figure-html/cell-32-output-1.png" alt="Four overlapping histograms of delivery times in the default blue, orange, green and red, half transparent, with a legend for Nord, Altstadt, Hafen and Sued. The colors mix where the bars overlap, and a green tail reaches beyond 60 minutes." width="798" height="285" class="figure-img"></p>
+<p><img src="lec_09_plotting_files/figure-revealjs/cell-32-output-1.png" alt="Four overlapping histograms of delivery times in the default blue, orange, green and red, half transparent, with a legend for Nord, Altstadt, Hafen and Sued. The colors mix where the bars overlap, and a green tail reaches beyond 60 minutes." width="798" height="285" class="figure-img"></p>
 </figure>
 </div>
 </div>
@@ -1513,11 +1484,11 @@ c) Nord, blue</p>
 </section>
 <section id="spread-step-1-one-panel-each" class="level2 nostretch">
 <h2 class="nostretch anchored" data-anchor-id="spread-step-1-one-panel-each">Spread, step 1: one panel each</h2>
-<div id="89af9062" class="cell" data-execution_count="32">
+<div id="a67a2891" class="cell" data-execution_count="32">
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="lec_09_plotting_files/figure-html/cell-33-output-1.png" alt="The same delivery times as four small histograms stacked above each other on one shared minutes axis. Nord and Sued sit around 28 minutes, Altstadt has two humps at about 26 and 39 minutes, and Hafen's bars spread far to the right." width="842" height="340" class="figure-img"></p>
+<p><img src="lec_09_plotting_files/figure-revealjs/cell-33-output-1.png" alt="The same delivery times as four small histograms stacked above each other on one shared minutes axis. Nord and Sued sit around 28 minutes, Altstadt has two humps at about 26 and 39 minutes, and Hafen's bars spread far to the right." width="842" height="340" class="figure-img"></p>
 </figure>
 </div>
 </div>
@@ -1526,11 +1497,11 @@ c) Nord, blue</p>
 </section>
 <section id="spread-step-2-boxes-and-dots" class="level2 nostretch">
 <h2 class="nostretch anchored" data-anchor-id="spread-step-2-boxes-and-dots">Spread, step 2: boxes and dots</h2>
-<div id="413e007c" class="cell" data-execution_count="33">
+<div id="030a0975" class="cell" data-execution_count="33">
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="lec_09_plotting_files/figure-html/cell-34-output-1.png" alt="One chart with a box plot per zone, sorted from the most punctual zone, Sued, to Hafen, and every single delivery as a dot next to its box. Hafen's box sits highest, and Altstadt's dots form two clusters." width="823" height="293" class="figure-img"></p>
+<p><img src="lec_09_plotting_files/figure-revealjs/cell-34-output-1.png" alt="One chart with a box plot per zone, sorted from the most punctual zone, Sued, to Hafen, and every single delivery as a dot next to its box. Hafen's box sits highest, and Altstadt's dots form two clusters." width="823" height="293" class="figure-img"></p>
 </figure>
 </div>
 </div>
@@ -1539,11 +1510,11 @@ c) Nord, blue</p>
 </section>
 <section id="spread-step-3-draw-the-promise" class="level2 nostretch">
 <h2 class="nostretch anchored" data-anchor-id="spread-step-3-draw-the-promise">Spread, step 3: draw the promise</h2>
-<div id="eca3d243" class="cell" data-execution_count="34">
+<div id="2eb06b0b" class="cell" data-execution_count="34">
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="lec_09_plotting_files/figure-html/cell-35-output-1.png" alt="The finished chart: dots for every delivery per zone, grey for Sued, Nord and Altstadt and dark red for Hafen, a thin box over each zone, and a dashed line at 35 minutes labelled our promise. Most of Hafen's dots lie above the line. The title reads Hafen misses the 35-minute promise three times in four." width="1051" height="331" class="figure-img"></p>
+<p><img src="lec_09_plotting_files/figure-revealjs/cell-35-output-1.png" alt="The finished chart: dots for every delivery per zone, grey for Sued, Nord and Altstadt and dark red for Hafen, a thin box over each zone, and a dashed line at 35 minutes labelled our promise. Most of Hafen's dots lie above the line. The title reads Hafen misses the 35-minute promise three times in four." width="1051" height="331" class="figure-img"></p>
 </figure>
 </div>
 </div>
@@ -1576,11 +1547,11 @@ c) Nord, blue</p>
 </section>
 <section id="predict-tobis-four-slides" class="level2 nostretch">
 <h2 class="nostretch anchored" data-anchor-id="predict-tobis-four-slides">Predict: Tobi’s four slides</h2>
-<div id="d4dd1b9b" class="cell" data-execution_count="35">
+<div id="48c711d0" class="cell" data-execution_count="35">
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="lec_09_plotting_files/figure-html/cell-36-output-1.png" alt="Four small slides with claim titles, each a different kind of chart. A: Repeat customers 18 percent to 35 percent, two dark red bars for week 1 and week 8. B: Orders up from 180 to 284 a week, a dark red area rising over eight weeks. C: From slowest to fastest, 41 to 29 minutes, our dark red line falling below three grey rival lines. D: Week 1, slowest in town, 41 minutes, a dot plot with our dot in dark red furthest right." width="1051" height="283" class="figure-img"></p>
+<p><img src="lec_09_plotting_files/figure-revealjs/cell-36-output-1.png" alt="Four small slides with claim titles, each a different kind of chart. A: Repeat customers 18 percent to 35 percent, two dark red bars for week 1 and week 8. B: Orders up from 180 to 284 a week, a dark red area rising over eight weeks. C: From slowest to fastest, 41 to 29 minutes, our dark red line falling below three grey rival lines. D: Week 1, slowest in town, 41 minutes, a dot plot with our dot in dark red furthest right." width="1051" height="283" class="figure-img"></p>
 </figure>
 </div>
 </div>
@@ -1592,11 +1563,11 @@ c) B, C, D, A</p>
 </section>
 <section id="answer-b-d-c-a" class="level2 nostretch">
 <h2 class="nostretch anchored" data-anchor-id="answer-b-d-c-a">Answer: B, D, C, A</h2>
-<div id="d684ef5d" class="cell" data-execution_count="36">
+<div id="9bb021ce" class="cell" data-execution_count="36">
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="lec_09_plotting_files/figure-html/cell-37-output-1.png" alt="The same four slides in story order: B, a rising dark red area of orders; D, the dot plot with us slowest; C, our line falling below the rivals; A, two bars for repeat customers rising from 18 to 35 percent." width="1051" height="206" class="figure-img"></p>
+<p><img src="lec_09_plotting_files/figure-revealjs/cell-37-output-1.png" alt="The same four slides in story order: B, a rising dark red area of orders; D, the dot plot with us slowest; C, our line falling below the rivals; A, two bars for repeat customers rising from 18 to 35 percent." width="1051" height="206" class="figure-img"></p>
 </figure>
 </div>
 </div>
@@ -1839,15 +1810,50 @@ Wilke, C. 2019. <em>Fundamentals of Data Visualization: A Primer on Making Infor
   window.document.addEventListener("DOMContentLoaded", function (event) {
     // Ensure there is a toggle, if there isn't float one in the top right
     if (window.document.querySelector('.quarto-color-scheme-toggle') === null) {
-      const a = window.document.createElement('a');
-      a.classList.add('top-right');
-      a.classList.add('quarto-color-scheme-toggle');
-      a.href = "";
-      a.onclick = function() { try { window.quartoToggleColorScheme(); } catch {} return false; };
+      const toggle = window.document.createElement('button');
+      toggle.type = "button";
+      toggle.setAttribute("role", "switch");
+      toggle.setAttribute("aria-checked", "false");
+      toggle.classList.add('top-right');
+      toggle.classList.add('quarto-color-scheme-toggle');
+      toggle.setAttribute("aria-label", "Toggle dark mode");
+      toggle.onclick = function() { try { window.quartoToggleColorScheme(); } catch {} return false; };
       const i = window.document.createElement("i");
       i.classList.add('bi');
-      a.appendChild(i);
-      window.document.body.appendChild(a);
+      toggle.appendChild(i);
+      // Put the toggle in a landmark of its own, so that landmark navigation
+      // can reach it.
+      //
+      // The container is always a fresh direct child of body, and the toggle is
+      // never moved into page furniture that the theme or the author controls.
+      // The toggle is positioned against the page, so any ancestor that
+      // establishes a containing block captures it: a positioned element or a
+      // grid for position: absolute, and transform, filter, will-change or
+      // contain for position: fixed. A direct child of body has none of these
+      // to inherit, and the shift when one appears is silent and visual.
+      //
+      // ARIA says a document should have at most one banner, and axe reports a
+      // duplicate whether or not the banners carry distinct labels. So use a
+      // header when the page has no banner yet, and a named region otherwise.
+      //
+      // A header is a banner wherever it sits, unless it is inside sectioning
+      // content, so this cannot just look at the children of body: a custom
+      // page layout wraps the title block header in a plain div. An explicit
+      // role="banner" always counts.
+      const sectioning = 'article, aside, main, nav, section, [role="article"], [role="complementary"], [role="main"], [role="navigation"], [role="region"]';
+      const hasBanner = Array.from(
+        window.document.querySelectorAll('header:not([role]), [role="banner"]')
+      ).some(function(el) {
+        return el.hasAttribute("role") || el.closest(sectioning) === null;
+      });
+      const container = window.document.createElement(hasBanner ? "div" : "header");
+      if (hasBanner) {
+        container.setAttribute("role", "region");
+        container.setAttribute("aria-label", "Toggle dark mode");
+      }
+      container.classList.add('quarto-color-scheme-toggle-container');
+      container.appendChild(toggle);
+      window.document.body.appendChild(container);
     }
     setColorSchemeToggle(hasAlternateSentinel())
     const icon = "";
@@ -1926,7 +1932,8 @@ Wilke, C. 2019. <em>Fundamentals of Data Visualization: A Primer on Making Infor
           return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
       }
       // Inspect non-navigation links and adorn them if external
-     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      window.quartoDecorateExternalLinks = function (root) {
+     var links = (root || window.document).querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
       for (var i=0; i<links.length; i++) {
         const link = links[i];
         if (!isInternal(link.href)) {
@@ -1935,8 +1942,69 @@ Wilke, C. 2019. <em>Fundamentals of Data Visualization: A Primer on Making Infor
           if (link.dataset.originalHref !== undefined) {
             link.href = link.dataset.originalHref;
           }
+          if (!link.classList.contains('no-external-icon')) {
+          }
         }
       }
+      };
+      window.quartoDecorateExternalLinks(window.document);
+    // Esc closes the popup (WCAG 1.4.13) and focus leaving both trigger and
+    // popup closes it (WCAG 2.4.11); tippy handles neither for interactive popups.
+    const hideOnEscAndFocusOut = {
+      name: 'hideOnEscAndFocusOut',
+      defaultValue: true,
+      fn(instance) {
+        const dismiss = () => {
+          // A show scheduled by the trigger delay would otherwise reopen it
+          instance.clearDelayTimeouts();
+          instance.hide();
+        };
+        const onKeyDown = (event) => {
+          if (event.key !== 'Escape') {
+            return;
+          }
+          // Keep Esc from also reaching page handlers (e.g. reveal.js overview),
+          // except an open reveal.js slide menu, which Esc should close too.
+          // The menu handles keys only when its keyboard option is on.
+          const menuHandlesEsc = window.Reveal?.getPlugin?.('menu')?.isOpen() &&
+            window.Reveal.getConfig().menu?.keyboard !== false;
+          if (!menuHandlesEsc) {
+            event.stopPropagation();
+          }
+          if (instance.popper.contains(window.document.activeElement)) {
+            // Disabled while refocusing so the focus trigger does not reopen it
+            instance.disable();
+            instance.reference.focus();
+            instance.enable();
+          }
+          dismiss();
+        };
+        const onFocusOut = (event) => {
+          const target = event.relatedTarget;
+          if (target && !instance.reference.contains(target) &&
+              !instance.popper.contains(target)) {
+            dismiss();
+          }
+        };
+        // On the trigger too: a click trigger (code-annotations: select) has no
+        // blur handling. Attached for the instance's lifetime so leaving the
+        // trigger also cancels a show still pending on the trigger delay.
+        instance.reference.addEventListener('focusout', onFocusOut);
+        return {
+          onShow() {
+            window.document.addEventListener('keydown', onKeyDown, true);
+            instance.popper.addEventListener('focusout', onFocusOut);
+          },
+          onHide() {
+            window.document.removeEventListener('keydown', onKeyDown, true);
+            instance.popper.removeEventListener('focusout', onFocusOut);
+          },
+          onDestroy() {
+            instance.reference.removeEventListener('focusout', onFocusOut);
+          },
+        };
+      },
+    };
     function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
       const config = {
         allowHTML: true,
@@ -1950,6 +2018,7 @@ Wilke, C. 2019. <em>Fundamentals of Data Visualization: A Primer on Making Infor
         interactiveBorder: 10,
         theme: 'quarto',
         placement: 'bottom-start',
+        plugins: [hideOnEscAndFocusOut],
       };
       if (contentFn) {
         config.content = contentFn;
@@ -2112,44 +2181,54 @@ Wilke, C. 2019. <em>Fundamentals of Data Visualization: A Primer on Making Infor
           const lineIds = lines.map((line) => {
             return targetCell + "-" + line;
           })
-          let top = null;
-          let height = null;
-          let parent = null;
+          // Each band is positioned against its own containing block, which is
+          // not the offsetParent of the lines, so place it from client rects.
+          const placeBand = (band, firstEl, lastEl, codeBlock) => {
+            const container = band.offsetParent;
+            if (container === null) {
+              return;
+            }
+            const containerRect = container.getBoundingClientRect();
+            // Reveal.js scales slides with a transform, so convert client
+            // pixels back to the CSS pixels of the container.
+            const scale = containerRect.height / container.offsetHeight || 1;
+            const firstRect = firstEl.getBoundingClientRect();
+            const lastRect = lastEl.getBoundingClientRect();
+            const top = (firstRect.top - containerRect.top) / scale - container.clientTop + container.scrollTop;
+            const height = (lastRect.bottom - firstRect.top) / scale;
+            band.style.top = top - 2 + "px";
+            band.style.height = height + 4 + "px";
+            if (codeBlock) {
+              // Without the copy button wrapper, the containing block is wider
+              // than the code block, so span the code block explicitly.
+              const blockRect = codeBlock.getBoundingClientRect();
+              band.style.left = (blockRect.left - containerRect.left) / scale - container.clientLeft + container.scrollLeft + "px";
+              band.style.width = blockRect.width / scale + "px";
+            }
+          };
           if (lineIds.length > 0) {
-              //compute the position of the single el (top and bottom and make a div)
-              const el = window.document.getElementById(lineIds[0]);
-              top = el.offsetTop;
-              height = el.offsetHeight;
-              parent = el.parentElement.parentElement;
-            if (lineIds.length > 1) {
-              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
-              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
-              height = bottom - top;
+            const el = window.document.getElementById(lineIds[0]);
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const parent = el.parentElement.parentElement;
+            // cook up a div (if necessary) and position it
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
             }
-            if (top !== null && height !== null && parent !== null) {
-              // cook up a div (if necessary) and position it 
-              let div = window.document.getElementById("code-annotation-line-highlight");
-              if (div === null) {
-                div = window.document.createElement("div");
-                div.setAttribute("id", "code-annotation-line-highlight");
-                div.style.position = 'absolute';
-                parent.appendChild(div);
-              }
-              div.style.top = top - 2 + "px";
-              div.style.height = height + 4 + "px";
-              div.style.left = 0;
-              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
-              if (gutterDiv === null) {
-                gutterDiv = window.document.createElement("div");
-                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
-                gutterDiv.style.position = 'absolute';
-                const codeCell = window.document.getElementById(targetCell);
-                const gutter = codeCell.querySelector('.code-annotation-gutter');
-                gutter.appendChild(gutterDiv);
-              }
-              gutterDiv.style.top = top - 2 + "px";
-              gutterDiv.style.height = height + 4 + "px";
+            placeBand(div, el, lastEl, parent.closest("div.sourceCode") || parent);
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
             }
+            placeBand(gutterDiv, el, lastEl);
             selectedAnnoteEl = annoteEl;
           }
         };
@@ -2247,6 +2326,9 @@ Wilke, C. 2019. <em>Fundamentals of Data Visualization: A Primer on Making Infor
       }
     }
   });
+  </script>
+  <script type="application/javascript">
+  window.quartoScrollableRegionsLabels = {"code":"Scrollable code","output":"Scrollable output"};
   </script>
 </div> <!-- /content -->
 <footer class="footer">
