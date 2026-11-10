@@ -7328,7 +7328,7 @@
     "href": "lectures/lec_09_plotting.html#your-agent-draws-you-judge",
     "title": "Lecture IX - Data Visualization",
     "section": "Your agent draws, you judge",
-    "text": "Your agent draws, you judge\nAsk your agent for a bar chart of revenue per dish:\n\nimport matplotlib.pyplot as plt\n\ndishes = [\"Pad Thai\", \"Miso Ramen\",\n          \"Bao Box\", \"Falafel Wrap\"]\nrevenue = [420, 450, 330, 300]\n\nplt.figure()      # a fresh canvas\nplt.bar(dishes, revenue)\nplt.ylabel(\"Revenue (EUR)\")\nplt.title(\"Revenue per dish\")\nplt.gca()         # show it\n\n\n\n\n\n\n\n\nRead the code, don’t memorize it. Your job: judge the picture. Here, the names already collide.",
+    "text": "Your agent draws, you judge\nAsk your agent for a bar chart of revenue per dish:\n\nimport matplotlib.pyplot as plt\n\ndishes = [\"Pad Thai\", \"Miso Ramen\",\n          \"Bao Box\", \"Falafel Wrap\"]\nrevenue = [420, 450, 330, 300]\n\nplt.figure()      # a fresh canvas\nplt.bar(dishes, revenue)\nplt.ylabel(\"Revenue (EUR)\")\nplt.title(\"Revenue per dish\")\nplt.gca()         # the chart: show it\n\n\n\n\n\n\n\n\nRead the code, don’t memorize it. Your job: judge the picture. Here, the names already collide.",
     "crumbs": [
       "09 Plotting",
       "Lecture"
@@ -7372,7 +7372,7 @@
     "href": "lectures/lec_09_plotting.html#the-title-is-a-claim",
     "title": "Lecture IX - Data Visualization",
     "section": "The title is a claim",
-    "text": "The title is a claim\nA title states the point (Wilke 2019, ch. 22):\n\n\n\nDescribes the chart\nStates the point\n\n\n\n\nRevenue per dish\nMiso Ramen sells best: 450 euros\n\n\nDelivery times\nMost deliveries take 20-30 minutes\n\n\nOrder value vs. delivery time\nBig orders don’t take longer\n\n\n\n\nWrite the claim before you draw. If you can’t, the chart has no point yet.\nEvery axis names what it measures, with the unit: Revenue (EUR).",
+    "text": "The title is a claim\nA title states the point (Wilke 2019, ch. 22):\n\n\n\nDescribes the chart\nStates the point\n\n\n\n\nRevenue per dish\nMiso Ramen sells best: 450 euros\n\n\nDelivery times\nMost deliveries take 20-30 minutes\n\n\nOrder value vs. delivery time\nBig orders don’t take longer\n\n\n\n\nWrite the claim before you draw. If you can’t, the chart has no point yet.\nNumber axes need a label with the unit: Revenue (EUR).",
     "crumbs": [
       "09 Plotting",
       "Lecture"
@@ -7405,7 +7405,7 @@
     "href": "lectures/lec_09_plotting.html#answer-altstadt-by-1.4-points",
     "title": "Lecture IX - Data Visualization",
     "section": "Answer: Altstadt, by 1.4 points",
-    "text": "Answer: Altstadt, by 1.4 points\n\n\n\n\n\n\n\n\n\nc) Altstadt: 26.4 % against Nord’s 25.0 %. The eye compares lengths well and areas badly. The sorted bars answer in a second; the pie starts an argument.",
+    "text": "Answer: Altstadt, by 1.4 points\n\n\n\n\n\n\n\n\n\nc) Altstadt: 26.4 % against Nord’s 25.0 %. The eye compares lengths well and angles badly. The sorted bars answer in a second; the pie starts an argument.",
     "crumbs": [
       "09 Plotting",
       "Lecture"
@@ -7438,7 +7438,7 @@
     "href": "lectures/lec_09_plotting.html#distributions-how-spread-out",
     "title": "Lecture IX - Data Visualization",
     "section": "Distributions: how spread out?",
-    "text": "Distributions: how spread out?\n\n\n\n\n\n\n\n\n\nAlso in the directory: cumulative densities, q-q and sina plots.",
+    "text": "Distributions: how spread out?",
     "crumbs": [
       "09 Plotting",
       "Lecture"
@@ -7449,7 +7449,7 @@
     "href": "lectures/lec_09_plotting.html#proportions-what-share",
     "title": "Lecture IX - Data Visualization",
     "section": "Proportions: what share?",
-    "text": "Proportions: what share?\n\n\n\n\n\n\n\n\n\nAlso in the directory: treemaps, parallel sets, nested pies.",
+    "text": "Proportions: what share?",
     "crumbs": [
       "09 Plotting",
       "Lecture"
@@ -7482,7 +7482,7 @@
     "href": "lectures/lec_09_plotting.html#maps-and-uncertainty",
     "title": "Lecture IX - Data Visualization",
     "section": "Maps and uncertainty",
-    "text": "Maps and uncertainty\n\n\n\n\n\n\n\n\n\nAlso in the directory: cartograms, eyes plots, quantile dots.",
+    "text": "Maps and uncertainty",
     "crumbs": [
       "09 Plotting",
       "Lecture"
@@ -7493,7 +7493,7 @@
     "href": "lectures/lec_09_plotting.html#predict-how-many-bars",
     "title": "Lecture IX - Data Visualization",
     "section": "Predict: how many bars?",
-    "text": "Predict: how many bars?\nThe same four numbers, two ways. On the left, a bar per number; on the right, a histogram:\nvalues = [8, 12, 9, 15]\nplt.bar(range(4), values)   # left\nplt.hist(values, bins=3)    # right\nThe bar chart shows 4 bars. How many bars does the histogram show?\na) 4: one bar per number\nb) 15: one bar per unit up to the max\nc) 3: one bar per range",
+    "text": "Predict: how many bars?\nThe same four numbers in two charts, first a bar per number, then a histogram:\nvalues = [8, 12, 9, 15]\nplt.bar(range(4), values)\nplt.hist(values, bins=3)\nThe bar chart shows 4 bars. How many bars does the histogram show?\na) 4: one bar per number\nb) 15: one bar per unit up to the max\nc) 3: one bar per range",
     "crumbs": [
       "09 Plotting",
       "Lecture"
@@ -7504,7 +7504,7 @@
     "href": "lectures/lec_09_plotting.html#answer-three-ranges-three-bars",
     "title": "Lecture IX - Data Visualization",
     "section": "Answer: three ranges, three bars",
-    "text": "Answer: three ranges, three bars\n\n\n\n\n\n\n\n\n\nc) 3: 8 and 9 share the first range, so that bar is 2 tall. A bar chart shows one bar per category, as tall as its value. A histogram shows one bar per range, as tall as the number of values in it.",
+    "text": "Answer: three ranges, three bars\n\n\n\n\n\n\n\n\n\nc) 3: bins=3 cuts 8 to 15 into three equal ranges, the bins. 8 and 9 share the first range, so that bar is 2 tall. A bar chart shows one bar per category, as tall as its value. A histogram shows one bar per range, as tall as the number of values in it.",
     "crumbs": [
       "09 Plotting",
       "Lecture"
@@ -7537,18 +7537,18 @@
     "href": "lectures/lec_09_plotting.html#answer-1.5-times-drawn-as-6",
     "title": "Lecture IX - Data Visualization",
     "section": "Answer: 1.5 times, drawn as 6",
-    "text": "Answer: 1.5 times, drawn as 6\n\n\n\n\n\n\n\n\n\na) about 1.5 times: 450 against 300. Cut at 270, the bars keep 180 and 30 of their length, so the picture says 6 times. That’s bad: the numbers are right, the picture misleads. The rule behind it is proportional ink: the ink for a value has to grow with the value (Wilke 2019, ch. 17).",
+    "text": "Answer: 1.5 times, drawn as 6\n\n\n\n\n\n\n\n\n\na) about 1.5 times: 450 against 300. Cut at 270, the bars keep 180 and 30 of their length, so the picture says 6 times. That’s bad: the numbers are right, the picture misleads. The rule behind it is proportional ink: twice the value, twice the ink (Wilke 2019, ch. 17).",
     "crumbs": [
       "09 Plotting",
       "Lecture"
     ]
   },
   {
-    "objectID": "lectures/lec_09_plotting.html#predict-the-ais-one-extra-line",
-    "href": "lectures/lec_09_plotting.html#predict-the-ais-one-extra-line",
+    "objectID": "lectures/lec_09_plotting.html#predict-the-agents-one-extra-line",
+    "href": "lectures/lec_09_plotting.html#predict-the-agents-one-extra-line",
     "title": "Lecture IX - Data Visualization",
-    "section": "Predict: the AI’s one extra line",
-    "text": "Predict: the AI’s one extra line\nRevenue [710, 718, 724, 731], up 3 % over four weeks. Tobi’s AI drafts the chart and adds one line:\nplt.plot([1, 2, 3, 4], [710, 718, 724, 731])\nplt.ylim(700, 735)\nWhat does the room see?\na) a flat line: 3 % stays 3 % on any axis\nb) an error: ylim has to include zero on a line chart\nc) a line rising across most of the chart",
+    "section": "Predict: the agent’s one extra line",
+    "text": "Predict: the agent’s one extra line\nRevenue [710, 718, 724, 731], up 3 % over four weeks. Tobi’s agent drafts the chart and adds one line:\nplt.plot([1, 2, 3, 4], [710, 718, 724, 731])\nplt.ylim(700, 735)\nWhat does the room see?\na) a flat line: 3 % stays 3 % on any axis\nb) an error: ylim has to include zero on a line chart\nc) a line rising across most of the chart",
     "crumbs": [
       "09 Plotting",
       "Lecture"
@@ -7570,7 +7570,7 @@
     "href": "lectures/lec_09_plotting.html#bars-from-zero-dots-may-zoom",
     "title": "Lecture IX - Data Visualization",
     "section": "Bars from zero, dots may zoom",
-    "text": "Bars from zero, dots may zoom\n\nA bar shows its number by its length: cut the axis and the comparison breaks. Bars always start at 0.\nA dot shows its number by position only, so a dot plot may zoom (Wilke 2019, ch. 17).\nA line sits in between: zooming blows a small change up. Plot the change from 0, or put its size in the title: “+3 % in four weeks”.\n\n\n\n\n\n\n\nThe investor reads the axis before the line, and then the title, to see if the two agree.",
+    "text": "Bars from zero, dots may zoom\n\nA bar shows its number by its length: cut the axis and the comparison breaks. Bars always start at 0.\nA dot shows its number by position only, so a dot plot may zoom (Wilke 2019, ch. 17).\nA line sits in between: zooming blows a small change up. Start the axis at 0, or put the size of the change in the title: “+3 % in four weeks”.\n\n\n\n\n\n\n\nThe investor reads the axis before the line, and then the title, to see if the two agree.",
     "crumbs": [
       "09 Plotting",
       "Lecture"
@@ -7625,7 +7625,7 @@
     "href": "lectures/lec_09_plotting.html#lines-step-2-labels-no-legend",
     "title": "Lecture IX - Data Visualization",
     "section": "Lines, step 2: labels, no legend",
-    "text": "Lines, step 2: labels, no legend\n\n\n\n\n\n\n\n\n\nNames at the lines replace the legend, and they work for the 8 % of men who can’t tell red from green (Wilke 2019, ch. 19).",
+    "text": "Lines, step 2: labels, no legend\n\n\n\n\n\n\n\n\n\nNames at the lines replace the legend, and they work for the 8 % of men with a color-vision deficiency (Wilke 2019, ch. 19, 20).",
     "crumbs": [
       "09 Plotting",
       "Lecture"
@@ -7735,7 +7735,7 @@
     "href": "lectures/lec_09_plotting.html#spread-step-2-boxes-and-dots",
     "title": "Lecture IX - Data Visualization",
     "section": "Spread, step 2: boxes and dots",
-    "text": "Spread, step 2: boxes and dots\n\n\n\n\n\n\n\n\n\nOne chart instead of four: a box per zone for median and spread, every delivery as a dot beside it, from the most punctual zone to the least.",
+    "text": "Spread, step 2: boxes and dots\n\n\n\n\n\n\n\n\n\nOne chart instead of four, from the most punctual zone to the least. A box holds the middle half of a zone’s deliveries, the line in it is the median (half are faster, half slower), and every delivery is a dot beside it.",
     "crumbs": [
       "09 Plotting",
       "Lecture"
@@ -7768,7 +7768,7 @@
     "href": "lectures/lec_09_plotting.html#a-deck-is-a-story",
     "title": "Lecture IX - Data Visualization",
     "section": "A deck is a story",
-    "text": "A deck is a story\nA story is facts in a specific order that create a reaction (Wilke 2019, ch. 29). A pitch in four steps:\n\nOpening: where we stand\nChallenge: the problem\nAction: what we did about it\nResolution: the result, and what we ask for\n\nEach step is one slide with one point, a figure for the generals: the room gets it in seconds.",
+    "text": "A deck is a story\nA story is facts in a specific order that create a reaction (Wilke 2019, ch. 29). A pitch in four steps:\n\nOpening: where we stand\nChallenge: the problem\nAction: what we did about it\nResolution: the result, and what we ask for\n\nEach step is one slide with one point. Wilke calls this a figure for the generals: made for people with no time, so the room gets it in seconds.",
     "crumbs": [
       "09 Plotting",
       "Lecture"
@@ -7801,29 +7801,29 @@
     "href": "lectures/lec_09_plotting.html#two-rules-for-the-whole-deck",
     "title": "Lecture IX - Data Visualization",
     "section": "Two rules for the whole deck",
-    "text": "Two rules for the whole deck\n\nBuild up. Show our line alone before you add the rivals. A complex chart lands once the room has seen its simple version.\nKeep colors fixed. Our line is dark red on every slide. Paint us blue on slide 3 and the room reads someone else’s line as yours.\n\n\n\n\n\n\n\nConsistent, not repetitive: same colors and same fonts across the deck, but each slide a different kind of chart, so the room notices that something new is coming.",
+    "text": "Two rules for the whole deck\n\nBuild up. Show our line alone before you add the rivals. A complex chart lands once the room has seen its simple version.\nKeep colors fixed. Our line is dark red on every slide. Paint us blue on slide 3 and the room reads someone else’s line as ours.\n\n\n\n\n\n\n\nConsistent, not repetitive: same colors and same fonts across the deck, but each slide a different kind of chart, so the room notices that something new is coming.",
     "crumbs": [
       "09 Plotting",
       "Lecture"
     ]
   },
   {
-    "objectID": "lectures/lec_09_plotting.html#ai-as-your-chart-assistant",
-    "href": "lectures/lec_09_plotting.html#ai-as-your-chart-assistant",
+    "objectID": "lectures/lec_09_plotting.html#gai-as-your-chart-assistant",
+    "href": "lectures/lec_09_plotting.html#gai-as-your-chart-assistant",
     "title": "Lecture IX - Data Visualization",
-    "section": "AI as your chart assistant",
-    "text": "AI as your chart assistant\n\nDescribe data and point: “Revenue per zone from orders (zone, total_eur), sorted bars, top zone dark red, rest grey, a title that names the leader.”\nLet it draft.\nVerify before you believe the picture:\n\nthe columns exist · the bars match your own groupby\nbars from 0 · the chart type fits · the title says no more than the picture\n\n\nAI drafts. You decide what goes on the slide.",
+    "section": "gAI as your chart assistant",
+    "text": "gAI as your chart assistant\n\nDescribe data and point: “Revenue per zone from orders (zone, total_eur), sorted bars, top zone dark red, rest grey, a title that names the leader.”\nLet it draft.\nVerify before you believe the picture:\n\nthe columns exist · the bars match your own groupby\nbars from 0 · the chart type fits · the title says no more than the picture\n\n\ngAI drafts. You decide what goes on the slide.",
     "crumbs": [
       "09 Plotting",
       "Lecture"
     ]
   },
   {
-    "objectID": "lectures/lec_09_plotting.html#three-ways-ai-charts-mislead",
-    "href": "lectures/lec_09_plotting.html#three-ways-ai-charts-mislead",
+    "objectID": "lectures/lec_09_plotting.html#three-ways-gai-charts-mislead",
+    "href": "lectures/lec_09_plotting.html#three-ways-gai-charts-mislead",
     "title": "Lecture IX - Data Visualization",
-    "section": "Three ways AI charts mislead",
-    "text": "Three ways AI charts mislead\n\nInvented column names. It writes orders[\"revenue\"], but your column is total_eur: the same confident nonsense you caught in Episode 8.\nDefaults nobody chose. Bars in alphabetical order, one color per category, a legend, an axis cut to fit the data. Each one is a decision the agent made silently.\nYour words as the title. Ask for a chart “showing that sales are growing” and that’s the title you get, whatever the line does.\n\n\n\n\n\n\n\nFor all three: check the numbers, the axis and the title before a chart goes on a slide.",
+    "section": "Three ways gAI charts mislead",
+    "text": "Three ways gAI charts mislead\n\nInvented column names. It writes orders[\"revenue\"], but your column is total_eur: the same confident nonsense you caught in Episode 8.\nDefaults nobody chose. Bars in alphabetical order, one color per category, a legend, an axis cut to fit the data. Each one is a decision the agent made silently.\nYour words as the title. Ask for a chart “showing that sales are growing” and that’s the title you get, whatever the line does.\n\n\n\n\n\n\n\nFor all three: check the numbers, the axis and the title before a chart goes on a slide.",
     "crumbs": [
       "09 Plotting",
       "Lecture"
@@ -7834,7 +7834,7 @@
     "href": "lectures/lec_09_plotting.html#beyond-matplotlib",
     "title": "Lecture IX - Data Visualization",
     "section": "Beyond matplotlib",
-    "text": "Beyond matplotlib\n\n\n\nLibrary\nWhat it adds\n\n\n\n\nseaborn\nbox, violin and histogram per group, in one line\n\n\nplotly\ncharts you can hover over and zoom into\n\n\nfolium\nstreet maps in the browser\n\n\nstreamlit\na script becomes a web page with sliders\n\n\nnetworkx\nnetworks of nodes and links\n\n\n\nNext week’s project ideas use all five. Your agent writes the code; the checks from today stay the same.",
+    "text": "Beyond matplotlib\n\n\n\nLibrary\nWhat it adds\n\n\n\n\nseaborn\nbox, violin and histogram per group, in one line\n\n\nplotly\ncharts you can hover over and zoom into\n\n\nfolium\nstreet maps in the browser\n\n\nstreamlit\na script becomes a web page with sliders\n\n\nnetworkx\nnetworks of nodes and links\n\n\n\nNext week’s project ideas use the last four. Your agent writes the code; the checks from today stay the same.",
     "crumbs": [
       "09 Plotting",
       "Lecture"
@@ -7911,7 +7911,7 @@
     "href": "lectures/lec_09_plotting.html#after-the-check-the-lab",
     "title": "Lecture IX - Data Visualization",
     "section": "After the check: the lab",
-    "text": "After the check: the lab\n\nlab_09_pitch.py from Episode 9: The Pitch Deck into python-labs\nSix charts, and you pick each kind. The investor gets four of them: you choose which, and in which order\nTwo things in Tobi’s deck are wrong, and no task says so: one in his numbers, one in his claims\n\n\n\n\n\n\n\nShow me pitch_deck.png and the last block for feedback. Then practise the Checkpoint 5 hand-in once: open ex_09_d, Cmd/Ctrl+S, menu → Download → Download Python code.",
+    "text": "After the check: the lab\n\nlab_09_pitch.py from Episode 9: The Pitch Deck into python-labs\nSix charts, and you pick each kind; every chart needs a title and a label on both axes. The investor gets four of them: you choose which, and in which order\nTwo things in Tobi’s deck are wrong, and no task says so: one in his numbers, one in his claims\n\n\n\n\n\n\n\nShow me pitch_deck.png and the last block for feedback. Then practise the Checkpoint 5 hand-in once: open ex_09_d, Cmd/Ctrl+S, menu → Download → Download Python code.",
     "crumbs": [
       "09 Plotting",
       "Lecture"
@@ -7922,7 +7922,7 @@
     "href": "lectures/lec_09_plotting.html#books-to-start-with",
     "title": "Lecture IX - Data Visualization",
     "section": "Books to start with",
-    "text": "Books to start with\n\n\nDowney, Allen B. 2024. Think Python: How to Think Like a Computer Scientist. Third edition. O’Reilly. https://greenteapress.com/wp/think-python-3rd-edition/.\n\n\nWilke, C. 2019. Fundamentals of Data Visualization: A Primer on Making Informative and Compelling Figures. First edition. O’Reilly Media. https://clauswilke.com/dataviz/.\n\n\nBoth are free online. For this session, start with chapters 1, 17 and 29 of Wilke (2019).\n\n\n\n\n\n\nBuilding charts with AI? Revisit the AI Tools page: describe-then-verify is the whole workflow. Matplotlib’s own pyplot tutorial is a friendly next step.\n\n\n\nFor more, see the literature list of this course.",
+    "text": "Books to start with\n\n\nDowney, Allen B. 2024. Think Python: How to Think Like a Computer Scientist. Third edition. O’Reilly. https://greenteapress.com/wp/think-python-3rd-edition/.\n\n\nWilke, C. 2019. Fundamentals of Data Visualization: A Primer on Making Informative and Compelling Figures. First edition. O’Reilly Media. https://clauswilke.com/dataviz/.\n\n\nBoth are free online. For this session, start with chapters 1, 17 and 29 of Wilke (2019).\n\n\n\n\n\n\nBuilding charts with gAI? Revisit the AI Tools page: describe-then-verify is the whole workflow. Matplotlib’s own pyplot tutorial is a friendly next step.\n\n\n\nFor more, see the literature list of this course.",
     "crumbs": [
       "09 Plotting",
       "Lecture"
@@ -7989,7 +7989,7 @@
     "href": "lectures/lec_09_presentation.html#your-agent-draws-you-judge",
     "title": "Lecture IX - Data Visualization",
     "section": "Your agent draws, you judge",
-    "text": "Your agent draws, you judge\nAsk your agent for a bar chart of revenue per dish:\n\n\nimport matplotlib.pyplot as plt\n\ndishes = [\"Pad Thai\", \"Miso Ramen\",\n          \"Bao Box\", \"Falafel Wrap\"]\nrevenue = [420, 450, 330, 300]\n\nplt.figure()      # a fresh canvas\nplt.bar(dishes, revenue)\nplt.ylabel(\"Revenue (EUR)\")\nplt.title(\"Revenue per dish\")\nplt.gca()         # show it\n\n\n\n\n\n\n\n\n\n\nRead the code, don’t memorize it. Your job: judge the picture. Here, the names already collide."
+    "text": "Your agent draws, you judge\nAsk your agent for a bar chart of revenue per dish:\n\n\nimport matplotlib.pyplot as plt\n\ndishes = [\"Pad Thai\", \"Miso Ramen\",\n          \"Bao Box\", \"Falafel Wrap\"]\nrevenue = [420, 450, 330, 300]\n\nplt.figure()      # a fresh canvas\nplt.bar(dishes, revenue)\nplt.ylabel(\"Revenue (EUR)\")\nplt.title(\"Revenue per dish\")\nplt.gca()         # the chart: show it\n\n\n\n\n\n\n\n\n\n\nRead the code, don’t memorize it. Your job: judge the picture. Here, the names already collide."
   },
   {
     "objectID": "lectures/lec_09_presentation.html#ugly-bad-wrong-1",
@@ -8017,7 +8017,7 @@
     "href": "lectures/lec_09_presentation.html#the-title-is-a-claim",
     "title": "Lecture IX - Data Visualization",
     "section": "The title is a claim",
-    "text": "The title is a claim\nA title states the point (Wilke 2019, ch. 22):\n\n\n\nDescribes the chart\nStates the point\n\n\n\n\nRevenue per dish\nMiso Ramen sells best: 450 euros\n\n\nDelivery times\nMost deliveries take 20-30 minutes\n\n\nOrder value vs. delivery time\nBig orders don’t take longer\n\n\n\n\n\nWrite the claim before you draw. If you can’t, the chart has no point yet.\nEvery axis names what it measures, with the unit: Revenue (EUR)."
+    "text": "The title is a claim\nA title states the point (Wilke 2019, ch. 22):\n\n\n\nDescribes the chart\nStates the point\n\n\n\n\nRevenue per dish\nMiso Ramen sells best: 450 euros\n\n\nDelivery times\nMost deliveries take 20-30 minutes\n\n\nOrder value vs. delivery time\nBig orders don’t take longer\n\n\n\n\n\nWrite the claim before you draw. If you can’t, the chart has no point yet.\nNumber axes need a label with the unit: Revenue (EUR)."
   },
   {
     "objectID": "lectures/lec_09_presentation.html#open-the-exercise",
@@ -8038,7 +8038,7 @@
     "href": "lectures/lec_09_presentation.html#answer-altstadt-by-1.4-points",
     "title": "Lecture IX - Data Visualization",
     "section": "Answer: Altstadt, by 1.4 points",
-    "text": "Answer: Altstadt, by 1.4 points\n\n\n\n\n\n\n\n\n\n\nc) Altstadt: 26.4 % against Nord’s 25.0 %. The eye compares lengths well and areas badly. The sorted bars answer in a second; the pie starts an argument."
+    "text": "Answer: Altstadt, by 1.4 points\n\n\n\n\n\n\n\n\n\n\nc) Altstadt: 26.4 % against Nord’s 25.0 %. The eye compares lengths well and angles badly. The sorted bars answer in a second; the pie starts an argument."
   },
   {
     "objectID": "lectures/lec_09_presentation.html#match-the-chart-to-the-question",
@@ -8059,14 +8059,14 @@
     "href": "lectures/lec_09_presentation.html#distributions-how-spread-out",
     "title": "Lecture IX - Data Visualization",
     "section": "Distributions: how spread out?",
-    "text": "Distributions: how spread out?\n\n\n\n\n\n\n\n\n\nAlso in the directory: cumulative densities, q-q and sina plots."
+    "text": "Distributions: how spread out?"
   },
   {
     "objectID": "lectures/lec_09_presentation.html#proportions-what-share",
     "href": "lectures/lec_09_presentation.html#proportions-what-share",
     "title": "Lecture IX - Data Visualization",
     "section": "Proportions: what share?",
-    "text": "Proportions: what share?\n\n\n\n\n\n\n\n\n\nAlso in the directory: treemaps, parallel sets, nested pies."
+    "text": "Proportions: what share?"
   },
   {
     "objectID": "lectures/lec_09_presentation.html#relationships-two-numbers",
@@ -8087,21 +8087,21 @@
     "href": "lectures/lec_09_presentation.html#maps-and-uncertainty",
     "title": "Lecture IX - Data Visualization",
     "section": "Maps and uncertainty",
-    "text": "Maps and uncertainty\n\n\n\n\n\n\n\n\n\nAlso in the directory: cartograms, eyes plots, quantile dots."
+    "text": "Maps and uncertainty"
   },
   {
     "objectID": "lectures/lec_09_presentation.html#predict-how-many-bars",
     "href": "lectures/lec_09_presentation.html#predict-how-many-bars",
     "title": "Lecture IX - Data Visualization",
     "section": "Predict: how many bars?",
-    "text": "Predict: how many bars?\nThe same four numbers, two ways. On the left, a bar per number; on the right, a histogram:\nvalues = [8, 12, 9, 15]\nplt.bar(range(4), values)   # left\nplt.hist(values, bins=3)    # right\nThe bar chart shows 4 bars. How many bars does the histogram show?\na) 4: one bar per number\nb) 15: one bar per unit up to the max\nc) 3: one bar per range"
+    "text": "Predict: how many bars?\nThe same four numbers in two charts, first a bar per number, then a histogram:\nvalues = [8, 12, 9, 15]\nplt.bar(range(4), values)\nplt.hist(values, bins=3)\nThe bar chart shows 4 bars. How many bars does the histogram show?\na) 4: one bar per number\nb) 15: one bar per unit up to the max\nc) 3: one bar per range"
   },
   {
     "objectID": "lectures/lec_09_presentation.html#answer-three-ranges-three-bars",
     "href": "lectures/lec_09_presentation.html#answer-three-ranges-three-bars",
     "title": "Lecture IX - Data Visualization",
     "section": "Answer: three ranges, three bars",
-    "text": "Answer: three ranges, three bars\n\n\n\n\n\n\n\n\n\nc) 3: 8 and 9 share the first range, so that bar is 2 tall. A bar chart shows one bar per category, as tall as its value. A histogram shows one bar per range, as tall as the number of values in it."
+    "text": "Answer: three ranges, three bars\n\n\n\n\n\n\n\n\n\n\nc) 3: bins=3 cuts 8 to 15 into three equal ranges, the bins. 8 and 9 share the first range, so that bar is 2 tall. A bar chart shows one bar per category, as tall as its value. A histogram shows one bar per range, as tall as the number of values in it."
   },
   {
     "objectID": "lectures/lec_09_presentation.html#open-the-exercise-1",
@@ -8122,28 +8122,28 @@
     "href": "lectures/lec_09_presentation.html#answer-1.5-times-drawn-as-6",
     "title": "Lecture IX - Data Visualization",
     "section": "Answer: 1.5 times, drawn as 6",
-    "text": "Answer: 1.5 times, drawn as 6\n\n\n\n\n\n\n\n\n\n\na) about 1.5 times: 450 against 300. Cut at 270, the bars keep 180 and 30 of their length, so the picture says 6 times. That’s bad: the numbers are right, the picture misleads. The rule behind it is proportional ink: the ink for a value has to grow with the value (Wilke 2019, ch. 17)."
+    "text": "Answer: 1.5 times, drawn as 6\n\n\n\n\n\n\n\n\n\n\na) about 1.5 times: 450 against 300. Cut at 270, the bars keep 180 and 30 of their length, so the picture says 6 times. That’s bad: the numbers are right, the picture misleads. The rule behind it is proportional ink: twice the value, twice the ink (Wilke 2019, ch. 17)."
   },
   {
-    "objectID": "lectures/lec_09_presentation.html#predict-the-ais-one-extra-line",
-    "href": "lectures/lec_09_presentation.html#predict-the-ais-one-extra-line",
+    "objectID": "lectures/lec_09_presentation.html#predict-the-agents-one-extra-line",
+    "href": "lectures/lec_09_presentation.html#predict-the-agents-one-extra-line",
     "title": "Lecture IX - Data Visualization",
-    "section": "Predict: the AI’s one extra line",
-    "text": "Predict: the AI’s one extra line\nRevenue [710, 718, 724, 731], up 3 % over four weeks. Tobi’s AI drafts the chart and adds one line:\nplt.plot([1, 2, 3, 4], [710, 718, 724, 731])\nplt.ylim(700, 735)\nWhat does the room see?\na) a flat line: 3 % stays 3 % on any axis\nb) an error: ylim has to include zero on a line chart\nc) a line rising across most of the chart"
+    "section": "Predict: the agent’s one extra line",
+    "text": "Predict: the agent’s one extra line\nRevenue [710, 718, 724, 731], up 3 % over four weeks. Tobi’s agent drafts the chart and adds one line:\nplt.plot([1, 2, 3, 4], [710, 718, 724, 731])\nplt.ylim(700, 735)\nWhat does the room see?\na) a flat line: 3 % stays 3 % on any axis\nb) an error: ylim has to include zero on a line chart\nc) a line rising across most of the chart"
   },
   {
     "objectID": "lectures/lec_09_presentation.html#answer-a-climb-across-the-chart",
     "href": "lectures/lec_09_presentation.html#answer-a-climb-across-the-chart",
     "title": "Lecture IX - Data Visualization",
     "section": "Answer: a climb across the chart",
-    "text": "Answer: a climb across the chart\n\n\n\n\n\n\n\n\n\nc) a line rising across most of the chart: the axis spans 35 units and the line rises 21 of them, 60 % of the picture for 3 % of growth. Python raises no error."
+    "text": "Answer: a climb across the chart\n\n\n\n\n\n\n\n\n\n\nc) a line rising across most of the chart: the axis spans 35 units and the line rises 21 of them, 60 % of the picture for 3 % of growth. Python raises no error."
   },
   {
     "objectID": "lectures/lec_09_presentation.html#bars-from-zero-dots-may-zoom",
     "href": "lectures/lec_09_presentation.html#bars-from-zero-dots-may-zoom",
     "title": "Lecture IX - Data Visualization",
     "section": "Bars from zero, dots may zoom",
-    "text": "Bars from zero, dots may zoom\n\nA bar shows its number by its length: cut the axis and the comparison breaks. Bars always start at 0.\nA dot shows its number by position only, so a dot plot may zoom (Wilke 2019, ch. 17).\nA line sits in between: zooming blows a small change up. Plot the change from 0, or put its size in the title: “+3 % in four weeks”.\n\n\n\n\n\n\n\n\nThe investor reads the axis before the line, and then the title, to see if the two agree."
+    "text": "Bars from zero, dots may zoom\n\nA bar shows its number by its length: cut the axis and the comparison breaks. Bars always start at 0.\nA dot shows its number by position only, so a dot plot may zoom (Wilke 2019, ch. 17).\nA line sits in between: zooming blows a small change up. Start the axis at 0, or put the size of the change in the title: “+3 % in four weeks”.\n\n\n\n\n\n\n\n\nThe investor reads the axis before the line, and then the title, to see if the two agree."
   },
   {
     "objectID": "lectures/lec_09_presentation.html#open-the-exercise-2",
@@ -8178,7 +8178,7 @@
     "href": "lectures/lec_09_presentation.html#lines-step-2-labels-no-legend",
     "title": "Lecture IX - Data Visualization",
     "section": "Lines, step 2: labels, no legend",
-    "text": "Lines, step 2: labels, no legend\n\n\n\n\n\n\n\n\n\nNames at the lines replace the legend, and they work for the 8 % of men who can’t tell red from green (Wilke 2019, ch. 19)."
+    "text": "Lines, step 2: labels, no legend\n\n\n\n\n\n\n\n\n\nNames at the lines replace the legend, and they work for the 8 % of men with a color-vision deficiency (Wilke 2019, ch. 19, 20)."
   },
   {
     "objectID": "lectures/lec_09_presentation.html#lines-step-3-the-title-says-it",
@@ -8213,7 +8213,7 @@
     "href": "lectures/lec_09_presentation.html#bars-step-1-from-zero",
     "title": "Lecture IX - Data Visualization",
     "section": "Bars, step 1: from zero",
-    "text": "Bars, step 1: from zero\n\n\n\n\n\n\n\n\n\nb) the axis. Cut at 5 %, Harburg looked five times as late as Eppendorf; from 0 it is three times. The colors and the tilt only make the chart harder to read. Fix what misleads first."
+    "text": "Bars, step 1: from zero\n\n\n\n\n\n\n\n\n\n\nb) the axis. Cut at 5 %, Harburg looked five times as late as Eppendorf; from 0 it is three times. The colors and the tilt only make the chart harder to read. Fix what misleads first."
   },
   {
     "objectID": "lectures/lec_09_presentation.html#bars-step-2-sorted-lying-down",
@@ -8241,14 +8241,14 @@
     "href": "lectures/lec_09_presentation.html#spread-step-1-one-panel-each",
     "title": "Lecture IX - Data Visualization",
     "section": "Spread, step 1: one panel each",
-    "text": "Spread, step 1: one panel each\n\n\n\n\n\n\n\n\n\nb) Hafen: three of four deliveries take longer than 35 minutes. One panel per zone shows it, and shows what the overlap hid: Altstadt has two humps, a fast group and a slow one."
+    "text": "Spread, step 1: one panel each\n\n\n\n\n\n\n\n\n\n\nb) Hafen: three of four deliveries take longer than 35 minutes. One panel per zone shows it, and shows what the overlap hid: Altstadt has two humps, a fast group and a slow one."
   },
   {
     "objectID": "lectures/lec_09_presentation.html#spread-step-2-boxes-and-dots",
     "href": "lectures/lec_09_presentation.html#spread-step-2-boxes-and-dots",
     "title": "Lecture IX - Data Visualization",
     "section": "Spread, step 2: boxes and dots",
-    "text": "Spread, step 2: boxes and dots\n\n\n\n\n\n\n\n\n\nOne chart instead of four: a box per zone for median and spread, every delivery as a dot beside it, from the most punctual zone to the least."
+    "text": "Spread, step 2: boxes and dots\n\n\n\n\n\n\n\n\n\nOne chart instead of four, from the most punctual zone to the least. A box holds the middle half of a zone’s deliveries, the line in it is the median (half are faster, half slower), and every delivery is a dot beside it."
   },
   {
     "objectID": "lectures/lec_09_presentation.html#spread-step-3-draw-the-promise",
@@ -8269,7 +8269,7 @@
     "href": "lectures/lec_09_presentation.html#a-deck-is-a-story",
     "title": "Lecture IX - Data Visualization",
     "section": "A deck is a story",
-    "text": "A deck is a story\nA story is facts in a specific order that create a reaction (Wilke 2019, ch. 29). A pitch in four steps:\n\nOpening: where we stand\nChallenge: the problem\nAction: what we did about it\nResolution: the result, and what we ask for\n\n\nEach step is one slide with one point, a figure for the generals: the room gets it in seconds."
+    "text": "A deck is a story\nA story is facts in a specific order that create a reaction (Wilke 2019, ch. 29). A pitch in four steps:\n\nOpening: where we stand\nChallenge: the problem\nAction: what we did about it\nResolution: the result, and what we ask for\n\n\nEach step is one slide with one point. Wilke calls this a figure for the generals: made for people with no time, so the room gets it in seconds."
   },
   {
     "objectID": "lectures/lec_09_presentation.html#predict-tobis-four-slides",
@@ -8290,28 +8290,28 @@
     "href": "lectures/lec_09_presentation.html#two-rules-for-the-whole-deck",
     "title": "Lecture IX - Data Visualization",
     "section": "Two rules for the whole deck",
-    "text": "Two rules for the whole deck\n\nBuild up. Show our line alone before you add the rivals. A complex chart lands once the room has seen its simple version.\nKeep colors fixed. Our line is dark red on every slide. Paint us blue on slide 3 and the room reads someone else’s line as yours.\n\n\n\n\n\n\n\n\nConsistent, not repetitive: same colors and same fonts across the deck, but each slide a different kind of chart, so the room notices that something new is coming."
+    "text": "Two rules for the whole deck\n\nBuild up. Show our line alone before you add the rivals. A complex chart lands once the room has seen its simple version.\nKeep colors fixed. Our line is dark red on every slide. Paint us blue on slide 3 and the room reads someone else’s line as ours.\n\n\n\n\n\n\n\n\nConsistent, not repetitive: same colors and same fonts across the deck, but each slide a different kind of chart, so the room notices that something new is coming."
   },
   {
-    "objectID": "lectures/lec_09_presentation.html#ai-as-your-chart-assistant",
-    "href": "lectures/lec_09_presentation.html#ai-as-your-chart-assistant",
+    "objectID": "lectures/lec_09_presentation.html#gai-as-your-chart-assistant",
+    "href": "lectures/lec_09_presentation.html#gai-as-your-chart-assistant",
     "title": "Lecture IX - Data Visualization",
-    "section": "AI as your chart assistant",
-    "text": "AI as your chart assistant\n\nDescribe data and point: “Revenue per zone from orders (zone, total_eur), sorted bars, top zone dark red, rest grey, a title that names the leader.”\nLet it draft.\nVerify before you believe the picture:\n\nthe columns exist · the bars match your own groupby\nbars from 0 · the chart type fits · the title says no more than the picture\n\n\n\nAI drafts. You decide what goes on the slide."
+    "section": "gAI as your chart assistant",
+    "text": "gAI as your chart assistant\n\nDescribe data and point: “Revenue per zone from orders (zone, total_eur), sorted bars, top zone dark red, rest grey, a title that names the leader.”\nLet it draft.\nVerify before you believe the picture:\n\nthe columns exist · the bars match your own groupby\nbars from 0 · the chart type fits · the title says no more than the picture\n\n\n\ngAI drafts. You decide what goes on the slide."
   },
   {
-    "objectID": "lectures/lec_09_presentation.html#three-ways-ai-charts-mislead",
-    "href": "lectures/lec_09_presentation.html#three-ways-ai-charts-mislead",
+    "objectID": "lectures/lec_09_presentation.html#three-ways-gai-charts-mislead",
+    "href": "lectures/lec_09_presentation.html#three-ways-gai-charts-mislead",
     "title": "Lecture IX - Data Visualization",
-    "section": "Three ways AI charts mislead",
-    "text": "Three ways AI charts mislead\n\nInvented column names. It writes orders[\"revenue\"], but your column is total_eur: the same confident nonsense you caught in Episode 8.\nDefaults nobody chose. Bars in alphabetical order, one color per category, a legend, an axis cut to fit the data. Each one is a decision the agent made silently.\nYour words as the title. Ask for a chart “showing that sales are growing” and that’s the title you get, whatever the line does.\n\n\n\n\n\n\n\n\nFor all three: check the numbers, the axis and the title before a chart goes on a slide."
+    "section": "Three ways gAI charts mislead",
+    "text": "Three ways gAI charts mislead\n\nInvented column names. It writes orders[\"revenue\"], but your column is total_eur: the same confident nonsense you caught in Episode 8.\nDefaults nobody chose. Bars in alphabetical order, one color per category, a legend, an axis cut to fit the data. Each one is a decision the agent made silently.\nYour words as the title. Ask for a chart “showing that sales are growing” and that’s the title you get, whatever the line does.\n\n\n\n\n\n\n\n\nFor all three: check the numbers, the axis and the title before a chart goes on a slide."
   },
   {
     "objectID": "lectures/lec_09_presentation.html#beyond-matplotlib",
     "href": "lectures/lec_09_presentation.html#beyond-matplotlib",
     "title": "Lecture IX - Data Visualization",
     "section": "Beyond matplotlib",
-    "text": "Beyond matplotlib\n\n\n\nLibrary\nWhat it adds\n\n\n\n\nseaborn\nbox, violin and histogram per group, in one line\n\n\nplotly\ncharts you can hover over and zoom into\n\n\nfolium\nstreet maps in the browser\n\n\nstreamlit\na script becomes a web page with sliders\n\n\nnetworkx\nnetworks of nodes and links\n\n\n\n\nNext week’s project ideas use all five. Your agent writes the code; the checks from today stay the same."
+    "text": "Beyond matplotlib\n\n\n\nLibrary\nWhat it adds\n\n\n\n\nseaborn\nbox, violin and histogram per group, in one line\n\n\nplotly\ncharts you can hover over and zoom into\n\n\nfolium\nstreet maps in the browser\n\n\nstreamlit\na script becomes a web page with sliders\n\n\nnetworkx\nnetworks of nodes and links\n\n\n\n\nNext week’s project ideas use the last four. Your agent writes the code; the checks from today stay the same."
   },
   {
     "objectID": "lectures/lec_09_presentation.html#three-things-to-remember",
@@ -8360,14 +8360,14 @@
     "href": "lectures/lec_09_presentation.html#after-the-check-the-lab",
     "title": "Lecture IX - Data Visualization",
     "section": "After the check: the lab",
-    "text": "After the check: the lab\n\nlab_09_pitch.py from Episode 9: The Pitch Deck into python-labs\nSix charts, and you pick each kind. The investor gets four of them: you choose which, and in which order\nTwo things in Tobi’s deck are wrong, and no task says so: one in his numbers, one in his claims\n\n\n\n\n\n\n\n\nShow me pitch_deck.png and the last block for feedback. Then practise the Checkpoint 5 hand-in once: open ex_09_d, Cmd/Ctrl+S, menu → Download → Download Python code."
+    "text": "After the check: the lab\n\nlab_09_pitch.py from Episode 9: The Pitch Deck into python-labs\nSix charts, and you pick each kind; every chart needs a title and a label on both axes. The investor gets four of them: you choose which, and in which order\nTwo things in Tobi’s deck are wrong, and no task says so: one in his numbers, one in his claims\n\n\n\n\n\n\n\n\nShow me pitch_deck.png and the last block for feedback. Then practise the Checkpoint 5 hand-in once: open ex_09_d, Cmd/Ctrl+S, menu → Download → Download Python code."
   },
   {
     "objectID": "lectures/lec_09_presentation.html#books-to-start-with",
     "href": "lectures/lec_09_presentation.html#books-to-start-with",
     "title": "Lecture IX - Data Visualization",
     "section": "Books to start with",
-    "text": "Books to start with\n\n\nDowney, Allen B. 2024. Think Python: How to Think Like a Computer Scientist. Third edition. O’Reilly. https://greenteapress.com/wp/think-python-3rd-edition/.\n\n\nWilke, C. 2019. Fundamentals of Data Visualization: A Primer on Making Informative and Compelling Figures. First edition. O’Reilly Media. https://clauswilke.com/dataviz/.\n\n\nBoth are free online. For this session, start with chapters 1, 17 and 29 of Wilke (2019).\n\n\n\n\n\n\n\nBuilding charts with AI? Revisit the AI Tools page: describe-then-verify is the whole workflow. Matplotlib’s own pyplot tutorial is a friendly next step.\n\n\n\n\n\nFor more, see the literature list of this course."
+    "text": "Books to start with\n\n\nDowney, Allen B. 2024. Think Python: How to Think Like a Computer Scientist. Third edition. O’Reilly. https://greenteapress.com/wp/think-python-3rd-edition/.\n\n\nWilke, C. 2019. Fundamentals of Data Visualization: A Primer on Making Informative and Compelling Figures. First edition. O’Reilly Media. https://clauswilke.com/dataviz/.\n\n\nBoth are free online. For this session, start with chapters 1, 17 and 29 of Wilke (2019).\n\n\n\n\n\n\n\nBuilding charts with gAI? Revisit the AI Tools page: describe-then-verify is the whole workflow. Matplotlib’s own pyplot tutorial is a friendly next step.\n\n\n\n\n\nFor more, see the literature list of this course."
   },
   {
     "objectID": "lectures/lec_11_projects.html",
