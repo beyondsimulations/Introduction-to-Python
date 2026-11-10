@@ -187,7 +187,11 @@ Drafts that stand for Tobi's or the agent's output keep matplotlib's defaults,
 so the difference stays visible. Every chart we design ourselves is drawn
 inside `with plt.rc_context(HOUSE):` (setup cell after the warm-up: course
 palette, Reddit Sans from `~/Library/Fonts`, DejaVu Sans as fallback) and ends
-with `plt.show()` inside the block, so tick labels pick up the style. Size the
+with `plt.show()` inside the block, so tick labels pick up the style. On an
+answer slide that sets a draft beside its fix, only the fix's panel sits in the
+block. The in-between makeover steps take the palette colors (`TEAL`,
+`ACCENT`, `QUIET`) but keep the default frame and font; the house style
+arrives at the step whose text says so. Size the
 figure to the slide: about 11.2 in wide, `layout="tight"` or
 `fig.tight_layout()` (default margins are cropped away and shrink the
 picture), and put `{.nostretch}` on the slide, or Quarto's auto-stretch scales
