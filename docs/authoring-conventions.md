@@ -134,7 +134,7 @@ touching any question; `--stats` for the per-question table).
 ## In-lecture exercises (ex_XX_<letter>.py)
 - **Letter = slide order** (Fable #10): `ex_XX_a` belongs to lecture block 1,
   `_b` to block 2, and so on. Regular sessions run 5 blocks (letters a-e),
-  CP sessions 3 (letters a-c); Sessions X-XIII have none.
+  CP sessions 3 (letters a-c); Sessions X-XII have none.
 - One concept, one screen, 5-10 min, one exercise + one reactive check,
   closing cell: "*Nothing to hand in. This was a sandbox.*" (the save callout
   at the top still applies: it says how to keep a copy if you want one)
@@ -174,12 +174,14 @@ Mac users start `git --version` on a slide right after the cold open, so the
 developer-tools download runs during the lecture. Session X then only
 re-checks `gh auth status`. Session IX runs four QR exercises (a-d); `ex_09_e`
 stays published as optional practice, linked from the tutorial page.
-Sessions XI-XIII follow lean work-session shapes: no warm-up, no QR exercises,
-no checkpoint, no lab handoff. XI and XII each carry one short content flow
-plus a work menu/checklist and wrap-up; XIII is presentations plus the moved
-send-off (future block, keep-programming, thank-you, literature). Presentation
+Sessions XI-XII follow lean work-session shapes: no warm-up, no QR exercises,
+no checkpoint, no lab handoff. The course has 12 sessions (former XI and XII
+merged 2026-11-17). XI carries two short content flows (teach-your-agent, the
+watermark) plus definition of done, demo format, work menu and wrap-up; XII is
+presentations, then the future-with-AI block (jobs evidence and discussion)
+and the send-off (keep-programming, thank-you, literature). Presentation
 logistics live only in lec_10's Demo Day flow: groups of three, 7+3 format, all
-demos in XIII (owner decision 2026-10-10), order drawn at random with the
+demos in XII (owner decision 2026-10-10), order drawn at random with the
 Session VI random module.
 
 ### Charts in lec_09 (house style)

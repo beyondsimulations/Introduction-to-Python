@@ -4,21 +4,21 @@ subtitle: "A menu for your final project"
 toc-depth: 3
 ---
 
-Your final project is built in a group of three over about three weeks and shown in a 7-minute demo in Session XIII. The ideas on this page are a menu to choose from. **Your own idea is the best choice**: pitch it to me, and you build it once I approve it.
+Your final project is built in a group of three over about three weeks and shown in a 7-minute demo in Session XII. The ideas on this page are a menu to choose from. **Your own idea is the best choice**: pitch it to me, and you build it once I approve it.
 
 You build with your agent, so writing the code is the smaller part of the work. The larger part is what the agent cannot do for you: collecting data, testing against answers you know, balancing a game, and defending your decisions at the demo.
 
-Every idea has the same parts: what the class sees at the demo, the core that must work, a stretch if time allows, the work for three, the data and tools, and what to watch out for.
+Every idea has the same parts: what the class sees at the demo, the core that must work, a stretch if time allows, the work for three, the data and tools, and what to watch out for. The 7 minutes of your demo also hold your AI disclosure and one thing that broke, so plan about four minutes for what the class sees live. Everyone watches one display: size every number and label for the back row.
 
 ## Games you can play at the demo
 
-These five are built to be played on the projector by your classmates, so the rules, the pace and the scoring are the product. Your main job besides directing the agent is playtesting: tuning the numbers until the game is fun, fair and over in a few minutes.
+These five are built to be played on the display by your classmates, so the rules, the pace and the scoring are the product. Your main job besides directing the agent is playtesting: tuning the numbers until the game is fun, fair and over in a few minutes.
 
 ### 1. The Beer Game, online
 
 *The supply chain classic as a web game: four players order beer up the chain, delays do the rest, and the results screen shows why the factory ends up drowning in crates.*
 
-**At the demo.** Four classmates play retailer, wholesaler, distributor and factory for 20 rounds. The results screen then shows everyone's orders and inventory over time, and the bullwhip effect (small demand changes growing into big order swings upstream) appears on the chart.
+**At the demo.** Four classmates play retailer, wholesaler, distributor and factory for the first eight rounds. Customer demand doubles in round five, as in the original game. Then computer players take the four seats and finish the game's 20 rounds in a second. The results screen shows everyone's orders and inventory over time, and the bullwhip effect (small demand changes growing into big order swings upstream) appears on the chart.
 
 **The core.**
 
@@ -42,7 +42,7 @@ These five are built to be played on the projector by your classmates, so the ru
 
 *The food-delivery startup you have followed all term gets its dispatch screen: orders pop up on a live map of Hamburg, couriers move, and you decide who takes what.*
 
-**At the demo.** A classmate dispatches for three minutes on the projector while the on-time rate and the kilometers tick up. Then your own dispatch rule plays the same order stream, and the two scores stand side by side.
+**At the demo.** A classmate dispatches for two minutes on the display while the on-time rate and the kilometers tick up. Then your own dispatch rule replays the same order stream at ten times the speed, and the two scores stand side by side.
 
 **The core.**
 
@@ -66,7 +66,7 @@ These five are built to be played on the projector by your classmates, so the ru
 
 *Paper trading (play money at real prices) in four logistics stocks and oil, with a game master who drops news cards so you trade on a story and not on noise.*
 
-**At the demo.** Six classmates hold portfolios. The game master plays "port strike in Rotterdam" and "Suez closed", the prices replay what really happened in such weeks, and the leaderboard reorders live.
+**At the demo.** Three classmates trade from accounts you set up beforehand. The game master plays "port strike in Rotterdam" and "Suez closed", the prices replay what really happened in such weeks, and the leaderboard reorders live.
 
 **The core.**
 
@@ -82,7 +82,7 @@ These five are built to be played on the projector by your classmates, so the ru
 - **Exchange engine:** owns accounts, orders and the portfolio math, with a test against a hand-computed trade sequence.
 - **Floor and bots:** owns the UI, the leaderboard and the bot, and runs a five-minute test round with classmates in week two.
 
-**Data and tools.** The yfinance tickers (the short codes of the stocks) are `MAERSK-B.CO` (Maersk), `HLAG.DE` (Hapag-Lloyd), `KNIN.SW` (Kuehne + Nagel), `DHL.DE` (DHL Group) and `BZ=F` (Brent crude oil). Download the history once in week one and cache it, because the demo must not depend on the wifi. streamlit, pandas, plotly.
+**Data and tools.** The yfinance tickers (the short codes of the stocks) are `MAERSK-B.CO` (Maersk), `HLAG.DE` (Hapag-Lloyd), `KNIN.SW` (Kuehne + Nagel), `DHL.DE` (DHL Group) and `BZ=F` (Brent crude oil). Download the history once in week one and cache it, because the demo must not depend on the wifi. streamlit, pandas, plotly. Check in week one whether your library can serve three browsers at once over the classroom wifi. If not, the three players take turns at your laptop.
 
 **Watch out.** Trading on random daily noise teaches nothing. News cards tied to real dates are what make it a game.
 
@@ -90,7 +90,7 @@ These five are built to be played on the projector by your classmates, so the ru
 
 *Tetris for a container terminal: boxes arrive by ship and leave by truck, and every box you buried costs a crane move to dig out.*
 
-**At the demo.** A classmate works a three-minute shift on the projector. The end screen shows the reshuffles (crane moves that dig out a buried box) per box and the truck waiting time, next to the computer stacker's result on the same arrivals.
+**At the demo.** A classmate works a two-minute shift on the display. The end screen shows the reshuffles (crane moves that dig out a buried box) per box and the truck waiting time, next to the computer stacker's result on the same arrivals.
 
 **The core.**
 
@@ -114,7 +114,7 @@ These five are built to be played on the projector by your classmates, so the ru
 
 *Back a tractor and semitrailer into a loading dock, seen from above, with real trailer physics: steer left and the trailer swings right, overdo it and it jackknifes (folds against the tractor).*
 
-**At the demo.** A classmate plays three levels on the projector, from an open yard to a dock between two parked trailers. The scoreboard shows the time, the direction changes, the position and angle error, and the collisions.
+**At the demo.** A classmate has two minutes on the display and plays the levels in order on easy, starting in the open yard. The scoreboard shows the time, the direction changes, the position and angle error, and the collisions.
 
 **The core.**
 
@@ -143,7 +143,7 @@ These three turn an everyday operations decision (what goes where, in which orde
 
 *Drag 33 Euro pallets onto a 13.6 m trailer without overloading an axle, then watch the computer do it better.*
 
-**At the demo.** A classmate loads a mixed order on the projector, and the axle gauge turns red on overload. The solver (a program that searches for the best arrangement) loads the same order in a second, and both loads are compared on weight used and legality.
+**At the demo.** A classmate loads a mixed order of about 15 pallets on the display, and the axle gauge turns red on overload. The solver (a program that searches for the best arrangement) loads the same order in a second, and both loads are compared on weight used and legality.
 
 **The core.**
 
@@ -204,7 +204,7 @@ These three turn an everyday operations decision (what goes where, in which orde
 **Work for three.**
 
 - **Data pipeline:** owns the downloads and checks by hand that time zones and 15-minute versus hourly values line up, because one hour off ruins everything.
-- **Forecast:** owns the model and reports honestly whether it beats the baseline.
+- **Forecast:** owns the model and shows on the held-out month whether it beats the baseline.
 - **Scheduler:** owns the plan, the dashboard and the cost assumptions (battery size, grid limit), each with a source.
 
 **Data and tools.** SMARD offers a free download and an API (a web address that returns data instead of a page), and so does Open-Meteo; neither needs a key. pandas, scikit-learn (the standard Python library for machine learning), plotly, streamlit.
@@ -213,7 +213,7 @@ These three turn an everyday operations decision (what goes where, in which orde
 
 ## Simulate a real system
 
-These two build a model of something real (a lunch queue, a shipping network) and are judged on how well the model matches reality. The numbers you collect or source yourselves, and the honesty of your comparison, matter more than the code.
+These two build a model of something real (a lunch queue, a shipping network) and are judged on how well the model matches reality. The numbers you collect or source yourselves, and the check against numbers the model was not built from, matter more than the code.
 
 ### 9. Digital twin
 
@@ -284,7 +284,7 @@ These four point a camera at the physical world: a container, a shelf, a parcel,
 **Work for three.**
 
 - **Photo campaign:** plans where, when and in what light to shoot so it is not 60 photos of one box, and labels them with a second person checking.
-- **Model:** owns the features, the training (the model learning from your labeled photos) and an honest evaluation that trains on one shooting day and tests on another.
+- **Model:** owns the features, the training (the model learning from your labeled photos) and an evaluation that trains on one shooting day and tests on another.
 - **App and check digit:** owns the upload page, the check-digit code with tests on five known container numbers, and the text-reading step.
 
 **Data and tools.** Your own photos; scikit-learn, Pillow and scikit-image (image handling); easyocr, which installs PyTorch (a large machine-learning library of about 2 GB, so install it on campus wifi before demo day).
@@ -343,7 +343,7 @@ These four point a camera at the physical world: a container, a shelf, a parcel,
 
 *Hold a real DHL or Hermes label from your own parcel to the webcam: the app reads the tracking number, tells the carrier from the number, and adds the parcel to your own tracking dashboard with its live status.*
 
-**At the demo.** Three labels pass the webcam, and each is read, checked and added in seconds. The dashboard shows every parcel the group tracked over the three weeks with carrier, last status and days in transit, and one classmate's own parcel is added live.
+**At the demo.** Three labels pass the webcam, and each is read, checked and added in seconds. The display shows only the number the app read, never the camera picture, because a label carries a name and an address. The dashboard shows every parcel the group tracked over the three weeks with carrier, last status and days in transit, and one classmate's own parcel is added live.
 
 **The core.**
 

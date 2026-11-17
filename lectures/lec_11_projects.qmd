@@ -1,5 +1,5 @@
 ---
-title: "Lecture XI - Project Work I"
+title: "Lecture XI - Project Work"
 subtitle: "Programming with Python"
 author: "Dr. Tobias Vlćek"
 institute: "Kühne Logistics University Hamburg - Fall 2026"
@@ -13,7 +13,7 @@ format:
 
 ## The shop has a new owner
 
-MunchCorp runs the shop now. Tobi kept his job, the investor kept her spreadsheets, and her next due-diligence visit already has a date: **Session XIII**, when your projects run in this room.
+MunchCorp runs the shop now. Tobi kept his job, the investor kept her spreadsheets, and her next due-diligence visit already has a date: **Session XII**, when your projects run in this room.
 
 . . .
 
@@ -21,7 +21,7 @@ Until then, the shop rule stands: pull before you start, push when you stop, and
 
 . . .
 
-Before you build: ten minutes on making your agent stop repeating the same mistakes.
+Before you build: how to make your agent stop repeating the same mistakes, and the mark that AI text now carries.
 
 # [Teach Your Agent]{.flow} {.title}
 
@@ -74,6 +74,73 @@ Plain markdown you own, at `.vibe/skills/verify/SKILL.md`, versioned with the pr
 - The parts you must be able to **defend at the demo**: design choices, the statistics, why this approach
 - A file can carry conventions. It cannot carry your judgment, and the demo questions come to you, not to it
 
+# [The Mark]{.flow} {.title}
+
+## Could anyone tell?
+
+- Your README carries an AI-disclosure section. Suppose you skipped it: could anyone [prove]{.highlight} that an AI wrote part of your work?
+- Since August 2026, EU rules require providers to mark AI content machine-readably, and the major ones do
+- The trick behind it is simple enough for three slides
+
+## How a watermark hides in plain text
+
+- Before each word, the model splits its vocabulary into a **green** and a **red** half, reshuffled at every step
+- It then softly prefers green words. The text still reads completely normally
+- By chance, a human writes about half green words. A model writes far more
+
+## You already know the mechanism
+
+- Session VI: the model picks a [likely]{.highlight} next token, never *the* next token
+- A watermark is that choice, steered on purpose: green wins a little more often than chance
+- Same next-token choice, one hidden thumb on the scale
+
+## Who can actually detect it
+
+- Detection is [counting]{.highlight}: one paragraph of marked text can push chance below 1 in 10 trillion
+- But you need the secret key that decided which half was green
+- In practice, only the provider can run the test
+
+## What a mark proves (and does not)
+
+- Proves: a model [processed]{.highlight} this text
+- Does not prove: who did the work, or whether a human verified it
+- Heavy editing can wash a mark out, and short snippets may not carry one, so an absence proves nothing
+
+. . .
+
+Presence without disclosure, though, looks exactly like what it is.
+
+## Disclosure is part of the work
+
+- The rules converged everywhere: AI cannot be an author, and its use gets disclosed
+- Your README section says which tool, for what, and what you verified yourself
+- That is [standard practice]{.highlight}, not a confession
+
+# [Definition of Done]{.flow} {.title}
+
+## Before you call it finished
+
+- The repo runs from a fresh clone (cloned once more into an empty folder): `uv sync`, then your script
+- The README says what it does, how to run it, and carries the **AI disclosure section**
+- The commit history tells the story: small steps, messages that mean something
+- `git status` is clean: all committed, nothing important ignored
+- I am invited, and the link is on Moodle before your demo
+
+. . .
+
+:::{.callout-tip}
+Run the fresh-clone test **today**, not on demo morning. It always finds something.
+:::
+
+# [Demo Day Is Next]{.flow} {.title}
+
+## The format
+
+- **7 minutes** presenting, **3 minutes** of questions, per group
+- Order: drawn at random with the `random` module from Session VI
+- Show the thing running, your AI disclosure, and one thing that broke
+- Everyone in the group has to be there
+
 # [The Work Menu]{.flow} {.title}
 
 ## Today
@@ -91,12 +158,13 @@ A red traceback you have never seen? Read the last line first, exactly as in Par
 
 # [Wrap-up]{.flow} {.title}
 
-## Three things to remember
+## Four things to remember
 
 - Rules in `AGENTS.md` for the [always]{.highlight} stuff, skills for the on-demand stuff, both plain markdown you own
-- Any workflow you have explained to the agent [twice]{.highlight} deserves a skill
-- Small commits, pushed often, are the cheapest insurance any of you can buy
+- AI text carries a [watermark]{.highlight} now: fluent, normal-looking, detectable by the provider
+- The fresh-clone test is the cheapest bug you will ever catch
+- A demo is the thing running, the disclosure, and one thing that broke
 
 . . .
 
-Next week: could anyone **prove** that an AI wrote part of your work?
+Next session: **Demo Day**. The investor is in the audience.
