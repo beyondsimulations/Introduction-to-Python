@@ -19,47 +19,60 @@ MunchCorp runs the shop now. Tobi kept his job, the investor kept her spreadshee
 
 Until then, the shop rule stands: pull before you start, push when you stop, and let the commit history do the talking.
 
-# [The Mark]{.flow} {.title}
+. . .
 
-## Could anyone tell?
+Before you build: ten minutes on making your agent stop repeating the same mistakes.
 
-- Your README carries an AI-disclosure section. Suppose you skipped it: could anyone [prove]{.highlight} that an AI wrote part of your work?
-- Since August 2026, EU rules require providers to mark AI content machine-readably, and the major ones do
-- The trick behind it is simple enough for three slides
+# [Teach Your Agent]{.flow} {.title}
 
-## How a watermark hides in plain text
+## The friction you know
 
-- Before each word, the model splits its vocabulary into a **green** and a **red** half, reshuffled at every step
-- It then softly prefers green words. The text still reads completely normally
-- By chance, a human writes about half green words. A model writes far more
+- One week in, you have corrected your agent on the same things again and again: naming style, the library you prefer, "keep functions short", "round money to two decimals"
+- Every session starts from zero: the agent remembers [nothing]{.highlight} between sessions (Session X, the loop)
+- Explaining the same thing five times is work you should not be doing
 
-## You already know the mechanism
+## Package the rules once
 
-- Session VI: the model picks a [likely]{.highlight} next token, never *the* next token
-- A watermark is that choice, steered on purpose: green wins a little more often than chance
-- Same next-token choice, one hidden thumb on the scale
+- Put your project rules in **one markdown file** in the repo: `AGENTS.md`
+- What goes in: what the project is, the tools it uses, naming and style conventions, "any AI use lands in the README disclosure"
+- Mistral Vibe reads it at every session start, automatically: write the rules once, stop repeating them
 
-## Who can actually detect it
+## Skills: instructions on demand
 
-- Detection is [counting]{.highlight}: one paragraph of marked text can push chance below 1 in 10 trillion
-- But you need the secret key that decided which half was green
-- In practice, only the provider can run the test
+- A **skill** is the next step up: a folder with a `SKILL.md`, holding a name, a description, and instructions
+- Rules apply [always]{.highlight}. A skill loads only when the task matches its description, so context stays lean until the moment it is needed
+- Example: a `verify` skill for your project: read the diff, run it, test it on a case where you know the answer, report what you checked
+- In your stack: `.vibe/skills/verify/SKILL.md` in the repo. Vibe loads it in the terminal and inside Zed's agent panel, same engine
+- Vibe follows an open format, so skills you write here also work in other agents that adopt it
 
-## What a mark proves (and does not)
+## Anatomy, briefly
 
-- Proves: a model [processed]{.highlight} this text
-- Does not prove: who did the work, or whether a human verified it
-- Heavy editing can wash a mark out, and short snippets may not carry one, so an absence proves nothing
+```markdown
+---
+name: verify
+description: Check changed code the way this project requires. Use after any code change.
+---
+
+- Read the diff line by line before running anything
+- Run the code on a case where you know the correct answer
+- Report what you checked and what the result was
+```
 
 . . .
 
-Presence without disclosure, though, looks exactly like what it is.
+Plain markdown you own, at `.vibe/skills/verify/SKILL.md`, versioned with the project like any other file.
 
-## Disclosure is part of the work
+## Write your own
 
-- The rules converged everywhere: AI cannot be an author, and its use gets disclosed
-- Your README section says which tool, for what, and what you verified yourself
-- That is [standard practice]{.highlight}, not a confession
+- Any workflow you have explained to the agent [twice]{.highlight} deserves a skill
+- Keep it short: a page of instructions, not an essay
+- Prune it when the workflow changes: a stale skill misleads
+- Downloading one? Vet it by [reading it]{.highlight}, not by how popular it is
+
+## What not to hand over
+
+- The parts you must be able to **defend at the demo**: design choices, the statistics, why this approach
+- A file can carry conventions. It cannot carry your judgment, and the demo questions come to you, not to it
 
 # [The Work Menu]{.flow} {.title}
 
@@ -80,10 +93,10 @@ A red traceback you have never seen? Read the last line first, exactly as in Par
 
 ## Three things to remember
 
-- AI text carries a [watermark]{.highlight} now: fluent, normal-looking, detectable by the provider
-- Disclosure is part of the work: which tool, what for, what you verified
+- Rules in `AGENTS.md` for the [always]{.highlight} stuff, skills for the on-demand stuff, both plain markdown you own
+- Any workflow you have explained to the agent [twice]{.highlight} deserves a skill
 - Small commits, pushed often, are the cheapest insurance any of you can buy
 
 . . .
 
-Next week: your agent keeps making the same mistakes. Time to **teach it once** instead of correcting it every session.
+Next week: could anyone **prove** that an AI wrote part of your work?

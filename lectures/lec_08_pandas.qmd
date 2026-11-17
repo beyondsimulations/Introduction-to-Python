@@ -397,14 +397,14 @@ Session VI gave you the basics, so here is why it sometimes fails.
 
 ## How it was trained
 
-- **Pre-training**: predict the next token over massive text, where the [weights]{.highlight} inside get adjusted. Applying them afterwards (called *inference*) is much cheaper
+- **Pre-training**: predicting the next token over massive text sets the [weights]{.highlight}. Using them later (*inference*) is much cheaper
 - **Fine-tuning**: curated examples teach it to follow instructions
 - **RLHF** (reinforcement learning from human feedback): humans rank answers and it learns to prefer the ranked-higher ones
-- Its knowledge has an end date, the [knowledge cutoff]{.highlight}: after it, it guesses fluently or uses web search. And it inherits the [biases]{.highlight} of the text it read!
+- Its knowledge ends at the [knowledge cutoff]{.highlight}: after that, it guesses fluently or searches the web. It also inherits the [biases]{.highlight} of the text it read
 
 . . .
 
-Every stage rewards *sounding* right. Verifacation is your job (at least for now), and step 3 of the verify workflow is how.
+Every stage rewards *sounding* right. Verification is your job (for now), and step 3 of the verify workflow is how.
 
 ## Disclosure: say what the AI did
 
@@ -459,12 +459,12 @@ Open the agent panel (the sparkle icon, bottom right), pick **Mistral Vibe**, an
 
 > *In `lab_08_dataroom.py`, fill in `revenue_by_zone` in Task 4: a dict, zone name to euros, from the DataFrame `clean`. Change nothing else.*
 
-1. **Read it**: Zed shows the changes as a *diff*, old lines red, new lines green. Read it **before** you accept
+1. **Read it**: Zed shows a *diff*, old lines red, new lines green. Read it **before** you accept
 2. **Run it**, then **test it** on a case where you know the answer
 
 . . .
 
-More on how gAI works and how you can use it even better in Session X. Today it is a tool you supervise.
+Session X shows how an agent works. Today you supervise it.
 
 # [Wrap-up]{.flow} {.title}
 

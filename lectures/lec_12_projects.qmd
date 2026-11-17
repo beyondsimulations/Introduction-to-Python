@@ -17,58 +17,74 @@ Demo Day is **next week**: every group presents in Session XIII. The order comes
 
 . . .
 
-Before you build: ten minutes on making your agent stop repeating the same mistakes.
+Before you build: the mark that AI text now carries, and what AI means for your first job.
 
-# [Teach Your Agent]{.flow} {.title}
+# [The Mark]{.flow} {.title}
 
-## The friction you know
+## Could anyone tell?
 
-- Two weeks in, you have corrected your agent on the same things again and again: naming style, the library you prefer, "keep functions short", "round money to two decimals"
-- Every session starts from zero: the agent remembers [nothing]{.highlight} between sessions (Session X, the loop)
-- Explaining the same thing five times is work you should not be doing
+- Your README carries an AI-disclosure section. Suppose you skipped it: could anyone [prove]{.highlight} that an AI wrote part of your work?
+- Since August 2026, EU rules require providers to mark AI content machine-readably, and the major ones do
+- The trick behind it is simple enough for three slides
 
-## Package the rules once
+## How a watermark hides in plain text
 
-- Put your project rules in **one markdown file** in the repo: `AGENTS.md`
-- What goes in: what the project is, the tools it uses, naming and style conventions, "any AI use lands in the README disclosure"
-- Mistral Vibe reads it at every session start, automatically: write the rules once, stop repeating them
+- Before each word, the model splits its vocabulary into a **green** and a **red** half, reshuffled at every step
+- It then softly prefers green words. The text still reads completely normally
+- By chance, a human writes about half green words. A model writes far more
 
-## Skills: instructions on demand
+## You already know the mechanism
 
-- A **skill** is the next step up: a folder with a `SKILL.md`, holding a name, a description, and instructions
-- Rules apply [always]{.highlight}. A skill loads only when the task matches its description, so context stays lean until the moment it is needed
-- Example: a `verify` skill for your project: read the diff, run it, test it on a case where you know the answer, report what you checked
-- In your stack: `.vibe/skills/verify/SKILL.md` in the repo. Vibe loads it in the terminal and inside Zed's agent panel, same engine
-- Vibe follows an open format, so skills you write here also work in other agents that adopt it
+- Session VI: the model picks a [likely]{.highlight} next token, never *the* next token
+- A watermark is that choice, steered on purpose: green wins a little more often than chance
+- Same next-token choice, one hidden thumb on the scale
 
-## Anatomy, briefly
+## Who can actually detect it
 
-```markdown
----
-name: verify
-description: Check changed code the way this project requires. Use after any code change.
----
+- Detection is [counting]{.highlight}: one paragraph of marked text can push chance below 1 in 10 trillion
+- But you need the secret key that decided which half was green
+- In practice, only the provider can run the test
 
-- Read the diff line by line before running anything
-- Run the code on a case where you know the correct answer
-- Report what you checked and what the result was
-```
+## What a mark proves (and does not)
+
+- Proves: a model [processed]{.highlight} this text
+- Does not prove: who did the work, or whether a human verified it
+- Heavy editing can wash a mark out, and short snippets may not carry one, so an absence proves nothing
 
 . . .
 
-Plain markdown you own, at `.vibe/skills/verify/SKILL.md`, versioned with the project like any other file.
+Presence without disclosure, though, looks exactly like what it is.
 
-## Write your own
+## Disclosure is part of the work
 
-- Any workflow you have explained to the agent [twice]{.highlight} deserves a skill
-- Keep it short: a page of instructions, not an essay
-- Prune it when the workflow changes: a stale skill misleads
-- Downloading one? Vet it by [reading it]{.highlight}, not by how popular it is
+- The rules converged everywhere: AI cannot be an author, and its use gets disclosed
+- Your README section says which tool, for what, and what you verified yourself
+- That is [standard practice]{.highlight}, not a confession
 
-## What not to hand over
+# [Your Future with AI]{.flow} {.title}
 
-- The parts you must be able to **defend at the demo**: design choices, the statistics, why this approach
-- A file can carry conventions. It cannot carry your judgment, and the demo questions come to you, not to it
+## AI and your first job
+
+- Thousands of developers: **+26%** tasks done with AI, [juniors gained most]{.highlight} [@cui_effects_2026]
+- Experienced developers on their own code: **19% slower**, while *feeling* 20% faster [@becker_measuring_2025]
+- Learners with AI: **50%** on a mastery quiz vs **67%** without, worst on **debugging** [@shen_how_2026]
+- The fix: hints instead of finished solutions erased the harm [@bastani_generative_2025]. Part I was exactly that
+
+## What stays valuable
+
+- The verification boundary: usable delegation ends where your ability to **check** ends. Growing that boundary outward is your career
+- [Comprehension debt]{.highlight}: code that works today but nobody understands tomorrow. The interest comes due when a reviewer asks "why does this work?"
+- Your edge, deliberately kept: **explain every line before you accept it**, and code without AI sometimes
+
+## Discussion: your future with AI
+
+:::{.callout-note}
+Three questions, five minutes, show of hands:
+
+- Which task from the past weeks would you **never** delegate to an AI?
+- What will an entry-level logistics analyst do in 2030, when AI drafts the first version of everything?
+- If AI writes most junior code, where do the senior people come from?
+:::
 
 # [Definition of Done]{.flow} {.title}
 
@@ -101,12 +117,20 @@ The rest of today is the last supervised work session: I am in the room for bloc
 
 # [Wrap-up]{.flow} {.title}
 
-## Three things to remember
+## Four things to remember
 
-- Rules in `AGENTS.md` for the [always]{.highlight} stuff, skills for the on-demand stuff, both plain markdown you own
+- AI text carries a [watermark]{.highlight} now: fluent, normal-looking, detectable by the provider
+- Your edge: [explain every line]{.highlight} before you accept it
 - The fresh-clone test is the cheapest bug you will ever catch
 - A demo is the thing running, the history, and the disclosure
 
 . . .
 
 Next week: **Demo Day**. The investor is in the audience.
+
+# [Literature]{.flow} {.title}
+
+## References
+
+::: {#refs}
+:::
