@@ -11,7 +11,7 @@
   <meta name="generator" content="quarto-1.11.9">
 
   <meta name="author" content="Dr.&nbsp;Tobias Vlćek">
-  <title>Programming with Python – Lecture XII - Project Work II</title>
+  <title>Programming with Python – Lecture XII - Presentations and Discussion</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -179,7 +179,7 @@
     <div class="slides">
 
 <section id="title-slide" class="quarto-title-block center">
-  <h1 class="title">Lecture XII - Project Work II</h1>
+  <h1 class="title">Lecture XII - Presentations and Discussion</h1>
   <p class="subtitle">Programming with Python</p>
 
 <div class="quarto-title-authors">
@@ -195,71 +195,22 @@ Dr.&nbsp;Tobias Vlćek
 
 </section>
 <section>
-<section id="ep-12-ship-it" class="title-slide slide level1 title center">
-<h1><span class="flow">EP 12: Ship It</span></h1>
+<section id="ep-12-demo-day" class="title-slide slide level1 title center">
+<h1><span class="flow">EP 12: Demo Day</span></h1>
 
 </section>
-<section id="one-week-to-launch" class="slide level2">
-<h2>One week to launch</h2>
-<p>Demo Day is <strong>next week</strong>: every group presents in Session XIII. The order comes out of a hat. The hat is Python.</p>
+<section id="the-investor-is-in-the-room" class="slide level2">
+<h2>The investor is in the room</h2>
+<p>Back in Session VI she stood at a whiteboard and asked why everything here was built from scratch. Today the answer is on your screens: built by you, with the standard library, pandas, plots, git, and an agent you learned to supervise.</p>
 <div class="fragment">
-<p>Before you build: the mark that AI text now carries, and what AI means for your first job.</p>
-</div>
-</section></section>
-<section>
-<section id="the-mark" class="title-slide slide level1 title center">
-<h1><span class="flow">The Mark</span></h1>
-
-</section>
-<section id="could-anyone-tell" class="slide level2">
-<h2>Could anyone tell?</h2>
-<ul>
-<li>Your README carries an AI-disclosure section. Suppose you skipped it: could anyone <span class="highlight">prove</span> that an AI wrote part of your work?</li>
-<li>Since August 2026, EU rules require providers to mark AI content machine-readably, and the major ones do</li>
-<li>The trick behind it is simple enough for three slides</li>
-</ul>
-</section>
-<section id="how-a-watermark-hides-in-plain-text" class="slide level2">
-<h2>How a watermark hides in plain text</h2>
-<ul>
-<li>Before each word, the model splits its vocabulary into a <strong>green</strong> and a <strong>red</strong> half, reshuffled at every step</li>
-<li>It then softly prefers green words. The text still reads completely normally</li>
-<li>By chance, a human writes about half green words. A model writes far more</li>
-</ul>
-</section>
-<section id="you-already-know-the-mechanism" class="slide level2">
-<h2>You already know the mechanism</h2>
-<ul>
-<li>Session VI: the model picks a <span class="highlight">likely</span> next token, never <em>the</em> next token</li>
-<li>A watermark is that choice, steered on purpose: green wins a little more often than chance</li>
-<li>Same next-token choice, one hidden thumb on the scale</li>
-</ul>
-</section>
-<section id="who-can-actually-detect-it" class="slide level2">
-<h2>Who can actually detect it</h2>
-<ul>
-<li>Detection is <span class="highlight">counting</span>: one paragraph of marked text can push chance below 1 in 10 trillion</li>
-<li>But you need the secret key that decided which half was green</li>
-<li>In practice, only the provider can run the test</li>
-</ul>
-</section>
-<section id="what-a-mark-proves-and-does-not" class="slide level2">
-<h2>What a mark proves (and does not)</h2>
-<ul>
-<li>Proves: a model <span class="highlight">processed</span> this text</li>
-<li>Does not prove: who did the work, or whether a human verified it</li>
-<li>Heavy editing can wash a mark out, and short snippets may not carry one, so an absence proves nothing</li>
-</ul>
-<div class="fragment">
-<p>Presence without disclosure, though, looks exactly like what it is.</p>
+<p>The rules: <strong>7 minutes</strong> presenting, <strong>3 minutes</strong> of questions, order drawn at random.</p>
 </div>
 </section>
-<section id="disclosure-is-part-of-the-work" class="slide level2">
-<h2>Disclosure is part of the work</h2>
+<section id="while-you-watch" class="slide level2">
+<h2>While you watch</h2>
 <ul>
-<li>The rules converged everywhere: AI cannot be an author, and its use gets disclosed</li>
-<li>Your README section says which tool, for what, and what you verified yourself</li>
-<li>That is <span class="highlight">standard practice</span>, not a confession</li>
+<li>Note one thing you would have done differently, and one thing you are taking for your own next project</li>
+<li>Questions are part of the format: specific, kind, useful</li>
 </ul>
 </section></section>
 <section>
@@ -270,97 +221,69 @@ Dr.&nbsp;Tobias Vlćek
 <section id="ai-and-your-first-job" class="slide level2">
 <h2>AI and your first job</h2>
 <ul>
-<li>Thousands of developers: <strong>+26%</strong> tasks done with AI, <span class="highlight">juniors gained most</span> <span class="citation" data-cites="cui_effects_2026">(<a href="#/references" role="doc-biblioref" onclick="">Cui et al. 2026</a>)</span></li>
-<li>Experienced developers on their own code: <strong>19% slower</strong>, while <em>feeling</em> 20% faster <span class="citation" data-cites="becker_measuring_2025">(<a href="#/references" role="doc-biblioref" onclick="">Becker et al. 2025</a>)</span></li>
-<li>Learners with AI: <strong>50%</strong> on a mastery quiz vs <strong>67%</strong> without, worst on <strong>debugging</strong> <span class="citation" data-cites="shen_how_2026">(<a href="#/references" role="doc-biblioref" onclick="">Shen and Tamkin 2026</a>)</span></li>
-<li>The fix: hints instead of finished solutions erased the harm <span class="citation" data-cites="bastani_generative_2025">(<a href="#/references" role="doc-biblioref" onclick="">Bastani et al. 2025</a>)</span>. Part I was exactly that</li>
+<li><strong>US:</strong> in jobs AI can largely do, employment of 22-25-year-olds trails their peers by <strong>19%</strong>, through fewer hires, not layoffs <span class="citation" data-cites="brynjolfsson_canaries_2026">(<a href="#/references" role="doc-biblioref" onclick="">Brynjolfsson et al. 2026</a>)</span></li>
+<li><strong>Sweden:</strong> a smaller gap of <strong>5.5%</strong>. Job ads fell with interest rates rather than with AI <span class="citation" data-cites="lodefalk_same_2026">(<a href="#/references" role="doc-biblioref" onclick="">Lodefalk et al. 2026</a>)</span></li>
+<li><strong>Denmark:</strong> accountants, HR, marketing, office clerks: no effect on pay or hours above <strong>2%</strong> <span class="citation" data-cites="humlum_still_2026">(<a href="#/references" role="doc-biblioref" onclick="">Humlum and Vestergaard 2026</a>)</span></li>
+</ul>
+<div class="fragment">
+<p>So far: <span class="highlight">fewer junior hires</span>, no economy-wide job losses, size disputed. All three are working papers.</p>
+</div>
+</section>
+<section id="what-ai-does-to-work-and-skill" class="slide level2">
+<h2>What AI does to work and skill</h2>
+<ul>
+<li><strong>BCG consultants:</strong> with AI, <strong>12.2%</strong> more tasks, <strong>25.1%</strong> faster. On a task beyond AI’s reach, <strong>19%</strong> less likely to be right <span class="citation" data-cites="dellacqua_navigating_2026-1">(<a href="#/references" role="doc-biblioref" onclick="">Dell’Acqua, McFowland, et al. 2026</a>)</span></li>
+<li><strong>Patent lawyers:</strong> AI lifted the juniors’ work, but judgment <em>without</em> AI grew <span class="highlight">only for the seniors</span> (working paper) <span class="citation" data-cites="autor_does_2026">(<a href="#/references" role="doc-biblioref" onclick="">Autor et al. 2026</a>)</span></li>
+<li><strong>Developers learning a new library:</strong> <strong>17%</strong> lower on the quiz with AI, worst on <strong>debugging</strong> (preprint) <span class="citation" data-cites="shen_how_2026">(<a href="#/references" role="doc-biblioref" onclick="">Shen and Tamkin 2026</a>)</span></li>
+<li>At school, an AI tutor giving hints, not answers, largely removed the learning loss <span class="citation" data-cites="bastani_generative_2025">(<a href="#/references" role="doc-biblioref" onclick="">Bastani et al. 2025</a>)</span>. Part I worked the same way</li>
 </ul>
 </section>
 <section id="what-stays-valuable" class="slide level2">
 <h2>What stays valuable</h2>
 <ul>
+<li>At P&amp;G, one person with AI <span class="highlight">matched a team</span> without it <span class="citation" data-cites="dellacqua_cybernetic_2026">(<a href="#/references" role="doc-biblioref" onclick="">Dell’Acqua, Ayoubi, et al. 2026</a>)</span></li>
+<li>Today you showed projects built with an agent you supervised, twelve sessions after your first <code>print()</code></li>
 <li>The verification boundary: usable delegation ends where your ability to <strong>check</strong> ends. Growing that boundary outward is your career</li>
-<li><span class="highlight">Comprehension debt</span>: code that works today but nobody understands tomorrow. The interest comes due when a reviewer asks “why does this work?”</li>
-<li>Your edge, deliberately kept: <strong>explain every line before you accept it</strong>, and code without AI sometimes</li>
+<li>Your edge, deliberately kept: <strong>explain every line before you accept it</strong>, and work without AI sometimes</li>
 </ul>
 </section>
-<section id="discussion-your-future-with-ai" class="slide level2">
-<h2>Discussion: your future with AI</h2>
+<section id="discussion-from-junior-to-senior" class="slide level2">
+<h2>Discussion: from junior to senior</h2>
 <div class="callout callout-note callout-style-simple">
 <div class="callout-body">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-content">
-<p>Three questions, five minutes, show of hands:</p>
-<ul>
-<li>Which task from the past weeks would you <strong>never</strong> delegate to an AI?</li>
-<li>What will an entry-level logistics analyst do in 2030, when AI drafts the first version of everything?</li>
-<li>If AI writes most junior code, where do the senior people come from?</li>
-</ul>
+<p>One minute with your project group, then three voices from the room:</p>
+<p>If AI drafts most junior work, how does a junior analyst become a senior one?</p>
 </div>
 </div>
 </div>
 </section></section>
 <section>
-<section id="definition-of-done" class="title-slide slide level1 title center">
-<h1><span class="flow">Definition of Done</span></h1>
+<section id="send-off" class="title-slide slide level1 title center">
+<h1><span class="flow">Send-off</span></h1>
 
 </section>
-<section id="before-you-call-it-finished" class="slide level2">
-<h2>Before you call it finished</h2>
+<section id="keep-programming" class="slide level2">
+<h2>Keep programming</h2>
+<p>The skill fades if it sits idle. A few ways to keep it alive:</p>
 <ul>
-<li>The repo runs from a fresh clone (cloned once more into an empty folder): <code>uv sync</code>, then your script</li>
-<li>The README says what it does, how to run it, and carries the <strong>AI disclosure section</strong></li>
-<li>The commit history tells the story: small steps, messages that mean something</li>
-<li><code>git status</code> is clean: all committed, nothing important ignored</li>
-<li>I am invited, and the link is on Moodle before your demo</li>
+<li>Use Python in your <strong>thesis</strong>: data cleaning, analysis, plots you can defend</li>
+<li>Find a way to <strong>apply it at work</strong>: the repetitive task nobody wants to do by hand</li>
+<li><strong><a href="https://adventofcode.com/">Advent of Code</a></strong>: free, ad-free programming puzzles, one a day from <strong>December 1st</strong>. A genuinely fun way to keep the muscle warm.</li>
 </ul>
-<div class="fragment">
-<div class="callout callout-tip callout-style-simple">
-<div class="callout-body">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-content">
-<p>Run the fresh-clone test <strong>today</strong>, not on demo morning. It always finds something.</p>
-</div>
-</div>
-</div>
-</div>
-</section></section>
-<section>
-<section id="demo-day-is-next" class="title-slide slide level1 title center">
-<h1><span class="flow">Demo Day Is Next</span></h1>
-
 </section>
-<section id="next-weeks-format" class="slide level2">
-<h2>Next week’s format</h2>
+<section id="thank-you" class="slide level2">
+<h2>Thank you</h2>
 <ul>
-<li><strong>7 minutes</strong> presenting, <strong>3 minutes</strong> of questions, per group</li>
-<li>Order: drawn at random with the <code>random</code> module from Session VI</li>
-<li>Show the thing running, your AI disclosure, and one thing that broke</li>
-<li>Everyone in the group has to be there</li>
+<li>We covered the basics of Python: from a first <code>print</code> to a real project on your own machine</li>
+<li>I hope you enjoyed it, and I hope it’s useful long after the grade</li>
+<li>If you have questions or feedback, <a href="mailto:vlcek@beyondsimulations.com">please tell me</a></li>
 </ul>
 <div class="fragment">
-<p>The rest of today is the last supervised work session: I am in the room for blockers and “is this scope still realistic?”</p>
-</div>
-</section></section>
-<section>
-<section id="wrap-up" class="title-slide slide level1 title center">
-<h1><span class="flow">Wrap-up</span></h1>
-
-</section>
-<section id="four-things-to-remember" class="slide level2">
-<h2>Four things to remember</h2>
-<ul>
-<li>AI text carries a <span class="highlight">watermark</span> now: fluent, normal-looking, detectable by the provider</li>
-<li>Your edge: <span class="highlight">explain every line</span> before you accept it</li>
-<li>The fresh-clone test is the cheapest bug you will ever catch</li>
-<li>A demo is the thing running, the disclosure, and one thing that broke</li>
-</ul>
-<div class="fragment">
-<p>Next week: <strong>Demo Day</strong>. The investor is in the audience.</p>
+<p>All the best for your studies and your career. Now go build the thing.</p>
 </div>
 </section></section>
 <section>
@@ -368,29 +291,59 @@ Dr.&nbsp;Tobias Vlćek
 <h1><span class="flow">Literature</span></h1>
 
 </section>
+<section id="keep-reading" class="slide level2">
+<h2>Keep reading</h2>
+<p>The <a href="../general/literature.html">literature list</a> of this course has more books, several of them free online.</p>
+</section>
 <section id="references" class="slide level2 smaller scrollable">
 <h2>References</h2>
 <div id="refs" class="references csl-bib-body hanging-indent" role="list">
+<div id="ref-autor_does_2026" class="csl-entry" role="listitem">
+Autor, David, Tanya Rodchenko, Josh Martin, et al. 2026. <em>Does <span>AI</span> Assistance Enhance or Erode Expertise? <span>Evidence</span> from a Three-Month Field Experiment in Patent Drafting</em>. Working {{Paper}} No. 35720. National Bureau of Economic Research. <a href="https://doi.org/10.3386/w35720">https://doi.org/10.3386/w35720</a>.
+</div>
 <div id="ref-bastani_generative_2025" class="csl-entry" role="listitem">
 Bastani, Hamsa, Osbert Bastani, Alp Sungu, Haosen Ge, Özge Kabakcı, and Rei Mariman. 2025. <span>“Generative <span>AI</span> Without Guardrails Can Harm Learning: <span>Evidence</span> from High School Mathematics.”</span> <em>Proceedings of the National Academy of Sciences</em> 122 (26): e2422633122. <a href="https://doi.org/10.1073/pnas.2422633122">https://doi.org/10.1073/pnas.2422633122</a>.
 </div>
-<div id="ref-becker_measuring_2025" class="csl-entry" role="listitem">
-Becker, Joel, Nate Rush, Elizabeth Barnes, and David Rein. 2025. <em>Measuring the <span>Impact</span> of <span>Early-2025 AI</span> on <span>Experienced Open-Source Developer Productivity</span></em>. arXiv. <a href="https://doi.org/10.48550/ARXIV.2507.09089">https://doi.org/10.48550/ARXIV.2507.09089</a>.
+<div id="ref-brynjolfsson_canaries_2026" class="csl-entry" role="listitem">
+Brynjolfsson, Erik, Bharat Chandar, and Ruyu Chen. 2026. <em>Canaries in the Coal Mine? <span>Six</span> Facts about the Recent Employment Effects of Artificial Intelligence</em>. Working {{Paper}}. Stanford Digital Economy Lab. <a href="https://digitaleconomy.stanford.edu/publication/canaries-in-the-coal-mine-six-facts-about-the-recent-employment-effects-of-artificial-intelligence/">https://digitaleconomy.stanford.edu/publication/canaries-in-the-coal-mine-six-facts-about-the-recent-employment-effects-of-artificial-intelligence/</a>.
 </div>
-<div id="ref-cui_effects_2026" class="csl-entry" role="listitem">
-Cui, Kevin Zheyuan, Mert Demirer, Sonia Jaffe, Leon Musolff, Sida Peng, and Tobias Salz. 2026. <span>“The <span>Effects</span> of <span>Generative AI</span> on <span>High-Skilled Work</span>: <span>Evidence</span> from <span>Three Field Experiments</span> with <span>Software Developers</span>.”</span> <em>Management Science</em>, February, mnsc.2025.00535. <a href="https://doi.org/10.1287/mnsc.2025.00535">https://doi.org/10.1287/mnsc.2025.00535</a>.
+<div id="ref-dellacqua_cybernetic_2026" class="csl-entry" role="listitem">
+Dell’Acqua, Fabrizio, Charles Ayoubi, Hila Lifshitz, et al. 2026. <span>“The <span>Cybernetic Teammate</span>: <span>A Field Experiment</span> on <span>Generative AI</span> and <span>Teamwork</span>.”</span> <em>Organization Science</em> 37 (4): 1217–42. <a href="https://doi.org/10.1287/orsc.2025.20702">https://doi.org/10.1287/orsc.2025.20702</a>.
+</div>
+</div>
+</section>
+<section id="references-2" class="slide level2 smaller scrollable">
+<h2>References (2/3)</h2>
+<div id="refs-2" class="references csl-bib-body hanging-indent" role="list">
+<div id="ref-dellacqua_navigating_2026-1" class="csl-entry" role="listitem">
+Dell’Acqua, Fabrizio, Edward McFowland, Ethan Mollick, et al. 2026. <span>“Navigating the <span>Jagged Technological Frontier</span>: <span>Field Experimental Evidence</span> of the <span>Effects</span> of <span>Artificial Intelligence</span> on <span>Knowledge Worker Productivity</span> and <span>Quality</span>.”</span> <em>Organization Science</em> 37 (2): 403–23. <a href="https://doi.org/10.1287/orsc.2025.21838">https://doi.org/10.1287/orsc.2025.21838</a>.
+</div>
+<div id="ref-downeyThinkPythonHow2024" class="csl-entry" role="listitem">
+Downey, Allen B. 2024. <em>Think <span>Python</span>: How to Think Like a Computer Scientist</em>. Third edition. O’Reilly. <a href="https://greenteapress.com/wp/think-python-3rd-edition/">https://greenteapress.com/wp/think-python-3rd-edition/</a>.
+</div>
+<div id="ref-elterSchroedingerProgrammiertPython2021" class="csl-entry" role="listitem">
+Elter, Stephan. 2021. <em><span>Schrödinger programmiert Python: das etwas andere Fachbuch</span></em>. 1. Auflage. <span>Rheinwerk Computing</span>. Rheinwerk Verlag.
+</div>
+<div id="ref-humlum_still_2026" class="csl-entry" role="listitem">
+Humlum, Anders, and Emilie Vestergaard. 2026. <em>Still Waters, Rapid Currents: <span>Early</span> Labor Market Transformation Under Generative <span>AI</span></em>. {{RFBerlin Discussion Paper}} 078/26. ROCKWOOL Foundation Berlin (RFBerlin). <a href="https://www.rfberlin.com/network-paper/still-waters-rapid-currents-early-labor-market-transformation-under-generative-ai/">https://www.rfberlin.com/network-paper/still-waters-rapid-currents-early-labor-market-transformation-under-generative-ai/</a>.
+</div>
+</div>
+</section>
+<section id="references-3" class="slide level2 smaller scrollable">
+<h2>References (3/3)</h2>
+<div id="refs-3" class="references csl-bib-body hanging-indent" role="list">
+<div id="ref-lodefalk_same_2026" class="csl-entry" role="listitem">
+Lodefalk, Magnus, Lydia Löthman, Michael Koch, and Erik Engberg. 2026. <em>Same Storm, Different Boats: <span>Generative AI</span> and the Age Gradient in Hiring</em>. Working {{Paper}} 2/2026. Örebro University School of Business. <a href="https://ideas.repec.org/p/hhs/oruesi/2026_002.html">https://ideas.repec.org/p/hhs/oruesi/2026_002.html</a>.
 </div>
 <div id="ref-shen_how_2026" class="csl-entry" role="listitem">
 Shen, Judy Hanwen, and Alex Tamkin. 2026. <em>How <span>AI Impacts Skill Formation</span></em>. arXiv. <a href="https://doi.org/10.48550/ARXIV.2601.20245">https://doi.org/10.48550/ARXIV.2601.20245</a>.
 </div>
 </div>
-
-
 </section></section>
     </div>
   <div class="quarto-auto-generated-content" style="display: none;">
 <div class="footer footer-default">
-<p>Lecture XII - Project Work II | Dr.&nbsp;Tobias Vlćek | <a href="../lectures/lec_12_projects.html">Home</a></p>
+<p>Lecture XII - Presentations and Discussion | Dr.&nbsp;Tobias Vlćek | <a href="../lectures/lec_12_presentations.html">Home</a></p>
 </div>
 </div></div>
 

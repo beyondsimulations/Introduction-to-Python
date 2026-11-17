@@ -11,7 +11,7 @@
   <meta name="generator" content="quarto-1.11.9">
 
   <meta name="author" content="Dr.&nbsp;Tobias Vlćek">
-  <title>Programming with Python – Lecture XI - Project Work I</title>
+  <title>Programming with Python – Lecture XI - Project Work</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -226,7 +226,7 @@
     <div class="slides">
 
 <section id="title-slide" class="quarto-title-block center">
-  <h1 class="title">Lecture XI - Project Work I</h1>
+  <h1 class="title">Lecture XI - Project Work</h1>
   <p class="subtitle">Programming with Python</p>
 
 <div class="quarto-title-authors">
@@ -248,12 +248,12 @@ Dr.&nbsp;Tobias Vlćek
 </section>
 <section id="the-shop-has-a-new-owner" class="slide level2">
 <h2>The shop has a new owner</h2>
-<p>MunchCorp runs the shop now. Tobi kept his job, the investor kept her spreadsheets, and her next due-diligence visit already has a date: <strong>Session XIII</strong>, when your projects run in this room.</p>
+<p>MunchCorp runs the shop now. Tobi kept his job, the investor kept her spreadsheets, and her next due-diligence visit already has a date: <strong>Session XII</strong>, when your projects run in this room.</p>
 <div class="fragment">
 <p>Until then, the shop rule stands: pull before you start, push when you stop, and let the commit history do the talking.</p>
 </div>
 <div class="fragment">
-<p>Before you build: ten minutes on making your agent stop repeating the same mistakes.</p>
+<p>Before you build: how to make your agent stop repeating the same mistakes, and the mark that AI text now carries.</p>
 </div>
 </section></section>
 <section>
@@ -318,6 +318,103 @@ Dr.&nbsp;Tobias Vlćek
 </ul>
 </section></section>
 <section>
+<section id="the-mark" class="title-slide slide level1 title center">
+<h1><span class="flow">The Mark</span></h1>
+
+</section>
+<section id="could-anyone-tell" class="slide level2">
+<h2>Could anyone tell?</h2>
+<ul>
+<li>Your README carries an AI-disclosure section. Suppose you skipped it: could anyone <span class="highlight">prove</span> that an AI wrote part of your work?</li>
+<li>Since August 2026, EU rules require providers to mark AI content machine-readably, and the major ones do</li>
+<li>The trick behind it is simple enough for three slides</li>
+</ul>
+</section>
+<section id="how-a-watermark-hides-in-plain-text" class="slide level2">
+<h2>How a watermark hides in plain text</h2>
+<ul>
+<li>Before each word, the model splits its vocabulary into a <strong>green</strong> and a <strong>red</strong> half, reshuffled at every step</li>
+<li>It then softly prefers green words. The text still reads completely normally</li>
+<li>By chance, a human writes about half green words. A model writes far more</li>
+</ul>
+</section>
+<section id="you-already-know-the-mechanism" class="slide level2">
+<h2>You already know the mechanism</h2>
+<ul>
+<li>Session VI: the model picks a <span class="highlight">likely</span> next token, never <em>the</em> next token</li>
+<li>A watermark is that choice, steered on purpose: green wins a little more often than chance</li>
+<li>Same next-token choice, one hidden thumb on the scale</li>
+</ul>
+</section>
+<section id="who-can-actually-detect-it" class="slide level2">
+<h2>Who can actually detect it</h2>
+<ul>
+<li>Detection is <span class="highlight">counting</span>: one paragraph of marked text can push chance below 1 in 10 trillion</li>
+<li>But you need the secret key that decided which half was green</li>
+<li>In practice, only the provider can run the test</li>
+</ul>
+</section>
+<section id="what-a-mark-proves-and-does-not" class="slide level2">
+<h2>What a mark proves (and does not)</h2>
+<ul>
+<li>Proves: a model <span class="highlight">processed</span> this text</li>
+<li>Does not prove: who did the work, or whether a human verified it</li>
+<li>Heavy editing can wash a mark out, and short snippets may not carry one, so an absence proves nothing</li>
+</ul>
+<div class="fragment">
+<p>Presence without disclosure, though, looks exactly like what it is.</p>
+</div>
+</section>
+<section id="disclosure-is-part-of-the-work" class="slide level2">
+<h2>Disclosure is part of the work</h2>
+<ul>
+<li>The rules converged everywhere: AI cannot be an author, and its use gets disclosed</li>
+<li>Your README section says which tool, for what, and what you verified yourself</li>
+<li>That is <span class="highlight">standard practice</span>, not a confession</li>
+</ul>
+</section></section>
+<section>
+<section id="definition-of-done" class="title-slide slide level1 title center">
+<h1><span class="flow">Definition of Done</span></h1>
+
+</section>
+<section id="before-you-call-it-finished" class="slide level2">
+<h2>Before you call it finished</h2>
+<ul>
+<li>The repo runs from a fresh clone (cloned once more into an empty folder): <code>uv sync</code>, then your script</li>
+<li>The README says what it does, how to run it, and carries the <strong>AI disclosure section</strong></li>
+<li>The commit history tells the story: small steps, messages that mean something</li>
+<li><code>git status</code> is clean: all committed, nothing important ignored</li>
+<li>I am invited, and the link is on Moodle before your demo</li>
+</ul>
+<div class="fragment">
+<div class="callout callout-tip callout-style-simple">
+<div class="callout-body">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-content">
+<p>Run the fresh-clone test <strong>today</strong>, not on demo morning. It always finds something.</p>
+</div>
+</div>
+</div>
+</div>
+</section></section>
+<section>
+<section id="demo-day-is-next" class="title-slide slide level1 title center">
+<h1><span class="flow">Demo Day Is Next</span></h1>
+
+</section>
+<section id="the-format" class="slide level2">
+<h2>The format</h2>
+<ul>
+<li><strong>7 minutes</strong> presenting, <strong>3 minutes</strong> of questions, per group</li>
+<li>Order: drawn at random with the <code>random</code> module from Session VI</li>
+<li>Show the thing running, your AI disclosure, and one thing that broke</li>
+<li>Everyone in the group has to be there</li>
+</ul>
+</section></section>
+<section>
 <section id="the-work-menu" class="title-slide slide level1 title center">
 <h1><span class="flow">The Work Menu</span></h1>
 
@@ -349,15 +446,16 @@ Dr.&nbsp;Tobias Vlćek
 <h1><span class="flow">Wrap-up</span></h1>
 
 </section>
-<section id="three-things-to-remember" class="slide level2">
-<h2>Three things to remember</h2>
+<section id="four-things-to-remember" class="slide level2">
+<h2>Four things to remember</h2>
 <ul>
 <li>Rules in <code>AGENTS.md</code> for the <span class="highlight">always</span> stuff, skills for the on-demand stuff, both plain markdown you own</li>
-<li>Any workflow you have explained to the agent <span class="highlight">twice</span> deserves a skill</li>
-<li>Small commits, pushed often, are the cheapest insurance any of you can buy</li>
+<li>AI text carries a <span class="highlight">watermark</span> now: fluent, normal-looking, detectable by the provider</li>
+<li>The fresh-clone test is the cheapest bug you will ever catch</li>
+<li>A demo is the thing running, the disclosure, and one thing that broke</li>
 </ul>
 <div class="fragment">
-<p>Next week: could anyone <strong>prove</strong> that an AI wrote part of your work?</p>
+<p>Next session: <strong>Demo Day</strong>. The investor is in the audience.</p>
 
 
 </div>
@@ -365,7 +463,7 @@ Dr.&nbsp;Tobias Vlćek
     </div>
   <div class="quarto-auto-generated-content" style="display: none;">
 <div class="footer footer-default">
-<p>Lecture XI - Project Work I | Dr.&nbsp;Tobias Vlćek | <a href="../lectures/lec_11_projects.html">Home</a></p>
+<p>Lecture XI - Project Work | Dr.&nbsp;Tobias Vlćek | <a href="../lectures/lec_11_projects.html">Home</a></p>
 </div>
 </div></div>
 
