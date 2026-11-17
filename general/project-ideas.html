@@ -669,14 +669,14 @@ ul.task-list li input[type="checkbox"] {
 
 <p>Your final project is built in a group of three over about three weeks and shown in a 7-minute demo in Session XIII. The ideas on this page are a menu to choose from. <strong>Your own idea is the best choice</strong>: pitch it to me, and you build it once I approve it.</p>
 <p>You build with your agent, so writing the code is the smaller part of the work. The larger part is what the agent cannot do for you: collecting data, testing against answers you know, balancing a game, and defending your decisions at the demo.</p>
-<p>Every idea has the same parts: what the class sees at the demo, the core that must work, a stretch if time allows, the work for three, the data and tools, and what to watch out for.</p>
+<p>Every idea has the same parts: what the class sees at the demo, the core that must work, a stretch if time allows, the work for three, the data and tools, and what to watch out for. The 7 minutes of your demo also hold your AI disclosure and one thing that broke, so plan about four minutes for what the class sees live. Everyone watches one display: size every number and label for the back row.</p>
 <section id="games-you-can-play-at-the-demo" class="level2">
 <h2 class="anchored" data-anchor-id="games-you-can-play-at-the-demo">Games you can play at the demo</h2>
-<p>These five are built to be played on the projector by your classmates, so the rules, the pace and the scoring are the product. Your main job besides directing the agent is playtesting: tuning the numbers until the game is fun, fair and over in a few minutes.</p>
+<p>These five are built to be played on the display by your classmates, so the rules, the pace and the scoring are the product. Your main job besides directing the agent is playtesting: tuning the numbers until the game is fun, fair and over in a few minutes.</p>
 <section id="the-beer-game-online" class="level3">
 <h3 class="anchored" data-anchor-id="the-beer-game-online">1. The Beer Game, online</h3>
 <p><em>The supply chain classic as a web game: four players order beer up the chain, delays do the rest, and the results screen shows why the factory ends up drowning in crates.</em></p>
-<p><strong>At the demo.</strong> Four classmates play retailer, wholesaler, distributor and factory for 20 rounds. The results screen then shows everyone’s orders and inventory over time, and the bullwhip effect (small demand changes growing into big order swings upstream) appears on the chart.</p>
+<p><strong>At the demo.</strong> Four classmates play retailer, wholesaler, distributor and factory for the first eight rounds. Customer demand doubles in round five, as in the original game. Then computer players take the four seats and finish the game’s 20 rounds in a second. The results screen shows everyone’s orders and inventory over time, and the bullwhip effect (small demand changes growing into big order swings upstream) appears on the chart.</p>
 <p><strong>The core.</strong></p>
 <ul>
 <li>Four roles, a list of customer demand per round, a two-round shipping delay and a two-round order delay, with inventory and backlog (orders you could not fill yet) per role.</li>
@@ -696,7 +696,7 @@ ul.task-list li input[type="checkbox"] {
 <section id="dispatch" class="level3">
 <h3 class="anchored" data-anchor-id="dispatch">2. Dispatch</h3>
 <p><em>The food-delivery startup you have followed all term gets its dispatch screen: orders pop up on a live map of Hamburg, couriers move, and you decide who takes what.</em></p>
-<p><strong>At the demo.</strong> A classmate dispatches for three minutes on the projector while the on-time rate and the kilometers tick up. Then your own dispatch rule plays the same order stream, and the two scores stand side by side.</p>
+<p><strong>At the demo.</strong> A classmate dispatches for two minutes on the display while the on-time rate and the kilometers tick up. Then your own dispatch rule replays the same order stream at ten times the speed, and the two scores stand side by side.</p>
 <p><strong>The core.</strong></p>
 <ul>
 <li>A map of Hamburg with couriers moving along streets at a realistic speed, and orders appearing from a scripted stream, each with a promised delivery time.</li>
@@ -716,7 +716,7 @@ ul.task-list li input[type="checkbox"] {
 <section id="logistics-exchange" class="level3">
 <h3 class="anchored" data-anchor-id="logistics-exchange">3. Logistics Exchange</h3>
 <p><em>Paper trading (play money at real prices) in four logistics stocks and oil, with a game master who drops news cards so you trade on a story and not on noise.</em></p>
-<p><strong>At the demo.</strong> Six classmates hold portfolios. The game master plays “port strike in Rotterdam” and “Suez closed”, the prices replay what really happened in such weeks, and the leaderboard reorders live.</p>
+<p><strong>At the demo.</strong> Three classmates trade from accounts you set up beforehand. The game master plays “port strike in Rotterdam” and “Suez closed”, the prices replay what really happened in such weeks, and the leaderboard reorders live.</p>
 <p><strong>The core.</strong></p>
 <ul>
 <li>Accounts, buy and sell orders, a portfolio page and a leaderboard, priced from daily data via yfinance (free stock prices from Yahoo Finance).</li>
@@ -730,13 +730,13 @@ ul.task-list li input[type="checkbox"] {
 <li><strong>Exchange engine:</strong> owns accounts, orders and the portfolio math, with a test against a hand-computed trade sequence.</li>
 <li><strong>Floor and bots:</strong> owns the UI, the leaderboard and the bot, and runs a five-minute test round with classmates in week two.</li>
 </ul>
-<p><strong>Data and tools.</strong> The yfinance tickers (the short codes of the stocks) are <code>MAERSK-B.CO</code> (Maersk), <code>HLAG.DE</code> (Hapag-Lloyd), <code>KNIN.SW</code> (Kuehne + Nagel), <code>DHL.DE</code> (DHL Group) and <code>BZ=F</code> (Brent crude oil). Download the history once in week one and cache it, because the demo must not depend on the wifi. streamlit, pandas, plotly.</p>
+<p><strong>Data and tools.</strong> The yfinance tickers (the short codes of the stocks) are <code>MAERSK-B.CO</code> (Maersk), <code>HLAG.DE</code> (Hapag-Lloyd), <code>KNIN.SW</code> (Kuehne + Nagel), <code>DHL.DE</code> (DHL Group) and <code>BZ=F</code> (Brent crude oil). Download the history once in week one and cache it, because the demo must not depend on the wifi. streamlit, pandas, plotly. Check in week one whether your library can serve three browsers at once over the classroom wifi. If not, the three players take turns at your laptop.</p>
 <p><strong>Watch out.</strong> Trading on random daily noise teaches nothing. News cards tied to real dates are what make it a game.</p>
 </section>
 <section id="stack-the-yard" class="level3">
 <h3 class="anchored" data-anchor-id="stack-the-yard">4. Stack the Yard</h3>
 <p><em>Tetris for a container terminal: boxes arrive by ship and leave by truck, and every box you buried costs a crane move to dig out.</em></p>
-<p><strong>At the demo.</strong> A classmate works a three-minute shift on the projector. The end screen shows the reshuffles (crane moves that dig out a buried box) per box and the truck waiting time, next to the computer stacker’s result on the same arrivals.</p>
+<p><strong>At the demo.</strong> A classmate works a two-minute shift on the display. The end screen shows the reshuffles (crane moves that dig out a buried box) per box and the truck waiting time, next to the computer stacker’s result on the same arrivals.</p>
 <p><strong>The core.</strong></p>
 <ul>
 <li>A yard of 6 rows with 5 stacks each, 4 boxes high; containers with a known pick-up time; ships that dump 20 boxes and trucks that fetch one each.</li>
@@ -756,7 +756,7 @@ ul.task-list li input[type="checkbox"] {
 <section id="reverse-the-trailer" class="level3">
 <h3 class="anchored" data-anchor-id="reverse-the-trailer">5. Reverse the Trailer</h3>
 <p><em>Back a tractor and semitrailer into a loading dock, seen from above, with real trailer physics: steer left and the trailer swings right, overdo it and it jackknifes (folds against the tractor).</em></p>
-<p><strong>At the demo.</strong> A classmate plays three levels on the projector, from an open yard to a dock between two parked trailers. The scoreboard shows the time, the direction changes, the position and angle error, and the collisions.</p>
+<p><strong>At the demo.</strong> A classmate has two minutes on the display and plays the levels in order on easy, starting in the open yard. The scoreboard shows the time, the direction changes, the position and angle error, and the collisions.</p>
 <p><strong>The core.</strong></p>
 <ul>
 <li>A kinematic model (it tracks positions, angles and speeds and ignores forces). The tractor is a bicycle model: one steered front wheel and one rear wheel. The trailer hangs on the kingpin, the pivot where it couples to the tractor.</li>
@@ -781,7 +781,7 @@ ul.task-list li input[type="checkbox"] {
 <section id="load-the-trailer" class="level3">
 <h3 class="anchored" data-anchor-id="load-the-trailer">6. Load the Trailer</h3>
 <p><em>Drag 33 Euro pallets onto a 13.6 m trailer without overloading an axle, then watch the computer do it better.</em></p>
-<p><strong>At the demo.</strong> A classmate loads a mixed order on the projector, and the axle gauge turns red on overload. The solver (a program that searches for the best arrangement) loads the same order in a second, and both loads are compared on weight used and legality.</p>
+<p><strong>At the demo.</strong> A classmate loads a mixed order of about 15 pallets on the display, and the axle gauge turns red on overload. The solver (a program that searches for the best arrangement) loads the same order in a second, and both loads are compared on weight used and legality.</p>
 <p><strong>The core.</strong></p>
 <ul>
 <li>A 2D trailer floor (13.6 by 2.45 m) with pallet footprints (Euro 1.2 by 0.8, industrial 1.2 by 1.0), weights, and whether a pallet may be stacked.</li>
@@ -832,7 +832,7 @@ ul.task-list li input[type="checkbox"] {
 <p><strong>Work for three.</strong></p>
 <ul>
 <li><strong>Data pipeline:</strong> owns the downloads and checks by hand that time zones and 15-minute versus hourly values line up, because one hour off ruins everything.</li>
-<li><strong>Forecast:</strong> owns the model and reports honestly whether it beats the baseline.</li>
+<li><strong>Forecast:</strong> owns the model and shows on the held-out month whether it beats the baseline.</li>
 <li><strong>Scheduler:</strong> owns the plan, the dashboard and the cost assumptions (battery size, grid limit), each with a source.</li>
 </ul>
 <p><strong>Data and tools.</strong> SMARD offers a free download and an API (a web address that returns data instead of a page), and so does Open-Meteo; neither needs a key. pandas, scikit-learn (the standard Python library for machine learning), plotly, streamlit.</p>
@@ -841,7 +841,7 @@ ul.task-list li input[type="checkbox"] {
 </section>
 <section id="simulate-a-real-system" class="level2">
 <h2 class="anchored" data-anchor-id="simulate-a-real-system">Simulate a real system</h2>
-<p>These two build a model of something real (a lunch queue, a shipping network) and are judged on how well the model matches reality. The numbers you collect or source yourselves, and the honesty of your comparison, matter more than the code.</p>
+<p>These two build a model of something real (a lunch queue, a shipping network) and are judged on how well the model matches reality. The numbers you collect or source yourselves, and the check against numbers the model was not built from, matter more than the code.</p>
 <section id="digital-twin" class="level3">
 <h3 class="anchored" data-anchor-id="digital-twin">9. Digital twin</h3>
 <p><em>An animated copy of a real place you can observe (the cafeteria at lunch, a supermarket checkout, a warehouse dock), fed with numbers you counted yourselves, with sliders for staff.</em></p>
@@ -900,7 +900,7 @@ ul.task-list li input[type="checkbox"] {
 <p><strong>Work for three.</strong></p>
 <ul>
 <li><strong>Photo campaign:</strong> plans where, when and in what light to shoot so it is not 60 photos of one box, and labels them with a second person checking.</li>
-<li><strong>Model:</strong> owns the features, the training (the model learning from your labeled photos) and an honest evaluation that trains on one shooting day and tests on another.</li>
+<li><strong>Model:</strong> owns the features, the training (the model learning from your labeled photos) and an evaluation that trains on one shooting day and tests on another.</li>
 <li><strong>App and check digit:</strong> owns the upload page, the check-digit code with tests on five known container numbers, and the text-reading step.</li>
 </ul>
 <p><strong>Data and tools.</strong> Your own photos; scikit-learn, Pillow and scikit-image (image handling); easyocr, which installs PyTorch (a large machine-learning library of about 2 GB, so install it on campus wifi before demo day).</p>
@@ -949,7 +949,7 @@ ul.task-list li input[type="checkbox"] {
 <section id="scan-to-track" class="level3">
 <h3 class="anchored" data-anchor-id="scan-to-track">14. Scan to Track</h3>
 <p><em>Hold a real DHL or Hermes label from your own parcel to the webcam: the app reads the tracking number, tells the carrier from the number, and adds the parcel to your own tracking dashboard with its live status.</em></p>
-<p><strong>At the demo.</strong> Three labels pass the webcam, and each is read, checked and added in seconds. The dashboard shows every parcel the group tracked over the three weeks with carrier, last status and days in transit, and one classmate’s own parcel is added live.</p>
+<p><strong>At the demo.</strong> Three labels pass the webcam, and each is read, checked and added in seconds. The display shows only the number the app read, never the camera picture, because a label carries a name and an address. The dashboard shows every parcel the group tracked over the three weeks with carrier, last status and days in transit, and one classmate’s own parcel is added live.</p>
 <p><strong>The core.</strong></p>
 <ul>
 <li>A webcam reader with zxing-cpp (a barcode library) that finds the barcodes on a label and reports each one’s type (the bar pattern standard, such as GS1-128 or Interleaved 2 of 5) and content.</li>
