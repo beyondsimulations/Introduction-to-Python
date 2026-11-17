@@ -125,49 +125,70 @@
     "href": "lectures/lec_12_presentation.html#one-week-to-launch",
     "title": "Lecture XII - Project Work II",
     "section": "One week to launch",
-    "text": "One week to launch\nDemo Day is next week: every group presents in Session XIII. The order comes out of a hat. The hat is Python.\n\nBefore you build: ten minutes on making your agent stop repeating the same mistakes."
+    "text": "One week to launch\nDemo Day is next week: every group presents in Session XIII. The order comes out of a hat. The hat is Python.\n\nBefore you build: the mark that AI text now carries, and what AI means for your first job."
   },
   {
-    "objectID": "lectures/lec_12_presentation.html#the-friction-you-know",
-    "href": "lectures/lec_12_presentation.html#the-friction-you-know",
+    "objectID": "lectures/lec_12_presentation.html#could-anyone-tell",
+    "href": "lectures/lec_12_presentation.html#could-anyone-tell",
     "title": "Lecture XII - Project Work II",
-    "section": "The friction you know",
-    "text": "The friction you know\n\nTwo weeks in, you have corrected your agent on the same things again and again: naming style, the library you prefer, “keep functions short”, “round money to two decimals”\nEvery session starts from zero: the agent remembers nothing between sessions (Session X, the loop)\nExplaining the same thing five times is work you should not be doing"
+    "section": "Could anyone tell?",
+    "text": "Could anyone tell?\n\nYour README carries an AI-disclosure section. Suppose you skipped it: could anyone prove that an AI wrote part of your work?\nSince August 2026, EU rules require providers to mark AI content machine-readably, and the major ones do\nThe trick behind it is simple enough for three slides"
   },
   {
-    "objectID": "lectures/lec_12_presentation.html#package-the-rules-once",
-    "href": "lectures/lec_12_presentation.html#package-the-rules-once",
+    "objectID": "lectures/lec_12_presentation.html#how-a-watermark-hides-in-plain-text",
+    "href": "lectures/lec_12_presentation.html#how-a-watermark-hides-in-plain-text",
     "title": "Lecture XII - Project Work II",
-    "section": "Package the rules once",
-    "text": "Package the rules once\n\nPut your project rules in one markdown file in the repo: AGENTS.md\nWhat goes in: what the project is, the tools it uses, naming and style conventions, “any AI use lands in the README disclosure”\nMistral Vibe reads it at every session start, automatically: write the rules once, stop repeating them"
+    "section": "How a watermark hides in plain text",
+    "text": "How a watermark hides in plain text\n\nBefore each word, the model splits its vocabulary into a green and a red half, reshuffled at every step\nIt then softly prefers green words. The text still reads completely normally\nBy chance, a human writes about half green words. A model writes far more"
   },
   {
-    "objectID": "lectures/lec_12_presentation.html#skills-instructions-on-demand",
-    "href": "lectures/lec_12_presentation.html#skills-instructions-on-demand",
+    "objectID": "lectures/lec_12_presentation.html#you-already-know-the-mechanism",
+    "href": "lectures/lec_12_presentation.html#you-already-know-the-mechanism",
     "title": "Lecture XII - Project Work II",
-    "section": "Skills: instructions on demand",
-    "text": "Skills: instructions on demand\n\nA skill is the next step up: a folder with a SKILL.md, holding a name, a description, and instructions\nRules apply always. A skill loads only when the task matches its description, so context stays lean until the moment it is needed\nExample: a verify skill for your project: read the diff, run it, test it on a case where you know the answer, report what you checked\nIn your stack: .vibe/skills/verify/SKILL.md in the repo. Vibe loads it in the terminal and inside Zed’s agent panel, same engine\nVibe follows an open format, so skills you write here also work in other agents that adopt it"
+    "section": "You already know the mechanism",
+    "text": "You already know the mechanism\n\nSession VI: the model picks a likely next token, never the next token\nA watermark is that choice, steered on purpose: green wins a little more often than chance\nSame next-token choice, one hidden thumb on the scale"
   },
   {
-    "objectID": "lectures/lec_12_presentation.html#anatomy-briefly",
-    "href": "lectures/lec_12_presentation.html#anatomy-briefly",
+    "objectID": "lectures/lec_12_presentation.html#who-can-actually-detect-it",
+    "href": "lectures/lec_12_presentation.html#who-can-actually-detect-it",
     "title": "Lecture XII - Project Work II",
-    "section": "Anatomy, briefly",
-    "text": "Anatomy, briefly\n---\nname: verify\ndescription: Check changed code the way this project requires. Use after any code change.\n---\n\n- Read the diff line by line before running anything\n- Run the code on a case where you know the correct answer\n- Report what you checked and what the result was\n\nPlain markdown you own, at .vibe/skills/verify/SKILL.md, versioned with the project like any other file."
+    "section": "Who can actually detect it",
+    "text": "Who can actually detect it\n\nDetection is counting: one paragraph of marked text can push chance below 1 in 10 trillion\nBut you need the secret key that decided which half was green\nIn practice, only the provider can run the test"
   },
   {
-    "objectID": "lectures/lec_12_presentation.html#write-your-own",
-    "href": "lectures/lec_12_presentation.html#write-your-own",
+    "objectID": "lectures/lec_12_presentation.html#what-a-mark-proves-and-does-not",
+    "href": "lectures/lec_12_presentation.html#what-a-mark-proves-and-does-not",
     "title": "Lecture XII - Project Work II",
-    "section": "Write your own",
-    "text": "Write your own\n\nAny workflow you have explained to the agent twice deserves a skill\nKeep it short: a page of instructions, not an essay\nPrune it when the workflow changes: a stale skill misleads\nDownloading one? Vet it by reading it, not by how popular it is"
+    "section": "What a mark proves (and does not)",
+    "text": "What a mark proves (and does not)\n\nProves: a model processed this text\nDoes not prove: who did the work, or whether a human verified it\nHeavy editing can wash a mark out, and short snippets may not carry one, so an absence proves nothing\n\n\nPresence without disclosure, though, looks exactly like what it is."
   },
   {
-    "objectID": "lectures/lec_12_presentation.html#what-not-to-hand-over",
-    "href": "lectures/lec_12_presentation.html#what-not-to-hand-over",
+    "objectID": "lectures/lec_12_presentation.html#disclosure-is-part-of-the-work",
+    "href": "lectures/lec_12_presentation.html#disclosure-is-part-of-the-work",
     "title": "Lecture XII - Project Work II",
-    "section": "What not to hand over",
-    "text": "What not to hand over\n\nThe parts you must be able to defend at the demo: design choices, the statistics, why this approach\nA file can carry conventions. It cannot carry your judgment, and the demo questions come to you, not to it"
+    "section": "Disclosure is part of the work",
+    "text": "Disclosure is part of the work\n\nThe rules converged everywhere: AI cannot be an author, and its use gets disclosed\nYour README section says which tool, for what, and what you verified yourself\nThat is standard practice, not a confession"
+  },
+  {
+    "objectID": "lectures/lec_12_presentation.html#ai-and-your-first-job",
+    "href": "lectures/lec_12_presentation.html#ai-and-your-first-job",
+    "title": "Lecture XII - Project Work II",
+    "section": "AI and your first job",
+    "text": "AI and your first job\n\nThousands of developers: +26% tasks done with AI, juniors gained most (Cui et al. 2026)\nExperienced developers on their own code: 19% slower, while feeling 20% faster (Becker et al. 2025)\nLearners with AI: 50% on a mastery quiz vs 67% without, worst on debugging (Shen and Tamkin 2026)\nThe fix: hints instead of finished solutions erased the harm (Bastani et al. 2025). Part I was exactly that"
+  },
+  {
+    "objectID": "lectures/lec_12_presentation.html#what-stays-valuable",
+    "href": "lectures/lec_12_presentation.html#what-stays-valuable",
+    "title": "Lecture XII - Project Work II",
+    "section": "What stays valuable",
+    "text": "What stays valuable\n\nThe verification boundary: usable delegation ends where your ability to check ends. Growing that boundary outward is your career\nComprehension debt: code that works today but nobody understands tomorrow. The interest comes due when a reviewer asks “why does this work?”\nYour edge, deliberately kept: explain every line before you accept it, and code without AI sometimes"
+  },
+  {
+    "objectID": "lectures/lec_12_presentation.html#discussion-your-future-with-ai",
+    "href": "lectures/lec_12_presentation.html#discussion-your-future-with-ai",
+    "title": "Lecture XII - Project Work II",
+    "section": "Discussion: your future with AI",
+    "text": "Discussion: your future with AI\n\n\n\n\n\n\nThree questions, five minutes, show of hands:\n\nWhich task from the past weeks would you never delegate to an AI?\nWhat will an entry-level logistics analyst do in 2030, when AI drafts the first version of everything?\nIf AI writes most junior code, where do the senior people come from?"
   },
   {
     "objectID": "lectures/lec_12_presentation.html#before-you-call-it-finished",
@@ -184,18 +205,25 @@
     "text": "Next week’s format\n\n7 minutes presenting, 3 minutes of questions, per group\nOrder: drawn at random with the random module from Session VI\nShow the thing running, the commit history, and one thing that broke\nEveryone in the group has to be there\n\n\nThe rest of today is the last supervised work session: I am in the room for blockers and “is this scope still realistic?”"
   },
   {
-    "objectID": "lectures/lec_12_presentation.html#three-things-to-remember",
-    "href": "lectures/lec_12_presentation.html#three-things-to-remember",
+    "objectID": "lectures/lec_12_presentation.html#four-things-to-remember",
+    "href": "lectures/lec_12_presentation.html#four-things-to-remember",
     "title": "Lecture XII - Project Work II",
-    "section": "Three things to remember",
-    "text": "Three things to remember\n\nRules in AGENTS.md for the always stuff, skills for the on-demand stuff, both plain markdown you own\nThe fresh-clone test is the cheapest bug you will ever catch\nA demo is the thing running, the history, and the disclosure\n\n\nNext week: Demo Day. The investor is in the audience."
+    "section": "Four things to remember",
+    "text": "Four things to remember\n\nAI text carries a watermark now: fluent, normal-looking, detectable by the provider\nYour edge: explain every line before you accept it\nThe fresh-clone test is the cheapest bug you will ever catch\nA demo is the thing running, the history, and the disclosure\n\n\nNext week: Demo Day. The investor is in the audience."
+  },
+  {
+    "objectID": "lectures/lec_12_presentation.html#references",
+    "href": "lectures/lec_12_presentation.html#references",
+    "title": "Lecture XII - Project Work II",
+    "section": "References",
+    "text": "References\n\n\nBastani, Hamsa, Osbert Bastani, Alp Sungu, Haosen Ge, Özge Kabakcı, and Rei Mariman. 2025. “Generative AI Without Guardrails Can Harm Learning: Evidence from High School Mathematics.” Proceedings of the National Academy of Sciences 122 (26): e2422633122. https://doi.org/10.1073/pnas.2422633122.\n\n\nBecker, Joel, Nate Rush, Elizabeth Barnes, and David Rein. 2025. Measuring the Impact of Early-2025 AI on Experienced Open-Source Developer Productivity. arXiv. https://doi.org/10.48550/ARXIV.2507.09089.\n\n\nCui, Kevin Zheyuan, Mert Demirer, Sonia Jaffe, Leon Musolff, Sida Peng, and Tobias Salz. 2026. “The Effects of Generative AI on High-Skilled Work: Evidence from Three Field Experiments with Software Developers.” Management Science, February, mnsc.2025.00535. https://doi.org/10.1287/mnsc.2025.00535.\n\n\nShen, Judy Hanwen, and Alex Tamkin. 2026. How AI Impacts Skill Formation. arXiv. https://doi.org/10.48550/ARXIV.2601.20245."
   },
   {
     "objectID": "lectures/lec_12_projects.html",
     "href": "lectures/lec_12_projects.html",
     "title": "Lecture XII - Project Work II",
     "section": "",
-    "text": "Demo Day is next week: every group presents in Session XIII. The order comes out of a hat. The hat is Python.\nBefore you build: ten minutes on making your agent stop repeating the same mistakes.",
+    "text": "Demo Day is next week: every group presents in Session XIII. The order comes out of a hat. The hat is Python.\nBefore you build: the mark that AI text now carries, and what AI means for your first job.",
     "crumbs": [
       "12 Project Work II",
       "Lecture"
@@ -206,73 +234,106 @@
     "href": "lectures/lec_12_projects.html#one-week-to-launch",
     "title": "Lecture XII - Project Work II",
     "section": "",
-    "text": "Demo Day is next week: every group presents in Session XIII. The order comes out of a hat. The hat is Python.\nBefore you build: ten minutes on making your agent stop repeating the same mistakes.",
+    "text": "Demo Day is next week: every group presents in Session XIII. The order comes out of a hat. The hat is Python.\nBefore you build: the mark that AI text now carries, and what AI means for your first job.",
     "crumbs": [
       "12 Project Work II",
       "Lecture"
     ]
   },
   {
-    "objectID": "lectures/lec_12_projects.html#the-friction-you-know",
-    "href": "lectures/lec_12_projects.html#the-friction-you-know",
+    "objectID": "lectures/lec_12_projects.html#could-anyone-tell",
+    "href": "lectures/lec_12_projects.html#could-anyone-tell",
     "title": "Lecture XII - Project Work II",
-    "section": "The friction you know",
-    "text": "The friction you know\n\nTwo weeks in, you have corrected your agent on the same things again and again: naming style, the library you prefer, “keep functions short”, “round money to two decimals”\nEvery session starts from zero: the agent remembers nothing between sessions (Session X, the loop)\nExplaining the same thing five times is work you should not be doing",
+    "section": "Could anyone tell?",
+    "text": "Could anyone tell?\n\nYour README carries an AI-disclosure section. Suppose you skipped it: could anyone prove that an AI wrote part of your work?\nSince August 2026, EU rules require providers to mark AI content machine-readably, and the major ones do\nThe trick behind it is simple enough for three slides",
     "crumbs": [
       "12 Project Work II",
       "Lecture"
     ]
   },
   {
-    "objectID": "lectures/lec_12_projects.html#package-the-rules-once",
-    "href": "lectures/lec_12_projects.html#package-the-rules-once",
+    "objectID": "lectures/lec_12_projects.html#how-a-watermark-hides-in-plain-text",
+    "href": "lectures/lec_12_projects.html#how-a-watermark-hides-in-plain-text",
     "title": "Lecture XII - Project Work II",
-    "section": "Package the rules once",
-    "text": "Package the rules once\n\nPut your project rules in one markdown file in the repo: AGENTS.md\nWhat goes in: what the project is, the tools it uses, naming and style conventions, “any AI use lands in the README disclosure”\nMistral Vibe reads it at every session start, automatically: write the rules once, stop repeating them",
+    "section": "How a watermark hides in plain text",
+    "text": "How a watermark hides in plain text\n\nBefore each word, the model splits its vocabulary into a green and a red half, reshuffled at every step\nIt then softly prefers green words. The text still reads completely normally\nBy chance, a human writes about half green words. A model writes far more",
     "crumbs": [
       "12 Project Work II",
       "Lecture"
     ]
   },
   {
-    "objectID": "lectures/lec_12_projects.html#skills-instructions-on-demand",
-    "href": "lectures/lec_12_projects.html#skills-instructions-on-demand",
+    "objectID": "lectures/lec_12_projects.html#you-already-know-the-mechanism",
+    "href": "lectures/lec_12_projects.html#you-already-know-the-mechanism",
     "title": "Lecture XII - Project Work II",
-    "section": "Skills: instructions on demand",
-    "text": "Skills: instructions on demand\n\nA skill is the next step up: a folder with a SKILL.md, holding a name, a description, and instructions\nRules apply always. A skill loads only when the task matches its description, so context stays lean until the moment it is needed\nExample: a verify skill for your project: read the diff, run it, test it on a case where you know the answer, report what you checked\nIn your stack: .vibe/skills/verify/SKILL.md in the repo. Vibe loads it in the terminal and inside Zed’s agent panel, same engine\nVibe follows an open format, so skills you write here also work in other agents that adopt it",
+    "section": "You already know the mechanism",
+    "text": "You already know the mechanism\n\nSession VI: the model picks a likely next token, never the next token\nA watermark is that choice, steered on purpose: green wins a little more often than chance\nSame next-token choice, one hidden thumb on the scale",
     "crumbs": [
       "12 Project Work II",
       "Lecture"
     ]
   },
   {
-    "objectID": "lectures/lec_12_projects.html#anatomy-briefly",
-    "href": "lectures/lec_12_projects.html#anatomy-briefly",
+    "objectID": "lectures/lec_12_projects.html#who-can-actually-detect-it",
+    "href": "lectures/lec_12_projects.html#who-can-actually-detect-it",
     "title": "Lecture XII - Project Work II",
-    "section": "Anatomy, briefly",
-    "text": "Anatomy, briefly\n---\nname: verify\ndescription: Check changed code the way this project requires. Use after any code change.\n---\n\n- Read the diff line by line before running anything\n- Run the code on a case where you know the correct answer\n- Report what you checked and what the result was\nPlain markdown you own, at .vibe/skills/verify/SKILL.md, versioned with the project like any other file.",
+    "section": "Who can actually detect it",
+    "text": "Who can actually detect it\n\nDetection is counting: one paragraph of marked text can push chance below 1 in 10 trillion\nBut you need the secret key that decided which half was green\nIn practice, only the provider can run the test",
     "crumbs": [
       "12 Project Work II",
       "Lecture"
     ]
   },
   {
-    "objectID": "lectures/lec_12_projects.html#write-your-own",
-    "href": "lectures/lec_12_projects.html#write-your-own",
+    "objectID": "lectures/lec_12_projects.html#what-a-mark-proves-and-does-not",
+    "href": "lectures/lec_12_projects.html#what-a-mark-proves-and-does-not",
     "title": "Lecture XII - Project Work II",
-    "section": "Write your own",
-    "text": "Write your own\n\nAny workflow you have explained to the agent twice deserves a skill\nKeep it short: a page of instructions, not an essay\nPrune it when the workflow changes: a stale skill misleads\nDownloading one? Vet it by reading it, not by how popular it is",
+    "section": "What a mark proves (and does not)",
+    "text": "What a mark proves (and does not)\n\nProves: a model processed this text\nDoes not prove: who did the work, or whether a human verified it\nHeavy editing can wash a mark out, and short snippets may not carry one, so an absence proves nothing\n\nPresence without disclosure, though, looks exactly like what it is.",
     "crumbs": [
       "12 Project Work II",
       "Lecture"
     ]
   },
   {
-    "objectID": "lectures/lec_12_projects.html#what-not-to-hand-over",
-    "href": "lectures/lec_12_projects.html#what-not-to-hand-over",
+    "objectID": "lectures/lec_12_projects.html#disclosure-is-part-of-the-work",
+    "href": "lectures/lec_12_projects.html#disclosure-is-part-of-the-work",
     "title": "Lecture XII - Project Work II",
-    "section": "What not to hand over",
-    "text": "What not to hand over\n\nThe parts you must be able to defend at the demo: design choices, the statistics, why this approach\nA file can carry conventions. It cannot carry your judgment, and the demo questions come to you, not to it",
+    "section": "Disclosure is part of the work",
+    "text": "Disclosure is part of the work\n\nThe rules converged everywhere: AI cannot be an author, and its use gets disclosed\nYour README section says which tool, for what, and what you verified yourself\nThat is standard practice, not a confession",
+    "crumbs": [
+      "12 Project Work II",
+      "Lecture"
+    ]
+  },
+  {
+    "objectID": "lectures/lec_12_projects.html#ai-and-your-first-job",
+    "href": "lectures/lec_12_projects.html#ai-and-your-first-job",
+    "title": "Lecture XII - Project Work II",
+    "section": "AI and your first job",
+    "text": "AI and your first job\n\nThousands of developers: +26% tasks done with AI, juniors gained most (Cui et al. 2026)\nExperienced developers on their own code: 19% slower, while feeling 20% faster (Becker et al. 2025)\nLearners with AI: 50% on a mastery quiz vs 67% without, worst on debugging (Shen and Tamkin 2026)\nThe fix: hints instead of finished solutions erased the harm (Bastani et al. 2025). Part I was exactly that",
+    "crumbs": [
+      "12 Project Work II",
+      "Lecture"
+    ]
+  },
+  {
+    "objectID": "lectures/lec_12_projects.html#what-stays-valuable",
+    "href": "lectures/lec_12_projects.html#what-stays-valuable",
+    "title": "Lecture XII - Project Work II",
+    "section": "What stays valuable",
+    "text": "What stays valuable\n\nThe verification boundary: usable delegation ends where your ability to check ends. Growing that boundary outward is your career\nComprehension debt: code that works today but nobody understands tomorrow. The interest comes due when a reviewer asks “why does this work?”\nYour edge, deliberately kept: explain every line before you accept it, and code without AI sometimes",
+    "crumbs": [
+      "12 Project Work II",
+      "Lecture"
+    ]
+  },
+  {
+    "objectID": "lectures/lec_12_projects.html#discussion-your-future-with-ai",
+    "href": "lectures/lec_12_projects.html#discussion-your-future-with-ai",
+    "title": "Lecture XII - Project Work II",
+    "section": "Discussion: your future with AI",
+    "text": "Discussion: your future with AI\n\n\n\n\n\n\nThree questions, five minutes, show of hands:\n\nWhich task from the past weeks would you never delegate to an AI?\nWhat will an entry-level logistics analyst do in 2030, when AI drafts the first version of everything?\nIf AI writes most junior code, where do the senior people come from?",
     "crumbs": [
       "12 Project Work II",
       "Lecture"
@@ -301,11 +362,22 @@
     ]
   },
   {
-    "objectID": "lectures/lec_12_projects.html#three-things-to-remember",
-    "href": "lectures/lec_12_projects.html#three-things-to-remember",
+    "objectID": "lectures/lec_12_projects.html#four-things-to-remember",
+    "href": "lectures/lec_12_projects.html#four-things-to-remember",
     "title": "Lecture XII - Project Work II",
-    "section": "Three things to remember",
-    "text": "Three things to remember\n\nRules in AGENTS.md for the always stuff, skills for the on-demand stuff, both plain markdown you own\nThe fresh-clone test is the cheapest bug you will ever catch\nA demo is the thing running, the history, and the disclosure\n\nNext week: Demo Day. The investor is in the audience.",
+    "section": "Four things to remember",
+    "text": "Four things to remember\n\nAI text carries a watermark now: fluent, normal-looking, detectable by the provider\nYour edge: explain every line before you accept it\nThe fresh-clone test is the cheapest bug you will ever catch\nA demo is the thing running, the history, and the disclosure\n\nNext week: Demo Day. The investor is in the audience.",
+    "crumbs": [
+      "12 Project Work II",
+      "Lecture"
+    ]
+  },
+  {
+    "objectID": "lectures/lec_12_projects.html#references",
+    "href": "lectures/lec_12_projects.html#references",
+    "title": "Lecture XII - Project Work II",
+    "section": "References",
+    "text": "References\n\n\nBastani, Hamsa, Osbert Bastani, Alp Sungu, Haosen Ge, Özge Kabakcı, and Rei Mariman. 2025. “Generative AI Without Guardrails Can Harm Learning: Evidence from High School Mathematics.” Proceedings of the National Academy of Sciences 122 (26): e2422633122. https://doi.org/10.1073/pnas.2422633122.\n\n\nBecker, Joel, Nate Rush, Elizabeth Barnes, and David Rein. 2025. Measuring the Impact of Early-2025 AI on Experienced Open-Source Developer Productivity. arXiv. https://doi.org/10.48550/ARXIV.2507.09089.\n\n\nCui, Kevin Zheyuan, Mert Demirer, Sonia Jaffe, Leon Musolff, Sida Peng, and Tobias Salz. 2026. “The Effects of Generative AI on High-Skilled Work: Evidence from Three Field Experiments with Software Developers.” Management Science, February, mnsc.2025.00535. https://doi.org/10.1287/mnsc.2025.00535.\n\n\nShen, Judy Hanwen, and Alex Tamkin. 2026. How AI Impacts Skill Formation. arXiv. https://doi.org/10.48550/ARXIV.2601.20245.",
     "crumbs": [
       "12 Project Work II",
       "Lecture"
@@ -323,35 +395,35 @@
     "href": "lectures/lec_10_presentation.html#the-deal-closes",
     "title": "Lecture X - Git and Your Project",
     "section": "The deal closes",
-    "text": "The deal closes\nThe checkpoint is behind you, and so, it turns out, is the startup. Overnight rival chain MunchCorp stopped competing and made an offer: they’re buying the company. The investor read the term sheet, did the math against her own, and told you to take it: her money would have bought growth, theirs buys the whole shop.\n\nLawyers will tell you deals close on the numbers. This one closed on yours. The clean order data you pulled together in the data room (Session VIII) and the pitch deck you built from it (Session IX) are exactly what convinced the acquirer the books were real.\n\n\nNo cliff-edge growth chart with a chopped axis. Just data that survived a second look. That’s why they signed."
+    "text": "The deal closes\nThe checkpoint is behind you, and so is the startup. Overnight rival chain MunchCorp stopped competing and made an offer: they’re buying the company. The investor read the term sheet, did the math against her own, and told you to take it: her money would have bought growth, theirs buys the whole shop.\n\nLawyers will tell you deals close on the numbers. This one closed on yours. The clean order data you pulled together in the data room (Session VIII) and the pitch deck you built from it (Session IX) are exactly what convinced the acquirer the books were real.\n\n\nNo cliff-edge growth chart with a chopped axis. Just data that survived a second look. That’s why they signed."
   },
   {
     "objectID": "lectures/lec_10_presentation.html#the-handover",
     "href": "lectures/lec_10_presentation.html#the-handover",
     "title": "Lecture X - Git and Your Project",
     "section": "The handover",
-    "text": "The handover\nTobi’s job today is to hand over the data room: the folder with every file the company ever built. You know that folder. It’s python-labs, two labs later.\n\nMunchCorp’s lawyer opens it and asks two questions:\n\ngrowth.png: is this the chart the investor saw, or has it changed?\norders_messy.csv: who changed it after Tobi’s export, and what?\n\n\n\nNobody can say. A folder shows what is in it now, and nothing about how it got there. Today you give a folder a history, with a tool called git."
+    "text": "The handover\nTobi’s job today is to hand over the data room: the folder with every file the company ever built.\n\nMunchCorp’s lawyer opens it and asks two questions:\n\ngrowth.png: is this the chart the investor saw, or has it changed?\norders_messy.csv: who changed it after Tobi’s export, and what?\n\n\n\nNobody can say. A folder shows what is in it now, and nothing about how it got there. Today you give a folder a history, with a tool called git."
   },
   {
-    "objectID": "lectures/lec_10_presentation.html#your-exit-package",
-    "href": "lectures/lec_10_presentation.html#your-exit-package",
+    "objectID": "lectures/lec_10_presentation.html#the-exit-package",
+    "href": "lectures/lec_10_presentation.html#the-exit-package",
     "title": "Lecture X - Git and Your Project",
-    "section": "Your exit package",
-    "text": "Your exit package\nEvery acquisition comes with an exit package. Here’s yours: you don’t join MunchCorp. You spin off your own idea and build it.\n\n\nThe tools are the ones professionals use: uv and Zed have been on your laptop since Session VII, git and GitHub join them today\nThe work is a real project, built in a group of three, over the next weeks\nToday we set up the repo; the building starts here\n\n\n\nLet’s get you kitted out."
+    "section": "The exit package",
+    "text": "The exit package\nEvery acquisition comes with an exit package. Here’s yours: you don’t join MunchCorp. You spin off your own idea and build it.\n\n\nThe tools are the ones professionals use: uv and Zed have been on your laptop since Session VII, git and GitHub join them today\nThe work is a real project, built in a group of three, over the next weeks\nToday we set up the repo as the building starts there"
   },
   {
     "objectID": "lectures/lec_10_presentation.html#the-brief",
     "href": "lectures/lec_10_presentation.html#the-brief",
     "title": "Lecture X - Git and Your Project",
     "section": "The brief",
-    "text": "The brief\nOver the next weeks you build and present one real project.\n\nWork in groups of three: a pair only where the numbers require it\nDemos are in Session XIII: 7 minutes, plus 3 minutes for questions\nDeliverable: a GitHub repository link, handed in on Moodle before your own demo\nThe repo’s README.md carries a short AI-disclosure section: which tools you used, what for, and what you verified yourself\n\n\n\n\n\n\n\n\nPick something you’re actually interested in. You’ll spend real hours on it. Curiosity is the fuel that carries a project past the boring middle."
+    "text": "The brief\nOver the next weeks you build and present one real project.\n\nWork in groups of three: a pair only where the numbers require it\nDemos are in Session XIII: 7 minutes, plus 3 minutes for questions\nDeliverable: a GitHub repository link, handed in on Moodle before your own demo\nThe repo’s README.md carries a short AI-disclosure section: which tools you used, what for, and what you verified yourself\n\n\n\n\n\n\n\n\nPick something you’re actually interested in. You’ll spend real hours on it.\n\nHow it counts\n\nProject and presentation together are worth 40 of the 100 course points, judged on scope, work and presentation. Everyone in a group gets the same points\nYour commit history counts: it’s the evidence of how the work happened, which the final state alone can’t show. Commit small and often (git block, shortly)\nSessions XI and XII are supervised work sessions: I’m in the room while you build, so you can ask your questions\n\n\n\n\n\n\n\n\nThe project need not be flawless, an unfinished one can be presented too! Show that you scoped it realistically, built it in the open, and can explain your own code.\n\n\n\n\n\n\nGames you can play at the demo\nThe Beer Game, online: the supply chain classic, with computer players\nDispatch: a live map of Hamburg, and you assign the couriers\nLogistics Exchange: trade logistics stocks and oil while the news breaks\nStack the Yard: Tetris for a container terminal\nReverse the Trailer: back a truck into the dock, level by level\n\n\nPlan, load and route\nLoad the Trailer: 33 pallets, no overloaded axle, then the computer beats you\nMonday Route Sheet: a real shop’s delivery list in, a driver sheet out\nCharge When Cheap: forecast the power price, plan ten electric trucks\n\n\nSimulate a real system\nDigital twin: an animated copy of a real place, built from your own counts\nChokepoint: close Suez or Hormuz and watch Hamburg’s shipping lanes reroute\n\n\nMachines that see\nWho Owns This Box: your own photos teach a model to name the shipping line\nShelf Gap: daily shelf photos teach a model to spot where a shelf is empty\nMeasure the Parcel: one phone photo gives length, width, height and the price\nScan to Track: real DHL and Hermes labels in, your own tracking dashboard out\n\n\nYour own idea\n\nIt is the best choice, once I approve it. Make it ambitious\nTell it to me today, and we settle scope and feasibility together\nEvery idea on the menu in full, with its core, its stretch and the work for three people: Project Ideas\n\n\n\nForm your group\n\n\n\nOne rule for every group\nYou build your project with the agent, and the agent lives in Zed. So every group needs a laptop that runs Zed.\n\nZed doesn’t run on an iPad, so three iPads can’t form a group\nOnly an iPad? Join a group that has a laptop. You can still work on the project: in a GitHub codespace, or on that laptop\n\n\n\nTake ~25 minutes\nRight now:\n\nFind your two partners. No group yet? Ask me, I’ll match you\nPick a direction from the provided ideas, or bring your own\nTalk it through!\n\n\n\n\n\n\n\n\nA good outcome by the end of this block: a one-sentence pitch (“we’re building X that does Y for Z”), a name for the project, and a decision on who owns the shared repo (the owner creates it in the git block; the partners clone).\n\n\n\n\n\n\n\nYour First Repo\n\n\n\nYour setup from Session IX\nYour laptop passed the git check last week. One look before we build, in Zed’s terminal (Ctrl+`):\ngh auth status\nLogged in to github.com? You’re set.\n\n\n\n\n\n\n\nMissed Session IX, or the login has gone? Sit with a partner whose laptop works and follow along on the slides. The one-time setup takes ten minutes, at the break or with me in Session XI.\n\n\n\n\n\n\nYour project starts on GitHub\nEveryone, right now, create a practice repo. On github.com click New repository, then:\n\nName: python-practice\nPrivate; tick Add a README file\n.gitignore template: Python\n\nCreate repository, then copy the HTTPS URL from the green Code button: https://github.com/you/python-practice.git\n\nThat’s a repository: a folder git watches, with its whole history. So far it is only on GitHub.\n\n\n\nBring it down: clone\nIn Zed’s command palette (Cmd/Ctrl+Shift+P): git: clone, paste the URL, and pick the parent folder that your course code sits in, so the repo lands next to it and not inside it. Zed opens the new folder as your workspace: the file tree on the left shows README.md and .gitignore.\nThe same in the terminal. Use one way, not both:\ngit clone https://github.com/you/python-practice.git\n\n\n\n\n\n\n\nEverything from here on happens inside this folder: git, uv, the AI. If Zed ever shows an empty file tree, File → Open Folder and pick the cloned folder itself.\n\n\n\n\n\n\nMake it a Python project: uv init\nOpen Zed’s built-in terminal (Ctrl+`); it starts inside your workspace. Then:\nuv init --no-package\nuv run python main.py\nuv init adds main.py, pyproject.toml and .python-version next to the README.md and .gitignore that GitHub made. The second line runs main.py the way you run a lab, and prints Hello from python-practice!\n\n\n\n\n\n\n\n--no-package keeps it a flat folder of scripts. Without it, uv builds an installable package layout you don’t need yet. And no git init: the folder came from GitHub, it is a git repository already.\n\n\n\n\n\n\nSame agent, new folder\nPart III encourages AI, and your agent is already here: Mistral Vibe works in whatever folder Zed has open. Open the agent panel and ask:\n\nExplain what main.py does, then add a one-line comment at the top that says so. Don’t change anything else.\n\nThis time, watch the panel while it works: what does Vibe do before it shows you a change? Then read the diff before you accept it.\n\n\n\n\n\n\n\nThe disclosure rule applies from today: your repo’s README.md says which tools you used, what for, and what you checked yourself.\n\n\n\n\n\n\nInside the panel: a model in a loop\n\nMistral Vibe is an agent, wired into a loop with tools\nThe model proposes an action: read a file, edit a line, run a command\nThe tool runs it, the result feeds back, and it proposes again, until the goal is met\nNo magic, and no memory between sessions\n\n\nEvery failure mode from Sessions VI and VIII applies at every step, and a loop gives them many steps to compound in. The diff you just read is the guardrail.\n\n\n\nOne prompt, no feedback\nEthan Mollick, an entrepreneurship professor, gave Anthropic’s model Fable 5.2 a single prompt: “create the most impressive thing I can share with people when you launch.” He gave no feedback after that (Mollick 2026).\nWatch what it made, to the end\n\nMollick also found some misses. Fable’s first course website was “accurate and joyless”, and “the AI did not notice these problems itself.” Noticing stays your job (at least for now).\n\n\n\n\nGit\n\n\n\nThe five words\nGit has a small vocabulary. These five cover all this project needs:\n\nRepository: a folder git watches, with its whole history\nCommit: one saved snapshot, with a short message\nPush: send your commits up to GitHub\nPull: bring your partners’ commits down to you\nClone: make your own copy of a repo from GitHub\n\n\nTwo of them you’ve already done: the repo exists, and you cloned it. The other three now, live, in your practice repo.\n\n\n\nYour first commit\nYour folder has new files worth saving: main.py with its new comment, pyproject.toml, .python-version, and uv.lock, the exact package versions, so every laptop installs the same ones. In Zed’s command palette:\n\ngit: stage all: mark everything as part of the snapshot\ngit: commit (Cmd/Ctrl+Enter): type a message, save it\n\n\nThe same thing in the terminal, the words you’ll see everywhere:\ngit add .\ngit commit -m \"Set up the project\"\nA commit lives only on your computer. Next we send it to GitHub.\n\n\n\nPush\nBecause the folder came from GitHub, git already knows where “up” is. In Zed: git: push. In the terminal:\ngit push\n\nReload the repo page on github.com: main.py is there. That’s the commit cycle you’ll repeat all project long: edit → commit → push. Pull is the other direction; you’ll see it in a minute.\n\n\n\nYour history\nTwo commits in, the folder has a history. Read it:\ngit log --oneline\nOne line per commit, newest first: a short ID and the message. Yours sits on top of GitHub’s Initial commit. On github.com, Commits (top right of the file list) shows the same list with author and time, click a commit to see what it changed.\n\nThat answers the lawyer for every file in the repo: who changed it, when, and what it looked like before. It’s also the list I read when I grade your project. Set up the project tells me something; stuff doesn’t.\n\n\n\nThe real project repo: owner only\nNow the one that counts. Repo owner only, same recipe as the practice repo, with four extras:\n\nName it after your pitch; Private, README, Python .gitignore\nSettings → Collaborators: invite your partners and me (my GitHub username is on Moodle), so I can read it for grading\nClone it in Zed, uv init --no-package, commit, push, as before\nNeeds pandas or matplotlib? uv add pandas matplotlib in this folder: every project has its own packages\n\n\nPartners: don’t create a second project repo. You’ll be invited.\n\n\n\nYour partners join\nEach partner accepts the invitation (GitHub e-mails it) and clones the project into a fresh folder, next to the practice repo:\n\nIn Zed: git: clone, paste the project’s HTTPS URL\n\nOr in the terminal:\ngit clone https://github.com/owner/project.git\n\nCloning brings the whole project, its history and the connection to GitHub; the partners push and pull normally from the first moment.\n\n\n\nThe fifth word: pull\n\nThe owner writes your one-sentence pitch into README.md, with a heading ## AI disclosure below it, then commits and pushes\nBoth partners run git: pull (git pull --no-edit): the pitch lands on their laptops\nOne at a time: a partner adds a line under the heading, commits and pushes, and the other two pull. Then the next partner\n\n\nAll of you have now pushed and pulled in the real repo. On github.com, Commits shows every name.\n\n\n\nHow we work together\nThree people, one repo. Four habits keep it easy:\n\nPull before you start. git: pull first, every session: this alone prevents almost every problem\nCommit small and often. Clear messages, no giant commits\nA conflict? Call me. If git marks a clash, don’t fix it alone in week one. Ask me!\nNever force anything. No --force, no “force push”, ever\n\n\n\n\n\n\n\n\nEverything today (the actions, the terminal equivalents, the setup, and a cheatsheet table) lives on the Git Basics page.\n\n\n\n\n\n\n\nSend-off\n\n\n\nThe road to the finish\n\nSession XI: work session, plus teaching your agent your project’s rules\nSession XII: work session, plus why AI text now carries a watermark, and what AI means for your first job\nSession XIII: Final presentations\n\n\n\n\n\n\n\n\nBetween now and then, the repo tells your story. Commit as you go!\n\n\n\n\n\n\n\nDemo Day\n\n\n\nFormat\n\n7 minutes per group presenting, 3 minutes of questions\nAll demos are in Session XIII, and everyone in the group has to be there\nOrder: drawn at random at the start of the session, with the random module from Session VI\n\n\n\nWhat to show\n\nThe thing running. The output, and the command that produces it\nYour AI disclosure. Which tool, what for, what you verified yourself\nWhat went wrong. Where you had to step in, what cost you an hour\n\n\nYour computer, your repo, your demo: it must run in class. ## The reference pages\n\n\n\n\n\n\nThe Git Basics page is the reference version of everything we did live today. The setup from Session VII lives on Installing Python and AI Tools.\n\n\n\n\n\n\n\nLiterature\n\n\n\nReferences\n\n\nMollick, Ethan. 2026. Fable 5.2 and Jagged AGI. https://www.oneusefulthing.org/p/fable-52-and-jagged-agi."
   },
   {
     "objectID": "lectures/lec_10_presentation.html#how-it-counts",
     "href": "lectures/lec_10_presentation.html#how-it-counts",
     "title": "Lecture X - Git and Your Project",
     "section": "How it counts",
-    "text": "How it counts\n\nProject and presentation together are worth 40 of the 100 course points, judged on scope, work and presentation. Everyone in a group gets the same points\nYour commit history counts: it’s the evidence of how the work happened, which the final state alone can’t show. Commit small and often (git block, shortly)\nSessions XI and XII are supervised work sessions: I’m in the room while you build, so bring your questions\n\n\n\n\n\n\n\n\nThe project need not be flawless; an unfinished one can be presented too. Show that you scoped it realistically, built it in the open, and can explain your own code. That’s the bar."
+    "text": "How it counts\n\nProject and presentation together are worth 40 of the 100 course points, judged on scope, work and presentation. Everyone in a group gets the same points\nYour commit history counts: it’s the evidence of how the work happened, which the final state alone can’t show. Commit small and often (git block, shortly)\nSessions XI and XII are supervised work sessions: I’m in the room while you build, so you can ask your questions\n\n\n\n\n\n\n\n\nThe project need not be flawless, an unfinished one can be presented too! Show that you scoped it realistically, built it in the open, and can explain your own code."
   },
   {
     "objectID": "lectures/lec_10_presentation.html#games-you-can-play-at-the-demo",
@@ -386,7 +458,7 @@
     "href": "lectures/lec_10_presentation.html#your-own-idea",
     "title": "Lecture X - Git and Your Project",
     "section": "Your own idea",
-    "text": "Your own idea\n\nIt is the best choice, once I approve it. Make it ambitious\nBring it to me today, and we settle scope and feasibility together\nEvery idea on the menu in full, with its core, its stretch and the work for three people: Project Ideas"
+    "text": "Your own idea\n\nIt is the best choice, once I approve it. Make it ambitious\nTell it to me today, and we settle scope and feasibility together\nEvery idea on the menu in full, with its core, its stretch and the work for three people: Project Ideas"
   },
   {
     "objectID": "lectures/lec_10_presentation.html#one-rule-for-every-group",
@@ -400,56 +472,63 @@
     "href": "lectures/lec_10_presentation.html#take-25-minutes",
     "title": "Lecture X - Git and Your Project",
     "section": "Take ~25 minutes",
-    "text": "Take ~25 minutes\nRight now, in the room:\n\nFind your two partners. No group yet? Come to the front, I’ll match you\nPick a direction from the menu, or bring your own\nTalk it through: what’s the core you can definitely finish, what’s a bonus if time allows?\n\n\n\n\n\n\n\n\nA good outcome by the end of this block: a one-sentence pitch (“we’re building X that does Y for Z”), a name for the project, and a decision on who owns the shared repo (the owner creates it in the git block; the partners clone). The sentence keeps you honest about scope; the name goes on the repo in a minute."
+    "text": "Take ~25 minutes\nRight now:\n\nFind your two partners. No group yet? Ask me, I’ll match you\nPick a direction from the provided ideas, or bring your own\nTalk it through!\n\n\n\n\n\n\n\n\nA good outcome by the end of this block: a one-sentence pitch (“we’re building X that does Y for Z”), a name for the project, and a decision on who owns the shared repo (the owner creates it in the git block; the partners clone)."
   },
   {
     "objectID": "lectures/lec_10_presentation.html#your-setup-from-session-ix",
     "href": "lectures/lec_10_presentation.html#your-setup-from-session-ix",
     "title": "Lecture X - Git and Your Project",
     "section": "Your setup from Session IX",
-    "text": "Your setup from Session IX\nYour laptop passed the git check last week. One look before we build, in Zed’s terminal (Ctrl+`):\ngh auth status\nLogged in to github.com? You’re set.\n\n\n\n\n\n\n\nMissed Session IX, or the login has gone? Don’t burn the session fighting it. Sit with a partner whose laptop works and follow along on the slides. The one-time setup takes ten minutes, at the break or with me in Session XI. Nobody’s project stalls on a login."
+    "text": "Your setup from Session IX\nYour laptop passed the git check last week. One look before we build, in Zed’s terminal (Ctrl+`):\ngh auth status\nLogged in to github.com? You’re set.\n\n\n\n\n\n\n\nMissed Session IX, or the login has gone? Sit with a partner whose laptop works and follow along on the slides. The one-time setup takes ten minutes, at the break or with me in Session XI."
   },
   {
     "objectID": "lectures/lec_10_presentation.html#your-project-starts-on-github",
     "href": "lectures/lec_10_presentation.html#your-project-starts-on-github",
     "title": "Lecture X - Git and Your Project",
     "section": "Your project starts on GitHub",
-    "text": "Your project starts on GitHub\nEveryone, right now, a practice repo. On github.com click New repository, then:\n\nName: python-practice\nPrivate; tick Add a README file\n.gitignore template: Python\n\nCreate repository, then copy the HTTPS URL from the green Code button: https://github.com/you/python-practice.git\n\nThat’s a repository: a folder git watches, with its whole history. So far it lives only on GitHub. Next we bring it down."
+    "text": "Your project starts on GitHub\nEveryone, right now, create a practice repo. On github.com click New repository, then:\n\nName: python-practice\nPrivate; tick Add a README file\n.gitignore template: Python\n\nCreate repository, then copy the HTTPS URL from the green Code button: https://github.com/you/python-practice.git\n\nThat’s a repository: a folder git watches, with its whole history. So far it is only on GitHub."
   },
   {
     "objectID": "lectures/lec_10_presentation.html#bring-it-down-clone",
     "href": "lectures/lec_10_presentation.html#bring-it-down-clone",
     "title": "Lecture X - Git and Your Project",
     "section": "Bring it down: clone",
-    "text": "Bring it down: clone\nIn Zed’s command palette (Cmd/Ctrl+Shift+P): git: clone, paste the URL, and pick the folder that python-labs sits in, so the repo lands next to python-labs and not inside it. Zed opens the new folder as your workspace: the file tree on the left shows README.md and .gitignore.\nThe same in the terminal. Use one way, not both:\ngit clone https://github.com/you/python-practice.git\n\n\n\n\n\n\n\nEverything from here on happens inside this folder: git, uv, the AI. If Zed ever shows an empty file tree, File → Open Folder and pick the cloned folder itself, not the one above it."
+    "text": "Bring it down: clone\nIn Zed’s command palette (Cmd/Ctrl+Shift+P): git: clone, paste the URL, and pick the parent folder that your course code sits in, so the repo lands next to it and not inside it. Zed opens the new folder as your workspace: the file tree on the left shows README.md and .gitignore.\nThe same in the terminal. Use one way, not both:\ngit clone https://github.com/you/python-practice.git\n\n\n\n\n\n\n\nEverything from here on happens inside this folder: git, uv, the AI. If Zed ever shows an empty file tree, File → Open Folder and pick the cloned folder itself."
   },
   {
     "objectID": "lectures/lec_10_presentation.html#make-it-a-python-project-uv-init",
     "href": "lectures/lec_10_presentation.html#make-it-a-python-project-uv-init",
     "title": "Lecture X - Git and Your Project",
     "section": "Make it a Python project: uv init",
-    "text": "Make it a Python project: uv init\nOpen Zed’s built-in terminal (Ctrl+`); it starts inside your workspace. Then:\nuv init --no-package\nuv run python main.py\nuv init adds main.py, pyproject.toml and .python-version next to the README.md and .gitignore that GitHub made. The second line runs main.py the way you run a lab, and prints Hello from python-practice!\n\n\n\n\n\n\n\n--no-package keeps it a flat folder of scripts, like python-labs, which the same command made in Session VII; without it, uv builds an installable package layout you don’t need yet. And no git init: the folder came from GitHub, it is a git repository already."
+    "text": "Make it a Python project: uv init\nOpen Zed’s built-in terminal (Ctrl+`); it starts inside your workspace. Then:\nuv init --no-package\nuv run python main.py\nuv init adds main.py, pyproject.toml and .python-version next to the README.md and .gitignore that GitHub made. The second line runs main.py the way you run a lab, and prints Hello from python-practice!\n\n\n\n\n\n\n\n--no-package keeps it a flat folder of scripts. Without it, uv builds an installable package layout you don’t need yet. And no git init: the folder came from GitHub, it is a git repository already."
   },
   {
     "objectID": "lectures/lec_10_presentation.html#same-agent-new-folder",
     "href": "lectures/lec_10_presentation.html#same-agent-new-folder",
     "title": "Lecture X - Git and Your Project",
     "section": "Same agent, new folder",
-    "text": "Same agent, new folder\nPart III encourages AI, and your agent is already here: Mistral Vibe works in whatever folder Zed has open. Open the agent panel and ask:\n\nExplain what main.py does, then add a one-line comment at the top that says so. Don’t change anything else.\n\nThis time, watch the panel while it works: what does Vibe do before it shows you a change? Then read the diff before you accept it, as always.\n\n\n\n\n\n\n\nThe disclosure rule applies from today: your repo’s README.md says which tools you used, what for, and what you checked yourself."
+    "text": "Same agent, new folder\nPart III encourages AI, and your agent is already here: Mistral Vibe works in whatever folder Zed has open. Open the agent panel and ask:\n\nExplain what main.py does, then add a one-line comment at the top that says so. Don’t change anything else.\n\nThis time, watch the panel while it works: what does Vibe do before it shows you a change? Then read the diff before you accept it.\n\n\n\n\n\n\n\nThe disclosure rule applies from today: your repo’s README.md says which tools you used, what for, and what you checked yourself."
   },
   {
     "objectID": "lectures/lec_10_presentation.html#inside-the-panel-a-model-in-a-loop",
     "href": "lectures/lec_10_presentation.html#inside-the-panel-a-model-in-a-loop",
     "title": "Lecture X - Git and Your Project",
     "section": "Inside the panel: a model in a loop",
-    "text": "Inside the panel: a model in a loop\n\nMistral Vibe is an agent: the language model you met in Session VI, wired into a loop with tools\nThe model proposes an action: read a file, edit a line, run a command\nThe tool runs it, the result feeds back, and it proposes again, until the goal is met\nNo magic, and no memory between sessions\n\n\nEvery failure mode from Sessions VI and VIII applies at every step, and a loop gives them many steps to compound in. The diff you just read is the guardrail."
+    "text": "Inside the panel: a model in a loop\n\nMistral Vibe is an agent, wired into a loop with tools\nThe model proposes an action: read a file, edit a line, run a command\nThe tool runs it, the result feeds back, and it proposes again, until the goal is met\nNo magic, and no memory between sessions\n\n\nEvery failure mode from Sessions VI and VIII applies at every step, and a loop gives them many steps to compound in. The diff you just read is the guardrail."
+  },
+  {
+    "objectID": "lectures/lec_10_presentation.html#one-prompt-no-feedback",
+    "href": "lectures/lec_10_presentation.html#one-prompt-no-feedback",
+    "title": "Lecture X - Git and Your Project",
+    "section": "One prompt, no feedback",
+    "text": "One prompt, no feedback\nEthan Mollick, an entrepreneurship professor, gave Anthropic’s model Fable 5.2 a single prompt: “create the most impressive thing I can share with people when you launch.” He gave no feedback after that (Mollick 2026).\nWatch what it made, to the end\n\nMollick also found some misses. Fable’s first course website was “accurate and joyless”, and “the AI did not notice these problems itself.” Noticing stays your job (at least for now)."
   },
   {
     "objectID": "lectures/lec_10_presentation.html#the-five-words",
     "href": "lectures/lec_10_presentation.html#the-five-words",
     "title": "Lecture X - Git and Your Project",
     "section": "The five words",
-    "text": "The five words\nGit has a small vocabulary. These five cover all this project needs:\n\nRepository: a folder git watches, with its whole history\nCommit: one saved snapshot, with a short message\nPush: send your commits up to GitHub\nPull: bring your partners’ commits down to you\nClone: make your own copy of a repo from GitHub\n\n\nTwo of them you’ve already done: the repo exists, and you cloned it. The other three now, live, in your practice repo. Mistakes are cheap when the repo is five minutes old."
+    "text": "The five words\nGit has a small vocabulary. These five cover all this project needs:\n\nRepository: a folder git watches, with its whole history\nCommit: one saved snapshot, with a short message\nPush: send your commits up to GitHub\nPull: bring your partners’ commits down to you\nClone: make your own copy of a repo from GitHub\n\n\nTwo of them you’ve already done: the repo exists, and you cloned it. The other three now, live, in your practice repo."
   },
   {
     "objectID": "lectures/lec_10_presentation.html#your-first-commit",
@@ -470,7 +549,7 @@
     "href": "lectures/lec_10_presentation.html#your-history",
     "title": "Lecture X - Git and Your Project",
     "section": "Your history",
-    "text": "Your history\nTwo commits in, the folder has a history. Read it:\ngit log --oneline\nOne line per commit, newest first: a short ID and the message. Yours sits on top of GitHub’s Initial commit. On github.com, Commits (top right of the file list) shows the same list with author and time; click a commit to see what it changed.\n\nThat answers the lawyer for every file in the repo: who changed it, when, and what it looked like before. It’s also the list I read when I grade your project. Set up the project tells me something; stuff doesn’t."
+    "text": "Your history\nTwo commits in, the folder has a history. Read it:\ngit log --oneline\nOne line per commit, newest first: a short ID and the message. Yours sits on top of GitHub’s Initial commit. On github.com, Commits (top right of the file list) shows the same list with author and time, click a commit to see what it changed.\n\nThat answers the lawyer for every file in the repo: who changed it, when, and what it looked like before. It’s also the list I read when I grade your project. Set up the project tells me something; stuff doesn’t."
   },
   {
     "objectID": "lectures/lec_10_presentation.html#the-real-project-repo-owner-only",
@@ -491,21 +570,21 @@
     "href": "lectures/lec_10_presentation.html#the-fifth-word-pull",
     "title": "Lecture X - Git and Your Project",
     "section": "The fifth word: pull",
-    "text": "The fifth word: pull\n\nThe owner writes your one-sentence pitch into README.md, with a heading ## AI disclosure below it, then commits and pushes\nBoth partners run git: pull (git pull --no-edit): the pitch lands on their laptops\nOne at a time: a partner adds a line under the heading, commits and pushes, and the other two pull. Then the next partner\n\n\nAll of you have now pushed and pulled in the real repo. On github.com, Commits shows every name.\n\n\n\n\n\n\n\n\nClock ran out? This step can wait: inviting and cloning works just as well at the start of Session XI, with me in the room."
+    "text": "The fifth word: pull\n\nThe owner writes your one-sentence pitch into README.md, with a heading ## AI disclosure below it, then commits and pushes\nBoth partners run git: pull (git pull --no-edit): the pitch lands on their laptops\nOne at a time: a partner adds a line under the heading, commits and pushes, and the other two pull. Then the next partner\n\n\nAll of you have now pushed and pulled in the real repo. On github.com, Commits shows every name."
   },
   {
     "objectID": "lectures/lec_10_presentation.html#how-we-work-together",
     "href": "lectures/lec_10_presentation.html#how-we-work-together",
     "title": "Lecture X - Git and Your Project",
     "section": "How we work together",
-    "text": "How we work together\nThree people, one repo. Four habits keep it painless:\n\nPull before you start. git: pull first, every session: this alone prevents almost every problem\nCommit small and often. Clear messages, no giant commits\nA conflict? Call me. If git marks a clash, don’t fix it alone in week one. Bring it to class\nNever force anything. No --force, no “force push”, ever\n\n\n\n\n\n\n\n\nEverything today (the actions, the terminal equivalents, the setup, and a cheatsheet table) lives on the Git Basics page. When today’s follow-along is a fading memory, that’s the page you reopen."
+    "text": "How we work together\nThree people, one repo. Four habits keep it easy:\n\nPull before you start. git: pull first, every session: this alone prevents almost every problem\nCommit small and often. Clear messages, no giant commits\nA conflict? Call me. If git marks a clash, don’t fix it alone in week one. Ask me!\nNever force anything. No --force, no “force push”, ever\n\n\n\n\n\n\n\n\nEverything today (the actions, the terminal equivalents, the setup, and a cheatsheet table) lives on the Git Basics page."
   },
   {
     "objectID": "lectures/lec_10_presentation.html#the-road-to-the-finish",
     "href": "lectures/lec_10_presentation.html#the-road-to-the-finish",
     "title": "Lecture X - Git and Your Project",
     "section": "The road to the finish",
-    "text": "The road to the finish\n\nSession XI: work session, plus one short segment: why AI text now carries a watermark, and why that makes your README disclosure standard practice\nSession XII: work session, plus teaching your agent your project’s rules\nSession XIII: Demo Day, and where this course hands you over to your thesis\n\n\n\n\n\n\n\n\nBetween now and then, the repo tells your story. Commit as you go. A steady history is worth more than a heroic final night."
+    "text": "The road to the finish\n\nSession XI: work session, plus teaching your agent your project’s rules\nSession XII: work session, plus why AI text now carries a watermark, and what AI means for your first job\nSession XIII: Final presentations\n\n\n\n\n\n\n\n\nBetween now and then, the repo tells your story. Commit as you go!"
   },
   {
     "objectID": "lectures/lec_10_presentation.html#format",
@@ -519,14 +598,14 @@
     "href": "lectures/lec_10_presentation.html#what-to-show",
     "title": "Lecture X - Git and Your Project",
     "section": "What to show",
-    "text": "What to show\n\nThe thing running. The output, and the command that produces it\nHow you worked. Open the repo: the commit history instead of describing it\nYour AI disclosure. Which tool, what for, what you verified yourself\nWhat went wrong. Where you had to step in, what cost you an hour\n\n\nYour machine, your repo, your demo: it must run from the clone on the room’s projector."
+    "text": "What to show\n\nThe thing running. The output, and the command that produces it\nYour AI disclosure. Which tool, what for, what you verified yourself\nWhat went wrong. Where you had to step in, what cost you an hour\n\n\nYour computer, your repo, your demo: it must run in class. ## The reference pages\n\n\n\n\n\n\nThe Git Basics page is the reference version of everything we did live today. The setup from Session VII lives on Installing Python and AI Tools."
   },
   {
-    "objectID": "lectures/lec_10_presentation.html#the-reference-pages",
-    "href": "lectures/lec_10_presentation.html#the-reference-pages",
+    "objectID": "lectures/lec_10_presentation.html#references",
+    "href": "lectures/lec_10_presentation.html#references",
     "title": "Lecture X - Git and Your Project",
-    "section": "The reference pages",
-    "text": "The reference pages\n\n\n\n\n\n\nThe Git Basics page is the reference version of everything we did live today. The setup from Session VII lives on Installing Python and AI Tools."
+    "section": "References",
+    "text": "References\n\n\nMollick, Ethan. 2026. Fable 5.2 and Jagged AGI. https://www.oneusefulthing.org/p/fable-52-and-jagged-agi."
   },
   {
     "objectID": "lectures/lec_10_projects.html",
@@ -555,7 +634,7 @@
     "href": "lectures/lec_10_projects.html#the-deal-closes",
     "title": "Lecture X - Git and Your Project",
     "section": "The deal closes",
-    "text": "The deal closes\nThe checkpoint is behind you, and so, it turns out, is the startup. Overnight rival chain MunchCorp stopped competing and made an offer: they’re buying the company. The investor read the term sheet, did the math against her own, and told you to take it: her money would have bought growth, theirs buys the whole shop.\nLawyers will tell you deals close on the numbers. This one closed on yours. The clean order data you pulled together in the data room (Session VIII) and the pitch deck you built from it (Session IX) are exactly what convinced the acquirer the books were real.\nNo cliff-edge growth chart with a chopped axis. Just data that survived a second look. That’s why they signed.",
+    "text": "The deal closes\nThe checkpoint is behind you, and so is the startup. Overnight rival chain MunchCorp stopped competing and made an offer: they’re buying the company. The investor read the term sheet, did the math against her own, and told you to take it: her money would have bought growth, theirs buys the whole shop.\nLawyers will tell you deals close on the numbers. This one closed on yours. The clean order data you pulled together in the data room (Session VIII) and the pitch deck you built from it (Session IX) are exactly what convinced the acquirer the books were real.\nNo cliff-edge growth chart with a chopped axis. Just data that survived a second look. That’s why they signed.",
     "crumbs": [
       "10 Projects",
       "Lecture"
@@ -566,18 +645,18 @@
     "href": "lectures/lec_10_projects.html#the-handover",
     "title": "Lecture X - Git and Your Project",
     "section": "The handover",
-    "text": "The handover\nTobi’s job today is to hand over the data room: the folder with every file the company ever built. You know that folder. It’s python-labs, two labs later.\nMunchCorp’s lawyer opens it and asks two questions:\n\ngrowth.png: is this the chart the investor saw, or has it changed?\norders_messy.csv: who changed it after Tobi’s export, and what?\n\nNobody can say. A folder shows what is in it now, and nothing about how it got there. Today you give a folder a history, with a tool called git.",
+    "text": "The handover\nTobi’s job today is to hand over the data room: the folder with every file the company ever built.\nMunchCorp’s lawyer opens it and asks two questions:\n\ngrowth.png: is this the chart the investor saw, or has it changed?\norders_messy.csv: who changed it after Tobi’s export, and what?\n\nNobody can say. A folder shows what is in it now, and nothing about how it got there. Today you give a folder a history, with a tool called git.",
     "crumbs": [
       "10 Projects",
       "Lecture"
     ]
   },
   {
-    "objectID": "lectures/lec_10_projects.html#your-exit-package",
-    "href": "lectures/lec_10_projects.html#your-exit-package",
+    "objectID": "lectures/lec_10_projects.html#the-exit-package",
+    "href": "lectures/lec_10_projects.html#the-exit-package",
     "title": "Lecture X - Git and Your Project",
-    "section": "Your exit package",
-    "text": "Your exit package\nEvery acquisition comes with an exit package. Here’s yours: you don’t join MunchCorp. You spin off your own idea and build it.\n\nThe tools are the ones professionals use: uv and Zed have been on your laptop since Session VII, git and GitHub join them today\nThe work is a real project, built in a group of three, over the next weeks\nToday we set up the repo; the building starts here\n\nLet’s get you kitted out.",
+    "section": "The exit package",
+    "text": "The exit package\nEvery acquisition comes with an exit package. Here’s yours: you don’t join MunchCorp. You spin off your own idea and build it.\n\nThe tools are the ones professionals use: uv and Zed have been on your laptop since Session VII, git and GitHub join them today\nThe work is a real project, built in a group of three, over the next weeks\nToday we set up the repo as the building starts there",
     "crumbs": [
       "10 Projects",
       "Lecture"
@@ -588,7 +667,7 @@
     "href": "lectures/lec_10_projects.html#the-brief",
     "title": "Lecture X - Git and Your Project",
     "section": "The brief",
-    "text": "The brief\nOver the next weeks you build and present one real project.\n\nWork in groups of three: a pair only where the numbers require it\nDemos are in Session XIII: 7 minutes, plus 3 minutes for questions\nDeliverable: a GitHub repository link, handed in on Moodle before your own demo\nThe repo’s README.md carries a short AI-disclosure section: which tools you used, what for, and what you verified yourself\n\n\n\n\n\n\n\nPick something you’re actually interested in. You’ll spend real hours on it. Curiosity is the fuel that carries a project past the boring middle.",
+    "text": "The brief\nOver the next weeks you build and present one real project.\n\nWork in groups of three: a pair only where the numbers require it\nDemos are in Session XIII: 7 minutes, plus 3 minutes for questions\nDeliverable: a GitHub repository link, handed in on Moodle before your own demo\nThe repo’s README.md carries a short AI-disclosure section: which tools you used, what for, and what you verified yourself\n\n\n\n\n\n\n\nPick something you’re actually interested in. You’ll spend real hours on it.\n\nHow it counts\n\nProject and presentation together are worth 40 of the 100 course points, judged on scope, work and presentation. Everyone in a group gets the same points\nYour commit history counts: it’s the evidence of how the work happened, which the final state alone can’t show. Commit small and often (git block, shortly)\nSessions XI and XII are supervised work sessions: I’m in the room while you build, so you can ask your questions\n\n\n\n\n\n\n\nThe project need not be flawless, an unfinished one can be presented too! Show that you scoped it realistically, built it in the open, and can explain your own code.\n\n\n\n\n\nGames you can play at the demo\nThe Beer Game, online: the supply chain classic, with computer players\nDispatch: a live map of Hamburg, and you assign the couriers\nLogistics Exchange: trade logistics stocks and oil while the news breaks\nStack the Yard: Tetris for a container terminal\nReverse the Trailer: back a truck into the dock, level by level\n\n\nPlan, load and route\nLoad the Trailer: 33 pallets, no overloaded axle, then the computer beats you\nMonday Route Sheet: a real shop’s delivery list in, a driver sheet out\nCharge When Cheap: forecast the power price, plan ten electric trucks\n\n\nSimulate a real system\nDigital twin: an animated copy of a real place, built from your own counts\nChokepoint: close Suez or Hormuz and watch Hamburg’s shipping lanes reroute\n\n\nMachines that see\nWho Owns This Box: your own photos teach a model to name the shipping line\nShelf Gap: daily shelf photos teach a model to spot where a shelf is empty\nMeasure the Parcel: one phone photo gives length, width, height and the price\nScan to Track: real DHL and Hermes labels in, your own tracking dashboard out\n\n\nYour own idea\n\nIt is the best choice, once I approve it. Make it ambitious\nTell it to me today, and we settle scope and feasibility together\nEvery idea on the menu in full, with its core, its stretch and the work for three people: Project Ideas\n\n\n\nForm your group\n\nOne rule for every group\nYou build your project with the agent, and the agent lives in Zed. So every group needs a laptop that runs Zed.\n\nZed doesn’t run on an iPad, so three iPads can’t form a group\nOnly an iPad? Join a group that has a laptop. You can still work on the project: in a GitHub codespace, or on that laptop\n\n\n\nTake ~25 minutes\nRight now:\n\nFind your two partners. No group yet? Ask me, I’ll match you\nPick a direction from the provided ideas, or bring your own\nTalk it through!\n\n\n\n\n\n\n\nA good outcome by the end of this block: a one-sentence pitch (“we’re building X that does Y for Z”), a name for the project, and a decision on who owns the shared repo (the owner creates it in the git block; the partners clone).\n\n\n\n\n\n\nYour First Repo\n\nYour setup from Session IX\nYour laptop passed the git check last week. One look before we build, in Zed’s terminal (Ctrl+`):\ngh auth status\nLogged in to github.com? You’re set.\n\n\n\n\n\n\nMissed Session IX, or the login has gone? Sit with a partner whose laptop works and follow along on the slides. The one-time setup takes ten minutes, at the break or with me in Session XI.\n\n\n\n\n\nYour project starts on GitHub\nEveryone, right now, create a practice repo. On github.com click New repository, then:\n\nName: python-practice\nPrivate; tick Add a README file\n.gitignore template: Python\n\nCreate repository, then copy the HTTPS URL from the green Code button: https://github.com/you/python-practice.git\nThat’s a repository: a folder git watches, with its whole history. So far it is only on GitHub.\n\n\nBring it down: clone\nIn Zed’s command palette (Cmd/Ctrl+Shift+P): git: clone, paste the URL, and pick the parent folder that your course code sits in, so the repo lands next to it and not inside it. Zed opens the new folder as your workspace: the file tree on the left shows README.md and .gitignore.\nThe same in the terminal. Use one way, not both:\ngit clone https://github.com/you/python-practice.git\n\n\n\n\n\n\nEverything from here on happens inside this folder: git, uv, the AI. If Zed ever shows an empty file tree, File → Open Folder and pick the cloned folder itself.\n\n\n\n\n\nMake it a Python project: uv init\nOpen Zed’s built-in terminal (Ctrl+`); it starts inside your workspace. Then:\nuv init --no-package\nuv run python main.py\nuv init adds main.py, pyproject.toml and .python-version next to the README.md and .gitignore that GitHub made. The second line runs main.py the way you run a lab, and prints Hello from python-practice!\n\n\n\n\n\n\n--no-package keeps it a flat folder of scripts. Without it, uv builds an installable package layout you don’t need yet. And no git init: the folder came from GitHub, it is a git repository already.\n\n\n\n\n\nSame agent, new folder\nPart III encourages AI, and your agent is already here: Mistral Vibe works in whatever folder Zed has open. Open the agent panel and ask:\n\nExplain what main.py does, then add a one-line comment at the top that says so. Don’t change anything else.\n\nThis time, watch the panel while it works: what does Vibe do before it shows you a change? Then read the diff before you accept it.\n\n\n\n\n\n\nThe disclosure rule applies from today: your repo’s README.md says which tools you used, what for, and what you checked yourself.\n\n\n\n\n\nInside the panel: a model in a loop\n\nMistral Vibe is an agent, wired into a loop with tools\nThe model proposes an action: read a file, edit a line, run a command\nThe tool runs it, the result feeds back, and it proposes again, until the goal is met\nNo magic, and no memory between sessions\n\nEvery failure mode from Sessions VI and VIII applies at every step, and a loop gives them many steps to compound in. The diff you just read is the guardrail.\n\n\nOne prompt, no feedback\nEthan Mollick, an entrepreneurship professor, gave Anthropic’s model Fable 5.2 a single prompt: “create the most impressive thing I can share with people when you launch.” He gave no feedback after that (Mollick 2026).\nWatch what it made, to the end\nMollick also found some misses. Fable’s first course website was “accurate and joyless”, and “the AI did not notice these problems itself.” Noticing stays your job (at least for now).\n\n\n\nGit\n\nThe five words\nGit has a small vocabulary. These five cover all this project needs:\n\nRepository: a folder git watches, with its whole history\nCommit: one saved snapshot, with a short message\nPush: send your commits up to GitHub\nPull: bring your partners’ commits down to you\nClone: make your own copy of a repo from GitHub\n\nTwo of them you’ve already done: the repo exists, and you cloned it. The other three now, live, in your practice repo.\n\n\nYour first commit\nYour folder has new files worth saving: main.py with its new comment, pyproject.toml, .python-version, and uv.lock, the exact package versions, so every laptop installs the same ones. In Zed’s command palette:\n\ngit: stage all: mark everything as part of the snapshot\ngit: commit (Cmd/Ctrl+Enter): type a message, save it\n\nThe same thing in the terminal, the words you’ll see everywhere:\ngit add .\ngit commit -m \"Set up the project\"\nA commit lives only on your computer. Next we send it to GitHub.\n\n\nPush\nBecause the folder came from GitHub, git already knows where “up” is. In Zed: git: push. In the terminal:\ngit push\nReload the repo page on github.com: main.py is there. That’s the commit cycle you’ll repeat all project long: edit → commit → push. Pull is the other direction; you’ll see it in a minute.\n\n\nYour history\nTwo commits in, the folder has a history. Read it:\ngit log --oneline\nOne line per commit, newest first: a short ID and the message. Yours sits on top of GitHub’s Initial commit. On github.com, Commits (top right of the file list) shows the same list with author and time, click a commit to see what it changed.\nThat answers the lawyer for every file in the repo: who changed it, when, and what it looked like before. It’s also the list I read when I grade your project. Set up the project tells me something; stuff doesn’t.\n\n\nThe real project repo: owner only\nNow the one that counts. Repo owner only, same recipe as the practice repo, with four extras:\n\nName it after your pitch; Private, README, Python .gitignore\nSettings → Collaborators: invite your partners and me (my GitHub username is on Moodle), so I can read it for grading\nClone it in Zed, uv init --no-package, commit, push, as before\nNeeds pandas or matplotlib? uv add pandas matplotlib in this folder: every project has its own packages\n\nPartners: don’t create a second project repo. You’ll be invited.\n\n\nYour partners join\nEach partner accepts the invitation (GitHub e-mails it) and clones the project into a fresh folder, next to the practice repo:\n\nIn Zed: git: clone, paste the project’s HTTPS URL\n\nOr in the terminal:\ngit clone https://github.com/owner/project.git\nCloning brings the whole project, its history and the connection to GitHub; the partners push and pull normally from the first moment.\n\n\nThe fifth word: pull\n\nThe owner writes your one-sentence pitch into README.md, with a heading ## AI disclosure below it, then commits and pushes\nBoth partners run git: pull (git pull --no-edit): the pitch lands on their laptops\nOne at a time: a partner adds a line under the heading, commits and pushes, and the other two pull. Then the next partner\n\nAll of you have now pushed and pulled in the real repo. On github.com, Commits shows every name.\n\n\nHow we work together\nThree people, one repo. Four habits keep it easy:\n\nPull before you start. git: pull first, every session: this alone prevents almost every problem\nCommit small and often. Clear messages, no giant commits\nA conflict? Call me. If git marks a clash, don’t fix it alone in week one. Ask me!\nNever force anything. No --force, no “force push”, ever\n\n\n\n\n\n\n\nEverything today (the actions, the terminal equivalents, the setup, and a cheatsheet table) lives on the Git Basics page.\n\n\n\n\n\n\nSend-off\n\nThe road to the finish\n\nSession XI: work session, plus teaching your agent your project’s rules\nSession XII: work session, plus why AI text now carries a watermark, and what AI means for your first job\nSession XIII: Final presentations\n\n\n\n\n\n\n\nBetween now and then, the repo tells your story. Commit as you go!\n\n\n\n\n\n\nDemo Day\n\nFormat\n\n7 minutes per group presenting, 3 minutes of questions\nAll demos are in Session XIII, and everyone in the group has to be there\nOrder: drawn at random at the start of the session, with the random module from Session VI\n\n\n\nWhat to show\n\nThe thing running. The output, and the command that produces it\nYour AI disclosure. Which tool, what for, what you verified yourself\nWhat went wrong. Where you had to step in, what cost you an hour\n\nYour computer, your repo, your demo: it must run in class. ## The reference pages\n\n\n\n\n\n\nThe Git Basics page is the reference version of everything we did live today. The setup from Session VII lives on Installing Python and AI Tools.\n\n\n\n\n\n\nLiterature\n\nReferences\n\n\nMollick, Ethan. 2026. Fable 5.2 and Jagged AGI. https://www.oneusefulthing.org/p/fable-52-and-jagged-agi.",
     "crumbs": [
       "10 Projects",
       "Lecture"
@@ -599,7 +678,7 @@
     "href": "lectures/lec_10_projects.html#how-it-counts",
     "title": "Lecture X - Git and Your Project",
     "section": "How it counts",
-    "text": "How it counts\n\nProject and presentation together are worth 40 of the 100 course points, judged on scope, work and presentation. Everyone in a group gets the same points\nYour commit history counts: it’s the evidence of how the work happened, which the final state alone can’t show. Commit small and often (git block, shortly)\nSessions XI and XII are supervised work sessions: I’m in the room while you build, so bring your questions\n\n\n\n\n\n\n\nThe project need not be flawless; an unfinished one can be presented too. Show that you scoped it realistically, built it in the open, and can explain your own code. That’s the bar.",
+    "text": "How it counts\n\nProject and presentation together are worth 40 of the 100 course points, judged on scope, work and presentation. Everyone in a group gets the same points\nYour commit history counts: it’s the evidence of how the work happened, which the final state alone can’t show. Commit small and often (git block, shortly)\nSessions XI and XII are supervised work sessions: I’m in the room while you build, so you can ask your questions\n\n\n\n\n\n\n\nThe project need not be flawless, an unfinished one can be presented too! Show that you scoped it realistically, built it in the open, and can explain your own code.",
     "crumbs": [
       "10 Projects",
       "Lecture"
@@ -654,7 +733,7 @@
     "href": "lectures/lec_10_projects.html#your-own-idea",
     "title": "Lecture X - Git and Your Project",
     "section": "Your own idea",
-    "text": "Your own idea\n\nIt is the best choice, once I approve it. Make it ambitious\nBring it to me today, and we settle scope and feasibility together\nEvery idea on the menu in full, with its core, its stretch and the work for three people: Project Ideas",
+    "text": "Your own idea\n\nIt is the best choice, once I approve it. Make it ambitious\nTell it to me today, and we settle scope and feasibility together\nEvery idea on the menu in full, with its core, its stretch and the work for three people: Project Ideas",
     "crumbs": [
       "10 Projects",
       "Lecture"
@@ -676,7 +755,7 @@
     "href": "lectures/lec_10_projects.html#take-25-minutes",
     "title": "Lecture X - Git and Your Project",
     "section": "Take ~25 minutes",
-    "text": "Take ~25 minutes\nRight now, in the room:\n\nFind your two partners. No group yet? Come to the front, I’ll match you\nPick a direction from the menu, or bring your own\nTalk it through: what’s the core you can definitely finish, what’s a bonus if time allows?\n\n\n\n\n\n\n\nA good outcome by the end of this block: a one-sentence pitch (“we’re building X that does Y for Z”), a name for the project, and a decision on who owns the shared repo (the owner creates it in the git block; the partners clone). The sentence keeps you honest about scope; the name goes on the repo in a minute.",
+    "text": "Take ~25 minutes\nRight now:\n\nFind your two partners. No group yet? Ask me, I’ll match you\nPick a direction from the provided ideas, or bring your own\nTalk it through!\n\n\n\n\n\n\n\nA good outcome by the end of this block: a one-sentence pitch (“we’re building X that does Y for Z”), a name for the project, and a decision on who owns the shared repo (the owner creates it in the git block; the partners clone).",
     "crumbs": [
       "10 Projects",
       "Lecture"
@@ -687,7 +766,7 @@
     "href": "lectures/lec_10_projects.html#your-setup-from-session-ix",
     "title": "Lecture X - Git and Your Project",
     "section": "Your setup from Session IX",
-    "text": "Your setup from Session IX\nYour laptop passed the git check last week. One look before we build, in Zed’s terminal (Ctrl+`):\ngh auth status\nLogged in to github.com? You’re set.\n\n\n\n\n\n\nMissed Session IX, or the login has gone? Don’t burn the session fighting it. Sit with a partner whose laptop works and follow along on the slides. The one-time setup takes ten minutes, at the break or with me in Session XI. Nobody’s project stalls on a login.",
+    "text": "Your setup from Session IX\nYour laptop passed the git check last week. One look before we build, in Zed’s terminal (Ctrl+`):\ngh auth status\nLogged in to github.com? You’re set.\n\n\n\n\n\n\nMissed Session IX, or the login has gone? Sit with a partner whose laptop works and follow along on the slides. The one-time setup takes ten minutes, at the break or with me in Session XI.",
     "crumbs": [
       "10 Projects",
       "Lecture"
@@ -698,7 +777,7 @@
     "href": "lectures/lec_10_projects.html#your-project-starts-on-github",
     "title": "Lecture X - Git and Your Project",
     "section": "Your project starts on GitHub",
-    "text": "Your project starts on GitHub\nEveryone, right now, a practice repo. On github.com click New repository, then:\n\nName: python-practice\nPrivate; tick Add a README file\n.gitignore template: Python\n\nCreate repository, then copy the HTTPS URL from the green Code button: https://github.com/you/python-practice.git\nThat’s a repository: a folder git watches, with its whole history. So far it lives only on GitHub. Next we bring it down.",
+    "text": "Your project starts on GitHub\nEveryone, right now, create a practice repo. On github.com click New repository, then:\n\nName: python-practice\nPrivate; tick Add a README file\n.gitignore template: Python\n\nCreate repository, then copy the HTTPS URL from the green Code button: https://github.com/you/python-practice.git\nThat’s a repository: a folder git watches, with its whole history. So far it is only on GitHub.",
     "crumbs": [
       "10 Projects",
       "Lecture"
@@ -709,7 +788,7 @@
     "href": "lectures/lec_10_projects.html#bring-it-down-clone",
     "title": "Lecture X - Git and Your Project",
     "section": "Bring it down: clone",
-    "text": "Bring it down: clone\nIn Zed’s command palette (Cmd/Ctrl+Shift+P): git: clone, paste the URL, and pick the folder that python-labs sits in, so the repo lands next to python-labs and not inside it. Zed opens the new folder as your workspace: the file tree on the left shows README.md and .gitignore.\nThe same in the terminal. Use one way, not both:\ngit clone https://github.com/you/python-practice.git\n\n\n\n\n\n\nEverything from here on happens inside this folder: git, uv, the AI. If Zed ever shows an empty file tree, File → Open Folder and pick the cloned folder itself, not the one above it.",
+    "text": "Bring it down: clone\nIn Zed’s command palette (Cmd/Ctrl+Shift+P): git: clone, paste the URL, and pick the parent folder that your course code sits in, so the repo lands next to it and not inside it. Zed opens the new folder as your workspace: the file tree on the left shows README.md and .gitignore.\nThe same in the terminal. Use one way, not both:\ngit clone https://github.com/you/python-practice.git\n\n\n\n\n\n\nEverything from here on happens inside this folder: git, uv, the AI. If Zed ever shows an empty file tree, File → Open Folder and pick the cloned folder itself.",
     "crumbs": [
       "10 Projects",
       "Lecture"
@@ -720,7 +799,7 @@
     "href": "lectures/lec_10_projects.html#make-it-a-python-project-uv-init",
     "title": "Lecture X - Git and Your Project",
     "section": "Make it a Python project: uv init",
-    "text": "Make it a Python project: uv init\nOpen Zed’s built-in terminal (Ctrl+`); it starts inside your workspace. Then:\nuv init --no-package\nuv run python main.py\nuv init adds main.py, pyproject.toml and .python-version next to the README.md and .gitignore that GitHub made. The second line runs main.py the way you run a lab, and prints Hello from python-practice!\n\n\n\n\n\n\n--no-package keeps it a flat folder of scripts, like python-labs, which the same command made in Session VII; without it, uv builds an installable package layout you don’t need yet. And no git init: the folder came from GitHub, it is a git repository already.",
+    "text": "Make it a Python project: uv init\nOpen Zed’s built-in terminal (Ctrl+`); it starts inside your workspace. Then:\nuv init --no-package\nuv run python main.py\nuv init adds main.py, pyproject.toml and .python-version next to the README.md and .gitignore that GitHub made. The second line runs main.py the way you run a lab, and prints Hello from python-practice!\n\n\n\n\n\n\n--no-package keeps it a flat folder of scripts. Without it, uv builds an installable package layout you don’t need yet. And no git init: the folder came from GitHub, it is a git repository already.",
     "crumbs": [
       "10 Projects",
       "Lecture"
@@ -731,7 +810,7 @@
     "href": "lectures/lec_10_projects.html#same-agent-new-folder",
     "title": "Lecture X - Git and Your Project",
     "section": "Same agent, new folder",
-    "text": "Same agent, new folder\nPart III encourages AI, and your agent is already here: Mistral Vibe works in whatever folder Zed has open. Open the agent panel and ask:\n\nExplain what main.py does, then add a one-line comment at the top that says so. Don’t change anything else.\n\nThis time, watch the panel while it works: what does Vibe do before it shows you a change? Then read the diff before you accept it, as always.\n\n\n\n\n\n\nThe disclosure rule applies from today: your repo’s README.md says which tools you used, what for, and what you checked yourself.",
+    "text": "Same agent, new folder\nPart III encourages AI, and your agent is already here: Mistral Vibe works in whatever folder Zed has open. Open the agent panel and ask:\n\nExplain what main.py does, then add a one-line comment at the top that says so. Don’t change anything else.\n\nThis time, watch the panel while it works: what does Vibe do before it shows you a change? Then read the diff before you accept it.\n\n\n\n\n\n\nThe disclosure rule applies from today: your repo’s README.md says which tools you used, what for, and what you checked yourself.",
     "crumbs": [
       "10 Projects",
       "Lecture"
@@ -742,7 +821,18 @@
     "href": "lectures/lec_10_projects.html#inside-the-panel-a-model-in-a-loop",
     "title": "Lecture X - Git and Your Project",
     "section": "Inside the panel: a model in a loop",
-    "text": "Inside the panel: a model in a loop\n\nMistral Vibe is an agent: the language model you met in Session VI, wired into a loop with tools\nThe model proposes an action: read a file, edit a line, run a command\nThe tool runs it, the result feeds back, and it proposes again, until the goal is met\nNo magic, and no memory between sessions\n\nEvery failure mode from Sessions VI and VIII applies at every step, and a loop gives them many steps to compound in. The diff you just read is the guardrail.",
+    "text": "Inside the panel: a model in a loop\n\nMistral Vibe is an agent, wired into a loop with tools\nThe model proposes an action: read a file, edit a line, run a command\nThe tool runs it, the result feeds back, and it proposes again, until the goal is met\nNo magic, and no memory between sessions\n\nEvery failure mode from Sessions VI and VIII applies at every step, and a loop gives them many steps to compound in. The diff you just read is the guardrail.",
+    "crumbs": [
+      "10 Projects",
+      "Lecture"
+    ]
+  },
+  {
+    "objectID": "lectures/lec_10_projects.html#one-prompt-no-feedback",
+    "href": "lectures/lec_10_projects.html#one-prompt-no-feedback",
+    "title": "Lecture X - Git and Your Project",
+    "section": "One prompt, no feedback",
+    "text": "One prompt, no feedback\nEthan Mollick, an entrepreneurship professor, gave Anthropic’s model Fable 5.2 a single prompt: “create the most impressive thing I can share with people when you launch.” He gave no feedback after that (Mollick 2026).\nWatch what it made, to the end\nMollick also found some misses. Fable’s first course website was “accurate and joyless”, and “the AI did not notice these problems itself.” Noticing stays your job (at least for now).",
     "crumbs": [
       "10 Projects",
       "Lecture"
@@ -753,7 +843,7 @@
     "href": "lectures/lec_10_projects.html#the-five-words",
     "title": "Lecture X - Git and Your Project",
     "section": "The five words",
-    "text": "The five words\nGit has a small vocabulary. These five cover all this project needs:\n\nRepository: a folder git watches, with its whole history\nCommit: one saved snapshot, with a short message\nPush: send your commits up to GitHub\nPull: bring your partners’ commits down to you\nClone: make your own copy of a repo from GitHub\n\nTwo of them you’ve already done: the repo exists, and you cloned it. The other three now, live, in your practice repo. Mistakes are cheap when the repo is five minutes old.",
+    "text": "The five words\nGit has a small vocabulary. These five cover all this project needs:\n\nRepository: a folder git watches, with its whole history\nCommit: one saved snapshot, with a short message\nPush: send your commits up to GitHub\nPull: bring your partners’ commits down to you\nClone: make your own copy of a repo from GitHub\n\nTwo of them you’ve already done: the repo exists, and you cloned it. The other three now, live, in your practice repo.",
     "crumbs": [
       "10 Projects",
       "Lecture"
@@ -786,7 +876,7 @@
     "href": "lectures/lec_10_projects.html#your-history",
     "title": "Lecture X - Git and Your Project",
     "section": "Your history",
-    "text": "Your history\nTwo commits in, the folder has a history. Read it:\ngit log --oneline\nOne line per commit, newest first: a short ID and the message. Yours sits on top of GitHub’s Initial commit. On github.com, Commits (top right of the file list) shows the same list with author and time; click a commit to see what it changed.\nThat answers the lawyer for every file in the repo: who changed it, when, and what it looked like before. It’s also the list I read when I grade your project. Set up the project tells me something; stuff doesn’t.",
+    "text": "Your history\nTwo commits in, the folder has a history. Read it:\ngit log --oneline\nOne line per commit, newest first: a short ID and the message. Yours sits on top of GitHub’s Initial commit. On github.com, Commits (top right of the file list) shows the same list with author and time, click a commit to see what it changed.\nThat answers the lawyer for every file in the repo: who changed it, when, and what it looked like before. It’s also the list I read when I grade your project. Set up the project tells me something; stuff doesn’t.",
     "crumbs": [
       "10 Projects",
       "Lecture"
@@ -819,7 +909,7 @@
     "href": "lectures/lec_10_projects.html#the-fifth-word-pull",
     "title": "Lecture X - Git and Your Project",
     "section": "The fifth word: pull",
-    "text": "The fifth word: pull\n\nThe owner writes your one-sentence pitch into README.md, with a heading ## AI disclosure below it, then commits and pushes\nBoth partners run git: pull (git pull --no-edit): the pitch lands on their laptops\nOne at a time: a partner adds a line under the heading, commits and pushes, and the other two pull. Then the next partner\n\nAll of you have now pushed and pulled in the real repo. On github.com, Commits shows every name.\n\n\n\n\n\n\nClock ran out? This step can wait: inviting and cloning works just as well at the start of Session XI, with me in the room.",
+    "text": "The fifth word: pull\n\nThe owner writes your one-sentence pitch into README.md, with a heading ## AI disclosure below it, then commits and pushes\nBoth partners run git: pull (git pull --no-edit): the pitch lands on their laptops\nOne at a time: a partner adds a line under the heading, commits and pushes, and the other two pull. Then the next partner\n\nAll of you have now pushed and pulled in the real repo. On github.com, Commits shows every name.",
     "crumbs": [
       "10 Projects",
       "Lecture"
@@ -830,7 +920,7 @@
     "href": "lectures/lec_10_projects.html#how-we-work-together",
     "title": "Lecture X - Git and Your Project",
     "section": "How we work together",
-    "text": "How we work together\nThree people, one repo. Four habits keep it painless:\n\nPull before you start. git: pull first, every session: this alone prevents almost every problem\nCommit small and often. Clear messages, no giant commits\nA conflict? Call me. If git marks a clash, don’t fix it alone in week one. Bring it to class\nNever force anything. No --force, no “force push”, ever\n\n\n\n\n\n\n\nEverything today (the actions, the terminal equivalents, the setup, and a cheatsheet table) lives on the Git Basics page. When today’s follow-along is a fading memory, that’s the page you reopen.",
+    "text": "How we work together\nThree people, one repo. Four habits keep it easy:\n\nPull before you start. git: pull first, every session: this alone prevents almost every problem\nCommit small and often. Clear messages, no giant commits\nA conflict? Call me. If git marks a clash, don’t fix it alone in week one. Ask me!\nNever force anything. No --force, no “force push”, ever\n\n\n\n\n\n\n\nEverything today (the actions, the terminal equivalents, the setup, and a cheatsheet table) lives on the Git Basics page.",
     "crumbs": [
       "10 Projects",
       "Lecture"
@@ -841,7 +931,7 @@
     "href": "lectures/lec_10_projects.html#the-road-to-the-finish",
     "title": "Lecture X - Git and Your Project",
     "section": "The road to the finish",
-    "text": "The road to the finish\n\nSession XI: work session, plus one short segment: why AI text now carries a watermark, and why that makes your README disclosure standard practice\nSession XII: work session, plus teaching your agent your project’s rules\nSession XIII: Demo Day, and where this course hands you over to your thesis\n\n\n\n\n\n\n\nBetween now and then, the repo tells your story. Commit as you go. A steady history is worth more than a heroic final night.",
+    "text": "The road to the finish\n\nSession XI: work session, plus teaching your agent your project’s rules\nSession XII: work session, plus why AI text now carries a watermark, and what AI means for your first job\nSession XIII: Final presentations\n\n\n\n\n\n\n\nBetween now and then, the repo tells your story. Commit as you go!",
     "crumbs": [
       "10 Projects",
       "Lecture"
@@ -863,18 +953,18 @@
     "href": "lectures/lec_10_projects.html#what-to-show",
     "title": "Lecture X - Git and Your Project",
     "section": "What to show",
-    "text": "What to show\n\nThe thing running. The output, and the command that produces it\nHow you worked. Open the repo: the commit history instead of describing it\nYour AI disclosure. Which tool, what for, what you verified yourself\nWhat went wrong. Where you had to step in, what cost you an hour\n\nYour machine, your repo, your demo: it must run from the clone on the room’s projector.",
+    "text": "What to show\n\nThe thing running. The output, and the command that produces it\nYour AI disclosure. Which tool, what for, what you verified yourself\nWhat went wrong. Where you had to step in, what cost you an hour\n\nYour computer, your repo, your demo: it must run in class. ## The reference pages\n\n\n\n\n\n\nThe Git Basics page is the reference version of everything we did live today. The setup from Session VII lives on Installing Python and AI Tools.",
     "crumbs": [
       "10 Projects",
       "Lecture"
     ]
   },
   {
-    "objectID": "lectures/lec_10_projects.html#the-reference-pages",
-    "href": "lectures/lec_10_projects.html#the-reference-pages",
+    "objectID": "lectures/lec_10_projects.html#references",
+    "href": "lectures/lec_10_projects.html#references",
     "title": "Lecture X - Git and Your Project",
-    "section": "The reference pages",
-    "text": "The reference pages\n\n\n\n\n\n\nThe Git Basics page is the reference version of everything we did live today. The setup from Session VII lives on Installing Python and AI Tools.",
+    "section": "References",
+    "text": "References\n\n\nMollick, Ethan. 2026. Fable 5.2 and Jagged AGI. https://www.oneusefulthing.org/p/fable-52-and-jagged-agi.",
     "crumbs": [
       "10 Projects",
       "Lecture"
@@ -1067,7 +1157,7 @@
     "href": "lectures/lec_08_presentation.html#how-it-was-trained",
     "title": "Lecture VIII - Pandas and gAI",
     "section": "How it was trained",
-    "text": "How it was trained\n\nPre-training: predict the next token over massive text, where the weights inside get adjusted. Applying them afterwards (called inference) is much cheaper\nFine-tuning: curated examples teach it to follow instructions\nRLHF (reinforcement learning from human feedback): humans rank answers and it learns to prefer the ranked-higher ones\nIts knowledge has an end date, the knowledge cutoff: after it, it guesses fluently or uses web search. And it inherits the biases of the text it read!\n\n\nEvery stage rewards sounding right. Verifacation is your job (at least for now), and step 3 of the verify workflow is how."
+    "text": "How it was trained\n\nPre-training: predicting the next token over massive text sets the weights. Using them later (inference) is much cheaper\nFine-tuning: curated examples teach it to follow instructions\nRLHF (reinforcement learning from human feedback): humans rank answers and it learns to prefer the ranked-higher ones\nIts knowledge ends at the knowledge cutoff: after that, it guesses fluently or searches the web. It also inherits the biases of the text it read\n\n\nEvery stage rewards sounding right. Verification is your job (for now), and step 3 of the verify workflow is how."
   },
   {
     "objectID": "lectures/lec_08_presentation.html#disclosure-say-what-the-ai-did",
@@ -1102,7 +1192,7 @@
     "href": "lectures/lec_08_presentation.html#your-agent-in-zed",
     "title": "Lecture VIII - Pandas and gAI",
     "section": "Your agent, in Zed",
-    "text": "Your agent, in Zed\nOpen the agent panel (the sparkle icon, bottom right), pick Mistral Vibe, and ask for one task at a time:\n\nIn lab_08_dataroom.py, fill in revenue_by_zone in Task 4: a dict, zone name to euros, from the DataFrame clean. Change nothing else.\n\n\nRead it: Zed shows the changes as a diff, old lines red, new lines green. Read it before you accept\nRun it, then test it on a case where you know the answer\n\n\nMore on how gAI works and how you can use it even better in Session X. Today it is a tool you supervise."
+    "text": "Your agent, in Zed\nOpen the agent panel (the sparkle icon, bottom right), pick Mistral Vibe, and ask for one task at a time:\n\nIn lab_08_dataroom.py, fill in revenue_by_zone in Task 4: a dict, zone name to euros, from the DataFrame clean. Change nothing else.\n\n\nRead it: Zed shows a diff, old lines red, new lines green. Read it before you accept\nRun it, then test it on a case where you know the answer\n\n\nSession X shows how an agent works. Today you supervise it."
   },
   {
     "objectID": "lectures/lec_08_presentation.html#three-things-to-remember",
@@ -1420,7 +1510,7 @@
     "href": "lectures/lec_08_pandas.html#how-it-was-trained",
     "title": "Lecture VIII - Pandas and gAI",
     "section": "How it was trained",
-    "text": "How it was trained\n\nPre-training: predict the next token over massive text, where the weights inside get adjusted. Applying them afterwards (called inference) is much cheaper\nFine-tuning: curated examples teach it to follow instructions\nRLHF (reinforcement learning from human feedback): humans rank answers and it learns to prefer the ranked-higher ones\nIts knowledge has an end date, the knowledge cutoff: after it, it guesses fluently or uses web search. And it inherits the biases of the text it read!\n\nEvery stage rewards sounding right. Verifacation is your job (at least for now), and step 3 of the verify workflow is how.",
+    "text": "How it was trained\n\nPre-training: predicting the next token over massive text sets the weights. Using them later (inference) is much cheaper\nFine-tuning: curated examples teach it to follow instructions\nRLHF (reinforcement learning from human feedback): humans rank answers and it learns to prefer the ranked-higher ones\nIts knowledge ends at the knowledge cutoff: after that, it guesses fluently or searches the web. It also inherits the biases of the text it read\n\nEvery stage rewards sounding right. Verification is your job (for now), and step 3 of the verify workflow is how.",
     "crumbs": [
       "08 Pandas and AI",
       "Lecture"
@@ -1475,7 +1565,7 @@
     "href": "lectures/lec_08_pandas.html#your-agent-in-zed",
     "title": "Lecture VIII - Pandas and gAI",
     "section": "Your agent, in Zed",
-    "text": "Your agent, in Zed\nOpen the agent panel (the sparkle icon, bottom right), pick Mistral Vibe, and ask for one task at a time:\n\nIn lab_08_dataroom.py, fill in revenue_by_zone in Task 4: a dict, zone name to euros, from the DataFrame clean. Change nothing else.\n\n\nRead it: Zed shows the changes as a diff, old lines red, new lines green. Read it before you accept\nRun it, then test it on a case where you know the answer\n\nMore on how gAI works and how you can use it even better in Session X. Today it is a tool you supervise.",
+    "text": "Your agent, in Zed\nOpen the agent panel (the sparkle icon, bottom right), pick Mistral Vibe, and ask for one task at a time:\n\nIn lab_08_dataroom.py, fill in revenue_by_zone in Task 4: a dict, zone name to euros, from the DataFrame clean. Change nothing else.\n\n\nRead it: Zed shows a diff, old lines red, new lines green. Read it before you accept\nRun it, then test it on a case where you know the answer\n\nSession X shows how an agent works. Today you supervise it.",
     "crumbs": [
       "08 Pandas and AI",
       "Lecture"
@@ -7911,7 +8001,7 @@
     "href": "lectures/lec_09_plotting.html#after-the-check-the-lab",
     "title": "Lecture IX - Data Visualization",
     "section": "After the check: the lab",
-    "text": "After the check: the lab\n\nlab_09_pitch.py from Episode 9: The Pitch Deck into python-labs\nSix charts, and you pick each kind; every chart needs a title and a label on both axes. The investor gets four of them: you choose which, and in which order\nTwo things in Tobi’s deck are wrong, and no task says so: one in his numbers, one in his claims\n\n\n\n\n\n\n\nShow me pitch_deck.png and the last block for feedback. Then practise the Checkpoint 5 hand-in once: open ex_09_d, Cmd/Ctrl+S, menu → Download → Download Python code.",
+    "text": "After the check: the lab\n\nlab_09_pitch.py from Episode 9: The Pitch Deck into python-labs\nSix charts, and you pick each kind; every chart needs a title and a label on both axes. The investor gets four of them: you choose which, and in which order\nTwo things in Tobi’s deck are wrong, and no task says so: one in his numbers, one in his claims\n\n\n\n\n\n\n\nShow me pitch_deck.png and the last block for feedback.",
     "crumbs": [
       "09 Plotting",
       "Lecture"
@@ -8360,7 +8450,7 @@
     "href": "lectures/lec_09_presentation.html#after-the-check-the-lab",
     "title": "Lecture IX - Data Visualization",
     "section": "After the check: the lab",
-    "text": "After the check: the lab\n\nlab_09_pitch.py from Episode 9: The Pitch Deck into python-labs\nSix charts, and you pick each kind; every chart needs a title and a label on both axes. The investor gets four of them: you choose which, and in which order\nTwo things in Tobi’s deck are wrong, and no task says so: one in his numbers, one in his claims\n\n\n\n\n\n\n\n\nShow me pitch_deck.png and the last block for feedback. Then practise the Checkpoint 5 hand-in once: open ex_09_d, Cmd/Ctrl+S, menu → Download → Download Python code."
+    "text": "After the check: the lab\n\nlab_09_pitch.py from Episode 9: The Pitch Deck into python-labs\nSix charts, and you pick each kind; every chart needs a title and a label on both axes. The investor gets four of them: you choose which, and in which order\nTwo things in Tobi’s deck are wrong, and no task says so: one in his numbers, one in his claims\n\n\n\n\n\n\n\n\nShow me pitch_deck.png and the last block for feedback."
   },
   {
     "objectID": "lectures/lec_09_presentation.html#books-to-start-with",
@@ -8374,7 +8464,7 @@
     "href": "lectures/lec_11_projects.html",
     "title": "Lecture XI - Project Work I",
     "section": "",
-    "text": "MunchCorp runs the shop now. Tobi kept his job, the investor kept her spreadsheets, and her next due-diligence visit already has a date: Session XIII, when your projects run in this room.\nUntil then, the shop rule stands: pull before you start, push when you stop, and let the commit history do the talking.",
+    "text": "MunchCorp runs the shop now. Tobi kept his job, the investor kept her spreadsheets, and her next due-diligence visit already has a date: Session XIII, when your projects run in this room.\nUntil then, the shop rule stands: pull before you start, push when you stop, and let the commit history do the talking.\nBefore you build: ten minutes on making your agent stop repeating the same mistakes.",
     "crumbs": [
       "11 Project Work I",
       "Lecture"
@@ -8385,73 +8475,73 @@
     "href": "lectures/lec_11_projects.html#the-shop-has-a-new-owner",
     "title": "Lecture XI - Project Work I",
     "section": "",
-    "text": "MunchCorp runs the shop now. Tobi kept his job, the investor kept her spreadsheets, and her next due-diligence visit already has a date: Session XIII, when your projects run in this room.\nUntil then, the shop rule stands: pull before you start, push when you stop, and let the commit history do the talking.",
+    "text": "MunchCorp runs the shop now. Tobi kept his job, the investor kept her spreadsheets, and her next due-diligence visit already has a date: Session XIII, when your projects run in this room.\nUntil then, the shop rule stands: pull before you start, push when you stop, and let the commit history do the talking.\nBefore you build: ten minutes on making your agent stop repeating the same mistakes.",
     "crumbs": [
       "11 Project Work I",
       "Lecture"
     ]
   },
   {
-    "objectID": "lectures/lec_11_projects.html#could-anyone-tell",
-    "href": "lectures/lec_11_projects.html#could-anyone-tell",
+    "objectID": "lectures/lec_11_projects.html#the-friction-you-know",
+    "href": "lectures/lec_11_projects.html#the-friction-you-know",
     "title": "Lecture XI - Project Work I",
-    "section": "Could anyone tell?",
-    "text": "Could anyone tell?\n\nYour README carries an AI-disclosure section. Suppose you skipped it: could anyone prove that an AI wrote part of your work?\nSince August 2026, EU rules require providers to mark AI content machine-readably, and the major ones do\nThe trick behind it is simple enough for three slides",
+    "section": "The friction you know",
+    "text": "The friction you know\n\nOne week in, you have corrected your agent on the same things again and again: naming style, the library you prefer, “keep functions short”, “round money to two decimals”\nEvery session starts from zero: the agent remembers nothing between sessions (Session X, the loop)\nExplaining the same thing five times is work you should not be doing",
     "crumbs": [
       "11 Project Work I",
       "Lecture"
     ]
   },
   {
-    "objectID": "lectures/lec_11_projects.html#how-a-watermark-hides-in-plain-text",
-    "href": "lectures/lec_11_projects.html#how-a-watermark-hides-in-plain-text",
+    "objectID": "lectures/lec_11_projects.html#package-the-rules-once",
+    "href": "lectures/lec_11_projects.html#package-the-rules-once",
     "title": "Lecture XI - Project Work I",
-    "section": "How a watermark hides in plain text",
-    "text": "How a watermark hides in plain text\n\nBefore each word, the model splits its vocabulary into a green and a red half, reshuffled at every step\nIt then softly prefers green words. The text still reads completely normally\nBy chance, a human writes about half green words. A model writes far more",
+    "section": "Package the rules once",
+    "text": "Package the rules once\n\nPut your project rules in one markdown file in the repo: AGENTS.md\nWhat goes in: what the project is, the tools it uses, naming and style conventions, “any AI use lands in the README disclosure”\nMistral Vibe reads it at every session start, automatically: write the rules once, stop repeating them",
     "crumbs": [
       "11 Project Work I",
       "Lecture"
     ]
   },
   {
-    "objectID": "lectures/lec_11_projects.html#you-already-know-the-mechanism",
-    "href": "lectures/lec_11_projects.html#you-already-know-the-mechanism",
+    "objectID": "lectures/lec_11_projects.html#skills-instructions-on-demand",
+    "href": "lectures/lec_11_projects.html#skills-instructions-on-demand",
     "title": "Lecture XI - Project Work I",
-    "section": "You already know the mechanism",
-    "text": "You already know the mechanism\n\nSession VI: the model picks a likely next token, never the next token\nA watermark is that choice, steered on purpose: green wins a little more often than chance\nSame next-token choice, one hidden thumb on the scale",
+    "section": "Skills: instructions on demand",
+    "text": "Skills: instructions on demand\n\nA skill is the next step up: a folder with a SKILL.md, holding a name, a description, and instructions\nRules apply always. A skill loads only when the task matches its description, so context stays lean until the moment it is needed\nExample: a verify skill for your project: read the diff, run it, test it on a case where you know the answer, report what you checked\nIn your stack: .vibe/skills/verify/SKILL.md in the repo. Vibe loads it in the terminal and inside Zed’s agent panel, same engine\nVibe follows an open format, so skills you write here also work in other agents that adopt it",
     "crumbs": [
       "11 Project Work I",
       "Lecture"
     ]
   },
   {
-    "objectID": "lectures/lec_11_projects.html#who-can-actually-detect-it",
-    "href": "lectures/lec_11_projects.html#who-can-actually-detect-it",
+    "objectID": "lectures/lec_11_projects.html#anatomy-briefly",
+    "href": "lectures/lec_11_projects.html#anatomy-briefly",
     "title": "Lecture XI - Project Work I",
-    "section": "Who can actually detect it",
-    "text": "Who can actually detect it\n\nDetection is counting: one paragraph of marked text can push chance below 1 in 10 trillion\nBut you need the secret key that decided which half was green\nIn practice, only the provider can run the test",
+    "section": "Anatomy, briefly",
+    "text": "Anatomy, briefly\n---\nname: verify\ndescription: Check changed code the way this project requires. Use after any code change.\n---\n\n- Read the diff line by line before running anything\n- Run the code on a case where you know the correct answer\n- Report what you checked and what the result was\nPlain markdown you own, at .vibe/skills/verify/SKILL.md, versioned with the project like any other file.",
     "crumbs": [
       "11 Project Work I",
       "Lecture"
     ]
   },
   {
-    "objectID": "lectures/lec_11_projects.html#what-a-mark-proves-and-does-not",
-    "href": "lectures/lec_11_projects.html#what-a-mark-proves-and-does-not",
+    "objectID": "lectures/lec_11_projects.html#write-your-own",
+    "href": "lectures/lec_11_projects.html#write-your-own",
     "title": "Lecture XI - Project Work I",
-    "section": "What a mark proves (and does not)",
-    "text": "What a mark proves (and does not)\n\nProves: a model processed this text\nDoes not prove: who did the work, or whether a human verified it\nHeavy editing can wash a mark out, and short snippets may not carry one, so an absence proves nothing\n\nPresence without disclosure, though, looks exactly like what it is.",
+    "section": "Write your own",
+    "text": "Write your own\n\nAny workflow you have explained to the agent twice deserves a skill\nKeep it short: a page of instructions, not an essay\nPrune it when the workflow changes: a stale skill misleads\nDownloading one? Vet it by reading it, not by how popular it is",
     "crumbs": [
       "11 Project Work I",
       "Lecture"
     ]
   },
   {
-    "objectID": "lectures/lec_11_projects.html#disclosure-is-part-of-the-work",
-    "href": "lectures/lec_11_projects.html#disclosure-is-part-of-the-work",
+    "objectID": "lectures/lec_11_projects.html#what-not-to-hand-over",
+    "href": "lectures/lec_11_projects.html#what-not-to-hand-over",
     "title": "Lecture XI - Project Work I",
-    "section": "Disclosure is part of the work",
-    "text": "Disclosure is part of the work\n\nThe rules converged everywhere: AI cannot be an author, and its use gets disclosed\nYour README section says which tool, for what, and what you verified yourself\nThat is standard practice, not a confession",
+    "section": "What not to hand over",
+    "text": "What not to hand over\n\nThe parts you must be able to defend at the demo: design choices, the statistics, why this approach\nA file can carry conventions. It cannot carry your judgment, and the demo questions come to you, not to it",
     "crumbs": [
       "11 Project Work I",
       "Lecture"
@@ -8484,7 +8574,7 @@
     "href": "lectures/lec_11_projects.html#three-things-to-remember",
     "title": "Lecture XI - Project Work I",
     "section": "Three things to remember",
-    "text": "Three things to remember\n\nAI text carries a watermark now: fluent, normal-looking, detectable by the provider\nDisclosure is part of the work: which tool, what for, what you verified\nSmall commits, pushed often, are the cheapest insurance any of you can buy\n\nNext week: your agent keeps making the same mistakes. Time to teach it once instead of correcting it every session.",
+    "text": "Three things to remember\n\nRules in AGENTS.md for the always stuff, skills for the on-demand stuff, both plain markdown you own\nAny workflow you have explained to the agent twice deserves a skill\nSmall commits, pushed often, are the cheapest insurance any of you can buy\n\nNext week: could anyone prove that an AI wrote part of your work?",
     "crumbs": [
       "11 Project Work I",
       "Lecture"
@@ -8495,49 +8585,49 @@
     "href": "lectures/lec_11_presentation.html#the-shop-has-a-new-owner",
     "title": "Lecture XI - Project Work I",
     "section": "The shop has a new owner",
-    "text": "The shop has a new owner\nMunchCorp runs the shop now. Tobi kept his job, the investor kept her spreadsheets, and her next due-diligence visit already has a date: Session XIII, when your projects run in this room.\n\nUntil then, the shop rule stands: pull before you start, push when you stop, and let the commit history do the talking."
+    "text": "The shop has a new owner\nMunchCorp runs the shop now. Tobi kept his job, the investor kept her spreadsheets, and her next due-diligence visit already has a date: Session XIII, when your projects run in this room.\n\nUntil then, the shop rule stands: pull before you start, push when you stop, and let the commit history do the talking.\n\n\nBefore you build: ten minutes on making your agent stop repeating the same mistakes."
   },
   {
-    "objectID": "lectures/lec_11_presentation.html#could-anyone-tell",
-    "href": "lectures/lec_11_presentation.html#could-anyone-tell",
+    "objectID": "lectures/lec_11_presentation.html#the-friction-you-know",
+    "href": "lectures/lec_11_presentation.html#the-friction-you-know",
     "title": "Lecture XI - Project Work I",
-    "section": "Could anyone tell?",
-    "text": "Could anyone tell?\n\nYour README carries an AI-disclosure section. Suppose you skipped it: could anyone prove that an AI wrote part of your work?\nSince August 2026, EU rules require providers to mark AI content machine-readably, and the major ones do\nThe trick behind it is simple enough for three slides"
+    "section": "The friction you know",
+    "text": "The friction you know\n\nOne week in, you have corrected your agent on the same things again and again: naming style, the library you prefer, “keep functions short”, “round money to two decimals”\nEvery session starts from zero: the agent remembers nothing between sessions (Session X, the loop)\nExplaining the same thing five times is work you should not be doing"
   },
   {
-    "objectID": "lectures/lec_11_presentation.html#how-a-watermark-hides-in-plain-text",
-    "href": "lectures/lec_11_presentation.html#how-a-watermark-hides-in-plain-text",
+    "objectID": "lectures/lec_11_presentation.html#package-the-rules-once",
+    "href": "lectures/lec_11_presentation.html#package-the-rules-once",
     "title": "Lecture XI - Project Work I",
-    "section": "How a watermark hides in plain text",
-    "text": "How a watermark hides in plain text\n\nBefore each word, the model splits its vocabulary into a green and a red half, reshuffled at every step\nIt then softly prefers green words. The text still reads completely normally\nBy chance, a human writes about half green words. A model writes far more"
+    "section": "Package the rules once",
+    "text": "Package the rules once\n\nPut your project rules in one markdown file in the repo: AGENTS.md\nWhat goes in: what the project is, the tools it uses, naming and style conventions, “any AI use lands in the README disclosure”\nMistral Vibe reads it at every session start, automatically: write the rules once, stop repeating them"
   },
   {
-    "objectID": "lectures/lec_11_presentation.html#you-already-know-the-mechanism",
-    "href": "lectures/lec_11_presentation.html#you-already-know-the-mechanism",
+    "objectID": "lectures/lec_11_presentation.html#skills-instructions-on-demand",
+    "href": "lectures/lec_11_presentation.html#skills-instructions-on-demand",
     "title": "Lecture XI - Project Work I",
-    "section": "You already know the mechanism",
-    "text": "You already know the mechanism\n\nSession VI: the model picks a likely next token, never the next token\nA watermark is that choice, steered on purpose: green wins a little more often than chance\nSame next-token choice, one hidden thumb on the scale"
+    "section": "Skills: instructions on demand",
+    "text": "Skills: instructions on demand\n\nA skill is the next step up: a folder with a SKILL.md, holding a name, a description, and instructions\nRules apply always. A skill loads only when the task matches its description, so context stays lean until the moment it is needed\nExample: a verify skill for your project: read the diff, run it, test it on a case where you know the answer, report what you checked\nIn your stack: .vibe/skills/verify/SKILL.md in the repo. Vibe loads it in the terminal and inside Zed’s agent panel, same engine\nVibe follows an open format, so skills you write here also work in other agents that adopt it"
   },
   {
-    "objectID": "lectures/lec_11_presentation.html#who-can-actually-detect-it",
-    "href": "lectures/lec_11_presentation.html#who-can-actually-detect-it",
+    "objectID": "lectures/lec_11_presentation.html#anatomy-briefly",
+    "href": "lectures/lec_11_presentation.html#anatomy-briefly",
     "title": "Lecture XI - Project Work I",
-    "section": "Who can actually detect it",
-    "text": "Who can actually detect it\n\nDetection is counting: one paragraph of marked text can push chance below 1 in 10 trillion\nBut you need the secret key that decided which half was green\nIn practice, only the provider can run the test"
+    "section": "Anatomy, briefly",
+    "text": "Anatomy, briefly\n---\nname: verify\ndescription: Check changed code the way this project requires. Use after any code change.\n---\n\n- Read the diff line by line before running anything\n- Run the code on a case where you know the correct answer\n- Report what you checked and what the result was\n\nPlain markdown you own, at .vibe/skills/verify/SKILL.md, versioned with the project like any other file."
   },
   {
-    "objectID": "lectures/lec_11_presentation.html#what-a-mark-proves-and-does-not",
-    "href": "lectures/lec_11_presentation.html#what-a-mark-proves-and-does-not",
+    "objectID": "lectures/lec_11_presentation.html#write-your-own",
+    "href": "lectures/lec_11_presentation.html#write-your-own",
     "title": "Lecture XI - Project Work I",
-    "section": "What a mark proves (and does not)",
-    "text": "What a mark proves (and does not)\n\nProves: a model processed this text\nDoes not prove: who did the work, or whether a human verified it\nHeavy editing can wash a mark out, and short snippets may not carry one, so an absence proves nothing\n\n\nPresence without disclosure, though, looks exactly like what it is."
+    "section": "Write your own",
+    "text": "Write your own\n\nAny workflow you have explained to the agent twice deserves a skill\nKeep it short: a page of instructions, not an essay\nPrune it when the workflow changes: a stale skill misleads\nDownloading one? Vet it by reading it, not by how popular it is"
   },
   {
-    "objectID": "lectures/lec_11_presentation.html#disclosure-is-part-of-the-work",
-    "href": "lectures/lec_11_presentation.html#disclosure-is-part-of-the-work",
+    "objectID": "lectures/lec_11_presentation.html#what-not-to-hand-over",
+    "href": "lectures/lec_11_presentation.html#what-not-to-hand-over",
     "title": "Lecture XI - Project Work I",
-    "section": "Disclosure is part of the work",
-    "text": "Disclosure is part of the work\n\nThe rules converged everywhere: AI cannot be an author, and its use gets disclosed\nYour README section says which tool, for what, and what you verified yourself\nThat is standard practice, not a confession"
+    "section": "What not to hand over",
+    "text": "What not to hand over\n\nThe parts you must be able to defend at the demo: design choices, the statistics, why this approach\nA file can carry conventions. It cannot carry your judgment, and the demo questions come to you, not to it"
   },
   {
     "objectID": "lectures/lec_11_presentation.html#today",
@@ -8558,7 +8648,7 @@
     "href": "lectures/lec_11_presentation.html#three-things-to-remember",
     "title": "Lecture XI - Project Work I",
     "section": "Three things to remember",
-    "text": "Three things to remember\n\nAI text carries a watermark now: fluent, normal-looking, detectable by the provider\nDisclosure is part of the work: which tool, what for, what you verified\nSmall commits, pushed often, are the cheapest insurance any of you can buy\n\n\nNext week: your agent keeps making the same mistakes. Time to teach it once instead of correcting it every session."
+    "text": "Three things to remember\n\nRules in AGENTS.md for the always stuff, skills for the on-demand stuff, both plain markdown you own\nAny workflow you have explained to the agent twice deserves a skill\nSmall commits, pushed often, are the cheapest insurance any of you can buy\n\n\nNext week: could anyone prove that an AI wrote part of your work?"
   },
   {
     "objectID": "lectures/lec_13_presentations.html",
@@ -8588,39 +8678,6 @@
     "title": "Lecture XIII - Presentations and Discussion",
     "section": "",
     "text": "Note one thing you would have done differently, and one thing you are taking for your own next project\nQuestions are part of the format: specific, kind, useful",
-    "crumbs": [
-      "13 Presentations",
-      "Lecture"
-    ]
-  },
-  {
-    "objectID": "lectures/lec_13_presentations.html#ai-and-your-first-job",
-    "href": "lectures/lec_13_presentations.html#ai-and-your-first-job",
-    "title": "Lecture XIII - Presentations and Discussion",
-    "section": "AI and your first job",
-    "text": "AI and your first job\n\nThousands of developers: +26% tasks done with AI, juniors gained most (Cui et al. 2026)\nExperienced developers on their own code: 19% slower, while feeling 20% faster (Becker et al. 2025)\nLearners with AI: 50% on a mastery quiz vs 67% without, worst on debugging (Shen and Tamkin 2026)\nThe fix: hints instead of finished solutions erased the harm (Bastani et al. 2025). Part I was exactly that",
-    "crumbs": [
-      "13 Presentations",
-      "Lecture"
-    ]
-  },
-  {
-    "objectID": "lectures/lec_13_presentations.html#what-stays-valuable",
-    "href": "lectures/lec_13_presentations.html#what-stays-valuable",
-    "title": "Lecture XIII - Presentations and Discussion",
-    "section": "What stays valuable",
-    "text": "What stays valuable\n\nThe verification boundary: usable delegation ends where your ability to check ends. Growing that boundary outward is your career\nComprehension debt: code that works today but nobody understands tomorrow. The interest comes due when a reviewer asks “why does this work?”\nYour edge, deliberately kept: explain every line before you accept it, and code without AI sometimes",
-    "crumbs": [
-      "13 Presentations",
-      "Lecture"
-    ]
-  },
-  {
-    "objectID": "lectures/lec_13_presentations.html#discussion-your-future-with-ai",
-    "href": "lectures/lec_13_presentations.html#discussion-your-future-with-ai",
-    "title": "Lecture XIII - Presentations and Discussion",
-    "section": "Discussion: your future with AI",
-    "text": "Discussion: your future with AI\n\n\n\n\n\n\nThree questions, five minutes, show of hands:\n\nWhich task from the past weeks would you never delegate to an AI?\nWhat will an entry-level logistics analyst do in 2030, when AI drafts the first version of everything?\nIf AI writes most junior code, where do the senior people come from?",
     "crumbs": [
       "13 Presentations",
       "Lecture"
@@ -8664,7 +8721,7 @@
     "href": "lectures/lec_13_presentations.html#references",
     "title": "Lecture XIII - Presentations and Discussion",
     "section": "References",
-    "text": "References\n\n\nBastani, Hamsa, Osbert Bastani, Alp Sungu, Haosen Ge, Özge Kabakcı, and Rei Mariman. 2025. “Generative AI Without Guardrails Can Harm Learning: Evidence from High School Mathematics.” Proceedings of the National Academy of Sciences 122 (26): e2422633122. https://doi.org/10.1073/pnas.2422633122.\n\n\nBecker, Joel, Nate Rush, Elizabeth Barnes, and David Rein. 2025. Measuring the Impact of Early-2025 AI on Experienced Open-Source Developer Productivity. arXiv. https://doi.org/10.48550/ARXIV.2507.09089.\n\n\nCui, Kevin Zheyuan, Mert Demirer, Sonia Jaffe, Leon Musolff, Sida Peng, and Tobias Salz. 2026. “The Effects of Generative AI on High-Skilled Work: Evidence from Three Field Experiments with Software Developers.” Management Science, February, mnsc.2025.00535. https://doi.org/10.1287/mnsc.2025.00535.\n\n\nDowney, Allen B. 2024. Think Python: How to Think Like a Computer Scientist. Third edition. O’Reilly. https://greenteapress.com/wp/think-python-3rd-edition/.\n\n\nElter, Stephan. 2021. Schrödinger programmiert Python: das etwas andere Fachbuch. 1. Auflage. Rheinwerk Computing. Rheinwerk Verlag.\n\n\nShen, Judy Hanwen, and Alex Tamkin. 2026. How AI Impacts Skill Formation. arXiv. https://doi.org/10.48550/ARXIV.2601.20245.",
+    "text": "References\n\n\nDowney, Allen B. 2024. Think Python: How to Think Like a Computer Scientist. Third edition. O’Reilly. https://greenteapress.com/wp/think-python-3rd-edition/.\n\n\nElter, Stephan. 2021. Schrödinger programmiert Python: das etwas andere Fachbuch. 1. Auflage. Rheinwerk Computing. Rheinwerk Verlag.",
     "crumbs": [
       "13 Presentations",
       "Lecture"
@@ -8683,27 +8740,6 @@
     "title": "Lecture XIII - Presentations and Discussion",
     "section": "While you watch",
     "text": "While you watch\n\nNote one thing you would have done differently, and one thing you are taking for your own next project\nQuestions are part of the format: specific, kind, useful"
-  },
-  {
-    "objectID": "lectures/lec_13_presentation.html#ai-and-your-first-job",
-    "href": "lectures/lec_13_presentation.html#ai-and-your-first-job",
-    "title": "Lecture XIII - Presentations and Discussion",
-    "section": "AI and your first job",
-    "text": "AI and your first job\n\nThousands of developers: +26% tasks done with AI, juniors gained most (Cui et al. 2026)\nExperienced developers on their own code: 19% slower, while feeling 20% faster (Becker et al. 2025)\nLearners with AI: 50% on a mastery quiz vs 67% without, worst on debugging (Shen and Tamkin 2026)\nThe fix: hints instead of finished solutions erased the harm (Bastani et al. 2025). Part I was exactly that"
-  },
-  {
-    "objectID": "lectures/lec_13_presentation.html#what-stays-valuable",
-    "href": "lectures/lec_13_presentation.html#what-stays-valuable",
-    "title": "Lecture XIII - Presentations and Discussion",
-    "section": "What stays valuable",
-    "text": "What stays valuable\n\nThe verification boundary: usable delegation ends where your ability to check ends. Growing that boundary outward is your career\nComprehension debt: code that works today but nobody understands tomorrow. The interest comes due when a reviewer asks “why does this work?”\nYour edge, deliberately kept: explain every line before you accept it, and code without AI sometimes"
-  },
-  {
-    "objectID": "lectures/lec_13_presentation.html#discussion-your-future-with-ai",
-    "href": "lectures/lec_13_presentation.html#discussion-your-future-with-ai",
-    "title": "Lecture XIII - Presentations and Discussion",
-    "section": "Discussion: your future with AI",
-    "text": "Discussion: your future with AI\n\n\n\n\n\n\nThree questions, five minutes, show of hands:\n\nWhich task from the past weeks would you never delegate to an AI?\nWhat will an entry-level logistics analyst do in 2030, when AI drafts the first version of everything?\nIf AI writes most junior code, where do the senior people come from?"
   },
   {
     "objectID": "lectures/lec_13_presentation.html#keep-programming",
@@ -8731,7 +8767,7 @@
     "href": "lectures/lec_13_presentation.html#references",
     "title": "Lecture XIII - Presentations and Discussion",
     "section": "References",
-    "text": "References\n\n\nBastani, Hamsa, Osbert Bastani, Alp Sungu, Haosen Ge, Özge Kabakcı, and Rei Mariman. 2025. “Generative AI Without Guardrails Can Harm Learning: Evidence from High School Mathematics.” Proceedings of the National Academy of Sciences 122 (26): e2422633122. https://doi.org/10.1073/pnas.2422633122.\n\n\nBecker, Joel, Nate Rush, Elizabeth Barnes, and David Rein. 2025. Measuring the Impact of Early-2025 AI on Experienced Open-Source Developer Productivity. arXiv. https://doi.org/10.48550/ARXIV.2507.09089.\n\n\nCui, Kevin Zheyuan, Mert Demirer, Sonia Jaffe, Leon Musolff, Sida Peng, and Tobias Salz. 2026. “The Effects of Generative AI on High-Skilled Work: Evidence from Three Field Experiments with Software Developers.” Management Science, February, mnsc.2025.00535. https://doi.org/10.1287/mnsc.2025.00535.\n\n\nDowney, Allen B. 2024. Think Python: How to Think Like a Computer Scientist. Third edition. O’Reilly. https://greenteapress.com/wp/think-python-3rd-edition/.\n\n\nElter, Stephan. 2021. Schrödinger programmiert Python: das etwas andere Fachbuch. 1. Auflage. Rheinwerk Computing. Rheinwerk Verlag.\n\n\nShen, Judy Hanwen, and Alex Tamkin. 2026. How AI Impacts Skill Formation. arXiv. https://doi.org/10.48550/ARXIV.2601.20245."
+    "text": "References\n\n\nDowney, Allen B. 2024. Think Python: How to Think Like a Computer Scientist. Third edition. O’Reilly. https://greenteapress.com/wp/think-python-3rd-edition/.\n\n\nElter, Stephan. 2021. Schrödinger programmiert Python: das etwas andere Fachbuch. 1. Auflage. Rheinwerk Computing. Rheinwerk Verlag."
   },
   {
     "objectID": "tutorials/tut_02_control.html",
